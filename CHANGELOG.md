@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.0 (unreleased)
+
+* Additions:
+  - `startOfWeek`
+  - `endOfWeek`
+
 ## v0.3.0 (6 Oct 2014)
 
 * Additions:
