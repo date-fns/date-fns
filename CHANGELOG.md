@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.3.0 (6 Oct 2014)
+
+* Additions:
+  - `endOfDay`
+  - `startOfMonth`
+  - `endOfMonth`
+* Improvements:
+  - `startOfDay` now sets milliseconds as well
+
 ## v0.2.0 (6 Oct 2014)
 
 * Additions:
