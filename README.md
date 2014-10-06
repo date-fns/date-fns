@@ -4,12 +4,9 @@ Date helpers in function-per-file style.
 
 ## API
 
-### [`startOfDay`](./src/start_of_day.js)
+Code is fully documented, checkout source for reference.
 
-Example:
+* [`isWeekend`](./src/is_weekend.js) - is passed date is weekend?;
+* [`isToday`](./src/is_today.js) - is passed date is today?;
+* [`startOfDay`](./src/start_of_day.js) - returns start of day for passed date;
 
-``` javascript
-var startOfDay = require('date-fns/start_of_day');
-startOfDay(new Date('2014-09-02T11:55:00'))
-//=> 'Tue Sep 02 2014 00:00:00 GMT+0400 (MSK)'
-```
