@@ -8,5 +8,8 @@ Code is fully documented, checkout source for reference.
 
 * [`isWeekend`](./src/is_weekend.js) - is passed date is weekend?;
 * [`isToday`](./src/is_today.js) - is passed date is today?;
-* [`startOfDay`](./src/start_of_day.js) - returns start of day for passed date;
+* [`startOfDay`](./src/start_of_day.js) - returns start of a day for passed date;
+* [`endOfDay`](./src/end_of_day.js) - returns end of a day for passed date;
+* [`startOfMonth`](./src/start_of_month.js) - returns start of a month for passed date;
+* [`endOfMonth`](./src/end_of_month.js) - returns end of a month for passed date;
 
