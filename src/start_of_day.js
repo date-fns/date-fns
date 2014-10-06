@@ -1,6 +1,7 @@
 /**
- * Returns start of the day for given date. Date will be in local timezone.
- * @param {date|string}
+ * Returns start of the day for given date. Date will be in local
+ * timezone.
+ * @param {date|string} dirtyDate
  * @returns {date}
  */
 var startOfDay = function(dirtyDate) {
