@@ -17,4 +17,7 @@ Code is fully documented, checkout source for reference.
 * [`eachDay`](./src/each_day) - returns array of dates within specified range
 * [`addDays`](./src/add_days) - add specified number of days to passed date
 * [`subDays`](./src/sub_days) - substract specified number of days from passed date
+* [`isSameMonth`](./src/is_same_month) - returns true if passed dates has same month (and year)
+* [`isFirstDayOfMonth`](./src/is_first_day_of_month) - return true if passed date is first day of month
+* [`isLastDayOfMonth`](./src/is_last_day_of_month) - return true if passed date is last day of month
 
