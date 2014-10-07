@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.5.0 (7 Oct 2014)
+
+* Additions:
+  - `addDays`
+  - `subDays`
+
 ## v0.4.0 (7 Oct 2014)
 
 * Additions:

@@ -15,4 +15,6 @@ Code is fully documented, checkout source for reference.
 * [`startOfMonth`](./src/start_of_month.js) - returns start of a month for passed date
 * [`endOfMonth`](./src/end_of_month.js) - returns end of a month for passed date
 * [`eachDay`](./src/each_day) - returns array of dates within specified range
+* [`addDays`](./src/add_days) - add specified number of days to passed date
+* [`subDays`](./src/sub_days) - substract specified number of days from passed date
 
