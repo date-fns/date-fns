@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.6.0 (7 Oct 2014)
+
+* Additions:
+  - `isFirstDayOfMonth`
+  - `isLastDayOfMonth`
+  - `isSameMonth`
+* Bug fixes:
+  - Inconsistent behavior of `endOfMonth`
+
 ## v0.5.0 (7 Oct 2014)
 
 * Additions:
