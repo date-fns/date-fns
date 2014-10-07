@@ -1,10 +1,11 @@
 # Changelog
 
-## v0.4.0 (unreleased)
+## v0.4.0 (7 Oct 2014)
 
 * Additions:
   - `startOfWeek`
   - `endOfWeek`
+  - `eachDay`
 
 ## v0.3.0 (6 Oct 2014)
 
