@@ -14,4 +14,5 @@ Code is fully documented, checkout source for reference.
 * [`endOfWeek`](./src/end_of_week.js) - returns end of a week for passed date
 * [`startOfMonth`](./src/start_of_month.js) - returns start of a month for passed date
 * [`endOfMonth`](./src/end_of_month.js) - returns end of a month for passed date
+* [`eachDay`](./src/each_day) - returns array of dates within specified range
 
