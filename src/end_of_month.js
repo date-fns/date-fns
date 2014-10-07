@@ -6,8 +6,7 @@
 var endOfMonth = function(dirtyDate) {
   var date = new Date(dirtyDate);
   date.setHours(23, 59, 59, 999);
-  date.setMonth(date.getMonth() + 1);
-  date.setDate(0);
+  date.setFullYear(date.getFullYear(), date.getMonth() + 1, 0);
   return date;
 };
 
