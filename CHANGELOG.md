@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.7.0 (8 Oct 2014)
+
+* Additions:
+  - `isSameWeek`
+
 ## v0.6.0 (7 Oct 2014)
 
 * Additions:
