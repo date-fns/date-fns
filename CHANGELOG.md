@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.8.0 (unreleased)
+## v0.8.0 (9 Oct 2014)
 
 * Additions:
   - `addMonths`
