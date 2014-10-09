@@ -24,4 +24,5 @@ Code is fully documented, checkout source for reference.
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - return true if passed date is first day of month
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - return true if passed date is last day of month
 * [`setMonth`](./src/set_month.js) - sets month index
+* [`setYear`](./src/set_year.js) - sets full year
 

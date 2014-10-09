@@ -6,6 +6,7 @@
   - `addMonths`
   - `subMonths`
   - `setMonth`
+  - `setYear`
 * Improvements:
   - Reuse `addDays` inside of `subDays`
 
