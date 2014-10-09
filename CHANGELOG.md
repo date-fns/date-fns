@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.8.0 (unreleased)
+
+* Additions:
+  - `addMonths`
+  - `subMonths`
+
 ## v0.7.0 (8 Oct 2014)
 
 * Additions:

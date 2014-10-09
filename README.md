@@ -17,6 +17,8 @@ Code is fully documented, checkout source for reference.
 * [`eachDay`](./src/each_day.js) - returns array of dates within specified range
 * [`addDays`](./src/add_days.js) - add specified number of days to passed date
 * [`subDays`](./src/sub_days.js) - substract specified number of days from passed date
+* [`addMonths`](./src/add_months.js) - add specified number of months to passed date
+* [`subMonths`](./src/sub_months.js) - substract specified number of days from passed date
 * [`isSameWeek`](./src/is_same_week.js) - returns true if passed dates belongs to the same week
 * [`isSameMonth`](./src/is_same_month.js) - returns true if passed dates has same month (and year)
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - return true if passed date is first day of month
