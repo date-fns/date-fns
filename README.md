@@ -1,4 +1,5 @@
 # date-fns
+[![Build Status](https://travis-ci.org/kossnocorp/date-fns.svg)](https://travis-ci.org/kossnocorp/date-fns)
 
 Date helpers in function-per-file style.
 
