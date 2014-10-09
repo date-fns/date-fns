@@ -23,4 +23,5 @@ Code is fully documented, checkout source for reference.
 * [`isSameMonth`](./src/is_same_month.js) - returns true if passed dates has same month (and year)
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - return true if passed date is first day of month
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - return true if passed date is last day of month
+* [`setMonth`](./src/set_month.js) - sets month index
 
