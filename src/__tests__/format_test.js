@@ -15,7 +15,7 @@ describe('format', function(){
 
   describe('ordinal', function(){
     it('should return 1st', function(){
-      var date = format(this._date, 'Do of the Mo in YYYY');
+      var date = format(this._date, 'Do of t[h][e] Mo in YYYY');
       expect(date).to.be.equal('4th of the 4th in 1986');
     });
   })
@@ -70,6 +70,12 @@ describe('format', function(){
 
     it('ISO', function(){
       expect(format(this._date, 'E')).to.be.equal('6');
+    })
+  });
+
+  describe('hours', function(){
+    it('am/pm', function(){
+      expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 am');
     })
   });
 

@@ -9,49 +9,49 @@ var format = function(date, format, locale) {
 var formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|X|zz?|ZZ?|.)/g
 
 function makeFormatFunction(format) {
-    var array = format.match(formattingTokens), i, length;
+  var array = format.match(formattingTokens), i, length;
 
-    for (i = 0, length = array.length; i < length; i++) {
-        if (formats[array[i]]) {
-            array[i] = formats[array[i]];
-        } else {
-            array[i] = removeFormattingTokens(array[i]);
-        }
+  for (i = 0, length = array.length; i < length; i++) {
+    if (formats[array[i]]) {
+      array[i] = formats[array[i]];
+    } else {
+      array[i] = removeFormattingTokens(array[i]);
     }
+  }
 
-    return function (mom) {
-        var output = '';
-        for (i = 0; i < length; i++) {
-            output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
-        }
-        return output;
-    };
+  return function (mom) {
+    var output = '';
+    for (i = 0; i < length; i++) {
+      output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+    }
+    return output;
+  };
 }
 
 function removeFormattingTokens(input) {
-    if (input.match(/\[[\s\S]/)) {
-        return input.replace(/^\[|\]$/g, '');
-    }
-    return input.replace(/\\/g, '');
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|\]$/g, '');
+  }
+  return input.replace(/\\/g, '');
 }
 
 function leftZeroFill(number, targetLength) {
-    var output = '' + Math.abs(number);
+  var output = '' + Math.abs(number);
 
-    while (output.length < targetLength) {
-        output = '0' + output;
-    }
-    return output;
+  while (output.length < targetLength) {
+    output = '0' + output;
+  }
+  return output;
 }
 
 
 var locale = {
   ordinal: function (number) {
     var b = number % 10,
-        output = (+(number % 100 / 10) === 1) ? 'th' :
-        (b === 1) ? 'st' :
-        (b === 2) ? 'nd' :
-        (b === 3) ? 'rd' : 'th';
+      output = (+(number % 100 / 10) === 1) ? 'th' :
+      (b === 1) ? 'st' :
+      (b === 2) ? 'nd' :
+      (b === 3) ? 'rd' : 'th';
     return number + output;
   },
   months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -109,7 +109,38 @@ var formats = {
   },
   'YYYY': function(){
     return this.getFullYear()
+  },
+  'A': function(){
+    return (this.getHours() / 12) >= 1 ? 'PM' : 'AM';
+  },
+  'a': function(){
+    return (this.getHours() / 12) >= 1 ? 'pm' : 'am';
+  },
+  'H': function(){
+    return this.getHours();
+  },
+  'HH': function(){
+    return leftZeroFill(this.getHours(), 2);
+  },
+  'h': function(){
+    return this.getHours() % 12;
+  },
+  'hh': function(){
+    return leftZeroFill(this.getHours() % 12, 2);
+  },
+  'm': function(){
+    return this.getMinutes();
+  },
+  'mm': function(){
+    return leftZeroFill(this.getMinutes());
+  },
+  's': function(){
+    return this.getSeconds();
+  },
+  'ss': function(){
+    return leftZeroFill(this.getSeconds());
   }
+
 }
 
 var ordinalFunctions = ['M', 'D', 'DDD', 'd'];
