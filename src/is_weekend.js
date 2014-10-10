@@ -6,12 +6,7 @@
 var isWeekend = function(dirtyDate) {
   var date = new Date(dirtyDate);
   var day = date.getDay();
-
-  if (day == 0 || day == 6) {
-    return true;
-  } else {
-    return false;
-  }
+  return day == 0 || day == 6;
 };
 
 module.exports = isWeekend;
