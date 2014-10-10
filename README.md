@@ -27,6 +27,7 @@ Code is fully documented, checkout source for reference.
 
 * `format` - TODO
 * `parse` - TODO
+* [`isFuture`](./src/is_future.js) - is passed date is future?
 
 ### Day helpers
 
