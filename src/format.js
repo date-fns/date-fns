@@ -1,64 +1,21 @@
 var startOfDay = require('./start_of_day');
 var startOfYear = require('./start_of_year');
 
-var format = function(date, format, locale) {
+/**
+ * Returns formatted date string in a given format
+ * @param {date|string} date
+ * @param {string} format
+ * @returns {string}
+ */
+var format = function(date, format) {
+  date = date instanceof Date ? date : new Date(date);
+
+  if (!format) {
+    format = 'YYYY-MM-DDTHH:mm:ss.SSSZ';
+  };
+
   var formatFunction = makeFormatFunction(format);
   return formatFunction(date);
-}
-
-var formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|X|zz?|ZZ?|.)/g
-
-function makeFormatFunction(format) {
-  var array = format.match(formattingTokens), i, length;
-
-  for (i = 0, length = array.length; i < length; i++) {
-    if (formats[array[i]]) {
-      array[i] = formats[array[i]];
-    } else {
-      array[i] = removeFormattingTokens(array[i]);
-    }
-  }
-
-  return function (mom) {
-    var output = '';
-    for (i = 0; i < length; i++) {
-      output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
-    }
-    return output;
-  };
-}
-
-function removeFormattingTokens(input) {
-  if (input.match(/\[[\s\S]/)) {
-    return input.replace(/^\[|\]$/g, '');
-  }
-  return input.replace(/\\/g, '');
-}
-
-function leftZeroFill(number, targetLength) {
-  var output = '' + Math.abs(number);
-
-  while (output.length < targetLength) {
-    output = '0' + output;
-  }
-  return output;
-}
-
-
-var locale = {
-  ordinal: function (number) {
-    var b = number % 10,
-      output = (+(number % 100 / 10) === 1) ? 'th' :
-      (b === 1) ? 'st' :
-      (b === 2) ? 'nd' :
-      (b === 3) ? 'rd' : 'th';
-    return number + output;
-  },
-  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-  monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
 }
 
 var formats = {
@@ -138,9 +95,17 @@ var formats = {
     return this.getSeconds();
   },
   'ss': function(){
-    return leftZeroFill(this.getSeconds());
+    return leftZeroFill(this.getSeconds(), 2);
+  },
+  'S': function(){
+    return this.getMilliseconds();
+  },
+  'SS': function(){
+    return leftZeroFill(this.getMilliseconds(), 2);
+  },
+  'SSS': function(){
+    return leftZeroFill(this.getMilliseconds(), 3);
   }
-
 }
 
 var ordinalFunctions = ['M', 'D', 'DDD', 'd'];
@@ -149,5 +114,61 @@ ordinalFunctions.forEach(function(functionName){
     return locale.ordinal(formats[functionName].apply(this));
   };
 });
+
+var formattingTokens = Object.keys(formats).sort().reverse();
+var formattingTokensRegexp = new RegExp('(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g');
+
+function makeFormatFunction(format) {
+  var array = format.match(formattingTokensRegexp), i, length;
+
+  for (i = 0, length = array.length; i < length; i++) {
+    if (formats[array[i]]) {
+      array[i] = formats[array[i]];
+    } else {
+      array[i] = removeFormattingTokens(array[i]);
+    }
+  }
+
+  return function (mom) {
+    var output = '';
+    for (i = 0; i < length; i++) {
+      output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+    }
+    return output;
+  };
+}
+
+function removeFormattingTokens(input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|\]$/g, '');
+  }
+  return input.replace(/\\/g, '');
+}
+
+function leftZeroFill(number, targetLength) {
+  var output = '' + Math.abs(number);
+
+  while (output.length < targetLength) {
+    output = '0' + output;
+  }
+  return output;
+}
+
+
+var locale = {
+  ordinal: function (number) {
+    var b = number % 10,
+      output = (+(number % 100 / 10) === 1) ? 'th' :
+      (b === 1) ? 'st' :
+      (b === 2) ? 'nd' :
+      (b === 3) ? 'rd' : 'th';
+    return number + output;
+  },
+  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+  dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  dayNamesMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+}
 
 module.exports = format;
