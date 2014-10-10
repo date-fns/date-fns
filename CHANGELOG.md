@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.9.0 (10 Oct 2014)
+
+* Additions:
+  - `isFuture`
+* Improvements:
+  - Simplify `isWeekend`
+
 ## v0.8.0 (9 Oct 2014)
 
 * Additions:
