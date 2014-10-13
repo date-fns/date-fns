@@ -49,21 +49,21 @@ describe('format', function() {
 
   describe('formatting day', function() {
     describe('with DDD', function() {
-      context('for first day of the year', function() {
+      context('for first day of a year', function() {
         it('returns correct day number', function() {
           var result = format(new Date(1992, 0, 1, 0, 0, 0, 0), 'DDD');
           expect(result).to.be.equal('1');
         });
       });
 
-      context('for last day of the year', function() {
+      context('for last day of a common year', function() {
         it('returns correct day number', function() {
           var lastDay = format(new Date(1986, 11, 31, 23, 59, 59, 999), 'DDD');
           expect(lastDay).to.be.equal('365');
         });
       });
 
-      context('for leap year', function() {
+      context('for last day of a leap year', function() {
         it('returns correct day number', function() {
           var result = format(new Date(1992, 11, 31, 23, 59, 59, 999), 'DDD');
           expect(result).to.be.equal('366');

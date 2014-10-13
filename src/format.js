@@ -1,6 +1,8 @@
 var startOfDay = require('./start_of_day');
 var startOfYear = require('./start_of_year');
 
+var NUMBER_OF_MS_IN_DAY = 864e5;
+
 /**
  * Returns formatted date string in a given format
  * @param {date|string} date
@@ -41,7 +43,9 @@ var formats = {
     return leftZeroFill(this.getDate(), 2);
   },
   'DDD': function() {
-    return Math.round((startOfDay(this) - startOfYear(this)) / 864e5) + 1;
+    var diffWithStartOfYear =
+      startOfDay(this).getTime() - startOfYear(this).getTime();
+    return diffWithStartOfYear / NUMBER_OF_MS_IN_DAY + 1;
   },
   'DDDD': function() {
     return leftZeroFill(formats['DDD'].apply(this), 3);
