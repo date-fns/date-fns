@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.10.0 (13 Oct 2014)
+
+* Additions:
+  - `format`
+  - `startOfYear`
+
 ## v0.9.0 (10 Oct 2014)
 
 * Additions:
