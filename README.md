@@ -29,6 +29,10 @@ Code is fully documented, checkout source for reference.
 * `parse` - TODO
 * [`isFuture`](./src/is_future.js) - is passed date is future?
 
+### Range helpers
+
+* [`isWithinRange`](./src/is_within_range.js) - is passed date is within range?
+
 ### Day helpers
 
 * [`isWeekend`](./src/is_weekend.js) - is passed date is weekend?
