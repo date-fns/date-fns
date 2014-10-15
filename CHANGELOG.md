@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.12.0 (15 Oct 2014)
+
+* Additions:
+  - `isSameYear`
+
 ## v0.11.0 (15 Oct 2014)
 
 * Additions:
