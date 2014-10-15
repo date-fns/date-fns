@@ -16,7 +16,7 @@ describe('isFuture', function() {
     expect(result).to.be.true;
   });
 
-  it('returns true if passed date is past', function() {
+  it('returns false if passed date is past', function() {
     var result = isFuture(new Date(2014, 8 /* Sep */, 1));
     expect(result).to.be.false;
   });
@@ -31,5 +31,4 @@ describe('isFuture', function() {
     expect(result).to.be.true;
   });
 });
-
 
