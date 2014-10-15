@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.11.0 (15 Oct 2014)
+
+* Additions:
+  - `isWithinRange`
+
 ## v0.10.0 (13 Oct 2014)
 
 * Additions:
