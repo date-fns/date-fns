@@ -63,6 +63,7 @@ Code is fully documented, checkout source for reference.
 ### Year helpers
 
 * [`setYear`](./src/set_year.js) - sets full year
+* [`isSameYear`](./src/is_same_year.js) - is passed dates has the same year?
 
 ### I18n
 
