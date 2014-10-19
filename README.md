@@ -25,9 +25,9 @@ Code is fully documented, checkout source for reference.
 
 ### Common helpers
 
-* `format` - TODO
-* `parse` - TODO
+* [`format`](./src/format.js) - format date
 * [`isFuture`](./src/is_future.js) - is passed date is future?
+* `parse` - TODO
 
 ### Range helpers
 

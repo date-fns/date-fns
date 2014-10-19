@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.12.1 (19 Oct 2014)
+
+* Bug fixes:
+  - Incorrect rounding in `DDD` formatter
+
 ## v0.12.0 (15 Oct 2014)
 
 * Additions:
