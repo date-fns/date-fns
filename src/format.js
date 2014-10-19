@@ -45,7 +45,7 @@ var formats = {
   'DDD': function() {
     var diffWithStartOfYear =
       startOfDay(this).getTime() - startOfYear(this).getTime();
-    return diffWithStartOfYear / NUMBER_OF_MS_IN_DAY + 1;
+    return Math.floor(diffWithStartOfYear / NUMBER_OF_MS_IN_DAY) + 1;
   },
   'DDDD': function() {
     return leftZeroFill(formats['DDD'].apply(this), 3);
