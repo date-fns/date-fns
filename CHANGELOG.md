@@ -7,6 +7,7 @@
   - `subMinutes`
   - `isEqual`
   - `isBefore`
+  - `isAfter`
 
 ## v0.12.1 (19 Oct 2014)
 
