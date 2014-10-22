@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.13.0 (Unreleased)
+## v0.13.0 (22 Oct 2014)
 
 * Additions:
   - `addMinutes`
