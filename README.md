@@ -27,6 +27,7 @@ Code is fully documented, checkout source for reference.
 
 * [`format`](./src/format.js) - format date
 * [`isFuture`](./src/is_future.js) - is passed date is future?
+* [`isEqual`](./src/is_equal.js) - is passed dates are equal?
 * `parse` - TODO
 
 ### Range helpers
