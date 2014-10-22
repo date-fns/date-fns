@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.13.0 (Unreleased)
+
+* Additions:
+  - `addMinutes`
+  - `subMinutes`
+
 ## v0.12.1 (19 Oct 2014)
 
 * Bug fixes:

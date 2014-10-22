@@ -33,6 +33,11 @@ Code is fully documented, checkout source for reference.
 
 * [`isWithinRange`](./src/is_within_range.js) - is passed date is within range?
 
+### Minutes helpers
+
+* [`addMinutes`](./src/add_minutes.js) - add minutes to passed date.
+* [`subMinutes`](./src/sub_minutes.js) - substracts minutes from passed date.
+
 ### Day helpers
 
 * [`isWeekend`](./src/is_weekend.js) - is passed date is weekend?
