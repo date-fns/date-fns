@@ -18,6 +18,8 @@
   "scripts": {
     "karmak": "karmak --webpack-config ./config/webpack.js --karma-config ./config/karma.js",
     "test": "npm run-script karmak -- --single-run",
-    "autotest": "npm run-script karmak"
+    "autotest": "npm run-script karmak",
+    "build": "webpack --config ./config/webpack.js"
   }
 }
+
