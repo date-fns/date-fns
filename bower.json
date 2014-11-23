@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "0.13.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/kossnocorp/date-fns",
   "authors": [
     "Sasha Koss <kossnocorp@gmail.com>"
