@@ -45,7 +45,35 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {var dateFns = {
-	  format: __webpack_require__(1)
+	  addDays: __webpack_require__(1),
+	  addMinutes: __webpack_require__(2),
+	  addMonths: __webpack_require__(3),
+	  eachDay: __webpack_require__(4),
+	  format: __webpack_require__(5),
+	  endOfDay: __webpack_require__(6),
+	  endOfMonth: __webpack_require__(7),
+	  endOfWeek: __webpack_require__(8),
+	  isAfter: __webpack_require__(9),
+	  isBefore: __webpack_require__(10),
+	  isEqual: __webpack_require__(11),
+	  isFirstDayOfMonth: __webpack_require__(12),
+	  isFuture: __webpack_require__(13),
+	  isLastDayOfMonth: __webpack_require__(14),
+	  isSameMonth: __webpack_require__(15),
+	  isSameWeek: __webpack_require__(16),
+	  isSameYear: __webpack_require__(17),
+	  isToday: __webpack_require__(18),
+	  isWeekend: __webpack_require__(19),
+	  isWithinRange: __webpack_require__(20),
+	  setMonth: __webpack_require__(21),
+	  setYear: __webpack_require__(22),
+	  startOfDay: __webpack_require__(23),
+	  startOfMonth: __webpack_require__(24),
+	  startOfWeek: __webpack_require__(25),
+	  startOfYear: __webpack_require__(26),
+	  subDays: __webpack_require__(27),
+	  subMinutes: __webpack_require__(28),
+	  subMonths: __webpack_require__(29)
 	};
 
 	if (module && module.exports) {
@@ -55,14 +83,103 @@
 	}
 
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30)(module)))
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(2);
-	var startOfYear = __webpack_require__(3);
+	/**
+	 * Adds specified number of days to passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount
+	 * @returns {date} new date
+	 */
+	var addDays = function(dirtyDate, amount) {
+	  var date = new Date(dirtyDate);
+	  date.setDate(date.getDate() + amount);
+	  return date;
+	};
+
+	module.exports = addDays;
+
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Adds specified number of munutes from passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount of minutes
+	 * @returns {date} new date
+	 */
+	var addMinutes = function(dirtyDate, amount) {
+	  var date = new Date(dirtyDate);
+	  date.setMinutes(date.getMinutes() + amount);
+	  return date;
+	};
+
+	module.exports = addMinutes;
+
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Adds specified number of months to passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount
+	 * @returns {date} new date
+	 */
+	var addMonths = function(dirtyDate, amount) {
+	  var date = new Date(dirtyDate);
+	  date.setMonth(date.getMonth() + amount);
+	  return date;
+	};
+
+	module.exports = addMonths;
+
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns array of dates withtin specified range.
+	 * @param {date|string} dirtyStart
+	 * @param {date|string} dirtyEnd
+	 * @returns {date[]}
+	 */
+	var eachDay = function(dirtyStart, dirtyEnd) {
+	  var endTime = new Date(dirtyEnd).getTime();
+	  var dates = [];
+
+	  var curDate = new Date(dirtyStart);
+	  curDate.setHours(0, 0, 0, 0);
+
+	  while (curDate.getTime() <= endTime) {
+	    dates.push(new Date(curDate));
+	    curDate.setDate(curDate.getDate() + 1);
+	  }
+
+	  return dates;
+	};
+
+	module.exports = eachDay;
+
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfDay = __webpack_require__(23);
+	var startOfYear = __webpack_require__(26);
 
 	var NUMBER_OF_MS_IN_DAY = 864e5;
 
@@ -248,7 +365,384 @@
 
 
 /***/ },
-/* 2 */
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns end of a day for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @returns {date}
+	 */
+	var endOfDay = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  date.setHours(23, 59, 59, 999);
+	  return date;
+	};
+
+	module.exports = endOfDay;
+
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns end of a month for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @returns {date}
+	 */
+	var endOfMonth = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  date.setHours(23, 59, 59, 999);
+	  date.setFullYear(date.getFullYear(), date.getMonth() + 1, 0);
+	  return date;
+	};
+
+	module.exports = endOfMonth;
+
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns end of a week for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
+	 * @returns {date}
+	 */
+	var endOfWeek = function(dirtyDate, weekStartsAt) {
+	  weekStartsAt = weekStartsAt || 0;
+
+	  var date = new Date(dirtyDate);
+	  var day = date.getDay();
+	  var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt);
+
+	  date.setHours(23, 59, 59, 999);
+	  date.setDate(date.getDate() + diff);
+	  return date;
+	};
+
+	module.exports = endOfWeek;
+
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is first date is after second one?
+	 * @param {date|string} dirtyDateToCompare
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 *
+	 * @example is 10 July 1989 is before 11 February 1987
+	 * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11));
+	 * //=> true
+	 */
+	var isBefore = function(dirtyDateToCompare, dirtyDate) {
+	  var dateToCompare = new Date(dirtyDateToCompare);
+	  var date = new Date(dirtyDate);
+	  return dateToCompare.getTime() > date.getTime();
+	};
+
+	module.exports = isBefore;
+
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is first date is before second one?
+	 * @param {date|string} dirtyDateToCompare
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 *
+	 * @example is 10 July 1989 is before 11 February 1987
+	 * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11));
+	 * //=> false
+	 */
+	var isBefore = function(dirtyDateToCompare, dirtyDate) {
+	  var dateToCompare = new Date(dirtyDateToCompare);
+	  var date = new Date(dirtyDate);
+	  return dateToCompare.getTime() < date.getTime();
+	};
+
+	module.exports = isBefore;
+
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed dates are equal?
+	 * @param {date|string} dirtyLeftDate
+	 * @param {date|string} dirtyRightDate
+	 * @returns {boolean}
+	 */
+	var isEqual = function(dirtyLeftDate, dirtyRightDate) {
+	  var dateLeft = new Date(dirtyLeftDate);
+	  var dateRight = new Date(dirtyRightDate);
+	  return dateLeft.getTime() == dateRight.getTime();
+	};
+
+	module.exports = isEqual;
+
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfDay = __webpack_require__(23);
+	var startOfMonth = __webpack_require__(7);
+
+	/**
+	 * Is passed date is first day of month?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isFirstDayOfMonth = function(dirtyDate) {
+	  return new Date(dirtyDate).getDate() == 1;
+	};
+
+	module.exports = isFirstDayOfMonth;
+
+
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed date is future?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isFuture = function(dirtyDate) {
+	  return new Date(dirtyDate).getTime() > new Date().getTime();
+	};
+
+	module.exports = isFuture;
+
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var endOfDay = __webpack_require__(6);
+	var endOfMonth = __webpack_require__(7);
+
+	/**
+	 * Is passed date is last day of month?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isLastDayOfMonth = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  return endOfDay(date).getTime() == endOfMonth(date).getTime();
+	};
+
+	module.exports = isLastDayOfMonth;
+
+
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed dates has the same month (and year)?
+	 * @param {date|string} dirtyDateLeft
+	 * @param {date|string} dirtyDateRight
+	 * @returns {boolean}
+	 */
+	var isSameMonth = function(dirtyDateLeft, dirtyDateRight) {
+	  var dateLeft = new Date(dirtyDateLeft);
+	  var dateRight = new Date(dirtyDateRight);
+	  return(
+	    dateLeft.getFullYear() == dateRight.getFullYear() &&
+	    dateLeft.getMonth() == dateRight.getMonth()
+	  );
+	};
+
+	module.exports = isSameMonth;
+
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfWeek = __webpack_require__(25);
+
+	/**
+	 * Is passed dates belongs to the same week?
+	 * @param {date|string} dirtyDateLeft
+	 * @param {date|string} dirtyDateRight
+	 * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
+	 * @returns {boolean}
+	 */
+	var isSameWeek = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
+	  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, weekStartsAt);
+	  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, weekStartsAt);
+
+	  return(
+	    dateLeftStartOfWeek.getTime() == dateRightStartOfWeek.getTime()
+	  );
+	};
+
+	module.exports = isSameWeek;
+
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed dates has the same year?
+	 * @param {date|string} dirtyDateLeft
+	 * @param {date|string} dirtyDateRight
+	 * @returns {boolean}
+	 */
+	var isSameYear = function(dirtyDateLeft, dirtyDateRight) {
+	  var dateLeft = new Date(dirtyDateLeft);
+	  var dateRight = new Date(dirtyDateRight);
+	  return dateLeft.getFullYear() == dateRight.getFullYear();
+	};
+
+	module.exports = isSameYear;
+
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfDay = __webpack_require__(23);
+
+	/**
+	 * Is passed date is today?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isToday = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  return startOfDay(date).getTime() == startOfDay(new Date()).getTime();
+	};
+
+	module.exports = isToday;
+
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed date is weekend?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isWeekend = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  var day = date.getDay();
+	  return day == 0 || day == 6;
+	};
+
+	module.exports = isWeekend;
+
+
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed date is within given range?
+	 * @param {date|string} dirtyDate
+	 * @param {date|string} dirtyStartDate
+	 * @param {date|string} dirtyEndDate
+	 * @returns {boolean}
+	 *
+	 * @example for date within the range
+	 * isWithinRange(
+	 *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
+	 * );
+	 * //=> true
+	 *
+	 * @example for date outside of the range
+	 * isWithinRange(
+	 *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
+	 * );
+	 * //=> false
+	 */
+	var isWithinRange = function(dirtyDate, dirtyStartDate, dirtyEndDate) {
+	  var date = new Date(dirtyDate);
+	  var time = date.getTime();
+	  return(
+	    time >= new Date(dirtyStartDate).getTime() &&
+	    time <= new Date(dirtyEndDate).getTime()
+	  );
+	};
+
+	module.exports = isWithinRange;
+
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Sets month index to passed date.
+	 * @param {date|string} dirtyDate
+	 * @param {number} monthIndex
+	 * @returns {date} (new date)
+	 */
+	var setMonth = function(dirtyDate, monthIndex) {
+	  var date = new Date(dirtyDate);
+	  date.setMonth(monthIndex);
+	  return date;
+	};
+
+	module.exports = setMonth;
+
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Sets year to passed date.
+	 * @param {date|string} dirtyDate
+	 * @param {number} fullYear
+	 * @returns {date} (new date)
+	 */
+	var setYear = function(dirtyDate, fullYear) {
+	  var date = new Date(dirtyDate);
+	  date.setFullYear(fullYear);
+	  return date;
+	};
+
+	module.exports = setYear;
+
+
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -267,7 +761,53 @@
 
 
 /***/ },
-/* 3 */
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns start of a month for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @returns {date}
+	 */
+	var startOfMonth = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  date.setHours(0, 0, 0, 0);
+	  date.setDate(1);
+	  return date;
+	};
+
+	module.exports = startOfMonth;
+
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns start of a week for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
+	 * @returns {date}
+	 */
+	var startOfWeek = function(dirtyDate, weekStartsAt) {
+	  weekStartsAt = weekStartsAt || 0;
+
+	  var date = new Date(dirtyDate);
+	  var day = date.getDay();
+	  var diff = (day < weekStartsAt ? 7 : 0) + day - weekStartsAt;
+
+	  date.setHours(0, 0, 0, 0);
+	  date.setDate(date.getDate() - diff);
+	  return date;
+	};
+
+	module.exports = startOfWeek;
+
+
+
+/***/ },
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -286,7 +826,67 @@
 
 
 /***/ },
-/* 4 */
+/* 27 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var addDays = __webpack_require__(1);
+
+	/**
+	 * Substract specified number of days from passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount
+	 * @returns {date} new date
+	 */
+	var subDays = function(dirtyDate, amount) {
+	  return addDays(dirtyDate, -amount);
+	};
+
+	module.exports = subDays;
+
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var addMinutes = __webpack_require__(2);
+
+	/**
+	 * Substract specified number of munutes from passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount of minutes
+	 * @returns {date} new date
+	 */
+	var subMinutes = function(dirtyDate, amount) {
+	  return addMinutes(dirtyDate, -amount);
+	};
+
+	module.exports = subMinutes;
+
+
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var addMonths = __webpack_require__(3);
+
+	/**
+	 * Substract specified number of month from passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount
+	 * @returns {date} new date
+	 */
+	var subMonths = function(dirtyDate, amount) {
+	  return addMonths(dirtyDate, -amount);
+	};
+
+	module.exports = subMonths;
+
+
+
+/***/ },
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(module) {
