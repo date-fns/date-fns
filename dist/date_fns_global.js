@@ -46,7 +46,7 @@
 
 	var dateFns = __webpack_require__(1);
 
-	window.dateFns = dateFnsGlobal;
+	window.dateFns = dateFns;
 
 
 /***/ },
