@@ -1,14 +1,9 @@
 # Changelog
 
-## v0.14.2 (4 Dec 2014)
+## v0.14.6 (4 Dec 2014)
 
 * Bug fixes:
   - Fix broken Bower support
-
-## v0.14.1 (23 Nov 2014)
-
-* Improvements:
-  - All of functions now
 
 ## v0.14.0 (5 Nov 2014)
 
