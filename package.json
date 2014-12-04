@@ -1,9 +1,9 @@
 {
   "name": "date-fns",
-  "version": "0.13.0",
+  "version": "0.14.2",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
-  "repository": "https://github.com/kossnocorp/date-fns",
+  "repository": "https://github.com/js-fns/date-fns",
   "engine": {
     "node": ">= 0.11"
   },
