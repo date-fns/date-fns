@@ -1,9 +1,9 @@
 {
   "name": "date-fns",
-  "version": "0.8.0",
+  "version": "0.14.5",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
-  "repository": "https://github.com/kossnocorp/date-fns",
+  "repository": "https://github.com/js-fns/date-fns",
   "engine": {
     "node": ">= 0.11"
   },
@@ -18,6 +18,8 @@
   "scripts": {
     "karmak": "karmak --webpack-config ./config/webpack.js --karma-config ./config/karma.js",
     "test": "npm run-script karmak -- --single-run",
-    "autotest": "npm run-script karmak"
+    "autotest": "npm run-script karmak",
+    "build": "webpack --config ./config/webpack.js"
   }
 }
+

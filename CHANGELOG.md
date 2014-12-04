@@ -1,5 +1,52 @@
 # Changelog
 
+## v0.14.6 (4 Dec 2014)
+
+* Bug fixes:
+  - Fix broken Bower support
+
+## v0.14.0 (5 Nov 2014)
+
+* Additions:
+  - Bower package
+
+## v0.13.0 (22 Oct 2014)
+
+* Additions:
+  - `addMinutes`
+  - `subMinutes`
+  - `isEqual`
+  - `isBefore`
+  - `isAfter`
+
+## v0.12.1 (19 Oct 2014)
+
+* Bug fixes:
+  - Incorrect rounding in `DDD` formatter
+
+## v0.12.0 (15 Oct 2014)
+
+* Additions:
+  - `isSameYear`
+
+## v0.11.0 (15 Oct 2014)
+
+* Additions:
+  - `isWithinRange`
+
+## v0.10.0 (13 Oct 2014)
+
+* Additions:
+  - `format`
+  - `startOfYear`
+
+## v0.9.0 (10 Oct 2014)
+
+* Additions:
+  - `isFuture`
+* Improvements:
+  - Simplify `isWeekend`
+
 ## v0.8.0 (9 Oct 2014)
 
 * Additions:
