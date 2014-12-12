@@ -12,7 +12,7 @@
     "karma-chai-sinon": "^0.1.3",
     "karma-mocha": "^0.1.9",
     "karma-phantomjs-launcher": "^0.1.4",
-    "karmak": "git+https://github.com/kossnocorp/karmak.git#80337f9c86dd7b7bba6b43efb4f23fab8ab73ace",
+    "karmak": "^0.2.1",
     "webpack": "^1.4.4"
   },
   "scripts": {
