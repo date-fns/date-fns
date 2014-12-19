@@ -1,6 +1,6 @@
 # date-fns
 [![](http://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns)
-[![Build Status](https://travis-ci.org/kossnocorp/date-fns.svg)](https://travis-ci.org/kossnocorp/date-fns)
+[![Build Status](https://travis-ci.org/js-fns/date-fns.svg)](https://travis-ci.org/js-fns/date-fns)
 
 Date helpers in function-per-file style.
 
