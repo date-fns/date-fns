@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "0.14.7",
+  "version": "0.14.8",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
   "repository": "https://github.com/js-fns/date-fns",
