@@ -114,6 +114,16 @@ describe('format', function() {
     it('am/pm', function() {
       expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 am');
     });
+
+    it('12 pm', function() {
+      var date = new Date(1986, 3, 4, 12, 00, 0, 900);
+      expect(format(date, 'hh:mm a')).to.be.equal('12:00 pm');
+    });
+
+    it('12 am', function() {
+      var date = new Date(1986, 3, 4, 00, 00, 0, 900);
+      expect(format(date, 'h:mm a')).to.be.equal('0:00 am');
+    });
   });
 
   describe('seconds', function() {

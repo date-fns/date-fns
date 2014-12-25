@@ -84,16 +84,17 @@ var formats = {
     return leftZeroFill(this.getHours(), 2);
   },
   'h': function() {
-    return this.getHours() % 12;
+    var hours = this.getHours();
+    return hours > 12 ? hours % 12 : hours;
   },
   'hh': function() {
-    return leftZeroFill(this.getHours() % 12, 2);
+    return leftZeroFill(formats['h'].apply(this), 2);
   },
   'm': function() {
     return this.getMinutes();
   },
   'mm': function() {
-    return leftZeroFill(this.getMinutes());
+    return leftZeroFill(this.getMinutes(), 2);
   },
   's': function() {
     return this.getSeconds();
