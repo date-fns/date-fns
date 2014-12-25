@@ -1,4 +1,14 @@
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define(factory);
+	else if(typeof exports === 'object')
+		exports["dateFns"] = factory();
+	else
+		root["dateFns"] = factory();
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -44,7 +54,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(module) {var dateFns = {
+	var dateFns = {
 	  addDays: __webpack_require__(1),
 	  addMinutes: __webpack_require__(2),
 	  addMonths: __webpack_require__(3),
@@ -76,14 +86,8 @@
 	  subMonths: __webpack_require__(29)
 	};
 
-	if (module && module.exports) {
-	  module.exports = dateFns;
-	} else {
-	  window.dateFns = dateFns;
-	}
+	module.exports = dateFns;
 
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30)(module)))
 
 /***/ },
 /* 1 */
@@ -98,6 +102,12 @@
 	var addDays = function(dirtyDate, amount) {
 	  var date = new Date(dirtyDate);
 	  date.setDate(date.getDate() + amount);
+	  /**
+	   * add additional 5 hours to get next day,
+	   * because of possible troubles with daylight savings dates
+	   */
+	  date = new Date(date.setTime(date.getTime() + 5 * 60 * 60 * 1000));
+	  date = new Date(date.setHours(0, 0, 0, 0));
 	  return date;
 	};
 
@@ -158,13 +168,23 @@
 	var eachDay = function(dirtyStart, dirtyEnd) {
 	  var endTime = new Date(dirtyEnd).getTime();
 	  var dates = [];
+	  var tmpDate;
 
 	  var curDate = new Date(dirtyStart);
 	  curDate.setHours(0, 0, 0, 0);
 
 	  while (curDate.getTime() <= endTime) {
 	    dates.push(new Date(curDate));
+
 	    curDate.setDate(curDate.getDate() + 1);
+
+	    /**
+	     * add additional 5 hours to get next day,
+	     * because of possible troubles with daylight savings dates
+	     */
+	    tmpDate = new Date(curDate.setTime(curDate.getTime() + 5 * 60 * 60 * 1000));
+	    tmpDate = new Date(tmpDate.setHours(0, 0, 0, 0));
+	    curDate = tmpDate;
 	  }
 
 	  return dates;
@@ -885,21 +905,6 @@
 
 
 
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = function(module) {
-		if(!module.webpackPolyfill) {
-			module.deprecate = function() {};
-			module.paths = [];
-			// module.parent = undefined by default
-			module.children = [];
-			module.webpackPolyfill = 1;
-		}
-		return module;
-	}
-
-
 /***/ }
 /******/ ])
+});

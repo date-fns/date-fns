@@ -30,9 +30,4 @@ var dateFns = {
   subMonths: require('./sub_months')
 };
 
-if (module && module.exports) {
-  module.exports = dateFns;
-} else {
-  window.dateFns = dateFns;
-}
-
+module.exports = dateFns;
