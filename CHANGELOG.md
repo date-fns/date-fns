@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.14.8 (25 Dec 2014)
+
+* Bug fixes:
+  - `format` function now behaves correctly with `pm`/`am`
+
 ## v0.14.6 (4 Dec 2014)
 
 * Bug fixes:
