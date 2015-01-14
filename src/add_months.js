@@ -6,7 +6,11 @@
  */
 var addMonths = function(dirtyDate, amount) {
   var date = new Date(dirtyDate);
-  date.setMonth(date.getMonth() + amount);
+  var desiredMonth = date.getMonth() + amount;
+  var daysInDesiredMonth = new Date(Date.UTC(date.getFullYear(), desiredMonth + 1, 0)).getUTCDate();
+
+  date.setDate(Math.min(daysInDesiredMonth, date.getDate()));
+  date.setMonth(desiredMonth);
   return date;
 };
 

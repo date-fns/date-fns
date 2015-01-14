@@ -16,5 +16,11 @@ describe('addMonths', function() {
     addMonths(date, 12);
     expect(date).to.be.eql(new Date(2014, 8 /* Sep */, 1));
   });
+
+  it('works well when desired month have less days and provided date is on the last day of month', function() {
+    var date = new Date(2014, 11 /* Dec */, 31);
+    var result = addMonths(date, 2);
+    expect(result).to.be.eql(new Date(2015, 1 /* Feb */, 28));
+  });
 });
 
