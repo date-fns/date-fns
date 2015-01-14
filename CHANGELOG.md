@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.14.9 (14 Jan 2015)
+
+* Bug fixes:
+  - `addMonths` now correctly behaves with febrary (see [#18](https://github.com/js-fns/date-fns/pull/18))
+
 ## v0.14.8 (25 Dec 2014)
 
 * Bug fixes:
