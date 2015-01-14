@@ -147,7 +147,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var addMonths = function(dirtyDate, amount) {
 	  var date = new Date(dirtyDate);
-	  date.setMonth(date.getMonth() + amount);
+	  var desiredMonth = date.getMonth() + amount;
+	  var daysInDesiredMonth = new Date(Date.UTC(date.getFullYear(), desiredMonth + 1, 0)).getUTCDate();
+
+	  date.setDate(Math.min(daysInDesiredMonth, date.getDate()));
+	  date.setMonth(desiredMonth);
 	  return date;
 	};
 
@@ -284,16 +288,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return leftZeroFill(this.getHours(), 2);
 	  },
 	  'h': function() {
-	    return this.getHours() % 12;
+	    var hours = this.getHours();
+	    return hours > 12 ? hours % 12 : hours;
 	  },
 	  'hh': function() {
-	    return leftZeroFill(this.getHours() % 12, 2);
+	    return leftZeroFill(formats['h'].apply(this), 2);
 	  },
 	  'm': function() {
 	    return this.getMinutes();
 	  },
 	  'mm': function() {
-	    return leftZeroFill(this.getMinutes());
+	    return leftZeroFill(this.getMinutes(), 2);
 	  },
 	  's': function() {
 	    return this.getSeconds();
