@@ -11,3 +11,4 @@ var addHours = function(dirtyDate, amount) {
 };
 
 module.exports = addHours;
+

@@ -11,3 +11,4 @@ var subHours = function(dirtyDate, amount) {
 };
 
 module.exports = subHours;
+

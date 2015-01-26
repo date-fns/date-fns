@@ -19,3 +19,4 @@ describe('subHours', function() {
     expect(date).to.be.eql(new Date(2014, 6 /* Jul */, 10, 23, 0));
   });
 });
+
