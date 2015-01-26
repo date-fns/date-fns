@@ -4,7 +4,6 @@
  * @param {date|string} dirtyDateRight
  * @returns {number}
  */
-
 var compareDesc = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeft = new Date(dirtyDateLeft);
   var timeLeft = dateLeft.getTime();
@@ -23,3 +22,4 @@ var compareDesc = function(dirtyDateLeft, dirtyDateRight) {
 };
 
 module.exports = compareDesc;
+

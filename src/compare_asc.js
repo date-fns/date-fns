@@ -22,3 +22,4 @@ var compareAsc = function(dirtyDateLeft, dirtyDateRight) {
 };
 
 module.exports = compareAsc;
+

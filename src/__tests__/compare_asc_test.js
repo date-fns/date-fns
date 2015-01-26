@@ -51,3 +51,4 @@ describe('compareAsc', function() {
     expect(result).to.equal(-1);
   });
 });
+
