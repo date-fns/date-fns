@@ -207,7 +207,7 @@ var setFloatTime = function(dirtyDate, hours, minutes, seconds) {
   var calculatedSeconds = seconds || calculatedMinutes % 1 * 60;
   var calculatedMilliseconds = calculatedSeconds % 1 * 1000;
 
-  date.setHours(hours % 24);
+  date.setHours(calculatedHours);
   date.setMinutes(calculatedMinutes);
   date.setSeconds(calculatedSeconds);
   date.setMilliseconds(calculatedMilliseconds);
