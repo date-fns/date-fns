@@ -129,20 +129,19 @@ var parseDate = function(dateString) {
 
 var parseTime = function(dirtyDate, timeString) {
   var token;
-  var hours;
-  var minutes;
-  var seconds;
   var date = new Date(dirtyDate);
 
   // hh
   if (token = parseTokenHH.exec(timeString)) {
     var hours = parseFloat(token[1].replace(',', '.'));
+    return setFloatTime(date, hours);
   }
 
   // hh:mm or hhmm
   else if (token = parseTokenHHMM.exec(timeString)) {
     var hours = parseInt(token[1], 10);
     var minutes = parseFloat(token[2].replace(',', '.'));
+    return setFloatTime(date, hours, minutes);
   }
 
   // hh:mm:ss or hhmmss
@@ -150,9 +149,13 @@ var parseTime = function(dirtyDate, timeString) {
     var hours = parseInt(token[1], 10);
     var minutes = parseInt(token[2], 10);
     var seconds = parseFloat(token[3].replace(',', '.'));
+    return setFloatTime(date, hours, minutes, seconds)
   }
 
-  return setFloatTime(date, hours, minutes, seconds);
+  // invalid ISO-formated time
+  else {
+    return date;
+  }
 };
 
 var parseTimezone = function(dirtyDate, timezoneString) {
