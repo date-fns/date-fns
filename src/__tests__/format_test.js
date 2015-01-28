@@ -122,7 +122,7 @@ describe('format', function() {
 
     it('12 am', function() {
       var date = new Date(1986, 3, 4, 00, 00, 0, 900);
-      expect(format(date, 'h:mm a')).to.be.equal('0:00 am');
+      expect(format(date, 'h:mm a')).to.be.equal('12:00 am');
     });
   });
 
