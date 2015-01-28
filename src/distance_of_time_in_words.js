@@ -94,7 +94,7 @@ var distanceOfTimeInWords = function(dirtyDateFrom, dirtyDateTo, includeSeconds)
 
   // 1 year up to max Date
   else {
-    var leapMinutes = countLeapYears(dateFrom, dateTo) * MINUTES_IN_DAY
+    var leapMinutes = countLeapYears(dateFrom, dateTo) * MINUTES_IN_DAY;
     var distanceOfMinutesWithOffset = distanceInMinutes - leapMinutes;
     var remainder = distanceOfMinutesWithOffset % MINUTES_IN_YEAR;
     var distanceInYears = Math.floor(distanceOfMinutesWithOffset / MINUTES_IN_YEAR);
