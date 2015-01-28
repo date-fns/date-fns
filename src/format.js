@@ -85,7 +85,8 @@ var formats = {
   },
   'h': function() {
     var hours = this.getHours();
-    return hours > 12 ? hours % 12 : hours;
+    return hours == 0 ? 12 :
+           hours > 12 ? hours % 12 : hours;
   },
   'hh': function() {
     return leftZeroFill(formats['h'].apply(this), 2);
