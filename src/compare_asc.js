@@ -12,13 +12,11 @@ var compareAsc = function(dirtyDateLeft, dirtyDateRight) {
 
   if (timeLeft < timeRight) {
     return -1;
-  }
-
-  if (timeLeft > timeRight) {
+  } else if (timeLeft > timeRight) {
     return 1;
+  } else {
+    return 0;
   }
-
-  return 0;
 };
 
 module.exports = compareAsc;
