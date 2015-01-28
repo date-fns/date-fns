@@ -86,7 +86,7 @@ describe('distanceOfTimeInWords', function() {
       expect(result).to.be.equal('3 minutes');
     });
   });
-  
+
   describe('hours', function() {
     it('about 1 hour', function() {
       var result = distanceOfTimeInWords(
@@ -104,7 +104,7 @@ describe('distanceOfTimeInWords', function() {
       expect(result).to.be.equal('about 3 hours');
     });
   });
-  
+
   describe('days', function() {
     it('1 day', function() {
       var result = distanceOfTimeInWords(

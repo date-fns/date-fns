@@ -23,7 +23,7 @@ var distanceOfTimeInWords = function(dirtyDateFrom, dirtyDateTo, includeSeconds)
     var dateFrom = new Date(dirtyDateTo);
     var dateTo = new Date(dirtyDateFrom);
   }
-  
+
   var distanceInMilliseconds = Math.abs(dateTo.valueOf() - dateFrom.valueOf());
   var distanceInSeconds = Math.floor(distanceInMilliseconds / 1000);
   var distanceInMinutes = Math.round(distanceInSeconds / 60);
@@ -46,13 +46,13 @@ var distanceOfTimeInWords = function(dirtyDateFrom, dirtyDateTo, includeSeconds)
       }
     } else {
       if (distanceInMinutes == 0) {
-        return translate('lessThanXMinutes', 1); 
+        return translate('lessThanXMinutes', 1);
       } else {
         return translate('xMinutes', distanceInMinutes);
       }
     }
   }
-  
+
   // 2 mins up to 0.75 hrs
   else if (distanceInMinutes < 45) {
     return translate('xMinutes', distanceInMinutes);
