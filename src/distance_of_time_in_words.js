@@ -143,11 +143,11 @@ var countLeapYears = function(dirtyDateFrom, dirtyDateTo) {
   }
 
   return leapYears;
-}
+};
 
 var isLeapYear = function(year) {
   return new Date(year, 1, 29).getMonth() == 1;
-}
+};
 
 var locale = {
   lessThanXSeconds: {
@@ -191,7 +191,7 @@ var locale = {
     one: 'almost 1 year',
     other: 'almost %{count} years'
   }
-}
+};
 
 var translate = function(token, count) {
   if (count == 1) {
@@ -201,7 +201,7 @@ var translate = function(token, count) {
   } else {
     return locale[token];
   }
-}
+};
 
 module.exports = distanceOfTimeInWords;
 

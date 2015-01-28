@@ -8,7 +8,7 @@ var distanceOfTimeInWords = require('./distance_of_time_in_words');
  */
 var timeAgoInWords = function(dirtyDate, includeSeconds) {
   return distanceOfTimeInWords(dirtyDate, Date.now(), includeSeconds);
-}
+};
 
 module.exports = timeAgoInWords;
 
