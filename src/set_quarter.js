@@ -6,9 +6,9 @@
  */
 var setQuarter = function(dirtyDate, quarter) {
   var date = new Date(dirtyDate);
-  var oldQuarter = Math.floor(date.getMonth()/3) + 1;
+  var oldQuarter = Math.floor(date.getMonth() / 3) + 1;
   var diff = quarter - oldQuarter;
-  date.setMonth(date.getMonth() + diff*3);
+  date.setMonth(date.getMonth() + diff * 3);
   return date;
 };
 
