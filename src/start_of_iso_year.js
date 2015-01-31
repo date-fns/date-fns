@@ -19,7 +19,7 @@ var startOfISOYear = function(dirtyDate) {
   } else {
     return startOfWeek(new Date(date.getFullYear() - 1, 0, 4), 1);
   }
-}
+};
 
 module.exports = startOfISOYear;
 

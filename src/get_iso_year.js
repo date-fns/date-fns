@@ -19,7 +19,7 @@ var getISOYear = function(dirtyDate) {
   } else {
     return year - 1;
   }
-}
+};
 
 module.exports = getISOYear;
 
