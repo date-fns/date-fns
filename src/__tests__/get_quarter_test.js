@@ -10,5 +10,10 @@ describe('getQuarter', function() {
     var result = getQuarter(new Date(2014, 3 /* Apr */, 2).toISOString());
     expect(result).to.be.equal(2);
   });
+
+  it('accepts timestamp', function() {
+    var result = getQuarter(new Date(2014, 3 /* Apr */, 2).getTime());
+    expect(result).to.be.equal(2);
+  });
 });
 
