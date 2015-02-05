@@ -75,7 +75,7 @@ var formats = {
     return (this.getHours() / 12) >= 1 ? 'PM' : 'AM';
   },
   'a': function() {
-    return (this.getHours() / 12) >= 1 ? 'pm' : 'am';
+    return (this.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.';
   },
   'H': function() {
     return this.getHours();
