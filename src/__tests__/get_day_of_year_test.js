@@ -10,5 +10,10 @@ describe('getDayOfYear', function() {
     var result = getDayOfYear(new Date(2014, 0 /* Jan */, 2).toISOString());
     expect(result).to.be.equal(2);
   });
+
+  it('accepts timestamp', function() {
+    var result = getDayOfYear(new Date(2014, 0 /* Jan */, 2).getTime());
+    expect(result).to.be.equal(2);
+  });
 });
 

@@ -11,7 +11,12 @@ describe('setDayOfYear', function() {
     expect(result).to.be.eql(new Date(2014, 2 /* Mar */, 1));
   });
 
-  it('do not mutates original date', function() {
+  it('accepts timestamp', function() {
+    var result = setDayOfYear(new Date(2014, 6 /* Jul */, 2).getTime(), 60);
+    expect(result).to.be.eql(new Date(2014, 2 /* Mar */, 1));
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date(2014, 6 /* Jul */, 2);
     setDayOfYear(date, 365);
     expect(date).to.be.eql(new Date(2014, 6 /* Jul */, 2));
