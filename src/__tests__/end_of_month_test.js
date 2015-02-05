@@ -17,7 +17,15 @@ describe('endOfMonth', function() {
     );
   });
 
-  it('do not mutates original date', function() {
+  it('accepts timestamp', function() {
+    var date = new Date('2014-09-02T11:55:00').getTime();
+    var result = endOfMonth(date);
+    expect(result).to.be.eql(
+      new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999)
+    );
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date('2014-09-02T11:55:00');
     endOfMonth(date);
     expect(date).to.be.eql(new Date('2014-09-02T11:55:00'));

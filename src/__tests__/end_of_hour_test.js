@@ -12,6 +12,11 @@ describe('endOfHour', function () {
     expect(result).to.be.eql(new Date(Date.UTC(2014, 11, 1, 13, 59, 59, 999)));
   });
 
+  it('supports timestamp as a date', function () {
+    var result = endOfHour(new Date(2014, 11, 1, 22, 15).getTime());
+    expect(result).to.be.eql(new Date(2014, 11, 1, 22, 59, 59, 999));
+  });
+
   it('does not mutate original date', function () {
     var date = new Date(2014, 11, 1, 22, 15);
     endOfHour(date);

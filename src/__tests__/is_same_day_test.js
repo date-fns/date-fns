@@ -24,5 +24,13 @@ describe('isSameDay', function() {
     );
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isSameDay(
+      new Date(2014, 8 /* Sep */, 4, 6, 0).getTime(),
+      new Date(2014, 8 /* Sep */, 4, 18, 0).getTime()
+    );
+    expect(result).to.be.true;
+  });
 });
 

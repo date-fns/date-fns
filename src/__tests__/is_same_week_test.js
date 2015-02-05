@@ -33,5 +33,13 @@ describe('isSameWeek', function() {
     );
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isSameWeek(
+      new Date(2014, 7 /* Aug */, 31).getTime(),
+      new Date(2014, 8 /* Sep */, 4).getTime()
+    );
+    expect(result).to.be.true;
+  });
 });
 

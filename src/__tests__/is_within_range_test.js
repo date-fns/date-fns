@@ -45,5 +45,14 @@ describe('isWithinRange', function() {
     );
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isWithinRange(
+      new Date(2014, 9 /* Oct */, 31).getTime(),
+      new Date(2014, 8 /* Sep */, 1).getTime(),
+      new Date(2014, 11 /* Dec */, 31).getTime()
+    );
+    expect(result).to.be.true;
+  });
 });
 

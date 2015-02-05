@@ -9,10 +9,16 @@ describe('startOfHour', function() {
     );
   });
 
-  it('do not mutates original date', function() {
+  it('does not mutate original date', function() {
     var date = new Date('2014-09-02T11:55:00');
     startOfHour(date);
     expect(date).to.be.eql(new Date('2014-09-02T11:55:00'));
+  });
+
+  it('accepts timestamp as a date', function(){
+    var date = new Date('2014-09-02T11:55:00').getTime();
+    var result = startOfHour(date);
+    expect(result).to.be.eql(new Date('2014-09-02T11:00:00'));
   });
 
   it('accepts string as a date', function(){

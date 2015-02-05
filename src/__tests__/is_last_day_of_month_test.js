@@ -16,5 +16,11 @@ describe('isLastDayOfMonth', function() {
     var result = isLastDayOfMonth(date);
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var date = new Date(2014, 9 /* Oct */, 31).getTime();
+    var result = isLastDayOfMonth(date);
+    expect(result).to.be.true;
+  });
 });
 

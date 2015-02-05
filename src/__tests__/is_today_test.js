@@ -25,5 +25,10 @@ describe('isToday', function() {
     var result = isToday(new Date(2014, 8 /* starts from 0 */, 25).toString());
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isToday(new Date(2014, 8 /* starts from 0 */, 25).getTime());
+    expect(result).to.be.true;
+  });
 });
 
