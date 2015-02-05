@@ -11,7 +11,12 @@ describe('setQuarter', function() {
     expect(result).to.be.eql(new Date(2014, 9 /* Oct */, 1));
   });
 
-  it('do not mutates original date', function() {
+  it('accepts timestamp', function() {
+    var result = setQuarter(new Date(2014, 6 /* Jul */, 1).getTime(), 4);
+    expect(result).to.be.eql(new Date(2014, 9 /* Oct */, 1));
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date(2014, 6 /* Jul */, 1);
     setQuarter(date, 2);
     expect(date).to.be.eql(new Date(2014, 6 /* Jul */, 1));
