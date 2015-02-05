@@ -10,5 +10,10 @@ describe('getISOWeek', function() {
     var result = getISOWeek(new Date(2008, 11 /* Dec */, 29).toISOString());
     expect(result).to.equal(1);
   });
+
+  it('allows to pass timestamp', function() {
+    var result = getISOWeek(new Date(2008, 11 /* Dec */, 29).getTime());
+    expect(result).to.equal(1);
+  });
 });
 

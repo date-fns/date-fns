@@ -11,7 +11,12 @@ describe('setISOWeek', function() {
     expect(result).to.be.eql(new Date(2008, 11 /* Dec */, 31));
   });
 
-  it('do not mutates original date', function() {
+  it('allows to pass timestamp', function() {
+    var result = setISOWeek(new Date(2009, 11 /* Dec */, 2).getTime(), 1);
+    expect(result).to.be.eql(new Date(2008, 11 /* Dec */, 31));
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date(2014, 6 /* Jul */, 2);
     setISOWeek(date, 52);
     expect(date).to.be.eql(new Date(2014, 6 /* Jul */, 2));

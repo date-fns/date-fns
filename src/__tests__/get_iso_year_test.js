@@ -10,5 +10,10 @@ describe('getISOYear', function() {
     var result = getISOYear(new Date(2005, 0 /* Jan */, 1).toISOString());
     expect(result).to.equal(2004);
   });
+
+  it('allows to pass timestamp', function() {
+    var result = getISOYear(new Date(2005, 0 /* Jan */, 1).getTime());
+    expect(result).to.equal(2004);
+  });
 });
 
