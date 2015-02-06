@@ -2,7 +2,7 @@ var startOfDay = require('./start_of_day');
 var startOfMonth = require('./end_of_month');
 
 /**
- * Is passed date is first day of month?
+ * Is passed date first day of month?
  * @param {date|string} dirtyDate
  * @returns {boolean}
  */

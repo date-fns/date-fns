@@ -1,7 +1,7 @@
 var startOfDay = require('./start_of_day');
 
 /**
- * Is passed dates has the same day?
+ * Are passed dates has the same day?
  * @param {date|string} dirtyDateLeft
  * @param {date|string} dirtyDateRight
  * @returns {boolean}

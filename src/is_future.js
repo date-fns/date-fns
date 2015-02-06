@@ -1,5 +1,5 @@
 /**
- * Is passed date is future?
+ * Is passed date future?
  * @param {date|string} dirtyDate
  * @returns {boolean}
  */

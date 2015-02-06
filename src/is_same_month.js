@@ -1,5 +1,5 @@
 /**
- * Is passed dates has the same month (and year)?
+ * Are passed dates has the same month (and year)?
  * @param {date|string} dirtyDateLeft
  * @param {date|string} dirtyDateRight
  * @returns {boolean}

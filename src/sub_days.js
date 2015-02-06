@@ -1,7 +1,7 @@
 var addDays = require('./add_days');
 
 /**
- * Substract specified number of days from passed date.
+ * Subtracts specified number of days from passed date.
  * @param {data|string} dirtyDate
  * @param {number} amount
  * @returns {date} new date

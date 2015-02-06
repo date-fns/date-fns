@@ -1,5 +1,5 @@
 /**
- * Is passed date is within given range?
+ * Is passed date within given range?
  * @param {date|string} dirtyDate
  * @param {date|string} dirtyStartDate
  * @param {date|string} dirtyEndDate

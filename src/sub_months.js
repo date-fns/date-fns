@@ -1,7 +1,7 @@
 var addMonths = require('./add_months');
 
 /**
- * Substract specified number of month from passed date.
+ * Subtracts specified number of month from passed date.
  * @param {data|string} dirtyDate
  * @param {number} amount
  * @returns {date} new date
