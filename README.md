@@ -79,6 +79,11 @@ Code is fully documented, checkout source for reference.
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - return true if passed date is last day of month.
 * [`setMonth`](./src/set_month.js) - sets month index.
 
+### Quarter helpers
+
+* [`getQuarter`](./src/get_quarter.js) - returns year quarter.
+* [`setQuarter`](./src/set_quarter.js) - sets year quarter.
+
 ### Year helpers
 
 * [`getISOYear`](./src/get_iso_year.js) - returns ISO week-numbering year.
