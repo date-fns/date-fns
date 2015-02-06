@@ -11,6 +11,7 @@ var dateFns = {
   endOfMonth: require('./end_of_month'),
   endOfWeek: require('./end_of_week'),
   format: require('./format'),
+  getDayOfYear: require('./getDayOfYear'),
   getISOWeek: require('./get_iso_week'),
   getISOYear: require('./get_iso_year'),
   isAfter: require('./is_after'),
@@ -26,9 +27,13 @@ var dateFns = {
   isToday: require('./is_today'),
   isWeekend: require('./is_weekend'),
   isWithinRange: require('./is_within_range'),
+<<<<<<< HEAD
   parse: require('./parse'),
   setISOWeek: require('./set_iso_week'),
   setISOYear: require('./set_iso_year'),
+=======
+  setDayOfYear: require('./set_day_of_year'),
+>>>>>>> Update README for day of year functions
   setMonth: require('./set_month'),
   setYear: require('./set_year'),
   startOfDay: require('./start_of_day'),

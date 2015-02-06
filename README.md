@@ -51,6 +51,8 @@ Code is fully documented, checkout source for reference.
 
 ### Day helpers
 
+* [`getDayOfYear`](./src/get_day_of_year.js) - returns day of year.
+* [`setDayOfYear`](./src/set_day_of_year.js) - sets day of year.
 * [`isWeekend`](./src/is_weekend.js) - is passed date weekend?
 * [`isToday`](./src/is_today.js) - is passed date today?
 * [`startOfDay`](./src/start_of_day.js) - returns start of a day for passed date.
@@ -58,7 +60,7 @@ Code is fully documented, checkout source for reference.
 * [`addDays`](./src/add_days.js) - add specified number of days to passed date.
 * [`subDays`](./src/sub_days.js) - subtract specified number of days from passed date.
 * [`eachDay`](./src/each_day.js) - returns array of dates within specified range.
-* [`isSameDay`](./src/is_same_day.js) - are parssed dates has the same day?
+* [`isSameDay`](./src/is_same_day.js) - are passed dates has the same day?
 
 ### Week helpers
 
