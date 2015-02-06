@@ -1,6 +1,13 @@
 var parse = require('../parse');
 
 describe('parse', function() {
+  describe('failure', function() {
+    it('returns null if there is no date in string', function() {
+      var result = parse('foobarTbaz');
+      expect(result).to.be.null;
+    });
+  });
+
   describe('year', function() {
     it('parses YYYY', function() {
       var result = parse('2014');
@@ -127,18 +134,14 @@ describe('parse', function() {
   });
 
   describe('plain time', function() {
-    it('parses plain time', function() {
+    it('returns number of milliseconds', function() {
       var result = parse('21:05:30');
-      expect(result.getHours()).to.be.equal(21);
-      expect(result.getMinutes()).to.be.equal(5);
-      expect(result.getSeconds()).to.be.equal(30);
+      expect(result).to.be.equal(75930000);
     });
 
     it('parses float plain time', function() {
       var result = parse('21:05.5');
-      expect(result.getHours()).to.be.equal(21);
-      expect(result.getMinutes()).to.be.equal(5);
-      expect(result.getSeconds()).to.be.equal(30);
+      expect(result).to.be.equal(75930000);
     });
   });
 });

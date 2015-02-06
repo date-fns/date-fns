@@ -35,17 +35,29 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/;
  */
 var parse = function(dateStr) {
   var dateStrings = splitDateString(dateStr);
-  var parsedDate = parseDate(dateStrings.date);
 
-  if (dateStrings.time) {
-    parsedDate = parseTime(parsedDate, dateStrings.time);
-
-    if (dateStrings.timezone) {
-      parsedDate = parseTimezone(parsedDate, dateStrings.timezone);
-    }
+  if (dateStrings.date) {
+    var date = parseDate(dateStrings.date);
   }
 
-  return parsedDate;
+  if (dateStrings.time) {
+    var time = parseTime(dateStrings.time);
+
+    if (date) {
+      date = addMilliseconds(date, time);
+
+      if (dateStrings.timezone) {
+        var offset = parseTimezone(dateStrings.timezone);
+        date = addMinutes(date, -date.getTimezoneOffset() - offset);
+      }
+
+      return date;
+    } else {
+      return time;
+    }
+  } else {
+    return date;
+  }
 };
 
 
@@ -123,25 +135,28 @@ var parseDate = function(dateString) {
 
   // invalid ISO-formated date
   else {
-    return new Date();
+    return null;
   }
 };
 
-var parseTime = function(dirtyDate, timeString) {
+var MILLISECONDS_IN_HOUR = 3600000;
+var MILLISECONDS_IN_MINUTE = 60000;
+
+var parseTime = function(timeString) {
   var token;
-  var date = new Date(dirtyDate);
 
   // hh
   if (token = parseTokenHH.exec(timeString)) {
     var hours = parseFloat(token[1].replace(',', '.'));
-    return setFloatTime(date, hours);
+    return (hours % 24) * MILLISECONDS_IN_HOUR;
   }
 
   // hh:mm or hhmm
   else if (token = parseTokenHHMM.exec(timeString)) {
     var hours = parseInt(token[1], 10);
     var minutes = parseFloat(token[2].replace(',', '.'));
-    return setFloatTime(date, hours, minutes);
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE;
   }
 
   // hh:mm:ss or hhmmss
@@ -149,19 +164,20 @@ var parseTime = function(dirtyDate, timeString) {
     var hours = parseInt(token[1], 10);
     var minutes = parseInt(token[2], 10);
     var seconds = parseFloat(token[3].replace(',', '.'));
-    return setFloatTime(date, hours, minutes, seconds)
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE +
+      seconds * 1000;
   }
 
   // invalid ISO-formated time
   else {
-    return date;
+    return null;
   }
 };
 
-var parseTimezone = function(dirtyDate, timezoneString) {
+var parseTimezone = function(timezoneString) {
   var token;
   var offset = 0;
-  var date = new Date(dirtyDate);
 
   // Z
   if (token = parseTokenTimezoneZ.exec(timezoneString)) {
@@ -180,7 +196,7 @@ var parseTimezone = function(dirtyDate, timezoneString) {
     offset = (token[1] == '+') ? absoluteOffset : -absoluteOffset;
   }
 
-  return addMinutes(date, -date.getTimezoneOffset() - offset);
+  return offset;
 }
 
 
@@ -192,26 +208,9 @@ var startOfISOYear = function(year) {
   return startOfWeek(new Date(year, 0, 4), 1);
 }
 
-var setFloatTime = function(dirtyDate, hours, minutes, seconds) {
+var addMilliseconds = function(dirtyDate, milliseconds) {
   var date = new Date(dirtyDate);
-
-  /**
-   * Both 24:00 and 0:00 are refer to midnight in ISO 8601
-   */
-  var calculatedHours = hours % 24 || 0;
-  /**
-   * If some lower order time element is unknown
-   * it calculates from fractional part of higher order element
-   */
-  var calculatedMinutes = minutes || calculatedHours % 1 * 60;
-  var calculatedSeconds = seconds || calculatedMinutes % 1 * 60;
-  var calculatedMilliseconds = calculatedSeconds % 1 * 1000;
-
-  date.setHours(calculatedHours);
-  date.setMinutes(calculatedMinutes);
-  date.setSeconds(calculatedSeconds);
-  date.setMilliseconds(calculatedMilliseconds);
-
+  date.setMilliseconds(date.getMilliseconds() + milliseconds);
   return date;
 }
 
