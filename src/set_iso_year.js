@@ -3,6 +3,9 @@ var startOfISOYear = require('./start_of_iso_year');
 /**
  * Sets ISO week-numbering year to given date,
  * saving week number and weekday number.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
  * @param {date|string} dirtyDate
  * @param {number} isoYear
  * @returns {date} (new date)
