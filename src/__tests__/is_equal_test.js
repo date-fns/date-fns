@@ -24,5 +24,13 @@ describe('isEqual', function() {
     );
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isEqual(
+      new Date(1987, 1 /* Feb */, 11).getTime(),
+      new Date(1987, 1 /* Feb */, 11).getTime()
+    );
+    expect(result).to.be.true;
+  });
 });
 

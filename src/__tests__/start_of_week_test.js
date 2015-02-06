@@ -19,7 +19,13 @@ describe('startOfWeek', function() {
     expect(result).to.be.eql(new Date(2014, 7 /* starts from 0 */, 31));
   });
 
-  it('do not mutates original date', function() {
+  it('accepts timestamp', function() {
+    var date = new Date('2014-09-02T11:55:00').getTime();
+    var result = startOfWeek(date);
+    expect(result).to.be.eql(new Date(2014, 7 /* starts from 0 */, 31));
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date('2014-09-02T11:55:00');
     startOfWeek(date);
     expect(date).to.be.eql(new Date('2014-09-02T11:55:00'));

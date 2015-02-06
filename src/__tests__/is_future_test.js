@@ -30,5 +30,10 @@ describe('isFuture', function() {
     var result = isFuture(new Date(2014, 9 /* Oct */, 31).toISOString());
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isFuture(new Date(2014, 9 /* Oct */, 31).getTime());
+    expect(result).to.be.true;
+  });
 });
 

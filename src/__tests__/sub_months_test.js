@@ -11,7 +11,12 @@ describe('subMonths', function() {
     expect(result).to.be.eql(new Date(2014, 8 /* Sep */, 1));
   });
 
-  it('do not mutates original date', function() {
+  it('accepts timestamp', function() {
+    var result = subMonths(new Date(2015, 8 /* Sep */, 1).getTime(), 12);
+    expect(result).to.be.eql(new Date(2014, 8 /* Sep */, 1));
+  });
+
+  it('does not mutate original date', function() {
     var date = new Date(2014, 8 /* Sep */, 1);
     subMonths(date, 12);
     expect(date).to.be.eql(new Date(2014, 8 /* Sep */, 1));

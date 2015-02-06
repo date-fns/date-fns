@@ -50,5 +50,13 @@ describe('compareDesc', function() {
     );
     expect(result).to.equal(1);
   });
+
+  it('allows to pass timestamp', function() {
+    var result = compareDesc(
+      new Date(1987, 1 /* Feb */, 11).getTime(),
+      new Date(1989, 6 /* Jul */, 10).getTime()
+    );
+    expect(result).to.equal(1);
+  });
 });
 

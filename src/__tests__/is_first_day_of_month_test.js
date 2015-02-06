@@ -16,5 +16,11 @@ describe('isFirstDayOfMonth', function() {
     var result = isFirstDayOfMonth(date);
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var date = new Date(2014, 9 /* Oct */, 1).getTime();
+    var result = isFirstDayOfMonth(date);
+    expect(result).to.be.true;
+  });
 });
 

@@ -15,5 +15,10 @@ describe('isWeekend', function() {
     var result = isWeekend(new Date(2014, 9 /* starts from 0 */, 5).toString());
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isWeekend(new Date(2014, 9 /* starts from 0 */, 5).getTime());
+    expect(result).to.be.true;
+  });
 });
 

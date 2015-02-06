@@ -24,5 +24,13 @@ describe('isSameMonth', function() {
     );
     expect(result).to.be.true;
   });
+
+  it('allows to pass timestamp', function() {
+    var result = isSameMonth(
+      new Date(2014, 8 /* Sep */, 2).getTime(),
+      new Date(2014, 8 /* Sep */, 25).getTime()
+    );
+    expect(result).to.be.true;
+  });
 });
 

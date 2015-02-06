@@ -14,6 +14,10 @@ describe('format', function() {
     expect(format('2014-04-04', 'YYYY-MM-DD')).to.be.equal('2014-04-04');
   });
 
+  it('accepts timestamp as a date', function() {
+    expect(format(new Date('2014-04-04').getTime(), 'YYYY-MM-DD')).to.be.equal('2014-04-04');
+  });
+
   it('return default ISO string format if format is unknown', function() {
     expect(format(this._date)).to.be.equal('1986-04-04T10:32:00.900Z');
   });
