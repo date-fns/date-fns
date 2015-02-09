@@ -1,8 +1,10 @@
 var addDays = require('./add_days');
 var addMinutes = require('./add_minutes');
-var startOfWeek = require('./start_of_week');
+var startOfISOYear = require('./start_of_iso_year');
+var parseTime = require('./parse_time');
 
 var parseTokenDateTimeDelimeter = /[T ]/;
+var parseTokenPlainTime = /:/;
 
 // date tokens
 var parseTokenYYYY = /^(\d{4})$/;
@@ -11,12 +13,6 @@ var parseTokenYYYYDDD = /^(\d{4})-?(\d{3})$/;
 var parseTokenYYYYMMDD = /^(\d{4})-?(\d{2})-?(\d{2})$/;
 var parseTokenYYYYWww = /^(\d{4})-?W(\d{2})$/;
 var parseTokenYYYYWwwD = /^(\d{4})-?W(\d{2})-?(\d{1})$/;
-
-// time tokens
-var parseTokenPlainTime = /:/;
-var parseTokenHH = /^(\d{2}([.,]\d*)?)$/;
-var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/;
-var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/;
 
 // timezone tokens
 var parseTokenTimezone = /([Z+-].*)$/;
@@ -36,28 +32,21 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/;
 var parse = function(dateStr) {
   var dateStrings = splitDateString(dateStr);
 
-  if (dateStrings.date) {
-    var date = parseDate(dateStrings.date);
-  }
+  var date = parseDate(dateStrings.date);
 
-  if (dateStrings.time) {
-    var time = parseTime(dateStrings.time);
-
-    if (date) {
+  if (date) {
+    if (dateStrings.time) {
+      var time = parseTime(dateStrings.time);
       date = addMilliseconds(date, time);
-
-      if (dateStrings.timezone) {
-        var offset = parseTimezone(dateStrings.timezone);
-        date = addMinutes(date, -date.getTimezoneOffset() - offset);
-      }
-
-      return date;
-    } else {
-      return time;
     }
-  } else {
-    return date;
+
+    if (dateStrings.timezone) {
+      var offset = parseTimezone(dateStrings.timezone);
+      date = addMinutes(date, -date.getTimezoneOffset() - offset);
+    }
   }
+
+  return date;
 };
 
 
@@ -122,7 +111,7 @@ var parseDate = function(dateString) {
   else if (token = parseTokenYYYYWww.exec(dateString)) {
     var year = parseInt(token[1]);
     var week = parseInt(token[2], 10) - 1;
-    return addDays(startOfISOYear(year), week * 7);
+    return addDays(startOfISOYear(new Date(year, 0, 4)), week * 7);
   }
 
   // YYYY-Www-D or YYYYWwwD
@@ -130,46 +119,10 @@ var parseDate = function(dateString) {
     var year = parseInt(token[1]);
     var week = parseInt(token[2], 10) - 1;
     var dayOfWeek = parseInt(token[3], 10) - 1;
-    return addDays(startOfISOYear(year), week * 7 + dayOfWeek);
+    return addDays(startOfISOYear(new Date(year, 0, 4)), week * 7 + dayOfWeek);
   }
 
   // invalid ISO-formated date
-  else {
-    return null;
-  }
-};
-
-var MILLISECONDS_IN_HOUR = 3600000;
-var MILLISECONDS_IN_MINUTE = 60000;
-
-var parseTime = function(timeString) {
-  var token;
-
-  // hh
-  if (token = parseTokenHH.exec(timeString)) {
-    var hours = parseFloat(token[1].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR;
-  }
-
-  // hh:mm or hhmm
-  else if (token = parseTokenHHMM.exec(timeString)) {
-    var hours = parseInt(token[1], 10);
-    var minutes = parseFloat(token[2].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE;
-  }
-
-  // hh:mm:ss or hhmmss
-  else if (token = parseTokenHHMMSS.exec(timeString)) {
-    var hours = parseInt(token[1], 10);
-    var minutes = parseInt(token[2], 10);
-    var seconds = parseFloat(token[3].replace(',', '.'));
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE +
-      seconds * 1000;
-  }
-
-  // invalid ISO-formated time
   else {
     return null;
   }
@@ -199,14 +152,6 @@ var parseTimezone = function(timezoneString) {
   return offset;
 }
 
-
-var startOfISOYear = function(year) {
-  /**
-   * January 4th is always in first week of ISO year
-   * Week starts with monday
-   */
-  return startOfWeek(new Date(year, 0, 4), 1);
-}
 
 var addMilliseconds = function(dirtyDate, milliseconds) {
   var date = new Date(dirtyDate);

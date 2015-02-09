@@ -6,6 +6,11 @@ describe('parse', function() {
       var result = parse('foobarTbaz');
       expect(result).to.be.null;
     });
+
+    it('returns null if string is plain time', function() {
+      var result = parse('14:50');
+      expect(result).to.be.null;
+    });
   });
 
   describe('year', function() {
@@ -130,18 +135,6 @@ describe('parse', function() {
         var result = parse('2014-10-25T13:46:20+07');
         expect(result).to.be.eql(new Date('2014-10-25T13:46:20+07:00'));
       });
-    });
-  });
-
-  describe('plain time', function() {
-    it('returns number of milliseconds', function() {
-      var result = parse('21:05:30');
-      expect(result).to.be.equal(75930000);
-    });
-
-    it('parses float plain time', function() {
-      var result = parse('21:05.5');
-      expect(result).to.be.equal(75930000);
     });
   });
 });
