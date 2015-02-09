@@ -26,3 +26,4 @@ describe('parseTime', function() {
     expect(result).to.be.eql(41400000);
   });
 });
+
