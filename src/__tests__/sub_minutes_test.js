@@ -1,7 +1,7 @@
 var subMinutes = require('../sub_minutes');
 
 describe('subMinutes', function() {
-  it('substracts number of passed minutes', function() {
+  it('subtracts number of passed minutes', function() {
     var result = subMinutes(new Date(2014, 6 /* Jul */, 10, 12, 0), 30);
     expect(result).to.be.eql(new Date(2014, 6 /* Jul */, 10, 11, 30));
   });

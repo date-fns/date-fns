@@ -1,7 +1,7 @@
 var startOfWeek = require('./start_of_week');
 
 /**
- * Is passed dates belongs to the same week?
+ * Are passed dates belongs to the same week?
  * @param {date|string} dirtyDateLeft
  * @param {date|string} dirtyDateRight
  * @param {number} [weekStartsAt=0] first day of week (0 - sunday)

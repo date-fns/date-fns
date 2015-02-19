@@ -1,5 +1,5 @@
 /**
- * Is passed dates are equal?
+ * Are passed dates equal?
  * @param {date|string} dirtyLeftDate
  * @param {date|string} dirtyRightDate
  * @returns {boolean}

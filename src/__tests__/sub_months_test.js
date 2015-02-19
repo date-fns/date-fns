@@ -1,7 +1,7 @@
 var subMonths = require('../sub_months');
 
 describe('subMonths', function() {
-  it('substracts number of passed months', function() {
+  it('subtracts number of passed months', function() {
     var result = subMonths(new Date(2015, 1 /* Feb */, 1), 5);
     expect(result).to.be.eql(new Date(2014, 8 /* Sep */, 1));
   });

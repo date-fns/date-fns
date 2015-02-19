@@ -1,5 +1,5 @@
 /**
- * Is passed date is weekend?
+ * Is passed date weekend?
  * @param {date|string} dirtyDate
  * @returns {boolean}
  */

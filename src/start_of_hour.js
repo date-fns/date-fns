@@ -1,5 +1,5 @@
 /**
- * Returns start of a hour for given date. Date will be in local timezone.
+ * Returns start of an hour for given date. Date will be in local timezone.
  * @param {date|string} dirtyDate
  * @returns {date}
  */

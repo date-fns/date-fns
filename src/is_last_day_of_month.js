@@ -2,7 +2,7 @@ var endOfDay = require('./end_of_day');
 var endOfMonth = require('./end_of_month');
 
 /**
- * Is passed date is last day of month?
+ * Is passed date last day of month?
  * @param {date|string} dirtyDate
  * @returns {boolean}
  */

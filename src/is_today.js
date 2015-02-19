@@ -1,7 +1,7 @@
 var startOfDay = require('./start_of_day');
 
 /**
- * Is passed date is today?
+ * Is passed date today?
  * @param {date|string} dirtyDate
  * @returns {boolean}
  */

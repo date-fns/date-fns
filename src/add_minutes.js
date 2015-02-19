@@ -1,5 +1,5 @@
 /**
- * Adds specified number of munutes from passed date.
+ * Adds specified number of minutes to passed date.
  * @param {data|string} dirtyDate
  * @param {number} amount of minutes
  * @returns {date} new date
