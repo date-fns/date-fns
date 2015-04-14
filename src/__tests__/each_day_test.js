@@ -19,8 +19,8 @@ describe('eachDay', function() {
 
   it('accepts strings', function() {
     var result = eachDay(
-      '2014-10-06',
-      '2014-10-12'
+      new Date(2014, 9 /* Oct */, 6).toISOString(),
+      new Date(2014, 9 /* Oct */, 12).toISOString()
     );
     expect(result).to.be.eql([
       new Date(2014, 9 /* Oct */, 6),
