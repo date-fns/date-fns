@@ -11,11 +11,13 @@ describe('format', function() {
   });
 
   it('accepts string as a date', function() {
-    expect(format('2014-04-04', 'YYYY-MM-DD')).to.be.equal('2014-04-04');
+    var date = new Date(2014, 3, 4).toISOString();
+    expect(format(date, 'YYYY-MM-DD')).to.be.equal('2014-04-04');
   });
 
   it('accepts timestamp as a date', function() {
-    expect(format(new Date('2014-04-04').getTime(), 'YYYY-MM-DD')).to.be.equal('2014-04-04');
+    var date = new Date(2014, 3, 4).getTime();
+    expect(format(date, 'YYYY-MM-DD')).to.be.equal('2014-04-04');
   });
 
   it('return default ISO string format if format is unknown', function() {

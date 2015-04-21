@@ -5,7 +5,7 @@ var config = {
   entry: {
     'date_fns': './src/date_fns.js'
   },
-  output: {
+  output: process.env.NODE_ENV == 'test' ? { path: '/' } : {
     path: path.join(process.cwd(), 'dist'),
     filename: '[name].js',
     library: 'dateFns',
