@@ -3,6 +3,10 @@
  * @param {date|string} dirtyDate
  * @param {number} quarter
  * @returns {date} (new date)
+ *
+ * @example set second quarter to date 2 July 2014
+ * var result = setQuarter(new Date(2014, 6, 2), 2);
+ * //=> Wed Apr 02 2014 00:00:00
  */
 var setQuarter = function(dirtyDate, quarter) {
   var date = new Date(dirtyDate);
