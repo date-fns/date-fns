@@ -18,6 +18,7 @@
   "scripts": {
     "karmak": "karmak --webpack-config ./config/webpack.js --karma-config ./config/karma.js",
     "test": "npm run-script karmak -- --single-run",
+    "test-timezones": "node ./config/timezones.js",
     "autotest": "npm run-script karmak",
     "build": "webpack --config ./config/webpack.js"
   }
