@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/
+
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-/******/
+
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/
+
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-/******/
+
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/
+
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
-/******/
+
+
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-/******/
+
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-/******/
+
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-/******/
+
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -168,7 +168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMinutes = __webpack_require__(45);
+	var addMinutes = __webpack_require__(46);
 
 	describe('addMinutes', function() {
 	  it('adds number of passed minutes', function() {
@@ -203,7 +203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMonths = __webpack_require__(46);
+	var addMonths = __webpack_require__(45);
 
 	describe('addMonths', function() {
 	  it('adds number of passed months', function() {
@@ -506,7 +506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var endOfMonth = __webpack_require__(52);
+	var endOfMonth = __webpack_require__(53);
 
 	describe('endOfMonth', function() {
 	  it('returns date with time setted to 23:59:59.999 and date setted to first day in month', function() {
@@ -564,7 +564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var endOfWeek = __webpack_require__(53);
+	var endOfWeek = __webpack_require__(55);
 
 	describe('endOfWeek', function() {
 	  it('returns date with time setted to 00:00:00 and date setted to first day in month', function() {
@@ -644,7 +644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var format = __webpack_require__(54);
+	var format = __webpack_require__(52);
 
 	describe('format', function() {
 	  beforeEach(function () {
@@ -791,7 +791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOWeek = __webpack_require__(55);
+	var getISOWeek = __webpack_require__(54);
 
 	describe('getISOWeek', function() {
 	  it('returns ISO week of given date', function() {
@@ -983,7 +983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFirstDayOfMonth = __webpack_require__(60);
+	var isFirstDayOfMonth = __webpack_require__(63);
 
 	describe('isFirstDayOfMonth', function() {
 	  it('returns true if passed is last day of month', function() {
@@ -1015,7 +1015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isFuture = __webpack_require__(61);
+	var isFuture = __webpack_require__(60);
 
 	describe('isFuture', function() {
 	  beforeEach(function() {
@@ -1060,7 +1060,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isLastDayOfMonth = __webpack_require__(62);
+	var isLastDayOfMonth = __webpack_require__(61);
 
 	describe('isLastDayOfMonth', function() {
 	  it('returns true if passed is last day of month', function() {
@@ -1092,7 +1092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSameDay = __webpack_require__(63);
+	var isSameDay = __webpack_require__(62);
 
 	describe('isSameDay', function() {
 	  it('returns true if passed dates has same day', function() {
@@ -1134,7 +1134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSameMonth = __webpack_require__(64);
+	var isSameMonth = __webpack_require__(65);
 
 	describe('isSameMonth', function() {
 	  it('returns true if passed dates has same month (and year)', function() {
@@ -1176,7 +1176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSameWeek = __webpack_require__(65);
+	var isSameWeek = __webpack_require__(66);
 
 	describe('isSameWeek', function() {
 	  it('returns true if passed dates belongs to the same week', function() {
@@ -1227,7 +1227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isSameYear = __webpack_require__(66);
+	var isSameYear = __webpack_require__(67);
 
 	describe('isSameYear', function() {
 	  it('returns true if passed dates has same year', function() {
@@ -1269,7 +1269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isToday = __webpack_require__(67);
+	var isToday = __webpack_require__(64);
 
 	describe('isToday', function() {
 	  beforeEach(function() {
@@ -1309,7 +1309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isWeekend = __webpack_require__(68);
+	var isWeekend = __webpack_require__(69);
 
 	describe('isWeekend', function() {
 	  it('returns true if passed is weekend', function() {
@@ -1339,7 +1339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isWithinRange = __webpack_require__(69);
+	var isWithinRange = __webpack_require__(68);
 
 	describe('isWithinRange', function() {
 	  it('returns true if passed date within the range', function() {
@@ -1403,7 +1403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(70);
+	var parse = __webpack_require__(71);
 
 	describe('parse', function() {
 	  describe('year', function() {
@@ -1554,7 +1554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var setISOWeek = __webpack_require__(71);
+	var setISOWeek = __webpack_require__(70);
 
 	describe('setISOWeek', function() {
 	  it('sets ISO week to given date', function() {
@@ -1931,7 +1931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var subDays = __webpack_require__(81);
+	var subDays = __webpack_require__(82);
 
 	describe('subDays', function() {
 	  it('subs number of passed days', function() {
@@ -1962,7 +1962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var subHours = __webpack_require__(82);
+	var subHours = __webpack_require__(81);
 
 	describe('subHours', function() {
 	  it('subtracts numbers of passed hours', function() {
@@ -2110,26 +2110,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Adds specified number of minutes to passed date.
-	 * @param {data|string} dirtyDate
-	 * @param {number} amount of minutes
-	 * @returns {date} new date
-	 */
-	var addMinutes = function(dirtyDate, amount) {
-	  var date = new Date(dirtyDate);
-	  date.setMinutes(date.getMinutes() + amount);
-	  return date;
-	};
-
-	module.exports = addMinutes;
-
-
-
-/***/ },
-/* 46 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
 	 * Adds specified number of months to passed date.
 	 * @param {data|string} dirtyDate
 	 * @param {number} amount
@@ -2146,6 +2126,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = addMonths;
+
+
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Adds specified number of minutes to passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount of minutes
+	 * @returns {date} new date
+	 */
+	var addMinutes = function(dirtyDate, amount) {
+	  var date = new Date(dirtyDate);
+	  date.setMinutes(date.getMinutes() + amount);
+	  return date;
+	};
+
+	module.exports = addMinutes;
 
 
 
@@ -2286,53 +2286,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Returns end of a month for given date. Date will be in local timezone.
-	 * @param {date|string} dirtyDate
-	 * @returns {date}
-	 */
-	var endOfMonth = function(dirtyDate) {
-	  var date = new Date(dirtyDate);
-	  var month = date.getMonth();
-	  date.setHours(23, 59, 59, 999);
-	  date.setFullYear(date.getFullYear(), month + 1, 0);
-	  return date;
-	};
-
-	module.exports = endOfMonth;
-
-
-
-/***/ },
-/* 53 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Returns end of a week for given date. Date will be in local timezone.
-	 * @param {date|string} dirtyDate
-	 * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
-	 * @returns {date}
-	 */
-	var endOfWeek = function(dirtyDate, weekStartsAt) {
-	  weekStartsAt = weekStartsAt || 0;
-
-	  var date = new Date(dirtyDate);
-	  var day = date.getDay();
-	  var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt);
-
-	  date.setHours(23, 59, 59, 999);
-	  date.setDate(date.getDate() + diff);
-	  return date;
-	};
-
-	module.exports = endOfWeek;
-
-
-
-/***/ },
-/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfDay = __webpack_require__(75);
@@ -2524,7 +2477,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 55 */
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns end of a month for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @returns {date}
+	 */
+	var endOfMonth = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  var month = date.getMonth();
+	  date.setHours(23, 59, 59, 999);
+	  date.setFullYear(date.getFullYear(), month + 1, 0);
+	  return date;
+	};
+
+	module.exports = endOfMonth;
+
+
+
+/***/ },
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfISOYear = __webpack_require__(77);
@@ -2550,6 +2524,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = getISOWeek;
+
+
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Returns end of a week for given date. Date will be in local timezone.
+	 * @param {date|string} dirtyDate
+	 * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
+	 * @returns {date}
+	 */
+	var endOfWeek = function(dirtyDate, weekStartsAt) {
+	  weekStartsAt = weekStartsAt || 0;
+
+	  var date = new Date(dirtyDate);
+	  var day = date.getDay();
+	  var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt);
+
+	  date.setHours(23, 59, 59, 999);
+	  date.setDate(date.getDate() + diff);
+	  return date;
+	};
+
+	module.exports = endOfWeek;
 
 
 
@@ -2663,27 +2663,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(75);
-	var startOfMonth = __webpack_require__(52);
-
-	/**
-	 * Is passed date first day of month?
-	 * @param {date|string} dirtyDate
-	 * @returns {boolean}
-	 */
-	var isFirstDayOfMonth = function(dirtyDate) {
-	  return new Date(dirtyDate).getDate() == 1;
-	};
-
-	module.exports = isFirstDayOfMonth;
-
-
-
-
-/***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * Is passed date future?
 	 * @param {date|string} dirtyDate
@@ -2698,11 +2677,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var endOfDay = __webpack_require__(50);
-	var endOfMonth = __webpack_require__(52);
+	var endOfMonth = __webpack_require__(53);
 
 	/**
 	 * Is passed date last day of month?
@@ -2720,7 +2699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfDay = __webpack_require__(75);
@@ -2745,7 +2724,48 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfDay = __webpack_require__(75);
+	var startOfMonth = __webpack_require__(53);
+
+	/**
+	 * Is passed date first day of month?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isFirstDayOfMonth = function(dirtyDate) {
+	  return new Date(dirtyDate).getDate() == 1;
+	};
+
+	module.exports = isFirstDayOfMonth;
+
+
+
+
+/***/ },
 /* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var startOfDay = __webpack_require__(75);
+
+	/**
+	 * Is passed date today?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isToday = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  return startOfDay(date).getTime() == startOfDay(new Date()).getTime();
+	};
+
+	module.exports = isToday;
+
+
+
+/***/ },
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2768,7 +2788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfWeek = __webpack_require__(79);
@@ -2794,7 +2814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2814,46 +2834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var startOfDay = __webpack_require__(75);
-
-	/**
-	 * Is passed date today?
-	 * @param {date|string} dirtyDate
-	 * @returns {boolean}
-	 */
-	var isToday = function(dirtyDate) {
-	  var date = new Date(dirtyDate);
-	  return startOfDay(date).getTime() == startOfDay(new Date()).getTime();
-	};
-
-	module.exports = isToday;
-
-
-
-/***/ },
 /* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Is passed date weekend?
-	 * @param {date|string} dirtyDate
-	 * @returns {boolean}
-	 */
-	var isWeekend = function(dirtyDate) {
-	  var date = new Date(dirtyDate);
-	  var day = date.getDay();
-	  return day == 0 || day == 6;
-	};
-
-	module.exports = isWeekend;
-
-
-
-/***/ },
-/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2889,11 +2870,58 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 69 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Is passed date weekend?
+	 * @param {date|string} dirtyDate
+	 * @returns {boolean}
+	 */
+	var isWeekend = function(dirtyDate) {
+	  var date = new Date(dirtyDate);
+	  var day = date.getDay();
+	  return day == 0 || day == 6;
+	};
+
+	module.exports = isWeekend;
+
+
+
+/***/ },
 /* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var getISOWeek = __webpack_require__(54);
+
+	var MILLISECONDS_IN_WEEK = 604800000;
+
+	/**
+	 * Sets ISO week to given date, saving weekday number.
+	 *
+	 * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+	 *
+	 * @param {date|string} dirtyDate
+	 * @param {number} isoWeek
+	 * @returns {date} (new date)
+	 */
+	var setISOWeek = function(dirtyDate, isoWeek) {
+	  var date = new Date(dirtyDate);
+	  var diff = getISOWeek(date) - isoWeek;
+	  date.setTime(date.getTime() - diff * MILLISECONDS_IN_WEEK);
+	  return date;
+	};
+
+	module.exports = setISOWeek;
+
+
+
+/***/ },
+/* 71 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var addDays = __webpack_require__(43);
-	var addMinutes = __webpack_require__(45);
+	var addMinutes = __webpack_require__(46);
 	var startOfWeek = __webpack_require__(79);
 
 	var parseTokenDateTimeDelimeter = /[T ]/;
@@ -3114,34 +3142,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var getISOWeek = __webpack_require__(55);
-
-	var MILLISECONDS_IN_WEEK = 604800000;
-
-	/**
-	 * Sets ISO week to given date, saving weekday number.
-	 *
-	 * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
-	 *
-	 * @param {date|string} dirtyDate
-	 * @param {number} isoWeek
-	 * @returns {date} (new date)
-	 */
-	var setISOWeek = function(dirtyDate, isoWeek) {
-	  var date = new Date(dirtyDate);
-	  var diff = getISOWeek(date) - isoWeek;
-	  date.setTime(date.getTime() - diff * MILLISECONDS_IN_WEEK);
-	  return date;
-	};
-
-	module.exports = setISOWeek;
-
-
-
-/***/ },
 /* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -3354,26 +3354,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addDays = __webpack_require__(43);
-
-	/**
-	 * Subtracts specified number of days from passed date.
-	 * @param {data|string} dirtyDate
-	 * @param {number} amount
-	 * @returns {date} new date
-	 */
-	var subDays = function(dirtyDate, amount) {
-	  return addDays(dirtyDate, -amount);
-	};
-
-	module.exports = subDays;
-
-
-
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var addHours = __webpack_require__(44);
 
 	/**
@@ -3391,10 +3371,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 82 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var addDays = __webpack_require__(43);
+
+	/**
+	 * Subtracts specified number of days from passed date.
+	 * @param {data|string} dirtyDate
+	 * @param {number} amount
+	 * @returns {date} new date
+	 */
+	var subDays = function(dirtyDate, amount) {
+	  return addDays(dirtyDate, -amount);
+	};
+
+	module.exports = subDays;
+
+
+
+/***/ },
 /* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMinutes = __webpack_require__(45);
+	var addMinutes = __webpack_require__(46);
 
 	/**
 	 * Subtracts specified number of munutes from passed date.
@@ -3414,7 +3414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMonths = __webpack_require__(46);
+	var addMonths = __webpack_require__(45);
 
 	/**
 	 * Subtracts specified number of month from passed date.
@@ -3433,3 +3433,4 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }
 /******/ ])
 });
+;
