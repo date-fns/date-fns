@@ -34,6 +34,15 @@ describe('format', function() {
       var date = format(this._date, 'Do of t[h][e] Mo in YYYY');
       expect(date).to.be.equal('4th of the 4th in 1986');
     });
+    it('should return proper ordinal', function() {
+      var result = [];
+      for(var i = 1; i <= 31; i++){
+        result.push(format(new Date(2015, 0, i), 'Do'))
+      }
+      var expected = [ "1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st" ];
+      expect(result).to.deep.equal(expected);
+    })
+
   });
 
   describe('Months', function() {
