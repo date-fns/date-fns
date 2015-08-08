@@ -1,5 +1,5 @@
 /**
- * Returns end of a minutes for given date. Date will be in local timezone.
+ * Returns end of a minute for given date. Date will be in local timezone.
  * @param {date|string} dirtyDate
  * @returns {date}
  */
