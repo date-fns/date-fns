@@ -39,6 +39,11 @@ Code is fully documented, checkout source for reference.
 
 * [`isWithinRange`](./src/is_within_range.js) - is passed date within range?
 
+### Seconds helpers
+
+* [`addSeconds`](./src/add_seconds.js) - add seconds to passed date.
+* [`subSeconds`](./src/subseconds.js) - subtracts seconds from passed date.
+
 ### Minutes helpers
 
 * [`addMinutes`](./src/add_minutes.js) - add minutes to passed date.
