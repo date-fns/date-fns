@@ -105,6 +105,7 @@ Code is fully documented, checkout source for reference.
 * [`isSameYear`](./src/is_same_year.js) - are passed dates has the same year?
 * [`startOfYear`](./src/start_of_year.js) - returns start of year for passed date.
 * [`startOfISOYear`](./src/start_of_iso_year.js) - returns start of ISO week-numbering year for passed date.
+* [`endOfYear`](./src/end_of_year.js) - returns end of year for passed date.
 
 ### I18n
 
