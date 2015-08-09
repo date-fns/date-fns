@@ -34,6 +34,8 @@ var dateFns = {
   isToday: require('./is_today'),
   isWeekend: require('./is_weekend'),
   isWithinRange: require('./is_within_range'),
+  lastDayOfMonth: require('./last_day_of_month'),
+  lastDayOfYear: require('./last_day_of_year'),
   parse: require('./parse'),
   setDayOfYear: require('./set_day_of_year'),
   setISOWeek: require('./set_iso_week'),
