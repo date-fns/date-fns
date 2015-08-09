@@ -3,12 +3,14 @@ var dateFns = {
   addHours: require('./add_hours'),
   addMinutes: require('./add_minutes'),
   addMonths: require('./add_months'),
+  addSeconds: require('./add_seconds'),
   compareAsc: require('./compare_asc'),
   compareDesc: require('./compare_desc'),
   eachDay: require('./each_day'),
   endOfDay: require('./end_of_day'),
   endOfHour: require('./end_of_hour'),
   endOfMonth: require('./end_of_month'),
+  endOfSecond: require('./end_of_second'),
   endOfWeek: require('./end_of_week'),
   format: require('./format'),
   getDayOfYear: require('./getDayOfYear'),
@@ -40,12 +42,14 @@ var dateFns = {
   startOfHour: require('./start_of_hour'),
   startOfISOYear: require('./start_of_iso_year'),
   startOfMonth: require('./start_of_month'),
+  startOfSeconds: require('./start_of_second'),
   startOfWeek: require('./start_of_week'),
   startOfYear: require('./start_of_year'),
   subDays: require('./sub_days'),
   subHours: require('./sub_hours'),
   subMinutes: require('./sub_minutes'),
-  subMonths: require('./sub_months')
-}
+  subMonths: require('./sub_months'),
+  subSeconds: require('./sub_seconds')
+};
 
 module.exports = dateFns
