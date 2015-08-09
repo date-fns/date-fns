@@ -1,6 +1,7 @@
 var dateFns = {
   addDays: require('./add_days'),
   addHours: require('./add_hours'),
+  addMilliseconds: require('./add_milliseconds'),
   addMinutes: require('./add_minutes'),
   addMonths: require('./add_months'),
   addSeconds: require('./add_seconds'),
@@ -49,6 +50,7 @@ var dateFns = {
   startOfYear: require('./start_of_year'),
   subDays: require('./sub_days'),
   subHours: require('./sub_hours'),
+  subMilliseconds: require('./sub_milliseconds'),
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months'),
   subSeconds: require('./sub_seconds')
