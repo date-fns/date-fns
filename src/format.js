@@ -168,12 +168,17 @@ var leftZeroFill = function(number, targetLength) {
 
 var locale = {
   ordinal: function(number) {
-    var b = number % 10,
-      output = (+(number % 100 / 10) === 1) ? 'th' :
-      (b === 1) ? 'st' :
-      (b === 2) ? 'nd' :
-      (b === 3) ? 'rd' : 'th';
-    return number + output;
+    if (number > 20 || number < 10) {
+      switch(number % 10) {
+        case 1:
+          return number + 'st'
+        case 2:
+          return number + 'nd'
+        case 3:
+          return number + 'rd'
+      }
+    }
+    return number + 'th'
   },
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
   monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
