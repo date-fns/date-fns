@@ -146,5 +146,11 @@ describe('format', function() {
       expect(format(this._date, 's ss')).to.be.equal('0 00');
     });
   });
+
+  describe('timezones', function() {
+    it('should parse dates without timezones', function() {
+      expect(format('2015-01-01', 'YYYY-MM-DD')).to.be.equal('2015-01-01')
+    })
+  })
 });
 
