@@ -11,10 +11,9 @@ var NUMBER_OF_MS_IN_DAY = 864e5;
  * @returns {string}
  */
 var format = function(date, format) {
-  var type = toString.call(date)
-  if (type == '[object String]') {
+  if (typeof date == 'string') {
     date = parse(date)
-  } else if(type == '[object Number]') {
+  } else if(typeof date == 'number') {
     date = new Date(date)
   }
 
