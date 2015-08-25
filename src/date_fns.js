@@ -21,6 +21,7 @@ var dateFns = {
   isFirstDayOfMonth: require('./is_first_day_of_month'),
   isFuture: require('./is_future'),
   isLastDayOfMonth: require('./is_last_day_of_month'),
+  isPast: require('./is_past'),
   isSameDay: require('./is_same_day'),
   isSameMonth: require('./is_same_month'),
   isSameWeek: require('./is_same_week'),

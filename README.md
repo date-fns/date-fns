@@ -27,6 +27,7 @@ Code is fully documented, checkout source for reference.
 
 * [`format`](./src/format.js) - format date.
 * [`isFuture`](./src/is_future.js) - is passed date future?
+* [`isPast`](./src/is_future.js) - is passed date past?
 * [`isEqual`](./src/is_equal.js) - are passed dates equal?
 * [`isBefore`](./src/is_before.js) - is first date before second one?
 * [`isAfter`](./src/is_after.js) - is first date after second one?
