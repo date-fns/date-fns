@@ -96,6 +96,7 @@ Code is fully documented, checkout source for reference.
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - return true if passed date is first day of month.
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - return true if passed date is last day of month.
 * [`setMonth`](./src/set_month.js) - sets month index.
+* [`lastDayOfMonth`](./src/last_day_of_month.js) - returns last day of month for passed date.
 
 ### Quarter helpers
 
@@ -113,6 +114,7 @@ Code is fully documented, checkout source for reference.
 * [`startOfYear`](./src/start_of_year.js) - returns start of year for passed date.
 * [`startOfISOYear`](./src/start_of_iso_year.js) - returns start of ISO week-numbering year for passed date.
 * [`endOfYear`](./src/end_of_year.js) - returns end of year for passed date.
+* [`lastDayOfYear`](./src/last_day_of_year.js) - returns last day of year for passed date.
 
 ### I18n
 
