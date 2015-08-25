@@ -1,4 +1,4 @@
-var addDays = require('./add_days');
+var addDays = require('./add_days')
 
 /**
  * Subtracts specified number of days from passed date.
@@ -7,8 +7,8 @@ var addDays = require('./add_days');
  * @returns {date} new date
  */
 var subDays = function(dirtyDate, amount) {
-  return addDays(dirtyDate, -amount);
-};
+  return addDays(dirtyDate, -amount)
+}
 
-module.exports = subDays;
+module.exports = subDays
 

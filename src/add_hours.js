@@ -5,10 +5,10 @@
  * @returns {date} new date
  */
 var addHours = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate);
-  date.setHours(date.getHours() + amount);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setHours(date.getHours() + amount)
+  return date
+}
 
-module.exports = addHours;
+module.exports = addHours
 

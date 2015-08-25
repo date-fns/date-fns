@@ -1,8 +1,8 @@
-var startOfDay = require('./start_of_day');
-var startOfYear = require('./start_of_year');
-var parse = require('./parse');
+var startOfDay = require('./start_of_day')
+var startOfYear = require('./start_of_year')
+var parse = require('./parse')
 
-var NUMBER_OF_MS_IN_DAY = 864e5;
+var NUMBER_OF_MS_IN_DAY = 864e5
 
 /**
  * Returns formatted date string in a given format
@@ -13,168 +13,173 @@ var NUMBER_OF_MS_IN_DAY = 864e5;
 var format = function(date, format) {
   if (typeof date == 'string') {
     date = parse(date)
-  } else if(typeof date == 'number') {
+  } else if (typeof date == 'number') {
     date = new Date(date)
   }
 
   if (!format) {
-    format = 'YYYY-MM-DDTHH:mm:ss.SSSZ';
-  };
+    format = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  }
 
-  var formatFunction = makeFormatFunction(format);
-  return formatFunction(date);
-};
+  var formatFunction = makeFormatFunction(format)
+  return formatFunction(date)
+}
 
 var formats = {
   'M': function() {
-    return this.getMonth() + 1;
+    return this.getMonth() + 1
   },
   'MM': function() {
-    return leftZeroFill(this.getMonth() + 1, 2);
+    return leftZeroFill(this.getMonth() + 1, 2)
   },
   'MMM': function() {
-    return locale.monthsShort[this.getMonth()];
+    return locale.monthsShort[this.getMonth()]
   },
   'MMMM': function() {
-    return locale.months[this.getMonth()];
+    return locale.months[this.getMonth()]
   },
   'Q': function() {
-    return Math.ceil((this.getMonth() + 1) / 3);
+    return Math.ceil((this.getMonth() + 1) / 3)
   },
   'D': function() {
-    return this.getDate();
+    return this.getDate()
   },
   'DD': function() {
-    return leftZeroFill(this.getDate(), 2);
+    return leftZeroFill(this.getDate(), 2)
   },
   'DDD': function() {
-    var diffWithStartOfYear =
-      startOfDay(this).getTime() - startOfYear(this).getTime();
-    return Math.floor(diffWithStartOfYear / NUMBER_OF_MS_IN_DAY) + 1;
+    var diffWithStartOfYear
+      = startOfDay(this).getTime() - startOfYear(this).getTime()
+    return Math.floor(diffWithStartOfYear / NUMBER_OF_MS_IN_DAY) + 1
   },
   'DDDD': function() {
-    return leftZeroFill(formats['DDD'].apply(this), 3);
+    return leftZeroFill(formats['DDD'].apply(this), 3)
   },
   'd': function() {
-    return this.getDay();
+    return this.getDay()
   },
   'dd': function() {
-    return locale.dayNamesMin[this.getDay()];
+    return locale.dayNamesMin[this.getDay()]
   },
   'ddd': function() {
-    return locale.dayNamesShort[this.getDay()];
+    return locale.dayNamesShort[this.getDay()]
   },
   'dddd': function() {
-    return locale.dayNames[this.getDay()];
+    return locale.dayNames[this.getDay()]
   },
   'E': function() {
-    return this.getDay() + 1;
+    return this.getDay() + 1
   },
   'YY': function() {
-    return String(this.getFullYear()).substr(2);
+    return String(this.getFullYear()).substr(2)
   },
   'YYYY': function() {
     return this.getFullYear()
   },
   'A': function() {
-    return (this.getHours() / 12) >= 1 ? 'PM' : 'AM';
+    return (this.getHours() / 12) >= 1 ? 'PM' : 'AM'
   },
   'a': function() {
-    return (this.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.';
+    return (this.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.'
   },
   'H': function() {
-    return this.getHours();
+    return this.getHours()
   },
   'HH': function() {
-    return leftZeroFill(this.getHours(), 2);
+    return leftZeroFill(this.getHours(), 2)
   },
   'h': function() {
-    var hours = this.getHours();
-    return hours == 0 ? 12 :
-           hours > 12 ? hours % 12 : hours;
+    var hours = this.getHours()
+    if (hours == 0) {
+      return 12
+    } else if (hours > 12) {
+      return hours % 12
+    } else {
+      return hours
+    }
   },
   'hh': function() {
-    return leftZeroFill(formats['h'].apply(this), 2);
+    return leftZeroFill(formats['h'].apply(this), 2)
   },
   'm': function() {
-    return this.getMinutes();
+    return this.getMinutes()
   },
   'mm': function() {
-    return leftZeroFill(this.getMinutes(), 2);
+    return leftZeroFill(this.getMinutes(), 2)
   },
   's': function() {
-    return this.getSeconds();
+    return this.getSeconds()
   },
   'ss': function() {
-    return leftZeroFill(this.getSeconds(), 2);
+    return leftZeroFill(this.getSeconds(), 2)
   },
   'S': function() {
-    return this.getMilliseconds();
+    return this.getMilliseconds()
   },
   'SS': function() {
-    return leftZeroFill(this.getMilliseconds(), 2);
+    return leftZeroFill(this.getMilliseconds(), 2)
   },
   'SSS': function() {
-    return leftZeroFill(this.getMilliseconds(), 3);
+    return leftZeroFill(this.getMilliseconds(), 3)
   }
-};
+}
 
-var ordinalFunctions = ['M', 'D', 'DDD', 'd'];
-ordinalFunctions.forEach(function(functionName){
+var ordinalFunctions = ['M', 'D', 'DDD', 'd']
+ordinalFunctions.forEach(function(functionName) {
   formats[functionName + 'o'] = function() {
-    return locale.ordinal(formats[functionName].apply(this));
-  };
-});
+    return locale.ordinal(formats[functionName].apply(this))
+  }
+})
 
-var formattingTokens = Object.keys(formats).sort().reverse();
+var formattingTokens = Object.keys(formats).sort().reverse()
 var formattingTokensRegexp = new RegExp(
   '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
-);
+)
 
 var makeFormatFunction = function(format) {
-  var array = format.match(formattingTokensRegexp), i, length;
+  var array = format.match(formattingTokensRegexp), i, length
 
   for (i = 0, length = array.length; i < length; i++) {
     if (formats[array[i]]) {
-      array[i] = formats[array[i]];
+      array[i] = formats[array[i]]
     } else {
-      array[i] = removeFormattingTokens(array[i]);
+      array[i] = removeFormattingTokens(array[i])
     }
   }
 
   return function(mom) {
-    var output = '';
+    var output = ''
     for (i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i].call(mom, format);
+        output += array[i].call(mom, format)
       } else {
-        output += array[i];
+        output += array[i]
       }
     }
-    return output;
-  };
-};
+    return output
+  }
+}
 
 var removeFormattingTokens = function(input) {
   if (input.match(/\[[\s\S]/)) {
-    return input.replace(/^\[|\]$/g, '');
+    return input.replace(/^\[|\]$/g, '')
   }
-  return input.replace(/\\/g, '');
-};
+  return input.replace(/\\/g, '')
+}
 
 var leftZeroFill = function(number, targetLength) {
-  var output = '' + Math.abs(number);
+  var output = String(Math.abs(number))
 
   while (output.length < targetLength) {
-    output = '0' + output;
+    output = '0' + output
   }
-  return output;
-};
+  return output
+}
 
 var locale = {
   ordinal: function(number) {
     if (number > 20 || number < 10) {
-      switch(number % 10) {
+      switch (number % 10) {
         case 1:
           return number + 'st'
         case 2:
@@ -190,7 +195,7 @@ var locale = {
   dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-};
+}
 
-module.exports = format;
+module.exports = format
 

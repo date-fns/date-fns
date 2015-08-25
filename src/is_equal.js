@@ -5,10 +5,10 @@
  * @returns {boolean}
  */
 var isEqual = function(dirtyLeftDate, dirtyRightDate) {
-  var dateLeft = new Date(dirtyLeftDate);
-  var dateRight = new Date(dirtyRightDate);
-  return dateLeft.getTime() == dateRight.getTime();
-};
+  var dateLeft = new Date(dirtyLeftDate)
+  var dateRight = new Date(dirtyRightDate)
+  return dateLeft.getTime() == dateRight.getTime()
+}
 
-module.exports = isEqual;
+module.exports = isEqual
 

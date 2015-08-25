@@ -1,5 +1,5 @@
-var startOfDay = require('./start_of_day');
-var startOfMonth = require('./end_of_month');
+var startOfDay = require('./start_of_day')
+var startOfMonth = require('./end_of_month')
 
 /**
  * Is passed date first day of month?
@@ -7,9 +7,8 @@ var startOfMonth = require('./end_of_month');
  * @returns {boolean}
  */
 var isFirstDayOfMonth = function(dirtyDate) {
-  return new Date(dirtyDate).getDate() == 1;
-};
+  return new Date(dirtyDate).getDate() == 1
+}
 
-module.exports = isFirstDayOfMonth;
-
+module.exports = isFirstDayOfMonth
 

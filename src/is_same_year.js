@@ -5,10 +5,10 @@
  * @returns {boolean}
  */
 var isSameYear = function(dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = new Date(dirtyDateLeft);
-  var dateRight = new Date(dirtyDateRight);
-  return dateLeft.getFullYear() == dateRight.getFullYear();
-};
+  var dateLeft = new Date(dirtyDateLeft)
+  var dateRight = new Date(dirtyDateRight)
+  return dateLeft.getFullYear() == dateRight.getFullYear()
+}
 
-module.exports = isSameYear;
+module.exports = isSameYear
 

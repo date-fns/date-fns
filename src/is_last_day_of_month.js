@@ -1,5 +1,5 @@
-var endOfDay = require('./end_of_day');
-var endOfMonth = require('./end_of_month');
+var endOfDay = require('./end_of_day')
+var endOfMonth = require('./end_of_month')
 
 /**
  * Is passed date last day of month?
@@ -7,10 +7,9 @@ var endOfMonth = require('./end_of_month');
  * @returns {boolean}
  */
 var isLastDayOfMonth = function(dirtyDate) {
-  var date = new Date(dirtyDate);
-  return endOfDay(date).getTime() == endOfMonth(date).getTime();
-};
+  var date = new Date(dirtyDate)
+  return endOfDay(date).getTime() == endOfMonth(date).getTime()
+}
 
-module.exports = isLastDayOfMonth;
-
+module.exports = isLastDayOfMonth
 

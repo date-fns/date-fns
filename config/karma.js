@@ -1,4 +1,4 @@
- var config = function(config) {
+var config = function(config) {
   config.set({
     frameworks: [
       'mocha',
@@ -6,8 +6,8 @@
     ],
     files: [],
     browsers: ['PhantomJS']
-  });
-};
+  })
+}
 
-module.exports = config;
+module.exports = config
 

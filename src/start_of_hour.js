@@ -4,10 +4,10 @@
  * @returns {date}
  */
 var startOfHour = function(dirtyDate) {
-  var date = new Date(dirtyDate);
-  date.setMinutes(0, 0, 0);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setMinutes(0, 0, 0)
+  return date
+}
 
-module.exports = startOfHour;
+module.exports = startOfHour
 

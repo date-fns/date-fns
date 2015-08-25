@@ -1,4 +1,4 @@
-var addMonths = require('./add_months');
+var addMonths = require('./add_months')
 
 /**
  * Subtracts specified number of month from passed date.
@@ -7,8 +7,8 @@ var addMonths = require('./add_months');
  * @returns {date} new date
  */
 var subMonths = function(dirtyDate, amount) {
-  return addMonths(dirtyDate, -amount);
-};
+  return addMonths(dirtyDate, -amount)
+}
 
-module.exports = subMonths;
+module.exports = subMonths
 
