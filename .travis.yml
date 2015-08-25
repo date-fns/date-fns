@@ -4,4 +4,8 @@ node_js:
 cache:
   directories:
     - node_modules
+script:
+  - npm run karmak -- --single-run
+  - npm run lint
+  - npm run colors
 

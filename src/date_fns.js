@@ -27,13 +27,10 @@ var dateFns = {
   isToday: require('./is_today'),
   isWeekend: require('./is_weekend'),
   isWithinRange: require('./is_within_range'),
-<<<<<<< HEAD
   parse: require('./parse'),
+  setDayOfYear: require('./set_day_of_year'),
   setISOWeek: require('./set_iso_week'),
   setISOYear: require('./set_iso_year'),
-=======
-  setDayOfYear: require('./set_day_of_year'),
->>>>>>> Update README for day of year functions
   setMonth: require('./set_month'),
   setYear: require('./set_year'),
   startOfDay: require('./start_of_day'),
