@@ -21,6 +21,7 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "build": "webpack --config ./config/webpack.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test-tz": "./scripts/tz_test.sh"
   }
 }
