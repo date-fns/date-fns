@@ -5,10 +5,10 @@
  * @returns {date} (new date)
  */
 var setMonth = function(dirtyDate, monthIndex) {
-  var date = new Date(dirtyDate);
-  date.setMonth(monthIndex);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setMonth(monthIndex)
+  return date
+}
 
-module.exports = setMonth;
+module.exports = setMonth
 

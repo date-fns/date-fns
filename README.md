@@ -13,9 +13,9 @@ npm install --save date-fns
 ## Usage
 
 ``` javascript
-var isLastDayOfMonth = require('date-fns/src/is_last_day_of_month');
-var date = new Date(2014, 1, 28);
-console.log(isLastDayOfMonth(date));
+var isLastDayOfMonth = require('date-fns/src/is_last_day_of_month')
+var date = new Date(2014, 1, 28)
+console.log(isLastDayOfMonth(date))
 //=> true
 ```
 

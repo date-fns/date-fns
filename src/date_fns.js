@@ -41,6 +41,6 @@ var dateFns = {
   subHours: require('./sub_hours'),
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months')
-};
+}
 
-module.exports = dateFns;
+module.exports = dateFns

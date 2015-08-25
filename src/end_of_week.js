@@ -5,16 +5,16 @@
  * @returns {date}
  */
 var endOfWeek = function(dirtyDate, weekStartsAt) {
-  weekStartsAt = weekStartsAt || 0;
+  weekStartsAt = weekStartsAt || 0
 
-  var date = new Date(dirtyDate);
-  var day = date.getDay();
-  var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt);
+  var date = new Date(dirtyDate)
+  var day = date.getDay()
+  var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt)
 
-  date.setHours(23, 59, 59, 999);
-  date.setDate(date.getDate() + diff);
-  return date;
-};
+  date.setHours(23, 59, 59, 999)
+  date.setDate(date.getDate() + diff)
+  return date
+}
 
-module.exports = endOfWeek;
+module.exports = endOfWeek
 

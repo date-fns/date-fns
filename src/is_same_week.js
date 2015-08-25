@@ -1,4 +1,4 @@
-var startOfWeek = require('./start_of_week');
+var startOfWeek = require('./start_of_week')
 
 /**
  * Are passed dates belongs to the same week?
@@ -8,13 +8,13 @@ var startOfWeek = require('./start_of_week');
  * @returns {boolean}
  */
 var isSameWeek = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
-  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, weekStartsAt);
-  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, weekStartsAt);
+  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, weekStartsAt)
+  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, weekStartsAt)
 
   return(
     dateLeftStartOfWeek.getTime() == dateRightStartOfWeek.getTime()
-  );
-};
+  )
+}
 
-module.exports = isSameWeek;
+module.exports = isSameWeek
 

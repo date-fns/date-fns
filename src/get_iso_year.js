@@ -1,4 +1,4 @@
-var startOfWeek = require('./start_of_week');
+var startOfWeek = require('./start_of_week')
 
 /**
  * Returns ISO week-numbering year of given date,
@@ -10,23 +10,23 @@ var startOfWeek = require('./start_of_week');
  * @returns {number} (ISO year)
  *
  * @example which ISO-week numbering year is 2 January 2005
- * var result = getISOYear(new Date(2005, 0, 2));
+ * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
  */
 var getISOYear = function(dirtyDate) {
-  var date = new Date(dirtyDate);
-  var year = date.getFullYear();
-  var startOfNextYear = startOfWeek(new Date(year + 1, 0, 4), 1);
-  var startOfThisYear = startOfWeek(new Date(year, 0, 4), 1);
+  var date = new Date(dirtyDate)
+  var year = date.getFullYear()
+  var startOfNextYear = startOfWeek(new Date(year + 1, 0, 4), 1)
+  var startOfThisYear = startOfWeek(new Date(year, 0, 4), 1)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
-    return year + 1;
+    return year + 1
   } else if (date.getTime() >= startOfThisYear.getTime()) {
-    return year;
+    return year
   } else {
-    return year - 1;
+    return year - 1
   }
-};
+}
 
-module.exports = getISOYear;
+module.exports = getISOYear
 

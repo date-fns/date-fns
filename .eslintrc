@@ -1,0 +1,11 @@
+{
+  "extends": "toptal",
+  "env": {
+    "node": true,
+    "commonjs": true
+  },
+  "rules": {
+    "no-var": 0,
+    "object-shorthand": 0
+  }
+}

@@ -5,13 +5,13 @@
  * @returns {boolean}
  */
 var isSameMonth = function(dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = new Date(dirtyDateLeft);
-  var dateRight = new Date(dirtyDateRight);
+  var dateLeft = new Date(dirtyDateLeft)
+  var dateRight = new Date(dirtyDateRight)
   return(
-    dateLeft.getFullYear() == dateRight.getFullYear() &&
-    dateLeft.getMonth() == dateRight.getMonth()
-  );
-};
+    dateLeft.getFullYear() == dateRight.getFullYear()
+    && dateLeft.getMonth() == dateRight.getMonth()
+  )
+}
 
-module.exports = isSameMonth;
+module.exports = isSameMonth
 

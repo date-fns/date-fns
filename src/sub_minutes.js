@@ -1,4 +1,4 @@
-var addMinutes = require('./add_minutes');
+var addMinutes = require('./add_minutes')
 
 /**
  * Subtracts specified number of minutes from passed date.
@@ -7,8 +7,8 @@ var addMinutes = require('./add_minutes');
  * @returns {date} new date
  */
 var subMinutes = function(dirtyDate, amount) {
-  return addMinutes(dirtyDate, -amount);
-};
+  return addMinutes(dirtyDate, -amount)
+}
 
-module.exports = subMinutes;
+module.exports = subMinutes
 

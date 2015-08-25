@@ -4,8 +4,8 @@
  * @returns {boolean}
  */
 var isFuture = function(dirtyDate) {
-  return new Date(dirtyDate).getTime() > new Date().getTime();
-};
+  return new Date(dirtyDate).getTime() > new Date().getTime()
+}
 
-module.exports = isFuture;
+module.exports = isFuture
 

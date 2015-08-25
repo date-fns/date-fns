@@ -4,10 +4,10 @@
  * @returns {date}
  */
 var endOfHour = function(dirtyDate) {
-  var date = new Date(dirtyDate);
-  date.setMinutes(59, 59, 999);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setMinutes(59, 59, 999)
+  return date
+}
 
-module.exports = endOfHour;
+module.exports = endOfHour
 

@@ -5,19 +5,19 @@
  * @returns {number}
  */
 var compareAsc = function(dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = new Date(dirtyDateLeft);
-  var timeLeft = dateLeft.getTime();
-  var dateRight = new Date(dirtyDateRight);
-  var timeRight = dateRight.getTime();
+  var dateLeft = new Date(dirtyDateLeft)
+  var timeLeft = dateLeft.getTime()
+  var dateRight = new Date(dirtyDateRight)
+  var timeRight = dateRight.getTime()
 
   if (timeLeft < timeRight) {
-    return -1;
+    return -1
   } else if (timeLeft > timeRight) {
-    return 1;
+    return 1
   } else {
-    return 0;
+    return 0
   }
-};
+}
 
-module.exports = compareAsc;
+module.exports = compareAsc
 
