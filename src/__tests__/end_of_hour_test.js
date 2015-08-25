@@ -22,5 +22,5 @@ describe('endOfHour', function () {
     endOfHour(date);
     expect(date).to.be.eql(new Date(2014, 11, 1, 22, 15));
   });
-
 });
+

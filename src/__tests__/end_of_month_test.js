@@ -1,7 +1,7 @@
 var endOfMonth = require('../end_of_month');
 
 describe('endOfMonth', function() {
-  it('returns date with time setted to 23:59:59.999 and date setted to first day in month', function() {
+  it('returns date with time setted to 23:59:59.999 and date setted to last day of month', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0);
     var result = endOfMonth(date);
     expect(result).to.be.eql(

@@ -21,7 +21,7 @@ describe('isFuture', function() {
     expect(result).to.be.false;
   });
 
-  it('returns true if passed date is current date', function() {
+  it('returns false if passed date is current date', function() {
     var result = isFuture(new Date(2014, 8 /* Sep */, 25));
     expect(result).to.be.false;
   });
