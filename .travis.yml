@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - '0.11'
+script:
+  - npm test -- --single-run
+  - npm run lint
 cache:
   directories:
     - node_modules
