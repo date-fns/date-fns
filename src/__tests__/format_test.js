@@ -126,18 +126,18 @@ describe('format', function() {
   });
 
   describe('hours', function() {
-    it('am/pm', function() {
-      expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 am');
+    it('a.m./p.m.', function() {
+      expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 a.m.');
     });
 
-    it('12 pm', function() {
+    it('12 p.m.', function() {
       var date = new Date(1986, 3, 4, 12, 00, 0, 900);
-      expect(format(date, 'hh:mm a')).to.be.equal('12:00 pm');
+      expect(format(date, 'hh:mm a')).to.be.equal('12:00 p.m.');
     });
 
-    it('12 am', function() {
+    it('12 a.m.', function() {
       var date = new Date(1986, 3, 4, 00, 00, 0, 900);
-      expect(format(date, 'h:mm a')).to.be.equal('12:00 am');
+      expect(format(date, 'h:mm a')).to.be.equal('12:00 a.m.');
     });
   });
 
