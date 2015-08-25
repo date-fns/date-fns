@@ -5,6 +5,7 @@ var dateFns = {
   addMinutes: require('./add_minutes'),
   addMonths: require('./add_months'),
   addSeconds: require('./add_seconds'),
+  addYears: require('./add_years'),
   compareAsc: require('./compare_asc'),
   compareDesc: require('./compare_desc'),
   eachDay: require('./each_day'),
@@ -54,7 +55,8 @@ var dateFns = {
   subMilliseconds: require('./sub_milliseconds'),
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months'),
-  subSeconds: require('./sub_seconds')
+  subSeconds: require('./sub_seconds'),
+  subYears: require('./sub_years')
 }
 
 module.exports = dateFns

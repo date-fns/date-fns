@@ -107,6 +107,8 @@ Code is fully documented, checkout source for reference.
 * [`getISOYear`](./src/get_iso_year.js) - returns ISO week-numbering year.
 * [`setYear`](./src/set_year.js) - sets full year.
 * [`setISOYear`](./src/set_iso_year.js) - sets ISO week-numbering year.
+* [`addYears`](./src/add_years.js) - add specified number of years to passed date.
+* [`subYears`](./src/sub_years.js) - subtract specified number of years from passed date.
 * [`isSameYear`](./src/is_same_year.js) - are passed dates has the same year?
 * [`startOfYear`](./src/start_of_year.js) - returns start of year for passed date.
 * [`startOfISOYear`](./src/start_of_iso_year.js) - returns start of ISO week-numbering year for passed date.
