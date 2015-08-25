@@ -14,6 +14,7 @@ var dateFns = {
   endOfMonth: require('./end_of_month'),
   endOfSecond: require('./end_of_second'),
   endOfWeek: require('./end_of_week'),
+  endOfYear: require('./end_of_year'),
   format: require('./format'),
   getDayOfYear: require('./getDayOfYear'),
   getISOWeek: require('./get_iso_week'),
