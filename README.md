@@ -48,10 +48,13 @@ Code is fully documented, checkout source for reference.
 
 ### Minutes helpers
 
+* [`startOfMinute`](./src/start_of_minute.js) - returns start of a minute for passed date.
+* [`endOfMinute`](./src/end_of_minute.js) - returns end of a minute for passed date.
 * [`addMinutes`](./src/add_minutes.js) - add minutes to passed date.
 * [`subMinutes`](./src/sub_minutes.js) - subtracts minutes from passed date.
 
 ### Hours helpers
+
 * [`startOfHour`](./src/start_of_hour.js) - returns start of an hour for passed date.
 * [`endOfHour`](./src/end_of_hour.js) - returns end of an hour for passed date.
 * [`addHours`](./src/add_hours.js) - add hours to passed date.
