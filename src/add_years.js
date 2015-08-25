@@ -5,10 +5,10 @@
  * @returns {date} new date
  */
 var addYears = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate);
-  date.setFullYear(date.getFullYear() + amount);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setFullYear(date.getFullYear() + amount)
+  return date
+}
 
-module.exports = addYears;
+module.exports = addYears
 

@@ -1,4 +1,4 @@
-var addYears = require('./add_years');
+var addYears = require('./add_years')
 
 /**
  * Subtracts specified number of years from passed date.
@@ -7,8 +7,8 @@ var addYears = require('./add_years');
  * @returns {date} new date
  */
 var subYears = function(dirtyDate, amount) {
-  return addYears(dirtyDate, -amount);
-};
+  return addYears(dirtyDate, -amount)
+}
 
-module.exports = subYears;
+module.exports = subYears
 
