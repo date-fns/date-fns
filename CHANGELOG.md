@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.14.11 (21 Aug 2015)
+
+* Improvements:
+  - `setIsoWeek` now sets time to the start of the day
+  - `format` now uses `parse` to avoid time zone bugs
+
+## v0.14.10 (29 Jul 2015)
+
+* Additions:
+  - `compareAsc`
+  - `compareDesc`
+  - `addHours`
+  - `subHours`
+  - `isSameDay`
+  - `parse`
+  - `getISOYear`
+  - `setISOYear`
+  - `startOfISOYear`
+  - `getISOWeek`
+  - `setISOWeek`
+* Bug fixes:
+  - `format` now behaves correctly with 12:00 am
+  - `format` now behaves correctly with ordinal numbers
+
 ## v0.14.9 (14 Jan 2015)
 
 * Bug fixes:
