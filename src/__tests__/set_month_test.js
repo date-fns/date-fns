@@ -7,9 +7,9 @@ describe('setMonth', function() {
   })
 
   it('sets last day of month if original date was last day of longer month', function() {
-    var result = setMonth(new Date(2014, 11 /* Dec */, 31), 1);
-    expect(result).to.be.eql(new Date(2014, 1 /* Feb */, 28));
-  });
+    var result = setMonth(new Date(2014, 11 /* Dec */, 31), 1)
+    expect(result).to.be.eql(new Date(2014, 1 /* Feb */, 28))
+  })
 
   it('accepts string', function() {
     var result = setMonth(new Date(2014, 8 /* Sep */, 1).toISOString(), 11)
