@@ -4,10 +4,10 @@
  * @returns {date}
  */
 var endOfSecond = function(dirtyDate) {
-  var date = new Date(dirtyDate);
-  date.setMilliseconds(999);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setMilliseconds(999)
+  return date
+}
 
-module.exports = endOfSecond;
+module.exports = endOfSecond
 

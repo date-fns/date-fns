@@ -50,6 +50,6 @@ var dateFns = {
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months'),
   subSeconds: require('./sub_seconds')
-};
+}
 
 module.exports = dateFns

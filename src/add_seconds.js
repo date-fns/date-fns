@@ -5,10 +5,10 @@
  * @returns {date} new date
  */
 var addSeconds = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate);
-  date.setSeconds(date.getSeconds() + amount);
-  return date;
-};
+  var date = new Date(dirtyDate)
+  date.setSeconds(date.getSeconds() + amount)
+  return date
+}
 
-module.exports = addSeconds;
+module.exports = addSeconds
 
