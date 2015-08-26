@@ -15,7 +15,11 @@ var config = function(config) {
         version: false
       }
     },
-    browsers: ['PhantomJS']
+    browsers: ['PhantomJS'],
+    reporters: ['mocha'],
+    mochaReporter: {
+      output: process.env.TEST_TZ ? 'minimal' : 'full'
+    }
   })
 }
 

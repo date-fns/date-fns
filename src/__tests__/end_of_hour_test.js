@@ -8,8 +8,9 @@ describe('endOfHour', function() {
   })
 
   it('supports string as a date', function() {
-    var result = endOfHour('2014-12-01T13:00:00.000Z')
-    expect(result).to.be.eql(new Date(Date.UTC(2014, 11, 1, 13, 59, 59, 999)))
+    var date = new Date(2014, 11, 1, 13).toISOString()
+    var result = endOfHour(date)
+    expect(result).to.be.eql(new Date(2014, 11, 1, 13, 59, 59, 999))
   })
 
   it('supports timestamp as a date', function() {

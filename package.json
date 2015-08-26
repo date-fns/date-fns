@@ -14,6 +14,7 @@
     "karma": "^0.13.9",
     "karma-chai-sinon": "^0.1.3",
     "karma-mocha": "^0.1.9",
+    "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-webpack": "^1.7.0",
     "webpack": "^1.12.0"
@@ -21,6 +22,7 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "build": "webpack --config ./config/webpack.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test-tz": "env TEST_TZ=true ./scripts/tz_test.sh"
   }
 }
