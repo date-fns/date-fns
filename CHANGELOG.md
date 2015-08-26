@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.15.0 (26 Aug 2015)
+
+* Additions:
+  - `getQuarter`
+  - `setQuarter`
+  - `getDayOfYear`
+  - `setDayOfYear`
+  - `isPast`
+  - `addSeconds`
+  - `subSeconds`
+  - `startOfSecond`
+  - `endOfSecond`
+  - `startOfMinute`
+  - `endOfMinute`
+  - `addMilliseconds`
+  - `subMilliseconds`
+  - `endOfYear`
+  - `addYears`
+  - `subYears`
+  - `lastDayOfYear`
+  - `lastDayOfMonth`
+* Improvements:
+  - `format` now returns `a.m.`/`p.m.` instead of `am`/`pm`
+  - `setMonth` now sets last day of month if original date was last day of longer month
+  - Fix code style according to ESLint
+  - Make tests run through all time zones
+
 ## v0.14.11 (21 Aug 2015)
 
 * Improvements:
