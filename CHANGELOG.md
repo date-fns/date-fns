@@ -3,8 +3,10 @@
 ## v0.16.0
 
 * Additions:
+  - `getMilliseconds`
   - `max`
   - `min`
+  - `setMilliseconds`
 ## v0.15.0 (26 Aug 2015)
 
 * Additions:

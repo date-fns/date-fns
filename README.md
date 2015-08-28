@@ -43,6 +43,8 @@ Code is fully documented, checkout source for reference.
 
 ### Milliseconds helpers
 
+* [`getMilliseconds`](./src/get_milliseconds.js) - returns seconds.
+* [`setMilliseconds`](./src/set_milliseconds.js) - sets seconds.
 * [`addMilliseconds`](./src/add_milliseconds.js) - add milliseconds to passed date.
 * [`subMilliseconds`](./src/sub_milliseconds.js) - subtracts milliseconds from passed date.
 
