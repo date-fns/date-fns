@@ -1,7 +1,7 @@
 var startOfISOYear = require('../start_of_iso_year')
 
 describe('startOfISOYear', function() {
-  it('returns date with first day of ISO week', function() {
+  it('returns date with first day of ISO year', function() {
     var result = startOfISOYear(new Date(2009, 0 /* Jan */, 1, 16, 0))
     expect(result).to.be.eql(new Date(2008, 11 /* Dec */, 29, 0, 0, 0, 0))
   })

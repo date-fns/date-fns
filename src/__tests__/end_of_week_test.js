@@ -1,7 +1,7 @@
 var endOfWeek = require('../end_of_week')
 
 describe('endOfWeek', function() {
-  it('returns date with time setted to 00:00:00 and date setted to first day in month', function() {
+  it('returns date with time setted to 23:59:59:999 and date setted to last day of week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date)
     expect(result).to.be.eql(
