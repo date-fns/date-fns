@@ -70,10 +70,13 @@ Code is fully documented, checkout source for reference.
 
 ### Hours helpers
 
+* [`getHours`](./src/get_hours.js) - returns hours.
+* [`setHours`](./src/set_hours.js) - sets hours.
 * [`startOfHour`](./src/start_of_hour.js) - returns start of an hour for passed date.
 * [`endOfHour`](./src/end_of_hour.js) - returns end of an hour for passed date.
 * [`addHours`](./src/add_hours.js) - add hours to passed date.
 * [`subHours`](./src/sub_hours.js) - subtracts hours from passed date.
+* [`isSameHour`](./src/is_same_hour.js) - are passed dates have the same hour?
 
 ### Day helpers
 

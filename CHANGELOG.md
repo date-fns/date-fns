@@ -3,13 +3,16 @@
 ## v0.16.0
 
 * Additions:
+  - `getHours`
   - `getMilliseconds`
   - `getMinutes`
   - `getSeconds`
+  - `isSameHour`
   - `isSameMinute`
   - `isSameSecond`
   - `max`
   - `min`
+  - `setHours`
   - `setMilliseconds`
   - `setMinutes`
   - `setSeconds`
