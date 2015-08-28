@@ -60,10 +60,13 @@ Code is fully documented, checkout source for reference.
 
 ### Minutes helpers
 
+* [`getMinutes`](./src/get_minutes.js) - returns minutes.
+* [`setMinutes`](./src/set_minutes.js) - sets minutes.
 * [`startOfMinute`](./src/start_of_minute.js) - returns start of a minute for passed date.
 * [`endOfMinute`](./src/end_of_minute.js) - returns end of a minute for passed date.
 * [`addMinutes`](./src/add_minutes.js) - add minutes to passed date.
 * [`subMinutes`](./src/sub_minutes.js) - subtracts minutes from passed date.
+* [`isSameMinute`](./src/is_same_minute.js) - are passed dates have the same minute?
 
 ### Hours helpers
 
