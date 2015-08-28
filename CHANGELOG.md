@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.16.0
+
+* Additions:
+  - `max`
+  - `min`
 ## v0.15.0 (26 Aug 2015)
 
 * Additions:

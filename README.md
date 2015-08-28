@@ -33,6 +33,8 @@ Code is fully documented, checkout source for reference.
 * [`isAfter`](./src/is_after.js) - is first date after second one?
 * [`compareAsc`](./src/compare_asc.js) - compares the two dates and returns -1, 0 or 1.
 * [`compareDesc`](./src/compare_desc.js) - compares the two dates reverse chronologicaly and returns -1, 0 or 1.
+* [`max`]('./src/max') - returns latest date.
+* [`min`]('./src/min') - returns earliest date.
 * [`parse`](./src/parse.js) - parse ISO-8601-formatted date.
 
 ### Range helpers
