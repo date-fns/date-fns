@@ -124,6 +124,9 @@ Code is fully documented, checkout source for reference.
 
 * [`getQuarter`](./src/get_quarter.js) - returns year quarter.
 * [`setQuarter`](./src/set_quarter.js) - sets year quarter.
+* [`startOfQuarter`](./src/start_of_quarter.js) - returns start of year quarter for passed date.
+* [`endOfQuarter`](./src/end_of_quarter.js) - returns end of year quarter for passed date.
+* [`lastDayOfQuarter`](./src/last_day_of_quarter.js) - returns last day of year quarter for passed date.
 
 ### Year helpers
 
