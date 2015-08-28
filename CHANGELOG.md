@@ -4,9 +4,12 @@
 
 * Additions:
   - `getMilliseconds`
+  - `getSeconds`
+  - `isSameSecond`
   - `max`
   - `min`
   - `setMilliseconds`
+  - `setSeconds`
 ## v0.15.0 (26 Aug 2015)
 
 * Additions:

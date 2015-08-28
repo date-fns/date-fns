@@ -50,10 +50,13 @@ Code is fully documented, checkout source for reference.
 
 ### Seconds helpers
 
+* [`getSeconds`](./src/get_seconds.js) - returns seconds.
+* [`setSeconds`](./src/set_seconds.js) - sets seconds.
 * [`startOfSecond`](./src/start_of_second.js) - returns start of a second for passed date.
 * [`endOfSecond`](./src/end_of_second.js) - returns end of a second for passed date.
 * [`addSeconds`](./src/add_seconds.js) - add seconds to passed date.
-* [`subSeconds`](./src/subseconds.js) - subtracts seconds from passed date.
+* [`subSeconds`](./src/sub_seconds.js) - subtracts seconds from passed date.
+* [`isSameSecond`](./src/is_same_second.js) - are passed dates have the same second?
 
 ### Minutes helpers
 
