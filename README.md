@@ -133,16 +133,19 @@ Code is fully documented, checkout source for reference.
 
 ### Year helpers
 
-* [`getISOYear`](./src/get_iso_year.js) - returns ISO week-numbering year.
+* [`getYear`](./src/set_year.js) - returns full year.
 * [`setYear`](./src/set_year.js) - sets full year.
+* [`getISOYear`](./src/get_iso_year.js) - returns ISO week-numbering year.
 * [`setISOYear`](./src/set_iso_year.js) - sets ISO week-numbering year.
-* [`addYears`](./src/add_years.js) - add specified number of years to passed date.
-* [`subYears`](./src/sub_years.js) - subtract specified number of years from passed date.
-* [`isSameYear`](./src/is_same_year.js) - are passed dates has the same year?
 * [`startOfYear`](./src/start_of_year.js) - returns start of year for passed date.
 * [`startOfISOYear`](./src/start_of_iso_year.js) - returns start of ISO week-numbering year for passed date.
 * [`endOfYear`](./src/end_of_year.js) - returns end of year for passed date.
 * [`lastDayOfYear`](./src/last_day_of_year.js) - returns last day of year for passed date.
+* [`addYears`](./src/add_years.js) - add specified number of years to passed date.
+* [`subYears`](./src/sub_years.js) - subtract specified number of years from passed date.
+* [`isSameYear`](./src/is_same_year.js) - are passed dates have the same year?
+* [`isLeapYear`](./src/is_leap_year.js) - returns true is passed date is in the leap year.
+* [`getISOWeeksInYear`]('./src/get_iso_weeks_in_year') - returns number of weeks in ISO week-numbering year.
 
 ### I18n
 

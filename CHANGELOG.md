@@ -10,10 +10,13 @@
   - `getDay`
   - `getDaysInMonth`
   - `getHours`
+  - `getISOWeeksInYear`
   - `getMilliseconds`
   - `getMinutes`
   - `getMonth`
   - `getSeconds`
+  - `getYear`
+  - `isLeapYear`
   - `isSameHour`
   - `isSameMinute`
   - `isSameQuarter`
