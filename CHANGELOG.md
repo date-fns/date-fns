@@ -6,9 +6,11 @@
   - `addWeeks`
   - `getDate`
   - `getDay`
+  - `getDaysInMonth`
   - `getHours`
   - `getMilliseconds`
   - `getMinutes`
+  - `getMonth`
   - `getSeconds`
   - `isSameHour`
   - `isSameMinute`
@@ -23,6 +25,8 @@
   - `setMinutes`
   - `setSeconds`
   - `subWeeks`
+* Improvements:
+  - Reuse `getDaysInMonth` inside of `setMonth`
 
 ## v0.15.0 (26 Aug 2015)
 

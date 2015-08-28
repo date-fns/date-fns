@@ -108,15 +108,17 @@ Code is fully documented, checkout source for reference.
 
 ### Month helpers
 
+* [`getMonth`](./src/get_month.js) - returns month index.
+* [`setMonth`](./src/set_month.js) - sets month index.
 * [`startOfMonth`](./src/start_of_month.js) - returns start of a month for passed date.
 * [`endOfMonth`](./src/end_of_month.js) - returns end of a month for passed date.
+* [`lastDayOfMonth`](./src/last_day_of_month.js) - returns last day of month for passed date.
 * [`addMonths`](./src/add_months.js) - add specified number of months to passed date.
-* [`subMonths`](./src/sub_months.js) - subtract specified number of days from passed date.
-* [`isSameMonth`](./src/is_same_month.js) - returns true if passed dates has same month (and year).
+* [`subMonths`](./src/sub_months.js) - subtract specified number of months from passed date.
+* [`isSameMonth`](./src/is_same_month.js) - returns true if passed dates have same month (and year).
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - return true if passed date is first day of month.
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - return true if passed date is last day of month.
-* [`setMonth`](./src/set_month.js) - sets month index.
-* [`lastDayOfMonth`](./src/last_day_of_month.js) - returns last day of month for passed date.
+* [`getDaysInMonth`](./src/get_days_in_month.js) - returns number of days in month.
 
 ### Quarter helpers
 
