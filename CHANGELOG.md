@@ -3,6 +3,7 @@
 ## v0.16.0
 
 * Additions:
+  - `addQuarters`
   - `addWeeks`
   - `endOfQuarter`
   - `getDate`
@@ -15,6 +16,7 @@
   - `getSeconds`
   - `isSameHour`
   - `isSameMinute`
+  - `isSameQuarter`
   - `isSameSecond`
   - `lastDayOfQuarter`
   - `lastDayOfWeek`
@@ -27,6 +29,7 @@
   - `setMinutes`
   - `setSeconds`
   - `startOfQuarter`
+  - `subQuarters`
   - `subWeeks`
 * Improvements:
   - Reuse `getDaysInMonth` inside of `setMonth`

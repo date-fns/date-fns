@@ -4,6 +4,7 @@ var dateFns = {
   addMilliseconds: require('./add_milliseconds'),
   addMinutes: require('./add_minutes'),
   addMonths: require('./add_months'),
+  addQuarters: require('./add_quarters'),
   addSeconds: require('./add_seconds'),
   addWeeks: require('./add_weeks'),
   addYears: require('./add_years'),
@@ -42,6 +43,7 @@ var dateFns = {
   isSameHour: require('./is_same_hour'),
   isSameMinute: require('./is_same_minute'),
   isSameMonth: require('./is_same_month'),
+  isSameQuarter: require('./is_same_quarter'),
   isSameSecond: require('./is_same_second'),
   isSameWeek: require('./is_same_week'),
   isSameYear: require('./is_same_year'),
@@ -81,6 +83,7 @@ var dateFns = {
   subMilliseconds: require('./sub_milliseconds'),
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months'),
+  subQuarters: require('./sub_quarters'),
   subSeconds: require('./sub_seconds'),
   subWeeks: require('./sub_weeks'),
   subYears: require('./sub_years')

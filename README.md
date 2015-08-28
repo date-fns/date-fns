@@ -127,6 +127,9 @@ Code is fully documented, checkout source for reference.
 * [`startOfQuarter`](./src/start_of_quarter.js) - returns start of year quarter for passed date.
 * [`endOfQuarter`](./src/end_of_quarter.js) - returns end of year quarter for passed date.
 * [`lastDayOfQuarter`](./src/last_day_of_quarter.js) - returns last day of year quarter for passed date.
+* [`addQuarters`](./src/add_quarters.js) - add specified number of year quarters to passed date.
+* [`subQuarters`](./src/sub_quarters.js) - subtract specified number of year quarters from passed date.
+* [`isSameQuarter`](./src/is_same_quarter.js) - are passed dates have the same year quarter?
 
 ### Year helpers
 
