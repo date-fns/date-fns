@@ -3,6 +3,8 @@
 ## v0.16.0
 
 * Additions:
+  - `getDate`
+  - `getDay`
   - `getHours`
   - `getMilliseconds`
   - `getMinutes`
@@ -12,6 +14,8 @@
   - `isSameSecond`
   - `max`
   - `min`
+  - `setDate`
+  - `setDay`
   - `setHours`
   - `setMilliseconds`
   - `setMinutes`

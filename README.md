@@ -80,16 +80,20 @@ Code is fully documented, checkout source for reference.
 
 ### Day helpers
 
+* [`getDate`](./src/get_date.js) - returns day of month.
+* [`setDate`](./src/set_date.js) - sets day of month.
+* [`getDay`](./src/get_day.js) - returns day of week.
+* [`setDay`](./src/set_day.js) - sets day of week.
 * [`getDayOfYear`](./src/get_day_of_year.js) - returns day of year.
 * [`setDayOfYear`](./src/set_day_of_year.js) - sets day of year.
-* [`isWeekend`](./src/is_weekend.js) - is passed date weekend?
-* [`isToday`](./src/is_today.js) - is passed date today?
 * [`startOfDay`](./src/start_of_day.js) - returns start of a day for passed date.
 * [`endOfDay`](./src/end_of_day.js) - returns end of a day for passed date.
 * [`addDays`](./src/add_days.js) - add specified number of days to passed date.
 * [`subDays`](./src/sub_days.js) - subtract specified number of days from passed date.
-* [`eachDay`](./src/each_day.js) - returns array of dates within specified range.
 * [`isSameDay`](./src/is_same_day.js) - are passed dates has the same day?
+* [`isWeekend`](./src/is_weekend.js) - is passed date weekend?
+* [`isToday`](./src/is_today.js) - is passed date today?
+* [`eachDay`](./src/each_day.js) - returns array of dates within specified range.
 
 ### Week helpers
 
