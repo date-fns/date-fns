@@ -101,6 +101,9 @@ Code is fully documented, checkout source for reference.
 * [`setISOWeek`](./src/set_iso_week.js) - sets ISO week index.
 * [`startOfWeek`](./src/start_of_week.js) - returns start of a week for passed date.
 * [`endOfWeek`](./src/end_of_week.js) - returns end of a week for passed date.
+* [`lastDayOfWeek`](./src/last_day_of_week.js) - returns last day of week for passed date.
+* [`addWeeks`](./src/add_weeks.js) - add specified number of weeks to passed date.
+* [`subWeeks`](./src/sub_weeks.js) - subtract specified number of weeks from passed date.
 * [`isSameWeek`](./src/is_same_week.js) - returns true if passed dates belongs to the same week.
 
 ### Month helpers

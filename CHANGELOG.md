@@ -3,6 +3,7 @@
 ## v0.16.0
 
 * Additions:
+  - `addWeeks`
   - `getDate`
   - `getDay`
   - `getHours`
@@ -12,6 +13,7 @@
   - `isSameHour`
   - `isSameMinute`
   - `isSameSecond`
+  - `lastDayOfWeek`
   - `max`
   - `min`
   - `setDate`
@@ -20,6 +22,7 @@
   - `setMilliseconds`
   - `setMinutes`
   - `setSeconds`
+  - `subWeeks`
 
 ## v0.15.0 (26 Aug 2015)
 

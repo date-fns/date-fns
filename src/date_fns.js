@@ -5,6 +5,7 @@ var dateFns = {
   addMinutes: require('./add_minutes'),
   addMonths: require('./add_months'),
   addSeconds: require('./add_seconds'),
+  addWeeks: require('./add_weeks'),
   addYears: require('./add_years'),
   compareAsc: require('./compare_asc'),
   compareDesc: require('./compare_desc'),
@@ -45,6 +46,7 @@ var dateFns = {
   isWeekend: require('./is_weekend'),
   isWithinRange: require('./is_within_range'),
   lastDayOfMonth: require('./last_day_of_month'),
+  lastDayOfWeek: require('./last_day_of_week'),
   lastDayOfYear: require('./last_day_of_year'),
   max: require('./max'),
   min: require('./min'),
@@ -75,6 +77,7 @@ var dateFns = {
   subMinutes: require('./sub_minutes'),
   subMonths: require('./sub_months'),
   subSeconds: require('./sub_seconds'),
+  subWeeks: require('./sub_weeks'),
   subYears: require('./sub_years')
 }
 
