@@ -1,3 +1,5 @@
+var getDaysInMonth = require('./get_days_in_month')
+
 /**
  * Sets month index to passed date.
  * @param {date|string} dirtyDate
@@ -8,7 +10,7 @@ var setMonth = function(dirtyDate, monthIndex) {
   var date = new Date(dirtyDate)
   var year = date.getFullYear()
   var day = date.getDate()
-  var daysInMonth = new Date(year, monthIndex + 1, 0).getDate()
+  var daysInMonth = getDaysInMonth(new Date(year, monthIndex))
   date.setMonth(monthIndex, Math.min(day, daysInMonth))
   return date
 }

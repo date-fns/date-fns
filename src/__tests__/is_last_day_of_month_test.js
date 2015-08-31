@@ -6,7 +6,7 @@ describe('isLastDayOfMonth', function() {
     expect(result).to.be.true
   })
 
-  it('returns true if passed is not last day of month', function() {
+  it('returns false if passed is not last day of month', function() {
     var result = isLastDayOfMonth(new Date(2014, 9 /* Oct */, 30))
     expect(result).to.be.false
   })

@@ -1,5 +1,42 @@
 # Changelog
 
+## v0.16.0
+
+* Additions:
+  - `addQuarters`
+  - `addWeeks`
+  - `endOfQuarter`
+  - `getDate`
+  - `getDay`
+  - `getDaysInMonth`
+  - `getHours`
+  - `getISOWeeksInYear`
+  - `getMilliseconds`
+  - `getMinutes`
+  - `getMonth`
+  - `getSeconds`
+  - `getYear`
+  - `isLeapYear`
+  - `isSameHour`
+  - `isSameMinute`
+  - `isSameQuarter`
+  - `isSameSecond`
+  - `lastDayOfQuarter`
+  - `lastDayOfWeek`
+  - `max`
+  - `min`
+  - `setDate`
+  - `setDay`
+  - `setHours`
+  - `setMilliseconds`
+  - `setMinutes`
+  - `setSeconds`
+  - `startOfQuarter`
+  - `subQuarters`
+  - `subWeeks`
+* Improvements:
+  - Reuse `getDaysInMonth` inside of `setMonth`
+
 ## v0.15.0 (26 Aug 2015)
 
 * Additions:
