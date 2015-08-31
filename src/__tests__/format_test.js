@@ -126,18 +126,33 @@ describe('format', function() {
   })
 
   describe('hours', function() {
-    it('a.m./p.m.', function() {
-      expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 a.m.')
+    it('am/pm', function() {
+      expect(format(this._date, 'hh:mm a')).to.be.equal('10:32 am')
     })
 
-    it('12 p.m.', function() {
+    it('12 pm', function() {
       var date = new Date(1986, 3, 4, 12, 00, 0, 900)
-      expect(format(date, 'hh:mm a')).to.be.equal('12:00 p.m.')
+      expect(format(date, 'hh:mm a')).to.be.equal('12:00 pm')
+    })
+
+    it('12 am', function() {
+      var date = new Date(1986, 3, 4, 00, 00, 0, 900)
+      expect(format(date, 'h:mm a')).to.be.equal('12:00 am')
     })
 
     it('12 a.m.', function() {
       var date = new Date(1986, 3, 4, 00, 00, 0, 900)
-      expect(format(date, 'h:mm a')).to.be.equal('12:00 a.m.')
+      expect(format(date, 'h:mm aa')).to.be.equal('12:00 a.m.')
+    })
+
+    it('12 p.m.', function() {
+      var date = new Date(1986, 3, 4, 12, 00, 0, 900)
+      expect(format(date, 'hh:mm aa')).to.be.equal('12:00 p.m.')
+    })
+
+    it('12PM', function() {
+      var date = new Date(1986, 3, 4, 12, 00, 0, 900)
+      expect(format(date, 'hh:mmA')).to.be.equal('12:00PM')
     })
   })
 
