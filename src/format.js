@@ -82,7 +82,7 @@ var formats = {
   'a': function() {
     return (this.getHours() / 12) >= 1 ? 'pm' : 'am'
   },
-  'aa': function(){
+  'aa': function() {
     return (this.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.'
   },
   'H': function() {
