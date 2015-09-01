@@ -36,6 +36,7 @@
   - `subWeeks`
 * Improvements:
   - Reuse `getDaysInMonth` inside of `setMonth`
+  - `format` now has new format key `aa`, which returns `a.m.`/`p.m.` as opposed to `a` that returns `am`/`pm`
 
 ## v0.15.0 (26 Aug 2015)
 
