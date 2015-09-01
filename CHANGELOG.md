@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.16.0
+## v0.16.0 (1 Sep 2015)
 
 * Additions:
   - `addQuarters`
