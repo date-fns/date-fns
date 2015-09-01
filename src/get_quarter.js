@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Returns quarter of year of passed date.
  * @param {date|string} dirtyDate
@@ -8,7 +10,7 @@
  * //=> 3
  */
 var getQuarter = function(dirtyDate) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }

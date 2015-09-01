@@ -126,19 +126,10 @@ describe('parse', function() {
     })
   })
 
-  describe('plain time', function() {
-    it('parses plain time', function() {
-      var result = parse('21:05:30')
-      expect(result.getHours()).to.be.equal(21)
-      expect(result.getMinutes()).to.be.equal(5)
-      expect(result.getSeconds()).to.be.equal(30)
-    })
-
-    it('parses float plain time', function() {
-      var result = parse('21:05.5')
-      expect(result.getHours()).to.be.equal(21)
-      expect(result.getMinutes()).to.be.equal(5)
-      expect(result.getSeconds()).to.be.equal(30)
+  describe('failure', function() {
+    it('fallback to `new Date` if string is not an ISO formatted date', function() {
+      var result = parse(new Date(2014, 8 /* Sep */, 1, 11).toString())
+      expect(result).to.be.eql(new Date(2014, 8 /* Sep */, 1, 11))
     })
   })
 })

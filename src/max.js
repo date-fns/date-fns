@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Returns latest of the dates.
  * @param {...date|string} dates
@@ -6,7 +8,7 @@
 var max = function() {
   var dirtyDates = Array.prototype.slice.call(arguments)
   var dates = dirtyDates.map(function(dirtyDate) {
-    return new Date(dirtyDate)
+    return parse(dirtyDate)
   })
   var latestDirtyDate = Math.max.apply(null, dates)
   return new Date(latestDirtyDate)

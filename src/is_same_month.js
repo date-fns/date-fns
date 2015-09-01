@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Are passed dates has the same month (and year)?
  * @param {date|string} dirtyDateLeft
@@ -5,8 +7,8 @@
  * @returns {boolean}
  */
 var isSameMonth = function(dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = new Date(dirtyDateLeft)
-  var dateRight = new Date(dirtyDateRight)
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
   return(
     dateLeft.getFullYear() == dateRight.getFullYear()
     && dateLeft.getMonth() == dateRight.getMonth()

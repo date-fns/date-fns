@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Sets day of month to passed date.
  * @param {date|string} dirtyDate
@@ -5,7 +7,7 @@
  * @returns {date} (new date)
  */
 var setDate = function(dirtyDate, dayOfMonth) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   date.setDate(dayOfMonth)
   return date
 }

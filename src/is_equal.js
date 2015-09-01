@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Are passed dates equal?
  * @param {date|string} dirtyLeftDate
@@ -5,8 +7,8 @@
  * @returns {boolean}
  */
 var isEqual = function(dirtyLeftDate, dirtyRightDate) {
-  var dateLeft = new Date(dirtyLeftDate)
-  var dateRight = new Date(dirtyRightDate)
+  var dateLeft = parse(dirtyLeftDate)
+  var dateRight = parse(dirtyRightDate)
   return dateLeft.getTime() == dateRight.getTime()
 }
 

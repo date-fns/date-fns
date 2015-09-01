@@ -1,3 +1,4 @@
+var parse = require('./parse')
 var startOfYear = require('./start_of_year')
 
 var MILLISECONDS_IN_DAY = 86400000
@@ -8,7 +9,7 @@ var MILLISECONDS_IN_DAY = 86400000
  * @returns {number} (day of year)
  */
 var getDayOfYear = function(dirtyDate) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var diff = date.valueOf() - startOfYear(date).valueOf()
   var dayOfYear = Math.floor(diff / MILLISECONDS_IN_DAY) + 1
   return dayOfYear

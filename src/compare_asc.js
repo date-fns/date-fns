@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Compares the two dates and returns -1, 0 or 1.
  * @param {date|string} dirtyDateLeft
@@ -5,9 +7,9 @@
  * @returns {number}
  */
 var compareAsc = function(dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = new Date(dirtyDateLeft)
+  var dateLeft = parse(dirtyDateLeft)
   var timeLeft = dateLeft.getTime()
-  var dateRight = new Date(dirtyDateRight)
+  var dateRight = parse(dirtyDateRight)
   var timeRight = dateRight.getTime()
 
   if (timeLeft < timeRight) {

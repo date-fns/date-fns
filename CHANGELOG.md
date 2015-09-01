@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.16.0
+## v0.16.0 (1 Sep 2015)
 
 * Additions:
   - `addQuarters`
@@ -36,6 +36,9 @@
   - `subWeeks`
 * Improvements:
   - Reuse `getDaysInMonth` inside of `setMonth`
+  - `format` now has new format key `aa`, which returns `a.m.`/`p.m.` as opposed to `a` that returns `am`/`pm`
+  - `parse` now fallbacks to `new Date` when argument is not an ISO formatted date
+  - Use `parse` to clean date arguments in all functions
 
 ## v0.15.0 (26 Aug 2015)
 

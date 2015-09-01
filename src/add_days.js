@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Adds specified number of days to passed date.
  * @param {data|string} dirtyDate
@@ -5,7 +7,7 @@
  * @returns {date} new date
  */
 var addDays = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   date.setDate(date.getDate() + amount)
   /**
    * add additional 5 hours to get next day,
