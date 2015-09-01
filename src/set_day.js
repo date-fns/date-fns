@@ -1,3 +1,4 @@
+var parse = require('./parse')
 var addDays = require('./add_days')
 
 /**
@@ -8,7 +9,7 @@ var addDays = require('./add_days')
  * @returns {date} (new date)
  */
 var setDay = function(dirtyDate, day, weekStartsAt) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var currentDay = date.getDay()
   var diff = (day < weekStartsAt ? 7 : 0) + day - currentDay
   return addDays(date, diff)

@@ -1,3 +1,4 @@
+var parse = require('./parse')
 var startOfWeek = require('./start_of_week')
 
 /**
@@ -14,7 +15,7 @@ var startOfWeek = require('./start_of_week')
  * //=> 2004
  */
 var getISOYear = function(dirtyDate) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var year = date.getFullYear()
   var startOfNextYear = startOfWeek(new Date(year + 1, 0, 4), 1)
   var startOfThisYear = startOfWeek(new Date(year, 0, 4), 1)

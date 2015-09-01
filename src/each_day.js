@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Returns array of dates withtin specified range.
  * @param {date|string} dirtyStart
@@ -5,11 +7,11 @@
  * @returns {date[]}
  */
 var eachDay = function(dirtyStart, dirtyEnd) {
-  var endTime = new Date(dirtyEnd).getTime()
+  var endTime = parse(dirtyEnd).getTime()
   var dates = []
   var tmpDate
 
-  var curDate = new Date(dirtyStart)
+  var curDate = parse(dirtyStart)
   curDate.setHours(0, 0, 0, 0)
 
   while (curDate.getTime() <= endTime) {

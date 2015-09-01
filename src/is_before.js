@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Is first date is before second one?
  * @param {date|string} dirtyDateToCompare
@@ -9,8 +11,8 @@
  * //=> false
  */
 var isBefore = function(dirtyDateToCompare, dirtyDate) {
-  var dateToCompare = new Date(dirtyDateToCompare)
-  var date = new Date(dirtyDate)
+  var dateToCompare = parse(dirtyDateToCompare)
+  var date = parse(dirtyDate)
   return dateToCompare.getTime() < date.getTime()
 }
 

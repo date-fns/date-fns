@@ -1,3 +1,4 @@
+var parse = require('./parse')
 var startOfISOYear = require('./start_of_iso_year')
 
 var MILLISECONDS_IN_WEEK = 604800000
@@ -15,7 +16,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 var getISOWeek = function(dirtyDate) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var diff = date.getTime() - startOfISOYear(date).getTime()
   return Math.floor(diff / MILLISECONDS_IN_WEEK) + 1
 }

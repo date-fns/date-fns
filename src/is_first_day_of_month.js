@@ -1,3 +1,4 @@
+var parse = require('./parse')
 var startOfDay = require('./start_of_day')
 var startOfMonth = require('./end_of_month')
 
@@ -7,7 +8,7 @@ var startOfMonth = require('./end_of_month')
  * @returns {boolean}
  */
 var isFirstDayOfMonth = function(dirtyDate) {
-  return new Date(dirtyDate).getDate() == 1
+  return parse(dirtyDate).getDate() == 1
 }
 
 module.exports = isFirstDayOfMonth

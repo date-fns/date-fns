@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Is passed date within given range?
  * @param {date|string} dirtyDate
@@ -18,11 +20,11 @@
  * //=> false
  */
 var isWithinRange = function(dirtyDate, dirtyStartDate, dirtyEndDate) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var time = date.getTime()
   return(
-    time >= new Date(dirtyStartDate).getTime()
-    && time <= new Date(dirtyEndDate).getTime()
+    time >= parse(dirtyStartDate).getTime()
+    && time <= parse(dirtyEndDate).getTime()
   )
 }
 

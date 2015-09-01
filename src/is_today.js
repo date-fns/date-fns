@@ -6,8 +6,7 @@ var startOfDay = require('./start_of_day')
  * @returns {boolean}
  */
 var isToday = function(dirtyDate) {
-  var date = new Date(dirtyDate)
-  return startOfDay(date).getTime() == startOfDay(new Date()).getTime()
+  return startOfDay(dirtyDate).getTime() == startOfDay(new Date()).getTime()
 }
 
 module.exports = isToday

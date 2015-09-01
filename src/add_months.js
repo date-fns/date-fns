@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Adds specified number of months to passed date.
  * @param {data|string} dirtyDate
@@ -5,7 +7,7 @@
  * @returns {date} new date
  */
 var addMonths = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   var desiredMonth = date.getMonth() + amount
   var daysInDesiredMonth = new Date(Date.UTC(date.getFullYear(), desiredMonth + 1, 0)).getUTCDate()
 

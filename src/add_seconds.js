@@ -1,3 +1,5 @@
+var parse = require('./parse')
+
 /**
  * Adds specified number of seconds to passed date.
  * @param {data|string} dirtyDate
@@ -5,7 +7,7 @@
  * @returns {date} new date
  */
 var addSeconds = function(dirtyDate, amount) {
-  var date = new Date(dirtyDate)
+  var date = parse(dirtyDate)
   date.setSeconds(date.getSeconds() + amount)
   return date
 }
