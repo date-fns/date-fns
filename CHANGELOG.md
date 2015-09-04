@@ -4,6 +4,7 @@
 
 * Additions:
   - `differenceInDays`
+  - `getTimeInMilliseconds`
 ## v0.16.0 (1 Sep 2015)
 
 * Additions:

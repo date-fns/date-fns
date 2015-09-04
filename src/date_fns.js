@@ -34,6 +34,7 @@ var dateFns = {
   getMonth: require('./get_month'),
   getQuarter: require('./get_quarter'),
   getSeconds: require('./get_seconds'),
+  getTimeInMilliseconds: require('./get_time_in_milliseconds'),
   getYear: require('./get_year'),
   isAfter: require('./is_after'),
   isBefore: require('./is_before'),
