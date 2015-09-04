@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.17.0
+
+* Additions:
+  - `differenceInDays`
 ## v0.16.0 (1 Sep 2015)
 
 * Additions:

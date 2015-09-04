@@ -10,6 +10,7 @@ var dateFns = {
   addYears: require('./add_years'),
   compareAsc: require('./compare_asc'),
   compareDesc: require('./compare_desc'),
+  differenceInDays: require('./difference_in_days'),
   eachDay: require('./each_day'),
   endOfDay: require('./end_of_day'),
   endOfHour: require('./end_of_hour'),
