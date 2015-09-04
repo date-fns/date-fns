@@ -1,8 +1,6 @@
 var parse = require('./parse')
 var getISOWeek = require('./get_iso_week')
-var startOfDay = require('./start_of_day')
-
-var MILLISECONDS_IN_WEEK = 604800000
+var getTimeInMilliseconds = require('./get_time_in_milliseconds')
 
 /**
  * Sets ISO week to given date, saving weekday number.
@@ -15,9 +13,11 @@ var MILLISECONDS_IN_WEEK = 604800000
  */
 var setISOWeek = function(dirtyDate, isoWeek) {
   var date = parse(dirtyDate)
+  var time = getTimeInMilliseconds(date)
   var diff = getISOWeek(date) - isoWeek
-  date.setTime(date.getTime() - diff * MILLISECONDS_IN_WEEK)
-  return startOfDay(date)
+  date.setDate(date.getDate() - diff * 7)
+  date.setHours(0, 0, 0, time)
+  return date
 }
 
 module.exports = setISOWeek

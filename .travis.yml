@@ -1,10 +1,15 @@
-sudo: false
+sudo: required
 language: node_js
 node_js:
   - '0.11'
+before_install:
+  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+  - tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+  - sudo mv phantomjs /usr/local/phantomjs/bin/phantomjs2
 script:
-  - npm run test-tz
   - npm run lint
+  - npm run test-tz
+  - npm run test-tz-extended
 cache:
   directories:
     - node_modules

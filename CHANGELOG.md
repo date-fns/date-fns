@@ -5,6 +5,12 @@
 * Additions:
   - `differenceInDays`
   - `getTimeInMilliseconds`
+* Improvements:
+  - `setISOWeek` now keeps time from original date
+  - Reuse `getDaysInMonth` inside of `addMonths`
+* Bug fixes:
+  - Fix a lot of DST-related bugs
+
 ## v0.16.0 (1 Sep 2015)
 
 * Additions:

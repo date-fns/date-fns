@@ -42,17 +42,22 @@ var parse = function(dateStr) {
   var date = parseDate(dateStrings.date)
 
   if (date) {
+    var time = 0
+    var offset
+
     if (dateStrings.time) {
-      var time = parseTime(dateStrings.time)
-      date.setMilliseconds(date.getMilliseconds() + time)
+      time = parseTime(dateStrings.time)
     }
 
     if (dateStrings.timezone) {
-      var offset = parseTimezone(dateStrings.timezone)
-      date.setMinutes(date.getMinutes() - date.getTimezoneOffset() - offset)
+      offset = parseTimezone(dateStrings.timezone)
+    } else {
+      // get offset accurate to hour in timezones that change offset
+      offset = new Date(date + time).getTimezoneOffset()
+      offset = new Date(date + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
     }
 
-    return date
+    return new Date(date + time + offset * MILLISECONDS_IN_MINUTE)
   } else {
     return new Date(dateStr)
   }
@@ -90,26 +95,26 @@ var parseDate = function(dateString) {
   // YYYY
   if (token = parseTokenYYYY.exec(dateString)) {
     var year = parseInt(token[1], 10)
-    return new Date(year, 0, 1)
+    return Date.UTC(year, 0, 1)
 
   // YYYY-MM
   } else if (token = parseTokenYYYYMM.exec(dateString)) {
     var year = parseInt(token[1], 10)
     var month = parseInt(token[2], 10) - 1
-    return new Date(year, month, 1)
+    return Date.UTC(year, month, 1)
 
   // YYYY-DDD or YYYYDDD
   } else if (token = parseTokenYYYYDDD.exec(dateString)) {
     var year = parseInt(token[1], 10)
     var dayOfYear = parseInt(token[2], 10)
-    return new Date(year, 0, dayOfYear)
+    return Date.UTC(year, 0, dayOfYear)
 
   // YYYY-MM-DD or YYYYMMDD
   } else if (token = parseTokenYYYYMMDD.exec(dateString)) {
     var year = parseInt(token[1], 10)
     var month = parseInt(token[2], 10) - 1
     var day = parseInt(token[3], 10)
-    return new Date(year, month, day)
+    return Date.UTC(year, month, day)
 
   // YYYY-Www or YYYYWww
   } else if (token = parseTokenYYYYWww.exec(dateString)) {
@@ -171,12 +176,12 @@ var parseTimezone = function(timezoneString) {
   // ±hh
   } else if (token = parseTokenTimezoneHH.exec(timezoneString)) {
     var absoluteOffset = parseInt(token[2], 10) * 60
-    offset = (token[1] == '+') ? absoluteOffset : -absoluteOffset
+    offset = (token[1] == '+') ? - absoluteOffset : absoluteOffset
 
   // ±hh:mm or ±hhmm
   } else if (token = parseTokenTimezoneHHMM.exec(timezoneString)) {
     var absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
-    offset = (token[1] == '+') ? absoluteOffset : -absoluteOffset
+    offset = (token[1] == '+') ? - absoluteOffset : absoluteOffset
   }
 
   return offset
@@ -185,10 +190,10 @@ var parseTimezone = function(timezoneString) {
 var dayOfISOYear = function(isoYear, week, day) {
   week = week || 0
   day = day || 0
-  var date = new Date(isoYear, 0, 4)
-  var diff = week * 7 + day + 1 - date.getDay()
-  date.setDate(date.getDate() + diff)
-  return date
+  var date = new Date(Date.UTC(isoYear, 0, 4))
+  var diff = week * 7 + day + 1 - date.getUTCDay()
+  date.setUTCDate(date.getUTCDate() + diff)
+  return date.getTime()
 }
 
 module.exports = parse

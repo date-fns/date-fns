@@ -12,7 +12,7 @@ var getISOWeeksInYear = function(dirtyDate) {
   var thisYear = startOfISOYear(dirtyDate)
   var nextYear = startOfISOYear(addWeeks(thisYear, 60))
   var diff = nextYear.valueOf() - thisYear.valueOf()
-  return diff / MILLISECONDS_IN_WEEK
+  return Math.round(diff / MILLISECONDS_IN_WEEK)
 }
 
 module.exports = getISOWeeksInYear
