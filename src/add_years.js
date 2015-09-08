@@ -1,5 +1,5 @@
 var parse = require('./parse')
-var getTimeInMilliseconds = require('./get_time_in_milliseconds')
+var getTimeSinceMidnight = require('./get_time_since_midnight')
 
 /**
  * Adds specified number of years to passed date.
@@ -9,7 +9,7 @@ var getTimeInMilliseconds = require('./get_time_in_milliseconds')
  */
 var addYears = function(dirtyDate, amount) {
   var date = parse(dirtyDate)
-  var time = getTimeInMilliseconds(date)
+  var time = getTimeSinceMidnight(date)
   date.setFullYear(date.getFullYear() + amount)
   date.setHours(0, 0, 0, time)
   return date

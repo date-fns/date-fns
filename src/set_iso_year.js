@@ -1,5 +1,5 @@
 var parse = require('./parse')
-var getTimeInMilliseconds = require('./get_time_in_milliseconds')
+var getTimeSinceMidnight = require('./get_time_since_midnight')
 var startOfISOYear = require('./start_of_iso_year')
 var differenceInDays = require('./difference_in_days')
 
@@ -18,7 +18,7 @@ var MILLISECONDS_IN_DAY = 86400000
 var setISOYear = function(dirtyDate, isoYear) {
   var date = parse(dirtyDate)
 
-  var time = getTimeInMilliseconds(date)
+  var time = getTimeSinceMidnight(date)
   var diff = differenceInDays(date, startOfISOYear(date))
 
   date = startOfISOYear(new Date(isoYear, 0, 4))

@@ -8,7 +8,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {date|string} dirtyDate
  * @returns {number}
  */
-var getTimeInMilliseconds = function(dirtyDate) {
+var getTimeSinceMidnight = function(dirtyDate) {
   var date = parse(dirtyDate)
 
   var hours = date.getHours()
@@ -23,5 +23,5 @@ var getTimeInMilliseconds = function(dirtyDate) {
   return time
 }
 
-module.exports = getTimeInMilliseconds
+module.exports = getTimeSinceMidnight
 

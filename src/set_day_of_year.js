@@ -1,5 +1,5 @@
 var parse = require('./parse')
-var getTimeInMilliseconds = require('./get_time_in_milliseconds')
+var getTimeSinceMidnight = require('./get_time_since_midnight')
 
 /**
  * Sets day of year to passed date.
@@ -9,7 +9,7 @@ var getTimeInMilliseconds = require('./get_time_in_milliseconds')
  */
 var setDayOfYear = function(dirtyDate, dayOfYear) {
   var date = parse(dirtyDate)
-  var time = getTimeInMilliseconds(date)
+  var time = getTimeSinceMidnight(date)
   date.setMonth(0)
   date.setDate(dayOfYear)
   date.setHours(0, 0, 0, time)

@@ -4,7 +4,7 @@
 
 * Additions:
   - `differenceInDays`
-  - `getTimeInMilliseconds`
+  - `getTimeSinceMidnight`
 * Improvements:
   - `setISOWeek` now keeps time from original date
   - Reuse `getDaysInMonth` inside of `addMonths`
