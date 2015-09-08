@@ -20,9 +20,10 @@
     "webpack": "^1.12.0"
   },
   "scripts": {
-    "test": "env PHANTOMJS_BIN='/usr/local/phantomjs/bin/phantomjs2' karma start config/karma.js",
+    "test": "karma start config/karma.js",
     "build": "webpack --config ./config/webpack.js",
     "lint": "eslint .",
+    "test-single-run": "./scripts/test_single_run.sh",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
     "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh"
   }

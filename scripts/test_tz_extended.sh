@@ -340,6 +340,6 @@ for tz in \
   "Pacific/Wallis"
 do
   printf "\nRun test in time zone $tz\n"
-  env TZ=$tz npm test -- --single-run || exit 1
+  env TZ=$tz npm run test-single-run || exit 1
 done
 
