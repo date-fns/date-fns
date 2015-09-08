@@ -1,4 +1,5 @@
 var parse = require('./parse')
+var getTimeSinceMidnight = require('./get_time_since_midnight')
 
 /**
  * Adds specified number of days to passed date.
@@ -8,13 +9,9 @@ var parse = require('./parse')
  */
 var addDays = function(dirtyDate, amount) {
   var date = parse(dirtyDate)
+  var time = getTimeSinceMidnight(date)
   date.setDate(date.getDate() + amount)
-  /**
-   * add additional 5 hours to get next day,
-   * because of possible troubles with daylight savings dates
-   */
-  date = new Date(date.setTime(date.getTime() + 5 * 60 * 60 * 1000))
-  date = new Date(date.setHours(0, 0, 0, 0))
+  date.setHours(0, 0, 0, time)
   return date
 }
 

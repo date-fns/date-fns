@@ -23,6 +23,8 @@
     "test": "karma start config/karma.js",
     "build": "webpack --config ./config/webpack.js",
     "lint": "eslint .",
-    "test-tz": "env TEST_TZ=true ./scripts/tz_test.sh"
+    "test-single-run": "./scripts/test_single_run.sh",
+    "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
+    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh"
   }
 }

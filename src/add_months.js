@@ -1,4 +1,6 @@
 var parse = require('./parse')
+var getTimeSinceMidnight = require('./get_time_since_midnight')
+var getDaysInMonth = require('./get_days_in_month')
 
 /**
  * Adds specified number of months to passed date.
@@ -8,11 +10,12 @@ var parse = require('./parse')
  */
 var addMonths = function(dirtyDate, amount) {
   var date = parse(dirtyDate)
+  var time = getTimeSinceMidnight(date)
   var desiredMonth = date.getMonth() + amount
-  var daysInDesiredMonth = new Date(Date.UTC(date.getFullYear(), desiredMonth + 1, 0)).getUTCDate()
+  var daysInMonth = getDaysInMonth(new Date(date.getFullYear(), desiredMonth, 1))
 
-  date.setDate(Math.min(daysInDesiredMonth, date.getDate()))
-  date.setMonth(desiredMonth)
+  date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))
+  date.setHours(0, 0, 0, time)
   return date
 }
 

@@ -21,10 +21,5 @@ describe('setISOWeek', function() {
     setISOWeek(date, 52)
     expect(date).to.be.eql(new Date(2014, 6 /* Jul */, 2))
   })
-
-  it('sets hours and minutes to the start of the day', function() {
-    var result = setISOWeek(new Date(2015, 0, 1, 20, 0), 1)
-    expect(result).to.be.eql(new Date(2015, 0, 1, 0, 0, 0))
-  })
 })
 

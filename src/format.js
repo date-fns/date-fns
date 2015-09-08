@@ -1,5 +1,4 @@
-var startOfDay = require('./start_of_day')
-var startOfYear = require('./start_of_year')
+var getDayOfYear = require('./get_day_of_year')
 var parse = require('./parse')
 
 var NUMBER_OF_MS_IN_DAY = 864e5
@@ -44,9 +43,7 @@ var formats = {
     return leftZeroFill(this.getDate(), 2)
   },
   'DDD': function() {
-    var diffWithStartOfYear
-      = startOfDay(this).getTime() - startOfYear(this).getTime()
-    return Math.floor(diffWithStartOfYear / NUMBER_OF_MS_IN_DAY) + 1
+    return getDayOfYear(this)
   },
   'DDDD': function() {
     return leftZeroFill(formats['DDD'].apply(this), 3)

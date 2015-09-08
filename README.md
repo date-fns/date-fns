@@ -47,6 +47,7 @@ Code is fully documented, checkout source for reference.
 * [`setMilliseconds`](./src/set_milliseconds.js) - sets seconds.
 * [`addMilliseconds`](./src/add_milliseconds.js) - add milliseconds to passed date.
 * [`subMilliseconds`](./src/sub_milliseconds.js) - subtracts milliseconds from passed date.
+* [`getTimeSinceMidnight`](./src/get_time_since_midnight.js) - returns time since midnight in milliseconds.
 
 ### Seconds helpers
 
@@ -94,6 +95,7 @@ Code is fully documented, checkout source for reference.
 * [`isWeekend`](./src/is_weekend.js) - is passed date weekend?
 * [`isToday`](./src/is_today.js) - is passed date today?
 * [`eachDay`](./src/each_day.js) - returns array of dates within specified range.
+* [`differenceInDays`](./src/difference_in_days.js) - returns number of days between dates.
 
 ### Week helpers
 
