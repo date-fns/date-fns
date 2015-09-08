@@ -33,7 +33,10 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * @return {date} parsed date in local time zone.
  */
 var parse = function(dateStr) {
-  if (typeof dateStr !== 'string') {
+  if (dateStr instanceof Date) {
+    // Prevent dates to lose milliseconds when passed to new Date() in IE10
+    return new Date(dateStr.getTime())
+  } else if (typeof dateStr !== 'string') {
     return new Date(dateStr)
   } 
 
