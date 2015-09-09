@@ -1,11 +1,32 @@
 var webpackConfig = require('./webpack')
 
 var sauceLabsLaunchers = {
+  ie8: {
+    base: 'SauceLabs',
+    browserName: 'Internet Explorer',
+    version: '8',
+    platform: 'Windows 7'
+  },
+
+  ie9: {
+    base: 'SauceLabs',
+    browserName: 'Internet Explorer',
+    version: '9',
+    platform: 'Windows 7'
+  },
+
   ie10: {
     base: 'SauceLabs',
     browserName: 'Internet Explorer',
-    platform: 'Windows 7',
-    version: '10'
+    version: '10',
+    platform: 'Windows 7'
+  },
+
+  ie11: {
+    base: 'SauceLabs',
+    browserName: 'Internet Explorer',
+    version: '11',
+    platform: 'Windows 8.1'
   }
 }
 

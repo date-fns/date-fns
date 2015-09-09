@@ -29,6 +29,7 @@
     "lint": "eslint .",
     "test-single-run": "./scripts/test_single_run.sh",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
-    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh"
+    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
+    "test-sauce": "env TEST_SAUCE=true ./scripts/test_single_run.sh"
   }
 }
