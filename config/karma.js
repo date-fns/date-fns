@@ -2,9 +2,12 @@ var webpackConfig = require('./webpack')
 
 var config = function(config) {
   config.set({
-    frameworks: ['mocha', 'chai-sinon'],
-    files: ['../test.js'],
-    preprocessors: {'../test.js': ['webpack']},
+    frameworks: ['mocha', 'sinon', 'es5-shim'],
+    files: [
+      '../node_modules/power-assert/build/power-assert.js',
+      '../test.js'
+    ],
+    preprocessors: {'../test.js': ['webpack', 'espower']},
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: {

@@ -6,7 +6,7 @@ describe('eachDay', function() {
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 12)
     )
-    expect(result).to.be.eql([
+    assert.deepEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -22,7 +22,7 @@ describe('eachDay', function() {
       new Date(2014, 9 /* Oct */, 6).toISOString(),
       new Date(2014, 9 /* Oct */, 12).toISOString()
     )
-    expect(result).to.be.eql([
+    assert.deepEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -38,7 +38,7 @@ describe('eachDay', function() {
       new Date(2014, 9 /* Oct */, 6).getTime(),
       new Date(2014, 9 /* Oct */, 12).getTime()
     )
-    expect(result).to.be.eql([
+    assert.deepEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),

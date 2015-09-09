@@ -6,7 +6,7 @@ describe('isSameMonth', function() {
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed dates has different months', function() {
@@ -14,7 +14,7 @@ describe('isSameMonth', function() {
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -22,7 +22,7 @@ describe('isSameMonth', function() {
       new Date(2014, 8 /* Sep */, 2).toISOString(),
       new Date(2014, 8 /* Sep */, 25).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -30,7 +30,7 @@ describe('isSameMonth', function() {
       new Date(2014, 8 /* Sep */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

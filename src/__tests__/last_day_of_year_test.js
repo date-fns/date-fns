@@ -4,7 +4,7 @@ describe('lastDayOfYear', function() {
   it('returns date with time setted to 00:00:00.000 and date setted to last day of year', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfYear(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 11 /* Dec */, 31)
     )
   })
@@ -12,7 +12,7 @@ describe('lastDayOfYear', function() {
   it('accepts string', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfYear(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 11 /* Dec */, 31)
     )
   })
@@ -20,7 +20,7 @@ describe('lastDayOfYear', function() {
   it('accepts timestamp', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = lastDayOfYear(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 11 /* Dec */, 31)
     )
   })
@@ -28,7 +28,7 @@ describe('lastDayOfYear', function() {
   it('does not mutate original date', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfYear(date)
-    expect(date).to.be.eql(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 })
 

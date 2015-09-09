@@ -4,7 +4,7 @@ describe('lastDayOfMonth', function() {
   it('returns date with time setted to 00:00:00.000 and date setted to last day of month', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfMonth(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 8 /* Sep */, 30)
     )
   })
@@ -12,7 +12,7 @@ describe('lastDayOfMonth', function() {
   it('accepts string', function() {
     var date = new Date(2014, 11 /* Dec */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfMonth(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 11 /* Dec */, 31)
     )
   })
@@ -20,7 +20,7 @@ describe('lastDayOfMonth', function() {
   it('accepts timestamp', function() {
     var date = new Date(2014, 7 /* Aug */, 2, 11, 55, 0).getTime()
     var result = lastDayOfMonth(date)
-    expect(result).to.be.eql(
+    assert.deepEqual(result, 
       new Date(2014, 7 /* Aug */, 31)
     )
   })
@@ -28,14 +28,14 @@ describe('lastDayOfMonth', function() {
   it('does not mutate original date', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfMonth(date)
-    expect(date).to.be.eql(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   describe('edge cases', function() {
     it('works for February of leap year', function() {
       var date = new Date(2012, 1 /* Feb */, 11, 11, 55, 0)
       var result = lastDayOfMonth(date)
-      expect(result).to.be.eql(
+      assert.deepEqual(result, 
         new Date(2012, 1 /* Feb */, 29)
       )
     })
@@ -43,7 +43,7 @@ describe('lastDayOfMonth', function() {
     it('works for February of non-leap year', function() {
       var date = new Date(2014, 1 /* Feb */, 11, 11, 55, 0)
       var result = lastDayOfMonth(date)
-      expect(result).to.be.eql(
+      assert.deepEqual(result, 
         new Date(2014, 1 /* Feb */, 28)
       )
     })

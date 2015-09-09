@@ -6,7 +6,7 @@ describe('isAfter', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if first date is before second one ', function() {
@@ -14,7 +14,7 @@ describe('isAfter', function() {
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('returns false if first date is equal to second one ', function() {
@@ -22,7 +22,7 @@ describe('isAfter', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -30,7 +30,7 @@ describe('isAfter', function() {
       new Date(1989, 6 /* Jul */, 10).toISOString(),
       new Date(1987, 1 /* Feb */, 11).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -38,7 +38,7 @@ describe('isAfter', function() {
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

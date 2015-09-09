@@ -6,7 +6,7 @@ describe('isSameWeek', function() {
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed dates do not belongs to the same week', function() {
@@ -14,7 +14,7 @@ describe('isSameWeek', function() {
       new Date(2014, 7 /* Aug */, 30),
       new Date(2014, 8 /* Sep */, 4)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allow to specify when week starts', function() {
@@ -23,7 +23,7 @@ describe('isSameWeek', function() {
       new Date(2014, 8 /* Sep */, 4),
       1
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -31,7 +31,7 @@ describe('isSameWeek', function() {
       new Date(2014, 7 /* Aug */, 31).toISOString(),
       new Date(2014, 8 /* Sep */, 4).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -39,7 +39,7 @@ describe('isSameWeek', function() {
       new Date(2014, 7 /* Aug */, 31).getTime(),
       new Date(2014, 8 /* Sep */, 4).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

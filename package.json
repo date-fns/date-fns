@@ -12,11 +12,14 @@
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "karma": "^0.13.9",
-    "karma-chai-sinon": "^0.1.3",
+    "karma-es5-shim": "0.0.4",
+    "karma-espower-preprocessor": "0.0.4",
     "karma-mocha": "^0.1.9",
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sinon": "^1.0.4",
     "karma-webpack": "^1.7.0",
+    "power-assert": "^1.0.0",
     "webpack": "^1.12.0"
   },
   "scripts": {

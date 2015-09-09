@@ -6,7 +6,7 @@ describe('compareDesc', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.equal(0)
+    assert(result === 0)
   })
 
   it('returns 1 if first date before second one', function() {
@@ -14,7 +14,7 @@ describe('compareDesc', function() {
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.equal(1)
+    assert(result === 1)
   })
 
   it('returns -1 if first date after second one', function() {
@@ -22,7 +22,7 @@ describe('compareDesc', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     )
-    expect(result).to.equal(-1)
+    assert(result === -1)
   })
 
   it('sorts dates array in reverse chronological order when passed as argument to Array.prototype.sort()', function() {
@@ -40,7 +40,7 @@ describe('compareDesc', function() {
 
     var result = unsortedArray.sort(compareDesc)
 
-    expect(result).to.eql(sortedArray)
+    assert.deepEqual(result, sortedArray)
   })
 
   it('allows to pass string', function() {
@@ -48,7 +48,7 @@ describe('compareDesc', function() {
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
     )
-    expect(result).to.equal(1)
+    assert(result === 1)
   })
 
   it('allows to pass timestamp', function() {
@@ -56,7 +56,7 @@ describe('compareDesc', function() {
       new Date(1987, 1 /* Feb */, 11).getTime(),
       new Date(1989, 6 /* Jul */, 10).getTime()
     )
-    expect(result).to.equal(1)
+    assert(result === 1)
   })
 })
 
