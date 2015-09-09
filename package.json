@@ -17,6 +17,7 @@
     "karma-mocha": "^0.1.9",
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
+    "karma-sauce-launcher": "^0.2.14",
     "karma-sinon": "^1.0.4",
     "karma-webpack": "^1.7.0",
     "power-assert": "^1.0.0",
