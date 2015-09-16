@@ -11,7 +11,10 @@
   "devDependencies": {
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
+    "grunt": "^0.4.5",
     "karma": "^0.13.9",
+    "karma-benchmark": "^0.4.0",
+    "karma-benchmark-reporter": "^0.1.1",
     "karma-es5-shim": "0.0.4",
     "karma-espower-preprocessor": "0.0.4",
     "karma-mocha": "^0.1.9",
@@ -20,6 +23,7 @@
     "karma-sauce-launcher": "^0.2.14",
     "karma-sinon": "^1.0.4",
     "karma-webpack": "^1.7.0",
+    "moment": "^2.10.6",
     "power-assert": "^1.0.0",
     "webpack": "^1.12.0"
   },
@@ -30,6 +34,7 @@
     "test-single-run": "./scripts/test_single_run.sh",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
     "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
-    "test-sauce": "env TEST_SAUCE=true ./scripts/test_single_run.sh"
+    "test-sauce": "env TEST_SAUCE=true ./scripts/test_single_run.sh",
+    "test-perf": "env TEST_PERF=true ./scripts/test_single_run.sh"
   }
 }

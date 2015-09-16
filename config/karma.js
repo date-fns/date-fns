@@ -30,14 +30,35 @@ var sauceLabsLaunchers = {
   }
 }
 
+var frameworks
+var files
+var reporters
+
+if (process.env.TEST_PERF) {
+  frameworks = ['benchmark', 'mocha', 'sinon', 'es5-shim']
+  files = [
+    '../node_modules/power-assert/build/power-assert.js',
+    '../node_modules/moment/moment.js',
+    '../test_perf.js'
+  ]
+  reporters = ['benchmark']
+} else {
+  frameworks = ['mocha', 'sinon', 'es5-shim'],
+  files = [
+    '../node_modules/power-assert/build/power-assert.js',
+    '../test.js'
+  ]
+  reporters = process.env.TEST_SAUCE ? ['dots', 'saucelabs'] : ['mocha']
+}
+
 var config = function(config) {
   config.set({
-    frameworks: ['mocha', 'sinon', 'es5-shim'],
-    files: [
-      '../node_modules/power-assert/build/power-assert.js',
-      '../test.js'
-    ],
-    preprocessors: {'../test.js': ['webpack', 'espower']},
+    frameworks: frameworks,
+    files: files,
+    preprocessors: {
+      '../test.js': ['webpack', 'espower'],
+      '../test_perf.js': ['webpack', 'espower']
+    },
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: {
@@ -57,7 +78,8 @@ var config = function(config) {
 
     customLaunchers: process.env.TEST_SAUCE ? sauceLabsLaunchers : {},
     browsers: process.env.TEST_SAUCE ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
-    reporters: process.env.TEST_SAUCE ? ['dots', 'saucelabs'] : ['mocha']
+    reporters: reporters,
+    browserNoActivityTimeout: process.env.TEST_PERF ? 100000 : 10000
   })
 }
 
