@@ -10,6 +10,7 @@
   "dependencies": {},
   "devDependencies": {
     "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "js-beautify": "^1.5.10",
