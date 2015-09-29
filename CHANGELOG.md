@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.17.0
+## v0.17.0 (29 Sep 2015)
 
 * Additions:
   - `differenceInDays`
@@ -8,9 +8,12 @@
 * Improvements:
   - `setISOWeek` now keeps time from original date
   - Reuse `getDaysInMonth` inside of `addMonths`
+  - Complete UMD package (for Bower)
 * Bug fixes:
-  - Fix a lot of bugs appearing when date is modifying into other time zone (e.g., when adding months and original date is in DST but new date is not)
-  - Prevent instances of Date to lose milliseconds value when passed to `parse` in IE10
+  - Fix a lot of bugs appearing when date is modifying into other time zone
+    (e.g., when adding months and original date is in DST but new date is not)
+  - Prevent instances of Date to lose milliseconds value when passed to
+    `parse` in IE10
 
 ## v0.16.0 (1 Sep 2015)
 
