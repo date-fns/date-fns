@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
   "repository": "https://github.com/js-fns/date-fns",
@@ -12,6 +12,7 @@
     "babel": "^5.8.23",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
+    "js-beautify": "^1.5.10",
     "karma": "^0.13.9",
     "karma-chai-sinon": "^0.1.3",
     "karma-mocha": "^0.1.9",
@@ -27,6 +28,7 @@
     "test-single-run": "./scripts/test_single_run.sh",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
     "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
-    "generate-index": "babel-node ./scripts/generate_index"
+    "generate-index": "babel-node ./scripts/generate_index",
+    "sync-versions": "babel-node ./scripts/sync_versions"
   }
 }
