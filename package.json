@@ -9,6 +9,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "babel": "^5.8.23",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "karma": "^0.13.9",
@@ -25,6 +26,7 @@
     "lint": "eslint .",
     "test-single-run": "./scripts/test_single_run.sh",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
-    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh"
+    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
+    "generate-index": "babel-node ./scripts/generate_index"
   }
 }

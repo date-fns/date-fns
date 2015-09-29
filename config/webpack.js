@@ -3,7 +3,7 @@ var path = require('path')
 var config = {
   cache: true,
   entry: {
-    'date_fns': './src/date_fns.js'
+    'date_fns': './index.js'
   },
   output: process.env.NODE_ENV == 'test' ? {path: '/'} : {
     path: path.join(process.cwd(), 'dist'),
