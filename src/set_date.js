@@ -1,5 +1,4 @@
 var parse = require('./parse')
-var getTimeSinceMidnight = require('./get_time_since_midnight')
 
 /**
  * Sets day of month to passed date.
@@ -9,9 +8,7 @@ var getTimeSinceMidnight = require('./get_time_since_midnight')
  */
 var setDate = function(dirtyDate, dayOfMonth) {
   var date = parse(dirtyDate)
-  var time = getTimeSinceMidnight(date)
   date.setDate(dayOfMonth)
-  date.setHours(0, 0, 0, time)
   return date
 }
 
