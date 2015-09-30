@@ -11,7 +11,8 @@ var addMonths = function(dirtyDate, amount) {
   var date = parse(dirtyDate)
   var desiredMonth = date.getMonth() + amount
   var daysInMonth = getDaysInMonth(new Date(date.getFullYear(), desiredMonth, 1))
-
+  // Set the last day of the new month
+  // if the original date was the last day of the longer month
   date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))
   return date
 }
