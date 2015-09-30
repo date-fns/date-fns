@@ -34,7 +34,6 @@ module.exports = {
   getMonth: require('./src/get_month'),
   getQuarter: require('./src/get_quarter'),
   getSeconds: require('./src/get_seconds'),
-  getTimeSinceMidnight: require('./src/get_time_since_midnight'),
   getYear: require('./src/get_year'),
   isAfter: require('./src/is_after'),
   isBefore: require('./src/is_before'),

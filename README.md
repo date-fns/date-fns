@@ -47,7 +47,6 @@ Code is fully documented, checkout source for reference.
 * [`setMilliseconds`](./src/set_milliseconds.js) - sets seconds.
 * [`addMilliseconds`](./src/add_milliseconds.js) - add milliseconds to passed date.
 * [`subMilliseconds`](./src/sub_milliseconds.js) - subtracts milliseconds from passed date.
-* [`getTimeSinceMidnight`](./src/get_time_since_midnight.js) - returns time since midnight in milliseconds.
 
 ### Seconds helpers
 
