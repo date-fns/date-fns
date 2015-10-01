@@ -3,7 +3,7 @@
   "version": "0.17.0",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
-  "repository": "https://github.com/js-fns/date-fns",
+  "repository": "https://github.com/date-fns/date-fns",
   "engine": {
     "node": ">= 0.11"
   },

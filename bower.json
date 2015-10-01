@@ -1,7 +1,7 @@
 {
   "name": "date-fns",
   "version": "0.17.0",
-  "homepage": "https://github.com/kossnocorp/date-fns",
+  "homepage": "https://github.com/date-fns/date-fns",
   "authors": ["Sasha Koss <kossnocorp@gmail.com>"],
   "description": "Date helpers",
   "main": "dist/date_fns.js",
