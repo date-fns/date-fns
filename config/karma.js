@@ -1,32 +1,68 @@
 var webpackConfig = require('./webpack')
 
-var sauceLabsLaunchers = {
+var browserStackLaunchers = {
+  chrome: {
+    'base': 'BrowserStack',
+    'browser': 'chrome',
+    'browser_version': '44',
+    'os': 'Windows',
+    'os_version': '8.1',
+  },
+
+  firefox: {
+    'base': 'BrowserStack',
+    'browser': 'firefox',
+    'browser_version': '40',
+    'os': 'Windows',
+    'os_version': '8.1',
+  },
+
   ie8: {
-    base: 'SauceLabs',
-    browserName: 'Internet Explorer',
-    version: '8',
-    platform: 'Windows 7'
+    'base': 'BrowserStack',
+    'browser': 'ie',
+    'browser_version': '8.0',
+    'os': 'Windows',
+    'os_version': '7'
   },
 
   ie9: {
-    base: 'SauceLabs',
-    browserName: 'Internet Explorer',
-    version: '9',
-    platform: 'Windows 7'
+    'base': 'BrowserStack',
+    'browser': 'ie',
+    'browser_version': '9.0',
+    'os': 'Windows',
+    'os_version': '7'
   },
 
   ie10: {
-    base: 'SauceLabs',
-    browserName: 'Internet Explorer',
-    version: '10',
-    platform: 'Windows 7'
+    'base': 'BrowserStack',
+    'browser': 'ie',
+    'browser_version': '10.0',
+    'os': 'Windows',
+    'os_version': '7'
   },
 
   ie11: {
-    base: 'SauceLabs',
-    browserName: 'Internet Explorer',
-    version: '11',
-    platform: 'Windows 8.1'
+    'base': 'BrowserStack',
+    'browser': 'ie',
+    'browser_version': '11.0',
+    'os': 'Windows',
+    'os_version': '8.1'
+  },
+
+  edge: {
+    'base': 'BrowserStack',
+    'browser': 'edge',
+    'browser_version': '12.0',
+    'os': 'Windows',
+    'os_version': '10'
+  },
+
+  android: {
+    'base': 'BrowserStack',
+    'browser': 'android',
+    'device': 'Samsung Galaxy S5',
+    'os': 'android',
+    'os_version': '4.4'
   }
 }
 
@@ -49,15 +85,18 @@ var config = function(config) {
       }
     },
 
-    sauceLabs: {testName: 'date-fns'},
+    // We are limited in the number of parallel VMs in BrowserStack (2)
+    // and Karma don't know how to limit parallel browser instances
+    // so waiting time must be insanely high.
+    browserNoActivityTimeout: process.env.TEST_BROWSERSTACK ? 60 * 60 * 1000 : 10000,
 
     mochaReporter: {
       output: process.env.TEST_TZ ? 'minimal' : 'full'
     },
 
-    customLaunchers: process.env.TEST_SAUCE ? sauceLabsLaunchers : {},
-    browsers: process.env.TEST_SAUCE ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
-    reporters: process.env.TEST_SAUCE ? ['dots', 'saucelabs'] : ['mocha']
+    customLaunchers: process.env.TEST_BROWSERSTACK ? browserStackLaunchers : {},
+    browsers: process.env.TEST_BROWSERSTACK ? Object.keys(browserStackLaunchers) : ['PhantomJS'],
+    reporters: process.env.TEST_BROWSERSTACK ? ['dots'] : ['mocha']
   })
 }
 
