@@ -120,7 +120,7 @@ describe('format', function() {
     })
 
     it('ISO', function() {
-      assert(format(this._date, 'E') === '6')
+      assert(format(this._date, 'E') === '5')
     })
 
     it('parses ok for different variants', function() {
