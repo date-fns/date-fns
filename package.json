@@ -12,6 +12,7 @@
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "karma": "^0.13.9",
+    "karma-cli": "^0.1.1",
     "karma-es5-shim": "0.0.4",
     "karma-espower-preprocessor": "0.0.4",
     "karma-mocha": "^0.1.9",
