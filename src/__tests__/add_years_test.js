@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var addYears = require('../add_years')
 
 describe('addYears', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var setISOWeek = require('../set_iso_week')
 
 describe('setISOWeek', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getISOWeeksInYear = require('../get_iso_weeks_in_year')
 
 describe('getISOWeeksInYear', function() {

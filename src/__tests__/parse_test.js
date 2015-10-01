@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var parse = require('../parse')
 
 describe('parse', function() {

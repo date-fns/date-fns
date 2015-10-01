@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var lastDayOfQuarter = require('../last_day_of_quarter')
 
 describe('lastDayOfQuarter', function() {

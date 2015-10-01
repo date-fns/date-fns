@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getDaysInMonth = require('../get_days_in_month')
 
 describe('getDaysInMonth', function() {

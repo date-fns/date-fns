@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getTimeSinceMidnight = require('../get_time_since_midnight')
 
 describe('getTimeSinceMidnight', function() {

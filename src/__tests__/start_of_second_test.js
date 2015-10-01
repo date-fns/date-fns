@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var startOfSecond = require('../start_of_second')
 
 describe('startOfSecond', function() {

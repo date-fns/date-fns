@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isEqual = require('../is_equal')
 
 describe('isEqual', function() {

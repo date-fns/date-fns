@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var min = require('../min')
 
 describe('min', function() {

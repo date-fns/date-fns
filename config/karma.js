@@ -61,11 +61,8 @@ var browserStackLaunchers = {
 var config = function(config) {
   config.set({
     frameworks: ['mocha', 'sinon', 'es5-shim'],
-    files: [
-      '../node_modules/power-assert/build/power-assert.js',
-      '../test.js'
-    ],
-    preprocessors: {'../test.js': ['webpack', 'espower']},
+    files: process.env.USE_STATIC_TESTS ? ['../tmp/tests.js'] : ['../test.js'],
+    preprocessors: process.env.USE_STATIC_TESTS ? {'../tmp/tests.js': ['sourcemap']} : {'../test.js': ['webpack', 'sourcemap']},
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: {

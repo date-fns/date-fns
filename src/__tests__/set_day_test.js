@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var setDay = require('../set_day')
 
 describe('setDay', function() {

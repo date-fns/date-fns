@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subMonths = require('../sub_months')
 
 describe('subMonths', function() {

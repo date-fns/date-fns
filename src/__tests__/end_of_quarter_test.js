@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var endOfQuarter = require('../end_of_quarter')
 
 describe('endOfQuarter', function() {

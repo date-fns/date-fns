@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var compareAsc = require('../compare_asc')
 
 describe('compareAsc', function() {

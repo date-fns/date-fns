@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getDate = require('../get_date')
 
 describe('getDate', function() {

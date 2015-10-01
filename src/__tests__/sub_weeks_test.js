@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subWeeks = require('../sub_weeks')
 
 describe('subWeeks', function() {

@@ -1,10 +1,11 @@
+var assert = require('power-assert')
 var endOfWeek = require('../end_of_week')
 
 describe('endOfWeek', function() {
   it('returns date with time setted to 23:59:59:999 and date setted to last day of week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
     )
   })
@@ -12,7 +13,7 @@ describe('endOfWeek', function() {
   it('allows to pass when a week starts', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, 1)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
     )
   })
@@ -20,7 +21,7 @@ describe('endOfWeek', function() {
   it('accepts string', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = endOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
     )
   })
@@ -28,7 +29,7 @@ describe('endOfWeek', function() {
   it('accepts timestamp', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = endOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999)
     )
   })

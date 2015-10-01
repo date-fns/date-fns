@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isLeapYear = require('../is_leap_year')
 
 describe('isLeapYear', function() {

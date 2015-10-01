@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isFuture = require('../is_future')
 
 describe('isFuture', function() {

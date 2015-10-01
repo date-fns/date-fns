@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isAfter = require('../is_after')
 
 describe('isAfter', function() {

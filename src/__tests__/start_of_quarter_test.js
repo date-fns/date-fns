@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var startOfQuarter = require('../start_of_quarter')
 
 describe('startOfQuarter', function() {

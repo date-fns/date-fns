@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var max = require('../max')
 
 describe('max', function() {

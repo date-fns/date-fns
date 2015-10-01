@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isFirstDayOfMonth = require('../is_first_day_of_month')
 
 describe('isFirstDayOfMonth', function() {

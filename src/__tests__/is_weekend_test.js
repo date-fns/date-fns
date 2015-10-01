@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isWeekend = require('../is_weekend')
 
 describe('isWeekend', function() {

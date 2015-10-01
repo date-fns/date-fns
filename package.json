@@ -11,26 +11,29 @@
   "devDependencies": {
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
+    "json-loader": "^0.5.3",
     "karma": "^0.13.9",
     "karma-browserstack-launcher": "^0.1.5",
     "karma-cli": "^0.1.1",
     "karma-es5-shim": "0.0.4",
-    "karma-espower-preprocessor": "0.0.4",
     "karma-mocha": "^0.1.9",
     "karma-mocha-reporter": "^1.1.1",
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.4",
+    "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
     "power-assert": "^1.0.0",
-    "webpack": "^1.12.0"
+    "webpack": "^1.12.0",
+    "webpack-espower-loader": "^1.0.1"
   },
   "scripts": {
     "test": "karma start config/karma.js",
     "test-ci": "npm test -- --single-run",
     "test-cross-browser": "env TEST_BROWSERSTACK=true npm test -- --single-run",
-    "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
-    "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
+    "test-tz": "npm run build-tests && ./scripts/test_tz.sh",
+    "test-tz-extended": "npm run build-tests && ./scripts/test_tz_extended.sh",
     "build": "webpack --config ./config/webpack.js",
+    "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
     "lint": "eslint ."
   }
 }

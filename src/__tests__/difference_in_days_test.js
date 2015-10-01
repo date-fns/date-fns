@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var differenceInDays = require('../difference_in_days')
 
 describe('differenceInDays', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var addQuarters = require('../add_quarters')
 
 describe('addQuarters', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subMinutes = require('../sub_minutes')
 
 describe('subMinutes', function() {

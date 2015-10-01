@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subYears = require('../sub_years')
 
 describe('subYears', function() {

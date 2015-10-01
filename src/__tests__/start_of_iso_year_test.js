@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var startOfISOYear = require('../start_of_iso_year')
 
 describe('startOfISOYear', function() {

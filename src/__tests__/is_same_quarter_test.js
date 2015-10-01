@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameQuarter = require('../is_same_quarter')
 
 describe('isSameQuarter', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameMonth = require('../is_same_month')
 
 describe('isSameMonth', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isBefore = require('../is_before')
 
 describe('isBefore', function() {

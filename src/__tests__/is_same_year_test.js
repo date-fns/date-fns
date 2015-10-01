@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameYear = require('../is_same_year')
 
 describe('isSameYear', function() {

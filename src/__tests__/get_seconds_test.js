@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getSeconds = require('../get_seconds')
 
 describe('getSeconds', function() {

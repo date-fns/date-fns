@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var format = require('../format')
 
 describe('format', function() {

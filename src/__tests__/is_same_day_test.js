@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameDay = require('../is_same_day')
 
 describe('isSameDay', function() {

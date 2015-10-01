@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var setISOYear = require('../set_iso_year')
 
 describe('setISOYear', function() {

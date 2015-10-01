@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameSecond = require('../is_same_second')
 
 describe('isSameSecond', function() {

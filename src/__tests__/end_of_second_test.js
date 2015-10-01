@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var endOfSecond = require('../end_of_second')
 
 describe('endOfSecond', function() {

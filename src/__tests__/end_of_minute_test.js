@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var endOfMinute = require('../end_of_minute')
 
 describe('endOfMinute', function() {

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isPast = require('../is_past')
 
 describe('isPast', function() {

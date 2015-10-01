@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var addMilliseconds = require('../add_milliseconds')
 
 describe('addMilliseconds', function() {

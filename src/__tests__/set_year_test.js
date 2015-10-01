@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var setYear = require('../set_year')
 
 describe('setYear', function() {

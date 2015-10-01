@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var getHours = require('../get_hours')
 
 describe('getHours', function() {

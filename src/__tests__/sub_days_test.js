@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subDays = require('../sub_days')
 
 describe('subDays', function() {

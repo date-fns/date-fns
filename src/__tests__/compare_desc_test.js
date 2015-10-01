@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var compareDesc = require('../compare_desc')
 
 describe('compareDesc', function() {

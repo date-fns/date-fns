@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isToday = require('../is_today')
 
 describe('isToday', function() {

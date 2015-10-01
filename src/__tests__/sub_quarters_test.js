@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var subQuarters = require('../sub_quarters')
 
 describe('subQuarters', function() {

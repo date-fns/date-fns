@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isWithinRange = require('../is_within_range')
 
 describe('isWithinRange', function() {

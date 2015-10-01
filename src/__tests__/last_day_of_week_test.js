@@ -1,10 +1,11 @@
+var assert = require('power-assert')
 var lastDayOfWeek = require('../last_day_of_week')
 
 describe('lastDayOfWeek', function() {
   it('returns date with time setted to 00:00:00 and date setted to last day of week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6)
     )
   })
@@ -12,7 +13,7 @@ describe('lastDayOfWeek', function() {
   it('allows to pass when a week starts', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfWeek(date, 1)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 7)
     )
   })
@@ -20,7 +21,7 @@ describe('lastDayOfWeek', function() {
   it('accepts string', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6)
     )
   })
@@ -28,7 +29,7 @@ describe('lastDayOfWeek', function() {
   it('accepts timestamp', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = lastDayOfWeek(date)
-    assert.deepEqual(result, 
+    assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 6)
     )
   })

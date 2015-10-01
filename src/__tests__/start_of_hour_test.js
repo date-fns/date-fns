@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var startOfHour = require('../start_of_hour')
 
 describe('startOfHour', function() {
