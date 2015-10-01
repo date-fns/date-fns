@@ -26,7 +26,7 @@
   },
   "scripts": {
     "test": "karma start config/karma.js",
-    "test-ci": "karma start config/karma.js",
+    "test-ci": "npm test -- --single-run",
     "test-cross-browser": "env TEST_BROWSERSTACK=true npm test -- --single-run",
     "test-tz": "env TEST_TZ=true ./scripts/test_tz.sh",
     "test-tz-extended": "env TEST_TZ=true ./scripts/test_tz_extended.sh",
