@@ -55,14 +55,6 @@ var browserStackLaunchers = {
     'browser_version': '12.0',
     'os': 'Windows',
     'os_version': '10'
-  },
-
-  android: {
-    'base': 'BrowserStack',
-    'browser': 'android',
-    'device': 'Samsung Galaxy S5',
-    'os': 'android',
-    'os_version': '4.4'
   }
 }
 
