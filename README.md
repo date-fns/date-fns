@@ -1,14 +1,20 @@
 # date-fns
 ![Build status](https://badge.buildkite.com/885cb3d3d13dd3c3219b7dc42cdaa8afc14f06ece832eb0ed9.svg)
-[![](http://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns)
-![](http://img.shields.io/bower/v/date-fns.svg)
 
 Date helpers in function-per-file style.
 
 ## Installation
 
+### npm [![](http://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns)
+
 ```
-npm install --save date-fns
+npm install date-fns --save
+```
+
+### Bower ![](http://img.shields.io/bower/v/date-fns.svg)
+
+```
+bower install date-fns
 ```
 
 ## Usage
