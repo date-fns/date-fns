@@ -1,13 +1,20 @@
 # date-fns
-[![](http://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns)
-[![Build Status](https://travis-ci.org/js-fns/date-fns.svg)](https://travis-ci.org/js-fns/date-fns)
+![Build status](https://badge.buildkite.com/885cb3d3d13dd3c3219b7dc42cdaa8afc14f06ece832eb0ed9.svg)
 
 Date helpers in function-per-file style.
 
 ## Installation
 
+### npm
+
 ```
-npm install --save date-fns
+npm install date-fns --save
+```
+
+### Bower
+
+```
+bower install date-fns
 ```
 
 ## Usage
@@ -151,4 +158,9 @@ Code is fully documented, checkout source for reference.
 ### I18n
 
 TODO
+
+## Tests
+
+Kudos to [BrowserStack](https://www.browserstack.com) for the provided
+Automate API. Thereby we run cross-browser tests on every push!
 

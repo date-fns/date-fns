@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isToday = require('../is_today')
 
 describe('isToday', function() {
@@ -13,22 +14,22 @@ describe('isToday', function() {
 
   it('returns true if passed is weekend', function() {
     var result = isToday(new Date(2014, 8 /* starts from 0 */, 25))
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed date is not today', function() {
     var result = isToday(new Date(2014, 8 /* starts from 0 */, 26))
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
     var result = isToday(new Date(2014, 8 /* starts from 0 */, 25).toString())
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
     var result = isToday(new Date(2014, 8 /* starts from 0 */, 25).getTime())
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

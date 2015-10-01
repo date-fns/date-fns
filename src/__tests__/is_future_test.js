@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isFuture = require('../is_future')
 
 describe('isFuture', function() {
@@ -13,27 +14,27 @@ describe('isFuture', function() {
 
   it('returns true if passed date is future', function() {
     var result = isFuture(new Date(2014, 9 /* Oct */, 31))
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed date is past', function() {
     var result = isFuture(new Date(2014, 8 /* Sep */, 1))
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('returns false if passed date is current date', function() {
     var result = isFuture(new Date(2014, 8 /* Sep */, 25))
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
     var result = isFuture(new Date(2014, 9 /* Oct */, 31).toISOString())
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
     var result = isFuture(new Date(2014, 9 /* Oct */, 31).getTime())
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

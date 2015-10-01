@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isSameDay = require('../is_same_day')
 
 describe('isSameDay', function() {
@@ -6,7 +7,7 @@ describe('isSameDay', function() {
       new Date(2014, 8 /* Sep */, 4, 6, 0),
       new Date(2014, 8 /* Sep */, 4, 18, 0)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed dates has different days', function() {
@@ -14,7 +15,7 @@ describe('isSameDay', function() {
       new Date(2014, 8 /* Sep */, 4, 23, 59),
       new Date(2014, 8 /* Sep */, 5, 0, 0)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -22,7 +23,7 @@ describe('isSameDay', function() {
       new Date(2014, 8 /* Sep */, 4, 6, 0).toISOString(),
       new Date(2014, 8 /* Sep */, 4, 18, 0).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -30,7 +31,7 @@ describe('isSameDay', function() {
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 18, 0).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isWithinRange = require('../is_within_range')
 
 describe('isWithinRange', function() {
@@ -7,7 +8,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1),
       new Date(2014, 11 /* Dec */, 31)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns true if passed date has the same time as left boundary', function() {
@@ -16,7 +17,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1),
       new Date(2014, 11 /* Dec */, 31)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns true if passed date has the same time as right boundary', function() {
@@ -25,7 +26,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1),
       new Date(2014, 11 /* Dec */, 31)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if passed date outside of the range', function() {
@@ -34,7 +35,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1),
       new Date(2014, 11 /* Dec */, 31)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -43,7 +44,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1).toISOString(),
       new Date(2014, 11 /* Dec */, 31).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -52,7 +53,7 @@ describe('isWithinRange', function() {
       new Date(2014, 8 /* Sep */, 1).getTime(),
       new Date(2014, 11 /* Dec */, 31).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 

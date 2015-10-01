@@ -1,3 +1,4 @@
+var assert = require('power-assert')
 var isBefore = require('../is_before')
 
 describe('isBefore', function() {
@@ -6,7 +7,7 @@ describe('isBefore', function() {
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('returns false if first date is after second one ', function() {
@@ -14,7 +15,7 @@ describe('isBefore', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('returns false if first date is equal to second one ', function() {
@@ -22,7 +23,7 @@ describe('isBefore', function() {
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
     )
-    expect(result).to.be.false
+    assert(result === false)
   })
 
   it('allows to pass string', function() {
@@ -30,7 +31,7 @@ describe('isBefore', function() {
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 
   it('allows to pass timestamp', function() {
@@ -38,7 +39,7 @@ describe('isBefore', function() {
       new Date(1987, 1 /* Feb */, 11).getTime(),
       new Date(1989, 6 /* Jul */, 10).getTime()
     )
-    expect(result).to.be.true
+    assert(result === true)
   })
 })
 
