@@ -29,8 +29,7 @@ function getOutputConfig() {
   if (process.env.BUILD_TESTS) {
     return {
       path: path.join(process.cwd(), 'tmp'),
-      filename: '[name].js'//,
-      //libraryTarget: 'commonjs2'
+      filename: '[name].js'
     }
   } else if (process.env.NODE_ENV == 'test') {
     return {
