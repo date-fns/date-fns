@@ -5,13 +5,13 @@ Date helpers in function-per-file style.
 
 ## Installation
 
-### npm [![](http://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns)
+### npm
 
 ```
 npm install date-fns --save
 ```
 
-### Bower ![](http://img.shields.io/bower/v/date-fns.svg)
+### Bower
 
 ```
 bower install date-fns
