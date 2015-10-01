@@ -116,7 +116,7 @@ describe('format', function() {
     })
 
     it('ISO', function() {
-      expect(format(this._date, 'E')).to.be.equal('6')
+      expect(format(this._date, 'E')).to.be.equal('5')
     })
 
     it('parses ok for different variants', function() {
