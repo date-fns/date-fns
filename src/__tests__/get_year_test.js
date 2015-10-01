@@ -12,8 +12,8 @@ describe('getYear', function() {
   })
 
   it('accepts timestamp', function() {
-    var result = getYear(new Date(50000, 3 /* Apr */, 2).getTime())
-    assert(result === 50000)
+    var result = getYear(new Date(20000, 3 /* Apr */, 2).getTime())
+    assert(result === 20000)
   })
 })
 
