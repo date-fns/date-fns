@@ -32,7 +32,7 @@
     "test-cross-browser": "env TEST_BROWSERSTACK=true npm test -- --single-run",
     "test-tz": "npm run build-tests && ./scripts/test_tz.sh",
     "test-tz-extended": "npm run build-tests && ./scripts/test_tz_extended.sh",
-    "build": "webpack --config ./config/webpack.js",
+    "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
     "lint": "eslint ."
   }
