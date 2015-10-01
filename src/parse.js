@@ -24,21 +24,21 @@ var parseTokenTimezoneHH = /^([+-])(\d{2})$/
 var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
 
 /**
- * Parses date string representation. It accepts ISO 8601 format as well as
- * partial implementation.
+ * Parse the date string representation.
+ * It accepts the ISO 8601 format as well as a partial implementation.
  *
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
- * @param {string} dateStr
- * @return {date} parsed date in local time zone.
+ * @param {String} dateStr - the ISO 8601 formatted string to parse
+ * @returns {Date} parsed date in the local time zone.
  */
 var parse = function(dateStr) {
   if (dateStr instanceof Date) {
-    // Prevent dates to lose milliseconds when passed to new Date() in IE10
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(dateStr.getTime())
   } else if (typeof dateStr !== 'string') {
     return new Date(dateStr)
-  } 
+  }
 
   var dateStrings = splitDateString(dateStr)
 

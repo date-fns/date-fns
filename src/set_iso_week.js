@@ -2,13 +2,13 @@ var parse = require('./parse')
 var getISOWeek = require('./get_iso_week')
 
 /**
- * Sets ISO week to given date, saving weekday number.
+ * Set the ISO week to the given date, saving the weekday number.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {date|string} dirtyDate
- * @param {number} isoWeek
- * @returns {date} (new date)
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} isoWeek of the new date
+ * @returns {Date} new date with the ISO week setted
  */
 var setISOWeek = function(dirtyDate, isoWeek) {
   var date = parse(dirtyDate)

@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Returns latest of the dates.
- * @param {...date|string} dates
- * @returns {date}
+ * Return the latest of the given dates.
+ * @param {...Date|String|Number} list of dates
+ * @returns {Date} latest of the dates
  */
 var max = function() {
   var dirtyDates = Array.prototype.slice.call(arguments)

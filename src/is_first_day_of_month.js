@@ -3,9 +3,9 @@ var startOfDay = require('./start_of_day')
 var startOfMonth = require('./end_of_month')
 
 /**
- * Is passed date first day of month?
- * @param {date|string} dirtyDate
- * @returns {boolean}
+ * Is the given date the first day of a month?
+ * @param {Date|String|Number} dirtyDate - the date to check
+ * @returns {Boolean} the date is the first day of a month
  */
 var isFirstDayOfMonth = function(dirtyDate) {
   return parse(dirtyDate).getDate() == 1

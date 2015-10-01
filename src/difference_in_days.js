@@ -4,10 +4,10 @@ var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_DAY = 86400000
 
 /**
- * Returns number of the full days between dates.
- * @param {date|string} dirtyDateLeft
- * @param {date|string} dirtyDateRight
- * @returns {number}
+ * Return the number of full days between the given dates.
+ * @param {Date|String|Number} dirtyDateLeft - the earlier date
+ * @param {Date|String|Number} dirtyDateRight - the later date
+ * @returns {Number} number of days
  */
 var differenceInDays = function(dirtyDateLeft, dirtyDateRight) {
   var startOfDayLeft = startOfDay(dirtyDateLeft)

@@ -2,10 +2,10 @@ var parse = require('./parse')
 var getDaysInMonth = require('./get_days_in_month')
 
 /**
- * Adds specified number of months to passed date.
- * @param {data|string} dirtyDate
- * @param {number} amount
- * @returns {date} new date
+ * Add the specified number of months to the given date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} amount of months to be added
+ * @returns {Date} new date with the months added
  */
 var addMonths = function(dirtyDate, amount) {
   var date = parse(dirtyDate)

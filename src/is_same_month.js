@@ -1,10 +1,10 @@
 var parse = require('./parse')
 
 /**
- * Are passed dates has the same month (and year)?
- * @param {date|string} dirtyDateLeft
- * @param {date|string} dirtyDateRight
- * @returns {boolean}
+ * Are the given dates in the same month?
+ * @param {Date|String|Number} dirtyDateLeft - the first date to check
+ * @param {Date|String|Number} dirtyDateRight - the second date to check
+ * @returns {Boolean} the dates are in the same month
  */
 var isSameMonth = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)

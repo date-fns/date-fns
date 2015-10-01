@@ -5,14 +5,14 @@ var differenceInDays = require('./difference_in_days')
 var MILLISECONDS_IN_DAY = 86400000
 
 /**
- * Sets ISO week-numbering year to given date,
- * saving week number and weekday number.
+ * Set the ISO week-numbering year to the given date,
+ * saving the week number and the weekday number.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {date|string} dirtyDate
- * @param {number} isoYear
- * @returns {date} (new date)
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} isoYear of the new date
+ * @returns {Date} new date with the ISO year setted
  */
 var setISOYear = function(dirtyDate, isoYear) {
   var date = parse(dirtyDate)

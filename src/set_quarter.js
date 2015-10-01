@@ -2,10 +2,10 @@ var parse = require('./parse')
 var setMonth = require('./set_month')
 
 /**
- * Sets quarter of year to passed date.
- * @param {date|string} dirtyDate
- * @param {number} quarter
- * @returns {date} (new date)
+ * Set the year quarter to the given date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} quarter of the new date
+ * @returns {Date} new date with the quarter setted
  *
  * @example set second quarter to date 2 July 2014
  * var result = setQuarter(new Date(2014, 6, 2), 2)

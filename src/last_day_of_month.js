@@ -1,9 +1,10 @@
 var parse = require('./parse')
 
 /**
- * Returns last day of a month for given date. Date will be in local timezone.
- * @param {date|string} dirtyDate
- * @returns {date}
+ * Return the last day of a month for the given date.
+ * The result will be in the local timezone.
+ * @param {Date|String|Number} dirtyDate - the original date
+ * @returns {Date} last day of a month
  */
 var lastDayOfMonth = function(dirtyDate) {
   var date = parse(dirtyDate)

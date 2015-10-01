@@ -1,10 +1,10 @@
 var startOfHour = require('./start_of_hour')
 
 /**
- * Are passed dates belongs to the same hour?
- * @param {date|string} dirtyDateLeft
- * @param {date|string} dirtyDateRight
- * @returns {boolean}
+ * Are the given dates in the same hour?
+ * @param {Date|String|Number} dirtyDateLeft - the first date to check
+ * @param {Date|String|Number} dirtyDateRight - the second date to check
+ * @returns {Boolean} the dates are in the same hour
  */
 var isSameHour = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft)

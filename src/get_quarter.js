@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Returns quarter of year of passed date.
- * @param {date|string} dirtyDate
- * @returns {number} (quarter)
+ * Get the year quarter of the given date.
+ * @param {Date|String|Number} dirtyDate - the given date
+ * @returns {Number} quarter
  *
  * @example which quarter is 2 July 2014
  * var result = getQuarter(new Date(2014, 6, 2))
