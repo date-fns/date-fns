@@ -1,15 +1,10 @@
 {
   "name": "date-fns",
-  "version": "0.16.0",
-  "homepage": "https://github.com/kossnocorp/date-fns",
-  "authors": [
-    "Sasha Koss <kossnocorp@gmail.com>"
-  ],
+  "version": "0.17.0",
+  "homepage": "https://github.com/date-fns/date-fns",
+  "authors": ["Sasha Koss <kossnocorp@gmail.com>"],
   "description": "Date helpers",
   "main": "dist/date_fns.js",
   "license": "MIT",
-  "ignore": [
-    "src",
-    "node_modules"
-  ]
+  "ignore": ["src", "node_modules"]
 }

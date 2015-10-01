@@ -1,17 +1,20 @@
 {
   "name": "date-fns",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "author": "Sasha Koss <kossnocorp@gmail.com>",
   "description": "Date helpers",
-  "repository": "https://github.com/js-fns/date-fns",
+  "repository": "https://github.com/date-fns/date-fns",
   "engine": {
     "node": ">= 0.11"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "json-loader": "^0.5.3",
+    "js-beautify": "^1.5.10",
     "karma": "^0.13.9",
     "karma-browserstack-launcher": "^0.1.5",
     "karma-cli": "^0.1.1",
@@ -34,6 +37,8 @@
     "test-tz-extended": "npm run build-tests && ./scripts/test_tz_extended.sh",
     "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "generate-index": "babel-node ./scripts/generate_index",
+    "sync-versions": "babel-node ./scripts/sync_versions"
   }
 }

@@ -8,7 +8,7 @@ var parse = require('./parse')
 var isLeapYear = function(dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
-  return new Date(year, 1, 29).getMonth() == 1
+  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }
 
 module.exports = isLeapYear

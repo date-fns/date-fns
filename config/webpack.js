@@ -20,7 +20,7 @@ function getEntryConfig() {
     }
   } else {
     return {
-      'date_fns': './src/date_fns.js'
+      'date_fns': './index.js'
     }
   }
 }
