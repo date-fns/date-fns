@@ -159,3 +159,8 @@ Code is fully documented, checkout source for reference.
 
 TODO
 
+## Tests
+
+Kudos to [BrowserStack](https://www.browserstack.com) for the provided
+Automate API. Thereby we run cross-browser tests on every push!
+
