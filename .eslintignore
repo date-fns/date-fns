@@ -2,3 +2,5 @@ node_modules/
 dist/
 build/
 tmp/
+test.espowered.js
+
