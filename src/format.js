@@ -127,7 +127,7 @@ var formats = {
 
   // Day of ISO week: 1, 2, ..., 7
   'E': function() {
-    return this.getDay() + 1
+    return this.getDay() || 7
   },
 
   // Year: 00, 01, ..., 99
