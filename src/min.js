@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Returns earliest of the dates.
- * @param {...date|string} dates
- * @returns {date}
+ * Return the earliest of the given dates.
+ * @param {...Date|String|Number} list of dates
+ * @returns {Date} earliest of the dates
  */
 var min = function() {
   var dirtyDates = Array.prototype.slice.call(arguments)

@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Is passed date future?
- * @param {date|string} dirtyDate
- * @returns {boolean}
+ * Is the given date in the future?
+ * @param {Date|String|Number} dirtyDate - the date to check
+ * @returns {Boolean} the date is in the future
  */
 var isFuture = function(dirtyDate) {
   return parse(dirtyDate).getTime() > new Date().getTime()

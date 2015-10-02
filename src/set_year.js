@@ -1,14 +1,14 @@
 var parse = require('./parse')
 
 /**
- * Sets year to passed date.
- * @param {date|string} dirtyDate
- * @param {number} fullYear
- * @returns {date} (new date)
+ * Set the year to the given date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} year of the new date
+ * @returns {Date} new date with the year setted
  */
-var setYear = function(dirtyDate, fullYear) {
+var setYear = function(dirtyDate, year) {
   var date = parse(dirtyDate)
-  date.setFullYear(fullYear)
+  date.setFullYear(year)
   return date
 }
 

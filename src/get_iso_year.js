@@ -2,13 +2,13 @@ var parse = require('./parse')
 var startOfWeek = require('./start_of_week')
 
 /**
- * Returns ISO week-numbering year of given date,
- * which always starts 3 days before year's first Thursday.
+ * Get the ISO week-numbering year of the given date,
+ * which always starts 3 days before the year's first Thursday.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {date|string} dirtyDate
- * @returns {number} (ISO year)
+ * @param {Date|String|Number} dirtyDate - the given date
+ * @returns {Number} ISO year
  *
  * @example which ISO-week numbering year is 2 January 2005
  * var result = getISOYear(new Date(2005, 0, 2))

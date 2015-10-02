@@ -1,9 +1,10 @@
 var parse = require('./parse')
 
 /**
- * Returns end of an hour for given date. Date will be in local timezone.
- * @param {date|string} dirtyDate
- * @returns {date}
+ * Return the end of an hour for the given date.
+ * The result will be in the local timezone.
+ * @param {Date|String|Number} dirtyDate - the original date
+ * @returns {Date} end of an hour
  */
 var endOfHour = function(dirtyDate) {
   var date = parse(dirtyDate)

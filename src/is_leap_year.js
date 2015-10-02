@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Is date in the leap year?
- * @param {date|string} dirtyDate
- * @returns {boolean}
+ * Is the given date in the leap year?
+ * @param {Date|String|Number} dirtyDate - the date to check
+ * @returns {Boolean} the date is in the leap year
  */
 var isLeapYear = function(dirtyDate) {
   var date = parse(dirtyDate)

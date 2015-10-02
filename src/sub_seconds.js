@@ -1,10 +1,10 @@
 var addSeconds = require('./add_seconds')
 
 /**
- * Subtracts specified number of seconds from passed date.
- * @param {data|string} dirtyDate
- * @param {number} amount of seconds
- * @returns {date} new date
+ * Subtract the specified number of seconds from the given date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} amount of seconds to be subtracted
+ * @returns {Date} new date with the seconds subtracted
  */
 var subSeconds = function(dirtyDate, amount) {
   return addSeconds(dirtyDate, -amount)

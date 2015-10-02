@@ -1,10 +1,10 @@
 var parse = require('./parse')
 
 /**
- * Sets amount of seconds to passed date.
- * @param {date|string} dirtyDate
- * @param {number} seconds
- * @returns {date} (new date)
+ * Set the seconds to the given date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} seconds of the new date
+ * @returns {Date} new date with the seconds setted
  */
 var setSeconds = function(dirtyDate, seconds) {
   var date = parse(dirtyDate)

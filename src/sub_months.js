@@ -1,10 +1,10 @@
 var addMonths = require('./add_months')
 
 /**
- * Subtracts specified number of month from passed date.
- * @param {data|string} dirtyDate
- * @param {number} amount
- * @returns {date} new date
+ * Subtract the specified number of month from the gien date.
+ * @param {Date|String|Number} dirtyDate - the date to be changed
+ * @param {Number} amount of months to be subtracted
+ * @returns {Date} new date with the months subtracted
  */
 var subMonths = function(dirtyDate, amount) {
   return addMonths(dirtyDate, -amount)

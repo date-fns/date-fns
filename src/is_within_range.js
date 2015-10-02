@@ -1,11 +1,11 @@
 var parse = require('./parse')
 
 /**
- * Is passed date within given range?
- * @param {date|string} dirtyDate
- * @param {date|string} dirtyStartDate
- * @param {date|string} dirtyEndDate
- * @returns {boolean}
+ * Is the given date within the range?
+ * @param {Date|String|Number} dirtyDate - the date to check
+ * @param {Date|String|Number} dirtyStartDate - the start of range
+ * @param {Date|String|Number} dirtyEndDate - the end of range
+ * @returns {Boolean} the date is within the range
  *
  * @example for date within the range
  * isWithinRange(

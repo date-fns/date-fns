@@ -3,9 +3,9 @@ var startOfYear = require('./start_of_year')
 var differenceInDays = require('./difference_in_days')
 
 /**
- * Returns day of year of passed date.
- * @param {date|string} dirtyDate
- * @returns {number} (day of year)
+ * Get the day of the year of the given date.
+ * @param {Date|String|Number} dirtyDate - the given date
+ * @returns {Number} day of year
  */
 var getDayOfYear = function(dirtyDate) {
   var date = parse(dirtyDate)

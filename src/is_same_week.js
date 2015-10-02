@@ -1,11 +1,11 @@
 var startOfWeek = require('./start_of_week')
 
 /**
- * Are passed dates belongs to the same week?
- * @param {date|string} dirtyDateLeft
- * @param {date|string} dirtyDateRight
- * @param {number} [weekStartsAt=0] first day of week (0 - sunday)
- * @returns {boolean}
+ * Are the given dates in the same week?
+ * @param {Date|String|Number} dirtyDateLeft - the first date to check
+ * @param {Date|String|Number} dirtyDateRight - the second date to check
+ * @param {Number} [weekStartsAt=0] first day of week (0 - sunday)
+ * @returns {Boolean} the dates are in the same week
  */
 var isSameWeek = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, weekStartsAt)

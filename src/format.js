@@ -4,7 +4,7 @@ var parse = require('./parse')
 var NUMBER_OF_MS_IN_DAY = 864e5
 
 /**
- * Returns formatted date string in a given format
+ * Return the formatted date string in the given format.
  *
  * Accepted tokens:
  * | Unit            | Token | Result                           |
@@ -44,9 +44,9 @@ var NUMBER_OF_MS_IN_DAY = 864e5
  * | 1/100 of second | SS    | 00, 01, ..., 99                  |
  * | Millisecond     | SSS   | 000, 001, ..., 999               |
  *
- * @param {date|string} date
- * @param {string} format
- * @returns {string}
+ * @param {Date|String|Number} dirtyDate - the original date
+ * @param {String} format - the string of tokens
+ * @returns {String} formatted date string
  */
 var format = function(dirtyDate, format) {
   var date = parse(dirtyDate)

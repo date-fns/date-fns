@@ -4,9 +4,9 @@ var addWeeks = require('./add_weeks')
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
- * Returns number of ISO weeks of ISO week-numbering year of passed date.
- * @param {date|string} dirtyDate
- * @returns {number} (days)
+ * Get the number of ISO weeks in an ISO week-numbering year of the given date.
+ * @param {Date|String|Number} dirtyDate - the given date
+ * @returns {Number} number of ISO weeks in a year
  */
 var getISOWeeksInYear = function(dirtyDate) {
   var thisYear = startOfISOYear(dirtyDate)

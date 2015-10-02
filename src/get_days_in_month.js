@@ -1,9 +1,9 @@
 var parse = require('./parse')
 
 /**
- * Returns number of days of month of passed date.
- * @param {date|string} dirtyDate
- * @returns {number} (days)
+ * Get the number of days in a month of the given date.
+ * @param {Date|String|Number} dirtyDate - the given date
+ * @returns {Number} number of days in a month
  */
 var getDaysInMonth = function(dirtyDate) {
   var date = parse(dirtyDate)
