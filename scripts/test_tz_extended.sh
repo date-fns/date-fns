@@ -340,6 +340,6 @@ for tz in \
   "Pacific/Wallis"
 do
   printf "\nRun test in time zone $tz\n"
-  env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci || exit 1
+  env PHANTOMJS_BIN=$(which phantomjs) TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci || exit 1
 done
 
