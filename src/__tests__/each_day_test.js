@@ -49,5 +49,14 @@ describe('eachDay', function() {
       new Date(2014, 9 /* Oct */, 12)
     ])
   })
+
+  it('throws exception if start date is after end date', function() {
+    var block = eachDay.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 12),
+      new Date(2014, 9 /* Oct */, 6)
+    )
+    assert.throws(block)
+  })
 })
 
