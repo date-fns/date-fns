@@ -43,6 +43,7 @@ Code is fully documented, check the source for the reference.
 * [`max`]('./src/max') - return the latest of the given dates.
 * [`min`]('./src/min') - return the earliest of the given dates.
 * [`parse`](./src/parse.js) - parse the ISO-8601-formatted date.
+* [`isValid`](./src/is_valid.js) - is the given date valid?
 
 ### Range helpers
 
