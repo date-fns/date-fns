@@ -15,5 +15,16 @@ const indexLines = ['module.exports = {']
 fs.writeFileSync(path.join(process.cwd(), 'index.js'), `${indexLines.join('\n')}\n`)
 
 function camelize(str) {
-  return str.replace(/[-_\s]+(.)?/g, (match, c) => c ? c.toUpperCase() : '')
+  return str
+    .split('_')
+    .map((word, index) => {
+      if (index === 0) {
+        return word
+      } else if (word === 'iso') {
+        return 'ISO'
+      } else {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+      }
+    })
+    .join('')
 }
