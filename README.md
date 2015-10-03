@@ -1,5 +1,5 @@
 # date-fns
-![Build status](https://badge.buildkite.com/885cb3d3d13dd3c3219b7dc42cdaa8afc14f06ece832eb0ed9.svg)
+[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns)
 
 Date helpers in the function-per-file style.
 
