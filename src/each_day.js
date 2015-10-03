@@ -5,7 +5,7 @@ var parse = require('./parse')
  * @param {Date|String|Number} dirtyStartDate - the start of range
  * @param {Date|String|Number} dirtyEndDate - the end of range
  * @returns {Date[]} array of dates for every day of the range
- * @throws {InvalidArgumentException} Argument dirtyStartDate must be before dirtyEndDate
+ * @throws End of range must have time value greater than time value of start of range
  */
 var eachDay = function(dirtyStartDate, dirtyEndDate) {
   var startDate = parse(dirtyStartDate)
@@ -14,9 +14,7 @@ var eachDay = function(dirtyStartDate, dirtyEndDate) {
   var endTime = endDate.getTime()
 
   if (startDate.getTime() > endTime) {
-    var err = new Error('Argument dirtyStartDate must be before dirtyEndDate')
-    err.name = 'InvalidArgumentException'
-    throw err
+    throw new Error('End of range must have time value greater than time value of start of range')
   }
 
   var dates = []

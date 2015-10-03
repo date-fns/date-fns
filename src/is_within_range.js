@@ -6,7 +6,7 @@ var parse = require('./parse')
  * @param {Date|String|Number} dirtyStartDate - the start of range
  * @param {Date|String|Number} dirtyEndDate - the end of range
  * @returns {Boolean} the date is within the range
- * @throws {InvalidArgumentException} Argument dirtyStartDate must be before dirtyEndDate
+ * @throws End of range must have time value greater than time value of start of range
  *
  * @example for date within the range
  * isWithinRange(
@@ -26,9 +26,7 @@ var isWithinRange = function(dirtyDate, dirtyStartDate, dirtyEndDate) {
   var endTime = parse(dirtyEndDate).getTime()
 
   if (startTime > endTime) {
-    var err = new Error('Argument dirtyStartDate must be before dirtyEndDate')
-    err.name = 'InvalidArgumentException'
-    throw err
+    throw new Error('End of range must have time value greater than time value of start of range')
   }
 
   return time >= startTime && time <= endTime
