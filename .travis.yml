@@ -13,6 +13,7 @@ before_install:
 script:
   - npm run lint
   - npm run test-ci
+  - npm run test-cross-browser
   - npm run test-tz
   - npm run test-tz-extended
 cache:
