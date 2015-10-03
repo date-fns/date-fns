@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 for tz in UTC-12:00 UTC-11:00 UTC-10:00 UTC-09:30 UTC-09:00 \
   UTC-08:00 UTC-07:00 UTC-06:00 UTC-05:00 UTC-04:30 UTC-04:00 \
@@ -9,6 +9,5 @@ for tz in UTC-12:00 UTC-11:00 UTC-10:00 UTC-09:30 UTC-09:00 \
   UTC+11:30 UTC+12:00 UTC+12:45 UTC+13:00 UTC+14:00
 do
   printf "\nRun test in time zone $tz\n"
-  env PHANTOMJS_BIN=$(which phantomjs) TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci || exit 1
+  env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci || exit 1
 done
-
