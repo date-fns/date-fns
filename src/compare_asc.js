@@ -2,8 +2,9 @@ var parse = require('./parse')
 
 /**
  * Compare the two dates and return -1, 0 or 1.
- * @param {Date|String|Number} dirtyDateLeft - the first date to compare
- * @param {Date|String|Number} dirtyDateRight - the second date to compare
+ *
+ * @param {Date|String|Number} dateLeft - the first date to compare
+ * @param {Date|String|Number} dateRight - the second date to compare
  * @returns {Number} result of the comparison
  */
 var compareAsc = function(dirtyDateLeft, dirtyDateRight) {

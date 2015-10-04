@@ -4,7 +4,8 @@ var differenceInDays = require('./difference_in_days')
 
 /**
  * Get the day of the year of the given date.
- * @param {Date|String|Number} dirtyDate - the given date
+ *
+ * @param {Date|String|Number} date - the given date
  * @returns {Number} day of year
  */
 var getDayOfYear = function(dirtyDate) {

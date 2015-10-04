@@ -2,7 +2,8 @@ var parse = require('./parse')
 
 /**
  * Get the day of the week of the given date.
- * @param {Date|String|Number} dirtyDate - the given date
+ *
+ * @param {Date|String|Number} date - the given date
  * @returns {Number} day of week
  */
 var getDay = function(dirtyDate) {

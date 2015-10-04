@@ -2,8 +2,9 @@ var parse = require('./parse')
 
 /**
  * Is the first date before the second one?
- * @param {Date|String|Number} dirtyDateToCompare - the date to compare with
- * @param {Date|String|Number} dirtyDate - the date that should be before the first one to return true
+ *
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date that should be before the first one to return true
  * @returns {Boolean} the first date is before the second date
  *
  * @example is 10 July 1989 before 11 February 1987

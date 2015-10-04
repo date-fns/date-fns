@@ -2,6 +2,7 @@ var parse = require('./parse')
 
 /**
  * Return the earliest of the given dates.
+ *
  * @param {...Date|String|Number} list of dates
  * @returns {Date} earliest of the dates
  */

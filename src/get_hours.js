@@ -2,7 +2,8 @@ var parse = require('./parse')
 
 /**
  * Get the hours of the given date.
- * @param {Date|String|Number} dirtyDate - the given date
+ *
+ * @param {Date|String|Number} date - the given date
  * @returns {Number} hours
  */
 var getHours = function(dirtyDate) {

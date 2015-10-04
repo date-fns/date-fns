@@ -2,7 +2,8 @@ var parse = require('./parse')
 
 /**
  * Is the given date in a weekend?
- * @param {Date|String|Number} dirtyDate - the date to check
+ *
+ * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is in the weekend
  */
 var isWeekend = function(dirtyDate) {
