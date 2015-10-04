@@ -14,8 +14,8 @@ var startOfWeek = function(dirtyDate, weekStartsAt) {
   var day = date.getDay()
   var diff = (day < weekStartsAt ? 7 : 0) + day - weekStartsAt
 
-  date.setHours(0, 0, 0, 0)
   date.setDate(date.getDate() - diff)
+  date.setHours(0, 0, 0, 0)
   return date
 }
 

@@ -9,8 +9,8 @@ var parse = require('./parse')
 var lastDayOfYear = function(dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
-  date.setHours(0, 0, 0, 0)
   date.setFullYear(year + 1, 0, 0)
+  date.setHours(0, 0, 0, 0)
   return date
 }
 
