@@ -12,7 +12,6 @@ var startOfISOYear = require('./start_of_iso_year')
 var isSameISOYear = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
   var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
-  console.log(dateLeftStartOfYear, dateRightStartOfYear)
 
   return(
     dateLeftStartOfYear.getTime() == dateRightStartOfYear.getTime()
