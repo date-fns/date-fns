@@ -3,8 +3,8 @@ var parse = require('./parse')
 /**
  * Return the array of dates within the specified range.
  *
- * @param {Date|String|Number} dirtyStartDate - the start of range
- * @param {Date|String|Number} dirtyEndDate - the end of range
+ * @param {Date|String|Number} startDate - the start of range
+ * @param {Date|String|Number} endDate - the end of range
  * @returns {Date[]} array of dates for every day of the range
  */
 var eachDay = function(dirtyStartDate, dirtyEndDate) {

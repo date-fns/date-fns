@@ -4,7 +4,7 @@ var parse = require('./parse')
  * Return the last day of a week for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} dirtyDate - the original date
+ * @param {Date|String|Number} date - the original date
  * @param {Number} [weekStartsAt=0] the index of the first day of a week (0 - sunday)
  * @returns {Date} last day of a week
  */

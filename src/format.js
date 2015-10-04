@@ -44,7 +44,7 @@ var NUMBER_OF_MS_IN_DAY = 864e5
  * | 1/100 of second | SS    | 00, 01, ..., 99                  |
  * | Millisecond     | SSS   | 000, 001, ..., 999               |
  *
- * @param {Date|String|Number} dirtyDate - the original date
+ * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @returns {String} formatted date string
  */

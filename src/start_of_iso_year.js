@@ -8,7 +8,7 @@ var startOfISOWeek = require('./start_of_iso_week')
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} dirtyDate - the original date
+ * @param {Date|String|Number} date - the original date
  * @returns {Date} start of an ISO year
  *
  * @example when ISO week-numbering 2005 year starts

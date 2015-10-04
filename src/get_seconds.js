@@ -3,7 +3,7 @@ var parse = require('./parse')
 /**
  * Get the seconds of the given date.
  *
- * @param {Date|String|Number} dirtyDate - the given date
+ * @param {Date|String|Number} date - the given date
  * @returns {Number} seconds
  */
 var getSeconds = function(dirtyDate) {

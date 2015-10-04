@@ -4,7 +4,7 @@ var parse = require('./parse')
  * Return the end of a second for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} dirtyDate - the original date
+ * @param {Date|String|Number} date - the original date
  * @returns {Date} end of a second
  */
 var endOfSecond = function(dirtyDate) {

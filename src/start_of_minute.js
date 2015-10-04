@@ -4,7 +4,7 @@ var parse = require('./parse')
  * Return the start of a minute for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|String|Number} dirtyDate - the original date
+ * @param {Date|String|Number} date - the original date
  * @returns {Date} start of a minute
  */
 var startOfMinute = function(dirtyDate) {
