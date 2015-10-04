@@ -14,8 +14,8 @@ var endOfWeek = function(dirtyDate, weekStartsAt) {
   var day = date.getDay()
   var diff = (day < weekStartsAt ? -7 : 0) + 6 - (day - weekStartsAt)
 
-  date.setHours(23, 59, 59, 999)
   date.setDate(date.getDate() + diff)
+  date.setHours(23, 59, 59, 999)
   return date
 }
 

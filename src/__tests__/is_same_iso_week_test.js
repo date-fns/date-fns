@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isSameISOWeek = require('../is_same_iso_week')
 
 describe('isSameISOWeek', function() {
-  it('returns true if passed dates belongs to the same week', function() {
+  it('returns true if passed dates belongs to the same iso week', function() {
     var result = isSameISOWeek(
       new Date(2014, 8 /* Sep */, 1),
       new Date(2014, 8 /* Sep */, 7)

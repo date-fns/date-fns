@@ -10,8 +10,8 @@ var endOfQuarter = function(dirtyDate) {
   var date = parse(dirtyDate)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
-  date.setHours(23, 59, 59, 999)
   date.setMonth(month, 0)
+  date.setHours(23, 59, 59, 999)
   return date
 }
 

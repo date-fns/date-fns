@@ -9,8 +9,8 @@ var parse = require('./parse')
 var endOfMonth = function(dirtyDate) {
   var date = parse(dirtyDate)
   var month = date.getMonth()
-  date.setHours(23, 59, 59, 999)
   date.setFullYear(date.getFullYear(), month + 1, 0)
+  date.setHours(23, 59, 59, 999)
   return date
 }
 

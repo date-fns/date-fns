@@ -8,8 +8,8 @@ var parse = require('./parse')
  */
 var startOfMonth = function(dirtyDate) {
   var date = parse(dirtyDate)
-  date.setHours(0, 0, 0, 0)
   date.setDate(1)
+  date.setHours(0, 0, 0, 0)
   return date
 }
 
