@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var startOfWeek = require('../start_of_week')
 
 describe('startOfWeek', function() {
-  it('returns date with time setted to 00:00:00 and date setted to first day in month', function() {
+  it('returns date with time setted to 00:00:00 and date setted to first day of week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = startOfWeek(date)
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))

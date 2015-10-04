@@ -1,5 +1,5 @@
 var parse = require('./parse')
-var startOfWeek = require('./start_of_week')
+var startOfISOWeek = require('./start_of_iso_week')
 
 /**
  * Get the ISO week-numbering year of the given date,
@@ -17,8 +17,8 @@ var startOfWeek = require('./start_of_week')
 var getISOYear = function(dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
-  var startOfNextYear = startOfWeek(new Date(year + 1, 0, 4), 1)
-  var startOfThisYear = startOfWeek(new Date(year, 0, 4), 1)
+  var startOfNextYear = startOfISOWeek(new Date(year + 1, 0, 4))
+  var startOfThisYear = startOfISOWeek(new Date(year, 0, 4))
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1

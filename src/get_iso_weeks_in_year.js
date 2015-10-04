@@ -5,6 +5,9 @@ var MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * Get the number of ISO weeks in an ISO week-numbering year of the given date.
+ *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
  * @param {Date|String|Number} dirtyDate - the given date
  * @returns {Number} number of ISO weeks in a year
  */

@@ -106,14 +106,21 @@ Code is fully documented, check the source for the reference.
 
 ### Week helpers
 
-* [`getISOWeek`](./src/get_iso_week.js) - get the ISO week.
-* [`setISOWeek`](./src/set_iso_week.js) - set the ISO week.
 * [`startOfWeek`](./src/start_of_week.js) - return the start of a week for the given date.
 * [`endOfWeek`](./src/end_of_week.js) - return the end of a week for the given date.
 * [`lastDayOfWeek`](./src/last_day_of_week.js) - return the last day of a week for the given date.
 * [`addWeeks`](./src/add_weeks.js) - add specified number of weeks to the given date.
 * [`subWeeks`](./src/sub_weeks.js) - subtract specified number of weeks from the given date.
 * [`isSameWeek`](./src/is_same_week.js) - are the given dates in the same week?
+
+### [ISO week](http://en.wikipedia.org/wiki/ISO_week_date) helpers
+
+* [`getISOWeek`](./src/get_iso_week.js) - get the ISO week.
+* [`setISOWeek`](./src/set_iso_week.js) - set the ISO week.
+* [`startOfISOWeek`](./src/start_of_iso_week.js) - return the start of an ISO week for the given date.
+* [`endOfISOWeek`](./src/end_of_iso_week.js) - return the end of an ISO week for the given date.
+* [`lastDayOfISOWeek`](./src/last_day_of_iso_week.js) - return the last day of an ISO week for the given date.
+* [`isSameISOWeek`](./src/is_same_iso_week.js) - are the given dates in the same ISO week?
 
 ### Month helpers
 
@@ -144,16 +151,24 @@ Code is fully documented, check the source for the reference.
 
 * [`getYear`](./src/set_year.js) - get the year.
 * [`setYear`](./src/set_year.js) - set the year.
-* [`getISOYear`](./src/get_iso_year.js) - get the ISO week-numbering year.
-* [`setISOYear`](./src/set_iso_year.js) - set the ISO week-numbering year.
 * [`startOfYear`](./src/start_of_year.js) - return the start of a year for the given date.
-* [`startOfISOYear`](./src/start_of_iso_year.js) - return the start of an ISO week-numbering year for the given date.
 * [`endOfYear`](./src/end_of_year.js) - return the end of a year for the given date.
 * [`lastDayOfYear`](./src/last_day_of_year.js) - return the last day of a year for the given date.
 * [`addYears`](./src/add_years.js) - add the specified number of years to the given date.
 * [`subYears`](./src/sub_years.js) - subtract the specified number of years from the given date.
 * [`isSameYear`](./src/is_same_year.js) - are the given dates in the same year?
 * [`isLeapYear`](./src/is_leap_year.js) - is the given date in the leap year?
+
+### [ISO week-numbering year](http://en.wikipedia.org/wiki/ISO_week_date) helpers
+
+* [`getISOYear`](./src/get_iso_year.js) - get the ISO week-numbering year.
+* [`setISOYear`](./src/set_iso_year.js) - set the ISO week-numbering year.
+* [`startOfISOYear`](./src/start_of_iso_year.js) - return the start of an ISO week-numbering year for the given date.
+* [`endOfISOYear`](./src/end_of_iso_year.js) - return the end of an ISO week-numbering year for the given date.
+* [`lastDayOfISOYear`](./src/last_day_of_iso_year.js) - return the last day of an ISO week-numbering year quarter for the given date.
+* [`addISOYears`](./src/add_iso_years.js) - add the specified number of ISO week-numbering years to the given date.
+* [`subISOYears`](./src/sub_iso_years.js) - subtract the specified number of ISO week-numbering years from the given date.
+* [`isSameISOYear`](./src/is_same_iso_year.js)
 * [`getISOWeeksInYear`]('./src/get_iso_weeks_in_year') - get the number of weeks in the ISO week-numbering year.
 
 ### I18n
