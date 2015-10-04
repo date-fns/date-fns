@@ -5,6 +5,7 @@ var MILLISECONDS_IN_DAY = 86400000
 
 /**
  * Return the number of full days between the given dates.
+ *
  * @param {Date|String|Number} dirtyDateLeft - the earlier date
  * @param {Date|String|Number} dirtyDateRight - the later date
  * @returns {Number} number of days

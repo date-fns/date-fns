@@ -4,6 +4,7 @@ var startOfMonth = require('./end_of_month')
 
 /**
  * Is the given date the first day of a month?
+ *
  * @param {Date|String|Number} dirtyDate - the date to check
  * @returns {Boolean} the date is the first day of a month
  */

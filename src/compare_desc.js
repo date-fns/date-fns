@@ -2,6 +2,7 @@ var parse = require('./parse')
 
 /**
  * Compare the two dates reverse chronologically and return -1, 0 or 1.
+ *
  * @param {Date|String|Number} dirtyDateLeft - the first date to compare
  * @param {Date|String|Number} dirtyDateRight - the second date to compare
  * @returns {Number} result of the comparison

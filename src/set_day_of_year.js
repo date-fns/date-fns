@@ -2,6 +2,7 @@ var parse = require('./parse')
 
 /**
  * Set the day of the year to the given date.
+ *
  * @param {Date|String|Number} dirtyDate - the date to be changed
  * @param {Number} dayOfYear of the new date
  * @returns {Date} new date with the day of the year setted

@@ -3,6 +3,7 @@ var addDays = require('./add_days')
 
 /**
  * Set the day of the week to the given date.
+ *
  * @param {Date|String|Number} dirtyDate - the date to be changed
  * @param {Number} day of the new date
  * @param {Number} [weekStartsAt=0] the index of the first day of a week (0 - sunday)

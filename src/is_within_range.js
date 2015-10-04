@@ -2,6 +2,7 @@ var parse = require('./parse')
 
 /**
  * Is the given date within the range?
+ *
  * @param {Date|String|Number} dirtyDate - the date to check
  * @param {Date|String|Number} dirtyStartDate - the start of range
  * @param {Date|String|Number} dirtyEndDate - the end of range

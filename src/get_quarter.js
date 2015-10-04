@@ -2,6 +2,7 @@ var parse = require('./parse')
 
 /**
  * Get the year quarter of the given date.
+ *
  * @param {Date|String|Number} dirtyDate - the given date
  * @returns {Number} quarter
  *
