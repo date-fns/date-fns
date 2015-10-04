@@ -52,6 +52,7 @@ module.exports = {
   isSameWeek: require('./src/is_same_week'),
   isSameYear: require('./src/is_same_year'),
   isToday: require('./src/is_today'),
+  isValid: require('./src/is_valid'),
   isWeekend: require('./src/is_weekend'),
   isWithinRange: require('./src/is_within_range'),
   lastDayOfMonth: require('./src/last_day_of_month'),
