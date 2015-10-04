@@ -165,10 +165,10 @@ Code is fully documented, check the source for the reference.
 * [`setISOYear`](./src/set_iso_year.js) - set the ISO week-numbering year.
 * [`startOfISOYear`](./src/start_of_iso_year.js) - return the start of an ISO week-numbering year for the given date.
 * [`endOfISOYear`](./src/end_of_iso_year.js) - return the end of an ISO week-numbering year for the given date.
-* [`lastDayOfISOYear`](./src/last_day_of_iso_year.js) - return the last day of an ISO week-numbering year quarter for the given date.
+* [`lastDayOfISOYear`](./src/last_day_of_iso_year.js) - return the last day of an ISO week-numbering year for the given date.
 * [`addISOYears`](./src/add_iso_years.js) - add the specified number of ISO week-numbering years to the given date.
 * [`subISOYears`](./src/sub_iso_years.js) - subtract the specified number of ISO week-numbering years from the given date.
-* [`isSameISOYear`](./src/is_same_iso_year.js)
+* [`isSameISOYear`](./src/is_same_iso_year.js) - are the given dates in the same ISO week-numbering year?
 * [`getISOWeeksInYear`]('./src/get_iso_weeks_in_year') - get the number of weeks in the ISO week-numbering year.
 
 ### I18n
