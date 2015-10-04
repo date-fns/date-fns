@@ -322,7 +322,7 @@ var addLeadingZeros = function(number, targetLength) {
 
 var formatTimezone = function(offset, delimeter) {
   delimeter = delimeter || ''
-  var sign = offset < 0 ? '-' : '+'
+  var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
   var hours = Math.floor(absOffset / 60)
   var minutes = absOffset % 60
