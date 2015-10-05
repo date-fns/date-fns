@@ -1,6 +1,6 @@
 var parse = require('./parse')
 var startOfISOYear = require('./start_of_iso_year')
-var differenceInDays = require('./difference_in_days')
+var differenceInCalendarDays = require('./difference_in_calendar_days')
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -18,7 +18,7 @@ var differenceInDays = require('./difference_in_days')
  */
 var setISOYear = function(dirtyDate, isoYear) {
   var date = parse(dirtyDate)
-  var diff = differenceInDays(date, startOfISOYear(date))
+  var diff = differenceInCalendarDays(date, startOfISOYear(date))
   date = startOfISOYear(new Date(isoYear, 0, 4))
   date.setDate(date.getDate() + diff)
   return date
