@@ -2,8 +2,6 @@ var parse = require('./parse')
 var startOfISOYear = require('./start_of_iso_year')
 var differenceInDays = require('./difference_in_days')
 
-var MILLISECONDS_IN_DAY = 86400000
-
 /**
  * Set the ISO week-numbering year to the given date,
  * saving the week number and the weekday number.
