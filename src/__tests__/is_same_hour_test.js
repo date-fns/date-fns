@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isSameHour = require('../is_same_hour')
 
 describe('isSameHour', function() {
-  it('returns true if passed dates has same hour', function() {
+  it('returns true if given dates have same hour', function() {
     var result = isSameHour(
       new Date(2014, 8 /* Sep */, 4, 6, 0),
       new Date(2014, 8 /* Sep */, 4, 6, 30)
@@ -10,7 +10,7 @@ describe('isSameHour', function() {
     assert(result === true)
   })
 
-  it('returns false if passed dates has different hours', function() {
+  it('returns false if given dates have different hours', function() {
     var result = isSameHour(
       new Date(2014, 8 /* Sep */, 4, 6, 0),
       new Date(2014, 8 /* Sep */, 4, 5, 0)
@@ -18,7 +18,7 @@ describe('isSameHour', function() {
     assert(result === false)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = isSameHour(
       new Date(2014, 8 /* Sep */, 4, 18, 0).toISOString(),
       new Date(2014, 8 /* Sep */, 4, 18, 45).toISOString()
@@ -26,7 +26,7 @@ describe('isSameHour', function() {
     assert(result === true)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = isSameHour(
       new Date(2014, 8 /* Sep */, 4, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 18, 45).getTime()

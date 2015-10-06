@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var startOfHour = require('../start_of_hour')
 
 describe('startOfHour', function() {
-  it('returns date with minutes setted to 00:00:00', function() {
+  it('returns date with first minute of hour', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55)
     var result = startOfHour(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 2, 11))

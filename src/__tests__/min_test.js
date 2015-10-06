@@ -20,7 +20,7 @@ describe('min', function() {
     assert.deepEqual(result, new Date(1985, 6 /* Jul */, 2))
   })
 
-  it('allows to pass strings', function() {
+  it('accepts strings', function() {
     var result = min(
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
@@ -28,7 +28,7 @@ describe('min', function() {
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 
-  it('allows to pass timestamps', function() {
+  it('accepts timestamps', function() {
     var result = min(
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()

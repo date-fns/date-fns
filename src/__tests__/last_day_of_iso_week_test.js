@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var lastDayOfISOWeek = require('../last_day_of_iso_week')
 
 describe('lastDayOfISOWeek', function() {
-  it('returns date with time setted to 00:00:00 and date setted to last day of week', function() {
+  it('returns date with time setted to 00:00:00 and date setted to last day of ISO week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfISOWeek(date)
     assert.deepEqual(result,

@@ -7,12 +7,12 @@ describe('getISOWeek', function() {
     assert(result === 53)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = getISOWeek(new Date(2008, 11 /* Dec */, 29).toISOString())
     assert(result === 1)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = getISOWeek(new Date(2008, 11 /* Dec */, 29).getTime())
     assert(result === 1)
   })

@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subSeconds = require('../sub_seconds')
 
 describe('subSeconds', function() {
-  it('subtracts number of passed seconds', function() {
+  it('subtracts given number of seconds', function() {
     var result = subSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), 30)
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 44, 30))
   })

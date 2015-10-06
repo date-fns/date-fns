@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var setYear = require('../set_year')
 
 describe('setYear', function() {
-  it('set full year', function() {
+  it('set year', function() {
     var result = setYear(new Date(2014, 8 /* Sep */, 1), 2013)
     assert.deepEqual(result, new Date(2013, 8 /* Sep */, 1))
   })

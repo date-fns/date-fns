@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var addYears = require('../add_years')
 
 describe('addYears', function() {
-  it('adds number of passed years', function() {
+  it('adds given number of years', function() {
     var result = addYears(new Date(2014, 8 /* Sep */, 1), 5)
     assert.deepEqual(result, new Date(2019, 8 /* Sep */, 1))
   })

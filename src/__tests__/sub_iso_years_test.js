@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subISOYears = require('../sub_iso_years')
 
 describe('subISOYears', function() {
-  it('subtracts number of passed years', function() {
+  it('subtracts given number of ISO years', function() {
     var result = subISOYears(new Date(2014, 8 /* Sep */, 1), 5)
     assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
   })

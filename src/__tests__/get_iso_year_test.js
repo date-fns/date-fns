@@ -7,12 +7,12 @@ describe('getISOYear', function() {
     assert(result === 2008)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = getISOYear(new Date(2005, 0 /* Jan */, 1).toISOString())
     assert(result === 2004)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = getISOYear(new Date(2005, 0 /* Jan */, 1).getTime())
     assert(result === 2004)
   })

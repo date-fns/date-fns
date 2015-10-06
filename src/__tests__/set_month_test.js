@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var setMonth = require('../set_month')
 
 describe('setMonth', function() {
-  it('set index of month', function() {
+  it('set month', function() {
     var result = setMonth(new Date(2014, 8 /* Sep */, 1), 1)
     assert.deepEqual(result, new Date(2014, 1 /* Feb */, 1))
   })

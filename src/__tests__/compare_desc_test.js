@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var compareDesc = require('../compare_desc')
 
 describe('compareDesc', function() {
-  it('returns 0 if passed dates are equal', function() {
+  it('returns 0 if given dates are equal', function() {
     var result = compareDesc(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
@@ -44,7 +44,7 @@ describe('compareDesc', function() {
     assert.deepEqual(result, sortedArray)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = compareDesc(
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
@@ -52,7 +52,7 @@ describe('compareDesc', function() {
     assert(result === 1)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = compareDesc(
       new Date(1987, 1 /* Feb */, 11).getTime(),
       new Date(1989, 6 /* Jul */, 10).getTime()

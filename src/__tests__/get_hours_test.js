@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var getHours = require('../get_hours')
 
 describe('getHours', function() {
-  it('returns amount of hours of given date', function() {
+  it('returns hours of given date', function() {
     var result = getHours(new Date(2012, 1 /* Feb */, 29, 11, 45))
     assert(result === 11)
   })

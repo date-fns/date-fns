@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subMilliseconds = require('../sub_milliseconds')
 
 describe('subMilliseconds', function() {
-  it('subtracts number of passed milliseconds', function() {
+  it('subtracts given number of milliseconds', function() {
     var result = subMilliseconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0), 750)
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 29, 250))
   })
