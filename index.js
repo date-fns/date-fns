@@ -28,6 +28,7 @@ module.exports = {
   getDay: require('./src/get_day'),
   getDayOfYear: require('./src/get_day_of_year'),
   getDaysInMonth: require('./src/get_days_in_month'),
+  getDaysInYear: require('./src/get_days_in_year'),
   getHours: require('./src/get_hours'),
   getISOWeek: require('./src/get_iso_week'),
   getISOWeeksInYear: require('./src/get_iso_weeks_in_year'),

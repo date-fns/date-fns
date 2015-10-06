@@ -158,6 +158,7 @@ Code is fully documented, check the source for the reference.
 * [`subYears`](./src/sub_years.js) - subtract the specified number of years from the given date.
 * [`isSameYear`](./src/is_same_year.js) - are the given dates in the same year?
 * [`isLeapYear`](./src/is_leap_year.js) - is the given date in the leap year?
+* [`getDaysInYear`](./src/get_days_in_year.js) - get the number of days in a year of the given date.
 
 ### [ISO week-numbering year](http://en.wikipedia.org/wiki/ISO_week_date) helpers
 
