@@ -100,7 +100,9 @@ Code is fully documented, check the source for the reference.
 * [`subDays`](./src/sub_days.js) - subtract the specified number of days from the given date.
 * [`isSameDay`](./src/is_same_day.js) - are the given dates in the same day?
 * [`isWeekend`](./src/is_weekend.js) - is the given date in a weekend?
+* [`isYesterday`](./src/is_yesterday.js) - is the given date yesterday?
 * [`isToday`](./src/is_today.js) - is the given date today?
+* [`isTomorrow`](./src/is_tomorrow.js) - is the given date tomorrow?
 * [`eachDay`](./src/each_day.js) - return the array of dates within the specified range.
 * [`differenceInDays`](./src/difference_in_days.js) - return the number of full days between the given dates.
 
