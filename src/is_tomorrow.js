@@ -7,9 +7,9 @@ var startOfDay = require('./start_of_day')
  * @returns {Boolean} the date is tomorrow
  */
 var isTomorrow = function(dirtyDate) {
-  var yesterday = new Date()
-  yesterday.setDate(yesterday.getDate() + 1)
-  return startOfDay(dirtyDate).getTime() == startOfDay(yesterday).getTime()
+  var tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  return startOfDay(dirtyDate).getTime() == startOfDay(tomorrow).getTime()
 }
 
 module.exports = isTomorrow
