@@ -1,6 +1,4 @@
 var parse = require('./parse')
-var startOfDay = require('./start_of_day')
-var startOfMonth = require('./end_of_month')
 
 /**
  * Is the given date the first day of a month?
