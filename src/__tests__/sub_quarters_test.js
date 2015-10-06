@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subQuarters = require('../sub_quarters')
 
 describe('subQuarters', function() {
-  it('subtracts number of passed quarters', function() {
+  it('subtracts given number of quarters', function() {
     var result = subQuarters(new Date(2014, 8 /* Sep */, 1), 3)
     assert.deepEqual(result, new Date(2013, 11 /* Dec */, 1))
   })
@@ -23,7 +23,7 @@ describe('subQuarters', function() {
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('works well when desired month have less days and provided date is on the last day of month', function() {
+  it('works well if desired month have less days and provided date is on the last day of month', function() {
     var date = new Date(2014, 11 /* Dec */, 31)
     var result = subQuarters(date, 1)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))

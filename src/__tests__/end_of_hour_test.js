@@ -2,19 +2,19 @@ var assert = require('power-assert')
 var endOfHour = require('../end_of_hour')
 
 describe('endOfHour', function() {
-  it('returns date with time setted to last millisecond before the hour ends', function() {
+  it('returns date with time setted to last millisecond before hour ends', function() {
     var date = new Date(2014, 11, 1, 22, 15)
     var result = endOfHour(date)
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 59, 59, 999))
   })
 
-  it('supports string as a date', function() {
+  it('accepts string', function() {
     var date = new Date(2014, 11, 1, 13).toISOString()
     var result = endOfHour(date)
     assert.deepEqual(result, new Date(2014, 11, 1, 13, 59, 59, 999))
   })
 
-  it('supports timestamp as a date', function() {
+  it('accepts timestamp', function() {
     var result = endOfHour(new Date(2014, 11, 1, 22, 15).getTime())
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 59, 59, 999))
   })

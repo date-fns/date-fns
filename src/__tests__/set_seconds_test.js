@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var setSeconds = require('../set_seconds')
 
 describe('setSeconds', function() {
-  it('sets amount of seconds', function() {
+  it('sets seconds', function() {
     var result = setSeconds(new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500), 45)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
   })

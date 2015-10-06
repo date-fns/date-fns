@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var eachDay = require('../each_day')
 
 describe('eachDay', function() {
-  it('returns array of dates within specefied range', function() {
+  it('returns array of dates within specified range', function() {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 12)
@@ -34,7 +34,7 @@ describe('eachDay', function() {
     ])
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamps', function() {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6).getTime(),
       new Date(2014, 9 /* Oct */, 12).getTime()

@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subMonths = require('../sub_months')
 
 describe('subMonths', function() {
-  it('subtracts number of passed months', function() {
+  it('subtracts given number of months', function() {
     var result = subMonths(new Date(2015, 1 /* Feb */, 1), 5)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })

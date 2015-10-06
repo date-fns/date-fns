@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var startOfYear = require('../start_of_year')
 
 describe('startOfYear', function() {
-  it('returns date with time setted to 00:00:00', function() {
+  it('returns date with time setted to 00:00:00 and date setted to first day of year', function() {
     var date = new Date(2014, 8, 2, 11, 55, 00)
     var result = startOfYear(date)
     assert.deepEqual(result,

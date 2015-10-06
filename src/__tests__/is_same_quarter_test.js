@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isSameQuarter = require('../is_same_quarter')
 
 describe('isSameQuarter', function() {
-  it('returns true if passed dates has same quarter (and year)', function() {
+  it('returns true if given dates have same quarter (and year)', function() {
     var result = isSameQuarter(
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 2 /* Mar */, 8)
@@ -10,7 +10,7 @@ describe('isSameQuarter', function() {
     assert(result === true)
   })
 
-  it('returns false if passed dates has different quarters', function() {
+  it('returns false if given dates have different quarters', function() {
     var result = isSameQuarter(
       new Date(2014, 0 /* Jan */, 1),
       new Date(2013, 8 /* Sep */, 25)
@@ -18,7 +18,7 @@ describe('isSameQuarter', function() {
     assert(result === false)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = isSameQuarter(
       new Date(2014, 6 /* Jul */, 2).toISOString(),
       new Date(2014, 8 /* Sep */, 25).toISOString()
@@ -26,7 +26,7 @@ describe('isSameQuarter', function() {
     assert(result === true)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = isSameQuarter(
       new Date(2014, 6 /* Jul */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime()

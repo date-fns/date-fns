@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var subWeeks = require('../sub_weeks')
 
 describe('subWeeks', function() {
-  it('subtracts number of passed days', function() {
+  it('subtracts given number of weeks', function() {
     var result = subWeeks(new Date(2014, 8 /* Sep */, 1), 4)
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 4))
   })

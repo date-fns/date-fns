@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isSameMonth = require('../is_same_month')
 
 describe('isSameMonth', function() {
-  it('returns true if passed dates has same month (and year)', function() {
+  it('returns true if given dates have same month (and year)', function() {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25)
@@ -10,7 +10,7 @@ describe('isSameMonth', function() {
     assert(result === true)
   })
 
-  it('returns false if passed dates has different months', function() {
+  it('returns false if given dates have different months', function() {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25)
@@ -18,7 +18,7 @@ describe('isSameMonth', function() {
     assert(result === false)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2).toISOString(),
       new Date(2014, 8 /* Sep */, 25).toISOString()
@@ -26,7 +26,7 @@ describe('isSameMonth', function() {
     assert(result === true)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime()

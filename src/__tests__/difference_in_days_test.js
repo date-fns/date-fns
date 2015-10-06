@@ -10,7 +10,7 @@ describe('differenceInDays', function() {
     assert(result === 366)
   })
 
-  it('allows to pass strings', function() {
+  it('accepts strings', function() {
     var result = differenceInDays(
       new Date(2014, 6 /* Jul */, 1, 23, 59, 59, 999).toISOString(),
       new Date(2014, 0 /* Jan */, 1).toISOString()
@@ -18,7 +18,7 @@ describe('differenceInDays', function() {
     assert(result === 181)
   })
 
-  it('allows to pass timestamps', function() {
+  it('accepts timestamps', function() {
     var result = differenceInDays(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime()

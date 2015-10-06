@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isSameSecond = require('../is_same_second')
 
 describe('isSameSecond', function() {
-  it('returns true if passed dates has same second', function() {
+  it('returns true if given dates have same second', function() {
     var result = isSameSecond(
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15),
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15, 500)
@@ -10,7 +10,7 @@ describe('isSameSecond', function() {
     assert(result === true)
   })
 
-  it('returns false if passed dates has different seconds', function() {
+  it('returns false if given dates have different seconds', function() {
     var result = isSameSecond(
       new Date(2014, 8 /* Sep */, 4, 6, 30, 58, 999),
       new Date(2014, 8 /* Sep */, 4, 6, 30, 59)
@@ -18,7 +18,7 @@ describe('isSameSecond', function() {
     assert(result === false)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = isSameSecond(
       new Date(2014, 8 /* Sep */, 4, 18, 45, 30).toISOString(),
       new Date(2014, 8 /* Sep */, 4, 18, 45, 30, 400).toISOString()
@@ -26,7 +26,7 @@ describe('isSameSecond', function() {
     assert(result === true)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = isSameSecond(
       new Date(2014, 8 /* Sep */, 4, 18, 45, 30).getTime(),
       new Date(2014, 8 /* Sep */, 4, 18, 45, 30, 400).getTime()

@@ -8,12 +8,12 @@ describe('startOfSecond', function() {
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 15, 45))
   })
 
-  it('supports string as a date', function() {
+  it('accepts string', function() {
     var result = startOfSecond('2014-12-01T13:20:30.456Z')
     assert.deepEqual(result, new Date(Date.UTC(2014, 11, 1, 13, 20, 30)))
   })
 
-  it('supports timestamp as a date', function() {
+  it('accepts timestamp', function() {
     var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400).getTime())
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 15, 45))
   })

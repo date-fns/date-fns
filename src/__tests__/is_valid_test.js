@@ -2,12 +2,12 @@ var assert = require('power-assert')
 var isValid = require('../is_valid')
 
 describe('isValid', function() {
-  it('returns true if passed date is valid', function() {
+  it('returns true if given date is valid', function() {
     var result = isValid(new Date())
     assert(result === true)
   })
 
-  it('returns false if passed date is invalid', function() {
+  it('returns false if given date is invalid', function() {
     var result = isValid(new Date(''))
     assert(result === false)
   })

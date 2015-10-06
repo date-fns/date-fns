@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var isAfter = require('../is_after')
 
 describe('isAfter', function() {
-  it('returns true if first date is after second one ', function() {
+  it('returns true if first date is after second one', function() {
     var result = isAfter(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
@@ -10,7 +10,7 @@ describe('isAfter', function() {
     assert(result === true)
   })
 
-  it('returns false if first date is before second one ', function() {
+  it('returns false if first date is before second one', function() {
     var result = isAfter(
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10)
@@ -18,7 +18,7 @@ describe('isAfter', function() {
     assert(result === false)
   })
 
-  it('returns false if first date is equal to second one ', function() {
+  it('returns false if first date is equal to second one', function() {
     var result = isAfter(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
@@ -26,7 +26,7 @@ describe('isAfter', function() {
     assert(result === false)
   })
 
-  it('allows to pass string', function() {
+  it('accepts string', function() {
     var result = isAfter(
       new Date(1989, 6 /* Jul */, 10).toISOString(),
       new Date(1987, 1 /* Feb */, 11).toISOString()
@@ -34,7 +34,7 @@ describe('isAfter', function() {
     assert(result === true)
   })
 
-  it('allows to pass timestamp', function() {
+  it('accepts timestamp', function() {
     var result = isAfter(
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()

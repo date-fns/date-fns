@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var lastDayOfYear = require('../last_day_of_year')
 
 describe('lastDayOfYear', function() {
-  it('returns date with time setted to 00:00:00.000 and date setted to last day of year', function() {
+  it('returns date with time setted to 00:00:00 and date setted to last day of year', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfYear(date)
     assert.deepEqual(result,

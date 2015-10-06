@@ -2,7 +2,7 @@ var assert = require('power-assert')
 var setMilliseconds = require('../set_milliseconds')
 
 describe('setMilliseconds', function() {
-  it('sets amount of milliseconds', function() {
+  it('sets milliseconds', function() {
     var result = setMilliseconds(new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500), 300)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 300))
   })
