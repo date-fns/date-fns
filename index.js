@@ -9,6 +9,7 @@ module.exports = {
   addSeconds: require('./src/add_seconds'),
   addWeeks: require('./src/add_weeks'),
   addYears: require('./src/add_years'),
+  closestTo: require('./src/closest_to'),
   compareAsc: require('./src/compare_asc'),
   compareDesc: require('./src/compare_desc'),
   differenceInDays: require('./src/difference_in_days'),
