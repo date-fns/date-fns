@@ -41,6 +41,6 @@
     "lint": "eslint .",
     "generate-index": "babel-node ./scripts/generate_index",
     "sync-versions": "babel-node ./scripts/sync_versions",
-    "doc": "jsdoc-parse"
+    "docs": "babel-node ./scripts/generate_docs"
   }
 }
