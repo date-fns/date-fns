@@ -5,7 +5,7 @@ var MILLISECONDS_IN_DAY = 86400000
 
 /**
  * @category Day Helpers
- * @summary Return the number of full days between the given dates.
+ * @summary Get the number of full days between the given dates.
  *
  * Return the number of full days between the given dates.
  *

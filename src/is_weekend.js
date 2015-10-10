@@ -1,7 +1,7 @@
 var parse = require('./parse')
 
 /**
- * @category Day Helpers
+ * @category Weekday Helpers
  * @summary Is the given date in a weekend?
  *
  * Is the given date in a weekend?

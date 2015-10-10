@@ -1,7 +1,7 @@
 var parse = require('./parse')
 
 /**
- * @category Day Helpers
+ * @category Weekday Helpers
  * @summary Get the day of the week.
  *
  * Get the day of the week of the given date.
