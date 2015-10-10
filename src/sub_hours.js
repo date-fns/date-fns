@@ -1,6 +1,9 @@
 var addHours = require('./add_hours')
 
 /**
+ * @category Hour Helpers
+ * @summary Subtract hours from the given date.
+ *
  * Subtract the specified number of hours from the given date.
  *
  * @param {Date|String|Number} date to be changed

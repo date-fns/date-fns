@@ -3,6 +3,9 @@ var endOfDay = require('./end_of_day')
 var endOfMonth = require('./end_of_month')
 
 /**
+ * @category Month Helpers
+ * @summary Is the given date the last day of a month?
+ *
  * Is the given date the last day of a month?
  *
  * @param {Date|String|Number} date to check

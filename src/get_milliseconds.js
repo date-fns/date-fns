@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Millisecond Helpers
+ * @summary Get the milliseconds.
+ *
  * Get the milliseconds of the given date.
  *
  * @param {Date|String|Number} date - the given date

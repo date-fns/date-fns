@@ -1,6 +1,9 @@
 var addMinutes = require('./add_minutes')
 
 /**
+ * @category Minute Helpers
+ * @summary Subtract the minutes from the given date.
+ *
  * Subtract the specified number of minutes from the given date.
  *
  * @param {Date|String|Number} date to be changed

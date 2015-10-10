@@ -1,6 +1,9 @@
 var addMonths = require('./add_months')
 
 /**
+ * @category Quarter Helpers
+ * @summary Add the specified number of year quarters to the given date.
+ *
  * Add the specified number of quarters to the given date.
  *
  * @param {Date|String|Number} date to be changed

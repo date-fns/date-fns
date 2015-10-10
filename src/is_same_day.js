@@ -1,6 +1,9 @@
 var startOfDay = require('./start_of_day')
 
 /**
+ * @category Day Helpers
+ * @summary Are the given dates in the same day?
+ *
  * Are the given dates in the same day?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

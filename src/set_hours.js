@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Hour Helpers
+ * @summary Set the hours.
+ *
  * Set the hours to the given date.
  *
  * @param {Date|String|Number} date to be changed

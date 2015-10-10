@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Second Helpers
+ * @summary Get the seconds.
+ *
  * Get the seconds of the given date.
  *
  * @param {Date|String|Number} date - the given date

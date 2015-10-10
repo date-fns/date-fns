@@ -1,4 +1,7 @@
 /**
+ * @category Common Helpers
+ * @summary Is the given date valid?
+ *
  * Returns false if argument is Invalid Date and true otherwise.
  * Invalid Date is a Date, whose time value is NaN.
  *

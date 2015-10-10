@@ -1,6 +1,9 @@
 var addMilliseconds = require('./add_milliseconds')
 
 /**
+ * @category Millisecond Helpers
+ * @summary Subtract the milliseconds from the given date.
+ *
  * Subtract the specified number of milliseconds from the given date.
  *
  * @param {Date|String|Number} date to be changed

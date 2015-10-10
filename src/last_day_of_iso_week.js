@@ -1,6 +1,9 @@
 var lastDayOfWeek = require('./last_day_of_week')
 
 /**
+ * @category ISO Week Helpers
+ * @summary Return the last day of an ISO week for the given date.
+ *
  * Return the last day of an ISO week for the given date.
  * The result will be in the local timezone.
  *

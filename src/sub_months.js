@@ -1,6 +1,9 @@
 var addMonths = require('./add_months')
 
 /**
+ * @category Month Helpers
+ * @summary Subtract the specified number of months from the given date.
+ *
  * Subtract the specified number of month from the gien date.
  *
  * @param {Date|String|Number} date to be changed

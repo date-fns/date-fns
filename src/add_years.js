@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Year Helpers
+ * @summary Add the specified number of years to the given date.
+ *
  * Add the specified number of years to the given date.
  *
  * @param {Date|String|Number} date to be changed

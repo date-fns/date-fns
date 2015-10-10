@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Month Helpers
+ * @summary Is the given date the first day of a month?
+ *
  * Is the given date the first day of a month?
  *
  * @param {Date|String|Number} date to check

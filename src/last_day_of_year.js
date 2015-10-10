@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Year Helpers
+ * @summary Return the last day of a year for the given date.
+ *
  * Return the last day of a year for the given date.
  * The result will be in the local timezone.
  *

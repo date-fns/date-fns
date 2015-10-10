@@ -1,6 +1,9 @@
 var addYears = require('./add_years')
 
 /**
+ * @category Year Helpers
+ * @summary Subtract the specified number of years from the given date.
+ *
  * Subtract the specified number of years from the given date.
  *
  * @param {Date|String|Number} date to be changed

@@ -4,6 +4,9 @@ var getISOYear = require('./get_iso_year')
 var parse = require('./parse')
 
 /**
+ * @category Common Helpers
+ * @summary Format the date.
+ *
  * Return the formatted date string in the given format.
  *
  * Accepted tokens:

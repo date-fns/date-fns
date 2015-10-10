@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Minute Helpers
+ * @summary Get the minutes.
+ *
  * Get the minutes of the given date.
  *
  * @param {Date|String|Number} date - the given date

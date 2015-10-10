@@ -1,6 +1,9 @@
 var startOfQuarter = require('./start_of_quarter')
 
 /**
+ * @category Quarter Helpers
+ * @summary Are the given dates in the same year quarter?
+ *
  * Are the given dates in the same year quarter?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

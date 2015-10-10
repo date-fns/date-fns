@@ -1,6 +1,9 @@
 var parse = require('./parse')
 
 /**
+ * @category Common Helpers
+ * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
+ *
  * Compare the two dates reverse chronologically and return -1, 0 or 1.
  *
  * @param {Date|String|Number} dateLeft - the first date to compare
