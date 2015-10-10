@@ -42,6 +42,7 @@ Code is fully documented, check the source for the reference.
 * [`compareDesc`](./src/compare_desc.js) - compare the two dates reverse chronologically and return -1, 0 or 1.
 * [`max`]('./src/max') - return the latest of the given dates.
 * [`min`]('./src/min') - return the earliest of the given dates.
+* [`closestTo`](./src/closest_to.js) - return a date from the array closest to the given date.
 * [`parse`](./src/parse.js) - parse the ISO-8601-formatted date.
 * [`isValid`](./src/is_valid.js) - is the given date valid?
 
