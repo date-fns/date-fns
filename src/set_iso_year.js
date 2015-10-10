@@ -6,6 +6,7 @@ var differenceInDays = require('./difference_in_days')
  * @category ISO Week-Numbering Year Helpers
  * @summary Set the ISO week-numbering year.
  *
+ * @description
  * Set the ISO week-numbering year to the given date,
  * saving the week number and the weekday number.
  *

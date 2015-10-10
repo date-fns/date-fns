@@ -7,6 +7,7 @@ var parse = require('./parse')
  * @category Common Helpers
  * @summary Format the date.
  *
+ * @description
  * Return the formatted date string in the given format.
  *
  * Accepted tokens:

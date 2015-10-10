@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Month Helpers
  * @summary Are the given dates in the same month?
  *
+ * @description
  * Are the given dates in the same month?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

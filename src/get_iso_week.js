@@ -8,6 +8,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @category ISO Week Helpers
  * @summary Get the ISO week.
  *
+ * @description
  * Get the ISO week of the given date.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

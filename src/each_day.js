@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Day Helpers
  * @summary Return the array of dates within the specified range.
  *
+ * @description
  * Return the array of dates within the specified range.
  *
  * @param {Date|String|Number} startDate - the start of range

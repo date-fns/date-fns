@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Day Helpers
  * @summary Get the day of the month.
  *
+ * @description
  * Add the specified number of days to the given date.
  *
  * @param {Date|String|Number} date to be changed

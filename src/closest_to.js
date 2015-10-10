@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Common Helpers
  * @summary Return a date from the array closest to the given date.
  *
+ * @description
  * Return a date from the array closest to the given date.
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with

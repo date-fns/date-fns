@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Common Helpers
  * @summary Return the earliest of the given dates.
  *
+ * @description
  * Return the earliest of the given dates.
  *
  * @param {...Date|String|Number} list of dates

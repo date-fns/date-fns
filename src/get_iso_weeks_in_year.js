@@ -7,6 +7,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the number of weeks in the ISO week-numbering year.
  *
+ * @description
  * Get the number of ISO weeks in an ISO week-numbering year of the given date.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

@@ -4,6 +4,7 @@ var startOfDay = require('./start_of_day')
  * @category Day Helpers
  * @summary Is the given date tomorrow?
  *
+ * @description
  * Is the given date tomorrow?
  *
  * @param {Date|String|Number} date to check

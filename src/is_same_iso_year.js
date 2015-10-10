@@ -4,6 +4,7 @@ var startOfISOYear = require('./start_of_iso_year')
  * @category ISO Week-Numbering Year Helpers
  * @summary Are the given dates in the same ISO week-numbering year?
  *
+ * @description
  * Are the given dates in the same ISO week-numbering year?
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

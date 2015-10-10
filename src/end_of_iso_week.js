@@ -4,6 +4,7 @@ var endOfWeek = require('./end_of_week')
  * @category ISO Week Helpers
  * @summary Return the end of an ISO week for the given date.
  *
+ * @description
  * Return the end of an ISO week for the given date.
  * The result will be in the local timezone.
  *

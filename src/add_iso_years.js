@@ -5,6 +5,7 @@ var setISOYear = require('./set_iso_year')
  * @category ISO Week-Numbering Year Helpers
  * @summary Add the specified number of ISO week-numbering years to the given date.
  *
+ * @description
  * Add the specified number of ISO week-numbering years to the given date.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

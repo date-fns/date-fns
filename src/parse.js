@@ -27,6 +27,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * @category Common Helpers
  * @summary Parse the ISO-8601-formatted date.
  *
+ * @description
  * Parse the date string representation.
  * It accepts the ISO 8601 format as well as a partial implementation.
  *

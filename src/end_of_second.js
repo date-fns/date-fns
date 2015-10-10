@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Second Helpers
  * @summary Return the end of a second for the given date.
  *
+ * @description
  * Return the end of a second for the given date.
  * The result will be in the local timezone.
  *

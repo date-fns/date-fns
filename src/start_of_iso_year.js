@@ -5,6 +5,7 @@ var startOfISOWeek = require('./start_of_iso_week')
  * @category ISO Week-Numbering Year Helpers
  * @summary Return the start of an ISO week-numbering year for the given date.
  *
+ * @description
  * Return the start of an ISO week-numbering year,
  * which always starts 3 days before the year's first Thursday.
  * The result will be in the local timezone.

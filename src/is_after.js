@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Common Helpers
  * @summary Is the first date after the second one?
  *
+ * @description
  * Is the first date after the second one?
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with

@@ -4,6 +4,7 @@ var addISOYears = require('./add_iso_years')
  * @category ISO Week-Numbering Year Helpers
  * @summary Subtract the specified number of ISO week-numbering years from the given date.
  *
+ * @description
  * Subtract the specified number of ISO week-numbering years from the given date.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

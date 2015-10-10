@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Year Helpers
  * @summary Is the given date in the leap year?
  *
+ * @description
  * Is the given date in the leap year?
  *
  * @param {Date|String|Number} date to check

@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Year Helpers
  * @summary Are the given dates in the same year?
  *
+ * @description
  * Are the given dates in the same year?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

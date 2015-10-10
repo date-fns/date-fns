@@ -4,6 +4,7 @@ var parse = require('./parse')
  * @category Year Helpers
  * @summary Get the year.
  *
+ * @description
  * Get the year of the given date.
  *
  * @param {Date|String|Number} date - the given date

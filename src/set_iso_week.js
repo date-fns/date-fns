@@ -5,6 +5,7 @@ var getISOWeek = require('./get_iso_week')
  * @category ISO Week Helpers
  * @summary Set the ISO week.
  *
+ * @description
  * Set the ISO week to the given date, saving the weekday number.
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date

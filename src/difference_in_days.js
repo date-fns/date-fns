@@ -7,6 +7,7 @@ var MILLISECONDS_IN_DAY = 86400000
  * @category Day Helpers
  * @summary Get the number of full days between the given dates.
  *
+ * @description
  * Return the number of full days between the given dates.
  *
  * @param {Date|String|Number} dateLeft - the earlier date
