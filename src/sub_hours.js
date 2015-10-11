@@ -1,4 +1,4 @@
-@devar addHours = require('./add_hours')
+var addHours = require('./add_hours')
 
 /**
  * @category Hour Helpers
