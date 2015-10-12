@@ -66,6 +66,7 @@ Code is fully documented, check the source for the reference.
 * [`addSeconds`](./src/add_seconds.js) - add the seconds to the given date.
 * [`subSeconds`](./src/sub_seconds.js) - subtract the seconds from the given date.
 * [`isSameSecond`](./src/is_same_second.js) - are the given dates in the same second?
+* [`isThisSecond`](./src/is_this_second.js) - is the given date in the same second as the current date?
 
 ### Minutes helpers
 
@@ -76,6 +77,7 @@ Code is fully documented, check the source for the reference.
 * [`addMinutes`](./src/add_minutes.js) - add the minutes to the given date.
 * [`subMinutes`](./src/sub_minutes.js) - subtract the minutes from the given date.
 * [`isSameMinute`](./src/is_same_minute.js) - are the given dates in the same minute?
+* [`isThisMinute`](./src/is_this_minute.js) - is the given date in the same minute as the current date?
 
 ### Hours helpers
 
@@ -86,6 +88,7 @@ Code is fully documented, check the source for the reference.
 * [`addHours`](./src/add_hours.js) - add hours to the given date.
 * [`subHours`](./src/sub_hours.js) - subtract hours from the given date.
 * [`isSameHour`](./src/is_same_hour.js) - are the given dates in the same hour?
+* [`isThisHour`](./src/is_this_hour.js) - is the given date in the same hour as the current date?
 
 ### Day helpers
 
@@ -115,6 +118,7 @@ Code is fully documented, check the source for the reference.
 * [`addWeeks`](./src/add_weeks.js) - add specified number of weeks to the given date.
 * [`subWeeks`](./src/sub_weeks.js) - subtract specified number of weeks from the given date.
 * [`isSameWeek`](./src/is_same_week.js) - are the given dates in the same week?
+* [`isThisWeek`](./src/is_this_week.js) - is the given date in the same week as the current date?
 
 ### [ISO week](http://en.wikipedia.org/wiki/ISO_week_date) helpers
 
@@ -124,6 +128,7 @@ Code is fully documented, check the source for the reference.
 * [`endOfISOWeek`](./src/end_of_iso_week.js) - return the end of an ISO week for the given date.
 * [`lastDayOfISOWeek`](./src/last_day_of_iso_week.js) - return the last day of an ISO week for the given date.
 * [`isSameISOWeek`](./src/is_same_iso_week.js) - are the given dates in the same ISO week?
+* [`isThisISOWeek`](./src/is_this_iso_week.js) - is the given date in the same ISO week as the current date?
 
 ### Month helpers
 
@@ -135,6 +140,7 @@ Code is fully documented, check the source for the reference.
 * [`addMonths`](./src/add_months.js) - add the specified number of months to the given date.
 * [`subMonths`](./src/sub_months.js) - subtract the specified number of months from the given date.
 * [`isSameMonth`](./src/is_same_month.js) - are the given dates in the same month?
+* [`isThisMonth`](./src/is_this_month.js) - is the given date in the same month as the current date?
 * [`isFirstDayOfMonth`](./src/is_first_day_of_month.js) - is the given date the first day of a month?
 * [`isLastDayOfMonth`](./src/is_last_day_of_month.js) - is the given date the last day of a month?
 * [`getDaysInMonth`](./src/get_days_in_month.js) - get the number of days in a month of the given date.
@@ -149,6 +155,7 @@ Code is fully documented, check the source for the reference.
 * [`addQuarters`](./src/add_quarters.js) - add the specified number of year quarters to the given date.
 * [`subQuarters`](./src/sub_quarters.js) - subtract the specified number of year quarters from the given date.
 * [`isSameQuarter`](./src/is_same_quarter.js) - are the given dates in the same year quarter?
+* [`isThisQuarter`](./src/is_this_quarter.js) - is the given date in the same quarter as the current date?
 
 ### Year helpers
 
@@ -160,6 +167,7 @@ Code is fully documented, check the source for the reference.
 * [`addYears`](./src/add_years.js) - add the specified number of years to the given date.
 * [`subYears`](./src/sub_years.js) - subtract the specified number of years from the given date.
 * [`isSameYear`](./src/is_same_year.js) - are the given dates in the same year?
+* [`isThisYear`](./src/is_this_year.js) - is the given date in the same year as the current date?
 * [`isLeapYear`](./src/is_leap_year.js) - is the given date in the leap year?
 * [`getDaysInYear`](./src/get_days_in_year.js) - get the number of days in a year of the given date.
 
@@ -173,6 +181,7 @@ Code is fully documented, check the source for the reference.
 * [`addISOYears`](./src/add_iso_years.js) - add the specified number of ISO week-numbering years to the given date.
 * [`subISOYears`](./src/sub_iso_years.js) - subtract the specified number of ISO week-numbering years from the given date.
 * [`isSameISOYear`](./src/is_same_iso_year.js) - are the given dates in the same ISO week-numbering year?
+* [`isThisISOYear`](./src/is_this_iso_year.js) - is the given date in the same ISO week-numbering year as the current date?
 * [`getISOWeeksInYear`]('./src/get_iso_weeks_in_year') - get the number of weeks in the ISO week-numbering year.
 
 ### I18n
