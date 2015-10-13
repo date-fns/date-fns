@@ -94,8 +94,6 @@ Code is fully documented, check the source for the reference.
 
 * [`getDate`](./src/get_date.js) - get the day of the month.
 * [`setDate`](./src/set_date.js) - set the day of the month.
-* [`getDay`](./src/get_day.js) - get the day of the week.
-* [`setDay`](./src/set_day.js) - set the day of the week.
 * [`getDayOfYear`](./src/get_day_of_year.js) - get the day of the year.
 * [`setDayOfYear`](./src/set_day_of_year.js) - set the day of the year.
 * [`startOfDay`](./src/start_of_day.js) - return the start of a day for the given date.
@@ -103,12 +101,24 @@ Code is fully documented, check the source for the reference.
 * [`addDays`](./src/add_days.js) - add the specified number of days to the given date.
 * [`subDays`](./src/sub_days.js) - subtract the specified number of days from the given date.
 * [`isSameDay`](./src/is_same_day.js) - are the given dates in the same day?
-* [`isWeekend`](./src/is_weekend.js) - is the given date in a weekend?
 * [`isYesterday`](./src/is_yesterday.js) - is the given date yesterday?
 * [`isToday`](./src/is_today.js) - is the given date today?
 * [`isTomorrow`](./src/is_tomorrow.js) - is the given date tomorrow?
 * [`eachDay`](./src/each_day.js) - return the array of dates within the specified range.
 * [`differenceInDays`](./src/difference_in_days.js) - return the number of full days between the given dates.
+
+### Weekday helpers
+
+* [`getDay`](./src/get_day.js) - get the day of the week.
+* [`setDay`](./src/set_day.js) - set the day of the week.
+* [`isWeekend`](./src/is_weekend.js) - is the given date in a weekend?
+* [`isSunday`](./src/is_sunday.js) - is the given date Sunday?
+* [`isMonday`](./src/is_monday.js) - is the given date Monday?
+* [`isTuesday`](./src/is_tuesday.js) - is the given date Tuesday?
+* [`isWednesday`](./src/is_wednesday.js) - is the given date Wednesday?
+* [`isThursday`](./src/is_thursday.js) - is the given date Thursday?
+* [`isFriday`](./src/is_friday.js) - is the given date Friday?
+* [`isSaturday`](./src/is_saturday.js) - is the given date Saturday?
 
 ### Week helpers
 
