@@ -55,5 +55,15 @@ describe('isWithinRange', function() {
     )
     assert(result === true)
   })
+
+  it('throws exception if start date is after end date', function() {
+    var block = isWithinRange.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      new Date(2014, 11 /* Dec */, 31),
+      new Date(2014, 8 /* Sep */, 1)
+    )
+    assert.throws(block)
+  })
 })
 
