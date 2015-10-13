@@ -1,10 +1,14 @@
 var parse = require('./parse')
 
 /**
+ * @category Common Helpers
+ * @summary Return a date from the array closest to the given date.
+ *
+ * @description
  * Return a date from the array closest to the given date.
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {(Date|String|Number)[]} datesArray - the array to search
+ * @param {Date[]|String[]|Number[]} datesArray - the array to search
  * @returns {Date} date from the array closest to the given date
  *
  * @example what is closer to the 6 Oct 2015: 1 Jan 2000 or 1 Jan 2030

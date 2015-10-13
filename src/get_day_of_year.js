@@ -3,6 +3,10 @@ var startOfYear = require('./start_of_year')
 var differenceInDays = require('./difference_in_days')
 
 /**
+ * @category Day Helpers
+ * @summary Get the day of the year.
+ *
+ * @description
  * Get the day of the year of the given date.
  *
  * @param {Date|String|Number} date - the given date

@@ -1,6 +1,10 @@
 var addDays = require('./add_days')
 
 /**
+ * @category Day Helpers
+ * @summary Subtract the specified number of days from the given date.
+ *
+ * @description
  * Subtract the specified number of days from the given date.
  *
  * @param {Date|String|Number} date to be changed

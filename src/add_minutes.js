@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Minute Helpers
+ * @summary Add the minutes to the given date.
+ *
+ * @description
  * Add the specified number of minutes to the given date.
  *
  * @param {Date|String|Number} date to be changed

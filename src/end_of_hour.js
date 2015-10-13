@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Hour Helpers
+ * @summary Return the end of an hour for the given date.
+ *
+ * @description
  * Return the end of an hour for the given date.
  * The result will be in the local timezone.
  *

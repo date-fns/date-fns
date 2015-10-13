@@ -1,6 +1,10 @@
 var startOfSecond = require('./start_of_second')
 
 /**
+ * @category Second Helpers
+ * @summary Are the given dates in the same second?
+ *
+ * @description
  * Are the given dates in the same second?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

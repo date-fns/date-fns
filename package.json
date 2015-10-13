@@ -14,6 +14,7 @@
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "js-beautify": "^1.5.10",
+    "jsdoc-parse": "^1.1.1",
     "json-loader": "^0.5.3",
     "karma": "^0.13.9",
     "karma-browserstack-launcher": "^0.1.5",
@@ -39,6 +40,7 @@
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
     "lint": "eslint .",
     "generate-index": "babel-node ./scripts/generate_index",
-    "sync-versions": "babel-node ./scripts/sync_versions"
+    "sync-versions": "babel-node ./scripts/sync_versions",
+    "docs": "babel-node ./scripts/generate_docs"
   }
 }

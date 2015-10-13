@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Week Helpers
+ * @summary Return the last day of a week for the given date.
+ *
+ * @description
  * Return the last day of a week for the given date.
  * The result will be in the local timezone.
  *

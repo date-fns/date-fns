@@ -1,6 +1,10 @@
 var addQuarters = require('./add_quarters')
 
 /**
+ * @category Quarter Helpers
+ * @summary Subtract the specified number of year quarters from the given date.
+ *
+ * @description
  * Subtract the specified number of quarters from the given date.
  *
  * @param {Date|String|Number} date to be changed

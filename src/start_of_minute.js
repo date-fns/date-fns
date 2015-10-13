@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Minute Helpers
+ * @summary Return the start of a minute for the given date.
+ *
+ * @description
  * Return the start of a minute for the given date.
  * The result will be in the local timezone.
  *

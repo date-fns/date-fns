@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Month Helpers
+ * @summary Return the start of a month for the given date.
+ *
+ * @description
  * Return the start of a month for the given date.
  * The result will be in the local timezone.
  *

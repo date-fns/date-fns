@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Quarter Helpers
+ * @summary Return the last day of a year quarter for the given date.
+ *
+ * @description
  * Return the last day of a quarter for the given date.
  * The result will be in the local timezone.
  *

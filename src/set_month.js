@@ -2,6 +2,10 @@ var parse = require('./parse')
 var getDaysInMonth = require('./get_days_in_month')
 
 /**
+ * @category Month Helpers
+ * @summary Set the month.
+ *
+ * @description
  * Set the month to the given date.
  *
  * @param {Date|String|Number} date to be changed

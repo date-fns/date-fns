@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Common Helpers
+ * @summary Are the given dates equal?
+ *
+ * @description
  * Are the given dates equal?
  *
  * @param {Date|String|Number} dateLeft - the first date to compare

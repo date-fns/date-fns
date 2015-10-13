@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Common Helpers
+ * @summary Is the given date in the future?
+ *
+ * @description
  * Is the given date in the future?
  *
  * @param {Date|String|Number} date to check

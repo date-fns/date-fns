@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
+ *
+ * @description
  * Return the start of a day for the given date.
  * The result will be in the local timezone.
  *

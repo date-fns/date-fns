@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Range Helpers
+ * @summary Is the given date within the range?
+ *
+ * @description
  * Is the given date within the range?
  *
  * @param {Date|String|Number} date to check

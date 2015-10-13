@@ -1,6 +1,10 @@
 var startOfMinute = require('./start_of_minute')
 
 /**
+ * @category Minute Helpers
+ * @summary Are the given dates in the same minute?
+ *
+ * @description
  * Are the given dates in the same minute?
  *
  * @param {Date|String|Number} dateLeft - the first date to check

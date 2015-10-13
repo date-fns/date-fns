@@ -2,6 +2,10 @@ var parse = require('./parse')
 var addDays = require('./add_days')
 
 /**
+ * @category Weekday Helpers
+ * @summary Set the day of the week.
+ *
+ * @description
  * Set the day of the week to the given date.
  *
  * @param {Date|String|Number} date to be changed

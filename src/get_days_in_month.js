@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Month Helpers
+ * @summary Get the number of days in a month of the given date.
+ *
+ * @description
  * Get the number of days in a month of the given date.
  *
  * @param {Date|String|Number} date - the given date

@@ -1,6 +1,10 @@
 var parse = require('./parse')
 
 /**
+ * @category Quarter Helpers
+ * @summary Get the year quarter.
+ *
+ * @description
  * Get the year quarter of the given date.
  *
  * @param {Date|String|Number} date - the given date
