@@ -1,32 +1,30 @@
-var startOfDay = require('./start_of_day')
-
-var MILLISECONDS_IN_MINUTE = 60000
-var MILLISECONDS_IN_DAY = 86400000
+var parse = require('./parse')
+var differenceInCalendarDays = require('./difference_in_calendar_days')
+var compareAsc = require('./compare_asc')
 
 /**
  * @category Day Helpers
  * @summary Get the number of full days between the given dates.
  *
  * @description
- * Return the number of full days between the given dates.
+ * Get the number of full days between the given dates.
  *
- * @param {Date|String|Number} dateLeft - the earlier date
- * @param {Date|String|Number} dateRight - the later date
- * @returns {Number} number of days
+ * @param {Date|String|Number} dateLeft - the later date
+ * @param {Date|String|Number} dateRight - the earlier date
+ * @returns {Number} number of full days
  */
 var differenceInDays = function(dirtyDateLeft, dirtyDateRight) {
-  var startOfDayLeft = startOfDay(dirtyDateLeft)
-  var startOfDayRight = startOfDay(dirtyDateRight)
+  var dateLeft = parse(dirtyDateLeft)
+  var dateRight = parse(dirtyDateRight)
 
-  var timestampLeft = startOfDayLeft.getTime()
-    - startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
-  var timestampRight = startOfDayRight.getTime()
-    - startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
-  // Round the number of days to the nearest integer
-  // because the number of milliseconds in a day is not constant
-  // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
+  // If so, result must be decreased by 1 in absolute value
+  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
+  return sign * (difference - isLastDayNotFull)
 }
 
 module.exports = differenceInDays
