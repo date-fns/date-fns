@@ -92,6 +92,7 @@ module.exports = {
   isTomorrow: require('./src/is_tomorrow'),
   isTuesday: require('./src/is_tuesday'),
   isValid: require('./src/is_valid'),
+  isValidDateValues: require('./src/is_valid_date_values'),
   isWednesday: require('./src/is_wednesday'),
   isWeekend: require('./src/is_weekend'),
   isWithinRange: require('./src/is_within_range'),
