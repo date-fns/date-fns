@@ -5,12 +5,13 @@ var parseTokenDateTimeDelimeter = /[T ]/
 var parseTokenPlainTime = /:/
 
 // date tokens
-var parseTokenYYYY = /^(\d{4})$/
-var parseTokenYYYYMM = /^(\d{4})-(\d{2})$/
-var parseTokenYYYYDDD = /^(\d{4})-?(\d{3})$/
-var parseTokenYYYYMMDD = /^(\d{4})-?(\d{2})-?(\d{2})$/
-var parseTokenYYYYWww = /^(\d{4})-?W(\d{2})$/
-var parseTokenYYYYWwwD = /^(\d{4})-?W(\d{2})-?(\d{1})$/
+var parseTokenYYYY = /^(\d{4})-?/
+var parseTokenYYYYY = /^([+-]\d{4,6})-/
+var parseTokenMM = /^-(\d{2})$/
+var parseTokenDDD = /^-?(\d{3})$/
+var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
+var parseTokenWww = /^-?W(\d{2})$/
+var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
 
 // time tokens
 var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
@@ -35,6 +36,11 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  *
  * @param {String} dateStr - the ISO 8601 formatted string to parse
  * @returns {Date} parsed date in the local time zone.
+ *
+ * @example
+ * // Parse string '2014-02-11T11:30:30':
+ * var result = parse('2014-02-11T11:30:30')
+ * //=> Tue Feb 11 2014 11:30:30
  */
 var parse = function(dateStr) {
   if (dateStr instanceof Date) {
@@ -49,6 +55,7 @@ var parse = function(dateStr) {
   var date = parseDate(dateStrings.date)
 
   if (date) {
+    var timestamp = date.getTime()
     var time = 0
     var offset
 
@@ -60,11 +67,11 @@ var parse = function(dateStr) {
       offset = parseTimezone(dateStrings.timezone)
     } else {
       // get offset accurate to hour in timezones that change offset
-      offset = new Date(date + time).getTimezoneOffset()
-      offset = new Date(date + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+      offset = new Date(timestamp + time).getTimezoneOffset()
+      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
     }
 
-    return new Date(date + time + offset * MILLISECONDS_IN_MINUTE)
+    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
   } else {
     return new Date(dateStr)
   }
@@ -97,46 +104,62 @@ var splitDateString = function(dateStr) {
 }
 
 var parseDate = function(dateString) {
+  var year
+  var yearToken
+
+  // YYYY or ±YYYYY
+  if (yearToken = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)) {
+    var yearString = yearToken[1]
+    year = parseInt(yearString, 10)
+    dateString = dateString.slice(yearString.length)
+
+  // Invalid ISO-formated year
+  } else {
+    return null
+  }
+
   var token
 
   // YYYY
-  if (token = parseTokenYYYY.exec(dateString)) {
-    var year = parseInt(token[1], 10)
-    return Date.UTC(year, 0, 1)
+  if (dateString.length === 0) {
+    var date = new Date(0)
+    date.setUTCFullYear(year)
+    return date
 
   // YYYY-MM
-  } else if (token = parseTokenYYYYMM.exec(dateString)) {
-    var year = parseInt(token[1], 10)
-    var month = parseInt(token[2], 10) - 1
-    return Date.UTC(year, month, 1)
+  } else if (token = parseTokenMM.exec(dateString)) {
+    var date = new Date(0)
+    var month = parseInt(token[1], 10) - 1
+    date.setUTCFullYear(year, month)
+    return date
 
   // YYYY-DDD or YYYYDDD
-  } else if (token = parseTokenYYYYDDD.exec(dateString)) {
-    var year = parseInt(token[1], 10)
-    var dayOfYear = parseInt(token[2], 10)
-    return Date.UTC(year, 0, dayOfYear)
+  } else if (token = parseTokenDDD.exec(dateString)) {
+    var date = new Date(0)
+    var dayOfYear = parseInt(token[1], 10)
+    date.setUTCFullYear(year, 0, dayOfYear)
+    return date
 
   // YYYY-MM-DD or YYYYMMDD
-  } else if (token = parseTokenYYYYMMDD.exec(dateString)) {
-    var year = parseInt(token[1], 10)
-    var month = parseInt(token[2], 10) - 1
-    var day = parseInt(token[3], 10)
-    return Date.UTC(year, month, day)
+  } else if (token = parseTokenMMDD.exec(dateString)) {
+    var date = new Date(0)
+    var month = parseInt(token[1], 10) - 1
+    var day = parseInt(token[2], 10)
+    date.setUTCFullYear(year, month, day)
+    return date
 
   // YYYY-Www or YYYYWww
-  } else if (token = parseTokenYYYYWww.exec(dateString)) {
-    var year = parseInt(token[1])
-    var week = parseInt(token[2], 10) - 1
+  } else if (token = parseTokenWww.exec(dateString)) {
+    var week = parseInt(token[1], 10) - 1
     return dayOfISOYear(year, week)
 
   // YYYY-Www-D or YYYYWwwD
-  } else if (token = parseTokenYYYYWwwD.exec(dateString)) {
-    var year = parseInt(token[1])
-    var week = parseInt(token[2], 10) - 1
-    var dayOfWeek = parseInt(token[3], 10) - 1
+  } else if (token = parseTokenWwwD.exec(dateString)) {
+    var week = parseInt(token[1], 10) - 1
+    var dayOfWeek = parseInt(token[2], 10) - 1
     return dayOfISOYear(year, week, dayOfWeek)
 
-  // invalid ISO-formated date
+  // Invalid ISO-formated date
   } else {
     return null
   }
@@ -166,7 +189,7 @@ var parseTime = function(timeString) {
       + minutes * MILLISECONDS_IN_MINUTE
       + seconds * 1000
 
-  // invalid ISO-formated time
+  // Invalid ISO-formated time
   } else {
     return null
   }
@@ -200,7 +223,7 @@ var dayOfISOYear = function(isoYear, week, day) {
   var date = new Date(Date.UTC(isoYear, 0, 4))
   var diff = week * 7 + day + 1 - date.getUTCDay()
   date.setUTCDate(date.getUTCDate() + diff)
-  return date.getTime()
+  return date
 }
 
 module.exports = parse
