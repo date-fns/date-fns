@@ -13,13 +13,15 @@ var parse = require('./parse')
  * @returns {Boolean} the date is within the range
  * @throws End of range must have time value greater than time value of start of range
  *
- * @example for date within the range
+ * @example
+ * // For the date within the range:
  * isWithinRange(
  *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
  * )
  * //=> true
  *
- * @example for date outside of the range
+ * @example
+ * // For the date outside of the range:
  * isWithinRange(
  *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
  * )

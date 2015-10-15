@@ -16,7 +16,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} date - the given date
  * @returns {Number} ISO week
  *
- * @example which week of ISO-week numbering year is 2 January 2005
+ * @example
+ * // Which week of the ISO-week numbering year is 2 January 2005?
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */

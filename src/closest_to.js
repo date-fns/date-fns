@@ -11,7 +11,8 @@ var parse = require('./parse')
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
  * @returns {Date} date from the array closest to the given date
  *
- * @example what is closer to the 6 Oct 2015: 1 Jan 2000 or 1 Jan 2030
+ * @example
+ * // Which date is closer to 6 October 2015: 1 January 2000 or 1 January 2030?
  * var dateToCompare = new Date(2015, 8, 6)
  * var result = closestTo(dateToCompare, [
  *   new Date(2000, 0, 1),
