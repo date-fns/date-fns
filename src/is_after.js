@@ -11,7 +11,8 @@ var parse = require('./parse')
  * @param {Date|String|Number} date that should be after the first one to return true
  * @returns {Boolean} the first date is after the second date
  *
- * @example is 10 July 1989 after 11 February 1987
+ * @example
+ * // Is 10 July 1989 after 11 February 1987?
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */

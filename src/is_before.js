@@ -11,7 +11,8 @@ var parse = require('./parse')
  * @param {Date|String|Number} date that should be before the first one to return true
  * @returns {Boolean} the first date is before the second date
  *
- * @example is 10 July 1989 before 11 February 1987
+ * @example
+ * // Is 10 July 1989 before 11 February 1987?
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */

@@ -10,7 +10,8 @@ var parse = require('./parse')
  * @param {Date|String|Number} date - the given date
  * @returns {Number} quarter
  *
- * @example which quarter is 2 July 2014
+ * @example
+ * // Which quarter is 2 July 2014?
  * var result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */

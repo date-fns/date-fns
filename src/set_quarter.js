@@ -12,7 +12,8 @@ var setMonth = require('./set_month')
  * @param {Number} quarter of the new date
  * @returns {Date} new date with the quarter setted
  *
- * @example set second quarter to date 2 July 2014
+ * @example
+ * // Set second quarter to 2 July 2014:
  * var result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
