@@ -113,7 +113,7 @@ var parseDate = function(dateString) {
     year = parseInt(yearString, 10)
     dateString = dateString.slice(yearString.length)
 
-  // Invalid ISO-formated year
+  // Invalid ISO-formatted year
   } else {
     return null
   }
@@ -159,7 +159,7 @@ var parseDate = function(dateString) {
     var dayOfWeek = parseInt(token[2], 10) - 1
     return dayOfISOYear(year, week, dayOfWeek)
 
-  // Invalid ISO-formated date
+  // Invalid ISO-formatted date
   } else {
     return null
   }
@@ -189,7 +189,7 @@ var parseTime = function(timeString) {
       + minutes * MILLISECONDS_IN_MINUTE
       + seconds * 1000
 
-  // Invalid ISO-formated time
+  // Invalid ISO-formatted time
   } else {
     return null
   }
