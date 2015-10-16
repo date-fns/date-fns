@@ -10,6 +10,11 @@ var addMonths = require('./add_months')
  * @param {Date|String|Number} date to be changed
  * @param {Number} amount of quarters to be added
  * @returns {Date} new date with the quarters added
+ *
+ * @example
+ * // Add 1 quarter to 1 September 2014:
+ * var result = addQuarters(new Date(2014, 8, 1), 1)
+ * //=> Mon Dec 01 2014 00:00:00
  */
 var addQuarters = function(dirtyDate, amount) {
   var months = amount * 3

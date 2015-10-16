@@ -10,6 +10,11 @@ var addQuarters = require('./add_quarters')
  * @param {Date|String|Number} date to be changed
  * @param {Number} amount of quarters to be subtracted
  * @returns {Date} new date with the quarters subtracted
+ *
+ * @example
+ * // Subtract 3 quarters from 1 September 2014:
+ * var result = subQuarters(new Date(2014, 8, 1), 3)
+ * //=> Sun Dec 01 2013 00:00:00
  */
 var subQuarters = function(dirtyDate, amount) {
   return addQuarters(dirtyDate, -amount)

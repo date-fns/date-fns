@@ -11,6 +11,11 @@ var getDaysInMonth = require('./get_days_in_month')
  * @param {Date|String|Number} date to be changed
  * @param {Number} amount of months to be added
  * @returns {Date} new date with the months added
+ *
+ * @example
+ * // Add 5 months to 1 September 2014:
+ * var result = addMonths(new Date(2014, 8, 1), 5)
+ * //=> Sun Feb 01 2015 00:00:00
  */
 var addMonths = function(dirtyDate, amount) {
   var date = parse(dirtyDate)

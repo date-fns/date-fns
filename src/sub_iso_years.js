@@ -12,6 +12,11 @@ var addISOYears = require('./add_iso_years')
  * @param {Date|String|Number} date to be changed
  * @param {Number} amount of ISO week-numbering years to be subtracted
  * @returns {Date} new date with the ISO week-numbering years subtracted
+ *
+ * @example
+ * // Subtract 5 ISO week-numbering years from 1 September 2014:
+ * var result = subISOYears(new Date(2014, 8, 1), 5)
+ * //=> Mon Aug 31 2009 00:00:00
  */
 var subISOYears = function(dirtyDate, amount) {
   return addISOYears(dirtyDate, -amount)
