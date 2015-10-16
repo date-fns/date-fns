@@ -220,7 +220,8 @@ var parseTimezone = function(timezoneString) {
 var dayOfISOYear = function(isoYear, week, day) {
   week = week || 0
   day = day || 0
-  var date = new Date(Date.UTC(isoYear, 0, 4))
+  var date = new Date(0)
+  date.setUTCFullYear(isoYear, 0, 4)
   var diff = week * 7 + day + 1 - date.getUTCDay()
   date.setUTCDate(date.getUTCDate() + diff)
   return date
