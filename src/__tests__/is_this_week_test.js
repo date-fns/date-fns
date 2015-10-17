@@ -18,7 +18,7 @@ describe('isThisWeek', function() {
   })
 
   it('returns false if given date and current date have different weeks', function() {
-    var date = new Date(2014, 8 /* Sep */, 28)
+    var date = new Date(2014, 8 /* Sep */, 29)
     assert(isThisWeek(date) === false)
   })
 
