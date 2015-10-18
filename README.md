@@ -45,6 +45,7 @@ Code is fully documented, check the source for the reference.
 * [`closestTo`](./src/closest_to.js) - return a date from the array closest to the given date.
 * [`parse`](./src/parse.js) - parse the ISO-8601-formatted date.
 * [`isValid`](./src/is_valid.js) - is the given date valid?
+* [`isValidDateValues`](./src/is_valud_date_values.js) - is the date constructed from the given values exist?
 
 ### Range helpers
 
