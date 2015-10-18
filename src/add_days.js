@@ -12,7 +12,7 @@ var parse = require('./parse')
  * @returns {Date} new date with the days added
  *
  * @example
- * // Add 10 days to 8 September 2014:
+ * // Add 10 days to 1 September 2014:
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
