@@ -103,6 +103,12 @@ Code is fully documented, check the source for the reference.
 * [`setDayOfYear`](./src/set_day_of_year.js) - set the day of the year.
 * [`startOfDay`](./src/start_of_day.js) - return the start of a day for the given date.
 * [`endOfDay`](./src/end_of_day.js) - return the end of a day for the given date.
+* [`startOfYesterday`](./src/start_of_yesterday.js) - return the start of yesterday.
+* [`endOfYesterday`](./src/end_of_yesterday.js) - return the end of yesterday.
+* [`startOfToday`](./src/start_of_today.js) - return the start of today.
+* [`endOfToday`](./src/end_of_today.js) - return the end of today.
+* [`startOfTomorrow`](./src/start_of_tomorrow.js) - return the start of tomorrow.
+* [`endOfTomorrow`](./src/end_of_tomorrow.js) - return the end of tomorrow.
 * [`addDays`](./src/add_days.js) - add the specified number of days to the given date.
 * [`subDays`](./src/sub_days.js) - subtract the specified number of days from the given date.
 * [`differenceInDays`](./src/difference_in_days.js) - get the number of full days between the given dates.

@@ -1,0 +1,20 @@
+var assert = require('power-assert')
+var startOfTomorrow = require('../start_of_tomorrow')
+
+describe('startOfTomorrow', function() {
+  beforeEach(function() {
+    this.clock = sinon.useFakeTimers(
+      new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
+    )
+  })
+
+  afterEach(function() {
+    this.clock.restore()
+  })
+
+  it('returns start of tomorrow', function() {
+    var result = startOfTomorrow()
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 26))
+  })
+})
+
