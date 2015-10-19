@@ -10,6 +10,11 @@ var parse = require('./parse')
  * @param {Date|String|Number} date to be changed
  * @param {Number} dayOfMonth of the new date
  * @returns {Date} new date with the day of the month setted
+ *
+ * @example
+ * // Set the 30th day of the month to 1 September 2014:
+ * var result = setDate(new Date(2014, 8, 1), 30)
+ * //=> Tue Sep 30 2014 00:00:00
  */
 var setDate = function(dirtyDate, dayOfMonth) {
   var date = parse(dirtyDate)

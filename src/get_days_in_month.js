@@ -9,6 +9,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the given date
  * @returns {Number} number of days in a month
+ *
+ * @example
+ * // How many days are in February 2000?
+ * var result = getDaysInMonth(new Date(2000, 1))
+ * //=> 29
  */
 var getDaysInMonth = function(dirtyDate) {
   var date = parse(dirtyDate)

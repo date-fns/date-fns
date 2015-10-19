@@ -9,6 +9,11 @@ var isLeapYear = require('./is_leap_year')
  *
  * @param {Date|String|Number} date - the given date
  * @returns {Number} number of days in a year
+ *
+ * @example
+ * // How many days are in 2012?
+ * var result = getDaysInYear(new Date(2012, 0, 1))
+ * //=> 366
  */
 var getDaysInYear = function(dirtyDate) {
   return isLeapYear(dirtyDate) ? 366 : 365

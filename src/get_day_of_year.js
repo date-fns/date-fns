@@ -11,6 +11,11 @@ var differenceInCalendarDays = require('./difference_in_calendar_days')
  *
  * @param {Date|String|Number} date - the given date
  * @returns {Number} day of year
+ *
+ * @example
+ * // Which day of the year is 2 July 2014?
+ * var result = getDayOfYear(new Date(2014, 6, 2))
+ * //=> 183
  */
 var getDayOfYear = function(dirtyDate) {
   var date = parse(dirtyDate)

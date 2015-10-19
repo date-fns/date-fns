@@ -13,6 +13,11 @@ var getISOWeek = require('./get_iso_week')
  * @param {Date|String|Number} date to be changed
  * @param {Number} isoWeek of the new date
  * @returns {Date} new date with the ISO week setted
+ *
+ * @example
+ * // Set the 53rd ISO week to 7 August 2004:
+ * var result = setISOWeek(new Date(2004, 7, 7), 53)
+ * //=> Sat Jan 01 2005 00:00:00
  */
 var setISOWeek = function(dirtyDate, isoWeek) {
   var date = parse(dirtyDate)

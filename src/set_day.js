@@ -12,6 +12,11 @@ var addDays = require('./add_days')
  * @param {Number} day of the new date
  * @param {Number} [weekStartsAt=0] the index of the first day of a week (0 - sunday)
  * @returns {Date} new date with the day of the week setted
+ *
+ * @example
+ * // Set Sunday to 1 September 2014:
+ * var result = setDay(new Date(2014, 8, 1), 0)
+ * //=> Sun Aug 31 2014 00:00:00
  */
 var setDay = function(dirtyDate, day, weekStartsAt) {
   weekStartsAt = weekStartsAt || 0
