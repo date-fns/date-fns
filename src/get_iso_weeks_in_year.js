@@ -14,6 +14,11 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param {Date|String|Number} date - the given date
  * @returns {Number} number of ISO weeks in a year
+ *
+ * @example
+ * // How many weeks are in ISO week-numbering year 2015?
+ * var result = getISOWeeksInYear(new Date(2015, 1, 11))
+ * //=> 53
  */
 var getISOWeeksInYear = function(dirtyDate) {
   var thisYear = startOfISOYear(dirtyDate)

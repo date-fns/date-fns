@@ -9,6 +9,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the given date
  * @returns {Number} month
+ *
+ * @example
+ * // Which month is 29 February 2012?
+ * var result = getMonth(new Date(2012, 1, 29))
+ * //=> 1
  */
 var getMonth = function(dirtyDate) {
   var date = parse(dirtyDate)

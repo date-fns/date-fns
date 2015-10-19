@@ -10,6 +10,11 @@ var parse = require('./parse')
  * @param {Date|String|Number} date to be changed
  * @param {Number} dayOfYear of the new date
  * @returns {Date} new date with the day of the year setted
+ *
+ * @example
+ * // Set the 2nd day of the year to 2 July 2014:
+ * var result = setDayOfYear(new Date(2014, 6, 2), 2)
+ * //=> Thu Jan 02 2014 00:00:00
  */
 var setDayOfYear = function(dirtyDate, dayOfYear) {
   var date = parse(dirtyDate)

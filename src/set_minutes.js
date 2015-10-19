@@ -10,6 +10,11 @@ var parse = require('./parse')
  * @param {Date|String|Number} date to be changed
  * @param {Number} minutes of the new date
  * @returns {Date} new date with the minutes setted
+ *
+ * @example
+ * // Set 45 minutes to 1 September 2014 11:30:40:
+ * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * //=> Mon Sep 01 2014 11:45:40
  */
 var setMinutes = function(dirtyDate, minutes) {
   var date = parse(dirtyDate)

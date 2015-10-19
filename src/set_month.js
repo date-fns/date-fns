@@ -11,6 +11,11 @@ var getDaysInMonth = require('./get_days_in_month')
  * @param {Date|String|Number} date to be changed
  * @param {Number} month of the new date
  * @returns {Date} new date with the month setted
+ *
+ * @example
+ * // Set February to 1 September 2014:
+ * var result = setMonth(new Date(2014, 8, 1), 1)
+ * //=> Sat Feb 01 2014 00:00:00
  */
 var setMonth = function(dirtyDate, month) {
   var date = parse(dirtyDate)
