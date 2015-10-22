@@ -9,6 +9,12 @@ var isSameMinute = require('./is_same_minute')
  *
  * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is in this minute
+ *
+ * @example
+ * // If now is 25 September 2014 18:30:15.500,
+ * // is 25 September 2014 18:30:00 in this minute?
+ * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
+ * //=> true
  */
 var isThisMinute = function(dirtyDate) {
   return isSameMinute(new Date(), dirtyDate)

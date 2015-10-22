@@ -11,6 +11,16 @@
  * @param {Date|String|Number} date to check
  * @returns {Boolean} date is valid
  * @throws {TypeError} Argument must be an instance of Date
+ *
+ * @example
+ * // For the valid date:
+ * var result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // for the invalid date:
+ * var result = isValid(new Date(''))
+ * //=> false
  */
 var isValid = function(date) {
   if (date instanceof Date) {

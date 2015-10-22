@@ -9,6 +9,11 @@ var isSameMonth = require('./is_same_month')
  *
  * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is in this month
+ *
+ * @example
+ * // If today is 25 September 2014, is 15 September 2014 in this month?
+ * var result = isThisMonth(new Date(2014, 8, 15))
+ * //=> true
  */
 var isThisMonth = function(dirtyDate) {
   return isSameMonth(new Date(), dirtyDate)

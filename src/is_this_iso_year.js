@@ -9,6 +9,12 @@ var isSameISOYear = require('./is_same_iso_year')
  *
  * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is in this ISO week-numbering year
+ *
+ * @example
+ * // If today is 25 September 2014,
+ * // is 30 December 2013 in this ISO week-numbering year?
+ * var result = isThisISOYear(new Date(2013, 11, 30))
+ * //=> true
  */
 var isThisISOYear = function(dirtyDate) {
   return isSameISOYear(new Date(), dirtyDate)
