@@ -7,7 +7,7 @@ var isSameYear = require('./is_same_year')
  * @description
  * Is the given date in the same year as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this year
  */
 var isThisYear = function(dirtyDate) {

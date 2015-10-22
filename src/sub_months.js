@@ -7,8 +7,8 @@ var addMonths = require('./add_months')
  * @description
  * Subtract the specified number of month from the gien date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of months to be subtracted
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be subtracted
  * @returns {Date} new date with the months subtracted
  */
 var subMonths = function(dirtyDate, amount) {

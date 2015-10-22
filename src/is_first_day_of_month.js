@@ -7,7 +7,7 @@ var parse = require('./parse')
  * @description
  * Is the given date the first day of a month?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is the first day of a month
  */
 var isFirstDayOfMonth = function(dirtyDate) {

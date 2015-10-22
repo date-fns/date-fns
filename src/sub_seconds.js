@@ -7,8 +7,8 @@ var addSeconds = require('./add_seconds')
  * @description
  * Subtract the specified number of seconds from the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of seconds to be subtracted
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of seconds to be subtracted
  * @returns {Date} new date with the seconds subtracted
  */
 var subSeconds = function(dirtyDate, amount) {

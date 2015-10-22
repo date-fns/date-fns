@@ -7,7 +7,7 @@ var startOfDay = require('./start_of_day')
  * @description
  * Is the given date yesterday?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is yesterday
  */
 var isYesterday = function(dirtyDate) {

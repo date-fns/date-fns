@@ -12,8 +12,8 @@ var differenceInCalendarDays = require('./difference_in_calendar_days')
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} isoYear of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} isoYear - the ISO week-numbering year of the new date
  * @returns {Date} new date with the ISO year setted
  */
 var setISOYear = function(dirtyDate, isoYear) {

@@ -8,7 +8,7 @@
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} date is valid
  * @throws {TypeError} Argument must be an instance of Date
  */

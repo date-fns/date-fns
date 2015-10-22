@@ -8,7 +8,7 @@ var parse = require('./parse')
  * Is the first date after the second one?
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date that should be after the first one to return true
+ * @param {Date|String|Number} date - the date that should be after the first one to return true
  * @returns {Boolean} the first date is after the second date
  *
  * @example

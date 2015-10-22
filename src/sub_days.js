@@ -7,8 +7,8 @@ var addDays = require('./add_days')
  * @description
  * Subtract the specified number of days from the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of days to be subtracted
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of days to be subtracted
  * @returns {Date} new date with the days subtracted
  */
 var subDays = function(dirtyDate, amount) {

@@ -7,7 +7,7 @@ var parse = require('./parse')
  * @description
  * Is the given date within the range?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @param {Date|String|Number} startDate - the start of range
  * @param {Date|String|Number} endDate - the end of range
  * @returns {Boolean} the date is within the range

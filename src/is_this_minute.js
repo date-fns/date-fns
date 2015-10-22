@@ -7,7 +7,7 @@ var isSameMinute = require('./is_same_minute')
  * @description
  * Is the given date in the same minute as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this minute
  */
 var isThisMinute = function(dirtyDate) {

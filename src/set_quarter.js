@@ -8,8 +8,8 @@ var setMonth = require('./set_month')
  * @description
  * Set the year quarter to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} quarter of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} quarter - the quarter of the new date
  * @returns {Date} new date with the quarter setted
  *
  * @example

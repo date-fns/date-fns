@@ -7,8 +7,8 @@ var parse = require('./parse')
  * @description
  * Set the milliseconds to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} milliseconds of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} milliseconds - the milliseconds of the new date
  * @returns {Date} new date with the milliseconds setted
  */
 var setMilliseconds = function(dirtyDate, milliseconds) {

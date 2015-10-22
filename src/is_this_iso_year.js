@@ -7,7 +7,7 @@ var isSameISOYear = require('./is_same_iso_year')
  * @description
  * Is the given date in the same ISO week-numbering year as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this ISO week-numbering year
  */
 var isThisISOYear = function(dirtyDate) {
