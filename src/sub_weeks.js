@@ -10,6 +10,11 @@ var addWeeks = require('./add_weeks')
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of weeks to be subtracted
  * @returns {Date} new date with the weeks subtracted
+ *
+ * @example
+ * // Subtract 4 weeks from 1 September 2014:
+ * var result = subWeeks(new Date(2014, 8, 1), 4)
+ * //=> Mon Aug 04 2014 00:00:00
  */
 var subWeeks = function(dirtyDate, amount) {
   return addWeeks(dirtyDate, -amount)

@@ -10,6 +10,11 @@ var addMonths = require('./add_months')
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be subtracted
  * @returns {Date} new date with the months subtracted
+ *
+ * @example
+ * // Subtract 5 months from 1 February 2015:
+ * var result = subMonths(new Date(2015, 1, 1), 5)
+ * //=> Mon Sep 01 2014 00:00:00
  */
 var subMonths = function(dirtyDate, amount) {
   return addMonths(dirtyDate, -amount)
