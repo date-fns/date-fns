@@ -7,6 +7,8 @@ var isSameISOWeek = require('./is_same_iso_week')
  * @description
  * Is the given date in the same ISO week as the current date?
  *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
  * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this ISO week
  *

@@ -10,6 +10,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @description
  * Get the number of calendar ISO weeks between the given dates.
  *
+ * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
+ *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @returns {Number} number of calendar ISO weeks
