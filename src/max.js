@@ -7,7 +7,7 @@ var parse = require('./parse')
  * @description
  * Return the latest of the given dates.
  *
- * @param {...Date|String|Number} list — the list of dates
+ * @param {...Date|String|Number} list - the list of dates
  * @returns {Date} latest of the dates
  */
 var max = function() {
