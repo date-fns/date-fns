@@ -7,7 +7,7 @@ var isSameQuarter = require('./is_same_quarter')
  * @description
  * Is the given date in the same quarter as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this quarter
  *
  * @example

@@ -7,7 +7,7 @@ var parse = require('./parse')
  * @description
  * Is the given date in a weekend?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in the weekend
  *
  * @example

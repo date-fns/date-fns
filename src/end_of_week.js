@@ -9,7 +9,7 @@ var parse = require('./parse')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @param {Number} [weekStartsAt=0] the index of the first day of a week (0 - sunday)
+ * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Date} end of a week
  */
 var endOfWeek = function(dirtyDate, weekStartsAt) {

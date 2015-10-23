@@ -10,8 +10,8 @@ var setISOYear = require('./set_iso_year')
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of ISO week-numbering years to be added
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of ISO week-numbering years to be added
  * @returns {Date} new date with the ISO week-numbering years added
  */
 var addISOYears = function(dirtyDate, amount) {

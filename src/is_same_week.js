@@ -9,7 +9,7 @@ var startOfWeek = require('./start_of_week')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
- * @param {Number} [weekStartsAt=0] first day of week (0 - sunday)
+ * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Boolean} the dates are in the same week
  *
  * @example

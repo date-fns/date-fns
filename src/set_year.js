@@ -7,8 +7,8 @@ var parse = require('./parse')
  * @description
  * Set the year to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} year of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} year - the year of the new date
  * @returns {Date} new date with the year setted
  *
  * @example

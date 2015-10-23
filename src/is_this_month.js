@@ -7,7 +7,7 @@ var isSameMonth = require('./is_same_month')
  * @description
  * Is the given date in the same month as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this month
  *
  * @example

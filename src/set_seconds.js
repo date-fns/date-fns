@@ -7,8 +7,8 @@ var parse = require('./parse')
  * @description
  * Set the seconds to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} seconds of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} seconds - the seconds of the new date
  * @returns {Date} new date with the seconds setted
  *
  * @example

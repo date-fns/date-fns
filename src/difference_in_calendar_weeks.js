@@ -12,7 +12,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @param {Number} [weekStartsAt=0] first day of week (0 - sunday)
+ * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Number} number of calendar weeks
  */
 var differenceInCalendarWeeks = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {

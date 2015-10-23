@@ -7,7 +7,7 @@ var isSameSecond = require('./is_same_second')
  * @description
  * Is the given date in the same second as the current date?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is in this second
  *
  * @example

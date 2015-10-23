@@ -8,8 +8,8 @@ var getDaysInMonth = require('./get_days_in_month')
  * @description
  * Set the month to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} month of the new date
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} month - the month of the new date
  * @returns {Date} new date with the month setted
  *
  * @example

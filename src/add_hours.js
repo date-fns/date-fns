@@ -7,8 +7,8 @@ var parse = require('./parse')
  * @description
  * Add the specified number of hours to the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of hours to be added
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of hours to be added
  * @returns {Date} new date with the hours added
  */
 var addHours = function(dirtyDate, amount) {

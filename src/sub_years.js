@@ -7,8 +7,8 @@ var addYears = require('./add_years')
  * @description
  * Subtract the specified number of years from the given date.
  *
- * @param {Date|String|Number} date to be changed
- * @param {Number} amount of years to be subtracted
+ * @param {Date|String|Number} date - the date to be changed
+ * @param {Number} amount - the amount of years to be subtracted
  * @returns {Date} new date with the years subtracted
  */
 var subYears = function(dirtyDate, amount) {

@@ -7,7 +7,7 @@ var startOfDay = require('./start_of_day')
  * @description
  * Is the given date tomorrow?
  *
- * @param {Date|String|Number} date to check
+ * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is tomorrow
  *
  * @example
