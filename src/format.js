@@ -61,6 +61,14 @@ var parse = require('./parse')
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @returns {String} formatted date string
+ *
+ * @example
+ * // Represent 11 February 2014 in middle-endian format:
+ * var result = format(
+ *   new Date(2014, 1, 11),
+ *   'MM/DD/YYYY'
+ * )
+ * //=> '02/11/2014'
  */
 var format = function(dirtyDate, format) {
   var date = parse(dirtyDate)
