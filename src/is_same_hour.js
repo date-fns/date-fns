@@ -10,6 +10,14 @@ var startOfHour = require('./start_of_hour')
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
  * @returns {Boolean} the dates are in the same hour
+ *
+ * @example
+ * // Are 4 September 2014 06:00:00 and 4 September 06:30:00 in the same hour?
+ * var result = isSameHour(
+ *   new Date(2014, 8, 4, 6, 0),
+ *   new Date(2014, 8, 4, 6, 30)
+ * )
+ * //=> true
  */
 var isSameHour = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft)

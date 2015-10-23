@@ -9,6 +9,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is Wednesday
+ *
+ * @example
+ * // Is 24 September 2014 Wednesday?
+ * var result = isWednesday(new Date(2014, 8, 24))
+ * //=> true
  */
 var isWednesday = function(dirtyDate) {
   return parse(dirtyDate).getDay() === 3

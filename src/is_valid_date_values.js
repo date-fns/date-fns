@@ -18,12 +18,12 @@ var isValid = require('./is_valid')
  * @returns {Boolean} all values are valid
  *
  * @example
- * // For existing date:
+ * // For the existing date:
  * var result = isValidDateValues(new Date(2014, 1, 28, 12, 0))
  * //=> true
  *
  * @example
- * // For impossible date (29 February of non-leap year):
+ * // For the impossible date (29 February of non-leap year):
  * var result = isValidDateValues(new Date(2014, 1, 29, 12, 0))
  * //=> false
  */

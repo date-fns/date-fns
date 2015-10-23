@@ -9,6 +9,11 @@ var isSameISOWeek = require('./is_same_iso_week')
  *
  * @param {Date|String|Number} date to check
  * @returns {Boolean} the date is in this ISO week
+ *
+ * @example
+ * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
+ * var result = isThisISOWeek(new Date(2014, 8, 22))
+ * //=> true
  */
 var isThisISOWeek = function(dirtyDate) {
   return isSameISOWeek(new Date(), dirtyDate)
