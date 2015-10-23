@@ -12,6 +12,14 @@ var compareAsc = require('./compare_asc')
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @returns {Number} number of full months
+ *
+ * @example
+ * // How many full months are between 31 January 2014 and 1 September 2014?
+ * var result = differenceInMonths(
+ *   new Date(2014, 8, 1),
+ *   new Date(2014, 0, 31)
+ * )
+ * //=> 7
  */
 var differenceInMonths = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)

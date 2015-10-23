@@ -10,6 +10,14 @@ var differenceInMonths = require('./difference_in_months')
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @returns {Number} number of full quarters
+ *
+ * @example
+ * // How many full quarters are between 31 December 2013 and 2 July 2014?
+ * var result = differenceInQuarters(
+ *   new Date(2014, 6, 2),
+ *   new Date(2013, 11, 31)
+ * )
+ * //=> 2
  */
 var differenceInQuarters = function(dirtyDateLeft, dirtyDateRight) {
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3

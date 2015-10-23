@@ -13,6 +13,15 @@ var MILLISECONDS_IN_DAY = 86400000
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @returns {Number} number of calendar days
+ *
+ * @example
+ * // How many calendar days are between
+ * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
+ * var result = differenceInCalendarDays(
+ *   new Date(2012, 6, 2, 0, 0),
+ *   new Date(2011, 6, 2, 23, 0)
+ * )
+ * //=> 366
  */
 var differenceInCalendarDays = function(dirtyDateLeft, dirtyDateRight) {
   var startOfDayLeft = startOfDay(dirtyDateLeft)

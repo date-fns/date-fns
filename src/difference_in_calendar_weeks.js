@@ -14,6 +14,24 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Number} number of calendar weeks
+ *
+ * @example
+ * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5)
+ * )
+ * //=> 3
+ *
+ * @example
+ * // If weeks starts at Monday,
+ * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
+ * var result = differenceInCalendarWeeks(
+ *   new Date(2014, 6, 20),
+ *   new Date(2014, 6, 5),
+ *   1
+ * )
+ * //=> 2
  */
 var differenceInCalendarWeeks = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
   weekStartsAt = weekStartsAt || 0
