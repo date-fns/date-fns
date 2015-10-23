@@ -1,5 +1,76 @@
 # Changelog
 
+## v1.0.0
+
+* Additions:
+  - `addISOYears`
+  - `closestTo`
+  - `differenceInCalendarDays`
+  - `differenceInCalendarISOWeeks`
+  - `differenceInCalendarISOYears`
+  - `differenceInCalendarMonths`
+  - `differenceInCalendarQuarters`
+  - `differenceInCalendarWeeks`
+  - `differenceInCalendarYears`
+  - `differenceInHours`
+  - `differenceInISOYears`
+  - `differenceInMilliseconds`
+  - `differenceInMinutes`
+  - `differenceInMonths`
+  - `differenceInQuarters`
+  - `differenceInSeconds`
+  - `differenceInWeeks`
+  - `differenceInYears`
+  - `endOfISOWeek`
+  - `endOfISOYear`
+  - `endOfToday`
+  - `endOfTomorrow`
+  - `endOfYesterday`
+  - `getDaysInYear`
+  - `isFriday`
+  - `isMonday`
+  - `isSameISOWeek`
+  - `isSameISOYear`
+  - `isSaturday`
+  - `isSunday`
+  - `isThisHour`
+  - `isThisISOWeek`
+  - `isThisISOYear`
+  - `isThisMinute`
+  - `isThisMonth`
+  - `isThisQuarter`
+  - `isThisSecond`
+  - `isThisWeek`
+  - `isThisYear`
+  - `isThursday`
+  - `isTomorrow`
+  - `isTuesday`
+  - `isValid`
+  - `isValidDateValues`
+  - `isWednesday`
+  - `isYesterday`
+  - `lastDayOfISOWeek`
+  - `lastDayOfISOYear`
+  - `startOfISOWeek`
+  - `startOfToday`
+  - `startOfTomorrow`
+  - `startOfYesterday`
+  - `subISOYears`
+* Improvements:
+  - Remove function `getTimeSinceMidnight` that was used inside of the other functions
+  - Convert tests from Chai to power-assert allowing them to run in IE8
+  - `differenceInDays` now returns the number of full days instead of calendar days
+  - Add `Qo`, `W`, `Wo`, `WW`, `GG`, `GGGG`, `Z`, `ZZ`, `X`, `x` keys to `format`
+  - Faster `isLeapYear`
+  - `eachDay` and `isWithinRange` now throws an exception when given range boundaries are invalid
+  - `parse` now parses years more than 99 AD and less than 1 AD
+  - Make the documentation more verbose
+* Bug fixes:
+  - `format` now returns the correct result for key `E`
+  - Prevent `startOf...`, `endOf...` and `lastDayOf...` functions
+    to return dates with incorrect time when date is modifying into the other time zone
+  - `parse` now parses years from 1 AD to 99 AD correctly
+
 ## v0.17.0 (29 Sep 2015)
 
 * Additions:
