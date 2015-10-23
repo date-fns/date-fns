@@ -10,6 +10,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of a quarter
+ *
+ * @example
+ * // The start of a quarter for 2 September 2014 11:55:00:
+ * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Jul 01 2014 00:00:00
  */
 var startOfQuarter = function(dirtyDate) {
   var date = parse(dirtyDate)

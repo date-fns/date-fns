@@ -11,6 +11,16 @@ var parse = require('./parse')
  * @param {Date|String|Number} date - the original date
  * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Date} end of a week
+ *
+ * @example
+ * // The end of a week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 23:59:59.999
+ *
+ * @example
+ * // If week starts at Monday, the end of a week for 2 September 2014 11:55:00:
+ * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), 1)
+ * //=> Sun Sep 07 2014 23:59:59.999
  */
 var endOfWeek = function(dirtyDate, weekStartsAt) {
   weekStartsAt = weekStartsAt || 0

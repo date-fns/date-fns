@@ -10,6 +10,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of a month
+ *
+ * @example
+ * // The start of a month for 2 September 2014 11:55:00:
+ * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
  */
 var startOfMonth = function(dirtyDate) {
   var date = parse(dirtyDate)

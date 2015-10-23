@@ -11,6 +11,16 @@ var parse = require('./parse')
  * @param {Date|String|Number} date - the original date
  * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Date} last day of a week
+ *
+ * @example
+ * // The last day of a week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sat Sep 06 2014 00:00:00
+ *
+ * @example
+ * // If week starts at Monday, the last day of a week for 2 September 2014 11:55:00:
+ * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), 1)
+ * //=> Sun Sep 07 2014 00:00:00
  */
 var lastDayOfWeek = function(dirtyDate, weekStartsAt) {
   weekStartsAt = weekStartsAt || 0
