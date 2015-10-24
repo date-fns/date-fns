@@ -53,8 +53,8 @@ Code is fully documented, check the source for the reference.
 
 ### Milliseconds helpers
 
-* [`getMilliseconds`](./src/get_milliseconds.js) - get the seconds.
-* [`setMilliseconds`](./src/set_milliseconds.js) - set the seconds.
+* [`getMilliseconds`](./src/get_milliseconds.js) - get the milliseconds.
+* [`setMilliseconds`](./src/set_milliseconds.js) - set the milliseconds.
 * [`addMilliseconds`](./src/add_milliseconds.js) - add the milliseconds to the given date.
 * [`subMilliseconds`](./src/sub_milliseconds.js) - subtract the milliseconds from the given date.
 * [`differenceInMilliseconds`](./src/difference_in_milliseconds.js) - get the number of milliseconds between the given dates.
