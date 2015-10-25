@@ -59,7 +59,7 @@ var parse = require('./parse')
  * | Milliseconds timestamp  | x     | 512969520900                     |
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} format - the string of tokens
+ * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
  * @returns {String} formatted date string
  */
 var format = function(dirtyDate, format) {
