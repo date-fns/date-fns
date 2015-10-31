@@ -10,6 +10,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of an hour
+ *
+ * @example
+ * // The start of an hour for 2 September 2014 11:55:00:
+ * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
+ * //=> Tue Sep 02 2014 11:00:00
  */
 var startOfHour = function(dirtyDate) {
   var date = parse(dirtyDate)

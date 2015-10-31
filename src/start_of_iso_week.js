@@ -10,6 +10,11 @@ var startOfWeek = require('./start_of_week')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of an ISO week
+ *
+ * @example
+ * // The start of an ISO week for 2 September 2014 11:55:00:
+ * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Mon Sep 01 2014 00:00:00
  */
 var startOfISOWeek = function(dirtyDate) {
   return startOfWeek(dirtyDate, 1)

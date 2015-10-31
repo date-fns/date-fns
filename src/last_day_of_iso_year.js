@@ -14,6 +14,11 @@ var startOfISOWeek = require('./start_of_iso_week')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} end of an ISO year
+ *
+ * @example
+ * // The last day of an ISO week-numbering year for 2 July 2005:
+ * var result = lastDayOfISOYear(new Date(2005, 6, 2))
+ * //=> Sun Jan 01 2006 00:00:00
  */
 var lastDayOfISOYear = function(dirtyDate) {
   var year = getISOYear(dirtyDate)

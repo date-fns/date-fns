@@ -10,6 +10,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of a second
+ *
+ * @example
+ * // The start of a second for 1 December 2014 22:15:45.400:
+ * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * //=> Mon Dec 01 2014 22:15:45.000
  */
 var startOfSecond = function(dirtyDate) {
   var date = parse(dirtyDate)

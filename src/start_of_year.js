@@ -10,6 +10,11 @@ var parse = require('./parse')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} start of a year
+ *
+ * @example
+ * // The start of a year for 2 September 2014 11:55:00:
+ * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * //=> Wed Jan 01 2014 00:00:00
  */
 var startOfYear = function(dirtyDate) {
   var cleanDate = parse(dirtyDate)

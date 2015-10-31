@@ -10,6 +10,11 @@ var endOfWeek = require('./end_of_week')
  *
  * @param {Date|String|Number} date - the original date
  * @returns {Date} end of an ISO week
+ *
+ * @example
+ * // The end of an ISO week for 2 September 2014 11:55:00:
+ * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Sun Sep 07 2014 23:59:59.999
  */
 var endOfISOWeek = function(dirtyDate) {
   return endOfWeek(dirtyDate, 1)

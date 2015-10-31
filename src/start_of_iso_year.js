@@ -16,7 +16,7 @@ var startOfISOWeek = require('./start_of_iso_week')
  * @returns {Date} start of an ISO year
  *
  * @example
- * // When does the ISO week-numbering 2005 year start?
+ * // The start of an ISO week-numbering year for 2 July 2005:
  * var result = startOfISOYear(new Date(2005, 6, 2))
  * //=> Mon Jan 03 2005 00:00:00
  */
