@@ -11,6 +11,20 @@ var parse = require('./parse')
  * @param {Date|String|Number} endDate - the end of range
  * @returns {Date[]} array of dates for every day of the range
  * @throws End of range must have time value greater than time value of start of range
+ *
+ * @example
+ * // Each day between 6 October 2014 and 10 October 2014:
+ * var result = eachDay(
+ *   new Date(2014, 9, 6),
+ *   new Date(2014, 9, 10)
+ * )
+ * //=> [
+ * //   Mon Oct 06 2014 00:00:00,
+ * //   Tue Oct 07 2014 00:00:00,
+ * //   Wed Oct 08 2014 00:00:00,
+ * //   Thu Oct 09 2014 00:00:00,
+ * //   Fri Oct 10 2014 00:00:00
+ * // ]
  */
 var eachDay = function(dirtyStartDate, dirtyEndDate) {
   var startDate = parse(dirtyStartDate)

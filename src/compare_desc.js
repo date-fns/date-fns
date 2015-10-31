@@ -10,6 +10,27 @@ var parse = require('./parse')
  * @param {Date|String|Number} dateLeft - the first date to compare
  * @param {Date|String|Number} dateRight - the second date to compare
  * @returns {Number} result of the comparison
+ *
+ * @example
+ * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
+ * var result = compareDesc(
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * )
+ * //=> 1
+ *
+ * @example
+ * // Sort the array of dates in reverse chronological order:
+ * var result = [
+ *   new Date(1995, 6, 2),
+ *   new Date(1987, 1, 11),
+ *   new Date(1989, 6, 10)
+ * ].sort(compareDesc)
+ * //=> [
+ *   Sun Jul 02 1995 00:00:00
+ *   Mon Jul 10 1989 00:00:00,
+ *   Wed Feb 11 1987 00:00:00,
+ * ]
  */
 var compareDesc = function(dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
