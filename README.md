@@ -223,6 +223,6 @@ TODO
 
 ## Tests
 
-Kudos to [BrowserStack](https://www.browserstack.com) for the provided
+Kudos to [SauceLabs](https://saucelabs.com/) for the provided
 Automate API. Thereby we run cross-browser tests on every push!
 
