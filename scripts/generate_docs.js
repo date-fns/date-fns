@@ -6,7 +6,7 @@ import listFunctions from './_lib/list_functions'
 const docPromises = listFunctions()
   .map((fn) => {
     return new Promise((resolve, reject) => {
-      const stream = parseJSDoc({src: fn.path})
+      const stream = parseJSDoc({src: fn.fullPath})
       var data = ''
 
       stream.on('error', (err) => {
