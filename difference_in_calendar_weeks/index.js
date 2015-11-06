@@ -12,7 +12,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Number} number of calendar weeks
  *
  * @example
@@ -29,15 +30,13 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = differenceInCalendarWeeks(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 6, 5),
- *   1
+ *   {weekStartsAt: 1}
  * )
  * //=> 2
  */
-var differenceInCalendarWeeks = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
-  weekStartsAt = weekStartsAt || 0
-
-  var startOfWeekLeft = startOfWeek(dirtyDateLeft, weekStartsAt)
-  var startOfWeekRight = startOfWeek(dirtyDateRight, weekStartsAt)
+var differenceInCalendarWeeks = function(dirtyDateLeft, dirtyDateRight, options) {
+  var startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
+  var startOfWeekRight = startOfWeek(dirtyDateRight, options)
 
   var timestampLeft = startOfWeekLeft.getTime()
     - startOfWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE

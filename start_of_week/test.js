@@ -10,7 +10,7 @@ describe('startOfWeek', function() {
 
   it('allows to pass when a week starts', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = startOfWeek(date, 1)
+    var result = startOfWeek(date, {weekStartsAt: 1})
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
@@ -36,7 +36,7 @@ describe('startOfWeek', function() {
     context('when current day value is less than start of week', function() {
       it('it returns start of week', function() {
         var date = new Date(2014, 9 /* Oct */, 6)
-        var result = startOfWeek(date, 3)
+        var result = startOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
       })
     })
@@ -44,7 +44,7 @@ describe('startOfWeek', function() {
     context('when current day value is equal to start of week', function() {
       it('it returns start of week', function() {
         var date = new Date(2014, 9 /* Oct */, 8)
-        var result = startOfWeek(date, 3)
+        var result = startOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })
@@ -52,7 +52,7 @@ describe('startOfWeek', function() {
     context('when current day value is bigger than start of week', function() {
       it('it returns start of week', function() {
         var date = new Date(2014, 9 /* Oct */, 10)
-        var result = startOfWeek(date, 3)
+        var result = startOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })

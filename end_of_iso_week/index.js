@@ -19,7 +19,7 @@ var endOfWeek = require('../end_of_week')
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 var endOfISOWeek = function(dirtyDate) {
-  return endOfWeek(dirtyDate, 1)
+  return endOfWeek(dirtyDate, {weekStartsAt: 1})
 }
 
 module.exports = endOfISOWeek

@@ -14,7 +14,7 @@ describe('differenceInCalendarWeeks', function() {
     var result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      1
+      {weekStartsAt: 1}
     )
     assert(result === 2)
   })

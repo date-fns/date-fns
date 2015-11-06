@@ -12,7 +12,7 @@ describe('lastDayOfWeek', function() {
 
   it('allows to pass when a week starts', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = lastDayOfWeek(date, 1)
+    var result = lastDayOfWeek(date, {weekStartsAt: 1})
     assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 7)
     )
@@ -44,7 +44,7 @@ describe('lastDayOfWeek', function() {
     context('when current day value is less than start of week', function() {
       it('it returns end of week', function() {
         var date = new Date(2014, 9 /* Oct */, 6)
-        var result = lastDayOfWeek(date, 3)
+        var result = lastDayOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 7))
       })
     })
@@ -52,7 +52,7 @@ describe('lastDayOfWeek', function() {
     context('when current day value is equal to start of week', function() {
       it('it returns end of week', function() {
         var date = new Date(2014, 9 /* Oct */, 8)
-        var result = lastDayOfWeek(date, 3)
+        var result = lastDayOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14))
       })
     })
@@ -60,14 +60,14 @@ describe('lastDayOfWeek', function() {
     context('when current day value is bigger than start of week', function() {
       it('it returns end of week', function() {
         var date = new Date(2014, 9 /* Oct */, 10)
-        var result = lastDayOfWeek(date, 3)
+        var result = lastDayOfWeek(date, {weekStartsAt: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14))
       })
     })
 
     context('with end of year', function() {
       var date = new Date(2014, 11 /* Dec */, 29)
-      var result = lastDayOfWeek(date, 5)
+      var result = lastDayOfWeek(date, {weekStartsAt: 5})
       assert.deepEqual(result, new Date(2015, 0 /* Jan */, 1))
     })
   })

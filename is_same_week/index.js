@@ -9,7 +9,8 @@ var startOfWeek = require('../start_of_week')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
- * @param {Number} [weekStartsAt=0] - the index of the first day of a week (0 - sunday)
+ * @param {Object} [options] - the object with options
+ * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
  * @returns {Boolean} the dates are in the same week
  *
  * @example
@@ -26,13 +27,13 @@ var startOfWeek = require('../start_of_week')
  * var result = isSameWeek(
  *   new Date(2014, 7, 31),
  *   new Date(2014, 8, 4),
- *   1
+ *   {weekStartsAt: 1}
  * )
  * //=> false
  */
-var isSameWeek = function(dirtyDateLeft, dirtyDateRight, weekStartsAt) {
-  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, weekStartsAt)
-  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, weekStartsAt)
+var isSameWeek = function(dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
+  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
 
   return(
     dateLeftStartOfWeek.getTime() == dateRightStartOfWeek.getTime()

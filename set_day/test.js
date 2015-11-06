@@ -8,7 +8,7 @@ describe('setDay', function() {
   })
 
   it('allows to specify when week starts', function() {
-    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, 1)
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {weekStartsAt: 1})
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
