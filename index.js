@@ -30,6 +30,7 @@ module.exports = {
   differenceInWeeks: require('./difference_in_weeks'),
   differenceInYears: require('./difference_in_years'),
   distanceInWords: require('./distance_in_words'),
+  distanceInWordsToNow: require('./distance_in_words_to_now'),
   eachDay: require('./each_day'),
   endOfDay: require('./end_of_day'),
   endOfHour: require('./end_of_hour'),

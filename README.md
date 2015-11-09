@@ -47,6 +47,7 @@ Code is fully documented, check the source for the reference.
 * [`isValid`](http://example.com/docs/isValid) - is the given date valid?
 * [`isValidDateValues`](http://example.com/docs/isValidDateValues) - is the date constructed from the given values exist?
 * [`distanceInWords`](http://example.com/docs/distanceInWords) - return the distance between the given dates in words.
+* [`distanceInWordsToNow`](http://example.com/docs/distanceInWordsToNow) - return the distance between the given date and now in words.
 
 ### Range helpers
 
