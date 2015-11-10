@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of calendar months
+ * @returns {Number} the number of calendar months
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?

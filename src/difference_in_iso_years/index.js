@@ -14,7 +14,7 @@ var subISOYears = require('../sub_iso_years')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of full ISO week-numbering years
+ * @returns {Number} the number of full ISO week-numbering years
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?

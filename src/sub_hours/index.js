@@ -9,7 +9,7 @@ var addHours = require('../add_hours')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of hours to be subtracted
- * @returns {Date} new date with the hours subtracted
+ * @returns {Date} the new date with the hours subtracted
  *
  * @example
  * // Subtract 2 hours from 11 July 2014 01:00:00:

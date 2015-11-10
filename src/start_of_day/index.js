@@ -9,7 +9,7 @@ var parse = require('../parse')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @returns {Date} start of a day
+ * @returns {Date} the start of a day
  *
  * @example
  * // The start of a day for 2 September 2014 11:55:00:

@@ -10,7 +10,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of calendar quarters
+ * @returns {Number} the number of calendar quarters
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?

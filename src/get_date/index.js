@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Get the day of the month of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} day of month
+ * @returns {Number} the day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?

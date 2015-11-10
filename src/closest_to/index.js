@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
- * @returns {Date} date from the array closest to the given date
+ * @returns {Date} the date from the array closest to the given date
  *
  * @example
  * // Which date is closer to 6 October 2015: 1 January 2000 or 1 January 2030?

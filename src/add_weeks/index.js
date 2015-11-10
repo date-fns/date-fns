@@ -9,7 +9,7 @@ var addDays = require('../add_days')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of weeks to be added
- * @returns {Date} new date with the weeks added
+ * @returns {Date} the new date with the weeks added
  *
  * @example
  * // Add 4 weeks to 1 September 2014:

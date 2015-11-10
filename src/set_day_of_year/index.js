@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} dayOfYear - the day of the year of the new date
- * @returns {Date} new date with the day of the year setted
+ * @returns {Date} the new date with the day of the year setted
  *
  * @example
  * // Set the 2nd day of the year to 2 July 2014:

@@ -5,7 +5,7 @@
  * @description
  * Return the start of yesterday.
  *
- * @returns {Date} start of yesterday
+ * @returns {Date} the start of yesterday
  *
  * @example
  * // If today is 6 October 2014:

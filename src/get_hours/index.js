@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Get the hours of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} hours
+ * @returns {Number} the hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:

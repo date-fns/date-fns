@@ -9,7 +9,7 @@ var parse = require('../parse')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @returns {Date} end of a month
+ * @returns {Date} the end of a month
  *
  * @example
  * // The end of a month for 2 September 2014 11:55:00:

@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Return the earliest of the given dates.
  *
  * @param {...(Date|String|Number)} dates - the dates to compare
- * @returns {Date} earliest of the dates
+ * @returns {Date} the earliest of the dates
  *
  * @example
  * // Which of these dates is the earliest?

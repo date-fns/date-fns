@@ -60,7 +60,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @returns {String} formatted date string
+ * @returns {String} the formatted date string
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:

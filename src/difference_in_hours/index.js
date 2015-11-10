@@ -11,7 +11,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of hours
+ * @returns {Number} the number of hours
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?

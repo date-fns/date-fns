@@ -39,7 +39,7 @@ var distanceInWords = require('../distance_in_words')
  * @param {Date|String|Number} date - the given date
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @returns {String} distance in words
+ * @returns {String} the distance in words
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?

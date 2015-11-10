@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be added
- * @returns {Date} new date with the minutes added
+ * @returns {Date} the new date with the minutes added
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:

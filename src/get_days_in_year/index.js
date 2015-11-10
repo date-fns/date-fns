@@ -8,7 +8,7 @@ var isLeapYear = require('../is_leap_year')
  * Get the number of days in a year of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} number of days in a year
+ * @returns {Number} the number of days in a year
  *
  * @example
  * // How many days are in 2012?

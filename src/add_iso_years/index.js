@@ -12,7 +12,7 @@ var setISOYear = require('../set_iso_year')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be added
- * @returns {Date} new date with the ISO week-numbering years added
+ * @returns {Date} the new date with the ISO week-numbering years added
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:

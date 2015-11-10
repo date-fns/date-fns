@@ -9,7 +9,7 @@ var addMonths = require('../add_months')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be subtracted
- * @returns {Date} new date with the months subtracted
+ * @returns {Date} the new date with the months subtracted
  *
  * @example
  * // Subtract 5 months from 1 February 2015:

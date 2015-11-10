@@ -14,7 +14,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Object} [options] - the object with options
  * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
- * @returns {Number} number of calendar weeks
+ * @returns {Number} the number of calendar weeks
  *
  * @example
  * // How many calendar weeks are between 5 July 2014 and 20 July 2014?

@@ -10,7 +10,7 @@ var setMonth = require('../set_month')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} quarter - the quarter of the new date
- * @returns {Date} new date with the quarter setted
+ * @returns {Date} the new date with the quarter setted
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:

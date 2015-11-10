@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Get the day of the week of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} day of week
+ * @returns {Number} the day of week
  *
  * @example
  * // Which day of the week is 29 February 2012?

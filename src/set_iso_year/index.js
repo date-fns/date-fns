@@ -14,7 +14,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} isoYear - the ISO week-numbering year of the new date
- * @returns {Date} new date with the ISO year setted
+ * @returns {Date} the new date with the ISO year setted
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:

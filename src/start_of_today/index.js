@@ -7,7 +7,7 @@ var startOfDay = require('../start_of_day')
  * @description
  * Return the start of today.
  *
- * @returns {Date} start of today
+ * @returns {Date} the start of today
  *
  * @example
  * // If today is 6 October 2014:

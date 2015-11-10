@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of calendar years
+ * @returns {Number} the number of calendar years
  *
  * @example
  * // How many calendar years are between 31 December 2013 and 11 February 2015?

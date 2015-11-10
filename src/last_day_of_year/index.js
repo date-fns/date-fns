@@ -9,7 +9,7 @@ var parse = require('../parse')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @returns {Date} last day of a year
+ * @returns {Date} the last day of a year
  *
  * @example
  * // The last day of a year for 2 September 2014 11:55:00:

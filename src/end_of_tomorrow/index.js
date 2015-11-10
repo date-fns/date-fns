@@ -5,7 +5,7 @@
  * @description
  * Return the end of tomorrow.
  *
- * @returns {Date} end of tomorrow
+ * @returns {Date} the end of tomorrow
  *
  * @example
  * // If today is 6 October 2014:

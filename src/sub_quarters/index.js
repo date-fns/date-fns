@@ -9,7 +9,7 @@ var addQuarters = require('../add_quarters')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of quarters to be subtracted
- * @returns {Date} new date with the quarters subtracted
+ * @returns {Date} the new date with the quarters subtracted
  *
  * @example
  * // Subtract 3 quarters from 1 September 2014:

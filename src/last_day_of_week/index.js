@@ -11,7 +11,7 @@ var parse = require('../parse')
  * @param {Date|String|Number} date - the original date
  * @param {Object} [options] - the object with options
  * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
- * @returns {Date} last day of a week
+ * @returns {Date} the last day of a week
  *
  * @example
  * // The last day of a week for 2 September 2014 11:55:00:

@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Get the number of days in a month of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} number of days in a month
+ * @returns {Number} the number of days in a month
  *
  * @example
  * // How many days are in February 2000?

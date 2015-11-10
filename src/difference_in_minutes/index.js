@@ -11,7 +11,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of minutes
+ * @returns {Number} the number of minutes
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?

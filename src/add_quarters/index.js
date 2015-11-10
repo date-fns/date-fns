@@ -9,7 +9,7 @@ var addMonths = require('../add_months')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of quarters to be added
- * @returns {Date} new date with the quarters added
+ * @returns {Date} the new date with the quarters added
  *
  * @example
  * // Add 1 quarter to 1 September 2014:

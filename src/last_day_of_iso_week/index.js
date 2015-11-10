@@ -11,7 +11,7 @@ var lastDayOfWeek = require('../last_day_of_week')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the original date
- * @returns {Date} last day of an ISO week
+ * @returns {Date} the last day of an ISO week
  *
  * @example
  * // The last day of an ISO week for 2 September 2014 11:55:00:

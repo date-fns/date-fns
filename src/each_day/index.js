@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} startDate - the start of range
  * @param {Date|String|Number} endDate - the end of range
- * @returns {Date[]} array of dates for every day of the range
+ * @returns {Date[]} the array of dates for every day of the range
  * @throws End of range must have time value greater than time value of start of range
  *
  * @example

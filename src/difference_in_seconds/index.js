@@ -9,7 +9,7 @@ var differenceInMilliseconds = require('../difference_in_milliseconds')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of seconds
+ * @returns {Number} the number of seconds
  *
  * @example
  * // How many seconds are between

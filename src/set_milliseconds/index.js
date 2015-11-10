@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} milliseconds - the milliseconds of the new date
- * @returns {Date} new date with the milliseconds setted
+ * @returns {Date} the new date with the milliseconds setted
  *
  * @example
  * // Set 300 milliseconds to 1 September 2014 11:30:40.500:

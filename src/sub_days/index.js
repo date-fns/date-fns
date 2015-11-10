@@ -9,7 +9,7 @@ var addDays = require('../add_days')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of days to be subtracted
- * @returns {Date} new date with the days subtracted
+ * @returns {Date} the new date with the days subtracted
  *
  * @example
  * // Subtract 10 days from 1 September 2014:

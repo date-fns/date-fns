@@ -11,7 +11,7 @@ var compareAsc = require('../compare_asc')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of full years
+ * @returns {Number} the number of full years
  *
  * @example
  * // How many full years are between 31 December 2013 and 11 February 2015?

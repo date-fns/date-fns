@@ -10,7 +10,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days')
  * Get the day of the year of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} day of year
+ * @returns {Number} the day of year
  *
  * @example
  * // Which day of the year is 2 July 2014?

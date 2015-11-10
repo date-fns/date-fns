@@ -9,7 +9,7 @@ var addSeconds = require('../add_seconds')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of seconds to be subtracted
- * @returns {Date} new date with the seconds subtracted
+ * @returns {Date} the new date with the seconds subtracted
  *
  * @example
  * // Subtract 30 seconds from 10 July 2014 12:45:00:

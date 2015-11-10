@@ -9,7 +9,7 @@ var addYears = require('../add_years')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of years to be subtracted
- * @returns {Date} new date with the years subtracted
+ * @returns {Date} the new date with the years subtracted
  *
  * @example
  * // Subtract 5 years from 1 September 2014:

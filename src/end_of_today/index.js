@@ -7,7 +7,7 @@ var endOfDay = require('../end_of_day')
  * @description
  * Return the end of today.
  *
- * @returns {Date} end of today
+ * @returns {Date} the end of today
  *
  * @example
  * // If today is 6 October 2014:

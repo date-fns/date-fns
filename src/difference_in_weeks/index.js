@@ -9,7 +9,7 @@ var differenceInDays = require('../difference_in_days')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of full weeks
+ * @returns {Number} the number of full weeks
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?

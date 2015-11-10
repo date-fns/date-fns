@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Return the latest of the given dates.
  *
  * @param {...(Date|String|Number)} dates - the dates to compare
- * @returns {Date} latest of the dates
+ * @returns {Date} the latest of the dates
  *
  * @example
  * // Which of these dates is the latest?

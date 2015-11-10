@@ -11,7 +11,7 @@ var getISOYear = require('../get_iso_year')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of calendar ISO week-numbering years
+ * @returns {Number} the number of calendar ISO week-numbering years
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?

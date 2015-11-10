@@ -8,7 +8,7 @@ var parse = require('../parse')
  * Get the milliseconds of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @returns {Number} milliseconds
+ * @returns {Number} the milliseconds
  *
  * @example
  * // Get the milliseconds of 29 February 2012 11:45:05.123:

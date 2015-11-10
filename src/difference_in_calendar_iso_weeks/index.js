@@ -14,7 +14,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of calendar ISO weeks
+ * @returns {Number} the number of calendar ISO weeks
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?

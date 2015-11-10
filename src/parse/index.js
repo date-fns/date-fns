@@ -35,7 +35,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
  * @param {String} dateStr - the ISO 8601 formatted string to parse
- * @returns {Date} parsed date in the local time zone.
+ * @returns {Date} the parsed date in the local time zone.
  *
  * @example
  * // Parse string '2014-02-11T11:30:30':

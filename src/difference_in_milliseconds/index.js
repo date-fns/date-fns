@@ -9,7 +9,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
- * @returns {Number} number of milliseconds
+ * @returns {Number} the number of milliseconds
  *
  * @example
  * // How many milliseconds are between
