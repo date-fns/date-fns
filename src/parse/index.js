@@ -34,7 +34,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  *
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
- * @param {String} dateStr - the ISO 8601 formatted string to parse
+ * @param {String} dateString - the ISO 8601 formatted string to parse
  * @returns {Date} the parsed date in the local time zone.
  *
  * @example
@@ -42,15 +42,15 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * var result = parse('2014-02-11T11:30:30')
  * //=> Tue Feb 11 2014 11:30:30
  */
-var parse = function(dateStr) {
-  if (dateStr instanceof Date) {
+var parse = function(dateString) {
+  if (dateString instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(dateStr.getTime())
-  } else if (typeof dateStr !== 'string') {
-    return new Date(dateStr)
+    return new Date(dateString.getTime())
+  } else if (typeof dateString !== 'string') {
+    return new Date(dateString)
   }
 
-  var dateStrings = splitDateString(dateStr)
+  var dateStrings = splitDateString(dateString)
 
   var date = parseDate(dateStrings.date)
 
@@ -73,13 +73,13 @@ var parse = function(dateStr) {
 
     return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
   } else {
-    return new Date(dateStr)
+    return new Date(dateString)
   }
 }
 
-var splitDateString = function(dateStr) {
+var splitDateString = function(dateString) {
   var dateStrings = {}
-  var array = dateStr.split(parseTokenDateTimeDelimeter)
+  var array = dateString.split(parseTokenDateTimeDelimeter)
   var timeString
 
   if (parseTokenPlainTime.test(array[0])) {
