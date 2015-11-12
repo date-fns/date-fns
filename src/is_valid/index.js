@@ -10,7 +10,7 @@
  *
  * @param {Date|String|Number} date - the date to check
  * @returns {Boolean} the date is valid
- * @throws {TypeError} Argument must be an instance of Date
+ * @throws {TypeError} argument must be an instance of Date
  *
  * @example
  * // For the valid date:
