@@ -20,7 +20,7 @@ function getEntryConfig() {
     }
   } else {
     return {
-      'date_fns': './index.js'
+      'date_fns': './tmp/umd/index.js'
     }
   }
 }

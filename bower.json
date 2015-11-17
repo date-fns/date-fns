@@ -6,5 +6,5 @@
   "description": "Date helpers",
   "main": "dist/date_fns.js",
   "license": "MIT",
-  "ignore": ["src", "node_modules"]
+  "ignore": ["config", "docs", "node_modules", "scripts", "src", "tmp", "index.js", "package.json", "test.js", "VERSION"]
 }
