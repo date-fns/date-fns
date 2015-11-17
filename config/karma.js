@@ -75,6 +75,7 @@ var sauceLabsLaunchers = {
     deviceOrientation: 'portrait'
   }
   /* REMOVE THIS COMMENT */
+  /* AND THIS TOO */
 }
 
 var config = function(config) {
