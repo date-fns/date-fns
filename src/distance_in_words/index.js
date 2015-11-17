@@ -77,7 +77,8 @@ var distanceInWords = function(dirtyDateFrom, dirtyDateTo, options) {
 
   var includeSeconds = options ? options.includeSeconds : false
   var seconds = differenceInSeconds(dateTo, dateFrom)
-  var minutes = Math.round(seconds / 60)
+  var offset = dateTo.getTimezoneOffset() - dateFrom.getTimezoneOffset()
+  var minutes = Math.round(seconds / 60) - offset
 
   // 0 up to 2 mins
   if (minutes < 2) {
