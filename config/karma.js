@@ -58,6 +58,7 @@ var sauceLabsLaunchers = {
   },
 
   ios: {
+    base: 'SauceLabs',
     browserName: 'iphone',
     platform: 'OS X 10.10',
     version: '9.1',
@@ -66,6 +67,7 @@ var sauceLabsLaunchers = {
   },
 
   android: {
+    base: 'SauceLabs',
     browserName: 'android',
     deviceName: 'Google Nexus 7C Emulator',
     deviceOrientation: 'portrait'
