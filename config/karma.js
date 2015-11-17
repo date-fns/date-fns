@@ -74,6 +74,7 @@ var sauceLabsLaunchers = {
     deviceName: 'Android Emulator',
     deviceOrientation: 'portrait'
   }
+  /* REMOVE THIS COMMENT */
 }
 
 var config = function(config) {
