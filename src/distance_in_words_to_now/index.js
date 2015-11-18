@@ -15,7 +15,7 @@ var distanceInWords = require('../distance_in_words')
  * | 44 mins ... 30 secs ... 89 mins 30 secs                           | about 1 hour        |
  * | 89 mins 30 secs ... 23 hrs 59 mins 30 secs                        | about [2..24] hours |
  * | 23 hrs 59 mins 30 secs ... 41 hrs 59 mins 30 secs                 | 1 day               |
- * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..29] days        |
+ * | 41 hrs 59 mins 30 secs ... 29 days 23 hrs 59 mins 30 secs         | [2..30] days        |
  * | 29 days 23 hrs 59 mins 30 secs ... 44 days 23 hrs 59 mins 30 secs | about 1 month       |
  * | 44 days 23 hrs 59 mins 30 secs ... 59 days 23 hrs 59 mins 30 secs | about 2 months      |
  * | 59 days 23 hrs 59 mins 30 secs ... 1 yr                           | [2..12] months      |
@@ -51,7 +51,7 @@ var distanceInWords = require('../distance_in_words')
  *
  * @example
  * // What is the distance between 1 January 2015 00:00:15
- * and 1 January 2015 00:00:00, including seconds?
+ * // and 1 January 2015 00:00:00, including seconds?
  * var result = distanceInWords(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),

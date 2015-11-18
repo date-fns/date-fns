@@ -18,7 +18,7 @@
  * //=> true
  *
  * @example
- * // for the invalid date:
+ * // For the invalid date:
  * var result = isValid(new Date(''))
  * //=> false
  */
