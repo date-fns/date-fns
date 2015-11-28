@@ -1012,7 +1012,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    var includeSeconds = options ? options.includeSeconds : false;
 	    var seconds = differenceInSeconds(dateTo, dateFrom);
-	    var minutes = Math.round(seconds / 60);
+	    var offset = dateTo.getTimezoneOffset() - dateFrom.getTimezoneOffset();
+	    var minutes = Math.round(seconds / 60) - offset;
 	    if (minutes < 2) {
 	        if (includeSeconds) {
 	            if (seconds < 5) {
