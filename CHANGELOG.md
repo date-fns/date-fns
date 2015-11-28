@@ -21,6 +21,8 @@
   - `differenceInSeconds`
   - `differenceInWeeks`
   - `differenceInYears`
+  - `distanceInWords`
+  - `distanceInWordsToNow`
   - `endOfISOWeek`
   - `endOfISOYear`
   - `endOfToday`
@@ -65,6 +67,8 @@
   - `eachDay` and `isWithinRange` now throws an exception when given range boundaries are invalid
   - `parse` now parses years more than 99 AD and less than 1 AD
   - Make the documentation more verbose
+  - All functions that had `weekStartsAt` as last argument, now have `options` argument instead
+    which is an object with `options.weekStartsAt` property
 * Bug fixes:
   - `format` now returns the correct result for key `E`
   - Prevent `startOf...`, `endOf...` and `lastDayOf...` functions

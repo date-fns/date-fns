@@ -4,9 +4,8 @@ import fs from 'fs'
 export default function listFunctions() {
   const files = fs.readdirSync(path.join(process.cwd(), 'src'))
   return files
-    .filter((file) => file.match(/\.js/))
-    .map((file) => file.replace(/\.js/, ''))
-    .map((file) => { return {name: camelize(file), path: `./src/${file}.js`} })
+    .filter((file) => !file.startsWith('.'))
+    .map((file) => { return {name: camelize(file), path: `./${file}`, fullPath: `./src/${file}/index.js`} })
 }
 
 function camelize(str) {

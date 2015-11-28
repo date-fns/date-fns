@@ -18,9 +18,11 @@ function getEntryConfig() {
     return {
       'tests': './test.js'
     }
+  } else if (process.env.NODE_ENV == 'test') {
+    return {}
   } else {
     return {
-      'date_fns': './index.js'
+      'date_fns': './tmp/umd/index.js'
     }
   }
 }

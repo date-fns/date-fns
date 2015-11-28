@@ -1,8 +1,8 @@
 {
   "name": "date-fns",
-  "version": "1.0.0-alpha4",
-  "author": "Sasha Koss <kossnocorp@gmail.com>",
-  "description": "Date helpers",
+  "version": "1.0.0-rc1",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
   "engine": {
     "node": ">= 0.11"
@@ -27,6 +27,7 @@
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
     "power-assert": "^1.0.0",
+    "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "webpack-espower-loader": "^1.0.1"
   },
@@ -38,9 +39,13 @@
     "test-tz-extended": "npm run build-tests && ./scripts/test_tz_extended.sh",
     "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
+    "build-uglify": "uglifyjs ./dist/date_fns.js --output ./dist/date_fns.min.js --source-map ./dist/date_fns.min.js.map --source-map-url date_fns.min.js.map --in-source-map ./dist/date_fns.js.map",
+    "build-docs": "babel-node ./scripts/generate_docs",
     "lint": "eslint .",
     "generate-index": "babel-node ./scripts/generate_index",
     "sync-versions": "babel-node ./scripts/sync_versions",
-    "docs": "babel-node ./scripts/generate_docs"
+    "release": "./scripts/release.sh",
+    "build-umd": "./scripts/build_umd.sh",
+    "release-npm": "./scripts/release_npm.sh"
   }
 }
