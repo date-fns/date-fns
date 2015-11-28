@@ -58,14 +58,14 @@ var sauceLabsLaunchers = {
   },
 
   // TODO: See if iPhone became more reliable
-  //ios: {
-    //base: 'SauceLabs',
-    //browserName: 'iphone',
-    //platform: 'OS X 10.10',
-    //version: '9.1',
-    //deviceName: 'iPhone 6',
-    //deviceOrientation: 'portrait'
-  //},
+  // ios: {
+  //   base: 'SauceLabs',
+  //   browserName: 'iphone',
+  //   platform: 'OS X 10.10',
+  //   version: '9.1',
+  //   deviceName: 'iPhone 6',
+  //   deviceOrientation: 'portrait'
+  // },
 
   android: {
     base: 'SauceLabs',
