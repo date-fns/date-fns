@@ -21,3 +21,18 @@ cache:
     - node_modules
 addons:
   sauce_connect: true
+deploy:
+  provider: s3
+  access_key_id: AKIAIPB3P6H26JZ2R25A
+  secret_access_key:
+    secure: GY75GPQ7Ah/YIjJkOke5iedKqiFBFidyk5wkDYNXCS/pcIAh+5/k8TFiqB2jVKoMWcBKzcNmuN2qDkGNz5Dl5bis2RpoySm/1N1BOTTUwRSC62Z1d7GEkUOuV237Ch9TKvny3sg9rzKyHuqCah/EbV3xjfFyikygi9zoWe+njJM=
+  bucket: date-fns
+  local-dir: 'dist'
+  upload-dir: '$TRAVIS_TAG'
+  acl: 'public_read'
+  cache_control: 'public, max-age=3122064000'
+  expires: '2012-12-21 00:00:00 -0000'
+  on:
+    repo: date-fns/date-fns
+    branch: master
+    tags: true

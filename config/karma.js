@@ -57,14 +57,15 @@ var sauceLabsLaunchers = {
     version: '20.10240'
   },
 
-  ios: {
-    base: 'SauceLabs',
-    browserName: 'iphone',
-    platform: 'OS X 10.10',
-    version: '9.1',
-    deviceName: 'iPhone 6',
-    deviceOrientation: 'portrait'
-  },
+  // TODO: See if iPhone became more reliable
+  //ios: {
+    //base: 'SauceLabs',
+    //browserName: 'iphone',
+    //platform: 'OS X 10.10',
+    //version: '9.1',
+    //deviceName: 'iPhone 6',
+    //deviceOrientation: 'portrait'
+  //},
 
   android: {
     base: 'SauceLabs',
