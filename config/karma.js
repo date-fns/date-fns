@@ -1,6 +1,7 @@
 var webpackConfig = require('./webpack')
 
 var sauceLabsLaunchers = {
+  // TODO: See if Safari became more reliable
   safari: {
     base: 'SauceLabs',
     platform: 'OS X 10.11',
