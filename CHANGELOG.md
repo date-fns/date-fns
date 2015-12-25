@@ -2,6 +2,12 @@
 
 ## v1.0.0
 
+Breaking changes a.k.a migration guide:
+
+- A
+- B
+- C
+
 * Additions:
   - `addISOYears`
   - `closestTo`
