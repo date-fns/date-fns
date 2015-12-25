@@ -17,4 +17,3 @@ const packageJSONPath = path.join(process.cwd(), 'package.json')
   const newPackageContentStr = beautify(JSON.stringify(packageContent), {'indent_size': 2})
   fs.writeFileSync(packagePath, `${newPackageContentStr}\n`)
 })
-
