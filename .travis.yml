@@ -38,3 +38,5 @@ deploy:
     repo: date-fns/date-fns
     branch: master
     tags: true
+after_deploy:
+  - node node scripts/tweet_release

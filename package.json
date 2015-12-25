@@ -26,6 +26,7 @@
     "karma-sinon": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.5",
     "karma-webpack": "^1.7.0",
+    "node-fetch": "^1.3.3",
     "power-assert": "^1.0.0",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
