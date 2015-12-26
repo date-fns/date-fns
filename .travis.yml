@@ -44,4 +44,4 @@ deploy:
     on:
       tags: true
 after_deploy:
-- node scripts/tweet_release
+  - npm run release-tweet
