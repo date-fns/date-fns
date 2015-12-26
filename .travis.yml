@@ -5,6 +5,7 @@ node_js:
 branches:
   only:
     - master
+    - /v\d\.\d\.\d(-\w+)?/
 before_install:
   - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
   - tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
