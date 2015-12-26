@@ -35,8 +35,6 @@ deploy:
   expires: '2099-12-31 00:00:00 -0000'
   region: eu-central-1
   on:
-    repo: date-fns/date-fns
-    branch: master
     tags: true
 after_deploy:
   - node node scripts/tweet_release
