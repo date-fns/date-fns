@@ -1,41 +1,47 @@
 sudo: false
 language: node_js
 node_js:
-  - '0.12'
+- '0.12'
 branches:
   only:
-    - master
-    - /v\d\.\d\.\d(-\w+)?/
+  - master
+  - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
 before_install:
-  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - mv phantomjs "$TRAVIS_BUILD_DIR/tmp/phantomjs2"
-  - export PHANTOMJS_BIN="$TRAVIS_BUILD_DIR/tmp/phantomjs2"
+- wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+- tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+- mv phantomjs "$TRAVIS_BUILD_DIR/tmp/phantomjs2"
+- export PHANTOMJS_BIN="$TRAVIS_BUILD_DIR/tmp/phantomjs2"
 script:
-  #- npm run lint
-  - npm run test-ci
-  #- npm run test-cross-browser
-  #- npm run test-tz
-  #- npm run test-tz-extended
+- npm run test-ci
 cache:
   directories:
-    - node_modules
+  - node_modules
 addons:
   sauce_connect: true
 deploy:
-  provider: s3
-  access_key_id: AKIAIXPFOIIE7FDYPAXA
-  secret_access_key:
-    secure: FPFCB5gn77ureKrRHbGZ6eF7mveemLt45FaU5g2jp5jjIjubQAwygI6KpmqmXgXEyv9u+bSYipYwCRvaN8YTiD1woEOF+6RENFMuGVYEqIMgfmAzQKGt+OEc9dhzgcnxFxPaW3il9/Eeq/S8zDCAykvJ5zv6DDm8k3oCHOvbJaY=
-  bucket: date-fns
-  local-dir: dist
-  upload-dir: "$TRAVIS_TAG"
-  acl: public_read
-  detect_encoding: true
-  cache_control: public, max-age=3122064000, s-maxage=3122064000
-  expires: '2099-12-31 00:00:00 -0000'
-  region: eu-central-1
-  on:
-    tags: true
+  - provider: s3
+    access_key_id: AKIAIXPFOIIE7FDYPAXA
+    secret_access_key:
+      secure: FPFCB5gn77ureKrRHbGZ6eF7mveemLt45FaU5g2jp5jjIjubQAwygI6KpmqmXgXEyv9u+bSYipYwCRvaN8YTiD1woEOF+6RENFMuGVYEqIMgfmAzQKGt+OEc9dhzgcnxFxPaW3il9/Eeq/S8zDCAykvJ5zv6DDm8k3oCHOvbJaY=
+    bucket: date-fns
+    local-dir: dist
+    upload-dir: "$TRAVIS_TAG"
+    acl: public_read
+    detect_encoding: true
+    cache_control: public, max-age=3122064000, s-maxage=3122064000
+    expires: '2099-12-31 00:00:00 -0000'
+    region: eu-central-1
+    on:
+      tags: true
+  - provider: releases
+    api_key:
+      secure: TmrPh4zKfdTbMk/qaAPXKDaVEV72DFJK1cQLOOnAfk8zYeC2GITX5DfsxgLZNdZkvmIjPbaxKWigwWKj2ehWbH93SvzZsAhOwXR2y4IfGhWSM/gd8LZ5Mp1P9648yGrLwlPmiQBlots9+mB+L4v16a8YuhQkH7T6hkoJKgR3eok=
+    file:
+      - dist/date_fns.js
+      - dist/date_fns.js.map
+      - dist/date_fns.min.js
+      - dist/date_fns.min.js.map
+    on:
+      tags: true
 after_deploy:
-  - node scripts/tweet_release
+- node scripts/tweet_release
