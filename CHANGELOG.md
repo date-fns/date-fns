@@ -4,9 +4,27 @@
 
 Breaking changes a.k.a migration guide:
 
-- A
-- B
-- C
+- All functions are moved to the root of the library, so they are now accessible with
+  `require('date-fns/name_of_function')` or `import nameOfFunction from 'date-fns/name_of_function'`
+  ```
+  // Before v1.0.0
+  var addMonths = require('date-fns/src/add_months')
+
+  // v1.0.0 onward
+  var addMonths = require('date-fns/add_months')
+  ```
+
+- Functions that had the last optional argument `weekStartsAt`
+  (i.e. `endOfWeek`, `isSameWeek`, `lastDayOfWeek`, `setDay`, `startOfWeek`)
+  now instead receive an object `options` with property `options.weekStartsAt` as the last argument.
+  ```
+  // Before v1.0.0
+  var result = endOfWeek(new Date(2014, 8, 2), 1)
+
+  // v1.0.0 onward
+  var result = endOfWeek(new Date(2014, 8, 2), {weekStartsAt: 1})
+  ```
+
 
 * Additions:
   - `addISOYears`
@@ -75,6 +93,8 @@ Breaking changes a.k.a migration guide:
   - Make the documentation more verbose
   - All functions that had `weekStartsAt` as last argument, now have `options` argument instead
     which is an object with `options.weekStartsAt` property
+  - Move all functions to the root of the library, so they are now accessible with
+    `require('date-fns/name_of_function')` instead of `require('date-fns/src/name_of_function')`
 * Bug fixes:
   - `format` now returns the correct result for key `E`
   - Prevent `startOf...`, `endOf...` and `lastDayOf...` functions
