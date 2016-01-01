@@ -1,6 +1,6 @@
 node_modules
 npm-debug.log
 tmp
-build
+dist/*.gz
 test.espowered.js
 .envrc

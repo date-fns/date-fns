@@ -47,6 +47,7 @@
     "sync-versions": "babel-node ./scripts/sync_versions",
     "release": "./scripts/release.sh",
     "build-umd": "./scripts/build_umd.sh",
+    "build-gzip": "./scripts/gzip_dist.sh",
     "release-npm": "./scripts/release_npm.sh",
     "release-tweet": "babel-node scripts/tweet_release",
     "deploy-homepage": "./scripts/trigger_homepage_deploy.sh"
