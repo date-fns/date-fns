@@ -48,6 +48,7 @@
     "release": "./scripts/release.sh",
     "build-umd": "./scripts/build_umd.sh",
     "release-npm": "./scripts/release_npm.sh",
-    "release-tweet": "babel-node scripts/tweet_release"
+    "release-tweet": "babel-node scripts/tweet_release",
+    "deploy-homepage": "./scripts/trigger_homepage_deploy.sh"
   }
 }

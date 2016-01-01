@@ -43,5 +43,10 @@ deploy:
       - dist/date_fns.min.js.map
     on:
       tags: true
+  - provider: script
+    skip_cleanup: true
+    script: npm run deploy-homepage
+    on:
+      tags: true
 after_deploy:
   - npm run release-tweet

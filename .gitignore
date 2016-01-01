@@ -3,3 +3,4 @@ npm-debug.log
 tmp
 build
 test.espowered.js
+.envrc
