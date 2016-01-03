@@ -1,23 +1,217 @@
-# date-fns
-[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns) [![Docs Status](http://inch-ci.org/github/date-fns/date-fns.svg?branch=master)](http://inch-ci.org/github/date-fns/date-fns/branch/master)
+# ![](http://i.ncrp.co/0X1n0809020V/date-fns-mini-logo.svg) date-fns
+[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns) [![Docs Status](http://inch-ci.org/github/date-fns/date-fns.svg?branch=master)](http://inch-ci.org/github/date-fns/date-fns) [![Licensed under the MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](#license) [![Sponsored by Toptal](http://i.ncrp.co/19142t0u3U2A/Toptal's%20open%20source%20badge.svg)](http://i.ncrp.co/eC2e)
 
-Date helpers in the function-per-file style.
+date-fns provides the most comprehensive yet simple and consistent toolset
+for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
-## Installation
+The library has **140+ functions** for all occasions. If you like, you can
+think of date-fns as **[lodash](https://lodash.com) for dates**.
 
-### npm
+```js
+dateFns.format(new Date(2014, 1, 11), 'MM/DD/YYYY')
+//=> '02/11/2014'
 
+var dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]
+dates.sort(dateFns.compareAsc)
+//=> [
+//   Wed Feb 11 1987 00:00:00,
+//   Mon Jul 10 1989 00:00:00,
+//   Sun Jul 02 1995 00:00:00
+// ]
 ```
+
+date-fns is **battle tested** in several core [Toptal](http://i.ncrp.co/eC2e)
+projects, so **it's safe to use it in a production**.
+
+## Resources
+
+**If you are already familiar with the project**, you might be interesting
+in following resources:
+
+- See [**API Documentation**](https://date-fns.org/docs) for full list of
+  functions, detailed documentation and examples.
+- See the [Changelog](./CHANGELOG.md) for a list of changes.
+- Read [Contributor Guide](./CONTRIBUTING.md) if you want to help the project.
+- Visit [date-fns kanban board](https://waffle.io/date-fns/date-fns) or
+  [GitHub Issues](https://github.com/date-fns/date-fns) to see roadmap, list of
+  know issues or if you want to get help or report a bug.
+- Follow [@date_fns](https://twitter.com/date_fns) at Twitter
+  for the project updates.
+
+**If you are new to the project, still not convinced** or just looking for
+more information, you might benefit from reading of the following document
+as it describes in details **why** and **how** to use date-fns, lists project
+alternatives, provides list of useful resources and
+reveals awesome people behind the project.
+
+## Table of Contents
+
+* [Why to Use date-fns?](#why-to-use-date-fns)
+  - [Key Features](#key-features)
+  - [Testimonials](#testimonials)
+  - [Moment.js Compatibility](#momentjs-compatibility)
+* [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Main Principles](#main-principles)
+  - [API](#api)
+* [FAQ](#faq)
+  - [I18n Support](#i18n-support)
+  - [Working with Time Zones](#working-with-time-zones)
+* [Additional Resources](#additional-resources)
+  - [Alternatives](#alternatives)
+  - [Related Information](#related-information)
+* [People Behind the Project](#people-behind-the-project)
+  - [Core Team & Contributors](#core-team--contributors)
+  - [Sponsors](#sponsors)
+* [License](#license)
+
+## Why to Use date-fns?
+
+### Key Features
+
+Why to choose date-fns over [awesome alternatives](#limitataions--alternatives)?
+
+* **It's modular and built with webpack & Browserify in the mind**.
+  It allows to get rid of unused funtionality and minimize the final build size.
+  However it's **avaliable as UMD** so it might be used in every setup.
+* **It's encourages functional approach**:
+  - It doesn't mutate passed arguments.
+  - API 100% consist of functions.
+  - Functions are _reasonable_ **pure**: the result is always the same for
+    the same arguments, but it also depends on the current moment of time
+    and the local timezone.
+* **It doesn't extend `Date` and `Date.prototype`**, so it's bulletproof.
+* **It's lightweight and simple**. Unlike the library rivals, it doesn't add
+  new classes and uses native `Date` objects, so it's easy to serialize and
+  resulting code is obvious to new team members.
+* **It has minimal overhead** that exists only to normalize host platform
+  behavior and fix cross-platform implementation inconsistencies.
+* Due to that, in most cases, date-fns is significantly
+  **faster than alternatives**.
+* **It respects DST** (daily saving time) and **fixes all
+  the know platform-specific problems** caused by implementation incosistencies.
+* To make sure that it's bug-free we wrote **comprehensive test suite** that
+  tests library against all the possible time zones and all the common browsers.
+  Total number of tests in the master build is 300 000 tests (yes, 300K)
+  so you might be sure that your code runs smoothly even in Antarctica.
+
+### Testimonials
+
+TODO
+
+### Moment.js Compatibility
+
+date-fns is built as a modern replacement for [Moment.js](http://momentjs.com),
+and mostly compatible with the latter (`format` function syntax,
+funtionaly-wise, etc).
+
+But there is a chance that you might prefer Moment.js. Also, there are few more
+options, like [Sugar.js' Date extensions](http://sugarjs.com/api/Date)
+or good old [Datejs](https://github.com/datejs/Datejs).
+
+## Getting Started
+
+date-fns is already installed? Skip to [Usage section](#usage).
+
+### Installation
+
+Avaliable installation methods:
+
+- [npm](#npm)
+- [Bower](#bower)
+- [UMD](#umd) (download the library as a single `.js` file)
+- [CDN](#cdn)
+
+#### npm
+[![npm version](https://img.shields.io/npm/v/date-fns.svg)](https://www.npmjs.org/package/date-fns) ![npm stats](https://img.shields.io/npm/dt/date-fns.svg)
+
+Install date-fns and optionally save it as a dependency
+to a project `package.json`:
+
+```sh
 npm install date-fns --save
 ```
 
-### Bower
+See how to use npm package.
 
-```
+
+#### Bower
+[![Bower version](https://img.shields.io/bower/v/date-fns.svg)]()
+
+Install Bower package:
+
+```sh
 bower install date-fns
 ```
 
-## Usage
+Include it to a HTML template:
+
+```html
+<script src="/assets/date_fns.js"></script>
+```
+
+TODO
+
+#### UMD
+
+[Download latest release from GitHub](https://github.com/date-fns/date-fns/releases/latest),
+save it to a project and include to a HTML template:
+
+```html
+<script src="/assets/date_fns.js"></script>
+```
+
+TODO
+
+#### CDN
+
+date-fns is also avaliable through CDN sponsored by Toptal:
+
+```html
+<script src="http://cdn.date-fns.org/v1.0.0/date_fns.min.js"></script>
+```
+
+TODO
+
+### Usage
+
+#### Use npm Package
+
+The npm package is optimized for webpack, Browserify, etc, so could be used
+for web projects.
+
+Then require a single function:
+
+```js
+var isLastDayOfMonth = require('date-fns/is_last_day_of_month')
+var date = new Date(2014, 1, 28)
+console.log(isLastDayOfMonth(date))
+//=> true
+```
+
+It also possible to require whole library. However if your module bundler
+doesn't support [tree-shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html)
+it's not recommended to use the approach in web projects.
+
+```js
+var dateFns = require('date-fns')
+var date = new Date(2014, 1, 28)
+console.log(dateFns.isLastDayOfMonth(date))
+//=> true
+```
+
+#### Use date-fns as a Global Object (UMD)
+
+After that the whole library will be avaliable global object `window.dateFns`:
+
+```js
+var date = new Date(2014, 1, 28)
+console.log(dateFns.isLastDayOfMonth(date))
+//=> true
+```
+
+#
 
 ``` javascript
 var isLastDayOfMonth = require('date-fns/is_last_day_of_month')
@@ -26,205 +220,126 @@ console.log(isLastDayOfMonth(date))
 //=> true
 ```
 
-## API
+### Main Principles
 
+In order to provide smooth user experience and to prevent bugs
+caused by confusion, date-fns strictly follows main principles:
+
+1. Each function accepts a date object, an [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+  string (full or partial) or a number representing the timestamp.
+2. All the functions, always return a new date object instead of mutatating
+  passed onces.
+3. All the returned dates are normalized to represent datetime in the
+  local enviorment time zone (usually it's OS' time zone), no matter that
+  you pass as arguments.
+4. If passed arguments don't makes sense and it possible to
+  detect it (e.g. when first date of range is greater than second one)
+  a function will throw an exception.
+
+### API
+
+See [online documentation](https://date-fns.org/docs).
+
+- Online docs
+- date-fns uses JSDoc format for documentation that
 Code is fully documented, check the source for the reference.
 
-### Common helpers
+## FAQ
 
-* [`format`](https://date-fns.org/docs/format) - format the date.
-* [`isFuture`](https://date-fns.org/docs/isFuture) - is the given date in the future?
-* [`isPast`](https://date-fns.org/docs/isPast) - is the given date in the past?
-* [`isEqual`](https://date-fns.org/docs/isEqual) - are the given dates equal?
-* [`isBefore`](https://date-fns.org/docs/isBefore) - is the first date before the second one?
-* [`isAfter`](https://date-fns.org/docs/isAfter) - is the first date after the second one?
-* [`compareAsc`](https://date-fns.org/docs/compareAsc) - compare the two dates and return -1, 0 or 1.
-* [`compareDesc`](https://date-fns.org/docs/compareDesc) - compare the two dates reverse chronologically and return -1, 0 or 1.
-* [`max`](https://date-fns.org/docs/max) - return the latest of the given dates.
-* [`min`](https://date-fns.org/docs/min) - return the earliest of the given dates.
-* [`closestTo`](https://date-fns.org/docs/closestTo) - return a date from the array closest to the given date.
-* [`parse`](https://date-fns.org/docs/parse) - parse the ISO-8601-formatted date.
-* [`isValid`](https://date-fns.org/docs/isValid) - is the given date valid?
-* [`isValidDateValues`](https://date-fns.org/docs/isValidDateValues) - is the date constructed from the given values exist?
-* [`distanceInWords`](https://date-fns.org/docs/distanceInWords) - return the distance between the given dates in words.
-* [`distanceInWordsToNow`](https://date-fns.org/docs/distanceInWordsToNow) - return the distance between the given date and now in words.
+### I18n Support
 
-### Range helpers
+See "What About I18n?" for more information about date-fns' I18n support.
 
-* [`isWithinRange`](https://date-fns.org/docs/isWithinRange) - is the given date within the range?
+date-fns doesn't support historical DST changes and uses native browser API
+to detect UTC offset. Also it can't parse [IANA](https://www.iana.org/time-zones)
+time zone identifiers. If you are interested in advanced time zone
+support, checkout [Moment Timezone](http://momentjs.com/timezone/) or
+[vote for a future request](https://github.com/date-fns/date-fns/issues/180).
 
-### Milliseconds helpers
+Unlike most popular date libraries, date-fns doesn't support I18n and
+uses English as the only language. However this is matter only
+of two functions `parse` and `format`.
 
-* [`getMilliseconds`](https://date-fns.org/docs/getMilliseconds) - get the milliseconds.
-* [`setMilliseconds`](https://date-fns.org/docs/setMilliseconds) - set the milliseconds.
-* [`addMilliseconds`](https://date-fns.org/docs/addMilliseconds) - add the milliseconds to the given date.
-* [`subMilliseconds`](https://date-fns.org/docs/subMilliseconds) - subtract the milliseconds from the given date.
-* [`differenceInMilliseconds`](https://date-fns.org/docs/differenceInMilliseconds) - get the number of milliseconds between the given dates.
+------- CONSIDER TO MERGE
 
-### Seconds helpers
+I18n support is already here since most of major browsers (except Safari)
+support Intl API. Also, there is great battle-tested polyfill:
+[Intl.js](https://github.com/andyearnshaw/Intl.js/) so it's recommened to use it.
 
-* [`getSeconds`](https://date-fns.org/docs/getSeconds) - get the seconds.
-* [`setSeconds`](https://date-fns.org/docs/setSeconds) - set the seconds.
-* [`startOfSecond`](https://date-fns.org/docs/startOfSecond) - return the start of a second for the given date.
-* [`endOfSecond`](https://date-fns.org/docs/endOfSecond) - return the end of a second for the given date.
-* [`addSeconds`](https://date-fns.org/docs/addSeconds) - add the seconds to the given date.
-* [`subSeconds`](https://date-fns.org/docs/subSeconds) - subtract the seconds from the given date.
-* [`differenceInSeconds`](https://date-fns.org/docs/differenceInSeconds) - get the number of seconds between the given dates.
-* [`isSameSecond`](https://date-fns.org/docs/isSameSecond) - are the given dates in the same second?
-* [`isThisSecond`](https://date-fns.org/docs/isThisSecond) - is the given date in the same second as the current date?
+You also might want to take a look at Yahoo's high-level Intl wrapper:
+[Format.js](http://formatjs.io/).
 
-### Minutes helpers
+Read more about Intl API:
 
-* [`getMinutes`](https://date-fns.org/docs/getMinutes) - get the minutes.
-* [`setMinutes`](https://date-fns.org/docs/setMinutes) - set the minutes.
-* [`startOfMinute`](https://date-fns.org/docs/startOfMinute) - return the start of a minute for the given date.
-* [`endOfMinute`](https://date-fns.org/docs/endOfMinute) - return the end of a minute for the given date.
-* [`addMinutes`](https://date-fns.org/docs/addMinutes) - add the minutes to the given date.
-* [`subMinutes`](https://date-fns.org/docs/subMinutes) - subtract the minutes from the given date.
-* [`differenceInMinutes`](https://date-fns.org/docs/differenceInMinutes) - get the number of minutes between the given dates.
-* [`isSameMinute`](https://date-fns.org/docs/isSameMinute) - are the given dates in the same minute?
-* [`isThisMinute`](https://date-fns.org/docs/isThisMinute) - is the given date in the same minute as the current date?
+- [ECMA-402, ECMAScript Internationalization API Specification](http://ecma-international.org/publications/standards/Ecma-402.htm)
+- [An introduction to Intl](http://norbertlindenberg.com/2012/12/ecmascript-internationalization-api/index.html)
+- [Intl at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
 
-### Hours helpers
-
-* [`getHours`](https://date-fns.org/docs/getHours) - get the hours.
-* [`setHours`](https://date-fns.org/docs/setHours) - set the hours.
-* [`startOfHour`](https://date-fns.org/docs/startOfHour) - return the start of an hour for the given date.
-* [`endOfHour`](https://date-fns.org/docs/endOfHour) - return the end of an hour for the given date.
-* [`addHours`](https://date-fns.org/docs/addHours) - add hours to the given date.
-* [`subHours`](https://date-fns.org/docs/subHours) - subtract hours from the given date.
-* [`differenceInHours`](https://date-fns.org/docs/differenceInHours) - get the number of hours between the given dates.
-* [`isSameHour`](https://date-fns.org/docs/isSameHour) - are the given dates in the same hour?
-* [`isThisHour`](https://date-fns.org/docs/isThisHour) - is the given date in the same hour as the current date?
-
-### Day helpers
-
-* [`getDate`](https://date-fns.org/docs/getDate) - get the day of the month.
-* [`setDate`](https://date-fns.org/docs/setDate) - set the day of the month.
-* [`getDayOfYear`](https://date-fns.org/docs/getDayOfYear) - get the day of the year.
-* [`setDayOfYear`](https://date-fns.org/docs/setDayOfYear) - set the day of the year.
-* [`startOfDay`](https://date-fns.org/docs/startOfDay) - return the start of a day for the given date.
-* [`endOfDay`](https://date-fns.org/docs/endOfDay) - return the end of a day for the given date.
-* [`startOfYesterday`](https://date-fns.org/docs/startOfYesterday) - return the start of yesterday.
-* [`endOfYesterday`](https://date-fns.org/docs/endOfYesterday) - return the end of yesterday.
-* [`startOfToday`](https://date-fns.org/docs/startOfToday) - return the start of today.
-* [`endOfToday`](https://date-fns.org/docs/endOfToday) - return the end of today.
-* [`startOfTomorrow`](https://date-fns.org/docs/startOfTomorrow) - return the start of tomorrow.
-* [`endOfTomorrow`](https://date-fns.org/docs/endOfTomorrow) - return the end of tomorrow.
-* [`addDays`](https://date-fns.org/docs/addDays) - add the specified number of days to the given date.
-* [`subDays`](https://date-fns.org/docs/subDays) - subtract the specified number of days from the given date.
-* [`differenceInDays`](https://date-fns.org/docs/differenceInDays) - get the number of full days between the given dates.
-* [`differenceInCalendarDays`](https://date-fns.org/docs/differenceInCalendarDays) - get the number of calendar days between the given dates.
-* [`isSameDay`](https://date-fns.org/docs/isSameDay) - are the given dates in the same day?
-* [`isYesterday`](https://date-fns.org/docs/isYesterday) - is the given date yesterday?
-* [`isToday`](https://date-fns.org/docs/isToday) - is the given date today?
-* [`isTomorrow`](https://date-fns.org/docs/isTomorrow) - is the given date tomorrow?
-* [`eachDay`](https://date-fns.org/docs/eachDay) - return the array of dates within the specified range.
-
-### Weekday helpers
-
-* [`getDay`](https://date-fns.org/docs/getDay) - get the day of the week.
-* [`setDay`](https://date-fns.org/docs/setDay) - set the day of the week.
-* [`isWeekend`](https://date-fns.org/docs/isWeekend) - is the given date in a weekend?
-* [`isSunday`](https://date-fns.org/docs/isSunday) - is the given date Sunday?
-* [`isMonday`](https://date-fns.org/docs/isMonday) - is the given date Monday?
-* [`isTuesday`](https://date-fns.org/docs/isTuesday) - is the given date Tuesday?
-* [`isWednesday`](https://date-fns.org/docs/isWednesday) - is the given date Wednesday?
-* [`isThursday`](https://date-fns.org/docs/isThursday) - is the given date Thursday?
-* [`isFriday`](https://date-fns.org/docs/isFriday) - is the given date Friday?
-* [`isSaturday`](https://date-fns.org/docs/isSaturday) - is the given date Saturday?
-
-### Week helpers
-
-* [`startOfWeek`](https://date-fns.org/docs/startOfWeek) - return the start of a week for the given date.
-* [`endOfWeek`](https://date-fns.org/docs/endOfWeek) - return the end of a week for the given date.
-* [`lastDayOfWeek`](https://date-fns.org/docs/lastDayOfWeek) - return the last day of a week for the given date.
-* [`addWeeks`](https://date-fns.org/docs/addWeeks) - add specified number of weeks to the given date.
-* [`subWeeks`](https://date-fns.org/docs/subWeeks) - subtract specified number of weeks from the given date.
-* [`differenceInWeeks`](https://date-fns.org/docs/differenceInWeeks) - get the number of full weeks between the given dates.
-* [`differenceInCalendarWeeks`](https://date-fns.org/docs/differenceInCalendarWeeks) - get the number of calendar weeks between the given dates.
-* [`isSameWeek`](https://date-fns.org/docs/isSameWeek) - are the given dates in the same week?
-* [`isThisWeek`](https://date-fns.org/docs/isThisWeek) - is the given date in the same week as the current date?
-
-### [ISO week](http://en.wikipedia.org/wiki/ISO_week_date) helpers
-
-* [`getISOWeek`](https://date-fns.org/docs/getISOWeek) - get the ISO week.
-* [`setISOWeek`](https://date-fns.org/docs/setISOWeek) - set the ISO week.
-* [`startOfISOWeek`](https://date-fns.org/docs/startOfISOWeek) - return the start of an ISO week for the given date.
-* [`endOfISOWeek`](https://date-fns.org/docs/endOfISOWeek) - return the end of an ISO week for the given date.
-* [`lastDayOfISOWeek`](https://date-fns.org/docs/lastDayOfISOWeek) - return the last day of an ISO week for the given date.
-* [`differenceInCalendarISOWeeks`](https://date-fns.org/docs/differenceInCalendarISOWeeks) - get the number of calendar ISO weeks between the given dates.
-* [`isSameISOWeek`](https://date-fns.org/docs/isSameISOWeek) - are the given dates in the same ISO week?
-* [`isThisISOWeek`](https://date-fns.org/docs/isThisISOWeek) - is the given date in the same ISO week as the current date?
-
-### Month helpers
-
-* [`getMonth`](https://date-fns.org/docs/getMonth) - get the month.
-* [`setMonth`](https://date-fns.org/docs/setMonth) - set the month.
-* [`startOfMonth`](https://date-fns.org/docs/startOfMonth) - return the start of a month for the given date.
-* [`endOfMonth`](https://date-fns.org/docs/endOfMonth) - return the end of a month for the given date.
-* [`lastDayOfMonth`](https://date-fns.org/docs/lastDayOfMonth) - return the last day of a month for the given date.
-* [`addMonths`](https://date-fns.org/docs/addMonths) - add the specified number of months to the given date.
-* [`subMonths`](https://date-fns.org/docs/subMonths) - subtract the specified number of months from the given date.
-* [`differenceInMonths`](https://date-fns.org/docs/differenceInMonths) - get the number of full months between the given dates.
-* [`differenceInCalendarMonths`](https://date-fns.org/docs/differenceInCalendarMonths) - get the number of calendar months between the given dates.
-* [`isSameMonth`](https://date-fns.org/docs/isSameMonth) - are the given dates in the same month?
-* [`isThisMonth`](https://date-fns.org/docs/isThisMonth) - is the given date in the same month as the current date?
-* [`isFirstDayOfMonth`](https://date-fns.org/docs/isFirstDayOfMonth) - is the given date the first day of a month?
-* [`isLastDayOfMonth`](https://date-fns.org/docs/isLastDayOfMonth) - is the given date the last day of a month?
-* [`getDaysInMonth`](https://date-fns.org/docs/getDaysInMonth) - get the number of days in a month of the given date.
-
-### Quarter helpers
-
-* [`getQuarter`](https://date-fns.org/docs/getQuarter) - get the year quarter.
-* [`setQuarter`](https://date-fns.org/docs/setQuarter) - set the year quarter.
-* [`startOfQuarter`](https://date-fns.org/docs/startOfQuarter) - return the start of a year quarter for the given date.
-* [`endOfQuarter`](https://date-fns.org/docs/endOfQuarter) - return the end of a year quarter for the given date.
-* [`lastDayOfQuarter`](https://date-fns.org/docs/lastDayOfQuarter) - return the last day of a year quarter for the given date.
-* [`addQuarters`](https://date-fns.org/docs/addQuarters) - add the specified number of year quarters to the given date.
-* [`subQuarters`](https://date-fns.org/docs/subQuarters) - subtract the specified number of year quarters from the given date.
-* [`differenceInQuarters`](https://date-fns.org/docs/differenceInQuarters) - get the number of full quarters between the given dates.
-* [`differenceInCalendarQuarters`](https://date-fns.org/docs/differenceInCalendarQuarters) - get the number of calendar quarters between the given dates.
-* [`isSameQuarter`](https://date-fns.org/docs/isSameQuarter) - are the given dates in the same year quarter?
-* [`isThisQuarter`](https://date-fns.org/docs/isThisQuarter) - is the given date in the same quarter as the current date?
-
-### Year helpers
-
-* [`getYear`](https://date-fns.org/docs/getYear) - get the year.
-* [`setYear`](https://date-fns.org/docs/setYear) - set the year.
-* [`startOfYear`](https://date-fns.org/docs/startOfYear) - return the start of a year for the given date.
-* [`endOfYear`](https://date-fns.org/docs/endOfYear) - return the end of a year for the given date.
-* [`lastDayOfYear`](https://date-fns.org/docs/lastDayOfYear) - return the last day of a year for the given date.
-* [`addYears`](https://date-fns.org/docs/addYears) - add the specified number of years to the given date.
-* [`subYears`](https://date-fns.org/docs/subYears) - subtract the specified number of years from the given date.
-* [`differenceInYears`](https://date-fns.org/docs/differenceInYears) - get the number of full years between the given dates.
-* [`differenceInCalendarYears`](https://date-fns.org/docs/differenceInCalendarYears) - get the number of calendar years between the given dates.
-* [`isSameYear`](https://date-fns.org/docs/isSameYear) - are the given dates in the same year?
-* [`isThisYear`](https://date-fns.org/docs/isThisYear) - is the given date in the same year as the current date?
-* [`isLeapYear`](https://date-fns.org/docs/isLeapYear) - is the given date in the leap year?
-* [`getDaysInYear`](https://date-fns.org/docs/getDaysInYear) - get the number of days in a year of the given date.
-
-### [ISO week-numbering year](http://en.wikipedia.org/wiki/ISO_week_date) helpers
-
-* [`getISOYear`](https://date-fns.org/docs/getISOYear) - get the ISO week-numbering year.
-* [`setISOYear`](https://date-fns.org/docs/setISOYear) - set the ISO week-numbering year.
-* [`startOfISOYear`](https://date-fns.org/docs/startOfISOYear) - return the start of an ISO week-numbering year for the given date.
-* [`endOfISOYear`](https://date-fns.org/docs/endOfISOYear) - return the end of an ISO week-numbering year for the given date.
-* [`lastDayOfISOYear`](https://date-fns.org/docs/lastDayOfISOYear) - return the last day of an ISO week-numbering year for the given date.
-* [`addISOYears`](https://date-fns.org/docs/addISOYears) - add the specified number of ISO week-numbering years to the given date.
-* [`subISOYears`](https://date-fns.org/docs/subISOYears) - subtract the specified number of ISO week-numbering years from the given date.
-* [`differenceInISOYears`](https://date-fns.org/docs/differenceInISOYears) - get the number of full ISO week-numbering years between the given dates.
-* [`differenceInCalendarISOYears`](https://date-fns.org/docs/differenceInCalendarISOYears) - get the number of calendar ISO week-numbering years between the given dates.
-* [`isSameISOYear`](https://date-fns.org/docs/isSameISOYear) - are the given dates in the same ISO week-numbering year?
-* [`isThisISOYear`](https://date-fns.org/docs/isThisISOYear) - is the given date in the same ISO week-numbering year as the current date?
-* [`getISOWeeksInYear`](https://date-fns.org/docs/getISOWeeksInYear) - get the number of weeks in the ISO week-numbering year.
-
-### I18n
+### Working with Time Zones
 
 TODO
 
-## Tests
+## Additional Resources
 
-Kudos to [SauceLabs](https://saucelabs.com/) for the provided
-Automate API. Thereby we run cross-browser tests on every push!
+### Alternatives
 
+date-fns is great and has functionality of all following libraries combined,
+however it's always good to have options:
+
+* [Moment.js](http://momentjs.com/) is the main date-fns alternative.
+  See [Moment.js Compatibility] for information about libraries compatibility
+  and reasoning behind _yet another date library_. You might want to use it
+  if you prefer object-oriented approach and don't care about build size.
+  An another reason to use the latter is built-in I18n support (see [I18n Support](#i18n-support)
+  for more info on the topic) and advanced time zone extension,
+  [Moment Timezone](http://momentjs.com/timezone/).
+* [Sugar.js' Date extensions](http://sugarjs.com/dates/) is another option.
+  It extends base classes, adds bunch of useful methods and like Moment.js
+  has locales support.
+* [Datejs](https://github.com/datejs/Datejs) - good old date library that
+  extends `Date` object. It was abandoned in 2007, however steps are being taken
+  to revive the project.
+* [DateJS: Evolved](https://github.com/abritinthebay/datejs) - another attempt
+  to reanimate Datejs.
+
+### Related Information
+
+Read more about Date, ECMAScript Internationalization API and related standarts:
+
+* [Date at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* [Intl at MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl)
+* [JavaScript Date Type is Horribly Broken](http://codeofmatt.com/2013/06/07/javascript-date-type-is-horribly-broken/)
+* [JavaScript Date Parsing Changes in ES6](http://codeofmatt.com/2015/06/17/javascript-date-parsing-changes-in-es6/)
+* [IANA's Time Zone Database](https://www.iana.org/time-zones)
+* [List of tz database time zones)(https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+* [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+* [List of UTC time offsets](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets)
+* [Standart ECMA-402](http://ecma-international.org/publications/standards/Ecma-402.htm)
+  (ECMAScript Internationalization API specification)
+
+## People Behind the Project
+
+### Core Team & Contributors
+
+- [Sasha Koss](mailto:koss@nocorp.me) - the project lead and the architect,
+  a team lead & a lead front-end engineer at [Toptal](http://i.ncrp.co/eC2e)
+  core team.
+- [Lesha Koss](https://github.com/LeshaKoss) - talented intern
+  ([avaliable to hire!](mailto:regiusprod@gmail.com)).
+
+[See full list of contributors](https://github.com/date-fns/date-fns/graphs/contributors).
+
+### Sponsors
+
+The main project sponsor is [Toptal](http://i.ncrp.co/eC2e).
+Thank for the team for media sponsorship, code reviews and broad support.
+
+Cross-browser test suite is running on [Sauce Labs](https://saucelabs.com),
+kudos to the company for [support of open source movement](https://saucelabs.com/opensauce/).
+
+Also, I want thank [BrowserStack](https://www.browserstack.com) for
+support on early stages of development.
+
+## License
+
+date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
