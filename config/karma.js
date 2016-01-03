@@ -1,3 +1,4 @@
+var fs = require('fs')
 var webpackConfig = require('./webpack')
 
 var sauceLabsLaunchers = {
@@ -78,6 +79,28 @@ var sauceLabsLaunchers = {
   }
 }
 
+var countFilename = './tmp/tests_count.txt'
+
+var countReporter = function() {
+  this.onRunComplete = function (_, results) {
+    var runCount = results.success
+
+    fs.readFile(countFilename, {encoding: 'utf-8', flag: 'a+'}, function(err, data) {
+      if (err) {
+        throw err
+      }
+
+      var totalCount = (parseInt(data, 10) || 0) + runCount
+
+      fs.writeFile(countFilename, totalCount, 'utf-8', function(err) {
+        if (err) {
+          throw err
+        }
+      })
+    })
+  }
+}
+
 var config = function(config) {
   config.set({
     frameworks: ['mocha', 'sinon', 'es5-shim'],
@@ -110,9 +133,20 @@ var config = function(config) {
       output: process.env.TEST_TZ ? 'minimal' : 'full'
     },
 
+    plugins: [
+      'karma-es5-shim',
+      'karma-mocha',
+      'karma-mocha-reporter',
+      'karma-phantomjs-launcher',
+      'karma-sinon',
+      'karma-sourcemap-loader',
+      'karma-webpack',
+      {'reporter:count': ['type', countReporter]}
+    ],
+
     customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : {},
     browsers: process.env.TEST_CROSS_BROWSER ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
-    reporters: process.env.TEST_CROSS_BROWSER ? ['dots', 'saucelabs'] : ['mocha']
+    reporters: process.env.TEST_CROSS_BROWSER ? ['dots', 'saucelabs', 'count'] : ['mocha', 'count']
   })
 }
 

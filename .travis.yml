@@ -13,6 +13,7 @@ before_install:
 - export PHANTOMJS_BIN="$TRAVIS_BUILD_DIR/tmp/phantomjs2"
 script:
   - npm run test-ci
+  - npm run count-tests
 before_deploy:
   # Build gzip files before S3 deployment
   - npm run build-gzip

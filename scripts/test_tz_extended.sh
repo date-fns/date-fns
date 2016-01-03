@@ -1,5 +1,7 @@
 #!/bin/bash
 
+printf "\n"
+
 if [ "$TRAVIS" != "true" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]
 then
   for tz in \
@@ -341,7 +343,8 @@ then
     "Pacific/Wake" \
     "Pacific/Wallis"
   do
-    printf "\nRun test in time zone $tz\n"
-    env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci || exit 1
+    printf "Run test in time zone $tz\n"
+    env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci \
+      &>tmp/last_test_output.txt || (cat tmp/last_test_output.txt && exit 1) || exit 1
   done
 fi
