@@ -15,7 +15,7 @@ script:
   - npm run test-ci
 before_deploy:
   # Build gzip files before S3 deployment
-  - [ "${TRAVIS_PULL_REQUEST}" = "false" ] && npm run build-gzip
+  - npm run build-gzip
 cache:
   directories:
   - node_modules
