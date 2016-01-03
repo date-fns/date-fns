@@ -27,7 +27,7 @@ deploy:
     secret_access_key:
       secure: FPFCB5gn77ureKrRHbGZ6eF7mveemLt45FaU5g2jp5jjIjubQAwygI6KpmqmXgXEyv9u+bSYipYwCRvaN8YTiD1woEOF+6RENFMuGVYEqIMgfmAzQKGt+OEc9dhzgcnxFxPaW3il9/Eeq/S8zDCAykvJ5zv6DDm8k3oCHOvbJaY=
     bucket: date-fns
-    local-dir: dist
+    local-dir: "dist/compressed"
     upload-dir: "$TRAVIS_TAG"
     acl: public_read
     detect_encoding: true

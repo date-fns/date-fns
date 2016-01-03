@@ -13,6 +13,9 @@
     "babel-eslint": "^4.1.3",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
+    "fs-extra": "^0.26.3",
+    "fs-promise": "^0.3.1",
+    "glob-promise": "^1.0.4",
     "js-beautify": "^1.5.10",
     "jsdoc-parse": "^1.1.1",
     "json-loader": "^0.5.3",
@@ -47,7 +50,7 @@
     "sync-versions": "babel-node ./scripts/sync_versions",
     "release": "./scripts/release.sh",
     "build-umd": "./scripts/build_umd.sh",
-    "build-gzip": "./scripts/gzip_dist.sh",
+    "build-gzip": "babel-node ./scripts/gzip_dist.js",
     "release-npm": "./scripts/release_npm.sh",
     "release-tweet": "babel-node scripts/tweet_release",
     "deploy-homepage": "./scripts/trigger_homepage_deploy.sh"

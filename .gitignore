@@ -1,6 +1,6 @@
 node_modules
 npm-debug.log
 tmp
-dist/*.gz
+dist/compressed
 test.espowered.js
 .envrc
