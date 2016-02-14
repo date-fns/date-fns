@@ -1,4 +1,4 @@
-var parse = require('../parse')
+var addMonths = require('../add_months')
 
 /**
  * @category Year Helpers
@@ -17,9 +17,7 @@ var parse = require('../parse')
  * //=> Sun Sep 01 2019 00:00:00
  */
 var addYears = function(dirtyDate, amount) {
-  var date = parse(dirtyDate)
-  date.setFullYear(date.getFullYear() + amount)
-  return date
+  return addMonths(dirtyDate, amount * 12)
 }
 
 module.exports = addYears
