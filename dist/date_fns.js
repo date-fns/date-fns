@@ -626,11 +626,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(2);
+	var addMonths = __webpack_require__(14);
 	var addYears = function (dirtyDate, amount) {
-	    var date = parse(dirtyDate);
-	    date.setFullYear(date.getFullYear() + amount);
-	    return date;
+	    return addMonths(dirtyDate, amount * 12);
 	};
 	module.exports = addYears;
 	
