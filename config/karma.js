@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test'
+
 var fs = require('fs')
 var webpackConfig = require('./webpack')
 
@@ -82,7 +84,7 @@ var sauceLabsLaunchers = {
 var countFilename = './tmp/tests_count.txt'
 
 var countReporter = function() {
-  this.onRunComplete = function (_, results) {
+  this.onRunComplete = function(_, results) {
     var runCount = results.success
 
     fs.readFile(countFilename, {encoding: 'utf-8', flag: 'a+'}, function(err, data) {
@@ -120,7 +122,12 @@ var config = function(config) {
     // We are limited in the number of parallel VMs in SauceLabs (5)
     // and Karma don't know how to limit parallel browser instances
     // so waiting time must be insanely high.
-    browserNoActivityTimeout: process.env.TEST_CROSS_BROWSER ? 60 * 60 * 1000 : 10000,
+    browserNoActivityTimeout: process.env.TEST_CROSS_BROWSER
+      ? 60 * 60 * 1000 /* 1 hour */
+      : 10 * 1000, /* 10 sec */
+    captureTimeout: process.env.TEST_CROSS_BROWSER
+      ? 120 * 1000 /* 2 min */
+      : 60 * 1000, /* 1 min */
 
     sauceLabs: {
       startConnect: false,
@@ -138,6 +145,7 @@ var config = function(config) {
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
+      'karma-sauce-launcher',
       'karma-sinon',
       'karma-sourcemap-loader',
       'karma-webpack',
