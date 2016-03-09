@@ -19,12 +19,12 @@ var isValid = require('../is_valid')
  *
  * @example
  * // For the existing date:
- * var result = isValidDateValues(new Date(2014, 1, 28, 12, 0))
+ * var result = isValidDateValues(2014, 1, 28, 12, 0)
  * //=> true
  *
  * @example
  * // For the impossible date (29 February of non-leap year):
- * var result = isValidDateValues(new Date(2014, 1, 29, 12, 0))
+ * var result = isValidDateValues(2014, 1, 29, 12, 0)
  * //=> false
  */
 var isValidDateValues = function(year, month, day, hours, minutes, seconds, milliseconds) {
