@@ -10,7 +10,7 @@
  * @example
  * // If today is 6 October 2014:
  * var result = endOfTomorrow()
- * //=> Tue Oct 7 2014 23:59:59
+ * //=> Tue Oct 7 2014 23:59:59.999
  */
 var endOfTomorrow = function() {
   var now = new Date()
