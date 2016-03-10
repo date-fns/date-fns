@@ -2,10 +2,10 @@ var isValid = require('../is_valid')
 
 /**
  * @category Common Helpers
- * @summary Is the date constructed from the given values exist?
+ * @summary Does the date constructed from the given arguments exist?
  *
  * @description
- * Validates that the given values are within acceptable ranges,
+ * Validates that the given Date constructor arguments are within acceptable ranges,
  * e. g. the hour value should be within range [0..23], the second value within [0..59] etc.
  *
  * @param {Number} year - the year of the date
@@ -15,19 +15,19 @@ var isValid = require('../is_valid')
  * @param {Number} [minutes=0] - the minutes of the date
  * @param {Number} [seconds=0] - the seconds of the date
  * @param {Number} [milliseconds=0] - the milliseconds of the date
- * @returns {Boolean} all values are valid
+ * @returns {Boolean} all arguments are valid
  *
  * @example
  * // For the existing date:
- * var result = isValidDateValues(2014, 1, 28, 12, 0)
+ * var result = validateDateArguments(2014, 1, 28, 12, 0)
  * //=> true
  *
  * @example
  * // For the impossible date (29 February of non-leap year):
- * var result = isValidDateValues(2014, 1, 29, 12, 0)
+ * var result = validateDateArguments(2014, 1, 29, 12, 0)
  * //=> false
  */
-var isValidDateValues = function(year, month, day, hours, minutes, seconds, milliseconds) {
+var validateDateArguments = function(year, month, day, hours, minutes, seconds, milliseconds) {
   if (year >= 0 && year < 100) {
     year = 1900 + year
   }
@@ -50,5 +50,5 @@ var isValidDateValues = function(year, month, day, hours, minutes, seconds, mill
     && date.getMilliseconds() == milliseconds
 }
 
-module.exports = isValidDateValues
+module.exports = validateDateArguments
 

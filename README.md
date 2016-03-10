@@ -45,7 +45,7 @@ Code is fully documented, check the source for the reference.
 * [`closestTo`](https://date-fns.org/docs/closestTo) - return a date from the array closest to the given date.
 * [`parse`](https://date-fns.org/docs/parse) - parse the ISO-8601-formatted date.
 * [`isValid`](https://date-fns.org/docs/isValid) - is the given date valid?
-* [`isValidDateValues`](https://date-fns.org/docs/isValidDateValues) - is the date constructed from the given values exist?
+* [`validateDateArguments`](https://date-fns.org/docs/validateDateArguments) - is the date constructed from the given values exist?
 * [`distanceInWords`](https://date-fns.org/docs/distanceInWords) - return the distance between the given dates in words.
 * [`distanceInWordsToNow`](https://date-fns.org/docs/distanceInWordsToNow) - return the distance between the given date and now in words.
 

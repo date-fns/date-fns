@@ -72,7 +72,6 @@ Breaking changes a.k.a migration guide:
   - `isTomorrow`
   - `isTuesday`
   - `isValid`
-  - `isValidDateValues`
   - `isWednesday`
   - `isYesterday`
   - `lastDayOfISOWeek`
@@ -82,6 +81,7 @@ Breaking changes a.k.a migration guide:
   - `startOfTomorrow`
   - `startOfYesterday`
   - `subISOYears`
+  - `validateDateArguments`
 * Improvements:
   - Remove function `getTimeSinceMidnight` that was used inside of the other functions
   - Convert tests from Chai to power-assert allowing them to run in IE8

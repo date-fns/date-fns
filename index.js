@@ -97,7 +97,6 @@ module.exports = {
   isTomorrow: require('./is_tomorrow'),
   isTuesday: require('./is_tuesday'),
   isValid: require('./is_valid'),
-  isValidDateValues: require('./is_valid_date_values'),
   isWednesday: require('./is_wednesday'),
   isWeekend: require('./is_weekend'),
   isWithinRange: require('./is_within_range'),
@@ -145,5 +144,6 @@ module.exports = {
   subQuarters: require('./sub_quarters'),
   subSeconds: require('./sub_seconds'),
   subWeeks: require('./sub_weeks'),
-  subYears: require('./sub_years')
+  subYears: require('./sub_years'),
+  validateDateArguments: require('./validate_date_arguments')
 }
