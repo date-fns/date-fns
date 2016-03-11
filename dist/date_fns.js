@@ -153,55 +153,55 @@ return /******/ (function(modules) { // webpackBootstrap
 	    isTomorrow: __webpack_require__(108),
 	    isTuesday: __webpack_require__(109),
 	    isValid: __webpack_require__(110),
-	    isValidDateValues: __webpack_require__(111),
-	    isWednesday: __webpack_require__(112),
-	    isWeekend: __webpack_require__(113),
-	    isWithinRange: __webpack_require__(114),
-	    isYesterday: __webpack_require__(115),
-	    lastDayOfISOWeek: __webpack_require__(116),
-	    lastDayOfISOYear: __webpack_require__(118),
-	    lastDayOfMonth: __webpack_require__(119),
-	    lastDayOfQuarter: __webpack_require__(120),
-	    lastDayOfWeek: __webpack_require__(117),
-	    lastDayOfYear: __webpack_require__(121),
-	    max: __webpack_require__(122),
-	    min: __webpack_require__(123),
+	    isWednesday: __webpack_require__(111),
+	    isWeekend: __webpack_require__(112),
+	    isWithinRange: __webpack_require__(113),
+	    isYesterday: __webpack_require__(114),
+	    lastDayOfISOWeek: __webpack_require__(115),
+	    lastDayOfISOYear: __webpack_require__(117),
+	    lastDayOfMonth: __webpack_require__(118),
+	    lastDayOfQuarter: __webpack_require__(119),
+	    lastDayOfWeek: __webpack_require__(116),
+	    lastDayOfYear: __webpack_require__(120),
+	    max: __webpack_require__(121),
+	    min: __webpack_require__(122),
 	    parse: __webpack_require__(2),
-	    setDate: __webpack_require__(124),
-	    setDay: __webpack_require__(125),
-	    setDayOfYear: __webpack_require__(126),
-	    setHours: __webpack_require__(127),
-	    setISOWeek: __webpack_require__(128),
+	    setDate: __webpack_require__(123),
+	    setDay: __webpack_require__(124),
+	    setDayOfYear: __webpack_require__(125),
+	    setHours: __webpack_require__(126),
+	    setISOWeek: __webpack_require__(127),
 	    setISOYear: __webpack_require__(8),
-	    setMilliseconds: __webpack_require__(129),
-	    setMinutes: __webpack_require__(130),
-	    setMonth: __webpack_require__(131),
-	    setQuarter: __webpack_require__(132),
-	    setSeconds: __webpack_require__(133),
-	    setYear: __webpack_require__(134),
+	    setMilliseconds: __webpack_require__(128),
+	    setMinutes: __webpack_require__(129),
+	    setMonth: __webpack_require__(130),
+	    setQuarter: __webpack_require__(131),
+	    setSeconds: __webpack_require__(132),
+	    setYear: __webpack_require__(133),
 	    startOfDay: __webpack_require__(11),
 	    startOfHour: __webpack_require__(83),
 	    startOfISOWeek: __webpack_require__(6),
 	    startOfISOYear: __webpack_require__(9),
 	    startOfMinute: __webpack_require__(88),
-	    startOfMonth: __webpack_require__(135),
+	    startOfMonth: __webpack_require__(134),
 	    startOfQuarter: __webpack_require__(91),
 	    startOfSecond: __webpack_require__(93),
-	    startOfToday: __webpack_require__(136),
-	    startOfTomorrow: __webpack_require__(137),
+	    startOfToday: __webpack_require__(135),
+	    startOfTomorrow: __webpack_require__(136),
 	    startOfWeek: __webpack_require__(7),
 	    startOfYear: __webpack_require__(60),
-	    startOfYesterday: __webpack_require__(138),
-	    subDays: __webpack_require__(139),
-	    subHours: __webpack_require__(140),
+	    startOfYesterday: __webpack_require__(137),
+	    subDays: __webpack_require__(138),
+	    subHours: __webpack_require__(139),
 	    subISOYears: __webpack_require__(34),
-	    subMilliseconds: __webpack_require__(141),
-	    subMinutes: __webpack_require__(142),
-	    subMonths: __webpack_require__(143),
-	    subQuarters: __webpack_require__(144),
-	    subSeconds: __webpack_require__(145),
-	    subWeeks: __webpack_require__(146),
-	    subYears: __webpack_require__(147)
+	    subMilliseconds: __webpack_require__(140),
+	    subMinutes: __webpack_require__(141),
+	    subMonths: __webpack_require__(142),
+	    subQuarters: __webpack_require__(143),
+	    subSeconds: __webpack_require__(144),
+	    subWeeks: __webpack_require__(145),
+	    subYears: __webpack_require__(146),
+	    validateDateArguments: __webpack_require__(147)
 	};
 	
 
@@ -2340,27 +2340,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isValid = __webpack_require__(110);
-	var isValidDateValues = function (year, month, day, hours, minutes, seconds, milliseconds) {
-	    if (year >= 0 && year < 100) {
-	        year = 1900 + year;
-	    }
-	    day = day || 1;
-	    hours = hours || 0;
-	    minutes = minutes || 0;
-	    seconds = seconds || 0;
-	    milliseconds = milliseconds || 0;
-	    var date = new Date(year, month, day, hours, minutes, seconds, milliseconds);
-	    return isValid(date) && date.getFullYear() == year && date.getMonth() == month && date.getDate() == day && date.getHours() == hours && date.getMinutes() == minutes && date.getSeconds() == seconds && date.getMilliseconds() == milliseconds;
-	};
-	module.exports = isValidDateValues;
-	
-
-
-/***/ },
-/* 112 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var parse = __webpack_require__(2);
 	var isWednesday = function (dirtyDate) {
 	    return parse(dirtyDate).getDay() === 3;
@@ -2370,7 +2349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 113 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2384,7 +2363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 114 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2402,7 +2381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfDay = __webpack_require__(11);
@@ -2416,10 +2395,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 116 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var lastDayOfWeek = __webpack_require__(117);
+	var lastDayOfWeek = __webpack_require__(116);
 	var lastDayOfISOWeek = function (dirtyDate) {
 	    return lastDayOfWeek(dirtyDate, { weekStartsAt: 1 });
 	};
@@ -2428,7 +2407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 117 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2446,7 +2425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 118 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getISOYear = __webpack_require__(5);
@@ -2462,7 +2441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 119 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2478,7 +2457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 120 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2495,7 +2474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 121 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2511,7 +2490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 122 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2528,7 +2507,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 123 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2545,7 +2524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2559,7 +2538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 125 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2576,7 +2555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 126 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2591,7 +2570,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 127 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2605,7 +2584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 128 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2621,7 +2600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 129 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2635,7 +2614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 130 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2649,7 +2628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 131 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2667,11 +2646,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 132 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var setMonth = __webpack_require__(131);
+	var setMonth = __webpack_require__(130);
 	var setQuarter = function (dirtyDate, quarter) {
 	    var date = parse(dirtyDate);
 	    var oldQuarter = Math.floor(date.getMonth() / 3) + 1;
@@ -2683,7 +2662,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 133 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2697,7 +2676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 134 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2711,7 +2690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 135 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -2726,7 +2705,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 136 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var startOfDay = __webpack_require__(11);
@@ -2738,7 +2717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 137 */
+/* 136 */
 /***/ function(module, exports) {
 
 	var startOfTomorrow = function () {
@@ -2753,7 +2732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 138 */
+/* 137 */
 /***/ function(module, exports) {
 
 	var startOfYesterday = function () {
@@ -2768,7 +2747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 139 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addDays = __webpack_require__(1);
@@ -2780,7 +2759,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 140 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addHours = __webpack_require__(3);
@@ -2792,7 +2771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 141 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addMilliseconds = __webpack_require__(12);
@@ -2804,7 +2783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 142 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addMinutes = __webpack_require__(13);
@@ -2816,7 +2795,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 143 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addMonths = __webpack_require__(14);
@@ -2828,7 +2807,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 144 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addQuarters = __webpack_require__(16);
@@ -2840,7 +2819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 145 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addSeconds = __webpack_require__(17);
@@ -2852,7 +2831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 146 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addWeeks = __webpack_require__(18);
@@ -2864,7 +2843,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 147 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var addYears = __webpack_require__(19);
@@ -2872,6 +2851,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return addYears(dirtyDate, -amount);
 	};
 	module.exports = subYears;
+	
+
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isValid = __webpack_require__(110);
+	var validateDateArguments = function (year, month, day, hours, minutes, seconds, milliseconds) {
+	    if (year >= 0 && year < 100) {
+	        year = 1900 + year;
+	    }
+	    day = day || 1;
+	    hours = hours || 0;
+	    minutes = minutes || 0;
+	    seconds = seconds || 0;
+	    milliseconds = milliseconds || 0;
+	    var date = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+	    return isValid(date) && date.getFullYear() == year && date.getMonth() == month && date.getDate() == day && date.getHours() == hours && date.getMinutes() == minutes && date.getSeconds() == seconds && date.getMilliseconds() == milliseconds;
+	};
+	module.exports = validateDateArguments;
 	
 
 
