@@ -1,5 +1,5 @@
 # date-fns
-[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns) [![Docs Status](http://inch-ci.org/github/date-fns/date-fns.svg?branch=master)](http://inch-ci.org/github/date-fns/date-fns/branch/master)
+[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns) [![Docs Status](http://inch-ci.org/github/date-fns/date-fns.svg?branch=master)](http://inch-ci.org/github/date-fns/date-fns)
 
 Date helpers in the function-per-file style.
 
