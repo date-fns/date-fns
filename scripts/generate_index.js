@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import listFunctions from './_lib/list_functions'
+import listFunctions from './_lib/list_files'
 
 const propertyRequireLines = listFunctions()
   .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}')`)
