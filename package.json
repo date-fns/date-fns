@@ -12,11 +12,13 @@
   "devDependencies": {
     "babel": "^5.8.23",
     "babel-eslint": "^4.1.3",
+    "cloc": "^1.0.4",
     "eslint": "1.2.1",
     "eslint-config-toptal": "0.1.0",
     "fs-extra": "^0.26.4",
     "fs-promise": "^0.3.1",
     "glob-promise": "^1.0.4",
+    "gzip-size": "^3.0.0",
     "js-beautify": "^1.5.10",
     "jsdoc-parse": "^1.1.1",
     "json-loader": "^0.5.3",
@@ -33,6 +35,7 @@
     "mocha": "^2.4.5",
     "node-fetch": "^1.3.3",
     "power-assert": "^1.3.1",
+    "pretty-bytes": "^3.0.0",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "webpack-espower-loader": "^1.0.1"
@@ -56,6 +59,11 @@
     "build-gzip": "babel-node ./scripts/gzip_dist.js",
     "release-npm": "./scripts/release_npm.sh",
     "release-tweet": "babel-node scripts/tweet_release",
-    "deploy-homepage": "./scripts/trigger_homepage_deploy.sh"
+    "deploy-homepage": "./scripts/trigger_homepage_deploy.sh",
+    "stats": "npm run stats-size && npm run stats-loc",
+    "stats-size": "echo \"UMD size: $(gzip-size dist/date_fns.min.js | pretty-bytes)\"",
+    "stats-loc": "npm run stats-loc-code && npm run stats-loc-tests",
+    "stats-loc-code": "echo 'Source code stats:' && cloc src/**/index.js",
+    "stats-loc-tests": "echo 'Test suite stats:' && cloc src/**/test.js"
   }
 }
