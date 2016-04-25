@@ -3,7 +3,7 @@
 import fsp from 'fs-promise'
 import path from 'path'
 import parseJSDoc from 'jsdoc-parse'
-import listFunctions from './_lib/list_files'
+import listFiles from './_lib/list_files'
 import docsConfig from '../docs'
 
 generateDocsFromSource()
@@ -16,21 +16,23 @@ generateDocsFromSource()
  * Generates docs object from a list of functions using extended JSDoc format.
  */
 function generateDocsFromSource () {
-  return Promise.all(listFunctions().map(generateDocFromSource))
+  return listFiles()
+    .reduce((promise, file) => {
+      return promise.then((acc) =>
+        generateDocFromSource(acc, file)
+      )
+    }, Promise.resolve([]))
     .then((jsDocs) =>
-      jsDocs.reduce((acc, doc) =>
-        // TODO: Find proper names for doc, docs and dc.
-        acc.concat(doc.map((dc) =>
-          ({
-            type: 'jsdoc',
-            urlId: dc.name,
-            category: dc.category,
-            title: dc.name,
-            description: dc.summary,
-            content: dc
-          })
-        ))
-      , [])
+      jsDocs.map((doc) =>
+        ({
+          type: 'jsdoc',
+          urlId: doc.name,
+          category: doc.category,
+          title: doc.name,
+          description: doc.summary,
+          content: doc
+        })
+      )
     )
 }
 
@@ -74,7 +76,7 @@ function writeDocsFile (docsFileObj) {
 /**
  * Generates docs object from a function using extended JSDoc format.
  */
-function generateDocFromSource (fn) {
+function generateDocFromSource (acc, fn) {
   return new Promise((resolve, reject) => {
     const stream = parseJSDoc({src: fn.fullPath})
     var data = ''
@@ -86,7 +88,7 @@ function generateDocFromSource (fn) {
 
     stream.on('data', (chunk) => { data += chunk })
     stream.on('end', () => resolve(JSON.parse(data)))
-  })
+  }).then((doc) => acc.concat(doc))
 }
 
 /**

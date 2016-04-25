@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 
-export default function listFunctions () {
+export default function listFiles () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src'))
   return files
     .filter((file) => !file.startsWith('.'))
