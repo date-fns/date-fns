@@ -1,9 +1,9 @@
 # ![](http://cdn.date-fns.org/README-logo.svg) date-fns
 
-date-fns provides the most comprehensive yet simple and consistent toolset
+**date-fns** provides the most comprehensive yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
-date-fns is like [lodash](https://lodash.com) for dates. It has
+**date-fns** is like [lodash](https://lodash.com) for dates. It has
 [**140+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
@@ -29,7 +29,7 @@ npm install date-fns --save
 bower install date-fns
 ```
 
-Also, you could simply download the library from
+Also, you can simply download the library from
 [the releases page](https://github.com/date-fns/date-fns/releases).
 
 ## Docs

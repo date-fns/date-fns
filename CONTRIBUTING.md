@@ -20,7 +20,7 @@
 
 ## How to Help?
 
-Help is always welcome. There are few areas where you can help:
+Help is always welcome. There are areas where you can help:
 
 - The core functionality (performance improvements, bug fixes,
   new features, etc.).
@@ -35,13 +35,13 @@ Help is always welcome. There are few areas where you can help:
 If you see a gap, but don't have time, experience, or you just need help
 with the library, don't hesitate to [shoot an issue](https://github.com/date-fns/date-fns/issues/new).
 
-The date-fns functionality is comprehensive and covers most of use cases,
-however it doesn't support I18n which is focus for the next major release.
-If you want to help with that, please left a comment to
+The date-fns functionality is comprehensive and covers most of the use cases,
+however it doesn't support I18n which is the focus for the next major release.
+If you want to help with that, please leave a comment to
 the [I18n support issue](https://github.com/date-fns/date-fns/issues/157).
 
 Another major milestone for the project is an extended time zone support.
-Please left a comment to the [Extended time zones support issue](https://github.com/date-fns/date-fns/issues/180)
+Please leave a comment to the [Extended time zones support issue](https://github.com/date-fns/date-fns/issues/180)
 if you are interested in the functionality or want to help with development.
 
 If you are interested in Elm/ClojureScript/etc. wrappers,
@@ -49,10 +49,10 @@ please [file an issue](https://github.com/date-fns/date-fns/issues/new).
 
 ## Contribution Guidelines
 
-Due to modular nature of date-fns, it's more than open to new features.
+Due to the modular nature of date-fns, it's more than open to new features.
 However, when a new function duplicates the existing functionality, native API
 or causes significant build size increase, a PR might be rejected or
-the author could be asked to move the code to a new or an another package.
+the author can be asked to move the code to a new or another package.
 
 Please follow the main contributing rules, to maintain date-fns' top quality:
 
