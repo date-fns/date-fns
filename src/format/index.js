@@ -294,10 +294,9 @@ var formattingTokensRegexp = new RegExp(
 
 var makeFormatFunction = function (format) {
   var array = format.match(formattingTokensRegexp)
-  var i
-  var length
+  var length = array.length
 
-  for (i = 0, length = array.length; i < length; i++) {
+  for (var i = 0; i < length; i++) {
     if (formats[array[i]]) {
       array[i] = formats[array[i]]
     } else {
@@ -307,7 +306,7 @@ var makeFormatFunction = function (format) {
 
   return function (mom) {
     var output = ''
-    for (i = 0; i < length; i++) {
+    for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
         output += array[i].call(mom, format)
       } else {
