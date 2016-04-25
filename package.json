@@ -2,6 +2,7 @@
   "name": "date-fns",
   "version": "1.0.0-rc20",
   "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
   "engine": {
