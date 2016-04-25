@@ -17,7 +17,7 @@ var isSameISOWeek = require('../is_same_iso_week')
  * var result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
-var isThisISOWeek = function(dirtyDate) {
+var isThisISOWeek = function (dirtyDate) {
   return isSameISOWeek(new Date(), dirtyDate)
 }
 

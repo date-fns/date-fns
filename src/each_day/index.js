@@ -26,7 +26,7 @@ var parse = require('../parse')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-var eachDay = function(dirtyStartDate, dirtyEndDate) {
+var eachDay = function (dirtyStartDate, dirtyEndDate) {
   var startDate = parse(dirtyStartDate)
   var endDate = parse(dirtyEndDate)
 

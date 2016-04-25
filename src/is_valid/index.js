@@ -22,7 +22,7 @@
  * var result = isValid(new Date(''))
  * //=> false
  */
-var isValid = function(date) {
+var isValid = function (date) {
   if (date instanceof Date) {
     return !isNaN((new Date(date)).getTime())
   } else {

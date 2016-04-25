@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var min = require('./')
 
-describe('min', function() {
-  it('returns earliest date', function() {
+describe('min', function () {
+  it('returns earliest date', function () {
     var result = min(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
@@ -10,7 +12,7 @@ describe('min', function() {
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 
-  it('allows to pass more than 2 arguments', function() {
+  it('allows to pass more than 2 arguments', function () {
     var result = min(
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
@@ -20,7 +22,7 @@ describe('min', function() {
     assert.deepEqual(result, new Date(1985, 6 /* Jul */, 2))
   })
 
-  it('accepts strings', function() {
+  it('accepts strings', function () {
     var result = min(
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
@@ -28,7 +30,7 @@ describe('min', function() {
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 
-  it('accepts timestamps', function() {
+  it('accepts timestamps', function () {
     var result = min(
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()

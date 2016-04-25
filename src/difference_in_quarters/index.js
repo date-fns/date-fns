@@ -19,7 +19,7 @@ var differenceInMonths = require('../difference_in_months')
  * )
  * //=> 2
  */
-var differenceInQuarters = function(dirtyDateLeft, dirtyDateRight) {
+var differenceInQuarters = function (dirtyDateLeft, dirtyDateRight) {
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

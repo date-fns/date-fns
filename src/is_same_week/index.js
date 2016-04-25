@@ -31,13 +31,11 @@ var startOfWeek = require('../start_of_week')
  * )
  * //=> false
  */
-var isSameWeek = function(dirtyDateLeft, dirtyDateRight, options) {
+var isSameWeek = function (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
 
-  return(
-    dateLeftStartOfWeek.getTime() == dateRightStartOfWeek.getTime()
-  )
+  return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }
 
 module.exports = isSameWeek

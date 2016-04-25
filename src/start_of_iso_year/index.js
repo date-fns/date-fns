@@ -20,7 +20,7 @@ var startOfISOWeek = require('../start_of_iso_week')
  * var result = startOfISOYear(new Date(2005, 6, 2))
  * //=> Mon Jan 03 2005 00:00:00
  */
-var startOfISOYear = function(dirtyDate) {
+var startOfISOYear = function (dirtyDate) {
   var year = getISOYear(dirtyDate)
   var date = startOfISOWeek(new Date(year, 0, 4))
   return date

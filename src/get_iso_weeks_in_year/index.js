@@ -20,7 +20,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-var getISOWeeksInYear = function(dirtyDate) {
+var getISOWeeksInYear = function (dirtyDate) {
   var thisYear = startOfISOYear(dirtyDate)
   var nextYear = startOfISOYear(addWeeks(thisYear, 60))
   var diff = nextYear.valueOf() - thisYear.valueOf()

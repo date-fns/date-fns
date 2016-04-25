@@ -20,9 +20,9 @@ var parse = require('../parse')
  * )
  * //=> Sun Jul 02 1995 00:00:00
  */
-var max = function() {
+var max = function () {
   var dirtyDates = Array.prototype.slice.call(arguments)
-  var dates = dirtyDates.map(function(dirtyDate) {
+  var dates = dirtyDates.map(function (dirtyDate) {
     return parse(dirtyDate)
   })
   var latestDirtyDate = Math.max.apply(null, dates)

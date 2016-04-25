@@ -23,14 +23,14 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 366
  */
-var differenceInCalendarDays = function(dirtyDateLeft, dirtyDateRight) {
+var differenceInCalendarDays = function (dirtyDateLeft, dirtyDateRight) {
   var startOfDayLeft = startOfDay(dirtyDateLeft)
   var startOfDayRight = startOfDay(dirtyDateRight)
 
-  var timestampLeft = startOfDayLeft.getTime()
-    - startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
-  var timestampRight = startOfDayRight.getTime()
-    - startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampLeft = startOfDayLeft.getTime() -
+    startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfDayRight.getTime() -
+    startOfDayRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant

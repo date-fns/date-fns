@@ -66,19 +66,21 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'less than 20 seconds'
  */
-var distanceInWords = function(dirtyDateFrom, dirtyDateTo, options) {
+var distanceInWords = function (dirtyDateFrom, dirtyDateTo, options) {
+  var dateTo, dateFrom
   if (isBefore(dirtyDateFrom, dirtyDateTo)) {
-    var dateFrom = parse(dirtyDateFrom)
-    var dateTo = parse(dirtyDateTo)
+    dateFrom = parse(dirtyDateFrom)
+    dateTo = parse(dirtyDateTo)
   } else {
-    var dateFrom = parse(dirtyDateTo)
-    var dateTo = parse(dirtyDateFrom)
+    dateFrom = parse(dirtyDateTo)
+    dateTo = parse(dirtyDateFrom)
   }
 
   var includeSeconds = options ? options.includeSeconds : false
   var seconds = differenceInSeconds(dateTo, dateFrom)
   var offset = dateTo.getTimezoneOffset() - dateFrom.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
+  var months
 
   // 0 up to 2 mins
   if (minutes < 2) {
@@ -97,7 +99,7 @@ var distanceInWords = function(dirtyDateFrom, dirtyDateTo, options) {
         return translate('xMinutes', 1)
       }
     } else {
-      if (minutes == 0) {
+      if (minutes === 0) {
         return translate('lessThanXMinutes', 1)
       } else {
         return translate('xMinutes', minutes)
@@ -128,11 +130,11 @@ var distanceInWords = function(dirtyDateFrom, dirtyDateTo, options) {
 
   // 1 month up to 2 months
   } else if (minutes < MINUTES_IN_TWO_MONTHS) {
-    var months = Math.round(minutes / MINUTES_IN_MONTH)
+    months = Math.round(minutes / MINUTES_IN_MONTH)
     return translate('aboutXMonths', months)
   }
 
-  var months = differenceInMonths(dateTo, dateFrom)
+  months = differenceInMonths(dateTo, dateFrom)
 
   // 2 months up to 12 months
   if (months < 12) {
@@ -159,7 +161,7 @@ var distanceInWords = function(dirtyDateFrom, dirtyDateTo, options) {
   }
 }
 
-var translate = function(token, count) {
+var translate = function (token, count) {
   if (count === undefined) {
     return locale[token]
   } else if (count === 1) {

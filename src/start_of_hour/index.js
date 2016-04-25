@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:00:00
  */
-var startOfHour = function(dirtyDate) {
+var startOfHour = function (dirtyDate) {
   var date = parse(dirtyDate)
   date.setMinutes(0, 0, 0)
   return date

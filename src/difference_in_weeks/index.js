@@ -19,7 +19,7 @@ var differenceInDays = require('../difference_in_days')
  * )
  * //=> 2
  */
-var differenceInWeeks = function(dirtyDateLeft, dirtyDateRight) {
+var differenceInWeeks = function (dirtyDateLeft, dirtyDateRight) {
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

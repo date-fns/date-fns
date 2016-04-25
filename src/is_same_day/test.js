@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var isSameDay = require('./')
 
-describe('isSameDay', function() {
-  it('returns true if given dates have same day', function() {
+describe('isSameDay', function () {
+  it('returns true if given dates have same day', function () {
     var result = isSameDay(
       new Date(2014, 8 /* Sep */, 4, 6, 0),
       new Date(2014, 8 /* Sep */, 4, 18, 0)
@@ -10,7 +12,7 @@ describe('isSameDay', function() {
     assert(result === true)
   })
 
-  it('returns false if given dates have different days', function() {
+  it('returns false if given dates have different days', function () {
     var result = isSameDay(
       new Date(2014, 8 /* Sep */, 4, 23, 59),
       new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -18,7 +20,7 @@ describe('isSameDay', function() {
     assert(result === false)
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var result = isSameDay(
       new Date(2014, 8 /* Sep */, 4, 6, 0).toISOString(),
       new Date(2014, 8 /* Sep */, 4, 18, 0).toISOString()
@@ -26,7 +28,7 @@ describe('isSameDay', function() {
     assert(result === true)
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var result = isSameDay(
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 18, 0).getTime()

@@ -21,7 +21,7 @@ var isSameWeek = require('../is_same_week')
  * )
  * //=> true
  */
-var isSameISOWeek = function(dirtyDateLeft, dirtyDateRight) {
+var isSameISOWeek = function (dirtyDateLeft, dirtyDateRight) {
   return isSameWeek(dirtyDateLeft, dirtyDateRight, {weekStartsAt: 1})
 }
 

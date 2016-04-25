@@ -21,13 +21,11 @@ var startOfISOYear = require('../start_of_iso_year')
  * )
  * //=> true
  */
-var isSameISOYear = function(dirtyDateLeft, dirtyDateRight) {
+var isSameISOYear = function (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
   var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
 
-  return(
-    dateLeftStartOfYear.getTime() == dateRightStartOfYear.getTime()
-  )
+  return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }
 
 module.exports = isSameISOYear

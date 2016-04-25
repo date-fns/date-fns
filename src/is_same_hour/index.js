@@ -19,13 +19,11 @@ var startOfHour = require('../start_of_hour')
  * )
  * //=> true
  */
-var isSameHour = function(dirtyDateLeft, dirtyDateRight) {
+var isSameHour = function (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
   var dateRightStartOfHour = startOfHour(dirtyDateRight)
 
-  return(
-    dateLeftStartOfHour.getTime() == dateRightStartOfHour.getTime()
-  )
+  return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }
 
 module.exports = isSameHour

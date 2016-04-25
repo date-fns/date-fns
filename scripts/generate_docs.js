@@ -15,7 +15,7 @@ generateDocsFromSource()
 /**
  * Generates docs object from a list of functions using extended JSDoc format.
  */
-function generateDocsFromSource() {
+function generateDocsFromSource () {
   return Promise.all(listFunctions().map(generateDocFromSource))
     .then((jsDocs) =>
       jsDocs.reduce((acc, doc) =>
@@ -37,7 +37,7 @@ function generateDocsFromSource() {
 /**
  * Generates docs object.
  */
-function generatedDocsObj(docs) {
+function generatedDocsObj (docs) {
   return groupDocs(docs, docsConfig.groups)
 }
 
@@ -45,7 +45,7 @@ function generatedDocsObj(docs) {
  * Injects static docs (markdown documents specified in the config file)
  * to docs object.
  */
-function injectStaticDocsToDocsObj(docsFileObj) {
+function injectStaticDocsToDocsObj (docsFileObj) {
   return getListOfStaticDocs()
     .then((staticDocs) => {
       staticDocs.forEach((staticDoc) => {
@@ -58,7 +58,7 @@ function injectStaticDocsToDocsObj(docsFileObj) {
 /**
  * Prints an error and exits the process with 1 status code.
  */
-function reportErrors(err) {
+function reportErrors (err) {
   console.error(err.stack)
   process.exit(1)
 }
@@ -66,7 +66,7 @@ function reportErrors(err) {
 /**
  * Writes docs file.
  */
-function writeDocsFile(docsFileObj) {
+function writeDocsFile (docsFileObj) {
   const jsonPath = path.join(process.cwd(), 'dist', 'date_fns_docs.json')
   return fsp.writeFile(jsonPath, JSON.stringify(docsFileObj))
 }
@@ -74,7 +74,7 @@ function writeDocsFile(docsFileObj) {
 /**
  * Generates docs object from a function using extended JSDoc format.
  */
-function generateDocFromSource(fn) {
+function generateDocFromSource (fn) {
   return new Promise((resolve, reject) => {
     const stream = parseJSDoc({src: fn.fullPath})
     var data = ''
@@ -84,7 +84,7 @@ function generateDocFromSource(fn) {
       process.exit(1)
     })
 
-    stream.on('data', (chunk) => data += chunk)
+    stream.on('data', (chunk) => { data += chunk })
     stream.on('end', () => resolve(JSON.parse(data)))
   })
 }
@@ -92,7 +92,7 @@ function generateDocFromSource(fn) {
 /**
  * Groups passed docs list.
  */
-function groupDocs(docs, groups) {
+function groupDocs (docs, groups) {
   return docs .reduce((acc, doc) => {
     (acc[doc.category] = acc[doc.category] || []).push(doc)
     return acc
@@ -104,7 +104,7 @@ function groupDocs(docs, groups) {
  * an empty array. Pre-generated docs object allows to preserve the desired
  * groups order.
  */
-function buildGroupsTemplate(groups) {
+function buildGroupsTemplate (groups) {
   return groups.reduce((acc, group) => {
     acc[group] = []
     return acc
@@ -114,7 +114,7 @@ function buildGroupsTemplate(groups) {
 /**
  * Returns promise to list of static docs with it's content.
  */
-function getListOfStaticDocs(staticDocs) {
+function getListOfStaticDocs (staticDocs) {
   return Promise.all(docsConfig.staticDocs.map((staticDoc) => {
     return fsp.readFile(staticDoc.path)
       .then((docContent) => docContent.toString())

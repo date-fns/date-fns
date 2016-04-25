@@ -27,7 +27,7 @@ var parse = require('../parse')
  * )
  * //=> false
  */
-var isWithinRange = function(dirtyDate, dirtyStartDate, dirtyEndDate) {
+var isWithinRange = function (dirtyDate, dirtyStartDate, dirtyEndDate) {
   var time = parse(dirtyDate).getTime()
   var startTime = parse(dirtyStartDate).getTime()
   var endTime = parse(dirtyEndDate).getTime()

@@ -1,20 +1,23 @@
+/* eslint-env mocha */
+/* global sinon */
+
 var assert = require('power-assert')
 var distanceInWordsToNow = require('./')
 
-describe('distanceInWordsToNow', function() {
-  beforeEach(function() {
+describe('distanceInWordsToNow', function () {
+  beforeEach(function () {
     this.clock = sinon.useFakeTimers(
       new Date(1986, 3, 4, 10, 32, 0).getTime()
     )
   })
 
-  afterEach(function() {
+  afterEach(function () {
     this.clock.restore()
   })
 
-  describe('seconds', function() {
-    context('when includeSeconds option is true', function() {
-      it('less than 5 seconds', function() {
+  describe('seconds', function () {
+    context('when includeSeconds option is true', function () {
+      it('less than 5 seconds', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 58),
           {includeSeconds: true}
@@ -22,7 +25,7 @@ describe('distanceInWordsToNow', function() {
         assert(result === 'less than 5 seconds')
       })
 
-      it('less than 10 seconds', function() {
+      it('less than 10 seconds', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 52),
           {includeSeconds: true}
@@ -30,7 +33,7 @@ describe('distanceInWordsToNow', function() {
         assert(result === 'less than 10 seconds')
       })
 
-      it('less than 20 seconds', function() {
+      it('less than 20 seconds', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 45),
           {includeSeconds: true}
@@ -38,7 +41,7 @@ describe('distanceInWordsToNow', function() {
         assert(result === 'less than 20 seconds')
       })
 
-      it('half a minute', function() {
+      it('half a minute', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 35),
           {includeSeconds: true}
@@ -46,7 +49,7 @@ describe('distanceInWordsToNow', function() {
         assert(result === 'half a minute')
       })
 
-      it('less than a minute', function() {
+      it('less than a minute', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 15),
           {includeSeconds: true}
@@ -54,7 +57,7 @@ describe('distanceInWordsToNow', function() {
         assert(result === 'less than a minute')
       })
 
-      it('1 minute', function() {
+      it('1 minute', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 0),
           {includeSeconds: true}
@@ -64,22 +67,22 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  describe('minutes', function() {
-    it('less than a minute', function() {
+  describe('minutes', function () {
+    it('less than a minute', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 4, 10, 31, 40)
       )
       assert(result === 'less than a minute')
     })
 
-    it('1 minute', function() {
+    it('1 minute', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 4, 10, 31, 10)
       )
       assert(result === '1 minute')
     })
 
-    it('n minutes', function() {
+    it('n minutes', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 4, 10, 29, 10)
       )
@@ -87,15 +90,15 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  describe('hours', function() {
-    it('about 1 hour', function() {
+  describe('hours', function () {
+    it('about 1 hour', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 4, 9, 32, 0)
       )
       assert(result === 'about 1 hour')
     })
 
-    it('about n hours', function() {
+    it('about n hours', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 4, 7, 32, 0)
       )
@@ -103,15 +106,15 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  describe('days', function() {
-    it('1 day', function() {
+  describe('days', function () {
+    it('1 day', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 3, 10, 32, 0)
       )
       assert(result === '1 day')
     })
 
-    it('n days', function() {
+    it('n days', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 3, 1, 10, 32, 0)
       )
@@ -119,15 +122,15 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  describe('months', function() {
-    it('about 1 month', function() {
+  describe('months', function () {
+    it('about 1 month', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 2, 4, 10, 32, 0)
       )
       assert(result === 'about 1 month')
     })
 
-    it('n months', function() {
+    it('n months', function () {
       var result = distanceInWordsToNow(
         new Date(1986, 0, 4, 10, 32, 0)
       )
@@ -135,36 +138,36 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  describe('years', function() {
-    it('about 1 year', function() {
+  describe('years', function () {
+    it('about 1 year', function () {
       var result = distanceInWordsToNow(
         new Date(1985, 3, 4, 10, 32, 0)
       )
       assert(result === 'about 1 year')
     })
 
-    it('over 1 year', function() {
+    it('over 1 year', function () {
       var result = distanceInWordsToNow(
         new Date(1984, 10, 4, 10, 32, 0)
       )
       assert(result === 'over 1 year')
     })
 
-    it('almost n years', function() {
+    it('almost n years', function () {
       var result = distanceInWordsToNow(
         new Date(1983, 4, 4, 10, 32, 0)
       )
       assert(result === 'almost 3 years')
     })
 
-    it('about n years', function() {
+    it('about n years', function () {
       var result = distanceInWordsToNow(
         new Date(1983, 3, 4, 10, 32, 0)
       )
       assert(result === 'about 3 years')
     })
 
-    it('over n years', function() {
+    it('over n years', function () {
       var result = distanceInWordsToNow(
         new Date(1982, 10, 4, 10, 32, 0)
       )
@@ -172,14 +175,14 @@ describe('distanceInWordsToNow', function() {
     })
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var result = distanceInWordsToNow(
       new Date(1986, 3, 4, 10, 31, 40).toISOString()
     )
     assert(result === 'less than a minute')
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var result = distanceInWordsToNow(
       new Date(1986, 3, 4, 10, 31, 40).getTime()
     )

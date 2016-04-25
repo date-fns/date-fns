@@ -23,7 +23,7 @@ var parse = require('../parse')
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsAt: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */
-var startOfWeek = function(dirtyDate, options) {
+var startOfWeek = function (dirtyDate, options) {
   var weekStartsAt = options ? (options.weekStartsAt || 0) : 0
 
   var date = parse(dirtyDate)

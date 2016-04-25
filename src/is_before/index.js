@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-var isBefore = function(dirtyDateToCompare, dirtyDate) {
+var isBefore = function (dirtyDateToCompare, dirtyDate) {
   var dateToCompare = parse(dirtyDateToCompare)
   var date = parse(dirtyDate)
   return dateToCompare.getTime() < date.getTime()

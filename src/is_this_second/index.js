@@ -16,7 +16,7 @@ var isSameSecond = require('../is_same_second')
  * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-var isThisSecond = function(dirtyDate) {
+var isThisSecond = function (dirtyDate) {
   return isSameSecond(new Date(), dirtyDate)
 }
 

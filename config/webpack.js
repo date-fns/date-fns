@@ -2,7 +2,7 @@ var path = require('path')
 
 var config = {
   cache: true,
-  devtool: process.env.NODE_ENV == 'production' ? 'source-map' : 'inline-source-map',
+  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'inline-source-map',
   entry: getEntryConfig(),
   output: getOutputConfig(),
   module: {
@@ -13,12 +13,12 @@ var config = {
   }
 }
 
-function getEntryConfig() {
+function getEntryConfig () {
   if (process.env.BUILD_TESTS) {
     return {
       'tests': './test.js'
     }
-  } else if (process.env.NODE_ENV == 'test') {
+  } else if (process.env.NODE_ENV === 'test') {
     return {}
   } else {
     return {
@@ -27,13 +27,13 @@ function getEntryConfig() {
   }
 }
 
-function getOutputConfig() {
+function getOutputConfig () {
   if (process.env.BUILD_TESTS) {
     return {
       path: path.join(process.cwd(), 'tmp'),
       filename: '[name].js'
     }
-  } else if (process.env.NODE_ENV == 'test') {
+  } else if (process.env.NODE_ENV === 'test') {
     return {
       path: '/'
     }

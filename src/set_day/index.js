@@ -24,7 +24,7 @@ var addDays = require('../add_days')
  * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsAt: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-var setDay = function(dirtyDate, day, options) {
+var setDay = function (dirtyDate, day, options) {
   var weekStartsAt = options ? (options.weekStartsAt || 0) : 0
   var date = parse(dirtyDate)
   var currentDay = date.getDay()

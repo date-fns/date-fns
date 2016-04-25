@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-var addSeconds = function(dirtyDate, amount) {
+var addSeconds = function (dirtyDate, amount) {
   var date = parse(dirtyDate)
   date.setSeconds(date.getSeconds() + amount)
   return date

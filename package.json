@@ -10,11 +10,9 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-eslint": "^4.1.3",
+    "babel-cli": "^6.6.5",
+    "babel-eslint": "^5.0.0",
     "cloc": "^1.0.4",
-    "eslint": "1.2.1",
-    "eslint-config-toptal": "0.1.0",
     "fs-extra": "^0.26.4",
     "fs-promise": "^0.3.1",
     "glob-promise": "^1.0.4",
@@ -36,6 +34,8 @@
     "node-fetch": "^1.3.3",
     "power-assert": "^1.3.1",
     "pretty-bytes": "^3.0.0",
+    "snazzy": "^3.0.0",
+    "standard": "^6.0.8",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "webpack-espower-loader": "^1.0.1"
@@ -51,7 +51,7 @@
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
     "build-uglify": "uglifyjs ./dist/date_fns.js --output ./dist/date_fns.min.js --source-map ./dist/date_fns.min.js.map --source-map-url date_fns.min.js.map --in-source-map ./dist/date_fns.js.map",
     "build-docs": "babel-node ./scripts/generate_docs",
-    "lint": "eslint .",
+    "lint": "standard --verbose | snazzy",
     "generate-index": "babel-node ./scripts/generate_index",
     "sync-versions": "babel-node ./scripts/sync_versions",
     "release": "./scripts/release.sh",
@@ -65,5 +65,11 @@
     "stats-loc": "npm run stats-loc-code && npm run stats-loc-tests",
     "stats-loc-code": "echo 'Source code stats:' && cloc src/**/index.js",
     "stats-loc-tests": "echo 'Test suite stats:' && cloc src/**/test.js"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "dist/"
+    ]
   }
 }

@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var lastDayOfISOWeek = require('./')
 
-describe('lastDayOfISOWeek', function() {
-  it('returns date with time setted to 00:00:00 and date setted to last day of ISO week', function() {
+describe('lastDayOfISOWeek', function () {
+  it('returns date with time setted to 00:00:00 and date setted to last day of ISO week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfISOWeek(date)
     assert.deepEqual(result,
@@ -10,7 +12,7 @@ describe('lastDayOfISOWeek', function() {
     )
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var date = new Date(2014, 6 /* Jul */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfISOWeek(date)
     assert.deepEqual(result,
@@ -18,7 +20,7 @@ describe('lastDayOfISOWeek', function() {
     )
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var date = new Date(2014, 1 /* Feb */, 11, 11, 55, 0).getTime()
     var result = lastDayOfISOWeek(date)
     assert.deepEqual(result,
@@ -26,7 +28,7 @@ describe('lastDayOfISOWeek', function() {
     )
   })
 
-  it('does not mutate original date', function() {
+  it('does not mutate original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfISOWeek(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))

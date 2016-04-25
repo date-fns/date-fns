@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-var setMilliseconds = function(dirtyDate, milliseconds) {
+var setMilliseconds = function (dirtyDate, milliseconds) {
   var date = parse(dirtyDate)
   date.setMilliseconds(milliseconds)
   return date
