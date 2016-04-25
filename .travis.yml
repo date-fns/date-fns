@@ -10,13 +10,6 @@ branches:
     # Build git tags
     - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
 
-before_install:
-  # TODO: Upgrade the npm package and get rid of this
-  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - mv phantomjs "$TRAVIS_BUILD_DIR/tmp/phantomjs2"
-  - export PHANTOMJS_BIN="$TRAVIS_BUILD_DIR/tmp/phantomjs2"
-
 # Tests
 script:
   - npm run lint
