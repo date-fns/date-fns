@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var max = require('./')
 
-describe('max', function() {
-  it('returns latest date', function() {
+describe('max', function () {
+  it('returns latest date', function () {
     var result = max(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
@@ -10,7 +12,7 @@ describe('max', function() {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('allows to pass more than 2 arguments', function() {
+  it('allows to pass more than 2 arguments', function () {
     var result = max(
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
@@ -20,7 +22,7 @@ describe('max', function() {
     assert.deepEqual(result, new Date(1995, 6 /* Jul */, 2))
   })
 
-  it('accepts strings', function() {
+  it('accepts strings', function () {
     var result = max(
       new Date(1987, 1 /* Feb */, 11).toISOString(),
       new Date(1989, 6 /* Jul */, 10).toISOString()
@@ -28,7 +30,7 @@ describe('max', function() {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('accepts timestamps', function() {
+  it('accepts timestamps', function () {
     var result = max(
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()

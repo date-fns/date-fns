@@ -16,7 +16,7 @@ var addHours = require('../add_hours')
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-var subHours = function(dirtyDate, amount) {
+var subHours = function (dirtyDate, amount) {
   return addHours(dirtyDate, -amount)
 }
 

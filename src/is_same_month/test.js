@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var isSameMonth = require('./')
 
-describe('isSameMonth', function() {
-  it('returns true if given dates have same month (and year)', function() {
+describe('isSameMonth', function () {
+  it('returns true if given dates have same month (and year)', function () {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25)
@@ -10,7 +12,7 @@ describe('isSameMonth', function() {
     assert(result === true)
   })
 
-  it('returns false if given dates have different months', function() {
+  it('returns false if given dates have different months', function () {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25)
@@ -18,7 +20,7 @@ describe('isSameMonth', function() {
     assert(result === false)
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2).toISOString(),
       new Date(2014, 8 /* Sep */, 25).toISOString()
@@ -26,7 +28,7 @@ describe('isSameMonth', function() {
     assert(result === true)
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime()

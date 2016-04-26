@@ -12,7 +12,7 @@
  * var result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-var startOfTomorrow = function() {
+var startOfTomorrow = function () {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

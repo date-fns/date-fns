@@ -16,7 +16,7 @@ var addSeconds = require('../add_seconds')
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-var subSeconds = function(dirtyDate, amount) {
+var subSeconds = function (dirtyDate, amount) {
   return addSeconds(dirtyDate, -amount)
 }
 

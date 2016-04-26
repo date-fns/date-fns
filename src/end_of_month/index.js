@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-var endOfMonth = function(dirtyDate) {
+var endOfMonth = function (dirtyDate) {
   var date = parse(dirtyDate)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)

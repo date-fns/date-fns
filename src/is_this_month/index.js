@@ -15,7 +15,7 @@ var isSameMonth = require('../is_same_month')
  * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-var isThisMonth = function(dirtyDate) {
+var isThisMonth = function (dirtyDate) {
   return isSameMonth(new Date(), dirtyDate)
 }
 

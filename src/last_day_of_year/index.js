@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-var lastDayOfYear = function(dirtyDate) {
+var lastDayOfYear = function (dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)

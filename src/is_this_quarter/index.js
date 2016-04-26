@@ -15,7 +15,7 @@ var isSameQuarter = require('../is_same_quarter')
  * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-var isThisQuarter = function(dirtyDate) {
+var isThisQuarter = function (dirtyDate) {
   return isSameQuarter(new Date(), dirtyDate)
 }
 

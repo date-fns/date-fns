@@ -14,7 +14,7 @@ var startOfDay = require('../start_of_day')
  * var result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-var startOfToday = function() {
+var startOfToday = function () {
   return startOfDay(new Date())
 }
 

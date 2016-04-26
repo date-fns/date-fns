@@ -42,7 +42,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * var result = parse('2014-02-11T11:30:30')
  * //=> Tue Feb 11 2014 11:30:30
  */
-var parse = function(dateString) {
+function parse (dateString) {
   if (dateString instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(dateString.getTime())
@@ -77,7 +77,7 @@ var parse = function(dateString) {
   }
 }
 
-var splitDateString = function(dateString) {
+function splitDateString (dateString) {
   var dateStrings = {}
   var array = dateString.split(parseTokenDateTimeDelimeter)
   var timeString
@@ -91,8 +91,8 @@ var splitDateString = function(dateString) {
   }
 
   if (timeString) {
-    var token
-    if (token = parseTokenTimezone.exec(timeString)) {
+    var token = parseTokenTimezone.exec(timeString)
+    if (token) {
       dateStrings.time = timeString.replace(token[1], '')
       dateStrings.timezone = token[1]
     } else {
@@ -103,12 +103,14 @@ var splitDateString = function(dateString) {
   return dateStrings
 }
 
-var parseDate = function(dateString) {
+function parseDate (dateString) {
   var year
   var yearToken
 
   // YYYY or ±YYYYY
-  if (yearToken = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)) {
+  yearToken = parseTokenYYYY.exec(dateString) ||
+    parseTokenYYYYY.exec(dateString)
+  if (yearToken) {
     var yearString = yearToken[1]
     year = parseInt(yearString, 10)
     dateString = dateString.slice(yearString.length)
@@ -119,105 +121,128 @@ var parseDate = function(dateString) {
   }
 
   var token
+  var date
+  var month
+  var week
 
   // YYYY
   if (dateString.length === 0) {
-    var date = new Date(0)
+    date = new Date(0)
     date.setUTCFullYear(year)
     return date
+  }
 
   // YYYY-MM
-  } else if (token = parseTokenMM.exec(dateString)) {
-    var date = new Date(0)
-    var month = parseInt(token[1], 10) - 1
+  token = parseTokenMM.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
     date.setUTCFullYear(year, month)
     return date
+  }
 
   // YYYY-DDD or YYYYDDD
-  } else if (token = parseTokenDDD.exec(dateString)) {
-    var date = new Date(0)
+  token = parseTokenDDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
     var dayOfYear = parseInt(token[1], 10)
     date.setUTCFullYear(year, 0, dayOfYear)
     return date
+  }
 
   // YYYY-MM-DD or YYYYMMDD
-  } else if (token = parseTokenMMDD.exec(dateString)) {
-    var date = new Date(0)
-    var month = parseInt(token[1], 10) - 1
+  token = parseTokenMMDD.exec(dateString)
+  if (token) {
+    date = new Date(0)
+    month = parseInt(token[1], 10) - 1
     var day = parseInt(token[2], 10)
     date.setUTCFullYear(year, month, day)
     return date
+  }
 
   // YYYY-Www or YYYYWww
-  } else if (token = parseTokenWww.exec(dateString)) {
-    var week = parseInt(token[1], 10) - 1
+  token = parseTokenWww.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
     return dayOfISOYear(year, week)
+  }
 
   // YYYY-Www-D or YYYYWwwD
-  } else if (token = parseTokenWwwD.exec(dateString)) {
-    var week = parseInt(token[1], 10) - 1
+  token = parseTokenWwwD.exec(dateString)
+  if (token) {
+    week = parseInt(token[1], 10) - 1
     var dayOfWeek = parseInt(token[2], 10) - 1
     return dayOfISOYear(year, week, dayOfWeek)
+  }
 
   // Invalid ISO-formatted date
-  } else {
-    return null
-  }
+  return null
 }
 
-var parseTime = function(timeString) {
+function parseTime (timeString) {
   var token
+  var hours
+  var minutes
 
   // hh
-  if (token = parseTokenHH.exec(timeString)) {
-    var hours = parseFloat(token[1].replace(',', '.'))
+  token = parseTokenHH.exec(timeString)
+  if (token) {
+    hours = parseFloat(token[1].replace(',', '.'))
     return (hours % 24) * MILLISECONDS_IN_HOUR
+  }
 
   // hh:mm or hhmm
-  } else if (token = parseTokenHHMM.exec(timeString)) {
-    var hours = parseInt(token[1], 10)
-    var minutes = parseFloat(token[2].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR
-      + minutes * MILLISECONDS_IN_MINUTE
+  token = parseTokenHHMM.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseFloat(token[2].replace(',', '.'))
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE
+  }
 
   // hh:mm:ss or hhmmss
-  } else if (token = parseTokenHHMMSS.exec(timeString)) {
-    var hours = parseInt(token[1], 10)
-    var minutes = parseInt(token[2], 10)
+  token = parseTokenHHMMSS.exec(timeString)
+  if (token) {
+    hours = parseInt(token[1], 10)
+    minutes = parseInt(token[2], 10)
     var seconds = parseFloat(token[3].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR
-      + minutes * MILLISECONDS_IN_MINUTE
-      + seconds * 1000
+    return (hours % 24) * MILLISECONDS_IN_HOUR +
+      minutes * MILLISECONDS_IN_MINUTE +
+      seconds * 1000
+  }
 
   // Invalid ISO-formatted time
-  } else {
-    return null
-  }
+  return null
 }
 
-var parseTimezone = function(timezoneString) {
+function parseTimezone (timezoneString) {
   var token
-  var offset = 0
+  var absoluteOffset
 
   // Z
-  if (token = parseTokenTimezoneZ.exec(timezoneString)) {
-    offset = 0
-
-  // ±hh
-  } else if (token = parseTokenTimezoneHH.exec(timezoneString)) {
-    var absoluteOffset = parseInt(token[2], 10) * 60
-    offset = (token[1] == '+') ? - absoluteOffset : absoluteOffset
-
-  // ±hh:mm or ±hhmm
-  } else if (token = parseTokenTimezoneHHMM.exec(timezoneString)) {
-    var absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
-    offset = (token[1] == '+') ? - absoluteOffset : absoluteOffset
+  token = parseTokenTimezoneZ.exec(timezoneString)
+  if (token) {
+    return 0
   }
 
-  return offset
+  // ±hh
+  token = parseTokenTimezoneHH.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  // ±hh:mm or ±hhmm
+  token = parseTokenTimezoneHHMM.exec(timezoneString)
+  if (token) {
+    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
+    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+  }
+
+  return 0
 }
 
-var dayOfISOYear = function(isoYear, week, day) {
+function dayOfISOYear (isoYear, week, day) {
   week = week || 0
   day = day || 0
   var date = new Date(0)
@@ -228,4 +253,3 @@ var dayOfISOYear = function(isoYear, week, day) {
 }
 
 module.exports = parse
-

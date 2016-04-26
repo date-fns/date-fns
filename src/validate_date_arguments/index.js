@@ -27,7 +27,7 @@ var isValid = require('../is_valid')
  * var result = validateDateArguments(2014, 1, 29, 12, 0)
  * //=> false
  */
-var validateDateArguments = function(year, month, day, hours, minutes, seconds, milliseconds) {
+function validateDateArguments (year, month, day, hours, minutes, seconds, milliseconds) {
   if (year >= 0 && year < 100) {
     year = 1900 + year
   }
@@ -40,15 +40,16 @@ var validateDateArguments = function(year, month, day, hours, minutes, seconds, 
 
   var date = new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
-  return isValid(date)
-    && date.getFullYear() == year
-    && date.getMonth() == month
-    && date.getDate() == day
-    && date.getHours() == hours
-    && date.getMinutes() == minutes
-    && date.getSeconds() == seconds
-    && date.getMilliseconds() == milliseconds
+  /* eslint-disable eqeqeq */
+  return isValid(date) &&
+    date.getFullYear() == year &&
+    date.getMonth() == month &&
+    date.getDate() == day &&
+    date.getHours() == hours &&
+    date.getMinutes() == minutes &&
+    date.getSeconds() == seconds &&
+    date.getMilliseconds() == milliseconds
+  /* eslint-enable eqeqeq */
 }
 
 module.exports = validateDateArguments
-

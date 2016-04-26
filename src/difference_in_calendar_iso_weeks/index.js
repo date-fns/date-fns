@@ -24,14 +24,14 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-var differenceInCalendarISOWeeks = function(dirtyDateLeft, dirtyDateRight) {
+var differenceInCalendarISOWeeks = function (dirtyDateLeft, dirtyDateRight) {
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
 
-  var timestampLeft = startOfISOWeekLeft.getTime()
-    - startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
-  var timestampRight = startOfISOWeekRight.getTime()
-    - startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampLeft = startOfISOWeekLeft.getTime() -
+    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+  var timestampRight = startOfISOWeekRight.getTime() -
+    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

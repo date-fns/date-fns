@@ -22,7 +22,7 @@ var compareAsc = require('../compare_asc')
  * )
  * //=> 365
  */
-var differenceInDays = function(dirtyDateLeft, dirtyDateRight) {
+var differenceInDays = function (dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
   var dateRight = parse(dirtyDateRight)
 

@@ -19,7 +19,7 @@ var getISOWeek = require('../get_iso_week')
  * var result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-var setISOWeek = function(dirtyDate, isoWeek) {
+var setISOWeek = function (dirtyDate, isoWeek) {
   var date = parse(dirtyDate)
   var diff = getISOWeek(date) - isoWeek
   date.setDate(date.getDate() - diff * 7)

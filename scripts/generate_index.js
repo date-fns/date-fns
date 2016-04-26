@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
-import listFunctions from './_lib/list_functions'
+import listFiles from './_lib/list_files'
 
-const propertyRequireLines = listFunctions()
+const propertyRequireLines = listFiles()
   .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}')`)
 
 const indexLines = ['module.exports = {']

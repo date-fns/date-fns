@@ -17,7 +17,7 @@ var setMonth = require('../set_month')
  * var result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-var setQuarter = function(dirtyDate, quarter) {
+var setQuarter = function (dirtyDate, quarter) {
   var date = parse(dirtyDate)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1
   var diff = quarter - oldQuarter

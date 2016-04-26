@@ -1,50 +1,125 @@
-import fs from 'fs'
+#!/usr/bin/env babel-node
+
+import fsp from 'fs-promise'
 import path from 'path'
 import parseJSDoc from 'jsdoc-parse'
-import listFunctions from './_lib/list_functions'
+import listFiles from './_lib/list_files'
+import docsConfig from '../docs'
 
-const docPromises = listFunctions()
-  .map((fn) => {
-    return new Promise((resolve, reject) => {
-      const stream = parseJSDoc({src: fn.fullPath})
-      var data = ''
+generateDocsFromSource()
+  .then(generatedDocsObj)
+  .then(injectStaticDocsToDocsObj)
+  .then(writeDocsFile)
+  .catch(reportErrors)
 
-      stream.on('error', (err) => {
-        console.error(err)
-        process.exit(1)
+/**
+ * Generates docs object from a list of functions using extended JSDoc format.
+ */
+function generateDocsFromSource () {
+  return listFiles()
+    .reduce((promise, file) => {
+      return promise.then((acc) =>
+        generateDocFromSource(acc, file)
+      )
+    }, Promise.resolve([]))
+    .then((jsDocs) =>
+      jsDocs.map((doc) =>
+        ({
+          type: 'jsdoc',
+          urlId: doc.name,
+          category: doc.category,
+          title: doc.name,
+          description: doc.summary,
+          content: doc
+        })
+      )
+    )
+}
+
+/**
+ * Generates docs object.
+ */
+function generatedDocsObj (docs) {
+  return groupDocs(docs, docsConfig.groups)
+}
+
+/**
+ * Injects static docs (markdown documents specified in the config file)
+ * to docs object.
+ */
+function injectStaticDocsToDocsObj (docsFileObj) {
+  return getListOfStaticDocs()
+    .then((staticDocs) => {
+      staticDocs.forEach((staticDoc) => {
+        docsFileObj[staticDoc.category].push(staticDoc)
       })
-
-      stream.on('data', (chunk) => data += chunk)
-      stream.on('end', () => resolve(JSON.parse(data)))
+      return docsFileObj
     })
-  })
+}
 
-Promise.all(docPromises)
-  .then((docs) => {
-    // Specifies the order
-    const groupsTemplate = {
-      'Common Helpers': [],
-      'Range Helpers': [],
-      'Millisecond Helpers': [],
-      'Second Helpers': [],
-      'Minute Helpers': [],
-      'Hour Helpers': [],
-      'Day Helpers': [],
-      'Weekday Helpers': [],
-      'Week Helpers': [],
-      'ISO Week Helpers': [],
-      'Month Helpers': [],
-      'Quarter Helpers': [],
-      'Year Helpers': [],
-      'ISO Week-Numbering Year Helpers': []
-    }
+/**
+ * Prints an error and exits the process with 1 status code.
+ */
+function reportErrors (err) {
+  console.error(err.stack)
+  process.exit(1)
+}
 
-    const groupedDocs = docs
-      .map((el) => el[0])
-      .reduce((acc, doc) => {
-        (acc[doc.category] = acc[doc.category] || []).push(doc)
-        return acc
-      }, groupsTemplate)
+/**
+ * Writes docs file.
+ */
+function writeDocsFile (docsFileObj) {
+  const jsonPath = path.join(process.cwd(), 'dist', 'date_fns_docs.json')
+  return fsp.writeFile(jsonPath, JSON.stringify(docsFileObj))
+}
 
-    fs.writeFileSync(path.join(process.cwd(), 'dist', 'date_fns_docs.json'), JSON.stringify(groupedDocs))
-  })
+/**
+ * Generates docs object from a function using extended JSDoc format.
+ */
+function generateDocFromSource (acc, fn) {
+  return new Promise((resolve, reject) => {
+    const stream = parseJSDoc({src: fn.fullPath})
+    var data = ''
+
+    stream.on('error', (err) => {
+      console.error(err)
+      process.exit(1)
+    })
+
+    stream.on('data', (chunk) => { data += chunk })
+    stream.on('end', () => resolve(JSON.parse(data)))
+  }).then((doc) => acc.concat(doc))
+}
+
+/**
+ * Groups passed docs list.
+ */
+function groupDocs (docs, groups) {
+  return docs .reduce((acc, doc) => {
+    (acc[doc.category] = acc[doc.category] || []).push(doc)
+    return acc
+  }, buildGroupsTemplate(groups))
+}
+
+/**
+ * Builds an object where the key is a group name and the value is
+ * an empty array. Pre-generated docs object allows to preserve the desired
+ * groups order.
+ */
+function buildGroupsTemplate (groups) {
+  return groups.reduce((acc, group) => {
+    acc[group] = []
+    return acc
+  }, {})
+}
+
+/**
+ * Returns promise to list of static docs with it's content.
+ */
+function getListOfStaticDocs (staticDocs) {
+  return Promise.all(docsConfig.staticDocs.map((staticDoc) => {
+    return fsp.readFile(staticDoc.path)
+      .then((docContent) => docContent.toString())
+      .then((content) => Object.assign({content}, staticDoc))
+  }))
+}

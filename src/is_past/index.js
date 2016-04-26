@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-var isPast = function(dirtyDate) {
+var isPast = function (dirtyDate) {
   return parse(dirtyDate).getTime() < new Date().getTime()
 }
 

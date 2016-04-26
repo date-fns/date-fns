@@ -19,10 +19,10 @@ var parse = require('../parse')
  * )
  * //=> false
  */
-var isEqual = function(dirtyLeftDate, dirtyRightDate) {
+var isEqual = function (dirtyLeftDate, dirtyRightDate) {
   var dateLeft = parse(dirtyLeftDate)
   var dateRight = parse(dirtyRightDate)
-  return dateLeft.getTime() == dateRight.getTime()
+  return dateLeft.getTime() === dateRight.getTime()
 }
 
 module.exports = isEqual

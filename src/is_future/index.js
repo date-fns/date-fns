@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-var isFuture = function(dirtyDate) {
+var isFuture = function (dirtyDate) {
   return parse(dirtyDate).getTime() > new Date().getTime()
 }
 

@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var endOfDay = require('./')
 
-describe('endOfDay', function() {
-  it('returns date with time setted to 23:59:59.999', function() {
+describe('endOfDay', function () {
+  it('returns date with time setted to 23:59:59.999', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfDay(date)
     assert.deepEqual(result,
@@ -10,7 +12,7 @@ describe('endOfDay', function() {
     )
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = endOfDay(date)
     assert.deepEqual(result,
@@ -18,7 +20,7 @@ describe('endOfDay', function() {
     )
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = endOfDay(date)
     assert.deepEqual(result,
@@ -26,7 +28,7 @@ describe('endOfDay', function() {
     )
   })
 
-  it('does not mutate original date', function() {
+  it('does not mutate original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     endOfDay(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))

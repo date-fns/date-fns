@@ -18,7 +18,7 @@ var isSameISOYear = require('../is_same_iso_year')
  * var result = isThisISOYear(new Date(2013, 11, 30))
  * //=> true
  */
-var isThisISOYear = function(dirtyDate) {
+var isThisISOYear = function (dirtyDate) {
   return isSameISOYear(new Date(), dirtyDate)
 }
 

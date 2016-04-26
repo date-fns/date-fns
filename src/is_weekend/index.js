@@ -15,11 +15,10 @@ var parse = require('../parse')
  * var result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-var isWeekend = function(dirtyDate) {
+var isWeekend = function (dirtyDate) {
   var date = parse(dirtyDate)
   var day = date.getDay()
-  return day == 0 || day == 6
+  return day === 0 || day === 6
 }
 
 module.exports = isWeekend
-

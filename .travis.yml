@@ -1,16 +1,16 @@
+# Environment
 sudo: false
 language: node_js
 node_js:
-- '0.12'
+  - 4
+
 branches:
   only:
-  - master
-  - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
-before_install:
-- wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-- tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-- mv phantomjs "$TRAVIS_BUILD_DIR/tmp/phantomjs2"
-- export PHANTOMJS_BIN="$TRAVIS_BUILD_DIR/tmp/phantomjs2"
+    - master
+    # Build git tags
+    - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
+
+# Tests
 script:
   - npm run lint
   - npm run test-ci
@@ -18,14 +18,11 @@ script:
   - npm run test-tz
   - npm run test-tz-extended
   - npm run count-tests
+
+# Deployment
 before_deploy:
   # Build gzip files before S3 deployment
   - npm run build-gzip
-cache:
-  directories:
-  - node_modules
-addons:
-  sauce_connect: true
 deploy:
   - provider: s3
     access_key_id: AKIAIXPFOIIE7FDYPAXA
@@ -58,3 +55,10 @@ deploy:
       tags: true
 after_deploy:
   - npm run release-tweet
+
+cache:
+  directories:
+    - node_modules
+
+addons:
+  sauce_connect: true

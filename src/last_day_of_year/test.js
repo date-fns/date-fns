@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var lastDayOfYear = require('./')
 
-describe('lastDayOfYear', function() {
-  it('returns date with time setted to 00:00:00 and date setted to last day of year', function() {
+describe('lastDayOfYear', function () {
+  it('returns date with time setted to 00:00:00 and date setted to last day of year', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfYear(date)
     assert.deepEqual(result,
@@ -10,7 +12,7 @@ describe('lastDayOfYear', function() {
     )
   })
 
-  it('accepts string', function() {
+  it('accepts string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfYear(date)
     assert.deepEqual(result,
@@ -18,7 +20,7 @@ describe('lastDayOfYear', function() {
     )
   })
 
-  it('accepts timestamp', function() {
+  it('accepts timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = lastDayOfYear(date)
     assert.deepEqual(result,
@@ -26,7 +28,7 @@ describe('lastDayOfYear', function() {
     )
   })
 
-  it('does not mutate original date', function() {
+  it('does not mutate original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfYear(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))

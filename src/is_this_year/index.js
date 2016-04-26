@@ -15,7 +15,7 @@ var isSameYear = require('../is_same_year')
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-var isThisYear = function(dirtyDate) {
+var isThisYear = function (dirtyDate) {
   return isSameYear(new Date(), dirtyDate)
 }
 

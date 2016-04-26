@@ -1,8 +1,10 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var eachDay = require('./')
 
-describe('eachDay', function() {
-  it('returns array of dates within specified range', function() {
+describe('eachDay', function () {
+  it('returns array of dates within specified range', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 12)
@@ -18,7 +20,7 @@ describe('eachDay', function() {
     ])
   })
 
-  it('accepts strings', function() {
+  it('accepts strings', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6).toISOString(),
       new Date(2014, 9 /* Oct */, 12).toISOString()
@@ -34,7 +36,7 @@ describe('eachDay', function() {
     ])
   })
 
-  it('accepts timestamps', function() {
+  it('accepts timestamps', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6).getTime(),
       new Date(2014, 9 /* Oct */, 12).getTime()
@@ -50,7 +52,7 @@ describe('eachDay', function() {
     ])
   })
 
-  it('throws exception if start date is after end date', function() {
+  it('throws exception if start date is after end date', function () {
     var block = eachDay.bind(
       null,
       new Date(2014, 9 /* Oct */, 12),

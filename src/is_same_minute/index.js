@@ -20,13 +20,11 @@ var startOfMinute = require('../start_of_minute')
  * )
  * //=> true
  */
-var isSameMinute = function(dirtyDateLeft, dirtyDateRight) {
+var isSameMinute = function (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
   var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
 
-  return(
-    dateLeftStartOfMinute.getTime() == dateRightStartOfMinute.getTime()
-  )
+  return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }
 
 module.exports = isSameMinute

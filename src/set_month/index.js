@@ -17,7 +17,7 @@ var getDaysInMonth = require('../get_days_in_month')
  * var result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-var setMonth = function(dirtyDate, month) {
+var setMonth = function (dirtyDate, month) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   var day = date.getDate()

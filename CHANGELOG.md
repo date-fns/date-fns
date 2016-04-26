@@ -1,12 +1,32 @@
-# Changelog
+# Change Log
 
-## v1.0.0
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning].
 
-Breaking changes a.k.a migration guide:
+This change log follows the format documented in [Keep a CHANGELOG].
 
-- All functions are moved to the root of the library, so they are now accessible with
-  `require('date-fns/name_of_function')` or `import nameOfFunction from 'date-fns/name_of_function'`
-  ```
+[Semantic Versioning]: http://semver.org/
+[Keep a CHANGELOG]: http://keepachangelog.com/
+
+## [Unreleased]
+
+### Fixed
+
+- `format` now returns the correct result for key `E`.
+
+- Prevent `startOf...`, `endOf...` and `lastDayOf...` functions
+  to return dates with incorrect time when date is modifying
+  into an other time zone.
+
+- `parse` now parses years from 1 AD to 99 AD correctly.
+
+### Changed
+
+- **BREAKING**: all functions are moved to the root of the library, so they
+  are now accessible with `require('date-fns/name_of_function')` or
+  `import nameOfFunction from 'date-fns/name_of_function'`.
+
+  ```javascript
   // Before v1.0.0
   var addMonths = require('date-fns/src/add_months')
 
@@ -14,10 +34,12 @@ Breaking changes a.k.a migration guide:
   var addMonths = require('date-fns/add_months')
   ```
 
-- Functions that had the last optional argument `weekStartsAt`
+- **BREAKING**: functions that had the last optional argument `weekStartsAt`
   (i.e. `endOfWeek`, `isSameWeek`, `lastDayOfWeek`, `setDay`, `startOfWeek`)
-  now instead receive an object `options` with property `options.weekStartsAt` as the last argument.
-  ```
+  now instead receive an object `options` with property `options.weekStartsAt`
+  as the last argument.
+
+  ```javascript
   // Before v1.0.0
   var result = endOfWeek(new Date(2014, 8, 2), 1)
 
@@ -25,299 +47,508 @@ Breaking changes a.k.a migration guide:
   var result = endOfWeek(new Date(2014, 8, 2), {weekStartsAt: 1})
   ```
 
+- **BREAKING**: remove function `getTimeSinceMidnight` that was used inside of
+  the other functions.
 
-* Additions:
-  - `addISOYears`
-  - `closestTo`
-  - `differenceInCalendarDays`
-  - `differenceInCalendarISOWeeks`
-  - `differenceInCalendarISOYears`
-  - `differenceInCalendarMonths`
-  - `differenceInCalendarQuarters`
-  - `differenceInCalendarWeeks`
-  - `differenceInCalendarYears`
-  - `differenceInHours`
-  - `differenceInISOYears`
-  - `differenceInMilliseconds`
-  - `differenceInMinutes`
-  - `differenceInMonths`
-  - `differenceInQuarters`
-  - `differenceInSeconds`
-  - `differenceInWeeks`
-  - `differenceInYears`
-  - `distanceInWords`
-  - `distanceInWordsToNow`
-  - `endOfISOWeek`
-  - `endOfISOYear`
-  - `endOfToday`
-  - `endOfTomorrow`
-  - `endOfYesterday`
-  - `getDaysInYear`
-  - `isFriday`
-  - `isMonday`
-  - `isSameISOWeek`
-  - `isSameISOYear`
-  - `isSaturday`
-  - `isSunday`
-  - `isThisHour`
-  - `isThisISOWeek`
-  - `isThisISOYear`
-  - `isThisMinute`
-  - `isThisMonth`
-  - `isThisQuarter`
-  - `isThisSecond`
-  - `isThisWeek`
-  - `isThisYear`
-  - `isThursday`
-  - `isTomorrow`
-  - `isTuesday`
-  - `isValid`
-  - `isWednesday`
-  - `isYesterday`
-  - `lastDayOfISOWeek`
-  - `lastDayOfISOYear`
-  - `startOfISOWeek`
-  - `startOfToday`
-  - `startOfTomorrow`
-  - `startOfYesterday`
-  - `subISOYears`
-  - `validateDateArguments`
-* Improvements:
-  - Remove function `getTimeSinceMidnight` that was used inside of the other functions
-  - Convert tests from Chai to power-assert allowing them to run in IE8
-  - `differenceInDays` now returns the number of full days instead of calendar days
-  - Add `Qo`, `W`, `Wo`, `WW`, `GG`, `GGGG`, `Z`, `ZZ`, `X`, `x` keys to `format`
-  - Faster `isLeapYear`
-  - `eachDay` and `isWithinRange` now throws an exception when given range boundaries are invalid
-  - `parse` now parses years more than 99 AD and less than 1 AD
-  - Make the documentation more verbose
-  - All functions that had `weekStartsAt` as last argument, now have `options` argument instead
-    which is an object with `options.weekStartsAt` property
-  - Move all functions to the root of the library, so they are now accessible with
-    `require('date-fns/name_of_function')` instead of `require('date-fns/src/name_of_function')`
-* Bug fixes:
-  - `format` now returns the correct result for key `E`
-  - Prevent `startOf...`, `endOf...` and `lastDayOf...` functions
-    to return dates with incorrect time when date is modifying into the other time zone
-  - `parse` now parses years from 1 AD to 99 AD correctly
+- **BREAKING**: `differenceInDays` now returns the number of full days instead
+  of calendar days.
 
-## v0.17.0 (29 Sep 2015)
+- **BREAKING**: `eachDay` and `isWithinRange` now throws an exception
+  when given range boundaries are invalid.
 
-* Additions:
-  - `differenceInDays`
-  - `getTimeSinceMidnight`
-* Improvements:
-  - `setISOWeek` now keeps time from original date
-  - Reuse `getDaysInMonth` inside of `addMonths`
-  - Complete UMD package (for Bower)
-* Bug fixes:
-  - Fix a lot of bugs appearing when date is modifying into other time zone
-    (e.g., when adding months and original date is in DST but new date is not)
-  - Prevent instances of Date to lose milliseconds value when passed to
-    `parse` in IE10
+- Faster `isLeapYear`.
 
-## v0.16.0 (1 Sep 2015)
+- *Internal*: make the documentation more verbose.
 
-* Additions:
-  - `addQuarters`
-  - `addWeeks`
-  - `endOfQuarter`
-  - `getDate`
-  - `getDay`
-  - `getDaysInMonth`
-  - `getHours`
-  - `getISOWeeksInYear`
-  - `getMilliseconds`
-  - `getMinutes`
-  - `getMonth`
-  - `getSeconds`
-  - `getYear`
-  - `isLeapYear`
-  - `isSameHour`
-  - `isSameMinute`
-  - `isSameQuarter`
-  - `isSameSecond`
-  - `lastDayOfQuarter`
-  - `lastDayOfWeek`
-  - `max`
-  - `min`
-  - `setDate`
-  - `setDay`
-  - `setHours`
-  - `setMilliseconds`
-  - `setMinutes`
-  - `setSeconds`
-  - `startOfQuarter`
-  - `subQuarters`
-  - `subWeeks`
-* Improvements:
-  - Reuse `getDaysInMonth` inside of `setMonth`
-  - `format` now has new format key `aa`, which returns `a.m.`/`p.m.` as opposed to `a` that returns `am`/`pm`
-  - `parse` now fallbacks to `new Date` when argument is not an ISO formatted date
-  - Use `parse` to clean date arguments in all functions
+- *Internal*: convert tests from Chai to power-assert allowing them
+  to run against IE8.
 
-## v0.15.0 (26 Aug 2015)
+### Added
 
-* Additions:
-  - `getQuarter`
-  - `setQuarter`
-  - `getDayOfYear`
-  - `setDayOfYear`
-  - `isPast`
-  - `addSeconds`
-  - `subSeconds`
-  - `startOfSecond`
-  - `endOfSecond`
-  - `startOfMinute`
-  - `endOfMinute`
-  - `addMilliseconds`
-  - `subMilliseconds`
-  - `endOfYear`
-  - `addYears`
-  - `subYears`
-  - `lastDayOfYear`
-  - `lastDayOfMonth`
-* Improvements:
-  - `format` now returns `a.m.`/`p.m.` instead of `am`/`pm`
-  - `setMonth` now sets last day of month if original date was last day of longer month
-  - Fix code style according to ESLint
-  - Make tests run through all time zones
+- `addISOYears`
 
-## v0.14.11 (21 Aug 2015)
+- `closestTo`
 
-* Improvements:
-  - `setIsoWeek` now sets time to the start of the day
-  - `format` now uses `parse` to avoid time zone bugs
+- `differenceInCalendarDays`
 
-## v0.14.10 (29 Jul 2015)
+- `differenceInCalendarISOWeeks`
 
-* Additions:
-  - `compareAsc`
-  - `compareDesc`
-  - `addHours`
-  - `subHours`
-  - `isSameDay`
-  - `parse`
-  - `getISOYear`
-  - `setISOYear`
-  - `startOfISOYear`
-  - `getISOWeek`
-  - `setISOWeek`
-* Bug fixes:
-  - `format` now behaves correctly with 12:00 am
-  - `format` now behaves correctly with ordinal numbers
+- `differenceInCalendarISOYears`
 
-## v0.14.9 (14 Jan 2015)
+- `differenceInCalendarMonths`
 
-* Bug fixes:
-  - `addMonths` now correctly behaves with febrary (see [#18](https://github.com/js-fns/date-fns/pull/18))
+- `differenceInCalendarQuarters`
 
-## v0.14.8 (25 Dec 2014)
+- `differenceInCalendarWeeks`
 
-* Bug fixes:
-  - `format` function now behaves correctly with `pm`/`am`
+- `differenceInCalendarYears`
 
-## v0.14.6 (4 Dec 2014)
+- `differenceInHours`
 
-* Bug fixes:
-  - Fix broken Bower support
+- `differenceInISOYears`
 
-## v0.14.0 (5 Nov 2014)
+- `differenceInMilliseconds`
 
-* Additions:
-  - Bower package
+- `differenceInMinutes`
 
-## v0.13.0 (22 Oct 2014)
+- `differenceInMonths`
 
-* Additions:
-  - `addMinutes`
-  - `subMinutes`
-  - `isEqual`
-  - `isBefore`
-  - `isAfter`
+- `differenceInQuarters`
 
-## v0.12.1 (19 Oct 2014)
+- `differenceInSeconds`
 
-* Bug fixes:
-  - Incorrect rounding in `DDD` formatter
+- `differenceInWeeks`
 
-## v0.12.0 (15 Oct 2014)
+- `differenceInYears`
 
-* Additions:
-  - `isSameYear`
+- `distanceInWords`
 
-## v0.11.0 (15 Oct 2014)
+- `distanceInWordsToNow`
 
-* Additions:
-  - `isWithinRange`
+- `endOfISOWeek`
 
-## v0.10.0 (13 Oct 2014)
+- `endOfISOYear`
 
-* Additions:
-  - `format`
-  - `startOfYear`
+- `endOfToday`
 
-## v0.9.0 (10 Oct 2014)
+- `endOfTomorrow`
 
-* Additions:
-  - `isFuture`
-* Improvements:
-  - Simplify `isWeekend`
+- `endOfYesterday`
 
-## v0.8.0 (9 Oct 2014)
+- `getDaysInYear`
 
-* Additions:
-  - `addMonths`
-  - `subMonths`
-  - `setMonth`
-  - `setYear`
-* Improvements:
-  - Reuse `addDays` inside of `subDays`
+- `isFriday`
 
-## v0.7.0 (8 Oct 2014)
+- `isMonday`
 
-* Additions:
-  - `isSameWeek`
+- `isSameISOWeek`
 
-## v0.6.0 (7 Oct 2014)
+- `isSameISOYear`
 
-* Additions:
-  - `isFirstDayOfMonth`
-  - `isLastDayOfMonth`
-  - `isSameMonth`
-* Bug fixes:
-  - Inconsistent behavior of `endOfMonth`
+- `isSaturday`
 
-## v0.5.0 (7 Oct 2014)
+- `isSunday`
 
-* Additions:
-  - `addDays`
-  - `subDays`
+- `isThisHour`
 
-## v0.4.0 (7 Oct 2014)
+- `isThisISOWeek`
 
-* Additions:
-  - `startOfWeek`
-  - `endOfWeek`
-  - `eachDay`
+- `isThisISOYear`
 
-## v0.3.0 (6 Oct 2014)
+- `isThisMinute`
 
-* Additions:
-  - `endOfDay`
-  - `startOfMonth`
-  - `endOfMonth`
-* Improvements:
-  - `startOfDay` now sets milliseconds as well
+- `isThisMonth`
 
-## v0.2.0 (6 Oct 2014)
+- `isThisQuarter`
 
-* Additions:
-  - `isToday`
-  - `isWeekend`
+- `isThisSecond`
 
-## v0.1.0 (6 Oct 2014)
+- `isThisWeek`
 
-* Additions:
-  - `startOfDay`
+- `isThisYear`
 
+- `isThursday`
+
+- `isTomorrow`
+
+- `isTuesday`
+
+- `isValid`
+
+- `isWednesday`
+
+- `isYesterday`
+
+- `lastDayOfISOWeek`
+
+- `lastDayOfISOYear`
+
+- `startOfISOWeek`
+
+- `startOfToday`
+
+- `startOfTomorrow`
+
+- `startOfYesterday`
+
+- `subISOYears`
+
+- `validateDateArguments`
+
+- Add `Qo`, `W`, `Wo`, `WW`, `GG`, `GGGG`, `Z`, `ZZ`, `X`, `x` keys to `format`.
+
+## [0.17.0] - 2015-09-29
+
+### Fixed
+
+- Fix a lot of bugs appearing when date is modifying into other time zone
+  (e.g., when adding months and original date is in DST but new date is not).
+
+- Prevent instances of Date to lose milliseconds value when passed to.
+  `parse` in IE10.
+
+### Changed
+
+- `setISOWeek` now keeps time from original date.
+
+- *Internal*: reuse `getDaysInMonth` inside of `addMonths`.
+
+### Added
+
+- `differenceInDays`
+
+- `getTimeSinceMidnight`
+
+- `format` now has new format key `aa`, which returns `a.m.`/`p.m.`
+  as opposed to `a` that returns `am`/`pm`.
+
+- Complete UMD package (for Bower and CDN).
+
+## [0.16.0] - 2015-09-01
+
+### Changed
+
+- Use `parse` to clean date arguments in all functions.
+
+- `parse` now fallbacks to `new Date` when the argument
+  is not an ISO formatted date.
+
+- *Internal*: reuse `getDaysInMonth` inside of `setMonth`.
+
+### Added
+
+- `addQuarters`
+
+- `addWeeks`
+
+- `endOfQuarter`
+
+- `getDate`
+
+- `getDay`
+
+- `getDaysInMonth`
+
+- `getHours`
+
+- `getISOWeeksInYear`
+
+- `getMilliseconds`
+
+- `getMinutes`
+
+- `getMonth`
+
+- `getSeconds`
+
+- `getYear`
+
+- `isLeapYear`
+
+- `isSameHour`
+
+- `isSameMinute`
+
+- `isSameQuarter`
+
+- `isSameSecond`
+
+- `lastDayOfQuarter`
+
+- `lastDayOfWeek`
+
+- `max`
+
+- `min`
+
+- `setDate`
+
+- `setDay`
+
+- `setHours`
+
+- `setMilliseconds`
+
+- `setMinutes`
+
+- `setSeconds`
+
+- `startOfQuarter`
+
+- `subQuarters`
+
+- `subWeeks`
+
+## [0.15.0] - 2015-08-26
+
+### Changed
+
+- `format` now returns `a.m.`/`p.m.` instead of `am`/`pm`.
+
+- `setMonth` now sets last day of month if original date was last day
+  of longer month.
+
+- *Internal*: Fix code style according to ESLint.
+
+- *Internal*: Make tests run through all time zones.
+
+### Added
+
+- `getQuarter`
+
+- `setQuarter`
+
+- `getDayOfYear`
+
+- `setDayOfYear`
+
+- `isPast`
+
+- `addSeconds`
+
+- `subSeconds`
+
+- `startOfSecond`
+
+- `endOfSecond`
+
+- `startOfMinute`
+
+- `endOfMinute`
+
+- `addMilliseconds`
+
+- `subMilliseconds`
+
+- `endOfYear`
+
+- `addYears`
+
+- `subYears`
+
+- `lastDayOfYear`
+
+- `lastDayOfMonth`
+
+## [0.14.11] - 2015-08-21
+
+### Fixed
+
+- `format` now uses `parse` to avoid time zone bugs.
+
+### Changed
+
+- `setIsoWeek` now sets time to the start of the day.
+
+## [0.14.10] - 2015-07-29
+
+### Fixed
+
+- `format` now behaves correctly with 12:00 am.
+
+- `format` now behaves correctly with ordinal numbers.
+
+### Added
+
+- `compareAsc`
+
+- `compareDesc`
+
+- `addHours`
+
+- `subHours`
+
+- `isSameDay`
+
+- `parse`
+
+- `getISOYear`
+
+- `setISOYear`
+
+- `startOfISOYear`
+
+- `getISOWeek`
+
+- `setISOWeek`
+
+## [0.14.9] - 2015-01-14
+
+### Fixed
+
+- `addMonths` now correctly behaves with February
+  (see [#18](https://github.com/js-fns/date-fns/pull/18)).
+
+## [0.14.8] - 2014-12-25
+
+### Fixed
+
+- `format` function now behaves correctly with `pm`/`am`.
+
+## [0.14.6] - 2014-12-04
+
+### Fixed
+
+- Fix broken Bower support.
+
+## [0.14.0] - 2014-11-05
+
+### Added
+
+- Bower package.
+
+## [0.13.0] - 2014-10-22
+
+### Added
+
+- `addMinutes`
+
+- `subMinutes`
+
+- `isEqual`
+
+- `isBefore`
+
+- `isAfter`
+
+## [0.12.1] - 2014-10-19
+
+### Fixed
+
+- Incorrect rounding in `DDD` formatter.
+
+## [0.12.0] - 2014-10-15
+
+### Added
+
+- `isSameYear`
+
+## [0.11.0] - 2014-10-15
+
+### Added
+
+- `isWithinRange`
+
+## [0.10.0] - 2014-10-13
+
+### Added
+
+- `format`
+
+- `startOfYear`
+
+## [0.9.0] - 2014-10-10
+
+### Changed
+
+- *Internal*: simplify `isWeekend`
+
+### Added
+
+- `isFuture`
+
+## [0.8.0] - 2014-10-09
+
+### Changed
+
+- *Internal*: reuse `addDays` inside of `subDays`.
+
+### Added
+
+- `addMonths`
+
+- `subMonths`
+
+- `setMonth`
+
+- `setYear`
+
+## [0.7.0] - 2014-10-08
+
+### Added
+
+- `isSameWeek`
+
+## [0.6.0] - 2014-10-07
+
+### Fixed
+
+- Inconsistent behavior of `endOfMonth`.
+
+### Added
+
+- `isFirstDayOfMonth`
+
+- `isLastDayOfMonth`
+
+- `isSameMonth`
+
+## [0.5.0] - 2014-10-07
+
+### Added
+
+- `addDays`
+
+- `subDays`
+
+## [0.4.0] - 2014-10-07
+
+### Added
+
+- `startOfWeek`
+
+- `endOfWeek`
+
+- `eachDay`
+
+## [0.3.0] - 2014-10-06
+
+### Changed
+
+- `startOfDay` now sets milliseconds as well.
+
+### Added
+
+- `endOfDay`
+
+- `startOfMonth`
+
+- `endOfMonth`
+
+## [0.2.0] - 2014-10-06
+
+### Added
+
+- `isToday`
+
+- `isWeekend`
+
+## 0.1.0 - 2014-10-06
+
+### Added
+
+- `startOfDay`
+
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v0.17.0...HEAD
+[0.17.0]: https://github.com/date-fns/date-fns/compare/v0.16.0...v0.17.0
+[0.16.0]: https://github.com/date-fns/date-fns/compare/v0.15.0...v0.16.0
+[0.15.0]: https://github.com/date-fns/date-fns/compare/v0.14.11...v0.15.0
+[0.14.11]: https://github.com/date-fns/date-fns/compare/v0.14.10...v0.14.11
+[0.14.10]: https://github.com/date-fns/date-fns/compare/v0.14.9...v0.14.10
+[0.14.9]: https://github.com/date-fns/date-fns/compare/v0.14.8...v0.14.9
+[0.14.8]: https://github.com/date-fns/date-fns/compare/v0.14.6...v0.14.8
+[0.14.6]: https://github.com/date-fns/date-fns/compare/v0.14.0...v0.14.6
+[0.14.0]: https://github.com/date-fns/date-fns/compare/v0.13.0...v0.14.0
+[0.13.0]: https://github.com/date-fns/date-fns/compare/v0.12.1...v0.13.0
+[0.12.1]: https://github.com/date-fns/date-fns/compare/v0.12.0...v0.12.1
+[0.12.0]: https://github.com/date-fns/date-fns/compare/v0.11.0...v0.12.0
+[0.11.0]: https://github.com/date-fns/date-fns/compare/v0.10.0...v0.11.0
+[0.10.0]: https://github.com/date-fns/date-fns/compare/v0.9.0...v0.10.0
+[0.9.0]: https://github.com/date-fns/date-fns/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/date-fns/date-fns/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/date-fns/date-fns/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/date-fns/date-fns/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/date-fns/date-fns/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/date-fns/date-fns/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/date-fns/date-fns/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/date-fns/date-fns/compare/v0.1.0...v0.2.0
