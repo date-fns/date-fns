@@ -63,6 +63,7 @@ module.exports = {
   getYear: require('./get_year'),
   isAfter: require('./is_after'),
   isBefore: require('./is_before'),
+  isDate: require('./is_date'),
   isEqual: require('./is_equal'),
   isFirstDayOfMonth: require('./is_first_day_of_month'),
   isFriday: require('./is_friday'),
