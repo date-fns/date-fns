@@ -175,8 +175,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `subISOYears`
 
-- `validateDateArguments`
-
 - Add `Qo`, `W`, `Wo`, `WW`, `GG`, `GGGG`, `Z`, `ZZ`, `X`, `x` keys to `format`.
 
 ## [0.17.0] - 2015-09-29
