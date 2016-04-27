@@ -145,6 +145,5 @@ module.exports = {
   subQuarters: require('./sub_quarters'),
   subSeconds: require('./sub_seconds'),
   subWeeks: require('./sub_weeks'),
-  subYears: require('./sub_years'),
-  validateDateArguments: require('./validate_date_arguments')
+  subYears: require('./sub_years')
 }
