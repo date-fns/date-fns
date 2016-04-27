@@ -58,6 +58,21 @@ describe('validateDateArguments', function () {
       var result = validateDateArguments(Infinity)
       assert(result === false)
     })
+
+    it('considers true a number 1', function () {
+      var result = validateDateArguments(true)
+      assert(result === true)
+    })
+
+    it('considers false a number 0', function () {
+      var result = validateDateArguments(false)
+      assert(result === true)
+    })
+
+    it('considers null a number 1', function () {
+      var result = validateDateArguments(null)
+      assert(result === true)
+    })
   })
 
   describe('single argument is a string', function () {
@@ -148,7 +163,17 @@ describe('validateDateArguments', function () {
       assert(result === false)
     })
 
-    it('considers null a zero', function () {
+    it('considers true a number 1', function () {
+      var result = validateDateArguments(2014, 6 /* Jul */, 2, 6, true, 15, 500)
+      assert(result === true)
+    })
+
+    it('considers false a number 0', function () {
+      var result = validateDateArguments(2014, 6 /* Jul */, 2, 6, false, 15, 500)
+      assert(result === true)
+    })
+
+    it('considers null a number 0', function () {
       var result = validateDateArguments(2014, 6 /* Jul */, 2, 6, null, 15, 500)
       assert(result === true)
     })

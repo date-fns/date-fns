@@ -85,7 +85,7 @@ function validateDateArguments () {
     }
 
     if (!isNaN(arg)) {
-      return arg === date.getTime()
+      return validateTimestampArgument(arg, date.getTime())
     }
 
     return true
@@ -100,38 +100,28 @@ function validateDateArguments () {
     validateOptionalArgument(args[7], date.getMilliseconds(), length >= 7, 0)
 }
 
-function validateYearArgument (argument, value) {
-  if (argument === null) {
-    argument = 1900
-  }
+var validateTimestampArgument = validateMonthArgument
+
+function validateYearArgument (dirtyArgument, value) {
+  var argument = Number(dirtyArgument)
 
   if (argument >= 0 && argument < 100) {
     argument = 1900 + argument
   }
 
-  /* eslint-disable eqeqeq */
-  return argument == value
-  /* eslint-enable eqeqeq */
+  return argument === value
 }
 
-function validateMonthArgument (argument, value) {
-  if (argument === null) {
-    argument = 0
-  }
-
-  /* eslint-disable eqeqeq */
-  return argument == value
-  /* eslint-enable eqeqeq */
+function validateMonthArgument (dirtyArgument, value) {
+  return Number(dirtyArgument) === value
 }
 
-function validateOptionalArgument (argument, value, isProvided, defaultValue) {
-  if (value === defaultValue) {
-    return !isProvided || argument === null
+function validateOptionalArgument (dirtyArgument, value, isProvided, defaultValue) {
+  if (!isProvided) {
+    return defaultValue === value
   }
 
-  /* eslint-disable eqeqeq */
-  return argument == value
-  /* eslint-enable eqeqeq */
+  return Number(dirtyArgument) === value
 }
 
 module.exports = validateDateArguments
