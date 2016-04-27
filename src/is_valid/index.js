@@ -1,3 +1,5 @@
+var isDate = require('../is_date')
+
 /**
  * @category Common Helpers
  * @summary Is the given date valid?
@@ -23,7 +25,7 @@
  * //=> false
  */
 var isValid = function (date) {
-  if (date instanceof Date) {
+  if (isDate(date)) {
     return !isNaN((new Date(date)).getTime())
   } else {
     throw new TypeError(toString.call(date) + ' is not a date')

@@ -1,3 +1,5 @@
+var isDate = require('../is_date')
+
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -43,7 +45,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * //=> Tue Feb 11 2014 11:30:30
  */
 function parse (dateString) {
-  if (dateString instanceof Date) {
+  if (isDate(dateString)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(dateString.getTime())
   } else if (typeof dateString !== 'string') {

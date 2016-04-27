@@ -117,6 +117,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `getDaysInYear`
 
+- `isDate`
+
 - `isFriday`
 
 - `isMonday`
