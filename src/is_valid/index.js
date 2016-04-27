@@ -26,7 +26,7 @@ var isDate = require('../is_date')
  */
 var isValid = function (date) {
   if (isDate(date)) {
-    return !isNaN((new Date(date)).getTime())
+    return !isNaN(date)
   } else {
     throw new TypeError(toString.call(date) + ' is not a date')
   }
