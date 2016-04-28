@@ -19,7 +19,7 @@ var parse = require('../parse')
  * )
  * //=> 8
  */
-var differenceInCalendarMonths = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
   var dateRight = parse(dirtyDateRight)
 

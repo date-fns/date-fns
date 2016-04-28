@@ -17,7 +17,7 @@ var getDaysInMonth = require('../get_days_in_month')
  * var result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-var addMonths = function (dirtyDate, amount) {
+function addMonths (dirtyDate, amount) {
   var date = parse(dirtyDate)
   var desiredMonth = date.getMonth() + amount
   var daysInMonth = getDaysInMonth(new Date(date.getFullYear(), desiredMonth, 1))

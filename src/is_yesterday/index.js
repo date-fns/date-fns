@@ -15,7 +15,7 @@ var startOfDay = require('../start_of_day')
  * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
-var isYesterday = function (dirtyDate) {
+function isYesterday (dirtyDate) {
   var yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()

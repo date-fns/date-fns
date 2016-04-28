@@ -24,7 +24,7 @@ var isDate = require('../is_date')
  * var result = isValid(new Date(''))
  * //=> false
  */
-var isValid = function (date) {
+function isValid (date) {
   if (isDate(date)) {
     return !isNaN(date)
   } else {

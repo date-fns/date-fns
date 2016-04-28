@@ -20,7 +20,7 @@ var startOfSecond = require('../start_of_second')
  * )
  * //=> true
  */
-var isSameSecond = function (dirtyDateLeft, dirtyDateRight) {
+function isSameSecond (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
 

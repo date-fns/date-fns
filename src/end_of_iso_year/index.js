@@ -20,7 +20,7 @@ var startOfISOWeek = require('../start_of_iso_week')
  * var result = endOfISOYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
-var endOfISOYear = function (dirtyDate) {
+function endOfISOYear (dirtyDate) {
   var year = getISOYear(dirtyDate)
   var date = startOfISOWeek(new Date(year + 1, 0, 4))
   date.setMilliseconds(date.getMilliseconds() - 1)

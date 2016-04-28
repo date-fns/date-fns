@@ -20,7 +20,7 @@ var parse = require('../parse')
  * )
  * //=> Wed Feb 11 1987 00:00:00
  */
-var min = function () {
+function min () {
   var dirtyDates = Array.prototype.slice.call(arguments)
   var dates = dirtyDates.map(function (dirtyDate) {
     return parse(dirtyDate)

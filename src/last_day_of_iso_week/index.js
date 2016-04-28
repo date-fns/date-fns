@@ -18,7 +18,7 @@ var lastDayOfWeek = require('../last_day_of_week')
  * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 00:00:00
  */
-var lastDayOfISOWeek = function (dirtyDate) {
+function lastDayOfISOWeek (dirtyDate) {
   return lastDayOfWeek(dirtyDate, {weekStartsAt: 1})
 }
 

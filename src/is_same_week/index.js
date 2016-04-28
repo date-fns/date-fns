@@ -31,7 +31,7 @@ var startOfWeek = require('../start_of_week')
  * )
  * //=> false
  */
-var isSameWeek = function (dirtyDateLeft, dirtyDateRight, options) {
+function isSameWeek (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
 

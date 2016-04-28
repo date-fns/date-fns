@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-var endOfQuarter = function (dirtyDate) {
+function endOfQuarter (dirtyDate) {
   var date = parse(dirtyDate)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3

@@ -19,7 +19,7 @@ var startOfISOWeek = require('../start_of_iso_week')
  * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-var getISOYear = function (dirtyDate) {
+function getISOYear (dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   var startOfNextYear = startOfISOWeek(new Date(year + 1, 0, 4))

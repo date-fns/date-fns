@@ -34,7 +34,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 2
  */
-var differenceInCalendarWeeks = function (dirtyDateLeft, dirtyDateRight, options) {
+function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, options) {
   var startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
   var startOfWeekRight = startOfWeek(dirtyDateRight, options)
 

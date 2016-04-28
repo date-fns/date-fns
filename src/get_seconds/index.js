@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-var getSeconds = function (dirtyDate) {
+function getSeconds (dirtyDate) {
   var date = parse(dirtyDate)
   var seconds = date.getSeconds()
   return seconds

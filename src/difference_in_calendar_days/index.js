@@ -23,7 +23,7 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 366
  */
-var differenceInCalendarDays = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
   var startOfDayLeft = startOfDay(dirtyDateLeft)
   var startOfDayRight = startOfDay(dirtyDateRight)
 

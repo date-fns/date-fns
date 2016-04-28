@@ -16,7 +16,7 @@ var addMinutes = require('../add_minutes')
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-var subMinutes = function (dirtyDate, amount) {
+function subMinutes (dirtyDate, amount) {
   return addMinutes(dirtyDate, -amount)
 }
 

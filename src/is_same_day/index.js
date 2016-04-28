@@ -19,7 +19,7 @@ var startOfDay = require('../start_of_day')
  * )
  * //=> true
  */
-var isSameDay = function (dirtyDateLeft, dirtyDateRight) {
+function isSameDay (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
   var dateRightStartOfDay = startOfDay(dirtyDateRight)
 

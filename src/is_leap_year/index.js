@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-var isLeapYear = function (dirtyDate) {
+function isLeapYear (dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0

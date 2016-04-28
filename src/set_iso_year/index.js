@@ -21,7 +21,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days')
  * var result = setISOYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-var setISOYear = function (dirtyDate, isoYear) {
+function setISOYear (dirtyDate, isoYear) {
   var date = parse(dirtyDate)
   var diff = differenceInCalendarDays(date, startOfISOYear(date))
   date = startOfISOYear(new Date(isoYear, 0, 4))

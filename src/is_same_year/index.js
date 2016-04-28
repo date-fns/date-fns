@@ -19,7 +19,7 @@ var parse = require('../parse')
  * )
  * //=> true
  */
-var isSameYear = function (dirtyDateLeft, dirtyDateRight) {
+function isSameYear (dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
   var dateRight = parse(dirtyDateRight)
   return dateLeft.getFullYear() === dateRight.getFullYear()

@@ -24,7 +24,7 @@ var subISOYears = require('../sub_iso_years')
  * )
  * //=> 1
  */
-var differenceInISOYears = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInISOYears (dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
   var dateRight = parse(dirtyDateRight)
 

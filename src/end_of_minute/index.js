@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:59.999
  */
-var endOfMinute = function (dirtyDate) {
+function endOfMinute (dirtyDate) {
   var date = parse(dirtyDate)
   date.setSeconds(59, 999)
   return date

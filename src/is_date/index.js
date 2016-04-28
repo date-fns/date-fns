@@ -13,7 +13,7 @@
  * var result = isDate('mayonnaise')
  * //=> false
  */
-var isDate = function (argument) {
+function isDate (argument) {
   return argument instanceof Date
 }
 

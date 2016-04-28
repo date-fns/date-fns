@@ -83,7 +83,7 @@ var sauceLabsLaunchers = {
 
 var countFilename = './tmp/tests_count.txt'
 
-var countReporter = function () {
+function countReporter () {
   this.onRunComplete = function (_, results) {
     var runCount = results.success
 
@@ -103,7 +103,7 @@ var countReporter = function () {
   }
 }
 
-var config = function (config) {
+function config (config) {
   config.set({
     frameworks: ['mocha', 'sinon', 'es5-shim'],
     files: process.env.USE_STATIC_TESTS ? ['../tmp/tests.js'] : ['../test.js'],
