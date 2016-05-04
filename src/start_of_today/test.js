@@ -15,7 +15,7 @@ describe('startOfToday', function () {
     this.clock.restore()
   })
 
-  it('returns current date with time setted to 00:00:00', function () {
+  it('returns the current date with the time setted to 00:00:00', function () {
     var result = startOfToday()
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25))
   })

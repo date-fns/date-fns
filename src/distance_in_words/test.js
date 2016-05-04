@@ -5,7 +5,7 @@ var distanceInWords = require('./')
 
 describe('distanceInWords', function () {
   describe('seconds', function () {
-    context('when includeSeconds option is true', function () {
+    context('when the includeSeconds option is true', function () {
       it('less than 5 seconds', function () {
         var result = distanceInWords(
           new Date(1986, 3, 4, 10, 32, 0),

@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var startOfDay = require('./')
 
 describe('startOfDay', function () {
-  it('returns date with time setted to 00:00:00', function () {
+  it('returns the date with the time setted to 00:00:00', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = startOfDay(date)
     assert.deepEqual(result,
@@ -12,7 +12,7 @@ describe('startOfDay', function () {
     )
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = startOfDay(date)
     assert.deepEqual(result,
@@ -20,7 +20,7 @@ describe('startOfDay', function () {
     )
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = startOfDay(date)
     assert.deepEqual(result,
@@ -28,7 +28,7 @@ describe('startOfDay', function () {
     )
   })
 
-  it('does not mutate original date', function () {
+  it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     startOfDay(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))

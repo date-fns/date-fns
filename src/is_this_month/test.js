@@ -15,22 +15,22 @@ describe('isThisMonth', function () {
     this.clock.restore()
   })
 
-  it('returns true if given date and current date have same month (and year)', function () {
+  it('returns true if the given date and the current date have the same month (and year)', function () {
     var date = new Date(2014, 8 /* Sep */, 15)
     assert(isThisMonth(date) === true)
   })
 
-  it('returns false if given date and current date have different months', function () {
+  it('returns false if the given date and the current date have different months', function () {
     var date = new Date(2013, 7 /* Aug */, 31)
     assert(isThisMonth(date) === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 5).toISOString()
     assert(isThisMonth(date) === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 30).getTime()
     assert(isThisMonth(date) === true)
   })

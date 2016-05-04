@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var differenceInMonths = require('./')
 
 describe('differenceInMonths', function () {
-  it('returns number of full months between dates', function () {
+  it('returns the number of full months between the given dates', function () {
     var result = differenceInMonths(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
@@ -12,7 +12,7 @@ describe('differenceInMonths', function () {
     assert(result === 12)
   })
 
-  it('returns negative number if time value of first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', function () {
     var result = differenceInMonths(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
@@ -20,7 +20,7 @@ describe('differenceInMonths', function () {
     assert(result === -12)
   })
 
-  it('allows to pass strings', function () {
+  it('accepts strings', function () {
     var result = differenceInMonths(
       new Date(2000, 3 /* Apr */, 2).toISOString(),
       new Date(2000, 0 /* Jan */, 1).toISOString()
@@ -28,7 +28,7 @@ describe('differenceInMonths', function () {
     assert(result === 3)
   })
 
-  it('allows to pass timestamps', function () {
+  it('accepts timestamps', function () {
     var result = differenceInMonths(
       new Date(2014, 7 /* Aug */, 2).getTime(),
       new Date(2010, 6 /* Jul */, 2).getTime()
@@ -37,7 +37,7 @@ describe('differenceInMonths', function () {
   })
 
   describe('edge cases', function () {
-    it('difference is less than month, but dates are in different calendar months', function () {
+    it('the difference is less than a month, but the given dates are in different calendar months', function () {
       var result = differenceInMonths(
         new Date(2014, 7 /* Aug */, 1),
         new Date(2014, 6 /* Jul */, 31)
@@ -45,7 +45,7 @@ describe('differenceInMonths', function () {
       assert(result === 0)
     })
 
-    it('the same for swapped dates', function () {
+    it('the same for the swapped dates', function () {
       var result = differenceInMonths(
         new Date(2014, 6 /* Jul */, 31),
         new Date(2014, 7 /* Aug */, 1)
@@ -53,7 +53,7 @@ describe('differenceInMonths', function () {
       assert(result === 0)
     })
 
-    it('days of months of dates are the same', function () {
+    it('the days of months of the given dates are the same', function () {
       var result = differenceInMonths(
         new Date(2014, 8 /* Sep */, 6),
         new Date(2014, 7 /* Aug */, 6)
@@ -61,7 +61,7 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
-    it('dates are the same', function () {
+    it('the given dates are the same', function () {
       var result = differenceInMonths(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)

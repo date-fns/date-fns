@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var differenceInCalendarQuarters = require('./')
 
 describe('differenceInCalendarQuarters', function () {
-  it('returns number of calendar quarters between dates', function () {
+  it('returns the number of calendar quarters between the given dates', function () {
     var result = differenceInCalendarQuarters(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
@@ -12,7 +12,7 @@ describe('differenceInCalendarQuarters', function () {
     assert(result === 4)
   })
 
-  it('returns negative number if time value of first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', function () {
     var result = differenceInCalendarQuarters(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
@@ -20,7 +20,7 @@ describe('differenceInCalendarQuarters', function () {
     assert(result === -4)
   })
 
-  it('allows to pass strings', function () {
+  it('accepts strings', function () {
     var result = differenceInCalendarQuarters(
       new Date(2000, 11 /* Dec */, 31).toISOString(),
       new Date(2000, 0 /* Jan */, 1).toISOString()
@@ -28,7 +28,7 @@ describe('differenceInCalendarQuarters', function () {
     assert(result === 3)
   })
 
-  it('allows to pass timestamps', function () {
+  it('accepts timestamps', function () {
     var result = differenceInCalendarQuarters(
       new Date(2014, 9 /* Oct */, 2).getTime(),
       new Date(2010, 6 /* Jul */, 2).getTime()
@@ -37,7 +37,7 @@ describe('differenceInCalendarQuarters', function () {
   })
 
   describe('edge cases', function () {
-    it('difference is less than quarter, but dates are in different calendar quarters', function () {
+    it('the difference is less than a quarter, but the given dates are in different calendar quarters', function () {
       var result = differenceInCalendarQuarters(
         new Date(2014, 6 /* Jul */, 1),
         new Date(2014, 5 /* Jun */, 30)
@@ -45,7 +45,7 @@ describe('differenceInCalendarQuarters', function () {
       assert(result === 1)
     })
 
-    it('the same for swapped dates', function () {
+    it('the same for the swapped dates', function () {
       var result = differenceInCalendarQuarters(
         new Date(2014, 5 /* Jun */, 30),
         new Date(2014, 6 /* Jul */, 1)
@@ -53,7 +53,7 @@ describe('differenceInCalendarQuarters', function () {
       assert(result === -1)
     })
 
-    it('days of months of dates are the same', function () {
+    it('the days of months of the given dates are the same', function () {
       var result = differenceInCalendarQuarters(
         new Date(2014, 3 /* Apr */, 6),
         new Date(2014, 0 /* Jan */, 6)
@@ -61,7 +61,7 @@ describe('differenceInCalendarQuarters', function () {
       assert(result === 1)
     })
 
-    it('dates are the same', function () {
+    it('the given dates are the same', function () {
       var result = differenceInCalendarQuarters(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)

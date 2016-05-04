@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var differenceInCalendarYears = require('./')
 
 describe('differenceInCalendarYears', function () {
-  it('returns number of calendar years between dates', function () {
+  it('returns the number of calendar years between the given dates', function () {
     var result = differenceInCalendarYears(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
@@ -12,7 +12,7 @@ describe('differenceInCalendarYears', function () {
     assert(result === 1)
   })
 
-  it('returns negative number if time value of first date is smaller', function () {
+  it('returns a negative number if the time value of the first date is smaller', function () {
     var result = differenceInCalendarYears(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
@@ -20,7 +20,7 @@ describe('differenceInCalendarYears', function () {
     assert(result === -1)
   })
 
-  it('allows to pass strings', function () {
+  it('accepts strings', function () {
     var result = differenceInCalendarYears(
       new Date(2014, 0 /* Jan */, 1).toISOString(),
       new Date(2000, 0 /* Jan */, 1).toISOString()
@@ -28,7 +28,7 @@ describe('differenceInCalendarYears', function () {
     assert(result === 14)
   })
 
-  it('allows to pass timestamps', function () {
+  it('accepts timestamps', function () {
     var result = differenceInCalendarYears(
       new Date(2014, 6 /* Jul */, 2).getTime(),
       new Date(2010, 6 /* Jul */, 2).getTime()
@@ -37,7 +37,7 @@ describe('differenceInCalendarYears', function () {
   })
 
   describe('edge cases', function () {
-    it('difference is less than year, but dates are in different calendar years', function () {
+    it('the difference is less than a year, but the given dates are in different calendar years', function () {
       var result = differenceInCalendarYears(
         new Date(2015, 0 /* Jan */, 1),
         new Date(2014, 11 /* Dec */, 31)
@@ -45,7 +45,7 @@ describe('differenceInCalendarYears', function () {
       assert(result === 1)
     })
 
-    it('the same for swapped dates', function () {
+    it('the same for the swapped dates', function () {
       var result = differenceInCalendarYears(
         new Date(2014, 11 /* Dec */, 31),
         new Date(2015, 0 /* Jan */, 1)
@@ -53,7 +53,7 @@ describe('differenceInCalendarYears', function () {
       assert(result === -1)
     })
 
-    it('days and months of dates are the same', function () {
+    it('the days and months of the given dates are the same', function () {
       var result = differenceInCalendarYears(
         new Date(2014, 8 /* Sep */, 5),
         new Date(2012, 8 /* Sep */, 5)
@@ -61,7 +61,7 @@ describe('differenceInCalendarYears', function () {
       assert(result === 2)
     })
 
-    it('dates are the same', function () {
+    it('the given dates are the same', function () {
       var result = differenceInCalendarYears(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)

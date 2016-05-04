@@ -15,7 +15,7 @@ describe('endOfYesterday', function () {
     this.clock.restore()
   })
 
-  it('returns yesterday with time setted to 23:59:59.999', function () {
+  it('returns yesterday with the time setted to 23:59:59.999', function () {
     var result = endOfYesterday()
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 24, 23, 59, 59, 999))
   })

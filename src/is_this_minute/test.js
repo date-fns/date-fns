@@ -15,22 +15,22 @@ describe('isThisMinute', function () {
     this.clock.restore()
   })
 
-  it('returns true if given date and current date have same minute', function () {
+  it('returns true if the given date and the current date have the same minute', function () {
     var date = new Date(2014, 8 /* Sep */, 25, 18, 30)
     assert(isThisMinute(date) === true)
   })
 
-  it('returns false if given date and current date have different minutes', function () {
+  it('returns false if the given date and the current date have different minutes', function () {
     var date = new Date(2014, 8 /* Sep */, 25, 18, 31)
     assert(isThisMinute(date) === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 25, 18, 30, 59, 999).toISOString()
     assert(isThisMinute(date) === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 25, 18, 30, 30).getTime()
     assert(isThisMinute(date) === true)
   })

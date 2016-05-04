@@ -16,7 +16,7 @@ describe('distanceInWordsToNow', function () {
   })
 
   describe('seconds', function () {
-    context('when includeSeconds option is true', function () {
+    context('when the includeSeconds option is true', function () {
       it('less than 5 seconds', function () {
         var result = distanceInWordsToNow(
           new Date(1986, 3, 4, 10, 31, 58),
@@ -175,14 +175,14 @@ describe('distanceInWordsToNow', function () {
     })
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var result = distanceInWordsToNow(
       new Date(1986, 3, 4, 10, 31, 40).toISOString()
     )
     assert(result === 'less than a minute')
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var result = distanceInWordsToNow(
       new Date(1986, 3, 4, 10, 31, 40).getTime()
     )

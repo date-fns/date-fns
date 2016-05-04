@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var lastDayOfMonth = require('./')
 
 describe('lastDayOfMonth', function () {
-  it('returns date with time setted to 00:00:00 and date setted to last day of month', function () {
+  it('returns the date with the time setted to 00:00:00 and the date setted to the last day of a month', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfMonth(date)
     assert.deepEqual(result,
@@ -12,7 +12,7 @@ describe('lastDayOfMonth', function () {
     )
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 11 /* Dec */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfMonth(date)
     assert.deepEqual(result,
@@ -20,7 +20,7 @@ describe('lastDayOfMonth', function () {
     )
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 7 /* Aug */, 2, 11, 55, 0).getTime()
     var result = lastDayOfMonth(date)
     assert.deepEqual(result,
@@ -28,14 +28,14 @@ describe('lastDayOfMonth', function () {
     )
   })
 
-  it('does not mutate original date', function () {
+  it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfMonth(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   describe('edge cases', function () {
-    it('works for February of leap year', function () {
+    it('works for the February of a leap year', function () {
       var date = new Date(2012, 1 /* Feb */, 11, 11, 55, 0)
       var result = lastDayOfMonth(date)
       assert.deepEqual(result,
@@ -43,7 +43,7 @@ describe('lastDayOfMonth', function () {
       )
     })
 
-    it('works for February of non-leap year', function () {
+    it('works for the February of a non-leap year', function () {
       var date = new Date(2014, 1 /* Feb */, 11, 11, 55, 0)
       var result = lastDayOfMonth(date)
       assert.deepEqual(result,
