@@ -12,7 +12,7 @@ describe('startOfWeek', function () {
 
   it('allows to specify which day is the first day of the week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = startOfWeek(date, {weekStartsAt: 1})
+    var result = startOfWeek(date, {weekStartsOn: 1})
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
@@ -38,7 +38,7 @@ describe('startOfWeek', function () {
     context('when the given day is before the start of a week', function () {
       it('it returns the start of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 6)
-        var result = startOfWeek(date, {weekStartsAt: 3})
+        var result = startOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
       })
     })
@@ -46,7 +46,7 @@ describe('startOfWeek', function () {
     context('when the given day is the start of a week', function () {
       it('it returns the start of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 8)
-        var result = startOfWeek(date, {weekStartsAt: 3})
+        var result = startOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })
@@ -54,7 +54,7 @@ describe('startOfWeek', function () {
     context('when the given day is after the start of a week', function () {
       it('it returns the start of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 10)
-        var result = startOfWeek(date, {weekStartsAt: 3})
+        var result = startOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 8))
       })
     })

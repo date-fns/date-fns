@@ -36,7 +36,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - **BREAKING**: functions that had the last optional argument `weekStartsAt`
   (i.e. `endOfWeek`, `isSameWeek`, `lastDayOfWeek`, `setDay`, `startOfWeek`)
-  now instead receive an object `options` with property `options.weekStartsAt`
+  now instead receive an object `options` with property `options.weekStartsOn`
   as the last argument.
 
   ```javascript
@@ -44,7 +44,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
   var result = endOfWeek(new Date(2014, 8, 2), 1)
 
   // v1.0.0 onward
-  var result = endOfWeek(new Date(2014, 8, 2), {weekStartsAt: 1})
+  var result = endOfWeek(new Date(2014, 8, 2), {weekStartsOn: 1})
   ```
 
 - **BREAKING**: remove function `getTimeSinceMidnight` that was used inside of

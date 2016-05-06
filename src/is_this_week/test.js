@@ -27,7 +27,7 @@ describe('isThisWeek', function () {
 
   it('allows to specify which day is the first day of the week', function () {
     var date = new Date(2014, 8 /* Sep */, 28)
-    assert(isThisWeek(date, {weekStartsAt: 1}) === true)
+    assert(isThisWeek(date, {weekStartsOn: 1}) === true)
   })
 
   it('accepts a string', function () {

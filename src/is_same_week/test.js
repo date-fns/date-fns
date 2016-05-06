@@ -24,7 +24,7 @@ describe('isSameWeek', function () {
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
-      {weekStartsAt: 1}
+      {weekStartsOn: 1}
     )
     assert(result === false)
   })

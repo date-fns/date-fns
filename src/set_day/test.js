@@ -10,7 +10,7 @@ describe('setDay', function () {
   })
 
   it('allows to specify which day is the first day of the week', function () {
-    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {weekStartsAt: 1})
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {weekStartsOn: 1})
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 

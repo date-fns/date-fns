@@ -19,7 +19,7 @@ var startOfWeek = require('../start_of_week')
  * //=> Mon Sep 01 2014 00:00:00
  */
 function startOfISOWeek (dirtyDate) {
-  return startOfWeek(dirtyDate, {weekStartsAt: 1})
+  return startOfWeek(dirtyDate, {weekStartsOn: 1})
 }
 
 module.exports = startOfISOWeek

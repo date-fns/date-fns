@@ -13,7 +13,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of a week (0 - sunday)
  * @returns {Number} the number of calendar weeks
  *
  * @example
@@ -30,7 +30,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = differenceInCalendarWeeks(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 6, 5),
- *   {weekStartsAt: 1}
+ *   {weekStartsOn: 1}
  * )
  * //=> 2
  */
