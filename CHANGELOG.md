@@ -15,8 +15,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 - `format` now returns the correct result for key `E`.
 
 - Prevent `startOf...`, `endOf...` and `lastDayOf...` functions
-  to return dates with incorrect time when date is modifying
-  into an other time zone.
+  to return dates with an incorrect time when the date is modifying
+  into another time zone.
 
 - `parse` now parses years from 1 AD to 99 AD correctly.
 
@@ -36,7 +36,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - **BREAKING**: functions that had the last optional argument `weekStartsAt`
   (i.e. `endOfWeek`, `isSameWeek`, `lastDayOfWeek`, `setDay`, `startOfWeek`)
-  now instead receive an object `options` with property `options.weekStartsOn`
+  now instead receive the object `options` with the property `options.weekStartsOn`
   as the last argument.
 
   ```javascript
@@ -47,20 +47,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
   var result = endOfWeek(new Date(2014, 8, 2), {weekStartsOn: 1})
   ```
 
-- **BREAKING**: remove function `getTimeSinceMidnight` that was used inside of
+- **BREAKING**: remove the function `getTimeSinceMidnight` that was used inside
   the other functions.
 
 - **BREAKING**: `differenceInDays` now returns the number of full days instead
   of calendar days.
 
-- **BREAKING**: `eachDay` and `isWithinRange` now throws an exception
-  when given range boundaries are invalid.
+- **BREAKING**: `eachDay` and `isWithinRange` now throw an exception
+  when the given range boundaries are invalid.
 
 - Faster `isLeapYear`.
 
 - *Internal*: make the documentation more verbose.
 
-- *Internal*: convert tests from Chai to power-assert allowing them
+- *Internal*: convert the tests from Chai to power-assert allowing them
   to run against IE8.
 
 ### Added
