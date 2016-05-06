@@ -11,7 +11,7 @@ var addDays = require('../add_days')
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} day - the day of the week of the new date
  * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of a week (0 - sunday)
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the new date with the day of the week setted
  *
  * @example

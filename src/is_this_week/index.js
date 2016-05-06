@@ -9,7 +9,7 @@ var isSameWeek = require('../is_same_week')
  *
  * @param {Date|String|Number} date - the date to check
  * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of a week (0 - sunday)
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Boolean} the date is in this week
  *
  * @example
