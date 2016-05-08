@@ -22,11 +22,11 @@ export default {
   staticDocs: [
     {
       type: 'markdown',
-      urlId: 'README',
+      urlId: 'Getting Started',
       category: 'General',
-      title: 'README',
+      title: 'Getting Started',
       description: 'Introduction & installation instructions',
-      path: path.join(__dirname, '..', 'README.md')
+      path: path.join(__dirname, 'getting_started.md')
     },
     {
       type: 'markdown',
