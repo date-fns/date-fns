@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-var startOfSecond = function (dirtyDate) {
+function startOfSecond (dirtyDate) {
   var date = parse(dirtyDate)
   date.setMilliseconds(0)
   return date

@@ -9,7 +9,7 @@ describe('isDate', function () {
     assert(result === true)
   })
 
-  it('returns true if the given argument is invalid Date', function () {
+  it('returns true if the given argument is an invalid Date', function () {
     var result = isDate(new Date(''))
     assert(result === true)
   })

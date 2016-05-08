@@ -21,7 +21,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * )
  * //=> 12
  */
-var differenceInHours = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInHours (dirtyDateLeft, dirtyDateRight) {
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_HOUR
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

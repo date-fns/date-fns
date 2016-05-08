@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var min = require('./')
 
 describe('min', function () {
-  it('returns earliest date', function () {
+  it('returns the earliest date', function () {
     var result = min(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)

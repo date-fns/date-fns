@@ -70,7 +70,7 @@ var parse = require('../parse')
  * )
  * //=> '02/11/2014'
  */
-var format = function (dirtyDate, format) {
+function format (dirtyDate, format) {
   var date = parse(dirtyDate)
 
   if (!format) {
@@ -292,7 +292,7 @@ var formattingTokensRegexp = new RegExp(
   '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
 )
 
-var makeFormatFunction = function (format) {
+function makeFormatFunction (format) {
   var array = format.match(formattingTokensRegexp)
   var length = array.length
 
@@ -317,14 +317,14 @@ var makeFormatFunction = function (format) {
   }
 }
 
-var removeFormattingTokens = function (input) {
+function removeFormattingTokens (input) {
   if (input.match(/\[[\s\S]/)) {
     return input.replace(/^\[|\]$/g, '')
   }
   return input.replace(/\\/g, '')
 }
 
-var addLeadingZeros = function (number, targetLength) {
+function addLeadingZeros (number, targetLength) {
   var output = String(Math.abs(number))
 
   while (output.length < targetLength) {
@@ -333,7 +333,7 @@ var addLeadingZeros = function (number, targetLength) {
   return output
 }
 
-var formatTimezone = function (offset, delimeter) {
+function formatTimezone (offset, delimeter) {
   delimeter = delimeter || ''
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)

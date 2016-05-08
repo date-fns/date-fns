@@ -20,7 +20,7 @@ var parse = require('../parse')
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-var closestTo = function (dirtyDateToCompare, dirtyDatesArray) {
+function closestTo (dirtyDateToCompare, dirtyDatesArray) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an array')
   }

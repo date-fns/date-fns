@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var eachDay = require('./')
 
 describe('eachDay', function () {
-  it('returns array of dates within specified range', function () {
+  it('returns an array with the start of the each day within the specified range', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 12)
@@ -52,7 +52,7 @@ describe('eachDay', function () {
     ])
   })
 
-  it('throws exception if start date is after end date', function () {
+  it('throws an exception if the start date is after the end date', function () {
     var block = eachDay.bind(
       null,
       new Date(2014, 9 /* Oct */, 12),

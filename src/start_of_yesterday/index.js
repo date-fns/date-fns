@@ -12,7 +12,7 @@
  * var result = startOfYesterday()
  * //=> Sun Oct 5 2014 00:00:00
  */
-var startOfYesterday = function () {
+function startOfYesterday () {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-var addDays = function (dirtyDate, amount) {
+function addDays (dirtyDate, amount) {
   var date = parse(dirtyDate)
   date.setDate(date.getDate() + amount)
   return date

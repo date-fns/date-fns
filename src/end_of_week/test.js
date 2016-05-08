@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var endOfWeek = require('./')
 
 describe('endOfWeek', function () {
-  it('returns date with time setted to 23:59:59:999 and date setted to last day of week', function () {
+  it('returns the date with the time setted to 23:59:59:999 and the date setted to the last day of a week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date)
     assert.deepEqual(result,
@@ -12,15 +12,15 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('allows to pass when a week starts', function () {
+  it('allows to specify which day is the first day of the week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = endOfWeek(date, {weekStartsAt: 1})
+    var result = endOfWeek(date, {weekStartsOn: 1})
     assert.deepEqual(result,
       new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
     )
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = endOfWeek(date)
     assert.deepEqual(result,
@@ -28,7 +28,7 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     var result = endOfWeek(date)
     assert.deepEqual(result,
@@ -36,40 +36,40 @@ describe('endOfWeek', function () {
     )
   })
 
-  it('does not mutate original date', function () {
+  it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     endOfWeek(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   describe('edge cases', function () {
-    context('when current day value is less than start of week', function () {
-      it('it returns end of week', function () {
+    context('when the given day is before the start of a week', function () {
+      it('it returns the end of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 6)
-        var result = endOfWeek(date, {weekStartsAt: 3})
+        var result = endOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 7, 23, 59, 59, 999))
       })
     })
 
-    context('when current day value is equal to start of week', function () {
-      it('it returns end of week', function () {
+    context('when the given day is the start of a week', function () {
+      it('it returns the end of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 8)
-        var result = endOfWeek(date, {weekStartsAt: 3})
+        var result = endOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14, 23, 59, 59, 999))
       })
     })
 
-    context('when current day value is bigger than start of week', function () {
-      it('it returns end of week', function () {
+    context('when the given day is after the start of a week', function () {
+      it('it returns the end of a week', function () {
         var date = new Date(2014, 9 /* Oct */, 10)
-        var result = endOfWeek(date, {weekStartsAt: 3})
+        var result = endOfWeek(date, {weekStartsOn: 3})
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14, 23, 59, 59, 999))
       })
     })
 
-    context('with end of year', function () {
+    it('handles the week at the end of a year', function () {
       var date = new Date(2014, 11 /* Dec */, 29)
-      var result = endOfWeek(date, {weekStartsAt: 5})
+      var result = endOfWeek(date, {weekStartsOn: 5})
       assert.deepEqual(result, new Date(2015, 0 /* Jan */, 1, 23, 59, 59, 999))
     })
   })

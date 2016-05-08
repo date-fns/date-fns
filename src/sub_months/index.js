@@ -16,7 +16,7 @@ var addMonths = require('../add_months')
  * var result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-var subMonths = function (dirtyDate, amount) {
+function subMonths (dirtyDate, amount) {
   return addMonths(dirtyDate, -amount)
 }
 

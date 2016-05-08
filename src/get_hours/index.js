@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-var getHours = function (dirtyDate) {
+function getHours (dirtyDate) {
   var date = parse(dirtyDate)
   var hours = date.getHours()
   return hours

@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var isSameYear = require('./')
 
 describe('isSameYear', function () {
-  it('returns true if given dates have same year', function () {
+  it('returns true if the given dates have the same year', function () {
     var result = isSameYear(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25)
@@ -12,7 +12,7 @@ describe('isSameYear', function () {
     assert(result === true)
   })
 
-  it('returns false if given dates have different years', function () {
+  it('returns false if the given dates have different years', function () {
     var result = isSameYear(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25)
@@ -20,7 +20,7 @@ describe('isSameYear', function () {
     assert(result === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var result = isSameYear(
       new Date(2014, 8 /* Sep */, 2).toISOString(),
       new Date(2014, 8 /* Sep */, 25).toISOString()
@@ -28,7 +28,7 @@ describe('isSameYear', function () {
     assert(result === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var result = isSameYear(
       new Date(2014, 8 /* Sep */, 2).getTime(),
       new Date(2014, 8 /* Sep */, 25).getTime()

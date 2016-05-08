@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-var getDaysInMonth = function (dirtyDate) {
+function getDaysInMonth (dirtyDate) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()

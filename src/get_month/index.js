@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-var getMonth = function (dirtyDate) {
+function getMonth (dirtyDate) {
   var date = parse(dirtyDate)
   var month = date.getMonth()
   return month

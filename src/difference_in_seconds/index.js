@@ -20,7 +20,7 @@ var differenceInMilliseconds = require('../difference_in_milliseconds')
  * )
  * //=> 12
  */
-var differenceInSeconds = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInSeconds (dirtyDateLeft, dirtyDateRight) {
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

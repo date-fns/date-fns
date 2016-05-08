@@ -21,7 +21,7 @@ var compareAsc = require('../compare_asc')
  * )
  * //=> 1
  */
-var differenceInYears = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInYears (dirtyDateLeft, dirtyDateRight) {
   var dateLeft = parse(dirtyDateLeft)
   var dateRight = parse(dirtyDateRight)
 

@@ -15,22 +15,22 @@ describe('isToday', function () {
     this.clock.restore()
   })
 
-  it('returns true if given date is today', function () {
+  it('returns true if the given date is today', function () {
     var result = isToday(new Date(2014, 8 /* Sep */, 25))
     assert(result === true)
   })
 
-  it('returns false if given date is not today', function () {
+  it('returns false if the given date is not today', function () {
     var result = isToday(new Date(2014, 8 /* Sep */, 26))
     assert(result === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var result = isToday(new Date(2014, 8 /* Sep */, 25).toString())
     assert(result === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var result = isToday(new Date(2014, 8 /* Sep */, 25).getTime())
     assert(result === true)
   })

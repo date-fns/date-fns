@@ -66,7 +66,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'less than 20 seconds'
  */
-var distanceInWords = function (dirtyDateFrom, dirtyDateTo, options) {
+function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
   var dateTo, dateFrom
   if (isBefore(dirtyDateFrom, dirtyDateTo)) {
     dateFrom = parse(dirtyDateFrom)
@@ -161,7 +161,7 @@ var distanceInWords = function (dirtyDateFrom, dirtyDateTo, options) {
   }
 }
 
-var translate = function (token, count) {
+function translate (token, count) {
   if (count === undefined) {
     return locale[token]
   } else if (count === 1) {

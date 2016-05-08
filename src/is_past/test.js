@@ -15,27 +15,27 @@ describe('isPast', function () {
     this.clock.restore()
   })
 
-  it('returns true if given date is in past', function () {
+  it('returns true if the given date is in the past', function () {
     var result = isPast(new Date(2014, 6 /* Jul */, 2))
     assert(result === true)
   })
 
-  it('returns false if given date is in future', function () {
+  it('returns false if the given date is in the future', function () {
     var result = isPast(new Date(2014, 11 /* Dec */, 31))
     assert(result === false)
   })
 
-  it('returns false if given date is current date', function () {
+  it('returns false if the given date is now', function () {
     var result = isPast(new Date(2014, 8 /* Sep */, 25))
     assert(result === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var result = isPast(new Date(2014, 6 /* Jul */, 2).toISOString())
     assert(result === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var result = isPast(new Date(2014, 6 /* Jul */, 2).getTime())
     assert(result === true)
   })

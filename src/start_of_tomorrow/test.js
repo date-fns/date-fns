@@ -15,7 +15,7 @@ describe('startOfTomorrow', function () {
     this.clock.restore()
   })
 
-  it('returns start of tomorrow', function () {
+  it('returns the start of tomorrow', function () {
     var result = startOfTomorrow()
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 26))
   })

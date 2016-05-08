@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var max = require('./')
 
 describe('max', function () {
-  it('returns latest date', function () {
+  it('returns the latest date', function () {
     var result = max(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)

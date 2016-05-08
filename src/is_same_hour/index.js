@@ -19,7 +19,7 @@ var startOfHour = require('../start_of_hour')
  * )
  * //=> true
  */
-var isSameHour = function (dirtyDateLeft, dirtyDateRight) {
+function isSameHour (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
   var dateRightStartOfHour = startOfHour(dirtyDateRight)
 

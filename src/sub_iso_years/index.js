@@ -18,7 +18,7 @@ var addISOYears = require('../add_iso_years')
  * var result = subISOYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-var subISOYears = function (dirtyDate, amount) {
+function subISOYears (dirtyDate, amount) {
   return addISOYears(dirtyDate, -amount)
 }
 

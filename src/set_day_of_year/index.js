@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-var setDayOfYear = function (dirtyDate, dayOfYear) {
+function setDayOfYear (dirtyDate, dayOfYear) {
   var date = parse(dirtyDate)
   date.setMonth(0)
   date.setDate(dayOfYear)

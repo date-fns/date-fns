@@ -14,7 +14,7 @@ var endOfDay = require('../end_of_day')
  * var result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
-var endOfToday = function () {
+function endOfToday () {
   return endOfDay(new Date())
 }
 

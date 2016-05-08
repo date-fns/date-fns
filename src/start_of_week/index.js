@@ -10,7 +10,7 @@ var parse = require('../parse')
  *
  * @param {Date|String|Number} date - the original date
  * @param {Object} [options] - the object with options
- * @param {Number} [options.weekStartsAt=0] - the index of the first day of a week (0 - sunday)
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the start of a week
  *
  * @example
@@ -20,15 +20,15 @@ var parse = require('../parse')
  *
  * @example
  * // If week starts at Monday, the start of a week for 2 September 2014 11:55:00:
- * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsAt: 1})
+ * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */
-var startOfWeek = function (dirtyDate, options) {
-  var weekStartsAt = options ? (options.weekStartsAt || 0) : 0
+function startOfWeek (dirtyDate, options) {
+  var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
   var date = parse(dirtyDate)
   var day = date.getDay()
-  var diff = (day < weekStartsAt ? 7 : 0) + day - weekStartsAt
+  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 
   date.setDate(date.getDate() - diff)
   date.setHours(0, 0, 0, 0)

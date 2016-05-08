@@ -20,7 +20,7 @@ var startOfMinute = require('../start_of_minute')
  * )
  * //=> true
  */
-var isSameMinute = function (dirtyDateLeft, dirtyDateRight) {
+function isSameMinute (dirtyDateLeft, dirtyDateRight) {
   var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
   var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
 

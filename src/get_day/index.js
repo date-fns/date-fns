@@ -15,7 +15,7 @@ var parse = require('../parse')
  * var result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-var getDay = function (dirtyDate) {
+function getDay (dirtyDate) {
   var date = parse(dirtyDate)
   var day = date.getDay()
   return day

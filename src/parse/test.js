@@ -4,21 +4,21 @@ var assert = require('power-assert')
 var parse = require('./')
 
 describe('parse', function () {
-  describe('year', function () {
+  describe('years', function () {
     it('parses YYYY', function () {
       var result = parse('2014')
       assert.deepEqual(result, new Date(2014, 0 /* Jan */, 1))
     })
   })
 
-  describe('month', function () {
+  describe('months', function () {
     it('parses YYYY-MM', function () {
       var result = parse('2014-02')
       assert.deepEqual(result, new Date(2014, 1 /* Feb */, 1))
     })
   })
 
-  describe('week', function () {
+  describe('weeks', function () {
     it('parses YYYY-Www', function () {
       var result = parse('2014-W02')
       assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
@@ -30,7 +30,7 @@ describe('parse', function () {
     })
   })
 
-  describe('calendar date', function () {
+  describe('calendar dates', function () {
     it('parses YYYY-MM-DD', function () {
       var result = parse('2014-02-11')
       assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
@@ -42,7 +42,7 @@ describe('parse', function () {
     })
   })
 
-  describe('week date', function () {
+  describe('week dates', function () {
     it('parses YYYY-Www-D', function () {
       var result = parse('2014-W02-7')
       assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
@@ -54,7 +54,7 @@ describe('parse', function () {
     })
   })
 
-  describe('ordinal date', function () {
+  describe('ordinal dates', function () {
     it('parses YYYY-DDD', function () {
       var result = parse('2014-026')
       assert.deepEqual(result, new Date(2014, 0 /* Jan */, 26))
@@ -66,7 +66,7 @@ describe('parse', function () {
     })
   })
 
-  describe('date and time combined', function () {
+  describe('a date and a time combined', function () {
     it('parses YYYY-MM-DDThh:mm', function () {
       var result = parse('2014-02-11T11:30')
       assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
@@ -83,7 +83,7 @@ describe('parse', function () {
     })
   })
 
-  describe('extended year representation', function () {
+  describe('an extended year representation', function () {
     it('correctly parses years from 1 AD to 99 AD', function () {
       var result = parse('0095-07-02')
       var date = new Date(0, 6 /* Jul */, 2)
@@ -111,7 +111,7 @@ describe('parse', function () {
     })
   })
 
-  describe('float time', function () {
+  describe('a float time', function () {
     it('parses float hours', function () {
       var result = parse('2014-02-11T11.5')
       assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
@@ -133,8 +133,8 @@ describe('parse', function () {
     })
   })
 
-  describe('time zone', function () {
-    context('when date and time are specified', function () {
+  describe('timezones', function () {
+    context('when the date and the time are specified', function () {
       it('parses Z', function () {
         var result = parse('2014-10-25T06:46:20Z')
         assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
@@ -157,8 +157,8 @@ describe('parse', function () {
     })
   })
 
-  describe('failure', function () {
-    it('fallback to `new Date` if string is not an ISO formatted date', function () {
+  describe('a failure', function () {
+    it('the fallback to `new Date` if the string is not an ISO formatted date', function () {
       var result = parse(new Date(2014, 8 /* Sep */, 1, 11).toString())
       assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11))
     })

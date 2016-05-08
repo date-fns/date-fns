@@ -16,7 +16,7 @@ var parse = require('../parse')
  * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-var addHours = function (dirtyDate, amount) {
+function addHours (dirtyDate, amount) {
   var date = parse(dirtyDate)
   date.setHours(date.getHours() + amount)
   return date

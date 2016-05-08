@@ -15,22 +15,22 @@ describe('isThisQuarter', function () {
     this.clock.restore()
   })
 
-  it('returns true if given date and current date have same quarter (and year)', function () {
+  it('returns true if the given date and the current date have the same quarter (and year)', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
     assert(isThisQuarter(date) === true)
   })
 
-  it('returns false if given date and current date have different quarters', function () {
+  it('returns false if the given date and the current date have different quarters', function () {
     var date = new Date(2014, 1 /* Feb */, 11)
     assert(isThisQuarter(date) === false)
   })
 
-  it('accepts string', function () {
+  it('accepts a string', function () {
     var date = new Date(2014, 6 /* Jul */, 2).toISOString()
     assert(isThisQuarter(date) === true)
   })
 
-  it('accepts timestamp', function () {
+  it('accepts a timestamp', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     assert(isThisQuarter(date) === true)
   })

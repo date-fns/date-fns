@@ -16,7 +16,7 @@ var addDays = require('../add_days')
  * var result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-var addWeeks = function (dirtyDate, amount) {
+function addWeeks (dirtyDate, amount) {
   var days = amount * 7
   return addDays(dirtyDate, days)
 }

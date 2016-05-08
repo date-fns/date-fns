@@ -21,7 +21,7 @@ var getISOYear = require('../get_iso_year')
  * )
  * //=> 2
  */
-var differenceInCalendarISOYears = function (dirtyDateLeft, dirtyDateRight) {
+function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {
   return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight)
 }
 
