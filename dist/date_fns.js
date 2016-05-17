@@ -1711,13 +1711,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var startOfDay = __webpack_require__(12);
+	var startOfISOWeek = __webpack_require__(7);
 	var startOfISOYear = __webpack_require__(10);
 	var MILLISECONDS_IN_WEEK = 604800000;
 	function getISOWeek(dirtyDate) {
 	    var date = parse(dirtyDate);
-	    var diff = startOfDay(date).getTime() - startOfISOYear(date).getTime();
-	    return Math.floor(diff / MILLISECONDS_IN_WEEK) + 1;
+	    var diff = startOfISOWeek(date).getTime() - startOfISOYear(date).getTime();
+	    return Math.round(diff / MILLISECONDS_IN_WEEK) + 1;
 	}
 	module.exports = getISOWeek;
 	
