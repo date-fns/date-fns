@@ -22,7 +22,7 @@ export default {
   staticDocs: [
     {
       type: 'markdown',
-      urlId: 'Getting Started',
+      urlId: 'Getting-Started',
       category: 'General',
       title: 'Getting Started',
       description: 'Introduction & installation instructions',
