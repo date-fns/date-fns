@@ -16,7 +16,7 @@
 
 - [Documentation](#documentation)
 
-  - [Generate Project Stats](#jsdoc)
+  - [JSDoc](#jsdoc)
 
 ## How to Help?
 
