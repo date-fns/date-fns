@@ -28,7 +28,7 @@ function isValid (date) {
   if (isDate(date)) {
     return !isNaN(date)
   } else {
-    throw new TypeError(toString.call(date) + ' is not a date')
+    throw new TypeError(toString.call(date) + ' is not an instance of Date')
   }
 }
 
