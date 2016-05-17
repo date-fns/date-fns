@@ -8,7 +8,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [Semantic Versioning]: http://semver.org/
 [Keep a CHANGELOG]: http://keepachangelog.com/
 
-## [Unreleased]
+## [1.0.0]
 
 ### Fixed
 
@@ -19,6 +19,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
   into another time zone.
 
 - `parse` now parses years from 1 AD to 99 AD correctly.
+
+- Fix a bug in `getISOWeek` appearing because of a changing time zone
+  (e.g., when the given date is in DST and the start of the ISO year is not).
 
 ### Changed
 
