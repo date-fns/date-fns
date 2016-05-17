@@ -5,7 +5,7 @@ var parse = require('../parse')
  * @summary Return the last day of a year quarter for the given date.
  *
  * @description
- * Return the last day of a quarter for the given date.
+ * Return the last day of a year quarter for the given date.
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date

@@ -3,7 +3,7 @@ var setMonth = require('../set_month')
 
 /**
  * @category Quarter Helpers
- * @summary Set the year quarter.
+ * @summary Set the year quarter to the given date.
  *
  * @description
  * Set the year quarter to the given date.

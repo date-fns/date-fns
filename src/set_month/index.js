@@ -3,7 +3,7 @@ var getDaysInMonth = require('../get_days_in_month')
 
 /**
  * @category Month Helpers
- * @summary Set the month.
+ * @summary Set the month to the given date.
  *
  * @description
  * Set the month to the given date.

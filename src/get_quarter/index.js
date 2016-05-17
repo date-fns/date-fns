@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Quarter Helpers
- * @summary Get the year quarter.
+ * @summary Get the year quarter of the given date.
  *
  * @description
  * Get the year quarter of the given date.

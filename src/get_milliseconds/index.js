@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Millisecond Helpers
- * @summary Get the milliseconds.
+ * @summary Get the milliseconds of the given date.
  *
  * @description
  * Get the milliseconds of the given date.

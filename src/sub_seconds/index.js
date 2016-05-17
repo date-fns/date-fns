@@ -2,7 +2,7 @@ var addSeconds = require('../add_seconds')
 
 /**
  * @category Second Helpers
- * @summary Subtract the seconds from the given date.
+ * @summary Subtract the specified number of seconds from the given date.
  *
  * @description
  * Subtract the specified number of seconds from the given date.
