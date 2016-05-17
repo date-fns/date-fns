@@ -31,6 +31,15 @@ describe('isWithinRange', function () {
     assert(result === true)
   })
 
+  it('returns true if the given date and the both boundaries are the same', function () {
+    var result = isWithinRange(
+      new Date(2014, 11 /* Dec */, 31),
+      new Date(2014, 11 /* Dec */, 31),
+      new Date(2014, 11 /* Dec */, 31)
+    )
+    assert(result === true)
+  })
+
   it('returns false if the given date is outside of the range', function () {
     var result = isWithinRange(
       new Date(2014, 1 /* Feb */, 11),

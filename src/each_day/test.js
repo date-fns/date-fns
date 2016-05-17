@@ -4,7 +4,7 @@ var assert = require('power-assert')
 var eachDay = require('./')
 
 describe('eachDay', function () {
-  it('returns an array with the start of the each day within the specified range', function () {
+  it('returns an array with starts of days from the day of the start date to the day of the end date', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 12)
@@ -49,6 +49,42 @@ describe('eachDay', function () {
       new Date(2014, 9 /* Oct */, 10),
       new Date(2014, 9 /* Oct */, 11),
       new Date(2014, 9 /* Oct */, 12)
+    ])
+  })
+
+  it('handles the dates that are not starts of days', function () {
+    var result = eachDay(
+      new Date(2014, 9 /* Oct */, 6, 6, 35),
+      new Date(2014, 9 /* Oct */, 12, 22, 15)
+    )
+    assert.deepEqual(result, [
+      new Date(2014, 9 /* Oct */, 6),
+      new Date(2014, 9 /* Oct */, 7),
+      new Date(2014, 9 /* Oct */, 8),
+      new Date(2014, 9 /* Oct */, 9),
+      new Date(2014, 9 /* Oct */, 10),
+      new Date(2014, 9 /* Oct */, 11),
+      new Date(2014, 9 /* Oct */, 12)
+    ])
+  })
+
+  it('returns one day if the both arguments are on the same day', function () {
+    var result = eachDay(
+      new Date(2014, 9 /* Oct */, 6, 14),
+      new Date(2014, 9 /* Oct */, 6, 15)
+    )
+    assert.deepEqual(result, [
+      new Date(2014, 9 /* Oct */, 6)
+    ])
+  })
+
+  it('returns one day if the both arguments are the same', function () {
+    var result = eachDay(
+      new Date(2014, 9 /* Oct */, 6, 14),
+      new Date(2014, 9 /* Oct */, 6, 14)
+    )
+    assert.deepEqual(result, [
+      new Date(2014, 9 /* Oct */, 6)
     ])
   })
 
