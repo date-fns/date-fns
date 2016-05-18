@@ -677,7 +677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var parse = __webpack_require__(2);
 	function closestTo(dirtyDateToCompare, dirtyDatesArray) {
 	    if (!(dirtyDatesArray instanceof Array)) {
-	        throw new TypeError(toString.call(dirtyDatesArray) + ' is not an array');
+	        throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array');
 	    }
 	    var dateToCompare = parse(dirtyDateToCompare);
 	    var timeToCompare = dateToCompare.getTime();
@@ -1196,7 +1196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var endDate = parse(dirtyEndDate);
 	    var endTime = endDate.getTime();
 	    if (startDate.getTime() > endTime) {
-	        throw new Error('The end of range must have a time value greater than a time value of the start of range');
+	        throw new Error('The first date cannot be after the second date');
 	    }
 	    var dates = [];
 	    var currentDate = startDate;
@@ -2369,7 +2369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (isDate(date)) {
 	        return !isNaN(date);
 	    } else {
-	        throw new TypeError(toString.call(date) + ' is not a date');
+	        throw new TypeError(toString.call(date) + ' is not an instance of Date');
 	    }
 	}
 	module.exports = isValid;
@@ -2412,7 +2412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var startTime = parse(dirtyStartDate).getTime();
 	    var endTime = parse(dirtyEndDate).getTime();
 	    if (startTime > endTime) {
-	        throw new Error('The end of range must have a time value greater than a time value of the start of range');
+	        throw new Error('The start of the range cannot be after the end of the range');
 	    }
 	    return time >= startTime && time <= endTime;
 	}
