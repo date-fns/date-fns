@@ -2,7 +2,7 @@ var addMinutes = require('../add_minutes')
 
 /**
  * @category Minute Helpers
- * @summary Subtract the minutes from the given date.
+ * @summary Subtract the specified number of minutes from the given date.
  *
  * @description
  * Subtract the specified number of minutes from the given date.

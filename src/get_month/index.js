@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Month Helpers
- * @summary Get the month.
+ * @summary Get the month of the given date.
  *
  * @description
  * Get the month of the given date.

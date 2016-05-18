@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Day Helpers
- * @summary Get the day of the month.
+ * @summary Get the day of the month of the given date.
  *
  * @description
  * Get the day of the month of the given date.

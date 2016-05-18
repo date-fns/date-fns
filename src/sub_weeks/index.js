@@ -2,7 +2,7 @@ var addWeeks = require('../add_weeks')
 
 /**
  * @category Week Helpers
- * @summary Subtract specified number of weeks from the given date.
+ * @summary Subtract the specified number of weeks from the given date.
  *
  * @description
  * Subtract the specified number of weeks from the given date.

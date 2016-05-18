@@ -2,7 +2,7 @@ var addDays = require('../add_days')
 
 /**
  * @category Week Helpers
- * @summary Add specified number of weeks to the given date.
+ * @summary Add the specified number of weeks to the given date.
  *
  * @description
  * Add the specified number of week to the given date.

@@ -4,7 +4,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days')
 
 /**
  * @category Day Helpers
- * @summary Get the day of the year.
+ * @summary Get the day of the year of the given date.
  *
  * @description
  * Get the day of the year of the given date.

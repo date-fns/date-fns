@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Year Helpers
- * @summary Get the year.
+ * @summary Get the year of the given date.
  *
  * @description
  * Get the year of the given date.

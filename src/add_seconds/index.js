@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Second Helpers
- * @summary Add the seconds to the given date.
+ * @summary Add the specified number of seconds to the given date.
  *
  * @description
  * Add the specified number of seconds to the given date.

@@ -3,7 +3,7 @@ var startOfISOWeek = require('../start_of_iso_week')
 
 /**
  * @category ISO Week-Numbering Year Helpers
- * @summary Get the ISO week-numbering year.
+ * @summary Get the ISO week-numbering year of the given date.
  *
  * @description
  * Get the ISO week-numbering year of the given date,

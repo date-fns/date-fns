@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Hour Helpers
- * @summary Get the hours.
+ * @summary Get the hours of the given date.
  *
  * @description
  * Get the hours of the given date.

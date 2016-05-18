@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Day Helpers
- * @summary Set the day of the year.
+ * @summary Set the day of the year to the given date.
  *
  * @description
  * Set the day of the year to the given date.

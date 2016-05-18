@@ -10,6 +10,7 @@ var parse = require('../parse')
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
  * @returns {Date} the date from the array closest to the given date
+ * @throws {TypeError} second argument must be an instance of Array
  *
  * @example
  * // Which date is closer to 6 October 2015: 1 January 2000 or 1 January 2030?
@@ -22,7 +23,7 @@ var parse = require('../parse')
  */
 function closestTo (dirtyDateToCompare, dirtyDatesArray) {
   if (!(dirtyDatesArray instanceof Array)) {
-    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an array')
+    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
   var dateToCompare = parse(dirtyDateToCompare)

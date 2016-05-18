@@ -3,7 +3,7 @@ var addDays = require('../add_days')
 
 /**
  * @category Weekday Helpers
- * @summary Set the day of the week.
+ * @summary Set the day of the week to the given date.
  *
  * @description
  * Set the day of the week to the given date.

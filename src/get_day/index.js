@@ -2,7 +2,7 @@ var parse = require('../parse')
 
 /**
  * @category Weekday Helpers
- * @summary Get the day of the week.
+ * @summary Get the day of the week of the given date.
  *
  * @description
  * Get the day of the week of the given date.
