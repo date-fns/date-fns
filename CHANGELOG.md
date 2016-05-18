@@ -10,7 +10,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-## [1.0.0]
+## [1.0.0] - 2016-05-18
 
 ### Fixed
 
