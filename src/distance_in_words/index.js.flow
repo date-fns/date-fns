@@ -1,0 +1,3 @@
+// @flow
+
+declare module.exports: (dateFrom: Date|string|number, dateTo: Date|string|number, options: { includeSeconds: boolean }) => string

@@ -1,3 +1,5 @@
+// global describe it
+// @flow
 /* eslint-env mocha */
 
 var assert = require('power-assert')
@@ -38,4 +40,3 @@ describe('min', function () {
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 })
-

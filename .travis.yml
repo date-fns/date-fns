@@ -18,6 +18,7 @@ script:
   - npm run test-tz
   - npm run test-tz-extended
   - npm run count-tests
+  - npm run flow-check
 
 # Deployment
 before_deploy:
