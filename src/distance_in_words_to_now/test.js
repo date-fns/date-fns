@@ -1,4 +1,3 @@
-// global describe it
 // @flow
 /* eslint-env mocha */
 /* global sinon */
@@ -191,4 +190,3 @@ describe('distanceInWordsToNow', function () {
     assert(result === 'less than a minute')
   })
 })
-

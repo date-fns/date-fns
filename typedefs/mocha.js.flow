@@ -1,0 +1,6 @@
+// @flow
+declare var describe: (description: string, spec: () => void) => void
+declare var it: (description: string, spec: () => void) => void
+declare var context: (description: string, spec: () => void) => void
+declare var beforeEach: (action: () => void) => void
+declare var afterEach: (action: () => void) => void

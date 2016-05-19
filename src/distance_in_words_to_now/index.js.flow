@@ -1,4 +1,4 @@
 // @flow
 
 
-declare module.exports: (date: Date|string|number, options: { includeSeconds: boolean }) => string
+declare module.exports: (date: Date|string|number, options?: { includeSeconds: boolean }) => string
