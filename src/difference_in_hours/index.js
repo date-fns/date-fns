@@ -27,4 +27,3 @@ function differenceInHours (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInHours
-

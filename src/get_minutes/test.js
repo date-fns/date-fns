@@ -20,4 +20,3 @@ describe('getMinutes', function () {
     assert(result === 30)
   })
 })
-

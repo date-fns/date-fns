@@ -49,4 +49,3 @@ function compareAsc (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = compareAsc
-

@@ -37,4 +37,3 @@ describe('isEqual', function () {
     assert(result === true)
   })
 })
-

@@ -27,4 +27,3 @@ describe('getDaysInMonth', function () {
     assert(result === 31)
   })
 })
-

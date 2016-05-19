@@ -37,4 +37,3 @@ describe('isLeapYear', function () {
     assert(result === true)
   })
 })
-

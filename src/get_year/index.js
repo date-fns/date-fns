@@ -22,4 +22,3 @@ function getYear (dirtyDate) {
 }
 
 module.exports = getYear
-

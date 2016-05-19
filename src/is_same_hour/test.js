@@ -37,4 +37,3 @@ describe('isSameHour', function () {
     assert(result === true)
   })
 })
-

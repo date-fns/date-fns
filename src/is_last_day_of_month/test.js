@@ -27,4 +27,3 @@ describe('isLastDayOfMonth', function () {
     assert(result === true)
   })
 })
-

@@ -75,4 +75,3 @@ describe('lastDayOfWeek', function () {
     })
   })
 })
-

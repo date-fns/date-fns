@@ -71,4 +71,3 @@ describe('differenceInHours', function () {
     })
   })
 })
-

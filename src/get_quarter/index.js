@@ -22,4 +22,3 @@ function getQuarter (dirtyDate) {
 }
 
 module.exports = getQuarter
-

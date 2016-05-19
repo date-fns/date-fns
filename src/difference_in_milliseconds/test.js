@@ -37,4 +37,3 @@ describe('differenceInMilliseconds', function () {
     assert(result === 0)
   })
 })
-

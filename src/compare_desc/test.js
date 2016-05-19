@@ -63,4 +63,3 @@ describe('compareDesc', function () {
     assert(result === 1)
   })
 })
-

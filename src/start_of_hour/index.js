@@ -23,4 +23,3 @@ function startOfHour (dirtyDate) {
 }
 
 module.exports = startOfHour
-

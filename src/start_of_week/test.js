@@ -67,4 +67,3 @@ describe('startOfWeek', function () {
     })
   })
 })
-

@@ -18,4 +18,3 @@ function isDate (argument) {
 }
 
 module.exports = isDate
-

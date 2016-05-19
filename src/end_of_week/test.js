@@ -75,4 +75,3 @@ describe('endOfWeek', function () {
     })
   })
 })
-

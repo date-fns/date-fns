@@ -20,4 +20,3 @@ function isFuture (dirtyDate) {
 }
 
 module.exports = isFuture
-

@@ -78,4 +78,3 @@ describe('isWithinRange', function () {
     assert.throws(block)
   })
 })
-

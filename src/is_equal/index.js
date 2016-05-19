@@ -26,4 +26,3 @@ function isEqual (dirtyLeftDate, dirtyRightDate) {
 }
 
 module.exports = isEqual
-

@@ -36,4 +36,3 @@ describe('isSameISOWeek', function () {
     assert(isThisISOWeek(date) === false)
   })
 })
-

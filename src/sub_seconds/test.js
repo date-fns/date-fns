@@ -30,4 +30,3 @@ describe('subSeconds', function () {
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 0))
   })
 })
-

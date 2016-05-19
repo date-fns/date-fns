@@ -25,4 +25,3 @@ function endOfYear (dirtyDate) {
 }
 
 module.exports = endOfYear
-

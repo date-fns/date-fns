@@ -20,4 +20,3 @@ function isToday (dirtyDate) {
 }
 
 module.exports = isToday
-

@@ -25,4 +25,3 @@ describe('isTuesday', function () {
     assert(result === true)
   })
 })
-

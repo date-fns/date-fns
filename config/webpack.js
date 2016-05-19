@@ -48,4 +48,3 @@ function getOutputConfig () {
 }
 
 module.exports = config
-

@@ -20,4 +20,3 @@ describe('isDate', function () {
     assert(result === false)
   })
 })
-

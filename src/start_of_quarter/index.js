@@ -26,4 +26,3 @@ function startOfQuarter (dirtyDate) {
 }
 
 module.exports = startOfQuarter
-

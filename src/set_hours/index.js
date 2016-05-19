@@ -23,4 +23,3 @@ function setHours (dirtyDate, hours) {
 }
 
 module.exports = setHours
-

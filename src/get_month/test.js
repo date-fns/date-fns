@@ -20,4 +20,3 @@ describe('getMonth', function () {
     assert(result === 3)
   })
 })
-

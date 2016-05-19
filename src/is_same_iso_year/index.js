@@ -29,4 +29,3 @@ function isSameISOYear (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameISOYear
-

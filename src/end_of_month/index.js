@@ -25,4 +25,3 @@ function endOfMonth (dirtyDate) {
 }
 
 module.exports = endOfMonth
-

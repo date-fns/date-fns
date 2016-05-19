@@ -33,4 +33,3 @@ function isValid (date) {
 }
 
 module.exports = isValid
-

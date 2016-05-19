@@ -21,4 +21,3 @@ function subQuarters (dirtyDate, amount) {
 }
 
 module.exports = subQuarters
-

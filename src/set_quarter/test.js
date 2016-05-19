@@ -31,4 +31,3 @@ describe('setQuarter', function () {
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 1))
   })
 })
-

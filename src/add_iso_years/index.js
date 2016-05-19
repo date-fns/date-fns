@@ -24,4 +24,3 @@ function addISOYears (dirtyDate, amount) {
 }
 
 module.exports = addISOYears
-

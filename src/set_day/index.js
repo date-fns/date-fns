@@ -33,4 +33,3 @@ function setDay (dirtyDate, day, options) {
 }
 
 module.exports = setDay
-

@@ -26,4 +26,3 @@ function lastDayOfQuarter (dirtyDate) {
 }
 
 module.exports = lastDayOfQuarter
-

@@ -22,4 +22,3 @@ function getDay (dirtyDate) {
 }
 
 module.exports = getDay
-

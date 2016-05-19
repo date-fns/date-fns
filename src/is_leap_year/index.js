@@ -22,4 +22,3 @@ function isLeapYear (dirtyDate) {
 }
 
 module.exports = isLeapYear
-

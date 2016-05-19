@@ -31,4 +31,3 @@ function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInCalendarQuarters
-

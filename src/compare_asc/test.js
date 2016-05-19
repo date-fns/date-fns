@@ -63,4 +63,3 @@ describe('compareAsc', function () {
     assert(result === -1)
   })
 })
-

@@ -301,4 +301,3 @@ describe('format', function () {
     })
   })
 })
-

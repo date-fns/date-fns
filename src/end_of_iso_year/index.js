@@ -28,4 +28,3 @@ function endOfISOYear (dirtyDate) {
 }
 
 module.exports = endOfISOYear
-

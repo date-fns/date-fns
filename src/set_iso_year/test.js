@@ -26,4 +26,3 @@ describe('setISOYear', function () {
     assert.deepEqual(date, new Date(2008, 11 /* Dec */, 29))
   })
 })
-

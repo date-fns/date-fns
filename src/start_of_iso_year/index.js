@@ -27,4 +27,3 @@ function startOfISOYear (dirtyDate) {
 }
 
 module.exports = startOfISOYear
-

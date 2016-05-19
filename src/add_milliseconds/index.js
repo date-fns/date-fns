@@ -23,4 +23,3 @@ function addMilliseconds (dirtyDate, amount) {
 }
 
 module.exports = addMilliseconds
-

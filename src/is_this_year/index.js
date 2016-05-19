@@ -20,4 +20,3 @@ function isThisYear (dirtyDate) {
 }
 
 module.exports = isThisYear
-

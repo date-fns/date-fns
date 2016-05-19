@@ -21,4 +21,3 @@ function isThisMinute (dirtyDate) {
 }
 
 module.exports = isThisMinute
-

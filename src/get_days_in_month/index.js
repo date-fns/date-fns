@@ -23,4 +23,3 @@ function getDaysInMonth (dirtyDate) {
 }
 
 module.exports = getDaysInMonth
-

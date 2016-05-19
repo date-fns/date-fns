@@ -22,4 +22,3 @@ describe('getISOWeeksInYear', function () {
     assert(result === 53)
   })
 })
-

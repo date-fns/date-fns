@@ -37,4 +37,3 @@ describe('isSameDay', function () {
     assert(result === true)
   })
 })
-

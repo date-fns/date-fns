@@ -23,4 +23,3 @@ function endOfMinute (dirtyDate) {
 }
 
 module.exports = endOfMinute
-

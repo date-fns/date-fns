@@ -21,4 +21,3 @@ describe('startOfYesterday', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 24))
   })
 })
-

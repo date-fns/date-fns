@@ -226,4 +226,3 @@ var locale = {
 }
 
 module.exports = distanceInWords
-

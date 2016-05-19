@@ -32,4 +32,3 @@ describe('addQuarters', function () {
     assert.deepEqual(result, new Date(2015, 8 /* Sep */, 30))
   })
 })
-

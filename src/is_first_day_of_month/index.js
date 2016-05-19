@@ -20,4 +20,3 @@ function isFirstDayOfMonth (dirtyDate) {
 }
 
 module.exports = isFirstDayOfMonth
-

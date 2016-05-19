@@ -39,4 +39,3 @@ describe('max', function () {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 })
-

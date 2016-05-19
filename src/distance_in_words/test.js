@@ -201,4 +201,3 @@ describe('distanceInWords', function () {
     assert(result === 'about 1 hour')
   })
 })
-

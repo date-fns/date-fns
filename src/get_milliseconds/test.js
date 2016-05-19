@@ -20,4 +20,3 @@ describe('getMilliseconds', function () {
     assert(result === 500)
   })
 })
-

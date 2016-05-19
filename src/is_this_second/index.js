@@ -21,4 +21,3 @@ function isThisSecond (dirtyDate) {
 }
 
 module.exports = isThisSecond
-

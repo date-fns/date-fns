@@ -25,4 +25,3 @@ function setQuarter (dirtyDate, quarter) {
 }
 
 module.exports = setQuarter
-

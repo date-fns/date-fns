@@ -25,4 +25,3 @@ function lastDayOfMonth (dirtyDate) {
 }
 
 module.exports = lastDayOfMonth
-

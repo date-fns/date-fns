@@ -32,4 +32,3 @@ describe('subMonths', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
 })
-

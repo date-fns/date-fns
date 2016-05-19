@@ -36,4 +36,3 @@ describe('isThisHour', function () {
     assert(isThisHour(date) === true)
   })
 })
-

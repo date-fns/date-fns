@@ -23,4 +23,3 @@ function subISOYears (dirtyDate, amount) {
 }
 
 module.exports = subISOYears
-

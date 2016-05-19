@@ -28,4 +28,3 @@ function lastDayOfISOYear (dirtyDate) {
 }
 
 module.exports = lastDayOfISOYear
-

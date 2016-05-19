@@ -31,4 +31,3 @@ function getISOWeeksInYear (dirtyDate) {
 }
 
 module.exports = getISOWeeksInYear
-

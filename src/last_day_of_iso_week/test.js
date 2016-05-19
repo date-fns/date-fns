@@ -35,4 +35,3 @@ describe('lastDayOfISOWeek', function () {
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 })
-

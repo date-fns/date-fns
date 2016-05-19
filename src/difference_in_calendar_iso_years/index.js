@@ -26,4 +26,3 @@ function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInCalendarISOYears
-

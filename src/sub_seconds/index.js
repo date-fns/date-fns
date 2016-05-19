@@ -21,4 +21,3 @@ function subSeconds (dirtyDate, amount) {
 }
 
 module.exports = subSeconds
-

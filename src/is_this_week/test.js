@@ -41,4 +41,3 @@ describe('isThisWeek', function () {
     assert(isThisWeek(date) === true)
   })
 })
-

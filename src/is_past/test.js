@@ -41,4 +41,3 @@ describe('isPast', function () {
     assert(result === true)
   })
 })
-

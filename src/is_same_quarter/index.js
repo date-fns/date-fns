@@ -27,4 +27,3 @@ function isSameQuarter (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameQuarter
-

@@ -22,4 +22,3 @@ function isThisISOWeek (dirtyDate) {
 }
 
 module.exports = isThisISOWeek
-

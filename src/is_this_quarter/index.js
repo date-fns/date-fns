@@ -20,4 +20,3 @@ function isThisQuarter (dirtyDate) {
 }
 
 module.exports = isThisQuarter
-

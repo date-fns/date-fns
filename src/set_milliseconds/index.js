@@ -23,4 +23,3 @@ function setMilliseconds (dirtyDate, milliseconds) {
 }
 
 module.exports = setMilliseconds
-

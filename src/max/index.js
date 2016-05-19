@@ -30,4 +30,3 @@ function max () {
 }
 
 module.exports = max
-

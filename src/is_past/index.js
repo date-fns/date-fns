@@ -20,4 +20,3 @@ function isPast (dirtyDate) {
 }
 
 module.exports = isPast
-

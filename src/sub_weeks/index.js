@@ -21,4 +21,3 @@ function subWeeks (dirtyDate, amount) {
 }
 
 module.exports = subWeeks
-

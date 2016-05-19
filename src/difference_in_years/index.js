@@ -36,4 +36,3 @@ function differenceInYears (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInYears
-

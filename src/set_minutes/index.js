@@ -23,4 +23,3 @@ function setMinutes (dirtyDate, minutes) {
 }
 
 module.exports = setMinutes
-

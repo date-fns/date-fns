@@ -29,4 +29,3 @@ describe('startOfSecond', function () {
     assert.deepEqual(date, new Date(2014, 11 /* Dec */, 1, 22, 15, 45, 400))
   })
 })
-

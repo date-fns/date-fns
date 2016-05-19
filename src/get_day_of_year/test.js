@@ -20,4 +20,3 @@ describe('getDayOfYear', function () {
     assert(result === 2)
   })
 })
-

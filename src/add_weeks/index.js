@@ -22,4 +22,3 @@ function addWeeks (dirtyDate, amount) {
 }
 
 module.exports = addWeeks
-

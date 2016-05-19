@@ -23,4 +23,3 @@ function addDays (dirtyDate, amount) {
 }
 
 module.exports = addDays
-

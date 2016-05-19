@@ -28,4 +28,3 @@ function addMonths (dirtyDate, amount) {
 }
 
 module.exports = addMonths
-
