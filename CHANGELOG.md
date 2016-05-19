@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.1.1] - 2016-05-19
+
+### Fixed
+
+- Fix [Flow](http://flowtype.org/) declarations for some of the functions.
+
 ## [1.1.0] - 2016-05-19
 
 ### Added
