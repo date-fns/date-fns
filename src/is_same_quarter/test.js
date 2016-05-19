@@ -37,4 +37,3 @@ describe('isSameQuarter', function () {
     assert(result === true)
   })
 })
-

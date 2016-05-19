@@ -23,4 +23,3 @@ function startOfSecond (dirtyDate) {
 }
 
 module.exports = startOfSecond
-

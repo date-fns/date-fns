@@ -23,4 +23,3 @@ function startOfMinute (dirtyDate) {
 }
 
 module.exports = startOfMinute
-

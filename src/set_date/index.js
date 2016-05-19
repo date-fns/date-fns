@@ -23,4 +23,3 @@ function setDate (dirtyDate, dayOfMonth) {
 }
 
 module.exports = setDate
-

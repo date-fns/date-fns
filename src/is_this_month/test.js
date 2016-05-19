@@ -36,4 +36,3 @@ describe('isThisMonth', function () {
     assert(isThisMonth(date) === true)
   })
 })
-

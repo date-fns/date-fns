@@ -23,4 +23,3 @@ function isLastDayOfMonth (dirtyDate) {
 }
 
 module.exports = isLastDayOfMonth
-

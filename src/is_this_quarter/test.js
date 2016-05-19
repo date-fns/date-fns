@@ -36,4 +36,3 @@ describe('isThisQuarter', function () {
     assert(isThisQuarter(date) === true)
   })
 })
-

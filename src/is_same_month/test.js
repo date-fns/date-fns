@@ -37,4 +37,3 @@ describe('isSameMonth', function () {
     assert(result === true)
   })
 })
-

@@ -22,4 +22,3 @@ function getHours (dirtyDate) {
 }
 
 module.exports = getHours
-

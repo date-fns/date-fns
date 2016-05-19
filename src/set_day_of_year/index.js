@@ -24,4 +24,3 @@ function setDayOfYear (dirtyDate, dayOfYear) {
 }
 
 module.exports = setDayOfYear
-

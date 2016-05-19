@@ -32,4 +32,3 @@ function getISOWeek (dirtyDate) {
 }
 
 module.exports = getISOWeek
-

@@ -36,4 +36,3 @@ describe('isThisISOYear', function () {
     assert(isThisISOYear(date) === true)
   })
 })
-

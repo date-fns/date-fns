@@ -40,4 +40,3 @@ function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInCalendarISOWeeks
-

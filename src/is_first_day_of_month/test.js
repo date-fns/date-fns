@@ -27,4 +27,3 @@ describe('isFirstDayOfMonth', function () {
     assert(result === true)
   })
 })
-

@@ -36,4 +36,3 @@ describe('isThisSecond', function () {
     assert(isThisSecond(date) === true)
   })
 })
-

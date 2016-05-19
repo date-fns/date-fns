@@ -80,4 +80,3 @@ describe('differenceInCalendarWeeks', function () {
     })
   })
 })
-

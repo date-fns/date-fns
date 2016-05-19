@@ -23,4 +23,3 @@ function startOfDay (dirtyDate) {
 }
 
 module.exports = startOfDay
-

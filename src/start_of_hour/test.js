@@ -29,4 +29,3 @@ describe('startOfHour', function () {
     assert.deepEqual(result, new Date(2014, 11, 1, 12, 0))
   })
 })
-

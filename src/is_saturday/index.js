@@ -20,4 +20,3 @@ function isSaturday (dirtyDate) {
 }
 
 module.exports = isSaturday
-

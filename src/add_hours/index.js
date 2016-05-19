@@ -23,4 +23,3 @@ function addHours (dirtyDate, amount) {
 }
 
 module.exports = addHours
-

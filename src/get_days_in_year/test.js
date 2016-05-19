@@ -37,4 +37,3 @@ describe('getDaysInYear', function () {
     assert(result === 366)
   })
 })
-

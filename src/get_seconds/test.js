@@ -20,4 +20,3 @@ describe('getSeconds', function () {
     assert(result === 42)
   })
 })
-

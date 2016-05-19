@@ -23,4 +23,3 @@ function isBefore (dirtyDateToCompare, dirtyDate) {
 }
 
 module.exports = isBefore
-

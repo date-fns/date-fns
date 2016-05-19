@@ -45,4 +45,3 @@ describe('isBefore', function () {
     assert(result === true)
   })
 })
-

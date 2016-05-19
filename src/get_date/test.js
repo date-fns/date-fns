@@ -20,4 +20,3 @@ describe('getDate', function () {
     assert(result === 31)
   })
 })
-

@@ -27,4 +27,3 @@ function isSameHour (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameHour
-

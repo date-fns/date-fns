@@ -20,4 +20,3 @@ describe('getYear', function () {
     assert(result === 20000)
   })
 })
-

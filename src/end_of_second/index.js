@@ -23,4 +23,3 @@ function endOfSecond (dirtyDate) {
 }
 
 module.exports = endOfSecond
-

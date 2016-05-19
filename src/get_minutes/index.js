@@ -22,4 +22,3 @@ function getMinutes (dirtyDate) {
 }
 
 module.exports = getMinutes
-

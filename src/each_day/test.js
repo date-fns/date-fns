@@ -98,4 +98,3 @@ describe('eachDay', function () {
     assert.throws(block)
   })
 })
-

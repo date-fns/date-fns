@@ -27,4 +27,3 @@ describe('endOfMinute', function () {
     assert.deepEqual(date, new Date(2014, 11, 1, 22, 15))
   })
 })
-

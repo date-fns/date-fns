@@ -26,4 +26,3 @@ function isSameISOWeek (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameISOWeek
-

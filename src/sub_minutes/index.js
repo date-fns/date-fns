@@ -21,4 +21,3 @@ function subMinutes (dirtyDate, amount) {
 }
 
 module.exports = subMinutes
-

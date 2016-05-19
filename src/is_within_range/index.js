@@ -40,4 +40,3 @@ function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
 }
 
 module.exports = isWithinRange
-

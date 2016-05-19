@@ -45,4 +45,3 @@ describe('isAfter', function () {
     assert(result === true)
   })
 })
-

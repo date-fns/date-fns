@@ -20,4 +20,3 @@ describe('isValid', function () {
     assert.throws(block, TypeError, '[object String] is not an instance of Date')
   })
 })
-

@@ -45,4 +45,3 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray) {
 }
 
 module.exports = closestTo
-

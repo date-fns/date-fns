@@ -64,4 +64,3 @@ function distanceInWordsToNow (dirtyDate, options) {
 }
 
 module.exports = distanceInWordsToNow
-

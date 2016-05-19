@@ -36,4 +36,3 @@ function startOfWeek (dirtyDate, options) {
 }
 
 module.exports = startOfWeek
-

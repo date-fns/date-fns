@@ -20,4 +20,3 @@ function isThisMonth (dirtyDate) {
 }
 
 module.exports = isThisMonth
-

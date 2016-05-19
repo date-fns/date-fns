@@ -50,4 +50,3 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
 }
 
 module.exports = eachDay
-

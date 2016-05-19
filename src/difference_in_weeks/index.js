@@ -25,4 +25,3 @@ function differenceInWeeks (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = differenceInWeeks
-

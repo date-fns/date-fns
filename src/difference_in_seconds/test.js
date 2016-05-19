@@ -71,4 +71,3 @@ describe('differenceInSeconds', function () {
     })
   })
 })
-

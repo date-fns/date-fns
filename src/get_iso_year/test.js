@@ -20,4 +20,3 @@ describe('getISOYear', function () {
     assert(result === 2004)
   })
 })
-

@@ -32,4 +32,3 @@ describe('addMonths', function () {
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 28))
   })
 })
-

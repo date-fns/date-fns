@@ -28,4 +28,3 @@ function isThisWeek (dirtyDate, options) {
 }
 
 module.exports = isThisWeek
-

@@ -25,4 +25,3 @@ function getDayOfYear (dirtyDate) {
 }
 
 module.exports = getDayOfYear
-

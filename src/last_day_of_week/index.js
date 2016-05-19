@@ -36,4 +36,3 @@ function lastDayOfWeek (dirtyDate, options) {
 }
 
 module.exports = lastDayOfWeek
-

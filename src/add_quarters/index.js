@@ -22,4 +22,3 @@ function addQuarters (dirtyDate, amount) {
 }
 
 module.exports = addQuarters
-

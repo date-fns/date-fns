@@ -20,4 +20,3 @@ describe('getQuarter', function () {
     assert(result === 2)
   })
 })
-

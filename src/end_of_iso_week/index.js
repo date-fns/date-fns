@@ -23,4 +23,3 @@ function endOfISOWeek (dirtyDate) {
 }
 
 module.exports = endOfISOWeek
-

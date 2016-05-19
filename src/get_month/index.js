@@ -22,4 +22,3 @@ function getMonth (dirtyDate) {
 }
 
 module.exports = getMonth
-

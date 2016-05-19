@@ -20,4 +20,3 @@ describe('getHours', function () {
     assert(result === 23)
   })
 })
-

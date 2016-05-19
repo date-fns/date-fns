@@ -23,4 +23,3 @@ function isThisISOYear (dirtyDate) {
 }
 
 module.exports = isThisISOYear
-

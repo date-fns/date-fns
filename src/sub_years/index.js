@@ -21,4 +21,3 @@ function subYears (dirtyDate, amount) {
 }
 
 module.exports = subYears
-

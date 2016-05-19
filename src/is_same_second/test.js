@@ -37,4 +37,3 @@ describe('isSameSecond', function () {
     assert(result === true)
   })
 })
-

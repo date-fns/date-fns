@@ -28,4 +28,3 @@ function isSameMinute (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameMinute
-

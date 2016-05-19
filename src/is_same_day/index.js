@@ -27,4 +27,3 @@ function isSameDay (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = isSameDay
-

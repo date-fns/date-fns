@@ -20,4 +20,3 @@ describe('getDay', function () {
     assert(result === 0)
   })
 })
-

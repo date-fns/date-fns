@@ -49,4 +49,3 @@ function compareDesc (dirtyDateLeft, dirtyDateRight) {
 }
 
 module.exports = compareDesc
-

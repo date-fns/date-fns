@@ -23,4 +23,3 @@ function setYear (dirtyDate, year) {
 }
 
 module.exports = setYear
-

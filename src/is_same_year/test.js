@@ -37,4 +37,3 @@ describe('isSameYear', function () {
     assert(result === true)
   })
 })
-

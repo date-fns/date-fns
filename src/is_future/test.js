@@ -41,4 +41,3 @@ describe('isFuture', function () {
     assert(result === true)
   })
 })
-

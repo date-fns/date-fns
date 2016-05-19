@@ -22,4 +22,3 @@ function getMilliseconds (dirtyDate) {
 }
 
 module.exports = getMilliseconds
-

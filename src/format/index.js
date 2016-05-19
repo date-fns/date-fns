@@ -364,4 +364,3 @@ var locale = {
 }
 
 module.exports = format
-

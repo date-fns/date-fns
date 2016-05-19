@@ -36,4 +36,3 @@ describe('isToday', function () {
     assert(result === true)
   })
 })
-

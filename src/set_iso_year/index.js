@@ -30,4 +30,3 @@ function setISOYear (dirtyDate, isoYear) {
 }
 
 module.exports = setISOYear
-

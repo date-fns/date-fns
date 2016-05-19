@@ -23,4 +23,3 @@ function startOfYear (dirtyDate) {
 }
 
 module.exports = startOfYear
-

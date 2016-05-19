@@ -20,4 +20,3 @@ function isMonday (dirtyDate) {
 }
 
 module.exports = isMonday
-

@@ -26,4 +26,3 @@ describe('setMinutes', function () {
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30))
   })
 })
-

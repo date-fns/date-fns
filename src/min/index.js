@@ -30,4 +30,3 @@ function min () {
 }
 
 module.exports = min
-

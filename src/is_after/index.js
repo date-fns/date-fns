@@ -23,4 +23,3 @@ function isAfter (dirtyDateToCompare, dirtyDate) {
 }
 
 module.exports = isAfter
-
