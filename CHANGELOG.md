@@ -10,6 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.1.0] - 2016-05-19
+
+### Added
+
+- [Flow](http://flowtype.org/) declarations for each function
+	in [the ".js.flow" style](http://flowtype.org/docs/declarations.html#declaration-files).
+	Kudos to [@JohnyDays](https://github.com/JohnyDays). See related PRs:
+
+	- [#205](https://github.com/date-fns/date-fns/pull/205)
+
+	- [#207](https://github.com/date-fns/date-fns/pull/207)
+
 ## [1.0.0] - 2016-05-18
 
 ### Fixed
@@ -534,7 +546,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/date-fns/date-fns/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/date-fns/date-fns/compare/v0.17.0...v1.0.0
 [0.17.0]: https://github.com/date-fns/date-fns/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/date-fns/date-fns/compare/v0.15.0...v0.16.0
