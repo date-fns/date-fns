@@ -14,7 +14,7 @@ branches:
 script:
   - npm run lint
   - npm run test-ci
-  - npm run test-cross-browser
+  - '[ "${SAUCE_USERNAME}" = "" ] || npm run test-cross-browser'
   - npm run test-tz
   - npm run test-tz-extended
   - npm run count-tests
