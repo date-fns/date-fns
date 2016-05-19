@@ -190,4 +190,3 @@ describe('distanceInWordsToNow', function () {
     assert(result === 'less than a minute')
   })
 })
-
