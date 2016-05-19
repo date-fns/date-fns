@@ -1,3 +1,5 @@
+// global describe it
+// @flow
 /* eslint-env mocha */
 
 var assert = require('power-assert')
@@ -24,4 +26,3 @@ describe('isFriday', function () {
     assert(result === true)
   })
 })
-

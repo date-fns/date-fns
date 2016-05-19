@@ -1,3 +1,5 @@
+// global describe it
+// @flow
 /* eslint-env mocha */
 
 var assert = require('power-assert')
@@ -25,4 +27,3 @@ describe('addDays', function () {
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 })
-

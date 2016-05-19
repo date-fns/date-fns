@@ -1,3 +1,5 @@
+// global describe it
+// @flow
 /* eslint-env mocha */
 /* global sinon */
 
