@@ -2,6 +2,7 @@ var isBefore = require('../is_before/index.js')
 var parse = require('../parse/index.js')
 var differenceInSeconds = require('../difference_in_seconds/index.js')
 var differenceInMonths = require('../difference_in_months/index.js')
+var enLocale = require('../locale/en/index.js')
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -69,6 +70,8 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'less than 20 seconds'
  */
 function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
+  var translate = enLocale.distanceInWords
+
   var dateTo, dateFrom
   if (isBefore(dirtyDateFrom, dirtyDateTo)) {
     dateFrom = parse(dirtyDateFrom)
@@ -160,70 +163,6 @@ function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
     } else {
       return translate('almostXYears', years + 1)
     }
-  }
-}
-
-function translate (token, count) {
-  if (count === undefined) {
-    return locale[token]
-  } else if (count === 1) {
-    return locale[token].one
-  } else {
-    return locale[token].other.replace('${count}', count)
-  }
-}
-
-var locale = {
-  lessThanXSeconds: {
-    one: 'less than a second',
-    other: 'less than ${count} seconds'
-  },
-
-  halfAMinute: 'half a minute',
-
-  lessThanXMinutes: {
-    one: 'less than a minute',
-    other: 'less than ${count} minutes'
-  },
-
-  xMinutes: {
-    one: '1 minute',
-    other: '${count} minutes'
-  },
-
-  aboutXHours: {
-    one: 'about 1 hour',
-    other: 'about ${count} hours'
-  },
-
-  xDays: {
-    one: '1 day',
-    other: '${count} days'
-  },
-
-  aboutXMonths: {
-    one: 'about 1 month',
-    other: 'about ${count} months'
-  },
-
-  xMonths: {
-    one: '1 month',
-    other: '${count} months'
-  },
-
-  aboutXYears: {
-    one: 'about 1 year',
-    other: 'about ${count} years'
-  },
-
-  overXYears: {
-    one: 'over 1 year',
-    other: 'over ${count} years'
-  },
-
-  almostXYears: {
-    one: 'almost 1 year',
-    other: 'almost ${count} years'
   }
 }
 
