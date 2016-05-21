@@ -2,6 +2,7 @@ var getDayOfYear = require('../get_day_of_year/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
 var parse = require('../parse/index.js')
+var enLocale = require('../locale/en/index.js')
 
 /**
  * @category Common Helpers
@@ -92,16 +93,6 @@ var formats = {
     return addLeadingZeros(date.getMonth() + 1, 2)
   },
 
-  // Month: Jan, Feb, ..., Dec
-  'MMM': function (date) {
-    return locale.monthsShort[date.getMonth()]
-  },
-
-  // Month: January, February, ..., December
-  'MMMM': function (date) {
-    return locale.months[date.getMonth()]
-  },
-
   // Quarter: 1, 2, 3, 4
   'Q': function (date) {
     return Math.ceil((date.getMonth() + 1) / 3)
@@ -130,21 +121,6 @@ var formats = {
   // Day of week: 0, 1, ..., 6
   'd': function (date) {
     return date.getDay()
-  },
-
-  // Day of week: Su, Mo, ..., Sa
-  'dd': function (date) {
-    return locale.dayNamesMin[date.getDay()]
-  },
-
-  // Day of week: Sun, Mon, ..., Sat
-  'ddd': function (date) {
-    return locale.dayNamesShort[date.getDay()]
-  },
-
-  // Day of week: Sunday, Monday, ..., Saturday
-  'dddd': function (date) {
-    return locale.dayNames[date.getDay()]
   },
 
   // Day of ISO week: 1, 2, ..., 7
@@ -280,14 +256,10 @@ var formats = {
   }
 }
 
-var ordinalFunctions = ['M', 'D', 'DDD', 'd', 'Q', 'W']
-ordinalFunctions.forEach(function (functionName) {
-  formats[functionName + 'o'] = function (date) {
-    return locale.ordinal(formats[functionName](date))
-  }
-})
-
-var formattingTokens = Object.keys(formats).sort().reverse()
+var formattingTokens = Object.keys(formats)
+  .concat(Object.keys(enLocale.format))
+  .sort()
+  .reverse()
 var formattingTokensRegexp = new RegExp(
   '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
 )
@@ -296,9 +268,12 @@ function makeFormatFunction (format) {
   var array = format.match(formattingTokensRegexp)
   var length = array.length
 
-  for (var i = 0; i < length; i++) {
-    if (formats[array[i]]) {
-      array[i] = formats[array[i]]
+  var i
+  var formatter
+  for (i = 0; i < length; i++) {
+    formatter = enLocale.format[array[i]] || formats[array[i]]
+    if (formatter) {
+      array[i] = formatter
     } else {
       array[i] = removeFormattingTokens(array[i])
     }
@@ -308,7 +283,7 @@ function makeFormatFunction (format) {
     var output = ''
     for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i](mom, format)
+        output += array[i](mom, formats)
       } else {
         output += array[i]
       }
@@ -340,27 +315,6 @@ function formatTimezone (offset, delimeter) {
   var hours = Math.floor(absOffset / 60)
   var minutes = absOffset % 60
   return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
-}
-
-var locale = {
-  ordinal: function (number) {
-    if (number > 20 || number < 10) {
-      switch (number % 10) {
-        case 1:
-          return number + 'st'
-        case 2:
-          return number + 'nd'
-        case 3:
-          return number + 'rd'
-      }
-    }
-    return number + 'th'
-  },
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
 }
 
 module.exports = format
