@@ -71,18 +71,16 @@ var enLocale = require('../locale/en/index.js')
  * )
  * //=> '02/11/2014'
  */
-function format (dirtyDate, format) {
+module.exports = function format (dirtyDate, formatStr) {
+  formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+
   var date = parse(dirtyDate)
+  var formatFn = buildFormatFn(formatStr)
 
-  if (!format) {
-    format = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
-  }
-
-  var formatFunction = makeFormatFunction(format)
-  return formatFunction(date)
+  return formatFn(date)
 }
 
-var formats = {
+var formatters = {
   // Month: 1, 2, ..., 12
   'M': function (date) {
     return date.getMonth() + 1
@@ -197,7 +195,7 @@ var formats = {
 
   // Hour: 01, 02, ..., 12
   'hh': function (date) {
-    return addLeadingZeros(formats['h'](date), 2)
+    return addLeadingZeros(formatters['h'](date), 2)
   },
 
   // Minute: 0, 1, ..., 59
@@ -256,22 +254,24 @@ var formats = {
   }
 }
 
-var formattingTokens = Object.keys(formats)
+// TODO: Build & cache RegExp for different locales that could have different
+//       set of formatting tokens.
+var formattingTokens = Object.keys(formatters)
   .concat(Object.keys(enLocale.format))
   .sort()
   .reverse()
-var formattingTokensRegexp = new RegExp(
+var formattingTokensRegExp = new RegExp(
   '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
 )
 
-function makeFormatFunction (format) {
-  var array = format.match(formattingTokensRegexp)
+function buildFormatFn (formatStr) {
+  var array = formatStr.match(formattingTokensRegExp)
   var length = array.length
 
   var i
   var formatter
   for (i = 0; i < length; i++) {
-    formatter = enLocale.format[array[i]] || formats[array[i]]
+    formatter = enLocale.format[array[i]] || formatters[array[i]]
     if (formatter) {
       array[i] = formatter
     } else {
@@ -279,12 +279,13 @@ function makeFormatFunction (format) {
     }
   }
 
-  return function (mom) {
+  return function (date) {
     var output = ''
     for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i](mom, formats)
+        output += array[i](date, formatters)
       } else {
+        debugger
         output += array[i]
       }
     }
@@ -299,15 +300,6 @@ function removeFormattingTokens (input) {
   return input.replace(/\\/g, '')
 }
 
-function addLeadingZeros (number, targetLength) {
-  var output = String(Math.abs(number))
-
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
-  return output
-}
-
 function formatTimezone (offset, delimeter) {
   delimeter = delimeter || ''
   var sign = offset > 0 ? '-' : '+'
@@ -317,4 +309,10 @@ function formatTimezone (offset, delimeter) {
   return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
 }
 
-module.exports = format
+function addLeadingZeros (number, targetLength) {
+  var output = Math.abs(number).toString()
+  while (output.length < targetLength) {
+    output = '0' + output
+  }
+  return output
+}

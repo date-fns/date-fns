@@ -69,7 +69,10 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'less than 20 seconds'
  */
-function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
+module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
+  options = options || {}
+
+  // TODO: Extract locale from options or default to en
   var translate = enLocale.distanceInWords
 
   var dateTo, dateFrom
@@ -81,7 +84,6 @@ function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
     dateTo = parse(dirtyDateFrom)
   }
 
-  var includeSeconds = options ? options.includeSeconds : false
   var seconds = differenceInSeconds(dateTo, dateFrom)
   var offset = dateTo.getTimezoneOffset() - dateFrom.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
@@ -89,7 +91,7 @@ function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
 
   // 0 up to 2 mins
   if (minutes < 2) {
-    if (includeSeconds) {
+    if (options.includeSeconds) {
       if (seconds < 5) {
         return translate('lessThanXSeconds', 5)
       } else if (seconds < 10) {
@@ -165,5 +167,3 @@ function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
     }
   }
 }
-
-module.exports = distanceInWords
