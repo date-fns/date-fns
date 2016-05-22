@@ -28,7 +28,11 @@ function setDay (dirtyDate, day, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
   var date = parse(dirtyDate)
   var currentDay = date.getDay()
-  var diff = (day < weekStartsOn ? 7 : 0) + day - currentDay
+
+  var remainder = day % 7
+  var dayIndex = (remainder + 7) % 7
+
+  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
   return addDays(date, diff)
 }
 
