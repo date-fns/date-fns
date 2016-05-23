@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.2.0] - 2016-05-23
+
+### Added
+
+- Add an ability to pass negative numbers to `setDay`.
+
 ## [1.1.1] - 2016-05-19
 
 ### Fixed
@@ -552,7 +558,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/date-fns/date-fns/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/date-fns/date-fns/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/date-fns/date-fns/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/date-fns/date-fns/compare/v0.17.0...v1.0.0
