@@ -15,9 +15,38 @@ describe('setDay', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
-  it('sets the day of another week if the day index is less than 0 or more than 6', function () {
-    var result = setDay(new Date(2014, 8 /* Sep */, 1), 8)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
+  context('the day index is more than 6', function () {
+    it('sets the day of the next week', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), 8)
+      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
+    })
+
+    it('allows to specify which day is the first day of the week', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), 7, {weekStartsOn: 1})
+      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 14))
+    })
+
+    it('sets the day of another week in the future', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), 14, {weekStartsOn: 1})
+      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 21))
+    })
+  })
+
+  context('the day index is less than 0', function () {
+    it('sets the day of the last week', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), -6)
+      assert.deepEqual(result, new Date(2014, 7 /* Aug */, 25))
+    })
+
+    it('allows to specify which day is the first day of the week', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), -7, {weekStartsOn: 1})
+      assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
+    })
+
+    it('set the day of another week in the past', function () {
+      var result = setDay(new Date(2014, 8 /* Sep */, 1), -14, {weekStartsOn: 1})
+      assert.deepEqual(result, new Date(2014, 7 /* Aug */, 24))
+    })
   })
 
   it('accepts a string', function () {
