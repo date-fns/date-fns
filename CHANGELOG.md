@@ -10,6 +10,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- `closestToIndex`
+
 ## [1.2.0] - 2016-05-23
 
 ### Added

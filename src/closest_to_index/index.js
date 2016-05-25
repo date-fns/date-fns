@@ -2,20 +2,24 @@ var parse = require('../parse')
 
 /**
  * @category Common Helpers
- * @summary Return an index of closest date from array comparing to given date.
+ * @summary Return an index of the closest date from the array comparing to the given date.
  *
  * @description
- * Return an index of closest date from array comparing to given date.
+ * Return an index of the closest date from the array comparing to the given date.
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
- * @returns {Number} index of the date closest to the given date
- * @throws {TypeError} second argument must be an instance of Array
+ * @returns {Number} an index of the date closest to the given date
+ * @throws {TypeError} the second argument must be an instance of Array
  *
  * @example
- * // Which date is closer to 6 October 2015
+ * // Which date is closer to 6 September 2015?
  * var dateToCompare = new Date(2015, 8, 6)
- * var datesArray = [new Date(2015, 0, 1), new Date(2016, 0, 1), new Date(2017, 0, 1)]
+ * var datesArray = [
+ *   new Date(2015, 0, 1),
+ *   new Date(2016, 0, 1),
+ *   new Date(2017, 0, 1)
+ * ]
  * var result = closestToIndex(dateToCompare, datesArray)
  * //=> 1
  */
