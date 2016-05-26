@@ -20,10 +20,10 @@ var parse = require('../parse')
  *   new Date(2016, 0, 1),
  *   new Date(2017, 0, 1)
  * ]
- * var result = closestToIndex(dateToCompare, datesArray)
+ * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-function closestToIndex (dirtyDateToCompare, dirtyDatesArray) {
+function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
@@ -46,4 +46,4 @@ function closestToIndex (dirtyDateToCompare, dirtyDatesArray) {
   return result
 }
 
-module.exports = closestToIndex
+module.exports = closestIndexTo

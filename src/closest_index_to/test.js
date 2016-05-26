@@ -2,12 +2,12 @@
 /* eslint-env mocha */
 
 var assert = require('power-assert')
-var closestToIndex = require('./')
+var closestIndexTo = require('./')
 
-describe('closestToIndex', function () {
+describe('closestIndexTo', function () {
   it('returns the date index from the given array closest to the given date', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
-    var result = closestToIndex(date, [
+    var result = closestIndexTo(date, [
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2)
     ])
@@ -16,7 +16,7 @@ describe('closestToIndex', function () {
 
   it('works if the closest date from the given array is before the given date', function () {
     var date = new Date(2014, 6 /* Jul */, 2, 6, 30, 4, 500)
-    var result = closestToIndex(date, [
+    var result = closestIndexTo(date, [
       new Date(2014, 6 /* Jul */, 2, 6, 30, 5, 900),
       new Date(2014, 6 /* Jul */, 2, 6, 30, 3, 900),
       new Date(2014, 6 /* Jul */, 2, 6, 30, 10)
@@ -26,7 +26,7 @@ describe('closestToIndex', function () {
 
   it('accepts strings', function () {
     var date = new Date(2014, 6 /* Jul */, 2).toISOString()
-    var result = closestToIndex(date, [
+    var result = closestIndexTo(date, [
       new Date(2012, 6 /* Jul */, 2).toISOString(),
       new Date(2015, 7 /* Aug */, 31).toISOString()
     ])
@@ -35,7 +35,7 @@ describe('closestToIndex', function () {
 
   it('accepts timestamps', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
-    var result = closestToIndex(date, [
+    var result = closestIndexTo(date, [
       new Date(2015, 7 /* Aug */, 31).getTime(),
       new Date(2012, 6 /* Jul */, 2).getTime()
     ])
@@ -44,14 +44,14 @@ describe('closestToIndex', function () {
 
   it('returns undefined if the given array is empty', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
-    var result = closestToIndex(date, [])
+    var result = closestIndexTo(date, [])
     assert(result === undefined)
   })
 
   it('throws an exception if the second argument is not an instance of Array', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
-    var block = closestToIndex.bind(null, date, '')
+    var block = closestIndexTo.bind(null, date, '')
     assert.throws(block, TypeError, '[object String] is not an instance of Array')
   })
 })

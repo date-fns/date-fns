@@ -12,7 +12,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- `closestToIndex`
+- `closestIndexTo`
 
 ## [1.2.0] - 2016-05-23
 
