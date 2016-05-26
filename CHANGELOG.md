@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.3.0] - 2016-05-26
+
 ### Added
 
 - `closestIndexTo`
@@ -562,7 +564,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/date-fns/date-fns/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/date-fns/date-fns/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/date-fns/date-fns/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/date-fns/date-fns/compare/v1.0.0...v1.1.0
