@@ -73,7 +73,7 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   options = options || {}
 
   // TODO: Extract locale from options or default to en
-  var translate = enLocale.distanceInWords
+  var localize = enLocale.distanceInWords
 
   var dateTo, dateFrom
   if (isBefore(dirtyDateFrom, dirtyDateTo)) {
@@ -93,52 +93,52 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   if (minutes < 2) {
     if (options.includeSeconds) {
       if (seconds < 5) {
-        return translate('lessThanXSeconds', 5)
+        return localize('lessThanXSeconds', 5)
       } else if (seconds < 10) {
-        return translate('lessThanXSeconds', 10)
+        return localize('lessThanXSeconds', 10)
       } else if (seconds < 20) {
-        return translate('lessThanXSeconds', 20)
+        return localize('lessThanXSeconds', 20)
       } else if (seconds < 40) {
-        return translate('halfAMinute')
+        return localize('halfAMinute')
       } else if (seconds < 60) {
-        return translate('lessThanXMinutes', 1)
+        return localize('lessThanXMinutes', 1)
       } else {
-        return translate('xMinutes', 1)
+        return localize('xMinutes', 1)
       }
     } else {
       if (minutes === 0) {
-        return translate('lessThanXMinutes', 1)
+        return localize('lessThanXMinutes', 1)
       } else {
-        return translate('xMinutes', minutes)
+        return localize('xMinutes', minutes)
       }
     }
 
   // 2 mins up to 0.75 hrs
   } else if (minutes < 45) {
-    return translate('xMinutes', minutes)
+    return localize('xMinutes', minutes)
 
   // 0.75 hrs up to 1.5 hrs
   } else if (minutes < 90) {
-    return translate('aboutXHours', 1)
+    return localize('aboutXHours', 1)
 
   // 1.5 hrs up to 24 hrs
   } else if (minutes < MINUTES_IN_DAY) {
     var hours = Math.round(minutes / 60)
-    return translate('aboutXHours', hours)
+    return localize('aboutXHours', hours)
 
   // 1 day up to 1.75 days
   } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
-    return translate('xDays', 1)
+    return localize('xDays', 1)
 
   // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
-    return translate('xDays', days)
+    return localize('xDays', days)
 
   // 1 month up to 2 months
   } else if (minutes < MINUTES_IN_TWO_MONTHS) {
     months = Math.round(minutes / MINUTES_IN_MONTH)
-    return translate('aboutXMonths', months)
+    return localize('aboutXMonths', months)
   }
 
   months = differenceInMonths(dateTo, dateFrom)
@@ -146,7 +146,7 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   // 2 months up to 12 months
   if (months < 12) {
     var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
-    return translate('xMonths', nearestMonth)
+    return localize('xMonths', nearestMonth)
 
   // 1 year up to max Date
   } else {
@@ -155,15 +155,15 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
 
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {
-      return translate('aboutXYears', years)
+      return localize('aboutXYears', years)
 
     // N years 3 months up to N years 9 months
     } else if (monthsSinceStartOfYear < 9) {
-      return translate('overXYears', years)
+      return localize('overXYears', years)
 
     // N years 9 months up to N year 12 months
     } else {
-      return translate('almostXYears', years + 1)
+      return localize('almostXYears', years + 1)
     }
   }
 }

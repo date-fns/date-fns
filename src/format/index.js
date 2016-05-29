@@ -285,7 +285,6 @@ function buildFormatFn (formatStr) {
       if (array[i] instanceof Function) {
         output += array[i](date, formatters)
       } else {
-        debugger
         output += array[i]
       }
     }

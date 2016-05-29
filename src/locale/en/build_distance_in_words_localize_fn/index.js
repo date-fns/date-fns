@@ -1,4 +1,4 @@
-module.exports = function buildDistanceInWordsTranslateFn () {
+module.exports = function buildDistanceInWordsLocalizeFn () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: 'less than a second',
