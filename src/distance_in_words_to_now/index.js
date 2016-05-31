@@ -42,19 +42,17 @@ var distanceInWords = require('../distance_in_words')
  * @returns {String} the distance in words
  *
  * @example
- * // What is the distance between 2 July 2014 and 1 January 2015?
+ * // If today is 1 January 2015, what is the distance to 2 July 2014?
  * var result = distanceInWords(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 1)
+ *   new Date(2014, 6, 2)
  * )
  * //=> '6 months'
  *
  * @example
- * // What is the distance between 1 January 2015 00:00:15
- * // and 1 January 2015 00:00:00, including seconds?
+ * // If now is 1 January 2015 00:00:00,
+ * // what is the distance to 1 January 2015 00:00:15, including seconds?
  * var result = distanceInWords(
  *   new Date(2015, 0, 1, 0, 0, 15),
- *   new Date(2015, 0, 1, 0, 0, 0),
  *   {includeSeconds: true}
  * )
  * //=> 'less than 20 seconds'
