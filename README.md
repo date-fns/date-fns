@@ -19,8 +19,8 @@ dates.sort(dateFns.compareAsc)
 // ]
 ```
 
-The library is available as [npm package](https://www.npmjs.com/package/date-fns),
-Bower package, and also distributed through [CDN](http://cdn.date-fns.org/).
+The library is available as an [npm package](https://www.npmjs.com/package/date-fns),
+a Bower package, and is also distributed through a [CDN](http://cdn.date-fns.org/).
 To install a package run:
 
 ```bash
