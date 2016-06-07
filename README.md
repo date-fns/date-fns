@@ -1,6 +1,6 @@
 # ![](http://cdn.date-fns.org/README-logo.svg) date-fns
 
-**date-fns** provides the most comprehensive yet simple and consistent toolset
+**date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
