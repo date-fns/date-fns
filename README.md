@@ -1,6 +1,6 @@
 # ![](http://cdn.date-fns.org/README-logo.svg) date-fns
 
-**date-fns** provides the most comprehensive yet simple and consistent toolset
+**date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
@@ -19,8 +19,8 @@ dates.sort(dateFns.compareAsc)
 // ]
 ```
 
-The library is available as [npm package](https://www.npmjs.com/package/date-fns),
-Bower package, and also distributed through [CDN](http://cdn.date-fns.org/).
+The library is available as an [npm package](https://www.npmjs.com/package/date-fns),
+a Bower package, and is also distributed through a [CDN](http://cdn.date-fns.org/).
 To install a package run:
 
 ```bash
