@@ -1,34 +1,34 @@
 module.exports = function buildFormatFormatters () {
-  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  var monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  var weekdaysShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  var weekdaysMin = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return monthsShort[date.getMonth()]
+      return months3char[date.getMonth()]
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return months[date.getMonth()]
+      return monthsFull[date.getMonth()]
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdaysMin[date.getDay()]
+      return weekdays2char[date.getDay()]
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdaysShort[date.getDay()]
+      return weekdays3char[date.getDay()]
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdays[date.getDay()]
+      return weekdaysFull[date.getDay()]
     }
   }
 
