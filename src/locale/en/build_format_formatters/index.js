@@ -62,8 +62,9 @@ module.exports = function buildFormatFormatters () {
 }
 
 function ordinal (number) {
-  if (number > 20 || number < 10) {
-    switch (number % 10) {
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
       case 1:
         return number + 'st'
       case 2:
