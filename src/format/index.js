@@ -156,21 +156,6 @@ var formatters = {
     return getISOYear(date)
   },
 
-  // AM, PM
-  'A': function (date) {
-    return (date.getHours() / 12) >= 1 ? 'PM' : 'AM'
-  },
-
-  // am, pm
-  'a': function (date) {
-    return (date.getHours() / 12) >= 1 ? 'pm' : 'am'
-  },
-
-  // a.m., p.m.
-  'aa': function (date) {
-    return (date.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.'
-  },
-
   // Hour: 0, 1, ... 23
   'H': function (date) {
     return date.getHours()

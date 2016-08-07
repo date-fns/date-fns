@@ -198,6 +198,60 @@ describe('en locale > buildFormatFormatters', function () {
     })
   })
 
+  describe('A', function () {
+    it('returns `AM` for 1-11 a.m.', function () {
+      assert(buildFormatFormatters().A(new Date(2016, 1 /* Feb */, 11, 1)) === 'AM')
+    })
+
+    it('returns `AM` for 12 a.m.', function () {
+      assert(buildFormatFormatters().A(new Date(2016, 1 /* Feb */, 11, 0)) === 'AM')
+    })
+
+    it('returns `PM` for 1-11 p.m.', function () {
+      assert(buildFormatFormatters().A(new Date(2016, 1 /* Feb */, 11, 13)) === 'PM')
+    })
+
+    it('returns `PM` for 12 p.m.', function () {
+      assert(buildFormatFormatters().A(new Date(2016, 1 /* Feb */, 11, 12)) === 'PM')
+    })
+  })
+
+  describe('a', function () {
+    it('returns `am` for 1-11 a.m.', function () {
+      assert(buildFormatFormatters().a(new Date(2016, 1 /* Feb */, 11, 1)) === 'am')
+    })
+
+    it('returns `am` for 12 a.m.', function () {
+      assert(buildFormatFormatters().a(new Date(2016, 1 /* Feb */, 11, 0)) === 'am')
+    })
+
+    it('returns `pm` for 1-11 p.m.', function () {
+      assert(buildFormatFormatters().a(new Date(2016, 1 /* Feb */, 11, 13)) === 'pm')
+    })
+
+    it('returns `pm` for 12 p.m.', function () {
+      assert(buildFormatFormatters().a(new Date(2016, 1 /* Feb */, 11, 12)) === 'pm')
+    })
+  })
+
+  describe('aa', function () {
+    it('returns `a.m.` for 1-11 a.m.', function () {
+      assert(buildFormatFormatters().aa(new Date(2016, 1 /* Feb */, 11, 1)) === 'a.m.')
+    })
+
+    it('returns `a.m.` for 12 a.m.', function () {
+      assert(buildFormatFormatters().aa(new Date(2016, 1 /* Feb */, 11, 0)) === 'a.m.')
+    })
+
+    it('returns `p.m.` for 1-11 p.m.', function () {
+      assert(buildFormatFormatters().aa(new Date(2016, 1 /* Feb */, 11, 13)) === 'p.m.')
+    })
+
+    it('returns `p.m.` for 12 p.m.', function () {
+      assert(buildFormatFormatters().aa(new Date(2016, 1 /* Feb */, 11, 12)) === 'p.m.')
+    })
+  })
+
   describe('Mo', function () {
     it('returns ordinal result of M formatter', function () {
       assert(buildFormatFormatters().Mo(null, {M: function () { return 1 }}), '1st')
