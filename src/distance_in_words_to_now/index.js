@@ -58,7 +58,7 @@ var distanceInWords = require('../distance_in_words/index.js')
  * //=> 'less than 20 seconds'
  */
 function distanceInWordsToNow (dirtyDate, options) {
-  return distanceInWords(dirtyDate, Date.now(), options)
+  return distanceInWords(Date.now(), dirtyDate, options)
 }
 
 module.exports = distanceInWordsToNow

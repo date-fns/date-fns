@@ -53,13 +53,26 @@ module.exports = function buildDistanceInWordsLocalizeFn () {
     }
   }
 
-  return function (token, count) {
-    if (count === undefined) {
-      return distanceInWordsLocale[token]
+  return function (token, count, options) {
+    options = options || {}
+
+    var result
+    if (typeof distanceInWordsLocale[token] === 'string') {
+      result = distanceInWordsLocale[token]
     } else if (count === 1) {
-      return distanceInWordsLocale[token].one
+      result = distanceInWordsLocale[token].one
     } else {
-      return distanceInWordsLocale[token].other.replace('{{count}}', count)
+      result = distanceInWordsLocale[token].other.replace('{{count}}', count)
     }
+
+    if (options.addSuffix) {
+      if (options.comparison > 0) {
+        return 'in ' + result
+      } else {
+        return result + ' ago'
+      }
+    }
+
+    return result
   }
 }

@@ -1,4 +1,4 @@
-var isBefore = require('../is_before/index.js')
+var compareDesc = require('../compare_desc/index.js')
 var parse = require('../parse/index.js')
 var differenceInSeconds = require('../difference_in_seconds/index.js')
 var differenceInMonths = require('../difference_in_months/index.js')
@@ -72,11 +72,18 @@ var MINUTES_IN_TWO_MONTHS = 86400
 module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
   options = options || {}
 
-  // TODO: Extract locale from options or default to en
-  var localize = enLocale.distanceInWords
+  var comparison = compareDesc(dirtyDateFrom, dirtyDateTo)
+
+  var locale = options.locale || enLocale
+  var localize = locale.distanceInWords
+
+  var localizeOptions = {
+    addSuffix: options.addSuffix,
+    comparison: comparison
+  }
 
   var dateTo, dateFrom
-  if (isBefore(dirtyDateFrom, dirtyDateTo)) {
+  if (comparison > 0) {
     dateFrom = parse(dirtyDateFrom)
     dateTo = parse(dirtyDateTo)
   } else {
@@ -93,52 +100,52 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   if (minutes < 2) {
     if (options.includeSeconds) {
       if (seconds < 5) {
-        return localize('lessThanXSeconds', 5)
+        return localize('lessThanXSeconds', 5, localizeOptions)
       } else if (seconds < 10) {
-        return localize('lessThanXSeconds', 10)
+        return localize('lessThanXSeconds', 10, localizeOptions)
       } else if (seconds < 20) {
-        return localize('lessThanXSeconds', 20)
+        return localize('lessThanXSeconds', 20, localizeOptions)
       } else if (seconds < 40) {
-        return localize('halfAMinute')
+        return localize('halfAMinute', null, localizeOptions)
       } else if (seconds < 60) {
-        return localize('lessThanXMinutes', 1)
+        return localize('lessThanXMinutes', 1, localizeOptions)
       } else {
-        return localize('xMinutes', 1)
+        return localize('xMinutes', 1, localizeOptions)
       }
     } else {
       if (minutes === 0) {
-        return localize('lessThanXMinutes', 1)
+        return localize('lessThanXMinutes', 1, localizeOptions)
       } else {
-        return localize('xMinutes', minutes)
+        return localize('xMinutes', minutes, localizeOptions)
       }
     }
 
   // 2 mins up to 0.75 hrs
   } else if (minutes < 45) {
-    return localize('xMinutes', minutes)
+    return localize('xMinutes', minutes, localizeOptions)
 
   // 0.75 hrs up to 1.5 hrs
   } else if (minutes < 90) {
-    return localize('aboutXHours', 1)
+    return localize('aboutXHours', 1, localizeOptions)
 
   // 1.5 hrs up to 24 hrs
   } else if (minutes < MINUTES_IN_DAY) {
     var hours = Math.round(minutes / 60)
-    return localize('aboutXHours', hours)
+    return localize('aboutXHours', hours, localizeOptions)
 
   // 1 day up to 1.75 days
   } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
-    return localize('xDays', 1)
+    return localize('xDays', 1, localizeOptions)
 
   // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
-    return localize('xDays', days)
+    return localize('xDays', days, localizeOptions)
 
   // 1 month up to 2 months
   } else if (minutes < MINUTES_IN_TWO_MONTHS) {
     months = Math.round(minutes / MINUTES_IN_MONTH)
-    return localize('aboutXMonths', months)
+    return localize('aboutXMonths', months, localizeOptions)
   }
 
   months = differenceInMonths(dateTo, dateFrom)
@@ -146,7 +153,7 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   // 2 months up to 12 months
   if (months < 12) {
     var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
-    return localize('xMonths', nearestMonth)
+    return localize('xMonths', nearestMonth, localizeOptions)
 
   // 1 year up to max Date
   } else {
@@ -155,15 +162,15 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
 
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {
-      return localize('aboutXYears', years)
+      return localize('aboutXYears', years, localizeOptions)
 
     // N years 3 months up to N years 9 months
     } else if (monthsSinceStartOfYear < 9) {
-      return localize('overXYears', years)
+      return localize('overXYears', years, localizeOptions)
 
     // N years 9 months up to N year 12 months
     } else {
-      return localize('almostXYears', years + 1)
+      return localize('almostXYears', years + 1, localizeOptions)
     }
   }
 }

@@ -189,4 +189,22 @@ describe('distanceInWordsToNow', function () {
     )
     assert(result === 'less than a minute')
   })
+
+  describe('when the addSuffix option is true', function () {
+    it('adds a past suffix', function () {
+      var result = distanceInWordsToNow(
+        new Date(1986, 3, 4, 10, 31, 35),
+        {includeSeconds: true, addSuffix: true}
+      )
+      assert(result === 'half a minute ago')
+    })
+
+    it('adds a future suffix', function () {
+      var result = distanceInWordsToNow(
+        new Date(1986, 3, 4, 11, 32, 0),
+        {addSuffix: true}
+      )
+      assert(result === 'in about 1 hour')
+    })
+  })
 })

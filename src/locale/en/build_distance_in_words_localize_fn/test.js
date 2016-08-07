@@ -26,6 +26,10 @@ describe('buildDistanceInWordsLocalizeFn', function () {
     it('returns a proper string', function () {
       assert(buildDistanceInWordsLocalizeFn()('halfAMinute') === 'half a minute')
     })
+
+    it('ignores the second argument', function () {
+      assert(buildDistanceInWordsLocalizeFn()('halfAMinute', 123) === 'half a minute')
+    })
   })
 
   describe('lessThanXMinutes', function () {
@@ -151,6 +155,26 @@ describe('buildDistanceInWordsLocalizeFn', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('almostXYears', 2) === 'almost 2 years')
       })
+    })
+  })
+
+  context('with a past suffix', function () {
+    it('adds ago to a string', function () {
+      var result = buildDistanceInWordsLocalizeFn()('aboutXYears', 1, {
+        addSuffix: true,
+        comparison: -1
+      })
+      assert(result === 'about 1 year ago')
+    })
+  })
+
+  context('with a future suffix', function () {
+    it('adds in to a string', function () {
+      var result = buildDistanceInWordsLocalizeFn()('halfAMinute', null, {
+        addSuffix: true,
+        comparison: 1
+      })
+      assert(result === 'in half a minute')
     })
   })
 })
