@@ -3,19 +3,19 @@
 var assert = require('power-assert')
 var buildDistanceInWordsLocalizeFn = require('./')
 
-describe('buildDistanceInWordsLocalizeFn', function () {
+describe('en locale > buildDistanceInWordsLocalizeFn', function () {
   it('returns a function', function () {
     assert(typeof buildDistanceInWordsLocalizeFn() === 'function')
   })
 
   describe('lessThanXSeconds', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('lessThanXSeconds', 1) === 'less than a second')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('lessThanXSeconds', 2) === 'less than 2 seconds')
       })
@@ -33,13 +33,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('lessThanXMinutes', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('lessThanXMinutes', 1) === 'less than a minute')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('lessThanXMinutes', 2) === 'less than 2 minutes')
       })
@@ -47,13 +47,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('xMinutes', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xMinutes', 1) === '1 minute')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xMinutes', 2) === '2 minutes')
       })
@@ -61,13 +61,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('aboutXHours', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXHours', 1) === 'about 1 hour')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXHours', 2) === 'about 2 hours')
       })
@@ -75,13 +75,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('xDays', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xDays', 1) === '1 day')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xDays', 2) === '2 days')
       })
@@ -89,13 +89,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('aboutXMonths', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXMonths', 1) === 'about 1 month')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXMonths', 2) === 'about 2 months')
       })
@@ -103,13 +103,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('xMonths', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xMonths', 1) === '1 month')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('xMonths', 2) === '2 months')
       })
@@ -117,13 +117,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('aboutXYears', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXYears', 1) === 'about 1 year')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('aboutXYears', 2) === 'about 2 years')
       })
@@ -131,13 +131,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('overXYears', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('overXYears', 1) === 'over 1 year')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('overXYears', 2) === 'over 2 years')
       })
@@ -145,13 +145,13 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   describe('almostXYears', function () {
-    context('when count equals 1', function () {
+    context('when the count equals 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('almostXYears', 1) === 'almost 1 year')
       })
     })
 
-    context('when count is more than 1', function () {
+    context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocalizeFn()('almostXYears', 2) === 'almost 2 years')
       })
@@ -159,7 +159,7 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   context('with a past suffix', function () {
-    it('adds ago to a string', function () {
+    it('adds `ago` to a string', function () {
       var result = buildDistanceInWordsLocalizeFn()('aboutXYears', 1, {
         addSuffix: true,
         comparison: -1
@@ -169,7 +169,7 @@ describe('buildDistanceInWordsLocalizeFn', function () {
   })
 
   context('with a future suffix', function () {
-    it('adds in to a string', function () {
+    it('adds `in` to a string', function () {
       var result = buildDistanceInWordsLocalizeFn()('halfAMinute', null, {
         addSuffix: true,
         comparison: 1
