@@ -384,7 +384,7 @@ describe('ru locale > buildDistanceInWordsLocale', function () {
       it('returns a proper string', function () {
         [1, 21, 101, 1231].forEach(function (count) {
           var result = buildDistanceInWordsLocale().localize('aboutXHours', count)
-        assert(result === 'около ' + count + ' часа')
+          assert(result === 'около ' + count + ' часа')
         })
       })
     })
@@ -393,7 +393,7 @@ describe('ru locale > buildDistanceInWordsLocale', function () {
       it('returns a proper string', function () {
         [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20, 102, 1234].forEach(function (count) {
           var result = buildDistanceInWordsLocale().localize('aboutXHours', count)
-        assert(result === 'около ' + count + ' часов')
+          assert(result === 'около ' + count + ' часов')
         })
       })
     })

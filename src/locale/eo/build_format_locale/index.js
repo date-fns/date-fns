@@ -49,7 +49,7 @@ module.exports = function buildFormatLocale () {
     // antaŭtagmeze, posttagmeze
     'aa': function (date) {
       return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    },
+    }
   }
 
   // Generate ordinal version of formatters: M -> Mo, DDD -> DDDo, etc.
