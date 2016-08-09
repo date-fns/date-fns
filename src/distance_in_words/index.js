@@ -75,7 +75,7 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
   var comparison = compareDesc(dirtyDateFrom, dirtyDateTo)
 
   var locale = options.locale || enLocale
-  var localize = locale.distanceInWords
+  var localize = locale.distanceInWords.localize
 
   var localizeOptions = {
     addSuffix: options.addSuffix,

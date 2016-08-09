@@ -43,7 +43,7 @@ function buildLocalizeTokenFn (scheme) {
   }
 }
 
-module.exports = function buildDistanceInWordsLocalizeFn () {
+module.exports = function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: buildLocalizeTokenFn({
       regular: {
@@ -187,8 +187,12 @@ module.exports = function buildDistanceInWordsLocalizeFn () {
     })
   }
 
-  return function (token, count, options) {
+  function localize (token, count, options) {
     options = options || {}
     return distanceInWordsLocale[token](count, options)
+  }
+
+  return {
+    localize: localize
   }
 }

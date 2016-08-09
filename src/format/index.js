@@ -71,11 +71,15 @@ var enLocale = require('../locale/en/index.js')
  * )
  * //=> '02/11/2014'
  */
-module.exports = function format (dirtyDate, formatStr) {
+module.exports = function format (dirtyDate, formatStr, options) {
   formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  options = options || {}
+
+  var locale = options.locale || enLocale
+  var formatLocale = locale.format
 
   var date = parse(dirtyDate)
-  var formatFn = buildFormatFn(formatStr)
+  var formatFn = buildFormatFn(formatStr, formatLocale)
 
   return formatFn(date)
 }
@@ -239,24 +243,14 @@ var formatters = {
   }
 }
 
-// TODO: Build & cache RegExp for different locales that could have different
-//       set of formatting tokens.
-var formattingTokens = Object.keys(formatters)
-  .concat(Object.keys(enLocale.format))
-  .sort()
-  .reverse()
-var formattingTokensRegExp = new RegExp(
-  '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
-)
-
-function buildFormatFn (formatStr) {
-  var array = formatStr.match(formattingTokensRegExp)
+function buildFormatFn (formatStr, formatLocale) {
+  var array = formatStr.match(formatLocale.formattingTokensRegExp)
   var length = array.length
 
   var i
   var formatter
   for (i = 0; i < length; i++) {
-    formatter = enLocale.format[array[i]] || formatters[array[i]]
+    formatter = formatLocale.formatters[array[i]] || formatters[array[i]]
     if (formatter) {
       array[i] = formatter
     } else {

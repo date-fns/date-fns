@@ -1,4 +1,6 @@
-module.exports = function buildFormatFormatters () {
+var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp')
+
+module.exports = function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637
   var monthsShort = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.']
   var monthsFull = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
@@ -67,5 +69,8 @@ module.exports = function buildFormatFormatters () {
     }
   })
 
-  return formatters
+  return {
+    formatters: formatters,
+    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+  }
 }

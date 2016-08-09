@@ -1,4 +1,4 @@
-module.exports = function buildDistanceInWordsLocalizeFn () {
+module.exports = function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: 'less than a second',
@@ -53,7 +53,7 @@ module.exports = function buildDistanceInWordsLocalizeFn () {
     }
   }
 
-  return function (token, count, options) {
+  function localize (token, count, options) {
     options = options || {}
 
     var result
@@ -74,5 +74,9 @@ module.exports = function buildDistanceInWordsLocalizeFn () {
     }
 
     return result
+  }
+
+  return {
+    localize: localize
   }
 }

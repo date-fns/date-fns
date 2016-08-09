@@ -1,4 +1,6 @@
-module.exports = function buildFormatFormatters () {
+var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp')
+
+module.exports = function buildFormatLocale () {
   var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
@@ -58,7 +60,10 @@ module.exports = function buildFormatFormatters () {
     }
   })
 
-  return formatters
+  return {
+    formatters: formatters,
+    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+  }
 }
 
 function ordinal (number) {

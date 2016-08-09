@@ -1,7 +1,7 @@
-var buildDistanceInWordsLocalizeFn = require('./build_distance_in_words_localize_fn')
-var buildFormatFormatters = require('./build_format_formatters')
+var buildDistanceInWordsLocale = require('./build_distance_in_words_locale')
+var buildFormatLocale = require('./build_format_locale')
 
 module.exports = {
-  distanceInWords: buildDistanceInWordsLocalizeFn(),
-  format: buildFormatFormatters()
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
 }
