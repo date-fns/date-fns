@@ -328,6 +328,57 @@ describe('ru locale > buildFormatLocale', function () {
         assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 3 }}), '3-я')
       })
     })
+
+    describe('D MMMM', function () {
+      it('returns a day and a month in the genitive case', function () {
+        var months = [
+          'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ]
+        var formatters = {
+          D: function () {
+            return 1
+          }
+        }
+        months.forEach(function (month, index) {
+          assert(buildFormatLocale().formatters['D MMMM'](new Date(2016, index, 1), formatters) === '1 ' + month)
+        })
+      })
+    })
+
+    describe('Do MMMM', function () {
+      it('returns an ordinal day and a month in the genitive case', function () {
+        var months = [
+          'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ]
+        var formatters = {
+          D: function () {
+            return 3
+          }
+        }
+        months.forEach(function (month, index) {
+          assert(buildFormatLocale().formatters['Do MMMM'](new Date(2016, index, 3), formatters) === '3-е ' + month)
+        })
+      })
+    })
+
+    describe('DD MMMM', function () {
+      it('returns a day and a month in the genitive case', function () {
+        var months = [
+          'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+          'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+        ]
+        var formatters = {
+          DD: function () {
+            return '07'
+          }
+        }
+        months.forEach(function (month, index) {
+          assert(buildFormatLocale().formatters['DD MMMM'](new Date(2016, index, 7), formatters) === '07 ' + month)
+        })
+      })
+    })
   })
 
   describe('formattingTokensRegExp property', function () {

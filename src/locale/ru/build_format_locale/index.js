@@ -4,6 +4,7 @@ module.exports = function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637
   var monthsShort = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.']
   var monthsFull = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+  var monthsGenitive = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   var weekdays2char = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб']
   var weekdays3char = ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'суб']
   var weekdaysFull = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
@@ -66,6 +67,16 @@ module.exports = function buildFormatLocale () {
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {
       return formatters[formatterToken](date) + '-й'
+    }
+  })
+
+  // Generate formatters like 'D MMMM',
+  // where month is in the genitive case: января, февраля, ..., декабря
+  var monthsGenitiveFormatters = ['D', 'Do', 'DD']
+  monthsGenitiveFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + ' MMMM'] = function (date, commonFormatters) {
+      var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
+      return formatter(date, commonFormatters) + ' ' + monthsGenitive[date.getMonth()]
     }
   })
 
