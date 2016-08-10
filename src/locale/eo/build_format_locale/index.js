@@ -11,7 +11,7 @@ module.exports = function buildFormatLocale () {
   var meridiemFull = ['antaŭtagmeze', 'posttagmeze']
 
   var formatters = {
-    // Month: jan, feb, ..., dek
+    // Month: jan, feb, ..., deс
     'MMM': function (date) {
       return months3char[date.getMonth()]
     },
@@ -52,7 +52,7 @@ module.exports = function buildFormatLocale () {
     }
   }
 
-  // Generate ordinal version of formatters: M -> Mo, DDD -> DDDo, etc.
+  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
   var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {

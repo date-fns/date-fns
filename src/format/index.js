@@ -59,9 +59,15 @@ var enLocale = require('../locale/en/index.js')
  * | Seconds timestamp       | X     | 512969520                        |
  * | Milliseconds timestamp  | x     | 512969520900                     |
  *
+ * The characters wrapped in square brackets are escaped.
+ *
+ * The result may vary by locale.
+ *
  * @param {Date|String|Number} date - the original date
  * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
  * @returns {String} the formatted date string
+ * @param {Object} [options] - the object with options
+ * @param {Object} [options.locale=enLocale] - the locale object
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -70,6 +76,16 @@ var enLocale = require('../locale/en/index.js')
  *   'MM/DD/YYYY'
  * )
  * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = format(
+ *   new Date(2014, 6, 2),
+ *   'Do [de] MMMM YYYY',
+ *   {locale: eoLocale}
+ * )
+ * //=> '2-a de julio 2014'
  */
 module.exports = function format (dirtyDate, formatStr, options) {
   formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'

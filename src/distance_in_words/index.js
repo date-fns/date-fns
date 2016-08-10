@@ -45,10 +45,12 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
  *
- * @param {Date|String|Number} dateFrom - the first date of the distance
- * @param {Date|String|Number} dateTo - the second date of the distance
+ * @param {Date|String|Number} dateToCompare - the date to compare with
+ * @param {Date|String|Number} date - the other date
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the distance in words
  *
  * @example
@@ -68,11 +70,31 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *   {includeSeconds: true}
  * )
  * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with a suffix?
+ * var result = distanceInWords(
+ *   new Date(2016, 0, 1),
+ *   new Date(2015, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'about 1 year ago'
+ *
+ * @example
+ * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWords(
+ *   new Date(2016, 7, 1),
+ *   new Date(2015, 0, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
  */
-module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) {
+module.exports = function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
-  var comparison = compareDesc(dirtyDateFrom, dirtyDateTo)
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
 
   var locale = options.locale || enLocale
   var localize = locale.distanceInWords.localize
@@ -82,17 +104,17 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
     comparison: comparison
   }
 
-  var dateTo, dateFrom
+  var dateLeft, dateRight
   if (comparison > 0) {
-    dateFrom = parse(dirtyDateFrom)
-    dateTo = parse(dirtyDateTo)
+    dateLeft = parse(dirtyDateToCompare)
+    dateRight = parse(dirtyDate)
   } else {
-    dateFrom = parse(dirtyDateTo)
-    dateTo = parse(dirtyDateFrom)
+    dateLeft = parse(dirtyDate)
+    dateRight = parse(dirtyDateToCompare)
   }
 
-  var seconds = differenceInSeconds(dateTo, dateFrom)
-  var offset = dateTo.getTimezoneOffset() - dateFrom.getTimezoneOffset()
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
   var months
 
@@ -148,7 +170,7 @@ module.exports = function distanceInWords (dirtyDateFrom, dirtyDateTo, options) 
     return localize('aboutXMonths', months, localizeOptions)
   }
 
-  months = differenceInMonths(dateTo, dateFrom)
+  months = differenceInMonths(dateRight, dateLeft)
 
   // 2 months up to 12 months
   if (months < 12) {

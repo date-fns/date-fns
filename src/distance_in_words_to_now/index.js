@@ -39,6 +39,8 @@ var distanceInWords = require('../distance_in_words/index.js')
  * @param {Date|String|Number} date - the given date
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first
+ * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the distance in words
  *
  * @example
@@ -56,6 +58,25 @@ var distanceInWords = require('../distance_in_words/index.js')
  *   {includeSeconds: true}
  * )
  * //=> 'less than 20 seconds'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 January 2016, with a suffix?
+ * var result = distanceInWordsToNow(
+ *   new Date(2016, 0, 1),
+ *   {addSuffix: true}
+ * )
+ * //=> 'in about 1 year'
+ *
+ * @example
+ * // If today is 1 January 2015,
+ * // what is the distance to 1 August 2016 in Esperanto?
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = distanceInWords(
+ *   new Date(2016, 7, 1),
+ *   {locale: eoLocale}
+ * )
+ * //=> 'pli ol 1 jaro'
  */
 function distanceInWordsToNow (dirtyDate, options) {
   return distanceInWords(Date.now(), dirtyDate, options)
