@@ -164,12 +164,12 @@ var formats = {
 
   // Year: 00, 01, ..., 99
   'YY': function () {
-    return String(this.getFullYear()).substr(2)
+    return addLeadingZeros(this.getFullYear(), 4).substr(2)
   },
 
   // Year: 1900, 1901, ..., 2099
   'YYYY': function () {
-    return this.getFullYear()
+    return addLeadingZeros(this.getFullYear(), 4)
   },
 
   // ISO week-numbering year: 00, 01, ..., 99
