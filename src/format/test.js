@@ -187,6 +187,11 @@ describe('format', function () {
       var result = format(this._date, 'YY YYYY')
       assert(result === '86 1986')
     })
+
+    it('years less than 100', function () {
+      var result = format(new Date('0001-01-01'), 'YY YYYY')
+      assert(result === '01 0001')
+    })
   })
 
   describe('ISO week-numbering years', function () {
