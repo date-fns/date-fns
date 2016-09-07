@@ -189,7 +189,7 @@ describe('format', function () {
     })
 
     it('years less than 100', function () {
-      var result = format(new Date('0001-01-01'), 'YY YYYY')
+      var result = format('0001-01-01', 'YY YYYY')
       assert(result === '01 0001')
     })
   })
