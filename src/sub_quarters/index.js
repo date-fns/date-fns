@@ -1,4 +1,4 @@
-var addQuarters = require('../add_quarters')
+var addQuarters = require('../add_quarters/index.js')
 
 /**
  * @category Quarter Helpers

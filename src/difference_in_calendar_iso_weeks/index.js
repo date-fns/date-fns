@@ -1,4 +1,4 @@
-var startOfISOWeek = require('../start_of_iso_week')
+var startOfISOWeek = require('../start_of_iso_week/index.js')
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000

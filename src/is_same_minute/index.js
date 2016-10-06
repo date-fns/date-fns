@@ -1,4 +1,4 @@
-var startOfMinute = require('../start_of_minute')
+var startOfMinute = require('../start_of_minute/index.js')
 
 /**
  * @category Minute Helpers

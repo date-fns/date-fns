@@ -1,4 +1,4 @@
-var isSameISOYear = require('../is_same_iso_year')
+var isSameISOYear = require('../is_same_iso_year/index.js')
 
 /**
  * @category ISO Week-Numbering Year Helpers

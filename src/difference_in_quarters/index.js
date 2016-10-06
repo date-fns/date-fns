@@ -1,4 +1,4 @@
-var differenceInMonths = require('../difference_in_months')
+var differenceInMonths = require('../difference_in_months/index.js')
 
 /**
  * @category Quarter Helpers

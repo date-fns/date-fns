@@ -40,6 +40,7 @@
     "sinon": "^1.17.3",
     "snazzy": "^3.0.0",
     "standard": "^6.0.8",
+    "systemjs": "^0.19.39",
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "webpack-espower-loader": "^1.0.1"
@@ -69,10 +70,13 @@
     "stats-loc": "npm run stats-loc-code && npm run stats-loc-tests",
     "stats-loc-code": "echo 'Source code stats:' && cloc src/**/index.js",
     "stats-loc-tests": "echo 'Test suite stats:' && cloc src/**/test.js",
-    "flow-check": "flow check"
+    "flow-check": "flow check",
+    "systemjs-check": "babel-node scripts/systemjs_check.js"
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": ["dist/"]
+    "ignore": [
+      "dist/"
+    ]
   }
 }

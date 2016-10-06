@@ -1,5 +1,5 @@
-var getISOYear = require('../get_iso_year')
-var setISOYear = require('../set_iso_year')
+var getISOYear = require('../get_iso_year/index.js')
+var setISOYear = require('../set_iso_year/index.js')
 
 /**
  * @category ISO Week-Numbering Year Helpers

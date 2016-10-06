@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var differenceInCalendarMonths = require('../difference_in_calendar_months')
-var compareAsc = require('../compare_asc')
+var parse = require('../parse/index.js')
+var differenceInCalendarMonths = require('../difference_in_calendar_months/index.js')
+var compareAsc = require('../compare_asc/index.js')
 
 /**
  * @category Month Helpers

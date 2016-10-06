@@ -1,5 +1,5 @@
-var parse = require('../parse')
-var startOfISOWeek = require('../start_of_iso_week')
+var parse = require('../parse/index.js')
+var startOfISOWeek = require('../start_of_iso_week/index.js')
 
 /**
  * @category ISO Week-Numbering Year Helpers

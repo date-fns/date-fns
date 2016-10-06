@@ -1,5 +1,5 @@
-var parse = require('../parse')
-var setMonth = require('../set_month')
+var parse = require('../parse/index.js')
+var setMonth = require('../set_month/index.js')
 
 /**
  * @category Quarter Helpers

@@ -1,4 +1,4 @@
-var addWeeks = require('../add_weeks')
+var addWeeks = require('../add_weeks/index.js')
 
 /**
  * @category Week Helpers

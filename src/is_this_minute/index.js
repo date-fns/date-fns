@@ -1,4 +1,4 @@
-var isSameMinute = require('../is_same_minute')
+var isSameMinute = require('../is_same_minute/index.js')
 
 /**
  * @category Minute Helpers

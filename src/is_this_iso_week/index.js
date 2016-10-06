@@ -1,4 +1,4 @@
-var isSameISOWeek = require('../is_same_iso_week')
+var isSameISOWeek = require('../is_same_iso_week/index.js')
 
 /**
  * @category ISO Week Helpers

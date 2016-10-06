@@ -1,4 +1,4 @@
-var addMonths = require('../add_months')
+var addMonths = require('../add_months/index.js')
 
 /**
  * @category Quarter Helpers

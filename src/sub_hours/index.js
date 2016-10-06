@@ -1,4 +1,4 @@
-var addHours = require('../add_hours')
+var addHours = require('../add_hours/index.js')
 
 /**
  * @category Hour Helpers

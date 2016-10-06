@@ -1,7 +1,7 @@
-var getDayOfYear = require('../get_day_of_year')
-var getISOWeek = require('../get_iso_week')
-var getISOYear = require('../get_iso_year')
-var parse = require('../parse')
+var getDayOfYear = require('../get_day_of_year/index.js')
+var getISOWeek = require('../get_iso_week/index.js')
+var getISOYear = require('../get_iso_year/index.js')
+var parse = require('../parse/index.js')
 
 /**
  * @category Common Helpers

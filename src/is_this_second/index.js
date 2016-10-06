@@ -1,4 +1,4 @@
-var isSameSecond = require('../is_same_second')
+var isSameSecond = require('../is_same_second/index.js')
 
 /**
  * @category Second Helpers

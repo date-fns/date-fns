@@ -1,4 +1,4 @@
-var endOfDay = require('../end_of_day')
+var endOfDay = require('../end_of_day/index.js')
 
 /**
  * @category Day Helpers

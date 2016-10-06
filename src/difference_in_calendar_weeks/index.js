@@ -1,4 +1,4 @@
-var startOfWeek = require('../start_of_week')
+var startOfWeek = require('../start_of_week/index.js')
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000

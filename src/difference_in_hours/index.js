@@ -1,4 +1,4 @@
-var differenceInMilliseconds = require('../difference_in_milliseconds')
+var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
 
 var MILLISECONDS_IN_HOUR = 3600000
 

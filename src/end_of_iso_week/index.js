@@ -1,4 +1,4 @@
-var endOfWeek = require('../end_of_week')
+var endOfWeek = require('../end_of_week/index.js')
 
 /**
  * @category ISO Week Helpers

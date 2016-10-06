@@ -1,5 +1,5 @@
-var getQuarter = require('../get_quarter')
-var parse = require('../parse')
+var getQuarter = require('../get_quarter/index.js')
+var parse = require('../parse/index.js')
 
 /**
  * @category Quarter Helpers

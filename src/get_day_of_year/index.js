@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var startOfYear = require('../start_of_year')
-var differenceInCalendarDays = require('../difference_in_calendar_days')
+var parse = require('../parse/index.js')
+var startOfYear = require('../start_of_year/index.js')
+var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
 
 /**
  * @category Day Helpers

@@ -1,4 +1,4 @@
-var startOfHour = require('../start_of_hour')
+var startOfHour = require('../start_of_hour/index.js')
 
 /**
  * @category Hour Helpers

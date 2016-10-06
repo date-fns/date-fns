@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var startOfISOWeek = require('../start_of_iso_week')
-var startOfISOYear = require('../start_of_iso_year')
+var parse = require('../parse/index.js')
+var startOfISOWeek = require('../start_of_iso_week/index.js')
+var startOfISOYear = require('../start_of_iso_year/index.js')
 
 var MILLISECONDS_IN_WEEK = 604800000
 

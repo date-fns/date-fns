@@ -1,4 +1,4 @@
-var startOfQuarter = require('../start_of_quarter')
+var startOfQuarter = require('../start_of_quarter/index.js')
 
 /**
  * @category Quarter Helpers

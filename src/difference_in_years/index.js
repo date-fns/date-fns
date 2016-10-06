@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var differenceInCalendarYears = require('../difference_in_calendar_years')
-var compareAsc = require('../compare_asc')
+var parse = require('../parse/index.js')
+var differenceInCalendarYears = require('../difference_in_calendar_years/index.js')
+var compareAsc = require('../compare_asc/index.js')
 
 /**
  * @category Year Helpers

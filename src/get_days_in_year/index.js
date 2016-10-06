@@ -1,4 +1,4 @@
-var isLeapYear = require('../is_leap_year')
+var isLeapYear = require('../is_leap_year/index.js')
 
 /**
  * @category Year Helpers

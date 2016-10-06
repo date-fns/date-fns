@@ -1,4 +1,4 @@
-var addSeconds = require('../add_seconds')
+var addSeconds = require('../add_seconds/index.js')
 
 /**
  * @category Second Helpers
