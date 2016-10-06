@@ -46,6 +46,14 @@ export default {
     },
     {
       type: 'markdown',
+      urlId: 'I18n',
+      category: 'General',
+      title: 'I18n',
+      description: 'Internalization',
+      path: path.join(__dirname, 'i18n.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
