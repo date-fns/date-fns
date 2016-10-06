@@ -14,7 +14,8 @@ branches:
 script:
   - npm run lint
   - npm run test-ci
-  - '[ "${SAUCE_USERNAME}" = "" ] || npm run test-cross-browser'
+  - # TODO: Enable when SauceLabs become reliable
+  - # '[ "${SAUCE_USERNAME}" = "" ] || npm run test-cross-browser'
   - npm run test-tz
   - npm run test-tz-extended
   - npm run count-tests
