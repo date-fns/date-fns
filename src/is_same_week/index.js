@@ -1,4 +1,4 @@
-var startOfWeek = require('../start_of_week')
+var startOfWeek = require('../start_of_week/index.js')
 
 /**
  * @category Week Helpers

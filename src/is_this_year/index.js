@@ -1,4 +1,4 @@
-var isSameYear = require('../is_same_year')
+var isSameYear = require('../is_same_year/index.js')
 
 /**
  * @category Year Helpers

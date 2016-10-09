@@ -1,7 +1,7 @@
-var parse = require('../parse')
-var differenceInCalendarISOYears = require('../difference_in_calendar_iso_years')
-var compareAsc = require('../compare_asc')
-var subISOYears = require('../sub_iso_years')
+var parse = require('../parse/index.js')
+var differenceInCalendarISOYears = require('../difference_in_calendar_iso_years/index.js')
+var compareAsc = require('../compare_asc/index.js')
+var subISOYears = require('../sub_iso_years/index.js')
 
 /**
  * @category ISO Week-Numbering Year Helpers

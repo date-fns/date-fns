@@ -1,5 +1,5 @@
-var startOfISOYear = require('../start_of_iso_year')
-var addWeeks = require('../add_weeks')
+var startOfISOYear = require('../start_of_iso_year/index.js')
+var addWeeks = require('../add_weeks/index.js')
 
 var MILLISECONDS_IN_WEEK = 604800000
 

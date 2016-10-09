@@ -1,4 +1,4 @@
-var startOfISOYear = require('../start_of_iso_year')
+var startOfISOYear = require('../start_of_iso_year/index.js')
 
 /**
  * @category ISO Week-Numbering Year Helpers

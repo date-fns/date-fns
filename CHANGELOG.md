@@ -10,6 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.4.0] - 2016-10-09
+
+### Added
+
+- Basic [SystemJS](https://github.com/systemjs/systemjs) support.
+
+### Fixed
+
+- Fix incorrect behaviour of `YYYY` and `YY` for years prior to 1000:
+  now `format(new Date('0001-01-01'), 'YYYY-MM-DD')` returns `0001-01-01`
+  instead of `1-01-01`.
+
 ## [1.3.0] - 2016-05-26
 
 ### Added
@@ -564,7 +576,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/date-fns/date-fns/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/date-fns/date-fns/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/date-fns/date-fns/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/date-fns/date-fns/compare/v1.1.0...v1.1.1

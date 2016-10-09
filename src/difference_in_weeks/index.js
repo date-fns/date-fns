@@ -1,4 +1,4 @@
-var differenceInDays = require('../difference_in_days')
+var differenceInDays = require('../difference_in_days/index.js')
 
 /**
  * @category Week Helpers

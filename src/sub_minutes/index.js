@@ -1,4 +1,4 @@
-var addMinutes = require('../add_minutes')
+var addMinutes = require('../add_minutes/index.js')
 
 /**
  * @category Minute Helpers

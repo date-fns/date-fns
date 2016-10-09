@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var differenceInCalendarDays = require('../difference_in_calendar_days')
-var compareAsc = require('../compare_asc')
+var parse = require('../parse/index.js')
+var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
+var compareAsc = require('../compare_asc/index.js')
 
 /**
  * @category Day Helpers

@@ -1,4 +1,4 @@
-var startOfSecond = require('../start_of_second')
+var startOfSecond = require('../start_of_second/index.js')
 
 /**
  * @category Second Helpers

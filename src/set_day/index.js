@@ -1,5 +1,5 @@
-var parse = require('../parse')
-var addDays = require('../add_days')
+var parse = require('../parse/index.js')
+var addDays = require('../add_days/index.js')
 
 /**
  * @category Weekday Helpers

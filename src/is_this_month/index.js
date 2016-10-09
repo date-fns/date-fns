@@ -1,4 +1,4 @@
-var isSameMonth = require('../is_same_month')
+var isSameMonth = require('../is_same_month/index.js')
 
 /**
  * @category Month Helpers

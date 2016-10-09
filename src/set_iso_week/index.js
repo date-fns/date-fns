@@ -1,5 +1,5 @@
-var parse = require('../parse')
-var getISOWeek = require('../get_iso_week')
+var parse = require('../parse/index.js')
+var getISOWeek = require('../get_iso_week/index.js')
 
 /**
  * @category ISO Week Helpers

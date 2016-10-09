@@ -1,6 +1,6 @@
-var parse = require('../parse')
-var endOfDay = require('../end_of_day')
-var endOfMonth = require('../end_of_month')
+var parse = require('../parse/index.js')
+var endOfDay = require('../end_of_day/index.js')
+var endOfMonth = require('../end_of_month/index.js')
 
 /**
  * @category Month Helpers

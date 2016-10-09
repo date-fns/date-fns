@@ -1,4 +1,4 @@
-var parse = require('../parse')
+var parse = require('../parse/index.js')
 
 /**
  * @category Hour Helpers

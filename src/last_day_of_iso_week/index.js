@@ -1,4 +1,4 @@
-var lastDayOfWeek = require('../last_day_of_week')
+var lastDayOfWeek = require('../last_day_of_week/index.js')
 
 /**
  * @category ISO Week Helpers

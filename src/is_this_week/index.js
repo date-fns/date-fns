@@ -1,4 +1,4 @@
-var isSameWeek = require('../is_same_week')
+var isSameWeek = require('../is_same_week/index.js')
 
 /**
  * @category Week Helpers

@@ -1,4 +1,4 @@
-var addYears = require('../add_years')
+var addYears = require('../add_years/index.js')
 
 /**
  * @category Year Helpers

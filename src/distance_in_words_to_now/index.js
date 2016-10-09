@@ -1,4 +1,4 @@
-var distanceInWords = require('../distance_in_words')
+var distanceInWords = require('../distance_in_words/index.js')
 
 /**
  * @category Common Helpers

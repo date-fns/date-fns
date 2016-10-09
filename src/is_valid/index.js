@@ -1,4 +1,4 @@
-var isDate = require('../is_date')
+var isDate = require('../is_date/index.js')
 
 /**
  * @category Common Helpers

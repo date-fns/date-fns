@@ -1,4 +1,4 @@
-var isSameHour = require('../is_same_hour')
+var isSameHour = require('../is_same_hour/index.js')
 
 /**
  * @category Hour Helpers

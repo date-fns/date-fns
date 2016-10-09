@@ -1,5 +1,5 @@
-var parse = require('../parse')
-var getDaysInMonth = require('../get_days_in_month')
+var parse = require('../parse/index.js')
+var getDaysInMonth = require('../get_days_in_month/index.js')
 
 /**
  * @category Month Helpers

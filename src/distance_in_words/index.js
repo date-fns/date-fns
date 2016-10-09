@@ -1,7 +1,7 @@
-var isBefore = require('../is_before')
-var parse = require('../parse')
-var differenceInSeconds = require('../difference_in_seconds')
-var differenceInMonths = require('../difference_in_months')
+var isBefore = require('../is_before/index.js')
+var parse = require('../parse/index.js')
+var differenceInSeconds = require('../difference_in_seconds/index.js')
+var differenceInMonths = require('../difference_in_months/index.js')
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520

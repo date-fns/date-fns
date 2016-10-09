@@ -1,4 +1,4 @@
-var addMilliseconds = require('../add_milliseconds')
+var addMilliseconds = require('../add_milliseconds/index.js')
 
 /**
  * @category Millisecond Helpers

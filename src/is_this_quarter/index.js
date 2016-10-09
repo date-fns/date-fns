@@ -1,4 +1,4 @@
-var isSameQuarter = require('../is_same_quarter')
+var isSameQuarter = require('../is_same_quarter/index.js')
 
 /**
  * @category Quarter Helpers
