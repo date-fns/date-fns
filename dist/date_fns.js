@@ -1498,10 +1498,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return addLeadingZeros(getISOWeek(this), 2);
 	    },
 	    'YY': function () {
-	        return String(this.getFullYear()).substr(2);
+	        return addLeadingZeros(this.getFullYear(), 4).substr(2);
 	    },
 	    'YYYY': function () {
-	        return this.getFullYear();
+	        return addLeadingZeros(this.getFullYear(), 4);
 	    },
 	    'GG': function () {
 	        return String(getISOYear(this)).substr(2);
