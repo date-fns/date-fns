@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp')
+var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp.js')
 
 module.exports = function buildFormatLocale () {
   var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

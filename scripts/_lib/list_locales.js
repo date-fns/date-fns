@@ -1,0 +1,12 @@
+import path from 'path'
+import fs from 'fs'
+
+export default function listLocales () {
+  const locales = fs.readdirSync(path.join(process.cwd(), 'src', 'locales'))
+  return locales
+    .filter(locale => /^[^\._]/.test(locale))
+    .map(locale => ({
+      name: locale,
+      fullPath: `./src/locale/${locale}/index.js`
+    }))
+}
