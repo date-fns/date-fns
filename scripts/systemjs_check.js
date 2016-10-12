@@ -3,10 +3,7 @@ import listLocales from './_lib/list_locales'
 import SystemJS from 'systemjs'
 import path from 'path'
 
-Promise.all(
-  listFiles().map(file => SystemJS.import(path.resolve(`src/${file.path}/index.js`)))
-    .concat(locale => SystemJS.import(path.resolve(`src/locale/${locale.name}/index.js`)))
-).then(
+Promise.all(importFns().concat(importLocales())).then(
   () => {
     console.log('SystemJS support is OK')
   },
@@ -15,3 +12,11 @@ Promise.all(
     process.exit(1)
   }
 )
+
+function importFns () {
+  return listFiles().map((file) => SystemJS.import(path.resolve(`src/${file.path}/index.js`)))
+}
+
+function importLocales () {
+  return listLocales().map((locale) => SystemJS.import(path.resolve(`src/locale/${locale.name}/index.js`)))
+}
