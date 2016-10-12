@@ -36,12 +36,8 @@ If you see a gap, but don't have time, experience, or you just need help
 with the library, don't hesitate to [shoot an issue](https://github.com/date-fns/date-fns/issues/new).
 
 The date-fns functionality is comprehensive and covers most of the use cases,
-however it doesn't support I18n which is the focus for the next major release.
-If you want to help with that, please leave a comment to
-the [I18n support issue](https://github.com/date-fns/date-fns/issues/157).
-
-Another major milestone for the project is an extended time zone support.
-Please leave a comment to the [Extended time zones support issue](https://github.com/date-fns/date-fns/issues/180)
+however it doesn't have extended time zone support. Please leave a comment
+to the [Extended time zones support issue](https://github.com/date-fns/date-fns/issues/180)
 if you are interested in the functionality or want to help with development.
 
 If you are interested in Elm/ClojureScript/etc. wrappers,

@@ -2,6 +2,7 @@ var getDayOfYear = require('../get_day_of_year/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
 var parse = require('../parse/index.js')
+var enLocale = require('../locale/en/index.js')
 
 /**
  * @category Common Helpers
@@ -58,9 +59,15 @@ var parse = require('../parse/index.js')
  * | Seconds timestamp       | X     | 512969520                        |
  * | Milliseconds timestamp  | x     | 512969520900                     |
  *
+ * The characters wrapped in square brackets are escaped.
+ *
+ * The result may vary by locale.
+ *
  * @param {Date|String|Number} date - the original date
  * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
  * @returns {String} the formatted date string
+ * @param {Object} [options] - the object with options
+ * @param {Object} [options.locale=enLocale] - the locale object
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -69,147 +76,119 @@ var parse = require('../parse/index.js')
  *   'MM/DD/YYYY'
  * )
  * //=> '02/11/2014'
+ *
+ * @example
+ * // Represent 2 July 2014 in Esperanto:
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = format(
+ *   new Date(2014, 6, 2),
+ *   'Do [de] MMMM YYYY',
+ *   {locale: eoLocale}
+ * )
+ * //=> '2-a de julio 2014'
  */
-function format (dirtyDate, format) {
+module.exports = function format (dirtyDate, formatStr, options) {
+  formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  options = options || {}
+
+  var locale = options.locale || enLocale
+  var formatLocale = locale.format
+
   var date = parse(dirtyDate)
+  var formatFn = buildFormatFn(formatStr, formatLocale)
 
-  if (!format) {
-    format = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
-  }
-
-  var formatFunction = makeFormatFunction(format)
-  return formatFunction(date)
+  return formatFn(date)
 }
 
-var formats = {
+var formatters = {
   // Month: 1, 2, ..., 12
-  'M': function () {
-    return this.getMonth() + 1
+  'M': function (date) {
+    return date.getMonth() + 1
   },
 
   // Month: 01, 02, ..., 12
-  'MM': function () {
-    return addLeadingZeros(this.getMonth() + 1, 2)
-  },
-
-  // Month: Jan, Feb, ..., Dec
-  'MMM': function () {
-    return locale.monthsShort[this.getMonth()]
-  },
-
-  // Month: January, February, ..., December
-  'MMMM': function () {
-    return locale.months[this.getMonth()]
+  'MM': function (date) {
+    return addLeadingZeros(date.getMonth() + 1, 2)
   },
 
   // Quarter: 1, 2, 3, 4
-  'Q': function () {
-    return Math.ceil((this.getMonth() + 1) / 3)
+  'Q': function (date) {
+    return Math.ceil((date.getMonth() + 1) / 3)
   },
 
   // Day of month: 1, 2, ..., 31
-  'D': function () {
-    return this.getDate()
+  'D': function (date) {
+    return date.getDate()
   },
 
   // Day of month: 01, 02, ..., 31
-  'DD': function () {
-    return addLeadingZeros(this.getDate(), 2)
+  'DD': function (date) {
+    return addLeadingZeros(date.getDate(), 2)
   },
 
   // Day of year: 1, 2, ..., 366
-  'DDD': function () {
-    return getDayOfYear(this)
+  'DDD': function (date) {
+    return getDayOfYear(date)
   },
 
   // Day of year: 001, 002, ..., 366
-  'DDDD': function () {
-    return addLeadingZeros(getDayOfYear(this), 3)
+  'DDDD': function (date) {
+    return addLeadingZeros(getDayOfYear(date), 3)
   },
 
   // Day of week: 0, 1, ..., 6
-  'd': function () {
-    return this.getDay()
-  },
-
-  // Day of week: Su, Mo, ..., Sa
-  'dd': function () {
-    return locale.dayNamesMin[this.getDay()]
-  },
-
-  // Day of week: Sun, Mon, ..., Sat
-  'ddd': function () {
-    return locale.dayNamesShort[this.getDay()]
-  },
-
-  // Day of week: Sunday, Monday, ..., Saturday
-  'dddd': function () {
-    return locale.dayNames[this.getDay()]
+  'd': function (date) {
+    return date.getDay()
   },
 
   // Day of ISO week: 1, 2, ..., 7
-  'E': function () {
-    return this.getDay() || 7
+  'E': function (date) {
+    return date.getDay() || 7
   },
 
   // ISO week: 1, 2, ..., 53
-  'W': function () {
-    return getISOWeek(this)
+  'W': function (date) {
+    return getISOWeek(date)
   },
 
   // ISO week: 01, 02, ..., 53
-  'WW': function () {
-    return addLeadingZeros(getISOWeek(this), 2)
+  'WW': function (date) {
+    return addLeadingZeros(getISOWeek(date), 2)
   },
 
   // Year: 00, 01, ..., 99
-  'YY': function () {
-    return addLeadingZeros(this.getFullYear(), 4).substr(2)
+  'YY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4).substr(2)
   },
 
   // Year: 1900, 1901, ..., 2099
-  'YYYY': function () {
-    return addLeadingZeros(this.getFullYear(), 4)
+  'YYYY': function (date) {
+    return addLeadingZeros(date.getFullYear(), 4)
   },
 
   // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function () {
-    return String(getISOYear(this)).substr(2)
+  'GG': function (date) {
+    return String(getISOYear(date)).substr(2)
   },
 
   // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function () {
-    return getISOYear(this)
-  },
-
-  // AM, PM
-  'A': function () {
-    return (this.getHours() / 12) >= 1 ? 'PM' : 'AM'
-  },
-
-  // am, pm
-  'a': function () {
-    return (this.getHours() / 12) >= 1 ? 'pm' : 'am'
-  },
-
-  // a.m., p.m.
-  'aa': function () {
-    return (this.getHours() / 12) >= 1 ? 'p.m.' : 'a.m.'
+  'GGGG': function (date) {
+    return getISOYear(date)
   },
 
   // Hour: 0, 1, ... 23
-  'H': function () {
-    return this.getHours()
+  'H': function (date) {
+    return date.getHours()
   },
 
   // Hour: 00, 01, ..., 23
-  'HH': function () {
-    return addLeadingZeros(this.getHours(), 2)
+  'HH': function (date) {
+    return addLeadingZeros(date.getHours(), 2)
   },
 
   // Hour: 1, 2, ..., 12
-  'h': function () {
-    var hours = this.getHours()
+  'h': function (date) {
+    var hours = date.getHours()
     if (hours === 0) {
       return 12
     } else if (hours > 12) {
@@ -220,95 +199,86 @@ var formats = {
   },
 
   // Hour: 01, 02, ..., 12
-  'hh': function () {
-    return addLeadingZeros(formats['h'].apply(this), 2)
+  'hh': function (date) {
+    return addLeadingZeros(formatters['h'](date), 2)
   },
 
   // Minute: 0, 1, ..., 59
-  'm': function () {
-    return this.getMinutes()
+  'm': function (date) {
+    return date.getMinutes()
   },
 
   // Minute: 00, 01, ..., 59
-  'mm': function () {
-    return addLeadingZeros(this.getMinutes(), 2)
+  'mm': function (date) {
+    return addLeadingZeros(date.getMinutes(), 2)
   },
 
   // Second: 0, 1, ..., 59
-  's': function () {
-    return this.getSeconds()
+  's': function (date) {
+    return date.getSeconds()
   },
 
   // Second: 00, 01, ..., 59
-  'ss': function () {
-    return addLeadingZeros(this.getSeconds(), 2)
+  'ss': function (date) {
+    return addLeadingZeros(date.getSeconds(), 2)
   },
 
   // 1/10 of second: 0, 1, ..., 9
-  'S': function () {
-    return Math.floor(this.getMilliseconds() / 100)
+  'S': function (date) {
+    return Math.floor(date.getMilliseconds() / 100)
   },
 
   // 1/100 of second: 00, 01, ..., 99
-  'SS': function () {
-    return Math.floor(this.getMilliseconds() / 10)
+  'SS': function (date) {
+    return Math.floor(date.getMilliseconds() / 10)
   },
 
   // Millisecond: 000, 001, ..., 999
-  'SSS': function () {
-    return this.getMilliseconds()
+  'SSS': function (date) {
+    return date.getMilliseconds()
   },
 
   // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function () {
-    return formatTimezone(this.getTimezoneOffset(), ':')
+  'Z': function (date) {
+    return formatTimezone(date.getTimezoneOffset(), ':')
   },
 
   // Timezone: -0100, +0000, ... +1200
-  'ZZ': function () {
-    return formatTimezone(this.getTimezoneOffset())
+  'ZZ': function (date) {
+    return formatTimezone(date.getTimezoneOffset())
   },
 
   // Seconds timestamp: 512969520
-  'X': function () {
-    return Math.floor(this.getTime() / 1000)
+  'X': function (date) {
+    return Math.floor(date.getTime() / 1000)
   },
 
   // Milliseconds timestamp: 512969520900
-  'x': function () {
-    return this.getTime()
+  'x': function (date) {
+    return date.getTime()
   }
 }
 
-var ordinalFunctions = ['M', 'D', 'DDD', 'd', 'Q', 'W']
-ordinalFunctions.forEach(function (functionName) {
-  formats[functionName + 'o'] = function () {
-    return locale.ordinal(formats[functionName].apply(this))
-  }
-})
-
-var formattingTokens = Object.keys(formats).sort().reverse()
-var formattingTokensRegexp = new RegExp(
-  '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
-)
-
-function makeFormatFunction (format) {
-  var array = format.match(formattingTokensRegexp)
+function buildFormatFn (formatStr, formatLocale) {
+  var array = formatStr.match(formatLocale.formattingTokensRegExp)
   var length = array.length
 
-  for (var i = 0; i < length; i++) {
-    if (formats[array[i]]) {
-      array[i] = formats[array[i]]
+  var i
+  var formatter
+  for (i = 0; i < length; i++) {
+    formatter = formatLocale.formatters[array[i]] || formatters[array[i]]
+    if (formatter) {
+      array[i] = formatter
     } else {
       array[i] = removeFormattingTokens(array[i])
     }
   }
 
-  return function (mom) {
+  return function (date) {
     var output = ''
     for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i].call(mom, format)
+        output += array[i](date, formatters)
       } else {
         output += array[i]
       }
@@ -324,15 +294,6 @@ function removeFormattingTokens (input) {
   return input.replace(/\\/g, '')
 }
 
-function addLeadingZeros (number, targetLength) {
-  var output = String(Math.abs(number))
-
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
-  return output
-}
-
 function formatTimezone (offset, delimeter) {
   delimeter = delimeter || ''
   var sign = offset > 0 ? '-' : '+'
@@ -342,25 +303,10 @@ function formatTimezone (offset, delimeter) {
   return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
 }
 
-var locale = {
-  ordinal: function (number) {
-    if (number > 20 || number < 10) {
-      switch (number % 10) {
-        case 1:
-          return number + 'st'
-        case 2:
-          return number + 'nd'
-        case 3:
-          return number + 'rd'
-      }
-    }
-    return number + 'th'
-  },
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-  dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+function addLeadingZeros (number, targetLength) {
+  var output = Math.abs(number).toString()
+  while (output.length < targetLength) {
+    output = '0' + output
+  }
+  return output
 }
-
-module.exports = format
