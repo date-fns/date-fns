@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp.js')
+var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
 
 module.exports = function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637

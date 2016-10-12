@@ -1,3 +1,4 @@
+// @flow
 /* eslint-env mocha */
 
 var assert = require('power-assert')
