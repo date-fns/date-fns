@@ -158,12 +158,12 @@ var formatters = {
 
   // Year: 00, 01, ..., 99
   'YY': function (date) {
-    return addLeadingZeros(this.getFullYear(), 4).substr(2)
+    return addLeadingZeros(date.getFullYear(), 4).substr(2)
   },
 
   // Year: 1900, 1901, ..., 2099
   'YYYY': function (date) {
-    return addLeadingZeros(this.getFullYear(), 4)
+    return addLeadingZeros(date.getFullYear(), 4)
   },
 
   // ISO week-numbering year: 00, 01, ..., 99
