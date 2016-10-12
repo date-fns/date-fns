@@ -12,12 +12,12 @@ for pattern in CHANGELOG.md \
   package.json \
   src/*
 do
-  cp -r $pattern $dir
+  cp -r "$pattern" "$dir"
 done
 
 cp dist/date_fns_docs.json $dir/docs.json
-rm $dir/**/test.js
-cd $dir
+find "$dir" -type f -name "test.js" -delete
+cd "$dir" || exit
 npm publish
-cd -
-rm -rf $dir
+cd - || exit
+rm -rf "$dir"
