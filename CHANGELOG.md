@@ -10,6 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.5.1] - 2016-10-12
+
+### Fixed
+
+- A change log entry for [1.5.0] is added.
+
+## [1.5.0] - 2016-10-12
+
+### Added
+
+- [The initial I18n support](https://date-fns.org/docs/I18n)
+
 ## [1.4.0] - 2016-10-09
 
 ### Added
@@ -576,7 +588,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.5.1...HEAD
+[1.5.1]: https://github.com/date-fns/date-fns/compare/v1.5.0...v1.5.1
+[1.5.0]: https://github.com/date-fns/date-fns/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/date-fns/date-fns/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/date-fns/date-fns/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/date-fns/date-fns/compare/v1.1.1...v1.2.0
