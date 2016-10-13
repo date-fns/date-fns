@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.5.2] - 2016-10-13
+
+### Fixed
+
+- Incorrectly generated docs for `format`.
+- Fixed typo in I18n doc.
+
 ## [1.5.1] - 2016-10-12
 
 ### Fixed
@@ -588,7 +595,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.5.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.5.2...HEAD
+[1.5.2]: https://github.com/date-fns/date-fns/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/date-fns/date-fns/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/date-fns/date-fns/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/date-fns/date-fns/compare/v1.3.0...v1.4.0
