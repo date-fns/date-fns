@@ -49,7 +49,7 @@ export default {
       urlId: 'I18n',
       category: 'General',
       title: 'I18n',
-      description: 'Internalization',
+      description: 'Internationalization',
       path: path.join(__dirname, 'i18n.md')
     },
     {
