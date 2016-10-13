@@ -1,4 +1,4 @@
-module.exports = function buildDistanceInWordsLocale () {
+function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: 'malpli ol sekundo',
@@ -80,3 +80,5 @@ module.exports = function buildDistanceInWordsLocale () {
     localize: localize
   }
 }
+
+module.exports = buildDistanceInWordsLocale

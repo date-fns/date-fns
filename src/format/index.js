@@ -87,7 +87,7 @@ var enLocale = require('../locale/en/index.js')
  * )
  * //=> '2-a de julio 2014'
  */
-module.exports = function format (dirtyDate, formatStr, options) {
+function format (dirtyDate, formatStr, options) {
   formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
   options = options || {}
 
@@ -310,3 +310,5 @@ function addLeadingZeros (number, targetLength) {
   }
   return output
 }
+
+module.exports = format

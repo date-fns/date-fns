@@ -91,7 +91,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'pli ol 1 jaro'
  */
-module.exports = function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
+function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
@@ -196,3 +196,5 @@ module.exports = function distanceInWords (dirtyDateToCompare, dirtyDate, option
     }
   }
 }
+
+module.exports = distanceInWords
