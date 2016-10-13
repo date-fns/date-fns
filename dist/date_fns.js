@@ -1065,7 +1065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var MINUTES_IN_ALMOST_TWO_DAYS = 2520;
 	var MINUTES_IN_MONTH = 43200;
 	var MINUTES_IN_TWO_MONTHS = 86400;
-	module.exports = function distanceInWords(dirtyDateToCompare, dirtyDate, options) {
+	function distanceInWords(dirtyDateToCompare, dirtyDate, options) {
 	    options = options || {};
 	    var comparison = compareDesc(dirtyDateToCompare, dirtyDate);
 	    var locale = options.locale || enLocale;
@@ -1139,7 +1139,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return localize('almostXYears', years + 1, localizeOptions);
 	        }
 	    }
-	};
+	}
+	module.exports = distanceInWords;
 	
 
 
@@ -1160,7 +1161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 45 */
 /***/ function(module, exports) {
 
-	module.exports = function buildDistanceInWordsLocale() {
+	function buildDistanceInWordsLocale() {
 	    var distanceInWordsLocale = {
 	        lessThanXSeconds: {
 	            one: 'less than a second',
@@ -1224,7 +1225,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return result;
 	    }
 	    return { localize: localize };
-	};
+	}
+	module.exports = buildDistanceInWordsLocale;
 	
 
 
@@ -1233,7 +1235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var buildFormattingTokensRegExp = __webpack_require__(47);
-	module.exports = function buildFormatLocale() {
+	function buildFormatLocale() {
 	    var months3char = [
 	        'Jan',
 	        'Feb',
@@ -1344,7 +1346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        formatters: formatters,
 	        formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
 	    };
-	};
+	}
 	function ordinal(number) {
 	    var rem100 = number % 100;
 	    if (rem100 > 20 || rem100 < 10) {
@@ -1359,6 +1361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return number + 'th';
 	}
+	module.exports = buildFormatLocale;
 	
 
 
@@ -1398,11 +1401,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'X',
 	    'x'
 	];
-	module.exports = function buildFormattingTokensRegExp(formatters) {
+	function buildFormattingTokensRegExp(formatters) {
 	    var formattingTokens = commonFormatterKeys.concat(Object.keys(formatters)).sort().reverse();
 	    var formattingTokensRegExp = new RegExp('(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g');
 	    return formattingTokensRegExp;
-	};
+	}
+	module.exports = buildFormattingTokensRegExp;
 	
 
 
@@ -1645,7 +1649,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var getISOYear = __webpack_require__(6);
 	var parse = __webpack_require__(2);
 	var enLocale = __webpack_require__(44);
-	module.exports = function format(dirtyDate, formatStr, options) {
+	function format(dirtyDate, formatStr, options) {
 	    formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ';
 	    options = options || {};
 	    var locale = options.locale || enLocale;
@@ -1653,7 +1657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var date = parse(dirtyDate);
 	    var formatFn = buildFormatFn(formatStr, formatLocale);
 	    return formatFn(date);
-	};
+	}
 	var formatters = {
 	    'M': function (date) {
 	        return date.getMonth() + 1;
@@ -1799,6 +1803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return output;
 	}
+	module.exports = format;
 	
 
 
