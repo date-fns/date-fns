@@ -16,13 +16,13 @@ describe('en locale > buildDistanceInWordsLocale', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('lessThanXSeconds', 1) === '不足 1 秒')
+        assert(buildDistanceInWordsLocale().localize('lessThanXSeconds', 1) === '不到 1 秒')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('lessThanXSeconds', 2) === '不足 2 秒')
+        assert(buildDistanceInWordsLocale().localize('lessThanXSeconds', 2) === '不到 2 秒')
       })
     })
   })
@@ -40,13 +40,13 @@ describe('en locale > buildDistanceInWordsLocale', function () {
   describe('lessThanXMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('lessThanXMinutes', 1) === '不足 1 分钟')
+        assert(buildDistanceInWordsLocale().localize('lessThanXMinutes', 1) === '不到 1 分钟')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('lessThanXMinutes', 2) === '不足 2 分钟')
+        assert(buildDistanceInWordsLocale().localize('lessThanXMinutes', 2) === '不到 2 分钟')
       })
     })
   })
