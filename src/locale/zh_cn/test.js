@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var enLocale = require('./')
 
-describe('chs locale', function () {
+describe('zh_CN locale', function () {
   it('exports distanceInWords object', function () {
     assert(typeof enLocale.distanceInWords === 'object')
   })
