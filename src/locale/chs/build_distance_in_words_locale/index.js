@@ -1,15 +1,15 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      one: '不足 1 秒',
-      other: '不足 {{count}} 秒'
+      one: '不到 1 秒',
+      other: '不到 {{count}} 秒'
     },
 
     halfAMinute: '半分钟',
 
     lessThanXMinutes: {
-      one: '不足 1 分钟',
-      other: '不足 {{count}} 分钟'
+      one: '不到 1 分钟',
+      other: '不到 {{count}} 分钟'
     },
 
     xMinutes: {
