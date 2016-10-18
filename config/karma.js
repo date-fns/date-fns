@@ -103,11 +103,22 @@ function countReporter () {
   }
 }
 
+var testEntryPoint
+if (process.env.USE_STATIC_TESTS) {
+  testEntryPoint = '../tmp/tests.js'
+} else if (process.env.MOMENT_API_TEST) {
+  testEntryPoint = '../test/moment_tests/index.js'
+} else {
+  testEntryPoint = '../test/index.js'
+}
+
+const runWebpack = !process.env.USE_STATIC_TESTS
+
 function config (config) {
   config.set({
-    frameworks: ['mocha', 'sinon', 'es5-shim'],
-    files: process.env.USE_STATIC_TESTS ? ['../tmp/tests.js'] : ['../test.js'],
-    preprocessors: process.env.USE_STATIC_TESTS ? {'../tmp/tests.js': ['sourcemap']} : {'../test.js': ['webpack', 'sourcemap']},
+    frameworks: process.env.MOMENT_API_TEST ? ['qunit'] : ['mocha', 'sinon', 'es5-shim'],
+    files: [testEntryPoint],
+    preprocessors: {[testEntryPoint]: (runWebpack ? ['webpack'] : []).concat('sourcemap')},
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: {
@@ -149,7 +160,8 @@ function config (config) {
       'karma-sinon',
       'karma-sourcemap-loader',
       'karma-webpack',
-      {'reporter:count': ['type', countReporter]}
+      {'reporter:count': ['type', countReporter]},
+      'karma-qunit'
     ],
 
     customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : {},

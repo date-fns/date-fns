@@ -2,7 +2,7 @@
   "name": "date-fns",
   "version": "1.6.0",
   "homepage": "https://github.com/date-fns/date-fns",
-  "authors": ["Sasha Koss <koss@nocorp.me>"],
+  "authors": ["Sasha Koss <koss@nocorp.me>", "Lesha Koss <regiusprod@gmail.com>"],
   "description": "Modern JavaScript date utility library",
   "main": "dist/date_fns.js",
   "license": "MIT",
