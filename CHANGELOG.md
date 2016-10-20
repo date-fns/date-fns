@@ -10,6 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- [German language locale (de)](https://github.com/date-fns/date-fns/pull/237)
+  (thanks to Thomas Eilmsteiner [@DeMuu](https://github.com/DeMuu)).
+
 ## [1.6.0] - 2016-10-16
 
 ### Added
