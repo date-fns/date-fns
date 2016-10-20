@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.7.0] - 2016-10-20
+
 ### Added
 
 - [German language locale (de)](https://github.com/date-fns/date-fns/pull/237)
@@ -607,7 +609,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/date-fns/date-fns/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/date-fns/date-fns/compare/v1.5.2...v1.6.0
 [1.5.2]: https://github.com/date-fns/date-fns/compare/v1.5.1...v1.5.2
 [1.5.1]: https://github.com/date-fns/date-fns/compare/v1.5.0...v1.5.1
