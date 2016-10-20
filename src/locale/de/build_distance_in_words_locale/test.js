@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildDistanceInWordsLocale = require('./')
 
-describe('en locale > buildDistanceInWordsLocale', function () {
+describe('de locale > buildDistanceInWordsLocale', function () {
   it('returns an object', function () {
     assert(typeof buildDistanceInWordsLocale() === 'object')
   })
@@ -88,7 +88,7 @@ describe('en locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xDays', 2) === '2 Tage')
+        assert(buildDistanceInWordsLocale().localize('xDays', 2) === '2 Tagen')
       })
     })
   })
@@ -102,7 +102,7 @@ describe('en locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === 'etwa 2 Monate')
+        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === 'etwa 2 Monaten')
       })
     })
   })
@@ -116,7 +116,7 @@ describe('en locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xMonths', 2) === '2 Monate')
+        assert(buildDistanceInWordsLocale().localize('xMonths', 2) === '2 Monaten')
       })
     })
   })
@@ -130,7 +130,7 @@ describe('en locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === 'etwa 2 Jahr')
+        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === 'etwa 2 Jahren')
       })
     })
   })
@@ -158,7 +158,7 @@ describe('en locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('almostXYears', 2) === 'fast 2 Jahr')
+        assert(buildDistanceInWordsLocale().localize('almostXYears', 2) === 'fast 2 Jahren')
       })
     })
   })
