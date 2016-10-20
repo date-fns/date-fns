@@ -260,7 +260,7 @@ describe('jp locale > buildFormatLocale', function () {
 
     describe('Mo', function () {
       it('returns ordinal result of M formatter', function () {
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}), '1日)
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}), '1日')
         assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 2 }}), '2日')
         assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 3 }}), '3日')
         assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 11 }}), '11日')
