@@ -28,7 +28,7 @@ describe('ru locale > buildFormatLocale', function () {
       })
 
       it('returns `апр.` for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === 'апр.')
+        assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === 'апр.')
       })
 
       it('returns `май` for May', function () {
@@ -78,7 +78,7 @@ describe('ru locale > buildFormatLocale', function () {
       })
 
       it('returns `апрель` for April', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 3)) === 'апрель')
+        assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === 'апрель')
       })
 
       it('returns `май` for May', function () {
@@ -338,11 +338,11 @@ describe('ru locale > buildFormatLocale', function () {
         ]
         var formatters = {
           D: function () {
-            return 1
+            return 5
           }
         }
         months.forEach(function (month, index) {
-          assert(buildFormatLocale().formatters['D MMMM'](new Date(2016, index, 1), formatters) === '1 ' + month)
+          assert(buildFormatLocale().formatters['D MMMM'](new Date(2015, index, 5), formatters) === '5 ' + month)
         })
       })
     })
