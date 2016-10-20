@@ -1,54 +1,54 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      one: '１秒以下',
+      one: '1秒以下',
       other: '{{count}}秒以下'
     },
 
     halfAMinute: '半分',
 
     lessThanXMinutes: {
-      one: '１分以下',
+      one: '1分以下',
       other: '{{count}}分以下'
     },
 
     xMinutes: {
-      one: '１分',
+      one: '1分',
       other: '{{count}}分'
     },
 
     aboutXHours: {
-      one: '１時間ごろ',
+      one: '1時間ごろ',
       other: '{{count}}時間ごろ'
     },
 
     xDays: {
-      one: '１日',
+      one: '1日',
       other: '{{count}}日'
     },
 
     aboutXMonths: {
-      one: '１ヶ月ごろ',
+      one: '1ヶ月ごろ',
       other: '{{count}}ヶ月ごろ'
     },
 
     xMonths: {
-      one: '１ヶ月',
+      one: '1ヶ月',
       other: '{{count}}ヶ月'
     },
 
     aboutXYears: {
-      one: '１年ごろ',
+      one: '1年ごろ',
       other: '{{count}}年ごろ'
     },
 
     overXYears: {
-      one: '１年以上',
+      one: '1年以上',
       other: '{{count}}年以上'
     },
 
     almostXYears: {
-      one: '１年以下',
+      one: '1年以下',
       other: '{{count}}年以下'
     }
   }

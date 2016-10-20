@@ -16,51 +16,51 @@ describe('jp locale > buildFormatLocale', function () {
 
     describe('MMM', function () {
       it('returns `Jan` for January', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 0)) === '１月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 0)) === '1月')
       })
 
       it('returns `Feb` for February', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 1)) === '２月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 1)) === '2月')
       })
 
       it('returns `Mar` for March', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 2)) === '３月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 2)) === '3月')
       })
 
       it('returns `Apr` for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === '４月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === '4月')
       })
 
       it('returns `May` for May', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 4)) === '５月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 4)) === '5月')
       })
 
       it('returns `Jun` for June', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 5)) === '６月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 5)) === '6月')
       })
 
       it('returns `Jul` for July', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 6)) === '７月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 6)) === '7月')
       })
 
       it('returns `Aug` for August', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 7)) === '８月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 7)) === '8月')
       })
 
       it('returns `Sep` for September', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 8)) === '９月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 8)) === '9月')
       })
 
       it('returns `Oct` for October', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 9)) === '１０月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 9)) === '10月')
       })
 
       it('returns `Nov` for November', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 10)) === '１１月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 10)) === '11月')
       })
 
       it('returns `Dec` for December', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 11)) === '１２月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2016, 11)) === '12月')
       })
     })
 
@@ -260,67 +260,67 @@ describe('jp locale > buildFormatLocale', function () {
 
     describe('Mo', function () {
       it('returns ordinal result of M formatter', function () {
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}), '１日)
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}), '1日)
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 111 }}), '111日')
       })
     })
 
     describe('Do', function () {
       it('returns ordinal result of D formatter', function () {
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 1 }}), '１日')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 1 }}), '1日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 111 }}), '111日')
       })
     })
 
     describe('DDDo', function () {
       it('returns ordinal result of DDD formatter', function () {
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 1 }}), '１日')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 1 }}), '1日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 111 }}), '111日')
       })
     })
 
     describe('do', function () {
       it('returns ordinal result of d formatter', function () {
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 1 }}), '１日')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 1 }}), '1日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 111 }}), '111日')
       })
     })
 
     describe('Qo', function () {
       it('returns ordinal result of Q formatter', function () {
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 1 }}), '１日')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 1 }}), '1日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 111 }}), '111日')
       })
     })
 
     describe('Wo', function () {
       it('returns ordinal result of W formatter', function () {
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}), '１日')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}), '２日')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 3 }}), '３日')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 11 }}), '１１日')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 101 }}), '１０１日')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 111 }}), '１１１日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}), '1日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}), '2日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 3 }}), '3日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 11 }}), '11日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 101 }}), '101日')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 111 }}), '111日')
       })
     })
   })
