@@ -28,7 +28,7 @@ describe('eo locale > buildFormatLocale', function () {
       })
 
       it('returns `apr` for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === 'apr')
+        assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === 'apr')
       })
 
       it('returns `maj` for May', function () {
@@ -78,7 +78,7 @@ describe('eo locale > buildFormatLocale', function () {
       })
 
       it('returns `aprilo` for April', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 3)) === 'aprilo')
+        assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === 'aprilo')
       })
 
       it('returns `majo` for May', function () {

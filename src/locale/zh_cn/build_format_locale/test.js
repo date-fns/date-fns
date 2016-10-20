@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildFormatLocale = require('./')
 
-describe('en locale > buildFormatLocale', function () {
+describe('zh_CN locale > buildFormatLocale', function () {
   it('returns an object', function () {
     assert(typeof buildFormatLocale() === 'object')
   })
@@ -28,7 +28,7 @@ describe('en locale > buildFormatLocale', function () {
       })
 
       it('returns `4月` for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === '4月')
+        assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === '4月')
       })
 
       it('returns `5月` for May', function () {
@@ -78,7 +78,7 @@ describe('en locale > buildFormatLocale', function () {
       })
 
       it('returns `四月` for April', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 3)) === '四月')
+        assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === '四月')
       })
 
       it('returns `五月` for May', function () {
