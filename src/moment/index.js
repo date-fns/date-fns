@@ -30,21 +30,22 @@ var subWeeks = require('../sub_weeks')
 var subMonths = require('../sub_months')
 var subYears = require('../sub_years')
 var subQuarters = require('../sub_quarters')
+var format = require('../format')
 
 const addSubMap = [
-  [['ms', 'milliseconds'], [addMilliseconds, subMilliseconds]],
-  [['s', 'seconds'], [addSeconds, subSeconds]],
-  [['m', 'minutes'], [addMinutes, subMinutes]],
-  [['h', 'hours'], [addHours, subHours]],
-  [['d', 'days'], [addDays, subDays]],
-  [['w', 'weeks'], [addWeeks, subWeeks]],
-  [['M', 'months'], [addMonths, subMonths]],
-  [['y', 'years'], [addYears, subYears]],
-  [['Q', 'quarters'], [addQuarters, subQuarters]]
+  [['ms', 'milliseconds', 'millisecond'], [addMilliseconds, subMilliseconds]],
+  [['s', 'seconds', 'second'], [addSeconds, subSeconds]],
+  [['m', 'minutes', 'minute'], [addMinutes, subMinutes]],
+  [['h', 'hours', 'hour'], [addHours, subHours]],
+  [['d', 'days', 'day'], [addDays, subDays]],
+  [['w', 'weeks', 'week'], [addWeeks, subWeeks]],
+  [['M', 'months', 'month'], [addMonths, subMonths]],
+  [['y', 'years', 'year'], [addYears, subYears]],
+  [['Q', 'quarters', 'quarter'], [addQuarters, subQuarters]]
 ]
 
-module.exports = function (date) {
-  var currentDate = new Date()
+module.exports = function moment (date) {
+  var currentDate
 
   var api = {
     year: defineGetSet(getYear, setYear),
@@ -57,12 +58,21 @@ module.exports = function (date) {
 
     add: defineOptionsAddSub(0 /* take the add function */),
     subtract: defineOptionsAddSub(1 /* take the sub function */),
+
+    clone: function () { return moment(currentDate) },
+
+    isDST: function () { return false },
+
+    format: function (formatStr) { return format(currentDate, formatStr) }
   }
 
   if (date instanceof Array) {
+    currentDate = new Date()
     api.year(date[0])
     api.month(date[1])
     api.date(date[2])
+  } else {
+    currentDate = new Date(date)
   }
 
   return api
@@ -78,18 +88,29 @@ module.exports = function (date) {
   }
 
   function defineOptionsAddSub (fnIndex) {
-    return function (options) {
-      options = options || {}
-      addSubMap.forEach(function (addSub) {
-        var optionAliases = addSub[0]
-        var fn = addSub[1][fnIndex]
-        var option = optionAliases.find(function (optionAlias) {
-          return typeof options[optionAlias] == 'number'
+    return function addSub (optionsOrUnit, unitDiff) {
+      if (typeof optionsOrUnit === 'number' && unitDiff === undefined) {
+        addSub({ms: optionsOrUnit})
+      } else if (typeof optionsOrUnit === 'number' || typeof optionsOrUnit === 'string') {
+        const obj = {}
+        obj[optionsOrUnit] = unitDiff
+        obj[unitDiff] = optionsOrUnit
+        addSub(obj)
+      } else {
+        const options = optionsOrUnit || {}
+        addSubMap.forEach(function (addSub) {
+          var optionAliases = addSub[0]
+          var fn = addSub[1][fnIndex]
+          var option = optionAliases.find(function (optionAlias) {
+            return !!options[optionAlias]
+          })
+          if (option) {
+            let diff = options[option]
+            if (typeof diff === 'string') diff = parseInt(diff)
+            mutate(fn, diff)
+          }
         })
-        if (option) {
-          mutate(fn, options[option])
-        }
-      })
+      }
       return this
     }
   }

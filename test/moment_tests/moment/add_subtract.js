@@ -3,7 +3,7 @@ import moment from '../../moment';
 
 module('add and subtract');
 
-only('add short reverse args', function (assert) {
+test('add short reverse args', function (assert) {
     var a = moment(), b, c, d;
     a.year(2011);
     a.month(9);
@@ -81,8 +81,6 @@ test('add long singular reverse args', function (assert) {
 test('add string long reverse args', function (assert) {
     var a = moment(), b;
 
-    test.expectedDeprecations('moment().add(period, number)');
-
     a.year(2011);
     a.month(9);
     a.date(12);
@@ -108,8 +106,6 @@ test('add string long reverse args', function (assert) {
 test('add string long singular reverse args', function (assert) {
     var a = moment(), b;
 
-    test.expectedDeprecations('moment().add(period, number)');
-
     a.year(2011);
     a.month(9);
     a.date(12);
@@ -134,7 +130,6 @@ test('add string long singular reverse args', function (assert) {
 
 test('add string short reverse args', function (assert) {
     var a = moment();
-    test.expectedDeprecations('moment().add(period, number)');
 
     a.year(2011);
     a.month(9);
@@ -220,7 +215,6 @@ test('add string short', function (assert) {
 
 test('add strings string short reversed', function (assert) {
     var a = moment();
-    test.expectedDeprecations('moment().add(period, number)');
 
     a.year(2011);
     a.month(9);
@@ -243,7 +237,6 @@ test('add strings string short reversed', function (assert) {
 
 test('subtract strings string short reversed', function (assert) {
     var a = moment();
-    test.expectedDeprecations('moment().subtract(period, number)');
 
     a.year(2011);
     a.month(9);
@@ -349,7 +342,7 @@ test('add across DST', function (assert) {
     assert.equal(e.hours(), 5, 'adding quarters over DST difference should result in the same hour');
 });
 
-test('add decimal values of days and months', function (assert) {
+only('add decimal values of days and months', function (assert) {
     assert.equal(moment([2016,3,3]).add(1.5, 'days').date(), 5, 'adding 1.5 days is rounded to adding 2 day');
     assert.equal(moment([2016,3,3]).add(-1.5, 'days').date(), 1, 'adding -1.5 days is rounded to adding -2 day');
     assert.equal(moment([2016,3,1]).add(-1.5, 'days').date(), 30, 'adding -1.5 days on first of month wraps around');
