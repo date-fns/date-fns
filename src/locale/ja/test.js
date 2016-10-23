@@ -2,14 +2,14 @@
 /* eslint-env mocha */
 
 var assert = require('power-assert')
-var enLocale = require('./')
+var jaLocale = require('./')
 
 describe('ja locale', function () {
   it('exports distanceInWords object', function () {
-    assert(typeof enLocale.distanceInWords === 'object')
+    assert(typeof jaLocale.distanceInWords === 'object')
   })
 
   it('exports format object', function () {
-    assert(typeof enLocale.format === 'object')
+    assert(typeof jaLocale.format === 'object')
   })
 })
