@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- `getISODay`
+
+- `setISODay`
+
 ## [1.7.0] - 2016-10-20
 
 ### Added
