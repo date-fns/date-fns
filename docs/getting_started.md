@@ -86,7 +86,7 @@ To start using date-fns, simply add the following code into HTML:
 
 Replace `VERSION` with a proper version number e.g. `v1.0.0`.
 
-See the [full list](http://cdn.date-fns.org/) of resources avaliable on the CDN:
+See the [full list](http://cdn.date-fns.org/) of resources available on the CDN:
 
 - `http://cdn.date-fns.org/VERSION/date_fns.js`
 - `http://cdn.date-fns.org/VERSION/date_fns.js.map`
@@ -96,5 +96,5 @@ See the [full list](http://cdn.date-fns.org/) of resources avaliable on the CDN:
 
 ### GitHub Releases
 
-date-fns is avaliable via [the releases page](https://github.com/date-fns/date-fns/releases)
+date-fns is available via [the releases page](https://github.com/date-fns/date-fns/releases)
 where you can download the source code or individual files.
