@@ -10,7 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-- Got index.js imports to work with System.JS
+## [1.9.0] - 2016-10-25
+
+### Added
+
+- Got index.js imports to work with SystemJS.
 
 ## [1.8.1] - 2016-10-24
 
@@ -628,7 +632,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.8.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.9.0...HEAD
+[1.9.0]: https://github.com/date-fns/date-fns/compare/v1.8.1...v1.9.0
 [1.8.1]: https://github.com/date-fns/date-fns/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/date-fns/date-fns/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/date-fns/date-fns/compare/v1.6.0...v1.7.0
