@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+- Got index.js imports to work with System.JS
+
 ## [1.8.1] - 2016-10-24
 
 ### Fixed
