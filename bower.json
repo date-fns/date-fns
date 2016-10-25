@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "homepage": "https://github.com/date-fns/date-fns",
   "authors": ["Sasha Koss <koss@nocorp.me>"],
   "description": "Modern JavaScript date utility library",
