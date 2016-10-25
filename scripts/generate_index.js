@@ -3,7 +3,7 @@ import path from 'path'
 import listFiles from './_lib/list_files'
 
 const propertyRequireLines = listFiles()
-  .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}')`)
+  .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index')`)
 
 const indexLines = ['module.exports = {']
   .concat(propertyRequireLines.join(',\n'))
