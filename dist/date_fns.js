@@ -230,10 +230,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isDate = __webpack_require__(3);
 	var MILLISECONDS_IN_HOUR = 3600000;
 	var MILLISECONDS_IN_MINUTE = 60000;
+	var DEFAULT_ADDITIONAL_DIGITS = 2;
 	var parseTokenDateTimeDelimeter = /[T ]/;
 	var parseTokenPlainTime = /:/;
-	var parseTokenYYYY = /^(\d{4})-?/;
-	var parseTokenYYYYY = /^([+-]\d{4,6})-/;
+	var parseTokenYY = /^(\d{2})$/;
+	var parseTokensYYY = [
+	    /^([+-]\d{2})$/,
+	    /^([+-]\d{3})$/,
+	    /^([+-]\d{4})$/
+	];
+	var parseTokenYYYY = /^(\d{4})/;
+	var parseTokensYYYYY = [
+	    /^([+-]\d{4})/,
+	    /^([+-]\d{5})/,
+	    /^([+-]\d{6})/
+	];
 	var parseTokenMM = /^-(\d{2})$/;
 	var parseTokenDDD = /^-?(\d{3})$/;
 	var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/;
@@ -246,14 +257,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var parseTokenTimezoneZ = /^(Z)$/;
 	var parseTokenTimezoneHH = /^([+-])(\d{2})$/;
 	var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/;
-	function parse(dateString) {
+	function parse(dateString, options) {
 	    if (isDate(dateString)) {
 	        return new Date(dateString.getTime());
 	    } else if (typeof dateString !== 'string') {
 	        return new Date(dateString);
 	    }
+	    options = options || {};
+	    var additionalDigits = options.additionalDigits;
+	    if (additionalDigits == null) {
+	        additionalDigits = DEFAULT_ADDITIONAL_DIGITS;
+	    }
 	    var dateStrings = splitDateString(dateString);
-	    var date = parseDate(dateStrings.date);
+	    var parseYearResult = parseYear(dateStrings.date, additionalDigits);
+	    var year = parseYearResult.year;
+	    var restDateString = parseYearResult.restDateString;
+	    var date = parseDate(restDateString, year);
 	    if (date) {
 	        var timestamp = date.getTime();
 	        var time = 0;
@@ -294,15 +313,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return dateStrings;
 	}
-	function parseDate(dateString) {
-	    var year;
-	    var yearToken;
-	    yearToken = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString);
-	    if (yearToken) {
-	        var yearString = yearToken[1];
-	        year = parseInt(yearString, 10);
-	        dateString = dateString.slice(yearString.length);
-	    } else {
+	function parseYear(dateString, additionalDigits) {
+	    var parseTokenYYY = parseTokensYYY[additionalDigits];
+	    var parseTokenYYYYY = parseTokensYYYYY[additionalDigits];
+	    var token;
+	    token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString);
+	    if (token) {
+	        var yearString = token[1];
+	        return {
+	            year: parseInt(yearString, 10),
+	            restDateString: dateString.slice(yearString.length)
+	        };
+	    }
+	    token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString);
+	    if (token) {
+	        var centuryString = token[1];
+	        return {
+	            year: parseInt(centuryString, 10) * 100,
+	            restDateString: dateString.slice(centuryString.length)
+	        };
+	    }
+	    return { year: null };
+	}
+	function parseDate(dateString, year) {
+	    if (year === null) {
 	        return null;
 	    }
 	    var token;
