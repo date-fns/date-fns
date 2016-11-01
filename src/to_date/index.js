@@ -4,41 +4,41 @@ var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
 
-var parseTokenDateTimeDelimeter = /[T ]/
-var parseTokenPlainTime = /:/
+var patterns = {
+  dateTimeDelimeter: /[T ]/,
+  plainTime: /:/,
 
-// year tokens
-var parseTokenYY = /^(\d{2})$/
-var parseTokensYYY = [
-  /^([+-]\d{2})$/, // 0 additional digits
-  /^([+-]\d{3})$/, // 1 additional digit
-  /^([+-]\d{4})$/ // 2 additional digits
-]
+  // year tokens
+  YY: /^(\d{2})$/,
+  YYY: [
+    /^([+-]\d{2})$/, // 0 additional digits
+    /^([+-]\d{3})$/, // 1 additional digit
+    /^([+-]\d{4})$/ // 2 additional digits
+  ],
+  YYYY: /^(\d{4})/,
+  YYYYY: [
+    /^([+-]\d{4})/, // 0 additional digits
+    /^([+-]\d{5})/, // 1 additional digit
+    /^([+-]\d{6})/ // 2 additional digits
+  ],
 
-var parseTokenYYYY = /^(\d{4})/
-var parseTokensYYYYY = [
-  /^([+-]\d{4})/, // 0 additional digits
-  /^([+-]\d{5})/, // 1 additional digit
-  /^([+-]\d{6})/ // 2 additional digits
-]
+  // date tokens
+  MM: /^-(\d{2})$/,
+  DDD: /^-?(\d{3})$/,
+  MMDD: /^-?(\d{2})-?(\d{2})$/,
+  Www: /^-?W(\d{2})$/,
+  WwwD: /^-?W(\d{2})-?(\d{1})$/,
 
-// date tokens
-var parseTokenMM = /^-(\d{2})$/
-var parseTokenDDD = /^-?(\d{3})$/
-var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
-var parseTokenWww = /^-?W(\d{2})$/
-var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
+  HH: /^(\d{2}([.,]\d*)?)$/,
+  HHMM: /^(\d{2}):?(\d{2}([.,]\d*)?)$/,
+  HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
 
-// time tokens
-var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
-var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/
-var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/
-
-// timezone tokens
-var parseTokenTimezone = /([Z+-].*)$/
-var parseTokenTimezoneZ = /^(Z)$/
-var parseTokenTimezoneHH = /^([+-])(\d{2})$/
-var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
+  // timezone tokens
+  timezone: /([Z+-].*)$/,
+  timezoneZ: /^(Z)$/,
+  timezoneHH: /^([+-])(\d{2})$/,
+  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/
+}
 
 /**
  * @category Common Helpers
@@ -121,10 +121,10 @@ function toDate (argument, options) {
 
 function splitDateString (dateString) {
   var dateStrings = {}
-  var array = dateString.split(parseTokenDateTimeDelimeter)
+  var array = dateString.split(patterns.dateTimeDelimeter)
   var timeString
 
-  if (parseTokenPlainTime.test(array[0])) {
+  if (patterns.plainTime.test(array[0])) {
     dateStrings.date = null
     timeString = array[0]
   } else {
@@ -133,7 +133,7 @@ function splitDateString (dateString) {
   }
 
   if (timeString) {
-    var token = parseTokenTimezone.exec(timeString)
+    var token = patterns.timezone.exec(timeString)
     if (token) {
       dateStrings.time = timeString.replace(token[1], '')
       dateStrings.timezone = token[1]
@@ -146,13 +146,13 @@ function splitDateString (dateString) {
 }
 
 function parseYear (dateString, additionalDigits) {
-  var parseTokenYYY = parseTokensYYY[additionalDigits]
-  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]
+  var patternYYY = patterns.YYY[additionalDigits]
+  var patternYYYYY = patterns.YYYYY[additionalDigits]
 
   var token
 
   // YYYY or ±YYYYY
-  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)
+  token = patterns.YYYY.exec(dateString) || patternYYYYY.exec(dateString)
   if (token) {
     var yearString = token[1]
     return {
@@ -162,7 +162,7 @@ function parseYear (dateString, additionalDigits) {
   }
 
   // YY or ±YYY
-  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)
+  token = patterns.YY.exec(dateString) || patternYYY.exec(dateString)
   if (token) {
     var centuryString = token[1]
     return {
@@ -196,7 +196,7 @@ function parseDate (dateString, year) {
   }
 
   // YYYY-MM
-  token = parseTokenMM.exec(dateString)
+  token = patterns.MM.exec(dateString)
   if (token) {
     date = new Date(0)
     month = parseInt(token[1], 10) - 1
@@ -205,7 +205,7 @@ function parseDate (dateString, year) {
   }
 
   // YYYY-DDD or YYYYDDD
-  token = parseTokenDDD.exec(dateString)
+  token = patterns.DDD.exec(dateString)
   if (token) {
     date = new Date(0)
     var dayOfYear = parseInt(token[1], 10)
@@ -214,7 +214,7 @@ function parseDate (dateString, year) {
   }
 
   // YYYY-MM-DD or YYYYMMDD
-  token = parseTokenMMDD.exec(dateString)
+  token = patterns.MMDD.exec(dateString)
   if (token) {
     date = new Date(0)
     month = parseInt(token[1], 10) - 1
@@ -224,14 +224,14 @@ function parseDate (dateString, year) {
   }
 
   // YYYY-Www or YYYYWww
-  token = parseTokenWww.exec(dateString)
+  token = patterns.Www.exec(dateString)
   if (token) {
     week = parseInt(token[1], 10) - 1
     return dayOfISOYear(year, week)
   }
 
   // YYYY-Www-D or YYYYWwwD
-  token = parseTokenWwwD.exec(dateString)
+  token = patterns.WwwD.exec(dateString)
   if (token) {
     week = parseInt(token[1], 10) - 1
     var dayOfWeek = parseInt(token[2], 10) - 1
@@ -248,14 +248,14 @@ function parseTime (timeString) {
   var minutes
 
   // hh
-  token = parseTokenHH.exec(timeString)
+  token = patterns.HH.exec(timeString)
   if (token) {
     hours = parseFloat(token[1].replace(',', '.'))
     return (hours % 24) * MILLISECONDS_IN_HOUR
   }
 
   // hh:mm or hhmm
-  token = parseTokenHHMM.exec(timeString)
+  token = patterns.HHMM.exec(timeString)
   if (token) {
     hours = parseInt(token[1], 10)
     minutes = parseFloat(token[2].replace(',', '.'))
@@ -264,7 +264,7 @@ function parseTime (timeString) {
   }
 
   // hh:mm:ss or hhmmss
-  token = parseTokenHHMMSS.exec(timeString)
+  token = patterns.HHMMSS.exec(timeString)
   if (token) {
     hours = parseInt(token[1], 10)
     minutes = parseInt(token[2], 10)
@@ -283,20 +283,20 @@ function parseTimezone (timezoneString) {
   var absoluteOffset
 
   // Z
-  token = parseTokenTimezoneZ.exec(timezoneString)
+  token = patterns.timezoneZ.exec(timezoneString)
   if (token) {
     return 0
   }
 
   // ±hh
-  token = parseTokenTimezoneHH.exec(timezoneString)
+  token = patterns.timezoneHH.exec(timezoneString)
   if (token) {
     absoluteOffset = parseInt(token[2], 10) * 60
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
   // ±hh:mm or ±hhmm
-  token = parseTokenTimezoneHHMM.exec(timezoneString)
+  token = patterns.timezoneHHMM.exec(timezoneString)
   if (token) {
     absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
