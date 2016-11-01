@@ -10,6 +10,26 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.10.0] - 2016-11-01
+
+### Added
+
+- `parse` now can parse dates that are ISO 8601 centuries (e.g., `19` and `+0019`).
+
+  ```javascript
+  var result = parse('19')
+  //=> Mon Jan 01 1900 00:00:00
+  ```
+
+- In `parse`, added ability to specify the number of additional digits
+  for extended year or century format (possible values are 0, 1 or 2; default is 2).
+
+  ```javascript
+  parse('+002016-11-01')
+  parse('+02016-11-01', {additionalDigits: 1})
+  parse('+2016-11-01', {additionalDigits: 0})
+  ```
+
 ## [1.9.0] - 2016-10-25
 
 ### Added
@@ -52,6 +72,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 ### Fixed
 
 - Incorrectly generated docs for `format`.
+
 - Fixed typo in I18n doc.
 
 ## [1.5.1] - 2016-10-12
@@ -632,7 +653,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.9.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.10.0...HEAD
+[1.10.0]: https://github.com/date-fns/date-fns/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/date-fns/date-fns/compare/v1.8.1...v1.9.0
 [1.8.1]: https://github.com/date-fns/date-fns/compare/v1.8.0...v1.8.1
 [1.8.0]: https://github.com/date-fns/date-fns/compare/v1.7.0...v1.8.0
