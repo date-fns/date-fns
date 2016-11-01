@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -20,8 +20,8 @@ var parse = require('../parse/index.js')
  * //=> false
  */
 function isEqual (dirtyLeftDate, dirtyRightDate) {
-  var dateLeft = parse(dirtyLeftDate)
-  var dateRight = parse(dirtyRightDate)
+  var dateLeft = toDate(dirtyLeftDate)
+  var dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()
 }
 

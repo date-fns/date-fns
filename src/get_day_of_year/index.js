@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var startOfYear = require('../start_of_year/index.js')
 var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
 
@@ -18,7 +18,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * //=> 183
  */
 function getDayOfYear (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var diff = differenceInCalendarDays(date, startOfYear(date))
   var dayOfYear = diff + 1
   return dayOfYear

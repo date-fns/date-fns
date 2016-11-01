@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Month Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> 29
  */
 function getDaysInMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()
   var lastDayOfMonth = new Date(0)

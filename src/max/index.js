@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -23,7 +23,7 @@ var parse = require('../parse/index.js')
 function max () {
   var dirtyDates = Array.prototype.slice.call(arguments)
   var dates = dirtyDates.map(function (dirtyDate) {
-    return parse(dirtyDate)
+    return toDate(dirtyDate)
   })
   var latestTimestamp = Math.max.apply(null, dates)
   return new Date(latestTimestamp)

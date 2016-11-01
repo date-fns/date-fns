@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Weekday Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isWeekend (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var day = date.getDay()
   return day === 0 || day === 6
 }

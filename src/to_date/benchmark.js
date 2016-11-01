@@ -2,12 +2,12 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var parse = require('./')
+var toDate = require('./')
 var moment = require('moment')
 
-suite('parse', function () {
+suite('toDate', function () {
   benchmark('date-fns', function () {
-    return parse('2014-10-25T13:46:20+07:00')
+    return toDate('2014-10-25T13:46:20+07:00')
   })
 
   benchmark('Moment.js', function () {

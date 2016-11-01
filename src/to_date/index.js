@@ -64,16 +64,17 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  *
  * @example
  * // Convert string '2014-02-11T11:30:30' to date:
- * var result = parse('2014-02-11T11:30:30')
+ * var result = toDate('2014-02-11T11:30:30')
  * //=> Tue Feb 11 2014 11:30:30
  *
  * @example
- * // Parse string '+02014101',
+ * // Convert string '+02014101' to date,
  * // if the additional number of digits in the extended year format is 1:
- * var result = parse('+02014101', {additionalDigits: 1})
+ * var result = toDate('+02014101', {additionalDigits: 1})
  * //=> Fri Apr 11 2014 00:00:00
  */
-function parse (argument, options) {
+function toDate (argument, options) {
+  // Clone the date
   if (isDate(argument)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
@@ -315,4 +316,4 @@ function dayOfISOYear (isoYear, week, day) {
   return date
 }
 
-module.exports = parse
+module.exports = toDate

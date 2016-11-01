@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Weekday Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isSaturday (dirtyDate) {
-  return parse(dirtyDate).getDay() === 6
+  return toDate(dirtyDate).getDay() === 6
 }
 
 module.exports = isSaturday

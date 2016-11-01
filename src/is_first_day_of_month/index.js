@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Month Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isFirstDayOfMonth (dirtyDate) {
-  return parse(dirtyDate).getDate() === 1
+  return toDate(dirtyDate).getDate() === 1
 }
 
 module.exports = isFirstDayOfMonth

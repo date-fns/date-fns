@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 
 /**
@@ -20,7 +20,7 @@ var getISOWeek = require('../get_iso_week/index.js')
  * //=> Sat Jan 01 2005 00:00:00
  */
 function setISOWeek (dirtyDate, isoWeek) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var diff = getISOWeek(date) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date

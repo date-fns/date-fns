@@ -1,5 +1,5 @@
 var compareDesc = require('../compare_desc/index.js')
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var differenceInSeconds = require('../difference_in_seconds/index.js')
 var differenceInMonths = require('../difference_in_months/index.js')
 var enLocale = require('../locale/en/index.js')
@@ -109,11 +109,11 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
 
   var dateLeft, dateRight
   if (comparison > 0) {
-    dateLeft = parse(dirtyDateToCompare)
-    dateRight = parse(dirtyDate)
+    dateLeft = toDate(dirtyDateToCompare)
+    dateRight = toDate(dirtyDate)
   } else {
-    dateLeft = parse(dirtyDate)
-    dateRight = parse(dirtyDateToCompare)
+    dateLeft = toDate(dirtyDate)
+    dateRight = toDate(dirtyDateToCompare)
   }
 
   var seconds = differenceInSeconds(dateRight, dateLeft)
