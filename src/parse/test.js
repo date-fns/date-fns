@@ -5,6 +5,13 @@ var assert = require('power-assert')
 var parse = require('./')
 
 describe('parse', function () {
+  describe('centuries', function () {
+    it('parses YY', function () {
+      var result = parse('20')
+      assert.deepEqual(result, new Date(2000, 0 /* Jan */, 1))
+    })
+  })
+
   describe('years', function () {
     it('parses YYYY', function () {
       var result = parse('2014')
@@ -67,7 +74,7 @@ describe('parse', function () {
     })
   })
 
-  describe('a date and a time combined', function () {
+  describe('date and time combined', function () {
     it('parses YYYY-MM-DDThh:mm', function () {
       var result = parse('2014-02-11T11:30')
       assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
@@ -84,7 +91,35 @@ describe('parse', function () {
     })
   })
 
-  describe('an extended year representation', function () {
+  describe('extended century representation', function () {
+    it('parses century 101 BC - 2 BC', function () {
+      var result = parse('-0001')
+      var date = new Date(-100, 0 /* Jan */, 1)
+      date.setFullYear(-100)
+      assert.deepEqual(result, date)
+    })
+
+    it('parses century 1 BC - 99 AD', function () {
+      var result = parse('00')
+      var date = new Date(0, 0 /* Jan */, 1)
+      date.setFullYear(0)
+      assert.deepEqual(result, date)
+    })
+
+    it('parses centruries after 9999 AD', function () {
+      var result = parse('+0123')
+      assert.deepEqual(result, new Date(12300, 0 /* Jan */, 1))
+    })
+
+    it('allows to specify the number of additional digits', function () {
+      var result = parse('-20', {additionalDigits: 0})
+      var date = new Date(-2000, 0 /* Jan */, 1)
+      date.setFullYear(-2000)
+      assert.deepEqual(result, date)
+    })
+  })
+
+  describe('extended year representation', function () {
     it('correctly parses years from 1 AD to 99 AD', function () {
       var result = parse('0095-07-02')
       var date = new Date(0, 6 /* Jul */, 2)
@@ -92,9 +127,14 @@ describe('parse', function () {
       assert.deepEqual(result, date)
     })
 
-    it('parses years more than 9999 AD', function () {
-      var result = parse('+12345-07-02')
+    it('parses years after 9999 AD', function () {
+      var result = parse('+012345-07-02')
       assert.deepEqual(result, new Date(12345, 6 /* Jul */, 2))
+    })
+
+    it('allows to specify the number of additional digits', function () {
+      var result = parse('+12340702', {additionalDigits: 0})
+      assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
     })
 
     it('parses year 1 BC', function () {
@@ -105,14 +145,14 @@ describe('parse', function () {
     })
 
     it('parses years less than 1 BC', function () {
-      var result = parse('-0001-07-02')
+      var result = parse('-000001-07-02')
       var date = new Date(0, 6 /* Jul */, 2)
       date.setFullYear(-1)
       assert.deepEqual(result, date)
     })
   })
 
-  describe('a float time', function () {
+  describe('float time', function () {
     it('parses float hours', function () {
       var result = parse('2014-02-11T11.5')
       assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
@@ -158,7 +198,7 @@ describe('parse', function () {
     })
   })
 
-  describe('a failure', function () {
+  describe('failure', function () {
     it('the fallback to `new Date` if the string is not an ISO formatted date', function () {
       var result = parse(new Date(2014, 8 /* Sep */, 1, 11).toString())
       assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11))
