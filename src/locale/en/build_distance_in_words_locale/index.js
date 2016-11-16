@@ -5,6 +5,11 @@ function buildDistanceInWordsLocale () {
       other: 'less than {{count}} seconds'
     },
 
+    xSeconds: {
+      one: '1 second',
+      other: '{{count}} seconds'
+    },
+
     halfAMinute: 'half a minute',
 
     lessThanXMinutes: {
@@ -20,6 +25,11 @@ function buildDistanceInWordsLocale () {
     aboutXHours: {
       one: 'about 1 hour',
       other: 'about {{count}} hours'
+    },
+
+    xHours: {
+      one: '1 hour',
+      other: '{{count}} hours'
     },
 
     xDays: {
@@ -40,6 +50,11 @@ function buildDistanceInWordsLocale () {
     aboutXYears: {
       one: 'about 1 year',
       other: 'about {{count}} years'
+    },
+
+    xYears: {
+      one: '1 year',
+      other: '{{count}} years'
     },
 
     overXYears: {

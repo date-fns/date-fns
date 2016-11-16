@@ -5,6 +5,11 @@ function buildDistanceInWordsLocale () {
       other: '不到 {{count}} 秒'
     },
 
+    xSeconds: {
+      one: '1 秒',
+      other: '{{count}} 秒'
+    },
+
     halfAMinute: '半分钟',
 
     lessThanXMinutes: {
@@ -15,6 +20,11 @@ function buildDistanceInWordsLocale () {
     xMinutes: {
       one: '1 分钟',
       other: '{{count}} 分钟'
+    },
+
+    xHours: {
+      one: '1 小时',
+      other: '{{count}} 小时'
     },
 
     aboutXHours: {
@@ -40,6 +50,11 @@ function buildDistanceInWordsLocale () {
     aboutXYears: {
       one: '大约 1 年',
       other: '大约 {{count}} 年'
+    },
+
+    xYears: {
+      one: '1 年',
+      other: '{{count}} 年'
     },
 
     overXYears: {
