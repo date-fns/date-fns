@@ -27,6 +27,20 @@ describe('de locale > buildDistanceInWordsLocale', function () {
     })
   })
 
+  describe('xSeconds', function () {
+    context('when the count equals 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xSeconds', 1) === '1 Sekunde')
+      })
+    })
+
+    context('when the count is more than 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xSeconds', 2) === '2 Sekunden')
+      })
+    })
+  })
+
   describe('halfAMinute', function () {
     it('returns a proper string', function () {
       assert(buildDistanceInWordsLocale().localize('halfAMinute') === 'einer halben Minute')
@@ -75,6 +89,20 @@ describe('de locale > buildDistanceInWordsLocale', function () {
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === 'etwa 2 Stunden')
+      })
+    })
+  })
+
+  describe('xHours', function () {
+    context('when the count equals 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xHours', 1) === '1 Stunde')
+      })
+    })
+
+    context('when the count is more than 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xHours', 2) === '2 Stunden')
       })
     })
   })
@@ -131,6 +159,20 @@ describe('de locale > buildDistanceInWordsLocale', function () {
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
         assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === 'etwa 2 Jahren')
+      })
+    })
+  })
+
+  describe('xYears', function () {
+    context('when the count equals 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xYears', 1) === '1 Jahr')
+      })
+    })
+
+    context('when the count is more than 1', function () {
+      it('returns a proper string', function () {
+        assert(buildDistanceInWordsLocale().localize('xYears', 2) === '2 Jahren')
       })
     })
   })
