@@ -10,6 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.11.0] - 2016-11-23
+
+### Added
+
+- `distanceInWordsStrict`.
+  Kudos to [@STRML](https://github.com/STRML).
+  See related PR: [#254](https://github.com/date-fns/date-fns/pull/254)
+
+- [TypeScript](https://www.typescriptlang.org/) typings for all functions.
+  Kudos to [@mattlewis92](https://github.com/mattlewis92).
+  See related PR: [#255](https://github.com/date-fns/date-fns/pull/255)
+
 ## [1.10.0] - 2016-11-01
 
 ### Added
@@ -122,12 +134,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 ### Added
 
 - [Flow](http://flowtype.org/) declarations for each function
-	in [the ".js.flow" style](http://flowtype.org/docs/declarations.html#declaration-files).
-	Kudos to [@JohnyDays](https://github.com/JohnyDays). See related PRs:
+  in [the ".js.flow" style](http://flowtype.org/docs/declarations.html#declaration-files).
+  Kudos to [@JohnyDays](https://github.com/JohnyDays). See related PRs:
 
-	- [#205](https://github.com/date-fns/date-fns/pull/205)
+  - [#205](https://github.com/date-fns/date-fns/pull/205)
 
-	- [#207](https://github.com/date-fns/date-fns/pull/207)
+  - [#207](https://github.com/date-fns/date-fns/pull/207)
 
 ## [1.0.0] - 2016-05-18
 
@@ -653,7 +665,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.10.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.11.0...HEAD
+[1.11.0]: https://github.com/date-fns/date-fns/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/date-fns/date-fns/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/date-fns/date-fns/compare/v1.8.1...v1.9.0
 [1.8.1]: https://github.com/date-fns/date-fns/compare/v1.8.0...v1.8.1
