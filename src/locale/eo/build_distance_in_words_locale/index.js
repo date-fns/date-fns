@@ -5,6 +5,11 @@ function buildDistanceInWordsLocale () {
       other: 'malpli ol {{count}} sekundoj'
     },
 
+    xSeconds: {
+      one: '1 sekundo',
+      other: '{{count}} sekundoj'
+    },
+
     halfAMinute: 'duonminuto',
 
     lessThanXMinutes: {
@@ -20,6 +25,11 @@ function buildDistanceInWordsLocale () {
     aboutXHours: {
       one: 'proksimume 1 horo',
       other: 'proksimume {{count}} horoj'
+    },
+
+    xHours: {
+      one: '1 horo',
+      other: '{{count}} horoj'
     },
 
     xDays: {
@@ -40,6 +50,11 @@ function buildDistanceInWordsLocale () {
     aboutXYears: {
       one: 'proksimume 1 jaro',
       other: 'proksimume {{count}} jaroj'
+    },
+
+    xYears: {
+      one: '1 jaro',
+      other: '{{count}} jaroj'
     },
 
     overXYears: {
