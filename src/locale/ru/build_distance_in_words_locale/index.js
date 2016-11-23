@@ -60,6 +60,24 @@ function buildDistanceInWordsLocale () {
       }
     }),
 
+    xSeconds: buildLocalizeTokenFn({
+      regular: {
+        singularNominative: '{{count}} секунда',
+        singularGenitive: '{{count}} секунды',
+        pluralGenitive: '{{count}} секунд'
+      },
+      past: {
+        singularNominative: '{{count}} секунду назад',
+        singularGenitive: '{{count}} секунды назад',
+        pluralGenitive: '{{count}} секунд назад'
+      },
+      future: {
+        singularNominative: 'через {{count}} секунду',
+        singularGenitive: 'через {{count}} секунды',
+        pluralGenitive: 'через {{count}} секунд'
+      }
+    }),
+
     halfAMinute: function (_, options) {
       if (options.addSuffix) {
         if (options.comparison > 0) {
@@ -118,6 +136,14 @@ function buildDistanceInWordsLocale () {
       }
     }),
 
+    xHours: buildLocalizeTokenFn({
+      regular: {
+        singularNominative: '{{count}} час',
+        singularGenitive: '{{count}} часа',
+        pluralGenitive: '{{count}} часов'
+      }
+    }),
+
     xDays: buildLocalizeTokenFn({
       regular: {
         singularNominative: '{{count}} день',
@@ -157,6 +183,14 @@ function buildDistanceInWordsLocale () {
         singularNominative: 'приблизительно через {{count}} год',
         singularGenitive: 'приблизительно через {{count}} года',
         pluralGenitive: 'приблизительно через {{count}} лет'
+      }
+    }),
+
+    xYears: buildLocalizeTokenFn({
+      regular: {
+        singularNominative: '{{count}} год',
+        singularGenitive: '{{count}} года',
+        pluralGenitive: '{{count}} лет'
       }
     }),
 

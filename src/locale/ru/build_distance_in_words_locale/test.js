@@ -126,6 +126,113 @@ describe('ru locale > buildDistanceInWordsLocale', function () {
     })
   })
 
+  describe('xSeconds', function () {
+    describe('no suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number)
+            assert(result === number + ' секунда')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number)
+            assert(result === number + ' секунды')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number)
+            assert(result === number + ' секунд')
+          })
+        })
+      })
+    })
+
+    describe('past suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' секунду назад')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' секунды назад')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' секунд назад')
+          })
+        })
+      })
+    })
+
+    describe('future suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' секунду')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' секунды')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xSeconds', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' секунд')
+          })
+        })
+      })
+    })
+  })
+
   describe('halfAMinute', function () {
     it('ignores the second argument', function () {
       var result = buildDistanceInWordsLocale().localize('halfAMinute', 5)
@@ -395,6 +502,113 @@ describe('ru locale > buildDistanceInWordsLocale', function () {
         [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 20, 102, 1234].forEach(function (count) {
           var result = buildDistanceInWordsLocale().localize('aboutXHours', count)
           assert(result === 'около ' + count + ' часов')
+        })
+      })
+    })
+  })
+
+  describe('xHours', function () {
+    describe('no suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number)
+            assert(result === number + ' час')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number)
+            assert(result === number + ' часа')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number)
+            assert(result === number + ' часов')
+          })
+        })
+      })
+    })
+
+    describe('past suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' час назад')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' часа назад')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' часов назад')
+          })
+        })
+      })
+    })
+
+    describe('future suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' час')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' часа')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xHours', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' часов')
+          })
         })
       })
     })
@@ -780,6 +994,113 @@ describe('ru locale > buildDistanceInWordsLocale', function () {
               comparison: 1
             })
             assert(result === 'приблизительно через ' + number + ' лет')
+          })
+        })
+      })
+    })
+  })
+
+  describe('xYears', function () {
+    describe('no suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number)
+            assert(result === number + ' год')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number)
+            assert(result === number + ' года')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number)
+            assert(result === number + ' лет')
+          })
+        })
+      })
+    })
+
+    describe('past suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' год назад')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' года назад')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: -1
+            })
+            assert(result === number + ' лет назад')
+          })
+        })
+      })
+    })
+
+    describe('future suffix', function () {
+      context('when the count ends with 1 but not with 11', function () {
+        it('returns a proper string', function () {
+          [1, 21, 31, 301, 321].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' год')
+          })
+        })
+      })
+
+      context('when the count ends with 2, 3 or 4 but not with 12, 13 or 14', function () {
+        it('returns a proper string', function () {
+          [2, 3, 4, 22, 23, 302].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' года')
+          })
+        })
+      })
+
+      context('when the count is any other number', function () {
+        it('returns a proper string', function () {
+          [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
+            var result = buildDistanceInWordsLocale().localize('xYears', number, {
+              addSuffix: true,
+              comparison: 1
+            })
+            assert(result === 'через ' + number + ' лет')
           })
         })
       })
