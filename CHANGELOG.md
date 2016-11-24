@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.11.1] - 2016-11-24
+
+### Fixed
+
+- Include TypeScript typings with npm package.
+
 ## [1.11.0] - 2016-11-23
 
 ### Added
@@ -665,7 +671,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.11.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.11.1...HEAD
+[1.11.1]: https://github.com/date-fns/date-fns/compare/v1.11.0...v1.11.1
 [1.11.0]: https://github.com/date-fns/date-fns/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/date-fns/date-fns/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/date-fns/date-fns/compare/v1.8.1...v1.9.0
