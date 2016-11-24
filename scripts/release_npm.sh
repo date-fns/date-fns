@@ -10,6 +10,7 @@ for pattern in CHANGELOG.md \
   README.md \
   index.js \
   package.json \
+  typings.d.ts \
   src/*
 do
   cp -r "$pattern" "$dir"
