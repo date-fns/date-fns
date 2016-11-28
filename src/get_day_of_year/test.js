@@ -19,4 +19,12 @@ describe('getDayOfYear', function () {
     var result = getDayOfYear(new Date(2014, 0 /* Jan */, 2).getTime())
     assert(result === 2)
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(0, 11 /* Dec */, 31)
+    initialDate.setHours(0, 0, 0, 0)
+    var result = getDayOfYear(initialDate)
+    assert(result === 366)
+  })
 })

@@ -25,4 +25,15 @@ describe('endOfISOYear', function () {
     endOfISOYear(date)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(5, 0 /* Jan */, 4)
+    initialDate.setHours(16, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(6, 0 /* Jan */, 1)
+    expectedResult.setHours(23, 59, 59, 999)
+    var result = endOfISOYear(initialDate)
+    assert.deepEqual(result, expectedResult)
+  })
 })

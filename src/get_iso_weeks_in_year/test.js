@@ -21,4 +21,12 @@ describe('getISOWeeksInYear', function () {
     var result = getISOWeeksInYear(date)
     assert(result === 53)
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(4, 0 /* Jan */, 4)
+    initialDate.setHours(0, 0, 0, 0)
+    var result = getISOWeeksInYear(initialDate)
+    assert(result === 53)
+  })
 })

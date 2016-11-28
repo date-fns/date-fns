@@ -37,6 +37,17 @@ describe('differenceInCalendarISOYears', function () {
     assert(result === 4)
   })
 
+  it('handles dates before 100 AD', function () {
+    var firstDate = new Date(0)
+    firstDate.setFullYear(14, 0 /* Jan */, 1)
+    firstDate.setHours(0, 0, 0, 0)
+    var secondDate = new Date(0)
+    secondDate.setFullYear(0, 0 /* Jan */, 1)
+    secondDate.setHours(0, 0, 0, 0)
+    var result = differenceInCalendarISOYears(firstDate, secondDate)
+    assert(result === 15)
+  })
+
   describe('edge cases', function () {
     it('the difference is less than an ISO year, but the given dates are in different calendar ISO years', function () {
       var result = differenceInCalendarISOYears(

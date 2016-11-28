@@ -30,4 +30,15 @@ describe('setQuarter', function () {
     setQuarter(date, 2)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 1))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(0, 10 /* Nov */, 30)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(0, 1 /* Feb */, 29)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = setQuarter(initialDate, 1)
+    assert.deepEqual(result, expectedResult)
+  })
 })

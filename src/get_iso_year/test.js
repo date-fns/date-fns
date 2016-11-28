@@ -19,4 +19,12 @@ describe('getISOYear', function () {
     var result = getISOYear(new Date(2005, 0 /* Jan */, 1).getTime())
     assert(result === 2004)
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(7, 11 /* Dec */, 31)
+    initialDate.setHours(0, 0, 0, 0)
+    var result = getISOYear(initialDate)
+    assert(result === 8)
+  })
 })

@@ -28,4 +28,15 @@ describe('startOfYear', function () {
     startOfYear(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(9, 0 /* Jan */, 5)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(9, 0 /* Jan */, 1)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = startOfYear(initialDate)
+    assert.deepEqual(result, expectedResult)
+  })
 })
