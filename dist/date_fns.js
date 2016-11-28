@@ -432,7 +432,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    day = day || 0;
 	    var date = new Date(0);
 	    date.setUTCFullYear(isoYear, 0, 4);
-	    var diff = week * 7 + day + 1 - date.getUTCDay();
+	    var fourthOfJanuaryDay = date.getUTCDay() || 7;
+	    var diff = week * 7 + day + 1 - fourthOfJanuaryDay;
 	    date.setUTCDate(date.getUTCDate() + diff);
 	    return date;
 	}
@@ -487,8 +488,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	function getISOYear(dirtyDate) {
 	    var date = parse(dirtyDate);
 	    var year = date.getFullYear();
-	    var startOfNextYear = startOfISOWeek(new Date(year + 1, 0, 4));
-	    var startOfThisYear = startOfISOWeek(new Date(year, 0, 4));
+	    var fourthOfJanuaryOfNextYear = new Date(0);
+	    fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+	    fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+	    var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear);
+	    var fourthOfJanuaryOfThisYear = new Date(0);
+	    fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4);
+	    fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0);
+	    var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear);
 	    if (date.getTime() >= startOfNextYear.getTime()) {
 	        return year + 1;
 	    } else if (date.getTime() >= startOfThisYear.getTime()) {
@@ -541,7 +548,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	function setISOYear(dirtyDate, isoYear) {
 	    var date = parse(dirtyDate);
 	    var diff = differenceInCalendarDays(date, startOfISOYear(date));
-	    date = startOfISOYear(new Date(isoYear, 0, 4));
+	    var fourthOfJanuary = new Date(0);
+	    fourthOfJanuary.setFullYear(isoYear, 0, 4);
+	    fourthOfJanuary.setHours(0, 0, 0, 0);
+	    date = startOfISOYear(fourthOfJanuary);
 	    date.setDate(date.getDate() + diff);
 	    return date;
 	}
@@ -557,7 +567,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var startOfISOWeek = __webpack_require__(7);
 	function startOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
-	    var date = startOfISOWeek(new Date(year, 0, 4));
+	    var fourthOfJanuary = new Date(0);
+	    fourthOfJanuary.setFullYear(year, 0, 4);
+	    fourthOfJanuary.setHours(0, 0, 0, 0);
+	    var date = startOfISOWeek(fourthOfJanuary);
 	    return date;
 	}
 	module.exports = startOfISOYear;
@@ -633,7 +646,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	function addMonths(dirtyDate, amount) {
 	    var date = parse(dirtyDate);
 	    var desiredMonth = date.getMonth() + amount;
-	    var daysInMonth = getDaysInMonth(new Date(date.getFullYear(), desiredMonth, 1));
+	    var dateWithDesiredMonth = new Date(0);
+	    dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1);
+	    dateWithDesiredMonth.setHours(0, 0, 0, 0);
+	    var daysInMonth = getDaysInMonth(dateWithDesiredMonth);
 	    date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()));
 	    return date;
 	}
@@ -650,7 +666,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var date = parse(dirtyDate);
 	    var year = date.getFullYear();
 	    var monthIndex = date.getMonth();
-	    return new Date(year, monthIndex + 1, 0).getDate();
+	    var lastDayOfMonth = new Date(0);
+	    lastDayOfMonth.setFullYear(year, monthIndex + 1, 0);
+	    lastDayOfMonth.setHours(0, 0, 0, 0);
+	    return lastDayOfMonth.getDate();
 	}
 	module.exports = getDaysInMonth;
 	
@@ -1559,7 +1578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var currentDate = startDate;
 	    currentDate.setHours(0, 0, 0, 0);
 	    while (currentDate.getTime() <= endTime) {
-	        dates.push(new Date(currentDate));
+	        dates.push(parse(currentDate));
 	        currentDate.setDate(currentDate.getDate() + 1);
 	    }
 	    return dates;
@@ -1634,7 +1653,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var startOfISOWeek = __webpack_require__(7);
 	function endOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
-	    var date = startOfISOWeek(new Date(year + 1, 0, 4));
+	    var fourthOfJanuaryOfNextYear = new Date(0);
+	    fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4);
+	    fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0);
+	    var date = startOfISOWeek(fourthOfJanuaryOfNextYear);
 	    date.setMilliseconds(date.getMilliseconds() - 1);
 	    return date;
 	}
@@ -1724,7 +1746,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var year = now.getFullYear();
 	    var month = now.getMonth();
 	    var day = now.getDate();
-	    return new Date(year, month, day + 1, 23, 59, 59, 999);
+	    var date = new Date(0);
+	    date.setFullYear(year, month, day + 1);
+	    date.setHours(23, 59, 59, 999);
+	    return date;
 	}
 	module.exports = endOfTomorrow;
 	
@@ -1755,7 +1780,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var year = now.getFullYear();
 	    var month = now.getMonth();
 	    var day = now.getDate();
-	    return new Date(year, month, day - 1, 23, 59, 59, 999);
+	    var date = new Date(0);
+	    date.setFullYear(year, month, day - 1);
+	    date.setHours(23, 59, 59, 999);
+	    return date;
 	}
 	module.exports = endOfYesterday;
 	
@@ -1952,7 +1980,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var parse = __webpack_require__(2);
 	function startOfYear(dirtyDate) {
 	    var cleanDate = parse(dirtyDate);
-	    var date = new Date(cleanDate.getFullYear(), 0, 1, 0, 0, 0, 0);
+	    var date = new Date(0);
+	    date.setFullYear(cleanDate.getFullYear(), 0, 1);
+	    date.setHours(0, 0, 0, 0);
 	    return date;
 	}
 	module.exports = startOfYear;
@@ -2756,7 +2786,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var startOfISOWeek = __webpack_require__(7);
 	function lastDayOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
-	    var date = startOfISOWeek(new Date(year + 1, 0, 4));
+	    var fourthOfJanuary = new Date(0);
+	    fourthOfJanuary.setFullYear(year + 1, 0, 4);
+	    fourthOfJanuary.setHours(0, 0, 0, 0);
+	    var date = startOfISOWeek(fourthOfJanuary);
 	    date.setDate(date.getDate() - 1);
 	    return date;
 	}
@@ -2823,8 +2856,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var dates = dirtyDates.map(function (dirtyDate) {
 	        return parse(dirtyDate);
 	    });
-	    var latestDirtyDate = Math.max.apply(null, dates);
-	    return new Date(latestDirtyDate);
+	    var latestTimestamp = Math.max.apply(null, dates);
+	    return new Date(latestTimestamp);
 	}
 	module.exports = max;
 	
@@ -2840,8 +2873,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var dates = dirtyDates.map(function (dirtyDate) {
 	        return parse(dirtyDate);
 	    });
-	    var earliestDirtyDate = Math.min.apply(null, dates);
-	    return new Date(earliestDirtyDate);
+	    var earliestTimestamp = Math.min.apply(null, dates);
+	    return new Date(earliestTimestamp);
 	}
 	module.exports = min;
 	
@@ -2980,7 +3013,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var date = parse(dirtyDate);
 	    var year = date.getFullYear();
 	    var day = date.getDate();
-	    var daysInMonth = getDaysInMonth(new Date(year, month));
+	    var dateWithDesiredMonth = new Date(0);
+	    dateWithDesiredMonth.setFullYear(year, month, 15);
+	    dateWithDesiredMonth.setHours(0, 0, 0, 0);
+	    var daysInMonth = getDaysInMonth(dateWithDesiredMonth);
 	    date.setMonth(month, Math.min(day, daysInMonth));
 	    return date;
 	}
@@ -3068,7 +3104,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var year = now.getFullYear();
 	    var month = now.getMonth();
 	    var day = now.getDate();
-	    return new Date(year, month, day + 1);
+	    var date = new Date(0);
+	    date.setFullYear(year, month, day + 1);
+	    date.setHours(0, 0, 0, 0);
+	    return date;
 	}
 	module.exports = startOfTomorrow;
 	
@@ -3083,7 +3122,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var year = now.getFullYear();
 	    var month = now.getMonth();
 	    var day = now.getDate();
-	    return new Date(year, month, day - 1);
+	    var date = new Date(0);
+	    date.setFullYear(year, month, day - 1);
+	    date.setHours(0, 0, 0, 0);
+	    return date;
 	}
 	module.exports = startOfYesterday;
 	
