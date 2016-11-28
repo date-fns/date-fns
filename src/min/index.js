@@ -25,8 +25,8 @@ function min () {
   var dates = dirtyDates.map(function (dirtyDate) {
     return parse(dirtyDate)
   })
-  var earliestDirtyDate = Math.min.apply(null, dates)
-  return new Date(earliestDirtyDate)
+  var earliestTimestamp = Math.min.apply(null, dates)
+  return new Date(earliestTimestamp)
 }
 
 module.exports = min
