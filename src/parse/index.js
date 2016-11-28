@@ -302,7 +302,8 @@ function dayOfISOYear (isoYear, week, day) {
   day = day || 0
   var date = new Date(0)
   date.setUTCFullYear(isoYear, 0, 4)
-  var diff = week * 7 + day + 1 - date.getUTCDay()
+  var fourthOfJanuaryDay = date.getUTCDay() || 7
+  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
