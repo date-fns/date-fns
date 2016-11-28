@@ -60,6 +60,11 @@ describe('parse', function () {
       var result = parse('2014W027')
       assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
     })
+
+    it('correctly handles years in which 4 January is Sunday', function () {
+      var result = parse('2009-W01-1')
+      assert.deepEqual(result, new Date(2008, 11 /* Dec */, 29))
+    })
   })
 
   describe('ordinal dates', function () {
