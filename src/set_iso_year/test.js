@@ -25,4 +25,24 @@ describe('setISOYear', function () {
     setISOYear(date, 2000)
     assert.deepEqual(date, new Date(2008, 11 /* Dec */, 29))
   })
+
+  it('sets ISO week-numbering years less than 100', function () {
+    var initialDate = new Date(2008, 11 /* Dec */, 29)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(7, 0 /* Jan */, 1)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = setISOYear(initialDate, 7)
+    assert.deepEqual(result, expectedResult)
+  })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(8, 11 /* Dec */, 29)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(7, 0 /* Jan */, 1)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = setISOYear(initialDate, 7)
+    assert.deepEqual(result, expectedResult)
+  })
 })

@@ -25,4 +25,15 @@ describe('setISOWeek', function () {
     setISOWeek(date, 52)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(4, 0 /* Jan */, 4)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(4, 11 /* Dec */, 26)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = setISOWeek(initialDate, 52)
+    assert.deepEqual(result, expectedResult)
+  })
 })

@@ -305,4 +305,11 @@ describe('format', function () {
       assert(format(this._date, 'x') === this._timestamp)
     })
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(7, 11 /* Dec */, 31)
+    initialDate.setHours(0, 0, 0, 0)
+    assert(format(initialDate, 'GGGG WW E') === '8 01 1')
+  })
 })

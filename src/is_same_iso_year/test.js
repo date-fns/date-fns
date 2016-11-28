@@ -36,4 +36,15 @@ describe('isSameISOYear', function () {
     )
     assert(result === true)
   })
+
+  it('handles dates before 100 AD', function () {
+    var firstDate = new Date(0)
+    firstDate.setFullYear(5, 0 /* Jan */, 1)
+    firstDate.setHours(0, 0, 0, 0)
+    var secondDate = new Date(0)
+    secondDate.setFullYear(5, 0 /* Jan */, 2)
+    secondDate.setHours(0, 0, 0, 0)
+    var result = isSameISOYear(firstDate, secondDate)
+    assert(result === true)
+  })
 })

@@ -20,7 +20,10 @@ var getDaysInMonth = require('../get_days_in_month/index.js')
 function addMonths (dirtyDate, amount) {
   var date = parse(dirtyDate)
   var desiredMonth = date.getMonth() + amount
-  var daysInMonth = getDaysInMonth(new Date(date.getFullYear(), desiredMonth, 1))
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
   date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))

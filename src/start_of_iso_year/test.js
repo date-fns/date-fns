@@ -25,4 +25,20 @@ describe('startOfISOYear', function () {
     startOfISOYear(date)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(9, 0 /* Jan */, 1, 16, 0)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(8, 11 /* Dec */, 29)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = startOfISOYear(initialDate)
+    assert.deepEqual(result, expectedResult)
+  })
+
+  it('correctly handles years in which 4 January is Sunday', function () {
+    var result = startOfISOYear(new Date(2009, 6 /* Jul */, 2))
+    assert.deepEqual(result, new Date(2008, 11 /* Dec */, 29))
+  })
 })

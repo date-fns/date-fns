@@ -31,4 +31,15 @@ describe('subQuarters', function () {
     var result = subQuarters(date, 1)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(0, 10 /* Nov */, 30)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(0, 1 /* Feb */, 29)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = subQuarters(initialDate, 3)
+    assert.deepEqual(result, expectedResult)
+  })
 })

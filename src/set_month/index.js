@@ -21,7 +21,11 @@ function setMonth (dirtyDate, month) {
   var date = parse(dirtyDate)
   var year = date.getFullYear()
   var day = date.getDate()
-  var daysInMonth = getDaysInMonth(new Date(year, month))
+
+  var dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(year, month, 15)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
   date.setMonth(month, Math.min(day, daysInMonth))

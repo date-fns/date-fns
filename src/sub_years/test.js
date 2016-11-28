@@ -30,4 +30,15 @@ describe('subYears', function () {
     var result = subYears(new Date(2016, 1 /* Feb */, 29), 1)
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 28))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(0, 1 /* Feb */, 29)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(-1, 1 /* Feb */, 28)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = subYears(initialDate, 1)
+    assert.deepEqual(result, expectedResult)
+  })
 })

@@ -25,8 +25,8 @@ function max () {
   var dates = dirtyDates.map(function (dirtyDate) {
     return parse(dirtyDate)
   })
-  var latestDirtyDate = Math.max.apply(null, dates)
-  return new Date(latestDirtyDate)
+  var latestTimestamp = Math.max.apply(null, dates)
+  return new Date(latestTimestamp)
 }
 
 module.exports = max

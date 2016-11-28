@@ -35,4 +35,19 @@ describe('isThisISOYear', function () {
     var date = new Date(2014, 8 /* Sep */, 1).getTime()
     assert(isThisISOYear(date) === true)
   })
+
+  it('handles dates before 100 AD', function () {
+    var now = new Date(0)
+    now.setFullYear(5, 0 /* Jan */, 1)
+    now.setHours(0, 0, 0, 0)
+    this.clock = sinon.useFakeTimers(now.getTime())
+
+    var initialDate = new Date(0)
+    initialDate.setFullYear(5, 0 /* Jan */, 2)
+    initialDate.setHours(0, 0, 0, 0)
+    var result = isThisISOYear(initialDate)
+    assert(result === true)
+
+    this.clock.restore()
+  })
 })

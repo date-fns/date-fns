@@ -26,4 +26,12 @@ describe('getDaysInMonth', function () {
     var result = getDaysInMonth(date)
     assert(result === 31)
   })
+
+  it('handles dates before 100 AD', function () {
+    var date = new Date(0)
+    date.setFullYear(0, 1 /* Feb */, 15)
+    date.setHours(0, 0, 0, 0)
+    var result = getDaysInMonth(date)
+    assert(result === 29)
+  })
 })

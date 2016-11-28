@@ -30,4 +30,15 @@ describe('setMonth', function () {
     setMonth(date, 5)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
+
+  it('handles dates before 100 AD', function () {
+    var initialDate = new Date(0)
+    initialDate.setFullYear(0, 11 /* Dec */, 31)
+    initialDate.setHours(0, 0, 0, 0)
+    var expectedResult = new Date(0)
+    expectedResult.setFullYear(0, 1 /* Feb */, 29)
+    expectedResult.setHours(0, 0, 0, 0)
+    var result = setMonth(initialDate, 1)
+    assert.deepEqual(result, expectedResult)
+  })
 })
