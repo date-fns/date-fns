@@ -22,7 +22,10 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  */
 function endOfISOYear (dirtyDate) {
   var year = getISOYear(dirtyDate)
-  var date = startOfISOWeek(new Date(year + 1, 0, 4))
+  var fourthOfJanuaryOfNextYear = new Date(0)
+  fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
+  fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
+  var date = startOfISOWeek(fourthOfJanuaryOfNextYear)
   date.setMilliseconds(date.getMilliseconds() - 1)
   return date
 }

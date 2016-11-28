@@ -18,7 +18,10 @@ function startOfYesterday () {
   var month = now.getMonth()
   var day = now.getDate()
 
-  return new Date(year, month, day - 1)
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(0, 0, 0, 0)
+  return date
 }
 
 module.exports = startOfYesterday

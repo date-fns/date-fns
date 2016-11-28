@@ -42,7 +42,7 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
   currentDate.setHours(0, 0, 0, 0)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(new Date(currentDate))
+    dates.push(parse(currentDate))
     currentDate.setDate(currentDate.getDate() + 1)
   }
 

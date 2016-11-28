@@ -18,7 +18,10 @@ function endOfYesterday () {
   var month = now.getMonth()
   var day = now.getDate()
 
-  return new Date(year, month, day - 1, 23, 59, 59, 999)
+  var date = new Date(0)
+  date.setFullYear(year, month, day - 1)
+  date.setHours(23, 59, 59, 999)
+  return date
 }
 
 module.exports = endOfYesterday
