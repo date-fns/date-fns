@@ -1,11 +1,11 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
-  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  var months3char = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+  var monthsFull = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+  var weekdays2char = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa']
+  var weekdays3char = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab']
+  var weekdaysFull = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
   var meridiemUppercase = ['AM', 'PM']
   var meridiemLowercase = ['am', 'pm']
   var meridiemFull = ['a.m.', 'p.m.']
@@ -71,14 +71,14 @@ function ordinal (number) {
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return number + 'st'
+        return number + 'º'
       case 2:
-        return number + 'nd'
+        return number + 'º'
       case 3:
-        return number + 'rd'
+        return number + 'º'
     }
   }
-  return number + 'th'
+  return number + 'º'
 }
 
 module.exports = buildFormatLocale

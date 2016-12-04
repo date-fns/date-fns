@@ -1,70 +1,70 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      one: 'less than a second',
-      other: 'less than {{count}} seconds'
+      one: 'menos de un segundo',
+      other: 'menos de {{count}} segundos'
     },
 
     xSeconds: {
-      one: '1 second',
-      other: '{{count}} seconds'
+      one: '1 segundo',
+      other: '{{count}} segundos'
     },
 
-    halfAMinute: 'half a minute',
+    halfAMinute: 'medio minuto',
 
     lessThanXMinutes: {
-      one: 'less than a minute',
-      other: 'less than {{count}} minutes'
+      one: 'menos de un minuto',
+      other: 'menos de {{count}} minutos'
     },
 
     xMinutes: {
-      one: '1 minute',
-      other: '{{count}} minutes'
+      one: '1 minuto',
+      other: '{{count}} minutos'
     },
 
     aboutXHours: {
-      one: 'about 1 hour',
-      other: 'about {{count}} hours'
+      one: 'alrededor de 1 hora',
+      other: 'alrededor de {{count}} horas'
     },
 
     xHours: {
-      one: '1 hour',
-      other: '{{count}} hours'
+      one: '1 hora',
+      other: '{{count}} horas'
     },
 
     xDays: {
-      one: '1 day',
-      other: '{{count}} days'
+      one: '1 día',
+      other: '{{count}} días'
     },
 
     aboutXMonths: {
-      one: 'about 1 month',
-      other: 'about {{count}} months'
+      one: 'alrededor de 1 mes',
+      other: 'alrededor de {{count}} meses'
     },
 
     xMonths: {
-      one: '1 month',
-      other: '{{count}} months'
+      one: '1 mes',
+      other: '{{count}} meses'
     },
 
     aboutXYears: {
-      one: 'about 1 year',
-      other: 'about {{count}} years'
+      one: 'alrededor de 1 año',
+      other: 'alrededor de {{count}} años'
     },
 
     xYears: {
-      one: '1 year',
-      other: '{{count}} years'
+      one: '1 año',
+      other: '{{count}} años'
     },
 
     overXYears: {
-      one: 'over 1 year',
-      other: 'over {{count}} years'
+      one: 'más de 1 año',
+      other: 'más de {{count}} años'
     },
 
     almostXYears: {
-      one: 'almost 1 year',
-      other: 'almost {{count}} years'
+      one: 'casi 1 año',
+      other: 'casi {{count}} años'
     }
   }
 
@@ -82,9 +82,9 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'in ' + result
+        return 'en ' + result
       } else {
-        return result + ' ago'
+        return 'hace ' + result
       }
     }
 
