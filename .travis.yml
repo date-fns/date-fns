@@ -19,8 +19,7 @@ script:
   - npm run test-tz
   - npm run test-tz-extended
   - npm run count-tests
-  - # TODO: Enable after upgrade to the next Flow version
-  - # npm run flow-check
+  - npm run flow-check
   - npm run systemjs-check
 
 # Deployment
