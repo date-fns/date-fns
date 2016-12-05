@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.12.1] - 2016-12-05
+
+### Fixed
+
+- Added `distanceInWordsStrict` to the list of supported functions in I18n doc.
+
 ## [1.12.0] - 2016-12-05
 
 ### Added
@@ -693,7 +699,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.12.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.12.1...HEAD
+[1.12.1]: https://github.com/date-fns/date-fns/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/date-fns/date-fns/compare/v1.11.2...v1.12.0
 [1.11.2]: https://github.com/date-fns/date-fns/compare/v1.11.1...v1.11.2
 [1.11.1]: https://github.com/date-fns/date-fns/compare/v1.11.0...v1.11.1

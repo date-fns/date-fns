@@ -16,22 +16,22 @@ var MINUTES_IN_YEAR = 525600
  * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',
  * 'less than' and the like.
  *
- * | Distance between dates                                            | Result              |
- * |-------------------------------------------------------------------|---------------------|
- * | 0 ... 59 secs                                                     | [0..59] seconds     |
- * | 1 ... 59 mins                                                     | [1..59] minutes     |
- * | 1 ... 23 hrs                                                      | [1..23] hours       |
- * | 1 ... 29 days                                                     | [1..29] days        |
- * | 1 ... 11 months                                                   | [1..11] months      |
- * | 1 ... N years                                                     | [1..N]  years       |
+ * | Distance between dates | Result              |
+ * |------------------------|---------------------|
+ * | 0 ... 59 secs          | [0..59] seconds     |
+ * | 1 ... 59 mins          | [1..59] minutes     |
+ * | 1 ... 23 hrs           | [1..23] hours       |
+ * | 1 ... 29 days          | [1..29] days        |
+ * | 1 ... 11 months        | [1..11] months      |
+ * | 1 ... N years          | [1..N]  years       |
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date|String|Number} date - the other date
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {String}  [options.unit=null] - if specified, will force a unit. Options: 's', 'm', 'h', 'd', 'M', 'Y'
- * @param {String}  [options.partialMethod=floor] - which way to round partial units. Options: 'floor', 'ceil', 'round'
- * @param {Object}  [options.locale=enLocale] - the locale object
+ * @param {String} [options.unit=null] - if specified, will force a unit. Options: 's', 'm', 'h', 'd', 'M', 'Y'
+ * @param {String} [options.partialMethod='floor'] - which way to round partial units. Options: 'floor', 'ceil', 'round'
+ * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the distance in words
  *
  * @example
