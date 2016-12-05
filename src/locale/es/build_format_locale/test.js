@@ -15,191 +15,191 @@ describe('es locale > buildFormatLocale', function () {
     })
 
     describe('MMM', function () {
-      it('returns `Jan` for January', function () {
+      it('returns `ene` for January', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 0)) === 'ene')
       })
 
-      it('returns `Feb` for February', function () {
+      it('returns `feb` for February', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 1)) === 'feb')
       })
 
-      it('returns `Mar` for March', function () {
+      it('returns `mar` for March', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 2)) === 'mar')
       })
 
-      it('returns `Apr` for April', function () {
+      it('returns `abr` for April', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === 'abr')
       })
 
-      it('returns `May` for May', function () {
+      it('returns `may` for May', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 4)) === 'may')
       })
 
-      it('returns `Jun` for June', function () {
+      it('returns `jun` for June', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 5)) === 'jun')
       })
 
-      it('returns `Jul` for July', function () {
+      it('returns `jul` for July', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 6)) === 'jul')
       })
 
-      it('returns `Aug` for August', function () {
+      it('returns `ago` for August', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 7)) === 'ago')
       })
 
-      it('returns `Sep` for September', function () {
+      it('returns `sep` for September', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 8)) === 'sep')
       })
 
-      it('returns `Oct` for October', function () {
+      it('returns `oct` for October', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 9)) === 'oct')
       })
 
-      it('returns `Nov` for November', function () {
+      it('returns `nov` for November', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 10)) === 'nov')
       })
 
-      it('returns `Dec` for December', function () {
+      it('returns `dic` for December', function () {
         assert(buildFormatLocale().formatters.MMM(new Date(2016, 11)) === 'dic')
       })
     })
 
     describe('MMMM', function () {
-      it('returns `January` for January', function () {
+      it('returns `enero` for January', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 0)) === 'enero')
       })
 
-      it('returns `February` for February', function () {
+      it('returns `febrero` for February', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 1)) === 'febrero')
       })
 
-      it('returns `March` for March', function () {
+      it('returns `marzo` for March', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 2)) === 'marzo')
       })
 
-      it('returns `April` for April', function () {
+      it('returns `abril` for April', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === 'abril')
       })
 
-      it('returns `May` for May', function () {
+      it('returns `mayo` for May', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 4)) === 'mayo')
       })
 
-      it('returns `June` for June', function () {
+      it('returns `junio` for June', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 5)) === 'junio')
       })
 
-      it('returns `July` for July', function () {
+      it('returns `julio` for July', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 6)) === 'julio')
       })
 
-      it('returns `August` for August', function () {
+      it('returns `agosto` for August', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 7)) === 'agosto')
       })
 
-      it('returns `September` for September', function () {
+      it('returns `septiembre` for September', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 8)) === 'septiembre')
       })
 
-      it('returns `October` for October', function () {
+      it('returns `octubre` for October', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 9)) === 'octubre')
       })
 
-      it('returns `November` for November', function () {
+      it('returns `noviembre` for November', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 10)) === 'noviembre')
       })
 
-      it('returns `December` for December', function () {
+      it('returns `diciembre` for December', function () {
         assert(buildFormatLocale().formatters.MMMM(new Date(2016, 11)) === 'diciembre')
       })
     })
 
     describe('dd', function () {
-      it('returns `Su` for Sunday', function () {
+      it('returns `do` for Sunday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 7)) === 'do')
       })
 
-      it('returns `Mo` for Monday', function () {
+      it('returns `lu` for Monday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 1)) === 'lu')
       })
 
-      it('returns `Tu` for Tuesday', function () {
+      it('returns `ma` for Tuesday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 2)) === 'ma')
       })
 
-      it('returns `We` for Wednesday', function () {
+      it('returns `mi` for Wednesday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 3)) === 'mi')
       })
 
-      it('returns `Th` for Thursday', function () {
+      it('returns `ju` for Thursday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 4)) === 'ju')
       })
 
-      it('returns `Fr` for Friday', function () {
+      it('returns `vi` for Friday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 5)) === 'vi')
       })
 
-      it('returns `Sa` for Saturday', function () {
+      it('returns `sa` for Saturday', function () {
         assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 6)) === 'sa')
       })
     })
 
     describe('ddd', function () {
-      it('returns `Sun` for Sunday', function () {
+      it('returns `dom` for Sunday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 7)) === 'dom')
       })
 
-      it('returns `Mon` for Monday', function () {
+      it('returns `lun` for Monday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 1)) === 'lun')
       })
 
-      it('returns `Tue` for Tuesday', function () {
+      it('returns `mar` for Tuesday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 2)) === 'mar')
       })
 
-      it('returns `Wed` for Wednesday', function () {
+      it('returns `mie` for Wednesday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 3)) === 'mie')
       })
 
-      it('returns `Thu` for Thursday', function () {
+      it('returns `jue` for Thursday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 4)) === 'jue')
       })
 
-      it('returns `Fri` for Friday', function () {
+      it('returns `vie` for Friday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 5)) === 'vie')
       })
 
-      it('returns `Sat` for Saturday', function () {
+      it('returns `sab` for Saturday', function () {
         assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 6)) === 'sab')
       })
     })
 
     describe('dddd', function () {
-      it('returns `Sunday` for Sunday', function () {
+      it('returns `domingo` for Sunday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 7)) === 'domingo')
       })
 
-      it('returns `Monday` for Monday', function () {
+      it('returns `lunes` for Monday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 1)) === 'lunes')
       })
 
-      it('returns `Tuesday` for Tuesday', function () {
+      it('returns `martes` for Tuesday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === 'martes')
       })
 
-      it('returns `Wednesday` for Wednesday', function () {
+      it('returns `miércoles` for Wednesday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 3)) === 'miércoles')
       })
 
-      it('returns `Thursday` for Thursday', function () {
+      it('returns `jueves` for Thursday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 4)) === 'jueves')
       })
 
-      it('returns `Friday` for Friday', function () {
+      it('returns `viernes` for Friday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 5)) === 'viernes')
       })
 
-      it('returns `Saturday` for Saturday', function () {
+      it('returns `sábado` for Saturday', function () {
         assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 6)) === 'sábado')
       })
     })
