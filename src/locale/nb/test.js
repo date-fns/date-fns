@@ -6,10 +6,10 @@ var nbLocale = require('./')
 
 describe('nb locale', function () {
   it('exports distanceInWords object', function () {
-    assert(typeof enLocale.distanceInWords === 'object')
+    assert(typeof nbLocale.distanceInWords === 'object')
   })
 
   it('exports format object', function () {
-    assert(typeof enLocale.format === 'object')
+    assert(typeof nbLocale.format === 'object')
   })
 })
