@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+- Fixed typescript imports from individual modules
+
 ## [1.13.0] - 2016-12-06
 
 ### Added
