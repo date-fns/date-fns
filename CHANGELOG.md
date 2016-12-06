@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.14.0] - 2016-12-06
+
+### Added
+
+- [Norwegian Bokmål locale (nb)](https://github.com/date-fns/date-fns/pull/291)
+  (thanks to Hans-Kristian Koren [@Hanse](https://github.com/Hanse))
+
 ## [1.13.0] - 2016-12-06
 
 ### Added
