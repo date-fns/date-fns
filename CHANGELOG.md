@@ -10,6 +10,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.13.0] - 2016-12-06
+
+### Added
+
+- [Chinese Traditional locale (zh_tw)](https://github.com/date-fns/date-fns/pull/283)
+  (thanks to tonypai [@tpai](https://github.com/tpai)).
+
+- [Dutch language locale (nl)](https://github.com/date-fns/date-fns/pull/278)
+  (kudos to Jorik Tangelder [@jtangelder](https://github.com/jtangelder))
+
 ## [1.12.1] - 2016-12-05
 
 ### Fixed
@@ -110,7 +120,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- [Chinese Simplified locale (zh_CN)](https://github.com/date-fns/date-fns/pull/235)
+- [Chinese Simplified locale (zh_cn)](https://github.com/date-fns/date-fns/pull/235)
   (kudos to Changyu [@KingMario](https://github.com/KingMario) Geng).
 
 ## [1.5.2] - 2016-10-13
@@ -699,7 +709,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.12.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.13.0...HEAD
+[1.13.0]: https://github.com/date-fns/date-fns/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/date-fns/date-fns/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/date-fns/date-fns/compare/v1.11.2...v1.12.0
 [1.11.2]: https://github.com/date-fns/date-fns/compare/v1.11.1...v1.11.2
