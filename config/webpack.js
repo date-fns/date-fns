@@ -7,7 +7,9 @@ var config = {
   output: getOutputConfig(),
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'webpack-espower', exclude: /node_modules/},
+      process.env.MOMENT_API_TEST
+        ? {test: /\.js$/, loader: 'babel', exclude: /node_modules/}
+        : {test: /\.js$/, loader: 'webpack-espower', exclude: /node_modules/},
       {test: /\.json$/, loader: 'json'}
     ]
   }
