@@ -72,7 +72,7 @@ var distanceInWords = require('../distance_in_words/index.js')
  * // If today is 1 January 2015,
  * // what is the distance to 1 August 2016 in Esperanto?
  * var eoLocale = require('date-fns/locale/eo')
- * var result = distanceInWords(
+ * var result = distanceInWordsToNow(
  *   new Date(2016, 7, 1),
  *   {locale: eoLocale}
  * )

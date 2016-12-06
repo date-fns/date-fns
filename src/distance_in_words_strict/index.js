@@ -29,7 +29,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {Date|String|Number} date - the other date
  * @param {Object} [options] - the object with options
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {String} [options.unit=null] - if specified, will force a unit. Options: 's', 'm', 'h', 'd', 'M', 'Y'
+ * @param {String} [options.unit] - if specified, will force a unit. Options: 's', 'm', 'h', 'd', 'M', 'Y'
  * @param {String} [options.partialMethod='floor'] - which way to round partial units. Options: 'floor', 'ceil', 'round'
  * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the distance in words
@@ -89,7 +89,7 @@ var MINUTES_IN_YEAR = 525600
  *   new Date(2015, 0, 1),
  *   {locale: eoLocale}
  * )
- * //=> 'ol 1 jaro'
+ * //=> '1 jaro'
  */
 function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
