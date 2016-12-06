@@ -82,7 +82,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === 'circa un ora')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === 'circa un\'ora')
       })
     })
 
@@ -152,7 +152,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('aboutXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXYears', 1) === 'circa un anno')
+        assert(buildDistanceInWordsLocale().localize('aboutXYears', 1) === 'circa un\'anno')
       })
     })
 
@@ -180,7 +180,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('overXYears', 1) === 'piú di un anno')
+        assert(buildDistanceInWordsLocale().localize('overXYears', 1) === 'piú di un\'anno')
       })
     })
 
@@ -194,7 +194,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('almostXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('almostXYears', 1) === 'quasi un anno')
+        assert(buildDistanceInWordsLocale().localize('almostXYears', 1) === 'quasi un\'anno')
       })
     })
 
@@ -211,7 +211,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'circa un anno fa')
+      assert(result === 'circa un\'anno fa')
     })
   })
 

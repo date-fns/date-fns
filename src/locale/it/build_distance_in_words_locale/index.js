@@ -23,12 +23,12 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXHours: {
-      one: 'circa un ora',
+      one: 'circa un\'ora',
       other: 'circa {{count}} ore'
     },
 
     xHours: {
-      one: 'un ora',
+      one: 'un\'ora',
       other: '{{count}} ore'
     },
 
@@ -48,22 +48,22 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXYears: {
-      one: 'circa un anno',
+      one: 'circa un\'anno',
       other: 'circa {{count}} anni'
     },
 
     xYears: {
-      one: 'un anno',
+      one: 'un\'anno',
       other: '{{count}} anni'
     },
 
     overXYears: {
-      one: 'piú di un anno',
+      one: 'piú di un\'anno',
       other: 'piú di {{count}} anni'
     },
 
     almostXYears: {
-      one: 'quasi un anno',
+      one: 'quasi un\'anno',
       other: 'quasi {{count}} anni'
     }
   }
