@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "1.13.0",
+  "version": "1.14.1",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
@@ -75,8 +75,6 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": [
-      "dist/"
-    ]
+    "ignore": ["dist/"]
   }
 }

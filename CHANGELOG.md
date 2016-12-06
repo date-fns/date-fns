@@ -12,6 +12,19 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - Fixed typescript imports from individual modules
 
+## [1.14.1] - 2016-12-06
+
+### Fixed
+
+- Fixed broken test for Norwegian Bokmål locale.
+
+## [1.14.0] - 2016-12-06
+
+### Added
+
+- [Norwegian Bokmål locale (nb)](https://github.com/date-fns/date-fns/pull/291)
+  (thanks to Hans-Kristian Koren [@Hanse](https://github.com/Hanse))
+
 ## [1.13.0] - 2016-12-06
 
 ### Added
@@ -711,7 +724,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.13.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.14.1...HEAD
+[1.14.1]: https://github.com/date-fns/date-fns/compare/v1.14.0...v1.14.1
+[1.14.0]: https://github.com/date-fns/date-fns/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/date-fns/date-fns/compare/v1.12.1...v1.13.0
 [1.12.1]: https://github.com/date-fns/date-fns/compare/v1.12.0...v1.12.1
 [1.12.0]: https://github.com/date-fns/date-fns/compare/v1.11.2...v1.12.0
