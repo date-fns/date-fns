@@ -1,83 +1,169 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      one: 'weniger als einer Sekunde',
-      other: 'weniger als {{count}} Sekunden'
+      standalone: {
+        one: 'weniger als eine Sekunde',
+        other: 'weniger als {{count}} Sekunden'
+      },
+      withPreposition: {
+        one: 'weniger als einer Sekunde',
+        other: 'weniger als {{count}} Sekunden'
+      }
     },
 
     xSeconds: {
-      one: '1 Sekunde',
-      other: '{{count}} Sekunden'
+      standalone: {
+        one: 'eine Sekunde',
+        other: '{{count}} Sekunden'
+      },
+      withPreposition: {
+        one: 'einer Sekunde',
+        other: '{{count}} Sekunden'
+      }
     },
 
-    halfAMinute: 'einer halben Minute',
+    halfAMinute: {
+      standalone: 'eine halbe Minute',
+      withPreposition: 'einer halben Minute'
+    },
 
     lessThanXMinutes: {
-      one: 'weniger als einer Minute',
-      other: 'weniger als {{count}} Minuten'
+      standalone: {
+        one: 'weniger als eine Minute',
+        other: 'weniger als {{count}} Minuten'
+      },
+      withPreposition: {
+        one: 'weniger als einer Minute',
+        other: 'weniger als {{count}} Minuten'
+      }
     },
 
     xMinutes: {
-      one: '1 Minute',
-      other: '{{count}} Minuten'
+      standalone: {
+        one: 'eine Minute',
+        other: '{{count}} Minuten'
+      },
+      withPreposition: {
+        one: 'einer Minute',
+        other: '{{count}} Minuten'
+      }
     },
 
     aboutXHours: {
-      one: 'etwa 1 Stunde',
-      other: 'etwa {{count}} Stunden'
+      standalone: {
+        one: 'etwa eine Stunde',
+        other: 'etwa {{count}} Stunden'
+      },
+      withPreposition: {
+        one: 'etwa einer Stunde',
+        other: 'etwa {{count}} Stunden'
+      }
     },
 
     xHours: {
-      one: '1 Stunde',
-      other: '{{count}} Stunden'
+      standalone: {
+        one: 'eine Stunde',
+        other: '{{count}} Stunden'
+      },
+      withPreposition: {
+        one: 'einer Stunde',
+        other: '{{count}} Stunden'
+      }
     },
 
     xDays: {
-      one: '1 Tag',
-      other: '{{count}} Tagen'
+      standalone: {
+        one: 'ein Tag',
+        other: '{{count}} Tage'
+      },
+      withPreposition: {
+        one: 'einem Tag',
+        other: '{{count}} Tagen'
+      }
+
     },
 
     aboutXMonths: {
-      one: 'etwa 1 Monat',
-      other: 'etwa {{count}} Monaten'
+      standalone: {
+        one: 'etwa ein Monat',
+        other: 'etwa {{count}} Monate'
+      },
+      withPreposition: {
+        one: 'etwa einem Monat',
+        other: 'etwa {{count}} Monaten'
+      }
     },
 
     xMonths: {
-      one: '1 Monat',
-      other: '{{count}} Monaten'
+      standalone: {
+        one: 'ein Monat',
+        other: '{{count}} Monate'
+      },
+      withPreposition: {
+        one: 'einem Monat',
+        other: '{{count}} Monaten'
+      }
     },
 
     aboutXYears: {
-      one: 'etwa 1 Jahr',
-      other: 'etwa {{count}} Jahren'
+      standalone: {
+        one: 'etwa ein Jahr',
+        other: 'etwa {{count}} Jahre'
+      },
+      withPreposition: {
+        one: 'etwa einem Jahr',
+        other: 'etwa {{count}} Jahren'
+      }
     },
 
     xYears: {
-      one: '1 Jahr',
-      other: '{{count}} Jahren'
+      standalone: {
+        one: 'ein Jahr',
+        other: '{{count}} Jahre'
+      },
+      withPreposition: {
+        one: 'einem Jahr',
+        other: '{{count}} Jahren'
+      }
     },
 
     overXYears: {
-      one: 'mehr als 1 Jahr',
-      other: 'mehr als {{count}} Jahren'
+      standalone: {
+        one: 'mehr als ein Jahr',
+        other: 'mehr als {{count}} Jahre'
+      },
+      withPreposition: {
+        one: 'mehr als einem Jahr',
+        other: 'mehr als {{count}} Jahren'
+      }
     },
 
     almostXYears: {
-      one: 'fast 1 Jahr',
-      other: 'fast {{count}} Jahren'
+      standalone: {
+        one: 'fast ein Jahr',
+        other: 'fast {{count}} Jahre'
+      },
+      withPreposition: {
+        one: 'fast einem Jahr',
+        other: 'fast {{count}} Jahren'
+      }
     }
   }
 
   function localize (token, count, options) {
     options = options || {}
 
+    var usageGroup = options.addSuffix
+      ? distanceInWordsLocale[token].withPreposition
+      : distanceInWordsLocale[token].standalone
+
     var result
-    if (typeof distanceInWordsLocale[token] === 'string') {
-      result = distanceInWordsLocale[token]
+    if (typeof usageGroup === 'string') {
+      result = usageGroup
     } else if (count === 1) {
-      result = distanceInWordsLocale[token].one
+      result = usageGroup.one
     } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count)
+      result = usageGroup.other.replace('{{count}}', count)
     }
 
     if (options.addSuffix) {
