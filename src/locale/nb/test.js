@@ -2,9 +2,9 @@
 /* eslint-env mocha */
 
 var assert = require('power-assert')
-var enLocale = require('./')
+var nbLocale = require('./')
 
-describe('en locale', function () {
+describe('nb locale', function () {
   it('exports distanceInWords object', function () {
     assert(typeof enLocale.distanceInWords === 'object')
   })
