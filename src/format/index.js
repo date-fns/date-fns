@@ -1,9 +1,9 @@
-var getDayOfYear = require('../get_day_of_year/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
-var getISOYear = require('../get_iso_year/index.js')
-var toDate = require('../to_date/index.js')
-var isValid = require('../is_valid/index.js')
-var enLocale = require('../locale/en/index.js')
+import getDayOfYear from '../get_day_of_year/index.js'
+import getISOWeek from '../get_iso_week/index.js'
+import getISOYear from '../get_iso_year/index.js'
+import toDate from '../to_date/index.js'
+import isValid from '../is_valid/index.js'
+import enLocale from '../locale/en/index.js'
 
 /**
  * @category Common Helpers
@@ -81,7 +81,7 @@ var enLocale = require('../locale/en/index.js')
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = format(
  *   new Date(2014, 6, 2),
  *   'Do [de] MMMM YYYY',
@@ -325,4 +325,4 @@ function addLeadingZeros (number, targetLength) {
   return output
 }
 
-module.exports = format
+export default format

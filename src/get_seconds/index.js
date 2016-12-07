@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Second Helpers
@@ -22,4 +22,4 @@ function getSeconds (dirtyDate, options) {
   return seconds
 }
 
-module.exports = getSeconds
+export default getSeconds

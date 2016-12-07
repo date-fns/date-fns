@@ -1,4 +1,4 @@
-var startOfMinute = require('../start_of_minute/index.js')
+import startOfMinute from '../start_of_minute/index.js'
 
 /**
  * @category Minute Helpers
@@ -28,4 +28,4 @@ function isSameMinute (dirtyDateLeft, dirtyDateRight, options) {
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }
 
-module.exports = isSameMinute
+export default isSameMinute

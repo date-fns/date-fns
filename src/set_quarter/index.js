@@ -1,5 +1,5 @@
-var toDate = require('../to_date/index.js')
-var setMonth = require('../set_month/index.js')
+import toDate from '../to_date/index.js'
+import setMonth from '../set_month/index.js'
 
 /**
  * @category Quarter Helpers
@@ -25,4 +25,4 @@ function setQuarter (dirtyDate, quarter, options) {
   return setMonth(date, date.getMonth() + diff * 3, options)
 }
 
-module.exports = setQuarter
+export default setQuarter

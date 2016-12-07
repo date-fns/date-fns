@@ -1,7 +1,7 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarISOYears = require('../difference_in_calendar_iso_years/index.js')
-var compareDesc = require('../compare_desc/index.js')
-var subISOYears = require('../sub_iso_years/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarISOYears from '../difference_in_calendar_iso_years/index.js'
+import compareDesc from '../compare_desc/index.js'
+import subISOYears from '../sub_iso_years/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -40,4 +40,4 @@ function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastISOYearNotFull)
 }
 
-module.exports = differenceInISOYears
+export default differenceInISOYears

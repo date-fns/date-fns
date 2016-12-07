@@ -1,7 +1,7 @@
-var toDate = require('../to_date/index.js')
-var enLocale = require('../locale/en/index.js')
-var parsers = require('./_lib/parsers/index.js')
-var units = require('./_lib/units/index.js')
+import toDate from '../to_date/index.js'
+import enLocale from '../locale/en/index.js'
+import parsers from './_lib/parsers/index.js'
+import units from './_lib/units/index.js'
 
 /**
  * @category Common Helpers
@@ -176,4 +176,4 @@ function parse (dateString, formatString, dirtyBaseDate, options) {
   return date
 }
 
-module.exports = parse
+export default parse

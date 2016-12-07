@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -47,4 +47,4 @@ function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   return result
 }
 
-module.exports = closestIndexTo
+export default closestIndexTo

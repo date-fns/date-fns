@@ -1,13 +1,11 @@
-var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index.js')
-var buildFormatLocale = require('./build_format_locale/index.js')
-var buildParseLocale = require('./build_parse_locale/index.js')
+import buildDistanceInWordsLocale from './build_distance_in_words_locale/index.js'
+import buildFormatLocale from './build_format_locale/index.js'
+import buildParseLocale from './build_parse_locale/index.js'
 
 /**
  * @category Locales
  * @summary English locale.
  */
-module.exports = {
-  distanceInWords: buildDistanceInWordsLocale(),
-  format: buildFormatLocale(),
-  parse: buildParseLocale()
-}
+export const distanceInWords = buildDistanceInWordsLocale()
+export const format = buildFormatLocale()
+export const parse = buildParseLocale()

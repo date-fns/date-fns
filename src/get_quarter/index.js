@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Quarter Helpers
@@ -22,4 +22,4 @@ function getQuarter (dirtyDate, options) {
   return quarter
 }
 
-module.exports = getQuarter
+export default getQuarter

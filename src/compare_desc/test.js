@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var compareDesc = require('./')
+import assert from 'power-assert'
+import compareDesc from '.'
 
 describe('compareDesc', function () {
   it('returns 0 if the given dates are equal', function () {

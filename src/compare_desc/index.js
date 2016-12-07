@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -49,4 +49,4 @@ function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
   }
 }
 
-module.exports = compareDesc
+export default compareDesc

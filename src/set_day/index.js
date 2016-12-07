@@ -1,5 +1,5 @@
-var toDate = require('../to_date/index.js')
-var addDays = require('../add_days/index.js')
+import toDate from '../to_date/index.js'
+import addDays from '../add_days/index.js'
 
 /**
  * @category Weekday Helpers
@@ -36,4 +36,4 @@ function setDay (dirtyDate, day, options) {
   return addDays(date, diff, options)
 }
 
-module.exports = setDay
+export default setDay

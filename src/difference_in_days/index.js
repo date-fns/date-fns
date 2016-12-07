@@ -1,6 +1,6 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
-var compareDesc = require('../compare_desc/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
+import compareDesc from '../compare_desc/index.js'
 
 /**
  * @category Day Helpers
@@ -37,4 +37,4 @@ function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastDayNotFull)
 }
 
-module.exports = differenceInDays
+export default differenceInDays

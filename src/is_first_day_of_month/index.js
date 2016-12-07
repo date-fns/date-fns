@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Month Helpers
@@ -20,4 +20,4 @@ function isFirstDayOfMonth (dirtyDate, options) {
   return toDate(dirtyDate, options).getDate() === 1
 }
 
-module.exports = isFirstDayOfMonth
+export default isFirstDayOfMonth

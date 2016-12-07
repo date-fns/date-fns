@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Day Helpers
@@ -50,4 +50,4 @@ function eachDay (dirtyStartDate, dirtyEndDate, options) {
   return dates
 }
 
-module.exports = eachDay
+export default eachDay

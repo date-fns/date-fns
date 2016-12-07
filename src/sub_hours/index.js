@@ -1,4 +1,4 @@
-var addHours = require('../add_hours/index.js')
+import addHours from '../add_hours/index.js'
 
 /**
  * @category Hour Helpers
@@ -21,4 +21,4 @@ function subHours (dirtyDate, amount, options) {
   return addHours(dirtyDate, -amount, options)
 }
 
-module.exports = subHours
+export default subHours

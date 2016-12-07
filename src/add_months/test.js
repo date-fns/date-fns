@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var addMonths = require('./')
+import assert from 'power-assert'
+import addMonths from '.'
 
 describe('addMonths', function () {
   it('adds the given number of months', function () {

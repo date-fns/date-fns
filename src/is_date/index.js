@@ -18,4 +18,4 @@ function isDate (argument, _) {
   return argument instanceof Date
 }
 
-module.exports = isDate
+export default isDate

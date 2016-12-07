@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -26,4 +26,4 @@ function isEqual (dirtyLeftDate, dirtyRightDate, options) {
   return dateLeft.getTime() === dateRight.getTime()
 }
 
-module.exports = isEqual
+export default isEqual

@@ -96,4 +96,4 @@ function buildDistanceInWordsLocale () {
   }
 }
 
-module.exports = buildDistanceInWordsLocale
+export default buildDistanceInWordsLocale

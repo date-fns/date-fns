@@ -1,6 +1,6 @@
-var toDate = require('../to_date/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
-var startOfISOYear = require('../start_of_iso_year/index.js')
+import toDate from '../to_date/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
+import startOfISOYear from '../start_of_iso_year/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -32,4 +32,4 @@ function getISOWeek (dirtyDate, options) {
   return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
 }
 
-module.exports = getISOWeek
+export default getISOWeek

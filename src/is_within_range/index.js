@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Range Helpers
@@ -41,4 +41,4 @@ function isWithinRange (dirtyDate, dirtyRange, options) {
   return time >= startTime && time <= endTime
 }
 
-module.exports = isWithinRange
+export default isWithinRange

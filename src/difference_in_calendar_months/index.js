@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Month Helpers
@@ -30,4 +30,4 @@ function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 12 + monthDiff
 }
 
-module.exports = differenceInCalendarMonths
+export default differenceInCalendarMonths

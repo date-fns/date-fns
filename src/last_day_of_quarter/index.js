@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Quarter Helpers
@@ -26,4 +26,4 @@ function lastDayOfQuarter (dirtyDate, options) {
   return date
 }
 
-module.exports = lastDayOfQuarter
+export default lastDayOfQuarter

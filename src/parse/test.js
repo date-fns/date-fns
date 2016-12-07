@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var parse = require('./')
+import assert from 'power-assert'
+import parse from '.'
 
 describe('parse', function () {
   var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)

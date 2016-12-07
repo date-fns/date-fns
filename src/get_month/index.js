@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Month Helpers
@@ -22,4 +22,4 @@ function getMonth (dirtyDate, options) {
   return month
 }
 
-module.exports = getMonth
+export default getMonth

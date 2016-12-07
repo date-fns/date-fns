@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -23,4 +23,4 @@ function isAfter (dirtyDate, dirtyDateToCompare, options) {
   return date.getTime() > dateToCompare.getTime()
 }
 
-module.exports = isAfter
+export default isAfter

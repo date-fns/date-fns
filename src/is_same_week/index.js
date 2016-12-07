@@ -1,4 +1,4 @@
-var startOfWeek = require('../start_of_week/index.js')
+import startOfWeek from '../start_of_week/index.js'
 
 /**
  * @category Week Helpers
@@ -38,4 +38,4 @@ function isSameWeek (dirtyDateLeft, dirtyDateRight, options) {
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }
 
-module.exports = isSameWeek
+export default isSameWeek

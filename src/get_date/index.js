@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Day Helpers
@@ -22,4 +22,4 @@ function getDate (dirtyDate, options) {
   return dayOfMonth
 }
 
-module.exports = getDate
+export default getDate

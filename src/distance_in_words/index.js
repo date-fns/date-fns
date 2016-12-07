@@ -1,8 +1,8 @@
-var compareDesc = require('../compare_desc/index.js')
-var toDate = require('../to_date/index.js')
-var differenceInSeconds = require('../difference_in_seconds/index.js')
-var differenceInMonths = require('../difference_in_months/index.js')
-var enLocale = require('../locale/en/index.js')
+import compareDesc from '../compare_desc/index.js'
+import toDate from '../to_date/index.js'
+import differenceInSeconds from '../difference_in_seconds/index.js'
+import differenceInMonths from '../difference_in_months/index.js'
+import * as enLocale from '../locale/en/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -83,7 +83,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = distanceInWords(
  *   new Date(2016, 7, 1),
  *   new Date(2015, 0, 1),
@@ -200,4 +200,4 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
   }
 }
 
-module.exports = distanceInWords
+export default distanceInWords

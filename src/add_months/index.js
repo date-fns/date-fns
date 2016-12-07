@@ -1,5 +1,5 @@
-var toDate = require('../to_date/index.js')
-var getDaysInMonth = require('../get_days_in_month/index.js')
+import toDate from '../to_date/index.js'
+import getDaysInMonth from '../get_days_in_month/index.js'
 
 /**
  * @category Month Helpers
@@ -31,4 +31,4 @@ function addMonths (dirtyDate, amount, options) {
   return date
 }
 
-module.exports = addMonths
+export default addMonths

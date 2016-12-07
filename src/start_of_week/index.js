@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Week Helpers
@@ -35,4 +35,4 @@ function startOfWeek (dirtyDate, options) {
   return date
 }
 
-module.exports = startOfWeek
+export default startOfWeek
