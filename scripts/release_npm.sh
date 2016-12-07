@@ -16,6 +16,12 @@ do
   cp -r "$pattern" "$dir"
 done
 
+for module in $dir/*/
+do
+  module=${module%*/}
+  cp scripts/sub_module_package.json "$module/package.json"
+done
+
 cp dist/date_fns_docs.json $dir/docs.json
 find "$dir" -type f -name "test.js" -delete
 cd "$dir" || exit
