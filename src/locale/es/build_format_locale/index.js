@@ -67,17 +67,6 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'º'
-      case 2:
-        return number + 'º'
-      case 3:
-        return number + 'º'
-    }
-  }
   return number + 'º'
 }
 
