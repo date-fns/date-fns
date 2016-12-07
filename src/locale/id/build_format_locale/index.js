@@ -1,11 +1,15 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
-  var months3char = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
-  var monthsFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-  var weekdays2char = ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa']
-  var weekdays3char = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sáb']
-  var weekdaysFull = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
+  // Note: in Indonesian, the names of days of the week and months are capitalized.
+  // If you are making a new locale based on this one, check if the same is true for the langugage you're working on.
+  // Generally, formatted dates should look like they are in the middle of a sentence,
+  // e.g. in Spanish language the weekdays and months should be in the lowercase.
+  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+  var monthsFull = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+  var weekdays2char = ['Mi', 'Sn', 'Sl', 'Ra', 'Ka', 'Ju', 'Sa']
+  var weekdays3char = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab']
+  var weekdaysFull = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu']
   var meridiemUppercase = ['AM', 'PM']
   var meridiemLowercase = ['am', 'pm']
   var meridiemFull = ['a.m.', 'p.m.']
@@ -67,7 +71,18 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  return number + 'º'
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return 'pertama'
+      case 2:
+        return 'kedua'
+      case 3:
+        return 'ketiga'
+    }
+  }
+  return 'ke-' + number
 }
 
 module.exports = buildFormatLocale

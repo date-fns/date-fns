@@ -10,7 +10,23 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-- Fixed typescript imports from individual modules
+- Fixed TypeScript imports from individual modules
+
+## [1.15.0] - 2016-12-07
+
+### Added
+
+- [Indonesian locale (id)](https://github.com/date-fns/date-fns/pull/299)
+  (thanks to Rahmat Budiharso [@rbudiharso](https://github.com/rbudiharso))
+
+- [Catalan locale (ca)](https://github.com/date-fns/date-fns/pull/300)
+  (thanks to Guillermo Grau [@guigrpa](https://github.com/guigrpa))
+
+### Fixed
+
+- Fix some inaccuracies in Spanish locale.
+  Kudos to [@guigrpa](https://github.com/guigrpa).
+  See related PR: [#302](https://github.com/date-fns/date-fns/pull/302)
 
 ## [1.14.1] - 2016-12-06
 
@@ -724,7 +740,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.14.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.15.0...HEAD
+[1.15.0]: https://github.com/date-fns/date-fns/compare/v1.14.1...v1.15.0
 [1.14.1]: https://github.com/date-fns/date-fns/compare/v1.14.0...v1.14.1
 [1.14.0]: https://github.com/date-fns/date-fns/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/date-fns/date-fns/compare/v1.12.1...v1.13.0
