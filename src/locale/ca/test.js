@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var caLocale = require('./')
 
-describe('es locale', function () {
+describe('ca locale', function () {
   it('exports distanceInWords object', function () {
     assert(typeof caLocale.distanceInWords === 'object')
   })
