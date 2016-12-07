@@ -10,7 +10,7 @@ function buildDistanceInWordsLocale () {
       other: '{{count}} secondi'
     },
 
-    halfAMinute: 'mezzo minuto',
+    halfAMinute: 'alcuni secondi',
 
     lessThanXMinutes: {
       one: 'meno di un minuto',

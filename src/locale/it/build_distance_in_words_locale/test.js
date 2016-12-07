@@ -43,11 +43,11 @@ describe('it locale > buildDistanceInWordsLocale', function () {
 
   describe('halfAMinute', function () {
     it('returns a proper string', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute') === 'mezzo minuto')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute') === 'alcuni secondi')
     })
 
     it('ignores the second argument', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === 'mezzo minuto')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === 'alcuni secondi')
     })
   })
 
@@ -221,7 +221,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in mezzo minuto')
+      assert(result === 'in alcuni secondi')
     })
   })
 })
