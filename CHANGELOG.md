@@ -10,7 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-- Fixed TypeScript imports from individual modules
+## [1.15.1] - 2016-12-07
+
+- Fixed TypeScript imports from individual modules.
+  Thanks to [@mattlewis92](https://github.com/mattlewis92).
+  See related PR: [#287](https://github.com/date-fns/date-fns/pull/287)
 
 ## [1.15.0] - 2016-12-07
 
@@ -740,7 +744,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.15.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.15.1...HEAD
+[1.15.1]: https://github.com/date-fns/date-fns/compare/v1.15.0...v1.15.1
 [1.15.0]: https://github.com/date-fns/date-fns/compare/v1.14.1...v1.15.0
 [1.14.1]: https://github.com/date-fns/date-fns/compare/v1.14.0...v1.14.1
 [1.14.0]: https://github.com/date-fns/date-fns/compare/v1.13.0...v1.14.0
