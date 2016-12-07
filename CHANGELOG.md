@@ -12,6 +12,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [1.15.1] - 2016-12-07
 
+### Fixed
+
 - Fixed TypeScript imports from individual modules.
   Thanks to [@mattlewis92](https://github.com/mattlewis92).
   See related PR: [#287](https://github.com/date-fns/date-fns/pull/287)
