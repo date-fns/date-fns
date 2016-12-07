@@ -30,7 +30,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xSeconds', 1) === '1 secondo')
+        assert(buildDistanceInWordsLocale().localize('xSeconds', 1) === 'un secondo')
       })
     })
 
@@ -68,7 +68,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xMinutes', 1) === '1 minuto')
+        assert(buildDistanceInWordsLocale().localize('xMinutes', 1) === 'un minuto')
       })
     })
 
@@ -96,7 +96,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xHours', 1) === '1 ora')
+        assert(buildDistanceInWordsLocale().localize('xHours', 1) === 'un\'ora')
       })
     })
 
@@ -110,7 +110,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xDays', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xDays', 1) === '1 giorno')
+        assert(buildDistanceInWordsLocale().localize('xDays', 1) === 'un giorno')
       })
     })
 
@@ -138,7 +138,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xMonths', 1) === '1 mese')
+        assert(buildDistanceInWordsLocale().localize('xMonths', 1) === 'un mese')
       })
     })
 
@@ -166,7 +166,7 @@ describe('it locale > buildDistanceInWordsLocale', function () {
   describe('xYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xYears', 1) === '1 anno')
+        assert(buildDistanceInWordsLocale().localize('xYears', 1) === 'un anno')
       })
     })
 
