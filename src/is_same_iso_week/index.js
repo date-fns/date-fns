@@ -1,4 +1,4 @@
-var isSameWeek = require('../is_same_week/index.js')
+import isSameWeek from '../is_same_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -25,4 +25,4 @@ function isSameISOWeek (dirtyDateLeft, dirtyDateRight) {
   return isSameWeek(dirtyDateLeft, dirtyDateRight, {weekStartsOn: 1})
 }
 
-module.exports = isSameISOWeek
+export default isSameISOWeek

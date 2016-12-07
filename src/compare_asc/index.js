@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -48,4 +48,4 @@ function compareAsc (dirtyDateLeft, dirtyDateRight) {
   }
 }
 
-module.exports = compareAsc
+export default compareAsc

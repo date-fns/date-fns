@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Second Helpers
@@ -22,4 +22,4 @@ function endOfSecond (dirtyDate) {
   return date
 }
 
-module.exports = endOfSecond
+export default endOfSecond

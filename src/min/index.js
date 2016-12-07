@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -29,4 +29,4 @@ function min () {
   return new Date(earliestTimestamp)
 }
 
-module.exports = min
+export default min

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Month Helpers
@@ -19,4 +19,4 @@ function isFirstDayOfMonth (dirtyDate) {
   return parse(dirtyDate).getDate() === 1
 }
 
-module.exports = isFirstDayOfMonth
+export default isFirstDayOfMonth

@@ -1,4 +1,4 @@
-var isSameSecond = require('../is_same_second/index.js')
+import isSameSecond from '../is_same_second/index.js'
 
 /**
  * @category Second Helpers
@@ -20,4 +20,4 @@ function isThisSecond (dirtyDate) {
   return isSameSecond(new Date(), dirtyDate)
 }
 
-module.exports = isThisSecond
+export default isThisSecond

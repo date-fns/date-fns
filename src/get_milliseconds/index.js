@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Millisecond Helpers
@@ -21,4 +21,4 @@ function getMilliseconds (dirtyDate) {
   return milliseconds
 }
 
-module.exports = getMilliseconds
+export default getMilliseconds

@@ -1,4 +1,4 @@
-var isSameMonth = require('../is_same_month/index.js')
+import isSameMonth from '../is_same_month/index.js'
 
 /**
  * @category Month Helpers
@@ -19,4 +19,4 @@ function isThisMonth (dirtyDate) {
   return isSameMonth(new Date(), dirtyDate)
 }
 
-module.exports = isThisMonth
+export default isThisMonth

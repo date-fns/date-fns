@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -44,4 +44,4 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray) {
   return result
 }
 
-module.exports = closestTo
+export default closestTo

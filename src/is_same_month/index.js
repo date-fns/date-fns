@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Month Helpers
@@ -26,4 +26,4 @@ function isSameMonth (dirtyDateLeft, dirtyDateRight) {
     dateLeft.getMonth() === dateRight.getMonth()
 }
 
-module.exports = isSameMonth
+export default isSameMonth

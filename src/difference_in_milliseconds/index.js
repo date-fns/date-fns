@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Millisecond Helpers
@@ -26,4 +26,4 @@ function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {
   return dateLeft.getTime() - dateRight.getTime()
 }
 
-module.exports = differenceInMilliseconds
+export default differenceInMilliseconds

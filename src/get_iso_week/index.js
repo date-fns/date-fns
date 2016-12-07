@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
-var startOfISOYear = require('../start_of_iso_year/index.js')
+import parse from '../parse/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
+import startOfISOYear from '../start_of_iso_year/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -31,4 +31,4 @@ function getISOWeek (dirtyDate) {
   return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
 }
 
-module.exports = getISOWeek
+export default getISOWeek

@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var distanceInWordsToNow = require('./')
+import assert from 'power-assert'
+import distanceInWordsToNow from '.'
 
 describe('distanceInWordsToNow', function () {
   beforeEach(function () {

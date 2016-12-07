@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Range Helpers
@@ -39,4 +39,4 @@ function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
   return time >= startTime && time <= endTime
 }
 
-module.exports = isWithinRange
+export default isWithinRange

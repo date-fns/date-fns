@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Year Helpers
@@ -25,4 +25,4 @@ function isSameYear (dirtyDateLeft, dirtyDateRight) {
   return dateLeft.getFullYear() === dateRight.getFullYear()
 }
 
-module.exports = isSameYear
+export default isSameYear

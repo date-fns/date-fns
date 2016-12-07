@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Day Helpers
@@ -49,4 +49,4 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
   return dates
 }
 
-module.exports = eachDay
+export default eachDay

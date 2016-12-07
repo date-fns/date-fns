@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isThisSecond = require('./')
+import assert from 'power-assert'
+import isThisSecond from '.'
 
 describe('isThisSecond', function () {
   beforeEach(function () {

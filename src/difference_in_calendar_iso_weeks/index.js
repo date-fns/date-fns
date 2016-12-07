@@ -1,4 +1,4 @@
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
@@ -39,4 +39,4 @@ function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
   return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
 }
 
-module.exports = differenceInCalendarISOWeeks
+export default differenceInCalendarISOWeeks

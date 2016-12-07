@@ -1,4 +1,4 @@
-var isSameYear = require('../is_same_year/index.js')
+import isSameYear from '../is_same_year/index.js'
 
 /**
  * @category Year Helpers
@@ -19,4 +19,4 @@ function isThisYear (dirtyDate) {
   return isSameYear(new Date(), dirtyDate)
 }
 
-module.exports = isThisYear
+export default isThisYear

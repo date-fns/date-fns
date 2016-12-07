@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var differenceInCalendarMonths = require('../difference_in_calendar_months/index.js')
-var compareAsc = require('../compare_asc/index.js')
+import parse from '../parse/index.js'
+import differenceInCalendarMonths from '../difference_in_calendar_months/index.js'
+import compareAsc from '../compare_asc/index.js'
 
 /**
  * @category Month Helpers
@@ -35,4 +35,4 @@ function differenceInMonths (dirtyDateLeft, dirtyDateRight) {
   return sign * (difference - isLastMonthNotFull)
 }
 
-module.exports = differenceInMonths
+export default differenceInMonths

@@ -1,4 +1,4 @@
-var addYears = require('../add_years/index.js')
+import addYears from '../add_years/index.js'
 
 /**
  * @category Year Helpers
@@ -20,4 +20,4 @@ function subYears (dirtyDate, amount) {
   return addYears(dirtyDate, -amount)
 }
 
-module.exports = subYears
+export default subYears

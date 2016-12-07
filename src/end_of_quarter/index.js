@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Quarter Helpers
@@ -25,4 +25,4 @@ function endOfQuarter (dirtyDate) {
   return date
 }
 
-module.exports = endOfQuarter
+export default endOfQuarter

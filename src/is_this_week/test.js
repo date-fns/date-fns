@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isThisWeek = require('./')
+import assert from 'power-assert'
+import isThisWeek from '.'
 
 describe('isThisWeek', function () {
   beforeEach(function () {

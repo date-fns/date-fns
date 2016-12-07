@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Week Helpers
@@ -35,4 +35,4 @@ function startOfWeek (dirtyDate, options) {
   return date
 }
 
-module.exports = startOfWeek
+export default startOfWeek

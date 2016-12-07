@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -19,4 +19,4 @@ function isPast (dirtyDate) {
   return parse(dirtyDate).getTime() < new Date().getTime()
 }
 
-module.exports = isPast
+export default isPast

@@ -1,4 +1,4 @@
-var differenceInMonths = require('../difference_in_months/index.js')
+import differenceInMonths from '../difference_in_months/index.js'
 
 /**
  * @category Quarter Helpers
@@ -24,4 +24,4 @@ function differenceInQuarters (dirtyDateLeft, dirtyDateRight) {
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInQuarters
+export default differenceInQuarters

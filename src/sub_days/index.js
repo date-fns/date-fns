@@ -1,4 +1,4 @@
-var addDays = require('../add_days/index.js')
+import addDays from '../add_days/index.js'
 
 /**
  * @category Day Helpers
@@ -20,4 +20,4 @@ function subDays (dirtyDate, amount) {
   return addDays(dirtyDate, -amount)
 }
 
-module.exports = subDays
+export default subDays

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isFirstDayOfMonth = require('./')
+import assert from 'power-assert'
+import isFirstDayOfMonth from '.'
 
 describe('isFirstDayOfMonth', function () {
   it('returns true if the given date is in the last day of month', function () {

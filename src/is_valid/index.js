@@ -1,4 +1,4 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 /**
  * @category Common Helpers
@@ -32,4 +32,4 @@ function isValid (date) {
   }
 }
 
-module.exports = isValid
+export default isValid

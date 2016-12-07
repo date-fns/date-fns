@@ -1,4 +1,4 @@
-var startOfDay = require('../start_of_day/index.js')
+import startOfDay from '../start_of_day/index.js'
 
 /**
  * @category Day Helpers
@@ -26,4 +26,4 @@ function isSameDay (dirtyDateLeft, dirtyDateRight) {
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }
 
-module.exports = isSameDay
+export default isSameDay

@@ -1,4 +1,4 @@
-var endOfWeek = require('../end_of_week/index.js')
+import endOfWeek from '../end_of_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -22,4 +22,4 @@ function endOfISOWeek (dirtyDate) {
   return endOfWeek(dirtyDate, {weekStartsOn: 1})
 }
 
-module.exports = endOfISOWeek
+export default endOfISOWeek

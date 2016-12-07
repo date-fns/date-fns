@@ -1,4 +1,4 @@
-var startOfHour = require('../start_of_hour/index.js')
+import startOfHour from '../start_of_hour/index.js'
 
 /**
  * @category Hour Helpers
@@ -26,4 +26,4 @@ function isSameHour (dirtyDateLeft, dirtyDateRight) {
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }
 
-module.exports = isSameHour
+export default isSameHour

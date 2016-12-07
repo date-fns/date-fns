@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var getYear = require('./')
+import assert from 'power-assert'
+import getYear from '.'
 
 describe('getYear', function () {
   it('returns the year of the given date', function () {

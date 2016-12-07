@@ -1,5 +1,5 @@
-var parse = require('../parse/index.js')
-var setMonth = require('../set_month/index.js')
+import parse from '../parse/index.js'
+import setMonth from '../set_month/index.js'
 
 /**
  * @category Quarter Helpers
@@ -24,4 +24,4 @@ function setQuarter (dirtyDate, quarter) {
   return setMonth(date, date.getMonth() + diff * 3)
 }
 
-module.exports = setQuarter
+export default setQuarter

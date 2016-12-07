@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var endOfMinute = require('./')
+import assert from 'power-assert'
+import endOfMinute from '.'
 
 describe('endOfMinute', function () {
   it('returns the date with the time setted to the last millisecond before a minute ends', function () {

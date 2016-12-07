@@ -1,4 +1,4 @@
-var isSameQuarter = require('../is_same_quarter/index.js')
+import isSameQuarter from '../is_same_quarter/index.js'
 
 /**
  * @category Quarter Helpers
@@ -19,4 +19,4 @@ function isThisQuarter (dirtyDate) {
   return isSameQuarter(new Date(), dirtyDate)
 }
 
-module.exports = isThisQuarter
+export default isThisQuarter

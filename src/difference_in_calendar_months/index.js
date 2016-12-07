@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Month Helpers
@@ -29,4 +29,4 @@ function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
   return yearDiff * 12 + monthDiff
 }
 
-module.exports = differenceInCalendarMonths
+export default differenceInCalendarMonths

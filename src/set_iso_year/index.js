@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var startOfISOYear = require('../start_of_iso_year/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
+import parse from '../parse/index.js'
+import startOfISOYear from '../start_of_iso_year/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -32,4 +32,4 @@ function setISOYear (dirtyDate, isoYear) {
   return date
 }
 
-module.exports = setISOYear
+export default setISOYear

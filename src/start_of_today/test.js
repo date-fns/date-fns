@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var startOfToday = require('./')
+import assert from 'power-assert'
+import startOfToday from '.'
 
 describe('startOfToday', function () {
   beforeEach(function () {

@@ -1,4 +1,4 @@
-var addMonths = require('../add_months/index.js')
+import addMonths from '../add_months/index.js'
 
 /**
  * @category Quarter Helpers
@@ -21,4 +21,4 @@ function addQuarters (dirtyDate, amount) {
   return addMonths(dirtyDate, months)
 }
 
-module.exports = addQuarters
+export default addQuarters

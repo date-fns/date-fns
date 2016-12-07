@@ -1,4 +1,4 @@
-var lastDayOfWeek = require('../last_day_of_week/index.js')
+import lastDayOfWeek from '../last_day_of_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -22,4 +22,4 @@ function lastDayOfISOWeek (dirtyDate) {
   return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})
 }
 
-module.exports = lastDayOfISOWeek
+export default lastDayOfISOWeek
