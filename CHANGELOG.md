@@ -16,6 +16,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - Fixed broken test for Norwegian Bokmål locale.
 
+### Added
+
+- [Indonesian locale (id)]()
+  (thanks to Rahmat Budiharso [@rbudiharso](https://github.com/rbudiharso))
+
 ## [1.14.0] - 2016-12-06
 
 ### Added
