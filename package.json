@@ -72,7 +72,6 @@
     "stats-loc": "npm run stats-loc-code && npm run stats-loc-tests",
     "stats-loc-code": "echo 'Source code stats:' && cloc src/**/index.js",
     "stats-loc-tests": "echo 'Test suite stats:' && cloc src/**/test.js",
-    "flow-check": "flow check",
     "systemjs-check": "babel-node scripts/systemjs_check.js"
   },
   "standard": {
