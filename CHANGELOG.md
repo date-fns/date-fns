@@ -18,7 +18,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- [Indonesian locale (id)]()
+- [Indonesian locale (id)](https://github.com/date-fns/date-fns/pull/299)
   (thanks to Rahmat Budiharso [@rbudiharso](https://github.com/rbudiharso))
 
 ## [1.14.0] - 2016-12-06
