@@ -1,4 +1,4 @@
-var startOfWeek = require('../start_of_week/index.js')
+import startOfWeek from '../start_of_week/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
@@ -49,4 +49,4 @@ function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, options) {
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_WEEK)
 }
 
-module.exports = differenceInCalendarWeeks
+export default differenceInCalendarWeeks

@@ -1,4 +1,4 @@
-var getISOYear = require('../get_iso_year/index.js')
+import getISOYear from '../get_iso_year/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -26,4 +26,4 @@ function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight, options) {
   return getISOYear(dirtyDateRight, options) - getISOYear(dirtyDateLeft, options)
 }
 
-module.exports = differenceInCalendarISOYears
+export default differenceInCalendarISOYears

@@ -1,6 +1,6 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarYears = require('../difference_in_calendar_years/index.js')
-var compareDesc = require('../compare_desc/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarYears from '../difference_in_calendar_years/index.js'
+import compareDesc from '../compare_desc/index.js'
 
 /**
  * @category Year Helpers
@@ -36,4 +36,4 @@ function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastYearNotFull)
 }
 
-module.exports = differenceInYears
+export default differenceInYears

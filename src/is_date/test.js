@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isDate = require('./')
+import assert from 'power-assert'
+import isDate from '.'
 
 describe('isDate', function () {
   it('returns true if the given argument is an instance of Date', function () {

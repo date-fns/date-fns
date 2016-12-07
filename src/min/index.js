@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -30,4 +30,4 @@ function min (datesArray, options) {
   return new Date(earliestTimestamp)
 }
 
-module.exports = min
+export default min

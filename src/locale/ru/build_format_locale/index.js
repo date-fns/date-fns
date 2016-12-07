@@ -1,4 +1,4 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
 function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637
@@ -86,4 +86,4 @@ function buildFormatLocale () {
   }
 }
 
-module.exports = buildFormatLocale
+export default buildFormatLocale

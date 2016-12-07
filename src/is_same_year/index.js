@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Year Helpers
@@ -26,4 +26,4 @@ function isSameYear (dirtyDateLeft, dirtyDateRight, options) {
   return dateLeft.getFullYear() === dateRight.getFullYear()
 }
 
-module.exports = isSameYear
+export default isSameYear

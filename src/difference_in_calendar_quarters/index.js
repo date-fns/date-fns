@@ -1,5 +1,5 @@
-var getQuarter = require('../get_quarter/index.js')
-var toDate = require('../to_date/index.js')
+import getQuarter from '../get_quarter/index.js'
+import toDate from '../to_date/index.js'
 
 /**
  * @category Quarter Helpers
@@ -31,4 +31,4 @@ function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 4 + quarterDiff
 }
 
-module.exports = differenceInCalendarQuarters
+export default differenceInCalendarQuarters

@@ -1,4 +1,4 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
 function buildFormatLocale () {
   var months3char = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
@@ -70,4 +70,4 @@ function ordinal (number) {
   return number + '日'
 }
 
-module.exports = buildFormatLocale
+export default buildFormatLocale

@@ -1,4 +1,4 @@
-var startOfDay = require('../start_of_day/index.js')
+import startOfDay from '../start_of_day/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_DAY = 86400000
@@ -39,4 +39,4 @@ function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_DAY)
 }
 
-module.exports = differenceInCalendarDays
+export default differenceInCalendarDays

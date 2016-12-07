@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Year Helpers
@@ -22,4 +22,4 @@ function isLeapYear (dirtyDate, options) {
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }
 
-module.exports = isLeapYear
+export default isLeapYear

@@ -1,4 +1,4 @@
-var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
+import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -27,4 +27,4 @@ function differenceInMinutes (dirtyDateLeft, dirtyDateRight, options) {
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInMinutes
+export default differenceInMinutes

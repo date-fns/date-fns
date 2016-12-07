@@ -1,4 +1,4 @@
-var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
+import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 
 /**
  * @category Second Helpers
@@ -26,4 +26,4 @@ function differenceInSeconds (dirtyDateLeft, dirtyDateRight, options) {
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInSeconds
+export default differenceInSeconds

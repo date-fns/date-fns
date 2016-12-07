@@ -1,4 +1,4 @@
-var startOfSecond = require('../start_of_second/index.js')
+import startOfSecond from '../start_of_second/index.js'
 
 /**
  * @category Second Helpers
@@ -28,4 +28,4 @@ function isSameSecond (dirtyDateLeft, dirtyDateRight, options) {
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }
 
-module.exports = isSameSecond
+export default isSameSecond

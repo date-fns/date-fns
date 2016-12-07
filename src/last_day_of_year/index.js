@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Year Helpers
@@ -25,4 +25,4 @@ function lastDayOfYear (dirtyDate, options) {
   return date
 }
 
-module.exports = lastDayOfYear
+export default lastDayOfYear

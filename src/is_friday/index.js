@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Weekday Helpers
@@ -20,4 +20,4 @@ function isFriday (dirtyDate, options) {
   return toDate(dirtyDate, options).getDay() === 5
 }
 
-module.exports = isFriday
+export default isFriday

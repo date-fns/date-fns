@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Year Helpers
@@ -27,4 +27,4 @@ function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight, options) {
   return dateRight.getFullYear() - dateLeft.getFullYear()
 }
 
-module.exports = differenceInCalendarYears
+export default differenceInCalendarYears

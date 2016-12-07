@@ -1,4 +1,4 @@
-var addMilliseconds = require('../add_milliseconds/index.js')
+import addMilliseconds from '../add_milliseconds/index.js'
 
 /**
  * @category Millisecond Helpers
@@ -21,4 +21,4 @@ function subMilliseconds (dirtyDate, amount, options) {
   return addMilliseconds(dirtyDate, -amount, options)
 }
 
-module.exports = subMilliseconds
+export default subMilliseconds

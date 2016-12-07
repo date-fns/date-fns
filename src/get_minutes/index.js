@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Minute Helpers
@@ -22,4 +22,4 @@ function getMinutes (dirtyDate, options) {
   return minutes
 }
 
-module.exports = getMinutes
+export default getMinutes

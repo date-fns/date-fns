@@ -1,4 +1,4 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
 function buildFormatLocale () {
   var months3char = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec']
@@ -66,4 +66,4 @@ function buildFormatLocale () {
   }
 }
 
-module.exports = buildFormatLocale
+export default buildFormatLocale

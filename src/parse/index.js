@@ -1,8 +1,8 @@
-var toDate = require('../to_date/index.js')
-var subMinutes = require('../sub_minutes/index.js')
-var enLocale = require('../locale/en/index.js')
-var parsers = require('./_lib/parsers/index.js')
-var units = require('./_lib/units/index.js')
+import toDate from '../to_date/index.js'
+import subMinutes from '../sub_minutes/index.js'
+import enLocale from '../locale/en/index.js'
+import parsers from './_lib/parsers/index.js'
+import units from './_lib/units/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 100
 var MILLISECONDS_IN_MINUTE = 60000
@@ -225,4 +225,4 @@ function dateToSystemTimezone (date) {
   return new Date(time + offset * MILLISECONDS_IN_MINUTE)
 }
 
-module.exports = parse
+export default parse

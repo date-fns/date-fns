@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Hour Helpers
@@ -23,4 +23,4 @@ function addHours (dirtyDate, amount, options) {
   return date
 }
 
-module.exports = addHours
+export default addHours

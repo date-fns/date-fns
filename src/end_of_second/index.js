@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Second Helpers
@@ -23,4 +23,4 @@ function endOfSecond (dirtyDate, options) {
   return date
 }
 
-module.exports = endOfSecond
+export default endOfSecond

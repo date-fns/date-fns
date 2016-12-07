@@ -1,4 +1,4 @@
-var isLeapYear = require('../is_leap_year/index.js')
+import isLeapYear from '../is_leap_year/index.js'
 
 /**
  * @category Year Helpers
@@ -20,4 +20,4 @@ function getDaysInYear (dirtyDate, options) {
   return isLeapYear(dirtyDate, options) ? 366 : 365
 }
 
-module.exports = getDaysInYear
+export default getDaysInYear

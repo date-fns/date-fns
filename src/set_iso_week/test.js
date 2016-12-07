@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var setISOWeek = require('./')
+import assert from 'power-assert'
+import setISOWeek from '.'
 
 describe('setISOWeek', function () {
   it('sets the ISO week', function () {

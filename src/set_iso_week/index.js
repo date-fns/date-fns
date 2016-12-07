@@ -1,5 +1,5 @@
-var toDate = require('../to_date/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
+import toDate from '../to_date/index.js'
+import getISOWeek from '../get_iso_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -27,4 +27,4 @@ function setISOWeek (dirtyDate, isoWeek, options) {
   return date
 }
 
-module.exports = setISOWeek
+export default setISOWeek

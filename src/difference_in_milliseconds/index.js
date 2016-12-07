@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Millisecond Helpers
@@ -27,4 +27,4 @@ function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, options) {
   return dateRight.getTime() - dateLeft.getTime()
 }
 
-module.exports = differenceInMilliseconds
+export default differenceInMilliseconds

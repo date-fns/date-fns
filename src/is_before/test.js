@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isBefore = require('./')
+import assert from 'power-assert'
+import isBefore from '.'
 
 describe('isBefore', function () {
   it('returns true if the first date is before the second one', function () {

@@ -1,4 +1,4 @@
-var addSeconds = require('../add_seconds/index.js')
+import addSeconds from '../add_seconds/index.js'
 
 /**
  * @category Second Helpers
@@ -21,4 +21,4 @@ function subSeconds (dirtyDate, amount, options) {
   return addSeconds(dirtyDate, -amount, options)
 }
 
-module.exports = subSeconds
+export default subSeconds

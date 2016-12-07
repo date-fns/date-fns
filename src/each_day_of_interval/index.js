@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Interval Helpers
@@ -49,4 +49,4 @@ function eachDayOfInterval (dirtyInterval, options) {
   return dates
 }
 
-module.exports = eachDayOfInterval
+export default eachDayOfInterval

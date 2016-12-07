@@ -1,4 +1,4 @@
-var addQuarters = require('../add_quarters/index.js')
+import addQuarters from '../add_quarters/index.js'
 
 /**
  * @category Quarter Helpers
@@ -21,4 +21,4 @@ function subQuarters (dirtyDate, amount, options) {
   return addQuarters(dirtyDate, -amount, options)
 }
 
-module.exports = subQuarters
+export default subQuarters

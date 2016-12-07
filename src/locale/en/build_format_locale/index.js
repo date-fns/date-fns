@@ -1,4 +1,4 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
 function buildFormatLocale () {
   // Note: in English, the names of days of the week and months are capitalized.
@@ -85,4 +85,4 @@ function ordinal (number) {
   return number + 'th'
 }
 
-module.exports = buildFormatLocale
+export default buildFormatLocale

@@ -1,6 +1,6 @@
-var toDate = require('../to_date/index.js')
-var addDays = require('../add_days/index.js')
-var getISODay = require('../get_iso_day/index.js')
+import toDate from '../to_date/index.js'
+import addDays from '../add_days/index.js'
+import getISODay from '../get_iso_day/index.js'
 
 /**
  * @category Weekday Helpers
@@ -28,4 +28,4 @@ function setISODay (dirtyDate, day, options) {
   return addDays(date, diff, options)
 }
 
-module.exports = setISODay
+export default setISODay

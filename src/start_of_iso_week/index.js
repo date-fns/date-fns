@@ -1,5 +1,5 @@
-var startOfWeek = require('../start_of_week/index.js')
-var cloneObject = require('../_lib/clone_object/index.js')
+import startOfWeek from '../start_of_week/index.js'
+import cloneObject from '../_lib/clone_object/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -26,4 +26,4 @@ function startOfISOWeek (dirtyDate, options) {
   return startOfWeek(dirtyDate, startOfWeekOptions)
 }
 
-module.exports = startOfISOWeek
+export default startOfISOWeek
