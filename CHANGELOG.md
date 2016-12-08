@@ -10,6 +10,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.16.0] - 2016-12-08
+
+### Added
+
+- [Italian locale (it)](https://github.com/date-fns/date-fns/pull/298)
+  (thanks to Alberto Restifo [@albertorestifo](https://github.com/albertorestifo))
+
+- For German `buildDistanceInWordsLocale`, add nominative case translations (for distances without a suffix).
+  Kudos to Asia [@asia-t](https://github.com/asia-t).
+  See related PR: [#295](https://github.com/date-fns/date-fns/pull/295)
+
 ## [1.15.1] - 2016-12-07
 
 ### Fixed
@@ -746,7 +757,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.15.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.16.0...HEAD
+[1.16.0]: https://github.com/date-fns/date-fns/compare/v1.15.1...v1.16.0
 [1.15.1]: https://github.com/date-fns/date-fns/compare/v1.15.0...v1.15.1
 [1.15.0]: https://github.com/date-fns/date-fns/compare/v1.14.1...v1.15.0
 [1.14.1]: https://github.com/date-fns/date-fns/compare/v1.14.0...v1.14.1
