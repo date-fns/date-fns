@@ -1,0 +1,9 @@
+// @flow
+
+declare module.exports: (
+  dateString: string,
+  formatString?: string,
+  options?: {
+    locale?: Object
+  }
+) => Date
