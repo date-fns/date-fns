@@ -1,5 +1,7 @@
 # ![](http://cdn.date-fns.org/README-logo.svg) date-fns
 
+[![Build Status](https://travis-ci.org/date-fns/date-fns.svg?branch=master)](https://travis-ci.org/date-fns/date-fns)
+
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
