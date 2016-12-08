@@ -9,6 +9,21 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [Keep a CHANGELOG]: http://keepachangelog.com/
 
 ## [Unreleased]
+### Changed
+
+- **BREAKING**: min and max functions now accept an array of dates
+rather than spread arguments.
+
+  ```javascript
+  // Before v1.15.2
+  var minDate = min(new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11))
+  var maxDate = min(new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11))
+
+  // v1.15.2 onward
+  var minDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
+  var maxDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
+  ```
+
 
 ## [1.26.0] - 2017-01-15
 
