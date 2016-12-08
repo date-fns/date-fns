@@ -65,9 +65,9 @@ var enLocale = require('../locale/en/index.js')
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @returns {String} the formatted date string
  * @param {Object} [options] - the object with options
  * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the formatted date string
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
