@@ -4,13 +4,17 @@ function declensionGroup (scheme, count) {
   }
 
   var rem100 = count % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 2:
-      case 3:
-      case 4:
-        return scheme.two_four
-    }
+
+  // ends with 11-20
+  if (rem100 <= 20 && rem100 > 10) {
+    return scheme.other
+  }
+
+  var rem10 = rem100 % 10
+
+  // ends with 2, 3, 4
+  if (rem10 >= 2 && rem10 <= 4) {
+    return scheme.twoFour
   }
 
   return scheme.other
@@ -31,7 +35,7 @@ function buildDistanceInWordsLocale () {
         past: 'mniej niż sekundę',
         future: 'mniej niż sekundę'
       },
-      two_four: 'mniej niż {{count}} sekundy',
+      twoFour: 'mniej niż {{count}} sekundy',
       other: 'mniej niż {{count}} sekund'
     },
 
@@ -41,13 +45,13 @@ function buildDistanceInWordsLocale () {
         past: 'sekundę',
         future: 'sekundę'
       },
-      two_four: '{{count}} sekundy',
+      twoFour: '{{count}} sekundy',
       other: '{{count}} sekund'
     },
 
     halfAMinute: {
       one: 'pół minuty',
-      two_four: 'pół minuty',
+      twoFour: 'pół minuty',
       other: 'pół minuty'
     },
 
@@ -57,7 +61,7 @@ function buildDistanceInWordsLocale () {
         past: 'mniej niż minutę',
         future: 'mniej niż minutę'
       },
-      two_four: 'mniej niż {{count}} minuty',
+      twoFour: 'mniej niż {{count}} minuty',
       other: 'mniej niż {{count}} minut'
     },
 
@@ -67,7 +71,7 @@ function buildDistanceInWordsLocale () {
         past: 'minutę',
         future: 'minutę'
       },
-      two_four: '{{count}} minuty',
+      twoFour: '{{count}} minuty',
       other: '{{count}} minut'
     },
 
@@ -77,7 +81,7 @@ function buildDistanceInWordsLocale () {
         past: 'około godziny',
         future: 'około godzinę'
       },
-      two_four: 'około {{count}} godziny',
+      twoFour: 'około {{count}} godziny',
       other: 'około {{count}} godzin'
     },
 
@@ -87,7 +91,7 @@ function buildDistanceInWordsLocale () {
         past: 'godzinę',
         future: 'godzinę'
       },
-      two_four: '{{count}} godziny',
+      twoFour: '{{count}} godziny',
       other: '{{count}} godzin'
     },
 
@@ -97,43 +101,43 @@ function buildDistanceInWordsLocale () {
         past: 'dzień',
         future: '1 dzień'
       },
-      two_four: '{{count}} dni',
+      twoFour: '{{count}} dni',
       other: '{{count}} dni'
     },
 
     aboutXMonths: {
       one: 'około miesiąc',
-      two_four: 'około {{count}} miesiące',
+      twoFour: 'około {{count}} miesiące',
       other: 'około {{count}} miesięcy'
     },
 
     xMonths: {
       one: 'miesiąc',
-      two_four: '{{count}} miesiące',
+      twoFour: '{{count}} miesiące',
       other: '{{count}} miesięcy'
     },
 
     aboutXYears: {
       one: 'około rok',
-      two_four: 'około {{count}} lata',
+      twoFour: 'około {{count}} lata',
       other: 'około {{count}} lat'
     },
 
     xYears: {
       one: 'rok',
-      two_four: '{{count}} lata',
+      twoFour: '{{count}} lata',
       other: '{{count}} lat'
     },
 
     overXYears: {
       one: 'ponad rok',
-      two_four: 'ponad {{count}} lata',
+      twoFour: 'ponad {{count}} lata',
       other: 'ponad {{count}} lat'
     },
 
     almostXYears: {
       one: 'prawie rok',
-      two_four: 'prawie {{count}} lata',
+      twoFour: 'prawie {{count}} lata',
       other: 'prawie {{count}} lat'
     }
   }
