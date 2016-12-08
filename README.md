@@ -1,5 +1,7 @@
 # ![](http://cdn.date-fns.org/README-logo.svg) date-fns
 
+**Pinned**: see [a brief comparison with Moment.js](https://github.com/date-fns/date-fns/issues/275#issuecomment-264934189).
+
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
