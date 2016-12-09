@@ -7,8 +7,15 @@ var commonFormatterKeys = [
 ]
 
 function buildFormattingTokensRegExp (formatters) {
+  var formatterKeys = []
+  for (var key in formatters) {
+    if (formatters.hasOwnProperty(key)) {
+      formatterKeys.push(key)
+    }
+  }
+
   var formattingTokens = commonFormatterKeys
-    .concat(Object.keys(formatters))
+    .concat(formatterKeys)
     .sort()
     .reverse()
   var formattingTokensRegExp = new RegExp(
