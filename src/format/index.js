@@ -92,8 +92,16 @@ function format (dirtyDate, formatStr, options) {
   formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
   options = options || {}
 
-  var locale = options.locale || enLocale
-  var formatLocale = locale.format
+  var locale = options.locale
+  var localeFormatters = enLocale.format.formatters
+  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
+  if (locale && locale.format && locale.format.formatters) {
+    localeFormatters = locale.format.formatters
+
+    if (locale.format.formattingTokensRegExp) {
+      formattingTokensRegExp = locale.format.formattingTokensRegExp
+    }
+  }
 
   var date = parse(dirtyDate)
 
@@ -101,7 +109,7 @@ function format (dirtyDate, formatStr, options) {
     return 'Invalid Date'
   }
 
-  var formatFn = buildFormatFn(formatStr, formatLocale)
+  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
 
   return formatFn(date)
 }
@@ -265,14 +273,14 @@ var formatters = {
   }
 }
 
-function buildFormatFn (formatStr, formatLocale) {
-  var array = formatStr.match(formatLocale.formattingTokensRegExp)
+function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
+  var array = formatStr.match(formattingTokensRegExp)
   var length = array.length
 
   var i
   var formatter
   for (i = 0; i < length; i++) {
-    formatter = formatLocale.formatters[array[i]] || formatters[array[i]]
+    formatter = localeFormatters[array[i]] || formatters[array[i]]
     if (formatter) {
       array[i] = formatter
     } else {

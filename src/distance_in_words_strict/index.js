@@ -96,8 +96,11 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
 
-  var locale = options.locale || enLocale
-  var localize = locale.distanceInWords.localize
+  var locale = options.locale
+  var localize = enLocale.distanceInWords.localize
+  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
+    localize = locale.distanceInWords.localize
+  }
 
   var localizeOptions = {
     addSuffix: options.addSuffix,

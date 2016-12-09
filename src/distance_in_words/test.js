@@ -220,4 +220,54 @@ describe('distanceInWords', function () {
       assert(result === 'in about 1 hour')
     })
   })
+
+  describe('custom locale', function () {
+    it('can be passed to the function', function () {
+      function localize (token, count, options) {
+        assert(token === 'lessThanXSeconds')
+        assert(count === 5)
+        assert(options.addSuffix === true)
+        assert(options.comparison > 0)
+        return 'It works!'
+      }
+
+      var customLocale = {
+        distanceInWords: {
+          localize: localize
+        }
+      }
+
+      var result = distanceInWords(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 3),
+        {includeSeconds: true, addSuffix: true, locale: customLocale}
+      )
+
+      assert(result === 'It works!')
+    })
+
+    context('does not contain `distanceInWords` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {}
+        var result = distanceInWords(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 32, 3),
+          {includeSeconds: true, locale: customLocale}
+        )
+        assert(result === 'less than 5 seconds')
+      })
+    })
+
+    context('does not contain `distanceInWords.localize` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {distanceInWords: {}}
+        var result = distanceInWords(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 32, 3),
+          {includeSeconds: true, locale: customLocale}
+        )
+        assert(result === 'less than 5 seconds')
+      })
+    })
+  })
 })
