@@ -19,7 +19,7 @@ var parse = require('../parse/index.js')
  * //=> Sat Sep 06 2014 00:00:00
  *
  * @example
- * // If week starts at Monday, the last day of a week for 2 September 2014 11:55:00:
+ * // If the week starts on Monday, the last day of the week for 2 September 2014 11:55:00:
  * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */

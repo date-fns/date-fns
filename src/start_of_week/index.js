@@ -19,7 +19,7 @@ var parse = require('../parse/index.js')
  * //=> Sun Aug 31 2014 00:00:00
  *
  * @example
- * // If week starts at Monday, the start of a week for 2 September 2014 11:55:00:
+ * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */

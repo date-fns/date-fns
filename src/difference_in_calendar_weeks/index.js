@@ -25,7 +25,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 3
  *
  * @example
- * // If weeks starts at Monday,
+ * // If the week starts on Monday,
  * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
  * var result = differenceInCalendarWeeks(
  *   new Date(2014, 6, 20),

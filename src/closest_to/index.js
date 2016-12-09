@@ -13,7 +13,7 @@ var parse = require('../parse/index.js')
  * @throws {TypeError} the second argument must be an instance of Array
  *
  * @example
- * // Which date is closer to 6 October 2015: 1 January 2000 or 1 January 2030?
+ * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
  * var dateToCompare = new Date(2015, 8, 6)
  * var result = closestTo(dateToCompare, [
  *   new Date(2000, 0, 1),
