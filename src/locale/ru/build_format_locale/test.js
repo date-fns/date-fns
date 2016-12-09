@@ -284,49 +284,49 @@ describe('ru locale > buildFormatLocale', function () {
 
     describe('Mo', function () {
       it('returns ordinal result of M formatter', function () {
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}), '1-й')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 2 }}), '2-й')
-        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 3 }}), '3-й')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 1 }}) === '1-й')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 2 }}) === '2-й')
+        assert(buildFormatLocale().formatters.Mo(null, {M: function () { return 3 }}) === '3-й')
       })
     })
 
     describe('Do', function () {
       it('returns ordinal result of D formatter', function () {
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 1 }}), '1-е')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 2 }}), '2-е')
-        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 3 }}), '3-е')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 1 }}) === '1-е')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 2 }}) === '2-е')
+        assert(buildFormatLocale().formatters.Do(null, {D: function () { return 3 }}) === '3-е')
       })
     })
 
     describe('DDDo', function () {
       it('returns ordinal result of DDD formatter', function () {
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 1 }}), '1-й')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 2 }}), '2-й')
-        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 3 }}), '3-й')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 1 }}) === '1-й')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 2 }}) === '2-й')
+        assert(buildFormatLocale().formatters.DDDo(null, {DDD: function () { return 3 }}) === '3-й')
       })
     })
 
     describe('do', function () {
       it('returns ordinal result of d formatter', function () {
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 1 }}), '1-й')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 2 }}), '2-й')
-        assert(buildFormatLocale().formatters.do(null, {d: function () { return 3 }}), '3-й')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 1 }}) === '1-й')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 2 }}) === '2-й')
+        assert(buildFormatLocale().formatters.do(null, {d: function () { return 3 }}) === '3-й')
       })
     })
 
     describe('Qo', function () {
       it('returns ordinal result of Q formatter', function () {
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 1 }}), '1-й')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 2 }}), '2-й')
-        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 3 }}), '3-й')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 1 }}) === '1-й')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 2 }}) === '2-й')
+        assert(buildFormatLocale().formatters.Qo(null, {Q: function () { return 3 }}) === '3-й')
       })
     })
 
     describe('Wo', function () {
       it('returns ordinal result of W formatter', function () {
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}), '1-я')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}), '2-я')
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 3 }}), '3-я')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}) === '1-я')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}) === '2-я')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 3 }}) === '3-я')
       })
     })
 
