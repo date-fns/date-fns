@@ -296,10 +296,16 @@ describe('format', function () {
     })
   })
 
-  it('handles dates before 100 AD', function () {
-    var initialDate = new Date(0)
-    initialDate.setFullYear(7, 11 /* Dec */, 31)
-    initialDate.setHours(0, 0, 0, 0)
-    assert(format(initialDate, 'GGGG WW E') === '8 01 1')
+  describe('edge cases', function () {
+    it('returns String(\'Invalid Date\') if the date isn\'t valid', function () {
+      assert(format(new Date(NaN), 'MMMM D, YYYY') === 'Invalid Date')
+    })
+
+    it('handles dates before 100 AD', function () {
+      var initialDate = new Date(0)
+      initialDate.setFullYear(7, 11 /* Dec */, 31)
+      initialDate.setHours(0, 0, 0, 0)
+      assert(format(initialDate, 'GGGG WW E') === '8 01 1')
+    })
   })
 })
