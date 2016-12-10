@@ -21,7 +21,7 @@ describe('isSoLastWeek', function () {
     assert(isSoLastWeek(date) === true)
   })
 
-  it('returns false if the given date is so hot', function () {
+  it('returns false if the given date is totally this week', function () {
     var date = new Date(2014, 8 /* Sep */, 24)
     assert(isSoLastWeek(date) === false)
   })
@@ -32,12 +32,12 @@ describe('isSoLastWeek', function () {
   })
 
   it('accepts a string', function () {
-    var date = new Date(2014, 8 /* Sep */, 24).toISOString()
+    var date = new Date(2014, 8 /* Sep */, 18).toISOString()
     assert(isSoLastWeek(date) === true)
   })
 
   it('accepts a timestamp', function () {
-    var date = new Date(2014, 8 /* Sep */, 24).getTime()
+    var date = new Date(2014, 8 /* Sep */, 18).getTime()
     assert(isSoLastWeek(date) === true)
   })
 })
