@@ -57,7 +57,7 @@ function buildFormatLocale () {
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {
       // Well, it should be just a number without any suffix
-      return formatters[formatterToken](date)
+      return formatters[formatterToken](date).toString()
     }
   })
 
