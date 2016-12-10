@@ -10,6 +10,51 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.17.0] - 2016-12-10
+
+### Added
+
+- [Polish locale (pl)](https://github.com/date-fns/date-fns/pull/294)
+  (thanks to Mateusz Derks [@ertrzyiks](https://github.com/ertrzyiks))
+
+- [Portuguese locale (pt)](https://github.com/date-fns/date-fns/pull/316)
+  (thanks to Dário Freire [@dfreire](https://github.com/dfreire))
+
+- [Swedish locale (sv)](https://github.com/date-fns/date-fns/pull/311)
+  (thanks to Johannes Ulén [@ejulen](https://github.com/ejulen))
+
+- [French locale (fr)](https://github.com/date-fns/date-fns/pull/281)
+  (thanks to Jean Dupouy [@izeau](https://github.com/izeau))
+
+- Performance tests. See PR: [#289](https://github.com/date-fns/date-fns/pull/289)
+
+### Fixed
+
+- Fix TypeScript and flow typings for `isValid`.
+  See PR: [#310](https://github.com/date-fns/date-fns/pull/310)
+
+- Fix incorrect locale tests that could potentially lead to `format` bugs.
+  Kudos to Mateusz Derks [@ertrzyiks](https://github.com/ertrzyiks).
+  See related PRs: [#312](https://github.com/date-fns/date-fns/pull/312),
+  [#320](https://github.com/date-fns/date-fns/pull/320)
+
+- Minor language fixes in the documentation.
+  Thanks to Vedad Šoše [@vedadsose](https://github.com/vedadsose) ([#314](https://github.com/date-fns/date-fns/pull/314))
+  and Asia [@asia-t](https://github.com/asia-t) ([#318](https://github.com/date-fns/date-fns/pull/318))
+
+### Changed
+
+- `format` now returns `String('Invalid Date')` if the passed date is invalid.
+  See PR: [#323](https://github.com/date-fns/date-fns/pull/323)
+
+- `distanceInWords`, `distanceInWordsToNow`, `distanceInWordsStrict` and `format` functions now
+  check if the passed locale is valid, and fallback to English locale otherwise.
+  See PR: [#321](https://github.com/date-fns/date-fns/pull/321)
+
+- *Internal*: use a loop instead of `Object.keys` in `buildFormattingTokensRegExp`
+  to improve compatibility with older browsers.
+  See PR: [#322](https://github.com/date-fns/date-fns/pull/322)
+
 ## [1.16.0] - 2016-12-08
 
 ### Added
@@ -757,7 +802,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.16.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.17.0...HEAD
+[1.17.0]: https://github.com/date-fns/date-fns/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/date-fns/date-fns/compare/v1.15.1...v1.16.0
 [1.15.1]: https://github.com/date-fns/date-fns/compare/v1.15.0...v1.15.1
 [1.15.0]: https://github.com/date-fns/date-fns/compare/v1.14.1...v1.15.0
