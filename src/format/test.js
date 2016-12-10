@@ -308,4 +308,75 @@ describe('format', function () {
       assert(format(initialDate, 'GGGG WW E') === '8 01 1')
     })
   })
+
+  describe('custom locale', function () {
+    it('can be passed to the function', function () {
+      var currentDate = this._date
+
+      var formatters = {
+        'ABC': function (date) {
+          assert.deepEqual(date, currentDate)
+          return 'It'
+        },
+
+        'EFG': function (date) {
+          assert.deepEqual(date, currentDate)
+          return 'works'
+        }
+      }
+
+      var formattingTokensRegExp = /(\[[^[]*])|(\\)?(ABC|EFG|.)/g
+
+      var customLocale = {
+        format: {
+          formatters: formatters,
+          formattingTokensRegExp: formattingTokensRegExp
+        }
+      }
+
+      var result = format(this._date, 'ABC EFG [correctly!]', {locale: customLocale})
+      assert(result === 'It works correctly!')
+    })
+
+    context('does not contain `format` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {}
+        assert(format(this._date, 'MMMM', {locale: customLocale}) === 'April')
+      })
+    })
+
+    context('does not contain `format.formatters` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {format: {}}
+        assert(format(this._date, 'MMMM', {locale: customLocale}) === 'April')
+      })
+    })
+
+    context('does not contain `format.formattingTokensRegExp` property', function () {
+      it('uses `format.formattingTokensRegExp` of enLocale', function () {
+        var currentDate = this._date
+
+        var formatters = {
+          'MMMM': function (date) {
+            assert.deepEqual(date, currentDate)
+            return 'It'
+          },
+
+          'YYYY': function (date) {
+            assert.deepEqual(date, currentDate)
+            return 'works'
+          }
+        }
+
+        var customLocale = {
+          format: {
+            formatters: formatters
+          }
+        }
+
+        var result = format(this._date, 'MMMM YYYY [correctly!] GGGG', {locale: customLocale})
+        assert(result === 'It works correctly! 1986')
+      })
+    })
+  })
 })
