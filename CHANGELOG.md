@@ -10,7 +10,21 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-- [Fix SS and SSS format](https://github.com/date-fns/date-fns/pull/330) with leading zeros.
+## [1.18.0] - 2016-12-12
+
+### Added
+
+- [Turkish locale (tr)](https://github.com/date-fns/date-fns/pull/329)
+  (kudos to Alpcan Aydın [@alpcanaydin](https://github.com/alpcanaydin))
+
+- [Korean locale (ko)](https://github.com/date-fns/date-fns/pull/327)
+  (thanks to Hong Chulju [@angdev](https://github.com/angdev))
+
+### Fixed
+
+- `SS` and `SSS` formats in `format` are now correctly displayed with leading zeros.
+  Thanks to Paul Dijou [@pauldijou](https://github.com/pauldijou).
+  See PR: [#330](https://github.com/date-fns/date-fns/pull/330)
 
 ## [1.17.0] - 2016-12-10
 
@@ -804,7 +818,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.17.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.18.0...HEAD
+[1.18.0]: https://github.com/date-fns/date-fns/compare/v1.17.0...v1.18.0
 [1.17.0]: https://github.com/date-fns/date-fns/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/date-fns/date-fns/compare/v1.15.1...v1.16.0
 [1.15.1]: https://github.com/date-fns/date-fns/compare/v1.15.0...v1.15.1
