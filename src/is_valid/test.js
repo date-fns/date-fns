@@ -16,6 +16,7 @@ describe('isValid', function () {
   })
 
   it('throws an exception if the argument is not an instance of Date', function () {
+    // $ExpectedMistake
     var block = isValid.bind(null, '')
     assert.throws(block, TypeError, '[object String] is not an instance of Date')
   })

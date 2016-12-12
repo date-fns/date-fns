@@ -1,3 +1,3 @@
 declare module 'power-assert' {
-  declare module.exports: (value: any, message?: string) => void;
+  declare module.exports: (value: any, message?: string) => void
 }

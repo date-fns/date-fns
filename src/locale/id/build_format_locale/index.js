@@ -71,18 +71,16 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return 'pertama'
-      case 2:
-        return 'kedua'
-      case 3:
-        return 'ketiga'
-    }
+  switch (number) {
+    case 1:
+      return 'pertama'
+    case 2:
+      return 'kedua'
+    case 3:
+      return 'ketiga'
+    default:
+      return 'ke-' + number
   }
-  return 'ke-' + number
 }
 
 module.exports = buildFormatLocale

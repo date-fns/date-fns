@@ -2,6 +2,7 @@ var getDayOfYear = require('../get_day_of_year/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
 var parse = require('../parse/index.js')
+var isValid = require('../is_valid/index.js')
 var enLocale = require('../locale/en/index.js')
 
 /**
@@ -65,9 +66,9 @@ var enLocale = require('../locale/en/index.js')
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @returns {String} the formatted date string
  * @param {Object} [options] - the object with options
  * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {String} the formatted date string
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -91,11 +92,24 @@ function format (dirtyDate, formatStr, options) {
   formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
   options = options || {}
 
-  var locale = options.locale || enLocale
-  var formatLocale = locale.format
+  var locale = options.locale
+  var localeFormatters = enLocale.format.formatters
+  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
+  if (locale && locale.format && locale.format.formatters) {
+    localeFormatters = locale.format.formatters
+
+    if (locale.format.formattingTokensRegExp) {
+      formattingTokensRegExp = locale.format.formattingTokensRegExp
+    }
+  }
 
   var date = parse(dirtyDate)
-  var formatFn = buildFormatFn(formatStr, formatLocale)
+
+  if (!isValid(date)) {
+    return 'Invalid Date'
+  }
+
+  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
 
   return formatFn(date)
 }
@@ -230,12 +244,12 @@ var formatters = {
 
   // 1/100 of second: 00, 01, ..., 99
   'SS': function (date) {
-    return Math.floor(date.getMilliseconds() / 10)
+    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
   },
 
   // Millisecond: 000, 001, ..., 999
   'SSS': function (date) {
-    return date.getMilliseconds()
+    return addLeadingZeros(date.getMilliseconds(), 3)
   },
 
   // Timezone: -01:00, +00:00, ... +12:00
@@ -259,14 +273,14 @@ var formatters = {
   }
 }
 
-function buildFormatFn (formatStr, formatLocale) {
-  var array = formatStr.match(formatLocale.formattingTokensRegExp)
+function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
+  var array = formatStr.match(formattingTokensRegExp)
   var length = array.length
 
   var i
   var formatter
   for (i = 0; i < length; i++) {
-    formatter = formatLocale.formatters[array[i]] || formatters[array[i]]
+    formatter = localeFormatters[array[i]] || formatters[array[i]]
     if (formatter) {
       array[i] = formatter
     } else {

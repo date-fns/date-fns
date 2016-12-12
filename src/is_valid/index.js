@@ -10,7 +10,7 @@ var isDate = require('../is_date/index.js')
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param {Date|String|Number} date - the date to check
+ * @param {Date} date - the date to check
  * @returns {Boolean} the date is valid
  * @throws {TypeError} argument must be an instance of Date
  *

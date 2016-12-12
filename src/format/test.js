@@ -262,16 +262,40 @@ describe('format', function () {
     it('1/10 of a second', function () {
       var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 859)
       assert(format(date, 'S') === '8')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 0)
+      assert(format(date, 'S') === '0')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 1)
+      assert(format(date, 'S') === '0')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 10)
+      assert(format(date, 'S') === '0')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 100)
+      assert(format(date, 'S') === '1')
     })
 
     it('1/100 of a second', function () {
       var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 859)
       assert(format(date, 'SS') === '85')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 0)
+      assert(format(date, 'SS') === '00')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 1)
+      assert(format(date, 'SS') === '00')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 10)
+      assert(format(date, 'SS') === '01')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 42)
+      assert(format(date, 'SS') === '04')
     })
 
     it('a millisecond', function () {
       var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 859)
       assert(format(date, 'SSS') === '859')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 0)
+      assert(format(date, 'SSS') === '000')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 1)
+      assert(format(date, 'SSS') === '001')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 10)
+      assert(format(date, 'SSS') === '010')
+      date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 42)
+      assert(format(date, 'SSS') === '042')
     })
   })
 
@@ -296,10 +320,87 @@ describe('format', function () {
     })
   })
 
-  it('handles dates before 100 AD', function () {
-    var initialDate = new Date(0)
-    initialDate.setFullYear(7, 11 /* Dec */, 31)
-    initialDate.setHours(0, 0, 0, 0)
-    assert(format(initialDate, 'GGGG WW E') === '8 01 1')
+  describe('edge cases', function () {
+    it('returns String(\'Invalid Date\') if the date isn\'t valid', function () {
+      assert(format(new Date(NaN), 'MMMM D, YYYY') === 'Invalid Date')
+    })
+
+    it('handles dates before 100 AD', function () {
+      var initialDate = new Date(0)
+      initialDate.setFullYear(7, 11 /* Dec */, 31)
+      initialDate.setHours(0, 0, 0, 0)
+      assert(format(initialDate, 'GGGG WW E') === '8 01 1')
+    })
+  })
+
+  describe('custom locale', function () {
+    it('can be passed to the function', function () {
+      var currentDate = this._date
+
+      var formatters = {
+        'ABC': function (date) {
+          assert.deepEqual(date, currentDate)
+          return 'It'
+        },
+
+        'EFG': function (date) {
+          assert.deepEqual(date, currentDate)
+          return 'works'
+        }
+      }
+
+      var formattingTokensRegExp = /(\[[^[]*])|(\\)?(ABC|EFG|.)/g
+
+      var customLocale = {
+        format: {
+          formatters: formatters,
+          formattingTokensRegExp: formattingTokensRegExp
+        }
+      }
+
+      var result = format(this._date, 'ABC EFG [correctly!]', {locale: customLocale})
+      assert(result === 'It works correctly!')
+    })
+
+    context('does not contain `format` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {}
+        assert(format(this._date, 'MMMM', {locale: customLocale}) === 'April')
+      })
+    })
+
+    context('does not contain `format.formatters` property', function () {
+      it('fallbacks to enLocale', function () {
+        var customLocale = {format: {}}
+        assert(format(this._date, 'MMMM', {locale: customLocale}) === 'April')
+      })
+    })
+
+    context('does not contain `format.formattingTokensRegExp` property', function () {
+      it('uses `format.formattingTokensRegExp` of enLocale', function () {
+        var currentDate = this._date
+
+        var formatters = {
+          'MMMM': function (date) {
+            assert.deepEqual(date, currentDate)
+            return 'It'
+          },
+
+          'YYYY': function (date) {
+            assert.deepEqual(date, currentDate)
+            return 'works'
+          }
+        }
+
+        var customLocale = {
+          format: {
+            formatters: formatters
+          }
+        }
+
+        var result = format(this._date, 'MMMM YYYY [correctly!] GGGG', {locale: customLocale})
+        assert(result === 'It works correctly! 1986')
+      })
+    })
   })
 })

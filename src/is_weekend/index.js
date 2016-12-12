@@ -2,16 +2,16 @@ var parse = require('../parse/index.js')
 
 /**
  * @category Weekday Helpers
- * @summary Is the given date in a weekend?
+ * @summary Does the given date fall on a weekend?
  *
  * @description
- * Is the given date in a weekend?
+ * Does the given date fall on a weekend?
  *
  * @param {Date|String|Number} date - the date to check
- * @returns {Boolean} the date is in the weekend
+ * @returns {Boolean} the date falls on a weekend
  *
  * @example
- * // Is 5 October 2014 in a weekend?
+ * // Does 5 October 2014 fall on a weekend?
  * var result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */

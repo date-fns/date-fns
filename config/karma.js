@@ -1,7 +1,8 @@
 process.env.NODE_ENV = 'test'
 
-var fs = require('fs')
 var webpackConfig = require('./webpack')
+var countReporter = require('./_lib/count_reporter')
+var benchmarkJSONReporter = require('./_lib/benchmark_json_reporter')
 
 var sauceLabsLaunchers = {
   // TODO: See if Safari became more reliable
@@ -81,33 +82,11 @@ var sauceLabsLaunchers = {
   }
 }
 
-var countFilename = './tmp/tests_count.txt'
-
-function countReporter () {
-  this.onRunComplete = function (_, results) {
-    var runCount = results.success
-
-    fs.readFile(countFilename, {encoding: 'utf-8', flag: 'a+'}, function (err, data) {
-      if (err) {
-        throw err
-      }
-
-      var totalCount = (parseInt(data, 10) || 0) + runCount
-
-      fs.writeFile(countFilename, totalCount, 'utf-8', function (err) {
-        if (err) {
-          throw err
-        }
-      })
-    })
-  }
-}
-
 function config (config) {
   config.set({
-    frameworks: ['mocha', 'sinon', 'es5-shim'],
-    files: process.env.USE_STATIC_TESTS ? ['../tmp/tests.js'] : ['../test.js'],
-    preprocessors: process.env.USE_STATIC_TESTS ? {'../tmp/tests.js': ['sourcemap']} : {'../test.js': ['webpack', 'sourcemap']},
+    frameworks: getFrameworksConfig(),
+    files: getFilesConfig(),
+    preprocessors: getPreprocessorsConfig(),
     webpack: webpackConfig,
     webpackMiddleware: {
       stats: {
@@ -149,13 +128,57 @@ function config (config) {
       'karma-sinon',
       'karma-sourcemap-loader',
       'karma-webpack',
-      {'reporter:count': ['type', countReporter]}
+      'karma-benchmark',
+      'karma-benchmark-reporter',
+      {'reporter:count': ['type', countReporter]},
+      {'reporter:benchmark-json': ['type', benchmarkJSONReporter]}
     ],
 
     customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : {},
     browsers: process.env.TEST_CROSS_BROWSER ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
-    reporters: process.env.TEST_CROSS_BROWSER ? ['dots', 'saucelabs', 'count'] : ['mocha', 'count']
+    reporters: getReportersConfig()
   })
+}
+
+function getFrameworksConfig () {
+  if (process.env.TEST_BENCHMARK) {
+    return ['benchmark']
+  } else {
+    return ['mocha', 'sinon', 'es5-shim']
+  }
+}
+
+function getFilesConfig () {
+  if (process.env.USE_STATIC_TESTS) {
+    return ['../tmp/tests.js']
+  } else if (process.env.TEST_BENCHMARK) {
+    return [
+      '../node_modules/moment/moment.js',
+      '../benchmark.js'
+    ]
+  } else {
+    return ['../test.js']
+  }
+}
+
+function getPreprocessorsConfig () {
+  if (process.env.USE_STATIC_TESTS) {
+    return {'../tmp/tests.js': ['sourcemap']}
+  } else if (process.env.TEST_BENCHMARK) {
+    return {'../benchmark.js': ['webpack', 'sourcemap']}
+  } else {
+    return {'../test.js': ['webpack', 'sourcemap']}
+  }
+}
+
+function getReportersConfig () {
+  if (process.env.TEST_CROSS_BROWSER) {
+    return ['dots', 'saucelabs', 'count']
+  } else if (process.env.TEST_BENCHMARK) {
+    return ['benchmark', 'benchmark-json']
+  } else {
+    return ['mocha', 'count']
+  }
 }
 
 module.exports = config
