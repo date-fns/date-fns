@@ -8,10 +8,10 @@ fi
 
 echo $1 > VERSION
 
-npm run sync-versions
-npm run generate-index
-npm run build-umd
-npm run build-docs
+yarn run sync-versions
+yarn run generate-index
+yarn run build-umd
+yarn run build-docs
 
 git add .
 git commit -m "Prepare release v$1"
@@ -19,4 +19,4 @@ git tag -a v$1 -m "Release v$1"
 git push
 git push --tags
 
-npm run release-npm
+yarn run release-npm

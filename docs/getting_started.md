@@ -6,7 +6,7 @@
 
 - [Installation](#installation)
 
-  - [npm](#npm)
+  - [npm or yarn](#npm)
 
   - [Bower](#bower)
 
@@ -46,6 +46,8 @@ To install the npm package, run:
 
 ```bash
 npm install date-fns --save
+#or
+yarn add date-fns
 ```
 
 To start using:
