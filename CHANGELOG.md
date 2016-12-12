@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+- [Fix SS and SSS format](https://github.com/date-fns/date-fns/pull/330) with leading zeros.
+
 ## [1.17.0] - 2016-12-10
 
 ### Added

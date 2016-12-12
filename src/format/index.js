@@ -244,12 +244,12 @@ var formatters = {
 
   // 1/100 of second: 00, 01, ..., 99
   'SS': function (date) {
-    return Math.floor(date.getMilliseconds() / 10)
+    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
   },
 
   // Millisecond: 000, 001, ..., 999
   'SSS': function (date) {
-    return date.getMilliseconds()
+    return addLeadingZeros(date.getMilliseconds(), 3)
   },
 
   // Timezone: -01:00, +00:00, ... +12:00
