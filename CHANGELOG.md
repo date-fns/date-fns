@@ -10,6 +10,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.19.0] - 2016-12-13
+
+### Added
+
+- [Greek locale (el)](https://github.com/date-fns/date-fns/pull/334)
+  (kudos to Theodoros Orfanidis [@teoulas](https://github.com/teoulas))
+
+- [Slovak locale (sk)](https://github.com/date-fns/date-fns/pull/336)
+  (kudos to Marek Suscak [@mareksuscak](https://github.com/mareksuscak))
+
 ## [1.18.0] - 2016-12-12
 
 ### Added
@@ -818,7 +828,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.18.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.19.0...HEAD
+[1.19.0]: https://github.com/date-fns/date-fns/compare/v1.18.0...v1.19.0
 [1.18.0]: https://github.com/date-fns/date-fns/compare/v1.17.0...v1.18.0
 [1.17.0]: https://github.com/date-fns/date-fns/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/date-fns/date-fns/compare/v1.15.1...v1.16.0
