@@ -121,13 +121,13 @@ describe('el locale > buildFormatLocale', function () {
       ]
       var formatters = {
         D: function () {
-          return 1
+          return 5
         }
       }
       var locale = buildFormatLocale()
       monthsGen.forEach(function (month, index) {
         it('returns 1 ' + month, function () {
-          assert(locale.formatters['D MMMM'](new Date(2016, index), formatters) === '1 ' + month)
+          assert(locale.formatters['D MMMM'](new Date(2016, index, 5), formatters) === '5 ' + month)
         })
       })
     })
@@ -139,13 +139,13 @@ describe('el locale > buildFormatLocale', function () {
       ]
       var formatters = {
         DD: function () {
-          return '01'
+          return '03'
         }
       }
       var locale = buildFormatLocale()
       monthsGen.forEach(function (month, index) {
         it('returns 01 ' + month, function () {
-          assert(locale.formatters['DD MMMM'](new Date(2016, index), formatters) === '01 ' + month)
+          assert(locale.formatters['DD MMMM'](new Date(2016, index, 3), formatters) === '03 ' + month)
         })
       })
     })
@@ -157,13 +157,13 @@ describe('el locale > buildFormatLocale', function () {
       ]
       var formatters = {
         D: function () {
-          return '1'
+          return '7'
         }
       }
       var locale = buildFormatLocale()
       monthsGen.forEach(function (month, index) {
         it('returns 1η ' + month, function () {
-          assert(locale.formatters['Do MMMM'](new Date(2016, index), formatters) === '1η ' + month)
+          assert(locale.formatters['Do MMMM'](new Date(2016, index, 7), formatters) === '7η ' + month)
         })
       })
     })
