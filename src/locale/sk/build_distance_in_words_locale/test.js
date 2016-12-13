@@ -562,7 +562,7 @@ describe.only('sk locale > buildDistanceInWordsLocale', function () {
       context('when the count is more than 4', function () {
         it('returns a proper string', function () {
           OTHER_RANGE.forEach(function (number) {
-            var result = buildDistanceInWordsLocale().localize('xDays', number, FUTURE_OPTIONS)
+            var result = buildDistanceInWordsLocale().localize('xDays', number)
             assert(result === number + ' dní')
           })
         })
@@ -598,7 +598,7 @@ describe.only('sk locale > buildDistanceInWordsLocale', function () {
     describe('future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(buildDistanceInWordsLocale().localize('xDays', 1, FUTURE_OPTIONS) === 'za 1 deň')
+          assert(buildDistanceInWordsLocale().localize('xDays', 1, FUTURE_OPTIONS) === 'za deň')
         })
       })
 
