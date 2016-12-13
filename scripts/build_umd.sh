@@ -10,7 +10,7 @@ do
   cp -r $pattern $dir
 done
 
-npm run build
-npm run build-uglify
+yarn run build
+yarn run build-uglify
 
 rm -rf $dir

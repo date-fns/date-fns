@@ -26,7 +26,9 @@ a Bower package. To install a package run:
 
 ```bash
 npm install date-fns --save
-# or
+# or with yarn
+yarn add date-fns
+# or with bower
 bower install date-fns
 ```
 

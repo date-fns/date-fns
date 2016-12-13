@@ -1,18 +1,14 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
-  // Note: in Turkish, the names of days of the week and months are capitalized.
-  // If you are making a new locale based on this one, check if the same is true for the language you're working on.
-  // Generally, formatted dates should look like they are in the middle of a sentence,
-  // e.g. in Spanish language the weekdays and months should be in the lowercase.
-  var months3char = ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara']
-  var monthsFull = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık']
-  var weekdays2char = ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct']
-  var weekdays3char = ['Paz', 'Pts', 'Sal', 'Çar', 'Per', 'Cum', 'Cts']
-  var weekdaysFull = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
-  var meridiemUppercase = ['ÖÖ', 'ÖS']
-  var meridiemLowercase = ['öö', 'ös']
-  var meridiemFull = ['ö.ö.', 'ö.s.']
+  var months3char = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+  var monthsFull = ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+  var weekdays2char = ['일', '월', '화', '수', '목', '금', '토']
+  var weekdays3char = ['일', '월', '화', '수', '목', '금', '토']
+  var weekdaysFull = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
+  var meridiemUppercase = ['오전', '오후']
+  var meridiemLowercase = ['오전', '오후']
+  var meridiemFull = ['오전', '오후']
 
   var formatters = {
     // Month: Jan, Feb, ..., Dec
@@ -71,36 +67,7 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  var suffixes = {
-    1: '\'inci',
-    2: '\'inci',
-    3: '\'üncü',
-    4: '\'üncü',
-    5: '\'inci',
-    6: '\'ıncı',
-    7: '\'inci',
-    8: '\'inci',
-    9: '\'uncu',
-    10: '\'uncu',
-    20: '\'inci',
-    30: '\'uncu',
-    50: '\'inci',
-    60: '\'ıncı',
-    70: '\'inci',
-    80: '\'inci',
-    90: '\'ıncı',
-    100: '\'üncü'
-  }
-
-  if (number === 0) {
-    return '0\'ıncı'
-  }
-
-  var x = number % 10
-  var y = number % 100 - x
-  var z = number >= 100 ? 100 : null
-
-  return number + (suffixes[x] || suffixes[y] || suffixes[z])
+  return number + '일'
 }
 
 module.exports = buildFormatLocale

@@ -1911,10 +1911,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return Math.floor(date.getMilliseconds() / 100);
 	    },
 	    'SS': function (date) {
-	        return Math.floor(date.getMilliseconds() / 10);
+	        return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2);
 	    },
 	    'SSS': function (date) {
-	        return date.getMilliseconds();
+	        return addLeadingZeros(date.getMilliseconds(), 3);
 	    },
 	    'Z': function (date) {
 	        return formatTimezone(date.getTimezoneOffset(), ':');

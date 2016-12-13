@@ -12,20 +12,20 @@ branches:
 
 # Tests
 script:
-  - npm run lint
-  - npm run test-ci
+  - yarn run lint
+  - yarn run test-ci
   - # TODO: Enable when SauceLabs become reliable
-  - # '[ "${SAUCE_USERNAME}" = "" ] || npm run test-cross-browser'
-  - npm run test-tz
-  - npm run test-tz-extended
-  - npm run count-tests
-  - npm run flow-check
-  - npm run systemjs-check
+  - # '[ "${SAUCE_USERNAME}" = "" ] || yarn run test-cross-browser'
+  - yarn run test-tz
+  - yarn run test-tz-extended
+  - yarn run count-tests
+  - yarn run flow-check
+  - yarn run systemjs-check
 
 # Deployment
 before_deploy:
   # Build gzip files before S3 deployment
-  - npm run build-gzip
+  - yarn run build-gzip
 deploy:
   - provider: s3
     access_key_id: AKIAIXPFOIIE7FDYPAXA
@@ -53,13 +53,14 @@ deploy:
       tags: true
   - provider: script
     skip_cleanup: true
-    script: npm run deploy-homepage
+    script: yarn run deploy-homepage
     on:
       tags: true
 after_deploy:
-  - npm run release-tweet
+  - yarn run release-tweet
 
 cache:
+  yarn: true
   directories:
     - node_modules
 
