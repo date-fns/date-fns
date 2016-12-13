@@ -17,7 +17,7 @@ var FUTURE_OPTIONS = {
 var TWO_FOUR_RANGE = [2, 3, 4]
 var OTHER_RANGE = [5, 6, 7, 8, 9, 10, 100]
 
-describe.only('sk locale > buildDistanceInWordsLocale', function () {
+describe('sk locale > buildDistanceInWordsLocale', function () {
   it('returns an object', function () {
     assert(typeof buildDistanceInWordsLocale() === 'object')
   })
