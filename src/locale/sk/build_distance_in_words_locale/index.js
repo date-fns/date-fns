@@ -17,7 +17,7 @@ function declension (scheme, count, time) {
   return finalText.replace('{{count}}', count)
 }
 
-function extractPreposition(token) {
+function extractPreposition (token) {
   var result = ['lessThan', 'about', 'over', 'almost'].filter(function (preposition) {
     return !!token.match(new RegExp('^' + preposition))
   })
@@ -25,7 +25,7 @@ function extractPreposition(token) {
   return result[0]
 }
 
-function prefixPreposition(preposition) {
+function prefixPreposition (preposition) {
   var translation = ''
 
   if (preposition === 'almost') {
@@ -39,7 +39,7 @@ function prefixPreposition(preposition) {
   return translation.length > 0 ? translation + ' ' : ''
 }
 
-function suffixPreposition(preposition) {
+function suffixPreposition (preposition) {
   var translation = ''
 
   if (preposition === 'lessThan') {
@@ -53,8 +53,8 @@ function suffixPreposition(preposition) {
   return translation.length > 0 ? translation + ' ' : ''
 }
 
-function lowercaseFirstLetter(string) {
-    return string.charAt(0).toLowerCase() + string.slice(1);
+function lowercaseFirstLetter (string) {
+  return string.charAt(0).toLowerCase() + string.slice(1)
 }
 
 function buildDistanceInWordsLocale () {
