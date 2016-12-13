@@ -10,6 +10,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.20.0] - 2016-12-13
+
+### Added
+
+- `areRangesOverlapping` and `getOverlappingDayInRanges`
+  Thanks to Joanna T [@asia-t](https://github.com/asia-t).
+  See PR: [#331](https://github.com/date-fns/date-fns/pull/331)
+
 ## [1.19.0] - 2016-12-13
 
 ### Added
@@ -828,7 +836,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.19.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.20.0...HEAD
+[1.20.0]: https://github.com/date-fns/date-fns/compare/v1.19.0...v1.20.0
 [1.19.0]: https://github.com/date-fns/date-fns/compare/v1.18.0...v1.19.0
 [1.18.0]: https://github.com/date-fns/date-fns/compare/v1.17.0...v1.18.0
 [1.17.0]: https://github.com/date-fns/date-fns/compare/v1.16.0...v1.17.0
