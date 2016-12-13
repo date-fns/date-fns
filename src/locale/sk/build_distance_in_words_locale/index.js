@@ -25,6 +25,34 @@ function extractPreposition(token) {
   return result[0]
 }
 
+function prefixPreposition(preposition) {
+  var translation = ''
+
+  if (preposition === 'almost') {
+    translation = 'takmer'
+  }
+
+  if (preposition === 'about') {
+    translation = 'približne'
+  }
+
+  return translation.length > 0 ? translation + ' ' : ''
+}
+
+function suffixPreposition(preposition) {
+  var translation = ''
+
+  if (preposition === 'lessThan') {
+    translation = 'menej než'
+  }
+
+  if (preposition === 'over') {
+    translation = 'viac než'
+  }
+
+  return translation.length > 0 ? translation + ' ' : ''
+}
+
 function lowercaseFirstLetter(string) {
     return string.charAt(0).toLowerCase() + string.slice(1);
 }
@@ -156,13 +184,13 @@ function buildDistanceInWordsLocale () {
     var scheme = distanceInWordsLocale[key]
 
     if (!options.addSuffix) {
-      return preposition + declension(scheme, count, 'regular')
+      return prefixPreposition(preposition) + suffixPreposition(preposition) + declension(scheme, count, 'regular')
     }
 
     if (options.comparison > 0) {
-      return preposition + 'za ' + declension(scheme, count, 'future')
+      return prefixPreposition(preposition) + 'za ' + suffixPreposition(preposition) + declension(scheme, count, 'future')
     } else {
-      return preposition + 'pred ' + declension(scheme, count, 'past')
+      return prefixPreposition(preposition) + 'pred ' + suffixPreposition(preposition) + declension(scheme, count, 'past')
     }
   }
 

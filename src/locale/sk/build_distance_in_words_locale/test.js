@@ -15,8 +15,7 @@ var FUTURE_OPTIONS = {
 }
 
 var TWO_FOUR_RANGE = [2, 3, 4]
-var OTHER_RANGE = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 25, 26, 101, 105, 106]
-var MORE_THAN_ONE_RANGE = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+var OTHER_RANGE = [5, 6, 7, 8, 9, 10, 100]
 
 describe.only('sk locale > buildDistanceInWordsLocale', function () {
   it('returns an object', function () {
@@ -154,7 +153,7 @@ describe.only('sk locale > buildDistanceInWordsLocale', function () {
         it('returns a proper string', function () {
           OTHER_RANGE.forEach(function (number) {
             var result = buildDistanceInWordsLocale().localize('xSeconds', number, PAST_OPTIONS)
-            assert(result === 'pred' + number + ' sekundami')
+            assert(result === 'pred ' + number + ' sekundami')
           })
         })
       })
@@ -573,7 +572,7 @@ describe.only('sk locale > buildDistanceInWordsLocale', function () {
     describe('past suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(buildDistanceInWordsLocale().localize('xDays', 1, PAST_OPTIONS) === 'preď dňom')
+          assert(buildDistanceInWordsLocale().localize('xDays', 1, PAST_OPTIONS) === 'pred dňom')
         })
       })
 
