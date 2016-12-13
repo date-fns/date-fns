@@ -1,0 +1,3 @@
+// @flow
+
+declare module.exports: (dirtyInitialRangeStartDate: Date|string|number, dirtyInitialRangeEndDate: Date|string|number, dirtyComparedRangeStartDate: Date|string|number, dirtyComparedRangeEndDate: Date|string|number) => number
