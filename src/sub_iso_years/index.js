@@ -11,6 +11,7 @@ var addISOYears = require('../add_iso_years/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week-numbering years subtracted
  *
  * @example

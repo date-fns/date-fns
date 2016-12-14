@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the number of days in a month of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of days in a month
  *
  * @example

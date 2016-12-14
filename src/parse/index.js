@@ -58,7 +58,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * If all above fails, the function passes the given argument to Date constructor.
  *
  * @param {Date|String|Number} argument - the value to convert
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
  *

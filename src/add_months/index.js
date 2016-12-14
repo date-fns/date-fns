@@ -10,6 +10,7 @@ var getDaysInMonth = require('../get_days_in_month/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the months added
  *
  * @example

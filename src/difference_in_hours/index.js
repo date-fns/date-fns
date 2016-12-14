@@ -11,6 +11,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of hours
  *
  * @example

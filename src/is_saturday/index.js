@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date Saturday?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is Saturday
  *
  * @example

@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Does the given date fall on a weekend?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date falls on a weekend
  *
  * @example

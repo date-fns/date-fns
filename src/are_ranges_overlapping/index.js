@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/types/Range}
  * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/types/Range}
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/types/Options}
  * @returns {Boolean} whether the date ranges are overlapping
  * @throws {Error} The start of a range cannot be after its end
  *

@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the date from the array closest to the given date
  * @throws {TypeError} the second argument must be an instance of Array
  *

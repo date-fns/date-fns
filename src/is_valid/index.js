@@ -11,6 +11,7 @@ var isDate = require('../is_date/index.js')
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {Date} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is valid
  * @throws {TypeError} argument must be an instance of Date
  *

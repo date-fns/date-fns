@@ -12,6 +12,7 @@ var getISOWeek = require('../get_iso_week/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} isoWeek - the ISO week of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week setted
  *
  * @example

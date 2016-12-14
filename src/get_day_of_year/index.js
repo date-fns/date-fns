@@ -10,6 +10,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * Get the day of the year of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of year
  *
  * @example

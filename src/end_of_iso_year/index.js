@@ -13,6 +13,7 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the end of an ISO week-numbering year
  *
  * @example
