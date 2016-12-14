@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the day of the week of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the day of week
  *
  * @example

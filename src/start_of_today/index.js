@@ -7,6 +7,7 @@ var startOfDay = require('../start_of_day/index.js')
  * @description
  * Return the start of today.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the start of today
  *
  * @example

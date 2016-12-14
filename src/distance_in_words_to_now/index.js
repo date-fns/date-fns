@@ -37,7 +37,7 @@ var distanceInWords = require('../distance_in_words/index.js')
  * | 60 secs ... 90 secs | 1 minute             |
  *
  * @param {Date|String|Number} date - the given date
- * @param {Object} [options] - the object with options
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
  * @param {Boolean} [options.addSuffix=false] - result specifies if the second date is earlier or later than the first
  * @param {Object} [options.locale=enLocale] - the locale object

@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date in the past?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in the past
  *
  * @example

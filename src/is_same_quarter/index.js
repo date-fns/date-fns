@@ -9,6 +9,7 @@ var startOfQuarter = require('../start_of_quarter/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the dates are in the same quarter
  *
  * @example

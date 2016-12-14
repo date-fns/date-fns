@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} minutes - the minutes of the new date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the new date with the minutes setted
  *
  * @example

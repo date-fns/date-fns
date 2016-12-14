@@ -5,6 +5,7 @@
  * @description
  * Return the end of tomorrow.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the end of tomorrow
  *
  * @example

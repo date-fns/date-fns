@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} startDate - the first date
  * @param {Date|String|Number} endDate - the last date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
  * @throws {Error} startDate cannot be after endDate
  *

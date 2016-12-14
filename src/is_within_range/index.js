@@ -10,6 +10,7 @@ var parse = require('../parse/index.js')
  * @param {Date|String|Number} date - the date to check
  * @param {Date|String|Number} startDate - the start of range
  * @param {Date|String|Number} endDate - the end of range
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is within the range
  * @throws {Error} startDate cannot be after endDate
  *

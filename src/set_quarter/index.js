@@ -10,6 +10,7 @@ var setMonth = require('../set_month/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} quarter - the quarter of the new date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the new date with the quarter setted
  *
  * @example

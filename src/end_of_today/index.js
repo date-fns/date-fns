@@ -7,6 +7,7 @@ var endOfDay = require('../end_of_day/index.js')
  * @description
  * Return the end of today.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the end of today
  *
  * @example

@@ -12,6 +12,7 @@ var MILLISECONDS_IN_DAY = 86400000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the number of calendar days
  *
  * @example

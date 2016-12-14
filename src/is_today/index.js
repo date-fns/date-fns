@@ -8,6 +8,7 @@ var startOfDay = require('../start_of_day/index.js')
  * Is the given date today?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is today
  *
  * @example

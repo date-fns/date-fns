@@ -9,6 +9,7 @@ var differenceInDays = require('../difference_in_days/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the number of full weeks
  *
  * @example

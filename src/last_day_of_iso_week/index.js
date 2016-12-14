@@ -12,6 +12,7 @@ var cloneObject = require('../_lib/clone_object/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the last day of an ISO week
  *
  * @example

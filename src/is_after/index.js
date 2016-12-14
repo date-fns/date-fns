@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date|String|Number} date - the date that should be after the first one to return true
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the first date is after the second date
  *
  * @example

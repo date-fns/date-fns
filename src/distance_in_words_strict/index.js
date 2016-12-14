@@ -27,7 +27,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date|String|Number} date - the other date
- * @param {Object} [options] - the object with options
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {String} [options.unit] - if specified, will force a unit. Options: 's', 'm', 'h', 'd', 'M', 'Y'
  * @param {String} [options.partialMethod='floor'] - which way to round partial units. Options: 'floor', 'ceil', 'round'

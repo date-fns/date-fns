@@ -10,6 +10,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to compare
  * @param {Date|String|Number} dateRight - the second date to compare
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the result of the comparison
  *
  * @example

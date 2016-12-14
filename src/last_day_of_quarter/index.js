@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the last day of a quarter
  *
  * @example

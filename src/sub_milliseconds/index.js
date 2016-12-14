@@ -9,6 +9,7 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the new date with the milliseconds subtracted
  *
  * @example

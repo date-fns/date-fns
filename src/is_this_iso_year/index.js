@@ -10,6 +10,7 @@ var isSameISOYear = require('../is_same_iso_year/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in this ISO week-numbering year
  *
  * @example

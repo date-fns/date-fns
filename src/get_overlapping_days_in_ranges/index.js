@@ -13,6 +13,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @param {Date|String|Number} dirtyInitialRangeEndDate - the end of the initial range
  * @param {Date|String|Number} dirtyComparedRangeStartDate - the start of the range to compare it with
  * @param {Date|String|Number} dirtyComparedRangeEndDate - the end of the range to compare it with
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the number of days that overlap in two date ranges
  * @throws {Error} startDate of a date range cannot be after its endDate
  *

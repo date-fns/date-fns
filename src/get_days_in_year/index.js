@@ -8,6 +8,7 @@ var isLeapYear = require('../is_leap_year/index.js')
  * Get the number of days in a year of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the number of days in a year
  *
  * @example

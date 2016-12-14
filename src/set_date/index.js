@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} dayOfMonth - the day of the month of the new date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the new date with the day of the month setted
  *
  * @example
