@@ -28,6 +28,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 - [Slovak locale (sk)](https://github.com/date-fns/date-fns/pull/336)
   (kudos to Marek Suscak [@mareksuscak](https://github.com/mareksuscak))
 
+- Add yarn support.
+  Thanks to Uladzimir Havenchyk [@havenchyk](https://github.com/havenchyk).
+  See PR: [#288](https://github.com/date-fns/date-fns/pull/288)
+
 ## [1.18.0] - 2016-12-12
 
 ### Added
