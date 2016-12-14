@@ -33,10 +33,10 @@ var parse = require('../parse/index.js')
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-function compareDesc (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
+function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
-  var dateRight = parse(dirtyDateRight)
+  var dateRight = parse(dirtyDateRight, options)
   var timeRight = dateRight.getTime()
 
   if (timeLeft > timeRight) {

@@ -16,8 +16,8 @@ var isSameMinute = require('../is_same_minute/index.js')
  * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
  */
-function isThisMinute (dirtyDate) {
-  return isSameMinute(new Date(), dirtyDate)
+function isThisMinute (dirtyDate, options) {
+  return isSameMinute(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisMinute

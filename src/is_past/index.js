@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-function isPast (dirtyDate) {
-  return parse(dirtyDate).getTime() < new Date().getTime()
+function isPast (dirtyDate, options) {
+  return parse(dirtyDate, options).getTime() < new Date().getTime()
 }
 
 module.exports = isPast

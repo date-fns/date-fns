@@ -15,8 +15,8 @@ var startOfDay = require('../start_of_day/index.js')
  * var result = isToday(new Date(2014, 9, 6, 14, 0))
  * //=> true
  */
-function isToday (dirtyDate) {
-  return startOfDay(dirtyDate).getTime() === startOfDay(new Date()).getTime()
+function isToday (dirtyDate, options) {
+  return startOfDay(dirtyDate, options).getTime() === startOfDay(new Date(), options).getTime()
 }
 
 module.exports = isToday

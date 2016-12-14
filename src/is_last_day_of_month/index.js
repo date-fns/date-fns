@@ -17,9 +17,9 @@ var endOfMonth = require('../end_of_month/index.js')
  * var result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-function isLastDayOfMonth (dirtyDate) {
-  var date = parse(dirtyDate)
-  return endOfDay(date).getTime() === endOfMonth(date).getTime()
+function isLastDayOfMonth (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
+  return endOfDay(date, options).getTime() === endOfMonth(date, options).getTime()
 }
 
 module.exports = isLastDayOfMonth

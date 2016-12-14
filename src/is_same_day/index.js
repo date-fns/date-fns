@@ -19,9 +19,9 @@ var startOfDay = require('../start_of_day/index.js')
  * )
  * //=> true
  */
-function isSameDay (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  var dateRightStartOfDay = startOfDay(dirtyDateRight)
+function isSameDay (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfDay = startOfDay(dirtyDateLeft, options)
+  var dateRightStartOfDay = startOfDay(dirtyDateRight, options)
 
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }

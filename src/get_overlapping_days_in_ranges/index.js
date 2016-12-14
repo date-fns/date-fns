@@ -30,11 +30,11 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
-function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
-  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
-  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
-  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate, options) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate, options).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate, options).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate, options).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate, options).getTime()
 
   if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
     throw new Error('The start of the range cannot be after the end of the range')

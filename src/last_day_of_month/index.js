@@ -16,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-function lastDayOfMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+function lastDayOfMonth (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)
   date.setHours(0, 0, 0, 0)

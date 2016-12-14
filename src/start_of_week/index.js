@@ -26,7 +26,7 @@ var parse = require('../parse/index.js')
 function startOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
-  var date = parse(dirtyDate)
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 

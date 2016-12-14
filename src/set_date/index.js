@@ -16,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-function setDate (dirtyDate, dayOfMonth) {
-  var date = parse(dirtyDate)
+function setDate (dirtyDate, dayOfMonth, options) {
+  var date = parse(dirtyDate, options)
   date.setDate(dayOfMonth)
   return date
 }

@@ -26,9 +26,9 @@ var parse = require('../parse/index.js')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDay (dirtyStartDate, dirtyEndDate) {
-  var startDate = parse(dirtyStartDate)
-  var endDate = parse(dirtyEndDate)
+function eachDay (dirtyStartDate, dirtyEndDate, options) {
+  var startDate = parse(dirtyStartDate, options)
+  var endDate = parse(dirtyEndDate, options)
 
   var endTime = endDate.getTime()
 
@@ -42,7 +42,7 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
   currentDate.setHours(0, 0, 0, 0)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(parse(currentDate))
+    dates.push(parse(currentDate, options))
     currentDate.setDate(currentDate.getDate() + 1)
   }
 

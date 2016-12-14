@@ -16,8 +16,8 @@ var addSeconds = require('../add_seconds/index.js')
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-function subSeconds (dirtyDate, amount) {
-  return addSeconds(dirtyDate, -amount)
+function subSeconds (dirtyDate, amount, options) {
+  return addSeconds(dirtyDate, -amount, options)
 }
 
 module.exports = subSeconds

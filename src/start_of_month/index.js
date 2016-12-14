@@ -16,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+function startOfMonth (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   date.setDate(1)
   date.setHours(0, 0, 0, 0)
   return date

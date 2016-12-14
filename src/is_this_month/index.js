@@ -15,8 +15,8 @@ var isSameMonth = require('../is_same_month/index.js')
  * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-function isThisMonth (dirtyDate) {
-  return isSameMonth(new Date(), dirtyDate)
+function isThisMonth (dirtyDate, options) {
+  return isSameMonth(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisMonth

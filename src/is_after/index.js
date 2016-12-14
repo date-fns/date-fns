@@ -16,9 +16,9 @@ var parse = require('../parse/index.js')
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-function isAfter (dirtyDateToCompare, dirtyDate) {
-  var dateToCompare = parse(dirtyDateToCompare)
-  var date = parse(dirtyDate)
+function isAfter (dirtyDateToCompare, dirtyDate, options) {
+  var dateToCompare = parse(dirtyDateToCompare, options)
+  var date = parse(dirtyDate, options)
   return dateToCompare.getTime() > date.getTime()
 }
 

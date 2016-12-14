@@ -12,7 +12,7 @@
  * var result = endOfTomorrow()
  * //=> Tue Oct 7 2014 23:59:59.999
  */
-function endOfTomorrow () {
+function endOfTomorrow (_) {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

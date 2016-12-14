@@ -16,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-function setHours (dirtyDate, hours) {
-  var date = parse(dirtyDate)
+function setHours (dirtyDate, hours, options) {
+  var date = parse(dirtyDate, options)
   date.setHours(hours)
   return date
 }

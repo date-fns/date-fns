@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-function isFuture (dirtyDate) {
-  return parse(dirtyDate).getTime() > new Date().getTime()
+function isFuture (dirtyDate, options) {
+  return parse(dirtyDate, options).getTime() > new Date().getTime()
 }
 
 module.exports = isFuture

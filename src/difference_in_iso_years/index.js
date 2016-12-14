@@ -24,18 +24,18 @@ var subISOYears = require('../sub_iso_years/index.js')
  * )
  * //=> 1
  */
-function differenceInISOYears (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight))
-  dateLeft = subISOYears(dateLeft, sign * difference)
+  var sign = compareAsc(dateLeft, dateRight, options)
+  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight, options))
+  dateLeft = subISOYears(dateLeft, sign * difference, options)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight, options) === -sign
   return sign * (difference - isLastISOYearNotFull)
 }
 

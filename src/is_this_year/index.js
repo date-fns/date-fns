@@ -15,8 +15,8 @@ var isSameYear = require('../is_same_year/index.js')
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-function isThisYear (dirtyDate) {
-  return isSameYear(new Date(), dirtyDate)
+function isThisYear (dirtyDate, options) {
+  return isSameYear(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisYear

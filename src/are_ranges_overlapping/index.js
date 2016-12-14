@@ -28,11 +28,11 @@ var parse = require('../parse/index.js')
  * )
  * //=> false
  */
-function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
-  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
-  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
-  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate, options) {
+  var initialStartTime = parse(dirtyInitialRangeStartDate, options).getTime()
+  var initialEndTime = parse(dirtyInitialRangeEndDate, options).getTime()
+  var comparedStartTime = parse(dirtyComparedRangeStartDate, options).getTime()
+  var comparedEndTime = parse(dirtyComparedRangeEndDate, options).getTime()
 
   if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
     throw new Error('The start of the range cannot be after the end of the range')

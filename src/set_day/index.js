@@ -26,14 +26,14 @@ var addDays = require('../add_days/index.js')
  */
 function setDay (dirtyDate, day, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
-  var date = parse(dirtyDate)
+  var date = parse(dirtyDate, options)
   var currentDay = date.getDay()
 
   var remainder = day % 7
   var dayIndex = (remainder + 7) % 7
 
   var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
-  return addDays(date, diff)
+  return addDays(date, diff, options)
 }
 
 module.exports = setDay

@@ -20,9 +20,9 @@ var startOfSecond = require('../start_of_second/index.js')
  * )
  * //=> true
  */
-function isSameSecond (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+function isSameSecond (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft, options)
+  var dateRightStartOfSecond = startOfSecond(dirtyDateRight, options)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

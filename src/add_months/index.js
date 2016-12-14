@@ -17,13 +17,13 @@ var getDaysInMonth = require('../get_days_in_month/index.js')
  * var result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-function addMonths (dirtyDate, amount) {
-  var date = parse(dirtyDate)
+function addMonths (dirtyDate, amount, options) {
+  var date = parse(dirtyDate, options)
   var desiredMonth = date.getMonth() + amount
   var dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
-  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  var daysInMonth = getDaysInMonth(dateWithDesiredMonth, options)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
   date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))

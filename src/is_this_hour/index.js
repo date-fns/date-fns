@@ -16,8 +16,8 @@ var isSameHour = require('../is_same_hour/index.js')
  * var result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-function isThisHour (dirtyDate) {
-  return isSameHour(new Date(), dirtyDate)
+function isThisHour (dirtyDate, options) {
+  return isSameHour(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisHour

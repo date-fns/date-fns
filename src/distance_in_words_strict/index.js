@@ -94,7 +94,7 @@ var MINUTES_IN_YEAR = 525600
 function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
-  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
   var locale = options.locale
   var localize = enLocale.distanceInWords.localize
@@ -109,16 +109,16 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   var dateLeft, dateRight
   if (comparison > 0) {
-    dateLeft = parse(dirtyDateToCompare)
-    dateRight = parse(dirtyDate)
+    dateLeft = parse(dirtyDateToCompare, options)
+    dateRight = parse(dirtyDate, options)
   } else {
-    dateLeft = parse(dirtyDate)
-    dateRight = parse(dirtyDateToCompare)
+    dateLeft = parse(dirtyDate, options)
+    dateRight = parse(dirtyDateToCompare, options)
   }
 
   var unit = options.unit
   var mathPartial = Math[options.partialMethod || 'floor']
-  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var seconds = differenceInSeconds(dateRight, dateLeft, options)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = mathPartial(seconds / 60) - offset
   var hours, days, months, years

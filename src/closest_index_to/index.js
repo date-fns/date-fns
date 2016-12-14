@@ -23,19 +23,19 @@ var parse = require('../parse/index.js')
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
+function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
-  var dateToCompare = parse(dirtyDateToCompare)
+  var dateToCompare = parse(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate, index) {
-    var currentDate = parse(dirtyDate)
+    var currentDate = parse(dirtyDate, options)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = index

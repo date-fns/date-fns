@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-function getQuarter (dirtyDate) {
-  var date = parse(dirtyDate)
+function getQuarter (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }

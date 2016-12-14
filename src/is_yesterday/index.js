@@ -15,10 +15,10 @@ var startOfDay = require('../start_of_day/index.js')
  * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
-function isYesterday (dirtyDate) {
+function isYesterday (dirtyDate, options) {
   var yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
-  return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()
+  return startOfDay(dirtyDate, options).getTime() === startOfDay(yesterday, options).getTime()
 }
 
 module.exports = isYesterday

@@ -24,9 +24,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
-  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
+  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, options)
+  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, options)
 
   var timestampLeft = startOfISOWeekLeft.getTime() -
     startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE

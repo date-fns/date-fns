@@ -23,9 +23,9 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 366
  */
-function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
-  var startOfDayLeft = startOfDay(dirtyDateLeft)
-  var startOfDayRight = startOfDay(dirtyDateRight)
+function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
+  var startOfDayLeft = startOfDay(dirtyDateLeft, options)
+  var startOfDayRight = startOfDay(dirtyDateRight, options)
 
   var timestampLeft = startOfDayLeft.getTime() -
     startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE

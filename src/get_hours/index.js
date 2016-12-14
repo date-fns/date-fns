@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-function getHours (dirtyDate) {
-  var date = parse(dirtyDate)
+function getHours (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var hours = date.getHours()
   return hours
 }
