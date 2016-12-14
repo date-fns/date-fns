@@ -1,5 +1,7 @@
 var parse = require('../parse/index.js')
 
+var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+
 /**
  * @category Range Helpers
  * @summary Get the number of days that overlap in two date ranges
@@ -28,9 +30,6 @@ var parse = require('../parse/index.js')
  * )
  * //=> 0
  */
-
-var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
-
 function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
   var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
   var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
