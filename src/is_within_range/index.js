@@ -28,10 +28,10 @@ var parse = require('../parse/index.js')
  * )
  * //=> false
  */
-function isWithinRange (dirtyDate, dirtyRange) {
-  var time = parse(dirtyDate).getTime()
-  var startTime = parse(dirtyRange.start).getTime()
-  var endTime = parse(dirtyRange.end).getTime()
+function isWithinRange (dirtyDate, dirtyRange, options) {
+  var time = parse(dirtyDate, options).getTime()
+  var startTime = parse(dirtyRange.start, options).getTime()
+  var endTime = parse(dirtyRange.end, options).getTime()
 
   if (startTime > endTime) {
     throw new Error('The start of a range cannot be after its end')

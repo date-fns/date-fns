@@ -21,9 +21,9 @@ var startOfISOYear = require('../start_of_iso_year/index.js')
  * )
  * //=> true
  */
-function isSameISOYear (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
-  var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
+function isSameISOYear (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft, options)
+  var dateRightStartOfYear = startOfISOYear(dirtyDateRight, options)
 
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }

@@ -24,8 +24,8 @@ var isDate = require('../is_date/index.js')
  * var result = isValid(new Date(''))
  * //=> false
  */
-function isValid (date) {
-  if (isDate(date)) {
+function isValid (date, options) {
+  if (isDate(date, options)) {
     return !isNaN(date)
   } else {
     throw new TypeError(toString.call(date) + ' is not an instance of Date')

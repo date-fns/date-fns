@@ -20,9 +20,9 @@ var parse = require('../parse/index.js')
  * )
  * //=> 1100
  */
-function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
   return dateLeft.getTime() - dateRight.getTime()
 }
 

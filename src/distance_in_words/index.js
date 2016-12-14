@@ -94,7 +94,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
 function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
-  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
   var locale = options.locale
   var localize = enLocale.distanceInWords.localize
@@ -109,14 +109,14 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
 
   var dateLeft, dateRight
   if (comparison > 0) {
-    dateLeft = parse(dirtyDateToCompare)
-    dateRight = parse(dirtyDate)
+    dateLeft = parse(dirtyDateToCompare, options)
+    dateRight = parse(dirtyDate, options)
   } else {
-    dateLeft = parse(dirtyDate)
-    dateRight = parse(dirtyDateToCompare)
+    dateLeft = parse(dirtyDate, options)
+    dateRight = parse(dirtyDateToCompare, options)
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var seconds = differenceInSeconds(dateRight, dateLeft, options)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
   var months
@@ -173,7 +173,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
     return localize('aboutXMonths', months, localizeOptions)
   }
 
-  months = differenceInMonths(dateRight, dateLeft)
+  months = differenceInMonths(dateRight, dateLeft, options)
 
   // 2 months up to 12 months
   if (months < 12) {

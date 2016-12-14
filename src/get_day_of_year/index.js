@@ -17,9 +17,9 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * var result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-function getDayOfYear (dirtyDate) {
-  var date = parse(dirtyDate)
-  var diff = differenceInCalendarDays(date, startOfYear(date))
+function getDayOfYear (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
+  var diff = differenceInCalendarDays(date, startOfYear(date, options), options)
   var dayOfYear = diff + 1
   return dayOfYear
 }

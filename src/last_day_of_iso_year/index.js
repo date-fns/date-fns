@@ -20,12 +20,12 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * var result = lastDayOfISOYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
-function lastDayOfISOYear (dirtyDate) {
-  var year = getISOYear(dirtyDate)
+function lastDayOfISOYear (dirtyDate, options) {
+  var year = getISOYear(dirtyDate, options)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
-  var date = startOfISOWeek(fourthOfJanuary)
+  var date = startOfISOWeek(fourthOfJanuary, options)
   date.setDate(date.getDate() - 1)
   return date
 }

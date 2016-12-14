@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-function isWeekend (dirtyDate) {
-  var date = parse(dirtyDate)
+function isWeekend (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
   return day === 0 || day === 6
 }

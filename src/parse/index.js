@@ -74,7 +74,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 function parse (argument, options) {
-  if (isDate(argument)) {
+  if (isDate(argument, options)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
   } else if (typeof argument !== 'string') {

@@ -18,8 +18,8 @@ var parse = require('../parse/index.js')
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-function getISODay (dirtyDate) {
-  var date = parse(dirtyDate)
+function getISODay (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
 
   if (day === 0) {

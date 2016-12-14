@@ -22,17 +22,17 @@ var compareAsc = require('../compare_asc/index.js')
  * )
  * //=> 365
  */
-function differenceInDays (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  var sign = compareAsc(dateLeft, dateRight, options)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, options))
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
+  var isLastDayNotFull = compareAsc(dateLeft, dateRight, options) === -sign
   return sign * (difference - isLastDayNotFull)
 }
 

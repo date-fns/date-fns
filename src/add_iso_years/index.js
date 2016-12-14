@@ -19,8 +19,8 @@ var setISOYear = require('../set_iso_year/index.js')
  * var result = addISOYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
-function addISOYears (dirtyDate, amount) {
-  return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount)
+function addISOYears (dirtyDate, amount, options) {
+  return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount, options)
 }
 
 module.exports = addISOYears

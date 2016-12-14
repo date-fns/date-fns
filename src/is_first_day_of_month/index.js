@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-function isFirstDayOfMonth (dirtyDate) {
-  return parse(dirtyDate).getDate() === 1
+function isFirstDayOfMonth (dirtyDate, options) {
+  return parse(dirtyDate, options).getDate() === 1
 }
 
 module.exports = isFirstDayOfMonth

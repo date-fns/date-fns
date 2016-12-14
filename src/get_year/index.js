@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-function getYear (dirtyDate) {
-  var date = parse(dirtyDate)
+function getYear (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var year = date.getFullYear()
   return year
 }

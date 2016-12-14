@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-function getMilliseconds (dirtyDate) {
-  var date = parse(dirtyDate)
+function getMilliseconds (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var milliseconds = date.getMilliseconds()
   return milliseconds
 }

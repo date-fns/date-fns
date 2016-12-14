@@ -21,8 +21,8 @@ var getISOYear = require('../get_iso_year/index.js')
  * )
  * //=> 2
  */
-function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight) {
-  return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight)
+function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight, options) {
+  return getISOYear(dirtyDateLeft, options) - getISOYear(dirtyDateRight, options)
 }
 
 module.exports = differenceInCalendarISOYears

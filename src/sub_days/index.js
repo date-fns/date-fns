@@ -16,8 +16,8 @@ var addDays = require('../add_days/index.js')
  * var result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-function subDays (dirtyDate, amount) {
-  return addDays(dirtyDate, -amount)
+function subDays (dirtyDate, amount, options) {
+  return addDays(dirtyDate, -amount, options)
 }
 
 module.exports = subDays

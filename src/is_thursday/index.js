@@ -15,8 +15,8 @@ var parse = require('../parse/index.js')
  * var result = isThursday(new Date(2014, 8, 25))
  * //=> true
  */
-function isThursday (dirtyDate) {
-  return parse(dirtyDate).getDay() === 4
+function isThursday (dirtyDate, options) {
+  return parse(dirtyDate, options).getDay() === 4
 }
 
 module.exports = isThursday

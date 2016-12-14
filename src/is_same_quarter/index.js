@@ -19,9 +19,9 @@ var startOfQuarter = require('../start_of_quarter/index.js')
  * )
  * //=> true
  */
-function isSameQuarter (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
-  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+function isSameQuarter (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, options)
+  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight, options)
 
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }

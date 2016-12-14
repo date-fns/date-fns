@@ -19,9 +19,9 @@ var startOfHour = require('../start_of_hour/index.js')
  * )
  * //=> true
  */
-function isSameHour (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+function isSameHour (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft, options)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight, options)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }

@@ -19,9 +19,9 @@ var parse = require('../parse/index.js')
  * )
  * //=> 8
  */
-function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
 
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
   var monthDiff = dateLeft.getMonth() - dateRight.getMonth()
