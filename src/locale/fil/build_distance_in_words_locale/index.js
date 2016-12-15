@@ -1,70 +1,70 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      one: 'less than a second',
-      other: 'less than {{count}} seconds'
+      one: 'mas maliit sa isang segundo',
+      other: 'mas maliit sa {{count}} segundo'
     },
 
     xSeconds: {
-      one: '1 second',
-      other: '{{count}} seconds'
+      one: '1 segundo',
+      other: '{{count}} segundo'
     },
 
-    halfAMinute: 'half a minute',
+    halfAMinute: 'kalahating minuto',
 
     lessThanXMinutes: {
-      one: 'less than a minute',
-      other: 'less than {{count}} minutes'
+      one: 'mas maliit sa isang minuto',
+      other: 'mas maliit sa {{count}} minuto'
     },
 
     xMinutes: {
-      one: '1 minute',
-      other: '{{count}} minutes'
+      one: '1 minuto',
+      other: '{{count}} minuto'
     },
 
     aboutXHours: {
-      one: 'about 1 hour',
-      other: 'about {{count}} hours'
+      one: 'mga 1 oras',
+      other: 'mga {{count}} oras'
     },
 
     xHours: {
-      one: '1 hour',
-      other: '{{count}} hours'
+      one: '1 oras',
+      other: '{{count}} oras'
     },
 
     xDays: {
-      one: '1 day',
-      other: '{{count}} days'
+      one: '1 araw',
+      other: '{{count}} araw'
     },
 
     aboutXMonths: {
-      one: 'about 1 month',
-      other: 'about {{count}} months'
+      one: 'mga 1 buwan',
+      other: 'mga {{count}} buwan'
     },
 
     xMonths: {
-      one: '1 month',
-      other: '{{count}} months'
+      one: '1 buwan',
+      other: '{{count}} buwan'
     },
 
     aboutXYears: {
-      one: 'about 1 year',
-      other: 'about {{count}} years'
+      one: 'mga 1 taon',
+      other: 'mga {{count}} taon'
     },
 
     xYears: {
-      one: '1 year',
-      other: '{{count}} years'
+      one: '1 taon',
+      other: '{{count}} taon'
     },
 
     overXYears: {
-      one: 'over 1 year',
-      other: 'over {{count}} years'
+      one: 'higit sa 1 taon',
+      other: 'higit sa {{count}} taon'
     },
 
     almostXYears: {
-      one: 'almost 1 year',
-      other: 'almost {{count}} years'
+      one: 'halos 1 taon',
+      other: 'halos {{count}} taon'
     }
   }
 
@@ -82,9 +82,9 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'in ' + result
+        return 'sa loob ng ' + result
       } else {
-        return result + ' ago'
+        return result + ' ang nakalipas'
       }
     }
 
