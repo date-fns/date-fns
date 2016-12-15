@@ -2,15 +2,6 @@ var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_re
 var getTranslation = require('../translations/index.js').getTranslation
 
 function buildFormatLocale () {
-  var months3char = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
-  var monthsFull = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
-  var weekdays2char = ['do', 'se', 'te', 'qa', 'qi', 'se', 'sa']
-  var weekdays3char = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb']
-  var weekdaysFull = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
-  var meridiemFull = ['a.m.', 'p.m.']
-
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {

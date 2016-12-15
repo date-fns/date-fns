@@ -1,3 +1,6 @@
+// @flow
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var translations = require('./')
 
@@ -13,6 +16,6 @@ describe('ko translations', function () {
       a: ['오전', '오후'],
       aa: ['오전', '오후']
     }
-    assert.deepEqual(expected, translations.translations);
-  });
-});
+    assert.deepEqual(expected, translations.translations)
+  })
+})

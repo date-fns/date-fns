@@ -1,3 +1,6 @@
+// @flow
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var translations = require('./')
 
@@ -13,6 +16,6 @@ describe('nb translations', function () {
       a: ['am', 'pm'],
       aa: ['a.m.', 'p.m.']
     }
-    assert.deepEqual(expected, translations.translations);
-  });
-});
+    assert.deepEqual(expected, translations.translations)
+  })
+})
