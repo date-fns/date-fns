@@ -5,14 +5,14 @@ function buildFormatLocale () {
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
-  var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-  var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
-  var weekdays3char = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  var weekdaysFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
-  var meridiemFull = ['a.m.', 'p.m.']
+  var months3char = [ 'Ene', 'Peb', 'Mar', 'Abr', 'May', 'Hun', 'Hul', 'Ago', 'Set', 'Okt', 'Nob', 'Dis']
+  var monthsFull = ['Enero', 'Pebrero', 'Marso', 'Abril', 'Mayo', 'Hunyo', 'Hulyo', 'Agosto', 'Setyembre', 'Oktubre', 'Nobyembre', 'Disyembre']
+  var weekdays2char = ['Li', 'Lu', 'Ma', 'Mi', 'Hu', 'Bi', 'Sa']
+  var weekdays3char = ['Lin', 'Lun', 'Mar', 'Miy', 'Huw', 'Biy', 'Sab']
+  var weekdaysFull = ['Linggo', 'Lunes', 'Martes', 'Miyerkules', 'Huwebes', 'Biyernes', 'Sabado']
+  var meridiemUppercase = ['NU', 'NT', 'NH', 'NG']
+  var meridiemLowercase = ['NU', 'NT', 'NH', 'NG']
+  var meridiemFull = ['ng umaga', 'ng tanghali', 'ng hapon', 'ng gabi']
 
   var formatters = {
     // Month: Jan, Feb, ..., Dec
@@ -42,17 +42,50 @@ function buildFormatLocale () {
 
     // AM, PM
     'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+      if (date.getHours() > 12) {
+        var modulo = date.getHours() % 12
+        if (modulo < 6) {
+          return meridiemUppercase[2]
+        } else {
+          return meridiemUppercase[3]
+        }
+      } else if (date.getHours() < 12) {
+        return meridiemUppercase[0]
+      } else {
+        return meridiemUppercase[1]
+      }
     },
 
     // am, pm
     'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+      if (date.getHours() > 12) {
+        var modulo = date.getHours() % 12
+        if (modulo < 6) {
+          return meridiemLowercase[2]
+        } else {
+          return meridiemLowercase[3]
+        }
+      } else if (date.getHours() < 12) {
+        return meridiemLowercase[0]
+      } else {
+        return meridiemLowercase[1]
+      }
     },
 
     // a.m., p.m.
     'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+      if (date.getHours() > 12) {
+        var modulo = date.getHours() % 12
+        if (modulo < 6) {
+          return meridiemFull[2]
+        } else {
+          return meridiemFull[3]
+        }
+      } else if (date.getHours() < 12) {
+        return meridiemFull[0]
+      } else {
+        return meridiemFull[1]
+      }
     }
   }
 
@@ -71,18 +104,40 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'st'
-      case 2:
-        return number + 'nd'
-      case 3:
-        return number + 'rd'
+  if (number < 10) {
+    switch (number) {
+      case "1":
+      case "4":
+      case "6":
+      case "8":
+        return 'pang-' + number
+      case "2":
+      case "3":
+      case "5":
+      case "9":
+        return 'pan-' + number
+      case "7":
+        return 'pam-' + number
+    }
+  } else if (number >= 10 && number < 20){
+      return 'pan-' + number
+  } else {
+    switch (number.toString[0]) {
+      case "1":
+      case "4":
+      case "6":
+      case "8":
+        return 'pang-' + number
+      case "2":
+      case "3":
+      case "5":
+      case "9":
+        return 'pan-' + number
+      case "7":
+        return 'pam-' + number
     }
   }
-  return number + 'th'
+  return 'pang-' + number
 }
 
 module.exports = buildFormatLocale
