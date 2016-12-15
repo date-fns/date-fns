@@ -221,7 +221,7 @@ describe('fil locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'sa loob ng 1 minuto')
+      assert(result === 'sa loob ng kalahating minuto')
     })
   })
 })

@@ -5,7 +5,7 @@ function buildFormatLocale () {
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
-  var months3char = [ 'Ene', 'Peb', 'Mar', 'Abr', 'May', 'Hun', 'Hul', 'Ago', 'Set', 'Okt', 'Nob', 'Dis']
+  var months3char = ['Ene', 'Peb', 'Mar', 'Abr', 'May', 'Hun', 'Hul', 'Ago', 'Set', 'Okt', 'Nob', 'Dis']
   var monthsFull = ['Enero', 'Pebrero', 'Marso', 'Abril', 'Mayo', 'Hunyo', 'Hulyo', 'Agosto', 'Setyembre', 'Oktubre', 'Nobyembre', 'Disyembre']
   var weekdays2char = ['Li', 'Lu', 'Ma', 'Mi', 'Hu', 'Bi', 'Sa']
   var weekdays3char = ['Lin', 'Lun', 'Mar', 'Miy', 'Huw', 'Biy', 'Sab']
@@ -106,34 +106,34 @@ function buildFormatLocale () {
 function ordinal (number) {
   if (number < 10) {
     switch (number) {
-      case "1":
-      case "4":
-      case "6":
-      case "8":
+      case '1':
+      case '4':
+      case '6':
+      case '8':
         return 'pang-' + number
-      case "2":
-      case "3":
-      case "5":
-      case "9":
+      case '2':
+      case '3':
+      case '5':
+      case '9':
         return 'pan-' + number
-      case "7":
+      case '7':
         return 'pam-' + number
     }
-  } else if (number >= 10 && number < 20){
-      return 'pan-' + number
+  } else if (number >= 10 && number < 20) {
+    return 'pan-' + number
   } else {
     switch (number.toString[0]) {
-      case "1":
-      case "4":
-      case "6":
-      case "8":
+      case '1':
+      case '4':
+      case '6':
+      case '8':
         return 'pang-' + number
-      case "2":
-      case "3":
-      case "5":
-      case "9":
+      case '2':
+      case '3':
+      case '5':
+      case '9':
         return 'pan-' + number
-      case "7":
+      case '7':
         return 'pam-' + number
     }
   }
