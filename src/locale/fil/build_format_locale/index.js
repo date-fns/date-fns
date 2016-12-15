@@ -11,7 +11,7 @@ function buildFormatLocale () {
   var weekdays3char = ['Lin', 'Lun', 'Mar', 'Miy', 'Huw', 'Biy', 'Sab']
   var weekdaysFull = ['Linggo', 'Lunes', 'Martes', 'Miyerkules', 'Huwebes', 'Biyernes', 'Sabado']
   var meridiemUppercase = ['NU', 'NT', 'NH', 'NG']
-  var meridiemLowercase = ['NU', 'NT', 'NH', 'NG']
+  var meridiemLowercase = ['nu', 'nt', 'nh', 'ng']
   var meridiemFull = ['ng umaga', 'ng tanghali', 'ng hapon', 'ng gabi']
 
   var formatters = {
@@ -106,23 +106,23 @@ function buildFormatLocale () {
 function ordinal (number) {
   if (number < 10) {
     switch (number) {
-      case '1':
-      case '4':
-      case '6':
-      case '8':
+      case 1:
+      case 4:
+      case 6:
+      case 8:
         return 'pang-' + number
-      case '2':
-      case '3':
-      case '5':
-      case '9':
+      case 2:
+      case 3:
+      case 5:
+      case 9:
         return 'pan-' + number
-      case '7':
+      case 7:
         return 'pam-' + number
     }
   } else if (number >= 10 && number < 20) {
     return 'pan-' + number
   } else {
-    switch (number.toString[0]) {
+    switch (number.toString()[0]) {
       case '1':
       case '4':
       case '6':
@@ -137,7 +137,6 @@ function ordinal (number) {
         return 'pam-' + number
     }
   }
-  return 'pang-' + number
 }
 
 module.exports = buildFormatLocale
