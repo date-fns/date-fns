@@ -1,39 +1,31 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var getTranslation = require('../translations/index.js').getTranslation
 
 function buildFormatLocale () {
-  var months3char = ['Ene', 'Peb', 'Mar', 'Abr', 'May', 'Hun', 'Hul', 'Ago', 'Set', 'Okt', 'Nob', 'Dis']
-  var monthsFull = ['Enero', 'Pebrero', 'Marso', 'Abril', 'Mayo', 'Hunyo', 'Hulyo', 'Agosto', 'Setyembre', 'Oktubre', 'Nobyembre', 'Disyembre']
-  var weekdays2char = ['Li', 'Lu', 'Ma', 'Mi', 'Hu', 'Bi', 'Sa']
-  var weekdays3char = ['Lin', 'Lun', 'Mar', 'Miy', 'Huw', 'Biy', 'Sab']
-  var weekdaysFull = ['Linggo', 'Lunes', 'Martes', 'Miyerkules', 'Huwebes', 'Biyernes', 'Sabado']
-  var meridiemUppercase = ['NU', 'NT', 'NH', 'NG']
-  var meridiemLowercase = ['nu', 'nt', 'nh', 'ng']
-  var meridiemFull = ['ng umaga', 'ng tanghali', 'ng hapon', 'ng gabi']
-
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return getTranslation('MMM', date.getMonth())
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return getTranslation('MMMM', date.getMonth())
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return getTranslation('dd', date.getDay())
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return getTranslation('ddd', date.getDay())
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return getTranslation('dddd', date.getDay())
     },
 
     // AM, PM
@@ -41,14 +33,14 @@ function buildFormatLocale () {
       if (date.getHours() > 12) {
         var modulo = date.getHours() % 12
         if (modulo < 6) {
-          return meridiemUppercase[2]
+          return getTranslation('A', 2)
         } else {
-          return meridiemUppercase[3]
+          return getTranslation('A', 3)
         }
       } else if (date.getHours() < 12) {
-        return meridiemUppercase[0]
+        return getTranslation('A', 0)
       } else {
-        return meridiemUppercase[1]
+        return getTranslation('A', 1)
       }
     },
 
@@ -57,14 +49,14 @@ function buildFormatLocale () {
       if (date.getHours() > 12) {
         var modulo = date.getHours() % 12
         if (modulo < 6) {
-          return meridiemLowercase[2]
+          return getTranslation('a', 2)
         } else {
-          return meridiemLowercase[3]
+          return getTranslation('a', 3)
         }
       } else if (date.getHours() < 12) {
-        return meridiemLowercase[0]
+        return getTranslation('a', 0)
       } else {
-        return meridiemLowercase[1]
+        return getTranslation('a', 1)
       }
     },
 
@@ -73,14 +65,14 @@ function buildFormatLocale () {
       if (date.getHours() > 12) {
         var modulo = date.getHours() % 12
         if (modulo < 6) {
-          return meridiemFull[2]
+          return getTranslation('aa', 2)
         } else {
-          return meridiemFull[3]
+          return getTranslation('aa', 3)
         }
       } else if (date.getHours() < 12) {
-        return meridiemFull[0]
+        return getTranslation('aa', 0)
       } else {
-        return meridiemFull[1]
+        return getTranslation('aa', 1)
       }
     }
   }
