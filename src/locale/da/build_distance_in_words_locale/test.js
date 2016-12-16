@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildDistanceInWordsLocale = require('./')
 
-describe('dk locale > buildDistanceInWordsLocale', function () {
+describe('da locale > buildDistanceInWordsLocale', function () {
   it('returns an object', function () {
     assert(typeof buildDistanceInWordsLocale() === 'object')
   })
