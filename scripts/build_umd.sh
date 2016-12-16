@@ -10,6 +10,8 @@ do
   cp -r $pattern $dir
 done
 
+rm -rf "$dir/is_so_last_week"
+
 yarn run build
 yarn run build-uglify
 
