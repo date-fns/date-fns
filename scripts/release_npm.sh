@@ -35,6 +35,16 @@ done
 #
 cp -r ./src $dir/es6
 
+#
+# Copy original ES6 index.js to the ./es6 folder
+#
+cp ./index.js $dir/es6/
+
+#
+# Compile index.js to the ES5 ./ folder
+#
+$(npm bin)/babel --out-file $dir/index.js ./index.js
+
 cp dist/date_fns_docs.json $dir/docs.json
 find "$dir" -type f -name "test.js" -delete
 find "$dir" -type f -name "benchmark.js" -delete
