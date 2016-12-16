@@ -1,70 +1,70 @@
 function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
-      singular: 'mindre end et sekund',
-      plural: 'mindre end {{count}} sekunder'
+      one: 'mindre end et sekund',
+      other: 'mindre end {{count}} sekunder'
     },
 
     xSeconds: {
-      singular: '1 sekund',
-      plural: '{{count}} sekunder'
+      one: '1 sekund',
+      other: '{{count}} sekunder'
     },
 
     halfAMinute: 'et halvt minut',
 
     lessThanXMinutes: {
-      singular: 'mindre end et minut',
-      plural: 'mindre end {{count}} minutter'
+      one: 'mindre end et minut',
+      other: 'mindre end {{count}} minutter'
     },
 
     xMinutes: {
-      singular: '1 minut',
-      plural: '{{count}} minutter'
+      one: '1 minut',
+      other: '{{count}} minutter'
     },
 
     aboutXHours: {
-      singular: 'cirka 1 time',
-      plural: 'cirka {{count}} timer'
+      one: 'cirka 1 time',
+      other: 'cirka {{count}} timer'
     },
 
     xHours: {
-      singular: '1 time',
-      plural: '{{count}} timer'
+      one: '1 time',
+      other: '{{count}} timer'
     },
 
     xDays: {
-      singular: '1 dag',
-      plural: '{{count}} dage'
+      one: '1 dag',
+      other: '{{count}} dage'
     },
 
     aboutXMonths: {
-      singular: 'cirka 1 måned',
-      plural: 'cirka {{count}} måneder'
+      one: 'cirka 1 måned',
+      other: 'cirka {{count}} måneder'
     },
 
     xMonths: {
-      singular: '1 måned',
-      plural: '{{count}} måneder'
+      one: '1 måned',
+      other: '{{count}} måneder'
     },
 
     aboutXYears: {
-      singular: 'cirka 1 år',
-      plural: 'cirka {{count}} år'
+      one: 'cirka 1 år',
+      other: 'cirka {{count}} år'
     },
 
     xYears: {
-      singular: '1 år',
-      plural: '{{count}} år'
+      one: '1 år',
+      other: '{{count}} år'
     },
 
     overXYears: {
-      singular: 'over 1 år',
-      plural: 'over {{count}} år'
+      one: 'over 1 år',
+      other: 'over {{count}} år'
     },
 
     almostXYears: {
-      singular: 'næsten 1 år',
-      plural: 'næsten {{count}} år'
+      one: 'næsten 1 år',
+      other: 'næsten {{count}} år'
     }
   }
 

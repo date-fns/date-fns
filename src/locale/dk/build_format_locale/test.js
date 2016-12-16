@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildFormatLocale = require('./')
 
-describe('sv locale > buildFormatLocale', function () {
+describe('dk locale > buildFormatLocale', function () {
   it('returns an object', function () {
     assert(typeof buildFormatLocale() === 'object')
   })
@@ -184,7 +184,7 @@ describe('sv locale > buildFormatLocale', function () {
       })
 
       it('returns the correct string for Tuesday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === 'tisdag')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === 'tirsdag')
       })
 
       it('returns the correct string for Wednesday', function () {

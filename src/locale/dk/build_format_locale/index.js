@@ -2,13 +2,13 @@ var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_re
 
 function buildFormatLocale () {
   var months3char = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec']
-  var monthsFull = ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'novermber', 'december']
+  var monthsFull = ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
   var weekdays2char = ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø']
   var weekdays3char = ['søn', 'man', 'tir', 'ons', 'tor', 'fre', 'lør']
-  var weekdaysFull = ['søndag', 'mandag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
+  var weekdaysFull = ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
   var meridiemUppercase = ['AM', 'PM']
   var meridiemLowercase = ['am', 'pm']
-  var meridiemFull = ['a.m.', 'e.m.']
+  var meridiemFull = ['a.m.', 'p.m.']
 
   var formatters = {
     // Month: Jan, Feb, ..., Dec
@@ -67,7 +67,7 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  return number
+  return "" + number
 }
 
 module.exports = buildFormatLocale
