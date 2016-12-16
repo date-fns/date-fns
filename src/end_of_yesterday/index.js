@@ -5,6 +5,7 @@
  * @description
  * Return the end of yesterday.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the end of yesterday
  *
  * @example
@@ -12,7 +13,7 @@
  * var result = endOfYesterday()
  * //=> Sun Oct 5 2014 23:59:59.999
  */
-function endOfYesterday () {
+function endOfYesterday (_) {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

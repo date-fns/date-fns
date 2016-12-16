@@ -8,6 +8,7 @@ var isSameQuarter = require('../is_same_quarter/index.js')
  * Is the given date in the same quarter as the current date?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in this quarter
  *
  * @example
@@ -15,8 +16,8 @@ var isSameQuarter = require('../is_same_quarter/index.js')
  * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-function isThisQuarter (dirtyDate) {
-  return isSameQuarter(new Date(), dirtyDate)
+function isThisQuarter (dirtyDate, options) {
+  return isSameQuarter(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisQuarter

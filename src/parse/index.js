@@ -51,7 +51,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
  * @param {String} dateString - the ISO 8601 formatted string to parse
- * @param {Object} [options] - the object with options
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @param {Number} [options.additionalDigits=2] - the additional number of digits in the extended year format. Options: 0, 1 or 2
  * @returns {Date} the parsed date in the local time zone
  *
@@ -67,7 +67,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 function parse (dateString, options) {
-  if (isDate(dateString)) {
+  if (isDate(dateString, options)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(dateString.getTime())
   } else if (typeof dateString !== 'string') {

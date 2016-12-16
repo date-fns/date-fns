@@ -5,6 +5,7 @@
  * @description
  * Return the start of tomorrow.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the start of tomorrow
  *
  * @example
@@ -12,7 +13,7 @@
  * var result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-function startOfTomorrow () {
+function startOfTomorrow (_) {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

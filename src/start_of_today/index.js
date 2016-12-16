@@ -7,6 +7,7 @@ var startOfDay = require('../start_of_day/index.js')
  * @description
  * Return the start of today.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the start of today
  *
  * @example
@@ -14,8 +15,8 @@ var startOfDay = require('../start_of_day/index.js')
  * var result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-function startOfToday () {
-  return startOfDay(new Date())
+function startOfToday (options) {
+  return startOfDay(new Date(), options)
 }
 
 module.exports = startOfToday

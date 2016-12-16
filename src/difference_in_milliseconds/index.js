@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Number} the number of milliseconds
  *
  * @example
@@ -20,9 +21,9 @@ var parse = require('../parse/index.js')
  * )
  * //=> 1100
  */
-function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
   return dateLeft.getTime() - dateRight.getTime()
 }
 

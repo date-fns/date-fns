@@ -8,6 +8,7 @@ var isSameMinute = require('../is_same_minute/index.js')
  * Is the given date in the same minute as the current date?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in this minute
  *
  * @example
@@ -16,8 +17,8 @@ var isSameMinute = require('../is_same_minute/index.js')
  * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
  */
-function isThisMinute (dirtyDate) {
-  return isSameMinute(new Date(), dirtyDate)
+function isThisMinute (dirtyDate, options) {
+  return isSameMinute(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisMinute

@@ -8,6 +8,7 @@ var isSameYear = require('../is_same_year/index.js')
  * Is the given date in the same year as the current date?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in this year
  *
  * @example
@@ -15,8 +16,8 @@ var isSameYear = require('../is_same_year/index.js')
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-function isThisYear (dirtyDate) {
-  return isSameYear(new Date(), dirtyDate)
+function isThisYear (dirtyDate, options) {
+  return isSameYear(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisYear

@@ -7,6 +7,7 @@ var endOfDay = require('../end_of_day/index.js')
  * @description
  * Return the end of today.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the end of today
  *
  * @example
@@ -14,8 +15,8 @@ var endOfDay = require('../end_of_day/index.js')
  * var result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
-function endOfToday () {
-  return endOfDay(new Date())
+function endOfToday (options) {
+  return endOfDay(new Date(), options)
 }
 
 module.exports = endOfToday

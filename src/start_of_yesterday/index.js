@@ -5,6 +5,7 @@
  * @description
  * Return the start of yesterday.
  *
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the start of yesterday
  *
  * @example
@@ -12,7 +13,7 @@
  * var result = startOfYesterday()
  * //=> Sun Oct 5 2014 00:00:00
  */
-function startOfYesterday () {
+function startOfYesterday (_) {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

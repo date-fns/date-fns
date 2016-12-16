@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date in the future?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in the future
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-function isFuture (dirtyDate) {
-  return parse(dirtyDate).getTime() > new Date().getTime()
+function isFuture (dirtyDate, options) {
+  return parse(dirtyDate, options).getTime() > new Date().getTime()
 }
 
 module.exports = isFuture

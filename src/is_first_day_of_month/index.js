@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date the first day of a month?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is the first day of a month
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-function isFirstDayOfMonth (dirtyDate) {
-  return parse(dirtyDate).getDate() === 1
+function isFirstDayOfMonth (dirtyDate, options) {
+  return parse(dirtyDate, options).getDate() === 1
 }
 
 module.exports = isFirstDayOfMonth

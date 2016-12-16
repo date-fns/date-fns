@@ -9,6 +9,7 @@ var addWeeks = require('../add_weeks/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of weeks to be subtracted
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Date} the new date with the weeks subtracted
  *
  * @example
@@ -16,8 +17,8 @@ var addWeeks = require('../add_weeks/index.js')
  * var result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-function subWeeks (dirtyDate, amount) {
-  return addWeeks(dirtyDate, -amount)
+function subWeeks (dirtyDate, amount, options) {
+  return addWeeks(dirtyDate, -amount, options)
 }
 
 module.exports = subWeeks

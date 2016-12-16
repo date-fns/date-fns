@@ -8,6 +8,7 @@ var isSameHour = require('../is_same_hour/index.js')
  * Is the given date in the same hour as the current date?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Object} [options] - the object with options. See [options]{@link docs/types/options}
  * @returns {Boolean} the date is in this hour
  *
  * @example
@@ -16,8 +17,8 @@ var isSameHour = require('../is_same_hour/index.js')
  * var result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-function isThisHour (dirtyDate) {
-  return isSameHour(new Date(), dirtyDate)
+function isThisHour (dirtyDate, options) {
+  return isSameHour(new Date(), dirtyDate, options)
 }
 
 module.exports = isThisHour
