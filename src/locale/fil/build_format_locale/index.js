@@ -104,39 +104,7 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  if (number < 10) {
-    switch (number) {
-      case 1:
-      case 4:
-      case 6:
-      case 8:
-        return 'pang-' + number
-      case 2:
-      case 3:
-      case 5:
-      case 9:
-        return 'pan-' + number
-      case 7:
-        return 'pam-' + number
-    }
-  } else if (number >= 10 && number < 20) {
-    return 'pan-' + number
-  } else {
-    switch (number.toString()[0]) {
-      case '1':
-      case '4':
-      case '6':
-      case '8':
-        return 'pang-' + number
-      case '2':
-      case '3':
-      case '5':
-      case '9':
-        return 'pan-' + number
-      case '7':
-        return 'pam-' + number
-    }
-  }
+  return 'ika-' + number
 }
 
 module.exports = buildFormatLocale
