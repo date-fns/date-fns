@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.21.1] - 2016-12-18
+
+### Fixed
+
+- Fix `isBefore` and `isAfter` documentation mistakes.
+
 ## [1.21.0] - 2016-12-16
 
 ### Added
@@ -856,7 +862,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.21.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.21.1...HEAD
+[1.21.1]: https://github.com/date-fns/date-fns/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/date-fns/date-fns/compare/v1.20.1...v1.21.0
 [1.20.1]: https://github.com/date-fns/date-fns/compare/v1.20.0...v1.20.1
 [1.20.0]: https://github.com/date-fns/date-fns/compare/v1.19.0...v1.20.0
