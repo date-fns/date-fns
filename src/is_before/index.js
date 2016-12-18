@@ -7,8 +7,8 @@ var parse = require('../parse/index.js')
  * @description
  * Is the first date before the second one?
  *
+ * @param {Date|String|Number} date - the date that should be before the other one to return true
  * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date - the date that should be before the first one to return true
  * @returns {Boolean} the first date is before the second date
  *
  * @example
@@ -16,10 +16,10 @@ var parse = require('../parse/index.js')
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-function isBefore (dirtyDateToCompare, dirtyDate) {
-  var dateToCompare = parse(dirtyDateToCompare)
+function isBefore (dirtyDate, dirtyDateToCompare) {
   var date = parse(dirtyDate)
-  return dateToCompare.getTime() < date.getTime()
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() < dateToCompare.getTime()
 }
 
 module.exports = isBefore

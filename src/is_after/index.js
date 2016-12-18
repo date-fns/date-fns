@@ -7,8 +7,8 @@ var parse = require('../parse/index.js')
  * @description
  * Is the first date after the second one?
  *
+ * @param {Date|String|Number} date - the date that should be after the other one to return true
  * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date - the date that should be after the first one to return true
  * @returns {Boolean} the first date is after the second date
  *
  * @example
@@ -16,10 +16,10 @@ var parse = require('../parse/index.js')
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-function isAfter (dirtyDateToCompare, dirtyDate) {
-  var dateToCompare = parse(dirtyDateToCompare)
+function isAfter (dirtyDate, dirtyDateToCompare) {
   var date = parse(dirtyDate)
-  return dateToCompare.getTime() > date.getTime()
+  var dateToCompare = parse(dirtyDateToCompare)
+  return date.getTime() > dateToCompare.getTime()
 }
 
 module.exports = isAfter
