@@ -1,7 +1,7 @@
 var assert = require('power-assert')
 var getHours = require('./')
 
-describe('getMinutes', function () {
+describe('getHours', function () {
   it('PT responds 0 hours', function () {
     var result = getHours('PT')
     assert(result === 0)
