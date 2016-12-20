@@ -1,4 +1,4 @@
-var TIME_DESIGNATOR = 'T';
+var TIME_DESIGNATOR = 'T'
 
 function extractDateComponent (isoDuration) {
   return isoDuration.split(TIME_DESIGNATOR)[1] || ''
@@ -10,7 +10,7 @@ function getDateUnit (dirtyDuration, unit) {
     .toUpperCase()
     .match(new RegExp('[+,-]?[0-9]+(\\.[0-9]+)?' + unit))
 
-  if (!matchedUnit) { return 0; }
+  if (!matchedUnit) { return 0 }
   return parseFloat(matchedUnit[0].slice(0, -1))
 }
 

@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 var assert = require('power-assert')
 var getHours = require('./')
 
