@@ -12,6 +12,11 @@ describe('getYears', function () {
     assert(result === 1)
   })
 
+  it('P-1Y responds -1 year', function () {
+    var result = getYears('PT-1Y')
+    assert(result === -1)
+  })
+
   it('P1.1Y responds 1.1 years', function () {
     var result = getYears('PT1.1Y')
     assert(result === 1.1)

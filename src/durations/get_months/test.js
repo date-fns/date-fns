@@ -12,6 +12,11 @@ describe('getMonths', function () {
     assert(result === 1)
   })
 
+  it('P-1M responds -1 month', function () {
+    var result = getMonths('PT-1M')
+    assert(result === -1)
+  })
+
   it('P1.1M responds 1.1 months', function () {
     var result = getMonths('PT1.1M')
     assert(result === 1.1)

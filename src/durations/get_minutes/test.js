@@ -12,6 +12,11 @@ describe('getMinutes', function () {
     assert(result === 1)
   })
 
+  it('PT-1M responds -1 minute', function () {
+    var result = getMinutes('PT-1M')
+    assert(result === -1)
+  })
+
   it('PT1.1M responds 1.1 minutes', function () {
     var result = getMinutes('PT1.1M')
     assert(result === 1.1)
