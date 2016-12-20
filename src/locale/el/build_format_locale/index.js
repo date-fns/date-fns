@@ -65,7 +65,7 @@ function buildFormatLocale () {
   formatsWithGenitive.forEach(function (formatterToken) {
     formatters[formatterToken + ' MMMM'] = function (date, commonFormatters) {
       var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
-      return formatter(date, commonFormatters) + ' ' + getTranslation('MMMM-genitive', date.getMonth())
+      return formatter(date, commonFormatters) + ' ' + getTranslation('MMMM', date.getMonth(), {casing: 'genitive'})
     }
   })
 
