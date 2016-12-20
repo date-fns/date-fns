@@ -21,5 +21,10 @@ describe('getSeconds', function () {
     var result = getSeconds('PT1.1S')
     assert(result === 1.1)
   })
+
+  it.skip('`I\'m invalid` responds `Invalid Duration`', function () {
+    var result = getSeconds('I\'m invalid')
+    assert(result === 'Invalid Duration')
+  })
 })
 
