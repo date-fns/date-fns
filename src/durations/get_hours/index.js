@@ -1,7 +1,7 @@
 var getTimeUnit = require('../get_time_unit')
 
-function getMinutes (dirtyDuration) {
+function getHours (dirtyDuration) {
   return getTimeUnit(dirtyDuration, 'H')
 }
 
-module.exports = getMinutes
+module.exports = getHours
