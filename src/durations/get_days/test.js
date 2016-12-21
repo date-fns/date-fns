@@ -10,17 +10,17 @@ describe('getDays', function () {
   })
 
   it('P1D responds 1 day', function () {
-    var result = getDays('PT1D')
+    var result = getDays('P1D')
     assert(result === 1)
   })
 
   it('P-1D responds -1 day', function () {
-    var result = getDays('PT-1D')
+    var result = getDays('P-1D')
     assert(result === -1)
   })
 
   it('P1.1D responds 1.1 days', function () {
-    var result = getDays('PT1.1D')
+    var result = getDays('P1.1D')
     assert(result === 1.1)
   })
 
