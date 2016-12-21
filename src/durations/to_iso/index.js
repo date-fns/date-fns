@@ -9,7 +9,7 @@ function toIso (duration) {
     toUnit(duration.years, 'Y'),
     toUnit(duration.months, 'M'),
     toUnit(duration.weeks, 'W'),
-    toUnit(duration.days, 'D'),
+    toUnit(duration.days, 'D')
   ].join('')
 
   var timeComponent = [
