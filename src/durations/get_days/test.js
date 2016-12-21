@@ -2,6 +2,7 @@
 
 var assert = require('power-assert')
 var getDays = require('./')
+var CONSTANTS = require('../constants')
 
 describe('getDays', function () {
   it('PT responds 0 days', function () {
@@ -26,7 +27,7 @@ describe('getDays', function () {
 
   it('`I\'m invalid` responds `Invalid Duration`', function () {
     var result = getDays('I\'m invalid')
-    assert(result === 'Invalid Duration')
+    assert(result === CONSTANTS.INVALID_DURATION)
   })
 })
 
