@@ -24,7 +24,7 @@ describe('getMinutes', function () {
     assert(result === 1.1)
   })
 
-  it.skip('`I\'m invalid` responds `Invalid Duration`', function () {
+  it('`I\'m invalid` responds `Invalid Duration`', function () {
     var result = getMinutes('I\'m invalid')
     assert(result === 'Invalid Duration')
   })
