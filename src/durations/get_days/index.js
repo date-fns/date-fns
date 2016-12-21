@@ -1,7 +1,7 @@
-var getTimeUnit = require('../get_time_unit')
+var getDateUnit = require('../get_date_unit')
 
 function getDays (dirtyDuration) {
-  return getTimeUnit(dirtyDuration, 'D')
+  return getDateUnit(dirtyDuration, 'D')
 }
 
 module.exports = getDays

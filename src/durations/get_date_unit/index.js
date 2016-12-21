@@ -1,7 +1,7 @@
 var TIME_DESIGNATOR = 'T'
 
 function extractDateComponent (isoDuration) {
-  return isoDuration.split(TIME_DESIGNATOR)[1] || ''
+  return isoDuration.split(TIME_DESIGNATOR)[0] || ''
 }
 
 function getDateUnit (dirtyDuration, unit) {
