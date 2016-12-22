@@ -149,5 +149,107 @@ describe('format', function () {
       assert.equal(result, '10')
     })
   })
+
+  describe('H', function () {
+    it('P responds 0', function () {
+      var result = format('P', 'H')
+      assert.equal(result, '0')
+    })
+
+    it('PT1H responds 1', function () {
+      var result = format('PT1H', 'H')
+      assert.equal(result, '1')
+    })
+
+    it('PT10H responds 10', function () {
+      var result = format('PT10H', 'H')
+      assert.equal(result, '10')
+    })
+  })
+
+  describe('HH', function () {
+    it('P responds 0', function () {
+      var result = format('P', 'HH')
+      assert.equal(result, '00')
+    })
+
+    it('PT1H responds 1', function () {
+      var result = format('PT1H', 'HH')
+      assert.equal(result, '01')
+    })
+
+    it('PT10H responds 10', function () {
+      var result = format('PT10H', 'HH')
+      assert.equal(result, '10')
+    })
+  })
+
+  describe('m', function () {
+    it('P responds 0', function () {
+      var result = format('P', 'm')
+      assert.equal(result, '0')
+    })
+
+    it('PT1M responds 1', function () {
+      var result = format('PT1M', 'm')
+      assert.equal(result, '1')
+    })
+
+    it('PT10M responds 10', function () {
+      var result = format('PT10M', 'm')
+      assert.equal(result, '10')
+    })
+  })
+
+  describe('mm', function () {
+    it('P responds 0', function () {
+      var result = format('P', 'mm')
+      assert.equal(result, '00')
+    })
+
+    it('PT1M responds 1', function () {
+      var result = format('PT1M', 'mm')
+      assert.equal(result, '01')
+    })
+
+    it('PT10M responds 10', function () {
+      var result = format('PT10M', 'mm')
+      assert.equal(result, '10')
+    })
+  })
+
+  describe('s', function () {
+    it('P responds 0', function () {
+      var result = format('P', 's')
+      assert.equal(result, '0')
+    })
+
+    it('PT1S responds 1', function () {
+      var result = format('PT1S', 's')
+      assert.equal(result, '1')
+    })
+
+    it('PT10S responds 10', function () {
+      var result = format('PT10S', 's')
+      assert.equal(result, '10')
+    })
+  })
+
+  describe('ss', function () {
+    it('P responds 0', function () {
+      var result = format('P', 'ss')
+      assert.equal(result, '00')
+    })
+
+    it('PT1S responds 1', function () {
+      var result = format('PT1S', 'ss')
+      assert.equal(result, '01')
+    })
+
+    it('PT10S responds 10', function () {
+      var result = format('PT10S', 'ss')
+      assert.equal(result, '10')
+    })
+  })
 })
 
