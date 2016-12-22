@@ -31,7 +31,26 @@ var FORMATTERS = {
   }
 }
 
-function format(duration, formatStr) {
+/**
+ * @category Duration Helpers
+ * @summary Format the duration.
+ *
+ * @description
+ * Return the duration string in the given format.
+ *
+ * Accepted tokens:
+ * | Unit                    | Token | Result examples                  |
+ * |-------------------------|-------|----------------------------------|
+ * | Year                    | Y     | 1, 2, ..., 12                    |
+ * |                         | YY    | 01, 02, ..., 12                  |
+ * | Month                   | M     | 1, 2, ..., 12                    |
+ * |                         | MM    | 01, 02, ..., 12                  |
+ * | Week                    | W     | 1, 2, ..., 12                    |
+ * |                         | WW    | 01, 02, ..., 12                  |
+ * | Day                     | D     | 1, 2, ..., 12                    |
+ * |                         | DD    | 01, 02, ..., 12                  |
+ */
+ function format(duration, formatStr) {
   return FORMATTERS[formatStr](duration)
 }
 
