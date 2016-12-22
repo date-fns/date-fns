@@ -4,6 +4,16 @@ var assert = require('power-assert')
 var format = require('./')
 
 describe('format', function () {
+  it('multiple formatters can be chained', function () {
+    var result = format('P1Y2M', 'YY MM')
+    assert.equal(result, '01 02')
+  })
+
+  it('existing tokens are not replaced when wrapped in []', function () {
+    var result = format('P1Y2M', '[YY] MM')
+    assert.equal(result, 'YY 02')
+  })
+
   describe('Y', function () {
     it('P responds 0', function () {
       var result = format('P', 'Y')
