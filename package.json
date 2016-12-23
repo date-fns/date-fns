@@ -75,7 +75,8 @@
     "stats-loc-tests": "echo 'Test suite stats:' && sloc src/**/test.js",
     "flow-check": "flow check",
     "systemjs-check": "babel-node scripts/systemjs_check.js",
-    "benchmark": "env TEST_BENCHMARK=true karma start config/karma.js --single-run"
+    "benchmark": "env TEST_BENCHMARK=true karma start config/karma.js --single-run",
+    "generate-typings": "babel-node ./scripts/generate_typings"
   },
   "standard": {
     "parser": "babel-eslint",
