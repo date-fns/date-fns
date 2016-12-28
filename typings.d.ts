@@ -164,6 +164,9 @@ declare module 'date-fns' {
   function getHours(date: DateOrStringOrNumber): number;
   namespace getHours {}
 
+  function getISODay(date: DateOrStringOrNumber): number;
+  namespace getISODay {}
+
   function getISOWeek(date: DateOrStringOrNumber): number;
   namespace getISOWeek {}
 
@@ -352,6 +355,9 @@ declare module 'date-fns' {
 
   function setHours(date: DateOrStringOrNumber, hours: number): Date;
   namespace setHours {}
+
+  function setISODay(date: DateOrStringOrNumber, isoDay: number): Date;
+  namespace setISODay {}
 
   function setISOWeek(date: DateOrStringOrNumber, isoWeek: number): Date;
   namespace setISOWeek {}
@@ -718,6 +724,11 @@ declare module 'date-fns/get_hours' {
   export = getHours;
 }
 
+declare module 'date-fns/get_iso_day' {
+  import {getISODay} from 'date-fns';
+  export = getISODay;
+}
+
 declare module 'date-fns/get_iso_week' {
   import {getISOWeek} from 'date-fns';
   export = getISOWeek;
@@ -1031,6 +1042,11 @@ declare module 'date-fns/set_day_of_year' {
 declare module 'date-fns/set_hours' {
   import {setHours} from 'date-fns';
   export = setHours;
+}
+
+declare module 'date-fns/set_iso_day' {
+  import {setISODay} from 'date-fns';
+  export = setISODay;
 }
 
 declare module 'date-fns/set_iso_week' {
