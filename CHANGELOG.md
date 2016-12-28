@@ -10,6 +10,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.22.0] - 0216-12-19
+
+Expose locale translations directly as a method (`getTranslation()`) on the `locale` object.
+
 ## [1.21.1] - 2016-12-18
 
 ### Fixed

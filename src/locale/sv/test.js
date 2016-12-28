@@ -2,14 +2,18 @@
 /* eslint-env mocha */
 
 var assert = require('power-assert')
-var svLocale = require('./')
+var locale = require('./')
 
 describe('sv locale', function () {
   it('exports distanceInWords object', function () {
-    assert(typeof svLocale.distanceInWords === 'object')
+    assert(typeof locale.distanceInWords === 'object')
   })
 
   it('exports format object', function () {
-    assert(typeof svLocale.format === 'object')
+    assert(typeof locale.format === 'object')
+  })
+
+  it('exports getTranslation method', function () {
+    assert(typeof locale.getTranslation === 'function')
   })
 })

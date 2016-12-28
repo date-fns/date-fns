@@ -1,50 +1,44 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var getTranslation = require('../translations/index.js').getTranslation
 
 function buildFormatLocale () {
-  var months3char = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru']
-  var monthsFull = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
-  var weekdays2char = ['nd.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.']
-  var weekdays3char = ['ndz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.']
-  var weekdaysFull = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota']
-  var meridiem = ['w nocy', 'rano', 'po południu', 'wieczorem']
-
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return getTranslation('MMM', date.getMonth())
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return getTranslation('MMMM', date.getMonth())
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return getTranslation('dd', date.getDay())
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return getTranslation('ddd', date.getDay())
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return getTranslation('dddd', date.getDay())
     },
 
     // Time of day
     'A': function (date) {
       var hours = date.getHours()
       if (hours >= 17) {
-        return meridiem[3]
+        return getTranslation('A', 3)
       } else if (hours >= 12) {
-        return meridiem[2]
+        return getTranslation('A', 2)
       } else if (hours >= 4) {
-        return meridiem[1]
+        return getTranslation('A', 1)
       } else {
-        return meridiem[0]
+        return getTranslation('A', 0)
       }
     }
   }

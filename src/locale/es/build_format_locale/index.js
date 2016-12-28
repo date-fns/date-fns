@@ -1,54 +1,46 @@
 var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var getTranslation = require('../translations/index.js').getTranslation
 
 function buildFormatLocale () {
-  var months3char = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
-  var monthsFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
-  var weekdays2char = ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa']
-  var weekdays3char = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sáb']
-  var weekdaysFull = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
-  var meridiemFull = ['a.m.', 'p.m.']
-
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return getTranslation('MMM', date.getMonth())
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return getTranslation('MMMM', date.getMonth())
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return getTranslation('dd', date.getDay())
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return getTranslation('ddd', date.getDay())
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return getTranslation('dddd', date.getDay())
     },
 
     // AM, PM
     'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+      return (date.getHours() / 12) >= 1 ? getTranslation('A', 1) : getTranslation('A', 0)
     },
 
     // am, pm
     'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+      return (date.getHours() / 12) >= 1 ? getTranslation('a', 1) : getTranslation('a', 0)
     },
 
     // a.m., p.m.
     'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+      return (date.getHours() / 12) >= 1 ? getTranslation('aa', 1) : getTranslation('aa', 0)
     }
   }
 
