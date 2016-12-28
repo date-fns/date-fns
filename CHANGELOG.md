@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.22.0] - 2016-12-28
+
+## Added
+
+- [Icelandic locale (is)](https://github.com/date-fns/date-fns/pull/356)
+  (thanks to Derek Blank [@derekblank](https://github.com/derekblank))
+
 ## [1.21.1] - 2016-12-18
 
 ### Fixed
@@ -862,7 +869,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.21.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.22.0...HEAD
+[1.22.0]: https://github.com/date-fns/date-fns/compare/v1.21.1...v1.22.0
 [1.21.1]: https://github.com/date-fns/date-fns/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/date-fns/date-fns/compare/v1.20.1...v1.21.0
 [1.20.1]: https://github.com/date-fns/date-fns/compare/v1.20.0...v1.20.1
