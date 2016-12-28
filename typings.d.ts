@@ -143,7 +143,7 @@ declare module 'date-fns' {
   function endOfYesterday(): Date;
   namespace endOfYesterday {}
 
-  function format(date: DateOrStringOrNumber, format?: string): string;
+  function format(date: DateOrStringOrNumber, format?: string, options?: {locale?: Object}): string;
   namespace format {}
 
   function getDate(date: DateOrStringOrNumber): number;
