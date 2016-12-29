@@ -10,6 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## Added
+
+- [Croatian locale (hr)](https://github.com/date-fns/date-fns/pull/362)
+  (thanks to Matija Marohnić [@silvenon](https://github.com/silvenon))
+
 ## [1.22.0] - 2016-12-28
 
 ## Added
