@@ -4,6 +4,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 /**
  * @category Locales
  * @summary Bulgarian locale.
+ * @author Nikolay Stoynov [@arvigeus]{@link https://github.com/arvigeus}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),

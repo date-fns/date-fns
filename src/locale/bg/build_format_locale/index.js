@@ -78,8 +78,6 @@ function ordinal (number) {
         return number + '-ви'
       case 2:
         return number + '-ри'
-      case 3:
-        return number + '-и'
     }
   }
   return number + '-и'

@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildFormatLocale = require('./')
 
-describe('en locale > buildFormatLocale', function () {
+describe('bg locale > buildFormatLocale', function () {
   it('returns an object', function () {
     assert(typeof buildFormatLocale() === 'object')
   })
