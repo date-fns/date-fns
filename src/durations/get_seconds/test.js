@@ -2,7 +2,7 @@
 
 var assert = require('power-assert')
 var getSeconds = require('./')
-var CONSTANTS = require('../constants')
+var CONSTANTS = require('../_lib/constants')
 
 describe('getSeconds', function () {
   it('PT responds 0 seconds', function () {
