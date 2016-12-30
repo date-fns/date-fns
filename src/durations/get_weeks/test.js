@@ -2,7 +2,7 @@
 
 var assert = require('power-assert')
 var getWeeks = require('./')
-var CONSTANTS = require('../constants')
+var CONSTANTS = require('../_lib/constants')
 
 describe('getWeeks', function () {
   it('PT responds 0 weeks', function () {
