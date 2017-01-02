@@ -37,5 +37,10 @@ describe('addDuration', function () {
     var result = addDuration(new Date('2000-01-01T00:00:00'), 'PT1S')
     assert.deepEqual(result, new Date('2000-01-01T00:00:01'))
   })
+
+  it('adds P1Y1M1W1DT1H1M1S to date', function () {
+    var result = addDuration(new Date('2000-01-01T00:00:00'), 'P1Y1M1W1DT1H1M1S')
+    assert.deepEqual(result, new Date('2001-02-09T01:01:01'))
+  })
 })
 
