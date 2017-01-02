@@ -37,5 +37,10 @@ describe('subDuration', function () {
     var result = subDuration(new Date('2000-01-01T00:00:01'), 'PT1S')
     assert.deepEqual(result, new Date('2000-01-01T00:00:00'))
   })
+
+  it('responds `Invalid Date` if duration is invalid', function () {
+    var result = subDuration(new Date('2000-01-01T00:00:01'), 'I\'m invalid')
+    assert.equal(result, 'Invalid Date')
+  })
 })
 

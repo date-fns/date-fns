@@ -30,7 +30,7 @@ describe('toObject', function () {
     })
   })
 
-  it('duration object can\'t be modified', function() {
+  it('duration object can\'t be modified', function () {
     var result = toObject('PT')
     result.years = 1
     assert(result.years !== 1)

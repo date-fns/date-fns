@@ -42,5 +42,10 @@ describe('addDuration', function () {
     var result = addDuration(new Date('2000-01-01T00:00:00'), 'P1Y1M1W1DT1H1M1S')
     assert.deepEqual(result, new Date('2001-02-09T01:01:01'))
   })
+
+  it('responds `Invalid Date` if duration is invalid', function () {
+    var result = addDuration(new Date('2000-01-01T00:00:01'), 'I\'m invalid')
+    assert.equal(result, 'Invalid Date')
+  })
 })
 
