@@ -82,9 +82,9 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'ใน ' + result
+        return 'ใน' + result
       } else {
-        return result + ' ที่ผ่านมา'
+        return result + 'ที่ผ่านมา'
       }
     }
 
