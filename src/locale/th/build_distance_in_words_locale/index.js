@@ -82,7 +82,12 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'ใน' + result
+        if(token === 'halfAMinute') {
+          return 'ใน' + result
+        } else {
+          return 'ใน ' + result
+        }
+
       } else {
         return result + 'ที่ผ่านมา'
       }

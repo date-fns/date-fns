@@ -224,4 +224,14 @@ describe('th locale > buildDistanceInWordsLocale', function () {
       assert(result === 'ในครึ่งนาที')
     })
   })
+
+  context('with a future suffix', function () {
+    it('adds `in` to a string', function () {
+      var result = buildDistanceInWordsLocale().localize('xMonths', 1, {
+        addSuffix: true,
+        comparison: 1
+      })
+      assert(result === 'ใน 1 เดือน')
+    })
+  })
 })
