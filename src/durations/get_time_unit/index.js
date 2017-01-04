@@ -1,7 +1,7 @@
-var TIME_DESIGNATOR = 'T'
+var CONSTANTS = require('../_lib/constants')
 
 function extractTimeComponent (isoDuration) {
-  return isoDuration.split(TIME_DESIGNATOR)[1] || ''
+  return isoDuration.split(CONSTANTS.TIME_DESIGNATOR)[1] || ''
 }
 
 function getTimeUnit (dirtyDuration, unit) {
