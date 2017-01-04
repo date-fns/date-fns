@@ -3,7 +3,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
  * @category Locales
- * @summary English locale.
+ * @summary Arabic locale.
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),

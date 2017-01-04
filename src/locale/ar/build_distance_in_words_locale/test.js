@@ -82,13 +82,13 @@ describe('ar locale > buildDistanceInWordsLocale', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === 'حوالي ساعة واحدة')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === 'ساعة واحدة تقريباً')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === 'حوالي 2 ساعات')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === '2 ساعات تقريباً')
       })
     })
   })
@@ -124,13 +124,13 @@ describe('ar locale > buildDistanceInWordsLocale', function () {
   describe('aboutXMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 1) === 'حوالي شهر واحد')
+        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 1) === 'شهر واحد تقريباً')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === 'حوالي 2 أشهر')
+        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === '2 أشهر تقريباً')
       })
     })
   })

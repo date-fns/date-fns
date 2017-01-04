@@ -23,8 +23,8 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXHours: {
-      one: 'حوالي ساعة واحدة',
-      other: 'حوالي {{count}} ساعات'
+      one: 'ساعة واحدة تقريباً',
+      other: '{{count}} ساعات تقريباً'
     },
 
     xHours: {
@@ -38,8 +38,8 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXMonths: {
-      one: 'حوالي شهر واحد',
-      other: 'حوالي {{count}} أشهر'
+      one: 'شهر واحد تقريباً',
+      other: '{{count}} أشهر تقريباً'
     },
 
     xMonths: {
