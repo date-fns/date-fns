@@ -5,6 +5,8 @@ dir=tmp/npm
 rm -rf $dir
 mkdir $dir
 
+yarn run generate-typings
+
 for pattern in CHANGELOG.md \
   LICENSE.md \
   README.md \

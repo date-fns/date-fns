@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+- Auto generate typescript definitions from documentation on release
+
 ## [1.22.0] - 2016-12-28
 
 ## Added
