@@ -1,3 +1,5 @@
 // @flow
 
-declare module.exports: (...dates: (Date|string|number)[]) => Date
+declare module.exports: (
+  ...dates: (Date | string | number)[]
+) => Date

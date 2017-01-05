@@ -1,3 +1,6 @@
 // @flow
 
-declare module.exports: (dateToCompare: Date|string|number, datesArray: (Date|string|number)[]) => number
+declare module.exports: (
+  dateToCompare: Date | string | number,
+  datesArray: (Date | string | number)[]
+) => number

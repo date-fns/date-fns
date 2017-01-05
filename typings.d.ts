@@ -1,66 +1,65 @@
 declare module 'date-fns' {
-  
-  function addDays(
+  function addDays (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addDays {}
 
-  function addHours(
+  function addHours (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addHours {}
 
-  function addISOYears(
+  function addISOYears (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addISOYears {}
 
-  function addMilliseconds(
+  function addMilliseconds (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addMilliseconds {}
 
-  function addMinutes(
+  function addMinutes (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addMinutes {}
 
-  function addMonths(
+  function addMonths (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addMonths {}
 
-  function addQuarters(
+  function addQuarters (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addQuarters {}
 
-  function addSeconds(
+  function addSeconds (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addSeconds {}
 
-  function addWeeks(
+  function addWeeks (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addWeeks {}
 
-  function addYears(
+  function addYears (
     date: Date | string | number,
     amount: number
   ): Date
   namespace addYears {}
 
-  function areRangesOverlapping(
+  function areRangesOverlapping (
     dirtyInitialRangeStartDate: Date | string | number,
     dirtyInitialRangeEndDate: Date | string | number,
     dirtyComparedRangeStartDate: Date | string | number,
@@ -68,298 +67,311 @@ declare module 'date-fns' {
   ): boolean
   namespace areRangesOverlapping {}
 
-  function closestIndexTo(
+  function closestIndexTo (
     dateToCompare: Date | string | number,
     datesArray: (Date | string | number)[]
   ): number
   namespace closestIndexTo {}
 
-  function closestTo(
+  function closestTo (
     dateToCompare: Date | string | number,
     datesArray: (Date | string | number)[]
   ): Date
   namespace closestTo {}
 
-  function compareAsc(
+  function compareAsc (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace compareAsc {}
 
-  function compareDesc(
+  function compareDesc (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace compareDesc {}
 
-  function differenceInCalendarDays(
+  function differenceInCalendarDays (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarDays {}
 
-  function differenceInCalendarISOWeeks(
+  function differenceInCalendarISOWeeks (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarISOWeeks {}
 
-  function differenceInCalendarISOYears(
+  function differenceInCalendarISOYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarISOYears {}
 
-  function differenceInCalendarMonths(
+  function differenceInCalendarMonths (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarMonths {}
 
-  function differenceInCalendarQuarters(
+  function differenceInCalendarQuarters (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarQuarters {}
 
-  function differenceInCalendarWeeks(
+  function differenceInCalendarWeeks (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): number
   namespace differenceInCalendarWeeks {}
 
-  function differenceInCalendarYears(
+  function differenceInCalendarYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInCalendarYears {}
 
-  function differenceInDays(
+  function differenceInDays (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInDays {}
 
-  function differenceInHours(
+  function differenceInHours (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInHours {}
 
-  function differenceInISOYears(
+  function differenceInISOYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInISOYears {}
 
-  function differenceInMilliseconds(
+  function differenceInMilliseconds (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInMilliseconds {}
 
-  function differenceInMinutes(
+  function differenceInMinutes (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInMinutes {}
 
-  function differenceInMonths(
+  function differenceInMonths (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInMonths {}
 
-  function differenceInQuarters(
+  function differenceInQuarters (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInQuarters {}
 
-  function differenceInSeconds(
+  function differenceInSeconds (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInSeconds {}
 
-  function differenceInWeeks(
+  function differenceInWeeks (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInWeeks {}
 
-  function differenceInYears(
+  function differenceInYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): number
   namespace differenceInYears {}
 
-  function distanceInWords(
+  function distanceInWords (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {includeSeconds?: boolean, addSuffix?: boolean, locale?: Object}
+    options?: {
+      includeSeconds?: boolean,
+      addSuffix?: boolean,
+      locale?: Object
+    }
   ): string
   namespace distanceInWords {}
 
-  function distanceInWordsStrict(
+  function distanceInWordsStrict (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {addSuffix?: boolean, unit?: string, partialMethod?: string, locale?: Object}
+    options?: {
+      addSuffix?: boolean,
+      unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+      partialMethod?: 'floor' | 'ceil' | 'round',
+      locale?: Object
+    }
   ): string
   namespace distanceInWordsStrict {}
 
-  function distanceInWordsToNow(
+  function distanceInWordsToNow (
     date: Date | string | number,
-    options?: {includeSeconds?: boolean, addSuffix?: boolean, locale?: Object}
+    options?: {
+      includeSeconds?: boolean,
+      addSuffix?: boolean,
+      locale?: Object
+    }
   ): string
   namespace distanceInWordsToNow {}
 
-  function eachDay(
+  function eachDay (
     startDate: Date | string | number,
     endDate: Date | string | number
   ): Date[]
   namespace eachDay {}
 
-  function endOfDay(
+  function endOfDay (
     date: Date | string | number
   ): Date
   namespace endOfDay {}
 
-  function endOfHour(
+  function endOfHour (
     date: Date | string | number
   ): Date
   namespace endOfHour {}
 
-  function endOfISOWeek(
+  function endOfISOWeek (
     date: Date | string | number
   ): Date
   namespace endOfISOWeek {}
 
-  function endOfISOYear(
+  function endOfISOYear (
     date: Date | string | number
   ): Date
   namespace endOfISOYear {}
 
-  function endOfMinute(
+  function endOfMinute (
     date: Date | string | number
   ): Date
   namespace endOfMinute {}
 
-  function endOfMonth(
+  function endOfMonth (
     date: Date | string | number
   ): Date
   namespace endOfMonth {}
 
-  function endOfQuarter(
+  function endOfQuarter (
     date: Date | string | number
   ): Date
   namespace endOfQuarter {}
 
-  function endOfSecond(
+  function endOfSecond (
     date: Date | string | number
   ): Date
   namespace endOfSecond {}
 
-  function endOfToday(
-    
-  ): Date
+  function endOfToday (): Date
   namespace endOfToday {}
 
-  function endOfTomorrow(
-    
-  ): Date
+  function endOfTomorrow (): Date
   namespace endOfTomorrow {}
 
-  function endOfWeek(
+  function endOfWeek (
     date: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): Date
   namespace endOfWeek {}
 
-  function endOfYear(
+  function endOfYear (
     date: Date | string | number
   ): Date
   namespace endOfYear {}
 
-  function endOfYesterday(
-    
-  ): Date
+  function endOfYesterday (): Date
   namespace endOfYesterday {}
 
-  function format(
+  function format (
     date: Date | string | number,
     format?: string,
-    options?: {locale?: Object}
+    options?: {
+      locale?: Object
+    }
   ): string
   namespace format {}
 
-  function getDate(
+  function getDate (
     date: Date | string | number
   ): number
   namespace getDate {}
 
-  function getDay(
+  function getDay (
     date: Date | string | number
   ): number
   namespace getDay {}
 
-  function getDayOfYear(
+  function getDayOfYear (
     date: Date | string | number
   ): number
   namespace getDayOfYear {}
 
-  function getDaysInMonth(
+  function getDaysInMonth (
     date: Date | string | number
   ): number
   namespace getDaysInMonth {}
 
-  function getDaysInYear(
+  function getDaysInYear (
     date: Date | string | number
   ): number
   namespace getDaysInYear {}
 
-  function getHours(
+  function getHours (
     date: Date | string | number
   ): number
   namespace getHours {}
 
-  function getISODay(
+  function getISODay (
     date: Date | string | number
   ): number
   namespace getISODay {}
 
-  function getISOWeek(
+  function getISOWeek (
     date: Date | string | number
   ): number
   namespace getISOWeek {}
 
-  function getISOWeeksInYear(
+  function getISOWeeksInYear (
     date: Date | string | number
   ): number
   namespace getISOWeeksInYear {}
 
-  function getISOYear(
+  function getISOYear (
     date: Date | string | number
   ): number
   namespace getISOYear {}
 
-  function getMilliseconds(
+  function getMilliseconds (
     date: Date | string | number
   ): number
   namespace getMilliseconds {}
 
-  function getMinutes(
+  function getMinutes (
     date: Date | string | number
   ): number
   namespace getMinutes {}
 
-  function getMonth(
+  function getMonth (
     date: Date | string | number
   ): number
   namespace getMonth {}
 
-  function getOverlappingDaysInRanges(
+  function getOverlappingDaysInRanges (
     dirtyInitialRangeStartDate: Date | string | number,
     dirtyInitialRangeEndDate: Date | string | number,
     dirtyComparedRangeStartDate: Date | string | number,
@@ -367,490 +379,496 @@ declare module 'date-fns' {
   ): number
   namespace getOverlappingDaysInRanges {}
 
-  function getQuarter(
+  function getQuarter (
     date: Date | string | number
   ): number
   namespace getQuarter {}
 
-  function getSeconds(
+  function getSeconds (
     date: Date | string | number
   ): number
   namespace getSeconds {}
 
-  function getYear(
+  function getYear (
     date: Date | string | number
   ): number
   namespace getYear {}
 
-  function isAfter(
+  function isAfter (
     date: Date | string | number,
     dateToCompare: Date | string | number
   ): boolean
   namespace isAfter {}
 
-  function isBefore(
+  function isBefore (
     date: Date | string | number,
     dateToCompare: Date | string | number
   ): boolean
   namespace isBefore {}
 
-  function isDate(
+  function isDate (
     argument: any
   ): boolean
   namespace isDate {}
 
-  function isEqual(
+  function isEqual (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isEqual {}
 
-  function isFirstDayOfMonth(
+  function isFirstDayOfMonth (
     date: Date | string | number
   ): boolean
   namespace isFirstDayOfMonth {}
 
-  function isFriday(
+  function isFriday (
     date: Date | string | number
   ): boolean
   namespace isFriday {}
 
-  function isFuture(
+  function isFuture (
     date: Date | string | number
   ): boolean
   namespace isFuture {}
 
-  function isLastDayOfMonth(
+  function isLastDayOfMonth (
     date: Date | string | number
   ): boolean
   namespace isLastDayOfMonth {}
 
-  function isLeapYear(
+  function isLeapYear (
     date: Date | string | number
   ): boolean
   namespace isLeapYear {}
 
-  function isMonday(
+  function isMonday (
     date: Date | string | number
   ): boolean
   namespace isMonday {}
 
-  function isPast(
+  function isPast (
     date: Date | string | number
   ): boolean
   namespace isPast {}
 
-  function isSameDay(
+  function isSameDay (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameDay {}
 
-  function isSameHour(
+  function isSameHour (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameHour {}
 
-  function isSameISOWeek(
+  function isSameISOWeek (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameISOWeek {}
 
-  function isSameISOYear(
+  function isSameISOYear (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameISOYear {}
 
-  function isSameMinute(
+  function isSameMinute (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameMinute {}
 
-  function isSameMonth(
+  function isSameMonth (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameMonth {}
 
-  function isSameQuarter(
+  function isSameQuarter (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameQuarter {}
 
-  function isSameSecond(
+  function isSameSecond (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameSecond {}
 
-  function isSameWeek(
+  function isSameWeek (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): boolean
   namespace isSameWeek {}
 
-  function isSameYear(
+  function isSameYear (
     dateLeft: Date | string | number,
     dateRight: Date | string | number
   ): boolean
   namespace isSameYear {}
 
-  function isSaturday(
+  function isSaturday (
     date: Date | string | number
   ): boolean
   namespace isSaturday {}
 
-  function isSunday(
+  function isSunday (
     date: Date | string | number
   ): boolean
   namespace isSunday {}
 
-  function isThisHour(
+  function isThisHour (
     date: Date | string | number
   ): boolean
   namespace isThisHour {}
 
-  function isThisISOWeek(
+  function isThisISOWeek (
     date: Date | string | number
   ): boolean
   namespace isThisISOWeek {}
 
-  function isThisISOYear(
+  function isThisISOYear (
     date: Date | string | number
   ): boolean
   namespace isThisISOYear {}
 
-  function isThisMinute(
+  function isThisMinute (
     date: Date | string | number
   ): boolean
   namespace isThisMinute {}
 
-  function isThisMonth(
+  function isThisMonth (
     date: Date | string | number
   ): boolean
   namespace isThisMonth {}
 
-  function isThisQuarter(
+  function isThisQuarter (
     date: Date | string | number
   ): boolean
   namespace isThisQuarter {}
 
-  function isThisSecond(
+  function isThisSecond (
     date: Date | string | number
   ): boolean
   namespace isThisSecond {}
 
-  function isThisWeek(
+  function isThisWeek (
     date: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): boolean
   namespace isThisWeek {}
 
-  function isThisYear(
+  function isThisYear (
     date: Date | string | number
   ): boolean
   namespace isThisYear {}
 
-  function isThursday(
+  function isThursday (
     date: Date | string | number
   ): boolean
   namespace isThursday {}
 
-  function isToday(
+  function isToday (
     date: Date | string | number
   ): boolean
   namespace isToday {}
 
-  function isTomorrow(
+  function isTomorrow (
     date: Date | string | number
   ): boolean
   namespace isTomorrow {}
 
-  function isTuesday(
+  function isTuesday (
     date: Date | string | number
   ): boolean
   namespace isTuesday {}
 
-  function isValid(
+  function isValid (
     date: Date
   ): boolean
   namespace isValid {}
 
-  function isWednesday(
+  function isWednesday (
     date: Date | string | number
   ): boolean
   namespace isWednesday {}
 
-  function isWeekend(
+  function isWeekend (
     date: Date | string | number
   ): boolean
   namespace isWeekend {}
 
-  function isWithinRange(
+  function isWithinRange (
     date: Date | string | number,
     startDate: Date | string | number,
     endDate: Date | string | number
   ): boolean
   namespace isWithinRange {}
 
-  function isYesterday(
+  function isYesterday (
     date: Date | string | number
   ): boolean
   namespace isYesterday {}
 
-  function lastDayOfISOWeek(
+  function lastDayOfISOWeek (
     date: Date | string | number
   ): Date
   namespace lastDayOfISOWeek {}
 
-  function lastDayOfISOYear(
+  function lastDayOfISOYear (
     date: Date | string | number
   ): Date
   namespace lastDayOfISOYear {}
 
-  function lastDayOfMonth(
+  function lastDayOfMonth (
     date: Date | string | number
   ): Date
   namespace lastDayOfMonth {}
 
-  function lastDayOfQuarter(
+  function lastDayOfQuarter (
     date: Date | string | number
   ): Date
   namespace lastDayOfQuarter {}
 
-  function lastDayOfWeek(
+  function lastDayOfWeek (
     date: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): Date
   namespace lastDayOfWeek {}
 
-  function lastDayOfYear(
+  function lastDayOfYear (
     date: Date | string | number
   ): Date
   namespace lastDayOfYear {}
 
-  function max(
+  function max (
     ...dates: (Date | string | number)[]
   ): Date
   namespace max {}
 
-  function min(
+  function min (
     ...dates: (Date | string | number)[]
   ): Date
   namespace min {}
 
-  function parse(
-    dateString: string,
-    options?: {additionalDigits?: number}
+  function parse (
+    argument: Date | string | number,
+    options?: {
+      additionalDigits?: 0 | 1 | 2
+    }
   ): Date
   namespace parse {}
 
-  function setDate(
+  function setDate (
     date: Date | string | number,
     dayOfMonth: number
   ): Date
   namespace setDate {}
 
-  function setDay(
+  function setDay (
     date: Date | string | number,
     day: number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): Date
   namespace setDay {}
 
-  function setDayOfYear(
+  function setDayOfYear (
     date: Date | string | number,
     dayOfYear: number
   ): Date
   namespace setDayOfYear {}
 
-  function setHours(
+  function setHours (
     date: Date | string | number,
     hours: number
   ): Date
   namespace setHours {}
 
-  function setISODay(
+  function setISODay (
     date: Date | string | number,
     day: number
   ): Date
   namespace setISODay {}
 
-  function setISOWeek(
+  function setISOWeek (
     date: Date | string | number,
     isoWeek: number
   ): Date
   namespace setISOWeek {}
 
-  function setISOYear(
+  function setISOYear (
     date: Date | string | number,
     isoYear: number
   ): Date
   namespace setISOYear {}
 
-  function setMilliseconds(
+  function setMilliseconds (
     date: Date | string | number,
     milliseconds: number
   ): Date
   namespace setMilliseconds {}
 
-  function setMinutes(
+  function setMinutes (
     date: Date | string | number,
     minutes: number
   ): Date
   namespace setMinutes {}
 
-  function setMonth(
+  function setMonth (
     date: Date | string | number,
     month: number
   ): Date
   namespace setMonth {}
 
-  function setQuarter(
+  function setQuarter (
     date: Date | string | number,
     quarter: number
   ): Date
   namespace setQuarter {}
 
-  function setSeconds(
+  function setSeconds (
     date: Date | string | number,
     seconds: number
   ): Date
   namespace setSeconds {}
 
-  function setYear(
+  function setYear (
     date: Date | string | number,
     year: number
   ): Date
   namespace setYear {}
 
-  function startOfDay(
+  function startOfDay (
     date: Date | string | number
   ): Date
   namespace startOfDay {}
 
-  function startOfHour(
+  function startOfHour (
     date: Date | string | number
   ): Date
   namespace startOfHour {}
 
-  function startOfISOWeek(
+  function startOfISOWeek (
     date: Date | string | number
   ): Date
   namespace startOfISOWeek {}
 
-  function startOfISOYear(
+  function startOfISOYear (
     date: Date | string | number
   ): Date
   namespace startOfISOYear {}
 
-  function startOfMinute(
+  function startOfMinute (
     date: Date | string | number
   ): Date
   namespace startOfMinute {}
 
-  function startOfMonth(
+  function startOfMonth (
     date: Date | string | number
   ): Date
   namespace startOfMonth {}
 
-  function startOfQuarter(
+  function startOfQuarter (
     date: Date | string | number
   ): Date
   namespace startOfQuarter {}
 
-  function startOfSecond(
+  function startOfSecond (
     date: Date | string | number
   ): Date
   namespace startOfSecond {}
 
-  function startOfToday(
-    
-  ): Date
+  function startOfToday (): Date
   namespace startOfToday {}
 
-  function startOfTomorrow(
-    
-  ): Date
+  function startOfTomorrow (): Date
   namespace startOfTomorrow {}
 
-  function startOfWeek(
+  function startOfWeek (
     date: Date | string | number,
-    options?: {weekStartsOn?: number}
+    options?: {
+      weekStartsOn?: number
+    }
   ): Date
   namespace startOfWeek {}
 
-  function startOfYear(
+  function startOfYear (
     date: Date | string | number
   ): Date
   namespace startOfYear {}
 
-  function startOfYesterday(
-    
-  ): Date
+  function startOfYesterday (): Date
   namespace startOfYesterday {}
 
-  function subDays(
+  function subDays (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subDays {}
 
-  function subHours(
+  function subHours (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subHours {}
 
-  function subISOYears(
+  function subISOYears (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subISOYears {}
 
-  function subMilliseconds(
+  function subMilliseconds (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subMilliseconds {}
 
-  function subMinutes(
+  function subMinutes (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subMinutes {}
 
-  function subMonths(
+  function subMonths (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subMonths {}
 
-  function subQuarters(
+  function subQuarters (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subQuarters {}
 
-  function subSeconds(
+  function subSeconds (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subSeconds {}
 
-  function subWeeks(
+  function subWeeks (
     date: Date | string | number,
     amount: number
   ): Date
   namespace subWeeks {}
 
-  function subYears(
+  function subYears (
     date: Date | string | number,
     amount: number
   ): Date

@@ -1,3 +1,5 @@
 // @flow
 
-declare module.exports: (argument: any) => boolean
+declare module.exports: (
+  argument: any
+) => boolean

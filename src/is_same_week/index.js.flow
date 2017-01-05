@@ -1,8 +1,8 @@
 // @flow
 
 declare module.exports: (
-  dateLeft: Date|string|number,
-  dateRight: Date|string|number,
+  dateLeft: Date | string | number,
+  dateRight: Date | string | number,
   options?: {
     weekStartsOn?: number
   }
