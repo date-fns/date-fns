@@ -1,7 +1,7 @@
 // @flow
 
 declare module.exports: (
-  date: Date|string|number,
+  date: Date | string | number,
   options?: {
     includeSeconds?: boolean,
     addSuffix?: boolean,

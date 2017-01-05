@@ -1,3 +1,5 @@
 // @flow
 
-declare module.exports: (date: Date) => boolean
+declare module.exports: (
+  date: Date
+) => boolean

@@ -1,7 +1,7 @@
 // @flow
 
 declare module.exports: (
-  date: Date|string|number,
+  argument: Date | string | number,
   options?: {
     additionalDigits?: 0 | 1 | 2
   }

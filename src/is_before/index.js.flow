@@ -1,3 +1,6 @@
 // @flow
 
-declare module.exports: (dateToCompare: Date|string|number, date: Date|string|number) => boolean
+declare module.exports: (
+  date: Date | string | number,
+  dateToCompare: Date | string | number
+) => boolean
