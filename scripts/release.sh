@@ -12,6 +12,7 @@ yarn run sync-versions
 yarn run generate-index
 yarn run build-umd
 yarn run build-docs
+yarn run generate-typings
 
 git add .
 git commit -m "Prepare release v$1"
