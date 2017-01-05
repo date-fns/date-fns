@@ -260,18 +260,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var parseTokenTimezoneZ = /^(Z)$/;
 	var parseTokenTimezoneHH = /^([+-])(\d{2})$/;
 	var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/;
-	function parse(dateString, options) {
-	    if (isDate(dateString)) {
-	        return new Date(dateString.getTime());
-	    } else if (typeof dateString !== 'string') {
-	        return new Date(dateString);
+	function parse(argument, options) {
+	    if (isDate(argument)) {
+	        return new Date(argument.getTime());
+	    } else if (typeof argument !== 'string') {
+	        return new Date(argument);
 	    }
 	    options = options || {};
 	    var additionalDigits = options.additionalDigits;
 	    if (additionalDigits == null) {
 	        additionalDigits = DEFAULT_ADDITIONAL_DIGITS;
 	    }
-	    var dateStrings = splitDateString(dateString);
+	    var dateStrings = splitDateString(argument);
 	    var parseYearResult = parseYear(dateStrings.date, additionalDigits);
 	    var year = parseYearResult.year;
 	    var restDateString = parseYearResult.restDateString;
@@ -291,7 +291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE);
 	    } else {
-	        return new Date(dateString);
+	        return new Date(argument);
 	    }
 	}
 	function splitDateString(dateString) {
