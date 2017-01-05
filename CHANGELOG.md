@@ -14,9 +14,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- Auto generate TypeScript definitions from documentation on release.
+- Auto generate TypeScript and flow typings from documentation on release.
   Thanks to [@mattlewis92](https://github.com/mattlewis92).
-  See related PR: [#355](https://github.com/date-fns/date-fns/pull/355)
+  See related PRs: [#355](https://github.com/date-fns/date-fns/pull/355),
+  [#370](https://github.com/date-fns/date-fns/pull/370)
 
 - [Croatian locale (hr)](https://github.com/date-fns/date-fns/pull/365)
   (thanks to Matija Marohnić [@silvenon](https://github.com/silvenon))
