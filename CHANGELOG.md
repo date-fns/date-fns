@@ -10,16 +10,26 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-## Added
+## [1.23.0] - 2017-01-05
 
-- Auto generate typescript definitions from documentation on release
+### Added
 
-- [Croatian locale (hr)](https://github.com/date-fns/date-fns/pull/362)
+- Auto generate TypeScript definitions from documentation on release.
+  Thanks to [@mattlewis92](https://github.com/mattlewis92).
+  See related PR: [#355](https://github.com/date-fns/date-fns/pull/355)
+
+- [Croatian locale (hr)](https://github.com/date-fns/date-fns/pull/365)
   (thanks to Matija Marohnić [@silvenon](https://github.com/silvenon))
+
+- [Thai locale (th)](https://github.com/date-fns/date-fns/pull/362)
+  (thanks to Athiwat Hirunworawongkun [@athivvat](https://github.com/athivvat))
+
+- [Finnish locale (fi)](https://github.com/date-fns/date-fns/pull/361)
+  (thanks to Pyry-Samuli Lahti [@Pyppe](https://github.com/Pyppe))
 
 ## [1.22.0] - 2016-12-28
 
-## Added
+### Added
 
 - [Icelandic locale (is)](https://github.com/date-fns/date-fns/pull/356)
   (thanks to Derek Blank [@derekblank](https://github.com/derekblank))
@@ -876,7 +886,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.22.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.23.0...HEAD
+[1.23.0]: https://github.com/date-fns/date-fns/compare/v1.22.0...v1.23.0
 [1.22.0]: https://github.com/date-fns/date-fns/compare/v1.21.1...v1.22.0
 [1.21.1]: https://github.com/date-fns/date-fns/compare/v1.21.0...v1.21.1
 [1.21.0]: https://github.com/date-fns/date-fns/compare/v1.20.1...v1.21.0
