@@ -42,21 +42,28 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
 
 /**
  * @category Common Helpers
- * @summary Parse the ISO-8601-formatted date.
+ * @summary Convert the given argument to an instance of Date.
  *
  * @description
- * Parse the date string representation.
- * It accepts complete ISO 8601 formats as well as partial implementations.
+ * Convert the given argument to an instance of Date.
  *
+ * If the argument is an instance of Date, the function returns its clone.
+ *
+ * If the argument is a number, it is treated as a timestamp.
+ *
+ * If an argument is a string, the function tries to parse it.
+ * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
- * @param {String} dateString - the ISO 8601 formatted string to parse
+ * If all above fails, the function passes the given argument to Date constructor.
+ *
+ * @param {String} argument - the value to convert
  * @param {Object} [options] - the object with options
  * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
  *
  * @example
- * // Parse string '2014-02-11T11:30:30':
+ * // Convert string '2014-02-11T11:30:30' to date:
  * var result = parse('2014-02-11T11:30:30')
  * //=> Tue Feb 11 2014 11:30:30
  *
@@ -66,12 +73,12 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * var result = parse('+02014101', {additionalDigits: 1})
  * //=> Fri Apr 11 2014 00:00:00
  */
-function parse (dateString, options) {
-  if (isDate(dateString)) {
+function parse (argument, options) {
+  if (isDate(argument)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(dateString.getTime())
-  } else if (typeof dateString !== 'string') {
-    return new Date(dateString)
+    return new Date(argument.getTime())
+  } else if (typeof argument !== 'string') {
+    return new Date(argument)
   }
 
   options = options || {}
@@ -80,7 +87,7 @@ function parse (dateString, options) {
     additionalDigits = DEFAULT_ADDITIONAL_DIGITS
   }
 
-  var dateStrings = splitDateString(dateString)
+  var dateStrings = splitDateString(argument)
 
   var parseYearResult = parseYear(dateStrings.date, additionalDigits)
   var year = parseYearResult.year
@@ -107,7 +114,7 @@ function parse (dateString, options) {
 
     return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
   } else {
-    return new Date(dateString)
+    return new Date(argument)
   }
 }
 
