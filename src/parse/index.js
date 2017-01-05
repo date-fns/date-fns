@@ -52,7 +52,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  *
  * @param {String} dateString - the ISO 8601 formatted string to parse
  * @param {Object} [options] - the object with options
- * @param {Number} [options.additionalDigits=2] - the additional number of digits in the extended year format. Options: 0, 1 or 2
+ * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
  *
  * @example
