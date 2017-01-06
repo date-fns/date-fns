@@ -7,23 +7,23 @@ var parse = require('../parse/index.js')
  * @description
  * Is the given date range overlapping with another date range?
  *
- * @param {Date|String|Number} dirtyInitialRangeStartDate - the start of the initial range
- * @param {Date|String|Number} dirtyInitialRangeEndDate - the end of the initial range
- * @param {Date|String|Number} dirtyComparedRangeStartDate - the start of the range to compare it with
- * @param {Date|String|Number} dirtyComparedRangeEndDate - the end of the range to compare it with
+ * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
+ * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
+ * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
+ * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
  * @returns {Boolean} whether the date ranges are overlapping
  * @throws {Error} startDate of a date range cannot be after its endDate
  *
  * @example
  * // For overlapping date ranges:
- * isOverlappingRange(
+ * areRangesOverlapping(
  *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
  * )
  * //=> true
  *
  * @example
  * // For non-overlapping date ranges:
- * isOverlappingRange(
+ * areRangesOverlapping(
  *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
  * )
  * //=> false
