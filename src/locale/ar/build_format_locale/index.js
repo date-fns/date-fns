@@ -7,8 +7,8 @@ function buildFormatLocale () {
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
   var months3char = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر']
   var monthsFull = ['كانون الثاني يناير', 'شباط فبراير', 'آذار مارس', 'نيسان أبريل', 'أيار مايو', 'حزيران يونيو', 'تموز يوليو', 'آب أغسطس', 'أيلول سبتمبر', 'تشرين الأول أكتوبر', 'تشرين الثاني نوفمبر', 'كانون الأول ديسمبر']
-  var weekdays2char = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'ست']
-  var weekdays3char = ['أحد', 'إثن', 'ثلاث', 'أرب', 'خمس', 'جمع', 'سبت']
+  var weekdays2char = ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س']
+  var weekdays3char = ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت']
   var weekdaysFull = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
   var meridiemUppercase = ['صباح', 'مساء']
   var meridiemLowercase = ['ص', 'م']
@@ -70,8 +70,6 @@ function buildFormatLocale () {
   }
 }
 
-// Arabic Language doesn't have fixed prefix for ordinal Numbers similar to "st", "nd", "rd" or "th"
-// We Will need
 function ordinal (number) {
   return String(number)
 }
