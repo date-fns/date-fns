@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.24.0] - 2017-01-06
+
+### Added
+
+- [Modern Standard Arabic locale (ar)](https://github.com/date-fns/date-fns/pull/367)
+  (thanks to Abdallah Hassan [@AbdallahAHO](https://github.com/AbdallahAHO))
+
 ## [1.23.0] - 2017-01-05
 
 ### Added
@@ -887,7 +894,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.23.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.24.0...HEAD
+[1.24.0]: https://github.com/date-fns/date-fns/compare/v1.23.0...v1.24.0
 [1.23.0]: https://github.com/date-fns/date-fns/compare/v1.22.0...v1.23.0
 [1.22.0]: https://github.com/date-fns/date-fns/compare/v1.21.1...v1.22.0
 [1.21.1]: https://github.com/date-fns/date-fns/compare/v1.21.0...v1.21.1

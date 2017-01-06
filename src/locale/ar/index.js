@@ -3,7 +3,8 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
  * @category Locales
- * @summary Arabic locale.
+ * @summary Arabic locale (Modern Standard Arabic - Al-fussha).
+ * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
