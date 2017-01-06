@@ -60,10 +60,10 @@ declare module 'date-fns' {
   namespace addYears {}
 
   function areRangesOverlapping (
-    dirtyInitialRangeStartDate: Date | string | number,
-    dirtyInitialRangeEndDate: Date | string | number,
-    dirtyComparedRangeStartDate: Date | string | number,
-    dirtyComparedRangeEndDate: Date | string | number
+    initialRangeStartDate: Date | string | number,
+    initialRangeEndDate: Date | string | number,
+    comparedRangeStartDate: Date | string | number,
+    comparedRangeEndDate: Date | string | number
   ): boolean
   namespace areRangesOverlapping {}
 
@@ -372,10 +372,10 @@ declare module 'date-fns' {
   namespace getMonth {}
 
   function getOverlappingDaysInRanges (
-    dirtyInitialRangeStartDate: Date | string | number,
-    dirtyInitialRangeEndDate: Date | string | number,
-    dirtyComparedRangeStartDate: Date | string | number,
-    dirtyComparedRangeEndDate: Date | string | number
+    initialRangeStartDate: Date | string | number,
+    initialRangeEndDate: Date | string | number,
+    comparedRangeStartDate: Date | string | number,
+    comparedRangeEndDate: Date | string | number
   ): number
   namespace getOverlappingDaysInRanges {}
 
