@@ -2,13 +2,15 @@ import fs from 'fs'
 import path from 'path'
 import listFiles from './_lib/list_files'
 
-const propertyRequireLines = listFiles()
-  .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`)
+const files = listFiles()
+
+const fileLines = files
+  .map(fn => `export {default as ${fn.name}} from '${fn.path.replace(/\.js$/, '')}/index.js'`)
 
 const indexLines = ['// This file is generated automatically by `scripts/build_index.js`. Please, don\'t change it.']
   .concat('')
-  .concat('module.exports = {')
-  .concat(propertyRequireLines.join(',\n'))
-  .concat('}')
+  .concat(fileLines)
+  .join('\n')
 
-fs.writeFileSync(path.join(process.cwd(), 'index.js'), `${indexLines.join('\n')}\n`)
+fs.writeFileSync(path.join(process.cwd(), 'index.js'), `${indexLines}\n`)
+
