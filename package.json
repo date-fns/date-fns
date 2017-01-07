@@ -9,7 +9,9 @@
   "engine": {
     "node": ">= 0.11"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel": "^6.5.2"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-eslint": "^7.1.1",
