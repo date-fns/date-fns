@@ -1,0 +1,19 @@
+{
+  "name": "date-fns-example-browserify",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with Browserify",
+  "main": "index.js",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "babili": "^0.0.9",
+    "browserify": "^13.3.0"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run build-browserify && yarn run build-babili",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-browserify": "browserify index.js -o dist/bundle.js",
+    "build-babili": "babili dist/bundle.js --out-file dist/bundle.min.js --minified --no-comments && yarn run stats-size",
+    "stats-size": "gzip-size dist/bundle.min.js | pretty-bytes"
+  }
+}

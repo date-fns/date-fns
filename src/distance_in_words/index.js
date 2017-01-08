@@ -2,7 +2,7 @@ import compareDesc from '../compare_desc/index.js'
 import toDate from '../to_date/index.js'
 import differenceInSeconds from '../difference_in_seconds/index.js'
 import differenceInMonths from '../difference_in_months/index.js'
-import * as enLocale from '../locale/en/index.js'
+import enLocale from '../locale/en/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520

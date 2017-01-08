@@ -5,10 +5,12 @@
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
-  "typings": "./typings.d.ts",
   "engine": {
     "node": ">= 0.11"
   },
+  "typings": "./typings.d.ts",
+  "main": "index.js",
+  "module": "es/index.js",
   "dependencies": {
     "babel": "^6.5.2"
   },
