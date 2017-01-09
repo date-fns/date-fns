@@ -86,6 +86,53 @@ rather than spread arguments.
   - `isThisYear(date)` → `isSameYear(date, new Date())`
   - `isThisISOYear(date)` → `isSameISOYear(date, new Date())`
 
+- **BREAKING**: make the second argument of `format` non-optional in favor of explicitness.
+
+  ```javascript
+  // Before v2.0.0
+  format(new Date(2016, 0, 1))
+
+  // 2.0.0 onward
+  format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+  
+- **BREAKING**: make range helpers accept an object with `start` and `end` properties
+  instead of two arguments as a range.
+
+  ```javascript
+  // Before v2.0.0
+
+  areRangesOverlapping(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  getOverlappingDaysInRanges(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    new Date(2014, 0, 1), new Date(2014, 0, 7)
+  )
+
+  // v2.0.0 onward
+
+  areRangesOverlapping(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  getOverlappingDaysInRanges(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
+  )
+  ```
 
 ## [1.24.0] - 2017-01-06
 
