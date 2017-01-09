@@ -9,8 +9,8 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two date ranges
  *
- * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/types/Range}
- * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/types/Range}
+ * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/Range}
+ * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/Range}
  * @returns {Number} the number of days that overlap in two date ranges
  * @throws {Error} The start of a range cannot be after its end
  *
