@@ -15,7 +15,7 @@ var parse = require('../parse/index.js')
  * @example
  * // For the date within the range:
  * isWithinRange(
- *   new Date(2014, 0, 3), 
+ *   new Date(2014, 0, 3),
  *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
  * )
  * //=> true

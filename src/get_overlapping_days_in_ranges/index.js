@@ -9,8 +9,8 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two date ranges
  *
- * @param {Range} initialRange - the initial range. See [Range]{@link docs/types/Range}
- * @param {Range} comparedRange - the range to compare it with. See [Range]{@link docs/types/Range}
+ * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/types/Range}
+ * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/types/Range}
  * @returns {Number} the number of days that overlap in two date ranges
  * @throws {Error} startDate of a date range cannot be after its endDate
  *
@@ -30,29 +30,29 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
-function getOverlappingDaysInRanges (dirtyInitialRange, dirtyComparedRange) {
-  var initialStartTime = parse(dirtyInitialRange.start).getTime()
-  var initialEndTime = parse(dirtyInitialRange.end).getTime()
-  var comparedStartTime = parse(dirtyComparedRange.start).getTime()
-  var comparedEndTime = parse(dirtyComparedRange.end).getTime()
-
-  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
     throw new Error('The start of the range cannot be after the end of the range')
+function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight) {
+  var leftStartTime = parse(dirtyRangeLeft.start).getTime()
+  var leftEndTime = parse(dirtyRangeLeft.end).getTime()
+  var rightStartTime = parse(dirtyRangeRight.start).getTime()
+  var rightEndTime = parse(dirtyRangeRight.end).getTime()
+
+  if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
   }
 
-  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+  var isOverlapping = leftStartTime < rightEndTime && rightStartTime < leftEndTime
 
   if (!isOverlapping) {
     return 0
   }
 
-  var overlapStartDate = comparedStartTime < initialStartTime
-    ? initialStartTime
-    : comparedStartTime
+  var overlapStartDate = rightStartTime < leftStartTime
+    ? leftStartTime
+    : rightStartTime
 
-  var overlapEndDate = comparedEndTime > initialEndTime
-    ? initialEndTime
-    : comparedEndTime
+  var overlapEndDate = rightEndTime > leftEndTime
+    ? leftEndTime
+    : rightEndTime
 
   var differenceInMs = overlapEndDate - overlapStartDate
 
