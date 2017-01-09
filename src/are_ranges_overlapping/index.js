@@ -7,38 +7,38 @@ var parse = require('../parse/index.js')
  * @description
  * Is the given date range overlapping with another date range?
  *
- * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
- * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
- * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
- * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/types/Range}
+ * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/types/Range}
  * @returns {Boolean} whether the date ranges are overlapping
- * @throws {Error} startDate of a date range cannot be after its endDate
+ * @throws {Error} The start of a range cannot be after its end
  *
  * @example
  * // For overlapping date ranges:
  * areRangesOverlapping(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+ *   {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
  * )
  * //=> true
  *
  * @example
  * // For non-overlapping date ranges:
  * areRangesOverlapping(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+ *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
  * )
  * //=> false
  */
-function areRangesOverlapping (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
-  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
-  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
-  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+function areRangesOverlapping (dirtyRangeLeft, dirtyRangeRight) {
+  var leftStartTime = parse(dirtyRangeLeft.start).getTime()
+  var leftEndTime = parse(dirtyRangeLeft.end).getTime()
+  var rightStartTime = parse(dirtyRangeRight.start).getTime()
+  var rightEndTime = parse(dirtyRangeRight.end).getTime()
 
-  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
+  if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
+    throw new Error('The start of a range cannot be after its end')
   }
 
-  return initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+  return leftStartTime < rightEndTime && rightStartTime < leftEndTime
 }
 
 module.exports = areRangesOverlapping
