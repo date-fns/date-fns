@@ -13,7 +13,10 @@ describe('areRangesOverlapping', function () {
       var earlierRangeStart = new Date(2016, 9, 25)
       var earlierRangeEnd = new Date(2016, 10, 9)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, earlierRangeStart, earlierRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: earlierRangeStart, end: earlierRangeEnd}
+      )
       assert(isOverlapping === false)
     })
 
@@ -21,7 +24,10 @@ describe('areRangesOverlapping', function () {
       var laterRangeStart = new Date(2016, 11, 4)
       var laterRangeEnd = new Date(2016, 11, 9)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, laterRangeStart, laterRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: laterRangeStart, end: laterRangeEnd}
+      )
       assert(isOverlapping === false)
     })
 
@@ -29,7 +35,10 @@ describe('areRangesOverlapping', function () {
       var sameDayRangeStart = new Date(2016, 11, 4, 9, 0, 0)
       var sameDayRangeEnd = new Date(2016, 11, 4, 18, 0, 0)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, sameDayRangeStart, sameDayRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: sameDayRangeStart, end: sameDayRangeEnd}
+      )
       assert(isOverlapping === false)
     })
 
@@ -37,7 +46,10 @@ describe('areRangesOverlapping', function () {
       var oneDayOverlappingRangeStart = new Date(2016, 11, 3, 18, 0, 0)
       var oneDayOverlappingRangeEnd = new Date(2016, 11, 14, 13, 0, 0)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, oneDayOverlappingRangeStart, oneDayOverlappingRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlappingRangeStart, end: oneDayOverlappingRangeEnd}
+      )
       assert(isOverlapping === false)
     })
 
@@ -45,7 +57,10 @@ describe('areRangesOverlapping', function () {
       var oneDayOverlapRangeStart = new Date(2016, 11, 3, 15, 0, 0)
       var oneDayOverlapRangeEnd = new Date(2016, 11, 14, 13, 0, 0)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, oneDayOverlapRangeStart, oneDayOverlapRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlapRangeStart, end: oneDayOverlapRangeEnd}
+      )
       assert(isOverlapping === false)
     })
 
@@ -53,7 +68,10 @@ describe('areRangesOverlapping', function () {
       var oneDayOverlapRangeStart = new Date(2016, 10, 3, 15, 0, 0)
       var oneDayOverlapRangeEnd = new Date(2016, 10, 10, 13, 0, 0)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, oneDayOverlapRangeStart, oneDayOverlapRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlapRangeStart, end: oneDayOverlapRangeEnd}
+      )
       assert(isOverlapping === false)
     })
   })
@@ -63,7 +81,10 @@ describe('areRangesOverlapping', function () {
       var includedRangeStart = new Date(2016, 10, 14)
       var includedRangeEnd = new Date(2016, 10, 14)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, includedRangeStart, includedRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: includedRangeStart, end: includedRangeEnd}
+      )
       assert(isOverlapping === true)
     })
 
@@ -71,7 +92,10 @@ describe('areRangesOverlapping', function () {
       var endOverlappingRangeStart = new Date(2016, 10, 5)
       var endOverlappingRangeEnd = new Date(2016, 10, 14)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+      )
       assert(isOverlapping === true)
     })
 
@@ -79,7 +103,10 @@ describe('areRangesOverlapping', function () {
       var startOverlappingRangeStart = new Date(2016, 10, 20)
       var startOverlappingRangeEnd = new Date(2016, 11, 14)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, startOverlappingRangeStart, startOverlappingRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: startOverlappingRangeStart, end: startOverlappingRangeEnd}
+      )
       assert(isOverlapping === true)
     })
 
@@ -87,7 +114,10 @@ describe('areRangesOverlapping', function () {
       var includingRangeStart = new Date(2016, 10, 5)
       var includingRangeEnd = new Date(2016, 11, 15)
 
-      var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, includingRangeStart, includingRangeEnd)
+      var isOverlapping = areRangesOverlapping(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: includingRangeStart, end: includingRangeEnd}
+      )
       assert(isOverlapping === true)
     })
   })
@@ -99,7 +129,10 @@ describe('areRangesOverlapping', function () {
     var endOverlappingRangeStart = new Date(2016, 10, 5).toISOString()
     var endOverlappingRangeEnd = new Date(2016, 10, 14).toISOString()
 
-    var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+    var isOverlapping = areRangesOverlapping(
+      {start: initialRangeStart, end: initialRangeEnd},
+      {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+    )
     assert(isOverlapping === true)
   })
 
@@ -110,17 +143,18 @@ describe('areRangesOverlapping', function () {
     var endOverlappingRangeStart = new Date(2016, 10, 5).getTime()
     var endOverlappingRangeEnd = new Date(2016, 10, 14).getTime()
 
-    var isOverlapping = areRangesOverlapping(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+    var isOverlapping = areRangesOverlapping(
+      {start: initialRangeStart, end: initialRangeEnd},
+      {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+    )
     assert(isOverlapping === true)
   })
 
   it('throws an exception if the start date of the initial date range is after the end date', function () {
     var block = areRangesOverlapping.bind(
       null,
-      new Date(2016, 10, 7),
-      new Date(2016, 10, 3),
-      new Date(2016, 10, 5),
-      new Date(2016, 10, 15)
+      {start: new Date(2016, 10, 7), end: new Date(2016, 10, 3)},
+      {start: new Date(2016, 10, 5), end: new Date(2016, 10, 15)}
     )
     assert.throws(block)
   })
@@ -128,10 +162,8 @@ describe('areRangesOverlapping', function () {
   it('throws an exception if the start date of the compared date range is after the end date', function () {
     var block = areRangesOverlapping.bind(
       null,
-      new Date(2016, 10, 3),
-      new Date(2016, 10, 7),
-      new Date(2016, 10, 15),
-      new Date(2016, 10, 5)
+      {start: new Date(2016, 10, 3), end: new Date(2016, 10, 7)},
+      {start: new Date(2016, 10, 15), end: new Date(2016, 10, 5)}
     )
     assert.throws(block)
   })
