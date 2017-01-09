@@ -13,7 +13,10 @@ describe('getOverlappingDaysInRanges', function () {
       var earlierRangeStart = new Date(2016, 9, 25)
       var earlierRangeEnd = new Date(2016, 10, 9)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, earlierRangeStart, earlierRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: earlierRangeStart, end: earlierRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
 
@@ -21,7 +24,10 @@ describe('getOverlappingDaysInRanges', function () {
       var laterRangeStart = new Date(2016, 11, 4)
       var laterRangeEnd = new Date(2016, 11, 9)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, laterRangeStart, laterRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: laterRangeStart, end: laterRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
 
@@ -29,7 +35,10 @@ describe('getOverlappingDaysInRanges', function () {
       var sameDayRangeStart = new Date(2016, 11, 4, 9, 0, 0)
       var sameDayRangeEnd = new Date(2016, 11, 4, 18, 0, 0)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, sameDayRangeStart, sameDayRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: sameDayRangeStart, end: sameDayRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
 
@@ -37,7 +46,10 @@ describe('getOverlappingDaysInRanges', function () {
       var oneDayOverlappingRangeStart = new Date(2016, 11, 3, 18, 0, 0)
       var oneDayOverlappingRangeEnd = new Date(2016, 11, 14, 13, 0, 0)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, oneDayOverlappingRangeStart, oneDayOverlappingRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlappingRangeStart, end: oneDayOverlappingRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
 
@@ -45,7 +57,10 @@ describe('getOverlappingDaysInRanges', function () {
       var oneDayOverlapRangeStart = new Date(2016, 11, 3, 15, 0, 0)
       var oneDayOverlapRangeEnd = new Date(2016, 11, 14, 13, 0, 0)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, oneDayOverlapRangeStart, oneDayOverlapRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlapRangeStart, end: oneDayOverlapRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
 
@@ -53,7 +68,10 @@ describe('getOverlappingDaysInRanges', function () {
       var oneDayOverlapRangeStart = new Date(2016, 10, 3, 15, 0, 0)
       var oneDayOverlapRangeEnd = new Date(2016, 10, 10, 13, 0, 0)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, oneDayOverlapRangeStart, oneDayOverlapRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: oneDayOverlapRangeStart, end: oneDayOverlapRangeEnd}
+      )
       assert(numOverlappingDays === 0)
     })
   })
@@ -63,7 +81,10 @@ describe('getOverlappingDaysInRanges', function () {
       var includedRangeStart = new Date(2016, 10, 14, 9, 0, 0)
       var includedRangeEnd = new Date(2016, 10, 15, 18, 0, 0)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, includedRangeStart, includedRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: includedRangeStart, end: includedRangeEnd}
+      )
       assert(numOverlappingDays === 2)
     })
 
@@ -71,7 +92,10 @@ describe('getOverlappingDaysInRanges', function () {
       var includedRangeStart = new Date(2016, 10, 14)
       var includedRangeEnd = new Date(2016, 10, 15)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, includedRangeStart, includedRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: includedRangeStart, end: includedRangeEnd}
+      )
       assert(numOverlappingDays === 1)
     })
 
@@ -79,7 +103,10 @@ describe('getOverlappingDaysInRanges', function () {
       var endOverlappingRangeStart = new Date(2016, 10, 5)
       var endOverlappingRangeEnd = new Date(2016, 10, 14)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+      )
       assert(numOverlappingDays === 4)
     })
 
@@ -87,7 +114,10 @@ describe('getOverlappingDaysInRanges', function () {
       var startOverlappingRangeStart = new Date(2016, 10, 20)
       var startOverlappingRangeEnd = new Date(2016, 11, 14)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, startOverlappingRangeStart, startOverlappingRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: startOverlappingRangeStart, end: startOverlappingRangeEnd}
+      )
       assert(numOverlappingDays === 14)
     })
 
@@ -95,7 +125,10 @@ describe('getOverlappingDaysInRanges', function () {
       var includingRangeStart = new Date(2016, 10, 5)
       var includingRangeEnd = new Date(2016, 11, 15)
 
-      var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, includingRangeStart, includingRangeEnd)
+      var numOverlappingDays = getOverlappingDaysInRanges(
+        {start: initialRangeStart, end: initialRangeEnd},
+        {start: includingRangeStart, end: includingRangeEnd}
+      )
       assert(numOverlappingDays === 24)
     })
   })
@@ -107,7 +140,10 @@ describe('getOverlappingDaysInRanges', function () {
     var endOverlappingRangeStart = new Date(2016, 10, 5).toISOString()
     var endOverlappingRangeEnd = new Date(2016, 10, 14).toISOString()
 
-    var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+    var numOverlappingDays = getOverlappingDaysInRanges(
+      {start: initialRangeStart, end: initialRangeEnd},
+      {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+    )
     assert(numOverlappingDays === 4)
   })
 
@@ -118,17 +154,18 @@ describe('getOverlappingDaysInRanges', function () {
     var endOverlappingRangeStart = new Date(2016, 10, 5).getTime()
     var endOverlappingRangeEnd = new Date(2016, 10, 14).getTime()
 
-    var numOverlappingDays = getOverlappingDaysInRanges(initialRangeStart, initialRangeEnd, endOverlappingRangeStart, endOverlappingRangeEnd)
+    var numOverlappingDays = getOverlappingDaysInRanges(
+      {start: initialRangeStart, end: initialRangeEnd},
+      {start: endOverlappingRangeStart, end: endOverlappingRangeEnd}
+    )
     assert(numOverlappingDays === 4)
   })
 
   it('throws an exception if the start date of the initial date range is after the end date', function () {
     var block = getOverlappingDaysInRanges.bind(
       null,
-      new Date(2016, 10, 7),
-      new Date(2016, 10, 3),
-      new Date(2016, 10, 5),
-      new Date(2016, 10, 15)
+      {start: new Date(2016, 10, 7), end: new Date(2016, 10, 3)},
+      {start: new Date(2016, 10, 5), end: new Date(2016, 10, 15)}
     )
     assert.throws(block)
   })
@@ -136,10 +173,8 @@ describe('getOverlappingDaysInRanges', function () {
   it('throws an exception if the start date of the compared date range is after the end date', function () {
     var block = getOverlappingDaysInRanges.bind(
       null,
-      new Date(2016, 10, 3),
-      new Date(2016, 10, 7),
-      new Date(2016, 10, 15),
-      new Date(2016, 10, 5)
+      {start: new Date(2016, 10, 3), end: new Date(2016, 10, 7)},
+      {start: new Date(2016, 10, 15), end: new Date(2016, 10, 5)}
     )
     assert.throws(block)
   })
