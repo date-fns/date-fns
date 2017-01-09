@@ -66,6 +66,9 @@ export default {
   sharedDocs: [
     {
       fullPath: path.join(__dirname, 'Range.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Options.js')
     }
   ]
 }
