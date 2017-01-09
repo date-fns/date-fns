@@ -10,7 +10,7 @@ var parse = require('../parse/index.js')
  * @param {Date|String|Number} date - the date to check
  * @param {Range} range - the range to check
  * @returns {Boolean} the date is within the range
- * @throws {Error} startDate cannot be after endDate
+ * @throws {Error} The start of a range cannot be after its end
  *
  * @example
  * // For the date within the range:
@@ -34,7 +34,7 @@ function isWithinRange (dirtyDate, dirtyRange) {
   var endTime = parse(dirtyRange.end).getTime()
 
   if (startTime > endTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
+    throw new Error('The start of a range cannot be after its end')
   }
 
   return time >= startTime && time <= endTime

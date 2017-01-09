@@ -10,7 +10,7 @@ var parse = require('../parse/index.js')
  * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/types/Range}
  * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/types/Range}
  * @returns {Boolean} whether the date ranges are overlapping
- * @throws {Error} startDate of a date range cannot be after its endDate
+ * @throws {Error} The start of a range cannot be after its end
  *
  * @example
  * // For overlapping date ranges:
@@ -34,8 +34,8 @@ function areRangesOverlapping (dirtyRangeLeft, dirtyRangeRight) {
   var rightStartTime = parse(dirtyRangeRight.start).getTime()
   var rightEndTime = parse(dirtyRangeRight.end).getTime()
 
-    throw new Error('The start of the range cannot be after the end of the range')
   if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
+    throw new Error('The start of a range cannot be after its end')
   }
 
   return leftStartTime < rightEndTime && rightStartTime < leftEndTime
