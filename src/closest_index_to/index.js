@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} an index of the date closest to the given date
  * @throws {TypeError} the second argument must be an instance of Array
  *
@@ -23,19 +24,19 @@ var parse = require('../parse/index.js')
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-function closestIndexTo (dirtyDateToCompare, dirtyDatesArray) {
+function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
-  var dateToCompare = parse(dirtyDateToCompare)
+  var dateToCompare = parse(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate, index) {
-    var currentDate = parse(dirtyDate)
+    var currentDate = parse(dirtyDate, options)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = index

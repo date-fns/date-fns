@@ -9,7 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the end of a week
  *
@@ -26,7 +26,7 @@ var parse = require('../parse/index.js')
 function endOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
-  var date = parse(dirtyDate)
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
