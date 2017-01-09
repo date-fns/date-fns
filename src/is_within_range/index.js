@@ -8,32 +8,33 @@ var parse = require('../parse/index.js')
  * Is the given date within the range?
  *
  * @param {Date|String|Number} date - the date to check
- * @param {Date|String|Number} startDate - the start of range
- * @param {Date|String|Number} endDate - the end of range
+ * @param {Range} range - the range to check
  * @returns {Boolean} the date is within the range
- * @throws {Error} startDate cannot be after endDate
+ * @throws {Error} The start of a range cannot be after its end
  *
  * @example
  * // For the date within the range:
  * isWithinRange(
- *   new Date(2014, 0, 3), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ *   new Date(2014, 0, 3),
+ *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
  * )
  * //=> true
  *
  * @example
  * // For the date outside of the range:
  * isWithinRange(
- *   new Date(2014, 0, 10), new Date(2014, 0, 1), new Date(2014, 0, 7)
+ *   new Date(2014, 0, 10),
+ *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
  * )
  * //=> false
  */
-function isWithinRange (dirtyDate, dirtyStartDate, dirtyEndDate) {
+function isWithinRange (dirtyDate, dirtyRange) {
   var time = parse(dirtyDate).getTime()
-  var startTime = parse(dirtyStartDate).getTime()
-  var endTime = parse(dirtyEndDate).getTime()
+  var startTime = parse(dirtyRange.start).getTime()
+  var endTime = parse(dirtyRange.end).getTime()
 
   if (startTime > endTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
+    throw new Error('The start of a range cannot be after its end')
   }
 
   return time >= startTime && time <= endTime
