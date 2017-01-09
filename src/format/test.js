@@ -32,10 +32,6 @@ describe('format', function () {
     assert(format(date, 'YYYY-MM-DD') === '2014-04-04')
   })
 
-  it('uses the default ISO string format if format is not specified', function () {
-    assert(format(this._date) === '1986-04-04T10:32:00.900' + this._timezone)
-  })
-
   it('escapes characters between the square brackets', function () {
     var result = format(this._date, '[YYYY-]MM-DD[THH:mm:ss.SSSZ] YYYY-[MM-DD]')
     assert(result === 'YYYY-04-04THH:mm:ss.SSSZ 1986-MM-DD')
