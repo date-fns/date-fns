@@ -9,6 +9,7 @@ var startOfMinute = require('../start_of_minute/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same minute
  *
  * @example
@@ -20,9 +21,9 @@ var startOfMinute = require('../start_of_minute/index.js')
  * )
  * //=> true
  */
-function isSameMinute (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+function isSameMinute (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft, options)
+  var dateRightStartOfMinute = startOfMinute(dirtyDateRight, options)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

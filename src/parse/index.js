@@ -58,7 +58,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * If all above fails, the function passes the given argument to Date constructor.
  *
  * @param {Date|String|Number} argument - the value to convert
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
  *
@@ -74,7 +74,7 @@ var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 function parse (argument, options) {
-  if (isDate(argument)) {
+  if (isDate(argument, options)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
   } else if (typeof argument !== 'string') {

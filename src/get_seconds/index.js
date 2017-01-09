@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the seconds of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the seconds
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-function getSeconds (dirtyDate) {
-  var date = parse(dirtyDate)
+function getSeconds (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var seconds = date.getSeconds()
   return seconds
 }

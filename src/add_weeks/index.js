@@ -9,6 +9,7 @@ var addDays = require('../add_days/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of weeks to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the weeks added
  *
  * @example
@@ -16,9 +17,9 @@ var addDays = require('../add_days/index.js')
  * var result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-function addWeeks (dirtyDate, amount) {
+function addWeeks (dirtyDate, amount, options) {
   var days = amount * 7
-  return addDays(dirtyDate, days)
+  return addDays(dirtyDate, days, options)
 }
 
 module.exports = addWeeks

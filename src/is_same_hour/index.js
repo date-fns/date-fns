@@ -9,6 +9,7 @@ var startOfHour = require('../start_of_hour/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same hour
  *
  * @example
@@ -19,9 +20,9 @@ var startOfHour = require('../start_of_hour/index.js')
  * )
  * //=> true
  */
-function isSameHour (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+function isSameHour (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft, options)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight, options)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }
