@@ -3,6 +3,7 @@ import path from 'path'
 export default {
   groups: [
     'General',
+    'Types',
     'Common Helpers',
     'Range Helpers',
     'Timestamp Helpers',
@@ -60,6 +61,12 @@ export default {
       title: 'License',
       description: 'MIT © Sasha Koss',
       path: path.join(__dirname, '..', 'LICENSE.md')
+    }
+  ],
+
+  sharedDocs: [
+    {
+      fullPath: path.join(__dirname, 'Range.js')
     }
   ]
 }
