@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the last day of a quarter
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-function lastDayOfQuarter (dirtyDate) {
-  var date = parse(dirtyDate)
+function lastDayOfQuarter (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
   date.setMonth(month, 0)

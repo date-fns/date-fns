@@ -11,6 +11,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of minutes
  *
  * @example
@@ -21,8 +22,8 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> 12
  */
-function differenceInMinutes (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / MILLISECONDS_IN_MINUTE
+function differenceInMinutes (dirtyDateLeft, dirtyDateRight, options) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, options) / MILLISECONDS_IN_MINUTE
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 

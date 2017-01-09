@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the end of a year
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
-function endOfYear (dirtyDate) {
-  var date = parse(dirtyDate)
+function endOfYear (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(23, 59, 59, 999)

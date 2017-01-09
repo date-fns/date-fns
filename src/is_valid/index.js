@@ -11,6 +11,7 @@ var isDate = require('../is_date/index.js')
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {Date} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is valid
  * @throws {TypeError} argument must be an instance of Date
  *
@@ -24,8 +25,8 @@ var isDate = require('../is_date/index.js')
  * var result = isValid(new Date(''))
  * //=> false
  */
-function isValid (dirtyDate) {
-  if (isDate(dirtyDate)) {
+function isValid (dirtyDate, dirtyOptions) {
+  if (isDate(dirtyDate, dirtyOptions)) {
     return !isNaN(dirtyDate)
   } else {
     throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
