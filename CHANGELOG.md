@@ -24,6 +24,15 @@ rather than spread arguments.
   var maxDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
   ```
 
+- **BREAKING**: make the second argument of `format` non-optional in favor of explicitness.
+
+  ```javascript
+  // Before v2.0.0
+  format(new Date(2016, 0, 1))
+
+  // 2.0.0 onward
+  format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+  
 - **BREAKING**: make range helpers accept an object with `start` and `end` properties
   instead of two arguments as a range.
 
