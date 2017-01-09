@@ -9,6 +9,7 @@ var addDays = require('../add_days/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of days to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the days subtracted
  *
  * @example
@@ -16,8 +17,8 @@ var addDays = require('../add_days/index.js')
  * var result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-function subDays (dirtyDate, amount) {
-  return addDays(dirtyDate, -amount)
+function subDays (dirtyDate, amount, options) {
+  return addDays(dirtyDate, -amount, options)
 }
 
 module.exports = subDays

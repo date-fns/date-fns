@@ -9,6 +9,7 @@ var addHours = require('../add_hours/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of hours to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours subtracted
  *
  * @example
@@ -16,8 +17,8 @@ var addHours = require('../add_hours/index.js')
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-function subHours (dirtyDate, amount) {
-  return addHours(dirtyDate, -amount)
+function subHours (dirtyDate, amount, options) {
+  return addHours(dirtyDate, -amount, options)
 }
 
 module.exports = subHours

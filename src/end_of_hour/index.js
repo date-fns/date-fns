@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the end of an hour
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = endOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:59:59.999
  */
-function endOfHour (dirtyDate) {
-  var date = parse(dirtyDate)
+function endOfHour (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   date.setMinutes(59, 59, 999)
   return date
 }

@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date Tuesday?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is Tuesday
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
-function isTuesday (dirtyDate) {
-  return parse(dirtyDate).getDay() === 2
+function isTuesday (dirtyDate, options) {
+  return parse(dirtyDate, options).getDay() === 2
 }
 
 module.exports = isTuesday

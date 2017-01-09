@@ -94,7 +94,8 @@ rather than spread arguments.
 
   // 2.0.0 onward
   format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
-  
+  ```
+
 - **BREAKING**: make range helpers accept an object with `start` and `end` properties
   instead of two arguments as a range.
 
@@ -133,6 +134,10 @@ rather than spread arguments.
     {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
   )
   ```
+
+- Every function now has `options` as the last argument which is passed to all its dependencies
+  for consistency and future features.
+  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 ## [1.26.0] - 2017-01-15
 
