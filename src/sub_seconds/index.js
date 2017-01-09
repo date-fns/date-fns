@@ -9,6 +9,7 @@ var addSeconds = require('../add_seconds/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of seconds to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the seconds subtracted
  *
  * @example
@@ -16,8 +17,8 @@ var addSeconds = require('../add_seconds/index.js')
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-function subSeconds (dirtyDate, amount) {
-  return addSeconds(dirtyDate, -amount)
+function subSeconds (dirtyDate, amount, options) {
+  return addSeconds(dirtyDate, -amount, options)
 }
 
 module.exports = subSeconds

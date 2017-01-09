@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the number of days in a month of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of days in a month
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-function getDaysInMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+function getDaysInMonth (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()
   var lastDayOfMonth = new Date(0)

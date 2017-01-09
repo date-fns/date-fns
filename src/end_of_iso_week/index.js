@@ -1,4 +1,5 @@
 var endOfWeek = require('../end_of_week/index.js')
+var cloneObject = require('../_lib/clone_object/index.js')
 
 /**
  * @category ISO Week Helpers
@@ -11,6 +12,7 @@ var endOfWeek = require('../end_of_week/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the end of an ISO week
  *
  * @example
@@ -18,8 +20,10 @@ var endOfWeek = require('../end_of_week/index.js')
  * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-function endOfISOWeek (dirtyDate) {
-  return endOfWeek(dirtyDate, {weekStartsOn: 1})
+function endOfISOWeek (dirtyDate, options) {
+  var endOfWeekOptions = cloneObject(options)
+  endOfWeekOptions.weekStartsOn = 1
+  return endOfWeek(dirtyDate, endOfWeekOptions)
 }
 
 module.exports = endOfISOWeek

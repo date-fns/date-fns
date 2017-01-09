@@ -9,6 +9,7 @@ var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of seconds
  *
  * @example
@@ -20,8 +21,8 @@ var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
  * )
  * //=> 12
  */
-function differenceInSeconds (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
+function differenceInSeconds (dirtyDateLeft, dirtyDateRight, options) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, options) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
