@@ -25,7 +25,33 @@ rather than spread arguments.
   var maxDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
   ```
 
-- **BREAKING**: remove all functions that create the current date internally.
+- **BREAKING**: remove all functions that create the current date internally:
+
+  - `distanceInWordsToNow`
+  - `isFuture`
+  - `isPast`
+  - `endOfToday`
+  - `endOfTomorrow`
+  - `endOfYesterday`
+  - `startOfToday`
+  - `startOfTomorrow`
+  - `startOfYesterday`
+  - `isToday`
+  - `isTomorrow`
+  - `isYesterday`
+  - `isThisSecond`
+  - `isThisMinute`
+  - `isThisHour`
+  - `isThisWeek`
+  - `isThisISOWeek`
+  - `isThisMonth`
+  - `isThisQuarter`
+  - `isThisYear`
+  - `isThisISOYear`
+
+  These functions are not pure, cannot have FP-versions [#253](https://github.com/date-fns/date-fns/issues/253)
+  and would add extra code for UTC-versions [#376](https://github.com/date-fns/date-fns/issues/376).
+
   See issue: [#377](https://github.com/date-fns/date-fns/issues/377)
 
   ```javascript
