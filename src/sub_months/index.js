@@ -9,6 +9,7 @@ var addMonths = require('../add_months/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the months subtracted
  *
  * @example
@@ -16,9 +17,9 @@ var addMonths = require('../add_months/index.js')
  * var result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-function subMonths (dirtyDate, dirtyAmount) {
+function subMonths (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMonths(dirtyDate, -amount)
+  return addMonths(dirtyDate, -amount, dirtyOptions)
 }
 
 module.exports = subMonths

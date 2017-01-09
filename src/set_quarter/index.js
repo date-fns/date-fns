@@ -10,6 +10,7 @@ var setMonth = require('../set_month/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} quarter - the quarter of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the quarter setted
  *
  * @example
@@ -17,12 +18,12 @@ var setMonth = require('../set_month/index.js')
  * var result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-function setQuarter (dirtyDate, dirtyQuarter) {
-  var date = parse(dirtyDate)
+function setQuarter (dirtyDate, dirtyQuarter, dirtyOptions) {
+  var date = parse(dirtyDate, dirtyOptions)
   var quarter = Number(dirtyQuarter)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1
   var diff = quarter - oldQuarter
-  return setMonth(date, date.getMonth() + diff * 3)
+  return setMonth(date, date.getMonth() + diff * 3, dirtyOptions)
 }
 
 module.exports = setQuarter

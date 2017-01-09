@@ -9,6 +9,7 @@ var startOfQuarter = require('../start_of_quarter/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same quarter
  *
  * @example
@@ -19,9 +20,9 @@ var startOfQuarter = require('../start_of_quarter/index.js')
  * )
  * //=> true
  */
-function isSameQuarter (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
-  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
+function isSameQuarter (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, options)
+  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight, options)
 
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }

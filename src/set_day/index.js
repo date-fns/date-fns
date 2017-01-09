@@ -10,7 +10,7 @@ var addDays = require('../add_days/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} day - the day of the week of the new date
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the new date with the day of the week setted
  *
@@ -26,7 +26,7 @@ var addDays = require('../add_days/index.js')
  */
 function setDay (dirtyDate, dirtyDay, dirtyOptions) {
   var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
-  var date = parse(dirtyDate)
+  var date = parse(dirtyDate, dirtyOptions)
   var day = Number(dirtyDay)
   var currentDay = date.getDay()
 
@@ -34,7 +34,7 @@ function setDay (dirtyDate, dirtyDay, dirtyOptions) {
   var dayIndex = (remainder + 7) % 7
 
   var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
-  return addDays(date, diff)
+  return addDays(date, diff, dirtyOptions)
 }
 
 module.exports = setDay
