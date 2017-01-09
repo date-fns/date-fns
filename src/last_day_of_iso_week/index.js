@@ -1,4 +1,5 @@
 var lastDayOfWeek = require('../last_day_of_week/index.js')
+var cloneObject = require('../_lib/clone_object/index.js')
 
 /**
  * @category ISO Week Helpers
@@ -11,6 +12,7 @@ var lastDayOfWeek = require('../last_day_of_week/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the last day of an ISO week
  *
  * @example
@@ -18,8 +20,10 @@ var lastDayOfWeek = require('../last_day_of_week/index.js')
  * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 00:00:00
  */
-function lastDayOfISOWeek (dirtyDate) {
-  return lastDayOfWeek(dirtyDate, {weekStartsOn: 1})
+function lastDayOfISOWeek (dirtyDate, options) {
+  var lastDayOfWeekOptions = cloneObject(options)
+  lastDayOfWeekOptions.weekStartsOn = 1
+  return lastDayOfWeek(dirtyDate, lastDayOfWeekOptions)
 }
 
 module.exports = lastDayOfISOWeek
