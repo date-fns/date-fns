@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the day of the month of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of month
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-function getDate (dirtyDate) {
-  var date = parse(dirtyDate)
+function getDate (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var dayOfMonth = date.getDate()
   return dayOfMonth
 }

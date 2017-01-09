@@ -10,6 +10,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to compare
  * @param {Date|String|Number} dateRight - the second date to compare
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the result of the comparison
  *
  * @example
@@ -33,10 +34,10 @@ var parse = require('../parse/index.js')
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-function compareAsc (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
+function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
-  var dateRight = parse(dirtyDateRight)
+  var dateRight = parse(dirtyDateRight, options)
   var timeRight = dateRight.getTime()
 
   if (timeLeft < timeRight) {

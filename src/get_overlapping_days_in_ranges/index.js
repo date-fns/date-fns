@@ -11,6 +11,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *
  * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/Range}
  * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/Range}
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of days that overlap in two date ranges
  * @throws {Error} The start of a range cannot be after its end
  *
@@ -30,11 +31,11 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
-function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight) {
-  var leftStartTime = parse(dirtyRangeLeft.start).getTime()
-  var leftEndTime = parse(dirtyRangeLeft.end).getTime()
-  var rightStartTime = parse(dirtyRangeRight.start).getTime()
-  var rightEndTime = parse(dirtyRangeRight.end).getTime()
+function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight, options) {
+  var leftStartTime = parse(dirtyRangeLeft.start, options).getTime()
+  var leftEndTime = parse(dirtyRangeLeft.end, options).getTime()
+  var rightStartTime = parse(dirtyRangeRight.start, options).getTime()
+  var rightEndTime = parse(dirtyRangeRight.end, options).getTime()
 
   if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
     throw new Error('The start of a range cannot be after its end')
