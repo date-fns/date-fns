@@ -65,7 +65,7 @@ var enLocale = require('../locale/en/index.js')
  * The result may vary by locale.
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
+ * @param {String} format - the string of tokens
  * @param {Object} [options] - the object with options
  * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the formatted date string
@@ -89,7 +89,6 @@ var enLocale = require('../locale/en/index.js')
  * //=> '2-a de julio 2014'
  */
 function format (dirtyDate, formatStr, options) {
-  formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
   options = options || {}
 
   var locale = options.locale
