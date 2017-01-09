@@ -9,6 +9,7 @@ var differenceInMonths = require('../difference_in_months/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of full quarters
  *
  * @example
@@ -19,8 +20,8 @@ var differenceInMonths = require('../difference_in_months/index.js')
  * )
  * //=> 2
  */
-function differenceInQuarters (dirtyDateLeft, dirtyDateRight) {
-  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
+function differenceInQuarters (dirtyDateLeft, dirtyDateRight, options) {
+  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight, options) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 

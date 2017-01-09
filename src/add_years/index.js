@@ -9,6 +9,7 @@ var addMonths = require('../add_months/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of years to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the years added
  *
  * @example
@@ -16,8 +17,8 @@ var addMonths = require('../add_months/index.js')
  * var result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-function addYears (dirtyDate, amount) {
-  return addMonths(dirtyDate, amount * 12)
+function addYears (dirtyDate, amount, options) {
+  return addMonths(dirtyDate, amount * 12, options)
 }
 
 module.exports = addYears

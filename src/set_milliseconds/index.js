@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} milliseconds - the milliseconds of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the milliseconds setted
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-function setMilliseconds (dirtyDate, milliseconds) {
-  var date = parse(dirtyDate)
+function setMilliseconds (dirtyDate, milliseconds, options) {
+  var date = parse(dirtyDate, options)
   date.setMilliseconds(milliseconds)
   return date
 }

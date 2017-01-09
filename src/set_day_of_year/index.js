@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} dayOfYear - the day of the year of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the day of the year setted
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-function setDayOfYear (dirtyDate, dayOfYear) {
-  var date = parse(dirtyDate)
+function setDayOfYear (dirtyDate, dayOfYear, options) {
+  var date = parse(dirtyDate, options)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date

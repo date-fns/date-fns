@@ -14,6 +14,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar ISO weeks
  *
  * @example
@@ -24,9 +25,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight) {
-  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
+  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, options)
+  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, options)
 
   var timestampLeft = startOfISOWeekLeft.getTime() -
     startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE

@@ -10,6 +10,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar quarters
  *
  * @example
@@ -20,12 +21,12 @@ var parse = require('../parse/index.js')
  * )
  * //=> 3
  */
-function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
 
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  var quarterDiff = getQuarter(dateLeft, options) - getQuarter(dateRight, options)
 
   return yearDiff * 4 + quarterDiff
 }

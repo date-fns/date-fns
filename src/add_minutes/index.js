@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the minutes added
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-function addMinutes (dirtyDate, amount) {
-  var date = parse(dirtyDate)
+function addMinutes (dirtyDate, amount, options) {
+  var date = parse(dirtyDate, options)
   date.setMinutes(date.getMinutes() + amount)
   return date
 }

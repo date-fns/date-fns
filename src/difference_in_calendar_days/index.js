@@ -12,6 +12,7 @@ var MILLISECONDS_IN_DAY = 86400000
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar days
  *
  * @example
@@ -23,9 +24,9 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 366
  */
-function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight) {
-  var startOfDayLeft = startOfDay(dirtyDateLeft)
-  var startOfDayRight = startOfDay(dirtyDateRight)
+function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
+  var startOfDayLeft = startOfDay(dirtyDateLeft, options)
+  var startOfDayRight = startOfDay(dirtyDateRight, options)
 
   var timestampLeft = startOfDayLeft.getTime() -
     startOfDayLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE

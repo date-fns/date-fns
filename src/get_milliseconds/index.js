@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the milliseconds of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the milliseconds
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-function getMilliseconds (dirtyDate) {
-  var date = parse(dirtyDate)
+function getMilliseconds (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var milliseconds = date.getMilliseconds()
   return milliseconds
 }
