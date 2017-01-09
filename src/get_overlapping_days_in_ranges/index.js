@@ -9,50 +9,50 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two date ranges
  *
- * @param {Date|String|Number} initialRangeStartDate - the start of the initial range
- * @param {Date|String|Number} initialRangeEndDate - the end of the initial range
- * @param {Date|String|Number} comparedRangeStartDate - the start of the range to compare it with
- * @param {Date|String|Number} comparedRangeEndDate - the end of the range to compare it with
+ * @param {Range} rangeLeft - the first range to compare. See [Range]{@link docs/Range}
+ * @param {Range} rangeRight - the second range to compare. See [Range]{@link docs/Range}
  * @returns {Number} the number of days that overlap in two date ranges
- * @throws {Error} startDate of a date range cannot be after its endDate
+ * @throws {Error} The start of a range cannot be after its end
  *
  * @example
  * // For overlapping date ranges adds 1 for each started overlapping day:
  * getOverlappingDaysInRanges(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 17), new Date(2014, 0, 21)
+ *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+ *   {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
  * )
  * //=> 3
  *
  * @example
  * // For non-overlapping date ranges returns 0:
  * getOverlappingDaysInRanges(
- *   new Date(2014, 0, 10), new Date(2014, 0, 20), new Date(2014, 0, 21), new Date(2014, 0, 22)
+ *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+ *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
  * )
  * //=> 0
  */
-function getOverlappingDaysInRanges (dirtyInitialRangeStartDate, dirtyInitialRangeEndDate, dirtyComparedRangeStartDate, dirtyComparedRangeEndDate) {
-  var initialStartTime = parse(dirtyInitialRangeStartDate).getTime()
-  var initialEndTime = parse(dirtyInitialRangeEndDate).getTime()
-  var comparedStartTime = parse(dirtyComparedRangeStartDate).getTime()
-  var comparedEndTime = parse(dirtyComparedRangeEndDate).getTime()
+function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight) {
+  var leftStartTime = parse(dirtyRangeLeft.start).getTime()
+  var leftEndTime = parse(dirtyRangeLeft.end).getTime()
+  var rightStartTime = parse(dirtyRangeRight.start).getTime()
+  var rightEndTime = parse(dirtyRangeRight.end).getTime()
 
-  if (initialStartTime > initialEndTime || comparedStartTime > comparedEndTime) {
-    throw new Error('The start of the range cannot be after the end of the range')
+  if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
+    throw new Error('The start of a range cannot be after its end')
   }
 
-  var isOverlapping = initialStartTime < comparedEndTime && comparedStartTime < initialEndTime
+  var isOverlapping = leftStartTime < rightEndTime && rightStartTime < leftEndTime
 
   if (!isOverlapping) {
     return 0
   }
 
-  var overlapStartDate = comparedStartTime < initialStartTime
-    ? initialStartTime
-    : comparedStartTime
+  var overlapStartDate = rightStartTime < leftStartTime
+    ? leftStartTime
+    : rightStartTime
 
-  var overlapEndDate = comparedEndTime > initialEndTime
-    ? initialEndTime
-    : comparedEndTime
+  var overlapEndDate = rightEndTime > leftEndTime
+    ? leftEndTime
+    : rightEndTime
 
   var differenceInMs = overlapEndDate - overlapStartDate
 
