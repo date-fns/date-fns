@@ -9,6 +9,7 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of seconds to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the seconds added
  *
  * @example
@@ -16,9 +17,9 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-function addSeconds (dirtyDate, dirtyAmount) {
+function addSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * 1000)
+  return addMilliseconds(dirtyDate, amount * 1000, dirtyOptions)
 }
 
 module.exports = addSeconds

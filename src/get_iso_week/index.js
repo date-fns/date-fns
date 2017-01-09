@@ -14,6 +14,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the ISO week
  *
  * @example
@@ -21,9 +22,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-function getISOWeek (dirtyDate) {
-  var date = parse(dirtyDate)
-  var diff = startOfISOWeek(date).getTime() - startOfISOYear(date).getTime()
+function getISOWeek (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
+  var diff = startOfISOWeek(date, options).getTime() - startOfISOYear(date, options).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

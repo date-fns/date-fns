@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} seconds - the seconds of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the seconds setted
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-function setSeconds (dirtyDate, dirtySeconds) {
-  var date = parse(dirtyDate)
+function setSeconds (dirtyDate, dirtySeconds, dirtyOptions) {
+  var date = parse(dirtyDate, dirtyOptions)
   var seconds = Number(dirtySeconds)
   date.setSeconds(seconds)
   return date

@@ -11,6 +11,7 @@ var parse = require('../parse/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of ISO week
  *
  * @example
@@ -18,8 +19,8 @@ var parse = require('../parse/index.js')
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-function getISODay (dirtyDate) {
-  var date = parse(dirtyDate)
+function getISODay (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
 
   if (day === 0) {

@@ -11,6 +11,7 @@ var compareAsc = require('../compare_asc/index.js')
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of full months
  *
  * @example
@@ -21,17 +22,17 @@ var compareAsc = require('../compare_asc/index.js')
  * )
  * //=> 7
  */
-function differenceInMonths (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = parse(dirtyDateLeft, options)
+  var dateRight = parse(dirtyDateRight, options)
 
   var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight, options))
   dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
 
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+  var isLastMonthNotFull = compareAsc(dateLeft, dateRight, options) === -sign
   return sign * (difference - isLastMonthNotFull)
 }
 
