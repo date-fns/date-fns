@@ -24,6 +24,44 @@ rather than spread arguments.
   var maxDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
   ```
 
+- **BREAKING**: make range helpers accept an object with `start` and `end` properties
+  instead of two arguments as a range.
+
+  ```javascript
+  // Before v2.0.0
+
+  areRangesOverlapping(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  getOverlappingDaysInRanges(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    new Date(2014, 0, 1), new Date(2014, 0, 7)
+  )
+
+  // v2.0.0 onward
+
+  areRangesOverlapping(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  getOverlappingDaysInRanges(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
+  )
+  ```
 
 ## [1.26.0] - 2017-01-15
 
