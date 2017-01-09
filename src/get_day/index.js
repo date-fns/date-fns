@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Get the day of the week of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of week
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-function getDay (dirtyDate) {
-  var date = parse(dirtyDate)
+function getDay (dirtyDate, options) {
+  var date = parse(dirtyDate, options)
   var day = date.getDay()
   return day
 }

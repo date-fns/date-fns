@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of days to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the days added
  *
  * @example
@@ -16,8 +17,8 @@ var parse = require('../parse/index.js')
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-function addDays (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
+function addDays (dirtyDate, dirtyAmount, dirtyOptions) {
+  var date = parse(dirtyDate, dirtyOptions)
   var amount = Number(dirtyAmount)
   date.setDate(date.getDate() + amount)
   return date

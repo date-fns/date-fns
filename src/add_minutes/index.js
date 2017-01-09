@@ -11,6 +11,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the minutes added
  *
  * @example
@@ -18,9 +19,9 @@ var MILLISECONDS_IN_MINUTE = 60000
  * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-function addMinutes (dirtyDate, dirtyAmount) {
+function addMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE, dirtyOptions)
 }
 
 module.exports = addMinutes

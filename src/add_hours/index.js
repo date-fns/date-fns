@@ -11,6 +11,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of hours to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours added
  *
  * @example
@@ -18,9 +19,9 @@ var MILLISECONDS_IN_HOUR = 3600000
  * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-function addHours (dirtyDate, dirtyAmount) {
+function addHours (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR, dirtyOptions)
 }
 
 module.exports = addHours
