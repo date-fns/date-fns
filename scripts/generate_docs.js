@@ -9,6 +9,7 @@ import docsConfig from '../docs'
 generateDocsFromSource()
   .then(generatedDocsObj)
   .then(injectStaticDocsToDocsObj)
+  .then(injectSharedDocsToDocsObj)
   .then(writeDocsFile)
   .catch(reportErrors)
 
@@ -49,6 +50,19 @@ function generatedDocsObj (docs) {
  */
 function injectStaticDocsToDocsObj (docsFileObj) {
   return getListOfStaticDocs()
+    .then((staticDocs) => {
+      staticDocs.forEach((staticDoc) => {
+        docsFileObj[staticDoc.category].push(staticDoc)
+      })
+      return docsFileObj
+    })
+}
+
+/**
+ * Injects shared docs to docs object.
+ */
+function injectSharedDocsToDocsObj (docsFileObj) {
+  return generateSharedDocs()
     .then((staticDocs) => {
       staticDocs.forEach((staticDoc) => {
         docsFileObj[staticDoc.category].push(staticDoc)
@@ -114,7 +128,7 @@ function buildGroupsTemplate (groups) {
 }
 
 /**
- * Returns promise to list of static docs with it's content.
+ * Returns promise to list of static docs with its contents.
  */
 function getListOfStaticDocs (staticDocs) {
   return Promise.all(docsConfig.staticDocs.map((staticDoc) => {
@@ -122,4 +136,28 @@ function getListOfStaticDocs (staticDocs) {
       .then((docContent) => docContent.toString())
       .then((content) => Object.assign({content}, staticDoc))
   }))
+}
+
+/**
+ * Returns promise to list of shared docs with its contents.
+ */
+function generateSharedDocs (sharedDocs) {
+  return docsConfig.sharedDocs
+    .reduce((promise, file) => {
+      return promise.then((acc) =>
+        generateDocFromSource(acc, file)
+      )
+    }, Promise.resolve([]))
+    .then((jsDocs) =>
+      jsDocs.map((doc) =>
+        ({
+          type: 'jsdoc',
+          urlId: doc.name,
+          category: doc.category,
+          title: doc.name,
+          description: doc.summary,
+          content: doc
+        })
+      )
+    )
 }
