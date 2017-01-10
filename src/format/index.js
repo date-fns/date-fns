@@ -1,7 +1,7 @@
 var getDayOfYear = require('../get_day_of_year/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var isValid = require('../is_valid/index.js')
 var enLocale = require('../locale/en/index.js')
 
@@ -102,7 +102,7 @@ function format (dirtyDate, formatStr, options) {
     }
   }
 
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
 
   if (!isValid(date, options)) {
     return 'Invalid Date'
