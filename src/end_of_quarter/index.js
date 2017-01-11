@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Quarter Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 function endOfQuarter (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
   date.setMonth(month, 0)
