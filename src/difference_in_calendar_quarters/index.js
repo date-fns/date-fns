@@ -1,5 +1,5 @@
 var getQuarter = require('../get_quarter/index.js')
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Quarter Helpers
@@ -22,8 +22,8 @@ var parse = require('../parse/index.js')
  * //=> 3
  */
 function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
-  var dateRight = parse(dirtyDateRight, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
 
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
   var quarterDiff = getQuarter(dateLeft, options) - getQuarter(dateRight, options)

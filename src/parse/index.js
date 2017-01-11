@@ -1,317 +1,157 @@
-var isDate = require('../is_date/index.js')
-
-var MILLISECONDS_IN_HOUR = 3600000
-var MILLISECONDS_IN_MINUTE = 60000
-var DEFAULT_ADDITIONAL_DIGITS = 2
-
-var parseTokenDateTimeDelimeter = /[T ]/
-var parseTokenPlainTime = /:/
-
-// year tokens
-var parseTokenYY = /^(\d{2})$/
-var parseTokensYYY = [
-  /^([+-]\d{2})$/, // 0 additional digits
-  /^([+-]\d{3})$/, // 1 additional digit
-  /^([+-]\d{4})$/ // 2 additional digits
-]
-
-var parseTokenYYYY = /^(\d{4})/
-var parseTokensYYYYY = [
-  /^([+-]\d{4})/, // 0 additional digits
-  /^([+-]\d{5})/, // 1 additional digit
-  /^([+-]\d{6})/ // 2 additional digits
-]
-
-// date tokens
-var parseTokenMM = /^-(\d{2})$/
-var parseTokenDDD = /^-?(\d{3})$/
-var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
-var parseTokenWww = /^-?W(\d{2})$/
-var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
-
-// time tokens
-var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
-var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/
-var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/
-
-// timezone tokens
-var parseTokenTimezone = /([Z+-].*)$/
-var parseTokenTimezoneZ = /^(Z)$/
-var parseTokenTimezoneHH = /^([+-])(\d{2})$/
-var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
+var toDate = require('../to_date/index.js')
+var enLocale = require('../locale/en/index.js')
+var parsers = require('./_lib/parsers/index.js')
+var units = require('./_lib/units/index.js')
 
 /**
  * @category Common Helpers
- * @summary Convert the given argument to an instance of Date.
+ * @summary Parse the date.
  *
  * @description
- * Convert the given argument to an instance of Date.
+ * Return the date parsed from string using the given format.
  *
- * If the argument is an instance of Date, the function returns its clone.
+ * Accepted format tokens:
+ * | Unit                    | Priority | Token | Input examples                   |
+ * |-------------------------|----------|-------|----------------------------------|
+ * | Year                    | 10       | YY    | 00, 01, ..., 99                  |
+ * |                         |          | YYYY  | 1900, 1901, ..., 2099            |
+ * | ISO week-numbering year | 10       | GG    | 00, 01, ..., 99                  |
+ * |                         |          | GGGG  | 1900, 1901, ..., 2099            |
+ * | Quarter                 | 20       | Q     | 1, 2, 3, 4                       |
+ * |                         |          | Qo    | 1st, 2nd, 3rd, 4th               |
+ * | Month                   | 30       | M     | 1, 2, ..., 12                    |
+ * |                         |          | Mo    | 1st, 2nd, ..., 12th              |
+ * |                         |          | MM    | 01, 02, ..., 12                  |
+ * |                         |          | MMM   | Jan, Feb, ..., Dec               |
+ * |                         |          | MMMM  | January, February, ..., December |
+ * | ISO week                | 40       | W     | 1, 2, ..., 53                    |
+ * |                         |          | Wo    | 1st, 2nd, ..., 53rd              |
+ * |                         |          | WW    | 01, 02, ..., 53                  |
+ * | Day of week             | 50       | d     | 0, 1, ..., 6                     |
+ * |                         |          | do    | 0th, 1st, ..., 6th               |
+ * |                         |          | dd    | Su, Mo, ..., Sa                  |
+ * |                         |          | ddd   | Sun, Mon, ..., Sat               |
+ * |                         |          | dddd  | Sunday, Monday, ..., Saturday    |
+ * | Day of ISO week         | 50       | E     | 1, 2, ..., 7                     |
+ * | Day of month            | 50       | D     | 1, 2, ..., 31                    |
+ * |                         |          | Do    | 1st, 2nd, ..., 31st              |
+ * |                         |          | DD    | 01, 02, ..., 31                  |
+ * | Day of year             | 50       | DDD   | 1, 2, ..., 366                   |
+ * |                         |          | DDDo  | 1st, 2nd, ..., 366th             |
+ * |                         |          | DDDD  | 001, 002, ..., 366               |
+ * | Hour                    | 60       | H     | 0, 1, ... 23                     |
+ * |                         |          | HH    | 00, 01, ... 23                   |
+ * |                         |          | h     | 1, 2, ..., 12                    |
+ * |                         |          | hh    | 01, 02, ..., 12                  |
+ * | AM/PM                   | 65       | A     | AM, PM                           |
+ * |                         |          | a     | am, pm                           |
+ * |                         |          | aa    | a.m., p.m.                       |
+ * | Minute                  | 70       | m     | 0, 1, ..., 59                    |
+ * |                         |          | mm    | 00, 01, ..., 59                  |
+ * | Second                  | 80       | s     | 0, 1, ..., 59                    |
+ * |                         |          | ss    | 00, 01, ..., 59                  |
+ * | 1/10 of second          | 90       | S     | 0, 1, ..., 9                     |
+ * | 1/100 of second         | 90       | SS    | 00, 01, ..., 99                  |
+ * | Millisecond             | 90       | SSS   | 000, 001, ..., 999               |
+ * | Timezone                | 100      | Z     | -01:00, +00:00, ... +12:00       |
+ * |                         |          | ZZ    | -0100, +0000, ..., +1200         |
+ * | Seconds timestamp       | 110      | X     | 512969520                        |
+ * | Milliseconds timestamp  | 110      | x     | 512969520900                     |
  *
- * If the argument is a number, it is treated as a timestamp.
+ * Values will be assigned to the date in the ascending order of its unit's priority.
+ * Units of an equal priority overwrite each other in the order of appearance.
  *
- * If an argument is a string, the function tries to parse it.
- * Function accepts complete ISO 8601 formats as well as partial implementations.
- * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * The characters wrapped in square brackets in the format string are escaped.
  *
- * If all above fails, the function passes the given argument to Date constructor.
+ * The result may vary by locale.
  *
- * @param {Date|String|Number} argument - the value to convert
- * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
- * @returns {Date} the parsed date in the local time zone
+ * If no format is provided, the string will be parsed using ISO 8601 formats.
+ *
+ * @param {String} dateString - the string to parse
+ * @param {String} formatString - the string of tokens
+ * @param {Object} [options] - the object with options
+ * @param {Object} [options.locale=enLocale] - the locale object
+ * @returns {Date} the parsed date
  *
  * @example
- * // Convert string '2014-02-11T11:30:30' to date:
- * var result = parse('2014-02-11T11:30:30')
- * //=> Tue Feb 11 2014 11:30:30
- *
- * @example
- * // Parse string '+02014101',
- * // if the additional number of digits in the extended year format is 1:
- * var result = parse('+02014101', {additionalDigits: 1})
- * //=> Fri Apr 11 2014 00:00:00
+ * // Parse 11 February 2014 from middle-endian format:
+ * var result = parse(
+ *   '02/11/2014',
+ *   'MM/DD/YYYY'
+ * )
+ * //=> Tue Feb 11 2014 00:00:00
  */
-function parse (argument, options) {
-  if (isDate(argument, options)) {
-    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(argument.getTime())
-  } else if (typeof argument !== 'string') {
-    return new Date(argument)
+function parse (dateString, formatString, options) {
+  if (formatString === '') {
+    return ''
   }
 
   options = options || {}
-  var additionalDigits = options.additionalDigits
-  if (additionalDigits == null) {
-    additionalDigits = DEFAULT_ADDITIONAL_DIGITS
-  }
 
-  var dateStrings = splitDateString(argument)
+  var locale = options.locale
+  var localeParsers = enLocale.parse.parsers
+  var localeUnits = enLocale.parse.units
+  var parsingTokensRegExp = enLocale.parse.parsingTokensRegExp
+  if (locale && locale.parse && locale.parse.parsers) {
+    localeParsers = locale.parse.parsers
 
-  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
-  var year = parseYearResult.year
-  var restDateString = parseYearResult.restDateString
-
-  var date = parseDate(restDateString, year)
-
-  if (date) {
-    var timestamp = date.getTime()
-    var time = 0
-    var offset
-
-    if (dateStrings.time) {
-      time = parseTime(dateStrings.time)
+    if (locale.parse.units) {
+      localeUnits = locale.parse.units
     }
 
-    if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
+    if (locale.parse.parsingTokensRegExp) {
+      parsingTokensRegExp = locale.parse.parsingTokensRegExp
+    }
+  }
+
+  var tokens = formatString.match(parsingTokensRegExp)
+  var tokensLength = tokens.length
+
+  var setters = {}
+
+  var i
+  for (i = 0; i < tokensLength; i++) {
+    var token = tokens[i]
+    var parser = localeParsers[token] || parsers[token]
+    if (parser) {
+      var matchResult = parser.match.exec(dateString)
+
+      if (!matchResult) {
+        return null
+      }
+
+      var unitName = parser.unit
+      var unit = localeUnits[unitName] || units[unitName]
+      setters[unit.priority] = {
+        priorityNumber: unit.priority,
+        set: unit.set,
+        value: parser.parse(matchResult)
+      }
+
+      var substring = matchResult[0]
+      dateString = dateString.slice(substring.length)
     } else {
-      // get offset accurate to hour in timezones that change offset
-      offset = new Date(timestamp + time).getTimezoneOffset()
-      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
-    }
-
-    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
-  } else {
-    return new Date(argument)
-  }
-}
-
-function splitDateString (dateString) {
-  var dateStrings = {}
-  var array = dateString.split(parseTokenDateTimeDelimeter)
-  var timeString
-
-  if (parseTokenPlainTime.test(array[0])) {
-    dateStrings.date = null
-    timeString = array[0]
-  } else {
-    dateStrings.date = array[0]
-    timeString = array[1]
-  }
-
-  if (timeString) {
-    var token = parseTokenTimezone.exec(timeString)
-    if (token) {
-      dateStrings.time = timeString.replace(token[1], '')
-      dateStrings.timezone = token[1]
-    } else {
-      dateStrings.time = timeString
+      var head = tokens[i].match(/^\[.*]$/) ? tokens[i].replace(/^\[|]$/g, '') : tokens[i]
+      if (dateString.indexOf(head) === 0) {
+        dateString = dateString.slice(head.length)
+      } else {
+        return null
+      }
     }
   }
 
-  return dateStrings
-}
+  var priorities = Object.keys(setters).sort(function (a, b) {
+    return a.priorityNumber - b.priorityNumber
+  })
 
-function parseYear (dateString, additionalDigits) {
-  var parseTokenYYY = parseTokensYYY[additionalDigits]
-  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]
+  var prioritiesLength = priorities.length
+  var date = new Date()
 
-  var token
-
-  // YYYY or ±YYYYY
-  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)
-  if (token) {
-    var yearString = token[1]
-    return {
-      year: parseInt(yearString, 10),
-      restDateString: dateString.slice(yearString.length)
-    }
+  for (i = 0; i < prioritiesLength; i++) {
+    var setter = setters[priorities[i]]
+    date = setter.set(date, setter.value)
   }
 
-  // YY or ±YYY
-  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)
-  if (token) {
-    var centuryString = token[1]
-    return {
-      year: parseInt(centuryString, 10) * 100,
-      restDateString: dateString.slice(centuryString.length)
-    }
-  }
-
-  // Invalid ISO-formatted year
-  return {
-    year: null
-  }
-}
-
-function parseDate (dateString, year) {
-  // Invalid ISO-formatted year
-  if (year === null) {
-    return null
-  }
-
-  var token
-  var date
-  var month
-  var week
-
-  // YYYY
-  if (dateString.length === 0) {
-    date = new Date(0)
-    date.setUTCFullYear(year)
-    return date
-  }
-
-  // YYYY-MM
-  token = parseTokenMM.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-    date.setUTCFullYear(year, month)
-    return date
-  }
-
-  // YYYY-DDD or YYYYDDD
-  token = parseTokenDDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    var dayOfYear = parseInt(token[1], 10)
-    date.setUTCFullYear(year, 0, dayOfYear)
-    return date
-  }
-
-  // YYYY-MM-DD or YYYYMMDD
-  token = parseTokenMMDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-    var day = parseInt(token[2], 10)
-    date.setUTCFullYear(year, month, day)
-    return date
-  }
-
-  // YYYY-Www or YYYYWww
-  token = parseTokenWww.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-    return dayOfISOYear(year, week)
-  }
-
-  // YYYY-Www-D or YYYYWwwD
-  token = parseTokenWwwD.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-    var dayOfWeek = parseInt(token[2], 10) - 1
-    return dayOfISOYear(year, week, dayOfWeek)
-  }
-
-  // Invalid ISO-formatted date
-  return null
-}
-
-function parseTime (timeString) {
-  var token
-  var hours
-  var minutes
-
-  // hh
-  token = parseTokenHH.exec(timeString)
-  if (token) {
-    hours = parseFloat(token[1].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR
-  }
-
-  // hh:mm or hhmm
-  token = parseTokenHHMM.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseFloat(token[2].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE
-  }
-
-  // hh:mm:ss or hhmmss
-  token = parseTokenHHMMSS.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseInt(token[2], 10)
-    var seconds = parseFloat(token[3].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE +
-      seconds * 1000
-  }
-
-  // Invalid ISO-formatted time
-  return null
-}
-
-function parseTimezone (timezoneString) {
-  var token
-  var absoluteOffset
-
-  // Z
-  token = parseTokenTimezoneZ.exec(timezoneString)
-  if (token) {
-    return 0
-  }
-
-  // ±hh
-  token = parseTokenTimezoneHH.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  // ±hh:mm or ±hhmm
-  token = parseTokenTimezoneHHMM.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  return 0
-}
-
-function dayOfISOYear (isoYear, week, day) {
-  week = week || 0
-  day = day || 0
-  var date = new Date(0)
-  date.setUTCFullYear(isoYear, 0, 4)
-  var fourthOfJanuaryDay = date.getUTCDay() || 7
-  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
-  date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
 

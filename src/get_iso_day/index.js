@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Weekday Helpers
@@ -20,7 +20,7 @@ var parse = require('../parse/index.js')
  * //=> 7
  */
 function getISODay (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var day = date.getDay()
 
   if (day === 0) {
