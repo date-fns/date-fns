@@ -205,56 +205,56 @@ describe('bg locale > buildFormatLocale', function () {
     })
 
     describe('A', function () {
-      it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 1)) === 'AM')
+      it('returns the correct string for 4-11 a.m.', function () {
+        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 4)) === 'сутринта')
       })
 
-      it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 0)) === 'AM')
+      it('returns the correct string for 17p.m.-3 a.m.', function () {
+        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 17)) === 'вечерта')
       })
 
-      it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 13)) === 'PM')
+      it('returns the correct string for 12-13 p.m.', function () {
+        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 12)) === 'на обяд')
       })
 
-      it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 12)) === 'PM')
+      it('returns the correct string for 14-17 p.m.', function () {
+        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 14)) === 'следобед')
       })
     })
 
     describe('a', function () {
-      it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 1)) === 'am')
+      it('returns the correct string for 4-11 a.m.', function () {
+        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 11)) === 'сутринта')
       })
 
-      it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 0)) === 'am')
+      it('returns the correct string for 17p.m.-3 a.m.', function () {
+        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 3)) === 'вечерта')
       })
 
-      it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 13)) === 'pm')
+      it('returns the correct string for 12-13 p.m.', function () {
+        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 13)) === 'на обяд')
       })
 
-      it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 12)) === 'pm')
+      it('returns the correct string for 14-16 p.m.', function () {
+        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 16)) === 'следобед')
       })
     })
 
     describe('aa', function () {
-      it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 1)) === 'a.m.')
+      it('returns the correct string for 4-11 a.m.', function () {
+        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 8)) === 'сутринта')
       })
 
-      it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 0)) === 'a.m.')
+      it('returns the correct string for 17p.m.-3 a.m.', function () {
+        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 0)) === 'вечерта')
       })
 
-      it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 13)) === 'p.m.')
+      it('returns the correct string for 12-13 p.m.', function () {
+        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 13)) === 'на обяд')
       })
 
-      it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 12)) === 'p.m.')
+      it('returns the correct string for 14-16 p.m.', function () {
+        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 15)) === 'следобед')
       })
     })
 

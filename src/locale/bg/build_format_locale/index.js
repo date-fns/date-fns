@@ -6,9 +6,20 @@ function buildFormatLocale () {
   var weekdays2char = ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб']
   var weekdays3char = ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб']
   var weekdaysFull = ['неделя', 'понеделник', 'вторник', 'сряда', 'четвъртък', 'петък', 'събота']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
-  var meridiemFull = ['a.m.', 'p.m.']
+  var meridiem = ['сутринта', 'на обяд', 'следобед', 'вечерта']
+
+  var timeOfDay = function (date) {
+    var hours = date.getHours()
+    if (hours >= 4 && hours < 12) {
+      return meridiem[0]
+    } else if (hours >= 12 && hours < 14) {
+      return meridiem[1]
+    } else if (hours >= 14 && hours < 17) {
+      return meridiem[2]
+    } else {
+      return meridiem[3]
+    }
+  }
 
   var formatters = {
     // Month: Jan, Feb, ..., Dec
@@ -37,19 +48,13 @@ function buildFormatLocale () {
     },
 
     // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
+    'A': timeOfDay,
 
     // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
+    'a': timeOfDay,
 
     // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    }
+    'aa': timeOfDay
   }
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
