@@ -1,5 +1,5 @@
 var compareDesc = require('../compare_desc/index.js')
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var differenceInSeconds = require('../difference_in_seconds/index.js')
 var enLocale = require('../locale/en/index.js')
 
@@ -109,11 +109,11 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   var dateLeft, dateRight
   if (comparison > 0) {
-    dateLeft = parse(dirtyDateToCompare, options)
-    dateRight = parse(dirtyDate, options)
+    dateLeft = toDate(dirtyDateToCompare, options)
+    dateRight = toDate(dirtyDate, options)
   } else {
-    dateLeft = parse(dirtyDate, options)
-    dateRight = parse(dirtyDateToCompare, options)
+    dateLeft = toDate(dirtyDate, options)
+    dateRight = toDate(dirtyDateToCompare, options)
   }
 
   var unit = options.unit

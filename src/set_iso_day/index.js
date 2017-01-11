@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var addDays = require('../add_days/index.js')
 var getISODay = require('../get_iso_day/index.js')
 
@@ -22,7 +22,7 @@ var getISODay = require('../get_iso_day/index.js')
  * //=> Sun Sep 07 2014 00:00:00
  */
 function setISODay (dirtyDate, day, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var currentDay = getISODay(date, options)
   var diff = day - currentDay
   return addDays(date, diff, options)

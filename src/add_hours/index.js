@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Hour Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Fri Jul 11 2014 01:00:00
  */
 function addHours (dirtyDate, amount, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   date.setHours(date.getHours() + amount)
   return date
 }

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
 var compareAsc = require('../compare_asc/index.js')
 
@@ -24,8 +24,8 @@ var compareAsc = require('../compare_asc/index.js')
  * //=> 365
  */
 function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
-  var dateRight = parse(dirtyDateRight, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
 
   var sign = compareAsc(dateLeft, dateRight, options)
   var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, options))
