@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -35,9 +35,9 @@ var parse = require('../parse/index.js')
  * // ]
  */
 function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
-  var dateRight = parse(dirtyDateRight, options)
+  var dateRight = toDate(dirtyDateRight, options)
   var timeRight = dateRight.getTime()
 
   if (timeLeft < timeRight) {

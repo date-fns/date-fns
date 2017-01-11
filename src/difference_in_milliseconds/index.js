@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Millisecond Helpers
@@ -22,8 +22,8 @@ var parse = require('../parse/index.js')
  * //=> 1100
  */
 function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
-  var dateRight = parse(dirtyDateRight, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
   return dateLeft.getTime() - dateRight.getTime()
 }
 

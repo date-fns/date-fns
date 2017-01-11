@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var addDays = require('../add_days/index.js')
 
 /**
@@ -26,7 +26,7 @@ var addDays = require('../add_days/index.js')
  */
 function setDay (dirtyDate, dirtyDay, dirtyOptions) {
   var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var day = Number(dirtyDay)
   var currentDay = date.getDay()
 

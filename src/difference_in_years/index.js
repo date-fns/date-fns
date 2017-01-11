@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var differenceInCalendarYears = require('../difference_in_calendar_years/index.js')
 var compareAsc = require('../compare_asc/index.js')
 
@@ -23,8 +23,8 @@ var compareAsc = require('../compare_asc/index.js')
  * //=> 1
  */
 function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
-  var dateRight = parse(dirtyDateRight, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
 
   var sign = compareAsc(dateLeft, dateRight, options)
   var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight, options))
