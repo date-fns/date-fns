@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Day Helpers
@@ -17,7 +17,7 @@ var parse = require('../parse/index.js')
  * //=> 29
  */
 function getDate (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var dayOfMonth = date.getDate()
   return dayOfMonth
 }

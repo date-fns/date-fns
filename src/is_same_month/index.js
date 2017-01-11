@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Month Helpers
@@ -21,8 +21,8 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isSameMonth (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = parse(dirtyDateLeft, options)
-  var dateRight = parse(dirtyDateRight, options)
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
   return dateLeft.getFullYear() === dateRight.getFullYear() &&
     dateLeft.getMonth() === dateRight.getMonth()
 }
