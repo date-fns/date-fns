@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Second Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Mon Sep 01 2014 11:30:45
  */
 function setSeconds (dirtyDate, dirtySeconds, dirtyOptions) {
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var seconds = Number(dirtySeconds)
   date.setSeconds(seconds)
   return date

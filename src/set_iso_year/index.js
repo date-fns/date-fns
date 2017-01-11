@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var startOfISOYear = require('../start_of_iso_year/index.js')
 var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
 
@@ -23,7 +23,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * //=> Mon Jan 01 2007 00:00:00
  */
 function setISOYear (dirtyDate, dirtyISOYear, dirtyOptions) {
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var isoYear = Number(dirtyISOYear)
   var diff = differenceInCalendarDays(date, startOfISOYear(date, dirtyOptions), dirtyOptions)
   var fourthOfJanuary = new Date(0)

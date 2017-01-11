@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -18,8 +18,8 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isAfter (dirtyDate, dirtyDateToCompare, options) {
-  var date = parse(dirtyDate, options)
-  var dateToCompare = parse(dirtyDateToCompare, options)
+  var date = toDate(dirtyDate, options)
+  var dateToCompare = toDate(dirtyDateToCompare, options)
   return date.getTime() > dateToCompare.getTime()
 }
 

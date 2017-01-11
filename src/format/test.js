@@ -296,7 +296,7 @@ describe('format', function () {
   })
 
   describe('timezones', function () {
-    it('should parse the given date in a local timezone', function () {
+    it('should toDate the given date in a local timezone', function () {
       assert(format('2015-01-01', 'YYYY-MM-DD') === '2015-01-01')
     })
 
