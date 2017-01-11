@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var endOfDay = require('../end_of_day/index.js')
 var endOfMonth = require('../end_of_month/index.js')
 
@@ -19,7 +19,7 @@ var endOfMonth = require('../end_of_month/index.js')
  * //=> true
  */
 function isLastDayOfMonth (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   return endOfDay(date, options).getTime() === endOfMonth(date, options).getTime()
 }
 
