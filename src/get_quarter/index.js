@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Quarter Helpers
@@ -17,7 +17,7 @@ var parse = require('../parse/index.js')
  * //=> 3
  */
 function getQuarter (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }

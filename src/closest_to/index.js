@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -27,14 +27,14 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
-  var dateToCompare = parse(dirtyDateToCompare, options)
+  var dateToCompare = toDate(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate) {
-    var currentDate = parse(dirtyDate, options)
+    var currentDate = toDate(dirtyDate, options)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = currentDate

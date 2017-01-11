@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var startOfISOWeek = require('../start_of_iso_week/index.js')
 var startOfISOYear = require('../start_of_iso_year/index.js')
 
@@ -23,7 +23,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 function getISOWeek (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var diff = startOfISOWeek(date, options).getTime() - startOfISOYear(date, options).getTime()
 
   // Round the number of days to the nearest integer

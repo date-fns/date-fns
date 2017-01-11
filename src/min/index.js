@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -25,7 +25,7 @@ var parse = require('../parse/index.js')
  */
 function min (datesArray) {
   var dates = datesArray.map(function (dirtyDate) {
-    return parse(dirtyDate)
+    return toDate(dirtyDate)
   })
   var earliestTimestamp = Math.min.apply(null, dates)
   return new Date(earliestTimestamp)

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Range Helpers
@@ -30,9 +30,9 @@ var parse = require('../parse/index.js')
  * //=> false
  */
 function isWithinRange (dirtyDate, dirtyRange, options) {
-  var time = parse(dirtyDate, options).getTime()
-  var startTime = parse(dirtyRange.start, options).getTime()
-  var endTime = parse(dirtyRange.end, options).getTime()
+  var time = toDate(dirtyDate, options).getTime()
+  var startTime = toDate(dirtyRange.start, options).getTime()
+  var endTime = toDate(dirtyRange.end, options).getTime()
 
   if (startTime > endTime) {
     throw new Error('The start of a range cannot be after its end')
