@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Range Helpers
@@ -30,10 +30,10 @@ var parse = require('../parse/index.js')
  * //=> false
  */
 function areRangesOverlapping (dirtyRangeLeft, dirtyRangeRight, options) {
-  var leftStartTime = parse(dirtyRangeLeft.start, options).getTime()
-  var leftEndTime = parse(dirtyRangeLeft.end, options).getTime()
-  var rightStartTime = parse(dirtyRangeRight.start, options).getTime()
-  var rightEndTime = parse(dirtyRangeRight.end, options).getTime()
+  var leftStartTime = toDate(dirtyRangeLeft.start, options).getTime()
+  var leftEndTime = toDate(dirtyRangeLeft.end, options).getTime()
+  var rightStartTime = toDate(dirtyRangeRight.start, options).getTime()
+  var rightEndTime = toDate(dirtyRangeRight.end, options).getTime()
 
   if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
     throw new Error('The start of a range cannot be after its end')

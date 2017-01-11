@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Year Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Wed Dec 31 2014 00:00:00
  */
 function lastDayOfYear (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(0, 0, 0, 0)

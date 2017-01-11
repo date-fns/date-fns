@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var setMonth = require('../set_month/index.js')
 
 /**
@@ -19,7 +19,7 @@ var setMonth = require('../set_month/index.js')
  * //=> Wed Apr 02 2014 00:00:00
  */
 function setQuarter (dirtyDate, quarter, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1
   var diff = quarter - oldQuarter
   return setMonth(date, date.getMonth() + diff * 3, options)

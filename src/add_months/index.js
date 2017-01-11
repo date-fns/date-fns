@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var getDaysInMonth = require('../get_days_in_month/index.js')
 
 /**
@@ -19,7 +19,7 @@ var getDaysInMonth = require('../get_days_in_month/index.js')
  * //=> Sun Feb 01 2015 00:00:00
  */
 function addMonths (dirtyDate, amount, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   var desiredMonth = date.getMonth() + amount
   var dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
