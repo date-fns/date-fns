@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Day Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Thu Sep 11 2014 00:00:00
  */
 function addDays (dirtyDate, dirtyAmount, dirtyOptions) {
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var amount = Number(dirtyAmount)
   date.setDate(date.getDate() + amount)
   return date

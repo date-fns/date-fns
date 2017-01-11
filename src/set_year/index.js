@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Year Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Sun Sep 01 2013 00:00:00
  */
 function setYear (dirtyDate, dirtyYear, dirtyOptions) {
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var year = Number(dirtyYear)
   date.setFullYear(year)
   return date

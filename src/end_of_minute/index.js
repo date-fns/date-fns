@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Minute Helpers
@@ -18,7 +18,7 @@ var parse = require('../parse/index.js')
  * //=> Mon Dec 01 2014 22:15:59.999
  */
 function endOfMinute (dirtyDate, options) {
-  var date = parse(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
   date.setSeconds(59, 999)
   return date
 }

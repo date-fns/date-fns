@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Week Helpers
@@ -26,7 +26,7 @@ var parse = require('../parse/index.js')
 function lastDayOfWeek (dirtyDate, dirtyOptions) {
   var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
 
-  var date = parse(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate, dirtyOptions)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
