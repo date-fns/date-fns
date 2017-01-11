@@ -1,4 +1,4 @@
-var differenceInDays = require('../difference_in_days/index.js')
+import differenceInDays from '../difference_in_days/index.js'
 
 /**
  * @category Week Helpers
@@ -24,4 +24,4 @@ function differenceInWeeks (dirtyDateLeft, dirtyDateRight) {
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInWeeks
+export default differenceInWeeks

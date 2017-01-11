@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isThisHour = require('./')
+import assert from 'power-assert'
+import isThisHour from '.'
 
 describe('isThisHour', function () {
   beforeEach(function () {

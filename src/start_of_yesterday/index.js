@@ -24,4 +24,4 @@ function startOfYesterday () {
   return date
 }
 
-module.exports = startOfYesterday
+export default startOfYesterday

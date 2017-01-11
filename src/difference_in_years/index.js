@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var differenceInCalendarYears = require('../difference_in_calendar_years/index.js')
-var compareAsc = require('../compare_asc/index.js')
+import parse from '../parse/index.js'
+import differenceInCalendarYears from '../difference_in_calendar_years/index.js'
+import compareAsc from '../compare_asc/index.js'
 
 /**
  * @category Year Helpers
@@ -35,4 +35,4 @@ function differenceInYears (dirtyDateLeft, dirtyDateRight) {
   return sign * (difference - isLastYearNotFull)
 }
 
-module.exports = differenceInYears
+export default differenceInYears

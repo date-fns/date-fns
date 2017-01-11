@@ -25,4 +25,4 @@ function buildFormattingTokensRegExp (formatters) {
   return formattingTokensRegExp
 }
 
-module.exports = buildFormattingTokensRegExp
+export default buildFormattingTokensRegExp

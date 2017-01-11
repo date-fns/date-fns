@@ -1,4 +1,4 @@
-var addMonths = require('../add_months/index.js')
+import addMonths from '../add_months/index.js'
 
 /**
  * @category Month Helpers
@@ -20,4 +20,4 @@ function subMonths (dirtyDate, amount) {
   return addMonths(dirtyDate, -amount)
 }
 
-module.exports = subMonths
+export default subMonths

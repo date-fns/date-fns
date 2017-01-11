@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isPast = require('./')
+import assert from 'power-assert'
+import isPast from '.'
 
 describe('isPast', function () {
   beforeEach(function () {

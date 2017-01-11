@@ -1,5 +1,5 @@
-var parse = require('../parse/index.js')
-var addDays = require('../add_days/index.js')
+import parse from '../parse/index.js'
+import addDays from '../add_days/index.js'
 
 /**
  * @category Weekday Helpers
@@ -36,4 +36,4 @@ function setDay (dirtyDate, day, options) {
   return addDays(date, diff)
 }
 
-module.exports = setDay
+export default setDay

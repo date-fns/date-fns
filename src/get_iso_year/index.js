@@ -1,5 +1,5 @@
-var parse = require('../parse/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import parse from '../parse/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -42,4 +42,4 @@ function getISOYear (dirtyDate) {
   }
 }
 
-module.exports = getISOYear
+export default getISOYear

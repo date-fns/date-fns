@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isThisQuarter = require('./')
+import assert from 'power-assert'
+import isThisQuarter from '.'
 
 describe('isThisQuarter', function () {
   beforeEach(function () {

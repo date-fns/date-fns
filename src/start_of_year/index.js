@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Year Helpers
@@ -24,4 +24,4 @@ function startOfYear (dirtyDate) {
   return date
 }
 
-module.exports = startOfYear
+export default startOfYear

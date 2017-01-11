@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Year Helpers
@@ -21,4 +21,4 @@ function isLeapYear (dirtyDate) {
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }
 
-module.exports = isLeapYear
+export default isLeapYear

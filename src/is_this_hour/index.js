@@ -1,4 +1,4 @@
-var isSameHour = require('../is_same_hour/index.js')
+import isSameHour from '../is_same_hour/index.js'
 
 /**
  * @category Hour Helpers
@@ -20,4 +20,4 @@ function isThisHour (dirtyDate) {
   return isSameHour(new Date(), dirtyDate)
 }
 
-module.exports = isThisHour
+export default isThisHour

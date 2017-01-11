@@ -1,5 +1,5 @@
-var getISOYear = require('../get_iso_year/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import getISOYear from '../get_iso_year/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -29,4 +29,4 @@ function startOfISOYear (dirtyDate) {
   return date
 }
 
-module.exports = startOfISOYear
+export default startOfISOYear

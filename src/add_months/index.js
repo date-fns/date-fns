@@ -1,5 +1,5 @@
-var parse = require('../parse/index.js')
-var getDaysInMonth = require('../get_days_in_month/index.js')
+import parse from '../parse/index.js'
+import getDaysInMonth from '../get_days_in_month/index.js'
 
 /**
  * @category Month Helpers
@@ -30,4 +30,4 @@ function addMonths (dirtyDate, amount) {
   return date
 }
 
-module.exports = addMonths
+export default addMonths

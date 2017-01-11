@@ -24,4 +24,4 @@ function startOfTomorrow () {
   return date
 }
 
-module.exports = startOfTomorrow
+export default startOfTomorrow

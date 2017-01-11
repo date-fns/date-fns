@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var startOfSecond = require('./')
+import assert from 'power-assert'
+import startOfSecond from '.'
 
 describe('startOfSecond', function () {
   it('returns the date with the time setted to the first millisecond of a second', function () {

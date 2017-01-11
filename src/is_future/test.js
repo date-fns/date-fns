@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isFuture = require('./')
+import assert from 'power-assert'
+import isFuture from '.'
 
 describe('isFuture', function () {
   beforeEach(function () {

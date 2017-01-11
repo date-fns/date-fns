@@ -1,5 +1,5 @@
-var getISOYear = require('../get_iso_year/index.js')
-var setISOYear = require('../set_iso_year/index.js')
+import getISOYear from '../get_iso_year/index.js'
+import setISOYear from '../set_iso_year/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -23,4 +23,4 @@ function addISOYears (dirtyDate, amount) {
   return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount)
 }
 
-module.exports = addISOYears
+export default addISOYears

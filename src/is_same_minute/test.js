@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isSameMinute = require('./')
+import assert from 'power-assert'
+import isSameMinute from '.'
 
 describe('isSameMinute', function () {
   it('returns true if the given dates have the same minute', function () {

@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
-var compareAsc = require('../compare_asc/index.js')
+import parse from '../parse/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
+import compareAsc from '../compare_asc/index.js'
 
 /**
  * @category Day Helpers
@@ -36,4 +36,4 @@ function differenceInDays (dirtyDateLeft, dirtyDateRight) {
   return sign * (difference - isLastDayNotFull)
 }
 
-module.exports = differenceInDays
+export default differenceInDays

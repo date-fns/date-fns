@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Year Helpers
@@ -22,4 +22,4 @@ function setYear (dirtyDate, year) {
   return date
 }
 
-module.exports = setYear
+export default setYear

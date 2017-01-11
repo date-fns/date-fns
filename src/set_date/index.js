@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Day Helpers
@@ -22,4 +22,4 @@ function setDate (dirtyDate, dayOfMonth) {
   return date
 }
 
-module.exports = setDate
+export default setDate

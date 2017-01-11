@@ -1,4 +1,4 @@
-var isSameMinute = require('../is_same_minute/index.js')
+import isSameMinute from '../is_same_minute/index.js'
 
 /**
  * @category Minute Helpers
@@ -20,4 +20,4 @@ function isThisMinute (dirtyDate) {
   return isSameMinute(new Date(), dirtyDate)
 }
 
-module.exports = isThisMinute
+export default isThisMinute

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Year Helpers
@@ -26,4 +26,4 @@ function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight) {
   return dateLeft.getFullYear() - dateRight.getFullYear()
 }
 
-module.exports = differenceInCalendarYears
+export default differenceInCalendarYears

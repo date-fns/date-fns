@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var parse = require('./')
+import assert from 'power-assert'
+import parse from '.'
 
 describe('parse', function () {
   describe('date argument', function () {

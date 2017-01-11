@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global sinon */
 
-var assert = require('power-assert')
-var isThisISOWeek = require('./')
+import assert from 'power-assert'
+import isThisISOWeek from '.'
 
 describe('isSameISOWeek', function () {
   beforeEach(function () {

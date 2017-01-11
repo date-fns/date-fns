@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Minute Helpers
@@ -22,4 +22,4 @@ function startOfMinute (dirtyDate) {
   return date
 }
 
-module.exports = startOfMinute
+export default startOfMinute

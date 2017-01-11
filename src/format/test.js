@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var format = require('./')
+import assert from 'power-assert'
+import format from '.'
 
 describe('format', function () {
   beforeEach(function () {

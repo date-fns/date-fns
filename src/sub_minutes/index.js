@@ -1,4 +1,4 @@
-var addMinutes = require('../add_minutes/index.js')
+import addMinutes from '../add_minutes/index.js'
 
 /**
  * @category Minute Helpers
@@ -20,4 +20,4 @@ function subMinutes (dirtyDate, amount) {
   return addMinutes(dirtyDate, -amount)
 }
 
-module.exports = subMinutes
+export default subMinutes

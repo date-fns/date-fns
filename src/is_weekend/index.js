@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Weekday Helpers
@@ -21,4 +21,4 @@ function isWeekend (dirtyDate) {
   return day === 0 || day === 6
 }
 
-module.exports = isWeekend
+export default isWeekend

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Month Helpers
@@ -24,4 +24,4 @@ function endOfMonth (dirtyDate) {
   return date
 }
 
-module.exports = endOfMonth
+export default endOfMonth

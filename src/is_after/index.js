@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -22,4 +22,4 @@ function isAfter (dirtyDate, dirtyDateToCompare) {
   return date.getTime() > dateToCompare.getTime()
 }
 
-module.exports = isAfter
+export default isAfter

@@ -1,5 +1,5 @@
-var parse = require('../parse/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
+import parse from '../parse/index.js'
+import getISOWeek from '../get_iso_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -26,4 +26,4 @@ function setISOWeek (dirtyDate, isoWeek) {
   return date
 }
 
-module.exports = setISOWeek
+export default setISOWeek

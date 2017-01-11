@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Month Helpers
@@ -25,4 +25,4 @@ function getDaysInMonth (dirtyDate) {
   return lastDayOfMonth.getDate()
 }
 
-module.exports = getDaysInMonth
+export default getDaysInMonth

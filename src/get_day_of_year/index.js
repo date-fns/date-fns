@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var startOfYear = require('../start_of_year/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
+import parse from '../parse/index.js'
+import startOfYear from '../start_of_year/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
  * @category Day Helpers
@@ -24,4 +24,4 @@ function getDayOfYear (dirtyDate) {
   return dayOfYear
 }
 
-module.exports = getDayOfYear
+export default getDayOfYear

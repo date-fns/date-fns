@@ -1,4 +1,4 @@
-var startOfDay = require('../start_of_day/index.js')
+import startOfDay from '../start_of_day/index.js'
 
 /**
  * @category Day Helpers
@@ -21,4 +21,4 @@ function isYesterday (dirtyDate) {
   return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()
 }
 
-module.exports = isYesterday
+export default isYesterday

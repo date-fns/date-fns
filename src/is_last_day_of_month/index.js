@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var endOfDay = require('../end_of_day/index.js')
-var endOfMonth = require('../end_of_month/index.js')
+import parse from '../parse/index.js'
+import endOfDay from '../end_of_day/index.js'
+import endOfMonth from '../end_of_month/index.js'
 
 /**
  * @category Month Helpers
@@ -22,4 +22,4 @@ function isLastDayOfMonth (dirtyDate) {
   return endOfDay(date).getTime() === endOfMonth(date).getTime()
 }
 
-module.exports = isLastDayOfMonth
+export default isLastDayOfMonth
