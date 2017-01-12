@@ -144,7 +144,7 @@ rather than spread arguments.
 
   // v2.0.0 onward
   toDate('2016-01-01')
-  parse('2016-01-01', 'YYYY-MM-DD')
+  parse('2016-01-01', 'YYYY-MM-DD', new Date())
   ```
 
 - Every function now has `options` as the last argument which is passed to all its dependencies
