@@ -61,6 +61,14 @@ var units = require('./_lib/units/index.js')
  * Values will be assigned to the date in the ascending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
  *
+ * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
+ * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
+ *
+ * `baseDate` must be passed for correct work of the function.
+ * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `parse('02/11/2014', 'MM/DD/YYYY', new Date())`
+ * In this case parsing will be done in the context of the current date.
+ *
  * The characters wrapped in square brackets in the format string are escaped.
  *
  * The result may vary by locale.
@@ -69,6 +77,7 @@ var units = require('./_lib/units/index.js')
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
+ * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Object} [options] - the object with options
  * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {Date} the parsed date
@@ -77,11 +86,23 @@ var units = require('./_lib/units/index.js')
  * // Parse 11 February 2014 from middle-endian format:
  * var result = parse(
  *   '02/11/2014',
- *   'MM/DD/YYYY'
+ *   'MM/DD/YYYY',
+ *   new Date()
  * )
  * //=> Tue Feb 11 2014 00:00:00
+ *
+ * @example
+ * // Parse 28th of February in English locale in the context of 2010 year:
+ * var eoLocale = require('date-fns/locale/eo')
+ * var result = parse(
+ *   '28-a de februaro',
+ *   'Do [de] MMMM',
+ *   new Date(2010, 0, 1)
+ *   {locale: eoLocale}
+ * )
+ * //=> Sun Feb 28 2010 00:00:00
  */
-function parse (dateString, formatString, options) {
+function parse (dateString, formatString, dirtyBaseDate, options) {
   if (formatString === '') {
     return ''
   }
@@ -145,7 +166,7 @@ function parse (dateString, formatString, options) {
   })
 
   var prioritiesLength = priorities.length
-  var date = new Date()
+  var date = toDate(dirtyBaseDate, options)
 
   for (i = 0; i < prioritiesLength; i++) {
     var setter = setters[priorities[i]]
