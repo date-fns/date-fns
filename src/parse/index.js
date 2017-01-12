@@ -61,6 +61,14 @@ var units = require('./_lib/units/index.js')
  * Values will be assigned to the date in the ascending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
  *
+ * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
+ * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
+ *
+ * `baseDate` must be passed for correct work of the function.
+ * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `parse('02/11/2014', 'MM/DD/YYYY', new Date())`
+ * In this case parsing will be done in the context of the current date.
+ *
  * The characters wrapped in square brackets in the format string are escaped.
  *
  * The result may vary by locale.
