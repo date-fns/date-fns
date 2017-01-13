@@ -16,8 +16,6 @@ do
   cp -r "$pattern" "$dir"
 done
 
-rm -rf "$dir/is_so_last_week"
-
 for module in $dir/*/
 do
   module=${module%*/}

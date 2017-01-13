@@ -4,7 +4,7 @@ import fs from 'fs'
 export default function listFiles () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src'))
   return files
-    .filter((file) => /^[^._]/.test(file) && file !== 'locale' && file !== 'is_so_last_week')
+    .filter((file) => /^[^._]/.test(file) && file !== 'locale')
     .map((file) => ({name: camelize(file), path: `./${file}`, fullPath: `./src/${file}/index.js`}))
 }
 
