@@ -19,11 +19,10 @@ import toDate from '../to_date/index.js'
  *   new Date(2014, 8, 25)
  * )
  * //=> true
- */
-function isSameYear (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function isSameYear (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
   return dateLeft.getFullYear() === dateRight.getFullYear()
 }
 
-export default isSameYear

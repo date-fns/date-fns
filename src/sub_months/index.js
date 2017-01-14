@@ -16,9 +16,8 @@ import addMonths from '../add_months/index.js'
  * // Subtract 5 months from 1 February 2015:
  * var result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
- */
-function subMonths (dirtyDate, amount, options) {
+ * */
+export default function subMonths (dirtyDate, amount, options) {
   return addMonths(dirtyDate, -amount, options)
 }
 
-export default subMonths

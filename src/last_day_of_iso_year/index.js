@@ -20,8 +20,8 @@ import startOfISOWeek from '../start_of_iso_week/index.js'
  * // The last day of an ISO week-numbering year for 2 July 2005:
  * var result = lastDayOfISOYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
- */
-function lastDayOfISOYear (dirtyDate, options) {
+ * */
+export default function lastDayOfISOYear (dirtyDate, options) {
   var year = getISOYear(dirtyDate, options)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)
@@ -31,4 +31,3 @@ function lastDayOfISOYear (dirtyDate, options) {
   return date
 }
 
-export default lastDayOfISOYear

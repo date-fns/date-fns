@@ -18,9 +18,8 @@ import addISOYears from '../add_iso_years/index.js'
  * // Subtract 5 ISO week-numbering years from 1 September 2014:
  * var result = subISOYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
- */
-function subISOYears (dirtyDate, amount, options) {
+ * */
+export default function subISOYears (dirtyDate, amount, options) {
   return addISOYears(dirtyDate, -amount, options)
 }
 
-export default subISOYears

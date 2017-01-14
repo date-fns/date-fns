@@ -21,12 +21,11 @@ import startOfISOYear from '../start_of_iso_year/index.js'
  *   new Date(2005, 0, 2)
  * )
  * //=> true
- */
-function isSameISOYear (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function isSameISOYear (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft, options)
   var dateRightStartOfYear = startOfISOYear(dirtyDateRight, options)
 
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }
 
-export default isSameISOYear

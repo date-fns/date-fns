@@ -15,11 +15,10 @@ import toDate from '../to_date/index.js'
  * // Does 5 October 2014 fall on a weekend?
  * var result = isWeekend(new Date(2014, 9, 5))
  * //=> true
- */
-function isWeekend (dirtyDate, options) {
+ * */
+export default function isWeekend (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var day = date.getDay()
   return day === 0 || day === 6
 }
 
-export default isWeekend

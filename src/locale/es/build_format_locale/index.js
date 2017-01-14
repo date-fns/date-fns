@@ -1,6 +1,6 @@
 import buildFormattingTokensRegExp from '../../_lib/build_formatting_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default buildFormatLocale () {
   var months3char = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
   var monthsFull = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
   var weekdays2char = ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa']
@@ -69,5 +69,3 @@ function buildFormatLocale () {
 function ordinal (number) {
   return number + 'º'
 }
-
-export default buildFormatLocale

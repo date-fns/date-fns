@@ -15,11 +15,10 @@ import toDate from '../to_date/index.js'
  * // Which day of the week is 29 February 2012?
  * var result = getDay(new Date(2012, 1, 29))
  * //=> 3
- */
-function getDay (dirtyDate, options) {
+ * */
+export default function getDay (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var day = date.getDay()
   return day
 }
 
-export default getDay

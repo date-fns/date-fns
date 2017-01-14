@@ -101,8 +101,8 @@ import units from './_lib/units/index.js'
  *   {locale: eoLocale}
  * )
  * //=> Sun Feb 28 2010 00:00:00
- */
-function parse (dateString, formatString, dirtyBaseDate, options) {
+ * */
+export default function parse (dateString, formatString, dirtyBaseDate, options) {
   if (formatString === '') {
     return ''
   }
@@ -176,4 +176,3 @@ function parse (dateString, formatString, dirtyBaseDate, options) {
   return date
 }
 
-export default parse

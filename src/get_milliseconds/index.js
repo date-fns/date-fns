@@ -15,11 +15,10 @@ import toDate from '../to_date/index.js'
  * // Get the milliseconds of 29 February 2012 11:45:05.123:
  * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
- */
-function getMilliseconds (dirtyDate, options) {
+ * */
+export default function getMilliseconds (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var milliseconds = date.getMilliseconds()
   return milliseconds
 }
 
-export default getMilliseconds

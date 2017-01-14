@@ -28,8 +28,8 @@ import toDate from '../to_date/index.js'
  *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
  * )
  * //=> false
- */
-function isWithinRange (dirtyDate, dirtyRange, options) {
+ * */
+export default function isWithinRange (dirtyDate, dirtyRange, options) {
   var time = toDate(dirtyDate, options).getTime()
   var startTime = toDate(dirtyRange.start, options).getTime()
   var endTime = toDate(dirtyRange.end, options).getTime()
@@ -41,4 +41,3 @@ function isWithinRange (dirtyDate, dirtyRange, options) {
   return time >= startTime && time <= endTime
 }
 
-export default isWithinRange

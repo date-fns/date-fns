@@ -17,12 +17,11 @@ import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
  * // Which day of the year is 2 July 2014?
  * var result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
- */
-function getDayOfYear (dirtyDate, options) {
+ * */
+export default function getDayOfYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var diff = differenceInCalendarDays(startOfYear(date, options), date, options)
   var dayOfYear = diff + 1
   return dayOfYear
 }
 
-export default getDayOfYear

@@ -19,8 +19,8 @@ import toDate from '../to_date/index.js'
  *   new Date(2014, 8, 1)
  * )
  * //=> 8
- */
-function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -30,4 +30,3 @@ function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 12 + monthDiff
 }
 
-export default differenceInCalendarMonths

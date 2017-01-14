@@ -23,8 +23,8 @@ var MILLISECONDS_IN_DAY = 86400000
  *   new Date(2012, 6, 2, 0, 0)
  * )
  * //=> 366
- */
-function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   var startOfDayLeft = startOfDay(dirtyDateLeft, options)
   var startOfDayRight = startOfDay(dirtyDateRight, options)
 
@@ -39,4 +39,3 @@ function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_DAY)
 }
 
-export default differenceInCalendarDays

@@ -16,11 +16,10 @@ import toDate from '../to_date/index.js'
  * // Add 750 milliseconds to 10 July 2014 12:45:30.000:
  * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:30.750
- */
-function addMilliseconds (dirtyDate, amount, options) {
+ * */
+export default function addMilliseconds (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   date.setMilliseconds(date.getMilliseconds() + amount)
   return date
 }
 
-export default addMilliseconds

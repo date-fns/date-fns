@@ -21,8 +21,8 @@ import compareDesc from '../compare_desc/index.js'
  *   new Date(2014, 8, 1)
  * )
  * //=> 7
- */
-function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -36,4 +36,3 @@ function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastMonthNotFull)
 }
 
-export default differenceInMonths

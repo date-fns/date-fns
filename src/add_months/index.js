@@ -17,8 +17,8 @@ import getDaysInMonth from '../get_days_in_month/index.js'
  * // Add 5 months to 1 September 2014:
  * var result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
- */
-function addMonths (dirtyDate, amount, options) {
+ * */
+export default function addMonths (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   var desiredMonth = date.getMonth() + amount
   var dateWithDesiredMonth = new Date(0)
@@ -31,4 +31,3 @@ function addMonths (dirtyDate, amount, options) {
   return date
 }
 
-export default addMonths

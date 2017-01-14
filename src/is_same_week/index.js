@@ -31,11 +31,9 @@ import startOfWeek from '../start_of_week/index.js'
  * )
  * //=> false
  */
-function isSameWeek (dirtyDateLeft, dirtyDateRight, options) {
+export default isSameWeek (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, options)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, options)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }
-
-export default isSameWeek

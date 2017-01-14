@@ -14,8 +14,8 @@ var parse = require('../parse/index.js')
  * // Get the timestamp of 29 February 2012 11:45:05.123:
  * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
- */
-function getTime (dirtyDate) {
+ * */
+export default function getTime (dirtyDate) {
   var date = parse(dirtyDate)
   var timestamp = date.getTime()
   return timestamp

@@ -22,8 +22,8 @@ import compareDesc from '../compare_desc/index.js'
  *   new Date(2012, 6, 2, 0, 0)
  * )
  * //=> 365
- */
-function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -37,4 +37,3 @@ function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastDayNotFull)
 }
 
-export default differenceInDays

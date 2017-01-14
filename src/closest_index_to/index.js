@@ -23,8 +23,8 @@ import toDate from '../to_date/index.js'
  * ]
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
- */
-function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
+ * */
+export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
@@ -47,4 +47,3 @@ function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   return result
 }
 
-export default closestIndexTo

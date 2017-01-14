@@ -20,8 +20,8 @@ import startOfISOWeek from '../start_of_iso_week/index.js'
  * // The start of an ISO week-numbering year for 2 July 2005:
  * var result = startOfISOYear(new Date(2005, 6, 2))
  * //=> Mon Jan 03 2005 00:00:00
- */
-function startOfISOYear (dirtyDate, options) {
+ * */
+export default function startOfISOYear (dirtyDate, options) {
   var year = getISOYear(dirtyDate, options)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year, 0, 4)
@@ -30,4 +30,3 @@ function startOfISOYear (dirtyDate, options) {
   return date
 }
 
-export default startOfISOYear

@@ -16,12 +16,11 @@ import toDate from '../to_date/index.js'
  * // Set the 2nd day of the year to 2 July 2014:
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
- */
-function setDayOfYear (dirtyDate, dayOfYear, options) {
+ * */
+export default function setDayOfYear (dirtyDate, dayOfYear, options) {
   var date = toDate(dirtyDate, options)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date
 }
 
-export default setDayOfYear

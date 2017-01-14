@@ -15,9 +15,8 @@ import toDate from '../to_date/index.js'
  * // Is 24 September 2014 Wednesday?
  * var result = isWednesday(new Date(2014, 8, 24))
  * //=> true
- */
-function isWednesday (dirtyDate, options) {
+ * */
+export default function isWednesday (dirtyDate, options) {
   return toDate(dirtyDate, options).getDay() === 3
 }
 
-export default isWednesday

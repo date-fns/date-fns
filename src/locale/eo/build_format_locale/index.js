@@ -1,6 +1,6 @@
 import buildFormattingTokensRegExp from '../../_lib/build_formatting_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default buildFormatLocale () {
   var months3char = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec']
   var monthsFull = ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
   var weekdays2char = ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa']
@@ -65,5 +65,3 @@ function buildFormatLocale () {
     formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
   }
 }
-
-export default buildFormatLocale

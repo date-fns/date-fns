@@ -19,12 +19,11 @@ import getISOWeek from '../get_iso_week/index.js'
  * // Set the 53rd ISO week to 7 August 2004:
  * var result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
- */
-function setISOWeek (dirtyDate, isoWeek, options) {
+ * */
+export default function setISOWeek (dirtyDate, isoWeek, options) {
   var date = toDate(dirtyDate, options)
   var diff = getISOWeek(date, options) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date
 }
 
-export default setISOWeek

@@ -17,10 +17,9 @@ import endOfMonth from '../end_of_month/index.js'
  * // Is 28 February 2014 the last day of a month?
  * var result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
- */
-function isLastDayOfMonth (dirtyDate, options) {
+ * */
+export default function isLastDayOfMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   return endOfDay(date, options).getTime() === endOfMonth(date, options).getTime()
 }
 
-export default isLastDayOfMonth

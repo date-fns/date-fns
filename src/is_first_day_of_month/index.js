@@ -15,9 +15,8 @@ import toDate from '../to_date/index.js'
  * // Is 1 September 2014 the first day of a month?
  * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
- */
-function isFirstDayOfMonth (dirtyDate, options) {
+ * */
+export default function isFirstDayOfMonth (dirtyDate, options) {
   return toDate(dirtyDate, options).getDate() === 1
 }
 
-export default isFirstDayOfMonth

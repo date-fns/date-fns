@@ -88,8 +88,8 @@ import enLocale from '../locale/en/index.js'
  *   {locale: eoLocale}
  * )
  * //=> '2-a de julio 2014'
- */
-function format (dirtyDate, formatStr, options) {
+ * */
+export default function format (dirtyDate, formatStr, options) {
   options = options || {}
 
   var locale = options.locale
@@ -325,4 +325,3 @@ function addLeadingZeros (number, targetLength) {
   return output
 }
 
-export default format

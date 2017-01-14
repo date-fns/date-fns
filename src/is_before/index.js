@@ -16,11 +16,10 @@ import toDate from '../to_date/index.js'
  * // Is 10 July 1989 before 11 February 1987?
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
- */
-function isBefore (dirtyDate, dirtyDateToCompare, options) {
+ * */
+export default function isBefore (dirtyDate, dirtyDateToCompare, options) {
   var date = toDate(dirtyDate, options)
   var dateToCompare = toDate(dirtyDateToCompare, options)
   return date.getTime() < dateToCompare.getTime()
 }
 
-export default isBefore

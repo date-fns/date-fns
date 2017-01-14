@@ -16,11 +16,10 @@ import toDate from '../to_date/index.js'
  * // Set 45 seconds to 1 September 2014 11:30:40:
  * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
- */
-function setSeconds (dirtyDate, seconds, options) {
+ * */
+export default function setSeconds (dirtyDate, seconds, options) {
   var date = toDate(dirtyDate, options)
   date.setSeconds(seconds)
   return date
 }
 
-export default setSeconds

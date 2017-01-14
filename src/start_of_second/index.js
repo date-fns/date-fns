@@ -16,11 +16,10 @@ import toDate from '../to_date/index.js'
  * // The start of a second for 1 December 2014 22:15:45.400:
  * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
- */
-function startOfSecond (dirtyDate, options) {
+ * */
+export default function startOfSecond (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setMilliseconds(0)
   return date
 }
 
-export default startOfSecond

@@ -33,8 +33,8 @@ import toDate from '../to_date/index.js'
  * //   Mon Jul 10 1989 00:00:00,
  * //   Sun Jul 02 1995 00:00:00
  * // ]
- */
-function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
   var dateRight = toDate(dirtyDateRight, options)
@@ -49,4 +49,3 @@ function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
   }
 }
 
-export default compareAsc

@@ -19,8 +19,8 @@ import startOfISOWeek from '../start_of_iso_week/index.js'
  * // Which ISO-week numbering year is 2 January 2005?
  * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
- */
-function getISOYear (dirtyDate, options) {
+ * */
+export default function getISOYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
 
@@ -43,4 +43,3 @@ function getISOYear (dirtyDate, options) {
   }
 }
 
-export default getISOYear

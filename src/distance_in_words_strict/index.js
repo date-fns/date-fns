@@ -91,7 +91,7 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
+export default distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
@@ -170,5 +170,3 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   throw new Error('Unknown unit: ' + unit)
 }
-
-export default distanceInWordsStrict

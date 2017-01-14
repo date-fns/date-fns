@@ -34,7 +34,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 2
  */
-function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, options) {
+export default differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, options) {
   var startOfWeekLeft = startOfWeek(dirtyDateLeft, options)
   var startOfWeekRight = startOfWeek(dirtyDateRight, options)
 
@@ -48,5 +48,3 @@ function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, options) {
   // (e.g. it's different in the week of the daylight saving time clock shift)
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_WEEK)
 }
-
-export default differenceInCalendarWeeks

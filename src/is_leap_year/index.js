@@ -15,11 +15,10 @@ import toDate from '../to_date/index.js'
  * // Is 1 September 2012 in the leap year?
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
- */
-function isLeapYear (dirtyDate, options) {
+ * */
+export default function isLeapYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }
 
-export default isLeapYear

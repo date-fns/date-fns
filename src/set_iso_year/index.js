@@ -21,8 +21,8 @@ import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
  * // Set ISO week-numbering year 2007 to 29 December 2008:
  * var result = setISOYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
- */
-function setISOYear (dirtyDate, isoYear, options) {
+ * */
+export default function setISOYear (dirtyDate, isoYear, options) {
   var date = toDate(dirtyDate, options)
   var diff = differenceInCalendarDays(startOfISOYear(date, options), date, options)
   var fourthOfJanuary = new Date(0)
@@ -33,4 +33,3 @@ function setISOYear (dirtyDate, isoYear, options) {
   return date
 }
 
-export default setISOYear

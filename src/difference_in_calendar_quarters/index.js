@@ -20,8 +20,8 @@ import toDate from '../to_date/index.js'
  *   new Date(2014, 6, 2)
  * )
  * //=> 3
- */
-function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
+ * */
+export default function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -31,4 +31,3 @@ function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 4 + quarterDiff
 }
 
-export default differenceInCalendarQuarters

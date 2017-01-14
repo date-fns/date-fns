@@ -6,7 +6,7 @@ var commonFormatterKeys = [
   'Z', 'ZZ', 'X', 'x'
 ]
 
-function buildFormattingTokensRegExp (formatters) {
+export default buildFormattingTokensRegExp (formatters) {
   var formatterKeys = []
   for (var key in formatters) {
     if (formatters.hasOwnProperty(key)) {
@@ -24,5 +24,3 @@ function buildFormattingTokensRegExp (formatters) {
 
   return formattingTokensRegExp
 }
-
-export default buildFormattingTokensRegExp

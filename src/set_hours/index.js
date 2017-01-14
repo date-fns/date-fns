@@ -16,11 +16,10 @@ import toDate from '../to_date/index.js'
  * // Set 4 hours to 1 September 2014 11:30:00:
  * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
- */
-function setHours (dirtyDate, hours, options) {
+ * */
+export default function setHours (dirtyDate, hours, options) {
   var date = toDate(dirtyDate, options)
   date.setHours(hours)
   return date
 }
 
-export default setHours

@@ -23,7 +23,7 @@ import toDate from '../to_date/index.js'
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfWeek (dirtyDate, options) {
+export default startOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
   var date = toDate(dirtyDate, options)
@@ -34,5 +34,3 @@ function startOfWeek (dirtyDate, options) {
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-export default startOfWeek

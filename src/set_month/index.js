@@ -17,8 +17,8 @@ import getDaysInMonth from '../get_days_in_month/index.js'
  * // Set February to 1 September 2014:
  * var result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
- */
-function setMonth (dirtyDate, month, options) {
+ * */
+export default function setMonth (dirtyDate, month, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   var day = date.getDate()
@@ -33,4 +33,3 @@ function setMonth (dirtyDate, month, options) {
   return date
 }
 
-export default setMonth

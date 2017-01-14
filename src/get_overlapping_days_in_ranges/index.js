@@ -30,8 +30,8 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
  * )
  * //=> 0
- */
-function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight, options) {
+ * */
+export default function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight, options) {
   var leftStartTime = toDate(dirtyRangeLeft.start, options).getTime()
   var leftEndTime = toDate(dirtyRangeLeft.end, options).getTime()
   var rightStartTime = toDate(dirtyRangeRight.start, options).getTime()

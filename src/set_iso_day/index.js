@@ -20,12 +20,11 @@ import getISODay from '../get_iso_day/index.js'
  * // Set Sunday to 1 September 2014:
  * var result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
- */
-function setISODay (dirtyDate, day, options) {
+ * */
+export default function setISODay (dirtyDate, day, options) {
   var date = toDate(dirtyDate, options)
   var currentDay = getISODay(date, options)
   var diff = day - currentDay
   return addDays(date, diff, options)
 }
 
-export default setISODay

@@ -21,8 +21,8 @@ import toDate from '../to_date/index.js'
  *   new Date(2030, 0, 1)
  * ])
  * //=> Tue Jan 01 2030 00:00:00
- */
-function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
+ * */
+export default function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
@@ -45,4 +45,3 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
   return result
 }
 
-export default closestTo
