@@ -14,7 +14,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- nextMonth return the next month number [0 - 11]
+- getNextMonth return the next month number [0 - 11]
   (thanks to Olivier Colonna [@OlivierCo](https://github.com/OlivierCo))
 
 ## [1.26.0] - 2017-01-15

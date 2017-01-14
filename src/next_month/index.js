@@ -12,10 +12,10 @@ var getMonth = require('../get_month/index.js')
  *
  * @example
  * // Which is next month from 25 Decembre 2012?
- * var result = nextMonth(new Date(2012, 12, 25));
+ * var result = getNextMonth(new Date(2012, 12, 25));
  * // => 0
  */
-function nextMonth (dirtyDate) {
+function getNextMonth (dirtyDate) {
   var date = parse(dirtyDate)
   var month = getMonth(date)
   var nextMonth = (month === 11) ? 0 : month + 1
@@ -23,4 +23,4 @@ function nextMonth (dirtyDate) {
   return nextMonth
 }
 
-module.exports = nextMonth
+module.exports = getNextMonth
