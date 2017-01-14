@@ -43,11 +43,11 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
 
   describe('halfAMinute', function () {
     it('returns a proper string', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute') === '半分')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute') === '30秒ぐらい')
     })
 
     it('ignores the second argument', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === '半分')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === '30秒ぐらい')
     })
   })
 
@@ -82,13 +82,13 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === '1時間ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 1) === '1時間ぐらい')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === '2時間ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === '2時間ぐらい')
       })
     })
   })
@@ -124,13 +124,13 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
   describe('aboutXMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 1) === '1ヶ月ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 1) === '1ヶ月ぐらい')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === '2ヶ月ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXMonths', 2) === '2ヶ月ぐらい')
       })
     })
   })
@@ -152,13 +152,13 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
   describe('aboutXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXYears', 1) === '1年ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXYears', 1) === '1年ぐらい')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === '2年ごろ')
+        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === '2年ぐらい')
       })
     })
   })
@@ -211,7 +211,7 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === '1年ごろ前')
+      assert(result === '1年ぐらい前')
     })
   })
 
@@ -221,7 +221,7 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === '半分後')
+      assert(result === '30秒ぐらい後')
     })
   })
 })
