@@ -11,7 +11,7 @@ var getMonth = require('../get_month/index.js')
  * @returns {Number} the previous month
  *
  * @example
- * // Which is previous month from 13 Januray 2017?
+ * // Which is next month from 25 Decembre 2012?
  * var result = nextMonth(new Date(2012, 12, 25));
  * // => 0
  */
