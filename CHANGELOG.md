@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.27.0] - 2017-01-14
+
+### Added
+
+- nextMonth return the next month number [0 - 11]
+  (thanks to Olivier Colonna [@OlivierCo](https://github.com/OlivierCo))
+
 ## [1.26.0] - 2017-01-15
 
 ### Added
