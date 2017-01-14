@@ -16,8 +16,7 @@ import isLeapYear from '../is_leap_year/index.js'
  * var result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-function getDaysInYear (dirtyDate, options) {
+export default function getDaysInYear (dirtyDate, options) {
   return isLeapYear(dirtyDate, options) ? 366 : 365
 }
 
-export default getDaysInYear

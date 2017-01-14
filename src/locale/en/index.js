@@ -7,6 +7,10 @@ import buildParseLocale from './build_parse_locale/index.js'
  * @category Locales
  * @summary English locale.
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
-export const parse = buildParseLocale()
+const enLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale(),
+  parse: buildParseLocale()
+}
+
+export default enLocale

@@ -1,4 +1,4 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Interval Helpers
@@ -29,7 +29,7 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> false
  */
-function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, options) {
+export default function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, options) {
   var leftStartTime = toDate(dirtyIntervalLeft.start, options).getTime()
   var leftEndTime = toDate(dirtyIntervalLeft.end, options).getTime()
   var rightStartTime = toDate(dirtyIntervalRight.start, options).getTime()
@@ -41,5 +41,3 @@ function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, options
 
   return leftStartTime < rightEndTime && rightStartTime < leftEndTime
 }
-
-module.exports = areIntervalsOverlapping

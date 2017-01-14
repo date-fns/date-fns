@@ -20,11 +20,10 @@ import toDate from '../to_date/index.js'
  * )
  * //=> 2
  */
-function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
   return dateRight.getFullYear() - dateLeft.getFullYear()
 }
 
-export default differenceInCalendarYears

@@ -22,8 +22,7 @@ import getISOYear from '../get_iso_year/index.js'
  * )
  * //=> 2
  */
-function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarISOYears (dirtyDateLeft, dirtyDateRight, options) {
   return getISOYear(dirtyDateRight, options) - getISOYear(dirtyDateLeft, options)
 }
 
-export default differenceInCalendarISOYears

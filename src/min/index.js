@@ -22,12 +22,10 @@ import toDate from '../to_date/index.js'
  * )
  * //=> Wed Feb 11 1987 00:00:00
  */
-function min (datesArray, options) {
+export default function min (datesArray, options) {
   var dates = datesArray.map(function (dirtyDate) {
     return toDate(dirtyDate, options)
   })
   var earliestTimestamp = Math.min.apply(null, dates)
   return new Date(earliestTimestamp)
 }
-
-export default min

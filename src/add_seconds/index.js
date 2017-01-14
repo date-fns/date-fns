@@ -17,10 +17,9 @@ import toDate from '../to_date/index.js'
  * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-function addSeconds (dirtyDate, amount, options) {
+export default function addSeconds (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   date.setSeconds(date.getSeconds() + amount)
   return date
 }
 
-export default addSeconds

@@ -17,11 +17,10 @@ import toDate from '../to_date/index.js'
  * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfMonth (dirtyDate, options) {
+export default function startOfMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setDate(1)
   date.setHours(0, 0, 0, 0)
   return date
 }
 
-export default startOfMonth

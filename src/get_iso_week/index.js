@@ -22,7 +22,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-function getISOWeek (dirtyDate, options) {
+export default function getISOWeek (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var diff = startOfISOWeek(date, options).getTime() - startOfISOYear(date, options).getTime()
 
@@ -32,4 +32,3 @@ function getISOWeek (dirtyDate, options) {
   return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
 }
 
-export default getISOWeek

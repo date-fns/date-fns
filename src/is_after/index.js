@@ -17,10 +17,9 @@ import toDate from '../to_date/index.js'
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-function isAfter (dirtyDate, dirtyDateToCompare, options) {
+export default function isAfter (dirtyDate, dirtyDateToCompare, options) {
   var date = toDate(dirtyDate, options)
   var dateToCompare = toDate(dirtyDateToCompare, options)
   return date.getTime() > dateToCompare.getTime()
 }
 
-export default isAfter

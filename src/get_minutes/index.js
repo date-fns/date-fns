@@ -16,10 +16,9 @@ import toDate from '../to_date/index.js'
  * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-function getMinutes (dirtyDate, options) {
+export default function getMinutes (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var minutes = date.getMinutes()
   return minutes
 }
 
-export default getMinutes

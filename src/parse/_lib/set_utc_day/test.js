@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var setUTCDay = require('./')
+import assert from 'power-assert'
+import setUTCDay from '.'
 
 describe('setUTCDay', function () {
   it('sets the day of the week', function () {

@@ -1,6 +1,6 @@
 import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637
   var monthsShort = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.']
   var monthsFull = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
@@ -85,5 +85,3 @@ function buildFormatLocale () {
     formattingTokensRegExp: buildTokensRegExp(formatters)
   }
 }
-
-export default buildFormatLocale

@@ -7,5 +7,9 @@ import buildFormatLocale from './build_format_locale/index.js'
  * @summary Chinese Simplified locale.
  * @author tonypai [@tpai]{@link https://github.com/tpai}
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
+const zhTwLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+export default zhTwLocale

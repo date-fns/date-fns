@@ -25,7 +25,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, options)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, options)
 
@@ -40,4 +40,3 @@ function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_WEEK)
 }
 
-export default differenceInCalendarISOWeeks

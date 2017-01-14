@@ -17,8 +17,7 @@ import addMinutes from '../add_minutes/index.js'
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-function subMinutes (dirtyDate, amount, options) {
+export default function subMinutes (dirtyDate, amount, options) {
   return addMinutes(dirtyDate, -amount, options)
 }
 
-export default subMinutes

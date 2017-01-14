@@ -20,10 +20,9 @@ import toDate from '../to_date/index.js'
  * )
  * //=> false
  */
-function isEqual (dirtyLeftDate, dirtyRightDate, options) {
+export default function isEqual (dirtyLeftDate, dirtyRightDate, options) {
   var dateLeft = toDate(dirtyLeftDate, options)
   var dateRight = toDate(dirtyRightDate, options)
   return dateLeft.getTime() === dateRight.getTime()
 }
 
-export default isEqual

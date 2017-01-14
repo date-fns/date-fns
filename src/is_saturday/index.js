@@ -16,8 +16,7 @@ import toDate from '../to_date/index.js'
  * var result = isSaturday(new Date(2014, 8, 27))
  * //=> true
  */
-function isSaturday (dirtyDate, options) {
+export default function isSaturday (dirtyDate, options) {
   return toDate(dirtyDate, options).getDay() === 6
 }
 
-export default isSaturday

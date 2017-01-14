@@ -17,8 +17,7 @@ import addYears from '../add_years/index.js'
  * var result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-function subYears (dirtyDate, amount, options) {
+export default function subYears (dirtyDate, amount, options) {
   return addYears(dirtyDate, -amount, options)
 }
 
-export default subYears

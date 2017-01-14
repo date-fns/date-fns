@@ -17,10 +17,9 @@ import toDate from '../to_date/index.js'
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-function addDays (dirtyDate, amount, options) {
+export default function addDays (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   date.setDate(date.getDate() + amount)
   return date
 }
 
-export default addDays

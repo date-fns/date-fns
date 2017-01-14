@@ -22,7 +22,7 @@ import compareDesc from '../compare_desc/index.js'
  * )
  * //=> 1
  */
-function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -36,4 +36,3 @@ function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastYearNotFull)
 }
 
-export default differenceInYears

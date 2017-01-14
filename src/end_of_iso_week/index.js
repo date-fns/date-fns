@@ -20,10 +20,9 @@ import cloneObject from '../_lib/clone_object/index.js'
  * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-function endOfISOWeek (dirtyDate, options) {
+export default function endOfISOWeek (dirtyDate, options) {
   var endOfWeekOptions = cloneObject(options)
   endOfWeekOptions.weekStartsOn = 1
   return endOfWeek(dirtyDate, endOfWeekOptions)
 }
 
-export default endOfISOWeek

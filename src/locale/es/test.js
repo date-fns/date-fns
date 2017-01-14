@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import * as esLocale from '.'
+import esLocale from '.'
 
 describe('es locale', function () {
   it('exports distanceInWords object', function () {

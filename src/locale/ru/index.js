@@ -6,5 +6,9 @@ import buildFormatLocale from './build_format_locale/index.js'
  * @category Locales
  * @summary Russian locale.
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
+const ruLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+export default ruLocale

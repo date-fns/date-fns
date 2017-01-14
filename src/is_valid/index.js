@@ -25,7 +25,7 @@ import isDate from '../is_date/index.js'
  * var result = isValid(new Date(''))
  * //=> false
  */
-function isValid (date, options) {
+export default function isValid (date, options) {
   if (isDate(date, options)) {
     return !isNaN(date)
   } else {
@@ -33,4 +33,3 @@ function isValid (date, options) {
   }
 }
 
-export default isValid

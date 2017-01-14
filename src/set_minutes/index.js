@@ -17,10 +17,9 @@ import toDate from '../to_date/index.js'
  * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-function setMinutes (dirtyDate, minutes, options) {
+export default function setMinutes (dirtyDate, minutes, options) {
   var date = toDate(dirtyDate, options)
   date.setMinutes(minutes)
   return date
 }
 
-export default setMinutes

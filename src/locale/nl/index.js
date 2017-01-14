@@ -7,5 +7,9 @@ import buildFormatLocale from './build_format_locale/index.js'
  * @summary Dutch locale.
  * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
+const nlLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+export default nlLocale

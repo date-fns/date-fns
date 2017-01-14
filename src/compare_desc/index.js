@@ -34,7 +34,7 @@ import toDate from '../to_date/index.js'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
+export default function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
   var dateRight = toDate(dirtyDateRight, options)
@@ -49,4 +49,3 @@ function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
   }
 }
 
-export default compareDesc

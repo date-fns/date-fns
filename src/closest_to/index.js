@@ -21,7 +21,7 @@ import toDate from '../to_date/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
+export default function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
   var dateToCompare = toDate(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
@@ -39,5 +39,3 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
 
   return result
 }
-
-export default closestTo

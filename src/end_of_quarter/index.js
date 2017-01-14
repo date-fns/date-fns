@@ -17,7 +17,7 @@ import toDate from '../to_date/index.js'
  * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-function endOfQuarter (dirtyDate, options) {
+export default function endOfQuarter (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
@@ -26,4 +26,3 @@ function endOfQuarter (dirtyDate, options) {
   return date
 }
 
-export default endOfQuarter

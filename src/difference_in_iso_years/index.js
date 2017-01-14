@@ -25,7 +25,7 @@ import subISOYears from '../sub_iso_years/index.js'
  * )
  * //=> 1
  */
-function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -40,4 +40,3 @@ function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastISOYearNotFull)
 }
 
-export default differenceInISOYears

@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import * as zhCnLocale from '.'
+import zhCnLocale from '.'
 
 describe('zh_CN locale', function () {
   it('exports distanceInWords object', function () {

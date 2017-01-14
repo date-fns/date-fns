@@ -17,10 +17,9 @@ import toDate from '../to_date/index.js'
  * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-function addHours (dirtyDate, amount, options) {
+export default function addHours (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   date.setHours(date.getHours() + amount)
   return date
 }
 
-export default addHours

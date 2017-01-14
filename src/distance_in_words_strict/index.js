@@ -1,7 +1,7 @@
 import compareDesc from '../compare_desc/index.js'
 import toDate from '../to_date/index.js'
 import differenceInSeconds from '../difference_in_seconds/index.js'
-import * as enLocale from '../locale/en/index.js'
+import enLocale from '../locale/en/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -91,7 +91,7 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
+export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
@@ -170,5 +170,3 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   throw new Error('Unknown unit: ' + unit)
 }
-
-export default distanceInWordsStrict

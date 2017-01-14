@@ -26,7 +26,7 @@ import toDate from '../to_date/index.js'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDayOfInterval (dirtyInterval, options) {
+export default function eachDayOfInterval (dirtyInterval, options) {
   var startDate = toDate(dirtyInterval.start, options)
   var endDate = toDate(dirtyInterval.end, options)
 
@@ -48,5 +48,3 @@ function eachDayOfInterval (dirtyInterval, options) {
 
   return dates
 }
-
-export default eachDayOfInterval

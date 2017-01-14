@@ -8,5 +8,9 @@ import buildFormatLocale from './build_format_locale/index.js'
  * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
+const esLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+export default esLocale

@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var startOfYear = require('./')
-var moment = require('moment')
+import startOfYear from '.'
+import moment from 'moment'
 
 suite('startOfYear', function () {
   benchmark('date-fns', function () {

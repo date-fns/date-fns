@@ -8,5 +8,9 @@ import buildFormatLocale from './build_format_locale/index.js'
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
  */
-export const distanceInWords = buildDistanceInWordsLocale()
-export const format = buildFormatLocale()
+const jaLocale = {
+  distanceInWords: buildDistanceInWordsLocale(),
+  format: buildFormatLocale()
+}
+
+export default jaLocale

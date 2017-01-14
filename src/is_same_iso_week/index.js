@@ -23,10 +23,9 @@ import cloneObject from '../_lib/clone_object/index.js'
  * )
  * //=> true
  */
-function isSameISOWeek (dirtyDateLeft, dirtyDateRight, options) {
+export default function isSameISOWeek (dirtyDateLeft, dirtyDateRight, options) {
   var isSameWeekOptions = cloneObject(options)
   isSameWeekOptions.weekStartsOn = 1
   return isSameWeek(dirtyDateLeft, dirtyDateRight, isSameWeekOptions)
 }
 
-export default isSameISOWeek
