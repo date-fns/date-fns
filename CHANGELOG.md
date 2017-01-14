@@ -147,6 +147,26 @@ rather than spread arguments.
   parse('2016-01-01', 'YYYY-MM-DD', new Date())
   ```
 
+- **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
+  to make them consistent with `differenceInWords` and `distanceInWordsStrict` functions.
+  Now, the first date argument must be earlier then the second for function to return the positive number.
+
+  ```javascript
+  // Before v2.0.0
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> -1
+
+  // v2.0.0 onward
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> 1
+  ```
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
