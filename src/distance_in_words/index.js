@@ -116,7 +116,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
     dateRight = toDate(dirtyDateToCompare, options)
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft, options)
+  var seconds = differenceInSeconds(dateLeft, dateRight, options)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
   var months
@@ -173,7 +173,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
     return localize('aboutXMonths', months, localizeOptions)
   }
 
-  months = differenceInMonths(dateRight, dateLeft, options)
+  months = differenceInMonths(dateLeft, dateRight, options)
 
   // 2 months up to 12 months
   if (months < 12) {
