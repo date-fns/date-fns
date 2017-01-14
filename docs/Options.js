@@ -9,10 +9,10 @@
  * @property {Number} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
  *   `isThisWeek`, `lastDayOfWeek`, `setDay`, and `startOfWeek`
- * @property {0 | 1 | 2} [additionalDigits=2] - the additional number of digits in the extended year format.
+ * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
  *   Used by all functions that take String as Date-like argument.
- *   Internally, passed to `parse` to specify which way to convert extended year formatted String to Date.
- *   See [`parse`]{@link docs/parse}
+ *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
+ *   See [`toDate`]{@link docs/toDate}
  * @property {Object} [locale=enLocale] - the locale object.
  *   Used by `distanceInWords`, `distanceInWordsToNow`, `distanceInWordsStrict` and `format`
  * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `distanceInWordsStrict`.
