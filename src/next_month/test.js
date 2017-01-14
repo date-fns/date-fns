@@ -6,7 +6,7 @@ var nextMonth = require('./');
 
 describe('nextMonth', function () {
   it('returns the next month of the given date', function () {
-    var result = nextMonth(next Date(2014, 11 /* Dev */, 25));
+    var result = nextMonth(new Date(2014, 11 /* Dev */, 25));
     assert(result === 0);
   });
 
