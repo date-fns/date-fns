@@ -28,7 +28,7 @@ var toDate = require('../to_date/index.js')
  *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
  * )
  * //=> false
- * */
+ */
 export default function areRangesOverlapping (dirtyRangeLeft, dirtyRangeRight, options) {
   var leftStartTime = toDate(dirtyRangeLeft.start, options).getTime()
   var leftEndTime = toDate(dirtyRangeLeft.end, options).getTime()
@@ -41,5 +41,3 @@ export default function areRangesOverlapping (dirtyRangeLeft, dirtyRangeRight, o
 
   return leftStartTime < rightEndTime && rightStartTime < leftEndTime
 }
-
-module.exports = areRangesOverlapping

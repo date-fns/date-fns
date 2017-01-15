@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Slovak locale.
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

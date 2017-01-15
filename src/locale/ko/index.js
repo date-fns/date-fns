@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Korean locale.
  * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

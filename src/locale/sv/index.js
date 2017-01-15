@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Swedish locale.
  * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

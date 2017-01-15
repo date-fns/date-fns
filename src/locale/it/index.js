@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Italian locale.
  * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

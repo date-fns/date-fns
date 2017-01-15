@@ -30,7 +30,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
  * )
  * //=> 0
- * */
+ */
 export default function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRight, options) {
   var leftStartTime = toDate(dirtyRangeLeft.start, options).getTime()
   var leftEndTime = toDate(dirtyRangeLeft.end, options).getTime()
@@ -59,5 +59,3 @@ export default function getOverlappingDaysInRanges (dirtyRangeLeft, dirtyRangeRi
 
   return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
 }
-
-module.exports = getOverlappingDaysInRanges

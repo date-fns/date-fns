@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Greek locale.
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Indonesian locale.
  * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

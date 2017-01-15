@@ -6,7 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Turkish locale.
  * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
  */
-module.exports = {
+export default {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
