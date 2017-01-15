@@ -10,6 +10,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.26.0] - 2017-01-15
+
+### Added
+
+- `getTime`
+
+### Fixed
+
+- Various fixes for Japanese locale. See PR: [395](https://github.com/date-fns/date-fns/pull/395).
+  Thanks to Yamagishi Kazutoshi [@ykzts](https://github.com/ykzts)
+
 ## [1.25.0] - 2017-01-11
 
 ### Added
@@ -904,7 +915,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.25.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.26.0...HEAD
+[1.26.0]: https://github.com/date-fns/date-fns/compare/v1.25.0...v1.26.0
 [1.25.0]: https://github.com/date-fns/date-fns/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/date-fns/date-fns/compare/v1.23.0...v1.24.0
 [1.23.0]: https://github.com/date-fns/date-fns/compare/v1.22.0...v1.23.0
