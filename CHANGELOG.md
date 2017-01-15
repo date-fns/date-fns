@@ -147,6 +147,24 @@ rather than spread arguments.
   parse('2016-01-01', 'YYYY-MM-DD', new Date())
   ```
 
+- **BREAKING**: now `format` throws an exception if the passed date is `Invalid Date`.
+
+  ```javascript
+  // Before v2.0.0
+  var result = format(date, 'YYYY-MM-DD')
+  if (result === 'Invalid Date') {
+    // ...
+  }
+
+  // v2.0.0 onward
+  try {
+    var result = format(date, 'YYYY-MM-DD')
+    // ...
+  } catch (e) {
+    // ...
+  }
+  ```
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
