@@ -118,7 +118,7 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   var unit = options.unit
   var mathPartial = Math[options.partialMethod || 'floor']
-  var seconds = differenceInSeconds(dateRight, dateLeft, options)
+  var seconds = differenceInSeconds(dateLeft, dateRight, options)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = mathPartial(seconds / 60) - offset
   var hours, days, months, years
