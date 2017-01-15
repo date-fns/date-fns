@@ -6,17 +6,20 @@ var getTime = require('./')
 
 describe('getTime', function () {
   it('returns the timestamp of the given date', function () {
-    var result = getTime(new Date(1483228800000))
-    assert(result === 1483228800000)
+    var timestamp = 1483228800000
+    var result = getTime(new Date(timestamp))
+    assert(result === timestamp)
   })
 
   it('accepts a string', function () {
-    var result = getTime(new Date(1483228800000).toISOString())
-    assert(result === 1483228800000)
+    var timestamp = 1484503736150
+    var result = getTime(new Date(timestamp).toISOString())
+    assert(result === timestamp)
   })
 
   it('accepts a timestamp (and returns it unchanged)', function () {
-    var result = getTime(new Date(1483228800000).getTime())
-    assert(result === 1483228800000)
+    var timestamp = 804643200000
+    var result = getTime(timestamp)
+    assert(result === timestamp)
   })
 })
