@@ -315,8 +315,9 @@ describe('format', function () {
   })
 
   describe('edge cases', function () {
-    it('returns String(\'Invalid Date\') if the date isn\'t valid', function () {
-      assert(format(new Date(NaN), 'MMMM D, YYYY') === 'Invalid Date')
+    it('throws an exception if the date isn\'t valid', function () {
+      var block = format.bind(null, new Date(NaN), 'MMMM D, YYYY')
+      assert.throws(block)
     })
 
     it('handles dates before 100 AD', function () {
