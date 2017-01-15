@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Timestamp Helpers
@@ -20,5 +20,3 @@ export default function getTime (dirtyDate) {
   var timestamp = date.getTime()
   return timestamp
 }
-
-module.exports = getTime

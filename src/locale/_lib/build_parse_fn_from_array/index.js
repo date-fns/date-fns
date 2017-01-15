@@ -1,4 +1,4 @@
-function buildParseFnFromArray (array) {
+export default function buildParseFnFromArray (array) {
   var length = array.length
   return function (matchResult) {
     for (var i = 0; i < length; i++) {
@@ -10,5 +10,3 @@ function buildParseFnFromArray (array) {
     return -1
   }
 }
-
-module.exports = buildParseFnFromArray

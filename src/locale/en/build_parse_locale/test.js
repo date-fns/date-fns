@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var buildParseLocale = require('./')
+import assert from 'power-assert'
+import buildParseLocale from './'
 
 describe('en locale > buildFormatLocale', function () {
   it('returns an object', function () {

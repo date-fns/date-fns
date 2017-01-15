@@ -1,9 +1,9 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
-var buildMatchRegExpFromArray = require('../../_lib/build_match_reg_exp_from_array/index.js')
-var buildParseFnFromArray = require('../../_lib/build_parse_fn_from_array/index.js')
-var parseDecimal = require('../../_lib/parse_decimal/index.js')
+import buildFormattingTokensRegExp from '../../_lib/build_formatting_tokens_reg_exp/index.js'
+import buildMatchRegExpFromArray from '../../_lib/build_match_reg_exp_from_array/index.js'
+import buildParseFnFromArray from '../../_lib/build_parse_fn_from_array/index.js'
+import parseDecimal from '../../_lib/parse_decimal/index.js'
 
-function buildParseLocale () {
+export default function buildParseLocale () {
   var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   var monthsFull = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   var weekdays2char = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
@@ -146,5 +146,3 @@ function buildParseLocale () {
     parsingTokensRegExp: buildFormattingTokensRegExp(parsers)
   }
 }
-
-module.exports = buildParseLocale

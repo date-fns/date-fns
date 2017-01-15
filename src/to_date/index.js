@@ -1,4 +1,4 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -315,5 +315,3 @@ function dayOfISOYear (isoYear, week, day) {
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
-
-module.exports = toDate

@@ -1,9 +1,9 @@
-var setISOYear = require('../../../set_iso_year/index.js')
-var startOfISOYear = require('../../../start_of_iso_year/index.js')
-var setISOWeek = require('../../../set_iso_week/index.js')
-var startOfISOWeek = require('../../../start_of_iso_week/index.js')
-var setDay = require('../../../set_day/index.js')
-var setISODay = require('../../../set_iso_day/index.js')
+import setISOYear from '../../../set_iso_year/index.js'
+import startOfISOYear from '../../../start_of_iso_year/index.js'
+import setISOWeek from '../../../set_iso_week/index.js'
+import startOfISOWeek from '../../../start_of_iso_week/index.js'
+import setDay from '../../../set_day/index.js'
+import setISODay from '../../../set_iso_day/index.js'
 
 var units = {
   year: {
@@ -134,4 +134,4 @@ var units = {
   }
 }
 
-module.exports = units
+export default units

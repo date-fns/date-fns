@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var idLocale = require('./')
+import assert from 'power-assert'
+import idLocale from './'
 
 describe('id locale', function () {
   it('exports distanceInWords object', function () {

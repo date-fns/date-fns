@@ -1,4 +1,4 @@
-function buildDistanceInWordsLocale () {
+export default function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: 'أقل من ثانية واحدة',
@@ -95,5 +95,3 @@ function buildDistanceInWordsLocale () {
     localize: localize
   }
 }
-
-module.exports = buildDistanceInWordsLocale

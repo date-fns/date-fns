@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var areRangesOverlapping = require('./')
+import assert from 'power-assert'
+import areRangesOverlapping from './'
 
 describe('areRangesOverlapping', function () {
   var initialRangeStart = new Date(2016, 10, 10, 13, 0, 0)
