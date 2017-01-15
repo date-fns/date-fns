@@ -69,6 +69,7 @@ var enLocale = require('../locale/en/index.js')
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the formatted date string
+ * @throws {Error} The date must be valid
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -105,7 +106,7 @@ function format (dirtyDate, formatStr, options) {
   var date = toDate(dirtyDate, options)
 
   if (!isValid(date, options)) {
-    return 'Invalid Date'
+    throw new Error('Date is invalid')
   }
 
   var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
