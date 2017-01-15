@@ -10,7 +10,7 @@ function buildDistanceInWordsLocale () {
       other: '{{count}}秒'
     },
 
-    halfAMinute: '半分',
+    halfAMinute: '30秒ぐらい',
 
     lessThanXMinutes: {
       one: '1分以下',
@@ -23,8 +23,8 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXHours: {
-      one: '1時間ごろ',
-      other: '{{count}}時間ごろ'
+      one: '1時間ぐらい',
+      other: '{{count}}時間ぐらい'
     },
 
     xHours: {
@@ -38,8 +38,8 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXMonths: {
-      one: '1ヶ月ごろ',
-      other: '{{count}}ヶ月ごろ'
+      one: '1ヶ月ぐらい',
+      other: '{{count}}ヶ月ぐらい'
     },
 
     xMonths: {
@@ -48,8 +48,8 @@ function buildDistanceInWordsLocale () {
     },
 
     aboutXYears: {
-      one: '1年ごろ',
-      other: '{{count}}年ごろ'
+      one: '1年ぐらい',
+      other: '{{count}}年ぐらい'
     },
 
     xYears: {
