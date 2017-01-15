@@ -389,6 +389,11 @@ declare module 'date-fns' {
   ): number
   namespace getSeconds {}
 
+  function getTime (
+    date: Date | string | number
+  ): number
+  namespace getTime {}
+
   function getYear (
     date: Date | string | number
   ): number
@@ -1205,6 +1210,11 @@ declare module 'date-fns/get_seconds' {
   export = getSeconds
 }
 
+declare module 'date-fns/get_time' {
+  import {getTime} from 'date-fns'
+  export = getTime
+}
+
 declare module 'date-fns/get_year' {
   import {getYear} from 'date-fns'
   export = getYear
@@ -1968,6 +1978,11 @@ declare module 'date-fns/get_quarter/index' {
 declare module 'date-fns/get_seconds/index' {
   import {getSeconds} from 'date-fns'
   export = getSeconds
+}
+
+declare module 'date-fns/get_time/index' {
+  import {getTime} from 'date-fns'
+  export = getTime
 }
 
 declare module 'date-fns/get_year/index' {

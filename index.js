@@ -65,6 +65,7 @@ module.exports = {
   getOverlappingDaysInRanges: require('./get_overlapping_days_in_ranges/index.js'),
   getQuarter: require('./get_quarter/index.js'),
   getSeconds: require('./get_seconds/index.js'),
+  getTime: require('./get_time/index.js'),
   getYear: require('./get_year/index.js'),
   isAfter: require('./is_after/index.js'),
   isBefore: require('./is_before/index.js'),
