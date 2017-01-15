@@ -10,8 +10,8 @@ var MILLISECONDS_IN_DAY = 86400000
  * @description
  * Get the number of calendar days between the given dates.
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Date|String|Number} dateLeft - the earlier date
+ * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar days
  *
@@ -19,8 +19,8 @@ var MILLISECONDS_IN_DAY = 86400000
  * // How many calendar days are between
  * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
  * var result = differenceInCalendarDays(
- *   new Date(2012, 6, 2, 0, 0),
- *   new Date(2011, 6, 2, 23, 0)
+ *   new Date(2011, 6, 2, 23, 0),
+ *   new Date(2012, 6, 2, 0, 0)
  * )
  * //=> 366
  */
@@ -36,7 +36,7 @@ function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_DAY)
+  return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_DAY)
 }
 
 module.exports = differenceInCalendarDays
