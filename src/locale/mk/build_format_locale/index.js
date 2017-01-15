@@ -76,6 +76,9 @@ function ordinal (number) {
         return number + '-ви'
       case 2:
         return number + '-ри'
+      case 7:
+      case 8:
+        return number + '-ми'
     }
   }
   return number + '-ти'
