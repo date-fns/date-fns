@@ -5,6 +5,7 @@ export default {
     'General',
     'Common Helpers',
     'Range Helpers',
+    'Timestamp Helpers',
     'Millisecond Helpers',
     'Second Helpers',
     'Minute Helpers',
