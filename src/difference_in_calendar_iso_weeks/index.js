@@ -12,16 +12,16 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
+ * @param {Date|String|Number} dateLeft - the earlier date
+ * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar ISO weeks
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
  * var result = differenceInCalendarISOWeeks(
- *   new Date(2014, 6, 21),
- *   new Date(2014, 6, 6)
+ *   new Date(2014, 6, 6),
+ *   new Date(2014, 6, 21)
  * )
  * //=> 3
  */
@@ -37,7 +37,7 @@ function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)
-  return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
+  return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_WEEK)
 }
 
 module.exports = differenceInCalendarISOWeeks

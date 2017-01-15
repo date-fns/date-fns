@@ -20,7 +20,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  */
 function getDayOfYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
-  var diff = differenceInCalendarDays(date, startOfYear(date, options), options)
+  var diff = differenceInCalendarDays(startOfYear(date, options), date, options)
   var dayOfYear = diff + 1
   return dayOfYear
 }
