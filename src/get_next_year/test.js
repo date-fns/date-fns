@@ -7,7 +7,7 @@ var getNextYear = require('./')
 describe('getNextYear', function () {
   it('returns the next year of the given date', function () {
     var result = getNextYear(new Date(2017, 0 /**/, 16))
-    assert(ressult === 2018)
+    assert(result === 2018)
   })
 
   it('accepts a string', function () {
