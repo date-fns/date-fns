@@ -16,7 +16,7 @@ var getYear = require('../getYear/index.js')
  * var result = getNextYear(new Date(2016, 2, 28));
  * // => 2017
  */
-function getNextYear = (dirtyDate) => {
+function getNextYear (dirtyDate) {
   var date = parse(dirtyDate)
   var year = getYear(date);
 
