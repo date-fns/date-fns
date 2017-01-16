@@ -1,5 +1,5 @@
 var parse = require('../parse/index.js')
-var getYear = require('../getYear/index.js')
+var getYear = require('../get_year/index.js')
 
 /**
  * @category Month Helpers
