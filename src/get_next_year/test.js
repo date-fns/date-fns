@@ -12,11 +12,11 @@ describe('getNextYear', function () {
 
   it('accepts a string', function () {
     var result = getNextYear(new Date(2014, 6 /* Jul */, 2).toISOString())
-    assert(result === 6)
+    assert(result === 2015)
   })
 
   it('accepts a timestamp', function () {
-    var result = getNextYear(new Date(2014, 3 /* Apr */, 2).getTime())
-    assert(result === 3)
+    var result = getNextYear(new Date(2013, 3 /* Apr */, 2).getTime())
+    assert(result === 2014)
   })
 })
