@@ -130,6 +130,7 @@ module.exports = {
   setQuarter: require('./set_quarter/index.js'),
   setSeconds: require('./set_seconds/index.js'),
   setYear: require('./set_year/index.js'),
+  strftime: require('./strftime/index.js'),
   startOfDay: require('./start_of_day/index.js'),
   startOfHour: require('./start_of_hour/index.js'),
   startOfISOWeek: require('./start_of_iso_week/index.js'),
