@@ -7,7 +7,7 @@ var parse = require('../parse/index.js')
  * @description
  * Get the year of the given date.
  *
- * @param {Date|String|Number} date - the given date
+ * @param {Date|String|Number} date - the given date, is no params then default to new Date()
  * @returns {Number} the year
  *
  * @example
@@ -16,8 +16,11 @@ var parse = require('../parse/index.js')
  * //=> 2014
  */
 function getYear (dirtyDate) {
+  dirtyDate = (typeof dirtyDate !== 'undefined') ? dirtyDate : new Date()
+
   var date = parse(dirtyDate)
   var year = date.getFullYear()
+
   return year
 }
 
