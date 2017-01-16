@@ -85,7 +85,7 @@ var modifiers = {
  * The result may vary by locale.
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} [format='%FT%T.%L%z'] - the string of tokens
+ * @param {String} [format='%FT%T.%L%Z'] - the string of tokens
  * @param {Object} [options] - the object with options
  * @param {Object} [options.locale=enLocale] - the locale object
  * @returns {String} the formatted date string
@@ -109,7 +109,7 @@ var modifiers = {
  * //=> '2 de julio 2014'
  */
 function strftime (date, format, options) {
-  format = format || '%FT%T.%L%z'
+  format = format || '%FT%T.%L%Z'
   options = options || {}
 
   var matcher = new RegExp('(%[' + Object.keys(modifiers).join('') + '])', 'g')
