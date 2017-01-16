@@ -9,14 +9,16 @@ describe('format', function () {
     this._date = new Date(2014, 4 /* May */, 4, 9, 9, 9, 900)
   })
 
+  it('uses the default format', function () {
+    assert(strftime(this._date) === '2014-05-04T09:09:09.900+0200')
+  })
+
   it('accepts a string', function () {
-    var date = new Date(2014, 5, 4).toISOString()
-    assert(strftime(date, '%Y-%m-%d') === '2014-06-04')
+    assert(strftime(this._date, '%Y-%m-%d') === '2014-05-04')
   })
 
   it('accepts a timestamp', function () {
-    var date = new Date(2014, 5, 4).getTime()
-    assert(strftime(date, '%Y-%m-%d') === '2014-06-04')
+    assert(strftime(this._date, '%Y-%m-%d') === '2014-05-04')
   })
 
   it('correctly uses arguments', function () {

@@ -2,7 +2,7 @@
 
 declare module.exports: (
   date: Date | string | number,
-  format: string,
+  format?: string,
   options?: {
     locale?: Object
   }
