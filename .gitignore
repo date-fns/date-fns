@@ -5,3 +5,4 @@ dist/compressed
 test.espowered.js
 .envrc
 .idea/
+.DS_Store
