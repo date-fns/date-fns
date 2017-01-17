@@ -62,6 +62,10 @@ function getType (types, {props = [], forceArray = false, indent = 1} = {}) {
       return 'any'
     }
 
+    if (type === 'function') {
+      return 'Function'
+    }
+
     if (type.startsWith('Array.')) {
       const [, arrayType] = type.match(/^Array\.<(\w+)>$/i)
       return `${correctTypeCase(arrayType)}[]`

@@ -12,9 +12,10 @@
  * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
- *   See [`toDate`]{@link docs/toDate}
- * @property {Object} [locale=enLocale] - the locale object.
- *   Used by `distanceInWords`, `distanceInWordsToNow`, `distanceInWordsStrict` and `format`
+ *   See [toDate]{@link docs/toDate}
+ * @property {Locale} [locale=enLocale] - the locale object.
+ *   Used by `distanceInWords`, `distanceInWordsStrict`, `format` and `parse`.
+ *   See [Locale]{@link docs/Locale}
  * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `distanceInWordsStrict`.
  *   If specified, will force a unit
  * @property {'floor'|'ceil'|'round'} [partialMethod='floor'] - used by `distanceInWordsStrict`.
