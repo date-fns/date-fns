@@ -1,4 +1,4 @@
-var isSameSecond = require('../is_same_second/index.js')
+import isSameSecond from '../is_same_second/index.js'
 
 /**
  * @category Second Helpers
@@ -15,9 +15,6 @@ var isSameSecond = require('../is_same_second/index.js')
  * // is 25 September 2014 18:30:15.000 in this second?
  * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
- */
-function isThisSecond (dirtyDate) {
+ */ isThisSecond (dirtyDate) {
   return isSameSecond(new Date(), dirtyDate)
 }
-
-module.exports = isThisSecond

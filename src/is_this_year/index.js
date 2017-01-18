@@ -1,4 +1,4 @@
-var isSameYear = require('../is_same_year/index.js')
+import isSameYear from '../is_same_year/index.js'
 
 /**
  * @category Year Helpers
@@ -14,9 +14,6 @@ var isSameYear = require('../is_same_year/index.js')
  * // If today is 25 September 2014, is 2 July 2014 in this year?
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
- */
-function isThisYear (dirtyDate) {
+ */ isThisYear (dirtyDate) {
   return isSameYear(new Date(), dirtyDate)
 }
-
-module.exports = isThisYear

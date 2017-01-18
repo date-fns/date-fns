@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Weekday Helpers
@@ -11,15 +11,16 @@ var parse = require('../parse/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of ISO week
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
- */
-function getISODay (dirtyDate) {
-  var date = parse(dirtyDate)
+ * */
+export default function getISODay (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var day = date.getDay()
 
   if (day === 0) {
@@ -29,4 +30,3 @@ function getISODay (dirtyDate) {
   return day
 }
 
-module.exports = getISODay

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Week Helpers
@@ -9,7 +9,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the last day of a week
  *
@@ -23,10 +23,10 @@ var parse = require('../parse/index.js')
  * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-function lastDayOfWeek (dirtyDate, options) {
+export default lastDayOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate, options)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
@@ -34,5 +34,3 @@ function lastDayOfWeek (dirtyDate, options) {
   date.setDate(date.getDate() + diff)
   return date
 }
-
-module.exports = lastDayOfWeek

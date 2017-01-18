@@ -1,4 +1,4 @@
-var isSameISOYear = require('../is_same_iso_year/index.js')
+import isSameISOYear from '../is_same_iso_year/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -17,9 +17,6 @@ var isSameISOYear = require('../is_same_iso_year/index.js')
  * // is 30 December 2013 in this ISO week-numbering year?
  * var result = isThisISOYear(new Date(2013, 11, 30))
  * //=> true
- */
-function isThisISOYear (dirtyDate) {
+ */ isThisISOYear (dirtyDate) {
   return isSameISOYear(new Date(), dirtyDate)
 }
-
-module.exports = isThisISOYear

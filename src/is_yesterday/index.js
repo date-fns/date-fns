@@ -1,4 +1,4 @@
-var startOfDay = require('../start_of_day/index.js')
+import startOfDay from '../start_of_day/index.js'
 
 /**
  * @category Day Helpers
@@ -14,11 +14,8 @@ var startOfDay = require('../start_of_day/index.js')
  * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
  * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
- */
-function isYesterday (dirtyDate) {
+ */ isYesterday (dirtyDate) {
   var yesterday = new Date()
   yesterday.setDate(yesterday.getDate() - 1)
   return startOfDay(dirtyDate).getTime() === startOfDay(yesterday).getTime()
 }
-
-module.exports = isYesterday

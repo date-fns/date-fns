@@ -1,6 +1,6 @@
-var parse = require('../parse/index.js')
-var addDays = require('../add_days/index.js')
-var getISODay = require('../get_iso_day/index.js')
+import toDate from '../to_date/index.js'
+import addDays from '../add_days/index.js'
+import getISODay from '../get_iso_day/index.js'
 
 /**
  * @category Weekday Helpers
@@ -13,18 +13,18 @@ var getISODay = require('../get_iso_day/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} day - the day of the ISO week of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the day of the ISO week setted
  *
  * @example
  * // Set Sunday to 1 September 2014:
  * var result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
- */
-function setISODay (dirtyDate, day) {
-  var date = parse(dirtyDate)
-  var currentDay = getISODay(date)
+ * */
+export default function setISODay (dirtyDate, day, options) {
+  var date = toDate(dirtyDate, options)
+  var currentDay = getISODay(date, options)
   var diff = day - currentDay
-  return addDays(date, diff)
+  return addDays(date, diff, options)
 }
 
-module.exports = setISODay

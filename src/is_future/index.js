@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import parse from '../parse/index.js'
 
 /**
  * @category Common Helpers
@@ -14,9 +14,6 @@ var parse = require('../parse/index.js')
  * // If today is 6 October 2014, is 31 December 2014 in the future?
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
- */
-function isFuture (dirtyDate) {
+ */ isFuture (dirtyDate) {
   return parse(dirtyDate).getTime() > new Date().getTime()
 }
-
-module.exports = isFuture

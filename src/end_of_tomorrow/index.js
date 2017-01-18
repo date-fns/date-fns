@@ -11,8 +11,7 @@
  * // If today is 6 October 2014:
  * var result = endOfTomorrow()
  * //=> Tue Oct 7 2014 23:59:59.999
- */
-function endOfTomorrow () {
+ */ endOfTomorrow () {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()
@@ -23,5 +22,3 @@ function endOfTomorrow () {
   date.setHours(23, 59, 59, 999)
   return date
 }
-
-module.exports = endOfTomorrow

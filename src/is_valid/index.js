@@ -1,4 +1,4 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 /**
  * @category Common Helpers
@@ -11,6 +11,7 @@ var isDate = require('../is_date/index.js')
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {Date} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is valid
  * @throws {TypeError} argument must be an instance of Date
  *
@@ -23,13 +24,12 @@ var isDate = require('../is_date/index.js')
  * // For the invalid date:
  * var result = isValid(new Date(''))
  * //=> false
- */
-function isValid (date) {
-  if (isDate(date)) {
+ * */
+export default function isValid (date, options) {
+  if (isDate(date, options)) {
     return !isNaN(date)
   } else {
     throw new TypeError(toString.call(date) + ' is not an instance of Date')
   }
 }
 
-module.exports = isValid

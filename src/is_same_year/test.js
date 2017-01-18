@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isSameYear = require('./')
+import assert from 'power-assert'
+import isSameYear from '.'
 
 describe('isSameYear', function () {
   it('returns true if the given dates have the same year', function () {

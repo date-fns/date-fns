@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var subQuarters = require('./')
+import assert from 'power-assert'
+import subQuarters from '.'
 
 describe('subQuarters', function () {
   it('subtracts the given number of quarters', function () {

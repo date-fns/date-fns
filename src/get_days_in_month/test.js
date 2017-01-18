@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var getDaysInMonth = require('./')
+import assert from 'power-assert'
+import getDaysInMonth from '.'
 
 describe('getDaysInMonth', function () {
   it('returns the number of days in the month of the given date', function () {

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Minute Helpers
@@ -9,17 +9,17 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the minutes added
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:
  * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
- */
-function addMinutes (dirtyDate, amount) {
-  var date = parse(dirtyDate)
+ * */
+export default function addMinutes (dirtyDate, amount, options) {
+  var date = toDate(dirtyDate, options)
   date.setMinutes(date.getMinutes() + amount)
   return date
 }
 
-module.exports = addMinutes

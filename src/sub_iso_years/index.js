@@ -1,4 +1,4 @@
-var addISOYears = require('../add_iso_years/index.js')
+import addISOYears from '../add_iso_years/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -11,15 +11,15 @@ var addISOYears = require('../add_iso_years/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week-numbering years subtracted
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:
  * var result = subISOYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
- */
-function subISOYears (dirtyDate, amount) {
-  return addISOYears(dirtyDate, -amount)
+ * */
+export default function subISOYears (dirtyDate, amount, options) {
+  return addISOYears(dirtyDate, -amount, options)
 }
 
-module.exports = subISOYears

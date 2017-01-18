@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var getTime = require('./')
+import assert from 'power-assert'
+import getTime from './'
 
 describe('getTime', function () {
   it('returns the timestamp of the given date', function () {

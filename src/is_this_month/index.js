@@ -1,4 +1,4 @@
-var isSameMonth = require('../is_same_month/index.js')
+import isSameMonth from '../is_same_month/index.js'
 
 /**
  * @category Month Helpers
@@ -14,9 +14,6 @@ var isSameMonth = require('../is_same_month/index.js')
  * // If today is 25 September 2014, is 15 September 2014 in this month?
  * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
- */
-function isThisMonth (dirtyDate) {
+ */ isThisMonth (dirtyDate) {
   return isSameMonth(new Date(), dirtyDate)
 }
-
-module.exports = isThisMonth

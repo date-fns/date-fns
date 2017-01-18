@@ -1,4 +1,4 @@
-var startOfISOYear = require('../start_of_iso_year/index.js')
+import startOfISOYear from '../start_of_iso_year/index.js'
 
 /**
  * @category ISO Week-Numbering Year Helpers
@@ -11,6 +11,7 @@ var startOfISOYear = require('../start_of_iso_year/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same ISO week-numbering year
  *
  * @example
@@ -20,12 +21,11 @@ var startOfISOYear = require('../start_of_iso_year/index.js')
  *   new Date(2005, 0, 2)
  * )
  * //=> true
- */
-function isSameISOYear (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft)
-  var dateRightStartOfYear = startOfISOYear(dirtyDateRight)
+ * */
+export default function isSameISOYear (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft, options)
+  var dateRightStartOfYear = startOfISOYear(dirtyDateRight, options)
 
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }
 
-module.exports = isSameISOYear

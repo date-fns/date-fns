@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Year Helpers
@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same year
  *
  * @example
@@ -18,11 +19,10 @@ var parse = require('../parse/index.js')
  *   new Date(2014, 8, 25)
  * )
  * //=> true
- */
-function isSameYear (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+ * */
+export default function isSameYear (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = toDate(dirtyDateLeft, options)
+  var dateRight = toDate(dirtyDateRight, options)
   return dateLeft.getFullYear() === dateRight.getFullYear()
 }
 
-module.exports = isSameYear

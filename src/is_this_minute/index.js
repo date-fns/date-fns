@@ -1,4 +1,4 @@
-var isSameMinute = require('../is_same_minute/index.js')
+import isSameMinute from '../is_same_minute/index.js'
 
 /**
  * @category Minute Helpers
@@ -15,9 +15,6 @@ var isSameMinute = require('../is_same_minute/index.js')
  * // is 25 September 2014 18:30:00 in this minute?
  * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
- */
-function isThisMinute (dirtyDate) {
+ */ isThisMinute (dirtyDate) {
   return isSameMinute(new Date(), dirtyDate)
 }
-
-module.exports = isThisMinute

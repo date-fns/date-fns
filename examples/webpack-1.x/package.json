@@ -1,0 +1,19 @@
+{
+  "name": "date-fns-example-webpack1",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with webpack 1.x",
+  "main": "index.js",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "babili": "^0.0.9",
+    "webpack": "1"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run build-webpack && yarn run build-babili",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-webpack": "webpack --entry ./index.js --output-path dist --output-file bundle.js",
+    "build-babili": "babili dist/bundle.js --out-file dist/bundle.min.js --minified --no-comments && yarn run stats-size",
+    "stats-size": "gzip-size dist/bundle.min.js | pretty-bytes"
+  }
+}

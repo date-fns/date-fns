@@ -1,0 +1,21 @@
+{
+  "name": "date-fns-example-webpack2",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with Rollup",
+  "main": "index.js",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "babili": "^0.0.9",
+    "rollup": "^0.41.1",
+    "rollup-plugin-commonjs": "^7.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babili",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-rollup": "rollup -c",
+    "build-babili": "babili dist/bundle.js --out-file dist/bundle.min.js --minified --no-comments && yarn run stats-size",
+    "stats-size": "gzip-size dist/bundle.min.js | pretty-bytes"
+  }
+}

@@ -1,4 +1,4 @@
-var isSameQuarter = require('../is_same_quarter/index.js')
+import isSameQuarter from '../is_same_quarter/index.js'
 
 /**
  * @category Quarter Helpers
@@ -14,9 +14,6 @@ var isSameQuarter = require('../is_same_quarter/index.js')
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
  * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
- */
-function isThisQuarter (dirtyDate) {
+ */ isThisQuarter (dirtyDate) {
   return isSameQuarter(new Date(), dirtyDate)
 }
-
-module.exports = isThisQuarter

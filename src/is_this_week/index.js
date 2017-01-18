@@ -1,4 +1,4 @@
-var isSameWeek = require('../is_same_week/index.js')
+import isSameWeek from '../is_same_week/index.js'
 
 /**
  * @category Week Helpers
@@ -22,9 +22,6 @@ var isSameWeek = require('../is_same_week/index.js')
  * // is 21 September 2014 in this week?
  * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})
  * //=> false
- */
-function isThisWeek (dirtyDate, options) {
+ */ isThisWeek (dirtyDate, options) {
   return isSameWeek(new Date(), dirtyDate, options)
 }
-
-module.exports = isThisWeek

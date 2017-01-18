@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Month Helpers
@@ -8,17 +8,17 @@ var parse = require('../parse/index.js')
  * Get the month of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the month
  *
  * @example
  * // Which month is 29 February 2012?
  * var result = getMonth(new Date(2012, 1, 29))
  * //=> 1
- */
-function getMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+ * */
+export default function getMonth (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var month = date.getMonth()
   return month
 }
 
-module.exports = getMonth

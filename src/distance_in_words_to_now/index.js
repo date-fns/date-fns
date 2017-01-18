@@ -1,4 +1,4 @@
-var distanceInWords = require('../distance_in_words/index.js')
+import distanceInWords from '../distance_in_words/index.js'
 
 /**
  * @category Common Helpers
@@ -71,15 +71,12 @@ var distanceInWords = require('../distance_in_words/index.js')
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 August 2016 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = distanceInWordsToNow(
  *   new Date(2016, 7, 1),
  *   {locale: eoLocale}
  * )
  * //=> 'pli ol 1 jaro'
- */
-function distanceInWordsToNow (dirtyDate, options) {
+ */ distanceInWordsToNow (dirtyDate, options) {
   return distanceInWords(Date.now(), dirtyDate, options)
 }
-
-module.exports = distanceInWordsToNow

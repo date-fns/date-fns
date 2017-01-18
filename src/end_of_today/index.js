@@ -1,4 +1,4 @@
-var endOfDay = require('../end_of_day/index.js')
+import endOfDay from '../end_of_day/index.js'
 
 /**
  * @category Day Helpers
@@ -13,9 +13,6 @@ var endOfDay = require('../end_of_day/index.js')
  * // If today is 6 October 2014:
  * var result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
- */
-function endOfToday () {
+ */ endOfToday () {
   return endOfDay(new Date())
 }
-
-module.exports = endOfToday

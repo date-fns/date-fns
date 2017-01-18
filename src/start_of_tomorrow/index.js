@@ -11,8 +11,7 @@
  * // If today is 6 October 2014:
  * var result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
- */
-function startOfTomorrow () {
+ */ startOfTomorrow () {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()
@@ -23,5 +22,3 @@ function startOfTomorrow () {
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-module.exports = startOfTomorrow

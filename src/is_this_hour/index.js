@@ -1,4 +1,4 @@
-var isSameHour = require('../is_same_hour/index.js')
+import isSameHour from '../is_same_hour/index.js'
 
 /**
  * @category Hour Helpers
@@ -15,9 +15,6 @@ var isSameHour = require('../is_same_hour/index.js')
  * // is 25 September 2014 18:00:00 in this hour?
  * var result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
- */
-function isThisHour (dirtyDate) {
+ */ isThisHour (dirtyDate) {
   return isSameHour(new Date(), dirtyDate)
 }
-
-module.exports = isThisHour

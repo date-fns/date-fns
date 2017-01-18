@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Common Helpers
@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the date from the array closest to the given date
  * @throws {TypeError} the second argument must be an instance of Array
  *
@@ -20,20 +21,20 @@ var parse = require('../parse/index.js')
  *   new Date(2030, 0, 1)
  * ])
  * //=> Tue Jan 01 2030 00:00:00
- */
-function closestTo (dirtyDateToCompare, dirtyDatesArray) {
+ * */
+export default function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
   if (!(dirtyDatesArray instanceof Array)) {
     throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
   }
 
-  var dateToCompare = parse(dirtyDateToCompare)
+  var dateToCompare = toDate(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate) {
-    var currentDate = parse(dirtyDate)
+    var currentDate = toDate(dirtyDate, options)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = currentDate
@@ -44,4 +45,3 @@ function closestTo (dirtyDateToCompare, dirtyDatesArray) {
   return result
 }
 
-module.exports = closestTo

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var buildDistanceInWordsLocale = require('./')
+import assert from 'power-assert'
+import buildDistanceInWordsLocale from './'
 
 var FUTURE_OPTIONS = {
   addSuffix: true,

@@ -1,4 +1,4 @@
-var isSameISOWeek = require('../is_same_iso_week/index.js')
+import isSameISOWeek from '../is_same_iso_week/index.js'
 
 /**
  * @category ISO Week Helpers
@@ -16,9 +16,6 @@ var isSameISOWeek = require('../is_same_iso_week/index.js')
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
  * var result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
- */
-function isThisISOWeek (dirtyDate) {
+ */ isThisISOWeek (dirtyDate) {
   return isSameISOWeek(new Date(), dirtyDate)
 }
-
-module.exports = isThisISOWeek

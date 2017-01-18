@@ -1,4 +1,4 @@
-var startOfHour = require('../start_of_hour/index.js')
+import startOfHour from '../start_of_hour/index.js'
 
 /**
  * @category Hour Helpers
@@ -9,6 +9,7 @@ var startOfHour = require('../start_of_hour/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same hour
  *
  * @example
@@ -18,12 +19,11 @@ var startOfHour = require('../start_of_hour/index.js')
  *   new Date(2014, 8, 4, 6, 30)
  * )
  * //=> true
- */
-function isSameHour (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+ * */
+export default function isSameHour (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft, options)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight, options)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }
 
-module.exports = isSameHour

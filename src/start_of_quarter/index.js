@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
  * @category Quarter Helpers
@@ -9,15 +9,16 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the start of a quarter
  *
  * @example
  * // The start of a quarter for 2 September 2014 11:55:00:
  * var result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Jul 01 2014 00:00:00
- */
-function startOfQuarter (dirtyDate) {
-  var date = parse(dirtyDate)
+ * */
+export default function startOfQuarter (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3
   date.setMonth(month, 1)
@@ -25,4 +26,3 @@ function startOfQuarter (dirtyDate) {
   return date
 }
 
-module.exports = startOfQuarter
