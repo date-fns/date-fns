@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.27.0] - 2017-01-19
+
+### Added
+
+- [Macedonian locale (mk)](https://github.com/date-fns/date-fns/pull/398)
+  (thanks to Petar Vlahu [@vlahupetar](https://github.com/vlahupetar))
+
 ## [1.26.0] - 2017-01-15
 
 ### Added
@@ -915,7 +922,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.26.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.0...HEAD
+[1.27.0]: https://github.com/date-fns/date-fns/compare/v1.26.0...v1.27.0
 [1.26.0]: https://github.com/date-fns/date-fns/compare/v1.25.0...v1.26.0
 [1.25.0]: https://github.com/date-fns/date-fns/compare/v1.24.0...v1.25.0
 [1.24.0]: https://github.com/date-fns/date-fns/compare/v1.23.0...v1.24.0

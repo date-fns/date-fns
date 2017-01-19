@@ -3,7 +3,8 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
  * @category Locales
- * @summary English locale.
+ * @summary Macedonian locale.
+ * @author Petar Vlahu [@vlahupetar]{@link https://github.com/vlahupetar}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
