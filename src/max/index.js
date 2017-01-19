@@ -7,7 +7,7 @@ var toDate = require('../to_date/index.js')
  * @description
  * Return the latest of the given dates.
  *
- * @param {...(Date|String|Number)} dates - the dates to compare
+ * @param {Date[]|String[]|Number[]} datesArray - the dates to compare
  * @returns {Date} the latest of the dates
  *
  * @example
@@ -21,11 +21,10 @@ var toDate = require('../to_date/index.js')
  *  ]
  * )
  * //=> Sun Jul 02 1995 00:00:00
- * @param datesArray
  */
-function max (datesArray) {
+function max (datesArray, options) {
   var dates = datesArray.map(function (dirtyDate) {
-    return toDate(dirtyDate)
+    return toDate(dirtyDate, options)
   })
   var latestTimestamp = Math.max.apply(null, dates)
   return new Date(latestTimestamp)
