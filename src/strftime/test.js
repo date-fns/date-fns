@@ -13,10 +13,13 @@ describe('format', function () {
     var hours = Math.floor(absoluteOffset / 60)
     var minutes = absoluteOffset % 60
 
-    if(hours < 10)
+    if (hours < 10) {
       hours = '0' + hours
-    if(minutes < 10)
+    }
+
+    if (minutes < 10) {
       minutes = '0' + minutes
+    }
 
     var sign = offset > 0 ? '-' : '+'
 
