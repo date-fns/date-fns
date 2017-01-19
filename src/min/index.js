@@ -7,7 +7,7 @@ var toDate = require('../to_date/index.js')
  * @description
  * Return the earliest of the given dates.
  *
- * @param {...(Date|String|Number)} dates - the dates to compare
+ * @param {Date[]|String[]|Number[]} datesArray - the dates to compare
  * @returns {Date} the earliest of the dates
  *
  * @example
@@ -21,11 +21,10 @@ var toDate = require('../to_date/index.js')
  *  ]
  * )
  * //=> Wed Feb 11 1987 00:00:00
- * @param datesArray
  */
-function min (datesArray) {
+function min (datesArray, options) {
   var dates = datesArray.map(function (dirtyDate) {
-    return toDate(dirtyDate)
+    return toDate(dirtyDate, options)
   })
   var earliestTimestamp = Math.min.apply(null, dates)
   return new Date(earliestTimestamp)
