@@ -21,3 +21,5 @@
  * @property {RegExp} [parse.parsingTokensRegExp] - a RegExp used to split a format string into the token array
  */
 var Locale = {}
+
+module.exports = Locale

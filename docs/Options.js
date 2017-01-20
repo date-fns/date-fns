@@ -34,3 +34,5 @@
  * //=> 'lundo, 10 decembro 12345'
  */
 var Options = {}
+
+module.exports = Options

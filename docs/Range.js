@@ -10,3 +10,5 @@
  * @property {Date|String|Number} end - the end of the range
  */
 var Range = {}
+
+module.exports = Range
