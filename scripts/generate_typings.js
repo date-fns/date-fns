@@ -1,13 +1,29 @@
-const fs = require('fs')
-const docs = require('../dist/date_fns_docs.json')
+import fs from 'fs'
+import listFiles from './_lib/list_files'
+import listLocales from './_lib/list_locales'
+import jsDocs from '../dist/date_fns_docs.json'
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 
-function camelCaseToSnakeCase (string) {
-  return string
-    .replace(/([a-z])([A-Z])/g, '$1_$2')
-    .replace(/([A-Z])([A-Z])([a-z])/g, '$1_$2$3').toLowerCase()
-}
+const files = listFiles()
+const locales = listLocales()
+
+const fns = Object.keys(jsDocs)
+  .map(category => jsDocs[category])
+  .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
+  .map(doc => {
+    const {name} = doc.content
+    const file = files.find(file => file.name === name)
+    doc.file = file
+    return doc
+  })
+  .filter(doc => doc.file)
+  .sort((a, b) => a.content.name.localeCompare(b.content.name))
+
+generateTypeScriptTypings(fns, locales)
+generateFlowTypings(fns)
+
+// Common
 
 function correctTypeCase (type) {
   if (lowerCaseTypes.includes(type)) {
@@ -62,6 +78,10 @@ function getType (types, {props = [], forceArray = false, indent = 1} = {}) {
       return 'any'
     }
 
+    if (type === 'function') {
+      return 'Function'
+    }
+
     if (type.startsWith('Array.')) {
       const [, arrayType] = type.match(/^Array\.<(\w+)>$/i)
       return `${correctTypeCase(arrayType)}[]`
@@ -87,12 +107,35 @@ function getType (types, {props = [], forceArray = false, indent = 1} = {}) {
   return typeStrings.join(' | ')
 }
 
-function getTypeScriptModuleDefinition (name, moduleSuffix = '') {
-  return [`declare module 'date-fns/${camelCaseToSnakeCase(name)}${moduleSuffix}' {`]
+// TypeScript
+
+function getTypeScriptDateFnsModuleDefinition (fns) {
+  const definition = ['declare module \'date-fns\' {']
+    .concat(fns.map(getTypeScriptFnDefinition).join('\n\n'))
+    .concat('}')
+    .join('\n')
+
+  return {
+    name: 'date-fns',
+    definition
+  }
+}
+
+function getTypeScriptFnModuleDefinition (moduleSuffix, fn) {
+  const name = fn.content.name
+  const snakeCaseName = fn.file.snakeCaseName
+  const moduleName = `date-fns/${snakeCaseName}${moduleSuffix}`
+
+  const definition = [`declare module '${moduleName}' {`]
     .concat(`  import {${name}} from 'date-fns'`)
     .concat(`  export = ${name}`)
     .concat('}')
     .join('\n')
+
+  return {
+    name: moduleName,
+    definition
+  }
 }
 
 function getTypeScriptFnDefinition (fn) {
@@ -101,22 +144,49 @@ function getTypeScriptFnDefinition (fn) {
   const params = getParams(fn.content.params, {indent: 1, leftBorder: '(', rightBorder: ')'})
   const returns = getType(fn.content.returns[0].type.names)
 
-  const fnDefinition = [`  function ${name} ${params}: ${returns}`]
+  return [`  function ${name} ${params}: ${returns}`]
     .concat(`  namespace ${name} {}`)
     .join('\n')
+}
 
-  const moduleDefinition = getTypeScriptModuleDefinition(name)
-  const moduleIndexDefinition = getTypeScriptModuleDefinition(name, '/index')
+function getTypeScriptLocaleModuleDefinition (moduleSuffix, locale) {
+  const snakeCaseName = locale.snakeCaseName
+  const name = `locale/${snakeCaseName}${moduleSuffix}`
+
+  const definition = `declare module 'date-fns/${name}' {}`
 
   return {
-    fnDefinition,
-    moduleDefinition,
-    moduleIndexDefinition
+    name,
+    definition
   }
 }
 
+function generateTypeScriptTypings (fns, locales) {
+  const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition(fns)]
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '')))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/index')))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/index.js')))
+    .map(module => module.definition)
+
+  const localeModuleDefinitions = []
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '')))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/index')))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/index.js')))
+    .map(module => module.definition)
+    .join('\n')
+
+  const typingString = moduleDefinitions
+    .concat(localeModuleDefinitions)
+    .join('\n\n')
+
+  fs.writeFileSync('./typings.d.ts', `${typingString}\n`)
+}
+
+// Flow
+
 function generateFlowFnTyping (fn) {
-  const filename = `./src/${camelCaseToSnakeCase(fn.content.name)}/index.js.flow`
+  const snakeCaseName = fn.file.snakeCaseName
+  const filename = `./src/${snakeCaseName}/index.js.flow`
 
   const params = getParams(fn.content.params, {indent: 0, leftBorder: '(', rightBorder: ')'})
   const returns = getType(fn.content.returns[0].type.names)
@@ -129,34 +199,6 @@ function generateFlowFnTyping (fn) {
   fs.writeFileSync(filename, typingString)
 }
 
-function generateTypeScriptTypings () {
-  const fns = Object.keys(docs)
-    .filter(key => key.endsWith(' Helpers'))
-    .map(category => docs[category])
-    .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-    .sort((a, b) => a.content.name.localeCompare(b.content.name))
-    .map(getTypeScriptFnDefinition)
-
-  const definitionString = ['declare module \'date-fns\' {']
-    .concat(`${fns.map(fn => fn.fnDefinition).join('\n\n')}`)
-    .concat('}')
-    .concat('')
-    .concat(`${fns.map(fn => fn.moduleDefinition).join('\n\n')}`)
-    .concat('')
-    .concat(`${fns.map(fn => fn.moduleIndexDefinition).join('\n\n')}`)
-    .concat('')
-    .join('\n')
-
-  fs.writeFileSync('./typings.d.ts', definitionString)
+function generateFlowTypings (fns) {
+  fns.forEach(generateFlowFnTyping)
 }
-
-function generateFlowTypings () {
-  Object.keys(docs)
-    .filter(key => key.endsWith(' Helpers'))
-    .map(category => docs[category])
-    .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-    .forEach(generateFlowFnTyping)
-}
-
-generateTypeScriptTypings()
-generateFlowTypings()
