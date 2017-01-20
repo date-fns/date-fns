@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Weekday Helpers
@@ -8,6 +8,7 @@ var parse = require('../parse/index.js')
  * Is the given date Thursday?
  *
  * @param {Date|String|Number} date - the date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is Thursday
  *
  * @example
@@ -15,8 +16,8 @@ var parse = require('../parse/index.js')
  * var result = isThursday(new Date(2014, 8, 25))
  * //=> true
  */
-function isThursday (dirtyDate) {
-  return parse(dirtyDate).getDay() === 4
+function isThursday (dirtyDate, options) {
+  return toDate(dirtyDate, options).getDay() === 4
 }
 
 module.exports = isThursday

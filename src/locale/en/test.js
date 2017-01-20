@@ -12,4 +12,8 @@ describe('en locale', function () {
   it('exports format object', function () {
     assert(typeof enLocale.format === 'object')
   })
+
+  it('exports parse object', function () {
+    assert(typeof enLocale.parse === 'object')
+  })
 })

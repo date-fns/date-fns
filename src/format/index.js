@@ -1,7 +1,7 @@
 var getDayOfYear = require('../get_day_of_year/index.js')
 var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var isValid = require('../is_valid/index.js')
 var enLocale = require('../locale/en/index.js')
 
@@ -65,10 +65,11 @@ var enLocale = require('../locale/en/index.js')
  * The result may vary by locale.
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @param {Object} [options] - the object with options
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {String} format - the string of tokens
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the formatted date string
+ * @throws {Error} The date must be valid
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -89,7 +90,6 @@ var enLocale = require('../locale/en/index.js')
  * //=> '2-a de julio 2014'
  */
 function format (dirtyDate, formatStr, options) {
-  formatStr = formatStr || 'YYYY-MM-DDTHH:mm:ss.SSSZ'
   options = options || {}
 
   var locale = options.locale
@@ -103,15 +103,15 @@ function format (dirtyDate, formatStr, options) {
     }
   }
 
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate, options)
 
-  if (!isValid(date)) {
-    return 'Invalid Date'
+  if (!isValid(date, options)) {
+    throw new Error('Date is invalid')
   }
 
   var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
 
-  return formatFn(date)
+  return formatFn(date, options)
 }
 
 var formatters = {
@@ -141,13 +141,13 @@ var formatters = {
   },
 
   // Day of year: 1, 2, ..., 366
-  'DDD': function (date) {
-    return getDayOfYear(date)
+  'DDD': function (date, _, options) {
+    return getDayOfYear(date, _, options)
   },
 
   // Day of year: 001, 002, ..., 366
-  'DDDD': function (date) {
-    return addLeadingZeros(getDayOfYear(date), 3)
+  'DDDD': function (date, _, options) {
+    return addLeadingZeros(getDayOfYear(date, _, options), 3)
   },
 
   // Day of week: 0, 1, ..., 6
@@ -161,13 +161,13 @@ var formatters = {
   },
 
   // ISO week: 1, 2, ..., 53
-  'W': function (date) {
-    return getISOWeek(date)
+  'W': function (date, _, options) {
+    return getISOWeek(date, options)
   },
 
   // ISO week: 01, 02, ..., 53
-  'WW': function (date) {
-    return addLeadingZeros(getISOWeek(date), 2)
+  'WW': function (date, _, options) {
+    return addLeadingZeros(getISOWeek(date, options), 2)
   },
 
   // Year: 00, 01, ..., 99
@@ -181,13 +181,13 @@ var formatters = {
   },
 
   // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function (date) {
-    return String(getISOYear(date)).substr(2)
+  'GG': function (date, _, options) {
+    return String(getISOYear(date, options)).substr(2)
   },
 
   // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function (date) {
-    return getISOYear(date)
+  'GGGG': function (date, _, options) {
+    return getISOYear(date, options)
   },
 
   // Hour: 0, 1, ... 23
@@ -288,11 +288,11 @@ function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
     }
   }
 
-  return function (date) {
+  return function (date, options) {
     var output = ''
     for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i](date, formatters)
+        output += array[i](date, formatters, options)
       } else {
         output += array[i]
       }

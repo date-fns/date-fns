@@ -2,6 +2,7 @@ var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index
 var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
+ * @type {Locale}
  * @category Locales
  * @summary Turkish locale.
  * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}

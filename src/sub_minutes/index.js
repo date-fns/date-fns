@@ -9,6 +9,7 @@ var addMinutes = require('../add_minutes/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the mintues subtracted
  *
  * @example
@@ -16,8 +17,8 @@ var addMinutes = require('../add_minutes/index.js')
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-function subMinutes (dirtyDate, amount) {
-  return addMinutes(dirtyDate, -amount)
+function subMinutes (dirtyDate, amount, options) {
+  return addMinutes(dirtyDate, -amount, options)
 }
 
 module.exports = subMinutes

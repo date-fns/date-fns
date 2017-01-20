@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to compare
  * @param {Date|String|Number} dateRight - the second date to compare
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are equal
  *
  * @example
@@ -19,9 +20,9 @@ var parse = require('../parse/index.js')
  * )
  * //=> false
  */
-function isEqual (dirtyLeftDate, dirtyRightDate) {
-  var dateLeft = parse(dirtyLeftDate)
-  var dateRight = parse(dirtyRightDate)
+function isEqual (dirtyLeftDate, dirtyRightDate, options) {
+  var dateLeft = toDate(dirtyLeftDate, options)
+  var dateRight = toDate(dirtyRightDate, options)
   return dateLeft.getTime() === dateRight.getTime()
 }
 

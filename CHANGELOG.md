@@ -10,6 +10,185 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Changed
+
+- **BREAKING**: min and max functions now accept an array of dates
+rather than spread arguments.
+
+  ```javascript
+  // Before v2.0.0
+  var minDate = min(new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11))
+  var maxDate = min(new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11))
+
+  // v2.0.0 onward
+  var minDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
+  var maxDate = min([new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)])
+  ```
+
+- **BREAKING**: remove all functions that create the current date internally:
+
+  - `distanceInWordsToNow`
+  - `isFuture`
+  - `isPast`
+  - `endOfToday`
+  - `endOfTomorrow`
+  - `endOfYesterday`
+  - `startOfToday`
+  - `startOfTomorrow`
+  - `startOfYesterday`
+  - `isToday`
+  - `isTomorrow`
+  - `isYesterday`
+  - `isThisSecond`
+  - `isThisMinute`
+  - `isThisHour`
+  - `isThisWeek`
+  - `isThisISOWeek`
+  - `isThisMonth`
+  - `isThisQuarter`
+  - `isThisYear`
+  - `isThisISOYear`
+
+  These functions are not pure, cannot have FP-versions [#253](https://github.com/date-fns/date-fns/issues/253)
+  and would add extra code for UTC-versions [#376](https://github.com/date-fns/date-fns/issues/376).
+
+  See issue: [#377](https://github.com/date-fns/date-fns/issues/377)
+
+  ```javascript
+  // Before v2.0.0
+  var result = endOfToday()
+
+  // v2.0.0 onward
+  var result = endOfDay(new Date())
+  ```
+
+  Upgrade guide:
+
+  - `distanceInWordsToNow(date)` → `distanceInWords(new Date(), date)`
+  - `isFuture(date)` → `isAfter(date, new Date())`
+  - `isPast(date)` → `isBefore(date, new Date())`
+  - `endOfToday()` → `endOfDay(new Date())`
+  - `endOfTomorrow()` → `endOfDay(addDays(new Date(), 1))`
+  - `endOfYesterday()` → `endOfDay(subDays(new Date(), 1))`
+  - `startOfToday()` → `startOfDay(new Date())`
+  - `startOfTomorrow()` → `startOfDay(addDays(new Date(), 1))`
+  - `startOfYesterday()` → `startOfDay(subDays(new Date(), 1))`
+  - `isToday(date)` → `isSameDay(new Date(), date)`
+  - `isTomorrow(date)` → `isSameDay(date, addDays(new Date(), 1))`
+  - `isYesterday(date)` → `isSameDay(date, subDays(new Date(), 1))`
+  - `isThisSecond(date)` → `isSameSecond(date, new Date())`
+  - `isThisMinute(date)` → `isSameMinute(date, new Date())`
+  - `isThisHour(date)` → `isSameHour(date, new Date())`
+  - `isThisWeek(date)` → `isSameWeek(date, new Date())`
+  - `isThisISOWeek(date)` → `isSameISOWeek(date, new Date())`
+  - `isThisMonth(date)` → `isSameMonth(date, new Date())`
+  - `isThisQuarter(date)` → `isSameQuarter(date, new Date())`
+  - `isThisYear(date)` → `isSameYear(date, new Date())`
+  - `isThisISOYear(date)` → `isSameISOYear(date, new Date())`
+
+- **BREAKING**: make the second argument of `format` non-optional in favor of explicitness.
+
+  ```javascript
+  // Before v2.0.0
+  format(new Date(2016, 0, 1))
+
+  // 2.0.0 onward
+  format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+  ```
+
+- **BREAKING**: make range helpers accept an object with `start` and `end` properties
+  instead of two arguments as a range.
+
+  ```javascript
+  // Before v2.0.0
+
+  areRangesOverlapping(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  getOverlappingDaysInRanges(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    new Date(2014, 0, 1), new Date(2014, 0, 7)
+  )
+
+  // v2.0.0 onward
+
+  areRangesOverlapping(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  getOverlappingDaysInRanges(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
+  )
+  ```
+
+- **BREAKING**: `parse` renamed to `toDate`,
+  created a new function `parse` which parses a string using a provided format.
+
+  ```javascript
+  // Before v2.0.0
+  parse('2016-01-01')
+
+  // v2.0.0 onward
+  toDate('2016-01-01')
+  parse('2016-01-01', 'YYYY-MM-DD', new Date())
+  ```
+
+- **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
+  to make them consistent with `differenceInWords` and `distanceInWordsStrict` functions.
+  Now, the first date argument must be earlier then the second for function to return the positive number.
+
+  ```javascript
+  // Before v2.0.0
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> -1
+
+  // v2.0.0 onward
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> 1
+  ```
+
+- **BREAKING**: now `format` throws an exception if the passed date is `Invalid Date`.
+
+  ```javascript
+  // Before v2.0.0
+  var result = format(date, 'YYYY-MM-DD')
+  if (result === 'Invalid Date') {
+    // ...
+  }
+
+  // v2.0.0 onward
+  try {
+    var result = format(date, 'YYYY-MM-DD')
+    // ...
+  } catch (e) {
+    // ...
+  }
+  ```
+
+- Every function now has `options` as the last argument which is passed to all its dependencies
+  for consistency and future features.
+  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
+
 ## [1.27.0] - 2017-01-19
 
 ### Added

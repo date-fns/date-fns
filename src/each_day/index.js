@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Day Helpers
@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} startDate - the first date
  * @param {Date|String|Number} endDate - the last date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
  * @throws {Error} startDate cannot be after endDate
  *
@@ -26,9 +27,9 @@ var parse = require('../parse/index.js')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDay (dirtyStartDate, dirtyEndDate) {
-  var startDate = parse(dirtyStartDate)
-  var endDate = parse(dirtyEndDate)
+function eachDay (dirtyStartDate, dirtyEndDate, options) {
+  var startDate = toDate(dirtyStartDate, options)
+  var endDate = toDate(dirtyEndDate, options)
 
   var endTime = endDate.getTime()
 
@@ -42,7 +43,7 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
   currentDate.setHours(0, 0, 0, 0)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(parse(currentDate))
+    dates.push(toDate(currentDate, options))
     currentDate.setDate(currentDate.getDate() + 1)
   }
 
