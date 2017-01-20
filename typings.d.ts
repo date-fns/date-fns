@@ -2419,3 +2419,867 @@ declare module 'date-fns/sub_years/index' {
   import {subYears} from 'date-fns'
   export = subYears
 }
+
+declare module 'date-fns/add_days/index.js' {
+  import {addDays} from 'date-fns'
+  export = addDays
+}
+
+declare module 'date-fns/add_hours/index.js' {
+  import {addHours} from 'date-fns'
+  export = addHours
+}
+
+declare module 'date-fns/add_iso_years/index.js' {
+  import {addISOYears} from 'date-fns'
+  export = addISOYears
+}
+
+declare module 'date-fns/add_milliseconds/index.js' {
+  import {addMilliseconds} from 'date-fns'
+  export = addMilliseconds
+}
+
+declare module 'date-fns/add_minutes/index.js' {
+  import {addMinutes} from 'date-fns'
+  export = addMinutes
+}
+
+declare module 'date-fns/add_months/index.js' {
+  import {addMonths} from 'date-fns'
+  export = addMonths
+}
+
+declare module 'date-fns/add_quarters/index.js' {
+  import {addQuarters} from 'date-fns'
+  export = addQuarters
+}
+
+declare module 'date-fns/add_seconds/index.js' {
+  import {addSeconds} from 'date-fns'
+  export = addSeconds
+}
+
+declare module 'date-fns/add_weeks/index.js' {
+  import {addWeeks} from 'date-fns'
+  export = addWeeks
+}
+
+declare module 'date-fns/add_years/index.js' {
+  import {addYears} from 'date-fns'
+  export = addYears
+}
+
+declare module 'date-fns/are_ranges_overlapping/index.js' {
+  import {areRangesOverlapping} from 'date-fns'
+  export = areRangesOverlapping
+}
+
+declare module 'date-fns/closest_index_to/index.js' {
+  import {closestIndexTo} from 'date-fns'
+  export = closestIndexTo
+}
+
+declare module 'date-fns/closest_to/index.js' {
+  import {closestTo} from 'date-fns'
+  export = closestTo
+}
+
+declare module 'date-fns/compare_asc/index.js' {
+  import {compareAsc} from 'date-fns'
+  export = compareAsc
+}
+
+declare module 'date-fns/compare_desc/index.js' {
+  import {compareDesc} from 'date-fns'
+  export = compareDesc
+}
+
+declare module 'date-fns/difference_in_calendar_days/index.js' {
+  import {differenceInCalendarDays} from 'date-fns'
+  export = differenceInCalendarDays
+}
+
+declare module 'date-fns/difference_in_calendar_iso_weeks/index.js' {
+  import {differenceInCalendarISOWeeks} from 'date-fns'
+  export = differenceInCalendarISOWeeks
+}
+
+declare module 'date-fns/difference_in_calendar_iso_years/index.js' {
+  import {differenceInCalendarISOYears} from 'date-fns'
+  export = differenceInCalendarISOYears
+}
+
+declare module 'date-fns/difference_in_calendar_months/index.js' {
+  import {differenceInCalendarMonths} from 'date-fns'
+  export = differenceInCalendarMonths
+}
+
+declare module 'date-fns/difference_in_calendar_quarters/index.js' {
+  import {differenceInCalendarQuarters} from 'date-fns'
+  export = differenceInCalendarQuarters
+}
+
+declare module 'date-fns/difference_in_calendar_weeks/index.js' {
+  import {differenceInCalendarWeeks} from 'date-fns'
+  export = differenceInCalendarWeeks
+}
+
+declare module 'date-fns/difference_in_calendar_years/index.js' {
+  import {differenceInCalendarYears} from 'date-fns'
+  export = differenceInCalendarYears
+}
+
+declare module 'date-fns/difference_in_days/index.js' {
+  import {differenceInDays} from 'date-fns'
+  export = differenceInDays
+}
+
+declare module 'date-fns/difference_in_hours/index.js' {
+  import {differenceInHours} from 'date-fns'
+  export = differenceInHours
+}
+
+declare module 'date-fns/difference_in_iso_years/index.js' {
+  import {differenceInISOYears} from 'date-fns'
+  export = differenceInISOYears
+}
+
+declare module 'date-fns/difference_in_milliseconds/index.js' {
+  import {differenceInMilliseconds} from 'date-fns'
+  export = differenceInMilliseconds
+}
+
+declare module 'date-fns/difference_in_minutes/index.js' {
+  import {differenceInMinutes} from 'date-fns'
+  export = differenceInMinutes
+}
+
+declare module 'date-fns/difference_in_months/index.js' {
+  import {differenceInMonths} from 'date-fns'
+  export = differenceInMonths
+}
+
+declare module 'date-fns/difference_in_quarters/index.js' {
+  import {differenceInQuarters} from 'date-fns'
+  export = differenceInQuarters
+}
+
+declare module 'date-fns/difference_in_seconds/index.js' {
+  import {differenceInSeconds} from 'date-fns'
+  export = differenceInSeconds
+}
+
+declare module 'date-fns/difference_in_weeks/index.js' {
+  import {differenceInWeeks} from 'date-fns'
+  export = differenceInWeeks
+}
+
+declare module 'date-fns/difference_in_years/index.js' {
+  import {differenceInYears} from 'date-fns'
+  export = differenceInYears
+}
+
+declare module 'date-fns/distance_in_words/index.js' {
+  import {distanceInWords} from 'date-fns'
+  export = distanceInWords
+}
+
+declare module 'date-fns/distance_in_words_strict/index.js' {
+  import {distanceInWordsStrict} from 'date-fns'
+  export = distanceInWordsStrict
+}
+
+declare module 'date-fns/distance_in_words_to_now/index.js' {
+  import {distanceInWordsToNow} from 'date-fns'
+  export = distanceInWordsToNow
+}
+
+declare module 'date-fns/each_day/index.js' {
+  import {eachDay} from 'date-fns'
+  export = eachDay
+}
+
+declare module 'date-fns/end_of_day/index.js' {
+  import {endOfDay} from 'date-fns'
+  export = endOfDay
+}
+
+declare module 'date-fns/end_of_hour/index.js' {
+  import {endOfHour} from 'date-fns'
+  export = endOfHour
+}
+
+declare module 'date-fns/end_of_iso_week/index.js' {
+  import {endOfISOWeek} from 'date-fns'
+  export = endOfISOWeek
+}
+
+declare module 'date-fns/end_of_iso_year/index.js' {
+  import {endOfISOYear} from 'date-fns'
+  export = endOfISOYear
+}
+
+declare module 'date-fns/end_of_minute/index.js' {
+  import {endOfMinute} from 'date-fns'
+  export = endOfMinute
+}
+
+declare module 'date-fns/end_of_month/index.js' {
+  import {endOfMonth} from 'date-fns'
+  export = endOfMonth
+}
+
+declare module 'date-fns/end_of_quarter/index.js' {
+  import {endOfQuarter} from 'date-fns'
+  export = endOfQuarter
+}
+
+declare module 'date-fns/end_of_second/index.js' {
+  import {endOfSecond} from 'date-fns'
+  export = endOfSecond
+}
+
+declare module 'date-fns/end_of_today/index.js' {
+  import {endOfToday} from 'date-fns'
+  export = endOfToday
+}
+
+declare module 'date-fns/end_of_tomorrow/index.js' {
+  import {endOfTomorrow} from 'date-fns'
+  export = endOfTomorrow
+}
+
+declare module 'date-fns/end_of_week/index.js' {
+  import {endOfWeek} from 'date-fns'
+  export = endOfWeek
+}
+
+declare module 'date-fns/end_of_year/index.js' {
+  import {endOfYear} from 'date-fns'
+  export = endOfYear
+}
+
+declare module 'date-fns/end_of_yesterday/index.js' {
+  import {endOfYesterday} from 'date-fns'
+  export = endOfYesterday
+}
+
+declare module 'date-fns/format/index.js' {
+  import {format} from 'date-fns'
+  export = format
+}
+
+declare module 'date-fns/get_date/index.js' {
+  import {getDate} from 'date-fns'
+  export = getDate
+}
+
+declare module 'date-fns/get_day/index.js' {
+  import {getDay} from 'date-fns'
+  export = getDay
+}
+
+declare module 'date-fns/get_day_of_year/index.js' {
+  import {getDayOfYear} from 'date-fns'
+  export = getDayOfYear
+}
+
+declare module 'date-fns/get_days_in_month/index.js' {
+  import {getDaysInMonth} from 'date-fns'
+  export = getDaysInMonth
+}
+
+declare module 'date-fns/get_days_in_year/index.js' {
+  import {getDaysInYear} from 'date-fns'
+  export = getDaysInYear
+}
+
+declare module 'date-fns/get_hours/index.js' {
+  import {getHours} from 'date-fns'
+  export = getHours
+}
+
+declare module 'date-fns/get_iso_day/index.js' {
+  import {getISODay} from 'date-fns'
+  export = getISODay
+}
+
+declare module 'date-fns/get_iso_week/index.js' {
+  import {getISOWeek} from 'date-fns'
+  export = getISOWeek
+}
+
+declare module 'date-fns/get_iso_weeks_in_year/index.js' {
+  import {getISOWeeksInYear} from 'date-fns'
+  export = getISOWeeksInYear
+}
+
+declare module 'date-fns/get_iso_year/index.js' {
+  import {getISOYear} from 'date-fns'
+  export = getISOYear
+}
+
+declare module 'date-fns/get_milliseconds/index.js' {
+  import {getMilliseconds} from 'date-fns'
+  export = getMilliseconds
+}
+
+declare module 'date-fns/get_minutes/index.js' {
+  import {getMinutes} from 'date-fns'
+  export = getMinutes
+}
+
+declare module 'date-fns/get_month/index.js' {
+  import {getMonth} from 'date-fns'
+  export = getMonth
+}
+
+declare module 'date-fns/get_overlapping_days_in_ranges/index.js' {
+  import {getOverlappingDaysInRanges} from 'date-fns'
+  export = getOverlappingDaysInRanges
+}
+
+declare module 'date-fns/get_quarter/index.js' {
+  import {getQuarter} from 'date-fns'
+  export = getQuarter
+}
+
+declare module 'date-fns/get_seconds/index.js' {
+  import {getSeconds} from 'date-fns'
+  export = getSeconds
+}
+
+declare module 'date-fns/get_time/index.js' {
+  import {getTime} from 'date-fns'
+  export = getTime
+}
+
+declare module 'date-fns/get_year/index.js' {
+  import {getYear} from 'date-fns'
+  export = getYear
+}
+
+declare module 'date-fns/is_after/index.js' {
+  import {isAfter} from 'date-fns'
+  export = isAfter
+}
+
+declare module 'date-fns/is_before/index.js' {
+  import {isBefore} from 'date-fns'
+  export = isBefore
+}
+
+declare module 'date-fns/is_date/index.js' {
+  import {isDate} from 'date-fns'
+  export = isDate
+}
+
+declare module 'date-fns/is_equal/index.js' {
+  import {isEqual} from 'date-fns'
+  export = isEqual
+}
+
+declare module 'date-fns/is_first_day_of_month/index.js' {
+  import {isFirstDayOfMonth} from 'date-fns'
+  export = isFirstDayOfMonth
+}
+
+declare module 'date-fns/is_friday/index.js' {
+  import {isFriday} from 'date-fns'
+  export = isFriday
+}
+
+declare module 'date-fns/is_future/index.js' {
+  import {isFuture} from 'date-fns'
+  export = isFuture
+}
+
+declare module 'date-fns/is_last_day_of_month/index.js' {
+  import {isLastDayOfMonth} from 'date-fns'
+  export = isLastDayOfMonth
+}
+
+declare module 'date-fns/is_leap_year/index.js' {
+  import {isLeapYear} from 'date-fns'
+  export = isLeapYear
+}
+
+declare module 'date-fns/is_monday/index.js' {
+  import {isMonday} from 'date-fns'
+  export = isMonday
+}
+
+declare module 'date-fns/is_past/index.js' {
+  import {isPast} from 'date-fns'
+  export = isPast
+}
+
+declare module 'date-fns/is_same_day/index.js' {
+  import {isSameDay} from 'date-fns'
+  export = isSameDay
+}
+
+declare module 'date-fns/is_same_hour/index.js' {
+  import {isSameHour} from 'date-fns'
+  export = isSameHour
+}
+
+declare module 'date-fns/is_same_iso_week/index.js' {
+  import {isSameISOWeek} from 'date-fns'
+  export = isSameISOWeek
+}
+
+declare module 'date-fns/is_same_iso_year/index.js' {
+  import {isSameISOYear} from 'date-fns'
+  export = isSameISOYear
+}
+
+declare module 'date-fns/is_same_minute/index.js' {
+  import {isSameMinute} from 'date-fns'
+  export = isSameMinute
+}
+
+declare module 'date-fns/is_same_month/index.js' {
+  import {isSameMonth} from 'date-fns'
+  export = isSameMonth
+}
+
+declare module 'date-fns/is_same_quarter/index.js' {
+  import {isSameQuarter} from 'date-fns'
+  export = isSameQuarter
+}
+
+declare module 'date-fns/is_same_second/index.js' {
+  import {isSameSecond} from 'date-fns'
+  export = isSameSecond
+}
+
+declare module 'date-fns/is_same_week/index.js' {
+  import {isSameWeek} from 'date-fns'
+  export = isSameWeek
+}
+
+declare module 'date-fns/is_same_year/index.js' {
+  import {isSameYear} from 'date-fns'
+  export = isSameYear
+}
+
+declare module 'date-fns/is_saturday/index.js' {
+  import {isSaturday} from 'date-fns'
+  export = isSaturday
+}
+
+declare module 'date-fns/is_sunday/index.js' {
+  import {isSunday} from 'date-fns'
+  export = isSunday
+}
+
+declare module 'date-fns/is_this_hour/index.js' {
+  import {isThisHour} from 'date-fns'
+  export = isThisHour
+}
+
+declare module 'date-fns/is_this_iso_week/index.js' {
+  import {isThisISOWeek} from 'date-fns'
+  export = isThisISOWeek
+}
+
+declare module 'date-fns/is_this_iso_year/index.js' {
+  import {isThisISOYear} from 'date-fns'
+  export = isThisISOYear
+}
+
+declare module 'date-fns/is_this_minute/index.js' {
+  import {isThisMinute} from 'date-fns'
+  export = isThisMinute
+}
+
+declare module 'date-fns/is_this_month/index.js' {
+  import {isThisMonth} from 'date-fns'
+  export = isThisMonth
+}
+
+declare module 'date-fns/is_this_quarter/index.js' {
+  import {isThisQuarter} from 'date-fns'
+  export = isThisQuarter
+}
+
+declare module 'date-fns/is_this_second/index.js' {
+  import {isThisSecond} from 'date-fns'
+  export = isThisSecond
+}
+
+declare module 'date-fns/is_this_week/index.js' {
+  import {isThisWeek} from 'date-fns'
+  export = isThisWeek
+}
+
+declare module 'date-fns/is_this_year/index.js' {
+  import {isThisYear} from 'date-fns'
+  export = isThisYear
+}
+
+declare module 'date-fns/is_thursday/index.js' {
+  import {isThursday} from 'date-fns'
+  export = isThursday
+}
+
+declare module 'date-fns/is_today/index.js' {
+  import {isToday} from 'date-fns'
+  export = isToday
+}
+
+declare module 'date-fns/is_tomorrow/index.js' {
+  import {isTomorrow} from 'date-fns'
+  export = isTomorrow
+}
+
+declare module 'date-fns/is_tuesday/index.js' {
+  import {isTuesday} from 'date-fns'
+  export = isTuesday
+}
+
+declare module 'date-fns/is_valid/index.js' {
+  import {isValid} from 'date-fns'
+  export = isValid
+}
+
+declare module 'date-fns/is_wednesday/index.js' {
+  import {isWednesday} from 'date-fns'
+  export = isWednesday
+}
+
+declare module 'date-fns/is_weekend/index.js' {
+  import {isWeekend} from 'date-fns'
+  export = isWeekend
+}
+
+declare module 'date-fns/is_within_range/index.js' {
+  import {isWithinRange} from 'date-fns'
+  export = isWithinRange
+}
+
+declare module 'date-fns/is_yesterday/index.js' {
+  import {isYesterday} from 'date-fns'
+  export = isYesterday
+}
+
+declare module 'date-fns/last_day_of_iso_week/index.js' {
+  import {lastDayOfISOWeek} from 'date-fns'
+  export = lastDayOfISOWeek
+}
+
+declare module 'date-fns/last_day_of_iso_year/index.js' {
+  import {lastDayOfISOYear} from 'date-fns'
+  export = lastDayOfISOYear
+}
+
+declare module 'date-fns/last_day_of_month/index.js' {
+  import {lastDayOfMonth} from 'date-fns'
+  export = lastDayOfMonth
+}
+
+declare module 'date-fns/last_day_of_quarter/index.js' {
+  import {lastDayOfQuarter} from 'date-fns'
+  export = lastDayOfQuarter
+}
+
+declare module 'date-fns/last_day_of_week/index.js' {
+  import {lastDayOfWeek} from 'date-fns'
+  export = lastDayOfWeek
+}
+
+declare module 'date-fns/last_day_of_year/index.js' {
+  import {lastDayOfYear} from 'date-fns'
+  export = lastDayOfYear
+}
+
+declare module 'date-fns/max/index.js' {
+  import {max} from 'date-fns'
+  export = max
+}
+
+declare module 'date-fns/min/index.js' {
+  import {min} from 'date-fns'
+  export = min
+}
+
+declare module 'date-fns/parse/index.js' {
+  import {parse} from 'date-fns'
+  export = parse
+}
+
+declare module 'date-fns/set_date/index.js' {
+  import {setDate} from 'date-fns'
+  export = setDate
+}
+
+declare module 'date-fns/set_day/index.js' {
+  import {setDay} from 'date-fns'
+  export = setDay
+}
+
+declare module 'date-fns/set_day_of_year/index.js' {
+  import {setDayOfYear} from 'date-fns'
+  export = setDayOfYear
+}
+
+declare module 'date-fns/set_hours/index.js' {
+  import {setHours} from 'date-fns'
+  export = setHours
+}
+
+declare module 'date-fns/set_iso_day/index.js' {
+  import {setISODay} from 'date-fns'
+  export = setISODay
+}
+
+declare module 'date-fns/set_iso_week/index.js' {
+  import {setISOWeek} from 'date-fns'
+  export = setISOWeek
+}
+
+declare module 'date-fns/set_iso_year/index.js' {
+  import {setISOYear} from 'date-fns'
+  export = setISOYear
+}
+
+declare module 'date-fns/set_milliseconds/index.js' {
+  import {setMilliseconds} from 'date-fns'
+  export = setMilliseconds
+}
+
+declare module 'date-fns/set_minutes/index.js' {
+  import {setMinutes} from 'date-fns'
+  export = setMinutes
+}
+
+declare module 'date-fns/set_month/index.js' {
+  import {setMonth} from 'date-fns'
+  export = setMonth
+}
+
+declare module 'date-fns/set_quarter/index.js' {
+  import {setQuarter} from 'date-fns'
+  export = setQuarter
+}
+
+declare module 'date-fns/set_seconds/index.js' {
+  import {setSeconds} from 'date-fns'
+  export = setSeconds
+}
+
+declare module 'date-fns/set_year/index.js' {
+  import {setYear} from 'date-fns'
+  export = setYear
+}
+
+declare module 'date-fns/start_of_day/index.js' {
+  import {startOfDay} from 'date-fns'
+  export = startOfDay
+}
+
+declare module 'date-fns/start_of_hour/index.js' {
+  import {startOfHour} from 'date-fns'
+  export = startOfHour
+}
+
+declare module 'date-fns/start_of_iso_week/index.js' {
+  import {startOfISOWeek} from 'date-fns'
+  export = startOfISOWeek
+}
+
+declare module 'date-fns/start_of_iso_year/index.js' {
+  import {startOfISOYear} from 'date-fns'
+  export = startOfISOYear
+}
+
+declare module 'date-fns/start_of_minute/index.js' {
+  import {startOfMinute} from 'date-fns'
+  export = startOfMinute
+}
+
+declare module 'date-fns/start_of_month/index.js' {
+  import {startOfMonth} from 'date-fns'
+  export = startOfMonth
+}
+
+declare module 'date-fns/start_of_quarter/index.js' {
+  import {startOfQuarter} from 'date-fns'
+  export = startOfQuarter
+}
+
+declare module 'date-fns/start_of_second/index.js' {
+  import {startOfSecond} from 'date-fns'
+  export = startOfSecond
+}
+
+declare module 'date-fns/start_of_today/index.js' {
+  import {startOfToday} from 'date-fns'
+  export = startOfToday
+}
+
+declare module 'date-fns/start_of_tomorrow/index.js' {
+  import {startOfTomorrow} from 'date-fns'
+  export = startOfTomorrow
+}
+
+declare module 'date-fns/start_of_week/index.js' {
+  import {startOfWeek} from 'date-fns'
+  export = startOfWeek
+}
+
+declare module 'date-fns/start_of_year/index.js' {
+  import {startOfYear} from 'date-fns'
+  export = startOfYear
+}
+
+declare module 'date-fns/start_of_yesterday/index.js' {
+  import {startOfYesterday} from 'date-fns'
+  export = startOfYesterday
+}
+
+declare module 'date-fns/sub_days/index.js' {
+  import {subDays} from 'date-fns'
+  export = subDays
+}
+
+declare module 'date-fns/sub_hours/index.js' {
+  import {subHours} from 'date-fns'
+  export = subHours
+}
+
+declare module 'date-fns/sub_iso_years/index.js' {
+  import {subISOYears} from 'date-fns'
+  export = subISOYears
+}
+
+declare module 'date-fns/sub_milliseconds/index.js' {
+  import {subMilliseconds} from 'date-fns'
+  export = subMilliseconds
+}
+
+declare module 'date-fns/sub_minutes/index.js' {
+  import {subMinutes} from 'date-fns'
+  export = subMinutes
+}
+
+declare module 'date-fns/sub_months/index.js' {
+  import {subMonths} from 'date-fns'
+  export = subMonths
+}
+
+declare module 'date-fns/sub_quarters/index.js' {
+  import {subQuarters} from 'date-fns'
+  export = subQuarters
+}
+
+declare module 'date-fns/sub_seconds/index.js' {
+  import {subSeconds} from 'date-fns'
+  export = subSeconds
+}
+
+declare module 'date-fns/sub_weeks/index.js' {
+  import {subWeeks} from 'date-fns'
+  export = subWeeks
+}
+
+declare module 'date-fns/sub_years/index.js' {
+  import {subYears} from 'date-fns'
+  export = subYears
+}
+
+declare module 'date-fns/locale/ar' {}
+declare module 'date-fns/locale/bg' {}
+declare module 'date-fns/locale/ca' {}
+declare module 'date-fns/locale/cs' {}
+declare module 'date-fns/locale/da' {}
+declare module 'date-fns/locale/de' {}
+declare module 'date-fns/locale/el' {}
+declare module 'date-fns/locale/en' {}
+declare module 'date-fns/locale/eo' {}
+declare module 'date-fns/locale/es' {}
+declare module 'date-fns/locale/fi' {}
+declare module 'date-fns/locale/fil' {}
+declare module 'date-fns/locale/fr' {}
+declare module 'date-fns/locale/hr' {}
+declare module 'date-fns/locale/id' {}
+declare module 'date-fns/locale/is' {}
+declare module 'date-fns/locale/it' {}
+declare module 'date-fns/locale/ja' {}
+declare module 'date-fns/locale/ko' {}
+declare module 'date-fns/locale/mk' {}
+declare module 'date-fns/locale/nb' {}
+declare module 'date-fns/locale/nl' {}
+declare module 'date-fns/locale/pl' {}
+declare module 'date-fns/locale/pt' {}
+declare module 'date-fns/locale/ru' {}
+declare module 'date-fns/locale/sk' {}
+declare module 'date-fns/locale/sv' {}
+declare module 'date-fns/locale/th' {}
+declare module 'date-fns/locale/tr' {}
+declare module 'date-fns/locale/zh_cn' {}
+declare module 'date-fns/locale/zh_tw' {}
+declare module 'date-fns/locale/ar/index' {}
+declare module 'date-fns/locale/bg/index' {}
+declare module 'date-fns/locale/ca/index' {}
+declare module 'date-fns/locale/cs/index' {}
+declare module 'date-fns/locale/da/index' {}
+declare module 'date-fns/locale/de/index' {}
+declare module 'date-fns/locale/el/index' {}
+declare module 'date-fns/locale/en/index' {}
+declare module 'date-fns/locale/eo/index' {}
+declare module 'date-fns/locale/es/index' {}
+declare module 'date-fns/locale/fi/index' {}
+declare module 'date-fns/locale/fil/index' {}
+declare module 'date-fns/locale/fr/index' {}
+declare module 'date-fns/locale/hr/index' {}
+declare module 'date-fns/locale/id/index' {}
+declare module 'date-fns/locale/is/index' {}
+declare module 'date-fns/locale/it/index' {}
+declare module 'date-fns/locale/ja/index' {}
+declare module 'date-fns/locale/ko/index' {}
+declare module 'date-fns/locale/mk/index' {}
+declare module 'date-fns/locale/nb/index' {}
+declare module 'date-fns/locale/nl/index' {}
+declare module 'date-fns/locale/pl/index' {}
+declare module 'date-fns/locale/pt/index' {}
+declare module 'date-fns/locale/ru/index' {}
+declare module 'date-fns/locale/sk/index' {}
+declare module 'date-fns/locale/sv/index' {}
+declare module 'date-fns/locale/th/index' {}
+declare module 'date-fns/locale/tr/index' {}
+declare module 'date-fns/locale/zh_cn/index' {}
+declare module 'date-fns/locale/zh_tw/index' {}
+declare module 'date-fns/locale/ar/index.js' {}
+declare module 'date-fns/locale/bg/index.js' {}
+declare module 'date-fns/locale/ca/index.js' {}
+declare module 'date-fns/locale/cs/index.js' {}
+declare module 'date-fns/locale/da/index.js' {}
+declare module 'date-fns/locale/de/index.js' {}
+declare module 'date-fns/locale/el/index.js' {}
+declare module 'date-fns/locale/en/index.js' {}
+declare module 'date-fns/locale/eo/index.js' {}
+declare module 'date-fns/locale/es/index.js' {}
+declare module 'date-fns/locale/fi/index.js' {}
+declare module 'date-fns/locale/fil/index.js' {}
+declare module 'date-fns/locale/fr/index.js' {}
+declare module 'date-fns/locale/hr/index.js' {}
+declare module 'date-fns/locale/id/index.js' {}
+declare module 'date-fns/locale/is/index.js' {}
+declare module 'date-fns/locale/it/index.js' {}
+declare module 'date-fns/locale/ja/index.js' {}
+declare module 'date-fns/locale/ko/index.js' {}
+declare module 'date-fns/locale/mk/index.js' {}
+declare module 'date-fns/locale/nb/index.js' {}
+declare module 'date-fns/locale/nl/index.js' {}
+declare module 'date-fns/locale/pl/index.js' {}
+declare module 'date-fns/locale/pt/index.js' {}
+declare module 'date-fns/locale/ru/index.js' {}
+declare module 'date-fns/locale/sk/index.js' {}
+declare module 'date-fns/locale/sv/index.js' {}
+declare module 'date-fns/locale/th/index.js' {}
+declare module 'date-fns/locale/tr/index.js' {}
+declare module 'date-fns/locale/zh_cn/index.js' {}
+declare module 'date-fns/locale/zh_tw/index.js' {}

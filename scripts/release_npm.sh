@@ -24,6 +24,12 @@ do
   cp scripts/sub_module_package.json "$module/package.json"
 done
 
+for locale in $dir/locale/*/
+do
+  locale=${locale%*/}
+  cp scripts/locale_package.json "$locale/package.json"
+done
+
 cp dist/date_fns_docs.json $dir/docs.json
 find "$dir" -type f -name "test.js" -delete
 find "$dir" -type f -name "benchmark.js" -delete

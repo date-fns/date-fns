@@ -18,5 +18,5 @@ function importFns () {
 }
 
 function importLocales () {
-  return listLocales().map((locale) => SystemJS.import(path.resolve(`src/locale/${locale.name}/index.js`)))
+  return listLocales().map((locale) => SystemJS.import(path.resolve(`src/${locale.path}/index.js`)))
 }
