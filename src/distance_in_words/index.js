@@ -50,7 +50,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
  *
  * @example
