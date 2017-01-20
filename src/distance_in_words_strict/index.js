@@ -31,7 +31,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
  *
  * @example

@@ -59,7 +59,7 @@ var patterns = {
  *
  * @param {Date|String|Number} argument - the value to convert
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
  *
  * @example
