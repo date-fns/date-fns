@@ -10,6 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.27.1] - 2017-01-20
+
+### Fixed
+
+- Added generation of TypeScript locale sub-modules, allowing import of locales in TypeScript.
+
 ## [1.27.0] - 2017-01-19
 
 ### Added
@@ -922,7 +928,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.1...HEAD
+[1.27.1]: https://github.com/date-fns/date-fns/compare/v1.27.0...v1.27.1
 [1.27.0]: https://github.com/date-fns/date-fns/compare/v1.26.0...v1.27.0
 [1.26.0]: https://github.com/date-fns/date-fns/compare/v1.25.0...v1.26.0
 [1.25.0]: https://github.com/date-fns/date-fns/compare/v1.24.0...v1.25.0
