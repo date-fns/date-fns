@@ -2,6 +2,7 @@ var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index
 var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
+ * @type {Locale}
  * @category Locales
  * @summary Finnish locale.
  * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}

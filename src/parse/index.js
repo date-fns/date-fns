@@ -79,7 +79,7 @@ var units = require('./_lib/units/index.js')
  * @param {String} formatString - the string of tokens
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Object} [options] - the object with options
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {Date} the parsed date
  *
  * @example
