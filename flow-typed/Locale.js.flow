@@ -1,0 +1,17 @@
+// @flow
+// This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
+
+type Locale = {
+  distanceInWords?: {
+    localize?: Function
+  },
+  format?: {
+    formatters?: Object,
+    formattingTokensRegExp?: RegExp
+  },
+  parse?: {
+    units?: Object,
+    parsers?: Object,
+    parsingTokensRegExp?: RegExp
+  }
+}
