@@ -58,9 +58,11 @@
     "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
     "build-uglify": "uglifyjs ./dist/date_fns.js --output ./dist/date_fns.min.js --source-map ./dist/date_fns.min.js.map --source-map-url date_fns.min.js.map --in-source-map ./dist/date_fns.js.map",
-    "build-docs": "babel-node ./scripts/generate_docs",
+    "build-docs": "babel-node ./scripts/build_docs",
+    "build-index": "babel-node ./scripts/build_index",
+    "build-typings": "babel-node ./scripts/build_typings",
+    "build-fp": "babel-node ./scripts/build_fp",
     "lint": "standard --verbose | snazzy",
-    "generate-index": "babel-node ./scripts/generate_index",
     "sync-versions": "babel-node ./scripts/sync_versions",
     "release": "./scripts/release.sh",
     "build-umd": "./scripts/build_umd.sh",
@@ -75,8 +77,7 @@
     "stats-loc-tests": "echo 'Test suite stats:' && sloc src/**/test.js",
     "flow-check": "flow check",
     "systemjs-check": "babel-node scripts/systemjs_check.js",
-    "benchmark": "env TEST_BENCHMARK=true karma start config/karma.js --single-run",
-    "generate-typings": "babel-node ./scripts/generate_typings"
+    "benchmark": "env TEST_BENCHMARK=true karma start config/karma.js --single-run"
   },
   "standard": {
     "parser": "babel-eslint",
