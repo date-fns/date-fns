@@ -1,6 +1,8 @@
 // @flow
+// This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
 declare module.exports: (
   date: Date | string | number,
-  amount: number
+  amount: number,
+  options?: Options
 ) => Date
