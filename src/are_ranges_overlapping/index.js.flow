@@ -1,8 +1,8 @@
 // @flow
+// This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
 declare module.exports: (
-  initialRangeStartDate: Date | string | number,
-  initialRangeEndDate: Date | string | number,
-  comparedRangeStartDate: Date | string | number,
-  comparedRangeEndDate: Date | string | number
+  rangeLeft: Range,
+  rangeRight: Range,
+  options?: Options
 ) => boolean
