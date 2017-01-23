@@ -1,7 +1,6 @@
 node_modules
 npm-debug.log
 tmp
-dist/compressed
-test.espowered.js
+dist
 .envrc
-.idea/
+/.idea/
