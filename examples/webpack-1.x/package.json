@@ -15,5 +15,9 @@
     "build-webpack": "webpack --entry ./index.js --output-path dist --output-file bundle.js",
     "build-babili": "babili dist/bundle.js --out-file dist/bundle.min.js --minified --no-comments && yarn run stats-size",
     "stats-size": "gzip-size dist/bundle.min.js | pretty-bytes"
+  },
+  "devDependencies": {
+    "gzip-size-cli": "^1.0.0",
+    "pretty-bytes-cli": "^2.0.0"
   }
 }
