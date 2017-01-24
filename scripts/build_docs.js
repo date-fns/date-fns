@@ -53,6 +53,7 @@ function injectStaticDocsToDocsObj (docsFileObj) {
       })
       return docsFileObj
     })
+    .catch(reportErrors)
 }
 
 /**
@@ -66,6 +67,7 @@ function injectSharedDocsToDocsObj (docsFileObj) {
       })
       return docsFileObj
     })
+    .catch(reportErrors)
 }
 
 /**
@@ -114,6 +116,7 @@ function getListOfStaticDocs (staticDocs) {
     return fsp.readFile(staticDoc.path)
       .then((docContent) => docContent.toString())
       .then((content) => Object.assign({content}, staticDoc))
+      .catch(reportErrors)
   }))
 }
 
