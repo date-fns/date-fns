@@ -18,5 +18,6 @@ See ./dist for output.
 You can see minimal build size (when you use just one function):
 
 ```sh
-TODO
+gzip-size dist/bundle.min.js | pretty-bytes
+#=> 2.51 kB
 ```
