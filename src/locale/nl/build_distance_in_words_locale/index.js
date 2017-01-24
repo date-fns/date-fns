@@ -10,7 +10,7 @@ function buildDistanceInWordsLocale () {
       other: '{{count}} seconden'
     },
 
-    halfAMinute: 'halve minuut',
+    halfAMinute: 'een halve minuut',
 
     lessThanXMinutes: {
       one: 'minder dan een minuut',
@@ -24,12 +24,12 @@ function buildDistanceInWordsLocale () {
 
     aboutXHours: {
       one: 'ongeveer 1 uur',
-      other: 'ongeveer {{count}} uren'
+      other: 'ongeveer {{count}} uur'
     },
 
     xHours: {
       one: '1 uur',
-      other: '{{count}} uren'
+      other: '{{count}} uur'
     },
 
     xDays: {
@@ -49,22 +49,22 @@ function buildDistanceInWordsLocale () {
 
     aboutXYears: {
       one: 'ongeveer 1 jaar',
-      other: 'ongeveer {{count}} jaren'
+      other: 'ongeveer {{count}} jaar'
     },
 
     xYears: {
       one: '1 jaar',
-      other: '{{count}} jaren'
+      other: '{{count}} jaar'
     },
 
     overXYears: {
-      one: 'over 1 jaar',
-      other: 'over {{count}} jaren'
+      one: 'meer dan 1 jaar',
+      other: 'meer dan {{count}} jaar'
     },
 
     almostXYears: {
       one: 'bijna 1 jaar',
-      other: 'bijna {{count}} jaren'
+      other: 'bijna {{count}} jaar'
     }
   }
 
@@ -82,7 +82,7 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'in ' + result
+        return 'over ' + result
       } else {
         return result + ' geleden'
       }
