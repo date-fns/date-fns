@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import getDaysInMonth from '../get_days_in_month/index.js'
 
 /**
+ * @name setMonth
  * @category Month Helpers
  * @summary Set the month to the given date.
  *

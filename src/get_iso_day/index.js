@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getISODay
  * @category Weekday Helpers
  * @summary Get the day of the ISO week of the given date.
  *

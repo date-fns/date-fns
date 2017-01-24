@@ -1,6 +1,7 @@
 import getISOYear from '../get_iso_year/index.js'
 
 /**
+ * @name differenceInCalendarISOYears
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the number of calendar ISO week-numbering years between the given dates.
  *

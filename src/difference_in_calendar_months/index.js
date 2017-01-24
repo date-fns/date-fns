@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarMonths
  * @category Month Helpers
  * @summary Get the number of calendar months between the given dates.
  *

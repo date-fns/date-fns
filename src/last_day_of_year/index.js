@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfYear
  * @category Year Helpers
  * @summary Return the last day of a year for the given date.
  *

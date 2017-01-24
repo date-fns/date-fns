@@ -1,4 +1,5 @@
 /**
+ * @name isDate
  * @category Common Helpers
  * @summary Is the given argument an instance of Date?
  *

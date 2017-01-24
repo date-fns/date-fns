@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfMonth
  * @category Month Helpers
  * @summary Return the end of a month for the given date.
  *

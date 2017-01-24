@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name addDays
  * @category Day Helpers
  * @summary Add the specified number of days to the given date.
  *

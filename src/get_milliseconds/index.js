@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getMilliseconds
  * @category Millisecond Helpers
  * @summary Get the milliseconds of the given date.
  *

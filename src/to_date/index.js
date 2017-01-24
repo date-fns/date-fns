@@ -41,6 +41,7 @@ var patterns = {
 }
 
 /**
+ * @name toDate
  * @category Common Helpers
  * @summary Convert the given argument to an instance of Date.
  *

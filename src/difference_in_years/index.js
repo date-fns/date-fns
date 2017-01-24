@@ -3,6 +3,7 @@ import differenceInCalendarYears from '../difference_in_calendar_years/index.js'
 import compareDesc from '../compare_desc/index.js'
 
 /**
+ * @name differenceInYears
  * @category Year Helpers
  * @summary Get the number of full years between the given dates.
  *

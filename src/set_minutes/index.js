@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name setMinutes
  * @category Minute Helpers
  * @summary Set the minutes to the given date.
  *

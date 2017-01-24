@@ -1,6 +1,7 @@
 import addMonths from '../add_months/index.js'
 
 /**
+ * @name subMonths
  * @category Month Helpers
  * @summary Subtract the specified number of months from the given date.
  *

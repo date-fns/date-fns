@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfDay
  * @category Day Helpers
  * @summary Return the start of a day for the given date.
  *

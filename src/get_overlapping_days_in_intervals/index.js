@@ -3,6 +3,7 @@ import toDate from '../to_date/index.js'
 var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 
 /**
+ * @name getOverlappingDaysInIntervals
  * @category Interval Helpers
  * @summary Get the number of days that overlap in two time intervals
  *

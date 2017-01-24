@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isLeapYear
  * @category Year Helpers
  * @summary Is the given date in the leap year?
  *

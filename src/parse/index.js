@@ -8,6 +8,7 @@ var TIMEZONE_UNIT_PRIORITY = 100
 var MILLISECONDS_IN_MINUTE = 60000
 
 /**
+ * @name parse
  * @category Common Helpers
  * @summary Parse the date.
  *

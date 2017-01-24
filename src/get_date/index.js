@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getDate
  * @category Day Helpers
  * @summary Get the day of the month of the given date.
  *

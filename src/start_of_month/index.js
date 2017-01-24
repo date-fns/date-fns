@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfMonth
  * @category Month Helpers
  * @summary Return the start of a month for the given date.
  *

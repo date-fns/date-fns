@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name eachDayOfInterval
  * @category Interval Helpers
  * @summary Return the array of dates within the specified time interval.
  *

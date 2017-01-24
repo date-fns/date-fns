@@ -10,6 +10,7 @@ var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_TWO_MONTHS = 86400
 
 /**
+ * @name distanceInWords
  * @category Common Helpers
  * @summary Return the distance between the given dates in words.
  *

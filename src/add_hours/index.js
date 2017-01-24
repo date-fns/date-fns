@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name addHours
  * @category Hour Helpers
  * @summary Add the specified number of hours to the given date.
  *

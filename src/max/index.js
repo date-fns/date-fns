@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name max
  * @category Common Helpers
  * @summary Return the latest of the given dates.
  *

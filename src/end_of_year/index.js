@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfYear
  * @category Year Helpers
  * @summary Return the end of a year for the given date.
  *

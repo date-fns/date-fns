@@ -1,6 +1,7 @@
 import addMonths from '../add_months/index.js'
 
 /**
+ * @name addQuarters
  * @category Quarter Helpers
  * @summary Add the specified number of year quarters to the given date.
  *

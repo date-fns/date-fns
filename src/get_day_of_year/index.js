@@ -3,6 +3,7 @@ import startOfYear from '../start_of_year/index.js'
 import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
+ * @name getDayOfYear
  * @category Day Helpers
  * @summary Get the day of the year of the given date.
  *

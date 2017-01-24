@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInMilliseconds
  * @category Millisecond Helpers
  * @summary Get the number of milliseconds between the given dates.
  *

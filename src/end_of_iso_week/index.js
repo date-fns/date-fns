@@ -2,6 +2,7 @@ import endOfWeek from '../end_of_week/index.js'
 import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name endOfISOWeek
  * @category ISO Week Helpers
  * @summary Return the end of an ISO week for the given date.
  *

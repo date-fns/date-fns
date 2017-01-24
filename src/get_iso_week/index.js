@@ -5,6 +5,7 @@ import startOfISOYear from '../start_of_iso_year/index.js'
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name getISOWeek
  * @category ISO Week Helpers
  * @summary Get the ISO week of the given date.
  *

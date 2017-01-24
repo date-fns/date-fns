@@ -1,6 +1,7 @@
 import addDays from '../add_days/index.js'
 
 /**
+ * @name subDays
  * @category Day Helpers
  * @summary Subtract the specified number of days from the given date.
  *

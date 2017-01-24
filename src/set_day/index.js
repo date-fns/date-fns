@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import addDays from '../add_days/index.js'
 
 /**
+ * @name setDay
  * @category Weekday Helpers
  * @summary Set the day of the week to the given date.
  *

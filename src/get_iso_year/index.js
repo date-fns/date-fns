@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
+ * @name getISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the ISO week-numbering year of the given date.
  *

@@ -3,6 +3,7 @@ import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 var MILLISECONDS_IN_MINUTE = 60000
 
 /**
+ * @name differenceInMinutes
  * @category Minute Helpers
  * @summary Get the number of minutes between the given dates.
  *

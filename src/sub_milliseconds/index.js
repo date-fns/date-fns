@@ -1,6 +1,7 @@
 import addMilliseconds from '../add_milliseconds/index.js'
 
 /**
+ * @name subMilliseconds
  * @category Millisecond Helpers
  * @summary Subtract the specified number of milliseconds from the given date.
  *

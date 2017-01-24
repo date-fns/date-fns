@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name min
  * @category Common Helpers
  * @summary Return the earliest of the given dates.
  *

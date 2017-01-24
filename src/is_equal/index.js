@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isEqual
  * @category Common Helpers
  * @summary Are the given dates equal?
  *

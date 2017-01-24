@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfDay
  * @category Day Helpers
  * @summary Return the end of a day for the given date.
  *

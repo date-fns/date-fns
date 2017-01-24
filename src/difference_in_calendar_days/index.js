@@ -4,6 +4,7 @@ var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_DAY = 86400000
 
 /**
+ * @name differenceInCalendarDays
  * @category Day Helpers
  * @summary Get the number of calendar days between the given dates.
  *

@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfHour
  * @category Hour Helpers
  * @summary Return the start of an hour for the given date.
  *

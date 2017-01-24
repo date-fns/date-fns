@@ -1,6 +1,7 @@
 import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 
 /**
+ * @name differenceInSeconds
  * @category Second Helpers
  * @summary Get the number of seconds between the given dates.
  *

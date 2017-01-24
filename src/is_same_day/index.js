@@ -1,6 +1,7 @@
 import startOfDay from '../start_of_day/index.js'
 
 /**
+ * @name isSameDay
  * @category Day Helpers
  * @summary Are the given dates in the same day?
  *

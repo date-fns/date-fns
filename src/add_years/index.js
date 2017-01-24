@@ -1,6 +1,7 @@
 import addMonths from '../add_months/index.js'
 
 /**
+ * @name addYears
  * @category Year Helpers
  * @summary Add the specified number of years to the given date.
  *

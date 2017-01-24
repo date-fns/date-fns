@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import getISOWeek from '../get_iso_week/index.js'
 
 /**
+ * @name setISOWeek
  * @category ISO Week Helpers
  * @summary Set the ISO week to the given date.
  *

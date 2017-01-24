@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfQuarter
  * @category Quarter Helpers
  * @summary Return the start of a year quarter for the given date.
  *

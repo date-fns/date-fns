@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isSameYear
  * @category Year Helpers
  * @summary Are the given dates in the same year?
  *

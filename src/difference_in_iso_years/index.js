@@ -4,6 +4,7 @@ import compareDesc from '../compare_desc/index.js'
 import subISOYears from '../sub_iso_years/index.js'
 
 /**
+ * @name differenceInISOYears
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the number of full ISO week-numbering years between the given dates.
  *

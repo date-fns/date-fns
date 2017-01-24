@@ -1,6 +1,7 @@
 import isLeapYear from '../is_leap_year/index.js'
 
 /**
+ * @name getDaysInYear
  * @category Year Helpers
  * @summary Get the number of days in a year of the given date.
  *

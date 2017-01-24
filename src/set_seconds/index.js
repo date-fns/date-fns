@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name setSeconds
  * @category Second Helpers
  * @summary Set the seconds to the given date.
  *

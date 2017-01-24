@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfSecond
  * @category Second Helpers
  * @summary Return the start of a second for the given date.
  *

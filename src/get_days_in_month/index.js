@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getDaysInMonth
  * @category Month Helpers
  * @summary Get the number of days in a month of the given date.
  *

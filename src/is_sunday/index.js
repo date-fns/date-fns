@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isSunday
  * @category Weekday Helpers
  * @summary Is the given date Sunday?
  *

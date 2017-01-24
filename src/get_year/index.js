@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getYear
  * @category Year Helpers
  * @summary Get the year of the given date.
  *

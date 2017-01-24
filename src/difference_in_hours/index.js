@@ -3,6 +3,7 @@ import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 var MILLISECONDS_IN_HOUR = 3600000
 
 /**
+ * @name differenceInHours
  * @category Hour Helpers
  * @summary Get the number of hours between the given dates.
  *

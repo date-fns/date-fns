@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name compareDesc
  * @category Common Helpers
  * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
  *

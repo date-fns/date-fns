@@ -1,6 +1,7 @@
 import addMinutes from '../add_minutes/index.js'
 
 /**
+ * @name subMinutes
  * @category Minute Helpers
  * @summary Subtract the specified number of minutes from the given date.
  *

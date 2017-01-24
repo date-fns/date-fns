@@ -3,6 +3,7 @@ import addDays from '../add_days/index.js'
 import getISODay from '../get_iso_day/index.js'
 
 /**
+ * @name setISODay
  * @category Weekday Helpers
  * @summary Set the day of the ISO week to the given date.
  *

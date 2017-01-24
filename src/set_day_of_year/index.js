@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name setDayOfYear
  * @category Day Helpers
  * @summary Set the day of the year to the given date.
  *

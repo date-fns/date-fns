@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isBefore
  * @category Common Helpers
  * @summary Is the first date before the second one?
  *

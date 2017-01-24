@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isWithinInterval
  * @category Interval Helpers
  * @summary Is the given date within the interval?
  *

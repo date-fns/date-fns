@@ -4,6 +4,7 @@ import addWeeks from '../add_weeks/index.js'
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name getISOWeeksInYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the number of weeks in an ISO week-numbering year of the given date.
  *

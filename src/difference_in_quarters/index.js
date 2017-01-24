@@ -1,6 +1,7 @@
 import differenceInMonths from '../difference_in_months/index.js'
 
 /**
+ * @name differenceInQuarters
  * @category Quarter Helpers
  * @summary Get the number of full quarters between the given dates.
  *

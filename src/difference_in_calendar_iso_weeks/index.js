@@ -4,6 +4,7 @@ var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name differenceInCalendarISOWeeks
  * @category ISO Week Helpers
  * @summary Get the number of calendar ISO weeks between the given dates.
  *

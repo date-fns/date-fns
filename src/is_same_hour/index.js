@@ -1,6 +1,7 @@
 import startOfHour from '../start_of_hour/index.js'
 
 /**
+ * @name isSameHour
  * @category Hour Helpers
  * @summary Are the given dates in the same hour?
  *

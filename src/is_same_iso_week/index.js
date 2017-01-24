@@ -2,6 +2,7 @@ import isSameWeek from '../is_same_week/index.js'
 import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name isSameISOWeek
  * @category ISO Week Helpers
  * @summary Are the given dates in the same ISO week?
  *

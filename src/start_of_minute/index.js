@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfMinute
  * @category Minute Helpers
  * @summary Return the start of a minute for the given date.
  *

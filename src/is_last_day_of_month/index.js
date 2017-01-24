@@ -3,6 +3,7 @@ import endOfDay from '../end_of_day/index.js'
 import endOfMonth from '../end_of_month/index.js'
 
 /**
+ * @name isLastDayOfMonth
  * @category Month Helpers
  * @summary Is the given date the last day of a month?
  *

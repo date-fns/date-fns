@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import getDaysInMonth from '../get_days_in_month/index.js'
 
 /**
+ * @name addMonths
  * @category Month Helpers
  * @summary Add the specified number of months to the given date.
  *

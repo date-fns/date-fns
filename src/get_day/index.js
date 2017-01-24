@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getDay
  * @category Weekday Helpers
  * @summary Get the day of the week of the given date.
  *

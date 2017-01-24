@@ -1,6 +1,7 @@
 import addDays from '../add_days/index.js'
 
 /**
+ * @name addWeeks
  * @category Week Helpers
  * @summary Add the specified number of weeks to the given date.
  *

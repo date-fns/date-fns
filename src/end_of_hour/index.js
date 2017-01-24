@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfHour
  * @category Hour Helpers
  * @summary Return the end of an hour for the given date.
  *

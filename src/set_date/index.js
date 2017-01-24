@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name setDate
  * @category Day Helpers
  * @summary Set the day of the month to the given date.
  *

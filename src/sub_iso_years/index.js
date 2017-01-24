@@ -1,6 +1,7 @@
 import addISOYears from '../add_iso_years/index.js'
 
 /**
+ * @name subISOYears
  * @category ISO Week-Numbering Year Helpers
  * @summary Subtract the specified number of ISO week-numbering years from the given date.
  *

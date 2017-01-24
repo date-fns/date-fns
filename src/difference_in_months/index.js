@@ -3,6 +3,7 @@ import differenceInCalendarMonths from '../difference_in_calendar_months/index.j
 import compareDesc from '../compare_desc/index.js'
 
 /**
+ * @name differenceInMonths
  * @category Month Helpers
  * @summary Get the number of full months between the given dates.
  *

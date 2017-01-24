@@ -3,6 +3,7 @@ import startOfISOYear from '../start_of_iso_year/index.js'
 import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
+ * @name setISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Set the ISO week-numbering year to the given date.
  *

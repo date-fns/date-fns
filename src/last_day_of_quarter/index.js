@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfQuarter
  * @category Quarter Helpers
  * @summary Return the last day of a year quarter for the given date.
  *

@@ -2,6 +2,7 @@ import getQuarter from '../get_quarter/index.js'
 import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarQuarters
  * @category Quarter Helpers
  * @summary Get the number of calendar quarters between the given dates.
  *

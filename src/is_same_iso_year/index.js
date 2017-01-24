@@ -1,6 +1,7 @@
 import startOfISOYear from '../start_of_iso_year/index.js'
 
 /**
+ * @name isSameISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Are the given dates in the same ISO week-numbering year?
  *

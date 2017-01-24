@@ -1,6 +1,7 @@
 import addSeconds from '../add_seconds/index.js'
 
 /**
+ * @name subSeconds
  * @category Second Helpers
  * @summary Subtract the specified number of seconds from the given date.
  *

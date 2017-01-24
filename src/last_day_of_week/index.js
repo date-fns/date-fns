@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfWeek
  * @category Week Helpers
  * @summary Return the last day of a week for the given date.
  *

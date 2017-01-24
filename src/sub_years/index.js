@@ -1,6 +1,7 @@
 import addYears from '../add_years/index.js'
 
 /**
+ * @name subYears
  * @category Year Helpers
  * @summary Subtract the specified number of years from the given date.
  *

@@ -1,6 +1,7 @@
 import differenceInDays from '../difference_in_days/index.js'
 
 /**
+ * @name differenceInWeeks
  * @category Week Helpers
  * @summary Get the number of full weeks between the given dates.
  *

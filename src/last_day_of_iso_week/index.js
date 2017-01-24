@@ -2,6 +2,7 @@ import lastDayOfWeek from '../last_day_of_week/index.js'
 import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name lastDayOfISOWeek
  * @category ISO Week Helpers
  * @summary Return the last day of an ISO week for the given date.
  *

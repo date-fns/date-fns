@@ -3,6 +3,7 @@ import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 import compareDesc from '../compare_desc/index.js'
 
 /**
+ * @name differenceInDays
  * @category Day Helpers
  * @summary Get the number of full days between the given dates.
  *

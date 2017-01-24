@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfMinute
  * @category Minute Helpers
  * @summary Return the end of a minute for the given date.
  *

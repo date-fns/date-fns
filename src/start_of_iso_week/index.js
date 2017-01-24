@@ -2,6 +2,7 @@ import startOfWeek from '../start_of_week/index.js'
 import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name startOfISOWeek
  * @category ISO Week Helpers
  * @summary Return the start of an ISO week for the given date.
  *

@@ -8,6 +8,7 @@ import getUTCISOWeek from './_lib/get_utc_iso_week/index.js'
 import getUTCISOYear from './_lib/get_utc_iso_year/index.js'
 
 /**
+ * @name format
  * @category Common Helpers
  * @summary Format the date.
  *

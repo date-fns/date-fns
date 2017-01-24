@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfMonth
  * @category Month Helpers
  * @summary Return the last day of a month for the given date.
  *

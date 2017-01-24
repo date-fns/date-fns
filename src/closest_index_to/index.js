@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name closestIndexTo
  * @category Common Helpers
  * @summary Return an index of the closest date from the array comparing to the given date.
  *

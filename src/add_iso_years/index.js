@@ -2,6 +2,7 @@ import getISOYear from '../get_iso_year/index.js'
 import setISOYear from '../set_iso_year/index.js'
 
 /**
+ * @name addISOYears
  * @category ISO Week-Numbering Year Helpers
  * @summary Add the specified number of ISO week-numbering years to the given date.
  *

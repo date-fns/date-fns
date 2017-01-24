@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarYears
  * @category Year Helpers
  * @summary Get the number of calendar years between the given dates.
  *

@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfWeek
  * @category Week Helpers
  * @summary Return the end of a week for the given date.
  *

@@ -1,6 +1,7 @@
 import startOfWeek from '../start_of_week/index.js'
 
 /**
+ * @name isSameWeek
  * @category Week Helpers
  * @summary Are the given dates in the same week?
  *

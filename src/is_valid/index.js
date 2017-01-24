@@ -1,6 +1,7 @@
 import isDate from '../is_date/index.js'
 
 /**
+ * @name isValid
  * @category Common Helpers
  * @summary Is the given date valid?
  *

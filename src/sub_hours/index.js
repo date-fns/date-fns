@@ -1,6 +1,7 @@
 import addHours from '../add_hours/index.js'
 
 /**
+ * @name subHours
  * @category Hour Helpers
  * @summary Subtract the specified number of hours from the given date.
  *

@@ -1,6 +1,7 @@
 import startOfQuarter from '../start_of_quarter/index.js'
 
 /**
+ * @name isSameQuarter
  * @category Quarter Helpers
  * @summary Are the given dates in the same year quarter?
  *

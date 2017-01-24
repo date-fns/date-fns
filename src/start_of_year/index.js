@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfYear
  * @category Year Helpers
  * @summary Return the start of a year for the given date.
  *

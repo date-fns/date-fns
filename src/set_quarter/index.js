@@ -2,6 +2,7 @@ import toDate from '../to_date/index.js'
 import setMonth from '../set_month/index.js'
 
 /**
+ * @name setQuarter
  * @category Quarter Helpers
  * @summary Set the year quarter to the given date.
  *

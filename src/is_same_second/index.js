@@ -1,6 +1,7 @@
 import startOfSecond from '../start_of_second/index.js'
 
 /**
+ * @name isSameSecond
  * @category Second Helpers
  * @summary Are the given dates in the same second?
  *

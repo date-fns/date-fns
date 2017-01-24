@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name getHours
  * @category Hour Helpers
  * @summary Get the hours of the given date.
  *

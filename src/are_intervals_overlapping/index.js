@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name areIntervalsOverlapping
  * @category Interval Helpers
  * @summary Is the given time interval overlapping with another time interval?
  *

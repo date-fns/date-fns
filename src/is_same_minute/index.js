@@ -1,6 +1,7 @@
 import startOfMinute from '../start_of_minute/index.js'
 
 /**
+ * @name isSameMinute
  * @category Minute Helpers
  * @summary Are the given dates in the same minute?
  *

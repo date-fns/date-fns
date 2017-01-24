@@ -1,6 +1,7 @@
 import addWeeks from '../add_weeks/index.js'
 
 /**
+ * @name subWeeks
  * @category Week Helpers
  * @summary Subtract the specified number of weeks from the given date.
  *

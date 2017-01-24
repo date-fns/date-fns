@@ -1,6 +1,7 @@
 import toDate from '../to_date/index.js'
 
 /**
+ * @name isFirstDayOfMonth
  * @category Month Helpers
  * @summary Is the given date the first day of a month?
  *

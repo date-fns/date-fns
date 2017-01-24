@@ -1,6 +1,7 @@
 import addQuarters from '../add_quarters/index.js'
 
 /**
+ * @name subQuarters
  * @category Quarter Helpers
  * @summary Subtract the specified number of year quarters from the given date.
  *
