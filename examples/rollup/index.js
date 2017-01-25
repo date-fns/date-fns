@@ -1,2 +1,2 @@
-import {addDays} from 'date-fns/es'
-console.log(addDays(new Date(), 1))
+import {format} from 'date-fns/es'
+console.log(format('2017-01-25T21:28:15.000Z', 'DD.MM.YYYY HH:mm:ss'))

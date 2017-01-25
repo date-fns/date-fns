@@ -59,6 +59,7 @@
     "test-cross-browser": "env TEST_CROSS_BROWSER=true npm test -- --single-run",
     "test-tz": "yarn run build-tests && ./scripts/test_tz.sh",
     "test-tz-extended": "yarn run build-tests && ./scripts/test_tz_extended.sh",
+    "test-smoke": "./scripts/test_smoke.sh",
     "count-tests": "./scripts/count_tests.sh",
     "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
     "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
