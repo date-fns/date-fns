@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
 var buildMatchRegExpFromArray = require('../../_lib/build_match_reg_exp_from_array/index.js')
 var buildParseFnFromArray = require('../../_lib/build_parse_fn_from_array/index.js')
 var parseDecimal = require('../../_lib/parse_decimal/index.js')
@@ -143,7 +143,7 @@ function buildParseLocale () {
   return {
     units: units,
     parsers: parsers,
-    parsingTokensRegExp: buildFormattingTokensRegExp(parsers)
+    parsingTokensRegExp: buildTokensRegExp(parsers)
   }
 }
 
