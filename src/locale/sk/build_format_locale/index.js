@@ -13,42 +13,42 @@ function buildFormatLocale () {
   var formatters = {
     // Month: jan, feb, ..., dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return months3char[date.getUTCMonth()]
     },
 
     // Month: január, február, ..., december
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: ne, po, ..., so
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: neď, pon, ..., sob
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: neďeľa, pondelok, ..., sobota
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // AM, PM
     'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
     },
 
     // am, pm
     'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
     },
 
     // a.m., p.m.
     'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
     }
   }
 

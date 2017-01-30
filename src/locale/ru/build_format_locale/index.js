@@ -13,32 +13,32 @@ function buildFormatLocale () {
   var formatters = {
     // Month: янв., фев., ..., дек.
     'MMM': function (date) {
-      return monthsShort[date.getMonth()]
+      return monthsShort[date.getUTCMonth()]
     },
 
     // Month: январь, февраль, ..., декабрь
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: вс, пн, ..., сб
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: вск, пнд, ..., суб
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: воскресенье, понедельник, ..., суббота
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // Time of day: ночи, утра, дня, вечера
     'A': function (date) {
-      var hours = date.getHours()
+      var hours = date.getUTCHours()
       if (hours >= 17) {
         return meridiem[3]
       } else if (hours >= 12) {
@@ -76,7 +76,7 @@ function buildFormatLocale () {
   monthsGenitiveFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + ' MMMM'] = function (date, commonFormatters) {
       var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
-      return formatter(date, commonFormatters) + ' ' + monthsGenitive[date.getMonth()]
+      return formatter(date, commonFormatters) + ' ' + monthsGenitive[date.getUTCMonth()]
     }
   })
 

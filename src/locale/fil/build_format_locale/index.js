@@ -13,39 +13,39 @@ function buildFormatLocale () {
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return months3char[date.getUTCMonth()]
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // AM, PM
     'A': function (date) {
-      if (date.getHours() > 12) {
-        var modulo = date.getHours() % 12
+      if (date.getUTCHours() > 12) {
+        var modulo = date.getUTCHours() % 12
         if (modulo < 6) {
           return meridiemUppercase[2]
         } else {
           return meridiemUppercase[3]
         }
-      } else if (date.getHours() < 12) {
+      } else if (date.getUTCHours() < 12) {
         return meridiemUppercase[0]
       } else {
         return meridiemUppercase[1]
@@ -54,14 +54,14 @@ function buildFormatLocale () {
 
     // am, pm
     'a': function (date) {
-      if (date.getHours() > 12) {
-        var modulo = date.getHours() % 12
+      if (date.getUTCHours() > 12) {
+        var modulo = date.getUTCHours() % 12
         if (modulo < 6) {
           return meridiemLowercase[2]
         } else {
           return meridiemLowercase[3]
         }
-      } else if (date.getHours() < 12) {
+      } else if (date.getUTCHours() < 12) {
         return meridiemLowercase[0]
       } else {
         return meridiemLowercase[1]
@@ -70,14 +70,14 @@ function buildFormatLocale () {
 
     // a.m., p.m.
     'aa': function (date) {
-      if (date.getHours() > 12) {
-        var modulo = date.getHours() % 12
+      if (date.getUTCHours() > 12) {
+        var modulo = date.getUTCHours() % 12
         if (modulo < 6) {
           return meridiemFull[2]
         } else {
           return meridiemFull[3]
         }
-      } else if (date.getHours() < 12) {
+      } else if (date.getUTCHours() < 12) {
         return meridiemFull[0]
       } else {
         return meridiemFull[1]

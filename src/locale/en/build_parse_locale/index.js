@@ -20,16 +20,16 @@ function buildParseLocale () {
     meridiem: {
       priority: 65,
       set: function (date, value) {
-        var hours = date.getHours()
+        var hours = date.getUTCHours()
         var isAM = value === 0
 
         if (isAM) {
           if (hours === 12) {
-            date.setHours(0)
+            date.setUTCHours(0)
           }
         } else {
           if (hours !== 12) {
-            date.setHours(12 + hours)
+            date.setUTCHours(12 + hours)
           }
         }
 
