@@ -1,7 +1,7 @@
 // @flow
 // This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
-declare module.exports: (
-  interval: Interval,
-  options?: Options
-) => Date[]
+type Interval = {
+  start: Date | string | number,
+  end: Date | string | number
+}

@@ -1,6 +1,6 @@
 // This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
-type Range = {
+type Interval = {
   start: Date | string | number,
   end: Date | string | number
 }
@@ -99,12 +99,12 @@ declare module 'date-fns' {
   ): Date
   namespace addYears {}
 
-  function areRangesOverlapping (
-    rangeLeft: Range,
-    rangeRight: Range,
+  function areIntervalsOverlapping (
+    intervalLeft: Interval,
+    intervalRight: Interval,
     options?: Options
   ): boolean
-  namespace areRangesOverlapping {}
+  namespace areIntervalsOverlapping {}
 
   function closestIndexTo (
     dateToCompare: Date | string | number,
@@ -278,12 +278,11 @@ declare module 'date-fns' {
   ): string
   namespace distanceInWordsStrict {}
 
-  function eachDay (
-    startDate: Date | string | number,
-    endDate: Date | string | number,
+  function eachDayOfInterval (
+    interval: Interval,
     options?: Options
   ): Date[]
-  namespace eachDay {}
+  namespace eachDayOfInterval {}
 
   function endOfDay (
     date: Date | string | number,
@@ -434,12 +433,12 @@ declare module 'date-fns' {
   ): number
   namespace getMonth {}
 
-  function getOverlappingDaysInRanges (
-    rangeLeft: Range,
-    rangeRight: Range,
+  function getOverlappingDaysInIntervals (
+    intervalLeft: Interval,
+    intervalRight: Interval,
     options?: Options
   ): number
-  namespace getOverlappingDaysInRanges {}
+  namespace getOverlappingDaysInIntervals {}
 
   function getQuarter (
     date: Date | string | number,
@@ -636,12 +635,12 @@ declare module 'date-fns' {
   ): boolean
   namespace isWeekend {}
 
-  function isWithinRange (
+  function isWithinInterval (
     date: Date | string | number,
-    range: Range,
+    interval: Interval,
     options?: Options
   ): boolean
-  namespace isWithinRange {}
+  namespace isWithinInterval {}
 
   function lastDayOfISOWeek (
     date: Date | string | number,
@@ -985,9 +984,9 @@ declare module 'date-fns/add_years' {
   export = addYears
 }
 
-declare module 'date-fns/are_ranges_overlapping' {
-  import {areRangesOverlapping} from 'date-fns'
-  export = areRangesOverlapping
+declare module 'date-fns/are_intervals_overlapping' {
+  import {areIntervalsOverlapping} from 'date-fns'
+  export = areIntervalsOverlapping
 }
 
 declare module 'date-fns/closest_index_to' {
@@ -1105,9 +1104,9 @@ declare module 'date-fns/distance_in_words_strict' {
   export = distanceInWordsStrict
 }
 
-declare module 'date-fns/each_day' {
-  import {eachDay} from 'date-fns'
-  export = eachDay
+declare module 'date-fns/each_day_of_interval' {
+  import {eachDayOfInterval} from 'date-fns'
+  export = eachDayOfInterval
 }
 
 declare module 'date-fns/end_of_day' {
@@ -1230,9 +1229,9 @@ declare module 'date-fns/get_month' {
   export = getMonth
 }
 
-declare module 'date-fns/get_overlapping_days_in_ranges' {
-  import {getOverlappingDaysInRanges} from 'date-fns'
-  export = getOverlappingDaysInRanges
+declare module 'date-fns/get_overlapping_days_in_intervals' {
+  import {getOverlappingDaysInIntervals} from 'date-fns'
+  export = getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/get_quarter' {
@@ -1385,9 +1384,9 @@ declare module 'date-fns/is_weekend' {
   export = isWeekend
 }
 
-declare module 'date-fns/is_within_range' {
-  import {isWithinRange} from 'date-fns'
-  export = isWithinRange
+declare module 'date-fns/is_within_interval' {
+  import {isWithinInterval} from 'date-fns'
+  export = isWithinInterval
 }
 
 declare module 'date-fns/last_day_of_iso_week' {
@@ -1655,9 +1654,9 @@ declare module 'date-fns/add_years/index' {
   export = addYears
 }
 
-declare module 'date-fns/are_ranges_overlapping/index' {
-  import {areRangesOverlapping} from 'date-fns'
-  export = areRangesOverlapping
+declare module 'date-fns/are_intervals_overlapping/index' {
+  import {areIntervalsOverlapping} from 'date-fns'
+  export = areIntervalsOverlapping
 }
 
 declare module 'date-fns/closest_index_to/index' {
@@ -1775,9 +1774,9 @@ declare module 'date-fns/distance_in_words_strict/index' {
   export = distanceInWordsStrict
 }
 
-declare module 'date-fns/each_day/index' {
-  import {eachDay} from 'date-fns'
-  export = eachDay
+declare module 'date-fns/each_day_of_interval/index' {
+  import {eachDayOfInterval} from 'date-fns'
+  export = eachDayOfInterval
 }
 
 declare module 'date-fns/end_of_day/index' {
@@ -1900,9 +1899,9 @@ declare module 'date-fns/get_month/index' {
   export = getMonth
 }
 
-declare module 'date-fns/get_overlapping_days_in_ranges/index' {
-  import {getOverlappingDaysInRanges} from 'date-fns'
-  export = getOverlappingDaysInRanges
+declare module 'date-fns/get_overlapping_days_in_intervals/index' {
+  import {getOverlappingDaysInIntervals} from 'date-fns'
+  export = getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/get_quarter/index' {
@@ -2055,9 +2054,9 @@ declare module 'date-fns/is_weekend/index' {
   export = isWeekend
 }
 
-declare module 'date-fns/is_within_range/index' {
-  import {isWithinRange} from 'date-fns'
-  export = isWithinRange
+declare module 'date-fns/is_within_interval/index' {
+  import {isWithinInterval} from 'date-fns'
+  export = isWithinInterval
 }
 
 declare module 'date-fns/last_day_of_iso_week/index' {
@@ -2325,9 +2324,9 @@ declare module 'date-fns/add_years/index.js' {
   export = addYears
 }
 
-declare module 'date-fns/are_ranges_overlapping/index.js' {
-  import {areRangesOverlapping} from 'date-fns'
-  export = areRangesOverlapping
+declare module 'date-fns/are_intervals_overlapping/index.js' {
+  import {areIntervalsOverlapping} from 'date-fns'
+  export = areIntervalsOverlapping
 }
 
 declare module 'date-fns/closest_index_to/index.js' {
@@ -2445,9 +2444,9 @@ declare module 'date-fns/distance_in_words_strict/index.js' {
   export = distanceInWordsStrict
 }
 
-declare module 'date-fns/each_day/index.js' {
-  import {eachDay} from 'date-fns'
-  export = eachDay
+declare module 'date-fns/each_day_of_interval/index.js' {
+  import {eachDayOfInterval} from 'date-fns'
+  export = eachDayOfInterval
 }
 
 declare module 'date-fns/end_of_day/index.js' {
@@ -2570,9 +2569,9 @@ declare module 'date-fns/get_month/index.js' {
   export = getMonth
 }
 
-declare module 'date-fns/get_overlapping_days_in_ranges/index.js' {
-  import {getOverlappingDaysInRanges} from 'date-fns'
-  export = getOverlappingDaysInRanges
+declare module 'date-fns/get_overlapping_days_in_intervals/index.js' {
+  import {getOverlappingDaysInIntervals} from 'date-fns'
+  export = getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/get_quarter/index.js' {
@@ -2725,9 +2724,9 @@ declare module 'date-fns/is_weekend/index.js' {
   export = isWeekend
 }
 
-declare module 'date-fns/is_within_range/index.js' {
-  import {isWithinRange} from 'date-fns'
-  export = isWithinRange
+declare module 'date-fns/is_within_interval/index.js' {
+  import {isWithinInterval} from 'date-fns'
+  export = isWithinInterval
 }
 
 declare module 'date-fns/last_day_of_iso_week/index.js' {

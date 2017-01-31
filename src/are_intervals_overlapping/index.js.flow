@@ -2,7 +2,7 @@
 // This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
 declare module.exports: (
-  rangeLeft: Range,
-  rangeRight: Range,
+  intervalLeft: Interval,
+  intervalRight: Interval,
   options?: Options
 ) => boolean

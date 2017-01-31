@@ -3,6 +3,6 @@
 
 declare module.exports: (
   date: Date | string | number,
-  range: Range,
+  interval: Interval,
   options?: Options
 ) => boolean
