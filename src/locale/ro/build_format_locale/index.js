@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var buildFormattingTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
   // Note: in Romanian language the weekdays and months should be in the lowercase.

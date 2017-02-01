@@ -1,9 +1,11 @@
-var getDayOfYear = require('../get_day_of_year/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
-var getISOYear = require('../get_iso_year/index.js')
 var toDate = require('../to_date/index.js')
 var isValid = require('../is_valid/index.js')
 var enLocale = require('../locale/en/index.js')
+var subMinutes = require('../sub_minutes/index.js')
+var cloneObject = require('../_lib/clone_object/index.js')
+var getUTCDayOfYear = require('./_lib/get_utc_day_of_year/index.js')
+var getUTCISOWeek = require('./_lib/get_utc_iso_week/index.js')
+var getUTCISOYear = require('./_lib/get_utc_iso_year/index.js')
 
 /**
  * @category Common Helpers
@@ -104,106 +106,118 @@ function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     }
   }
 
-  var date = toDate(dirtyDate, options)
+  var originalDate = toDate(dirtyDate, options)
 
-  if (!isValid(date, options)) {
+  if (!isValid(originalDate, options)) {
     throw new Error('Date is invalid')
   }
 
+  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
+  var timezoneOffset = originalDate.getTimezoneOffset()
+  var utcDate = subMinutes(originalDate, timezoneOffset, options)
+
   var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
 
-  return formatFn(date, options)
+  // When UTC functions will be implemented, options._originalDate will likely be a part of public API.
+  // Right now, please don't use it in locales. If you have to use an original date,
+  // please restore it from `date`, adding a timezone offset to it.
+  var formatFnOptions = cloneObject(options)
+  formatFnOptions._originalDate = originalDate
+
+  return formatFn(utcDate, formatFnOptions)
 }
 
 var formatters = {
   // Month: 1, 2, ..., 12
   'M': function (date) {
-    return date.getMonth() + 1
+    return date.getUTCMonth() + 1
   },
 
   // Month: 01, 02, ..., 12
   'MM': function (date) {
-    return addLeadingZeros(date.getMonth() + 1, 2)
+    return addLeadingZeros(date.getUTCMonth() + 1, 2)
   },
 
   // Quarter: 1, 2, 3, 4
   'Q': function (date) {
-    return Math.ceil((date.getMonth() + 1) / 3)
+    return Math.ceil((date.getUTCMonth() + 1) / 3)
   },
 
   // Day of month: 1, 2, ..., 31
   'D': function (date) {
-    return date.getDate()
+    return date.getUTCDate()
   },
 
   // Day of month: 01, 02, ..., 31
   'DD': function (date) {
-    return addLeadingZeros(date.getDate(), 2)
+    return addLeadingZeros(date.getUTCDate(), 2)
   },
 
   // Day of year: 1, 2, ..., 366
   'DDD': function (date, _, options) {
-    return getDayOfYear(date, _, options)
+    return getUTCDayOfYear(date, options)
   },
 
   // Day of year: 001, 002, ..., 366
   'DDDD': function (date, _, options) {
-    return addLeadingZeros(getDayOfYear(date, _, options), 3)
+    return addLeadingZeros(getUTCDayOfYear(date, options), 3)
   },
 
   // Day of week: 0, 1, ..., 6
   'd': function (date) {
-    return date.getDay()
+    return date.getUTCDay()
   },
 
   // Day of ISO week: 1, 2, ..., 7
   'E': function (date) {
-    return date.getDay() || 7
+    return date.getUTCDay() || 7
   },
 
   // ISO week: 1, 2, ..., 53
-  'W': function (date, _, options) {
-    return getISOWeek(date, options)
+  'W': function (date) {
+    return getUTCISOWeek(date)
   },
 
   // ISO week: 01, 02, ..., 53
   'WW': function (date, _, options) {
-    return addLeadingZeros(getISOWeek(date, options), 2)
+    return addLeadingZeros(getUTCISOWeek(date, options), 2)
   },
 
   // Year: 00, 01, ..., 99
   'YY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4).substr(2)
+    return addLeadingZeros(date.getUTCFullYear(), 4).substr(2)
   },
 
   // Year: 1900, 1901, ..., 2099
   'YYYY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4)
+    return addLeadingZeros(date.getUTCFullYear(), 4)
   },
 
   // ISO week-numbering year: 00, 01, ..., 99
   'GG': function (date, _, options) {
-    return String(getISOYear(date, options)).substr(2)
+    return String(getUTCISOYear(date, options)).substr(2)
   },
 
   // ISO week-numbering year: 1900, 1901, ..., 2099
   'GGGG': function (date, _, options) {
-    return getISOYear(date, options)
+    return getUTCISOYear(date, options)
   },
 
   // Hour: 0, 1, ... 23
   'H': function (date) {
-    return date.getHours()
+    return date.getUTCHours()
   },
 
   // Hour: 00, 01, ..., 23
   'HH': function (date) {
-    return addLeadingZeros(date.getHours(), 2)
+    return addLeadingZeros(date.getUTCHours(), 2)
   },
 
   // Hour: 1, 2, ..., 12
   'h': function (date) {
-    var hours = date.getHours()
+    var hours = date.getUTCHours()
     if (hours === 0) {
       return 12
     } else if (hours > 12) {
@@ -220,57 +234,61 @@ var formatters = {
 
   // Minute: 0, 1, ..., 59
   'm': function (date) {
-    return date.getMinutes()
+    return date.getUTCMinutes()
   },
 
   // Minute: 00, 01, ..., 59
   'mm': function (date) {
-    return addLeadingZeros(date.getMinutes(), 2)
+    return addLeadingZeros(date.getUTCMinutes(), 2)
   },
 
   // Second: 0, 1, ..., 59
   's': function (date) {
-    return date.getSeconds()
+    return date.getUTCSeconds()
   },
 
   // Second: 00, 01, ..., 59
   'ss': function (date) {
-    return addLeadingZeros(date.getSeconds(), 2)
+    return addLeadingZeros(date.getUTCSeconds(), 2)
   },
 
   // 1/10 of second: 0, 1, ..., 9
   'S': function (date) {
-    return Math.floor(date.getMilliseconds() / 100)
+    return Math.floor(date.getUTCMilliseconds() / 100)
   },
 
   // 1/100 of second: 00, 01, ..., 99
   'SS': function (date) {
-    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
+    return addLeadingZeros(Math.floor(date.getUTCMilliseconds() / 10), 2)
   },
 
   // Millisecond: 000, 001, ..., 999
   'SSS': function (date) {
-    return addLeadingZeros(date.getMilliseconds(), 3)
+    return addLeadingZeros(date.getUTCMilliseconds(), 3)
   },
 
   // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function (date) {
-    return formatTimezone(date.getTimezoneOffset(), ':')
+  'Z': function (date, _, options) {
+    var originalDate = options._originalDate || date
+    return formatTimezone(originalDate.getTimezoneOffset(), ':')
   },
 
   // Timezone: -0100, +0000, ... +1200
-  'ZZ': function (date) {
-    return formatTimezone(date.getTimezoneOffset())
+  'ZZ': function (date, _, options) {
+    var originalDate = options._originalDate || date
+    return formatTimezone(originalDate.getTimezoneOffset())
   },
 
   // Seconds timestamp: 512969520
-  'X': function (date) {
-    return Math.floor(date.getTime() / 1000)
+  'X': function (date, _, options) {
+    var originalDate = options._originalDate || date
+    return Math.floor(originalDate.getTime() / 1000)
   },
 
   // Milliseconds timestamp: 512969520900
-  'x': function (date) {
-    return date.getTime()
+  'x': function (date, _, options) {
+    var originalDate = options._originalDate || date
+    return originalDate.getTime()
   }
 }
 
