@@ -92,7 +92,7 @@ rather than spread arguments.
   // Before v2.0.0
   format(new Date(2016, 0, 1))
 
-  // 2.0.0 onward
+  // v2.0.0 onward
   format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
   ```
 
@@ -203,6 +203,33 @@ rather than spread arguments.
   } catch (e) {
     // ...
   }
+  ```
+
+- **BREAKING**: `format` now assumes that the provided locale uses UTC-versions of `Date` methods,
+  e.g. `getUTCMonth` instead of `getMonth`. All included locales are converted.
+  This change affects only those who uses custom locales.
+  Except handling of locales, behavior of `format` hasn't changed,
+  i.e. it still formats dates in the user timezone.
+
+  ```javascript
+  var weekdays = ['sundio', 'lundio', 'mardio', 'merkurdio', 'jovdio', 'venerdio', 'saturdio']
+
+  var customLocale = {
+    format: {
+      formatters: {
+        'dddd': function (date) {
+          // Before v2.0.0
+          return weekdays[date.getDay()]
+
+          // v2.0.0 onward
+          return weekdays[date.getUTCDay()]
+        }
+      },
+      formattingTokensRegExp: /(\[[^[]*])|(\\)?(dddd|.)/g
+    }
+  }
+
+  format('2017-01-01', 'dddd', {locale: customLocale}) //=> 'sundio'
   ```
 
 - Every function now has `options` as the last argument which is passed to all its dependencies

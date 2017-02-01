@@ -330,16 +330,12 @@ describe('format', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      var currentDate = date
-
       var formatters = {
         'ABC': function (date) {
-          assert.deepEqual(date, currentDate)
           return 'It'
         },
 
         'EFG': function (date) {
-          assert.deepEqual(date, currentDate)
           return 'works'
         }
       }
@@ -373,16 +369,12 @@ describe('format', function () {
 
     context('does not contain `format.formattingTokensRegExp` property', function () {
       it('uses `format.formattingTokensRegExp` of enLocale', function () {
-        var currentDate = date
-
         var formatters = {
           'MMMM': function (date) {
-            assert.deepEqual(date, currentDate)
             return 'It'
           },
 
           'YYYY': function (date) {
-            assert.deepEqual(date, currentDate)
             return 'works'
           }
         }
