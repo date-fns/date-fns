@@ -1,7 +1,11 @@
 var toDate = require('../to_date/index.js')
+var subMinutes = require('../sub_minutes/index.js')
 var enLocale = require('../locale/en/index.js')
 var parsers = require('./_lib/parsers/index.js')
 var units = require('./_lib/units/index.js')
+
+var TIMEZONE_UNIT_PRIORITY = 100
+var MILLISECONDS_IN_MINUTE = 60000
 
 /**
  * @category Common Helpers
@@ -128,7 +132,12 @@ function parse (dateString, formatString, dirtyBaseDate, options) {
   var tokens = formatString.match(parsingTokensRegExp)
   var tokensLength = tokens.length
 
-  var setters = {}
+  // If timezone isn't specified, it will be set to the system timezone
+  var setters = [{
+    priority: TIMEZONE_UNIT_PRIORITY,
+    set: dateToSystemTimezone,
+    index: 0
+  }]
 
   var i
   for (i = 0; i < tokensLength; i++) {
@@ -143,11 +152,15 @@ function parse (dateString, formatString, dirtyBaseDate, options) {
 
       var unitName = parser.unit
       var unit = localeUnits[unitName] || units[unitName]
-      setters[unit.priority] = {
-        priorityNumber: unit.priority,
+
+      var newSetter = {
+        priority: unit.priority,
         set: unit.set,
-        value: parser.parse(matchResult)
+        value: parser.parse(matchResult),
+        index: setters.length
       }
+
+      setters.push(newSetter)
 
       var substring = matchResult[0]
       dateString = dateString.slice(substring.length)
@@ -161,19 +174,54 @@ function parse (dateString, formatString, dirtyBaseDate, options) {
     }
   }
 
-  var priorities = Object.keys(setters).sort(function (a, b) {
-    return a.priorityNumber - b.priorityNumber
-  })
+  var uniquePrioritySetters = setters
+    .map(function (setter) {
+      return setter.priority
+    })
+    .sort(function (a, b) {
+      return a - b
+    })
+    .filter(function (priority, index, array) {
+      return array.indexOf(priority) === index
+    })
+    .map(function (priority) {
+      return setters
+        .filter(function (setter) {
+          return setter.priority === priority
+        })
+        .reverse()
+    })
+    .map(function (setterArray) {
+      return setterArray[0]
+    })
 
-  var prioritiesLength = priorities.length
   var date = toDate(dirtyBaseDate, options)
 
-  for (i = 0; i < prioritiesLength; i++) {
-    var setter = setters[priorities[i]]
-    date = setter.set(date, setter.value)
+  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
+  var utcDate = subMinutes(date, date.getTimezoneOffset())
+
+  var settersLength = uniquePrioritySetters.length
+  for (i = 0; i < settersLength; i++) {
+    var setter = uniquePrioritySetters[i]
+    utcDate = setter.set(utcDate, setter.value, options)
   }
 
-  return date
+  return utcDate
+}
+
+function dateToSystemTimezone (date) {
+  var time = date.getTime()
+
+  // Get the system timezone offset at (moment of time - offset)
+  var offset = date.getTimezoneOffset()
+
+  // Get the system timezone offset at the exact moment of time
+  offset = new Date(time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+
+  // Convert date in timezone "UTC+00:00" to the system timezone
+  return new Date(time + offset * MILLISECONDS_IN_MINUTE)
 }
 
 module.exports = parse
