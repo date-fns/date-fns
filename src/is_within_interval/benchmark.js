@@ -2,12 +2,12 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isWithinRange = require('./')
+var isWithinInterval = require('./')
 var moment = require('moment')
 
-suite('isWithinRange', function () {
+suite('isWithinInterval', function () {
   benchmark('date-fns', function () {
-    return isWithinRange(this.dateA, this.dateB, this.dateC)
+    return isWithinInterval(this.dateA, {start: this.dateB, end: this.dateC})
   })
 
   benchmark('Moment.js', function () {
