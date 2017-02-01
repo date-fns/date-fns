@@ -509,8 +509,8 @@ describe('parse', function () {
         qwe: {
           priority: 12,
           set: function (date, value) {
-            date.setDate(value + 2)
-            date.setHours(0, 0, 0, 0)
+            date.setUTCDate(value + 2)
+            date.setUTCHours(0, 0, 0, 0)
             return date
           }
         },
@@ -518,8 +518,8 @@ describe('parse', function () {
         rty: {
           priority: 11,
           set: function (date, value) {
-            date.setMonth(value + 2, 1)
-            date.setHours(0, 0, 0, 0)
+            date.setUTCMonth(value + 2, 1)
+            date.setUTCHours(0, 0, 0, 0)
             return date
           }
         }
@@ -591,8 +591,8 @@ describe('parse', function () {
           date: {
             priority: 12,
             set: function (date, value) {
-              date.setDate(value + 2)
-              date.setHours(0, 0, 0, 0)
+              date.setUTCDate(value + 2)
+              date.setUTCHours(0, 0, 0, 0)
               return date
             }
           },
@@ -600,8 +600,8 @@ describe('parse', function () {
           month: {
             priority: 11,
             set: function (date, value) {
-              date.setMonth(value + 2, 1)
-              date.setHours(0, 0, 0, 0)
+              date.setUTCMonth(value + 2, 1)
+              date.setUTCHours(0, 0, 0, 0)
               return date
             }
 

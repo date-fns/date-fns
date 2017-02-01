@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
   var months3char = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec']
@@ -13,42 +13,42 @@ function buildFormatLocale () {
   var formatters = {
     // Month: jan, feb, ..., deс
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return months3char[date.getUTCMonth()]
     },
 
     // Month: januaro, februaro, ..., decembro
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: di, lu, ..., sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: dim, lun, ..., sab
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: dimanĉo, lundo, ..., sabato
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // A.T.M., P.T.M.
     'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
     },
 
     // a.t.m., p.t.m.
     'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
     },
 
     // antaŭtagmeze, posttagmeze
     'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
+      return (date.getUTCHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
     }
   }
 
@@ -62,7 +62,7 @@ function buildFormatLocale () {
 
   return {
     formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+    formattingTokensRegExp: buildTokensRegExp(formatters)
   }
 }
 
