@@ -405,19 +405,19 @@ describe('parse', function () {
 
     describe('day of week', function () {
       it('takes the values of higher priority from baseDate', function () {
-        var dateString = '0'
+        var dateString = '1'
         var formatString = 'd'
         var result = parse(dateString, formatString, baseDate)
-        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
+        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
     })
 
     describe('day of ISO week', function () {
       it('takes the values of higher priority from baseDate', function () {
-        var dateString = '7'
+        var dateString = '6'
         var formatString = 'E'
         var result = parse(dateString, formatString, baseDate)
-        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 5))
       })
     })
 
