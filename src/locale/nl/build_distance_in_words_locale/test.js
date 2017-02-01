@@ -43,11 +43,11 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
   describe('halfAMinute', function () {
     it('returns a proper string', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute') === 'halve minuut')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute') === 'een halve minuut')
     })
 
     it('ignores the second argument', function () {
-      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === 'halve minuut')
+      assert(buildDistanceInWordsLocale().localize('halfAMinute', 123) === 'een halve minuut')
     })
   })
 
@@ -88,7 +88,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === 'ongeveer 2 uren')
+        assert(buildDistanceInWordsLocale().localize('aboutXHours', 2) === 'ongeveer 2 uur')
       })
     })
   })
@@ -102,7 +102,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xHours', 2) === '2 uren')
+        assert(buildDistanceInWordsLocale().localize('xHours', 2) === '2 uur')
       })
     })
   })
@@ -158,7 +158,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === 'ongeveer 2 jaren')
+        assert(buildDistanceInWordsLocale().localize('aboutXYears', 2) === 'ongeveer 2 jaar')
       })
     })
   })
@@ -172,7 +172,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('xYears', 2) === '2 jaren')
+        assert(buildDistanceInWordsLocale().localize('xYears', 2) === '2 jaar')
       })
     })
   })
@@ -180,13 +180,13 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('overXYears', 1) === 'over 1 jaar')
+        assert(buildDistanceInWordsLocale().localize('overXYears', 1) === 'meer dan 1 jaar')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('overXYears', 2) === 'over 2 jaren')
+        assert(buildDistanceInWordsLocale().localize('overXYears', 2) === 'meer dan 2 jaar')
       })
     })
   })
@@ -200,7 +200,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(buildDistanceInWordsLocale().localize('almostXYears', 2) === 'bijna 2 jaren')
+        assert(buildDistanceInWordsLocale().localize('almostXYears', 2) === 'bijna 2 jaar')
       })
     })
   })
@@ -221,7 +221,7 @@ describe('nl locale > buildDistanceInWordsLocale', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in halve minuut')
+      assert(result === 'over een halve minuut')
     })
   })
 })
