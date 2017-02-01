@@ -4,7 +4,7 @@
 var assert = require('power-assert')
 var buildParseLocale = require('./')
 
-describe('en locale > buildFormatLocale', function () {
+describe('en locale > buildParseLocale', function () {
   it('returns an object', function () {
     assert(typeof buildParseLocale() === 'object')
   })
@@ -22,27 +22,27 @@ describe('en locale > buildFormatLocale', function () {
       })
 
       it('sets a.m. to date', function () {
-        var date = new Date(2016, 10 /* Nov */, 25, 5, 30)
+        var date = new Date(Date.UTC(2016, 10 /* Nov */, 25, 5, 30))
         var result = buildParseLocale().units.meridiem.set(date, 0)
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 5, 30))
+        assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 5, 30)))
       })
 
       it('sets 12 a.m.', function () {
-        var date = new Date(2016, 10 /* Nov */, 25, 12, 30)
+        var date = new Date(Date.UTC(2016, 10 /* Nov */, 25, 12, 30))
         var result = buildParseLocale().units.meridiem.set(date, 0)
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 0, 30))
+        assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 0, 30)))
       })
 
       it('sets p.m. to date', function () {
-        var date = new Date(2016, 10 /* Nov */, 25, 5, 30)
+        var date = new Date(Date.UTC(2016, 10 /* Nov */, 25, 5, 30))
         var result = buildParseLocale().units.meridiem.set(date, 1)
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 17, 30))
+        assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 17, 30)))
       })
 
       it('sets 12 p.m.', function () {
-        var date = new Date(2016, 10 /* Nov */, 25, 12, 30)
+        var date = new Date(Date.UTC(2016, 10 /* Nov */, 25, 12, 30))
         var result = buildParseLocale().units.meridiem.set(date, 1)
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 12, 30))
+        assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 12, 30)))
       })
     })
   })
