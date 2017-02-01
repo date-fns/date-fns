@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.27.2] - 2017-02-01
+
+### Fixed
+
+- Various fixes for Dutch locale. See PR: [#416](https://github.com/date-fns/date-fns/pull/416).
+  Thanks to Ruben Stolk [@rubenstolk](https://github.com/rubenstolk)
+
 ## [1.27.1] - 2017-01-20
 
 ### Fixed
@@ -928,7 +935,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.2...HEAD
+[1.27.2]: https://github.com/date-fns/date-fns/compare/v1.27.1...v1.27.2
 [1.27.1]: https://github.com/date-fns/date-fns/compare/v1.27.0...v1.27.1
 [1.27.0]: https://github.com/date-fns/date-fns/compare/v1.26.0...v1.27.0
 [1.26.0]: https://github.com/date-fns/date-fns/compare/v1.25.0...v1.26.0
