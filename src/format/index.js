@@ -1,8 +1,8 @@
 var toDate = require('../to_date/index.js')
 var isValid = require('../is_valid/index.js')
 var enLocale = require('../locale/en/index.js')
-var subMinutes = require('../sub_minutes/index.js')
 var cloneObject = require('../_lib/clone_object/index.js')
+var addUTCMinutes = require('./_lib/add_utc_minutes/index.js')
 var getUTCDayOfYear = require('./_lib/get_utc_day_of_year/index.js')
 var getUTCISOWeek = require('./_lib/get_utc_iso_week/index.js')
 var getUTCISOYear = require('./_lib/get_utc_iso_year/index.js')
@@ -115,7 +115,7 @@ function format (dirtyDate, formatStr, options) {
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
   var timezoneOffset = originalDate.getTimezoneOffset()
-  var utcDate = subMinutes(originalDate, timezoneOffset, options)
+  var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
 
   var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
 
