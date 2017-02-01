@@ -2,11 +2,11 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var eachDay = require('./')
+var eachDayOfInterval = require('./')
 
-suite('eachDay', function () {
+suite('eachDayOfInterval', function () {
   benchmark('date-fns', function () {
-    return eachDay(this.dateA, this.dateB)
+    return eachDayOfInterval({start: this.dateA, end: this.dateB})
   })
 }, {
   setup: function () {
