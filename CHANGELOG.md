@@ -96,8 +96,24 @@ rather than spread arguments.
   format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
   ```
 
-- **BREAKING**: make range helpers accept an object with `start` and `end` properties
-  instead of two arguments as a range.
+- **BREAKING**: functions renamed:
+
+  - `areRangesOverlapping` → `areIntervalsOverlapping`
+  - `eachDay` → `eachDayOfInterval`
+  - `getOverlappingDaysInRanges` → `getOverlappingDaysInIntervals`
+  - `isWithinRange` → `isWithinInterval`
+
+  This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
+
+  ```
+  2.1.3
+  time interval
+  part of the time axis limited by two instants
+  ```
+
+  Also these functions now accept an object with `start` and `end` properties
+  instead of two arguments as an interval. All these functions, as before,
+  throw an exception if the start of the interval is after its end.
 
   ```javascript
   // Before v2.0.0
@@ -106,6 +122,8 @@ rather than spread arguments.
     new Date(2014, 0, 10), new Date(2014, 0, 20),
     new Date(2014, 0, 17), new Date(2014, 0, 21)
   )
+
+  eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20))
 
   getOverlappingDaysInRanges(
     new Date(2014, 0, 10), new Date(2014, 0, 20),
@@ -119,17 +137,19 @@ rather than spread arguments.
 
   // v2.0.0 onward
 
-  areRangesOverlapping(
+  areIntervalsOverlapping(
     {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
     {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
   )
 
-  getOverlappingDaysInRanges(
+  eachDayOfInterval({start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)})
+
+  getOverlappingDaysInIntervals(
     {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
     {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
   )
 
-  isWithinRange(
+  isWithinInterval(
     new Date(2014, 0, 3),
     {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
   )
@@ -304,7 +324,7 @@ rather than spread arguments.
 
 ### Added
 
-- `areRangesOverlapping` and `getOverlappingDayInRanges`
+- `areRangesOverlapping` and `getOverlappingDaysInRanges`
   Thanks to Joanna T [@asia-t](https://github.com/asia-t).
   See PR: [#331](https://github.com/date-fns/date-fns/pull/331)
 
