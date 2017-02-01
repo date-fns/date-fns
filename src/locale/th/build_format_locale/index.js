@@ -1,4 +1,4 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
 
 function buildFormatLocale () {
   var months3char = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.']
@@ -13,27 +13,27 @@ function buildFormatLocale () {
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return months3char[date.getUTCMonth()]
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // AM, PM
@@ -54,7 +54,7 @@ function buildFormatLocale () {
 
   return {
     formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+    formattingTokensRegExp: buildTokensRegExp(formatters)
   }
 }
 
