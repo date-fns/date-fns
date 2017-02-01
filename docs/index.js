@@ -5,7 +5,7 @@ export default {
     'General',
     'Types',
     'Common Helpers',
-    'Range Helpers',
+    'Interval Helpers',
     'Timestamp Helpers',
     'Millisecond Helpers',
     'Second Helpers',
@@ -66,7 +66,7 @@ export default {
 
   sharedDocs: [
     {
-      fullPath: path.join(__dirname, 'Range.js')
+      fullPath: path.join(__dirname, 'Interval.js')
     },
     {
       fullPath: path.join(__dirname, 'Options.js')
