@@ -168,7 +168,7 @@ rather than spread arguments.
   ```
 
 - **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
-  to make them consistent with `differenceInWords` and `distanceInWordsStrict` functions.
+  to make them consistent with `distanceInWords` and `distanceInWordsStrict` functions.
   Now, the first date argument must be earlier then the second for function to return the positive number.
 
   ```javascript
