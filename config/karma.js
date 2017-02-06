@@ -123,7 +123,7 @@ function config (config) {
       'karma-es5-shim',
       'karma-mocha',
       'karma-mocha-reporter',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-sauce-launcher',
       'karma-sinon',
       'karma-sourcemap-loader',
@@ -135,7 +135,7 @@ function config (config) {
     ],
 
     customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : {},
-    browsers: process.env.TEST_CROSS_BROWSER ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
+    browsers: process.env.TEST_CROSS_BROWSER ? Object.keys(sauceLabsLaunchers) : ['Chrome'],
     reporters: getReportersConfig()
   })
 }
