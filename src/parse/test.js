@@ -410,6 +410,13 @@ describe('parse', function () {
         var result = parse(dateString, formatString, baseDate)
         assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
+
+      it('allows to specify which day is the first day of the week', function () {
+        var dateString = '0'
+        var formatString = 'd'
+        var result = parse(dateString, formatString, baseDate, {weekStartsOn: 1})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+      })
     })
 
     describe('day of ISO week', function () {
