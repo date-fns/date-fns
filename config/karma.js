@@ -82,6 +82,13 @@ var sauceLabsLaunchers = {
   }
 }
 
+var travisLaunchers = {
+  ChromeTravis: {
+    base: 'Chrome',
+    flags: ['--no-sandbox']
+  }
+}
+
 function config (config) {
   config.set({
     frameworks: getFrameworksConfig(),
@@ -123,7 +130,7 @@ function config (config) {
       'karma-es5-shim',
       'karma-mocha',
       'karma-mocha-reporter',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-sauce-launcher',
       'karma-sinon',
       'karma-sourcemap-loader',
@@ -134,8 +141,8 @@ function config (config) {
       {'reporter:benchmark-json': ['type', benchmarkJSONReporter]}
     ],
 
-    customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : {},
-    browsers: process.env.TEST_CROSS_BROWSER ? Object.keys(sauceLabsLaunchers) : ['PhantomJS'],
+    customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : travisLaunchers,
+    browsers: Object.keys(process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : travisLaunchers),
     reporters: getReportersConfig()
   })
 }
