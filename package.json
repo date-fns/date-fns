@@ -24,11 +24,11 @@
     "karma": "^1.3.0",
     "karma-benchmark": "^0.6.0",
     "karma-benchmark-reporter": "^0.1.1",
+    "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
     "karma-es5-shim": "0.0.4",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.1",
-    "karma-phantomjs-launcher": "^1.0.0",
     "karma-sauce-launcher": "^0.3.0",
     "karma-sinon": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.5",
@@ -81,6 +81,8 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "ignore": ["dist/"]
+    "ignore": [
+      "dist/"
+    ]
   }
 }
