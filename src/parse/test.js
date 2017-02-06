@@ -412,10 +412,10 @@ describe('parse', function () {
       })
 
       it('allows to specify which day is the first day of the week', function () {
-        var dateString = '0'
+        var dateString = '1'
         var formatString = 'd'
-        var result = parse(dateString, formatString, baseDate, {weekStartsOn: 1})
-        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+        var result = parse(dateString, formatString, baseDate, {weekStartsOn: 2})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 7))
       })
     })
 
