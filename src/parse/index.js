@@ -84,6 +84,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Object} [options] - the object with options
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
+ * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
  *
  * @example
