@@ -11,7 +11,6 @@ var toDate = require('../to_date/index.js')
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} an index of the date closest to the given date
- * @throws {TypeError} the second argument must be an instance of Array
  *
  * @example
  * // Which date is closer to 6 September 2015?
@@ -25,10 +24,6 @@ var toDate = require('../to_date/index.js')
  * //=> 1
  */
 function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
-  if (!(dirtyDatesArray instanceof Array)) {
-    throw new TypeError(toString.call(dirtyDatesArray) + ' is not an instance of Array')
-  }
-
   var dateToCompare = toDate(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
