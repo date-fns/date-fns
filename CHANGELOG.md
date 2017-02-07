@@ -212,6 +212,9 @@ rather than spread arguments.
   format('2017-01-01', 'dddd', {locale: customLocale}) //=> 'sundio'
   ```
 
+- **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
+  when the second argument is not an instance of array.
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
