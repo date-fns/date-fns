@@ -1,6 +1,6 @@
-# Usage With Browserify
+# Usage With webpack 1.x
 
-See [example.js](./example.js) and [misc.js](./misc.js) for source code examples.
+See [example.js](./example.js) for source code example.
 
 See [package.json scripts](./package.json) for CLI usage.
 
@@ -19,5 +19,5 @@ You can see minimal build size (when you use just one function):
 
 ```sh
 gzip-size dist/example.min.js | pretty-bytes
-#=> 4.55 kB
+#=> 4.07 kB
 ```

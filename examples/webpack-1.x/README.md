@@ -1,6 +1,6 @@
 # Usage With webpack 1.x
 
-See [index.js](./index.js) for source code example.
+See [example.js](./example.js) and [misc.js](./misc.js) for source code examples.
 
 See [package.json scripts](./package.json) for CLI usage.
 
@@ -18,6 +18,6 @@ See ./dist for output.
 You can see minimal build size (when you use just one function):
 
 ```sh
-gzip-size dist/bundle.min.js | pretty-bytes
+gzip-size dist/example.min.js | pretty-bytes
 #=> 4.04 kB
 ```

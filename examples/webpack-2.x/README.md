@@ -3,7 +3,7 @@
 **Important**: as at webpack 2.2.0, tree-shaking is not removing all unused imports.
 See [webpack issue #2867](https://github.com/webpack/webpack/issues/2867)
 
-See [index.js](./index.js) for source code example.
+See [example.js](./example.js) and [misc.js](./misc.js) for source code examples.
 
 See [package.json scripts](./package.json) for CLI usage.
 
@@ -21,6 +21,6 @@ See ./dist for output.
 You can see minimal build size (when you use just one function):
 
 ```sh
-gzip-size dist/bundle.min.js | pretty-bytes
-#=> 5.83 kB
+gzip-size dist/example.min.js | pretty-bytes
+#=> 6.18 kB
 ```

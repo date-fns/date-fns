@@ -2,22 +2,25 @@
   "name": "date-fns-example-webpack2",
   "version": "0.1.0",
   "description": "Example of date-fns usage with webpack 2.x",
-  "main": "index.js",
+  "main": "example.js",
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
     "babili": "^0.0.9",
+    "gzip-size-cli": "^1.0.0",
+    "pretty-bytes-cli": "^2.0.0",
     "webpack": "^2.2.0"
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-webpack && yarn run build-babili",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
-    "build-webpack": "webpack --entry ./index.js --output-path dist --output-filename bundle.js",
-    "build-babili": "babili dist/bundle.js --out-file dist/bundle.min.js --minified --no-comments && yarn run stats-size",
-    "stats-size": "gzip-size dist/bundle.min.js | pretty-bytes"
-  },
-  "devDependencies": {
-    "gzip-size-cli": "^1.0.0",
-    "pretty-bytes-cli": "^2.0.0"
+    "build-webpack": "webpack example=./example.js misc=./misc.js --output-path dist --output-filename [name].js",
+    "build-babili": "yarn run build-babili-example && yarn run build-babili-misc && yarn run stats-size",
+    "build-babili-example": "babili dist/example.js --out-file dist/example.min.js --minified --no-comments",
+    "build-babili-misc": "babili dist/misc.js --out-file dist/misc.min.js --minified --no-comments",
+    "stats-size": "gzip-size dist/example.min.js | pretty-bytes",
+    "test": "yarn run test-example && yarn run test-misc",
+    "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.min.js) = true"
   }
 }

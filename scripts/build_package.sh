@@ -12,17 +12,6 @@ dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Copy basic files
-for pattern in CHANGELOG.md \
-  package.json \
-  docs/* \
-  LICENSE.md \
-  README.md \
-  typings.d.ts
-do
-  cp -r "$pattern" "$dir"
-done
-
 # Prepare ES5-compatible files
 
 # Compile ES files on top of the already copied files leaving
@@ -42,6 +31,19 @@ cp ./index.js "$dir/es"
 
 # Copy docs
 cp dist/date_fns_docs.json "$dir/docs.json"
+
+# Copy basic files
+for pattern in CHANGELOG.md \
+  package.json \
+  docs/* \
+  LICENSE.md \
+  README.md \
+  typings.d.ts \
+  flow-typed \
+  .flowconfig
+do
+  cp -r "$pattern" "$dir"
+done
 
 # Clean up dev code
 find "$dir" -type f -name "test.js" -delete

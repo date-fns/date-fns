@@ -2,3 +2,5 @@
 .*node_modules*
 [options]
 suppress_comment= \\(.\\|\n\\)*\\$ExpectedMistake
+[libs]
+flow-typed/
