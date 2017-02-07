@@ -47,11 +47,4 @@ describe('closestIndexTo', function () {
     var result = closestIndexTo(date, [])
     assert(result === undefined)
   })
-
-  it('throws an exception if the second argument is not an instance of Array', function () {
-    var date = new Date(2014, 6 /* Jul */, 2).getTime()
-    // $ExpectedMistake
-    var block = closestIndexTo.bind(null, date, '')
-    assert.throws(block, TypeError, '[object String] is not an instance of Array')
-  })
 })
