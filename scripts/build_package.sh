@@ -35,12 +35,10 @@ cp dist/date_fns_docs.json "$dir/docs.json"
 # Copy basic files
 for pattern in CHANGELOG.md \
   package.json \
-  docs/* \
+  docs \
   LICENSE.md \
   README.md \
-  typings.d.ts \
-  flow-typed \
-  .flowconfig
+  typings.d.ts
 do
   cp -r "$pattern" "$dir"
 done

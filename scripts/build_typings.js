@@ -198,37 +198,32 @@ function generateTypeScriptTypings (fns, aliases, locales) {
 
 // Flow
 
-function generateFlowTypeAlias (type) {
+function getFlowTypeAlias (type) {
   const name = type.content.name
   const properties = getParams(type.content.properties, {indent: 0})
-  const filename = `./flow-typed/${name}.js.flow`
 
-  const aliasString = ['// @flow']
-    .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
-    .concat('')
-    .concat(`type ${name} = ${properties}\n`)
-    .join('\n')
-
-  fs.writeFileSync(filename, aliasString)
+  return `type ${name} = ${properties}`
 }
 
-function generateFlowFnTyping (fn) {
+function generateFlowFnTyping (fn, aliasDeclarations) {
   const snakeCaseName = fn.file.snakeCaseName
   const filename = `./src/${snakeCaseName}/index.js.flow`
 
   const params = getParams(fn.content.params, {indent: 0, leftBorder: '(', rightBorder: ')'})
   const returns = getType(fn.content.returns[0].type.names)
 
+  const moduleDeclaration = `declare module.exports: ${params} => ${returns}\n`
+
   const typingString = ['// @flow']
     .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
     .concat('')
-    .concat(`declare module.exports: ${params} => ${returns}\n`)
+    .concat(aliasDeclarations.concat(moduleDeclaration).join('\n\n'))
     .join('\n')
 
   fs.writeFileSync(filename, typingString)
 }
 
 function generateFlowTypings (fns, aliases) {
-  aliases.forEach(generateFlowTypeAlias)
-  fns.forEach(generateFlowFnTyping)
+  const aliasDeclarations = aliases.map(getFlowTypeAlias)
+  fns.forEach((fn) => generateFlowFnTyping(fn, aliasDeclarations))
 }
