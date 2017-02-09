@@ -118,26 +118,28 @@ function getTypeAlias (type) {
 
 // TypeScript
 
-function getTypeScriptDateFnsModuleDefinition (fns) {
-  const definition = ['declare module \'date-fns\' {']
+function getTypeScriptDateFnsModuleDefinition (moduleSuffix, fns) {
+  const moduleName = `date-fns${moduleSuffix}`
+
+  const definition = [`declare module '${moduleName}' {`]
     .concat(fns.map(getTypeScriptFnDefinition).join('\n\n'))
     .concat('}')
     .join('\n')
 
   return {
-    name: 'date-fns',
+    name: moduleName,
     definition
   }
 }
 
-function getTypeScriptFnModuleDefinition (moduleSuffix, fn) {
+function getTypeScriptFnModuleDefinition (moduleSuffix, fnSuffix, isDefault, fn) {
   const name = fn.content.name
   const snakeCaseName = fn.file.snakeCaseName
-  const moduleName = `date-fns/${snakeCaseName}${moduleSuffix}`
+  const moduleName = `date-fns${moduleSuffix}/${snakeCaseName}${fnSuffix}`
 
   const definition = [`declare module '${moduleName}' {`]
-    .concat(`  import {${name}} from 'date-fns'`)
-    .concat(`  export = ${name}`)
+    .concat(`  import {${name}} from 'date-fns${moduleSuffix}'`)
+    .concat(`  export ${isDefault ? 'default' : '='} ${name}`)
     .concat('}')
     .join('\n')
 
@@ -158,11 +160,15 @@ function getTypeScriptFnDefinition (fn) {
     .join('\n')
 }
 
-function getTypeScriptLocaleModuleDefinition (moduleSuffix, locale) {
+function getTypeScriptLocaleModuleDefinition (moduleSuffix, localeSuffix, isDefault, locale) {
   const snakeCaseName = locale.snakeCaseName
-  const name = `locale/${snakeCaseName}${moduleSuffix}`
+  const name = `date-fns${moduleSuffix}/locale/${snakeCaseName}${localeSuffix}`
 
-  const definition = `declare module 'date-fns/${name}' {}`
+  const definition = [`declare module '${name}' {`]
+    .concat('  const locale: Locale')
+    .concat(`  export ${isDefault ? 'default' : '='} locale`)
+    .concat('}')
+    .join('\n')
 
   return {
     name,
@@ -171,25 +177,34 @@ function getTypeScriptLocaleModuleDefinition (moduleSuffix, locale) {
 }
 
 function generateTypeScriptTypings (fns, aliases, locales) {
-  const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition(fns)]
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '')))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/index')))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/index.js')))
+  const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition('', fns)]
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '', false)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index', false)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index.js', false)))
+    .map(module => module.definition)
+
+  const esModuleDefinitions = [getTypeScriptDateFnsModuleDefinition('/es', fns)]
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '', true)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '/index', true)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '/index.js', true)))
     .map(module => module.definition)
 
   const aliasDefinitions = aliases
     .map(getTypeAlias)
 
   const localeModuleDefinitions = []
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '')))
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/index')))
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/index.js')))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '', false)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index', false)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index.js', false)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '', true)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '/index', true)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '/index.js', true)))
     .map(module => module.definition)
-    .join('\n')
 
   const typingString = ['// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.']
     .concat(aliasDefinitions)
     .concat(moduleDefinitions)
+    .concat(esModuleDefinitions)
     .concat(localeModuleDefinitions)
     .join('\n\n')
 
