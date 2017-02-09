@@ -18,16 +18,21 @@ mkdir -p "$dir"
 # all non *.js files in place as expected
 babel src --source-root src --out-dir "$dir" --ignore test.js,benchmark.js --copy-files --quiet
 
-# Compile index
-babel index.js --out-file "$dir/index.js"
-
 # Copy ES (a.k.a. ES6, ES2016, ES2017, etc.) files
 
-# Copy the source code
-cp -r ./src "$dir/es"
+# Copy es/index.js
+cp ./src/es/index.js "$dir/es"
 
-# Copy index.js
-cp ./index.js "$dir/es"
+# Copy the source code
+for fnDir in `ls -d ./src/*/ | sed 's/\.\/src\///' | sed 's/\///'`
+do
+  if [ "$fnDir" == "es" ]
+  then
+    continue
+  fi
+
+  cp -r "./src/$fnDir" "$dir/es/$fnDir"
+done
 
 # Copy docs
 cp dist/date_fns_docs.json "$dir/docs.json"
@@ -47,16 +52,30 @@ done
 find "$dir" -type f -name "test.js" -delete
 find "$dir" -type f -name "benchmark.js" -delete
 
-# Copy TypeScript's sub_module_package.json to function directories
+# Copy TypeScript's sub_module_package.json to root directories
 for module in $dir/*/
 do
   module=${module%*/}
   cp scripts/sub_module_package.json "$module/package.json"
 done
 
-# Copy TypeScript's locale_package.json to locale directories
+# Copy TypeScript's sub_sub_module_package.json to locale directories
 for locale in $dir/locale/*/
 do
   locale=${locale%*/}
-  cp scripts/locale_package.json "$locale/package.json"
+  cp scripts/sub_sub_module_package.json "$locale/package.json"
+done
+
+# Copy TypeScript's sub_sub_module_package.json to es directories
+for esModule in $dir/es/*/
+do
+  esModule=${esModule%*/}
+  cp scripts/sub_sub_module_package.json "$esModule/package.json"
+done
+
+# Copy TypeScript's sub_sub_sub_module_package.json to es locale directories
+for esLocale in $dir/es/locale/*/
+do
+  esLocale=${esLocale%*/}
+  cp scripts/sub_sub_sub_module_package.json "$esLocale/package.json"
 done
