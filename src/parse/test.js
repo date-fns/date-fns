@@ -378,10 +378,10 @@ describe('parse', function () {
   context('only one value is provided', function () {
     describe('quarter', function () {
       it('takes the values of higher priority from baseDate', function () {
-        var dateString = '1'
+        var dateString = '2'
         var formatString = 'Q'
         var result = parse(dateString, formatString, baseDate)
-        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
     })
 
@@ -405,10 +405,10 @@ describe('parse', function () {
 
     describe('day of week', function () {
       it('takes the values of higher priority from baseDate', function () {
-        var dateString = '0'
+        var dateString = '1'
         var formatString = 'd'
         var result = parse(dateString, formatString, baseDate)
-        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
+        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
 
       it('allows to specify which day is the first day of the week', function () {
