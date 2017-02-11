@@ -1,9 +1,9 @@
-var setUTCDay = require('../set_utc_day/index.js')
-var setUTCISODay = require('../set_utc_iso_day/index.js')
-var setUTCISOWeek = require('../set_utc_iso_week/index.js')
-var setUTCISOYear = require('../set_utc_iso_year/index.js')
-var startOfUTCISOWeek = require('../start_of_utc_iso_week/index.js')
-var startOfUTCISOYear = require('../start_of_utc_iso_year/index.js')
+import setUTCDay from '../set_utc_day/index.js'
+import setUTCISODay from '../set_utc_iso_day/index.js'
+import setUTCISOWeek from '../set_utc_iso_week/index.js'
+import setUTCISOYear from '../set_utc_iso_year/index.js'
+import startOfUTCISOWeek from '../start_of_utc_iso_week/index.js'
+import startOfUTCISOYear from '../start_of_utc_iso_year/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -132,4 +132,4 @@ var units = {
   }
 }
 
-module.exports = units
+export default units

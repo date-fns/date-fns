@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var min = require('./')
-var moment = require('moment')
+import min from '.'
+import moment from 'moment'
 
 suite('min', function () {
   benchmark('date-fns', function () {

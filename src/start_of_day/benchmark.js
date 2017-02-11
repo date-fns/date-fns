@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var startOfDay = require('./')
-var moment = require('moment')
+import startOfDay from '.'
+import moment from 'moment'
 
 suite('startOfDay', function () {
   benchmark('date-fns', function () {

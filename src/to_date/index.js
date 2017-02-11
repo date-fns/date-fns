@@ -1,4 +1,4 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -41,6 +41,7 @@ var patterns = {
 }
 
 /**
+ * @name toDate
  * @category Common Helpers
  * @summary Convert the given argument to an instance of Date.
  *
@@ -73,7 +74,7 @@ var patterns = {
  * var result = toDate('+02014101', {additionalDigits: 1})
  * //=> Fri Apr 11 2014 00:00:00
  */
-function toDate (argument, options) {
+export default function toDate (argument, options) {
   // Clone the date
   if (isDate(argument)) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
@@ -315,5 +316,3 @@ function dayOfISOYear (isoYear, week, day) {
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
-
-module.exports = toDate

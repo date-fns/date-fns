@@ -1,6 +1,34 @@
 // @flow
 // This file is generated automatically by `scripts/build_typings.js`. Please, don't change it.
 
+type Interval = {
+  start: Date | string | number,
+  end: Date | string | number
+}
+
+type Options = {
+  weekStartsOn?: number,
+  additionalDigits?: 0 | 1 | 2,
+  locale?: Locale,
+  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  partialMethod?: 'floor' | 'ceil' | 'round'
+}
+
+type Locale = {
+  distanceInWords?: {
+    localize?: Function
+  },
+  format?: {
+    formatters?: Object,
+    formattingTokensRegExp?: RegExp
+  },
+  parse?: {
+    units?: Object,
+    parsers?: Object,
+    parsingTokensRegExp?: RegExp
+  }
+}
+
 declare module.exports: (
   date: Date | string | number,
   options?: {

@@ -1,6 +1,7 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 /**
+ * @name isValid
  * @category Common Helpers
  * @summary Is the given date valid?
  *
@@ -25,7 +26,7 @@ var isDate = require('../is_date/index.js')
  * var result = isValid(new Date(''))
  * //=> false
  */
-function isValid (date, options) {
+export default function isValid (date, options) {
   if (isDate(date, options)) {
     return !isNaN(date)
   } else {
@@ -33,4 +34,3 @@ function isValid (date, options) {
   }
 }
 
-module.exports = isValid

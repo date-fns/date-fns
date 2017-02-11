@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfHour
  * @category Hour Helpers
  * @summary Return the start of an hour for the given date.
  *
@@ -17,10 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:00:00
  */
-function startOfHour (dirtyDate, options) {
+export default function startOfHour (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setMinutes(0, 0, 0)
   return date
 }
 
-module.exports = startOfHour

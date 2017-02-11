@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
-var compareDesc = require('../compare_desc/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
+import compareDesc from '../compare_desc/index.js'
 
 /**
+ * @name differenceInDays
  * @category Day Helpers
  * @summary Get the number of full days between the given dates.
  *
@@ -23,7 +24,7 @@ var compareDesc = require('../compare_desc/index.js')
  * )
  * //=> 365
  */
-function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -37,4 +38,3 @@ function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
   return sign * (difference - isLastDayNotFull)
 }
 
-module.exports = differenceInDays

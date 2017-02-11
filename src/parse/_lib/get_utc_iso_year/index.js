@@ -1,9 +1,9 @@
-var toDate = require('../../../to_date/index.js')
-var startOfUTCISOWeek = require('../start_of_utc_iso_week/index.js')
+import toDate from '../../../to_date/index.js'
+import startOfUTCISOWeek from '../start_of_utc_iso_week/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-function getUTCISOYear (dirtyDate, options) {
+export default function getUTCISOYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getUTCFullYear()
 
@@ -25,5 +25,3 @@ function getUTCISOYear (dirtyDate, options) {
     return year - 1
   }
 }
-
-module.exports = getUTCISOYear

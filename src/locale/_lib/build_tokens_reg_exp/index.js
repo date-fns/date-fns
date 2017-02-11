@@ -6,7 +6,7 @@ var commonTokenKeys = [
   'Z', 'ZZ', 'X', 'x'
 ]
 
-function buildTokensRegExp (tokensObject) {
+export default function buildTokensRegExp (tokensObject) {
   var tokenKeys = []
   for (var key in tokensObject) {
     if (tokensObject.hasOwnProperty(key)) {
@@ -24,5 +24,3 @@ function buildTokensRegExp (tokensObject) {
 
   return tokensRegExp
 }
-
-module.exports = buildTokensRegExp

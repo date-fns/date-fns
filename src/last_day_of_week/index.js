@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfWeek
  * @category Week Helpers
  * @summary Return the last day of a week for the given date.
  *
@@ -23,7 +24,7 @@ var toDate = require('../to_date/index.js')
  * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-function lastDayOfWeek (dirtyDate, options) {
+export default function lastDayOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
   var date = toDate(dirtyDate, options)
@@ -34,5 +35,3 @@ function lastDayOfWeek (dirtyDate, options) {
   date.setDate(date.getDate() + diff)
   return date
 }
-
-module.exports = lastDayOfWeek

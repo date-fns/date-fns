@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getISODay
  * @category Weekday Helpers
  * @summary Get the day of the ISO week of the given date.
  *
@@ -19,7 +20,7 @@ var toDate = require('../to_date/index.js')
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-function getISODay (dirtyDate, options) {
+export default function getISODay (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var day = date.getDay()
 
@@ -30,4 +31,3 @@ function getISODay (dirtyDate, options) {
   return day
 }
 
-module.exports = getISODay

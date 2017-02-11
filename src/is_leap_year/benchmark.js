@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isLeapYear = require('./')
-var moment = require('moment')
+import isLeapYear from '.'
+import moment from 'moment'
 
 suite('isLeapYear', function () {
   benchmark('date-fns', function () {

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfMonth
  * @category Month Helpers
  * @summary Return the end of a month for the given date.
  *
@@ -17,7 +18,7 @@ var toDate = require('../to_date/index.js')
  * var result = endOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-function endOfMonth (dirtyDate, options) {
+export default function endOfMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)
@@ -25,4 +26,3 @@ function endOfMonth (dirtyDate, options) {
   return date
 }
 
-module.exports = endOfMonth

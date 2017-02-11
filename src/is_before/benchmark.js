@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isBefore = require('./')
-var moment = require('moment')
+import isBefore from '.'
+import moment from 'moment'
 
 suite('isBefore', function () {
   benchmark('date-fns', function () {

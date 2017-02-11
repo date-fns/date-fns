@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var getISOWeek = require('./')
-var moment = require('moment')
+import getISOWeek from '.'
+import moment from 'moment'
 
 suite('getISOWeek', function () {
   benchmark('date-fns', function () {

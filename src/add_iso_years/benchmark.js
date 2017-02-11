@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var addISOYears = require('./')
+import addISOYears from '.'
 
 suite('addISOYears', function () {
   benchmark('date-fns', function () {

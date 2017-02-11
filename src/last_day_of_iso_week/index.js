@@ -1,7 +1,8 @@
-var lastDayOfWeek = require('../last_day_of_week/index.js')
-var cloneObject = require('../_lib/clone_object/index.js')
+import lastDayOfWeek from '../last_day_of_week/index.js'
+import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name lastDayOfISOWeek
  * @category ISO Week Helpers
  * @summary Return the last day of an ISO week for the given date.
  *
@@ -20,10 +21,9 @@ var cloneObject = require('../_lib/clone_object/index.js')
  * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 00:00:00
  */
-function lastDayOfISOWeek (dirtyDate, options) {
+export default function lastDayOfISOWeek (dirtyDate, options) {
   var lastDayOfWeekOptions = cloneObject(options)
   lastDayOfWeekOptions.weekStartsOn = 1
   return lastDayOfWeek(dirtyDate, lastDayOfWeekOptions)
 }
 
-module.exports = lastDayOfISOWeek

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfWeek
  * @category Week Helpers
  * @summary Return the end of a week for the given date.
  *
@@ -23,7 +24,7 @@ var toDate = require('../to_date/index.js')
  * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-function endOfWeek (dirtyDate, options) {
+export default function endOfWeek (dirtyDate, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
 
   var date = toDate(dirtyDate, options)
@@ -34,5 +35,3 @@ function endOfWeek (dirtyDate, options) {
   date.setHours(23, 59, 59, 999)
   return date
 }
-
-module.exports = endOfWeek

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getDay
  * @category Weekday Helpers
  * @summary Get the day of the week of the given date.
  *
@@ -16,10 +17,9 @@ var toDate = require('../to_date/index.js')
  * var result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-function getDay (dirtyDate, options) {
+export default function getDay (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var day = date.getDay()
   return day
 }
 
-module.exports = getDay

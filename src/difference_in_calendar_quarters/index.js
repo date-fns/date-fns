@@ -1,7 +1,8 @@
-var getQuarter = require('../get_quarter/index.js')
-var toDate = require('../to_date/index.js')
+import getQuarter from '../get_quarter/index.js'
+import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarQuarters
  * @category Quarter Helpers
  * @summary Get the number of calendar quarters between the given dates.
  *
@@ -21,7 +22,7 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> 3
  */
-function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -31,4 +32,3 @@ function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 4 + quarterDiff
 }
 
-module.exports = differenceInCalendarQuarters

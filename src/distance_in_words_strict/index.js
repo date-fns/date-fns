@@ -1,13 +1,14 @@
-var compareDesc = require('../compare_desc/index.js')
-var toDate = require('../to_date/index.js')
-var differenceInSeconds = require('../difference_in_seconds/index.js')
-var enLocale = require('../locale/en/index.js')
+import compareDesc from '../compare_desc/index.js'
+import toDate from '../to_date/index.js'
+import differenceInSeconds from '../difference_in_seconds/index.js'
+import enLocale from '../locale/en/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_YEAR = 525600
 
 /**
+ * @name distanceInWordsStrict
  * @category Common Helpers
  * @summary Return the distance between the given dates in words.
  *
@@ -83,7 +84,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = distanceInWordsStrict(
  *   new Date(2016, 7, 1),
  *   new Date(2015, 0, 1),
@@ -91,7 +92,7 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
+export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   options = options || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
@@ -170,5 +171,3 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
 
   throw new Error('Unknown unit: ' + unit)
 }
-
-module.exports = distanceInWordsStrict

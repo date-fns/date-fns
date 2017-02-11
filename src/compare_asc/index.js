@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name compareAsc
  * @category Common Helpers
  * @summary Compare the two dates and return -1, 0 or 1.
  *
@@ -34,7 +35,7 @@ var toDate = require('../to_date/index.js')
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
+export default function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
   var dateRight = toDate(dirtyDateRight, options)
@@ -49,4 +50,3 @@ function compareAsc (dirtyDateLeft, dirtyDateRight, options) {
   }
 }
 
-module.exports = compareAsc

@@ -1,7 +1,8 @@
-var toDate = require('../to_date/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import toDate from '../to_date/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
+ * @name getISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the ISO week-numbering year of the given date.
  *
@@ -20,7 +21,7 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-function getISOYear (dirtyDate, options) {
+export default function getISOYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
 
@@ -43,4 +44,3 @@ function getISOYear (dirtyDate, options) {
   }
 }
 
-module.exports = getISOYear

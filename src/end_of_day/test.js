@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var endOfDay = require('./')
+import assert from 'power-assert'
+import endOfDay from '.'
 
 describe('endOfDay', function () {
   it('returns the date with the time setted to 23:59:59.999', function () {

@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var addWeeks = require('./')
-var moment = require('moment')
+import addWeeks from '.'
+import moment from 'moment'
 
 suite('addWeeks', function () {
   benchmark('date-fns', function () {

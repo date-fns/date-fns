@@ -1,6 +1,7 @@
-var differenceInDays = require('../difference_in_days/index.js')
+import differenceInDays from '../difference_in_days/index.js'
 
 /**
+ * @name differenceInWeeks
  * @category Week Helpers
  * @summary Get the number of full weeks between the given dates.
  *
@@ -20,9 +21,8 @@ var differenceInDays = require('../difference_in_days/index.js')
  * )
  * //=> 2
  */
-function differenceInWeeks (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInWeeks (dirtyDateLeft, dirtyDateRight, options) {
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight, options) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInWeeks
