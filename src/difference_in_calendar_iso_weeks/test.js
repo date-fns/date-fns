@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var differenceInCalendarISOWeeks = require('./')
+import assert from 'power-assert'
+import differenceInCalendarISOWeeks from '.'
 
 describe('differenceInCalendarISOWeeks', function () {
   it('returns the number of calendar ISO weeks between the given dates', function () {

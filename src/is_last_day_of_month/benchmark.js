@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isLastDayOfMonth = require('./')
+import isLastDayOfMonth from '.'
 
 suite('isLastDayOfMonth', function () {
   benchmark('date-fns', function () {

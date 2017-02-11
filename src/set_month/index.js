@@ -1,7 +1,8 @@
-var toDate = require('../to_date/index.js')
-var getDaysInMonth = require('../get_days_in_month/index.js')
+import toDate from '../to_date/index.js'
+import getDaysInMonth from '../get_days_in_month/index.js'
 
 /**
+ * @name setMonth
  * @category Month Helpers
  * @summary Set the month to the given date.
  *
@@ -18,7 +19,7 @@ var getDaysInMonth = require('../get_days_in_month/index.js')
  * var result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-function setMonth (dirtyDate, dirtyMonth, dirtyOptions) {
+export default function setMonth (dirtyDate, dirtyMonth, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var month = Number(dirtyMonth)
   var year = date.getFullYear()
@@ -33,5 +34,3 @@ function setMonth (dirtyDate, dirtyMonth, dirtyOptions) {
   date.setMonth(month, Math.min(day, daysInMonth))
   return date
 }
-
-module.exports = setMonth

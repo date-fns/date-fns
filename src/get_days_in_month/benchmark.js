@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var getDaysInMonth = require('./')
-var moment = require('moment')
+import getDaysInMonth from '.'
+import moment from 'moment'
 
 suite('getDaysInMonth', function () {
   benchmark('date-fns', function () {

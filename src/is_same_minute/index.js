@@ -1,6 +1,7 @@
-var startOfMinute = require('../start_of_minute/index.js')
+import startOfMinute from '../start_of_minute/index.js'
 
 /**
+ * @name isSameMinute
  * @category Minute Helpers
  * @summary Are the given dates in the same minute?
  *
@@ -21,11 +22,9 @@ var startOfMinute = require('../start_of_minute/index.js')
  * )
  * //=> true
  */
-function isSameMinute (dirtyDateLeft, dirtyDateRight, options) {
+export default function isSameMinute (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft, options)
   var dateRightStartOfMinute = startOfMinute(dirtyDateRight, options)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }
-
-module.exports = isSameMinute

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var min = require('./')
+import assert from 'power-assert'
+import min from '.'
 
 describe('min', function () {
   it('returns the earliest date', function () {

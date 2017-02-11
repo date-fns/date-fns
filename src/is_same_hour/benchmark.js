@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isSameHour = require('./')
-var moment = require('moment')
+import isSameHour from '.'
+import moment from 'moment'
 
 suite('isSameHour', function () {
   benchmark('date-fns', function () {

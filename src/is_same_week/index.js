@@ -1,6 +1,7 @@
-var startOfWeek = require('../start_of_week/index.js')
+import startOfWeek from '../start_of_week/index.js'
 
 /**
+ * @name isSameWeek
  * @category Week Helpers
  * @summary Are the given dates in the same week?
  *
@@ -31,11 +32,9 @@ var startOfWeek = require('../start_of_week/index.js')
  * )
  * //=> false
  */
-function isSameWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function isSameWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }
-
-module.exports = isSameWeek

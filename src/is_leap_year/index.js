@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name isLeapYear
  * @category Year Helpers
  * @summary Is the given date in the leap year?
  *
@@ -16,10 +17,8 @@ var toDate = require('../to_date/index.js')
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-function isLeapYear (dirtyDate, options) {
+export default function isLeapYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }
-
-module.exports = isLeapYear

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var differenceInMonths = require('./')
+import assert from 'power-assert'
+import differenceInMonths from '.'
 
 describe('differenceInMonths', function () {
   it('returns the number of full months between the given dates', function () {

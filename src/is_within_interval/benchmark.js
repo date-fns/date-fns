@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isWithinInterval = require('./')
-var moment = require('moment')
+import isWithinInterval from '.'
+import moment from 'moment'
 
 suite('isWithinInterval', function () {
   benchmark('date-fns', function () {

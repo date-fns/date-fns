@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name eachDayOfInterval
  * @category Interval Helpers
  * @summary Return the array of dates within the specified time interval.
  *
@@ -26,7 +27,7 @@ var toDate = require('../to_date/index.js')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDayOfInterval (dirtyInterval, options) {
+export default function eachDayOfInterval (dirtyInterval, options) {
   var startDate = toDate(dirtyInterval.start, options)
   var endDate = toDate(dirtyInterval.end, options)
 
@@ -48,5 +49,3 @@ function eachDayOfInterval (dirtyInterval, options) {
 
   return dates
 }
-
-module.exports = eachDayOfInterval

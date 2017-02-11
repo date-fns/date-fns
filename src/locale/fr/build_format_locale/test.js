@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var buildFormatLocale = require('./')
+import assert from 'power-assert'
+import buildFormatLocale from '.'
 
 describe('fr locale > buildFormatLocale', function () {
   it('returns an object', function () {
@@ -298,7 +298,7 @@ describe('fr locale > buildFormatLocale', function () {
 
     describe('Do MMM & Do MMMM', function () {
       it('returns ordinal for day of month 1', function () {
-        var january1st = new Date(2017, 0 /* Jan */, 1)
+        var january1st = new Date(Date.UTC(2017, 0 /* Jan */, 1))
         var formatters = {
           D: function () {
             return 1
@@ -312,7 +312,7 @@ describe('fr locale > buildFormatLocale', function () {
       })
 
       it('returns cardinal for day of month other than 1', function () {
-        var january2nd = new Date(2017, 0 /* Jan */, 2)
+        var january2nd = new Date(Date.UTC(2017, 0 /* Jan */, 2))
         var formatters = {
           D: function () {
             return 2

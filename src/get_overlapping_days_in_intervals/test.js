@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var getOverlappingDaysInIntervals = require('./')
+import assert from 'power-assert'
+import getOverlappingDaysInIntervals from '.'
 
 describe('getOverlappingDaysInIntervals', function () {
   var initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)

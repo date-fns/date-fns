@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getHours
  * @category Hour Helpers
  * @summary Get the hours of the given date.
  *
@@ -16,10 +17,8 @@ var toDate = require('../to_date/index.js')
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-function getHours (dirtyDate, options) {
+export default function getHours (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var hours = date.getHours()
   return hours
 }
-
-module.exports = getHours

@@ -1,6 +1,6 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default function buildFormatLocale () {
   var months3char = ['јан', 'фев', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'ное', 'дек']
   var monthsFull = ['јануари', 'февруари', 'март', 'април', 'мај', 'јуни', 'јули', 'август', 'септември', 'октомври', 'ноември', 'декември']
   var weekdays2char = ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са']
@@ -80,4 +80,3 @@ function ordinal (number) {
   return number + '-ти'
 }
 
-module.exports = buildFormatLocale

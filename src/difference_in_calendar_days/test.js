@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var differenceInCalendarDays = require('./')
+import assert from 'power-assert'
+import differenceInCalendarDays from '.'
 
 describe('differenceInCalendarDays', function () {
   it('returns the number of calendar days between the given dates', function () {

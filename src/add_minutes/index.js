@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name addMinutes
  * @category Minute Helpers
  * @summary Add the specified number of minutes to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
-function addMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var amount = Number(dirtyAmount)
   date.setMinutes(date.getMinutes() + amount)
   return date
 }
-
-module.exports = addMinutes

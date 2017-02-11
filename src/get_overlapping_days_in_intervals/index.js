@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 
 /**
+ * @name getOverlappingDaysInIntervals
  * @category Interval Helpers
  * @summary Get the number of days that overlap in two time intervals
  *
@@ -31,7 +32,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
-function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyIntervalRight, options) {
+export default function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyIntervalRight, options) {
   var leftStartTime = toDate(dirtyIntervalLeft.start, options).getTime()
   var leftEndTime = toDate(dirtyIntervalLeft.end, options).getTime()
   var rightStartTime = toDate(dirtyIntervalRight.start, options).getTime()
@@ -59,5 +60,3 @@ function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyIntervalRight, o
 
   return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
 }
-
-module.exports = getOverlappingDaysInIntervals

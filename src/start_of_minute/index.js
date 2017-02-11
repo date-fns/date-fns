@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfMinute
  * @category Minute Helpers
  * @summary Return the start of a minute for the given date.
  *
@@ -17,10 +18,8 @@ var toDate = require('../to_date/index.js')
  * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-function startOfMinute (dirtyDate, options) {
+export default function startOfMinute (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setSeconds(0, 0)
   return date
 }
-
-module.exports = startOfMinute

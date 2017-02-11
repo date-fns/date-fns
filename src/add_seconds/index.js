@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name addSeconds
  * @category Second Helpers
  * @summary Add the specified number of seconds to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-function addSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var amount = Number(dirtyAmount)
   date.setSeconds(date.getSeconds() + amount)
   return date
 }
-
-module.exports = addSeconds

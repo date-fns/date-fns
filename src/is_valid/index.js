@@ -1,6 +1,7 @@
-var isDate = require('../is_date/index.js')
+import isDate from '../is_date/index.js'
 
 /**
+ * @name isValid
  * @category Common Helpers
  * @summary Is the given date valid?
  *
@@ -25,12 +26,10 @@ var isDate = require('../is_date/index.js')
  * var result = isValid(new Date(''))
  * //=> false
  */
-function isValid (dirtyDate, dirtyOptions) {
+export default function isValid (dirtyDate, dirtyOptions) {
   if (isDate(dirtyDate, dirtyOptions)) {
     return !isNaN(dirtyDate)
   } else {
     throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
   }
 }
-
-module.exports = isValid

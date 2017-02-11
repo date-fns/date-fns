@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfSecond
  * @category Second Helpers
  * @summary Return the end of a second for the given date.
  *
@@ -17,10 +18,8 @@ var toDate = require('../to_date/index.js')
  * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.999
  */
-function endOfSecond (dirtyDate, options) {
+export default function endOfSecond (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setMilliseconds(999)
   return date
 }
-
-module.exports = endOfSecond
