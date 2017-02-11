@@ -206,12 +206,12 @@ describe('format', function () {
     })
 
     it('12 am', function () {
-      var date = new Date(1986, 3 /* Apr */, 4, 0, 0, 0, 900)
+      var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
       assert(format(date, 'h:mm a') === '12:00 am')
     })
 
     it('12 a.m.', function () {
-      var date = new Date(1986, 3 /* Apr */, 4, 0, 0, 0, 900)
+      var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
       assert(format(date, 'h:mm aa') === '12:00 a.m.')
     })
 
@@ -226,8 +226,8 @@ describe('format', function () {
     })
 
     it('cardinal numbers with leading zeros', function () {
-      var date = new Date(1986, 3 /* Apr */, 4, 1, 0, 0, 900)
-      assert(format(date, 'HH hh') === '01 01')
+      var date = new Date(1986, 3 /* Apr */, 4, 5, 0, 0, 900)
+      assert(format(date, 'HH hh') === '05 05')
     })
 
     it('all hour variants', function () {
