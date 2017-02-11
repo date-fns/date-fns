@@ -1,6 +1,7 @@
-var differenceInMonths = require('../difference_in_months/index.js')
+import differenceInMonths from '../difference_in_months/index.js'
 
 /**
+ * @name differenceInQuarters
  * @category Quarter Helpers
  * @summary Get the number of full quarters between the given dates.
  *
@@ -20,9 +21,8 @@ var differenceInMonths = require('../difference_in_months/index.js')
  * )
  * //=> 2
  */
-function differenceInQuarters (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInQuarters (dirtyDateLeft, dirtyDateRight, options) {
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight, options) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInQuarters

@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var differenceInCalendarYears = require('./')
+import differenceInCalendarYears from '.'
 
 suite('differenceInCalendarYears', function () {
   benchmark('date-fns', function () {

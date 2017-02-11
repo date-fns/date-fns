@@ -1,6 +1,7 @@
-var addWeeks = require('../add_weeks/index.js')
+import addWeeks from '../add_weeks/index.js'
 
 /**
+ * @name subWeeks
  * @category Week Helpers
  * @summary Subtract the specified number of weeks from the given date.
  *
@@ -17,8 +18,7 @@ var addWeeks = require('../add_weeks/index.js')
  * var result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-function subWeeks (dirtyDate, amount, options) {
+export default function subWeeks (dirtyDate, amount, options) {
   return addWeeks(dirtyDate, -amount, options)
 }
 
-module.exports = subWeeks

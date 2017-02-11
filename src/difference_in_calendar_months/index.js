@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarMonths
  * @category Month Helpers
  * @summary Get the number of calendar months between the given dates.
  *
@@ -20,7 +21,7 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> 8
  */
-function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -30,4 +31,3 @@ function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight, options) {
   return yearDiff * 12 + monthDiff
 }
 
-module.exports = differenceInCalendarMonths

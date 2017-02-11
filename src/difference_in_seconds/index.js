@@ -1,6 +1,7 @@
-var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
+import differenceInMilliseconds from '../difference_in_milliseconds/index.js'
 
 /**
+ * @name differenceInSeconds
  * @category Second Helpers
  * @summary Get the number of seconds between the given dates.
  *
@@ -21,9 +22,8 @@ var differenceInMilliseconds = require('../difference_in_milliseconds/index.js')
  * )
  * //=> 12
  */
-function differenceInSeconds (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInSeconds (dirtyDateLeft, dirtyDateRight, options) {
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, options) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
 
-module.exports = differenceInSeconds

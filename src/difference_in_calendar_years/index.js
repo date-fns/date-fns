@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name differenceInCalendarYears
  * @category Year Helpers
  * @summary Get the number of calendar years between the given dates.
  *
@@ -20,11 +21,10 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> 2
  */
-function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
   return dateRight.getFullYear() - dateLeft.getFullYear()
 }
 
-module.exports = differenceInCalendarYears

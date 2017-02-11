@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var startOfISOYear = require('./')
+import startOfISOYear from '.'
 
 suite('startOfISOYear', function () {
   benchmark('date-fns', function () {

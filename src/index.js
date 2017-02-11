@@ -1,3 +1,5 @@
+// This file is generated automatically by `scripts/build_index.js`. Please, don't change it.
+
 module.exports = {
   addDays: require('./add_days/index.js'),
   addHours: require('./add_hours/index.js'),
@@ -9,7 +11,7 @@ module.exports = {
   addSeconds: require('./add_seconds/index.js'),
   addWeeks: require('./add_weeks/index.js'),
   addYears: require('./add_years/index.js'),
-  areRangesOverlapping: require('./are_ranges_overlapping/index.js'),
+  areIntervalsOverlapping: require('./are_intervals_overlapping/index.js'),
   closestIndexTo: require('./closest_index_to/index.js'),
   closestTo: require('./closest_to/index.js'),
   compareAsc: require('./compare_asc/index.js'),
@@ -33,7 +35,7 @@ module.exports = {
   differenceInYears: require('./difference_in_years/index.js'),
   distanceInWords: require('./distance_in_words/index.js'),
   distanceInWordsStrict: require('./distance_in_words_strict/index.js'),
-  eachDay: require('./each_day/index.js'),
+  eachDayOfInterval: require('./each_day_of_interval/index.js'),
   endOfDay: require('./end_of_day/index.js'),
   endOfHour: require('./end_of_hour/index.js'),
   endOfISOWeek: require('./end_of_iso_week/index.js'),
@@ -58,7 +60,7 @@ module.exports = {
   getMilliseconds: require('./get_milliseconds/index.js'),
   getMinutes: require('./get_minutes/index.js'),
   getMonth: require('./get_month/index.js'),
-  getOverlappingDaysInRanges: require('./get_overlapping_days_in_ranges/index.js'),
+  getOverlappingDaysInIntervals: require('./get_overlapping_days_in_intervals/index.js'),
   getQuarter: require('./get_quarter/index.js'),
   getSeconds: require('./get_seconds/index.js'),
   getTime: require('./get_time/index.js'),
@@ -89,7 +91,7 @@ module.exports = {
   isValid: require('./is_valid/index.js'),
   isWednesday: require('./is_wednesday/index.js'),
   isWeekend: require('./is_weekend/index.js'),
-  isWithinRange: require('./is_within_range/index.js'),
+  isWithinInterval: require('./is_within_interval/index.js'),
   lastDayOfISOWeek: require('./last_day_of_iso_week/index.js'),
   lastDayOfISOYear: require('./last_day_of_iso_year/index.js'),
   lastDayOfMonth: require('./last_day_of_month/index.js'),
@@ -131,5 +133,6 @@ module.exports = {
   subQuarters: require('./sub_quarters/index.js'),
   subSeconds: require('./sub_seconds/index.js'),
   subWeeks: require('./sub_weeks/index.js'),
-  subYears: require('./sub_years/index.js')
+  subYears: require('./sub_years/index.js'),
+  toDate: require('./to_date/index.js')
 }

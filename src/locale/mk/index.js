@@ -1,5 +1,5 @@
-var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index.js')
-var buildFormatLocale = require('./build_format_locale/index.js')
+import buildDistanceInWordsLocale from './build_distance_in_words_locale/index.js'
+import buildFormatLocale from './build_format_locale/index.js'
 
 /**
  * @type {Locale}
@@ -7,7 +7,9 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Macedonian locale.
  * @author Petar Vlahu [@vlahupetar]{@link https://github.com/vlahupetar}
  */
-module.exports = {
+const mkLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
+
+export default mkLocale

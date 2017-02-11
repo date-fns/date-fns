@@ -1,13 +1,14 @@
-var toDate = require('../to_date/index.js')
-var isValid = require('../is_valid/index.js')
-var enLocale = require('../locale/en/index.js')
-var cloneObject = require('../_lib/clone_object/index.js')
-var addUTCMinutes = require('./_lib/add_utc_minutes/index.js')
-var getUTCDayOfYear = require('./_lib/get_utc_day_of_year/index.js')
-var getUTCISOWeek = require('./_lib/get_utc_iso_week/index.js')
-var getUTCISOYear = require('./_lib/get_utc_iso_year/index.js')
+import toDate from '../to_date/index.js'
+import isValid from '../is_valid/index.js'
+import enLocale from '../locale/en/index.js'
+import cloneObject from '../_lib/clone_object/index.js'
+import addUTCMinutes from './_lib/add_utc_minutes/index.js'
+import getUTCDayOfYear from './_lib/get_utc_day_of_year/index.js'
+import getUTCISOWeek from './_lib/get_utc_iso_week/index.js'
+import getUTCISOYear from './_lib/get_utc_iso_year/index.js'
 
 /**
+ * @name format
  * @category Common Helpers
  * @summary Format the date.
  *
@@ -83,7 +84,7 @@ var getUTCISOYear = require('./_lib/get_utc_iso_year/index.js')
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = format(
  *   new Date(2014, 6, 2),
  *   'Do [de] MMMM YYYY',
@@ -91,7 +92,7 @@ var getUTCISOYear = require('./_lib/get_utc_iso_year/index.js')
  * )
  * //=> '2-a de julio 2014'
  */
-function format (dirtyDate, formatStr, options) {
+export default function format (dirtyDate, formatStr, options) {
   options = options || {}
 
   var locale = options.locale
@@ -343,4 +344,3 @@ function addLeadingZeros (number, targetLength) {
   return output
 }
 
-module.exports = format

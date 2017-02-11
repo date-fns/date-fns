@@ -1,4 +1,4 @@
-function buildDistanceInWordsLocale () {
+export default function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: 'помалку од секунда',
@@ -96,4 +96,3 @@ function buildDistanceInWordsLocale () {
   }
 }
 
-module.exports = buildDistanceInWordsLocale

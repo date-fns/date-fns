@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name endOfDay
  * @category Day Helpers
  * @summary Return the end of a day for the given date.
  *
@@ -17,10 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = endOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 23:59:59.999
  */
-function endOfDay (dirtyDate, options) {
+export default function endOfDay (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   date.setHours(23, 59, 59, 999)
   return date
 }
 
-module.exports = endOfDay

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setSeconds
  * @category Second Helpers
  * @summary Set the seconds to the given date.
  *
@@ -17,10 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-function setSeconds (dirtyDate, seconds, options) {
+export default function setSeconds (dirtyDate, seconds, options) {
   var date = toDate(dirtyDate, options)
   date.setSeconds(seconds)
   return date
 }
 
-module.exports = setSeconds

@@ -1,7 +1,8 @@
-var getISOYear = require('../get_iso_year/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import getISOYear from '../get_iso_year/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
+ * @name endOfISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Return the end of an ISO week-numbering year for the given date.
  *
@@ -21,7 +22,7 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * var result = endOfISOYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
-function endOfISOYear (dirtyDate, options) {
+export default function endOfISOYear (dirtyDate, options) {
   var year = getISOYear(dirtyDate, options)
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
@@ -31,4 +32,3 @@ function endOfISOYear (dirtyDate, options) {
   return date
 }
 
-module.exports = endOfISOYear

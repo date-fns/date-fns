@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name compareDesc
  * @category Common Helpers
  * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
  *
@@ -34,7 +35,7 @@ var toDate = require('../to_date/index.js')
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
+export default function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
   var dateRight = toDate(dirtyDateRight, options)
@@ -49,4 +50,3 @@ function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
   }
 }
 
-module.exports = compareDesc

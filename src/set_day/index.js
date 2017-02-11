@@ -1,7 +1,8 @@
-var toDate = require('../to_date/index.js')
-var addDays = require('../add_days/index.js')
+import toDate from '../to_date/index.js'
+import addDays from '../add_days/index.js'
 
 /**
+ * @name setDay
  * @category Weekday Helpers
  * @summary Set the day of the week to the given date.
  *
@@ -24,7 +25,7 @@ var addDays = require('../add_days/index.js')
  * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-function setDay (dirtyDate, day, options) {
+export default function setDay (dirtyDate, day, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
   var date = toDate(dirtyDate, options)
   var currentDay = date.getDay()
@@ -35,5 +36,3 @@ function setDay (dirtyDate, day, options) {
   var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
   return addDays(date, diff, options)
 }
-
-module.exports = setDay

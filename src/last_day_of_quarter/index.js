@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfQuarter
  * @category Quarter Helpers
  * @summary Return the last day of a year quarter for the given date.
  *
@@ -17,7 +18,7 @@ var toDate = require('../to_date/index.js')
  * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-function lastDayOfQuarter (dirtyDate, options) {
+export default function lastDayOfQuarter (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
@@ -26,4 +27,3 @@ function lastDayOfQuarter (dirtyDate, options) {
   return date
 }
 
-module.exports = lastDayOfQuarter

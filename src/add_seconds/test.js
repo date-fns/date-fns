@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var addSeconds = require('./')
+import assert from 'power-assert'
+import addSeconds from '.'
 
 describe('addSeconds', function () {
   it('adds the given number of seconds', function () {

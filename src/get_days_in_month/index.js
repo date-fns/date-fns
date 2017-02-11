@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getDaysInMonth
  * @category Month Helpers
  * @summary Get the number of days in a month of the given date.
  *
@@ -16,7 +17,7 @@ var toDate = require('../to_date/index.js')
  * var result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-function getDaysInMonth (dirtyDate, options) {
+export default function getDaysInMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()
@@ -26,4 +27,3 @@ function getDaysInMonth (dirtyDate, options) {
   return lastDayOfMonth.getDate()
 }
 
-module.exports = getDaysInMonth

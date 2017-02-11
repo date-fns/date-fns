@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name addMilliseconds
  * @category Millisecond Helpers
  * @summary Add the specified number of milliseconds to the given date.
  *
@@ -17,10 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:30.750
  */
-function addMilliseconds (dirtyDate, amount, options) {
+export default function addMilliseconds (dirtyDate, amount, options) {
   var date = toDate(dirtyDate, options)
   date.setMilliseconds(date.getMilliseconds() + amount)
   return date
 }
 
-module.exports = addMilliseconds

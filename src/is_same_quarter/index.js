@@ -1,6 +1,7 @@
-var startOfQuarter = require('../start_of_quarter/index.js')
+import startOfQuarter from '../start_of_quarter/index.js'
 
 /**
+ * @name isSameQuarter
  * @category Quarter Helpers
  * @summary Are the given dates in the same year quarter?
  *
@@ -20,11 +21,10 @@ var startOfQuarter = require('../start_of_quarter/index.js')
  * )
  * //=> true
  */
-function isSameQuarter (dirtyDateLeft, dirtyDateRight, options) {
+export default function isSameQuarter (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, options)
   var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight, options)
 
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }
 
-module.exports = isSameQuarter

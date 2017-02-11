@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var subDays = require('./')
-var moment = require('moment')
+import subDays from '.'
+import moment from 'moment'
 
 suite('subDays', function () {
   benchmark('date-fns', function () {
