@@ -1,4 +1,4 @@
-function buildDistanceInWordsLocale () {
+export default function buildDistanceInWordsLocale () {
   function futureSeconds (text) {
     return text.replace(/sekuntia?/, 'sekunnin')
   }
@@ -132,5 +132,3 @@ function buildDistanceInWordsLocale () {
     localize: localize
   }
 }
-
-module.exports = buildDistanceInWordsLocale

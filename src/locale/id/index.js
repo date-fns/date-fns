@@ -1,5 +1,5 @@
-var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index.js')
-var buildFormatLocale = require('./build_format_locale/index.js')
+import buildDistanceInWordsLocale from './build_distance_in_words_locale/index.js'
+import buildFormatLocale from './build_format_locale/index.js'
 
 /**
  * @type {Locale}
@@ -8,7 +8,9 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
  * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
  */
-module.exports = {
+const idLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
+
+export default idLocale

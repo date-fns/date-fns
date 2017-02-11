@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var eachDayOfInterval = require('./')
+import eachDayOfInterval from '.'
 
 suite('eachDayOfInterval', function () {
   benchmark('date-fns', function () {

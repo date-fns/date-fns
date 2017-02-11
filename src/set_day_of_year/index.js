@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setDayOfYear
  * @category Day Helpers
  * @summary Set the day of the year to the given date.
  *
@@ -17,12 +18,10 @@ var toDate = require('../to_date/index.js')
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-function setDayOfYear (dirtyDate, dirtyDayOfYear, dirtyOptions) {
+export default function setDayOfYear (dirtyDate, dirtyDayOfYear, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var dayOfYear = Number(dirtyDayOfYear)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date
 }
-
-module.exports = setDayOfYear

@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var getISOYear = require('./')
-var moment = require('moment')
+import getISOYear from '.'
+import moment from 'moment'
 
 suite('getISOYear', function () {
   benchmark('date-fns', function () {

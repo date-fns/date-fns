@@ -1,9 +1,10 @@
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name differenceInCalendarISOWeeks
  * @category ISO Week Helpers
  * @summary Get the number of calendar ISO weeks between the given dates.
  *
@@ -25,7 +26,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, options)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, options)
 
@@ -39,5 +40,3 @@ function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, options) {
   // (e.g. it's different in the week of the daylight saving time clock shift)
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_WEEK)
 }
-
-module.exports = differenceInCalendarISOWeeks

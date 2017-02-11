@@ -1,6 +1,6 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default function buildFormatLocale () {
   var months3char = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.']
   var monthsFull = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
   var weekdays2char = ['di', 'lu', 'ma', 'me', 'je', 've', 'sa']
@@ -88,7 +88,7 @@ function buildFormatLocale () {
   var monthsTokens = ['MMM', 'MMMM']
   monthsTokens.forEach(function (monthToken) {
     formatters['Do ' + monthToken] = function (date, commonFormatters) {
-      var dayOfMonthToken = date.getDate() === 1
+      var dayOfMonthToken = date.getUTCDate() === 1
         ? 'Do'
         : 'D'
       var dayOfMonthFormatter = formatters[dayOfMonthToken] || commonFormatters[dayOfMonthToken]
@@ -118,5 +118,3 @@ function feminineOrdinal (number) {
 
   return number + 'e'
 }
-
-module.exports = buildFormatLocale

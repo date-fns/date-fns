@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setHours
  * @category Hour Helpers
  * @summary Set the hours to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-function setHours (dirtyDate, dirtyHours, dirtyOptions) {
+export default function setHours (dirtyDate, dirtyHours, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var hours = Number(dirtyHours)
   date.setHours(hours)
   return date
 }
-
-module.exports = setHours

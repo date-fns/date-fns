@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var closestIndexTo = require('./')
+import closestIndexTo from '.'
 
 suite('closestIndexTo', function () {
   benchmark('date-fns', function () {

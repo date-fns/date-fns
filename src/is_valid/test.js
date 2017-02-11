@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var isValid = require('./')
+import assert from 'power-assert'
+import isValid from '.'
 
 describe('isValid', function () {
   it('returns true if the given date is valid', function () {

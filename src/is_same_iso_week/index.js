@@ -1,7 +1,8 @@
-var isSameWeek = require('../is_same_week/index.js')
-var cloneObject = require('../_lib/clone_object/index.js')
+import isSameWeek from '../is_same_week/index.js'
+import cloneObject from '../_lib/clone_object/index.js'
 
 /**
+ * @name isSameISOWeek
  * @category ISO Week Helpers
  * @summary Are the given dates in the same ISO week?
  *
@@ -23,10 +24,8 @@ var cloneObject = require('../_lib/clone_object/index.js')
  * )
  * //=> true
  */
-function isSameISOWeek (dirtyDateLeft, dirtyDateRight, options) {
+export default function isSameISOWeek (dirtyDateLeft, dirtyDateRight, options) {
   var isSameWeekOptions = cloneObject(options)
   isSameWeekOptions.weekStartsOn = 1
   return isSameWeek(dirtyDateLeft, dirtyDateRight, isSameWeekOptions)
 }
-
-module.exports = isSameISOWeek

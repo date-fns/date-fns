@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var differenceInISOYears = require('./')
+import differenceInISOYears from '.'
 
 suite('differenceInISOYears', function () {
   benchmark('date-fns', function () {

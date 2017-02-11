@@ -57,7 +57,7 @@ function lowercaseFirstLetter (string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
 
-function buildDistanceInWordsLocale () {
+export default function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     xSeconds: {
       one: {
@@ -198,5 +198,3 @@ function buildDistanceInWordsLocale () {
     localize: localize
   }
 }
-
-module.exports = buildDistanceInWordsLocale

@@ -1,11 +1,11 @@
-var toDate = require('../../../to_date/index.js')
-var startOfUTCISOYear = require('../start_of_utc_iso_year/index.js')
+import toDate from '../../../to_date/index.js'
+import startOfUTCISOYear from '../start_of_utc_iso_year/index.js'
 
 var MILLISECONDS_IN_DAY = 86400000
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-function setISOYear (dirtyDate, isoYear, options) {
+export default function setISOYear (dirtyDate, isoYear, options) {
   var date = toDate(dirtyDate, options)
   var dateStartOfYear = startOfUTCISOYear(date, options)
   var diff = Math.floor((date.getTime() - dateStartOfYear.getTime()) / MILLISECONDS_IN_DAY)
@@ -16,5 +16,3 @@ function setISOYear (dirtyDate, isoYear, options) {
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
-
-module.exports = setISOYear

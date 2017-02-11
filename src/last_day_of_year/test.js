@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var lastDayOfYear = require('./')
+import assert from 'power-assert'
+import lastDayOfYear from '.'
 
 describe('lastDayOfYear', function () {
   it('returns the date with the time setted to 00:00:00 and the date setted to the last day of a year', function () {

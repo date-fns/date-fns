@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name closestIndexTo
  * @category Common Helpers
  * @summary Return an index of the closest date from the array comparing to the given date.
  *
@@ -23,7 +24,7 @@ var toDate = require('../to_date/index.js')
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
+export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
   var dateToCompare = toDate(dirtyDateToCompare, options)
   var timeToCompare = dateToCompare.getTime()
 
@@ -41,5 +42,3 @@ function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
 
   return result
 }
-
-module.exports = closestIndexTo

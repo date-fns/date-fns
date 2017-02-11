@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var addUTCMinutes = require('./')
+import assert from 'power-assert'
+import addUTCMinutes from '.'
 
 describe('addUTCMinutes', function () {
   it('adds the given number of minutes', function () {

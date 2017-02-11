@@ -1,13 +1,14 @@
-var toDate = require('../to_date/index.js')
-var subMinutes = require('../sub_minutes/index.js')
-var enLocale = require('../locale/en/index.js')
-var parsers = require('./_lib/parsers/index.js')
-var units = require('./_lib/units/index.js')
+import toDate from '../to_date/index.js'
+import subMinutes from '../sub_minutes/index.js'
+import enLocale from '../locale/en/index.js'
+import parsers from './_lib/parsers/index.js'
+import units from './_lib/units/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 100
 var MILLISECONDS_IN_MINUTE = 60000
 
 /**
+ * @name parse
  * @category Common Helpers
  * @summary Parse the date.
  *
@@ -98,7 +99,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @example
  * // Parse 28th of February in English locale in the context of 2010 year:
- * var eoLocale = require('date-fns/locale/eo')
+ * import eoLocale from 'date-fns/locale/eo'
  * var result = parse(
  *   '28-a de februaro',
  *   'Do [de] MMMM',
@@ -107,7 +108,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> Sun Feb 28 2010 00:00:00
  */
-function parse (dateString, formatString, dirtyBaseDate, options) {
+export default function parse (dateString, formatString, dirtyBaseDate, options) {
   if (formatString === '') {
     return ''
   }
@@ -224,5 +225,3 @@ function dateToSystemTimezone (date) {
   // Convert date in timezone "UTC+00:00" to the system timezone
   return new Date(time + offset * MILLISECONDS_IN_MINUTE)
 }
-
-module.exports = parse

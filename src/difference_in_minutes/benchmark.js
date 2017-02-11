@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var differenceInMinutes = require('./')
-var moment = require('moment')
+import differenceInMinutes from '.'
+import moment from 'moment'
 
 suite('differenceInMinutes', function () {
   benchmark('date-fns', function () {

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setMilliseconds
  * @category Millisecond Helpers
  * @summary Set the milliseconds to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-function setMilliseconds (dirtyDate, dirtyMilliseconds, dirtyOptions) {
+export default function setMilliseconds (dirtyDate, dirtyMilliseconds, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var milliseconds = Number(dirtyMilliseconds)
   date.setMilliseconds(milliseconds)
   return date
 }
-
-module.exports = setMilliseconds
