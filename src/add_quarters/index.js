@@ -1,6 +1,7 @@
-var addMonths = require('../add_months/index.js')
+import addMonths from '../add_months/index.js'
 
 /**
+ * @name addQuarters
  * @category Quarter Helpers
  * @summary Add the specified number of year quarters to the given date.
  *
@@ -17,10 +18,8 @@ var addMonths = require('../add_months/index.js')
  * var result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-function addQuarters (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addQuarters (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   var months = amount * 3
   return addMonths(dirtyDate, months, dirtyOptions)
 }
-
-module.exports = addQuarters

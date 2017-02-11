@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var lastDayOfQuarter = require('./')
+import lastDayOfQuarter from '.'
 
 suite('lastDayOfQuarter', function () {
   benchmark('date-fns', function () {

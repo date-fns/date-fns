@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
-var startOfYear = require('../start_of_year/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
+import toDate from '../to_date/index.js'
+import startOfYear from '../start_of_year/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
+ * @name getDayOfYear
  * @category Day Helpers
  * @summary Get the day of the year of the given date.
  *
@@ -18,11 +19,9 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * var result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-function getDayOfYear (dirtyDate, options) {
+export default function getDayOfYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var diff = differenceInCalendarDays(startOfYear(date, options), date, options)
   var dayOfYear = diff + 1
   return dayOfYear
 }
-
-module.exports = getDayOfYear

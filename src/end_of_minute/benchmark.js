@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var endOfMinute = require('./')
-var moment = require('moment')
+import endOfMinute from '.'
+import moment from 'moment'
 
 suite('endOfMinute', function () {
   benchmark('date-fns', function () {

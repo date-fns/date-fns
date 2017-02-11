@@ -1,8 +1,9 @@
-var addMilliseconds = require('../add_milliseconds/index.js')
+import addMilliseconds from '../add_milliseconds/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 
 /**
+ * @name addHours
  * @category Hour Helpers
  * @summary Add the specified number of hours to the given date.
  *
@@ -19,9 +20,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-function addHours (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addHours (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR, dirtyOptions)
 }
-
-module.exports = addHours

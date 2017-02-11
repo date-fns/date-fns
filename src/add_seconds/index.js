@@ -1,6 +1,7 @@
-var addMilliseconds = require('../add_milliseconds/index.js')
+import addMilliseconds from '../add_milliseconds/index.js'
 
 /**
+ * @name addSeconds
  * @category Second Helpers
  * @summary Add the specified number of seconds to the given date.
  *
@@ -17,9 +18,7 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-function addSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * 1000, dirtyOptions)
 }
-
-module.exports = addSeconds

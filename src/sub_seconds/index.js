@@ -1,6 +1,7 @@
-var addSeconds = require('../add_seconds/index.js')
+import addSeconds from '../add_seconds/index.js'
 
 /**
+ * @name subSeconds
  * @category Second Helpers
  * @summary Subtract the specified number of seconds from the given date.
  *
@@ -17,9 +18,7 @@ var addSeconds = require('../add_seconds/index.js')
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-function subSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subSeconds (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addSeconds(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subSeconds

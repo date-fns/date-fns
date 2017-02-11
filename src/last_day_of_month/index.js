@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfMonth
  * @category Month Helpers
  * @summary Return the last day of a month for the given date.
  *
@@ -17,12 +18,10 @@ var toDate = require('../to_date/index.js')
  * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-function lastDayOfMonth (dirtyDate, options) {
+export default function lastDayOfMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-module.exports = lastDayOfMonth

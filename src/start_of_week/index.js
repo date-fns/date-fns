@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfWeek
  * @category Week Helpers
  * @summary Return the start of a week for the given date.
  *
@@ -23,7 +24,7 @@ var toDate = require('../to_date/index.js')
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfWeek (dirtyDate, dirtyOptions) {
+export default function startOfWeek (dirtyDate, dirtyOptions) {
   var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
 
   var date = toDate(dirtyDate, dirtyOptions)
@@ -34,5 +35,3 @@ function startOfWeek (dirtyDate, dirtyOptions) {
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-module.exports = startOfWeek

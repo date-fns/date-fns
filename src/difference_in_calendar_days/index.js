@@ -1,9 +1,10 @@
-var startOfDay = require('../start_of_day/index.js')
+import startOfDay from '../start_of_day/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_DAY = 86400000
 
 /**
+ * @name differenceInCalendarDays
  * @category Day Helpers
  * @summary Get the number of calendar days between the given dates.
  *
@@ -24,7 +25,7 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 366
  */
-function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   var startOfDayLeft = startOfDay(dirtyDateLeft, options)
   var startOfDayRight = startOfDay(dirtyDateRight, options)
 
@@ -38,5 +39,3 @@ function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, options) {
   // (e.g. it's different in the day of the daylight saving time clock shift)
   return Math.round((timestampRight - timestampLeft) / MILLISECONDS_IN_DAY)
 }
-
-module.exports = differenceInCalendarDays

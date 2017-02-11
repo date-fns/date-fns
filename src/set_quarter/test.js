@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var setQuarter = require('./')
+import assert from 'power-assert'
+import setQuarter from '.'
 
 describe('setQuarter', function () {
   it('sets the quarter of the year', function () {

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var max = require('./')
+import assert from 'power-assert'
+import max from '.'
 
 describe('max', function () {
   it('returns the latest date', function () {

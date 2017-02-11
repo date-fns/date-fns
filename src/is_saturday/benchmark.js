@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isSaturday = require('./')
+import isSaturday from '.'
 
 suite('isSaturday', function () {
   benchmark('date-fns', function () {

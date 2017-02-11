@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name isFriday
  * @category Weekday Helpers
  * @summary Is the given date Friday?
  *
@@ -16,8 +17,6 @@ var toDate = require('../to_date/index.js')
  * var result = isFriday(new Date(2014, 8, 26))
  * //=> true
  */
-function isFriday (dirtyDate, options) {
+export default function isFriday (dirtyDate, options) {
   return toDate(dirtyDate, options).getDay() === 5
 }
-
-module.exports = isFriday

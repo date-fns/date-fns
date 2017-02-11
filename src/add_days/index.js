@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name addDays
  * @category Day Helpers
  * @summary Add the specified number of days to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-function addDays (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addDays (dirtyDate, dirtyAmount, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var amount = Number(dirtyAmount)
   date.setDate(date.getDate() + amount)
   return date
 }
-
-module.exports = addDays

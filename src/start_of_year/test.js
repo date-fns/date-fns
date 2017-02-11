@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var startOfYear = require('./')
+import assert from 'power-assert'
+import startOfYear from '.'
 
 describe('startOfYear', function () {
   it('returns the date with the time setted to 00:00:00 and the date setted to the first day of a year', function () {

@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
-var startOfISOYear = require('../start_of_iso_year/index.js')
-var differenceInCalendarDays = require('../difference_in_calendar_days/index.js')
+import toDate from '../to_date/index.js'
+import startOfISOYear from '../start_of_iso_year/index.js'
+import differenceInCalendarDays from '../difference_in_calendar_days/index.js'
 
 /**
+ * @name setISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Set the ISO week-numbering year to the given date.
  *
@@ -22,7 +23,7 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * var result = setISOYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-function setISOYear (dirtyDate, dirtyISOYear, dirtyOptions) {
+export default function setISOYear (dirtyDate, dirtyISOYear, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var isoYear = Number(dirtyISOYear)
   var diff = differenceInCalendarDays(startOfISOYear(date, dirtyOptions), date, dirtyOptions)
@@ -33,5 +34,3 @@ function setISOYear (dirtyDate, dirtyISOYear, dirtyOptions) {
   date.setDate(date.getDate() + diff)
   return date
 }
-
-module.exports = setISOYear

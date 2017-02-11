@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var eachDayOfInterval = require('./')
+import assert from 'power-assert'
+import eachDayOfInterval from '.'
 
 describe('eachDayOfInterval', function () {
   it('returns an array with starts of days from the day of the start date to the day of the end date', function () {

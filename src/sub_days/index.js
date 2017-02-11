@@ -1,6 +1,7 @@
-var addDays = require('../add_days/index.js')
+import addDays from '../add_days/index.js'
 
 /**
+ * @name subDays
  * @category Day Helpers
  * @summary Subtract the specified number of days from the given date.
  *
@@ -17,9 +18,7 @@ var addDays = require('../add_days/index.js')
  * var result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-function subDays (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subDays (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addDays(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subDays
