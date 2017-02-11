@@ -1,5 +1,6 @@
 # Environment
 sudo: false
+dist: trusty
 language: node_js
 node_js:
   - 4
