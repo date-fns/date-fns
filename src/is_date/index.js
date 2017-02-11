@@ -1,4 +1,5 @@
 /**
+ * @name isDate
  * @category Common Helpers
  * @summary Is the given argument an instance of Date?
  *
@@ -14,8 +15,6 @@
  * var result = isDate('mayonnaise')
  * //=> false
  */
-function isDate (argument, _) {
+export default function isDate (argument, _) {
   return argument instanceof Date
 }
-
-module.exports = isDate

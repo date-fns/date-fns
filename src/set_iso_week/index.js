@@ -1,7 +1,8 @@
-var toDate = require('../to_date/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
+import toDate from '../to_date/index.js'
+import getISOWeek from '../get_iso_week/index.js'
 
 /**
+ * @name setISOWeek
  * @category ISO Week Helpers
  * @summary Set the ISO week to the given date.
  *
@@ -20,12 +21,10 @@ var getISOWeek = require('../get_iso_week/index.js')
  * var result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-function setISOWeek (dirtyDate, dirtyISOWeek, dirtyOptions) {
+export default function setISOWeek (dirtyDate, dirtyISOWeek, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var isoWeek = Number(dirtyISOWeek)
   var diff = getISOWeek(date, dirtyOptions) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date
 }
-
-module.exports = setISOWeek

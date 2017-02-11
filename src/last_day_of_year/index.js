@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name lastDayOfYear
  * @category Year Helpers
  * @summary Return the last day of a year for the given date.
  *
@@ -17,12 +18,10 @@ var toDate = require('../to_date/index.js')
  * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-function lastDayOfYear (dirtyDate, options) {
+export default function lastDayOfYear (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-module.exports = lastDayOfYear

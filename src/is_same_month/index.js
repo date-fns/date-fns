@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name isSameMonth
  * @category Month Helpers
  * @summary Are the given dates in the same month?
  *
@@ -20,11 +21,9 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> true
  */
-function isSameMonth (dirtyDateLeft, dirtyDateRight, options) {
+export default function isSameMonth (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
   return dateLeft.getFullYear() === dateRight.getFullYear() &&
     dateLeft.getMonth() === dateRight.getMonth()
 }
-
-module.exports = isSameMonth

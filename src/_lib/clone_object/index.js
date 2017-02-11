@@ -1,4 +1,4 @@
-function cloneObject (dirtyObject) {
+export default function cloneObject (dirtyObject) {
   dirtyObject = dirtyObject || {}
   var object = {}
 
@@ -10,5 +10,3 @@ function cloneObject (dirtyObject) {
 
   return object
 }
-
-module.exports = cloneObject

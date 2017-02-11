@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getMonth
  * @category Month Helpers
  * @summary Get the month of the given date.
  *
@@ -16,10 +17,8 @@ var toDate = require('../to_date/index.js')
  * var result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-function getMonth (dirtyDate, options) {
+export default function getMonth (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var month = date.getMonth()
   return month
 }
-
-module.exports = getMonth

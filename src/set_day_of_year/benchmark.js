@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var setDayOfYear = require('./')
-var moment = require('moment')
+import setDayOfYear from '.'
+import moment from 'moment'
 
 suite('setDayOfYear', function () {
   benchmark('date-fns', function () {

@@ -1,6 +1,7 @@
-var addHours = require('../add_hours/index.js')
+import addHours from '../add_hours/index.js'
 
 /**
+ * @name subHours
  * @category Hour Helpers
  * @summary Subtract the specified number of hours from the given date.
  *
@@ -17,9 +18,7 @@ var addHours = require('../add_hours/index.js')
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-function subHours (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subHours (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addHours(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subHours

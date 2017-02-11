@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var getQuarter = require('./')
-var moment = require('moment')
+import getQuarter from '.'
+import moment from 'moment'
 
 suite('getQuarter', function () {
   benchmark('date-fns', function () {

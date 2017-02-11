@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name isBefore
  * @category Common Helpers
  * @summary Is the first date before the second one?
  *
@@ -17,10 +18,8 @@ var toDate = require('../to_date/index.js')
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-function isBefore (dirtyDate, dirtyDateToCompare, options) {
+export default function isBefore (dirtyDate, dirtyDateToCompare, options) {
   var date = toDate(dirtyDate, options)
   var dateToCompare = toDate(dirtyDateToCompare, options)
   return date.getTime() < dateToCompare.getTime()
 }
-
-module.exports = isBefore

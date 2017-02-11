@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var lastDayOfISOWeek = require('./')
+import lastDayOfISOWeek from '.'
 
 suite('lastDayOfISOWeek', function () {
   benchmark('date-fns', function () {

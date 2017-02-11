@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var differenceInSeconds = require('./')
+import assert from 'power-assert'
+import differenceInSeconds from '.'
 
 describe('differenceInSeconds', function () {
   it('returns the number of seconds between the given dates', function () {

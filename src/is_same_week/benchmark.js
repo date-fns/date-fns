@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isSameWeek = require('./')
-var moment = require('moment')
+import isSameWeek from '.'
+import moment from 'moment'
 
 suite('isSameWeek', function () {
   benchmark('date-fns', function () {

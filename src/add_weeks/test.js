@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var addWeeks = require('./')
+import assert from 'power-assert'
+import addWeeks from '.'
 
 describe('addWeeks', function () {
   it('adds the given number of weeks', function () {

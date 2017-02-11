@@ -1,6 +1,6 @@
-var buildTokensRegExp = require('../../_lib/build_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default function buildFormatLocale () {
   var months3char = ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu']
   var monthsFull = ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
   var weekdays2char = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
@@ -62,5 +62,3 @@ function buildFormatLocale () {
     formattingTokensRegExp: buildTokensRegExp(formatters)
   }
 }
-
-module.exports = buildFormatLocale

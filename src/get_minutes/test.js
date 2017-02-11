@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var getMinutes = require('./')
+import assert from 'power-assert'
+import getMinutes from '.'
 
 describe('getMinutes', function () {
   it('returns the minutes of the given date', function () {

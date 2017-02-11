@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name isWithinInterval
  * @category Interval Helpers
  * @summary Is the given date within the interval?
  *
@@ -29,7 +30,7 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> false
  */
-function isWithinInterval (dirtyDate, dirtyInterval, options) {
+export default function isWithinInterval (dirtyDate, dirtyInterval, options) {
   var time = toDate(dirtyDate, options).getTime()
   var startTime = toDate(dirtyInterval.start, options).getTime()
   var endTime = toDate(dirtyInterval.end, options).getTime()
@@ -40,5 +41,3 @@ function isWithinInterval (dirtyDate, dirtyInterval, options) {
 
   return time >= startTime && time <= endTime
 }
-
-module.exports = isWithinInterval

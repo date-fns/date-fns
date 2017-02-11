@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarMonths = require('../difference_in_calendar_months/index.js')
-var compareAsc = require('../compare_asc/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarMonths from '../difference_in_calendar_months/index.js'
+import compareAsc from '../compare_asc/index.js'
 
 /**
+ * @name differenceInMonths
  * @category Month Helpers
  * @summary Get the number of full months between the given dates.
  *
@@ -22,7 +23,7 @@ var compareAsc = require('../compare_asc/index.js')
  * )
  * //=> 7
  */
-function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -35,5 +36,3 @@ function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
   var isLastMonthNotFull = compareAsc(dateLeft, dateRight, options) === -sign
   return sign * (difference - isLastMonthNotFull)
 }
-
-module.exports = differenceInMonths

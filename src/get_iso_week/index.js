@@ -1,10 +1,11 @@
-var toDate = require('../to_date/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
-var startOfISOYear = require('../start_of_iso_year/index.js')
+import toDate from '../to_date/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
+import startOfISOYear from '../start_of_iso_year/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name getISOWeek
  * @category ISO Week Helpers
  * @summary Get the ISO week of the given date.
  *
@@ -22,7 +23,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-function getISOWeek (dirtyDate, options) {
+export default function getISOWeek (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var diff = startOfISOWeek(date, options).getTime() - startOfISOYear(date, options).getTime()
 
@@ -31,5 +32,3 @@ function getISOWeek (dirtyDate, options) {
   // (e.g. it's different in the week of the daylight saving time clock shift)
   return Math.round(diff / MILLISECONDS_IN_WEEK) + 1
 }
-
-module.exports = getISOWeek

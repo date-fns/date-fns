@@ -1,6 +1,7 @@
-var addYears = require('../add_years/index.js')
+import addYears from '../add_years/index.js'
 
 /**
+ * @name subYears
  * @category Year Helpers
  * @summary Subtract the specified number of years from the given date.
  *
@@ -17,9 +18,7 @@ var addYears = require('../add_years/index.js')
  * var result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-function subYears (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subYears (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addYears(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subYears

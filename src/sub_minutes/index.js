@@ -1,6 +1,7 @@
-var addMinutes = require('../add_minutes/index.js')
+import addMinutes from '../add_minutes/index.js'
 
 /**
+ * @name subMinutes
  * @category Minute Helpers
  * @summary Subtract the specified number of minutes from the given date.
  *
@@ -17,9 +18,7 @@ var addMinutes = require('../add_minutes/index.js')
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-function subMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
   return addMinutes(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subMinutes

@@ -1,10 +1,10 @@
-var toDate = require('../../../to_date/index.js')
+import toDate from '../../../to_date/index.js'
 
 var MILLISECONDS_IN_DAY = 86400000
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-function getUTCDayOfYear (dirtyDate, options) {
+export default function getUTCDayOfYear (dirtyDate, options) {
   var date = toDate(dirtyDate)
   var timestamp = date.getTime()
   date.setUTCMonth(0, 1)
@@ -13,5 +13,3 @@ function getUTCDayOfYear (dirtyDate, options) {
   var difference = timestamp - startOfYearTimestamp
   return Math.floor(difference / MILLISECONDS_IN_DAY) + 1
 }
-
-module.exports = getUTCDayOfYear
