@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var format = require('./')
-var moment = require('moment')
+import format from '.'
+import moment from 'moment'
 
 suite('format', function () {
   benchmark('date-fns', function () {

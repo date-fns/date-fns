@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var compareAsc = require('./')
+import compareAsc from '.'
 
 suite('compareAsc', function () {
   benchmark('date-fns', function () {

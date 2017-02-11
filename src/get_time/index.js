@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getTime
  * @category Timestamp Helpers
  * @summary Get the milliseconds timestamp of the given date.
  *
@@ -16,10 +17,8 @@ var toDate = require('../to_date/index.js')
  * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-function getTime (dirtyDate, options) {
+export default function getTime (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var timestamp = date.getTime()
   return timestamp
 }
-
-module.exports = getTime

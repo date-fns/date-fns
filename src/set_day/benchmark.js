@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var setDay = require('./')
-var moment = require('moment')
+import setDay from '.'
+import moment from 'moment'
 
 suite('setDay', function () {
   benchmark('date-fns', function () {

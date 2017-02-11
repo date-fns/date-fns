@@ -259,4 +259,4 @@ var parsers = {
   }
 }
 
-module.exports = parsers
+export default parsers

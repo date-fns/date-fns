@@ -7,7 +7,7 @@ var config = {
   output: getOutputConfig(),
   module: {
     loaders: [
-      {test: /\.js$/, loader: 'webpack-espower', exclude: /node_modules/},
+      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
       {test: /\.json$/, loader: 'json'}
     ]
   }

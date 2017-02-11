@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var closestTo = require('./')
+import closestTo from '.'
 
 suite('closestTo', function () {
   benchmark('date-fns', function () {

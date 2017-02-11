@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isSameISOWeek = require('./')
+import isSameISOWeek from '.'
 
 suite('isSameISOWeek', function () {
   benchmark('date-fns', function () {

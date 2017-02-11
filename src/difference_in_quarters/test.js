@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var differenceInQuarters = require('./')
+import assert from 'power-assert'
+import differenceInQuarters from '.'
 
 describe('differenceInQuarters', function () {
   it('returns the number of full quarters between the given dates', function () {

@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setMinutes
  * @category Minute Helpers
  * @summary Set the minutes to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-function setMinutes (dirtyDate, dirtyMinutes, dirtyOptions) {
+export default function setMinutes (dirtyDate, dirtyMinutes, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var minutes = Number(dirtyMinutes)
   date.setMinutes(minutes)
   return date
 }
-
-module.exports = setMinutes

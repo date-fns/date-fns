@@ -1,8 +1,9 @@
-var toDate = require('../to_date/index.js')
-var differenceInCalendarYears = require('../difference_in_calendar_years/index.js')
-var compareAsc = require('../compare_asc/index.js')
+import toDate from '../to_date/index.js'
+import differenceInCalendarYears from '../difference_in_calendar_years/index.js'
+import compareAsc from '../compare_asc/index.js'
 
 /**
+ * @name differenceInYears
  * @category Year Helpers
  * @summary Get the number of full years between the given dates.
  *
@@ -22,7 +23,7 @@ var compareAsc = require('../compare_asc/index.js')
  * )
  * //=> 1
  */
-function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
+export default function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
   var dateLeft = toDate(dirtyDateLeft, options)
   var dateRight = toDate(dirtyDateRight, options)
 
@@ -35,5 +36,3 @@ function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
   var isLastYearNotFull = compareAsc(dateLeft, dateRight, options) === -sign
   return sign * (difference - isLastYearNotFull)
 }
-
-module.exports = differenceInYears

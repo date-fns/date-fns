@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var subMilliseconds = require('./')
+import assert from 'power-assert'
+import subMilliseconds from '.'
 
 describe('subMilliseconds', function () {
   it('subtracts the given number of milliseconds', function () {

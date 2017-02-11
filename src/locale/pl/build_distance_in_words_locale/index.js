@@ -27,7 +27,7 @@ function declension (scheme, count, time) {
   return finalText.replace('{{count}}', count)
 }
 
-function buildDistanceInWordsLocale () {
+export default function buildDistanceInWordsLocale () {
   var distanceInWordsLocale = {
     lessThanXSeconds: {
       one: {
@@ -161,5 +161,3 @@ function buildDistanceInWordsLocale () {
     localize: localize
   }
 }
-
-module.exports = buildDistanceInWordsLocale

@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var getDaysInYear = require('./')
+import getDaysInYear from '.'
 
 suite('getDaysInYear', function () {
   benchmark('date-fns', function () {

@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var addQuarters = require('./')
+import assert from 'power-assert'
+import addQuarters from '.'
 
 describe('addQuarters', function () {
   it('adds the given number of quarters', function () {

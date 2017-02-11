@@ -2,7 +2,7 @@
 
 import fsp from 'fs-promise'
 import path from 'path'
-import parseJSDoc from 'jsdoc-parse'
+import jsDocParser from 'jsdoc-to-markdown'
 import listFiles from './_lib/list_files'
 import docsConfig from '../docs'
 
@@ -17,24 +17,21 @@ generateDocsFromSource()
  * Generates docs object from a list of functions using extended JSDoc format.
  */
 function generateDocsFromSource () {
-  return listFiles()
-    .reduce((promise, file) => {
-      return promise.then((acc) =>
-        generateDocFromSource(acc, file)
-      )
-    }, Promise.resolve([]))
-    .then((jsDocs) =>
-      jsDocs.map((doc) =>
-        ({
-          type: 'jsdoc',
-          urlId: doc.name,
-          category: doc.category,
-          title: doc.name,
-          description: doc.summary,
-          content: doc
-        })
-      )
-    )
+  const docs = listFiles()
+    .map((fn) => jsDocParser.getTemplateDataSync({
+      files: fn.fullPath,
+      'no-cache': true
+    })[0])
+    .map((doc) => ({
+      type: 'jsdoc',
+      urlId: doc.name,
+      category: doc.category,
+      title: doc.name,
+      description: doc.summary,
+      content: doc
+    }))
+
+  return Promise.resolve(docs)
 }
 
 /**
@@ -56,6 +53,7 @@ function injectStaticDocsToDocsObj (docsFileObj) {
       })
       return docsFileObj
     })
+    .catch(reportErrors)
 }
 
 /**
@@ -69,6 +67,7 @@ function injectSharedDocsToDocsObj (docsFileObj) {
       })
       return docsFileObj
     })
+    .catch(reportErrors)
 }
 
 /**
@@ -85,24 +84,6 @@ function reportErrors (err) {
 function writeDocsFile (docsFileObj) {
   const jsonPath = path.join(process.cwd(), 'dist', 'date_fns_docs.json')
   return fsp.writeFile(jsonPath, JSON.stringify(docsFileObj))
-}
-
-/**
- * Generates docs object from a function using extended JSDoc format.
- */
-function generateDocFromSource (acc, fn) {
-  return new Promise((resolve, reject) => {
-    const stream = parseJSDoc({src: fn.fullPath})
-    var data = ''
-
-    stream.on('error', (err) => {
-      console.error(err)
-      process.exit(1)
-    })
-
-    stream.on('data', (chunk) => { data += chunk })
-    stream.on('end', () => resolve(JSON.parse(data)))
-  }).then((doc) => acc.concat(doc))
 }
 
 /**
@@ -135,6 +116,7 @@ function getListOfStaticDocs (staticDocs) {
     return fsp.readFile(staticDoc.path)
       .then((docContent) => docContent.toString())
       .then((content) => Object.assign({content}, staticDoc))
+      .catch(reportErrors)
   }))
 }
 
@@ -142,22 +124,19 @@ function getListOfStaticDocs (staticDocs) {
  * Returns promise to list of shared docs with its contents.
  */
 function generateSharedDocs (sharedDocs) {
-  return docsConfig.sharedDocs
-    .reduce((promise, file) => {
-      return promise.then((acc) =>
-        generateDocFromSource(acc, file)
-      )
-    }, Promise.resolve([]))
-    .then((jsDocs) =>
-      jsDocs.map((doc) =>
-        ({
-          type: 'jsdoc',
-          urlId: doc.name,
-          category: doc.category,
-          title: doc.name,
-          description: doc.summary,
-          content: doc
-        })
-      )
-    )
+  const docs = docsConfig.sharedDocs
+    .map((fn) => jsDocParser.getTemplateDataSync({
+      files: fn.fullPath,
+      'no-cache': true
+    })[0])
+    .map((doc) => ({
+      type: 'jsdoc',
+      urlId: doc.name,
+      category: doc.category,
+      title: doc.name,
+      description: doc.summary,
+      content: doc
+    }))
+
+  return Promise.resolve(docs)
 }

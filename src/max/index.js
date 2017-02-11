@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name max
  * @category Common Helpers
  * @summary Return the latest of the given dates.
  *
@@ -22,12 +23,10 @@ var toDate = require('../to_date/index.js')
  * )
  * //=> Sun Jul 02 1995 00:00:00
  */
-function max (datesArray, options) {
+export default function max (datesArray, options) {
   var dates = datesArray.map(function (dirtyDate) {
     return toDate(dirtyDate, options)
   })
   var latestTimestamp = Math.max.apply(null, dates)
   return new Date(latestTimestamp)
 }
-
-module.exports = max

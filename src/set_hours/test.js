@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var setHours = require('./')
+import assert from 'power-assert'
+import setHours from '.'
 
 describe('setHours', function () {
   it('sets the amount of hours', function () {

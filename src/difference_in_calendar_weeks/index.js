@@ -1,9 +1,10 @@
-var startOfWeek = require('../start_of_week/index.js')
+import startOfWeek from '../start_of_week/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
+ * @name differenceInCalendarWeeks
  * @category Week Helpers
  * @summary Get the number of calendar weeks between the given dates.
  *
@@ -34,7 +35,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 2
  */
-function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
   var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
   var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
 
@@ -48,5 +49,3 @@ function differenceInCalendarWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions)
   // (e.g. it's different in the week of the daylight saving time clock shift)
   return Math.round((timestampLeft - timestampRight) / MILLISECONDS_IN_WEEK)
 }
-
-module.exports = differenceInCalendarWeeks

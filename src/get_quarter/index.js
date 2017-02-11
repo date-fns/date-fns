@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getQuarter
  * @category Quarter Helpers
  * @summary Get the year quarter of the given date.
  *
@@ -16,10 +17,8 @@ var toDate = require('../to_date/index.js')
  * var result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-function getQuarter (dirtyDate, options) {
+export default function getQuarter (dirtyDate, options) {
   var date = toDate(dirtyDate, options)
   var quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }
-
-module.exports = getQuarter

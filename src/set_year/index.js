@@ -1,6 +1,7 @@
-var toDate = require('../to_date/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setYear
  * @category Year Helpers
  * @summary Set the year to the given date.
  *
@@ -17,11 +18,9 @@ var toDate = require('../to_date/index.js')
  * var result = setYear(new Date(2014, 8, 1), 2013)
  * //=> Sun Sep 01 2013 00:00:00
  */
-function setYear (dirtyDate, dirtyYear, dirtyOptions) {
+export default function setYear (dirtyDate, dirtyYear, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var year = Number(dirtyYear)
   date.setFullYear(year)
   return date
 }
-
-module.exports = setYear

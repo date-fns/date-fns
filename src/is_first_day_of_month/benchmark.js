@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isFirstDayOfMonth = require('./')
+import isFirstDayOfMonth from '.'
 
 suite('isFirstDayOfMonth', function () {
   benchmark('date-fns', function () {
