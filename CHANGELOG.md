@@ -239,12 +239,30 @@ rather than spread arguments.
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
-- Added support for ECMAScript modules via `'date-fns/esm'` subpackage:
+- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
+  via `'date-fns/esm'` subpackage.
+
+  It allows usage with bundlers that support tree-shaking,
+  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
 
   ```javascript
+  // without tree-shaking:
+  import format from 'date-fns/format'
+  import parse from 'date-fns/parse'
+
+  // with tree-shaking:
+  import {format, parse} from 'date-fns/esm'
+  ```
+
+  Also, as `'date-fns/esm'` function submodules provide default export,
+  they can be used with TypeScript to import functions in more idiomatic way:
+
+  ```typescript
+  // In TypeScript,
+  import * as format from 'date-fns/format'
+
+  // is same as:
   import format from 'date-fns/esm/format'
-  // is same as
-  const format = require('date-fns/format')
   ```
 
 ## [1.27.1] - 2017-01-20
