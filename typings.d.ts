@@ -172,9 +172,7 @@ declare module 'date-fns' {
   function differenceInCalendarWeeks (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): number
   namespace differenceInCalendarWeeks {}
 
@@ -258,23 +256,14 @@ declare module 'date-fns' {
   function distanceInWords (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {
-      includeSeconds?: boolean,
-      addSuffix?: boolean,
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace distanceInWords {}
 
   function distanceInWordsStrict (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {
-      addSuffix?: boolean,
-      unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
-      partialMethod?: 'floor' | 'ceil' | 'round',
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace distanceInWordsStrict {}
 
@@ -334,9 +323,7 @@ declare module 'date-fns' {
 
   function endOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace endOfWeek {}
 
@@ -349,9 +336,7 @@ declare module 'date-fns' {
   function format (
     date: Date | string | number,
     format: string,
-    options?: {
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace format {}
 
@@ -580,9 +565,7 @@ declare module 'date-fns' {
   function isSameWeek (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): boolean
   namespace isSameWeek {}
 
@@ -668,9 +651,7 @@ declare module 'date-fns' {
 
   function lastDayOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace lastDayOfWeek {}
 
@@ -681,12 +662,14 @@ declare module 'date-fns' {
   namespace lastDayOfYear {}
 
   function max (
-    datesArray: (Date | string | number)[]
+    datesArray: (Date | string | number)[],
+    options?: Options
   ): Date
   namespace max {}
 
   function min (
-    datesArray: (Date | string | number)[]
+    datesArray: (Date | string | number)[],
+    options?: Options
   ): Date
   namespace min {}
 
@@ -694,10 +677,7 @@ declare module 'date-fns' {
     dateString: string,
     formatString: string,
     baseDate: Date | string | number,
-    options?: {
-      locale?: Locale,
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace parse {}
 
@@ -711,9 +691,7 @@ declare module 'date-fns' {
   function setDay (
     date: Date | string | number,
     day: number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace setDay {}
 
@@ -844,9 +822,7 @@ declare module 'date-fns' {
 
   function startOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace startOfWeek {}
 
@@ -928,9 +904,7 @@ declare module 'date-fns' {
 
   function toDate (
     argument: Date | string | number,
-    options?: {
-      additionalDigits?: 0 | 1 | 2
-    }
+    options?: Options
   ): Date
   namespace toDate {}
 }
@@ -3089,9 +3063,7 @@ declare module 'date-fns/esm' {
   function differenceInCalendarWeeks (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): number
   namespace differenceInCalendarWeeks {}
 
@@ -3175,23 +3147,14 @@ declare module 'date-fns/esm' {
   function distanceInWords (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {
-      includeSeconds?: boolean,
-      addSuffix?: boolean,
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace distanceInWords {}
 
   function distanceInWordsStrict (
     dateToCompare: Date | string | number,
     date: Date | string | number,
-    options?: {
-      addSuffix?: boolean,
-      unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
-      partialMethod?: 'floor' | 'ceil' | 'round',
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace distanceInWordsStrict {}
 
@@ -3251,9 +3214,7 @@ declare module 'date-fns/esm' {
 
   function endOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace endOfWeek {}
 
@@ -3266,9 +3227,7 @@ declare module 'date-fns/esm' {
   function format (
     date: Date | string | number,
     format: string,
-    options?: {
-      locale?: Locale
-    }
+    options?: Options
   ): string
   namespace format {}
 
@@ -3497,9 +3456,7 @@ declare module 'date-fns/esm' {
   function isSameWeek (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): boolean
   namespace isSameWeek {}
 
@@ -3585,9 +3542,7 @@ declare module 'date-fns/esm' {
 
   function lastDayOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace lastDayOfWeek {}
 
@@ -3598,12 +3553,14 @@ declare module 'date-fns/esm' {
   namespace lastDayOfYear {}
 
   function max (
-    datesArray: (Date | string | number)[]
+    datesArray: (Date | string | number)[],
+    options?: Options
   ): Date
   namespace max {}
 
   function min (
-    datesArray: (Date | string | number)[]
+    datesArray: (Date | string | number)[],
+    options?: Options
   ): Date
   namespace min {}
 
@@ -3611,10 +3568,7 @@ declare module 'date-fns/esm' {
     dateString: string,
     formatString: string,
     baseDate: Date | string | number,
-    options?: {
-      locale?: Locale,
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace parse {}
 
@@ -3628,9 +3582,7 @@ declare module 'date-fns/esm' {
   function setDay (
     date: Date | string | number,
     day: number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace setDay {}
 
@@ -3761,9 +3713,7 @@ declare module 'date-fns/esm' {
 
   function startOfWeek (
     date: Date | string | number,
-    options?: {
-      weekStartsOn?: number
-    }
+    options?: Options
   ): Date
   namespace startOfWeek {}
 
@@ -3845,9 +3795,7 @@ declare module 'date-fns/esm' {
 
   function toDate (
     argument: Date | string | number,
-    options?: {
-      additionalDigits?: 0 | 1 | 2
-    }
+    options?: Options
   ): Date
   namespace toDate {}
 }
