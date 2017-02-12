@@ -83,7 +83,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
