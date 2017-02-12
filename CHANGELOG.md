@@ -239,6 +239,14 @@ rather than spread arguments.
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
+- Added support for ECMAScript modules via `'date-fns/esm'` subpackage:
+
+  ```javascript
+  import format from 'date-fns/esm/format'
+  // is same as
+  const format = require('date-fns/format')
+  ```
+
 ## [1.27.1] - 2017-01-20
 
 ### Fixed

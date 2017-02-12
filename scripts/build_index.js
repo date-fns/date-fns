@@ -16,12 +16,12 @@ const indexLines = ['// This file is generated automatically by `scripts/build_i
 
 fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), `${indexLines}\n`)
 
-const esFileLines = files
+const esmFileLines = files
   .map(fn => `export {default as ${fn.name}} from '${fn.path.replace(/\.js$/, '')}/index.js'`)
 
-const esIndexLines = ['// This file is generated automatically by `scripts/build_index.js`. Please, don\'t change it.']
+const esmIndexLines = ['// This file is generated automatically by `scripts/build_index.js`. Please, don\'t change it.']
   .concat('')
-  .concat(esFileLines)
+  .concat(esmFileLines)
   .join('\n')
 
-fs.writeFileSync(path.join(process.cwd(), 'src', 'es', 'index.js'), `${esIndexLines}\n`)
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'index.js'), `${esmIndexLines}\n`)

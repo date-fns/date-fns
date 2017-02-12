@@ -10,7 +10,7 @@
   },
   "typings": "./typings.d.ts",
   "main": "index.js",
-  "module": "es/index.js",
+  "module": "esm/index.js",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.6.5",
