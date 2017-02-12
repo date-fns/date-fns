@@ -7,7 +7,8 @@ node_js:
 
 env:
   - TEST_SUITE=main
-  - TEST_SUITE=timezones
+  - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
+  - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=1
   # TODO: Enable when SauceLabs become reliable
   # - TEST_SUITE=cross_browser
 

@@ -9,7 +9,7 @@ then
   yarn run test-ci || exit 1
   yarn run test-tz || exit 1
 
-elif [ "$TEST_SUITE" == "timezones" ]
+elif [ "$TEST_SUITE" == "tz" ]
 then
   yarn run test-tz-extended || exit 1
 
