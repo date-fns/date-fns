@@ -344,7 +344,7 @@ then
     "Pacific/Wallis"
   do
     printf "Run test in time zone $tz\n"
-    env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz npm run test-ci \
+    env TEST_TZ=true USE_STATIC_TESTS=true TZ=$tz yarn run test-ci \
       &>tmp/last_test_output.txt || (cat tmp/last_test_output.txt && exit 1) || exit 1
   done
 fi
