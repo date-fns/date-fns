@@ -57,6 +57,7 @@
     "test": "karma start config/karma.js",
     "test-ci": "npm test -- --single-run",
     "test-cross-browser": "env TEST_CROSS_BROWSER=true npm test -- --single-run",
+    "test-travis": "./scripts/test_travis.sh",
     "test-tz": "yarn run build-tests && ./scripts/test_tz.sh",
     "test-tz-extended": "yarn run build-tests && ./scripts/test_tz_extended.sh",
     "test-smoke": "./scripts/test_smoke.sh",
