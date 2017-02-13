@@ -34,6 +34,7 @@ declare module.exports: (
   formatString: string,
   baseDate: Date | string | number,
   options?: {
-    locale?: Locale
+    locale?: Locale,
+    weekStartsOn?: number
   }
 ) => Date
