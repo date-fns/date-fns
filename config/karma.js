@@ -86,7 +86,7 @@ var sauceLabsLaunchers = {
 var travisLaunchers = {
   ChromeTravis: {
     base: 'Chrome',
-    flags: ['--no-sandbox']
+    flags: ['--no-sandbox', '--no-default-browser-check', '--no-first-run', '--disable-default-apps']
   }
 }
 
