@@ -183,10 +183,10 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index.js', false)))
     .map(module => module.definition)
 
-  const esModuleDefinitions = [getTypeScriptDateFnsModuleDefinition('/es', fns)]
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '', true)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '/index', true)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/es', '/index.js', true)))
+  const esModuleDefinitions = [getTypeScriptDateFnsModuleDefinition('/esm', fns)]
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '', true)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index', true)))
+    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index.js', true)))
     .map(module => module.definition)
 
   const aliasDefinitions = aliases
@@ -196,9 +196,9 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '', false)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index', false)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index.js', false)))
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '', true)))
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '/index', true)))
-    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/es', '/index.js', true)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '', true)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index', true)))
+    .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index.js', true)))
     .map(module => module.definition)
 
   const typingString = ['// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.']
