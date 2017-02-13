@@ -31,7 +31,5 @@ type Locale = {
 
 declare module.exports: (
   date: Date | string | number,
-  options?: {
-    weekStartsOn?: number
-  }
+  options?: Options
 ) => Date

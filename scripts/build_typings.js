@@ -89,7 +89,7 @@ function getType (types, {props = [], forceArray = false, indent = 1} = {}) {
       return `${correctTypeCase(arrayType)}[]`
     }
 
-    if (props.length > 0) {
+    if (type === 'Object' && props.length > 0) {
       return getParams(props, {indent: indent + 1})
     }
 
