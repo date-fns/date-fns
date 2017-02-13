@@ -30,5 +30,6 @@ type Locale = {
 }
 
 declare module.exports: (
-  datesArray: (Date | string | number)[]
+  datesArray: (Date | string | number)[],
+  options?: Options
 ) => Date
