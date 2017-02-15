@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Month Helpers
@@ -20,8 +20,8 @@ var parse = require('../parse/index.js')
  * //=> 8
  */
 function differenceInCalendarMonths (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+  var dateLeft = toDate(dirtyDateLeft)
+  var dateRight = toDate(dirtyDateRight)
 
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
   var monthDiff = dateLeft.getMonth() - dateRight.getMonth()

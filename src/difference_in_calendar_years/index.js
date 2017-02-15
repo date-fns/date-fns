@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Year Helpers
@@ -20,8 +20,8 @@ var parse = require('../parse/index.js')
  * //=> 2
  */
 function differenceInCalendarYears (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
-  var dateRight = parse(dirtyDateRight)
+  var dateLeft = toDate(dirtyDateLeft)
+  var dateRight = toDate(dirtyDateRight)
 
   return dateLeft.getFullYear() - dateRight.getFullYear()
 }

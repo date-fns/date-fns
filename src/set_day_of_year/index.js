@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Day Helpers
@@ -17,7 +17,7 @@ var parse = require('../parse/index.js')
  * //=> Thu Jan 02 2014 00:00:00
  */
 function setDayOfYear (dirtyDate, dayOfYear) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date

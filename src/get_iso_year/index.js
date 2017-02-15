@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 var startOfISOWeek = require('../start_of_iso_week/index.js')
 
 /**
@@ -20,7 +20,7 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * //=> 2004
  */
 function getISOYear (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var year = date.getFullYear()
 
   var fourthOfJanuaryOfNextYear = new Date(0)

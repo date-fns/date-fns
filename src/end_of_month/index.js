@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Month Helpers
@@ -17,7 +17,7 @@ var parse = require('../parse/index.js')
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 function endOfMonth (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)
   date.setHours(23, 59, 59, 999)

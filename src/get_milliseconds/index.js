@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Millisecond Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> 123
  */
 function getMilliseconds (dirtyDate) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   var milliseconds = date.getMilliseconds()
   return milliseconds
 }

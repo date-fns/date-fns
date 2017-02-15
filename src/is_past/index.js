@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Common Helpers
@@ -16,7 +16,7 @@ var parse = require('../parse/index.js')
  * //=> true
  */
 function isPast (dirtyDate) {
-  return parse(dirtyDate).getTime() < new Date().getTime()
+  return toDate(dirtyDate).getTime() < new Date().getTime()
 }
 
 module.exports = isPast

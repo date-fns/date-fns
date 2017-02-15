@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var toDate = require('../to_date/index.js')
 
 /**
  * @category Second Helpers
@@ -17,7 +17,7 @@ var parse = require('../parse/index.js')
  * //=> Thu Jul 10 2014 12:45:30
  */
 function addSeconds (dirtyDate, amount) {
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate)
   date.setSeconds(date.getSeconds() + amount)
   return date
 }
