@@ -1,6 +1,6 @@
 import fs from 'fs'
-import listFiles from './_lib/list_files'
-import listLocales from './_lib/list_locales'
+import listFiles from './_lib/listFiles'
+import listLocales from './_lib/listLocales'
 import jsDocs from '../dist/date_fns_docs.json'
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']

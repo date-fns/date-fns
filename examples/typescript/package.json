@@ -11,7 +11,7 @@
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-typescript && yarn run build-webpack",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/buildPackage.sh",
     "build-typescript": "tsc --outDir dist example.ts fp.ts misc.ts",
     "build-webpack": "webpack example=./dist/example.js fp=./dist/fp misc=./dist/misc.js --output-path dist --output-filename [name].bundle.js",
     "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",

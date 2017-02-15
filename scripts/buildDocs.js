@@ -3,7 +3,7 @@
 import fsp from 'fs-promise'
 import path from 'path'
 import jsDocParser from 'jsdoc-to-markdown'
-import listFiles from './_lib/list_files'
+import listFiles from './_lib/listFiles'
 import docsConfig from '../docs'
 
 generateDocsFromSource()

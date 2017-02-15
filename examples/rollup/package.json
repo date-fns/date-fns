@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-rollup && yarn run build-babili",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/buildPackage.sh",
     "build-rollup": "yarn run build-rollup-example && yarn run build-rollup-fp && yarn run build-rollup-misc",
     "build-rollup-example": "rollup -c rollup.config.example.js",
     "build-rollup-fp": "rollup -c rollup.config.fp.js",

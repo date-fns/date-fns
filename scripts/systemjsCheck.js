@@ -1,5 +1,5 @@
-import listFiles from './_lib/list_files'
-import listLocales from './_lib/list_locales'
+import listFiles from './_lib/listFiles'
+import listLocales from './_lib/listLocales'
 import SystemJS from 'systemjs'
 import path from 'path'
 

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import jsDocs from '../dist/date_fns_docs.json'
-import listFiles from './_lib/list_files'
+import listFiles from './_lib/listFiles'
 
 const FP_DIR = './src/fp'
 

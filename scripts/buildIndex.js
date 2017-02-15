@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import listFiles from './_lib/list_files'
-import listFpFiles from './_lib/list_fp_files'
+import listFiles from './_lib/listFiles'
+import listFpFiles from './_lib/listFpFiles'
 
 function generateIndex (files) {
   const propertyRequireLines = files
