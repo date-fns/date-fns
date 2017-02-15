@@ -1,9 +1,9 @@
-import setUTCDay from '../set_utc_day/index.js'
-import setUTCISODay from '../set_utc_iso_day/index.js'
-import setUTCISOWeek from '../set_utc_iso_week/index.js'
-import setUTCISOYear from '../set_utc_iso_year/index.js'
-import startOfUTCISOWeek from '../start_of_utc_iso_week/index.js'
-import startOfUTCISOYear from '../start_of_utc_iso_year/index.js'
+import setUTCDay from '../setUTCDay/index.js'
+import setUTCISODay from '../setUTCISODay/index.js'
+import setUTCISOWeek from '../setUTCISOWeek/index.js'
+import setUTCISOYear from '../setUTCISOYear/index.js'
+import startOfUTCISOWeek from '../startOfUTCISOWeek/index.js'
+import startOfUTCISOYear from '../startOfUTCISOYear/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 

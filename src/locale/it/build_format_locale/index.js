@@ -1,4 +1,4 @@
-import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
+import buildTokensRegExp from '../../_lib/buildTokensRegExp/index.js'
 
 export default function buildFormatLocale () {
   var months3char = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic']

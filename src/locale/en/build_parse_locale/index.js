@@ -1,7 +1,7 @@
-import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
-import buildMatchRegExpFromArray from '../../_lib/build_match_reg_exp_from_array/index.js'
-import buildParseFnFromArray from '../../_lib/build_parse_fn_from_array/index.js'
-import parseDecimal from '../../_lib/parse_decimal/index.js'
+import buildTokensRegExp from '../../_lib/buildTokensRegExp/index.js'
+import buildMatchRegExpFromArray from '../../_lib/buildMatchRegExpFromArray/index.js'
+import buildParseFnFromArray from '../../_lib/buildParseFnFromArray/index.js'
+import parseDecimal from '../../_lib/parseDecimal/index.js'
 
 export default function buildParseLocale () {
   var months3char = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
