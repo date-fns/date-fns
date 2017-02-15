@@ -57,28 +57,28 @@ find "$dir" -type f -name "benchmark.js" -delete
 for module in $dir/*/
 do
   module=${module%*/}
-  cp scripts/sub_module_package.json "$module/package.json"
+  cp scripts/subModulePackage.json "$module/package.json"
 done
 
 # Copy TypeScript's sub_sub_module_package.json to locale directories
 for locale in $dir/locale/*/
 do
   locale=${locale%*/}
-  cp scripts/sub_sub_module_package.json "$locale/package.json"
+  cp scripts/subSubModulePackage.json "$locale/package.json"
 done
 
 # Copy TypeScript's sub_sub_module_package.json to es directories
 for esmModule in $dir/esm/*/
 do
   esmModule=${esmModule%*/}
-  cp scripts/sub_sub_module_package.json "$esmModule/package.json"
+  cp scripts/subSubModulePackage.json "$esmModule/package.json"
 done
 
 # Copy TypeScript's sub_sub_sub_module_package.json to es locale directories
 for esmLocale in $dir/esm/locale/*/
 do
   esmLocale=${esmLocale%*/}
-  cp scripts/sub_sub_sub_module_package.json "$esmLocale/package.json"
+  cp scripts/subSubSubModulePackage.json "$esmLocale/package.json"
 done
 
 # Copy TypeScript's sub_sub_sub_module_package.json to fp locale directories

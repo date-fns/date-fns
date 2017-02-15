@@ -6,22 +6,9 @@ export default function listLocales () {
   return locales
     .filter((locale) => /^[^._]/.test(locale))
     .map((locale) => ({
-      name: `${camelize(locale)}Locale`,
-      snakeCaseName: locale,
+      name: `${locale}Locale`,
+      code: locale,
       path: `./locale/${locale}`,
       fullPath: `./src/locale/${locale}/index.js`
     }))
-}
-
-function camelize (str) {
-  return str
-    .split('_')
-    .map((word, index) => {
-      if (index === 0) {
-        return word
-      } else {
-        return word.charAt(0).toUpperCase() + word.slice(1)
-      }
-    })
-    .join('')
 }
