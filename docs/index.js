@@ -56,6 +56,14 @@ export default {
     },
     {
       type: 'markdown',
+      urlId: 'FP-Guide',
+      category: 'General',
+      title: 'FP Guide',
+      description: 'Curried functions',
+      path: path.join(__dirname, 'fp.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
