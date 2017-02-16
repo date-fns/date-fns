@@ -72,6 +72,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Changed
 
+- **BREAKING**: function submodules now use camelCase naming schema:
+
+  ```javascript
+  // Before v2.0.0
+  import differenceInCalendarISOYears from 'date-fns/difference_in_calendar_iso_years'
+
+  // v2.0.0 onward
+  import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
+  ```
+
 - **BREAKING**: min and max functions now accept an array of dates
   rather than spread arguments.
 
