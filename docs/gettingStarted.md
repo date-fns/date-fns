@@ -53,7 +53,7 @@ yarn add date-fns
 To start using:
 
 ```js
-var isToday = require('date-fns/is_today')
+var isToday = require('date-fns/isToday')
 isToday(new Date())
 //=> true
 ```
@@ -86,7 +86,7 @@ To start using date-fns, simply add the following code into HTML:
 </script>
 ```
 
-Replace `VERSION` with a proper version number e.g. `v1.0.0`.
+Replace `VERSION` with a proper version number e.g. `v2.0.0`.
 
 See the [full list](http://cdn.date-fns.org/) of resources available on the CDN:
 
