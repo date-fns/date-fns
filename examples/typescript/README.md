@@ -1,4 +1,4 @@
-# Usage With webpack 1.x
+# Usage With TypeScript
 
 See [example.ts](./example.ts) and [misc.ts](./misc.ts) for source code examples.
 
