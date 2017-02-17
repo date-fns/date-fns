@@ -59,6 +59,12 @@ describe('setDay', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), '5')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 5))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     setDay(date, 3)

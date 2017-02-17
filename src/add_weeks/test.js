@@ -20,6 +20,12 @@ describe('addWeeks', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = addWeeks(new Date(2014, 8 /* Sep */, 1), '4')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 29))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     addWeeks(date, 2)

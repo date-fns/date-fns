@@ -25,6 +25,12 @@ describe('setQuarter', function () {
     assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setQuarter(new Date(2014, 6 /* Jul */, 2), '1')
+    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 6 /* Jul */, 1)
     setQuarter(date, 2)

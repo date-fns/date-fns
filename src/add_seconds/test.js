@@ -24,6 +24,12 @@ describe('addSeconds', function () {
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 20))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = addSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 5), '30')
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 35))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 6 /* Jul */, 10, 12, 45, 0)
     addSeconds(date, 15)

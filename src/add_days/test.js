@@ -20,6 +20,12 @@ describe('addDays', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 11))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = addDays(new Date(2014, 8 /* Sep */, 1), '10')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 11))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     addDays(date, 11)

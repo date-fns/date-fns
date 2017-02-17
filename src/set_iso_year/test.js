@@ -20,6 +20,12 @@ describe('setISOYear', function () {
     assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setISOYear(new Date(2008, 11 /* Dec */, 29), '2007')
+    assert.deepEqual(result, new Date(2007, 0 /* Jan */, 1))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2008, 11 /* Dec */, 29)
     setISOYear(date, 2000)

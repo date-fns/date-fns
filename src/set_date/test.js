@@ -20,6 +20,12 @@ describe('setDate', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setDate(new Date(2014, 8 /* Sep */, 1), '30')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     setDate(date, 20)

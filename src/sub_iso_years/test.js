@@ -20,6 +20,12 @@ describe('subISOYears', function () {
     assert.deepEqual(result, new Date(2002, 8 /* Sep */, 2))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = subISOYears(new Date(2014, 8 /* Sep */, 1), '5')
+    assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     subISOYears(date, 12)
