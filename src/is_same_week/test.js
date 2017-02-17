@@ -30,6 +30,16 @@ describe('isSameWeek', function () {
     assert(result === false)
   })
 
+  it('implicitly converts options', function () {
+    var result = isSameWeek(
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      // $ExpectedMistake
+      {weekStartsOn: '1'}
+    )
+    assert(result === false)
+  })
+
   it('accepts a string', function () {
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31).toISOString(),

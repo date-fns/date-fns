@@ -21,6 +21,15 @@ describe('lastDayOfWeek', function () {
     )
   })
 
+  it('implicitly converts options', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var result = lastDayOfWeek(date, {weekStartsOn: '1'})
+    assert.deepEqual(result,
+      new Date(2014, 8 /* Sep */, 7)
+    )
+  })
+
   it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = lastDayOfWeek(date)

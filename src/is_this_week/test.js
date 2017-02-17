@@ -31,6 +31,12 @@ describe('isThisWeek', function () {
     assert(isThisWeek(date, {weekStartsOn: 1}) === true)
   })
 
+  it('implicitly converts options', function () {
+    var date = new Date(2014, 8 /* Sep */, 28)
+    // $ExpectedMistake
+    assert(isThisWeek(date, {weekStartsOn: '1'}) === true)
+  })
+
   it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 21).toISOString()
     assert(isThisWeek(date) === true)

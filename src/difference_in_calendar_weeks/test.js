@@ -22,6 +22,16 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 2)
   })
 
+  it('implicitly converts options', function () {
+    var result = differenceInCalendarWeeks(
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      // $ExpectedMistake
+      {weekStartsOn: '1'}
+    )
+    assert(result === 2)
+  })
+
   it('returns a negative number if the time value of the first date is smaller', function () {
     var result = differenceInCalendarWeeks(
       new Date(2014, 5 /* Jun */, 29, 6, 0),
