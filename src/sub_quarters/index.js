@@ -16,7 +16,8 @@ var addQuarters = require('../add_quarters/index.js')
  * var result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-function subQuarters (dirtyDate, amount) {
+function subQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
   return addQuarters(dirtyDate, -amount)
 }
 

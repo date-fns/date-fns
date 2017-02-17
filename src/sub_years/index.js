@@ -16,7 +16,8 @@ var addYears = require('../add_years/index.js')
  * var result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-function subYears (dirtyDate, amount) {
+function subYears (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
   return addYears(dirtyDate, -amount)
 }
 

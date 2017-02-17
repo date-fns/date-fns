@@ -24,9 +24,10 @@ var addDays = require('../add_days/index.js')
  * var result = setDay(new Date(2014, 8, 1), 0, {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-function setDay (dirtyDate, day, options) {
+function setDay (dirtyDate, dirtyDay, options) {
   var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
   var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
   var currentDay = date.getDay()
 
   var remainder = day % 7
