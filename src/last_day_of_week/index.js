@@ -23,8 +23,8 @@ var parse = require('../parse/index.js')
  * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 00:00:00
  */
-function lastDayOfWeek (dirtyDate, options) {
-  var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
+function lastDayOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
 
   var date = parse(dirtyDate)
   var day = date.getDay()

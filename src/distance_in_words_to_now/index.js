@@ -78,8 +78,8 @@ var distanceInWords = require('../distance_in_words/index.js')
  * )
  * //=> 'pli ol 1 jaro'
  */
-function distanceInWordsToNow (dirtyDate, options) {
-  return distanceInWords(Date.now(), dirtyDate, options)
+function distanceInWordsToNow (dirtyDate, dirtyOptions) {
+  return distanceInWords(Date.now(), dirtyDate, dirtyOptions)
 }
 
 module.exports = distanceInWordsToNow

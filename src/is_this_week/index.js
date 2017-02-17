@@ -23,8 +23,8 @@ var isSameWeek = require('../is_same_week/index.js')
  * var result = isThisWeek(new Date(2014, 8, 21), {weekStartsOn: 1})
  * //=> false
  */
-function isThisWeek (dirtyDate, options) {
-  return isSameWeek(new Date(), dirtyDate, options)
+function isThisWeek (dirtyDate, dirtyOptions) {
+  return isSameWeek(new Date(), dirtyDate, dirtyOptions)
 }
 
 module.exports = isThisWeek
