@@ -291,7 +291,7 @@ describe('fr locale > buildFormatLocale', function () {
 
     describe('Wo', function () {
       it('returns ordinal result of W formatter', function () {
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}) === '1er')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}) === '1re')
         assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}) === '2e')
       })
     })

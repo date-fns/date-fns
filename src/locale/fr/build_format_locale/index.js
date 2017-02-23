@@ -63,10 +63,18 @@ function buildFormatLocale () {
   }
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']
+  // Words with masculine grammatical gender: mois, jour, trimestre
+  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q']
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal(formatters[formatterToken](date))
+      return ordinal(formatters[formatterToken](date), 0)
+    }
+  })
+  // Words with feminine grammatical gender: semaine
+  ordinalFormatters = ['W']
+  ordinalFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + 'o'] = function (date, formatters) {
+      return ordinal(formatters[formatterToken](date), 1)
     }
   })
 
@@ -76,9 +84,18 @@ function buildFormatLocale () {
   }
 }
 
-function ordinal (number) {
+// Gender:
+// 0 = masculin
+// 1 = féminin
+function ordinal (number, gender) {
   if (number === 1) {
-    return '1er'
+    switch (gender) {
+      case 0:
+      default:
+        return '1er'
+      case 1:
+        return '1re'
+    }
   }
 
   return number + 'e'
