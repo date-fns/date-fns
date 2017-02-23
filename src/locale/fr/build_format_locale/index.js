@@ -11,27 +11,27 @@ function buildFormatLocale () {
   var meridiemFull = ['du matin', 'de l’après-midi', 'du soir']
 
   var formatters = {
-    // Month: Jan, Feb, ..., Dec
+    // Month: Jan, Feb, …, Dec
     'MMM': function (date) {
       return months3char[date.getMonth()]
     },
 
-    // Month: January, February, ..., December
+    // Month: January, February, …, December
     'MMMM': function (date) {
       return monthsFull[date.getMonth()]
     },
 
-    // Day of week: Su, Mo, ..., Sa
+    // Day of week: Su, Mo, …, Sa
     'dd': function (date) {
       return weekdays2char[date.getDay()]
     },
 
-    // Day of week: Sun, Mon, ..., Sat
+    // Day of week: Sun, Mon, …, Sat
     'ddd': function (date) {
       return weekdays3char[date.getDay()]
     },
 
-    // Day of week: Sunday, Monday, ..., Saturday
+    // Day of week: Sunday, Monday, …, Saturday
     'dddd': function (date) {
       return weekdaysFull[date.getDay()]
     },
@@ -59,14 +59,21 @@ function buildFormatLocale () {
       }
 
       return meridiemFull[2]
+    },
+
+    // ISO week, ordinal version: 1st, 2nd, …, 53rd
+    // NOTE: Week has feminine grammatical gender in French: semaine
+    'Wo': function (date, formatters) {
+      return feminineOrdinal(formatters.W(date))
     }
   }
 
-  // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
-  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q', 'W']
+  // Generate ordinal version of formatters: M → Mo, D → Do, etc.
+  // NOTE: For words with masculine grammatical gender in French: mois, jour, trimestre
+  var ordinalFormatters = ['M', 'D', 'DDD', 'd', 'Q']
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {
-      return ordinal(formatters[formatterToken](date))
+      return masculineOrdinal(formatters[formatterToken](date))
     }
   })
 
@@ -76,9 +83,17 @@ function buildFormatLocale () {
   }
 }
 
-function ordinal (number) {
+function masculineOrdinal (number) {
   if (number === 1) {
     return '1er'
+  }
+
+  return number + 'e'
+}
+
+function feminineOrdinal (number) {
+  if (number === 1) {
+    return '1re'
   }
 
   return number + 'e'
