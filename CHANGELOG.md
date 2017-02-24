@@ -12,7 +12,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Fixed
 
-- All functions now try to convert all their arguments to the respective types.
+- All functions now converts all their arguments to the respective types.
   See PR: [#443](https://github.com/date-fns/date-fns/pull/443)
 
 ## [1.27.2] - 2017-02-01
