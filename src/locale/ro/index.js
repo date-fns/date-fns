@@ -4,6 +4,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 /**
  * @category Locales
  * @summary Romanian locale.
+ * @author Sergiu Munteanu [@jsergiu]{@link https://github.com/jsergiu}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
