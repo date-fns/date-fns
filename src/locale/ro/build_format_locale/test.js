@@ -28,7 +28,7 @@ describe('ro locale > buildFormatLocale', function () {
       })
 
       it('returns the correct string for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 3)) === 'apr')
+        assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === 'apr')
       })
 
       it('returns the correct string for May', function () {
@@ -78,7 +78,7 @@ describe('ro locale > buildFormatLocale', function () {
       })
 
       it('returns the correct string for April', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 3)) === 'aprilie')
+        assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === 'aprilie')
       })
 
       it('returns the correct string for May', function () {
