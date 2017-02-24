@@ -10,6 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- [Romanian locale (ro)](https://github.com/date-fns/date-fns/pull/446)
+  (thanks to Sergiu Munteanu [@jsergiu](https://github.com/jsergiu))
+
 ### Fixed
 
 - All functions now converts all their arguments to the respective types.
