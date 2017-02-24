@@ -15,6 +15,12 @@ describe('setDay', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
+  it('implicitly converts options', function () {
+    // $ExpectedMistake
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {weekStartsOn: '1'})
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
+  })
+
   context('the day index is more than 6', function () {
     it('sets the day of the next week', function () {
       var result = setDay(new Date(2014, 8 /* Sep */, 1), 8)
@@ -57,6 +63,12 @@ describe('setDay', function () {
   it('accepts a timestamp', function () {
     var result = setDay(new Date(2014, 8 /* Sep */, 1).getTime(), 3)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 3))
+  })
+
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), '5')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 5))
   })
 
   it('does not mutate the original date', function () {

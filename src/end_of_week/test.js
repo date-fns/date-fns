@@ -21,6 +21,15 @@ describe('endOfWeek', function () {
     )
   })
 
+  it('implicitly converts options', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var result = endOfWeek(date, {weekStartsOn: '1'})
+    assert.deepEqual(result,
+      new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999)
+    )
+  })
+
   it('accepts a string', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).toISOString()
     var result = endOfWeek(date)

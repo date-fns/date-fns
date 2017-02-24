@@ -23,8 +23,8 @@ var parse = require('../parse/index.js')
  * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-function endOfWeek (dirtyDate, options) {
-  var weekStartsOn = options ? (options.weekStartsOn || 0) : 0
+function endOfWeek (dirtyDate, dirtyOptions) {
+  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
 
   var date = parse(dirtyDate)
   var day = date.getDay()

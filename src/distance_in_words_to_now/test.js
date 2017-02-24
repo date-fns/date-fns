@@ -208,6 +208,26 @@ describe('distanceInWordsToNow', function () {
     })
   })
 
+  describe('implicit conversion of options', function () {
+    it('`options.includeSeconds`', function () {
+      var result = distanceInWordsToNow(
+        new Date(1986, 3, 4, 10, 31, 52),
+        // $ExpectedMistake
+        {includeSeconds: 1}
+      )
+      assert(result === 'less than 10 seconds')
+    })
+
+    it('`options.addSuffix`', function () {
+      var result = distanceInWordsToNow(
+        new Date(1986, 3, 4, 11, 32, 0),
+        // $ExpectedMistake
+        {addSuffix: 1}
+      )
+      assert(result === 'in about 1 hour')
+    })
+  })
+
   describe('custom locale', function () {
     it('can be passed to the function', function () {
       function localize (token, count, options) {

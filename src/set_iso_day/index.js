@@ -20,8 +20,9 @@ var getISODay = require('../get_iso_day/index.js')
  * var result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-function setISODay (dirtyDate, day) {
+function setISODay (dirtyDate, dirtyDay) {
   var date = parse(dirtyDate)
+  var day = Number(dirtyDay)
   var currentDay = getISODay(date)
   var diff = day - currentDay
   return addDays(date, diff)

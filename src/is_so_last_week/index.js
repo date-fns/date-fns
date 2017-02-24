@@ -20,8 +20,8 @@ var addWeeks = require('../add_weeks/index.js')
  * )
  * //=> true
  */
-function isSoLastWeek (dirtyDate, options) {
-  return isSameWeek(new Date(), addWeeks(dirtyDate, 1), options)
+function isSoLastWeek (dirtyDate, dirtyOptions) {
+  return isSameWeek(new Date(), addWeeks(dirtyDate, 1), dirtyOptions)
 }
 
 module.exports = isSoLastWeek

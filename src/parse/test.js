@@ -222,6 +222,12 @@ describe('parse', function () {
     })
   })
 
+  it('implicitly converts options', function () {
+    // $ExpectedMistake
+    var result = parse('+12340702', {additionalDigits: '0'})
+    assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
+  })
+
   describe('failure', function () {
     it('the fallback to `new Date` if the string is not an ISO formatted date', function () {
       var result = parse(new Date(2014, 8 /* Sep */, 1, 11).toString())

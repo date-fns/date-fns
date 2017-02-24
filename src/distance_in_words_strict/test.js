@@ -144,6 +144,7 @@ describe('distanceInWordsStrict', function () {
         assert(result === '120 seconds')
       })
     })
+
     context('m', function () {
       it('0 minutes', function () {
         var result = distanceInWordsStrict(
@@ -354,6 +355,44 @@ describe('distanceInWordsStrict', function () {
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 30),
         {partialMethod: 'round'}
+      )
+      assert(result === '2 minutes')
+    })
+  })
+
+  describe('implicit conversion of options', function () {
+    it('`options.unit`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var unit = new String('Y')
+
+      var result = distanceInWordsStrict(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 0),
+        // $ExpectedMistake
+        {unit: unit}
+      )
+      assert(result === '0 years')
+    })
+
+    it('`options.addSuffix`', function () {
+      var result = distanceInWordsStrict(
+        new Date(1986, 3, 4, 10, 32, 25),
+        new Date(1986, 3, 4, 10, 32, 0),
+        // $ExpectedMistake
+        {addSuffix: 1}
+      )
+      assert(result === '25 seconds ago')
+    })
+
+    it('`options.ceil`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var partialMethod = new String('ceil')
+
+      var result = distanceInWordsStrict(
+        new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 33, 1),
+        // $ExpectedMistake
+        {partialMethod: partialMethod}
       )
       assert(result === '2 minutes')
     })

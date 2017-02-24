@@ -91,8 +91,8 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'pli ol 1 jaro'
  */
-function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
-  options = options || {}
+function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
 
@@ -103,7 +103,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, options) {
   }
 
   var localizeOptions = {
-    addSuffix: options.addSuffix,
+    addSuffix: Boolean(options.addSuffix),
     comparison: comparison
   }
 

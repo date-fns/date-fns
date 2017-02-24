@@ -91,8 +91,8 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
-  options = options || {}
+function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+  var options = dirtyOptions || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
 
@@ -103,7 +103,7 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
   }
 
   var localizeOptions = {
-    addSuffix: options.addSuffix,
+    addSuffix: Boolean(options.addSuffix),
     comparison: comparison
   }
 
@@ -116,14 +116,16 @@ function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, options) {
     dateRight = parse(dirtyDateToCompare)
   }
 
-  var unit = options.unit
-  var mathPartial = Math[options.partialMethod || 'floor']
+  var unit
+  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']
   var seconds = differenceInSeconds(dateRight, dateLeft)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = mathPartial(seconds / 60) - offset
   var hours, days, months, years
 
-  if (!unit) {
+  if (options.unit) {
+    unit = String(options.unit)
+  } else {
     if (minutes < 1) {
       unit = 's'
     } else if (minutes < 60) {

@@ -16,7 +16,8 @@ var addWeeks = require('../add_weeks/index.js')
  * var result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-function subWeeks (dirtyDate, amount) {
+function subWeeks (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
   return addWeeks(dirtyDate, -amount)
 }
 

@@ -20,6 +20,12 @@ describe('setDayOfYear', function () {
     assert.deepEqual(result, new Date(2014, 2 /* Mar */, 1))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), '2')
+    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
     setDayOfYear(date, 365)

@@ -21,8 +21,9 @@ var differenceInCalendarDays = require('../difference_in_calendar_days/index.js'
  * var result = setISOYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-function setISOYear (dirtyDate, isoYear) {
+function setISOYear (dirtyDate, dirtyISOYear) {
   var date = parse(dirtyDate)
+  var isoYear = Number(dirtyISOYear)
   var diff = differenceInCalendarDays(date, startOfISOYear(date))
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(isoYear, 0, 4)

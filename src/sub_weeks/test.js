@@ -20,6 +20,12 @@ describe('subWeeks', function () {
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 25))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = subWeeks(new Date(2014, 8 /* Sep */, 1), '4')
+    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 4))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     subWeeks(date, 2)

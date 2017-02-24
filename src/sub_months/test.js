@@ -20,6 +20,12 @@ describe('subMonths', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = subMonths(new Date(2015, 1 /* Feb */, 1), '5')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1)
     subMonths(date, 12)

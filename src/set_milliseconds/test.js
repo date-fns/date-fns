@@ -20,6 +20,12 @@ describe('setMilliseconds', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 15, 755))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setMilliseconds(new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500), '300')
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 300))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
     setMilliseconds(date, 137)

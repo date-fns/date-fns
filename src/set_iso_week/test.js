@@ -20,6 +20,12 @@ describe('setISOWeek', function () {
     assert.deepEqual(result, new Date(2008, 11 /* Dec */, 31))
   })
 
+  it('implicitly converts number arguments', function () {
+    // $ExpectedMistake
+    var result = setISOWeek(new Date(2004, 7 /* Aug */, 7), '53')
+    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+  })
+
   it('does not mutate the original date', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
     setISOWeek(date, 52)

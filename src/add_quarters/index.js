@@ -16,7 +16,8 @@ var addMonths = require('../add_months/index.js')
  * var result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-function addQuarters (dirtyDate, amount) {
+function addQuarters (dirtyDate, dirtyAmount) {
+  var amount = Number(dirtyAmount)
   var months = amount * 3
   return addMonths(dirtyDate, months)
 }

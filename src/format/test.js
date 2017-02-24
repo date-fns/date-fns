@@ -333,6 +333,16 @@ describe('format', function () {
     })
   })
 
+  it('implicitly converts options', function () {
+    // eslint-disable-next-line no-new-wrappers
+    var formatString = new String('YYYY-MM-DD')
+
+    var date = new Date(2014, 3, 4)
+
+    // $ExpectedMistake
+    assert(format(date, formatString) === '2014-04-04')
+  })
+
   describe('custom locale', function () {
     it('can be passed to the function', function () {
       var currentDate = this._date

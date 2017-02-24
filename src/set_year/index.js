@@ -16,8 +16,9 @@ var parse = require('../parse/index.js')
  * var result = setYear(new Date(2014, 8, 1), 2013)
  * //=> Sun Sep 01 2013 00:00:00
  */
-function setYear (dirtyDate, year) {
+function setYear (dirtyDate, dirtyYear) {
   var date = parse(dirtyDate)
+  var year = Number(dirtyYear)
   date.setFullYear(year)
   return date
 }

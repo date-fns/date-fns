@@ -16,8 +16,9 @@ var parse = require('../parse/index.js')
  * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-function setMinutes (dirtyDate, minutes) {
+function setMinutes (dirtyDate, dirtyMinutes) {
   var date = parse(dirtyDate)
+  var minutes = Number(dirtyMinutes)
   date.setMinutes(minutes)
   return date
 }
