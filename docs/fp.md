@@ -10,6 +10,8 @@ that support [currying](https://en.wikipedia.org/wiki/Currying).
 
 - [Using Function Composition](#using-function-composition)
 
+- [ECMAScript Modules](#ecmascript-modules)
+
 ## Usage
 
 FP functions are provided via `'date-fns/fp'` submodule.
@@ -68,3 +70,15 @@ import flow from 'lodash/fp/flow'
 
 const formattedDates = dates.map(flow(addFiveYears, dateToString, toUpper))
 ```
+
+## ECMAScript Modules
+
+FP functions are also can be used with bundlers that support tree-shaking,
+like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org)
+via `'date-fns/esm/fp'` submodule:
+
+```javascript
+import {addYears, formatWithOptions} from 'date-fns/esm/fp'
+```
+
+Read more in [ECMAScript Modules](docs/esm) article in the documentation.
