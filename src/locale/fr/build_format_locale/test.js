@@ -291,8 +291,38 @@ describe('fr locale > buildFormatLocale', function () {
 
     describe('Wo', function () {
       it('returns ordinal result of W formatter', function () {
-        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}) === '1er')
+        assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 1 }}) === '1re')
         assert(buildFormatLocale().formatters.Wo(null, {W: function () { return 2 }}) === '2e')
+      })
+    })
+
+    describe('Do MMM & Do MMMM', function () {
+      it('returns ordinal for day of month 1', function () {
+        var january1st = new Date(2017, 0 /* Jan */, 1)
+        var formatters = {
+          D: function () {
+            return 1
+          }
+        }
+        assert(buildFormatLocale().formatters.Do(january1st, formatters) === '1er')
+        assert(buildFormatLocale().formatters.MMM(january1st, formatters) === 'janv.')
+        assert(buildFormatLocale().formatters['Do MMM'](january1st, formatters) === '1er janv.')
+        assert(buildFormatLocale().formatters.MMMM(january1st, formatters) === 'janvier')
+        assert(buildFormatLocale().formatters['Do MMMM'](january1st, formatters) === '1er janvier')
+      })
+
+      it('returns cardinal for day of month other than 1', function () {
+        var january2nd = new Date(2017, 0 /* Jan */, 2)
+        var formatters = {
+          D: function () {
+            return 2
+          }
+        }
+        assert(buildFormatLocale().formatters.Do(january2nd, formatters) === '2e')
+        assert(buildFormatLocale().formatters.MMM(january2nd, formatters) === 'janv.')
+        assert(buildFormatLocale().formatters['Do MMM'](january2nd, formatters) === '2 janv.')
+        assert(buildFormatLocale().formatters.MMMM(january2nd, formatters) === 'janvier')
+        assert(buildFormatLocale().formatters['Do MMMM'](january2nd, formatters) === '2 janvier')
       })
     })
   })
