@@ -951,7 +951,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.27.2...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.0...HEAD
+[1.28.0]: https://github.com/date-fns/date-fns/compare/v1.27.2...v1.28.0
 [1.27.2]: https://github.com/date-fns/date-fns/compare/v1.27.1...v1.27.2
 [1.27.1]: https://github.com/date-fns/date-fns/compare/v1.27.0...v1.27.1
 [1.27.0]: https://github.com/date-fns/date-fns/compare/v1.26.0...v1.27.0
