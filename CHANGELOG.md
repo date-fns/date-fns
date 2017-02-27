@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.0] - 2017-02-27
+
 ### Added
 
 - [Romanian locale (ro)](https://github.com/date-fns/date-fns/pull/446)
@@ -17,9 +19,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Fixed
 
-- All functions now converts all their arguments to the respective types.
+- All functions now convert all their arguments to the respective types.
   See PR: [#443](https://github.com/date-fns/date-fns/pull/443)
+
 - Fixes for ordinals (1er, 2, 3, …) in French locale.
+  Thanks to [@fbonzon](https://github.com/fbonzon).
   See PR: [#449](https://github.com/date-fns/date-fns/pull/449)
 
 ## [1.27.2] - 2017-02-01

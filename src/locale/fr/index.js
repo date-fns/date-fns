@@ -5,6 +5,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @category Locales
  * @summary French locale.
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
+ * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
