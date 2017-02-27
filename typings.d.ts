@@ -3214,6 +3214,7 @@ declare module 'date-fns/locale/nb' {}
 declare module 'date-fns/locale/nl' {}
 declare module 'date-fns/locale/pl' {}
 declare module 'date-fns/locale/pt' {}
+declare module 'date-fns/locale/ro' {}
 declare module 'date-fns/locale/ru' {}
 declare module 'date-fns/locale/sk' {}
 declare module 'date-fns/locale/sv' {}
@@ -3245,6 +3246,7 @@ declare module 'date-fns/locale/nb/index' {}
 declare module 'date-fns/locale/nl/index' {}
 declare module 'date-fns/locale/pl/index' {}
 declare module 'date-fns/locale/pt/index' {}
+declare module 'date-fns/locale/ro/index' {}
 declare module 'date-fns/locale/ru/index' {}
 declare module 'date-fns/locale/sk/index' {}
 declare module 'date-fns/locale/sv/index' {}
@@ -3276,6 +3278,7 @@ declare module 'date-fns/locale/nb/index.js' {}
 declare module 'date-fns/locale/nl/index.js' {}
 declare module 'date-fns/locale/pl/index.js' {}
 declare module 'date-fns/locale/pt/index.js' {}
+declare module 'date-fns/locale/ro/index.js' {}
 declare module 'date-fns/locale/ru/index.js' {}
 declare module 'date-fns/locale/sk/index.js' {}
 declare module 'date-fns/locale/sv/index.js' {}
