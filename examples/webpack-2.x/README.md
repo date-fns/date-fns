@@ -3,7 +3,7 @@
 **Important**: as at webpack 2.2.0, tree-shaking is not removing all unused imports.
 See [webpack issue #2867](https://github.com/webpack/webpack/issues/2867)
 
-See [example.js](./example.js) and [misc.js](./misc.js) for source code examples.
+See [example.js](./example.js), [fp.js](./fp.js) and [misc.js](./misc.js) for source code examples.
 
 See [package.json scripts](./package.json) for CLI usage.
 

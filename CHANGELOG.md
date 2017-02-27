@@ -10,6 +10,66 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
+  that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
+  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)).
+
+  Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
+  and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
+
+  In FP functions, the order of arguments is reversed.
+
+  See [FP Guide](docs/fp) for more information.
+
+  ```javascript
+  import addYears from 'date-fns/fp/addYears'
+  import formatWithOptions from 'date-fns/fp/formatWithOptions'
+  import eoLocale from 'date-fns/locale/eo'
+
+  // If FP function has not recieved enough arguments, it returns another function
+  const addFiveYears = addYears(5)
+
+  // Several arguments can be curried at once
+  const dateToString = formatWithOptions({locale: eoLocale}, 'D MMMM YYYY')
+
+  const dates = [
+    new Date(2017, 0 /* Jan */, 1),
+    new Date(2017, 1 /* Feb */, 11),
+    new Date(2017, 6 /* Jul */, 2)
+  ]
+
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
+  ```
+
+- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
+  via `'date-fns/esm'` subpackage.
+
+  It allows usage with bundlers that support tree-shaking,
+  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
+
+  ```javascript
+  // Without tree-shaking:
+  import format from 'date-fns/format'
+  import parse from 'date-fns/parse'
+
+  // With tree-shaking:
+  import {format, parse} from 'date-fns/esm'
+  ```
+
+  Also, as `'date-fns/esm'` function submodules provide default export,
+  they can be used with TypeScript to import functions in more idiomatic way:
+
+  ```typescript
+  // In TypeScript,
+  import * as format from 'date-fns/format'
+
+  // is same as:
+  import format from 'date-fns/esm/format'
+  ```
+
 ### Changed
 
 - **BREAKING**: min and max functions now accept an array of dates
@@ -238,32 +298,6 @@ rather than spread arguments.
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
-
-- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
-  via `'date-fns/esm'` subpackage.
-
-  It allows usage with bundlers that support tree-shaking,
-  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
-
-  ```javascript
-  // Without tree-shaking:
-  import format from 'date-fns/format'
-  import parse from 'date-fns/parse'
-
-  // With tree-shaking:
-  import {format, parse} from 'date-fns/esm'
-  ```
-
-  Also, as `'date-fns/esm'` function submodules provide default export,
-  they can be used with TypeScript to import functions in more idiomatic way:
-
-  ```typescript
-  // In TypeScript,
-  import * as format from 'date-fns/format'
-
-  // is same as:
-  import format from 'date-fns/esm/format'
-  ```
 
 ## [1.28.2] - 2017-03-27
 

@@ -20,9 +20,6 @@ babel src --source-root src --out-dir "$dir" --ignore test.js,benchmark.js --cop
 
 # Copy ES (a.k.a. ES6, ES2016, ES2017, etc.) files
 
-# Copy esm/index.js
-cp ./src/esm/index.js "$dir/esm"
-
 # Copy the source code
 for fnDir in `ls -d ./src/*/ | sed 's/\.\/src\///' | sed 's/\///'`
 do
@@ -31,8 +28,12 @@ do
     continue
   fi
 
-  cp -r "./src/$fnDir" "$dir/esm/$fnDir"
+  cp -r "./src/$fnDir" "$dir/esm/"
 done
+
+# Copy esm/index.js and esm/fp/index.js
+cp ./src/esm/index.js "$dir/esm/index.js"
+cp ./src/esm/fp/index.js "$dir/esm/fp/index.js"
 
 # Copy docs
 cp dist/date_fns_docs.json "$dir/docs.json"
@@ -69,13 +70,20 @@ done
 # Copy TypeScript's sub_sub_module_package.json to es directories
 for esmModule in $dir/esm/*/
 do
-  esModule=${esmModule%*/}
+  esmModule=${esmModule%*/}
   cp scripts/sub_sub_module_package.json "$esmModule/package.json"
 done
 
 # Copy TypeScript's sub_sub_sub_module_package.json to es locale directories
 for esmLocale in $dir/esm/locale/*/
 do
-  esLocale=${esmLocale%*/}
+  esmLocale=${esmLocale%*/}
   cp scripts/sub_sub_sub_module_package.json "$esmLocale/package.json"
+done
+
+# Copy TypeScript's sub_sub_sub_module_package.json to fp locale directories
+for esmFpModule in $dir/esm/fp/*/
+do
+  esmFpModule=${esmFpModule%*/}
+  cp scripts/sub_sub_sub_module_package.json "$esmFpModule/package.json"
 done
