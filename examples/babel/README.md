@@ -1,4 +1,4 @@
-# Usage With webpack 1.x
+# Usage With babel, webpack and babel-plugin-date-fns
 
 See [example.js](./example.js) for source code example.
 
