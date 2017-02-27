@@ -79,7 +79,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 2. Fork the project and clone the fork repo.
 
-3. Run `yarn` or `npm install` to install the application dependencies
+3. Run `yarn` or `npm install` to install the application dependencies.
 
 ## Code Style Guide
 

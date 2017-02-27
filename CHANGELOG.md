@@ -19,6 +19,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - All functions now converts all their arguments to the respective types.
   See PR: [#443](https://github.com/date-fns/date-fns/pull/443)
+- Fixes for ordinals (1er, 2, 3, …) in French locale.
+  See PR: [#449](https://github.com/date-fns/date-fns/pull/449)
 
 ## [1.27.2] - 2017-02-01
 
