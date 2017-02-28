@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import startOfUTCISOWeek from '.'
 
-describe('startOfUTCISOWeek', function () {
+describe('format > startOfUTCISOWeek', function () {
   it('returns the date with the time setted to 00:00:00 and the date setted to the first day of an ISO week', function () {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     var result = startOfUTCISOWeek(date)

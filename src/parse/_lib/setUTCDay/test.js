@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import setUTCDay from '.'
 
-describe('setUTCDay', function () {
+describe('parse > setUTCDay', function () {
   it('sets the day of the week', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0)
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
@@ -57,6 +57,16 @@ describe('setUTCDay', function () {
   it('accepts a timestamp', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)).getTime(), 3)
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 3)))
+  })
+
+  it('implicitly converts number arguments', function () {
+    var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), '0')
+    assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
+  })
+
+  it('implicitly converts options', function () {
+    var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {weekStartsOn: '1'})
+    assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
 
   it('does not mutate the original date', function () {
