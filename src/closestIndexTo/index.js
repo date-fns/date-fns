@@ -24,15 +24,15 @@ import toDate from '../toDate/index.js'
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, options) {
-  var dateToCompare = toDate(dirtyDateToCompare, options)
+export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, dirtyOptions) {
+  var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate, index) {
-    var currentDate = toDate(dirtyDate, options)
+    var currentDate = toDate(dirtyDate, dirtyOptions)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = index

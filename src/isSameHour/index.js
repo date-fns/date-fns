@@ -21,9 +21,9 @@ import startOfHour from '../startOfHour/index.js'
  * )
  * //=> true
  */
-export default function isSameHour (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft, options)
-  var dateRightStartOfHour = startOfHour(dirtyDateRight, options)
+export default function isSameHour (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfHour = startOfHour(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfHour = startOfHour(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }

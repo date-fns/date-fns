@@ -21,8 +21,8 @@ import cloneObject from '../_lib/cloneObject/index.js'
  * var result = lastDayOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function lastDayOfISOWeek (dirtyDate, options) {
-  var lastDayOfWeekOptions = cloneObject(options)
+export default function lastDayOfISOWeek (dirtyDate, dirtyOptions) {
+  var lastDayOfWeekOptions = cloneObject(dirtyOptions)
   lastDayOfWeekOptions.weekStartsOn = 1
   return lastDayOfWeek(dirtyDate, lastDayOfWeekOptions)
 }

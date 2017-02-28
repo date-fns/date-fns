@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
-export default function getMonth (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getMonth (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var month = date.getMonth()
   return month
 }

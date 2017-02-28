@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getYear (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getFullYear()
   return year
 }

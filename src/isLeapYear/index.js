@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function isLeapYear (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getFullYear()
   return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
 }

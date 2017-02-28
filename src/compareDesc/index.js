@@ -35,10 +35,10 @@ import toDate from '../toDate/index.js'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
+export default function compareDesc (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
   var timeLeft = dateLeft.getTime()
-  var dateRight = toDate(dirtyDateRight, options)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
   var timeRight = dateRight.getTime()
 
   if (timeLeft > timeRight) {

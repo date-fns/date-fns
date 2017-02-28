@@ -23,7 +23,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * )
  * //=> 12
  */
-export default function differenceInHours (dirtyDateLeft, dirtyDateRight, options) {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, options) / MILLISECONDS_IN_HOUR
+export default function differenceInHours (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, dirtyOptions) / MILLISECONDS_IN_HOUR
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

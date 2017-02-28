@@ -24,16 +24,16 @@ import compareDesc from '../compareDesc/index.js'
  * )
  * //=> 365
  */
-export default function differenceInDays (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInDays (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
-  var sign = compareDesc(dateLeft, dateRight, options)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, options))
+  var sign = compareDesc(dateLeft, dateRight, dirtyOptions)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, dirtyOptions))
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   dateRight.setDate(dateRight.getDate() - sign * difference)
-  var isLastDayNotFull = compareDesc(dateLeft, dateRight, options) === -sign
+  var isLastDayNotFull = compareDesc(dateLeft, dateRight, dirtyOptions) === -sign
   return sign * (difference - isLastDayNotFull)
 }
