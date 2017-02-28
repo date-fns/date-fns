@@ -108,12 +108,15 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse (dateString, formatString, dirtyBaseDate, options) {
+export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
+  var dateString = String(dirtyDateString)
+  var formatString = String(dirtyFormatString)
+
   if (formatString === '') {
     return ''
   }
 
-  options = options || {}
+  var options = dirtyOptions || {}
 
   var locale = options.locale
   var localeParsers = enLocale.parse.parsers

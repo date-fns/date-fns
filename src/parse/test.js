@@ -510,6 +510,32 @@ describe('parse', function () {
     })
   })
 
+  describe('implicit conversion of options', function () {
+    it('`dateString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var dateString = new String('20161105T040404')
+      // $ExpectedMistake
+      var result = parse(dateString, 'YYYYMMDDTHHmmss', baseDate)
+      assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
+    })
+
+    it('`formatString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var formatString = new String('YYYYMMDDTHHmmss')
+      // $ExpectedMistake
+      var result = parse('20161105T040404', formatString, baseDate)
+      assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
+    })
+
+    it('`options.weekStartsOn`', function () {
+      var dateString = '0'
+      var formatString = 'd'
+      // $ExpectedMistake
+      var result = parse(dateString, formatString, baseDate, {weekStartsOn: '1'})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+    })
+  })
+
   describe('custom locale', function () {
     it('can be passed to the function', function () {
       var units = {
