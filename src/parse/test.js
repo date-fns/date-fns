@@ -729,4 +729,64 @@ describe('parse', function () {
       })
     })
   })
+
+  it('accepts a string as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.toISOString())
+    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
+  })
+
+  it('accepts a timestamp as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.getTime())
+    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
+  })
+
+  it('does not mutate `baseDate`', function () {
+    var baseDateClone1 = new Date(baseDate.getTime())
+    var baseDateClone2 = new Date(baseDate.getTime())
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDateClone1)
+    assert.deepEqual(baseDateClone1, baseDateClone2)
+  })
+
+  describe('failure', function () {
+    it('returns `baseDate` if `dateString` and `formatString` are empty strings', function () {
+      var dateString = ''
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('returns `baseDate` if no tokens in `formatString` are provided', function () {
+      var dateString = 'not a token'
+      var formatString = '[not a token]'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('fallbacks to `toDate` if `formatString` doesn\'t match with `dateString`', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'YYYY/MM/DD'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    it('fallbacks to `toDate` if `formatString` tokens failed to parse a value', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'MMMM Do YYYY'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    it('fallbacks to `toDate` if `formatString` is empty string but `dateString` is not', function () {
+      var dateString = '2017-01-01'
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+  })
 })

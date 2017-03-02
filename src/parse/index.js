@@ -78,7 +78,8 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * The result may vary by locale.
  *
- * If no format is provided, the string will be parsed using ISO 8601 formats.
+ * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ * If parsing failed, `toDate(dateString, options)` will be used as a fallback.
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
@@ -111,12 +112,16 @@ var MILLISECONDS_IN_MINUTE = 60000
 export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)
+  var options = dirtyOptions || {}
 
   if (formatString === '') {
-    return ''
+    if (dateString === '') {
+      return toDate(dirtyBaseDate, options)
+    } else {
+      return toDate(dirtyDateString, options)
+    }
   }
 
-  var options = dirtyOptions || {}
 
   var locale = options.locale
   var localeParsers = enLocale.parse.parsers
@@ -152,7 +157,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       var matchResult = parser.match.exec(dateString)
 
       if (!matchResult) {
-        return null
+        return toDate(dirtyDateString, options)
       }
 
       var unitName = parser.unit
@@ -174,7 +179,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       if (dateString.indexOf(head) === 0) {
         dateString = dateString.slice(head.length)
       } else {
-        return null
+        return toDate(dirtyDateString, options)
       }
     }
   }
