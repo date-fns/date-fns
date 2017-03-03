@@ -79,7 +79,10 @@ var MILLISECONDS_IN_MINUTE = 60000
  * The result may vary by locale.
  *
  * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
- * If parsing failed, `toDate(dateString, options)` will be used as a fallback.
+ *
+ * If parsing failed, `Invalid Date` will be returned.
+ * Invalid Date is a Date, whose time value is NaN.
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
@@ -118,7 +121,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     if (dateString === '') {
       return toDate(dirtyBaseDate, options)
     } else {
-      return toDate(dirtyDateString, options)
+      return new Date(NaN)
     }
   }
 
@@ -157,7 +160,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       var matchResult = parser.match.exec(dateString)
 
       if (!matchResult) {
-        return toDate(dirtyDateString, options)
+        return new Date(NaN)
       }
 
       var unitName = parser.unit
@@ -179,7 +182,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       if (dateString.indexOf(head) === 0) {
         dateString = dateString.slice(head.length)
       } else {
-        return toDate(dirtyDateString, options)
+        return new Date(NaN)
       }
     }
   }

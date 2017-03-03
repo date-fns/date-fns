@@ -768,25 +768,25 @@ describe('parse', function () {
       assert.deepEqual(result, baseDate)
     })
 
-    it('fallbacks to `toDate` if `formatString` doesn\'t match with `dateString`', function () {
+    it('returns `Invalid Date`  if `formatString` doesn\'t match with `dateString`', function () {
       var dateString = '2017-01-01'
       var formatString = 'YYYY/MM/DD'
       var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+      assert(result instanceof Date && isNaN(result))
     })
 
-    it('fallbacks to `toDate` if `formatString` tokens failed to parse a value', function () {
+    it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', function () {
       var dateString = '2017-01-01'
       var formatString = 'MMMM Do YYYY'
       var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+      assert(result instanceof Date && isNaN(result))
     })
 
-    it('fallbacks to `toDate` if `formatString` is empty string but `dateString` is not', function () {
+    it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', function () {
       var dateString = '2017-01-01'
       var formatString = ''
       var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+      assert(result instanceof Date && isNaN(result))
     })
   })
 })
