@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setSeconds
  * @category Second Helpers
  * @summary Set the seconds to the given date.
  *
@@ -9,6 +10,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} seconds - the seconds of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the seconds setted
  *
  * @example
@@ -16,11 +18,9 @@ var parse = require('../parse/index.js')
  * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-function setSeconds (dirtyDate, dirtySeconds) {
-  var date = parse(dirtyDate)
+export default function setSeconds (dirtyDate, dirtySeconds, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var seconds = Number(dirtySeconds)
   date.setSeconds(seconds)
   return date
 }
-
-module.exports = setSeconds

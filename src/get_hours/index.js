@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getHours
  * @category Hour Helpers
  * @summary Get the hours of the given date.
  *
@@ -8,6 +9,7 @@ var parse = require('../parse/index.js')
  * Get the hours of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the hours
  *
  * @example
@@ -15,10 +17,8 @@ var parse = require('../parse/index.js')
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-function getHours (dirtyDate) {
-  var date = parse(dirtyDate)
+export default function getHours (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var hours = date.getHours()
   return hours
 }
-
-module.exports = getHours

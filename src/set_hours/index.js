@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name setHours
  * @category Hour Helpers
  * @summary Set the hours to the given date.
  *
@@ -9,6 +10,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} hours - the hours of the new date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours setted
  *
  * @example
@@ -16,11 +18,9 @@ var parse = require('../parse/index.js')
  * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-function setHours (dirtyDate, dirtyHours) {
-  var date = parse(dirtyDate)
+export default function setHours (dirtyDate, dirtyHours, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var hours = Number(dirtyHours)
   date.setHours(hours)
   return date
 }
-
-module.exports = setHours

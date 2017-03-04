@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getDay
  * @category Weekday Helpers
  * @summary Get the day of the week of the given date.
  *
@@ -8,6 +9,7 @@ var parse = require('../parse/index.js')
  * Get the day of the week of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of week
  *
  * @example
@@ -15,10 +17,8 @@ var parse = require('../parse/index.js')
  * var result = getDay(new Date(2012, 1, 29))
  * //=> 3
  */
-function getDay (dirtyDate) {
-  var date = parse(dirtyDate)
+export default function getDay (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var day = date.getDay()
   return day
 }
-
-module.exports = getDay

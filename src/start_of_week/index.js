@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name startOfWeek
  * @category Week Helpers
  * @summary Return the start of a week for the given date.
  *
@@ -9,7 +10,7 @@ var parse = require('../parse/index.js')
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the start of a week
  *
@@ -23,10 +24,10 @@ var parse = require('../parse/index.js')
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), {weekStartsOn: 1})
  * //=> Mon Sep 01 2014 00:00:00
  */
-function startOfWeek (dirtyDate, dirtyOptions) {
+export default function startOfWeek (dirtyDate, dirtyOptions) {
   var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
 
-  var date = parse(dirtyDate)
+  var date = toDate(dirtyDate, dirtyOptions)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 
@@ -34,5 +35,3 @@ function startOfWeek (dirtyDate, dirtyOptions) {
   date.setHours(0, 0, 0, 0)
   return date
 }
-
-module.exports = startOfWeek

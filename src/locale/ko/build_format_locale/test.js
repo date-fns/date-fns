@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var buildFormatLocale = require('./')
+import assert from 'power-assert'
+import buildFormatLocale from '.'
 
 describe('ko locale > buildFormatLocale', function () {
   it('returns an object', function () {
@@ -16,245 +16,245 @@ describe('ko locale > buildFormatLocale', function () {
 
     describe('MMM', function () {
       it('returns the correct string for January', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 0)) === '1월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 0))) === '1월')
       })
 
       it('returns the correct string for February', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 1)) === '2월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 1))) === '2월')
       })
 
       it('returns the correct string for March', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 2)) === '3월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 2))) === '3월')
       })
 
       it('returns the correct string for April', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2015, 3)) === '4월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2015, 3))) === '4월')
       })
 
       it('returns the correct string for May', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 4)) === '5월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 4))) === '5월')
       })
 
       it('returns the correct string for June', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 5)) === '6월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 5))) === '6월')
       })
 
       it('returns the correct string for July', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 6)) === '7월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 6))) === '7월')
       })
 
       it('returns the correct string for August', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 7)) === '8월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 7))) === '8월')
       })
 
       it('returns the correct string for September', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 8)) === '9월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 8))) === '9월')
       })
 
       it('returns the correct string for October', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 9)) === '10월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 9))) === '10월')
       })
 
       it('returns the correct string for November', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 10)) === '11월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 10))) === '11월')
       })
 
       it('returns the correct string for December', function () {
-        assert(buildFormatLocale().formatters.MMM(new Date(2016, 11)) === '12월')
+        assert(buildFormatLocale().formatters.MMM(new Date(Date.UTC(2016, 11))) === '12월')
       })
     })
 
     describe('MMMM', function () {
       it('returns the correct string for January', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 0)) === '1월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 0))) === '1월')
       })
 
       it('returns the correct string for February', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 1)) === '2월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 1))) === '2월')
       })
 
       it('returns the correct string for March', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 2)) === '3월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 2))) === '3월')
       })
 
       it('returns the correct string for April', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2015, 3)) === '4월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2015, 3))) === '4월')
       })
 
       it('returns the correct string for May', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 4)) === '5월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 4))) === '5월')
       })
 
       it('returns the correct string for June', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 5)) === '6월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 5))) === '6월')
       })
 
       it('returns the correct string for July', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 6)) === '7월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 6))) === '7월')
       })
 
       it('returns the correct string for August', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 7)) === '8월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 7))) === '8월')
       })
 
       it('returns the correct string for September', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 8)) === '9월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 8))) === '9월')
       })
 
       it('returns the correct string for October', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 9)) === '10월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 9))) === '10월')
       })
 
       it('returns the correct string for November', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 10)) === '11월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 10))) === '11월')
       })
 
       it('returns the correct string for December', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 11)) === '12월')
+        assert(buildFormatLocale().formatters.MMMM(new Date(Date.UTC(2016, 11))) === '12월')
       })
     })
 
     describe('dd', function () {
       it('returns the correct string for Sunday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 7)) === '일')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 7))) === '일')
       })
 
       it('returns the correct string for Monday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 1)) === '월')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 1))) === '월')
       })
 
       it('returns the correct string for Tuesday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 2)) === '화')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 2))) === '화')
       })
 
       it('returns the correct string for Wednesday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 3)) === '수')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 3))) === '수')
       })
 
       it('returns the correct string for Thursday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 4)) === '목')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 4))) === '목')
       })
 
       it('returns the correct string for Friday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 5)) === '금')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 5))) === '금')
       })
 
       it('returns the correct string for Saturday', function () {
-        assert(buildFormatLocale().formatters.dd(new Date(2016, 1 /* Feb */, 6)) === '토')
+        assert(buildFormatLocale().formatters.dd(new Date(Date.UTC(2016, 1 /* Feb */, 6))) === '토')
       })
     })
 
     describe('ddd', function () {
       it('returns the correct string for Sunday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 7)) === '일')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 7))) === '일')
       })
 
       it('returns the correct string for Monday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 1)) === '월')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 1))) === '월')
       })
 
       it('returns the correct string for Tuesday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 2)) === '화')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 2))) === '화')
       })
 
       it('returns the correct string for Wednesday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 3)) === '수')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 3))) === '수')
       })
 
       it('returns the correct string for Thursday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 4)) === '목')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 4))) === '목')
       })
 
       it('returns the correct string for Friday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 5)) === '금')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 5))) === '금')
       })
 
       it('returns the correct string for Saturday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 6)) === '토')
+        assert(buildFormatLocale().formatters.ddd(new Date(Date.UTC(2016, 1 /* Feb */, 6))) === '토')
       })
     })
 
     describe('dddd', function () {
       it('returns the correct string for Sunday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 7)) === '일요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 7))) === '일요일')
       })
 
       it('returns the correct string for Monday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 1)) === '월요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 1))) === '월요일')
       })
 
       it('returns the correct string for Tuesday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === '화요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 2))) === '화요일')
       })
 
       it('returns the correct string for Wednesday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 3)) === '수요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 3))) === '수요일')
       })
 
       it('returns the correct string for Thursday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 4)) === '목요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 4))) === '목요일')
       })
 
       it('returns the correct string for Friday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 5)) === '금요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 5))) === '금요일')
       })
 
       it('returns the correct string for Saturday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 6)) === '토요일')
+        assert(buildFormatLocale().formatters.dddd(new Date(Date.UTC(2016, 1 /* Feb */, 6))) === '토요일')
       })
     })
 
     describe('A', function () {
       it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 1)) === '오전')
+        assert(buildFormatLocale().formatters.A(new Date(Date.UTC(2016, 1 /* Feb */, 11, 1))) === '오전')
       })
 
       it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 0)) === '오전')
+        assert(buildFormatLocale().formatters.A(new Date(Date.UTC(2016, 1 /* Feb */, 11, 0))) === '오전')
       })
 
       it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 13)) === '오후')
+        assert(buildFormatLocale().formatters.A(new Date(Date.UTC(2016, 1 /* Feb */, 11, 13))) === '오후')
       })
 
       it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.A(new Date(2016, 1 /* Feb */, 11, 12)) === '오후')
+        assert(buildFormatLocale().formatters.A(new Date(Date.UTC(2016, 1 /* Feb */, 11, 12))) === '오후')
       })
     })
 
     describe('a', function () {
       it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 1)) === '오전')
+        assert(buildFormatLocale().formatters.a(new Date(Date.UTC(2016, 1 /* Feb */, 11, 1))) === '오전')
       })
 
       it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 0)) === '오전')
+        assert(buildFormatLocale().formatters.a(new Date(Date.UTC(2016, 1 /* Feb */, 11, 0))) === '오전')
       })
 
       it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 13)) === '오후')
+        assert(buildFormatLocale().formatters.a(new Date(Date.UTC(2016, 1 /* Feb */, 11, 13))) === '오후')
       })
 
       it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.a(new Date(2016, 1 /* Feb */, 11, 12)) === '오후')
+        assert(buildFormatLocale().formatters.a(new Date(Date.UTC(2016, 1 /* Feb */, 11, 12))) === '오후')
       })
     })
 
     describe('aa', function () {
       it('returns the correct string for 1-11 a.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 1)) === '오전')
+        assert(buildFormatLocale().formatters.aa(new Date(Date.UTC(2016, 1 /* Feb */, 11, 1))) === '오전')
       })
 
       it('returns the correct string for 12 a.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 0)) === '오전')
+        assert(buildFormatLocale().formatters.aa(new Date(Date.UTC(2016, 1 /* Feb */, 11, 0))) === '오전')
       })
 
       it('returns the correct string for 1-11 p.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 13)) === '오후')
+        assert(buildFormatLocale().formatters.aa(new Date(Date.UTC(2016, 1 /* Feb */, 11, 13))) === '오후')
       })
 
       it('returns the correct string for 12 p.m.', function () {
-        assert(buildFormatLocale().formatters.aa(new Date(2016, 1 /* Feb */, 11, 12)) === '오후')
+        assert(buildFormatLocale().formatters.aa(new Date(Date.UTC(2016, 1 /* Feb */, 11, 12))) === '오후')
       })
     })
 

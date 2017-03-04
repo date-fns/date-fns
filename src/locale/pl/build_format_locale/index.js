@@ -1,6 +1,6 @@
-var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_reg_exp/index.js')
+import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
 
-function buildFormatLocale () {
+export default function buildFormatLocale () {
   var months3char = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru']
   var monthsFull = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
   var weekdays2char = ['nd.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.']
@@ -11,32 +11,32 @@ function buildFormatLocale () {
   var formatters = {
     // Month: Jan, Feb, ..., Dec
     'MMM': function (date) {
-      return months3char[date.getMonth()]
+      return months3char[date.getUTCMonth()]
     },
 
     // Month: January, February, ..., December
     'MMMM': function (date) {
-      return monthsFull[date.getMonth()]
+      return monthsFull[date.getUTCMonth()]
     },
 
     // Day of week: Su, Mo, ..., Sa
     'dd': function (date) {
-      return weekdays2char[date.getDay()]
+      return weekdays2char[date.getUTCDay()]
     },
 
     // Day of week: Sun, Mon, ..., Sat
     'ddd': function (date) {
-      return weekdays3char[date.getDay()]
+      return weekdays3char[date.getUTCDay()]
     },
 
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
-      return weekdaysFull[date.getDay()]
+      return weekdaysFull[date.getUTCDay()]
     },
 
     // Time of day
     'A': function (date) {
-      var hours = date.getHours()
+      var hours = date.getUTCHours()
       if (hours >= 17) {
         return meridiem[3]
       } else if (hours >= 12) {
@@ -63,8 +63,6 @@ function buildFormatLocale () {
 
   return {
     formatters: formatters,
-    formattingTokensRegExp: buildFormattingTokensRegExp(formatters)
+    formattingTokensRegExp: buildTokensRegExp(formatters)
   }
 }
-
-module.exports = buildFormatLocale

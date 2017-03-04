@@ -10,6 +10,300 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Added
+
+- FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
+  that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
+  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)).
+
+  Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
+  and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
+
+  In FP functions, the order of arguments is reversed.
+
+  See [FP Guide](docs/fp) for more information.
+
+  ```javascript
+  import addYears from 'date-fns/fp/addYears'
+  import formatWithOptions from 'date-fns/fp/formatWithOptions'
+  import eoLocale from 'date-fns/locale/eo'
+
+  // If FP function has not recieved enough arguments, it returns another function
+  const addFiveYears = addYears(5)
+
+  // Several arguments can be curried at once
+  const dateToString = formatWithOptions({locale: eoLocale}, 'D MMMM YYYY')
+
+  const dates = [
+    new Date(2017, 0 /* Jan */, 1),
+    new Date(2017, 1 /* Feb */, 11),
+    new Date(2017, 6 /* Jul */, 2)
+  ]
+
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
+  ```
+
+- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
+  via `'date-fns/esm'` subpackage.
+
+  It allows usage with bundlers that support tree-shaking,
+  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
+
+  ```javascript
+  // Without tree-shaking:
+  import format from 'date-fns/format'
+  import parse from 'date-fns/parse'
+
+  // With tree-shaking:
+  import {format, parse} from 'date-fns/esm'
+  ```
+
+  Also, as `'date-fns/esm'` function submodules provide default export,
+  they can be used with TypeScript to import functions in more idiomatic way:
+
+  ```typescript
+  // In TypeScript,
+  import * as format from 'date-fns/format'
+
+  // is same as:
+  import format from 'date-fns/esm/format'
+  ```
+
+### Changed
+
+- **BREAKING**: min and max functions now accept an array of dates
+  rather than spread arguments.
+
+  ```javascript
+  // Before v2.0.0
+  var date1 = new Date(1989, 6 /* Jul */, 10)
+  var date2 = new Date(1987, 1 /* Feb */, 11)
+
+  var minDate = min(date1, date2)
+  var maxDate = max(date1, date2)
+
+  // v2.0.0 onward
+  var dates = [new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)]
+
+  var minDate = min(dates)
+  var maxDate = max(dates)
+  ```
+
+- **BREAKING**: remove all functions that create the current date internally:
+
+  - `distanceInWordsToNow`
+  - `isFuture`
+  - `isPast`
+  - `endOfToday`
+  - `endOfTomorrow`
+  - `endOfYesterday`
+  - `startOfToday`
+  - `startOfTomorrow`
+  - `startOfYesterday`
+  - `isToday`
+  - `isTomorrow`
+  - `isYesterday`
+  - `isThisSecond`
+  - `isThisMinute`
+  - `isThisHour`
+  - `isThisWeek`
+  - `isThisISOWeek`
+  - `isThisMonth`
+  - `isThisQuarter`
+  - `isThisYear`
+  - `isThisISOYear`
+
+  These functions are not pure, cannot have FP-versions [#253](https://github.com/date-fns/date-fns/issues/253)
+  and would add extra code for UTC-versions [#376](https://github.com/date-fns/date-fns/issues/376).
+
+  See issue: [#377](https://github.com/date-fns/date-fns/issues/377)
+
+  ```javascript
+  // Before v2.0.0
+  var result = endOfToday()
+
+  // v2.0.0 onward
+  var result = endOfDay(new Date())
+  ```
+
+  Upgrade guide:
+
+  - `distanceInWordsToNow(date)` → `distanceInWords(new Date(), date)`
+  - `isFuture(date)` → `isAfter(date, new Date())`
+  - `isPast(date)` → `isBefore(date, new Date())`
+  - `endOfToday()` → `endOfDay(new Date())`
+  - `endOfTomorrow()` → `endOfDay(addDays(new Date(), 1))`
+  - `endOfYesterday()` → `endOfDay(subDays(new Date(), 1))`
+  - `startOfToday()` → `startOfDay(new Date())`
+  - `startOfTomorrow()` → `startOfDay(addDays(new Date(), 1))`
+  - `startOfYesterday()` → `startOfDay(subDays(new Date(), 1))`
+  - `isToday(date)` → `isSameDay(new Date(), date)`
+  - `isTomorrow(date)` → `isSameDay(date, addDays(new Date(), 1))`
+  - `isYesterday(date)` → `isSameDay(date, subDays(new Date(), 1))`
+  - `isThisSecond(date)` → `isSameSecond(date, new Date())`
+  - `isThisMinute(date)` → `isSameMinute(date, new Date())`
+  - `isThisHour(date)` → `isSameHour(date, new Date())`
+  - `isThisWeek(date)` → `isSameWeek(date, new Date())`
+  - `isThisISOWeek(date)` → `isSameISOWeek(date, new Date())`
+  - `isThisMonth(date)` → `isSameMonth(date, new Date())`
+  - `isThisQuarter(date)` → `isSameQuarter(date, new Date())`
+  - `isThisYear(date)` → `isSameYear(date, new Date())`
+  - `isThisISOYear(date)` → `isSameISOYear(date, new Date())`
+
+- **BREAKING**: make the second argument of `format` non-optional in favor of explicitness.
+
+  ```javascript
+  // Before v2.0.0
+  format(new Date(2016, 0, 1))
+
+  // v2.0.0 onward
+  format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
+  ```
+
+- **BREAKING**: functions renamed:
+
+  - `areRangesOverlapping` → `areIntervalsOverlapping`
+  - `eachDay` → `eachDayOfInterval`
+  - `getOverlappingDaysInRanges` → `getOverlappingDaysInIntervals`
+  - `isWithinRange` → `isWithinInterval`
+
+  This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
+
+  ```
+  2.1.3
+  time interval
+  part of the time axis limited by two instants
+  ```
+
+  Also these functions now accept an object with `start` and `end` properties
+  instead of two arguments as an interval. All these functions, as before,
+  throw an exception if the start of the interval is after its end.
+
+  ```javascript
+  // Before v2.0.0
+
+  areRangesOverlapping(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20))
+
+  getOverlappingDaysInRanges(
+    new Date(2014, 0, 10), new Date(2014, 0, 20),
+    new Date(2014, 0, 17), new Date(2014, 0, 21)
+  )
+
+  isWithinRange(
+    new Date(2014, 0, 3),
+    new Date(2014, 0, 1), new Date(2014, 0, 7)
+  )
+
+  // v2.0.0 onward
+
+  areIntervalsOverlapping(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  eachDayOfInterval({start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)})
+
+  getOverlappingDaysInIntervals(
+    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+  )
+
+  isWithinInterval(
+    new Date(2014, 0, 3),
+    {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
+  )
+  ```
+
+- **BREAKING**: `parse` renamed to `toDate`,
+  created a new function `parse` which parses a string using a provided format.
+
+  ```javascript
+  // Before v2.0.0
+  parse('2016-01-01')
+
+  // v2.0.0 onward
+  toDate('2016-01-01')
+  parse('2016-01-01', 'YYYY-MM-DD', new Date())
+  ```
+
+- **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
+  to make them consistent with `distanceInWords` and `distanceInWordsStrict` functions.
+  Now, the first date argument must be earlier then the second for function to return the positive number.
+
+  ```javascript
+  // Before v2.0.0
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> -1
+
+  // v2.0.0 onward
+  differenceInYears(
+    new Date(2013, 11, 31),
+    new Date(2015, 1, 11)
+  )
+  //=> 1
+  ```
+
+- **BREAKING**: now `format` throws an exception if the passed date is `Invalid Date`.
+
+  ```javascript
+  // Before v2.0.0
+  var result = format(date, 'YYYY-MM-DD')
+  if (result === 'Invalid Date') {
+    // ...
+  }
+
+  // v2.0.0 onward
+  try {
+    var result = format(date, 'YYYY-MM-DD')
+    // ...
+  } catch (e) {
+    // ...
+  }
+  ```
+
+- **BREAKING**: `format` now assumes that the provided locale uses UTC-versions of `Date` methods,
+  e.g. `getUTCMonth` instead of `getMonth`. All included locales are converted.
+  This change affects only those who uses custom locales.
+  Except handling of locales, behavior of `format` hasn't changed,
+  i.e. it still formats dates in the user timezone.
+
+  ```javascript
+  var weekdays = ['sundio', 'lundio', 'mardio', 'merkurdio', 'jovdio', 'venerdio', 'saturdio']
+
+  var customLocale = {
+    format: {
+      formatters: {
+        'dddd': function (date) {
+          // Before v2.0.0
+          return weekdays[date.getDay()]
+
+          // v2.0.0 onward
+          return weekdays[date.getUTCDay()]
+        }
+      },
+      formattingTokensRegExp: /(\[[^[]*])|(\\)?(dddd|.)/g
+    }
+  }
+
+  format('2017-01-01', 'dddd', {locale: customLocale}) //=> 'sundio'
+  ```
+
+- **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
+  when the second argument is not an instance of array.
+
+- Every function now has `options` as the last argument which is passed to all its dependencies
+  for consistency and future features.
+  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
+
 ## [1.28.0] - 2017-02-27
 
 ### Added
@@ -125,7 +419,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Added
 
-- `areRangesOverlapping` and `getOverlappingDayInRanges`
+- `areRangesOverlapping` and `getOverlappingDaysInRanges`
   Thanks to Joanna T [@asia-t](https://github.com/asia-t).
   See PR: [#331](https://github.com/date-fns/date-fns/pull/331)
 

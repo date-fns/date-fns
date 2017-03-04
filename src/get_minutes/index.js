@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getMinutes
  * @category Minute Helpers
  * @summary Get the minutes of the given date.
  *
@@ -8,6 +9,7 @@ var parse = require('../parse/index.js')
  * Get the minutes of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the minutes
  *
  * @example
@@ -15,10 +17,8 @@ var parse = require('../parse/index.js')
  * var result = getMinutes(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 45
  */
-function getMinutes (dirtyDate) {
-  var date = parse(dirtyDate)
+export default function getMinutes (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var minutes = date.getMinutes()
   return minutes
 }
-
-module.exports = getMinutes

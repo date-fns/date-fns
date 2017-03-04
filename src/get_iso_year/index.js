@@ -1,7 +1,8 @@
-var parse = require('../parse/index.js')
-var startOfISOWeek = require('../start_of_iso_week/index.js')
+import toDate from '../to_date/index.js'
+import startOfISOWeek from '../start_of_iso_week/index.js'
 
 /**
+ * @name getISOYear
  * @category ISO Week-Numbering Year Helpers
  * @summary Get the ISO week-numbering year of the given date.
  *
@@ -12,6 +13,7 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the ISO week-numbering year
  *
  * @example
@@ -19,19 +21,19 @@ var startOfISOWeek = require('../start_of_iso_week/index.js')
  * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-function getISOYear (dirtyDate) {
-  var date = parse(dirtyDate)
+export default function getISOYear (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var year = date.getFullYear()
 
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, options)
 
   var fourthOfJanuaryOfThisYear = new Date(0)
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, options)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
@@ -41,5 +43,3 @@ function getISOYear (dirtyDate) {
     return year - 1
   }
 }
-
-module.exports = getISOYear

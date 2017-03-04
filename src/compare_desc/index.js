@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name compareDesc
  * @category Common Helpers
  * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
  *
@@ -10,6 +11,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to compare
  * @param {Date|String|Number} dateRight - the second date to compare
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the result of the comparison
  *
  * @example
@@ -33,10 +35,10 @@ var parse = require('../parse/index.js')
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-function compareDesc (dirtyDateLeft, dirtyDateRight) {
-  var dateLeft = parse(dirtyDateLeft)
+export default function compareDesc (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeft = toDate(dirtyDateLeft, options)
   var timeLeft = dateLeft.getTime()
-  var dateRight = parse(dirtyDateRight)
+  var dateRight = toDate(dirtyDateRight, options)
   var timeRight = dateRight.getTime()
 
   if (timeLeft > timeRight) {
@@ -47,5 +49,3 @@ function compareDesc (dirtyDateLeft, dirtyDateRight) {
     return 0
   }
 }
-
-module.exports = compareDesc

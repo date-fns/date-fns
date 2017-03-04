@@ -1,26 +1,32 @@
 # Environment
 sudo: false
+dist: trusty
 language: node_js
 node_js:
   - 4
 
+env:
+  - TEST_SUITE=main
+  - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
+  - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=1
+  # TODO: Enable when SauceLabs become reliable
+  # - TEST_SUITE=cross_browser
+
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+
 branches:
   only:
     - master
+    - v2
     # Build git tags
     - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
 
 # Tests
 script:
-  - yarn run lint
-  - yarn run flow-check
-  - yarn run systemjs-check
-  - yarn run test-ci
-  - # TODO: Enable when SauceLabs become reliable
-  - # '[ "${SAUCE_USERNAME}" = "" ] || yarn run test-cross-browser'
-  - yarn run test-tz
-  - yarn run test-tz-extended
-  - yarn run count-tests
+  - yarn run test-travis
 
 # Deployment
 before_deploy:

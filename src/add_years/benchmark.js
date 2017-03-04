@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var addYears = require('./')
-var moment = require('moment')
+import addYears from '.'
+import moment from 'moment'
 
 suite('addYears', function () {
   benchmark('date-fns', function () {

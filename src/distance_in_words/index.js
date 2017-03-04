@@ -1,8 +1,8 @@
-var compareDesc = require('../compare_desc/index.js')
-var parse = require('../parse/index.js')
-var differenceInSeconds = require('../difference_in_seconds/index.js')
-var differenceInMonths = require('../difference_in_months/index.js')
-var enLocale = require('../locale/en/index.js')
+import compareDesc from '../compare_desc/index.js'
+import toDate from '../to_date/index.js'
+import differenceInSeconds from '../difference_in_seconds/index.js'
+import differenceInMonths from '../difference_in_months/index.js'
+import enLocale from '../locale/en/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -10,6 +10,7 @@ var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_TWO_MONTHS = 86400
 
 /**
+ * @name distanceInWords
  * @category Common Helpers
  * @summary Return the distance between the given dates in words.
  *
@@ -47,10 +48,10 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date|String|Number} date - the other date
- * @param {Object} [options] - the object with options
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
  *
  * @example
@@ -83,7 +84,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = distanceInWords(
  *   new Date(2016, 7, 1),
  *   new Date(2015, 0, 1),
@@ -91,10 +92,10 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * )
  * //=> 'pli ol 1 jaro'
  */
-function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+export default function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
   var options = dirtyOptions || {}
 
-  var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
+  var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
   var locale = options.locale
   var localize = enLocale.distanceInWords.localize
@@ -109,14 +110,14 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
 
   var dateLeft, dateRight
   if (comparison > 0) {
-    dateLeft = parse(dirtyDateToCompare)
-    dateRight = parse(dirtyDate)
+    dateLeft = toDate(dirtyDateToCompare, options)
+    dateRight = toDate(dirtyDate, options)
   } else {
-    dateLeft = parse(dirtyDate)
-    dateRight = parse(dirtyDateToCompare)
+    dateLeft = toDate(dirtyDate, options)
+    dateRight = toDate(dirtyDateToCompare, options)
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var seconds = differenceInSeconds(dateLeft, dateRight, options)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = Math.round(seconds / 60) - offset
   var months
@@ -173,7 +174,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
     return localize('aboutXMonths', months, localizeOptions)
   }
 
-  months = differenceInMonths(dateRight, dateLeft)
+  months = differenceInMonths(dateLeft, dateRight, options)
 
   // 2 months up to 12 months
   if (months < 12) {
@@ -199,5 +200,3 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
     }
   }
 }
-
-module.exports = distanceInWords

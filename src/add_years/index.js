@@ -1,6 +1,7 @@
-var addMonths = require('../add_months/index.js')
+import addMonths from '../add_months/index.js'
 
 /**
+ * @name addYears
  * @category Year Helpers
  * @summary Add the specified number of years to the given date.
  *
@@ -9,6 +10,7 @@ var addMonths = require('../add_months/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of years to be added
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the years added
  *
  * @example
@@ -16,9 +18,7 @@ var addMonths = require('../add_months/index.js')
  * var result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-function addYears (dirtyDate, dirtyAmount) {
+export default function addYears (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMonths(dirtyDate, amount * 12)
+  return addMonths(dirtyDate, amount * 12, dirtyOptions)
 }
-
-module.exports = addYears

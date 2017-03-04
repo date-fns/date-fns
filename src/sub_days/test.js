@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var subDays = require('./')
+import assert from 'power-assert'
+import subDays from '.'
 
 describe('subDays', function () {
   it('subtracts the given number of days', function () {

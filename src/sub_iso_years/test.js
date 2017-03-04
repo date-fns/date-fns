@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var subISOYears = require('./')
+import assert from 'power-assert'
+import subISOYears from '.'
 
 describe('subISOYears', function () {
   it('subtracts the given number of ISO week-numbering years', function () {

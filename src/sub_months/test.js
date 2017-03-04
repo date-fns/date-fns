@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var subMonths = require('./')
+import assert from 'power-assert'
+import subMonths from '.'
 
 describe('subMonths', function () {
   it('subtracts the given number of months', function () {
@@ -40,10 +40,10 @@ describe('subMonths', function () {
 
   it('handles dates before 100 AD', function () {
     var initialDate = new Date(0)
-    initialDate.setFullYear(0, 2 /* Mar */, 31)
+    initialDate.setFullYear(1, 2 /* Mar */, 31)
     initialDate.setHours(0, 0, 0, 0)
     var expectedResult = new Date(0)
-    expectedResult.setFullYear(0, 1 /* Feb */, 29)
+    expectedResult.setFullYear(1, 1 /* Feb */, 28)
     expectedResult.setHours(0, 0, 0, 0)
     var result = subMonths(initialDate, 1)
     assert.deepEqual(result, expectedResult)

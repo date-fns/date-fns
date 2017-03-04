@@ -3,8 +3,9 @@ import path from 'path'
 export default {
   groups: [
     'General',
+    'Types',
     'Common Helpers',
-    'Range Helpers',
+    'Interval Helpers',
     'Timestamp Helpers',
     'Millisecond Helpers',
     'Second Helpers',
@@ -55,11 +56,39 @@ export default {
     },
     {
       type: 'markdown',
+      urlId: 'ECMAScript-Modules',
+      category: 'General',
+      title: 'ECMAScript Modules',
+      description: 'Tree-shaking guide',
+      path: path.join(__dirname, 'esm.md')
+    },
+    {
+      type: 'markdown',
+      urlId: 'FP-Guide',
+      category: 'General',
+      title: 'FP Guide',
+      description: 'Curried functions',
+      path: path.join(__dirname, 'fp.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
       description: 'MIT © Sasha Koss',
       path: path.join(__dirname, '..', 'LICENSE.md')
+    }
+  ],
+
+  sharedDocs: [
+    {
+      fullPath: path.join(__dirname, 'Interval.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Options.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Locale.js')
     }
   ]
 }

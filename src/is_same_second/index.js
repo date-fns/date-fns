@@ -1,6 +1,7 @@
-var startOfSecond = require('../start_of_second/index.js')
+import startOfSecond from '../start_of_second/index.js'
 
 /**
+ * @name isSameSecond
  * @category Second Helpers
  * @summary Are the given dates in the same second?
  *
@@ -9,6 +10,7 @@ var startOfSecond = require('../start_of_second/index.js')
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same second
  *
  * @example
@@ -20,11 +22,9 @@ var startOfSecond = require('../start_of_second/index.js')
  * )
  * //=> true
  */
-function isSameSecond (dirtyDateLeft, dirtyDateRight) {
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+export default function isSameSecond (dirtyDateLeft, dirtyDateRight, options) {
+  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft, options)
+  var dateRightStartOfSecond = startOfSecond(dirtyDateRight, options)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }
-
-module.exports = isSameSecond

@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-var isSameQuarter = require('./')
-var moment = require('moment')
+import isSameQuarter from '.'
+import moment from 'moment'
 
 suite('isSameQuarter', function () {
   benchmark('date-fns', function () {

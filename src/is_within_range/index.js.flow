@@ -1,7 +1,0 @@
-// @flow
-
-declare module.exports: (
-  date: Date | string | number,
-  startDate: Date | string | number,
-  endDate: Date | string | number
-) => boolean

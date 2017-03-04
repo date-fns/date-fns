@@ -1,6 +1,7 @@
-var parse = require('../parse/index.js')
+import toDate from '../to_date/index.js'
 
 /**
+ * @name getTime
  * @category Timestamp Helpers
  * @summary Get the milliseconds timestamp of the given date.
  *
@@ -8,6 +9,7 @@ var parse = require('../parse/index.js')
  * Get the milliseconds timestamp of the given date.
  *
  * @param {Date|String|Number} date - the given date
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the timestamp
  *
  * @example
@@ -15,10 +17,8 @@ var parse = require('../parse/index.js')
  * var result = getTime(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 1330515905123
  */
-function getTime (dirtyDate) {
-  var date = parse(dirtyDate)
+export default function getTime (dirtyDate, options) {
+  var date = toDate(dirtyDate, options)
   var timestamp = date.getTime()
   return timestamp
 }
-
-module.exports = getTime

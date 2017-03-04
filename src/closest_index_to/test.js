@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var closestIndexTo = require('./')
+import assert from 'power-assert'
+import closestIndexTo from '.'
 
 describe('closestIndexTo', function () {
   it('returns the date index from the given array closest to the given date', function () {
@@ -46,12 +46,5 @@ describe('closestIndexTo', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     var result = closestIndexTo(date, [])
     assert(result === undefined)
-  })
-
-  it('throws an exception if the second argument is not an instance of Array', function () {
-    var date = new Date(2014, 6 /* Jul */, 2).getTime()
-    // $ExpectedMistake
-    var block = closestIndexTo.bind(null, date, '')
-    assert.throws(block, TypeError, '[object String] is not an instance of Array')
   })
 })

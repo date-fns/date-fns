@@ -1,6 +1,7 @@
-var addQuarters = require('../add_quarters/index.js')
+import addQuarters from '../add_quarters/index.js'
 
 /**
+ * @name subQuarters
  * @category Quarter Helpers
  * @summary Subtract the specified number of year quarters from the given date.
  *
@@ -9,6 +10,7 @@ var addQuarters = require('../add_quarters/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of quarters to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the quarters subtracted
  *
  * @example
@@ -16,9 +18,7 @@ var addQuarters = require('../add_quarters/index.js')
  * var result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-function subQuarters (dirtyDate, dirtyAmount) {
+export default function subQuarters (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addQuarters(dirtyDate, -amount)
+  return addQuarters(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subQuarters

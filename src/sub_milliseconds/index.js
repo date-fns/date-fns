@@ -1,6 +1,7 @@
-var addMilliseconds = require('../add_milliseconds/index.js')
+import addMilliseconds from '../add_milliseconds/index.js'
 
 /**
+ * @name subMilliseconds
  * @category Millisecond Helpers
  * @summary Subtract the specified number of milliseconds from the given date.
  *
@@ -9,6 +10,7 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of milliseconds to be subtracted
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the milliseconds subtracted
  *
  * @example
@@ -16,9 +18,7 @@ var addMilliseconds = require('../add_milliseconds/index.js')
  * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-function subMilliseconds (dirtyDate, dirtyAmount) {
+export default function subMilliseconds (dirtyDate, dirtyAmount, dirtyOptions) {
   var amount = Number(dirtyAmount)
-  return addMilliseconds(dirtyDate, -amount)
+  return addMilliseconds(dirtyDate, -amount, dirtyOptions)
 }
-
-module.exports = subMilliseconds
