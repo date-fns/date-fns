@@ -125,7 +125,6 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     }
   }
 
-
   var locale = options.locale
   var localeParsers = enLocale.parse.parsers
   var localeUnits = enLocale.parse.units

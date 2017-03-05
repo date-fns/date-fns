@@ -749,7 +749,7 @@ describe('parse', function () {
     var baseDateClone2 = new Date(baseDate.getTime())
     var dateString = '6 p.m.'
     var formatString = 'h aa'
-    var result = parse(dateString, formatString, baseDateClone1)
+    parse(dateString, formatString, baseDateClone1)
     assert.deepEqual(baseDateClone1, baseDateClone2)
   })
 
