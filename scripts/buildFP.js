@@ -36,10 +36,9 @@ function getFPFn (resultFnName, initialFnName, arity) {
 function buildFPFn (fn) {
   const {name, params} = fn.content
   const nameWithOptions = `${name}WithOptions`
-  const snakeCaseName = fn.file.snakeCaseName
   const arity = params.filter((param) => !param.name.includes('.')).length
 
-  const fpFnLines = getFPFn(name, snakeCaseName, arity - 1)
+  const fpFnLines = getFPFn(name, name, arity - 1)
   const fpFnDir = `${FP_DIR}/${name}`
 
   if (!fs.existsSync(fpFnDir)) {
@@ -47,7 +46,7 @@ function buildFPFn (fn) {
   }
   fs.writeFileSync(`${fpFnDir}/index.js`, fpFnLines)
 
-  const fpFnWithOptionsLines = getFPFn(nameWithOptions, snakeCaseName, arity)
+  const fpFnWithOptionsLines = getFPFn(nameWithOptions, name, arity)
   const fpFnWithOptionsDir = `${FP_DIR}/${nameWithOptions}`
 
   if (!fs.existsSync(fpFnWithOptionsDir)) {
