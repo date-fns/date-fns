@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 
-export default function listFpFiles () {
+export default function listFPFiles () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src/fp'))
   return files
     .filter((file) => /^[^._]/.test(file) && file !== 'index.js')

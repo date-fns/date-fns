@@ -1,4 +1,4 @@
-function convertToFp (fn, arity, a) {
+function convertToFP (fn, arity, a) {
   a = a || []
 
   if (a.length >= arity) {
@@ -7,8 +7,8 @@ function convertToFp (fn, arity, a) {
 
   return function () {
     var args = Array.prototype.slice.call(arguments)
-    return convertToFp(fn, arity, a.concat(args))
+    return convertToFP(fn, arity, a.concat(args))
   }
 }
 
-module.exports = convertToFp
+module.exports = convertToFP

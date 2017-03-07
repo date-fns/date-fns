@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import listFiles from './_lib/listFiles'
-import listFpFiles from './_lib/listFpFiles'
+import listFPFiles from './_lib/listFPFiles'
 
 function generateIndex (files) {
   const propertyRequireLines = files
@@ -17,7 +17,7 @@ function generateIndex (files) {
   return `${indexLines}\n`
 }
 
-function generateEsmIndex (files) {
+function generateESMIndex (files) {
   const fileLines = files
     .map(fn => `export {default as ${fn.name}} from '${fn.path.replace(/\.js$/, '')}/index.js'`)
 
@@ -30,9 +30,9 @@ function generateEsmIndex (files) {
 }
 
 const files = listFiles()
-const fpFiles = listFpFiles()
+const fpFiles = listFPFiles()
 
 fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), generateIndex(files))
 fs.writeFileSync(path.join(process.cwd(), 'src', 'fp', 'index.js'), generateIndex(fpFiles))
-fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'index.js'), generateEsmIndex(files))
-fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'fp', 'index.js'), generateEsmIndex(fpFiles))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'index.js'), generateESMIndex(files))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'fp', 'index.js'), generateESMIndex(fpFiles))

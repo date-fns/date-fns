@@ -82,8 +82,8 @@ do
 done
 
 # Copy TypeScript's sub_sub_sub_module_package.json to fp locale directories
-for esmFpModule in $dir/esm/fp/*/
+for esmFPModule in $dir/esm/fp/*/
 do
-  esmFpModule=${esmFpModule%*/}
-  cp scripts/sub_sub_sub_module_package.json "$esmFpModule/package.json"
+  esmFPModule=${esmFPModule%*/}
+  cp scripts/sub_sub_sub_module_package.json "$esmFPModule/package.json"
 done
