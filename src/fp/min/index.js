@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
 import fn from '../../min/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var min = convertToFp(fn, 1)
+var min = convertToFP(fn, 1)
 
 export default min

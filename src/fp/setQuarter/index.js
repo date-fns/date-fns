@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../set_quarter/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../setQuarter/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var setQuarter = convertToFp(fn, 2)
+var setQuarter = convertToFP(fn, 2)
 
 export default setQuarter

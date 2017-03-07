@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../is_before/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../isBefore/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var isBeforeWithOptions = convertToFp(fn, 3)
+var isBeforeWithOptions = convertToFP(fn, 3)
 
 export default isBeforeWithOptions
