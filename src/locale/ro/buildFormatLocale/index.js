@@ -1,4 +1,4 @@
-import buildTokensRegExp from '../../_lib/build_tokens_reg_exp/index.js'
+import buildTokensRegExp from '../../_lib/buildTokensRegExp/index.js'
 
 export default function buildFormatLocale () {
   // Note: in Romanian language the weekdays and months should be in the lowercase.
