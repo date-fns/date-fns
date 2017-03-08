@@ -16,6 +16,10 @@
  * @property {Locale} [locale=enLocale] - the locale object.
  *   Used by `distanceInWords`, `distanceInWordsStrict`, `format` and `parse`.
  *   See [Locale]{@link docs/Locale}
+ * @property {Boolean} [includeSeconds=false] - used by `distanceInWords`.
+ *   If true, distances less than a minute are more detailed
+ * @property {Boolean} [addSuffix=false] - used by `distanceInWords` and `distanceInWordsStrinct`.
+ *   If true, the result will indicate if the second date is earlier or later than the first
  * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `distanceInWordsStrict`.
  *   If specified, will force a unit
  * @property {'floor'|'ceil'|'round'} [partialMethod='floor'] - used by `distanceInWordsStrict`.

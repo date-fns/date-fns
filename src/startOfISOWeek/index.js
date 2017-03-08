@@ -21,8 +21,8 @@ import cloneObject from '../_lib/cloneObject/index.js'
  * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfISOWeek (dirtyDate, options) {
-  var startOfWeekOptions = cloneObject(options)
+export default function startOfISOWeek (dirtyDate, dirtyOptions) {
+  var startOfWeekOptions = cloneObject(dirtyOptions)
   startOfWeekOptions.weekStartsOn = 1
   return startOfWeek(dirtyDate, startOfWeekOptions)
 }

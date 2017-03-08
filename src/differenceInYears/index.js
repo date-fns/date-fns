@@ -23,16 +23,16 @@ import compareAsc from '../compareAsc/index.js'
  * )
  * //=> 1
  */
-export default function differenceInYears (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInYears (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
-  var sign = compareAsc(dateLeft, dateRight, options)
-  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight, options))
+  var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
+  var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight, dirtyOptions))
   dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastYearNotFull = compareAsc(dateLeft, dateRight, options) === -sign
+  var isLastYearNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
   return sign * (difference - isLastYearNotFull)
 }

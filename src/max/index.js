@@ -24,9 +24,9 @@ import toDate from '../toDate/index.js'
  * )
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max (datesArray, options) {
+export default function max (datesArray, dirtyOptions) {
   var dates = datesArray.map(function (dirtyDate) {
-    return toDate(dirtyDate, options)
+    return toDate(dirtyDate, dirtyOptions)
   })
   var latestTimestamp = Math.max.apply(null, dates)
   return new Date(latestTimestamp)

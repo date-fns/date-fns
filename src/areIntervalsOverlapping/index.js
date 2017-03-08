@@ -30,11 +30,11 @@ import toDate from '../toDate/index.js'
  * )
  * //=> false
  */
-export default function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, options) {
-  var leftStartTime = toDate(dirtyIntervalLeft.start, options).getTime()
-  var leftEndTime = toDate(dirtyIntervalLeft.end, options).getTime()
-  var rightStartTime = toDate(dirtyIntervalRight.start, options).getTime()
-  var rightEndTime = toDate(dirtyIntervalRight.end, options).getTime()
+export default function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, dirtyOptions) {
+  var leftStartTime = toDate(dirtyIntervalLeft.start, dirtyOptions).getTime()
+  var leftEndTime = toDate(dirtyIntervalLeft.end, dirtyOptions).getTime()
+  var rightStartTime = toDate(dirtyIntervalRight.start, dirtyOptions).getTime()
+  var rightEndTime = toDate(dirtyIntervalRight.end, dirtyOptions).getTime()
 
   if (leftStartTime > leftEndTime || rightStartTime > rightEndTime) {
     throw new Error('The start of an interval cannot be after its end')

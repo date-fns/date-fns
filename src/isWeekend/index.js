@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export default function isWeekend (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function isWeekend (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var day = date.getDay()
   return day === 0 || day === 6
 }

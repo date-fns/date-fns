@@ -23,16 +23,16 @@ import compareAsc from '../compareAsc/index.js'
  * )
  * //=> 7
  */
-export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight, options))
+  var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
+  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight, dirtyOptions))
   dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
 
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastMonthNotFull = compareAsc(dateLeft, dateRight, options) === -sign
+  var isLastMonthNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
   return sign * (difference - isLastMonthNotFull)
 }

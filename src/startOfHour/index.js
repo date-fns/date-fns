@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:00:00
  */
-export default function startOfHour (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function startOfHour (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   date.setMinutes(0, 0, 0)
   return date
 }

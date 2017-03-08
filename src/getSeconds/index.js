@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-export default function getSeconds (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getSeconds (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var seconds = date.getSeconds()
   return seconds
 }
