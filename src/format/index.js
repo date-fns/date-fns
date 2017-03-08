@@ -1,11 +1,11 @@
-import toDate from '../to_date/index.js'
-import isValid from '../is_valid/index.js'
+import toDate from '../toDate/index.js'
+import isValid from '../isValid/index.js'
 import enLocale from '../locale/en/index.js'
-import cloneObject from '../_lib/clone_object/index.js'
-import addUTCMinutes from './_lib/add_utc_minutes/index.js'
-import getUTCDayOfYear from './_lib/get_utc_day_of_year/index.js'
-import getUTCISOWeek from './_lib/get_utc_iso_week/index.js'
-import getUTCISOYear from './_lib/get_utc_iso_year/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
+import addUTCMinutes from './_lib/addUTCMinutes/index.js'
+import getUTCDayOfYear from './_lib/getUTCDayOfYear/index.js'
+import getUTCISOWeek from './_lib/getUTCISOWeek/index.js'
+import getUTCISOYear from './_lib/getUTCISOYear/index.js'
 
 /**
  * @name format

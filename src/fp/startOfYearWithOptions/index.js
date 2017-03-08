@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../start_of_year/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../startOfYear/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfYearWithOptions = convertToFp(fn, 2)
+var startOfYearWithOptions = convertToFP(fn, 2)
 
 export default startOfYearWithOptions

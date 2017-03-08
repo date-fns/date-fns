@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../get_month/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../getMonth/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var getMonth = convertToFp(fn, 1)
+var getMonth = convertToFP(fn, 1)
 
 export default getMonth
