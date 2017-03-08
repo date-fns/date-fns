@@ -10,8 +10,8 @@ import isLeapYear from '../isLeapYear/index.js'
  * Get the number of days in a year of the given date.
  *
  * @param {Date|String|Number} date - the given date
- * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Number} the number of days in a year
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
