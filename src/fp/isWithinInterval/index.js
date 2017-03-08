@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../is_within_interval/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../isWithinInterval/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var isWithinInterval = convertToFp(fn, 2)
+var isWithinInterval = convertToFP(fn, 2)
 
 export default isWithinInterval

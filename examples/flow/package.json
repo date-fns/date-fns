@@ -13,7 +13,7 @@
   "scripts": {
     "build": "yarn run build-date-fns && yarn run flow-check && yarn run build-babel",
     "flow-check": "flow check",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/buildPackage.sh",
     "build-babel": "yarn run build-babel-example && yarn run build-babel-fp && yarn run build-babel-misc",
     "build-babel-example": "mkdir -p dist && babel example.js.flow --out-file dist/example.js",
     "build-babel-fp": "mkdir -p dist && babel fp.js.flow --out-file dist/fp.js",

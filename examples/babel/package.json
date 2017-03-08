@@ -17,7 +17,7 @@
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-webpack && yarn run build-babili",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/buildPackage.sh",
     "build-webpack": "webpack",
     "build-babili": "babili dist/example.js --out-file dist/example.min.js --minified --no-comments && yarn run stats-size",
     "stats-size": "gzip-size dist/example.min.js | pretty-bytes",

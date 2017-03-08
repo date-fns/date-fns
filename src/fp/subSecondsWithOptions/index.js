@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../sub_seconds/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../subSeconds/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var subSecondsWithOptions = convertToFp(fn, 3)
+var subSecondsWithOptions = convertToFP(fn, 3)
 
 export default subSecondsWithOptions
