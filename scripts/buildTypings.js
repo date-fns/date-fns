@@ -63,7 +63,7 @@ const fns = Object.keys(jsDocs)
 const aliases = jsDocs['Types']
 
 generateTypeScriptTypings(fns, aliases, locales)
-generateFlowTypings(fns, aliases)
+generateFlowTypings(fns, aliases, locales)
 
 // Common
 
@@ -399,11 +399,32 @@ function generateFlowFPFnTyping (fn, nameSuffix, aliasDeclarations) {
   fs.writeFileSync(filename, typingString)
 }
 
-function generateFlowTypings (fns, aliases) {
+function generateFlowLocaleTyping (locale, localeAliasDeclaration) {
+  const {path} = locale
+  const filename = `${path.replace(/^\./, './src')}/index.js.flow`
+
+  const typingString = ['// @flow']
+    .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
+    .concat('')
+    .concat(localeAliasDeclaration)
+    .concat('')
+    .concat(`declare module.exports: Locale\n`)
+    .join('\n')
+
+  fs.writeFileSync(filename, typingString)
+}
+
+function generateFlowTypings (fns, aliases, locales) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
+  const localeAliasDeclaration = getFlowTypeAlias(aliases.find((alias) => alias.title === 'Locale'))
+
   fns.forEach((fn) => {
     generateFlowFnTyping(fn, aliasDeclarations)
     generateFlowFPFnTyping(fn, '', aliasDeclarations)
     generateFlowFPFnTyping(fn, 'WithOptions', aliasDeclarations)
+  })
+
+  locales.forEach((locale) => {
+    generateFlowLocaleTyping(locale, localeAliasDeclaration)
   })
 }
