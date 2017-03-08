@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-export default function startOfMinute (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function startOfMinute (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   date.setSeconds(0, 0)
   return date
 }

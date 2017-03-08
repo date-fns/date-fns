@@ -22,9 +22,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear (dirtyDate, options) {
-  var thisYear = startOfISOYear(dirtyDate, options)
-  var nextYear = startOfISOYear(addWeeks(thisYear, 60, options), options)
+export default function getISOWeeksInYear (dirtyDate, dirtyOptions) {
+  var thisYear = startOfISOYear(dirtyDate, dirtyOptions)
+  var nextYear = startOfISOYear(addWeeks(thisYear, 60, dirtyOptions), dirtyOptions)
   var diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer
   // because the number of milliseconds in a week is not constant

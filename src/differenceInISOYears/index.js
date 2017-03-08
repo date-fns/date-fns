@@ -26,17 +26,17 @@ import subISOYears from '../subISOYears/index.js'
  * )
  * //=> 1
  */
-export default function differenceInISOYears (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInISOYears (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
-  var sign = compareAsc(dateLeft, dateRight, options)
-  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight, options))
-  dateLeft = subISOYears(dateLeft, sign * difference, options)
+  var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
+  var difference = Math.abs(differenceInCalendarISOYears(dateLeft, dateRight, dirtyOptions))
+  dateLeft = subISOYears(dateLeft, sign * difference, dirtyOptions)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight, options) === -sign
+  var isLastISOYearNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
   return sign * (difference - isLastISOYearNotFull)
 }

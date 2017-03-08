@@ -20,8 +20,8 @@ import toDate from '../toDate/index.js'
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getISODay (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var day = date.getDay()
 
   if (day === 0) {
