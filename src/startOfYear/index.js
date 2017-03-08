@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Jan 01 2014 00:00:00
  */
-export default function startOfYear (dirtyDate, options) {
-  var cleanDate = toDate(dirtyDate, options)
+export default function startOfYear (dirtyDate, dirtyOptions) {
+  var cleanDate = toDate(dirtyDate, dirtyOptions)
   var date = new Date(0)
   date.setFullYear(cleanDate.getFullYear(), 0, 1)
   date.setHours(0, 0, 0, 0)

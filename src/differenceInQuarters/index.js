@@ -21,7 +21,7 @@ import differenceInMonths from '../differenceInMonths/index.js'
  * )
  * //=> 2
  */
-export default function differenceInQuarters (dirtyDateLeft, dirtyDateRight, options) {
-  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight, options) / 3
+export default function differenceInQuarters (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight, dirtyOptions) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

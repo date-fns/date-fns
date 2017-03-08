@@ -4,8 +4,8 @@ var MILLISECONDS_IN_DAY = 86400000
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function getUTCDayOfYear (dirtyDate, options) {
-  var date = toDate(dirtyDate)
+export default function getUTCDayOfYear (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var timestamp = date.getTime()
   date.setUTCMonth(0, 1)
   date.setUTCHours(0, 0, 0, 0)

@@ -30,10 +30,10 @@ import toDate from '../toDate/index.js'
  * )
  * //=> false
  */
-export default function isWithinInterval (dirtyDate, dirtyInterval, options) {
-  var time = toDate(dirtyDate, options).getTime()
-  var startTime = toDate(dirtyInterval.start, options).getTime()
-  var endTime = toDate(dirtyInterval.end, options).getTime()
+export default function isWithinInterval (dirtyDate, dirtyInterval, dirtyOptions) {
+  var time = toDate(dirtyDate, dirtyOptions).getTime()
+  var startTime = toDate(dirtyInterval.start, dirtyOptions).getTime()
+  var endTime = toDate(dirtyInterval.end, dirtyOptions).getTime()
 
   if (startTime > endTime) {
     throw new Error('The start of an interval cannot be after its end')

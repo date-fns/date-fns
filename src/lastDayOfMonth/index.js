@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = lastDayOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfMonth (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function lastDayOfMonth (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)
   date.setHours(0, 0, 0, 0)

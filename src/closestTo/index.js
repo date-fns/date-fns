@@ -22,15 +22,15 @@ import toDate from '../toDate/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo (dirtyDateToCompare, dirtyDatesArray, options) {
-  var dateToCompare = toDate(dirtyDateToCompare, options)
+export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOptions) {
+  var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
   var timeToCompare = dateToCompare.getTime()
 
   var result
   var minDistance
 
   dirtyDatesArray.forEach(function (dirtyDate) {
-    var currentDate = toDate(dirtyDate, options)
+    var currentDate = toDate(dirtyDate, dirtyOptions)
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = currentDate
