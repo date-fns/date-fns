@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../start_of_week/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../startOfWeek/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfWeek = convertToFp(fn, 1)
+var startOfWeek = convertToFP(fn, 1)
 
 export default startOfWeek

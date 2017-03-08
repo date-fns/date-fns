@@ -28,7 +28,7 @@ export default {
       category: 'General',
       title: 'Getting Started',
       description: 'Introduction & installation instructions',
-      path: path.join(__dirname, 'getting_started.md')
+      path: path.join(__dirname, 'gettingStarted.md')
     },
     {
       type: 'markdown',

@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../set_day_of_year/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../setDayOfYear/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var setDayOfYearWithOptions = convertToFp(fn, 3)
+var setDayOfYearWithOptions = convertToFP(fn, 3)
 
 export default setDayOfYearWithOptions

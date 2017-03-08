@@ -1,4 +1,4 @@
-import toDate from '../to_date/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name max

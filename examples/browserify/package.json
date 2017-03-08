@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-browserify && yarn run build-babili",
-    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build_package.sh",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/buildPackage.sh",
     "build-browserify": "yarn run build-browserify-example && yarn run build-browserify-fp && yarn run build-browserify-misc",
     "build-browserify-example": "mkdir -p dist && browserify example.js -o dist/example.js",
     "build-browserify-fp": "mkdir -p dist && browserify fp.js -o dist/fp.js",

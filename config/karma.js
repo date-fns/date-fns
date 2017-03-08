@@ -1,8 +1,8 @@
 process.env.NODE_ENV = 'test'
 
 var webpackConfig = require('./webpack')
-var countReporter = require('./_lib/count_reporter')
-var benchmarkJSONReporter = require('./_lib/benchmark_json_reporter')
+var countReporter = require('./_lib/countReporter')
+var benchmarkJSONReporter = require('./_lib/benchmarkJSONReporter')
 
 var sauceLabsLaunchers = {
   // TODO: See if Safari became more reliable
