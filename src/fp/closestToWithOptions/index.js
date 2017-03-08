@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../closest_to/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../closestTo/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var closestToWithOptions = convertToFp(fn, 3)
+var closestToWithOptions = convertToFP(fn, 3)
 
 export default closestToWithOptions

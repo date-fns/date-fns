@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../difference_in_calendar_months/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../differenceInCalendarMonths/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var differenceInCalendarMonthsWithOptions = convertToFp(fn, 3)
+var differenceInCalendarMonthsWithOptions = convertToFP(fn, 3)
 
 export default differenceInCalendarMonthsWithOptions

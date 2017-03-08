@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../add_weeks/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../addWeeks/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var addWeeksWithOptions = convertToFp(fn, 3)
+var addWeeksWithOptions = convertToFP(fn, 3)
 
 export default addWeeksWithOptions

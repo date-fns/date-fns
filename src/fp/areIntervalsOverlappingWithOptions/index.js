@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../are_intervals_overlapping/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../areIntervalsOverlapping/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var areIntervalsOverlappingWithOptions = convertToFp(fn, 3)
+var areIntervalsOverlappingWithOptions = convertToFP(fn, 3)
 
 export default areIntervalsOverlappingWithOptions

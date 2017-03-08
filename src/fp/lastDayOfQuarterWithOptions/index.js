@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../last_day_of_quarter/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../lastDayOfQuarter/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var lastDayOfQuarterWithOptions = convertToFp(fn, 2)
+var lastDayOfQuarterWithOptions = convertToFP(fn, 2)
 
 export default lastDayOfQuarterWithOptions

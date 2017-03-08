@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../distance_in_words/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../distanceInWords/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var distanceInWordsWithOptions = convertToFp(fn, 3)
+var distanceInWordsWithOptions = convertToFP(fn, 3)
 
 export default distanceInWordsWithOptions

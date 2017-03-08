@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../difference_in_days/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../differenceInDays/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var differenceInDays = convertToFp(fn, 2)
+var differenceInDays = convertToFP(fn, 2)
 
 export default differenceInDays
