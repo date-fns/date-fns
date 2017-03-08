@@ -21,19 +21,19 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * var result = getISOYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOYear (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getISOYear (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getFullYear()
 
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, options)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, dirtyOptions)
 
   var fourthOfJanuaryOfThisYear = new Date(0)
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, options)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, dirtyOptions)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1

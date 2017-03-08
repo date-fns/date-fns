@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfQuarter (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function lastDayOfQuarter (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var currentMonth = date.getMonth()
   var month = currentMonth - currentMonth % 3 + 3
   date.setMonth(month, 0)

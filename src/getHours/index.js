@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getHours (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var hours = date.getHours()
   return hours
 }

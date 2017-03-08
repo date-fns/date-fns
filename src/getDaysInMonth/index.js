@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-export default function getDaysInMonth (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getDaysInMonth (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()
   var lastDayOfMonth = new Date(0)

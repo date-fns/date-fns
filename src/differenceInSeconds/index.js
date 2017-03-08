@@ -22,7 +22,7 @@ import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
  * )
  * //=> 12
  */
-export default function differenceInSeconds (dirtyDateLeft, dirtyDateRight, options) {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, options) / 1000
+export default function differenceInSeconds (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight, dirtyOptions) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

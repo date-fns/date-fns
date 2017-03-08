@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import setUTCISOWeek from '.'
 
-describe('setUTCISOWeek', function () {
+describe('parse > setUTCISOWeek', function () {
   it('sets the ISO week', function () {
     var result = setUTCISOWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), 53)
     assert.deepEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))
@@ -18,6 +18,11 @@ describe('setUTCISOWeek', function () {
   it('accepts a timestamp', function () {
     var result = setUTCISOWeek(new Date(Date.UTC(2009, 11 /* Dec */, 2)).getTime(), 1)
     assert.deepEqual(result, new Date(Date.UTC(2008, 11 /* Dec */, 31)))
+  })
+
+  it('implicitly converts number arguments', function () {
+    var result = setUTCISOWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), '53')
+    assert.deepEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))
   })
 
   it('does not mutate the original date', function () {

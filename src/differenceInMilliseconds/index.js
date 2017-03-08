@@ -22,8 +22,8 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInMilliseconds (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
   return dateRight.getTime() - dateLeft.getTime()
 }

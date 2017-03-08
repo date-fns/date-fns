@@ -22,9 +22,9 @@ import startOfSecond from '../startOfSecond/index.js'
  * )
  * //=> true
  */
-export default function isSameSecond (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft, options)
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight, options)
+export default function isSameSecond (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfSecond = startOfSecond(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

@@ -510,6 +510,32 @@ describe('parse', function () {
     })
   })
 
+  describe('implicit conversion of options', function () {
+    it('`dateString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var dateString = new String('20161105T040404')
+      // $ExpectedMistake
+      var result = parse(dateString, 'YYYYMMDDTHHmmss', baseDate)
+      assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
+    })
+
+    it('`formatString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var formatString = new String('YYYYMMDDTHHmmss')
+      // $ExpectedMistake
+      var result = parse('20161105T040404', formatString, baseDate)
+      assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
+    })
+
+    it('`options.weekStartsOn`', function () {
+      var dateString = '0'
+      var formatString = 'd'
+      // $ExpectedMistake
+      var result = parse(dateString, formatString, baseDate, {weekStartsOn: '1'})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+    })
+  })
+
   describe('custom locale', function () {
     it('can be passed to the function', function () {
       var units = {
@@ -701,6 +727,66 @@ describe('parse', function () {
         var result = parse('2017 It works correctly!', 'YYYY abc efg [correctly!]', baseDate, {locale: customLocale})
         assert.deepEqual(result, new Date(2017, 3, 7))
       })
+    })
+  })
+
+  it('accepts a string as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.toISOString())
+    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
+  })
+
+  it('accepts a timestamp as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.getTime())
+    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
+  })
+
+  it('does not mutate `baseDate`', function () {
+    var baseDateClone1 = new Date(baseDate.getTime())
+    var baseDateClone2 = new Date(baseDate.getTime())
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    parse(dateString, formatString, baseDateClone1)
+    assert.deepEqual(baseDateClone1, baseDateClone2)
+  })
+
+  describe('failure', function () {
+    it('returns `baseDate` if `dateString` and `formatString` are empty strings', function () {
+      var dateString = ''
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('returns `baseDate` if no tokens in `formatString` are provided', function () {
+      var dateString = 'not a token'
+      var formatString = '[not a token]'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('returns `Invalid Date`  if `formatString` doesn\'t match with `dateString`', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'YYYY/MM/DD'
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'MMMM Do YYYY'
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', function () {
+      var dateString = '2017-01-01'
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
     })
   })
 })

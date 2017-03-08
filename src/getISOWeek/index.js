@@ -23,9 +23,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export default function getISOWeek (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
-  var diff = startOfISOWeek(date, options).getTime() - startOfISOYear(date, options).getTime()
+export default function getISOWeek (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
+  var diff = startOfISOWeek(date, dirtyOptions).getTime() - startOfISOYear(date, dirtyOptions).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

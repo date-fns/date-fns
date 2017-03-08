@@ -78,7 +78,11 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * The result may vary by locale.
  *
- * If no format is provided, the string will be parsed using ISO 8601 formats.
+ * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ *
+ * If parsing failed, `Invalid Date` will be returned.
+ * Invalid Date is a Date, whose time value is NaN.
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
@@ -108,12 +112,18 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse (dateString, formatString, dirtyBaseDate, options) {
-  if (formatString === '') {
-    return ''
-  }
+export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
+  var dateString = String(dirtyDateString)
+  var formatString = String(dirtyFormatString)
+  var options = dirtyOptions || {}
 
-  options = options || {}
+  if (formatString === '') {
+    if (dateString === '') {
+      return toDate(dirtyBaseDate, options)
+    } else {
+      return new Date(NaN)
+    }
+  }
 
   var locale = options.locale
   var localeParsers = enLocale.parse.parsers
@@ -149,7 +159,7 @@ export default function parse (dateString, formatString, dirtyBaseDate, options)
       var matchResult = parser.match.exec(dateString)
 
       if (!matchResult) {
-        return null
+        return new Date(NaN)
       }
 
       var unitName = parser.unit
@@ -171,7 +181,7 @@ export default function parse (dateString, formatString, dirtyBaseDate, options)
       if (dateString.indexOf(head) === 0) {
         dateString = dateString.slice(head.length)
       } else {
-        return null
+        return new Date(NaN)
       }
     }
   }

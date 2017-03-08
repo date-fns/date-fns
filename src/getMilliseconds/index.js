@@ -17,8 +17,8 @@ import toDate from '../toDate/index.js'
  * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export default function getMilliseconds (dirtyDate, options) {
-  var date = toDate(dirtyDate, options)
+export default function getMilliseconds (dirtyDate, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
   var milliseconds = date.getMilliseconds()
   return milliseconds
 }
