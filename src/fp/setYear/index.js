@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../set_year/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../setYear/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var setYear = convertToFp(fn, 2)
+var setYear = convertToFP(fn, 2)
 
 export default setYear

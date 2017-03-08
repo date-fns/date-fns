@@ -1,5 +1,5 @@
-import toDate from '../to_date/index.js'
-import subMinutes from '../sub_minutes/index.js'
+import toDate from '../toDate/index.js'
+import subMinutes from '../subMinutes/index.js'
 import enLocale from '../locale/en/index.js'
 import parsers from './_lib/parsers/index.js'
 import units from './_lib/units/index.js'

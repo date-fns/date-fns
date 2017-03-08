@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../is_wednesday/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../isWednesday/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var isWednesday = convertToFp(fn, 1)
+var isWednesday = convertToFP(fn, 1)
 
 export default isWednesday

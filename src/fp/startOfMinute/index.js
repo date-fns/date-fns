@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../start_of_minute/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../startOfMinute/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfMinute = convertToFp(fn, 1)
+var startOfMinute = convertToFP(fn, 1)
 
 export default startOfMinute

@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../add_days/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../addDays/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var addDaysWithOptions = convertToFp(fn, 3)
+var addDaysWithOptions = convertToFP(fn, 3)
 
 export default addDaysWithOptions

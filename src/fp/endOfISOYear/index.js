@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../end_of_iso_year/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../endOfISOYear/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfISOYear = convertToFp(fn, 1)
+var endOfISOYear = convertToFP(fn, 1)
 
 export default endOfISOYear
