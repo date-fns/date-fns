@@ -69,8 +69,8 @@ import getUTCISOYear from './_lib/getUTCISOYear/index.js'
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
- * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the formatted date string
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
