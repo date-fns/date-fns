@@ -276,6 +276,14 @@ function getTypeScriptLocaleModuleDefinition (moduleSuffix, localeSuffix, isDefa
   }
 }
 
+function getTypeScriptInterfaceDefinition (fn) {
+  const name = fn.content.name
+  const params = getParams(fn.content.params, {indent: 1, leftBorder: '(', rightBorder: ')'})
+  const returns = getType(fn.content.returns[0].type.names)
+
+  return `${name}${params}: ${returns}`
+}
+
 function generateTypeScriptTypings (fns, aliases, locales) {
   const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition('', fns)]
     .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '', false)))
@@ -319,6 +327,11 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index.js', true)))
     .map(module => module.definition)
 
+  const interfaceDefinitions = ['interface dateFns {']
+    .concat(fns.map(fn => `  ${getTypeScriptInterfaceDefinition(fn)}`).join('\n\n'))
+    .concat('}')
+    .join('\n')
+
   const typingString = ['// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.']
     .concat('// FP Interfaces')
     .concat(typeScriptFpInterfaces)
@@ -334,6 +347,8 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat(esmFpModuleDefinitions)
     .concat('// Locales')
     .concat(localeModuleDefinitions)
+    .concat('// dateFns global interface definition')
+    .concat(interfaceDefinitions)
     .join('\n\n')
 
   fs.writeFileSync('./typings.d.ts', `${typingString}\n`)
