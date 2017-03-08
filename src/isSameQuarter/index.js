@@ -21,9 +21,9 @@ import startOfQuarter from '../startOfQuarter/index.js'
  * )
  * //=> true
  */
-export default function isSameQuarter (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, options)
-  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight, options)
+export default function isSameQuarter (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }

@@ -23,16 +23,16 @@ import compareDesc from '../compareDesc/index.js'
  * )
  * //=> 7
  */
-export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
-  var sign = compareDesc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight, options))
+  var sign = compareDesc(dateLeft, dateRight, dirtyOptions)
+  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight, dirtyOptions))
 
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
   dateRight.setMonth(dateRight.getMonth() - sign * difference)
-  var isLastMonthNotFull = compareDesc(dateLeft, dateRight, options) === -sign
+  var isLastMonthNotFull = compareDesc(dateLeft, dateRight, dirtyOptions) === -sign
   return sign * (difference - isLastMonthNotFull)
 }

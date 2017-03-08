@@ -21,9 +21,9 @@ import toDate from '../toDate/index.js'
  * )
  * //=> true
  */
-export default function isSameMonth (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function isSameMonth (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
   return dateLeft.getFullYear() === dateRight.getFullYear() &&
     dateLeft.getMonth() === dateRight.getMonth()
 }

@@ -18,8 +18,8 @@ import toDate from '../toDate/index.js'
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore (dirtyDate, dirtyDateToCompare, options) {
-  var date = toDate(dirtyDate, options)
-  var dateToCompare = toDate(dirtyDateToCompare, options)
+export default function isBefore (dirtyDate, dirtyDateToCompare, dirtyOptions) {
+  var date = toDate(dirtyDate, dirtyOptions)
+  var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
   return date.getTime() < dateToCompare.getTime()
 }

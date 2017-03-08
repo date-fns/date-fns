@@ -22,9 +22,9 @@ import startOfMinute from '../startOfMinute/index.js'
  * )
  * //=> true
  */
-export default function isSameMinute (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft, options)
-  var dateRightStartOfMinute = startOfMinute(dirtyDateRight, options)
+export default function isSameMinute (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft, dirtyOptions)
+  var dateRightStartOfMinute = startOfMinute(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

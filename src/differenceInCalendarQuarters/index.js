@@ -22,12 +22,12 @@ import toDate from '../toDate/index.js'
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, options) {
-  var dateLeft = toDate(dirtyDateLeft, options)
-  var dateRight = toDate(dirtyDateRight, options)
+export default function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
+  var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
   var yearDiff = dateRight.getFullYear() - dateLeft.getFullYear()
-  var quarterDiff = getQuarter(dateRight, options) - getQuarter(dateLeft, options)
+  var quarterDiff = getQuarter(dateRight, dirtyOptions) - getQuarter(dateLeft, dirtyOptions)
 
   return yearDiff * 4 + quarterDiff
 }
