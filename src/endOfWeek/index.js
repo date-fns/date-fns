@@ -10,8 +10,8 @@ import toDate from '../toDate/index.js'
  * The result will be in the local timezone.
  *
  * @param {Date|String|Number} date - the original date
- * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the end of a week
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2

@@ -16,7 +16,7 @@ that support [currying](https://en.wikipedia.org/wiki/Currying).
 
 FP functions are provided via `'date-fns/fp'` submodule.
 
-Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
+Each non-FP function has two FP counterparts: one that has [Options](https://date-fns.org/docs/Options) object as its first argument
 and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
 
 In **date-fns'** FP functions, the order of arguments is reversed.
@@ -81,4 +81,4 @@ via `'date-fns/esm/fp'` submodule:
 import {addYears, formatWithOptions} from 'date-fns/esm/fp'
 ```
 
-Read more in [ECMAScript Modules](docs/esm) article in the documentation.
+Read more in [ECMAScript Modules](https://date-fns.org/docs/ECMAScript-Modules) article in the documentation.
