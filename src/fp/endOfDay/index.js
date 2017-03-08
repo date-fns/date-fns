@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../end_of_day/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../endOfDay/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfDay = convertToFp(fn, 1)
+var endOfDay = convertToFP(fn, 1)
 
 export default endOfDay

@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build_fp.js`. Please, don't change it.
 
-import fn from '../../get_hours/index.js'
-import convertToFp from '../_lib/convertToFp/index.js'
+import fn from '../../getHours/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
-var getHours = convertToFp(fn, 1)
+var getHours = convertToFP(fn, 1)
 
 export default getHours
