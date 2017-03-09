@@ -314,7 +314,7 @@ describe('distanceInWordsStrict', function () {
     })
   })
 
-  describe('when the partialMethod option is supplied', function () {
+  describe('when the roundingMethod option is supplied', function () {
     it('default is "floor"', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
@@ -327,7 +327,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59),
-        {partialMethod: 'floor'}
+        {roundingMethod: 'floor'}
       )
       assert(result === '1 minute')
     })
@@ -336,7 +336,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
-        {partialMethod: 'ceil'}
+        {roundingMethod: 'ceil'}
       )
       assert(result === '2 minutes')
     })
@@ -345,7 +345,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 29),
-        {partialMethod: 'round'}
+        {roundingMethod: 'round'}
       )
       assert(result === '1 minute')
     })
@@ -354,7 +354,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 30),
-        {partialMethod: 'round'}
+        {roundingMethod: 'round'}
       )
       assert(result === '2 minutes')
     })
@@ -386,13 +386,13 @@ describe('distanceInWordsStrict', function () {
 
     it('`options.ceil`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var partialMethod = new String('ceil')
+      var roundingMethod = new String('ceil')
 
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
         // $ExpectedMistake
-        {partialMethod: partialMethod}
+        {roundingMethod: roundingMethod}
       )
       assert(result === '2 minutes')
     })

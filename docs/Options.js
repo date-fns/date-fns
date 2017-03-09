@@ -22,7 +22,7 @@
  *   If true, the result will indicate if the second date is earlier or later than the first
  * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `distanceInWordsStrict`.
  *   If specified, will force a unit
- * @property {'floor'|'ceil'|'round'} [partialMethod='floor'] - used by `distanceInWordsStrict`.
+ * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `distanceInWordsStrict`.
  *   Specifies, which way to round partial units
  *
  * @throws {RangeError} weekStartsOn must be between 0 and 6

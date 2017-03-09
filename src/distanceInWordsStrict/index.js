@@ -31,7 +31,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
+ * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
  *
@@ -78,7 +78,7 @@ var MINUTES_IN_YEAR = 525600
  * var result = distanceInWordsStrict(
  *   new Date(2015, 0, 28),
  *   new Date(2015, 0, 1),
- *   {unit: 'M', partialMethod: 'ceil'}
+ *   {unit: 'M', roundingMethod: 'ceil'}
  * )
  * //=> '1 month'
  *
@@ -122,7 +122,7 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
   }
 
   var unit
-  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']
+  var mathPartial = Math[options.roundingMethod ? String(options.roundingMethod) : 'floor']
   var seconds = differenceInSeconds(dateLeft, dateRight, dirtyOptions)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
   var minutes = mathPartial(seconds / 60) - offset

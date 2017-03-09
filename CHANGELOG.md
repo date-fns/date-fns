@@ -311,7 +311,22 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
   We introduce this change to make *date-fns* consistent with ECMAScript behavior
   that try to coerce arguments to the expected type
-  (which is also the case with other *date-fns* functions). 
+  (which is also the case with other *date-fns* functions).
+
+- **BREAKING**: `partialMethod` option in `distanceInWordsStrict` is renamed to `roundingMethod`.
+
+  ```javascript
+  // Before v2.0.0
+  var options = {partialMethod: 'ceil'}
+  // v2.0.0 onward
+  var options = {roundingMethod: 'ceil'}
+
+  var result = distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    options
+  )
+  ```
 
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
