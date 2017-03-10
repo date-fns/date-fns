@@ -51,4 +51,14 @@ describe('setISOYear', function () {
     var result = setISOYear(initialDate, 7)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setISOYear(new Date(NaN), 2007)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setISOYear(new Date(2008, 11 /* Dec */, 29), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })

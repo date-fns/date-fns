@@ -31,4 +31,14 @@ describe('setMilliseconds', function () {
     setMilliseconds(date, 137)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setMilliseconds(new Date(NaN), 300)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setMilliseconds(new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })

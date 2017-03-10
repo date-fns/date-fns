@@ -31,4 +31,14 @@ describe('subDays', function () {
     subDays(date, 11)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = subDays(new Date(NaN), 10)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = subDays(new Date(2014, 8 /* Sep */, 1), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })

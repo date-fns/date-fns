@@ -47,4 +47,14 @@ describe('setQuarter', function () {
     var result = setQuarter(initialDate, 1)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setQuarter(new Date(NaN), 1)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setQuarter(new Date(2014, 6 /* Jul */, 2), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })

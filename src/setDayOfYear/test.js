@@ -31,4 +31,14 @@ describe('setDayOfYear', function () {
     setDayOfYear(date, 365)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setDayOfYear(new Date(NaN), 2)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })

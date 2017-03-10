@@ -35,4 +35,14 @@ describe('subHours', function () {
     subHours(date, 10)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 23, 0))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = subHours(new Date(NaN), 2)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = subHours(new Date(2014, 6 /* Jul */, 11, 1, 0), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
 })
