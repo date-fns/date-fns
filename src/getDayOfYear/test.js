@@ -27,4 +27,9 @@ describe('getDayOfYear', function () {
     var result = getDayOfYear(initialDate)
     assert(result === 366)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDayOfYear(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

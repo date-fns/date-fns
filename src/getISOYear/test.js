@@ -27,4 +27,9 @@ describe('getISOYear', function () {
     var result = getISOYear(initialDate)
     assert(result === 8)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getISOYear(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

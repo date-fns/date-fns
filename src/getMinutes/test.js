@@ -19,4 +19,9 @@ describe('getMinutes', function () {
     var result = getMinutes(new Date(2014, 3 /* Apr */, 2, 23, 30).getTime())
     assert(result === 30)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getMinutes(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

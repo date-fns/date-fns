@@ -22,4 +22,9 @@ describe('getTime', function () {
     var result = getTime(timestamp)
     assert(result === timestamp)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getTime(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

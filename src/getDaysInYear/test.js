@@ -36,4 +36,9 @@ describe('getDaysInYear', function () {
     var result = getDaysInYear(date)
     assert(result === 366)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDaysInYear(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

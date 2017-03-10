@@ -19,4 +19,9 @@ describe('getDate', function () {
     var result = getDate(new Date(2014, 11 /* Dec */, 31).getTime())
     assert(result === 31)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDate(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

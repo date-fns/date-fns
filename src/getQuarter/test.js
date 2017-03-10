@@ -19,4 +19,9 @@ describe('getQuarter', function () {
     var result = getQuarter(new Date(2014, 3 /* Apr */, 2).getTime())
     assert(result === 2)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getQuarter(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

@@ -24,4 +24,9 @@ describe('getISODay', function () {
     var result = getISODay(new Date(2014, 5 /* Jun */, 1).getTime())
     assert(result === 7)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getISODay(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

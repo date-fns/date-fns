@@ -49,4 +49,9 @@ describe('getISOWeek', function () {
     var result = getISOWeek(initialDate)
     assert(result === 52)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getISOWeek(new Date(NaN))
+    assert(isNaN(result))
+  })
 })

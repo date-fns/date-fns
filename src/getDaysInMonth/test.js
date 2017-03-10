@@ -34,4 +34,9 @@ describe('getDaysInMonth', function () {
     var result = getDaysInMonth(date)
     assert(result === 29)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDaysInMonth(new Date(NaN))
+    assert(isNaN(result))
+  })
 })
