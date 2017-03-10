@@ -26,4 +26,9 @@ describe('endOfSecond', function () {
     endOfSecond(date)
     assert.deepEqual(date, new Date(2014, 11, 1, 22, 15, 15, 300))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfSecond(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

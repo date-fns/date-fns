@@ -83,4 +83,9 @@ describe('lastDayOfWeek', function () {
       assert.deepEqual(result, new Date(2015, 0 /* Jan */, 1))
     })
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = lastDayOfWeek(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

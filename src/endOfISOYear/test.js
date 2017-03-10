@@ -36,4 +36,9 @@ describe('endOfISOYear', function () {
     var result = endOfISOYear(initialDate)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfISOYear(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

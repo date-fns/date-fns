@@ -27,4 +27,9 @@ describe('endOfHour', function () {
     endOfHour(date)
     assert.deepEqual(date, new Date(2014, 11, 1, 22, 15))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfHour(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

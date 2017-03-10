@@ -52,4 +52,9 @@ describe('endOfMonth', function () {
       )
     })
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfMonth(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

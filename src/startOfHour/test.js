@@ -28,4 +28,9 @@ describe('startOfHour', function () {
     var result = startOfHour(date)
     assert.deepEqual(result, new Date(2014, 11, 1, 12, 0))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfHour(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

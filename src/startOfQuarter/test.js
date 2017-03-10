@@ -28,4 +28,9 @@ describe('startOfQuarter', function () {
     startOfQuarter(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfQuarter(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })

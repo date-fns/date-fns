@@ -39,4 +39,9 @@ describe('startOfYear', function () {
     var result = startOfYear(initialDate)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfYear(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
 })
