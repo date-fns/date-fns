@@ -46,4 +46,13 @@ describe('min', function () {
     )
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
+
+  it('returns `Invalid Date` if any given date is invalid', function () {
+    var result = min([
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(NaN),
+      new Date(1987, 1 /* Feb */, 11)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
 })
