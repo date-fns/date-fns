@@ -72,7 +72,6 @@ import getUTCISOYear from './_lib/getUTCISOYear/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the formatted date string
- * @throws {Error} The date must be valid
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -110,7 +109,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var originalDate = toDate(dirtyDate, options)
 
   if (!isValid(originalDate, options)) {
-    throw new Error('Date is invalid')
+    return 'Invalid Date'
   }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
