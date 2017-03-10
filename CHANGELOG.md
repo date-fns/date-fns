@@ -262,24 +262,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
   //=> 1
   ```
 
-- **BREAKING**: now `format` throws an exception if the passed date is `Invalid Date`.
-
-  ```javascript
-  // Before v2.0.0
-  var result = format(date, 'YYYY-MM-DD')
-  if (result === 'Invalid Date') {
-    // ...
-  }
-
-  // v2.0.0 onward
-  try {
-    var result = format(date, 'YYYY-MM-DD')
-    // ...
-  } catch (e) {
-    // ...
-  }
-  ```
-
 - **BREAKING**: `format` now assumes that the provided locale uses UTC-versions of `Date` methods,
   e.g. `getUTCMonth` instead of `getMonth`. All included locales are converted.
   This change affects only those who uses custom locales.
