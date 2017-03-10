@@ -26,6 +26,11 @@ import toDate from '../toDate/index.js'
  */
 export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, dirtyOptions) {
   var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
+
+  if (isNaN(dateToCompare)) {
+    return NaN
+  }
+
   var timeToCompare = dateToCompare.getTime()
 
   var result
@@ -33,6 +38,13 @@ export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, dir
 
   dirtyDatesArray.forEach(function (dirtyDate, index) {
     var currentDate = toDate(dirtyDate, dirtyOptions)
+
+    if (isNaN(currentDate)) {
+      result = NaN
+      minDistance = NaN
+      return
+    }
+
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = index

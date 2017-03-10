@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {Error} The start of an interval cannot be after its end
+ * @throws {Error} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // Each day between 6 October 2014 and 10 October 2014:
@@ -33,8 +34,9 @@ export default function eachDayOfInterval (dirtyInterval, dirtyOptions) {
 
   var endTime = endDate.getTime()
 
-  if (startDate.getTime() > endTime) {
-    throw new Error('The start of an interval cannot be after its end')
+  // Throw an exception if start date is after end date or if any date is `Invalid Date`
+  if (!(startDate.getTime() <= endTime)) {
+    throw new Error('Invalid interval')
   }
 
   var dates = []

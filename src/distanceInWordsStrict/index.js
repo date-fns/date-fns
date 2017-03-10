@@ -97,6 +97,10 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
+  if (isNaN(comparison)) {
+    return 'Invalid Date'
+  }
+
   var locale = options.locale
   var localize = enLocale.distanceInWords.localize
   if (locale && locale.distanceInWords && locale.distanceInWords.localize) {

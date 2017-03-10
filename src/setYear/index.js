@@ -21,6 +21,12 @@ import toDate from '../toDate/index.js'
 export default function setYear (dirtyDate, dirtyYear, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
   var year = Number(dirtyYear)
+
+  // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
+
   date.setFullYear(year)
   return date
 }
