@@ -70,4 +70,20 @@ describe('differenceInSeconds', function () {
       assert(result === 0)
     })
   })
+
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    var result = differenceInSeconds(
+      new Date(NaN),
+      new Date(2017, 0 /* Jan */, 1)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    var result = differenceInSeconds(
+      new Date(2017, 0 /* Jan */, 1),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
 })
