@@ -55,4 +55,20 @@ describe('isSameWeek', function () {
     )
     assert(result === true)
   })
+
+  it('returns false if the first date is `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(NaN),
+      new Date(1989, 6 /* Jul */, 10)
+    )
+    assert(result === false)
+  })
+
+  it('returns false if the second date is `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(1987, 1 /* Feb */, 11),
+      new Date(NaN)
+    )
+    assert(result === false)
+  })
 })
