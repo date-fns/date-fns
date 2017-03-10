@@ -71,4 +71,15 @@ describe('isSameWeek', function () {
     )
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    var block = isSameWeek.bind(
+      null,
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      // $ExpectedMistake
+      {weekStartsOn: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

@@ -795,5 +795,13 @@ describe('parse', function () {
       var result = parse(dateString, formatString, new Date(NaN))
       assert(result instanceof Date && isNaN(result))
     })
+
+    it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+      var dateString = '2014-07-02T05:30:15.123+06:00'
+      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      // $ExpectedMistake
+      var block = parse.bind(null, dateString, formatString, baseDate, {weekStartsOn: NaN})
+      assert.throws(block, RangeError)
+    })
   })
 })
