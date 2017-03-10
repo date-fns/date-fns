@@ -62,4 +62,20 @@ describe('compareDesc', function () {
     )
     assert(result === 1)
   })
+
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    var result = compareDesc(
+      new Date(NaN),
+      new Date(1989, 6 /* Jul */, 10)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    var result = compareDesc(
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
 })
