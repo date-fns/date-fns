@@ -99,4 +99,26 @@ describe('eachDayOfInterval', function () {
     )
     assert.throws(block)
   })
+
+  it('throws an exception if the start date is `Invalid Date`', function () {
+    var block = eachDayOfInterval.bind(
+      null,
+      {
+        start: new Date(NaN),
+        end: new Date(2014, 9 /* Oct */, 6)
+      }
+    )
+    assert.throws(block)
+  })
+
+  it('throws an exception if the end date is `Invalid Date`', function () {
+    var block = eachDayOfInterval.bind(
+      null,
+      {
+        start: new Date(2014, 9 /* Oct */, 12),
+        end: new Date(NaN)
+      }
+    )
+    assert.throws(block)
+  })
 })

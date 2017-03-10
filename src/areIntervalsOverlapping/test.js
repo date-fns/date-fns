@@ -167,4 +167,42 @@ describe('areIntervalsOverlapping', function () {
     )
     assert.throws(block)
   })
+
+  context('one of the dates is `Invalid Date`', function () {
+    it('throws an exception if the start date of the initial time interval is `Invalid Date`', function () {
+      var block = areIntervalsOverlapping.bind(
+        null,
+        {start: new Date(NaN), end: new Date(2016, 10, 3)},
+        {start: new Date(2016, 10, 5), end: new Date(2016, 10, 15)}
+      )
+      assert.throws(block)
+    })
+
+    it('throws an exception if the end date of the initial time interval is `Invalid Date`', function () {
+      var block = areIntervalsOverlapping.bind(
+        null,
+        {start: new Date(2016, 10, 3), end: new Date(NaN)},
+        {start: new Date(2016, 10, 5), end: new Date(2016, 10, 15)}
+      )
+      assert.throws(block)
+    })
+
+    it('throws an exception if the start date of the compared time interval is `Invalid Date`', function () {
+      var block = areIntervalsOverlapping.bind(
+        null,
+        {start: new Date(2016, 10, 3), end: new Date(2016, 10, 7)},
+        {start: new Date(NaN), end: new Date(2016, 10, 5)}
+      )
+      assert.throws(block)
+    })
+
+    it('throws an exception if the end date of the compared time interval is `Invalid Date`', function () {
+      var block = areIntervalsOverlapping.bind(
+        null,
+        {start: new Date(2016, 10, 3), end: new Date(2016, 10, 7)},
+        {start: new Date(2016, 10, 5), end: new Date(NaN)}
+      )
+      assert.throws(block)
+    })
+  })
 })
