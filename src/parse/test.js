@@ -788,5 +788,12 @@ describe('parse', function () {
       var result = parse(dateString, formatString, baseDate)
       assert(result instanceof Date && isNaN(result))
     })
+
+    it('returns `Invalid Date` if `baseDate` is `Invalid Date`', function () {
+      var dateString = '2014-07-02T05:30:15.123+06:00'
+      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var result = parse(dateString, formatString, new Date(NaN))
+      assert(result instanceof Date && isNaN(result))
+    })
   })
 })
