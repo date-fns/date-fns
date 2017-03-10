@@ -36,4 +36,9 @@ describe('isLeapYear', function () {
     var result = isLeapYear(date)
     assert(result === true)
   })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isLeapYear(new Date(NaN))
+    assert(result === false)
+  })
 })

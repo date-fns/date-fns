@@ -26,4 +26,9 @@ describe('isFirstDayOfMonth', function () {
     var result = isFirstDayOfMonth(date)
     assert(result === true)
   })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isFirstDayOfMonth(new Date(NaN))
+    assert(result === false)
+  })
 })

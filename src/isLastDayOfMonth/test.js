@@ -26,4 +26,9 @@ describe('isLastDayOfMonth', function () {
     var result = isLastDayOfMonth(date)
     assert(result === true)
   })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isLastDayOfMonth(new Date(NaN))
+    assert(result === false)
+  })
 })

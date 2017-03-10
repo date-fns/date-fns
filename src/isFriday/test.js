@@ -24,4 +24,9 @@ describe('isFriday', function () {
     var result = isFriday(new Date(2014, 1 /* Feb */, 14).getTime())
     assert(result === true)
   })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isFriday(new Date(NaN))
+    assert(result === false)
+  })
 })
