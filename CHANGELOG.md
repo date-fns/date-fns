@@ -18,6 +18,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
   `subMilliseconds`, `subSeconds`, `subMinutes` and `subHours`.
   See issue [#465](https://github.com/date-fns/date-fns/issues/465)
 
+- Minor fix for Indonesian locale. Thanks to [@bentinata](https://github.com/bentinata).
+  See PR: [#458](https://github.com/date-fns/date-fns/pull/458)
+
 ## [1.28.0] - 2017-02-27
 
 ### Added
