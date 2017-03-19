@@ -1,4 +1,6 @@
-var parse = require('../parse/index.js')
+var addMilliseconds = require('../add_milliseconds/index.js')
+
+var MILLISECONDS_IN_MINUTE = 60000
 
 /**
  * @category Minute Helpers
@@ -17,10 +19,8 @@ var parse = require('../parse/index.js')
  * //=> Thu Jul 10 2014 12:30:00
  */
 function addMinutes (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
   var amount = Number(dirtyAmount)
-  date.setMinutes(date.getMinutes() + amount)
-  return date
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
 }
 
 module.exports = addMinutes
