@@ -17,10 +17,9 @@ var parse = require('../parse/index.js')
  * //=> Thu Jul 10 2014 12:45:30.750
  */
 function addMilliseconds (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
+  var timestamp = parse(dirtyDate).getTime()
   var amount = Number(dirtyAmount)
-  date.setMilliseconds(date.getMilliseconds() + amount)
-  return date
+  return new Date(timestamp + amount)
 }
 
 module.exports = addMilliseconds

@@ -1,4 +1,4 @@
-var parse = require('../parse/index.js')
+var addMilliseconds = require('../add_milliseconds/index.js')
 
 /**
  * @category Second Helpers
@@ -17,10 +17,8 @@ var parse = require('../parse/index.js')
  * //=> Thu Jul 10 2014 12:45:30
  */
 function addSeconds (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
   var amount = Number(dirtyAmount)
-  date.setSeconds(date.getSeconds() + amount)
-  return date
+  return addMilliseconds(dirtyDate, amount * 1000)
 }
 
 module.exports = addSeconds

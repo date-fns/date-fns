@@ -1,4 +1,6 @@
-var parse = require('../parse/index.js')
+var addMilliseconds = require('../add_milliseconds/index.js')
+
+var MILLISECONDS_IN_HOUR = 3600000
 
 /**
  * @category Hour Helpers
@@ -17,10 +19,8 @@ var parse = require('../parse/index.js')
  * //=> Fri Jul 11 2014 01:00:00
  */
 function addHours (dirtyDate, dirtyAmount) {
-  var date = parse(dirtyDate)
   var amount = Number(dirtyAmount)
-  date.setHours(date.getHours() + amount)
-  return date
+  return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
 }
 
 module.exports = addHours
