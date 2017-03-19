@@ -57,8 +57,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	    addDays: __webpack_require__(1),
 	    addHours: __webpack_require__(4),
-	    addISOYears: __webpack_require__(5),
-	    addMilliseconds: __webpack_require__(13),
+	    addISOYears: __webpack_require__(6),
+	    addMilliseconds: __webpack_require__(5),
 	    addMinutes: __webpack_require__(14),
 	    addMonths: __webpack_require__(15),
 	    addQuarters: __webpack_require__(17),
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    closestTo: __webpack_require__(23),
 	    compareAsc: __webpack_require__(24),
 	    compareDesc: __webpack_require__(25),
-	    differenceInCalendarDays: __webpack_require__(11),
+	    differenceInCalendarDays: __webpack_require__(12),
 	    differenceInCalendarISOWeeks: __webpack_require__(26),
 	    differenceInCalendarISOYears: __webpack_require__(27),
 	    differenceInCalendarMonths: __webpack_require__(28),
@@ -114,7 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    getISODay: __webpack_require__(75),
 	    getISOWeek: __webpack_require__(68),
 	    getISOWeeksInYear: __webpack_require__(76),
-	    getISOYear: __webpack_require__(6),
+	    getISOYear: __webpack_require__(7),
 	    getMilliseconds: __webpack_require__(77),
 	    getMinutes: __webpack_require__(78),
 	    getMonth: __webpack_require__(79),
@@ -179,24 +179,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    setHours: __webpack_require__(137),
 	    setISODay: __webpack_require__(138),
 	    setISOWeek: __webpack_require__(139),
-	    setISOYear: __webpack_require__(9),
+	    setISOYear: __webpack_require__(10),
 	    setMilliseconds: __webpack_require__(140),
 	    setMinutes: __webpack_require__(141),
 	    setMonth: __webpack_require__(142),
 	    setQuarter: __webpack_require__(143),
 	    setSeconds: __webpack_require__(144),
 	    setYear: __webpack_require__(145),
-	    startOfDay: __webpack_require__(12),
+	    startOfDay: __webpack_require__(13),
 	    startOfHour: __webpack_require__(95),
-	    startOfISOWeek: __webpack_require__(7),
-	    startOfISOYear: __webpack_require__(10),
+	    startOfISOWeek: __webpack_require__(8),
+	    startOfISOYear: __webpack_require__(11),
 	    startOfMinute: __webpack_require__(100),
 	    startOfMonth: __webpack_require__(146),
 	    startOfQuarter: __webpack_require__(103),
 	    startOfSecond: __webpack_require__(105),
 	    startOfToday: __webpack_require__(147),
 	    startOfTomorrow: __webpack_require__(148),
-	    startOfWeek: __webpack_require__(8),
+	    startOfWeek: __webpack_require__(9),
 	    startOfYear: __webpack_require__(67),
 	    startOfYesterday: __webpack_require__(149),
 	    subDays: __webpack_require__(150),
@@ -462,12 +462,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(2);
+	var addMilliseconds = __webpack_require__(5);
+	var MILLISECONDS_IN_HOUR = 3600000;
 	function addHours(dirtyDate, dirtyAmount) {
-	    var date = parse(dirtyDate);
 	    var amount = Number(dirtyAmount);
-	    date.setHours(date.getHours() + amount);
-	    return date;
+	    return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR);
 	}
 	module.exports = addHours;
 	
@@ -477,8 +476,22 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOYear = __webpack_require__(6);
-	var setISOYear = __webpack_require__(9);
+	var parse = __webpack_require__(2);
+	function addMilliseconds(dirtyDate, dirtyAmount) {
+	    var timestamp = parse(dirtyDate).getTime();
+	    var amount = Number(dirtyAmount);
+	    return new Date(timestamp + amount);
+	}
+	module.exports = addMilliseconds;
+	
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var getISOYear = __webpack_require__(7);
+	var setISOYear = __webpack_require__(10);
 	function addISOYears(dirtyDate, dirtyAmount) {
 	    var amount = Number(dirtyAmount);
 	    return setISOYear(dirtyDate, getISOYear(dirtyDate) + amount);
@@ -488,11 +501,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var startOfISOWeek = __webpack_require__(7);
+	var startOfISOWeek = __webpack_require__(8);
 	function getISOYear(dirtyDate) {
 	    var date = parse(dirtyDate);
 	    var year = date.getFullYear();
@@ -517,10 +530,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfWeek = __webpack_require__(8);
+	var startOfWeek = __webpack_require__(9);
 	function startOfISOWeek(dirtyDate) {
 	    return startOfWeek(dirtyDate, { weekStartsOn: 1 });
 	}
@@ -529,7 +542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -547,12 +560,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var startOfISOYear = __webpack_require__(10);
-	var differenceInCalendarDays = __webpack_require__(11);
+	var startOfISOYear = __webpack_require__(11);
+	var differenceInCalendarDays = __webpack_require__(12);
 	function setISOYear(dirtyDate, dirtyISOYear) {
 	    var date = parse(dirtyDate);
 	    var isoYear = Number(dirtyISOYear);
@@ -569,11 +582,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOYear = __webpack_require__(6);
-	var startOfISOWeek = __webpack_require__(7);
+	var getISOYear = __webpack_require__(7);
+	var startOfISOWeek = __webpack_require__(8);
 	function startOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
 	    var fourthOfJanuary = new Date(0);
@@ -587,10 +600,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	var MILLISECONDS_IN_MINUTE = 60000;
 	var MILLISECONDS_IN_DAY = 86400000;
 	function differenceInCalendarDays(dirtyDateLeft, dirtyDateRight) {
@@ -605,7 +618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
@@ -619,30 +632,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var parse = __webpack_require__(2);
-	function addMilliseconds(dirtyDate, dirtyAmount) {
-	    var date = parse(dirtyDate);
-	    var amount = Number(dirtyAmount);
-	    date.setMilliseconds(date.getMilliseconds() + amount);
-	    return date;
-	}
-	module.exports = addMilliseconds;
-	
-
-
-/***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(2);
+	var addMilliseconds = __webpack_require__(5);
+	var MILLISECONDS_IN_MINUTE = 60000;
 	function addMinutes(dirtyDate, dirtyAmount) {
-	    var date = parse(dirtyDate);
 	    var amount = Number(dirtyAmount);
-	    date.setMinutes(date.getMinutes() + amount);
-	    return date;
+	    return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE);
 	}
 	module.exports = addMinutes;
 	
@@ -705,12 +702,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var parse = __webpack_require__(2);
+	var addMilliseconds = __webpack_require__(5);
 	function addSeconds(dirtyDate, dirtyAmount) {
-	    var date = parse(dirtyDate);
 	    var amount = Number(dirtyAmount);
-	    date.setSeconds(date.getSeconds() + amount);
-	    return date;
+	    return addMilliseconds(dirtyDate, amount * 1000);
 	}
 	module.exports = addSeconds;
 	
@@ -864,7 +859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfISOWeek = __webpack_require__(7);
+	var startOfISOWeek = __webpack_require__(8);
 	var MILLISECONDS_IN_MINUTE = 60000;
 	var MILLISECONDS_IN_WEEK = 604800000;
 	function differenceInCalendarISOWeeks(dirtyDateLeft, dirtyDateRight) {
@@ -882,7 +877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOYear = __webpack_require__(6);
+	var getISOYear = __webpack_require__(7);
 	function differenceInCalendarISOYears(dirtyDateLeft, dirtyDateRight) {
 	    return getISOYear(dirtyDateLeft) - getISOYear(dirtyDateRight);
 	}
@@ -941,7 +936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfWeek = __webpack_require__(8);
+	var startOfWeek = __webpack_require__(9);
 	var MILLISECONDS_IN_MINUTE = 60000;
 	var MILLISECONDS_IN_WEEK = 604800000;
 	function differenceInCalendarWeeks(dirtyDateLeft, dirtyDateRight, dirtyOptions) {
@@ -974,7 +969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var differenceInCalendarDays = __webpack_require__(11);
+	var differenceInCalendarDays = __webpack_require__(12);
 	var compareAsc = __webpack_require__(24);
 	function differenceInDays(dirtyDateLeft, dirtyDateRight) {
 	    var dateLeft = parse(dirtyDateLeft);
@@ -1042,7 +1037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addISOYears = __webpack_require__(5);
+	var addISOYears = __webpack_require__(6);
 	function subISOYears(dirtyDate, dirtyAmount) {
 	    var amount = Number(dirtyAmount);
 	    return addISOYears(dirtyDate, -amount);
@@ -1699,8 +1694,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOYear = __webpack_require__(6);
-	var startOfISOWeek = __webpack_require__(7);
+	var getISOYear = __webpack_require__(7);
+	var startOfISOWeek = __webpack_require__(8);
 	function endOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
 	    var fourthOfJanuaryOfNextYear = new Date(0);
@@ -1845,7 +1840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var getDayOfYear = __webpack_require__(66);
 	var getISOWeek = __webpack_require__(68);
-	var getISOYear = __webpack_require__(6);
+	var getISOYear = __webpack_require__(7);
 	var parse = __webpack_require__(2);
 	var isValid = __webpack_require__(69);
 	var enLocale = __webpack_require__(45);
@@ -2023,7 +2018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var parse = __webpack_require__(2);
 	var startOfYear = __webpack_require__(67);
-	var differenceInCalendarDays = __webpack_require__(11);
+	var differenceInCalendarDays = __webpack_require__(12);
 	function getDayOfYear(dirtyDate) {
 	    var date = parse(dirtyDate);
 	    var diff = differenceInCalendarDays(date, startOfYear(date));
@@ -2055,8 +2050,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	var startOfISOWeek = __webpack_require__(7);
-	var startOfISOYear = __webpack_require__(10);
+	var startOfISOWeek = __webpack_require__(8);
+	var startOfISOYear = __webpack_require__(11);
 	var MILLISECONDS_IN_WEEK = 604800000;
 	function getISOWeek(dirtyDate) {
 	    var date = parse(dirtyDate);
@@ -2172,7 +2167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfISOYear = __webpack_require__(10);
+	var startOfISOYear = __webpack_require__(11);
 	var addWeeks = __webpack_require__(19);
 	var MILLISECONDS_IN_WEEK = 604800000;
 	function getISOWeeksInYear(dirtyDate) {
@@ -2417,7 +2412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	function isSameDay(dirtyDateLeft, dirtyDateRight) {
 	    var dateLeftStartOfDay = startOfDay(dirtyDateLeft);
 	    var dateRightStartOfDay = startOfDay(dirtyDateRight);
@@ -2471,7 +2466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfWeek = __webpack_require__(8);
+	var startOfWeek = __webpack_require__(9);
 	function isSameWeek(dirtyDateLeft, dirtyDateRight, dirtyOptions) {
 	    var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions);
 	    var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions);
@@ -2485,7 +2480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfISOYear = __webpack_require__(10);
+	var startOfISOYear = __webpack_require__(11);
 	function isSameISOYear(dirtyDateLeft, dirtyDateRight) {
 	    var dateLeftStartOfYear = startOfISOYear(dirtyDateLeft);
 	    var dateRightStartOfYear = startOfISOYear(dirtyDateRight);
@@ -2758,7 +2753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	function isToday(dirtyDate) {
 	    return startOfDay(dirtyDate).getTime() === startOfDay(new Date()).getTime();
 	}
@@ -2770,7 +2765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	function isTomorrow(dirtyDate) {
 	    var tomorrow = new Date();
 	    tomorrow.setDate(tomorrow.getDate() + 1);
@@ -2840,7 +2835,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	function isYesterday(dirtyDate) {
 	    var yesterday = new Date();
 	    yesterday.setDate(yesterday.getDate() - 1);
@@ -2884,8 +2879,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getISOYear = __webpack_require__(6);
-	var startOfISOWeek = __webpack_require__(7);
+	var getISOYear = __webpack_require__(7);
+	var startOfISOWeek = __webpack_require__(8);
 	function lastDayOfISOYear(dirtyDate) {
 	    var year = getISOYear(dirtyDate);
 	    var fourthOfJanuary = new Date(0);
@@ -3201,7 +3196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var startOfDay = __webpack_require__(12);
+	var startOfDay = __webpack_require__(13);
 	function startOfToday() {
 	    return startOfDay(new Date());
 	}
@@ -3275,7 +3270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var addMilliseconds = __webpack_require__(13);
+	var addMilliseconds = __webpack_require__(5);
 	function subMilliseconds(dirtyDate, dirtyAmount) {
 	    var amount = Number(dirtyAmount);
 	    return addMilliseconds(dirtyDate, -amount);
