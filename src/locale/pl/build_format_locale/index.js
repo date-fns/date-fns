@@ -3,8 +3,8 @@ var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_re
 function buildFormatLocale () {
   var months3char = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru']
   var monthsFull = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień']
-  var weekdays2char = ['nd.', 'pn.', 'wt.', 'śr.', 'cz.', 'pt.', 'sob.']
-  var weekdays3char = ['ndz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.']
+  var weekdays2char = ['nd', 'pn', 'wt', 'śr', 'cz', 'pt', 'sb']
+  var weekdays3char = ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'piąt.', 'sob.']
   var weekdaysFull = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota']
   var meridiem = ['w nocy', 'rano', 'po południu', 'wieczorem']
 
