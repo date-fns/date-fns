@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.2] - 2017-03-27
+
+### Fixed
+
+- Fix `dd` and `ddd` formatters in Polish language locale. Kudos to [@justrag](https://github.com/justrag).
+  See PR: [#467](https://github.com/date-fns/date-fns/pull/467)
+
 ## [1.28.1] - 2017-03-19
 
 ### Fixed
@@ -962,7 +969,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.1...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.2...HEAD
+[1.28.2]: https://github.com/date-fns/date-fns/compare/v1.28.1...v1.28.2
 [1.28.1]: https://github.com/date-fns/date-fns/compare/v1.28.0...v1.28.1
 [1.28.0]: https://github.com/date-fns/date-fns/compare/v1.27.2...v1.28.0
 [1.27.2]: https://github.com/date-fns/date-fns/compare/v1.27.1...v1.27.2
