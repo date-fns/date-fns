@@ -32,6 +32,6 @@ type Locale = {
 }
 
 declare module.exports: (
-  date: Date,
+  date: Date | string | number,
   options?: Options
 ) => boolean
