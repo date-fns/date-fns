@@ -32,13 +32,13 @@ type Interval = {
 }
 
 type Options = {
-  weekStartsOn?: number,
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
   additionalDigits?: 0 | 1 | 2,
   locale?: Locale,
   includeSeconds?: boolean,
   addSuffix?: boolean,
   unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
-  partialMethod?: 'floor' | 'ceil' | 'round'
+  roundingMethod?: 'floor' | 'ceil' | 'round'
 }
 
 type Locale = {
@@ -16948,7 +16948,7 @@ interface dateFns {
   ): boolean
 
   isValid(
-    date: Date,
+    date: Date | string | number,
     options?: Options
   ): boolean
 
