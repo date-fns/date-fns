@@ -328,6 +328,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
   )
   ```
 
+- **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
+  are not `undefined` or have expected values.
+  This change is introduced for consistency with ECMAScript's `Intl` which does the same.
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
