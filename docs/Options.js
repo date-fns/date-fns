@@ -25,9 +25,13 @@
  * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `distanceInWordsStrict`.
  *   Specifies, which way to round partial units
  *
- * @throws {RangeError} weekStartsOn must be between 0 and 6
+ * @throws {RangeError} weekStartsOn must be between 0 and 6.
  *   Thrown by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
  *   `isThisWeek`, `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`.
+ * @throws {RangeError} roundingMethod must be 'floor', 'ceil' or 'round'.
+ *   Thrown by `distanceInWordsStrict`
+ * @throws {RangeError} unit must be 's', 'm', 'h', 'd', 'M' or 'Y'.
+ *   Thrown by `distanceInWordsStrict`
  *
  * @example
  * // For 15 December 12345 AD, represent the start of the week in Esperanto,
