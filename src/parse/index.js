@@ -73,6 +73,8 @@ var MILLISECONDS_IN_MINUTE = 60000
  * If you're not sure which `baseDate` to supply, create a new instance of Date:
  * `parse('02/11/2014', 'MM/DD/YYYY', new Date())`
  * In this case parsing will be done in the context of the current date.
+ * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * then `Invalid Date` will be returned.
  *
  * The characters wrapped in square brackets in the format string are escaped.
  *
@@ -208,6 +210,10 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     })
 
   var date = toDate(dirtyBaseDate, options)
+
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
