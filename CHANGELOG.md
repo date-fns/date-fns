@@ -272,6 +272,27 @@ This change log follows the format documented in [Keep a CHANGELOG].
 - **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
   when the second argument is not an instance of array.
 
+- **BREAKING**: now `isValid` doesn't throw an exception
+  if the first argument is not an instance of Date.
+  Instead, argument is converted beforehand using `toDate`.
+
+  Examples:
+  | `isValid` argument        | Before v2.0.0 | v2.0.0 onward |
+  |---------------------------|---------------|---------------|
+  | `new Date()`              | `true`        | `true`        |
+  | `new Date('2016-01-01')`  | `true`        | `true`        |
+  | `new Date('')`            | `false`       | `false`       |
+  | `new Date(1488370835081)` | `true`        | `true`        |
+  | `new Date(NaN)`           | `false`       | `false`       |
+  | `'2016-01-01'`            | `TypeError`   | `true`        |
+  | `''`                      | `TypeError`   | `false`       |
+  | `1488370835081`           | `TypeError`   | `true`        |
+  | `NaN`                     | `TypeError`   | `false`       |
+
+  We introduce this change to make *date-fns* consistent with ECMAScript behavior
+  that try to coerce arguments to the expected type
+  (which is also the case with other *date-fns* functions). 
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)

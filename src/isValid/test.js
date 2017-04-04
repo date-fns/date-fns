@@ -15,9 +15,13 @@ describe('isValid', function () {
     assert(result === false)
   })
 
-  it('throws an exception if the argument is not an instance of Date', function () {
-    // $ExpectedMistake
-    var block = isValid.bind(null, '')
-    assert.throws(block, TypeError, '[object String] is not an instance of Date')
+  it('accepts a string', function () {
+    assert(isValid(new Date(2014, 6 /* Jul */, 8).toString()) === true)
+    assert(isValid('') === false)
+  })
+
+  it('accepts a timestamp', function () {
+    assert(isValid(new Date(2014, 1 /* Feb */, 11).getTime()) === true)
+    assert(isValid(NaN) === false)
   })
 })
