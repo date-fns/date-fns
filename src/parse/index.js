@@ -91,8 +91,9 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
+ * @throws {RangeError} weekStartsOn must be between 0 and 6
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -118,6 +119,13 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
+
+  var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
+  }
 
   if (formatString === '') {
     if (dateString === '') {

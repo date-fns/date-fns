@@ -12,8 +12,9 @@ import addDays from '../addDays/index.js'
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} day - the day of the week of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the new date with the day of the week setted
+ * @throws {RangeError} weekStartsOn must be between 0 and 6
  *
  * @example
  * // Set Sunday to 1 September 2014:
@@ -26,8 +27,15 @@ import addDays from '../addDays/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay (dirtyDate, dirtyDay, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
-  var date = toDate(dirtyDate, dirtyOptions)
+  var options = dirtyOptions || {}
+  var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
+  }
+
+  var date = toDate(dirtyDate, options)
   var day = Number(dirtyDay)
   var currentDay = date.getDay()
 
@@ -35,5 +43,5 @@ export default function setDay (dirtyDate, dirtyDay, dirtyOptions) {
   var dayIndex = (remainder + 7) % 7
 
   var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
-  return addDays(date, diff, dirtyOptions)
+  return addDays(date, diff, options)
 }
