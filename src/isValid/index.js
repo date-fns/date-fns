@@ -1,4 +1,4 @@
-import isDate from '../isDate/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name isValid
@@ -7,18 +7,23 @@ import isDate from '../isDate/index.js'
  *
  * @description
  * Returns false if argument is Invalid Date and true otherwise.
+ * Argument is converted to Date using `toDate`. See [toDate]{@link docs/toDate}
  * Invalid Date is a Date, whose time value is NaN.
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- * @param {Date} date - the date to check
+ * @param {Date|String|Number} date - the date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is valid
- * @throws {TypeError} argument must be an instance of Date
  *
  * @example
  * // For the valid date:
  * var result = isValid(new Date(2014, 1, 31))
+ * //=> true
+ *
+ * @example
+ * // For the value, convertable into a date:
+ * var result = isValid('2014-02-31')
  * //=> true
  *
  * @example
@@ -27,9 +32,6 @@ import isDate from '../isDate/index.js'
  * //=> false
  */
 export default function isValid (dirtyDate, dirtyOptions) {
-  if (isDate(dirtyDate, dirtyOptions)) {
-    return !isNaN(dirtyDate)
-  } else {
-    throw new TypeError(toString.call(dirtyDate) + ' is not an instance of Date')
-  }
+  var date = toDate(dirtyDate, dirtyOptions)
+  return !isNaN(date)
 }

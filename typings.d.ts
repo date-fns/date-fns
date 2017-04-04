@@ -631,7 +631,7 @@ declare module 'date-fns' {
   namespace isTuesday {}
 
   function isValid (
-    date: Date,
+    date: Date | string | number,
     options?: Options
   ): boolean
   namespace isValid {}
@@ -3213,7 +3213,7 @@ declare module 'date-fns/fp' {
   let isTuesday: CurriedFn1<Date | string | number, boolean>
   namespace isTuesday {}
 
-  let isValid: CurriedFn1<Date, boolean>
+  let isValid: CurriedFn1<Date | string | number, boolean>
   namespace isValid {}
 
   let isWednesday: CurriedFn1<Date | string | number, boolean>
@@ -3615,7 +3615,7 @@ declare module 'date-fns/fp' {
   let isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  let isValidWithOptions: CurriedFn2<Options, Date, boolean>
+  let isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isValidWithOptions {}
 
   let isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
@@ -8352,7 +8352,7 @@ declare module 'date-fns/esm' {
   namespace isTuesday {}
 
   function isValid (
-    date: Date,
+    date: Date | string | number,
     options?: Options
   ): boolean
   namespace isValid {}
@@ -10934,7 +10934,7 @@ declare module 'date-fns/esm/fp' {
   let isTuesday: CurriedFn1<Date | string | number, boolean>
   namespace isTuesday {}
 
-  let isValid: CurriedFn1<Date, boolean>
+  let isValid: CurriedFn1<Date | string | number, boolean>
   namespace isValid {}
 
   let isWednesday: CurriedFn1<Date | string | number, boolean>
@@ -11336,7 +11336,7 @@ declare module 'date-fns/esm/fp' {
   let isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  let isValidWithOptions: CurriedFn2<Options, Date, boolean>
+  let isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isValidWithOptions {}
 
   let isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
