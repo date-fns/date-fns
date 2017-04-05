@@ -67,7 +67,7 @@ describe('isWithinInterval', function () {
       new Date(2014, 9 /* Oct */, 31),
       {start: new Date(2014, 11 /* Dec */, 31), end: new Date(2014, 8 /* Sep */, 1)}
     )
-    assert.throws(block)
+    assert.throws(block, RangeError)
   })
 
   it('returns false if the given date is `Invalid Date`', function () {
@@ -84,7 +84,7 @@ describe('isWithinInterval', function () {
       new Date(2014, 9 /* Oct */, 31),
       {start: new Date(NaN), end: new Date(2014, 8 /* Sep */, 1)}
     )
-    assert.throws(block)
+    assert.throws(block, RangeError)
   })
 
   it('throws an exception if the end date is `Invalid Date`', function () {
@@ -93,6 +93,6 @@ describe('isWithinInterval', function () {
       new Date(2014, 9 /* Oct */, 31),
       {start: new Date(2014, 11 /* Dec */, 31), end: new Date(NaN)}
     )
-    assert.throws(block)
+    assert.throws(block, RangeError)
   })
 })

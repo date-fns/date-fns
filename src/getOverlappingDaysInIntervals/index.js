@@ -14,8 +14,8 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of days that overlap in two time intervals
- * @throws {Error} The start of an interval cannot be after its end
- * @throws {Error} Date in interval cannot be `Invalid Date`
+ * @throws {RangeError} The start of an interval cannot be after its end
+ * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals adds 1 for each started overlapping day:
@@ -41,7 +41,7 @@ export default function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyI
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
-    throw new Error('Invalid interval')
+    throw new RangeError('Invalid interval')
   }
 
   var isOverlapping = leftStartTime < rightEndTime && rightStartTime < leftEndTime

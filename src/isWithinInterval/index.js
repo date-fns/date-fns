@@ -12,8 +12,8 @@ import toDate from '../toDate/index.js'
  * @param {Interval} interval - the interval to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is within the interval
- * @throws {Error} The start of an interval cannot be after its end
- * @throws {Error} Date in interval cannot be `Invalid Date`
+ * @throws {RangeError} The start of an interval cannot be after its end
+ * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For the date within the interval:
@@ -38,7 +38,7 @@ export default function isWithinInterval (dirtyDate, dirtyInterval, dirtyOptions
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {
-    throw new Error('Invalid interval')
+    throw new RangeError('Invalid interval')
   }
 
   return time >= startTime && time <= endTime
