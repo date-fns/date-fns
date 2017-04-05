@@ -187,8 +187,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
   ```
 
   Also these functions now accept an object with `start` and `end` properties
-  instead of two arguments as an interval. All these functions, as before,
-  throw an exception if the start of the interval is after its end.
+  instead of two arguments as an interval. All these functions
+  throw `RangeError` if the start of the interval is after its end
+  or if any date in interval is `Invalid Date`.
 
   ```javascript
   // Before v2.0.0
@@ -330,7 +331,24 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
-  This change is introduced for consistency with ECMAScript's `Intl` which does the same.
+  This change is introduced for consistency with ECMAScript standard library which does the same.
+  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
+
+- **BREAKING**: all functions now handle arguments by following rules:
+
+  - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
+  - arguments expected to be numbers are converted to numbers using JavaScript's `Number` function;
+  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function.
+
+  If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
+  an invalid value will be returned:
+
+  - `false` for functions that return booleans (expect `isValid`);
+  - `Invalid Date` for functions that return dates;
+  - `NaN` for functions that return numbers;
+  - and `String('Invalid Date')` for functions that return strings.
+
+  See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
 
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
