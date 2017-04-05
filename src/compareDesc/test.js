@@ -86,4 +86,14 @@ describe('compareDesc', function () {
     )
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = compareDesc.bind(
+      null,
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(1989, 6 /* Jul */, 10),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

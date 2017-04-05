@@ -94,4 +94,14 @@ describe('differenceInHours', function () {
     )
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInHours.bind(
+      this,
+      new Date(2014, 6 /* Jul */, 2, 6, 0),
+      new Date(2014, 6 /* Jul */, 2, 20, 0),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

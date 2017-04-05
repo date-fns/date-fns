@@ -71,4 +71,14 @@ describe('isSameISOYear', function () {
     )
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isSameISOYear.bind(
+      null,
+      new Date(2003, 11 /* Dec */, 29),
+      new Date(2005, 0 /* Jan */, 2),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

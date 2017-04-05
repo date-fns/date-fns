@@ -94,4 +94,14 @@ describe('differenceInCalendarDays', function () {
     )
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInCalendarDays.bind(
+      null,
+      new Date(2011, 6 /* Jul */, 2, 6, 0),
+      new Date(2012, 6 /* Jul */, 2, 18, 0),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

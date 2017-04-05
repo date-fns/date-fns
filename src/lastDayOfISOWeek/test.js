@@ -39,4 +39,10 @@ describe('lastDayOfISOWeek', function () {
     var result = lastDayOfISOWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    var block = lastDayOfISOWeek.bind(null, date, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

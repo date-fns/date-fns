@@ -31,4 +31,9 @@ describe('isLastDayOfMonth', function () {
     var result = isLastDayOfMonth(new Date(NaN))
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isLastDayOfMonth.bind(null, new Date(2014, 9 /* Oct */, 31), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

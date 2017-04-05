@@ -45,4 +45,9 @@ describe('subHours', function () {
     var result = subHours(new Date(2014, 6 /* Jul */, 11, 1, 0), NaN)
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var block = subHours.bind(null, new Date(2014, 6 /* Jul */, 11, 1, 0), 2, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

@@ -95,4 +95,14 @@ describe('isWithinInterval', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isWithinInterval.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      {start: new Date(2014, 8 /* Sep */, 1), end: new Date(2014, 11 /* Dec */, 31)},
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

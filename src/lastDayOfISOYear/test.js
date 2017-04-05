@@ -41,4 +41,9 @@ describe('lastDayOfISOYear', function () {
     var result = lastDayOfISOYear(new Date(NaN))
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var block = lastDayOfISOYear.bind(null, new Date(2009, 0 /* Jan */, 1, 16, 0), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

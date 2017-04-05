@@ -58,4 +58,9 @@ describe('addQuarters', function () {
     var result = addQuarters(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = addQuarters.bind(null, new Date(2014, 8 /* Sep */, 1), 1, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

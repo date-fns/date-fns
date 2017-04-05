@@ -60,4 +60,14 @@ describe('isSameQuarter', function () {
     )
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isSameQuarter.bind(
+      null,
+      new Date(2014, 0 /* Jan */, 1),
+      new Date(2014, 2 /* Mar */, 8),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

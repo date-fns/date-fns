@@ -60,4 +60,14 @@ describe('isSameSecond', function () {
     )
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isSameSecond.bind(
+      null,
+      new Date(2014, 8 /* Sep */, 4, 6, 30, 15),
+      new Date(2014, 8 /* Sep */, 4, 6, 30, 15, 500),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

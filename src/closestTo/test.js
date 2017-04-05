@@ -86,4 +86,13 @@ describe('closestTo', function () {
     ])
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var block = closestTo.bind(null, date, [
+      new Date(2015, 7 /* Aug */, 31),
+      new Date(2012, 6 /* Jul */, 2)
+    ], {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

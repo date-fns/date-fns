@@ -24,4 +24,9 @@ describe('getMilliseconds', function () {
     var result = getMilliseconds(new Date(NaN))
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = getMilliseconds.bind(null, new Date(2012, 1 /* Feb */, 29, 11, 45, 5, 123), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

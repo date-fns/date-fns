@@ -124,4 +124,14 @@ describe('differenceInCalendarWeeks', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInCalendarWeeks.bind(
+      null,
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

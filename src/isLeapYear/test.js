@@ -41,4 +41,9 @@ describe('isLeapYear', function () {
     var result = isLeapYear(new Date(NaN))
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isLeapYear.bind(null, new Date(2012, 6 /* Jul */, 2), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

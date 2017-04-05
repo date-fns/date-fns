@@ -54,4 +54,9 @@ describe('getISOWeek', function () {
     var result = getISOWeek(new Date(NaN))
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = getISOWeek.bind(null, new Date(2005, 0 /* Jan */, 2), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

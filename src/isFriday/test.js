@@ -29,4 +29,9 @@ describe('isFriday', function () {
     var result = isFriday(new Date(NaN))
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isFriday.bind(null, new Date(2014, 8 /* Sep */, 26), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

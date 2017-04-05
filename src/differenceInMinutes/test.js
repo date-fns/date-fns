@@ -94,4 +94,14 @@ describe('differenceInMinutes', function () {
     )
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInMinutes.bind(
+      this,
+      new Date(2014, 6 /* Jul */, 2, 12, 6),
+      new Date(2014, 6 /* Jul */, 2, 12, 20),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

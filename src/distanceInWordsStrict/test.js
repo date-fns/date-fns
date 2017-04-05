@@ -493,4 +493,14 @@ describe('distanceInWordsStrict', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = distanceInWordsStrict.bind(
+      this,
+      new Date(1986, 3, 4, 10, 32, 5),
+      new Date(1986, 3, 4, 10, 32, 5),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

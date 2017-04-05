@@ -316,4 +316,14 @@ describe('distanceInWords', function () {
     )
     assert(result === 'Invalid Date')
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = distanceInWords.bind(
+      this,
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(1986, 3, 4, 10, 32, 3),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

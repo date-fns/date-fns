@@ -27,4 +27,10 @@ describe('getTime', function () {
     var result = getTime(new Date(NaN))
     assert(isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var timestamp = 1483228800000
+    var block = getTime.bind(null, new Date(timestamp), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

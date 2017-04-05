@@ -61,4 +61,9 @@ describe('setISOYear', function () {
     var result = setISOYear(new Date(2008, 11 /* Dec */, 29), NaN)
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var block = setISOYear.bind(null, new Date(2008, 11 /* Dec */, 29), 2007, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

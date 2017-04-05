@@ -60,4 +60,14 @@ describe('isSameDay', function () {
     )
     assert(result === false)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isSameDay.bind(
+      null,
+      new Date(2014, 8 /* Sep */, 4, 6, 0),
+      new Date(2014, 8 /* Sep */, 4, 18, 0),
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

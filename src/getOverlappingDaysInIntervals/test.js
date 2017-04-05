@@ -216,4 +216,17 @@ describe('getOverlappingDaysInIntervals', function () {
       assert.throws(block, RangeError)
     })
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var earlierIntervalStart = new Date(2016, 9, 25)
+    var earlierIntervalEnd = new Date(2016, 10, 9)
+
+    var block = getOverlappingDaysInIntervals.bind(
+      null,
+      {start: initialIntervalStart, end: initialIntervalEnd},
+      {start: earlierIntervalStart, end: earlierIntervalEnd},
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

@@ -121,4 +121,12 @@ describe('eachDayOfInterval', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = eachDayOfInterval.bind(this, {
+      start: new Date(2014, 9 /* Oct */, 6),
+      end: new Date(2014, 9 /* Oct */, 12)
+    }, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })
