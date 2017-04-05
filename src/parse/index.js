@@ -93,7 +93,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
- * @throws {RangeError} weekStartsOn must be between 0 and 6
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:

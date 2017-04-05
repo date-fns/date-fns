@@ -8,7 +8,7 @@
  * @typedef {Object} Options
  * @property {0|1|2|3|4|5|6} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
- *   `isThisWeek`, `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`
+ *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`
  * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
@@ -25,12 +25,14 @@
  * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `distanceInWordsStrict`.
  *   Specifies, which way to round partial units
  *
- * @throws {RangeError} weekStartsOn must be between 0 and 6.
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2.
+ *   Thrown by **all** functions
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6.
  *   Thrown by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
- *   `isThisWeek`, `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`.
- * @throws {RangeError} roundingMethod must be 'floor', 'ceil' or 'round'.
+ *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`.
+ * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'.
  *   Thrown by `distanceInWordsStrict`
- * @throws {RangeError} unit must be 's', 'm', 'h', 'd', 'M' or 'Y'.
+ * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'.
  *   Thrown by `distanceInWordsStrict`
  *
  * @example

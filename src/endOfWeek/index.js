@@ -13,7 +13,7 @@ import toDate from '../toDate/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the end of a week
- * @throws {RangeError} weekStartsOn must be between 0 and 6
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // The end of a week for 2 September 2014 11:55:00:
