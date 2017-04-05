@@ -100,6 +100,7 @@ describe('differenceInQuarters', function () {
       this,
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

@@ -59,6 +59,7 @@ describe('max', function () {
   it('returns `Invalid Date` if any given value is undefined', function () {
     var result = max([
       new Date(1989, 6 /* Jul */, 10),
+      // $ExpectedMistake
       undefined,
       new Date(1987, 1 /* Feb */, 11)
     ])
@@ -72,6 +73,7 @@ describe('max', function () {
         new Date(1989, 6 /* Jul */, 10),
         new Date(1987, 1 /* Feb */, 11)
       ],
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

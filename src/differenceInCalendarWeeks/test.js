@@ -130,6 +130,7 @@ describe('differenceInCalendarWeeks', function () {
       null,
       new Date(2014, 5 /* Jun */, 29, 6, 0),
       new Date(2014, 6 /* Jul */, 8, 18, 0),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

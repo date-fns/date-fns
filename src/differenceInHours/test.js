@@ -100,6 +100,7 @@ describe('differenceInHours', function () {
       this,
       new Date(2014, 6 /* Jul */, 2, 6, 0),
       new Date(2014, 6 /* Jul */, 2, 20, 0),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

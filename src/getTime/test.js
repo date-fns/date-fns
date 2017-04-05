@@ -30,6 +30,7 @@ describe('getTime', function () {
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     var timestamp = 1483228800000
+    // $ExpectedMistake
     var block = getTime.bind(null, new Date(timestamp), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

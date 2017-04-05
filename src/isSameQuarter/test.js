@@ -66,6 +66,7 @@ describe('isSameQuarter', function () {
       null,
       new Date(2014, 0 /* Jan */, 1),
       new Date(2014, 2 /* Mar */, 8),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

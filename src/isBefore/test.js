@@ -74,6 +74,7 @@ describe('isBefore', function () {
       null,
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

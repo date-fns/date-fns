@@ -66,6 +66,7 @@ describe('isSameMinute', function () {
       null,
       new Date(2014, 8 /* Sep */, 4, 6, 30),
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

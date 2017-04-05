@@ -66,6 +66,7 @@ describe('isEqual', function () {
       null,
       new Date(1987, 1 /* Feb */, 11),
       new Date(1987, 1 /* Feb */, 11),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

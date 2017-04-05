@@ -31,6 +31,7 @@ describe('isWeekend', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
     var block = isWeekend.bind(null, new Date(2014, 9 /* Oct */, 5), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

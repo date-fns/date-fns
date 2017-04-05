@@ -401,6 +401,7 @@ describe('format', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
     var block = format.bind(this, date, 'Do of t[h][e] Mo in YYYY', {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

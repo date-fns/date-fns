@@ -77,6 +77,7 @@ describe('isSameISOYear', function () {
       null,
       new Date(2003, 11 /* Dec */, 29),
       new Date(2005, 0 /* Jan */, 2),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

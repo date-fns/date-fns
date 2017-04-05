@@ -66,6 +66,7 @@ describe('isSameYear', function () {
       null,
       new Date(2014, 8 /* Sep */, 2),
       new Date(2014, 8 /* Sep */, 25),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

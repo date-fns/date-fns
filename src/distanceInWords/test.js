@@ -322,6 +322,7 @@ describe('distanceInWords', function () {
       this,
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(1986, 3, 4, 10, 32, 3),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

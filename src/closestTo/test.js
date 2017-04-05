@@ -81,6 +81,7 @@ describe('closestTo', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
     var result = closestTo(date, [
       new Date(2015, 7 /* Aug */, 31),
+      // $ExpectedMistake
       undefined,
       new Date(2012, 6 /* Jul */, 2)
     ])
@@ -92,6 +93,7 @@ describe('closestTo', function () {
     var block = closestTo.bind(null, date, [
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2)
+    // $ExpectedMistake
     ], {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

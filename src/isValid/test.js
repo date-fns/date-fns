@@ -26,6 +26,7 @@ describe('isValid', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
     var block = isValid.bind(null, new Date(), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

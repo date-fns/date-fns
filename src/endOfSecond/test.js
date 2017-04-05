@@ -34,6 +34,7 @@ describe('endOfSecond', function () {
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     var date = new Date(2014, 11, 1, 22, 15, 30)
+    // $ExpectedMistake
     var block = endOfSecond.bind(this, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

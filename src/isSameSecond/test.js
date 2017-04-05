@@ -66,6 +66,7 @@ describe('isSameSecond', function () {
       null,
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15),
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15, 500),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

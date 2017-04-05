@@ -66,6 +66,7 @@ describe('isSameHour', function () {
       null,
       new Date(2014, 8 /* Sep */, 4, 6, 0),
       new Date(2014, 8 /* Sep */, 4, 6, 30),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

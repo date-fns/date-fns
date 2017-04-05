@@ -101,6 +101,7 @@ describe('isWithinInterval', function () {
       null,
       new Date(2014, 9 /* Oct */, 31),
       {start: new Date(2014, 8 /* Sep */, 1), end: new Date(2014, 11 /* Dec */, 31)},
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

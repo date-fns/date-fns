@@ -54,6 +54,7 @@ describe('addISOYears', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
     var block = addISOYears.bind(null, new Date(2010, 6 /* Jul */, 2), 5, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

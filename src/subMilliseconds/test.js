@@ -47,6 +47,7 @@ describe('subMilliseconds', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
     var block = subMilliseconds.bind(null, new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0), 750, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

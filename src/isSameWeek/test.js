@@ -96,6 +96,7 @@ describe('isSameWeek', function () {
       null,
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)

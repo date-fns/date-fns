@@ -36,6 +36,7 @@ describe('startOfMinute', function () {
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
     var date = new Date(2014, 11 /* Dec */, 1, 22, 15, 45, 400)
+    // $ExpectedMistake
     var block = startOfMinute.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

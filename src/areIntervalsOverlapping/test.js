@@ -214,6 +214,7 @@ describe('areIntervalsOverlapping', function () {
       null,
       {start: initialIntervalStart, end: initialIntervalEnd},
       {start: earlierIntervalStart, end: earlierIntervalEnd},
+      // $ExpectedMistake
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)
