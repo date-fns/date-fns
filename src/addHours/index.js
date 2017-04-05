@@ -13,6 +13,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of hours to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Date} the new date with the hours added
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
