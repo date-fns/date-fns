@@ -16,6 +16,7 @@ import getISODay from '../getISODay/index.js'
  * @param {Number} day - the day of the ISO week of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the day of the ISO week setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set Sunday to 1 September 2014:

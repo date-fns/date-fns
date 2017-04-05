@@ -11,6 +11,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the hours
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:

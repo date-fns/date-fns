@@ -11,6 +11,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} date - the date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date falls on a weekend
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?

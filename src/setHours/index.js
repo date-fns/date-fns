@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Number} hours - the hours of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set 4 hours to 1 September 2014 11:30:00:

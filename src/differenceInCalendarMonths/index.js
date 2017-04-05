@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar months
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?

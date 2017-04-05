@@ -15,6 +15,7 @@ import cloneObject from '../_lib/cloneObject/index.js'
  * @param {Date|String|Number} date - the original date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the start of an ISO week
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The start of an ISO week for 2 September 2014 11:55:00:

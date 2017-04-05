@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Number} year - the year of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the year setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set year 2013 to 1 September 2014:

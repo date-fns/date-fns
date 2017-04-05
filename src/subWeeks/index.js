@@ -12,6 +12,7 @@ import addWeeks from '../addWeeks/index.js'
  * @param {Number} amount - the amount of weeks to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the weeks subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 4 weeks from 1 September 2014:

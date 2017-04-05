@@ -12,6 +12,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
  * @param {Number} amount - the amount of seconds to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the seconds added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 30 seconds to 10 July 2014 12:45:00:

@@ -14,6 +14,7 @@ import startOfISOYear from '../startOfISOYear/index.js'
  * @param {Date|String|Number} dateRight - the second date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same ISO week-numbering year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?

@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Number} dayOfMonth - the day of the month of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the day of the month setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set the 30th day of the month to 1 September 2014:

@@ -15,6 +15,7 @@ import cloneObject from '../_lib/cloneObject/index.js'
  * @param {Date|String|Number} dateRight - the second date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same ISO week
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Are 1 September 2014 and 7 September 2014 in the same ISO week?

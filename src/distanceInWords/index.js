@@ -53,6 +53,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?

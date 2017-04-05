@@ -17,6 +17,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * @param {Number} isoYear - the ISO week-numbering year of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week-numbering year setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:

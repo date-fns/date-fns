@@ -14,6 +14,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * @param {Number} amount - the amount of hours to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 2 hours to 10 July 2014 23:00:00:

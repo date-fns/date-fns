@@ -12,6 +12,7 @@ import addMonths from '../addMonths/index.js'
  * @param {Number} amount - the amount of months to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the months subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 5 months from 1 February 2015:

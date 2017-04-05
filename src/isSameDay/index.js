@@ -12,6 +12,7 @@ import startOfDay from '../startOfDay/index.js'
  * @param {Date|String|Number} dateRight - the second date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the dates are in the same day
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?

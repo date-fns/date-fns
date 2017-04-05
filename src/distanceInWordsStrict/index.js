@@ -34,6 +34,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
  *

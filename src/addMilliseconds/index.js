@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Number} amount - the amount of milliseconds to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the milliseconds added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 750 milliseconds to 10 July 2014 12:45:30.000:

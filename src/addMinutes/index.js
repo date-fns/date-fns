@@ -14,6 +14,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Number} amount - the amount of minutes to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the minutes added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:

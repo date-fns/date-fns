@@ -13,6 +13,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the day of year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which day of the year is 2 July 2014?

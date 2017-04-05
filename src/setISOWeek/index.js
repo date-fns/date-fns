@@ -15,6 +15,7 @@ import getISOWeek from '../getISOWeek/index.js'
  * @param {Number} isoWeek - the ISO week of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:

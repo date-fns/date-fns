@@ -14,6 +14,7 @@ import addISOYears from '../addISOYears/index.js'
  * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the ISO week-numbering years subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:

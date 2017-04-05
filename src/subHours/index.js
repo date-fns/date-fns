@@ -12,6 +12,7 @@ import addHours from '../addHours/index.js'
  * @param {Number} amount - the amount of hours to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the hours subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 2 hours from 11 July 2014 01:00:00:

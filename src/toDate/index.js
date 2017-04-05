@@ -62,7 +62,7 @@ var patterns = {
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
- * @throws {RangeError} additionalDigits must be 0, 1 or 2
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Convert string '2014-02-11T11:30:30' to date:

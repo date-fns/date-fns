@@ -14,6 +14,7 @@ import compareDesc from '../compareDesc/index.js'
  * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of full years
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many full years are between 31 December 2013 and 11 February 2015?

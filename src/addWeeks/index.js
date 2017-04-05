@@ -12,6 +12,7 @@ import addDays from '../addDays/index.js'
  * @param {Number} amount - the amount of weeks to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the weeks added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 4 weeks to 1 September 2014:

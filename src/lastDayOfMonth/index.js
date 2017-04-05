@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} date - the original date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the last day of a month
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The last day of a month for 2 September 2014 11:55:00:

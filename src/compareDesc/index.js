@@ -13,6 +13,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} dateRight - the second date to compare
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the result of the comparison
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:

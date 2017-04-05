@@ -72,6 +72,7 @@ import getUTCISOYear from './_lib/getUTCISOYear/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the formatted date string
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:

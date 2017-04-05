@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Number} minutes - the minutes of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the minutes setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:

@@ -12,6 +12,7 @@ import addQuarters from '../addQuarters/index.js'
  * @param {Number} amount - the amount of quarters to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the quarters subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 3 quarters from 1 September 2014:

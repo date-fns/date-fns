@@ -14,6 +14,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of minutes
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?

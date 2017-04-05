@@ -13,6 +13,7 @@ import setMonth from '../setMonth/index.js'
  * @param {Number} quarter - the quarter of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the quarter setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:

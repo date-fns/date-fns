@@ -11,6 +11,7 @@ import toDate from '../toDate/index.js'
  * @param {Date[]|String[]|Number[]} datesArray - the dates to compare
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the latest of the dates
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which of these dates is the latest?

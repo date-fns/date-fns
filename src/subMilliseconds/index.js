@@ -12,6 +12,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
  * @param {Number} amount - the amount of milliseconds to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the milliseconds subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:

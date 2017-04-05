@@ -12,6 +12,7 @@ import addMinutes from '../addMinutes/index.js'
  * @param {Number} amount - the amount of minutes to be subtracted
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the mintues subtracted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 30 minutes from 10 July 2014 12:00:00:

@@ -17,6 +17,7 @@ import subISOYears from '../subISOYears/index.js'
  * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of full ISO week-numbering years
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?

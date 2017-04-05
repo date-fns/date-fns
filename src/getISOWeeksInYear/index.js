@@ -16,6 +16,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of ISO weeks in a year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?

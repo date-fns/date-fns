@@ -12,6 +12,7 @@ import isLeapYear from '../isLeapYear/index.js'
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of days in a year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many days are in 2012?

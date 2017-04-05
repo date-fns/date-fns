@@ -13,6 +13,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * @param {Number} month - the month of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Date} the new date with the month setted
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Set February to 1 September 2014:

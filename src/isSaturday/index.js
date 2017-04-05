@@ -11,6 +11,7 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} date - the date to check
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Boolean} the date is Saturday
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Is 27 September 2014 Saturday?

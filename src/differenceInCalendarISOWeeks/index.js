@@ -17,6 +17,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Date|String|Number} dateRight - the later date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
  * @returns {Number} the number of calendar ISO weeks
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
