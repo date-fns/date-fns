@@ -66,4 +66,24 @@ describe('closestTo', function () {
     ])
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('returns `Invalid Date` if any date in the given array is `Invalid Date`', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var result = closestTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      new Date(NaN),
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if any value in the given array is undefined', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var result = closestTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      undefined,
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
 })

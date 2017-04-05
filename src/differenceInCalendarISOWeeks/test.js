@@ -86,4 +86,12 @@ describe('differenceInCalendarISOWeeks', function () {
     )
     assert(isNaN(result))
   })
+
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = differenceInCalendarISOWeeks(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
 })

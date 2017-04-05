@@ -66,4 +66,14 @@ describe('closestIndexTo', function () {
     ])
     assert(isNaN(result))
   })
+
+  it('returns NaN if any value in the given array is undefined', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var result = closestIndexTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      undefined,
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(isNaN(result))
+  })
 })

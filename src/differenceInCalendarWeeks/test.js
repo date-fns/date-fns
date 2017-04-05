@@ -106,6 +106,14 @@ describe('differenceInCalendarWeeks', function () {
     assert(isNaN(result))
   })
 
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = differenceInCalendarWeeks(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     var block = differenceInCalendarWeeks.bind(
       null,

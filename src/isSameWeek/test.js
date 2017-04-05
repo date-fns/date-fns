@@ -72,6 +72,14 @@ describe('isSameWeek', function () {
     assert(result === false)
   })
 
+  it('returns false if the both dates are `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(result === false)
+  })
+
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     var block = isSameWeek.bind(
       null,

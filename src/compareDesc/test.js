@@ -78,4 +78,12 @@ describe('compareDesc', function () {
     )
     assert(isNaN(result))
   })
+
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = compareDesc(
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
 })

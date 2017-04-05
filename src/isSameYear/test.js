@@ -52,4 +52,12 @@ describe('isSameYear', function () {
     )
     assert(result === false)
   })
+
+  it('returns false if the both dates are `Invalid Date`', function () {
+    var result = isSameYear(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(result === false)
+  })
 })

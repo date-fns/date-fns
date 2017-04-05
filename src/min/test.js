@@ -55,4 +55,13 @@ describe('min', function () {
     ])
     assert(result instanceof Date && isNaN(result))
   })
+
+  it('returns `Invalid Date` if any given value is undefined', function () {
+    var result = min([
+      new Date(1989, 6 /* Jul */, 10),
+      undefined,
+      new Date(1987, 1 /* Feb */, 11)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
 })

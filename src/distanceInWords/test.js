@@ -293,7 +293,7 @@ describe('distanceInWords', function () {
     })
   })
 
-  it('returns String(\'Invalid Date\') if the first date is `Invalid Date`', function () {
+  it("returns String('Invalid Date') if the first date is `Invalid Date`", function () {
     var result = distanceInWords(
       new Date(NaN),
       new Date(1986, 3, 7, 10, 32, 0)
@@ -301,9 +301,17 @@ describe('distanceInWords', function () {
     assert(result === 'Invalid Date')
   })
 
-  it('returns String(\'Invalid Date\') if the second date is `Invalid Date`', function () {
+  it("returns String('Invalid Date') if the second date is `Invalid Date`", function () {
     var result = distanceInWords(
       new Date(1986, 3, 4, 10, 32, 0),
+      new Date(NaN)
+    )
+    assert(result === 'Invalid Date')
+  })
+
+  it("returns String('Invalid Date') if the both dates are `Invalid Date`", function () {
+    var result = distanceInWords(
+      new Date(NaN),
       new Date(NaN)
     )
     assert(result === 'Invalid Date')
