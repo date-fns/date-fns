@@ -350,6 +350,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
   See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
 
+- **BREAKING**: removed `isDate`. Instead, you can use `x instanceof Date`.
+
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
