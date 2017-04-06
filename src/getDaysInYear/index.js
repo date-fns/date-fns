@@ -1,3 +1,4 @@
+import toDate from '../toDate/index.js'
 import isLeapYear from '../isLeapYear/index.js'
 
 /**
@@ -10,7 +11,9 @@ import isLeapYear from '../isLeapYear/index.js'
  *
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Number} the number of days in a year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many days are in 2012?
@@ -18,5 +21,11 @@ import isLeapYear from '../isLeapYear/index.js'
  * //=> 366
  */
 export default function getDaysInYear (dirtyDate, dirtyOptions) {
-  return isLeapYear(dirtyDate, dirtyOptions) ? 366 : 365
+  var date = toDate(dirtyDate, dirtyOptions)
+
+  if (isNaN(date)) {
+    return NaN
+  }
+
+  return isLeapYear(date, dirtyOptions) ? 366 : 365
 }

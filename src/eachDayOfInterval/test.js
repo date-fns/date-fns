@@ -97,6 +97,37 @@ describe('eachDayOfInterval', function () {
         end: new Date(2014, 9 /* Oct */, 6)
       }
     )
-    assert.throws(block)
+    assert.throws(block, RangeError)
+  })
+
+  it('throws an exception if the start date is `Invalid Date`', function () {
+    var block = eachDayOfInterval.bind(
+      null,
+      {
+        start: new Date(NaN),
+        end: new Date(2014, 9 /* Oct */, 6)
+      }
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws an exception if the end date is `Invalid Date`', function () {
+    var block = eachDayOfInterval.bind(
+      null,
+      {
+        start: new Date(2014, 9 /* Oct */, 12),
+        end: new Date(NaN)
+      }
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = eachDayOfInterval.bind(this, {
+      start: new Date(2014, 9 /* Oct */, 6),
+      end: new Date(2014, 9 /* Oct */, 12)
+    // $ExpectedMistake
+    }, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
   })
 })

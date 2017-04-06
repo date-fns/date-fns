@@ -29,11 +29,15 @@ var MINUTES_IN_YEAR = 525600
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date|String|Number} date - the other date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.partialMethod='floor'] - which way to round partial units
+ * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
  * @returns {String} the distance in words
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
+ * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
@@ -78,7 +82,7 @@ var MINUTES_IN_YEAR = 525600
  * var result = distanceInWordsStrict(
  *   new Date(2015, 0, 28),
  *   new Date(2015, 0, 1),
- *   {unit: 'M', partialMethod: 'ceil'}
+ *   {unit: 'M', roundingMethod: 'ceil'}
  * )
  * //=> '1 month'
  *
@@ -96,6 +100,10 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
   var options = dirtyOptions || {}
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
+
+  if (isNaN(comparison)) {
+    return 'Invalid Date'
+  }
 
   var locale = options.locale
   var localize = enLocale.distanceInWords.localize
@@ -117,16 +125,25 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
     dateRight = toDate(dirtyDateToCompare, options)
   }
 
-  var unit
-  var mathPartial = Math[options.partialMethod ? String(options.partialMethod) : 'floor']
+  var roundingMethod = options.roundingMethod === undefined ? 'floor' : String(options.roundingMethod)
+  var roundingMethodFn
+
+  if (roundingMethod === 'floor') {
+    roundingMethodFn = Math.floor
+  } else if (roundingMethod === 'ceil') {
+    roundingMethodFn = Math.ceil
+  } else if (roundingMethod === 'round') {
+    roundingMethodFn = Math.round
+  } else {
+    throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
+  }
+
   var seconds = differenceInSeconds(dateLeft, dateRight, dirtyOptions)
   var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
-  var minutes = mathPartial(seconds / 60) - offset
-  var hours, days, months, years
+  var minutes = roundingMethodFn(seconds / 60) - offset
 
-  if (options.unit) {
-    unit = String(options.unit)
-  } else {
+  var unit
+  if (options.unit === undefined) {
     if (minutes < 1) {
       unit = 's'
     } else if (minutes < 60) {
@@ -140,6 +157,8 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
     } else {
       unit = 'Y'
     }
+  } else {
+    unit = String(options.unit)
   }
 
   // 0 up to 60 seconds
@@ -152,24 +171,24 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
 
   // 1 up to 24 hours
   } else if (unit === 'h') {
-    hours = mathPartial(minutes / 60)
+    var hours = roundingMethodFn(minutes / 60)
     return localize('xHours', hours, localizeOptions)
 
   // 1 up to 30 days
   } else if (unit === 'd') {
-    days = mathPartial(minutes / MINUTES_IN_DAY)
+    var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
     return localize('xDays', days, localizeOptions)
 
   // 1 up to 12 months
   } else if (unit === 'M') {
-    months = mathPartial(minutes / MINUTES_IN_MONTH)
+    var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
     return localize('xMonths', months, localizeOptions)
 
   // 1 year up to max Date
   } else if (unit === 'Y') {
-    years = mathPartial(minutes / MINUTES_IN_YEAR)
+    var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
     return localize('xYears', years, localizeOptions)
   }
 
-  throw new Error('Unknown unit: ' + unit)
+  throw new RangeError("unit must be 's', 'm', 'h', 'd', 'M' or 'Y'")
 }

@@ -81,4 +81,39 @@ describe('differenceInISOYears', function () {
       assert(result === 0)
     })
   })
+
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    var result = differenceInISOYears(
+      new Date(NaN),
+      new Date(2017, 0 /* Jan */, 1)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    var result = differenceInISOYears(
+      new Date(2017, 0 /* Jan */, 1),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = differenceInISOYears(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInISOYears.bind(
+      this,
+      new Date(2011, 6 /* Jul */, 2, 6, 0),
+      new Date(2012, 6 /* Jul */, 2, 18, 0),
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

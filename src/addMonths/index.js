@@ -12,7 +12,9 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be added
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Date} the new date with the months added
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Add 5 months to 1 September 2014:

@@ -39,4 +39,16 @@ describe('startOfYear', function () {
     var result = startOfYear(initialDate)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfYear(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var block = startOfYear.bind(null, date, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

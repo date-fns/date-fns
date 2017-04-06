@@ -11,7 +11,9 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Date} the date from the array closest to the given date
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
@@ -24,6 +26,11 @@ import toDate from '../toDate/index.js'
  */
 export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOptions) {
   var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
+
+  if (isNaN(dateToCompare)) {
+    return new Date(NaN)
+  }
+
   var timeToCompare = dateToCompare.getTime()
 
   var result
@@ -31,6 +38,13 @@ export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOpt
 
   dirtyDatesArray.forEach(function (dirtyDate) {
     var currentDate = toDate(dirtyDate, dirtyOptions)
+
+    if (isNaN(currentDate)) {
+      result = new Date(NaN)
+      minDistance = NaN
+      return
+    }
+
     var distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result === undefined || distance < minDistance) {
       result = currentDate

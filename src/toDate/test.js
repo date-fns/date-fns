@@ -254,4 +254,10 @@ describe('toDate', function () {
     var result = toDate('+12340702', {additionalDigits: '0'})
     assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
   })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = toDate.bind(null, '+12340702', {additionalDigits: 3})
+    assert.throws(block, RangeError)
+  })
 })

@@ -36,4 +36,15 @@ describe('getDaysInYear', function () {
     var result = getDaysInYear(date)
     assert(result === 366)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDaysInYear(new Date(NaN))
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = getDaysInYear.bind(null, new Date(2014, 6 /* Jul */, 2), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

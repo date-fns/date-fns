@@ -47,4 +47,44 @@ describe('closestIndexTo', function () {
     var result = closestIndexTo(date, [])
     assert(result === undefined)
   })
+
+  it('returns NaN if the given date is `Invalid Date`', function () {
+    var date = new Date(NaN)
+    var result = closestIndexTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if any date in the given array is `Invalid Date`', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var result = closestIndexTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      new Date(NaN),
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if any value in the given array is undefined', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var result = closestIndexTo(date, [
+      new Date(2015, 7 /* Aug */, 31),
+      // $ExpectedMistake
+      undefined,
+      new Date(2012, 6 /* Jul */, 2)
+    ])
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var block = closestIndexTo.bind(null, date, [
+      new Date(2015, 7 /* Aug */, 31),
+      new Date(2012, 6 /* Jul */, 2)
+    // $ExpectedMistake
+    ], {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })
