@@ -314,7 +314,7 @@ describe('distanceInWordsStrict', function () {
     })
   })
 
-  describe('when the partialMethod option is supplied', function () {
+  describe('when the roundingMethod option is supplied', function () {
     it('default is "floor"', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
@@ -327,7 +327,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59),
-        {partialMethod: 'floor'}
+        {roundingMethod: 'floor'}
       )
       assert(result === '1 minute')
     })
@@ -336,7 +336,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
-        {partialMethod: 'ceil'}
+        {roundingMethod: 'ceil'}
       )
       assert(result === '2 minutes')
     })
@@ -345,7 +345,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 29),
-        {partialMethod: 'round'}
+        {roundingMethod: 'round'}
       )
       assert(result === '1 minute')
     })
@@ -354,7 +354,7 @@ describe('distanceInWordsStrict', function () {
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 30),
-        {partialMethod: 'round'}
+        {roundingMethod: 'round'}
       )
       assert(result === '2 minutes')
     })
@@ -386,13 +386,13 @@ describe('distanceInWordsStrict', function () {
 
     it('`options.ceil`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var partialMethod = new String('ceil')
+      var roundingMethod = new String('ceil')
 
       var result = distanceInWordsStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
         // $ExpectedMistake
-        {partialMethod: partialMethod}
+        {roundingMethod: roundingMethod}
       )
       assert(result === '2 minutes')
     })
@@ -446,5 +446,62 @@ describe('distanceInWordsStrict', function () {
         assert(result === '5 minutes')
       })
     })
+  })
+
+  it("returns String('Invalid Date') if the first date is `Invalid Date`", function () {
+    var result = distanceInWordsStrict(
+      new Date(NaN),
+      new Date(1986, 3, 7, 10, 32, 0)
+    )
+    assert(result === 'Invalid Date')
+  })
+
+  it("returns String('Invalid Date') if the second date is `Invalid Date`", function () {
+    var result = distanceInWordsStrict(
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(NaN)
+    )
+    assert(result === 'Invalid Date')
+  })
+
+  it("returns String('Invalid Date') if the both dates are `Invalid Date`", function () {
+    var result = distanceInWordsStrict(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(result === 'Invalid Date')
+  })
+
+  it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
+    var block = distanceInWordsStrict.bind(
+      null,
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(1986, 3, 4, 10, 33, 29),
+      // $ExpectedMistake
+      {roundingMethod: 'foobar'}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
+    var block = distanceInWordsStrict.bind(
+      null,
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(1986, 3, 4, 10, 33, 29),
+      // $ExpectedMistake
+      {unit: 'foobar'}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = distanceInWordsStrict.bind(
+      this,
+      new Date(1986, 3, 4, 10, 32, 5),
+      new Date(1986, 3, 4, 10, 32, 5),
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
   })
 })

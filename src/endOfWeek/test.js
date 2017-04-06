@@ -83,4 +83,22 @@ describe('endOfWeek', function () {
       assert.deepEqual(result, new Date(2015, 0 /* Jan */, 1, 23, 59, 59, 999))
     })
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfWeek(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    // $ExpectedMistake
+    var block = endOfWeek.bind(null, new Date(2014, 8 /* Sep */, 2, 11, 55, 0), {weekStartsOn: NaN})
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var block = endOfWeek.bind(this, date, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

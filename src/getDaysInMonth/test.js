@@ -34,4 +34,15 @@ describe('getDaysInMonth', function () {
     var result = getDaysInMonth(date)
     assert(result === 29)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getDaysInMonth(new Date(NaN))
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = getDaysInMonth.bind(null, new Date(2100, 1 /* Feb */, 11), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

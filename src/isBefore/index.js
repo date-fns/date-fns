@@ -11,7 +11,9 @@ import toDate from '../toDate/index.js'
  * @param {Date|String|Number} date - the date that should be before the other one to return true
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Boolean} the first date is before the second date
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Is 10 July 1989 before 11 February 1987?
