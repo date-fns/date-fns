@@ -883,16 +883,6 @@ describe('FP functions', function () {
     assert(result === true)
   })
 
-  it('isDate', function () {
-    var result = fp.isDate(new Date())
-    assert(result === true)
-  })
-
-  it('isDateWithOptions', function () {
-    var result = fp.isDateWithOptions({})(new Date())
-    assert(result === true)
-  })
-
   it('isEqual', function () {
     var result = fp.isEqual(new Date(1987, 1 /* Feb */, 11))(new Date(1987, 1 /* Feb */, 11))
     assert(result === true)
