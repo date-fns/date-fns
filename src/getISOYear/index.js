@@ -14,7 +14,9 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Number} the ISO week-numbering year
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which ISO-week numbering year is 2 January 2005?

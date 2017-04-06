@@ -41,4 +41,15 @@ describe('startOfISOYear', function () {
     var result = startOfISOYear(new Date(2009, 6 /* Jul */, 2))
     assert.deepEqual(result, new Date(2008, 11 /* Dec */, 29))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfISOYear(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = startOfISOYear.bind(null, new Date(2009, 0 /* Jan */, 1, 16, 0), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

@@ -46,4 +46,36 @@ describe('min', function () {
     )
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
+
+  it('returns `Invalid Date` if any given date is invalid', function () {
+    var result = min([
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(NaN),
+      new Date(1987, 1 /* Feb */, 11)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if any given value is undefined', function () {
+    var result = min([
+      new Date(1989, 6 /* Jul */, 10),
+      // $ExpectedMistake
+      undefined,
+      new Date(1987, 1 /* Feb */, 11)
+    ])
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var block = min.bind(
+      null,
+      [
+        new Date(1989, 6 /* Jul */, 10),
+        new Date(1987, 1 /* Feb */, 11)
+      ],
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

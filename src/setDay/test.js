@@ -76,4 +76,26 @@ describe('setDay', function () {
     setDay(date, 3)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setDay(new Date(NaN), 0)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    // $ExpectedMistake
+    var block = setDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {weekStartsOn: NaN})
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = setDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

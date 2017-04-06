@@ -73,6 +73,8 @@ var MILLISECONDS_IN_MINUTE = 60000
  * If you're not sure which `baseDate` to supply, create a new instance of Date:
  * `parse('02/11/2014', 'MM/DD/YYYY', new Date())`
  * In this case parsing will be done in the context of the current date.
+ * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * then `Invalid Date` will be returned.
  *
  * The characters wrapped in square brackets in the format string are escaped.
  *
@@ -88,9 +90,12 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {String} formatString - the string of tokens
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
- * @param {Number} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -116,6 +121,13 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
+
+  var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
+  }
 
   if (formatString === '') {
     if (dateString === '') {
@@ -208,6 +220,10 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     })
 
   var date = toDate(dirtyBaseDate, options)
+
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.

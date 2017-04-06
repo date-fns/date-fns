@@ -67,6 +67,43 @@ describe('isWithinInterval', function () {
       new Date(2014, 9 /* Oct */, 31),
       {start: new Date(2014, 11 /* Dec */, 31), end: new Date(2014, 8 /* Sep */, 1)}
     )
-    assert.throws(block)
+    assert.throws(block, RangeError)
+  })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isWithinInterval(
+      new Date(NaN),
+      {start: new Date(2014, 8 /* Sep */, 1), end: new Date(2014, 11 /* Dec */, 31)}
+    )
+    assert(result === false)
+  })
+
+  it('throws an exception if the start date is `Invalid Date`', function () {
+    var block = isWithinInterval.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      {start: new Date(NaN), end: new Date(2014, 8 /* Sep */, 1)}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws an exception if the end date is `Invalid Date`', function () {
+    var block = isWithinInterval.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      {start: new Date(2014, 11 /* Dec */, 31), end: new Date(NaN)}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isWithinInterval.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      {start: new Date(2014, 8 /* Sep */, 1), end: new Date(2014, 11 /* Dec */, 31)},
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
   })
 })
