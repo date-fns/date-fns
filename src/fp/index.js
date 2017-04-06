@@ -133,8 +133,6 @@ module.exports = {
   isAfterWithOptions: require('./isAfterWithOptions/index.js'),
   isBefore: require('./isBefore/index.js'),
   isBeforeWithOptions: require('./isBeforeWithOptions/index.js'),
-  isDate: require('./isDate/index.js'),
-  isDateWithOptions: require('./isDateWithOptions/index.js'),
   isEqual: require('./isEqual/index.js'),
   isEqualWithOptions: require('./isEqualWithOptions/index.js'),
   isFirstDayOfMonth: require('./isFirstDayOfMonth/index.js'),
