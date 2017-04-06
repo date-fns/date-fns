@@ -55,4 +55,50 @@ describe('isSameWeek', function () {
     )
     assert(result === true)
   })
+
+  it('returns false if the first date is `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(NaN),
+      new Date(1989, 6 /* Jul */, 10)
+    )
+    assert(result === false)
+  })
+
+  it('returns false if the second date is `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(1987, 1 /* Feb */, 11),
+      new Date(NaN)
+    )
+    assert(result === false)
+  })
+
+  it('returns false if the both dates are `Invalid Date`', function () {
+    var result = isSameWeek(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(result === false)
+  })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    var block = isSameWeek.bind(
+      null,
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      // $ExpectedMistake
+      {weekStartsOn: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = isSameWeek.bind(
+      null,
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

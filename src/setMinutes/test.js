@@ -31,4 +31,20 @@ describe('setMinutes', function () {
     setMinutes(date, 15)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setMinutes(new Date(NaN), 45)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = setMinutes.bind(null, new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

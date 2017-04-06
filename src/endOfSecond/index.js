@@ -11,7 +11,9 @@ import toDate from '../toDate/index.js'
  *
  * @param {Date|String|Number} date - the original date
  * @param {Options} [options] - the object with options. See [Options]{@link docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link docs/toDate}
  * @returns {Date} the end of a second
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The end of a second for 1 December 2014 22:15:45.400:

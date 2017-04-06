@@ -62,4 +62,39 @@ describe('compareAsc', function () {
     )
     assert(result === -1)
   })
+
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    var result = compareAsc(
+      new Date(NaN),
+      new Date(1989, 6 /* Jul */, 10)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    var result = compareAsc(
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = compareAsc(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = compareAsc.bind(
+      null,
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(1989, 6 /* Jul */, 10),
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

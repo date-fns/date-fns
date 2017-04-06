@@ -70,4 +70,39 @@ describe('differenceInCalendarISOWeeks', function () {
       assert(result === 0)
     })
   })
+
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    var result = differenceInCalendarISOWeeks(
+      new Date(NaN),
+      new Date(2017, 0 /* Jan */, 1)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    var result = differenceInCalendarISOWeeks(
+      new Date(2017, 0 /* Jan */, 1),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    var result = differenceInCalendarISOWeeks(
+      new Date(NaN),
+      new Date(NaN)
+    )
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var block = differenceInCalendarISOWeeks.bind(
+      null,
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      // $ExpectedMistake
+      {additionalDigits: NaN}
+    )
+    assert.throws(block, RangeError)
+  })
 })

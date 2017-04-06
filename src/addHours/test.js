@@ -35,4 +35,20 @@ describe('addHours', function () {
     addHours(date, 10)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 23, 0))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = addHours(new Date(NaN), 2)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = addHours.bind(null, new Date(2014, 6 /* Jul */, 10, 23, 0), 2, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

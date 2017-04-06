@@ -26,4 +26,16 @@ describe('endOfSecond', function () {
     endOfSecond(date)
     assert.deepEqual(date, new Date(2014, 11, 1, 22, 15, 15, 300))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = endOfSecond(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    var date = new Date(2014, 11, 1, 22, 15, 30)
+    // $ExpectedMistake
+    var block = endOfSecond.bind(this, date, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

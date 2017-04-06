@@ -27,4 +27,15 @@ describe('getISOYear', function () {
     var result = getISOYear(initialDate)
     assert(result === 8)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getISOYear(new Date(NaN))
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = getISOYear.bind(null, new Date(2007, 11 /* Dec */, 31), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

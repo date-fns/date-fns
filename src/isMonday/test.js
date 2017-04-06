@@ -24,4 +24,15 @@ describe('isMonday', function () {
     var result = isMonday(new Date(2014, 1 /* Feb */, 10).getTime())
     assert(result === true)
   })
+
+  it('returns false if the given date is `Invalid Date`', function () {
+    var result = isMonday(new Date(NaN))
+    assert(result === false)
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = isMonday.bind(null, new Date(2014, 8 /* Sep */, 22), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

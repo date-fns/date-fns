@@ -42,4 +42,20 @@ describe('setISOWeek', function () {
     var result = setISOWeek(initialDate, 52)
     assert.deepEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setISOWeek(new Date(NaN), 53)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setISOWeek(new Date(2004, 7 /* Aug */, 7), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = setISOWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })
