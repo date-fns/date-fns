@@ -4,7 +4,7 @@ import fs from 'fs'
 export default function listFPFiles () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src/fp'))
   return files
-    .filter((file) => /^[^._]/.test(file) && file !== 'index.js')
+    .filter((file) => /^[^._]/.test(file) && file !== 'index.js' && file !== 'test.js')
     .map((file) => ({
       name: camelize(file),
       snakeCaseName: file,

@@ -1,5 +1,3 @@
-import isDate from '../isDate/index.js'
-
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
@@ -87,7 +85,7 @@ export default function toDate (argument, dirtyOptions) {
   }
 
   // Clone the date
-  if (isDate(argument)) {
+  if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
   } else if (typeof argument !== 'string') {
