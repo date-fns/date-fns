@@ -1,4 +1,5 @@
 var parse = require('../parse/index.js')
+var getDay = require('../get_day/index.js')
 
 /**
  * @category Week Helpers
@@ -24,13 +25,10 @@ var parse = require('../parse/index.js')
  * //=> Mon Sep 01 2014 00:00:00
  */
 function startOfWeek (dirtyDate, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
-
   var date = parse(dirtyDate)
-  var day = date.getDay()
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  var day = getDay(date, dirtyOptions)
 
-  date.setDate(date.getDate() - diff)
+  date.setDate(date.getDate() - day)
   date.setHours(0, 0, 0, 0)
   return date
 }
