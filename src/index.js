@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/build_index.js`. Please, don't change it.
+// This file is generated automatically by `scripts/buildIndex.js`. Please, don't change it.
 
 module.exports = {
   addDays: require('./addDays/index.js'),

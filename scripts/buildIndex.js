@@ -3,11 +3,13 @@ import path from 'path'
 import listFiles from './_lib/listFiles'
 import listFPFiles from './_lib/listFPFiles'
 
+const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildIndex.js`. Please, don\'t change it.'
+
 function generateIndex (files) {
   const propertyRequireLines = files
     .map((fn) => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`)
 
-  const indexLines = ['// This file is generated automatically by `scripts/build_index.js`. Please, don\'t change it.']
+  const indexLines = [generatedAutomaticallyMessage]
     .concat('')
     .concat('module.exports = {')
     .concat(propertyRequireLines.join(',\n'))
@@ -21,7 +23,7 @@ function generateESMIndex (files) {
   const fileLines = files
     .map(fn => `export {default as ${fn.name}} from '${fn.path.replace(/\.js$/, '')}/index.js'`)
 
-  const indexLines = ['// This file is generated automatically by `scripts/build_index.js`. Please, don\'t change it.']
+  const indexLines = [generatedAutomaticallyMessage]
     .concat('')
     .concat(fileLines)
     .join('\n')
