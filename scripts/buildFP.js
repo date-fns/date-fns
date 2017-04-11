@@ -2,6 +2,7 @@ import fs from 'fs'
 import jsDocs from '../dist/date_fns_docs.json'
 import listFiles from './_lib/listFiles'
 
+const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildFP.js`. Please, don\'t change it.'
 const FP_DIR = './src/fp'
 
 const files = listFiles()
@@ -21,7 +22,7 @@ const fns = Object.keys(jsDocs)
 buildFP(fns)
 
 function getFPFn (resultFnName, initialFnName, arity) {
-  return ['// This file is generated automatically by `scripts/build_fp.js`. Please, don\'t change it.']
+  return [generatedAutomaticallyMessage]
     .concat('')
     .concat(`import fn from '../../${initialFnName}/index.js'`)
     .concat(`import convertToFP from '../_lib/convertToFP/index.js'`)
