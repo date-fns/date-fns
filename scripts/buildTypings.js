@@ -3,6 +3,8 @@ import listFiles from './_lib/listFiles'
 import listLocales from './_lib/listLocales'
 import jsDocs from '../dist/date_fns_docs.json'
 
+const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildTypings.js`. Please, don\'t change it.'
+
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 
 const typeScriptFPInterfaces = []
@@ -331,7 +333,7 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat('}')
     .join('\n')
 
-  const typingString = ['// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.']
+  const typingString = [generatedAutomaticallyMessage]
     .concat('// FP Interfaces')
     .concat(typeScriptFPInterfaces)
     .concat('// Type Aliases')
@@ -372,7 +374,7 @@ function generateFlowFnTyping (fn, aliasDeclarations) {
   const moduleDeclaration = `declare module.exports: ${params} => ${returns}\n`
 
   const typingString = ['// @flow']
-    .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
+    .concat(generatedAutomaticallyMessage)
     .concat('')
     .concat(aliasDeclarations.concat(moduleDeclaration).join('\n\n'))
     .join('\n')
@@ -387,7 +389,7 @@ function generateFlowFPFnTyping (fn, nameSuffix, aliasDeclarations) {
   const type = getFPFnType(fn.content.params, fn.content.returns[0].type.names, nameSuffix)
 
   const typingString = ['// @flow']
-    .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
+    .concat(generatedAutomaticallyMessage)
     .concat('')
     .concat(aliasDeclarations.join('\n\n'))
     .concat('')
@@ -404,7 +406,7 @@ function generateFlowLocaleTyping (locale, localeAliasDeclaration) {
   const filename = `${path.replace(/^\./, './src')}/index.js.flow`
 
   const typingString = ['// @flow']
-    .concat('// This file is generated automatically by `scripts/build_typings.js`. Please, don\'t change it.')
+    .concat(generatedAutomaticallyMessage)
     .concat('')
     .concat(localeAliasDeclaration)
     .concat('')
