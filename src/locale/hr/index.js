@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Croatian locale.
  * @author Matija Marohnić [@silvenon]{@link https://github.com/silvenon}
  */
-const hrLocale = {
+var hrLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

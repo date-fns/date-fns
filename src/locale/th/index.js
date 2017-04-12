@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Thai locale.
  * @author Athiwat Hirunworawongkun [@athivvat]{@link https://github.com/athivvat}
  */
-const thLocale = {
+var thLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Italian locale.
  * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
  */
-const itLocale = {
+var itLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

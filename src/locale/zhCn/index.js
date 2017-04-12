@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Chinese Simplified locale.
  * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
  */
-const zhCnLocale = {
+var zhCnLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

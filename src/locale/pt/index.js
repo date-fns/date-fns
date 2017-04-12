@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Portuguese locale.
  * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
  */
-const ptLocale = {
+var ptLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

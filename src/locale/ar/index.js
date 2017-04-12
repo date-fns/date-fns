@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Arabic locale (Modern Standard Arabic - Al-fussha).
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
  */
-const arLocale = {
+var arLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
