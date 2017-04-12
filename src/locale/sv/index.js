@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Swedish locale.
  * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
  */
-const svLocale = {
+var svLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

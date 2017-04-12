@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Korean locale.
  * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
  */
-const koLocale = {
+var koLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Icelandic locale.
  * @author Derek Blank [@derekblank]{@link https://github.com/derekblank}
  */
-const isLocale = {
+var isLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

@@ -8,7 +8,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
  */
-const zhCnLocale = {
+var zhCnLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

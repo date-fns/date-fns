@@ -8,7 +8,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
  * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
  */
-const idLocale = {
+var idLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

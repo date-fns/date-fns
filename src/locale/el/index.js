@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Greek locale.
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
-const elLocale = {
+var elLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

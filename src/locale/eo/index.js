@@ -6,7 +6,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @category Locales
  * @summary Esperanto locale.
  */
-const eoLocale = {
+var eoLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

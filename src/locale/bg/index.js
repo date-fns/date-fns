@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Bulgarian locale.
  * @author Nikolay Stoynov [@arvigeus]{@link https://github.com/arvigeus}
  */
-const bgLocale = {
+var bgLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

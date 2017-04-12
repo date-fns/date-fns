@@ -8,7 +8,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @author Anders B. Hansen [@Andersbiha]{@link https://github.com/Andersbiha}
  * @author [@kgram]{@link https://github.com/kgram}
  */
-const daLocale = {
+var daLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
