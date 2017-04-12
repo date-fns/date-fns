@@ -1,8 +1,8 @@
 // @flow
 /* eslint-env mocha */
 
-var assert = require('power-assert')
-var convertToFP = require('./')
+import assert from 'power-assert'
+import convertToFP from '.'
 
 describe('convertToFP', function () {
   function fn (a, b, c) {
