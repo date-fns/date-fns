@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Macedonian locale.
  * @author Petar Vlahu [@vlahupetar]{@link https://github.com/vlahupetar}
  */
-const mkLocale = {
+var mkLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

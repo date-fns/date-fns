@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Czech locale.
  * @author David Rus [@davidrus]{@link https://github.com/davidrus}
  */
-const csLocale = {
+var csLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }
