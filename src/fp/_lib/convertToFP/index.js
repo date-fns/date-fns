@@ -1,4 +1,4 @@
-function convertToFP (fn, arity, a) {
+export default function convertToFP (fn, arity, a) {
   a = a || []
 
   if (a.length >= arity) {
@@ -10,5 +10,3 @@ function convertToFP (fn, arity, a) {
     return convertToFP(fn, arity, a.concat(args))
   }
 }
-
-module.exports = convertToFP
