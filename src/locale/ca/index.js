@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Catalan locale.
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  */
-const caLocale = {
+var caLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

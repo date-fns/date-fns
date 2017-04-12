@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Turkish locale.
  * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
  */
-const trLocale = {
+var trLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

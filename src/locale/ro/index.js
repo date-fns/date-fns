@@ -6,7 +6,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Romanian locale.
  * @author Sergiu Munteanu [@jsergiu]{@link https://github.com/jsergiu}
  */
-const roLocale = {
+var roLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

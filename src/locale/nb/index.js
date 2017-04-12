@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Norwegian Bokmål locale.
  * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
  */
-const nbLocale = {
+var nbLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

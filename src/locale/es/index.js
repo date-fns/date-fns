@@ -9,7 +9,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
  */
-const esLocale = {
+var esLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

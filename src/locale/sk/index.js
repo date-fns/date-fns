@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Slovak locale.
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
-const skLocale = {
+var skLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

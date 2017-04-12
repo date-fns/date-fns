@@ -7,7 +7,7 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @summary Finnish locale.
  * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
  */
-const fiLocale = {
+var fiLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale()
 }

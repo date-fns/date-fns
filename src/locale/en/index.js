@@ -7,7 +7,7 @@ import buildParseLocale from './buildParseLocale/index.js'
  * @category Locales
  * @summary English locale.
  */
-const enLocale = {
+var enLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
   format: buildFormatLocale(),
   parse: buildParseLocale()
