@@ -1,3 +1,4 @@
+process.env.PHANTOMJS_BIN = 'node_modules/.bin/phantomjs'
 process.env.NODE_ENV = 'test'
 
 var webpackConfig = require('./webpack')
@@ -130,6 +131,7 @@ function config (config) {
       'karma-es5-shim',
       'karma-mocha',
       'karma-mocha-reporter',
+      'karma-phantomjs-launcher',
       'karma-chrome-launcher',
       'karma-sauce-launcher',
       'karma-sinon',
@@ -142,7 +144,7 @@ function config (config) {
     ],
 
     customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : travisLaunchers,
-    browsers: Object.keys(process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : travisLaunchers),
+    browsers: getBrowsersConfig(),
     reporters: getReportersConfig()
   })
 }
@@ -175,6 +177,16 @@ function getPreprocessorsConfig () {
     return {'../benchmark.js': ['webpack', 'sourcemap']}
   } else {
     return {'../test.js': ['webpack', 'sourcemap']}
+  }
+}
+
+function getBrowsersConfig () {
+  if (process.env.TEST_CROSS_BROWSER) {
+    return Object.keys(sauceLabsLaunchers)
+  } else if (process.env.TEST_BENCHMARK) {
+    return ['PhantomJS']
+  } else {
+    return Object.keys(travisLaunchers)
   }
 }
 
