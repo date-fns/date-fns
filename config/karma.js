@@ -1,3 +1,4 @@
+process.env.PHANTOMJS_BIN = 'node_modules/.bin/phantomjs'
 process.env.NODE_ENV = 'test'
 
 var webpackConfig = require('./webpack')
