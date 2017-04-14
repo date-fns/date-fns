@@ -5,7 +5,6 @@ then
   yarn run lint || exit 1
   yarn run flow-check || exit 1
   yarn run systemjs-check || exit 1
-  yarn run test-smoke || exit 1
   yarn run test-ci || exit 1
   yarn run test-tz || exit 1
 
