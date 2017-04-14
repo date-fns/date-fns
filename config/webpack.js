@@ -16,7 +16,7 @@ var config = {
 function getEntryConfig () {
   if (process.env.BUILD_TESTS) {
     return {
-      'tests': './test.js'
+      'tests': './testWithoutLocales.js'
     }
   } else if (process.env.NODE_ENV === 'test') {
     return {}
