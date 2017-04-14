@@ -10,6 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.3] - 2017-04-14
+
+### Fixed
+
+- Fix ordinal numbers for Danish language locale. Thanks to [@kgram](https://github.com/kgram).
+  See PR [#474](https://github.com/date-fns/date-fns/pull/474)
+
 ## [1.28.2] - 2017-03-27
 
 ### Fixed
@@ -969,7 +976,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.2...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.3...HEAD
+[1.28.3]: https://github.com/date-fns/date-fns/compare/v1.28.2...v1.28.3
 [1.28.2]: https://github.com/date-fns/date-fns/compare/v1.28.1...v1.28.2
 [1.28.1]: https://github.com/date-fns/date-fns/compare/v1.28.0...v1.28.1
 [1.28.0]: https://github.com/date-fns/date-fns/compare/v1.27.2...v1.28.0
