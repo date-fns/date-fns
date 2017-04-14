@@ -67,7 +67,7 @@ function buildFormatLocale () {
 }
 
 function ordinal (number) {
-  return '' + number
+  return number + '.'
 }
 
 module.exports = buildFormatLocale
