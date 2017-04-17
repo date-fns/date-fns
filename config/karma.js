@@ -81,6 +81,9 @@ var sauceLabsLaunchers = {
     deviceName: 'Android Emulator',
     deviceOrientation: 'portrait'
   }
+  /* REMOVE THIS COMMENT */
+  /* AND THIS TOO */
+  /* (╯°□°)╯︵ ┻━┻ */
 }
 
 var travisLaunchers = {
