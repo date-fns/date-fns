@@ -10,10 +10,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.4] - 2017-04-26
+
 ### Fixed
 
 - Fix accents on weekdays in the Italian locale.
-  See PR [#481](https://github.com/date-fns/date-fns/pull/481)
+  See PR [#481](https://github.com/date-fns/date-fns/pull/481).
+  Thanks to [@albertorestifo](https://github.com/albertorestifo)
+
+- Fix typo in `ddd` format token in Spanish language locale.
+  Kudos to [@fjaguero](https://github.com/fjaguero).
+  See PR [#482](https://github.com/date-fns/date-fns/pull/482)
 
 ## [1.28.3] - 2017-04-14
 
@@ -981,7 +988,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.3...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.4...HEAD
+[1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
 [1.28.3]: https://github.com/date-fns/date-fns/compare/v1.28.2...v1.28.3
 [1.28.2]: https://github.com/date-fns/date-fns/compare/v1.28.1...v1.28.2
 [1.28.1]: https://github.com/date-fns/date-fns/compare/v1.28.0...v1.28.1

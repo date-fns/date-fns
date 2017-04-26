@@ -6,6 +6,7 @@ var buildFormatLocale = require('./build_format_locale/index.js')
  * @summary Spanish locale.
  * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
+ * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
