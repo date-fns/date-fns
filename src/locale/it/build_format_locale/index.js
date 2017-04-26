@@ -5,7 +5,7 @@ function buildFormatLocale () {
   var monthsFull = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
   var weekdays2char = ['do', 'lu', 'ma', 'me', 'gi', 've', 'sa']
   var weekdays3char = ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab']
-  var weekdaysFull = ['domenica', 'lunedí', 'martedí', 'mercoledí', 'giovedí', 'venerdí', 'sabato']
+  var weekdaysFull = ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
   var meridiemUppercase = ['AM', 'PM']
   var meridiemLowercase = ['am', 'pm']
   var meridiemFull = ['a.m.', 'p.m.']

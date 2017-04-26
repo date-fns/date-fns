@@ -10,6 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix accents on weekdays in the Italian locale.
+  See PR [#481](https://github.com/date-fns/date-fns/pull/481)
+
 ## [1.28.3] - 2017-04-14
 
 ### Fixed

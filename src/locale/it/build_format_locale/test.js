@@ -180,23 +180,23 @@ describe('it locale > buildFormatLocale', function () {
       })
 
       it('returns the correct string for Monday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 1)) === 'lunedí')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 1)) === 'lunedì')
       })
 
       it('returns the correct string for Tuesday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === 'martedí')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 2)) === 'martedì')
       })
 
       it('returns the correct string for Wednesday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 3)) === 'mercoledí')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 3)) === 'mercoledì')
       })
 
       it('returns the correct string for Thursday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 4)) === 'giovedí')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 4)) === 'giovedì')
       })
 
       it('returns the correct string for Friday', function () {
-        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 5)) === 'venerdí')
+        assert(buildFormatLocale().formatters.dddd(new Date(2016, 1 /* Feb */, 5)) === 'venerdì')
       })
 
       it('returns the correct string for Saturday', function () {
