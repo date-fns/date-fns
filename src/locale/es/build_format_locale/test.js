@@ -158,7 +158,7 @@ describe('es locale > buildFormatLocale', function () {
       })
 
       it('returns the correct string for Wednesday', function () {
-        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 3)) === 'mie')
+        assert(buildFormatLocale().formatters.ddd(new Date(2016, 1 /* Feb */, 3)) === 'mié')
       })
 
       it('returns the correct string for Thursday', function () {
