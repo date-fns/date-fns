@@ -6,6 +6,8 @@ import buildParseLocale from './buildParseLocale/index.js'
  * @type {Locale}
  * @category Locales
  * @summary English locale.
+ * @language English
+ * @iso-639-2 eng
  */
 var enLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
