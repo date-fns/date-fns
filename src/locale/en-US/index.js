@@ -7,7 +7,9 @@ import match from './_lib/match/index.js'
 /**
  * @type {Locale}
  * @category Locales
- * @summary English locale.
+ * @summary English locale (United States).
+ * @language English
+ * @iso-639-2 eng
  */
 var locale = {
   formatDistance: formatDistance,
