@@ -49,4 +49,15 @@ describe('parse > getUTCISOWeek', function () {
     var result = getUTCISOWeek(initialDate)
     assert(result === 52)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getUTCISOWeek(new Date(NaN))
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = getUTCISOWeek.bind(null, new Date(2005, 0 /* Jan */, 2), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

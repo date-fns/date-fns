@@ -27,4 +27,15 @@ describe('format > getUTCDayOfYear', function () {
     var result = getUTCDayOfYear(initialDate)
     assert(result === 366)
   })
+
+  it('returns NaN if the given date is invalid', function () {
+    var result = getUTCDayOfYear(new Date(NaN))
+    assert(isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
+    // $ExpectedMistake
+    var block = getUTCDayOfYear.bind(null, new Date(2014, 6 /* Jul */, 2), {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

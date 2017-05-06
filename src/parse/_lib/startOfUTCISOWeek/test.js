@@ -28,4 +28,16 @@ describe('parse > startOfUTCISOWeek', function () {
     startOfUTCISOWeek(date)
     assert.deepEqual(date, new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = startOfUTCISOWeek(new Date(NaN))
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var block = startOfUTCISOWeek.bind(null, date, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })

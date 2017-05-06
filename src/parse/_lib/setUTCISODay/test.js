@@ -59,4 +59,20 @@ describe('parse > setUTCISODay', function () {
     setUTCISODay(date, 3)
     assert.deepEqual(date, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    var result = setUTCISODay(new Date(NaN), 3)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    var result = setUTCISODay(new Date(2014, 8 /* Sep */, 1), NaN)
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = setUTCISODay.bind(null, new Date(2014, 8 /* Sep */, 1), 3, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
 })
