@@ -245,7 +245,7 @@ describe('distanceInWords', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      function localize (token, count, options) {
+      function localizeDistanceInWords (token, count, options) {
         assert(token === 'lessThanXSeconds')
         assert(count === 5)
         assert(options.addSuffix === true)
@@ -254,41 +254,33 @@ describe('distanceInWords', function () {
       }
 
       var customLocale = {
-        distanceInWords: {
-          localize: localize
+        // $ExpectedMistake
+        localize: {
+          distanceInWords: localizeDistanceInWords
         }
       }
 
       var result = distanceInWords(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 3),
+        // $ExpectedMistake
         {includeSeconds: true, addSuffix: true, locale: customLocale}
       )
 
       assert(result === 'It works!')
     })
 
-    context('does not contain `distanceInWords` property', function () {
-      it('fallbacks to enLocale', function () {
+    context('does not contain `localize` property', function () {
+      it('throws `RangeError`', function () {
         var customLocale = {}
-        var result = distanceInWords(
+        var block = distanceInWords.bind(
+          null,
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 3),
+          // $ExpectedMistake
           {includeSeconds: true, locale: customLocale}
         )
-        assert(result === 'less than 5 seconds')
-      })
-    })
-
-    context('does not contain `distanceInWords.localize` property', function () {
-      it('fallbacks to enLocale', function () {
-        var customLocale = {distanceInWords: {}}
-        var result = distanceInWords(
-          new Date(1986, 3, 4, 10, 32, 0),
-          new Date(1986, 3, 4, 10, 32, 3),
-          {includeSeconds: true, locale: customLocale}
-        )
-        assert(result === 'less than 5 seconds')
+        assert.throws(block, RangeError)
       })
     })
   })
