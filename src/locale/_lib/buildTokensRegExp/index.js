@@ -1,9 +1,9 @@
 var commonTokenKeys = [
-  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',
-  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',
-  'H', 'HH', 'h', 'hh', 'm', 'mm',
-  's', 'ss', 'S', 'SS', 'SSS',
-  'Z', 'ZZ', 'X', 'x'
+  'x', 'ss', 's', 'mm', 'm', 'hh', 'h', 'do', 'dddd',
+  'ddd', 'dd', 'd', 'aa', 'a', 'ZZ', 'Z', 'YYYY', 'YY',
+  'X', 'Wo', 'WW', 'W', 'SSS', 'SS', 'S', 'Qo', 'Q', 'Mo',
+  'MMMM', 'MMM', 'MM', 'M', 'HH', 'H', 'GGGG', 'GG', 'E',
+  'Do', 'DDDo', 'DDDD', 'DDD', 'DD', 'D', 'A'
 ]
 
 export default function buildTokensRegExp (tokensObject) {
