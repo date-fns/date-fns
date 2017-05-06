@@ -22,10 +22,10 @@ function parseDecimal (matchResult) {
 var parsers = {
   // Year: 00, 01, ..., 99
   'YY': {
-    unit: 'year',
+    unit: 'twoDigitYear',
     match: patterns.twoDigits,
     parse: function (matchResult) {
-      return parseDecimal(matchResult) + 1900
+      return parseDecimal(matchResult)
     }
   },
 
@@ -59,12 +59,34 @@ var parsers = {
     parse: parseDecimal
   },
 
+  // Ordinal quarter
+  'Qo': {
+    unit: 'quarter',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'quarter'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'quarter'})
+    }
+  },
+
   // Month: 1, 2, ..., 12
   'M': {
     unit: 'month',
     match: patterns.M,
     parse: function (matchResult) {
       return parseDecimal(matchResult) - 1
+    }
+  },
+
+  // Ordinal month
+  'Mo': {
+    unit: 'month',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'month'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'month'}) - 1
     }
   },
 
@@ -77,11 +99,51 @@ var parsers = {
     }
   },
 
+  // Month: Jan, Feb, ..., Dec
+  'MMM': {
+    unit: 'month',
+    match: function (string, options) {
+      return options.locale.match.months(string, {type: 'short'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.month(matchResult, {type: 'short'})
+    }
+  },
+
+  // Month: January, February, ..., December
+  'MMMM': {
+    unit: 'month',
+    match: function (string, options) {
+      return options.locale.match.months(string, {type: 'long'}) ||
+        options.locale.match.months(string, {type: 'short'})
+    },
+    parse: function (matchResult, options) {
+      var parseResult = options.locale.match.month(matchResult, {type: 'long'})
+
+      if (parseResult == null) {
+        parseResult = options.locale.match.month(matchResult, {type: 'short'})
+      }
+
+      return parseResult
+    }
+  },
+
   // ISO week: 1, 2, ..., 53
   'W': {
     unit: 'isoWeek',
     match: patterns.W,
     parse: parseDecimal
+  },
+
+  // Ordinal ISO week
+  'Wo': {
+    unit: 'isoWeek',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'isoWeek'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'isoWeek'})
+    }
   },
 
   // ISO week: 01, 02, ..., 53
@@ -93,14 +155,77 @@ var parsers = {
 
   // Day of week: 0, 1, ..., 6
   'd': {
-    unit: 'day',
+    unit: 'dayOfWeek',
     match: patterns.singleDigit,
     parse: parseDecimal
   },
 
+  // Ordinal day of week
+  'do': {
+    unit: 'dayOfWeek',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'dayOfWeek'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'dayOfWeek'})
+    }
+  },
+
+  // Day of week: Su, Mo, ..., Sa
+  'dd': {
+    unit: 'dayOfWeek',
+    match: function (string, options) {
+      return options.locale.match.weekdays(string, {type: 'narrow'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.weekday(matchResult, {type: 'narrow'})
+    }
+  },
+
+  // Day of week: Sun, Mon, ..., Sat
+  'ddd': {
+    unit: 'dayOfWeek',
+    match: function (string, options) {
+      return options.locale.match.weekdays(string, {type: 'short'}) ||
+        options.locale.match.weekdays(string, {type: 'narrow'})
+    },
+    parse: function (matchResult, options) {
+      var parseResult = options.locale.match.weekday(matchResult, {type: 'short'})
+
+      if (parseResult == null) {
+        parseResult = options.locale.match.weekday(matchResult, {type: 'narrow'})
+      }
+
+      return parseResult
+    }
+  },
+
+  // Day of week: Sunday, Monday, ..., Saturday
+  'dddd': {
+    unit: 'dayOfWeek',
+    match: function (string, options) {
+      return options.locale.match.weekdays(string, {type: 'long'}) ||
+        options.locale.match.weekdays(string, {type: 'short'}) ||
+        options.locale.match.weekdays(string, {type: 'narrow'})
+    },
+    parse: function (matchResult, options) {
+      var parseResult = options.locale.match.weekday(matchResult, {type: 'long'})
+
+      if (parseResult == null) {
+        parseResult = options.locale.match.weekday(matchResult, {type: 'short'})
+
+        if (parseResult == null) {
+          parseResult = options.locale.match.weekday(matchResult, {type: 'narrow'})
+        }
+      }
+
+      return parseResult
+    }
+  },
+
   // Day of ISO week: 1, 2, ..., 7
   'E': {
-    unit: 'isoDay',
+    unit: 'dayOfISOWeek',
     match: patterns.singleDigit,
     parse: function (matchResult) {
       return parseDecimal(matchResult)
@@ -109,14 +234,25 @@ var parsers = {
 
   // Day of month: 1, 2, ..., 31
   'D': {
-    unit: 'date',
+    unit: 'dayOfMonth',
     match: patterns.D,
     parse: parseDecimal
   },
 
+  // Ordinal day of month
+  'Do': {
+    unit: 'dayOfMonth',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'dayOfMonth'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'dayOfMonth'})
+    }
+  },
+
   // Day of month: 01, 02, ..., 31
   'DD': {
-    unit: 'date',
+    unit: 'dayOfMonth',
     match: patterns.twoDigits,
     parse: parseDecimal
   },
@@ -128,11 +264,51 @@ var parsers = {
     parse: parseDecimal
   },
 
+  // Ordinal day of year
+  'DDDo': {
+    unit: 'dayOfYear',
+    match: function (string, options) {
+      return options.locale.match.ordinalNumbers(string, {unit: 'dayOfYear'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.ordinalNumber(matchResult, {unit: 'dayOfYear'})
+    }
+  },
+
   // Day of year: 001, 002, ..., 366
   'DDDD': {
     unit: 'dayOfYear',
     match: patterns.threeDigits,
     parse: parseDecimal
+  },
+
+  // AM, PM
+  'A': {
+    unit: 'timeOfDay',
+    match: function (string, options) {
+      return options.locale.match.timesOfDay(string, {type: 'short'})
+    },
+    parse: function (matchResult, options) {
+      return options.locale.match.timeOfDay(matchResult, {type: 'short'})
+    }
+  },
+
+  // a.m., p.m.
+  'aa': {
+    unit: 'timeOfDay',
+    match: function (string, options) {
+      return options.locale.match.timesOfDay(string, {type: 'long'}) ||
+        options.locale.match.timesOfDay(string, {type: 'short'})
+    },
+    parse: function (matchResult, options) {
+      var parseResult = options.locale.match.timeOfDay(matchResult, {type: 'long'})
+
+      if (parseResult == null) {
+        parseResult = options.locale.match.timeOfDay(matchResult, {type: 'short'})
+      }
+
+      return parseResult
+    }
   },
 
   // Hour: 0, 1, ... 23
@@ -151,14 +327,14 @@ var parsers = {
 
   // Hour: 1, 2, ..., 12
   'h': {
-    unit: 'hours',
+    unit: 'timeOfDayHours',
     match: patterns.M,
     parse: parseDecimal
   },
 
   // Hour: 01, 02, ..., 12
   'hh': {
-    unit: 'hours',
+    unit: 'timeOfDayHours',
     match: patterns.twoDigits,
     parse: parseDecimal
   },
@@ -258,5 +434,7 @@ var parsers = {
     parse: parseDecimal
   }
 }
+
+parsers['a'] = parsers['A']
 
 export default parsers
