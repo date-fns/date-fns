@@ -2,14 +2,14 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import enLocale from '.'
+import bgLocale from '.'
 
 describe('bg locale', function () {
   it('exports distanceInWords object', function () {
-    assert(typeof enLocale.distanceInWords === 'object')
+    assert(typeof bgLocale.distanceInWords === 'object')
   })
 
   it('exports format object', function () {
-    assert(typeof enLocale.format === 'object')
+    assert(typeof bgLocale.format === 'object')
   })
 })

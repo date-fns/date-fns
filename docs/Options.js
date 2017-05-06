@@ -13,7 +13,7 @@
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
  *   See [toDate]{@link https://date-fns.org/docs/toDate}
- * @property {Locale} [locale=enLocale] - the locale object.
+ * @property {Locale} [locale=defaultLocale] - the locale object.
  *   Used by `distanceInWords`, `distanceInWordsStrict`, `format` and `parse`.
  *   See [Locale]{@link https://date-fns.org/docs/Locale}
  * @property {Boolean} [includeSeconds=false] - used by `distanceInWords`.
