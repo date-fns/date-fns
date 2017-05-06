@@ -15,6 +15,33 @@ describe('parse > setUTCDay', function () {
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
 
+  it('allows to specify which day is the first day of the week in locale', function () {
+    var result = setUTCDay(
+      new Date(Date.UTC(2014, 8 /* Sep */, 1)),
+      0,
+      {
+        locale: {
+          options: {weekStartsOn: 1}
+        }
+      }
+    )
+    assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
+  })
+
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+    var result = setUTCDay(
+      new Date(Date.UTC(2014, 8 /* Sep */, 1)),
+      0,
+      {
+        weekStartsOn: 1,
+        locale: {
+          options: {weekStartsOn: 0}
+        }
+      }
+    )
+    assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
+  })
+
   context('the day index is more than 6', function () {
     it('sets the day of the next week', function () {
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 8)

@@ -22,7 +22,36 @@ describe('differenceInCalendarWeeks', function () {
     assert(result === 2)
   })
 
-  it('implicitly converts options', function () {
+  it('allows to specify which day is the first day of the week in locale', function () {
+    var result = differenceInCalendarWeeks(
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      {
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 1}
+        }
+      }
+    )
+    assert(result === 2)
+  })
+
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+    var result = differenceInCalendarWeeks(
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      {
+        weekStartsOn: 1,
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 0}
+        }
+      }
+    )
+    assert(result === 2)
+  })
+
+  it('returns a positive number if the time value of the second date is smaller', function () {
     var result = differenceInCalendarWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
