@@ -1,7 +1,8 @@
 import compareDesc from '../compareDesc/index.js'
 import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
-import enLocale from '../locale/en/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
+import defaultLocale from '../locale/en-US/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -33,11 +34,12 @@ var MINUTES_IN_YEAR = 525600
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
- * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
+ * @throws {RangeError} `options.locale` must contain `localize.distanceInWords` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
@@ -98,6 +100,13 @@ var MINUTES_IN_YEAR = 525600
  */
 export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
   var options = dirtyOptions || {}
+  var locale = options.locale || defaultLocale
+
+  if (!locale.localize) {
+    throw new RangeError('locale must contain localize.distanceInWords property')
+  }
+
+  var localize = locale.localize.distanceInWords
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
@@ -105,16 +114,9 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
     return 'Invalid Date'
   }
 
-  var locale = options.locale
-  var localize = enLocale.distanceInWords.localize
-  if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
-    localize = locale.distanceInWords.localize
-  }
-
-  var localizeOptions = {
-    addSuffix: Boolean(options.addSuffix),
-    comparison: comparison
-  }
+  var localizeOptions = cloneObject(options)
+  localizeOptions.addSuffix = Boolean(options.addSuffix)
+  localizeOptions.comparison = comparison
 
   var dateLeft, dateRight
   if (comparison > 0) {
