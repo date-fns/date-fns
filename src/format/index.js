@@ -1,11 +1,11 @@
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
-import enLocale from '../locale/en/index.js'
+import defaultLocale from '../locale/en-US/index.js'
+import formatters from './_lib/formatters/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import addUTCMinutes from './_lib/addUTCMinutes/index.js'
-import getUTCDayOfYear from './_lib/getUTCDayOfYear/index.js'
-import getUTCISOWeek from './_lib/getUTCISOWeek/index.js'
-import getUTCISOYear from './_lib/getUTCISOYear/index.js'
+
+var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
  * @name format
@@ -71,9 +71,10 @@ import getUTCISOYear from './_lib/getUTCISOYear/index.js'
  * @param {String} format - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the formatted date string
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.locale` must contain `localize` property
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -97,15 +98,10 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
-  var locale = options.locale
-  var localeFormatters = enLocale.format.formatters
-  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
-  if (locale && locale.format && locale.format.formatters) {
-    localeFormatters = locale.format.formatters
+  var locale = options.locale || defaultLocale
 
-    if (locale.format.formattingTokensRegExp) {
-      formattingTokensRegExp = locale.format.formattingTokensRegExp
-    }
+  if (!locale.localize) {
+    throw new RangeError('locale must contain localize property')
   }
 
   var originalDate = toDate(dirtyDate, options)
@@ -120,178 +116,18 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var timezoneOffset = originalDate.getTimezoneOffset()
   var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
 
-  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
+  var formatFn = buildFormatFn(formatStr, locale.formatters || {}, locale.formattingTokensRegExp || defaultFormattingTokensRegExp)
+
+  var formatFnOptions = cloneObject(options)
+  formatFnOptions.locale = locale
+  formatFnOptions.formatters = formatters
 
   // When UTC functions will be implemented, options._originalDate will likely be a part of public API.
   // Right now, please don't use it in locales. If you have to use an original date,
   // please restore it from `date`, adding a timezone offset to it.
-  var formatFnOptions = cloneObject(options)
   formatFnOptions._originalDate = originalDate
 
   return formatFn(utcDate, formatFnOptions)
-}
-
-var formatters = {
-  // Month: 1, 2, ..., 12
-  'M': function (date) {
-    return date.getUTCMonth() + 1
-  },
-
-  // Month: 01, 02, ..., 12
-  'MM': function (date) {
-    return addLeadingZeros(date.getUTCMonth() + 1, 2)
-  },
-
-  // Quarter: 1, 2, 3, 4
-  'Q': function (date) {
-    return Math.ceil((date.getUTCMonth() + 1) / 3)
-  },
-
-  // Day of month: 1, 2, ..., 31
-  'D': function (date) {
-    return date.getUTCDate()
-  },
-
-  // Day of month: 01, 02, ..., 31
-  'DD': function (date) {
-    return addLeadingZeros(date.getUTCDate(), 2)
-  },
-
-  // Day of year: 1, 2, ..., 366
-  'DDD': function (date, _, options) {
-    return getUTCDayOfYear(date, options)
-  },
-
-  // Day of year: 001, 002, ..., 366
-  'DDDD': function (date, _, options) {
-    return addLeadingZeros(getUTCDayOfYear(date, options), 3)
-  },
-
-  // Day of week: 0, 1, ..., 6
-  'd': function (date) {
-    return date.getUTCDay()
-  },
-
-  // Day of ISO week: 1, 2, ..., 7
-  'E': function (date) {
-    return date.getUTCDay() || 7
-  },
-
-  // ISO week: 1, 2, ..., 53
-  'W': function (date) {
-    return getUTCISOWeek(date)
-  },
-
-  // ISO week: 01, 02, ..., 53
-  'WW': function (date, _, options) {
-    return addLeadingZeros(getUTCISOWeek(date, options), 2)
-  },
-
-  // Year: 00, 01, ..., 99
-  'YY': function (date) {
-    return addLeadingZeros(date.getUTCFullYear(), 4).substr(2)
-  },
-
-  // Year: 1900, 1901, ..., 2099
-  'YYYY': function (date) {
-    return addLeadingZeros(date.getUTCFullYear(), 4)
-  },
-
-  // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function (date, _, options) {
-    return String(getUTCISOYear(date, options)).substr(2)
-  },
-
-  // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function (date, _, options) {
-    return getUTCISOYear(date, options)
-  },
-
-  // Hour: 0, 1, ... 23
-  'H': function (date) {
-    return date.getUTCHours()
-  },
-
-  // Hour: 00, 01, ..., 23
-  'HH': function (date) {
-    return addLeadingZeros(date.getUTCHours(), 2)
-  },
-
-  // Hour: 1, 2, ..., 12
-  'h': function (date) {
-    var hours = date.getUTCHours()
-    if (hours === 0) {
-      return 12
-    } else if (hours > 12) {
-      return hours % 12
-    } else {
-      return hours
-    }
-  },
-
-  // Hour: 01, 02, ..., 12
-  'hh': function (date) {
-    return addLeadingZeros(formatters['h'](date), 2)
-  },
-
-  // Minute: 0, 1, ..., 59
-  'm': function (date) {
-    return date.getUTCMinutes()
-  },
-
-  // Minute: 00, 01, ..., 59
-  'mm': function (date) {
-    return addLeadingZeros(date.getUTCMinutes(), 2)
-  },
-
-  // Second: 0, 1, ..., 59
-  's': function (date) {
-    return date.getUTCSeconds()
-  },
-
-  // Second: 00, 01, ..., 59
-  'ss': function (date) {
-    return addLeadingZeros(date.getUTCSeconds(), 2)
-  },
-
-  // 1/10 of second: 0, 1, ..., 9
-  'S': function (date) {
-    return Math.floor(date.getUTCMilliseconds() / 100)
-  },
-
-  // 1/100 of second: 00, 01, ..., 99
-  'SS': function (date) {
-    return addLeadingZeros(Math.floor(date.getUTCMilliseconds() / 10), 2)
-  },
-
-  // Millisecond: 000, 001, ..., 999
-  'SSS': function (date) {
-    return addLeadingZeros(date.getUTCMilliseconds(), 3)
-  },
-
-  // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function (date, _, options) {
-    var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset(), ':')
-  },
-
-  // Timezone: -0100, +0000, ... +1200
-  'ZZ': function (date, _, options) {
-    var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset())
-  },
-
-  // Seconds timestamp: 512969520
-  'X': function (date, _, options) {
-    var originalDate = options._originalDate || date
-    return Math.floor(originalDate.getTime() / 1000)
-  },
-
-  // Milliseconds timestamp: 512969520900
-  'x': function (date, _, options) {
-    var originalDate = options._originalDate || date
-    return originalDate.getTime()
-  }
 }
 
 function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
@@ -313,7 +149,7 @@ function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
     var output = ''
     for (var i = 0; i < length; i++) {
       if (array[i] instanceof Function) {
-        output += array[i](date, formatters, options)
+        output += array[i](date, options)
       } else {
         output += array[i]
       }
@@ -327,21 +163,4 @@ function removeFormattingTokens (input) {
     return input.replace(/^\[|]$/g, '')
   }
   return input.replace(/\\/g, '')
-}
-
-function formatTimezone (offset, delimeter) {
-  delimeter = delimeter || ''
-  var sign = offset > 0 ? '-' : '+'
-  var absOffset = Math.abs(offset)
-  var hours = Math.floor(absOffset / 60)
-  var minutes = absOffset % 60
-  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
-}
-
-function addLeadingZeros (number, targetLength) {
-  var output = Math.abs(number).toString()
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
-  return output
 }

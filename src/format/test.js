@@ -344,7 +344,13 @@ describe('format', function () {
           return 'It'
         },
 
-        'EFG': function (date) {
+        'EFG': function (date, options) {
+          return options.locale.localize.efg(date)
+        }
+      }
+
+      var localize = {
+        efg: function (date) {
           return 'works'
         }
       }
@@ -352,35 +358,54 @@ describe('format', function () {
       var formattingTokensRegExp = /(\[[^[]*])|(\\)?(ABC|EFG|.)/g
 
       var customLocale = {
-        format: {
-          formatters: formatters,
-          formattingTokensRegExp: formattingTokensRegExp
-        }
+        // $ExpectedMistake
+        localize: localize,
+        formatters: formatters,
+        formattingTokensRegExp: formattingTokensRegExp
       }
 
+      // $ExpectedMistake
       var result = format(date, 'ABC EFG [correctly!]', {locale: customLocale})
       assert(result === 'It works correctly!')
     })
 
-    context('does not contain `format` property', function () {
-      it('fallbacks to enLocale', function () {
-        var customLocale = {}
-        assert(format(date, 'MMMM', {locale: customLocale}) === 'April')
+    context('does not contain `localize` property', function () {
+      it('throws `RangeError`', function () {
+        var customLocale = {formatLong: function () {}}
+        // $ExpectedMistake
+        var block = format.bind(null, date, 'MMMM', {locale: customLocale})
+        assert.throws(block, RangeError)
       })
     })
 
-    context('does not contain `format.formatters` property', function () {
-      it('fallbacks to enLocale', function () {
-        var customLocale = {format: {}}
-        assert(format(date, 'MMMM', {locale: customLocale}) === 'April')
+    context('does not contain `formatLong` property', function () {
+      it('throws `RangeError`', function () {
+        // $ExpectedMistake
+        var customLocale = {localize: {}}
+        // $ExpectedMistake
+        var block = format.bind(null, date, 'MMMM', {locale: customLocale})
+        assert.throws(block, RangeError)
+      })
+    })
+
+    context('does not contain `format` property', function () {
+      it('works correctly', function () {
+        var localize = {
+          month: function (date) {
+            return 'foobar'
+          }
+        }
+        var customLocale = {localize: localize}
+        // $ExpectedMistake
+        assert(format(date, 'MMMM', {locale: customLocale}) === 'foobar')
       })
     })
 
     context('does not contain `format.formattingTokensRegExp` property', function () {
-      it('uses `format.formattingTokensRegExp` of enLocale', function () {
+      it('uses default `formattingTokensRegExp`', function () {
         var formatters = {
-          'MMMM': function (date) {
-            return 'It'
+          'MMMM': function (date, options) {
+            return options.locale.localize.month(date)
           },
 
           'YYYY': function (date) {
@@ -388,12 +413,18 @@ describe('format', function () {
           }
         }
 
-        var customLocale = {
-          format: {
-            formatters: formatters
+        var localize = {
+          month: function (date) {
+            return 'It'
           }
         }
 
+        var customLocale = {
+          localize: localize,
+          formatters: formatters
+        }
+
+        // $ExpectedMistake
         var result = format(date, 'MMMM YYYY [correctly!] GGGG', {locale: customLocale})
         assert(result === 'It works correctly! 1986')
       })
