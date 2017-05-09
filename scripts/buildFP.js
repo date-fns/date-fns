@@ -1,25 +1,15 @@
 import fs from 'fs'
 import jsDocs from '../dist/date_fns_docs.json'
-import listFiles from './_lib/listFiles'
 
 const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildFP.js`. Please, don\'t change it.'
 const FP_DIR = './src/fp'
 
-const files = listFiles()
-
-const fns = Object.keys(jsDocs)
+const fpFns = Object.keys(jsDocs)
   .map(category => jsDocs[category])
   .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-  .map(doc => {
-    const {name} = doc.content
-    const file = files.find(file => file.name === name)
-    doc.file = file
-    return doc
-  })
-  .filter(doc => doc.file)
-  .sort((a, b) => a.content.name.localeCompare(b.content.name))
+  .filter(doc => doc.kind === 'function' && doc.isFPFn)
 
-buildFP(fns)
+buildFP(fpFns)
 
 function getFPFn (resultFnName, initialFnName, arity) {
   return [generatedAutomaticallyMessage]
@@ -34,26 +24,14 @@ function getFPFn (resultFnName, initialFnName, arity) {
     .join('\n')
 }
 
-function buildFPFn (fn) {
-  const {name, params} = fn.content
-  const nameWithOptions = `${name}WithOptions`
-  const arity = params.filter((param) => !param.name.includes('.')).length
-
-  const fpFnLines = getFPFn(name, name, arity - 1)
-  const fpFnDir = `${FP_DIR}/${name}`
+function buildFPFn ({title, generatedFrom, args: {length}}) {
+  const fpFnLines = getFPFn(title, generatedFrom, length)
+  const fpFnDir = `${FP_DIR}/${title}`
 
   if (!fs.existsSync(fpFnDir)) {
     fs.mkdirSync(fpFnDir)
   }
   fs.writeFileSync(`${fpFnDir}/index.js`, fpFnLines)
-
-  const fpFnWithOptionsLines = getFPFn(nameWithOptions, name, arity)
-  const fpFnWithOptionsDir = `${FP_DIR}/${nameWithOptions}`
-
-  if (!fs.existsSync(fpFnWithOptionsDir)) {
-    fs.mkdirSync(fpFnWithOptionsDir)
-  }
-  fs.writeFileSync(`${fpFnWithOptionsDir}/index.js`, fpFnWithOptionsLines)
 }
 
 function buildFP (fns) {

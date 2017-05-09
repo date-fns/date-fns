@@ -4,7 +4,7 @@ import fsp from 'fs-promise'
 import path from 'path'
 import cloneDeep from 'lodash.clonedeep'
 import jsDocParser from 'jsdoc-to-markdown'
-import listFiles from './_lib/listFiles'
+import listFns from './_lib/listFns'
 import docsConfig from '../docs'
 
 generateDocsFromSource()
@@ -18,13 +18,14 @@ generateDocsFromSource()
  * Generates docs object from a list of functions using extended JSDoc format.
  */
 function generateDocsFromSource () {
-  const docs = listFiles()
+  const docs = listFns()
     .map((fn) => jsDocParser.getTemplateDataSync({
       files: fn.fullPath,
       'no-cache': true
     })[0])
     .map((doc) => ({
       type: 'jsdoc',
+      kind: 'function',
       urlId: doc.name,
       category: doc.category,
       title: doc.name,
@@ -137,6 +138,7 @@ function generateSharedDocs (sharedDocs) {
     })[0])
     .map((doc) => ({
       type: 'jsdoc',
+      kind: 'typedef',
       urlId: doc.name,
       category: doc.category,
       title: doc.name,
@@ -185,6 +187,7 @@ function generateFPFnDoc (dirtyDoc) {
   return Object.assign(doc, {
     isFPFn,
     args,
+    generatedFrom: title,
     urlId: `fp/${urlId}`,
     relatedDocs: {
       default: urlId,
@@ -221,6 +224,7 @@ function generateFPFnWithOptionsDoc (dirtyDoc) {
   return Object.assign(doc, {
     isFPFn,
     args,
+    generatedFrom: title,
     title: `${title}WithOptions`,
     urlId: `fp/${urlId}WithOptions`,
     relatedDocs: {
