@@ -6,8 +6,8 @@ function buildFormatLocale () {
   var weekdays2char = ['日', '一', '二', '三', '四', '五', '六']
   var weekdays3char = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
   var weekdaysFull = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
+  var meridiemUppercase = ['上午', '下午']
+  var meridiemLowercase = ['上午', '下午']
   var meridiemFull = ['上午', '下午']
 
   var formatters = {
