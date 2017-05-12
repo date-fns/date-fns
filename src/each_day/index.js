@@ -27,9 +27,10 @@ var parse = require('../parse/index.js')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDay (dirtyStartDate, dirtyEndDate, step = 1) {
+function eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {
   var startDate = parse(dirtyStartDate)
   var endDate = parse(dirtyEndDate)
+  var step = dirtyStep !== undefined ? dirtyStep : 1
 
   var endTime = endDate.getTime()
 
