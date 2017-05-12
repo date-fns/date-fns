@@ -21,6 +21,19 @@ describe('eachDay', function () {
     ])
   })
 
+  it('returns an array with starts of days from the day of the start date to the day of the end date with the given step', function () {
+    var result = eachDay(
+      new Date(2014, 9 /* Oct */, 6),
+      new Date(2014, 9 /* Oct */, 13),
+      3
+    )
+    assert.deepEqual(result, [
+      new Date(2014, 9 /* Oct */, 6),
+      new Date(2014, 9 /* Oct */, 9),
+      new Date(2014, 9 /* Oct */, 12)
+    ])
+  })
+
   it('accepts strings', function () {
     var result = eachDay(
       new Date(2014, 9 /* Oct */, 6).toISOString(),
