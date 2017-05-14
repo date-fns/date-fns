@@ -17,6 +17,9 @@ type Options = {
 }
 
 type Locale = {
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
   localize: {
     ordinalNumber: Function,
     weekday: Function,
@@ -24,22 +27,30 @@ type Locale = {
     month: Function,
     months: Function,
     timeOfDay: Function,
+    timesOfDay: Function
+  },
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
     timesOfDay: Function,
-    formatDistance: Function
+    timeOfDay: Function
   },
-  format?: {
-    formatters?: Object,
-    formattingTokensRegExp?: RegExp
-  },
-  parse?: {
-    units?: Object,
-    parsers?: Object,
-    parsingTokensRegExp?: RegExp
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   }
 }
 
 declare module.exports: (
-  dateToCompare: Date | string | number,
   date: Date | string | number,
+  baseDate: Date | string | number,
   options?: Options
 ) => string

@@ -42,17 +42,35 @@ type Options = {
 }
 
 type Locale = {
-  distanceInWords?: {
-    localize?: Function
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function
   },
-  format?: {
-    formatters?: Object,
-    formattingTokensRegExp?: RegExp
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
+    timesOfDay: Function,
+    timeOfDay: Function
   },
-  parse?: {
-    units?: Object,
-    parsers?: Object,
-    parsingTokensRegExp?: RegExp
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   }
 }
 
@@ -283,20 +301,6 @@ declare module 'date-fns' {
   ): number
   namespace differenceInYears {}
 
-  function distanceInWords (
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-  namespace distanceInWords {}
-
-  function distanceInWordsStrict (
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-  namespace distanceInWordsStrict {}
-
   function eachDayOfInterval (
     interval: Interval,
     options?: Options
@@ -369,6 +373,27 @@ declare module 'date-fns' {
     options?: Options
   ): string
   namespace format {}
+
+  function formatDistance (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatDistance {}
+
+  function formatDistanceStrict (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatDistanceStrict {}
+
+  function formatRelative (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatRelative {}
 
   function getDate (
     date: Date | string | number,
@@ -1093,16 +1118,6 @@ declare module 'date-fns/differenceInYears' {
   export = differenceInYears
 }
 
-declare module 'date-fns/distanceInWords' {
-  import {distanceInWords} from 'date-fns'
-  export = distanceInWords
-}
-
-declare module 'date-fns/distanceInWordsStrict' {
-  import {distanceInWordsStrict} from 'date-fns'
-  export = distanceInWordsStrict
-}
-
 declare module 'date-fns/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns'
   export = eachDayOfInterval
@@ -1161,6 +1176,21 @@ declare module 'date-fns/endOfYear' {
 declare module 'date-fns/format' {
   import {format} from 'date-fns'
   export = format
+}
+
+declare module 'date-fns/formatDistance' {
+  import {formatDistance} from 'date-fns'
+  export = formatDistance
+}
+
+declare module 'date-fns/formatDistanceStrict' {
+  import {formatDistanceStrict} from 'date-fns'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/formatRelative' {
+  import {formatRelative} from 'date-fns'
+  export = formatRelative
 }
 
 declare module 'date-fns/getDate' {
@@ -1758,16 +1788,6 @@ declare module 'date-fns/differenceInYears/index' {
   export = differenceInYears
 }
 
-declare module 'date-fns/distanceInWords/index' {
-  import {distanceInWords} from 'date-fns'
-  export = distanceInWords
-}
-
-declare module 'date-fns/distanceInWordsStrict/index' {
-  import {distanceInWordsStrict} from 'date-fns'
-  export = distanceInWordsStrict
-}
-
 declare module 'date-fns/eachDayOfInterval/index' {
   import {eachDayOfInterval} from 'date-fns'
   export = eachDayOfInterval
@@ -1826,6 +1846,21 @@ declare module 'date-fns/endOfYear/index' {
 declare module 'date-fns/format/index' {
   import {format} from 'date-fns'
   export = format
+}
+
+declare module 'date-fns/formatDistance/index' {
+  import {formatDistance} from 'date-fns'
+  export = formatDistance
+}
+
+declare module 'date-fns/formatDistanceStrict/index' {
+  import {formatDistanceStrict} from 'date-fns'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/formatRelative/index' {
+  import {formatRelative} from 'date-fns'
+  export = formatRelative
 }
 
 declare module 'date-fns/getDate/index' {
@@ -2423,16 +2458,6 @@ declare module 'date-fns/differenceInYears/index.js' {
   export = differenceInYears
 }
 
-declare module 'date-fns/distanceInWords/index.js' {
-  import {distanceInWords} from 'date-fns'
-  export = distanceInWords
-}
-
-declare module 'date-fns/distanceInWordsStrict/index.js' {
-  import {distanceInWordsStrict} from 'date-fns'
-  export = distanceInWordsStrict
-}
-
 declare module 'date-fns/eachDayOfInterval/index.js' {
   import {eachDayOfInterval} from 'date-fns'
   export = eachDayOfInterval
@@ -2491,6 +2516,21 @@ declare module 'date-fns/endOfYear/index.js' {
 declare module 'date-fns/format/index.js' {
   import {format} from 'date-fns'
   export = format
+}
+
+declare module 'date-fns/formatDistance/index.js' {
+  import {formatDistance} from 'date-fns'
+  export = formatDistance
+}
+
+declare module 'date-fns/formatDistanceStrict/index.js' {
+  import {formatDistanceStrict} from 'date-fns'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/formatRelative/index.js' {
+  import {formatRelative} from 'date-fns'
+  export = formatRelative
 }
 
 declare module 'date-fns/getDate/index.js' {
@@ -3123,18 +3163,6 @@ declare module 'date-fns/fp' {
   let differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInYearsWithOptions {}
 
-  let distanceInWords: CurriedFn2<Date | string | number, Date | string | number, string>
-  namespace distanceInWords {}
-
-  let distanceInWordsStrict: CurriedFn2<Date | string | number, Date | string | number, string>
-  namespace distanceInWordsStrict {}
-
-  let distanceInWordsStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
-  namespace distanceInWordsStrictWithOptions {}
-
-  let distanceInWordsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
-  namespace distanceInWordsWithOptions {}
-
   let eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
@@ -3203,6 +3231,24 @@ declare module 'date-fns/fp' {
 
   let format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
+
+  let formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatDistance {}
+
+  let formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatDistanceStrict {}
+
+  let formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatDistanceStrictWithOptions {}
+
+  let formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatDistanceWithOptions {}
+
+  let formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatRelative {}
+
+  let formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatRelativeWithOptions {}
 
   let formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
@@ -4050,26 +4096,6 @@ declare module 'date-fns/fp/differenceInYearsWithOptions' {
   export = differenceInYearsWithOptions
 }
 
-declare module 'date-fns/fp/distanceInWords' {
-  import {distanceInWords} from 'date-fns/fp'
-  export = distanceInWords
-}
-
-declare module 'date-fns/fp/distanceInWordsStrict' {
-  import {distanceInWordsStrict} from 'date-fns/fp'
-  export = distanceInWordsStrict
-}
-
-declare module 'date-fns/fp/distanceInWordsStrictWithOptions' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/fp'
-  export = distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/fp/distanceInWordsWithOptions' {
-  import {distanceInWordsWithOptions} from 'date-fns/fp'
-  export = distanceInWordsWithOptions
-}
-
 declare module 'date-fns/fp/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns/fp'
   export = eachDayOfInterval
@@ -4183,6 +4209,36 @@ declare module 'date-fns/fp/endOfYearWithOptions' {
 declare module 'date-fns/fp/format' {
   import {format} from 'date-fns/fp'
   export = format
+}
+
+declare module 'date-fns/fp/formatDistance' {
+  import {formatDistance} from 'date-fns/fp'
+  export = formatDistance
+}
+
+declare module 'date-fns/fp/formatDistanceStrict' {
+  import {formatDistanceStrict} from 'date-fns/fp'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/fp/formatDistanceStrictWithOptions' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/fp'
+  export = formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/fp/formatDistanceWithOptions' {
+  import {formatDistanceWithOptions} from 'date-fns/fp'
+  export = formatDistanceWithOptions
+}
+
+declare module 'date-fns/fp/formatRelative' {
+  import {formatRelative} from 'date-fns/fp'
+  export = formatRelative
+}
+
+declare module 'date-fns/fp/formatRelativeWithOptions' {
+  import {formatRelativeWithOptions} from 'date-fns/fp'
+  export = formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions' {
@@ -5380,26 +5436,6 @@ declare module 'date-fns/fp/differenceInYearsWithOptions/index' {
   export = differenceInYearsWithOptions
 }
 
-declare module 'date-fns/fp/distanceInWords/index' {
-  import {distanceInWords} from 'date-fns/fp'
-  export = distanceInWords
-}
-
-declare module 'date-fns/fp/distanceInWordsStrict/index' {
-  import {distanceInWordsStrict} from 'date-fns/fp'
-  export = distanceInWordsStrict
-}
-
-declare module 'date-fns/fp/distanceInWordsStrictWithOptions/index' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/fp'
-  export = distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/fp/distanceInWordsWithOptions/index' {
-  import {distanceInWordsWithOptions} from 'date-fns/fp'
-  export = distanceInWordsWithOptions
-}
-
 declare module 'date-fns/fp/eachDayOfInterval/index' {
   import {eachDayOfInterval} from 'date-fns/fp'
   export = eachDayOfInterval
@@ -5513,6 +5549,36 @@ declare module 'date-fns/fp/endOfYearWithOptions/index' {
 declare module 'date-fns/fp/format/index' {
   import {format} from 'date-fns/fp'
   export = format
+}
+
+declare module 'date-fns/fp/formatDistance/index' {
+  import {formatDistance} from 'date-fns/fp'
+  export = formatDistance
+}
+
+declare module 'date-fns/fp/formatDistanceStrict/index' {
+  import {formatDistanceStrict} from 'date-fns/fp'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/fp/formatDistanceStrictWithOptions/index' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/fp'
+  export = formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/fp/formatDistanceWithOptions/index' {
+  import {formatDistanceWithOptions} from 'date-fns/fp'
+  export = formatDistanceWithOptions
+}
+
+declare module 'date-fns/fp/formatRelative/index' {
+  import {formatRelative} from 'date-fns/fp'
+  export = formatRelative
+}
+
+declare module 'date-fns/fp/formatRelativeWithOptions/index' {
+  import {formatRelativeWithOptions} from 'date-fns/fp'
+  export = formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions/index' {
@@ -6710,26 +6776,6 @@ declare module 'date-fns/fp/differenceInYearsWithOptions/index.js' {
   export = differenceInYearsWithOptions
 }
 
-declare module 'date-fns/fp/distanceInWords/index.js' {
-  import {distanceInWords} from 'date-fns/fp'
-  export = distanceInWords
-}
-
-declare module 'date-fns/fp/distanceInWordsStrict/index.js' {
-  import {distanceInWordsStrict} from 'date-fns/fp'
-  export = distanceInWordsStrict
-}
-
-declare module 'date-fns/fp/distanceInWordsStrictWithOptions/index.js' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/fp'
-  export = distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/fp/distanceInWordsWithOptions/index.js' {
-  import {distanceInWordsWithOptions} from 'date-fns/fp'
-  export = distanceInWordsWithOptions
-}
-
 declare module 'date-fns/fp/eachDayOfInterval/index.js' {
   import {eachDayOfInterval} from 'date-fns/fp'
   export = eachDayOfInterval
@@ -6843,6 +6889,36 @@ declare module 'date-fns/fp/endOfYearWithOptions/index.js' {
 declare module 'date-fns/fp/format/index.js' {
   import {format} from 'date-fns/fp'
   export = format
+}
+
+declare module 'date-fns/fp/formatDistance/index.js' {
+  import {formatDistance} from 'date-fns/fp'
+  export = formatDistance
+}
+
+declare module 'date-fns/fp/formatDistanceStrict/index.js' {
+  import {formatDistanceStrict} from 'date-fns/fp'
+  export = formatDistanceStrict
+}
+
+declare module 'date-fns/fp/formatDistanceStrictWithOptions/index.js' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/fp'
+  export = formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/fp/formatDistanceWithOptions/index.js' {
+  import {formatDistanceWithOptions} from 'date-fns/fp'
+  export = formatDistanceWithOptions
+}
+
+declare module 'date-fns/fp/formatRelative/index.js' {
+  import {formatRelative} from 'date-fns/fp'
+  export = formatRelative
+}
+
+declare module 'date-fns/fp/formatRelativeWithOptions/index.js' {
+  import {formatRelativeWithOptions} from 'date-fns/fp'
+  export = formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions/index.js' {
@@ -7947,20 +8023,6 @@ declare module 'date-fns/esm' {
   ): number
   namespace differenceInYears {}
 
-  function distanceInWords (
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-  namespace distanceInWords {}
-
-  function distanceInWordsStrict (
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-  namespace distanceInWordsStrict {}
-
   function eachDayOfInterval (
     interval: Interval,
     options?: Options
@@ -8033,6 +8095,27 @@ declare module 'date-fns/esm' {
     options?: Options
   ): string
   namespace format {}
+
+  function formatDistance (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatDistance {}
+
+  function formatDistanceStrict (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatDistanceStrict {}
+
+  function formatRelative (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+  namespace formatRelative {}
 
   function getDate (
     date: Date | string | number,
@@ -8757,16 +8840,6 @@ declare module 'date-fns/esm/differenceInYears' {
   export default differenceInYears
 }
 
-declare module 'date-fns/esm/distanceInWords' {
-  import {distanceInWords} from 'date-fns/esm'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/distanceInWordsStrict' {
-  import {distanceInWordsStrict} from 'date-fns/esm'
-  export default distanceInWordsStrict
-}
-
 declare module 'date-fns/esm/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns/esm'
   export default eachDayOfInterval
@@ -8825,6 +8898,21 @@ declare module 'date-fns/esm/endOfYear' {
 declare module 'date-fns/esm/format' {
   import {format} from 'date-fns/esm'
   export default format
+}
+
+declare module 'date-fns/esm/formatDistance' {
+  import {formatDistance} from 'date-fns/esm'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/formatDistanceStrict' {
+  import {formatDistanceStrict} from 'date-fns/esm'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatRelative' {
+  import {formatRelative} from 'date-fns/esm'
+  export default formatRelative
 }
 
 declare module 'date-fns/esm/getDate' {
@@ -9422,16 +9510,6 @@ declare module 'date-fns/esm/differenceInYears/index' {
   export default differenceInYears
 }
 
-declare module 'date-fns/esm/distanceInWords/index' {
-  import {distanceInWords} from 'date-fns/esm'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/distanceInWordsStrict/index' {
-  import {distanceInWordsStrict} from 'date-fns/esm'
-  export default distanceInWordsStrict
-}
-
 declare module 'date-fns/esm/eachDayOfInterval/index' {
   import {eachDayOfInterval} from 'date-fns/esm'
   export default eachDayOfInterval
@@ -9490,6 +9568,21 @@ declare module 'date-fns/esm/endOfYear/index' {
 declare module 'date-fns/esm/format/index' {
   import {format} from 'date-fns/esm'
   export default format
+}
+
+declare module 'date-fns/esm/formatDistance/index' {
+  import {formatDistance} from 'date-fns/esm'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/formatDistanceStrict/index' {
+  import {formatDistanceStrict} from 'date-fns/esm'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatRelative/index' {
+  import {formatRelative} from 'date-fns/esm'
+  export default formatRelative
 }
 
 declare module 'date-fns/esm/getDate/index' {
@@ -10087,16 +10180,6 @@ declare module 'date-fns/esm/differenceInYears/index.js' {
   export default differenceInYears
 }
 
-declare module 'date-fns/esm/distanceInWords/index.js' {
-  import {distanceInWords} from 'date-fns/esm'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/distanceInWordsStrict/index.js' {
-  import {distanceInWordsStrict} from 'date-fns/esm'
-  export default distanceInWordsStrict
-}
-
 declare module 'date-fns/esm/eachDayOfInterval/index.js' {
   import {eachDayOfInterval} from 'date-fns/esm'
   export default eachDayOfInterval
@@ -10155,6 +10238,21 @@ declare module 'date-fns/esm/endOfYear/index.js' {
 declare module 'date-fns/esm/format/index.js' {
   import {format} from 'date-fns/esm'
   export default format
+}
+
+declare module 'date-fns/esm/formatDistance/index.js' {
+  import {formatDistance} from 'date-fns/esm'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/formatDistanceStrict/index.js' {
+  import {formatDistanceStrict} from 'date-fns/esm'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatRelative/index.js' {
+  import {formatRelative} from 'date-fns/esm'
+  export default formatRelative
 }
 
 declare module 'date-fns/esm/getDate/index.js' {
@@ -10787,18 +10885,6 @@ declare module 'date-fns/esm/fp' {
   let differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInYearsWithOptions {}
 
-  let distanceInWords: CurriedFn2<Date | string | number, Date | string | number, string>
-  namespace distanceInWords {}
-
-  let distanceInWordsStrict: CurriedFn2<Date | string | number, Date | string | number, string>
-  namespace distanceInWordsStrict {}
-
-  let distanceInWordsStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
-  namespace distanceInWordsStrictWithOptions {}
-
-  let distanceInWordsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
-  namespace distanceInWordsWithOptions {}
-
   let eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
@@ -10867,6 +10953,24 @@ declare module 'date-fns/esm/fp' {
 
   let format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
+
+  let formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatDistance {}
+
+  let formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatDistanceStrict {}
+
+  let formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatDistanceStrictWithOptions {}
+
+  let formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatDistanceWithOptions {}
+
+  let formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
+  namespace formatRelative {}
+
+  let formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  namespace formatRelativeWithOptions {}
 
   let formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
@@ -11714,26 +11818,6 @@ declare module 'date-fns/esm/fp/differenceInYearsWithOptions' {
   export default differenceInYearsWithOptions
 }
 
-declare module 'date-fns/esm/fp/distanceInWords' {
-  import {distanceInWords} from 'date-fns/esm/fp'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrict' {
-  import {distanceInWordsStrict} from 'date-fns/esm/fp'
-  export default distanceInWordsStrict
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrictWithOptions' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsWithOptions' {
-  import {distanceInWordsWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsWithOptions
-}
-
 declare module 'date-fns/esm/fp/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns/esm/fp'
   export default eachDayOfInterval
@@ -11847,6 +11931,36 @@ declare module 'date-fns/esm/fp/endOfYearWithOptions' {
 declare module 'date-fns/esm/fp/format' {
   import {format} from 'date-fns/esm/fp'
   export default format
+}
+
+declare module 'date-fns/esm/fp/formatDistance' {
+  import {formatDistance} from 'date-fns/esm/fp'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrict' {
+  import {formatDistanceStrict} from 'date-fns/esm/fp'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrictWithOptions' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatDistanceWithOptions' {
+  import {formatDistanceWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRelative' {
+  import {formatRelative} from 'date-fns/esm/fp'
+  export default formatRelative
+}
+
+declare module 'date-fns/esm/fp/formatRelativeWithOptions' {
+  import {formatRelativeWithOptions} from 'date-fns/esm/fp'
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions' {
@@ -13044,26 +13158,6 @@ declare module 'date-fns/esm/fp/differenceInYearsWithOptions/index' {
   export default differenceInYearsWithOptions
 }
 
-declare module 'date-fns/esm/fp/distanceInWords/index' {
-  import {distanceInWords} from 'date-fns/esm/fp'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrict/index' {
-  import {distanceInWordsStrict} from 'date-fns/esm/fp'
-  export default distanceInWordsStrict
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrictWithOptions/index' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsWithOptions/index' {
-  import {distanceInWordsWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsWithOptions
-}
-
 declare module 'date-fns/esm/fp/eachDayOfInterval/index' {
   import {eachDayOfInterval} from 'date-fns/esm/fp'
   export default eachDayOfInterval
@@ -13177,6 +13271,36 @@ declare module 'date-fns/esm/fp/endOfYearWithOptions/index' {
 declare module 'date-fns/esm/fp/format/index' {
   import {format} from 'date-fns/esm/fp'
   export default format
+}
+
+declare module 'date-fns/esm/fp/formatDistance/index' {
+  import {formatDistance} from 'date-fns/esm/fp'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrict/index' {
+  import {formatDistanceStrict} from 'date-fns/esm/fp'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrictWithOptions/index' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatDistanceWithOptions/index' {
+  import {formatDistanceWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRelative/index' {
+  import {formatRelative} from 'date-fns/esm/fp'
+  export default formatRelative
+}
+
+declare module 'date-fns/esm/fp/formatRelativeWithOptions/index' {
+  import {formatRelativeWithOptions} from 'date-fns/esm/fp'
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions/index' {
@@ -14374,26 +14498,6 @@ declare module 'date-fns/esm/fp/differenceInYearsWithOptions/index.js' {
   export default differenceInYearsWithOptions
 }
 
-declare module 'date-fns/esm/fp/distanceInWords/index.js' {
-  import {distanceInWords} from 'date-fns/esm/fp'
-  export default distanceInWords
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrict/index.js' {
-  import {distanceInWordsStrict} from 'date-fns/esm/fp'
-  export default distanceInWordsStrict
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsStrictWithOptions/index.js' {
-  import {distanceInWordsStrictWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsStrictWithOptions
-}
-
-declare module 'date-fns/esm/fp/distanceInWordsWithOptions/index.js' {
-  import {distanceInWordsWithOptions} from 'date-fns/esm/fp'
-  export default distanceInWordsWithOptions
-}
-
 declare module 'date-fns/esm/fp/eachDayOfInterval/index.js' {
   import {eachDayOfInterval} from 'date-fns/esm/fp'
   export default eachDayOfInterval
@@ -14507,6 +14611,36 @@ declare module 'date-fns/esm/fp/endOfYearWithOptions/index.js' {
 declare module 'date-fns/esm/fp/format/index.js' {
   import {format} from 'date-fns/esm/fp'
   export default format
+}
+
+declare module 'date-fns/esm/fp/formatDistance/index.js' {
+  import {formatDistance} from 'date-fns/esm/fp'
+  export default formatDistance
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrict/index.js' {
+  import {formatDistanceStrict} from 'date-fns/esm/fp'
+  export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/fp/formatDistanceStrictWithOptions/index.js' {
+  import {formatDistanceStrictWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceStrictWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatDistanceWithOptions/index.js' {
+  import {formatDistanceWithOptions} from 'date-fns/esm/fp'
+  export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRelative/index.js' {
+  import {formatRelative} from 'date-fns/esm/fp'
+  export default formatRelative
+}
+
+declare module 'date-fns/esm/fp/formatRelativeWithOptions/index.js' {
+  import {formatRelativeWithOptions} from 'date-fns/esm/fp'
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions/index.js' {
@@ -15421,7 +15555,7 @@ declare module 'date-fns/locale/el' {
   export = locale
 }
 
-declare module 'date-fns/locale/en' {
+declare module 'date-fns/locale/en-US' {
   const locale: Locale
   export = locale
 }
@@ -15536,12 +15670,12 @@ declare module 'date-fns/locale/tr' {
   export = locale
 }
 
-declare module 'date-fns/locale/zhCn' {
+declare module 'date-fns/locale/zh-CN' {
   const locale: Locale
   export = locale
 }
 
-declare module 'date-fns/locale/zhTw' {
+declare module 'date-fns/locale/zh-TW' {
   const locale: Locale
   export = locale
 }
@@ -15581,7 +15715,7 @@ declare module 'date-fns/locale/el/index' {
   export = locale
 }
 
-declare module 'date-fns/locale/en/index' {
+declare module 'date-fns/locale/en-US/index' {
   const locale: Locale
   export = locale
 }
@@ -15696,12 +15830,12 @@ declare module 'date-fns/locale/tr/index' {
   export = locale
 }
 
-declare module 'date-fns/locale/zhCn/index' {
+declare module 'date-fns/locale/zh-CN/index' {
   const locale: Locale
   export = locale
 }
 
-declare module 'date-fns/locale/zhTw/index' {
+declare module 'date-fns/locale/zh-TW/index' {
   const locale: Locale
   export = locale
 }
@@ -15741,7 +15875,7 @@ declare module 'date-fns/locale/el/index.js' {
   export = locale
 }
 
-declare module 'date-fns/locale/en/index.js' {
+declare module 'date-fns/locale/en-US/index.js' {
   const locale: Locale
   export = locale
 }
@@ -15856,12 +15990,12 @@ declare module 'date-fns/locale/tr/index.js' {
   export = locale
 }
 
-declare module 'date-fns/locale/zhCn/index.js' {
+declare module 'date-fns/locale/zh-CN/index.js' {
   const locale: Locale
   export = locale
 }
 
-declare module 'date-fns/locale/zhTw/index.js' {
+declare module 'date-fns/locale/zh-TW/index.js' {
   const locale: Locale
   export = locale
 }
@@ -15901,7 +16035,7 @@ declare module 'date-fns/esm/locale/el' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/en' {
+declare module 'date-fns/esm/locale/en-US' {
   const locale: Locale
   export default locale
 }
@@ -16016,12 +16150,12 @@ declare module 'date-fns/esm/locale/tr' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhCn' {
+declare module 'date-fns/esm/locale/zh-CN' {
   const locale: Locale
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhTw' {
+declare module 'date-fns/esm/locale/zh-TW' {
   const locale: Locale
   export default locale
 }
@@ -16061,7 +16195,7 @@ declare module 'date-fns/esm/locale/el/index' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/en/index' {
+declare module 'date-fns/esm/locale/en-US/index' {
   const locale: Locale
   export default locale
 }
@@ -16176,12 +16310,12 @@ declare module 'date-fns/esm/locale/tr/index' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhCn/index' {
+declare module 'date-fns/esm/locale/zh-CN/index' {
   const locale: Locale
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhTw/index' {
+declare module 'date-fns/esm/locale/zh-TW/index' {
   const locale: Locale
   export default locale
 }
@@ -16221,7 +16355,7 @@ declare module 'date-fns/esm/locale/el/index.js' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/en/index.js' {
+declare module 'date-fns/esm/locale/en-US/index.js' {
   const locale: Locale
   export default locale
 }
@@ -16336,12 +16470,12 @@ declare module 'date-fns/esm/locale/tr/index.js' {
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhCn/index.js' {
+declare module 'date-fns/esm/locale/zh-CN/index.js' {
   const locale: Locale
   export default locale
 }
 
-declare module 'date-fns/esm/locale/zhTw/index.js' {
+declare module 'date-fns/esm/locale/zh-TW/index.js' {
   const locale: Locale
   export default locale
 }
@@ -16541,18 +16675,6 @@ interface dateFns {
     options?: Options
   ): number
 
-  distanceInWords(
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-
-  distanceInWordsStrict(
-    dateToCompare: Date | string | number,
-    date: Date | string | number,
-    options?: Options
-  ): string
-
   eachDayOfInterval(
     interval: Interval,
     options?: Options
@@ -16611,6 +16733,24 @@ interface dateFns {
   format(
     date: Date | string | number,
     format: string,
+    options?: Options
+  ): string
+
+  formatDistance(
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+
+  formatDistanceStrict(
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ): string
+
+  formatRelative(
+    date: Date | string | number,
+    baseDate: Date | string | number,
     options?: Options
   ): string
 

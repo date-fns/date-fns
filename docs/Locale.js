@@ -33,9 +33,16 @@
  * @property {Function} localize.timesOfDay - the function that returns an array of localized times of the day
  *   without any association with hours
  *
- * @property {Object} [format] - the object used to localize `format` function
- * @property {Object} [format.formatters] - the object with formatter functions
- * @property {RegExp} [format.formattingTokensRegExp] - a RegExp used to split a format string into the token array
+ * @property {Object} match — the object with functions used to match and parse various localized values.
+ *   Required by `parse`
+ * @property {Function} match.ordinalNumbers - the function that matches localized ordinal numbers
+ * @property {Function} match.ordinalNumber - the function that parses localized ordinal number
+ * @property {Function} match.weekdays - the function that matches localized days of the weeks
+ * @property {Function} match.weekday - the function that parses localized day of the week
+ * @property {Function} match.months - the function that matches localized months
+ * @property {Function} match.month - the function that parses localized month
+ * @property {Function} match.timesOfDay - the function that matches localized times of the day
+ * @property {Function} match.timeOfDay - the function that parses localized time of the day
  *
  * @property {Object} [formatters] - the object with formatter functions used by `format`
  * @property {RegExp} [formattingTokensRegExp] - a RegExp used to split a format string into the token array by `format`
