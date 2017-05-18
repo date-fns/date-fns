@@ -243,6 +243,21 @@ This change log follows the format documented in [Keep a CHANGELOG].
   parse('2016-01-01', 'YYYY-MM-DD', new Date())
   ```
 
+- **BREAKING** renamed ISO week-numbering year helpers:
+
+  - `addISOYears` → `addISOWeekYears`
+  - `differenceInCalendarISOYears` → `differenceInCalendarISOWeekYears`
+  - `differenceInISOYears` → `differenceInISOWeekYears`
+  - `endOfISOYear` → `endOfISOWeekYear`
+  - `getISOYear` → `getISOWeekYear`
+  - `isSameISOYear` → `isSameISOWeekYear`
+  - `lastDayOfISOYear` → `lastDayOfISOWeekYear`
+  - `setISOYear` → `setISOWeekYear`
+  - `subISOYears` → `subISOWeekYears`
+
+  It makes them consistent with planned locale week-numbering year helpers
+  e.g. `addWeekYears`.
+
 - **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
   to make them consistent with `distanceInWords` and `distanceInWordsStrict` functions.
   Now, the first date argument must be earlier then the second for function to return the positive number.
