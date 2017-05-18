@@ -1,6 +1,6 @@
 import toDate from '../toDate/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
-import startOfISOYear from '../startOfISOYear/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -27,7 +27,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  */
 export default function getISOWeek (dirtyDate, dirtyOptions) {
   var date = toDate(dirtyDate, dirtyOptions)
-  var diff = startOfISOWeek(date, dirtyOptions).getTime() - startOfISOYear(date, dirtyOptions).getTime()
+  var diff = startOfISOWeek(date, dirtyOptions).getTime() - startOfISOWeekYear(date, dirtyOptions).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
