@@ -32,7 +32,7 @@ function buildFormatLocale () {
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
       return weekdaysFull[date.getDay()]
-    },
+    }
   }
 
   // AM, PM / am, pm / a.m., p.m. all translates to 上午, 下午
