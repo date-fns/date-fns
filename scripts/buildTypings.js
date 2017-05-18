@@ -1,5 +1,4 @@
 import fs from 'fs'
-import listFiles from './_lib/listFiles'
 import listLocales from './_lib/listLocales'
 import jsDocs from '../dist/date_fns_docs.json'
 
@@ -47,20 +46,13 @@ const flowFPAliases = []
   .concat('  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R')
   .join('\n')
 
-const files = listFiles()
 const locales = listLocales()
 
 const fns = Object.keys(jsDocs)
   .map(category => jsDocs[category])
   .reduce((previousValue, newValue) => [...previousValue, ...newValue], [])
-  .map(doc => {
-    const {name} = doc.content
-    const file = files.find(file => file.name === name)
-    doc.file = file
-    return doc
-  })
-  .filter(doc => doc.file)
-  .sort((a, b) => a.content.name.localeCompare(b.content.name))
+  .filter(doc => doc.kind === 'function')
+  .sort((a, b) => a.title.localeCompare(b.title))
 
 const aliases = jsDocs['Types']
 
@@ -78,37 +70,18 @@ function correctTypeCase (type) {
 
 function getParams (params, {indent = 1, leftBorder = '{', rightBorder = '}'} = {}) {
   if (params.length === 0) {
-    return '()'
+    return leftBorder + rightBorder
   }
-
-  const props = params
-    .filter(param => param.name.includes('.'))
-    .map(param => {
-      const [parent, name] = param.name.split('.')
-      const {type, variable, optional} = param
-      return {
-        parent,
-        name,
-        type,
-        variable,
-        optional
-      }
-    })
 
   const paramIndent = '  '.repeat(indent + 1)
   const borderIndent = '  '.repeat(indent)
 
   return [leftBorder]
     .concat(params
-      .filter(param => !param.name.includes('.'))
       .map(param => {
-        const name = param.name
-        const type = getType(param.type.names, {
-          props: props.filter(param => param.parent === name),
-          forceArray: param.variable,
-          indent
-        })
-        return `${paramIndent}${param.variable ? '...' : ''}${name}${param.optional ? '?' : ''}: ${type}`
+        const {name, props, optional, variable, type: {names: typeNames}} = param
+        const type = getType(typeNames, {props, indent, forceArray: variable})
+        return `${paramIndent}${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
       })
       .join(',\n')
     )
@@ -151,12 +124,8 @@ function getType (types, {props = [], forceArray = false, indent = 1} = {}) {
   return typeStrings.join(' | ')
 }
 
-function getFPFnType (params, returns, nameSuffix) {
-  const withOptions = nameSuffix === 'WithOptions'
+function getFPFnType (params, returns) {
   const fpParams = params
-    .filter(param => !param.name.includes('.'))
-    .reverse()
-    .filter((_, index) => withOptions || index !== 0)
     .map(param => param.type.names)
 
   const arity = fpParams.length
@@ -169,14 +138,12 @@ function getFPFnType (params, returns, nameSuffix) {
 // TypeScript
 
 function getTypeScriptTypeAlias (type) {
-  const name = type.content.name
-  const properties = getParams(type.content.properties, {indent: 0})
-
-  return `type ${name} = ${properties}`
+  const {title, properties} = type
+  return `type ${title} = ${getParams(properties, {indent: 0})}`
 }
 
-function getTypeScriptDateFnsModuleDefinition (moduleSuffix, fns) {
-  const moduleName = `date-fns${moduleSuffix}`
+function getTypeScriptDateFnsModuleDefinition (submodule, fns) {
+  const moduleName = `date-fns${submodule}`
 
   const definition = [`declare module '${moduleName}' {`]
     .concat(fns.map(getTypeScriptFnDefinition).join('\n\n'))
@@ -189,13 +156,10 @@ function getTypeScriptDateFnsModuleDefinition (moduleSuffix, fns) {
   }
 }
 
-function getTypeScriptDateFnsFPModuleDefinition (moduleSuffix, fns) {
-  const moduleName = `date-fns${moduleSuffix}/fp`
+function getTypeScriptDateFnsFPModuleDefinition (submodule, fns) {
+  const moduleName = `date-fns${submodule}/fp`
 
-  const fnDefinitions = []
-    .concat(fns.map(getTypeScriptFPFnDefinition.bind(null, '')))
-    .concat(fns.map(getTypeScriptFPFnDefinition.bind(null, 'WithOptions')))
-    .join('\n\n')
+  const fnDefinitions = fns.map(getTypeScriptFPFnDefinition).join('\n\n')
 
   const definition = [`declare module '${moduleName}' {`]
     .concat(fnDefinitions)
@@ -208,12 +172,12 @@ function getTypeScriptDateFnsFPModuleDefinition (moduleSuffix, fns) {
   }
 }
 
-function getTypeScriptFnModuleDefinition (moduleSuffix, fnSuffix, isDefault, fn) {
+function getTypeScriptFnModuleDefinition (submodule, fnSuffix, isDefault, fn) {
   const name = fn.content.name
-  const moduleName = `date-fns${moduleSuffix}/${name}${fnSuffix}`
+  const moduleName = `date-fns${submodule}/${name}${fnSuffix}`
 
   const definition = [`declare module '${moduleName}' {`]
-    .concat(`  import {${name}} from 'date-fns${moduleSuffix}'`)
+    .concat(`  import {${name}} from 'date-fns${submodule}'`)
     .concat(`  export ${isDefault ? 'default' : '='} ${name}`)
     .concat('}')
     .join('\n')
@@ -225,33 +189,33 @@ function getTypeScriptFnModuleDefinition (moduleSuffix, fnSuffix, isDefault, fn)
 }
 
 function getTypeScriptFnDefinition (fn) {
-  const name = fn.content.name
+  const {title, args, content} = fn
 
-  const params = getParams(fn.content.params, {indent: 1, leftBorder: '(', rightBorder: ')'})
-  const returns = getType(fn.content.returns[0].type.names)
+  const params = getParams(args, {indent: 1, leftBorder: '(', rightBorder: ')'})
+  const returns = getType(content.returns[0].type.names)
 
-  return [`  function ${name} ${params}: ${returns}`]
-    .concat(`  namespace ${name} {}`)
+  return [`  function ${title} ${params}: ${returns}`]
+    .concat(`  namespace ${title} {}`)
     .join('\n')
 }
 
-function getTypeScriptFPFnDefinition (nameSuffix, fn) {
-  const name = `${fn.content.name}${nameSuffix}`
+function getTypeScriptFPFnDefinition (fn) {
+  const {title, args, content} = fn
 
-  const type = getFPFnType(fn.content.params, fn.content.returns[0].type.names, nameSuffix)
+  const type = getFPFnType(args, content.returns[0].type.names)
 
-  return [`  let ${name}: ${type}`]
-    .concat(`  namespace ${name} {}`)
+  return [`  let ${title}: ${type}`]
+    .concat(`  namespace ${title} {}`)
     .join('\n')
 }
 
-function getTypeScriptFPFnModuleDefinition (moduleSuffix, nameSuffix, fnSuffix, isDefault, fn) {
-  const name = fn.content.name
-  const moduleName = `date-fns${moduleSuffix}/fp/${name}${nameSuffix}${fnSuffix}`
+function getTypeScriptFPFnModuleDefinition (submodule, fnSuffix, isDefault, fn) {
+  const {title} = fn
+  const moduleName = `date-fns${submodule}/fp/${title}${fnSuffix}`
 
   const definition = [`declare module '${moduleName}' {`]
-    .concat(`  import {${name}} from 'date-fns${moduleSuffix}/fp'`)
-    .concat(`  export ${isDefault ? 'default' : '='} ${name}`)
+    .concat(`  import {${title}} from 'date-fns${submodule}/fp'`)
+    .concat(`  export ${isDefault ? 'default' : '='} ${title}`)
     .concat('}')
     .join('\n')
 
@@ -261,9 +225,9 @@ function getTypeScriptFPFnModuleDefinition (moduleSuffix, nameSuffix, fnSuffix, 
   }
 }
 
-function getTypeScriptLocaleModuleDefinition (moduleSuffix, localeSuffix, isDefault, locale) {
+function getTypeScriptLocaleModuleDefinition (submodule, localeSuffix, isDefault, locale) {
   const code = locale.code
-  const name = `date-fns${moduleSuffix}/locale/${code}${localeSuffix}`
+  const name = `date-fns${submodule}/locale/${code}${localeSuffix}`
 
   const definition = [`declare module '${name}' {`]
     .concat('  const locale: Locale')
@@ -278,42 +242,39 @@ function getTypeScriptLocaleModuleDefinition (moduleSuffix, localeSuffix, isDefa
 }
 
 function getTypeScriptInterfaceDefinition (fn) {
-  const name = fn.content.name
-  const params = getParams(fn.content.params, {indent: 1, leftBorder: '(', rightBorder: ')'})
-  const returns = getType(fn.content.returns[0].type.names)
+  const {title, args, content} = fn
+  const params = getParams(args, {indent: 1, leftBorder: '(', rightBorder: ')'})
+  const returns = getType(content.returns[0].type.names)
 
-  return `${name}${params}: ${returns}`
+  return `${title}${params}: ${returns}`
 }
 
 function generateTypeScriptTypings (fns, aliases, locales) {
-  const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition('', fns)]
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '', false)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index', false)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index.js', false)))
+  const nonFPFns = fns.filter(fn => !fn.isFPFn)
+  const fpFns = fns.filter(fn => fn.isFPFn)
+
+  const moduleDefinitions = [getTypeScriptDateFnsModuleDefinition('', nonFPFns)]
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '', false)))
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index', false)))
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index.js', false)))
     .map(module => module.definition)
 
-  const fpModuleDefinitions = [getTypeScriptDateFnsFPModuleDefinition('', fns)]
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '', '', false)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '', '/index', false)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '', '/index.js', false)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', 'WithOptions', '', false)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', 'WithOptions', '/index', false)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', 'WithOptions', '/index.js', false)))
+  const fpModuleDefinitions = [getTypeScriptDateFnsFPModuleDefinition('', fpFns)]
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '', false)))
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '/index', false)))
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '/index.js', false)))
     .map(module => module.definition)
 
-  const esmModuleDefinitions = [getTypeScriptDateFnsModuleDefinition('/esm', fns)]
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '', true)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index', true)))
-    .concat(fns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index.js', true)))
+  const esmModuleDefinitions = [getTypeScriptDateFnsModuleDefinition('/esm', nonFPFns)]
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '', true)))
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index', true)))
+    .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index.js', true)))
     .map(module => module.definition)
 
-  const esmFPModuleDefinitions = [getTypeScriptDateFnsFPModuleDefinition('/esm', fns)]
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '', '', true)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '', '/index', true)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '', '/index.js', true)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', 'WithOptions', '', true)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', 'WithOptions', '/index', true)))
-    .concat(fns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', 'WithOptions', '/index.js', true)))
+  const esmFPModuleDefinitions = [getTypeScriptDateFnsFPModuleDefinition('/esm', fpFns)]
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '', true)))
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '/index', true)))
+    .concat(fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '/index.js', true)))
     .map(module => module.definition)
 
   const aliasDefinitions = aliases
@@ -329,7 +290,7 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .map(module => module.definition)
 
   const interfaceDefinitions = ['interface dateFns {']
-    .concat(fns.map(fn => `  ${getTypeScriptInterfaceDefinition(fn)}`).join('\n\n'))
+    .concat(nonFPFns.map(fn => `  ${getTypeScriptInterfaceDefinition(fn)}`).join('\n\n'))
     .concat('}')
     .join('\n')
 
@@ -358,18 +319,16 @@ function generateTypeScriptTypings (fns, aliases, locales) {
 // Flow
 
 function getFlowTypeAlias (type) {
-  const name = type.content.name
-  const properties = getParams(type.content.properties, {indent: 0})
-
-  return `type ${name} = ${properties}`
+  const {title, properties} = type
+  return `type ${title} = ${getParams(properties, {indent: 0})}`
 }
 
 function generateFlowFnTyping (fn, aliasDeclarations) {
-  const name = fn.file.name
-  const filename = `./src/${name}/index.js.flow`
+  const {title, args, content} = fn
+  const filename = `./src/${title}/index.js.flow`
 
-  const params = getParams(fn.content.params, {indent: 0, leftBorder: '(', rightBorder: ')'})
-  const returns = getType(fn.content.returns[0].type.names)
+  const params = getParams(args, {indent: 0, leftBorder: '(', rightBorder: ')'})
+  const returns = getType(content.returns[0].type.names)
 
   const moduleDeclaration = `declare module.exports: ${params} => ${returns}\n`
 
@@ -382,11 +341,11 @@ function generateFlowFnTyping (fn, aliasDeclarations) {
   fs.writeFileSync(filename, typingString)
 }
 
-function generateFlowFPFnTyping (fn, nameSuffix, aliasDeclarations) {
-  const name = fn.content.name
-  const filename = `./src/fp/${name}${nameSuffix}/index.js.flow`
+function generateFlowFPFnTyping (fn, aliasDeclarations) {
+  const {title, args, content} = fn
+  const filename = `./src/fp/${title}/index.js.flow`
 
-  const type = getFPFnType(fn.content.params, fn.content.returns[0].type.names, nameSuffix)
+  const type = getFPFnType(args, content.returns[0].type.names)
 
   const typingString = ['// @flow']
     .concat(generatedAutomaticallyMessage)
@@ -421,9 +380,11 @@ function generateFlowTypings (fns, aliases, locales) {
   const localeAliasDeclaration = getFlowTypeAlias(aliases.find((alias) => alias.title === 'Locale'))
 
   fns.forEach((fn) => {
-    generateFlowFnTyping(fn, aliasDeclarations)
-    generateFlowFPFnTyping(fn, '', aliasDeclarations)
-    generateFlowFPFnTyping(fn, 'WithOptions', aliasDeclarations)
+    if (fn.isFPFn) {
+      generateFlowFPFnTyping(fn, aliasDeclarations)
+    } else {
+      generateFlowFnTyping(fn, aliasDeclarations)
+    }
   })
 
   locales.forEach((locale) => {

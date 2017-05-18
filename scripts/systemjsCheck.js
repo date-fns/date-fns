@@ -1,9 +1,10 @@
-import listFiles from './_lib/listFiles'
+import listFns from './_lib/listFns'
+import listFPFns from './_lib/listFPFns'
 import listLocales from './_lib/listLocales'
 import SystemJS from 'systemjs'
 import path from 'path'
 
-const pluginPath = path.resolve(__dirname, '../node_modules/systemjs-plugin-babel')
+const pluginPath = path.join(process.cwd(), './node_modules/systemjs-plugin-babel')
 
 SystemJS.config({
   map: {
@@ -13,7 +14,7 @@ SystemJS.config({
   transpiler: 'plugin-babel'
 })
 
-Promise.all(importFns().concat(importLocales())).then(
+Promise.all(importFiles(listFns()).concat(importFiles(listFPFns())).concat(importFiles(listLocales()))).then(
   () => {
     console.log('SystemJS support is OK')
   },
@@ -23,10 +24,6 @@ Promise.all(importFns().concat(importLocales())).then(
   }
 )
 
-function importFns () {
-  return listFiles().map((file) => SystemJS.import(path.resolve(`src/${file.path}/index.js`)))
-}
-
-function importLocales () {
-  return listLocales().map((locale) => SystemJS.import(path.resolve(`src/${locale.path}/index.js`)))
+function importFiles (files) {
+  return files.map((file) => SystemJS.import(path.join(process.cwd(), file.fullPath)))
 }
