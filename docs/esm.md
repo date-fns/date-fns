@@ -1,6 +1,5 @@
 # ECMAScript Modules
 
-
 **date-fns** v2.x provides support for
 [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
 via `'date-fns/esm'` subpackage.

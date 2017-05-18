@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import listFiles from './_lib/listFiles'
-import listFPFiles from './_lib/listFPFiles'
+import listFns from './_lib/listFns'
+import listFPFns from './_lib/listFPFns'
 
 const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildIndex.js`. Please, don\'t change it.'
 
@@ -31,8 +31,8 @@ function generateESMIndex (files) {
   return `${indexLines}\n`
 }
 
-const files = listFiles()
-const fpFiles = listFPFiles()
+const files = listFns()
+const fpFiles = listFPFns()
 
 fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), generateIndex(files))
 fs.writeFileSync(path.join(process.cwd(), 'src', 'fp', 'index.js'), generateIndex(fpFiles))

@@ -5,6 +5,8 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @type {Locale}
  * @category Locales
  * @summary Russian locale.
+ * @language Russian
+ * @iso-639-2 rus
  */
 var ruLocale = {
   distanceInWords: buildDistanceInWordsLocale(),
