@@ -5,6 +5,8 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @type {Locale}
  * @category Locales
  * @summary Portuguese locale.
+ * @language Portuguese
+ * @iso-639-2 por
  * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
  */
 var ptLocale = {

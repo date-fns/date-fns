@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Exit if any command fails
+set -e
+
 if [ "$1" == "" ]
 then
   echo 'Version number must be passed as an argument'
@@ -22,3 +25,4 @@ git push
 git push --tags
 
 yarn run release-npm
+yarn run update-firebase
