@@ -33,21 +33,11 @@ function buildFormatLocale () {
     'dddd': function (date) {
       return weekdaysFull[date.getDay()]
     },
+  }
 
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
-    }
+  // AM, PM / am, pm / a.m., p.m. all translates to 上午, 下午
+  formatters.a = formatters.aa = formatters.A = function (date) {
+    return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
   }
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
