@@ -255,7 +255,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
   - `setISOYear` → `setISOWeekYear`
   - `subISOYears` → `subISOWeekYears`
 
-  It makes them consistent with planned locale week-numbering year helpers
+  i.e. "ISO year" renamed to "ISO week year", which is short for
+  [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+  It makes them consistent with planned locale-dependent week-numbering year helpers
   e.g. `addWeekYears`.
 
 - **BREAKING**: the first two arguments in all `differenceIn...` functions are swapped
