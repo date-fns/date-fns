@@ -10,6 +10,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.5] - 2017-05-19
+
+### Fixed
+
+- Fix a.m./p.m. formatters in Chinese Simplified locale.
+  Thanks to [@fnlctrl](https://github.com/fnlctrl).
+  See PR [#486](https://github.com/date-fns/date-fns/pull/486)
+
 ## [1.28.4] - 2017-04-26
 
 ### Fixed
@@ -988,7 +996,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.4...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.5...HEAD
+[1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
 [1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
 [1.28.3]: https://github.com/date-fns/date-fns/compare/v1.28.2...v1.28.3
 [1.28.2]: https://github.com/date-fns/date-fns/compare/v1.28.1...v1.28.2
