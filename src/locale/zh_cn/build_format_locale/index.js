@@ -6,8 +6,6 @@ function buildFormatLocale () {
   var weekdays2char = ['日', '一', '二', '三', '四', '五', '六']
   var weekdays3char = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
   var weekdaysFull = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-  var meridiemUppercase = ['AM', 'PM']
-  var meridiemLowercase = ['am', 'pm']
   var meridiemFull = ['上午', '下午']
 
   var formatters = {
@@ -34,22 +32,12 @@ function buildFormatLocale () {
     // Day of week: Sunday, Monday, ..., Saturday
     'dddd': function (date) {
       return weekdaysFull[date.getDay()]
-    },
-
-    // AM, PM
-    'A': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemUppercase[1] : meridiemUppercase[0]
-    },
-
-    // am, pm
-    'a': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemLowercase[1] : meridiemLowercase[0]
-    },
-
-    // a.m., p.m.
-    'aa': function (date) {
-      return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
     }
+  }
+
+  // AM, PM / am, pm / a.m., p.m. all translates to 上午, 下午
+  formatters.a = formatters.aa = formatters.A = function (date) {
+    return (date.getHours() / 12) >= 1 ? meridiemFull[1] : meridiemFull[0]
   }
 
   // Generate ordinal version of formatters: M -> Mo, D -> Do, etc.
