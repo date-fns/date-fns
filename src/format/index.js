@@ -5,6 +5,7 @@ import formatters from './_lib/formatters/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 
+var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
 var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
@@ -62,6 +63,16 @@ var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|d
  * |                         | ZZ    | -0100, +0000, ..., +1200         |
  * | Seconds timestamp       | X     | 512969520                        |
  * | Milliseconds timestamp  | x     | 512969520900                     |
+ * | Long format             | LT    | 05:30 a.m.                       |
+ * |                         | LTS   | 05:30:15 a.m.                    |
+ * |                         | L     | 07/02/1995                       |
+ * |                         | l     | 7/2/1995                         |
+ * |                         | LL    | July 2 1995                      |
+ * |                         | ll    | Jul 2 1995                       |
+ * |                         | LLL   | July 2 1995 05:30 a.m.           |
+ * |                         | lll   | Jul 2 1995 05:30 a.m.            |
+ * |                         | LLLL  | Sunday, July 2 1995 05:30 a.m.   |
+ * |                         | llll  | Sun, Jul 2 1995 05:30 a.m.       |
  *
  * The characters wrapped in square brackets are escaped.
  *
@@ -75,6 +86,7 @@ var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|d
  * @returns {String} the formatted date string
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -104,6 +116,14 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     throw new RangeError('locale must contain localize property')
   }
 
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
+
+  var localeFormatters = locale.formatters || {}
+  var formattingTokensRegExp = locale.formattingTokensRegExp || defaultFormattingTokensRegExp
+  var formatLong = locale.formatLong
+
   var originalDate = toDate(dirtyDate, options)
 
   if (!isValid(originalDate, options)) {
@@ -116,49 +136,41 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var timezoneOffset = originalDate.getTimezoneOffset()
   var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
 
-  var formatFn = buildFormatFn(formatStr, locale.formatters || {}, locale.formattingTokensRegExp || defaultFormattingTokensRegExp)
-
-  var formatFnOptions = cloneObject(options)
-  formatFnOptions.locale = locale
-  formatFnOptions.formatters = formatters
+  var formatterOptions = cloneObject(options)
+  formatterOptions.locale = locale
+  formatterOptions.formatters = formatters
 
   // When UTC functions will be implemented, options._originalDate will likely be a part of public API.
   // Right now, please don't use it in locales. If you have to use an original date,
   // please restore it from `date`, adding a timezone offset to it.
-  formatFnOptions._originalDate = originalDate
+  formatterOptions._originalDate = originalDate
 
-  return formatFn(utcDate, formatFnOptions)
-}
-
-function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
-  var array = formatStr.match(formattingTokensRegExp)
-  var length = array.length
-
-  var i
-  var formatter
-  for (i = 0; i < length; i++) {
-    formatter = localeFormatters[array[i]] || formatters[array[i]]
-    if (formatter) {
-      array[i] = formatter
-    } else {
-      array[i] = removeFormattingTokens(array[i])
-    }
-  }
-
-  return function (date, options) {
-    var output = ''
-    for (var i = 0; i < length; i++) {
-      if (array[i] instanceof Function) {
-        output += array[i](date, options)
-      } else {
-        output += array[i]
+  var result = formatStr
+    .replace(longFormattingTokensRegExp, function (substring) {
+      if (substring[0] === '[') {
+        return substring
       }
-    }
-    return output
-  }
+
+      if (substring[0] === '\\') {
+        return cleanEscapedString(substring)
+      }
+
+      return formatLong(substring)
+    })
+    .replace(formattingTokensRegExp, function (substring) {
+      var formatter = localeFormatters[substring] || formatters[substring]
+
+      if (formatter) {
+        return formatter(utcDate, formatterOptions)
+      } else {
+        return cleanEscapedString(substring)
+      }
+    })
+
+  return result
 }
 
-function removeFormattingTokens (input) {
+function cleanEscapedString (input) {
   if (input.match(/\[[\s\S]/)) {
     return input.replace(/^\[|]$/g, '')
   }

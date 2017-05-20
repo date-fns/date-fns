@@ -435,6 +435,7 @@ describe('parse', function () {
             locale: {
               // $ExpectedMistake
               match: {},
+              formatLong: function () {},
               options: {weekStartsOn: 1}
             }
           }
@@ -455,6 +456,7 @@ describe('parse', function () {
             locale: {
               // $ExpectedMistake
               match: {},
+              formatLong: function () {},
               options: {weekStartsOn: 0}
             }
           }
@@ -554,6 +556,58 @@ describe('parse', function () {
     })
   })
 
+  describe('long formats', function () {
+    it('LT', function () {
+      var result = parse('10:32 a.m.', 'LT', baseDate)
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32))
+    })
+
+    it('LTS', function () {
+      var result = parse('10:32:00 a.m.', 'LTS', baseDate)
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32))
+    })
+
+    it('L', function () {
+      var result = parse('04/04/1987', 'L', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4))
+    })
+
+    it('l', function () {
+      var result = parse('4/4/1987', 'l', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4))
+    })
+
+    it('LL', function () {
+      var result = parse('April 4 1987', 'LL', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4))
+    })
+
+    it('ll', function () {
+      var result = parse('Apr 4 1987', 'll', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4))
+    })
+
+    it('LLL', function () {
+      var result = parse('April 4 1987 10:32 a.m.', 'LLL', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4, 10, 32))
+    })
+
+    it('lll', function () {
+      var result = parse('Apr 4 1987 10:32 a.m.', 'lll', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4, 10, 32))
+    })
+
+    it('LLLL', function () {
+      var result = parse('Friday, April 4 1987 10:32 a.m.', 'LLLL', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4, 10, 32))
+    })
+
+    it('llll', function () {
+      var result = parse('Fri, Apr 4 1987 10:32 a.m.', 'llll', baseDate)
+      assert.deepEqual(result, new Date(1987, 3 /* Apr */, 4, 10, 32))
+    })
+  })
+
   describe('implicit conversion of options', function () {
     it('`dateString`', function () {
       // eslint-disable-next-line no-new-wrappers
@@ -634,16 +688,21 @@ describe('parse', function () {
 
       var parsingTokensRegExp = /(\[[^[]*])|(\\)?(YYYY|abc|efg|.)/g
 
+      var formatLong = function () {
+        return 'efg'
+      }
+
       var customLocale = {
         // $ExpectedMistake
         match: {},
+        formatLong: formatLong,
         units: units,
         parsers: parsers,
         parsingTokensRegExp: parsingTokensRegExp
       }
 
       // $ExpectedMistake
-      var result = parse('2017 It works correctly!', 'YYYY abc efg [correctly!]', baseDate, {locale: customLocale})
+      var result = parse('2017 It works correctly!', 'YYYY abc LTS [correctly!]', baseDate, {locale: customLocale})
       assert.deepEqual(result, new Date(2017, 5, 9))
     })
 
@@ -721,6 +780,7 @@ describe('parse', function () {
         var customLocale = {
           // $ExpectedMistake
           match: {},
+          formatLong: function () {},
           units: units,
           parsers: parsers
         }
@@ -734,7 +794,7 @@ describe('parse', function () {
     context('does not contain `parsers` property', function () {
       it('works correctly', function () {
         // $ExpectedMistake
-        var customLocale = {match: {}}
+        var customLocale = {match: {}, formatLong: function () {}}
         // $ExpectedMistake
         var result = parse('2016-11-25', 'YYYY-MM-DD', baseDate, {locale: customLocale})
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25))
@@ -778,6 +838,7 @@ describe('parse', function () {
         var customLocale = {
           // $ExpectedMistake
           match: {},
+          formatLong: function () {},
           parsers: parsers,
           parsingTokensRegExp: parsingTokensRegExp
         }

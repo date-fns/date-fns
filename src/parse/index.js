@@ -8,6 +8,7 @@ import cloneObject from '../_lib/cloneObject/index.js'
 var TIMEZONE_UNIT_PRIORITY = 110
 var MILLISECONDS_IN_MINUTE = 60000
 
+var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
 var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
@@ -79,6 +80,20 @@ var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|
  * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
  * then `Invalid Date` will be returned.
  *
+ * Also, `parse` unfolds long formats like those in [format]{@link https://date-fns.org/docs/format}:
+ * | Token | Input examples                 |
+ * |-------|--------------------------------|
+ * | LT    | 05:30 a.m.                     |
+ * | LTS   | 05:30:15 a.m.                  |
+ * | L     | 07/02/1995                     |
+ * | l     | 7/2/1995                       |
+ * | LL    | July 2 1995                    |
+ * | ll    | Jul 2 1995                     |
+ * | LLL   | July 2 1995 05:30 a.m.         |
+ * | lll   | Jul 2 1995 05:30 a.m.          |
+ * | LLLL  | Sunday, July 2 1995 05:30 a.m. |
+ * | llll  | Sun, Jul 2 1995 05:30 a.m.     |
+ *
  * The characters wrapped in square brackets in the format string are escaped.
  *
  * The result may vary by locale.
@@ -100,6 +115,7 @@ var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -123,7 +139,6 @@ var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|
  */
 export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
   var dateString = String(dirtyDateString)
-  var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
 
   var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
@@ -133,20 +148,37 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  if (formatString === '') {
-    if (dateString === '') {
-      return toDate(dirtyBaseDate, options)
-    } else {
-      return new Date(NaN)
-    }
-  }
-
   var locale = options.locale || defaultLocale
   var localeParsers = locale.parsers || {}
   var localeUnits = locale.units || {}
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
+  }
+
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
+
+  var formatString = String(dirtyFormatString)
+    .replace(longFormattingTokensRegExp, function (substring) {
+      if (substring[0] === '[') {
+        return substring
+      }
+
+      if (substring[0] === '\\') {
+        return cleanEscapedString(substring)
+      }
+
+      return locale.formatLong(substring)
+    })
+
+  if (formatString === '') {
+    if (dateString === '') {
+      return toDate(dirtyBaseDate, options)
+    } else {
+      return new Date(NaN)
+    }
   }
 
   var subFnOptions = cloneObject(options)
@@ -258,4 +290,11 @@ function dateToSystemTimezone (dateValues) {
   dateValues.date = new Date(time + offset * MILLISECONDS_IN_MINUTE)
 
   return dateValues
+}
+
+function cleanEscapedString (input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|]$/g, '')
+  }
+  return input.replace(/\\/g, '')
 }

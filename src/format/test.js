@@ -36,7 +36,7 @@ describe('format', function () {
   })
 
   describe('ordinal numbers', function () {
-    it('an ordinal day of an ordinal month', function () {
+    it('ordinal day of an ordinal month', function () {
       var result = format(date, 'Do of t[h][e] Mo in YYYY')
       assert(result === '4th of the 4th in 1986')
     })
@@ -56,23 +56,23 @@ describe('format', function () {
   })
 
   describe('months', function () {
-    it('a cardinal number', function () {
+    it('cardinal number', function () {
       assert(format(date, 'M') === '4')
     })
 
-    it('a cardinal number with a leading zero', function () {
+    it('cardinal number with a leading zero', function () {
       assert(format(date, 'MM') === '04')
     })
 
-    it('an ordinal number', function () {
+    it('ordinal number', function () {
       assert(format(date, 'Mo') === '4th')
     })
 
-    it('a short name', function () {
+    it('short name', function () {
       assert(format(date, 'MMM') === 'Apr')
     })
 
-    it('a full name', function () {
+    it('full name', function () {
       assert(format(date, 'MMMM') === 'April')
     })
 
@@ -125,12 +125,12 @@ describe('format', function () {
       })
     })
 
-    it('an ordinal number', function () {
+    it('ordinal number', function () {
       var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo')
       assert(result === '1st')
     })
 
-    it('a cardinal number with leading zeros', function () {
+    it('cardinal number with leading zeros', function () {
       var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDD')
       assert(result === '001')
     })
@@ -155,7 +155,7 @@ describe('format', function () {
   })
 
   describe('ISO weeks', function () {
-    it('a cardinal number with a leading zero', function () {
+    it('cardinal number with a leading zero', function () {
       var result = format(new Date(1992, 0 /* Jan */, 5), 'WW')
       assert(result === '01')
     })
@@ -236,7 +236,7 @@ describe('format', function () {
   })
 
   describe('minutes', function () {
-    it('a cardinal number with a leading zero', function () {
+    it('cardinal number with a leading zero', function () {
       var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
       assert(format(date, 'mm') === '00')
     })
@@ -305,17 +305,69 @@ describe('format', function () {
   })
 
   describe('timestamps', function () {
-    it('a unix seconds timestamp', function () {
+    it('unix seconds timestamp', function () {
       assert(format(date, 'X') === secondsTimestamp)
     })
 
-    it('a unix milliseconds timestamp', function () {
+    it('unix milliseconds timestamp', function () {
       assert(format(date, 'x') === timestamp)
     })
   })
 
+  describe('long formats', function () {
+    it('LT', function () {
+      var result = format(date, 'LT')
+      assert(result === '10:32 a.m.')
+    })
+
+    it('LTS', function () {
+      var result = format(date, 'LTS')
+      assert(result === '10:32:00 a.m.')
+    })
+
+    it('L', function () {
+      var result = format(date, 'L')
+      assert(result === '04/04/1986')
+    })
+
+    it('l', function () {
+      var result = format(date, 'l')
+      assert(result === '4/4/1986')
+    })
+
+    it('LL', function () {
+      var result = format(date, 'LL')
+      assert(result === 'April 4 1986')
+    })
+
+    it('ll', function () {
+      var result = format(date, 'll')
+      assert(result === 'Apr 4 1986')
+    })
+
+    it('LLL', function () {
+      var result = format(date, 'LLL')
+      assert(result === 'April 4 1986 10:32 a.m.')
+    })
+
+    it('lll', function () {
+      var result = format(date, 'lll')
+      assert(result === 'Apr 4 1986 10:32 a.m.')
+    })
+
+    it('LLLL', function () {
+      var result = format(date, 'LLLL')
+      assert(result === 'Friday, April 4 1986 10:32 a.m.')
+    })
+
+    it('llll', function () {
+      var result = format(date, 'llll')
+      assert(result === 'Fri, Apr 4 1986 10:32 a.m.')
+    })
+  })
+
   describe('edge cases', function () {
-    it('returns String(\'Invalid Date\') if the date isn\'t valid', function () {
+    it("returns String('Invalid Date') if the date isn't valid", function () {
       assert(format(new Date(NaN), 'MMMM D, YYYY') === 'Invalid Date')
     })
 
@@ -327,7 +379,7 @@ describe('format', function () {
     })
   })
 
-  it('implicitly converts options', function () {
+  it('implicitly converts `formatString`', function () {
     // eslint-disable-next-line no-new-wrappers
     var formatString = new String('YYYY-MM-DD')
 
@@ -357,15 +409,24 @@ describe('format', function () {
 
       var formattingTokensRegExp = /(\[[^[]*])|(\\)?(ABC|EFG|.)/g
 
+      var formatLong = function (token) {
+        if (token === 'LTS') {
+          return 'ABC'
+        } else {
+          return '[Nothing]'
+        }
+      }
+
       var customLocale = {
         // $ExpectedMistake
         localize: localize,
+        formatLong: formatLong,
         formatters: formatters,
         formattingTokensRegExp: formattingTokensRegExp
       }
 
       // $ExpectedMistake
-      var result = format(date, 'ABC EFG [correctly!]', {locale: customLocale})
+      var result = format(date, 'LTS EFG [correctly!]', {locale: customLocale})
       assert(result === 'It works correctly!')
     })
 
@@ -395,7 +456,7 @@ describe('format', function () {
             return 'foobar'
           }
         }
-        var customLocale = {localize: localize}
+        var customLocale = {localize: localize, formatLong: function () {}}
         // $ExpectedMistake
         assert(format(date, 'MMMM', {locale: customLocale}) === 'foobar')
       })
@@ -420,6 +481,7 @@ describe('format', function () {
         }
 
         var customLocale = {
+          formatLong: function () {},
           localize: localize,
           formatters: formatters
         }
@@ -433,7 +495,7 @@ describe('format', function () {
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     // $ExpectedMistake
-    var block = format.bind(this, date, 'Do of t[h][e] Mo in YYYY', {additionalDigits: NaN})
+    var block = format.bind(null, date, 'Do of t[h][e] Mo in YYYY', {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
 })
