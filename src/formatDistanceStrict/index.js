@@ -1,4 +1,4 @@
-import compareDesc from '../compareDesc/index.js'
+import compareAsc from '../compareAsc/index.js'
 import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
@@ -27,8 +27,8 @@ var MINUTES_IN_YEAR = 525600
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date|String|Number} date - the other date
+ * @param {Date|String|Number} date - the date
+ * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
@@ -62,8 +62,8 @@ var MINUTES_IN_YEAR = 525600
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
  * var result = formatDistanceStrict(
- *   new Date(2016, 0, 1),
  *   new Date(2015, 0, 1),
+ *   new Date(2016, 0, 1),
  *   {addSuffix: true}
  * )
  * //=> '1 year ago'
@@ -98,7 +98,7 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOptions) {
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 
@@ -106,7 +106,7 @@ export default function formatDistanceStrict (dirtyDateToCompare, dirtyDate, dir
     throw new RangeError('locale must contain localize.formatDistance property')
   }
 
-  var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
+  var comparison = compareAsc(dirtyDate, dirtyBaseDate, options)
 
   if (isNaN(comparison)) {
     return 'Invalid Date'
@@ -116,13 +116,14 @@ export default function formatDistanceStrict (dirtyDateToCompare, dirtyDate, dir
   localizeOptions.addSuffix = Boolean(options.addSuffix)
   localizeOptions.comparison = comparison
 
-  var dateLeft, dateRight
+  var dateLeft
+  var dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyDateToCompare, options)
+    dateLeft = toDate(dirtyBaseDate, options)
     dateRight = toDate(dirtyDate, options)
   } else {
     dateLeft = toDate(dirtyDate, options)
-    dateRight = toDate(dirtyDateToCompare, options)
+    dateRight = toDate(dirtyBaseDate, options)
   }
 
   var roundingMethod = options.roundingMethod === undefined ? 'floor' : String(options.roundingMethod)

@@ -204,8 +204,8 @@ describe('formatDistance', function () {
   describe('when the addSuffix option is true', function () {
     it('adds a past suffix', function () {
       var result = formatDistance(
-        new Date(1986, 3, 4, 10, 32, 25),
         new Date(1986, 3, 4, 10, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 25),
         {includeSeconds: true, addSuffix: true}
       )
       assert(result === 'half a minute ago')
@@ -213,8 +213,8 @@ describe('formatDistance', function () {
 
     it('adds a future suffix', function () {
       var result = formatDistance(
-        new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 0),
         {addSuffix: true}
       )
       assert(result === 'in about 1 hour')
@@ -234,8 +234,8 @@ describe('formatDistance', function () {
 
     it('`options.addSuffix`', function () {
       var result = formatDistance(
-        new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0),
+        new Date(1986, 3, 4, 10, 32, 0),
         // $ExpectedMistake
         {addSuffix: 1}
       )
@@ -258,8 +258,8 @@ describe('formatDistance', function () {
       }
 
       var result = formatDistance(
-        new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 3),
+        new Date(1986, 3, 4, 10, 32, 0),
         // $ExpectedMistake
         {includeSeconds: true, addSuffix: true, locale: customLocale}
       )
