@@ -19,4 +19,17 @@ describe('getDay', function () {
     var result = getDay(new Date(2014, 5 /* Jun */, 1).getTime())
     assert(result === 0)
   })
+
+  it('allows to specify which day is the first day of the week', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    var result = getDay(date, {weekStartsOn: 1})
+    assert(result === 1)
+  })
+
+  it('implicitly converts options', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // $ExpectedMistake
+    var result = getDay(date, {weekStartsOn: '1'})
+    assert(result === 1)
+  })
 })

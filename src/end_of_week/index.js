@@ -1,3 +1,4 @@
+var getDay = require('../get_day/index.js')
 var parse = require('../parse/index.js')
 
 /**
@@ -24,11 +25,9 @@ var parse = require('../parse/index.js')
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 function endOfWeek (dirtyDate, dirtyOptions) {
-  var weekStartsOn = dirtyOptions ? (Number(dirtyOptions.weekStartsOn) || 0) : 0
-
   var date = parse(dirtyDate)
-  var day = date.getDay()
-  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+  var day = getDay(date, dirtyOptions)
+  var diff = 6 - day
 
   date.setDate(date.getDate() + diff)
   date.setHours(23, 59, 59, 999)
