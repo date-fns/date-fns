@@ -3,7 +3,7 @@ import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
-import addUTCMinutes from './_lib/addUTCMinutes/index.js'
+import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 
 var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 

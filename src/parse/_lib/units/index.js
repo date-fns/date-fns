@@ -1,9 +1,9 @@
-import setUTCDay from '../setUTCDay/index.js'
-import setUTCISODay from '../setUTCISODay/index.js'
-import setUTCISOWeek from '../setUTCISOWeek/index.js'
-import setUTCISOYear from '../setUTCISOYear/index.js'
-import startOfUTCISOWeek from '../startOfUTCISOWeek/index.js'
-import startOfUTCISOYear from '../startOfUTCISOYear/index.js'
+import setUTCDay from '../../../_lib/setUTCDay/index.js'
+import setUTCISODay from '../../../_lib/setUTCISODay/index.js'
+import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index.js'
+import setUTCISOWeekYear from '../../../_lib/setUTCISOWeekYear/index.js'
+import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index.js'
+import startOfUTCISOWeekYear from '../../../_lib/startOfUTCISOWeekYear/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -47,7 +47,7 @@ var units = {
   isoYear: {
     priority: 10,
     set: function (dateValues, value, options) {
-      dateValues.date = startOfUTCISOYear(setUTCISOYear(dateValues.date, value, options), options)
+      dateValues.date = startOfUTCISOWeekYear(setUTCISOWeekYear(dateValues.date, value, options), options)
       return dateValues
     }
   },

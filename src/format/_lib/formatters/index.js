@@ -1,6 +1,6 @@
-import getUTCDayOfYear from '../getUTCDayOfYear/index.js'
-import getUTCISOWeek from '../getUTCISOWeek/index.js'
-import getUTCISOYear from '../getUTCISOYear/index.js'
+import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
+import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
+import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
 
 var formatters = {
   // Month: 1, 2, ..., 12
@@ -127,12 +127,12 @@ var formatters = {
 
   // ISO week-numbering year: 00, 01, ..., 99
   'GG': function (date) {
-    return String(getUTCISOYear(date)).substr(2)
+    return String(getUTCISOWeekYear(date)).substr(2)
   },
 
   // ISO week-numbering year: 1900, 1901, ..., 2099
   'GGGG': function (date) {
-    return getUTCISOYear(date)
+    return getUTCISOWeekYear(date)
   },
 
   // Hour: 0, 1, ... 23
