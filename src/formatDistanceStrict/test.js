@@ -2,13 +2,13 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import distanceInWordsStrict from '.'
+import formatDistanceStrict from '.'
 
-describe('distanceInWordsStrict', function () {
+describe('formatDistanceStrict', function () {
   describe('seconds', function () {
     context('when no unit is set', function () {
       it('0 seconds', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 5),
           new Date(1986, 3, 4, 10, 32, 5)
         )
@@ -16,7 +16,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 seconds', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 5)
         )
@@ -27,7 +27,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('minutes', function () {
     it('1 minute', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 0)
       )
@@ -35,7 +35,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('n minutes', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 35, 0)
       )
@@ -45,7 +45,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('hours', function () {
     it('1 hour', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0)
       )
@@ -53,7 +53,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('n hours', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 13, 32, 0)
       )
@@ -63,7 +63,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('days', function () {
     it('1 day', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 5, 10, 32, 0)
       )
@@ -71,7 +71,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('n days', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 7, 10, 32, 0)
       )
@@ -81,7 +81,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('months', function () {
     it('1 month', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 4, 4, 10, 32, 0)
       )
@@ -89,7 +89,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('n months', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 6, 4, 10, 32, 0)
       )
@@ -99,7 +99,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('years', function () {
     it('1 year', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 3, 4, 10, 32, 0)
       )
@@ -107,7 +107,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('n years', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1991, 3, 4, 10, 32, 0)
       )
@@ -118,7 +118,7 @@ describe('distanceInWordsStrict', function () {
   describe('when the unit option is supplied', function () {
     context('s', function () {
       it('0 seconds', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 's'}
@@ -127,7 +127,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 seconds', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 5),
           {unit: 's'}
@@ -136,7 +136,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('120 seconds', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 34, 0),
           {unit: 's'}
@@ -147,7 +147,7 @@ describe('distanceInWordsStrict', function () {
 
     context('m', function () {
       it('0 minutes', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 'm'}
@@ -156,7 +156,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 minutes', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 37, 0),
           {unit: 'm'}
@@ -165,7 +165,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('120 minutes', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 12, 32, 0),
           {unit: 'm'}
@@ -175,7 +175,7 @@ describe('distanceInWordsStrict', function () {
     })
     context('h', function () {
       it('0 hours', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 'h'}
@@ -184,7 +184,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 hours', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 15, 32, 0),
           {unit: 'h'}
@@ -193,7 +193,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('48 hours', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 6, 10, 32, 0),
           {unit: 'h'}
@@ -203,7 +203,7 @@ describe('distanceInWordsStrict', function () {
     })
     context('d', function () {
       it('0 days', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 'd'}
@@ -212,7 +212,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 days', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 9, 10, 32, 0),
           {unit: 'd'}
@@ -221,7 +221,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('60 days', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 5, 3, 10, 32, 0),
           {unit: 'd'}
@@ -231,7 +231,7 @@ describe('distanceInWordsStrict', function () {
     })
     context('M', function () {
       it('0 months', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 'M'}
@@ -240,7 +240,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 months', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 7, 4, 10, 32, 0),
           {unit: 'M'}
@@ -249,7 +249,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('24 months', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1988, 3, 4, 10, 32, 0),
           {unit: 'M'}
@@ -259,7 +259,7 @@ describe('distanceInWordsStrict', function () {
     })
     context('Y', function () {
       it('0 years', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
           {unit: 'Y'}
@@ -268,7 +268,7 @@ describe('distanceInWordsStrict', function () {
       })
 
       it('5 years', function () {
-        var result = distanceInWordsStrict(
+        var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1991, 3, 4, 15, 32, 0),
           {unit: 'Y'}
@@ -279,7 +279,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it('accepts strings', function () {
-    var result = distanceInWordsStrict(
+    var result = formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0).toISOString(),
       new Date(1986, 3, 4, 11, 32, 0).toISOString()
     )
@@ -287,7 +287,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it('accepts timestamps', function () {
-    var result = distanceInWordsStrict(
+    var result = formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
       new Date(1986, 3, 4, 11, 32, 0).getTime()
     )
@@ -296,7 +296,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('when the addSuffix option is true', function () {
     it('adds a past suffix', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 25),
         new Date(1986, 3, 4, 10, 32, 0),
         {addSuffix: true}
@@ -305,7 +305,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('adds a future suffix', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0),
         {addSuffix: true}
@@ -316,7 +316,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('when the roundingMethod option is supplied', function () {
     it('default is "floor"', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59)
       )
@@ -324,7 +324,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('"floor"', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59),
         {roundingMethod: 'floor'}
@@ -333,7 +333,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('"ceil"', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
         {roundingMethod: 'ceil'}
@@ -342,7 +342,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('"round" (down)', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 29),
         {roundingMethod: 'round'}
@@ -351,7 +351,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('"round" (up)', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 30),
         {roundingMethod: 'round'}
@@ -365,7 +365,7 @@ describe('distanceInWordsStrict', function () {
       // eslint-disable-next-line no-new-wrappers
       var unit = new String('Y')
 
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
         // $ExpectedMistake
@@ -375,7 +375,7 @@ describe('distanceInWordsStrict', function () {
     })
 
     it('`options.addSuffix`', function () {
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 25),
         new Date(1986, 3, 4, 10, 32, 0),
         // $ExpectedMistake
@@ -388,7 +388,7 @@ describe('distanceInWordsStrict', function () {
       // eslint-disable-next-line no-new-wrappers
       var roundingMethod = new String('ceil')
 
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
         // $ExpectedMistake
@@ -400,7 +400,7 @@ describe('distanceInWordsStrict', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      function localizeDistanceInWords (token, count, options) {
+      function localizeDistance (token, count, options) {
         assert(token === 'xSeconds')
         assert(count === 25)
         assert(options.addSuffix === true)
@@ -409,13 +409,10 @@ describe('distanceInWordsStrict', function () {
       }
 
       var customLocale = {
-        // $ExpectedMistake
-        localize: {
-          distanceInWords: localizeDistanceInWords
-        }
+        formatDistance: localizeDistance
       }
 
-      var result = distanceInWordsStrict(
+      var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 25),
         new Date(1986, 3, 4, 10, 32, 0),
         // $ExpectedMistake
@@ -425,10 +422,10 @@ describe('distanceInWordsStrict', function () {
       assert(result === 'It works!')
     })
 
-    context('does not contain `localize` property', function () {
+    context('does not contain `formatDistance` property', function () {
       it('throws `RangeError`', function () {
         var customLocale = {}
-        var block = distanceInWordsStrict.bind(
+        var block = formatDistanceStrict.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 37, 0),
@@ -441,7 +438,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it("returns String('Invalid Date') if the first date is `Invalid Date`", function () {
-    var result = distanceInWordsStrict(
+    var result = formatDistanceStrict(
       new Date(NaN),
       new Date(1986, 3, 7, 10, 32, 0)
     )
@@ -449,7 +446,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it("returns String('Invalid Date') if the second date is `Invalid Date`", function () {
-    var result = distanceInWordsStrict(
+    var result = formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(NaN)
     )
@@ -457,7 +454,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it("returns String('Invalid Date') if the both dates are `Invalid Date`", function () {
-    var result = distanceInWordsStrict(
+    var result = formatDistanceStrict(
       new Date(NaN),
       new Date(NaN)
     )
@@ -465,7 +462,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
-    var block = distanceInWordsStrict.bind(
+    var block = formatDistanceStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(1986, 3, 4, 10, 33, 29),
@@ -476,7 +473,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
-    var block = distanceInWordsStrict.bind(
+    var block = formatDistanceStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(1986, 3, 4, 10, 33, 29),
@@ -487,7 +484,7 @@ describe('distanceInWordsStrict', function () {
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
-    var block = distanceInWordsStrict.bind(
+    var block = formatDistanceStrict.bind(
       this,
       new Date(1986, 3, 4, 10, 32, 5),
       new Date(1986, 3, 4, 10, 32, 5),

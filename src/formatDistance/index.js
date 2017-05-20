@@ -11,7 +11,7 @@ var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_TWO_MONTHS = 86400
 
 /**
- * @name distanceInWords
+ * @name formatDistance
  * @category Common Helpers
  * @summary Return the distance between the given dates in words.
  *
@@ -56,11 +56,11 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
- * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = distanceInWords(
+ * var result = formatDistance(
  *   new Date(2014, 6, 2),
  *   new Date(2015, 0, 1)
  * )
@@ -69,7 +69,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @example
  * // What is the distance between 1 January 2015 00:00:15
  * // and 1 January 2015 00:00:00, including seconds?
- * var result = distanceInWords(
+ * var result = formatDistance(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),
  *   {includeSeconds: true}
@@ -79,7 +79,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = distanceInWords(
+ * var result = formatDistance(
  *   new Date(2016, 0, 1),
  *   new Date(2015, 0, 1),
  *   {addSuffix: true}
@@ -89,22 +89,20 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = distanceInWords(
+ * var result = formatDistance(
  *   new Date(2016, 7, 1),
  *   new Date(2015, 0, 1),
  *   {locale: eoLocale}
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+export default function formatDistance (dirtyDateToCompare, dirtyDate, dirtyOptions) {
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 
-  if (!locale.localize) {
-    throw new RangeError('locale must contain localize property')
+  if (!locale.formatDistance) {
+    throw new RangeError('locale must contain formatDistance property')
   }
-
-  var localize = locale.localize.distanceInWords
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
@@ -134,52 +132,52 @@ export default function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOpt
   if (minutes < 2) {
     if (options.includeSeconds) {
       if (seconds < 5) {
-        return localize('lessThanXSeconds', 5, localizeOptions)
+        return locale.formatDistance('lessThanXSeconds', 5, localizeOptions)
       } else if (seconds < 10) {
-        return localize('lessThanXSeconds', 10, localizeOptions)
+        return locale.formatDistance('lessThanXSeconds', 10, localizeOptions)
       } else if (seconds < 20) {
-        return localize('lessThanXSeconds', 20, localizeOptions)
+        return locale.formatDistance('lessThanXSeconds', 20, localizeOptions)
       } else if (seconds < 40) {
-        return localize('halfAMinute', null, localizeOptions)
+        return locale.formatDistance('halfAMinute', null, localizeOptions)
       } else if (seconds < 60) {
-        return localize('lessThanXMinutes', 1, localizeOptions)
+        return locale.formatDistance('lessThanXMinutes', 1, localizeOptions)
       } else {
-        return localize('xMinutes', 1, localizeOptions)
+        return locale.formatDistance('xMinutes', 1, localizeOptions)
       }
     } else {
       if (minutes === 0) {
-        return localize('lessThanXMinutes', 1, localizeOptions)
+        return locale.formatDistance('lessThanXMinutes', 1, localizeOptions)
       } else {
-        return localize('xMinutes', minutes, localizeOptions)
+        return locale.formatDistance('xMinutes', minutes, localizeOptions)
       }
     }
 
   // 2 mins up to 0.75 hrs
   } else if (minutes < 45) {
-    return localize('xMinutes', minutes, localizeOptions)
+    return locale.formatDistance('xMinutes', minutes, localizeOptions)
 
   // 0.75 hrs up to 1.5 hrs
   } else if (minutes < 90) {
-    return localize('aboutXHours', 1, localizeOptions)
+    return locale.formatDistance('aboutXHours', 1, localizeOptions)
 
   // 1.5 hrs up to 24 hrs
   } else if (minutes < MINUTES_IN_DAY) {
     var hours = Math.round(minutes / 60)
-    return localize('aboutXHours', hours, localizeOptions)
+    return locale.formatDistance('aboutXHours', hours, localizeOptions)
 
   // 1 day up to 1.75 days
   } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
-    return localize('xDays', 1, localizeOptions)
+    return locale.formatDistance('xDays', 1, localizeOptions)
 
   // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
-    return localize('xDays', days, localizeOptions)
+    return locale.formatDistance('xDays', days, localizeOptions)
 
   // 1 month up to 2 months
   } else if (minutes < MINUTES_IN_TWO_MONTHS) {
     months = Math.round(minutes / MINUTES_IN_MONTH)
-    return localize('aboutXMonths', months, localizeOptions)
+    return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }
 
   months = differenceInMonths(dateRight, dateLeft, options)
@@ -187,7 +185,7 @@ export default function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOpt
   // 2 months up to 12 months
   if (months < 12) {
     var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
-    return localize('xMonths', nearestMonth, localizeOptions)
+    return locale.formatDistance('xMonths', nearestMonth, localizeOptions)
 
   // 1 year up to max Date
   } else {
@@ -196,15 +194,15 @@ export default function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOpt
 
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {
-      return localize('aboutXYears', years, localizeOptions)
+      return locale.formatDistance('aboutXYears', years, localizeOptions)
 
     // N years 3 months up to N years 9 months
     } else if (monthsSinceStartOfYear < 9) {
-      return localize('overXYears', years, localizeOptions)
+      return locale.formatDistance('overXYears', years, localizeOptions)
 
     // N years 9 months up to N year 12 months
     } else {
-      return localize('almostXYears', years + 1, localizeOptions)
+      return locale.formatDistance('almostXYears', years + 1, localizeOptions)
     }
   }
 }

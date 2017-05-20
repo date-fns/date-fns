@@ -9,13 +9,13 @@ var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_YEAR = 525600
 
 /**
- * @name distanceInWordsStrict
+ * @name formatDistanceStrict
  * @category Common Helpers
  * @summary Return the distance between the given dates in words.
  *
  * @description
  * Return the distance between the given dates in words, using strict units.
- * This is like `distanceInWords`, but does not use helpers like 'almost', 'over',
+ * This is like `formatDistance`, but does not use helpers like 'almost', 'over',
  * 'less than' and the like.
  *
  * | Distance between dates | Result              |
@@ -39,11 +39,11 @@ var MINUTES_IN_YEAR = 525600
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
- * @throws {RangeError} `options.locale` must contain `localize.distanceInWords` property
+ * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2014, 6, 2),
  *   new Date(2015, 0, 2)
  * )
@@ -52,7 +52,7 @@ var MINUTES_IN_YEAR = 525600
  * @example
  * // What is the distance between 1 January 2015 00:00:15
  * // and 1 January 2015 00:00:00?
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),
  * )
@@ -61,7 +61,7 @@ var MINUTES_IN_YEAR = 525600
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2016, 0, 1),
  *   new Date(2015, 0, 1),
  *   {addSuffix: true}
@@ -71,7 +71,7 @@ var MINUTES_IN_YEAR = 525600
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, in minutes?
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2016, 0, 1),
  *   new Date(2015, 0, 1),
  *   {unit: 'm'}
@@ -81,7 +81,7 @@ var MINUTES_IN_YEAR = 525600
  * @example
  * // What is the distance from 1 January 2016
  * // to 28 January 2015, in months, rounded up?
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2015, 0, 28),
  *   new Date(2015, 0, 1),
  *   {unit: 'M', roundingMethod: 'ceil'}
@@ -91,22 +91,20 @@ var MINUTES_IN_YEAR = 525600
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = distanceInWordsStrict(
+ * var result = formatDistanceStrict(
  *   new Date(2016, 7, 1),
  *   new Date(2015, 0, 1),
  *   {locale: eoLocale}
  * )
  * //=> '1 jaro'
  */
-export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
+export default function formatDistanceStrict (dirtyDateToCompare, dirtyDate, dirtyOptions) {
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 
-  if (!locale.localize) {
-    throw new RangeError('locale must contain localize.distanceInWords property')
+  if (!locale.formatDistance) {
+    throw new RangeError('locale must contain localize.formatDistance property')
   }
-
-  var localize = locale.localize.distanceInWords
 
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate, options)
 
@@ -165,31 +163,31 @@ export default function distanceInWordsStrict (dirtyDateToCompare, dirtyDate, di
 
   // 0 up to 60 seconds
   if (unit === 's') {
-    return localize('xSeconds', seconds, localizeOptions)
+    return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
   // 1 up to 60 mins
   } else if (unit === 'm') {
-    return localize('xMinutes', minutes, localizeOptions)
+    return locale.formatDistance('xMinutes', minutes, localizeOptions)
 
   // 1 up to 24 hours
   } else if (unit === 'h') {
     var hours = roundingMethodFn(minutes / 60)
-    return localize('xHours', hours, localizeOptions)
+    return locale.formatDistance('xHours', hours, localizeOptions)
 
   // 1 up to 30 days
   } else if (unit === 'd') {
     var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
-    return localize('xDays', days, localizeOptions)
+    return locale.formatDistance('xDays', days, localizeOptions)
 
   // 1 up to 12 months
   } else if (unit === 'M') {
     var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
-    return localize('xMonths', months, localizeOptions)
+    return locale.formatDistance('xMonths', months, localizeOptions)
 
   // 1 year up to max Date
   } else if (unit === 'Y') {
     var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
-    return localize('xYears', years, localizeOptions)
+    return locale.formatDistance('xYears', years, localizeOptions)
   }
 
   throw new RangeError("unit must be 's', 'm', 'h', 'd', 'M' or 'Y'")

@@ -17,8 +17,15 @@ type Options = {
 }
 
 type Locale = {
-  distanceInWords?: {
-    localize?: Function
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function,
+    formatDistance: Function
   },
   format?: {
     formatters?: Object,

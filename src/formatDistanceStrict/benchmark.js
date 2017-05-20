@@ -2,12 +2,12 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-import distanceInWordsStrict from '.'
+import formatDistanceStrict from '.'
 import moment from 'moment'
 
-suite('distanceInWordsStrict', function () {
+suite('formatDistanceStrict', function () {
   benchmark('date-fns', function () {
-    return distanceInWordsStrict(this.dateA, this.dateB)
+    return formatDistanceStrict(this.dateA, this.dateB)
   })
 
   benchmark('Moment.js', function () {
