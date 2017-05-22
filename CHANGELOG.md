@@ -95,7 +95,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
   var minDate = min(date1, date2)
   var maxDate = max(date1, date2)
 
-  // v2.0.0 onward
+  // v2.0.0 onward:
   var dates = [new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)]
 
   var minDate = min(dates)
@@ -239,7 +239,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
   - `distanceInWordsStrict` → `formatDistanceStrict`
 
   to make them consistent with `format` and `formatRelative`.
-  Order of arguments is swapped to make them consistent with `differenceIn...` functions.
+  The order of arguments is swapped to make them consistent with `differenceIn...` functions.
   `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
 
   ```javascript
@@ -285,7 +285,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
   ```
 
 - **BREAKING**: new locale format.
-  See [docs/Locale](https://date-fns.org/docs/Locale)
+  See [docs/Locale](https://date-fns.org/docs/Locale).
+  Locales renamed:
+
+  - `en` → `en-US`
+  - `zh_cn` → `zh-CN`
+  - `zh_tw` → `zh-TW`
+
+  ```javascript
+  // Before v2.0.0
+  import locale from 'date-fns/locale/zh_cn'
+
+  // v2.0.0 onward
+  import locale from 'date-fns/locale/zh-CN'
+  ```
 
 - **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
   when the second argument is not an instance of array.
