@@ -1,11 +1,15 @@
 import toDate from '../toDate/index.js'
 import subMinutes from '../subMinutes/index.js'
-import enLocale from '../locale/en/index.js'
+import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 import units from './_lib/units/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
 
-var TIMEZONE_UNIT_PRIORITY = 100
+var TIMEZONE_UNIT_PRIORITY = 110
 var MILLISECONDS_IN_MINUTE = 60000
+
+var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
+var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
  * @name parse
@@ -44,24 +48,24 @@ var MILLISECONDS_IN_MINUTE = 60000
  * | Day of year             | 50       | DDD   | 1, 2, ..., 366                   |
  * |                         |          | DDDo  | 1st, 2nd, ..., 366th             |
  * |                         |          | DDDD  | 001, 002, ..., 366               |
- * | Hour                    | 60       | H     | 0, 1, ... 23                     |
- * |                         |          | HH    | 00, 01, ... 23                   |
- * |                         |          | h     | 1, 2, ..., 12                    |
- * |                         |          | hh    | 01, 02, ..., 12                  |
- * | AM/PM                   | 65       | A     | AM, PM                           |
+ * | Time of day             | 60       | A     | AM, PM                           |
  * |                         |          | a     | am, pm                           |
  * |                         |          | aa    | a.m., p.m.                       |
- * | Minute                  | 70       | m     | 0, 1, ..., 59                    |
+ * | Hour                    | 70       | H     | 0, 1, ... 23                     |
+ * |                         |          | HH    | 00, 01, ... 23                   |
+ * | Time of day hour        | 70       | h     | 1, 2, ..., 12                    |
+ * |                         |          | hh    | 01, 02, ..., 12                  |
+ * | Minute                  | 80       | m     | 0, 1, ..., 59                    |
  * |                         |          | mm    | 00, 01, ..., 59                  |
- * | Second                  | 80       | s     | 0, 1, ..., 59                    |
+ * | Second                  | 90       | s     | 0, 1, ..., 59                    |
  * |                         |          | ss    | 00, 01, ..., 59                  |
- * | 1/10 of second          | 90       | S     | 0, 1, ..., 9                     |
- * | 1/100 of second         | 90       | SS    | 00, 01, ..., 99                  |
- * | Millisecond             | 90       | SSS   | 000, 001, ..., 999               |
- * | Timezone                | 100      | Z     | -01:00, +00:00, ... +12:00       |
+ * | 1/10 of second          | 100      | S     | 0, 1, ..., 9                     |
+ * | 1/100 of second         | 100      | SS    | 00, 01, ..., 99                  |
+ * | Millisecond             | 100      | SSS   | 000, 001, ..., 999               |
+ * | Timezone                | 110      | Z     | -01:00, +00:00, ... +12:00       |
  * |                         |          | ZZ    | -0100, +0000, ..., +1200         |
- * | Seconds timestamp       | 110      | X     | 512969520                        |
- * | Milliseconds timestamp  | 110      | x     | 512969520900                     |
+ * | Seconds timestamp       | 120      | X     | 512969520                        |
+ * | Milliseconds timestamp  | 120      | x     | 512969520900                     |
  *
  * Values will be assigned to the date in the ascending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
@@ -75,6 +79,20 @@ var MILLISECONDS_IN_MINUTE = 60000
  * In this case parsing will be done in the context of the current date.
  * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
  * then `Invalid Date` will be returned.
+ *
+ * Also, `parse` unfolds long formats like those in [format]{@link https://date-fns.org/docs/format}:
+ * | Token | Input examples                 |
+ * |-------|--------------------------------|
+ * | LT    | 05:30 a.m.                     |
+ * | LTS   | 05:30:15 a.m.                  |
+ * | L     | 07/02/1995                     |
+ * | l     | 7/2/1995                       |
+ * | LL    | July 2 1995                    |
+ * | ll    | Jul 2 1995                     |
+ * | LLL   | July 2 1995 05:30 a.m.         |
+ * | lll   | Jul 2 1995 05:30 a.m.          |
+ * | LLLL  | Sunday, July 2 1995 05:30 a.m. |
+ * | llll  | Sun, Jul 2 1995 05:30 a.m.     |
  *
  * The characters wrapped in square brackets in the format string are escaped.
  *
@@ -91,11 +109,13 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @param {Locale} [options.locale=enLocale] - the locale object. See [Locale]{@link docs/Locale}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date} the parsed date
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -119,7 +139,6 @@ var MILLISECONDS_IN_MINUTE = 60000
  */
 export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
   var dateString = String(dirtyDateString)
-  var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
 
   var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
@@ -129,6 +148,31 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
+  var locale = options.locale || defaultLocale
+  var localeParsers = locale.parsers || {}
+  var localeUnits = locale.units || {}
+
+  if (!locale.match) {
+    throw new RangeError('locale must contain match property')
+  }
+
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
+
+  var formatString = String(dirtyFormatString)
+    .replace(longFormattingTokensRegExp, function (substring) {
+      if (substring[0] === '[') {
+        return substring
+      }
+
+      if (substring[0] === '\\') {
+        return cleanEscapedString(substring)
+      }
+
+      return locale.formatLong(substring)
+    })
+
   if (formatString === '') {
     if (dateString === '') {
       return toDate(dirtyBaseDate, options)
@@ -137,23 +181,10 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     }
   }
 
-  var locale = options.locale
-  var localeParsers = enLocale.parse.parsers
-  var localeUnits = enLocale.parse.units
-  var parsingTokensRegExp = enLocale.parse.parsingTokensRegExp
-  if (locale && locale.parse && locale.parse.parsers) {
-    localeParsers = locale.parse.parsers
+  var subFnOptions = cloneObject(options)
+  subFnOptions.locale = locale
 
-    if (locale.parse.units) {
-      localeUnits = locale.parse.units
-    }
-
-    if (locale.parse.parsingTokensRegExp) {
-      parsingTokensRegExp = locale.parse.parsingTokensRegExp
-    }
-  }
-
-  var tokens = formatString.match(parsingTokensRegExp)
+  var tokens = formatString.match(locale.parsingTokensRegExp || defaultParsingTokensRegExp)
   var tokensLength = tokens.length
 
   // If timezone isn't specified, it will be set to the system timezone
@@ -168,7 +199,13 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     var token = tokens[i]
     var parser = localeParsers[token] || parsers[token]
     if (parser) {
-      var matchResult = parser.match.exec(dateString)
+      var matchResult
+
+      if (parser.match instanceof RegExp) {
+        matchResult = parser.match.exec(dateString)
+      } else {
+        matchResult = parser.match(dateString, subFnOptions)
+      }
 
       if (!matchResult) {
         return new Date(NaN)
@@ -177,14 +214,12 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       var unitName = parser.unit
       var unit = localeUnits[unitName] || units[unitName]
 
-      var newSetter = {
+      setters.push({
         priority: unit.priority,
         set: unit.set,
-        value: parser.parse(matchResult),
+        value: parser.parse(matchResult, subFnOptions),
         index: setters.length
-      }
-
-      setters.push(newSetter)
+      })
 
       var substring = matchResult[0]
       dateString = dateString.slice(substring.length)
@@ -230,16 +265,19 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
   var utcDate = subMinutes(date, date.getTimezoneOffset())
 
+  var dateValues = {date: utcDate}
+
   var settersLength = uniquePrioritySetters.length
   for (i = 0; i < settersLength; i++) {
     var setter = uniquePrioritySetters[i]
-    utcDate = setter.set(utcDate, setter.value, options)
+    dateValues = setter.set(dateValues, setter.value, subFnOptions)
   }
 
-  return utcDate
+  return dateValues.date
 }
 
-function dateToSystemTimezone (date) {
+function dateToSystemTimezone (dateValues) {
+  var date = dateValues.date
   var time = date.getTime()
 
   // Get the system timezone offset at (moment of time - offset)
@@ -249,5 +287,14 @@ function dateToSystemTimezone (date) {
   offset = new Date(time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
 
   // Convert date in timezone "UTC+00:00" to the system timezone
-  return new Date(time + offset * MILLISECONDS_IN_MINUTE)
+  dateValues.date = new Date(time + offset * MILLISECONDS_IN_MINUTE)
+
+  return dateValues
+}
+
+function cleanEscapedString (input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|]$/g, '')
+  }
+  return input.replace(/\\/g, '')
 }

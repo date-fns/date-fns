@@ -1,5 +1,10 @@
-import buildDistanceInWordsLocale from './buildDistanceInWordsLocale/index.js'
-import buildFormatLocale from './buildFormatLocale/index.js'
+import formatDistance from './_lib/formatDistance/index.js'
+import formatLong from './_lib/formatLong/index.js'
+import formatRelative from './_lib/formatRelative/index.js'
+import localize from './_lib/localize/index.js'
+import match from './_lib/match/index.js'
+import formatters from './_lib/formatters/index.js'
+import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
 
 /**
  * @type {Locale}
@@ -9,9 +14,18 @@ import buildFormatLocale from './buildFormatLocale/index.js'
  * @iso-639-2 ell
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
-var elLocale = {
-  distanceInWords: buildDistanceInWordsLocale(),
-  format: buildFormatLocale()
+var locale = {
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  formatters: formatters,
+  formattingTokensRegExp: buildTokensRegExp(formatters),
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4
+  }
 }
 
-export default elLocale
+export default locale

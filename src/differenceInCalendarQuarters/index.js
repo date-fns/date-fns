@@ -29,7 +29,7 @@ export default function differenceInCalendarQuarters (dirtyDateLeft, dirtyDateRi
   var dateRight = toDate(dirtyDateRight, dirtyOptions)
 
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var quarterDiff = getQuarter(dateRight, dirtyOptions) - getQuarter(dateLeft, dirtyOptions)
+  var quarterDiff = getQuarter(dateLeft, dirtyOptions) - getQuarter(dateRight, dirtyOptions)
 
   return yearDiff * 4 + quarterDiff
 }

@@ -17,6 +17,35 @@ describe('startOfWeek', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
+  it('allows to specify which day is the first day of the week in locale', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    var result = startOfWeek(
+      date,
+      {
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 1}
+        }
+      }
+    )
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    var result = startOfWeek(
+      date,
+      {
+        weekStartsOn: 1,
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 0}
+        }
+      }
+    )
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
   it('implicitly converts options', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     // $ExpectedMistake
