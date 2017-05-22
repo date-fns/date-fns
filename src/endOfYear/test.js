@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import endOfYear from '.'
 
-describe('endOfMonth', function () {
+describe('endOfYear', function () {
   it('returns the date with the time setted to 23:59:59.999 and the date setted to the last day of a year', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfYear(date)
@@ -43,7 +43,7 @@ describe('endOfMonth', function () {
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     // $ExpectedMistake
-    var block = endOfYear.bind(this, date, {additionalDigits: NaN})
+    var block = endOfYear.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
 })

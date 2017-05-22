@@ -30,6 +30,35 @@ describe('isSameWeek', function () {
     assert(result === false)
   })
 
+  it('allows to specify which day is the first day of the week in locale', function () {
+    var result = isSameWeek(
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      {
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 1}
+        }
+      }
+    )
+    assert(result === false)
+  })
+
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+    var result = isSameWeek(
+      new Date(2014, 7 /* Aug */, 31),
+      new Date(2014, 8 /* Sep */, 4),
+      {
+        weekStartsOn: 1,
+        // $ExpectedMistake
+        locale: {
+          options: {weekStartsOn: 0}
+        }
+      }
+    )
+    assert(result === false)
+  })
+
   it('implicitly converts options', function () {
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),

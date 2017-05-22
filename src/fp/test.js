@@ -179,344 +179,308 @@ describe('FP functions', function () {
 
   it('differenceInCalendarDays', function () {
     var result = fp.differenceInCalendarDays(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 366)
   })
 
   it('differenceInCalendarDaysWithOptions', function () {
     var result = fp.differenceInCalendarDaysWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 366)
   })
 
   it('differenceInCalendarISOWeeks', function () {
     var result = fp.differenceInCalendarISOWeeks(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 2)
   })
 
   it('differenceInCalendarISOWeeksWithOptions', function () {
     var result = fp.differenceInCalendarISOWeeksWithOptions({})(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 2)
   })
 
   it('differenceInCalendarISOYears', function () {
     var result = fp.differenceInCalendarISOYears(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInCalendarISOYearsWithOptions', function () {
     var result = fp.differenceInCalendarISOYearsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInCalendarMonths', function () {
     var result = fp.differenceInCalendarMonths(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 12)
   })
 
   it('differenceInCalendarMonthsWithOptions', function () {
     var result = fp.differenceInCalendarMonthsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 12)
   })
 
   it('differenceInCalendarQuarters', function () {
     var result = fp.differenceInCalendarQuarters(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 4)
   })
 
   it('differenceInCalendarQuartersWithOptions', function () {
     var result = fp.differenceInCalendarQuartersWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 4)
   })
 
   it('differenceInCalendarWeeks', function () {
     var result = fp.differenceInCalendarWeeks(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInCalendarWeeksWithOptions', function () {
     var result = fp.differenceInCalendarWeeksWithOptions({weekStartsOn: 1})(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 2)
   })
 
   it('differenceInCalendarYears', function () {
     var result = fp.differenceInCalendarYears(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInCalendarYearsWithOptions', function () {
     var result = fp.differenceInCalendarYearsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInDays', function () {
     var result = fp.differenceInDays(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 366)
   })
 
   it('differenceInDaysWithOptions', function () {
     var result = fp.differenceInDaysWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 366)
   })
 
   it('differenceInHours', function () {
     var result = fp.differenceInHours(
-      new Date(2014, 6 /* Jul */, 2, 20, 0)
-    )(
       new Date(2014, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 20, 0)
     )
     assert(result === 14)
   })
 
   it('differenceInHoursWithOptions', function () {
     var result = fp.differenceInHoursWithOptions({})(
-      new Date(2014, 6 /* Jul */, 2, 20, 0)
-    )(
       new Date(2014, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 20, 0)
     )
     assert(result === 14)
   })
 
   it('differenceInISOYears', function () {
     var result = fp.differenceInISOYears(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInISOYearsWithOptions', function () {
     var result = fp.differenceInISOYearsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInMilliseconds', function () {
     var result = fp.differenceInMilliseconds(
-      new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700)
     )
     assert(result === 100)
   })
 
   it('differenceInMillisecondsWithOptions', function () {
     var result = fp.differenceInMillisecondsWithOptions({})(
-      new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 600)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 700)
     )
     assert(result === 100)
   })
 
   it('differenceInMinutes', function () {
     var result = fp.differenceInMinutes(
-      new Date(2014, 6 /* Jul */, 2, 12, 20)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 6)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 20)
     )
     assert(result === 14)
   })
 
   it('differenceInMinutesWithOptions', function () {
     var result = fp.differenceInMinutesWithOptions({})(
-      new Date(2014, 6 /* Jul */, 2, 12, 20)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 6)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 20)
     )
     assert(result === 14)
   })
 
   it('differenceInMonths', function () {
     var result = fp.differenceInMonths(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 12)
   })
 
   it('differenceInMonthsWithOptions', function () {
     var result = fp.differenceInMonthsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 12)
   })
 
   it('differenceInQuarters', function () {
     var result = fp.differenceInQuarters(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 4)
   })
 
   it('differenceInQuartersWithOptions', function () {
     var result = fp.differenceInQuartersWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 4)
   })
 
   it('differenceInSeconds', function () {
     var result = fp.differenceInSeconds(
-      new Date(2014, 6 /* Jul */, 2, 12, 30, 20)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 6)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 20)
     )
     assert(result === 14)
   })
 
   it('differenceInSecondsWithOptions', function () {
     var result = fp.differenceInSecondsWithOptions({})(
-      new Date(2014, 6 /* Jul */, 2, 12, 30, 20)
-    )(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 6)
+    )(
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 20)
     )
     assert(result === 14)
   })
 
   it('differenceInWeeks', function () {
     var result = fp.differenceInWeeks(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInWeeksWithOptions', function () {
     var result = fp.differenceInWeeksWithOptions({})(
-      new Date(2014, 6 /* Jul */, 8, 18, 0)
-    )(
       new Date(2014, 5 /* Jun */, 29, 6, 0)
+    )(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInYears', function () {
     var result = fp.differenceInYears(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
   })
 
   it('differenceInYearsWithOptions', function () {
     var result = fp.differenceInYearsWithOptions({})(
-      new Date(2012, 6 /* Jul */, 2, 18, 0)
-    )(
       new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )(
+      new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
     assert(result === 1)
-  })
-
-  it('distanceInWords', function () {
-    var result = fp.distanceInWords(
-      new Date(1986, 3, 4, 10, 34, 50)
-    )(
-      new Date(1986, 3, 4, 10, 32, 0)
-    )
-    assert(result === '3 minutes')
-  })
-
-  it('distanceInWordsWithOptions', function () {
-    var result = fp.distanceInWordsWithOptions({includeSeconds: true})(
-      new Date(1986, 3, 4, 10, 32, 3)
-    )(
-      new Date(1986, 3, 4, 10, 32, 0)
-    )
-    assert(result === 'less than 5 seconds')
-  })
-
-  it('distanceInWordsStrict', function () {
-    var result = fp.distanceInWordsStrict(
-      new Date(1986, 3, 7, 10, 32, 0)
-    )(
-      new Date(1986, 3, 4, 10, 32, 0)
-    )
-    assert(result === '3 days')
-  })
-
-  it('distanceInWordsStrictWithOptions', function () {
-    var result = fp.distanceInWordsStrictWithOptions({addSuffix: true})(
-      new Date(1986, 3, 4, 11, 32, 0)
-    )(
-      new Date(1986, 3, 4, 10, 32, 0)
-    )
-    assert(result === 'in 1 hour')
   })
 
   it('eachDayOfInterval', function () {
@@ -675,6 +639,52 @@ describe('FP functions', function () {
     var date = new Date(2014, 3, 4).toISOString()
     var result = fp.formatWithOptions({})('YYYY-MM-DD')(date)
     assert(result === '2014-04-04')
+  })
+
+  it('formatDistance', function () {
+    var result = fp.formatDistance(
+      new Date(1986, 3, 4, 10, 34, 50)
+    )(
+      new Date(1986, 3, 4, 10, 32, 0)
+    )
+    assert(result === '3 minutes')
+  })
+
+  it('formatDistanceWithOptions', function () {
+    var result = fp.formatDistanceWithOptions({includeSeconds: true})(
+      new Date(1986, 3, 4, 10, 32, 3)
+    )(
+      new Date(1986, 3, 4, 10, 32, 0)
+    )
+    assert(result === 'less than 5 seconds')
+  })
+
+  it('formatDistanceStrict', function () {
+    var result = fp.formatDistanceStrict(
+      new Date(1986, 3, 7, 10, 32, 0)
+    )(
+      new Date(1986, 3, 4, 10, 32, 0)
+    )
+    assert(result === '3 days')
+  })
+
+  it('formatDistanceStrictWithOptions', function () {
+    var result = fp.formatDistanceStrictWithOptions({addSuffix: true})(
+      new Date(1986, 3, 4, 10, 32, 0)
+    )(
+      new Date(1986, 3, 4, 11, 32, 0)
+    )
+    assert(result === 'in 1 hour')
+  })
+
+  it('formatRelative', function () {
+    var result = fp.formatRelative(new Date(1986, 3 /* Apr */, 4, 10, 32))(new Date(1986, 2 /* Mar */, 28, 16, 50))
+    assert(result === '03/28/1986')
+  })
+
+  it('formatRelativeWithOptions', function () {
+    var result = fp.formatRelativeWithOptions({})(new Date(1986, 3 /* Apr */, 4, 10, 32))(new Date(1986, 2 /* Mar */, 28, 16, 50))
+    assert(result === '03/28/1986')
   })
 
   it('getDate', function () {

@@ -70,6 +70,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
   import format from 'date-fns/esm/format'
   ```
 
+- `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
@@ -93,7 +95,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
   var minDate = min(date1, date2)
   var maxDate = max(date1, date2)
 
-  // v2.0.0 onward
+  // v2.0.0 onward:
   var dates = [new Date(1989, 6 /* Jul */, 10), new Date(1987, 1 /* Feb */, 11)]
 
   var minDate = min(dates)
@@ -139,7 +141,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
   Upgrade guide:
 
-  - `distanceInWordsToNow(date)` → `distanceInWords(new Date(), date)`
+  - `distanceInWordsToNow(date)` → `formatDistance(date, new Date())`
   - `isFuture(date)` → `isAfter(date, new Date())`
   - `isPast(date)` → `isBefore(date, new Date())`
   - `endOfToday()` → `endOfDay(new Date())`
@@ -231,6 +233,45 @@ This change log follows the format documented in [Keep a CHANGELOG].
   )
   ```
 
+- **BREAKING**: functions renamed:
+
+  - `distanceInWords` → `formatDistance`
+  - `distanceInWordsStrict` → `formatDistanceStrict`
+
+  to make them consistent with `format` and `formatRelative`.
+  The order of arguments is swapped to make them consistent with `differenceIn...` functions.
+  `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+
+  ```javascript
+  // Before v2.0.0
+
+  distanceInWords(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 11, 32, 0),
+    {addSuffix: true}
+  ) //=> 'in about 1 hour'
+
+  distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    {partialMethod: 'ceil'}
+  ) //=> '2 minutes'
+
+  // v2.0.0 onward
+
+  formatDistance(
+    new Date(1986, 3, 4, 11, 32, 0),
+    new Date(1986, 3, 4, 10, 32, 0),
+    {addSuffix: true}
+  ) //=> 'in about 1 hour'
+
+  formatDistanceStrict(
+    new Date(1986, 3, 4, 10, 33, 1),
+    new Date(1986, 3, 4, 10, 32, 0),
+    {roundingMethod: 'ceil'}
+  ) //=> '2 minutes'
+  ```
+
 - **BREAKING**: `parse` renamed to `toDate`,
   created a new function `parse` which parses a string using a provided format.
 
@@ -243,31 +284,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
   parse('2016-01-01', 'YYYY-MM-DD', new Date())
   ```
 
-- **BREAKING**: `format` now assumes that the provided locale uses UTC-versions of `Date` methods,
-  e.g. `getUTCMonth` instead of `getMonth`. All included locales are converted.
-  This change affects only those who uses custom locales.
-  Except handling of locales, behavior of `format` hasn't changed,
-  i.e. it still formats dates in the user timezone.
+- **BREAKING**: new locale format.
+  See [docs/Locale](https://date-fns.org/docs/Locale).
+  Locales renamed:
+
+  - `en` → `en-US`
+  - `zh_cn` → `zh-CN`
+  - `zh_tw` → `zh-TW`
 
   ```javascript
-  var weekdays = ['sundio', 'lundio', 'mardio', 'merkurdio', 'jovdio', 'venerdio', 'saturdio']
+  // Before v2.0.0
+  import locale from 'date-fns/locale/zh_cn'
 
-  var customLocale = {
-    format: {
-      formatters: {
-        'dddd': function (date) {
-          // Before v2.0.0
-          return weekdays[date.getDay()]
-
-          // v2.0.0 onward
-          return weekdays[date.getUTCDay()]
-        }
-      },
-      formattingTokensRegExp: /(\[[^[]*])|(\\)?(dddd|.)/g
-    }
-  }
-
-  format('2017-01-01', 'dddd', {locale: customLocale}) //=> 'sundio'
+  // v2.0.0 onward
+  import locale from 'date-fns/locale/zh-CN'
   ```
 
 - **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
@@ -293,21 +323,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
   We introduce this change to make *date-fns* consistent with ECMAScript behavior
   that try to coerce arguments to the expected type
   (which is also the case with other *date-fns* functions).
-
-- **BREAKING**: `partialMethod` option in `distanceInWordsStrict` is renamed to `roundingMethod`.
-
-  ```javascript
-  // Before v2.0.0
-  var options = {partialMethod: 'ceil'}
-  // v2.0.0 onward
-  var options = {roundingMethod: 'ceil'}
-
-  var result = distanceInWordsStrict(
-    new Date(1986, 3, 4, 10, 32, 0),
-    new Date(1986, 3, 4, 10, 33, 1),
-    options
-  )
-  ```
 
 - **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
