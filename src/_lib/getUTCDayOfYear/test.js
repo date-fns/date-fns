@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import getUTCDayOfYear from '.'
 
-describe('format > getUTCDayOfYear', function () {
+describe('getUTCDayOfYear', function () {
   it('returns the day of the year of the given date', function () {
     var result = getUTCDayOfYear(new Date(Date.UTC(2014, 6 /* Jul */, 2)))
     assert(result === 183)

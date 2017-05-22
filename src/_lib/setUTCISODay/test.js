@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import setUTCISODay from '.'
 
-describe('parse > setUTCISODay', function () {
+describe('setUTCISODay', function () {
   it('sets the day of the ISO week', function () {
     var result = setUTCISODay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 3)
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 3)))

@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import addUTCMinutes from '.'
 
-describe('format > addUTCMinutes', function () {
+describe('addUTCMinutes', function () {
   it('adds the given number of minutes', function () {
     var result = addUTCMinutes(new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 0)), 30)
     assert.deepEqual(result, new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 30)))
