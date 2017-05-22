@@ -24,7 +24,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
   if (unit === 'dayOfMonth') {
     suffix = '-е'
-  } else if (unit === 'isoWeek') {
+  } else if (unit === 'isoWeek' || unit === 'week') {
     suffix = '-я'
   } else {
     suffix = '-й'
