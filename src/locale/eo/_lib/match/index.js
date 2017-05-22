@@ -6,9 +6,9 @@ import parseDecimal from '../../../_lib/parseDecimal/index.js'
 var matchOrdinalNumbersPattern = /^(\d+)(-?a)?/i
 
 var matchWeekdaysPatterns = {
-  narrow: /^(di|lu|ma|me|(ĵ|jx)a|ve|sa)/i,
-  short: /^(dim|lun|mar|mer|(ĵ|jx)a(ŭ|ux)|ven|sab)/i,
-  long: /^(diman(ĉ|cx)o|lundo|mardo|merkredo|(ĵ|jx)a(ŭ|ux)do|vendredo|sabato)/i
+  narrow: /^(di|lu|ma|me|(ĵ|jx|jh|j)a|ve|sa)/i,
+  short: /^(dim|lun|mar|mer|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)|ven|sab)/i,
+  long: /^(diman(ĉ|cx|ch|c)o|lundo|mardo|merkredo|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)do|vendredo|sabato)/i
 }
 
 var parseWeekdayPatterns = {
@@ -16,8 +16,8 @@ var parseWeekdayPatterns = {
 }
 
 var matchMonthsPatterns = {
-  short: /^(jan|feb|mar|apr|maj|jun|jul|a(ŭ|ux)g|sep|okt|nov|dec)/i,
-  long: /^(januaro|februaro|marto|aprilo|majo|junio|julio|a(ŭ|ux)gusto|septembro|oktobro|novembro|decembro)/i
+  short: /^(jan|feb|mar|apr|maj|jun|jul|a(ŭ|ux|uh|u)g|sep|okt|nov|dec)/i,
+  long: /^(januaro|februaro|marto|aprilo|majo|junio|julio|a(ŭ|ux|uh|u)gusto|septembro|oktobro|novembro|decembro)/i
 }
 
 var parseMonthPatterns = {
