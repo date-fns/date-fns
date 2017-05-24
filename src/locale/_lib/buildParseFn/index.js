@@ -28,7 +28,7 @@ export default function buildParseFn (patterns, defaultType) {
     var string = matchResult[1]
 
     return patternsArray.findIndex(function (pattern) {
-      return string.match(pattern)
+      return pattern.test(string)
     })
   }
 }
