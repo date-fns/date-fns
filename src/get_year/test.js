@@ -10,6 +10,11 @@ describe('getYear', function () {
     assert(result === 2014)
   })
 
+  it('returns the year from new Date', function () {
+    var result = getYear()
+    assert(result === 2017)
+  })
+
   it('accepts a string', function () {
     var result = getYear(new Date(700, 6 /* Jul */, 2).toISOString())
     assert(result === 700)
