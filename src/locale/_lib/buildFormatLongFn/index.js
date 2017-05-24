@@ -7,7 +7,7 @@ function buildShortLongFormat (format) {
 }
 
 /**
- * @name buildFormatLong
+ * @name buildFormatLongFn
  * @category Locale Helpers
  * @summary Build `formatLong` property for locale used by `format`, `formatRelative` and `parse` functions.
  *
@@ -37,7 +37,7 @@ function buildShortLongFormat (format) {
  *
  * @example
  * // For `en-US` locale:
- * locale.formatLong = buildFormatLong({
+ * locale.formatLong = buildFormatLongFn({
  *   LT: 'h:mm aa',
  *   LTS: 'h:mm:ss aa',
  *   L: 'MM/DD/YYYY',
@@ -46,7 +46,7 @@ function buildShortLongFormat (format) {
  *   LLLL: 'dddd, MMMM D YYYY h:mm aa'
  * })
  */
-export default function buildFormatLong (obj) {
+export default function buildFormatLongFn (obj) {
   var formatLongLocale = {
     LTS: obj.LTS,
     LT: obj.LT,
