@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/buildIndex.js`. Please, don't change it.
+// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
 module.exports = {
   ar: require('./ar/index.js'),

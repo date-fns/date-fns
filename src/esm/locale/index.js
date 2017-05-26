@@ -1,4 +1,4 @@
-// This file is generated automatically by `scripts/buildIndex.js`. Please, don't change it.
+// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
 export {default as ar} from './ar/index.js'
 export {default as bg} from './bg/index.js'

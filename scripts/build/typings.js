@@ -213,7 +213,7 @@ function getTypeScriptFPFnDefinition (fn) {
 
   const type = getFPFnType(args, content.returns[0].type.names)
 
-  return [`  let ${title}: ${type}`]
+  return [`  const ${title}: ${type}`]
     .concat(`  namespace ${title} {}`)
     .join('\n')
 }
@@ -234,18 +234,43 @@ function getTypeScriptFPFnModuleDefinition (submodule, fnSuffix, isDefault, fn) 
   }
 }
 
-function getTypeScriptLocaleModuleDefinition (submodule, localeSuffix, isDefault, locale) {
-  const code = locale.code
-  const name = `date-fns${submodule}/locale/${code}${localeSuffix}`
+function getTypeScriptLocaleIndexModuleDefinition (submodule, locales) {
+  const moduleName = `date-fns${submodule}/locale`
 
-  const definition = [`declare module '${name}' {`]
-    .concat('  const locale: Locale')
-    .concat(`  export ${isDefault ? 'default' : '='} locale`)
+  const localesDefinitions = locales.map(getTypeScriptLocaleDefinition).join('\n\n')
+
+  const definition = [`declare module '${moduleName}' {`]
+    .concat(localesDefinitions)
     .concat('}')
     .join('\n')
 
   return {
-    name,
+    name: moduleName,
+    definition
+  }
+}
+
+function getTypeScriptLocaleDefinition (locale) {
+  const {name} = locale
+
+  return [`  const ${name}: Locale`]
+    .concat(`  namespace ${name} {}`)
+    .join('\n')
+}
+
+function getTypeScriptLocaleModuleDefinition (submodule, localeSuffix, isDefault, locale) {
+  const code = locale.code
+  const moduleName = `date-fns${submodule}/locale/${code}${localeSuffix}`
+  const {name} = locale
+
+  const definition = [`declare module '${moduleName}' {`]
+    .concat(`  import {${name}} from 'date-fns${submodule}/locale'`)
+    .concat(`  export ${isDefault ? 'default' : '='} ${name}`)
+    .concat('}')
+    .join('\n')
+
+  return {
+    name: moduleName,
     definition
   }
 }
@@ -289,10 +314,13 @@ function generateTypeScriptTypings (fns, aliases, locales) {
   const aliasDefinitions = aliases
     .map(getTypeScriptTypeAlias)
 
-  const localeModuleDefinitions = []
+  const localeModuleDefinitions = [getTypeScriptLocaleIndexModuleDefinition('', locales)]
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '', false)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index', false)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index.js', false)))
+    .map(module => module.definition)
+
+  const esmLocaleModuleDefinitions = [getTypeScriptLocaleIndexModuleDefinition('/esm', locales)]
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '', true)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index', true)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index.js', true)))
@@ -316,9 +344,11 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .concat(esmModuleDefinitions)
     .concat('// ECMAScript Module FP Functions')
     .concat(esmFPModuleDefinitions)
-    .concat('// Locales')
+    .concat('// Regular Locales')
     .concat(localeModuleDefinitions)
-    .concat('// dateFns global interface definition')
+    .concat('// ECMAScript Module Locales')
+    .concat(esmLocaleModuleDefinitions)
+    .concat('// dateFns Global Interface')
     .concat(interfaceDefinitions)
     .join('\n\n')
 
@@ -370,8 +400,8 @@ function generateFlowFPFnTyping (fn, aliasDeclarations) {
 }
 
 function generateFlowLocaleTyping (locale, localeAliasDeclaration) {
-  const {path} = locale
-  const filename = `${path.replace(/^\./, './src')}/index.js.flow`
+  const {fullPath} = locale
+  const filename = `${fullPath}.flow`
 
   const typingString = ['// @flow']
     .concat(generatedAutomaticallyMessage)

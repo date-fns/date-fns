@@ -2971,808 +2971,808 @@ declare module 'date-fns/toDate/index.js' {
 // FP Functions
 
 declare module 'date-fns/fp' {
-  let addDays: CurriedFn2<number, Date | string | number, Date>
+  const addDays: CurriedFn2<number, Date | string | number, Date>
   namespace addDays {}
 
-  let addDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addDaysWithOptions {}
 
-  let addHours: CurriedFn2<number, Date | string | number, Date>
+  const addHours: CurriedFn2<number, Date | string | number, Date>
   namespace addHours {}
 
-  let addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addHoursWithOptions {}
 
-  let addISOYears: CurriedFn2<number, Date | string | number, Date>
+  const addISOYears: CurriedFn2<number, Date | string | number, Date>
   namespace addISOYears {}
 
-  let addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addISOYearsWithOptions {}
 
-  let addMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace addMilliseconds {}
 
-  let addMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMillisecondsWithOptions {}
 
-  let addMinutes: CurriedFn2<number, Date | string | number, Date>
+  const addMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace addMinutes {}
 
-  let addMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMinutesWithOptions {}
 
-  let addMonths: CurriedFn2<number, Date | string | number, Date>
+  const addMonths: CurriedFn2<number, Date | string | number, Date>
   namespace addMonths {}
 
-  let addMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMonthsWithOptions {}
 
-  let addQuarters: CurriedFn2<number, Date | string | number, Date>
+  const addQuarters: CurriedFn2<number, Date | string | number, Date>
   namespace addQuarters {}
 
-  let addQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addQuartersWithOptions {}
 
-  let addSeconds: CurriedFn2<number, Date | string | number, Date>
+  const addSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace addSeconds {}
 
-  let addSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addSecondsWithOptions {}
 
-  let addWeeks: CurriedFn2<number, Date | string | number, Date>
+  const addWeeks: CurriedFn2<number, Date | string | number, Date>
   namespace addWeeks {}
 
-  let addWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addWeeksWithOptions {}
 
-  let addYears: CurriedFn2<number, Date | string | number, Date>
+  const addYears: CurriedFn2<number, Date | string | number, Date>
   namespace addYears {}
 
-  let addYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addYearsWithOptions {}
 
-  let areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
+  const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
   namespace areIntervalsOverlapping {}
 
-  let areIntervalsOverlappingWithOptions: CurriedFn3<Options, Interval, Interval, boolean>
+  const areIntervalsOverlappingWithOptions: CurriedFn3<Options, Interval, Interval, boolean>
   namespace areIntervalsOverlappingWithOptions {}
 
-  let closestIndexTo: CurriedFn2<(Date | string | number)[], Date | string | number, number>
+  const closestIndexTo: CurriedFn2<(Date | string | number)[], Date | string | number, number>
   namespace closestIndexTo {}
 
-  let closestIndexToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, number>
+  const closestIndexToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, number>
   namespace closestIndexToWithOptions {}
 
-  let closestTo: CurriedFn2<(Date | string | number)[], Date | string | number, Date>
+  const closestTo: CurriedFn2<(Date | string | number)[], Date | string | number, Date>
   namespace closestTo {}
 
-  let closestToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, Date>
+  const closestToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, Date>
   namespace closestToWithOptions {}
 
-  let compareAsc: CurriedFn2<Date | string | number, Date | string | number, number>
+  const compareAsc: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace compareAsc {}
 
-  let compareAscWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const compareAscWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace compareAscWithOptions {}
 
-  let compareDesc: CurriedFn2<Date | string | number, Date | string | number, number>
+  const compareDesc: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace compareDesc {}
 
-  let compareDescWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const compareDescWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace compareDescWithOptions {}
 
-  let differenceInCalendarDays: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarDays: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarDays {}
 
-  let differenceInCalendarDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarDaysWithOptions {}
 
-  let differenceInCalendarISOWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeks {}
 
-  let differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeksWithOptions {}
 
-  let differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOYears {}
 
-  let differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOYearsWithOptions {}
 
-  let differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonths {}
 
-  let differenceInCalendarMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonthsWithOptions {}
 
-  let differenceInCalendarQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarQuarters {}
 
-  let differenceInCalendarQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarQuartersWithOptions {}
 
-  let differenceInCalendarWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarWeeks {}
 
-  let differenceInCalendarWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarWeeksWithOptions {}
 
-  let differenceInCalendarYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarYears {}
 
-  let differenceInCalendarYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarYearsWithOptions {}
 
-  let differenceInDays: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInDays: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInDays {}
 
-  let differenceInDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInDaysWithOptions {}
 
-  let differenceInHours: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInHours: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInHours {}
 
-  let differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInHoursWithOptions {}
 
-  let differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInISOYears {}
 
-  let differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInISOYearsWithOptions {}
 
-  let differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMilliseconds {}
 
-  let differenceInMillisecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMillisecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMillisecondsWithOptions {}
 
-  let differenceInMinutes: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMinutes: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMinutes {}
 
-  let differenceInMinutesWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMinutesWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMinutesWithOptions {}
 
-  let differenceInMonths: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMonths {}
 
-  let differenceInMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMonthsWithOptions {}
 
-  let differenceInQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInQuarters {}
 
-  let differenceInQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInQuartersWithOptions {}
 
-  let differenceInSeconds: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInSeconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInSeconds {}
 
-  let differenceInSecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInSecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInSecondsWithOptions {}
 
-  let differenceInWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInWeeks {}
 
-  let differenceInWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInWeeksWithOptions {}
 
-  let differenceInYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInYears {}
 
-  let differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInYearsWithOptions {}
 
-  let eachDayOfInterval: CurriedFn1<Interval, Date[]>
+  const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  let eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {}
 
-  let endOfDay: CurriedFn1<Date | string | number, Date>
+  const endOfDay: CurriedFn1<Date | string | number, Date>
   namespace endOfDay {}
 
-  let endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfDayWithOptions {}
 
-  let endOfHour: CurriedFn1<Date | string | number, Date>
+  const endOfHour: CurriedFn1<Date | string | number, Date>
   namespace endOfHour {}
 
-  let endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfHourWithOptions {}
 
-  let endOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace endOfISOWeek {}
 
-  let endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOWeekWithOptions {}
 
-  let endOfISOYear: CurriedFn1<Date | string | number, Date>
+  const endOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace endOfISOYear {}
 
-  let endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOYearWithOptions {}
 
-  let endOfMinute: CurriedFn1<Date | string | number, Date>
+  const endOfMinute: CurriedFn1<Date | string | number, Date>
   namespace endOfMinute {}
 
-  let endOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfMinuteWithOptions {}
 
-  let endOfMonth: CurriedFn1<Date | string | number, Date>
+  const endOfMonth: CurriedFn1<Date | string | number, Date>
   namespace endOfMonth {}
 
-  let endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfMonthWithOptions {}
 
-  let endOfQuarter: CurriedFn1<Date | string | number, Date>
+  const endOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace endOfQuarter {}
 
-  let endOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfQuarterWithOptions {}
 
-  let endOfSecond: CurriedFn1<Date | string | number, Date>
+  const endOfSecond: CurriedFn1<Date | string | number, Date>
   namespace endOfSecond {}
 
-  let endOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfSecondWithOptions {}
 
-  let endOfWeek: CurriedFn1<Date | string | number, Date>
+  const endOfWeek: CurriedFn1<Date | string | number, Date>
   namespace endOfWeek {}
 
-  let endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfWeekWithOptions {}
 
-  let endOfYear: CurriedFn1<Date | string | number, Date>
+  const endOfYear: CurriedFn1<Date | string | number, Date>
   namespace endOfYear {}
 
-  let endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfYearWithOptions {}
 
-  let format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
-  let formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatDistance {}
 
-  let formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatDistanceStrict {}
 
-  let formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatDistanceStrictWithOptions {}
 
-  let formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatDistanceWithOptions {}
 
-  let formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatRelative {}
 
-  let formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatRelativeWithOptions {}
 
-  let formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
+  const formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
 
-  let getDate: CurriedFn1<Date | string | number, number>
+  const getDate: CurriedFn1<Date | string | number, number>
   namespace getDate {}
 
-  let getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDateWithOptions {}
 
-  let getDay: CurriedFn1<Date | string | number, number>
+  const getDay: CurriedFn1<Date | string | number, number>
   namespace getDay {}
 
-  let getDayOfYear: CurriedFn1<Date | string | number, number>
+  const getDayOfYear: CurriedFn1<Date | string | number, number>
   namespace getDayOfYear {}
 
-  let getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayOfYearWithOptions {}
 
-  let getDaysInMonth: CurriedFn1<Date | string | number, number>
-  namespace getDaysInMonth {}
-
-  let getDaysInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDaysInMonthWithOptions {}
-
-  let getDaysInYear: CurriedFn1<Date | string | number, number>
-  namespace getDaysInYear {}
-
-  let getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDaysInYearWithOptions {}
-
-  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayWithOptions {}
 
-  let getHours: CurriedFn1<Date | string | number, number>
+  const getDaysInMonth: CurriedFn1<Date | string | number, number>
+  namespace getDaysInMonth {}
+
+  const getDaysInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDaysInMonthWithOptions {}
+
+  const getDaysInYear: CurriedFn1<Date | string | number, number>
+  namespace getDaysInYear {}
+
+  const getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDaysInYearWithOptions {}
+
+  const getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
 
-  let getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getHoursWithOptions {}
 
-  let getISODay: CurriedFn1<Date | string | number, number>
+  const getISODay: CurriedFn1<Date | string | number, number>
   namespace getISODay {}
 
-  let getISODayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISODayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISODayWithOptions {}
 
-  let getISOWeek: CurriedFn1<Date | string | number, number>
+  const getISOWeek: CurriedFn1<Date | string | number, number>
   namespace getISOWeek {}
 
-  let getISOWeeksInYear: CurriedFn1<Date | string | number, number>
-  namespace getISOWeeksInYear {}
-
-  let getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOWeeksInYearWithOptions {}
-
-  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeekWithOptions {}
 
-  let getISOYear: CurriedFn1<Date | string | number, number>
+  const getISOWeeksInYear: CurriedFn1<Date | string | number, number>
+  namespace getISOWeeksInYear {}
+
+  const getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeeksInYearWithOptions {}
+
+  const getISOYear: CurriedFn1<Date | string | number, number>
   namespace getISOYear {}
 
-  let getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOYearWithOptions {}
 
-  let getMilliseconds: CurriedFn1<Date | string | number, number>
+  const getMilliseconds: CurriedFn1<Date | string | number, number>
   namespace getMilliseconds {}
 
-  let getMillisecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMillisecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMillisecondsWithOptions {}
 
-  let getMinutes: CurriedFn1<Date | string | number, number>
+  const getMinutes: CurriedFn1<Date | string | number, number>
   namespace getMinutes {}
 
-  let getMinutesWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMinutesWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMinutesWithOptions {}
 
-  let getMonth: CurriedFn1<Date | string | number, number>
+  const getMonth: CurriedFn1<Date | string | number, number>
   namespace getMonth {}
 
-  let getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMonthWithOptions {}
 
-  let getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
+  const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
   namespace getOverlappingDaysInIntervals {}
 
-  let getOverlappingDaysInIntervalsWithOptions: CurriedFn3<Options, Interval, Interval, number>
+  const getOverlappingDaysInIntervalsWithOptions: CurriedFn3<Options, Interval, Interval, number>
   namespace getOverlappingDaysInIntervalsWithOptions {}
 
-  let getQuarter: CurriedFn1<Date | string | number, number>
+  const getQuarter: CurriedFn1<Date | string | number, number>
   namespace getQuarter {}
 
-  let getQuarterWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getQuarterWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getQuarterWithOptions {}
 
-  let getSeconds: CurriedFn1<Date | string | number, number>
+  const getSeconds: CurriedFn1<Date | string | number, number>
   namespace getSeconds {}
 
-  let getSecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getSecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getSecondsWithOptions {}
 
-  let getTime: CurriedFn1<Date | string | number, number>
+  const getTime: CurriedFn1<Date | string | number, number>
   namespace getTime {}
 
-  let getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
 
-  let getYear: CurriedFn1<Date | string | number, number>
+  const getYear: CurriedFn1<Date | string | number, number>
   namespace getYear {}
 
-  let getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getYearWithOptions {}
 
-  let isAfter: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isAfter: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isAfter {}
 
-  let isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isAfterWithOptions {}
 
-  let isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isBefore {}
 
-  let isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
 
-  let isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
 
-  let isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isEqualWithOptions {}
 
-  let isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
   namespace isFirstDayOfMonth {}
 
-  let isFirstDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isFirstDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isFirstDayOfMonthWithOptions {}
 
-  let isFriday: CurriedFn1<Date | string | number, boolean>
+  const isFriday: CurriedFn1<Date | string | number, boolean>
   namespace isFriday {}
 
-  let isFridayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isFridayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isFridayWithOptions {}
 
-  let isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
   namespace isLastDayOfMonth {}
 
-  let isLastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isLastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isLastDayOfMonthWithOptions {}
 
-  let isLeapYear: CurriedFn1<Date | string | number, boolean>
+  const isLeapYear: CurriedFn1<Date | string | number, boolean>
   namespace isLeapYear {}
 
-  let isLeapYearWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isLeapYearWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isLeapYearWithOptions {}
 
-  let isMonday: CurriedFn1<Date | string | number, boolean>
+  const isMonday: CurriedFn1<Date | string | number, boolean>
   namespace isMonday {}
 
-  let isMondayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isMondayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isMondayWithOptions {}
 
-  let isSameDay: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameDay: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameDay {}
 
-  let isSameDayWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameDayWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameDayWithOptions {}
 
-  let isSameHour: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameHour: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameHour {}
 
-  let isSameHourWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameHourWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameHourWithOptions {}
 
-  let isSameISOWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameISOWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeek {}
 
-  let isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeekWithOptions {}
 
-  let isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameISOYear {}
 
-  let isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOYearWithOptions {}
 
-  let isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMinute {}
 
-  let isSameMinuteWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameMinuteWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameMinuteWithOptions {}
 
-  let isSameMonth: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameMonth: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMonth {}
 
-  let isSameMonthWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameMonthWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameMonthWithOptions {}
 
-  let isSameQuarter: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameQuarter: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameQuarter {}
 
-  let isSameQuarterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameQuarterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameQuarterWithOptions {}
 
-  let isSameSecond: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameSecond: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameSecond {}
 
-  let isSameSecondWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameSecondWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameSecondWithOptions {}
 
-  let isSameWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameWeek {}
 
-  let isSameWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameWeekWithOptions {}
 
-  let isSameYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameYear {}
 
-  let isSameYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameYearWithOptions {}
 
-  let isSaturday: CurriedFn1<Date | string | number, boolean>
+  const isSaturday: CurriedFn1<Date | string | number, boolean>
   namespace isSaturday {}
 
-  let isSaturdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isSaturdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isSaturdayWithOptions {}
 
-  let isSunday: CurriedFn1<Date | string | number, boolean>
+  const isSunday: CurriedFn1<Date | string | number, boolean>
   namespace isSunday {}
 
-  let isSundayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isSundayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isSundayWithOptions {}
 
-  let isThursday: CurriedFn1<Date | string | number, boolean>
+  const isThursday: CurriedFn1<Date | string | number, boolean>
   namespace isThursday {}
 
-  let isThursdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isThursdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isThursdayWithOptions {}
 
-  let isTuesday: CurriedFn1<Date | string | number, boolean>
+  const isTuesday: CurriedFn1<Date | string | number, boolean>
   namespace isTuesday {}
 
-  let isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  let isValid: CurriedFn1<Date | string | number, boolean>
+  const isValid: CurriedFn1<Date | string | number, boolean>
   namespace isValid {}
 
-  let isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isValidWithOptions {}
 
-  let isWednesday: CurriedFn1<Date | string | number, boolean>
+  const isWednesday: CurriedFn1<Date | string | number, boolean>
   namespace isWednesday {}
 
-  let isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isWednesdayWithOptions {}
 
-  let isWeekend: CurriedFn1<Date | string | number, boolean>
+  const isWeekend: CurriedFn1<Date | string | number, boolean>
   namespace isWeekend {}
 
-  let isWeekendWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isWeekendWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isWeekendWithOptions {}
 
-  let isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
+  const isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
   namespace isWithinInterval {}
 
-  let isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
+  const isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
   namespace isWithinIntervalWithOptions {}
 
-  let lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOWeek {}
 
-  let lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOWeekWithOptions {}
 
-  let lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOYear {}
 
-  let lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOYearWithOptions {}
 
-  let lastDayOfMonth: CurriedFn1<Date | string | number, Date>
+  const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfMonth {}
 
-  let lastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfMonthWithOptions {}
 
-  let lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
+  const lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfQuarter {}
 
-  let lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfQuarterWithOptions {}
 
-  let lastDayOfWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfWeek {}
 
-  let lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfWeekWithOptions {}
 
-  let lastDayOfYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfYear: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfYear {}
 
-  let lastDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfYearWithOptions {}
 
-  let max: CurriedFn1<(Date | string | number)[], Date>
+  const max: CurriedFn1<(Date | string | number)[], Date>
   namespace max {}
 
-  let maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace maxWithOptions {}
 
-  let min: CurriedFn1<(Date | string | number)[], Date>
+  const min: CurriedFn1<(Date | string | number)[], Date>
   namespace min {}
 
-  let minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace minWithOptions {}
 
-  let parse: CurriedFn3<Date | string | number, string, string, Date>
+  const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
 
-  let parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
+  const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
 
-  let setDate: CurriedFn2<number, Date | string | number, Date>
+  const setDate: CurriedFn2<number, Date | string | number, Date>
   namespace setDate {}
 
-  let setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDateWithOptions {}
 
-  let setDay: CurriedFn2<number, Date | string | number, Date>
+  const setDay: CurriedFn2<number, Date | string | number, Date>
   namespace setDay {}
 
-  let setDayOfYear: CurriedFn2<number, Date | string | number, Date>
+  const setDayOfYear: CurriedFn2<number, Date | string | number, Date>
   namespace setDayOfYear {}
 
-  let setDayOfYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDayOfYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDayOfYearWithOptions {}
 
-  let setDayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDayWithOptions {}
 
-  let setHours: CurriedFn2<number, Date | string | number, Date>
+  const setHours: CurriedFn2<number, Date | string | number, Date>
   namespace setHours {}
 
-  let setHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setHoursWithOptions {}
 
-  let setISODay: CurriedFn2<number, Date | string | number, Date>
+  const setISODay: CurriedFn2<number, Date | string | number, Date>
   namespace setISODay {}
 
-  let setISODayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISODayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISODayWithOptions {}
 
-  let setISOWeek: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeek: CurriedFn2<number, Date | string | number, Date>
   namespace setISOWeek {}
 
-  let setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOWeekWithOptions {}
 
-  let setISOYear: CurriedFn2<number, Date | string | number, Date>
+  const setISOYear: CurriedFn2<number, Date | string | number, Date>
   namespace setISOYear {}
 
-  let setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOYearWithOptions {}
 
-  let setMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace setMilliseconds {}
 
-  let setMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMillisecondsWithOptions {}
 
-  let setMinutes: CurriedFn2<number, Date | string | number, Date>
+  const setMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace setMinutes {}
 
-  let setMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMinutesWithOptions {}
 
-  let setMonth: CurriedFn2<number, Date | string | number, Date>
+  const setMonth: CurriedFn2<number, Date | string | number, Date>
   namespace setMonth {}
 
-  let setMonthWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMonthWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMonthWithOptions {}
 
-  let setQuarter: CurriedFn2<number, Date | string | number, Date>
+  const setQuarter: CurriedFn2<number, Date | string | number, Date>
   namespace setQuarter {}
 
-  let setQuarterWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setQuarterWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setQuarterWithOptions {}
 
-  let setSeconds: CurriedFn2<number, Date | string | number, Date>
+  const setSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace setSeconds {}
 
-  let setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setSecondsWithOptions {}
 
-  let setYear: CurriedFn2<number, Date | string | number, Date>
+  const setYear: CurriedFn2<number, Date | string | number, Date>
   namespace setYear {}
 
-  let setYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setYearWithOptions {}
 
-  let startOfDay: CurriedFn1<Date | string | number, Date>
+  const startOfDay: CurriedFn1<Date | string | number, Date>
   namespace startOfDay {}
 
-  let startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfDayWithOptions {}
 
-  let startOfHour: CurriedFn1<Date | string | number, Date>
+  const startOfHour: CurriedFn1<Date | string | number, Date>
   namespace startOfHour {}
 
-  let startOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfHourWithOptions {}
 
-  let startOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace startOfISOWeek {}
 
-  let startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOWeekWithOptions {}
 
-  let startOfISOYear: CurriedFn1<Date | string | number, Date>
+  const startOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace startOfISOYear {}
 
-  let startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOYearWithOptions {}
 
-  let startOfMinute: CurriedFn1<Date | string | number, Date>
+  const startOfMinute: CurriedFn1<Date | string | number, Date>
   namespace startOfMinute {}
 
-  let startOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfMinuteWithOptions {}
 
-  let startOfMonth: CurriedFn1<Date | string | number, Date>
+  const startOfMonth: CurriedFn1<Date | string | number, Date>
   namespace startOfMonth {}
 
-  let startOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfMonthWithOptions {}
 
-  let startOfQuarter: CurriedFn1<Date | string | number, Date>
+  const startOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace startOfQuarter {}
 
-  let startOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfQuarterWithOptions {}
 
-  let startOfSecond: CurriedFn1<Date | string | number, Date>
+  const startOfSecond: CurriedFn1<Date | string | number, Date>
   namespace startOfSecond {}
 
-  let startOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfSecondWithOptions {}
 
-  let startOfWeek: CurriedFn1<Date | string | number, Date>
+  const startOfWeek: CurriedFn1<Date | string | number, Date>
   namespace startOfWeek {}
 
-  let startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfWeekWithOptions {}
 
-  let startOfYear: CurriedFn1<Date | string | number, Date>
+  const startOfYear: CurriedFn1<Date | string | number, Date>
   namespace startOfYear {}
 
-  let startOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfYearWithOptions {}
 
-  let subDays: CurriedFn2<number, Date | string | number, Date>
+  const subDays: CurriedFn2<number, Date | string | number, Date>
   namespace subDays {}
 
-  let subDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subDaysWithOptions {}
 
-  let subHours: CurriedFn2<number, Date | string | number, Date>
+  const subHours: CurriedFn2<number, Date | string | number, Date>
   namespace subHours {}
 
-  let subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subHoursWithOptions {}
 
-  let subISOYears: CurriedFn2<number, Date | string | number, Date>
+  const subISOYears: CurriedFn2<number, Date | string | number, Date>
   namespace subISOYears {}
 
-  let subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subISOYearsWithOptions {}
 
-  let subMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace subMilliseconds {}
 
-  let subMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMillisecondsWithOptions {}
 
-  let subMinutes: CurriedFn2<number, Date | string | number, Date>
+  const subMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace subMinutes {}
 
-  let subMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMinutesWithOptions {}
 
-  let subMonths: CurriedFn2<number, Date | string | number, Date>
+  const subMonths: CurriedFn2<number, Date | string | number, Date>
   namespace subMonths {}
 
-  let subMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMonthsWithOptions {}
 
-  let subQuarters: CurriedFn2<number, Date | string | number, Date>
+  const subQuarters: CurriedFn2<number, Date | string | number, Date>
   namespace subQuarters {}
 
-  let subQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subQuartersWithOptions {}
 
-  let subSeconds: CurriedFn2<number, Date | string | number, Date>
+  const subSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace subSeconds {}
 
-  let subSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subSecondsWithOptions {}
 
-  let subWeeks: CurriedFn2<number, Date | string | number, Date>
+  const subWeeks: CurriedFn2<number, Date | string | number, Date>
   namespace subWeeks {}
 
-  let subWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subWeeksWithOptions {}
 
-  let subYears: CurriedFn2<number, Date | string | number, Date>
+  const subYears: CurriedFn2<number, Date | string | number, Date>
   namespace subYears {}
 
-  let subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  let toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  let toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -4271,6 +4271,11 @@ declare module 'date-fns/fp/getDayOfYearWithOptions' {
   export = getDayOfYearWithOptions
 }
 
+declare module 'date-fns/fp/getDayWithOptions' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
+}
+
 declare module 'date-fns/fp/getDaysInMonth' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -4289,11 +4294,6 @@ declare module 'date-fns/fp/getDaysInYear' {
 declare module 'date-fns/fp/getDaysInYearWithOptions' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
-}
-
-declare module 'date-fns/fp/getDayWithOptions' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours' {
@@ -4321,6 +4321,11 @@ declare module 'date-fns/fp/getISOWeek' {
   export = getISOWeek
 }
 
+declare module 'date-fns/fp/getISOWeekWithOptions' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
+}
+
 declare module 'date-fns/fp/getISOWeeksInYear' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -4329,11 +4334,6 @@ declare module 'date-fns/fp/getISOWeeksInYear' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/fp/getISOWeekWithOptions' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear' {
@@ -5611,6 +5611,11 @@ declare module 'date-fns/fp/getDayOfYearWithOptions/index' {
   export = getDayOfYearWithOptions
 }
 
+declare module 'date-fns/fp/getDayWithOptions/index' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
+}
+
 declare module 'date-fns/fp/getDaysInMonth/index' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -5629,11 +5634,6 @@ declare module 'date-fns/fp/getDaysInYear/index' {
 declare module 'date-fns/fp/getDaysInYearWithOptions/index' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
-}
-
-declare module 'date-fns/fp/getDayWithOptions/index' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index' {
@@ -5661,6 +5661,11 @@ declare module 'date-fns/fp/getISOWeek/index' {
   export = getISOWeek
 }
 
+declare module 'date-fns/fp/getISOWeekWithOptions/index' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
+}
+
 declare module 'date-fns/fp/getISOWeeksInYear/index' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -5669,11 +5674,6 @@ declare module 'date-fns/fp/getISOWeeksInYear/index' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions/index' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/fp/getISOWeekWithOptions/index' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear/index' {
@@ -6951,6 +6951,11 @@ declare module 'date-fns/fp/getDayOfYearWithOptions/index.js' {
   export = getDayOfYearWithOptions
 }
 
+declare module 'date-fns/fp/getDayWithOptions/index.js' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
+}
+
 declare module 'date-fns/fp/getDaysInMonth/index.js' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -6969,11 +6974,6 @@ declare module 'date-fns/fp/getDaysInYear/index.js' {
 declare module 'date-fns/fp/getDaysInYearWithOptions/index.js' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
-}
-
-declare module 'date-fns/fp/getDayWithOptions/index.js' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index.js' {
@@ -7001,6 +7001,11 @@ declare module 'date-fns/fp/getISOWeek/index.js' {
   export = getISOWeek
 }
 
+declare module 'date-fns/fp/getISOWeekWithOptions/index.js' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
+}
+
 declare module 'date-fns/fp/getISOWeeksInYear/index.js' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -7009,11 +7014,6 @@ declare module 'date-fns/fp/getISOWeeksInYear/index.js' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions/index.js' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/fp/getISOWeekWithOptions/index.js' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear/index.js' {
@@ -10693,808 +10693,808 @@ declare module 'date-fns/esm/toDate/index.js' {
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
-  let addDays: CurriedFn2<number, Date | string | number, Date>
+  const addDays: CurriedFn2<number, Date | string | number, Date>
   namespace addDays {}
 
-  let addDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addDaysWithOptions {}
 
-  let addHours: CurriedFn2<number, Date | string | number, Date>
+  const addHours: CurriedFn2<number, Date | string | number, Date>
   namespace addHours {}
 
-  let addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addHoursWithOptions {}
 
-  let addISOYears: CurriedFn2<number, Date | string | number, Date>
+  const addISOYears: CurriedFn2<number, Date | string | number, Date>
   namespace addISOYears {}
 
-  let addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addISOYearsWithOptions {}
 
-  let addMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace addMilliseconds {}
 
-  let addMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMillisecondsWithOptions {}
 
-  let addMinutes: CurriedFn2<number, Date | string | number, Date>
+  const addMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace addMinutes {}
 
-  let addMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMinutesWithOptions {}
 
-  let addMonths: CurriedFn2<number, Date | string | number, Date>
+  const addMonths: CurriedFn2<number, Date | string | number, Date>
   namespace addMonths {}
 
-  let addMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addMonthsWithOptions {}
 
-  let addQuarters: CurriedFn2<number, Date | string | number, Date>
+  const addQuarters: CurriedFn2<number, Date | string | number, Date>
   namespace addQuarters {}
 
-  let addQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addQuartersWithOptions {}
 
-  let addSeconds: CurriedFn2<number, Date | string | number, Date>
+  const addSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace addSeconds {}
 
-  let addSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addSecondsWithOptions {}
 
-  let addWeeks: CurriedFn2<number, Date | string | number, Date>
+  const addWeeks: CurriedFn2<number, Date | string | number, Date>
   namespace addWeeks {}
 
-  let addWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addWeeksWithOptions {}
 
-  let addYears: CurriedFn2<number, Date | string | number, Date>
+  const addYears: CurriedFn2<number, Date | string | number, Date>
   namespace addYears {}
 
-  let addYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const addYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addYearsWithOptions {}
 
-  let areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
+  const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
   namespace areIntervalsOverlapping {}
 
-  let areIntervalsOverlappingWithOptions: CurriedFn3<Options, Interval, Interval, boolean>
+  const areIntervalsOverlappingWithOptions: CurriedFn3<Options, Interval, Interval, boolean>
   namespace areIntervalsOverlappingWithOptions {}
 
-  let closestIndexTo: CurriedFn2<(Date | string | number)[], Date | string | number, number>
+  const closestIndexTo: CurriedFn2<(Date | string | number)[], Date | string | number, number>
   namespace closestIndexTo {}
 
-  let closestIndexToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, number>
+  const closestIndexToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, number>
   namespace closestIndexToWithOptions {}
 
-  let closestTo: CurriedFn2<(Date | string | number)[], Date | string | number, Date>
+  const closestTo: CurriedFn2<(Date | string | number)[], Date | string | number, Date>
   namespace closestTo {}
 
-  let closestToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, Date>
+  const closestToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, Date>
   namespace closestToWithOptions {}
 
-  let compareAsc: CurriedFn2<Date | string | number, Date | string | number, number>
+  const compareAsc: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace compareAsc {}
 
-  let compareAscWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const compareAscWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace compareAscWithOptions {}
 
-  let compareDesc: CurriedFn2<Date | string | number, Date | string | number, number>
+  const compareDesc: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace compareDesc {}
 
-  let compareDescWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const compareDescWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace compareDescWithOptions {}
 
-  let differenceInCalendarDays: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarDays: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarDays {}
 
-  let differenceInCalendarDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarDaysWithOptions {}
 
-  let differenceInCalendarISOWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeks {}
 
-  let differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeksWithOptions {}
 
-  let differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOYears {}
 
-  let differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOYearsWithOptions {}
 
-  let differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonths {}
 
-  let differenceInCalendarMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonthsWithOptions {}
 
-  let differenceInCalendarQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarQuarters {}
 
-  let differenceInCalendarQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarQuartersWithOptions {}
 
-  let differenceInCalendarWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarWeeks {}
 
-  let differenceInCalendarWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarWeeksWithOptions {}
 
-  let differenceInCalendarYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInCalendarYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarYears {}
 
-  let differenceInCalendarYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInCalendarYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarYearsWithOptions {}
 
-  let differenceInDays: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInDays: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInDays {}
 
-  let differenceInDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInDaysWithOptions {}
 
-  let differenceInHours: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInHours: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInHours {}
 
-  let differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInHoursWithOptions {}
 
-  let differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInISOYears {}
 
-  let differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInISOYearsWithOptions {}
 
-  let differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMilliseconds {}
 
-  let differenceInMillisecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMillisecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMillisecondsWithOptions {}
 
-  let differenceInMinutes: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMinutes: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMinutes {}
 
-  let differenceInMinutesWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMinutesWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMinutesWithOptions {}
 
-  let differenceInMonths: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMonths {}
 
-  let differenceInMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInMonthsWithOptions {}
 
-  let differenceInQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInQuarters: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInQuarters {}
 
-  let differenceInQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInQuartersWithOptions {}
 
-  let differenceInSeconds: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInSeconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInSeconds {}
 
-  let differenceInSecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInSecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInSecondsWithOptions {}
 
-  let differenceInWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInWeeks: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInWeeks {}
 
-  let differenceInWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInWeeksWithOptions {}
 
-  let differenceInYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  const differenceInYears: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInYears {}
 
-  let differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  const differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInYearsWithOptions {}
 
-  let eachDayOfInterval: CurriedFn1<Interval, Date[]>
+  const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  let eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {}
 
-  let endOfDay: CurriedFn1<Date | string | number, Date>
+  const endOfDay: CurriedFn1<Date | string | number, Date>
   namespace endOfDay {}
 
-  let endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfDayWithOptions {}
 
-  let endOfHour: CurriedFn1<Date | string | number, Date>
+  const endOfHour: CurriedFn1<Date | string | number, Date>
   namespace endOfHour {}
 
-  let endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfHourWithOptions {}
 
-  let endOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace endOfISOWeek {}
 
-  let endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOWeekWithOptions {}
 
-  let endOfISOYear: CurriedFn1<Date | string | number, Date>
+  const endOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace endOfISOYear {}
 
-  let endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOYearWithOptions {}
 
-  let endOfMinute: CurriedFn1<Date | string | number, Date>
+  const endOfMinute: CurriedFn1<Date | string | number, Date>
   namespace endOfMinute {}
 
-  let endOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfMinuteWithOptions {}
 
-  let endOfMonth: CurriedFn1<Date | string | number, Date>
+  const endOfMonth: CurriedFn1<Date | string | number, Date>
   namespace endOfMonth {}
 
-  let endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfMonthWithOptions {}
 
-  let endOfQuarter: CurriedFn1<Date | string | number, Date>
+  const endOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace endOfQuarter {}
 
-  let endOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfQuarterWithOptions {}
 
-  let endOfSecond: CurriedFn1<Date | string | number, Date>
+  const endOfSecond: CurriedFn1<Date | string | number, Date>
   namespace endOfSecond {}
 
-  let endOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfSecondWithOptions {}
 
-  let endOfWeek: CurriedFn1<Date | string | number, Date>
+  const endOfWeek: CurriedFn1<Date | string | number, Date>
   namespace endOfWeek {}
 
-  let endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfWeekWithOptions {}
 
-  let endOfYear: CurriedFn1<Date | string | number, Date>
+  const endOfYear: CurriedFn1<Date | string | number, Date>
   namespace endOfYear {}
 
-  let endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfYearWithOptions {}
 
-  let format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | string | number, string>
   namespace format {}
 
-  let formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatDistance {}
 
-  let formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatDistanceStrict {}
 
-  let formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatDistanceStrictWithOptions {}
 
-  let formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatDistanceWithOptions {}
 
-  let formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
+  const formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>
   namespace formatRelative {}
 
-  let formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
+  const formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>
   namespace formatRelativeWithOptions {}
 
-  let formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
+  const formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
 
-  let getDate: CurriedFn1<Date | string | number, number>
+  const getDate: CurriedFn1<Date | string | number, number>
   namespace getDate {}
 
-  let getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDateWithOptions {}
 
-  let getDay: CurriedFn1<Date | string | number, number>
+  const getDay: CurriedFn1<Date | string | number, number>
   namespace getDay {}
 
-  let getDayOfYear: CurriedFn1<Date | string | number, number>
+  const getDayOfYear: CurriedFn1<Date | string | number, number>
   namespace getDayOfYear {}
 
-  let getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayOfYearWithOptions {}
 
-  let getDaysInMonth: CurriedFn1<Date | string | number, number>
-  namespace getDaysInMonth {}
-
-  let getDaysInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDaysInMonthWithOptions {}
-
-  let getDaysInYear: CurriedFn1<Date | string | number, number>
-  namespace getDaysInYear {}
-
-  let getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDaysInYearWithOptions {}
-
-  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayWithOptions {}
 
-  let getHours: CurriedFn1<Date | string | number, number>
+  const getDaysInMonth: CurriedFn1<Date | string | number, number>
+  namespace getDaysInMonth {}
+
+  const getDaysInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDaysInMonthWithOptions {}
+
+  const getDaysInYear: CurriedFn1<Date | string | number, number>
+  namespace getDaysInYear {}
+
+  const getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDaysInYearWithOptions {}
+
+  const getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
 
-  let getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getHoursWithOptions {}
 
-  let getISODay: CurriedFn1<Date | string | number, number>
+  const getISODay: CurriedFn1<Date | string | number, number>
   namespace getISODay {}
 
-  let getISODayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISODayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISODayWithOptions {}
 
-  let getISOWeek: CurriedFn1<Date | string | number, number>
+  const getISOWeek: CurriedFn1<Date | string | number, number>
   namespace getISOWeek {}
 
-  let getISOWeeksInYear: CurriedFn1<Date | string | number, number>
-  namespace getISOWeeksInYear {}
-
-  let getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOWeeksInYearWithOptions {}
-
-  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeekWithOptions {}
 
-  let getISOYear: CurriedFn1<Date | string | number, number>
+  const getISOWeeksInYear: CurriedFn1<Date | string | number, number>
+  namespace getISOWeeksInYear {}
+
+  const getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeeksInYearWithOptions {}
+
+  const getISOYear: CurriedFn1<Date | string | number, number>
   namespace getISOYear {}
 
-  let getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOYearWithOptions {}
 
-  let getMilliseconds: CurriedFn1<Date | string | number, number>
+  const getMilliseconds: CurriedFn1<Date | string | number, number>
   namespace getMilliseconds {}
 
-  let getMillisecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMillisecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMillisecondsWithOptions {}
 
-  let getMinutes: CurriedFn1<Date | string | number, number>
+  const getMinutes: CurriedFn1<Date | string | number, number>
   namespace getMinutes {}
 
-  let getMinutesWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMinutesWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMinutesWithOptions {}
 
-  let getMonth: CurriedFn1<Date | string | number, number>
+  const getMonth: CurriedFn1<Date | string | number, number>
   namespace getMonth {}
 
-  let getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getMonthWithOptions {}
 
-  let getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
+  const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
   namespace getOverlappingDaysInIntervals {}
 
-  let getOverlappingDaysInIntervalsWithOptions: CurriedFn3<Options, Interval, Interval, number>
+  const getOverlappingDaysInIntervalsWithOptions: CurriedFn3<Options, Interval, Interval, number>
   namespace getOverlappingDaysInIntervalsWithOptions {}
 
-  let getQuarter: CurriedFn1<Date | string | number, number>
+  const getQuarter: CurriedFn1<Date | string | number, number>
   namespace getQuarter {}
 
-  let getQuarterWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getQuarterWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getQuarterWithOptions {}
 
-  let getSeconds: CurriedFn1<Date | string | number, number>
+  const getSeconds: CurriedFn1<Date | string | number, number>
   namespace getSeconds {}
 
-  let getSecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getSecondsWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getSecondsWithOptions {}
 
-  let getTime: CurriedFn1<Date | string | number, number>
+  const getTime: CurriedFn1<Date | string | number, number>
   namespace getTime {}
 
-  let getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
 
-  let getYear: CurriedFn1<Date | string | number, number>
+  const getYear: CurriedFn1<Date | string | number, number>
   namespace getYear {}
 
-  let getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getYearWithOptions {}
 
-  let isAfter: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isAfter: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isAfter {}
 
-  let isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isAfterWithOptions {}
 
-  let isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isBefore {}
 
-  let isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
 
-  let isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
 
-  let isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isEqualWithOptions {}
 
-  let isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
   namespace isFirstDayOfMonth {}
 
-  let isFirstDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isFirstDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isFirstDayOfMonthWithOptions {}
 
-  let isFriday: CurriedFn1<Date | string | number, boolean>
+  const isFriday: CurriedFn1<Date | string | number, boolean>
   namespace isFriday {}
 
-  let isFridayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isFridayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isFridayWithOptions {}
 
-  let isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
   namespace isLastDayOfMonth {}
 
-  let isLastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isLastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isLastDayOfMonthWithOptions {}
 
-  let isLeapYear: CurriedFn1<Date | string | number, boolean>
+  const isLeapYear: CurriedFn1<Date | string | number, boolean>
   namespace isLeapYear {}
 
-  let isLeapYearWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isLeapYearWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isLeapYearWithOptions {}
 
-  let isMonday: CurriedFn1<Date | string | number, boolean>
+  const isMonday: CurriedFn1<Date | string | number, boolean>
   namespace isMonday {}
 
-  let isMondayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isMondayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isMondayWithOptions {}
 
-  let isSameDay: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameDay: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameDay {}
 
-  let isSameDayWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameDayWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameDayWithOptions {}
 
-  let isSameHour: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameHour: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameHour {}
 
-  let isSameHourWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameHourWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameHourWithOptions {}
 
-  let isSameISOWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameISOWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeek {}
 
-  let isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeekWithOptions {}
 
-  let isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameISOYear {}
 
-  let isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOYearWithOptions {}
 
-  let isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMinute {}
 
-  let isSameMinuteWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameMinuteWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameMinuteWithOptions {}
 
-  let isSameMonth: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameMonth: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMonth {}
 
-  let isSameMonthWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameMonthWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameMonthWithOptions {}
 
-  let isSameQuarter: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameQuarter: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameQuarter {}
 
-  let isSameQuarterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameQuarterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameQuarterWithOptions {}
 
-  let isSameSecond: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameSecond: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameSecond {}
 
-  let isSameSecondWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameSecondWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameSecondWithOptions {}
 
-  let isSameWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameWeek {}
 
-  let isSameWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameWeekWithOptions {}
 
-  let isSameYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  const isSameYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameYear {}
 
-  let isSameYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  const isSameYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameYearWithOptions {}
 
-  let isSaturday: CurriedFn1<Date | string | number, boolean>
+  const isSaturday: CurriedFn1<Date | string | number, boolean>
   namespace isSaturday {}
 
-  let isSaturdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isSaturdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isSaturdayWithOptions {}
 
-  let isSunday: CurriedFn1<Date | string | number, boolean>
+  const isSunday: CurriedFn1<Date | string | number, boolean>
   namespace isSunday {}
 
-  let isSundayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isSundayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isSundayWithOptions {}
 
-  let isThursday: CurriedFn1<Date | string | number, boolean>
+  const isThursday: CurriedFn1<Date | string | number, boolean>
   namespace isThursday {}
 
-  let isThursdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isThursdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isThursdayWithOptions {}
 
-  let isTuesday: CurriedFn1<Date | string | number, boolean>
+  const isTuesday: CurriedFn1<Date | string | number, boolean>
   namespace isTuesday {}
 
-  let isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  let isValid: CurriedFn1<Date | string | number, boolean>
+  const isValid: CurriedFn1<Date | string | number, boolean>
   namespace isValid {}
 
-  let isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isValidWithOptions {}
 
-  let isWednesday: CurriedFn1<Date | string | number, boolean>
+  const isWednesday: CurriedFn1<Date | string | number, boolean>
   namespace isWednesday {}
 
-  let isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isWednesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isWednesdayWithOptions {}
 
-  let isWeekend: CurriedFn1<Date | string | number, boolean>
+  const isWeekend: CurriedFn1<Date | string | number, boolean>
   namespace isWeekend {}
 
-  let isWeekendWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isWeekendWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isWeekendWithOptions {}
 
-  let isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
+  const isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
   namespace isWithinInterval {}
 
-  let isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
+  const isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
   namespace isWithinIntervalWithOptions {}
 
-  let lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOWeek {}
 
-  let lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOWeekWithOptions {}
 
-  let lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOYear {}
 
-  let lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOYearWithOptions {}
 
-  let lastDayOfMonth: CurriedFn1<Date | string | number, Date>
+  const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfMonth {}
 
-  let lastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfMonthWithOptions {}
 
-  let lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
+  const lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfQuarter {}
 
-  let lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfQuarterWithOptions {}
 
-  let lastDayOfWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfWeek {}
 
-  let lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfWeekWithOptions {}
 
-  let lastDayOfYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfYear: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfYear {}
 
-  let lastDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const lastDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfYearWithOptions {}
 
-  let max: CurriedFn1<(Date | string | number)[], Date>
+  const max: CurriedFn1<(Date | string | number)[], Date>
   namespace max {}
 
-  let maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace maxWithOptions {}
 
-  let min: CurriedFn1<(Date | string | number)[], Date>
+  const min: CurriedFn1<(Date | string | number)[], Date>
   namespace min {}
 
-  let minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace minWithOptions {}
 
-  let parse: CurriedFn3<Date | string | number, string, string, Date>
+  const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
 
-  let parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
+  const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
 
-  let setDate: CurriedFn2<number, Date | string | number, Date>
+  const setDate: CurriedFn2<number, Date | string | number, Date>
   namespace setDate {}
 
-  let setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDateWithOptions {}
 
-  let setDay: CurriedFn2<number, Date | string | number, Date>
+  const setDay: CurriedFn2<number, Date | string | number, Date>
   namespace setDay {}
 
-  let setDayOfYear: CurriedFn2<number, Date | string | number, Date>
+  const setDayOfYear: CurriedFn2<number, Date | string | number, Date>
   namespace setDayOfYear {}
 
-  let setDayOfYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDayOfYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDayOfYearWithOptions {}
 
-  let setDayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setDayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setDayWithOptions {}
 
-  let setHours: CurriedFn2<number, Date | string | number, Date>
+  const setHours: CurriedFn2<number, Date | string | number, Date>
   namespace setHours {}
 
-  let setHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setHoursWithOptions {}
 
-  let setISODay: CurriedFn2<number, Date | string | number, Date>
+  const setISODay: CurriedFn2<number, Date | string | number, Date>
   namespace setISODay {}
 
-  let setISODayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISODayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISODayWithOptions {}
 
-  let setISOWeek: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeek: CurriedFn2<number, Date | string | number, Date>
   namespace setISOWeek {}
 
-  let setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOWeekWithOptions {}
 
-  let setISOYear: CurriedFn2<number, Date | string | number, Date>
+  const setISOYear: CurriedFn2<number, Date | string | number, Date>
   namespace setISOYear {}
 
-  let setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOYearWithOptions {}
 
-  let setMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace setMilliseconds {}
 
-  let setMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMillisecondsWithOptions {}
 
-  let setMinutes: CurriedFn2<number, Date | string | number, Date>
+  const setMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace setMinutes {}
 
-  let setMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMinutesWithOptions {}
 
-  let setMonth: CurriedFn2<number, Date | string | number, Date>
+  const setMonth: CurriedFn2<number, Date | string | number, Date>
   namespace setMonth {}
 
-  let setMonthWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setMonthWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setMonthWithOptions {}
 
-  let setQuarter: CurriedFn2<number, Date | string | number, Date>
+  const setQuarter: CurriedFn2<number, Date | string | number, Date>
   namespace setQuarter {}
 
-  let setQuarterWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setQuarterWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setQuarterWithOptions {}
 
-  let setSeconds: CurriedFn2<number, Date | string | number, Date>
+  const setSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace setSeconds {}
 
-  let setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setSecondsWithOptions {}
 
-  let setYear: CurriedFn2<number, Date | string | number, Date>
+  const setYear: CurriedFn2<number, Date | string | number, Date>
   namespace setYear {}
 
-  let setYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const setYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setYearWithOptions {}
 
-  let startOfDay: CurriedFn1<Date | string | number, Date>
+  const startOfDay: CurriedFn1<Date | string | number, Date>
   namespace startOfDay {}
 
-  let startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfDayWithOptions {}
 
-  let startOfHour: CurriedFn1<Date | string | number, Date>
+  const startOfHour: CurriedFn1<Date | string | number, Date>
   namespace startOfHour {}
 
-  let startOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfHourWithOptions {}
 
-  let startOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace startOfISOWeek {}
 
-  let startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOWeekWithOptions {}
 
-  let startOfISOYear: CurriedFn1<Date | string | number, Date>
+  const startOfISOYear: CurriedFn1<Date | string | number, Date>
   namespace startOfISOYear {}
 
-  let startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOYearWithOptions {}
 
-  let startOfMinute: CurriedFn1<Date | string | number, Date>
+  const startOfMinute: CurriedFn1<Date | string | number, Date>
   namespace startOfMinute {}
 
-  let startOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfMinuteWithOptions {}
 
-  let startOfMonth: CurriedFn1<Date | string | number, Date>
+  const startOfMonth: CurriedFn1<Date | string | number, Date>
   namespace startOfMonth {}
 
-  let startOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfMonthWithOptions {}
 
-  let startOfQuarter: CurriedFn1<Date | string | number, Date>
+  const startOfQuarter: CurriedFn1<Date | string | number, Date>
   namespace startOfQuarter {}
 
-  let startOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfQuarterWithOptions {}
 
-  let startOfSecond: CurriedFn1<Date | string | number, Date>
+  const startOfSecond: CurriedFn1<Date | string | number, Date>
   namespace startOfSecond {}
 
-  let startOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfSecondWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfSecondWithOptions {}
 
-  let startOfWeek: CurriedFn1<Date | string | number, Date>
+  const startOfWeek: CurriedFn1<Date | string | number, Date>
   namespace startOfWeek {}
 
-  let startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfWeekWithOptions {}
 
-  let startOfYear: CurriedFn1<Date | string | number, Date>
+  const startOfYear: CurriedFn1<Date | string | number, Date>
   namespace startOfYear {}
 
-  let startOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfYearWithOptions {}
 
-  let subDays: CurriedFn2<number, Date | string | number, Date>
+  const subDays: CurriedFn2<number, Date | string | number, Date>
   namespace subDays {}
 
-  let subDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subDaysWithOptions {}
 
-  let subHours: CurriedFn2<number, Date | string | number, Date>
+  const subHours: CurriedFn2<number, Date | string | number, Date>
   namespace subHours {}
 
-  let subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subHoursWithOptions {}
 
-  let subISOYears: CurriedFn2<number, Date | string | number, Date>
+  const subISOYears: CurriedFn2<number, Date | string | number, Date>
   namespace subISOYears {}
 
-  let subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subISOYearsWithOptions {}
 
-  let subMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace subMilliseconds {}
 
-  let subMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMillisecondsWithOptions {}
 
-  let subMinutes: CurriedFn2<number, Date | string | number, Date>
+  const subMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace subMinutes {}
 
-  let subMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMinutesWithOptions {}
 
-  let subMonths: CurriedFn2<number, Date | string | number, Date>
+  const subMonths: CurriedFn2<number, Date | string | number, Date>
   namespace subMonths {}
 
-  let subMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subMonthsWithOptions {}
 
-  let subQuarters: CurriedFn2<number, Date | string | number, Date>
+  const subQuarters: CurriedFn2<number, Date | string | number, Date>
   namespace subQuarters {}
 
-  let subQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subQuartersWithOptions {}
 
-  let subSeconds: CurriedFn2<number, Date | string | number, Date>
+  const subSeconds: CurriedFn2<number, Date | string | number, Date>
   namespace subSeconds {}
 
-  let subSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subSecondsWithOptions {}
 
-  let subWeeks: CurriedFn2<number, Date | string | number, Date>
+  const subWeeks: CurriedFn2<number, Date | string | number, Date>
   namespace subWeeks {}
 
-  let subWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subWeeksWithOptions {}
 
-  let subYears: CurriedFn2<number, Date | string | number, Date>
+  const subYears: CurriedFn2<number, Date | string | number, Date>
   namespace subYears {}
 
-  let subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  let toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  let toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -11993,6 +11993,11 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions' {
   export default getDayOfYearWithOptions
 }
 
+declare module 'date-fns/esm/fp/getDayWithOptions' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
+}
+
 declare module 'date-fns/esm/fp/getDaysInMonth' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -12011,11 +12016,6 @@ declare module 'date-fns/esm/fp/getDaysInYear' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getDayWithOptions' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours' {
@@ -12043,6 +12043,11 @@ declare module 'date-fns/esm/fp/getISOWeek' {
   export default getISOWeek
 }
 
+declare module 'date-fns/esm/fp/getISOWeekWithOptions' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
+}
+
 declare module 'date-fns/esm/fp/getISOWeeksInYear' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -12051,11 +12056,6 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getISOWeekWithOptions' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear' {
@@ -13333,6 +13333,11 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions/index' {
   export default getDayOfYearWithOptions
 }
 
+declare module 'date-fns/esm/fp/getDayWithOptions/index' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
+}
+
 declare module 'date-fns/esm/fp/getDaysInMonth/index' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -13351,11 +13356,6 @@ declare module 'date-fns/esm/fp/getDaysInYear/index' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getDayWithOptions/index' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index' {
@@ -13383,6 +13383,11 @@ declare module 'date-fns/esm/fp/getISOWeek/index' {
   export default getISOWeek
 }
 
+declare module 'date-fns/esm/fp/getISOWeekWithOptions/index' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
+}
+
 declare module 'date-fns/esm/fp/getISOWeeksInYear/index' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -13391,11 +13396,6 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear/index' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions/index' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getISOWeekWithOptions/index' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear/index' {
@@ -14673,6 +14673,11 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions/index.js' {
   export default getDayOfYearWithOptions
 }
 
+declare module 'date-fns/esm/fp/getDayWithOptions/index.js' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
+}
+
 declare module 'date-fns/esm/fp/getDaysInMonth/index.js' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -14691,11 +14696,6 @@ declare module 'date-fns/esm/fp/getDaysInYear/index.js' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index.js' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getDayWithOptions/index.js' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index.js' {
@@ -14723,6 +14723,11 @@ declare module 'date-fns/esm/fp/getISOWeek/index.js' {
   export default getISOWeek
 }
 
+declare module 'date-fns/esm/fp/getISOWeekWithOptions/index.js' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
+}
+
 declare module 'date-fns/esm/fp/getISOWeeksInYear/index.js' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -14731,11 +14736,6 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear/index.js' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions/index.js' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
-}
-
-declare module 'date-fns/esm/fp/getISOWeekWithOptions/index.js' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear/index.js' {
@@ -15518,969 +15518,1167 @@ declare module 'date-fns/esm/fp/toDateWithOptions/index.js' {
   export default toDateWithOptions
 }
 
-// Locales
+// Regular Locales
+
+declare module 'date-fns/locale' {
+  const ar: Locale
+  namespace ar {}
+
+  const bg: Locale
+  namespace bg {}
+
+  const ca: Locale
+  namespace ca {}
+
+  const cs: Locale
+  namespace cs {}
+
+  const da: Locale
+  namespace da {}
+
+  const de: Locale
+  namespace de {}
+
+  const el: Locale
+  namespace el {}
+
+  const enUS: Locale
+  namespace enUS {}
+
+  const eo: Locale
+  namespace eo {}
+
+  const es: Locale
+  namespace es {}
+
+  const fi: Locale
+  namespace fi {}
+
+  const fil: Locale
+  namespace fil {}
+
+  const fr: Locale
+  namespace fr {}
+
+  const hr: Locale
+  namespace hr {}
+
+  const id: Locale
+  namespace id {}
+
+  const is: Locale
+  namespace is {}
+
+  const it: Locale
+  namespace it {}
+
+  const ja: Locale
+  namespace ja {}
+
+  const ko: Locale
+  namespace ko {}
+
+  const mk: Locale
+  namespace mk {}
+
+  const nb: Locale
+  namespace nb {}
+
+  const nl: Locale
+  namespace nl {}
+
+  const pl: Locale
+  namespace pl {}
+
+  const pt: Locale
+  namespace pt {}
+
+  const ro: Locale
+  namespace ro {}
+
+  const ru: Locale
+  namespace ru {}
+
+  const sk: Locale
+  namespace sk {}
+
+  const sv: Locale
+  namespace sv {}
+
+  const th: Locale
+  namespace th {}
+
+  const tr: Locale
+  namespace tr {}
+
+  const zhCN: Locale
+  namespace zhCN {}
+
+  const zhTW: Locale
+  namespace zhTW {}
+}
 
 declare module 'date-fns/locale/ar' {
-  const locale: Locale
-  export = locale
+  import {ar} from 'date-fns/locale'
+  export = ar
 }
 
 declare module 'date-fns/locale/bg' {
-  const locale: Locale
-  export = locale
+  import {bg} from 'date-fns/locale'
+  export = bg
 }
 
 declare module 'date-fns/locale/ca' {
-  const locale: Locale
-  export = locale
+  import {ca} from 'date-fns/locale'
+  export = ca
 }
 
 declare module 'date-fns/locale/cs' {
-  const locale: Locale
-  export = locale
+  import {cs} from 'date-fns/locale'
+  export = cs
 }
 
 declare module 'date-fns/locale/da' {
-  const locale: Locale
-  export = locale
+  import {da} from 'date-fns/locale'
+  export = da
 }
 
 declare module 'date-fns/locale/de' {
-  const locale: Locale
-  export = locale
+  import {de} from 'date-fns/locale'
+  export = de
 }
 
 declare module 'date-fns/locale/el' {
-  const locale: Locale
-  export = locale
+  import {el} from 'date-fns/locale'
+  export = el
 }
 
 declare module 'date-fns/locale/en-US' {
-  const locale: Locale
-  export = locale
+  import {enUS} from 'date-fns/locale'
+  export = enUS
 }
 
 declare module 'date-fns/locale/eo' {
-  const locale: Locale
-  export = locale
+  import {eo} from 'date-fns/locale'
+  export = eo
 }
 
 declare module 'date-fns/locale/es' {
-  const locale: Locale
-  export = locale
+  import {es} from 'date-fns/locale'
+  export = es
 }
 
 declare module 'date-fns/locale/fi' {
-  const locale: Locale
-  export = locale
+  import {fi} from 'date-fns/locale'
+  export = fi
 }
 
 declare module 'date-fns/locale/fil' {
-  const locale: Locale
-  export = locale
+  import {fil} from 'date-fns/locale'
+  export = fil
 }
 
 declare module 'date-fns/locale/fr' {
-  const locale: Locale
-  export = locale
+  import {fr} from 'date-fns/locale'
+  export = fr
 }
 
 declare module 'date-fns/locale/hr' {
-  const locale: Locale
-  export = locale
+  import {hr} from 'date-fns/locale'
+  export = hr
 }
 
 declare module 'date-fns/locale/id' {
-  const locale: Locale
-  export = locale
+  import {id} from 'date-fns/locale'
+  export = id
 }
 
 declare module 'date-fns/locale/is' {
-  const locale: Locale
-  export = locale
+  import {is} from 'date-fns/locale'
+  export = is
 }
 
 declare module 'date-fns/locale/it' {
-  const locale: Locale
-  export = locale
+  import {it} from 'date-fns/locale'
+  export = it
 }
 
 declare module 'date-fns/locale/ja' {
-  const locale: Locale
-  export = locale
+  import {ja} from 'date-fns/locale'
+  export = ja
 }
 
 declare module 'date-fns/locale/ko' {
-  const locale: Locale
-  export = locale
+  import {ko} from 'date-fns/locale'
+  export = ko
 }
 
 declare module 'date-fns/locale/mk' {
-  const locale: Locale
-  export = locale
+  import {mk} from 'date-fns/locale'
+  export = mk
 }
 
 declare module 'date-fns/locale/nb' {
-  const locale: Locale
-  export = locale
+  import {nb} from 'date-fns/locale'
+  export = nb
 }
 
 declare module 'date-fns/locale/nl' {
-  const locale: Locale
-  export = locale
+  import {nl} from 'date-fns/locale'
+  export = nl
 }
 
 declare module 'date-fns/locale/pl' {
-  const locale: Locale
-  export = locale
+  import {pl} from 'date-fns/locale'
+  export = pl
 }
 
 declare module 'date-fns/locale/pt' {
-  const locale: Locale
-  export = locale
+  import {pt} from 'date-fns/locale'
+  export = pt
 }
 
 declare module 'date-fns/locale/ro' {
-  const locale: Locale
-  export = locale
+  import {ro} from 'date-fns/locale'
+  export = ro
 }
 
 declare module 'date-fns/locale/ru' {
-  const locale: Locale
-  export = locale
+  import {ru} from 'date-fns/locale'
+  export = ru
 }
 
 declare module 'date-fns/locale/sk' {
-  const locale: Locale
-  export = locale
+  import {sk} from 'date-fns/locale'
+  export = sk
 }
 
 declare module 'date-fns/locale/sv' {
-  const locale: Locale
-  export = locale
+  import {sv} from 'date-fns/locale'
+  export = sv
 }
 
 declare module 'date-fns/locale/th' {
-  const locale: Locale
-  export = locale
+  import {th} from 'date-fns/locale'
+  export = th
 }
 
 declare module 'date-fns/locale/tr' {
-  const locale: Locale
-  export = locale
+  import {tr} from 'date-fns/locale'
+  export = tr
 }
 
 declare module 'date-fns/locale/zh-CN' {
-  const locale: Locale
-  export = locale
+  import {zhCN} from 'date-fns/locale'
+  export = zhCN
 }
 
 declare module 'date-fns/locale/zh-TW' {
-  const locale: Locale
-  export = locale
+  import {zhTW} from 'date-fns/locale'
+  export = zhTW
 }
 
 declare module 'date-fns/locale/ar/index' {
-  const locale: Locale
-  export = locale
+  import {ar} from 'date-fns/locale'
+  export = ar
 }
 
 declare module 'date-fns/locale/bg/index' {
-  const locale: Locale
-  export = locale
+  import {bg} from 'date-fns/locale'
+  export = bg
 }
 
 declare module 'date-fns/locale/ca/index' {
-  const locale: Locale
-  export = locale
+  import {ca} from 'date-fns/locale'
+  export = ca
 }
 
 declare module 'date-fns/locale/cs/index' {
-  const locale: Locale
-  export = locale
+  import {cs} from 'date-fns/locale'
+  export = cs
 }
 
 declare module 'date-fns/locale/da/index' {
-  const locale: Locale
-  export = locale
+  import {da} from 'date-fns/locale'
+  export = da
 }
 
 declare module 'date-fns/locale/de/index' {
-  const locale: Locale
-  export = locale
+  import {de} from 'date-fns/locale'
+  export = de
 }
 
 declare module 'date-fns/locale/el/index' {
-  const locale: Locale
-  export = locale
+  import {el} from 'date-fns/locale'
+  export = el
 }
 
 declare module 'date-fns/locale/en-US/index' {
-  const locale: Locale
-  export = locale
+  import {enUS} from 'date-fns/locale'
+  export = enUS
 }
 
 declare module 'date-fns/locale/eo/index' {
-  const locale: Locale
-  export = locale
+  import {eo} from 'date-fns/locale'
+  export = eo
 }
 
 declare module 'date-fns/locale/es/index' {
-  const locale: Locale
-  export = locale
+  import {es} from 'date-fns/locale'
+  export = es
 }
 
 declare module 'date-fns/locale/fi/index' {
-  const locale: Locale
-  export = locale
+  import {fi} from 'date-fns/locale'
+  export = fi
 }
 
 declare module 'date-fns/locale/fil/index' {
-  const locale: Locale
-  export = locale
+  import {fil} from 'date-fns/locale'
+  export = fil
 }
 
 declare module 'date-fns/locale/fr/index' {
-  const locale: Locale
-  export = locale
+  import {fr} from 'date-fns/locale'
+  export = fr
 }
 
 declare module 'date-fns/locale/hr/index' {
-  const locale: Locale
-  export = locale
+  import {hr} from 'date-fns/locale'
+  export = hr
 }
 
 declare module 'date-fns/locale/id/index' {
-  const locale: Locale
-  export = locale
+  import {id} from 'date-fns/locale'
+  export = id
 }
 
 declare module 'date-fns/locale/is/index' {
-  const locale: Locale
-  export = locale
+  import {is} from 'date-fns/locale'
+  export = is
 }
 
 declare module 'date-fns/locale/it/index' {
-  const locale: Locale
-  export = locale
+  import {it} from 'date-fns/locale'
+  export = it
 }
 
 declare module 'date-fns/locale/ja/index' {
-  const locale: Locale
-  export = locale
+  import {ja} from 'date-fns/locale'
+  export = ja
 }
 
 declare module 'date-fns/locale/ko/index' {
-  const locale: Locale
-  export = locale
+  import {ko} from 'date-fns/locale'
+  export = ko
 }
 
 declare module 'date-fns/locale/mk/index' {
-  const locale: Locale
-  export = locale
+  import {mk} from 'date-fns/locale'
+  export = mk
 }
 
 declare module 'date-fns/locale/nb/index' {
-  const locale: Locale
-  export = locale
+  import {nb} from 'date-fns/locale'
+  export = nb
 }
 
 declare module 'date-fns/locale/nl/index' {
-  const locale: Locale
-  export = locale
+  import {nl} from 'date-fns/locale'
+  export = nl
 }
 
 declare module 'date-fns/locale/pl/index' {
-  const locale: Locale
-  export = locale
+  import {pl} from 'date-fns/locale'
+  export = pl
 }
 
 declare module 'date-fns/locale/pt/index' {
-  const locale: Locale
-  export = locale
+  import {pt} from 'date-fns/locale'
+  export = pt
 }
 
 declare module 'date-fns/locale/ro/index' {
-  const locale: Locale
-  export = locale
+  import {ro} from 'date-fns/locale'
+  export = ro
 }
 
 declare module 'date-fns/locale/ru/index' {
-  const locale: Locale
-  export = locale
+  import {ru} from 'date-fns/locale'
+  export = ru
 }
 
 declare module 'date-fns/locale/sk/index' {
-  const locale: Locale
-  export = locale
+  import {sk} from 'date-fns/locale'
+  export = sk
 }
 
 declare module 'date-fns/locale/sv/index' {
-  const locale: Locale
-  export = locale
+  import {sv} from 'date-fns/locale'
+  export = sv
 }
 
 declare module 'date-fns/locale/th/index' {
-  const locale: Locale
-  export = locale
+  import {th} from 'date-fns/locale'
+  export = th
 }
 
 declare module 'date-fns/locale/tr/index' {
-  const locale: Locale
-  export = locale
+  import {tr} from 'date-fns/locale'
+  export = tr
 }
 
 declare module 'date-fns/locale/zh-CN/index' {
-  const locale: Locale
-  export = locale
+  import {zhCN} from 'date-fns/locale'
+  export = zhCN
 }
 
 declare module 'date-fns/locale/zh-TW/index' {
-  const locale: Locale
-  export = locale
+  import {zhTW} from 'date-fns/locale'
+  export = zhTW
 }
 
 declare module 'date-fns/locale/ar/index.js' {
-  const locale: Locale
-  export = locale
+  import {ar} from 'date-fns/locale'
+  export = ar
 }
 
 declare module 'date-fns/locale/bg/index.js' {
-  const locale: Locale
-  export = locale
+  import {bg} from 'date-fns/locale'
+  export = bg
 }
 
 declare module 'date-fns/locale/ca/index.js' {
-  const locale: Locale
-  export = locale
+  import {ca} from 'date-fns/locale'
+  export = ca
 }
 
 declare module 'date-fns/locale/cs/index.js' {
-  const locale: Locale
-  export = locale
+  import {cs} from 'date-fns/locale'
+  export = cs
 }
 
 declare module 'date-fns/locale/da/index.js' {
-  const locale: Locale
-  export = locale
+  import {da} from 'date-fns/locale'
+  export = da
 }
 
 declare module 'date-fns/locale/de/index.js' {
-  const locale: Locale
-  export = locale
+  import {de} from 'date-fns/locale'
+  export = de
 }
 
 declare module 'date-fns/locale/el/index.js' {
-  const locale: Locale
-  export = locale
+  import {el} from 'date-fns/locale'
+  export = el
 }
 
 declare module 'date-fns/locale/en-US/index.js' {
-  const locale: Locale
-  export = locale
+  import {enUS} from 'date-fns/locale'
+  export = enUS
 }
 
 declare module 'date-fns/locale/eo/index.js' {
-  const locale: Locale
-  export = locale
+  import {eo} from 'date-fns/locale'
+  export = eo
 }
 
 declare module 'date-fns/locale/es/index.js' {
-  const locale: Locale
-  export = locale
+  import {es} from 'date-fns/locale'
+  export = es
 }
 
 declare module 'date-fns/locale/fi/index.js' {
-  const locale: Locale
-  export = locale
+  import {fi} from 'date-fns/locale'
+  export = fi
 }
 
 declare module 'date-fns/locale/fil/index.js' {
-  const locale: Locale
-  export = locale
+  import {fil} from 'date-fns/locale'
+  export = fil
 }
 
 declare module 'date-fns/locale/fr/index.js' {
-  const locale: Locale
-  export = locale
+  import {fr} from 'date-fns/locale'
+  export = fr
 }
 
 declare module 'date-fns/locale/hr/index.js' {
-  const locale: Locale
-  export = locale
+  import {hr} from 'date-fns/locale'
+  export = hr
 }
 
 declare module 'date-fns/locale/id/index.js' {
-  const locale: Locale
-  export = locale
+  import {id} from 'date-fns/locale'
+  export = id
 }
 
 declare module 'date-fns/locale/is/index.js' {
-  const locale: Locale
-  export = locale
+  import {is} from 'date-fns/locale'
+  export = is
 }
 
 declare module 'date-fns/locale/it/index.js' {
-  const locale: Locale
-  export = locale
+  import {it} from 'date-fns/locale'
+  export = it
 }
 
 declare module 'date-fns/locale/ja/index.js' {
-  const locale: Locale
-  export = locale
+  import {ja} from 'date-fns/locale'
+  export = ja
 }
 
 declare module 'date-fns/locale/ko/index.js' {
-  const locale: Locale
-  export = locale
+  import {ko} from 'date-fns/locale'
+  export = ko
 }
 
 declare module 'date-fns/locale/mk/index.js' {
-  const locale: Locale
-  export = locale
+  import {mk} from 'date-fns/locale'
+  export = mk
 }
 
 declare module 'date-fns/locale/nb/index.js' {
-  const locale: Locale
-  export = locale
+  import {nb} from 'date-fns/locale'
+  export = nb
 }
 
 declare module 'date-fns/locale/nl/index.js' {
-  const locale: Locale
-  export = locale
+  import {nl} from 'date-fns/locale'
+  export = nl
 }
 
 declare module 'date-fns/locale/pl/index.js' {
-  const locale: Locale
-  export = locale
+  import {pl} from 'date-fns/locale'
+  export = pl
 }
 
 declare module 'date-fns/locale/pt/index.js' {
-  const locale: Locale
-  export = locale
+  import {pt} from 'date-fns/locale'
+  export = pt
 }
 
 declare module 'date-fns/locale/ro/index.js' {
-  const locale: Locale
-  export = locale
+  import {ro} from 'date-fns/locale'
+  export = ro
 }
 
 declare module 'date-fns/locale/ru/index.js' {
-  const locale: Locale
-  export = locale
+  import {ru} from 'date-fns/locale'
+  export = ru
 }
 
 declare module 'date-fns/locale/sk/index.js' {
-  const locale: Locale
-  export = locale
+  import {sk} from 'date-fns/locale'
+  export = sk
 }
 
 declare module 'date-fns/locale/sv/index.js' {
-  const locale: Locale
-  export = locale
+  import {sv} from 'date-fns/locale'
+  export = sv
 }
 
 declare module 'date-fns/locale/th/index.js' {
-  const locale: Locale
-  export = locale
+  import {th} from 'date-fns/locale'
+  export = th
 }
 
 declare module 'date-fns/locale/tr/index.js' {
-  const locale: Locale
-  export = locale
+  import {tr} from 'date-fns/locale'
+  export = tr
 }
 
 declare module 'date-fns/locale/zh-CN/index.js' {
-  const locale: Locale
-  export = locale
+  import {zhCN} from 'date-fns/locale'
+  export = zhCN
 }
 
 declare module 'date-fns/locale/zh-TW/index.js' {
-  const locale: Locale
-  export = locale
+  import {zhTW} from 'date-fns/locale'
+  export = zhTW
+}
+
+// ECMAScript Module Locales
+
+declare module 'date-fns/esm/locale' {
+  const ar: Locale
+  namespace ar {}
+
+  const bg: Locale
+  namespace bg {}
+
+  const ca: Locale
+  namespace ca {}
+
+  const cs: Locale
+  namespace cs {}
+
+  const da: Locale
+  namespace da {}
+
+  const de: Locale
+  namespace de {}
+
+  const el: Locale
+  namespace el {}
+
+  const enUS: Locale
+  namespace enUS {}
+
+  const eo: Locale
+  namespace eo {}
+
+  const es: Locale
+  namespace es {}
+
+  const fi: Locale
+  namespace fi {}
+
+  const fil: Locale
+  namespace fil {}
+
+  const fr: Locale
+  namespace fr {}
+
+  const hr: Locale
+  namespace hr {}
+
+  const id: Locale
+  namespace id {}
+
+  const is: Locale
+  namespace is {}
+
+  const it: Locale
+  namespace it {}
+
+  const ja: Locale
+  namespace ja {}
+
+  const ko: Locale
+  namespace ko {}
+
+  const mk: Locale
+  namespace mk {}
+
+  const nb: Locale
+  namespace nb {}
+
+  const nl: Locale
+  namespace nl {}
+
+  const pl: Locale
+  namespace pl {}
+
+  const pt: Locale
+  namespace pt {}
+
+  const ro: Locale
+  namespace ro {}
+
+  const ru: Locale
+  namespace ru {}
+
+  const sk: Locale
+  namespace sk {}
+
+  const sv: Locale
+  namespace sv {}
+
+  const th: Locale
+  namespace th {}
+
+  const tr: Locale
+  namespace tr {}
+
+  const zhCN: Locale
+  namespace zhCN {}
+
+  const zhTW: Locale
+  namespace zhTW {}
 }
 
 declare module 'date-fns/esm/locale/ar' {
-  const locale: Locale
-  export default locale
+  import {ar} from 'date-fns/esm/locale'
+  export default ar
 }
 
 declare module 'date-fns/esm/locale/bg' {
-  const locale: Locale
-  export default locale
+  import {bg} from 'date-fns/esm/locale'
+  export default bg
 }
 
 declare module 'date-fns/esm/locale/ca' {
-  const locale: Locale
-  export default locale
+  import {ca} from 'date-fns/esm/locale'
+  export default ca
 }
 
 declare module 'date-fns/esm/locale/cs' {
-  const locale: Locale
-  export default locale
+  import {cs} from 'date-fns/esm/locale'
+  export default cs
 }
 
 declare module 'date-fns/esm/locale/da' {
-  const locale: Locale
-  export default locale
+  import {da} from 'date-fns/esm/locale'
+  export default da
 }
 
 declare module 'date-fns/esm/locale/de' {
-  const locale: Locale
-  export default locale
+  import {de} from 'date-fns/esm/locale'
+  export default de
 }
 
 declare module 'date-fns/esm/locale/el' {
-  const locale: Locale
-  export default locale
+  import {el} from 'date-fns/esm/locale'
+  export default el
 }
 
 declare module 'date-fns/esm/locale/en-US' {
-  const locale: Locale
-  export default locale
+  import {enUS} from 'date-fns/esm/locale'
+  export default enUS
 }
 
 declare module 'date-fns/esm/locale/eo' {
-  const locale: Locale
-  export default locale
+  import {eo} from 'date-fns/esm/locale'
+  export default eo
 }
 
 declare module 'date-fns/esm/locale/es' {
-  const locale: Locale
-  export default locale
+  import {es} from 'date-fns/esm/locale'
+  export default es
 }
 
 declare module 'date-fns/esm/locale/fi' {
-  const locale: Locale
-  export default locale
+  import {fi} from 'date-fns/esm/locale'
+  export default fi
 }
 
 declare module 'date-fns/esm/locale/fil' {
-  const locale: Locale
-  export default locale
+  import {fil} from 'date-fns/esm/locale'
+  export default fil
 }
 
 declare module 'date-fns/esm/locale/fr' {
-  const locale: Locale
-  export default locale
+  import {fr} from 'date-fns/esm/locale'
+  export default fr
 }
 
 declare module 'date-fns/esm/locale/hr' {
-  const locale: Locale
-  export default locale
+  import {hr} from 'date-fns/esm/locale'
+  export default hr
 }
 
 declare module 'date-fns/esm/locale/id' {
-  const locale: Locale
-  export default locale
+  import {id} from 'date-fns/esm/locale'
+  export default id
 }
 
 declare module 'date-fns/esm/locale/is' {
-  const locale: Locale
-  export default locale
+  import {is} from 'date-fns/esm/locale'
+  export default is
 }
 
 declare module 'date-fns/esm/locale/it' {
-  const locale: Locale
-  export default locale
+  import {it} from 'date-fns/esm/locale'
+  export default it
 }
 
 declare module 'date-fns/esm/locale/ja' {
-  const locale: Locale
-  export default locale
+  import {ja} from 'date-fns/esm/locale'
+  export default ja
 }
 
 declare module 'date-fns/esm/locale/ko' {
-  const locale: Locale
-  export default locale
+  import {ko} from 'date-fns/esm/locale'
+  export default ko
 }
 
 declare module 'date-fns/esm/locale/mk' {
-  const locale: Locale
-  export default locale
+  import {mk} from 'date-fns/esm/locale'
+  export default mk
 }
 
 declare module 'date-fns/esm/locale/nb' {
-  const locale: Locale
-  export default locale
+  import {nb} from 'date-fns/esm/locale'
+  export default nb
 }
 
 declare module 'date-fns/esm/locale/nl' {
-  const locale: Locale
-  export default locale
+  import {nl} from 'date-fns/esm/locale'
+  export default nl
 }
 
 declare module 'date-fns/esm/locale/pl' {
-  const locale: Locale
-  export default locale
+  import {pl} from 'date-fns/esm/locale'
+  export default pl
 }
 
 declare module 'date-fns/esm/locale/pt' {
-  const locale: Locale
-  export default locale
+  import {pt} from 'date-fns/esm/locale'
+  export default pt
 }
 
 declare module 'date-fns/esm/locale/ro' {
-  const locale: Locale
-  export default locale
+  import {ro} from 'date-fns/esm/locale'
+  export default ro
 }
 
 declare module 'date-fns/esm/locale/ru' {
-  const locale: Locale
-  export default locale
+  import {ru} from 'date-fns/esm/locale'
+  export default ru
 }
 
 declare module 'date-fns/esm/locale/sk' {
-  const locale: Locale
-  export default locale
+  import {sk} from 'date-fns/esm/locale'
+  export default sk
 }
 
 declare module 'date-fns/esm/locale/sv' {
-  const locale: Locale
-  export default locale
+  import {sv} from 'date-fns/esm/locale'
+  export default sv
 }
 
 declare module 'date-fns/esm/locale/th' {
-  const locale: Locale
-  export default locale
+  import {th} from 'date-fns/esm/locale'
+  export default th
 }
 
 declare module 'date-fns/esm/locale/tr' {
-  const locale: Locale
-  export default locale
+  import {tr} from 'date-fns/esm/locale'
+  export default tr
 }
 
 declare module 'date-fns/esm/locale/zh-CN' {
-  const locale: Locale
-  export default locale
+  import {zhCN} from 'date-fns/esm/locale'
+  export default zhCN
 }
 
 declare module 'date-fns/esm/locale/zh-TW' {
-  const locale: Locale
-  export default locale
+  import {zhTW} from 'date-fns/esm/locale'
+  export default zhTW
 }
 
 declare module 'date-fns/esm/locale/ar/index' {
-  const locale: Locale
-  export default locale
+  import {ar} from 'date-fns/esm/locale'
+  export default ar
 }
 
 declare module 'date-fns/esm/locale/bg/index' {
-  const locale: Locale
-  export default locale
+  import {bg} from 'date-fns/esm/locale'
+  export default bg
 }
 
 declare module 'date-fns/esm/locale/ca/index' {
-  const locale: Locale
-  export default locale
+  import {ca} from 'date-fns/esm/locale'
+  export default ca
 }
 
 declare module 'date-fns/esm/locale/cs/index' {
-  const locale: Locale
-  export default locale
+  import {cs} from 'date-fns/esm/locale'
+  export default cs
 }
 
 declare module 'date-fns/esm/locale/da/index' {
-  const locale: Locale
-  export default locale
+  import {da} from 'date-fns/esm/locale'
+  export default da
 }
 
 declare module 'date-fns/esm/locale/de/index' {
-  const locale: Locale
-  export default locale
+  import {de} from 'date-fns/esm/locale'
+  export default de
 }
 
 declare module 'date-fns/esm/locale/el/index' {
-  const locale: Locale
-  export default locale
+  import {el} from 'date-fns/esm/locale'
+  export default el
 }
 
 declare module 'date-fns/esm/locale/en-US/index' {
-  const locale: Locale
-  export default locale
+  import {enUS} from 'date-fns/esm/locale'
+  export default enUS
 }
 
 declare module 'date-fns/esm/locale/eo/index' {
-  const locale: Locale
-  export default locale
+  import {eo} from 'date-fns/esm/locale'
+  export default eo
 }
 
 declare module 'date-fns/esm/locale/es/index' {
-  const locale: Locale
-  export default locale
+  import {es} from 'date-fns/esm/locale'
+  export default es
 }
 
 declare module 'date-fns/esm/locale/fi/index' {
-  const locale: Locale
-  export default locale
+  import {fi} from 'date-fns/esm/locale'
+  export default fi
 }
 
 declare module 'date-fns/esm/locale/fil/index' {
-  const locale: Locale
-  export default locale
+  import {fil} from 'date-fns/esm/locale'
+  export default fil
 }
 
 declare module 'date-fns/esm/locale/fr/index' {
-  const locale: Locale
-  export default locale
+  import {fr} from 'date-fns/esm/locale'
+  export default fr
 }
 
 declare module 'date-fns/esm/locale/hr/index' {
-  const locale: Locale
-  export default locale
+  import {hr} from 'date-fns/esm/locale'
+  export default hr
 }
 
 declare module 'date-fns/esm/locale/id/index' {
-  const locale: Locale
-  export default locale
+  import {id} from 'date-fns/esm/locale'
+  export default id
 }
 
 declare module 'date-fns/esm/locale/is/index' {
-  const locale: Locale
-  export default locale
+  import {is} from 'date-fns/esm/locale'
+  export default is
 }
 
 declare module 'date-fns/esm/locale/it/index' {
-  const locale: Locale
-  export default locale
+  import {it} from 'date-fns/esm/locale'
+  export default it
 }
 
 declare module 'date-fns/esm/locale/ja/index' {
-  const locale: Locale
-  export default locale
+  import {ja} from 'date-fns/esm/locale'
+  export default ja
 }
 
 declare module 'date-fns/esm/locale/ko/index' {
-  const locale: Locale
-  export default locale
+  import {ko} from 'date-fns/esm/locale'
+  export default ko
 }
 
 declare module 'date-fns/esm/locale/mk/index' {
-  const locale: Locale
-  export default locale
+  import {mk} from 'date-fns/esm/locale'
+  export default mk
 }
 
 declare module 'date-fns/esm/locale/nb/index' {
-  const locale: Locale
-  export default locale
+  import {nb} from 'date-fns/esm/locale'
+  export default nb
 }
 
 declare module 'date-fns/esm/locale/nl/index' {
-  const locale: Locale
-  export default locale
+  import {nl} from 'date-fns/esm/locale'
+  export default nl
 }
 
 declare module 'date-fns/esm/locale/pl/index' {
-  const locale: Locale
-  export default locale
+  import {pl} from 'date-fns/esm/locale'
+  export default pl
 }
 
 declare module 'date-fns/esm/locale/pt/index' {
-  const locale: Locale
-  export default locale
+  import {pt} from 'date-fns/esm/locale'
+  export default pt
 }
 
 declare module 'date-fns/esm/locale/ro/index' {
-  const locale: Locale
-  export default locale
+  import {ro} from 'date-fns/esm/locale'
+  export default ro
 }
 
 declare module 'date-fns/esm/locale/ru/index' {
-  const locale: Locale
-  export default locale
+  import {ru} from 'date-fns/esm/locale'
+  export default ru
 }
 
 declare module 'date-fns/esm/locale/sk/index' {
-  const locale: Locale
-  export default locale
+  import {sk} from 'date-fns/esm/locale'
+  export default sk
 }
 
 declare module 'date-fns/esm/locale/sv/index' {
-  const locale: Locale
-  export default locale
+  import {sv} from 'date-fns/esm/locale'
+  export default sv
 }
 
 declare module 'date-fns/esm/locale/th/index' {
-  const locale: Locale
-  export default locale
+  import {th} from 'date-fns/esm/locale'
+  export default th
 }
 
 declare module 'date-fns/esm/locale/tr/index' {
-  const locale: Locale
-  export default locale
+  import {tr} from 'date-fns/esm/locale'
+  export default tr
 }
 
 declare module 'date-fns/esm/locale/zh-CN/index' {
-  const locale: Locale
-  export default locale
+  import {zhCN} from 'date-fns/esm/locale'
+  export default zhCN
 }
 
 declare module 'date-fns/esm/locale/zh-TW/index' {
-  const locale: Locale
-  export default locale
+  import {zhTW} from 'date-fns/esm/locale'
+  export default zhTW
 }
 
 declare module 'date-fns/esm/locale/ar/index.js' {
-  const locale: Locale
-  export default locale
+  import {ar} from 'date-fns/esm/locale'
+  export default ar
 }
 
 declare module 'date-fns/esm/locale/bg/index.js' {
-  const locale: Locale
-  export default locale
+  import {bg} from 'date-fns/esm/locale'
+  export default bg
 }
 
 declare module 'date-fns/esm/locale/ca/index.js' {
-  const locale: Locale
-  export default locale
+  import {ca} from 'date-fns/esm/locale'
+  export default ca
 }
 
 declare module 'date-fns/esm/locale/cs/index.js' {
-  const locale: Locale
-  export default locale
+  import {cs} from 'date-fns/esm/locale'
+  export default cs
 }
 
 declare module 'date-fns/esm/locale/da/index.js' {
-  const locale: Locale
-  export default locale
+  import {da} from 'date-fns/esm/locale'
+  export default da
 }
 
 declare module 'date-fns/esm/locale/de/index.js' {
-  const locale: Locale
-  export default locale
+  import {de} from 'date-fns/esm/locale'
+  export default de
 }
 
 declare module 'date-fns/esm/locale/el/index.js' {
-  const locale: Locale
-  export default locale
+  import {el} from 'date-fns/esm/locale'
+  export default el
 }
 
 declare module 'date-fns/esm/locale/en-US/index.js' {
-  const locale: Locale
-  export default locale
+  import {enUS} from 'date-fns/esm/locale'
+  export default enUS
 }
 
 declare module 'date-fns/esm/locale/eo/index.js' {
-  const locale: Locale
-  export default locale
+  import {eo} from 'date-fns/esm/locale'
+  export default eo
 }
 
 declare module 'date-fns/esm/locale/es/index.js' {
-  const locale: Locale
-  export default locale
+  import {es} from 'date-fns/esm/locale'
+  export default es
 }
 
 declare module 'date-fns/esm/locale/fi/index.js' {
-  const locale: Locale
-  export default locale
+  import {fi} from 'date-fns/esm/locale'
+  export default fi
 }
 
 declare module 'date-fns/esm/locale/fil/index.js' {
-  const locale: Locale
-  export default locale
+  import {fil} from 'date-fns/esm/locale'
+  export default fil
 }
 
 declare module 'date-fns/esm/locale/fr/index.js' {
-  const locale: Locale
-  export default locale
+  import {fr} from 'date-fns/esm/locale'
+  export default fr
 }
 
 declare module 'date-fns/esm/locale/hr/index.js' {
-  const locale: Locale
-  export default locale
+  import {hr} from 'date-fns/esm/locale'
+  export default hr
 }
 
 declare module 'date-fns/esm/locale/id/index.js' {
-  const locale: Locale
-  export default locale
+  import {id} from 'date-fns/esm/locale'
+  export default id
 }
 
 declare module 'date-fns/esm/locale/is/index.js' {
-  const locale: Locale
-  export default locale
+  import {is} from 'date-fns/esm/locale'
+  export default is
 }
 
 declare module 'date-fns/esm/locale/it/index.js' {
-  const locale: Locale
-  export default locale
+  import {it} from 'date-fns/esm/locale'
+  export default it
 }
 
 declare module 'date-fns/esm/locale/ja/index.js' {
-  const locale: Locale
-  export default locale
+  import {ja} from 'date-fns/esm/locale'
+  export default ja
 }
 
 declare module 'date-fns/esm/locale/ko/index.js' {
-  const locale: Locale
-  export default locale
+  import {ko} from 'date-fns/esm/locale'
+  export default ko
 }
 
 declare module 'date-fns/esm/locale/mk/index.js' {
-  const locale: Locale
-  export default locale
+  import {mk} from 'date-fns/esm/locale'
+  export default mk
 }
 
 declare module 'date-fns/esm/locale/nb/index.js' {
-  const locale: Locale
-  export default locale
+  import {nb} from 'date-fns/esm/locale'
+  export default nb
 }
 
 declare module 'date-fns/esm/locale/nl/index.js' {
-  const locale: Locale
-  export default locale
+  import {nl} from 'date-fns/esm/locale'
+  export default nl
 }
 
 declare module 'date-fns/esm/locale/pl/index.js' {
-  const locale: Locale
-  export default locale
+  import {pl} from 'date-fns/esm/locale'
+  export default pl
 }
 
 declare module 'date-fns/esm/locale/pt/index.js' {
-  const locale: Locale
-  export default locale
+  import {pt} from 'date-fns/esm/locale'
+  export default pt
 }
 
 declare module 'date-fns/esm/locale/ro/index.js' {
-  const locale: Locale
-  export default locale
+  import {ro} from 'date-fns/esm/locale'
+  export default ro
 }
 
 declare module 'date-fns/esm/locale/ru/index.js' {
-  const locale: Locale
-  export default locale
+  import {ru} from 'date-fns/esm/locale'
+  export default ru
 }
 
 declare module 'date-fns/esm/locale/sk/index.js' {
-  const locale: Locale
-  export default locale
+  import {sk} from 'date-fns/esm/locale'
+  export default sk
 }
 
 declare module 'date-fns/esm/locale/sv/index.js' {
-  const locale: Locale
-  export default locale
+  import {sv} from 'date-fns/esm/locale'
+  export default sv
 }
 
 declare module 'date-fns/esm/locale/th/index.js' {
-  const locale: Locale
-  export default locale
+  import {th} from 'date-fns/esm/locale'
+  export default th
 }
 
 declare module 'date-fns/esm/locale/tr/index.js' {
-  const locale: Locale
-  export default locale
+  import {tr} from 'date-fns/esm/locale'
+  export default tr
 }
 
 declare module 'date-fns/esm/locale/zh-CN/index.js' {
-  const locale: Locale
-  export default locale
+  import {zhCN} from 'date-fns/esm/locale'
+  export default zhCN
 }
 
 declare module 'date-fns/esm/locale/zh-TW/index.js' {
-  const locale: Locale
-  export default locale
+  import {zhTW} from 'date-fns/esm/locale'
+  export default zhTW
 }
 
-// dateFns global interface definition
+// dateFns Global Interface
 
 interface dateFns {
   addDays(
