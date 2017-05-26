@@ -11,16 +11,20 @@ const fs = require('fs')
 const path = require('path')
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
+const listLocales = require('../_lib/listLocales')
 
 const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
-const files = listFns()
-const fpFiles = listFPFns()
+const fns = listFns()
+const fpFns = listFPFns()
+const locales = listLocales()
 
-fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), generateIndex(files))
-fs.writeFileSync(path.join(process.cwd(), 'src', 'fp', 'index.js'), generateIndex(fpFiles))
-fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'index.js'), generateESMIndex(files))
-fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'fp', 'index.js'), generateESMIndex(fpFiles))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), generateIndex(fns))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'fp', 'index.js'), generateIndex(fpFns))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'locale', 'index.js'), generateIndex(locales))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'index.js'), generateESMIndex(fns))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'fp', 'index.js'), generateESMIndex(fpFns))
+fs.writeFileSync(path.join(process.cwd(), 'src', 'esm', 'locale', 'index.js'), generateESMIndex(locales))
 
 function generateIndex (files) {
   const propertyRequireLines = files
