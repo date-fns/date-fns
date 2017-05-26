@@ -1,10 +1,10 @@
 var addYears = require('date-fns/fp/addYears')
 var dateFns = require('date-fns/fp')
 var formatWithOptions = dateFns.formatWithOptions
-var eoLocale = require('date-fns/locale/eo')
+var eo = require('date-fns/locale/eo')
 
 const addFiveYears = addYears(5)
-const dateToString = formatWithOptions({locale: eoLocale}, 'D MMMM YYYY')
+const dateToString = formatWithOptions({locale: eo}, 'D MMMM YYYY')
 
 const dates : Date[] = [
   new Date(2017, 0 /* Jan */, 1),
