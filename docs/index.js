@@ -56,6 +56,14 @@ export default {
     },
     {
       type: 'markdown',
+      urlId: 'I18n-Contribution-Guide',
+      category: 'General',
+      title: 'I18n Contribution Guide',
+      description: 'Locales manual',
+      path: path.join(__dirname, 'i18nContributionGuide.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'ECMAScript-Modules',
       category: 'General',
       title: 'ECMAScript Modules',
