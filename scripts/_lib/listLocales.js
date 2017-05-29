@@ -1,7 +1,9 @@
-import path from 'path'
-import fs from 'fs'
+const path = require('path')
+const fs = require('fs')
 
-export default function listLocales () {
+module.exports = listLocales
+
+function listLocales () {
   const locales = fs.readdirSync(path.join(process.cwd(), 'src', 'locale'))
   return locales
     .filter((locale) => /^[^._]/.test(locale))

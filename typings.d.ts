@@ -3268,9 +3268,6 @@ declare module 'date-fns/fp' {
   let getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayOfYearWithOptions {}
 
-  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDayWithOptions {}
-
   let getDaysInMonth: CurriedFn1<Date | string | number, number>
   namespace getDaysInMonth {}
 
@@ -3282,6 +3279,9 @@ declare module 'date-fns/fp' {
 
   let getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDaysInYearWithOptions {}
+
+  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDayWithOptions {}
 
   let getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
@@ -3298,14 +3298,14 @@ declare module 'date-fns/fp' {
   let getISOWeek: CurriedFn1<Date | string | number, number>
   namespace getISOWeek {}
 
-  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOWeekWithOptions {}
-
   let getISOWeeksInYear: CurriedFn1<Date | string | number, number>
   namespace getISOWeeksInYear {}
 
   let getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeeksInYearWithOptions {}
+
+  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeekWithOptions {}
 
   let getISOYear: CurriedFn1<Date | string | number, number>
   namespace getISOYear {}
@@ -4271,11 +4271,6 @@ declare module 'date-fns/fp/getDayOfYearWithOptions' {
   export = getDayOfYearWithOptions
 }
 
-declare module 'date-fns/fp/getDayWithOptions' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
-}
-
 declare module 'date-fns/fp/getDaysInMonth' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -4294,6 +4289,11 @@ declare module 'date-fns/fp/getDaysInYear' {
 declare module 'date-fns/fp/getDaysInYearWithOptions' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
+}
+
+declare module 'date-fns/fp/getDayWithOptions' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours' {
@@ -4321,11 +4321,6 @@ declare module 'date-fns/fp/getISOWeek' {
   export = getISOWeek
 }
 
-declare module 'date-fns/fp/getISOWeekWithOptions' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
-}
-
 declare module 'date-fns/fp/getISOWeeksInYear' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -4334,6 +4329,11 @@ declare module 'date-fns/fp/getISOWeeksInYear' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/fp/getISOWeekWithOptions' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear' {
@@ -5611,11 +5611,6 @@ declare module 'date-fns/fp/getDayOfYearWithOptions/index' {
   export = getDayOfYearWithOptions
 }
 
-declare module 'date-fns/fp/getDayWithOptions/index' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
-}
-
 declare module 'date-fns/fp/getDaysInMonth/index' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -5634,6 +5629,11 @@ declare module 'date-fns/fp/getDaysInYear/index' {
 declare module 'date-fns/fp/getDaysInYearWithOptions/index' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
+}
+
+declare module 'date-fns/fp/getDayWithOptions/index' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index' {
@@ -5661,11 +5661,6 @@ declare module 'date-fns/fp/getISOWeek/index' {
   export = getISOWeek
 }
 
-declare module 'date-fns/fp/getISOWeekWithOptions/index' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
-}
-
 declare module 'date-fns/fp/getISOWeeksInYear/index' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -5674,6 +5669,11 @@ declare module 'date-fns/fp/getISOWeeksInYear/index' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions/index' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/fp/getISOWeekWithOptions/index' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear/index' {
@@ -6951,11 +6951,6 @@ declare module 'date-fns/fp/getDayOfYearWithOptions/index.js' {
   export = getDayOfYearWithOptions
 }
 
-declare module 'date-fns/fp/getDayWithOptions/index.js' {
-  import {getDayWithOptions} from 'date-fns/fp'
-  export = getDayWithOptions
-}
-
 declare module 'date-fns/fp/getDaysInMonth/index.js' {
   import {getDaysInMonth} from 'date-fns/fp'
   export = getDaysInMonth
@@ -6974,6 +6969,11 @@ declare module 'date-fns/fp/getDaysInYear/index.js' {
 declare module 'date-fns/fp/getDaysInYearWithOptions/index.js' {
   import {getDaysInYearWithOptions} from 'date-fns/fp'
   export = getDaysInYearWithOptions
+}
+
+declare module 'date-fns/fp/getDayWithOptions/index.js' {
+  import {getDayWithOptions} from 'date-fns/fp'
+  export = getDayWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index.js' {
@@ -7001,11 +7001,6 @@ declare module 'date-fns/fp/getISOWeek/index.js' {
   export = getISOWeek
 }
 
-declare module 'date-fns/fp/getISOWeekWithOptions/index.js' {
-  import {getISOWeekWithOptions} from 'date-fns/fp'
-  export = getISOWeekWithOptions
-}
-
 declare module 'date-fns/fp/getISOWeeksInYear/index.js' {
   import {getISOWeeksInYear} from 'date-fns/fp'
   export = getISOWeeksInYear
@@ -7014,6 +7009,11 @@ declare module 'date-fns/fp/getISOWeeksInYear/index.js' {
 declare module 'date-fns/fp/getISOWeeksInYearWithOptions/index.js' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/fp'
   export = getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/fp/getISOWeekWithOptions/index.js' {
+  import {getISOWeekWithOptions} from 'date-fns/fp'
+  export = getISOWeekWithOptions
 }
 
 declare module 'date-fns/fp/getISOYear/index.js' {
@@ -10990,9 +10990,6 @@ declare module 'date-fns/esm/fp' {
   let getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayOfYearWithOptions {}
 
-  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getDayWithOptions {}
-
   let getDaysInMonth: CurriedFn1<Date | string | number, number>
   namespace getDaysInMonth {}
 
@@ -11004,6 +11001,9 @@ declare module 'date-fns/esm/fp' {
 
   let getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDaysInYearWithOptions {}
+
+  let getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDayWithOptions {}
 
   let getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
@@ -11020,14 +11020,14 @@ declare module 'date-fns/esm/fp' {
   let getISOWeek: CurriedFn1<Date | string | number, number>
   namespace getISOWeek {}
 
-  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOWeekWithOptions {}
-
   let getISOWeeksInYear: CurriedFn1<Date | string | number, number>
   namespace getISOWeeksInYear {}
 
   let getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeeksInYearWithOptions {}
+
+  let getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeekWithOptions {}
 
   let getISOYear: CurriedFn1<Date | string | number, number>
   namespace getISOYear {}
@@ -11993,11 +11993,6 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions' {
   export default getDayOfYearWithOptions
 }
 
-declare module 'date-fns/esm/fp/getDayWithOptions' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
-}
-
 declare module 'date-fns/esm/fp/getDaysInMonth' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -12016,6 +12011,11 @@ declare module 'date-fns/esm/fp/getDaysInYear' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDayWithOptions' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours' {
@@ -12043,11 +12043,6 @@ declare module 'date-fns/esm/fp/getISOWeek' {
   export default getISOWeek
 }
 
-declare module 'date-fns/esm/fp/getISOWeekWithOptions' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
-}
-
 declare module 'date-fns/esm/fp/getISOWeeksInYear' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -12056,6 +12051,11 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getISOWeekWithOptions' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear' {
@@ -13333,11 +13333,6 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions/index' {
   export default getDayOfYearWithOptions
 }
 
-declare module 'date-fns/esm/fp/getDayWithOptions/index' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
-}
-
 declare module 'date-fns/esm/fp/getDaysInMonth/index' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -13356,6 +13351,11 @@ declare module 'date-fns/esm/fp/getDaysInYear/index' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDayWithOptions/index' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index' {
@@ -13383,11 +13383,6 @@ declare module 'date-fns/esm/fp/getISOWeek/index' {
   export default getISOWeek
 }
 
-declare module 'date-fns/esm/fp/getISOWeekWithOptions/index' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
-}
-
 declare module 'date-fns/esm/fp/getISOWeeksInYear/index' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -13396,6 +13391,11 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear/index' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions/index' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getISOWeekWithOptions/index' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear/index' {
@@ -14673,11 +14673,6 @@ declare module 'date-fns/esm/fp/getDayOfYearWithOptions/index.js' {
   export default getDayOfYearWithOptions
 }
 
-declare module 'date-fns/esm/fp/getDayWithOptions/index.js' {
-  import {getDayWithOptions} from 'date-fns/esm/fp'
-  export default getDayWithOptions
-}
-
 declare module 'date-fns/esm/fp/getDaysInMonth/index.js' {
   import {getDaysInMonth} from 'date-fns/esm/fp'
   export default getDaysInMonth
@@ -14696,6 +14691,11 @@ declare module 'date-fns/esm/fp/getDaysInYear/index.js' {
 declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index.js' {
   import {getDaysInYearWithOptions} from 'date-fns/esm/fp'
   export default getDaysInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDayWithOptions/index.js' {
+  import {getDayWithOptions} from 'date-fns/esm/fp'
+  export default getDayWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index.js' {
@@ -14723,11 +14723,6 @@ declare module 'date-fns/esm/fp/getISOWeek/index.js' {
   export default getISOWeek
 }
 
-declare module 'date-fns/esm/fp/getISOWeekWithOptions/index.js' {
-  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
-  export default getISOWeekWithOptions
-}
-
 declare module 'date-fns/esm/fp/getISOWeeksInYear/index.js' {
   import {getISOWeeksInYear} from 'date-fns/esm/fp'
   export default getISOWeeksInYear
@@ -14736,6 +14731,11 @@ declare module 'date-fns/esm/fp/getISOWeeksInYear/index.js' {
 declare module 'date-fns/esm/fp/getISOWeeksInYearWithOptions/index.js' {
   import {getISOWeeksInYearWithOptions} from 'date-fns/esm/fp'
   export default getISOWeeksInYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/getISOWeekWithOptions/index.js' {
+  import {getISOWeekWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekWithOptions
 }
 
 declare module 'date-fns/esm/fp/getISOYear/index.js' {
