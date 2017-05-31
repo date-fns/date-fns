@@ -78,6 +78,32 @@ describe('closestIndexTo', function () {
     assert(isNaN(result))
   })
 
+  it('converts Array-like objects into Array', function () {
+    var date = new Date(2014, 6 /* Jul */, 2)
+    var object = {
+      '0': new Date(2015, 7 /* Aug */, 31),
+      '1': new Date(2012, 6 /* Jul */, 2),
+      length: 2
+    }
+    // $ExpectedMistake
+    var result = closestIndexTo(date, object)
+    assert.equal(result, 0)
+  })
+
+  it('converts undefined into empty array', function () {
+    var date = new Date(2014, 6 /* Jul */, 2).getTime()
+    // $ExpectedMistake
+    var result = closestIndexTo(date, undefined)
+    assert(result === undefined)
+  })
+
+  it('converts null into empty array', function () {
+    var date = new Date(2014, 6 /* Jul */, 2).getTime()
+    // $ExpectedMistake
+    var result = closestIndexTo(date, null)
+    assert(result === undefined)
+  })
+
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     var date = new Date(2014, 6 /* Jul */, 2)
     var block = closestIndexTo.bind(null, date, [
