@@ -179,6 +179,26 @@ describe('getOverlappingDaysInIntervals', function () {
     assert.throws(block, RangeError)
   })
 
+  it('throws an exception if the initial interval is undefined', function () {
+    var block = getOverlappingDaysInIntervals.bind(
+      null,
+      // $ExpectedMistake
+      undefined,
+      {start: new Date(2016, 10, 5), end: new Date(2016, 10, 15)}
+    )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws an exception if the compared interval is undefined', function () {
+    var block = getOverlappingDaysInIntervals.bind(
+      null,
+      {start: new Date(2016, 10, 3), end: new Date(2016, 10, 7)},
+      // $ExpectedMistake
+      undefined
+    )
+    assert.throws(block, RangeError)
+  })
+
   context('one of the dates is `Invalid Date`', function () {
     it('throws an exception if the start date of the initial time interval is `Invalid Date`', function () {
       var block = getOverlappingDaysInIntervals.bind(
