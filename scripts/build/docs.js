@@ -13,7 +13,7 @@ const path = require('path')
 const cloneDeep = require('lodash.clonedeep')
 const jsDocParser = require('jsdoc-to-markdown')
 const listFns = require('../_lib/listFns')
-const docsConfig = require('../docs')
+const docsConfig = require('../../docs/index.js')
 
 const docsPath = path.join(process.cwd(), 'docs.json')
 

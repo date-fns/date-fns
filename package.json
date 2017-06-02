@@ -17,9 +17,6 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "lint": "standard --verbose | snazzy",
-    "flow-check": "flow check",
-    "build": "./scripts/build.sh",
-    "release": "./scripts/release.sh",
     "benchmark": "env TEST_BENCHMARK=true yarn test -- --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
   },

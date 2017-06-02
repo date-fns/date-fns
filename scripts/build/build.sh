@@ -4,7 +4,7 @@
 #
 # It's the entry point for the build process.
 
-set -e
+set -ex
 
 ./scripts/build/docs.js
 ./scripts/build/fp.js

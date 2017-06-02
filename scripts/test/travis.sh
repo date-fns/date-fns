@@ -4,9 +4,9 @@
 #
 # It's used as the main Travis CI script.
 
-set -e
+set -ex
 
-export PATH="$(npm bin):$PATH"
+export PATH="$(yarn bin):$PATH"
 
 function prebuild {
   env BUILD_TESTS=true webpack --config ./config/webpack.js
