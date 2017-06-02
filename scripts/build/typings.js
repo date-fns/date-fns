@@ -11,7 +11,7 @@ const fs = require('fs')
 const listLocales = require('../_lib/listLocales')
 const jsDocs = require('../../docs.json')
 
-const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildTypings.js`. Please, don\'t change it.'
+const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it."
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 

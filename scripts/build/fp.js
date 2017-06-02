@@ -10,7 +10,7 @@
 const fs = require('fs')
 const jsDocs = require('../../docs.json')
 
-const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildFP.js`. Please, don\'t change it.'
+const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/fp.js`. Please, don't change it."
 const FP_DIR = './src/fp'
 
 const fpFns = Object.keys(jsDocs)

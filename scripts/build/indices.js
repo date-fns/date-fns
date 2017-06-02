@@ -12,7 +12,7 @@ const path = require('path')
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
 
-const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/buildIndex.js`. Please, don't change it."
+const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
 const files = listFns()
 const fpFiles = listFPFns()
