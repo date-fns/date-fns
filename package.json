@@ -9,6 +9,7 @@
   "engine": {
     "node": ">= 0.11"
   },
+  "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.6.5",
