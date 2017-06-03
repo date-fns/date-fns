@@ -5,7 +5,7 @@
 # It's addition to the build process. The script is used in examples.
 # It also could be used to build date-fns from a git checkout.
 
-set -ex
+set -e
 
 # cd to the root dir
 root="$(pwd)/$(dirname "$0")/../.."
