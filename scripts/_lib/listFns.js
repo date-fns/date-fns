@@ -1,9 +1,11 @@
-import path from 'path'
-import fs from 'fs'
+const path = require('path')
+const fs = require('fs')
+
+module.exports = listFns
 
 const ignoredFiles = ['locale', 'esm', 'fp', 'index.js', 'test.js']
 
-export default function listFns () {
+function listFns () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src'))
   return files
     .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))

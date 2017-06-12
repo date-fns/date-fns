@@ -4,15 +4,9 @@
 
 - [Introduction](#introduction)
 
+- [Submodules](#submodules)
+
 - [Installation](#installation)
-
-  - [npm or yarn](#npm)
-
-  - [Bower](#bower)
-
-  - [CDN & Download](#cdn)
-
-  - [GitHub Releases](#github-releases)
 
 ## Introduction
 
@@ -23,11 +17,13 @@ for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 [**130+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-dateFns.format(new Date(2014, 1, 11), 'MM/DD/YYYY')
+import {format, compareAsc} from 'date-fns/esm'
+
+format(new Date(2014, 1, 11), 'MM/DD/YYYY')
 //=> '02/11/2014'
 
-var dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]
-dates.sort(dateFns.compareAsc)
+const dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]
+dates.sort(compareAsc)
 //=> [
 //   Wed Feb 11 1987 00:00:00,
 //   Mon Jul 10 1989 00:00:00,
@@ -52,6 +48,9 @@ The later submodules are also included inside the former if you want to use mult
 To use submodule features, [install the npm package](#npm) and then import a function from a submodule:
 
 ```js
+// The main submodule:
+const addDays from 'date-fns/addDays'
+
 // ESM variation:
 import {addDays} from 'date-fns/esm'
 
@@ -76,66 +75,21 @@ import {addDays} from 'date-fns/esm/fp/utc'
 
 ## Installation
 
-The library is available as an [npm package](https://www.npmjs.com/package/date-fns),
-a Bower package, and is also distributed through a [CDN](http://cdn.date-fns.org/).
+The library is available as an [npm package](https://www.npmjs.com/package/date-fns).
 
-### npm
-
-To install the npm package, run:
+To install the package, run:
 
 ```bash
 npm install date-fns --save
-#or
+# or
 yarn add date-fns
 ```
 
-To start using:
+Start using:
 
 ```js
-var isToday = require('date-fns/isToday')
-isToday(new Date())
-//=> true
+import {formatDistance, subDays} from 'date-fns/esm'
+
+formatDistance(subDays(new Date(), 3), new Date())
+//=> "3 days ago"
 ```
-
-### Bower
-
-To install the Bower package, run:
-
-```bash
-bower install date-fns
-```
-
-To start using it, add the library to your build and access it
-via `window.dateFns`:
-
-```js
-dateFns.isToday(new Date())
-//=> true
-```
-
-### CDN
-
-To start using date-fns, simply add the following code into HTML:
-
-```html
-<script src="http://cdn.date-fns.org/VERSION/date_fns.min.js"></script>
-<script>
-  dateFns.isToday(new Date())
-  //=> true
-</script>
-```
-
-Replace `VERSION` with a proper version number e.g. `v2.0.0`.
-
-See the [full list](http://cdn.date-fns.org/) of resources available on the CDN:
-
-- `http://cdn.date-fns.org/VERSION/date_fns.js`
-- `http://cdn.date-fns.org/VERSION/date_fns.js.map`
-- `http://cdn.date-fns.org/VERSION/date_fns.min.js`
-- `http://cdn.date-fns.org/VERSION/date_fns.min.js.map`
-- `http://cdn.date-fns.org/VERSION/date_fns_docs.json`
-
-### GitHub Releases
-
-date-fns is available via [the releases page](https://github.com/date-fns/date-fns/releases)
-where you can download the source code or individual files.

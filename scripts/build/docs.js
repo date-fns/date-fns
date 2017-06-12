@@ -1,11 +1,21 @@
-#!/usr/bin/env babel-node
+#!/usr/bin/env node
 
-import fsp from 'fs-promise'
-import path from 'path'
-import cloneDeep from 'lodash.clonedeep'
-import jsDocParser from 'jsdoc-to-markdown'
-import listFns from './_lib/listFns'
-import docsConfig from '../docs'
+/**
+ * @file
+ * The script generates docs.json used as the source of truth
+ * for the source code generators (FP, typings, etc.).
+ *
+ * It's a part of the build process.
+ */
+
+const fsp = require('fs-promise')
+const path = require('path')
+const cloneDeep = require('lodash.clonedeep')
+const jsDocParser = require('jsdoc-to-markdown')
+const listFns = require('../_lib/listFns')
+const docsConfig = require('../../docs/index.js')
+
+const docsPath = path.join(process.cwd(), 'docs.json')
 
 generateDocsFromSource()
   .then(generatedDocsObj)
@@ -89,8 +99,7 @@ function reportErrors (err) {
  * Writes docs file.
  */
 function writeDocsFile (docsFileObj) {
-  const jsonPath = path.join(process.cwd(), 'dist', 'date_fns_docs.json')
-  return fsp.writeFile(jsonPath, JSON.stringify(docsFileObj))
+  return fsp.writeFile(docsPath, JSON.stringify(docsFileObj))
 }
 
 /**

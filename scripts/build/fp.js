@@ -1,7 +1,16 @@
-import fs from 'fs'
-import jsDocs from '../dist/date_fns_docs.json'
+#!/usr/bin/env node
 
-const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildFP.js`. Please, don\'t change it.'
+/**
+ * @file
+ * The script generates the FP functions using the docs JSON file.
+ *
+ * It's a part of the build process.
+ */
+
+const fs = require('fs')
+const jsDocs = require('../../docs.json')
+
+const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/fp.js`. Please, don't change it."
 const FP_DIR = './src/fp'
 
 const fpFns = Object.keys(jsDocs)

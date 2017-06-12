@@ -1,10 +1,12 @@
-import path from 'path'
-import fs from 'fs'
+const path = require('path')
+const fs = require('fs')
+
+module.exports = listFPFns
 
 const ignoredFiles = ['index.js', 'test.js']
 
-export default function listFPFns () {
-  const files = fs.readdirSync(path.join(process.cwd(), 'src/fp'))
+function listFPFns () {
+  const files = fs.readdirSync(path.join(process.cwd(), 'src', 'fp'))
   return files
     .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
     .map((file) => ({

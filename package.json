@@ -1,7 +1,10 @@
 {
   "name": "date-fns",
-  "version": "1.28.5",
-  "author": "Sasha Koss <koss@nocorp.me>",
+  "version": "v2.0.0-alpha1",
+  "contributors": [
+    "Sasha Koss <koss@nocorp.me>",
+    "Lesha Koss <regiusprod@gmail.com>"
+  ],
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
@@ -11,6 +14,17 @@
   "typings": "./typings.d.ts",
   "main": "index.js",
   "module": "esm/index.js",
+  "scripts": {
+    "test": "karma start config/karma.js",
+    "lint": "standard --verbose | snazzy",
+    "benchmark": "env TEST_BENCHMARK=true yarn test -- --single-run",
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+  },
+  "dependencies": {},
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": []
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.6.5",
@@ -19,6 +33,7 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-power-assert": "^1.0.0",
+    "cloc": "^2.2.0",
     "firebase": "^3.7.1",
     "flow-bin": "^0.36.0",
     "fs-promise": "^1.0.0",
@@ -45,9 +60,7 @@
     "moment": "^2.17.1",
     "node-fetch": "^1.3.3",
     "power-assert": "^1.3.1",
-    "pretty-bytes-cli": "^2.0.0",
     "sinon": "^1.17.3",
-    "sloc": "^0.1.11",
     "snazzy": "^5.0.0",
     "standard": "^8.6.0",
     "systemjs": "^0.19.39",
@@ -55,45 +68,5 @@
     "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "world-countries": "^1.8.1"
-  },
-  "scripts": {
-    "test": "karma start config/karma.js",
-    "test-ci": "npm test -- --single-run",
-    "test-cross-browser": "env TEST_CROSS_BROWSER=true npm test -- --single-run",
-    "test-travis": "./scripts/testTravis.sh",
-    "test-tz": "yarn run build-tests && ./scripts/testTZ.sh",
-    "test-tz-extended": "yarn run build-tests && ./scripts/testTZExtended.sh",
-    "test-smoke": "./scripts/testSmoke.sh",
-    "count-tests": "./scripts/countTests.sh",
-    "build": "env NODE_ENV=production webpack --config ./config/webpack.js",
-    "build-tests": "env BUILD_TESTS=true webpack --config ./config/webpack.js",
-    "build-uglify": "uglifyjs ./dist/date_fns.js --output ./dist/date_fns.min.js --source-map ./dist/date_fns.min.js.map --source-map-url date_fns.min.js.map --in-source-map ./dist/date_fns.js.map",
-    "build-docs": "babel-node ./scripts/buildDocs",
-    "build-index": "babel-node ./scripts/buildIndex",
-    "build-typings": "babel-node ./scripts/buildTypings",
-    "build-fp": "babel-node ./scripts/buildFP",
-    "lint": "standard --verbose | snazzy",
-    "sync-versions": "babel-node ./scripts/syncVersions",
-    "release": "./scripts/release.sh",
-    "build-umd": "./scripts/buildUMD.sh",
-    "build-gzip": "babel-node ./scripts/gzipDist.js",
-    "release-npm": "./scripts/releaseNPM.sh",
-    "release-tweet": "babel-node scripts/tweetRelease",
-    "deploy-homepage": "./scripts/triggerHomepageDeploy.sh",
-    "stats": "yarn run stats-size && yarn run stats-loc",
-    "stats-size": "echo \"UMD size: $(gzip-size dist/date_fns.min.js | pretty-bytes)\"",
-    "stats-loc": "yarn run stats-loc-code && yarn run stats-loc-tests",
-    "stats-loc-code": "echo 'Source code stats:' && sloc src/**/index.js",
-    "stats-loc-tests": "echo 'Test suite stats:' && sloc src/**/test.js",
-    "flow-check": "flow check",
-    "systemjs-check": "babel-node scripts/systemjsCheck.js",
-    "benchmark": "env TEST_BENCHMARK=true karma start config/karma.js --single-run",
-    "update-firebase": "babel-node ./scripts/updateFirebase.js"
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "ignore": [
-      "dist/"
-    ]
   }
 }
