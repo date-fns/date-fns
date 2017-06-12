@@ -1,8 +1,17 @@
-import fs from 'fs'
-import listLocales from './_lib/listLocales'
-import jsDocs from '../dist/date_fns_docs.json'
+#!/usr/bin/env node
 
-const generatedAutomaticallyMessage = '// This file is generated automatically by `scripts/buildTypings.js`. Please, don\'t change it.'
+/**
+ * @file
+ * The script generates Flow and TypeScript typing files.
+ *
+ * It's a part of the build process.
+ */
+
+const fs = require('fs')
+const listLocales = require('../_lib/listLocales')
+const jsDocs = require('../../docs.json')
+
+const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it."
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 

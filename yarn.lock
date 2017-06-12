@@ -220,7 +220,7 @@ async@^0.9.0, async@~0.9.0:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
 
-async@^1.3.0, async@~1.5.2:
+async@^1.3.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
@@ -995,12 +995,6 @@ cli-cursor@^1.0.1:
   dependencies:
     restore-cursor "^1.0.1"
 
-cli-table@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/cli-table/-/cli-table-0.3.1.tgz#f53b05266a8b1a0b934b3d0821e6e2dc5914ae23"
-  dependencies:
-    colors "1.0.3"
-
 cli-width@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.1.0.tgz#b234ca209b29ef66fc518d9b98d5847b00edf00a"
@@ -1012,6 +1006,10 @@ cliui@^2.1.0:
     center-align "^0.1.1"
     right-align "^0.1.1"
     wordwrap "0.0.2"
+
+cloc@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/cloc/-/cloc-2.2.0.tgz#ee38e476fd050edc1d2ef8357cbde274b7c7efb4"
 
 clone@^1.0.2:
   version "1.0.2"
@@ -1031,10 +1029,6 @@ collect-all@^1.0.2:
   dependencies:
     stream-connect "^1.0.2"
     stream-via "^1.0.3"
-
-colors@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
 
 colors@^1.1.0:
   version "1.1.2"
@@ -1085,7 +1079,7 @@ command-line-usage@^4.0.0:
     table-layout "^0.4.0"
     typical "^2.6.0"
 
-commander@2.9.0, commander@^2.8.1, commander@^2.9.0, commander@~2.9.0:
+commander@2.9.0, commander@^2.8.1, commander@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.9.0.tgz#9c99094176e12240cb22d6c5146098400fe0f7d4"
   dependencies:
@@ -3007,7 +3001,7 @@ memory-fs@~0.4.1:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
-meow@^3.3.0, meow@^3.6.0:
+meow@^3.3.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
   dependencies:
@@ -3571,18 +3565,6 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-pretty-bytes-cli@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/pretty-bytes-cli/-/pretty-bytes-cli-2.0.0.tgz#e705662cffdc9c75291835333bc2f89ad3c033cf"
-  dependencies:
-    get-stdin "^5.0.1"
-    meow "^3.6.0"
-    pretty-bytes "^4.0.0"
-
-pretty-bytes@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/pretty-bytes/-/pretty-bytes-4.0.2.tgz#b2bf82e7350d65c6c33aa95aaa5a4f6327f61cd9"
-
 private@^0.1.6:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.7.tgz#68ce5e8a1ef0a23bb570cc28537b5332aba63ef1"
@@ -4056,15 +4038,6 @@ slash@^1.0.0:
 slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
-
-sloc@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/sloc/-/sloc-0.1.11.tgz#341f94d44fe9b977c9e2109b134aa92f6394d411"
-  dependencies:
-    async "~1.5.2"
-    cli-table "^0.3.1"
-    commander "~2.9.0"
-    readdirp "^2.0.0"
 
 snazzy@^5.0.0:
   version "5.0.0"

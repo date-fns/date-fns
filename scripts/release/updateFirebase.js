@@ -1,9 +1,20 @@
-import firebase from 'firebase'
-import path from 'path'
-import fs from 'fs'
-import childProcess from 'child_process'
-import listLocales from './_lib/listLocales'
-import countries from 'world-countries'
+#!/usr/bin/env node
+
+/**
+ * @file
+ * The script generates the site data (docs, versions, etc.)
+ * and writes it to Firebase.
+ *
+ * It's a part of the release process.
+ */
+
+const firebase = require('firebase')
+const path = require('path')
+const fs = require('fs')
+const childProcess = require('child_process')
+const listLocales = require('../_lib/listLocales')
+const countries = require('world-countries')
+const {version} = require('../../package.json')
 
 const {
   FIREBASE_EMAIL,
@@ -25,49 +36,6 @@ const features = {
   fp: true,
   esm: true,
   utc: false
-}
-
-const importExample = [`import format from 'date-fns/format'`]
-  .concat(`format(new Date(2014, 1, 11), 'MM/DD/YYYY')`)
-  .concat(`//=> '02/11/2014'`)
-  .join('\n')
-
-const constExample = [`dateFns.format(new Date(2014, 1, 11), 'MM/DD/YYYY')`]
-  .concat(`//=> '02/11/2014'`)
-  .join('\n')
-
-const gettingStartedTabs = ['npm', 'yarn', 'bower', 'cdn']
-
-function generateGettingStarted (version) {
-  return {
-    npm: {
-      title: 'npm',
-      install: `npm install date-fns@${version} --save`,
-      example: importExample,
-      link: 'https://www.npmjs.com/package/date-fns'
-    },
-
-    yarn: {
-      title: 'Yarn',
-      install: `yarn add date-fns@${version}`,
-      example: importExample,
-      link: 'https://www.npmjs.com/package/date-fns'
-    },
-
-    bower: {
-      title: 'Bower',
-      install: `bower install date-fns#${version}`,
-      example: constExample,
-      link: 'https://libraries.io/bower/date-fns'
-    },
-
-    cdn: {
-      title: 'CDN & Download',
-      install: `<script src="http://cdn.date-fns.org/v${version}/date_fns.min.js"></script>`,
-      example: constExample,
-      link: `http://cdn.date-fns.org/v${version}/date_fns.min.js`
-    }
-  }
 }
 
 function generateLocale (tag, locale) {
@@ -95,10 +63,6 @@ function generateLocale (tag, locale) {
 }
 
 function generateVersionData () {
-  const version = fs.readFileSync(path.join(process.cwd(), 'VERSION'))
-    .toString()
-    .replace(/[\s\n]/g, '')
-
   const tag = `v${version}`
 
   const commit = childProcess.execSync('git rev-parse HEAD')
@@ -122,8 +86,6 @@ function generateVersionData () {
 
   const locales = listLocales().map(generateLocale.bind(null, tag))
 
-  const gettingStarted = generateGettingStarted(version)
-
   return {
     tag,
     date,
@@ -132,8 +94,6 @@ function generateVersionData () {
     docsPages,
     docsKeys,
     docsCategories,
-    gettingStarted,
-    gettingStartedTabs,
     locales,
     features
   }
@@ -156,8 +116,6 @@ function generateVersion (data, docsKey) {
     date,
     commit,
     prerelease,
-    gettingStarted,
-    gettingStartedTabs,
     features,
     locales
   } = data
@@ -167,8 +125,6 @@ function generateVersion (data, docsKey) {
     date,
     commit,
     prerelease,
-    gettingStarted,
-    gettingStartedTabs,
     features,
     locales,
     docsKey
@@ -188,15 +144,15 @@ firebase.auth()
   .then(() => {
     const data = generateVersionData()
 
-    const docsList = firebase.database().ref('/docs')
-    const docs = docsList.push()
+    const docsListRef = firebase.database().ref('/docs')
+    const docsRef = docsListRef.push()
 
-    const versionList = firebase.database().ref('/versions')
-    const version = versionList.push()
+    const versionListRef = firebase.database().ref('/versions')
+    const versionRef = versionListRef.push()
 
     return Promise.all([
-      docs.set(generateDocs(data)),
-      version.set(generateVersion(data, docs.key))
+      docsRef.set(generateDocs(data)),
+      versionRef.set(generateVersion(data, docsRef.key))
     ])
   })
   .then(() => {
