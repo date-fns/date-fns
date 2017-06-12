@@ -10,6 +10,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.28.6] - 2017-06-12
+
+- Hungarian language support added.
+
 ## [1.28.5] - 2017-05-19
 
 ### Fixed
