@@ -351,6 +351,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
+- **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
+
 ## [1.28.5] - 2017-05-19
 
 ### Fixed
