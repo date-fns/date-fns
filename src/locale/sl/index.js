@@ -3,7 +3,8 @@ var buildFormatLocale = require('./build_format_locale/index.js')
 
 /**
  * @category Locales
- * @summary English locale.
+ * @summary Slovenian locale.
+ * @author Adam Stradovnik [@Neoglyph]{@link https://github.com/Neoglyph}
  */
 module.exports = {
   distanceInWords: buildDistanceInWordsLocale(),
