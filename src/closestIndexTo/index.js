@@ -35,10 +35,23 @@ export default function closestIndexTo (dirtyDateToCompare, dirtyDatesArray, dir
 
   var timeToCompare = dateToCompare.getTime()
 
+  var datesArray
+  // `dirtyDatesArray` is undefined or null
+  if (dirtyDatesArray == null) {
+    datesArray = []
+
+  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
+  } else if (typeof dirtyDatesArray.forEach === 'function') {
+    datesArray = dirtyDatesArray
+
+  // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
+  } else {
+    datesArray = Array.prototype.slice.call(dirtyDatesArray)
+  }
+
   var result
   var minDistance
-
-  dirtyDatesArray.forEach(function (dirtyDate, index) {
+  datesArray.forEach(function (dirtyDate, index) {
     var currentDate = toDate(dirtyDate, dirtyOptions)
 
     if (isNaN(currentDate)) {

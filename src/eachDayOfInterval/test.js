@@ -122,6 +122,15 @@ describe('eachDayOfInterval', function () {
     assert.throws(block, RangeError)
   })
 
+  it('throws an exception if the interval is undefined', function () {
+    var block = eachDayOfInterval.bind(
+      null,
+      // $ExpectedMistake
+      undefined
+    )
+    assert.throws(block, RangeError)
+  })
+
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     var block = eachDayOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 6),

@@ -26,10 +26,29 @@ import toDate from '../toDate/index.js'
  * )
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min (datesArray, dirtyOptions) {
-  var dates = datesArray.map(function (dirtyDate) {
-    return toDate(dirtyDate, dirtyOptions)
+export default function min (dirtyDatesArray, dirtyOptions) {
+  var datesArray
+  // `dirtyDatesArray` is undefined or null
+  if (dirtyDatesArray == null) {
+    datesArray = []
+
+  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
+  } else if (typeof dirtyDatesArray.forEach === 'function') {
+    datesArray = dirtyDatesArray
+
+  // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
+  } else {
+    datesArray = Array.prototype.slice.call(dirtyDatesArray)
+  }
+
+  var result
+  datesArray.forEach(function (dirtyDate) {
+    var currentDate = toDate(dirtyDate, dirtyOptions)
+
+    if (result === undefined || result > currentDate || isNaN(currentDate)) {
+      result = currentDate
+    }
   })
-  var earliestTimestamp = Math.min.apply(null, dates)
-  return new Date(earliestTimestamp)
+
+  return result
 }

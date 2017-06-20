@@ -66,6 +66,33 @@ describe('max', function () {
     assert(result instanceof Date && isNaN(result))
   })
 
+  it('returns undefined for empty array', function () {
+    var result = max([])
+    assert(result === undefined)
+  })
+
+  it('converts Array-like objects into Array', function () {
+    // $ExpectedMistake
+    var result = max({
+      '0': new Date(1989, 6 /* Jul */, 10),
+      '1': new Date(1987, 1 /* Feb */, 11),
+      length: 2
+    })
+    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
+  })
+
+  it('converts undefined into empty array', function () {
+    // $ExpectedMistake
+    var result = max(undefined)
+    assert(result === undefined)
+  })
+
+  it('converts null into empty array', function () {
+    // $ExpectedMistake
+    var result = max(null)
+    assert(result === undefined)
+  })
+
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
     var block = max.bind(
       null,
