@@ -76,7 +76,7 @@ function generateVersionData () {
     10
   ) * 1000
 
-  const docsJSON = fs.readFileSync(path.join(process.cwd(), 'dist', 'date_fns_docs.json'))
+  const docsJSON = fs.readFileSync(path.join(process.cwd(), 'docs.json'))
     .toString()
   const docs = JSON.parse(docsJSON)
   const docsCategories = Object.keys(docs)

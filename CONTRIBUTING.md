@@ -113,5 +113,5 @@ standard JSDoc tags, date-fns uses `@category` tag that allows
 to group functions.
 
 [jsdoc-parse](https://github.com/jsdoc2md/jsdoc-parse) is used to generate
-[documentation JSON](https://github.com/date-fns/date-fns/blob/master/dist/date_fns_docs.json)
+[documentation JSON](https://github.com/date-fns/date-fns/blob/master/docs.json)
 consumed by [date-fns.org](https://date-fns.org/docs).
