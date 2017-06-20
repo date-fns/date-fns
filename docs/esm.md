@@ -19,9 +19,12 @@ like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
 // Without tree-shaking:
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
+import enUS from 'date-fns/locale/en-US'
+import eo from 'date-fns/locale/eo'
 
 // With tree-shaking:
 import {format, parse} from 'date-fns/esm'
+import {enUS, eo} from 'date-fns/esm/locale'
 ```
 
 **Important**: as at webpack 2.2.0, tree-shaking is not removing all unused imports.
