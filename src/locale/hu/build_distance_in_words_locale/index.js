@@ -10,7 +10,7 @@ function buildDistanceInWordsLocale () {
       other: '{{count}} másodperce'
     },
 
-    halfAMinute: 'félperce',
+    halfAMinute: 'fél perce',
 
     lessThanXMinutes: {
       one: 'kevesebb, mint egy perce',
