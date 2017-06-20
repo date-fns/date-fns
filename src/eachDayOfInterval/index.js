@@ -31,8 +31,9 @@ import toDate from '../toDate/index.js'
  * // ]
  */
 export default function eachDayOfInterval (dirtyInterval, dirtyOptions) {
-  var startDate = toDate(dirtyInterval.start, dirtyOptions)
-  var endDate = toDate(dirtyInterval.end, dirtyOptions)
+  var interval = dirtyInterval || {}
+  var startDate = toDate(interval.start, dirtyOptions)
+  var endDate = toDate(interval.end, dirtyOptions)
 
   var endTime = endDate.getTime()
 

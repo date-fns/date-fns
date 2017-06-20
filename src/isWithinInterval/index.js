@@ -34,9 +34,10 @@ import toDate from '../toDate/index.js'
  * //=> false
  */
 export default function isWithinInterval (dirtyDate, dirtyInterval, dirtyOptions) {
+  var interval = dirtyInterval || {}
   var time = toDate(dirtyDate, dirtyOptions).getTime()
-  var startTime = toDate(dirtyInterval.start, dirtyOptions).getTime()
-  var endTime = toDate(dirtyInterval.end, dirtyOptions).getTime()
+  var startTime = toDate(interval.start, dirtyOptions).getTime()
+  var endTime = toDate(interval.end, dirtyOptions).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {

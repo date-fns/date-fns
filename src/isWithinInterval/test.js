@@ -70,6 +70,16 @@ describe('isWithinInterval', function () {
     assert.throws(block, RangeError)
   })
 
+  it('throws an exception if the interval is undefined', function () {
+    var block = isWithinInterval.bind(
+      null,
+      new Date(2014, 9 /* Oct */, 31),
+      // $ExpectedMistake
+      undefined
+    )
+    assert.throws(block, RangeError)
+  })
+
   it('returns false if the given date is `Invalid Date`', function () {
     var result = isWithinInterval(
       new Date(NaN),
