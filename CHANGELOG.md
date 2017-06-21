@@ -308,6 +308,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
   Instead, argument is converted beforehand using `toDate`.
 
   Examples:
+
   | `isValid` argument        | Before v2.0.0 | v2.0.0 onward |
   |---------------------------|---------------|---------------|
   | `new Date()`              | `true`        | `true`        |
