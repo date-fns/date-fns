@@ -14,7 +14,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
-  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba)).
+  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
 
   Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
   and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
