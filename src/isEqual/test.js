@@ -72,7 +72,7 @@ describe('isEqual', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if less than 2 arguments are passed', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function () {
     assert.throws(isEqual.bind(null), TypeError)
     assert.throws(isEqual.bind(null, 1), TypeError)
   })

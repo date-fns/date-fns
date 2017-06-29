@@ -98,7 +98,7 @@ describe('compareDesc', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if less than 2 arguments are passed', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function () {
     assert.throws(compareDesc.bind(null), TypeError)
     assert.throws(compareDesc.bind(null, 1), TypeError)
   })

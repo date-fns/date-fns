@@ -931,7 +931,7 @@ describe('parse', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if less than 3 arguments are passed', function () {
+  it('throws TypeError exception if passed less than 3 arguments', function () {
     assert.throws(parse.bind(null), TypeError)
     // $ExpectedMistake
     assert.throws(parse.bind(null, 1), TypeError)

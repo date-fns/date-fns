@@ -31,7 +31,7 @@ describe('getSeconds', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if less than 1 argument are passed', function () {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(getSeconds.bind(null), TypeError)
   })
 })

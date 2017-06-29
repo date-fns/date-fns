@@ -48,7 +48,7 @@ describe('setMinutes', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if less than 2 arguments are passed', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function () {
     assert.throws(setMinutes.bind(null), TypeError)
     assert.throws(setMinutes.bind(null, 1), TypeError)
   })
