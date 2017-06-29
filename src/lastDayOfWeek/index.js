@@ -15,6 +15,7 @@ import toDate from '../toDate/index.js'
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {Date} the last day of a week
+ * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
@@ -29,6 +30,10 @@ import toDate from '../toDate/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek (dirtyDate, dirtyOptions) {
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+  }
+
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn = locale && locale.options && locale.options.weekStartsOn

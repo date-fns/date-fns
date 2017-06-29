@@ -18,6 +18,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Number} the number of calendar ISO weeks
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -29,6 +30,10 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 3
  */
 export default function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, dirtyOptions)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, dirtyOptions)
 

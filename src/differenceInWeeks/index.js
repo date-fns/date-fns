@@ -13,6 +13,7 @@ import differenceInDays from '../differenceInDays/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Number} the number of full weeks
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -24,6 +25,10 @@ import differenceInDays from '../differenceInDays/index.js'
  * //=> 2
  */
 export default function differenceInWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight, dirtyOptions) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }
