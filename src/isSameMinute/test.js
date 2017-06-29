@@ -71,4 +71,9 @@ describe('isSameMinute', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(isSameMinute.bind(null), TypeError)
+    assert.throws(isSameMinute.bind(null, 1), TypeError)
+  })
 })

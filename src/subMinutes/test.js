@@ -51,4 +51,9 @@ describe('subMinutes', function () {
     var block = subMinutes.bind(null, new Date(2014, 6 /* Jul */, 10, 12, 0), 30, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(subMinutes.bind(null), TypeError)
+    assert.throws(subMinutes.bind(null, 1), TypeError)
+  })
 })

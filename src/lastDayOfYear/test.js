@@ -46,4 +46,8 @@ describe('lastDayOfYear', function () {
     var block = lastDayOfYear.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(lastDayOfYear.bind(null), TypeError)
+  })
 })

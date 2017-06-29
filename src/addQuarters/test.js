@@ -64,4 +64,9 @@ describe('addQuarters', function () {
     var block = addQuarters.bind(null, new Date(2014, 8 /* Sep */, 1), 1, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(addQuarters.bind(null), TypeError)
+    assert.throws(addQuarters.bind(null, 1), TypeError)
+  })
 })

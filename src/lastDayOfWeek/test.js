@@ -134,4 +134,8 @@ describe('lastDayOfWeek', function () {
     var block = lastDayOfWeek.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(lastDayOfWeek.bind(null), TypeError)
+  })
 })

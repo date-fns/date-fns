@@ -37,4 +37,8 @@ describe('isLastDayOfMonth', function () {
     var block = isLastDayOfMonth.bind(null, new Date(2014, 9 /* Oct */, 31), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(isLastDayOfMonth.bind(null), TypeError)
+  })
 })

@@ -105,4 +105,9 @@ describe('differenceInHours', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(differenceInHours.bind(null), TypeError)
+    assert.throws(differenceInHours.bind(null, 1), TypeError)
+  })
 })

@@ -71,4 +71,9 @@ describe('isSameMonth', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(isSameMonth.bind(null), TypeError)
+    assert.throws(isSameMonth.bind(null, 1), TypeError)
+  })
 })

@@ -38,4 +38,8 @@ describe('getISOYear', function () {
     var block = getISOYear.bind(null, new Date(2007, 11 /* Dec */, 31), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(getISOYear.bind(null), TypeError)
+  })
 })

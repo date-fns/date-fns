@@ -47,4 +47,8 @@ describe('endOfISOYear', function () {
     var block = endOfISOYear.bind(null, new Date(2009, 0 /* Jan */, 1, 16, 0), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(endOfISOYear.bind(null), TypeError)
+  })
 })

@@ -71,4 +71,9 @@ describe('differenceInMilliseconds', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(differenceInMilliseconds.bind(null), TypeError)
+    assert.throws(differenceInMilliseconds.bind(null, 1), TypeError)
+  })
 })

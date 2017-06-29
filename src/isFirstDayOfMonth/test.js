@@ -37,4 +37,8 @@ describe('isFirstDayOfMonth', function () {
     var block = isFirstDayOfMonth.bind(null, new Date(2014, 9 /* Oct */, 1), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(isFirstDayOfMonth.bind(null), TypeError)
+  })
 })

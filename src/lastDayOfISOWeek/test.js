@@ -46,4 +46,8 @@ describe('lastDayOfISOWeek', function () {
     var block = lastDayOfISOWeek.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(lastDayOfISOWeek.bind(null), TypeError)
+  })
 })

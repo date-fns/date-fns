@@ -105,4 +105,9 @@ describe('differenceInWeeks', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(differenceInWeeks.bind(null), TypeError)
+    assert.throws(differenceInWeeks.bind(null, 1), TypeError)
+  })
 })

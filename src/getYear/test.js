@@ -30,4 +30,8 @@ describe('getYear', function () {
     var block = getYear.bind(null, new Date(2014, 6 /* Jul */, 2), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(getYear.bind(null), TypeError)
+  })
 })

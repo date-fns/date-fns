@@ -40,4 +40,8 @@ describe('getISOWeeksInYear', function () {
     var block = getISOWeeksInYear.bind(null, new Date(2015, 1 /* Feb */, 11), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(getISOWeeksInYear.bind(null), TypeError)
+  })
 })

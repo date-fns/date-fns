@@ -40,4 +40,8 @@ describe('startOfSecond', function () {
     var block = startOfSecond.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 1 argument are passed', function () {
+    assert.throws(startOfSecond.bind(null), TypeError)
+  })
 })

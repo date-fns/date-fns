@@ -58,4 +58,9 @@ describe('subISOYears', function () {
     var block = subISOYears.bind(null, new Date(2014, 8 /* Sep */, 1), 5, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(subISOYears.bind(null), TypeError)
+    assert.throws(subISOYears.bind(null, 1), TypeError)
+  })
 })

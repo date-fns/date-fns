@@ -215,4 +215,9 @@ describe('formatRelative', function () {
     var block = formatRelative.bind(null, new Date(2017, 0, 1), baseDate, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(formatRelative.bind(null), TypeError)
+    assert.throws(formatRelative.bind(null, 1), TypeError)
+  })
 })

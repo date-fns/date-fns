@@ -63,4 +63,9 @@ describe('setMonth', function () {
     var block = setMonth.bind(null, new Date(2014, 8 /* Sep */, 1), 1, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(setMonth.bind(null), TypeError)
+    assert.throws(setMonth.bind(null, 1), TypeError)
+  })
 })

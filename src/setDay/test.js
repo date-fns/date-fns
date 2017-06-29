@@ -127,4 +127,9 @@ describe('setDay', function () {
     var block = setDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if less than 2 arguments are passed', function () {
+    assert.throws(setDay.bind(null), TypeError)
+    assert.throws(setDay.bind(null, 1), TypeError)
+  })
 })
