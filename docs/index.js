@@ -1,10 +1,11 @@
-import path from 'path'
+const path = require('path')
 
-export default {
+module.exports = {
   groups: [
     'General',
+    'Types',
     'Common Helpers',
-    'Range Helpers',
+    'Interval Helpers',
     'Timestamp Helpers',
     'Millisecond Helpers',
     'Second Helpers',
@@ -27,7 +28,7 @@ export default {
       category: 'General',
       title: 'Getting Started',
       description: 'Introduction & installation instructions',
-      path: path.join(__dirname, 'getting_started.md')
+      path: path.join(__dirname, 'gettingStarted.md')
     },
     {
       type: 'markdown',
@@ -55,11 +56,47 @@ export default {
     },
     {
       type: 'markdown',
+      urlId: 'I18n-Contribution-Guide',
+      category: 'General',
+      title: 'I18n Contribution Guide',
+      description: 'Locales manual',
+      path: path.join(__dirname, 'i18nContributionGuide.md')
+    },
+    {
+      type: 'markdown',
+      urlId: 'ECMAScript-Modules',
+      category: 'General',
+      title: 'ECMAScript Modules',
+      description: 'Tree-shaking guide',
+      path: path.join(__dirname, 'esm.md')
+    },
+    {
+      type: 'markdown',
+      urlId: 'FP-Guide',
+      category: 'General',
+      title: 'FP Guide',
+      description: 'Curried functions',
+      path: path.join(__dirname, 'fp.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
       description: 'MIT © Sasha Koss',
       path: path.join(__dirname, '..', 'LICENSE.md')
+    }
+  ],
+
+  sharedDocs: [
+    {
+      fullPath: path.join(__dirname, 'Interval.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Options.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Locale.js')
     }
   ]
 }

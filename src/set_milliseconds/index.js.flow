@@ -1,6 +1,0 @@
-// @flow
-
-declare module.exports: (
-  date: Date | string | number,
-  milliseconds: number
-) => Date

@@ -1,11 +1,15 @@
-var getDayOfYear = require('../get_day_of_year/index.js')
-var getISOWeek = require('../get_iso_week/index.js')
-var getISOYear = require('../get_iso_year/index.js')
-var parse = require('../parse/index.js')
-var isValid = require('../is_valid/index.js')
-var enLocale = require('../locale/en/index.js')
+import toDate from '../toDate/index.js'
+import isValid from '../isValid/index.js'
+import defaultLocale from '../locale/en-US/index.js'
+import formatters from './_lib/formatters/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
+import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
+
+var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
+var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
+ * @name format
  * @category Common Helpers
  * @summary Format the date.
  *
@@ -59,16 +63,30 @@ var enLocale = require('../locale/en/index.js')
  * |                         | ZZ    | -0100, +0000, ..., +1200         |
  * | Seconds timestamp       | X     | 512969520                        |
  * | Milliseconds timestamp  | x     | 512969520900                     |
+ * | Long format             | LT    | 05:30 a.m.                       |
+ * |                         | LTS   | 05:30:15 a.m.                    |
+ * |                         | L     | 07/02/1995                       |
+ * |                         | l     | 7/2/1995                         |
+ * |                         | LL    | July 2 1995                      |
+ * |                         | ll    | Jul 2 1995                       |
+ * |                         | LLL   | July 2 1995 05:30 a.m.           |
+ * |                         | lll   | Jul 2 1995 05:30 a.m.            |
+ * |                         | LLLL  | Sunday, July 2 1995 05:30 a.m.   |
+ * |                         | llll  | Sun, Jul 2 1995 05:30 a.m.       |
  *
  * The characters wrapped in square brackets are escaped.
  *
  * The result may vary by locale.
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} [format='YYYY-MM-DDTHH:mm:ss.SSSZ'] - the string of tokens
- * @param {Object} [options] - the object with options
- * @param {Object} [options.locale=enLocale] - the locale object
+ * @param {String} format - the string of tokens
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the formatted date string
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.locale` must contain `localize` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -80,7 +98,7 @@ var enLocale = require('../locale/en/index.js')
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
- * var eoLocale = require('date-fns/locale/eo')
+ * import { eoLocale } from 'date-fns/locale/eo'
  * var result = format(
  *   new Date(2014, 6, 2),
  *   'Do [de] MMMM YYYY',
@@ -88,241 +106,73 @@ var enLocale = require('../locale/en/index.js')
  * )
  * //=> '2-a de julio 2014'
  */
-function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
-  var formatStr = dirtyFormatStr ? String(dirtyFormatStr) : 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
+  var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
-  var locale = options.locale
-  var localeFormatters = enLocale.format.formatters
-  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
-  if (locale && locale.format && locale.format.formatters) {
-    localeFormatters = locale.format.formatters
+  var locale = options.locale || defaultLocale
 
-    if (locale.format.formattingTokensRegExp) {
-      formattingTokensRegExp = locale.format.formattingTokensRegExp
-    }
+  if (!locale.localize) {
+    throw new RangeError('locale must contain localize property')
   }
 
-  var date = parse(dirtyDate)
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
 
-  if (!isValid(date)) {
+  var localeFormatters = locale.formatters || {}
+  var formattingTokensRegExp = locale.formattingTokensRegExp || defaultFormattingTokensRegExp
+  var formatLong = locale.formatLong
+
+  var originalDate = toDate(dirtyDate, options)
+
+  if (!isValid(originalDate, options)) {
     return 'Invalid Date'
   }
 
-  var formatFn = buildFormatFn(formatStr, localeFormatters, formattingTokensRegExp)
+  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
+  var timezoneOffset = originalDate.getTimezoneOffset()
+  var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
 
-  return formatFn(date)
-}
+  var formatterOptions = cloneObject(options)
+  formatterOptions.locale = locale
+  formatterOptions.formatters = formatters
 
-var formatters = {
-  // Month: 1, 2, ..., 12
-  'M': function (date) {
-    return date.getMonth() + 1
-  },
+  // When UTC functions will be implemented, options._originalDate will likely be a part of public API.
+  // Right now, please don't use it in locales. If you have to use an original date,
+  // please restore it from `date`, adding a timezone offset to it.
+  formatterOptions._originalDate = originalDate
 
-  // Month: 01, 02, ..., 12
-  'MM': function (date) {
-    return addLeadingZeros(date.getMonth() + 1, 2)
-  },
-
-  // Quarter: 1, 2, 3, 4
-  'Q': function (date) {
-    return Math.ceil((date.getMonth() + 1) / 3)
-  },
-
-  // Day of month: 1, 2, ..., 31
-  'D': function (date) {
-    return date.getDate()
-  },
-
-  // Day of month: 01, 02, ..., 31
-  'DD': function (date) {
-    return addLeadingZeros(date.getDate(), 2)
-  },
-
-  // Day of year: 1, 2, ..., 366
-  'DDD': function (date) {
-    return getDayOfYear(date)
-  },
-
-  // Day of year: 001, 002, ..., 366
-  'DDDD': function (date) {
-    return addLeadingZeros(getDayOfYear(date), 3)
-  },
-
-  // Day of week: 0, 1, ..., 6
-  'd': function (date) {
-    return date.getDay()
-  },
-
-  // Day of ISO week: 1, 2, ..., 7
-  'E': function (date) {
-    return date.getDay() || 7
-  },
-
-  // ISO week: 1, 2, ..., 53
-  'W': function (date) {
-    return getISOWeek(date)
-  },
-
-  // ISO week: 01, 02, ..., 53
-  'WW': function (date) {
-    return addLeadingZeros(getISOWeek(date), 2)
-  },
-
-  // Year: 00, 01, ..., 99
-  'YY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4).substr(2)
-  },
-
-  // Year: 1900, 1901, ..., 2099
-  'YYYY': function (date) {
-    return addLeadingZeros(date.getFullYear(), 4)
-  },
-
-  // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function (date) {
-    return String(getISOYear(date)).substr(2)
-  },
-
-  // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function (date) {
-    return getISOYear(date)
-  },
-
-  // Hour: 0, 1, ... 23
-  'H': function (date) {
-    return date.getHours()
-  },
-
-  // Hour: 00, 01, ..., 23
-  'HH': function (date) {
-    return addLeadingZeros(date.getHours(), 2)
-  },
-
-  // Hour: 1, 2, ..., 12
-  'h': function (date) {
-    var hours = date.getHours()
-    if (hours === 0) {
-      return 12
-    } else if (hours > 12) {
-      return hours % 12
-    } else {
-      return hours
-    }
-  },
-
-  // Hour: 01, 02, ..., 12
-  'hh': function (date) {
-    return addLeadingZeros(formatters['h'](date), 2)
-  },
-
-  // Minute: 0, 1, ..., 59
-  'm': function (date) {
-    return date.getMinutes()
-  },
-
-  // Minute: 00, 01, ..., 59
-  'mm': function (date) {
-    return addLeadingZeros(date.getMinutes(), 2)
-  },
-
-  // Second: 0, 1, ..., 59
-  's': function (date) {
-    return date.getSeconds()
-  },
-
-  // Second: 00, 01, ..., 59
-  'ss': function (date) {
-    return addLeadingZeros(date.getSeconds(), 2)
-  },
-
-  // 1/10 of second: 0, 1, ..., 9
-  'S': function (date) {
-    return Math.floor(date.getMilliseconds() / 100)
-  },
-
-  // 1/100 of second: 00, 01, ..., 99
-  'SS': function (date) {
-    return addLeadingZeros(Math.floor(date.getMilliseconds() / 10), 2)
-  },
-
-  // Millisecond: 000, 001, ..., 999
-  'SSS': function (date) {
-    return addLeadingZeros(date.getMilliseconds(), 3)
-  },
-
-  // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function (date) {
-    return formatTimezone(date.getTimezoneOffset(), ':')
-  },
-
-  // Timezone: -0100, +0000, ... +1200
-  'ZZ': function (date) {
-    return formatTimezone(date.getTimezoneOffset())
-  },
-
-  // Seconds timestamp: 512969520
-  'X': function (date) {
-    return Math.floor(date.getTime() / 1000)
-  },
-
-  // Milliseconds timestamp: 512969520900
-  'x': function (date) {
-    return date.getTime()
-  }
-}
-
-function buildFormatFn (formatStr, localeFormatters, formattingTokensRegExp) {
-  var array = formatStr.match(formattingTokensRegExp)
-  var length = array.length
-
-  var i
-  var formatter
-  for (i = 0; i < length; i++) {
-    formatter = localeFormatters[array[i]] || formatters[array[i]]
-    if (formatter) {
-      array[i] = formatter
-    } else {
-      array[i] = removeFormattingTokens(array[i])
-    }
-  }
-
-  return function (date) {
-    var output = ''
-    for (var i = 0; i < length; i++) {
-      if (array[i] instanceof Function) {
-        output += array[i](date, formatters)
-      } else {
-        output += array[i]
+  var result = formatStr
+    .replace(longFormattingTokensRegExp, function (substring) {
+      if (substring[0] === '[') {
+        return substring
       }
-    }
-    return output
-  }
+
+      if (substring[0] === '\\') {
+        return cleanEscapedString(substring)
+      }
+
+      return formatLong(substring)
+    })
+    .replace(formattingTokensRegExp, function (substring) {
+      var formatter = localeFormatters[substring] || formatters[substring]
+
+      if (formatter) {
+        return formatter(utcDate, formatterOptions)
+      } else {
+        return cleanEscapedString(substring)
+      }
+    })
+
+  return result
 }
 
-function removeFormattingTokens (input) {
+function cleanEscapedString (input) {
   if (input.match(/\[[\s\S]/)) {
     return input.replace(/^\[|]$/g, '')
   }
   return input.replace(/\\/g, '')
 }
-
-function formatTimezone (offset, delimeter) {
-  delimeter = delimeter || ''
-  var sign = offset > 0 ? '-' : '+'
-  var absOffset = Math.abs(offset)
-  var hours = Math.floor(absOffset / 60)
-  var minutes = absOffset % 60
-  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
-}
-
-function addLeadingZeros (number, targetLength) {
-  var output = Math.abs(number).toString()
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
-  return output
-}
-
-module.exports = format

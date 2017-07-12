@@ -1,0 +1,22 @@
+{
+  "name": "date-fns-example-typescript",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with TypeScript",
+  "main": "example.ts",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^2.1.5",
+    "webpack": "^2.2.0"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run build-typescript && yarn run build-webpack",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "build-typescript": "tsc --outDir dist example.ts fp.ts misc.ts",
+    "build-webpack": "webpack example=./dist/example.js fp=./dist/fp misc=./dist/misc.js --output-path dist --output-filename [name].bundle.js",
+    "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",
+    "test-example": "test $(env TZ=UTC node ./dist/example.bundle.js) = true",
+    "test-fp": "test $(env TZ=UTC node ./dist/fp.bundle.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.bundle.js) = true"
+  }
+}

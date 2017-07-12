@@ -1,16 +1,13 @@
-# Environment
 sudo: false
 dist: trusty
 language: node_js
 node_js:
-  - 4
+  - 6
 
 env:
   - TEST_SUITE=main
   - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
   - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=1
-  # TODO: Enable when SauceLabs become reliable
-  # - TEST_SUITE=cross_browser
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -20,49 +17,26 @@ before_install:
 branches:
   only:
     - master
-    # Build git tags
-    - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
+    - v2
+    - "/v\\d+\\.\\d+\\.\\d+(-\\w+)?/"
 
-# Tests
 script:
-  - yarn run test-travis
+  - ./scripts/test/travis.sh
 
-# Deployment
 before_deploy:
-  # Build gzip files before S3 deployment
-  - yarn run build-gzip
+  - ./scripts/release/writeVersion.js
+  - ./scripts/release/updateFirebase.js
+
 deploy:
-  - provider: s3
-    access_key_id: AKIAIXPFOIIE7FDYPAXA
-    secret_access_key:
-      secure: FPFCB5gn77ureKrRHbGZ6eF7mveemLt45FaU5g2jp5jjIjubQAwygI6KpmqmXgXEyv9u+bSYipYwCRvaN8YTiD1woEOF+6RENFMuGVYEqIMgfmAzQKGt+OEc9dhzgcnxFxPaW3il9/Eeq/S8zDCAykvJ5zv6DDm8k3oCHOvbJaY=
-    bucket: date-fns
-    local-dir: "dist/compressed"
-    upload-dir: "$TRAVIS_TAG"
-    acl: public_read
-    detect_encoding: true
-    cache_control: public, max-age=3122064000, s-maxage=3122064000
-    expires: '2099-12-31 00:00:00 -0000'
-    region: eu-central-1
-    on:
-      tags: true
-  - provider: releases
-    api_key:
-      secure: TmrPh4zKfdTbMk/qaAPXKDaVEV72DFJK1cQLOOnAfk8zYeC2GITX5DfsxgLZNdZkvmIjPbaxKWigwWKj2ehWbH93SvzZsAhOwXR2y4IfGhWSM/gd8LZ5Mp1P9648yGrLwlPmiQBlots9+mB+L4v16a8YuhQkH7T6hkoJKgR3eok=
-    file:
-      - dist/date_fns.js
-      - dist/date_fns.js.map
-      - dist/date_fns.min.js
-      - dist/date_fns.min.js.map
-    on:
-      tags: true
-  - provider: script
-    skip_cleanup: true
-    script: yarn run deploy-homepage
-    on:
-      tags: true
+  provider: npm
+  email: kossnocorp@gmail.com
+  api_key:
+    secure: Hi4MUZhrvibLGzgvzf7usaWBKmQSfl0p8bQEb+qT0HyAe4zbF9T/vDrRDvF/BVao0/XHTUTG0Q/+TYntm0Q8SJeUagmhoxRmvYGQEcGVPtKzkfzIohiMRGUo5BxQpHGFGs4r6O77Bsgti4uoUziBU6Ldw2qSb9QUi5PX3VT06eY=
+  on:
+    tags: true
+
 after_deploy:
-  - yarn run release-tweet
+  - ./scripts/release/tweet.js
 
 cache:
   yarn: true

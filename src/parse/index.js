@@ -1,320 +1,300 @@
-var isDate = require('../is_date/index.js')
+import toDate from '../toDate/index.js'
+import subMinutes from '../subMinutes/index.js'
+import defaultLocale from '../locale/en-US/index.js'
+import parsers from './_lib/parsers/index.js'
+import units from './_lib/units/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
 
-var MILLISECONDS_IN_HOUR = 3600000
+var TIMEZONE_UNIT_PRIORITY = 110
 var MILLISECONDS_IN_MINUTE = 60000
-var DEFAULT_ADDITIONAL_DIGITS = 2
 
-var parseTokenDateTimeDelimeter = /[T ]/
-var parseTokenPlainTime = /:/
-
-// year tokens
-var parseTokenYY = /^(\d{2})$/
-var parseTokensYYY = [
-  /^([+-]\d{2})$/, // 0 additional digits
-  /^([+-]\d{3})$/, // 1 additional digit
-  /^([+-]\d{4})$/ // 2 additional digits
-]
-
-var parseTokenYYYY = /^(\d{4})/
-var parseTokensYYYYY = [
-  /^([+-]\d{4})/, // 0 additional digits
-  /^([+-]\d{5})/, // 1 additional digit
-  /^([+-]\d{6})/ // 2 additional digits
-]
-
-// date tokens
-var parseTokenMM = /^-(\d{2})$/
-var parseTokenDDD = /^-?(\d{3})$/
-var parseTokenMMDD = /^-?(\d{2})-?(\d{2})$/
-var parseTokenWww = /^-?W(\d{2})$/
-var parseTokenWwwD = /^-?W(\d{2})-?(\d{1})$/
-
-// time tokens
-var parseTokenHH = /^(\d{2}([.,]\d*)?)$/
-var parseTokenHHMM = /^(\d{2}):?(\d{2}([.,]\d*)?)$/
-var parseTokenHHMMSS = /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/
-
-// timezone tokens
-var parseTokenTimezone = /([Z+-].*)$/
-var parseTokenTimezoneZ = /^(Z)$/
-var parseTokenTimezoneHH = /^([+-])(\d{2})$/
-var parseTokenTimezoneHHMM = /^([+-])(\d{2}):?(\d{2})$/
+var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
+var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
+ * @name parse
  * @category Common Helpers
- * @summary Convert the given argument to an instance of Date.
+ * @summary Parse the date.
  *
  * @description
- * Convert the given argument to an instance of Date.
+ * Return the date parsed from string using the given format.
  *
- * If the argument is an instance of Date, the function returns its clone.
+ * Accepted format tokens:
+ * | Unit                    | Priority | Token | Input examples                   |
+ * |-------------------------|----------|-------|----------------------------------|
+ * | Year                    | 10       | YY    | 00, 01, ..., 99                  |
+ * |                         |          | YYYY  | 1900, 1901, ..., 2099            |
+ * | ISO week-numbering year | 10       | GG    | 00, 01, ..., 99                  |
+ * |                         |          | GGGG  | 1900, 1901, ..., 2099            |
+ * | Quarter                 | 20       | Q     | 1, 2, 3, 4                       |
+ * |                         |          | Qo    | 1st, 2nd, 3rd, 4th               |
+ * | Month                   | 30       | M     | 1, 2, ..., 12                    |
+ * |                         |          | Mo    | 1st, 2nd, ..., 12th              |
+ * |                         |          | MM    | 01, 02, ..., 12                  |
+ * |                         |          | MMM   | Jan, Feb, ..., Dec               |
+ * |                         |          | MMMM  | January, February, ..., December |
+ * | ISO week                | 40       | W     | 1, 2, ..., 53                    |
+ * |                         |          | Wo    | 1st, 2nd, ..., 53rd              |
+ * |                         |          | WW    | 01, 02, ..., 53                  |
+ * | Day of week             | 50       | d     | 0, 1, ..., 6                     |
+ * |                         |          | do    | 0th, 1st, ..., 6th               |
+ * |                         |          | dd    | Su, Mo, ..., Sa                  |
+ * |                         |          | ddd   | Sun, Mon, ..., Sat               |
+ * |                         |          | dddd  | Sunday, Monday, ..., Saturday    |
+ * | Day of ISO week         | 50       | E     | 1, 2, ..., 7                     |
+ * | Day of month            | 50       | D     | 1, 2, ..., 31                    |
+ * |                         |          | Do    | 1st, 2nd, ..., 31st              |
+ * |                         |          | DD    | 01, 02, ..., 31                  |
+ * | Day of year             | 50       | DDD   | 1, 2, ..., 366                   |
+ * |                         |          | DDDo  | 1st, 2nd, ..., 366th             |
+ * |                         |          | DDDD  | 001, 002, ..., 366               |
+ * | Time of day             | 60       | A     | AM, PM                           |
+ * |                         |          | a     | am, pm                           |
+ * |                         |          | aa    | a.m., p.m.                       |
+ * | Hour                    | 70       | H     | 0, 1, ... 23                     |
+ * |                         |          | HH    | 00, 01, ... 23                   |
+ * | Time of day hour        | 70       | h     | 1, 2, ..., 12                    |
+ * |                         |          | hh    | 01, 02, ..., 12                  |
+ * | Minute                  | 80       | m     | 0, 1, ..., 59                    |
+ * |                         |          | mm    | 00, 01, ..., 59                  |
+ * | Second                  | 90       | s     | 0, 1, ..., 59                    |
+ * |                         |          | ss    | 00, 01, ..., 59                  |
+ * | 1/10 of second          | 100      | S     | 0, 1, ..., 9                     |
+ * | 1/100 of second         | 100      | SS    | 00, 01, ..., 99                  |
+ * | Millisecond             | 100      | SSS   | 000, 001, ..., 999               |
+ * | Timezone                | 110      | Z     | -01:00, +00:00, ... +12:00       |
+ * |                         |          | ZZ    | -0100, +0000, ..., +1200         |
+ * | Seconds timestamp       | 120      | X     | 512969520                        |
+ * | Milliseconds timestamp  | 120      | x     | 512969520900                     |
  *
- * If the argument is a number, it is treated as a timestamp.
+ * Values will be assigned to the date in the ascending order of its unit's priority.
+ * Units of an equal priority overwrite each other in the order of appearance.
  *
- * If an argument is a string, the function tries to parse it.
- * Function accepts complete ISO 8601 formats as well as partial implementations.
- * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
+ * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
  *
- * If all above fails, the function passes the given argument to Date constructor.
+ * `baseDate` must be passed for correct work of the function.
+ * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `parse('02/11/2014', 'MM/DD/YYYY', new Date())`
+ * In this case parsing will be done in the context of the current date.
+ * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * then `Invalid Date` will be returned.
  *
- * @param {Date|String|Number} argument - the value to convert
- * @param {Object} [options] - the object with options
- * @param {0 | 1 | 2} [options.additionalDigits=2] - the additional number of digits in the extended year format
- * @returns {Date} the parsed date in the local time zone
+ * Also, `parse` unfolds long formats like those in [format]{@link https://date-fns.org/docs/format}:
+ * | Token | Input examples                 |
+ * |-------|--------------------------------|
+ * | LT    | 05:30 a.m.                     |
+ * | LTS   | 05:30:15 a.m.                  |
+ * | L     | 07/02/1995                     |
+ * | l     | 7/2/1995                       |
+ * | LL    | July 2 1995                    |
+ * | ll    | Jul 2 1995                     |
+ * | LLL   | July 2 1995 05:30 a.m.         |
+ * | lll   | Jul 2 1995 05:30 a.m.          |
+ * | LLLL  | Sunday, July 2 1995 05:30 a.m. |
+ * | llll  | Sun, Jul 2 1995 05:30 a.m.     |
+ *
+ * The characters wrapped in square brackets in the format string are escaped.
+ *
+ * The result may vary by locale.
+ *
+ * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ *
+ * If parsing failed, `Invalid Date` will be returned.
+ * Invalid Date is a Date, whose time value is NaN.
+ * Time value of Date: http://es5.github.io/#x15.9.1.1
+ *
+ * @param {String} dateString - the string to parse
+ * @param {String} formatString - the string of tokens
+ * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
+ * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @returns {Date} the parsed date
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} `options.locale` must contain `formatLong` property
  *
  * @example
- * // Convert string '2014-02-11T11:30:30' to date:
- * var result = parse('2014-02-11T11:30:30')
- * //=> Tue Feb 11 2014 11:30:30
+ * // Parse 11 February 2014 from middle-endian format:
+ * var result = parse(
+ *   '02/11/2014',
+ *   'MM/DD/YYYY',
+ *   new Date()
+ * )
+ * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
- * // Parse string '+02014101',
- * // if the additional number of digits in the extended year format is 1:
- * var result = parse('+02014101', {additionalDigits: 1})
- * //=> Fri Apr 11 2014 00:00:00
+ * // Parse 28th of February in English locale in the context of 2010 year:
+ * import eoLocale from 'date-fns/locale/eo'
+ * var result = parse(
+ *   '28-a de februaro',
+ *   'Do [de] MMMM',
+ *   new Date(2010, 0, 1)
+ *   {locale: eoLocale}
+ * )
+ * //=> Sun Feb 28 2010 00:00:00
  */
-function parse (argument, dirtyOptions) {
-  if (isDate(argument)) {
-    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
-    return new Date(argument.getTime())
-  } else if (typeof argument !== 'string') {
-    return new Date(argument)
-  }
-
+export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
+  var dateString = String(dirtyDateString)
   var options = dirtyOptions || {}
-  var additionalDigits = options.additionalDigits
-  if (additionalDigits == null) {
-    additionalDigits = DEFAULT_ADDITIONAL_DIGITS
-  } else {
-    additionalDigits = Number(additionalDigits)
+
+  var weekStartsOn = options.weekStartsOn === undefined ? 0 : Number(options.weekStartsOn)
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var dateStrings = splitDateString(argument)
+  var locale = options.locale || defaultLocale
+  var localeParsers = locale.parsers || {}
+  var localeUnits = locale.units || {}
 
-  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
-  var year = parseYearResult.year
-  var restDateString = parseYearResult.restDateString
+  if (!locale.match) {
+    throw new RangeError('locale must contain match property')
+  }
 
-  var date = parseDate(restDateString, year)
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
 
-  if (date) {
-    var timestamp = date.getTime()
-    var time = 0
-    var offset
+  var formatString = String(dirtyFormatString)
+    .replace(longFormattingTokensRegExp, function (substring) {
+      if (substring[0] === '[') {
+        return substring
+      }
 
-    if (dateStrings.time) {
-      time = parseTime(dateStrings.time)
-    }
+      if (substring[0] === '\\') {
+        return cleanEscapedString(substring)
+      }
 
-    if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
+      return locale.formatLong(substring)
+    })
+
+  if (formatString === '') {
+    if (dateString === '') {
+      return toDate(dirtyBaseDate, options)
     } else {
-      // get offset accurate to hour in timezones that change offset
-      offset = new Date(timestamp + time).getTimezoneOffset()
-      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+      return new Date(NaN)
     }
-
-    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
-  } else {
-    return new Date(argument)
-  }
-}
-
-function splitDateString (dateString) {
-  var dateStrings = {}
-  var array = dateString.split(parseTokenDateTimeDelimeter)
-  var timeString
-
-  if (parseTokenPlainTime.test(array[0])) {
-    dateStrings.date = null
-    timeString = array[0]
-  } else {
-    dateStrings.date = array[0]
-    timeString = array[1]
   }
 
-  if (timeString) {
-    var token = parseTokenTimezone.exec(timeString)
-    if (token) {
-      dateStrings.time = timeString.replace(token[1], '')
-      dateStrings.timezone = token[1]
+  var subFnOptions = cloneObject(options)
+  subFnOptions.locale = locale
+
+  var tokens = formatString.match(locale.parsingTokensRegExp || defaultParsingTokensRegExp)
+  var tokensLength = tokens.length
+
+  // If timezone isn't specified, it will be set to the system timezone
+  var setters = [{
+    priority: TIMEZONE_UNIT_PRIORITY,
+    set: dateToSystemTimezone,
+    index: 0
+  }]
+
+  var i
+  for (i = 0; i < tokensLength; i++) {
+    var token = tokens[i]
+    var parser = localeParsers[token] || parsers[token]
+    if (parser) {
+      var matchResult
+
+      if (parser.match instanceof RegExp) {
+        matchResult = parser.match.exec(dateString)
+      } else {
+        matchResult = parser.match(dateString, subFnOptions)
+      }
+
+      if (!matchResult) {
+        return new Date(NaN)
+      }
+
+      var unitName = parser.unit
+      var unit = localeUnits[unitName] || units[unitName]
+
+      setters.push({
+        priority: unit.priority,
+        set: unit.set,
+        value: parser.parse(matchResult, subFnOptions),
+        index: setters.length
+      })
+
+      var substring = matchResult[0]
+      dateString = dateString.slice(substring.length)
     } else {
-      dateStrings.time = timeString
+      var head = tokens[i].match(/^\[.*]$/) ? tokens[i].replace(/^\[|]$/g, '') : tokens[i]
+      if (dateString.indexOf(head) === 0) {
+        dateString = dateString.slice(head.length)
+      } else {
+        return new Date(NaN)
+      }
     }
   }
 
-  return dateStrings
+  var uniquePrioritySetters = setters
+    .map(function (setter) {
+      return setter.priority
+    })
+    .sort(function (a, b) {
+      return a - b
+    })
+    .filter(function (priority, index, array) {
+      return array.indexOf(priority) === index
+    })
+    .map(function (priority) {
+      return setters
+        .filter(function (setter) {
+          return setter.priority === priority
+        })
+        .reverse()
+    })
+    .map(function (setterArray) {
+      return setterArray[0]
+    })
+
+  var date = toDate(dirtyBaseDate, options)
+
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
+
+  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
+  var utcDate = subMinutes(date, date.getTimezoneOffset())
+
+  var dateValues = {date: utcDate}
+
+  var settersLength = uniquePrioritySetters.length
+  for (i = 0; i < settersLength; i++) {
+    var setter = uniquePrioritySetters[i]
+    dateValues = setter.set(dateValues, setter.value, subFnOptions)
+  }
+
+  return dateValues.date
 }
 
-function parseYear (dateString, additionalDigits) {
-  var parseTokenYYY = parseTokensYYY[additionalDigits]
-  var parseTokenYYYYY = parseTokensYYYYY[additionalDigits]
+function dateToSystemTimezone (dateValues) {
+  var date = dateValues.date
+  var time = date.getTime()
 
-  var token
+  // Get the system timezone offset at (moment of time - offset)
+  var offset = date.getTimezoneOffset()
 
-  // YYYY or ±YYYYY
-  token = parseTokenYYYY.exec(dateString) || parseTokenYYYYY.exec(dateString)
-  if (token) {
-    var yearString = token[1]
-    return {
-      year: parseInt(yearString, 10),
-      restDateString: dateString.slice(yearString.length)
-    }
-  }
+  // Get the system timezone offset at the exact moment of time
+  offset = new Date(time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
 
-  // YY or ±YYY
-  token = parseTokenYY.exec(dateString) || parseTokenYYY.exec(dateString)
-  if (token) {
-    var centuryString = token[1]
-    return {
-      year: parseInt(centuryString, 10) * 100,
-      restDateString: dateString.slice(centuryString.length)
-    }
-  }
+  // Convert date in timezone "UTC+00:00" to the system timezone
+  dateValues.date = new Date(time + offset * MILLISECONDS_IN_MINUTE)
 
-  // Invalid ISO-formatted year
-  return {
-    year: null
-  }
+  return dateValues
 }
 
-function parseDate (dateString, year) {
-  // Invalid ISO-formatted year
-  if (year === null) {
-    return null
+function cleanEscapedString (input) {
+  if (input.match(/\[[\s\S]/)) {
+    return input.replace(/^\[|]$/g, '')
   }
-
-  var token
-  var date
-  var month
-  var week
-
-  // YYYY
-  if (dateString.length === 0) {
-    date = new Date(0)
-    date.setUTCFullYear(year)
-    return date
-  }
-
-  // YYYY-MM
-  token = parseTokenMM.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-    date.setUTCFullYear(year, month)
-    return date
-  }
-
-  // YYYY-DDD or YYYYDDD
-  token = parseTokenDDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    var dayOfYear = parseInt(token[1], 10)
-    date.setUTCFullYear(year, 0, dayOfYear)
-    return date
-  }
-
-  // YYYY-MM-DD or YYYYMMDD
-  token = parseTokenMMDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-    var day = parseInt(token[2], 10)
-    date.setUTCFullYear(year, month, day)
-    return date
-  }
-
-  // YYYY-Www or YYYYWww
-  token = parseTokenWww.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-    return dayOfISOYear(year, week)
-  }
-
-  // YYYY-Www-D or YYYYWwwD
-  token = parseTokenWwwD.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-    var dayOfWeek = parseInt(token[2], 10) - 1
-    return dayOfISOYear(year, week, dayOfWeek)
-  }
-
-  // Invalid ISO-formatted date
-  return null
+  return input.replace(/\\/g, '')
 }
-
-function parseTime (timeString) {
-  var token
-  var hours
-  var minutes
-
-  // hh
-  token = parseTokenHH.exec(timeString)
-  if (token) {
-    hours = parseFloat(token[1].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR
-  }
-
-  // hh:mm or hhmm
-  token = parseTokenHHMM.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseFloat(token[2].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE
-  }
-
-  // hh:mm:ss or hhmmss
-  token = parseTokenHHMMSS.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseInt(token[2], 10)
-    var seconds = parseFloat(token[3].replace(',', '.'))
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE +
-      seconds * 1000
-  }
-
-  // Invalid ISO-formatted time
-  return null
-}
-
-function parseTimezone (timezoneString) {
-  var token
-  var absoluteOffset
-
-  // Z
-  token = parseTokenTimezoneZ.exec(timezoneString)
-  if (token) {
-    return 0
-  }
-
-  // ±hh
-  token = parseTokenTimezoneHH.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  // ±hh:mm or ±hhmm
-  token = parseTokenTimezoneHHMM.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  return 0
-}
-
-function dayOfISOYear (isoYear, week, day) {
-  week = week || 0
-  day = day || 0
-  var date = new Date(0)
-  date.setUTCFullYear(isoYear, 0, 4)
-  var fourthOfJanuaryDay = date.getUTCDay() || 7
-  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
-  date.setUTCDate(date.getUTCDate() + diff)
-  return date
-}
-
-module.exports = parse

@@ -1,0 +1,66 @@
+// @flow
+// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
+
+type Interval = {
+  start: Date | string | number,
+  end: Date | string | number
+}
+
+type Options = {
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  additionalDigits?: 0 | 1 | 2,
+  locale?: Locale,
+  includeSeconds?: boolean,
+  addSuffix?: boolean,
+  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  roundingMethod?: 'floor' | 'ceil' | 'round'
+}
+
+type Locale = {
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function
+  },
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
+    timesOfDay: Function,
+    timeOfDay: Function
+  },
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  }
+}
+
+type CurriedFn1<A, R> = <A>(a: A) => R
+
+type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
+  | <A, B>(a: A, b: B) => R
+
+type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
+  | <A,B>(a: A, b: B) => CurriedFn1<C, R>
+  | <A,B,C>(a: A, b: B, c: C) => R
+
+type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
+  | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
+  | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
+  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
+
+declare module.exports: CurriedFn3<Options, string, Date | string | number, string>

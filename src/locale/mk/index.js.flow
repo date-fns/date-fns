@@ -1,0 +1,37 @@
+// @flow
+// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
+
+type Locale = {
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function
+  },
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
+    timesOfDay: Function,
+    timeOfDay: Function
+  },
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  }
+}
+
+declare module.exports: Locale

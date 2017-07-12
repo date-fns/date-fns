@@ -1,0 +1,56 @@
+// @flow
+// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
+
+type Interval = {
+  start: Date | string | number,
+  end: Date | string | number
+}
+
+type Options = {
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  additionalDigits?: 0 | 1 | 2,
+  locale?: Locale,
+  includeSeconds?: boolean,
+  addSuffix?: boolean,
+  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  roundingMethod?: 'floor' | 'ceil' | 'round'
+}
+
+type Locale = {
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function
+  },
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
+    timesOfDay: Function,
+    timeOfDay: Function
+  },
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  }
+}
+
+declare module.exports: (
+  date: Date | string | number,
+  day: number,
+  options?: Options
+) => Date

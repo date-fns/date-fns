@@ -1,0 +1,26 @@
+{
+  "name": "date-fns-example-flow",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with flow",
+  "main": "example.js.flow",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "flow-bin": "^0.38.0"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run flow-check && yarn run build-babel",
+    "flow-check": "flow check",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "build-babel": "yarn run build-babel-example && yarn run build-babel-fp && yarn run build-babel-misc",
+    "build-babel-example": "mkdir -p dist && babel example.js.flow --out-file dist/example.js",
+    "build-babel-fp": "mkdir -p dist && babel fp.js.flow --out-file dist/fp.js",
+    "build-babel-misc": "mkdir -p dist && babel misc.js.flow --out-file dist/misc.js",
+    "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",
+    "test-example": "test $(env TZ=UTC node ./dist/example.js) = true",
+    "test-fp": "test $(env TZ=UTC node ./dist/fp.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.js) = true"
+  }
+}
