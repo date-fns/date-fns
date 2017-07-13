@@ -38,10 +38,7 @@ deploy:
 after_deploy:
   - ./scripts/release/tweet.js
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
+cache: yarn
 
 addons:
   sauce_connect: true
