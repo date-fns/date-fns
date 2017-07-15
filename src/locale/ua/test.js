@@ -65,10 +65,6 @@ describe('ua locale', function () {
 
     describe('days of month', function () {
       describe('Do', function () {
-        it('when 3', function () {
-          var result = format(new Date(1986, 3 /* Apr */, 3, 10, 32, 0, 900), 'Do MMMM YYYY', {locale: locale})
-          assert(result === '3-є квітня 1986')
-        })
         it('when 23', function () {
           var result = format(new Date(1986, 3 /* Apr */, 23, 10, 32, 0, 900), 'Do MMMM YYYY', {locale: locale})
           assert(result === '23-є квітня 1986')
@@ -90,7 +86,7 @@ describe('ua locale', function () {
     describe('days of week', function () {
       it('all variants', function () {
         var result = format(date, 'do [день тижня,] dd ddd dddd', {locale: locale})
-        assert(result === '5-й день тижня, пт пт п’ятниця')
+        assert(result === '5-й день тижня, пт птн п’ятниця')
       })
     })
 

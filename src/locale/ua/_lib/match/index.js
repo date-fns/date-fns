@@ -3,16 +3,16 @@ import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import parseDecimal from '../../../_lib/parseDecimal/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(-?(е|є|й|а))?/i
+var matchOrdinalNumbersPattern = /^(\d+)(-?(е|є|й|а|я))?/i
 
 var matchWeekdaysPatterns = {
-  narrow: /^(нд|п[но]|вт|ср|чт|че|пт|пя|сб|су)\.?/i,
-  short: /^(нед|пнд|пон|вів|вто|се?рд|чтв|чет|птн|пят|суб)\.?/i,
-  long: /^(неділ[яі]|понеділ[ок][ка]|вівтор[ок][ка]|серед[аи]|четвер(га)?|п[’']?ятниц[яі]|субот[аи])/i
+  narrow: /^(нд|пн|вт|ср|чт|пт|сб)\.?/i,
+  short: /^(нед|пон|вів|сер|че?тв|птн?|суб)\.?/i,
+  long: /^(неділ[яі]|понеділ[ок][ка]|вівтор[ок][ка]|серед[аи]|четвер(га)?|п\W*?ятниц[яі]|субот[аи])/i
 }
 
 var parseWeekdayPatterns = {
-  any: [/^н/i, /^п[он]/i, /^в/i, /^с[ер]/i, /^ч/i, /^п[’']?[ят]/i, /^с[уб]/i]
+  any: [/^н/i, /^п[он]/i, /^в/i, /^с[ер]/i, /^ч/i, /^п\W*?[ят]/i, /^с[уб]/i]
 }
 
 var matchMonthsPatterns = {
