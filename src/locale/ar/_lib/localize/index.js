@@ -3,8 +3,8 @@ import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
 var weekdayValues = {
   narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
-  short: ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
-  long: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
+  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+  long: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
 }
 
 var monthValues = {
@@ -15,7 +15,7 @@ var monthValues = {
 var timeOfDayValues = {
   uppercase: ['صباح', 'مساء'],
   lowercase: ['ص', 'م'],
-  long: ['صباحاً', 'مساءاً']
+  long: ['صباحاً', 'مساءً']
 }
 
 function ordinalNumber (dirtyNumber) {
