@@ -275,15 +275,8 @@ function generateUsage (name, isFPFn) {
 
     esm: {
       title: 'ESM',
-      code: `import {${name}} from 'date-fns/esm${submodule}'`,
+      code: `import { ${name} } from 'date-fns${submodule && `/esm/${submodule}`}'`,
       text: 'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information'
-    }
-  }
-
-  if (!isFPFn) {
-    usage.umd = {
-      title: 'UMD',
-      code: `var ${name} = dateFns.${name}`
     }
   }
 
