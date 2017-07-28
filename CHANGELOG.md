@@ -72,6 +72,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
 
+- [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
+  (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
