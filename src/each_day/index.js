@@ -9,6 +9,7 @@ var parse = require('../parse/index.js')
  *
  * @param {Date|String|Number} startDate - the first date
  * @param {Date|String|Number} endDate - the last date
+ * @param {Number} [step=1] - the step between each day
  * @returns {Date[]} the array with starts of days from the day of startDate to the day of endDate
  * @throws {Error} startDate cannot be after endDate
  *
@@ -26,9 +27,10 @@ var parse = require('../parse/index.js')
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-function eachDay (dirtyStartDate, dirtyEndDate) {
+function eachDay (dirtyStartDate, dirtyEndDate, dirtyStep) {
   var startDate = parse(dirtyStartDate)
   var endDate = parse(dirtyEndDate)
+  var step = dirtyStep !== undefined ? dirtyStep : 1
 
   var endTime = endDate.getTime()
 
@@ -43,7 +45,7 @@ function eachDay (dirtyStartDate, dirtyEndDate) {
 
   while (currentDate.getTime() <= endTime) {
     dates.push(parse(currentDate))
-    currentDate.setDate(currentDate.getDate() + 1)
+    currentDate.setDate(currentDate.getDate() + step)
   }
 
   return dates
