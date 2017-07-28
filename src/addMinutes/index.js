@@ -15,6 +15,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the new date with the minutes added
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -23,6 +24,10 @@ var MILLISECONDS_IN_MINUTE = 60000
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var amount = Number(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE, dirtyOptions)
 }

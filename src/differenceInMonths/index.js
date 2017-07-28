@@ -15,6 +15,7 @@ import compareAsc from '../compareAsc/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Number} the number of full months
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -26,6 +27,10 @@ import compareAsc from '../compareAsc/index.js'
  * //=> 7
  */
 export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
   var dateRight = toDate(dirtyDateRight, dirtyOptions)
 

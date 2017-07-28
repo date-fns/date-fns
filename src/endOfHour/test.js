@@ -39,4 +39,8 @@ describe('endOfHour', function () {
     var block = endOfHour.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(endOfHour.bind(null), TypeError)
+  })
 })

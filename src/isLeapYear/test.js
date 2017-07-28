@@ -47,4 +47,8 @@ describe('isLeapYear', function () {
     var block = isLeapYear.bind(null, new Date(2012, 6 /* Jul */, 2), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(isLeapYear.bind(null), TypeError)
+  })
 })

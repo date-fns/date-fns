@@ -79,4 +79,9 @@ describe('isBefore', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(isBefore.bind(null), TypeError)
+    assert.throws(isBefore.bind(null, 1), TypeError)
+  })
 })

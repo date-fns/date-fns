@@ -930,4 +930,12 @@ describe('parse', function () {
     var block = parse.bind(null, '16', 'YY', baseDate, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 3 arguments', function () {
+    assert.throws(parse.bind(null), TypeError)
+    // $ExpectedMistake
+    assert.throws(parse.bind(null, 1), TypeError)
+    // $ExpectedMistake
+    assert.throws(parse.bind(null, 1, 2), TypeError)
+  })
 })

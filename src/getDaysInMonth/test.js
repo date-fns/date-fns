@@ -45,4 +45,8 @@ describe('getDaysInMonth', function () {
     var block = getDaysInMonth.bind(null, new Date(2100, 1 /* Feb */, 11), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(getDaysInMonth.bind(null), TypeError)
+  })
 })

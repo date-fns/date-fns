@@ -36,6 +36,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
@@ -99,6 +100,10 @@ var MINUTES_IN_YEAR = 525600
  * //=> '1 jaro'
  */
 export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 

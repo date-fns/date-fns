@@ -58,4 +58,9 @@ describe('addISOYears', function () {
     var block = addISOYears.bind(null, new Date(2010, 6 /* Jul */, 2), 5, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(addISOYears.bind(null), TypeError)
+    assert.throws(addISOYears.bind(null, 1), TypeError)
+  })
 })

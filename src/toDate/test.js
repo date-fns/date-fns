@@ -260,4 +260,8 @@ describe('toDate', function () {
     var block = toDate.bind(null, '+12340702', {additionalDigits: 3})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(toDate.bind(null), TypeError)
+  })
 })

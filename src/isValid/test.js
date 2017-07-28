@@ -30,4 +30,8 @@ describe('isValid', function () {
     var block = isValid.bind(null, new Date(), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(isValid.bind(null), TypeError)
+  })
 })

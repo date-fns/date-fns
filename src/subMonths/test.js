@@ -64,4 +64,9 @@ describe('subMonths', function () {
     var block = subMonths.bind(null, new Date(2015, 1 /* Feb */, 1), 5, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(subMonths.bind(null), TypeError)
+    assert.throws(subMonths.bind(null, 1), TypeError)
+  })
 })

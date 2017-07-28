@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link docs/types/Options}
  * @returns {Boolean} whether the time intervals are overlapping
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
@@ -33,6 +34,10 @@ import toDate from '../toDate/index.js'
  * //=> false
  */
 export default function areIntervalsOverlapping (dirtyIntervalLeft, dirtyIntervalRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var intervalLeft = dirtyIntervalLeft || {}
   var intervalRight = dirtyIntervalRight || {}
   var leftStartTime = toDate(intervalLeft.start, dirtyOptions).getTime()

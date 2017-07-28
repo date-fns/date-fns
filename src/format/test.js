@@ -498,4 +498,9 @@ describe('format', function () {
     var block = format.bind(null, date, 'Do of t[h][e] Mo in YYYY', {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(format.bind(null), TypeError)
+    assert.throws(format.bind(null, 1), TypeError)
+  })
 })

@@ -13,6 +13,7 @@ import startOfHour from '../startOfHour/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Boolean} the dates are in the same hour
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -24,6 +25,10 @@ import startOfHour from '../startOfHour/index.js'
  * //=> true
  */
 export default function isSameHour (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft, dirtyOptions)
   var dateRightStartOfHour = startOfHour(dirtyDateRight, dirtyOptions)
 

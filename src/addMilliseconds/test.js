@@ -51,4 +51,9 @@ describe('addMilliseconds', function () {
     var block = addMilliseconds.bind(null, new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0), 750, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(addMilliseconds.bind(null), TypeError)
+    assert.throws(addMilliseconds.bind(null, 1), TypeError)
+  })
 })
