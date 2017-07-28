@@ -15,6 +15,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 - [Hungarian locale (hu)](https://github.com/date-fns/date-fns/pull/503)
   (thanks to László Horváth [@horvathlg](https://github.com/horvathlg))
 
+- [Slovenian locale (sl)](https://github.com/date-fns/date-fns/pull/505)
+  (thanks to Adam Stradovnik [@Neoglyph](https://github.com/Neoglyph))
+
 - Add `step` to `eachDay` function. Thanks to [@BDav24](https://github.com/BDav24).
   See PR [#487](https://github.com/date-fns/date-fns/pull/487).
 
