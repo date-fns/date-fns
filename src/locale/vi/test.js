@@ -303,13 +303,29 @@ describe('vi locale', function () {
       })
 
       it('MMM', function () {
-        var result = parse('2016 Nov', 'YYYY MMM', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 1))
+        var result = parse('2016 thg 1 20', 'YYYY MMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 20))
+        result = parse('2016 thg 01 20', 'YYYY MMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 20))
+        result = parse('2016 20 thg 9', 'YYYY DD MMM', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 8 /* Sep */, 20))
+        result = parse('2016 20 thg09', 'YYYY DD MMM', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 8 /* Sep */, 20))
+        result = parse('2016 20 thg_11', 'YYYY DD MMM', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 20))
+        result = parse('2016 20 thg10', 'YYYY DD MMM', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 9 /* Oct */, 20))
       })
 
       it('MMMM', function () {
-        var result = parse('2016 December', 'YYYY MMMM', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 11 /* Dec */, 1))
+        var result = parse('2016 tháng Một 15', 'YYYY MMMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 15))
+        result = parse('2016 tháng Mười 15', 'YYYY MMMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 9 /* Oct */, 15))
+        result = parse('2016 tháng Mười Một 15', 'YYYY MMMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 15))
+        result = parse('2016 thángmườihai 15', 'YYYY MMMM DD', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 11 /* Dec */, 15))
       })
     })
 
@@ -328,18 +344,24 @@ describe('vi locale', function () {
       })
 
       it('dd', function () {
-        var result = parse('2016 4 Mo', 'GGGG W dd', baseDate, {locale: locale})
+        var result = parse('2016 4 T2', 'GGGG W dd', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 25))
       })
 
       it('ddd', function () {
-        var result = parse('2016 4 Wed', 'GGGG W ddd', baseDate, {locale: locale})
+        var result = parse('2016 4 thứ 4', 'GGGG W ddd', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 27))
+        result = parse('2016 4 thứ7', 'GGGG W ddd', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 30))
       })
 
       it('dddd', function () {
-        var result = parse('2016 4 Friday', 'GGGG W dddd', baseDate, {locale: locale})
+        var result = parse('2016 4 thứ Sáu', 'GGGG W dddd', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 29))
+        result = parse('2016 4 Chủ Nhật', 'GGGG W dddd', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 31))
+        result = parse('2016 4 Chúa Nhật', 'GGGG W dddd', baseDate, { locale: locale })
+        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 31))
       })
     })
 
@@ -378,13 +400,13 @@ describe('vi locale', function () {
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 16, 0, 0, 0))
       })
 
-      it('a.m.', function () {
-        var result = parse('2016-11-25 04 a.m.', 'YYYY-MM-DD hh aa', baseDate, {locale: locale})
+      it('SA (aa)', function () {
+        var result = parse('2016-11-25 04 SA', 'YYYY-MM-DD hh aa', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 4, 0, 0, 0))
       })
 
-      it('p.m.', function () {
-        var result = parse('2016-11-25 04 p.m.', 'YYYY-MM-DD hh aa', baseDate, {locale: locale})
+      it('CH (aa)', function () {
+        var result = parse('2016-11-25 04 CH', 'YYYY-MM-DD hh aa', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 16, 0, 0, 0))
       })
     })

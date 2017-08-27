@@ -3,25 +3,31 @@ import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import parseDecimal from '../../../_lib/parseDecimal/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
+var matchOrdinalNumbersPattern = /^(\d+)/i
 
 var matchWeekdaysPatterns = {
-  narrow: /^(su|mo|tu|we|th|fr|sa)/i,
-  short: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  long: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
+  short: /^(CN|thứ ?2|thứ ?3|thứ ?4|thứ ?5|thứ ?6|thứ ?7)/i,
+  long: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i,
 }
 
 var parseWeekdayPatterns = {
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
+  short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
+  long: [/(Chủ|Chúa) ?Nhật/i, /Hai/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i],
 }
 
 var matchMonthsPatterns = {
-  short: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  long: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  // month number may contain leading 0, 'thg' prefix may have space, underscore or empty before number
+  // note the order of 'thg 1' since it is sub-string of 'thg 10', so must be lower priority
+  short: /^(thg[ _]?0?2|thg[ _]?0?3|thg[ _]?0?4|thg[ _]?0?5|thg[ _]?0?6|thg[ _]?0?7|thg[ _]?0?8|thg[ _]?0?9|thg[ _]?10|thg[ _]?11|thg[ _]?12|thg[ _]?0?1)/i,
+  // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
+  long: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i,
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  short: [/thg[ _]?0?1$/i, /thg[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
+  long: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i],
 }
 
 // `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
@@ -37,22 +43,24 @@ var parseMonthPatterns = {
 //   }
 var matchTimesOfDayPatterns = {
   short: /^(am|pm)/i,
-  long: /^([ap]\.?\s?m\.?)/i
+  // NOTE: I'm using long pattern as localized Vietnamese version
+  long: /^(sa|ch)/i
 }
 
 var parseTimeOfDayPatterns = {
-  any: [/^a/i, /^p/i]
+  short: [/^am/i, /^pm/i],
+  long: [/^sa/i, /^ch/i],
 }
 
 var match = {
   ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
   ordinalNumber: parseDecimal,
   weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
-  weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  months: buildMatchFn(matchMonthsPatterns, 'long'),
-  month: buildParseFn(parseMonthPatterns, 'any'),
-  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  weekday: buildParseFn(parseWeekdayPatterns, 'long'),
+  months: buildMatchFn(matchMonthsPatterns, 'short'), // Vietnamese prefer month as number
+  month: buildParseFn(parseMonthPatterns, 'short'),
+  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'short'), // Vietnamese prefer am/pm
+  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'short')
 }
 
 export default match
