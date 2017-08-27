@@ -40,9 +40,11 @@ var monthValues = {
 //     timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
 //   }
 var timeOfDayValues = {
-  // Vietnamese are used to AM/PM from Westerners, I'm leaving the long
-  // format a localized version found in some system (SÁng / CHiều);
-  // however, personlly, I don't think `Chiều` sounds appropriate for `PM`
+  // Vietnamese are used to AM/PM borrowing from English, hence `uppercase` and
+  // `lowercase` are just like English but I'm leaving the `long`
+  // format being localized with abbreviations found in some systems (SÁng / CHiều);
+  // however, personally, I don't think `Chiều` sounds appropriate for `PM`
+  // TODO: for `long` version, the values should be 'sáng' 'trưa' 'chiều' 'tối'
   uppercase: ['AM', 'PM'],
   lowercase: ['am', 'pm'],
   long: ['SA', 'CH']
