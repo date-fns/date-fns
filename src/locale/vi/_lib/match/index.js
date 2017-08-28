@@ -8,13 +8,13 @@ var matchOrdinalNumbersPattern = /^(\d+)/i
 var matchWeekdaysPatterns = {
   narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
   short: /^(CN|thứ ?2|thứ ?3|thứ ?4|thứ ?5|thứ ?6|thứ ?7)/i,
-  long: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i,
+  long: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i
 }
 
 var parseWeekdayPatterns = {
   narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
   short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
-  long: [/(Chủ|Chúa) ?Nhật/i, /Hai/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i],
+  long: [/(Chủ|Chúa) ?Nhật/i, /Hai/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i]
 }
 
 var matchMonthsPatterns = {
@@ -22,12 +22,12 @@ var matchMonthsPatterns = {
   // note the order of 'thg 1' since it is sub-string of 'thg 10', so must be lower priority
   short: /^(thg[ _]?0?2|thg[ _]?0?3|thg[ _]?0?4|thg[ _]?0?5|thg[ _]?0?6|thg[ _]?0?7|thg[ _]?0?8|thg[ _]?0?9|thg[ _]?10|thg[ _]?11|thg[ _]?12|thg[ _]?0?1)/i,
   // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
-  long: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i,
+  long: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i
 }
 
 var parseMonthPatterns = {
   short: [/thg[ _]?0?1$/i, /thg[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  long: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i],
+  long: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i]
 }
 
 // `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
@@ -49,7 +49,7 @@ var matchTimesOfDayPatterns = {
 
 var parseTimeOfDayPatterns = {
   short: [/^am/i, /^pm/i],
-  long: [/^sa/i, /^ch/i],
+  long: [/^sa/i, /^ch/i]
 }
 
 var match = {

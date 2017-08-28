@@ -66,30 +66,30 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
   if (unit === 'quarter') {
     switch (number) {
-      case 1: return 'một';
-      case 2: return 'hai';
-      case 3: return 'ba';
-      case 4: return 'bốn';
+      case 1: return 'một'
+      case 2: return 'hai'
+      case 3: return 'ba'
+      case 4: return 'bốn'
     }
   } else if (unit === 'dayOfWeek') {
     // day of week in Vietnamese has ordinal number meaning, so we should use them
     switch (number) {
-      case 0: return 'CN';
-      case 1: return '2';
-      case 2: return '3';
-      case 3: return '4';
-      case 4: return '5';
-      case 5: return '6';
-      case 6: return '7';
+      case 0: return 'CN'
+      case 1: return '2'
+      case 2: return '3'
+      case 3: return '4'
+      case 4: return '5'
+      case 5: return '6'
+      case 6: return '7'
     }
   } else if (unit === 'week' || unit === 'isoWeek') {
-    if (number == 1) {
+    if (number === 1) {
       return 'thứ nhất'
     } else {
       return 'thứ ' + number
     }
   } else if (unit === 'dayOfYear') {
-    if (number == 1) {
+    if (number === 1) {
       return 'đầu tiên'
     } else {
       return 'thứ ' + number
