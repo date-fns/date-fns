@@ -25,7 +25,7 @@ script:
 
 deploy:
   provider: script
-  script: ./scripts/release.sh
+  script: ./scripts/release/release.sh
   on:
     tags: true
 
