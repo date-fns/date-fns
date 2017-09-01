@@ -10,6 +10,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+[See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
+for the list of changes made since `v2.0.0-alpha.1`.
+
 ### Added
 
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
@@ -74,6 +77,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
   (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
+
+- [Vietnamese locale (vi)](https://github.com/date-fns/date-fns/pull/546)
+  (kudos to [@trongthanh](https://github.com/trongthanh))
 
 ### Changed
 
