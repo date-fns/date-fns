@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# The script builds the package and publish it to npm.
+# The script builds the package and publishes it to npm.
 #
 # It's the entry point for the release process.
 

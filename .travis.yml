@@ -23,20 +23,11 @@ branches:
 script:
   - ./scripts/test/travis.sh
 
-before_deploy:
-  - ./scripts/release/writeVersion.js
-  - ./scripts/release/updateFirebase.js
-
 deploy:
-  provider: npm
-  email: kossnocorp@gmail.com
-  api_key:
-    secure: Hi4MUZhrvibLGzgvzf7usaWBKmQSfl0p8bQEb+qT0HyAe4zbF9T/vDrRDvF/BVao0/XHTUTG0Q/+TYntm0Q8SJeUagmhoxRmvYGQEcGVPtKzkfzIohiMRGUo5BxQpHGFGs4r6O77Bsgti4uoUziBU6Ldw2qSb9QUi5PX3VT06eY=
+  provider: script
+  script: ./scripts/release.sh
   on:
     tags: true
-
-after_deploy:
-  - ./scripts/release/tweet.js
 
 cache: yarn
 
