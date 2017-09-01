@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Juan Angosto [@juanangosto]{@link https://github.com/juanangosto}
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Fernando Agüero [@fjaguero]{@link https://github.com/fjaguero}
+ * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
  */
 var locale = {
   formatDistance: formatDistance,
