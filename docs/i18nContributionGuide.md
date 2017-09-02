@@ -743,7 +743,6 @@ export default locale
 ### Simple example
 
 Adding and replacing `format` tokens is easy with [`formatters`](#formatters) property of the locale.
-Deep clone the locale before monkey-patching to prevent mutability conflicts.
 
 ```javascript
 import merge from 'lodash/merge'
