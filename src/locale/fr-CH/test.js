@@ -16,7 +16,7 @@ import parse from '../../parse'
 import setDay from '../../setDay'
 import startOfWeek from '../../startOfWeek'
 
-describe.skip('fr locale', function () {
+describe.skip('fr-CH locale', function () {
   context('with `differenceInCalendarWeeks`', function () {
     it('sets the first day of the week', function () {
       var result = differenceInCalendarWeeks(
@@ -123,7 +123,7 @@ describe.skip('fr locale', function () {
 
       it('L', function () {
         var result = format(new Date(2017, 6 /* Jul */, 2), 'L', {locale: locale})
-        assert(result === '02/07/2017')
+        assert(result === '02.07.2017')
       })
 
       it('LL', function () {
@@ -138,7 +138,7 @@ describe.skip('fr locale', function () {
 
       it('LLLL', function () {
         var result = format(date, 'LLLL', {locale: locale})
-        assert(result === 'Friday, 4. April 1986 10:32')
+        assert(result === 'Friday, 4 April 1986 10:32')
       })
     })
   })
