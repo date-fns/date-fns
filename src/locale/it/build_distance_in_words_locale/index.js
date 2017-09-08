@@ -58,8 +58,8 @@ function buildDistanceInWordsLocale () {
     },
 
     overXYears: {
-      one: 'piú di un anno',
-      other: 'piú di {{count}} anni'
+      one: 'più di un anno',
+      other: 'più di {{count}} anni'
     },
 
     almostXYears: {
@@ -82,7 +82,7 @@ function buildDistanceInWordsLocale () {
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return 'in ' + result
+        return 'tra ' + result
       } else {
         return result + ' fa'
       }
