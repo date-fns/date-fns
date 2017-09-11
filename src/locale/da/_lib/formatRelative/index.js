@@ -1,9 +1,9 @@
 var formatRelativeLocale = {
-  lastWeek: '[last] dddd [at] LT',
-  yesterday: '[yesterday at] LT',
-  today: '[today at] LT',
-  tomorrow: '[tomorrow at] LT',
-  nextWeek: 'dddd [at] LT',
+  lastWeek: '[sidste] dddd [kl.] LT',
+  yesterday: '[i går kl.] LT',
+  today: '[i dag kl.] LT',
+  tomorrow: '[i morgen kl.] LT',
+  nextWeek: '[på] dddd [kl.] LT',
   other: 'L'
 }
 
