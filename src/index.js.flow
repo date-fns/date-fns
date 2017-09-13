@@ -1,0 +1,798 @@
+// @flow
+// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
+
+type Interval = {
+  start: Date | string | number,
+  end: Date | string | number
+}
+
+type Options = {
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  additionalDigits?: 0 | 1 | 2,
+  locale?: Locale,
+  includeSeconds?: boolean,
+  addSuffix?: boolean,
+  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  roundingMethod?: 'floor' | 'ceil' | 'round'
+}
+
+type Locale = {
+  formatDistance: Function,
+  formatLong: Function,
+  formatRelative: Function,
+  localize: {
+    ordinalNumber: Function,
+    weekday: Function,
+    weekdays: Function,
+    month: Function,
+    months: Function,
+    timeOfDay: Function,
+    timesOfDay: Function
+  },
+  match: {
+    ordinalNumbers: Function,
+    ordinalNumber: Function,
+    weekdays: Function,
+    weekday: Function,
+    months: Function,
+    month: Function,
+    timesOfDay: Function,
+    timeOfDay: Function
+  },
+  formatters?: Object,
+  formattingTokensRegExp?: RegExp,
+  units?: Object,
+  parsers?: Object,
+  parsingTokensRegExp?: RegExp,
+  options?: {
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  }
+}
+
+declare module.exports: {
+  addDays: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addHours: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addISOYears: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addMilliseconds: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addMinutes: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addMonths: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addQuarters: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addSeconds: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addWeeks: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  addYears: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  areIntervalsOverlapping: (
+    intervalLeft: Interval,
+    intervalRight: Interval,
+    options?: Options
+  ) => boolean,
+
+  closestIndexTo: (
+    dateToCompare: Date | string | number,
+    datesArray: (Date | string | number)[],
+    options?: Options
+  ) => number,
+
+  closestTo: (
+    dateToCompare: Date | string | number,
+    datesArray: (Date | string | number)[],
+    options?: Options
+  ) => Date,
+
+  compareAsc: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  compareDesc: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarDays: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarISOWeeks: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarISOYears: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarMonths: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarQuarters: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarWeeks: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInCalendarYears: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInDays: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInHours: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInISOYears: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInMilliseconds: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInMinutes: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInMonths: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInQuarters: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInSeconds: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInWeeks: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  differenceInYears: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => number,
+
+  eachDayOfInterval: (
+    interval: Interval,
+    options?: Options
+  ) => Date[],
+
+  endOfDay: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfHour: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfISOWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfISOYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfMinute: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfQuarter: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfSecond: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  endOfYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  format: (
+    date: Date | string | number,
+    format: string,
+    options?: Options
+  ) => string,
+
+  formatDistance: (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ) => string,
+
+  formatDistanceStrict: (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ) => string,
+
+  formatRelative: (
+    date: Date | string | number,
+    baseDate: Date | string | number,
+    options?: Options
+  ) => string,
+
+  getDate: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getDay: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getDayOfYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getDaysInMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getDaysInYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getHours: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getISODay: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getISOWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getISOWeeksInYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getISOYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getMilliseconds: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getMinutes: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getOverlappingDaysInIntervals: (
+    intervalLeft: Interval,
+    intervalRight: Interval,
+    options?: Options
+  ) => number,
+
+  getQuarter: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getSeconds: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getTime: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  isAfter: (
+    date: Date | string | number,
+    dateToCompare: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isBefore: (
+    date: Date | string | number,
+    dateToCompare: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isEqual: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isFirstDayOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isFriday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isLastDayOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isLeapYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isMonday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameDay: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameHour: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameISOWeek: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameISOYear: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameMinute: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameMonth: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameQuarter: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameSecond: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameWeek: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSameYear: (
+    dateLeft: Date | string | number,
+    dateRight: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSaturday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isSunday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isThursday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isTuesday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isValid: (
+    date: any,
+    options?: Options
+  ) => boolean,
+
+  isWednesday: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isWeekend: (
+    date: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isWithinInterval: (
+    date: Date | string | number,
+    interval: Interval,
+    options?: Options
+  ) => boolean,
+
+  lastDayOfISOWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  lastDayOfISOYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  lastDayOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  lastDayOfQuarter: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  lastDayOfWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  lastDayOfYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  max: (
+    datesArray: (Date | string | number)[],
+    options?: Options
+  ) => Date,
+
+  min: (
+    datesArray: (Date | string | number)[],
+    options?: Options
+  ) => Date,
+
+  parse: (
+    dateString: string,
+    formatString: string,
+    baseDate: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  setDate: (
+    date: Date | string | number,
+    dayOfMonth: number,
+    options?: Options
+  ) => Date,
+
+  setDay: (
+    date: Date | string | number,
+    day: number,
+    options?: Options
+  ) => Date,
+
+  setDayOfYear: (
+    date: Date | string | number,
+    dayOfYear: number,
+    options?: Options
+  ) => Date,
+
+  setHours: (
+    date: Date | string | number,
+    hours: number,
+    options?: Options
+  ) => Date,
+
+  setISODay: (
+    date: Date | string | number,
+    day: number,
+    options?: Options
+  ) => Date,
+
+  setISOWeek: (
+    date: Date | string | number,
+    isoWeek: number,
+    options?: Options
+  ) => Date,
+
+  setISOYear: (
+    date: Date | string | number,
+    isoYear: number,
+    options?: Options
+  ) => Date,
+
+  setMilliseconds: (
+    date: Date | string | number,
+    milliseconds: number,
+    options?: Options
+  ) => Date,
+
+  setMinutes: (
+    date: Date | string | number,
+    minutes: number,
+    options?: Options
+  ) => Date,
+
+  setMonth: (
+    date: Date | string | number,
+    month: number,
+    options?: Options
+  ) => Date,
+
+  setQuarter: (
+    date: Date | string | number,
+    quarter: number,
+    options?: Options
+  ) => Date,
+
+  setSeconds: (
+    date: Date | string | number,
+    seconds: number,
+    options?: Options
+  ) => Date,
+
+  setYear: (
+    date: Date | string | number,
+    year: number,
+    options?: Options
+  ) => Date,
+
+  startOfDay: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfHour: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfISOWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfISOYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfMinute: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfQuarter: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfSecond: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  subDays: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subHours: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subISOYears: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subMilliseconds: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subMinutes: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subMonths: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subQuarters: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subSeconds: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subWeeks: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  subYears: (
+    date: Date | string | number,
+    amount: number,
+    options?: Options
+  ) => Date,
+
+  toDate: (
+    argument: any,
+    options?: Options
+  ) => Date
+}
