@@ -25,6 +25,11 @@ describe('isValid', function () {
     assert(isValid(NaN) === false)
   })
 
+  it('treats null as an invalid date', function () {
+    var result = isValid(null)
+    assert(result === false)
+  })
+
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {
     // $ExpectedMistake
     var block = isValid.bind(null, new Date(), {additionalDigits: NaN})

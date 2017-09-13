@@ -82,6 +82,10 @@ export default function toDate (argument, dirtyOptions) {
     throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
   }
 
+  if (argument === null) {
+    return new Date(NaN)
+  }
+
   var options = dirtyOptions || {}
 
   var additionalDigits = options.additionalDigits === undefined ? DEFAULT_ADDITIONAL_DIGITS : Number(options.additionalDigits)
