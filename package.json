@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "2.0.0-alpha.1",
+  "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT",
   "contributors": ["Sasha Koss <koss@nocorp.me>", "Lesha Koss <regiusprod@gmail.com>"],
   "license": "MIT",
   "description": "Modern JavaScript date utility library",

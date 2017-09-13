@@ -23,4 +23,4 @@ cd - || exit
 
 ./scripts/build/docs.js
 ./scripts/release/updateFirebase.js
-./scripts/release/tweet.js
+./scripts/release/tweet.js # TODO: Skip tweet if it's a pre-release

@@ -25,6 +25,7 @@ script:
 
 deploy:
   provider: script
+  skip_cleanup: true
   script: ./scripts/release/release.sh
   on:
     tags: true
