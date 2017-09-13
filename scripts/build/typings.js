@@ -425,11 +425,9 @@ function generateFlowFPFnTyping (fn, aliasDeclarations) {
 function generateFlowFPFnIndexTyping (fns, aliasDeclarations) {
   const filename = `./src/fp/index.js.flow`
 
-  const fnsDeclarations = fns.map(({title, args, content}) => {
-    const params = getParams(args, {indent: 1, leftBorder: '(', rightBorder: ')'})
-    const returns = getType(content.returns[0].type.names)
-    return `  ${title}: ${getFPFnType(args, content.returns[0].type.names)}`
-  })
+  const fnsDeclarations = fns.map(({title, args, content}) =>
+    `  ${title}: ${getFPFnType(args, content.returns[0].type.names)}`
+  )
 
   const typingString = ['// @flow']
     .concat(generatedAutomaticallyMessage)
