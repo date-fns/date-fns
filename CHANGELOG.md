@@ -366,6 +366,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
 
+- **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
+  `toDate(null)` returns an invalid date. Since `toDate` is used internally
+  by all the functions, operations over `null` will also return an invalid date.
+  [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
+
+- `toDate` (previously `parse`) and `isValid` functions now accept `any` type
+  as the first argument.
+
 ## [1.28.5] - 2017-05-19
 
 ### Fixed

@@ -247,6 +247,12 @@ describe('toDate', function () {
       assert(result instanceof Date)
       assert(isNaN(result))
     })
+
+    it('returns Invalid Date if argument is null', function () {
+      var result = toDate(null)
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
   })
 
   it('implicitly converts options', function () {

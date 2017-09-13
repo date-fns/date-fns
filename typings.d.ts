@@ -650,7 +650,7 @@ declare module 'date-fns' {
   namespace isTuesday {}
 
   function isValid (
-    date: Date | string | number,
+    date: any,
     options?: Options
   ): boolean
   namespace isValid {}
@@ -952,7 +952,7 @@ declare module 'date-fns' {
   namespace subYears {}
 
   function toDate (
-    argument: Date | string | number,
+    argument: any,
     options?: Options
   ): Date
   namespace toDate {}
@@ -3493,10 +3493,10 @@ declare module 'date-fns/fp' {
   const isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  const isValid: CurriedFn1<Date | string | number, boolean>
+  const isValid: CurriedFn1<any, boolean>
   namespace isValid {}
 
-  const isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isValidWithOptions: CurriedFn2<Options, any, boolean>
   namespace isValidWithOptions {}
 
   const isWednesday: CurriedFn1<Date | string | number, boolean>
@@ -3769,10 +3769,10 @@ declare module 'date-fns/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<any, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn2<Options, any, Date>
   namespace toDateWithOptions {}
 }
 
@@ -8372,7 +8372,7 @@ declare module 'date-fns/esm' {
   namespace isTuesday {}
 
   function isValid (
-    date: Date | string | number,
+    date: any,
     options?: Options
   ): boolean
   namespace isValid {}
@@ -8674,7 +8674,7 @@ declare module 'date-fns/esm' {
   namespace subYears {}
 
   function toDate (
-    argument: Date | string | number,
+    argument: any,
     options?: Options
   ): Date
   namespace toDate {}
@@ -11215,10 +11215,10 @@ declare module 'date-fns/esm/fp' {
   const isTuesdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>
   namespace isTuesdayWithOptions {}
 
-  const isValid: CurriedFn1<Date | string | number, boolean>
+  const isValid: CurriedFn1<any, boolean>
   namespace isValid {}
 
-  const isValidWithOptions: CurriedFn2<Options, Date | string | number, boolean>
+  const isValidWithOptions: CurriedFn2<Options, any, boolean>
   namespace isValidWithOptions {}
 
   const isWednesday: CurriedFn1<Date | string | number, boolean>
@@ -11491,10 +11491,10 @@ declare module 'date-fns/esm/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<any, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn2<Options, any, Date>
   namespace toDateWithOptions {}
 }
 
@@ -17239,7 +17239,7 @@ interface dateFns {
   ): boolean
 
   isValid(
-    date: Date | string | number,
+    date: any,
     options?: Options
   ): boolean
 
@@ -17495,7 +17495,7 @@ interface dateFns {
   ): Date
 
   toDate(
-    argument: Date | string | number,
+    argument: any,
     options?: Options
   ): Date
 }
