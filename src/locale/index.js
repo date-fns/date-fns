@@ -31,6 +31,8 @@ module.exports = {
   sv: require('./sv/index.js'),
   th: require('./th/index.js'),
   tr: require('./tr/index.js'),
+  ua: require('./ua/index.js'),
+  vi: require('./vi/index.js'),
   zhCN: require('./zh-CN/index.js'),
   zhTW: require('./zh-TW/index.js')
 }

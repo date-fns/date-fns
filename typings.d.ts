@@ -15611,6 +15611,12 @@ declare module 'date-fns/locale' {
   const tr: Locale
   namespace tr {}
 
+  const ua: Locale
+  namespace ua {}
+
+  const vi: Locale
+  namespace vi {}
+
   const zhCN: Locale
   namespace zhCN {}
 
@@ -15766,6 +15772,16 @@ declare module 'date-fns/locale/th' {
 declare module 'date-fns/locale/tr' {
   import {tr} from 'date-fns/locale'
   export = tr
+}
+
+declare module 'date-fns/locale/ua' {
+  import {ua} from 'date-fns/locale'
+  export = ua
+}
+
+declare module 'date-fns/locale/vi' {
+  import {vi} from 'date-fns/locale'
+  export = vi
 }
 
 declare module 'date-fns/locale/zh-CN' {
@@ -15928,6 +15944,16 @@ declare module 'date-fns/locale/tr/index' {
   export = tr
 }
 
+declare module 'date-fns/locale/ua/index' {
+  import {ua} from 'date-fns/locale'
+  export = ua
+}
+
+declare module 'date-fns/locale/vi/index' {
+  import {vi} from 'date-fns/locale'
+  export = vi
+}
+
 declare module 'date-fns/locale/zh-CN/index' {
   import {zhCN} from 'date-fns/locale'
   export = zhCN
@@ -16088,6 +16114,16 @@ declare module 'date-fns/locale/tr/index.js' {
   export = tr
 }
 
+declare module 'date-fns/locale/ua/index.js' {
+  import {ua} from 'date-fns/locale'
+  export = ua
+}
+
+declare module 'date-fns/locale/vi/index.js' {
+  import {vi} from 'date-fns/locale'
+  export = vi
+}
+
 declare module 'date-fns/locale/zh-CN/index.js' {
   import {zhCN} from 'date-fns/locale'
   export = zhCN
@@ -16190,6 +16226,12 @@ declare module 'date-fns/esm/locale' {
 
   const tr: Locale
   namespace tr {}
+
+  const ua: Locale
+  namespace ua {}
+
+  const vi: Locale
+  namespace vi {}
 
   const zhCN: Locale
   namespace zhCN {}
@@ -16346,6 +16388,16 @@ declare module 'date-fns/esm/locale/th' {
 declare module 'date-fns/esm/locale/tr' {
   import {tr} from 'date-fns/esm/locale'
   export default tr
+}
+
+declare module 'date-fns/esm/locale/ua' {
+  import {ua} from 'date-fns/esm/locale'
+  export default ua
+}
+
+declare module 'date-fns/esm/locale/vi' {
+  import {vi} from 'date-fns/esm/locale'
+  export default vi
 }
 
 declare module 'date-fns/esm/locale/zh-CN' {
@@ -16508,6 +16560,16 @@ declare module 'date-fns/esm/locale/tr/index' {
   export default tr
 }
 
+declare module 'date-fns/esm/locale/ua/index' {
+  import {ua} from 'date-fns/esm/locale'
+  export default ua
+}
+
+declare module 'date-fns/esm/locale/vi/index' {
+  import {vi} from 'date-fns/esm/locale'
+  export default vi
+}
+
 declare module 'date-fns/esm/locale/zh-CN/index' {
   import {zhCN} from 'date-fns/esm/locale'
   export default zhCN
@@ -16666,6 +16728,16 @@ declare module 'date-fns/esm/locale/th/index.js' {
 declare module 'date-fns/esm/locale/tr/index.js' {
   import {tr} from 'date-fns/esm/locale'
   export default tr
+}
+
+declare module 'date-fns/esm/locale/ua/index.js' {
+  import {ua} from 'date-fns/esm/locale'
+  export default ua
+}
+
+declare module 'date-fns/esm/locale/vi/index.js' {
+  import {vi} from 'date-fns/esm/locale'
+  export default vi
 }
 
 declare module 'date-fns/esm/locale/zh-CN/index.js' {

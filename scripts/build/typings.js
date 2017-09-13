@@ -8,6 +8,7 @@
  */
 
 const fs = require('fs')
+const path = require('path')
 const listLocales = require('../_lib/listLocales')
 const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
