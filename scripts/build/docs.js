@@ -15,7 +15,7 @@ const jsDocParser = require('jsdoc-to-markdown')
 const listFns = require('../_lib/listFns')
 const docsConfig = require('../../docs/index.js')
 
-const docsPath = path.join(process.cwd(), 'docs.json')
+const docsPath = path.resolve(process.cwd(), 'tmp/docs.json')
 
 generateDocsFromSource()
   .then(generatedDocsObj)

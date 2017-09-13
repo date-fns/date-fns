@@ -21,5 +21,6 @@ else
 fi
 cd - || exit
 
+./scripts/build/docs.js
 ./scripts/release/updateFirebase.js
 ./scripts/release/tweet.js

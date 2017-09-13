@@ -9,7 +9,7 @@
 
 const fs = require('fs')
 const listLocales = require('../_lib/listLocales')
-const jsDocs = require('../../docs.json')
+const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
 const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it."
 

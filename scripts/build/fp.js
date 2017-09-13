@@ -8,7 +8,8 @@
  */
 
 const fs = require('fs')
-const jsDocs = require('../../docs.json')
+const path = require('path')
+const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
 const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/fp.js`. Please, don't change it."
 const FP_DIR = './src/fp'
