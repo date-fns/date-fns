@@ -369,6 +369,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
   `toDate(null)` returns an invalid date. Since `toDate` is used internally
   by all the functions, operations over `null` will also return an invalid date.
+  [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
 
 ## [1.28.5] - 2017-05-19
 
