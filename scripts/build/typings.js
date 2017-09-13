@@ -381,6 +381,28 @@ function generateFlowFnTyping (fn, aliasDeclarations) {
   fs.writeFileSync(filename, typingString)
 }
 
+function generateFlowFnIndexTyping (fns, aliasDeclarations) {
+  const filename = `./src/index.js.flow`
+
+  const fnsDeclarations = fns.map(({title, args, content}) => {
+    const params = getParams(args, {indent: 1, leftBorder: '(', rightBorder: ')'})
+    const returns = getType(content.returns[0].type.names)
+    return `  ${title}: ${params} => ${returns}`
+  })
+
+  const typingString = ['// @flow']
+    .concat(generatedAutomaticallyMessage)
+    .concat('')
+    .concat(aliasDeclarations.join('\n\n'))
+    .concat('')
+    .concat(`declare module.exports: {`)
+    .concat(fnsDeclarations.join(',\n\n'))
+    .concat(`}\n`)
+    .join('\n')
+
+  fs.writeFileSync(filename, typingString)
+}
+
 function generateFlowFPFnTyping (fn, aliasDeclarations) {
   const {title, args, content} = fn
   const filename = `./src/fp/${title}/index.js.flow`
@@ -395,6 +417,30 @@ function generateFlowFPFnTyping (fn, aliasDeclarations) {
     .concat(flowFPAliases)
     .concat('')
     .concat(`declare module.exports: ${type}\n`)
+    .join('\n')
+
+  fs.writeFileSync(filename, typingString)
+}
+
+function generateFlowFPFnIndexTyping (fns, aliasDeclarations) {
+  const filename = `./src/fp/index.js.flow`
+
+  const fnsDeclarations = fns.map(({title, args, content}) => {
+    const params = getParams(args, {indent: 1, leftBorder: '(', rightBorder: ')'})
+    const returns = getType(content.returns[0].type.names)
+    return `  ${title}: ${getFPFnType(args, content.returns[0].type.names)}`
+  })
+
+  const typingString = ['// @flow']
+    .concat(generatedAutomaticallyMessage)
+    .concat('')
+    .concat(aliasDeclarations.join('\n\n'))
+    .concat('')
+    .concat(flowFPAliases)
+    .concat('')
+    .concat(`declare module.exports: {`)
+    .concat(fnsDeclarations.join(',\n'))
+    .concat(`}\n`)
     .join('\n')
 
   fs.writeFileSync(filename, typingString)
@@ -415,6 +461,22 @@ function generateFlowLocaleTyping (locale, localeAliasDeclaration) {
   fs.writeFileSync(filename, typingString)
 }
 
+function generateFlowLocaleIndexTyping (locales, localeAliasDeclaration) {
+  const filename = './src/locale/index.js.flow'
+
+  const typingString = ['// @flow']
+    .concat(generatedAutomaticallyMessage)
+    .concat('')
+    .concat(localeAliasDeclaration)
+    .concat('')
+    .concat(`declare module.exports: {`)
+    .concat(locales.map(({name}) => `  ${name}: Locale`).join(',\n'))
+    .concat(`}\n`)
+    .join('\n')
+
+  fs.writeFileSync(filename, typingString)
+}
+
 function generateFlowTypings (fns, aliases, locales) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
   const localeAliasDeclaration = getFlowTypeAlias(aliases.find((alias) => alias.title === 'Locale'))
@@ -430,4 +492,8 @@ function generateFlowTypings (fns, aliases, locales) {
   locales.forEach((locale) => {
     generateFlowLocaleTyping(locale, localeAliasDeclaration)
   })
+
+  generateFlowFnIndexTyping(fns.filter(({isFPFn}) => !isFPFn), aliasDeclarations)
+  generateFlowFPFnIndexTyping(fns.filter(({isFPFn}) => isFPFn), aliasDeclarations)
+  generateFlowLocaleIndexTyping(locales, localeAliasDeclaration)
 }

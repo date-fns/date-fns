@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const ignoredFiles = ['index.js', 'test.js']
+const ignoredFiles = ['index.js', 'test.js', 'index.js.flow']
 
 module.exports = listLocales
 
