@@ -63,4 +63,4 @@ type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
   | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
   | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
 
-declare module.exports: CurriedFn1<Date | string | number, boolean>
+declare module.exports: CurriedFn1<any, boolean>
