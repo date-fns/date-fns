@@ -6,6 +6,14 @@
 
 set -e
 
+# A pre-release is a version with a label i.e. v2.0.0-alpha.1
+if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
+then
+  IS_PRE_RELEASE=true
+else
+  IS_PRE_RELEASE=false
+fi
+
 PACKAGE_PATH="$(pwd)/../../tmp/package"
 ./scripts/release/writeVersion.js
 
@@ -13,7 +21,7 @@ env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
 
 echo "//registry.npmjs.org/:_authToken=$NPM_KEY" > ~/.npmrc
 cd "$PACKAGE_PATH" || exit 1
-if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
+if [ "$IS_PRE_RELEASE" = true ]
 then
   npm publish --tag next
 else
@@ -23,4 +31,7 @@ cd - || exit
 
 ./scripts/build/docs.js
 ./scripts/release/updateFirebase.js
-./scripts/release/tweet.js # TODO: Skip tweet if it's a pre-release
+if [ "$IS_PRE_RELEASE" = false ]
+then
+  ./scripts/release/tweet.js
+fi

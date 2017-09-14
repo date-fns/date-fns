@@ -17,7 +17,6 @@ before_install:
 branches:
   only:
     - master
-    - v2
     - "/v\\d+\\.\\d+\\.\\d+(-\\w+)?/"
 
 script:
