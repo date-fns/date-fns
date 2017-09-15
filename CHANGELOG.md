@@ -81,6 +81,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - [Vietnamese locale (vi)](https://github.com/date-fns/date-fns/pull/546)
   (kudos to [@trongthanh](https://github.com/trongthanh))
 
+- Flow typings for `index.js`, `fp/index.js`, `locale/index.js`, and their ESM equivalents.
+  See PR [#558](https://github.com/date-fns/date-fns/pull/558)
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
