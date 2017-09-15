@@ -4,6 +4,10 @@ language: node_js
 node_js:
   - 6
 
+stages:
+  - test
+  - deploy
+
 env:
   - TEST_SUITE=main
   - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
@@ -22,12 +26,11 @@ branches:
 script:
   - ./scripts/test/travis.sh
 
-deploy:
-  provider: script
-  skip_cleanup: true
-  script: ./scripts/release/release.sh
-  on:
-    tags: true
+jobs:
+  include:
+    - stage: deploy
+      if: branch = master AND tag IS present
+      script: ./scripts/release/release.sh
 
 cache: yarn
 
