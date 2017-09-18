@@ -84,6 +84,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - Flow typings for `index.js`, `fp/index.js`, `locale/index.js`, and their ESM equivalents.
   See PR [#558](https://github.com/date-fns/date-fns/pull/558)
 
+- [en-GB locale](https://github.com/date-fns/date-fns/pull/563)
+  (kudos to [@glintik](https://github.com/glintik))
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
