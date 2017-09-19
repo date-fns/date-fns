@@ -1,7 +1,11 @@
 {
   "name": "date-fns",
   "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
-  "contributors": ["Sasha Koss <koss@nocorp.me>", "Lesha Koss <regiusprod@gmail.com>"],
+  "side-effects": false,
+  "contributors": [
+    "Sasha Koss <koss@nocorp.me>",
+    "Lesha Koss <regiusprod@gmail.com>"
+  ],
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
@@ -62,7 +66,6 @@
     "standard": "^8.6.0",
     "systemjs": "^0.19.39",
     "systemjs-plugin-babel": "0.0.17",
-    "uglify-js": "^2.6.1",
     "webpack": "^1.12.0",
     "world-countries": "^1.8.1"
   }
