@@ -1,4 +1,4 @@
-# ![](https://cdn.rawgit.com/date-fns/date-fns/master/docs/logo.svg) date-fns
+# ![](https://cdn.rawgit.com/date-fns/date-fns/c5bcd92/docs/logo.svg) date-fns
 
 ⚠️ **Warning**: the current master represents v2 pre-release version of the library. [See v1 branch](https://github.com/date-fns/date-fns/tree/v1).
 
