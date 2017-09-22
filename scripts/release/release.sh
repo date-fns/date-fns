@@ -6,6 +6,12 @@
 
 set -e
 
+if [ -z "${APP_ENV+x}" ];
+then
+  echo 'APP_ENV is unset; please set to staging or production'
+  exit 1
+fi
+
 # A pre-release is a version with a label i.e. v2.0.0-alpha.1
 if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-.+$ ]]
 then

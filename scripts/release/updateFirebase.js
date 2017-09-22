@@ -8,23 +8,13 @@
  * It's a part of the release process.
  */
 
-const firebase = require('firebase')
+const {getFirebaseDB} = require('../_lib/firebase')
 const path = require('path')
 const fs = require('fs')
 const childProcess = require('child_process')
 const listLocales = require('../_lib/listLocales')
 const countries = require('world-countries')
 const {version} = require('../../package.json')
-
-const {
-  FIREBASE_EMAIL,
-  FIREBASE_PASSWORD,
-  FIREBASE_API_KEY,
-  FIREBASE_AUTH_DOMAIN,
-  FIREBASE_DATABASE_URL,
-  FIREBASE_STORAGE_BUCKET,
-  FIREBASE_MESSAGING_SENDER_ID
-} = process.env
 
 const prereleaseRegExp = /(test|alpha|beta|rc)/
 
@@ -131,23 +121,14 @@ function generateVersion (data, docsKey) {
   }
 }
 
-firebase.initializeApp({
-  apiKey: FIREBASE_API_KEY,
-  authDomain: FIREBASE_AUTH_DOMAIN,
-  databaseURL: FIREBASE_DATABASE_URL,
-  storageBucket: FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID
-})
-
-firebase.auth()
-  .signInWithEmailAndPassword(FIREBASE_EMAIL, FIREBASE_PASSWORD)
-  .then(() => {
+getFirebaseDB()
+  .then(db => {
     const data = generateVersionData()
 
-    const docsListRef = firebase.database().ref('/docs')
+    const docsListRef = db.ref('/docs')
     const docsRef = docsListRef.push()
 
-    const versionListRef = firebase.database().ref('/versions')
+    const versionListRef = db.ref('/versions')
     const versionRef = versionListRef.push()
 
     return Promise.all([
