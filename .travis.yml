@@ -29,7 +29,7 @@ script:
 jobs:
   include:
     - stage: deploy
-      if: branch = master AND tag IS present
+      if: tag IS present
       script: ./scripts/release/release.sh
 
 cache: yarn
