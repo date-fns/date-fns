@@ -300,7 +300,6 @@ describe('de locale', function () {
     describe('days of a week', function () {
       it('do', function () {
         var result = parse('2016 3 0.', 'GGGG W do', baseDate, {locale: locale})
-        console.log('$$$$ result', result);
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 24))
       })
 

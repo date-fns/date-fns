@@ -303,7 +303,6 @@ describe('fr-CH locale', function () {
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 24))
       })
 
-      
       it('dd', function () {
         var result = parse('2016 4 Lu', 'GGGG W dd', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 25))
