@@ -87,6 +87,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - [en-GB locale](https://github.com/date-fns/date-fns/pull/563)
   (kudos to [@glintik](https://github.com/glintik))
 
+- [Fixes danish locale support for long and relative formats](https://github.com/date-fns/date-fns/pull/555) (kudos to [@stefanbugge](https://github.com/stefanbugge))
+
+- [Support for long and relative formats for German locale](https://github.com/date-fns/date-fns/pull/553) (thanks to [@vanvuongngo](https://github.com/vanvuongngo)).
+
+- [fr-CH locale](https://github.com/date-fns/date-fns/pull/553) (kudos to [@vanvuongngo](https://github.com/vanvuongngo)).
+
+- [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
