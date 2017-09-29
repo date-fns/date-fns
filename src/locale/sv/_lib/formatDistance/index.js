@@ -84,14 +84,20 @@ var wordMapping = [
 ]
 
 export default function formatDistance (token, count, options) {
-  options = options || {}
+  options = options || {
+    onlyNumeric: false
+  }
 
   var translation = formatDistanceLocale[token]
   var result
   if (typeof translation === 'string') {
     result = translation
   } else if (count === 0 || count > 1) {
-    result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count)
+    if (options.onlyNumeric) {
+      result = translation.plural.replace('{{count}}', count)
+    } else {
+      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count)
+    }
   } else {
     result = translation.singular
   }

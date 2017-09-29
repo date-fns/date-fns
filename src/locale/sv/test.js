@@ -192,6 +192,17 @@ describe('sv locale', function () {
         assert(result === 'ungefär en timme sedan')
       })
     })
+
+    context('when `onlyNumeric` option is true', function () {
+      it('works as expected', function () {
+        var result = formatDistance(
+          new Date(1986, 3, 4, 10, 34, 0),
+          new Date(1986, 3, 4, 10, 32, 0),
+          {locale: locale, includeSeconds: true, onlyNumeric: true}
+        )
+        assert(result === '2 minuter')
+      })
+    })
   })
 
   context('with `formatDistanceStrict`', function () {
