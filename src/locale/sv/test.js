@@ -153,12 +153,12 @@ describe('sv locale', function () {
 
       it('LLL', function () {
         var result = format(date, 'LLL', {locale: locale})
-        assert(result === '4 april 1986 10:32')
+        assert(result === '4 april 1986 kl. 10:32')
       })
 
       it('LLLL', function () {
         var result = format(date, 'LLLL', {locale: locale})
-        assert(result === 'fredag 4 april 1986 10:32')
+        assert(result === 'fredag 4 april 1986 kl. 10:32')
       })
     })
   })
@@ -230,27 +230,27 @@ describe('sv locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'förra tisdagen 00:00')
+      assert(result === 'förra tisdagen kl. 00:00')
     })
 
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
-      assert(result === 'igår 22:22')
+      assert(result === 'igår kl. 22:22')
     })
 
     it('today', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, {locale: locale})
-      assert(result === 'idag 16:50')
+      assert(result === 'idag kl. 16:50')
     })
 
     it('tomorrow', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 5, 7, 30), baseDate, {locale: locale})
-      assert(result === 'imorgon 07:30')
+      assert(result === 'imorgon kl. 07:30')
     })
 
     it('next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'söndag 12:00')
+      assert(result === 'söndag kl. 12:00')
     })
 
     it('after the next week', function () {
@@ -387,7 +387,7 @@ describe('sv locale', function () {
 
     describe('long formats', function () {
       it('unfolds long formats', function () {
-        var result = parse('6 april 1987 11:32', 'LLL', baseDate, {locale: locale})
+        var result = parse('6 april 1987 kl. 11:32', 'LLL', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1987, 3 /* Apr */, 6, 11, 32))
       })
     })

@@ -5,8 +5,8 @@ var formatLong = buildFormatLongFn({
   LTS: 'HH:mm:ss',
   L: 'YYYY-MM-DD',
   LL: 'D MMMM YYYY',
-  LLL: 'D MMMM YYYY HH:mm',
-  LLLL: 'dddd D MMMM YYYY HH:mm'
+  LLL: 'D MMMM YYYY [kl.] HH:mm',
+  LLLL: 'dddd D MMMM YYYY [kl.] HH:mm'
 })
 
 export default formatLong
