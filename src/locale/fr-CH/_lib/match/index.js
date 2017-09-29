@@ -3,25 +3,25 @@ import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import parseDecimal from '../../../_lib/parseDecimal/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(\.)?/i
+var matchOrdinalNumbersPattern = /^(\d+)(e|ère|er)?/i
 
 var matchWeekdaysPatterns = {
-  narrow: /^(so|mo|di|mi|do|fr|sa)/i,
-  short: /^(son|mon|die|mit|don|fre|sam)/i,
-  long: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
+  narrow: /^(di|lu|ma|me|je|ve|sa)/i,
+  short: /^(dim|lun|mar|mer|jeu|ven|sam)/i,
+  long: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
 }
 
 var parseWeekdayPatterns = {
-  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^j/i, /^v/i, /^s/i]
 }
 
 var matchMonthsPatterns = {
-  short: /^(jan|feb|mär|apr|mai|jun|jul|aug|sep|okt|nov|dez)/i,
-  long: /^(januar|februar|märz|april|mai|juni|juli|august|september|oktober|november|dezember)/i
+  short: /^(jan|fév|mar|avr|mai|juin|juil|aoû|sep|oct|nov|déc)/i,
+  long: /^('janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre')/i
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mär/i, /^ap/i, /^mai/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^mai$/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
 }
 
 var matchTimesOfDayPatterns = {
