@@ -142,7 +142,7 @@ function generateTypeScriptFnTyping (fn) {
   const typingString = [`declare module '${moduleName}' {`]
     .concat(`  import {${name}} from 'date-fns'`)
     .concat(`  export = ${name}`)
-    .concat('}')
+    .concat('}\n')
     .join('\n')
 
   fs.writeFileSync(filename, typingString)
@@ -165,7 +165,7 @@ function generateTypeScriptLocaleTyping (locale) {
   const name = `locale/${snakeCaseName}`
   const filename = `./src/locale/${snakeCaseName}/index.d.ts`
 
-  const typingString = `declare module 'date-fns/${name}' {}`
+  const typingString = `declare module 'date-fns/${name}' {}\n`
 
   fs.writeFileSync(filename, typingString)
 }
