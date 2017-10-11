@@ -10,6 +10,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+### Fixed
+
+- Fix Italian translations for `formatDistance`. ([see the issue: #550](https://github.com/date-fns/date-fns/issues/550); [see the PR: #552](https://github.com/date-fns/date-fns/pull/552))
+  Thanks to [@giofilo](https://github.com/giofilo)!
+
 ### Added
 
 - [Hungarian locale (hu)](https://github.com/date-fns/date-fns/pull/503)
