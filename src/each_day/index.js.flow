@@ -2,6 +2,5 @@
 
 declare module.exports: (
   startDate: Date | string | number,
-  endDate: Date | string | number,
-  step?: number
+  endDate: Date | string | number
 ) => Date[]
