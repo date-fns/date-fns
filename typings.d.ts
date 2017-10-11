@@ -231,7 +231,8 @@ declare module 'date-fns' {
 
   function eachDay (
     startDate: Date | string | number,
-    endDate: Date | string | number
+    endDate: Date | string | number,
+    step?: number
   ): Date[]
   namespace eachDay {}
 
@@ -3204,6 +3205,7 @@ declare module 'date-fns/locale/fi' {}
 declare module 'date-fns/locale/fil' {}
 declare module 'date-fns/locale/fr' {}
 declare module 'date-fns/locale/hr' {}
+declare module 'date-fns/locale/hu' {}
 declare module 'date-fns/locale/id' {}
 declare module 'date-fns/locale/is' {}
 declare module 'date-fns/locale/it' {}
@@ -3217,6 +3219,7 @@ declare module 'date-fns/locale/pt' {}
 declare module 'date-fns/locale/ro' {}
 declare module 'date-fns/locale/ru' {}
 declare module 'date-fns/locale/sk' {}
+declare module 'date-fns/locale/sl' {}
 declare module 'date-fns/locale/sv' {}
 declare module 'date-fns/locale/th' {}
 declare module 'date-fns/locale/tr' {}
@@ -3236,6 +3239,7 @@ declare module 'date-fns/locale/fi/index' {}
 declare module 'date-fns/locale/fil/index' {}
 declare module 'date-fns/locale/fr/index' {}
 declare module 'date-fns/locale/hr/index' {}
+declare module 'date-fns/locale/hu/index' {}
 declare module 'date-fns/locale/id/index' {}
 declare module 'date-fns/locale/is/index' {}
 declare module 'date-fns/locale/it/index' {}
@@ -3249,6 +3253,7 @@ declare module 'date-fns/locale/pt/index' {}
 declare module 'date-fns/locale/ro/index' {}
 declare module 'date-fns/locale/ru/index' {}
 declare module 'date-fns/locale/sk/index' {}
+declare module 'date-fns/locale/sl/index' {}
 declare module 'date-fns/locale/sv/index' {}
 declare module 'date-fns/locale/th/index' {}
 declare module 'date-fns/locale/tr/index' {}
@@ -3268,6 +3273,7 @@ declare module 'date-fns/locale/fi/index.js' {}
 declare module 'date-fns/locale/fil/index.js' {}
 declare module 'date-fns/locale/fr/index.js' {}
 declare module 'date-fns/locale/hr/index.js' {}
+declare module 'date-fns/locale/hu/index.js' {}
 declare module 'date-fns/locale/id/index.js' {}
 declare module 'date-fns/locale/is/index.js' {}
 declare module 'date-fns/locale/it/index.js' {}
@@ -3281,6 +3287,7 @@ declare module 'date-fns/locale/pt/index.js' {}
 declare module 'date-fns/locale/ro/index.js' {}
 declare module 'date-fns/locale/ru/index.js' {}
 declare module 'date-fns/locale/sk/index.js' {}
+declare module 'date-fns/locale/sl/index.js' {}
 declare module 'date-fns/locale/sv/index.js' {}
 declare module 'date-fns/locale/th/index.js' {}
 declare module 'date-fns/locale/tr/index.js' {}

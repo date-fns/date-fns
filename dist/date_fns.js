@@ -1612,9 +1612,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var parse = __webpack_require__(2);
-	function eachDay(dirtyStartDate, dirtyEndDate) {
+	function eachDay(dirtyStartDate, dirtyEndDate, dirtyStep) {
 	    var startDate = parse(dirtyStartDate);
 	    var endDate = parse(dirtyEndDate);
+	    var step = dirtyStep !== undefined ? dirtyStep : 1;
 	    var endTime = endDate.getTime();
 	    if (startDate.getTime() > endTime) {
 	        throw new Error('The first date cannot be after the second date');
@@ -1624,7 +1625,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    currentDate.setHours(0, 0, 0, 0);
 	    while (currentDate.getTime() <= endTime) {
 	        dates.push(parse(currentDate));
-	        currentDate.setDate(currentDate.getDate() + 1);
+	        currentDate.setDate(currentDate.getDate() + step);
 	    }
 	    return dates;
 	}
