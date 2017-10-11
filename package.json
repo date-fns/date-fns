@@ -5,7 +5,7 @@
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
-  "types": "./index.d.ts",
+  "typings": "./typings.d.ts",
   "engine": {
     "node": ">= 0.11"
   },

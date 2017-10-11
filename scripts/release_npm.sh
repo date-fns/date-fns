@@ -10,13 +10,25 @@ for pattern in CHANGELOG.md \
   README.md \
   index.js \
   package.json \
-  index.d.ts \
+  typings.d.ts \
   src/*
 do
   cp -r "$pattern" "$dir"
 done
 
 rm -rf "$dir/is_so_last_week"
+
+for module in $dir/*/
+do
+  module=${module%*/}
+  cp scripts/sub_module_package.json "$module/package.json"
+done
+
+for locale in $dir/locale/*/
+do
+  locale=${locale%*/}
+  cp scripts/locale_package.json "$locale/package.json"
+done
 
 cp dist/date_fns_docs.json $dir/docs.json
 find "$dir" -type f -name "test.js" -delete
