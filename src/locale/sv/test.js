@@ -47,7 +47,6 @@ describe('sv locale', function () {
 
       it('MMM', function () {
         var result = format(date, 'MMM', {locale: locale})
-        console.log(result)
         assert(result === 'apr')
       })
 
@@ -125,7 +124,6 @@ describe('sv locale', function () {
       it('12PM', function () {
         var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
         var result = format(date, 'hh:mmA', {locale: locale})
-        console.log(result)
         assert(result === '12:00e.m.')
       })
     })
