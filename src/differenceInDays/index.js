@@ -8,7 +8,7 @@ import compareAsc from '../compareAsc/index.js'
  * @summary Get the number of full days between the given dates.
  *
  * @description
- * Get the number of full days between the given dates.
+ * Get the number of full day periods between the given dates.
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
@@ -26,7 +26,14 @@ import compareAsc from '../compareAsc/index.js'
  *   new Date(2011, 6, 2, 23, 0)
  * )
  * //=> 365
- */
+ * // How many days are between
+ * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
+ * var result = differenceInDays(
+ *   new Date(2011, 6, 2, 0, 1),
+ *   new Date(2011, 6, 2, 23, 59)
+ * )
+ * //=> 0
+*/
 export default function differenceInDays (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
