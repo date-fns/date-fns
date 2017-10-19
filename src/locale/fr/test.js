@@ -16,7 +16,7 @@ import parse from '../../parse'
 import setDay from '../../setDay'
 import startOfWeek from '../../startOfWeek'
 
-describe.skip('fr locale', function () {
+describe.only('fr locale', function () {
   context('with `differenceInCalendarWeeks`', function () {
     it('sets the first day of the week', function () {
       var result = differenceInCalendarWeeks(
@@ -42,52 +42,52 @@ describe.skip('fr locale', function () {
     describe('months', function () {
       it('Mo', function () {
         var result = format(date, 'Mo [month]', {locale: locale})
-        assert(result === '4th month')
+        assert(result === '4e month')
       })
 
       it('MMM', function () {
         var result = format(date, 'MMM', {locale: locale})
-        assert(result === 'Apr')
+        assert(result === 'avr.')
       })
 
       it('MMMM', function () {
         var result = format(date, 'MMMM', {locale: locale})
-        assert(result === 'April')
+        assert(result === 'avril')
       })
     })
 
     describe('quarters', function () {
       it('Qo', function () {
         var result = format(date, 'Qo [quarter]', {locale: locale})
-        assert(result === '2nd quarter')
+        assert(result === '2e quarter')
       })
     })
 
     describe('days of month', function () {
       it('Do', function () {
         var result = format(date, 'Do MMMM YYYY', {locale: locale})
-        assert(result === '4th April 1986')
+        assert(result === '4 avril 1986')
       })
     })
 
     describe('days of year', function () {
       it('DDDo', function () {
         var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [day of the year]', {locale: locale})
-        assert(result === '1st day of the year')
+        assert(result === '1er day of the year')
       })
     })
 
     describe('days of week', function () {
       it('all variants', function () {
         var result = format(date, 'do [day of the week,] dd ddd dddd', {locale: locale})
-        assert(result === '5th day of the week, Fr Fri Friday')
+        assert(result === '5e day of the week, ve ven. vendredi')
       })
     })
 
     describe('ISO weeks', function () {
       it('Wo', function () {
         var result = format(date, 'Wo [week]', {locale: locale})
-        assert(result === '14th week')
+        assert(result === '14e week')
       })
     })
 
@@ -100,7 +100,7 @@ describe.skip('fr locale', function () {
       it('12 pm', function () {
         var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
         var result = format(date, 'HH:mm', {locale: locale})
-        assert(result === '00:00')
+        assert(result === '12:00')
       })
 
       it('12 am', function () {
@@ -128,17 +128,17 @@ describe.skip('fr locale', function () {
 
       it('LL', function () {
         var result = format(date, 'LL', {locale: locale})
-        assert(result === '4. April 1986')
+        assert(result === '4 avril 1986')
       })
 
       it('LLL', function () {
         var result = format(date, 'LLL', {locale: locale})
-        assert(result === '4. April 1986 10:32')
+        assert(result === '4 avril 1986 10:32')
       })
 
       it('LLLL', function () {
         var result = format(date, 'LLLL', {locale: locale})
-        assert(result === 'Friday, 4. April 1986 10:32')
+        assert(result === 'vendredi, 4 avril 1986 10:32')
       })
     })
   })
@@ -150,7 +150,7 @@ describe.skip('fr locale', function () {
         new Date(1986, 3, 4, 10, 32, 0),
         {locale: locale, includeSeconds: true}
       )
-      assert(result === 'half a minute')
+      assert(result === '30 secondes')
     })
 
     context('when `addSuffix` option is true', function () {
@@ -160,7 +160,7 @@ describe.skip('fr locale', function () {
           new Date(1986, 3, 4, 10, 32, 0),
           {locale: locale, includeSeconds: true, addSuffix: true}
         )
-        assert(result === 'in less than 10 seconds')
+        assert(result === 'dans moins de 10 secondes')
       })
 
       it('adds a past suffix', function () {
@@ -169,7 +169,7 @@ describe.skip('fr locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === 'about 1 hour ago')
+        assert(result === 'il y a environ 1 heure')
       })
     })
   })
@@ -191,7 +191,7 @@ describe.skip('fr locale', function () {
           new Date(1986, 3, 4, 10, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === 'in 25 seconds')
+        assert(result === 'dans 25 secondes')
       })
 
       it('adds a past suffix', function () {
@@ -200,7 +200,7 @@ describe.skip('fr locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === '1 hour ago')
+        assert(result === 'il y a 1 heure')
       })
     })
   })
@@ -210,7 +210,7 @@ describe.skip('fr locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'last Tuesday at 12:00')
+      assert(result === 'last mardi at 00:00')
     })
 
     it('yesterday', function () {
@@ -230,7 +230,7 @@ describe.skip('fr locale', function () {
 
     it('next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'Sunday at 00:00')
+      assert(result === 'dimanche at 12:00')
     })
 
     it('after the next week', function () {
@@ -299,7 +299,7 @@ describe.skip('fr locale', function () {
 
     describe('days of a week', function () {
       it('do', function () {
-        var result = parse('2016 4 0th', 'GGGG W do', baseDate, {locale: locale})
+        var result = parse('2016 3 0th', 'GGGG W do', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 24))
       })
 
