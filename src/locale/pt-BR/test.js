@@ -41,8 +41,8 @@ describe('pt-BR locale', function () {
 
     describe('months', function () {
       it('Mo', function () {
-        var result = format(date, 'Mo [month]', {locale: locale})
-        assert(result === '4º month')
+        var result = format(date, 'Mo [mês]', {locale: locale})
+        assert(result === '4º mês')
       })
 
       it('MMM', function () {
@@ -58,8 +58,8 @@ describe('pt-BR locale', function () {
 
     describe('quarters', function () {
       it('Qo', function () {
-        var result = format(date, 'Qo [quarter]', {locale: locale})
-        assert(result === '2º quarter')
+        var result = format(date, 'Qo [bimestre]', {locale: locale})
+        assert(result === '2º bimestre')
       })
     })
 
@@ -72,15 +72,15 @@ describe('pt-BR locale', function () {
 
     describe('days of year', function () {
       it('DDDo', function () {
-        var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [day of the year]', {locale: locale})
-        assert(result === '1º day of the year')
+        var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [dia do ano]', {locale: locale})
+        assert(result === '1º dia do ano')
       })
     })
 
     describe('days of week', function () {
       it('all variants', function () {
-        var result = format(date, 'do [day of the week,] dd ddd dddd', {locale: locale})
-        assert(result === '5º day of the week, sx sex sexta')
+        var result = format(date, 'do [dia da semana,] dd ddd dddd', {locale: locale})
+        assert(result === '5º dia da semana, sx sex sexta')
       })
     })
 
@@ -231,6 +231,11 @@ describe('pt-BR locale', function () {
       assert(result === 'última terça às 12:00 a.m.')
     })
 
+    it('last week sunday', function () {
+      var result = formatRelative(new Date(1986, 2 /* Mar */, 30), baseDate, {locale: locale})
+      assert(result === 'último domingo às 12:00 a.m.')
+    })
+
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
       assert(result === 'ontem às 10:22 p.m.')
@@ -317,7 +322,7 @@ describe('pt-BR locale', function () {
 
     describe('days of a week', function () {
       it('do', function () {
-        var result = parse('2016 4 0th', 'GGGG W do', baseDate, {locale: locale})
+        var result = parse('2016 4 0º', 'GGGG W do', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 24))
       })
 
@@ -339,7 +344,7 @@ describe('pt-BR locale', function () {
 
     describe('days of a month', function () {
       it('Do', function () {
-        var result = parse('2016 11 15th', 'YYYY MM Do', baseDate, {locale: locale})
+        var result = parse('2016 11 15º', 'YYYY MM Do', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 15))
       })
     })
