@@ -6,13 +6,13 @@ import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 var weekdayValues = {
-  narrow: ['Mi', 'Sn', 'Sl', 'Ra', 'Ka', 'Ju', 'Sa'],
+  narrow: ['Mg', 'Sn', 'Sl', 'Rb', 'Km', 'Jm', 'Sb'],
   short: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
   long: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
 }
 
 var monthValues = {
-  short: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+  short: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'],
   long: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 }
 
@@ -25,13 +25,8 @@ var timeOfDayValues = {
 function ordinalNumber (dirtyNumber) {
   var number = Number(dirtyNumber)
 
+  // Can't use "pertama", "kedua" because can't be parsed
   switch (number) {
-    case 1:
-      return 'pertama'
-    case 2:
-      return 'kedua'
-    case 3:
-      return 'ketiga'
     default:
       return 'ke-' + number
   }
