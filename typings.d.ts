@@ -15523,6 +15523,8 @@ declare module 'date-fns/esm/fp/toDateWithOptions/index.js' {
 declare module 'date-fns/locale' {
   const ar: Locale
   namespace ar {}
+  const arDZ: Locale
+  namespace arDZ {}
 
   const bg: Locale
   namespace bg {}
@@ -15633,6 +15635,11 @@ declare module 'date-fns/locale' {
 declare module 'date-fns/locale/ar' {
   import {ar} from 'date-fns/locale'
   export = ar
+}
+
+declare module 'date-fns/locale/ar-DZ' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
 }
 
 declare module 'date-fns/locale/bg' {
@@ -15815,6 +15822,11 @@ declare module 'date-fns/locale/ar/index' {
   export = ar
 }
 
+declare module 'date-fns/locale/ar-DZ/index' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
+}
+
 declare module 'date-fns/locale/bg/index' {
   import {bg} from 'date-fns/locale'
   export = bg
@@ -15995,6 +16007,10 @@ declare module 'date-fns/locale/ar/index.js' {
   export = ar
 }
 
+declare module 'date-fns/locale/ar-DZ/index.js' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
+}
 declare module 'date-fns/locale/bg/index.js' {
   import {bg} from 'date-fns/locale'
   export = bg
@@ -16175,6 +16191,8 @@ declare module 'date-fns/locale/zh-TW/index.js' {
 declare module 'date-fns/esm/locale' {
   const ar: Locale
   namespace ar {}
+  const arDZ: Locale
+  namespace arDZ {}
 
   const bg: Locale
   namespace bg {}
@@ -16285,6 +16303,11 @@ declare module 'date-fns/esm/locale' {
 declare module 'date-fns/esm/locale/ar' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
+}
+
+declare module 'date-fns/esm/locale/ar-DZ' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
 }
 
 declare module 'date-fns/esm/locale/bg' {
@@ -16467,6 +16490,10 @@ declare module 'date-fns/esm/locale/ar/index' {
   export default ar
 }
 
+declare module 'date-fns/esm/locale/ar-DZ/index' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
+}
 declare module 'date-fns/esm/locale/bg/index' {
   import {bg} from 'date-fns/esm/locale'
   export default bg
@@ -16645,6 +16672,10 @@ declare module 'date-fns/esm/locale/zh-TW/index' {
 declare module 'date-fns/esm/locale/ar/index.js' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
+}
+declare module 'date-fns/esm/locale/en-DZ/index.js' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
 }
 
 declare module 'date-fns/esm/locale/bg/index.js' {

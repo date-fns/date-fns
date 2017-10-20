@@ -2,6 +2,7 @@
 
 module.exports = {
   ar: require('./ar/index.js'),
+  arDZ: require('./ar-DZ/index.js'),
   bg: require('./bg/index.js'),
   ca: require('./ca/index.js'),
   cs: require('./cs/index.js'),

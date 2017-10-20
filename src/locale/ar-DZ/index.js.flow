@@ -34,42 +34,4 @@ type Locale = {
   }
 }
 
-declare module.exports: {
-  ar: Locale,
-  arDZ: Locale,
-  bg: Locale,
-  ca: Locale,
-  cs: Locale,
-  da: Locale,
-  de: Locale,
-  el: Locale,
-  enGB: Locale,
-  enUS: Locale,
-  eo: Locale,
-  es: Locale,
-  fi: Locale,
-  fil: Locale,
-  fr: Locale,
-  frCH: Locale,
-  hr: Locale,
-  id: Locale,
-  is: Locale,
-  it: Locale,
-  ja: Locale,
-  ko: Locale,
-  mk: Locale,
-  nb: Locale,
-  nl: Locale,
-  pl: Locale,
-  pt: Locale,
-  ro: Locale,
-  ru: Locale,
-  sk: Locale,
-  sv: Locale,
-  th: Locale,
-  tr: Locale,
-  ua: Locale,
-  vi: Locale,
-  zhCN: Locale,
-  zhTW: Locale
-}
+declare module.exports: Locale

@@ -1,6 +1,7 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
 export {default as ar} from './ar/index.js'
+export {default as arDZ} from './ar-DZ/index.js'
 export {default as bg} from './bg/index.js'
 export {default as ca} from './ca/index.js'
 export {default as cs} from './cs/index.js'
