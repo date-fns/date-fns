@@ -60,6 +60,8 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - Write tests.
 
+- Run tests: `$ yarn run test`.
+
 - [Write documentation](#documentation).
 
 - [Write good commit messages].
