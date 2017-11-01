@@ -52,7 +52,8 @@ for pattern in CHANGELOG.md \
   docs \
   LICENSE.md \
   README.md \
-  typings.d.ts
+  typings.d.ts\
+  format/index.d.ts
 do
   cp -r "$pattern" "$dir"
 done
