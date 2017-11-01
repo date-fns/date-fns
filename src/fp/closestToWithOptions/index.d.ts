@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/closestToWithOptions' {
-  import {closestToWithOptions} from 'date-fns/fp'
-  export = closestToWithOptions
-}
+import {closestToWithOptions} from 'date-fns/fp'
+export = closestToWithOptions

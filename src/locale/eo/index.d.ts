@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/locale/eo' {
-  import {eo} from 'date-fns/locale'
-  export = eo
-}
+import {eo} from 'date-fns/locale'
+export = eo

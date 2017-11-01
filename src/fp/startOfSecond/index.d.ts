@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/startOfSecond' {
-  import {startOfSecond} from 'date-fns/fp'
-  export = startOfSecond
-}
+import {startOfSecond} from 'date-fns/fp'
+export = startOfSecond

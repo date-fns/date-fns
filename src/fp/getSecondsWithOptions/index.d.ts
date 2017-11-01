@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/getSecondsWithOptions' {
-  import {getSecondsWithOptions} from 'date-fns/fp'
-  export = getSecondsWithOptions
-}
+import {getSecondsWithOptions} from 'date-fns/fp'
+export = getSecondsWithOptions

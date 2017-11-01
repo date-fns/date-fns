@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/setMilliseconds' {
-  import {setMilliseconds} from 'date-fns/fp'
-  export = setMilliseconds
-}
+import {setMilliseconds} from 'date-fns/fp'
+export = setMilliseconds

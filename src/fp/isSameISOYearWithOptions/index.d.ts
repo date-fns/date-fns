@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/isSameISOYearWithOptions' {
-  import {isSameISOYearWithOptions} from 'date-fns/fp'
-  export = isSameISOYearWithOptions
-}
+import {isSameISOYearWithOptions} from 'date-fns/fp'
+export = isSameISOYearWithOptions

@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/addHours' {
-  import {addHours} from 'date-fns/fp'
-  export = addHours
-}
+import {addHours} from 'date-fns/fp'
+export = addHours

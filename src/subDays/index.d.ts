@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/subDays' {
-  import {subDays} from 'date-fns'
-  export = subDays
-}
+import {subDays} from 'date-fns'
+export = subDays

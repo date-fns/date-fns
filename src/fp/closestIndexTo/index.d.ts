@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/closestIndexTo' {
-  import {closestIndexTo} from 'date-fns/fp'
-  export = closestIndexTo
-}
+import {closestIndexTo} from 'date-fns/fp'
+export = closestIndexTo

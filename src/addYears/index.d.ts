@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/addYears' {
-  import {addYears} from 'date-fns'
-  export = addYears
-}
+import {addYears} from 'date-fns'
+export = addYears

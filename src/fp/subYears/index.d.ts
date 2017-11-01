@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/subYears' {
-  import {subYears} from 'date-fns/fp'
-  export = subYears
-}
+import {subYears} from 'date-fns/fp'
+export = subYears

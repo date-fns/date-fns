@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/getDaysInMonthWithOptions' {
-  import {getDaysInMonthWithOptions} from 'date-fns/fp'
-  export = getDaysInMonthWithOptions
-}
+import {getDaysInMonthWithOptions} from 'date-fns/fp'
+export = getDaysInMonthWithOptions

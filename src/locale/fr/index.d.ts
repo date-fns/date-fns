@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/locale/fr' {
-  import {fr} from 'date-fns/locale'
-  export = fr
-}
+import {fr} from 'date-fns/locale'
+export = fr

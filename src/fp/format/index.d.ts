@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/fp/format' {
-  import {format} from 'date-fns/fp'
-  export = format
-}
+import {format} from 'date-fns/fp'
+export = format

@@ -1,6 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-declare module 'date-fns/startOfMinute' {
-  import {startOfMinute} from 'date-fns'
-  export = startOfMinute
-}
+import {startOfMinute} from 'date-fns'
+export = startOfMinute
