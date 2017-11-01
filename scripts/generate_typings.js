@@ -182,11 +182,7 @@ function generateTypeScriptTypings (fns, locales) {
   fs.writeFileSync('./typings.d.ts', `${typingString}\n`)
 
   fns.forEach((fn) => {
-    if (fn.isFPFn) {
-      generateTypescriptFPFnTyping(fn)
-    } else {
-      generateTypescriptFnTyping(fn)
-    }
+    generateTypescriptFnTyping(fn)
   })
 
   locales.forEach((locale) => {
@@ -202,15 +198,6 @@ declare module 'date-fns/${fn.file.snakeCaseName}' {
   export = ${fn.title}
 }
 `)
-}
-
-function generateTypescriptFPFnTyping (fn) {
-  fs.writeFileSync(`./src/fp/${fn.file.snakeCaseName}/index.d.ts`, `
-
-declare module 'date-fns/fp/${fn.file.snakeCaseName}' {
-  import {${fn.title}} from 'date-fns'
-  export = ${fn.title}
-}`)
 }
 
 function generateTypescriptLocaleTyping (locale) {
