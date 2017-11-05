@@ -5,12 +5,12 @@ import assert from 'power-assert'
 import isFirstDayOfMonth from '.'
 
 describe('isFirstDayOfMonth', function () {
-  it('returns true if the given date is in the last day of month', function () {
+  it('returns true if the given date is in the first day of month', function () {
     var result = isFirstDayOfMonth(new Date(2014, 9 /* Oct */, 1))
     assert(result === true)
   })
 
-  it('returns false if the given date is not in the last day of month', function () {
+  it('returns false if the given date is not in the first day of month', function () {
     var result = isFirstDayOfMonth(new Date(2014, 9 /* Oct */, 2))
     assert(result === false)
   })
