@@ -191,9 +191,7 @@ function generateTypeScriptTypings (fns, locales) {
 }
 
 function generateTypescriptFnTyping (fn, aliasDeclarations) {
-  fs.writeFileSync(`./src/${fn.file.snakeCaseName}/index.d.ts`, `
-
-declare module 'date-fns/${fn.file.snakeCaseName}' {
+  fs.writeFileSync(`./src/${fn.file.snakeCaseName}/index.d.ts`, `declare module 'date-fns/${fn.file.snakeCaseName}' {
   import {${fn.title}} from 'date-fns'
   export = ${fn.title}
 }
@@ -201,9 +199,7 @@ declare module 'date-fns/${fn.file.snakeCaseName}' {
 }
 
 function generateTypescriptLocaleTyping (locale) {
-  fs.writeFileSync(`./src/locale/${locale.snakeCaseName}/index.d.ts`, `
-
-declare module 'date-fns/locale/${locale.snakeCaseName}' { }
+  fs.writeFileSync(`./src/locale/${locale.snakeCaseName}/index.d.ts`, `declare module 'date-fns/locale/${locale.snakeCaseName}' { }
 `)
 }
 
