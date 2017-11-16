@@ -354,6 +354,42 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     .join('\n\n')
 
   fs.writeFileSync('./typings.d.ts', `${typingString}\n`)
+
+  fns.forEach((fn) => {
+    if (fn.isFPFn) {
+      generateTypescriptFPFnTyping(fn)
+    } else {
+      generateTypescriptFnTyping(fn)
+    }
+  })
+
+  locales.forEach((locale) => {
+    generateTypescriptLocaleTyping(locale)
+  })
+}
+
+function generateTypescriptFnTyping (fn, aliasDeclarations) {
+  fs.writeFileSync(`./src/${fn.title}/index.d.ts`, generatedAutomaticallyMessage + `
+
+import {${fn.title}} from 'date-fns'
+export = ${fn.title}
+`)
+}
+
+function generateTypescriptFPFnTyping (fn) {
+  fs.writeFileSync(`./src/fp/${fn.title}/index.d.ts`, generatedAutomaticallyMessage + `
+
+import {${fn.title}} from 'date-fns/fp'
+export = ${fn.title}
+`)
+}
+
+function generateTypescriptLocaleTyping (locale) {
+  fs.writeFileSync(`./src/locale/${locale.code}/index.d.ts`, generatedAutomaticallyMessage + `
+
+import {${locale.name}} from 'date-fns/locale'
+export = ${locale.name}
+`)
 }
 
 // Flow
