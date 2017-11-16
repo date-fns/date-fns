@@ -34,14 +34,14 @@ env PACKAGE_OUTPUT_PATH="$(pwd)/../PATH-TO-YOUR-MODULE/node_modules/date-fns" ./
 
 ## Adding a new function
 
-In order to add a new function, first you should is name.
+In order to add a new function, first you should choose its name.
 The functions are named in camelCase. The following rules apply:
-- If the function returns a modified date, the name should be a verb (`addDays`, `setDay`, ...)
-- If the function takes some value from a date, its name should start with `get` (`getDaysInYear`, ...)
+- If the function returns a modified date, the name should be a verb (`addDays`, `setDay`, ...).
+- If the function takes some value from a date, its name should start with `get` (`getDaysInYear`, ...).
 - If the function returns a new date somehow calculated from another date,
-  its name should be a noun (`lastDayOfMonth`, `startOfDay`, ...)
+  its name should be a noun (`lastDayOfMonth`, `startOfDay`, ...).
 - For the consistency with the standard JavaScript library,
-  `date` in the name refers to the day of month. `toDate` is an exception
+  `date` in the name refers to the day of month. `toDate` is an exception of this rule.
 - For similar reasons, `day` in the name refers to the day of the week.
 
 Create a directory `src/yourFunction` and files `src/yourFunction/index.js` and `src/yourFunction/test.js`.
