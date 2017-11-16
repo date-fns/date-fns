@@ -1,6 +1,38 @@
-# Adding a new function Visual Guide
+# Contribution guide
 
-Note: [yarn](https://yarnpkg.com) should be used for development.
+To fire up the project, clone the repository and install packages with [yarn](https://yarnpkg.com):
+
+```sh
+git clone https://github.com/date-fns/date-fns.git
+cd date-fns
+yarn
+```
+
+To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
+
+```sh
+./node_modules/.bin/babel-node
+
+> const toDate = require('./src/toDate')
+undefined
+> toDate('2017-11-17').toString()
+'Fri Nov 17 2017 00:00:00 GMT+0100 (CET)'
+>
+```
+
+Rebuild FP functions, typings and indices by using the following script. It could take around a minute:
+
+```sh
+./scripts/build/build.sh
+```
+
+Build date-fns to test in in your project:
+
+```sh
+env PACKAGE_OUTPUT_PATH="$(pwd)/../PATH-TO-YOUR-MODULE/node_modules/date-fns" ./scripts/build/package.sh
+```
+
+## Adding a new function
 
 In order to add a new function, first you should is name.
 The functions are named in camelCase. The following rules apply:
@@ -14,7 +46,7 @@ The functions are named in camelCase. The following rules apply:
 
 Create a directory `src/yourFunction` and files `src/yourFunction/index.js` and `src/yourFunction/test.js`.
 
-## Documentation
+### Documentation
 
 A function should have a valid documentation,
 which is used for generating FP function, typings and date-fns.org documentation.
@@ -23,7 +55,7 @@ All functions should have `@name`, `@category`, `@summary`, `@description`, `@pa
 
 ![Documentation screenshot](https://github.com/date-fns/date-fns/blob/master/docs/images/jsdoc.png?raw=true)
 
-## Function body
+### Function body
 
 ![Function body](https://github.com/date-fns/date-fns/blob/master/docs/images/functionBody.png?raw=true)
 
@@ -31,7 +63,7 @@ All functions should have `@name`, `@category`, `@summary`, `@description`, `@pa
 
 ![Passing arguments to other functions](https://github.com/date-fns/date-fns/blob/master/docs/images/passingArguments.png?raw=true)
 
-## Tests for a function
+### Tests for a function
 
 Write tests for a function if file `test.js` in function's directory:
 
@@ -41,13 +73,13 @@ Write tests for a function if file `test.js` in function's directory:
 
 ![Test screenshot 3](https://github.com/date-fns/date-fns/blob/master/docs/images/test3.png?raw=true)
 
-## Tests for FP functions
+### Tests for FP functions
 
 In `src/fp/test.js` add two new tests for each new function:
 
 ![FP tests](https://github.com/date-fns/date-fns/blob/master/docs/images/testFP.png?raw=true)
 
-## Order of arguments in-depth description
+### Order of arguments in-depth description
 
 The normal order of arguments for non-FP functions uses the following schema:
 
