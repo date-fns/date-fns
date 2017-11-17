@@ -868,7 +868,7 @@ describe('FP functions', function () {
     assert(result === 6)
   })
 
-  it('getYearWithOptions', function () {
+  it('getWeeksInMonthWithOptions', function () {
     var result = fp.getWeeksInMonthWithOptions({})(new Date(2017, 3 /* Apr */, 8, 18, 0))
     assert(result === 6)
   })
