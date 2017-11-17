@@ -863,6 +863,16 @@ describe('FP functions', function () {
     assert(result === timestamp)
   })
 
+  it('getWeeksInMonth', function () {
+    var result = fp.getWeeksInMonth(new Date(2017, 3 /* Apr */, 8, 18, 0))
+    assert(result === 6)
+  })
+
+  it('getWeeksInMonthWithOptions', function () {
+    var result = fp.getWeeksInMonthWithOptions({})(new Date(2017, 3 /* Apr */, 8, 18, 0))
+    assert(result === 6)
+  })
+
   it('getYear', function () {
     var result = fp.getYear(new Date(2014, 6 /* Jul */, 2))
     assert(result === 2014)

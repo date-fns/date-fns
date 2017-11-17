@@ -407,6 +407,11 @@ declare module.exports: {
     options?: Options
   ) => number,
 
+  getWeeksInMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
   getYear: (
     date: Date | string | number,
     options?: Options
