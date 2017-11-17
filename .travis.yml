@@ -20,6 +20,7 @@ before_install:
 branches:
   only:
     - master
+    - v1
     # Build git tags
     - "/v\\d\\.\\d\\.\\d(-\\w+)?/"
 
