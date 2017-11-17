@@ -41,38 +41,25 @@ export default function toDuration (argument, dirtyOptions) {
   }
 }
 
-function parseYears(durationString) {
+function parse(durationString, pattern) {
   var token
 
-  token = patterns.years.exec(durationString)
-  if (token) {
-    var yearString = token[1]
-    return parseInt(yearString, 10)
-  }
+    token = pattern.exec(durationString)
+    if (token) {
+      return parseInt(token[1], 10)
+    }
 
-  return 0
+    return 0
+}
+
+function parseYears(durationString) {
+  return parse(durationString, patterns.years)
 }
 
 function parseMonths(durationString) {
-  var token
-
-  token = patterns.months.exec(durationString)
-  if (token) {
-    var yearString = token[1]
-    return parseInt(yearString, 10)
-  }
-
-  return 0
+  return parse(durationString, patterns.months)
 }
 
 function parseDays(durationString) {
-  var token
-
-  token = patterns.days.exec(durationString)
-  if (token) {
-    var yearString = token[1]
-    return parseInt(yearString, 10)
-  }
-
-  return 0
+  return parse(durationString, patterns.days)
 }
