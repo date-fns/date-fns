@@ -129,6 +129,8 @@ module.exports = {
   getSecondsWithOptions: require('./getSecondsWithOptions/index.js'),
   getTime: require('./getTime/index.js'),
   getTimeWithOptions: require('./getTimeWithOptions/index.js'),
+  getWeeksInMonth: require('./getWeeksInMonth/index.js'),
+  getWeeksInMonthWithOptions: require('./getWeeksInMonthWithOptions/index.js'),
   getYear: require('./getYear/index.js'),
   getYearWithOptions: require('./getYearWithOptions/index.js'),
   isAfter: require('./isAfter/index.js'),
