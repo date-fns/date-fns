@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import toDuration from '.'
 
-describe('toDuration', function () {
+describe.only('toDuration', function () {
   describe('string argument', function () {
     it('returns a duration object', function () {
       var result = toDuration('')
@@ -49,6 +49,16 @@ describe('toDuration', function () {
         months: 17,
         days: 4,
         milliseconds: eightHoursInMilliseconds
+      })
+    })
+
+    it('parses minutes', function () {
+      var result = toDuration('P1Y5M4DT8H15M')
+      var eightHoursAndQuarterInMilliseconds = 8 * 60 * 60 * 1000 + 15 * 60 * 1000
+      assert.deepEqual(result, {
+        months: 17,
+        days: 4,
+        milliseconds: eightHoursAndQuarterInMilliseconds
       })
     })
   })

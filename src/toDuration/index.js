@@ -1,12 +1,20 @@
 var MONTHS_IN_YEAR = 12
 var MILLISECONDS_IN_HOUR = 3600000
+var MILLISECONDS_IN_MINUTE = 60000
 
 var patterns = {
   years: /^P(\d+)Y/,
   months: /^P.*(\d+)M/,
   days: /^P.*(\d+)D/,
-  hours: /^P.*T(\d+)H/
+  hours: /^P.*T(\d+)H/,
+  minutes: /^P.*T.*H(\d+)M/
 }
+
+var parseYears = parse(patterns.years)
+var parseMonths = parse(patterns.months)
+var parseDays = parse(patterns.days)
+var parseHours = parse(patterns.hours)
+var parseMinutes = parse(patterns.minutes)
 
 /**
  * @name toDuration
@@ -39,31 +47,18 @@ export default function toDuration (argument, dirtyOptions) {
   return {
     months: parseYears(argument) * MONTHS_IN_YEAR + parseMonths(argument),
     days: parseDays(argument),
-    milliseconds: parseHours(argument) * MILLISECONDS_IN_HOUR
+    milliseconds: parseHours(argument) * MILLISECONDS_IN_HOUR + parseMinutes(argument) * MILLISECONDS_IN_MINUTE
   }
 }
 
-function parse (durationString, pattern) {
-  var token = pattern.exec(durationString)
-  if (token) {
-    return parseInt(token[1], 10)
+function parse (pattern) {
+  return function (durationString) {
+    var token = pattern.exec(durationString)
+    if (token) {
+      return parseInt(token[1], 10)
+    }
+
+    return 0
   }
-
-  return 0
 }
 
-function parseYears (durationString) {
-  return parse(durationString, patterns.years)
-}
-
-function parseMonths (durationString) {
-  return parse(durationString, patterns.months)
-}
-
-function parseDays (durationString) {
-  return parse(durationString, patterns.days)
-}
-
-function parseHours (durationString) {
-  return parse(durationString, patterns.hours)
-}
