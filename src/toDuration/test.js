@@ -18,7 +18,7 @@ describe('toDuration', function () {
     it('parses years', function () {
       var result = toDuration('P5Y')
       assert.deepEqual(result, {
-        months: 12,
+        months: 60,
         days: 0,
         milliseconds: 0
       })

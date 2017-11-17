@@ -1,3 +1,9 @@
+var MONTHS_IN_YEAR = 12
+
+var patterns = {
+  years: /^P(\d+)Y/
+}
+
 /**
  * @name toDuration
  * @category Common Helpers
@@ -26,5 +32,21 @@ export default function toDuration (argument, dirtyOptions) {
     throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
   }
 
-  return {}
+  return {
+    months: parseYears(argument) * MONTHS_IN_YEAR,
+    days: 0,
+    milliseconds: 0
+  }
+}
+
+function parseYears(durationString) {
+  var token
+
+  token = patterns.years.exec(durationString)
+  if (token) {
+    var yearString = token[1]
+    return parseInt(yearString, 10)
+  }
+
+  return 0
 }

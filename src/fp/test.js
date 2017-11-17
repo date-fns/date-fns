@@ -1606,12 +1606,20 @@ describe('FP functions', function () {
   })
 
   it('toDuration', function () {
-    var result = fp.toDuration('')
-    assert.deepEqual(result, {})
+    var result = fp.toDuration('P5Y')
+    assert.deepEqual(result, {
+      months: 60,
+      days: 0,
+      milliseconds: 0
+    })
   })
 
   it('toDurationWithOptions', function () {
-    var result = fp.toDurationWithOptions({})('')
-    assert.deepEqual(result, {})
+    var result = fp.toDurationWithOptions({})('P5Y')
+    assert.deepEqual(result, {
+      months: 60,
+      days: 0,
+      milliseconds: 0
+    })
   })
 })
