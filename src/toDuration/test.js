@@ -23,5 +23,14 @@ describe('toDuration', function () {
         milliseconds: 0
       })
     })
+
+    it('parses months', function () {
+      var result = toDuration('P1Y5M')
+      assert.deepEqual(result, {
+        months: 17,
+        days: 0,
+        milliseconds: 0
+      })
+    })
   })
 })
