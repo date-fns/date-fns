@@ -1604,4 +1604,14 @@ describe('FP functions', function () {
     var result = fp.toDateWithOptions({additionalDigits: 0})('+12340702')
     assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
   })
+
+  it('toDuration', function () {
+    var result = fp.toDuration('')
+    assert.deepEqual(result, {})
+  })
+
+  it('toDurationWithOptions', function () {
+    var result = fp.toDurationWithOptions({})('')
+    assert.deepEqual(result, {})
+  })
 })
