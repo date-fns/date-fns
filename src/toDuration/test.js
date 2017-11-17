@@ -41,5 +41,15 @@ describe('toDuration', function () {
         milliseconds: 0
       })
     })
+
+    it('parses hours', function () {
+      var result = toDuration('P1Y5M4DT8H')
+      var eightHoursInMilliseconds = 8 * 60 * 60 * 1000
+      assert.deepEqual(result, {
+        months: 17,
+        days: 4,
+        milliseconds: eightHoursInMilliseconds
+      })
+    })
   })
 })
