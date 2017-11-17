@@ -962,6 +962,12 @@ declare module 'date-fns' {
     options?: Options
   ): Date
   namespace toDate {}
+
+  function toDuration (
+    argument: any,
+    options?: Options
+  ): Duration
+  namespace toDuration {}
 }
 
 declare module 'date-fns/addDays' {
@@ -1639,6 +1645,11 @@ declare module 'date-fns/toDate' {
   export = toDate
 }
 
+declare module 'date-fns/toDuration' {
+  import {toDuration} from 'date-fns'
+  export = toDuration
+}
+
 declare module 'date-fns/addDays/index' {
   import {addDays} from 'date-fns'
   export = addDays
@@ -2314,6 +2325,11 @@ declare module 'date-fns/toDate/index' {
   export = toDate
 }
 
+declare module 'date-fns/toDuration/index' {
+  import {toDuration} from 'date-fns'
+  export = toDuration
+}
+
 declare module 'date-fns/addDays/index.js' {
   import {addDays} from 'date-fns'
   export = addDays
@@ -2987,6 +3003,11 @@ declare module 'date-fns/subYears/index.js' {
 declare module 'date-fns/toDate/index.js' {
   import {toDate} from 'date-fns'
   export = toDate
+}
+
+declare module 'date-fns/toDuration/index.js' {
+  import {toDuration} from 'date-fns'
+  export = toDuration
 }
 
 // FP Functions
@@ -3801,6 +3822,12 @@ declare module 'date-fns/fp' {
 
   const toDateWithOptions: CurriedFn2<Options, any, Date>
   namespace toDateWithOptions {}
+
+  const toDuration: CurriedFn1<any, Duration>
+  namespace toDuration {}
+
+  const toDurationWithOptions: CurriedFn2<Options, any, Duration>
+  namespace toDurationWithOptions {}
 }
 
 declare module 'date-fns/fp/addDays' {
@@ -5153,6 +5180,16 @@ declare module 'date-fns/fp/toDateWithOptions' {
   export = toDateWithOptions
 }
 
+declare module 'date-fns/fp/toDuration' {
+  import {toDuration} from 'date-fns/fp'
+  export = toDuration
+}
+
+declare module 'date-fns/fp/toDurationWithOptions' {
+  import {toDurationWithOptions} from 'date-fns/fp'
+  export = toDurationWithOptions
+}
+
 declare module 'date-fns/fp/addDays/index' {
   import {addDays} from 'date-fns/fp'
   export = addDays
@@ -6501,6 +6538,16 @@ declare module 'date-fns/fp/toDate/index' {
 declare module 'date-fns/fp/toDateWithOptions/index' {
   import {toDateWithOptions} from 'date-fns/fp'
   export = toDateWithOptions
+}
+
+declare module 'date-fns/fp/toDuration/index' {
+  import {toDuration} from 'date-fns/fp'
+  export = toDuration
+}
+
+declare module 'date-fns/fp/toDurationWithOptions/index' {
+  import {toDurationWithOptions} from 'date-fns/fp'
+  export = toDurationWithOptions
 }
 
 declare module 'date-fns/fp/addDays/index.js' {
@@ -7853,6 +7900,16 @@ declare module 'date-fns/fp/toDateWithOptions/index.js' {
   export = toDateWithOptions
 }
 
+declare module 'date-fns/fp/toDuration/index.js' {
+  import {toDuration} from 'date-fns/fp'
+  export = toDuration
+}
+
+declare module 'date-fns/fp/toDurationWithOptions/index.js' {
+  import {toDurationWithOptions} from 'date-fns/fp'
+  export = toDurationWithOptions
+}
+
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
@@ -8741,6 +8798,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): Date
   namespace toDate {}
+
+  function toDuration (
+    argument: any,
+    options?: Options
+  ): Duration
+  namespace toDuration {}
 }
 
 declare module 'date-fns/esm/addDays' {
@@ -9418,6 +9481,11 @@ declare module 'date-fns/esm/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/toDuration' {
+  import {toDuration} from 'date-fns/esm'
+  export default toDuration
+}
+
 declare module 'date-fns/esm/addDays/index' {
   import {addDays} from 'date-fns/esm'
   export default addDays
@@ -10093,6 +10161,11 @@ declare module 'date-fns/esm/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/esm/toDuration/index' {
+  import {toDuration} from 'date-fns/esm'
+  export default toDuration
+}
+
 declare module 'date-fns/esm/addDays/index.js' {
   import {addDays} from 'date-fns/esm'
   export default addDays
@@ -10766,6 +10839,11 @@ declare module 'date-fns/esm/subYears/index.js' {
 declare module 'date-fns/esm/toDate/index.js' {
   import {toDate} from 'date-fns/esm'
   export default toDate
+}
+
+declare module 'date-fns/esm/toDuration/index.js' {
+  import {toDuration} from 'date-fns/esm'
+  export default toDuration
 }
 
 // ECMAScript Module FP Functions
@@ -11580,6 +11658,12 @@ declare module 'date-fns/esm/fp' {
 
   const toDateWithOptions: CurriedFn2<Options, any, Date>
   namespace toDateWithOptions {}
+
+  const toDuration: CurriedFn1<any, Duration>
+  namespace toDuration {}
+
+  const toDurationWithOptions: CurriedFn2<Options, any, Duration>
+  namespace toDurationWithOptions {}
 }
 
 declare module 'date-fns/esm/fp/addDays' {
@@ -12932,6 +13016,16 @@ declare module 'date-fns/esm/fp/toDateWithOptions' {
   export default toDateWithOptions
 }
 
+declare module 'date-fns/esm/fp/toDuration' {
+  import {toDuration} from 'date-fns/esm/fp'
+  export default toDuration
+}
+
+declare module 'date-fns/esm/fp/toDurationWithOptions' {
+  import {toDurationWithOptions} from 'date-fns/esm/fp'
+  export default toDurationWithOptions
+}
+
 declare module 'date-fns/esm/fp/addDays/index' {
   import {addDays} from 'date-fns/esm/fp'
   export default addDays
@@ -14282,6 +14376,16 @@ declare module 'date-fns/esm/fp/toDateWithOptions/index' {
   export default toDateWithOptions
 }
 
+declare module 'date-fns/esm/fp/toDuration/index' {
+  import {toDuration} from 'date-fns/esm/fp'
+  export default toDuration
+}
+
+declare module 'date-fns/esm/fp/toDurationWithOptions/index' {
+  import {toDurationWithOptions} from 'date-fns/esm/fp'
+  export default toDurationWithOptions
+}
+
 declare module 'date-fns/esm/fp/addDays/index.js' {
   import {addDays} from 'date-fns/esm/fp'
   export default addDays
@@ -15630,6 +15734,16 @@ declare module 'date-fns/esm/fp/toDate/index.js' {
 declare module 'date-fns/esm/fp/toDateWithOptions/index.js' {
   import {toDateWithOptions} from 'date-fns/esm/fp'
   export default toDateWithOptions
+}
+
+declare module 'date-fns/esm/fp/toDuration/index.js' {
+  import {toDuration} from 'date-fns/esm/fp'
+  export default toDuration
+}
+
+declare module 'date-fns/esm/fp/toDurationWithOptions/index.js' {
+  import {toDurationWithOptions} from 'date-fns/esm/fp'
+  export default toDurationWithOptions
 }
 
 // Regular Locales
@@ -17689,4 +17803,9 @@ interface dateFns {
     argument: any,
     options?: Options
   ): Date
+
+  toDuration(
+    argument: any,
+    options?: Options
+  ): Duration
 }

@@ -333,5 +333,7 @@ declare module.exports: {
   subYears: CurriedFn2<number, Date | string | number, Date>,
   subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   toDate: CurriedFn1<any, Date>,
-  toDateWithOptions: CurriedFn2<Options, any, Date>
+  toDateWithOptions: CurriedFn2<Options, any, Date>,
+  toDuration: CurriedFn1<any, Duration>,
+  toDurationWithOptions: CurriedFn2<Options, any, Duration>
 }

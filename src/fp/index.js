@@ -270,5 +270,7 @@ module.exports = {
   subYears: require('./subYears/index.js'),
   subYearsWithOptions: require('./subYearsWithOptions/index.js'),
   toDate: require('./toDate/index.js'),
-  toDateWithOptions: require('./toDateWithOptions/index.js')
+  toDateWithOptions: require('./toDateWithOptions/index.js'),
+  toDuration: require('./toDuration/index.js'),
+  toDurationWithOptions: require('./toDurationWithOptions/index.js')
 }

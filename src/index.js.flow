@@ -799,5 +799,10 @@ declare module.exports: {
   toDate: (
     argument: any,
     options?: Options
-  ) => Date
+  ) => Date,
+
+  toDuration: (
+    argument: any,
+    options?: Options
+  ) => Duration
 }
