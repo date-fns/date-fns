@@ -53,6 +53,8 @@
     "glob-promise": "^2.0.0",
     "gzip-size-cli": "^1.0.0",
     "husky": "^1.0.0-rc.7",
+    "jest": "^23.6.0",
+    "jest-plugin-context": "^2.9.0",
     "js-beautify": "^1.5.10",
     "jsdoc-to-markdown": "leshakoss/jsdoc-to-markdown",
     "json-loader": "^0.5.3",
