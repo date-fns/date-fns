@@ -3,7 +3,7 @@ var getISOWeek = require('../get_iso_week/index.js')
 var getISOYear = require('../get_iso_year/index.js')
 var parse = require('../parse/index.js')
 var isValid = require('../is_valid/index.js')
-var enLocale = require('../locale/en/index.js')
+var defaultLocale = require('../locale/default_locale/index.js')
 
 /**
  * @category Common Helpers
@@ -93,8 +93,8 @@ function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var options = dirtyOptions || {}
 
   var locale = options.locale
-  var localeFormatters = enLocale.format.formatters
-  var formattingTokensRegExp = enLocale.format.formattingTokensRegExp
+  var localeFormatters = defaultLocale.format.formatters
+  var formattingTokensRegExp = defaultLocale.format.formattingTokensRegExp
   if (locale && locale.format && locale.format.formatters) {
     localeFormatters = locale.format.formatters
 

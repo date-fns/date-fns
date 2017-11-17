@@ -2,7 +2,7 @@ var compareDesc = require('../compare_desc/index.js')
 var parse = require('../parse/index.js')
 var differenceInSeconds = require('../difference_in_seconds/index.js')
 var differenceInMonths = require('../difference_in_months/index.js')
-var enLocale = require('../locale/en/index.js')
+var defaultLocale = require('../locale/default_locale/index.js')
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -97,7 +97,7 @@ function distanceInWords (dirtyDateToCompare, dirtyDate, dirtyOptions) {
   var comparison = compareDesc(dirtyDateToCompare, dirtyDate)
 
   var locale = options.locale
-  var localize = enLocale.distanceInWords.localize
+  var localize = defaultLocale.distanceInWords.localize
   if (locale && locale.distanceInWords && locale.distanceInWords.localize) {
     localize = locale.distanceInWords.localize
   }
