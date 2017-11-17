@@ -2,7 +2,8 @@ var MONTHS_IN_YEAR = 12
 
 var patterns = {
   years: /^P(\d+)Y/,
-  months: /^P.*(\d+)M/
+  months: /^P.*(\d+)M/,
+  days: /^P.*(\d+)D/,
 }
 
 /**
@@ -35,7 +36,7 @@ export default function toDuration (argument, dirtyOptions) {
 
   return {
     months: parseYears(argument) * MONTHS_IN_YEAR + parseMonths(argument),
-    days: 0,
+    days: parseDays(argument),
     milliseconds: 0
   }
 }
@@ -56,6 +57,18 @@ function parseMonths(durationString) {
   var token
 
   token = patterns.months.exec(durationString)
+  if (token) {
+    var yearString = token[1]
+    return parseInt(yearString, 10)
+  }
+
+  return 0
+}
+
+function parseDays(durationString) {
+  var token
+
+  token = patterns.days.exec(durationString)
   if (token) {
     var yearString = token[1]
     return parseInt(yearString, 10)
