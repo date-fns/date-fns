@@ -1,5 +1,6 @@
 import startOfHour from '../startOfHour/index.js'
 import isBefore from '../isBefore/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name durationsPerHour
@@ -32,8 +33,8 @@ export default function (dirtyStart, dirtyEnd) {
     throw new TypeError('the start date cannot be after the end date')
   }
 
-  const start = new Date(dirtyStart)
-  const end = new Date(dirtyEnd)
+  const start = toDate(dirtyStart)
+  const end = toDate(dirtyEnd)
   const hour = 60 * 60 * 1000
   const startOfFirstHour = startOfHour(start).getTime()
   const startOfLastHour = startOfHour(end).getTime()
