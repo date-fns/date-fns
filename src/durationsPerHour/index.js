@@ -1,4 +1,3 @@
-import startOfHour from '../startOfHour/index.js'
 import isBefore from '../isBefore/index.js'
 import toDate from '../toDate/index.js'
 
@@ -10,7 +9,7 @@ import toDate from '../toDate/index.js'
  *
  * @param {Date | String | Number} start - the start of the time range
  * @param {Date | String | Number} end - the end of the time range
- * @returns {Object} - an object with the timestamps of the starts of each hour as its keys and the respective durations in milliseconds as its values
+ * @returns {Object} - an object with the timestamps of the starts of each hour (UTC) as its keys and the respective durations in milliseconds as its values
  * @throws {TypeError} 2 arguments required, end cannot be earlier than start
  *
  * @example
@@ -33,11 +32,13 @@ export default function (dirtyStart, dirtyEnd) {
     throw new TypeError('the start date cannot be after the end date')
   }
 
-  const start = toDate(dirtyStart)
-  const end = toDate(dirtyEnd)
+  const startOfHour = (timestamp) => parseInt(timestamp / hour, 10) * hour
+
+  const start = toDate(dirtyStart).getTime()
+  const end = toDate(dirtyEnd).getTime()
   const hour = 60 * 60 * 1000
-  const startOfFirstHour = startOfHour(start).getTime()
-  const startOfLastHour = startOfHour(end).getTime()
+  const startOfFirstHour = startOfHour(start)
+  const startOfLastHour = startOfHour(end)
 
   if (startOfFirstHour === startOfLastHour) {
     return { [startOfFirstHour]: end - start }
