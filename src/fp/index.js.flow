@@ -192,6 +192,8 @@ declare module.exports: {
   getSecondsWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getTime: CurriedFn1<Date | string | number, number>,
   getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getWeekOfMonth: CurriedFn1<Date | string | number, number>,
+  getWeekOfMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getWeeksInMonth: CurriedFn1<Date | string | number, number>,
   getWeeksInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getYear: CurriedFn1<Date | string | number, number>,
