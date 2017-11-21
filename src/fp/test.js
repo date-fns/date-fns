@@ -873,6 +873,16 @@ describe('FP functions', function () {
     assert(result === 6)
   })
 
+  it('getWeekOfMonth', function () {
+    var result = fp.getWeekOfMonth(new Date(2017, 10 /* Nov */, 15))
+    assert(result === 3)
+  })
+
+  it('getWeekOfMonthWithOptions', function () {
+    var result = fp.getWeekOfMonthWithOptions({weekStartsOn: 1})(new Date(2017, 9 /* Oct */, 1))
+    assert(result === 1)
+  })
+
   it('getYear', function () {
     var result = fp.getYear(new Date(2014, 6 /* Jul */, 2))
     assert(result === 2014)
