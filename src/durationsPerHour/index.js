@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import startOfHour from '../startOfHour'
 import isBefore from '../isBefore'
 
@@ -48,8 +47,8 @@ export default function (dirtyStart, dirtyEnd) {
     [startOfLastHour]: end - startOfLastHour
   }
 
-  const keys = _.range(startOfFirstHour + hour, startOfLastHour, hour)
-  const setHour = _.partial(_.set, _, _, hour)
+  const amountOfCompleteHours = (startOfLastHour - startOfFirstHour) / hour - 1
+  const keys = [...Array(amountOfCompleteHours)].map((_, key) => startOfFirstHour + (key + 1) * hour)
 
-  return keys.reduce(setHour, durationsPerHour)
+  return keys.reduce((acc, key) => Object.assign(acc, { [key]: hour }), durationsPerHour)
 }
