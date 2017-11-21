@@ -1,5 +1,5 @@
-import startOfHour from '../startOfHour'
-import isBefore from '../isBefore'
+import startOfHour from '../startOfHour/index.js'
+import isBefore from '../isBefore/index.js'
 
 /**
  * @name durationsPerHour
