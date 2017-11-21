@@ -62,7 +62,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  addISOYears: (
+  addISOWeekYears: (
     date: Date | string | number,
     amount: number,
     options?: Options
@@ -152,7 +152,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  differenceInCalendarISOYears: (
+  differenceInCalendarISOWeekYears: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -194,7 +194,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  differenceInISOYears: (
+  differenceInISOWeekYears: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -262,7 +262,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  endOfISOYear: (
+  endOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -366,7 +366,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  getISOYear: (
+  getISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => number,
@@ -478,7 +478,7 @@ declare module.exports: {
     options?: Options
   ) => boolean,
 
-  isSameISOYear: (
+  isSameISOWeekYear: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -566,7 +566,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  lastDayOfISOYear: (
+  lastDayOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -644,9 +644,9 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  setISOYear: (
+  setISOWeekYear: (
     date: Date | string | number,
-    isoYear: number,
+    isoWeekYear: number,
     options?: Options
   ) => Date,
 
@@ -701,7 +701,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  startOfISOYear: (
+  startOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -748,7 +748,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  subISOYears: (
+  subISOWeekYears: (
     date: Date | string | number,
     amount: number,
     options?: Options

@@ -38,7 +38,7 @@ var parsers = {
 
   // ISO week-numbering year: 00, 01, ..., 99
   'GG': {
-    unit: 'isoYear',
+    unit: 'isoWeekYear',
     match: patterns.twoDigits,
     parse: function (matchResult) {
       return parseDecimal(matchResult) + 1900
@@ -47,7 +47,7 @@ var parsers = {
 
   // ISO week-numbering year: 1900, 1901, ..., 2099
   'GGGG': {
-    unit: 'isoYear',
+    unit: 'isoWeekYear',
     match: patterns.YYYY,
     parse: parseDecimal
   },

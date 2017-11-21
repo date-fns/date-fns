@@ -196,6 +196,23 @@ for the list of changes made since `v2.0.0-alpha.1`.
   format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
   ```
 
+- **BREAKING** renamed ISO week-numbering year helpers:
+
+  - `addISOYears` → `addISOWeekYears`
+  - `differenceInCalendarISOYears` → `differenceInCalendarISOWeekYears`
+  - `differenceInISOYears` → `differenceInISOWeekYears`
+  - `endOfISOYear` → `endOfISOWeekYear`
+  - `getISOYear` → `getISOWeekYear`
+  - `isSameISOYear` → `isSameISOWeekYear`
+  - `lastDayOfISOYear` → `lastDayOfISOWeekYear`
+  - `setISOYear` → `setISOWeekYear`
+  - `subISOYears` → `subISOWeekYears`
+
+  i.e. "ISO year" renamed to "ISO week year", which is short for
+  [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+  It makes them consistent with planned locale-dependent week-numbering year helpers
+  e.g. `addWeekYears`.
+
 - **BREAKING**: functions renamed:
 
   - `areRangesOverlapping` → `areIntervalsOverlapping`

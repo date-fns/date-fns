@@ -91,12 +91,12 @@ declare module 'date-fns' {
   ): Date
   namespace addHours {}
 
-  function addISOYears (
+  function addISOWeekYears (
     date: Date | string | number,
     amount: number,
     options?: Options
   ): Date
-  namespace addISOYears {}
+  namespace addISOWeekYears {}
 
   function addMilliseconds (
     date: Date | string | number,
@@ -196,12 +196,12 @@ declare module 'date-fns' {
   ): number
   namespace differenceInCalendarISOWeeks {}
 
-  function differenceInCalendarISOYears (
+  function differenceInCalendarISOWeekYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): number
-  namespace differenceInCalendarISOYears {}
+  namespace differenceInCalendarISOWeekYears {}
 
   function differenceInCalendarMonths (
     dateLeft: Date | string | number,
@@ -245,12 +245,12 @@ declare module 'date-fns' {
   ): number
   namespace differenceInHours {}
 
-  function differenceInISOYears (
+  function differenceInISOWeekYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): number
-  namespace differenceInISOYears {}
+  namespace differenceInISOWeekYears {}
 
   function differenceInMilliseconds (
     dateLeft: Date | string | number,
@@ -325,11 +325,11 @@ declare module 'date-fns' {
   ): Date
   namespace endOfISOWeek {}
 
-  function endOfISOYear (
+  function endOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace endOfISOYear {}
+  namespace endOfISOWeekYear {}
 
   function endOfMinute (
     date: Date | string | number,
@@ -449,11 +449,11 @@ declare module 'date-fns' {
   ): number
   namespace getISOWeeksInYear {}
 
-  function getISOYear (
+  function getISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): number
-  namespace getISOYear {}
+  namespace getISOWeekYear {}
 
   function getMilliseconds (
     date: Date | string | number,
@@ -582,12 +582,12 @@ declare module 'date-fns' {
   ): boolean
   namespace isSameISOWeek {}
 
-  function isSameISOYear (
+  function isSameISOWeekYear (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): boolean
-  namespace isSameISOYear {}
+  namespace isSameISOWeekYear {}
 
   function isSameMinute (
     dateLeft: Date | string | number,
@@ -686,11 +686,11 @@ declare module 'date-fns' {
   ): Date
   namespace lastDayOfISOWeek {}
 
-  function lastDayOfISOYear (
+  function lastDayOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace lastDayOfISOYear {}
+  namespace lastDayOfISOWeekYear {}
 
   function lastDayOfMonth (
     date: Date | string | number,
@@ -778,12 +778,12 @@ declare module 'date-fns' {
   ): Date
   namespace setISOWeek {}
 
-  function setISOYear (
+  function setISOWeekYear (
     date: Date | string | number,
-    isoYear: number,
+    isoWeekYear: number,
     options?: Options
   ): Date
-  namespace setISOYear {}
+  namespace setISOWeekYear {}
 
   function setMilliseconds (
     date: Date | string | number,
@@ -845,11 +845,11 @@ declare module 'date-fns' {
   ): Date
   namespace startOfISOWeek {}
 
-  function startOfISOYear (
+  function startOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace startOfISOYear {}
+  namespace startOfISOWeekYear {}
 
   function startOfMinute (
     date: Date | string | number,
@@ -901,12 +901,12 @@ declare module 'date-fns' {
   ): Date
   namespace subHours {}
 
-  function subISOYears (
+  function subISOWeekYears (
     date: Date | string | number,
     amount: number,
     options?: Options
   ): Date
-  namespace subISOYears {}
+  namespace subISOWeekYears {}
 
   function subMilliseconds (
     date: Date | string | number,
@@ -974,9 +974,9 @@ declare module 'date-fns/addHours' {
   export = addHours
 }
 
-declare module 'date-fns/addISOYears' {
-  import {addISOYears} from 'date-fns'
-  export = addISOYears
+declare module 'date-fns/addISOWeekYears' {
+  import {addISOWeekYears} from 'date-fns'
+  export = addISOWeekYears
 }
 
 declare module 'date-fns/addMilliseconds' {
@@ -1049,9 +1049,9 @@ declare module 'date-fns/differenceInCalendarISOWeeks' {
   export = differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/differenceInCalendarISOYears' {
-  import {differenceInCalendarISOYears} from 'date-fns'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/differenceInCalendarISOWeekYears' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns'
+  export = differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/differenceInCalendarMonths' {
@@ -1084,9 +1084,9 @@ declare module 'date-fns/differenceInHours' {
   export = differenceInHours
 }
 
-declare module 'date-fns/differenceInISOYears' {
-  import {differenceInISOYears} from 'date-fns'
-  export = differenceInISOYears
+declare module 'date-fns/differenceInISOWeekYears' {
+  import {differenceInISOWeekYears} from 'date-fns'
+  export = differenceInISOWeekYears
 }
 
 declare module 'date-fns/differenceInMilliseconds' {
@@ -1144,9 +1144,9 @@ declare module 'date-fns/endOfISOWeek' {
   export = endOfISOWeek
 }
 
-declare module 'date-fns/endOfISOYear' {
-  import {endOfISOYear} from 'date-fns'
-  export = endOfISOYear
+declare module 'date-fns/endOfISOWeekYear' {
+  import {endOfISOWeekYear} from 'date-fns'
+  export = endOfISOWeekYear
 }
 
 declare module 'date-fns/endOfMinute' {
@@ -1244,9 +1244,9 @@ declare module 'date-fns/getISOWeeksInYear' {
   export = getISOWeeksInYear
 }
 
-declare module 'date-fns/getISOYear' {
-  import {getISOYear} from 'date-fns'
-  export = getISOYear
+declare module 'date-fns/getISOWeekYear' {
+  import {getISOWeekYear} from 'date-fns'
+  export = getISOWeekYear
 }
 
 declare module 'date-fns/getMilliseconds' {
@@ -1349,9 +1349,9 @@ declare module 'date-fns/isSameISOWeek' {
   export = isSameISOWeek
 }
 
-declare module 'date-fns/isSameISOYear' {
-  import {isSameISOYear} from 'date-fns'
-  export = isSameISOYear
+declare module 'date-fns/isSameISOWeekYear' {
+  import {isSameISOWeekYear} from 'date-fns'
+  export = isSameISOWeekYear
 }
 
 declare module 'date-fns/isSameMinute' {
@@ -1429,9 +1429,9 @@ declare module 'date-fns/lastDayOfISOWeek' {
   export = lastDayOfISOWeek
 }
 
-declare module 'date-fns/lastDayOfISOYear' {
-  import {lastDayOfISOYear} from 'date-fns'
-  export = lastDayOfISOYear
+declare module 'date-fns/lastDayOfISOWeekYear' {
+  import {lastDayOfISOWeekYear} from 'date-fns'
+  export = lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/lastDayOfMonth' {
@@ -1499,9 +1499,9 @@ declare module 'date-fns/setISOWeek' {
   export = setISOWeek
 }
 
-declare module 'date-fns/setISOYear' {
-  import {setISOYear} from 'date-fns'
-  export = setISOYear
+declare module 'date-fns/setISOWeekYear' {
+  import {setISOWeekYear} from 'date-fns'
+  export = setISOWeekYear
 }
 
 declare module 'date-fns/setMilliseconds' {
@@ -1549,9 +1549,9 @@ declare module 'date-fns/startOfISOWeek' {
   export = startOfISOWeek
 }
 
-declare module 'date-fns/startOfISOYear' {
-  import {startOfISOYear} from 'date-fns'
-  export = startOfISOYear
+declare module 'date-fns/startOfISOWeekYear' {
+  import {startOfISOWeekYear} from 'date-fns'
+  export = startOfISOWeekYear
 }
 
 declare module 'date-fns/startOfMinute' {
@@ -1594,9 +1594,9 @@ declare module 'date-fns/subHours' {
   export = subHours
 }
 
-declare module 'date-fns/subISOYears' {
-  import {subISOYears} from 'date-fns'
-  export = subISOYears
+declare module 'date-fns/subISOWeekYears' {
+  import {subISOWeekYears} from 'date-fns'
+  export = subISOWeekYears
 }
 
 declare module 'date-fns/subMilliseconds' {
@@ -1649,9 +1649,9 @@ declare module 'date-fns/addHours/index' {
   export = addHours
 }
 
-declare module 'date-fns/addISOYears/index' {
-  import {addISOYears} from 'date-fns'
-  export = addISOYears
+declare module 'date-fns/addISOWeekYears/index' {
+  import {addISOWeekYears} from 'date-fns'
+  export = addISOWeekYears
 }
 
 declare module 'date-fns/addMilliseconds/index' {
@@ -1724,9 +1724,9 @@ declare module 'date-fns/differenceInCalendarISOWeeks/index' {
   export = differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/differenceInCalendarISOYears/index' {
-  import {differenceInCalendarISOYears} from 'date-fns'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/differenceInCalendarISOWeekYears/index' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns'
+  export = differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/differenceInCalendarMonths/index' {
@@ -1759,9 +1759,9 @@ declare module 'date-fns/differenceInHours/index' {
   export = differenceInHours
 }
 
-declare module 'date-fns/differenceInISOYears/index' {
-  import {differenceInISOYears} from 'date-fns'
-  export = differenceInISOYears
+declare module 'date-fns/differenceInISOWeekYears/index' {
+  import {differenceInISOWeekYears} from 'date-fns'
+  export = differenceInISOWeekYears
 }
 
 declare module 'date-fns/differenceInMilliseconds/index' {
@@ -1819,9 +1819,9 @@ declare module 'date-fns/endOfISOWeek/index' {
   export = endOfISOWeek
 }
 
-declare module 'date-fns/endOfISOYear/index' {
-  import {endOfISOYear} from 'date-fns'
-  export = endOfISOYear
+declare module 'date-fns/endOfISOWeekYear/index' {
+  import {endOfISOWeekYear} from 'date-fns'
+  export = endOfISOWeekYear
 }
 
 declare module 'date-fns/endOfMinute/index' {
@@ -1919,9 +1919,9 @@ declare module 'date-fns/getISOWeeksInYear/index' {
   export = getISOWeeksInYear
 }
 
-declare module 'date-fns/getISOYear/index' {
-  import {getISOYear} from 'date-fns'
-  export = getISOYear
+declare module 'date-fns/getISOWeekYear/index' {
+  import {getISOWeekYear} from 'date-fns'
+  export = getISOWeekYear
 }
 
 declare module 'date-fns/getMilliseconds/index' {
@@ -2024,9 +2024,9 @@ declare module 'date-fns/isSameISOWeek/index' {
   export = isSameISOWeek
 }
 
-declare module 'date-fns/isSameISOYear/index' {
-  import {isSameISOYear} from 'date-fns'
-  export = isSameISOYear
+declare module 'date-fns/isSameISOWeekYear/index' {
+  import {isSameISOWeekYear} from 'date-fns'
+  export = isSameISOWeekYear
 }
 
 declare module 'date-fns/isSameMinute/index' {
@@ -2104,9 +2104,9 @@ declare module 'date-fns/lastDayOfISOWeek/index' {
   export = lastDayOfISOWeek
 }
 
-declare module 'date-fns/lastDayOfISOYear/index' {
-  import {lastDayOfISOYear} from 'date-fns'
-  export = lastDayOfISOYear
+declare module 'date-fns/lastDayOfISOWeekYear/index' {
+  import {lastDayOfISOWeekYear} from 'date-fns'
+  export = lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/lastDayOfMonth/index' {
@@ -2174,9 +2174,9 @@ declare module 'date-fns/setISOWeek/index' {
   export = setISOWeek
 }
 
-declare module 'date-fns/setISOYear/index' {
-  import {setISOYear} from 'date-fns'
-  export = setISOYear
+declare module 'date-fns/setISOWeekYear/index' {
+  import {setISOWeekYear} from 'date-fns'
+  export = setISOWeekYear
 }
 
 declare module 'date-fns/setMilliseconds/index' {
@@ -2224,9 +2224,9 @@ declare module 'date-fns/startOfISOWeek/index' {
   export = startOfISOWeek
 }
 
-declare module 'date-fns/startOfISOYear/index' {
-  import {startOfISOYear} from 'date-fns'
-  export = startOfISOYear
+declare module 'date-fns/startOfISOWeekYear/index' {
+  import {startOfISOWeekYear} from 'date-fns'
+  export = startOfISOWeekYear
 }
 
 declare module 'date-fns/startOfMinute/index' {
@@ -2269,9 +2269,9 @@ declare module 'date-fns/subHours/index' {
   export = subHours
 }
 
-declare module 'date-fns/subISOYears/index' {
-  import {subISOYears} from 'date-fns'
-  export = subISOYears
+declare module 'date-fns/subISOWeekYears/index' {
+  import {subISOWeekYears} from 'date-fns'
+  export = subISOWeekYears
 }
 
 declare module 'date-fns/subMilliseconds/index' {
@@ -2324,9 +2324,9 @@ declare module 'date-fns/addHours/index.js' {
   export = addHours
 }
 
-declare module 'date-fns/addISOYears/index.js' {
-  import {addISOYears} from 'date-fns'
-  export = addISOYears
+declare module 'date-fns/addISOWeekYears/index.js' {
+  import {addISOWeekYears} from 'date-fns'
+  export = addISOWeekYears
 }
 
 declare module 'date-fns/addMilliseconds/index.js' {
@@ -2399,9 +2399,9 @@ declare module 'date-fns/differenceInCalendarISOWeeks/index.js' {
   export = differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/differenceInCalendarISOYears/index.js' {
-  import {differenceInCalendarISOYears} from 'date-fns'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/differenceInCalendarISOWeekYears/index.js' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns'
+  export = differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/differenceInCalendarMonths/index.js' {
@@ -2434,9 +2434,9 @@ declare module 'date-fns/differenceInHours/index.js' {
   export = differenceInHours
 }
 
-declare module 'date-fns/differenceInISOYears/index.js' {
-  import {differenceInISOYears} from 'date-fns'
-  export = differenceInISOYears
+declare module 'date-fns/differenceInISOWeekYears/index.js' {
+  import {differenceInISOWeekYears} from 'date-fns'
+  export = differenceInISOWeekYears
 }
 
 declare module 'date-fns/differenceInMilliseconds/index.js' {
@@ -2494,9 +2494,9 @@ declare module 'date-fns/endOfISOWeek/index.js' {
   export = endOfISOWeek
 }
 
-declare module 'date-fns/endOfISOYear/index.js' {
-  import {endOfISOYear} from 'date-fns'
-  export = endOfISOYear
+declare module 'date-fns/endOfISOWeekYear/index.js' {
+  import {endOfISOWeekYear} from 'date-fns'
+  export = endOfISOWeekYear
 }
 
 declare module 'date-fns/endOfMinute/index.js' {
@@ -2594,9 +2594,9 @@ declare module 'date-fns/getISOWeeksInYear/index.js' {
   export = getISOWeeksInYear
 }
 
-declare module 'date-fns/getISOYear/index.js' {
-  import {getISOYear} from 'date-fns'
-  export = getISOYear
+declare module 'date-fns/getISOWeekYear/index.js' {
+  import {getISOWeekYear} from 'date-fns'
+  export = getISOWeekYear
 }
 
 declare module 'date-fns/getMilliseconds/index.js' {
@@ -2699,9 +2699,9 @@ declare module 'date-fns/isSameISOWeek/index.js' {
   export = isSameISOWeek
 }
 
-declare module 'date-fns/isSameISOYear/index.js' {
-  import {isSameISOYear} from 'date-fns'
-  export = isSameISOYear
+declare module 'date-fns/isSameISOWeekYear/index.js' {
+  import {isSameISOWeekYear} from 'date-fns'
+  export = isSameISOWeekYear
 }
 
 declare module 'date-fns/isSameMinute/index.js' {
@@ -2779,9 +2779,9 @@ declare module 'date-fns/lastDayOfISOWeek/index.js' {
   export = lastDayOfISOWeek
 }
 
-declare module 'date-fns/lastDayOfISOYear/index.js' {
-  import {lastDayOfISOYear} from 'date-fns'
-  export = lastDayOfISOYear
+declare module 'date-fns/lastDayOfISOWeekYear/index.js' {
+  import {lastDayOfISOWeekYear} from 'date-fns'
+  export = lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/lastDayOfMonth/index.js' {
@@ -2849,9 +2849,9 @@ declare module 'date-fns/setISOWeek/index.js' {
   export = setISOWeek
 }
 
-declare module 'date-fns/setISOYear/index.js' {
-  import {setISOYear} from 'date-fns'
-  export = setISOYear
+declare module 'date-fns/setISOWeekYear/index.js' {
+  import {setISOWeekYear} from 'date-fns'
+  export = setISOWeekYear
 }
 
 declare module 'date-fns/setMilliseconds/index.js' {
@@ -2899,9 +2899,9 @@ declare module 'date-fns/startOfISOWeek/index.js' {
   export = startOfISOWeek
 }
 
-declare module 'date-fns/startOfISOYear/index.js' {
-  import {startOfISOYear} from 'date-fns'
-  export = startOfISOYear
+declare module 'date-fns/startOfISOWeekYear/index.js' {
+  import {startOfISOWeekYear} from 'date-fns'
+  export = startOfISOWeekYear
 }
 
 declare module 'date-fns/startOfMinute/index.js' {
@@ -2944,9 +2944,9 @@ declare module 'date-fns/subHours/index.js' {
   export = subHours
 }
 
-declare module 'date-fns/subISOYears/index.js' {
-  import {subISOYears} from 'date-fns'
-  export = subISOYears
+declare module 'date-fns/subISOWeekYears/index.js' {
+  import {subISOWeekYears} from 'date-fns'
+  export = subISOWeekYears
 }
 
 declare module 'date-fns/subMilliseconds/index.js' {
@@ -3004,11 +3004,11 @@ declare module 'date-fns/fp' {
   const addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addHoursWithOptions {}
 
-  const addISOYears: CurriedFn2<number, Date | string | number, Date>
-  namespace addISOYears {}
+  const addISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  namespace addISOWeekYears {}
 
-  const addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace addISOYearsWithOptions {}
+  const addISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace addISOWeekYearsWithOptions {}
 
   const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace addMilliseconds {}
@@ -3094,11 +3094,11 @@ declare module 'date-fns/fp' {
   const differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeksWithOptions {}
 
-  const differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
-  namespace differenceInCalendarISOYears {}
+  const differenceInCalendarISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  namespace differenceInCalendarISOWeekYears {}
 
-  const differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
-  namespace differenceInCalendarISOYearsWithOptions {}
+  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  namespace differenceInCalendarISOWeekYearsWithOptions {}
 
   const differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonths {}
@@ -3136,11 +3136,11 @@ declare module 'date-fns/fp' {
   const differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInHoursWithOptions {}
 
-  const differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
-  namespace differenceInISOYears {}
+  const differenceInISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  namespace differenceInISOWeekYears {}
 
-  const differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
-  namespace differenceInISOYearsWithOptions {}
+  const differenceInISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  namespace differenceInISOWeekYearsWithOptions {}
 
   const differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMilliseconds {}
@@ -3208,11 +3208,11 @@ declare module 'date-fns/fp' {
   const endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOWeekWithOptions {}
 
-  const endOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace endOfISOYear {}
+  const endOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace endOfISOWeekYear {}
 
-  const endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace endOfISOYearWithOptions {}
+  const endOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace endOfISOWeekYearWithOptions {}
 
   const endOfMinute: CurriedFn1<Date | string | number, Date>
   namespace endOfMinute {}
@@ -3328,11 +3328,11 @@ declare module 'date-fns/fp' {
   const getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeekWithOptions {}
 
-  const getISOYear: CurriedFn1<Date | string | number, number>
-  namespace getISOYear {}
+  const getISOWeekYear: CurriedFn1<Date | string | number, number>
+  namespace getISOWeekYear {}
 
-  const getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOYearWithOptions {}
+  const getISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeekYearWithOptions {}
 
   const getMilliseconds: CurriedFn1<Date | string | number, number>
   namespace getMilliseconds {}
@@ -3454,11 +3454,11 @@ declare module 'date-fns/fp' {
   const isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeekWithOptions {}
 
-  const isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
-  namespace isSameISOYear {}
+  const isSameISOWeekYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  namespace isSameISOWeekYear {}
 
-  const isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
-  namespace isSameISOYearWithOptions {}
+  const isSameISOWeekYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  namespace isSameISOWeekYearWithOptions {}
 
   const isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMinute {}
@@ -3550,11 +3550,11 @@ declare module 'date-fns/fp' {
   const lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOWeekWithOptions {}
 
-  const lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace lastDayOfISOYear {}
+  const lastDayOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace lastDayOfISOWeekYear {}
 
-  const lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace lastDayOfISOYearWithOptions {}
+  const lastDayOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace lastDayOfISOWeekYearWithOptions {}
 
   const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfMonth {}
@@ -3634,11 +3634,11 @@ declare module 'date-fns/fp' {
   const setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOWeekWithOptions {}
 
-  const setISOYear: CurriedFn2<number, Date | string | number, Date>
-  namespace setISOYear {}
+  const setISOWeekYear: CurriedFn2<number, Date | string | number, Date>
+  namespace setISOWeekYear {}
 
-  const setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace setISOYearWithOptions {}
+  const setISOWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setISOWeekYearWithOptions {}
 
   const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace setMilliseconds {}
@@ -3694,11 +3694,11 @@ declare module 'date-fns/fp' {
   const startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOWeekWithOptions {}
 
-  const startOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace startOfISOYear {}
+  const startOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace startOfISOWeekYear {}
 
-  const startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace startOfISOYearWithOptions {}
+  const startOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfISOWeekYearWithOptions {}
 
   const startOfMinute: CurriedFn1<Date | string | number, Date>
   namespace startOfMinute {}
@@ -3748,11 +3748,11 @@ declare module 'date-fns/fp' {
   const subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subHoursWithOptions {}
 
-  const subISOYears: CurriedFn2<number, Date | string | number, Date>
-  namespace subISOYears {}
+  const subISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  namespace subISOWeekYears {}
 
-  const subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace subISOYearsWithOptions {}
+  const subISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace subISOWeekYearsWithOptions {}
 
   const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace subMilliseconds {}
@@ -3823,14 +3823,14 @@ declare module 'date-fns/fp/addHoursWithOptions' {
   export = addHoursWithOptions
 }
 
-declare module 'date-fns/fp/addISOYears' {
-  import {addISOYears} from 'date-fns/fp'
-  export = addISOYears
+declare module 'date-fns/fp/addISOWeekYears' {
+  import {addISOWeekYears} from 'date-fns/fp'
+  export = addISOWeekYears
 }
 
-declare module 'date-fns/fp/addISOYearsWithOptions' {
-  import {addISOYearsWithOptions} from 'date-fns/fp'
-  export = addISOYearsWithOptions
+declare module 'date-fns/fp/addISOWeekYearsWithOptions' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/addMilliseconds' {
@@ -3973,14 +3973,14 @@ declare module 'date-fns/fp/differenceInCalendarISOWeeksWithOptions' {
   export = differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYears' {
-  import {differenceInCalendarISOYears} from 'date-fns/fp'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/fp/differenceInCalendarISOWeekYears' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYearsWithOptions' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/fp/differenceInCalendarISOWeekYearsWithOptions' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths' {
@@ -4043,14 +4043,14 @@ declare module 'date-fns/fp/differenceInHoursWithOptions' {
   export = differenceInHoursWithOptions
 }
 
-declare module 'date-fns/fp/differenceInISOYears' {
-  import {differenceInISOYears} from 'date-fns/fp'
-  export = differenceInISOYears
+declare module 'date-fns/fp/differenceInISOWeekYears' {
+  import {differenceInISOWeekYears} from 'date-fns/fp'
+  export = differenceInISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInISOYearsWithOptions' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInISOYearsWithOptions
+declare module 'date-fns/fp/differenceInISOWeekYearsWithOptions' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds' {
@@ -4163,14 +4163,14 @@ declare module 'date-fns/fp/endOfISOWeekWithOptions' {
   export = endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/endOfISOYear' {
-  import {endOfISOYear} from 'date-fns/fp'
-  export = endOfISOYear
+declare module 'date-fns/fp/endOfISOWeekYear' {
+  import {endOfISOWeekYear} from 'date-fns/fp'
+  export = endOfISOWeekYear
 }
 
-declare module 'date-fns/fp/endOfISOYearWithOptions' {
-  import {endOfISOYearWithOptions} from 'date-fns/fp'
-  export = endOfISOYearWithOptions
+declare module 'date-fns/fp/endOfISOWeekYearWithOptions' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/endOfMinute' {
@@ -4363,14 +4363,14 @@ declare module 'date-fns/fp/getISOWeekWithOptions' {
   export = getISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/getISOYear' {
-  import {getISOYear} from 'date-fns/fp'
-  export = getISOYear
+declare module 'date-fns/fp/getISOWeekYear' {
+  import {getISOWeekYear} from 'date-fns/fp'
+  export = getISOWeekYear
 }
 
-declare module 'date-fns/fp/getISOYearWithOptions' {
-  import {getISOYearWithOptions} from 'date-fns/fp'
-  export = getISOYearWithOptions
+declare module 'date-fns/fp/getISOWeekYearWithOptions' {
+  import {getISOWeekYearWithOptions} from 'date-fns/fp'
+  export = getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getMilliseconds' {
@@ -4573,14 +4573,14 @@ declare module 'date-fns/fp/isSameISOWeekWithOptions' {
   export = isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/isSameISOYear' {
-  import {isSameISOYear} from 'date-fns/fp'
-  export = isSameISOYear
+declare module 'date-fns/fp/isSameISOWeekYear' {
+  import {isSameISOWeekYear} from 'date-fns/fp'
+  export = isSameISOWeekYear
 }
 
-declare module 'date-fns/fp/isSameISOYearWithOptions' {
-  import {isSameISOYearWithOptions} from 'date-fns/fp'
-  export = isSameISOYearWithOptions
+declare module 'date-fns/fp/isSameISOWeekYearWithOptions' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/fp'
+  export = isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/isSameMinute' {
@@ -4733,14 +4733,14 @@ declare module 'date-fns/fp/lastDayOfISOWeekWithOptions' {
   export = lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/lastDayOfISOYear' {
-  import {lastDayOfISOYear} from 'date-fns/fp'
-  export = lastDayOfISOYear
+declare module 'date-fns/fp/lastDayOfISOWeekYear' {
+  import {lastDayOfISOWeekYear} from 'date-fns/fp'
+  export = lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/fp/lastDayOfISOYearWithOptions' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/fp'
-  export = lastDayOfISOYearWithOptions
+declare module 'date-fns/fp/lastDayOfISOWeekYearWithOptions' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfMonth' {
@@ -4873,14 +4873,14 @@ declare module 'date-fns/fp/setISOWeekWithOptions' {
   export = setISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/setISOYear' {
-  import {setISOYear} from 'date-fns/fp'
-  export = setISOYear
+declare module 'date-fns/fp/setISOWeekYear' {
+  import {setISOWeekYear} from 'date-fns/fp'
+  export = setISOWeekYear
 }
 
-declare module 'date-fns/fp/setISOYearWithOptions' {
-  import {setISOYearWithOptions} from 'date-fns/fp'
-  export = setISOYearWithOptions
+declare module 'date-fns/fp/setISOWeekYearWithOptions' {
+  import {setISOWeekYearWithOptions} from 'date-fns/fp'
+  export = setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setMilliseconds' {
@@ -4973,14 +4973,14 @@ declare module 'date-fns/fp/startOfISOWeekWithOptions' {
   export = startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/startOfISOYear' {
-  import {startOfISOYear} from 'date-fns/fp'
-  export = startOfISOYear
+declare module 'date-fns/fp/startOfISOWeekYear' {
+  import {startOfISOWeekYear} from 'date-fns/fp'
+  export = startOfISOWeekYear
 }
 
-declare module 'date-fns/fp/startOfISOYearWithOptions' {
-  import {startOfISOYearWithOptions} from 'date-fns/fp'
-  export = startOfISOYearWithOptions
+declare module 'date-fns/fp/startOfISOWeekYearWithOptions' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfMinute' {
@@ -5063,14 +5063,14 @@ declare module 'date-fns/fp/subHoursWithOptions' {
   export = subHoursWithOptions
 }
 
-declare module 'date-fns/fp/subISOYears' {
-  import {subISOYears} from 'date-fns/fp'
-  export = subISOYears
+declare module 'date-fns/fp/subISOWeekYears' {
+  import {subISOWeekYears} from 'date-fns/fp'
+  export = subISOWeekYears
 }
 
-declare module 'date-fns/fp/subISOYearsWithOptions' {
-  import {subISOYearsWithOptions} from 'date-fns/fp'
-  export = subISOYearsWithOptions
+declare module 'date-fns/fp/subISOWeekYearsWithOptions' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/subMilliseconds' {
@@ -5173,14 +5173,14 @@ declare module 'date-fns/fp/addHoursWithOptions/index' {
   export = addHoursWithOptions
 }
 
-declare module 'date-fns/fp/addISOYears/index' {
-  import {addISOYears} from 'date-fns/fp'
-  export = addISOYears
+declare module 'date-fns/fp/addISOWeekYears/index' {
+  import {addISOWeekYears} from 'date-fns/fp'
+  export = addISOWeekYears
 }
 
-declare module 'date-fns/fp/addISOYearsWithOptions/index' {
-  import {addISOYearsWithOptions} from 'date-fns/fp'
-  export = addISOYearsWithOptions
+declare module 'date-fns/fp/addISOWeekYearsWithOptions/index' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/addMilliseconds/index' {
@@ -5323,14 +5323,14 @@ declare module 'date-fns/fp/differenceInCalendarISOWeeksWithOptions/index' {
   export = differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYears/index' {
-  import {differenceInCalendarISOYears} from 'date-fns/fp'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/fp/differenceInCalendarISOWeekYears/index' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYearsWithOptions/index' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/fp/differenceInCalendarISOWeekYearsWithOptions/index' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths/index' {
@@ -5393,14 +5393,14 @@ declare module 'date-fns/fp/differenceInHoursWithOptions/index' {
   export = differenceInHoursWithOptions
 }
 
-declare module 'date-fns/fp/differenceInISOYears/index' {
-  import {differenceInISOYears} from 'date-fns/fp'
-  export = differenceInISOYears
+declare module 'date-fns/fp/differenceInISOWeekYears/index' {
+  import {differenceInISOWeekYears} from 'date-fns/fp'
+  export = differenceInISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInISOYearsWithOptions/index' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInISOYearsWithOptions
+declare module 'date-fns/fp/differenceInISOWeekYearsWithOptions/index' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds/index' {
@@ -5513,14 +5513,14 @@ declare module 'date-fns/fp/endOfISOWeekWithOptions/index' {
   export = endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/endOfISOYear/index' {
-  import {endOfISOYear} from 'date-fns/fp'
-  export = endOfISOYear
+declare module 'date-fns/fp/endOfISOWeekYear/index' {
+  import {endOfISOWeekYear} from 'date-fns/fp'
+  export = endOfISOWeekYear
 }
 
-declare module 'date-fns/fp/endOfISOYearWithOptions/index' {
-  import {endOfISOYearWithOptions} from 'date-fns/fp'
-  export = endOfISOYearWithOptions
+declare module 'date-fns/fp/endOfISOWeekYearWithOptions/index' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/endOfMinute/index' {
@@ -5713,14 +5713,14 @@ declare module 'date-fns/fp/getISOWeekWithOptions/index' {
   export = getISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/getISOYear/index' {
-  import {getISOYear} from 'date-fns/fp'
-  export = getISOYear
+declare module 'date-fns/fp/getISOWeekYear/index' {
+  import {getISOWeekYear} from 'date-fns/fp'
+  export = getISOWeekYear
 }
 
-declare module 'date-fns/fp/getISOYearWithOptions/index' {
-  import {getISOYearWithOptions} from 'date-fns/fp'
-  export = getISOYearWithOptions
+declare module 'date-fns/fp/getISOWeekYearWithOptions/index' {
+  import {getISOWeekYearWithOptions} from 'date-fns/fp'
+  export = getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getMilliseconds/index' {
@@ -5923,14 +5923,14 @@ declare module 'date-fns/fp/isSameISOWeekWithOptions/index' {
   export = isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/isSameISOYear/index' {
-  import {isSameISOYear} from 'date-fns/fp'
-  export = isSameISOYear
+declare module 'date-fns/fp/isSameISOWeekYear/index' {
+  import {isSameISOWeekYear} from 'date-fns/fp'
+  export = isSameISOWeekYear
 }
 
-declare module 'date-fns/fp/isSameISOYearWithOptions/index' {
-  import {isSameISOYearWithOptions} from 'date-fns/fp'
-  export = isSameISOYearWithOptions
+declare module 'date-fns/fp/isSameISOWeekYearWithOptions/index' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/fp'
+  export = isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/isSameMinute/index' {
@@ -6083,14 +6083,14 @@ declare module 'date-fns/fp/lastDayOfISOWeekWithOptions/index' {
   export = lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/lastDayOfISOYear/index' {
-  import {lastDayOfISOYear} from 'date-fns/fp'
-  export = lastDayOfISOYear
+declare module 'date-fns/fp/lastDayOfISOWeekYear/index' {
+  import {lastDayOfISOWeekYear} from 'date-fns/fp'
+  export = lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/fp/lastDayOfISOYearWithOptions/index' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/fp'
-  export = lastDayOfISOYearWithOptions
+declare module 'date-fns/fp/lastDayOfISOWeekYearWithOptions/index' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfMonth/index' {
@@ -6223,14 +6223,14 @@ declare module 'date-fns/fp/setISOWeekWithOptions/index' {
   export = setISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/setISOYear/index' {
-  import {setISOYear} from 'date-fns/fp'
-  export = setISOYear
+declare module 'date-fns/fp/setISOWeekYear/index' {
+  import {setISOWeekYear} from 'date-fns/fp'
+  export = setISOWeekYear
 }
 
-declare module 'date-fns/fp/setISOYearWithOptions/index' {
-  import {setISOYearWithOptions} from 'date-fns/fp'
-  export = setISOYearWithOptions
+declare module 'date-fns/fp/setISOWeekYearWithOptions/index' {
+  import {setISOWeekYearWithOptions} from 'date-fns/fp'
+  export = setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setMilliseconds/index' {
@@ -6323,14 +6323,14 @@ declare module 'date-fns/fp/startOfISOWeekWithOptions/index' {
   export = startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/startOfISOYear/index' {
-  import {startOfISOYear} from 'date-fns/fp'
-  export = startOfISOYear
+declare module 'date-fns/fp/startOfISOWeekYear/index' {
+  import {startOfISOWeekYear} from 'date-fns/fp'
+  export = startOfISOWeekYear
 }
 
-declare module 'date-fns/fp/startOfISOYearWithOptions/index' {
-  import {startOfISOYearWithOptions} from 'date-fns/fp'
-  export = startOfISOYearWithOptions
+declare module 'date-fns/fp/startOfISOWeekYearWithOptions/index' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfMinute/index' {
@@ -6413,14 +6413,14 @@ declare module 'date-fns/fp/subHoursWithOptions/index' {
   export = subHoursWithOptions
 }
 
-declare module 'date-fns/fp/subISOYears/index' {
-  import {subISOYears} from 'date-fns/fp'
-  export = subISOYears
+declare module 'date-fns/fp/subISOWeekYears/index' {
+  import {subISOWeekYears} from 'date-fns/fp'
+  export = subISOWeekYears
 }
 
-declare module 'date-fns/fp/subISOYearsWithOptions/index' {
-  import {subISOYearsWithOptions} from 'date-fns/fp'
-  export = subISOYearsWithOptions
+declare module 'date-fns/fp/subISOWeekYearsWithOptions/index' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/subMilliseconds/index' {
@@ -6523,14 +6523,14 @@ declare module 'date-fns/fp/addHoursWithOptions/index.js' {
   export = addHoursWithOptions
 }
 
-declare module 'date-fns/fp/addISOYears/index.js' {
-  import {addISOYears} from 'date-fns/fp'
-  export = addISOYears
+declare module 'date-fns/fp/addISOWeekYears/index.js' {
+  import {addISOWeekYears} from 'date-fns/fp'
+  export = addISOWeekYears
 }
 
-declare module 'date-fns/fp/addISOYearsWithOptions/index.js' {
-  import {addISOYearsWithOptions} from 'date-fns/fp'
-  export = addISOYearsWithOptions
+declare module 'date-fns/fp/addISOWeekYearsWithOptions/index.js' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/addMilliseconds/index.js' {
@@ -6673,14 +6673,14 @@ declare module 'date-fns/fp/differenceInCalendarISOWeeksWithOptions/index.js' {
   export = differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYears/index.js' {
-  import {differenceInCalendarISOYears} from 'date-fns/fp'
-  export = differenceInCalendarISOYears
+declare module 'date-fns/fp/differenceInCalendarISOWeekYears/index.js' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInCalendarISOYearsWithOptions/index.js' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/fp/differenceInCalendarISOWeekYearsWithOptions/index.js' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths/index.js' {
@@ -6743,14 +6743,14 @@ declare module 'date-fns/fp/differenceInHoursWithOptions/index.js' {
   export = differenceInHoursWithOptions
 }
 
-declare module 'date-fns/fp/differenceInISOYears/index.js' {
-  import {differenceInISOYears} from 'date-fns/fp'
-  export = differenceInISOYears
+declare module 'date-fns/fp/differenceInISOWeekYears/index.js' {
+  import {differenceInISOWeekYears} from 'date-fns/fp'
+  export = differenceInISOWeekYears
 }
 
-declare module 'date-fns/fp/differenceInISOYearsWithOptions/index.js' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/fp'
-  export = differenceInISOYearsWithOptions
+declare module 'date-fns/fp/differenceInISOWeekYearsWithOptions/index.js' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds/index.js' {
@@ -6863,14 +6863,14 @@ declare module 'date-fns/fp/endOfISOWeekWithOptions/index.js' {
   export = endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/endOfISOYear/index.js' {
-  import {endOfISOYear} from 'date-fns/fp'
-  export = endOfISOYear
+declare module 'date-fns/fp/endOfISOWeekYear/index.js' {
+  import {endOfISOWeekYear} from 'date-fns/fp'
+  export = endOfISOWeekYear
 }
 
-declare module 'date-fns/fp/endOfISOYearWithOptions/index.js' {
-  import {endOfISOYearWithOptions} from 'date-fns/fp'
-  export = endOfISOYearWithOptions
+declare module 'date-fns/fp/endOfISOWeekYearWithOptions/index.js' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/endOfMinute/index.js' {
@@ -7063,14 +7063,14 @@ declare module 'date-fns/fp/getISOWeekWithOptions/index.js' {
   export = getISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/getISOYear/index.js' {
-  import {getISOYear} from 'date-fns/fp'
-  export = getISOYear
+declare module 'date-fns/fp/getISOWeekYear/index.js' {
+  import {getISOWeekYear} from 'date-fns/fp'
+  export = getISOWeekYear
 }
 
-declare module 'date-fns/fp/getISOYearWithOptions/index.js' {
-  import {getISOYearWithOptions} from 'date-fns/fp'
-  export = getISOYearWithOptions
+declare module 'date-fns/fp/getISOWeekYearWithOptions/index.js' {
+  import {getISOWeekYearWithOptions} from 'date-fns/fp'
+  export = getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getMilliseconds/index.js' {
@@ -7273,14 +7273,14 @@ declare module 'date-fns/fp/isSameISOWeekWithOptions/index.js' {
   export = isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/isSameISOYear/index.js' {
-  import {isSameISOYear} from 'date-fns/fp'
-  export = isSameISOYear
+declare module 'date-fns/fp/isSameISOWeekYear/index.js' {
+  import {isSameISOWeekYear} from 'date-fns/fp'
+  export = isSameISOWeekYear
 }
 
-declare module 'date-fns/fp/isSameISOYearWithOptions/index.js' {
-  import {isSameISOYearWithOptions} from 'date-fns/fp'
-  export = isSameISOYearWithOptions
+declare module 'date-fns/fp/isSameISOWeekYearWithOptions/index.js' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/fp'
+  export = isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/isSameMinute/index.js' {
@@ -7433,14 +7433,14 @@ declare module 'date-fns/fp/lastDayOfISOWeekWithOptions/index.js' {
   export = lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/lastDayOfISOYear/index.js' {
-  import {lastDayOfISOYear} from 'date-fns/fp'
-  export = lastDayOfISOYear
+declare module 'date-fns/fp/lastDayOfISOWeekYear/index.js' {
+  import {lastDayOfISOWeekYear} from 'date-fns/fp'
+  export = lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/fp/lastDayOfISOYearWithOptions/index.js' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/fp'
-  export = lastDayOfISOYearWithOptions
+declare module 'date-fns/fp/lastDayOfISOWeekYearWithOptions/index.js' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfMonth/index.js' {
@@ -7573,14 +7573,14 @@ declare module 'date-fns/fp/setISOWeekWithOptions/index.js' {
   export = setISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/setISOYear/index.js' {
-  import {setISOYear} from 'date-fns/fp'
-  export = setISOYear
+declare module 'date-fns/fp/setISOWeekYear/index.js' {
+  import {setISOWeekYear} from 'date-fns/fp'
+  export = setISOWeekYear
 }
 
-declare module 'date-fns/fp/setISOYearWithOptions/index.js' {
-  import {setISOYearWithOptions} from 'date-fns/fp'
-  export = setISOYearWithOptions
+declare module 'date-fns/fp/setISOWeekYearWithOptions/index.js' {
+  import {setISOWeekYearWithOptions} from 'date-fns/fp'
+  export = setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setMilliseconds/index.js' {
@@ -7673,14 +7673,14 @@ declare module 'date-fns/fp/startOfISOWeekWithOptions/index.js' {
   export = startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/fp/startOfISOYear/index.js' {
-  import {startOfISOYear} from 'date-fns/fp'
-  export = startOfISOYear
+declare module 'date-fns/fp/startOfISOWeekYear/index.js' {
+  import {startOfISOWeekYear} from 'date-fns/fp'
+  export = startOfISOWeekYear
 }
 
-declare module 'date-fns/fp/startOfISOYearWithOptions/index.js' {
-  import {startOfISOYearWithOptions} from 'date-fns/fp'
-  export = startOfISOYearWithOptions
+declare module 'date-fns/fp/startOfISOWeekYearWithOptions/index.js' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfMinute/index.js' {
@@ -7763,14 +7763,14 @@ declare module 'date-fns/fp/subHoursWithOptions/index.js' {
   export = subHoursWithOptions
 }
 
-declare module 'date-fns/fp/subISOYears/index.js' {
-  import {subISOYears} from 'date-fns/fp'
-  export = subISOYears
+declare module 'date-fns/fp/subISOWeekYears/index.js' {
+  import {subISOWeekYears} from 'date-fns/fp'
+  export = subISOWeekYears
 }
 
-declare module 'date-fns/fp/subISOYearsWithOptions/index.js' {
-  import {subISOYearsWithOptions} from 'date-fns/fp'
-  export = subISOYearsWithOptions
+declare module 'date-fns/fp/subISOWeekYearsWithOptions/index.js' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/fp'
+  export = subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/fp/subMilliseconds/index.js' {
@@ -7870,12 +7870,12 @@ declare module 'date-fns/esm' {
   ): Date
   namespace addHours {}
 
-  function addISOYears (
+  function addISOWeekYears (
     date: Date | string | number,
     amount: number,
     options?: Options
   ): Date
-  namespace addISOYears {}
+  namespace addISOWeekYears {}
 
   function addMilliseconds (
     date: Date | string | number,
@@ -7975,12 +7975,12 @@ declare module 'date-fns/esm' {
   ): number
   namespace differenceInCalendarISOWeeks {}
 
-  function differenceInCalendarISOYears (
+  function differenceInCalendarISOWeekYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): number
-  namespace differenceInCalendarISOYears {}
+  namespace differenceInCalendarISOWeekYears {}
 
   function differenceInCalendarMonths (
     dateLeft: Date | string | number,
@@ -8024,12 +8024,12 @@ declare module 'date-fns/esm' {
   ): number
   namespace differenceInHours {}
 
-  function differenceInISOYears (
+  function differenceInISOWeekYears (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): number
-  namespace differenceInISOYears {}
+  namespace differenceInISOWeekYears {}
 
   function differenceInMilliseconds (
     dateLeft: Date | string | number,
@@ -8104,11 +8104,11 @@ declare module 'date-fns/esm' {
   ): Date
   namespace endOfISOWeek {}
 
-  function endOfISOYear (
+  function endOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace endOfISOYear {}
+  namespace endOfISOWeekYear {}
 
   function endOfMinute (
     date: Date | string | number,
@@ -8228,11 +8228,11 @@ declare module 'date-fns/esm' {
   ): number
   namespace getISOWeeksInYear {}
 
-  function getISOYear (
+  function getISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): number
-  namespace getISOYear {}
+  namespace getISOWeekYear {}
 
   function getMilliseconds (
     date: Date | string | number,
@@ -8361,12 +8361,12 @@ declare module 'date-fns/esm' {
   ): boolean
   namespace isSameISOWeek {}
 
-  function isSameISOYear (
+  function isSameISOWeekYear (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
   ): boolean
-  namespace isSameISOYear {}
+  namespace isSameISOWeekYear {}
 
   function isSameMinute (
     dateLeft: Date | string | number,
@@ -8465,11 +8465,11 @@ declare module 'date-fns/esm' {
   ): Date
   namespace lastDayOfISOWeek {}
 
-  function lastDayOfISOYear (
+  function lastDayOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace lastDayOfISOYear {}
+  namespace lastDayOfISOWeekYear {}
 
   function lastDayOfMonth (
     date: Date | string | number,
@@ -8557,12 +8557,12 @@ declare module 'date-fns/esm' {
   ): Date
   namespace setISOWeek {}
 
-  function setISOYear (
+  function setISOWeekYear (
     date: Date | string | number,
-    isoYear: number,
+    isoWeekYear: number,
     options?: Options
   ): Date
-  namespace setISOYear {}
+  namespace setISOWeekYear {}
 
   function setMilliseconds (
     date: Date | string | number,
@@ -8624,11 +8624,11 @@ declare module 'date-fns/esm' {
   ): Date
   namespace startOfISOWeek {}
 
-  function startOfISOYear (
+  function startOfISOWeekYear (
     date: Date | string | number,
     options?: Options
   ): Date
-  namespace startOfISOYear {}
+  namespace startOfISOWeekYear {}
 
   function startOfMinute (
     date: Date | string | number,
@@ -8680,12 +8680,12 @@ declare module 'date-fns/esm' {
   ): Date
   namespace subHours {}
 
-  function subISOYears (
+  function subISOWeekYears (
     date: Date | string | number,
     amount: number,
     options?: Options
   ): Date
-  namespace subISOYears {}
+  namespace subISOWeekYears {}
 
   function subMilliseconds (
     date: Date | string | number,
@@ -8753,9 +8753,9 @@ declare module 'date-fns/esm/addHours' {
   export default addHours
 }
 
-declare module 'date-fns/esm/addISOYears' {
-  import {addISOYears} from 'date-fns/esm'
-  export default addISOYears
+declare module 'date-fns/esm/addISOWeekYears' {
+  import {addISOWeekYears} from 'date-fns/esm'
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/esm/addMilliseconds' {
@@ -8828,9 +8828,9 @@ declare module 'date-fns/esm/differenceInCalendarISOWeeks' {
   export default differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/esm/differenceInCalendarISOYears' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/differenceInCalendarISOWeekYears' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm'
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInCalendarMonths' {
@@ -8863,9 +8863,9 @@ declare module 'date-fns/esm/differenceInHours' {
   export default differenceInHours
 }
 
-declare module 'date-fns/esm/differenceInISOYears' {
-  import {differenceInISOYears} from 'date-fns/esm'
-  export default differenceInISOYears
+declare module 'date-fns/esm/differenceInISOWeekYears' {
+  import {differenceInISOWeekYears} from 'date-fns/esm'
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInMilliseconds' {
@@ -8923,9 +8923,9 @@ declare module 'date-fns/esm/endOfISOWeek' {
   export default endOfISOWeek
 }
 
-declare module 'date-fns/esm/endOfISOYear' {
-  import {endOfISOYear} from 'date-fns/esm'
-  export default endOfISOYear
+declare module 'date-fns/esm/endOfISOWeekYear' {
+  import {endOfISOWeekYear} from 'date-fns/esm'
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/esm/endOfMinute' {
@@ -9023,9 +9023,9 @@ declare module 'date-fns/esm/getISOWeeksInYear' {
   export default getISOWeeksInYear
 }
 
-declare module 'date-fns/esm/getISOYear' {
-  import {getISOYear} from 'date-fns/esm'
-  export default getISOYear
+declare module 'date-fns/esm/getISOWeekYear' {
+  import {getISOWeekYear} from 'date-fns/esm'
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/esm/getMilliseconds' {
@@ -9128,9 +9128,9 @@ declare module 'date-fns/esm/isSameISOWeek' {
   export default isSameISOWeek
 }
 
-declare module 'date-fns/esm/isSameISOYear' {
-  import {isSameISOYear} from 'date-fns/esm'
-  export default isSameISOYear
+declare module 'date-fns/esm/isSameISOWeekYear' {
+  import {isSameISOWeekYear} from 'date-fns/esm'
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/esm/isSameMinute' {
@@ -9208,9 +9208,9 @@ declare module 'date-fns/esm/lastDayOfISOWeek' {
   export default lastDayOfISOWeek
 }
 
-declare module 'date-fns/esm/lastDayOfISOYear' {
-  import {lastDayOfISOYear} from 'date-fns/esm'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/lastDayOfISOWeekYear' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm'
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/esm/lastDayOfMonth' {
@@ -9278,9 +9278,9 @@ declare module 'date-fns/esm/setISOWeek' {
   export default setISOWeek
 }
 
-declare module 'date-fns/esm/setISOYear' {
-  import {setISOYear} from 'date-fns/esm'
-  export default setISOYear
+declare module 'date-fns/esm/setISOWeekYear' {
+  import {setISOWeekYear} from 'date-fns/esm'
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/esm/setMilliseconds' {
@@ -9328,9 +9328,9 @@ declare module 'date-fns/esm/startOfISOWeek' {
   export default startOfISOWeek
 }
 
-declare module 'date-fns/esm/startOfISOYear' {
-  import {startOfISOYear} from 'date-fns/esm'
-  export default startOfISOYear
+declare module 'date-fns/esm/startOfISOWeekYear' {
+  import {startOfISOWeekYear} from 'date-fns/esm'
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/esm/startOfMinute' {
@@ -9373,9 +9373,9 @@ declare module 'date-fns/esm/subHours' {
   export default subHours
 }
 
-declare module 'date-fns/esm/subISOYears' {
-  import {subISOYears} from 'date-fns/esm'
-  export default subISOYears
+declare module 'date-fns/esm/subISOWeekYears' {
+  import {subISOWeekYears} from 'date-fns/esm'
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/esm/subMilliseconds' {
@@ -9428,9 +9428,9 @@ declare module 'date-fns/esm/addHours/index' {
   export default addHours
 }
 
-declare module 'date-fns/esm/addISOYears/index' {
-  import {addISOYears} from 'date-fns/esm'
-  export default addISOYears
+declare module 'date-fns/esm/addISOWeekYears/index' {
+  import {addISOWeekYears} from 'date-fns/esm'
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/esm/addMilliseconds/index' {
@@ -9503,9 +9503,9 @@ declare module 'date-fns/esm/differenceInCalendarISOWeeks/index' {
   export default differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/esm/differenceInCalendarISOYears/index' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/differenceInCalendarISOWeekYears/index' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm'
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInCalendarMonths/index' {
@@ -9538,9 +9538,9 @@ declare module 'date-fns/esm/differenceInHours/index' {
   export default differenceInHours
 }
 
-declare module 'date-fns/esm/differenceInISOYears/index' {
-  import {differenceInISOYears} from 'date-fns/esm'
-  export default differenceInISOYears
+declare module 'date-fns/esm/differenceInISOWeekYears/index' {
+  import {differenceInISOWeekYears} from 'date-fns/esm'
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInMilliseconds/index' {
@@ -9598,9 +9598,9 @@ declare module 'date-fns/esm/endOfISOWeek/index' {
   export default endOfISOWeek
 }
 
-declare module 'date-fns/esm/endOfISOYear/index' {
-  import {endOfISOYear} from 'date-fns/esm'
-  export default endOfISOYear
+declare module 'date-fns/esm/endOfISOWeekYear/index' {
+  import {endOfISOWeekYear} from 'date-fns/esm'
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/esm/endOfMinute/index' {
@@ -9698,9 +9698,9 @@ declare module 'date-fns/esm/getISOWeeksInYear/index' {
   export default getISOWeeksInYear
 }
 
-declare module 'date-fns/esm/getISOYear/index' {
-  import {getISOYear} from 'date-fns/esm'
-  export default getISOYear
+declare module 'date-fns/esm/getISOWeekYear/index' {
+  import {getISOWeekYear} from 'date-fns/esm'
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/esm/getMilliseconds/index' {
@@ -9803,9 +9803,9 @@ declare module 'date-fns/esm/isSameISOWeek/index' {
   export default isSameISOWeek
 }
 
-declare module 'date-fns/esm/isSameISOYear/index' {
-  import {isSameISOYear} from 'date-fns/esm'
-  export default isSameISOYear
+declare module 'date-fns/esm/isSameISOWeekYear/index' {
+  import {isSameISOWeekYear} from 'date-fns/esm'
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/esm/isSameMinute/index' {
@@ -9883,9 +9883,9 @@ declare module 'date-fns/esm/lastDayOfISOWeek/index' {
   export default lastDayOfISOWeek
 }
 
-declare module 'date-fns/esm/lastDayOfISOYear/index' {
-  import {lastDayOfISOYear} from 'date-fns/esm'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/lastDayOfISOWeekYear/index' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm'
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/esm/lastDayOfMonth/index' {
@@ -9953,9 +9953,9 @@ declare module 'date-fns/esm/setISOWeek/index' {
   export default setISOWeek
 }
 
-declare module 'date-fns/esm/setISOYear/index' {
-  import {setISOYear} from 'date-fns/esm'
-  export default setISOYear
+declare module 'date-fns/esm/setISOWeekYear/index' {
+  import {setISOWeekYear} from 'date-fns/esm'
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/esm/setMilliseconds/index' {
@@ -10003,9 +10003,9 @@ declare module 'date-fns/esm/startOfISOWeek/index' {
   export default startOfISOWeek
 }
 
-declare module 'date-fns/esm/startOfISOYear/index' {
-  import {startOfISOYear} from 'date-fns/esm'
-  export default startOfISOYear
+declare module 'date-fns/esm/startOfISOWeekYear/index' {
+  import {startOfISOWeekYear} from 'date-fns/esm'
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/esm/startOfMinute/index' {
@@ -10048,9 +10048,9 @@ declare module 'date-fns/esm/subHours/index' {
   export default subHours
 }
 
-declare module 'date-fns/esm/subISOYears/index' {
-  import {subISOYears} from 'date-fns/esm'
-  export default subISOYears
+declare module 'date-fns/esm/subISOWeekYears/index' {
+  import {subISOWeekYears} from 'date-fns/esm'
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/esm/subMilliseconds/index' {
@@ -10103,9 +10103,9 @@ declare module 'date-fns/esm/addHours/index.js' {
   export default addHours
 }
 
-declare module 'date-fns/esm/addISOYears/index.js' {
-  import {addISOYears} from 'date-fns/esm'
-  export default addISOYears
+declare module 'date-fns/esm/addISOWeekYears/index.js' {
+  import {addISOWeekYears} from 'date-fns/esm'
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/esm/addMilliseconds/index.js' {
@@ -10178,9 +10178,9 @@ declare module 'date-fns/esm/differenceInCalendarISOWeeks/index.js' {
   export default differenceInCalendarISOWeeks
 }
 
-declare module 'date-fns/esm/differenceInCalendarISOYears/index.js' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/differenceInCalendarISOWeekYears/index.js' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm'
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInCalendarMonths/index.js' {
@@ -10213,9 +10213,9 @@ declare module 'date-fns/esm/differenceInHours/index.js' {
   export default differenceInHours
 }
 
-declare module 'date-fns/esm/differenceInISOYears/index.js' {
-  import {differenceInISOYears} from 'date-fns/esm'
-  export default differenceInISOYears
+declare module 'date-fns/esm/differenceInISOWeekYears/index.js' {
+  import {differenceInISOWeekYears} from 'date-fns/esm'
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/esm/differenceInMilliseconds/index.js' {
@@ -10273,9 +10273,9 @@ declare module 'date-fns/esm/endOfISOWeek/index.js' {
   export default endOfISOWeek
 }
 
-declare module 'date-fns/esm/endOfISOYear/index.js' {
-  import {endOfISOYear} from 'date-fns/esm'
-  export default endOfISOYear
+declare module 'date-fns/esm/endOfISOWeekYear/index.js' {
+  import {endOfISOWeekYear} from 'date-fns/esm'
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/esm/endOfMinute/index.js' {
@@ -10373,9 +10373,9 @@ declare module 'date-fns/esm/getISOWeeksInYear/index.js' {
   export default getISOWeeksInYear
 }
 
-declare module 'date-fns/esm/getISOYear/index.js' {
-  import {getISOYear} from 'date-fns/esm'
-  export default getISOYear
+declare module 'date-fns/esm/getISOWeekYear/index.js' {
+  import {getISOWeekYear} from 'date-fns/esm'
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/esm/getMilliseconds/index.js' {
@@ -10478,9 +10478,9 @@ declare module 'date-fns/esm/isSameISOWeek/index.js' {
   export default isSameISOWeek
 }
 
-declare module 'date-fns/esm/isSameISOYear/index.js' {
-  import {isSameISOYear} from 'date-fns/esm'
-  export default isSameISOYear
+declare module 'date-fns/esm/isSameISOWeekYear/index.js' {
+  import {isSameISOWeekYear} from 'date-fns/esm'
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/esm/isSameMinute/index.js' {
@@ -10558,9 +10558,9 @@ declare module 'date-fns/esm/lastDayOfISOWeek/index.js' {
   export default lastDayOfISOWeek
 }
 
-declare module 'date-fns/esm/lastDayOfISOYear/index.js' {
-  import {lastDayOfISOYear} from 'date-fns/esm'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/lastDayOfISOWeekYear/index.js' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm'
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/esm/lastDayOfMonth/index.js' {
@@ -10628,9 +10628,9 @@ declare module 'date-fns/esm/setISOWeek/index.js' {
   export default setISOWeek
 }
 
-declare module 'date-fns/esm/setISOYear/index.js' {
-  import {setISOYear} from 'date-fns/esm'
-  export default setISOYear
+declare module 'date-fns/esm/setISOWeekYear/index.js' {
+  import {setISOWeekYear} from 'date-fns/esm'
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/esm/setMilliseconds/index.js' {
@@ -10678,9 +10678,9 @@ declare module 'date-fns/esm/startOfISOWeek/index.js' {
   export default startOfISOWeek
 }
 
-declare module 'date-fns/esm/startOfISOYear/index.js' {
-  import {startOfISOYear} from 'date-fns/esm'
-  export default startOfISOYear
+declare module 'date-fns/esm/startOfISOWeekYear/index.js' {
+  import {startOfISOWeekYear} from 'date-fns/esm'
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/esm/startOfMinute/index.js' {
@@ -10723,9 +10723,9 @@ declare module 'date-fns/esm/subHours/index.js' {
   export default subHours
 }
 
-declare module 'date-fns/esm/subISOYears/index.js' {
-  import {subISOYears} from 'date-fns/esm'
-  export default subISOYears
+declare module 'date-fns/esm/subISOWeekYears/index.js' {
+  import {subISOWeekYears} from 'date-fns/esm'
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/esm/subMilliseconds/index.js' {
@@ -10783,11 +10783,11 @@ declare module 'date-fns/esm/fp' {
   const addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace addHoursWithOptions {}
 
-  const addISOYears: CurriedFn2<number, Date | string | number, Date>
-  namespace addISOYears {}
+  const addISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  namespace addISOWeekYears {}
 
-  const addISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace addISOYearsWithOptions {}
+  const addISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace addISOWeekYearsWithOptions {}
 
   const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace addMilliseconds {}
@@ -10873,11 +10873,11 @@ declare module 'date-fns/esm/fp' {
   const differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInCalendarISOWeeksWithOptions {}
 
-  const differenceInCalendarISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
-  namespace differenceInCalendarISOYears {}
+  const differenceInCalendarISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  namespace differenceInCalendarISOWeekYears {}
 
-  const differenceInCalendarISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
-  namespace differenceInCalendarISOYearsWithOptions {}
+  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  namespace differenceInCalendarISOWeekYearsWithOptions {}
 
   const differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInCalendarMonths {}
@@ -10915,11 +10915,11 @@ declare module 'date-fns/esm/fp' {
   const differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
   namespace differenceInHoursWithOptions {}
 
-  const differenceInISOYears: CurriedFn2<Date | string | number, Date | string | number, number>
-  namespace differenceInISOYears {}
+  const differenceInISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>
+  namespace differenceInISOWeekYears {}
 
-  const differenceInISOYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
-  namespace differenceInISOYearsWithOptions {}
+  const differenceInISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>
+  namespace differenceInISOWeekYearsWithOptions {}
 
   const differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>
   namespace differenceInMilliseconds {}
@@ -10987,11 +10987,11 @@ declare module 'date-fns/esm/fp' {
   const endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfISOWeekWithOptions {}
 
-  const endOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace endOfISOYear {}
+  const endOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace endOfISOWeekYear {}
 
-  const endOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace endOfISOYearWithOptions {}
+  const endOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace endOfISOWeekYearWithOptions {}
 
   const endOfMinute: CurriedFn1<Date | string | number, Date>
   namespace endOfMinute {}
@@ -11107,11 +11107,11 @@ declare module 'date-fns/esm/fp' {
   const getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getISOWeekWithOptions {}
 
-  const getISOYear: CurriedFn1<Date | string | number, number>
-  namespace getISOYear {}
+  const getISOWeekYear: CurriedFn1<Date | string | number, number>
+  namespace getISOWeekYear {}
 
-  const getISOYearWithOptions: CurriedFn2<Options, Date | string | number, number>
-  namespace getISOYearWithOptions {}
+  const getISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getISOWeekYearWithOptions {}
 
   const getMilliseconds: CurriedFn1<Date | string | number, number>
   namespace getMilliseconds {}
@@ -11233,11 +11233,11 @@ declare module 'date-fns/esm/fp' {
   const isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isSameISOWeekWithOptions {}
 
-  const isSameISOYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
-  namespace isSameISOYear {}
+  const isSameISOWeekYear: CurriedFn2<Date | string | number, Date | string | number, boolean>
+  namespace isSameISOWeekYear {}
 
-  const isSameISOYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
-  namespace isSameISOYearWithOptions {}
+  const isSameISOWeekYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
+  namespace isSameISOWeekYearWithOptions {}
 
   const isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isSameMinute {}
@@ -11329,11 +11329,11 @@ declare module 'date-fns/esm/fp' {
   const lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace lastDayOfISOWeekWithOptions {}
 
-  const lastDayOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace lastDayOfISOYear {}
+  const lastDayOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace lastDayOfISOWeekYear {}
 
-  const lastDayOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace lastDayOfISOYearWithOptions {}
+  const lastDayOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace lastDayOfISOWeekYearWithOptions {}
 
   const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfMonth {}
@@ -11413,11 +11413,11 @@ declare module 'date-fns/esm/fp' {
   const setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setISOWeekWithOptions {}
 
-  const setISOYear: CurriedFn2<number, Date | string | number, Date>
-  namespace setISOYear {}
+  const setISOWeekYear: CurriedFn2<number, Date | string | number, Date>
+  namespace setISOWeekYear {}
 
-  const setISOYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace setISOYearWithOptions {}
+  const setISOWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setISOWeekYearWithOptions {}
 
   const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace setMilliseconds {}
@@ -11473,11 +11473,11 @@ declare module 'date-fns/esm/fp' {
   const startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfISOWeekWithOptions {}
 
-  const startOfISOYear: CurriedFn1<Date | string | number, Date>
-  namespace startOfISOYear {}
+  const startOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace startOfISOWeekYear {}
 
-  const startOfISOYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
-  namespace startOfISOYearWithOptions {}
+  const startOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfISOWeekYearWithOptions {}
 
   const startOfMinute: CurriedFn1<Date | string | number, Date>
   namespace startOfMinute {}
@@ -11527,11 +11527,11 @@ declare module 'date-fns/esm/fp' {
   const subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subHoursWithOptions {}
 
-  const subISOYears: CurriedFn2<number, Date | string | number, Date>
-  namespace subISOYears {}
+  const subISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  namespace subISOWeekYears {}
 
-  const subISOYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
-  namespace subISOYearsWithOptions {}
+  const subISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace subISOWeekYearsWithOptions {}
 
   const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
   namespace subMilliseconds {}
@@ -11602,14 +11602,14 @@ declare module 'date-fns/esm/fp/addHoursWithOptions' {
   export default addHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/addISOYears' {
-  import {addISOYears} from 'date-fns/esm/fp'
-  export default addISOYears
+declare module 'date-fns/esm/fp/addISOWeekYears' {
+  import {addISOWeekYears} from 'date-fns/esm/fp'
+  export default addISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/addISOYearsWithOptions' {
-  import {addISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default addISOYearsWithOptions
+declare module 'date-fns/esm/fp/addISOWeekYearsWithOptions' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/addMilliseconds' {
@@ -11752,14 +11752,14 @@ declare module 'date-fns/esm/fp/differenceInCalendarISOWeeksWithOptions' {
   export default differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYears' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYears' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYearsWithOptions' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYearsWithOptions' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInCalendarMonths' {
@@ -11822,14 +11822,14 @@ declare module 'date-fns/esm/fp/differenceInHoursWithOptions' {
   export default differenceInHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYears' {
-  import {differenceInISOYears} from 'date-fns/esm/fp'
-  export default differenceInISOYears
+declare module 'date-fns/esm/fp/differenceInISOWeekYears' {
+  import {differenceInISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYearsWithOptions' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInISOWeekYearsWithOptions' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInMilliseconds' {
@@ -11942,14 +11942,14 @@ declare module 'date-fns/esm/fp/endOfISOWeekWithOptions' {
   export default endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/endOfISOYear' {
-  import {endOfISOYear} from 'date-fns/esm/fp'
-  export default endOfISOYear
+declare module 'date-fns/esm/fp/endOfISOWeekYear' {
+  import {endOfISOWeekYear} from 'date-fns/esm/fp'
+  export default endOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/endOfISOYearWithOptions' {
-  import {endOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default endOfISOYearWithOptions
+declare module 'date-fns/esm/fp/endOfISOWeekYearWithOptions' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/endOfMinute' {
@@ -12142,14 +12142,14 @@ declare module 'date-fns/esm/fp/getISOWeekWithOptions' {
   export default getISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/getISOYear' {
-  import {getISOYear} from 'date-fns/esm/fp'
-  export default getISOYear
+declare module 'date-fns/esm/fp/getISOWeekYear' {
+  import {getISOWeekYear} from 'date-fns/esm/fp'
+  export default getISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/getISOYearWithOptions' {
-  import {getISOYearWithOptions} from 'date-fns/esm/fp'
-  export default getISOYearWithOptions
+declare module 'date-fns/esm/fp/getISOWeekYearWithOptions' {
+  import {getISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getMilliseconds' {
@@ -12352,14 +12352,14 @@ declare module 'date-fns/esm/fp/isSameISOWeekWithOptions' {
   export default isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/isSameISOYear' {
-  import {isSameISOYear} from 'date-fns/esm/fp'
-  export default isSameISOYear
+declare module 'date-fns/esm/fp/isSameISOWeekYear' {
+  import {isSameISOWeekYear} from 'date-fns/esm/fp'
+  export default isSameISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/isSameISOYearWithOptions' {
-  import {isSameISOYearWithOptions} from 'date-fns/esm/fp'
-  export default isSameISOYearWithOptions
+declare module 'date-fns/esm/fp/isSameISOWeekYearWithOptions' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/isSameMinute' {
@@ -12512,14 +12512,14 @@ declare module 'date-fns/esm/fp/lastDayOfISOWeekWithOptions' {
   export default lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYear' {
-  import {lastDayOfISOYear} from 'date-fns/esm/fp'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYear' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYearWithOptions' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default lastDayOfISOYearWithOptions
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYearWithOptions' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/lastDayOfMonth' {
@@ -12652,14 +12652,14 @@ declare module 'date-fns/esm/fp/setISOWeekWithOptions' {
   export default setISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/setISOYear' {
-  import {setISOYear} from 'date-fns/esm/fp'
-  export default setISOYear
+declare module 'date-fns/esm/fp/setISOWeekYear' {
+  import {setISOWeekYear} from 'date-fns/esm/fp'
+  export default setISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/setISOYearWithOptions' {
-  import {setISOYearWithOptions} from 'date-fns/esm/fp'
-  export default setISOYearWithOptions
+declare module 'date-fns/esm/fp/setISOWeekYearWithOptions' {
+  import {setISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/setMilliseconds' {
@@ -12752,14 +12752,14 @@ declare module 'date-fns/esm/fp/startOfISOWeekWithOptions' {
   export default startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/startOfISOYear' {
-  import {startOfISOYear} from 'date-fns/esm/fp'
-  export default startOfISOYear
+declare module 'date-fns/esm/fp/startOfISOWeekYear' {
+  import {startOfISOWeekYear} from 'date-fns/esm/fp'
+  export default startOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/startOfISOYearWithOptions' {
-  import {startOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default startOfISOYearWithOptions
+declare module 'date-fns/esm/fp/startOfISOWeekYearWithOptions' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfMinute' {
@@ -12842,14 +12842,14 @@ declare module 'date-fns/esm/fp/subHoursWithOptions' {
   export default subHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/subISOYears' {
-  import {subISOYears} from 'date-fns/esm/fp'
-  export default subISOYears
+declare module 'date-fns/esm/fp/subISOWeekYears' {
+  import {subISOWeekYears} from 'date-fns/esm/fp'
+  export default subISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/subISOYearsWithOptions' {
-  import {subISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default subISOYearsWithOptions
+declare module 'date-fns/esm/fp/subISOWeekYearsWithOptions' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/subMilliseconds' {
@@ -12952,14 +12952,14 @@ declare module 'date-fns/esm/fp/addHoursWithOptions/index' {
   export default addHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/addISOYears/index' {
-  import {addISOYears} from 'date-fns/esm/fp'
-  export default addISOYears
+declare module 'date-fns/esm/fp/addISOWeekYears/index' {
+  import {addISOWeekYears} from 'date-fns/esm/fp'
+  export default addISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/addISOYearsWithOptions/index' {
-  import {addISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default addISOYearsWithOptions
+declare module 'date-fns/esm/fp/addISOWeekYearsWithOptions/index' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/addMilliseconds/index' {
@@ -13102,14 +13102,14 @@ declare module 'date-fns/esm/fp/differenceInCalendarISOWeeksWithOptions/index' {
   export default differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYears/index' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYears/index' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYearsWithOptions/index' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYearsWithOptions/index' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInCalendarMonths/index' {
@@ -13172,14 +13172,14 @@ declare module 'date-fns/esm/fp/differenceInHoursWithOptions/index' {
   export default differenceInHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYears/index' {
-  import {differenceInISOYears} from 'date-fns/esm/fp'
-  export default differenceInISOYears
+declare module 'date-fns/esm/fp/differenceInISOWeekYears/index' {
+  import {differenceInISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYearsWithOptions/index' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInISOWeekYearsWithOptions/index' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInMilliseconds/index' {
@@ -13292,14 +13292,14 @@ declare module 'date-fns/esm/fp/endOfISOWeekWithOptions/index' {
   export default endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/endOfISOYear/index' {
-  import {endOfISOYear} from 'date-fns/esm/fp'
-  export default endOfISOYear
+declare module 'date-fns/esm/fp/endOfISOWeekYear/index' {
+  import {endOfISOWeekYear} from 'date-fns/esm/fp'
+  export default endOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/endOfISOYearWithOptions/index' {
-  import {endOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default endOfISOYearWithOptions
+declare module 'date-fns/esm/fp/endOfISOWeekYearWithOptions/index' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/endOfMinute/index' {
@@ -13492,14 +13492,14 @@ declare module 'date-fns/esm/fp/getISOWeekWithOptions/index' {
   export default getISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/getISOYear/index' {
-  import {getISOYear} from 'date-fns/esm/fp'
-  export default getISOYear
+declare module 'date-fns/esm/fp/getISOWeekYear/index' {
+  import {getISOWeekYear} from 'date-fns/esm/fp'
+  export default getISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/getISOYearWithOptions/index' {
-  import {getISOYearWithOptions} from 'date-fns/esm/fp'
-  export default getISOYearWithOptions
+declare module 'date-fns/esm/fp/getISOWeekYearWithOptions/index' {
+  import {getISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getMilliseconds/index' {
@@ -13702,14 +13702,14 @@ declare module 'date-fns/esm/fp/isSameISOWeekWithOptions/index' {
   export default isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/isSameISOYear/index' {
-  import {isSameISOYear} from 'date-fns/esm/fp'
-  export default isSameISOYear
+declare module 'date-fns/esm/fp/isSameISOWeekYear/index' {
+  import {isSameISOWeekYear} from 'date-fns/esm/fp'
+  export default isSameISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/isSameISOYearWithOptions/index' {
-  import {isSameISOYearWithOptions} from 'date-fns/esm/fp'
-  export default isSameISOYearWithOptions
+declare module 'date-fns/esm/fp/isSameISOWeekYearWithOptions/index' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/isSameMinute/index' {
@@ -13862,14 +13862,14 @@ declare module 'date-fns/esm/fp/lastDayOfISOWeekWithOptions/index' {
   export default lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYear/index' {
-  import {lastDayOfISOYear} from 'date-fns/esm/fp'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYear/index' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYearWithOptions/index' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default lastDayOfISOYearWithOptions
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYearWithOptions/index' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/lastDayOfMonth/index' {
@@ -14002,14 +14002,14 @@ declare module 'date-fns/esm/fp/setISOWeekWithOptions/index' {
   export default setISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/setISOYear/index' {
-  import {setISOYear} from 'date-fns/esm/fp'
-  export default setISOYear
+declare module 'date-fns/esm/fp/setISOWeekYear/index' {
+  import {setISOWeekYear} from 'date-fns/esm/fp'
+  export default setISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/setISOYearWithOptions/index' {
-  import {setISOYearWithOptions} from 'date-fns/esm/fp'
-  export default setISOYearWithOptions
+declare module 'date-fns/esm/fp/setISOWeekYearWithOptions/index' {
+  import {setISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/setMilliseconds/index' {
@@ -14102,14 +14102,14 @@ declare module 'date-fns/esm/fp/startOfISOWeekWithOptions/index' {
   export default startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/startOfISOYear/index' {
-  import {startOfISOYear} from 'date-fns/esm/fp'
-  export default startOfISOYear
+declare module 'date-fns/esm/fp/startOfISOWeekYear/index' {
+  import {startOfISOWeekYear} from 'date-fns/esm/fp'
+  export default startOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/startOfISOYearWithOptions/index' {
-  import {startOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default startOfISOYearWithOptions
+declare module 'date-fns/esm/fp/startOfISOWeekYearWithOptions/index' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfMinute/index' {
@@ -14192,14 +14192,14 @@ declare module 'date-fns/esm/fp/subHoursWithOptions/index' {
   export default subHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/subISOYears/index' {
-  import {subISOYears} from 'date-fns/esm/fp'
-  export default subISOYears
+declare module 'date-fns/esm/fp/subISOWeekYears/index' {
+  import {subISOWeekYears} from 'date-fns/esm/fp'
+  export default subISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/subISOYearsWithOptions/index' {
-  import {subISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default subISOYearsWithOptions
+declare module 'date-fns/esm/fp/subISOWeekYearsWithOptions/index' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/subMilliseconds/index' {
@@ -14302,14 +14302,14 @@ declare module 'date-fns/esm/fp/addHoursWithOptions/index.js' {
   export default addHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/addISOYears/index.js' {
-  import {addISOYears} from 'date-fns/esm/fp'
-  export default addISOYears
+declare module 'date-fns/esm/fp/addISOWeekYears/index.js' {
+  import {addISOWeekYears} from 'date-fns/esm/fp'
+  export default addISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/addISOYearsWithOptions/index.js' {
-  import {addISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default addISOYearsWithOptions
+declare module 'date-fns/esm/fp/addISOWeekYearsWithOptions/index.js' {
+  import {addISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default addISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/addMilliseconds/index.js' {
@@ -14452,14 +14452,14 @@ declare module 'date-fns/esm/fp/differenceInCalendarISOWeeksWithOptions/index.js
   export default differenceInCalendarISOWeeksWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYears/index.js' {
-  import {differenceInCalendarISOYears} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYears
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYears/index.js' {
+  import {differenceInCalendarISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInCalendarISOYearsWithOptions/index.js' {
-  import {differenceInCalendarISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInCalendarISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInCalendarISOWeekYearsWithOptions/index.js' {
+  import {differenceInCalendarISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInCalendarISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInCalendarMonths/index.js' {
@@ -14522,14 +14522,14 @@ declare module 'date-fns/esm/fp/differenceInHoursWithOptions/index.js' {
   export default differenceInHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYears/index.js' {
-  import {differenceInISOYears} from 'date-fns/esm/fp'
-  export default differenceInISOYears
+declare module 'date-fns/esm/fp/differenceInISOWeekYears/index.js' {
+  import {differenceInISOWeekYears} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/differenceInISOYearsWithOptions/index.js' {
-  import {differenceInISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default differenceInISOYearsWithOptions
+declare module 'date-fns/esm/fp/differenceInISOWeekYearsWithOptions/index.js' {
+  import {differenceInISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default differenceInISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInMilliseconds/index.js' {
@@ -14642,14 +14642,14 @@ declare module 'date-fns/esm/fp/endOfISOWeekWithOptions/index.js' {
   export default endOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/endOfISOYear/index.js' {
-  import {endOfISOYear} from 'date-fns/esm/fp'
-  export default endOfISOYear
+declare module 'date-fns/esm/fp/endOfISOWeekYear/index.js' {
+  import {endOfISOWeekYear} from 'date-fns/esm/fp'
+  export default endOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/endOfISOYearWithOptions/index.js' {
-  import {endOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default endOfISOYearWithOptions
+declare module 'date-fns/esm/fp/endOfISOWeekYearWithOptions/index.js' {
+  import {endOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default endOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/endOfMinute/index.js' {
@@ -14842,14 +14842,14 @@ declare module 'date-fns/esm/fp/getISOWeekWithOptions/index.js' {
   export default getISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/getISOYear/index.js' {
-  import {getISOYear} from 'date-fns/esm/fp'
-  export default getISOYear
+declare module 'date-fns/esm/fp/getISOWeekYear/index.js' {
+  import {getISOWeekYear} from 'date-fns/esm/fp'
+  export default getISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/getISOYearWithOptions/index.js' {
-  import {getISOYearWithOptions} from 'date-fns/esm/fp'
-  export default getISOYearWithOptions
+declare module 'date-fns/esm/fp/getISOWeekYearWithOptions/index.js' {
+  import {getISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getMilliseconds/index.js' {
@@ -15052,14 +15052,14 @@ declare module 'date-fns/esm/fp/isSameISOWeekWithOptions/index.js' {
   export default isSameISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/isSameISOYear/index.js' {
-  import {isSameISOYear} from 'date-fns/esm/fp'
-  export default isSameISOYear
+declare module 'date-fns/esm/fp/isSameISOWeekYear/index.js' {
+  import {isSameISOWeekYear} from 'date-fns/esm/fp'
+  export default isSameISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/isSameISOYearWithOptions/index.js' {
-  import {isSameISOYearWithOptions} from 'date-fns/esm/fp'
-  export default isSameISOYearWithOptions
+declare module 'date-fns/esm/fp/isSameISOWeekYearWithOptions/index.js' {
+  import {isSameISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default isSameISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/isSameMinute/index.js' {
@@ -15212,14 +15212,14 @@ declare module 'date-fns/esm/fp/lastDayOfISOWeekWithOptions/index.js' {
   export default lastDayOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYear/index.js' {
-  import {lastDayOfISOYear} from 'date-fns/esm/fp'
-  export default lastDayOfISOYear
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYear/index.js' {
+  import {lastDayOfISOWeekYear} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/lastDayOfISOYearWithOptions/index.js' {
-  import {lastDayOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default lastDayOfISOYearWithOptions
+declare module 'date-fns/esm/fp/lastDayOfISOWeekYearWithOptions/index.js' {
+  import {lastDayOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/lastDayOfMonth/index.js' {
@@ -15352,14 +15352,14 @@ declare module 'date-fns/esm/fp/setISOWeekWithOptions/index.js' {
   export default setISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/setISOYear/index.js' {
-  import {setISOYear} from 'date-fns/esm/fp'
-  export default setISOYear
+declare module 'date-fns/esm/fp/setISOWeekYear/index.js' {
+  import {setISOWeekYear} from 'date-fns/esm/fp'
+  export default setISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/setISOYearWithOptions/index.js' {
-  import {setISOYearWithOptions} from 'date-fns/esm/fp'
-  export default setISOYearWithOptions
+declare module 'date-fns/esm/fp/setISOWeekYearWithOptions/index.js' {
+  import {setISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/setMilliseconds/index.js' {
@@ -15452,14 +15452,14 @@ declare module 'date-fns/esm/fp/startOfISOWeekWithOptions/index.js' {
   export default startOfISOWeekWithOptions
 }
 
-declare module 'date-fns/esm/fp/startOfISOYear/index.js' {
-  import {startOfISOYear} from 'date-fns/esm/fp'
-  export default startOfISOYear
+declare module 'date-fns/esm/fp/startOfISOWeekYear/index.js' {
+  import {startOfISOWeekYear} from 'date-fns/esm/fp'
+  export default startOfISOWeekYear
 }
 
-declare module 'date-fns/esm/fp/startOfISOYearWithOptions/index.js' {
-  import {startOfISOYearWithOptions} from 'date-fns/esm/fp'
-  export default startOfISOYearWithOptions
+declare module 'date-fns/esm/fp/startOfISOWeekYearWithOptions/index.js' {
+  import {startOfISOWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfISOWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfMinute/index.js' {
@@ -15542,14 +15542,14 @@ declare module 'date-fns/esm/fp/subHoursWithOptions/index.js' {
   export default subHoursWithOptions
 }
 
-declare module 'date-fns/esm/fp/subISOYears/index.js' {
-  import {subISOYears} from 'date-fns/esm/fp'
-  export default subISOYears
+declare module 'date-fns/esm/fp/subISOWeekYears/index.js' {
+  import {subISOWeekYears} from 'date-fns/esm/fp'
+  export default subISOWeekYears
 }
 
-declare module 'date-fns/esm/fp/subISOYearsWithOptions/index.js' {
-  import {subISOYearsWithOptions} from 'date-fns/esm/fp'
-  export default subISOYearsWithOptions
+declare module 'date-fns/esm/fp/subISOWeekYearsWithOptions/index.js' {
+  import {subISOWeekYearsWithOptions} from 'date-fns/esm/fp'
+  export default subISOWeekYearsWithOptions
 }
 
 declare module 'date-fns/esm/fp/subMilliseconds/index.js' {
@@ -16951,7 +16951,7 @@ interface dateFns {
     options?: Options
   ): Date
 
-  addISOYears(
+  addISOWeekYears(
     date: Date | string | number,
     amount: number,
     options?: Options
@@ -17041,7 +17041,7 @@ interface dateFns {
     options?: Options
   ): number
 
-  differenceInCalendarISOYears(
+  differenceInCalendarISOWeekYears(
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -17083,7 +17083,7 @@ interface dateFns {
     options?: Options
   ): number
 
-  differenceInISOYears(
+  differenceInISOWeekYears(
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -17151,7 +17151,7 @@ interface dateFns {
     options?: Options
   ): Date
 
-  endOfISOYear(
+  endOfISOWeekYear(
     date: Date | string | number,
     options?: Options
   ): Date
@@ -17255,7 +17255,7 @@ interface dateFns {
     options?: Options
   ): number
 
-  getISOYear(
+  getISOWeekYear(
     date: Date | string | number,
     options?: Options
   ): number
@@ -17367,7 +17367,7 @@ interface dateFns {
     options?: Options
   ): boolean
 
-  isSameISOYear(
+  isSameISOWeekYear(
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -17455,7 +17455,7 @@ interface dateFns {
     options?: Options
   ): Date
 
-  lastDayOfISOYear(
+  lastDayOfISOWeekYear(
     date: Date | string | number,
     options?: Options
   ): Date
@@ -17533,9 +17533,9 @@ interface dateFns {
     options?: Options
   ): Date
 
-  setISOYear(
+  setISOWeekYear(
     date: Date | string | number,
-    isoYear: number,
+    isoWeekYear: number,
     options?: Options
   ): Date
 
@@ -17590,7 +17590,7 @@ interface dateFns {
     options?: Options
   ): Date
 
-  startOfISOYear(
+  startOfISOWeekYear(
     date: Date | string | number,
     options?: Options
   ): Date
@@ -17637,7 +17637,7 @@ interface dateFns {
     options?: Options
   ): Date
 
-  subISOYears(
+  subISOWeekYears(
     date: Date | string | number,
     amount: number,
     options?: Options
