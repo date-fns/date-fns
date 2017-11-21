@@ -11,6 +11,6 @@ suite('durationsPerHour', function () {
 }, {
   setup: function () {
     this.dateA = new Date()
-    this.dateB = new Date(this.dateA.getTime() + 801234567)
+    this.dateB = new Date(this.dateA.getTime() + 7684559)
   }
 })
