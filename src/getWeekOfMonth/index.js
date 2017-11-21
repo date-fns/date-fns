@@ -1,6 +1,6 @@
 import getDate from '../getDate/index.js'
 import startOfMonth from '../startOfMonth/index.js'
-import getDay from '../getDay'
+import getDay from '../getDay/index.js'
 
 /**
  * @name getWeekOfMonth
