@@ -180,6 +180,27 @@ function generateTypeScriptTypings (fns, locales) {
     .join('\n\n')
 
   fs.writeFileSync('./typings.d.ts', `${typingString}\n`)
+
+  fns.forEach((fn) => {
+    generateTypescriptFnTyping(fn)
+  })
+
+  locales.forEach((locale) => {
+    generateTypescriptLocaleTyping(locale)
+  })
+}
+
+function generateTypescriptFnTyping (fn, aliasDeclarations) {
+  fs.writeFileSync(`./src/${fn.file.snakeCaseName}/index.d.ts`, `declare module 'date-fns/${fn.file.snakeCaseName}' {
+  import {${fn.title}} from 'date-fns'
+  export = ${fn.title}
+}
+`)
+}
+
+function generateTypescriptLocaleTyping (locale) {
+  fs.writeFileSync(`./src/locale/${locale.snakeCaseName}/index.d.ts`, `declare module 'date-fns/locale/${locale.snakeCaseName}' { }
+`)
 }
 
 // Flow
