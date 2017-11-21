@@ -13,10 +13,10 @@ describe('durationsPerHour', function () {
 
     const result = durationsPerHour(start, end)
     const expected = {
-      1510729200000: 1597900,
-      1510732800000: hour,
-      1510736400000: hour,
-      1510740000000: 2604182
+      '1510729200000': 1597900,
+      '1510732800000': hour,
+      '1510736400000': hour,
+      '1510740000000': 2604182
     }
     assert.deepEqual(result, expected)
   })
@@ -27,10 +27,10 @@ describe('durationsPerHour', function () {
 
     const result = durationsPerHour(start, end)
     const expected = {
-      1510776000000: 1979000,
-      1510779600000: hour,
-      1510783200000: hour,
-      1510786800000: 1741000
+      '1510776000000': 1979000,
+      '1510779600000': hour,
+      '1510783200000': hour,
+      '1510786800000': 1741000
     }
     assert.deepEqual(result, expected)
   })
@@ -41,10 +41,10 @@ describe('durationsPerHour', function () {
 
     const result = durationsPerHour(start, end)
     const expected = {
-      725839200000: 292900,
-      725842800000: hour,
-      725846400000: hour,
-      725850000000: 123182
+      '725839200000': 292900,
+      '725842800000': hour,
+      '725846400000': hour,
+      '725850000000': 123182
     }
     assert.deepEqual(result, expected)
   })
@@ -59,7 +59,7 @@ describe('durationsPerHour', function () {
     const end = start + 20000
 
     const result = durationsPerHour(start, end)
-    const expected = { 725839200000: 20000 }
+    const expected = { '725839200000': 20000 }
 
     assert.deepEqual(result, expected)
   })
@@ -68,7 +68,7 @@ describe('durationsPerHour', function () {
     const start = new Date('1992-12-31T22:55:07.100+0000').getTime()
 
     const result = durationsPerHour(start, start)
-    const expected = { 725839200000: 0 }
+    const expected = { '725839200000': 0 }
 
     assert.deepEqual(result, expected)
   })
