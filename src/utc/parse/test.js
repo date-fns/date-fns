@@ -1,0 +1,941 @@
+// @flow
+/* eslint-env mocha */
+
+import assert from 'power-assert'
+import parse from '.'
+
+describe('utc/parse', function () {
+  var baseDate = new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+
+  describe('years', function () {
+    it('YY', function () {
+      var result = parse('16', 'YY', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1916, 0 /* Jan */, 1)))
+    })
+
+    it('gets the century from `baseDate`', function () {
+      var result = parse('16', 'YY', new Date(Date.UTC(2345, 3 /* Apr */, 4, 10, 32, 0, 900)))
+      assert.deepEqual(result, new Date(Date.UTC(2316, 0 /* Jan */, 1)))
+    })
+
+    it('YYYY', function () {
+      var result = parse('2014', 'YYYY', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2014, 0 /* Jan */, 1)))
+    })
+
+    it('years less than 100', function () {
+      var result = parse('0001', 'YYYY', baseDate)
+      var expectedResult = new Date(Date.UTC(1, 0 /* Jan */, 1))
+      expectedResult.setUTCFullYear(1)
+      assert.deepEqual(result, expectedResult)
+    })
+  })
+
+  describe('ISO week-numbering years', function () {
+    it('GG', function () {
+      var result = parse('50', 'GG', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1950, 0 /* Jan */, 2)))
+    })
+
+    it('GGGG', function () {
+      var result = parse('2008', 'GGGG', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2007, 11 /* Dec */, 31)))
+    })
+  })
+
+  describe('quarters', function () {
+    it('Q', function () {
+      var result = parse('1995 3', 'YYYY Q', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1995, 6 /* Jul */, 1)))
+    })
+
+    it('Qo', function () {
+      var result = parse('2000 2nd', 'YYYY Qo', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2000, 3 /* Apr */, 1)))
+    })
+
+    it('returns a correct quarter', function () {
+      var result = []
+      for (var i = 1; i <= 4; i++) {
+        result.push(parse('2014 ' + i, 'YYYY Q', baseDate))
+      }
+      var expectedResult = [
+        new Date(Date.UTC(2014, 0 /* Jan */, 1)),
+        new Date(Date.UTC(2014, 3 /* Apr */, 1)),
+        new Date(Date.UTC(2014, 6 /* Jul */, 1)),
+        new Date(Date.UTC(2014, 9 /* Oct */, 1))
+      ]
+      assert.deepEqual(result, expectedResult)
+    })
+  })
+
+  describe('months', function () {
+    it('M', function () {
+      var result = parse('1995 7', 'YYYY M', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1995, 6 /* Jul */, 1)))
+    })
+
+    it('Mo', function () {
+      var result = parse('2014 12th', 'YYYY Mo', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2014, 11 /* Dec */, 1)))
+    })
+
+    it('MM', function () {
+      var result = parse('2014 02', 'YYYY MM', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2014, 1 /* Feb */, 1)))
+    })
+
+    it('MMM', function () {
+      var result = parse('2016 Nov', 'YYYY MMM', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 1)))
+    })
+
+    it('MMMM', function () {
+      var result = parse('2016 December', 'YYYY MMMM', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 11 /* Dec */, 1)))
+    })
+  })
+
+  describe('ISO weeks', function () {
+    it('W', function () {
+      var result = parse('2016 4', 'GGGG W', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 25)))
+    })
+
+    it('Wo', function () {
+      var result = parse('2016 3rd', 'GGGG Wo', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 18)))
+    })
+
+    it('WW', function () {
+      var result = parse('2016 09', 'GGGG WW', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 1 /* Feb */, 29)))
+    })
+  })
+
+  describe('days of a week', function () {
+    it('d', function () {
+      var result = parse('2016 4 0', 'GGGG W d', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 24)))
+    })
+
+    it('do', function () {
+      var result = parse('2016 4 0th', 'GGGG W do', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 24)))
+    })
+
+    it('dd', function () {
+      var result = parse('2016 4 Mo', 'GGGG W dd', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 25)))
+    })
+
+    it('ddd', function () {
+      var result = parse('2016 4 Wed', 'GGGG W ddd', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 27)))
+    })
+
+    it('dddd', function () {
+      var result = parse('2016 4 Friday', 'GGGG W dddd', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 29)))
+    })
+  })
+
+  describe('days of an ISO week', function () {
+    it('E', function () {
+      var result = parse('2016 4 7', 'GGGG W E', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 0 /* Jan */, 31)))
+    })
+  })
+
+  describe('days of a month', function () {
+    it('D', function () {
+      var result = parse('11/2/2016', 'M/D/YYYY', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 2)))
+    })
+
+    it('Do', function () {
+      var result = parse('2016 11 15th', 'YYYY MM Do', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 15)))
+    })
+
+    it('DD', function () {
+      var result = parse('2016 11 05', 'YYYY MM DD', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 5)))
+    })
+  })
+
+  describe('days of a year', function () {
+    it('DDD', function () {
+      var result = parse('2016 50', 'YYYY DDD', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 1 /* Feb */, 19)))
+    })
+
+    it('DDDo', function () {
+      var result = parse('2016 100th', 'YYYY DDDo', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 3 /* Apr */, 9)))
+    })
+
+    it('DDDD', function () {
+      var result = parse('2016 366', 'YYYY DDDD', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 11 /* Dec */, 31)))
+    })
+  })
+
+  describe('hours', function () {
+    it('H', function () {
+      var result = parse('2016-11-25 4 o\'clock', 'YYYY-MM-DD H [o\'clock]', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('HH', function () {
+      var result = parse('2016-11-25T04', 'YYYY-MM-DDTHH', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('h', function () {
+      var result = parse('4 hours 2016-11-25', 'h [hours] YYYY-MM-DD', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('hh', function () {
+      var result = parse('2016-11-25 04', 'YYYY-MM-DD hh', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+  })
+
+  describe('a.m./p.m.', function () {
+    it('AM', function () {
+      var result = parse('2016-11-25 04 AM', 'YYYY-MM-DD hh A', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('PM', function () {
+      var result = parse('2016-11-25 04 PM', 'YYYY-MM-DD hh A', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 0, 0, 0)))
+    })
+
+    it('am', function () {
+      var result = parse('2016-11-25 04 am', 'YYYY-MM-DD hh a', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('pm', function () {
+      var result = parse('2016-11-25 04 pm', 'YYYY-MM-DD hh a', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 0, 0, 0)))
+    })
+
+    it('a.m.', function () {
+      var result = parse('2016-11-25 04 a.m.', 'YYYY-MM-DD hh aa', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 0, 0, 0)))
+    })
+
+    it('p.m.', function () {
+      var result = parse('2016-11-25 04 p.m.', 'YYYY-MM-DD hh aa', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 0, 0, 0)))
+    })
+
+    it('12 a.m.', function () {
+      var result = parse('2016-11-25 12 a.m.', 'YYYY-MM-DD hh aa', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 0, 0, 0, 0)))
+    })
+
+    it('12 p.m.', function () {
+      var result = parse('2016-11-25 12 p.m.', 'YYYY-MM-DD hh aa', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 12, 0, 0, 0)))
+    })
+  })
+
+  describe('minutes', function () {
+    it('m', function () {
+      var result = parse('2016-11-25 4:5', 'YYYY-MM-DD H:m', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 5, 0, 0)))
+    })
+
+    it('mm', function () {
+      var result = parse('20161125T0405', 'YYYYMMDDTHHmm', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 5, 0, 0)))
+    })
+  })
+
+  describe('seconds', function () {
+    it('s', function () {
+      var dateString = '4 hours 30 minutes 5 seconds 2016-11-25'
+      var formatString = 'H [hours] m [minutes] s [seconds] YYYY-MM-DD'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 4, 30, 5, 0)))
+    })
+
+    it('ss', function () {
+      var result = parse('2016-11-25T16:38:38', 'YYYY-MM-DDTHH:mm:ss', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 38, 38, 0)))
+    })
+  })
+
+  describe('fractions of a second', function () {
+    it('S', function () {
+      var result = parse('2016-11-25T16:38:38.1', 'YYYY-MM-DDTHH:mm:ss.S', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 38, 38, 100)))
+    })
+
+    it('SS', function () {
+      var result = parse('2016-11-25T16:38:38.12', 'YYYY-MM-DDTHH:mm:ss.SS', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 38, 38, 120)))
+    })
+
+    it('SSS', function () {
+      var result = parse('2016-11-25T16:38:38.123', 'YYYY-MM-DDTHH:mm:ss.SSS', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25, 16, 38, 38, 123)))
+    })
+  })
+
+  describe('timezones', function () {
+    it('Z', function () {
+      var dateString = '2016-11-25T16:38:38.123-01:30'
+      var resultString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var result = parse(dateString, resultString, baseDate)
+      assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-01:30'))
+    })
+
+    it('ZZ', function () {
+      var dateString = '2016-11-25T16:38:38.123-0130'
+      var resultString = 'YYYY-MM-DDTHH:mm:ss.SSSZZ'
+      var result = parse(dateString, resultString, baseDate)
+      assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-01:30'))
+    })
+  })
+
+  describe('timestamps', function () {
+    it('X', function () {
+      var result = parse('512969520', 'X', baseDate)
+      assert.deepEqual(result, new Date('1986-04-04T03:32:00.000Z'))
+    })
+
+    it('x', function () {
+      var result = parse('512969520900', 'x', baseDate)
+      assert.deepEqual(result, new Date('1986-04-04T03:32:00.900Z'))
+    })
+  })
+
+  describe('common formats', function () {
+    it('ISO date', function () {
+      var result = parse('20161105T040404', 'YYYYMMDDTHHmmss', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 5, 4, 4, 4, 0)))
+    })
+
+    it('ISO week-numbering date', function () {
+      var result = parse('2016W474T153005', 'GGGG[W]WWETHHmmss', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 24, 15, 30, 5, 0)))
+    })
+
+    it('ISO day of year date', function () {
+      var result = parse('2010123T235959', 'YYYYDDDDTHHmmss', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2010, 4 /* May */, 3, 23, 59, 59, 0)))
+    })
+
+    it('Date.prototype.toString()', function () {
+      var dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
+      var formatString = 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(dateString))
+    })
+
+    it('Date.prototype.toISOString()', function () {
+      var dateString = '2014-07-02T05:30:15.123+06:00'
+      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(dateString))
+    })
+
+    it('middle-endian', function () {
+      var result = parse('5 a.m. 07/02/2016', 'h aa MM/DD/YYYY', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 6 /* Jul */, 2, 5, 0, 0, 0)))
+    })
+
+    it('little-endian', function () {
+      var result = parse('02.07.1995', 'DD.MM.YYYY', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1995, 6 /* Jul */, 2, 0, 0, 0, 0)))
+    })
+  })
+
+  describe('priority', function () {
+    it('units of lower priority don\'t overwrite values of higher priority', function () {
+      var dateString = '+06:00 123 15 30 05 02 07 2014'
+      var formatString = 'Z SSS ss mm HH DD MM YYYY'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date('2014-07-02T05:30:15.123+06:00'))
+    })
+
+    it('units of equal priority overwrite each other in order of appearance', function () {
+      var dateString = '25 1950 75 2000 January Feb 03 4 1 123 12'
+      var formatString = 'GG GGGG YY YYYY MMMM MMM MM M d DDD DD'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2000, 3 /* Apr */, 12)))
+    })
+
+    it('timestamp overwrites everything', function () {
+      var dateString = '512969520900 512969520 2014-07-02T05:30:15.123+06:00'
+      var formatString = 'x X YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, new Date(512969520000))
+    })
+  })
+
+  context('only one value is provided', function () {
+    describe('quarter', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '2'
+        var formatString = 'Q'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 1)))
+      })
+    })
+
+    describe('month', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '12'
+        var formatString = 'M'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 11 /* Dec */, 1)))
+      })
+    })
+
+    describe('ISO week', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '49'
+        var formatString = 'W'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 11 /* Dec */, 1)))
+      })
+    })
+
+    describe('day of week', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '1'
+        var formatString = 'd'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 2 /* Mar */, 31)))
+      })
+
+      it('allows to specify which day is the first day of the week', function () {
+        var dateString = '0'
+        var formatString = 'd'
+        var result = parse(dateString, formatString, baseDate, {weekStartsOn: 1})
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 6)))
+      })
+
+      it('allows to specify which day is the first day of the week in locale', function () {
+        var dateString = '0'
+        var formatString = 'd'
+        var result = parse(
+          dateString,
+          formatString,
+          baseDate,
+          {
+            // $ExpectedMistake
+            locale: {
+              // $ExpectedMistake
+              match: {},
+              formatLong: function () {},
+              options: {weekStartsOn: 1}
+            }
+          }
+        )
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 6)))
+      })
+
+      it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+        var dateString = '0'
+        var formatString = 'd'
+        var result = parse(
+          dateString,
+          formatString,
+          baseDate,
+          {
+            weekStartsOn: 1,
+            // $ExpectedMistake
+            locale: {
+              // $ExpectedMistake
+              match: {},
+              formatLong: function () {},
+              options: {weekStartsOn: 0}
+            }
+          }
+        )
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 6)))
+      })
+    })
+
+    describe('day of ISO week', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '7'
+        var formatString = 'E'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 6)))
+      })
+    })
+
+    describe('day of month', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '15'
+        var formatString = 'D'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 15)))
+      })
+    })
+
+    describe('day of year', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '200'
+        var formatString = 'DDD'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 6 /* Jul */, 19)))
+      })
+    })
+
+    describe('hour', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '19'
+        var formatString = 'H'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 19)))
+      })
+    })
+
+    describe('12-hour clock', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '6 p.m.'
+        var formatString = 'h aa'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 18)))
+      })
+    })
+
+    describe('minute', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '12'
+        var formatString = 'm'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 12)))
+      })
+    })
+
+    describe('second', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '34'
+        var formatString = 's'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32, 34)))
+      })
+    })
+
+    describe('1/10 of second', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '5'
+        var formatString = 'S'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32, 0, 500)))
+      })
+    })
+
+    describe('1/100 of second', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '67'
+        var formatString = 'SS'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32, 0, 670)))
+      })
+    })
+
+    describe('millisecond', function () {
+      it('takes the values of higher priority from baseDate', function () {
+        var dateString = '891'
+        var formatString = 'SSS'
+        var result = parse(dateString, formatString, baseDate)
+        assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32, 0, 891)))
+      })
+    })
+  })
+
+  describe('long formats', function () {
+    it('LT', function () {
+      var result = parse('10:32 a.m.', 'LT', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32)))
+    })
+
+    it('LTS', function () {
+      var result = parse('10:32:00 a.m.', 'LTS', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 10, 32)))
+    })
+
+    it('L', function () {
+      var result = parse('04/04/1987', 'L', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4)))
+    })
+
+    it('l', function () {
+      var result = parse('4/4/1987', 'l', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4)))
+    })
+
+    it('LL', function () {
+      var result = parse('April 4 1987', 'LL', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4)))
+    })
+
+    it('ll', function () {
+      var result = parse('Apr 4 1987', 'll', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4)))
+    })
+
+    it('LLL', function () {
+      var result = parse('April 4 1987 10:32 a.m.', 'LLL', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4, 10, 32)))
+    })
+
+    it('lll', function () {
+      var result = parse('Apr 4 1987 10:32 a.m.', 'lll', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4, 10, 32)))
+    })
+
+    it('LLLL', function () {
+      var result = parse('Friday, April 4 1987 10:32 a.m.', 'LLLL', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4, 10, 32)))
+    })
+
+    it('llll', function () {
+      var result = parse('Fri, Apr 4 1987 10:32 a.m.', 'llll', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(1987, 3 /* Apr */, 4, 10, 32)))
+    })
+  })
+
+  describe('implicit conversion of options', function () {
+    it('`dateString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var dateString = new String('20161105T040404')
+      // $ExpectedMistake
+      var result = parse(dateString, 'YYYYMMDDTHHmmss', baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 5, 4, 4, 4, 0)))
+    })
+
+    it('`formatString`', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var formatString = new String('YYYYMMDDTHHmmss')
+      // $ExpectedMistake
+      var result = parse('20161105T040404', formatString, baseDate)
+      assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 5, 4, 4, 4, 0)))
+    })
+
+    it('`options.weekStartsOn`', function () {
+      var dateString = '0'
+      var formatString = 'd'
+      // $ExpectedMistake
+      var result = parse(dateString, formatString, baseDate, {weekStartsOn: '1'})
+      assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 6)))
+    })
+  })
+
+  describe('custom locale', function () {
+    it('can be passed to the function', function () {
+      var units = {
+        qwe: {
+          priority: 12,
+          set: function (dateValues, value) {
+            dateValues.date.setUTCDate(value + 2)
+            dateValues.date.setUTCHours(0, 0, 0, 0)
+            return dateValues
+          }
+        },
+
+        rty: {
+          priority: 11,
+          set: function (dateValues, value) {
+            dateValues.date.setUTCMonth(value + 2, 1)
+            dateValues.date.setUTCHours(0, 0, 0, 0)
+            return dateValues
+          }
+        }
+      }
+
+      var parsers = {
+        abc: {
+          unit: 'qwe',
+          match: /^(It|This)/,
+          parse: function (matchResult) {
+            var word = matchResult[1]
+
+            if (word === 'It') {
+              return 7
+            } else {
+              return 6
+            }
+          }
+        },
+
+        efg: {
+          unit: 'rty',
+          match: /^(works|doesn't work)/,
+          parse: function (matchResult) {
+            var word = matchResult[1]
+
+            if (word === 'works') {
+              return 3
+            } else {
+              return 2
+            }
+          }
+        }
+      }
+
+      var parsingTokensRegExp = /(\[[^[]*])|(\\)?(YYYY|abc|efg|.)/g
+
+      var formatLong = function () {
+        return 'efg'
+      }
+
+      var customLocale = {
+        // $ExpectedMistake
+        match: {},
+        formatLong: formatLong,
+        units: units,
+        parsers: parsers,
+        parsingTokensRegExp: parsingTokensRegExp
+      }
+
+      // $ExpectedMistake
+      var result = parse('2017 It works correctly!', 'YYYY abc LTS [correctly!]', baseDate, {locale: customLocale})
+      assert.deepEqual(result, new Date(Date.UTC(2017, 5, 9)))
+    })
+
+    context('does not contain `match` property', function () {
+      it('throws `RangeError`', function () {
+        var customLocale = {formatLong: function () {}}
+        // $ExpectedMistake
+        var block = parse.bind(null, '2016-11-25 04 AM', 'YYYY-MM-DD hh A', baseDate, {locale: customLocale})
+        assert.throws(block, RangeError)
+      })
+    })
+
+    context('does not contain `formatLong` property', function () {
+      it('throws `RangeError`', function () {
+        // $ExpectedMistake
+        var customLocale = {match: {}}
+        // $ExpectedMistake
+        var block = parse.bind(null, '2016-11-25 04 AM', 'YYYY-MM-DD hh A', baseDate, {locale: customLocale})
+        assert.throws(block, RangeError)
+      })
+    })
+
+    context('does not contain `parsingTokensRegExp` property', function () {
+      it('uses `parse.parsingTokensRegExp` of default locale', function () {
+        var units = {
+          date: {
+            priority: 12,
+            set: function (dateValues, value) {
+              dateValues.date.setUTCDate(value + 2)
+              dateValues.date.setUTCHours(0, 0, 0, 0)
+              return dateValues
+            }
+          },
+
+          month: {
+            priority: 11,
+            set: function (dateValues, value) {
+              dateValues.date.setUTCMonth(value + 2, 1)
+              dateValues.date.setUTCHours(0, 0, 0, 0)
+              return dateValues
+            }
+          }
+        }
+
+        var parsers = {
+          Do: {
+            unit: 'date',
+            match: /^(It|This)/,
+            parse: function (matchResult) {
+              var word = matchResult[1]
+
+              if (word === 'It') {
+                return 7
+              } else {
+                return 6
+              }
+            }
+          },
+
+          MMMM: {
+            unit: 'month',
+            match: /^(works|doesn't work)/,
+            parse: function (matchResult) {
+              var word = matchResult[1]
+
+              if (word === 'works') {
+                return 3
+              } else {
+                return 2
+              }
+            }
+          }
+        }
+
+        var customLocale = {
+          // $ExpectedMistake
+          match: {},
+          formatLong: function () {},
+          units: units,
+          parsers: parsers
+        }
+
+        // $ExpectedMistake
+        var result = parse('2017 It works correctly!', 'YYYY Do MMMM [correctly!]', baseDate, {locale: customLocale})
+        assert.deepEqual(result, new Date(Date.UTC(2017, 5, 9)))
+      })
+    })
+
+    context('does not contain `parsers` property', function () {
+      it('works correctly', function () {
+        // $ExpectedMistake
+        var customLocale = {match: {}, formatLong: function () {}}
+        // $ExpectedMistake
+        var result = parse('2016-11-25', 'YYYY-MM-DD', baseDate, {locale: customLocale})
+        assert.deepEqual(result, new Date(Date.UTC(2016, 10 /* Nov */, 25)))
+      })
+    })
+
+    context('does not contain `units` property', function () {
+      it('works correctly', function () {
+        var parsers = {
+          abc: {
+            unit: 'dayOfMonth',
+            match: /^(It|This)/,
+            parse: function (matchResult) {
+              var word = matchResult[1]
+
+              if (word === 'It') {
+                return 7
+              } else {
+                return 6
+              }
+            }
+          },
+
+          efg: {
+            unit: 'month',
+            match: /^(works|doesn't work)/,
+            parse: function (matchResult) {
+              var word = matchResult[1]
+
+              if (word === 'works') {
+                return 3
+              } else {
+                return 2
+              }
+            }
+          }
+        }
+
+        var parsingTokensRegExp = /(\[[^[]*])|(\\)?(YYYY|abc|efg|.)/g
+
+        var customLocale = {
+          // $ExpectedMistake
+          match: {},
+          formatLong: function () {},
+          parsers: parsers,
+          parsingTokensRegExp: parsingTokensRegExp
+        }
+
+        // $ExpectedMistake
+        var result = parse('2017 It works correctly!', 'YYYY abc efg [correctly!]', baseDate, {locale: customLocale})
+        assert.deepEqual(result, new Date(Date.UTC(2017, 3, 7)))
+      })
+    })
+  })
+
+  it('accepts a string as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.toISOString())
+    assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 18)))
+  })
+
+  it('accepts a timestamp as `baseDate`', function () {
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    var result = parse(dateString, formatString, baseDate.getTime())
+    assert.deepEqual(result, new Date(Date.UTC(1986, 3 /* Apr */, 4, 18)))
+  })
+
+  it('does not mutate `baseDate`', function () {
+    var baseDateClone1 = new Date(baseDate.getTime())
+    var baseDateClone2 = new Date(baseDate.getTime())
+    var dateString = '6 p.m.'
+    var formatString = 'h aa'
+    parse(dateString, formatString, baseDateClone1)
+    assert.deepEqual(baseDateClone1, baseDateClone2)
+  })
+
+  describe('failure', function () {
+    it('returns `baseDate` if `dateString` and `formatString` are empty strings', function () {
+      var dateString = ''
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('returns `baseDate` if no tokens in `formatString` are provided', function () {
+      var dateString = 'not a token'
+      var formatString = '[not a token]'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, baseDate)
+    })
+
+    it('returns `Invalid Date`  if `formatString` doesn\'t match with `dateString`', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'YYYY/MM/DD'
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', function () {
+      var dateString = '2017-01-01'
+      var formatString = 'MMMM Do YYYY'
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', function () {
+      var dateString = '2017-01-01'
+      var formatString = ''
+      var result = parse(dateString, formatString, baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('returns `Invalid Date` if `baseDate` is `Invalid Date`', function () {
+      var dateString = '2014-07-02T05:30:15.123+06:00'
+      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var result = parse(dateString, formatString, new Date(NaN))
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+      var dateString = '2014-07-02T05:30:15.123+06:00'
+      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      // $ExpectedMistake
+      var block = parse.bind(null, dateString, formatString, baseDate, {weekStartsOn: NaN})
+      assert.throws(block, RangeError)
+    })
+  })
+
+  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+    // $ExpectedMistake
+    var block = parse.bind(null, '16', 'YY', baseDate, {additionalDigits: NaN})
+    assert.throws(block, RangeError)
+  })
+
+  it('throws TypeError exception if passed less than 3 arguments', function () {
+    assert.throws(parse.bind(null), TypeError)
+    // $ExpectedMistake
+    assert.throws(parse.bind(null, 1), TypeError)
+    // $ExpectedMistake
+    assert.throws(parse.bind(null, 1, 2), TypeError)
+  })
+})
