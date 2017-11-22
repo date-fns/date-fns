@@ -117,7 +117,7 @@ describe('utc/toDate', function () {
     describe('extended century representation', function () {
       it('parses century 101 BC - 2 BC', function () {
         var result = toDate('-0001')
-        var date = new Date(-100, 0 /* Jan */, 1)
+        var date = new Date(Date.UTC(-100, 0 /* Jan */, 1))
         date.setUTCFullYear(-100)
         assert.deepEqual(result, date)
       })
@@ -136,7 +136,7 @@ describe('utc/toDate', function () {
 
       it('allows to specify the number of additional digits', function () {
         var result = toDate('-20', {additionalDigits: 0})
-        var date = new Date(-2000, 0 /* Jan */, 1)
+        var date = new Date(Date.UTC(-2000, 0 /* Jan */, 1))
         date.setUTCFullYear(-2000)
         assert.deepEqual(result, date)
       })
