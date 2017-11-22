@@ -3,7 +3,6 @@ import isValid from '../isValid/index.js'
 import defaultLocale from '../../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
 import cloneObject from '../../_lib/cloneObject/index.js'
-import addMinutes from '../addMinutes/index.js'
 
 var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
 var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
@@ -129,17 +128,11 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var formattingTokensRegExp = locale.formattingTokensRegExp || defaultFormattingTokensRegExp
   var formatLong = locale.formatLong
 
-  var originalDate = toDate(dirtyDate, options)
+  var date = toDate(dirtyDate, options)
 
-  if (!isValid(originalDate, options)) {
+  if (!isValid(date, options)) {
     return 'Invalid Date'
   }
-
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  var timezoneOffset = originalDate.getTimezoneOffset()
-  var utcDate = addMinutes(originalDate, -timezoneOffset, options)
 
   var formatterOptions = cloneObject(options)
   formatterOptions.locale = locale
@@ -148,7 +141,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   // When UTC functions will be implemented, options._originalDate will likely be a part of public API.
   // Right now, please don't use it in locales. If you have to use an original date,
   // please restore it from `date`, adding a timezone offset to it.
-  formatterOptions._originalDate = originalDate
+  formatterOptions._originalDate = date
 
   var result = formatStr
     .replace(longFormattingTokensRegExp, function (substring) {
@@ -166,7 +159,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
       var formatter = localeFormatters[substring] || formatters[substring]
 
       if (formatter) {
-        return formatter(utcDate, formatterOptions)
+        return formatter(date, formatterOptions)
       } else {
         return cleanEscapedString(substring)
       }

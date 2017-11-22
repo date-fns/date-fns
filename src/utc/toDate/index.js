@@ -114,7 +114,7 @@ export default function toDate (argument, dirtyOptions) {
   if (date) {
     var timestamp = date.getTime()
     var time = 0
-    var offset
+    var offset = 0
 
     if (dateStrings.time) {
       time = parseTime(dateStrings.time)
@@ -122,10 +122,6 @@ export default function toDate (argument, dirtyOptions) {
 
     if (dateStrings.timezone) {
       offset = parseTimezone(dateStrings.timezone)
-    } else {
-      // get offset accurate to hour in timezones that change offset
-      offset = new Date(timestamp + time).getTimezoneOffset()
-      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
     }
 
     return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
