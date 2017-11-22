@@ -95,7 +95,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
 
-- `durationsPerHour` function.
+- `durationPerHour` function.
   See PR [#622](https://github.com/date-fns/date-fns/pull/622)
 
 ### Changed

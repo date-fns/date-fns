@@ -2,11 +2,11 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-import durationsPerHour from '.'
+import durationPerHour from '.'
 
-suite('durationsPerHour', function () {
+suite('durationPerHour', function () {
   benchmark('date-fns', function () {
-    return durationsPerHour(this.dateA, this.dateB)
+    return durationPerHour(this.dateA, this.dateB)
   })
 }, {
   setup: function () {
