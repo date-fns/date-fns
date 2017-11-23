@@ -16,45 +16,62 @@ const generatedAutomaticallyMessage = "// This file is generated automatically b
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 
-const typeScriptFPInterfaces = []
-  .concat('interface CurriedFn1<A, R> {')
-  .concat('  <A>(a: A): R')
-  .concat('}')
-  .concat('')
-  .concat('interface CurriedFn2<A, B, R> {')
-  .concat('  <A>(a: A): CurriedFn1<B, R>')
-  .concat('  <A, B>(a: A, b: B): R')
-  .concat('}')
-  .concat('')
-  .concat('interface CurriedFn3<A, B, C, R> {')
-  .concat('  <A>(a: A): CurriedFn2<B, C, R>')
-  .concat('  <A,B>(a: A, b: B): CurriedFn1<C, R>')
-  .concat('  <A,B,C>(a: A, b: B, c: C): R')
-  .concat('}')
-  .concat('')
-  .concat('interface CurriedFn4<A, B, C, D, R> {')
-  .concat('  <A>(a: A): CurriedFn3<B, C, D, R>')
-  .concat('  <A,B>(a: A, b: B): CurriedFn2<C, D, R>')
-  .concat('  <A,B,C>(a: A, b: B, c: C): CurriedFn1<D, R>')
-  .concat('  <A,B,C,D>(a: A, b: B, c: C, d: D): R')
-  .concat('}')
-  .join('\n')
+const trim = (...args) => String.raw(...args).trim()
 
-const flowFPAliases = []
-  .concat('type CurriedFn1<A, R> = <A>(a: A) => R')
-  .concat('')
-  .concat('type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>')
-  .concat('  | <A, B>(a: A, b: B) => R')
-  .concat('')
-  .concat('type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>')
-  .concat('  | <A,B>(a: A, b: B) => CurriedFn1<C, R>')
-  .concat('  | <A,B,C>(a: A, b: B, c: C) => R')
-  .concat('')
-  .concat('type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>')
-  .concat('  | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>')
-  .concat('  | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>')
-  .concat('  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R')
-  .join('\n')
+const buildTypeScriptFPInterfaces = (arity = 4) => [
+trim`
+interface CurriedFn1<A, R> {
+  <A>(a: A): R
+}
+`,
+
+trim`
+interface CurriedFn2<A, B, R> {
+  <A>(a: A): CurriedFn1<B, R>
+  <A, B>(a: A, b: B): R
+}
+`,
+
+trim`
+interface CurriedFn3<A, B, C, R> {
+  <A>(a: A): CurriedFn2<B, C, R>
+  <A,B>(a: A, b: B): CurriedFn1<C, R>
+  <A,B,C>(a: A, b: B, c: C): R
+}
+`,
+
+trim`
+interface CurriedFn4<A, B, C, D, R> {
+  <A>(a: A): CurriedFn3<B, C, D, R>
+  <A,B>(a: A, b: B): CurriedFn2<C, D, R>
+  <A,B,C>(a: A, b: B, c: C): CurriedFn1<D, R>
+  <A,B,C,D>(a: A, b: B, c: C, d: D): R
+}
+`
+].slice(0, arity).join('\n\n')
+
+
+const buildFlowFPAliases = (arity = 4) => [
+'type CurriedFn1<A, R> = <A>(a: A) => R',
+
+trim`
+type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
+  | <A, B>(a: A, b: B) => R
+`,
+
+trim`
+type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
+  | <A,B>(a: A, b: B) => CurriedFn1<C, R>
+  | <A,B,C>(a: A, b: B, c: C) => R
+`,
+
+trim`
+type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
+  | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
+  | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
+  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
+`
+].slice(0, arity).join('\n\n')
 
 const locales = listLocales()
 
@@ -334,7 +351,7 @@ function generateTypeScriptTypings (fns, aliases, locales) {
 
   const typingString = [generatedAutomaticallyMessage]
     .concat('// FP Interfaces')
-    .concat(typeScriptFPInterfaces)
+    .concat(buildTypeScriptFPInterfaces())
     .concat('// Type Aliases')
     .concat(aliasDefinitions)
     .concat('// Regular Functions')
@@ -450,7 +467,7 @@ function generateFlowFPFnTyping (fn, aliasDeclarations) {
     .concat('')
     .concat(aliasDeclarations.join('\n\n'))
     .concat('')
-    .concat(flowFPAliases)
+    .concat(buildFlowFPAliases(args.length))
     .concat('')
     .concat(`declare module.exports: ${type}\n`)
     .join('\n')
@@ -470,7 +487,7 @@ function generateFlowFPFnIndexTyping (fns, aliasDeclarations) {
     .concat('')
     .concat(aliasDeclarations.join('\n\n'))
     .concat('')
-    .concat(flowFPAliases)
+    .concat(buildFlowFPAliases())
     .concat('')
     .concat(`declare module.exports: {`)
     .concat(fnsDeclarations.join(',\n'))
