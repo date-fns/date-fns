@@ -5,9 +5,6 @@ import parsers from './_lib/parsers/index.js'
 import units from './_lib/units/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 
-var TIMEZONE_UNIT_PRIORITY = 110
-var MILLISECONDS_IN_MINUTE = 60000
-
 var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
 var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
