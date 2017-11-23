@@ -11,6 +11,6 @@ suite('getDateOfPastDayOfWeek', function () {
 }, {
   setup: function () {
     this.date = new Date()
-    this.dayOfWeekIndex = 2;
+    this.dayOfWeekIndex = 2
   }
 })

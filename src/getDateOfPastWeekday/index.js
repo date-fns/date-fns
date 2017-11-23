@@ -28,12 +28,12 @@ export default function getDateOfPastWeekday (dayOfWeekNumber, dateForTest) {
   }
   var today = new Date()
 
-  if (dateForTest !== undefined) { today = dateForTest }
+  if (dateForTest !== undefined && dateForTest instanceof Date) { today = dateForTest }
   // Take current day of week index where 0 - Sunday
   var index = today.getDay()
   // If desired day of the week in the past then take date for this week
   // Otherwise take date form the previous week
   var date = index > dayOfWeekNumber ? addDays(today, -index + dayOfWeekNumber) : addDays(today, -index + dayOfWeekNumber - 7)
   date.setHours(0, 0, 0, 0)
-  return date;
+  return date
 }
