@@ -62,7 +62,7 @@ function getTypeScriptDateFnsModuleDefinition (submodule, fns) {
 
   const definition = formatBlock`
     declare module '${moduleName}' {
-      ${fns.map(getTypeScriptFnDefinition).join('\n\n')}
+      ${addSeparator(fns.map(getTypeScriptFnDefinition), '\n')}
     }
   `
 
@@ -75,11 +75,11 @@ function getTypeScriptDateFnsModuleDefinition (submodule, fns) {
 function getTypeScriptDateFnsFPModuleDefinition (submodule, fns) {
   const moduleName = `date-fns${submodule}/fp`
 
-  const fnDefinitions = fns.map(getTypeScriptFPFnDefinition).join('\n\n')
+  const fnDefinitions = fns.map(getTypeScriptFPFnDefinition)
 
   const definition = formatBlock`
     declare module '${moduleName}' {
-      ${fnDefinitions}
+      ${addSeparator(fnDefinitions, '\n')}
     }
   `
 
@@ -149,11 +149,11 @@ function getTypeScriptFPFnModuleDefinition (submodule, fnSuffix, isDefault, fn) 
 function getTypeScriptLocaleIndexModuleDefinition (submodule, locales) {
   const moduleName = `date-fns${submodule}/locale`
 
-  const localesDefinitions = locales.map(getTypeScriptLocaleDefinition).join('\n\n')
+  const localesDefinitions = locales.map(getTypeScriptLocaleDefinition)
 
   const definition = formatBlock`
     declare module '${moduleName}' {
-      ${localesDefinitions}
+      ${addSeparator(localesDefinitions, '\n')}
     }
   `
 
