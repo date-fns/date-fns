@@ -140,38 +140,6 @@ const formatTypeScriptFile = (...args) =>
     formatBlock(...args) +
     '\n'
 
-const getTypeScriptFPInterfaces = (arity = 4) => [
-  formatBlock`
-    interface CurriedFn1<A, R> {
-      <A>(a: A): R
-    }
-  `,
-
-  formatBlock`
-    interface CurriedFn2<A, B, R> {
-      <A>(a: A): CurriedFn1<B, R>
-      <A, B>(a: A, b: B): R
-    }
-  `,
-
-  formatBlock`
-    interface CurriedFn3<A, B, C, R> {
-      <A>(a: A): CurriedFn2<B, C, R>
-      <A,B>(a: A, b: B): CurriedFn1<C, R>
-      <A,B,C>(a: A, b: B, c: C): R
-    }
-  `,
-
-  formatBlock`
-    interface CurriedFn4<A, B, C, D, R> {
-      <A>(a: A): CurriedFn3<B, C, D, R>
-      <A,B>(a: A, b: B): CurriedFn2<C, D, R>
-      <A,B,C>(a: A, b: B, c: C): CurriedFn1<D, R>
-      <A,B,C,D>(a: A, b: B, c: C, d: D): R
-    }
-  `
-].slice(0, arity)
-
 module.exports = {
   addSeparator,
   formatBlock,
