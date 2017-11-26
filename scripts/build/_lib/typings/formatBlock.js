@@ -69,7 +69,7 @@ const addSeparator = (stringsArray, separator) =>
  * @returns {String} formatted code block
  *
  * @example
- * formatBlock`
+ * const result = formatBlock`
  *   while (true) {
  *     ${addSeparator(
  *       ['Hello', 'world', '!'].map(s => `console.log('${s}')`),
@@ -77,6 +77,7 @@ const addSeparator = (stringsArray, separator) =>
  *     )}
  *   }
  * `
+ * console.log(result)
  * //=>
  * while (true) {
  *   console.log('Hello');
