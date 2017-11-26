@@ -11,13 +11,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXSeconds', 1) === 'weniger als eine Sekunde')
+          assert(formatDistance('lessThanXSeconds', 1) === 'vähem kui üks sekund')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXSeconds', 2) === 'weniger als 2 Sekunden')
+          assert(formatDistance('lessThanXSeconds', 2) === 'vähem kui 2 sekundit')
         })
       })
     })
@@ -25,13 +25,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXSeconds', 1, optionsWithSuffix) === 'in weniger als einer Sekunde')
+          assert(formatDistance('lessThanXSeconds', 1, optionsWithSuffix) === 'vähem kui ühe sekundi pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXSeconds', 2, optionsWithSuffix) === 'in weniger als 2 Sekunden')
+          assert(formatDistance('lessThanXSeconds', 2, optionsWithSuffix) === 'vähem kui 2 sekundi pärast')
         })
       })
     })
@@ -41,13 +41,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xSeconds', 1) === 'eine Sekunde')
+          assert(formatDistance('xSeconds', 1) === 'üks sekund')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xSeconds', 2) === '2 Sekunden')
+          assert(formatDistance('xSeconds', 2) === '2 sekundit')
         })
       })
     })
@@ -55,13 +55,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xSeconds', 1, optionsWithSuffix) === 'in einer Sekunde')
+          assert(formatDistance('xSeconds', 1, optionsWithSuffix) === 'ühe sekundi pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xSeconds', 2, optionsWithSuffix) === 'in 2 Sekunden')
+          assert(formatDistance('xSeconds', 2, optionsWithSuffix) === '2 sekundi pärast')
         })
       })
     })
@@ -70,17 +70,17 @@ describe('de locale > formatDistance', function () {
   describe('halfAMinute', function () {
     describe('no suffix', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('halfAMinute') === 'eine halbe Minute')
+        assert(formatDistance('halfAMinute') === 'pool minutit')
       })
     })
 
     describe('past or future suffix', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('halfAMinute', null, optionsWithSuffix) === 'in einer halben Minute')
+        assert(formatDistance('halfAMinute', null, optionsWithSuffix) === 'poole minuti pärast')
       })
 
       it('ignores the second argument', function () {
-        assert(formatDistance('halfAMinute', 123, optionsWithSuffix) === 'in einer halben Minute')
+        assert(formatDistance('halfAMinute', 123, optionsWithSuffix) === 'poole minuti pärast')
       })
     })
   })
@@ -89,13 +89,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXMinutes', 1) === 'weniger als eine Minute')
+          assert(formatDistance('lessThanXMinutes', 1) === 'vähem kui üks minut')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXMinutes', 2) === 'weniger als 2 Minuten')
+          assert(formatDistance('lessThanXMinutes', 2) === 'vähem kui 2 minutit')
         })
       })
     })
@@ -103,13 +103,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXMinutes', 1, optionsWithSuffix) === 'in weniger als einer Minute')
+          assert(formatDistance('lessThanXMinutes', 1, optionsWithSuffix) === 'vähem kui ühe minuti pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('lessThanXMinutes', 2, optionsWithSuffix) === 'in weniger als 2 Minuten')
+          assert(formatDistance('lessThanXMinutes', 2, optionsWithSuffix) === 'vähem kui 2 minuti pärast')
         })
       })
     })
@@ -119,13 +119,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMinutes', 1) === 'eine Minute')
+          assert(formatDistance('xMinutes', 1) === 'üks minut')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMinutes', 2) === '2 Minuten')
+          assert(formatDistance('xMinutes', 2) === '2 minutit')
         })
       })
     })
@@ -133,13 +133,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMinutes', 1, optionsWithSuffix) === 'in einer Minute')
+          assert(formatDistance('xMinutes', 1, optionsWithSuffix) === 'ühe minuti pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMinutes', 2, optionsWithSuffix) === 'in 2 Minuten')
+          assert(formatDistance('xMinutes', 2, optionsWithSuffix) === '2 minuti pärast')
         })
       })
     })
@@ -149,13 +149,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXHours', 1) === 'etwa eine Stunde')
+          assert(formatDistance('aboutXHours', 1) === 'umbes üks tund')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXHours', 2) === 'etwa 2 Stunden')
+          assert(formatDistance('aboutXHours', 2) === 'umbes 2 tundi')
         })
       })
     })
@@ -163,13 +163,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXHours', 1, optionsWithSuffix) === 'in etwa einer Stunde')
+          assert(formatDistance('aboutXHours', 1, optionsWithSuffix) === 'umbes ühe tunni pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXHours', 2, optionsWithSuffix) === 'in etwa 2 Stunden')
+          assert(formatDistance('aboutXHours', 2, optionsWithSuffix) === 'umbes 2 tunni pärast')
         })
       })
     })
@@ -179,13 +179,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xHours', 1) === 'eine Stunde')
+          assert(formatDistance('xHours', 1) === 'üks tund')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xHours', 2) === '2 Stunden')
+          assert(formatDistance('xHours', 2) === '2 tundi')
         })
       })
     })
@@ -193,13 +193,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xHours', 1, optionsWithSuffix) === 'in einer Stunde')
+          assert(formatDistance('xHours', 1, optionsWithSuffix) === 'ühe tunni pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xHours', 2, optionsWithSuffix) === 'in 2 Stunden')
+          assert(formatDistance('xHours', 2, optionsWithSuffix) === '2 tunni pärast')
         })
       })
     })
@@ -209,26 +209,26 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xDays', 1) === 'ein Tag')
+          assert(formatDistance('xDays', 1) === 'üks päev')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xDays', 2) === '2 Tage')
+          assert(formatDistance('xDays', 2) === '2 päeva')
         })
       })
 
       describe('past or future suffix', function () {
         context('when the count equals 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('xDays', 1, optionsWithSuffix) === 'in einem Tag')
+            assert(formatDistance('xDays', 1, optionsWithSuffix) === 'ühe päeva pärast')
           })
         })
 
         context('when the count is more than 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('xDays', 2, optionsWithSuffix) === 'in 2 Tagen')
+            assert(formatDistance('xDays', 2, optionsWithSuffix) === '2 päeva pärast')
           })
         })
       })
@@ -238,13 +238,13 @@ describe('de locale > formatDistance', function () {
       describe('no suffix', function () {
         context('when the count equals 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('aboutXMonths', 1) === 'etwa ein Monat')
+            assert(formatDistance('aboutXMonths', 1) === 'umbes üks kuu')
           })
         })
 
         context('when the count is more than 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('aboutXMonths', 2) === 'etwa 2 Monate')
+            assert(formatDistance('aboutXMonths', 2) === 'umbes 2 kuud')
           })
         })
       })
@@ -252,13 +252,13 @@ describe('de locale > formatDistance', function () {
       describe('past or future suffix', function () {
         context('when the count equals 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('aboutXMonths', 1, optionsWithSuffix) === 'in etwa einem Monat')
+            assert(formatDistance('aboutXMonths', 1, optionsWithSuffix) === 'umbes ühe kuu pärast')
           })
         })
 
         context('when the count is more than 1', function () {
           it('returns a proper string', function () {
-            assert(formatDistance('aboutXMonths', 2, optionsWithSuffix) === 'in etwa 2 Monaten')
+            assert(formatDistance('aboutXMonths', 2, optionsWithSuffix) === 'umbes 2 kuu pärast')
           })
         })
       })
@@ -269,13 +269,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMonths', 1) === 'ein Monat')
+          assert(formatDistance('xMonths', 1) === 'üks kuu')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMonths', 2) === '2 Monate')
+          assert(formatDistance('xMonths', 2) === '2 kuud')
         })
       })
     })
@@ -283,13 +283,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMonths', 1, optionsWithSuffix) === 'in einem Monat')
+          assert(formatDistance('xMonths', 1, optionsWithSuffix) === 'ühe kuu pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xMonths', 2, optionsWithSuffix) === 'in 2 Monaten')
+          assert(formatDistance('xMonths', 2, optionsWithSuffix) === '2 kuu pärast')
         })
       })
     })
@@ -299,13 +299,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXYears', 1) === 'etwa ein Jahr')
+          assert(formatDistance('aboutXYears', 1) === 'umbes üks aasta')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXYears', 2) === 'etwa 2 Jahre')
+          assert(formatDistance('aboutXYears', 2) === 'umbes 2 aastat')
         })
       })
     })
@@ -313,13 +313,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXYears', 1, optionsWithSuffix) === 'in etwa einem Jahr')
+          assert(formatDistance('aboutXYears', 1, optionsWithSuffix) === 'umbes ühe aasta pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('aboutXYears', 2, optionsWithSuffix) === 'in etwa 2 Jahren')
+          assert(formatDistance('aboutXYears', 2, optionsWithSuffix) === 'umbes 2 aasta pärast')
         })
       })
     })
@@ -329,13 +329,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xYears', 1) === 'ein Jahr')
+          assert(formatDistance('xYears', 1) === 'üks aasta')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xYears', 2) === '2 Jahre')
+          assert(formatDistance('xYears', 2) === '2 aastat')
         })
       })
     })
@@ -343,13 +343,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xYears', 1, optionsWithSuffix) === 'in einem Jahr')
+          assert(formatDistance('xYears', 1, optionsWithSuffix) === 'ühe aasta pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('xYears', 2, optionsWithSuffix) === 'in 2 Jahren')
+          assert(formatDistance('xYears', 2, optionsWithSuffix) === '2 aasta pärast')
         })
       })
     })
@@ -359,13 +359,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('overXYears', 1) === 'mehr als ein Jahr')
+          assert(formatDistance('overXYears', 1) === 'rohkem kui üks aasta')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('overXYears', 2) === 'mehr als 2 Jahre')
+          assert(formatDistance('overXYears', 2) === 'rohkem kui 2 aastat')
         })
       })
     })
@@ -373,13 +373,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('overXYears', 1, optionsWithSuffix) === 'in mehr als einem Jahr')
+          assert(formatDistance('overXYears', 1, optionsWithSuffix) === 'rohkem kui ühe aasta pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('overXYears', 2, optionsWithSuffix) === 'in mehr als 2 Jahren')
+          assert(formatDistance('overXYears', 2, optionsWithSuffix) === 'rohkem kui 2 aasta pärast')
         })
       })
     })
@@ -389,13 +389,13 @@ describe('de locale > formatDistance', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('almostXYears', 1) === 'fast ein Jahr')
+          assert(formatDistance('almostXYears', 1) === 'peaaegu üks aasta')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('almostXYears', 2) === 'fast 2 Jahre')
+          assert(formatDistance('almostXYears', 2) === 'peaaegu 2 aastat')
         })
       })
     })
@@ -403,13 +403,13 @@ describe('de locale > formatDistance', function () {
     describe('past or future suffix', function () {
       context('when the count equals 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('almostXYears', 1, optionsWithSuffix) === 'in fast einem Jahr')
+          assert(formatDistance('almostXYears', 1, optionsWithSuffix) === 'peaaegu ühe aasta pärast')
         })
       })
 
       context('when the count is more than 1', function () {
         it('returns a proper string', function () {
-          assert(formatDistance('almostXYears', 2, optionsWithSuffix) === 'in fast 2 Jahren')
+          assert(formatDistance('almostXYears', 2, optionsWithSuffix) === 'peaaegu 2 aasta pärast')
         })
       })
     })
@@ -421,7 +421,7 @@ describe('de locale > formatDistance', function () {
         addSuffix: false,
         comparison: -1
       })
-      assert(result === 'etwa ein Jahr')
+      assert(result === 'umbes üks aasta')
     })
   })
 
@@ -431,7 +431,7 @@ describe('de locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'vor etwa einem Jahr')
+      assert(result === 'umbes ühe aasta eest')
     })
   })
 
@@ -441,7 +441,7 @@ describe('de locale > formatDistance', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in einer halben Minute')
+      assert(result === 'poole minuti pärast')
     })
   })
 })

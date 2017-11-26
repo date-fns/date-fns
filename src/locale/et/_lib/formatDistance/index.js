@@ -128,7 +128,7 @@ var formatDistanceLocale = {
 
   overXYears: {
     standalone: {
-      one: 'rohkem kui aasta',
+      one: 'rohkem kui üks aasta',
       other: 'rohkem kui {{count}} aastat'
     },
     withPreposition: {
