@@ -27,5 +27,5 @@ export default function isLeapYear (dirtyDate, dirtyOptions) {
 
   var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getFullYear()
-  return year % 400 === 0 || year % 4 === 0 && year % 100 !== 0
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }
