@@ -228,27 +228,27 @@ describe('nl locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'last dinsdag at 00:00')
+      assert(result === 'vorige dinsdag om 00:00')
     })
 
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
-      assert(result === 'yesterday at 22:22')
+      assert(result === 'gisteren om 22:22')
     })
 
     it('today', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, {locale: locale})
-      assert(result === 'today at 16:50')
+      assert(result === 'vandaag om 16:50')
     })
 
     it('tomorrow', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 5, 7, 30), baseDate, {locale: locale})
-      assert(result === 'tomorrow at 07:30')
+      assert(result === 'morgen om 07:30')
     })
 
     it('next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'zondag at 12:00')
+      assert(result === 'zondag om 12:00')
     })
 
     it('after the next week', function () {
