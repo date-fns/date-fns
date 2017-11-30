@@ -60,7 +60,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - Write tests.
 
-- Run tests: `$ yarn test -- --single-run`.
+- Run tests: `$ yarn test --single-run`.
 
 - [Write documentation](#documentation).
 
