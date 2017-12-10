@@ -44,6 +44,8 @@ import toDate from '../toDate/index.js'
  *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/types/Interval}
+ * @param {Options} [options] - the object with options. See [Options]{@link docs/types/Options}
+ * @param {Boolean} [options.inclusive=false] - whether the comparison is inclusive or not
  * @returns {Boolean} whether the time intervals are overlapping
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -72,6 +74,20 @@ import toDate from '../toDate/index.js'
  *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 30) }
  * )
  * //=> false
+ *
+ * @example
+ * // Using the inclusive option:
+ * areIntervalsOverlapping(
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) }
+ * )
+ * //=> false
+ * areIntervalsOverlapping(
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 24) },
+ *   { inclusive: true }
+ * )
+ * //=> true
  */
 export default function areIntervalsOverlapping(
   dirtyIntervalLeft,
@@ -83,6 +99,8 @@ export default function areIntervalsOverlapping(
     )
   }
 
+  var options = dirtyOptions || {}
+
   var intervalLeft = dirtyIntervalLeft || {}
   var intervalRight = dirtyIntervalRight || {}
   var leftStartTime = toDate(intervalLeft.start).getTime()
@@ -93,6 +111,10 @@ export default function areIntervalsOverlapping(
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
     throw new RangeError('Invalid interval')
+  }
+
+  if (options.inclusive) {
+    return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime
   }
 
   return leftStartTime < rightEndTime && rightStartTime < leftEndTime
