@@ -10,6 +10,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+[See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
+for the list of changes made since `v2.0.0-alpha.1`.
+
 ### Added
 
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
@@ -71,6 +74,26 @@ This change log follows the format documented in [Keep a CHANGELOG].
   ```
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
+
+- [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
+  (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
+
+- [Vietnamese locale (vi)](https://github.com/date-fns/date-fns/pull/546)
+  (kudos to [@trongthanh](https://github.com/trongthanh))
+
+- Flow typings for `index.js`, `fp/index.js`, `locale/index.js`, and their ESM equivalents.
+  See PR [#558](https://github.com/date-fns/date-fns/pull/558)
+
+- [en-GB locale](https://github.com/date-fns/date-fns/pull/563)
+  (kudos to [@glintik](https://github.com/glintik))
+
+- [Fixes danish locale support for long and relative formats](https://github.com/date-fns/date-fns/pull/555) (kudos to [@stefanbugge](https://github.com/stefanbugge))
+
+- [Support for long and relative formats for German locale](https://github.com/date-fns/date-fns/pull/553) (thanks to [@vanvuongngo](https://github.com/vanvuongngo)).
+
+- [fr-CH locale](https://github.com/date-fns/date-fns/pull/553) (kudos to [@vanvuongngo](https://github.com/vanvuongngo)).
+
+- [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
 
 ### Changed
 
@@ -172,6 +195,23 @@ This change log follows the format documented in [Keep a CHANGELOG].
   // v2.0.0 onward
   format(new Date(2016, 0, 1), 'YYYY-MM-DDTHH:mm:ss.SSSZ')
   ```
+
+- **BREAKING** renamed ISO week-numbering year helpers:
+
+  - `addISOYears` → `addISOWeekYears`
+  - `differenceInCalendarISOYears` → `differenceInCalendarISOWeekYears`
+  - `differenceInISOYears` → `differenceInISOWeekYears`
+  - `endOfISOYear` → `endOfISOWeekYear`
+  - `getISOYear` → `getISOWeekYear`
+  - `isSameISOYear` → `isSameISOWeekYear`
+  - `lastDayOfISOYear` → `lastDayOfISOWeekYear`
+  - `setISOYear` → `setISOWeekYear`
+  - `subISOYears` → `subISOWeekYears`
+
+  i.e. "ISO year" renamed to "ISO week year", which is short for
+  [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+  It makes them consistent with planned locale-dependent week-numbering year helpers
+  e.g. `addWeekYears`.
 
 - **BREAKING**: functions renamed:
 
@@ -346,6 +386,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
   See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
 
+- **BREAKING**: all functions now check if the passed number of arguments is less
+  than the number of required arguments and throw `TypeError` exception if so.
+
 - **BREAKING**: removed `isDate`. Instead, you can use `x instanceof Date`.
 
 - Every function now has `options` as the last argument which is passed to all its dependencies
@@ -353,6 +396,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
+
+- **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
+  `toDate(null)` returns an invalid date. Since `toDate` is used internally
+  by all the functions, operations over `null` will also return an invalid date.
+  [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
+
+- `toDate` (previously `parse`) and `isValid` functions now accept `any` type
+  as the first argument.
 
 ## [1.28.5] - 2017-05-19
 

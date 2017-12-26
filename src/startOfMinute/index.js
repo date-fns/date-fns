@@ -13,6 +13,7 @@ import toDate from '../toDate/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the start of a minute
+ * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -21,6 +22,10 @@ import toDate from '../toDate/index.js'
  * //=> Mon Dec 01 2014 22:15:00
  */
 export default function startOfMinute (dirtyDate, dirtyOptions) {
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+  }
+
   var date = toDate(dirtyDate, dirtyOptions)
   date.setSeconds(0, 0)
   return date

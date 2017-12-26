@@ -76,4 +76,9 @@ describe('setISODay', function () {
     var block = setISODay.bind(null, new Date(2014, 8 /* Sep */, 1), 3, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(setISODay.bind(null), TypeError)
+    assert.throws(setISODay.bind(null, 1), TypeError)
+  })
 })

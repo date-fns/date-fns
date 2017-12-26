@@ -493,4 +493,9 @@ describe('formatDistanceStrict', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(formatDistanceStrict.bind(null), TypeError)
+    assert.throws(formatDistanceStrict.bind(null, 1), TypeError)
+  })
 })

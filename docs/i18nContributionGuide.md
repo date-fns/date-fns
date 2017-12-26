@@ -743,16 +743,15 @@ export default locale
 ### Simple example
 
 Adding and replacing `format` tokens is easy with [`formatters`](#formatters) property of the locale.
-Deep clone the locale before monkey-patching to prevent mutability conflicts.
 
 ```javascript
-import cloneDeep from 'lodash/cloneDeep'
+import merge from 'lodash/merge'
 import format from 'date-fns/format'
 import originalLocale from 'date-fns/locale/en-US'
 
 const oneLetterWeekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
 
-const locale = Object.assign(cloneDeep(originalLocale), {
+const locale = merge(originalLocale, {
   formatters: {
     dd: function (date) {
       return oneLetterWeekdays[date.getUTCDay()]
@@ -773,7 +772,7 @@ For the later, we will also need to add two new units: 'era' and 'eraYear'.
 In ECMAScript, year 0 is 1 B.C., year -1 is 2 B.C. etc.
 
 ```javascript
-import cloneDeep from 'lodash/cloneDeep'
+import merge from 'lodash/merge'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import originalLocale from 'date-fns/locale/en-US'
@@ -832,7 +831,7 @@ const parsers = {
   }
 }
 
-const locale = Object.assign(cloneDeep(originalLocale), {
+const locale = merge(originalLocale, {
   formatters,
   formattingTokensRegExp: buildTokensRegExp(formatters),
   units,

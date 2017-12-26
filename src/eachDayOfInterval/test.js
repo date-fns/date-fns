@@ -139,4 +139,8 @@ describe('eachDayOfInterval', function () {
     }, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(eachDayOfInterval.bind(null), TypeError)
+  })
 })

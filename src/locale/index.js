@@ -8,12 +8,14 @@ module.exports = {
   da: require('./da/index.js'),
   de: require('./de/index.js'),
   el: require('./el/index.js'),
+  enGB: require('./en-GB/index.js'),
   enUS: require('./en-US/index.js'),
   eo: require('./eo/index.js'),
   es: require('./es/index.js'),
   fi: require('./fi/index.js'),
   fil: require('./fil/index.js'),
   fr: require('./fr/index.js'),
+  frCH: require('./fr-CH/index.js'),
   hr: require('./hr/index.js'),
   id: require('./id/index.js'),
   is: require('./is/index.js'),
@@ -31,6 +33,8 @@ module.exports = {
   sv: require('./sv/index.js'),
   th: require('./th/index.js'),
   tr: require('./tr/index.js'),
+  ua: require('./ua/index.js'),
+  vi: require('./vi/index.js'),
   zhCN: require('./zh-CN/index.js'),
   zhTW: require('./zh-TW/index.js')
 }

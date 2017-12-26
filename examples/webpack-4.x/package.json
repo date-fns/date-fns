@@ -1,0 +1,28 @@
+{
+  "name": "date-fns-example-webpack4",
+  "version": "0.1.0",
+  "description": "Example of date-fns usage with webpack 4.x",
+  "main": "example.js",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "gzip-size-cli": "^2.1.0",
+    "uglify-es": "^3.1.1",
+    "webpack": "webpack/webpack#next"
+  },
+  "scripts": {
+    "build": "yarn build-date-fns && yarn build-webpack && yarn build-uglify",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "build-webpack": "webpack example=./example.js fp=./fp.js misc=./misc.js minimal=./minimal.js --output-path dist --output-filename [name].js",
+    "build-uglify": "yarn build-uglify-example && yarn build-uglify-fp && yarn build-uglify-misc && yarn build-uglify-minimal && yarn stats-size",
+    "build-uglify-example": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/example.min.js dist/example.js",
+    "build-uglify-fp": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/fp.min.js dist/fp.js",
+    "build-uglify-misc": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/misc.min.js dist/misc.js",
+    "build-uglify-minimal": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/minimal.min.js dist/minimal.js",
+    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\"",
+    "test": "yarn test-example && yarn test-fp && yarn test-misc",
+    "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
+    "test-fp": "test $(env TZ=UTC node ./dist/fp.min.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.min.js) = true"
+  }
+}

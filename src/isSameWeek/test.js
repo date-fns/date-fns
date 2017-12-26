@@ -130,4 +130,9 @@ describe('isSameWeek', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(isSameWeek.bind(null), TypeError)
+    assert.throws(isSameWeek.bind(null, 1), TypeError)
+  })
 })

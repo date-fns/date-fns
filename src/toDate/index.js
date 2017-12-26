@@ -54,15 +54,18 @@ var patterns = {
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
+ * If the argument is null, it is treated as an invalid date.
+ *
  * If all above fails, the function passes the given argument to Date constructor.
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  * All *date-fns* functions will throw `RangeError` if `options.additionalDigits` is not 0, 1, 2 or undefined.
  *
- * @param {Date|String|Number} argument - the value to convert
+ * @param {*} argument - the value to convert
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
+ * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -77,6 +80,14 @@ var patterns = {
  * //=> Fri Apr 11 2014 00:00:00
  */
 export default function toDate (argument, dirtyOptions) {
+  if (arguments.length < 1) {
+    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+  }
+
+  if (argument === null) {
+    return new Date(NaN)
+  }
+
   var options = dirtyOptions || {}
 
   var additionalDigits = options.additionalDigits === undefined ? DEFAULT_ADDITIONAL_DIGITS : Number(options.additionalDigits)
@@ -231,7 +242,7 @@ function parseDate (dateString, year) {
   token = patterns.Www.exec(dateString)
   if (token) {
     week = parseInt(token[1], 10) - 1
-    return dayOfISOYear(year, week)
+    return dayOfISOWeekYear(year, week)
   }
 
   // YYYY-Www-D or YYYYWwwD
@@ -239,7 +250,7 @@ function parseDate (dateString, year) {
   if (token) {
     week = parseInt(token[1], 10) - 1
     var dayOfWeek = parseInt(token[2], 10) - 1
-    return dayOfISOYear(year, week, dayOfWeek)
+    return dayOfISOWeekYear(year, week, dayOfWeek)
   }
 
   // Invalid ISO-formatted date
@@ -309,11 +320,11 @@ function parseTimezone (timezoneString) {
   return 0
 }
 
-function dayOfISOYear (isoYear, week, day) {
+function dayOfISOWeekYear (isoWeekYear, week, day) {
   week = week || 0
   day = day || 0
   var date = new Date(0)
-  date.setUTCFullYear(isoYear, 0, 4)
+  date.setUTCFullYear(isoWeekYear, 0, 4)
   var fourthOfJanuaryDay = date.getUTCDay() || 7
   var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)

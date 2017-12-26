@@ -13,6 +13,7 @@ import addDays from '../addDays/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the new date with the weeks added
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -21,6 +22,10 @@ import addDays from '../addDays/index.js'
  * //=> Mon Sep 29 2014 00:00:00
  */
 export default function addWeeks (dirtyDate, dirtyAmount, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var amount = Number(dirtyAmount)
   var days = amount * 7
   return addDays(dirtyDate, days, dirtyOptions)

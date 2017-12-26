@@ -3,7 +3,7 @@ const fs = require('fs')
 
 module.exports = listFPFns
 
-const ignoredFiles = ['index.js', 'test.js']
+const ignoredFiles = ['index.js', 'test.js', 'index.js.flow']
 
 function listFPFns () {
   const files = fs.readdirSync(path.join(process.cwd(), 'src', 'fp'))

@@ -15,7 +15,7 @@ const jsDocParser = require('jsdoc-to-markdown')
 const listFns = require('../_lib/listFns')
 const docsConfig = require('../../docs/index.js')
 
-const docsPath = path.join(process.cwd(), 'docs.json')
+const docsPath = path.resolve(process.cwd(), 'tmp/docs.json')
 
 generateDocsFromSource()
   .then(generatedDocsObj)
@@ -275,15 +275,8 @@ function generateUsage (name, isFPFn) {
 
     esm: {
       title: 'ESM',
-      code: `import {${name}} from 'date-fns/esm${submodule}'`,
+      code: `import { ${name} } from 'date-fns${submodule && `/esm/${submodule}`}'`,
       text: 'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information'
-    }
-  }
-
-  if (!isFPFn) {
-    usage.umd = {
-      title: 'UMD',
-      code: `var ${name} = dateFns.${name}`
     }
   }
 

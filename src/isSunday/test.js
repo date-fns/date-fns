@@ -35,4 +35,8 @@ describe('isSunday', function () {
     var block = isSunday.bind(null, new Date(2014, 8 /* Sep */, 21), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(isSunday.bind(null), TypeError)
+  })
 })

@@ -50,6 +50,6 @@ type Locale = {
 }
 
 declare module.exports: (
-  argument: Date | string | number,
+  argument: any,
   options?: Options
 ) => Date

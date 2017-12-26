@@ -44,7 +44,7 @@ var units = {
     }
   },
 
-  isoYear: {
+  isoWeekYear: {
     priority: 10,
     set: function (dateValues, value, options) {
       dateValues.date = startOfUTCISOWeekYear(setUTCISOWeekYear(dateValues.date, value, options), options)

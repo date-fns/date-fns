@@ -13,6 +13,7 @@ import startOfSecond from '../startOfSecond/index.js'
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Boolean} the dates are in the same second
+ * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
@@ -25,6 +26,10 @@ import startOfSecond from '../startOfSecond/index.js'
  * //=> true
  */
 export default function isSameSecond (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft, dirtyOptions)
   var dateRightStartOfSecond = startOfSecond(dirtyDateRight, dirtyOptions)
 

@@ -58,4 +58,9 @@ describe('setISOWeek', function () {
     var block = setISOWeek.bind(null, new Date(2004, 7 /* Aug */, 7), 53, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(setISOWeek.bind(null), TypeError)
+    assert.throws(setISOWeek.bind(null, 1), TypeError)
+  })
 })

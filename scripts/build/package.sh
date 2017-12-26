@@ -38,6 +38,9 @@ do
   cp -r "./src/$fnDir" "$dir/esm/"
 done
 
+# Copy global flow typing
+cp ./src/index.js.flow "$dir/esm/index.js.flow"
+
 # Copy esm indices
 cp ./src/esm/index.js "$dir/esm/index.js"
 cp ./src/esm/fp/index.js "$dir/esm/fp/index.js"

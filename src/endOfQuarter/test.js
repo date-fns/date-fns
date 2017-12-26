@@ -40,4 +40,8 @@ describe('endOfQuarter', function () {
     var block = endOfQuarter.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(endOfQuarter.bind(null), TypeError)
+  })
 })

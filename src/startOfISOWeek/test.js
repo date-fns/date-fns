@@ -40,4 +40,8 @@ describe('startOfISOWeek', function () {
     var block = startOfISOWeek.bind(null, date, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(startOfISOWeek.bind(null), TypeError)
+  })
 })

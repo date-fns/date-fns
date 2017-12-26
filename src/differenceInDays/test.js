@@ -69,6 +69,21 @@ describe('differenceInDays', function () {
       )
       assert(result === 0)
     })
+
+    it('does not return -0 when given dates are the same', () => {
+      // thank you Chris West! @ChrisWestBlog, http://cwestblog.com/2014/02/25/javascript-testing-for-negative-zero/
+      function isNegative (n) {
+        return ((n = +n) || 1 / n) < 0
+      }
+
+      var result = differenceInDays(
+        new Date(2014, 8 /* Sep */, 5, 0, 0),
+        new Date(2014, 8 /* Sep */, 5, 0, 0)
+      )
+
+      var resultIsNegative = isNegative(result)
+      assert(resultIsNegative === false)
+    })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function () {
@@ -104,5 +119,10 @@ describe('differenceInDays', function () {
       {additionalDigits: NaN}
     )
     assert.throws(block, RangeError)
+  })
+
+  it('throws TypeError exception if passed less than 2 arguments', function () {
+    assert.throws(differenceInDays.bind(null), TypeError)
+    assert.throws(differenceInDays.bind(null, 1), TypeError)
   })
 })

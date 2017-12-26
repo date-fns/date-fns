@@ -34,4 +34,8 @@ describe('getTime', function () {
     var block = getTime.bind(null, new Date(timestamp), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(getTime.bind(null), TypeError)
+  })
 })

@@ -247,6 +247,12 @@ describe('toDate', function () {
       assert(result instanceof Date)
       assert(isNaN(result))
     })
+
+    it('returns Invalid Date if argument is null', function () {
+      var result = toDate(null)
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
   })
 
   it('implicitly converts options', function () {
@@ -259,5 +265,9 @@ describe('toDate', function () {
     // $ExpectedMistake
     var block = toDate.bind(null, '+12340702', {additionalDigits: 3})
     assert.throws(block, RangeError)
+  })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(toDate.bind(null), TypeError)
   })
 })
