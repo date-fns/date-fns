@@ -11,7 +11,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @category Locales
  * @summary Ukrainian locale.
  * @language Ukrainian
- * @iso-639-2 ukr
+ * @iso-639-1 uk
  * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
  */
 var locale = {
