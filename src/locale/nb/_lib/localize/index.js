@@ -3,7 +3,7 @@ import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
 var weekdayValues = {
   narrow: ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
-  short: ['sø.', 'ma.', 'ti.', 'on.', 'to.', 'fr.', 'lø.'],
+  short: ['søn.', 'man.', 'tir.', 'ons.', 'tor.', 'fre.', 'lør.'],
   long: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
 }
 
