@@ -141,7 +141,7 @@ describe('nl locale', function () {
 
       it('L', function () {
         var result = format(new Date(2017, 6 /* Jul */, 2), 'L', {locale: locale})
-        assert(result === '02/07/2017')
+        assert(result === '02-07-2017')
       })
 
       it('LL', function () {
@@ -253,7 +253,7 @@ describe('nl locale', function () {
 
     it('after the next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 11, 16, 50), baseDate, {locale: locale})
-      assert(result === '11/04/1986')
+      assert(result === '11-04-1986')
     })
   })
 
