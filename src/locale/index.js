@@ -25,6 +25,7 @@ module.exports = {
   mk: require('./mk/index.js'),
   nb: require('./nb/index.js'),
   nl: require('./nl/index.js'),
+  nlBE: require('./nl-BE/index.js'),
   pl: require('./pl/index.js'),
   pt: require('./pt/index.js'),
   ro: require('./ro/index.js'),
