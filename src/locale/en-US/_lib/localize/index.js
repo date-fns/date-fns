@@ -1,89 +1,86 @@
+import addLeadingZeros from '../../../_lib/addLeadingZeros/index.js'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
+
+var eraValues = {
+  narrow: ['B', 'A'],
+  abbreviated: ['BC', 'AD'],
+  wide: ['Before Christ', 'Anno Domini']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
+}
+
+var monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+}
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var weekdayValues = {
-  narrow: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-  short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  long: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+var dayValues = {
+  narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  wide: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 }
 
-var monthValues = {
-  short: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  long: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+var dayPeriodValues = {
+  narrow: ['a', 'p', 'mi', 'n', 'in the morning', 'in the afternoon', 'in the evening', 'at night'],
+  abbreviated: ['AM', 'PM', 'midnight', 'noon', 'in the morning', 'in the afternoon', 'in the evening', 'at night'],
+  wide: ['a.m.', 'p.m.', 'midnight', 'noon', 'in the morning', 'in the afternoon', 'in the evening', 'at night']
 }
+var dayPeriodEnumIndices = ['am', 'pm', 'midnight', 'noon', 'morning', 'afternoon', 'evening', 'night']
 
-// `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
-// Use the system which is used the most commonly in the locale.
-// For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
-//
-//   var timeOfDayValues = {
-//     any: ['in the night', 'in the morning', 'in the afternoon', 'in the evening']
-//   }
-//
-// And later:
-//
-//   var localize = {
-//     // The callback takes the hours as the argument and returns the array index
-//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
-//       if (hours >= 17) {
-//         return 3
-//       } else if (hours >= 12) {
-//         return 2
-//       } else if (hours >= 4) {
-//         return 1
-//       } else {
-//         return 0
-//       }
-//     }),
-//     timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
-//   }
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['a.m.', 'p.m.']
-}
-
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function number (dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
+  var options = dirtyOptions || {}
+  var numberString = addLeadingZeros(number, options.minLength || 0)
 
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
-  // 'dayOfMonth' or 'dayOfWeek'
+  if (options.ordinal) {
+    // If ordinal numbers depend on context, for example,
+    // if they are different for different grammatical genders,
+    // use `options.unit`:
+    //
+    //   var options = dirtyOptions || {}
+    //   var unit = String(options.unit)
+    //
+    // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
+    // 'dayOfMonth' or 'dayOfWeek'
 
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'st'
-      case 2:
-        return number + 'nd'
-      case 3:
-        return number + 'rd'
+    var rem100 = number % 100
+    if (rem100 > 20 || rem100 < 10) {
+      switch (rem100 % 10) {
+        case 1:
+          return numberString + 'st'
+        case 2:
+          return numberString + 'nd'
+        case 3:
+          return numberString + 'rd'
+      }
     }
+    return numberString + 'th'
   }
-  return number + 'th'
+
+  return numberString
 }
 
 var localize = {
-  ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+  number: number,
+  era: buildLocalizeFn(eraValues, 'wide'),
+  quarter: buildLocalizeFn(quarterValues, 'wide', function (quarter) {
+    return Number(quarter) - 1
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+  month: buildLocalizeFn(monthValues, 'wide'),
+  day: buildLocalizeFn(dayValues, 'wide'),
+  dayPeriod: buildLocalizeFn(dayPeriodValues, 'wide', function (dayPeriodEnumValue) {
+    return dayPeriodEnumIndices.indexOf(dayPeriodEnumValue)
+  })
 }
 
 export default localize

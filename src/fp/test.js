@@ -631,13 +631,13 @@ describe('FP functions', function () {
 
   it('format', function () {
     var date = new Date(2014, 3, 4).toISOString()
-    var result = fp.format('YYYY-MM-DD')(date)
+    var result = fp.format('yyyy-MM-dd')(date)
     assert(result === '2014-04-04')
   })
 
   it('formatWithOptions', function () {
     var date = new Date(2014, 3, 4).toISOString()
-    var result = fp.formatWithOptions({})('YYYY-MM-DD')(date)
+    var result = fp.formatWithOptions({})('yyyy-MM-dd')(date)
     assert(result === '2014-04-04')
   })
 
