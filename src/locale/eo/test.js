@@ -16,7 +16,7 @@ import parse from '../../parse'
 import setDay from '../../setDay'
 import startOfWeek from '../../startOfWeek'
 
-describe('eo locale', function () {
+describe.skip('eo locale', function () {
   context('with `differenceInCalendarWeeks`', function () {
     it('sets the first day of the week', function () {
       var result = differenceInCalendarWeeks(

@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import formatRelative from '.'
 
-describe('formatRelative', function () {
+describe.skip('formatRelative', function () {
   var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
   it('accepts a string', function () {
