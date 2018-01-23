@@ -61,7 +61,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 | qq      | 01, 02, 03, 04                    | yes |       |
  * |                                 | qqq     | Q1, Q2, Q3, Q4                    |     |       |
  * |                                 | qqqq    | 1st quarter, 2nd quarter, ...     |     | (2)   |
- * |                                 | qqqqq   | 1, 2, 3, 4                        | yes | (5)   |
+ * |                                 | qqqqq   | 1, 2, 3, 4                        |     | (5)   |
  * | Month (formatting)              | M       | 1, 2, ..., 12                     | yes |       |
  * |                                 | MM      | 01, 02, ..., 12                   |     |       |
  * |                                 | MMM     | Jan, Feb, ..., Dec                |     |       |
