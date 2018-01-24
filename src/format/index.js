@@ -35,7 +35,7 @@ var doubleQuoteRegExp = /''/g
  * | Unit                            | Pattern | Result examples                   | Ord | Notes |
  * |---------------------------------|---------|-----------------------------------|-----|-------|
  * | Era                             | G..GGG  | AD, BC                            |     |       |
- * |                                 | GGGG    | Anno Domini, Before Christ        |     |       |
+ * |                                 | GGGG    | Anno Domini, Before Christ        |     | (2)   |
  * |                                 | GGGGG   | A, B                              |     |       |
  * | Calendar year                   | y       | 44, 1, 1900, 2017                 | yes | (6)   |
  * |                                 | yy      | 44, 01, 00, 17                    | yes | (6)   |
@@ -99,17 +99,17 @@ var doubleQuoteRegExp = /''/g
  * | Local day of week (stand-alone) | c       | 2, 3, 4, ..., 1                   | yes |       |
  * |                                 | cc      | 02, 03, ..., 01                   | yes |       |
  * |                                 | ccc     | Mon, Tue, Wed, ..., Su            |     |       |
- * |                                 | cccc    | Monday, Tuesday, ..., Sunday      |     |       |
+ * |                                 | cccc    | Monday, Tuesday, ..., Sunday      |     | (2)   |
  * |                                 | ccccc   | M, T, W, T, F, S, S               |     |       |
  * |                                 | cccccc  | Mo, Tu, We, Th, Fr, Su, Sa        |     |       |
  * | AM, PM                          | a..aaa  | AM, PM                            |     |       |
- * |                                 | aaaa    | a.m., p.m.                        |     |       |
+ * |                                 | aaaa    | a.m., p.m.                        |     | (2)   |
  * |                                 | aaaaa   | a, p                              |     |       |
  * | AM, PM, noon, midnight          | b..bbb  | AM, PM, noon, midnight            |     |       |
- * |                                 | bbbb    | a.m., p.m., noon, midnight        |     |       |
+ * |                                 | bbbb    | a.m., p.m., noon, midnight        |     | (2)   |
  * |                                 | bbbbb   | a, p, n, mi                       |     |       |
  * | Flexible day period             | B..BBB  | at night, in the morning, ...     |     |       |
- * |                                 | BBBB    | at night, in the morning, ...     |     |       |
+ * |                                 | BBBB    | at night, in the morning, ...     |     | (2)   |
  * |                                 | BBBBB   | at night, in the morning, ...     |     |       |
  * | Hour [1-12]                     | h       | 1, 2, ..., 11, 12                 | yes |       |
  * |                                 | hh      | 01, 02, ..., 11, 12               | yes |       |
@@ -130,11 +130,11 @@ var doubleQuoteRegExp = /''/g
  * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |     |       |
  * |                                 | XX      | -0800, +0530, Z                   |     |       |
  * |                                 | XXX     | -08:00, +05:30, Z                 |     |       |
- * |                                 | XXXX    | -0800, +0530, Z, +123456          |     |       |
+ * |                                 | XXXX    | -0800, +0530, Z, +123456          |     | (2)   |
  * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |     |       |
  * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |     |       |
  * |                                 | xx      | -0800, +0530, +0000               |     |       |
- * |                                 | xxx     | -08:00, +05:30, +00:00            |     |       |
+ * |                                 | xxx     | -08:00, +05:30, +00:00            |     | (2)   |
  * |                                 | xxxx    | -0800, +0530, +0000, +123456      |     |       |
  * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |     |       |
  * Notes:
