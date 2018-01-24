@@ -147,8 +147,8 @@ var doubleQuoteRegExp = /''/g
  *   "Formatting" units are declined according to the rules of the language
  *   in the context of a date. "Stand-alone" units are always nominative singular:
  *
- *   `format(new Date(2017, 9, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
- *   `format(new Date(2017, 9, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *   `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *   `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *   the single quote characters (see below).
@@ -157,22 +157,22 @@ var doubleQuoteRegExp = /''/g
  *   the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
  *   are marked with (2) in the last column of the table.
  *
- *   `format(new Date(2017, 9, 6), 'MMM') //=> 'Nov'`
- *   `format(new Date(2017, 9, 6), 'MMMM') //=> 'November'`
- *   `format(new Date(2017, 9, 6), 'MMMMM') //=> 'N'`
- *   `format(new Date(2017, 9, 6), 'MMMMMM') //=> 'November'`
- *   `format(new Date(2017, 9, 6), 'MMMMMMM') //=> 'November'`
+ *   `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *   `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *   `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *   `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *   `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
  *
  * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
  *   The output will be padded with zeros to match the length of the pattern.
  *
- *   `format(new Date(2017, 9, 6), 'yyyyyyyy') //=> '00002017'`
+ *   `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
  *
  * 4. Symbol `o` after the pattern transforms numerical units into ordinal numbers
  *   (see "Ord" column in the table):
  *
- *   `format(new Date(2017, 9, 6), 'MMMM d') //=> 'November 6'`
- *   `format(new Date(2017, 9, 6), 'MMMM do') //=> 'November 6th'`
+ *   `format(new Date(2017, 10, 6), 'MMMM d') //=> 'November 6'`
+ *   `format(new Date(2017, 10, 6), 'MMMM do') //=> 'November 6th'`
 
  *   If the unit is non-numerical, `'o'` is ignored.
  *   (e.g. output for `LLLL` and `LLLLo` will be the same)
