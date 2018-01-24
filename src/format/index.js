@@ -27,6 +27,10 @@ var doubleQuoteRegExp = /''/g
  * @description
  * Return the formatted date string in the given format. The result may vary by locale.
  *
+ * The characters wrapped between two single quotes characters (') are escaped.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ * (see the last example)
+ *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
  * with a few additions (ISO day of week field and ordinal number modifier)
@@ -141,20 +145,44 @@ var doubleQuoteRegExp = /''/g
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *   are the same as "stand-alone" units, but are different in some languages.
  *   "Formatting" units are declined according to the rules of the language
- *   in the context of a date. "Stand-alone" units are always nominative singular.
+ *   in the context of a date. "Stand-alone" units are always nominative singular:
+ *
+ *   `format(new Date(2017, 9, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *   `format(new Date(2017, 9, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *   the single quote characters (see below).
  *   If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
  *   the output will be the same as default pattern for this unit, usually
  *   the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
  *   are marked with (2) in the last column of the table.
- * 3. Some patterns could be unlimited length (such as `yyyyyyyyy`).
+ *
+ *   `format(new Date(2017, 9, 6), 'MMM') //=> 'Nov'`
+ *   `format(new Date(2017, 9, 6), 'MMMM') //=> 'November'`
+ *   `format(new Date(2017, 9, 6), 'MMMMM') //=> 'N'`
+ *   `format(new Date(2017, 9, 6), 'MMMMMM') //=> 'November'`
+ *   `format(new Date(2017, 9, 6), 'MMMMMMM') //=> 'November'`
+ *
+ * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
  *   The output will be padded with zeros to match the length of the pattern.
+ *
+ *   `format(new Date(2017, 9, 6), 'yyyyyyyy') //=> '00002017'`
+ *
  * 4. Symbol `o` after the pattern transforms numerical units into ordinal numbers
- *   (see "Ord" column in the table). If the unit is non-numerical, `'o'` is ignored.
+ *   (see "Ord" column in the table):
+ *
+ *   `format(new Date(2017, 9, 6), 'MMMM d') //=> 'November 6'`
+ *   `format(new Date(2017, 9, 6), 'MMMM do') //=> 'November 6th'`
+
+ *   If the unit is non-numerical, `'o'` is ignored.
  *   (e.g. output for `LLLL` and `LLLLo` will be the same)
+ *
  * 5. `QQQQQ` and `qqqqq` could be not numerical in some locales.
  *   They are never transformed by ordinal number indicator.
+ *
+ *   `format(new Date(2018, 0, 1), "Qo 'quarter'") //=> '1st quarter'`
+ *   `format(new Date(2018, 0, 1), "QQQQQo 'quarter'") //=> '1 quarter'`
+ *
  * 6. The main difference between `y` and `u` patterns are B.C. years:
  *   | Year | `y` | `u` |
  *   |------|-----|-----|
@@ -169,10 +197,6 @@ var doubleQuoteRegExp = /''/g
  *   | 14   |   14 |   14 |
  *   | 376  |   76 |  376 |
  *   | 1453 |   53 | 1453 |
- *
- * The characters wrapped between two single quotes characters (') are escaped.
- * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote
- * (see the last example)
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
