@@ -29,7 +29,7 @@ var doubleQuoteRegExp = /''/g
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few minor changes (see note 7 below the table here)
+ * with a few additions (ISO day of week field and ordinal number modifier)
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   | Ord | Notes |
@@ -80,12 +80,16 @@ var doubleQuoteRegExp = /''/g
  * |                                 | DD      | 01, 02, ..., 365, 366             | yes |       |
  * |                                 | DDD     | 001, 002, ..., 365, 366           | yes |       |
  * |                                 | DDDD+   | ...                               | yes | (3)   |
- * | ISO day of week (formatting)    | E       | 1, 2, ..., 7                      | yes | (7)   |
- * |                                 | EE      | 01, 02, ..., 07                   | yes | (7)   |
- * |                                 | EEE     | Mon, Tue, Wed, ..., Su            |     |       |
+ * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |     |       |
  * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      |     | (2)   |
  * |                                 | EEEEE   | M, T, W, T, F, S, S               |     |       |
  * |                                 | EEEEEE  | Mo, Tu, We, Th, Fr, Su, Sa        |     |       |
+ * | ISO day of week (formatting)    | i       | 1, 2, 3, ..., 7                   | yes |       |
+ * |                                 | ii      | 01, 02, ..., 07                   | yes |       |
+ * |                                 | iii     | Mon, Tue, Wed, ..., Su            |     |       |
+ * |                                 | iiii    | Monday, Tuesday, ..., Sunday      |     | (2)   |
+ * |                                 | iiiii   | M, T, W, T, F, S, S               |     |       |
+ * |                                 | iiiiii  | Mo, Tu, We, Th, Fr, Su, Sa        |     |       |
  * | Local day of week (formatting)  | e       | 2, 3, 4, ..., 1                   | yes |       |
  * |                                 | ee      | 02, 03, ..., 01                   | yes |       |
  * |                                 | eee     | Mon, Tue, Wed, ..., Su            |     |       |
@@ -165,8 +169,6 @@ var doubleQuoteRegExp = /''/g
  *   | 14   |   14 |   14 |
  *   | 376  |   76 |  376 |
  *   | 1453 |   53 | 1453 |
- * 7. Patterns `E` and `EE` are different from those described in UTS #35.
- *   In this function they will always result in 1 for Monday, 2 for Tuesday etc.
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.

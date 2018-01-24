@@ -206,16 +206,23 @@ describe('format', function () {
   })
 
   describe('week day', function () {
+    describe('day of week', function () {
+      it('works as expected', function () {
+        var result = format(date, 'E EE EEE EEEE EEEEE EEEEEE')
+        assert(result === 'Fri Fri Fri Friday F Fr')
+      })
+    })
+
     describe('ISO day of week', function () {
       it('works as expected', function () {
-        var result = format(date, 'E Eo EE EEo EEE EEEE EEEEE EEEEEE')
+        var result = format(date, 'i io ii iio iii iiii iiiii iiiiii')
         assert(result === '5 5th 05 05th Fri Friday F Fr')
       })
 
       it('returns a correct day of an ISO week', function () {
         var result = []
         for (var i = 1; i <= 7; i++) {
-          result.push(format(new Date(1986, 8 /* Sep */, i), 'E'))
+          result.push(format(new Date(1986, 8 /* Sep */, i), 'i'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
         assert.deepEqual(result, expected)
@@ -423,7 +430,7 @@ describe('format', function () {
       var initialDate = new Date(0)
       initialDate.setFullYear(7, 11 /* Dec */, 31)
       initialDate.setHours(0, 0, 0, 0)
-      assert(format(initialDate, 'Y ww E') === '8 01 1')
+      assert(format(initialDate, 'Y ww i') === '8 01 1')
     })
   })
 

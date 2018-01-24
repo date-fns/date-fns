@@ -20,11 +20,11 @@ var dayPeriodEnum = {
  * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
  * |  c  | Stand-alone local day of week  |  C  | Localized hour w/ day period   |
  * |  d  | Day of month                   |  D  | Day of year                    |
- * |  e  | Local day of week              |  E^ | Day of week                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
  * |  f  |                                |  F* | Day of week in month           |
  * |  g  | Modified Julian day            |  G  | Era                            |
  * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
- * |  i  |                                |  I  |                                |
+ * |  i! | ISO day of week                |  I  |                                |
  * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
  * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
  * |  l* | (deprecated)                   |  L  | Stand-alone month              |
@@ -48,9 +48,8 @@ var dayPeriodEnum = {
  * Letters marked by ! are non-standard, but implemented by date-fns:
  * - `o` modifies the previous token to turn it into an ordinal.
  *   Has no effect on non-number tokens (see `format` docs)
- *
- * Letters marked by & are modified by date-fns:
- * - `E` and `EE` are numeric ISO week days, i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
  */
 
 var formatters = {
@@ -297,15 +296,9 @@ var formatters = {
   E: function (pattern, date, localize, options) {
     var dayOfWeek = date.getUTCDay()
     switch (pattern.length) {
-      case 1: // 2
-      case 2: // 02
-        var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
-        return localize.number(isoDayOfWeek, {
-          minLength: pattern.length,
-          ordinal: options.ordinal,
-          unit: 'day'
-        })
       // Tue
+      case 1:
+      case 2:
       case 3:
         return localize.day(dayOfWeek, {width: 'abbreviated', context: 'formatting'})
       // T
@@ -381,6 +374,34 @@ var formatters = {
       case 4:
       default:
         return localize.day(dayOfWeek, {width: 'wide', context: 'standalone'})
+    }
+  },
+
+  // ISO day of week
+  i: function (pattern, date, localize, options) {
+    var dayOfWeek = date.getUTCDay()
+    switch (pattern.length) {
+      case 1: // 2
+      case 2: // 02
+        var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
+        return localize.number(isoDayOfWeek, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'day'
+        })
+      // Tue
+      case 3:
+        return localize.day(dayOfWeek, {width: 'abbreviated', context: 'formatting'})
+      // T
+      case 5:
+        return localize.day(dayOfWeek, {width: 'narrow', context: 'formatting'})
+      // Tu
+      case 6:
+        return localize.day(dayOfWeek, {width: 'short', context: 'formatting'})
+      // Tuesday
+      case 4:
+      default:
+        return localize.day(dayOfWeek, {width: 'wide', context: 'formatting'})
     }
   },
 
