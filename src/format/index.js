@@ -171,7 +171,8 @@ var doubleQuoteRegExp = /''/g
  *   | 1453 |   53 | 1453 |
  *
  * The characters wrapped between two single quotes characters (') are escaped.
- * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
+ * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote
+ * (see the last example)
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
@@ -188,7 +189,7 @@ var doubleQuoteRegExp = /''/g
  * // Represent 11 February 2014 in middle-endian format:
  * var result = format(
  *   new Date(2014, 1, 11),
- *   'MM/DD/YYYY'
+ *   'MM/dd/yyyy'
  * )
  * //=> '02/11/2014'
  *
@@ -197,10 +198,18 @@ var doubleQuoteRegExp = /''/g
  * import { eoLocale } from 'date-fns/locale/eo'
  * var result = format(
  *   new Date(2014, 6, 2),
- *   'Do [de] MMMM YYYY',
+ *   "do 'de' MMMM yyyy",
  *   {locale: eoLocale}
  * )
  * //=> '2-a de julio 2014'
+ *
+ * @example
+ * // Escape string by single quote characters:
+ * var result = format(
+ *   new Date(2014, 6, 2, 15),
+ *   "h 'o''clock'"
+ * )
+ * //=> "3 o'clock"
  */
 export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   if (arguments.length < 2) {
