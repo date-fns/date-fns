@@ -33,7 +33,7 @@ var doubleQuoteRegExp = /''/g
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (ISO day of week field and ordinal number modifier)
+ * with a few additions (ISO day of week field, seconds and milliseconds timestamps, and ordinal number modifier)
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   | Ord | Notes |
@@ -141,6 +141,10 @@ var doubleQuoteRegExp = /''/g
  * |                                 | xxx     | -08:00, +05:30, +00:00            |     | (2)   |
  * |                                 | xxxx    | -0800, +0530, +0000, +123456      |     |       |
  * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |     |       |
+ * | Seconds timestamp               | t       | 512969520                         |     |       |
+ * |                                 | tt+     | ...                               |     | (3)   |
+ * | Milliseconds timestamp          | T       | 512969520900                      |     |       |
+ * |                                 | TT+     | ...                               |     | (3)   |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *   are the same as "stand-alone" units, but are different in some languages.

@@ -657,8 +657,6 @@ var formatters = {
     }
   },
 
-  // Non-standard
-
   // Seconds timestamp
   t: function (pattern, date, localize, options) {
     var originalDate = options._originalDate || date
