@@ -64,6 +64,7 @@ var patterns = {
  * @param {*} argument - the value to convert
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
+ * @param {string} [options.timeZone] - the time zone to use. Default is local time. Valid options are 'UTC' or Area/Location such as 'America/Cancun'.
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
@@ -95,6 +96,11 @@ export default function toDate (argument, dirtyOptions) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
 
+  if (options.timeZone) {
+    // Validate the time zone. Throws RangeError if time zone is invalid
+    new Intl.DateTimeFormat('en-US', { timeZone: options.timeZone }).format()
+  }
+
   // Clone the date
   if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
@@ -122,6 +128,8 @@ export default function toDate (argument, dirtyOptions) {
 
     if (dateStrings.timezone) {
       offset = parseTimezone(dateStrings.timezone)
+    } else if (options.timeZone) {
+      offset = -tzOffset(timestamp + time, options.timeZone)
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = new Date(timestamp + time).getTimezoneOffset()
@@ -329,4 +337,64 @@ function dayOfISOWeekYear (isoWeekYear, week, day) {
   var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
+}
+
+// The code below is borrowed from Luxon under the MIT license
+
+const dtfCache = {}
+function makeDTF (zone) {
+  if (!dtfCache[zone]) {
+    dtfCache[zone] = new Intl.DateTimeFormat('en-US', {
+      hour12: false,
+      timeZone: zone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
+  }
+  return dtfCache[zone]
+}
+
+function tzOffset (ts, zoneName) {
+  const date = new Date(ts)
+  const dtf = makeDTF(zoneName)
+  const [fYear, fMonth, fDay, fHour, fMinute, fSecond] =
+      dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date)
+  const asUTC = Date.UTC(fYear, fMonth - 1, fDay, fHour, fMinute, fSecond)
+  let asTS = date.valueOf()
+  asTS -= asTS % 1000
+  return (asUTC - asTS) / (60 * 1000)
+}
+
+const typeToPos = {
+  year: 0,
+  month: 1,
+  day: 2,
+  hour: 3,
+  minute: 4,
+  second: 5
+}
+
+function hackyOffset (dtf, date) {
+  const formatted = dtf.format(date).replace(/\u200E/g, '')
+  const parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted)
+  const [, fMonth, fDay, fYear, fHour, fMinute, fSecond] = parsed
+  return [fYear, fMonth, fDay, fHour, fMinute, fSecond]
+}
+
+function partsOffset (dtf, date) {
+  const formatted = dtf.formatToParts(date)
+  const filled = []
+  for (let i = 0; i < formatted.length; i++) {
+    const { type, value } = formatted[i]
+    const pos = typeToPos[type]
+
+    if (pos !== 'undefined') {
+      filled[pos] = parseInt(value, 10)
+    }
+  }
+  return filled
 }
