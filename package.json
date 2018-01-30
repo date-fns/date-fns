@@ -1,7 +1,7 @@
 {
   "name": "date-fns",
   "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
-  "side-effects": false,
+  "sideEffects": false,
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
     "Lesha Koss <regiusprod@gmail.com>"
