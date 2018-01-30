@@ -9,6 +9,9 @@
  * @property {0|1|2|3|4|5|6} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
  *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`
+ * @property {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January,
+ *   which is always in the first week of the year.
+ *   Used by `format`, `getWeek`, `getWeekYear` and `startOfWeekYear`.
  * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
@@ -30,6 +33,8 @@
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6.
  *   Thrown by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
  *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`.
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7.
+ *   Thrown by `format`, `getWeek`, `getWeekYear` and `startOfWeekYear`.
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'.
  *   Thrown by `formatDistanceStrict`
  * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'.
@@ -54,7 +59,7 @@
  *   additionalDigits: 1,
  *   locale: eoLocale
  * }
- * var result = format(startOfWeek('+12345-12-15', options), 'dddd, D MMMM YYYY', options)
+ * var result = format(startOfWeek('+12345-12-15', options), 'EEEE, d MMMM yyyy', options)
  * //=> 'lundo, 10 decembro 12345'
  */
 var Options = {}
