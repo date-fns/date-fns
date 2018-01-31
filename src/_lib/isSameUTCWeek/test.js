@@ -125,4 +125,8 @@ describe('isSameUTCWeek', function () {
     )
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(isSameUTCWeek.bind(null, 1), TypeError)
+  })
 })
