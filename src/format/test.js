@@ -93,33 +93,72 @@ describe('format', function () {
       })
     })
 
-    describe('week-numbering year', function () {
+    describe('local week-numbering year', function () {
       it('works as expected', function () {
         var result = format(date, 'Y Yo YY YYo YYY YYYY YYYYY YYYYYo')
         assert(result === '1986 1986th 86 86th 1986 1986 01986 01986th')
       })
 
       it('the first week of the next year', function () {
-        var result = format(new Date(2013, 11 /* Dec */, 30), 'YYYY')
+        var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY')
+        assert(result === '2014')
+      })
+
+      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
+        var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4
+        })
+        assert(result === '2013')
+      })
+
+      it('the first week of year', function () {
+        var result = format(new Date(2016, 0 /* Jan */, 1), 'YYYY')
+        assert(result === '2016')
+      })
+
+      it('1 BC formats as 1', function () {
+        var date = new Date(0, 6 /* Jul */, 2)
+        date.setFullYear(0)
+        var result = format(date, 'Y')
+        assert(result === '1')
+      })
+
+      it('2 BC formats as 2', function () {
+        var date = new Date(0, 6 /* Jul */, 2)
+        date.setFullYear(-1)
+        var result = format(date, 'Y')
+        assert(result === '2')
+      })
+    })
+
+    describe('ISO week-numbering year', function () {
+      it('works as expected', function () {
+        var result = format(date, 'R Ro RR RRo RRR RRRR RRRRR RRRRRo')
+        assert(result === '1986 1986th 1986 1986th 1986 1986 01986 01986th')
+      })
+
+      it('the first week of the next year', function () {
+        var result = format(new Date(2013, 11 /* Dec */, 30), 'RRRR')
         assert(result === '2014')
       })
 
       it('the last week of the previous year', function () {
-        var result = format(new Date(2016, 0 /* Jan */, 1), 'YYYY')
+        var result = format(new Date(2016, 0 /* Jan */, 1), 'RRRR')
         assert(result === '2015')
       })
 
       it('1 BC formats as 0', function () {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(0)
-        var result = format(date, 'Y')
+        var result = format(date, 'R')
         assert(result === '0')
       })
 
       it('2 BC formats as -1', function () {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(-1)
-        var result = format(date, 'Y')
+        var result = format(date, 'R')
         assert(result === '-1')
       })
     })
@@ -180,9 +219,27 @@ describe('format', function () {
   })
 
   describe('week', function () {
-    it('week of year', function () {
-      var result = format(date, 'w ww')
-      assert(result === '14 14')
+    describe('local week of year', function () {
+      it('works as expected', function () {
+        var date = new Date(1986, 3 /* Apr */, 6)
+        var result = format(date, 'w wo ww')
+        assert(result === '15 15th 15')
+      })
+
+      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
+        var date = new Date(1986, 3 /* Apr */, 6)
+        var result = format(date, 'w wo ww', {
+          weekStartsOn: 1,
+          firstWeekContainsDate: 4
+        })
+        assert(result === '14 14th 14')
+      })
+    })
+
+    it('ISO week of year', function () {
+      var date = new Date(1986, 3 /* Apr */, 6)
+      var result = format(date, 'I Io II')
+      assert(result === '14 14th 14')
     })
   })
 
@@ -446,6 +503,18 @@ describe('format', function () {
 
   it.skip('custom locale', function () {
 
+  })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    // $ExpectedMistake
+    var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {weekStartsOn: NaN})
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
+    // $ExpectedMistake
+    var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {firstWeekContainsDate: NaN})
+    assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {

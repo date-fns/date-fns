@@ -33,7 +33,12 @@ var doubleQuoteRegExp = /''/g
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (ISO day of week field, seconds and milliseconds timestamps, and ordinal number modifier)
+ * with a few additions:
+ * - ISO day of week field (`i`)
+ * - ISO week of year (`I`)
+ * - ISO week-numbering year (`R`)
+ * - seconds (`t`) and milliseconds (`T`) timestamps
+ * - ordinal number modifier (`o`)
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   | Ord | Notes |
@@ -46,11 +51,16 @@ var doubleQuoteRegExp = /''/g
  * |                                 | yyy     | 044, 001, 1900, 2017              | yes | (6)   |
  * |                                 | yyyy    | 0044, 0001, 1900, 2017            | yes | (6)   |
  * |                                 | yyyyy+  | ...                               | yes | (3,6) |
- * | ISO week-numbering year         | Y       | -43, 1, 1900, 2017                | yes |       |
- * |                                 | YY      | -43, 01, 00, 17                   | yes |       |
- * |                                 | YYY     | -043, 001, 1900, 2017             | yes |       |
- * |                                 | YYYY    | -0043, 0001, 1900, 2017           | yes |       |
- * |                                 | YYYYY+  | ...                               | yes | (6)   |
+ * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | yes | (6)   |
+ * |                                 | YY      | 44, 01, 00, 17                    | yes | (6)   |
+ * |                                 | YYY     | 044, 001, 1900, 2017              | yes | (6)   |
+ * |                                 | YYYY    | 0044, 0001, 1900, 2017            | yes | (6)   |
+ * |                                 | YYYYY+  | ...                               | yes | (3,6) |
+ * | ISO week-numbering year         | R       | -43, 1, 1900, 2017                | yes | (6)   |
+ * |                                 | RR      | -43, 01, 00, 17                   | yes | (6)   |
+ * |                                 | RRR     | -043, 001, 1900, 2017             | yes | (6)   |
+ * |                                 | RRRR    | -0043, 0001, 1900, 2017           | yes | (6)   |
+ * |                                 | RRRRR+  | ...                               | yes | (3,6) |
  * | Extended year                   | u       | -43, 1, 1900, 2017                | yes | (6)   |
  * |                                 | uu      | -43, 01, 1900, 2017               | yes | (6)   |
  * |                                 | uuu     | -043, 001, 1900, 2017             | yes | (6)   |
@@ -76,8 +86,10 @@ var doubleQuoteRegExp = /''/g
  * |                                 | LLL     | Jan, Feb, ..., Dec                |     |       |
  * |                                 | LLLL    | January, February, ..., December  |     | (2)   |
  * |                                 | LLLLL   | J, F, ..., D                      |     |       |
- * | ISO week of year                | w       | 1, 2, ..., 53                     | yes |       |
+ * | Local week of year              | w       | 1, 2, ..., 53                     | yes |       |
  * |                                 | ww      | 01, 02, ..., 53                   | yes |       |
+ * | ISO week of year                | I       | 1, 2, ..., 53                     | yes |       |
+ * |                                 | II      | 01, 02, ..., 53                   | yes |       |
  * | Day of month                    | d       | 1, 2, ..., 31                     | yes |       |
  * |                                 | dd      | 01, 02, ..., 31                   | yes |       |
  * | Day of year                     | D       | 1, 2, ..., 365, 366               | yes |       |
@@ -201,17 +213,25 @@ var doubleQuoteRegExp = /''/g
  *   | 14   |   14 |   14 |
  *   | 376  |   76 |  376 |
  *   | 1453 |   53 | 1453 |
+ *   The same is true for local and ISO week-numbering years (`Y` and `R`),
+ *   except local week-numbering years are dependent on `options.weekStartsOn`
+ *   and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
+ *   and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -249,6 +269,32 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
 
   var locale = options.locale || defaultLocale
 
+  var localeFirstWeekContainsDate =
+    locale.options &&
+    locale.options.firstWeekContainsDate
+  var defaultFirstWeekContainsDate =
+    localeFirstWeekContainsDate === undefined
+      ? 1
+      : Number(localeFirstWeekContainsDate)
+  var firstWeekContainsDate =
+    options.firstWeekContainsDate === undefined
+      ? defaultFirstWeekContainsDate
+      : Number(options.firstWeekContainsDate)
+
+  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
+    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
+  }
+
+  var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
+  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
+  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
+
+  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
+    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
+  }
+
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
   }
@@ -266,17 +312,18 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
 
   var result = formatStr.match(formattingTokensRegExp)
-    .map(function (substring) {
+    .map(function (dirtySubstring) {
       // Replace two single quote characters with one single quote character
-      if (substring === "''") {
+      if (dirtySubstring === "''") {
         return "'"
       }
 
-      var firstCharacter = substring[0]
+      var firstCharacter = dirtySubstring[0]
       if (firstCharacter === "'") {
-        return cleanEscapedString(substring)
+        return cleanEscapedString(dirtySubstring)
       }
 
+      var substring = dirtySubstring
       // Detect ordinal modifier
       var ordinal = false
       var lastCharacter = substring[substring.length - 1]
@@ -286,7 +333,8 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
       }
 
       var formatterOptions = {
-        weekStartsOn: options.weekStartsOn,
+        firstWeekContainsDate: firstWeekContainsDate,
+        weekStartsOn: weekStartsOn,
         ordinal: ordinal,
         locale: locale,
         _originalDate: originalDate
@@ -297,7 +345,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
         return formatter(substring, utcDate, locale.localize, formatterOptions)
       }
 
-      return substring
+      return dirtySubstring
     })
     .join('')
 

@@ -1,6 +1,8 @@
 import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
 import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
 import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
+import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
 
 var dayPeriodEnum = {
   am: 'am',
@@ -24,7 +26,7 @@ var dayPeriodEnum = {
  * |  f  |                                |  F* | Day of week in month           |
  * |  g  | Modified Julian day            |  G  | Era                            |
  * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
- * |  i! | ISO day of week                |  I  |                                |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
  * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
  * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
  * |  l* | (deprecated)                   |  L  | Stand-alone month              |
@@ -33,14 +35,14 @@ var dayPeriodEnum = {
  * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
  * |  p  |                                |  P  |                                |
  * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
- * |  r* | Related Gregorian year         |  R  |                                |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
  * |  s  | Second                         |  S  | Fraction of second             |
  * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
  * |  u  | Extended year                  |  U* | Cyclic year                    |
  * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
- * |  w  | ISO week of year               |  W* | Week of month                  |
+ * |  w  | Local week of year             |  W* | Week of month                  |
  * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
- * |  y  | Year (abs)                     |  Y  | ISO week-numbering year        |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
  * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
  *
  * Letters marked by * are not implemented but reserved by Unicode standard.
@@ -50,6 +52,12 @@ var dayPeriodEnum = {
  *   Has no effect on non-number tokens (see `format` docs)
  * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
  *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
  */
 
 var formatters = {
@@ -106,19 +114,32 @@ var formatters = {
     })
   },
 
-  // ISO week-numbering year
+  // Local week-numbering year
   Y: function (pattern, date, localize, options) {
-    var isoWeekYear = getUTCISOWeekYear(date, options)
+    var signedWeekYear = getUTCWeekYear(date, options)
+    var weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear
 
     // Two digit year
     if (pattern.length === 2) {
-      var twoDigitYear = isoWeekYear % 100
+      var twoDigitYear = weekYear % 100
       return localize.number(twoDigitYear, {
         minLength: 2,
         ordinal: options.ordinal,
         unit: 'year'
       })
     }
+
+    // Padding
+    return localize.number(weekYear, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'year'
+    })
+  },
+
+  // ISO week-numbering year
+  R: function (pattern, date, localize, options) {
+    var isoWeekYear = getUTCISOWeekYear(date, options)
 
     // Padding
     return localize.number(isoWeekYear, {
@@ -252,8 +273,18 @@ var formatters = {
     }
   },
 
-  // ISO week of year
+  // Local week of year
   w: function (pattern, date, localize, options) {
+    var week = getUTCWeek(date, options)
+    return localize.number(week, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'week'
+    })
+  },
+
+  // ISO week of year
+  I: function (pattern, date, localize, options) {
     var isoWeek = getUTCISOWeek(date, options)
     return localize.number(isoWeek, {
       minLength: pattern.length,
@@ -320,11 +351,7 @@ var formatters = {
     switch (pattern.length) {
       case 1: // Numerical value (Nth day of week with current locale or weekStartsOn)
       case 2: // Padded numerical value
-        var locale = options.locale
-        var localeWeekStartsOn = locale && locale.options && locale.options.weekStartsOn
-        var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
-        var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
-        var localDayOfWeek = ((dayOfWeek - weekStartsOn + 8) % 7) || 7
+        var localDayOfWeek = ((dayOfWeek - options.weekStartsOn + 8) % 7) || 7
         return localize.number(localDayOfWeek, {
           minLength: pattern.length,
           ordinal: options.ordinal,
