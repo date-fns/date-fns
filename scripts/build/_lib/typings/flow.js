@@ -111,10 +111,7 @@ function generateFlowFPFnIndexTyping (fns, aliasDeclarations) {
     ${addSeparator(getFlowFPTypeAliases(), '\n')}
 
     declare module.exports: {
-      ${addSeparator(
-        fnsDeclarations,
-        ','
-      )}
+      ${addSeparator(fnsDeclarations, ',')}
     }
   `
 
@@ -141,10 +138,7 @@ function generateFlowLocaleIndexTyping (locales, localeAliasDeclaration) {
     ${localeAliasDeclaration}
 
     declare module.exports: {
-      ${addSeparator(
-        locales.map(({name}) => `${name}: Locale`),
-        ','
-      )}
+      ${addSeparator(locales.map(({name}) => `${name}: Locale`), ',')}
     }
   `
 

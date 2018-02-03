@@ -1,257 +1,712 @@
 import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
 import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
 import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
+import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
+
+var dayPeriodEnum = {
+  am: 'am',
+  pm: 'pm',
+  midnight: 'midnight',
+  noon: 'noon',
+  morning: 'morning',
+  afternoon: 'afternoon',
+  evening: 'evening',
+  night: 'night'
+}
+
+/*
+ * |     | Unit                           |     | Unit                           |
+ * |-----|--------------------------------|-----|--------------------------------|
+ * |  a  | AM, PM                         |  A* | Milliseconds in day            |
+ * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
+ * |  c  | Stand-alone local day of week  |  C  | Localized hour w/ day period   |
+ * |  d  | Day of month                   |  D  | Day of year                    |
+ * |  e  | Local day of week              |  E  | Day of week                    |
+ * |  f  |                                |  F* | Day of week in month           |
+ * |  g  | Modified Julian day            |  G  | Era                            |
+ * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
+ * |  i! | ISO day of week                |  I! | ISO week of year               |
+ * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
+ * |  k  | Hour [1-24]                    |  K  | Hour [0-11]                    |
+ * |  l* | (deprecated)                   |  L  | Stand-alone month              |
+ * |  m  | Minute                         |  M  | Month                          |
+ * |  n  |                                |  N  |                                |
+ * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
+ * |  p  |                                |  P  |                                |
+ * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
+ * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
+ * |  s  | Second                         |  S  | Fraction of second             |
+ * |  t! | Seconds timestamp              |  T! | Milliseconds timestamp         |
+ * |  u  | Extended year                  |  U* | Cyclic year                    |
+ * |  v* | Timezone (generic non-locat.)  |  V* | Timezone (location)            |
+ * |  w  | Local week of year             |  W* | Week of month                  |
+ * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
+ * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
+ * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ *
+ * Letters marked by * are not implemented but reserved by Unicode standard.
+ *
+ * Letters marked by ! are non-standard, but implemented by date-fns:
+ * - `o` modifies the previous token to turn it into an ordinal.
+ *   Has no effect on non-number tokens (see `format` docs)
+ * - `i` is ISO day of week. For `i` and `ii` is returns numeric ISO week days,
+ *   i.e. 7 for Sunday, 1 for Monday, etc.
+ * - `I` is ISO week of year, as opposed to `w` which is local week of year.
+ * - `R` is ISO week-numbering year, as opposed to `Y` which is local week-numbering year.
+ *   `R` is supposed to be used in conjunction with `I` and `i`
+ *   for universal ISO week-numbering date, whereas
+ *   `Y` is supposed to be used in conjunction with `w` and `e`
+ *   for week-numbering date specific to the locale.
+ */
 
 var formatters = {
-  // Month: 1, 2, ..., 12
-  'M': function (date) {
-    return date.getUTCMonth() + 1
-  },
-
-  // Month: 1st, 2nd, ..., 12th
-  'Mo': function (date, options) {
-    var month = date.getUTCMonth() + 1
-    return options.locale.localize.ordinalNumber(month, {unit: 'month'})
-  },
-
-  // Month: 01, 02, ..., 12
-  'MM': function (date) {
-    return addLeadingZeros(date.getUTCMonth() + 1, 2)
-  },
-
-  // Month: Jan, Feb, ..., Dec
-  'MMM': function (date, options) {
-    return options.locale.localize.month(date.getUTCMonth(), {type: 'short'})
-  },
-
-  // Month: January, February, ..., December
-  'MMMM': function (date, options) {
-    return options.locale.localize.month(date.getUTCMonth(), {type: 'long'})
-  },
-
-  // Quarter: 1, 2, 3, 4
-  'Q': function (date) {
-    return Math.ceil((date.getUTCMonth() + 1) / 3)
-  },
-
-  // Quarter: 1st, 2nd, 3rd, 4th
-  'Qo': function (date, options) {
-    var quarter = Math.ceil((date.getUTCMonth() + 1) / 3)
-    return options.locale.localize.ordinalNumber(quarter, {unit: 'quarter'})
-  },
-
-  // Day of month: 1, 2, ..., 31
-  'D': function (date) {
-    return date.getUTCDate()
-  },
-
-  // Day of month: 1st, 2nd, ..., 31st
-  'Do': function (date, options) {
-    return options.locale.localize.ordinalNumber(date.getUTCDate(), {unit: 'dayOfMonth'})
-  },
-
-  // Day of month: 01, 02, ..., 31
-  'DD': function (date) {
-    return addLeadingZeros(date.getUTCDate(), 2)
-  },
-
-  // Day of year: 1, 2, ..., 366
-  'DDD': function (date) {
-    return getUTCDayOfYear(date)
-  },
-
-  // Day of year: 1st, 2nd, ..., 366th
-  'DDDo': function (date, options) {
-    return options.locale.localize.ordinalNumber(getUTCDayOfYear(date), {unit: 'dayOfYear'})
-  },
-
-  // Day of year: 001, 002, ..., 366
-  'DDDD': function (date) {
-    return addLeadingZeros(getUTCDayOfYear(date), 3)
-  },
-
-  // Day of week: Su, Mo, ..., Sa
-  'dd': function (date, options) {
-    return options.locale.localize.weekday(date.getUTCDay(), {type: 'narrow'})
-  },
-
-  // Day of week: Sun, Mon, ..., Sat
-  'ddd': function (date, options) {
-    return options.locale.localize.weekday(date.getUTCDay(), {type: 'short'})
-  },
-
-  // Day of week: Sunday, Monday, ..., Saturday
-  'dddd': function (date, options) {
-    return options.locale.localize.weekday(date.getUTCDay(), {type: 'long'})
-  },
-
-  // Day of week: 0, 1, ..., 6
-  'd': function (date) {
-    return date.getUTCDay()
-  },
-
-  // Day of week: 0th, 1st, 2nd, ..., 6th
-  'do': function (date, options) {
-    return options.locale.localize.ordinalNumber(date.getUTCDay(), {unit: 'dayOfWeek'})
-  },
-
-  // Day of ISO week: 1, 2, ..., 7
-  'E': function (date) {
-    return date.getUTCDay() || 7
-  },
-
-  // ISO week: 1, 2, ..., 53
-  'W': function (date) {
-    return getUTCISOWeek(date)
-  },
-
-  // ISO week: 1st, 2nd, ..., 53th
-  'Wo': function (date, options) {
-    return options.locale.localize.ordinalNumber(getUTCISOWeek(date), {unit: 'isoWeek'})
-  },
-
-  // ISO week: 01, 02, ..., 53
-  'WW': function (date) {
-    return addLeadingZeros(getUTCISOWeek(date), 2)
-  },
-
-  // Year: 00, 01, ..., 99
-  'YY': function (date) {
-    return addLeadingZeros(date.getUTCFullYear(), 4).substr(2)
-  },
-
-  // Year: 1900, 1901, ..., 2099
-  'YYYY': function (date) {
-    return addLeadingZeros(date.getUTCFullYear(), 4)
-  },
-
-  // ISO week-numbering year: 00, 01, ..., 99
-  'GG': function (date) {
-    return String(getUTCISOWeekYear(date)).substr(2)
-  },
-
-  // ISO week-numbering year: 1900, 1901, ..., 2099
-  'GGGG': function (date) {
-    return getUTCISOWeekYear(date)
-  },
-
-  // Hour: 0, 1, ... 23
-  'H': function (date) {
-    return date.getUTCHours()
-  },
-
-  // Hour: 00, 01, ..., 23
-  'HH': function (date) {
-    return addLeadingZeros(date.getUTCHours(), 2)
-  },
-
-  // Hour: 1, 2, ..., 12
-  'h': function (date) {
-    var hours = date.getUTCHours()
-    if (hours === 0) {
-      return 12
-    } else if (hours > 12) {
-      return hours % 12
-    } else {
-      return hours
+  // Era
+  G: function (pattern, date, localize) {
+    var era = date.getUTCFullYear() > 0 ? 1 : 0
+    switch (pattern.length) {
+      // AD, BC
+      case 1:
+      case 2:
+      case 3:
+        return localize.era(era, {width: 'abbreviated'})
+      // A, B
+      case 5:
+        return localize.era(era, {width: 'narrow'})
+      // Anno Domini, Before Christ
+      case 4:
+      default:
+        return localize.era(era, {width: 'wide'})
     }
   },
 
-  // Hour: 01, 02, ..., 12
-  'hh': function (date) {
-    return addLeadingZeros(formatters['h'](date), 2)
+  // Year
+  y: function (pattern, date, localize, options) {
+    // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+    // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
+    // |----------|-------|----|-------|-------|-------|
+    // | AD 1     |     1 | 01 |   001 |  0001 | 00001 |
+    // | AD 12    |    12 | 12 |   012 |  0012 | 00012 |
+    // | AD 123   |   123 | 23 |   123 |  0123 | 00123 |
+    // | AD 1234  |  1234 | 34 |  1234 |  1234 | 01234 |
+    // | AD 12345 | 12345 | 45 | 12345 | 12345 | 12345 |
+
+    var signedYear = date.getUTCFullYear()
+
+    // Returns 1 for 1 BC (which is year 0 in JavaScript)
+    var year = signedYear > 0 ? signedYear : 1 - signedYear
+
+    // Two digit year
+    if (pattern.length === 2) {
+      var twoDigitYear = year % 100
+      return localize.number(twoDigitYear, {
+        minLength: 2,
+        ordinal: options.ordinal,
+        unit: 'year'
+      })
+    }
+
+    // Padding
+    return localize.number(year, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'year'
+    })
   },
 
-  // Minute: 0, 1, ..., 59
-  'm': function (date) {
-    return date.getUTCMinutes()
+  // Local week-numbering year
+  Y: function (pattern, date, localize, options) {
+    var signedWeekYear = getUTCWeekYear(date, options)
+    var weekYear = signedWeekYear > 0 ? signedWeekYear : 1 - signedWeekYear
+
+    // Two digit year
+    if (pattern.length === 2) {
+      var twoDigitYear = weekYear % 100
+      return localize.number(twoDigitYear, {
+        minLength: 2,
+        ordinal: options.ordinal,
+        unit: 'year'
+      })
+    }
+
+    // Padding
+    return localize.number(weekYear, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'year'
+    })
   },
 
-  // Minute: 00, 01, ..., 59
-  'mm': function (date) {
-    return addLeadingZeros(date.getUTCMinutes(), 2)
+  // ISO week-numbering year
+  R: function (pattern, date, localize, options) {
+    var isoWeekYear = getUTCISOWeekYear(date, options)
+
+    // Padding
+    return localize.number(isoWeekYear, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'year'
+    })
   },
 
-  // Second: 0, 1, ..., 59
-  's': function (date) {
-    return date.getUTCSeconds()
+  // Extended year. This is a single number designating the year of this calendar system.
+  // The main difference between `y` and `u` localizers are B.C. years:
+  // | Year | `y` | `u` |
+  // |------|-----|-----|
+  // | AC 1 |   1 |   1 |
+  // | BC 1 |   1 |   0 |
+  // | BC 2 |   2 |  -1 |
+  // Also `yy` always returns the last two digits of a year,
+  // while `uu` pads single digit years to 2 characters and returns other years unchanged.
+  u: function (pattern, date, localize, options) {
+    var year = date.getUTCFullYear()
+    return localize.number(year, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'year'
+    })
   },
 
-  // Second: 00, 01, ..., 59
-  'ss': function (date) {
-    return addLeadingZeros(date.getUTCSeconds(), 2)
+  // TODO: Cyclic year
+  // U: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Related Gregorian year
+  // r: function (pattern, date, localize) {
+  //
+  // },
+
+  // Quarter
+  Q: function (pattern, date, localize, options) {
+    var quarter = Math.ceil((date.getUTCMonth() + 1) / 3)
+    switch (pattern.length) {
+      case 1: // 1, 2, 3, 4
+      case 2: // 01, 02, 03, 04
+        return localize.number(quarter, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'quarter'
+        })
+      // Q1, Q2, Q3, Q4
+      case 3:
+        return localize.quarter(quarter, {width: 'abbreviated', context: 'formatting'})
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+      case 5:
+        return localize.quarter(quarter, {width: 'narrow', context: 'formatting'})
+      // 1st quarter, 2nd quarter, ...
+      case 4:
+      default:
+        return localize.quarter(quarter, {width: 'wide', context: 'formatting'})
+    }
   },
 
-  // 1/10 of second: 0, 1, ..., 9
-  'S': function (date) {
-    return Math.floor(date.getUTCMilliseconds() / 100)
+  // Stand-alone quarter
+  q: function (pattern, date, localize, options) {
+    var quarter = Math.ceil((date.getUTCMonth() + 1) / 3)
+    switch (pattern.length) {
+      case 1: // 1, 2, 3, 4
+      case 2: // 01, 02, 03, 04
+        return localize.number(quarter, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'quarter'
+        })
+      // Q1, Q2, Q3, Q4
+      case 3:
+        return localize.quarter(quarter, {width: 'abbreviated', context: 'standalone'})
+      // 1, 2, 3, 4 (narrow quarter; could be not numerical)
+      case 5:
+        return localize.quarter(quarter, {width: 'narrow', context: 'standalone'})
+      // 1st quarter, 2nd quarter, ...
+      case 4:
+      default:
+        return localize.quarter(quarter, {width: 'wide', context: 'standalone'})
+    }
   },
 
-  // 1/100 of second: 00, 01, ..., 99
-  'SS': function (date) {
-    return addLeadingZeros(Math.floor(date.getUTCMilliseconds() / 10), 2)
+  // Month
+  M: function (pattern, date, localize, options) {
+    var month = date.getUTCMonth()
+    switch (pattern.length) {
+      case 1: // 1, 2, ..., 12
+      case 2: // 01, 02, ..., 12
+        return localize.number(month + 1, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'month'
+        })
+      // Jan, Feb, ..., Dec
+      case 3:
+        return localize.month(month, {width: 'abbreviated', context: 'formatting'})
+      // J, F, ..., D
+      case 5:
+        return localize.month(month, {width: 'narrow', context: 'formatting'})
+      // January, February, ..., December
+      case 4:
+      default:
+        return localize.month(month, {width: 'wide', context: 'formatting'})
+    }
   },
 
-  // Millisecond: 000, 001, ..., 999
-  'SSS': function (date) {
-    return addLeadingZeros(date.getUTCMilliseconds(), 3)
+  // Stand-alone month
+  L: function (pattern, date, localize, options) {
+    var month = date.getUTCMonth()
+    switch (pattern.length) {
+      case 1: // 1, 2, ..., 12
+      case 2: // 01, 02, ..., 12
+        return localize.number(month + 1, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'month'
+        })
+      // Jan, Feb, ..., Dec
+      case 3:
+        return localize.month(month, {width: 'abbreviated', context: 'standalone'})
+      // J, F, ..., D
+      case 5:
+        return localize.month(month, {width: 'narrow', context: 'standalone'})
+      // January, February, ..., December
+      case 4:
+      default:
+        return localize.month(month, {width: 'wide', context: 'standalone'})
+    }
   },
 
-  // Timezone: -01:00, +00:00, ... +12:00
-  'Z': function (date, options) {
+  // Local week of year
+  w: function (pattern, date, localize, options) {
+    var week = getUTCWeek(date, options)
+    return localize.number(week, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'week'
+    })
+  },
+
+  // ISO week of year
+  I: function (pattern, date, localize, options) {
+    var isoWeek = getUTCISOWeek(date, options)
+    return localize.number(isoWeek, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'week'
+    })
+  },
+
+  // TODO: Week of month
+  // W: function (pattern, date, localize) {
+  //
+  // },
+
+  // Day of the month
+  d: function (pattern, date, localize, options) {
+    var dayOfMonth = date.getUTCDate()
+    return localize.number(dayOfMonth, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'date'
+    })
+  },
+
+  // Day of year
+  D: function (pattern, date, localize, options) {
+    var dayOfYear = getUTCDayOfYear(date, options)
+    return localize.number(dayOfYear, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'dayOfYear'
+    })
+  },
+
+  // TODO: Day of week in month (e.g. 2nd Wed in July)
+  // F: function (pattern, date, localize) {
+  //
+  // },
+
+  // Day of week
+  E: function (pattern, date, localize, options) {
+    var dayOfWeek = date.getUTCDay()
+    switch (pattern.length) {
+      // Tue
+      case 1:
+      case 2:
+      case 3:
+        return localize.day(dayOfWeek, {width: 'abbreviated', context: 'formatting'})
+      // T
+      case 5:
+        return localize.day(dayOfWeek, {width: 'narrow', context: 'formatting'})
+      // Tu
+      case 6:
+        return localize.day(dayOfWeek, {width: 'short', context: 'formatting'})
+      // Tuesday
+      case 4:
+      default:
+        return localize.day(dayOfWeek, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // Local day of week
+  e: function (pattern, date, localize, options) {
+    var dayOfWeek = date.getUTCDay()
+    switch (pattern.length) {
+      case 1: // Numerical value (Nth day of week with current locale or weekStartsOn)
+      case 2: // Padded numerical value
+        var localDayOfWeek = ((dayOfWeek - options.weekStartsOn + 8) % 7) || 7
+        return localize.number(localDayOfWeek, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'day'
+        })
+      case 3:
+        return localize.day(dayOfWeek, {width: 'abbreviated', context: 'formatting'})
+      // T
+      case 5:
+        return localize.day(dayOfWeek, {width: 'narrow', context: 'formatting'})
+      // Tu
+      case 6:
+        return localize.day(dayOfWeek, {width: 'short', context: 'formatting'})
+      // Tuesday
+      case 4:
+      default:
+        return localize.day(dayOfWeek, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // Stand-alone local day of week
+  c: function (pattern, date, localize, options) {
+    var dayOfWeek = date.getUTCDay()
+    switch (pattern.length) {
+      // Numerical value (same as in `e`)
+      case 1:
+      case 2:
+        var locale = options.locale
+        var localeWeekStartsOn = locale && locale.options && locale.options.weekStartsOn
+        var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
+        var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
+        var localDayOfWeek = ((dayOfWeek - weekStartsOn + 8) % 7) || 7
+        return localize.number(localDayOfWeek, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'day'
+        })
+      case 3:
+        return localize.day(dayOfWeek, {width: 'abbreviated', context: 'standalone'})
+      // T
+      case 5:
+        return localize.day(dayOfWeek, {width: 'narrow', context: 'standalone'})
+      // Tu
+      case 6:
+        return localize.day(dayOfWeek, {width: 'short', context: 'standalone'})
+      // Tuesday
+      case 4:
+      default:
+        return localize.day(dayOfWeek, {width: 'wide', context: 'standalone'})
+    }
+  },
+
+  // ISO day of week
+  i: function (pattern, date, localize, options) {
+    var dayOfWeek = date.getUTCDay()
+    switch (pattern.length) {
+      case 1: // 2
+      case 2: // 02
+        var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
+        return localize.number(isoDayOfWeek, {
+          minLength: pattern.length,
+          ordinal: options.ordinal,
+          unit: 'day'
+        })
+      // Tue
+      case 3:
+        return localize.day(dayOfWeek, {width: 'abbreviated', context: 'formatting'})
+      // T
+      case 5:
+        return localize.day(dayOfWeek, {width: 'narrow', context: 'formatting'})
+      // Tu
+      case 6:
+        return localize.day(dayOfWeek, {width: 'short', context: 'formatting'})
+      // Tuesday
+      case 4:
+      default:
+        return localize.day(dayOfWeek, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // AM or PM
+  a: function (pattern, date, localize) {
+    var hours = date.getUTCHours()
+    var dayPeriodEnumValue = (hours / 12) >= 1 ? 'pm' : 'am'
+
+    switch (pattern.length) {
+      case 1:
+      case 2:
+      case 3:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'abbreviated', context: 'formatting'})
+      case 5:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'narrow', context: 'formatting'})
+      case 4:
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // AM, PM, midnight, noon
+  b: function (pattern, date, localize) {
+    var hours = date.getUTCHours()
+    var dayPeriodEnumValue
+    if (hours === 12) {
+      dayPeriodEnumValue = dayPeriodEnum.noon
+    } else if (hours === 0) {
+      dayPeriodEnumValue = dayPeriodEnum.midnight
+    } else {
+      dayPeriodEnumValue = (hours / 12) >= 1 ? 'pm' : 'am'
+    }
+
+    switch (pattern.length) {
+      case 1:
+      case 2:
+      case 3:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'abbreviated', context: 'formatting'})
+      case 5:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'narrow', context: 'formatting'})
+      case 4:
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // in the morning, in the afternoon, in the evening, at night
+  B: function (pattern, date, localize) {
+    var hours = date.getUTCHours()
+    var dayPeriodEnumValue
+    if (hours >= 17) {
+      dayPeriodEnumValue = dayPeriodEnum.evening
+    } else if (hours >= 12) {
+      dayPeriodEnumValue = dayPeriodEnum.afternoon
+    } else if (hours >= 4) {
+      dayPeriodEnumValue = dayPeriodEnum.morning
+    } else {
+      dayPeriodEnumValue = dayPeriodEnum.night
+    }
+
+    switch (pattern.length) {
+      case 1:
+      case 2:
+      case 3:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'abbreviated', context: 'formatting'})
+      case 5:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'narrow', context: 'formatting'})
+      case 4:
+      default:
+        return localize.dayPeriod(dayPeriodEnumValue, {width: 'wide', context: 'formatting'})
+    }
+  },
+
+  // Hour [1-12]
+  h: function (pattern, date, localize, options) {
+    var hours = date.getUTCHours() % 12
+
+    if (hours === 0) {
+      hours = 12
+    }
+
+    return localize.number(hours, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'hours'
+    })
+  },
+
+  // Hour [0-23]
+  H: function (pattern, date, localize, options) {
+    var hours = date.getUTCHours()
+    return localize.number(hours, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'hours'
+    })
+  },
+
+  // Hour [0-11]
+  K: function (pattern, date, localize, options) {
+    var hours = date.getUTCHours() % 12
+    return localize.number(hours, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'hours'
+    })
+  },
+
+  // Hour [1-24]
+  k: function (pattern, date, localize, options) {
+    var hours = date.getUTCHours()
+
+    if (hours === 0) {
+      hours = 24
+    }
+
+    return localize.number(hours, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'hours'
+    })
+  },
+
+  // Minute
+  m: function (pattern, date, localize, options) {
+    var minutes = date.getUTCMinutes()
+    return localize.number(minutes, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'minutes'
+    })
+  },
+
+  // Second
+  s: function (pattern, date, localize, options) {
+    var seconds = date.getUTCSeconds()
+    return localize.number(seconds, {
+      minLength: pattern.length,
+      ordinal: options.ordinal,
+      unit: 'seconds'
+    })
+  },
+
+  // Fraction of second
+  S: function (pattern, date, localize, options) {
+    var numberOfDigits = pattern.length
+    var milliseconds = date.getUTCMilliseconds()
+    var fractionalSeconds = Math.floor(milliseconds * Math.pow(10, numberOfDigits - 3))
+    return localize.number(fractionalSeconds, {
+      minLength: numberOfDigits,
+      ordinal: options.ordinal,
+      unit: 'fractionalSeconds'
+    })
+  },
+
+  // TODO: Milliseconds in day
+  // A: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Timezone (specific non-location formats)
+  // z: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Timezone (misc.)
+  // Z: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Timezone (GMT)
+  // O: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Timezone (generic non-location formats)
+  // v: function (pattern, date, localize) {
+  //
+  // },
+
+  // TODO: Timezone (location formats)
+  // V: function (pattern, date, localize) {
+  //
+  // },
+
+  // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)
+  X: function (pattern, date, localize, options) {
     var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset(), ':')
+    var timezoneOffset = originalDate.getTimezoneOffset()
+
+    if (timezoneOffset === 0) {
+      return 'Z'
+    }
+
+    switch (pattern.length) {
+      // Hours and optional minutes
+      case 1:
+        if (timezoneOffset % 60 === 0) {
+          var sign = timezoneOffset > 0 ? '-' : '+'
+          return sign + localize.number(Math.abs(timezoneOffset) / 60, {
+            minLength: 2
+          })
+        }
+        return formatTimezone(timezoneOffset, localize)
+
+      // Hours, minutes and optional seconds without `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this pattern always has the same output as `XX`
+      case 4:
+      case 2: // Hours and minutes without `:` delimeter
+        return formatTimezone(timezoneOffset, localize)
+
+      // Hours, minutes and optional seconds with `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this pattern always has the same output as `XXX`
+      case 5:
+      case 3: // Hours and minutes with `:` delimeter
+      default:
+        return formatTimezone(timezoneOffset, localize, {delimeter: ':'})
+    }
   },
 
-  // Timezone: -0100, +0000, ... +1200
-  'ZZ': function (date, options) {
+  // Timezone (ISO-8601. If offset is 0, output is `'+00:00'` or equivalent)
+  x: function (pattern, date, localize, options) {
     var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset())
+    var timezoneOffset = originalDate.getTimezoneOffset()
+
+    switch (pattern.length) {
+      // Hours and optional minutes
+      case 1:
+        if (timezoneOffset % 60 === 0) {
+          var sign = timezoneOffset > 0 ? '-' : '+'
+          return sign + localize.number(Math.abs(timezoneOffset) / 60, {
+            minLength: 2
+          })
+        }
+        return formatTimezone(timezoneOffset, localize)
+
+      // Hours, minutes and optional seconds without `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this pattern always has the same output as `xx`
+      case 4:
+      case 2: // Hours and minutes without `:` delimeter
+        return formatTimezone(timezoneOffset, localize)
+
+      // Hours, minutes and optional seconds with `:` delimeter
+      // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
+      // so this pattern always has the same output as `xxx`
+      case 5:
+      case 3: // Hours and minutes with `:` delimeter
+      default:
+        return formatTimezone(timezoneOffset, localize, {delimeter: ':'})
+    }
   },
 
-  // Seconds timestamp: 512969520
-  'X': function (date, options) {
+  // Seconds timestamp
+  t: function (pattern, date, localize, options) {
     var originalDate = options._originalDate || date
-    return Math.floor(originalDate.getTime() / 1000)
+    var timestamp = Math.floor(originalDate.getTime() / 1000)
+    return localize.number(timestamp, {minLength: pattern.length})
   },
 
-  // Milliseconds timestamp: 512969520900
-  'x': function (date, options) {
+  // Milliseconds timestamp
+  T: function (pattern, date, localize, options) {
     var originalDate = options._originalDate || date
-    return originalDate.getTime()
-  },
-
-  // AM, PM
-  'A': function (date, options) {
-    return options.locale.localize.timeOfDay(date.getUTCHours(), {type: 'uppercase'})
-  },
-
-  // am, pm
-  'a': function (date, options) {
-    return options.locale.localize.timeOfDay(date.getUTCHours(), {type: 'lowercase'})
-  },
-
-  // a.m., p.m.
-  'aa': function (date, options) {
-    return options.locale.localize.timeOfDay(date.getUTCHours(), {type: 'long'})
+    var timestamp = originalDate.getTime()
+    return localize.number(timestamp, {minLength: pattern.length})
   }
 }
 
-function formatTimezone (offset, delimeter) {
-  delimeter = delimeter || ''
+function formatTimezone (offset, localize, dirtyOptions) {
+  var options = dirtyOptions || {}
+  var delimeter = options.delimeter || ''
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
-  var hours = Math.floor(absOffset / 60)
-  var minutes = absOffset % 60
-  return sign + addLeadingZeros(hours, 2) + delimeter + addLeadingZeros(minutes, 2)
-}
-
-function addLeadingZeros (number, targetLength) {
-  var output = Math.abs(number).toString()
-  while (output.length < targetLength) {
-    output = '0' + output
-  }
-  return output
+  var hours = localize.number(Math.floor(absOffset / 60), {minLength: 2, unit: 'hours'})
+  var minutes = localize.number(absOffset % 60, {minLength: 2, unit: 'minutes'})
+  return sign + hours + delimeter + minutes
 }
 
 export default formatters

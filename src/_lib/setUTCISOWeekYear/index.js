@@ -6,6 +6,10 @@ var MILLISECONDS_IN_DAY = 86400000
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
 export default function setUTCISOWeekYear (dirtyDate, dirtyISOWeekYear, dirtyOptions) {
+  if (arguments.length < 2) {
+    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+  }
+
   var date = toDate(dirtyDate, dirtyOptions)
   var isoWeekYear = Number(dirtyISOWeekYear)
   var dateStartOfYear = startOfUTCISOWeekYear(date, dirtyOptions)
