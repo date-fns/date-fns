@@ -37,41 +37,35 @@ var dayPeriodValues = {
 }
 var dayPeriodEnumIndices = ['am', 'pm', 'midnight', 'noon', 'morning', 'afternoon', 'evening', 'night']
 
-function number (dirtyNumber, dirtyOptions) {
+function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-  var options = dirtyOptions || {}
-  var numberString = addLeadingZeros(number, options.minLength || 0)
 
-  if (options.ordinal) {
-    // If ordinal numbers depend on context, for example,
-    // if they are different for different grammatical genders,
-    // use `options.unit`:
-    //
-    //   var options = dirtyOptions || {}
-    //   var unit = String(options.unit)
-    //
-    // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
-    // 'dayOfMonth' or 'dayOfWeek'
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
 
-    var rem100 = number % 100
-    if (rem100 > 20 || rem100 < 10) {
-      switch (rem100 % 10) {
-        case 1:
-          return numberString + 'st'
-        case 2:
-          return numberString + 'nd'
-        case 3:
-          return numberString + 'rd'
-      }
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + 'st'
+      case 2:
+        return number + 'nd'
+      case 3:
+        return number + 'rd'
     }
-    return numberString + 'th'
   }
-
-  return numberString
+  return number + 'th'
 }
 
 var localize = {
-  number: number,
+  ordinalNumber: ordinalNumber,
   era: buildLocalizeFn(eraValues, 'wide'),
   quarter: buildLocalizeFn(quarterValues, 'wide', function (quarter) {
     return Number(quarter) - 1
