@@ -408,6 +408,8 @@ declare module.exports: {
 
   isLeapYear: (date: Date | number) => boolean,
 
+  isLegitimate: (year: any, month: any, day: any) => boolean,
+
   isMonday: (date: Date | number) => boolean,
 
   isPast: (date: Date | number) => boolean,

@@ -309,6 +309,7 @@ declare module.exports: {
   isFriday: CurriedFn1<Date | number, boolean>,
   isLastDayOfMonth: CurriedFn1<Date | number, boolean>,
   isLeapYear: CurriedFn1<Date | number, boolean>,
+  isLegitimate: CurriedFn3<any, any, any, boolean>,
   isMonday: CurriedFn1<Date | number, boolean>,
   isSameDay: CurriedFn2<Date | number, Date | number, boolean>,
   isSameHour: CurriedFn2<Date | number, Date | number, boolean>,

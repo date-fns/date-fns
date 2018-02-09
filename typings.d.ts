@@ -546,6 +546,9 @@ declare module 'date-fns' {
   function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {}
 
+  function isLegitimate(year: any, month: any, day: any): boolean
+  namespace isLegitimate {}
+
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
 
@@ -1419,6 +1422,11 @@ declare module 'date-fns/isLastDayOfMonth' {
 declare module 'date-fns/isLeapYear' {
   import { isLeapYear } from 'date-fns'
   export default isLeapYear
+}
+
+declare module 'date-fns/isLegitimate' {
+  import { isLegitimate } from 'date-fns'
+  export default isLegitimate
 }
 
 declare module 'date-fns/isMonday' {
@@ -2351,6 +2359,11 @@ declare module 'date-fns/isLeapYear/index' {
   export default isLeapYear
 }
 
+declare module 'date-fns/isLegitimate/index' {
+  import { isLegitimate } from 'date-fns'
+  export default isLegitimate
+}
+
 declare module 'date-fns/isMonday/index' {
   import { isMonday } from 'date-fns'
   export default isMonday
@@ -3279,6 +3292,11 @@ declare module 'date-fns/isLastDayOfMonth/index.js' {
 declare module 'date-fns/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns'
   export default isLeapYear
+}
+
+declare module 'date-fns/isLegitimate/index.js' {
+  import { isLegitimate } from 'date-fns'
+  export default isLegitimate
 }
 
 declare module 'date-fns/isMonday/index.js' {
@@ -4213,6 +4231,9 @@ declare module 'date-fns/fp' {
   const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {}
 
+  const isLegitimate: CurriedFn3<any, any, any, boolean>
+  namespace isLegitimate {}
+
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
 
@@ -5111,6 +5132,11 @@ declare module 'date-fns/fp/isLastDayOfMonth' {
 declare module 'date-fns/fp/isLeapYear' {
   import { isLeapYear } from 'date-fns/fp'
   export default isLeapYear
+}
+
+declare module 'date-fns/fp/isLegitimate' {
+  import { isLegitimate } from 'date-fns/fp'
+  export default isLegitimate
 }
 
 declare module 'date-fns/fp/isMonday' {
@@ -6078,6 +6104,11 @@ declare module 'date-fns/fp/isLeapYear/index' {
   export default isLeapYear
 }
 
+declare module 'date-fns/fp/isLegitimate/index' {
+  import { isLegitimate } from 'date-fns/fp'
+  export default isLegitimate
+}
+
 declare module 'date-fns/fp/isMonday/index' {
   import { isMonday } from 'date-fns/fp'
   export default isMonday
@@ -7043,6 +7074,11 @@ declare module 'date-fns/fp/isLeapYear/index.js' {
   export default isLeapYear
 }
 
+declare module 'date-fns/fp/isLegitimate/index.js' {
+  import { isLegitimate } from 'date-fns/fp'
+  export default isLegitimate
+}
+
 declare module 'date-fns/fp/isMonday/index.js' {
   import { isMonday } from 'date-fns/fp'
   export default isMonday
@@ -7939,6 +7975,9 @@ declare module 'date-fns/esm' {
   function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {}
 
+  function isLegitimate(year: any, month: any, day: any): boolean
+  namespace isLegitimate {}
+
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
 
@@ -8812,6 +8851,11 @@ declare module 'date-fns/esm/isLastDayOfMonth' {
 declare module 'date-fns/esm/isLeapYear' {
   import { isLeapYear } from 'date-fns/esm'
   export default isLeapYear
+}
+
+declare module 'date-fns/esm/isLegitimate' {
+  import { isLegitimate } from 'date-fns/esm'
+  export default isLegitimate
 }
 
 declare module 'date-fns/esm/isMonday' {
@@ -9744,6 +9788,11 @@ declare module 'date-fns/esm/isLeapYear/index' {
   export default isLeapYear
 }
 
+declare module 'date-fns/esm/isLegitimate/index' {
+  import { isLegitimate } from 'date-fns/esm'
+  export default isLegitimate
+}
+
 declare module 'date-fns/esm/isMonday/index' {
   import { isMonday } from 'date-fns/esm'
   export default isMonday
@@ -10672,6 +10721,11 @@ declare module 'date-fns/esm/isLastDayOfMonth/index.js' {
 declare module 'date-fns/esm/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/esm'
   export default isLeapYear
+}
+
+declare module 'date-fns/esm/isLegitimate/index.js' {
+  import { isLegitimate } from 'date-fns/esm'
+  export default isLegitimate
 }
 
 declare module 'date-fns/esm/isMonday/index.js' {
@@ -11606,6 +11660,9 @@ declare module 'date-fns/esm/fp' {
   const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {}
 
+  const isLegitimate: CurriedFn3<any, any, any, boolean>
+  namespace isLegitimate {}
+
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
 
@@ -12504,6 +12561,11 @@ declare module 'date-fns/esm/fp/isLastDayOfMonth' {
 declare module 'date-fns/esm/fp/isLeapYear' {
   import { isLeapYear } from 'date-fns/esm/fp'
   export default isLeapYear
+}
+
+declare module 'date-fns/esm/fp/isLegitimate' {
+  import { isLegitimate } from 'date-fns/esm/fp'
+  export default isLegitimate
 }
 
 declare module 'date-fns/esm/fp/isMonday' {
@@ -13471,6 +13533,11 @@ declare module 'date-fns/esm/fp/isLeapYear/index' {
   export default isLeapYear
 }
 
+declare module 'date-fns/esm/fp/isLegitimate/index' {
+  import { isLegitimate } from 'date-fns/esm/fp'
+  export default isLegitimate
+}
+
 declare module 'date-fns/esm/fp/isMonday/index' {
   import { isMonday } from 'date-fns/esm/fp'
   export default isMonday
@@ -14434,6 +14501,11 @@ declare module 'date-fns/esm/fp/isLastDayOfMonth/index.js' {
 declare module 'date-fns/esm/fp/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/esm/fp'
   export default isLeapYear
+}
+
+declare module 'date-fns/esm/fp/isLegitimate/index.js' {
+  import { isLegitimate } from 'date-fns/esm/fp'
+  export default isLegitimate
 }
 
 declare module 'date-fns/esm/fp/isMonday/index.js' {
@@ -17626,6 +17698,8 @@ interface dateFns {
   isLastDayOfMonth(date: Date | number): boolean
 
   isLeapYear(date: Date | number): boolean
+
+  isLegitimate(year: any, month: any, day: any): boolean
 
   isMonday(date: Date | number): boolean
 
