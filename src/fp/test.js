@@ -1397,6 +1397,26 @@ describe('FP functions', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
   })
 
+  it.skip('setWeek', function () {
+    var result = fp.setWeek(1)(new Date(2005, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 11 /* Dec */, 26))
+  })
+
+  it.skip('setWeekWithOptions', function () {
+    var result = fp.setWeekWithOptions({weekStartsOn: 1, firstWeekContainsDate: 4})(1)(new Date(2005, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 4))
+  })
+
+  it.skip('setWeekYear', function () {
+    var result = fp.setWeekYear(2004)(new Date(2010, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 3))
+  })
+
+  it.skip('setWeekYearWithOptions', function () {
+    var result = fp.setWeekYearWithOptions({weekStartsOn: 1, firstWeekContainsDate: 4})(2004)(new Date(2010, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+  })
+
   it('setYear', function () {
     var result = fp.setYear(2013)(new Date(2014, 8 /* Sep */, 1))
     assert.deepEqual(result, new Date(2013, 8 /* Sep */, 1))
