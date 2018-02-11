@@ -163,11 +163,11 @@ function normalizeTwoDigitYear (twoDigitYear, currentYear) {
  * |-----|--------------------------------|-----|--------------------------------|
  * |  a  | AM, PM                         |  A* | Milliseconds in day            |
  * |  b  | AM, PM, noon, midnight         |  B  | Flexible day period            |
- * |  c  | Stand-alone local day of week  |  C  | Localized hour w/ day period   |
+ * |  c  | Stand-alone local day of week  |  C* | Localized hour w/ day period   |
  * |  d  | Day of month                   |  D  | Day of year                    |
  * |  e  | Local day of week              |  E  | Day of week                    |
  * |  f  |                                |  F* | Day of week in month           |
- * |  g  | Modified Julian day            |  G  | Era                            |
+ * |  g* | Modified Julian day            |  G  | Era                            |
  * |  h  | Hour [1-12]                    |  H  | Hour [0-23]                    |
  * |  i! | ISO day of week                |  I! | ISO week of year               |
  * |  j* | Localized hour w/ day period   |  J* | Localized hour w/o day period  |
