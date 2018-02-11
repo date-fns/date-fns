@@ -1267,13 +1267,13 @@ describe('FP functions', function () {
 
   it('parse', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
-    var result = fp.parse(baseDate)('YYYYMMDDTHHmmss')('20161105T040404')
+    var result = fp.parse(baseDate)("yyyyMMdd'T'HHmmss")('20161105T040404')
     assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
   })
 
   it('parseWithOptions', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
-    var result = fp.parseWithOptions({})(baseDate)('YYYYMMDDTHHmmss')('20161105T040404')
+    var result = fp.parseWithOptions({})(baseDate)("yyyyMMdd'T'HHmmss")('20161105T040404')
     assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
   })
 

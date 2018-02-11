@@ -7,9 +7,19 @@ import parse from '.'
 describe('parse', function () {
   var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
+  it('escapes characters between the single quote characters', function () {
+    var result = parse('2018 hello world July 2nd', "yyyy 'hello world' MMMM do", baseDate)
+    assert.deepEqual(result, new Date(2018, 6 /* Jul */, 2))
+  })
+
+  it('two single quote characters are transformed into a "real" single quote', function () {
+    var result = parse("'5 o'clock'", "''h 'o''clock'''", baseDate)
+    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+  })
+
   describe('era', function () {
     it('abbreviated', function () {
-      var result = parse('10000 BC', 'y G', baseDate)
+      var result = parse('10000 BC', 'yyyyy G', baseDate)
       assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
     })
 
@@ -24,7 +34,7 @@ describe('parse', function () {
     })
 
     it('with week-numbering year', function () {
-      var result = parse('44 B', 'y GGGGG', baseDate)
+      var result = parse('44 B', 'Y GGGGG', baseDate)
       assert.deepEqual(result, new Date(-44, 11 /* Dec */, 30))
     })
   })
@@ -74,8 +84,8 @@ describe('parse', function () {
 
   describe('Local week-numbering year', function () {
     it('numeric', function () {
-      var result = parse('12345', 'Y', baseDate)
-      assert.deepEqual(result, new Date(12344, 11 /* Dec */, 31))
+      var result = parse('2002', 'Y', baseDate)
+      assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
     })
 
     it('ordinal', function () {
@@ -90,14 +100,14 @@ describe('parse', function () {
       })
 
       it('gets the 100 year range from `baseDate`', function () {
-        var result = parse('02', 'yy', new Date(1860, 6 /* Jul */, 2))
+        var result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2))
         assert.deepEqual(result, new Date(1901, 11 /* Dec */, 29))
       })
     })
 
     it('three-digit zero-padding', function () {
       var result = parse('123', 'YYY', baseDate)
-      assert.deepEqual(result, new Date(122, 11 /* Dec */, 270))
+      assert.deepEqual(result, new Date(122, 11 /* Dec */, 27))
     })
 
     it('four-digit zero-padding', function () {
@@ -107,8 +117,9 @@ describe('parse', function () {
 
     it('specified amount of digits', function () {
       var result = parse('000001', 'YYYYYY', baseDate)
-      var expectedResult = new Date(2, 11 /* Dec */, 31)
-      expectedResult.setFullYear(1)
+      var expectedResult = new Date(0)
+      expectedResult.setFullYear(0, 11 /* Dec */, 31)
+      expectedResult.setHours(0, 0, 0, 0)
       assert.deepEqual(result, expectedResult)
     })
 
@@ -120,8 +131,8 @@ describe('parse', function () {
 
   describe('ISO week-numbering year', function () {
     it('numeric', function () {
-      var result = parse('-12345', 'R', baseDate)
-      assert.deepEqual(result, new Date(-12345, 0 /* Jan */, 4))
+      var result = parse('-1234', 'R', baseDate)
+      assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 3))
     })
 
     it('two-digit zero-padding', function () {
@@ -149,8 +160,8 @@ describe('parse', function () {
 
   describe('extended year', function () {
     it('numeric', function () {
-      var result = parse('-12345', 'u', baseDate)
-      assert.deepEqual(result, new Date(-12345, 0 /* Jan */, 1))
+      var result = parse('-1234', 'u', baseDate)
+      assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 1))
     })
 
     it('two-digit zero-padding', function () {
@@ -394,18 +405,23 @@ describe('parse', function () {
     })
 
     it('wide', function () {
-      var result = parse('Tue', 'EEEE', baseDate)
+      var result = parse('Tuesday', 'EEEE', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('narrow', function () {
-      var result = parse('Wed', 'EEEEE', baseDate)
+      var result = parse('W', 'EEEEE', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('short', function () {
       var result = parse('Th', 'EEEEEE', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
+    })
+
+    it('allows to specify which day is the first day of the week', function () {
+      var result = parse('Thursday', 'EEEE', baseDate, {weekStartsOn: /* Fri */ 5})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
   })
 
@@ -437,7 +453,7 @@ describe('parse', function () {
 
     it('narrow', function () {
       var result = parse('S', 'iiiii', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 5))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
     })
 
     it('short', function () {
@@ -483,7 +499,7 @@ describe('parse', function () {
     })
 
     it('allows to specify which day is the first day of the week', function () {
-      var result = parse('', '', baseDate, {weekStartsOn: 5 /* Fri */})
+      var result = parse('7th', 'eo', baseDate, {weekStartsOn: /* Fri */ 5})
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
   })
@@ -525,7 +541,7 @@ describe('parse', function () {
     })
 
     it('allows to specify which day is the first day of the week', function () {
-      var result = parse('7th', 'co', baseDate, {weekStartsOn: 5 /* Fri */})
+      var result = parse('7th', 'co', baseDate, {weekStartsOn: /* Fri */ 5})
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
   })
@@ -538,12 +554,12 @@ describe('parse', function () {
 
     it('12 AM', function () {
       var result = parse('12 AM', 'h aa', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('12 PM', function () {
       var result = parse('12 PM', 'h aaa', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', function () {
@@ -586,7 +602,7 @@ describe('parse', function () {
     })
 
     it('narrow', function () {
-      var result = parse('5 in the evening', 'BBBBB', baseDate)
+      var result = parse('5 in the evening', 'h BBBBB', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
   })
@@ -594,17 +610,17 @@ describe('parse', function () {
   describe('hour [1-12]', function () {
     it('numeric', function () {
       var result = parse('1', 'h', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function () {
       var result = parse('1st', 'ho', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function () {
       var result = parse('01', 'hh', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
   })
 
@@ -628,17 +644,17 @@ describe('parse', function () {
   describe('hour [0-11]', function () {
     it('numeric', function () {
       var result = parse('1', 'K', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function () {
       var result = parse('1st', 'Ko', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function () {
       var result = parse('1', 'KK', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
   })
 
@@ -696,12 +712,12 @@ describe('parse', function () {
   describe('fraction of second', function () {
     it('1/10 of second', function () {
       var result = parse('1', 'S', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 1))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100))
     })
 
     it('1/100 of second', function () {
       var result = parse('12', 'SS', baseDate)
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 12))
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120))
     })
 
     it('millisecond', function () {
@@ -716,83 +732,6 @@ describe('parse', function () {
   })
 
   describe('timezone (ISO-8601 w/ Z)', function () {
-    describe('X', function () {
-      it('hours and minutes', function () {
-        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSX", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
-      })
-
-      it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123Z', "yyyy-MM-dd'T'HH:mm:ss.SSSX", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
-      })
-
-      it('hours', function () {
-        var result = parse('2016-11-25T16:38:38.123+05', "yyyy-MM-dd'T'HH:mm:ss.SSSX", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:00'))
-      })
-    })
-
-    describe('xx', function () {
-      it('hours and minutes', function () {
-        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
-      })
-
-      it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123Z', "yyyy-MM-dd'T'HH:mm:ss.SSSxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
-      })
-    })
-
-    describe('xxx', function () {
-      it('hours and minutes', function () {
-        var result = parse('2016-11-25T16:38:38.123-05:30', "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
-      })
-
-      it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123Z', "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
-      })
-    })
-
-    describe('xxxx', function () {
-      it('hours and minutes', function () {
-        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
-      })
-
-      it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123Z', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
-      })
-
-      it('hours, minutes and seconds', function () {
-        var result = parse('2016-11-25T16:38:38.123+053045', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:30'))
-      })
-    })
-
-    describe('xxxxx', function () {
-      it('hours and minutes', function () {
-        var result = parse('2016-11-25T16:38:38.123-05:30', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
-      })
-
-      it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123Z', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
-      })
-
-      it('hours, minutes and seconds', function () {
-        var result = parse('2016-11-25T16:38:38.123+05:30:45', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:30'))
-      })
-    })
-  })
-
-  describe('timezone (ISO-8601 w/o Z)', function () {
     describe('X', function () {
       it('hours and minutes', function () {
         var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSX", baseDate)
@@ -847,7 +786,7 @@ describe('parse', function () {
 
       it('hours, minutes and seconds', function () {
         var result = parse('2016-11-25T16:38:38.123+053045', "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:30'))
+        assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
     })
 
@@ -864,7 +803,84 @@ describe('parse', function () {
 
       it('hours, minutes and seconds', function () {
         var result = parse('2016-11-25T16:38:38.123+05:30:45', "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX", baseDate)
-        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:30'))
+        assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
+      })
+    })
+  })
+
+  describe('timezone (ISO-8601 w/o Z)', function () {
+    describe('x', function () {
+      it('hours and minutes', function () {
+        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
+      })
+
+      it('GMT', function () {
+        var result = parse('2016-11-25T16:38:38.123+00:00', "yyyy-MM-dd'T'HH:mm:ss.SSSx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
+      })
+
+      it('hours', function () {
+        var result = parse('2016-11-25T16:38:38.123+05', "yyyy-MM-dd'T'HH:mm:ss.SSSx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:00'))
+      })
+    })
+
+    describe('xx', function () {
+      it('hours and minutes', function () {
+        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
+      })
+
+      it('GMT', function () {
+        var result = parse('2016-11-25T16:38:38.123+0000', "yyyy-MM-dd'T'HH:mm:ss.SSSxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
+      })
+    })
+
+    describe('xxx', function () {
+      it('hours and minutes', function () {
+        var result = parse('2016-11-25T16:38:38.123-05:30', "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
+      })
+
+      it('GMT', function () {
+        var result = parse('2016-11-25T16:38:38.123+00:00', "yyyy-MM-dd'T'HH:mm:ss.SSSxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
+      })
+    })
+
+    describe('xxxx', function () {
+      it('hours and minutes', function () {
+        var result = parse('2016-11-25T16:38:38.123-0530', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
+      })
+
+      it('GMT', function () {
+        var result = parse('2016-11-25T16:38:38.123+0000', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
+      })
+
+      it('hours, minutes and seconds', function () {
+        var result = parse('2016-11-25T16:38:38.123+053045', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
+      })
+    })
+
+    describe('xxxxx', function () {
+      it('hours and minutes', function () {
+        var result = parse('2016-11-25T16:38:38.123-05:30', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
+      })
+
+      it('GMT', function () {
+        var result = parse('2016-11-25T16:38:38.123+00:00', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
+      })
+
+      it('hours, minutes and seconds', function () {
+        var result = parse('2016-11-25T16:38:38.123+05:30:45', "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx", baseDate)
+        assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
     })
   })
@@ -900,7 +916,7 @@ describe('parse', function () {
     })
 
     it('ISO week-numbering date', function () {
-      var result = parse('2016W474T153005', "RRRR[W]IIi'T'HHmmss", baseDate)
+      var result = parse('2016W474T153005', "RRRR'W'IIi'T'HHmmss", baseDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0))
     })
 
@@ -911,14 +927,14 @@ describe('parse', function () {
 
     it('Date.prototype.toString()', function () {
       var dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
-      var formatString = 'iii MMM dd yyyy HH:mm:ss [GMT]xx'
+      var formatString = "EEE MMM dd yyyy HH:mm:ss 'GMT'xx"
       var result = parse(dateString, formatString, baseDate)
       assert.deepEqual(result, new Date(dateString))
     })
 
     it('Date.prototype.toISOString()', function () {
       var dateString = '2014-07-02T05:30:15.123+06:00'
-      var formatString = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+      var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       var result = parse(dateString, formatString, baseDate)
       assert.deepEqual(result, new Date(dateString))
     })
@@ -944,42 +960,46 @@ describe('parse', function () {
 
     it('units of equal priority overwrite each other in order of appearance', function () {
       var dateString = '25 1950 75 2000 January Feb 03 4 1 123 12'
-      var formatString = 'RR RRRR yy yyyy MMMM MMM MM M d DDD DD'
+      var formatString = 'RR RRRR yy yyyy MMMM MMM MM M d DDD dd'
       var result = parse(dateString, formatString, baseDate)
       assert.deepEqual(result, new Date(2000, 3 /* Apr */, 12))
     })
 
     it('timestamp overwrites everything', function () {
       var dateString = '512969520900 512969520 2014-07-02T05:30:15.123+06:00'
-      var formatString = 'T t yyyy-MM-ddTHH:mm:ss.SSSxxx'
+      var formatString = "T t yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       var result = parse(dateString, formatString, baseDate)
       assert.deepEqual(result, new Date(512969520000))
     })
   })
 
-  describe('implicit conversion of options', function () {
+  describe('implicit conversion of arguments', function () {
     it('`dateString`', function () {
       // eslint-disable-next-line no-new-wrappers
       var dateString = new String('20161105T040404')
       // $ExpectedMistake
-      var result = parse(dateString, 'YYYYMMDDTHHmmss', baseDate)
+      var result = parse(dateString, "yyyyMMdd'T'HHmmss", baseDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('`formatString`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var formatString = new String('YYYYMMDDTHHmmss')
+      var formatString = new String("yyyyMMdd'T'HHmmss")
       // $ExpectedMistake
       var result = parse('20161105T040404', formatString, baseDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('`options.weekStartsOn`', function () {
-      var dateString = '0'
-      var formatString = 'd'
       // $ExpectedMistake
-      var result = parse(dateString, formatString, baseDate, {weekStartsOn: '1'})
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
+      var result = parse('2018', 'Y', baseDate, {weekStartsOn: '1' /* Mon */, firstWeekContainsDate: 4})
+      assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
+    })
+
+    it('`options.firstWeekContainsDate`', function () {
+      // $ExpectedMistake
+      var result = parse('2018', 'Y', baseDate, {weekStartsOn: 1 /* Mon */, firstWeekContainsDate: '4'})
+      assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
   })
 
