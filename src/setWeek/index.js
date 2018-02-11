@@ -37,7 +37,6 @@ import getWeek from '../getWeek/index.js'
  * var result = setWeek(new Date(2005, 0, 2), 1, {weekStartsOn: 1, firstWeekContainsDate: 4})
  * //=> Sun Jan 4 2004 00:00:00
  */
-
 export default function setWeek (dirtyDate, dirtyWeek, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')

@@ -37,7 +37,6 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * var result = setWeekYear(new Date(2010, 0, 2), 2004, {weekStartsOn: 1, firstWeekContainsDate: 4})
  * //=> Sat Jan 01 2005 00:00:00
  */
-
 export default function setWeekYear (dirtyDate, dirtyWeekYear, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')

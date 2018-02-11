@@ -17,7 +17,6 @@ import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var ordinalTokenRegExp = /^[yYQqMLwIdDecihHKkms]o$/
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
 
@@ -53,23 +52,23 @@ var doubleQuoteRegExp = /''/g
  * |                                 | yy      | 44, 01, 00, 17                    | (5)   |
  * |                                 | yyy     | 044, 001, 1900, 2017              | (5)   |
  * |                                 | yyyy    | 0044, 0001, 1900, 2017            | (5)   |
- * |                                 | yyyyy+  | ...                               | (3,5) |
+ * |                                 | yyyyy   | ...                               | (3,5) |
  * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | (5)   |
  * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | (5)   |
  * |                                 | YY      | 44, 01, 00, 17                    | (5)   |
  * |                                 | YYY     | 044, 001, 1900, 2017              | (5)   |
  * |                                 | YYYY    | 0044, 0001, 1900, 2017            | (5)   |
- * |                                 | YYYYY+  | ...                               | (3,5) |
- * | ISO week-numbering year         | R       | -43, 1, 1900, 2017                | (5)   |
- * |                                 | RR      | -43, 01, 00, 17                   | (5)   |
- * |                                 | RRR     | -043, 001, 1900, 2017             | (5)   |
- * |                                 | RRRR    | -0043, 0001, 1900, 2017           | (5)   |
- * |                                 | RRRRR+  | ...                               | (3,5) |
- * | Extended year                   | u       | -43, 1, 1900, 2017                | (5)   |
+ * |                                 | YYYYY   | ...                               | (3,5) |
+ * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | (5)   |
+ * |                                 | RR      | -43, 00, 01, 1900, 2017           | (5)   |
+ * |                                 | RRR     | -043, 000, 001, 1900, 2017        | (5)   |
+ * |                                 | RRRR    | -0043, 0000, 0001, 1900, 2017     | (5)   |
+ * |                                 | RRRRR   | ...                               | (3,5) |
+ * | Extended year                   | u       | -43, 0, 1, 1900, 2017             | (5)   |
  * |                                 | uu      | -43, 01, 1900, 2017               | (5)   |
  * |                                 | uuu     | -043, 001, 1900, 2017             | (5)   |
  * |                                 | uuuu    | -0043, 0001, 1900, 2017           | (5)   |
- * |                                 | uuuuu+  | ...                               | (3,5) |
+ * |                                 | uuuuu   | ...                               | (3,5) |
  * | Quarter (formatting)            | Q       | 1, 2, 3, 4                        |       |
  * |                                 | Qo      | 1st, 2nd, 3rd, 4th                |       |
  * |                                 | QQ      | 01, 02, 03, 04                    |       |
@@ -107,7 +106,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       |       |
  * |                                 | DD      | 01, 02, ..., 365, 366             |       |
  * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
- * |                                 | DDDD+   | ...                               | (3)   |
+ * |                                 | DDDD    | ...                               | (3)   |
  * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
  * |                                 | EEEE    | Monday, Tuesday, ..., Sunday      | (2)   |
  * |                                 | EEEEE   | M, T, W, T, F, S, S               |       |
@@ -163,7 +162,7 @@ var doubleQuoteRegExp = /''/g
  * | Fraction of second              | S       | 0, 1, ..., 9                      |       |
  * |                                 | SS      | 00, 01, ..., 99                   |       |
  * |                                 | SSS     | 000, 0001, ..., 999               |       |
- * |                                 | SSSS+   | ...                               | (3)   |
+ * |                                 | SSSS    | ...                               | (3)   |
  * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |       |
  * |                                 | XX      | -0800, +0530, Z                   |       |
  * |                                 | XXX     | -08:00, +05:30, Z                 |       |
@@ -175,9 +174,9 @@ var doubleQuoteRegExp = /''/g
  * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
  * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
  * | Seconds timestamp               | t       | 512969520                         |       |
- * |                                 | tt+     | ...                               | (3)   |
+ * |                                 | tt      | ...                               | (3)   |
  * | Milliseconds timestamp          | T       | 512969520900                      |       |
- * |                                 | TT+     | ...                               | (3)   |
+ * |                                 | TT      | ...                               | (3)   |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *   are the same as "stand-alone" units, but are different in some languages.
@@ -222,7 +221,7 @@ var doubleQuoteRegExp = /''/g
  *   | 14   |   14 |   14 |
  *   | 376  |   76 |  376 |
  *   | 1453 |   53 | 1453 |
- *   The same is true for local and ISO week-numbering years (`Y` and `R`),
+ *   The same difference is true for local and ISO week-numbering years (`Y` and `R`),
  *   except local week-numbering years are dependent on `options.weekStartsOn`
  *   and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
  *   and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
@@ -341,7 +340,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
 
       var formatter = formatters[firstCharacter]
       if (formatter) {
-        return formatter(substring, utcDate, locale.localize, formatterOptions)
+        return formatter(utcDate, substring, locale.localize, formatterOptions)
       }
 
       return substring
