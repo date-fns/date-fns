@@ -74,8 +74,8 @@ describe('format', function () {
   describe('year', function () {
     describe('regular year', function () {
       it('works as expected', function () {
-        var result = format(date, 'y yo yy yyo yyy yyyy yyyyy yyyyyo')
-        assert(result === '1986 1986th 86 86th 1986 1986 01986 01986th')
+        var result = format(date, 'y yo yy yyy yyyy yyyyy')
+        assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
       it('1 BC formats as 1', function () {
@@ -95,8 +95,8 @@ describe('format', function () {
 
     describe('local week-numbering year', function () {
       it('works as expected', function () {
-        var result = format(date, 'Y Yo YY YYo YYY YYYY YYYYY YYYYYo')
-        assert(result === '1986 1986th 86 86th 1986 1986 01986 01986th')
+        var result = format(date, 'Y Yo YY YYY YYYY YYYYY')
+        assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
       it('the first week of the next year', function () {
@@ -104,7 +104,7 @@ describe('format', function () {
         assert(result === '2014')
       })
 
-      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
+      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function () {
         var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
           weekStartsOn: 1,
           firstWeekContainsDate: 4
@@ -134,8 +134,8 @@ describe('format', function () {
 
     describe('ISO week-numbering year', function () {
       it('works as expected', function () {
-        var result = format(date, 'R Ro RR RRo RRR RRRR RRRRR RRRRRo')
-        assert(result === '1986 1986th 1986 1986th 1986 1986 01986 01986th')
+        var result = format(date, 'R RR RRR RRRR RRRRR')
+        assert(result === '1986 1986 1986 1986 01986')
       })
 
       it('the first week of the next year', function () {
@@ -165,8 +165,8 @@ describe('format', function () {
 
     describe('extended year', function () {
       it('works as expected', function () {
-        var result = format(date, 'u uo uu uuo uuu uuuu uuuuu uuuuuo')
-        assert(result === '1986 1986th 1986 1986th 1986 1986 01986 01986th')
+        var result = format(date, 'u uu uuu uuuu uuuuu')
+        assert(result === '1986 1986 1986 1986 01986')
       })
 
       it('1 BC formats as 0', function () {
@@ -187,13 +187,13 @@ describe('format', function () {
 
   describe('quarter', function () {
     it('formatting quarter', function () {
-      var result = format(date, 'Q Qo QQ QQo QQQ QQQQ QQQQQ')
-      assert(result === '2 2nd 02 02nd Q2 2nd quarter 2')
+      var result = format(date, 'Q Qo QQ QQQ QQQQ QQQQQ')
+      assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
 
     it('stand-alone quarter', function () {
-      var result = format(date, 'q qo qq qqo qqq qqqq qqqqq')
-      assert(result === '2 2nd 02 02nd Q2 2nd quarter 2')
+      var result = format(date, 'q qo qq qqq qqqq qqqqq')
+      assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
 
     it('returns a correct quarter for each month', function () {
@@ -208,13 +208,13 @@ describe('format', function () {
 
   describe('month', function () {
     it('formatting month', function () {
-      var result = format(date, 'M Mo MM MMo MMM MMMM MMMMM')
-      assert(result === '4 4th 04 04th Apr April A')
+      var result = format(date, 'M Mo MM MMM MMMM MMMMM')
+      assert(result === '4 4th 04 Apr April A')
     })
 
     it('stand-alone month', function () {
-      var result = format(date, 'L Lo LL LLo LLL LLLL LLLLL')
-      assert(result === '4 4th 04 04th Apr April A')
+      var result = format(date, 'L Lo LL LLL LLLL LLLLL')
+      assert(result === '4 4th 04 Apr April A')
     })
   })
 
@@ -226,7 +226,7 @@ describe('format', function () {
         assert(result === '15 15th 15')
       })
 
-      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
+      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, 'w wo ww', {
           weekStartsOn: 1,
@@ -245,14 +245,14 @@ describe('format', function () {
 
   describe('day', function () {
     it('date', function () {
-      var result = format(date, 'd do dd ddo')
-      assert(result === '4 4th 04 04th')
+      var result = format(date, 'd do dd')
+      assert(result === '4 4th 04')
     })
 
     describe('day of year', function () {
       it('works as expected', function () {
-        var result = format(date, 'D Do DD DDD DDDDDo')
-        assert(result === '94 94th 94 094 00094th')
+        var result = format(date, 'D Do DD DDD DDDDD')
+        assert(result === '94 94th 94 094 00094')
       })
 
       it('returns a correct day number for the last day of a leap year', function () {
@@ -272,8 +272,8 @@ describe('format', function () {
 
     describe('ISO day of week', function () {
       it('works as expected', function () {
-        var result = format(date, 'i io ii iio iii iiii iiiii iiiiii')
-        assert(result === '5 5th 05 05th Fri Friday F Fr')
+        var result = format(date, 'i io ii iii iiii iiiii iiiiii')
+        assert(result === '5 5th 05 Fri Friday F Fr')
       })
 
       it('returns a correct day of an ISO week', function () {
@@ -288,8 +288,8 @@ describe('format', function () {
 
     describe('formatting day of week', function () {
       it('works as expected', function () {
-        var result = format(date, 'e eo ee eeo eee eeee eeeee eeeeee')
-        assert(result === '6 6th 06 06th Fri Friday F Fr')
+        var result = format(date, 'e eo ee eee eeee eeeee eeeeee')
+        assert(result === '6 6th 06 Fri Friday F Fr')
       })
 
       it('by default, 1 is Sunday, 2 is Monday, ...', function () {
@@ -313,8 +313,8 @@ describe('format', function () {
 
     describe('stand-alone day of week', function () {
       it('works as expected', function () {
-        var result = format(date, 'c co cc cco ccc cccc ccccc cccccc')
-        assert(result === '6 6th 06 06th Fri Friday F Fr')
+        var result = format(date, 'c co cc ccc cccc ccccc cccccc')
+        assert(result === '6 6th 06 Fri Friday F Fr')
       })
 
       it('by default, 1 is Sunday, 2 is Monday, ...', function () {
@@ -339,23 +339,23 @@ describe('format', function () {
 
   describe('day period and hour', function () {
     it('hour [1-12]', function () {
-      var result = format(date, 'h hh hhho')
-      assert(result === '12 12 012th')
+      var result = format(date, 'h ho hh')
+      assert(result === '12 12th 12')
     })
 
     it('hour [0-23]', function () {
-      var result = format(date, 'H HH HHHo')
-      assert(result === '0 00 000th')
+      var result = format(date, 'H Ho HH')
+      assert(result === '0 0th 00')
     })
 
     it('hour [0-11]', function () {
-      var result = format(date, 'K KK KKKo')
-      assert(result === '0 00 000th')
+      var result = format(date, 'K Ko KK')
+      assert(result === '0 0th 00')
     })
 
     it('hour [1-24]', function () {
-      var result = format(date, 'k kk kkko')
-      assert(result === '24 24 024th')
+      var result = format(date, 'k ko kk')
+      assert(result === '24 24th 24')
     })
 
     describe('AM, PM', function () {
@@ -421,19 +421,19 @@ describe('format', function () {
   })
 
   it('minute', function () {
-    var result = format(date, 'm mm mmmo')
-    assert(result === '32 32 032nd')
+    var result = format(date, 'm mo mm')
+    assert(result === '32 32nd 32')
   })
 
   describe('second', function () {
     it('second', function () {
-      var result = format(date, 's ss ssso')
-      assert(result === '55 55 055th')
+      var result = format(date, 's so ss')
+      assert(result === '55 55th 55')
     })
 
     it('fractional seconds', function () {
-      var result = format(date, 'S So SS SSo SSS SSSS')
-      assert(result === '1 1st 12 12th 123 1230')
+      var result = format(date, 'S SS SSS SSSS')
+      assert(result === '1 12 123 1230')
     })
   })
 

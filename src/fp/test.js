@@ -1267,13 +1267,13 @@ describe('FP functions', function () {
 
   it('parse', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
-    var result = fp.parse(baseDate)('YYYYMMDDTHHmmss')('20161105T040404')
+    var result = fp.parse(baseDate)("yyyyMMdd'T'HHmmss")('20161105T040404')
     assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
   })
 
   it('parseWithOptions', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
-    var result = fp.parseWithOptions({})(baseDate)('YYYYMMDDTHHmmss')('20161105T040404')
+    var result = fp.parseWithOptions({})(baseDate)("yyyyMMdd'T'HHmmss")('20161105T040404')
     assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
   })
 
@@ -1397,6 +1397,26 @@ describe('FP functions', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))
   })
 
+  it.skip('setWeek', function () {
+    var result = fp.setWeek(1)(new Date(2005, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 11 /* Dec */, 26))
+  })
+
+  it.skip('setWeekWithOptions', function () {
+    var result = fp.setWeekWithOptions({weekStartsOn: 1, firstWeekContainsDate: 4})(1)(new Date(2005, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 4))
+  })
+
+  it.skip('setWeekYear', function () {
+    var result = fp.setWeekYear(2004)(new Date(2010, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2004, 0 /* Jan */, 3))
+  })
+
+  it.skip('setWeekYearWithOptions', function () {
+    var result = fp.setWeekYearWithOptions({weekStartsOn: 1, firstWeekContainsDate: 4})(2004)(new Date(2010, 0 /* Jan */, 2))
+    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
+  })
+
   it('setYear', function () {
     var result = fp.setYear(2013)(new Date(2014, 8 /* Sep */, 1))
     assert.deepEqual(result, new Date(2013, 8 /* Sep */, 1))
@@ -1513,14 +1533,14 @@ describe('FP functions', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('startOfWeekYear', function () {
-    var result = fp.startOfISOWeekYear(new Date(2005, 6 /* Jul */, 2))
+  it.skip('startOfWeekYear', function () {
+    var result = fp.startOfWeekYear(new Date(2005, 6 /* Jul */, 2))
     assert.deepEqual(result, new Date(2004, 11 /* Dec */, 26, 0, 0, 0, 0))
   })
 
-  it('startOfWeekYearWithOptions', function () {
-    var result = fp.startOfISOWeekYearWithOptions({})(new Date(2005, 6 /* Jul */, 2))
-    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0)))
+  it.skip('startOfWeekYearWithOptions', function () {
+    var result = fp.startOfWeekYearWithOptions({})(new Date(2005, 6 /* Jul */, 2))
+    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 3, 0, 0, 0, 0))
   })
 
   it('startOfYear', function () {
