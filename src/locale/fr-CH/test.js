@@ -72,15 +72,15 @@ describe('fr-CH locale', function () {
 
     describe('days of year', function () {
       it('DDDo', function () {
-        var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [jour de semaine]', {locale: locale})
-        assert(result === '1er jour de semaine')
+        var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [jour de l’année]', {locale: locale})
+        assert(result === '1er jour de l’année')
       })
     })
 
     describe('days of week', function () {
       it('all variants', function () {
-        var result = format(date, 'do [jour de semaine,] dd ddd dddd', {locale: locale})
-        assert(result === '5e jour de semaine, ve ven. vendredi')
+        var result = format(date, 'do [jour de la semaine,] dd ddd dddd', {locale: locale})
+        assert(result === '5e jour de la semaine, ve ven. vendredi')
       })
     })
 
@@ -139,6 +139,40 @@ describe('fr-CH locale', function () {
       it('LLLL', function () {
         var result = format(date, 'LLLL', {locale: locale})
         assert(result === 'vendredi, 4 avril 1986 10:32')
+      })
+    })
+  })
+
+  // Ordinal with a feminine word.
+  context('with `format`', function () {
+    var date = new Date(1986, 0 /* Jan */, 4, 10, 32, 0, 900)
+
+    describe('ISO weeks', function () {
+      it('Wo', function () {
+        var result = format(date, 'Wo [semaine]', {locale: locale})
+        assert(result === '1re semaine')
+      })
+    })
+  })
+
+  // First day of month with an ordinal.
+  context('with `format`', function () {
+    var date = new Date(1986, 3 /* Apr */, 1, 10, 32, 0, 900)
+
+    describe('long formats', function () {
+      it('LL', function () {
+        var result = format(date, 'LL', {locale: locale})
+        assert(result === '1er avril 1986')
+      })
+
+      it('LLL', function () {
+        var result = format(date, 'LLL', {locale: locale})
+        assert(result === '1er avril 1986 10:32')
+      })
+
+      it('LLLL', function () {
+        var result = format(date, 'LLLL', {locale: locale})
+        assert(result === 'mardi, 1er avril 1986 10:32')
       })
     })
   })
@@ -280,12 +314,12 @@ describe('fr-CH locale', function () {
       })
 
       it('MMM', function () {
-        var result = parse('2016 Nov.', 'YYYY MMM', baseDate, {locale: locale})
+        var result = parse('2016 nov.', 'YYYY MMM', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 10 /* Nov */, 1))
       })
 
       it('MMMM', function () {
-        var result = parse('2016 Décembre', 'YYYY MMMM', baseDate, {locale: locale})
+        var result = parse('2016 décembre', 'YYYY MMMM', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 11 /* Dec */, 1))
       })
     })
@@ -304,7 +338,7 @@ describe('fr-CH locale', function () {
       })
 
       it('dd', function () {
-        var result = parse('2016 4 Lu', 'GGGG W dd', baseDate, {locale: locale})
+        var result = parse('2016 4 lu', 'GGGG W dd', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2016, 0 /* Jan */, 25))
       })
 
