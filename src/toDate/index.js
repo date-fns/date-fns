@@ -5,6 +5,7 @@ var DEFAULT_ADDITIONAL_DIGITS = 2
 var patterns = {
   dateTimeDelimeter: /[T ]/,
   plainTime: /:/,
+  timeZoneDelimeter: /[Z ]/i,
 
   // year tokens
   YY: /^(\d{2})$/,
@@ -145,6 +146,10 @@ function splitDateString (dateString) {
   } else {
     dateStrings.date = array[0]
     timeString = array[1]
+    if (patterns.timeZoneDelimeter.test(dateStrings.date)) {
+      dateStrings.date = dateString.split(patterns.timeZoneDelimeter)[0]
+      timeString = dateString.substr(dateStrings.date.length, dateString.length)
+    }
   }
 
   if (timeString) {
