@@ -208,14 +208,14 @@ var formatDistanceLocale = {
 
   almostXYears: buildLocalizeTokenFn({
     regular: {
-      singularNominative: 'почти {{count}} рік',
-      singularGenitive: 'почти {{count}} роки',
-      pluralGenitive: 'почти {{count}} років'
+      singularNominative: 'майже {{count}} рік',
+      singularGenitive: 'майже {{count}} роки',
+      pluralGenitive: 'майже {{count}} років'
     },
     future: {
-      singularNominative: 'почти за {{count}} рік',
-      singularGenitive: 'почти за {{count}} роки',
-      pluralGenitive: 'почти за {{count}} років'
+      singularNominative: 'майже за {{count}} рік',
+      singularGenitive: 'майже за {{count}} роки',
+      pluralGenitive: 'майже за {{count}} років'
     }
   })
 }
