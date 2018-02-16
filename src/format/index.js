@@ -39,12 +39,7 @@ var doubleQuoteRegExp = /''/g
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions:
- * - ISO day of week field (`i`)
- * - ISO week of year (`I`)
- * - ISO week-numbering year (`R`)
- * - seconds (`t`) and milliseconds (`T`) timestamps
- * - ordinal number modifier (`o`)
+ * with a few additions (see note 7 below the table).
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   | Notes |
@@ -249,6 +244,16 @@ var doubleQuoteRegExp = /''/g
  *
  * 6. Specific non-location timezones are currently unavailable in `date-fns`,
  *   so right now these tokens fall back to GMT timezones.
+ *
+ * 7. These patterns are not in the Unicode Technical Standard #35:
+ *   - `i`: ISO day of week field
+ *   - `I`: ISO week of year
+ *   - `R`: ISO week-numbering year
+ *   - `t`: seconds timestamp
+ *   - `T`: milliseconds timestamp
+ *   - `o`: ordinal number modifier
+ *   - `P`: long localized date
+ *   - `p`: long localized time
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
