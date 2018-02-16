@@ -1,9 +1,11 @@
 import toDate from '../toDate/index.js'
-import subMinutes from '../subMinutes/index.js'
-import defaultLocale from '../locale/en-US/index.js'
+import defaultLocale from '../../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 import units from './_lib/units/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
+import cloneObject from '../../_lib/cloneObject/index.js'
+
+var TIMEZONE_UNIT_PRIORITY = 110
+var MILLISECONDS_IN_MINUTE = 60000
 
 var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
 var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
@@ -130,7 +132,7 @@ var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|
  * var result = parse(
  *   '28-a de februaro',
  *   'Do [de] MMMM',
- *   new Date(2010, 0, 1)
+ *   new Date(Date.UTC(2010, 0, 1))
  *   {locale: eoLocale}
  * )
  * //=> Sun Feb 28 2010 00:00:00
@@ -189,12 +191,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   var tokens = formatString.match(locale.parsingTokensRegExp || defaultParsingTokensRegExp)
   var tokensLength = tokens.length
 
-  // If timezone isn't specified, it will be set to the system timezone
-  var setters = [{
-    priority: TIMEZONE_UNIT_PRIORITY,
-    set: dateToSystemTimezone,
-    index: 0
-  }]
+  var setters = []
 
   var i
   for (i = 0; i < tokensLength; i++) {
@@ -262,12 +259,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     return new Date(NaN)
   }
 
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  var utcDate = subMinutes(date, date.getTimezoneOffset())
-
-  var dateValues = {date: utcDate}
+  var dateValues = {date: date}
 
   var settersLength = uniquePrioritySetters.length
   for (i = 0; i < settersLength; i++) {
@@ -276,22 +268,6 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   return dateValues.date
-}
-
-function dateToSystemTimezone (dateValues) {
-  var date = dateValues.date
-  var time = date.getTime()
-
-  // Get the system timezone offset at (moment of time - offset)
-  var offset = date.getTimezoneOffset()
-
-  // Get the system timezone offset at the exact moment of time
-  offset = new Date(time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
-
-  // Convert date in timezone "UTC+00:00" to the system timezone
-  dateValues.date = new Date(time + offset * MILLISECONDS_IN_MINUTE)
-
-  return dateValues
 }
 
 function cleanEscapedString (input) {
