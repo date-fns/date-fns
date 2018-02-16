@@ -219,6 +219,12 @@ describe('toDate', function () {
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
       })
+      context('when the year and the month are specified', function () {
+        it('sets timezone correctly on yyyy-MMZ format', function () {
+          var result = toDate('2012-01Z')
+          assert.deepEqual(result, new Date('2011-12-31T18:00:00+07:00'))
+        })
+      })
     })
 
     describe('failure', function () {
