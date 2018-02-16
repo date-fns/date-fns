@@ -230,10 +230,26 @@ for the list of changes made since `v2.0.0-alpha.1`.
   |                                 | xxx     | -08:00, +05:30, +00:00            |
   |                                 | xxxx    | -0800, +0530, +0000, +123456      |
   |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |
+  | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   |
+  | Timezone (specific non-locat.)  | z...zzz | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | zzzz    | GMT-08:00, GMT+05:30, GMT+00:00   |
   | Seconds timestamp               | t       | 512969520                         |
   |                                 | tt      | ...                               |
   | Milliseconds timestamp          | T       | 512969520900                      |
   |                                 | TT      | ...                               |
+  | Long localized date             | P       | 5/29/53                           |
+  |                                 | PP      | May 29, 1453                      |
+  |                                 | PPP     | May 29th, 1453                    |
+  |                                 | PPPP    | Sunday, May 29th, 1453            |
+  | Long localized time             | p       | 12:00 AM                          |
+  |                                 | pp      | 12:00:00 AM                       |
+  |                                 | ppp     | 12:00:00 AM GMT+2                 |
+  |                                 | pppp    | 12:00:00 AM GMT+02:00             |
+  | Combination of date and time    | Pp      | 5/29/53, 12:00 AM                 |
+  |                                 | PPpp    | May 29, 1453, 12:00 AM            |
+  |                                 | PPPppp  | May 29th, 1453 at ...             |
+  |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     |
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
 

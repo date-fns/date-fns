@@ -33,7 +33,7 @@ var dayPeriodEnum = {
  * |  m  | Minute                         |  M  | Month                          |
  * |  n  |                                |  N  |                                |
  * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
- * |  p  |                                |  P  |                                |
+ * |  p! | Long localized time            |  P! | Long localized date            |
  * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
  * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
  * |  s  | Second                         |  S  | Fraction of second             |
@@ -57,6 +57,8 @@ var dayPeriodEnum = {
  *   for universal ISO week-numbering date, whereas
  *   `Y` is supposed to be used in conjunction with `w` and `e`
  *   for week-numbering date specific to the locale.
+ * - `P` is long localized date format
+ * - `p` is long localized time format
  */
 
 var formatters = {
@@ -574,11 +576,7 @@ var formatters = {
     switch (token) {
       // Hours and optional minutes
       case 'X':
-        if (timezoneOffset % 60 === 0) {
-          var sign = timezoneOffset > 0 ? '-' : '+'
-          return sign + addLeadingZeros(Math.abs(timezoneOffset) / 60, 2)
-        }
-        return formatTimezone(timezoneOffset, localize)
+        return formatTimezoneWithOptionalMinutes(timezoneOffset, localize)
 
       // Hours, minutes and optional seconds without `:` delimeter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
@@ -605,11 +603,7 @@ var formatters = {
     switch (token) {
       // Hours and optional minutes
       case 'x':
-        if (timezoneOffset % 60 === 0) {
-          var sign = timezoneOffset > 0 ? '-' : '+'
-          return sign + addLeadingZeros(Math.abs(timezoneOffset) / 60, 2)
-        }
-        return formatTimezone(timezoneOffset)
+        return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
       // Hours, minutes and optional seconds without `:` delimeter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
@@ -625,6 +619,42 @@ var formatters = {
       case 'xxx': // Hours and minutes with `:` delimeter
       default:
         return formatTimezone(timezoneOffset, ':')
+    }
+  },
+
+  // Timezone (GMT)
+  O: function (date, token, localize, options) {
+    var originalDate = options._originalDate || date
+    var timezoneOffset = originalDate.getTimezoneOffset()
+
+    switch (token) {
+      // Short
+      case 'O':
+      case 'OO':
+      case 'OOO':
+        return 'GMT' + formatTimezoneShort(timezoneOffset, ':')
+      // Long
+      case 'OOOO':
+      default:
+        return 'GMT' + formatTimezone(timezoneOffset, ':')
+    }
+  },
+
+  // Timezone (specific non-location)
+  z: function (date, token, localize, options) {
+    var originalDate = options._originalDate || date
+    var timezoneOffset = originalDate.getTimezoneOffset()
+
+    switch (token) {
+      // Short
+      case 'z':
+      case 'zz':
+      case 'zzz':
+        return 'GMT' + formatTimezoneShort(timezoneOffset, ':')
+      // Long
+      case 'zzzz':
+      default:
+        return 'GMT' + formatTimezone(timezoneOffset, ':')
     }
   },
 
@@ -659,6 +689,26 @@ function formatTimezone (offset, dirtyDelimeter) {
   var hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
   var minutes = addLeadingZeros(absOffset % 60, 2)
   return sign + hours + delimeter + minutes
+}
+
+function formatTimezoneWithOptionalMinutes (offset, dirtyDelimeter) {
+  if (offset % 60 === 0) {
+    var sign = offset > 0 ? '-' : '+'
+    return sign + addLeadingZeros(Math.abs(offset) / 60, 2)
+  }
+  return formatTimezone(offset, dirtyDelimeter)
+}
+
+function formatTimezoneShort (offset, dirtyDelimeter) {
+  var sign = offset > 0 ? '-' : '+'
+  var absOffset = Math.abs(offset)
+  var hours = absOffset / 60
+  var minutes = absOffset % 60
+  if (minutes === 0) {
+    return sign + String(hours)
+  }
+  var delimeter = dirtyDelimeter || ''
+  return sign + String(hours) + delimeter + addLeadingZeros(minutes, 2)
 }
 
 export default formatters

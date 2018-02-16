@@ -23,6 +23,11 @@ describe('format', function () {
   var timezoneWithZShort = offset === 0 ? 'Z' : timezoneShort
   var timezoneWithOptionalMinutesAndZShort = offset === 0 ? 'Z' : timezoneWithOptionalMinutesShort
 
+  var timezoneGMTShort = minutes === 0
+    ? 'GMT' + sign + hours
+    : 'GMT' + sign + hours + ':' + minutesLeadingZero
+  var timezoneGMT = 'GMT' + timezone
+
   var timestamp = date.getTime().toString()
   var secondsTimestamp = Math.floor(date.getTime() / 1000).toString()
 
@@ -464,6 +469,28 @@ describe('format', function () {
       ].join(' ')
       assert(result === expectedResult)
     })
+
+    it('GMT', function () {
+      var result = format(date, 'O OO OOO OOOO')
+      var expectedResult = [
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMT
+      ].join(' ')
+      assert(result === expectedResult)
+    })
+
+    it('Specific non-location', function () {
+      var result = format(date, 'z zz zzz zzzz')
+      var expectedResult = [
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMTShort,
+        timezoneGMT
+      ].join(' ')
+      assert(result === expectedResult)
+    })
   })
 
   describe('timestamp', function () {
@@ -475,6 +502,73 @@ describe('format', function () {
     it('milliseconds timestamp', function () {
       var result = format(date, 'T')
       assert(result === timestamp)
+    })
+  })
+
+  describe('long format', function () {
+    it('short date', function () {
+      var result = format(date, 'P')
+      assert(result === '4/4/86')
+    })
+
+    it('medium date', function () {
+      var result = format(date, 'PP')
+      assert(result === 'Apr 4, 1986')
+    })
+
+    it('long date', function () {
+      var result = format(date, 'PPP')
+      assert(result === 'April 4th, 1986')
+    })
+
+    it('full date', function () {
+      var result = format(date, 'PPPP')
+      assert(result === 'Friday, April 4th, 1986')
+    })
+
+    it('short time', function () {
+      var result = format(date, 'p')
+      assert(result === '12:32 AM')
+    })
+
+    it('medium time', function () {
+      var result = format(date, 'pp')
+      assert(result === '12:32:55 AM')
+    })
+
+    it('long time', function () {
+      var result = format(date, 'ppp')
+      assert(result === '12:32:55 AM ' + timezoneGMTShort)
+    })
+
+    it('full time', function () {
+      var result = format(date, 'pppp')
+      assert(result === '12:32:55 AM ' + timezoneGMT)
+    })
+
+    it('short date + time', function () {
+      var result = format(date, 'Pp')
+      assert(result === '4/4/86, 12:32 AM')
+    })
+
+    it('medium date + time', function () {
+      var result = format(date, 'PPpp')
+      assert(result === 'Apr 4, 1986, 12:32:55 AM')
+    })
+
+    it('long date + time', function () {
+      var result = format(date, 'PPPppp')
+      assert(result === 'April 4th, 1986 at 12:32:55 AM ' + timezoneGMTShort)
+    })
+
+    it('full date + time', function () {
+      var result = format(date, 'PPPPpppp')
+      assert(result === 'Friday, April 4th, 1986 at 12:32:55 AM ' + timezoneGMT)
+    })
+
+    it('allows arbitrary combination of date and time', function () {
+      var result = format(date, 'Ppppp')
+      assert(result === '4/4/86, 12:32:55 AM ' + timezoneGMT)
     })
   })
 

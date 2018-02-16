@@ -2,6 +2,7 @@ import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
+import longFormatters from './_lib/longFormatters/index.js'
 import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 
 // This RegExp consists of three parts separated by `|`:
@@ -16,6 +17,10 @@ import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+
+// This RegExp catches symbols escaped by quotes, and also
+// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
+var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
@@ -173,10 +178,26 @@ var doubleQuoteRegExp = /''/g
  * |                                 | xxx     | -08:00, +05:30, +00:00            | (2)   |
  * |                                 | xxxx    | -0800, +0530, +0000, +123456      |       |
  * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Timezone (GMT)                  | O...OOO | GMT-8, GMT+5:30, GMT+0            |       |
+ * |                                 | OOOO    | GMT-08:00, GMT+05:30, GMT+00:00   | (2)   |
+ * | Timezone (specific non-locat.)  | z...zzz | GMT-8, GMT+5:30, GMT+0            | (6)   |
+ * |                                 | zzzz    | GMT-08:00, GMT+05:30, GMT+00:00   | (2,6) |
  * | Seconds timestamp               | t       | 512969520                         |       |
  * |                                 | tt      | ...                               | (3)   |
  * | Milliseconds timestamp          | T       | 512969520900                      |       |
  * |                                 | TT      | ...                               | (3)   |
+ * | Long localized date             | P       | 5/29/53                           |       |
+ * |                                 | PP      | May 29, 1453                      |       |
+ * |                                 | PPP     | May 29th, 1453                    |       |
+ * |                                 | PPPP    | Sunday, May 29th, 1453            | (2)   |
+ * | Long localized time             | p       | 12:00 AM                          |       |
+ * |                                 | pp      | 12:00:00 AM                       |       |
+ * |                                 | ppp     | 12:00:00 AM GMT+2                 |       |
+ * |                                 | pppp    | 12:00:00 AM GMT+02:00             | (2)   |
+ * | Combination of date and time    | Pp      | 5/29/53, 12:00 AM                 |       |
+ * |                                 | PPpp    | May 29, 1453, 12:00 AM            |       |
+ * |                                 | PPPppp  | May 29th, 1453 at ...             |       |
+ * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | (2)   |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *   are the same as "stand-alone" units, but are different in some languages.
@@ -225,6 +246,9 @@ var doubleQuoteRegExp = /''/g
  *   except local week-numbering years are dependent on `options.weekStartsOn`
  *   and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
  *   and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
+ *
+ * 6. Specific non-location timezones are currently unavailable in `date-fns`,
+ *   so right now these tokens fall back to GMT timezones.
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
@@ -326,7 +350,18 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     _originalDate: originalDate
   }
 
-  var result = formatStr.match(formattingTokensRegExp)
+  var result = formatStr
+    .match(longFormattingTokensRegExp)
+    .map(function (substring) {
+      var firstCharacter = substring[0]
+      if (firstCharacter === 'p' || firstCharacter === 'P') {
+        var longFormatter = longFormatters[firstCharacter]
+        return longFormatter(substring, locale.formatLong, formatterOptions)
+      }
+      return substring
+    })
+    .join('')
+    .match(formattingTokensRegExp)
     .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
