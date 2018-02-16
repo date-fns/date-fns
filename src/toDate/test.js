@@ -222,7 +222,7 @@ describe('toDate', function () {
       context('when the year and the month are specified', function () {
         it('sets timezone correctly on yyyy-MMZ format', function () {
           var result = toDate('2012-01Z')
-          assert.deepEqual(result, new Date('2011-12-31T18:00:00+07:00'))
+          assert.deepEqual(result, new Date('2012-01-01T00:00:00+00:00'))
         })
       })
     })
