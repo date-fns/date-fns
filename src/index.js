@@ -49,6 +49,7 @@ module.exports = {
   formatDistanceStrict: require('./formatDistanceStrict/index.js'),
   formatRelative: require('./formatRelative/index.js'),
   getDate: require('./getDate/index.js'),
+  getDateOfPastWeekday: require('./getDateOfPastWeekday/index.js'),
   getDay: require('./getDay/index.js'),
   getDayOfYear: require('./getDayOfYear/index.js'),
   getDaysInMonth: require('./getDaysInMonth/index.js'),

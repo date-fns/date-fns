@@ -15,6 +15,16 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 ### Added
 
+- `getDateOfPastWeekday` - Function that returns date of the desired past day of the week i.e. `Last Monday`, `Last Thuesday`, etc.
+
+  ```javascript
+  import getDateOfPastWeekday from 'date-fns/getDateOfPastWeekday'
+
+  const lastMonday = getDateOfPastWeekday(1)
+  // Date is Nov 23, 2017
+  //=> Mon Nov 20 2017 00:00:00
+  ```
+
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
   functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
