@@ -181,7 +181,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 | tt      | ...                               | 3,7   |
  * | Milliseconds timestamp          | T       | 512969520900                      | 7     |
  * |                                 | TT      | ...                               | 3,7   |
- * | Long localized date             | P       | 5/29/53                           | 7     |
+ * | Long localized date             | P       | 05/29/1453                        | 7     |
  * |                                 | PP      | May 29, 1453                      | 7     |
  * |                                 | PPP     | May 29th, 1453                    | 7     |
  * |                                 | PPPP    | Sunday, May 29th, 1453            | 2,7   |
@@ -189,7 +189,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 | pp      | 12:00:00 AM                       | 7     |
  * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
  * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
- * | Combination of date and time    | Pp      | 5/29/53, 12:00 AM                 | 7     |
+ * | Combination of date and time    | Pp      | 05/29/1453, 12:00 AM              | 7     |
  * |                                 | PPpp    | May 29, 1453, 12:00 AM            | 7     |
  * |                                 | PPPppp  | May 29th, 1453 at ...             | 7     |
  * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | 2,7   |

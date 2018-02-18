@@ -32,7 +32,7 @@ var dayPeriodEnum = {
  * |  l* | (deprecated)                   |  L  | Stand-alone month              |
  * |  m  | Minute                         |  M  | Month                          |
  * |  n  |                                |  N  |                                |
- * |  o! | Ordinal number modifier        |  O* | Timezone (GMT)                 |
+ * |  o! | Ordinal number modifier        |  O  | Timezone (GMT)                 |
  * |  p! | Long localized time            |  P! | Long localized date            |
  * |  q  | Stand-alone quarter            |  Q  | Quarter                        |
  * |  r* | Related Gregorian year         |  R! | ISO week-numbering year        |
@@ -43,7 +43,7 @@ var dayPeriodEnum = {
  * |  w  | Local week of year             |  W* | Week of month                  |
  * |  x  | Timezone (ISO-8601 w/o Z)      |  X  | Timezone (ISO-8601)            |
  * |  y  | Year (abs)                     |  Y  | Local week-numbering year      |
- * |  z* | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
+ * |  z  | Timezone (specific non-locat.) |  Z* | Timezone (aliases)             |
  *
  * Letters marked by * are not implemented but reserved by Unicode standard.
  *
