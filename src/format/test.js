@@ -508,7 +508,7 @@ describe('format', function () {
   describe('long format', function () {
     it('short date', function () {
       var result = format(date, 'P')
-      assert(result === '4/4/86')
+      assert(result === '04/04/1986')
     })
 
     it('medium date', function () {
@@ -548,7 +548,7 @@ describe('format', function () {
 
     it('short date + time', function () {
       var result = format(date, 'Pp')
-      assert(result === '4/4/86, 12:32 AM')
+      assert(result === '04/04/1986, 12:32 AM')
     })
 
     it('medium date + time', function () {
@@ -568,7 +568,7 @@ describe('format', function () {
 
     it('allows arbitrary combination of date and time', function () {
       var result = format(date, 'Ppppp')
-      assert(result === '4/4/86, 12:32:55 AM ' + timezoneGMT)
+      assert(result === '04/04/1986, 12:32:55 AM ' + timezoneGMT)
     })
   })
 
@@ -595,8 +595,42 @@ describe('format', function () {
     assert(format(date, formatString) === '2014-04-04')
   })
 
-  it.skip('custom locale', function () {
+  describe('custom locale', function () {
+    it('allows to pass a custom locale', function () {
+      var customLocale = {
+        localize: {
+          month: function () {
+            return 'works'
+          }
+        },
+        formatLong: {
+          date: function () {
+            return "'It' MMMM!"
+          }
+        }
+      }
+      // $ExpectedMistake
+      var result = format(date, 'PPPP', {locale: customLocale})
+      assert(result === 'It works!')
+    })
 
+    it("throws `RangeError` if `options.locale` doesn't have `localize` property", function () {
+      var customLocale = {
+        formatLong: {}
+      }
+      // $ExpectedMistake
+      var block = format.bind(null, date, 'yyyy-MM-dd', {locale: customLocale})
+      assert.throws(block, RangeError)
+    })
+
+    it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
+      var customLocale = {
+        localize: {}
+      }
+      // $ExpectedMistake
+      var block = format.bind(null, date, 'yyyy-MM-dd', {locale: customLocale})
+      assert.throws(block, RangeError)
+    })
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {

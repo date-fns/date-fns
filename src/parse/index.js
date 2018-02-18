@@ -292,10 +292,6 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     throw new RangeError('locale must contain match property')
   }
 
-  if (!locale.formatLong) {
-    throw new RangeError('locale must contain formatLong property')
-  }
-
   var localeFirstWeekContainsDate =
     locale.options &&
     locale.options.firstWeekContainsDate

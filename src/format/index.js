@@ -336,6 +336,10 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     throw new RangeError('locale must contain localize property')
   }
 
+  if (!locale.formatLong) {
+    throw new RangeError('locale must contain formatLong property')
+  }
+
   var originalDate = toDate(dirtyDate, options)
 
   if (!isValid(originalDate, options)) {
