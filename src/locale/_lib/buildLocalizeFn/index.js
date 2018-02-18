@@ -6,7 +6,7 @@ export default function buildLocalizeFn (args) {
 
     var valuesArray
     if (context === 'formatting' && args.formattingValues) {
-      valuesArray = args.formattingValues[width] || args.formattingValues[args.defaultWidth]
+      valuesArray = args.formattingValues[width] || args.formattingValues[args.defaultFormattingWidth]
     } else {
       valuesArray = args.values[width] || args.values[args.defaultWidth]
     }
