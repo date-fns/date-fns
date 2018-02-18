@@ -48,9 +48,17 @@ var matchDayPeriodPatterns = {
   any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
 }
 var parseDayPeriodPatterns = {
-  any: [/^a/i, /^p/i, /^mi/i, /^no/i, /morning/i, /afternoon/i, /evening/i, /night/i]
+  any: {
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^mi/i,
+    noon: /^no/i,
+    morning: /morning/i,
+    afternoon: /afternoon/i,
+    evening: /evening/i,
+    night: /night/i
+  }
 }
-var dayPeriodEnumIndices = ['am', 'pm', 'midnight', 'noon', 'morning', 'afternoon', 'evening', 'night']
 
 var match = {
   ordinalNumber: buildMatchPatternFn({
@@ -96,10 +104,7 @@ var match = {
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any',
-    valueCallback: function (value) {
-      return dayPeriodEnumIndices[value]
-    }
+    defaultParseWidth: 'any'
   })
 }
 

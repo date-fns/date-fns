@@ -12,16 +12,16 @@ var quarterValues = {
   wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
 }
 
+// Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 }
 
-// Note: in English, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var dayValues = {
   narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
@@ -30,11 +30,37 @@ var dayValues = {
 }
 
 var dayPeriodValues = {
-  narrow: ['a', 'p', 'mi', 'n', 'in the morning', 'in the afternoon', 'in the evening', 'at night'],
-  abbreviated: ['AM', 'PM', 'midnight', 'noon', 'in the morning', 'in the afternoon', 'in the evening', 'at night'],
-  wide: ['a.m.', 'p.m.', 'midnight', 'noon', 'in the morning', 'in the afternoon', 'in the evening', 'at night']
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mi',
+    noon: 'n',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnight',
+    noon: 'noon',
+    morning: 'in the morning',
+    afternoon: 'in the afternoon',
+    evening: 'in the evening',
+    night: 'at night'
+  }
 }
-var dayPeriodEnumIndices = ['am', 'pm', 'midnight', 'noon', 'morning', 'afternoon', 'evening', 'night']
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
@@ -65,14 +91,32 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  era: buildLocalizeFn(eraValues, 'wide'),
-  quarter: buildLocalizeFn(quarterValues, 'wide', function (quarter) {
-    return Number(quarter) - 1
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  month: buildLocalizeFn(monthValues, 'wide'),
-  day: buildLocalizeFn(dayValues, 'wide'),
-  dayPeriod: buildLocalizeFn(dayPeriodValues, 'wide', function (dayPeriodEnumValue) {
-    return dayPeriodEnumIndices.indexOf(dayPeriodEnumValue)
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    indexCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
   })
 }
 
