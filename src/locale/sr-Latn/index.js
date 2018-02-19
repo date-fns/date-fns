@@ -12,7 +12,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @summary Serbian Latn locale.
  * @language Serbian
  * @iso-639-2 srp
- * @author Nemanja Šćepanović [@nscepanovic11]{@link https://github.com/nscepanovic11}
+ * @author Nemanja Šćepanović [@nscepanovic]{@link https://github.com/nscepanovic}
  */
 var locale = {
   formatDistance: formatDistance,

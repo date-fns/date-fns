@@ -73,22 +73,22 @@ var formatDistanceLocale = {
 
   aboutXMonths: {
     one: {
-      standalone: 'oko 1 mjesec',
-      withPrepositionAgo: 'oko 1 mjesec',
-      withPrepositionIn: 'oko 1 mjesec'
+      standalone: 'oko 1 mesec',
+      withPrepositionAgo: 'oko 1 mesec',
+      withPrepositionIn: 'oko 1 mesec'
     },
-    dual: 'oko {{count}} mjeseca',
-    other: 'oko {{count}} mjeseci'
+    dual: 'oko {{count}} meseca',
+    other: 'oko {{count}} meseci'
   },
 
   xMonths: {
     one: {
-      standalone: '1 mjesec',
-      withPrepositionAgo: '1 mjesec',
-      withPrepositionIn: '1 mjesec'
+      standalone: '1 mesec',
+      withPrepositionAgo: '1 mesec',
+      withPrepositionIn: '1 mesec'
     },
-    dual: '{{count}} mjeseca',
-    other: '{{count}} mjeseci'
+    dual: '{{count}} meseca',
+    other: '{{count}} meseci'
   },
 
   aboutXYears: {
