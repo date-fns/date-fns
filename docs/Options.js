@@ -23,7 +23,7 @@
  *   If true, distances less than a minute are more detailed
  * @property {Boolean} [addSuffix=false] - used by `formatDistance` and `formatDistanceStrict`.
  *   If true, the result will indicate if the second date is earlier or later than the first
- * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `formatDistanceStrict`.
+ * @property {'second'|'minute'|'hour'|'day'|'month'|'year'} [unit] - used by `formatDistanceStrict`.
  *   If specified, will force a unit
  * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `formatDistanceStrict`.
  *   Specifies, which way to round partial units
@@ -37,7 +37,7 @@
  *   Thrown by `format`, `lastDayOfWeek`, `parse`, `setDay`, `setWeek`, setWeekYear, `startOfWeek` and `startOfWeekYear`.
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'.
  *   Thrown by `formatDistanceStrict`
- * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'.
+ * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  *   Thrown by `formatDistanceStrict`
  * @throws {RangeError} `options.locale` must contain `localize` property.
  *   Thrown by `format` and `formatRelative`

@@ -437,6 +437,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   to make them consistent with `format` and `formatRelative`.
   The order of arguments is swapped to make them consistent with `differenceIn...` functions.
   `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+  `unit` option in `formatDistanceStrict` now takes one of the strings:
+  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
 
   ```javascript
   // Before v2.0.0
@@ -450,7 +452,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    {partialMethod: 'ceil'}
+    {partialMethod: 'ceil', unit: 'm'}
   ) //=> '2 minutes'
 
   // v2.0.0 onward
@@ -464,7 +466,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {roundingMethod: 'ceil'}
+    {roundingMethod: 'ceil', unit: 'minute'}
   ) //=> '2 minutes'
   ```
 

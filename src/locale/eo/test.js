@@ -216,7 +216,7 @@ describe('eo locale', function () {
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 12, 32, 0),
-        {locale: locale, unit: 'm'}
+        {locale: locale, unit: 'minute'}
       )
       assert(result === '120 minutoj')
     })
