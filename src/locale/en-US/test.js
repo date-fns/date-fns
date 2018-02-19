@@ -12,7 +12,7 @@ import parse from '../../parse'
 
 describe('en-US locale', function () {
   context('with `format`', function () {
-    var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+    var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
     it('era', function () {
       var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
@@ -46,7 +46,7 @@ describe('en-US locale', function () {
     describe('month', function () {
       it('formatting month', function () {
         var result = format(date, "do 'of' MMMM", {locale: locale})
-        assert(result === '4th of April')
+        assert(result === '5th of April')
       })
 
       it('stand-alone month', function () {
@@ -72,24 +72,24 @@ describe('en-US locale', function () {
     describe('day', function () {
       it('ordinal date', function () {
         var result = format(date, "'today is the' do", {locale: locale})
-        assert(result === 'today is the 4th')
+        assert(result === 'today is the 5th')
       })
 
       it('ordinal day of year', function () {
         var result = format(date, "Do 'day of the year'", {locale: locale})
-        assert(result === '94th day of the year')
+        assert(result === '95th day of the year')
       })
     })
 
     describe('week day', function () {
       it('day of week', function () {
         var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
-        assert(result === 'Fri, Friday, F, Fr')
+        assert(result === 'Sat, Saturday, S, Sa')
       })
 
       it('ordinal day of week', function () {
         var result = format(date, "eo 'day of the week'", {locale: locale})
-        assert(result === '6th day of the week')
+        assert(result === '7th day of the week')
       })
     })
 
@@ -130,22 +130,22 @@ describe('en-US locale', function () {
     describe('long format', function () {
       it('short date', function () {
         var result = format(date, 'P', {locale: locale})
-        assert(result === '04/04/1986')
+        assert(result === '04/05/1986')
       })
 
       it('medium date', function () {
         var result = format(date, 'PP', {locale: locale})
-        assert(result === 'Apr 4, 1986')
+        assert(result === 'Apr 5, 1986')
       })
 
       it('long date', function () {
         var result = format(date, 'PPP', {locale: locale})
-        assert(result === 'April 4th, 1986')
+        assert(result === 'April 5th, 1986')
       })
 
       it('full date', function () {
         var result = format(date, 'PPPP', {locale: locale})
-        assert(result === 'Friday, April 4th, 1986')
+        assert(result === 'Saturday, April 5th, 1986')
       })
 
       it('short time', function () {
@@ -160,22 +160,22 @@ describe('en-US locale', function () {
 
       it('short date + time', function () {
         var result = format(date, 'Pp', {locale: locale})
-        assert(result === '04/04/1986, 10:32 AM')
+        assert(result === '04/05/1986, 10:32 AM')
       })
 
       it('medium date + time', function () {
         var result = format(date, 'PPpp', {locale: locale})
-        assert(result === 'Apr 4, 1986, 10:32:00 AM')
+        assert(result === 'Apr 5, 1986, 10:32:00 AM')
       })
 
       it('long date + time', function () {
         var result = format(date, 'PPPp', {locale: locale})
-        assert(result === 'April 4th, 1986 at 10:32 AM')
+        assert(result === 'April 5th, 1986 at 10:32 AM')
       })
 
       it('full date + time', function () {
         var result = format(date, 'PPPPp', {locale: locale})
-        assert(result === 'Friday, April 4th, 1986 at 10:32 AM')
+        assert(result === 'Saturday, April 5th, 1986 at 10:32 AM')
       })
     })
   })
