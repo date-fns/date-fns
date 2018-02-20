@@ -49,6 +49,8 @@ To add a new locale:
 - Copy the content of an existing locale (e.g. `en-US`) into the newly created directory.
 
 - Replace the values in the content with yours file-by-file.
+  Use [CLDR data](https://www.unicode.org/cldr/charts/32/summary/root.html)
+  as a point of reference which values to choose.
 
 All locales contain a number of properties:
 
