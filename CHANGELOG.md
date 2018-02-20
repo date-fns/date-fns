@@ -95,6 +95,18 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
 
+- New locale-dependent week-numbering year helpers:
+
+  - `getWeek`
+
+  - `getWeekYear`
+
+  - `setWeek`
+
+  - `setWeekYear`
+
+  - `startOfWeekYear`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
@@ -366,8 +378,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   i.e. "ISO year" renamed to "ISO week year", which is short for
   [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
-  It makes them consistent with planned locale-dependent week-numbering year helpers
-  e.g. `addWeekYears`.
+  It makes them consistent with locale-dependent week-numbering year helpers
+  e.g. `startOfWeekYear`.
 
 - **BREAKING**: functions renamed:
 
