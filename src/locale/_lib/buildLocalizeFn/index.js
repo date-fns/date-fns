@@ -10,7 +10,7 @@ export default function buildLocalizeFn (args) {
     } else {
       valuesArray = args.values[width] || args.values[args.defaultWidth]
     }
-    var index = args.indexCallback ? args.indexCallback(dirtyIndex) : dirtyIndex
+    var index = args.argumentCallback ? args.argumentCallback(dirtyIndex) : dirtyIndex
     return valuesArray[index]
   }
 }

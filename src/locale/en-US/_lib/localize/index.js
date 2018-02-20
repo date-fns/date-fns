@@ -91,6 +91,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
@@ -99,7 +100,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    indexCallback: function (quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

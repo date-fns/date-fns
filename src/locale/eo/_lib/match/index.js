@@ -33,7 +33,7 @@ var parseMonthPatterns = {
 }
 
 var matchDayPatterns = {
-  narrow: /^[smtwf]/i,
+  narrow: /^[dlmĵjvs]/i,
   short: /^(di|lu|ma|me|(ĵ|jx|jh|j)a|ve|sa)/i,
   abbreviated: /^(dim|lun|mar|mer|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)|ven|sab)/i,
   wide: /^(diman(ĉ|cx|ch|c)o|lundo|mardo|merkredo|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)do|vendredo|sabato)/i
