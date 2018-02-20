@@ -111,6 +111,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table):
+
   | Unit                            | Pattern | Result examples                   |
   |---------------------------------|---------|-----------------------------------|
   | Era                             | G..GGG  | AD, BC                            |
