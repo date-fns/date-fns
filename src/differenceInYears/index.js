@@ -41,5 +41,6 @@ export default function differenceInYears (dirtyDateLeft, dirtyDateRight, dirtyO
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastYearNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
-  return sign * (difference - isLastYearNotFull)
+  var areYearsEqual = difference === 0
+  return !areYearsEqual ? sign * (difference - isLastYearNotFull) : 0
 }
