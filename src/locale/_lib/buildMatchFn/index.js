@@ -12,16 +12,32 @@ export default function buildMatchFn (args) {
     }
     var matchedString = matchResult[0]
 
-    var parsePatternsArray = (width && args.parsePatterns[width]) || args.parsePatterns[args.defaultParseWidth]
-    var value = parsePatternsArray.findIndex(function (pattern) {
-      return pattern.test(string)
-    })
+    var parsePatterns = (width && args.parsePatterns[width]) || args.parsePatterns[args.defaultParseWidth]
+
+    var value
+    if (parsePatterns instanceof Array) {
+      value = parsePatterns.findIndex(function (pattern) {
+        return pattern.test(string)
+      })
+    } else {
+      value = findKey(parsePatterns, function (pattern) {
+        return pattern.test(string)
+      })
+    }
 
     value = args.valueCallback ? args.valueCallback(value) : value
 
     return {
       value: value,
       rest: string.slice(matchedString.length)
+    }
+  }
+}
+
+function findKey (object, predicate) {
+  for (var key in object) {
+    if (object.hasOwnProperty(key) && predicate(object[key])) {
+      return key
     }
   }
 }

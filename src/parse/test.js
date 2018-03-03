@@ -1003,219 +1003,26 @@ describe('parse', function () {
     })
   })
 
-  describe.skip('custom locale', function () {
-    it('can be passed to the function', function () {
-      var units = {
-        qwe: {
-          priority: 12,
-          set: function (dateValues, value) {
-            dateValues.date.setUTCDate(value + 2)
-            dateValues.date.setUTCHours(0, 0, 0, 0)
-            return dateValues
-          }
-        },
-
-        rty: {
-          priority: 11,
-          set: function (dateValues, value) {
-            dateValues.date.setUTCMonth(value + 2, 1)
-            dateValues.date.setUTCHours(0, 0, 0, 0)
-            return dateValues
-          }
-        }
-      }
-
-      var parsers = {
-        abc: {
-          unit: 'qwe',
-          match: /^(It|This)/,
-          parse: function (matchResult) {
-            var word = matchResult[1]
-
-            if (word === 'It') {
-              return 7
-            } else {
-              return 6
-            }
-          }
-        },
-
-        efg: {
-          unit: 'rty',
-          match: /^(works|doesn't work)/,
-          parse: function (matchResult) {
-            var word = matchResult[1]
-
-            if (word === 'works') {
-              return 3
-            } else {
-              return 2
-            }
-          }
-        }
-      }
-
-      var parsingTokensRegExp = /(\[[^[]*])|(\\)?(YYYY|abc|efg|.)/g
-
-      var formatLong = function () {
-        return 'efg'
-      }
-
+  describe('custom locale', function () {
+    it('allows to pass a custom locale', function () {
       var customLocale = {
-        // $ExpectedMistake
-        match: {},
-        formatLong: formatLong,
-        units: units,
-        parsers: parsers,
-        parsingTokensRegExp: parsingTokensRegExp
+        match: {
+          era: function () {
+            return {
+              value: 0,
+              rest: 'it works!'
+            }
+          }
+        }
       }
+      var result = parse("2018 apparently 'it works!'", 'y G', baseDate, {locale: customLocale})
+      assert.deepEqual(result, new Date(-2017, 0 /* Jan */, 1))
+    })
 
+    it('throws `RangeError` if `options.locale` does not contain `match` property', function () {
       // $ExpectedMistake
-      var result = parse('2017 It works correctly!', 'YYYY abc LTS [correctly!]', baseDate, {locale: customLocale})
-      assert.deepEqual(result, new Date(2017, 5, 9))
-    })
-
-    context('does not contain `match` property', function () {
-      it('throws `RangeError`', function () {
-        var customLocale = {formatLong: function () {}}
-        // $ExpectedMistake
-        var block = parse.bind(null, '2016-11-25 04 AM', 'YYYY-MM-DD hh A', baseDate, {locale: customLocale})
-        assert.throws(block, RangeError)
-      })
-    })
-
-    context('does not contain `formatLong` property', function () {
-      it('throws `RangeError`', function () {
-        // $ExpectedMistake
-        var customLocale = {match: {}}
-        // $ExpectedMistake
-        var block = parse.bind(null, '2016-11-25 04 AM', 'YYYY-MM-DD hh A', baseDate, {locale: customLocale})
-        assert.throws(block, RangeError)
-      })
-    })
-
-    context('does not contain `parsingTokensRegExp` property', function () {
-      it('uses `parse.parsingTokensRegExp` of default locale', function () {
-        var units = {
-          date: {
-            priority: 12,
-            set: function (dateValues, value) {
-              dateValues.date.setUTCDate(value + 2)
-              dateValues.date.setUTCHours(0, 0, 0, 0)
-              return dateValues
-            }
-          },
-
-          month: {
-            priority: 11,
-            set: function (dateValues, value) {
-              dateValues.date.setUTCMonth(value + 2, 1)
-              dateValues.date.setUTCHours(0, 0, 0, 0)
-              return dateValues
-            }
-          }
-        }
-
-        var parsers = {
-          Do: {
-            unit: 'date',
-            match: /^(It|This)/,
-            parse: function (matchResult) {
-              var word = matchResult[1]
-
-              if (word === 'It') {
-                return 7
-              } else {
-                return 6
-              }
-            }
-          },
-
-          MMMM: {
-            unit: 'month',
-            match: /^(works|doesn't work)/,
-            parse: function (matchResult) {
-              var word = matchResult[1]
-
-              if (word === 'works') {
-                return 3
-              } else {
-                return 2
-              }
-            }
-          }
-        }
-
-        var customLocale = {
-          // $ExpectedMistake
-          match: {},
-          formatLong: function () {},
-          units: units,
-          parsers: parsers
-        }
-
-        // $ExpectedMistake
-        var result = parse('2017 It works correctly!', 'YYYY Do MMMM [correctly!]', baseDate, {locale: customLocale})
-        assert.deepEqual(result, new Date(2017, 5, 9))
-      })
-    })
-
-    context('does not contain `parsers` property', function () {
-      it('works correctly', function () {
-        // $ExpectedMistake
-        var customLocale = {match: {}, formatLong: function () {}}
-        // $ExpectedMistake
-        var result = parse('2016-11-25', 'YYYY-MM-DD', baseDate, {locale: customLocale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25))
-      })
-    })
-
-    context('does not contain `units` property', function () {
-      it('works correctly', function () {
-        var parsers = {
-          abc: {
-            unit: 'dayOfMonth',
-            match: /^(It|This)/,
-            parse: function (matchResult) {
-              var word = matchResult[1]
-
-              if (word === 'It') {
-                return 7
-              } else {
-                return 6
-              }
-            }
-          },
-
-          efg: {
-            unit: 'month',
-            match: /^(works|doesn't work)/,
-            parse: function (matchResult) {
-              var word = matchResult[1]
-
-              if (word === 'works') {
-                return 3
-              } else {
-                return 2
-              }
-            }
-          }
-        }
-
-        var parsingTokensRegExp = /(\[[^[]*])|(\\)?(YYYY|abc|efg|.)/g
-
-        var customLocale = {
-          // $ExpectedMistake
-          match: {},
-          formatLong: function () {},
-          parsers: parsers,
-          parsingTokensRegExp: parsingTokensRegExp
-        }
-
-        // $ExpectedMistake
-        var result = parse('2017 It works correctly!', 'YYYY abc efg [correctly!]', baseDate, {locale: customLocale})
-        assert.deepEqual(result, new Date(2017, 3, 7))
-      })
+      var block = parse.bind(null, '2016-11-25 04 AM', 'yyyy-MM-dd hh a', baseDate, {locale: {}})
+      assert.throws(block, RangeError)
     })
   })
 

@@ -95,10 +95,23 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
 
+- New locale-dependent week-numbering year helpers:
+
+  - `getWeek`
+
+  - `getWeekYear`
+
+  - `setWeek`
+
+  - `setWeekYear`
+
+  - `startOfWeekYear`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table):
+
   | Unit                            | Pattern | Result examples                   |
   |---------------------------------|---------|-----------------------------------|
   | Era                             | G..GGG  | AD, BC                            |
@@ -366,8 +379,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   i.e. "ISO year" renamed to "ISO week year", which is short for
   [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
-  It makes them consistent with planned locale-dependent week-numbering year helpers
-  e.g. `addWeekYears`.
+  It makes them consistent with locale-dependent week-numbering year helpers
+  e.g. `startOfWeekYear`.
 
 - **BREAKING**: functions renamed:
 
@@ -437,6 +450,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   to make them consistent with `format` and `formatRelative`.
   The order of arguments is swapped to make them consistent with `differenceIn...` functions.
   `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+  `unit` option in `formatDistanceStrict` now takes one of the strings:
+  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
 
   ```javascript
   // Before v2.0.0
@@ -450,7 +465,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    {partialMethod: 'ceil'}
+    {partialMethod: 'ceil', unit: 'm'}
   ) //=> '2 minutes'
 
   // v2.0.0 onward
@@ -464,7 +479,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {roundingMethod: 'ceil'}
+    {roundingMethod: 'ceil', unit: 'minute'}
   ) //=> '2 minutes'
   ```
 

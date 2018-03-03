@@ -677,12 +677,12 @@ describe('FP functions', function () {
     assert(result === 'in 1 hour')
   })
 
-  it.skip('formatRelative', function () {
+  it('formatRelative', function () {
     var result = fp.formatRelative(new Date(1986, 3 /* Apr */, 4, 10, 32))(new Date(1986, 2 /* Mar */, 28, 16, 50))
     assert(result === '03/28/1986')
   })
 
-  it.skip('formatRelativeWithOptions', function () {
+  it('formatRelativeWithOptions', function () {
     var result = fp.formatRelativeWithOptions({})(new Date(1986, 3 /* Apr */, 4, 10, 32))(new Date(1986, 2 /* Mar */, 28, 16, 50))
     assert(result === '03/28/1986')
   })
