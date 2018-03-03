@@ -45,11 +45,12 @@
  *
  * @property {Object} [options] - the object with default `weekStartsOn`. See [Options]{@link https://date-fns.org/docs/Options}
  * @property {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
- *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`,  `getWeek`, `getWeekYear`, `isSameWeek`,
- *   `lastDayOfWeek`, `parse`, `setDay`, `setWeek`, setWeekYear, `startOfWeek` and `startOfWeekYear`.
+ *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
+ *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,
+ *   `setWeek`, `startOfWeek` and `startOfWeekYear`
  * @property {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January,
  *   which is always in the first week of the year.
- *   Used by `format`, `getWeek`, `getWeekYear`, `setWeek`, `setWeekYear` and `startOfWeekYear`.
+ *   Used by `format`, `getWeek`, `getWeekYear`, `parse`, `setWeek`, `setWeekYear` and `startOfWeekYear`.
  *
  * @throws {RangeError} `locale` must contain `localize` property. Thrown by `format` and `formatRelative`
  * @throws {RangeError} `locale` must contain `formatLong` property. Thrown by `format` and `formatRelative`

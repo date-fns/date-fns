@@ -3,34 +3,30 @@
 
 type Locale = {
   formatDistance: Function,
-  formatLong: Function,
   formatRelative: Function,
   localize: {
     ordinalNumber: Function,
-    weekday: Function,
-    weekdays: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    months: Function,
-    timeOfDay: Function,
-    timesOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
+  formatLong: Object,
+  date: Function,
+  time: Function,
+  dateTime: Function,
   match: {
-    ordinalNumbers: Function,
     ordinalNumber: Function,
-    weekdays: Function,
-    weekday: Function,
-    months: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    timesOfDay: Function,
-    timeOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
-  formatters?: Object,
-  formattingTokensRegExp?: RegExp,
-  units?: Object,
-  parsers?: Object,
-  parsingTokensRegExp?: RegExp,
   options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   }
 }
 
