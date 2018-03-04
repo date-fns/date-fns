@@ -25,7 +25,7 @@ describe('format', function () {
 
   var timezoneGMTShort = minutes === 0
     ? 'GMT' + sign + hours
-    : 'GMT' + sign + hours + ':' + minutesLeadingZero
+    : 'GMT' + sign + hours + ':' + minutesLeadingZero + minutes
   var timezoneGMT = 'GMT' + timezone
 
   var timestamp = date.getTime().toString()

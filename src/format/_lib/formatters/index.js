@@ -576,7 +576,7 @@ var formatters = {
     switch (token) {
       // Hours and optional minutes
       case 'X':
-        return formatTimezoneWithOptionalMinutes(timezoneOffset, localize)
+        return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
       // Hours, minutes and optional seconds without `:` delimeter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
@@ -702,7 +702,7 @@ function formatTimezoneWithOptionalMinutes (offset, dirtyDelimeter) {
 function formatTimezoneShort (offset, dirtyDelimeter) {
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
-  var hours = absOffset / 60
+  var hours = Math.floor(absOffset / 60)
   var minutes = absOffset % 60
   if (minutes === 0) {
     return sign + String(hours)
