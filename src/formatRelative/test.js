@@ -109,6 +109,7 @@ describe('formatRelative', function () {
 
     it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
       var customLocale = {
+        // $ExpectedMistake
         localize: {},
         formatRelative: function () {
           return ''
@@ -121,6 +122,7 @@ describe('formatRelative', function () {
 
     it("throws `RangeError` if `options.locale` doesn't have `formatRelative` property", function () {
       var customLocale = {
+        // $ExpectedMistake
         localize: {},
         formatLong: {}
       }

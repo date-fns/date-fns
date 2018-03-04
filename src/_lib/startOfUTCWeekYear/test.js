@@ -47,7 +47,6 @@ describe('startOfUTCWeekYear', function () {
     var result = startOfUTCWeekYear(
       date,
       {
-        // $ExpectedMistake
         locale: {
           options: {weekStartsOn: 1, firstWeekContainsDate: 4}
         }
@@ -63,7 +62,6 @@ describe('startOfUTCWeekYear', function () {
       {
         weekStartsOn: 1,
         firstWeekContainsDate: 4,
-        // $ExpectedMistake
         locale: {
           options: {weekStartsOn: 0, firstWeekContainsDate: 1}
         }
@@ -73,19 +71,16 @@ describe('startOfUTCWeekYear', function () {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
-    // $ExpectedMistake
     var block = startOfUTCWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {weekStartsOn: NaN})
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
-    // $ExpectedMistake
     var block = startOfUTCWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {firstWeekContainsDate: NaN})
     assert.throws(block, RangeError)
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
-    // $ExpectedMistake
     var block = startOfUTCWeekYear.bind(null, new Date(2009, 0 /* Jan */, 1, 16, 0), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })

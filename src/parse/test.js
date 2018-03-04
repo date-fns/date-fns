@@ -1015,6 +1015,7 @@ describe('parse', function () {
           }
         }
       }
+      // $ExpectedMistake
       var result = parse("2018 apparently 'it works!'", 'y G', baseDate, {locale: customLocale})
       assert.deepEqual(result, new Date(-2017, 0 /* Jan */, 1))
     })

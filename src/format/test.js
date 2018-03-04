@@ -625,6 +625,7 @@ describe('format', function () {
 
     it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
       var customLocale = {
+        // $ExpectedMistake
         localize: {}
       }
       // $ExpectedMistake

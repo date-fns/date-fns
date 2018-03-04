@@ -74,7 +74,7 @@ describe('setWeekYear', function () {
         }
       }
     )
-    assert(result, new Date(2005, 0 /* Jan */, 1))
+    assert.deepEqual(result, new Date(2005, 0 /* Jan */, 1))
   })
 
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
