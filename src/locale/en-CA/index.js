@@ -26,5 +26,3 @@
 // export default locale
 
 throw new Error('en-CA locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
-var locale = {} // eslint-disable-line no-unreachable
-export default locale
