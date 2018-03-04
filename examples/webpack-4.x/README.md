@@ -27,5 +27,5 @@ You can see the build size stats by running `yarn stats-size`:
 
 ```
 Minimal size: 1.41 kB
-Format size: 4.28 kB
+Format size: 6.18 kB
 ```
