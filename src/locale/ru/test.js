@@ -45,7 +45,7 @@ describe('ru locale', function () {
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, "do MMMM", {locale: locale})
+        var result = format(date, 'do MMMM', {locale: locale})
         assert(result === '5-е апреля')
       })
 
