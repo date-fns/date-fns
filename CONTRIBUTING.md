@@ -79,7 +79,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 2. Fork the project and clone the fork repo.
 
-3. Run `yarn` or `npm install` to install the application dependencies.
+3. Run `yarn` to install the application dependencies.
 
 ## Code Style Guide
 
@@ -88,8 +88,6 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 The project follows [JavaScript Standard Style]. To lint the code, run:
 
 ```bash
-npm run lint
-# or
 yarn run lint
 ```
 

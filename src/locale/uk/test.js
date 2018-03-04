@@ -4,6 +4,6 @@
 // import assert from 'power-assert'
 // import locale from '.'
 
-describe.skip('ua locale', function () {
+describe.skip('uk locale', function () {
 
 })

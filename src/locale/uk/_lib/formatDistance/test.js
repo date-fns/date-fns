@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import formatDistance from '.'
 
-describe('ru locale > formatDistance', function () {
+describe('uk locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     describe('no suffix', function () {
       context('when the count equals 1', function () {
@@ -1191,7 +1191,7 @@ describe('ru locale > formatDistance', function () {
         it('returns a proper string', function () {
           [1, 21, 31, 301, 321].forEach(function (number) {
             var result = formatDistance('almostXYears', number)
-            assert(result === 'почти ' + number + ' рік')
+            assert(result === 'майже ' + number + ' рік')
           })
         })
       })
@@ -1200,7 +1200,7 @@ describe('ru locale > formatDistance', function () {
         it('returns a proper string', function () {
           [2, 3, 4, 22, 23, 302].forEach(function (number) {
             var result = formatDistance('almostXYears', number)
-            assert(result === 'почти ' + number + ' роки')
+            assert(result === 'майже ' + number + ' роки')
           })
         })
       })
@@ -1209,7 +1209,7 @@ describe('ru locale > formatDistance', function () {
         it('returns a proper string', function () {
           [5, 6, 10, 11, 12, 100, 311, 1000].forEach(function (number) {
             var result = formatDistance('almostXYears', number)
-            assert(result === 'почти ' + number + ' років')
+            assert(result === 'майже ' + number + ' років')
           })
         })
       })
@@ -1223,7 +1223,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: -1
             })
-            assert(result === 'почти ' + number + ' рік тому')
+            assert(result === 'майже ' + number + ' рік тому')
           })
         })
       })
@@ -1235,7 +1235,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: -1
             })
-            assert(result === 'почти ' + number + ' роки тому')
+            assert(result === 'майже ' + number + ' роки тому')
           })
         })
       })
@@ -1247,7 +1247,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: -1
             })
-            assert(result === 'почти ' + number + ' років тому')
+            assert(result === 'майже ' + number + ' років тому')
           })
         })
       })
@@ -1261,7 +1261,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: 1
             })
-            assert(result === 'почти за ' + number + ' рік')
+            assert(result === 'майже за ' + number + ' рік')
           })
         })
       })
@@ -1273,7 +1273,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: 1
             })
-            assert(result === 'почти за ' + number + ' роки')
+            assert(result === 'майже за ' + number + ' роки')
           })
         })
       })
@@ -1285,7 +1285,7 @@ describe('ru locale > formatDistance', function () {
               addSuffix: true,
               comparison: 1
             })
-            assert(result === 'почти за ' + number + ' років')
+            assert(result === 'майже за ' + number + ' років')
           })
         })
       })
