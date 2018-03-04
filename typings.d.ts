@@ -16341,6 +16341,9 @@ declare module 'date-fns/locale' {
   const el: Locale
   namespace el {}
 
+  const enCA: Locale
+  namespace enCA {}
+
   const enGB: Locale
   namespace enGB {}
 
@@ -16398,6 +16401,9 @@ declare module 'date-fns/locale' {
   const pt: Locale
   namespace pt {}
 
+  const ptBR: Locale
+  namespace ptBR {}
+
   const ro: Locale
   namespace ro {}
 
@@ -16416,8 +16422,8 @@ declare module 'date-fns/locale' {
   const tr: Locale
   namespace tr {}
 
-  const ua: Locale
-  namespace ua {}
+  const uk: Locale
+  namespace uk {}
 
   const vi: Locale
   namespace vi {}
@@ -16462,6 +16468,11 @@ declare module 'date-fns/locale/de' {
 declare module 'date-fns/locale/el' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB' {
@@ -16559,6 +16570,11 @@ declare module 'date-fns/locale/pt' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16589,9 +16605,9 @@ declare module 'date-fns/locale/tr' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi' {
@@ -16642,6 +16658,11 @@ declare module 'date-fns/locale/de/index' {
 declare module 'date-fns/locale/el/index' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA/index' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB/index' {
@@ -16739,6 +16760,11 @@ declare module 'date-fns/locale/pt/index' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR/index' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro/index' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16769,9 +16795,9 @@ declare module 'date-fns/locale/tr/index' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua/index' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk/index' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi/index' {
@@ -16822,6 +16848,11 @@ declare module 'date-fns/locale/de/index.js' {
 declare module 'date-fns/locale/el/index.js' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA/index.js' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB/index.js' {
@@ -16919,6 +16950,11 @@ declare module 'date-fns/locale/pt/index.js' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR/index.js' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro/index.js' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16949,9 +16985,9 @@ declare module 'date-fns/locale/tr/index.js' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua/index.js' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk/index.js' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi/index.js' {
@@ -16992,6 +17028,9 @@ declare module 'date-fns/esm/locale' {
 
   const el: Locale
   namespace el {}
+
+  const enCA: Locale
+  namespace enCA {}
 
   const enGB: Locale
   namespace enGB {}
@@ -17050,6 +17089,9 @@ declare module 'date-fns/esm/locale' {
   const pt: Locale
   namespace pt {}
 
+  const ptBR: Locale
+  namespace ptBR {}
+
   const ro: Locale
   namespace ro {}
 
@@ -17068,8 +17110,8 @@ declare module 'date-fns/esm/locale' {
   const tr: Locale
   namespace tr {}
 
-  const ua: Locale
-  namespace ua {}
+  const uk: Locale
+  namespace uk {}
 
   const vi: Locale
   namespace vi {}
@@ -17114,6 +17156,11 @@ declare module 'date-fns/esm/locale/de' {
 declare module 'date-fns/esm/locale/el' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB' {
@@ -17211,6 +17258,11 @@ declare module 'date-fns/esm/locale/pt' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -17241,9 +17293,9 @@ declare module 'date-fns/esm/locale/tr' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi' {
@@ -17294,6 +17346,11 @@ declare module 'date-fns/esm/locale/de/index' {
 declare module 'date-fns/esm/locale/el/index' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA/index' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB/index' {
@@ -17391,6 +17448,11 @@ declare module 'date-fns/esm/locale/pt/index' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR/index' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro/index' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -17421,9 +17483,9 @@ declare module 'date-fns/esm/locale/tr/index' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua/index' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk/index' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi/index' {
@@ -17474,6 +17536,11 @@ declare module 'date-fns/esm/locale/de/index.js' {
 declare module 'date-fns/esm/locale/el/index.js' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA/index.js' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB/index.js' {
@@ -17571,6 +17638,11 @@ declare module 'date-fns/esm/locale/pt/index.js' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR/index.js' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro/index.js' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -17601,9 +17673,9 @@ declare module 'date-fns/esm/locale/tr/index.js' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua/index.js' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk/index.js' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi/index.js' {
