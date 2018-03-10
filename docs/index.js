@@ -64,6 +64,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'time-zones',
+      category: 'General',
+      title: 'Time Zones',
+      description: 'Use dates with IANA time zones',
+      path: path.join(__dirname, 'timeZones.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'ECMAScript-Modules',
       category: 'General',
       title: 'ECMAScript Modules',
