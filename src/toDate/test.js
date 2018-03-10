@@ -219,12 +219,28 @@ describe('toDate', function () {
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
 
+        it('accepts a time zone offset', function () {
+          var result = toDate('2014-10-25T13:46:20', {timeZone: '+0500'})
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20+05:00'))
+        })
+
         it('accepts IANA zone', function () {
-          var result = toDate('2014-10-25T13:46:20', { timeZone: 'Asia/Bangkok' })
+          var result = toDate('2014-10-25T13:46:20', {timeZone: 'Asia/Bangkok'})
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
+
         it('accepts UTC zone', function () {
-          var result = toDate('2014-10-25T13:46:20', { timeZone: 'UTC' })
+          var result = toDate('2014-10-25T13:46:20', {timeZone: 'UTC'})
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20Z'))
+        })
+
+        it('accepts IANA zone in the date string', function () {
+          var result = toDate('2014-10-25T13:46:20 Asia/Bangkok')
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+        })
+
+        it('accepts UTC zone in the date string', function () {
+          var result = toDate('2014-10-25T13:46:20 UTC')
           assert.deepEqual(result, new Date('2014-10-25T13:46:20Z'))
         })
       })

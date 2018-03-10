@@ -1,3 +1,5 @@
+import tzOffsetMinutes from '../_lib/tzOffsetMinutes/index.js'
+
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
@@ -32,10 +34,8 @@ var patterns = {
   HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
 
   // timezone tokens
-  timezone: /([Z+-].*)$/,
-  timezoneZ: /^(Z)$/,
-  timezoneHH: /^([+-])(\d{2})$/,
-  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/
+  timezoneOffset: /([Z+-].*)$/,
+  timezoneIANA: /(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/
 }
 
 /**
@@ -96,11 +96,6 @@ export default function toDate (argument, dirtyOptions) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
 
-  if (options.timeZone) {
-    // Validate the time zone. Throws RangeError if time zone is invalid
-    new Intl.DateTimeFormat('en-US', { timeZone: options.timeZone }).format()
-  }
-
   // Clone the date
   if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
@@ -126,10 +121,8 @@ export default function toDate (argument, dirtyOptions) {
       time = parseTime(dateStrings.time)
     }
 
-    if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
-    } else if (options.timeZone) {
-      offset = -tzOffset(timestamp + time, options.timeZone)
+    if (dateStrings.timezone || options.timeZone) {
+      offset = tzOffsetMinutes(dateStrings.timezone || options.timeZone, new Date(timestamp + time))
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = new Date(timestamp + time).getTimezoneOffset()
@@ -156,7 +149,7 @@ function splitDateString (dateString) {
   }
 
   if (timeString) {
-    var token = patterns.timezone.exec(timeString)
+    var token = patterns.timezoneOffset.exec(timeString) || patterns.timezoneIANA.exec(dateString)
     if (token) {
       dateStrings.time = timeString.replace(token[1], '')
       dateStrings.timezone = token[1]
@@ -301,33 +294,6 @@ function parseTime (timeString) {
   return null
 }
 
-function parseTimezone (timezoneString) {
-  var token
-  var absoluteOffset
-
-  // Z
-  token = patterns.timezoneZ.exec(timezoneString)
-  if (token) {
-    return 0
-  }
-
-  // ±hh
-  token = patterns.timezoneHH.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  // ±hh:mm or ±hhmm
-  token = patterns.timezoneHHMM.exec(timezoneString)
-  if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
-  }
-
-  return 0
-}
-
 function dayOfISOWeekYear (isoWeekYear, week, day) {
   week = week || 0
   day = day || 0
@@ -337,64 +303,4 @@ function dayOfISOWeekYear (isoWeekYear, week, day) {
   var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
-}
-
-// The code below is borrowed from Luxon under the MIT license
-
-const dtfCache = {}
-function makeDTF (zone) {
-  if (!dtfCache[zone]) {
-    dtfCache[zone] = new Intl.DateTimeFormat('en-US', {
-      hour12: false,
-      timeZone: zone,
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
-    })
-  }
-  return dtfCache[zone]
-}
-
-function tzOffset (ts, zoneName) {
-  const date = new Date(ts)
-  const dtf = makeDTF(zoneName)
-  const [fYear, fMonth, fDay, fHour, fMinute, fSecond] =
-      dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date)
-  const asUTC = Date.UTC(fYear, fMonth - 1, fDay, fHour, fMinute, fSecond)
-  let asTS = date.valueOf()
-  asTS -= asTS % 1000
-  return (asUTC - asTS) / (60 * 1000)
-}
-
-const typeToPos = {
-  year: 0,
-  month: 1,
-  day: 2,
-  hour: 3,
-  minute: 4,
-  second: 5
-}
-
-function hackyOffset (dtf, date) {
-  const formatted = dtf.format(date).replace(/\u200E/g, '')
-  const parsed = /(\d+)\/(\d+)\/(\d+),? (\d+):(\d+):(\d+)/.exec(formatted)
-  const [, fMonth, fDay, fYear, fHour, fMinute, fSecond] = parsed
-  return [fYear, fMonth, fDay, fHour, fMinute, fSecond]
-}
-
-function partsOffset (dtf, date) {
-  const formatted = dtf.formatToParts(date)
-  const filled = []
-  for (let i = 0; i < formatted.length; i++) {
-    const { type, value } = formatted[i]
-    const pos = typeToPos[type]
-
-    if (pos !== 'undefined') {
-      filled[pos] = parseInt(value, 10)
-    }
-  }
-  return filled
 }
