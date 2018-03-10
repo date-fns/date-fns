@@ -5,7 +5,7 @@ var formatDistanceLocale = {
   },
 
   xSeconds: {
-    one: 'a few seconds',
+    one: 'a second',
     other: '{{count}} seconds'
   },
 
