@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
  */
 var locale = {
+  code: 'it',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

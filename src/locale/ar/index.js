@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
  */
 var locale = {
+  code: 'ar',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

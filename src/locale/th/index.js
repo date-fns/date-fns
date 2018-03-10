@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Athiwat Hirunworawongkun [@athivvat]{@link https://github.com/athivvat}
  */
 var locale = {
+  code: 'th',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

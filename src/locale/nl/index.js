@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
  */
 var locale = {
+  code: 'nl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

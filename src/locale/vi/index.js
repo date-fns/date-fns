@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Thanh Tran [@trongthanh]{@link https://github.com/trongthanh}
  */
 var locale = {
+  code: 'vi',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

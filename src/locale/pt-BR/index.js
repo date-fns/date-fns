@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Lucas Duailibe [@duailibe]{@link https://github.com/duailibe}
  */
 var locale = {
+  code: 'pt-BR',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

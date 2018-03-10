@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
  */
 var locale = {
+  code: 'tr',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

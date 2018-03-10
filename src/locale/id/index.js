@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
  */
 var locale = {
+  code: 'id',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

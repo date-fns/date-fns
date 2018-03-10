@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Asia [@asia-t]{@link https://github.com/asia-t}
  */
 var locale = {
+  code: 'de',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

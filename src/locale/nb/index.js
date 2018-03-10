@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
  */
 var locale = {
+  code: 'nb',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

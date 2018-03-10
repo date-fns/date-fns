@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 epo
  */
 var locale = {
+  code: 'eo',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

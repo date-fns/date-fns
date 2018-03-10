@@ -15,6 +15,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
  */
 var locale = {
+  code: 'uk',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

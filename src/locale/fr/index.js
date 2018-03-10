@@ -16,6 +16,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  */
 var locale = {
+  code: 'fr',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

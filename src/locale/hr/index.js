@@ -15,6 +15,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @author Matija Marohnić [@silvenon]{@link https://github.com/silvenon}
  */
 var locale = {
+  code: 'hr',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

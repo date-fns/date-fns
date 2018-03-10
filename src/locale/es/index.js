@@ -16,6 +16,7 @@ import match from './_lib/match/index.js'
  * @author Gastón Haro [@harogaston]{@link https://github.com/harogaston}
  */
 var locale = {
+  code: 'es',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

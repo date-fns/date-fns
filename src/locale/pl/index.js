@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Just RAG [@justrag]{@link https://github.com/justrag}
  */
 var locale = {
+  code: 'pl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

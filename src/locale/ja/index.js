@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
  */
 var locale = {
+  code: 'ja',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

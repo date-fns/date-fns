@@ -14,6 +14,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @iso-639-2 rus
  */
 var locale = {
+  code: 'ru',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

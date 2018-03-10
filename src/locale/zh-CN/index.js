@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
  */
 var locale = {
+  code: 'zh-CN',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -15,6 +15,7 @@ import buildTokensRegExp from '../_lib/buildTokensRegExp/index.js'
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
 var locale = {
+  code: 'el',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

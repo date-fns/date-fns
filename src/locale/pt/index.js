@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Dário Freire [@dfreire]{@link https://github.com/dfreire}
  */
 var locale = {
+  code: 'pt',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

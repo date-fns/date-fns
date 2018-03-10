@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
  */
 var locale = {
+  code: 'fi',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

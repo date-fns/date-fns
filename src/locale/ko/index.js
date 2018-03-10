@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
  */
 var locale = {
+  code: 'ko',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

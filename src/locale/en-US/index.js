@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 eng
  */
 var locale = {
+  code: 'en-US',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

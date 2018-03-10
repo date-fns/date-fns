@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author David Rus [@davidrus]{@link https://github.com/davidrus}
  */
 var locale = {
+  code: 'cs',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
