@@ -1,6 +1,8 @@
 import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
 import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
 import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
+import tzMakeDateTimeFormat from '../../../_lib/tzMakeDateTimeFormat/index.js'
+import tzOffsetMinutes from '../../../_lib/tzOffsetMinutes/index.js'
 
 var formatters = {
   // Month: 1, 2, ..., 12
@@ -200,13 +202,25 @@ var formatters = {
   // Timezone: -01:00, +00:00, ... +12:00
   'Z': function (date, options) {
     var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset(), ':')
+    return options.timeZone
+      ? formatTimezone(tzOffsetMinutes(options.timeZone, originalDate), ':')
+      : formatTimezone(originalDate.getTimezoneOffset(), ':')
   },
 
   // Timezone: -0100, +0000, ... +1200
   'ZZ': function (date, options) {
     var originalDate = options._originalDate || date
-    return formatTimezone(originalDate.getTimezoneOffset())
+    return options.timeZone
+      ? formatTimezone(tzOffsetMinutes(options.timeZone, originalDate))
+      : formatTimezone(originalDate.getTimezoneOffset())
+  },
+
+  // Timezone: EST, PST, BST, GMT+7
+  // enUS Intl format: "12/19/2012, 22:00:00 EST"
+  'ZZZ': function (date, options) {
+    var originalDate = options._originalDate || date
+    const intlFormatted = tzMakeDateTimeFormat(options.timeZone, options.locale).format(originalDate)
+    return intlFormatted.substr(intlFormatted.lastIndexOf(' ') + 1)
   },
 
   // Seconds timestamp: 512969520

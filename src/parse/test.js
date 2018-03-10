@@ -302,6 +302,13 @@ describe('parse', function () {
       var result = parse(dateString, resultString, baseDate)
       assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-01:30'))
     })
+
+    it('ZZZZ', function () {
+      var dateString = '2014/10/25 12 pm America/New_York'
+      var resultString = 'YYYY/MM/DD hh a ZZZZ'
+      var result = parse(dateString, resultString, baseDate)
+      assert.deepEqual(result, new Date('2014-10-25T12:00:00-04:00'))
+    })
   })
 
   describe('timestamps', function () {

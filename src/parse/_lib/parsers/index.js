@@ -1,3 +1,5 @@
+import tzOffsetMinutes from '../../../_lib/tzOffsetMinutes/index.js'
+
 var patterns = {
   'M': /^(1[0-2]|0?\d)/, // 0 to 12
   'D': /^(3[0-1]|[0-2]?\d)/, // 0 to 31
@@ -8,6 +10,7 @@ var patterns = {
   'm': /^([0-5]?\d)/, // 0 to 59
   'Z': /^([+-])(\d{2}):(\d{2})/,
   'ZZ': /^([+-])(\d{2})(\d{2})/,
+  'ZZZZ': /^(UTC|(?:[a-zA-Z]+\/[a-zA-Z_]+(?:\/[a-zA-Z_]+)?))$/, // IANA timezone
   singleDigit: /^(\d)/,
   twoDigits: /^(\d{2})/,
   threeDigits: /^(\d{3})/,
@@ -415,6 +418,15 @@ var parsers = {
       var minutes = parseInt(matchResult[3], 10)
       var absoluteOffset = hours * 60 + minutes
       return (sign === '+') ? absoluteOffset : -absoluteOffset
+    }
+  },
+
+  // Timezone: America/New_York, Europe/Paris
+  'ZZZZ': {
+    unit: 'timezone',
+    match: patterns.ZZZZ,
+    parse: function (matchResult, options, currentDate) {
+      return -tzOffsetMinutes(matchResult[1], currentDate)
     }
   },
 

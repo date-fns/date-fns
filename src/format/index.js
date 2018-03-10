@@ -6,7 +6,7 @@ import cloneObject from '../_lib/cloneObject/index.js'
 import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
 
 var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
-var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
+var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZZ|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
  * @name format
@@ -61,6 +61,7 @@ var defaultFormattingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|d
  * | Millisecond             | SSS   | 000, 001, ..., 999               |
  * | Timezone                | Z     | -01:00, +00:00, ... +12:00       |
  * |                         | ZZ    | -0100, +0000, ..., +1200         |
+ * |                         | ZZZ   | EST, PST, BST, GMT+7             |
  * | Seconds timestamp       | X     | 512969520                        |
  * | Milliseconds timestamp  | x     | 512969520900                     |
  * | Long format             | LT    | 05:30 a.m.                       |

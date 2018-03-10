@@ -9,7 +9,7 @@ var TIMEZONE_UNIT_PRIORITY = 110
 var MILLISECONDS_IN_MINUTE = 60000
 
 var longFormattingTokensRegExp = /(\[[^[]*])|(\\)?(LTS|LT|LLLL|LLL|LL|L|llll|lll|ll|l)/g
-var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
+var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|dd|d|aa|a|ZZZZ|ZZ|Z|YYYY|YY|X|Wo|WW|W|SSS|SS|S|Qo|Q|Mo|MMMM|MMM|MM|M|HH|H|GGGG|GG|E|Do|DDDo|DDDD|DDD|DD|D|A|.)/g
 
 /**
  * @name parse
@@ -64,6 +64,7 @@ var defaultParsingTokensRegExp = /(\[[^[]*])|(\\)?(x|ss|s|mm|m|hh|h|do|dddd|ddd|
  * | Millisecond             | 100      | SSS   | 000, 001, ..., 999               |
  * | Timezone                | 110      | Z     | -01:00, +00:00, ... +12:00       |
  * |                         |          | ZZ    | -0100, +0000, ..., +1200         |
+ * |                         |          | ZZZZ  | America/New_York, etc.           |
  * | Seconds timestamp       | 120      | X     | 512969520                        |
  * | Milliseconds timestamp  | 120      | x     | 512969520900                     |
  *
@@ -196,6 +197,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   var setters = [{
     priority: TIMEZONE_UNIT_PRIORITY,
     set: dateToSystemTimezone,
+    parse: () => {},
     index: 0
   }]
 
@@ -222,7 +224,8 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       setters.push({
         priority: unit.priority,
         set: unit.set,
-        value: parser.parse(matchResult, subFnOptions),
+        parse: parser.parse,
+        matchResult: matchResult,
         index: setters.length
       })
 
@@ -275,7 +278,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   var settersLength = uniquePrioritySetters.length
   for (i = 0; i < settersLength; i++) {
     var setter = uniquePrioritySetters[i]
-    dateValues = setter.set(dateValues, setter.value, subFnOptions)
+    dateValues = setter.set(dateValues, setter.parse(setter.matchResult, subFnOptions, dateValues.date), subFnOptions)
   }
 
   return dateValues.date

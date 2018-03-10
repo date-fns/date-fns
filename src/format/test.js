@@ -1,6 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
+import enGB from '../locale/en-GB'
 import assert from 'power-assert'
 import format from '.'
 
@@ -298,9 +299,23 @@ describe('format', function () {
       assert(format('2015-01-01', 'YYYY-MM-DD') === '2015-01-01')
     })
 
-    it('all variants', function () {
+    it('numeric variants', function () {
       var result = format(date, 'Z ZZ')
       assert(result === timezone + ' ' + timezoneShort)
+    })
+
+    it('specific time zone - all variants', function () {
+      var date = new Date('1990-11-10T20:30:40Z')
+      var result = format(date, 'Z ZZ ZZZ', {timeZone: 'America/New_York'})
+      assert(result === '-05:00 -0500 EST')
+    })
+
+    it('specific time zone with locale', function () {
+      var date = new Date('1990-06-10T20:30:40Z')
+      var resultEnUS = format(date, 'ZZZ', {timeZone: 'Europe/Paris'})
+      assert(resultEnUS === 'GMT+2')
+      var resultEnGB = format(date, 'ZZZ', {timeZone: 'Europe/Paris', locale: enGB})
+      assert(resultEnGB === 'CEST')
     })
   })
 
