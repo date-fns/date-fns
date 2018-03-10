@@ -22,7 +22,7 @@ describe('en-CA locale > formatDistance', function () {
   describe('xSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 1) === 'a few seconds')
+        assert(formatDistance('xSeconds', 1) === 'a second')
       })
     })
 

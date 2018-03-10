@@ -8,6 +8,7 @@ module.exports = {
   da: require('./da/index.js'),
   de: require('./de/index.js'),
   el: require('./el/index.js'),
+  enCA: require('./en-CA/index.js'),
   enGB: require('./en-GB/index.js'),
   enUS: require('./en-US/index.js'),
   eo: require('./eo/index.js'),
