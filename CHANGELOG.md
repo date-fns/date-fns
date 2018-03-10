@@ -95,6 +95,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
 
+- [en-CA locale](https://github.com/date-fns/date-fns/pull/688) (kudos to [@markowsiak](https://github.com/markowsiak)).
+
 ### Changed
 
 - **BREAKING**: function submodules now use camelCase naming schema:
