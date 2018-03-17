@@ -4,7 +4,6 @@ import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 20
-var MILLISECONDS_IN_MINUTE = 60000
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
