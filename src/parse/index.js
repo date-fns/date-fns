@@ -422,16 +422,19 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
 }
 
 function dateToSystemTimezone (date) {
-  var time = date.getTime()
-
-  // Get the system timezone offset at (moment of time - offset)
-  var offset = date.getTimezoneOffset()
-
-  // Get the system timezone offset at the exact moment of time
-  offset = new Date(time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
-
-  // Convert date in timezone "UTC+00:00" to the system timezone
-  return new Date(time + offset * MILLISECONDS_IN_MINUTE)
+  var convertedDate = new Date(0)
+  convertedDate.setFullYear(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate()
+  )
+  convertedDate.setHours(
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds(),
+    date.getUTCMilliseconds()
+  )
+  return convertedDate
 }
 
 function cleanEscapedString (input) {
