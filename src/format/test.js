@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import format from '.'
 
 describe('format', function () {
-  var date = new Date(1986, 3 /* Apr */, 4, 0, 32, 55, 123)
+  var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
 
   var offset = date.getTimezoneOffset()
   var absoluteOffset = Math.abs(offset)
@@ -344,28 +344,28 @@ describe('format', function () {
 
   describe('day period and hour', function () {
     it('hour [1-12]', function () {
-      var result = format(date, 'h ho hh')
+      var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'h ho hh')
       assert(result === '12 12th 12')
     })
 
     it('hour [0-23]', function () {
-      var result = format(date, 'H Ho HH')
+      var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'H Ho HH')
       assert(result === '0 0th 00')
     })
 
     it('hour [0-11]', function () {
-      var result = format(date, 'K Ko KK')
+      var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'K Ko KK')
       assert(result === '0 0th 00')
     })
 
     it('hour [1-24]', function () {
-      var result = format(date, 'k ko kk')
+      var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'k ko kk')
       assert(result === '24 24th 24')
     })
 
     describe('AM, PM', function () {
       it('works as expected', function () {
-        var result = format(date, 'a aa aaa aaaa aaaaa')
+        var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'a aa aaa aaaa aaaaa')
         assert(result === 'AM AM AM a.m. a')
       })
 
@@ -400,7 +400,7 @@ describe('format', function () {
     describe('flexible day periods', function () {
       it('works as expected', function () {
         var result = format(date, 'B, BB, BBB, BBBB, BBBBB')
-        assert(result === 'at night, at night, at night, at night, at night')
+        assert(result === 'in the morning, in the morning, in the morning, in the morning, in the morning')
       })
 
       it('12 PM', function () {
@@ -528,47 +528,47 @@ describe('format', function () {
 
     it('short time', function () {
       var result = format(date, 'p')
-      assert(result === '12:32 AM')
+      assert(result === '10:32 AM')
     })
 
     it('medium time', function () {
       var result = format(date, 'pp')
-      assert(result === '12:32:55 AM')
+      assert(result === '10:32:55 AM')
     })
 
     it('long time', function () {
       var result = format(date, 'ppp')
-      assert(result === '12:32:55 AM ' + timezoneGMTShort)
+      assert(result === '10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full time', function () {
       var result = format(date, 'pppp')
-      assert(result === '12:32:55 AM ' + timezoneGMT)
+      assert(result === '10:32:55 AM ' + timezoneGMT)
     })
 
     it('short date + time', function () {
       var result = format(date, 'Pp')
-      assert(result === '04/04/1986, 12:32 AM')
+      assert(result === '04/04/1986, 10:32 AM')
     })
 
     it('medium date + time', function () {
       var result = format(date, 'PPpp')
-      assert(result === 'Apr 4, 1986, 12:32:55 AM')
+      assert(result === 'Apr 4, 1986, 10:32:55 AM')
     })
 
     it('long date + time', function () {
       var result = format(date, 'PPPppp')
-      assert(result === 'April 4th, 1986 at 12:32:55 AM ' + timezoneGMTShort)
+      assert(result === 'April 4th, 1986 at 10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full date + time', function () {
       var result = format(date, 'PPPPpppp')
-      assert(result === 'Friday, April 4th, 1986 at 12:32:55 AM ' + timezoneGMT)
+      assert(result === 'Friday, April 4th, 1986 at 10:32:55 AM ' + timezoneGMT)
     })
 
     it('allows arbitrary combination of date and time', function () {
       var result = format(date, 'Ppppp')
-      assert(result === '04/04/1986, 12:32:55 AM ' + timezoneGMT)
+      assert(result === '04/04/1986, 10:32:55 AM ' + timezoneGMT)
     })
   })
 
