@@ -14,6 +14,8 @@
 
     - [localize.era and using buildLocalizeFn function](#localizeera-and-using-buildlocalizefn-function)
 
+    - [Formatting localizers](#formatting-localizers)
+
     - [localize.quarter](#localizequarter)
 
     - [localize.month](#localizemonth)
@@ -251,6 +253,51 @@ var result = locale.localize.era(1, {width: 'foobar'})
 //=> 'Anno Domini'
 ```
 
+#### Formatting localizers
+
+For some languages, there is a difference for "stand-alone" localizers and "formatting" localizers.
+"Stand-alone" means that the resulting value should make grammatical sense without context.
+"Formatting" means that the resulting value should be declined using the grammar rules of the language
+as if the value was a part of a date.
+For example, for languages with grammatical cases, stand-alone month could be in the nominative case ("January"),
+and formatting month could decline as a part of phrase "1st of January".
+In this case, use parameters `formattingValues` and `defaultFormattingWidth` of `buildLocalizeFn` function.
+
+Any localizer could be stand-alone and formatting.
+Check the CLDR chart for the unit to see if stand-alone and formatting values are different for a certain unit.
+If there's no difference (usually it happens in languages without grammatical cases),
+parameters `formattingValues` and `defaultFormattingWidth` are not needed.
+
+In this example, in Russian language a stand-alone month is in the nominative case ("январь"),
+and formatting month is in the genitive case ("января" as in "1-е января"). Notice the different endings:
+
+```js
+// In `ru` locale:
+var monthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+}
+var formattingMonthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+}
+
+var localize = {
+  // ...
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  // ...
+}
+
+export default localize
+```
+
 #### localize.quarter
 
 Localizes a quarter. Takes 1, 2, 3 or 4 as the first argument.
@@ -348,8 +395,8 @@ var dayValues = {
 
 var localize = {
   // ...
-  month: buildLocalizeFn({
-    values: monthValues,
+  day: buildLocalizeFn({
+    values: dayValues,
     defaultWidth: 'wide'
   }),
   // ...
