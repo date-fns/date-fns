@@ -7,8 +7,12 @@
  *
  * @typedef {Object} Options
  * @property {0|1|2|3|4|5|6} [weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
- *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
- *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`
+ *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
+ *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,
+ *   `setWeek`, `startOfWeek` and `startOfWeekYear`.
+ * @property {1|2|3|4|5|6|7} [firstWeekContainsDate=1] - the day of January,
+ *   which is always in the first week of the year.
+ *   Used by `format`, `getWeek`, `getWeekYear`, `parse`, `setWeek`, `setWeekYear` and `startOfWeekYear`.
  * @property {0|1|2} [additionalDigits=2] - the additional number of digits in the extended year format.
  *   Used by all functions that take String as Date-like argument.
  *   Internally, passed to `toDate` to specify which way to convert extended year formatted String to Date.
@@ -20,7 +24,7 @@
  *   If true, distances less than a minute are more detailed
  * @property {Boolean} [addSuffix=false] - used by `formatDistance` and `formatDistanceStrict`.
  *   If true, the result will indicate if the second date is earlier or later than the first
- * @property {'s'|'m'|'h'|'d'|'M'|'Y'} [unit] - used by `formatDistanceStrict`.
+ * @property {'second'|'minute'|'hour'|'day'|'month'|'year'} [unit] - used by `formatDistanceStrict`.
  *   If specified, will force a unit
  * @property {'floor'|'ceil'|'round'} [roundingMethod='floor'] - used by `formatDistanceStrict`.
  *   Specifies, which way to round partial units
@@ -28,16 +32,19 @@
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2.
  *   Thrown by **all** functions
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6.
- *   Thrown by `differenceInCalendarWeeks`, `endOfWeek`, `isSameWeek`,
- *   `lastDayOfWeek`, `parse`, `setDay`, and `startOfWeek`.
+ *   Thrown by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
+ *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,
+ *   `setWeek`, `startOfWeek` and `startOfWeekYear`.
+ * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7.
+ *   Thrown by `format`, `getWeek`, `getWeekYear`, `parse`, `setWeek`, `setWeekYear` and `startOfWeekYear`.
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'.
  *   Thrown by `formatDistanceStrict`
- * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'.
+ * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  *   Thrown by `formatDistanceStrict`
  * @throws {RangeError} `options.locale` must contain `localize` property.
  *   Thrown by `format` and `formatRelative`
  * @throws {RangeError} `options.locale` must contain `formatLong` property.
- *   Thrown by `format`, `formatRelative` and `parse`
+ *   Thrown by `format` and `formatRelative`
  * @throws {RangeError} `options.locale` must contain `formatRelative` property.
  *   Thrown by `formatRelative`
  * @throws {RangeError} `options.locale` must contain `formatDistance` property.
@@ -54,7 +61,7 @@
  *   additionalDigits: 1,
  *   locale: eoLocale
  * }
- * var result = format(startOfWeek('+12345-12-15', options), 'dddd, D MMMM YYYY', options)
+ * var result = format(startOfWeek('+12345-12-15', options), 'EEEE, d MMMM yyyy', options)
  * //=> 'lundo, 10 decembro 12345'
  */
 var Options = {}

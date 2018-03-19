@@ -17,16 +17,18 @@ function getParams (params, {leftBorder = '{', rightBorder = '}'} = {}) {
     return leftBorder + rightBorder
   }
 
+  const formattedParams = addSeparator(
+    params.map(param => {
+      const {name, props, optional, variable, type: {names: typeNames}} = param
+      const type = getType(typeNames, {props, forceArray: variable})
+      return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
+    }),
+    ','
+  )
+
   return formatBlock`
     ${leftBorder}
-      ${addSeparator(
-        params.map(param => {
-          const {name, props, optional, variable, type: {names: typeNames}} = param
-          const type = getType(typeNames, {props, forceArray: variable})
-          return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
-        }),
-        ','
-      )}
+      ${formattedParams}
     ${rightBorder}
   `
 }
