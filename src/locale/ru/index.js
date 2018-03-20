@@ -10,6 +10,8 @@ import match from './_lib/match/index.js'
  * @summary Russian locale.
  * @language Russian
  * @iso-639-2 rus
+ * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
+ * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
 var locale = {
   formatDistance: formatDistance,

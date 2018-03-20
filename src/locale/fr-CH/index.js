@@ -14,6 +14,7 @@
  * @iso-639-2 fra
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
  */
 // var locale = {
 //   formatDistance: formatDistance,

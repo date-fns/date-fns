@@ -10,6 +10,7 @@
  * @summary English locale (Canada).
  * @language English
  * @iso-639-2 eng
+ * @author Mark Owsiak [@markowsiak]{@link https://github.com/markowsiak}
  */
 // var locale = {
 //   formatDistance: formatDistance,
