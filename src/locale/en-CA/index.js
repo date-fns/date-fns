@@ -11,6 +11,7 @@ import match from '../en-US/_lib/match/index.js'
  * @language English
  * @iso-639-2 eng
  * @author Mark Owsiak [@markowsiak]{@link https://github.com/markowsiak}
+ * @author Marco Imperatore [@mimperatore]{@link https://github.com/mimperatore}
  */
 var locale = {
   formatDistance: formatDistance,
