@@ -11,6 +11,7 @@
  * @language Italian
  * @iso-639-2 ita
  * @author Alberto Restifo [@albertorestifo]{@link https://github.com/albertorestifo}
+ * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
  */
 // var locale = {
 //   formatDistance: formatDistance,

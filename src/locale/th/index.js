@@ -11,6 +11,7 @@
  * @language Thai
  * @iso-639-2 tha
  * @author Athiwat Hirunworawongkun [@athivvat]{@link https://github.com/athivvat}
+ * @author [@hawkup]{@link https://github.com/hawkup}
  */
 // var locale = {
 //   formatDistance: formatDistance,

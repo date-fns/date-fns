@@ -12,6 +12,7 @@
  * @iso-639-2 deu
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Asia [@asia-t]{@link https://github.com/asia-t}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
  */
 // var locale = {
 //   formatDistance: formatDistance,
