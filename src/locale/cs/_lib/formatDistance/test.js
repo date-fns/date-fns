@@ -598,7 +598,7 @@ describe('cs locale > formatDistance', function () {
         it('returns a proper string', function () {
           TWO_FOUR_RANGE.forEach(function (number) {
             var result = formatDistance('xDays', number, FUTURE_OPTIONS)
-            assert(result === 'za ' + number + ' dni')
+            assert(result === 'za ' + number + ' dny')
           })
         })
       })

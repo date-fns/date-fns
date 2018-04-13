@@ -24,14 +24,14 @@ In **date-fns'** FP functions, the order of arguments is reversed.
 ```javascript
 import addYears from 'date-fns/fp/addYears'
 import formatWithOptions from 'date-fns/fp/formatWithOptions'
-import eoLocale from 'date-fns/locale/eo'
+import eo from 'date-fns/locale/eo'
 import toUpper from 'lodash/fp/toUpper' // 'date-fns/fp' is compatible with 'lodash/fp'!
 
 // If FP function has not recieved enough arguments, it returns another function
 const addFiveYears = addYears(5)
 
 // Several arguments can be curried at once
-const dateToString = formatWithOptions({locale: eoLocale}, 'D MMMM YYYY')
+const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
 
 const dates = [
   new Date(2017, 0 /* Jan */, 1),
