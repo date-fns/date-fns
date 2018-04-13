@@ -22,5 +22,5 @@ You can see minimal build size (when you use just one function):
 
 ```sh
 gzip-size dist/example.min.js | pretty-bytes
-#=> 6.18 kB
+#=> 13.1 kB
 ```

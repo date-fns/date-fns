@@ -1,4 +1,4 @@
-1 // @flow
+// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -172,13 +172,13 @@ describe('it locale > formatDistance', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 1) === 'piú di un anno')
+        assert(formatDistance('overXYears', 1) === 'più di un anno')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 2) === 'piú di 2 anni')
+        assert(formatDistance('overXYears', 2) === 'più di 2 anni')
       })
     })
   })
@@ -213,7 +213,7 @@ describe('it locale > formatDistance', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in alcuni secondi')
+      assert(result === 'tra alcuni secondi')
     })
   })
 })
