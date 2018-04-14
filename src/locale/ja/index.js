@@ -12,19 +12,20 @@
  * @iso-639-2 jpn
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
+ * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
  */
-// var locale = {
-//   formatDistance: formatDistance,
-//   formatLong: formatLong,
-//   formatRelative: formatRelative,
-//   localize: localize,
-//   match: match,
-//   options: {
-//     weekStartsOn: 0 /* Sunday */,
-//     firstWeekContainsDate: 1
-//   }
-// }
+var locale = {
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 1
+  }
+}
 
-// export default locale
+export default locale
 
-throw new Error('ja locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+// throw new Error('ja locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
