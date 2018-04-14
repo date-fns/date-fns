@@ -1,12 +1,12 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 var formatLong = buildFormatLongFn({
-  LT: 'h:mm aa',
-  LTS: 'h:mm:ss aa',
-  L: 'MM/DD/YYYY',
-  LL: 'MMMM D YYYY',
-  LLL: 'MMMM D YYYY h:mm aa',
-  LLLL: 'dddd, MMMM D YYYY h:mm aa'
+  LT: 'HH:mm',
+  LTS: 'HH:mm:ss',
+  L: 'YYYY年MM月DD日',
+  LL: 'YYYY年MM月DD日',
+  LLL: 'YYYY年MM月DD日 HH:mm',
+  LLLL: 'YYYY年MM月DD日 HH:mm'
 })
 
 export default formatLong
