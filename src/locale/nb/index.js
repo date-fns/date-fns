@@ -11,6 +11,7 @@
  * @language Norwegian Bokmål
  * @iso-639-2 nob
  * @author Hans-Kristian Koren [@Hanse]{@link https://github.com/Hanse}
+ * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
  */
 // var locale = {
 //   formatDistance: formatDistance,
