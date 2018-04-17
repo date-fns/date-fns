@@ -13,6 +13,7 @@
  * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
  * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
  * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Edo Rivai [@edorivai]{@link https://github.com/edorivai}
  */
 // var locale = {
 //   formatDistance: formatDistance,
