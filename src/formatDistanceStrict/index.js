@@ -32,14 +32,14 @@ var MINUTES_IN_YEAR = 525600
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {'s'|'m'|'h'|'d'|'M'|'Y'} [options.unit] - if specified, will force a unit
+ * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
- * @throws {RangeError} `options.unit` must be 's', 'm', 'h', 'd', 'M' or 'Y'
+ * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
@@ -75,7 +75,7 @@ var MINUTES_IN_YEAR = 525600
  * var result = formatDistanceStrict(
  *   new Date(2016, 0, 1),
  *   new Date(2015, 0, 1),
- *   {unit: 'm'}
+ *   {unit: 'minute'}
  * )
  * //=> '525600 minutes'
  *
@@ -85,7 +85,7 @@ var MINUTES_IN_YEAR = 525600
  * var result = formatDistanceStrict(
  *   new Date(2015, 0, 28),
  *   new Date(2015, 0, 1),
- *   {unit: 'M', roundingMethod: 'ceil'}
+ *   {unit: 'month', roundingMethod: 'ceil'}
  * )
  * //=> '1 month'
  *
@@ -151,50 +151,50 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   var unit
   if (options.unit === undefined) {
     if (minutes < 1) {
-      unit = 's'
+      unit = 'second'
     } else if (minutes < 60) {
-      unit = 'm'
+      unit = 'minute'
     } else if (minutes < MINUTES_IN_DAY) {
-      unit = 'h'
+      unit = 'hour'
     } else if (minutes < MINUTES_IN_MONTH) {
-      unit = 'd'
+      unit = 'day'
     } else if (minutes < MINUTES_IN_YEAR) {
-      unit = 'M'
+      unit = 'month'
     } else {
-      unit = 'Y'
+      unit = 'year'
     }
   } else {
     unit = String(options.unit)
   }
 
   // 0 up to 60 seconds
-  if (unit === 's') {
+  if (unit === 'second') {
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
   // 1 up to 60 mins
-  } else if (unit === 'm') {
+  } else if (unit === 'minute') {
     return locale.formatDistance('xMinutes', minutes, localizeOptions)
 
   // 1 up to 24 hours
-  } else if (unit === 'h') {
+  } else if (unit === 'hour') {
     var hours = roundingMethodFn(minutes / 60)
     return locale.formatDistance('xHours', hours, localizeOptions)
 
   // 1 up to 30 days
-  } else if (unit === 'd') {
+  } else if (unit === 'day') {
     var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
 
   // 1 up to 12 months
-  } else if (unit === 'M') {
+  } else if (unit === 'month') {
     var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', months, localizeOptions)
 
   // 1 year up to max Date
-  } else if (unit === 'Y') {
+  } else if (unit === 'year') {
     var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
 
-  throw new RangeError("unit must be 's', 'm', 'h', 'd', 'M' or 'Y'")
+  throw new RangeError("unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'")
 }

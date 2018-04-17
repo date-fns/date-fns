@@ -129,7 +129,7 @@ var formatDistanceLocale = {
     twoFour: {
       regular: '{{count}} dni',
       past: '{{count}} dny',
-      future: '{{count}} dni'
+      future: '{{count}} dny'
     },
     other: {
       regular: '{{count}} dní',

@@ -37,4 +37,8 @@ describe('getUTCDayOfYear', function () {
     var block = getUTCDayOfYear.bind(null, new Date(2014, 6 /* Jul */, 2), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(getUTCDayOfYear.bind(null), TypeError)
+  })
 })

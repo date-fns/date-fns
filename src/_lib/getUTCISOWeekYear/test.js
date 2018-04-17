@@ -37,4 +37,8 @@ describe('getUTCISOWeekYear', function () {
     var block = getUTCISOWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(getUTCISOWeekYear.bind(null), TypeError)
+  })
 })

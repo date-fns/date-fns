@@ -1,21 +1,61 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa'],
-  short: ['dim', 'lun', 'mar', 'mer', 'ĵaŭ', 'ven', 'sab'],
-  long: ['dimanĉo', 'lundo', 'mardo', 'merkredo', 'ĵaŭdo', 'vendredo', 'sabato']
+var eraValues = {
+  narrow: ['aK', 'pK'],
+  abbreviated: ['a.K.E.', 'p.K.E.'],
+  wide: ['antaŭ Komuna Erao', 'Komuna Erao']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
+  wide: ['1-a kvaronjaro', '2-a kvaronjaro', '3-a kvaronjaro', '4-a kvaronjaro']
 }
 
 var monthValues = {
-  short: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec'],
-  long: ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
 }
 
-var timeOfDayValues = {
-  uppercase: ['A.T.M.', 'P.T.M.'],
-  lowercase: ['a.t.m.', 'p.t.m.'],
-  long: ['antaŭtagmeze', 'posttagmeze']
+var dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'Ĵ', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa'],
+  abbreviated: ['dim', 'lun', 'mar', 'mer', 'ĵaŭ', 'ven', 'sab'],
+  wide: ['dimanĉo', 'lundo', 'mardo', 'merkredo', 'ĵaŭdo', 'vendredo', 'sabato']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  },
+  abbreviated: {
+    am: 'a.t.m.',
+    pm: 'p.t.m.',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  },
+  wide: {
+    am: 'antaŭtagmeze',
+    pm: 'posttagmeze',
+    midnight: 'noktomezo',
+    noon: 'tagmezo',
+    morning: 'matene',
+    afternoon: 'posttagmeze',
+    evening: 'vespere',
+    night: 'nokte'
+  }
 }
 
 function ordinalNumber (dirtyNumber) {
@@ -25,14 +65,34 @@ function ordinalNumber (dirtyNumber) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize

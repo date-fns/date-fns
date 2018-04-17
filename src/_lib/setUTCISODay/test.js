@@ -74,4 +74,8 @@ describe('setUTCISODay', function () {
     var block = setUTCISODay.bind(null, new Date(2014, 8 /* Sep */, 1), 3, {additionalDigits: NaN})
     assert.throws(block, RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    assert.throws(setUTCISODay.bind(null, 1), TypeError)
+  })
 })

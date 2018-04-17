@@ -13,11 +13,13 @@ const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
 const listLocales = require('../_lib/listLocales')
 
+const outdatedLocales = require('../../outdatedLocales.json')
+
 const generatedAutomaticallyMessage = "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
 const fns = listFns()
 const fpFns = listFPFns()
-const locales = listLocales()
+const locales = listLocales().filter(({code}) => !outdatedLocales.includes(code))
 
 fs.writeFileSync(path.join(process.cwd(), 'src', 'index.js'), generateIndex(fns))
 fs.writeFileSync(path.join(process.cwd(), 'src', 'fp', 'index.js'), generateIndex(fpFns))

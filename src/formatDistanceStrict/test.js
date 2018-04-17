@@ -116,12 +116,12 @@ describe('formatDistanceStrict', function () {
   })
 
   describe('when the unit option is supplied', function () {
-    context('s', function () {
+    context('second', function () {
       it('0 seconds', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 's'}
+          {unit: 'second'}
         )
         assert(result === '0 seconds')
       })
@@ -130,7 +130,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 5),
-          {unit: 's'}
+          {unit: 'second'}
         )
         assert(result === '5 seconds')
       })
@@ -139,18 +139,18 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 34, 0),
-          {unit: 's'}
+          {unit: 'second'}
         )
         assert(result === '120 seconds')
       })
     })
 
-    context('m', function () {
+    context('minute', function () {
       it('0 minutes', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 'm'}
+          {unit: 'minute'}
         )
         assert(result === '0 minutes')
       })
@@ -159,7 +159,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 37, 0),
-          {unit: 'm'}
+          {unit: 'minute'}
         )
         assert(result === '5 minutes')
       })
@@ -168,17 +168,18 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 12, 32, 0),
-          {unit: 'm'}
+          {unit: 'minute'}
         )
         assert(result === '120 minutes')
       })
     })
-    context('h', function () {
+
+    context('hour', function () {
       it('0 hours', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 'h'}
+          {unit: 'hour'}
         )
         assert(result === '0 hours')
       })
@@ -187,7 +188,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 15, 32, 0),
-          {unit: 'h'}
+          {unit: 'hour'}
         )
         assert(result === '5 hours')
       })
@@ -196,17 +197,18 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 6, 10, 32, 0),
-          {unit: 'h'}
+          {unit: 'hour'}
         )
         assert(result === '48 hours')
       })
     })
-    context('d', function () {
+
+    context('day', function () {
       it('0 days', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 'd'}
+          {unit: 'day'}
         )
         assert(result === '0 days')
       })
@@ -215,7 +217,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 9, 10, 32, 0),
-          {unit: 'd'}
+          {unit: 'day'}
         )
         assert(result === '5 days')
       })
@@ -224,17 +226,17 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 5, 3, 10, 32, 0),
-          {unit: 'd'}
+          {unit: 'day'}
         )
         assert(result === '60 days')
       })
     })
-    context('M', function () {
+    context('month', function () {
       it('0 months', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 'M'}
+          {unit: 'month'}
         )
         assert(result === '0 months')
       })
@@ -243,7 +245,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 7, 4, 10, 32, 0),
-          {unit: 'M'}
+          {unit: 'month'}
         )
         assert(result === '4 months')
       })
@@ -252,17 +254,18 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1988, 3, 4, 10, 32, 0),
-          {unit: 'M'}
+          {unit: 'month'}
         )
         assert(result === '24 months')
       })
     })
-    context('Y', function () {
+
+    context('year', function () {
       it('0 years', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 0),
-          {unit: 'Y'}
+          {unit: 'year'}
         )
         assert(result === '0 years')
       })
@@ -271,7 +274,7 @@ describe('formatDistanceStrict', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1991, 3, 4, 15, 32, 0),
-          {unit: 'Y'}
+          {unit: 'year'}
         )
         assert(result === '5 years')
       })
@@ -363,7 +366,7 @@ describe('formatDistanceStrict', function () {
   describe('implicit conversion of options', function () {
     it('`options.unit`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var unit = new String('Y')
+      var unit = new String('year')
 
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
@@ -430,7 +433,7 @@ describe('formatDistanceStrict', function () {
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 37, 0),
           // $ExpectedMistake
-          {unit: 'm', locale: customLocale}
+          {unit: 'minute', locale: customLocale}
         )
         assert.throws(block, RangeError)
       })
