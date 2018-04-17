@@ -61,9 +61,9 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
   if (unit === 'isoWeek' || unit === 'week') {
     return feminineOrdinalNumber(number)
-  } else {
-    return masculineOrdinalNumber(number)
   }
+
+  return masculineOrdinalNumber(number)
 }
 
 var localize = {

@@ -4,178 +4,178 @@
 import assert from 'power-assert'
 import locale from '.'
 
-import differenceInCalendarWeeks from '../../differenceInCalendarWeeks'
-import endOfWeek from '../../endOfWeek'
 import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
-import isSameWeek from '../../isSameWeek'
-import lastDayOfWeek from '../../lastDayOfWeek'
 import parse from '../../parse'
-import setDay from '../../setDay'
-import startOfWeek from '../../startOfWeek'
 
 describe('ru locale', function () {
-  context('with `differenceInCalendarWeeks`', function () {
-    it('sets the first day of the week', function () {
-      var result = differenceInCalendarWeeks(
-        new Date(2014, 5 /* Jun */, 29, 6, 0),
-        new Date(2014, 6 /* Jul */, 8, 18, 0),
-        {locale: locale}
-      )
-      assert(result === -2)
-    })
-  })
-
-  context('with `endOfWeek`', function () {
-    it('sets the first day of the week', function () {
-      var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-      var result = endOfWeek(date, {locale: locale})
-      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7, 23, 59, 59, 999))
-    })
-  })
-
   context('with `format`', function () {
-    var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+    var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
-    describe('months', function () {
-      it('Mo', function () {
-        var result = format(date, 'Mo [месяц]', {locale: locale})
-        assert(result === '4-й месяц')
+    it('era', function () {
+      var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
+      assert(result === 'н. э., нашей эры, н.э.')
+    })
+
+    describe('year', function () {
+      it('ordinal regular year', function () {
+        var result = format(date, "yo 'год'", {locale: locale})
+        assert(result === '1986-й год')
       })
 
-      it('MMM', function () {
-        var result = format(date, 'MMM', {locale: locale})
-        assert(result === 'апр.')
-      })
-
-      it('MMMM', function () {
-        var result = format(date, 'MMMM', {locale: locale})
-        assert(result === 'апрель')
+      it('ordinal local week-numbering year', function () {
+        var result = format(date, "Yo 'год'", {locale: locale})
+        assert(result === '1986-й год')
       })
     })
 
-    describe('quarters', function () {
-      it('Qo', function () {
-        var result = format(date, 'Qo [квартал]', {locale: locale})
-        assert(result === '2-й квартал')
+    describe('quarter', function () {
+      it('formatting quarter', function () {
+        var result = format(date, "Qo 'квартал', QQQ, QQQQ, QQQQQ", {locale: locale})
+        assert(result === '2-й квартал, 2-й кв., 2-й квартал, 2')
+      })
+
+      it('stand-alone quarter', function () {
+        var result = format(date, "qo 'квартал', qqq, qqqq, qqqqq", {locale: locale})
+        assert(result === '2-й квартал, 2-й кв., 2-й квартал, 2')
       })
     })
 
-    describe('days of month', function () {
-      it('Do', function () {
-        var result = format(date, 'Do MMMM YYYY', {locale: locale})
-        assert(result === '4-е апреля 1986')
+    describe('month', function () {
+      it('formatting month', function () {
+        var result = format(date, 'do MMMM', {locale: locale})
+        assert(result === '5-е апреля')
+      })
+
+      it('stand-alone month', function () {
+        var result = format(date, "Lo 'месяц', LLL, LLLL, LLLLL", {locale: locale})
+        assert(result === '4-й месяц, апр., апрель, А')
       })
     })
 
-    describe('days of year', function () {
-      it('DDDo', function () {
-        var result = format(new Date(1992, 0 /* Jan */, 1), 'DDDo [день года]', {locale: locale})
-        assert(result === '1-й день года')
+    describe('week', function () {
+      it('ordinal local week of year', function () {
+        var date = new Date(1986, 3 /* Apr */, 6)
+        var result = format(date, "wo 'неделя'", {locale: locale})
+        assert(result === '14-я неделя')
       })
-    })
 
-    describe('days of week', function () {
-      it('all variants', function () {
-        var result = format(date, 'do [день недели,] dd ddd dddd', {locale: locale})
-        assert(result === '5-й день недели, пт птн пятница')
-      })
-    })
-
-    describe('ISO weeks', function () {
-      it('Wo', function () {
-        var result = format(date, 'Wo [неделя]', {locale: locale})
+      it('ordinal ISO week of year', function () {
+        var date = new Date(1986, 3 /* Apr */, 6)
+        var result = format(date, "Io 'неделя'", {locale: locale})
         assert(result === '14-я неделя')
       })
     })
 
-    describe('hours and am/pm', function () {
-      it('12 pm', function () {
-        var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        var result = format(date, 'hh:mm a', {locale: locale})
-        assert(result === '12:00 дня')
+    describe('day', function () {
+      it('ordinal date', function () {
+        var result = format(date, "'сегодня' do 'число'", {locale: locale})
+        assert(result === 'сегодня 5-е число')
       })
 
-      it('12 am', function () {
-        var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
-        var result = format(date, 'h:mm a', {locale: locale})
-        assert(result === '12:00 ночи')
-      })
-
-      it('a', function () {
-        var result = []
-        for (var i = 0; i <= 23; i++) {
-          result.push(format(new Date(2015, 0, 1, i), 'h a', {locale: locale}))
-        }
-        var expected = [
-          '12 ночи', '1 ночи', '2 ночи', '3 ночи',
-          '4 утра', '5 утра', '6 утра', '7 утра', '8 утра', '9 утра', '10 утра', '11 утра',
-          '12 дня', '1 дня', '2 дня', '3 дня', '4 дня',
-          '5 вечера', '6 вечера', '7 вечера', '8 вечера', '9 вечера', '10 вечера', '11 вечера'
-        ]
-        assert.deepEqual(result, expected)
-      })
-
-      it('A', function () {
-        var result = []
-        for (var i = 0; i <= 23; i++) {
-          result.push(format(new Date(2015, 0, 1, i), 'h A', {locale: locale}))
-        }
-        var expected = [
-          '12 ночи', '1 ночи', '2 ночи', '3 ночи',
-          '4 утра', '5 утра', '6 утра', '7 утра', '8 утра', '9 утра', '10 утра', '11 утра',
-          '12 дня', '1 дня', '2 дня', '3 дня', '4 дня',
-          '5 вечера', '6 вечера', '7 вечера', '8 вечера', '9 вечера', '10 вечера', '11 вечера'
-        ]
-        assert.deepEqual(result, expected)
-      })
-
-      it('aa', function () {
-        var result = []
-        for (var i = 0; i <= 23; i++) {
-          result.push(format(new Date(2015, 0, 1, i), 'h aa', {locale: locale}))
-        }
-        var expected = [
-          '12 ночи', '1 ночи', '2 ночи', '3 ночи',
-          '4 утра', '5 утра', '6 утра', '7 утра', '8 утра', '9 утра', '10 утра', '11 утра',
-          '12 дня', '1 дня', '2 дня', '3 дня', '4 дня',
-          '5 вечера', '6 вечера', '7 вечера', '8 вечера', '9 вечера', '10 вечера', '11 вечера'
-        ]
-        assert.deepEqual(result, expected)
+      it('ordinal day of year', function () {
+        var result = format(date, "Do 'день года'", {locale: locale})
+        assert(result === '95-й день года')
       })
     })
 
-    describe('long formats', function () {
-      it('LT', function () {
-        var result = format(date, 'LT', {locale: locale})
+    describe('week day', function () {
+      it('day of week', function () {
+        var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
+        assert(result === 'суб, суббота, С, сб')
+      })
+
+      it('ordinal day of week', function () {
+        var result = format(date, "eo 'день недели'", {locale: locale})
+        assert(result === '6-й день недели')
+      })
+    })
+
+    describe('day period and hour', function () {
+      it('ordinal hour', function () {
+        var result = format(date, "ho 'час'", {locale: locale})
+        assert(result === '10-й час')
+      })
+
+      it('AM, PM', function () {
+        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        assert(result === '10 ДП, 10 ДП, 10ДП')
+      })
+
+      it('AM, PM, noon, midnight', function () {
+        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
+        assert(result === 'полн., полночь, полн.')
+      })
+
+      it('flexible day periods', function () {
+        it('works as expected', function () {
+          var result = format(date, 'h B', {locale: locale})
+          assert(result === '10 утра')
+        })
+      })
+    })
+
+    it('ordinal minute', function () {
+      var result = format(date, "mo 'минута'", {locale: locale})
+      assert(result === '32-я минута')
+    })
+
+    it('ordinal second', function () {
+      var result = format(date, "so 'секунда'", {locale: locale})
+      assert(result === '0-я секунда')
+    })
+
+    describe('long format', function () {
+      it('short date', function () {
+        var result = format(date, 'P', {locale: locale})
+        assert(result === '05.04.1986')
+      })
+
+      it('medium date', function () {
+        var result = format(date, 'PP', {locale: locale})
+        assert(result === '5 апр. 1986 г.')
+      })
+
+      it('long date', function () {
+        var result = format(date, 'PPP', {locale: locale})
+        assert(result === '5-е апреля 1986 г.')
+      })
+
+      it('full date', function () {
+        var result = format(date, 'PPPP', {locale: locale})
+        assert(result === 'суббота, 5-е апреля 1986 г.')
+      })
+
+      it('short time', function () {
+        var result = format(date, 'p', {locale: locale})
         assert(result === '10:32')
       })
 
-      it('LTS', function () {
-        var result = format(date, 'LTS', {locale: locale})
+      it('medium time', function () {
+        var result = format(date, 'pp', {locale: locale})
         assert(result === '10:32:00')
       })
 
-      it('L', function () {
-        var result = format(new Date(2017, 6 /* Jul */, 2), 'L', {locale: locale})
-        assert(result === '02.07.2017')
+      it('short date + time', function () {
+        var result = format(date, 'Pp', {locale: locale})
+        assert(result === '05.04.1986, 10:32')
       })
 
-      it('LL', function () {
-        var result = format(date, 'LL', {locale: locale})
-        assert(result === '4 апреля 1986 г.')
+      it('medium date + time', function () {
+        var result = format(date, 'PPpp', {locale: locale})
+        assert(result === '5 апр. 1986 г., 10:32:00')
       })
 
-      it('LLL', function () {
-        var result = format(date, 'LLL', {locale: locale})
-        assert(result === '4 апреля 1986 г., 10:32')
+      it('long date + time', function () {
+        var result = format(date, 'PPPp', {locale: locale})
+        assert(result === '5-е апреля 1986 г., 10:32')
       })
 
-      it('LLLL', function () {
-        var result = format(date, 'LLLL', {locale: locale})
-        assert(result === 'пятница, 4 апреля 1986 г., 10:32')
+      it('full date + time', function () {
+        var result = format(date, 'PPPPp', {locale: locale})
+        assert(result === 'суббота, 5-е апреля 1986 г., 10:32')
       })
     })
   })
@@ -216,7 +216,7 @@ describe('ru locale', function () {
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 12, 32, 0),
-        {locale: locale, unit: 'm'}
+        {locale: locale, unit: 'minute'}
       )
       assert(result === '120 минут')
     })
@@ -247,12 +247,12 @@ describe('ru locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 2 /* Mar */, 30), baseDate, {locale: locale})
-      assert(result === 'в прошлое воскресенье в 00:00')
+      assert(result === 'в прошлое воскресенье в 0:00')
     })
 
     it('this week, before yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'во вторник в 00:00')
+      assert(result === 'во вторник в 0:00')
     })
 
     it('yesterday', function () {
@@ -267,7 +267,7 @@ describe('ru locale', function () {
 
     it('tomorrow', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 5, 7, 30), baseDate, {locale: locale})
-      assert(result === 'завтра в 07:30')
+      assert(result === 'завтра в 7:30')
     })
 
     it('this week, after tomorrow', function () {
@@ -286,152 +286,173 @@ describe('ru locale', function () {
     })
   })
 
-  context('with `isSameWeek`', function () {
-    it('sets the first day of the week', function () {
-      var result = isSameWeek(
-        new Date(2014, 7 /* Aug */, 31),
-        new Date(2014, 8 /* Sep */, 4),
-        {locale: locale}
-      )
-      assert(result === false)
-    })
-  })
-
-  context('with `lastDayOfWeek`', function () {
-    it('sets the first day of the week', function () {
-      var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-      var result = lastDayOfWeek(date, {locale: locale})
-      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
-    })
-  })
-
   context('with `parse`', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
-    it('sets the first day of the week', function () {
-      var result = parse('0', 'd', baseDate, {locale: locale})
-      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
-    })
+    describe('era', function () {
+      it('abbreviated', function () {
+        var result = parse('10000 до н. э.', 'yyyyy G', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
+      })
 
-    describe('quarters', function () {
-      it('Qo', function () {
-        var result = parse('2000 2-й', 'YYYY Qo', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2000, 3 /* Apr */, 1))
+      it('wide', function () {
+        var result = parse('2018 нашей эры', 'yyyy GGGG', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('44 до н.э.', 'y GGGGG', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
       })
     })
 
-    describe('months', function () {
-      it('Mo', function () {
-        var result = parse('2014 12-й', 'YYYY Mo', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2014, 11 /* Dec */, 1))
+    it('ordinal year', function () {
+      var result = parse('2017-й', 'yo', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    describe('quarter', function () {
+      it('ordinal', function () {
+        var result = parse('1-й', 'Qo', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
 
-      it('MMM', function () {
-        var result = parse('2016 ноя', 'YYYY MMM', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 1))
+      it('abbreviated', function () {
+        var result = parse('3-й кв.', 'QQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
       })
 
-      it('MMMM', function () {
-        var result = parse('2016 декабрь', 'YYYY MMMM', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 11 /* Dec */, 1))
+      it('wide', function () {
+        var result = parse('4-й квартал', 'QQQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('1', 'QQQQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })
 
-    describe('ISO weeks', function () {
-      it('Wo', function () {
-        var result = parse('2016 3-я', 'GGGG Wo', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 18))
+    describe('month', function () {
+      it('ordinal', function () {
+        var result = parse('6-й', 'Mo', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
+      })
+
+      it('abbreviated', function () {
+        var result = parse('ноя', 'MMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
+      })
+
+      it('wide', function () {
+        var result = parse('февраль', 'MMMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('Я', 'MMMMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })
 
-    describe('days of week', function () {
-      it('do', function () {
-        var result = parse('2016 4 0-й', 'GGGG W do', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 31))
+    it('ordinal week of year', function () {
+      var result = parse('49-я', 'wo', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
+    })
+
+    it('ordinal day of month', function () {
+      var result = parse('28-й', 'do', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
+    })
+
+    it('ordinal day of year', function () {
+      var result = parse('200-й', 'Do', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
+    })
+
+    describe('day of week', function () {
+      it('abbreviated', function () {
+        var result = parse('пнд', 'E', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
 
-      it('dd', function () {
-        var result = parse('2016 4 пн', 'GGGG W dd', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 25))
+      it('wide', function () {
+        var result = parse('вторник', 'EEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
 
-      it('ddd', function () {
-        var result = parse('2016 4 срд', 'GGGG W ddd', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 27))
+      it('narrow', function () {
+        var result = parse('С', 'EEEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
       })
 
-      it('dddd', function () {
-        var result = parse('2016 4 пятница', 'GGGG W dddd', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 0 /* Jan */, 29))
+      it('short', function () {
+        var result = parse('чт', 'EEEEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
 
-    describe('days of month', function () {
-      it('Do', function () {
-        var result = parse('2016 11 15-е', 'YYYY MM Do', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 15))
+    it('ordinal local day of week', function () {
+      var result = parse('2-й день недели', "eo 'день недели'", baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    describe('AM, PM', function () {
+      it('abbreviated', function () {
+        var result = parse('5 ДП', 'h a', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+      })
+
+      it('wide', function () {
+        var result = parse('5 ПП', 'h aaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+      })
+
+      it('narrow', function () {
+        var result = parse('11 ДП', 'h aaaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
       })
     })
 
-    describe('days of year', function () {
-      it('DDDo', function () {
-        var result = parse('2016 100-й', 'YYYY DDDo', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 3 /* Apr */, 9))
+    describe('AM, PM, noon, midnight', function () {
+      it('abbreviated', function () {
+        var result = parse('полд.', 'b', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
+
+      it('wide', function () {
+        var result = parse('полночь', 'bbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      })
+
+      it('narrow', function () {
+        var result = parse('полн.', 'bbbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
       })
     })
 
-    describe('a.m./p.m.', function () {
-      it('12 a.m.', function () {
-        var result = parse('2016-11-25 12 ночи', 'YYYY-MM-DD h aa', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 0, 0, 0, 0))
+    describe('flexible day period', function () {
+      it('abbreviated', function () {
+        var result = parse('2 ночи', 'h B', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
       })
 
-      it('12 p.m.', function () {
-        var result = parse('2016-11-25 12 дня', 'YYYY-MM-DD h aa', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 12, 0, 0, 0))
+      it('wide', function () {
+        var result = parse('12 дня', 'h BBBB', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
       })
 
-      it('night', function () {
-        var result = parse('2016-11-25 3 ночи', 'YYYY-MM-DD h a', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 3, 0, 0, 0))
-      })
-
-      it('morning', function () {
-        var result = parse('2016-11-25 8 утра', 'YYYY-MM-DD h A', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 8, 0, 0, 0))
-      })
-
-      it('afternoon', function () {
-        var result = parse('2016-11-25 2 дня', 'YYYY-MM-DD h a', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 14, 0, 0, 0))
-      })
-
-      it('evening', function () {
-        var result = parse('2016-11-25 10 вечера', 'YYYY-MM-DD h aa', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(2016, 10 /* Nov */, 25, 22, 0, 0, 0))
+      it('narrow', function () {
+        var result = parse('5 вечера', 'h BBBBB', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
       })
     })
 
-    describe('long formats', function () {
-      it('unfolds long formats', function () {
-        var result = parse('6 апреля 1987 г., 11:32', 'LLL', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(1987, 3 /* Apr */, 6, 11, 32))
-      })
-    })
-  })
-
-  context('with `setDay`', function () {
-    it('sets the first day of the week', function () {
-      var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {locale: locale})
-      assert.deepEqual(result, new Date(2014, 8 /* sep */, 7))
-    })
-  })
-
-  context('with `startOfWeek`', function () {
-    it('sets the first day of the week', function () {
-      var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-      var result = startOfWeek(date, {locale: locale})
-      assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+    it('ordinal time', function () {
+      var dateString = '1-й час, 2-я минута, 3-я секунда'
+      var formatString = "ho 'час', mo 'минута', so 'секунда'"
+      var result = parse(dateString, formatString, baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1, 2, 3))
     })
   })
 })

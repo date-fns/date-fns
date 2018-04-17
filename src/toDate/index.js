@@ -242,7 +242,7 @@ function parseDate (dateString, year) {
   token = patterns.Www.exec(dateString)
   if (token) {
     week = parseInt(token[1], 10) - 1
-    return dayOfISOYear(year, week)
+    return dayOfISOWeekYear(year, week)
   }
 
   // YYYY-Www-D or YYYYWwwD
@@ -250,7 +250,7 @@ function parseDate (dateString, year) {
   if (token) {
     week = parseInt(token[1], 10) - 1
     var dayOfWeek = parseInt(token[2], 10) - 1
-    return dayOfISOYear(year, week, dayOfWeek)
+    return dayOfISOWeekYear(year, week, dayOfWeek)
   }
 
   // Invalid ISO-formatted date
@@ -320,11 +320,11 @@ function parseTimezone (timezoneString) {
   return 0
 }
 
-function dayOfISOYear (isoYear, week, day) {
+function dayOfISOWeekYear (isoWeekYear, week, day) {
   week = week || 0
   day = day || 0
   var date = new Date(0)
-  date.setUTCFullYear(isoYear, 0, 4)
+  date.setUTCFullYear(isoWeekYear, 0, 4)
   var fourthOfJanuaryDay = date.getUTCDay() || 7
   var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)

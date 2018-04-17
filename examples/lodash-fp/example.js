@@ -7,7 +7,7 @@ import toUpper from 'lodash/fp/toUpper'
 import isEqual from 'lodash/isEqual'
 
 const addFiveYears = addYears(5)
-const dateToString = formatWithOptions({locale: eo}, 'D MMMM YYYY')
+const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
 
 const dates = ['2017-01-01', '2017-02-11', '2017-07-02']
 

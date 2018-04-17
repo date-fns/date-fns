@@ -1,4 +1,4 @@
-import startOfISOYear from '../startOfISOYear/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import addWeeks from '../addWeeks/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
@@ -30,8 +30,8 @@ export default function getISOWeeksInYear (dirtyDate, dirtyOptions) {
     throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
   }
 
-  var thisYear = startOfISOYear(dirtyDate, dirtyOptions)
-  var nextYear = startOfISOYear(addWeeks(thisYear, 60, dirtyOptions), dirtyOptions)
+  var thisYear = startOfISOWeekYear(dirtyDate, dirtyOptions)
+  var nextYear = startOfISOWeekYear(addWeeks(thisYear, 60, dirtyOptions), dirtyOptions)
   var diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer
   // because the number of milliseconds in a week is not constant
