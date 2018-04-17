@@ -267,10 +267,7 @@ function generateTypeScriptTypings (fns, aliases, locales) {
 
   const globalInterfaceDefinition = formatBlock`
     interface dateFns {
-      ${addSeparator(
-        nonFPFns.map(getTypeScriptInterfaceDefinition),
-        '\n'
-      )}
+      ${addSeparator(nonFPFns.map(getTypeScriptInterfaceDefinition), '\n')}
     }
   `
 

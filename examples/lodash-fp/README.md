@@ -19,5 +19,5 @@ You can see the build size:
 
 ```sh
 gzip-size dist/example.min.js | pretty-bytes
-#=> 20.1 kB
+#=> 23.4 kB
 ```
