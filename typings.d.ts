@@ -16395,6 +16395,9 @@ declare module 'date-fns/locale' {
   const nl: Locale
   namespace nl {}
 
+  const nlBE: Locale
+  namespace nlBE {}
+
   const pl: Locale
   namespace pl {}
 
@@ -16558,6 +16561,11 @@ declare module 'date-fns/locale/nb' {
 declare module 'date-fns/locale/nl' {
   import {nl} from 'date-fns/locale'
   export = nl
+}
+
+declare module 'date-fns/locale/nl-BE' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
 }
 
 declare module 'date-fns/locale/pl' {
@@ -16750,6 +16758,11 @@ declare module 'date-fns/locale/nl/index' {
   export = nl
 }
 
+declare module 'date-fns/locale/nl-BE/index' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
+}
+
 declare module 'date-fns/locale/pl/index' {
   import {pl} from 'date-fns/locale'
   export = pl
@@ -16940,6 +16953,11 @@ declare module 'date-fns/locale/nl/index.js' {
   export = nl
 }
 
+declare module 'date-fns/locale/nl-BE/index.js' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
+}
+
 declare module 'date-fns/locale/pl/index.js' {
   import {pl} from 'date-fns/locale'
   export = pl
@@ -17082,6 +17100,9 @@ declare module 'date-fns/esm/locale' {
 
   const nl: Locale
   namespace nl {}
+
+  const nlBE: Locale
+  namespace nlBE {}
 
   const pl: Locale
   namespace pl {}
@@ -17246,6 +17267,11 @@ declare module 'date-fns/esm/locale/nb' {
 declare module 'date-fns/esm/locale/nl' {
   import {nl} from 'date-fns/esm/locale'
   export default nl
+}
+
+declare module 'date-fns/esm/locale/nl-BE' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
 }
 
 declare module 'date-fns/esm/locale/pl' {
@@ -17438,6 +17464,11 @@ declare module 'date-fns/esm/locale/nl/index' {
   export default nl
 }
 
+declare module 'date-fns/esm/locale/nl-BE/index' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
+}
+
 declare module 'date-fns/esm/locale/pl/index' {
   import {pl} from 'date-fns/esm/locale'
   export default pl
@@ -17626,6 +17657,11 @@ declare module 'date-fns/esm/locale/nb/index.js' {
 declare module 'date-fns/esm/locale/nl/index.js' {
   import {nl} from 'date-fns/esm/locale'
   export default nl
+}
+
+declare module 'date-fns/esm/locale/nl-BE/index.js' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
 }
 
 declare module 'date-fns/esm/locale/pl/index.js' {
