@@ -12,6 +12,7 @@
  * @iso-639-2 ind
  * @author Rahmat Budiharso [@rbudiharso]{@link https://github.com/rbudiharso}
  * @author Benget Nata [@bentinata]{@link https://github.com/bentinata}
+ * @author Budi Irawan [@deerawan]{@link https://github.com/deerawan}
  */
 // var locale = {
 //   formatDistance: formatDistance,
