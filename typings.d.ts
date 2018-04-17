@@ -33,44 +33,41 @@ type Interval = {
 
 type Options = {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   additionalDigits?: 0 | 1 | 2,
   locale?: Locale,
   includeSeconds?: boolean,
   addSuffix?: boolean,
-  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round'
 }
 
 type Locale = {
   formatDistance: Function,
-  formatLong: Function,
   formatRelative: Function,
   localize: {
     ordinalNumber: Function,
-    weekday: Function,
-    weekdays: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    months: Function,
-    timeOfDay: Function,
-    timesOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
+  formatLong: Object,
+  date: Function,
+  time: Function,
+  dateTime: Function,
   match: {
-    ordinalNumbers: Function,
     ordinalNumber: Function,
-    weekdays: Function,
-    weekday: Function,
-    months: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    timesOfDay: Function,
-    timeOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
-  formatters?: Object,
-  formattingTokensRegExp?: RegExp,
-  units?: Object,
-  parsers?: Object,
-  parsingTokensRegExp?: RegExp,
   options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   }
 }
 
@@ -498,6 +495,12 @@ declare module 'date-fns' {
   ): number
   namespace getTime {}
 
+  function getWeek (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getWeek {}
+
   function getWeekOfMonth (
     date: Date | string | number,
     options?: Options
@@ -509,6 +512,12 @@ declare module 'date-fns' {
     options?: Options
   ): number
   namespace getWeeksInMonth {}
+
+  function getWeekYear (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getWeekYear {}
 
   function getYear (
     date: Date | string | number,
@@ -826,6 +835,20 @@ declare module 'date-fns' {
   ): Date
   namespace setSeconds {}
 
+  function setWeek (
+    date: Date | string | number,
+    week: number,
+    options?: Options
+  ): Date
+  namespace setWeek {}
+
+  function setWeekYear (
+    date: Date | string | number,
+    weekYear: number,
+    options?: Options
+  ): Date
+  namespace setWeekYear {}
+
   function setYear (
     date: Date | string | number,
     year: number,
@@ -886,6 +909,12 @@ declare module 'date-fns' {
     options?: Options
   ): Date
   namespace startOfWeek {}
+
+  function startOfWeekYear (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace startOfWeekYear {}
 
   function startOfYear (
     date: Date | string | number,
@@ -1290,6 +1319,11 @@ declare module 'date-fns/getTime' {
   export = getTime
 }
 
+declare module 'date-fns/getWeek' {
+  import {getWeek} from 'date-fns'
+  export = getWeek
+}
+
 declare module 'date-fns/getWeekOfMonth' {
   import {getWeekOfMonth} from 'date-fns'
   export = getWeekOfMonth
@@ -1298,6 +1332,11 @@ declare module 'date-fns/getWeekOfMonth' {
 declare module 'date-fns/getWeeksInMonth' {
   import {getWeeksInMonth} from 'date-fns'
   export = getWeeksInMonth
+}
+
+declare module 'date-fns/getWeekYear' {
+  import {getWeekYear} from 'date-fns'
+  export = getWeekYear
 }
 
 declare module 'date-fns/getYear' {
@@ -1540,6 +1579,16 @@ declare module 'date-fns/setSeconds' {
   export = setSeconds
 }
 
+declare module 'date-fns/setWeek' {
+  import {setWeek} from 'date-fns'
+  export = setWeek
+}
+
+declare module 'date-fns/setWeekYear' {
+  import {setWeekYear} from 'date-fns'
+  export = setWeekYear
+}
+
 declare module 'date-fns/setYear' {
   import {setYear} from 'date-fns'
   export = setYear
@@ -1588,6 +1637,11 @@ declare module 'date-fns/startOfSecond' {
 declare module 'date-fns/startOfWeek' {
   import {startOfWeek} from 'date-fns'
   export = startOfWeek
+}
+
+declare module 'date-fns/startOfWeekYear' {
+  import {startOfWeekYear} from 'date-fns'
+  export = startOfWeekYear
 }
 
 declare module 'date-fns/startOfYear' {
@@ -1970,6 +2024,11 @@ declare module 'date-fns/getTime/index' {
   export = getTime
 }
 
+declare module 'date-fns/getWeek/index' {
+  import {getWeek} from 'date-fns'
+  export = getWeek
+}
+
 declare module 'date-fns/getWeekOfMonth/index' {
   import {getWeekOfMonth} from 'date-fns'
   export = getWeekOfMonth
@@ -1978,6 +2037,11 @@ declare module 'date-fns/getWeekOfMonth/index' {
 declare module 'date-fns/getWeeksInMonth/index' {
   import {getWeeksInMonth} from 'date-fns'
   export = getWeeksInMonth
+}
+
+declare module 'date-fns/getWeekYear/index' {
+  import {getWeekYear} from 'date-fns'
+  export = getWeekYear
 }
 
 declare module 'date-fns/getYear/index' {
@@ -2220,6 +2284,16 @@ declare module 'date-fns/setSeconds/index' {
   export = setSeconds
 }
 
+declare module 'date-fns/setWeek/index' {
+  import {setWeek} from 'date-fns'
+  export = setWeek
+}
+
+declare module 'date-fns/setWeekYear/index' {
+  import {setWeekYear} from 'date-fns'
+  export = setWeekYear
+}
+
 declare module 'date-fns/setYear/index' {
   import {setYear} from 'date-fns'
   export = setYear
@@ -2268,6 +2342,11 @@ declare module 'date-fns/startOfSecond/index' {
 declare module 'date-fns/startOfWeek/index' {
   import {startOfWeek} from 'date-fns'
   export = startOfWeek
+}
+
+declare module 'date-fns/startOfWeekYear/index' {
+  import {startOfWeekYear} from 'date-fns'
+  export = startOfWeekYear
 }
 
 declare module 'date-fns/startOfYear/index' {
@@ -2650,6 +2729,11 @@ declare module 'date-fns/getTime/index.js' {
   export = getTime
 }
 
+declare module 'date-fns/getWeek/index.js' {
+  import {getWeek} from 'date-fns'
+  export = getWeek
+}
+
 declare module 'date-fns/getWeekOfMonth/index.js' {
   import {getWeekOfMonth} from 'date-fns'
   export = getWeekOfMonth
@@ -2658,6 +2742,11 @@ declare module 'date-fns/getWeekOfMonth/index.js' {
 declare module 'date-fns/getWeeksInMonth/index.js' {
   import {getWeeksInMonth} from 'date-fns'
   export = getWeeksInMonth
+}
+
+declare module 'date-fns/getWeekYear/index.js' {
+  import {getWeekYear} from 'date-fns'
+  export = getWeekYear
 }
 
 declare module 'date-fns/getYear/index.js' {
@@ -2900,6 +2989,16 @@ declare module 'date-fns/setSeconds/index.js' {
   export = setSeconds
 }
 
+declare module 'date-fns/setWeek/index.js' {
+  import {setWeek} from 'date-fns'
+  export = setWeek
+}
+
+declare module 'date-fns/setWeekYear/index.js' {
+  import {setWeekYear} from 'date-fns'
+  export = setWeekYear
+}
+
 declare module 'date-fns/setYear/index.js' {
   import {setYear} from 'date-fns'
   export = setYear
@@ -2948,6 +3047,11 @@ declare module 'date-fns/startOfSecond/index.js' {
 declare module 'date-fns/startOfWeek/index.js' {
   import {startOfWeek} from 'date-fns'
   export = startOfWeek
+}
+
+declare module 'date-fns/startOfWeekYear/index.js' {
+  import {startOfWeekYear} from 'date-fns'
+  export = startOfWeekYear
 }
 
 declare module 'date-fns/startOfYear/index.js' {
@@ -3397,6 +3501,9 @@ declare module 'date-fns/fp' {
   const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
 
+  const getWeek: CurriedFn1<Date | string | number, number>
+  namespace getWeek {}
+
   const getWeekOfMonth: CurriedFn1<Date | string | number, number>
   namespace getWeekOfMonth {}
 
@@ -3408,6 +3515,15 @@ declare module 'date-fns/fp' {
 
   const getWeeksInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getWeeksInMonthWithOptions {}
+
+  const getWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getWeekWithOptions {}
+
+  const getWeekYear: CurriedFn1<Date | string | number, number>
+  namespace getWeekYear {}
+
+  const getWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | string | number, number>
   namespace getYear {}
@@ -3697,6 +3813,18 @@ declare module 'date-fns/fp' {
   const setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setSecondsWithOptions {}
 
+  const setWeek: CurriedFn2<number, Date | string | number, Date>
+  namespace setWeek {}
+
+  const setWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setWeekWithOptions {}
+
+  const setWeekYear: CurriedFn2<number, Date | string | number, Date>
+  namespace setWeekYear {}
+
+  const setWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setWeekYearWithOptions {}
+
   const setYear: CurriedFn2<number, Date | string | number, Date>
   namespace setYear {}
 
@@ -3756,6 +3884,12 @@ declare module 'date-fns/fp' {
 
   const startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfWeekWithOptions {}
+
+  const startOfWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace startOfWeekYear {}
+
+  const startOfWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | string | number, Date>
   namespace startOfYear {}
@@ -4470,6 +4604,11 @@ declare module 'date-fns/fp/getTimeWithOptions' {
   export = getTimeWithOptions
 }
 
+declare module 'date-fns/fp/getWeek' {
+  import {getWeek} from 'date-fns/fp'
+  export = getWeek
+}
+
 declare module 'date-fns/fp/getWeekOfMonth' {
   import {getWeekOfMonth} from 'date-fns/fp'
   export = getWeekOfMonth
@@ -4488,6 +4627,21 @@ declare module 'date-fns/fp/getWeeksInMonth' {
 declare module 'date-fns/fp/getWeeksInMonthWithOptions' {
   import {getWeeksInMonthWithOptions} from 'date-fns/fp'
   export = getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/fp/getWeekWithOptions' {
+  import {getWeekWithOptions} from 'date-fns/fp'
+  export = getWeekWithOptions
+}
+
+declare module 'date-fns/fp/getWeekYear' {
+  import {getWeekYear} from 'date-fns/fp'
+  export = getWeekYear
+}
+
+declare module 'date-fns/fp/getWeekYearWithOptions' {
+  import {getWeekYearWithOptions} from 'date-fns/fp'
+  export = getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear' {
@@ -4970,6 +5124,26 @@ declare module 'date-fns/fp/setSecondsWithOptions' {
   export = setSecondsWithOptions
 }
 
+declare module 'date-fns/fp/setWeek' {
+  import {setWeek} from 'date-fns/fp'
+  export = setWeek
+}
+
+declare module 'date-fns/fp/setWeekWithOptions' {
+  import {setWeekWithOptions} from 'date-fns/fp'
+  export = setWeekWithOptions
+}
+
+declare module 'date-fns/fp/setWeekYear' {
+  import {setWeekYear} from 'date-fns/fp'
+  export = setWeekYear
+}
+
+declare module 'date-fns/fp/setWeekYearWithOptions' {
+  import {setWeekYearWithOptions} from 'date-fns/fp'
+  export = setWeekYearWithOptions
+}
+
 declare module 'date-fns/fp/setYear' {
   import {setYear} from 'date-fns/fp'
   export = setYear
@@ -5068,6 +5242,16 @@ declare module 'date-fns/fp/startOfWeek' {
 declare module 'date-fns/fp/startOfWeekWithOptions' {
   import {startOfWeekWithOptions} from 'date-fns/fp'
   export = startOfWeekWithOptions
+}
+
+declare module 'date-fns/fp/startOfWeekYear' {
+  import {startOfWeekYear} from 'date-fns/fp'
+  export = startOfWeekYear
+}
+
+declare module 'date-fns/fp/startOfWeekYearWithOptions' {
+  import {startOfWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear' {
@@ -5830,6 +6014,11 @@ declare module 'date-fns/fp/getTimeWithOptions/index' {
   export = getTimeWithOptions
 }
 
+declare module 'date-fns/fp/getWeek/index' {
+  import {getWeek} from 'date-fns/fp'
+  export = getWeek
+}
+
 declare module 'date-fns/fp/getWeekOfMonth/index' {
   import {getWeekOfMonth} from 'date-fns/fp'
   export = getWeekOfMonth
@@ -5848,6 +6037,21 @@ declare module 'date-fns/fp/getWeeksInMonth/index' {
 declare module 'date-fns/fp/getWeeksInMonthWithOptions/index' {
   import {getWeeksInMonthWithOptions} from 'date-fns/fp'
   export = getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/fp/getWeekWithOptions/index' {
+  import {getWeekWithOptions} from 'date-fns/fp'
+  export = getWeekWithOptions
+}
+
+declare module 'date-fns/fp/getWeekYear/index' {
+  import {getWeekYear} from 'date-fns/fp'
+  export = getWeekYear
+}
+
+declare module 'date-fns/fp/getWeekYearWithOptions/index' {
+  import {getWeekYearWithOptions} from 'date-fns/fp'
+  export = getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear/index' {
@@ -6330,6 +6534,26 @@ declare module 'date-fns/fp/setSecondsWithOptions/index' {
   export = setSecondsWithOptions
 }
 
+declare module 'date-fns/fp/setWeek/index' {
+  import {setWeek} from 'date-fns/fp'
+  export = setWeek
+}
+
+declare module 'date-fns/fp/setWeekWithOptions/index' {
+  import {setWeekWithOptions} from 'date-fns/fp'
+  export = setWeekWithOptions
+}
+
+declare module 'date-fns/fp/setWeekYear/index' {
+  import {setWeekYear} from 'date-fns/fp'
+  export = setWeekYear
+}
+
+declare module 'date-fns/fp/setWeekYearWithOptions/index' {
+  import {setWeekYearWithOptions} from 'date-fns/fp'
+  export = setWeekYearWithOptions
+}
+
 declare module 'date-fns/fp/setYear/index' {
   import {setYear} from 'date-fns/fp'
   export = setYear
@@ -6428,6 +6652,16 @@ declare module 'date-fns/fp/startOfWeek/index' {
 declare module 'date-fns/fp/startOfWeekWithOptions/index' {
   import {startOfWeekWithOptions} from 'date-fns/fp'
   export = startOfWeekWithOptions
+}
+
+declare module 'date-fns/fp/startOfWeekYear/index' {
+  import {startOfWeekYear} from 'date-fns/fp'
+  export = startOfWeekYear
+}
+
+declare module 'date-fns/fp/startOfWeekYearWithOptions/index' {
+  import {startOfWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear/index' {
@@ -7190,6 +7424,11 @@ declare module 'date-fns/fp/getTimeWithOptions/index.js' {
   export = getTimeWithOptions
 }
 
+declare module 'date-fns/fp/getWeek/index.js' {
+  import {getWeek} from 'date-fns/fp'
+  export = getWeek
+}
+
 declare module 'date-fns/fp/getWeekOfMonth/index.js' {
   import {getWeekOfMonth} from 'date-fns/fp'
   export = getWeekOfMonth
@@ -7208,6 +7447,21 @@ declare module 'date-fns/fp/getWeeksInMonth/index.js' {
 declare module 'date-fns/fp/getWeeksInMonthWithOptions/index.js' {
   import {getWeeksInMonthWithOptions} from 'date-fns/fp'
   export = getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/fp/getWeekWithOptions/index.js' {
+  import {getWeekWithOptions} from 'date-fns/fp'
+  export = getWeekWithOptions
+}
+
+declare module 'date-fns/fp/getWeekYear/index.js' {
+  import {getWeekYear} from 'date-fns/fp'
+  export = getWeekYear
+}
+
+declare module 'date-fns/fp/getWeekYearWithOptions/index.js' {
+  import {getWeekYearWithOptions} from 'date-fns/fp'
+  export = getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear/index.js' {
@@ -7690,6 +7944,26 @@ declare module 'date-fns/fp/setSecondsWithOptions/index.js' {
   export = setSecondsWithOptions
 }
 
+declare module 'date-fns/fp/setWeek/index.js' {
+  import {setWeek} from 'date-fns/fp'
+  export = setWeek
+}
+
+declare module 'date-fns/fp/setWeekWithOptions/index.js' {
+  import {setWeekWithOptions} from 'date-fns/fp'
+  export = setWeekWithOptions
+}
+
+declare module 'date-fns/fp/setWeekYear/index.js' {
+  import {setWeekYear} from 'date-fns/fp'
+  export = setWeekYear
+}
+
+declare module 'date-fns/fp/setWeekYearWithOptions/index.js' {
+  import {setWeekYearWithOptions} from 'date-fns/fp'
+  export = setWeekYearWithOptions
+}
+
 declare module 'date-fns/fp/setYear/index.js' {
   import {setYear} from 'date-fns/fp'
   export = setYear
@@ -7788,6 +8062,16 @@ declare module 'date-fns/fp/startOfWeek/index.js' {
 declare module 'date-fns/fp/startOfWeekWithOptions/index.js' {
   import {startOfWeekWithOptions} from 'date-fns/fp'
   export = startOfWeekWithOptions
+}
+
+declare module 'date-fns/fp/startOfWeekYear/index.js' {
+  import {startOfWeekYear} from 'date-fns/fp'
+  export = startOfWeekYear
+}
+
+declare module 'date-fns/fp/startOfWeekYearWithOptions/index.js' {
+  import {startOfWeekYearWithOptions} from 'date-fns/fp'
+  export = startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear/index.js' {
@@ -8334,6 +8618,12 @@ declare module 'date-fns/esm' {
   ): number
   namespace getTime {}
 
+  function getWeek (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getWeek {}
+
   function getWeekOfMonth (
     date: Date | string | number,
     options?: Options
@@ -8345,6 +8635,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): number
   namespace getWeeksInMonth {}
+
+  function getWeekYear (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getWeekYear {}
 
   function getYear (
     date: Date | string | number,
@@ -8662,6 +8958,20 @@ declare module 'date-fns/esm' {
   ): Date
   namespace setSeconds {}
 
+  function setWeek (
+    date: Date | string | number,
+    week: number,
+    options?: Options
+  ): Date
+  namespace setWeek {}
+
+  function setWeekYear (
+    date: Date | string | number,
+    weekYear: number,
+    options?: Options
+  ): Date
+  namespace setWeekYear {}
+
   function setYear (
     date: Date | string | number,
     year: number,
@@ -8722,6 +9032,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): Date
   namespace startOfWeek {}
+
+  function startOfWeekYear (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace startOfWeekYear {}
 
   function startOfYear (
     date: Date | string | number,
@@ -9126,6 +9442,11 @@ declare module 'date-fns/esm/getTime' {
   export default getTime
 }
 
+declare module 'date-fns/esm/getWeek' {
+  import {getWeek} from 'date-fns/esm'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/getWeekOfMonth' {
   import {getWeekOfMonth} from 'date-fns/esm'
   export default getWeekOfMonth
@@ -9134,6 +9455,11 @@ declare module 'date-fns/esm/getWeekOfMonth' {
 declare module 'date-fns/esm/getWeeksInMonth' {
   import {getWeeksInMonth} from 'date-fns/esm'
   export default getWeeksInMonth
+}
+
+declare module 'date-fns/esm/getWeekYear' {
+  import {getWeekYear} from 'date-fns/esm'
+  export default getWeekYear
 }
 
 declare module 'date-fns/esm/getYear' {
@@ -9376,6 +9702,16 @@ declare module 'date-fns/esm/setSeconds' {
   export default setSeconds
 }
 
+declare module 'date-fns/esm/setWeek' {
+  import {setWeek} from 'date-fns/esm'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/setWeekYear' {
+  import {setWeekYear} from 'date-fns/esm'
+  export default setWeekYear
+}
+
 declare module 'date-fns/esm/setYear' {
   import {setYear} from 'date-fns/esm'
   export default setYear
@@ -9424,6 +9760,11 @@ declare module 'date-fns/esm/startOfSecond' {
 declare module 'date-fns/esm/startOfWeek' {
   import {startOfWeek} from 'date-fns/esm'
   export default startOfWeek
+}
+
+declare module 'date-fns/esm/startOfWeekYear' {
+  import {startOfWeekYear} from 'date-fns/esm'
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/esm/startOfYear' {
@@ -9806,6 +10147,11 @@ declare module 'date-fns/esm/getTime/index' {
   export default getTime
 }
 
+declare module 'date-fns/esm/getWeek/index' {
+  import {getWeek} from 'date-fns/esm'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/getWeekOfMonth/index' {
   import {getWeekOfMonth} from 'date-fns/esm'
   export default getWeekOfMonth
@@ -9814,6 +10160,11 @@ declare module 'date-fns/esm/getWeekOfMonth/index' {
 declare module 'date-fns/esm/getWeeksInMonth/index' {
   import {getWeeksInMonth} from 'date-fns/esm'
   export default getWeeksInMonth
+}
+
+declare module 'date-fns/esm/getWeekYear/index' {
+  import {getWeekYear} from 'date-fns/esm'
+  export default getWeekYear
 }
 
 declare module 'date-fns/esm/getYear/index' {
@@ -10056,6 +10407,16 @@ declare module 'date-fns/esm/setSeconds/index' {
   export default setSeconds
 }
 
+declare module 'date-fns/esm/setWeek/index' {
+  import {setWeek} from 'date-fns/esm'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/setWeekYear/index' {
+  import {setWeekYear} from 'date-fns/esm'
+  export default setWeekYear
+}
+
 declare module 'date-fns/esm/setYear/index' {
   import {setYear} from 'date-fns/esm'
   export default setYear
@@ -10104,6 +10465,11 @@ declare module 'date-fns/esm/startOfSecond/index' {
 declare module 'date-fns/esm/startOfWeek/index' {
   import {startOfWeek} from 'date-fns/esm'
   export default startOfWeek
+}
+
+declare module 'date-fns/esm/startOfWeekYear/index' {
+  import {startOfWeekYear} from 'date-fns/esm'
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/esm/startOfYear/index' {
@@ -10486,6 +10852,11 @@ declare module 'date-fns/esm/getTime/index.js' {
   export default getTime
 }
 
+declare module 'date-fns/esm/getWeek/index.js' {
+  import {getWeek} from 'date-fns/esm'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/getWeekOfMonth/index.js' {
   import {getWeekOfMonth} from 'date-fns/esm'
   export default getWeekOfMonth
@@ -10494,6 +10865,11 @@ declare module 'date-fns/esm/getWeekOfMonth/index.js' {
 declare module 'date-fns/esm/getWeeksInMonth/index.js' {
   import {getWeeksInMonth} from 'date-fns/esm'
   export default getWeeksInMonth
+}
+
+declare module 'date-fns/esm/getWeekYear/index.js' {
+  import {getWeekYear} from 'date-fns/esm'
+  export default getWeekYear
 }
 
 declare module 'date-fns/esm/getYear/index.js' {
@@ -10736,6 +11112,16 @@ declare module 'date-fns/esm/setSeconds/index.js' {
   export default setSeconds
 }
 
+declare module 'date-fns/esm/setWeek/index.js' {
+  import {setWeek} from 'date-fns/esm'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/setWeekYear/index.js' {
+  import {setWeekYear} from 'date-fns/esm'
+  export default setWeekYear
+}
+
 declare module 'date-fns/esm/setYear/index.js' {
   import {setYear} from 'date-fns/esm'
   export default setYear
@@ -10784,6 +11170,11 @@ declare module 'date-fns/esm/startOfSecond/index.js' {
 declare module 'date-fns/esm/startOfWeek/index.js' {
   import {startOfWeek} from 'date-fns/esm'
   export default startOfWeek
+}
+
+declare module 'date-fns/esm/startOfWeekYear/index.js' {
+  import {startOfWeekYear} from 'date-fns/esm'
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/esm/startOfYear/index.js' {
@@ -11233,6 +11624,9 @@ declare module 'date-fns/esm/fp' {
   const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
 
+  const getWeek: CurriedFn1<Date | string | number, number>
+  namespace getWeek {}
+
   const getWeekOfMonth: CurriedFn1<Date | string | number, number>
   namespace getWeekOfMonth {}
 
@@ -11244,6 +11638,15 @@ declare module 'date-fns/esm/fp' {
 
   const getWeeksInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getWeeksInMonthWithOptions {}
+
+  const getWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getWeekWithOptions {}
+
+  const getWeekYear: CurriedFn1<Date | string | number, number>
+  namespace getWeekYear {}
+
+  const getWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | string | number, number>
   namespace getYear {}
@@ -11533,6 +11936,18 @@ declare module 'date-fns/esm/fp' {
   const setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace setSecondsWithOptions {}
 
+  const setWeek: CurriedFn2<number, Date | string | number, Date>
+  namespace setWeek {}
+
+  const setWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setWeekWithOptions {}
+
+  const setWeekYear: CurriedFn2<number, Date | string | number, Date>
+  namespace setWeekYear {}
+
+  const setWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
+  namespace setWeekYearWithOptions {}
+
   const setYear: CurriedFn2<number, Date | string | number, Date>
   namespace setYear {}
 
@@ -11592,6 +12007,12 @@ declare module 'date-fns/esm/fp' {
 
   const startOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfWeekWithOptions {}
+
+  const startOfWeekYear: CurriedFn1<Date | string | number, Date>
+  namespace startOfWeekYear {}
+
+  const startOfWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | string | number, Date>
   namespace startOfYear {}
@@ -12306,6 +12727,11 @@ declare module 'date-fns/esm/fp/getTimeWithOptions' {
   export default getTimeWithOptions
 }
 
+declare module 'date-fns/esm/fp/getWeek' {
+  import {getWeek} from 'date-fns/esm/fp'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/fp/getWeekOfMonth' {
   import {getWeekOfMonth} from 'date-fns/esm/fp'
   export default getWeekOfMonth
@@ -12324,6 +12750,21 @@ declare module 'date-fns/esm/fp/getWeeksInMonth' {
 declare module 'date-fns/esm/fp/getWeeksInMonthWithOptions' {
   import {getWeeksInMonthWithOptions} from 'date-fns/esm/fp'
   export default getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekWithOptions' {
+  import {getWeekWithOptions} from 'date-fns/esm/fp'
+  export default getWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekYear' {
+  import {getWeekYear} from 'date-fns/esm/fp'
+  export default getWeekYear
+}
+
+declare module 'date-fns/esm/fp/getWeekYearWithOptions' {
+  import {getWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getYear' {
@@ -12806,6 +13247,26 @@ declare module 'date-fns/esm/fp/setSecondsWithOptions' {
   export default setSecondsWithOptions
 }
 
+declare module 'date-fns/esm/fp/setWeek' {
+  import {setWeek} from 'date-fns/esm/fp'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/fp/setWeekWithOptions' {
+  import {setWeekWithOptions} from 'date-fns/esm/fp'
+  export default setWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/setWeekYear' {
+  import {setWeekYear} from 'date-fns/esm/fp'
+  export default setWeekYear
+}
+
+declare module 'date-fns/esm/fp/setWeekYearWithOptions' {
+  import {setWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setWeekYearWithOptions
+}
+
 declare module 'date-fns/esm/fp/setYear' {
   import {setYear} from 'date-fns/esm/fp'
   export default setYear
@@ -12904,6 +13365,16 @@ declare module 'date-fns/esm/fp/startOfWeek' {
 declare module 'date-fns/esm/fp/startOfWeekWithOptions' {
   import {startOfWeekWithOptions} from 'date-fns/esm/fp'
   export default startOfWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYear' {
+  import {startOfWeekYear} from 'date-fns/esm/fp'
+  export default startOfWeekYear
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYearWithOptions' {
+  import {startOfWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfYear' {
@@ -13666,6 +14137,11 @@ declare module 'date-fns/esm/fp/getTimeWithOptions/index' {
   export default getTimeWithOptions
 }
 
+declare module 'date-fns/esm/fp/getWeek/index' {
+  import {getWeek} from 'date-fns/esm/fp'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/fp/getWeekOfMonth/index' {
   import {getWeekOfMonth} from 'date-fns/esm/fp'
   export default getWeekOfMonth
@@ -13684,6 +14160,21 @@ declare module 'date-fns/esm/fp/getWeeksInMonth/index' {
 declare module 'date-fns/esm/fp/getWeeksInMonthWithOptions/index' {
   import {getWeeksInMonthWithOptions} from 'date-fns/esm/fp'
   export default getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekWithOptions/index' {
+  import {getWeekWithOptions} from 'date-fns/esm/fp'
+  export default getWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekYear/index' {
+  import {getWeekYear} from 'date-fns/esm/fp'
+  export default getWeekYear
+}
+
+declare module 'date-fns/esm/fp/getWeekYearWithOptions/index' {
+  import {getWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getYear/index' {
@@ -14166,6 +14657,26 @@ declare module 'date-fns/esm/fp/setSecondsWithOptions/index' {
   export default setSecondsWithOptions
 }
 
+declare module 'date-fns/esm/fp/setWeek/index' {
+  import {setWeek} from 'date-fns/esm/fp'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/fp/setWeekWithOptions/index' {
+  import {setWeekWithOptions} from 'date-fns/esm/fp'
+  export default setWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/setWeekYear/index' {
+  import {setWeekYear} from 'date-fns/esm/fp'
+  export default setWeekYear
+}
+
+declare module 'date-fns/esm/fp/setWeekYearWithOptions/index' {
+  import {setWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setWeekYearWithOptions
+}
+
 declare module 'date-fns/esm/fp/setYear/index' {
   import {setYear} from 'date-fns/esm/fp'
   export default setYear
@@ -14264,6 +14775,16 @@ declare module 'date-fns/esm/fp/startOfWeek/index' {
 declare module 'date-fns/esm/fp/startOfWeekWithOptions/index' {
   import {startOfWeekWithOptions} from 'date-fns/esm/fp'
   export default startOfWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYear/index' {
+  import {startOfWeekYear} from 'date-fns/esm/fp'
+  export default startOfWeekYear
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYearWithOptions/index' {
+  import {startOfWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfYear/index' {
@@ -15026,6 +15547,11 @@ declare module 'date-fns/esm/fp/getTimeWithOptions/index.js' {
   export default getTimeWithOptions
 }
 
+declare module 'date-fns/esm/fp/getWeek/index.js' {
+  import {getWeek} from 'date-fns/esm/fp'
+  export default getWeek
+}
+
 declare module 'date-fns/esm/fp/getWeekOfMonth/index.js' {
   import {getWeekOfMonth} from 'date-fns/esm/fp'
   export default getWeekOfMonth
@@ -15044,6 +15570,21 @@ declare module 'date-fns/esm/fp/getWeeksInMonth/index.js' {
 declare module 'date-fns/esm/fp/getWeeksInMonthWithOptions/index.js' {
   import {getWeeksInMonthWithOptions} from 'date-fns/esm/fp'
   export default getWeeksInMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekWithOptions/index.js' {
+  import {getWeekWithOptions} from 'date-fns/esm/fp'
+  export default getWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/getWeekYear/index.js' {
+  import {getWeekYear} from 'date-fns/esm/fp'
+  export default getWeekYear
+}
+
+declare module 'date-fns/esm/fp/getWeekYearWithOptions/index.js' {
+  import {getWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/getYear/index.js' {
@@ -15526,6 +16067,26 @@ declare module 'date-fns/esm/fp/setSecondsWithOptions/index.js' {
   export default setSecondsWithOptions
 }
 
+declare module 'date-fns/esm/fp/setWeek/index.js' {
+  import {setWeek} from 'date-fns/esm/fp'
+  export default setWeek
+}
+
+declare module 'date-fns/esm/fp/setWeekWithOptions/index.js' {
+  import {setWeekWithOptions} from 'date-fns/esm/fp'
+  export default setWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/setWeekYear/index.js' {
+  import {setWeekYear} from 'date-fns/esm/fp'
+  export default setWeekYear
+}
+
+declare module 'date-fns/esm/fp/setWeekYearWithOptions/index.js' {
+  import {setWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default setWeekYearWithOptions
+}
+
 declare module 'date-fns/esm/fp/setYear/index.js' {
   import {setYear} from 'date-fns/esm/fp'
   export default setYear
@@ -15624,6 +16185,16 @@ declare module 'date-fns/esm/fp/startOfWeek/index.js' {
 declare module 'date-fns/esm/fp/startOfWeekWithOptions/index.js' {
   import {startOfWeekWithOptions} from 'date-fns/esm/fp'
   export default startOfWeekWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYear/index.js' {
+  import {startOfWeekYear} from 'date-fns/esm/fp'
+  export default startOfWeekYear
+}
+
+declare module 'date-fns/esm/fp/startOfWeekYearWithOptions/index.js' {
+  import {startOfWeekYearWithOptions} from 'date-fns/esm/fp'
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfYear/index.js' {
@@ -15770,6 +16341,9 @@ declare module 'date-fns/locale' {
   const el: Locale
   namespace el {}
 
+  const enCA: Locale
+  namespace enCA {}
+
   const enGB: Locale
   namespace enGB {}
 
@@ -15827,6 +16401,9 @@ declare module 'date-fns/locale' {
   const pt: Locale
   namespace pt {}
 
+  const ptBR: Locale
+  namespace ptBR {}
+
   const ro: Locale
   namespace ro {}
 
@@ -15845,8 +16422,8 @@ declare module 'date-fns/locale' {
   const tr: Locale
   namespace tr {}
 
-  const ua: Locale
-  namespace ua {}
+  const uk: Locale
+  namespace uk {}
 
   const vi: Locale
   namespace vi {}
@@ -15891,6 +16468,11 @@ declare module 'date-fns/locale/de' {
 declare module 'date-fns/locale/el' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB' {
@@ -15988,6 +16570,11 @@ declare module 'date-fns/locale/pt' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16018,9 +16605,9 @@ declare module 'date-fns/locale/tr' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi' {
@@ -16071,6 +16658,11 @@ declare module 'date-fns/locale/de/index' {
 declare module 'date-fns/locale/el/index' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA/index' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB/index' {
@@ -16168,6 +16760,11 @@ declare module 'date-fns/locale/pt/index' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR/index' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro/index' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16198,9 +16795,9 @@ declare module 'date-fns/locale/tr/index' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua/index' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk/index' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi/index' {
@@ -16251,6 +16848,11 @@ declare module 'date-fns/locale/de/index.js' {
 declare module 'date-fns/locale/el/index.js' {
   import {el} from 'date-fns/locale'
   export = el
+}
+
+declare module 'date-fns/locale/en-CA/index.js' {
+  import {enCA} from 'date-fns/locale'
+  export = enCA
 }
 
 declare module 'date-fns/locale/en-GB/index.js' {
@@ -16348,6 +16950,11 @@ declare module 'date-fns/locale/pt/index.js' {
   export = pt
 }
 
+declare module 'date-fns/locale/pt-BR/index.js' {
+  import {ptBR} from 'date-fns/locale'
+  export = ptBR
+}
+
 declare module 'date-fns/locale/ro/index.js' {
   import {ro} from 'date-fns/locale'
   export = ro
@@ -16378,9 +16985,9 @@ declare module 'date-fns/locale/tr/index.js' {
   export = tr
 }
 
-declare module 'date-fns/locale/ua/index.js' {
-  import {ua} from 'date-fns/locale'
-  export = ua
+declare module 'date-fns/locale/uk/index.js' {
+  import {uk} from 'date-fns/locale'
+  export = uk
 }
 
 declare module 'date-fns/locale/vi/index.js' {
@@ -16421,6 +17028,9 @@ declare module 'date-fns/esm/locale' {
 
   const el: Locale
   namespace el {}
+
+  const enCA: Locale
+  namespace enCA {}
 
   const enGB: Locale
   namespace enGB {}
@@ -16479,6 +17089,9 @@ declare module 'date-fns/esm/locale' {
   const pt: Locale
   namespace pt {}
 
+  const ptBR: Locale
+  namespace ptBR {}
+
   const ro: Locale
   namespace ro {}
 
@@ -16497,8 +17110,8 @@ declare module 'date-fns/esm/locale' {
   const tr: Locale
   namespace tr {}
 
-  const ua: Locale
-  namespace ua {}
+  const uk: Locale
+  namespace uk {}
 
   const vi: Locale
   namespace vi {}
@@ -16543,6 +17156,11 @@ declare module 'date-fns/esm/locale/de' {
 declare module 'date-fns/esm/locale/el' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB' {
@@ -16640,6 +17258,11 @@ declare module 'date-fns/esm/locale/pt' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -16670,9 +17293,9 @@ declare module 'date-fns/esm/locale/tr' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi' {
@@ -16723,6 +17346,11 @@ declare module 'date-fns/esm/locale/de/index' {
 declare module 'date-fns/esm/locale/el/index' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA/index' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB/index' {
@@ -16820,6 +17448,11 @@ declare module 'date-fns/esm/locale/pt/index' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR/index' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro/index' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -16850,9 +17483,9 @@ declare module 'date-fns/esm/locale/tr/index' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua/index' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk/index' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi/index' {
@@ -16903,6 +17536,11 @@ declare module 'date-fns/esm/locale/de/index.js' {
 declare module 'date-fns/esm/locale/el/index.js' {
   import {el} from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-CA/index.js' {
+  import {enCA} from 'date-fns/esm/locale'
+  export default enCA
 }
 
 declare module 'date-fns/esm/locale/en-GB/index.js' {
@@ -17000,6 +17638,11 @@ declare module 'date-fns/esm/locale/pt/index.js' {
   export default pt
 }
 
+declare module 'date-fns/esm/locale/pt-BR/index.js' {
+  import {ptBR} from 'date-fns/esm/locale'
+  export default ptBR
+}
+
 declare module 'date-fns/esm/locale/ro/index.js' {
   import {ro} from 'date-fns/esm/locale'
   export default ro
@@ -17030,9 +17673,9 @@ declare module 'date-fns/esm/locale/tr/index.js' {
   export default tr
 }
 
-declare module 'date-fns/esm/locale/ua/index.js' {
-  import {ua} from 'date-fns/esm/locale'
-  export default ua
+declare module 'date-fns/esm/locale/uk/index.js' {
+  import {uk} from 'date-fns/esm/locale'
+  export default uk
 }
 
 declare module 'date-fns/esm/locale/vi/index.js' {
@@ -17410,12 +18053,22 @@ interface dateFns {
     options?: Options
   ): number
 
+  getWeek(
+    date: Date | string | number,
+    options?: Options
+  ): number
+
   getWeekOfMonth(
     date: Date | string | number,
     options?: Options
   ): number
 
   getWeeksInMonth(
+    date: Date | string | number,
+    options?: Options
+  ): number
+
+  getWeekYear(
     date: Date | string | number,
     options?: Options
   ): number
@@ -17688,6 +18341,18 @@ interface dateFns {
     options?: Options
   ): Date
 
+  setWeek(
+    date: Date | string | number,
+    week: number,
+    options?: Options
+  ): Date
+
+  setWeekYear(
+    date: Date | string | number,
+    weekYear: number,
+    options?: Options
+  ): Date
+
   setYear(
     date: Date | string | number,
     year: number,
@@ -17735,6 +18400,11 @@ interface dateFns {
   ): Date
 
   startOfWeek(
+    date: Date | string | number,
+    options?: Options
+  ): Date
+
+  startOfWeekYear(
     date: Date | string | number,
     options?: Options
   ): Date

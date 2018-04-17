@@ -13,6 +13,8 @@ const listLocales = require('../_lib/listLocales')
 const SystemJS = require('systemjs')
 const path = require('path')
 
+const outdatedLocales = require('../../outdatedLocales.json')
+
 const pluginPath = path.join(
   process.cwd(),
   './node_modules/systemjs-plugin-babel'
@@ -29,7 +31,7 @@ SystemJS.config({
 Promise.all(
   importFiles(listFns())
     .concat(importFiles(listFPFns()))
-    .concat(importFiles(listLocales()))
+    .concat(importFiles(listLocales().filter(({code}) => !outdatedLocales.includes(code))))
 ).then(
   () => {
     console.log('SystemJS support is OK')

@@ -1,20 +1,98 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
-  short: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'суб'],
-  long: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
+var eraValues = {
+  narrow: ['до н.э.', 'н.э.'],
+  abbreviated: ['до н. э.', 'н. э.'],
+  wide: ['до нашей эры', 'нашей эры']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
+  wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
 }
 
 var monthValues = {
-  // http://new.gramota.ru/spravka/buro/search-answer?s=242637
-  short: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
-  long: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+}
+var formattingMonthValues = {
+  narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
+  abbreviated: ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
+  wide: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
 }
 
-var timeOfDayValues = {
-  long: ['ночи', 'утра', 'дня', 'вечера']
+var dayValues = {
+  narrow: ['В', 'П', 'В', 'С', 'Ч', 'П', 'С'],
+  short: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+  abbreviated: ['вск', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'суб'],
+  wide: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ночь'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'веч.',
+    night: 'ночь'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полночь',
+    noon: 'полдень',
+    morning: 'утро',
+    afternoon: 'день',
+    evening: 'вечер',
+    night: 'ночь'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночи'
+  },
+  abbreviated: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полн.',
+    noon: 'полд.',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'веч.',
+    night: 'ночи'
+  },
+  wide: {
+    am: 'ДП',
+    pm: 'ПП',
+    midnight: 'полночь',
+    noon: 'полдень',
+    morning: 'утра',
+    afternoon: 'дня',
+    evening: 'вечера',
+    night: 'ночи'
+  }
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
@@ -22,9 +100,9 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   var unit = String(options.unit)
   var suffix
 
-  if (unit === 'dayOfMonth') {
+  if (unit === 'date') {
     suffix = '-е'
-  } else if (unit === 'isoWeek' || unit === 'week') {
+  } else if (unit === 'week' || unit === 'minute' || unit === 'second') {
     suffix = '-я'
   } else {
     suffix = '-й'
@@ -35,22 +113,38 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    if (hours >= 17) {
-      return 3
-    } else if (hours >= 12) {
-      return 2
-    } else if (hours >= 4) {
-      return 1
-    } else {
-      return 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
     }
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'any',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
+  })
 }
 
 export default localize

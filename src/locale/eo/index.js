@@ -10,6 +10,7 @@ import match from './_lib/match/index.js'
  * @summary Esperanto locale.
  * @language Esperanto
  * @iso-639-2 epo
+ * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
 var locale = {
   formatDistance: formatDistance,
