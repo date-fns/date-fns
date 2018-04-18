@@ -8,44 +8,41 @@ type Interval = {
 
 type Options = {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   additionalDigits?: 0 | 1 | 2,
   locale?: Locale,
   includeSeconds?: boolean,
   addSuffix?: boolean,
-  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round'
 }
 
 type Locale = {
   formatDistance: Function,
-  formatLong: Function,
   formatRelative: Function,
   localize: {
     ordinalNumber: Function,
-    weekday: Function,
-    weekdays: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    months: Function,
-    timeOfDay: Function,
-    timesOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
+  formatLong: Object,
+  date: Function,
+  time: Function,
+  dateTime: Function,
   match: {
-    ordinalNumbers: Function,
     ordinalNumber: Function,
-    weekdays: Function,
-    weekday: Function,
-    months: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    timesOfDay: Function,
-    timeOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
-  formatters?: Object,
-  formattingTokensRegExp?: RegExp,
-  units?: Object,
-  parsers?: Object,
-  parsingTokensRegExp?: RegExp,
   options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   }
 }
 
@@ -62,7 +59,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  addISOYears: (
+  addISOWeekYears: (
     date: Date | string | number,
     amount: number,
     options?: Options
@@ -152,7 +149,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  differenceInCalendarISOYears: (
+  differenceInCalendarISOWeekYears: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -194,7 +191,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  differenceInISOYears: (
+  differenceInISOWeekYears: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -262,7 +259,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  endOfISOYear: (
+  endOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -366,7 +363,7 @@ declare module.exports: {
     options?: Options
   ) => number,
 
-  getISOYear: (
+  getISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => number,
@@ -403,6 +400,26 @@ declare module.exports: {
   ) => number,
 
   getTime: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getWeek: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getWeekOfMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getWeeksInMonth: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => number,
@@ -473,7 +490,7 @@ declare module.exports: {
     options?: Options
   ) => boolean,
 
-  isSameISOYear: (
+  isSameISOWeekYear: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
     options?: Options
@@ -561,7 +578,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  lastDayOfISOYear: (
+  lastDayOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -639,9 +656,9 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  setISOYear: (
+  setISOWeekYear: (
     date: Date | string | number,
-    isoYear: number,
+    isoWeekYear: number,
     options?: Options
   ) => Date,
 
@@ -675,6 +692,18 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  setWeek: (
+    date: Date | string | number,
+    week: number,
+    options?: Options
+  ) => Date,
+
+  setWeekYear: (
+    date: Date | string | number,
+    weekYear: number,
+    options?: Options
+  ) => Date,
+
   setYear: (
     date: Date | string | number,
     year: number,
@@ -696,7 +725,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  startOfISOYear: (
+  startOfISOWeekYear: (
     date: Date | string | number,
     options?: Options
   ) => Date,
@@ -726,6 +755,11 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  startOfWeekYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
   startOfYear: (
     date: Date | string | number,
     options?: Options
@@ -743,7 +777,7 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
-  subISOYears: (
+  subISOWeekYears: (
     date: Date | string | number,
     amount: number,
     options?: Options

@@ -8,44 +8,41 @@ type Interval = {
 
 type Options = {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
   additionalDigits?: 0 | 1 | 2,
   locale?: Locale,
   includeSeconds?: boolean,
   addSuffix?: boolean,
-  unit?: 's' | 'm' | 'h' | 'd' | 'M' | 'Y',
+  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round'
 }
 
 type Locale = {
   formatDistance: Function,
-  formatLong: Function,
   formatRelative: Function,
   localize: {
     ordinalNumber: Function,
-    weekday: Function,
-    weekdays: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    months: Function,
-    timeOfDay: Function,
-    timesOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
+  formatLong: Object,
+  date: Function,
+  time: Function,
+  dateTime: Function,
   match: {
-    ordinalNumbers: Function,
     ordinalNumber: Function,
-    weekdays: Function,
-    weekday: Function,
-    months: Function,
+    era: Function,
+    quarter: Function,
     month: Function,
-    timesOfDay: Function,
-    timeOfDay: Function
+    day: Function,
+    dayPeriod: Function
   },
-  formatters?: Object,
-  formattingTokensRegExp?: RegExp,
-  units?: Object,
-  parsers?: Object,
-  parsingTokensRegExp?: RegExp,
   options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   }
 }
 
@@ -53,14 +50,5 @@ type CurriedFn1<A, R> = <A>(a: A) => R
 
 type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
   | <A, B>(a: A, b: B) => R
-
-type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
-  | <A,B>(a: A, b: B) => CurriedFn1<C, R>
-  | <A,B,C>(a: A, b: B, c: C) => R
-
-type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
-  | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
-  | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
-  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
 
 declare module.exports: CurriedFn2<Date | string | number, Date | string | number, number>
