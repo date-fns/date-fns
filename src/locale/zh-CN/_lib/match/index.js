@@ -25,7 +25,7 @@ var parseMonthPatterns = {
 }
 
 var matchTimesOfDayPatterns = {
-  short: /^(上午|下午)/i,
+  short: /^(上午|下午)/i
 }
 
 var parseTimeOfDayPatterns = {

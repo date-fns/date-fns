@@ -12,6 +12,7 @@
  * @iso-639-2 zho
  * @author Changyu Geng [@KingMario]{@link https://github.com/KingMario}
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
+ * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
  */
 // var locale = {
 //   formatDistance: formatDistance,

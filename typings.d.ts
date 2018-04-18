@@ -16320,8 +16320,12 @@ declare module 'date-fns/esm/fp/toDateWithOptions/index.js' {
 // Regular Locales
 
 declare module 'date-fns/locale' {
+  const af: Locale
+  namespace af {}
+
   const ar: Locale
   namespace ar {}
+
   const arDZ: Locale
   namespace arDZ {}
 
@@ -16358,6 +16362,9 @@ declare module 'date-fns/locale' {
   const es: Locale
   namespace es {}
 
+  const et: Locale
+  namespace et {}
+
   const fi: Locale
   namespace fi {}
 
@@ -16369,6 +16376,9 @@ declare module 'date-fns/locale' {
 
   const frCH: Locale
   namespace frCH {}
+
+  const he: Locale
+  namespace he {}
 
   const hr: Locale
   namespace hr {}
@@ -16385,11 +16395,17 @@ declare module 'date-fns/locale' {
   const ja: Locale
   namespace ja {}
 
+  const ka: Locale
+  namespace ka {}
+
   const ko: Locale
   namespace ko {}
 
   const mk: Locale
   namespace mk {}
+
+  const ms: Locale
+  namespace ms {}
 
   const nb: Locale
   namespace nb {}
@@ -16418,6 +16434,9 @@ declare module 'date-fns/locale' {
   const sk: Locale
   namespace sk {}
 
+  const sr: Locale
+  namespace sr {}
+
   const sv: Locale
   namespace sv {}
 
@@ -16438,6 +16457,11 @@ declare module 'date-fns/locale' {
 
   const zhTW: Locale
   namespace zhTW {}
+}
+
+declare module 'date-fns/locale/af' {
+  import {af} from 'date-fns/locale'
+  export = af
 }
 
 declare module 'date-fns/locale/ar' {
@@ -16505,6 +16529,11 @@ declare module 'date-fns/locale/es' {
   export = es
 }
 
+declare module 'date-fns/locale/et' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16523,6 +16552,11 @@ declare module 'date-fns/locale/fr' {
 declare module 'date-fns/locale/fr-CH' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr' {
@@ -16550,6 +16584,11 @@ declare module 'date-fns/locale/ja' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16558,6 +16597,11 @@ declare module 'date-fns/locale/ko' {
 declare module 'date-fns/locale/mk' {
   import {mk} from 'date-fns/locale'
   export = mk
+}
+
+declare module 'date-fns/locale/ms' {
+  import {ms} from 'date-fns/locale'
+  export = ms
 }
 
 declare module 'date-fns/locale/nb' {
@@ -16605,6 +16649,11 @@ declare module 'date-fns/locale/sk' {
   export = sk
 }
 
+declare module 'date-fns/locale/sr' {
+  import {sr} from 'date-fns/locale'
+  export = sr
+}
+
 declare module 'date-fns/locale/sv' {
   import {sv} from 'date-fns/locale'
   export = sv
@@ -16638,6 +16687,11 @@ declare module 'date-fns/locale/zh-CN' {
 declare module 'date-fns/locale/zh-TW' {
   import {zhTW} from 'date-fns/locale'
   export = zhTW
+}
+
+declare module 'date-fns/locale/af/index' {
+  import {af} from 'date-fns/locale'
+  export = af
 }
 
 declare module 'date-fns/locale/ar/index' {
@@ -16705,6 +16759,11 @@ declare module 'date-fns/locale/es/index' {
   export = es
 }
 
+declare module 'date-fns/locale/et/index' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi/index' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16723,6 +16782,11 @@ declare module 'date-fns/locale/fr/index' {
 declare module 'date-fns/locale/fr-CH/index' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he/index' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr/index' {
@@ -16750,6 +16814,11 @@ declare module 'date-fns/locale/ja/index' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka/index' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko/index' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16758,6 +16827,11 @@ declare module 'date-fns/locale/ko/index' {
 declare module 'date-fns/locale/mk/index' {
   import {mk} from 'date-fns/locale'
   export = mk
+}
+
+declare module 'date-fns/locale/ms/index' {
+  import {ms} from 'date-fns/locale'
+  export = ms
 }
 
 declare module 'date-fns/locale/nb/index' {
@@ -16805,6 +16879,11 @@ declare module 'date-fns/locale/sk/index' {
   export = sk
 }
 
+declare module 'date-fns/locale/sr/index' {
+  import {sr} from 'date-fns/locale'
+  export = sr
+}
+
 declare module 'date-fns/locale/sv/index' {
   import {sv} from 'date-fns/locale'
   export = sv
@@ -16840,6 +16919,11 @@ declare module 'date-fns/locale/zh-TW/index' {
   export = zhTW
 }
 
+declare module 'date-fns/locale/af/index.js' {
+  import {af} from 'date-fns/locale'
+  export = af
+}
+
 declare module 'date-fns/locale/ar/index.js' {
   import {ar} from 'date-fns/locale'
   export = ar
@@ -16849,6 +16933,7 @@ declare module 'date-fns/locale/ar-DZ/index.js' {
   import {arDZ} from 'date-fns/locale'
   export = arDZ
 }
+
 declare module 'date-fns/locale/bg/index.js' {
   import {bg} from 'date-fns/locale'
   export = bg
@@ -16904,6 +16989,11 @@ declare module 'date-fns/locale/es/index.js' {
   export = es
 }
 
+declare module 'date-fns/locale/et/index.js' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi/index.js' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16922,6 +17012,11 @@ declare module 'date-fns/locale/fr/index.js' {
 declare module 'date-fns/locale/fr-CH/index.js' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he/index.js' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr/index.js' {
@@ -16949,6 +17044,11 @@ declare module 'date-fns/locale/ja/index.js' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka/index.js' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko/index.js' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16957,6 +17057,11 @@ declare module 'date-fns/locale/ko/index.js' {
 declare module 'date-fns/locale/mk/index.js' {
   import {mk} from 'date-fns/locale'
   export = mk
+}
+
+declare module 'date-fns/locale/ms/index.js' {
+  import {ms} from 'date-fns/locale'
+  export = ms
 }
 
 declare module 'date-fns/locale/nb/index.js' {
@@ -17004,6 +17109,11 @@ declare module 'date-fns/locale/sk/index.js' {
   export = sk
 }
 
+declare module 'date-fns/locale/sr/index.js' {
+  import {sr} from 'date-fns/locale'
+  export = sr
+}
+
 declare module 'date-fns/locale/sv/index.js' {
   import {sv} from 'date-fns/locale'
   export = sv
@@ -17042,8 +17152,12 @@ declare module 'date-fns/locale/zh-TW/index.js' {
 // ECMAScript Module Locales
 
 declare module 'date-fns/esm/locale' {
+  const af: Locale
+  namespace af {}
+
   const ar: Locale
   namespace ar {}
+
   const arDZ: Locale
   namespace arDZ {}
 
@@ -17080,6 +17194,9 @@ declare module 'date-fns/esm/locale' {
   const es: Locale
   namespace es {}
 
+  const et: Locale
+  namespace et {}
+
   const fi: Locale
   namespace fi {}
 
@@ -17091,6 +17208,9 @@ declare module 'date-fns/esm/locale' {
 
   const frCH: Locale
   namespace frCH {}
+
+  const he: Locale
+  namespace he {}
 
   const hr: Locale
   namespace hr {}
@@ -17107,11 +17227,17 @@ declare module 'date-fns/esm/locale' {
   const ja: Locale
   namespace ja {}
 
+  const ka: Locale
+  namespace ka {}
+
   const ko: Locale
   namespace ko {}
 
   const mk: Locale
   namespace mk {}
+
+  const ms: Locale
+  namespace ms {}
 
   const nb: Locale
   namespace nb {}
@@ -17140,6 +17266,9 @@ declare module 'date-fns/esm/locale' {
   const sk: Locale
   namespace sk {}
 
+  const sr: Locale
+  namespace sr {}
+
   const sv: Locale
   namespace sv {}
 
@@ -17160,6 +17289,11 @@ declare module 'date-fns/esm/locale' {
 
   const zhTW: Locale
   namespace zhTW {}
+}
+
+declare module 'date-fns/esm/locale/af' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
 }
 
 declare module 'date-fns/esm/locale/ar' {
@@ -17227,6 +17361,11 @@ declare module 'date-fns/esm/locale/es' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17245,6 +17384,11 @@ declare module 'date-fns/esm/locale/fr' {
 declare module 'date-fns/esm/locale/fr-CH' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr' {
@@ -17272,6 +17416,11 @@ declare module 'date-fns/esm/locale/ja' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17280,6 +17429,11 @@ declare module 'date-fns/esm/locale/ko' {
 declare module 'date-fns/esm/locale/mk' {
   import {mk} from 'date-fns/esm/locale'
   export default mk
+}
+
+declare module 'date-fns/esm/locale/ms' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
 }
 
 declare module 'date-fns/esm/locale/nb' {
@@ -17327,6 +17481,11 @@ declare module 'date-fns/esm/locale/sk' {
   export default sk
 }
 
+declare module 'date-fns/esm/locale/sr' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
+}
+
 declare module 'date-fns/esm/locale/sv' {
   import {sv} from 'date-fns/esm/locale'
   export default sv
@@ -17362,6 +17521,11 @@ declare module 'date-fns/esm/locale/zh-TW' {
   export default zhTW
 }
 
+declare module 'date-fns/esm/locale/af/index' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
+}
+
 declare module 'date-fns/esm/locale/ar/index' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
@@ -17371,6 +17535,7 @@ declare module 'date-fns/esm/locale/ar-DZ/index' {
   import {arDZ} from 'date-fns/esm/locale'
   export default arDZ
 }
+
 declare module 'date-fns/esm/locale/bg/index' {
   import {bg} from 'date-fns/esm/locale'
   export default bg
@@ -17426,6 +17591,11 @@ declare module 'date-fns/esm/locale/es/index' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et/index' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi/index' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17444,6 +17614,11 @@ declare module 'date-fns/esm/locale/fr/index' {
 declare module 'date-fns/esm/locale/fr-CH/index' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he/index' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr/index' {
@@ -17471,6 +17646,11 @@ declare module 'date-fns/esm/locale/ja/index' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka/index' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko/index' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17479,6 +17659,11 @@ declare module 'date-fns/esm/locale/ko/index' {
 declare module 'date-fns/esm/locale/mk/index' {
   import {mk} from 'date-fns/esm/locale'
   export default mk
+}
+
+declare module 'date-fns/esm/locale/ms/index' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
 }
 
 declare module 'date-fns/esm/locale/nb/index' {
@@ -17526,6 +17711,11 @@ declare module 'date-fns/esm/locale/sk/index' {
   export default sk
 }
 
+declare module 'date-fns/esm/locale/sr/index' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
+}
+
 declare module 'date-fns/esm/locale/sv/index' {
   import {sv} from 'date-fns/esm/locale'
   export default sv
@@ -17561,11 +17751,17 @@ declare module 'date-fns/esm/locale/zh-TW/index' {
   export default zhTW
 }
 
+declare module 'date-fns/esm/locale/af/index.js' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
+}
+
 declare module 'date-fns/esm/locale/ar/index.js' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
 }
-declare module 'date-fns/esm/locale/en-DZ/index.js' {
+
+declare module 'date-fns/esm/locale/ar-DZ/index.js' {
   import {arDZ} from 'date-fns/esm/locale'
   export default arDZ
 }
@@ -17625,6 +17821,11 @@ declare module 'date-fns/esm/locale/es/index.js' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et/index.js' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi/index.js' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17643,6 +17844,11 @@ declare module 'date-fns/esm/locale/fr/index.js' {
 declare module 'date-fns/esm/locale/fr-CH/index.js' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he/index.js' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr/index.js' {
@@ -17670,6 +17876,11 @@ declare module 'date-fns/esm/locale/ja/index.js' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka/index.js' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko/index.js' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17678,6 +17889,11 @@ declare module 'date-fns/esm/locale/ko/index.js' {
 declare module 'date-fns/esm/locale/mk/index.js' {
   import {mk} from 'date-fns/esm/locale'
   export default mk
+}
+
+declare module 'date-fns/esm/locale/ms/index.js' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
 }
 
 declare module 'date-fns/esm/locale/nb/index.js' {
@@ -17723,6 +17939,11 @@ declare module 'date-fns/esm/locale/ru/index.js' {
 declare module 'date-fns/esm/locale/sk/index.js' {
   import {sk} from 'date-fns/esm/locale'
   export default sk
+}
+
+declare module 'date-fns/esm/locale/sr/index.js' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
 }
 
 declare module 'date-fns/esm/locale/sv/index.js' {
