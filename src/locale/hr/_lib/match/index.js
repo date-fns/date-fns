@@ -6,31 +6,30 @@ import parseDecimal from '../../../_lib/parseDecimal/index.js'
 var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
 
 var matchWeekdaysPatterns = {
-  narrow: /^(su|mo|tu|we|th|fr|sa)/i,
-  short: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  long: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  narrow: /^(ne|po|ut|sr|če|pe|su)/i,
+  short: /^(ned|pon|uto|sri|čet|pet|sub)/i,
+  long: /^(nedjelja|ponedjeljak|utorak|srijeda|četvrtak|petak|subota)/i
 }
 
 var parseWeekdayPatterns = {
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  any: [/^ne/i, /^po/i, /^ut/i, /^sr/i, /^če/i, /^pe/i, /^su/i]
 }
 
 var matchMonthsPatterns = {
-  short: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  long: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  short: /^(sij|velj|ožu|tra|svi|lip|srp|kol|ruj|lis|stu|pro)/i,
+  long: /^(siječanj|veljača|ožujak|travanj|svibanj|lipanj|srpanj|kolovoz|rujan|listopad|studeni|prosinac)/i
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  any: [/^si/i, /^v/i, /^ožu/i, /^tr/i, /^svi/i, /^lip/i, /^srp/i, /^ko/i, /^r/i, /^l/i, /^s/i, /^p/i]
 }
 
 var matchTimesOfDayPatterns = {
-  short: /^(am|pm)/i,
-  long: /^([ap]\.?\s?m\.?)/i
+  long: /^(ujutro|popodne)/i
 }
 
 var parseTimeOfDayPatterns = {
-  any: [/^a/i, /^p/i]
+  any: [/^u/i, /^p/i]
 }
 
 var match = {

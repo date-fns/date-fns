@@ -91,7 +91,7 @@ const formatResult = format(
   // A subject to apply the action to (i.e. format _this date_)
   new Date(),
   // Additional info for this action (i.e. specific pattern to format the date)
-  'YYYY-MM-DD[T]HH:mm:ssZ',
+  "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
   // All optional arguments in a single object
   {locale: es}
 )
@@ -122,7 +122,7 @@ import {formatWithOptions} from 'date-fns/esm/fp'
 import {es} from 'date-fns/esm/locale'
 
 //           <- more project specific args      more situation specific args ->
-formatWithOptions({locale: es})('YYYY-MM-DD[T]HH:mm:ssZ')(new Date())
+formatWithOptions({locale: es})("yyyy-MM-dd'T'HH:mm:ss.SSSxxx")(new Date())
 ```
 
 That way, you can pass arguments once and reuse it many times:
@@ -130,8 +130,8 @@ That way, you can pass arguments once and reuse it many times:
 ```js
 const format = formatWithOptions({locale: es})
 // ...
-const formatISO = format('YYYY-MM-DD[T]HH:mm:ssZ')
-const formatISOShort = format('YYY-MM-DD')
+const formatISO = format("yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+const formatISOShort = format('yyyy-MM-dd')
 // ...
 [new Date(), new Date(2018, 0, 1)].map(formatISO)
 ```
