@@ -32,6 +32,7 @@ type Locale = {
 
 declare module.exports: {
   ar: Locale,
+  arDZ: Locale,
   bg: Locale,
   ca: Locale,
   cs: Locale,
