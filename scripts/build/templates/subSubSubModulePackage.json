@@ -1,4 +1,4 @@
 {
   "typings": "../../../typings.d.ts",
-  "side-effects": false
+  "sideEffects": false
 }
