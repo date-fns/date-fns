@@ -110,6 +110,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `startOfWeekYear`
 
 ### Changed
+- **Fixed**: fixed when parsing ISO style dates (but not valid ISO format) with a trailing Z (e.g 2012-01Z), it returns Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table):
