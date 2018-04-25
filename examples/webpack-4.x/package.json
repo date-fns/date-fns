@@ -8,7 +8,8 @@
   "dependencies": {
     "gzip-size-cli": "^2.1.0",
     "uglify-es": "^3.1.1",
-    "webpack": "webpack/webpack#next"
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
   },
   "scripts": {
     "build": "yarn build-date-fns && yarn build-webpack && yarn build-uglify",
