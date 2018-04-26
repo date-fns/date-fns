@@ -17,7 +17,7 @@ var parseWeekdayPatterns = {
 
 var matchMonthsPatterns = {
   short: /^(jan|feb|mar|apr|mei|jun|jul|ags|sep|okt|nov|dec)/i,
-  long: /^(januari|februari|maret|april|mei|juni|july|agustus|september|oktober|november|desember)/i
+  long: /^(januari|februari|maret|april|mei|juni|juli|agustus|september|oktober|november|desember)/i
 }
 
 var parseMonthPatterns = {
