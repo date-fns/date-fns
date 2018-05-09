@@ -69,6 +69,20 @@ describe('differenceInMonths', function () {
       )
       assert(result === 0)
     })
+
+    it('does not return -0 when the given dates are the same', () => {
+      function isNegativeZero (x) {
+        return x === 0 && (1 / x < 0)
+      }
+
+      var result = differenceInMonths(
+        new Date(2014, 8 /* Sep */, 5, 0, 0),
+        new Date(2014, 8 /* Sep */, 5, 0, 0)
+      )
+
+      var resultIsNegative = isNegativeZero(result)
+      assert(resultIsNegative === false)
+    })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function () {
