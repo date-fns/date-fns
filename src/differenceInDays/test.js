@@ -70,10 +70,9 @@ describe('differenceInDays', function () {
       assert(result === 0)
     })
 
-    it('does not return -0 when given dates are the same', () => {
-      // thank you Chris West! @ChrisWestBlog, http://cwestblog.com/2014/02/25/javascript-testing-for-negative-zero/
-      function isNegative (n) {
-        return ((n = +n) || 1 / n) < 0
+    it('does not return -0 when the given dates are the same', () => {
+      function isNegativeZero (x) {
+        return x === 0 && (1 / x < 0)
       }
 
       var result = differenceInDays(
@@ -81,7 +80,7 @@ describe('differenceInDays', function () {
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegative(result)
+      var resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })

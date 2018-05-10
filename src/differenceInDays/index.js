@@ -45,13 +45,12 @@ export default function differenceInDays (dirtyDateLeft, dirtyDateRight, dirtyOp
   var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
   var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, dirtyOptions))
 
-  // exit early if the days are the same
-  if (difference === 0) return 0
-
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastDayNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
-  return sign * (difference - isLastDayNotFull)
+  var result = sign * (difference - isLastDayNotFull)
+  // Prevent negative zero
+  return result === 0 ? 0 : result
 }

@@ -41,5 +41,7 @@ export default function differenceInMonths (dirtyDateLeft, dirtyDateRight, dirty
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastMonthNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
-  return sign * (difference - isLastMonthNotFull)
+  var result = sign * (difference - isLastMonthNotFull)
+  // Prevent negative zero
+  return result === 0 ? 0 : result
 }
