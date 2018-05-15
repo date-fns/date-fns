@@ -110,7 +110,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `startOfWeekYear`
 
 ### Changed
-- **Fixed**: fixed when parsing ISO style dates (but not valid ISO format) with a trailing Z (e.g 2012-01Z), it returns Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table):
@@ -578,6 +577,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `toDate` (previously `parse`) and `isValid` functions now accept `any` type
   as the first argument.
+
+### Fixed
+
+- Fix the `toDate` bug occuring when parsing ISO-8601 style dates (but not valid ISO format)
+  with a trailing Z (e.g `2012-01Z`), it returned Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
+
+- Fix `differenceIn...` functions returning negative zero in some cases:
+  [#692](https://github.com/date-fns/date-fns/issues/692)
 
 ## [1.28.5] - 2017-05-19
 
