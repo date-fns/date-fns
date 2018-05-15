@@ -228,9 +228,10 @@ describe('toDate', function () {
     })
 
     describe('failure', function () {
-      it('fallbacks to `new Date` if the string is not an ISO formatted date', function () {
+      it('returns `Invalid Date` if the string is not an ISO formatted date', function () {
         var result = toDate(new Date(2014, 8 /* Sep */, 1, 11).toString())
-        assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11))
+        assert(result instanceof Date)
+        assert(isNaN(result))
       })
     })
   })
@@ -259,18 +260,54 @@ describe('toDate', function () {
       assert(result instanceof Date)
       assert(isNaN(result))
     })
+
+    it('returns Invalid Date if argument is undefined', function () {
+      var result = toDate(undefined)
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
+    it('returns Invalid Date if argument is false', function () {
+      var result = toDate(false)
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
+    it('returns Invalid Date if argument is true', function () {
+      var result = toDate(true)
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
   })
 
-  it('implicitly converts options', function () {
-    // $ExpectedMistake
-    var result = toDate('+12340702', {additionalDigits: '0'})
-    assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
-  })
+  describe('argument conversion', function () {
+    it('implicitly converts instance of Number into a number', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var timestamp = new Number(new Date(2016, 0, 1, 23, 30, 45, 123).getTime())
+      // $ExpectedMistake
+      var result = toDate(timestamp)
+      assert.deepEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
+    })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
-    // $ExpectedMistake
-    var block = toDate.bind(null, '+12340702', {additionalDigits: 3})
-    assert.throws(block, RangeError)
+    it('implicitly converts instance of String into a string', function () {
+      // eslint-disable-next-line no-new-wrappers
+      var dateString = new String('2014-02-11')
+      // $ExpectedMistake
+      var result = toDate(dateString)
+      assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
+    })
+
+    it('implicitly converts options', function () {
+      // $ExpectedMistake
+      var result = toDate('+12340702', {additionalDigits: '0'})
+      assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
+    })
+
+    it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
+      // $ExpectedMistake
+      var block = toDate.bind(null, '+12340702', {additionalDigits: 3})
+      assert.throws(block, RangeError)
+    })
   })
 
   it('throws TypeError exception if passed less than 1 argument', function () {
