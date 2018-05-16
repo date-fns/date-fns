@@ -8,7 +8,7 @@ describe('fr locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 1) === 'moins d’une seconde')
+        assert(formatDistance('lessThanXSeconds', 1) === 'moins d\'une seconde')
       })
     })
 
@@ -46,7 +46,7 @@ describe('fr locale > formatDistance', function () {
   describe('lessThanXMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 1) === 'moins d’une minute')
+        assert(formatDistance('lessThanXMinutes', 1) === 'moins d\'une minute')
       })
     })
 
@@ -172,7 +172,7 @@ describe('fr locale > formatDistance', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 1) === 'plus d’un an')
+        assert(formatDistance('overXYears', 1) === 'plus d\'un an')
       })
     })
 
@@ -186,7 +186,7 @@ describe('fr locale > formatDistance', function () {
   describe('almostXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 1) === 'presqu’un an')
+        assert(formatDistance('almostXYears', 1) === 'presqu\'un an')
       })
     })
 
@@ -203,7 +203,7 @@ describe('fr locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'il y a environ 1 an')
+      assert(result === 'il y a presqu\'un an')
     })
   })
 
