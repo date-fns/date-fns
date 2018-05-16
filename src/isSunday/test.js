@@ -16,7 +16,7 @@ describe('isSunday', function () {
   })
 
   it('accepts a string', function () {
-    var result = isSunday(new Date(2014, 6 /* Jul */, 6).toString())
+    var result = isSunday(new Date(2014, 6 /* Jul */, 6).toISOString())
     assert(result === true)
   })
 

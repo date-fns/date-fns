@@ -826,7 +826,7 @@ declare module.exports: {
   ) => Date,
 
   toDate: (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ) => Date
 }

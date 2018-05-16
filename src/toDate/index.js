@@ -54,15 +54,14 @@ var patterns = {
  * If an argument is a string, the function tries to parse it.
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
+ * If the function cannot parse the string, it returns Invalid Date.
  *
- * If the argument is null, it is treated as an invalid date.
- *
- * If all above fails, the function passes the given argument to Date constructor.
+ * If the argument is none of the above, the function returns Invalid Date.
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  * All *date-fns* functions will throw `RangeError` if `options.additionalDigits` is not 0, 1, 2 or undefined.
  *
- * @param {*} argument - the value to convert
+ * @param {Date|String|Number} argument - the value to convert
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
  * @returns {Date} the parsed date in the local time zone
@@ -100,8 +99,10 @@ export default function toDate (argument, dirtyOptions) {
   if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
-  } else if (typeof argument !== 'string') {
+  } else if (typeof argument === 'number' || argument instanceof Number) {
     return new Date(argument)
+  } else if (!(typeof argument === 'string' || argument instanceof String)) {
+    return new Date(NaN)
   }
 
   var dateStrings = splitDateString(argument)
@@ -131,7 +132,7 @@ export default function toDate (argument, dirtyOptions) {
 
     return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
   } else {
-    return new Date(argument)
+    return new Date(NaN)
   }
 }
 

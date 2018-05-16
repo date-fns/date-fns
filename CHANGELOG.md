@@ -497,6 +497,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   parse('2016-01-01', 'yyyy-MM-dd', new Date())
   ```
 
+- **BREAKING**: `toDate` now doesn't fall back to `new Date` constructor
+  if it fails to parse a string argument. Instead, it returns `Invalid Date`.
+
 - **BREAKING**: new locale format.
   See [docs/Locale](https://date-fns.org/docs/Locale).
   Locales renamed:

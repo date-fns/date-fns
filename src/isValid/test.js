@@ -16,7 +16,7 @@ describe('isValid', function () {
   })
 
   it('accepts a string', function () {
-    assert(isValid(new Date(2014, 6 /* Jul */, 8).toString()) === true)
+    assert(isValid(new Date(2014, 6 /* Jul */, 8).toISOString()) === true)
     assert(isValid('') === false)
   })
 

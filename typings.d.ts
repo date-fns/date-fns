@@ -993,7 +993,7 @@ declare module 'date-fns' {
   namespace subYears {}
 
   function toDate (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
   namespace toDate {}
@@ -3957,10 +3957,10 @@ declare module 'date-fns/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<any, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, any, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -9116,7 +9116,7 @@ declare module 'date-fns/esm' {
   namespace subYears {}
 
   function toDate (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
   namespace toDate {}
@@ -12080,10 +12080,10 @@ declare module 'date-fns/esm/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<any, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, any, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -18763,7 +18763,7 @@ interface dateFns {
   ): Date
 
   toDate(
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
 }
