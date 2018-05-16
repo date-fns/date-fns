@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 fra
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- * @author Emmanuel Méchin [@fbonzon]{@link https://github.com/MEmmanuel}
+ * @author Emmanuel Méchin [@memmanuel]{@link https://github.com/MEmmanuel}
  */
 var locale = {
   formatDistance: formatDistance,
