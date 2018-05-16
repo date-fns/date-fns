@@ -256,24 +256,28 @@ describe('toDate', function () {
     })
 
     it('returns Invalid Date if argument is null', function () {
+      // $ExpectedMistake
       var result = toDate(null)
       assert(result instanceof Date)
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is undefined', function () {
+      // $ExpectedMistake
       var result = toDate(undefined)
       assert(result instanceof Date)
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is false', function () {
+      // $ExpectedMistake
       var result = toDate(false)
       assert(result instanceof Date)
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is true', function () {
+      // $ExpectedMistake
       var result = toDate(true)
       assert(result instanceof Date)
       assert(isNaN(result))
