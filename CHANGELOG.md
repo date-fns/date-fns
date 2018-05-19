@@ -565,8 +565,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
 
-- **BREAKING**: removed `isDate`. Instead, you can use `x instanceof Date`.
-
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
@@ -588,6 +586,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - Fix `differenceIn...` functions returning negative zero in some cases:
   [#692](https://github.com/date-fns/date-fns/issues/692)
+
+- `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
 
 ## [1.28.5] - 2017-05-19
 
