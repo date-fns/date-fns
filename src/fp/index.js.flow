@@ -203,6 +203,8 @@ declare module.exports: {
   isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
   isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>,
   isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
+  isDate: CurriedFn1<any, boolean>,
+  isDateWithOptions: CurriedFn2<Options, any, boolean>,
   isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>,
   isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
   isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>,

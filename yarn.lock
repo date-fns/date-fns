@@ -1679,10 +1679,6 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
-es5-shim@^4.0.5:
-  version "4.5.9"
-  resolved "https://registry.yarnpkg.com/es5-shim/-/es5-shim-4.5.9.tgz#2a1e2b9e583ff5fed0c20a3ee2cbf3f75230a5c0"
-
 es6-promise@~4.0.3:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
@@ -2960,12 +2956,6 @@ karma-cli@^1.0.1:
   resolved "https://registry.yarnpkg.com/karma-cli/-/karma-cli-1.0.1.tgz#ae6c3c58a313a1d00b45164c455b9b86ce17f960"
   dependencies:
     resolve "^1.1.6"
-
-karma-es5-shim@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/karma-es5-shim/-/karma-es5-shim-0.0.4.tgz#cdd00333cce77c2e4ce03e3ac93f2f8ecd1fb952"
-  dependencies:
-    es5-shim "^4.0.5"
 
 karma-mocha-reporter@^2.2.1:
   version "2.2.2"

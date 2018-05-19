@@ -128,7 +128,6 @@ function config (config) {
     },
 
     plugins: [
-      'karma-es5-shim',
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
@@ -153,7 +152,7 @@ function getFrameworksConfig () {
   if (process.env.TEST_BENCHMARK) {
     return ['benchmark']
   } else {
-    return ['mocha', 'sinon', 'es5-shim']
+    return ['mocha', 'sinon']
   }
 }
 
