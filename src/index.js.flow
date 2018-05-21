@@ -441,6 +441,11 @@ declare module.exports: {
     options?: Options
   ) => boolean,
 
+  isDate: (
+    value: any,
+    options?: Options
+  ) => boolean,
+
   isEqual: (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,

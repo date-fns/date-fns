@@ -72,6 +72,7 @@ module.exports = {
   getYear: require('./getYear/index.js'),
   isAfter: require('./isAfter/index.js'),
   isBefore: require('./isBefore/index.js'),
+  isDate: require('./isDate/index.js'),
   isEqual: require('./isEqual/index.js'),
   isFirstDayOfMonth: require('./isFirstDayOfMonth/index.js'),
   isFriday: require('./isFriday/index.js'),

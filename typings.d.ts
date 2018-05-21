@@ -539,6 +539,12 @@ declare module 'date-fns' {
   ): boolean
   namespace isBefore {}
 
+  function isDate (
+    value: any,
+    options?: Options
+  ): boolean
+  namespace isDate {}
+
   function isEqual (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
@@ -1354,6 +1360,11 @@ declare module 'date-fns/isBefore' {
   export = isBefore
 }
 
+declare module 'date-fns/isDate' {
+  import {isDate} from 'date-fns'
+  export = isDate
+}
+
 declare module 'date-fns/isEqual' {
   import {isEqual} from 'date-fns'
   export = isEqual
@@ -2059,6 +2070,11 @@ declare module 'date-fns/isBefore/index' {
   export = isBefore
 }
 
+declare module 'date-fns/isDate/index' {
+  import {isDate} from 'date-fns'
+  export = isDate
+}
+
 declare module 'date-fns/isEqual/index' {
   import {isEqual} from 'date-fns'
   export = isEqual
@@ -2762,6 +2778,11 @@ declare module 'date-fns/isAfter/index.js' {
 declare module 'date-fns/isBefore/index.js' {
   import {isBefore} from 'date-fns'
   export = isBefore
+}
+
+declare module 'date-fns/isDate/index.js' {
+  import {isDate} from 'date-fns'
+  export = isDate
 }
 
 declare module 'date-fns/isEqual/index.js' {
@@ -3542,6 +3563,12 @@ declare module 'date-fns/fp' {
 
   const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
+
+  const isDate: CurriedFn1<any, boolean>
+  namespace isDate {}
+
+  const isDateWithOptions: CurriedFn2<Options, any, boolean>
+  namespace isDateWithOptions {}
 
   const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
@@ -4672,6 +4699,16 @@ declare module 'date-fns/fp/isBefore' {
 declare module 'date-fns/fp/isBeforeWithOptions' {
   import {isBeforeWithOptions} from 'date-fns/fp'
   export = isBeforeWithOptions
+}
+
+declare module 'date-fns/fp/isDate' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
 }
 
 declare module 'date-fns/fp/isEqual' {
@@ -6084,6 +6121,16 @@ declare module 'date-fns/fp/isBeforeWithOptions/index' {
   export = isBeforeWithOptions
 }
 
+declare module 'date-fns/fp/isDate/index' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions/index' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
+}
+
 declare module 'date-fns/fp/isEqual/index' {
   import {isEqual} from 'date-fns/fp'
   export = isEqual
@@ -7494,6 +7541,16 @@ declare module 'date-fns/fp/isBeforeWithOptions/index.js' {
   export = isBeforeWithOptions
 }
 
+declare module 'date-fns/fp/isDate/index.js' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions/index.js' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
+}
+
 declare module 'date-fns/fp/isEqual/index.js' {
   import {isEqual} from 'date-fns/fp'
   export = isEqual
@@ -8662,6 +8719,12 @@ declare module 'date-fns/esm' {
   ): boolean
   namespace isBefore {}
 
+  function isDate (
+    value: any,
+    options?: Options
+  ): boolean
+  namespace isDate {}
+
   function isEqual (
     dateLeft: Date | string | number,
     dateRight: Date | string | number,
@@ -9477,6 +9540,11 @@ declare module 'date-fns/esm/isBefore' {
   export default isBefore
 }
 
+declare module 'date-fns/esm/isDate' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
+}
+
 declare module 'date-fns/esm/isEqual' {
   import {isEqual} from 'date-fns/esm'
   export default isEqual
@@ -10182,6 +10250,11 @@ declare module 'date-fns/esm/isBefore/index' {
   export default isBefore
 }
 
+declare module 'date-fns/esm/isDate/index' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
+}
+
 declare module 'date-fns/esm/isEqual/index' {
   import {isEqual} from 'date-fns/esm'
   export default isEqual
@@ -10885,6 +10958,11 @@ declare module 'date-fns/esm/isAfter/index.js' {
 declare module 'date-fns/esm/isBefore/index.js' {
   import {isBefore} from 'date-fns/esm'
   export default isBefore
+}
+
+declare module 'date-fns/esm/isDate/index.js' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
 }
 
 declare module 'date-fns/esm/isEqual/index.js' {
@@ -11665,6 +11743,12 @@ declare module 'date-fns/esm/fp' {
 
   const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
+
+  const isDate: CurriedFn1<any, boolean>
+  namespace isDate {}
+
+  const isDateWithOptions: CurriedFn2<Options, any, boolean>
+  namespace isDateWithOptions {}
 
   const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
@@ -12795,6 +12879,16 @@ declare module 'date-fns/esm/fp/isBefore' {
 declare module 'date-fns/esm/fp/isBeforeWithOptions' {
   import {isBeforeWithOptions} from 'date-fns/esm/fp'
   export default isBeforeWithOptions
+}
+
+declare module 'date-fns/esm/fp/isDate' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/isEqual' {
@@ -14207,6 +14301,16 @@ declare module 'date-fns/esm/fp/isBeforeWithOptions/index' {
   export default isBeforeWithOptions
 }
 
+declare module 'date-fns/esm/fp/isDate/index' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions/index' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
+}
+
 declare module 'date-fns/esm/fp/isEqual/index' {
   import {isEqual} from 'date-fns/esm/fp'
   export default isEqual
@@ -15615,6 +15719,16 @@ declare module 'date-fns/esm/fp/isBefore/index.js' {
 declare module 'date-fns/esm/fp/isBeforeWithOptions/index.js' {
   import {isBeforeWithOptions} from 'date-fns/esm/fp'
   export default isBeforeWithOptions
+}
+
+declare module 'date-fns/esm/fp/isDate/index.js' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions/index.js' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/isEqual/index.js' {
@@ -18375,6 +18489,11 @@ interface dateFns {
   isBefore(
     date: Date | string | number,
     dateToCompare: Date | string | number,
+    options?: Options
+  ): boolean
+
+  isDate(
+    value: any,
     options?: Options
   ): boolean
 
