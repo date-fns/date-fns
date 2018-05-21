@@ -1,5 +1,6 @@
 // @flow
 /* eslint-env mocha */
+/* global HTMLIFrameElement */
 
 import assert from 'power-assert'
 import isDate from '.'
@@ -30,13 +31,15 @@ describe('isDate', function () {
 
     function execScript (scriptText) {
       const iframe = document.querySelector('iframe#iframe')
-      if (!iframe || !(iframe instanceof HTMLIFrameElement))
+      if (!iframe || !(iframe instanceof HTMLIFrameElement)) {
         throw new Error("Can't execute the script because iframe isn't found")
+      }
       const doc = iframe.contentDocument
       const script = doc.createElement('script')
       script.innerText = scriptText
-      if (!(doc.body instanceof HTMLBodyElement))
+      if (!(doc.body instanceof iframe.contentWindow.HTMLBodyElement)) {
         throw new Error("Can't execute the script because iframe does not have body")
+      }
       doc.body.append(script)
     }
   })
