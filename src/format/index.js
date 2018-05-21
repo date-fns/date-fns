@@ -190,70 +190,79 @@ var doubleQuoteRegExp = /''/g
  * |                                 | ppp     | 12:00:00 AM GMT+2                 | 7     |
  * |                                 | pppp    | 12:00:00 AM GMT+02:00             | 2,7   |
  * | Combination of date and time    | Pp      | 05/29/1453, 12:00 AM              | 7     |
- * |                                 | PPpp    | May 29, 1453, 12:00 AM            | 7     |
+ * |                                 | PPpp    | May 29, 1453, 12:00:00 AM         | 7     |
  * |                                 | PPPppp  | May 29th, 1453 at ...             | 7     |
  * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | 2,7   |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
- *   are the same as "stand-alone" units, but are different in some languages.
- *   "Formatting" units are declined according to the rules of the language
- *   in the context of a date. "Stand-alone" units are always nominative singular:
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular:
  *
- *   `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
- *   `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
- *   the single quote characters (see below).
- *   If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
- *   the output will be the same as default pattern for this unit, usually
- *   the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
- *   are marked with "2" in the last column of the table.
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table (e.g. `EEEEEEEEEEE`)
+ *    the output will be the same as default pattern for this unit, usually
+ *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
+ *    are marked with "2" in the last column of the table.
  *
- *   `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
- *   `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
- *   `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
- *   `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
- *   `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *
+ *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
  *
  * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
- *   The output will be padded with zeros to match the length of the pattern.
+ *    The output will be padded with zeros to match the length of the pattern.
  *
- *   `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
  *
  * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
- *   These tokens represent the shortest form of the quarter.
+ *    These tokens represent the shortest form of the quarter.
  *
  * 5. The main difference between `y` and `u` patterns are B.C. years:
- *   | Year | `y` | `u` |
- *   |------|-----|-----|
- *   | AC 1 |   1 |   1 |
- *   | BC 1 |   1 |   0 |
- *   | BC 2 |   2 |  -1 |
- *   Also `yy` always returns the last two digits of a year,
- *   while `uu` pads single digit years to 2 characters and returns other years unchanged:
- *   | Year | `yy` | `uu` |
- *   |------|------|------|
- *   | 1    |   01 |   01 |
- *   | 14   |   14 |   14 |
- *   | 376  |   76 |  376 |
- *   | 1453 |   53 | 1453 |
- *   The same difference is true for local and ISO week-numbering years (`Y` and `R`),
- *   except local week-numbering years are dependent on `options.weekStartsOn`
- *   and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
- *   and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
+ *
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
+ *
+ *    Also `yy` always returns the last two digits of a year,
+ *    while `uu` pads single digit years to 2 characters and returns other years unchanged:
+ *
+ *    | Year | `yy` | `uu` |
+ *    |------|------|------|
+ *    | 1    |   01 |   01 |
+ *    | 14   |   14 |   14 |
+ *    | 376  |   76 |  376 |
+ *    | 1453 |   53 | 1453 |
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [getISOWeekYear]{@link https://date-fns.org/docs/getISOWeekYear}
+ *    and [getWeekYear]{@link https://date-fns.org/docs/getWeekYear}).
  *
  * 6. Specific non-location timezones are currently unavailable in `date-fns`,
- *   so right now these tokens fall back to GMT timezones.
+ *    so right now these tokens fall back to GMT timezones.
  *
  * 7. These patterns are not in the Unicode Technical Standard #35:
- *   - `i`: ISO day of week
- *   - `I`: ISO week of year
- *   - `R`: ISO week-numbering year
- *   - `t`: seconds timestamp
- *   - `T`: milliseconds timestamp
- *   - `o`: ordinal number modifier
- *   - `P`: long localized date
- *   - `p`: long localized time
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `t`: seconds timestamp
+ *    - `T`: milliseconds timestamp
+ *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
  *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens

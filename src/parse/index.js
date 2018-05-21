@@ -174,53 +174,58 @@ var doubleQuoteRegExp = /''/g
  * |                                 |     | TT      | ...                               | 2     |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
- *   are the same as "stand-alone" units, but are different in some languages.
- *   "Formatting" units are declined according to the rules of the language
- *   in the context of a date. "Stand-alone" units are always nominative singular.
- *   In `format` function, they will produce different result:
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular.
+ *    In `format` function, they will produce different result:
  *
- *   `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
- *   `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
  *
- *   `parse` will try to match both formatting and stand-alone units interchangably.
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ *    `parse` will try to match both formatting and stand-alone units interchangably.
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
- *   the single quote characters (see below).
- *   If the sequence is longer than listed in table:
- *   - for numerical units (`yyyyyyyy`) `parse` will try to match a number
- *     as wide as the sequence
- *   - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
- *     These variations are marked with "2" in the last column of the table.
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table:
+ *    - for numerical units (`yyyyyyyy`) `parse` will try to match a number
+ *      as wide as the sequence
+ *    - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
+ *      These variations are marked with "2" in the last column of the table.
  *
  * 3. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
- *   These tokens represent the shortest form of the quarter.
+ *    These tokens represent the shortest form of the quarter.
  *
  * 4. The main difference between `y` and `u` patterns are B.C. years:
- *   | Year | `y` | `u` |
- *   |------|-----|-----|
- *   | AC 1 |   1 |   1 |
- *   | BC 1 |   1 |   0 |
- *   | BC 2 |   2 |  -1 |
- *   Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
  *
- *   `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
- *   `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
  *
- *   while `uu` will just assign the year as is:
+ *    Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
  *
- *   `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
- *   `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
  *
- *   The same difference is true for local and ISO week-numbering years (`Y` and `R`),
- *   except local week-numbering years are dependent on `options.weekStartsOn`
- *   and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
- *   and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *    `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *
+ *    while `uu` will just assign the year as is:
+ *
+ *    `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
+ *
+ *    `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
+ *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
  *
  * 5. These patterns are not in the Unicode Technical Standard #35:
- *   - `i`: ISO day of week
- *   - `I`: ISO week of year
- *   - `R`: ISO week-numbering year
- *   - `o`: ordinal number modifier
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `o`: ordinal number modifier
  *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
