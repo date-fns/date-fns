@@ -431,8 +431,8 @@ describe('formatDistanceStrict', function () {
         var block = formatDistanceStrict.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
-          new Date(1986, 3, 4, 10, 37, 0),
           // $ExpectedMistake
+          new Date(1986, 3, 4, 10, 37, 0),
           {unit: 'minute', locale: customLocale}
         )
         assert.throws(block, RangeError)

@@ -28,7 +28,7 @@ describe('startOfUTCISOWeekYear', function () {
 
   it('handles dates before 100 AD', function () {
     var initialDate = new Date(0)
-    initialDate.setUTCFullYear(9, 0 /* Jan */, 1, 16, 0)
+    initialDate.setUTCFullYear(9, 0 /* Jan */, 1)
     initialDate.setUTCHours(0, 0, 0, 0)
     var expectedResult = new Date(0)
     expectedResult.setUTCFullYear(8, 11 /* Dec */, 29)

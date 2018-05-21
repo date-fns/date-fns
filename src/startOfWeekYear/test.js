@@ -28,7 +28,7 @@ describe('startOfWeekYear', function () {
 
   it('handles dates before 100 AD', function () {
     var initialDate = new Date(0)
-    initialDate.setFullYear(9, 0 /* Jan */, 1, 16, 0)
+    initialDate.setFullYear(9, 0 /* Jan */, 1)
     initialDate.setHours(0, 0, 0, 0)
     var expectedResult = new Date(0)
     expectedResult.setFullYear(8, 11 /* Dec */, 28)

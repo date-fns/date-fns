@@ -36,7 +36,7 @@
     "babel-preset-power-assert": "^1.0.0",
     "cloc": "^2.2.0",
     "firebase": "^3.7.1",
-    "flow-bin": "^0.36.0",
+    "flow-bin": "0.72",
     "fs-promise": "^1.0.0",
     "glob-promise": "^2.0.0",
     "gzip-size-cli": "^1.0.0",

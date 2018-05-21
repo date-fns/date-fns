@@ -46,12 +46,12 @@ describe('FP functions', function () {
   })
 
   it('addMinutes', function () {
-    var result = fp.addMinutes(30)(new Date(2014, 6 /* Jul */, 10, 12, 0), 30)
+    var result = fp.addMinutes(30)(new Date(2014, 6 /* Jul */, 10, 12, 0))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 30))
   })
 
   it('addMinutesWithOptions', function () {
-    var result = fp.addMinutesWithOptions({})(30)(new Date(2014, 6 /* Jul */, 10, 12, 0), 30)
+    var result = fp.addMinutesWithOptions({})(30)(new Date(2014, 6 /* Jul */, 10, 12, 0))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 30))
   })
 
