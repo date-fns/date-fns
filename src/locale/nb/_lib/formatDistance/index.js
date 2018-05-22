@@ -1,82 +1,105 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'mindre enn ett sekund',
-    other: 'mindre enn {{count}} sekunder'
+    singular: 'mindre enn ett sekund',
+    plural: 'mindre enn {{count}} sekunder'
   },
 
   xSeconds: {
-    one: 'ett sekund',
-    other: '{{count}} sekunder'
+    singular: 'ett sekund',
+    plural: '{{count}} sekunder'
   },
 
   halfAMinute: 'et halvt minutt',
 
   lessThanXMinutes: {
-    one: 'mindre enn ett minutt',
-    other: 'mindre enn {{count}} minutter'
+    singular: 'mindre enn ett minutt',
+    plural: 'mindre enn {{count}} minutter'
   },
 
   xMinutes: {
-    one: 'ett minutt',
-    other: '{{count}} minutter'
+    singular: 'ett minutt',
+    plural: '{{count}} minutter'
   },
 
   aboutXHours: {
-    one: 'rundt en time',
-    other: 'rundt {{count}} timer'
+    singular: 'omtrent en time',
+    plural: 'omtrent {{count}} timer'
   },
 
   xHours: {
-    one: 'en time',
-    other: '{{count}} timer'
+    singular: 'en time',
+    plural: '{{count}} timer'
   },
 
   xDays: {
-    one: 'en dag',
-    other: '{{count}} dager'
+    singular: 'en dag',
+    plural: '{{count}} dager'
   },
 
   aboutXMonths: {
-    one: 'rundt en måned',
-    other: 'rundt {{count}} måneder'
+    singular: 'omtrent en måned',
+    plural: 'omtrent {{count}} måneder'
   },
 
   xMonths: {
-    one: 'en måned',
-    other: '{{count}} måneder'
+    singular: 'en måned',
+    plural: '{{count}} måneder'
   },
 
   aboutXYears: {
-    one: 'rundt ett år',
-    other: 'rundt {{count}} år'
+    singular: 'omtrent ett år',
+    plural: 'omtrent {{count}} år'
   },
 
   xYears: {
-    one: 'ett år',
-    other: '{{count}} år'
+    singular: 'ett år',
+    plural: '{{count}} år'
   },
 
   overXYears: {
-    one: 'over ett år',
-    other: 'over {{count}} år'
+    singular: 'over ett år',
+    plural: 'over {{count}} år'
   },
 
   almostXYears: {
-    one: 'nesten ett år',
-    other: 'nesten {{count}} år'
+    singular: 'nesten ett år',
+    plural: 'nesten {{count}} år'
   }
 }
 
-export default function formatDistance (token, count, options) {
-  options = options || {}
+var wordMapping = [
+  'null',
+  'en',
+  'to',
+  'tre',
+  'fire',
+  'fem',
+  'seks',
+  'sju',
+  'åtte',
+  'ni',
+  'ti',
+  'elleve',
+  'tolv'
+]
 
+export default function formatDistance (token, count, options) {
+  options = options || {
+    onlyNumeric: false
+  }
+
+  var translation = formatDistanceLocale[token]
   var result
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
-  } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+  if (typeof translation === 'string') {
+    result = translation
+  } else if (count === 0 || count > 1) {
+    if (options.onlyNumeric) {
+      result = translation.plural.replace('{{count}}', count)
+    } else {
+      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count)
+    }
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    result = translation.singular
   }
 
   if (options.addSuffix) {
