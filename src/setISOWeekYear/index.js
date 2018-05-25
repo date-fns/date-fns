@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
@@ -32,7 +33,7 @@ export default function setISOWeekYear (dirtyDate, dirtyISOWeekYear, dirtyOption
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var isoWeekYear = Number(dirtyISOWeekYear)
+  var isoWeekYear = toInteger(dirtyISOWeekYear)
   var diff = differenceInCalendarDays(date, startOfISOWeekYear(date, dirtyOptions), dirtyOptions)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)

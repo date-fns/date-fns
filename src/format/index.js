@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
@@ -321,11 +322,11 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate === undefined
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
     options.firstWeekContainsDate === undefined
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -333,8 +334,8 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
+  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

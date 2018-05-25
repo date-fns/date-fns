@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -27,7 +28,7 @@ export default function setHours (dirtyDate, dirtyHours, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var hours = Number(dirtyHours)
+  var hours = toInteger(dirtyHours)
   date.setHours(hours)
   return date
 }

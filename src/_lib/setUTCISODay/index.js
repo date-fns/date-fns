@@ -1,3 +1,4 @@
+import toInteger from '../toInteger/index.js'
 import toDate from '../../toDate/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
@@ -7,7 +8,7 @@ export default function setUTCISODay (dirtyDate, dirtyDay, dirtyOptions) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
   }
 
-  var day = Number(dirtyDay)
+  var day = toInteger(dirtyDay)
 
   if (day % 7 === 0) {
     day = day - 7

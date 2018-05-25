@@ -1,3 +1,4 @@
+import toInteger from '../toInteger/index.js'
 import getUTCWeekYear from '../getUTCWeekYear/index.js'
 import startOfUTCWeek from '../startOfUTCWeek/index.js'
 
@@ -16,11 +17,11 @@ export default function startOfUTCWeekYear (dirtyDate, dirtyOptions) {
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate === undefined
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
     options.firstWeekContainsDate === undefined
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   var year = getUTCWeekYear(dirtyDate, dirtyOptions)
   var firstWeek = new Date(0)

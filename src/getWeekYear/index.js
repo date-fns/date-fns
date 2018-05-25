@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import startOfWeek from '../startOfWeek/index.js'
 
@@ -57,11 +58,11 @@ export default function getWeekYear (dirtyDate, dirtyOptions) {
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate === undefined
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
     options.firstWeekContainsDate === undefined
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
