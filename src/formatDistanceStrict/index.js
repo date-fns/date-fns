@@ -33,7 +33,7 @@ var MINUTES_IN_YEAR = 525600
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.roundingMethod='floor'] - which way to round partial units
+ * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
@@ -131,7 +131,7 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     dateRight = toDate(dirtyBaseDate, options)
   }
 
-  var roundingMethod = options.roundingMethod === undefined ? 'floor' : String(options.roundingMethod)
+  var roundingMethod = options.roundingMethod === undefined ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {

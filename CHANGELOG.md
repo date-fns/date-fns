@@ -450,8 +450,13 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `distanceInWordsStrict` → `formatDistanceStrict`
 
   to make them consistent with `format` and `formatRelative`.
+
   The order of arguments is swapped to make them consistent with `differenceIn...` functions.
+
   `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+
+  If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
+
   `unit` option in `formatDistanceStrict` now takes one of the strings:
   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
 

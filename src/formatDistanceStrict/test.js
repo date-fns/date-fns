@@ -318,12 +318,12 @@ describe('formatDistanceStrict', function () {
   })
 
   describe('when the roundingMethod option is supplied', function () {
-    it('default is "floor"', function () {
+    it('default is "round"', function () {
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59)
       )
-      assert(result === '1 minute')
+      assert(result === '2 minutes')
     })
 
     it('"floor"', function () {
@@ -437,6 +437,16 @@ describe('formatDistanceStrict', function () {
         )
         assert.throws(block, RangeError)
       })
+    })
+  })
+
+  describe('edge cases', function () {
+    it('detects unit correctly for short months', function () {
+      var result = formatDistanceStrict(
+        new Date(2018, 1 /* Feb */, 1),
+        new Date(2018, 2 /* Mar */, 1)
+      )
+      assert(result === '28 days')
     })
   })
 
