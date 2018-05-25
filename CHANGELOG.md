@@ -451,14 +451,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   to make them consistent with `format` and `formatRelative`.
 
-  The order of arguments is swapped to make them consistent with `differenceIn...` functions.
-
-  `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
-
-  If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
-
-  `unit` option in `formatDistanceStrict` now takes one of the strings:
-  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+- **BREAKING**: The order of arguments of `distanseInWords` and `distanceInWordsStrict`
+  is swapped to make them consistent with `differenceIn...` functions.
 
   ```javascript
   // Before v2.0.0
@@ -469,12 +463,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
     {addSuffix: true}
   ) //=> 'in about 1 hour'
 
-  distanceInWordsStrict(
-    new Date(1986, 3, 4, 10, 32, 0),
-    new Date(1986, 3, 4, 10, 33, 1),
-    {partialMethod: 'ceil', unit: 'm'}
-  ) //=> '2 minutes'
-
   // v2.0.0 onward
 
   formatDistance(
@@ -482,12 +470,50 @@ for the list of changes made since `v2.0.0-alpha.1`.
     new Date(1986, 3, 4, 10, 32, 0),
     {addSuffix: true}
   ) //=> 'in about 1 hour'
+  ```
+
+- **BREAKING**: `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+
+  ```javascript
+  // Before v2.0.0
+
+  distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    {partialMethod: 'ceil'}
+  ) //=> '2 minutes'
+
+  // v2.0.0 onward
 
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {roundingMethod: 'ceil', unit: 'minute'}
+    {roundingMethod: 'ceil'}
   ) //=> '2 minutes'
+  ```
+
+- **BREAKING**: in `formatDistanceStrict`, if `roundingMethod` is not specified,
+  it now defaults to `round` instead of `floor`.
+
+- **BREAKING**: `unit` option in `formatDistanceStrict` now takes one of the strings:
+  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+
+  ```javascript
+  // Before v2.0.0
+
+  distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    {unit: 'm'}
+  )
+
+  // v2.0.0 onward
+
+  formatDistanceStrict(
+    new Date(1986, 3, 4, 10, 33, 1),
+    new Date(1986, 3, 4, 10, 32, 0),
+    {unit: 'minute'}
+  )
   ```
 
 - **BREAKING**: `parse` renamed to `toDate`,
