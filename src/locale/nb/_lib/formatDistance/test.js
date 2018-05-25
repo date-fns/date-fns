@@ -12,9 +12,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 2) === 'mindre enn 2 sekunder')
+        assert(formatDistance('lessThanXSeconds', 12) === 'mindre enn tolv sekunder')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('lessThanXSeconds', 13) === 'mindre enn 13 sekunder')
       })
     })
   })
@@ -26,9 +32,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 2) === '2 sekunder')
+        assert(formatDistance('xSeconds', 12) === 'tolv sekunder')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xSeconds', 13) === '13 sekunder')
       })
     })
   })
@@ -50,9 +62,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 2) === 'mindre enn 2 minutter')
+        assert(formatDistance('lessThanXMinutes', 12) === 'mindre enn tolv minutter')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('lessThanXMinutes', 13) === 'mindre enn 13 minutter')
       })
     })
   })
@@ -64,9 +82,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 2) === '2 minutter')
+        assert(formatDistance('xMinutes', 12) === 'tolv minutter')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xMinutes', 13) === '13 minutter')
       })
     })
   })
@@ -74,13 +98,19 @@ describe('nb locale > formatDistance', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 1) === 'rundt en time')
+        assert(formatDistance('aboutXHours', 1) === 'omtrent en time')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 2) === 'rundt 2 timer')
+        assert(formatDistance('aboutXHours', 12) === 'omtrent tolv timer')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXHours', 13) === 'omtrent 13 timer')
       })
     })
   })
@@ -92,9 +122,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 2) === '2 timer')
+        assert(formatDistance('xHours', 12) === 'tolv timer')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xHours', 13) === '13 timer')
       })
     })
   })
@@ -106,9 +142,15 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 11', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xDays', 2) === '2 dager')
+        assert(formatDistance('xDays', 11) === 'elleve dager')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xDays', 13) === '13 dager')
       })
     })
   })
@@ -116,13 +158,19 @@ describe('nb locale > formatDistance', function () {
   describe('aboutXMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 1) === 'rundt en måned')
+        assert(formatDistance('aboutXMonths', 1) === 'omtrent en måned')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 2) === 'rundt 2 måneder')
+        assert(formatDistance('aboutXMonths', 12) === 'omtrent tolv måneder')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXMonths', 13) === 'omtrent 13 måneder')
       })
     })
   })
@@ -134,9 +182,9 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count is more than 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 2) === '2 måneder')
+        assert(formatDistance('xMonths', 13) === '13 måneder')
       })
     })
   })
@@ -144,13 +192,19 @@ describe('nb locale > formatDistance', function () {
   describe('aboutXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 1) === 'rundt ett år')
+        assert(formatDistance('aboutXYears', 1) === 'omtrent ett år')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 2) === 'rundt 2 år')
+        assert(formatDistance('aboutXYears', 12) === 'omtrent tolv år')
+      })
+    })
+
+    context('when the count is more than 12', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXYears', 13) === 'omtrent 13 år')
       })
     })
   })
@@ -162,9 +216,9 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count is more than 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 2) === '2 år')
+        assert(formatDistance('xYears', 13) === '13 år')
       })
     })
   })
@@ -176,9 +230,9 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count is more than 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 2) === 'over 2 år')
+        assert(formatDistance('overXYears', 13) === 'over 13 år')
       })
     })
   })
@@ -190,9 +244,9 @@ describe('nb locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count is more than 12', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 2) === 'nesten 2 år')
+        assert(formatDistance('almostXYears', 13) === 'nesten 13 år')
       })
     })
   })
@@ -203,7 +257,7 @@ describe('nb locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'rundt ett år siden')
+      assert(result === 'omtrent ett år siden')
     })
   })
 
