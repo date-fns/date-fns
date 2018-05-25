@@ -131,7 +131,7 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     dateRight = toDate(dirtyBaseDate, options)
   }
 
-  var roundingMethod = options.roundingMethod === undefined ? 'round' : String(options.roundingMethod)
+  var roundingMethod = options.roundingMethod ? String(options.roundingMethod) : 'round'
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {
