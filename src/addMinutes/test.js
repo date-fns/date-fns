@@ -24,6 +24,11 @@ describe('addMinutes', function () {
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 20))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = addMinutes(new Date(2014, 6 /* Jul */, 10, 12, 0), 30.99)
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 30))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = addMinutes(new Date(2014, 6 /* Jul */, 10, 12, 5), '30')

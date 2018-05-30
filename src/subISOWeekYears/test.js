@@ -20,6 +20,11 @@ describe('subISOWeekYears', function () {
     assert.deepEqual(result, new Date(2002, 8 /* Sep */, 2))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), 5.555)
+    assert.deepEqual(result, new Date(2009, 7 /* Aug */, 31))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = subISOWeekYears(new Date(2014, 8 /* Sep */, 1), '5')
