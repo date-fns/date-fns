@@ -320,11 +320,11 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
@@ -334,8 +334,8 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
+  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {

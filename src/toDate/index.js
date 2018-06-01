@@ -92,7 +92,7 @@ export default function toDate (argument, dirtyOptions) {
 
   var options = dirtyOptions || {}
 
-  var additionalDigits = options.additionalDigits === undefined ? DEFAULT_ADDITIONAL_DIGITS : toInteger(options.additionalDigits)
+  var additionalDigits = options.additionalDigits == null ? DEFAULT_ADDITIONAL_DIGITS : toInteger(options.additionalDigits)
   if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
@@ -101,7 +101,7 @@ export default function toDate (argument, dirtyOptions) {
   if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
-  } else if (typeof argument === 'number' || argument instanceof Number) {
+  } else if (typeof argument === 'number' || argument instanceof Number || argument === true || argument === false) {
     return new Date(argument)
   } else if (!(typeof argument === 'string' || argument instanceof String)) {
     return new Date(NaN)

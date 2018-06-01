@@ -45,7 +45,7 @@ describe('closestTo', function () {
   it('returns undefined if the given array is empty', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     var result = closestTo(date, [])
-    assert(result === undefined)
+    assert(result == null)
   })
 
   it('returns `Invalid Date` if the given date is `Invalid Date`', function () {
@@ -104,14 +104,14 @@ describe('closestTo', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, undefined)
-    assert(result === undefined)
+    assert(result == null)
   })
 
   it('converts null into empty array', function () {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, null)
-    assert(result === undefined)
+    assert(result == null)
   })
 
   it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function () {

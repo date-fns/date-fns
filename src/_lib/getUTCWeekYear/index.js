@@ -18,11 +18,11 @@ export default function getUTCWeekYear (dirtyDate, dirtyOptions) {
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
