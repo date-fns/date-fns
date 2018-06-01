@@ -580,8 +580,19 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: all functions now handle arguments by following rules:
 
   - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
-  - arguments expected to be numbers are converted to numbers using JavaScript's `Number` function;
+  - arguments expected to be numbers are converted to integer numbers using our custom `toInteger` implementation
+    (see [#765](https://github.com/date-fns/date-fns/pull/765));
   - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function.
+
+  In `toDate` and `toInteger` arguments are converted using the following strategy:
+
+  - `null` becomes `NaN` or `Invalid Date`
+  - `undefined` becomes `NaN` or `Invalid Date`
+  - `false` becomes `0` or `new Date(0)`
+  - `true` becomes `1` or `new Date(1)`
+
+  `null` and `undefined` passes to optional arguments (i.e. properties of `options` argument)
+  are ignored.
 
   If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
   an invalid value will be returned:
@@ -591,7 +602,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `NaN` for functions that return numbers;
   - and `String('Invalid Date')` for functions that return strings.
 
-  See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
+  See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
+  [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
 
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
