@@ -269,18 +269,16 @@ describe('toDate', function () {
       assert(isNaN(result))
     })
 
-    it('returns Invalid Date if argument is false', function () {
+    it('returns new Date(0) if argument is false', function () {
       // $ExpectedMistake
       var result = toDate(false)
-      assert(result instanceof Date)
-      assert(isNaN(result))
+      assert.deepEqual(result, new Date(0))
     })
 
-    it('returns Invalid Date if argument is true', function () {
+    it('returns new Date(1) if argument is true', function () {
       // $ExpectedMistake
       var result = toDate(true)
-      assert(result instanceof Date)
-      assert(isNaN(result))
+      assert.deepEqual(result, new Date(1))
     })
   })
 
