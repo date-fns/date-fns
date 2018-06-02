@@ -10,18 +10,18 @@ function lastWeek (day) {
     case 3:
     case 5:
     case 6:
-      return '[у минулу ' + weekday + ' о] LT'
+      return "'у минулу " + weekday + " о' LT"
     case 1:
     case 2:
     case 4:
-      return '[у минулий ' + weekday + ' о] LT'
+      return "'у минулий " + weekday + " о' LT"
   }
 }
 
 function thisWeek (day) {
   var weekday = accusativeWeekdays[day]
 
-  return '[у ' + weekday + ' о] LT'
+  return "'у " + weekday + " о' LT"
 }
 
 function nextWeek (day) {
@@ -32,11 +32,11 @@ function nextWeek (day) {
     case 3:
     case 5:
     case 6:
-      return '[у наступну ' + weekday + ' о] LT'
+      return "'у наступну " + weekday + " о' LT"
     case 1:
     case 2:
     case 4:
-      return '[у наступний ' + weekday + ' о] LT'
+      return "'у наступний " + weekday + " о' LT"
   }
 }
 
@@ -49,9 +49,9 @@ var formatRelativeLocale = {
       return lastWeek(day)
     }
   },
-  yesterday: '[вчора о] LT',
-  today: '[сьогодні о] LT',
-  tomorrow: '[завтра о] LT',
+  yesterday: "'вчора о' LT",
+  today: "'сьогодні о' LT",
+  tomorrow: "'завтра о' LT",
   nextWeek: function (date, baseDate, options) {
     var day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
