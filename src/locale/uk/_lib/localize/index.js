@@ -37,17 +37,17 @@ var dayPeriodValues = {
     am: 'ДП',
     pm: 'ПП',
     midnight: 'півн.',
-    noon: 'півд.',
-    morning: 'ранку',
-    afternoon: 'дня',
+    noon: 'пол.',
+    morning: 'ранок',
+    afternoon: 'день',
     evening: 'веч.',
-    night: 'ночі'
+    night: 'ніч'
   },
   abbreviated: {
     am: 'ДП',
     pm: 'ПП',
     midnight: 'півн.',
-    noon: 'півд.',
+    noon: 'пол.',
     morning: 'ранок',
     afternoon: 'день',
     evening: 'веч.',
@@ -57,7 +57,7 @@ var dayPeriodValues = {
     am: 'ДП',
     pm: 'ПП',
     midnight: 'північ',
-    noon: 'південь',
+    noon: 'полудень',
     morning: 'ранок',
     afternoon: 'день',
     evening: 'вечір',
@@ -70,7 +70,7 @@ var formattingDayPeriodValues = {
     am: 'ДП',
     pm: 'ПП',
     midnight: 'півн.',
-    noon: 'півд.',
+    noon: 'пол.',
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
@@ -80,7 +80,7 @@ var formattingDayPeriodValues = {
     am: 'ДП',
     pm: 'ПП',
     midnight: 'півн.',
-    noon: 'півд.',
+    noon: 'пол.',
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
@@ -89,8 +89,8 @@ var formattingDayPeriodValues = {
   wide: {
     am: 'ДП',
     pm: 'ПП',
-    midnight: 'півн.',
-    noon: 'півд.',
+    midnight: 'північ',
+    noon: 'полудень',
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
@@ -103,12 +103,14 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   var unit = String(options.unit)
   var suffix
 
-  if (unit === 'dayOfMonth') {
+  if (unit === 'date') {
     if (dirtyNumber === 3 || dirtyNumber === 23) {
       suffix = '-є'
     } else {
       suffix = '-е'
     }
+  } else if (unit === 'minute' || unit === 'second' || unit === 'hour') {
+    suffix = '-а'
   } else {
     suffix = '-й'
   }

@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(-?(е|є|й|а|я))?/i
+var matchOrdinalNumberPattern = /^(\d+)(-?(е|й|є|а|я))?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
@@ -47,9 +47,9 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(д[п]|півн.?|півд.?|ранок|ранку|день|дня|веч.?|ніч|ночі)/i,
-  abbreviated: /^(д[п]|півн.?|півд.?|ранок|ранку|день|дня|веч.?|ніч|ночі)/i,
-  wide: /^([дп]п|північ|південь|ранок|ранку|день|дня|вечір|вечора|ніч|ночі)/i
+  narrow: /^(д[п]|півн.?|пол.?|ранок|ранку|день|дня|веч.?|ніч|ночі)/i,
+  abbreviated: /^(д[п]|півн.?|пол.?|ранок|ранку|день|дня|веч.?|ніч|ночі)/i,
+  wide: /^([дп]п|північ|полудень|ранок|ранку|день|дня|вечір|вечора|ніч|ночі)/i
 }
 
 var parseDayPeriodPatterns = {
@@ -57,7 +57,7 @@ var parseDayPeriodPatterns = {
     am: /^дп/i,
     pm: /^пп/i,
     midnight: /^півн/i,
-    noon: /^півд/i,
+    noon: /^пол/i,
     morning: /^р/i,
     afternoon: /^д[ен]/i,
     evening: /^в/i,

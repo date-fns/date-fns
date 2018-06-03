@@ -58,14 +58,14 @@ describe('uk locale', function () {
     describe('week', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'неділя'", {locale: locale})
-        assert(result === '14-а неділя')
+        var result = format(date, "wo 'тиждень'", {locale: locale})
+        assert(result === '14-й тиждень')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'неділя'", {locale: locale})
-        assert(result === '14-а неділя')
+        var result = format(date, "Io 'тиждень'", {locale: locale})
+        assert(result === '14-й тиждень')
       })
     })
 
@@ -95,7 +95,7 @@ describe('uk locale', function () {
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho 'час'", {locale: locale})
+        var result = format(date, "ho 'година'", {locale: locale})
         assert(result === '10-а година')
       })
 
@@ -170,12 +170,12 @@ describe('uk locale', function () {
 
       it('long date + time', function () {
         var result = format(date, 'PPPp', {locale: locale})
-        assert(result === '5-е квітня 1986 р., 10:32')
+        assert(result === '5-е квітня 1986 р. о 10:32')
       })
 
       it('full date + time', function () {
         var result = format(date, 'PPPPp', {locale: locale})
-        assert(result === 'субота, 5-е квітня 1986 р., 10:32')
+        assert(result === 'субота, 5-е квітня 1986 р. о 10:32')
       })
     })
   })
@@ -206,7 +206,7 @@ describe('uk locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === 'біля 1 години тому')
+        assert(result === 'близько 1 години тому')
       })
     })
   })
@@ -228,7 +228,7 @@ describe('uk locale', function () {
           new Date(1986, 3, 4, 10, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === 'через 25 секунд')
+        assert(result === 'за 25 секунд')
       })
 
       it('adds a past suffix', function () {
@@ -246,18 +246,13 @@ describe('uk locale', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
     it('last week', function () {
-      var result = formatRelative(new Date(1986, 2 /* Mar */, 30), baseDate, {locale: locale})
-      assert(result === 'в минулу неділю о 0:00')
-    })
-
-    it('this week, before yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
       assert(result === 'у вівторок о 0:00')
     })
 
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
-      assert(result === 'учора о 22:22')
+      assert(result === 'вчора о 22:22')
     })
 
     it('today', function () {
@@ -270,14 +265,9 @@ describe('uk locale', function () {
       assert(result === 'завтра о 7:30')
     })
 
-    it('this week, after tomorrow', function () {
-      var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'в неділю о 12:00')
-    })
-
     it('next week', function () {
-      var result = formatRelative(new Date(1986, 3 /* Apr */, 7, 12, 0), baseDate, {locale: locale})
-      assert(result === 'в наступний понеділок о 12:00')
+      var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
+      assert(result === 'у неділю о 12:00')
     })
 
     it('after the next week', function () {
@@ -416,7 +406,7 @@ describe('uk locale', function () {
 
     describe('AM, PM, noon, midnight', function () {
       it('abbreviated', function () {
-        var result = parse('півд.', 'b', baseDate, {locale: locale})
+        var result = parse('пол.', 'b', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
       })
 

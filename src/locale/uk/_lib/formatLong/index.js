@@ -15,7 +15,10 @@ var timeFormats = {
 }
 
 var dateTimeFormats = {
-  any: '{{date}}, {{time}}'
+  full: "{{date}} 'о' {{time}}",
+  long: "{{date}} 'о' {{time}}",
+  medium: '{{date}}, {{time}}',
+  short: '{{date}}, {{time}}'
 }
 
 var formatLong = {
@@ -31,7 +34,7 @@ var formatLong = {
 
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'any'
+    defaultWidth: 'full'
   })
 }
 
