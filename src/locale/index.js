@@ -7,5 +7,6 @@ module.exports = {
   eo: require('./eo/index.js'),
   nb: require('./nb/index.js'),
   ru: require('./ru/index.js'),
-  sv: require('./sv/index.js')
+  sv: require('./sv/index.js'),
+  uk: require('./uk/index.js')
 }
