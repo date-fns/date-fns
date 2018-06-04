@@ -273,7 +273,7 @@ var doubleQuoteRegExp = /''/g
  * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
- * // Parse 28th of February in English locale in the context of 2010 year:
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
  * var result = parse(
  *   '28-a de februaro',
