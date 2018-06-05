@@ -12,10 +12,10 @@ var quarterValues = {
   wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
 }
 
-// Note: in English, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
+// Notiz: im Deutschen werden Namen von Tagen und Monaten großgeschrieben.
+// Solltest du eine neues Sprachschema auf Grundlage dieses Schemas anlegen, prüfe bitte ob dies auch für die neue Sprache gilt.
+// Grundsätzlich sollten formatierte Daten wirken wie in der Mitte eines Satzes,
+// z.B. werden im Spanischen Tage und Monate kleingeschrieben.
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
