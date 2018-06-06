@@ -43,19 +43,20 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(a|p|Mitternacht|Mittag (morgens|nachm\.|abends|nachts))/i,
-  any: /^([ap]\.?\s?m\.?|Mitternacht|Mittag (morgens|nachmittags|abends|nachts))/i
+  narrow: /^(vm\.?|nm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  abbreviated: /^(vorm\.?|nachm\.?|Mitternacht|Mittag|morgens|nachm\.?|abends|nachts)/i,
+  wide: /^(vormittags|nachmittags|Mitternacht|Mittag|morgens|nachmittags|abends|nachts)/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
+    am: /^v/i,
+    pm: /^n/i,
     midnight: /^Mitte/i,
     noon: /^Mitta/i,
     morning: /morgens/i,
-    afternoon: /nachmittags/i,
+    afternoon: /nachmittags/i, // will never be matched. Afternoon is matched by `pm`
     evening: /abends/i,
-    night: /nachts/i
+    night: /nachts/i // will never be matched. Night is matched by `pm`
   }
 }
 
@@ -101,7 +102,7 @@ var match = {
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
-    defaultMatchWidth: 'any',
+    defaultMatchWidth: 'wide',
     parsePatterns: parseDayPeriodPatterns,
     defaultParseWidth: 'any'
   })
