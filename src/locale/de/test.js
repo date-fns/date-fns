@@ -101,7 +101,7 @@ describe('de locale', function () {
 
       it('AM, PM', function () {
         var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
-        assert(result === '10 vorm., 10 vormittags, 10vorm.')
+        assert(result === '10 vorm., 10 vormittags, 10vm.')
       })
 
       it('AM, PM, noon, midnight', function () {
@@ -382,55 +382,55 @@ describe('de locale', function () {
       })
     })
 
-    // it('ordinal local day of week', function () {
-    //   var result = parse('2. Tag der Woche', "eo 'Tag der Woche'", baseDate, {locale: locale})
-    //   assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
-    // })
+    it('ordinal local day of week', function () {
+      var result = parse('2. Tag der Woche', "eo 'Tag der Woche'", baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
 
-    // describe('AM, PM', function () {
-    //   it('abbreviated', function () {
-    //     var result = parse('5 AM', 'h a', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
-    //   })
+    describe('AM, PM', function () {
+      it('abbreviated', function () {
+        var result = parse('5 vorm.', 'h a', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+      })
 
-    //   it('wide', function () {
-    //     var result = parse('5 p.m.', 'h aaaa', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
-    //   })
+      it('wide', function () {
+        var result = parse('5 nachmittags', 'h aaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+      })
 
-    //   it('narrow', function () {
-    //     var result = parse('11 a', 'h aaaaa', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
-    //   })
-    // })
+      it('narrow', function () {
+        var result = parse('11 vm.', 'h aaaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
+      })
+    })
 
     describe('AM, PM, noon, midnight', function () {
-      // it('abbreviated', function () {
-      //   var result = parse('Mittag', 'b', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
-      // })
+      it('abbreviated', function () {
+        var result = parse('Mittag', 'b', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
 
       it('wide', function () {
         var result = parse('Mitternacht', 'bbbb', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
       })
 
-      // it('narrow', function () {
-      //   var result = parse('mi', 'bbbbb', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
-      // })
+      it('narrow', function () {
+        var result = parse('mitternacht', 'bbbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      })
     })
 
     describe('flexible day period', function () {
-      // it('abbreviated', function () {
-      //   var result = parse('02 nachts', 'HH B', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
-      // })
+      it('abbreviated', function () {
+        var result = parse('02 nachts', 'HH B', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
+      })
 
-      // it('wide', function () {
-      //   var result = parse('12 nachmittags', 'HH BBBB', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
-      // })
+      it('wide', function () {
+        var result = parse('12 nachmittags', 'HH BBBB', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
 
       it('narrow', function () {
         var result = parse('17 abends', 'HH BBBBB', baseDate, {locale: locale})

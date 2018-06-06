@@ -12,10 +12,10 @@ var quarterValues = {
   wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
 }
 
-// Notiz: im Deutschen werden Namen von Tagen und Monaten großgeschrieben.
-// Solltest du eine neues Sprachschema auf Grundlage dieses Schemas anlegen, prüfe bitte ob dies auch für die neue Sprache gilt.
-// Grundsätzlich sollten formatierte Daten wirken wie in der Mitte eines Satzes,
-// z.B. werden im Spanischen Tage und Monate kleingeschrieben.
+// Note: in German, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
@@ -29,10 +29,43 @@ var dayValues = {
   wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 }
 
+// https://www.unicode.org/cldr/charts/32/summary/de.html#1881
 var dayPeriodValues = {
   narrow: {
+    am: 'vm.',
+    pm: 'nm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachm.',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  abbreviated: {
     am: 'vorm.',
     pm: 'nachm.',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  },
+  wide: {
+    am: 'vormittags',
+    pm: 'nachmittags',
+    midnight: 'Mitternacht',
+    noon: 'Mittag',
+    morning: 'Morgen',
+    afternoon: 'Nachmittag',
+    evening: 'Abend',
+    night: 'Nacht'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'vm.',
+    pm: 'nm.',
     midnight: 'Mitternacht',
     noon: 'Mittag',
     morning: 'morgens',
@@ -96,7 +129,9 @@ var localize = {
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
   })
 }
 
