@@ -579,7 +579,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - **BREAKING**: all functions now handle arguments by following rules:
 
-  | exp. type | date          | number | string      | boolean |
+  |           | date          | number | string      | boolean |
   |-----------|---------------|--------|-------------|---------|
   | 0         | new Date(0)   | 0      | '0'         | false   |
   | '0'       | Invalid Date  | 0      | '0'         | false   |
