@@ -46,7 +46,7 @@ describe('toInteger', function () {
   })
 
   it('returns NaN for NaN', function () {
-    var result = toInteger(undefined)
+    var result = toInteger(NaN)
     assert(typeof result === 'number' && isNaN(result))
   })
 
