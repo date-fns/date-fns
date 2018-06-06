@@ -25,14 +25,14 @@ describe('toInteger', function () {
     assert(typeof result === 'number' && isNaN(result))
   })
 
-  it('converts false to 0', function () {
+  it('returns NaN for false', function () {
     var result = toInteger(false)
-    assert(result === 0)
+    assert(typeof result === 'number' && isNaN(result))
   })
 
-  it('converts true to 1', function () {
+  it('returns NaN for true', function () {
     var result = toInteger(true)
-    assert(result === 1)
+    assert(typeof result === 'number' && isNaN(result))
   })
 
   it('returns NaN for null', function () {
@@ -41,6 +41,11 @@ describe('toInteger', function () {
   })
 
   it('returns NaN for undefined', function () {
+    var result = toInteger(undefined)
+    assert(typeof result === 'number' && isNaN(result))
+  })
+
+  it('returns NaN for NaN', function () {
     var result = toInteger(undefined)
     assert(typeof result === 'number' && isNaN(result))
   })

@@ -1,5 +1,5 @@
 export default function toInteger (dirtyNumber) {
-  if (dirtyNumber === null) {
+  if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
     return NaN
   }
 

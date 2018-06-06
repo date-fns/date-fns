@@ -101,7 +101,7 @@ export default function toDate (argument, dirtyOptions) {
   if (argument instanceof Date) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
-  } else if (typeof argument === 'number' || argument instanceof Number || argument === true || argument === false) {
+  } else if (typeof argument === 'number' || argument instanceof Number) {
     return new Date(argument)
   } else if (!(typeof argument === 'string' || argument instanceof String)) {
     return new Date(NaN)

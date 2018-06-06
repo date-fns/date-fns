@@ -579,20 +579,27 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - **BREAKING**: all functions now handle arguments by following rules:
 
+  | exp. type | date          | number | string      | boolean |
+  |-----------|---------------|--------|-------------|---------|
+  | 0         | new Date(0)   | 0      | '0'         | false   |
+  | '0'       | Invalid Date  | 0      | '0'         | false   |
+  | 1         | new Date(1)   | 1      | '1'         | true    |
+  | '1'       | Invalid Date  | 1      | '1'         | true    |
+  | true      | Invalid Date  | NaN    | 'true'      | true    |
+  | false     | Invalid Date  | NaN    | 'false'     | false   |
+  | null      | Invalid Date  | NaN    | 'null'      | false   |
+  | undefined | Invalid Date  | NaN    | 'undefined' | false   |
+  | NaN       | Invalid Date  | NaN    | 'NaN'       | false   |
+
+  Notes:
   - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
   - arguments expected to be numbers are converted to integer numbers using our custom `toInteger` implementation
     (see [#765](https://github.com/date-fns/date-fns/pull/765));
-  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function.
+  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function;
+  - arguments expected to be booleans are converted to strings using JavaScript's `Boolean` function.
 
-  In `toDate` and `toInteger` arguments are converted using the following strategy:
-
-  - `null` becomes `NaN` or `Invalid Date`
-  - `undefined` becomes `NaN` or `Invalid Date`
-  - `false` becomes `0` or `new Date(0)`
-  - `true` becomes `1` or `new Date(1)`
-
-  `null` and `undefined` passes to optional arguments (i.e. properties of `options` argument)
-  are ignored.
+  `null` and `undefined` passed to optional arguments (i.e. properties of `options` argument)
+  are ignored as if no argument was passed.
 
   If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
   an invalid value will be returned:
