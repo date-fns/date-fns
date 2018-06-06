@@ -577,7 +577,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   This change is introduced for consistency with ECMAScript standard library which does the same.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
-- **BREAKING**: all functions now handle arguments by following rules:
+- **BREAKING**: all functions now implicitly convert arguments by following rules:
 
   |           | date          | number | string      | boolean |
   |-----------|---------------|--------|-------------|---------|
