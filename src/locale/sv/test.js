@@ -99,10 +99,10 @@ describe('sv locale', function () {
         assert(result === '10:e timmen')
       })
 
-      // it('AM, PM', function () {
-      //   var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
-      //   assert(result === '10 fm, 10 a.m., 10a')
-      // })
+      it('AM, PM', function () {
+        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        assert(result === '10 fm, 10 fm, 10fm')
+      })
 
       it('AM, PM, noon, midnight', function () {
         var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', {locale: locale})
@@ -382,43 +382,43 @@ describe('sv locale', function () {
       })
     })
 
-    // it('ordinal local day of week', function () {
-    //   var result = parse('2nd day of the week', "eo 'day of the week'", baseDate, {locale: locale})
-    //   assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
-    // })
+    it('ordinal local day of week', function () {
+      var result = parse('2:e day of the week', "eo 'day of the week'", baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
 
-    // describe('AM, PM', function () {
-    //   it('abbreviated', function () {
-    //     var result = parse('5 AM', 'h a', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
-    //   })
+    describe('AM, PM', function () {
+      it('abbreviated', function () {
+        var result = parse('5 fm', 'h a', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+      })
 
-    //   it('wide', function () {
-    //     var result = parse('5 p.m.', 'h aaaa', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
-    //   })
+      it('wide', function () {
+        var result = parse('5 em', 'h aaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+      })
 
-    //   it('narrow', function () {
-    //     var result = parse('11 a', 'h aaaaa', baseDate, {locale: locale})
-    //     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
-    //   })
-    // })
+      it('narrow', function () {
+        var result = parse('11 fm', 'h aaaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
+      })
+    })
 
     describe('AM, PM, noon, midnight', function () {
-      // it('abbreviated', function () {
-      //   var result = parse('midnatt', 'b', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
-      // })
+      it('abbreviated', function () {
+        var result = parse('middag', 'b', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
 
       it('wide', function () {
         var result = parse('midnatt', 'bbbb', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
       })
 
-      // it('narrow', function () {
-      //   var result = parse('midn', 'bbbbb', baseDate, {locale: locale})
-      //   assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
-      // })
+      it('narrow', function () {
+        var result = parse('midn', 'bbbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      })
     })
 
     describe('flexible day period', function () {

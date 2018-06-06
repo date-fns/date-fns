@@ -43,7 +43,7 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  any: /^([ap]\.?\s?m\.?|midnatt|middag|(på) (morgonen|eftermiddagen|kvällen|natten))/i
+  any: /^([fe]\.?\s?m\.?|midn(att)?|midd(ag)?|(på) (morgonen|eftermiddagen|kvällen|natten))/i
 }
 var parseDayPeriodPatterns = {
   any: {
