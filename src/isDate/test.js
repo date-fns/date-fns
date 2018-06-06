@@ -10,6 +10,10 @@ describe('isDate', function () {
     assert(isDate(new Date()))
   })
 
+  it('returns true if the given value is an Invalid Date', function () {
+    assert(isDate(new Date(NaN)))
+  })
+
   context('with date passed from another iframe', function () {
     afterEach(function () {
       const iframe = document.getElementById('iframe')
