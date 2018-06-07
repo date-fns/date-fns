@@ -18,11 +18,24 @@ var monthValues = {
   wide: ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
 }
 
+var formattingMonthValues = {
+  narrow: monthValues.narrow,
+  abbreviated: monthValues.abbreviated,
+  wide: monthValues.wide.map(name => name + 'ta')
+}
+
 var dayValues = {
   narrow: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
   short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
   abbreviated: ['sunn.', 'maan.', 'tiis.', 'kesk.', 'torst.', 'perj.', 'la'],
   wide: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
+}
+
+var formattingDayValues = {
+  narrow: dayValues.narrow,
+  short: dayValues.short,
+  abbreviated: dayValues.abbreaviated,
+  wide: dayValues.wide.map(name => name + "na")
 }
 
 var dayPeriodValues = {
@@ -81,11 +94,13 @@ var localize = {
 
   month: buildLocalizeFn({
     values: monthValues,
+    formattingValues: formattingMonthValues,
     defaultWidth: 'wide'
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
+    formattingValues: formattingDayValues,
     defaultWidth: 'wide'
   }),
 
