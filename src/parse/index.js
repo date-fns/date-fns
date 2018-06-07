@@ -38,6 +38,7 @@ var doubleQuoteRegExp = /''/g
  * with a few additions (see note 5 below the table).
  *
  * Accepted format string patterns:
+ *
  * | Unit                            |Prior| Pattern | Result examples                   | Notes |
  * |---------------------------------|-----|---------|-----------------------------------|-------|
  * | Era                             | 140 | G..GGG  | AD, BC                            |       |
@@ -173,6 +174,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 |     | tt      | ...                               | 2     |
  * | Milliseconds timestamp          |  10 | T       | 512969520900                      |       |
  * |                                 |     | TT      | ...                               | 2     |
+ *
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.

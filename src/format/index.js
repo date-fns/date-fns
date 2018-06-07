@@ -43,6 +43,7 @@ var doubleQuoteRegExp = /''/g
  * with a few additions (see note 7 below the table).
  *
  * Accepted patterns:
+ *
  * | Unit                            | Pattern | Result examples                   | Notes |
  * |---------------------------------|---------|-----------------------------------|-------|
  * | Era                             | G..GGG  | AD, BC                            |       |
@@ -194,6 +195,7 @@ var doubleQuoteRegExp = /''/g
  * |                                 | PPpp    | May 29, 1453, 12:00:00 AM         | 7     |
  * |                                 | PPPppp  | May 29th, 1453 at ...             | 7     |
  * |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     | 2,7   |
+ *
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
