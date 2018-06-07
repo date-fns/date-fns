@@ -1,3 +1,5 @@
+import toInteger from '../_lib/toInteger/index.js'
+
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
@@ -90,7 +92,7 @@ export default function toDate (argument, dirtyOptions) {
 
   var options = dirtyOptions || {}
 
-  var additionalDigits = options.additionalDigits === undefined ? DEFAULT_ADDITIONAL_DIGITS : Number(options.additionalDigits)
+  var additionalDigits = options.additionalDigits == null ? DEFAULT_ADDITIONAL_DIGITS : toInteger(options.additionalDigits)
   if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }

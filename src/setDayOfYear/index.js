@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -27,7 +28,7 @@ export default function setDayOfYear (dirtyDate, dirtyDayOfYear, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var dayOfYear = Number(dirtyDayOfYear)
+  var dayOfYear = toInteger(dirtyDayOfYear)
   date.setMonth(0)
   date.setDate(dayOfYear)
   return date

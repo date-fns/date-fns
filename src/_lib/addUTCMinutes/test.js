@@ -24,6 +24,11 @@ describe('addUTCMinutes', function () {
     assert.deepEqual(result, new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 20)))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = addUTCMinutes(new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 0)), 30.5)
+    assert.deepEqual(result, new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 30)))
+  })
+
   it('implicitly converts number arguments', function () {
     var result = addUTCMinutes(new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 0)), '30')
     assert.deepEqual(result, new Date(Date.UTC(2014, 6 /* Jul */, 10, 12, 30)))

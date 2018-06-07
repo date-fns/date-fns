@@ -131,7 +131,7 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     dateRight = toDate(dirtyBaseDate, options)
   }
 
-  var roundingMethod = options.roundingMethod ? String(options.roundingMethod) : 'round'
+  var roundingMethod = options.roundingMethod == null ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -149,7 +149,7 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   var minutes = roundingMethodFn(seconds / 60) - offset
 
   var unit
-  if (options.unit === undefined) {
+  if (options.unit == null) {
     if (minutes < 1) {
       unit = 'second'
     } else if (minutes < 60) {

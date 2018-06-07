@@ -44,6 +44,11 @@ describe('setDay', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setDay(new Date(2014, 8 /* Sep */, 1), 0.5)
+    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
+  })
+
   it('implicitly converts options', function () {
     // $ExpectedMistake
     var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {weekStartsOn: '1'})

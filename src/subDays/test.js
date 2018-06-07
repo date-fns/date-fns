@@ -20,6 +20,11 @@ describe('subDays', function () {
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 22))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = subDays(new Date(2014, 8 /* Sep */, 1), 10.85)
+    assert.deepEqual(result, new Date(2014, 7 /* Aug */, 22))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = subDays(new Date(2014, 8 /* Sep */, 1), '10')

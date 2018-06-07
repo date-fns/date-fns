@@ -577,11 +577,29 @@ for the list of changes made since `v2.0.0-alpha.1`.
   This change is introduced for consistency with ECMAScript standard library which does the same.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
-- **BREAKING**: all functions now handle arguments by following rules:
+- **BREAKING**: all functions now implicitly convert arguments by following rules:
 
+  |           | date          | number | string      | boolean |
+  |-----------|---------------|--------|-------------|---------|
+  | 0         | new Date(0)   | 0      | '0'         | false   |
+  | '0'       | Invalid Date  | 0      | '0'         | false   |
+  | 1         | new Date(1)   | 1      | '1'         | true    |
+  | '1'       | Invalid Date  | 1      | '1'         | true    |
+  | true      | Invalid Date  | NaN    | 'true'      | true    |
+  | false     | Invalid Date  | NaN    | 'false'     | false   |
+  | null      | Invalid Date  | NaN    | 'null'      | false   |
+  | undefined | Invalid Date  | NaN    | 'undefined' | false   |
+  | NaN       | Invalid Date  | NaN    | 'NaN'       | false   |
+
+  Notes:
   - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
-  - arguments expected to be numbers are converted to numbers using JavaScript's `Number` function;
-  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function.
+  - arguments expected to be numbers are converted to integer numbers using our custom `toInteger` implementation
+    (see [#765](https://github.com/date-fns/date-fns/pull/765));
+  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function;
+  - arguments expected to be booleans are converted to strings using JavaScript's `Boolean` function.
+
+  `null` and `undefined` passed to optional arguments (i.e. properties of `options` argument)
+  are ignored as if no argument was passed.
 
   If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
   an invalid value will be returned:
@@ -591,7 +609,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `NaN` for functions that return numbers;
   - and `String('Invalid Date')` for functions that return strings.
 
-  See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
+  See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
+  [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
 
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
