@@ -1,10 +1,10 @@
 var formatRelativeLocale = {
-  lastWeek: '[last] dddd [at] LT',
-  yesterday: '[yesterday at] LT',
-  today: '[today at] LT',
-  tomorrow: '[tomorrow at] LT',
-  nextWeek: 'dddd [at] LT',
-  other: 'L'
+  lastWeek: '[viime] eeee[na] [klo] LT',
+  yesterday: '[eilen klo] LT',
+  today: '[tänään klo] LT',
+  tomorrow: '[huomenna klo] LT',
+  nextWeek: 'eeee [klo] LT',
+  other: 'P'
 }
 
 export default function formatRelative (token, date, baseDate, options) {
