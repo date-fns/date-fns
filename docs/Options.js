@@ -61,7 +61,7 @@
  *   additionalDigits: 1,
  *   locale: eoLocale
  * }
- * var result = format(startOfWeek('+12345-12-15', options), 'EEEE, d MMMM yyyy', options)
+ * var result = formatDate(startOfWeek('+12345-12-15', options), 'EEEE, d MMMM yyyy', options)
  * //=> 'lundo, 10 decembro 12345'
  */
 var Options = {}

@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import locale from '.'
 
-import format from '../../format'
+import formatDate from '../../formatDate'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
@@ -15,42 +15,42 @@ describe('en-CA locale', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
     it('era', function () {
-      var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
+      var result = formatDate(date, 'G, GGGG, GGGGG', {locale: locale})
       assert(result === 'AD, Anno Domini, A')
     })
 
     describe('year', function () {
       it('ordinal regular year', function () {
-        var result = format(date, "yo 'year'", {locale: locale})
+        var result = formatDate(date, "yo 'year'", {locale: locale})
         assert(result === '1986th year')
       })
 
       it('ordinal local week-numbering year', function () {
-        var result = format(date, "Yo 'week-numbering year'", {locale: locale})
+        var result = formatDate(date, "Yo 'week-numbering year'", {locale: locale})
         assert(result === '1986th week-numbering year')
       })
     })
 
     describe('quarter', function () {
       it('formatting quarter', function () {
-        var result = format(date, "Qo 'quarter', QQQ, QQQQ, QQQQQ", {locale: locale})
+        var result = formatDate(date, "Qo 'quarter', QQQ, QQQQ, QQQQQ", {locale: locale})
         assert(result === '2nd quarter, Q2, 2nd quarter, 2')
       })
 
       it('stand-alone quarter', function () {
-        var result = format(date, "qo 'quarter', qqq, qqqq, qqqqq", {locale: locale})
+        var result = formatDate(date, "qo 'quarter', qqq, qqqq, qqqqq", {locale: locale})
         assert(result === '2nd quarter, Q2, 2nd quarter, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, "do 'of' MMMM", {locale: locale})
+        var result = formatDate(date, "do 'of' MMMM", {locale: locale})
         assert(result === '5th of April')
       })
 
       it('stand-alone month', function () {
-        var result = format(date, "Lo 'month', LLL, LLLL, LLLLL", {locale: locale})
+        var result = formatDate(date, "Lo 'month', LLL, LLLL, LLLLL", {locale: locale})
         assert(result === '4th month, Apr, April, A')
       })
     })
@@ -58,123 +58,123 @@ describe('en-CA locale', function () {
     describe('week', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'week'", {locale: locale})
+        var result = formatDate(date, "wo 'week'", {locale: locale})
         assert(result === '15th week')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'ISO week'", {locale: locale})
+        var result = formatDate(date, "Io 'ISO week'", {locale: locale})
         assert(result === '14th ISO week')
       })
     })
 
     describe('day', function () {
       it('ordinal date', function () {
-        var result = format(date, "'today is the' do", {locale: locale})
+        var result = formatDate(date, "'today is the' do", {locale: locale})
         assert(result === 'today is the 5th')
       })
 
       it('ordinal day of year', function () {
-        var result = format(date, "Do 'day of the year'", {locale: locale})
+        var result = formatDate(date, "Do 'day of the year'", {locale: locale})
         assert(result === '95th day of the year')
       })
     })
 
     describe('week day', function () {
       it('day of week', function () {
-        var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
+        var result = formatDate(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
         assert(result === 'Sat, Saturday, S, Sa')
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "eo 'day of the week'", {locale: locale})
+        var result = formatDate(date, "eo 'day of the week'", {locale: locale})
         assert(result === '7th day of the week')
       })
     })
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho 'hour'", {locale: locale})
+        var result = formatDate(date, "ho 'hour'", {locale: locale})
         assert(result === '10th hour')
       })
 
       it('AM, PM', function () {
-        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        var result = formatDate(date, 'h a, h aaaa, haaaaa', {locale: locale})
         assert(result === '10 AM, 10 a.m., 10a')
       })
 
       it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
+        var result = formatDate(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
         assert(result === 'midnight, midnight, mi')
       })
 
       it('flexible day periods', function () {
         it('works as expected', function () {
-          var result = format(date, 'h B', {locale: locale})
+          var result = formatDate(date, 'h B', {locale: locale})
           assert(result === '10 in the morning')
         })
       })
     })
 
     it('ordinal minute', function () {
-      var result = format(date, "mo 'minute'", {locale: locale})
+      var result = formatDate(date, "mo 'minute'", {locale: locale})
       assert(result === '32nd minute')
     })
 
     it('ordinal second', function () {
-      var result = format(date, "so 'second'", {locale: locale})
+      var result = formatDate(date, "so 'second'", {locale: locale})
       assert(result === '0th second')
     })
 
     describe('long format', function () {
       it('short date', function () {
-        var result = format(date, 'P', {locale: locale})
+        var result = formatDate(date, 'P', {locale: locale})
         assert(result === '1986-04-05')
       })
 
       it('medium date', function () {
-        var result = format(date, 'PP', {locale: locale})
+        var result = formatDate(date, 'PP', {locale: locale})
         assert(result === 'Apr 5, 1986')
       })
 
       it('long date', function () {
-        var result = format(date, 'PPP', {locale: locale})
+        var result = formatDate(date, 'PPP', {locale: locale})
         assert(result === 'April 5th, 1986')
       })
 
       it('full date', function () {
-        var result = format(date, 'PPPP', {locale: locale})
+        var result = formatDate(date, 'PPPP', {locale: locale})
         assert(result === 'Saturday, April 5th, 1986')
       })
 
       it('short time', function () {
-        var result = format(date, 'p', {locale: locale})
+        var result = formatDate(date, 'p', {locale: locale})
         assert(result === '10:32 AM')
       })
 
       it('medium time', function () {
-        var result = format(date, 'pp', {locale: locale})
+        var result = formatDate(date, 'pp', {locale: locale})
         assert(result === '10:32:00 AM')
       })
 
       it('short date + time', function () {
-        var result = format(date, 'Pp', {locale: locale})
+        var result = formatDate(date, 'Pp', {locale: locale})
         assert(result === '1986-04-05, 10:32 AM')
       })
 
       it('medium date + time', function () {
-        var result = format(date, 'PPpp', {locale: locale})
+        var result = formatDate(date, 'PPpp', {locale: locale})
         assert(result === 'Apr 5, 1986, 10:32:00 AM')
       })
 
       it('long date + time', function () {
-        var result = format(date, 'PPPp', {locale: locale})
+        var result = formatDate(date, 'PPPp', {locale: locale})
         assert(result === 'April 5th, 1986 at 10:32 AM')
       })
 
       it('full date + time', function () {
-        var result = format(date, 'PPPPp', {locale: locale})
+        var result = formatDate(date, 'PPPPp', {locale: locale})
         assert(result === 'Saturday, April 5th, 1986 at 10:32 AM')
       })
     })

@@ -629,9 +629,9 @@ describe('FP functions', function () {
     assert.deepEqual(result, new Date(2014, 11 /* Dec */, 31, 23, 59, 59, 999))
   })
 
-  it('format', function () {
+  it('formatDate', function () {
     var date = new Date(2014, 3, 4).toISOString()
-    var result = fp.format('yyyy-MM-dd')(date)
+    var result = fp.formatDate('yyyy-MM-dd')(date)
     assert(result === '2014-04-04')
   })
 

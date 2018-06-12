@@ -27,7 +27,7 @@ var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
 
 /**
- * @name format
+ * @name formatDate
  * @category Common Helpers
  * @summary Format the date.
  *
@@ -200,9 +200,9 @@ var doubleQuoteRegExp = /''/g
  *    "Formatting" units are declined according to the rules of the language
  *    in the context of a date. "Stand-alone" units are always nominative singular:
  *
- *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
+ *    `formatDate(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
  *
- *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *    `formatDate(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
  *    the single quote characters (see below).
@@ -211,20 +211,20 @@ var doubleQuoteRegExp = /''/g
  *    the longest one (in case of ISO weekdays, `EEEE`). Default patterns for units
  *    are marked with "2" in the last column of the table.
  *
- *    `format(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMM') //=> 'Nov'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMM') //=> 'November'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMM') //=> 'N'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMMM') //=> 'November'`
  *
- *    `format(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
+ *    `formatDate(new Date(2017, 10, 6), 'MMMMMMM') //=> 'November'`
  *
  * 3. Some patterns could be unlimited length (such as `yyyyyyyy`).
  *    The output will be padded with zeros to match the length of the pattern.
  *
- *    `format(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
+ *    `formatDate(new Date(2017, 10, 6), 'yyyyyyyy') //=> '00002017'`
  *
  * 4. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
  *    These tokens represent the shortest form of the quarter.
@@ -266,7 +266,7 @@ var doubleQuoteRegExp = /''/g
  *    - `p`: long localized time
  *
  * @param {Date|String|Number} date - the original date
- * @param {String} format - the string of tokens
+ * @param {String} formatDate - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
@@ -282,7 +282,7 @@ var doubleQuoteRegExp = /''/g
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
- * var result = format(
+ * var result = formatDate(
  *   new Date(2014, 1, 11),
  *   'MM/dd/yyyy'
  * )
@@ -291,7 +291,7 @@ var doubleQuoteRegExp = /''/g
  * @example
  * // Represent 2 July 2014 in Esperanto:
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = format(
+ * var result = formatDate(
  *   new Date(2014, 6, 2),
  *   "do 'de' MMMM yyyy",
  *   {locale: eoLocale}
@@ -300,13 +300,13 @@ var doubleQuoteRegExp = /''/g
  *
  * @example
  * // Escape string by single quote characters:
- * var result = format(
+ * var result = formatDate(
  *   new Date(2014, 6, 2, 15),
  *   "h 'o''clock'"
  * )
  * //=> "3 o'clock"
  */
-export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
+export default function formatDate (dirtyDate, dirtyFormatStr, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
   }
