@@ -10,7 +10,7 @@
 
 const fetch = require('node-fetch')
 const {execSync} = require('child_process')
-const formatDate = require('../../src/format')
+const formatDate = require('../../src/formatDate')
 
 const zapierHookURL =
   `https://zapier.com/hooks/catch/${process.env.ZAPIER_TWEET_RELEASE_HOOK_ID}/`

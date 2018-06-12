@@ -17,13 +17,13 @@ like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
 
 ```javascript
 // Without tree-shaking:
-import format from 'date-fns/format'
+import formatDate from 'date-fns/formatDate'
 import parse from 'date-fns/parse'
 import enUS from 'date-fns/locale/en-US'
 import eo from 'date-fns/locale/eo'
 
 // With tree-shaking:
-import {format, parse} from 'date-fns/esm'
+import {formatDate, parse} from 'date-fns/esm'
 import {enUS, eo} from 'date-fns/esm/locale'
 ```
 
@@ -37,8 +37,8 @@ they can be used with TypeScript to import functions in more idiomatic way:
 
 ```typescript
 // In TypeScript, instead of importing regular function submodules:
-import * as format from 'date-fns/format'
+import * as formatDate from 'date-fns/formatDate'
 
 // you can use 'date-fns/esm' function submodules as a shortcut:
-import format from 'date-fns/esm/format'
+import formatDate from 'date-fns/esm/formatDate'
 ```

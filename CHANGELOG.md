@@ -55,11 +55,11 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   ```javascript
   // Without tree-shaking:
-  import format from 'date-fns/format'
+  import formatDate from 'date-fns/formatDate'
   import parse from 'date-fns/parse'
 
   // With tree-shaking:
-  import {format, parse} from 'date-fns/esm'
+  import {formatDate, parse} from 'date-fns/esm'
   ```
 
   Also, as `'date-fns/esm'` function submodules provide default export,
@@ -67,10 +67,10 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   ```typescript
   // In TypeScript,
-  import * as format from 'date-fns/format'
+  import * as formatDate from 'date-fns/formatDate'
 
   // is same as:
-  import format from 'date-fns/esm/format'
+  import formatDate from 'date-fns/esm/formatDate'
   ```
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
@@ -364,7 +364,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   format(new Date(2016, 0, 1))
 
   // v2.0.0 onward
-  format(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+  formatDate(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
   ```
 
 - **BREAKING** renamed ISO week-numbering year helpers:
@@ -1068,7 +1068,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 ### Fixed
 
 - Fix incorrect behaviour of `YYYY` and `YY` for years prior to 1000:
-  now `format(new Date('0001-01-01'), 'YYYY-MM-DD')` returns `0001-01-01`
+  now `formatDate(new Date('0001-01-01'), 'YYYY-MM-DD')` returns `0001-01-01`
   instead of `1-01-01`.
 
 ## [1.3.0] - 2016-05-26

@@ -1,9 +1,9 @@
 // @flow
 
-var format = require('date-fns').format
+var formatDate = require('date-fns').formatDate
 var eo = require('date-fns/locale/eo')
 
 var dateString : string = '2017-01-25T21:28:15.000Z'
 var formatString : string = 'dd.MM.yyyy HH:mm:ss'
-var result : string = format('2017-01-25T21:28:15.000Z', 'eeee, dd MMMM HH:mm:ss', {locale: eo})
+var result : string = formatDate('2017-01-25T21:28:15.000Z', 'eeee, dd MMMM HH:mm:ss', {locale: eo})
 console.log(result === 'merkredo, 25 januaro 21:28:15')

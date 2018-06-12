@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import locale from '.'
 
-import format from '../../format'
+import formatDate from '../../formatDate'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
@@ -15,42 +15,42 @@ describe('nb locale', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
     it('era', function () {
-      var result = format(date, 'G, GGGG, GGGGG', { locale: locale })
+      var result = formatDate(date, 'G, GGGG, GGGGG', { locale: locale })
       assert(result === 'e.Kr., etter Kristus, e.Kr.')
     })
 
     describe('year', function () {
       it('ordinal regular year', function () {
-        var result = format(date, "yo 'året'", { locale: locale })
+        var result = formatDate(date, "yo 'året'", { locale: locale })
         assert(result === '1986. året')
       })
 
       it('ordinal local week-numbering year', function () {
-        var result = format(date, "Yo 'uke-tellende år'", { locale: locale })
+        var result = formatDate(date, "Yo 'uke-tellende år'", { locale: locale })
         assert(result === '1986. uke-tellende år')
       })
     })
 
     describe('quarter', function () {
       it('formatting quarter', function () {
-        var result = format(date, "Qo 'kvartal', QQQ, QQQQ, QQQQQ", { locale: locale })
+        var result = formatDate(date, "Qo 'kvartal', QQQ, QQQQ, QQQQQ", { locale: locale })
         assert(result === '2. kvartal, Q2, 2. kvartal, 2')
       })
 
       it('stand-alone quarter', function () {
-        var result = format(date, "qo 'kvartal', qqq, qqqq, qqqqq", { locale: locale })
+        var result = formatDate(date, "qo 'kvartal', qqq, qqqq, qqqqq", { locale: locale })
         assert(result === '2. kvartal, Q2, 2. kvartal, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, 'do MMMM', { locale: locale })
+        var result = formatDate(date, 'do MMMM', { locale: locale })
         assert(result === '5. april')
       })
 
       it('stand-alone month', function () {
-        var result = format(date, "Lo 'måneden', LLL, LLLL", { locale: locale })
+        var result = formatDate(date, "Lo 'måneden', LLL, LLLL", { locale: locale })
         assert(result === '4. måneden, apr., april')
       })
     })
@@ -58,123 +58,123 @@ describe('nb locale', function () {
     describe('week', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'uken'", { locale: locale })
+        var result = formatDate(date, "wo 'uken'", { locale: locale })
         assert(result === '14. uken')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'ISO uken'", { locale: locale })
+        var result = formatDate(date, "Io 'ISO uken'", { locale: locale })
         assert(result === '14. ISO uken')
       })
     })
 
     describe('day', function () {
       it('ordinal date', function () {
-        var result = format(date, "'i dag er den' do", { locale: locale })
+        var result = formatDate(date, "'i dag er den' do", { locale: locale })
         assert(result === 'i dag er den 5.')
       })
 
       it('ordinal day of year', function () {
-        var result = format(date, "Do 'dagen i året'", { locale: locale })
+        var result = formatDate(date, "Do 'dagen i året'", { locale: locale })
         assert(result === '95. dagen i året')
       })
     })
 
     describe('week day', function () {
       it('day of week', function () {
-        var result = format(date, 'E, EEEE, EEEEE, EEEEEE', { locale: locale })
+        var result = formatDate(date, 'E, EEEE, EEEEE, EEEEEE', { locale: locale })
         assert(result === 'lør, lørdag, L, lø')
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "eo 'dagen i uken'", { locale: locale })
+        var result = formatDate(date, "eo 'dagen i uken'", { locale: locale })
         assert(result === '6. dagen i uken')
       })
     })
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho 'timen'", { locale: locale })
+        var result = formatDate(date, "ho 'timen'", { locale: locale })
         assert(result === '10. timen')
       })
 
       // it('AM, PM', function () {
-      //   var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+      //   var result = formatDate(date, 'h a, h aaaa, haaaaa', {locale: locale})
       //   assert(result === '10 fm, 10 a.m., 10a')
       // })
 
       it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', { locale: locale })
+        var result = formatDate(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', { locale: locale })
         assert(result === 'midnatt, midnatt')
       })
 
       it('flexible day periods', function () {
         it('works as expected', function () {
-          var result = format(date, 'h B', { locale: locale })
+          var result = formatDate(date, 'h B', { locale: locale })
           assert(result === '10 på morgenen')
         })
       })
     })
 
     it('ordinal minute', function () {
-      var result = format(date, "mo 'minutt'", { locale: locale })
+      var result = formatDate(date, "mo 'minutt'", { locale: locale })
       assert(result === '32. minutt')
     })
 
     it('ordinal second', function () {
-      var result = format(date, "so 'sekund'", { locale: locale })
+      var result = formatDate(date, "so 'sekund'", { locale: locale })
       assert(result === '0. sekund')
     })
 
-    describe('long format', function () {
+    describe('long formatDate', function () {
       it('short date', function () {
-        var result = format(date, 'P', { locale: locale })
+        var result = formatDate(date, 'P', { locale: locale })
         assert(result === '05.04.1986')
       })
 
       it('medium date', function () {
-        var result = format(date, 'PP', { locale: locale })
+        var result = formatDate(date, 'PP', { locale: locale })
         assert(result === '5. apr. 1986')
       })
 
       it('long date', function () {
-        var result = format(date, 'PPP', { locale: locale })
+        var result = formatDate(date, 'PPP', { locale: locale })
         assert(result === '5. april 1986')
       })
 
       it('full date', function () {
-        var result = format(date, 'PPPP', { locale: locale })
+        var result = formatDate(date, 'PPPP', { locale: locale })
         assert(result === 'lørdag 5. april 1986')
       })
 
       it('short time', function () {
-        var result = format(date, 'p', { locale: locale })
+        var result = formatDate(date, 'p', { locale: locale })
         assert(result === '10:32')
       })
 
       it('medium time', function () {
-        var result = format(date, 'pp', { locale: locale })
+        var result = formatDate(date, 'pp', { locale: locale })
         assert(result === '10:32:00')
       })
 
       it('short date + time', function () {
-        var result = format(date, 'Pp', { locale: locale })
+        var result = formatDate(date, 'Pp', { locale: locale })
         assert(result === '05.04.1986 10:32')
       })
 
       it('medium date + time', function () {
-        var result = format(date, 'PPpp', { locale: locale })
+        var result = formatDate(date, 'PPpp', { locale: locale })
         assert(result === '5. apr. 1986 10:32:00')
       })
 
       it('long date + time', function () {
-        var result = format(date, 'PPPp', { locale: locale })
+        var result = formatDate(date, 'PPPp', { locale: locale })
         assert(result === '5. april 1986 kl. 10:32')
       })
 
       it('full date + time', function () {
-        var result = format(date, 'PPPPp', { locale: locale })
+        var result = formatDate(date, 'PPPPp', { locale: locale })
         assert(result === 'lørdag 5. april 1986 kl. 10:32')
       })
     })

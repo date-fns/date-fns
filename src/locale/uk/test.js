@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import locale from '.'
 
-import format from '../../format'
+import formatDate from '../../formatDate'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
@@ -15,42 +15,42 @@ describe('uk locale', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
     it('era', function () {
-      var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
+      var result = formatDate(date, 'G, GGGG, GGGGG', {locale: locale})
       assert(result === 'н. е., нашої ери, н.е.')
     })
 
     describe('year', function () {
       it('ordinal regular year', function () {
-        var result = format(date, "yo 'рік'", {locale: locale})
+        var result = formatDate(date, "yo 'рік'", {locale: locale})
         assert(result === '1986-й рік')
       })
 
       it('ordinal local week-numbering year', function () {
-        var result = format(date, "Yo 'рік'", {locale: locale})
+        var result = formatDate(date, "Yo 'рік'", {locale: locale})
         assert(result === '1986-й рік')
       })
     })
 
     describe('quarter', function () {
       it('formatting quarter', function () {
-        var result = format(date, "Qo 'квартал', QQQ, QQQQ, QQQQQ", {locale: locale})
+        var result = formatDate(date, "Qo 'квартал', QQQ, QQQQ, QQQQQ", {locale: locale})
         assert(result === '2-й квартал, 2-й кв., 2-й квартал, 2')
       })
 
       it('stand-alone quarter', function () {
-        var result = format(date, "qo 'квартал', qqq, qqqq, qqqqq", {locale: locale})
+        var result = formatDate(date, "qo 'квартал', qqq, qqqq, qqqqq", {locale: locale})
         assert(result === '2-й квартал, 2-й кв., 2-й квартал, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, 'do MMMM', {locale: locale})
+        var result = formatDate(date, 'do MMMM', {locale: locale})
         assert(result === '5-е квітня')
       })
 
       it('stand-alone month', function () {
-        var result = format(date, "Lo 'місяць', LLL, LLLL, LLLLL", {locale: locale})
+        var result = formatDate(date, "Lo 'місяць', LLL, LLLL, LLLLL", {locale: locale})
         assert(result === '4-й місяць, квіт., квітень, К')
       })
     })
@@ -58,123 +58,123 @@ describe('uk locale', function () {
     describe('week', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'тиждень'", {locale: locale})
+        var result = formatDate(date, "wo 'тиждень'", {locale: locale})
         assert(result === '14-й тиждень')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'тиждень'", {locale: locale})
+        var result = formatDate(date, "Io 'тиждень'", {locale: locale})
         assert(result === '14-й тиждень')
       })
     })
 
     describe('day', function () {
       it('ordinal date', function () {
-        var result = format(date, "'сьогодні' do 'число'", {locale: locale})
+        var result = formatDate(date, "'сьогодні' do 'число'", {locale: locale})
         assert(result === 'сьогодні 5-е число')
       })
 
       it('ordinal day of year', function () {
-        var result = format(date, "Do 'день року'", {locale: locale})
+        var result = formatDate(date, "Do 'день року'", {locale: locale})
         assert(result === '95-й день року')
       })
     })
 
     describe('week day', function () {
       it('day of week', function () {
-        var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
+        var result = formatDate(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
         assert(result === 'суб, субота, С, сб')
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "eo 'день тижня'", {locale: locale})
+        var result = formatDate(date, "eo 'день тижня'", {locale: locale})
         assert(result === '6-й день тижня')
       })
     })
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho 'година'", {locale: locale})
+        var result = formatDate(date, "ho 'година'", {locale: locale})
         assert(result === '10-а година')
       })
 
       it('AM, PM', function () {
-        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        var result = formatDate(date, 'h a, h aaaa, haaaaa', {locale: locale})
         assert(result === '10 ДП, 10 ДП, 10ДП')
       })
 
       it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
+        var result = formatDate(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
         assert(result === 'півн., північ, півн.')
       })
 
       it('flexible day periods', function () {
         it('works as expected', function () {
-          var result = format(date, 'h B', {locale: locale})
+          var result = formatDate(date, 'h B', {locale: locale})
           assert(result === '10 ранку')
         })
       })
     })
 
     it('ordinal minute', function () {
-      var result = format(date, "mo 'хвилина'", {locale: locale})
+      var result = formatDate(date, "mo 'хвилина'", {locale: locale})
       assert(result === '32-а хвилина')
     })
 
     it('ordinal second', function () {
-      var result = format(date, "so 'секунда'", {locale: locale})
+      var result = formatDate(date, "so 'секунда'", {locale: locale})
       assert(result === '0-а секунда')
     })
 
-    describe('long format', function () {
+    describe('long formatDate', function () {
       it('short date', function () {
-        var result = format(date, 'P', {locale: locale})
+        var result = formatDate(date, 'P', {locale: locale})
         assert(result === '05.04.1986')
       })
 
       it('medium date', function () {
-        var result = format(date, 'PP', {locale: locale})
+        var result = formatDate(date, 'PP', {locale: locale})
         assert(result === '5 квіт. 1986 р.')
       })
 
       it('long date', function () {
-        var result = format(date, 'PPP', {locale: locale})
+        var result = formatDate(date, 'PPP', {locale: locale})
         assert(result === '5-е квітня 1986 р.')
       })
 
       it('full date', function () {
-        var result = format(date, 'PPPP', {locale: locale})
+        var result = formatDate(date, 'PPPP', {locale: locale})
         assert(result === 'субота, 5-е квітня 1986 р.')
       })
 
       it('short time', function () {
-        var result = format(date, 'p', {locale: locale})
+        var result = formatDate(date, 'p', {locale: locale})
         assert(result === '10:32')
       })
 
       it('medium time', function () {
-        var result = format(date, 'pp', {locale: locale})
+        var result = formatDate(date, 'pp', {locale: locale})
         assert(result === '10:32:00')
       })
 
       it('short date + time', function () {
-        var result = format(date, 'Pp', {locale: locale})
+        var result = formatDate(date, 'Pp', {locale: locale})
         assert(result === '05.04.1986, 10:32')
       })
 
       it('medium date + time', function () {
-        var result = format(date, 'PPpp', {locale: locale})
+        var result = formatDate(date, 'PPpp', {locale: locale})
         assert(result === '5 квіт. 1986 р., 10:32:00')
       })
 
       it('long date + time', function () {
-        var result = format(date, 'PPPp', {locale: locale})
+        var result = formatDate(date, 'PPPp', {locale: locale})
         assert(result === '5-е квітня 1986 р. о 10:32')
       })
 
       it('full date + time', function () {
-        var result = format(date, 'PPPPp', {locale: locale})
+        var result = formatDate(date, 'PPPPp', {locale: locale})
         assert(result === 'субота, 5-е квітня 1986 р. о 10:32')
       })
     })

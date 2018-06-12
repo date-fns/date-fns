@@ -17,9 +17,9 @@ for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 [**130+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-import {format, compareAsc} from 'date-fns/esm'
+import {formatDate, compareAsc} from 'date-fns/esm'
 
-format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+formatDate(new Date(2014, 1, 11), 'MM/dd/yyyy')
 //=> '02/11/2014'
 
 const dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]

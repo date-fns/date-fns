@@ -2,16 +2,16 @@
 /* eslint-env mocha */
 /* global suite, benchmark */
 
-import format from '.'
+import formatDate from '.'
 import moment from 'moment'
 
-suite('format', function () {
+suite('formatDate', function () {
   benchmark('date-fns', function () {
-    return format(this.date, 'dddd, MMMM Do YYYY, h:mm:ss a')
+    return formatDate(this.date, 'dddd, MMMM Do YYYY, h:mm:ss a')
   })
 
   benchmark('Moment.js', function () {
-    return this.moment.format('dddd, MMMM Do YYYY, h:mm:ss a')
+    return this.moment.formatDate('dddd, MMMM Do YYYY, h:mm:ss a')
   })
 }, {
   setup: function () {

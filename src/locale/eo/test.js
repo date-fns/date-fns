@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import locale from '.'
 
-import format from '../../format'
+import formatDate from '../../formatDate'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
@@ -15,42 +15,42 @@ describe('eo locale', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
     it('era', function () {
-      var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
+      var result = formatDate(date, 'G, GGGG, GGGGG', {locale: locale})
       assert(result === 'p.K.E., Komuna Erao, pK')
     })
 
     describe('year', function () {
       it('ordinal regular year', function () {
-        var result = format(date, "yo 'jaro'", {locale: locale})
+        var result = formatDate(date, "yo 'jaro'", {locale: locale})
         assert(result === '1986-a jaro')
       })
 
       it('ordinal local week-numbering year', function () {
-        var result = format(date, "Yo 'jaro'", {locale: locale})
+        var result = formatDate(date, "Yo 'jaro'", {locale: locale})
         assert(result === '1986-a jaro')
       })
     })
 
     describe('quarter', function () {
       it('formatting quarter', function () {
-        var result = format(date, "Qo 'kvaronjaro', QQQ, QQQQ, QQQQQ", {locale: locale})
+        var result = formatDate(date, "Qo 'kvaronjaro', QQQ, QQQQ, QQQQQ", {locale: locale})
         assert(result === '2-a kvaronjaro, K2, 2-a kvaronjaro, 2')
       })
 
       it('stand-alone quarter', function () {
-        var result = format(date, "qo 'kvaronjaro', qqq, qqqq, qqqqq", {locale: locale})
+        var result = formatDate(date, "qo 'kvaronjaro', qqq, qqqq, qqqqq", {locale: locale})
         assert(result === '2-a kvaronjaro, K2, 2-a kvaronjaro, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, "do 'de' MMMM", {locale: locale})
+        var result = formatDate(date, "do 'de' MMMM", {locale: locale})
         assert(result === '5-a de aprilo')
       })
 
       it('stand-alone month', function () {
-        var result = format(date, "Lo 'monato', LLL, LLLL, LLLLL", {locale: locale})
+        var result = formatDate(date, "Lo 'monato', LLL, LLLL, LLLLL", {locale: locale})
         assert(result === '4-a monato, apr, aprilo, A')
       })
     })
@@ -58,123 +58,123 @@ describe('eo locale', function () {
     describe('week', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'semajno'", {locale: locale})
+        var result = formatDate(date, "wo 'semajno'", {locale: locale})
         assert(result === '14-a semajno')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'semajno'", {locale: locale})
+        var result = formatDate(date, "Io 'semajno'", {locale: locale})
         assert(result === '14-a semajno')
       })
     })
 
     describe('day', function () {
       it('ordinal date', function () {
-        var result = format(date, "'hodiaŭ estas la' do", {locale: locale})
+        var result = formatDate(date, "'hodiaŭ estas la' do", {locale: locale})
         assert(result === 'hodiaŭ estas la 5-a')
       })
 
       it('ordinal day of year', function () {
-        var result = format(date, "Do 'tago de la jaro'", {locale: locale})
+        var result = formatDate(date, "Do 'tago de la jaro'", {locale: locale})
         assert(result === '95-a tago de la jaro')
       })
     })
 
     describe('week day', function () {
       it('day of week', function () {
-        var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
+        var result = formatDate(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
         assert(result === 'sab, sabato, S, sa')
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "eo 'tago de la semajno'", {locale: locale})
+        var result = formatDate(date, "eo 'tago de la semajno'", {locale: locale})
         assert(result === '6-a tago de la semajno')
       })
     })
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho 'horo'", {locale: locale})
+        var result = formatDate(date, "ho 'horo'", {locale: locale})
         assert(result === '10-a horo')
       })
 
       it('AM, PM', function () {
-        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        var result = formatDate(date, 'h a, h aaaa, haaaaa', {locale: locale})
         assert(result === '10 a.t.m., 10 antaŭtagmeze, 10a')
       })
 
       it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
+        var result = formatDate(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
         assert(result === 'noktomezo, noktomezo, noktomezo')
       })
 
       it('flexible day periods', function () {
         it('works as expected', function () {
-          var result = format(date, 'h B', {locale: locale})
+          var result = formatDate(date, 'h B', {locale: locale})
           assert(result === '10 matene')
         })
       })
     })
 
     it('ordinal minute', function () {
-      var result = format(date, "mo 'minuto'", {locale: locale})
+      var result = formatDate(date, "mo 'minuto'", {locale: locale})
       assert(result === '32-a minuto')
     })
 
     it('ordinal second', function () {
-      var result = format(date, "so 'sekundo'", {locale: locale})
+      var result = formatDate(date, "so 'sekundo'", {locale: locale})
       assert(result === '0-a sekundo')
     })
 
-    describe('long format', function () {
+    describe('long formatDate', function () {
       it('short date', function () {
-        var result = format(date, 'P', {locale: locale})
+        var result = formatDate(date, 'P', {locale: locale})
         assert(result === '1986-04-05')
       })
 
       it('medium date', function () {
-        var result = format(date, 'PP', {locale: locale})
+        var result = formatDate(date, 'PP', {locale: locale})
         assert(result === '1986-apr-05')
       })
 
       it('long date', function () {
-        var result = format(date, 'PPP', {locale: locale})
+        var result = formatDate(date, 'PPP', {locale: locale})
         assert(result === '1986-aprilo-05')
       })
 
       it('full date', function () {
-        var result = format(date, 'PPPP', {locale: locale})
+        var result = formatDate(date, 'PPPP', {locale: locale})
         assert(result === 'sabato, 5-a de aprilo 1986')
       })
 
       it('short time', function () {
-        var result = format(date, 'p', {locale: locale})
+        var result = formatDate(date, 'p', {locale: locale})
         assert(result === '10:32')
       })
 
       it('medium time', function () {
-        var result = format(date, 'pp', {locale: locale})
+        var result = formatDate(date, 'pp', {locale: locale})
         assert(result === '10:32:00')
       })
 
       it('short date + time', function () {
-        var result = format(date, 'Pp', {locale: locale})
+        var result = formatDate(date, 'Pp', {locale: locale})
         assert(result === '1986-04-05 10:32')
       })
 
       it('medium date + time', function () {
-        var result = format(date, 'PPpp', {locale: locale})
+        var result = formatDate(date, 'PPpp', {locale: locale})
         assert(result === '1986-apr-05 10:32:00')
       })
 
       it('long date + time', function () {
-        var result = format(date, 'PPPp', {locale: locale})
+        var result = formatDate(date, 'PPPp', {locale: locale})
         assert(result === '1986-aprilo-05 10:32')
       })
 
       it('full date + time', function () {
-        var result = format(date, 'PPPPp', {locale: locale})
+        var result = formatDate(date, 'PPPPp', {locale: locale})
         assert(result === 'sabato, 5-a de aprilo 1986 10:32')
       })
     })
