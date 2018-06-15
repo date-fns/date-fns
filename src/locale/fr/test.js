@@ -16,7 +16,7 @@ describe('fr locale', function () {
 
     it('era', function () {
       var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
-      assert(result === 'ap.J.-C, après Jésus-Christ, ap.J.C')
+      assert(result === 'ap. J.-C, après Jésus-Christ, ap. J.-C')
     })
 
     describe('year', function () {
@@ -59,7 +59,7 @@ describe('fr locale', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, "wo 'semaine'", {locale: locale})
-        assert(result === '15ème semaine')
+        assert(result === '14ème semaine')
       })
 
       it('ordinal ISO week of year', function () {
@@ -105,7 +105,7 @@ describe('fr locale', function () {
       })
 
       it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', {locale: locale})
+        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', {locale: locale})
         assert(result === 'minuit, minuit, minuit')
       })
 
@@ -150,32 +150,32 @@ describe('fr locale', function () {
 
       it('short time', function () {
         var result = format(date, 'p', {locale: locale})
-        assert(result === '10h32')
+        assert(result === '10:32')
       })
 
       it('medium time', function () {
         var result = format(date, 'pp', {locale: locale})
-        assert(result === '10h32')
+        assert(result === '10:32:00')
       })
 
       it('short date + time', function () {
         var result = format(date, 'Pp', {locale: locale})
-        assert(result === '05/04/1986, 10h32')
+        assert(result === '05/04/1986, 10:32')
       })
 
       it('medium date + time', function () {
         var result = format(date, 'PPpp', {locale: locale})
-        assert(result === '5 avr. 1986, 10h32')
+        assert(result === '5 avr. 1986, 10:32:00')
       })
 
       it('long date + time', function () {
         var result = format(date, 'PPPp', {locale: locale})
-        assert(result === '5 avril 1986 à 10h32')
+        assert(result === '5 avril 1986 à 10:32')
       })
 
       it('full date + time', function () {
         var result = format(date, 'PPPPp', {locale: locale})
-        assert(result === 'samedi 5 avril 1986 à 10h32')
+        assert(result === 'samedi 5 avril 1986 à 10:32')
       })
     })
   })
