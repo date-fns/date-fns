@@ -13,7 +13,6 @@ var parseEraPatterns = {
   any: [/^av/i, /^ap/i]
 }
 
-
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^t[1234]/i,
@@ -47,7 +46,7 @@ var parseDayPatterns = {
 // those have to be checked
 var matchDayPeriodPatterns = {
   narrow: /^(am|pm|minuit|midi|mat|ap\.m\.|soir)/i,
-  any: /^(am|pm|(du|de l\') (matin|après-midi|soir))/i
+  any: /^(am|pm|(du|de l') (matin|après-midi|soir))/i
 }
 var parseDayPeriodPatterns = {
   any: {

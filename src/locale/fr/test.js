@@ -45,7 +45,7 @@ describe('fr locale', function () {
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, "d MMMM", {locale: locale})
+        var result = format(date, 'd MMMM', {locale: locale})
         assert(result === '5 avril')
       })
 
@@ -77,7 +77,7 @@ describe('fr locale', function () {
 
       it('ordinal day of year', function () {
         var result = format(date, "Do 'jour'", {locale: locale})
-        assert(result === "95ème jour")
+        assert(result === '95ème jour')
       })
     })
 
@@ -99,27 +99,23 @@ describe('fr locale', function () {
         assert(result === '10ème heure')
       })
 
-      // France is using a 24h day, there are no AM PM notions
-      // it('AM, PM', function () {
-      //   var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
-      //   assert(result === '10h, 10h, 10h')
-      // })
-
-      // removed the 3rd assertion, AFAIK there are no narrow versions of midnight in French
-      it('AM, PM, noon, midnight', function () {
-        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', {locale: locale})
-        assert(result === 'minuit, minuit')
+      it('AM, PM', function () {
+        var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
+        assert(result === '10 AM, 10 AM, 10AM')
       })
 
-      // where should the h be added ?
+      it('AM, PM, noon, midnight', function () {
+        var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb', {locale: locale})
+        assert(result === 'minuit, minuit, minuit')
+      })
+
       it('flexible day periods', function () {
         it('works as expected', function () {
           var result = format(date, 'h B', {locale: locale})
-          assert(result === '10h du matin')
+          assert(result === '10 du matin')
         })
       })
     })
-
 
     it('ordinal minute', function () {
       var result = format(date, "mo 'minute'", {locale: locale})

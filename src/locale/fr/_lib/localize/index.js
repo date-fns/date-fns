@@ -25,7 +25,6 @@ var dayValues = {
   wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 }
 
-// Note: France uses a 24h day, hence there are no notions of am and pm
 var dayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -71,7 +70,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   }
 
   if (unit === 'day' && number === 1) {
-      suffix = 'er'
+    suffix = 'er'
   } else {
     if (number === 1) {
       suffix = 'ère'
