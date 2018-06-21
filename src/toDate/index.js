@@ -1,4 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -128,11 +129,11 @@ export default function toDate (argument, dirtyOptions) {
       offset = parseTimezone(dateStrings.timezone)
     } else {
       // get offset accurate to hour in timezones that change offset
-      offset = new Date(timestamp + time).getTimezoneOffset()
-      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+      offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
+      offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time + offset))
     }
 
-    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
+    return new Date(timestamp + time + offset)
   } else {
     return new Date(NaN)
   }
@@ -314,14 +315,14 @@ function parseTimezone (timezoneString) {
   // ±hh
   token = patterns.timezoneHH.exec(timezoneString)
   if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60
+    absoluteOffset = parseInt(token[2], 10) * MILLISECONDS_IN_HOUR
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
   // ±hh:mm or ±hhmm
   token = patterns.timezoneHHMM.exec(timezoneString)
   if (token) {
-    absoluteOffset = parseInt(token[2], 10) * 60 + parseInt(token[3], 10)
+    absoluteOffset = parseInt(token[2], 10) * MILLISECONDS_IN_HOUR + parseInt(token[3], 10) * MILLISECONDS_IN_MINUTE
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
