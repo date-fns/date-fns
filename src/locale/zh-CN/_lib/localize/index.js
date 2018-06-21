@@ -95,7 +95,6 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
@@ -120,7 +119,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
     minute: ' 分',
     second: ' 秒'
   }
-  return '第 '+ number + unitMap[unit]
+  return '第 ' + number + unitMap[unit]
 }
 
 var localize = {
