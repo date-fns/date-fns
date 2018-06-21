@@ -1,10 +1,11 @@
 import toInteger from '../_lib/toInteger/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
 import longFormatters from './_lib/longFormatters/index.js'
-import addUTCMinutes from '../_lib/addUTCMinutes/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -359,8 +360,8 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  var timezoneOffset = originalDate.getTimezoneOffset()
-  var utcDate = addUTCMinutes(originalDate, -timezoneOffset, options)
+  var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
+  var utcDate = subMilliseconds(originalDate, timezoneOffset, options)
 
   var formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate,

@@ -1,6 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
-import subMinutes from '../subMinutes/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 
@@ -416,7 +417,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  var utcDate = subMinutes(date, date.getTimezoneOffset())
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
