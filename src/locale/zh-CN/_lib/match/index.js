@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^第(\d+)?/i
+var matchOrdinalNumberPattern = /^(第\s)(\d+)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
@@ -10,13 +10,13 @@ var matchEraPatterns = {
   wide: /^(公元前|公元)/i
 }
 var parseEraPatterns = {
-  any: [/^(前)/i, /^.*/i]
+  any: [/^(前)/i, /^(公元)/i]
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^[一二三四]刻/i,
-  wide: /^[一二三四]刻钟/i
+  abbreviated: /^第[一二三四]刻/i,
+  wide: /^第[一二三四]刻钟/i
 }
 var parseQuarterPatterns = {
   any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i]
@@ -28,8 +28,8 @@ var matchMonthPatterns = {
   wide: /^[一二三四五六七八九十]月/i
 }
 var parseMonthPatterns = {
-  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十/i, /^十一/i, /^十二/i],
-  any: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十/i, /^十一/i, /^十二/i]
+  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
+  any: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i]
 }
 
 var matchDayPatterns = {
@@ -39,8 +39,7 @@ var matchDayPatterns = {
   wide: /^星期[一二三四五六日]/i
 }
 var parseDayPatterns = {
-  narrow: [/^日/i, /^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i],
-  any: [/^日/i, /^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i]
+  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i]
 }
 
 var matchDayPeriodPatterns = {

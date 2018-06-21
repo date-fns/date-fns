@@ -1,15 +1,15 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var eraValues = {
-  narrow: ['前', ''],
-  abbreviated: ['前', ''],
+  narrow: ['前', '公元'],
+  abbreviated: ['前', '公元'],
   wide: ['公元前', '公元']
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
-  abbreviated: ['一刻', '两刻', '三刻', '三刻'],
-  wide: ['一刻钟', '两刻钟', '三刻钟', '三刻钟']
+  abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
+  wide: ['第一刻钟', '第二刻钟', '第三刻钟', '第四刻钟']
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -18,7 +18,7 @@ var quarterValues = {
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
-  abbreviated: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'],
+  abbreviated: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
   wide: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 }
 
@@ -95,7 +95,6 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
@@ -106,19 +105,22 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
-
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return '第' + number
-      case 2:
-        return '第' + number
-      case 3:
-        return '第' + number
-    }
+  var options = dirtyOptions || {}
+  var number = Number(dirtyNumber)
+  var unit = String(options.unit)
+  var unitMap = {
+    year: ' 年',
+    month: ' 月',
+    date: ' 日',
+    dayOfYear: ' 日',
+    day: ' 日',
+    week: ' 周',
+    hour: ' 时',
+    quarter: ' 刻',
+    minute: ' 分',
+    second: ' 秒'
   }
-  return '第' + number
+  return '第 '+ number + unitMap[unit]
 }
 
 var localize = {
