@@ -247,22 +247,22 @@ describe('fr locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'mardi dernier à 12:00')
+      assert(result === 'mardi dernier à 00:00')
     })
 
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
-      assert(result === 'hier à 10:22')
+      assert(result === 'hier à 22:22')
     })
 
     it('today', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, {locale: locale})
-      assert(result === 'aujourd’hui à 4:50')
+      assert(result === 'aujourd’hui à 16:50')
     })
 
     it('tomorrow', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 5, 7, 30), baseDate, {locale: locale})
-      assert(result === 'demain à 7:30')
+      assert(result === 'demain à 07:30')
     })
 
     it('next week', function () {
@@ -347,7 +347,7 @@ describe('fr locale', function () {
 
     it('ordinal week of year', function () {
       var result = parse('49ème', 'wo', baseDate, {locale: locale})
-      assert.deepEqual(result, new Date(1986, 10 /* Nov */, 30))
+      assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('ordinal day of month', function () {
@@ -372,34 +372,34 @@ describe('fr locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('me', 'EEEEE', baseDate, {locale: locale})
-        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
+        var result = parse('m', 'EEEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
 
       it('short', function () {
-        var result = parse('J', 'EEEEEE', baseDate, {locale: locale})
+        var result = parse('ja', 'EEEEEE', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
 
     it('ordinal local day of week', function () {
-      var result = parse('2ème jour de la semaine', "eo 'day of the week'", baseDate, {locale: locale})
-      assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
+      var result = parse('2ème jour de la semaine', "eo 'jour de la semaine'", baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     describe('AM, PM', function () {
       it('abbreviated', function () {
-        var result = parse('5h', 'h a', baseDate, {locale: locale})
+        var result = parse('5 AM', 'h a', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
       })
 
       it('wide', function () {
-        var result = parse('17h', 'h aaaa', baseDate, {locale: locale})
+        var result = parse('5 p.m.', 'h aaaa', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
       })
 
       it('narrow', function () {
-        var result = parse('11h', 'h aaaaa', baseDate, {locale: locale})
+        var result = parse('11 a', 'h aaaaa', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
       })
     })
@@ -433,14 +433,14 @@ describe('fr locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('5h du matin', 'h BBBBB', baseDate, {locale: locale})
+        var result = parse('5 soir', 'h BBBBB', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
       })
     })
 
     it('ordinal time', function () {
       var dateString = '1ère heure, 2ème minute, 3ème second'
-      var formatString = "ho 'hour', mo 'minute', so 'second'"
+      var formatString = "ho 'heure', mo 'minute', so 'second'"
       var result = parse(dateString, formatString, baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1, 2, 3))
     })

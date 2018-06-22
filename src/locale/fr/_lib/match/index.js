@@ -39,25 +39,24 @@ var matchDayPatterns = {
   wide: /^(dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi)/i
 }
 var parseDayPatterns = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^j/i, /^v/i, /^s/i],
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
   any: [/^di/i, /^lu/i, /^ma/i, /^me/i, /^je/i, /^ve/i, /^sa/i]
 }
 
-// those have to be checked
 var matchDayPeriodPatterns = {
-  narrow: /^(am|pm|minuit|midi|mat|ap\.m\.|soir)/i,
-  any: /^(am|pm|(du|de l') (matin|après-midi|soir))/i
+  narrow: /^(a|p|minuit|midi|mat\.?|ap\.?m\.?|soir|nuit)/i,
+  any: /^([ap]\.?\s?m\.?|du matin|de l'après[-\s]midi|du soir|de la nuit)/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^am/i,
-    pm: /^pm/i,
-    midnight: /^mi/i,
-    noon: /^mi/i,
+    am: /^a/i,
+    pm: /^p/i,
+    midnight: /^min/i,
+    noon: /^mid/i,
     morning: /mat/i,
     afternoon: /ap/i,
     evening: /soir/i,
-    night: /mat/i
+    night: /nuit/i
   }
 }
 
