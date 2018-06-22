@@ -42,6 +42,7 @@ function generateDocsFromSource () {
       description: doc.summary,
       content: doc
     }))
+    .map(mapAliases)
     .reduce((array, doc) => array
       .concat(generateFnDoc(doc))
       .concat(generateFPFnDoc(doc))
@@ -49,6 +50,42 @@ function generateDocsFromSource () {
     [])
 
   return Promise.resolve(docs)
+}
+
+/**
+ * Maps important documentation from aliased functions to aliases
+ */
+function mapAliases (doc, _, docs) {
+  const findDoc = function (name) {
+    return docs.filter(doc => doc.content.name === name)[0]
+  }
+
+  const alias = doc.content.alias
+
+  if (!alias) {
+    return doc
+  }
+
+  const aliased = findDoc(alias)
+
+  if (!aliased || aliased === doc) {
+    return reportErrors(new Error('Invalid alias "' + alias + '" in "' + doc.content.name + '"'))
+  }
+
+  const content = Object.assign(doc.content, {
+    params: aliased.content.params,
+    returns: aliased.content.returns,
+    exceptions: aliased.content.exceptions,
+    category: aliased.content.category,
+    description: 'Alias for [' + alias + ']{@link https://date-fns.org/docs/' + alias + '}',
+    summary: 'Alias for [' + alias + ']{@link https://date-fns.org/docs/' + alias + '}'
+  })
+
+  return Object.assign({}, doc, {
+    content,
+    category: aliased.category,
+    description: content.description
+  })
 }
 
 /**
