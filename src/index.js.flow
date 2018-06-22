@@ -625,6 +625,13 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  parseDate: (
+    dateString: string,
+    formatString: string,
+    baseDate: Date | string | number,
+    options?: Options
+  ) => Date,
+
   setDate: (
     date: Date | string | number,
     dayOfMonth: number,

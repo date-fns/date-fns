@@ -210,6 +210,8 @@ module.exports = {
   min: require('./min/index.js'),
   minWithOptions: require('./minWithOptions/index.js'),
   parse: require('./parse/index.js'),
+  parseDate: require('./parseDate/index.js'),
+  parseDateWithOptions: require('./parseDateWithOptions/index.js'),
   parseWithOptions: require('./parseWithOptions/index.js'),
   setDate: require('./setDate/index.js'),
   setDateWithOptions: require('./setDateWithOptions/index.js'),

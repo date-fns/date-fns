@@ -106,6 +106,7 @@ module.exports = {
   max: require('./max/index.js'),
   min: require('./min/index.js'),
   parse: require('./parse/index.js'),
+  parseDate: require('./parseDate/index.js'),
   setDate: require('./setDate/index.js'),
   setDay: require('./setDay/index.js'),
   setDayOfYear: require('./setDayOfYear/index.js'),

@@ -109,6 +109,10 @@ function getTypeScriptFnModuleDefinition (submodule, fnSuffix, isDefault, fn) {
 function getTypeScriptFnDefinition (fn) {
   const {title, args, content} = fn
 
+  if (!content.returns) {
+    console.log('UNDEFINED', content)
+  }
+
   const params = getParams(args, {leftBorder: '(', rightBorder: ')'})
   const returns = getType(content.returns[0].type.names)
 

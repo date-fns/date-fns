@@ -164,7 +164,7 @@ function generateFnDoc (dirtyDoc) {
 
   const isFPFn = false
   const {urlId, title} = doc
-  const args = paramsToTree(doc.content.params)
+  const args = paramsToTree(doc.content.params) || []
 
   return Object.assign(doc, {
     isFPFn,
@@ -185,8 +185,8 @@ function generateFPFnDoc (dirtyDoc) {
 
   const isFPFn = true
   const {urlId, title} = doc
-  const exceptions = doc.content.exceptions.filter(exception => !exception.description.includes('options.'))
-  const params = doc.content.params
+  const exceptions = (doc.content.exceptions || []).filter(exception => !exception.description.includes('options.'))
+  const params = (doc.content.params || [])
     .filter((param) =>
       !param.name.startsWith('options')
     )
@@ -220,7 +220,7 @@ function generateFPFnWithOptionsDoc (dirtyDoc) {
 
   const isFPFn = true
   const {urlId, title} = doc
-  const params = doc.content.params
+  const params = (doc.content.params || [])
     .map((param) => {
       if (!param.name.includes('.')) {
         param.optional = false
@@ -288,7 +288,7 @@ function paramsToTree (dirtyParams) {
     return null
   }
 
-  const params = cloneDeep(dirtyParams)
+  const params = cloneDeep(dirtyParams) || []
 
   const paramIndices = params
     .reduce((result, {name}, index) => {
@@ -322,9 +322,9 @@ function paramsToTree (dirtyParams) {
 
 function generateSyntaxString (name, args, isFPFn) {
   if (isFPFn) {
-    return args.reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
+    return (args || []).reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
   } else {
-    const argsString = args
+    const argsString = (args || [])
       .map(arg => arg.optional ? `[${arg.name}]` : arg.name)
       .join(', ')
     return `${name}(${argsString})`
