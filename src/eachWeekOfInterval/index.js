@@ -1,5 +1,6 @@
 import toDate from '../toDate/index.js'
 import startOfWeek from '../startOfWeek/index.js'
+import addWeeks from '../addWeeks/index.js'
 
 /**
  * @name eachWeekOfInterval
@@ -12,9 +13,11 @@ import startOfWeek from '../startOfWeek/index.js'
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date[]} the array with starts of weeks from the week of the interval start to the week of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -50,8 +53,12 @@ export default function eachWeekOfInterval (dirtyInterval, dirtyOptions) {
     throw new RangeError('Invalid interval')
   }
 
-  var startDateWeek = startOfWeek(startDate)
-  var endDateWeek = startOfWeek(endDate)
+  var startDateWeek = startOfWeek(startDate, dirtyOptions)
+  var endDateWeek = startOfWeek(endDate, dirtyOptions)
+
+  // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
+  startDateWeek.setHours(15)
+  endDateWeek.setHours(15)
 
   endTime = endDateWeek.getTime()
 
@@ -60,8 +67,10 @@ export default function eachWeekOfInterval (dirtyInterval, dirtyOptions) {
   var currentWeek = startDateWeek
 
   while (currentWeek.getTime() <= endTime) {
+    currentWeek.setHours(0)
     weeks.push(toDate(currentWeek, dirtyOptions))
-    currentWeek.setDate(currentWeek.getDate() + 7)
+    currentWeek = addWeeks(currentWeek, 1)
+    currentWeek.setHours(15)
   }
 
   return weeks

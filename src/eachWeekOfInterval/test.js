@@ -59,7 +59,7 @@ describe('eachWeekOfInterval', function () {
   it('handles the dates that are not starts/ends of days and weeks', function () {
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
-      end: new Date(2014, 10 /* Nov */, 25, 22, 15)
+      end: new Date(2014, 10 /* Nov */, 25, 22, 16)
     })
     assert.deepEqual(result, [
       new Date(2014, 9 /* Oct */, 5),
@@ -70,6 +70,24 @@ describe('eachWeekOfInterval', function () {
       new Date(2014, 10 /* Nov */, 9),
       new Date(2014, 10 /* Nov */, 16),
       new Date(2014, 10 /* Nov */, 23)
+    ])
+  })
+
+  it('considers the weekStartsOn option', function () {
+    var result = eachWeekOfInterval({
+      start: new Date(2014, 9 /* Oct */, 6, 6, 35),
+      end: new Date(2014, 10 /* Nov */, 25, 22, 15)
+    }, {weekStartsOn: 2})
+    assert.deepEqual(result, [
+      new Date(2014, 8 /* Sep */, 30),
+      new Date(2014, 9 /* Oct */, 7),
+      new Date(2014, 9 /* Oct */, 14),
+      new Date(2014, 9 /* Oct */, 21),
+      new Date(2014, 9 /* Oct */, 28),
+      new Date(2014, 10 /* Nov */, 4),
+      new Date(2014, 10 /* Nov */, 11),
+      new Date(2014, 10 /* Nov */, 18),
+      new Date(2014, 10 /* Nov */, 25)
     ])
   })
 
@@ -132,6 +150,15 @@ describe('eachWeekOfInterval', function () {
       // $ExpectedMistake
       undefined
     )
+    assert.throws(block, RangeError)
+  })
+
+  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', function () {
+    // $ExpectedMistake
+    var block = eachWeekOfInterval.bind(null, {
+      start: new Date(2014, 9 /* Oct */, 6, 6, 35),
+      end: new Date(2014, 10 /* Nov */, 25, 22, 15)
+    }, {weekStartsOn: NaN})
     assert.throws(block, RangeError)
   })
 
