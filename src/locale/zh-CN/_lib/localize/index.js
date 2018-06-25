@@ -101,7 +101,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
   var number = Number(dirtyNumber)
-  return number.toString()
+  return '第 ' + number.toString()
 }
 
 var localize = {

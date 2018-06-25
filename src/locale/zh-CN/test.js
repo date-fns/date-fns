@@ -22,36 +22,36 @@ describe('zh-CN locale', function () {
     describe('year', function () {
       it('ordinal regular year', function () {
         var result = format(date, "yo '年'", {locale: locale})
-        assert(result === '1986 年')
+        assert(result === '第 1986 年')
       })
 
       it('ordinal local week-numbering year', function () {
         var result = format(date, "Yo '年'", {locale: locale})
-        assert(result === '1986 年')
+        assert(result === '第 1986 年')
       })
     })
 
     describe('quarter', function () {
       it('formatting quarter', function () {
         var result = format(date, "Qo '刻', QQQ, QQQQ, QQQQQ", {locale: locale})
-        assert(result === '2 刻, 第二刻, 第二刻钟, 2')
+        assert(result === '第 2 刻, 第二刻, 第二刻钟, 2')
       })
 
       it('stand-alone quarter', function () {
         var result = format(date, "qo '刻', qqq, qqqq, qqqqq", {locale: locale})
-        assert(result === '2 刻, 第二刻, 第二刻钟, 2')
+        assert(result === '第 2 刻, 第二刻, 第二刻钟, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, 'MMMM do', {locale: locale})
-        assert(result === '四月 5')
+        var result = format(date, "MMMM do '天'", {locale: locale})
+        assert(result === '四月 第 5 天')
       })
 
       it('stand-alone month', function () {
         var result = format(date, "Lo '月', LLL, LLLL, LLLLL", {locale: locale})
-        assert(result === '4 月, 四月, 四月, 四')
+        assert(result === '第 4 月, 四月, 四月, 四')
       })
     })
 
@@ -59,25 +59,25 @@ describe('zh-CN locale', function () {
       it('ordinal local week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, "wo '周'", {locale: locale})
-        assert(result === '14 周')
+        assert(result === '第 14 周')
       })
 
       it('ordinal ISO week of year', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, "Io '周'", {locale: locale})
-        assert(result === '14 周')
+        assert(result === '第 14 周')
       })
     })
 
     describe('day', function () {
       it('ordinal date', function () {
-        var result = format(date, "'今天是'do", {locale: locale})
-        assert(result === '今天是5')
+        var result = format(date, "'今天是' do '日'", {locale: locale})
+        assert(result === '今天是 第 5 日')
       })
 
       it('ordinal day of year', function () {
-        var result = format(date, "'本年第' Do '天'", {locale: locale})
-        assert(result === '本年第 95 天')
+        var result = format(date, "'本年' Do '天'", {locale: locale})
+        assert(result === '本年 第 95 天')
       })
     })
 
@@ -88,15 +88,15 @@ describe('zh-CN locale', function () {
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "'本周第' eo '天'", {locale: locale})
-        assert(result === '本周第 6 天')
+        var result = format(date, "'本周' eo '天'", {locale: locale})
+        assert(result === '本周 第 6 天')
       })
     })
 
     describe('day period and hour', function () {
       it('ordinal hour', function () {
-        var result = format(date, "ho '点'", {locale: locale})
-        assert(result === '10 点')
+        var result = format(date, "ho '时'", {locale: locale})
+        assert(result === '第 10 时')
       })
 
       it('AM, PM', function () {
@@ -119,12 +119,12 @@ describe('zh-CN locale', function () {
 
     it('ordinal minute', function () {
       var result = format(date, "mo '分'", {locale: locale})
-      assert(result === '32 分')
+      assert(result === '第 32 分')
     })
 
     it('ordinal second', function () {
       var result = format(date, "so '秒'", {locale: locale})
-      assert(result === '0 秒')
+      assert(result === '第 0 秒')
     })
 
     describe('long format', function () {
@@ -439,7 +439,7 @@ describe('zh-CN locale', function () {
     })
 
     it('ordinal time', function () {
-      var dateString = '1 时, 2 分, 3 秒'
+      var dateString = '第 1 时, 第 2 分, 第 3 秒'
       var formatString = "ho '时', mo '分', so '秒'"
       var result = parse(dateString, formatString, baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1, 2, 3))
