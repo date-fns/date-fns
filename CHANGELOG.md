@@ -109,6 +109,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `startOfWeekYear`
 
+- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
