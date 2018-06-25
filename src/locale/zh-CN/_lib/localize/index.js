@@ -100,22 +100,8 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
-  var options = dirtyOptions || {}
   var number = Number(dirtyNumber)
-  var unit = String(options.unit)
-  var unitMap = {
-    year: ' 年',
-    month: ' 月',
-    date: ' 日',
-    dayOfYear: ' 日',
-    day: ' 日',
-    week: ' 周',
-    hour: ' 时',
-    quarter: ' 刻',
-    minute: ' 分',
-    second: ' 秒'
-  }
-  return '第 ' + number + unitMap[unit]
+  return number.toString()
 }
 
 var localize = {
