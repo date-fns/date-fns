@@ -1,6 +1,6 @@
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
 
-var MILLISECONDS_IN_MINUTE = 60000
 var MILLISECONDS_IN_WEEK = 604800000
 
 /**
@@ -38,9 +38,9 @@ export default function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRi
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, dirtyOptions)
 
   var timestampLeft = startOfISOWeekLeft.getTime() -
-    startOfISOWeekLeft.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+    getTimezoneOffsetInMilliseconds(startOfISOWeekLeft)
   var timestampRight = startOfISOWeekRight.getTime() -
-    startOfISOWeekRight.getTimezoneOffset() * MILLISECONDS_IN_MINUTE
+    getTimezoneOffsetInMilliseconds(startOfISOWeekRight)
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

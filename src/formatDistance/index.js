@@ -1,3 +1,4 @@
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import compareAsc from '../compareAsc/index.js'
 import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
@@ -130,8 +131,8 @@ export default function formatDistance (dirtyDate, dirtyBaseDate, dirtyOptions) 
   }
 
   var seconds = differenceInSeconds(dateRight, dateLeft, options)
-  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
-  var minutes = Math.round(seconds / 60) - offset
+  var offsetInSeconds = (getTimezoneOffsetInMilliseconds(dateRight) - getTimezoneOffsetInMilliseconds(dateLeft)) / 1000
+  var minutes = Math.round((seconds - offsetInSeconds) / 60)
   var months
 
   // 0 up to 2 mins

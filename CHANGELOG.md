@@ -109,6 +109,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `startOfWeekYear`
 
+- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
@@ -638,6 +640,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   [#692](https://github.com/date-fns/date-fns/issues/692)
 
 - `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
+
+- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
+  See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
 ## [1.28.5] - 2017-05-19
 
