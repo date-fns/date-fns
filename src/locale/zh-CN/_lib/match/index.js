@@ -1,46 +1,110 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(a|e)?/i
+var matchOrdinalNumberPattern = /^(第\s*)?\d+/i
+var parseOrdinalNumberPattern = /\d+/i
 
-var matchWeekdaysPatterns = {
-  narrow: /^(日|一|二|三|四|五|六)/i,
-  short: /^(周日|周一|周二|周三|周四|周五|周六)/i,
-  long: /^(星期日|星期一|星期二|星期三|星期四|星期五|星期六)/i
+var matchEraPatterns = {
+  narrow: /^(前)/i,
+  abbreviated: /^(前)/i,
+  wide: /^(公元前|公元)/i
+}
+var parseEraPatterns = {
+  any: [/^(前)/i, /^(公元)/i]
 }
 
-var parseWeekdayPatterns = {
-  any: [/^日/i, /^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i]
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^第[一二三四]刻/i,
+  wide: /^第[一二三四]刻钟/i
+}
+var parseQuarterPatterns = {
+  any: [/(1|一)/i, /(2|二)/i, /(3|三)/i, /(4|四)/i]
 }
 
-var matchMonthsPatterns = {
-  short: /^(1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月)/i,
-  long: /^(一月|二月|三月|四月|五月|六月|七月|八月|九月|十月|十一月|十二月)/i
+var matchMonthPatterns = {
+  narrow: /^[一二三四五六七八九十]/i,
+  abbreviated: /^[一二三四五六七八九十]/i,
+  wide: /^[一二三四五六七八九十]月/i
 }
-
 var parseMonthPatterns = {
-  any: [/^1月/i, /^2月/i, /^3月/i, /^4月/i, /^5月/i, /^6月/i, /^7月/i, /^8月/i, /^9月/i, /^10月/i, /^11月/i, /^12月/i]
+  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
+  any: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i]
 }
 
-var matchTimesOfDayPatterns = {
-  short: /^(上午|下午)/i
+var matchDayPatterns = {
+  narrow: /^[一二三四五六日]/i,
+  short: /^[一二三四五六日]/i,
+  abbreviated: /^周[一二三四五六日]/i,
+  wide: /^星期[一二三四五六日]/i
+}
+var parseDayPatterns = {
+  any: [/日/i, /一/i, /二/i, /三/i, /四/i, /五/i, /六/i]
 }
 
-var parseTimeOfDayPatterns = {
-  any: [/^上午/i, /^下午/i]
+var matchDayPeriodPatterns = {
+  narrow: /^[早中午晚上下凌晨夜]/i,
+  any: /^[早中午晚上下凌晨夜]/i
+}
+var parseDayPeriodPatterns = {
+  any: {
+    am: /[上早凌]/i,
+    pm: /[下晚夜]/i,
+    midnight: /[夜]/i,
+    noon: /^[中正]午/i,
+    morning: /早/i,
+    afternoon: /下午/i,
+    evening: /晚/i,
+    night: /夜/i
+  }
 }
 
 var match = {
-  ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
-  ordinalNumber: parseDecimal,
-  weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
-  weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  months: buildMatchFn(matchMonthsPatterns, 'long'),
-  month: buildParseFn(parseMonthPatterns, 'any'),
-  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      return parseInt(value, 10)
+    }
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1
+    }
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
 }
 
 export default match
