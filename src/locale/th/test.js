@@ -8,6 +8,7 @@ import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
+import parse from '../../parse'
 
 describe('th locale', function () {
   context('with `format`', function () {
@@ -272,6 +273,176 @@ describe('th locale', function () {
     it('after the next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 11, 16, 50), baseDate, {locale: locale})
       assert(result === '11/04/1986')
+    })
+  })
+
+  context('with `parse`', function () {
+    var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+
+    describe('era', function () {
+      it('abbreviated', function () {
+        var result = parse('10000 BC', 'yyyyy G', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
+      })
+
+      it('wide', function () {
+        var result = parse('2018 คริสต์ศักราช', 'yyyy GGGG', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('44 B', 'y GGGGG', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
+      })
+    })
+
+    it('ordinal year', function () {
+      var result = parse('2017th', 'yo', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
+    })
+
+    describe('quarter', function () {
+      it('ordinal', function () {
+        var result = parse('1st', 'Qo', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
+      })
+
+      it('abbreviated', function () {
+        var result = parse('Q3', 'QQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
+      })
+
+      it('wide', function () {
+        var result = parse('ไตรมาสที่ 4', 'QQQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('1', 'QQQQQ', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
+      })
+    })
+
+    describe('month', function () {
+      it('ordinal', function () {
+        var result = parse('6', 'Mo', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
+      })
+
+      it('abbreviated', function () {
+        var result = parse('พ.ย.', 'MMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
+      })
+
+      it('wide', function () {
+        var result = parse('กุมภาพันธ์', 'MMMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('ม.ค.', 'MMMMM', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
+      })
+    })
+
+    it('ordinal week of year', function () {
+      var result = parse('49th', 'wo', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 10 /* Nov */, 31))
+    })
+
+    it('ordinal day of month', function () {
+      var result = parse('28', 'do', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
+    })
+
+    it('ordinal day of year', function () {
+      var result = parse('200', 'Do', baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
+    })
+
+    describe('day of week', function () {
+      it('abbreviated', function () {
+        var result = parse('จ.', 'E', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
+      })
+
+      it('wide', function () {
+        var result = parse('อ.', 'EEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
+      })
+
+      it('narrow', function () {
+        var result = parse('พ.', 'EEEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
+      })
+
+      it('short', function () {
+        var result = parse('พฤ.', 'EEEEEE', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
+      })
+    })
+
+    it('ordinal local day of week', function () {
+      var result = parse('1nd day of the week', "eo 'day of the week'", baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
+    })
+
+    describe('AM, PM', function () {
+      it('abbreviated', function () {
+        var result = parse('5 AM', 'h a', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
+      })
+
+      it('wide', function () {
+        var result = parse('5 p.m.', 'h aaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+      })
+
+      it('narrow', function () {
+        var result = parse('11 a', 'h aaaaa', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
+      })
+    })
+
+    describe('AM, PM, noon, midnight', function () {
+      it('abbreviated', function () {
+        var result = parse('เที่ยง', 'b', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
+
+      it('wide', function () {
+        var result = parse('เที่ยงคืน', 'bbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      })
+
+      it('narrow', function () {
+        var result = parse('เที่ยงคืน', 'bbbbb', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+      })
+    })
+
+    describe('flexible day period', function () {
+      it('abbreviated', function () {
+        var result = parse('2 ตอนกลางคืน', 'h B', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
+      })
+
+      it('wide', function () {
+        var result = parse('12 ตอนบ่าย', 'h BBBB', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
+      })
+
+      it('narrow', function () {
+        var result = parse('5 ตอนเย็น', 'h BBBBB', baseDate, {locale: locale})
+        assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
+      })
+    })
+
+    it('ordinal time', function () {
+      var dateString = '1st hour, 2nd minute, 3rd second'
+      var formatString = "ho 'hour', mo 'minute', so 'second'"
+      var result = parse(dateString, formatString, baseDate, {locale: locale})
+      assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1, 2, 3))
     })
   })
 })
