@@ -23,10 +23,10 @@ var monthValues = {
 }
 
 var dayValues = {
-  narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
-  short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa'],
-  abbreviated: ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'],
-  wide: ['domingo', 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado']
+  narrow: ['l', 'm', 'm', 'j', 'v', 's', 'd'],
+  short: ['lu', 'ma', 'mi', 'ju', 'vi', 'sa', 'do'],
+  abbreviated: ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'],
+  wide: ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
 }
 
 var dayPeriodValues = {
