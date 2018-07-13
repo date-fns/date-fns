@@ -218,6 +218,15 @@ describe('toDate', function () {
           var result = toDate('2014-10-25T13:46:20+07')
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
+
+        it('accepts IANA zone', function () {
+          var result = toDate('2014-10-25T13:46:20', { timeZone: 'Asia/Bangkok' })
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+        })
+        it('accepts UTC zone', function () {
+          var result = toDate('2014-10-25T13:46:20', { timeZone: 'UTC' })
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20Z'))
+        })
       })
       context('when the year and the month are specified', function () {
         it('sets timezone correctly on yyyy-MMZ format', function () {
