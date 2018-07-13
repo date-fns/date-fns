@@ -236,6 +236,109 @@ describe('toDate', function () {
     })
   })
 
+  describe('validation', function () {
+    describe('months', function () {
+      it('returns `Invalid Date` for invalid month', function () {
+        var result = toDate('2014-00')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+
+    describe('weeks', function () {
+      it('returns `Invalid Date` for invalid week', function () {
+        var result = toDate('2014-W00')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for 54th week', function () {
+        var result = toDate('2014-W54')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+
+    describe('calendar dates', function () {
+      it('returns `Invalid Date` for invalid day of the month', function () {
+        var result = toDate('2012-02-30')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for 29th of February of non-leap year', function () {
+        var result = toDate('2014-02-29')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('parses 29th of February of leap year', function () {
+        var result = toDate('2012-02-29')
+        assert.deepEqual(result, new Date(2012, 1, /* Feb */ 29))
+      })
+    })
+
+    describe('week dates', function () {
+      it('returns `Invalid Date` for invalid day of the week', function () {
+        var result = toDate('2014-W02-0')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+
+    describe('ordinal dates', function () {
+      it('returns `Invalid Date` for invalid day of the year', function () {
+        var result = toDate('2012-000')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for 366th day of non-leap year', function () {
+        var result = toDate('2014-366')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('parses 366th day of leap year', function () {
+        var result = toDate('2012-366')
+        assert.deepEqual(result, new Date(2012, 11, /* Dec */ 31))
+      })
+    })
+
+    describe('time', function () {
+      it('parses 24:00 as midnight', function () {
+        var result = toDate('2014-02-11T24:00')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 0, 0))
+      })
+
+      it('returns `Invalid Date` for invalid hours', function () {
+        var result = toDate('2014-02-11T25')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for invalid minutes', function () {
+        var result = toDate('2014-02-11T21:60')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for invalid seconds', function () {
+        var result = toDate('2014-02-11T21:59:60')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+
+    describe('timezones', function () {
+      it('returns `Invalid Date` for invalid timezone minutes', function () {
+        var result = toDate('2014-02-11T21:35:45+04:60')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+  })
+
   describe('invalid argument', function () {
     it('returns Invalid Date if argument is non-date string', function () {
       var result = toDate('abc')
