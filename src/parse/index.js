@@ -365,8 +365,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
         priority: parser.priority,
         set: parser.set,
         value: parseResult.value,
-        index: setters.length,
-        token: token
+        index: setters.length
       })
 
       dateString = parseResult.rest
@@ -421,7 +420,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
 
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-    utcDate = setter.set(utcDate, setter.value, setter.token, subFnOptions)
+    utcDate = setter.set(utcDate, setter.value, subFnOptions)
   }
 
   return utcDate
