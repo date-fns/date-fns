@@ -160,6 +160,14 @@ function normalizeTwoDigitYear (twoDigitYear, currentYear) {
   return isCommonEra ? result : 1 - result
 }
 
+var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+// User for validation
+function isLeapYearIndex (year) {
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+}
+
 /*
  * |     | Unit                           |     | Unit                           |
  * |-----|--------------------------------|-----|--------------------------------|
@@ -379,6 +387,9 @@ var parsers = {
             match.quarter(string, {width: 'narrow', context: 'formatting'})
       }
     },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 4
+    },
     set: function (date, value, options) {
       date.setUTCMonth((value - 1) * 3, 1)
       date.setUTCHours(0, 0, 0, 0)
@@ -412,6 +423,9 @@ var parsers = {
             match.quarter(string, {width: 'abbreviated', context: 'standalone'}) ||
             match.quarter(string, {width: 'narrow', context: 'standalone'})
       }
+    },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 4
     },
     set: function (date, value, options) {
       date.setUTCMonth((value - 1) * 3, 1)
@@ -453,6 +467,9 @@ var parsers = {
             match.month(string, {width: 'narrow', context: 'formatting'})
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
+    },
     set: function (date, value, options) {
       date.setUTCMonth(value, 1)
       date.setUTCHours(0, 0, 0, 0)
@@ -493,6 +510,9 @@ var parsers = {
             match.month(string, {width: 'narrow', context: 'standalone'})
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
+    },
     set: function (date, value, options) {
       date.setUTCMonth(value, 1)
       date.setUTCHours(0, 0, 0, 0)
@@ -513,6 +533,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 53
+    },
     set: function (date, value, options) {
       return startOfUTCWeek(setUTCWeek(date, value, options), options)
     }
@@ -531,6 +554,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 53
+    },
     set: function (date, value, options) {
       return startOfUTCISOWeek(setUTCISOWeek(date, value, options), options)
     }
@@ -547,6 +573,16 @@ var parsers = {
           return match.ordinalNumber(string, {unit: 'date'})
         default:
           return parseNDigits(token.length, string)
+      }
+    },
+    validate: function (date, value, options) {
+      var year = date.getUTCFullYear()
+      var isLeapYear = isLeapYearIndex(year)
+      var month = date.getUTCMonth()
+      if (isLeapYear) {
+        return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
+      } else {
+        return value >= 1 && value <= DAYS_IN_MONTH[month]
       }
     },
     set: function (date, value, options) {
@@ -568,6 +604,15 @@ var parsers = {
           return match.ordinalNumber(string, {unit: 'date'})
         default:
           return parseNDigits(token.length, string)
+      }
+    },
+    validate: function (date, value, options) {
+      var year = date.getUTCFullYear()
+      var isLeapYear = isLeapYearIndex(year)
+      if (isLeapYear) {
+        return value >= 1 && value <= 366
+      } else {
+        return value >= 1 && value <= 365
       }
     },
     set: function (date, value, options) {
@@ -604,6 +649,9 @@ var parsers = {
             match.day(string, {width: 'short', context: 'formatting'}) ||
             match.day(string, {width: 'narrow', context: 'formatting'})
       }
+    },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
     },
     set: function (date, value, options) {
       date = setUTCDay(date, value, options)
@@ -649,6 +697,9 @@ var parsers = {
             match.day(string, {width: 'narrow', context: 'formatting'})
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
+    },
     set: function (date, value, options) {
       date = setUTCDay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
@@ -693,6 +744,9 @@ var parsers = {
             match.day(string, {width: 'narrow', context: 'standalone'})
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
+    },
     set: function (date, value, options) {
       date = setUTCDay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
@@ -732,6 +786,9 @@ var parsers = {
             match.day(string, {width: 'short', context: 'formatting'}) ||
             match.day(string, {width: 'narrow', context: 'formatting'})
       }
+    },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
     },
     set: function (date, value, options) {
       date = setUTCISODay(date, value % 7 || 7, options)
@@ -828,6 +885,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 12
+    },
     set: function (date, value, options) {
       var isPM = date.getUTCHours() >= 12
       if (isPM && value < 12) {
@@ -854,6 +914,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 23
+    },
     set: function (date, value, options) {
       date.setUTCHours(value, 0, 0, 0)
       return date
@@ -872,6 +935,9 @@ var parsers = {
         default:
           return parseNDigits(token.length, string)
       }
+    },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
     },
     set: function (date, value, options) {
       var isPM = date.getUTCHours() >= 12
@@ -897,6 +963,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 24
+    },
     set: function (date, value, options) {
       var hours = value <= 24 ? value % 24 : value
       date.setUTCHours(hours, 0, 0, 0)
@@ -917,6 +986,9 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 59
+    },
     set: function (date, value, options) {
       date.setUTCMinutes(value, 0, 0)
       return date
@@ -935,6 +1007,9 @@ var parsers = {
         default:
           return parseNDigits(token.length, string)
       }
+    },
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 59
     },
     set: function (date, value, options) {
       date.setUTCSeconds(value, 0)
