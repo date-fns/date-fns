@@ -1,21 +1,60 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-  short: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
-  long: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+var eraValues = {
+  narrow: ['BC', 'AD'],
+  abbreviated: ['BC', 'AD'],
+  wide: ['BC', 'AD']
+}
+
+var quarterValues = {
+  narrow: ['Q1', 'Q2', 'Q3', 'Q4'],
+  abbreviated: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal'],
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
 }
 
 var monthValues = {
-  short: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
-  long: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+  narrow: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
 }
 
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['a.m.', 'p.m.']
+var dayValues = {
+  narrow: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+  short: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'middernacht',
+    noon: 'het middaguur',
+    morning: '\'s ochtends',
+    afternoon: '\'s middags',
+    evening: '\'s avonds',
+    night: '\'s nachts'
+  }
 }
 
 function ordinalNumber (dirtyNumber) {
@@ -25,14 +64,34 @@ function ordinalNumber (dirtyNumber) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize
