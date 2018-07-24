@@ -271,6 +271,9 @@ var parsers = {
           return parseNDigits(token.length, string, valueCallback)
       }
     },
+    validate: function (date, value, options) {
+      return value.isTwoDigitYear || value.year > 0
+    },
     set: function (date, value, options) {
       var currentYear = getUTCWeekYear(date, options)
 
@@ -307,6 +310,9 @@ var parsers = {
         default:
           return parseNDigits(token.length, string, valueCallback)
       }
+    },
+    validate: function (date, value, options) {
+      return value.isTwoDigitYear || value.year > 0
     },
     set: function (date, value, options) {
       var currentYear = date.getUTCFullYear()
@@ -511,6 +517,7 @@ var parsers = {
       }
     },
     validate: function (date, value, options) {
+      console.log({value})
       return value >= 0 && value <= 11
     },
     set: function (date, value, options) {
@@ -665,7 +672,8 @@ var parsers = {
     priority: 90,
     parse: function (string, token, match, options) {
       var valueCallback = function (value) {
-        return (value + options.weekStartsOn + 6) % 7
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays
       }
 
       switch (token) {
@@ -712,7 +720,8 @@ var parsers = {
     priority: 90,
     parse: function (string, token, match, options) {
       var valueCallback = function (value) {
-        return (value + options.weekStartsOn + 6) % 7
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays
       }
 
       switch (token) {
@@ -758,6 +767,13 @@ var parsers = {
   i: {
     priority: 90,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        if (value === 0) {
+          return 7
+        }
+        return value
+      }
+
       switch (token) {
         // 2
         case 'i':
@@ -768,30 +784,30 @@ var parsers = {
           return match.ordinalNumber(string, {unit: 'day'})
         // Tue
         case 'iii':
-          return match.day(string, {width: 'abbreviated', context: 'formatting'}) ||
-            match.day(string, {width: 'short', context: 'formatting'}) ||
-            match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'abbreviated', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // T
         case 'iiiii':
-          return match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // Tu
         case 'iiiiii':
-          return match.day(string, {width: 'short', context: 'formatting'}) ||
-          match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+          match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // Tuesday
         case 'iiii':
         default:
-          return match.day(string, {width: 'wide', context: 'formatting'}) ||
-            match.day(string, {width: 'abbreviated', context: 'formatting'}) ||
-            match.day(string, {width: 'short', context: 'formatting'}) ||
-            match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'wide', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'abbreviated', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
       }
     },
     validate: function (date, value, options) {
-      return value >= 0 && value <= 6
+      return value >= 1 && value <= 7
     },
     set: function (date, value, options) {
-      date = setUTCISODay(date, value % 7 || 7, options)
+      date = setUTCISODay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
     }
