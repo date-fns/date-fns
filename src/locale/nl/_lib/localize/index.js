@@ -1,14 +1,14 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var eraValues = {
-  narrow: ['BC', 'AD'],
-  abbreviated: ['BC', 'AD'],
-  wide: ['BC', 'AD']
+  narrow: ['v.C.', 'n.C.'],
+  abbreviated: ['v.Chr.', 'n.Chr.'],
+  wide: ['voor Christus', 'na Christus']
 }
 
 var quarterValues = {
-  narrow: ['Q1', 'Q2', 'Q3', 'Q4'],
-  abbreviated: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal'],
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['K1', 'K2', 'K3', 'K4'],
   wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
 }
 

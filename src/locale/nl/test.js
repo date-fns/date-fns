@@ -16,7 +16,7 @@ describe('nl locale', function () {
 
     it('era', function () {
       var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
-      assert(result === 'AD, AD, AD')
+      assert(result === 'n.Chr., na Christus, n.C.')
     })
 
     describe('year', function () {
@@ -34,12 +34,12 @@ describe('nl locale', function () {
     describe('quarter', function () {
       it('formatting quarter', function () {
         var result = format(date, "Qo 'kwartaal', QQQ, QQQQ, QQQQQ", {locale: locale})
-        assert(result === '2e kwartaal, 2e kwartaal, 2e kwartaal, Q2')
+        assert(result === '2e kwartaal, K2, 2e kwartaal, 2')
       })
 
       it('stand-alone quarter', function () {
         var result = format(date, "qo 'kwartaal', qqq, qqqq, qqqqq", {locale: locale})
-        assert(result === '2e kwartaal, 2e kwartaal, 2e kwartaal, Q2')
+        assert(result === '2e kwartaal, K2, 2e kwartaal, 2')
       })
     })
 
