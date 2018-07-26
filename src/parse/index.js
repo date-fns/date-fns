@@ -258,10 +258,6 @@ var doubleQuoteRegExp = /''/g
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.strictValidation=false] - if true, returns `Invalid Date`
- *   if the separate values are not within respective ranges,
- *   e.g. when parsing 13th month, 32nd day of month etc.
- *   If false or not set, overflows the values, e.g. the 13th month is the 1st month of the next year.
  * @returns {Date} the parsed date
  * @throws {TypeError} 3 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
@@ -288,16 +284,6 @@ var doubleQuoteRegExp = /''/g
  *   {locale: eo}
  * )
  * //=> Sun Feb 28 2010 00:00:00
- *
- * @example
- * // Parsing 30th of February with strict validation:
- * var result = parse(
- *   '2014-02-30',
- *   'yyyy-MM-dd',
- *   new Date(),
- *   {strictValidation: true}
- * )
- * //=> Invalid Date
  */
 export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
   if (arguments.length < 3) {
@@ -325,8 +311,6 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
-
-  var strictValidation = options.strictValidation
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -438,7 +422,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
 
-    if (strictValidation && setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
+    if (setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
       return new Date(NaN)
     }
 

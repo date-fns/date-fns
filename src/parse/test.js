@@ -1006,188 +1006,188 @@ describe('parse', function () {
   describe('with `options.strictValidation` = true', function () {
     describe('calendar year', function () {
       it('returns `Invalid Date` for year zero', function () {
-        var result = parse('0', 'y', baseDate, {strictValidation: true})
+        var result = parse('0', 'y', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('works correctly for two-digit year zero', function () {
-        var result = parse('00', 'yy', baseDate, {strictValidation: true})
+        var result = parse('00', 'yy', baseDate)
         assert.deepEqual(result, new Date(2000, 0 /* Jan */, 1))
       })
     })
 
     describe('local week-numbering year', function () {
       it('returns `Invalid Date` for year zero', function () {
-        var result = parse('0', 'Y', baseDate, {strictValidation: true})
+        var result = parse('0', 'Y', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('works correctly for two-digit year zero', function () {
-        var result = parse('00', 'YY', baseDate, {strictValidation: true})
+        var result = parse('00', 'YY', baseDate)
         assert.deepEqual(result, new Date(1999, 11 /* Dec */, 26))
       })
     })
 
     describe('quarter (formatting)', function () {
       it('returns `Invalid Date` for invalid quarter', function () {
-        var result = parse('0', 'Q', baseDate, {strictValidation: true})
+        var result = parse('0', 'Q', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('quarter (stand-alone)', function () {
       it('returns `Invalid Date` for invalid quarter', function () {
-        var result = parse('5', 'q', baseDate, {strictValidation: true})
+        var result = parse('5', 'q', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (formatting)', function () {
       it('returns `Invalid Date` for invalid month', function () {
-        var result = parse('00', 'MM', baseDate, {strictValidation: true})
+        var result = parse('00', 'MM', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (stand-alone)', function () {
       it('returns `Invalid Date` for invalid month', function () {
-        var result = parse('13', 'LL', baseDate, {strictValidation: true})
+        var result = parse('13', 'LL', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local week of year', function () {
       it('returns `Invalid Date` for invalid week', function () {
-        var result = parse('0', 'w', baseDate, {strictValidation: true})
+        var result = parse('0', 'w', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('ISO week of year', function () {
       it('returns `Invalid Date` for invalid week', function () {
-        var result = parse('54', 'II', baseDate, {strictValidation: true})
+        var result = parse('54', 'II', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('day of month', function () {
       it('returns `Invalid Date` for invalid day of the month', function () {
-        var result = parse('30', 'd', new Date(2012, 1 /* Feb */, 1), {strictValidation: true})
+        var result = parse('30', 'd', new Date(2012, 1 /* Feb */, 1))
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for 29th of February of non-leap year', function () {
-        var result = parse('29', 'd', new Date(2014, 1 /* Feb */, 1), {strictValidation: true})
+        var result = parse('29', 'd', new Date(2014, 1 /* Feb */, 1))
         assert(result instanceof Date && isNaN(result))
       })
 
       it('parses 29th of February of leap year', function () {
-        var result = parse('29', 'd', new Date(2012, 1 /* Feb */, 1), {strictValidation: true})
+        var result = parse('29', 'd', new Date(2012, 1 /* Feb */, 1))
         assert.deepEqual(result, new Date(2012, 1 /* Feb */, 29))
       })
     })
 
     describe('day of year', function () {
       it('returns `Invalid Date` for invalid day of the year', function () {
-        var result = parse('0', 'D', baseDate, {strictValidation: true})
+        var result = parse('0', 'D', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for 366th day of non-leap year', function () {
-        var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {strictValidation: true})
+        var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1))
         assert(result instanceof Date && isNaN(result))
       })
 
       it('parses 366th day of leap year', function () {
-        var result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1), {strictValidation: true})
+        var result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1))
         assert.deepEqual(result, new Date(2012, 11 /* Dec */, 31))
       })
     })
 
     describe('ISO day of week (formatting)', function () {
       it('returns `Invalid Date` for day zero', function () {
-        var result = parse('0', 'i', baseDate, {strictValidation: true})
+        var result = parse('0', 'i', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function () {
-        var result = parse('8', 'i', baseDate, {strictValidation: true})
+        var result = parse('8', 'i', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (formatting)', function () {
       it('returns `Invalid Date` for day zero', function () {
-        var result = parse('0', 'e', baseDate, {strictValidation: true})
+        var result = parse('0', 'e', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function () {
-        var result = parse('8', 'e', baseDate, {strictValidation: true})
+        var result = parse('8', 'e', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (stand-alone)', function () {
       it('returns `Invalid Date` for day zero', function () {
-        var result = parse('0', 'c', baseDate, {strictValidation: true})
+        var result = parse('0', 'c', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function () {
-        var result = parse('8', 'c', baseDate, {strictValidation: true})
+        var result = parse('8', 'c', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-12]', function () {
       it('returns `Invalid Date` for hour zero', function () {
-        var result = parse('00', 'hh', baseDate, {strictValidation: true})
+        var result = parse('00', 'hh', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function () {
-        var result = parse('13', 'hh', baseDate, {strictValidation: true})
+        var result = parse('13', 'hh', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-23]', function () {
       it('returns `Invalid Date` for invalid hour', function () {
-        var result = parse('24', 'HH', baseDate, {strictValidation: true})
+        var result = parse('24', 'HH', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-11]', function () {
       it('returns `Invalid Date` for invalid hour', function () {
-        var result = parse('12', 'KK', baseDate, {strictValidation: true})
+        var result = parse('12', 'KK', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-24]', function () {
       it('returns `Invalid Date` for hour zero', function () {
-        var result = parse('00', 'kk', baseDate, {strictValidation: true})
+        var result = parse('00', 'kk', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function () {
-        var result = parse('25', 'kk', baseDate, {strictValidation: true})
+        var result = parse('25', 'kk', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('minute', function () {
       it('returns `Invalid Date` for invalid minute', function () {
-        var result = parse('60', 'mm', baseDate, {strictValidation: true})
+        var result = parse('60', 'mm', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('second', function () {
       it('returns `Invalid Date` for invalid second', function () {
-        var result = parse('60', 'ss', baseDate, {strictValidation: true})
+        var result = parse('60', 'ss', baseDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
