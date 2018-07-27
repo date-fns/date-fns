@@ -281,17 +281,17 @@ describe('nl locale', function () {
 
     describe('era', function () {
       it('abbreviated', function () {
-        var result = parse('10000 BC', 'yyyyy G', baseDate, {locale: locale})
+        var result = parse('10000 v.Chr.', 'yyyyy G', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
       })
 
       it('wide', function () {
-        var result = parse('2018 AD', 'yyyy GGGG', baseDate, {locale: locale})
+        var result = parse('2018 na Christus', 'yyyy GGGG', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
       })
 
       it('narrow', function () {
-        var result = parse('44 BC', 'y GGGGG', baseDate, {locale: locale})
+        var result = parse('44 v.C.', 'y GGGGG', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
       })
     })
@@ -308,7 +308,7 @@ describe('nl locale', function () {
       })
 
       it('abbreviated', function () {
-        var result = parse('3e kwartaal', 'QQQ', baseDate, {locale: locale})
+        var result = parse('K3', 'QQQ', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
       })
 
@@ -318,7 +318,7 @@ describe('nl locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('Q1', 'QQQQQ', baseDate, {locale: locale})
+        var result = parse('1', 'QQQQQ', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })

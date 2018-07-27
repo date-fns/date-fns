@@ -5,17 +5,17 @@ var matchOrdinalNumberPattern = /^(\d+)e?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(BC|AD)/,
-  abbreviated: /^(BC|AD)/,
-  wide: /^(BC|AD)/
+  narrow: /^([vn]\.C)/,
+  abbreviated: /^([vn]\.Chr)/,
+  wide: /^((voor|na) Christus)/
 }
 var parseEraPatterns = {
-  any: [/^BC/, /^AD/]
+  any: [/^v/, /^n/]
 }
 
 var matchQuarterPatterns = {
-  narrow: /^Q[1234]/i,
-  abbreviated: /^[1234]e kwartaal/i,
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
   wide: /^[1234]e kwartaal/i
 }
 var parseQuarterPatterns = {
@@ -24,7 +24,7 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
-  wide: /^(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i
+  wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
 }
 var parseMonthPatterns = {
   narrow: [/^jan/i, /^feb/i, /^mrt/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i],
