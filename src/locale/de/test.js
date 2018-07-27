@@ -84,7 +84,7 @@ describe('de locale', function () {
     describe('week day', function () {
       it('day of week', function () {
         var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
-        assert(result === 'Sa., Samstag, S, Sa.')
+        assert(result === 'Sa., Samstag, S, Sa')
       })
 
       it('ordinal day of week', function () {
@@ -362,7 +362,7 @@ describe('de locale', function () {
 
     describe('day of week', function () {
       it('abbreviated', function () {
-        var result = parse('Mon', 'E', baseDate, {locale: locale})
+        var result = parse('Mo.', 'E', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
 

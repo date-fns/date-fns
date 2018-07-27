@@ -24,7 +24,7 @@ var monthValues = {
 
 var dayValues = {
   narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
-  short: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
   abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
   wide: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 }
