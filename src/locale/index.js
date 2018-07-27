@@ -9,6 +9,7 @@ module.exports = {
   es: require('./es/index.js'),
   fr: require('./fr/index.js'),
   nb: require('./nb/index.js'),
+  nl: require('./nl/index.js'),
   ptBR: require('./pt-BR/index.js'),
   ru: require('./ru/index.js'),
   sv: require('./sv/index.js'),
