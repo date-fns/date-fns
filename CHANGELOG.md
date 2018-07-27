@@ -121,6 +121,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - pt-BR locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/807).
   Thanks to [@YagoCarballo](https://github.com/YagoCarballo) again!
 
+- nl locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/811).
+  Thanks to the teamwork of [@curry684](https://github.com/curry684) and [@stefanvermaas](https://github.com/stefanvermaas)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
