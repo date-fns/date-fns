@@ -5,8 +5,8 @@ var matchOrdinalNumberPattern = /^(\d+)e?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^([vn]\.C)/,
-  abbreviated: /^([vn]\.Chr)/,
+  narrow: /^([vn]\. ?C)/,
+  abbreviated: /^([vn]\. ?Chr)/,
   wide: /^((voor|na) Christus)/
 }
 var parseEraPatterns = {
