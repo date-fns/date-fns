@@ -84,7 +84,7 @@ describe('de locale', function () {
     describe('week day', function () {
       it('day of week', function () {
         var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
-        assert(result === 'Sam, Samstag, S, Sa')
+        assert(result === 'Sa., Samstag, S, Sa.')
       })
 
       it('ordinal day of week', function () {
