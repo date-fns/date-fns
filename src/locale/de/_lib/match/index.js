@@ -35,7 +35,7 @@ var parseMonthPatterns = {
 var matchDayPatterns = {
   narrow: /^[smdmf]/i,
   short: /^(so|mo|di|mi|do|fr|sa)/i,
-  abbreviated: /^(son|mon|die|mit|don|fre|sam)/i,
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
   wide: /^(sonntag|montag|diebstag|mittwoch|donnerstag|freitag|samstag)/i
 }
 var parseDayPatterns = {

@@ -57,7 +57,7 @@ var patterns = {
  * If an argument is a string, the function tries to parse it.
  * Function accepts complete ISO 8601 formats as well as partial implementations.
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
- * If the function cannot parse the string, it returns Invalid Date.
+ * If the function cannot parse the string or the values are invalid, it returns Invalid Date.
  *
  * If the argument is none of the above, the function returns Invalid Date.
  *
@@ -99,7 +99,9 @@ export default function toDate (argument, dirtyOptions) {
   }
 
   // Clone the date
-  if (argument instanceof Date) {
+  if (argument instanceof Date ||
+    (typeof argument === 'object' && Object.prototype.toString.call(argument) === '[object Date]')
+  ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
   } else if (typeof argument === 'number' || Object.prototype.toString.call(argument) === '[object Number]') {
@@ -116,6 +118,10 @@ export default function toDate (argument, dirtyOptions) {
 
   var date = parseDate(restDateString, year)
 
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
+
   if (date) {
     var timestamp = date.getTime()
     var time = 0
@@ -123,10 +129,17 @@ export default function toDate (argument, dirtyOptions) {
 
     if (dateStrings.time) {
       time = parseTime(dateStrings.time)
+
+      if (isNaN(time)) {
+        return new Date(NaN)
+      }
     }
 
     if (dateStrings.timezone) {
       offset = parseTimezone(dateStrings.timezone)
+      if (isNaN(offset)) {
+        return new Date(NaN)
+      }
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
@@ -224,6 +237,11 @@ function parseDate (dateString, year) {
   if (token) {
     date = new Date(0)
     month = parseInt(token[1], 10) - 1
+
+    if (!validateDate(year, month)) {
+      return new Date(NaN)
+    }
+
     date.setUTCFullYear(year, month)
     return date
   }
@@ -233,6 +251,11 @@ function parseDate (dateString, year) {
   if (token) {
     date = new Date(0)
     var dayOfYear = parseInt(token[1], 10)
+
+    if (!validateDayOfYearDate(year, dayOfYear)) {
+      return new Date(NaN)
+    }
+
     date.setUTCFullYear(year, 0, dayOfYear)
     return date
   }
@@ -243,6 +266,11 @@ function parseDate (dateString, year) {
     date = new Date(0)
     month = parseInt(token[1], 10) - 1
     var day = parseInt(token[2], 10)
+
+    if (!validateDate(year, month, day)) {
+      return new Date(NaN)
+    }
+
     date.setUTCFullYear(year, month, day)
     return date
   }
@@ -251,6 +279,11 @@ function parseDate (dateString, year) {
   token = patterns.Www.exec(dateString)
   if (token) {
     week = parseInt(token[1], 10) - 1
+
+    if (!validateWeekDate(year, week)) {
+      return new Date(NaN)
+    }
+
     return dayOfISOWeekYear(year, week)
   }
 
@@ -259,6 +292,11 @@ function parseDate (dateString, year) {
   if (token) {
     week = parseInt(token[1], 10) - 1
     var dayOfWeek = parseInt(token[2], 10) - 1
+
+    if (!validateWeekDate(year, week, dayOfWeek)) {
+      return new Date(NaN)
+    }
+
     return dayOfISOWeekYear(year, week, dayOfWeek)
   }
 
@@ -275,6 +313,11 @@ function parseTime (timeString) {
   token = patterns.HH.exec(timeString)
   if (token) {
     hours = parseFloat(token[1].replace(',', '.'))
+
+    if (!validateTime(hours)) {
+      return NaN
+    }
+
     return (hours % 24) * MILLISECONDS_IN_HOUR
   }
 
@@ -283,6 +326,11 @@ function parseTime (timeString) {
   if (token) {
     hours = parseInt(token[1], 10)
     minutes = parseFloat(token[2].replace(',', '.'))
+
+    if (!validateTime(hours, minutes)) {
+      return NaN
+    }
+
     return (hours % 24) * MILLISECONDS_IN_HOUR +
       minutes * MILLISECONDS_IN_MINUTE
   }
@@ -293,6 +341,11 @@ function parseTime (timeString) {
     hours = parseInt(token[1], 10)
     minutes = parseInt(token[2], 10)
     var seconds = parseFloat(token[3].replace(',', '.'))
+
+    if (!validateTime(hours, minutes, seconds)) {
+      return NaN
+    }
+
     return (hours % 24) * MILLISECONDS_IN_HOUR +
       minutes * MILLISECONDS_IN_MINUTE +
       seconds * 1000
@@ -312,17 +365,32 @@ function parseTimezone (timezoneString) {
     return 0
   }
 
+  var hours
+
   // ±hh
   token = patterns.timezoneHH.exec(timezoneString)
   if (token) {
-    absoluteOffset = parseInt(token[2], 10) * MILLISECONDS_IN_HOUR
+    hours = parseInt(token[2], 10)
+
+    if (!validateTimezone(hours)) {
+      return NaN
+    }
+
+    absoluteOffset = hours * MILLISECONDS_IN_HOUR
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
   // ±hh:mm or ±hhmm
   token = patterns.timezoneHHMM.exec(timezoneString)
   if (token) {
-    absoluteOffset = parseInt(token[2], 10) * MILLISECONDS_IN_HOUR + parseInt(token[3], 10) * MILLISECONDS_IN_MINUTE
+    hours = parseInt(token[2], 10)
+    var minutes = parseInt(token[3], 10)
+
+    if (!validateTimezone(hours, minutes)) {
+      return NaN
+    }
+
+    absoluteOffset = hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
     return (token[1] === '+') ? -absoluteOffset : absoluteOffset
   }
 
@@ -338,4 +406,87 @@ function dayOfISOWeekYear (isoWeekYear, week, day) {
   var diff = week * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
+}
+
+// Validation functions
+
+var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+function isLeapYearIndex (year) {
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+}
+
+function validateDate (year, month, date) {
+  if (month < 0 || month > 11) {
+    return false
+  }
+
+  if (date != null) {
+    if (date < 1) {
+      return false
+    }
+
+    var isLeapYear = isLeapYearIndex(year)
+    if (isLeapYear && date > DAYS_IN_MONTH_LEAP_YEAR[month]) {
+      return false
+    }
+    if (!isLeapYear && date > DAYS_IN_MONTH[month]) {
+      return false
+    }
+  }
+
+  return true
+}
+
+function validateDayOfYearDate (year, dayOfYear) {
+  if (dayOfYear < 1) {
+    return false
+  }
+
+  var isLeapYear = isLeapYearIndex(year)
+  if (isLeapYear && dayOfYear > 366) {
+    return false
+  }
+  if (!isLeapYear && dayOfYear > 365) {
+    return false
+  }
+
+  return true
+}
+
+function validateWeekDate (year, week, day) {
+  if (week < 0 || week > 52) {
+    return false
+  }
+
+  if (day != null && (day < 0 || day > 6)) {
+    return false
+  }
+
+  return true
+}
+
+function validateTime (hours, minutes, seconds) {
+  if (hours != null && (hours < 0 || hours >= 25)) {
+    return false
+  }
+
+  if (minutes != null && (minutes < 0 || minutes >= 60)) {
+    return false
+  }
+
+  if (seconds != null && (seconds < 0 || seconds >= 60)) {
+    return false
+  }
+
+  return true
+}
+
+function validateTimezone (hours, minutes) {
+  if (minutes != null && (minutes < 0 || minutes > 59)) {
+    return false
+  }
+
+  return true
 }
