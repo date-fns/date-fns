@@ -816,7 +816,7 @@ describe('parse', function () {
       })
 
       it('GMT', function () {
-        var result = parse('2016-11-25T16:38:38.123+00:00', "yyyy-MM-dd'T'HH:mm:ss.SSSx", baseDate)
+        var result = parse('2016-11-25T16:38:38.123+0000', "yyyy-MM-dd'T'HH:mm:ss.SSSx", baseDate)
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
 
@@ -1200,13 +1200,13 @@ describe('parse', function () {
           era: function () {
             return {
               value: 0,
-              rest: 'it works!'
+              rest: ' it works!'
             }
           }
         }
       }
       // $ExpectedMistake
-      var result = parse("2018 apparently 'it works!'", 'y G', baseDate, {locale: customLocale})
+      var result = parse('2018 foobar', "y G 'it works!'", baseDate, {locale: customLocale})
       assert.deepEqual(result, new Date(-2017, 0 /* Jan */, 1))
     })
 
@@ -1312,5 +1312,17 @@ describe('parse', function () {
     assert.throws(parse.bind(null, 1), TypeError)
     // $ExpectedMistake
     assert.throws(parse.bind(null, 1, 2), TypeError)
+  })
+
+  describe('edge cases', function () {
+    it('returns Invalid Date if the string contains some remaining input after parsing', function () {
+      var result = parse('2016-11-05T040404', 'yyyy-MM-dd', baseDate)
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    it('parses normally if the remaining input is just whitespace', function () {
+      var result = parse('2016-11-05   \n', 'yyyy-MM-dd', baseDate)
+      assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5))
+    })
   })
 })
