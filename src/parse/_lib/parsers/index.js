@@ -517,7 +517,6 @@ var parsers = {
       }
     },
     validate: function (date, value, options) {
-      console.log({value})
       return value >= 0 && value <= 11
     },
     set: function (date, value, options) {

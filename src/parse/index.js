@@ -23,6 +23,8 @@ var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
 
+var notWhitespaceRegExp = /\S/
+
 /**
  * @name parse
  * @category Common Helpers
@@ -385,6 +387,11 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
         return new Date(NaN)
       }
     }
+  }
+
+  // Check if the remaining input contains something other than whitespace
+  if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
+    return new Date(NaN)
   }
 
   var uniquePrioritySetters = setters
