@@ -99,7 +99,9 @@ export default function toDate (argument, dirtyOptions) {
   }
 
   // Clone the date
-  if (argument instanceof Date) {
+  if (argument instanceof Date ||
+    (typeof argument === 'object' && Object.prototype.toString.call(argument) === '[object Date]')
+  ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
   } else if (typeof argument === 'number' || Object.prototype.toString.call(argument) === '[object Number]') {
