@@ -8,10 +8,10 @@ var dateFormats = {
 }
 
 var timeFormats = {
-  full: 'h:mm:ss a zzzz',
-  long: 'h:mm:ss a z',
-  medium: 'h:mm:ss a',
-  short: 'h:mm a'
+  full: 'H:mm:ss น. zzzz',
+  long: 'H:mm:ss น. z',
+  medium: 'H:mm:ss น.',
+  short: 'H:mm น.'
 }
 
 var dateTimeFormats = {
@@ -29,7 +29,7 @@ var formatLong = {
 
   time: buildFormatLongFn({
     formats: timeFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'medium'
   }),
 
   dateTime: buildFormatLongFn({

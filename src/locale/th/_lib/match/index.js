@@ -1,21 +1,16 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-/*
- * Copy from en-US/_lib/match
- * I decided to not support this feature because of rarly usages.
- * Thus, this feature still need the contributions for parse thai date and time.
- */
-var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
+var matchOrdinalNumberPattern = /^\d+/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^([bB]|คศ)/i,
+  narrow: /^([bB]|[aA]|คศ)/i,
   abbreviated: /^([bB]\.?\s?[cC]\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?|ค\.?ศ\.?)/i,
   wide: /^(ก่อนคริสตกาล|คริสต์ศักราช|คริสตกาล)/i
 }
 var parseEraPatterns = {
-  any: [/^[bB]/i, /^(ค\.?ศ\.?|คริสตกาล|คริสต์ศักราช)/i]
+  any: [/^[bB]/i, /^(^[aA]|ค\.?ศ\.?|คริสตกาล|คริสต์ศักราช|)/i]
 }
 
 var matchQuarterPatterns = {
@@ -49,13 +44,13 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(a|p|น|(ตอน.*?)?.*(เที่ยง|เช้า|บ่าย|เย็น|กลางคืน))/i,
-  any: /^([ap]\.?\s?m\.?|น\.?|(ตอน.*?)?.*(เที่ยง|เช้า|บ่าย|เย็น|กลางคืน))/i
+  narrow: /^(ก่อนเที่ยง|หลังเที่ยง|(ตอน.*?)?.*(เที่ยง|เช้า|บ่าย|เย็น|กลางคืน))/i,
+  any: /^(ก่อนเที่ยง|หลังเที่ยง|(ตอน.*?)?.*(เที่ยง|เช้า|บ่าย|เย็น|กลางคืน))/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^(a|น|โมง)/i,
-    pm: /^(p|น|ทุ่ม)/i,
+    am: /^ก่อนเที่ยง/i,
+    pm: /^หลังเที่ยง/i,
     midnight: /^เที่ยงคืน/i,
     noon: /^เที่ยง/i,
     morning: /เช้า/i,
