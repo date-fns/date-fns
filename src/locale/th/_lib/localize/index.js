@@ -27,8 +27,8 @@ var monthValues = {
 
 var dayPeriodValues = {
   narrow: {
-    am: 'น',
-    pm: 'น',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'เช้า',
@@ -37,8 +37,8 @@ var dayPeriodValues = {
     night: 'กลางคืน'
   },
   abbreviated: {
-    am: 'น.',
-    pm: 'น.',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'เช้า',
@@ -47,8 +47,8 @@ var dayPeriodValues = {
     night: 'กลางคืน'
   },
   wide: {
-    am: 'น.',
-    pm: 'น.',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'เช้า',
@@ -60,8 +60,8 @@ var dayPeriodValues = {
 
 var formattingDayPeriodValues = {
   narrow: {
-    am: 'น',
-    pm: 'น',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'ตอนเช้า',
@@ -70,8 +70,8 @@ var formattingDayPeriodValues = {
     night: 'ตอนกลางคืน'
   },
   abbreviated: {
-    am: 'น.',
-    pm: 'น.',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'ตอนเช้า',
@@ -80,8 +80,8 @@ var formattingDayPeriodValues = {
     night: 'ตอนกลางคืน'
   },
   wide: {
-    am: 'น.',
-    pm: 'น.',
+    am: 'ก่อนเที่ยง',
+    pm: 'หลังเที่ยง',
     midnight: 'เที่ยงคืน',
     noon: 'เที่ยง',
     morning: 'ตอนเช้า',
