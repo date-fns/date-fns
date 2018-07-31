@@ -335,7 +335,7 @@ describe('es locale', function () {
       })
 
       it('wide', function () {
-        var result = parse('February', 'MMMM', baseDate, { locale: locale })
+        var result = parse('febrero', 'MMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
       })
 
@@ -372,7 +372,7 @@ describe('es locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('mi', 'EEEEE', baseDate, { locale: locale })
+        var result = parse('m', 'EEEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
 

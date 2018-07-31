@@ -13,13 +13,14 @@ var quarterValues = {
 }
 
 var monthValues = {
-  narrow: ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei.', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
   wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
 }
 
 var dayValues = {
-  narrow: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-  short: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
+  narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
+  short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
   abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
   wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
 }
