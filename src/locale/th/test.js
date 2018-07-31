@@ -383,7 +383,7 @@ describe('th locale', function () {
     })
 
     it('ordinal local day of week', function () {
-      var result = parse('1', "eo", baseDate, {locale: locale})
+      var result = parse('1', 'eo', baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
