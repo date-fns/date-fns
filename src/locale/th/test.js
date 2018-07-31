@@ -297,13 +297,13 @@ describe('th locale', function () {
     })
 
     it('ordinal year', function () {
-      var result = parse('2017th', 'yo', baseDate, {locale: locale})
+      var result = parse('2017', 'yo', baseDate, {locale: locale})
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     describe('quarter', function () {
       it('ordinal', function () {
-        var result = parse('1st', 'Qo', baseDate, {locale: locale})
+        var result = parse('1', 'Qo', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
 
@@ -346,7 +346,7 @@ describe('th locale', function () {
     })
 
     it('ordinal week of year', function () {
-      var result = parse('49th', 'wo', baseDate, {locale: locale})
+      var result = parse('49', 'wo', baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 31))
     })
 

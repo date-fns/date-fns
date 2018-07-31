@@ -23,9 +23,9 @@ var parseQuarterPatterns = {
 }
 
 var matchMonthPatterns = {
-  narrow: /^[一二三四五六七八九十]/i,
-  abbreviated: /^[一二三四五六七八九十]/i,
-  wide: /^[一二三四五六七八九十]月/i
+  narrow: /^(一|二|三|四|五|六|七|八|九|十[二一])/i,
+  abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i,
+  wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i
 }
 var parseMonthPatterns = {
   narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
@@ -43,19 +43,18 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^[早中午晚上下凌晨夜]/i,
-  any: /^[早中午晚上下凌晨夜]/i
+  any: /^(上午|下午|午夜|[中正]午|早上|下午|晚上?|凌晨)/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /[上早凌]/i,
-    pm: /[下晚夜]/i,
-    midnight: /[夜]/i,
+    am: /^上午/i,
+    pm: /^下午/i,
+    midnight: /^午夜/i,
     noon: /^[中正]午/i,
-    morning: /早/i,
-    afternoon: /下午/i,
-    evening: /晚/i,
-    night: /夜/i
+    morning: /^早上/i,
+    afternoon: /^下午/i,
+    evening: /^晚/i,
+    night: /^凌晨/i
   }
 }
 

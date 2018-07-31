@@ -297,13 +297,13 @@ describe('zh-CN locale', function () {
     })
 
     it('ordinal year', function () {
-      var result = parse('第 2017 年', 'yo', baseDate, {locale: locale})
+      var result = parse('第 2017 年', "yo '年'", baseDate, {locale: locale})
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     describe('quarter', function () {
       it('ordinal', function () {
-        var result = parse('第 1 刻', 'Qo', baseDate, {locale: locale})
+        var result = parse('第 1 刻', "Qo '刻'", baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
 
@@ -325,7 +325,7 @@ describe('zh-CN locale', function () {
 
     describe('month', function () {
       it('ordinal', function () {
-        var result = parse('第 6 月', 'Mo', baseDate, {locale: locale})
+        var result = parse('第 6 月', "Mo '月'", baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
       })
 
@@ -346,17 +346,17 @@ describe('zh-CN locale', function () {
     })
 
     it('ordinal week of year', function () {
-      var result = parse('第 49 周', 'wo', baseDate, {locale: locale})
+      var result = parse('第 49 周', "wo '周'", baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 31))
     })
 
     it('ordinal day of month', function () {
-      var result = parse('第 28 日', 'do', baseDate, {locale: locale})
+      var result = parse('第 28 日', "do '日'", baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('ordinal day of year', function () {
-      var result = parse('第 200 日', 'Do', baseDate, {locale: locale})
+      var result = parse('第 200 日', "Do '日'", baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
@@ -383,7 +383,7 @@ describe('zh-CN locale', function () {
     })
 
     it('ordinal local day of week', function () {
-      var result = parse('本周 第 1 天', "'本周' eo", baseDate, {locale: locale})
+      var result = parse('本周 第 1 天', "'本周' eo '天'", baseDate, {locale: locale})
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 

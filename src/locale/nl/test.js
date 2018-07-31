@@ -51,7 +51,7 @@ describe('nl locale', function () {
 
       it('stand-alone month', function () {
         var result = format(date, "Lo 'maand', LLL, LLLL, LLLLL", {locale: locale})
-        assert(result === '4e maand, april, april, apr')
+        assert(result === '4e maand, apr., april, A')
       })
     })
 
@@ -84,7 +84,7 @@ describe('nl locale', function () {
     describe('week day', function () {
       it('day of week', function () {
         var result = format(date, 'E, EEEE, EEEEE, EEEEEE', {locale: locale})
-        assert(result === 'zat, zaterdag, za, zat')
+        assert(result === 'zat, zaterdag, Z, za')
       })
 
       it('ordinal day of week', function () {
@@ -135,7 +135,7 @@ describe('nl locale', function () {
 
       it('medium date', function () {
         var result = format(date, 'PP', {locale: locale})
-        assert(result === '5 april 1986')
+        assert(result === '5 apr. 1986')
       })
 
       it('long date', function () {
@@ -165,7 +165,7 @@ describe('nl locale', function () {
 
       it('medium date + time', function () {
         var result = format(date, 'PPpp', {locale: locale})
-        assert(result === '5 april 1986, 10:32:00')
+        assert(result === '5 apr. 1986, 10:32:00')
       })
 
       it('long date + time', function () {
@@ -340,7 +340,7 @@ describe('nl locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('jan', 'MMMMM', baseDate, {locale: locale})
+        var result = parse('j', 'MMMMM', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })
@@ -362,7 +362,7 @@ describe('nl locale', function () {
 
     describe('day of week', function () {
       it('abbreviated', function () {
-        var result = parse('maandag', 'E', baseDate, {locale: locale})
+        var result = parse('maa', 'E', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
 
@@ -372,12 +372,12 @@ describe('nl locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('din', 'EEEEE', baseDate, {locale: locale})
+        var result = parse('d', 'EEEEE', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
 
       it('short', function () {
-        var result = parse('don', 'EEEEEE', baseDate, {locale: locale})
+        var result = parse('do', 'EEEEEE', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
@@ -394,7 +394,7 @@ describe('nl locale', function () {
       })
 
       it('wide', function () {
-        var result = parse('5 PM.', 'h aaaa', baseDate, {locale: locale})
+        var result = parse('5 PM', 'h aaaa', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
       })
 

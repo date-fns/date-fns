@@ -308,12 +308,12 @@ describe('fr locale', function () {
       })
 
       it('abbreviated', function () {
-        var result = parse('3ème trim.', 'QQQ', baseDate, {locale: locale})
+        var result = parse('T3', 'QQQ', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
       })
 
       it('wide', function () {
-        var result = parse('4st quarter', 'QQQQ', baseDate, {locale: locale})
+        var result = parse('4ème trimestre', 'QQQQ', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
       })
 
@@ -377,7 +377,7 @@ describe('fr locale', function () {
       })
 
       it('short', function () {
-        var result = parse('ja', 'EEEEEE', baseDate, {locale: locale})
+        var result = parse('je', 'EEEEEE', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
