@@ -1,53 +1,116 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-// Vietnammese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
+// Vietnamese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
 // Capitalization reference: http://hcmup.edu.vn/index.php?option=com_content&view=article&id=4106%3Avit-hoa-trong-vn-bn-hanh-chinh&catid=2345%3Atham-kho&Itemid=4103&lang=vi&site=134
-var weekdayValues = {
-  narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
-  short: ['CN', 'thứ 2', 'thứ 3', 'thứ 4', 'thứ 5', 'thứ 6', 'thứ 7'],
-  long: ['Chủ Nhật', 'thứ Hai', 'thứ Ba', 'thứ Tư', 'thứ Năm', 'thứ Sáu', 'thứ Bảy']
+
+var eraValues = {
+  narrow: ['TCN', 'SCN'],
+  abbreviated: ['trước CN', 'sau CN'],
+  wide: ['trước Công Nguyên', 'sau Công Nguyên']
 }
 
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['quý 1', 'quý 2', 'quý 3', 'quý 4']
+}
+var formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
+}
+
+// Note: in English, the names of days of the week and months are capitalized.
+// If you are making a new locale based on this one, check if the same is true for the language you're working on.
+// Generally, formatted dates should look like they are in the middle of a sentence,
+// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  short: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
+  abbreviated: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+  wide: ['Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu', 'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai']
+}
+var formattingMonthValues = {
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   short: ['thg 1', 'thg 2', 'thg 3', 'thg 4', 'thg 5', 'thg 6', 'thg 7', 'thg 8', 'thg 9', 'thg 10', 'thg 11', 'thg 12'],
-  long: ['tháng Một', 'tháng Hai', 'tháng Ba', 'tháng Tư', 'tháng Năm', 'tháng Sáu', 'tháng Bảy', 'tháng Tám', 'tháng Chín', 'tháng Mười', 'tháng Mười Một', 'tháng Mười Hai']
+  abbreviated: ['tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6', 'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'],
+  wide: ['tháng Một', 'tháng Hai', 'tháng Ba', 'tháng Tư', 'tháng Năm', 'tháng Sáu', 'tháng Bảy', 'tháng Tám', 'tháng Chín', 'tháng Mười', 'tháng Mười Một', 'tháng Mười Hai']
 }
 
-// `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
-// Use the system which is used the most commonly in the locale.
-// For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
-//
-//   var timeOfDayValues = {
-//     any: ['in the night', 'in the morning', 'in the afternoon', 'in the evening']
-//   }
-//
-// And later:
-//
-//   var localize = {
-//     // The callback takes the hours as the argument and returns the array index
-//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
-//       if (hours >= 17) {
-//         return 3
-//       } else if (hours >= 12) {
-//         return 2
-//       } else if (hours >= 4) {
-//         return 1
-//       } else {
-//         return 0
-//       }
-//     }),
-//     timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
-//   }
-var timeOfDayValues = {
+var dayValues = {
+  narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+  short: ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'],
+  abbreviated: ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
+  wide: ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
+}
+
+var dayPeriodValues = {
   // Vietnamese are used to AM/PM borrowing from English, hence `uppercase` and
   // `lowercase` are just like English but I'm leaving the `long`
   // format being localized with abbreviations found in some systems (SÁng / CHiều);
   // however, personally, I don't think `Chiều` sounds appropriate for `PM`
-  // TODO: for `long` version, the values should be 'sáng' 'trưa' 'chiều' 'tối'
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['SA', 'CH']
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'nửa đêm',
+    noon: 'trưa',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'nửa đêm',
+    noon: 'TR',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  wide: {
+    am: 'SA',
+    pm: 'CH',
+    midnight: 'nửa đêm',
+    noon: 'trưa',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 's',
+    pm: 'c',
+    midnight: 'nửa đêm',
+    noon: 'tr',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  abbreviated: {
+    am: 'SA',
+    pm: 'CH',
+    midnight: 'nửa đêm',
+    noon: 'TR',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  },
+  wide: {
+    am: 'SA',
+    pm: 'CH',
+    midnight: 'nửa đêm',
+    noon: 'TR',
+    morning: 'sáng',
+    afternoon: 'chiều',
+    evening: 'tối',
+    night: 'đêm'
+  }
 }
 
 // If ordinal numbers depend on context, for example,
@@ -102,14 +165,40 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    defaultFormattingWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
+  })
 }
 
 export default localize

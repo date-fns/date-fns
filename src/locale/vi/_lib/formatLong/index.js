@@ -1,18 +1,47 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
-var formatLong = buildFormatLongFn({
-  // 23:25
-  LT: 'H:mm',
-  // 23:25:59
-  LTS: 'H:mm:ss',
-  // 25/08/2017
-  L: 'DD/MM/YYYY',
+var dateFormats = {
+  // thứ Sáu, ngày 25 tháng Tám năm 2017
+  full: "EEEE, 'ngày' d MMMM 'năm' y",
   // ngày 25 tháng 8 năm 2017
-  LL: '[ngày] D [tháng] M [năm] YYYY',
-  // ngày 25 tháng 8 năm 2017 23:25
-  LLL: '[ngày] D [tháng] M [năm] YYYY H:mm',
+  long: "'ngày' d MMM 'năm' y",
+  // 25 tháng 8 năm 2017
+  medium: "d MMM 'năm' y",
+  // 25/08/2017
+  short: 'dd/MM/y'
+}
+
+var timeFormats = {
+  full: 'HH:mm:ss zzzz',
+  long: 'HH:mm:ss z',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm'
+}
+
+var dateTimeFormats = {
   // thứ Sáu, ngày 25 tháng Tám năm 2017 23:25:59
-  LLLL: 'dddd, [ngày] D MMMM [năm] YYYY H:mm:ss'
-})
+  full: '{{date}} {{time}}',
+  // ngày 25 tháng 8 năm 2017 23:25
+  long: '{{date}} {{time}}',
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
+}
+
+var formatLong = {
+  date: buildFormatLongFn({
+    formats: dateFormats,
+    defaultWidth: 'full'
+  }),
+
+  time: buildFormatLongFn({
+    formats: timeFormats,
+    defaultWidth: 'full'
+  }),
+
+  dateTime: buildFormatLongFn({
+    formats: dateTimeFormats,
+    defaultWidth: 'full'
+  })
+}
 
 export default formatLong
