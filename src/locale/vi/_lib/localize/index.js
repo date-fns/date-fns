@@ -12,12 +12,14 @@ var eraValues = {
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['quý 1', 'quý 2', 'quý 3', 'quý 4']
+  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
 }
+
 var formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
+  // I notice many news outlet use this "quý II/2018"
+  wide: ['quý I', 'quý II', 'quý III', 'quý IV']
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -26,15 +28,14 @@ var formattingQuarterValues = {
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-  short: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
-  abbreviated: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+  abbreviated: ['Thg 1', 'Thg 2', 'Thg 3', 'Thg 4', 'Thg 5', 'Thg 6', 'Thg 7', 'Thg 8', 'Thg 9', 'Thg 10', 'Thg 11', 'Thg 12'],
   wide: ['Tháng Một', 'Tháng Hai', 'Tháng Ba', 'Tháng Tư', 'Tháng Năm', 'Tháng Sáu', 'Tháng Bảy', 'Tháng Tám', 'Tháng Chín', 'Tháng Mười', 'Tháng Mười Một', 'Tháng Mười Hai']
 }
+// In Vietnamese date formatting, month number less than 10 expected to have leading zero
 var formattingMonthValues = {
-  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-  short: ['thg 1', 'thg 2', 'thg 3', 'thg 4', 'thg 5', 'thg 6', 'thg 7', 'thg 8', 'thg 9', 'thg 10', 'thg 11', 'thg 12'],
-  abbreviated: ['tháng 1', 'tháng 2', 'tháng 3', 'tháng 4', 'tháng 5', 'tháng 6', 'tháng 7', 'tháng 8', 'tháng 9', 'tháng 10', 'tháng 11', 'tháng 12'],
-  wide: ['tháng Một', 'tháng Hai', 'tháng Ba', 'tháng Tư', 'tháng Năm', 'tháng Sáu', 'tháng Bảy', 'tháng Tám', 'tháng Chín', 'tháng Mười', 'tháng Mười Một', 'tháng Mười Hai']
+  narrow: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+  abbreviated: ['thg 1', 'thg 2', 'thg 3', 'thg 4', 'thg 5', 'thg 6', 'thg 7', 'thg 8', 'thg 9', 'thg 10', 'thg 11', 'thg 12'],
+  wide: ['tháng 01', 'tháng 02', 'tháng 03', 'tháng 04', 'tháng 05', 'tháng 06', 'tháng 07', 'tháng 08', 'tháng 09', 'tháng 10', 'tháng 11', 'tháng 12'],
 }
 
 var dayValues = {
@@ -44,18 +45,21 @@ var dayValues = {
   wide: ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
 }
 
+// Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
+// `abbreviated` are just like English but I'm leaving the `wide`
+// format being localized with abbreviations found in some systems (SÁng / CHiều);
+// however, personally, I don't think `Chiều` sounds appropriate for `PM`
 var dayPeriodValues = {
-  // Vietnamese are used to AM/PM borrowing from English, hence `uppercase` and
-  // `lowercase` are just like English but I'm leaving the `long`
-  // format being localized with abbreviations found in some systems (SÁng / CHiều);
-  // however, personally, I don't think `Chiều` sounds appropriate for `PM`
+  // narrow date period is extremely rare in Vietnamese
+  // I used abbreviated form for noon, morning and afternoon
+  // which are regconizable by Vietnamese, others cannot be any shorter
   narrow: {
-    am: 'a',
-    pm: 'p',
+    am: 'am',
+    pm: 'pm',
     midnight: 'nửa đêm',
-    noon: 'trưa',
-    morning: 'sáng',
-    afternoon: 'chiều',
+    noon: 'tr',
+    morning: 'sg',
+    afternoon: 'ch',
     evening: 'tối',
     night: 'đêm'
   },
@@ -63,7 +67,7 @@ var dayPeriodValues = {
     am: 'AM',
     pm: 'PM',
     midnight: 'nửa đêm',
-    noon: 'TR',
+    noon: 'trưa',
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
@@ -80,22 +84,23 @@ var dayPeriodValues = {
     night: 'đêm'
   }
 }
+
 var formattingDayPeriodValues = {
   narrow: {
-    am: 's',
-    pm: 'c',
+    am: 'am',
+    pm: 'pm',
     midnight: 'nửa đêm',
     noon: 'tr',
-    morning: 'sáng',
-    afternoon: 'chiều',
+    morning: 'sg',
+    afternoon: 'ch',
     evening: 'tối',
     night: 'đêm'
   },
   abbreviated: {
-    am: 'SA',
-    pm: 'CH',
+    am: 'AM',
+    pm: 'PM',
     midnight: 'nửa đêm',
-    noon: 'TR',
+    noon: 'trưa',
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
@@ -105,11 +110,11 @@ var formattingDayPeriodValues = {
     am: 'SA',
     pm: 'CH',
     midnight: 'nửa đêm',
-    noon: 'TR',
-    morning: 'sáng',
-    afternoon: 'chiều',
-    evening: 'tối',
-    night: 'đêm'
+    noon: 'giữa trưa',
+    morning: 'vào buổi sáng',
+    afternoon: 'vào buổi chiều',
+    evening: 'vào buổi tối',
+    night: 'vào ban đêm'
   }
 }
 
@@ -128,24 +133,26 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = parseInt(dirtyNumber, 10)
 
   if (unit === 'quarter') {
+    // many news outlets use "quý I"...
     switch (number) {
-      case 1: return 'một'
-      case 2: return 'hai'
-      case 3: return 'ba'
-      case 4: return 'bốn'
+      case 1: return 'I'
+      case 2: return 'II'
+      case 3: return 'III'
+      case 4: return 'IV'
     }
-  } else if (unit === 'dayOfWeek') {
-    // day of week in Vietnamese has ordinal number meaning, so we should use them
+  } else if (unit === 'day') {
+    // day of week in Vietnamese has ordinal number meaning,
+    // so we should use them, else it'll sound weird
     switch (number) {
-      case 0: return 'CN'
-      case 1: return '2'
-      case 2: return '3'
-      case 3: return '4'
-      case 4: return '5'
-      case 5: return '6'
-      case 6: return '7'
+      case 1: return 'thứ 2' // meaning 2nd day but it's the first day of the week :D
+      case 2: return 'thứ 3' // meaning 3rd day
+      case 3: return 'thứ 4' // meaning 4th day and so on
+      case 4: return 'thứ 5'
+      case 5: return 'thứ 6'
+      case 6: return 'thứ 7'
+      case 7: return 'chủ nhật' // meaning Sunday, there's no 8th day :D
     }
-  } else if (unit === 'week' || unit === 'isoWeek') {
+  } else if (unit === 'week') {
     if (number === 1) {
       return 'thứ nhất'
     } else {

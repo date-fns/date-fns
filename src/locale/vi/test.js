@@ -34,24 +34,24 @@ describe('vi locale', function () {
     describe('quarter', function () {
       it('formatting quarter', function () {
         var result = format(date, "'quý' Qo, QQQ, QQQQ, QQQQQ", {locale: locale})
-        assert(result === 'quý hai, Q2, Quý 2, 2')
+        assert(result === 'quý II, Q2, quý II, 2')
       })
 
       it('stand-alone quarter', function () {
         var result = format(date, "'quý' qo, qqq, qqqq, qqqqq", {locale: locale})
-        assert(result === 'quý hai, Q2, quý 2, 2')
+        assert(result === 'quý II, Q2, Quý 2, 2')
       })
     })
 
     describe('month', function () {
       it('formatting month', function () {
         var result = format(date, "'tháng' Mo, MMM, MMMM, MMMMM", {locale: locale})
-        assert(result === 'tháng 4, tháng 4, tháng Tư, 4')
+        assert(result === 'tháng 4, thg 4, tháng 04, 04')
       })
 
       it('stand-alone month', function () {
         var result = format(date, "'Tháng' Lo, LLL, LLLL, LLLLL", {locale: locale})
-        assert(result === 'Tháng 4, Tháng 4, Tháng Tư, 4')
+        assert(result === 'Tháng 4, Thg 4, Tháng Tư, 4')
       })
     })
 
@@ -89,7 +89,7 @@ describe('vi locale', function () {
 
       it('ordinal day of week', function () {
         var result = format(date, "'ngày' eo 'trong tuần'", {locale: locale})
-        assert(result === 'ngày 6 trong tuần')
+        assert(result === 'ngày thứ 7 trong tuần')
       })
     })
 
@@ -101,7 +101,7 @@ describe('vi locale', function () {
 
       it('AM, PM', function () {
         var result = format(date, 'h a, h aaaa, haaaaa', {locale: locale})
-        assert(result === '10 SA, 10 SA, 10s')
+        assert(result === '10 AM, 10 SA, 10am')
       })
 
       it('AM, PM, noon, midnight', function () {
@@ -135,17 +135,17 @@ describe('vi locale', function () {
 
       it('medium date', function () {
         var result = format(date, 'PP', {locale: locale})
-        assert(result === '5 tháng 4 năm 1986')
+        assert(result === '5 thg 4 năm 1986')
       })
 
       it('long date', function () {
         var result = format(date, 'PPP', {locale: locale})
-        assert(result === 'ngày 5 tháng 4 năm 1986')
+        assert(result === 'ngày 5 tháng 04 năm 1986')
       })
 
       it('full date', function () {
         var result = format(date, 'PPPP', {locale: locale})
-        assert(result === 'Thứ Bảy, ngày 5 tháng Tư năm 1986')
+        assert(result === 'Thứ Bảy, ngày 5 tháng 04 năm 1986')
       })
 
       it('short time', function () {
@@ -165,17 +165,17 @@ describe('vi locale', function () {
 
       it('medium date + time', function () {
         var result = format(date, 'PPpp', {locale: locale})
-        assert(result === '5 tháng 4 năm 1986 10:32:00')
+        assert(result === '5 thg 4 năm 1986 10:32:00')
       })
 
       it('long date + time', function () {
         var result = format(date, 'PPPp', {locale: locale})
-        assert(result === 'ngày 5 tháng 4 năm 1986 10:32')
+        assert(result === 'ngày 5 tháng 04 năm 1986 10:32')
       })
 
       it('full date + time', function () {
         var result = format(date, 'PPPPp', {locale: locale})
-        assert(result === 'Thứ Bảy, ngày 5 tháng Tư năm 1986 10:32')
+        assert(result === 'Thứ Bảy, ngày 5 tháng 04 năm 1986 10:32')
       })
     })
   })
@@ -247,27 +247,27 @@ describe('vi locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'Thứ Ba tuần trước lúc 00:00')
+      assert(result === 'Thứ Ba tuần trước vào lúc 00:00')
     })
 
     it('yesterday', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, {locale: locale})
-      assert(result === 'hôm qua lúc 22:22')
+      assert(result === 'hôm qua vào lúc 22:22')
     })
 
     it('today', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, {locale: locale})
-      assert(result === 'hôm nay lúc 16:50')
+      assert(result === 'hôm nay vào lúc 16:50')
     })
 
     it('tomorrow', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 5, 7, 30), baseDate, {locale: locale})
-      assert(result === 'ngày mai lúc 07:30')
+      assert(result === 'ngày mai vào lúc 07:30')
     })
 
     it('next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'Chủ Nhật tuần tới lúc 12:00')
+      assert(result === 'Chủ Nhật tới vào lúc 12:00')
     })
 
     it('after the next week', function () {
