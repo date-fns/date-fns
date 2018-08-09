@@ -14,12 +14,12 @@ var parseEraPatterns = {
 }
 
 var matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^quý [1234]/i
+  narrow: /^([1234]|i{1,3}v?)/i,
+  abbreviated: /^q([1234]|i{1,3}v?)/i,
+  wide: /^quý ([1234]|i{1,3}v?)/i
 }
 var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
+  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i],
 }
 
 var matchMonthPatterns = {

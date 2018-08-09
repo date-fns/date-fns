@@ -74,13 +74,13 @@ describe('vi locale > formatDistance', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 1) === 'khoảng 1 tiếng')
+        assert(formatDistance('aboutXHours', 1) === 'khoảng 1 giờ')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 2) === 'khoảng 2 tiếng')
+        assert(formatDistance('aboutXHours', 2) === 'khoảng 2 giờ')
       })
     })
   })
@@ -88,13 +88,13 @@ describe('vi locale > formatDistance', function () {
   describe('xHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 1) === '1 tiếng')
+        assert(formatDistance('xHours', 1) === '1 giờ')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 2) === '2 tiếng')
+        assert(formatDistance('xHours', 2) === '2 giờ')
       })
     })
   })

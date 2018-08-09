@@ -206,7 +206,7 @@ describe('vi locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === 'khoảng 1 tiếng trước')
+        assert(result === 'khoảng 1 giờ trước')
       })
     })
   })
@@ -237,7 +237,7 @@ describe('vi locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           {locale: locale, addSuffix: true}
         )
-        assert(result === '1 tiếng trước')
+        assert(result === '1 giờ trước')
       })
     })
   })
@@ -315,6 +315,8 @@ describe('vi locale', function () {
       it('wide', function () {
         var result = parse('quý 4', 'QQQQ', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
+        var result2 = parse('quý IV', 'QQQQ', baseDate, {locale: locale})
+        assert.deepEqual(result2, new Date(1986, 9 /* Oct */, 1))
       })
 
       it('narrow', function () {
