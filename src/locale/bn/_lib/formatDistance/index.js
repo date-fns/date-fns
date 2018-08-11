@@ -1,69 +1,69 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'less than a second',
-    other: 'less than {{count}} seconds'
+    one: 'প্রায় ১ সেকেন্ড',
+    other: '{{count}} সেকেন্ড'
   },
 
   xSeconds: {
-    one: '1 second',
-    other: '{{count}} seconds'
+    one: '১ সেকেন্ড',
+    other: '{{count}} সেকেন্ড'
   },
 
-  halfAMinute: 'half a minute',
+  halfAMinute: 'আধমিনিট',
 
   lessThanXMinutes: {
-    one: 'less than a minute',
-    other: 'less than {{count}} minutes'
+    one: 'প্রায় ১ মিনিট',
+    other: '{{count}} মিনিট'
   },
 
   xMinutes: {
-    one: '1 minute',
-    other: '{{count}} minutes'
+    one: '১ মিনিট',
+    other: '{{count}} মিনিট'
   },
 
   aboutXHours: {
-    one: 'about 1 hour',
-    other: 'about {{count}} hours'
+    one: 'প্রায় ১ ঘন্টা',
+    other: 'প্রায় {{count}} ঘন্টা'
   },
 
   xHours: {
-    one: '1 hour',
-    other: '{{count}} hours'
+    one: '১ ঘন্টা',
+    other: '{{count}} ঘন্টা'
   },
 
   xDays: {
-    one: '1 day',
-    other: '{{count}} days'
+    one: '১ দিন',
+    other: '{{count}} দিন'
   },
 
   aboutXMonths: {
-    one: 'about 1 month',
-    other: 'about {{count}} months'
+    one: 'প্রায় ১ মাস',
+    other: 'প্রায় {{count}} মাস'
   },
 
   xMonths: {
-    one: '1 month',
-    other: '{{count}} months'
+    one: '১ মাস',
+    other: '{{count}} মাস'
   },
 
   aboutXYears: {
-    one: 'about 1 year',
-    other: 'about {{count}} years'
+    one: 'প্রায় ১ বছর',
+    other: 'প্রায় {{count}} বছর'
   },
 
   xYears: {
-    one: '1 year',
-    other: '{{count}} years'
+    one: '১ বছর',
+    other: '{{count}} বছর'
   },
 
   overXYears: {
-    one: 'over 1 year',
-    other: 'over {{count}} years'
+    one: '১ বছরের বেশী',
+    other: '{{count}} বছরের বেশী'
   },
 
   almostXYears: {
-    one: 'almost 1 year',
-    other: 'almost {{count}} years'
+    one: 'প্রায় ১ বছর',
+    other: 'প্রায় {{count}} বছর'
   }
 }
 
@@ -81,9 +81,9 @@ export default function formatDistance (token, count, options) {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return 'in ' + result
+      return '' + result    // TODO:
     } else {
-      return result + ' ago'
+      return result + ' আগে'
     }
   }
 
