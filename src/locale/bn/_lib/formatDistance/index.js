@@ -1,68 +1,68 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'প্রায় ১ সেকেন্ড',
-    other: '{{count}} সেকেন্ড'
+    one: 'প্রায় 1 সেকেন্ড',
+    other: 'প্রায় {{count}} সেকেন্ড'
   },
 
   xSeconds: {
-    one: '১ সেকেন্ড',
+    one: '1 সেকেন্ড',
     other: '{{count}} সেকেন্ড'
   },
 
   halfAMinute: 'আধমিনিট',
 
   lessThanXMinutes: {
-    one: 'প্রায় ১ মিনিট',
-    other: '{{count}} মিনিট'
+    one: 'প্রায় 1 মিনিট',
+    other: 'প্রায় {{count}} মিনিট'
   },
 
   xMinutes: {
-    one: '১ মিনিট',
+    one: '1 মিনিট',
     other: '{{count}} মিনিট'
   },
 
   aboutXHours: {
-    one: 'প্রায় ১ ঘন্টা',
+    one: 'প্রায় 1 ঘন্টা',
     other: 'প্রায় {{count}} ঘন্টা'
   },
 
   xHours: {
-    one: '১ ঘন্টা',
+    one: '1 ঘন্টা',
     other: '{{count}} ঘন্টা'
   },
 
   xDays: {
-    one: '১ দিন',
+    one: '1 দিন',
     other: '{{count}} দিন'
   },
 
   aboutXMonths: {
-    one: 'প্রায় ১ মাস',
+    one: 'প্রায় 1 মাস',
     other: 'প্রায় {{count}} মাস'
   },
 
   xMonths: {
-    one: '১ মাস',
+    one: '1 মাস',
     other: '{{count}} মাস'
   },
 
   aboutXYears: {
-    one: 'প্রায় ১ বছর',
+    one: 'প্রায় 1 বছর',
     other: 'প্রায় {{count}} বছর'
   },
 
   xYears: {
-    one: '১ বছর',
+    one: '1 বছর',
     other: '{{count}} বছর'
   },
 
   overXYears: {
-    one: '১ বছরের বেশী',
+    one: '1 বছরের বেশী',
     other: '{{count}} বছরের বেশী'
   },
 
   almostXYears: {
-    one: 'প্রায় ১ বছর',
+    one: 'প্রায় 1 বছর',
     other: 'প্রায় {{count}} বছর'
   }
 }
@@ -81,7 +81,7 @@ export default function formatDistance (token, count, options) {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return result + 'এর মধ্যে'
+      return result + ' এর মধ্যে'
     } else {
       return result + ' আগে'
     }

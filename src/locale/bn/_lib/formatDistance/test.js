@@ -4,17 +4,17 @@
 import assert from 'power-assert'
 import formatDistance from '.'
 
-describe('en-US locale > formatDistance', function () {
+describe('bn locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 1) === 'less than a second')
+        assert(formatDistance('lessThanXSeconds', 1) === 'প্রায় 1 সেকেন্ড')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 2) === 'less than 2 seconds')
+        assert(formatDistance('lessThanXSeconds', 2) === 'প্রায় 2 সেকেন্ড')
       })
     })
   })
@@ -22,37 +22,37 @@ describe('en-US locale > formatDistance', function () {
   describe('xSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 1) === '1 second')
+        assert(formatDistance('xSeconds', 1) === '1 সেকেন্ড')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 2) === '2 seconds')
+        assert(formatDistance('xSeconds', 2) === '2 সেকেন্ড')
       })
     })
   })
 
   describe('halfAMinute', function () {
     it('returns a proper string', function () {
-      assert(formatDistance('halfAMinute') === 'half a minute')
+      assert(formatDistance('halfAMinute') === 'আধমিনিট')
     })
 
     it('ignores the second argument', function () {
-      assert(formatDistance('halfAMinute', 123) === 'half a minute')
+      assert(formatDistance('halfAMinute', 123) === 'আধমিনিট')
     })
   })
 
   describe('lessThanXMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 1) === 'less than a minute')
+        assert(formatDistance('lessThanXMinutes', 1) === 'প্রায় 1 মিনিট')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 2) === 'less than 2 minutes')
+        assert(formatDistance('lessThanXMinutes', 2) === 'প্রায় 2 মিনিট')
       })
     })
   })
@@ -60,13 +60,13 @@ describe('en-US locale > formatDistance', function () {
   describe('xMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 1) === '1 minute')
+        assert(formatDistance('xMinutes', 1) === '1 মিনিট')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 2) === '2 minutes')
+        assert(formatDistance('xMinutes', 2) === '2 মিনিট')
       })
     })
   })
@@ -74,13 +74,13 @@ describe('en-US locale > formatDistance', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 1) === 'about 1 hour')
+        assert(formatDistance('aboutXHours', 1) === 'প্রায় 1 ঘন্টা')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 2) === 'about 2 hours')
+        assert(formatDistance('aboutXHours', 2) === 'প্রায় 2 ঘন্টা')
       })
     })
   })
@@ -88,13 +88,13 @@ describe('en-US locale > formatDistance', function () {
   describe('xHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 1) === '1 hour')
+        assert(formatDistance('xHours', 1) === '1 ঘন্টা')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 2) === '2 hours')
+        assert(formatDistance('xHours', 2) === '2 ঘন্টা')
       })
     })
   })
@@ -102,13 +102,13 @@ describe('en-US locale > formatDistance', function () {
   describe('xDays', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xDays', 1) === '1 day')
+        assert(formatDistance('xDays', 1) === '1 দিন')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xDays', 2) === '2 days')
+        assert(formatDistance('xDays', 2) === '2 দিন')
       })
     })
   })
@@ -116,13 +116,13 @@ describe('en-US locale > formatDistance', function () {
   describe('aboutXMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 1) === 'about 1 month')
+        assert(formatDistance('aboutXMonths', 1) === 'প্রায় 1 মাস')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 2) === 'about 2 months')
+        assert(formatDistance('aboutXMonths', 2) === 'প্রায় 2 মাস')
       })
     })
   })
@@ -130,13 +130,13 @@ describe('en-US locale > formatDistance', function () {
   describe('xMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 1) === '1 month')
+        assert(formatDistance('xMonths', 1) === '1 মাস')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 2) === '2 months')
+        assert(formatDistance('xMonths', 2) === '2 মাস')
       })
     })
   })
@@ -144,13 +144,13 @@ describe('en-US locale > formatDistance', function () {
   describe('aboutXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 1) === 'about 1 year')
+        assert(formatDistance('aboutXYears', 1) === 'প্রায় 1 বছর')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 2) === 'about 2 years')
+        assert(formatDistance('aboutXYears', 2) === 'প্রায় 2 বছর')
       })
     })
   })
@@ -158,13 +158,13 @@ describe('en-US locale > formatDistance', function () {
   describe('xYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 1) === '1 year')
+        assert(formatDistance('xYears', 1) === '1 বছর')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 2) === '2 years')
+        assert(formatDistance('xYears', 2) === '2 বছর')
       })
     })
   })
@@ -172,13 +172,13 @@ describe('en-US locale > formatDistance', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 1) === 'over 1 year')
+        assert(formatDistance('overXYears', 1) === '1 বছরের বেশী')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 2) === 'over 2 years')
+        assert(formatDistance('overXYears', 2) === '2 বছরের বেশী')
       })
     })
   })
@@ -186,13 +186,13 @@ describe('en-US locale > formatDistance', function () {
   describe('almostXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 1) === 'almost 1 year')
+        assert(formatDistance('almostXYears', 1) === 'প্রায় 1 বছর')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 2) === 'almost 2 years')
+        assert(formatDistance('almostXYears', 2) === 'প্রায় 2 বছর')
       })
     })
   })
@@ -203,7 +203,7 @@ describe('en-US locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'about 1 year ago')
+      assert(result === 'প্রায় 1 বছর আগে')
     })
   })
 
@@ -213,7 +213,7 @@ describe('en-US locale > formatDistance', function () {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in half a minute')
+      assert(result === 'আধমিনিট এর মধ্যে')
     })
   })
 })
