@@ -10,7 +10,7 @@ import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
 import parse from '../../parse'
 
-describe('en-US locale', function () {
+describe('bn locale', function () {
   context('with `format`', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
@@ -22,7 +22,7 @@ describe('en-US locale', function () {
     describe('year', function () {
       it('ordinal regular year', function () {
         var result = format(date, "yo 'year'", {locale: locale})
-        assert(result === '1986th year')
+        assert(result === '1986ষ্ঠ খ্রিষ্টাব্দ')
       })
 
       it('ordinal local week-numbering year', function () {
