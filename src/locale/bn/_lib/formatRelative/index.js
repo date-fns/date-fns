@@ -1,9 +1,9 @@
 var formatRelativeLocale = {
-  lastWeek: "'last' eeee 'at' p",
-  yesterday: "'yesterday at' p",
-  today: "'today at' p",
-  tomorrow: "'tomorrow at' p",
-  nextWeek: "eeee 'at' p",
+  lastWeek: "'গত' eeee p 'টায়'",
+  yesterday: "'গতকাল' p 'টায়'",
+  today: "'আজ' p 'টায়'",
+  tomorrow: "'আগামীকাল' p 'টায়'",
+  nextWeek: "eeee p 'টায়'",
   other: 'P'
 }
 
