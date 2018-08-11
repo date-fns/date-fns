@@ -81,7 +81,7 @@ export default function formatDistance (token, count, options) {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return '' + result    // TODO:
+      return result + 'এর মধ্যে'
     } else {
       return result + ' আগে'
     }
