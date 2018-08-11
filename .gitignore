@@ -4,3 +4,4 @@ tmp
 dist
 .envrc
 /.idea/
+docs.json
