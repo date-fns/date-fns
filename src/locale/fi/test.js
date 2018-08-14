@@ -8,7 +8,6 @@ import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
-import parse from '../../parse'
 
 describe('fi locale', function () {
   context('with `format`', function () {
@@ -45,7 +44,7 @@ describe('fi locale', function () {
 
     describe('month', function () {
       it('formatting month', function () {
-        var result = format(date, "do MMMM", {locale: locale})
+        var result = format(date, 'do MMMM', {locale: locale})
         assert(result === '5. huhtikuuta')
       })
 
