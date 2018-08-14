@@ -35,7 +35,7 @@ var formattingDayValues = {
   narrow: dayValues.narrow,
   short: dayValues.short,
   abbreviated: dayValues.abbreaviated,
-  wide: dayValues.wide.map(name => name + "na")
+  wide: dayValues.wide.map(name => name + 'na')
 }
 
 var dayPeriodValues = {
