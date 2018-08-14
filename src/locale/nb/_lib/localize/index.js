@@ -27,8 +27,8 @@ var dayValues = {
 
 var dayPeriodValues = {
   narrow: {
-    am: 'fm',
-    pm: 'em',
+    am: 'a',
+    pm: 'p',
     midnight: 'midnatt',
     noon: 'middag',
     morning: 'på morg.',
@@ -37,8 +37,8 @@ var dayPeriodValues = {
     night: 'på natten'
   },
   abbreviated: {
-    am: 'fm',
-    pm: 'em',
+    am: 'a.m.',
+    pm: 'p.m.',
     midnight: 'midnatt',
     noon: 'middag',
     morning: 'på morg.',
@@ -47,8 +47,8 @@ var dayPeriodValues = {
     night: 'på natten'
   },
   wide: {
-    am: 'fm',
-    pm: 'em',
+    am: 'a.m.',
+    pm: 'p.m.',
     midnight: 'midnatt',
     noon: 'middag',
     morning: 'på morgenen',

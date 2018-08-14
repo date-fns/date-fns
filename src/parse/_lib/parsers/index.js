@@ -42,15 +42,17 @@ var timezonePatterns = {
   extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/
 }
 
-function parseNumericPattern (pattern, string) {
+function parseNumericPattern (pattern, string, valueCallback) {
   var matchResult = string.match(pattern)
 
   if (!matchResult) {
     return null
   }
 
+  var value = parseInt(matchResult[0], 10)
+
   return {
-    value: parseInt(matchResult[0], 10),
+    value: valueCallback ? valueCallback(value) : value,
     rest: string.slice(matchResult[0].length)
   }
 }
@@ -85,37 +87,37 @@ function parseTimezonePattern (pattern, string) {
   }
 }
 
-function parseAnyDigitsSigned (string) {
-  return parseNumericPattern(numericPatterns.anyDigitsSigned, string)
+function parseAnyDigitsSigned (string, valueCallback) {
+  return parseNumericPattern(numericPatterns.anyDigitsSigned, string, valueCallback)
 }
 
-function parseNDigits (n, string) {
+function parseNDigits (n, string, valueCallback) {
   switch (n) {
     case 1:
-      return parseNumericPattern(numericPatterns.singleDigit, string)
+      return parseNumericPattern(numericPatterns.singleDigit, string, valueCallback)
     case 2:
-      return parseNumericPattern(numericPatterns.twoDigits, string)
+      return parseNumericPattern(numericPatterns.twoDigits, string, valueCallback)
     case 3:
-      return parseNumericPattern(numericPatterns.threeDigits, string)
+      return parseNumericPattern(numericPatterns.threeDigits, string, valueCallback)
     case 4:
-      return parseNumericPattern(numericPatterns.fourDigits, string)
+      return parseNumericPattern(numericPatterns.fourDigits, string, valueCallback)
     default:
-      return parseNumericPattern(new RegExp('^\\d{1,' + n + '}'), string)
+      return parseNumericPattern(new RegExp('^\\d{1,' + n + '}'), string, valueCallback)
   }
 }
 
-function parseNDigitsSigned (n, string) {
+function parseNDigitsSigned (n, string, valueCallback) {
   switch (n) {
     case 1:
-      return parseNumericPattern(numericPatterns.singleDigitSigned, string)
+      return parseNumericPattern(numericPatterns.singleDigitSigned, string, valueCallback)
     case 2:
-      return parseNumericPattern(numericPatterns.twoDigitsSigned, string)
+      return parseNumericPattern(numericPatterns.twoDigitsSigned, string, valueCallback)
     case 3:
-      return parseNumericPattern(numericPatterns.threeDigitsSigned, string)
+      return parseNumericPattern(numericPatterns.threeDigitsSigned, string, valueCallback)
     case 4:
-      return parseNumericPattern(numericPatterns.fourDigitsSigned, string)
+      return parseNumericPattern(numericPatterns.fourDigitsSigned, string, valueCallback)
     default:
-      return parseNumericPattern(new RegExp('^-?\\d{1,' + n + '}'), string)
+      return parseNumericPattern(new RegExp('^-?\\d{1,' + n + '}'), string, valueCallback)
   }
 }
 
@@ -156,6 +158,14 @@ function normalizeTwoDigitYear (twoDigitYear, currentYear) {
   }
 
   return isCommonEra ? result : 1 - result
+}
+
+var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+// User for validation
+function isLeapYearIndex (year) {
+  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }
 
 /*
@@ -224,7 +234,7 @@ var parsers = {
             match.era(string, {width: 'narrow'})
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       // Sets year 10 BC if BC, or 10 AC if AC
       date.setUTCFullYear(value === 1 ? 10 : -9, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
@@ -245,26 +255,36 @@ var parsers = {
 
     priority: 130,
     parse: function (string, token, match, options) {
+      var valueCallback = function (year) {
+        return {
+          year: year,
+          isTwoDigitYear: token === 'yy'
+        }
+      }
+
       switch (token) {
         case 'y':
-          return parseNDigits(4, string)
+          return parseNDigits(4, string, valueCallback)
         case 'yo':
-          return match.ordinalNumber(string, {unit: 'year'})
+          return match.ordinalNumber(string, {unit: 'year', valueCallback: valueCallback})
         default:
-          return parseNDigits(token.length, string)
+          return parseNDigits(token.length, string, valueCallback)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value.isTwoDigitYear || value.year > 0
+    },
+    set: function (date, value, options) {
       var currentYear = getUTCWeekYear(date, options)
 
-      if (token === 'yy') {
-        var normalizedTwoDigitYear = normalizeTwoDigitYear(value, currentYear)
+      if (value.isTwoDigitYear) {
+        var normalizedTwoDigitYear = normalizeTwoDigitYear(value.year, currentYear)
         date.setUTCFullYear(normalizedTwoDigitYear, 0, 1)
         date.setUTCHours(0, 0, 0, 0)
         return date
       }
 
-      var year = currentYear > 0 ? value : 1 - value
+      var year = currentYear > 0 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -275,26 +295,36 @@ var parsers = {
   Y: {
     priority: 130,
     parse: function (string, token, match, options) {
+      var valueCallback = function (year) {
+        return {
+          year: year,
+          isTwoDigitYear: token === 'YY'
+        }
+      }
+
       switch (token) {
         case 'Y':
-          return parseNDigits(4, string)
+          return parseNDigits(4, string, valueCallback)
         case 'Yo':
-          return match.ordinalNumber(string, {unit: 'year'})
+          return match.ordinalNumber(string, {unit: 'year', valueCallback: valueCallback})
         default:
-          return parseNDigits(token.length, string)
+          return parseNDigits(token.length, string, valueCallback)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value.isTwoDigitYear || value.year > 0
+    },
+    set: function (date, value, options) {
       var currentYear = date.getUTCFullYear()
 
-      if (token === 'YY') {
-        var normalizedTwoDigitYear = normalizeTwoDigitYear(value, currentYear)
+      if (value.isTwoDigitYear) {
+        var normalizedTwoDigitYear = normalizeTwoDigitYear(value.year, currentYear)
         date.setUTCFullYear(normalizedTwoDigitYear, 0, options.firstWeekContainsDate)
         date.setUTCHours(0, 0, 0, 0)
         return startOfUTCWeek(date, options)
       }
 
-      var year = currentYear > 0 ? value : 1 - value
+      var year = currentYear > 0 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, options.firstWeekContainsDate)
       date.setUTCHours(0, 0, 0, 0)
       return startOfUTCWeek(date, options)
@@ -311,7 +341,7 @@ var parsers = {
 
       return parseNDigitsSigned(token.length, string)
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       var firstWeekOfYear = new Date(0)
       firstWeekOfYear.setUTCFullYear(value, 0, 4)
       firstWeekOfYear.setUTCHours(0, 0, 0, 0)
@@ -329,7 +359,7 @@ var parsers = {
 
       return parseNDigitsSigned(token.length, string)
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       date.setUTCFullYear(value, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -363,7 +393,10 @@ var parsers = {
             match.quarter(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 4
+    },
+    set: function (date, value, options) {
       date.setUTCMonth((value - 1) * 3, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -397,7 +430,10 @@ var parsers = {
             match.quarter(string, {width: 'narrow', context: 'standalone'})
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 4
+    },
+    set: function (date, value, options) {
       date.setUTCMonth((value - 1) * 3, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -408,16 +444,20 @@ var parsers = {
   M: {
     priority: 110,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        return value - 1
+      }
+
       switch (token) {
         // 1, 2, ..., 12
         case 'M':
-          return parseNumericPattern(numericPatterns.month, string)
+          return parseNumericPattern(numericPatterns.month, string, valueCallback)
         // 01, 02, ..., 12
         case 'MM':
-          return parseNDigits(2, string)
+          return parseNDigits(2, string, valueCallback)
         // 1st, 2nd, ..., 12th
         case 'Mo':
-          return match.ordinalNumber(string, {unit: 'month'})
+          return match.ordinalNumber(string, {unit: 'month', valueCallback: valueCallback})
         // Jan, Feb, ..., Dec
         case 'MMM':
           return match.month(string, {width: 'abbreviated', context: 'formatting'}) ||
@@ -433,10 +473,10 @@ var parsers = {
             match.month(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
-      if (token === 'M' || token === 'Mo' || token === 'MM') {
-        value = value - 1
-      }
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
+    },
+    set: function (date, value, options) {
       date.setUTCMonth(value, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -447,16 +487,20 @@ var parsers = {
   L: {
     priority: 110,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        return value - 1
+      }
+
       switch (token) {
         // 1, 2, ..., 12
         case 'L':
-          return parseNumericPattern(numericPatterns.month, string)
+          return parseNumericPattern(numericPatterns.month, string, valueCallback)
         // 01, 02, ..., 12
         case 'LL':
-          return parseNDigits(2, string)
+          return parseNDigits(2, string, valueCallback)
         // 1st, 2nd, ..., 12th
         case 'Lo':
-          return match.ordinalNumber(string, {unit: 'month'})
+          return match.ordinalNumber(string, {unit: 'month', valueCallback: valueCallback})
         // Jan, Feb, ..., Dec
         case 'LLL':
           return match.month(string, {width: 'abbreviated', context: 'standalone'}) ||
@@ -472,10 +516,10 @@ var parsers = {
             match.month(string, {width: 'narrow', context: 'standalone'})
       }
     },
-    set: function (date, value, token, options) {
-      if (token === 'L' || token === 'Lo' || token === 'LL') {
-        value = value - 1
-      }
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
+    },
+    set: function (date, value, options) {
       date.setUTCMonth(value, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -495,7 +539,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 53
+    },
+    set: function (date, value, options) {
       return startOfUTCWeek(setUTCWeek(date, value, options), options)
     }
   },
@@ -513,7 +560,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 53
+    },
+    set: function (date, value, options) {
       return startOfUTCISOWeek(setUTCISOWeek(date, value, options), options)
     }
   },
@@ -531,7 +581,17 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      var year = date.getUTCFullYear()
+      var isLeapYear = isLeapYearIndex(year)
+      var month = date.getUTCMonth()
+      if (isLeapYear) {
+        return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
+      } else {
+        return value >= 1 && value <= DAYS_IN_MONTH[month]
+      }
+    },
+    set: function (date, value, options) {
       date.setUTCDate(value)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -552,7 +612,16 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      var year = date.getUTCFullYear()
+      var isLeapYear = isLeapYearIndex(year)
+      if (isLeapYear) {
+        return value >= 1 && value <= 366
+      } else {
+        return value >= 1 && value <= 365
+      }
+    },
+    set: function (date, value, options) {
       date.setUTCMonth(0, value)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -587,7 +656,10 @@ var parsers = {
             match.day(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
+    },
+    set: function (date, value, options) {
       date = setUTCDay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -598,14 +670,19 @@ var parsers = {
   e: {
     priority: 90,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays
+      }
+
       switch (token) {
         // 3
         case 'e':
         case 'ee': // 03
-          return parseNDigits(token.length, string)
+          return parseNDigits(token.length, string, valueCallback)
         // 3rd
         case 'eo':
-          return match.ordinalNumber(string, {unit: 'day'})
+          return match.ordinalNumber(string, {unit: 'day', valueCallback: valueCallback})
         // Tue
         case 'eee':
           return match.day(string, {width: 'abbreviated', context: 'formatting'}) ||
@@ -627,10 +704,10 @@ var parsers = {
             match.day(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
-      if (token === 'e' || token === 'ee' || token === 'eo') {
-        value = (value + options.weekStartsOn + 6) % 7
-      }
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
+    },
+    set: function (date, value, options) {
       date = setUTCDay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -641,14 +718,19 @@ var parsers = {
   c: {
     priority: 90,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+        return (value + options.weekStartsOn + 6) % 7 + wholeWeekDays
+      }
+
       switch (token) {
         // 3
         case 'c':
         case 'cc': // 03
-          return parseNDigits(token.length, string)
+          return parseNDigits(token.length, string, valueCallback)
         // 3rd
         case 'co':
-          return match.ordinalNumber(string, {unit: 'day'})
+          return match.ordinalNumber(string, {unit: 'day', valueCallback: valueCallback})
         // Tue
         case 'ccc':
           return match.day(string, {width: 'abbreviated', context: 'standalone'}) ||
@@ -670,10 +752,10 @@ var parsers = {
             match.day(string, {width: 'narrow', context: 'standalone'})
       }
     },
-    set: function (date, value, token, options) {
-      if (token === 'c' || token === 'cc' || token === 'co') {
-        value = (value + options.weekStartsOn + 6) % 7
-      }
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 6
+    },
+    set: function (date, value, options) {
       date = setUTCDay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -684,6 +766,13 @@ var parsers = {
   i: {
     priority: 90,
     parse: function (string, token, match, options) {
+      var valueCallback = function (value) {
+        if (value === 0) {
+          return 7
+        }
+        return value
+      }
+
       switch (token) {
         // 2
         case 'i':
@@ -694,27 +783,30 @@ var parsers = {
           return match.ordinalNumber(string, {unit: 'day'})
         // Tue
         case 'iii':
-          return match.day(string, {width: 'abbreviated', context: 'formatting'}) ||
-            match.day(string, {width: 'short', context: 'formatting'}) ||
-            match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'abbreviated', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // T
         case 'iiiii':
-          return match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // Tu
         case 'iiiiii':
-          return match.day(string, {width: 'short', context: 'formatting'}) ||
-          match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+          match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
         // Tuesday
         case 'iiii':
         default:
-          return match.day(string, {width: 'wide', context: 'formatting'}) ||
-            match.day(string, {width: 'abbreviated', context: 'formatting'}) ||
-            match.day(string, {width: 'short', context: 'formatting'}) ||
-            match.day(string, {width: 'narrow', context: 'formatting'})
+          return match.day(string, {width: 'wide', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'abbreviated', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'short', context: 'formatting', valueCallback: valueCallback}) ||
+            match.day(string, {width: 'narrow', context: 'formatting', valueCallback: valueCallback})
       }
     },
-    set: function (date, value, token, options) {
-      date = setUTCISODay(date, value % 7 || 7, options)
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 7
+    },
+    set: function (date, value, options) {
+      date = setUTCISODay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
     }
@@ -739,7 +831,7 @@ var parsers = {
             match.dayPeriod(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0)
       return date
     }
@@ -764,7 +856,7 @@ var parsers = {
             match.dayPeriod(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0)
       return date
     }
@@ -789,7 +881,7 @@ var parsers = {
             match.dayPeriod(string, {width: 'narrow', context: 'formatting'})
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0)
       return date
     }
@@ -808,7 +900,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 12
+    },
+    set: function (date, value, options) {
       var isPM = date.getUTCHours() >= 12
       if (isPM && value < 12) {
         date.setUTCHours(value + 12, 0, 0, 0)
@@ -834,7 +929,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 23
+    },
+    set: function (date, value, options) {
       date.setUTCHours(value, 0, 0, 0)
       return date
     }
@@ -853,7 +951,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 11
+    },
+    set: function (date, value, options) {
       var isPM = date.getUTCHours() >= 12
       if (isPM && value < 12) {
         date.setUTCHours(value + 12, 0, 0, 0)
@@ -877,7 +978,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 1 && value <= 24
+    },
+    set: function (date, value, options) {
       var hours = value <= 24 ? value % 24 : value
       date.setUTCHours(hours, 0, 0, 0)
       return date
@@ -897,7 +1001,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 59
+    },
+    set: function (date, value, options) {
       date.setUTCMinutes(value, 0, 0)
       return date
     }
@@ -916,7 +1023,10 @@ var parsers = {
           return parseNDigits(token.length, string)
       }
     },
-    set: function (date, value, token, options) {
+    validate: function (date, value, options) {
+      return value >= 0 && value <= 59
+    },
+    set: function (date, value, options) {
       date.setUTCSeconds(value, 0)
       return date
     }
@@ -926,11 +1036,13 @@ var parsers = {
   S: {
     priority: 40,
     parse: function (string, token, match, options) {
-      return parseNDigits(token.length, string)
+      var valueCallback = function (value) {
+        return Math.floor(value * Math.pow(10, -token.length + 3))
+      }
+      return parseNDigits(token.length, string, valueCallback)
     },
-    set: function (date, value, token, options) {
-      var milliseconds = Math.floor(value * Math.pow(10, -token.length + 3))
-      date.setUTCMilliseconds(milliseconds)
+    set: function (date, value, options) {
+      date.setUTCMilliseconds(value)
       return date
     }
   },
@@ -953,7 +1065,7 @@ var parsers = {
           return parseTimezonePattern(timezonePatterns.extended, string)
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       return new Date(date.getTime() - value)
     }
   },
@@ -976,7 +1088,7 @@ var parsers = {
           return parseTimezonePattern(timezonePatterns.extended, string)
       }
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       return new Date(date.getTime() - value)
     }
   },
@@ -987,7 +1099,7 @@ var parsers = {
     parse: function (string, token, match, options) {
       return parseAnyDigitsSigned(string)
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       return new Date(value * 1000)
     }
   },
@@ -998,7 +1110,7 @@ var parsers = {
     parse: function (string, token, match, options) {
       return parseAnyDigitsSigned(string)
     },
-    set: function (date, value, token, options) {
+    set: function (date, value, options) {
       return new Date(value)
     }
   }

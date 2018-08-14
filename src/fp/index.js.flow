@@ -127,6 +127,8 @@ declare module.exports: {
   differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
+  eachWeekOfInterval: CurriedFn1<Interval, Date[]>,
+  eachWeekOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
   endOfDay: CurriedFn1<Date | string | number, Date>,
   endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   endOfHour: CurriedFn1<Date | string | number, Date>,

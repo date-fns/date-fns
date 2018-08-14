@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 swe
  * @author Johannes Ulén [@ejulen]{@link https://github.com/ejulen}
  * @author Alexander Nanberg [@alexandernanberg]{@link https://github.com/alexandernanberg}
+ * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
  */
 var locale = {
   formatDistance: formatDistance,

@@ -5,8 +5,8 @@ var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(v|n)/i,
-  abbreviated: /^(v|n)/i,
+  narrow: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
+  abbreviated: /^(v\.? ?Chr\.?|n\.? ?Chr\.?)/i,
   wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i
 }
 var parseEraPatterns = {
@@ -35,8 +35,8 @@ var parseMonthPatterns = {
 var matchDayPatterns = {
   narrow: /^[smdmf]/i,
   short: /^(so|mo|di|mi|do|fr|sa)/i,
-  abbreviated: /^(son|mon|die|mit|don|fre|sam)/i,
-  wide: /^(sonntag|montag|diebstag|mittwoch|donnerstag|freitag|samstag)/i
+  abbreviated: /^(son?|mon?|die?|mit?|don?|fre?|sam?)\.?/i,
+  wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i
 }
 var parseDayPatterns = {
   any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i]

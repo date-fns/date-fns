@@ -244,6 +244,11 @@ declare module.exports: {
     options?: Options
   ) => Date[],
 
+  eachWeekOfInterval: (
+    interval: Interval,
+    options?: Options
+  ) => Date[],
+
   endOfDay: (
     date: Date | string | number,
     options?: Options

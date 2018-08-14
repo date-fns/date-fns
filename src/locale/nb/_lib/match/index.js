@@ -1,12 +1,12 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(:a|:e)?/i
+var matchOrdinalNumberPattern = /^(\d+)\.?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(f|e)/i,
-  abbreviated: /^(f|e)/i,
+  narrow: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
+  abbreviated: /^(f\.? ?Kr\.?|fvt\.?|e\.? ?Kr\.?|evt\.?)/i,
   wide: /^(før Kristus|før vår tid|etter Kristus|vår tid)/i
 }
 var parseEraPatterns = {
@@ -24,7 +24,7 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|mai|jun|jul|aug|sep|okt|nov|des)/i,
+  abbreviated: /^(jan|feb|mar|apr|mai|jun|jul|aug|sep|okt|nov|des)\.?/i,
   wide: /^(januar|februar|mars|april|mai|juni|juli|august|september|oktober|november|desember)/i
 }
 var parseMonthPatterns = {
@@ -36,19 +36,20 @@ var matchDayPatterns = {
   narrow: /^[smtofl]/i,
   short: /^(sø|ma|ti|on|to|fr|lø)/i,
   abbreviated: /^(søn|man|tir|ons|tor|fre|lør)/i,
-  wide: /^(søndag|mandag|tirdag|onsdag|torsdag|fredag|lørdag)/i
+  wide: /^(søndag|mandag|tirsdag|onsdag|torsdag|fredag|lørdag)/i
 }
 var parseDayPatterns = {
   any: [/^s/i, /^m/i, /^ti/i, /^o/i, /^to/i, /^f/i, /^l/i]
 }
 
 var matchDayPeriodPatterns = {
+  narrow: /^(midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten)|[ap])/i,
   any: /^([ap]\.?\s?m\.?|midnatt|middag|(på) (morgenen|ettermiddagen|kvelden|natten))/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^f/i,
-    pm: /^e/i,
+    am: /^a(\.?\s?m\.?)?$/i,
+    pm: /^p(\.?\s?m\.?)?$/i,
     midnight: /^midn/i,
     noon: /^midd/i,
     morning: /morgen/i,

@@ -26,6 +26,7 @@ export default function buildMatchFn (args) {
     }
 
     value = args.valueCallback ? args.valueCallback(value) : value
+    value = options.valueCallback ? options.valueCallback(value) : value
 
     return {
       value: value,

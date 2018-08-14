@@ -97,6 +97,33 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [en-CA locale](https://github.com/date-fns/date-fns/pull/688) (kudos to [@markowsiak](https://github.com/markowsiak)).
 
+- sv locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/749).
+  Kudos to [@alexandernanberg](https://github.com/alexandernanberg).
+
+- nb locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/757).
+  Kudos to [@dagstuan](https://github.com/dagstuan).
+
+- de locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/766).
+  Kudos to [@pex](https://github.com/pex).
+
+- uk locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/769).
+  Kudos to [@shcherbyakdev](https://github.com/shcherbyakdev).
+
+- fr locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/778).
+  Kudos to [@Lakston](https://github.com/Lakston ).
+
+- zh-CN locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
+  Kudos to [@cubicwork](https://github.com/cubicwork).
+
+- es locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
+  Kudos to [@YagoCarballo](https://github.com/YagoCarballo).
+
+- pt-BR locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/807).
+  Thanks to [@YagoCarballo](https://github.com/YagoCarballo) again!
+
+- nl locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/811).
+  Thanks to the teamwork of [@curry684](https://github.com/curry684) and [@stefanvermaas](https://github.com/stefanvermaas)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
@@ -108,6 +135,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `setWeekYear`
 
   - `startOfWeekYear`
+
+- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
 
 ### Changed
 
@@ -528,6 +557,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
   parse('2016-01-01', 'yyyy-MM-dd', new Date())
   ```
 
+- **BREAKING**: `toDate` now validates separate date and time values in ISO-8601 strings
+  and returns `Invalid Date` if the date is invalid.
+
+  ```javascript
+  toDate('2018-13-32')
+  //=> Invalid Date
+  ```
+
 - **BREAKING**: `toDate` now doesn't fall back to `new Date` constructor
   if it fails to parse a string argument. Instead, it returns `Invalid Date`.
 
@@ -638,6 +675,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   [#692](https://github.com/date-fns/date-fns/issues/692)
 
 - `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
+
+- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
+  See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
 ## [1.28.5] - 2017-05-19
 
