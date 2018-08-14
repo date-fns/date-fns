@@ -62,8 +62,8 @@ var dayPeriodValues = {
   wide: {
     am: 'ap',
     pm: 'ip',
-    midnight: 'keskiyö',
-    noon: 'keskipäivä',
+    midnight: 'keskiyöllä',
+    noon: 'keskipäivällä',
     morning: 'aamupäivällä',
     afternoon: 'iltapäivällä',
     evening: 'illalla',
