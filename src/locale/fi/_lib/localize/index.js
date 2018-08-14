@@ -25,7 +25,7 @@ var formattingMonthValues = {
 }
 
 var dayValues = {
-  narrow: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
+  narrow: ['S', 'M', 'T', 'K', 'T', 'P', 'L'],
   short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
   abbreviated: ['sunn.', 'maan.', 'tiis.', 'kesk.', 'torst.', 'perj.', 'la'],
   wide: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
