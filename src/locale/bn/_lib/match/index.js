@@ -1,13 +1,13 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
+var matchOrdinalNumberPattern = /^(\d+)(ম|য়|র্থ|ষ্ঠ|শ|ৎ|তি|ত|ষ্টি)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
   narrow: /^(b|a)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i
+  abbreviated: /^(খ্রিঃ\.?\s?পূঃ\.?|খ্রিঃ\.?)/i,
+  wide: /^(খ্রিষ্টপূর্ব|খ্রিষ্টাব্দ)/i
 }
 var parseEraPatterns = {
   any: [/^b/i, /^(a|c)/i]

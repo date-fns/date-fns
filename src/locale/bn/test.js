@@ -16,7 +16,7 @@ describe('bn locale', function () {
 
     it('era', function () {
       var result = format(date, 'G, GGGG, GGGGG', {locale: locale})
-      assert(result === 'AD, Anno Domini, A')
+      assert(result === 'খ্রিঃ, খ্রিষ্টাব্দ, খ্রিঃ')
     })
 
     describe('year', function () {
