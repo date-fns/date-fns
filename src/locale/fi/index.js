@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 fin
  * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
  * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
+ * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
  */
 var locale = {
   formatDistance: formatDistance,
@@ -26,5 +27,3 @@ var locale = {
 }
 
 export default locale
-
-// throw new Error('fi locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
