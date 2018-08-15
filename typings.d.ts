@@ -316,6 +316,12 @@ declare module 'date-fns' {
   ): Date
   namespace endOfDay {}
 
+  function endOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace endOfDecade {}
+
   function endOfHour (
     date: Date | string | number,
     options?: Options
@@ -427,6 +433,12 @@ declare module 'date-fns' {
     options?: Options
   ): number
   namespace getDaysInYear {}
+
+  function getDecade (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getDecade {}
 
   function getHours (
     date: Date | string | number,
@@ -707,6 +719,12 @@ declare module 'date-fns' {
   ): boolean
   namespace isWithinInterval {}
 
+  function lastDayOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace lastDayOfDecade {}
+
   function lastDayOfISOWeek (
     date: Date | string | number,
     options?: Options
@@ -873,6 +891,12 @@ declare module 'date-fns' {
     options?: Options
   ): Date
   namespace startOfDay {}
+
+  function startOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace startOfDecade {}
 
   function startOfHour (
     date: Date | string | number,
@@ -1186,6 +1210,11 @@ declare module 'date-fns/endOfDay' {
   export = endOfDay
 }
 
+declare module 'date-fns/endOfDecade' {
+  import {endOfDecade} from 'date-fns'
+  export = endOfDecade
+}
+
 declare module 'date-fns/endOfHour' {
   import {endOfHour} from 'date-fns'
   export = endOfHour
@@ -1274,6 +1303,11 @@ declare module 'date-fns/getDaysInMonth' {
 declare module 'date-fns/getDaysInYear' {
   import {getDaysInYear} from 'date-fns'
   export = getDaysInYear
+}
+
+declare module 'date-fns/getDecade' {
+  import {getDecade} from 'date-fns'
+  export = getDecade
 }
 
 declare module 'date-fns/getHours' {
@@ -1496,6 +1530,11 @@ declare module 'date-fns/isWithinInterval' {
   export = isWithinInterval
 }
 
+declare module 'date-fns/lastDayOfDecade' {
+  import {lastDayOfDecade} from 'date-fns'
+  export = lastDayOfDecade
+}
+
 declare module 'date-fns/lastDayOfISOWeek' {
   import {lastDayOfISOWeek} from 'date-fns'
   export = lastDayOfISOWeek
@@ -1619,6 +1658,11 @@ declare module 'date-fns/setYear' {
 declare module 'date-fns/startOfDay' {
   import {startOfDay} from 'date-fns'
   export = startOfDay
+}
+
+declare module 'date-fns/startOfDecade' {
+  import {startOfDecade} from 'date-fns'
+  export = startOfDecade
 }
 
 declare module 'date-fns/startOfHour' {
@@ -1901,6 +1945,11 @@ declare module 'date-fns/endOfDay/index' {
   export = endOfDay
 }
 
+declare module 'date-fns/endOfDecade/index' {
+  import {endOfDecade} from 'date-fns'
+  export = endOfDecade
+}
+
 declare module 'date-fns/endOfHour/index' {
   import {endOfHour} from 'date-fns'
   export = endOfHour
@@ -1989,6 +2038,11 @@ declare module 'date-fns/getDaysInMonth/index' {
 declare module 'date-fns/getDaysInYear/index' {
   import {getDaysInYear} from 'date-fns'
   export = getDaysInYear
+}
+
+declare module 'date-fns/getDecade/index' {
+  import {getDecade} from 'date-fns'
+  export = getDecade
 }
 
 declare module 'date-fns/getHours/index' {
@@ -2211,6 +2265,11 @@ declare module 'date-fns/isWithinInterval/index' {
   export = isWithinInterval
 }
 
+declare module 'date-fns/lastDayOfDecade/index' {
+  import {lastDayOfDecade} from 'date-fns'
+  export = lastDayOfDecade
+}
+
 declare module 'date-fns/lastDayOfISOWeek/index' {
   import {lastDayOfISOWeek} from 'date-fns'
   export = lastDayOfISOWeek
@@ -2334,6 +2393,11 @@ declare module 'date-fns/setYear/index' {
 declare module 'date-fns/startOfDay/index' {
   import {startOfDay} from 'date-fns'
   export = startOfDay
+}
+
+declare module 'date-fns/startOfDecade/index' {
+  import {startOfDecade} from 'date-fns'
+  export = startOfDecade
 }
 
 declare module 'date-fns/startOfHour/index' {
@@ -2616,6 +2680,11 @@ declare module 'date-fns/endOfDay/index.js' {
   export = endOfDay
 }
 
+declare module 'date-fns/endOfDecade/index.js' {
+  import {endOfDecade} from 'date-fns'
+  export = endOfDecade
+}
+
 declare module 'date-fns/endOfHour/index.js' {
   import {endOfHour} from 'date-fns'
   export = endOfHour
@@ -2704,6 +2773,11 @@ declare module 'date-fns/getDaysInMonth/index.js' {
 declare module 'date-fns/getDaysInYear/index.js' {
   import {getDaysInYear} from 'date-fns'
   export = getDaysInYear
+}
+
+declare module 'date-fns/getDecade/index.js' {
+  import {getDecade} from 'date-fns'
+  export = getDecade
 }
 
 declare module 'date-fns/getHours/index.js' {
@@ -2926,6 +3000,11 @@ declare module 'date-fns/isWithinInterval/index.js' {
   export = isWithinInterval
 }
 
+declare module 'date-fns/lastDayOfDecade/index.js' {
+  import {lastDayOfDecade} from 'date-fns'
+  export = lastDayOfDecade
+}
+
 declare module 'date-fns/lastDayOfISOWeek/index.js' {
   import {lastDayOfISOWeek} from 'date-fns'
   export = lastDayOfISOWeek
@@ -3049,6 +3128,11 @@ declare module 'date-fns/setYear/index.js' {
 declare module 'date-fns/startOfDay/index.js' {
   import {startOfDay} from 'date-fns'
   export = startOfDay
+}
+
+declare module 'date-fns/startOfDecade/index.js' {
+  import {startOfDecade} from 'date-fns'
+  export = startOfDecade
 }
 
 declare module 'date-fns/startOfHour/index.js' {
@@ -3369,6 +3453,12 @@ declare module 'date-fns/fp' {
   const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfDayWithOptions {}
 
+  const endOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace endOfDecade {}
+
+  const endOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace endOfDecadeWithOptions {}
+
   const endOfHour: CurriedFn1<Date | string | number, Date>
   namespace endOfHour {}
 
@@ -3476,6 +3566,12 @@ declare module 'date-fns/fp' {
 
   const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayWithOptions {}
+
+  const getDecade: CurriedFn1<Date | string | number, number>
+  namespace getDecade {}
+
+  const getDecadeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDecadeWithOptions {}
 
   const getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
@@ -3741,6 +3837,12 @@ declare module 'date-fns/fp' {
   const isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
   namespace isWithinIntervalWithOptions {}
 
+  const lastDayOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace lastDayOfDecade {}
+
+  const lastDayOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace lastDayOfDecadeWithOptions {}
+
   const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOWeek {}
 
@@ -3890,6 +3992,12 @@ declare module 'date-fns/fp' {
 
   const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfDayWithOptions {}
+
+  const startOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace startOfDecade {}
+
+  const startOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfDecadeWithOptions {}
 
   const startOfHour: CurriedFn1<Date | string | number, Date>
   namespace startOfHour {}
@@ -4368,6 +4476,16 @@ declare module 'date-fns/fp/endOfDayWithOptions' {
   export = endOfDayWithOptions
 }
 
+declare module 'date-fns/fp/endOfDecade' {
+  import {endOfDecade} from 'date-fns/fp'
+  export = endOfDecade
+}
+
+declare module 'date-fns/fp/endOfDecadeWithOptions' {
+  import {endOfDecadeWithOptions} from 'date-fns/fp'
+  export = endOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/endOfHour' {
   import {endOfHour} from 'date-fns/fp'
   export = endOfHour
@@ -4546,6 +4664,16 @@ declare module 'date-fns/fp/getDaysInYearWithOptions' {
 declare module 'date-fns/fp/getDayWithOptions' {
   import {getDayWithOptions} from 'date-fns/fp'
   export = getDayWithOptions
+}
+
+declare module 'date-fns/fp/getDecade' {
+  import {getDecade} from 'date-fns/fp'
+  export = getDecade
+}
+
+declare module 'date-fns/fp/getDecadeWithOptions' {
+  import {getDecadeWithOptions} from 'date-fns/fp'
+  export = getDecadeWithOptions
 }
 
 declare module 'date-fns/fp/getHours' {
@@ -4988,6 +5116,16 @@ declare module 'date-fns/fp/isWithinIntervalWithOptions' {
   export = isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/fp/lastDayOfDecade' {
+  import {lastDayOfDecade} from 'date-fns/fp'
+  export = lastDayOfDecade
+}
+
+declare module 'date-fns/fp/lastDayOfDecadeWithOptions' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/fp'
+  export = lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/lastDayOfISOWeek' {
   import {lastDayOfISOWeek} from 'date-fns/fp'
   export = lastDayOfISOWeek
@@ -5236,6 +5374,16 @@ declare module 'date-fns/fp/startOfDay' {
 declare module 'date-fns/fp/startOfDayWithOptions' {
   import {startOfDayWithOptions} from 'date-fns/fp'
   export = startOfDayWithOptions
+}
+
+declare module 'date-fns/fp/startOfDecade' {
+  import {startOfDecade} from 'date-fns/fp'
+  export = startOfDecade
+}
+
+declare module 'date-fns/fp/startOfDecadeWithOptions' {
+  import {startOfDecadeWithOptions} from 'date-fns/fp'
+  export = startOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/startOfHour' {
@@ -5798,6 +5946,16 @@ declare module 'date-fns/fp/endOfDayWithOptions/index' {
   export = endOfDayWithOptions
 }
 
+declare module 'date-fns/fp/endOfDecade/index' {
+  import {endOfDecade} from 'date-fns/fp'
+  export = endOfDecade
+}
+
+declare module 'date-fns/fp/endOfDecadeWithOptions/index' {
+  import {endOfDecadeWithOptions} from 'date-fns/fp'
+  export = endOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/endOfHour/index' {
   import {endOfHour} from 'date-fns/fp'
   export = endOfHour
@@ -5976,6 +6134,16 @@ declare module 'date-fns/fp/getDaysInYearWithOptions/index' {
 declare module 'date-fns/fp/getDayWithOptions/index' {
   import {getDayWithOptions} from 'date-fns/fp'
   export = getDayWithOptions
+}
+
+declare module 'date-fns/fp/getDecade/index' {
+  import {getDecade} from 'date-fns/fp'
+  export = getDecade
+}
+
+declare module 'date-fns/fp/getDecadeWithOptions/index' {
+  import {getDecadeWithOptions} from 'date-fns/fp'
+  export = getDecadeWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index' {
@@ -6418,6 +6586,16 @@ declare module 'date-fns/fp/isWithinIntervalWithOptions/index' {
   export = isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/fp/lastDayOfDecade/index' {
+  import {lastDayOfDecade} from 'date-fns/fp'
+  export = lastDayOfDecade
+}
+
+declare module 'date-fns/fp/lastDayOfDecadeWithOptions/index' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/fp'
+  export = lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/lastDayOfISOWeek/index' {
   import {lastDayOfISOWeek} from 'date-fns/fp'
   export = lastDayOfISOWeek
@@ -6666,6 +6844,16 @@ declare module 'date-fns/fp/startOfDay/index' {
 declare module 'date-fns/fp/startOfDayWithOptions/index' {
   import {startOfDayWithOptions} from 'date-fns/fp'
   export = startOfDayWithOptions
+}
+
+declare module 'date-fns/fp/startOfDecade/index' {
+  import {startOfDecade} from 'date-fns/fp'
+  export = startOfDecade
+}
+
+declare module 'date-fns/fp/startOfDecadeWithOptions/index' {
+  import {startOfDecadeWithOptions} from 'date-fns/fp'
+  export = startOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/startOfHour/index' {
@@ -7228,6 +7416,16 @@ declare module 'date-fns/fp/endOfDayWithOptions/index.js' {
   export = endOfDayWithOptions
 }
 
+declare module 'date-fns/fp/endOfDecade/index.js' {
+  import {endOfDecade} from 'date-fns/fp'
+  export = endOfDecade
+}
+
+declare module 'date-fns/fp/endOfDecadeWithOptions/index.js' {
+  import {endOfDecadeWithOptions} from 'date-fns/fp'
+  export = endOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/endOfHour/index.js' {
   import {endOfHour} from 'date-fns/fp'
   export = endOfHour
@@ -7406,6 +7604,16 @@ declare module 'date-fns/fp/getDaysInYearWithOptions/index.js' {
 declare module 'date-fns/fp/getDayWithOptions/index.js' {
   import {getDayWithOptions} from 'date-fns/fp'
   export = getDayWithOptions
+}
+
+declare module 'date-fns/fp/getDecade/index.js' {
+  import {getDecade} from 'date-fns/fp'
+  export = getDecade
+}
+
+declare module 'date-fns/fp/getDecadeWithOptions/index.js' {
+  import {getDecadeWithOptions} from 'date-fns/fp'
+  export = getDecadeWithOptions
 }
 
 declare module 'date-fns/fp/getHours/index.js' {
@@ -7848,6 +8056,16 @@ declare module 'date-fns/fp/isWithinIntervalWithOptions/index.js' {
   export = isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/fp/lastDayOfDecade/index.js' {
+  import {lastDayOfDecade} from 'date-fns/fp'
+  export = lastDayOfDecade
+}
+
+declare module 'date-fns/fp/lastDayOfDecadeWithOptions/index.js' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/fp'
+  export = lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/fp/lastDayOfISOWeek/index.js' {
   import {lastDayOfISOWeek} from 'date-fns/fp'
   export = lastDayOfISOWeek
@@ -8096,6 +8314,16 @@ declare module 'date-fns/fp/startOfDay/index.js' {
 declare module 'date-fns/fp/startOfDayWithOptions/index.js' {
   import {startOfDayWithOptions} from 'date-fns/fp'
   export = startOfDayWithOptions
+}
+
+declare module 'date-fns/fp/startOfDecade/index.js' {
+  import {startOfDecade} from 'date-fns/fp'
+  export = startOfDecade
+}
+
+declare module 'date-fns/fp/startOfDecadeWithOptions/index.js' {
+  import {startOfDecadeWithOptions} from 'date-fns/fp'
+  export = startOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/startOfHour/index.js' {
@@ -8553,6 +8781,12 @@ declare module 'date-fns/esm' {
   ): Date
   namespace endOfDay {}
 
+  function endOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace endOfDecade {}
+
   function endOfHour (
     date: Date | string | number,
     options?: Options
@@ -8664,6 +8898,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): number
   namespace getDaysInYear {}
+
+  function getDecade (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getDecade {}
 
   function getHours (
     date: Date | string | number,
@@ -8944,6 +9184,12 @@ declare module 'date-fns/esm' {
   ): boolean
   namespace isWithinInterval {}
 
+  function lastDayOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace lastDayOfDecade {}
+
   function lastDayOfISOWeek (
     date: Date | string | number,
     options?: Options
@@ -9110,6 +9356,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): Date
   namespace startOfDay {}
+
+  function startOfDecade (
+    date: Date | string | number,
+    options?: Options
+  ): Date
+  namespace startOfDecade {}
 
   function startOfHour (
     date: Date | string | number,
@@ -9423,6 +9675,11 @@ declare module 'date-fns/esm/endOfDay' {
   export default endOfDay
 }
 
+declare module 'date-fns/esm/endOfDecade' {
+  import {endOfDecade} from 'date-fns/esm'
+  export default endOfDecade
+}
+
 declare module 'date-fns/esm/endOfHour' {
   import {endOfHour} from 'date-fns/esm'
   export default endOfHour
@@ -9511,6 +9768,11 @@ declare module 'date-fns/esm/getDaysInMonth' {
 declare module 'date-fns/esm/getDaysInYear' {
   import {getDaysInYear} from 'date-fns/esm'
   export default getDaysInYear
+}
+
+declare module 'date-fns/esm/getDecade' {
+  import {getDecade} from 'date-fns/esm'
+  export default getDecade
 }
 
 declare module 'date-fns/esm/getHours' {
@@ -9733,6 +9995,11 @@ declare module 'date-fns/esm/isWithinInterval' {
   export default isWithinInterval
 }
 
+declare module 'date-fns/esm/lastDayOfDecade' {
+  import {lastDayOfDecade} from 'date-fns/esm'
+  export default lastDayOfDecade
+}
+
 declare module 'date-fns/esm/lastDayOfISOWeek' {
   import {lastDayOfISOWeek} from 'date-fns/esm'
   export default lastDayOfISOWeek
@@ -9856,6 +10123,11 @@ declare module 'date-fns/esm/setYear' {
 declare module 'date-fns/esm/startOfDay' {
   import {startOfDay} from 'date-fns/esm'
   export default startOfDay
+}
+
+declare module 'date-fns/esm/startOfDecade' {
+  import {startOfDecade} from 'date-fns/esm'
+  export default startOfDecade
 }
 
 declare module 'date-fns/esm/startOfHour' {
@@ -10138,6 +10410,11 @@ declare module 'date-fns/esm/endOfDay/index' {
   export default endOfDay
 }
 
+declare module 'date-fns/esm/endOfDecade/index' {
+  import {endOfDecade} from 'date-fns/esm'
+  export default endOfDecade
+}
+
 declare module 'date-fns/esm/endOfHour/index' {
   import {endOfHour} from 'date-fns/esm'
   export default endOfHour
@@ -10226,6 +10503,11 @@ declare module 'date-fns/esm/getDaysInMonth/index' {
 declare module 'date-fns/esm/getDaysInYear/index' {
   import {getDaysInYear} from 'date-fns/esm'
   export default getDaysInYear
+}
+
+declare module 'date-fns/esm/getDecade/index' {
+  import {getDecade} from 'date-fns/esm'
+  export default getDecade
 }
 
 declare module 'date-fns/esm/getHours/index' {
@@ -10448,6 +10730,11 @@ declare module 'date-fns/esm/isWithinInterval/index' {
   export default isWithinInterval
 }
 
+declare module 'date-fns/esm/lastDayOfDecade/index' {
+  import {lastDayOfDecade} from 'date-fns/esm'
+  export default lastDayOfDecade
+}
+
 declare module 'date-fns/esm/lastDayOfISOWeek/index' {
   import {lastDayOfISOWeek} from 'date-fns/esm'
   export default lastDayOfISOWeek
@@ -10571,6 +10858,11 @@ declare module 'date-fns/esm/setYear/index' {
 declare module 'date-fns/esm/startOfDay/index' {
   import {startOfDay} from 'date-fns/esm'
   export default startOfDay
+}
+
+declare module 'date-fns/esm/startOfDecade/index' {
+  import {startOfDecade} from 'date-fns/esm'
+  export default startOfDecade
 }
 
 declare module 'date-fns/esm/startOfHour/index' {
@@ -10853,6 +11145,11 @@ declare module 'date-fns/esm/endOfDay/index.js' {
   export default endOfDay
 }
 
+declare module 'date-fns/esm/endOfDecade/index.js' {
+  import {endOfDecade} from 'date-fns/esm'
+  export default endOfDecade
+}
+
 declare module 'date-fns/esm/endOfHour/index.js' {
   import {endOfHour} from 'date-fns/esm'
   export default endOfHour
@@ -10941,6 +11238,11 @@ declare module 'date-fns/esm/getDaysInMonth/index.js' {
 declare module 'date-fns/esm/getDaysInYear/index.js' {
   import {getDaysInYear} from 'date-fns/esm'
   export default getDaysInYear
+}
+
+declare module 'date-fns/esm/getDecade/index.js' {
+  import {getDecade} from 'date-fns/esm'
+  export default getDecade
 }
 
 declare module 'date-fns/esm/getHours/index.js' {
@@ -11163,6 +11465,11 @@ declare module 'date-fns/esm/isWithinInterval/index.js' {
   export default isWithinInterval
 }
 
+declare module 'date-fns/esm/lastDayOfDecade/index.js' {
+  import {lastDayOfDecade} from 'date-fns/esm'
+  export default lastDayOfDecade
+}
+
 declare module 'date-fns/esm/lastDayOfISOWeek/index.js' {
   import {lastDayOfISOWeek} from 'date-fns/esm'
   export default lastDayOfISOWeek
@@ -11286,6 +11593,11 @@ declare module 'date-fns/esm/setYear/index.js' {
 declare module 'date-fns/esm/startOfDay/index.js' {
   import {startOfDay} from 'date-fns/esm'
   export default startOfDay
+}
+
+declare module 'date-fns/esm/startOfDecade/index.js' {
+  import {startOfDecade} from 'date-fns/esm'
+  export default startOfDecade
 }
 
 declare module 'date-fns/esm/startOfHour/index.js' {
@@ -11606,6 +11918,12 @@ declare module 'date-fns/esm/fp' {
   const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace endOfDayWithOptions {}
 
+  const endOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace endOfDecade {}
+
+  const endOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace endOfDecadeWithOptions {}
+
   const endOfHour: CurriedFn1<Date | string | number, Date>
   namespace endOfHour {}
 
@@ -11713,6 +12031,12 @@ declare module 'date-fns/esm/fp' {
 
   const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getDayWithOptions {}
+
+  const getDecade: CurriedFn1<Date | string | number, number>
+  namespace getDecade {}
+
+  const getDecadeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getDecadeWithOptions {}
 
   const getHours: CurriedFn1<Date | string | number, number>
   namespace getHours {}
@@ -11978,6 +12302,12 @@ declare module 'date-fns/esm/fp' {
   const isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>
   namespace isWithinIntervalWithOptions {}
 
+  const lastDayOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace lastDayOfDecade {}
+
+  const lastDayOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace lastDayOfDecadeWithOptions {}
+
   const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
   namespace lastDayOfISOWeek {}
 
@@ -12127,6 +12457,12 @@ declare module 'date-fns/esm/fp' {
 
   const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace startOfDayWithOptions {}
+
+  const startOfDecade: CurriedFn1<Date | string | number, Date>
+  namespace startOfDecade {}
+
+  const startOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  namespace startOfDecadeWithOptions {}
 
   const startOfHour: CurriedFn1<Date | string | number, Date>
   namespace startOfHour {}
@@ -12605,6 +12941,16 @@ declare module 'date-fns/esm/fp/endOfDayWithOptions' {
   export default endOfDayWithOptions
 }
 
+declare module 'date-fns/esm/fp/endOfDecade' {
+  import {endOfDecade} from 'date-fns/esm/fp'
+  export default endOfDecade
+}
+
+declare module 'date-fns/esm/fp/endOfDecadeWithOptions' {
+  import {endOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default endOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/endOfHour' {
   import {endOfHour} from 'date-fns/esm/fp'
   export default endOfHour
@@ -12783,6 +13129,16 @@ declare module 'date-fns/esm/fp/getDaysInYearWithOptions' {
 declare module 'date-fns/esm/fp/getDayWithOptions' {
   import {getDayWithOptions} from 'date-fns/esm/fp'
   export default getDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDecade' {
+  import {getDecade} from 'date-fns/esm/fp'
+  export default getDecade
+}
+
+declare module 'date-fns/esm/fp/getDecadeWithOptions' {
+  import {getDecadeWithOptions} from 'date-fns/esm/fp'
+  export default getDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours' {
@@ -13225,6 +13581,16 @@ declare module 'date-fns/esm/fp/isWithinIntervalWithOptions' {
   export default isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/lastDayOfDecade' {
+  import {lastDayOfDecade} from 'date-fns/esm/fp'
+  export default lastDayOfDecade
+}
+
+declare module 'date-fns/esm/fp/lastDayOfDecadeWithOptions' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/lastDayOfISOWeek' {
   import {lastDayOfISOWeek} from 'date-fns/esm/fp'
   export default lastDayOfISOWeek
@@ -13473,6 +13839,16 @@ declare module 'date-fns/esm/fp/startOfDay' {
 declare module 'date-fns/esm/fp/startOfDayWithOptions' {
   import {startOfDayWithOptions} from 'date-fns/esm/fp'
   export default startOfDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfDecade' {
+  import {startOfDecade} from 'date-fns/esm/fp'
+  export default startOfDecade
+}
+
+declare module 'date-fns/esm/fp/startOfDecadeWithOptions' {
+  import {startOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default startOfDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfHour' {
@@ -14035,6 +14411,16 @@ declare module 'date-fns/esm/fp/endOfDayWithOptions/index' {
   export default endOfDayWithOptions
 }
 
+declare module 'date-fns/esm/fp/endOfDecade/index' {
+  import {endOfDecade} from 'date-fns/esm/fp'
+  export default endOfDecade
+}
+
+declare module 'date-fns/esm/fp/endOfDecadeWithOptions/index' {
+  import {endOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default endOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/endOfHour/index' {
   import {endOfHour} from 'date-fns/esm/fp'
   export default endOfHour
@@ -14213,6 +14599,16 @@ declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index' {
 declare module 'date-fns/esm/fp/getDayWithOptions/index' {
   import {getDayWithOptions} from 'date-fns/esm/fp'
   export default getDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDecade/index' {
+  import {getDecade} from 'date-fns/esm/fp'
+  export default getDecade
+}
+
+declare module 'date-fns/esm/fp/getDecadeWithOptions/index' {
+  import {getDecadeWithOptions} from 'date-fns/esm/fp'
+  export default getDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index' {
@@ -14655,6 +15051,16 @@ declare module 'date-fns/esm/fp/isWithinIntervalWithOptions/index' {
   export default isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/lastDayOfDecade/index' {
+  import {lastDayOfDecade} from 'date-fns/esm/fp'
+  export default lastDayOfDecade
+}
+
+declare module 'date-fns/esm/fp/lastDayOfDecadeWithOptions/index' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/lastDayOfISOWeek/index' {
   import {lastDayOfISOWeek} from 'date-fns/esm/fp'
   export default lastDayOfISOWeek
@@ -14903,6 +15309,16 @@ declare module 'date-fns/esm/fp/startOfDay/index' {
 declare module 'date-fns/esm/fp/startOfDayWithOptions/index' {
   import {startOfDayWithOptions} from 'date-fns/esm/fp'
   export default startOfDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfDecade/index' {
+  import {startOfDecade} from 'date-fns/esm/fp'
+  export default startOfDecade
+}
+
+declare module 'date-fns/esm/fp/startOfDecadeWithOptions/index' {
+  import {startOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default startOfDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfHour/index' {
@@ -15465,6 +15881,16 @@ declare module 'date-fns/esm/fp/endOfDayWithOptions/index.js' {
   export default endOfDayWithOptions
 }
 
+declare module 'date-fns/esm/fp/endOfDecade/index.js' {
+  import {endOfDecade} from 'date-fns/esm/fp'
+  export default endOfDecade
+}
+
+declare module 'date-fns/esm/fp/endOfDecadeWithOptions/index.js' {
+  import {endOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default endOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/endOfHour/index.js' {
   import {endOfHour} from 'date-fns/esm/fp'
   export default endOfHour
@@ -15643,6 +16069,16 @@ declare module 'date-fns/esm/fp/getDaysInYearWithOptions/index.js' {
 declare module 'date-fns/esm/fp/getDayWithOptions/index.js' {
   import {getDayWithOptions} from 'date-fns/esm/fp'
   export default getDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/getDecade/index.js' {
+  import {getDecade} from 'date-fns/esm/fp'
+  export default getDecade
+}
+
+declare module 'date-fns/esm/fp/getDecadeWithOptions/index.js' {
+  import {getDecadeWithOptions} from 'date-fns/esm/fp'
+  export default getDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getHours/index.js' {
@@ -16085,6 +16521,16 @@ declare module 'date-fns/esm/fp/isWithinIntervalWithOptions/index.js' {
   export default isWithinIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/lastDayOfDecade/index.js' {
+  import {lastDayOfDecade} from 'date-fns/esm/fp'
+  export default lastDayOfDecade
+}
+
+declare module 'date-fns/esm/fp/lastDayOfDecadeWithOptions/index.js' {
+  import {lastDayOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default lastDayOfDecadeWithOptions
+}
+
 declare module 'date-fns/esm/fp/lastDayOfISOWeek/index.js' {
   import {lastDayOfISOWeek} from 'date-fns/esm/fp'
   export default lastDayOfISOWeek
@@ -16333,6 +16779,16 @@ declare module 'date-fns/esm/fp/startOfDay/index.js' {
 declare module 'date-fns/esm/fp/startOfDayWithOptions/index.js' {
   import {startOfDayWithOptions} from 'date-fns/esm/fp'
   export default startOfDayWithOptions
+}
+
+declare module 'date-fns/esm/fp/startOfDecade/index.js' {
+  import {startOfDecade} from 'date-fns/esm/fp'
+  export default startOfDecade
+}
+
+declare module 'date-fns/esm/fp/startOfDecadeWithOptions/index.js' {
+  import {startOfDecadeWithOptions} from 'date-fns/esm/fp'
+  export default startOfDecadeWithOptions
 }
 
 declare module 'date-fns/esm/fp/startOfHour/index.js' {
@@ -18419,6 +18875,11 @@ interface dateFns {
     options?: Options
   ): Date
 
+  endOfDecade(
+    date: Date | string | number,
+    options?: Options
+  ): Date
+
   endOfHour(
     date: Date | string | number,
     options?: Options
@@ -18509,6 +18970,11 @@ interface dateFns {
   ): number
 
   getDaysInYear(
+    date: Date | string | number,
+    options?: Options
+  ): number
+
+  getDecade(
     date: Date | string | number,
     options?: Options
   ): number
@@ -18748,6 +19214,11 @@ interface dateFns {
     options?: Options
   ): boolean
 
+  lastDayOfDecade(
+    date: Date | string | number,
+    options?: Options
+  ): Date
+
   lastDayOfISOWeek(
     date: Date | string | number,
     options?: Options
@@ -18886,6 +19357,11 @@ interface dateFns {
   ): Date
 
   startOfDay(
+    date: Date | string | number,
+    options?: Options
+  ): Date
+
+  startOfDecade(
     date: Date | string | number,
     options?: Options
   ): Date
