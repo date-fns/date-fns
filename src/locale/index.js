@@ -1,6 +1,7 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
 module.exports = {
+  bn: require('./bn/index.js'),
   de: require('./de/index.js'),
   enCA: require('./en-CA/index.js'),
   enGB: require('./en-GB/index.js'),

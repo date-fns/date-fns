@@ -1,5 +1,6 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+export {default as bn} from './bn/index.js'
 export {default as de} from './de/index.js'
 export {default as enCA} from './en-CA/index.js'
 export {default as enGB} from './en-GB/index.js'
