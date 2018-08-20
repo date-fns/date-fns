@@ -19,7 +19,7 @@ var matchQuarterPatterns = {
   wide: /^quý ([1234]|i{1,3}v?)/i
 }
 var parseQuarterPatterns = {
-  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i],
+  any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i]
 }
 
 var matchMonthPatterns = {
