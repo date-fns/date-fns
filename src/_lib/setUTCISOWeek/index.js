@@ -1,3 +1,4 @@
+import toInteger from '../toInteger/index.js'
 import toDate from '../../toDate/index.js'
 import getUTCISOWeek from '../getUTCISOWeek/index.js'
 
@@ -9,7 +10,7 @@ export default function setUTCISOWeek (dirtyDate, dirtyISOWeek, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var isoWeek = Number(dirtyISOWeek)
+  var isoWeek = toInteger(dirtyISOWeek)
   var diff = getUTCISOWeek(date, dirtyOptions) - isoWeek
   date.setUTCDate(date.getUTCDate() - diff * 7)
   return date

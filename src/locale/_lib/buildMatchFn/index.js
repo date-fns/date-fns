@@ -15,7 +15,7 @@ export default function buildMatchFn (args) {
     var parsePatterns = (width && args.parsePatterns[width]) || args.parsePatterns[args.defaultParseWidth]
 
     var value
-    if (parsePatterns instanceof Array) {
+    if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
       value = parsePatterns.findIndex(function (pattern) {
         return pattern.test(string)
       })
@@ -26,6 +26,7 @@ export default function buildMatchFn (args) {
     }
 
     value = args.valueCallback ? args.valueCallback(value) : value
+    value = options.valueCallback ? options.valueCallback(value) : value
 
     return {
       value: value,

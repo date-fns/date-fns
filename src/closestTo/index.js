@@ -64,7 +64,7 @@ export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOpt
     }
 
     var distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result === undefined || distance < minDistance) {
+    if (result == null || distance < minDistance) {
       result = currentDate
       minDistance = distance
     }

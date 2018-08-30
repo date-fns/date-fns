@@ -67,6 +67,8 @@ module.exports = {
   differenceInYearsWithOptions: require('./differenceInYearsWithOptions/index.js'),
   eachDayOfInterval: require('./eachDayOfInterval/index.js'),
   eachDayOfIntervalWithOptions: require('./eachDayOfIntervalWithOptions/index.js'),
+  eachWeekOfInterval: require('./eachWeekOfInterval/index.js'),
+  eachWeekOfIntervalWithOptions: require('./eachWeekOfIntervalWithOptions/index.js'),
   endOfDay: require('./endOfDay/index.js'),
   endOfDayWithOptions: require('./endOfDayWithOptions/index.js'),
   endOfHour: require('./endOfHour/index.js'),

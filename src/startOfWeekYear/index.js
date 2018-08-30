@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import getWeekYear from '../getWeekYear/index.js'
 import startOfWeek from '../startOfWeek/index.js'
 
@@ -49,13 +50,13 @@ export default function startOfWeekYear (dirtyDate, dirtyOptions) {
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   var year = getWeekYear(dirtyDate, dirtyOptions)
   var firstWeek = new Date(0)

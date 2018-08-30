@@ -20,6 +20,11 @@ describe('subYears', function () {
     assert.deepEqual(result, new Date(2002, 8 /* Sep */, 1))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = subYears(new Date(2014, 8 /* Sep */, 1), 5.1)
+    assert.deepEqual(result, new Date(2009, 8 /* Sep */, 1))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = subYears(new Date(2014, 8 /* Sep */, 1), '5')

@@ -1,3 +1,4 @@
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import compareAsc from '../compareAsc/index.js'
 import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
@@ -131,7 +132,7 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     dateRight = toDate(dirtyBaseDate, options)
   }
 
-  var roundingMethod = options.roundingMethod ? String(options.roundingMethod) : 'round'
+  var roundingMethod = options.roundingMethod == null ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -145,11 +146,11 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   }
 
   var seconds = differenceInSeconds(dateRight, dateLeft, dirtyOptions)
-  var offset = dateRight.getTimezoneOffset() - dateLeft.getTimezoneOffset()
-  var minutes = roundingMethodFn(seconds / 60) - offset
+  var offsetInSeconds = (getTimezoneOffsetInMilliseconds(dateRight) - getTimezoneOffsetInMilliseconds(dateLeft)) / 1000
+  var minutes = roundingMethodFn((seconds - offsetInSeconds) / 60)
 
   var unit
-  if (options.unit === undefined) {
+  if (options.unit == null) {
     if (minutes < 1) {
       unit = 'second'
     } else if (minutes < 60) {

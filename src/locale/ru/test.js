@@ -443,7 +443,7 @@ describe('ru locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('5 вечера', 'h BBBBB', baseDate, {locale: locale})
+        var result = parse('5 веч.', 'h BBBBB', baseDate, {locale: locale})
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
       })
     })

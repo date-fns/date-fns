@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getDaysInMonth from '../getDaysInMonth/index.js'
 
@@ -28,7 +29,7 @@ export default function addMonths (dirtyDate, dirtyAmount, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var amount = Number(dirtyAmount)
+  var amount = toInteger(dirtyAmount)
   var desiredMonth = date.getMonth() + amount
   var dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)

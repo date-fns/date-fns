@@ -20,6 +20,11 @@ describe('setDayOfYear', function () {
     assert.deepEqual(result, new Date(2014, 2 /* Mar */, 1))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), 2.75)
+    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = setDayOfYear(new Date(2014, 6 /* Jul */, 2), '2')

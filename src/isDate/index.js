@@ -17,12 +17,17 @@
  * //=> true
  *
  * @example
- * // For a value
+ * // For an invalid date:
+ * var result = isDate(new Date(NaN))
+ * //=> true
+ *
+ * @example
+ * // For some value:
  * var result = isDate('2014-02-31')
  * //=> false
  *
  * @example
- * // For a object
+ * // For an object:
  * var result = isDate({})
  * //=> false
  */

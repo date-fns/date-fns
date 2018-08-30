@@ -25,7 +25,40 @@ var dayValues = {
   wide: ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag']
 }
 
+// https://www.unicode.org/cldr/charts/32/summary/sv.html#1888
 var dayPeriodValues = {
+  narrow: {
+    am: 'fm',
+    pm: 'em',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morg.',
+    afternoon: 'efterm.',
+    evening: 'kväll',
+    night: 'natt'
+  },
+  abbreviated: {
+    am: 'f.m.',
+    pm: 'e.m.',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morgon',
+    afternoon: 'efterm.',
+    evening: 'kväll',
+    night: 'natt'
+  },
+  wide: {
+    am: 'förmiddag',
+    pm: 'eftermiddag',
+    midnight: 'midnatt',
+    noon: 'middag',
+    morning: 'morgon',
+    afternoon: 'eftermiddag',
+    evening: 'kväll',
+    night: 'natt'
+  }
+}
+var formattingDayPeriodValues = {
   narrow: {
     am: 'fm',
     pm: 'em',
@@ -100,7 +133,9 @@ var localize = {
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
   })
 }
 

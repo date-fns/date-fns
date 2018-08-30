@@ -1,5 +1,7 @@
+import toInteger from '../_lib/toInteger/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
-import subMinutes from '../subMinutes/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 
@@ -20,6 +22,8 @@ var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
+
+var notWhitespaceRegExp = /\S/
 
 /**
  * @name parse
@@ -273,7 +277,7 @@ var doubleQuoteRegExp = /''/g
  * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
- * // Parse 28th of February in English locale in the context of 2010 year:
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
  * var result = parse(
  *   '28-a de februaro',
@@ -302,13 +306,13 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -316,8 +320,8 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
+  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -362,9 +366,9 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       setters.push({
         priority: parser.priority,
         set: parser.set,
+        validate: parser.validate,
         value: parseResult.value,
-        index: setters.length,
-        token: token
+        index: setters.length
       })
 
       dateString = parseResult.rest
@@ -383,6 +387,11 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
         return new Date(NaN)
       }
     }
+  }
+
+  // Check if the remaining input contains something other than whitespace
+  if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
+    return new Date(NaN)
   }
 
   var uniquePrioritySetters = setters
@@ -415,11 +424,16 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  var utcDate = subMinutes(date, date.getTimezoneOffset())
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-    utcDate = setter.set(utcDate, setter.value, setter.token, subFnOptions)
+
+    if (setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
+      return new Date(NaN)
+    }
+
+    utcDate = setter.set(utcDate, setter.value, subFnOptions)
   }
 
   return utcDate

@@ -1,8 +1,9 @@
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import format from '../format/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import subMinutes from '../subMinutes/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 
 /**
  * @name formatRelative
@@ -78,8 +79,8 @@ export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) 
     token = 'other'
   }
 
-  var utcDate = subMinutes(date, date.getTimezoneOffset(), options)
-  var utcBaseDate = subMinutes(baseDate, date.getTimezoneOffset(), options)
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date), options)
+  var utcBaseDate = subMilliseconds(baseDate, getTimezoneOffsetInMilliseconds(baseDate), options)
   var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
   return format(date, formatStr, options)
 }

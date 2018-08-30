@@ -20,6 +20,11 @@ describe('setUTCWeek', function () {
     assert.deepEqual(result, new Date(Date.UTC(2008, 11 /* Dec */, 31)))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setUTCWeek(new Date(Date.UTC(2005, 0 /* Jan */, 2)), 1.1)
+    assert.deepEqual(result, new Date(Date.UTC(2004, 11 /* Dec */, 26)))
+  })
+
   it('implicitly converts number arguments', function () {
     var result = setUTCWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), '53')
     assert.deepEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))

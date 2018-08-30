@@ -25,6 +25,11 @@ describe('setQuarter', function () {
     assert.deepEqual(result, new Date(2014, 9 /* Oct */, 1))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setQuarter(new Date(2014, 6 /* Jul */, 2), 1.951)
+    assert.deepEqual(result, new Date(2014, 0 /* Jan */, 2))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = setQuarter(new Date(2014, 6 /* Jul */, 2), '1')

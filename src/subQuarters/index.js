@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import addQuarters from '../addQuarters/index.js'
 
 /**
@@ -26,6 +27,6 @@ export default function subQuarters (dirtyDate, dirtyAmount, dirtyOptions) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
   }
 
-  var amount = Number(dirtyAmount)
+  var amount = toInteger(dirtyAmount)
   return addQuarters(dirtyDate, -amount, dirtyOptions)
 }
