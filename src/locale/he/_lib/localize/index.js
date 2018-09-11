@@ -32,23 +32,23 @@ var dayPeriodValues = {
     midnight: 'חצות',
     noon: 'צהריים',
     morning: 'בוקר',
-    afternoon: 'אחה״צ',
+    afternoon: 'אחר הצהריים',
     evening: 'ערב',
     night: 'לילה'
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
     midnight: 'חצות',
     noon: 'צהריים',
     morning: 'בוקר',
-    afternoon: 'אחה״צ',
+    afternoon: 'אחר הצהריים',
     evening: 'ערב',
     night: 'לילה'
   },
   wide: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
     midnight: 'חצות',
     noon: 'צהריים',
     morning: 'בוקר',
@@ -74,7 +74,7 @@ var formattingDayPeriodValues = {
     midnight: 'חצות',
     noon: 'צהריים',
     morning: 'בבוקר',
-    afternoon: 'אחה״צ',
+    afternoon: 'אחר הצהריים',
     evening: 'בערב',
     night: 'בלילה'
   },
