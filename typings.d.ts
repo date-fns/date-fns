@@ -304,6 +304,12 @@ declare module 'date-fns' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachWeekOfInterval (
+    interval: Interval,
+    options?: Options
+  ): Date[]
+  namespace eachWeekOfInterval {}
+
   function endOfDay (
     date: Date | string | number,
     options?: Options
@@ -538,6 +544,12 @@ declare module 'date-fns' {
     options?: Options
   ): boolean
   namespace isBefore {}
+
+  function isDate (
+    value: any,
+    options?: Options
+  ): boolean
+  namespace isDate {}
 
   function isEqual (
     dateLeft: Date | string | number,
@@ -993,7 +1005,7 @@ declare module 'date-fns' {
   namespace subYears {}
 
   function toDate (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
   namespace toDate {}
@@ -1162,6 +1174,11 @@ declare module 'date-fns/differenceInYears' {
 declare module 'date-fns/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns'
   export = eachDayOfInterval
+}
+
+declare module 'date-fns/eachWeekOfInterval' {
+  import {eachWeekOfInterval} from 'date-fns'
+  export = eachWeekOfInterval
 }
 
 declare module 'date-fns/endOfDay' {
@@ -1352,6 +1369,11 @@ declare module 'date-fns/isAfter' {
 declare module 'date-fns/isBefore' {
   import {isBefore} from 'date-fns'
   export = isBefore
+}
+
+declare module 'date-fns/isDate' {
+  import {isDate} from 'date-fns'
+  export = isDate
 }
 
 declare module 'date-fns/isEqual' {
@@ -1869,6 +1891,11 @@ declare module 'date-fns/eachDayOfInterval/index' {
   export = eachDayOfInterval
 }
 
+declare module 'date-fns/eachWeekOfInterval/index' {
+  import {eachWeekOfInterval} from 'date-fns'
+  export = eachWeekOfInterval
+}
+
 declare module 'date-fns/endOfDay/index' {
   import {endOfDay} from 'date-fns'
   export = endOfDay
@@ -2057,6 +2084,11 @@ declare module 'date-fns/isAfter/index' {
 declare module 'date-fns/isBefore/index' {
   import {isBefore} from 'date-fns'
   export = isBefore
+}
+
+declare module 'date-fns/isDate/index' {
+  import {isDate} from 'date-fns'
+  export = isDate
 }
 
 declare module 'date-fns/isEqual/index' {
@@ -2574,6 +2606,11 @@ declare module 'date-fns/eachDayOfInterval/index.js' {
   export = eachDayOfInterval
 }
 
+declare module 'date-fns/eachWeekOfInterval/index.js' {
+  import {eachWeekOfInterval} from 'date-fns'
+  export = eachWeekOfInterval
+}
+
 declare module 'date-fns/endOfDay/index.js' {
   import {endOfDay} from 'date-fns'
   export = endOfDay
@@ -2762,6 +2799,11 @@ declare module 'date-fns/isAfter/index.js' {
 declare module 'date-fns/isBefore/index.js' {
   import {isBefore} from 'date-fns'
   export = isBefore
+}
+
+declare module 'date-fns/isDate/index.js' {
+  import {isDate} from 'date-fns'
+  export = isDate
 }
 
 declare module 'date-fns/isEqual/index.js' {
@@ -3315,6 +3357,12 @@ declare module 'date-fns/fp' {
   const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {}
 
+  const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachWeekOfInterval {}
+
+  const eachWeekOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  namespace eachWeekOfIntervalWithOptions {}
+
   const endOfDay: CurriedFn1<Date | string | number, Date>
   namespace endOfDay {}
 
@@ -3542,6 +3590,12 @@ declare module 'date-fns/fp' {
 
   const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
+
+  const isDate: CurriedFn1<any, boolean>
+  namespace isDate {}
+
+  const isDateWithOptions: CurriedFn2<Options, any, boolean>
+  namespace isDateWithOptions {}
 
   const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
@@ -3957,10 +4011,10 @@ declare module 'date-fns/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<any, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, any, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -4292,6 +4346,16 @@ declare module 'date-fns/fp/eachDayOfInterval' {
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
   import {eachDayOfIntervalWithOptions} from 'date-fns/fp'
   export = eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekOfInterval' {
+  import {eachWeekOfInterval} from 'date-fns/fp'
+  export = eachWeekOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekOfIntervalWithOptions' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/fp'
+  export = eachWeekOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/endOfDay' {
@@ -4672,6 +4736,16 @@ declare module 'date-fns/fp/isBefore' {
 declare module 'date-fns/fp/isBeforeWithOptions' {
   import {isBeforeWithOptions} from 'date-fns/fp'
   export = isBeforeWithOptions
+}
+
+declare module 'date-fns/fp/isDate' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
 }
 
 declare module 'date-fns/fp/isEqual' {
@@ -5704,6 +5778,16 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index' {
   export = eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachWeekOfInterval/index' {
+  import {eachWeekOfInterval} from 'date-fns/fp'
+  export = eachWeekOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/fp'
+  export = eachWeekOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/endOfDay/index' {
   import {endOfDay} from 'date-fns/fp'
   export = endOfDay
@@ -6082,6 +6166,16 @@ declare module 'date-fns/fp/isBefore/index' {
 declare module 'date-fns/fp/isBeforeWithOptions/index' {
   import {isBeforeWithOptions} from 'date-fns/fp'
   export = isBeforeWithOptions
+}
+
+declare module 'date-fns/fp/isDate/index' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions/index' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
 }
 
 declare module 'date-fns/fp/isEqual/index' {
@@ -7114,6 +7208,16 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index.js' {
   export = eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachWeekOfInterval/index.js' {
+  import {eachWeekOfInterval} from 'date-fns/fp'
+  export = eachWeekOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index.js' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/fp'
+  export = eachWeekOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/endOfDay/index.js' {
   import {endOfDay} from 'date-fns/fp'
   export = endOfDay
@@ -7492,6 +7596,16 @@ declare module 'date-fns/fp/isBefore/index.js' {
 declare module 'date-fns/fp/isBeforeWithOptions/index.js' {
   import {isBeforeWithOptions} from 'date-fns/fp'
   export = isBeforeWithOptions
+}
+
+declare module 'date-fns/fp/isDate/index.js' {
+  import {isDate} from 'date-fns/fp'
+  export = isDate
+}
+
+declare module 'date-fns/fp/isDateWithOptions/index.js' {
+  import {isDateWithOptions} from 'date-fns/fp'
+  export = isDateWithOptions
 }
 
 declare module 'date-fns/fp/isEqual/index.js' {
@@ -8427,6 +8541,12 @@ declare module 'date-fns/esm' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachWeekOfInterval (
+    interval: Interval,
+    options?: Options
+  ): Date[]
+  namespace eachWeekOfInterval {}
+
   function endOfDay (
     date: Date | string | number,
     options?: Options
@@ -8661,6 +8781,12 @@ declare module 'date-fns/esm' {
     options?: Options
   ): boolean
   namespace isBefore {}
+
+  function isDate (
+    value: any,
+    options?: Options
+  ): boolean
+  namespace isDate {}
 
   function isEqual (
     dateLeft: Date | string | number,
@@ -9116,7 +9242,7 @@ declare module 'date-fns/esm' {
   namespace subYears {}
 
   function toDate (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
   namespace toDate {}
@@ -9285,6 +9411,11 @@ declare module 'date-fns/esm/differenceInYears' {
 declare module 'date-fns/esm/eachDayOfInterval' {
   import {eachDayOfInterval} from 'date-fns/esm'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/esm/eachWeekOfInterval' {
+  import {eachWeekOfInterval} from 'date-fns/esm'
+  export default eachWeekOfInterval
 }
 
 declare module 'date-fns/esm/endOfDay' {
@@ -9475,6 +9606,11 @@ declare module 'date-fns/esm/isAfter' {
 declare module 'date-fns/esm/isBefore' {
   import {isBefore} from 'date-fns/esm'
   export default isBefore
+}
+
+declare module 'date-fns/esm/isDate' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
 }
 
 declare module 'date-fns/esm/isEqual' {
@@ -9992,6 +10128,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachWeekOfInterval/index' {
+  import {eachWeekOfInterval} from 'date-fns/esm'
+  export default eachWeekOfInterval
+}
+
 declare module 'date-fns/esm/endOfDay/index' {
   import {endOfDay} from 'date-fns/esm'
   export default endOfDay
@@ -10180,6 +10321,11 @@ declare module 'date-fns/esm/isAfter/index' {
 declare module 'date-fns/esm/isBefore/index' {
   import {isBefore} from 'date-fns/esm'
   export default isBefore
+}
+
+declare module 'date-fns/esm/isDate/index' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
 }
 
 declare module 'date-fns/esm/isEqual/index' {
@@ -10697,6 +10843,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index.js' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachWeekOfInterval/index.js' {
+  import {eachWeekOfInterval} from 'date-fns/esm'
+  export default eachWeekOfInterval
+}
+
 declare module 'date-fns/esm/endOfDay/index.js' {
   import {endOfDay} from 'date-fns/esm'
   export default endOfDay
@@ -10885,6 +11036,11 @@ declare module 'date-fns/esm/isAfter/index.js' {
 declare module 'date-fns/esm/isBefore/index.js' {
   import {isBefore} from 'date-fns/esm'
   export default isBefore
+}
+
+declare module 'date-fns/esm/isDate/index.js' {
+  import {isDate} from 'date-fns/esm'
+  export default isDate
 }
 
 declare module 'date-fns/esm/isEqual/index.js' {
@@ -11438,6 +11594,12 @@ declare module 'date-fns/esm/fp' {
   const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {}
 
+  const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachWeekOfInterval {}
+
+  const eachWeekOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  namespace eachWeekOfIntervalWithOptions {}
+
   const endOfDay: CurriedFn1<Date | string | number, Date>
   namespace endOfDay {}
 
@@ -11665,6 +11827,12 @@ declare module 'date-fns/esm/fp' {
 
   const isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>
   namespace isBeforeWithOptions {}
+
+  const isDate: CurriedFn1<any, boolean>
+  namespace isDate {}
+
+  const isDateWithOptions: CurriedFn2<Options, any, boolean>
+  namespace isDateWithOptions {}
 
   const isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>
   namespace isEqual {}
@@ -12080,10 +12248,10 @@ declare module 'date-fns/esm/fp' {
   const subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace subYearsWithOptions {}
 
-  const toDate: CurriedFn1<any, Date>
+  const toDate: CurriedFn1<Date | string | number, Date>
   namespace toDate {}
 
-  const toDateWithOptions: CurriedFn2<Options, any, Date>
+  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
   namespace toDateWithOptions {}
 }
 
@@ -12415,6 +12583,16 @@ declare module 'date-fns/esm/fp/eachDayOfInterval' {
 declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions' {
   import {eachDayOfIntervalWithOptions} from 'date-fns/esm/fp'
   export default eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekOfInterval' {
+  import {eachWeekOfInterval} from 'date-fns/esm/fp'
+  export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/esm/fp'
+  export default eachWeekOfIntervalWithOptions
 }
 
 declare module 'date-fns/esm/fp/endOfDay' {
@@ -12795,6 +12973,16 @@ declare module 'date-fns/esm/fp/isBefore' {
 declare module 'date-fns/esm/fp/isBeforeWithOptions' {
   import {isBeforeWithOptions} from 'date-fns/esm/fp'
   export default isBeforeWithOptions
+}
+
+declare module 'date-fns/esm/fp/isDate' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/isEqual' {
@@ -13827,6 +14015,16 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachWeekOfInterval/index' {
+  import {eachWeekOfInterval} from 'date-fns/esm/fp'
+  export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions/index' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/esm/fp'
+  export default eachWeekOfIntervalWithOptions
+}
+
 declare module 'date-fns/esm/fp/endOfDay/index' {
   import {endOfDay} from 'date-fns/esm/fp'
   export default endOfDay
@@ -14205,6 +14403,16 @@ declare module 'date-fns/esm/fp/isBefore/index' {
 declare module 'date-fns/esm/fp/isBeforeWithOptions/index' {
   import {isBeforeWithOptions} from 'date-fns/esm/fp'
   export default isBeforeWithOptions
+}
+
+declare module 'date-fns/esm/fp/isDate/index' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions/index' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/isEqual/index' {
@@ -15237,6 +15445,16 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachWeekOfInterval/index.js' {
+  import {eachWeekOfInterval} from 'date-fns/esm/fp'
+  export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions/index.js' {
+  import {eachWeekOfIntervalWithOptions} from 'date-fns/esm/fp'
+  export default eachWeekOfIntervalWithOptions
+}
+
 declare module 'date-fns/esm/fp/endOfDay/index.js' {
   import {endOfDay} from 'date-fns/esm/fp'
   export default endOfDay
@@ -15615,6 +15833,16 @@ declare module 'date-fns/esm/fp/isBefore/index.js' {
 declare module 'date-fns/esm/fp/isBeforeWithOptions/index.js' {
   import {isBeforeWithOptions} from 'date-fns/esm/fp'
   export default isBeforeWithOptions
+}
+
+declare module 'date-fns/esm/fp/isDate/index.js' {
+  import {isDate} from 'date-fns/esm/fp'
+  export default isDate
+}
+
+declare module 'date-fns/esm/fp/isDateWithOptions/index.js' {
+  import {isDateWithOptions} from 'date-fns/esm/fp'
+  export default isDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/isEqual/index.js' {
@@ -16320,8 +16548,14 @@ declare module 'date-fns/esm/fp/toDateWithOptions/index.js' {
 // Regular Locales
 
 declare module 'date-fns/locale' {
+  const af: Locale
+  namespace af {}
+
   const ar: Locale
   namespace ar {}
+
+  const arDZ: Locale
+  namespace arDZ {}
 
   const bg: Locale
   namespace bg {}
@@ -16356,6 +16590,9 @@ declare module 'date-fns/locale' {
   const es: Locale
   namespace es {}
 
+  const et: Locale
+  namespace et {}
+
   const fi: Locale
   namespace fi {}
 
@@ -16367,6 +16604,9 @@ declare module 'date-fns/locale' {
 
   const frCH: Locale
   namespace frCH {}
+
+  const he: Locale
+  namespace he {}
 
   const hr: Locale
   namespace hr {}
@@ -16383,17 +16623,26 @@ declare module 'date-fns/locale' {
   const ja: Locale
   namespace ja {}
 
+  const ka: Locale
+  namespace ka {}
+
   const ko: Locale
   namespace ko {}
 
   const mk: Locale
   namespace mk {}
 
+  const ms: Locale
+  namespace ms {}
+
   const nb: Locale
   namespace nb {}
 
   const nl: Locale
   namespace nl {}
+
+  const nlBE: Locale
+  namespace nlBE {}
 
   const pl: Locale
   namespace pl {}
@@ -16412,6 +16661,9 @@ declare module 'date-fns/locale' {
 
   const sk: Locale
   namespace sk {}
+
+  const sr: Locale
+  namespace sr {}
 
   const sv: Locale
   namespace sv {}
@@ -16435,9 +16687,19 @@ declare module 'date-fns/locale' {
   namespace zhTW {}
 }
 
+declare module 'date-fns/locale/af' {
+  import {af} from 'date-fns/locale'
+  export = af
+}
+
 declare module 'date-fns/locale/ar' {
   import {ar} from 'date-fns/locale'
   export = ar
+}
+
+declare module 'date-fns/locale/ar-DZ' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
 }
 
 declare module 'date-fns/locale/bg' {
@@ -16495,6 +16757,11 @@ declare module 'date-fns/locale/es' {
   export = es
 }
 
+declare module 'date-fns/locale/et' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16513,6 +16780,11 @@ declare module 'date-fns/locale/fr' {
 declare module 'date-fns/locale/fr-CH' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr' {
@@ -16540,6 +16812,11 @@ declare module 'date-fns/locale/ja' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16550,6 +16827,11 @@ declare module 'date-fns/locale/mk' {
   export = mk
 }
 
+declare module 'date-fns/locale/ms' {
+  import {ms} from 'date-fns/locale'
+  export = ms
+}
+
 declare module 'date-fns/locale/nb' {
   import {nb} from 'date-fns/locale'
   export = nb
@@ -16558,6 +16840,11 @@ declare module 'date-fns/locale/nb' {
 declare module 'date-fns/locale/nl' {
   import {nl} from 'date-fns/locale'
   export = nl
+}
+
+declare module 'date-fns/locale/nl-BE' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
 }
 
 declare module 'date-fns/locale/pl' {
@@ -16588,6 +16875,11 @@ declare module 'date-fns/locale/ru' {
 declare module 'date-fns/locale/sk' {
   import {sk} from 'date-fns/locale'
   export = sk
+}
+
+declare module 'date-fns/locale/sr' {
+  import {sr} from 'date-fns/locale'
+  export = sr
 }
 
 declare module 'date-fns/locale/sv' {
@@ -16625,9 +16917,19 @@ declare module 'date-fns/locale/zh-TW' {
   export = zhTW
 }
 
+declare module 'date-fns/locale/af/index' {
+  import {af} from 'date-fns/locale'
+  export = af
+}
+
 declare module 'date-fns/locale/ar/index' {
   import {ar} from 'date-fns/locale'
   export = ar
+}
+
+declare module 'date-fns/locale/ar-DZ/index' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
 }
 
 declare module 'date-fns/locale/bg/index' {
@@ -16685,6 +16987,11 @@ declare module 'date-fns/locale/es/index' {
   export = es
 }
 
+declare module 'date-fns/locale/et/index' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi/index' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16703,6 +17010,11 @@ declare module 'date-fns/locale/fr/index' {
 declare module 'date-fns/locale/fr-CH/index' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he/index' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr/index' {
@@ -16730,6 +17042,11 @@ declare module 'date-fns/locale/ja/index' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka/index' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko/index' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16740,6 +17057,11 @@ declare module 'date-fns/locale/mk/index' {
   export = mk
 }
 
+declare module 'date-fns/locale/ms/index' {
+  import {ms} from 'date-fns/locale'
+  export = ms
+}
+
 declare module 'date-fns/locale/nb/index' {
   import {nb} from 'date-fns/locale'
   export = nb
@@ -16748,6 +17070,11 @@ declare module 'date-fns/locale/nb/index' {
 declare module 'date-fns/locale/nl/index' {
   import {nl} from 'date-fns/locale'
   export = nl
+}
+
+declare module 'date-fns/locale/nl-BE/index' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
 }
 
 declare module 'date-fns/locale/pl/index' {
@@ -16778,6 +17105,11 @@ declare module 'date-fns/locale/ru/index' {
 declare module 'date-fns/locale/sk/index' {
   import {sk} from 'date-fns/locale'
   export = sk
+}
+
+declare module 'date-fns/locale/sr/index' {
+  import {sr} from 'date-fns/locale'
+  export = sr
 }
 
 declare module 'date-fns/locale/sv/index' {
@@ -16815,9 +17147,19 @@ declare module 'date-fns/locale/zh-TW/index' {
   export = zhTW
 }
 
+declare module 'date-fns/locale/af/index.js' {
+  import {af} from 'date-fns/locale'
+  export = af
+}
+
 declare module 'date-fns/locale/ar/index.js' {
   import {ar} from 'date-fns/locale'
   export = ar
+}
+
+declare module 'date-fns/locale/ar-DZ/index.js' {
+  import {arDZ} from 'date-fns/locale'
+  export = arDZ
 }
 
 declare module 'date-fns/locale/bg/index.js' {
@@ -16875,6 +17217,11 @@ declare module 'date-fns/locale/es/index.js' {
   export = es
 }
 
+declare module 'date-fns/locale/et/index.js' {
+  import {et} from 'date-fns/locale'
+  export = et
+}
+
 declare module 'date-fns/locale/fi/index.js' {
   import {fi} from 'date-fns/locale'
   export = fi
@@ -16893,6 +17240,11 @@ declare module 'date-fns/locale/fr/index.js' {
 declare module 'date-fns/locale/fr-CH/index.js' {
   import {frCH} from 'date-fns/locale'
   export = frCH
+}
+
+declare module 'date-fns/locale/he/index.js' {
+  import {he} from 'date-fns/locale'
+  export = he
 }
 
 declare module 'date-fns/locale/hr/index.js' {
@@ -16920,6 +17272,11 @@ declare module 'date-fns/locale/ja/index.js' {
   export = ja
 }
 
+declare module 'date-fns/locale/ka/index.js' {
+  import {ka} from 'date-fns/locale'
+  export = ka
+}
+
 declare module 'date-fns/locale/ko/index.js' {
   import {ko} from 'date-fns/locale'
   export = ko
@@ -16930,6 +17287,11 @@ declare module 'date-fns/locale/mk/index.js' {
   export = mk
 }
 
+declare module 'date-fns/locale/ms/index.js' {
+  import {ms} from 'date-fns/locale'
+  export = ms
+}
+
 declare module 'date-fns/locale/nb/index.js' {
   import {nb} from 'date-fns/locale'
   export = nb
@@ -16938,6 +17300,11 @@ declare module 'date-fns/locale/nb/index.js' {
 declare module 'date-fns/locale/nl/index.js' {
   import {nl} from 'date-fns/locale'
   export = nl
+}
+
+declare module 'date-fns/locale/nl-BE/index.js' {
+  import {nlBE} from 'date-fns/locale'
+  export = nlBE
 }
 
 declare module 'date-fns/locale/pl/index.js' {
@@ -16968,6 +17335,11 @@ declare module 'date-fns/locale/ru/index.js' {
 declare module 'date-fns/locale/sk/index.js' {
   import {sk} from 'date-fns/locale'
   export = sk
+}
+
+declare module 'date-fns/locale/sr/index.js' {
+  import {sr} from 'date-fns/locale'
+  export = sr
 }
 
 declare module 'date-fns/locale/sv/index.js' {
@@ -17008,8 +17380,14 @@ declare module 'date-fns/locale/zh-TW/index.js' {
 // ECMAScript Module Locales
 
 declare module 'date-fns/esm/locale' {
+  const af: Locale
+  namespace af {}
+
   const ar: Locale
   namespace ar {}
+
+  const arDZ: Locale
+  namespace arDZ {}
 
   const bg: Locale
   namespace bg {}
@@ -17044,6 +17422,9 @@ declare module 'date-fns/esm/locale' {
   const es: Locale
   namespace es {}
 
+  const et: Locale
+  namespace et {}
+
   const fi: Locale
   namespace fi {}
 
@@ -17055,6 +17436,9 @@ declare module 'date-fns/esm/locale' {
 
   const frCH: Locale
   namespace frCH {}
+
+  const he: Locale
+  namespace he {}
 
   const hr: Locale
   namespace hr {}
@@ -17071,17 +17455,26 @@ declare module 'date-fns/esm/locale' {
   const ja: Locale
   namespace ja {}
 
+  const ka: Locale
+  namespace ka {}
+
   const ko: Locale
   namespace ko {}
 
   const mk: Locale
   namespace mk {}
 
+  const ms: Locale
+  namespace ms {}
+
   const nb: Locale
   namespace nb {}
 
   const nl: Locale
   namespace nl {}
+
+  const nlBE: Locale
+  namespace nlBE {}
 
   const pl: Locale
   namespace pl {}
@@ -17100,6 +17493,9 @@ declare module 'date-fns/esm/locale' {
 
   const sk: Locale
   namespace sk {}
+
+  const sr: Locale
+  namespace sr {}
 
   const sv: Locale
   namespace sv {}
@@ -17123,9 +17519,19 @@ declare module 'date-fns/esm/locale' {
   namespace zhTW {}
 }
 
+declare module 'date-fns/esm/locale/af' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
+}
+
 declare module 'date-fns/esm/locale/ar' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
+}
+
+declare module 'date-fns/esm/locale/ar-DZ' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
 }
 
 declare module 'date-fns/esm/locale/bg' {
@@ -17183,6 +17589,11 @@ declare module 'date-fns/esm/locale/es' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17201,6 +17612,11 @@ declare module 'date-fns/esm/locale/fr' {
 declare module 'date-fns/esm/locale/fr-CH' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr' {
@@ -17228,6 +17644,11 @@ declare module 'date-fns/esm/locale/ja' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17238,6 +17659,11 @@ declare module 'date-fns/esm/locale/mk' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/ms' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
+}
+
 declare module 'date-fns/esm/locale/nb' {
   import {nb} from 'date-fns/esm/locale'
   export default nb
@@ -17246,6 +17672,11 @@ declare module 'date-fns/esm/locale/nb' {
 declare module 'date-fns/esm/locale/nl' {
   import {nl} from 'date-fns/esm/locale'
   export default nl
+}
+
+declare module 'date-fns/esm/locale/nl-BE' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
 }
 
 declare module 'date-fns/esm/locale/pl' {
@@ -17276,6 +17707,11 @@ declare module 'date-fns/esm/locale/ru' {
 declare module 'date-fns/esm/locale/sk' {
   import {sk} from 'date-fns/esm/locale'
   export default sk
+}
+
+declare module 'date-fns/esm/locale/sr' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
 }
 
 declare module 'date-fns/esm/locale/sv' {
@@ -17313,9 +17749,19 @@ declare module 'date-fns/esm/locale/zh-TW' {
   export default zhTW
 }
 
+declare module 'date-fns/esm/locale/af/index' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
+}
+
 declare module 'date-fns/esm/locale/ar/index' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
+}
+
+declare module 'date-fns/esm/locale/ar-DZ/index' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
 }
 
 declare module 'date-fns/esm/locale/bg/index' {
@@ -17373,6 +17819,11 @@ declare module 'date-fns/esm/locale/es/index' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et/index' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi/index' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17391,6 +17842,11 @@ declare module 'date-fns/esm/locale/fr/index' {
 declare module 'date-fns/esm/locale/fr-CH/index' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he/index' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr/index' {
@@ -17418,6 +17874,11 @@ declare module 'date-fns/esm/locale/ja/index' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka/index' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko/index' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17428,6 +17889,11 @@ declare module 'date-fns/esm/locale/mk/index' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/ms/index' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
+}
+
 declare module 'date-fns/esm/locale/nb/index' {
   import {nb} from 'date-fns/esm/locale'
   export default nb
@@ -17436,6 +17902,11 @@ declare module 'date-fns/esm/locale/nb/index' {
 declare module 'date-fns/esm/locale/nl/index' {
   import {nl} from 'date-fns/esm/locale'
   export default nl
+}
+
+declare module 'date-fns/esm/locale/nl-BE/index' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
 }
 
 declare module 'date-fns/esm/locale/pl/index' {
@@ -17466,6 +17937,11 @@ declare module 'date-fns/esm/locale/ru/index' {
 declare module 'date-fns/esm/locale/sk/index' {
   import {sk} from 'date-fns/esm/locale'
   export default sk
+}
+
+declare module 'date-fns/esm/locale/sr/index' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
 }
 
 declare module 'date-fns/esm/locale/sv/index' {
@@ -17503,9 +17979,19 @@ declare module 'date-fns/esm/locale/zh-TW/index' {
   export default zhTW
 }
 
+declare module 'date-fns/esm/locale/af/index.js' {
+  import {af} from 'date-fns/esm/locale'
+  export default af
+}
+
 declare module 'date-fns/esm/locale/ar/index.js' {
   import {ar} from 'date-fns/esm/locale'
   export default ar
+}
+
+declare module 'date-fns/esm/locale/ar-DZ/index.js' {
+  import {arDZ} from 'date-fns/esm/locale'
+  export default arDZ
 }
 
 declare module 'date-fns/esm/locale/bg/index.js' {
@@ -17563,6 +18049,11 @@ declare module 'date-fns/esm/locale/es/index.js' {
   export default es
 }
 
+declare module 'date-fns/esm/locale/et/index.js' {
+  import {et} from 'date-fns/esm/locale'
+  export default et
+}
+
 declare module 'date-fns/esm/locale/fi/index.js' {
   import {fi} from 'date-fns/esm/locale'
   export default fi
@@ -17581,6 +18072,11 @@ declare module 'date-fns/esm/locale/fr/index.js' {
 declare module 'date-fns/esm/locale/fr-CH/index.js' {
   import {frCH} from 'date-fns/esm/locale'
   export default frCH
+}
+
+declare module 'date-fns/esm/locale/he/index.js' {
+  import {he} from 'date-fns/esm/locale'
+  export default he
 }
 
 declare module 'date-fns/esm/locale/hr/index.js' {
@@ -17608,6 +18104,11 @@ declare module 'date-fns/esm/locale/ja/index.js' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ka/index.js' {
+  import {ka} from 'date-fns/esm/locale'
+  export default ka
+}
+
 declare module 'date-fns/esm/locale/ko/index.js' {
   import {ko} from 'date-fns/esm/locale'
   export default ko
@@ -17618,6 +18119,11 @@ declare module 'date-fns/esm/locale/mk/index.js' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/ms/index.js' {
+  import {ms} from 'date-fns/esm/locale'
+  export default ms
+}
+
 declare module 'date-fns/esm/locale/nb/index.js' {
   import {nb} from 'date-fns/esm/locale'
   export default nb
@@ -17626,6 +18132,11 @@ declare module 'date-fns/esm/locale/nb/index.js' {
 declare module 'date-fns/esm/locale/nl/index.js' {
   import {nl} from 'date-fns/esm/locale'
   export default nl
+}
+
+declare module 'date-fns/esm/locale/nl-BE/index.js' {
+  import {nlBE} from 'date-fns/esm/locale'
+  export default nlBE
 }
 
 declare module 'date-fns/esm/locale/pl/index.js' {
@@ -17656,6 +18167,11 @@ declare module 'date-fns/esm/locale/ru/index.js' {
 declare module 'date-fns/esm/locale/sk/index.js' {
   import {sk} from 'date-fns/esm/locale'
   export default sk
+}
+
+declare module 'date-fns/esm/locale/sr/index.js' {
+  import {sr} from 'date-fns/esm/locale'
+  export default sr
 }
 
 declare module 'date-fns/esm/locale/sv/index.js' {
@@ -17893,6 +18409,11 @@ interface dateFns {
     options?: Options
   ): Date[]
 
+  eachWeekOfInterval(
+    interval: Interval,
+    options?: Options
+  ): Date[]
+
   endOfDay(
     date: Date | string | number,
     options?: Options
@@ -18087,6 +18608,11 @@ interface dateFns {
   isBefore(
     date: Date | string | number,
     dateToCompare: Date | string | number,
+    options?: Options
+  ): boolean
+
+  isDate(
+    value: any,
     options?: Options
   ): boolean
 
@@ -18475,7 +19001,7 @@ interface dateFns {
   ): Date
 
   toDate(
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ): Date
 }

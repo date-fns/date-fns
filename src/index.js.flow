@@ -244,6 +244,11 @@ declare module.exports: {
     options?: Options
   ) => Date[],
 
+  eachWeekOfInterval: (
+    interval: Interval,
+    options?: Options
+  ) => Date[],
+
   endOfDay: (
     date: Date | string | number,
     options?: Options
@@ -438,6 +443,11 @@ declare module.exports: {
   isBefore: (
     date: Date | string | number,
     dateToCompare: Date | string | number,
+    options?: Options
+  ) => boolean,
+
+  isDate: (
+    value: any,
     options?: Options
   ) => boolean,
 
@@ -826,7 +836,7 @@ declare module.exports: {
   ) => Date,
 
   toDate: (
-    argument: any,
+    argument: Date | string | number,
     options?: Options
   ) => Date
 }

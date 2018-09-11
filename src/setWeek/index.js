@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getWeek from '../getWeek/index.js'
 
@@ -45,7 +46,7 @@ export default function setWeek (dirtyDate, dirtyWeek, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var week = Number(dirtyWeek)
+  var week = toInteger(dirtyWeek)
   var diff = getWeek(date, dirtyOptions) - week
   date.setDate(date.getDate() - diff * 7)
   return date

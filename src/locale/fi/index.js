@@ -11,6 +11,7 @@
  * @language Finnish
  * @iso-639-2 fin
  * @author Pyry-Samuli Lahti [@Pyppe]{@link https://github.com/Pyppe}
+ * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
  */
 // var locale = {
 //   formatDistance: formatDistance,

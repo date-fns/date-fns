@@ -13,6 +13,7 @@
  * @language Croatian
  * @iso-639-2 hrv
  * @author Matija Marohnić [@silvenon]{@link https://github.com/silvenon}
+ * @author Manico [@manico]{@link https://github.com/manico}
  */
 // var locale = {
 //   formatDistance: formatDistance,

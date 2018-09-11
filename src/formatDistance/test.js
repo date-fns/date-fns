@@ -273,8 +273,8 @@ describe('formatDistance', function () {
         var block = formatDistance.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
-          new Date(1986, 3, 4, 10, 32, 3),
           // $ExpectedMistake
+          new Date(1986, 3, 4, 10, 32, 3),
           {includeSeconds: true, locale: customLocale}
         )
         assert.throws(block, RangeError)

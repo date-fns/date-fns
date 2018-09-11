@@ -8,6 +8,10 @@
 
 - [Getting Started](#getting-started)
 
+- [Testing](#testing)
+
+- [Before Sending a Pull Request](#before-sending-a-pull-request)
+
 - [Code Style Guide](#code-style-guide)
 
   - [Lint the Code](#lint-the-code)
@@ -75,11 +79,51 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 ## Getting Started
 
-1. [Install Node.js](https://nodejs.org/en/download).
+1. Install [Node.js](https://nodejs.org/en/download) and [Yarn](https://yarnpkg.com/en/docs/install).
 
 2. Fork the project and clone the fork repo.
 
 3. Run `yarn` to install the application dependencies.
+
+## Testing
+
+Run all tests:
+
+```sh
+yarn test
+```
+
+Run tests once:
+
+```sh
+yarn test --single-run
+```
+
+To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
+
+```sh
+./node_modules/.bin/babel-node
+
+> const toDate = require('./src/toDate')
+undefined
+> toDate('2017-11-17').toString()
+'Fri Nov 17 2017 00:00:00 GMT+0100 (CET)'
+>
+```
+
+Build date-fns to test in in your project:
+
+```sh
+env PACKAGE_OUTPUT_PATH="$(pwd)/../PATH-TO-YOUR-MODULE/node_modules/date-fns" ./scripts/build/package.sh
+```
+
+## Before Sending a Pull Request
+
+Rebuild FP functions, typings and indices by using the following script. It could take around a minute:
+
+```sh
+./scripts/build/build.sh
+```
 
 ## Code Style Guide
 

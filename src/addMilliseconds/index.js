@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -27,6 +28,6 @@ export default function addMilliseconds (dirtyDate, dirtyAmount, dirtyOptions) {
   }
 
   var timestamp = toDate(dirtyDate, dirtyOptions).getTime()
-  var amount = Number(dirtyAmount)
+  var amount = toInteger(dirtyAmount)
   return new Date(timestamp + amount)
 }

@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -27,7 +28,7 @@ export default function setSeconds (dirtyDate, dirtySeconds, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var seconds = Number(dirtySeconds)
+  var seconds = toInteger(dirtySeconds)
   date.setSeconds(seconds)
   return date
 }

@@ -49,6 +49,11 @@ describe('setUTCISODay', function () {
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 3)))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setUTCISODay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 3.33)
+    assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 3)))
+  })
+
   it('implicitly converts number arguments', function () {
     var result = setUTCISODay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), '3')
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 3)))

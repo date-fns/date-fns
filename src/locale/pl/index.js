@@ -12,6 +12,7 @@
  * @iso-639-2 pol
  * @author Mateusz Derks [@ertrzyiks]{@link https://github.com/ertrzyiks}
  * @author Just RAG [@justrag]{@link https://github.com/justrag}
+ * @author Mikolaj Grzyb [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
  */
 // var locale = {
 //   formatDistance: formatDistance,

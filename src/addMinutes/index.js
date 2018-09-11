@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
@@ -28,6 +29,6 @@ export default function addMinutes (dirtyDate, dirtyAmount, dirtyOptions) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
   }
 
-  var amount = Number(dirtyAmount)
+  var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE, dirtyOptions)
 }

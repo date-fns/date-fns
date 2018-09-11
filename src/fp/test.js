@@ -46,12 +46,12 @@ describe('FP functions', function () {
   })
 
   it('addMinutes', function () {
-    var result = fp.addMinutes(30)(new Date(2014, 6 /* Jul */, 10, 12, 0), 30)
+    var result = fp.addMinutes(30)(new Date(2014, 6 /* Jul */, 10, 12, 0))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 30))
   })
 
   it('addMinutesWithOptions', function () {
-    var result = fp.addMinutesWithOptions({})(30)(new Date(2014, 6 /* Jul */, 10, 12, 0), 30)
+    var result = fp.addMinutesWithOptions({})(30)(new Date(2014, 6 /* Jul */, 10, 12, 0))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 30))
   })
 
@@ -508,6 +508,36 @@ describe('FP functions', function () {
       new Date(2014, 9 /* Oct */, 10),
       new Date(2014, 9 /* Oct */, 11),
       new Date(2014, 9 /* Oct */, 12)
+    ])
+  })
+
+  it('eachWeekOfInterval', function () {
+    var interval = {start: new Date(2014, 9 /* Oct */, 6), end: new Date(2014, 10 /* Nov */, 23)}
+    var result = fp.eachWeekOfInterval(interval)
+    assert.deepEqual(result, [
+      new Date(2014, 9 /* Oct */, 5),
+      new Date(2014, 9 /* Oct */, 12),
+      new Date(2014, 9 /* Oct */, 19),
+      new Date(2014, 9 /* Oct */, 26),
+      new Date(2014, 10 /* Nov */, 2),
+      new Date(2014, 10 /* Nov */, 9),
+      new Date(2014, 10 /* Nov */, 16),
+      new Date(2014, 10 /* Nov */, 23)
+    ])
+  })
+
+  it('eachWeekOfIntervalWithOptions', function () {
+    var interval = {start: new Date(2014, 9 /* Oct */, 6), end: new Date(2014, 10 /* Nov */, 23)}
+    var result = fp.eachWeekOfIntervalWithOptions({weekStartsOn: 2})(interval)
+    assert.deepEqual(result, [
+      new Date(2014, 8 /* Sep */, 30),
+      new Date(2014, 9 /* Oct */, 7),
+      new Date(2014, 9 /* Oct */, 14),
+      new Date(2014, 9 /* Oct */, 21),
+      new Date(2014, 9 /* Oct */, 28),
+      new Date(2014, 10 /* Nov */, 4),
+      new Date(2014, 10 /* Nov */, 11),
+      new Date(2014, 10 /* Nov */, 18)
     ])
   })
 

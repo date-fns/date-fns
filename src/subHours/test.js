@@ -24,6 +24,11 @@ describe('subHours', function () {
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 23, 0))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = subHours(new Date(2014, 6 /* Jul */, 11, 1, 0), 2.22)
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 23, 0))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = subHours(new Date(2014, 6 /* Jul */, 11, 1, 0), '2')

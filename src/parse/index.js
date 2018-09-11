@@ -1,5 +1,7 @@
+import toInteger from '../_lib/toInteger/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
-import subMinutes from '../subMinutes/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 
@@ -20,6 +22,8 @@ var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
+
+var notWhitespaceRegExp = /\S/
 
 /**
  * @name parse
@@ -174,53 +178,58 @@ var doubleQuoteRegExp = /''/g
  * |                                 |     | TT      | ...                               | 2     |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
- *   are the same as "stand-alone" units, but are different in some languages.
- *   "Formatting" units are declined according to the rules of the language
- *   in the context of a date. "Stand-alone" units are always nominative singular.
- *   In `format` function, they will produce different result:
+ *    are the same as "stand-alone" units, but are different in some languages.
+ *    "Formatting" units are declined according to the rules of the language
+ *    in the context of a date. "Stand-alone" units are always nominative singular.
+ *    In `format` function, they will produce different result:
  *
- *   `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
- *   `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *    `format(new Date(2017, 10, 6), 'do LLLL', {locale: cs}) //=> '6. listopad'`
  *
- *   `parse` will try to match both formatting and stand-alone units interchangably.
+ *    `format(new Date(2017, 10, 6), 'do MMMM', {locale: cs}) //=> '6. listopadu'`
+ *
+ *    `parse` will try to match both formatting and stand-alone units interchangably.
  *
  * 2. Any sequence of the identical letters is a pattern, unless it is escaped by
- *   the single quote characters (see below).
- *   If the sequence is longer than listed in table:
- *   - for numerical units (`yyyyyyyy`) `parse` will try to match a number
- *     as wide as the sequence
- *   - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
- *     These variations are marked with "2" in the last column of the table.
+ *    the single quote characters (see below).
+ *    If the sequence is longer than listed in table:
+ *    - for numerical units (`yyyyyyyy`) `parse` will try to match a number
+ *      as wide as the sequence
+ *    - for text units (`MMMMMMMM`) `parse` will try to match the widest variation of the unit.
+ *      These variations are marked with "2" in the last column of the table.
  *
  * 3. `QQQQQ` and `qqqqq` could be not strictly numerical in some locales.
- *   These tokens represent the shortest form of the quarter.
+ *    These tokens represent the shortest form of the quarter.
  *
  * 4. The main difference between `y` and `u` patterns are B.C. years:
- *   | Year | `y` | `u` |
- *   |------|-----|-----|
- *   | AC 1 |   1 |   1 |
- *   | BC 1 |   1 |   0 |
- *   | BC 2 |   2 |  -1 |
- *   Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
  *
- *   `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
- *   `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *    | Year | `y` | `u` |
+ *    |------|-----|-----|
+ *    | AC 1 |   1 |   1 |
+ *    | BC 1 |   1 |   0 |
+ *    | BC 2 |   2 |  -1 |
  *
- *   while `uu` will just assign the year as is:
+ *    Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
  *
- *   `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
- *   `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
  *
- *   The same difference is true for local and ISO week-numbering years (`Y` and `R`),
- *   except local week-numbering years are dependent on `options.weekStartsOn`
- *   and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
- *   and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
+ *    `parse('75', 'yy', new Date(2018, 0, 1)) //=> Wed Jan 01 1975 00:00:00`
+ *
+ *    while `uu` will just assign the year as is:
+ *
+ *    `parse('50', 'uu', new Date(2018, 0, 1)) //=> Sat Jan 01 0050 00:00:00`
+ *
+ *    `parse('75', 'uu', new Date(2018, 0, 1)) //=> Tue Jan 01 0075 00:00:00`
+ *
+ *    The same difference is true for local and ISO week-numbering years (`Y` and `R`),
+ *    except local week-numbering years are dependent on `options.weekStartsOn`
+ *    and `options.firstWeekContainsDate` (compare [setISOWeekYear]{@link https://date-fns.org/docs/setISOWeekYear}
+ *    and [setWeekYear]{@link https://date-fns.org/docs/setWeekYear}).
  *
  * 5. These patterns are not in the Unicode Technical Standard #35:
- *   - `i`: ISO day of week
- *   - `I`: ISO week of year
- *   - `R`: ISO week-numbering year
- *   - `o`: ordinal number modifier
+ *    - `i`: ISO day of week
+ *    - `I`: ISO week of year
+ *    - `R`: ISO week-numbering year
+ *    - `o`: ordinal number modifier
  *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
@@ -245,7 +254,7 @@ var doubleQuoteRegExp = /''/g
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
- * @param {Date|String|Number} baseDate - the date to took the missing higher priority values from
+ * @param {Date|String|Number} baseDate - defines values missing from the parsed dateString
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
@@ -268,7 +277,7 @@ var doubleQuoteRegExp = /''/g
  * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
- * // Parse 28th of February in English locale in the context of 2010 year:
+ * // Parse 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
  * var result = parse(
  *   '28-a de februaro',
@@ -297,13 +306,13 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
@@ -311,8 +320,8 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn === undefined ? 0 : Number(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn === undefined ? defaultWeekStartsOn : Number(options.weekStartsOn)
+  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -357,9 +366,9 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
       setters.push({
         priority: parser.priority,
         set: parser.set,
+        validate: parser.validate,
         value: parseResult.value,
-        index: setters.length,
-        token: token
+        index: setters.length
       })
 
       dateString = parseResult.rest
@@ -378,6 +387,11 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
         return new Date(NaN)
       }
     }
+  }
+
+  // Check if the remaining input contains something other than whitespace
+  if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
+    return new Date(NaN)
   }
 
   var uniquePrioritySetters = setters
@@ -410,11 +424,16 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  var utcDate = subMinutes(date, date.getTimezoneOffset())
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-    utcDate = setter.set(utcDate, setter.value, setter.token, subFnOptions)
+
+    if (setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
+      return new Date(NaN)
+    }
+
+    utcDate = setter.set(utcDate, setter.value, subFnOptions)
   }
 
   return utcDate

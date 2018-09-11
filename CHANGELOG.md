@@ -97,6 +97,33 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [en-CA locale](https://github.com/date-fns/date-fns/pull/688) (kudos to [@markowsiak](https://github.com/markowsiak)).
 
+- sv locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/749).
+  Kudos to [@alexandernanberg](https://github.com/alexandernanberg).
+
+- nb locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/757).
+  Kudos to [@dagstuan](https://github.com/dagstuan).
+
+- de locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/766).
+  Kudos to [@pex](https://github.com/pex).
+
+- uk locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/769).
+  Kudos to [@shcherbyakdev](https://github.com/shcherbyakdev).
+
+- fr locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/778).
+  Kudos to [@Lakston](https://github.com/Lakston ).
+
+- zh-CN locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
+  Kudos to [@cubicwork](https://github.com/cubicwork).
+
+- es locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
+  Kudos to [@YagoCarballo](https://github.com/YagoCarballo).
+
+- pt-BR locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/807).
+  Thanks to [@YagoCarballo](https://github.com/YagoCarballo) again!
+
+- nl locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/811).
+  Thanks to the teamwork of [@curry684](https://github.com/curry684) and [@stefanvermaas](https://github.com/stefanvermaas)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
@@ -108,6 +135,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `setWeekYear`
 
   - `startOfWeekYear`
+
+- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
 
 ### Changed
 
@@ -450,10 +479,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `distanceInWordsStrict` → `formatDistanceStrict`
 
   to make them consistent with `format` and `formatRelative`.
-  The order of arguments is swapped to make them consistent with `differenceIn...` functions.
-  `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
-  `unit` option in `formatDistanceStrict` now takes one of the strings:
-  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+
+- **BREAKING**: The order of arguments of `distanseInWords` and `distanceInWordsStrict`
+  is swapped to make them consistent with `differenceIn...` functions.
 
   ```javascript
   // Before v2.0.0
@@ -464,12 +492,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
     {addSuffix: true}
   ) //=> 'in about 1 hour'
 
-  distanceInWordsStrict(
-    new Date(1986, 3, 4, 10, 32, 0),
-    new Date(1986, 3, 4, 10, 33, 1),
-    {partialMethod: 'ceil', unit: 'm'}
-  ) //=> '2 minutes'
-
   // v2.0.0 onward
 
   formatDistance(
@@ -477,12 +499,50 @@ for the list of changes made since `v2.0.0-alpha.1`.
     new Date(1986, 3, 4, 10, 32, 0),
     {addSuffix: true}
   ) //=> 'in about 1 hour'
+  ```
+
+- **BREAKING**: `partialMethod` option in `formatDistanceStrict` is renamed to `roundingMethod`.
+
+  ```javascript
+  // Before v2.0.0
+
+  distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    {partialMethod: 'ceil'}
+  ) //=> '2 minutes'
+
+  // v2.0.0 onward
 
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {roundingMethod: 'ceil', unit: 'minute'}
+    {roundingMethod: 'ceil'}
   ) //=> '2 minutes'
+  ```
+
+- **BREAKING**: in `formatDistanceStrict`, if `roundingMethod` is not specified,
+  it now defaults to `round` instead of `floor`.
+
+- **BREAKING**: `unit` option in `formatDistanceStrict` now takes one of the strings:
+  'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+
+  ```javascript
+  // Before v2.0.0
+
+  distanceInWordsStrict(
+    new Date(1986, 3, 4, 10, 32, 0),
+    new Date(1986, 3, 4, 10, 33, 1),
+    {unit: 'm'}
+  )
+
+  // v2.0.0 onward
+
+  formatDistanceStrict(
+    new Date(1986, 3, 4, 10, 33, 1),
+    new Date(1986, 3, 4, 10, 32, 0),
+    {unit: 'minute'}
+  )
   ```
 
 - **BREAKING**: `parse` renamed to `toDate`,
@@ -496,6 +556,17 @@ for the list of changes made since `v2.0.0-alpha.1`.
   toDate('2016-01-01')
   parse('2016-01-01', 'yyyy-MM-dd', new Date())
   ```
+
+- **BREAKING**: `toDate` now validates separate date and time values in ISO-8601 strings
+  and returns `Invalid Date` if the date is invalid.
+
+  ```javascript
+  toDate('2018-13-32')
+  //=> Invalid Date
+  ```
+
+- **BREAKING**: `toDate` now doesn't fall back to `new Date` constructor
+  if it fails to parse a string argument. Instead, it returns `Invalid Date`.
 
 - **BREAKING**: new locale format.
   See [docs/Locale](https://date-fns.org/docs/Locale).
@@ -543,11 +614,29 @@ for the list of changes made since `v2.0.0-alpha.1`.
   This change is introduced for consistency with ECMAScript standard library which does the same.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
-- **BREAKING**: all functions now handle arguments by following rules:
+- **BREAKING**: all functions now implicitly convert arguments by following rules:
 
+  |           | date          | number | string      | boolean |
+  |-----------|---------------|--------|-------------|---------|
+  | 0         | new Date(0)   | 0      | '0'         | false   |
+  | '0'       | Invalid Date  | 0      | '0'         | false   |
+  | 1         | new Date(1)   | 1      | '1'         | true    |
+  | '1'       | Invalid Date  | 1      | '1'         | true    |
+  | true      | Invalid Date  | NaN    | 'true'      | true    |
+  | false     | Invalid Date  | NaN    | 'false'     | false   |
+  | null      | Invalid Date  | NaN    | 'null'      | false   |
+  | undefined | Invalid Date  | NaN    | 'undefined' | false   |
+  | NaN       | Invalid Date  | NaN    | 'NaN'       | false   |
+
+  Notes:
   - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
-  - arguments expected to be numbers are converted to numbers using JavaScript's `Number` function;
-  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function.
+  - arguments expected to be numbers are converted to integer numbers using our custom `toInteger` implementation
+    (see [#765](https://github.com/date-fns/date-fns/pull/765));
+  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function;
+  - arguments expected to be booleans are converted to strings using JavaScript's `Boolean` function.
+
+  `null` and `undefined` passed to optional arguments (i.e. properties of `options` argument)
+  are ignored as if no argument was passed.
 
   If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
   an invalid value will be returned:
@@ -557,12 +646,11 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `NaN` for functions that return numbers;
   - and `String('Invalid Date')` for functions that return strings.
 
-  See tests and PR [#460](https://github.com/date-fns/date-fns/pull/460) for exact behavior.
+  See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
+  [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
 
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
-
-- **BREAKING**: removed `isDate`. Instead, you can use `x instanceof Date`.
 
 - Every function now has `options` as the last argument which is passed to all its dependencies
   for consistency and future features.
@@ -577,6 +665,19 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `toDate` (previously `parse`) and `isValid` functions now accept `any` type
   as the first argument.
+
+### Fixed
+
+- Fix the `toDate` bug occuring when parsing ISO-8601 style dates (but not valid ISO format)
+  with a trailing Z (e.g `2012-01Z`), it returned Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
+
+- Fix `differenceIn...` functions returning negative zero in some cases:
+  [#692](https://github.com/date-fns/date-fns/issues/692)
+
+- `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
+
+- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
+  See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
 ## [1.28.5] - 2017-05-19
 

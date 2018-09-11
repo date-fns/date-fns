@@ -49,6 +49,11 @@ describe('setISODay', function () {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 3))
   })
 
+  it('converts a fractional number to an integer', function () {
+    var result = setISODay(new Date(2014, 8 /* Sep */, 1), 3.33)
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 3))
+  })
+
   it('implicitly converts number arguments', function () {
     // $ExpectedMistake
     var result = setISODay(new Date(2014, 8 /* Sep */, 1), '3')

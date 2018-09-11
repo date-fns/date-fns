@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import addDays from '../addDays/index.js'
 import getISODay from '../getISODay/index.js'
@@ -31,7 +32,7 @@ export default function setISODay (dirtyDate, dirtyDay, dirtyOptions) {
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var day = Number(dirtyDay)
+  var day = toInteger(dirtyDay)
   var currentDay = getISODay(date, dirtyOptions)
   var diff = day - currentDay
   return addDays(date, diff, dirtyOptions)

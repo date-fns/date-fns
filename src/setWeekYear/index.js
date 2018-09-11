@@ -1,3 +1,4 @@
+import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
@@ -52,16 +53,16 @@ export default function setWeekYear (dirtyDate, dirtyWeekYear, dirtyOptions) {
     locale.options &&
     locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate === undefined
+    localeFirstWeekContainsDate == null
       ? 1
-      : Number(localeFirstWeekContainsDate)
+      : toInteger(localeFirstWeekContainsDate)
   var firstWeekContainsDate =
-    options.firstWeekContainsDate === undefined
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
-      : Number(options.firstWeekContainsDate)
+      : toInteger(options.firstWeekContainsDate)
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var weekYear = Number(dirtyWeekYear)
+  var weekYear = toInteger(dirtyWeekYear)
   var diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions), dirtyOptions)
   var firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
