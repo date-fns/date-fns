@@ -10,7 +10,7 @@ import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
 import parse from '../../parse'
 
-describe('he locale', function () {
+describe.only('he locale', function () {
   context('with `format`', function () {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
@@ -33,8 +33,8 @@ describe('he locale', function () {
 
     describe('quarter', function () {
       it('formatting quarter', function () {
-        var result = format(date, "Qo, QQQ, QQQQ, QQQQQ", {locale: locale})
-        assert(result === 'שני, Q2, רבעון 2, 2')
+        var result = format(date, "'רבעון' Qo, QQQ, QQQQ, QQQQQ", {locale: locale})
+        assert(result === 'רבעון שני, Q2, רבעון 2, 2')
       })
 
       it('stand-alone quarter', function () {
@@ -118,12 +118,12 @@ describe('he locale', function () {
     })
 
     it('ordinal minute', function () {
-      var result = format(date, "דקה mo", {locale: locale})
+      var result = format(date, "'דקה' mo", {locale: locale})
       assert(result === 'דקה 32')
     })
 
     it('ordinal second', function () {
-      var result = format(date, "שנייה so", {locale: locale})
+      var result = format(date, "'שנייה' so", {locale: locale})
       assert(result === 'שנייה 0')
     })
 
