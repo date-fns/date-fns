@@ -8,13 +8,19 @@ describe('he locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 1) === 'פחות משניה')
+        assert(formatDistance('lessThanXSeconds', 1) === 'פחות משנייה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 2) === 'פחות מ־2 שניות')
+        assert(formatDistance('lessThanXSeconds', 2) === 'פחות משתי שניות')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('lessThanXSeconds', 3) === 'פחות מ־3 שניות')
       })
     })
   })
@@ -22,13 +28,19 @@ describe('he locale > formatDistance', function () {
   describe('xSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 1) === 'שניה 1')
+        assert(formatDistance('xSeconds', 1) === 'שנייה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 2) === '2 שניות')
+        assert(formatDistance('xSeconds', 2) === 'שתי שניות')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xSeconds', 3) === '3 שניות')
       })
     })
   })
@@ -50,9 +62,15 @@ describe('he locale > formatDistance', function () {
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 2) === 'פחות מ־2 דקות')
+        assert(formatDistance('lessThanXMinutes', 2) === 'פחות משתי דקות')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('lessThanXMinutes', 3) === 'פחות מ־3 דקות')
       })
     })
   })
@@ -60,13 +78,19 @@ describe('he locale > formatDistance', function () {
   describe('xMinutes', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 1) === 'דקה 1')
+        assert(formatDistance('xMinutes', 1) === 'דקה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 2) === '2 דקות')
+        assert(formatDistance('xMinutes', 2) === 'שתי דקות')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xMinutes', 3) === '3 דקות')
       })
     })
   })
@@ -74,13 +98,19 @@ describe('he locale > formatDistance', function () {
   describe('aboutXHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 1) === 'בערך שעה 1')
+        assert(formatDistance('aboutXHours', 1) === 'בערך שעה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 2) === 'בערך 2 שעות')
+        assert(formatDistance('aboutXHours', 2) === 'בערך שעתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXHours', 3) === 'בערך 3 שעות')
       })
     })
   })
@@ -88,13 +118,19 @@ describe('he locale > formatDistance', function () {
   describe('xHours', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 1) === 'שעה 1')
+        assert(formatDistance('xHours', 1) === 'שעה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xHours', 2) === '2 שעות')
+        assert(formatDistance('xHours', 2) === 'שעתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xHours', 3) === '3 שעות')
       })
     })
   })
@@ -102,13 +138,19 @@ describe('he locale > formatDistance', function () {
   describe('xDays', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xDays', 1) === 'יום 1')
+        assert(formatDistance('xDays', 1) === 'יום')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xDays', 2) === '2 ימים')
+        assert(formatDistance('xDays', 2) === 'יומיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xDays', 3) === '3 ימים')
       })
     })
   })
@@ -116,13 +158,19 @@ describe('he locale > formatDistance', function () {
   describe('aboutXMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 1) === 'בערך חודש 1')
+        assert(formatDistance('aboutXMonths', 1) === 'בערך חודש')
+      })
+    })
+
+    context('when the count equals 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXMonths', 2) === 'בערך חודשיים')
       })
     })
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 2) === 'בערך 2 חודשים')
+        assert(formatDistance('aboutXMonths', 3) === 'בערך 3 חודשים')
       })
     })
   })
@@ -130,13 +178,19 @@ describe('he locale > formatDistance', function () {
   describe('xMonths', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 1) === 'חודש 1')
+        assert(formatDistance('xMonths', 1) === 'חודש')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 2) === '2 חודשים')
+        assert(formatDistance('xMonths', 2) === 'חודשיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xMonths', 3) === '3 חודשים')
       })
     })
   })
@@ -144,13 +198,19 @@ describe('he locale > formatDistance', function () {
   describe('aboutXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 1) === 'בערך שנה 1')
+        assert(formatDistance('aboutXYears', 1) === 'בערך שנה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 2) === 'בערך 2 שנים')
+        assert(formatDistance('aboutXYears', 2) === 'בערך שנתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('aboutXYears', 3) === 'בערך 3 שנים')
       })
     })
   })
@@ -158,13 +218,19 @@ describe('he locale > formatDistance', function () {
   describe('xYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 1) === 'שנה 1')
+        assert(formatDistance('xYears', 1) === 'שנה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 2) === '2 שנים')
+        assert(formatDistance('xYears', 2) === 'שנתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('xYears', 3) === '3 שנים')
       })
     })
   })
@@ -172,13 +238,19 @@ describe('he locale > formatDistance', function () {
   describe('overXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 1) === 'מעל שנה 1')
+        assert(formatDistance('overXYears', 1) === 'יותר משנה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 2) === 'מעל 2 שנים')
+        assert(formatDistance('overXYears', 2) === 'יותר משנתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('overXYears', 3) === 'יותר מ־3 שנים')
       })
     })
   })
@@ -186,13 +258,19 @@ describe('he locale > formatDistance', function () {
   describe('almostXYears', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 1) === 'כמעט שנה 1')
+        assert(formatDistance('almostXYears', 1) === 'כמעט שנה')
       })
     })
 
-    context('when the count is more than 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 2) === 'כמעט 2 שנים')
+        assert(formatDistance('almostXYears', 2) === 'כמעט שנתיים')
+      })
+    })
+
+    context('when the count is more than 2', function () {
+      it('returns a proper string', function () {
+        assert(formatDistance('almostXYears', 3) === 'כמעט 3 שנים')
       })
     })
   })
@@ -203,7 +281,23 @@ describe('he locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'לפני בערך שנה 1')
+      assert(result === 'לפני בערך שנה')
+    })
+
+    it('returns word instead of `one day ago`', function () {
+      var result = formatDistance('xDays', 1, {
+        addSuffix: true,
+        comparison: -1
+      })
+      assert(result === 'אתמול')
+    })
+
+    it('returns word instead of `2 days ago`', function () {
+      var result = formatDistance('xDays', 2, {
+        addSuffix: true,
+        comparison: -1
+      })
+      assert(result === 'שלשום')
     })
   })
 
@@ -214,6 +308,22 @@ describe('he locale > formatDistance', function () {
         comparison: 1
       })
       assert(result === 'בעוד חצי דקה')
+    })
+
+    it('returns word instead of `in one day`', function () {
+      var result = formatDistance('xDays', 1, {
+        addSuffix: true,
+        comparison: 1
+      })
+      assert(result === 'מחר')
+    })
+
+    it('returns word instead of `in 2 days`', function () {
+      var result = formatDistance('xDays', 2, {
+        addSuffix: true,
+        comparison: 1
+      })
+      assert(result === 'מחרתיים')
     })
   })
 })

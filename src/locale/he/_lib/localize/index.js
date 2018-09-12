@@ -1,72 +1,145 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-// Note: in English, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
-var weekdayValues = {
-  narrow: ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'],
-  short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
-  long: ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שבת']
+var eraValues = {
+  narrow: ['לפנה״ס', 'לספירה'],
+  abbreviated: ['לפנה״ס', 'לספירה'],
+  wide: ['לפני הספירה', 'לספירה']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
+  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
 }
 
 var monthValues = {
-  short: ['ינו', 'פבר', 'מרץ', 'אפר', 'מאי', 'יונ', 'יול', 'אוג', 'ספט', 'אוק', 'נוב', 'דצמ'],
-  long: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'דפטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
+  narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  abbreviated: ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'],
+  wide: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 }
 
-// `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
-// Use the system which is used the most commonly in the locale.
-// For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
-//
-//   var timeOfDayValues = {
-//     any: ['in the night', 'in the morning', 'in the afternoon', 'in the evening']
-//   }
-//
-// And later:
-//
-//   var localize = {
-//     // The callback takes the hours as the argument and returns the array index
-//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
-//       if (hours >= 17) {
-//         return 3
-//       } else if (hours >= 12) {
-//         return 2
-//       } else if (hours >= 4) {
-//         return 1
-//       } else {
-//         return 0
-//       }
-//     }),
-//     timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
-//   }
-var timeOfDayValues = {
-  any: ['בלילה', 'בבוקר', 'אחה״צ', 'בערב']
+var dayValues = {
+  narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
+  short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
+  abbreviated: ['יום א׳', 'יום ב׳', 'יום ג׳', 'יום ד׳', 'יום ה׳', 'יום ו׳', 'שבת'],
+  wide: ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'יום שבת']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  },
+  abbreviated: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  },
+  wide: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'ערב',
+    night: 'לילה'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'בצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  },
+  abbreviated: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  },
+  wide: {
+    am: 'לפנה״צ',
+    pm: 'אחה״צ',
+    midnight: 'חצות',
+    noon: 'צהריים',
+    morning: 'בבוקר',
+    afternoon: 'אחר הצהריים',
+    evening: 'בערב',
+    night: 'בלילה'
+  }
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-  return Number(dirtyNumber)
+  var number = Number(dirtyNumber)
+
+  // We only show words till 10
+  if (number <= 0 || number > 10) return number
+
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+
+  var isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
+
+  var male = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שביעי', 'שמיני', 'תשיעי', 'עשירי']
+  var female = ['ראשונה', 'שנייה', 'שלישית', 'רביעית', 'חמישית', 'שישית', 'שביעית', 'שמינית', 'תשיעית', 'עשירית']
+
+  var index = number - 1
+  return isFemale ? female[index] : male[index]
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
-    if (hours >= 17) {
-      return 3
-    } else if (hours >= 12) {
-      return 2
-    } else if (hours >= 4) {
-      return 1
-    } else {
-      return 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
     }
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
+  })
 }
 
 export default localize
