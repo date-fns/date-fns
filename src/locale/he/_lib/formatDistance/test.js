@@ -122,7 +122,7 @@ describe('he locale > formatDistance', function () {
       })
     })
 
-    context('when the count equals 1', function () {
+    context('when the count equals 2', function () {
       it('returns a proper string', function () {
         assert(formatDistance('xHours', 2) === 'שעתיים')
       })
