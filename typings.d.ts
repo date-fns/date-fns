@@ -501,6 +501,12 @@ declare module 'date-fns' {
   ): number
   namespace getTime {}
 
+  function getUnixTime (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getUnixTime {}
+
   function getWeek (
     date: Date | string | number,
     options?: Options
@@ -1336,6 +1342,11 @@ declare module 'date-fns/getTime' {
   export = getTime
 }
 
+declare module 'date-fns/getUnixTime' {
+  import {getUnixTime} from 'date-fns'
+  export = getUnixTime
+}
+
 declare module 'date-fns/getWeek' {
   import {getWeek} from 'date-fns'
   export = getWeek
@@ -2051,6 +2062,11 @@ declare module 'date-fns/getTime/index' {
   export = getTime
 }
 
+declare module 'date-fns/getUnixTime/index' {
+  import {getUnixTime} from 'date-fns'
+  export = getUnixTime
+}
+
 declare module 'date-fns/getWeek/index' {
   import {getWeek} from 'date-fns'
   export = getWeek
@@ -2764,6 +2780,11 @@ declare module 'date-fns/getSeconds/index.js' {
 declare module 'date-fns/getTime/index.js' {
   import {getTime} from 'date-fns'
   export = getTime
+}
+
+declare module 'date-fns/getUnixTime/index.js' {
+  import {getUnixTime} from 'date-fns'
+  export = getUnixTime
 }
 
 declare module 'date-fns/getWeek/index.js' {
@@ -3548,6 +3569,12 @@ declare module 'date-fns/fp' {
 
   const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
+
+  const getUnixTime: CurriedFn1<Date | string | number, number>
+  namespace getUnixTime {}
+
+  const getUnixTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getUnixTimeWithOptions {}
 
   const getWeek: CurriedFn1<Date | string | number, number>
   namespace getWeek {}
@@ -4666,6 +4693,16 @@ declare module 'date-fns/fp/getTime' {
 declare module 'date-fns/fp/getTimeWithOptions' {
   import {getTimeWithOptions} from 'date-fns/fp'
   export = getTimeWithOptions
+}
+
+declare module 'date-fns/fp/getUnixTime' {
+  import {getUnixTime} from 'date-fns/fp'
+  export = getUnixTime
+}
+
+declare module 'date-fns/fp/getUnixTimeWithOptions' {
+  import {getUnixTimeWithOptions} from 'date-fns/fp'
+  export = getUnixTimeWithOptions
 }
 
 declare module 'date-fns/fp/getWeek' {
@@ -6098,6 +6135,16 @@ declare module 'date-fns/fp/getTimeWithOptions/index' {
   export = getTimeWithOptions
 }
 
+declare module 'date-fns/fp/getUnixTime/index' {
+  import {getUnixTime} from 'date-fns/fp'
+  export = getUnixTime
+}
+
+declare module 'date-fns/fp/getUnixTimeWithOptions/index' {
+  import {getUnixTimeWithOptions} from 'date-fns/fp'
+  export = getUnixTimeWithOptions
+}
+
 declare module 'date-fns/fp/getWeek/index' {
   import {getWeek} from 'date-fns/fp'
   export = getWeek
@@ -7528,6 +7575,16 @@ declare module 'date-fns/fp/getTimeWithOptions/index.js' {
   export = getTimeWithOptions
 }
 
+declare module 'date-fns/fp/getUnixTime/index.js' {
+  import {getUnixTime} from 'date-fns/fp'
+  export = getUnixTime
+}
+
+declare module 'date-fns/fp/getUnixTimeWithOptions/index.js' {
+  import {getUnixTimeWithOptions} from 'date-fns/fp'
+  export = getUnixTimeWithOptions
+}
+
 declare module 'date-fns/fp/getWeek/index.js' {
   import {getWeek} from 'date-fns/fp'
   export = getWeek
@@ -8738,6 +8795,12 @@ declare module 'date-fns/esm' {
   ): number
   namespace getTime {}
 
+  function getUnixTime (
+    date: Date | string | number,
+    options?: Options
+  ): number
+  namespace getUnixTime {}
+
   function getWeek (
     date: Date | string | number,
     options?: Options
@@ -9573,6 +9636,11 @@ declare module 'date-fns/esm/getTime' {
   export default getTime
 }
 
+declare module 'date-fns/esm/getUnixTime' {
+  import {getUnixTime} from 'date-fns/esm'
+  export default getUnixTime
+}
+
 declare module 'date-fns/esm/getWeek' {
   import {getWeek} from 'date-fns/esm'
   export default getWeek
@@ -10288,6 +10356,11 @@ declare module 'date-fns/esm/getTime/index' {
   export default getTime
 }
 
+declare module 'date-fns/esm/getUnixTime/index' {
+  import {getUnixTime} from 'date-fns/esm'
+  export default getUnixTime
+}
+
 declare module 'date-fns/esm/getWeek/index' {
   import {getWeek} from 'date-fns/esm'
   export default getWeek
@@ -11001,6 +11074,11 @@ declare module 'date-fns/esm/getSeconds/index.js' {
 declare module 'date-fns/esm/getTime/index.js' {
   import {getTime} from 'date-fns/esm'
   export default getTime
+}
+
+declare module 'date-fns/esm/getUnixTime/index.js' {
+  import {getUnixTime} from 'date-fns/esm'
+  export default getUnixTime
 }
 
 declare module 'date-fns/esm/getWeek/index.js' {
@@ -11785,6 +11863,12 @@ declare module 'date-fns/esm/fp' {
 
   const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
   namespace getTimeWithOptions {}
+
+  const getUnixTime: CurriedFn1<Date | string | number, number>
+  namespace getUnixTime {}
+
+  const getUnixTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  namespace getUnixTimeWithOptions {}
 
   const getWeek: CurriedFn1<Date | string | number, number>
   namespace getWeek {}
@@ -12903,6 +12987,16 @@ declare module 'date-fns/esm/fp/getTime' {
 declare module 'date-fns/esm/fp/getTimeWithOptions' {
   import {getTimeWithOptions} from 'date-fns/esm/fp'
   export default getTimeWithOptions
+}
+
+declare module 'date-fns/esm/fp/getUnixTime' {
+  import {getUnixTime} from 'date-fns/esm/fp'
+  export default getUnixTime
+}
+
+declare module 'date-fns/esm/fp/getUnixTimeWithOptions' {
+  import {getUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default getUnixTimeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getWeek' {
@@ -14335,6 +14429,16 @@ declare module 'date-fns/esm/fp/getTimeWithOptions/index' {
   export default getTimeWithOptions
 }
 
+declare module 'date-fns/esm/fp/getUnixTime/index' {
+  import {getUnixTime} from 'date-fns/esm/fp'
+  export default getUnixTime
+}
+
+declare module 'date-fns/esm/fp/getUnixTimeWithOptions/index' {
+  import {getUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default getUnixTimeWithOptions
+}
+
 declare module 'date-fns/esm/fp/getWeek/index' {
   import {getWeek} from 'date-fns/esm/fp'
   export default getWeek
@@ -15763,6 +15867,16 @@ declare module 'date-fns/esm/fp/getTime/index.js' {
 declare module 'date-fns/esm/fp/getTimeWithOptions/index.js' {
   import {getTimeWithOptions} from 'date-fns/esm/fp'
   export default getTimeWithOptions
+}
+
+declare module 'date-fns/esm/fp/getUnixTime/index.js' {
+  import {getUnixTime} from 'date-fns/esm/fp'
+  export default getUnixTime
+}
+
+declare module 'date-fns/esm/fp/getUnixTimeWithOptions/index.js' {
+  import {getUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default getUnixTimeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getWeek/index.js' {
@@ -18570,6 +18684,11 @@ interface dateFns {
   ): number
 
   getTime(
+    date: Date | string | number,
+    options?: Options
+  ): number
+
+  getUnixTime(
     date: Date | string | number,
     options?: Options
   ): number

@@ -131,6 +131,8 @@ module.exports = {
   getSecondsWithOptions: require('./getSecondsWithOptions/index.js'),
   getTime: require('./getTime/index.js'),
   getTimeWithOptions: require('./getTimeWithOptions/index.js'),
+  getUnixTime: require('./getUnixTime/index.js'),
+  getUnixTimeWithOptions: require('./getUnixTimeWithOptions/index.js'),
   getWeek: require('./getWeek/index.js'),
   getWeekOfMonth: require('./getWeekOfMonth/index.js'),
   getWeekOfMonthWithOptions: require('./getWeekOfMonthWithOptions/index.js'),
