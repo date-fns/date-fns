@@ -1,10 +1,10 @@
 var formatRelativeLocale = {
-  lastWeek: '[Praėjusį] dddd LT',
-  yesterday: '[Vakar] LT',
-  today: '[Šiandien] LT',
-  tomorrow: '[Rytoj] LT',
-  nextWeek: 'dddd LT',
-  other: 'L'
+  lastWeek: "'Praėjusį' eeee p",
+  yesterday: "'Vakar' p",
+  today: "'Šiandien' p",
+  tomorrow: "'Rytoj' p",
+  nextWeek: 'eeee p',
+  other: 'P'
 }
 
 export default function formatRelative (token, date, baseDate, options) {

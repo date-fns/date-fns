@@ -1,21 +1,112 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['S', 'P', 'A', 'T', 'K', 'Pn', 'Š'],
-  short: ['Sek', 'Pir', 'Ant', 'Tre', 'Ket', 'Pen', 'Šeš'],
-  long: ['sekmadienį', 'pirmadienį', 'antradienį', 'trečiadienį', 'ketvirtadienį', 'penktadienį', 'šeštadienį']
+var eraValues = {
+  narrow: ['pr. Kr.', 'po Kr.'],
+  abbreviated: ['pr. Kr.', 'po Kr.'],
+  wide: ['prieš Kristų', 'po Kristaus']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['I ketv.', 'II ketv.', 'III ketv.', 'IV ketv.'],
+  wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
+}
+
+var formattingQuarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['I k.', 'II k.', 'III k.', 'IV k.'],
+  wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
 }
 
 var monthValues = {
-  short: ['sau', 'vas', 'kov', 'bal', 'geg', 'bir', 'lie', 'rgp', 'rgs', 'spa', 'lap', 'grd'],
-  long: ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio', 'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio']
+  narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
+  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
+  wide: ['sausis', 'vasaris', 'kovas', 'balandis', 'gegužė', 'birželis', 'liepa', 'rugpjūtis', 'rugsėjis', 'spalis', 'lapkritis', 'gruodis']
 }
 
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['a.m.', 'p.m.']
+var formattingMonthValues = {
+  narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
+  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
+  wide: ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio', 'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio']
+}
+
+var dayValues = {
+  narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
+  short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
+  abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
+  wide: ['sekmadienis', 'pirmadienis', 'antradienis', 'trečiadienis', 'ketvirtadienis', 'penktadienis', 'šeštadienis']
+}
+
+var formattingDayValues = {
+  narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
+  short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
+  abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
+  wide: ['sekmadienį', 'pirmadienį', 'antradienį', 'trečiadienį', 'ketvirtadienį', 'penktadienį', 'šeštadienį']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'pr. p.',
+    pm: 'pop.',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  abbreviated: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  wide: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'vidurdienis',
+    morning: 'rytas',
+    afternoon: 'diena',
+    evening: 'vakaras',
+    night: 'naktis'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'pr. p.',
+    pm: 'pop.',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  abbreviated: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  },
+  wide: {
+    am: 'priešpiet',
+    pm: 'popiet',
+    midnight: 'vidurnaktis',
+    noon: 'perpiet',
+    morning: 'rytas',
+    afternoon: 'popietė',
+    evening: 'vakaras',
+    night: 'naktis'
+  }
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
@@ -25,14 +116,42 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    defaulFormattingWidth: 'wide',
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaulFormattingWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayValues,
+    defaulFormattingWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaulFormattingWidth: 'wide'
+  })
 }
 
 export default localize

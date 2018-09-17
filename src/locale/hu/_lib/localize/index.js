@@ -1,49 +1,106 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['v', 'h', 'k', 'sze', 'cs', 'p', 'szo'],
-  short: ['vas', 'hét', 'kedd', 'sze', 'csüt', 'pén', 'szo'],
-  long: ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat']
+var eraValues = {
+  narrow: ['ie.', 'isz.'],
+  abbreviated: ['i. e.', 'i. sz.'],
+  wide: ['Krisztus előtt', 'időszámításunk szerint']
+}
+
+var quarterValues = {
+  narrow: ['1.', '2.', '3.', '4.'],
+  abbreviated: ['1. n.év', '2. n.év', '3. n.év', '4. n.év'],
+  wide: ['1. negyedév', '2. negyedév', '3. negyedév', '4. negyedév']
+}
+
+var formattingQuarterValues = {
+  narrow: ['I.', 'II.', 'III.', 'IV.'],
+  abbreviated: ['I. n.év', 'II. n.év', 'III. n.év', 'IV. n.év'],
+  wide: ['I. negyedév', 'II. negyedév', 'III. negyedév', 'IV. negyedév']
 }
 
 var monthValues = {
-  short: ['jan', 'feb', 'márc', 'ápr', 'máj', 'jún', 'júl', 'aug', 'szept', 'okt', 'nov', 'dec'],
-  long: ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december']
+  narrow: ['J', 'F', 'M', 'Á', 'M', 'J', 'J', 'A', 'Sz', 'O', 'N', 'D'],
+  abbreviated: ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'],
+  wide: ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december']
 }
 
-var timeOfDayValues = {
-  uppercase: ['DE', 'DU'],
-  lowercase: ['de', 'du'],
-  long: ['délelőtt', 'délután']
+var dayValues = {
+  narrow: ['V', 'H', 'K', 'Sz', 'Cs', 'P', 'Sz'],
+  short: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+  abbreviated: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+  wide: ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat']
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'du.',
+    evening: 'este',
+    night: 'éjjel'
+  },
+  abbreviated: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'du.',
+    evening: 'este',
+    night: 'éjjel'
+  },
+  wide: {
+    am: 'de.',
+    pm: 'du.',
+    midnight: 'éjfél',
+    noon: 'dél',
+    morning: 'reggel',
+    afternoon: 'délután',
+    evening: 'este',
+    night: 'éjjel'
+  }
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'st'
-      case 2:
-        return number + 'nd'
-      case 3:
-        return number + 'rd'
-    }
-  }
-  return number + 'th'
+  return number + '.'
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingQuarterValues,
+    argumentCallback: function (quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    defaulFormattingWidth: 'wide'
+  })
 }
 
 export default localize
