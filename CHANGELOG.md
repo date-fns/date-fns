@@ -126,6 +126,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [hu and lt locales](https://github.com/date-fns/date-fns/pull/864). Thanks to [@izifortune](https://github.com/izifortune) and [pardoeryanair](https://github.com/pardoeryanair).
 
+- [bn locale](https://github.com/date-fns/date-fns/pull/845). Kudos to [@nutboltu](https://github.com/nutboltu) and [@touhidrahman](https://github.com/touhidrahman).
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
