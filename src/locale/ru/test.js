@@ -246,8 +246,8 @@ describe('ru locale', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
     it('last week', function () {
-      var result = formatRelative(new Date(1986, 2 /* Mar */, 30), baseDate, {locale: locale})
-      assert(result === 'в прошлое воскресенье в 0:00')
+      var result = formatRelative(new Date(1986, 2 /* Mar */, 29), baseDate, {locale: locale})
+      assert(result === 'в прошлую субботу в 0:00')
     })
 
     it('this week, before yesterday', function () {
