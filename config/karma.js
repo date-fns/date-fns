@@ -84,7 +84,7 @@ var sauceLabsLaunchers = {
 }
 
 var localLaunchers = {
-  Chrome: {
+  LocalChrome: {
     base: 'Chrome'
   }
 }
