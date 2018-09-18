@@ -46,7 +46,7 @@
     "karma": "^1.3.0",
     "karma-benchmark": "^0.6.0",
     "karma-benchmark-reporter": "^0.1.1",
-    "karma-chrome-launcher": "^2.0.0",
+    "karma-chrome-launcher": "2.2",
     "karma-cli": "^1.0.1",
     "karma-mocha": "^1.3.0",
     "karma-mocha-reporter": "^2.2.1",
