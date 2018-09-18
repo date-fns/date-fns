@@ -1,10 +1,10 @@
 var formatRelativeLocale = {
-  lastWeek: 'dddd [tuần trước vào lúc] LT',
-  yesterday: '[hôm qua vào lúc] LT',
-  today: '[hôm nay vào lúc] LT',
-  tomorrow: '[ngày mai vào lúc] LT',
-  nextWeek: 'dddd [vào lúc] LT',
-  other: 'L'
+  lastWeek: "eeee 'tuần trước vào lúc' p",
+  yesterday: "'hôm qua vào lúc' p",
+  today: "'hôm nay vào lúc' p",
+  tomorrow: "'ngày mai vào lúc' p",
+  nextWeek: "eeee 'tới vào lúc' p",
+  other: 'P'
 }
 
 export default function formatRelative (token, date, baseDate, options) {
