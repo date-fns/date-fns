@@ -15,6 +15,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 ### Added
 
+- [gl locale](https://github.com/date-fns/date-fns/pull/859).
+  Kudos to [@cocodinTech](https://github.com/CocodinTech).
+
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
   functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
