@@ -130,6 +130,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [it locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/855). Thanks to [@vin-car](https://github.com/vin-car)
 
+- [vi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/846). Kudos to [@lihop](https://github.com/lihop) and [@trongthanh](https://github.com/trongthanh).
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
