@@ -35,4 +35,5 @@ jobs:
 cache: yarn
 
 addons:
+  chrome: stable
   sauce_connect: true

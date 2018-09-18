@@ -83,9 +83,18 @@ var sauceLabsLaunchers = {
   }
 }
 
+var localLaunchers = {
+  Chrome: {
+    base: 'Chrome'
+  }
+}
+
 var travisLaunchers = {
   ChromeTravis: {
-    base: 'Chrome'
+    base: 'ChromeHeadless',
+    // NOTE: We need to launch Chrome with --no-sandbox.
+    // See https://github.com/travis-ci/travis-ci/issues/8836
+    flags: ['--no-sandbox']
   }
 }
 
@@ -141,7 +150,7 @@ function config (config) {
       {'reporter:benchmark-json': ['type', benchmarkJSONReporter]}
     ],
 
-    customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : travisLaunchers,
+    customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : process.env.TRAVIS ? travisLaunchers : localLaunchers,
     browsers: getBrowsersConfig(),
     reporters: getReportersConfig()
   })
@@ -183,8 +192,10 @@ function getBrowsersConfig () {
     return Object.keys(sauceLabsLaunchers)
   } else if (process.env.TEST_BENCHMARK) {
     return ['PhantomJS']
-  } else {
+  } else if (process.env.TRAVIS) {
     return Object.keys(travisLaunchers)
+  } else {
+    return Object.keys(localLaunchers)
   }
 }
 
