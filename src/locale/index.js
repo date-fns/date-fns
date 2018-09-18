@@ -9,8 +9,10 @@ module.exports = {
   eo: require('./eo/index.js'),
   es: require('./es/index.js'),
   fr: require('./fr/index.js'),
+  gl: require('./gl/index.js'),
   he: require('./he/index.js'),
   hu: require('./hu/index.js'),
+  it: require('./it/index.js'),
   lt: require('./lt/index.js'),
   nb: require('./nb/index.js'),
   nl: require('./nl/index.js'),
@@ -18,5 +20,6 @@ module.exports = {
   ru: require('./ru/index.js'),
   sv: require('./sv/index.js'),
   uk: require('./uk/index.js'),
+  vi: require('./vi/index.js'),
   zhCN: require('./zh-CN/index.js')
 }
