@@ -123,7 +123,7 @@ function config (config) {
     },
 
     mochaReporter: {
-      output: process.env.TEST_TZ ? 'minimal' : 'full'
+      output: 'minimal'
     },
 
     plugins: [
