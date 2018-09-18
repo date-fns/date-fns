@@ -1,59 +1,116 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
+var matchOrdinalNumberPattern = /^(\d+|(ראשון|שני|שלישי|רביעי|חמישי|שישי|שביעי|שמיני|תשיעי|עשירי|ראשונה|שנייה|שלישית|רביעית|חמישית|שישית|שביעית|שמינית|תשיעית|עשירית))/i
+var parseOrdinalNumberPattern = /^(\d+|רא|שנ|של|רב|ח|שי|שב|שמ|ת|ע)/i
 
-var matchWeekdaysPatterns = {
-  narrow: /^(א|ב|ג|ד|ה|ו|ש)/i,
-  short: /^(א׳|ב׳|ג׳|ד׳|ה׳|ו׳|ש׳)/i,
-  long: /^(ראשון|שני|שלישי|רביעי|חמישי|שישי|שבת)/i
+var matchEraPatterns = {
+  narrow: /^ל(ספירה|פנה״ס)/i,
+  abbreviated: /^ל(ספירה|פנה״ס)/i,
+  wide: /^ל(פני ה)?ספירה/i
+}
+var parseEraPatterns = {
+  any: [/^לפ/i, /^לס/i]
 }
 
-var parseWeekdayPatterns = {
-  narrow: [/^א/i, /^ב/i, /^ג/i, /^ד/i, /^ה/i, /^ו/i, /^ש/i],
-  short: [/^א/i, /^ב/i, /^ג/i, /^ד/i, /^ה/i, /^ו/i, /^ש/i],
-  long: [/^רא/i, /^שנ/i, /^של/i, /^רב/i, /^ח/i, /^שי/i, /^שב/i]
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^q[1234]/i,
+  wide: /^רבעון [1234]/i
+}
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthsPatterns = {
-  short: /^(ינו|פבר|מרץ|אפר|מאי|יונ|יול|אוג|ספט|אוק|נוב|דצמ)/i,
-  long: /^(ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר)/i
+var matchMonthPatterns = {
+  narrow: /^\d+/i,
+  abbreviated: /^(ינו|פבר|מרץ|אפר|מאי|יוני|יולי|אוג|ספט|אוק|נוב|דצמ)׳?/i,
+  wide: /^(ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר)/i
 }
-
 var parseMonthPatterns = {
+  narrow: [/^1$/i, /^2/i, /^3/i, /^4/i, /^5/i, /^6/i, /^7/i, /^8/i, /^9/i, /^10/i, /^11/i, /^12/i],
   any: [/^ינ/i, /^פ/i, /^מר/i, /^אפ/i, /^מא/i, /^יונ/i, /^יול/i, /^אוג/i, /^ס/i, /^אוק/i, /^נ/i, /^ד/i]
 }
 
-// `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
-// Use the system which is used the most commonly in the locale.
-// For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
-//
-//   var matchTimesOfDayPatterns = {
-//     long: /^((in the)? (night|morning|afternoon|evening?))/i
-//   }
-//
-//   var parseTimeOfDayPatterns = {
-//     any: [/(night|morning)/i, /(afternoon|evening)/i]
-//   }
-var matchTimesOfDayPatterns = {
-  long: /^(בלילה|בבוקר|אחה״צ|בערב)/i
+var matchDayPatterns = {
+  narrow: /^[אבגדהוש]׳/i,
+  short: /^[אבגדהוש]׳/i,
+  abbreviated: /^(שבת|יום (א|ב|ג|ד|ה|ו)׳)/i,
+  wide: /^יום (ראשון|שני|שלישי|רביעי|חמישי|שישי|שבת)/i
+}
+var parseDayPatterns = {
+  abbreviated: [/א׳$/i, /ב׳$/i, /ג׳$/i, /ד׳$/i, /ה׳$/i, /ו׳$/i, /^ש/i],
+  wide: [/ן$/i, /ני$/i, /לישי$/i, /עי$/i, /מישי$/i, /שישי$/i, /ת$/i],
+  any: [/^א/i, /^ב/i, /^ג/i, /^ד/i, /^ה/i, /^ו/i, /^ש/i]
 }
 
-var parseTimeOfDayPatterns = {
-  any: [/(בלילה|בבוקר)/i, /(אחה״צ|בערב)/i]
+var matchDayPeriodPatterns = {
+  any: /^(אחר ה|ב)?(חצות|צהריים|בוקר|ערב|לילה|אחה״צ|לפנה״צ)/i
 }
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^לפ/i,
+    pm: /^אחה/i,
+    midnight: /^ח/i,
+    noon: /^צ/i,
+    morning: /בוקר/i,
+    afternoon: /בצ|אחר/i,
+    evening: /ערב/i,
+    night: /לילה/i
+  }
+}
+
+var ordinalName = ['רא', 'שנ', 'של', 'רב', 'ח', 'שי', 'שב', 'שמ', 'ת', 'ע']
 
 var match = {
-  ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
-  ordinalNumber: parseDecimal,
-  weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
-  weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  months: buildMatchFn(matchMonthsPatterns, 'long'),
-  month: buildParseFn(parseMonthPatterns, 'any'),
-  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function (value) {
+      var number = parseInt(value, 10)
+      return isNaN(number)
+        ? ordinalName.indexOf(value) + 1
+        : number
+    }
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function (index) {
+      return index + 1
+    }
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
 }
 
 export default match
