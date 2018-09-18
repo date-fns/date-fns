@@ -134,6 +134,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [gl locale](https://github.com/date-fns/date-fns/pull/859). Thanks to [@cocodinTech](https://github.com/cocodinTech).
 
+- [fi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/775). Kudos to [@sjuvonen](https://github.com/sjuvonen).
+
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
