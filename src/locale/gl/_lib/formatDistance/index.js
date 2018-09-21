@@ -47,8 +47,8 @@ var formatDistanceLocale = {
   },
 
   aboutXYears: {
-    one: 'arredor de 1 año',
-    other: 'arredor de {{count}} años'
+    one: 'arredor de 1 ano',
+    other: 'arredor de {{count}} anos'
   },
 
   xYears: {

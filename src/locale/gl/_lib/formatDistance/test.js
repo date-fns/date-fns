@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import formatDistance from '.'
 
-describe('es locale > formatDistance', function () {
+describe('gl locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {
@@ -164,7 +164,7 @@ describe('es locale > formatDistance', function () {
 
     context('when the count is more than 1', function () {
       it('returns a proper string', function () {
-        assert(formatDistance('xYears', 2) === '2 ano')
+        assert(formatDistance('xYears', 2) === '2 anos')
       })
     })
   })
