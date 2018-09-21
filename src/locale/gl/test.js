@@ -206,7 +206,7 @@ xdescribe('gl locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           { locale: locale, addSuffix: true }
         )
-        assert(result === 'fai arredor de 1 hora')
+        assert(result === 'hai arredor de 1 hora')
       })
     })
   })
@@ -237,7 +237,7 @@ xdescribe('gl locale', function () {
           new Date(1986, 3, 4, 11, 32, 0),
           { locale: locale, addSuffix: true }
         )
-        assert(result === 'fai 1 hora')
+        assert(result === 'hai 1 hora')
       })
     })
   })
@@ -257,7 +257,7 @@ xdescribe('gl locale', function () {
 
     it('today', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, { locale: locale })
-      assert(result === 'onte ás 16:50')
+      assert(result === 'hoxe ás 16:50')
     })
 
     it('tomorrow', function () {
@@ -335,12 +335,12 @@ xdescribe('gl locale', function () {
       })
 
       it('wide', function () {
-        var result = parse('febrero', 'MMMM', baseDate, { locale: locale })
+        var result = parse('febreiro', 'MMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
       })
 
       it('narrow', function () {
-        var result = parse('E', 'MMMMM', baseDate, { locale: locale })
+        var result = parse('X', 'MMMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })

@@ -83,7 +83,7 @@ export default function formatDistance (token, count, options) {
     if (options.comparison > 0) {
       return 'en ' + result
     } else {
-      return 'fai ' + result
+      return 'hai ' + result
     }
   }
 

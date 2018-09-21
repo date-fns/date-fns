@@ -8,7 +8,7 @@ var formatRelativeLocale = {
 }
 
 var formatRelativeLocalePlural = {
-  lastWeek: "'el' eeee 'pasado ás' p",
+  lastWeek: "'o' eeee 'pasado ás' p",
   yesterday: "'onte ás' p",
   today: "'hoxe ás' p",
   tomorrow: "'mañá ás' p",

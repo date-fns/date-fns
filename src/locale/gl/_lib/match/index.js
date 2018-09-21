@@ -40,8 +40,8 @@ var matchDayPatterns = {
   wide: /^(domingo|luns|martes|m[eé]rcores|xoves|venres|s[áa]bado)/i
 }
 var parseDayPatterns = {
-  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],
-  any: [/^do/i, /^lu/i, /^ma/i, /^mi/i, /^ju/i, /^vi/i, /^sa/i]
+  narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^x/i, /^v/i, /^s/i],
+  any: [/^do/i, /^lu/i, /^ma/i, /^me/i, /^xo/i, /^ve/i, /^sa/i]
 }
 
 var matchDayPeriodPatterns = {
