@@ -203,7 +203,7 @@ describe('gl locale > formatDistance', function () {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'fai arredor de 1 ano')
+      assert(result === 'hai arredor de 1 ano')
     })
   })
 

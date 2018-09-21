@@ -71,7 +71,7 @@ var formattingDayPeriodValues = {
   abbreviated: {
     am: 'AM',
     pm: 'PM',
-    midnight: 'medianoche',
+    midnight: 'medianoite',
     noon: 'mediodía',
     morning: 'da mañá',
     afternoon: 'da tarde',

@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Galician
  * @iso-639-2 glg
  * @author Alberto Doval - Cocodin Technology[@cocodinTech]{@link https://github.com/cocodinTech}
+ * @author Fidel Pita [@fidelpita]{@link https://github.com/fidelpita}
  */
 var locale = {
   formatDistance: formatDistance,
