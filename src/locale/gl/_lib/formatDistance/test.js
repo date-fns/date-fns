@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import formatDistance from '.'
 
-describe('es locale > formatDistance', function () {
+xdescribe('gl locale > formatDistance', function () {
   describe('lessThanXSeconds', function () {
     context('when the count equals 1', function () {
       it('returns a proper string', function () {

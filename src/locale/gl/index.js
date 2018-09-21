@@ -1,8 +1,12 @@
+/* eslint-disable */
+
 import formatDistance from './_lib/formatDistance/index.js'
 import formatLong from './_lib/formatLong/index.js'
 import formatRelative from './_lib/formatRelative/index.js'
 import localize from './_lib/localize/index.js'
 import match from './_lib/match/index.js'
+
+throw new Error('gl locale is currently unavailable. Please, see the PR: https://github.com/date-fns/date-fns/pull/885')
 
 /**
  * @type {Locale}
