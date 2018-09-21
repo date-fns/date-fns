@@ -106,6 +106,7 @@ describe('gl locale', function () {
 
       it('AM, PM, noon, midnight', function () {
         var result = format(new Date(1986, 3 /* Apr */, 6, 0), 'b, bbbb, bbbbb', { locale: locale })
+        // TODO: Figure out if "medianoche, medianoite, mn" is the correct result
         assert(result === 'medianoite, medianoite, mn')
       })
 
@@ -246,16 +247,21 @@ describe('gl locale', function () {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
     it('last week', function () {
+      // TODO: Figure out if Galician plural form is correct
+      // Right now the result equals "el martes pasado ás 00:00"
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, { locale: locale })
       assert(result === 'o martes pasado ás 00:00')
     })
 
     it('yesterday', function () {
+      // TODO: Fix the problem with the plural form. See https://github.com/date-fns/date-fns/issues/884
       var result = formatRelative(new Date(1986, 3 /* Apr */, 3, 22, 22), baseDate, { locale: locale })
       assert(result === 'onte ás 22:22')
     })
 
     it('today', function () {
+      // TODO: Figure out if Galician plural form is correct
+      // Right now the result equals "hoxe ás 16:50"
       var result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, { locale: locale })
       assert(result === 'onte ás 16:50')
     })
@@ -335,12 +341,12 @@ describe('gl locale', function () {
       })
 
       it('wide', function () {
-        var result = parse('febrero', 'MMMM', baseDate, { locale: locale })
+        var result = parse('febreiro', 'MMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
       })
 
       it('narrow', function () {
-        var result = parse('E', 'MMMMM', baseDate, { locale: locale })
+        var result = parse('X', 'MMMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })
