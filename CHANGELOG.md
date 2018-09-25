@@ -151,6 +151,16 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Added `getUnixTime` function](https://github.com/date-fns/date-fns/pull/870). Kudos to [@Kingwl](https://github.com/Kingwl).
 
+- [New decade helpers](https://github.com/date-fns/date-fns/pull/839). Thanks to [@y-nk](https://github.com/y-nk)!
+
+  - `getDecade`
+
+  - `startOfDecade`
+
+  - `endOfDecade`
+
+  - `lastDayOfDecade`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
