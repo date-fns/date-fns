@@ -254,6 +254,11 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  endOfDecade: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
   endOfHour: (
     date: Date | string | number,
     options?: Options
@@ -344,6 +349,11 @@ declare module.exports: {
   ) => number,
 
   getDaysInYear: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
+  getDecade: (
     date: Date | string | number,
     options?: Options
   ) => number,
@@ -588,6 +598,11 @@ declare module.exports: {
     options?: Options
   ) => boolean,
 
+  lastDayOfDecade: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
   lastDayOfISOWeek: (
     date: Date | string | number,
     options?: Options
@@ -726,6 +741,11 @@ declare module.exports: {
   ) => Date,
 
   startOfDay: (
+    date: Date | string | number,
+    options?: Options
+  ) => Date,
+
+  startOfDecade: (
     date: Date | string | number,
     options?: Options
   ) => Date,
