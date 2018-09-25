@@ -18,7 +18,8 @@ module.exports = {
     'Month Helpers',
     'Quarter Helpers',
     'Year Helpers',
-    'ISO Week-Numbering Year Helpers'
+    'ISO Week-Numbering Year Helpers',
+    'Decade Helpers'
   ],
 
   staticDocs: [
