@@ -65,6 +65,7 @@ export {default as getOverlappingDaysInIntervals} from './getOverlappingDaysInIn
 export {default as getQuarter} from './getQuarter/index.js'
 export {default as getSeconds} from './getSeconds/index.js'
 export {default as getTime} from './getTime/index.js'
+export {default as getUnixTime} from './getUnixTime/index.js'
 export {default as getWeek} from './getWeek/index.js'
 export {default as getWeekOfMonth} from './getWeekOfMonth/index.js'
 export {default as getWeekYear} from './getWeekYear/index.js'

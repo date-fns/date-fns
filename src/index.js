@@ -66,6 +66,7 @@ module.exports = {
   getQuarter: require('./getQuarter/index.js'),
   getSeconds: require('./getSeconds/index.js'),
   getTime: require('./getTime/index.js'),
+  getUnixTime: require('./getUnixTime/index.js'),
   getWeek: require('./getWeek/index.js'),
   getWeekOfMonth: require('./getWeekOfMonth/index.js'),
   getWeekYear: require('./getWeekYear/index.js'),

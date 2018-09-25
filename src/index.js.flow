@@ -409,6 +409,11 @@ declare module.exports: {
     options?: Options
   ) => number,
 
+  getUnixTime: (
+    date: Date | string | number,
+    options?: Options
+  ) => number,
+
   getWeek: (
     date: Date | string | number,
     options?: Options
