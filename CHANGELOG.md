@@ -149,6 +149,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
 
+- [Added `getUnixTime` function](https://github.com/date-fns/date-fns/pull/870). Kudos to [@Kingwl](https://github.com/Kingwl).
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
