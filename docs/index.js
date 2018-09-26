@@ -73,6 +73,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Webpack',
+      category: 'General',
+      title: 'Webpack',
+      description: 'Webpack optimization guide',
+      path: path.join(__dirname, 'webpack.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'FP-Guide',
       category: 'General',
       title: 'FP Guide',
