@@ -73,10 +73,10 @@ module.exports = {
     },
     {
       type: 'markdown',
-      urlId: 'Webpack',
+      urlId: 'webpack',
       category: 'General',
-      title: 'Webpack',
-      description: 'Webpack optimization guide',
+      title: 'webpack',
+      description: 'Using date-fns with webpack',
       path: path.join(__dirname, 'webpack.md')
     },
     {
