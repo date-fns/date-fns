@@ -2,7 +2,7 @@ sudo: false
 dist: trusty
 language: node_js
 node_js:
-  - 6
+  - 10
 
 stages:
   - test
@@ -35,4 +35,5 @@ jobs:
 cache: yarn
 
 addons:
+  chrome: stable
   sauce_connect: true

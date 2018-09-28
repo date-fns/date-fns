@@ -124,6 +124,17 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - nl locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/811).
   Thanks to the teamwork of [@curry684](https://github.com/curry684) and [@stefanvermaas](https://github.com/stefanvermaas)!
 
+- [hu and lt locales](https://github.com/date-fns/date-fns/pull/864). Thanks to [@izifortune](https://github.com/izifortune) and [pardoeryanair](https://github.com/pardoeryanair).
+
+- [bn locale](https://github.com/date-fns/date-fns/pull/845). Kudos to [@nutboltu](https://github.com/nutboltu) and [@touhidrahman](https://github.com/touhidrahman).
+
+- [it locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/855). Thanks to [@vin-car](https://github.com/vin-car)
+
+- [vi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/846). Kudos to [@lihop](https://github.com/lihop) and [@trongthanh](https://github.com/trongthanh).
+
+- [fi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/775). Kudos to [@sjuvonen](https://github.com/sjuvonen).
+
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
@@ -137,6 +148,18 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `startOfWeekYear`
 
 - Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
+
+- [Added `getUnixTime` function](https://github.com/date-fns/date-fns/pull/870). Kudos to [@Kingwl](https://github.com/Kingwl).
+
+- [New decade helpers](https://github.com/date-fns/date-fns/pull/839). Thanks to [@y-nk](https://github.com/y-nk)!
+
+  - `getDecade`
+
+  - `startOfDecade`
+
+  - `endOfDecade`
+
+  - `lastDayOfDecade`
 
 ### Changed
 

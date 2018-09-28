@@ -22,13 +22,13 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: 'khoảng 1 tiếng',
-    other: 'khoảng {{count}} tiếng'
+    one: 'khoảng 1 giờ',
+    other: 'khoảng {{count}} giờ'
   },
 
   xHours: {
-    one: '1 tiếng',
-    other: '{{count}} tiếng'
+    one: '1 giờ',
+    other: '{{count}} giờ'
   },
 
   xDays: {

@@ -18,7 +18,8 @@ module.exports = {
     'Month Helpers',
     'Quarter Helpers',
     'Year Helpers',
-    'ISO Week-Numbering Year Helpers'
+    'ISO Week-Numbering Year Helpers',
+    'Decade Helpers'
   ],
 
   staticDocs: [
@@ -69,6 +70,14 @@ module.exports = {
       title: 'ECMAScript Modules',
       description: 'Tree-shaking guide',
       path: path.join(__dirname, 'esm.md')
+    },
+    {
+      type: 'markdown',
+      urlId: 'webpack',
+      category: 'General',
+      title: 'webpack',
+      description: 'Using date-fns with webpack',
+      path: path.join(__dirname, 'webpack.md')
     },
     {
       type: 'markdown',

@@ -3,5 +3,6 @@ npm-debug.log*
 tmp
 dist
 .envrc
-/.idea/
 docs.json
+.idea
+.vscode

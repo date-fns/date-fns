@@ -1,4 +1,5 @@
 // @flow
+declare var xdescribe: (description: string, spec: () => void) => void
 declare var describe: (description: string, spec: () => void) => void
 declare var it: (description: string, spec: () => void) => void
 declare var context: (description: string, spec: () => void) => void
