@@ -688,6 +688,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `toDate` (previously `parse`) and `isValid` functions now accept `any` type
   as the first argument.
+  
+- [Exclude `docs.json` from the npm package](https://github.com/date-fns/date-fns/pull/837). Kudos to [@hawkrives](https://github.com/hawkrives).
 
 ### Fixed
 
