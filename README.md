@@ -8,7 +8,7 @@
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
-[**130+ functions** for all occasions](https://date-fns.org/docs/).
+[**140+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
 import {format, compareAsc} from 'date-fns/esm'
