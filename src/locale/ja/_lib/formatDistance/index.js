@@ -63,7 +63,9 @@ var formatDistanceLocale = {
 
   almostXYears: {
     one: '1年以下',
-    other: '{{count}}年以下'
+    other: '{{count}}年以下',
+    oneWithSuffix: '1年ぐらい',
+    otherWithSuffix: '{{count}}年ぐらい'
   }
 }
 
@@ -74,9 +76,17 @@ export default function formatDistance (token, count, options) {
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    if (options.addSuffix && formatDistanceLocale[token].oneWithSuffix) {
+      result = formatDistanceLocale[token].oneWithSuffix
+    } else {
+      result = formatDistanceLocale[token].one
+    }
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    if (options.addSuffix && formatDistanceLocale[token].otherWithSuffix) {
+      result = formatDistanceLocale[token].otherWithSuffix.replace('{{count}}', count)
+    } else {
+      result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    }
   }
 
   if (options.addSuffix) {
