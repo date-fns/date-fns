@@ -17,7 +17,7 @@ var formatRelativeLocalePlural = {
 }
 
 export default function formatRelative (token, date, baseDate, options) {
-  if (date.getHours() !== 1) {
+  if (date.getUTCHours() !== 1) {
     return formatRelativeLocalePlural[token]
   }
   return formatRelativeLocale[token]
