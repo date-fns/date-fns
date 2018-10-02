@@ -779,6 +779,11 @@ declare module 'date-fns' {
   ): Date
   namespace min {}
 
+  function monthStringToNumber (
+    monthName: string
+  ): string
+  namespace monthStringToNumber {}
+
   function parse (
     dateString: string,
     formatString: string,
@@ -1586,6 +1591,11 @@ declare module 'date-fns/min' {
   export = min
 }
 
+declare module 'date-fns/monthStringToNumber' {
+  import {monthStringToNumber} from 'date-fns'
+  export = monthStringToNumber
+}
+
 declare module 'date-fns/parse' {
   import {parse} from 'date-fns'
   export = parse
@@ -2326,6 +2336,11 @@ declare module 'date-fns/min/index' {
   export = min
 }
 
+declare module 'date-fns/monthStringToNumber/index' {
+  import {monthStringToNumber} from 'date-fns'
+  export = monthStringToNumber
+}
+
 declare module 'date-fns/parse/index' {
   import {parse} from 'date-fns'
   export = parse
@@ -3064,6 +3079,11 @@ declare module 'date-fns/max/index.js' {
 declare module 'date-fns/min/index.js' {
   import {min} from 'date-fns'
   export = min
+}
+
+declare module 'date-fns/monthStringToNumber/index.js' {
+  import {monthStringToNumber} from 'date-fns'
+  export = monthStringToNumber
 }
 
 declare module 'date-fns/parse/index.js' {
@@ -3917,6 +3937,12 @@ declare module 'date-fns/fp' {
 
   const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace minWithOptions {}
+
+  const monthStringToNumber: CurriedFn1<string, string>
+  namespace monthStringToNumber {}
+
+  const monthStringToNumberWithOptions: CurriedFn1<string, string>
+  namespace monthStringToNumberWithOptions {}
 
   const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
@@ -5241,6 +5267,16 @@ declare module 'date-fns/fp/min' {
 declare module 'date-fns/fp/minWithOptions' {
   import {minWithOptions} from 'date-fns/fp'
   export = minWithOptions
+}
+
+declare module 'date-fns/fp/monthStringToNumber' {
+  import {monthStringToNumber} from 'date-fns/fp'
+  export = monthStringToNumber
+}
+
+declare module 'date-fns/fp/monthStringToNumberWithOptions' {
+  import {monthStringToNumberWithOptions} from 'date-fns/fp'
+  export = monthStringToNumberWithOptions
 }
 
 declare module 'date-fns/fp/parse' {
@@ -6723,6 +6759,16 @@ declare module 'date-fns/fp/minWithOptions/index' {
   export = minWithOptions
 }
 
+declare module 'date-fns/fp/monthStringToNumber/index' {
+  import {monthStringToNumber} from 'date-fns/fp'
+  export = monthStringToNumber
+}
+
+declare module 'date-fns/fp/monthStringToNumberWithOptions/index' {
+  import {monthStringToNumberWithOptions} from 'date-fns/fp'
+  export = monthStringToNumberWithOptions
+}
+
 declare module 'date-fns/fp/parse/index' {
   import {parse} from 'date-fns/fp'
   export = parse
@@ -8203,6 +8249,16 @@ declare module 'date-fns/fp/minWithOptions/index.js' {
   export = minWithOptions
 }
 
+declare module 'date-fns/fp/monthStringToNumber/index.js' {
+  import {monthStringToNumber} from 'date-fns/fp'
+  export = monthStringToNumber
+}
+
+declare module 'date-fns/fp/monthStringToNumberWithOptions/index.js' {
+  import {monthStringToNumberWithOptions} from 'date-fns/fp'
+  export = monthStringToNumberWithOptions
+}
+
 declare module 'date-fns/fp/parse/index.js' {
   import {parse} from 'date-fns/fp'
   export = parse
@@ -9301,6 +9357,11 @@ declare module 'date-fns/esm' {
   ): Date
   namespace min {}
 
+  function monthStringToNumber (
+    monthName: string
+  ): string
+  namespace monthStringToNumber {}
+
   function parse (
     dateString: string,
     formatString: string,
@@ -10108,6 +10169,11 @@ declare module 'date-fns/esm/min' {
   export default min
 }
 
+declare module 'date-fns/esm/monthStringToNumber' {
+  import {monthStringToNumber} from 'date-fns/esm'
+  export default monthStringToNumber
+}
+
 declare module 'date-fns/esm/parse' {
   import {parse} from 'date-fns/esm'
   export default parse
@@ -10848,6 +10914,11 @@ declare module 'date-fns/esm/min/index' {
   export default min
 }
 
+declare module 'date-fns/esm/monthStringToNumber/index' {
+  import {monthStringToNumber} from 'date-fns/esm'
+  export default monthStringToNumber
+}
+
 declare module 'date-fns/esm/parse/index' {
   import {parse} from 'date-fns/esm'
   export default parse
@@ -11586,6 +11657,11 @@ declare module 'date-fns/esm/max/index.js' {
 declare module 'date-fns/esm/min/index.js' {
   import {min} from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/monthStringToNumber/index.js' {
+  import {monthStringToNumber} from 'date-fns/esm'
+  export default monthStringToNumber
 }
 
 declare module 'date-fns/esm/parse/index.js' {
@@ -12439,6 +12515,12 @@ declare module 'date-fns/esm/fp' {
 
   const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
   namespace minWithOptions {}
+
+  const monthStringToNumber: CurriedFn1<string, string>
+  namespace monthStringToNumber {}
+
+  const monthStringToNumberWithOptions: CurriedFn1<string, string>
+  namespace monthStringToNumberWithOptions {}
 
   const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
@@ -13763,6 +13845,16 @@ declare module 'date-fns/esm/fp/min' {
 declare module 'date-fns/esm/fp/minWithOptions' {
   import {minWithOptions} from 'date-fns/esm/fp'
   export default minWithOptions
+}
+
+declare module 'date-fns/esm/fp/monthStringToNumber' {
+  import {monthStringToNumber} from 'date-fns/esm/fp'
+  export default monthStringToNumber
+}
+
+declare module 'date-fns/esm/fp/monthStringToNumberWithOptions' {
+  import {monthStringToNumberWithOptions} from 'date-fns/esm/fp'
+  export default monthStringToNumberWithOptions
 }
 
 declare module 'date-fns/esm/fp/parse' {
@@ -15245,6 +15337,16 @@ declare module 'date-fns/esm/fp/minWithOptions/index' {
   export default minWithOptions
 }
 
+declare module 'date-fns/esm/fp/monthStringToNumber/index' {
+  import {monthStringToNumber} from 'date-fns/esm/fp'
+  export default monthStringToNumber
+}
+
+declare module 'date-fns/esm/fp/monthStringToNumberWithOptions/index' {
+  import {monthStringToNumberWithOptions} from 'date-fns/esm/fp'
+  export default monthStringToNumberWithOptions
+}
+
 declare module 'date-fns/esm/fp/parse/index' {
   import {parse} from 'date-fns/esm/fp'
   export default parse
@@ -16723,6 +16825,16 @@ declare module 'date-fns/esm/fp/min/index.js' {
 declare module 'date-fns/esm/fp/minWithOptions/index.js' {
   import {minWithOptions} from 'date-fns/esm/fp'
   export default minWithOptions
+}
+
+declare module 'date-fns/esm/fp/monthStringToNumber/index.js' {
+  import {monthStringToNumber} from 'date-fns/esm/fp'
+  export default monthStringToNumber
+}
+
+declare module 'date-fns/esm/fp/monthStringToNumberWithOptions/index.js' {
+  import {monthStringToNumberWithOptions} from 'date-fns/esm/fp'
+  export default monthStringToNumberWithOptions
 }
 
 declare module 'date-fns/esm/fp/parse/index.js' {
@@ -19521,6 +19633,10 @@ interface dateFns {
     datesArray: (Date | string | number)[],
     options?: Options
   ): Date
+
+  monthStringToNumber(
+    monthName: string
+  ): string
 
   parse(
     dateString: string,

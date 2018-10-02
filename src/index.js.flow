@@ -643,6 +643,10 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  monthStringToNumber: (
+    monthName: string
+  ) => string,
+
   parse: (
     dateString: string,
     formatString: string,

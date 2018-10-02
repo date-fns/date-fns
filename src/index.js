@@ -110,6 +110,7 @@ module.exports = {
   lastDayOfYear: require('./lastDayOfYear/index.js'),
   max: require('./max/index.js'),
   min: require('./min/index.js'),
+  monthStringToNumber: require('./monthStringToNumber/index.js'),
   parse: require('./parse/index.js'),
   setDate: require('./setDate/index.js'),
   setDay: require('./setDay/index.js'),

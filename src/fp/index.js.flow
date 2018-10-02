@@ -279,6 +279,8 @@ declare module.exports: {
   maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>,
   min: CurriedFn1<(Date | string | number)[], Date>,
   minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>,
+  monthStringToNumber: CurriedFn1<string, string>,
+  monthStringToNumberWithOptions: CurriedFn1<string, string>,
   parse: CurriedFn3<Date | string | number, string, string, Date>,
   parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>,
   setDate: CurriedFn2<number, Date | string | number, Date>,

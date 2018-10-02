@@ -219,6 +219,8 @@ module.exports = {
   maxWithOptions: require('./maxWithOptions/index.js'),
   min: require('./min/index.js'),
   minWithOptions: require('./minWithOptions/index.js'),
+  monthStringToNumber: require('./monthStringToNumber/index.js'),
+  monthStringToNumberWithOptions: require('./monthStringToNumberWithOptions/index.js'),
   parse: require('./parse/index.js'),
   parseWithOptions: require('./parseWithOptions/index.js'),
   setDate: require('./setDate/index.js'),
