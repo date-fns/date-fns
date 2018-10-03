@@ -82,7 +82,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
       suffix = 'ème'
     }
   }
-  
+
   return number + suffix
 }
 
