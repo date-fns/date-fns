@@ -69,11 +69,15 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
     return number
   }
 
-  if (unit === 'day' && number === 1) {
-    suffix = 'er'
-  } else {
+  if (unit === 'year' || unit === 'hour' || unit === 'week') {
     if (number === 1) {
       suffix = 'ère'
+    } else {
+      suffix = 'ème'
+    }
+  } else {
+    if (number === 1) {
+      suffix = 'er'
     } else {
       suffix = 'ème'
     }
