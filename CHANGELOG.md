@@ -47,8 +47,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
-- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules)
-  via `'date-fns/esm'` subpackage.
+- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules).
 
   It allows usage with bundlers that support tree-shaking,
   like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
@@ -59,18 +58,18 @@ for the list of changes made since `v2.0.0-alpha.1`.
   import parse from 'date-fns/parse'
 
   // With tree-shaking:
-  import {format, parse} from 'date-fns/esm'
+  import { format, parse } from 'date-fns'
   ```
 
-  Also, as `'date-fns/esm'` function submodules provide default export,
-  they can be used with TypeScript to import functions in more idiomatic way:
+  Also, ESM functions provide default export, they can be used with TypeScript
+  to import functions in more idiomatic way:
 
   ```typescript
-  // In TypeScript,
+  // Before
   import * as format from 'date-fns/format'
 
-  // is same as:
-  import format from 'date-fns/esm/format'
+  // Now
+  import format from 'date-fns/format'
   ```
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)

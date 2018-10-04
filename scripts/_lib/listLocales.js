@@ -1,15 +1,15 @@
 const path = require('path')
 const fs = require('fs')
 
-const ignoredFiles = ['index.js', 'test.js', 'index.js.flow']
+const ignoredFiles = ['index.js', 'test.js', 'index.js.flow', 'package.json']
 
 module.exports = listLocales
 
-function listLocales () {
+function listLocales() {
   const locales = fs.readdirSync(path.join(process.cwd(), 'src', 'locale'))
   return locales
-    .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
-    .map((locale) => ({
+    .filter(file => /^[^._]/.test(file) && !ignoredFiles.includes(file))
+    .map(locale => ({
       name: locale.replace(/-/g, ''),
       code: locale,
       path: `./${locale}`,

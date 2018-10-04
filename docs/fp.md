@@ -10,8 +10,6 @@ that support [currying](https://en.wikipedia.org/wiki/Currying).
 
 - [Using Function Composition](#using-function-composition)
 
-- [ECMAScript Modules](#ecmascript-modules)
-
 ## Usage
 
 FP functions are provided via `'date-fns/fp'` submodule.
@@ -22,9 +20,8 @@ and one that hasn't. The name of the former has `WithOptions` added to the end o
 In **date-fns'** FP functions, the order of arguments is reversed.
 
 ```javascript
-import addYears from 'date-fns/fp/addYears'
-import formatWithOptions from 'date-fns/fp/formatWithOptions'
-import eo from 'date-fns/locale/eo'
+import { addYears, formatWithOptions } from 'date-fns/fp'
+import { eo } from 'date-fns/locale'
 import toUpper from 'lodash/fp/toUpper' // 'date-fns/fp' is compatible with 'lodash/fp'!
 
 // If FP function has not recieved enough arguments, it returns another function
@@ -70,15 +67,3 @@ import flow from 'lodash/fp/flow'
 
 const formattedDates = dates.map(flow(addFiveYears, dateToString, toUpper))
 ```
-
-## ECMAScript Modules
-
-FP functions are also can be used with bundlers that support tree-shaking,
-like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org)
-via `'date-fns/esm/fp'` submodule:
-
-```javascript
-import {addYears, formatWithOptions} from 'date-fns/esm/fp'
-```
-
-Read more in [ECMAScript Modules](https://date-fns.org/docs/ECMAScript-Modules) article in the documentation.

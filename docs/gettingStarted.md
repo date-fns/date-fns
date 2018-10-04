@@ -14,10 +14,10 @@
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
-[**130+ functions** for all occasions](https://date-fns.org/docs/).
+[**140+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-import {format, compareAsc} from 'date-fns/esm'
+import { format, compareAsc } from 'date-fns'
 
 format(new Date(2014, 1, 11), 'MM/dd/yyyy')
 //=> '02/11/2014'
@@ -36,9 +36,6 @@ dates.sort(compareAsc)
 **date-fns** includes some optional features as submodules in the npm package.
 Here is the list of them, in order of nesting:
 
-- ESM — suitable for tree-shaking variations of the functions which provide default exports.
-  See [ECMAScript Modules Guide](https://date-fns.org/docs/ECMAScript-Modules);
-
 - FP — functional programming-friendly variations of the functions. See [FP Guide](https://date-fns.org/docs/FP-Guide);
 
 - UTC (in development) — variations of the functions which calculate dates in UTC±00:00 timezone.
@@ -51,9 +48,6 @@ To use submodule features, [install the npm package](#npm) and then import a fun
 // The main submodule:
 const addDays from 'date-fns/addDays'
 
-// ESM variation:
-import {addDays} from 'date-fns/esm'
-
 // FP variation:
 import addDays from 'date-fns/fp/addDays'
 
@@ -63,14 +57,8 @@ import addDays from 'date-fns/utc/addDays'
 // Both FP and UTC:
 import addDays from 'date-fns/fp/utc/addDays'
 
-// ESM and FP:
-import {addDays} from 'date-fns/esm/fp'
-
-// ESM and UTC:
-import {addDays} from 'date-fns/esm/utc'
-
-// ESM, FP and UTC:
-import {addDays} from 'date-fns/esm/fp/utc'
+// With tree-shaking enabled:
+import { addDays, format } from 'date-fns/fp'
 ```
 
 ## Installation
@@ -88,7 +76,7 @@ yarn add date-fns
 Start using:
 
 ```js
-import {formatDistance, subDays} from 'date-fns/esm'
+import { formatDistance, subDays } from 'date-fns'
 
 formatDistance(subDays(new Date(), 3), new Date())
 //=> "3 days ago"

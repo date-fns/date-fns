@@ -8,7 +8,8 @@
   "dependencies": {
     "gzip-size-cli": "^2.1.0",
     "uglify-es": "^3.1.1",
-    "webpack": "webpack/webpack#next"
+    "webpack": "4",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "build": "yarn build-date-fns && yarn build-webpack && yarn build-uglify",
@@ -19,7 +20,7 @@
     "build-uglify-fp": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/fp.min.js dist/fp.js",
     "build-uglify-misc": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/misc.min.js dist/misc.js",
     "build-uglify-minimal": "node_modules/uglify-es/bin/uglifyjs --compress --mangle --output dist/minimal.min.js dist/minimal.js",
-    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\"",
+    "stats-size": "echo \"Minimal size: $(gzip-size dist/minimal.min.js)\nFormat size: $(gzip-size dist/example.min.js)\nFP size: $(gzip-size dist/fp.min.js)\nMisc size: $(gzip-size dist/misc.min.js)\"",
     "test": "yarn test-example && yarn test-fp && yarn test-misc",
     "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
     "test-fp": "test $(env TZ=UTC node ./dist/fp.min.js) = true",
