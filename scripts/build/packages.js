@@ -16,6 +16,11 @@ const listLocales = require('../_lib/listLocales')
 const rootPath =
   process.env.PACKAGE_OUTPUT_PATH || path.resolve(process.cwd(), 'tmp/package')
 
+const extraModules = [
+  { fullPath: './src/fp/index.js' },
+  { fullPath: './src/locale/index.js' }
+]
+
 const initialPackages = getInitialPackages()
 
 Promise.all([listAll().map(module => writePackage(module.fullPath))]).then(
@@ -45,10 +50,7 @@ function writePackage(fullPath) {
 function getInitialPackages() {
   return listFns()
     .concat(listFPFns())
-    .concat([
-      { fullPath: './src/fp/index.js' },
-      { fullPath: './src/locale/index.js' }
-    ])
+    .concat(extraModules)
     .reduce((acc, module) => {
       acc[module.fullPath] = getModulePackage(module.fullPath)
       return acc
@@ -60,7 +62,7 @@ function getModulePackage(fullPath) {
   const subPath = dirPath.match(/^\.\/src\/(.+)$/)[1]
   const esmRelativePath = path.relative(
     dirPath,
-    path.resolve(rootPath, `./src/esm/${subPath}/index.js`)
+    `./src/esm/${subPath}/index.js`
   )
   return { module: esmRelativePath }
 }
@@ -69,10 +71,12 @@ function listAll() {
   return listFns()
     .concat(listFPFns())
     .concat(listLocales())
+    .concat(extraModules)
     .reduce((acc, module) => {
       const esmModule = Object.assign({}, module, {
         fullPath: module.fullPath.replace('./src/', './src/esm/')
       })
       return acc.concat([module, esmModule])
     }, [])
+    .concat([])
 }
