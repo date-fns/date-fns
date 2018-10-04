@@ -64,4 +64,4 @@ find "$dir" -type f -name "benchmark.js" -delete
 # Clean up package.json pointing to the modules
 find "$dir/esm" -type f -name "package.json" -delete
 
-./scripts/build/packagesTypings.js
+./scripts/build/packages.js

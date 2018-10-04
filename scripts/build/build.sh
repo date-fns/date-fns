@@ -10,4 +10,3 @@ set -ex
 ./scripts/build/fp.js
 ./scripts/build/typings.js
 ./scripts/build/indices.js
-./scripts/build/packages.js
