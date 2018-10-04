@@ -12,6 +12,7 @@ module.exports = {
   he: require('./he/index.js'),
   hu: require('./hu/index.js'),
   it: require('./it/index.js'),
+  ja: require('./ja/index.js'),
   lt: require('./lt/index.js'),
   nb: require('./nb/index.js'),
   nl: require('./nl/index.js'),
