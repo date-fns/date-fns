@@ -1,6 +1,7 @@
 {
   "name": "date-fns",
-  "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
+  "version":
+    "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
   "sideEffects": false,
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
@@ -27,16 +28,11 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["prettier --write", "git add"]
   },
   "prettier": {
     "singleQuote": true,
-    "semi": false,
-    "bracketSpacing": false,
-    "arrowParens": "always"
+    "semi": false
   },
   "dependencies": {},
   "devDependencies": {
