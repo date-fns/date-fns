@@ -66,7 +66,7 @@ describe('th locale > buildFormatLocale', function () {
 
     describe('MMMM', function () {
       it('returns the correct string for January', function () {
-        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 0)) === 'มกราคาม')
+        assert(buildFormatLocale().formatters.MMMM(new Date(2016, 0)) === 'มกราคม')
       })
 
       it('returns the correct string for February', function () {
