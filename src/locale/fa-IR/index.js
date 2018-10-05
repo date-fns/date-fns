@@ -7,11 +7,10 @@ import match from './_lib/match/index.js'
 /**
  * @type {Locale}
  * @category Locales
- * @summary English locale (United States).
- * @language English
- * @iso-639-2 eng
- * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
- * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ * @summary Persian locale (Iran).
+ * @language Persian
+ * @iso-639-2 per
+ * @author Mahdi Majidzadeh [@MahdiMajidzadeh]{@link https://github.com/MahdiMajidzadeh}
  */
 var locale = {
   formatDistance: formatDistance,
@@ -20,7 +19,7 @@ var locale = {
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 6 /* Sunday */,
+    weekStartsOn: 6,
     firstWeekContainsDate: 1
   }
 }
