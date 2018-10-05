@@ -12,10 +12,6 @@ var quarterValues = {
   wide: ['فصل اول', 'فصل دوم', 'فصل سوم', 'فصل چهارم']
 }
 
-// Note: in English, the names of days of the week and months are capitalized.
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['ژ', 'ف', 'م', 'آ', 'م', 'ج', 'ج', 'آ', 'س', 'ا', 'ن', 'د'],
   abbreviated: ['ژا', 'فو', 'ما', 'آو', 'مه', 'ژن', 'ژو', 'او', 'سپ', 'اک', 'نو', 'دس'],
@@ -96,16 +92,6 @@ var formattingDayPeriodValues = {
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
