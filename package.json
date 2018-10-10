@@ -1,7 +1,6 @@
 {
   "name": "date-fns",
-  "version":
-    "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
+  "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
   "sideEffects": false,
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
@@ -18,10 +17,10 @@
   "module": "esm/index.js",
   "scripts": {
     "test": "karma start config/karma.js",
-    "lint":
-      "echo \"Due to ongoing migration to Prettier, the linter is disabled.\"",
+    "lint": "echo \"Due to ongoing migration to Prettier, the linter is disabled.\"",
     "benchmark": "env TEST_BENCHMARK=true yarn test -- --single-run",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
+    "postinstall": "node ./docs/printV2Notice.js"
   },
   "husky": {
     "hooks": {
@@ -29,7 +28,10 @@
     }
   },
   "lint-staged": {
-    "*.js": ["prettier --write", "git add"]
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "prettier": {
     "singleQuote": true,
