@@ -6,7 +6,10 @@ import defaultLocale from '../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
 import longFormatters from './_lib/longFormatters/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
-import { isProtectedToken, throwProtectedError } from '../_lib/protectedTokens'
+import {
+  isProtectedToken,
+  throwProtectedError
+} from '../_lib/protectedTokens/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token

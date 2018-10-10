@@ -4,7 +4,10 @@ import toDate from '../toDate/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
-import { isProtectedToken, throwProtectedError } from '../_lib/protectedTokens'
+import {
+  isProtectedToken,
+  throwProtectedError
+} from '../_lib/protectedTokens/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 20
 
