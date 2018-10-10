@@ -1,47 +1,136 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(ste|de)?/i
+var matchOrdinalNumberPattern = /^(\d+)(ste|de)?/i
+var parseOrdinalNumberPattern = /\d+/i
 
-var matchWeekdaysPatterns = {
-  narrow: /^(so|ma|di|wo|do|vr|sa)/i,
-  short: /^(son|maa|din|woe|don|vry|sat)/i,
-  long: /^(sondag|maandag|dinsdag|woensdag|donderdag|vrydag|saterdag)/i
+var matchEraPatterns = {
+  narrow: /^([vn]\.? ?C\.?)/,
+  abbreviated: /^([vn]\. ?C\.?)/,
+  wide: /^((voor|na) Christus)/
+}
+var parseEraPatterns = {
+  any: [/^v/, /^n/]
 }
 
-var parseWeekdayPatterns = {
-  any: [/^so/i, /^m/i, /^di/i, /^w/i, /^do/i, /^v/i, /^sa/i]
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^K[1234]/i,
+  wide: /^[1234](st|d)e kwartaal/i
+}
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthsPatterns = {
-  short: /^(jan|feb|mar|apr|mei|jun|jul|aug|sep|okt|nov|des)/i,
-  long: /^(januarie|februarie|maart|april|mei|junie|julie|augustus|september|oktober|november|desember)/i
+var matchMonthPatterns = {
+  narrow: /^[jfmasond]/i,
+  abbreviated: /^(Jan|Feb|Mrt|Apr|Mei|Jun|Jul|Aug|Sep|Okt|Nov|Dec)\.?/i,
+  wide: /^(Januarie|Februarie|Maart|April|Mei|Junie|Julie|Augustus|September|Oktober|November|Desember)/i
 }
-
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^ma/i, /^ap/i, /^me/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^J/i,
+    /^F/i,
+    /^M/i,
+    /^A/i,
+    /^M/i,
+    /^J/i,
+    /^J/i,
+    /^A/i,
+    /^S/i,
+    /^O/i,
+    /^N/i,
+    /^D/i
+  ],
+  any: [
+    /^Jan/i,
+    /^Feb/i,
+    /^Mrt/i,
+    /^Apr/i,
+    /^Mei/i,
+    /^Jun/i,
+    /^Jul/i,
+    /^Aug/i,
+    /^Sep/i,
+    /^Okt/i,
+    /^Nov/i,
+    /^Dec/i
+  ]
 }
 
-var matchTimesOfDayPatterns = {
-  short: /^(vm|nm)/i,
-  long: /^(vm|nm)/i
+var matchDayPatterns = {
+  narrow: /^[smdwv]/i,
+  short: /^(So|Ma|Di|Wo|Do|Vr|Sa)/i,
+  abbreviated: /^(Son|Maa|Din|Woe|Don|Vry|Sat)/i,
+  wide: /^(Sondag|Maandag|Dinsdag|Woensdag|Donderdag|Vrydag|Saterdag)/i
+}
+var parseDayPatterns = {
+  narrow: [/^S/i, /^M/i, /^D/i, /^W/i, /^D/i, /^V/i, /^S/i],
+  any: [/^So/i, /^Ma/i, /^Di/i, /^Wo/i, /^Do/i, /^Vr/i, /^Sa/i]
 }
 
-var parseTimeOfDayPatterns = {
-  any: [/^v/i, /^n/i]
+var matchDayPeriodPatterns = {
+  any: /^(vm|nm|middernag|(?:uur )?die (oggend|middag|aand))/i
+}
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^vm/i,
+    pm: /^nm/i,
+    midnight: /^middernag/i,
+    noon: /^middaguur/i,
+    morning: /oggend/i,
+    afternoon: /middag/i,
+    evening: /laat middag/i,
+    night: /aand/i
+  }
 }
 
 var match = {
-  ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
-  ordinalNumber: parseDecimal,
-  weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
-  weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  months: buildMatchFn(matchMonthsPatterns, 'long'),
-  month: buildParseFn(parseMonthPatterns, 'any'),
-  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function(value) {
+      return parseInt(value, 10)
+    }
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function(index) {
+      return index + 1
+    }
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
 }
 
 export default match
