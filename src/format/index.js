@@ -6,6 +6,10 @@ import defaultLocale from '../locale/en-US/index.js'
 import formatters from './_lib/formatters/index.js'
 import longFormatters from './_lib/longFormatters/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
+import {
+  isProtectedToken,
+  throwProtectedError
+} from '../_lib/protectedTokens/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -35,6 +39,9 @@ var doubleQuoteRegExp = /''/g
  * @description
  * Return the formatted date string in the given format. The result may vary by locale.
  *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://git.io/fxCyr
+ *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
  * (see the last example)
@@ -57,9 +64,9 @@ var doubleQuoteRegExp = /''/g
  * |                                 | yyyyy   | ...                               | 3,5   |
  * | Local week-numbering year       | Y       | 44, 1, 1900, 2017                 | 5     |
  * |                                 | Yo      | 44th, 1st, 1900th, 2017th         | 5,7   |
- * |                                 | YY      | 44, 01, 00, 17                    | 5     |
+ * |                                 | YY      | 44, 01, 00, 17                    | 5,8   |
  * |                                 | YYY     | 044, 001, 1900, 2017              | 5     |
- * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5     |
+ * |                                 | YYYY    | 0044, 0001, 1900, 2017            | 5,8   |
  * |                                 | YYYYY   | ...                               | 3,5   |
  * | ISO week-numbering year         | R       | -43, 0, 1, 1900, 2017             | 5,7   |
  * |                                 | RR      | -43, 00, 01, 1900, 2017           | 5,7   |
@@ -104,9 +111,9 @@ var doubleQuoteRegExp = /''/g
  * | Day of month                    | d       | 1, 2, ..., 31                     |       |
  * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
  * |                                 | dd      | 01, 02, ..., 31                   |       |
- * | Day of year                     | D       | 1, 2, ..., 365, 366               |       |
+ * | Day of year                     | D       | 1, 2, ..., 365, 366               | 8     |
  * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
- * |                                 | DD      | 01, 02, ..., 365, 366             |       |
+ * |                                 | DD      | 01, 02, ..., 365, 366             | 8     |
  * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
  * |                                 | DDDD    | ...                               | 3     |
  * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
@@ -266,6 +273,8 @@ var doubleQuoteRegExp = /''/g
  *    - `P`: long localized date
  *    - `p`: long localized time
  *
+ * 8. These tokens are often confused with others. See: https://git.io/fxCyr
+ *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -273,6 +282,10 @@ var doubleQuoteRegExp = /''/g
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
+ *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
+ *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
+ *   See: https://git.io/fxCyr
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
@@ -280,6 +293,7 @@ var doubleQuoteRegExp = /''/g
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
+ * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -307,9 +321,11 @@ var doubleQuoteRegExp = /''/g
  * )
  * //=> "3 o'clock"
  */
-export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
+export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var formatStr = String(dirtyFormatStr)
@@ -318,8 +334,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   var locale = options.locale || defaultLocale
 
   var localeFirstWeekContainsDate =
-    locale.options &&
-    locale.options.firstWeekContainsDate
+    locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
@@ -331,12 +346,18 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
+    throw new RangeError(
+      'firstWeekContainsDate must be between 1 and 7 inclusively'
+    )
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
+  var defaultWeekStartsOn =
+    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn =
+    options.weekStartsOn == null
+      ? defaultWeekStartsOn
+      : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -372,7 +393,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
 
   var result = formatStr
     .match(longFormattingTokensRegExp)
-    .map(function (substring) {
+    .map(function(substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -382,7 +403,7 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
     })
     .join('')
     .match(formattingTokensRegExp)
-    .map(function (substring) {
+    .map(function(substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"
@@ -395,6 +416,9 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
 
       var formatter = formatters[firstCharacter]
       if (formatter) {
+        if (!options.awareOfUnicodeTokens && isProtectedToken(substring)) {
+          throwProtectedError(substring)
+        }
         return formatter(utcDate, substring, locale.localize, formatterOptions)
       }
 
@@ -405,6 +429,6 @@ export default function format (dirtyDate, dirtyFormatStr, dirtyOptions) {
   return result
 }
 
-function cleanEscapedString (input) {
+function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
 }

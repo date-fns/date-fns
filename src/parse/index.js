@@ -4,6 +4,10 @@ import toDate from '../toDate/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
+import {
+  isProtectedToken,
+  throwProtectedError
+} from '../_lib/protectedTokens/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 20
 
@@ -33,6 +37,9 @@ var notWhitespaceRegExp = /\S/
  * @description
  * Return the date parsed from string using the given format string.
  *
+ * > ⚠️ Please note that the `format` tokens differ from Moment.js and other libraries.
+ * > See: https://git.io/fxCyr
+ *
  * The characters in the format string wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
  *
@@ -54,9 +61,9 @@ var notWhitespaceRegExp = /\S/
  * |                                 |     | yyyyy   | ...                               | 2,4   |
  * | Local week-numbering year       | 130 | Y       | 44, 1, 1900, 2017, 9000           | 4     |
  * |                                 |     | Yo      | 44th, 1st, 1900th, 9999999th      | 4,5   |
- * |                                 |     | YY      | 44, 01, 00, 17                    | 4     |
+ * |                                 |     | YY      | 44, 01, 00, 17                    | 4,6   |
  * |                                 |     | YYY     | 044, 001, 123, 999                | 4     |
- * |                                 |     | YYYY    | 0044, 0001, 1900, 2017            | 4     |
+ * |                                 |     | YYYY    | 0044, 0001, 1900, 2017            | 4,6   |
  * |                                 |     | YYYYY   | ...                               | 2,4   |
  * | ISO week-numbering year         | 130 | R       | -43, 1, 1900, 2017, 9999, -9999   | 4,5   |
  * |                                 |     | RR      | -43, 01, 00, 17                   | 4,5   |
@@ -101,9 +108,9 @@ var notWhitespaceRegExp = /\S/
  * | Day of month                    |  90 | d       | 1, 2, ..., 31                     |       |
  * |                                 |     | do      | 1st, 2nd, ..., 31st               | 5     |
  * |                                 |     | dd      | 01, 02, ..., 31                   |       |
- * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               |       |
+ * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               | 6     |
  * |                                 |     | Do      | 1st, 2nd, ..., 365th, 366th       | 5     |
- * |                                 |     | DD      | 01, 02, ..., 365, 366             |       |
+ * |                                 |     | DD      | 01, 02, ..., 365, 366             | 6     |
  * |                                 |     | DDD     | 001, 002, ..., 365, 366           |       |
  * |                                 |     | DDDD    | ...                               | 2     |
  * | Day of week (formatting)        |  90 | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
@@ -231,6 +238,8 @@ var notWhitespaceRegExp = /\S/
  *    - `R`: ISO week-numbering year
  *    - `o`: ordinal number modifier
  *
+ * 6. These tokens are often confused with others. See: https://git.io/fxCyr
+ *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
  *
@@ -260,12 +269,17 @@ var notWhitespaceRegExp = /\S/
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
+ *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
+ *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
+ *   See: https://git.io/fxCyr
  * @returns {Date} the parsed date
  * @throws {TypeError} 3 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
+ * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -287,9 +301,16 @@ var notWhitespaceRegExp = /\S/
  * )
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate, dirtyOptions) {
+export default function parse(
+  dirtyDateString,
+  dirtyFormatString,
+  dirtyBaseDate,
+  dirtyOptions
+) {
   if (arguments.length < 3) {
-    throw new TypeError('3 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '3 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var dateString = String(dirtyDateString)
@@ -303,8 +324,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   var localeFirstWeekContainsDate =
-    locale.options &&
-    locale.options.firstWeekContainsDate
+    locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
@@ -316,12 +336,18 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
+    throw new RangeError(
+      'firstWeekContainsDate must be between 1 and 7 inclusively'
+    )
   }
 
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
+  var defaultWeekStartsOn =
+    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn =
+    options.weekStartsOn == null
+      ? defaultWeekStartsOn
+      : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -343,21 +369,34 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   // If timezone isn't specified, it will be set to the system timezone
-  var setters = [{
-    priority: TIMEZONE_UNIT_PRIORITY,
-    set: dateToSystemTimezone,
-    index: 0
-  }]
+  var setters = [
+    {
+      priority: TIMEZONE_UNIT_PRIORITY,
+      set: dateToSystemTimezone,
+      index: 0
+    }
+  ]
 
   var i
 
   var tokens = formatString.match(formattingTokensRegExp)
+
   for (i = 0; i < tokens.length; i++) {
     var token = tokens[i]
+
+    if (!options.awareOfUnicodeTokens && isProtectedToken(token)) {
+      throwProtectedError(token)
+    }
+
     var firstCharacter = token[0]
     var parser = parsers[firstCharacter]
     if (parser) {
-      var parseResult = parser.parse(dateString, token, locale.match, subFnOptions)
+      var parseResult = parser.parse(
+        dateString,
+        token,
+        locale.match,
+        subFnOptions
+      )
 
       if (!parseResult) {
         return new Date(NaN)
@@ -395,23 +434,23 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   }
 
   var uniquePrioritySetters = setters
-    .map(function (setter) {
+    .map(function(setter) {
       return setter.priority
     })
-    .sort(function (a, b) {
+    .sort(function(a, b) {
       return b - a
     })
-    .filter(function (priority, index, array) {
+    .filter(function(priority, index, array) {
       return array.indexOf(priority) === index
     })
-    .map(function (priority) {
+    .map(function(priority) {
       return setters
-        .filter(function (setter) {
+        .filter(function(setter) {
           return setter.priority === priority
         })
         .reverse()
     })
-    .map(function (setterArray) {
+    .map(function(setterArray) {
       return setterArray[0]
     })
 
@@ -429,7 +468,10 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
 
-    if (setter.validate && !setter.validate(utcDate, setter.value, subFnOptions)) {
+    if (
+      setter.validate &&
+      !setter.validate(utcDate, setter.value, subFnOptions)
+    ) {
       return new Date(NaN)
     }
 
@@ -439,7 +481,7 @@ export default function parse (dirtyDateString, dirtyFormatString, dirtyBaseDate
   return utcDate
 }
 
-function dateToSystemTimezone (date) {
+function dateToSystemTimezone(date) {
   var convertedDate = new Date(0)
   convertedDate.setFullYear(
     date.getUTCFullYear(),
@@ -455,6 +497,6 @@ function dateToSystemTimezone (date) {
   return convertedDate
 }
 
-function cleanEscapedString (input) {
+function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
 }
