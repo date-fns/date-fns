@@ -39,7 +39,8 @@ type Options = {
   includeSeconds?: boolean,
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round'
+  roundingMethod?: 'floor' | 'ceil' | 'round',
+  awareOfUnicodeTokens?: boolean
 }
 
 type Locale = {
