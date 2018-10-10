@@ -319,6 +319,13 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
 
+  To use `D`,`DD`, `YY`, `YYYY` tokens you should set `awareOfUnicodeTokens`:
+
+  ```javascript
+  format(Date.now(), 'YY', { awareOfUnicodeTokens: true })
+  //=> '86'
+  ```
+
 - **BREAKING**: function submodules now use camelCase naming schema:
 
   ```javascript
