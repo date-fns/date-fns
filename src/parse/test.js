@@ -1351,12 +1351,12 @@ describe('parse', function() {
     })
 
     it('throws `RangeError` if `options.locale` does not contain `match` property', function() {
-      // $ExpectedMistake
       var block = parse.bind(
         null,
         '2016-11-25 04 AM',
         'yyyy-MM-dd hh a',
         baseDate,
+        // $ExpectedMistake
         { locale: {} }
       )
       assert.throws(block, RangeError)
