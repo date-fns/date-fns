@@ -790,6 +790,7 @@ declare module 'date-fns' {
 
   function roundToNearestMinutes (
     date: Date | string | number,
+    nearestTo?: number,
     options?: Options
   ): Date
   namespace roundToNearestMinutes {}
@@ -3946,10 +3947,10 @@ declare module 'date-fns/fp' {
   const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
 
-  const roundToNearestMinutes: CurriedFn1<Date | string | number, Date>
+  const roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace roundToNearestMinutes {}
 
-  const roundToNearestMinutesWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const roundToNearestMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace roundToNearestMinutesWithOptions {}
 
   const setDate: CurriedFn2<number, Date | string | number, Date>
@@ -9369,6 +9370,7 @@ declare module 'date-fns/esm' {
 
   function roundToNearestMinutes (
     date: Date | string | number,
+    nearestTo?: number,
     options?: Options
   ): Date
   namespace roundToNearestMinutes {}
@@ -12525,10 +12527,10 @@ declare module 'date-fns/esm/fp' {
   const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
 
-  const roundToNearestMinutes: CurriedFn1<Date | string | number, Date>
+  const roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>
   namespace roundToNearestMinutes {}
 
-  const roundToNearestMinutesWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const roundToNearestMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>
   namespace roundToNearestMinutesWithOptions {}
 
   const setDate: CurriedFn2<number, Date | string | number, Date>
@@ -19646,6 +19648,7 @@ interface dateFns {
 
   roundToNearestMinutes(
     date: Date | string | number,
+    nearestTo?: number,
     options?: Options
   ): Date
 

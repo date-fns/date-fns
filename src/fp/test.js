@@ -1308,12 +1308,18 @@ describe('FP functions', function () {
   })
 
   it('roundToNearestMinutes', function () {
-    var result = fp.roundToNearestMinutes()(new Date(2014, 6 /* Jul */, 10, 12, 10, 34, 99))
+    var result = fp.roundToNearestMinutes(5)(new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99))
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
+
+    var result = fp.roundToNearestMinutes()(new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11))
   })
 
   it('roundToNearestMinutesWithOptions', function () {
-    var result = fp.addMinutesWithOptions({})()(new Date(2014, 6 /* Jul */, 10, 12, 10, 34, 99))
+    var result = fp.roundToNearestMinutesWithOptions({})(5)(new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99))
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
+
+    var result = fp.roundToNearestMinutesWithOptions({})()(new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99))
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11))
   })
 

@@ -653,6 +653,7 @@ declare module.exports: {
 
   roundToNearestMinutes: (
     date: Date | string | number,
+    nearestTo?: number,
     options?: Options
   ) => Date,
 
