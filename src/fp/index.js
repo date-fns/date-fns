@@ -221,6 +221,8 @@ module.exports = {
   minWithOptions: require('./minWithOptions/index.js'),
   parse: require('./parse/index.js'),
   parseWithOptions: require('./parseWithOptions/index.js'),
+  roundToNearestMinutes: require('./roundToNearestMinutes/index.js'),
+  roundToNearestMinutesWithOptions: require('./roundToNearestMinutesWithOptions/index.js'),
   setDate: require('./setDate/index.js'),
   setDateWithOptions: require('./setDateWithOptions/index.js'),
   setDay: require('./setDay/index.js'),

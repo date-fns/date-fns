@@ -1307,6 +1307,16 @@ describe('FP functions', function () {
     assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
   })
 
+  it('roundToNearestMinutes', function () {
+    var result = fp.roundToNearestMinutes()(new Date(2014, 6 /* Jul */, 10, 12, 10, 34, 99))
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11))
+  })
+
+  it('roundToNearestMinutesWithOptions', function () {
+    var result = fp.addMinutesWithOptions({})()(new Date(2014, 6 /* Jul */, 10, 12, 10, 34, 99))
+    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 11))
+  })
+
   it('setDate', function () {
     var result = fp.setDate(30)(new Date(2014, 8 /* Sep */, 1))
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30))
