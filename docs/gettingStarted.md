@@ -61,6 +61,28 @@ import addDays from 'date-fns/fp/utc/addDays'
 import { addDays, format } from 'date-fns/fp'
 ```
 
+## Tree shaking with babel
+If you use date-fns with babel, you can gain the benefits of tree-shaking without having to type much, by using the
+[date-fns babel plugin](https://github.com/date-fns/babel-plugin-date-fns).
+
+To enable this, first install the date-fns babel plugin:
+```
+npm i -D babel-plugin-date-fns
+```
+
+Then add to your `.babelrc`:
+```
+{
+  "plugins": ["date-fns"],
+  "presets": ["es2015"]
+}
+```
+
+You can not write the following and the plugin will do the rest:
+```js
+import { format, compareAsc } from 'date-fns'
+```
+
 ## Installation
 
 The library is available as an [npm package](https://www.npmjs.com/package/date-fns).
