@@ -160,6 +160,8 @@ declare module.exports: {
   formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>,
   formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>,
   formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>,
+  fromUnixTime: CurriedFn1<number, Date>,
+  fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>,
   getDate: CurriedFn1<Date | string | number, number>,
   getDateWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getDay: CurriedFn1<Date | string | number, number>,

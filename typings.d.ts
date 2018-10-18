@@ -405,6 +405,12 @@ declare module 'date-fns' {
   ): string
   namespace formatRelative {}
 
+  function fromUnixTime (
+    unixTime: number,
+    options?: Options
+  ): Date
+  namespace fromUnixTime {}
+
   function getDate (
     date: Date | string | number,
     options?: Options
@@ -1294,6 +1300,11 @@ declare module 'date-fns/formatRelative' {
   export = formatRelative
 }
 
+declare module 'date-fns/fromUnixTime' {
+  import {fromUnixTime} from 'date-fns'
+  export = fromUnixTime
+}
+
 declare module 'date-fns/getDate' {
   import {getDate} from 'date-fns'
   export = getDate
@@ -2039,6 +2050,11 @@ declare module 'date-fns/formatRelative/index' {
   export = formatRelative
 }
 
+declare module 'date-fns/fromUnixTime/index' {
+  import {fromUnixTime} from 'date-fns'
+  export = fromUnixTime
+}
+
 declare module 'date-fns/getDate/index' {
   import {getDate} from 'date-fns'
   export = getDate
@@ -2782,6 +2798,11 @@ declare module 'date-fns/formatDistanceStrict/index.js' {
 declare module 'date-fns/formatRelative/index.js' {
   import {formatRelative} from 'date-fns'
   export = formatRelative
+}
+
+declare module 'date-fns/fromUnixTime/index.js' {
+  import {fromUnixTime} from 'date-fns'
+  export = fromUnixTime
 }
 
 declare module 'date-fns/getDate/index.js' {
@@ -3580,6 +3601,12 @@ declare module 'date-fns/fp' {
 
   const formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
+
+  const fromUnixTime: CurriedFn1<number, Date>
+  namespace fromUnixTime {}
+
+  const fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>
+  namespace fromUnixTimeWithOptions {}
 
   const getDate: CurriedFn1<Date | string | number, number>
   namespace getDate {}
@@ -4670,6 +4697,16 @@ declare module 'date-fns/fp/formatRelativeWithOptions' {
 declare module 'date-fns/fp/formatWithOptions' {
   import {formatWithOptions} from 'date-fns/fp'
   export = formatWithOptions
+}
+
+declare module 'date-fns/fp/fromUnixTime' {
+  import {fromUnixTime} from 'date-fns/fp'
+  export = fromUnixTime
+}
+
+declare module 'date-fns/fp/fromUnixTimeWithOptions' {
+  import {fromUnixTimeWithOptions} from 'date-fns/fp'
+  export = fromUnixTimeWithOptions
 }
 
 declare module 'date-fns/fp/getDate' {
@@ -6162,6 +6199,16 @@ declare module 'date-fns/fp/formatWithOptions/index' {
   export = formatWithOptions
 }
 
+declare module 'date-fns/fp/fromUnixTime/index' {
+  import {fromUnixTime} from 'date-fns/fp'
+  export = fromUnixTime
+}
+
+declare module 'date-fns/fp/fromUnixTimeWithOptions/index' {
+  import {fromUnixTimeWithOptions} from 'date-fns/fp'
+  export = fromUnixTimeWithOptions
+}
+
 declare module 'date-fns/fp/getDate/index' {
   import {getDate} from 'date-fns/fp'
   export = getDate
@@ -7652,6 +7699,16 @@ declare module 'date-fns/fp/formatWithOptions/index.js' {
   export = formatWithOptions
 }
 
+declare module 'date-fns/fp/fromUnixTime/index.js' {
+  import {fromUnixTime} from 'date-fns/fp'
+  export = fromUnixTime
+}
+
+declare module 'date-fns/fp/fromUnixTimeWithOptions/index.js' {
+  import {fromUnixTimeWithOptions} from 'date-fns/fp'
+  export = fromUnixTimeWithOptions
+}
+
 declare module 'date-fns/fp/getDate/index.js' {
   import {getDate} from 'date-fns/fp'
   export = getDate
@@ -8985,6 +9042,12 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatRelative {}
 
+  function fromUnixTime (
+    unixTime: number,
+    options?: Options
+  ): Date
+  namespace fromUnixTime {}
+
   function getDate (
     date: Date | string | number,
     options?: Options
@@ -9874,6 +9937,11 @@ declare module 'date-fns/esm/formatRelative' {
   export default formatRelative
 }
 
+declare module 'date-fns/esm/fromUnixTime' {
+  import {fromUnixTime} from 'date-fns/esm'
+  export default fromUnixTime
+}
+
 declare module 'date-fns/esm/getDate' {
   import {getDate} from 'date-fns/esm'
   export default getDate
@@ -10619,6 +10687,11 @@ declare module 'date-fns/esm/formatRelative/index' {
   export default formatRelative
 }
 
+declare module 'date-fns/esm/fromUnixTime/index' {
+  import {fromUnixTime} from 'date-fns/esm'
+  export default fromUnixTime
+}
+
 declare module 'date-fns/esm/getDate/index' {
   import {getDate} from 'date-fns/esm'
   export default getDate
@@ -11362,6 +11435,11 @@ declare module 'date-fns/esm/formatDistanceStrict/index.js' {
 declare module 'date-fns/esm/formatRelative/index.js' {
   import {formatRelative} from 'date-fns/esm'
   export default formatRelative
+}
+
+declare module 'date-fns/esm/fromUnixTime/index.js' {
+  import {fromUnixTime} from 'date-fns/esm'
+  export default fromUnixTime
 }
 
 declare module 'date-fns/esm/getDate/index.js' {
@@ -12160,6 +12238,12 @@ declare module 'date-fns/esm/fp' {
 
   const formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>
   namespace formatWithOptions {}
+
+  const fromUnixTime: CurriedFn1<number, Date>
+  namespace fromUnixTime {}
+
+  const fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>
+  namespace fromUnixTimeWithOptions {}
 
   const getDate: CurriedFn1<Date | string | number, number>
   namespace getDate {}
@@ -13250,6 +13334,16 @@ declare module 'date-fns/esm/fp/formatRelativeWithOptions' {
 declare module 'date-fns/esm/fp/formatWithOptions' {
   import {formatWithOptions} from 'date-fns/esm/fp'
   export default formatWithOptions
+}
+
+declare module 'date-fns/esm/fp/fromUnixTime' {
+  import {fromUnixTime} from 'date-fns/esm/fp'
+  export default fromUnixTime
+}
+
+declare module 'date-fns/esm/fp/fromUnixTimeWithOptions' {
+  import {fromUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default fromUnixTimeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getDate' {
@@ -14742,6 +14836,16 @@ declare module 'date-fns/esm/fp/formatWithOptions/index' {
   export default formatWithOptions
 }
 
+declare module 'date-fns/esm/fp/fromUnixTime/index' {
+  import {fromUnixTime} from 'date-fns/esm/fp'
+  export default fromUnixTime
+}
+
+declare module 'date-fns/esm/fp/fromUnixTimeWithOptions/index' {
+  import {fromUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default fromUnixTimeWithOptions
+}
+
 declare module 'date-fns/esm/fp/getDate/index' {
   import {getDate} from 'date-fns/esm/fp'
   export default getDate
@@ -16230,6 +16334,16 @@ declare module 'date-fns/esm/fp/formatRelativeWithOptions/index.js' {
 declare module 'date-fns/esm/fp/formatWithOptions/index.js' {
   import {formatWithOptions} from 'date-fns/esm/fp'
   export default formatWithOptions
+}
+
+declare module 'date-fns/esm/fp/fromUnixTime/index.js' {
+  import {fromUnixTime} from 'date-fns/esm/fp'
+  export default fromUnixTime
+}
+
+declare module 'date-fns/esm/fp/fromUnixTimeWithOptions/index.js' {
+  import {fromUnixTimeWithOptions} from 'date-fns/esm/fp'
+  export default fromUnixTimeWithOptions
 }
 
 declare module 'date-fns/esm/fp/getDate/index.js' {
@@ -19323,6 +19437,11 @@ interface dateFns {
     baseDate: Date | string | number,
     options?: Options
   ): string
+
+  fromUnixTime(
+    unixTime: number,
+    options?: Options
+  ): Date
 
   getDate(
     date: Date | string | number,

@@ -162,6 +162,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
 
+- Added new function `fromUnixTime`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function

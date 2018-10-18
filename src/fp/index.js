@@ -99,6 +99,8 @@ module.exports = {
   formatRelative: require('./formatRelative/index.js'),
   formatRelativeWithOptions: require('./formatRelativeWithOptions/index.js'),
   formatWithOptions: require('./formatWithOptions/index.js'),
+  fromUnixTime: require('./fromUnixTime/index.js'),
+  fromUnixTimeWithOptions: require('./fromUnixTimeWithOptions/index.js'),
   getDate: require('./getDate/index.js'),
   getDateWithOptions: require('./getDateWithOptions/index.js'),
   getDay: require('./getDay/index.js'),
