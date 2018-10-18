@@ -3,6 +3,7 @@
 export {default as af} from './af/index.js'
 export {default as bn} from './bn/index.js'
 export {default as de} from './de/index.js'
+export {default as el} from './el/index.js'
 export {default as enCA} from './en-CA/index.js'
 export {default as enGB} from './en-GB/index.js'
 export {default as enUS} from './en-US/index.js'
