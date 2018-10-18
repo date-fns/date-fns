@@ -121,7 +121,7 @@ describe('af locale', function() {
         assert(result === 'middernag, middernag, middernag')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
           assert(result === '10 uur die oggend')
