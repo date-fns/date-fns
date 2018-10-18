@@ -160,7 +160,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `lastDayOfDecade`
 
-- Added `roundToNearestMinutes`
+- [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
 
 ### Changed
 
