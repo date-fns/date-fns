@@ -651,6 +651,12 @@ declare module.exports: {
     options?: Options
   ) => Date,
 
+  roundToNearestMinutes: (
+    date: Date | string | number,
+    nearestTo?: number,
+    options?: Options
+  ) => Date,
+
   setDate: (
     date: Date | string | number,
     dayOfMonth: number,

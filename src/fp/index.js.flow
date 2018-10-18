@@ -282,6 +282,8 @@ declare module.exports: {
   minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>,
   parse: CurriedFn3<Date | string | number, string, string, Date>,
   parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>,
+  roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>,
+  roundToNearestMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   setDate: CurriedFn2<number, Date | string | number, Date>,
   setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   setDay: CurriedFn2<number, Date | string | number, Date>,

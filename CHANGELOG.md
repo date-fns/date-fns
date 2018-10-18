@@ -160,6 +160,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `lastDayOfDecade`
 
+- Added `roundToNearestMinutes`
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
