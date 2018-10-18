@@ -1,50 +1,178 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
-  short: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
-  long: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο']
+var eraValues = {
+  narrow: ['πΧ', 'μΧ'],
+  abbreviated: ['π.Χ.', 'μ.Χ.'],
+  wide: ['προ Χριστού', 'μετά Χριστόν']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
+  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
 }
 
 var monthValues = {
-  short: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαϊ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'],
-  long: ['Ιανουάριος', 'Φεβρουάριος', 'Μάρτιος', 'Απρίλιος', 'Μάιος', 'Ιούνιος', 'Ιούλιος', 'Αύγουστος', 'Σεπτέμβριος', 'Οκτώβριος', 'Νοέμβριος', 'Δεκέμβριος']
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+  abbreviated: [
+    'Ιαν',
+    'Φεβ',
+    'Μάρ',
+    'Απρ',
+    'Μάι',
+    'Ιούν',
+    'Ιούλ',
+    'Αύγ',
+    'Σεπ',
+    'Οκτ',
+    'Νοέ',
+    'Δεκ'
+  ],
+  wide: [
+    'Ιανουάριος',
+    'Φεβρουάριος',
+    'Μάρτιος',
+    'Απρίλιος',
+    'Μάιος',
+    'Ιούνιος',
+    'Ιούλιος',
+    'Αύγουστος',
+    'Σεπτέμβριος',
+    'Οκτώβριος',
+    'Νοέμβριος',
+    'Δεκέμβριος'
+  ]
 }
 
-var timeOfDayValues = {
-  uppercase: ['ΠΜ', 'ΜΜ'],
-  lowercase: ['πμ', 'μμ'],
-  long: ['π.μ.', 'μ.μ.']
+var formattingMonthValues = {
+  narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
+  abbreviated: [
+    'Ιαν',
+    'Φεβ',
+    'Μαρ',
+    'Απρ',
+    'Μαΐ',
+    'Ιουν',
+    'Ιουλ',
+    'Αυγ',
+    'Σεπ',
+    'Οκτ',
+    'Νοε',
+    'Δεκ'
+  ],
+  wide: [
+    'Ιανουαρίου',
+    'Φεβρουαρίου',
+    'Μαρτίου',
+    'Απριλίου',
+    'Μαΐου',
+    'Ιουνίου',
+    'Ιουλίου',
+    'Αυγούστου',
+    'Σεπτεμβρίου',
+    'Οκτωβρίου',
+    'Νοεμβρίου',
+    'Δεκεμβρίου'
+  ]
 }
 
-var ordinalSuffixes = {
-  month: 'ος',
-  dayOfMonth: 'η',
-  dayOfYear: 'η',
-  dayOfWeek: 'η',
-  quarter: 'ο',
-  week: 'η',
-  isoWeek: 'η'
+var dayValues = {
+  narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'],
+  short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
+  abbreviated: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
+  wide: [
+    'Κυριακή',
+    'Δευτέρα',
+    'Τρίτη',
+    'Τετάρτη',
+    'Πέμπτη',
+    'Παρασκευή',
+    'Σάββατο'
+  ]
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+var dayPeriodValues = {
+  narrow: {
+    am: 'πμ',
+    pm: 'μμ',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  },
+  abbreviated: {
+    am: 'π.μ.',
+    pm: 'μ.μ.',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  },
+  wide: {
+    am: 'π.μ.',
+    pm: 'μ.μ.',
+    midnight: 'μεσάνυχτα',
+    noon: 'μεσημέρι',
+    morning: 'πρωί',
+    afternoon: 'απόγευμα',
+    evening: 'βράδυ',
+    night: 'νύχτα'
+  }
+}
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
-  var suffix = options.unit ? ordinalSuffixes[String(options.unit)] : 'ος'
-  return number + suffix
+  var unit = String(options.unit)
+  var suffix
+
+  if (unit === 'year' || unit === 'month') {
+    suffix = 'ος'
+  } else if (
+    unit === 'week' ||
+    unit === 'dayOfYear' ||
+    unit === 'day' ||
+    unit === 'hour' ||
+    unit === 'date'
+  ) {
+    suffix = 'η'
+  } else {
+    suffix = 'ο'
+  }
+
+  return dirtyNumber + suffix
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
+  }),
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize

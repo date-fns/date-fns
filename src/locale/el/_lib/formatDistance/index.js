@@ -67,7 +67,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -83,7 +83,7 @@ export default function formatDistance (token, count, options) {
     if (options.comparison > 0) {
       return 'σε ' + result
     } else {
-      return result + ' πρίν'
+      return result + ' πριν'
     }
   }
 
