@@ -54,6 +54,23 @@ function getTypeScriptTypeAlias (type) {
 
   return formatBlock`
     type ${title} = ${getParams(properties)}
+    type ${title}Aliased = ${title}
+  `
+}
+
+function getExportedTypeScriptTypeAlias (type) {
+  const {title} = type
+
+  return formatBlock`
+    export type ${title} = ${title}Aliased
+  `
+}
+
+function getExportedTypeScriptTypeAliases (aliases) {
+  return formatBlock`
+    declare module 'date-fns' {
+      ${addSeparator(aliases.map(getExportedTypeScriptTypeAlias), '\n')}
+    }
   `
 }
 
@@ -253,6 +270,8 @@ function generateTypeScriptTypings (fns, aliases, locales) {
   const aliasDefinitions = aliases
     .map(getTypeScriptTypeAlias)
 
+  const exportedAliasDefinitions = [getExportedTypeScriptTypeAliases(aliases)]
+
   const localeModuleDefinitions = [getTypeScriptLocaleIndexModuleDefinition('', locales)]
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '', false)))
     .concat(locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '/index', false)))
@@ -279,6 +298,10 @@ function generateTypeScriptTypings (fns, aliases, locales) {
     // Type Aliases
 
     ${addSeparator(aliasDefinitions, '\n')}
+
+    // Exported Type Aliases
+
+    ${addSeparator(exportedAliasDefinitions, '\n')}
 
     // Regular Functions
 
