@@ -1,4 +1,4 @@
-export const protectedTokens = ['D', 'DD', 'YY', 'YYYY']
+export var protectedTokens = ['D', 'DD', 'YY', 'YYYY']
 
 export function isProtectedToken(token) {
   return protectedTokens.indexOf(token) !== -1
