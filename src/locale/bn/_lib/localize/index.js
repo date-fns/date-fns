@@ -138,7 +138,7 @@ function dateOrdinalNumber (number, localeNumber) {
 function ordinalNumber (dirtyNumber, dirtyOptions) {
   var number = localize.localeToNumber(dirtyNumber)
   var localeNumber = localize.numberToLocale(number)
-  const { unit } = dirtyOptions
+  var unit = dirtyOptions.unit
 
   if (unit === 'date') {
     return dateOrdinalNumber(number, localeNumber)
