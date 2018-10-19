@@ -16,100 +16,102 @@ describe('en-US locale', function() {
 
     it('era', function() {
       var result = format(date, 'G, GGGG, GGGGG', { locale: locale })
-      assert(result === 'AD, Anno Domini, A')
+      assert(result === 'ب.م., بعد الميلاد, ب')
     })
 
     describe('year', function() {
       it('ordinal regular year', function() {
-        var result = format(date, "yo 'year'", { locale: locale })
-        assert(result === '1986th year')
+        var result = format(date, "'السنة' yo", { locale: locale })
+        assert(result === 'السنة 1986')
       })
 
       it('ordinal local week-numbering year', function() {
-        var result = format(date, "Yo 'week-numbering year'", {
+        var result = format(date, "'السنة المرقمة' Yo", {
           locale: locale
         })
-        assert(result === '1986th week-numbering year')
+        assert(result === 'السنة المرقمة 1986')
       })
     })
 
     describe('quarter', function() {
       it('formatting quarter', function() {
-        var result = format(date, "Qo 'quarter', QQQ, QQQQ, QQQQQ", {
+        var result = format(date, "'الربع' Qo, QQQ, QQQQ, QQQQQ", {
           locale: locale
         })
-        assert(result === '2nd quarter, Q2, 2nd quarter, 2')
+        assert(result === 'الربع 2, ر2, الربع الثاني, 2')
       })
 
       it('stand-alone quarter', function() {
-        var result = format(date, "qo 'quarter', qqq, qqqq, qqqqq", {
+        var result = format(date, "'الربع' qo, qqq, qqqq, qqqqq", {
           locale: locale
         })
-        assert(result === '2nd quarter, Q2, 2nd quarter, 2')
+        assert(result === 'الربع 2, ر2, الربع الثاني, 2')
       })
     })
 
     describe('month', function() {
       it('formatting month', function() {
-        var result = format(date, "do 'of' MMMM", { locale: locale })
-        assert(result === '5th of April')
+        var result = format(date, "do 'من' MMMM", { locale: locale })
+        assert(result === '5 من أبريل')
       })
 
       it('stand-alone month', function() {
-        var result = format(date, "Lo 'month', LLL, LLLL, LLLLL", {
+        var result = format(date, "'الشهر' Lo, LLL, LLLL, LLLLL", {
           locale: locale
         })
-        assert(result === '4th month, Apr, April, A')
+        assert(result === 'الشهر 4, أبريل, أبريل, أ')
       })
     })
 
     describe('week', function() {
       it('ordinal local week of year', function() {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "wo 'week'", { locale: locale })
-        assert(result === '15th week')
+        var result = format(date, "'الإسبوع' wo", { locale: locale })
+        assert(result === 'الإسبوع 15')
       })
 
       it('ordinal ISO week of year', function() {
         var date = new Date(1986, 3 /* Apr */, 6)
-        var result = format(date, "Io 'ISO week'", { locale: locale })
-        assert(result === '14th ISO week')
+        var result = format(date, "Io 'الإسبوع إيزو'", { locale: locale })
+        assert(result === '14 الإسبوع إيزو')
       })
     })
 
     describe('day', function() {
       it('ordinal date', function() {
-        var result = format(date, "'today is the' do", { locale: locale })
-        assert(result === 'today is the 5th')
+        var result = format(date, "'اليوم هو' do", { locale: locale })
+        assert(result === 'اليوم هو 5')
       })
 
       it('ordinal day of year', function() {
-        var result = format(date, "Do 'day of the year'", { locale: locale })
-        assert(result === '95th day of the year')
+        var result = format(date, "'اليوم' Do 'من السنة'", { locale: locale })
+        assert(result === 'اليوم 95 من السنة')
       })
     })
 
     describe('week day', function() {
       it('day of week', function() {
         var result = format(date, 'E, EEEE, EEEEE, EEEEEE', { locale: locale })
-        assert(result === 'Sat, Saturday, S, Sa')
+        assert(result === 'سبت, السبت, س, سبت')
       })
 
       it('ordinal day of week', function() {
-        var result = format(date, "eo 'day of the week'", { locale: locale })
-        assert(result === '7th day of the week')
+        var result = format(date, "'اليوم' eo ' من الإسبوع'", {
+          locale: locale
+        })
+        assert(result === 'اليوم 7  من الإسبوع')
       })
     })
 
     describe('day period and hour', function() {
       it('ordinal hour', function() {
-        var result = format(date, "ho 'hour'", { locale: locale })
-        assert(result === '10th hour')
+        var result = format(date, "'الساعة' ho", { locale: locale })
+        assert(result === 'الساعة 10')
       })
 
       it('AM, PM', function() {
         var result = format(date, 'h a, h aaaa, haaaaa', { locale: locale })
-        assert(result === '10 AM, 10 a.m., 10a')
+        assert(result === '10 ص, 10 ص, 10ص')
       })
 
       it('AM, PM, noon, midnight', function() {
@@ -118,7 +120,7 @@ describe('en-US locale', function() {
           'b, bbbb, bbbbb',
           { locale: locale }
         )
-        assert(result === 'midnight, midnight, mi')
+        assert(result === 'نصف الليل, نصف الليل, ن')
       })
 
       it('flexible day periods', function() {
@@ -130,13 +132,13 @@ describe('en-US locale', function() {
     })
 
     it('ordinal minute', function() {
-      var result = format(date, "mo 'minute'", { locale: locale })
-      assert(result === '32nd minute')
+      var result = format(date, "'الدقيقة' mo", { locale: locale })
+      assert(result === 'الدقيقة 32')
     })
 
     it('ordinal second', function() {
-      var result = format(date, "so 'second'", { locale: locale })
-      assert(result === '0th second')
+      var result = format(date, "'الثانية' so", { locale: locale })
+      assert(result === 'الثانية 0')
     })
 
     describe('long format', function() {
@@ -147,47 +149,47 @@ describe('en-US locale', function() {
 
       it('medium date', function() {
         var result = format(date, 'PP', { locale: locale })
-        assert(result === 'Apr 5, 1986')
+        assert(result === 'أبريل 5, 1986')
       })
 
       it('long date', function() {
         var result = format(date, 'PPP', { locale: locale })
-        assert(result === 'April 5th, 1986')
+        assert(result === 'أبريل 5, 1986')
       })
 
       it('full date', function() {
         var result = format(date, 'PPPP', { locale: locale })
-        assert(result === 'Saturday, April 5th, 1986')
+        assert(result === 'السبت, أبريل 5, 1986')
       })
 
       it('short time', function() {
         var result = format(date, 'p', { locale: locale })
-        assert(result === '10:32 AM')
+        assert(result === '10:32 ص')
       })
 
       it('medium time', function() {
         var result = format(date, 'pp', { locale: locale })
-        assert(result === '10:32:00 AM')
+        assert(result === '10:32:00 ص')
       })
 
       it('short date + time', function() {
         var result = format(date, 'Pp', { locale: locale })
-        assert(result === '04/05/1986, 10:32 AM')
+        assert(result === '04/05/1986, 10:32 ص')
       })
 
       it('medium date + time', function() {
         var result = format(date, 'PPpp', { locale: locale })
-        assert(result === 'Apr 5, 1986, 10:32:00 AM')
+        assert(result === 'أبريل 5, 1986, 10:32:00 ص')
       })
 
       it('long date + time', function() {
         var result = format(date, 'PPPp', { locale: locale })
-        assert(result === 'April 5th, 1986 في 10:32 AM')
+        assert(result === 'أبريل 5, 1986 في 10:32 ص')
       })
 
       it('full date + time', function() {
         var result = format(date, 'PPPPp', { locale: locale })
-        assert(result === 'Saturday, April 5th, 1986 في 10:32 AM')
+        assert(result === 'السبت, أبريل 5, 1986 في 10:32 ص')
       })
     })
   })
@@ -261,7 +263,7 @@ describe('en-US locale', function() {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {
         locale: locale
       })
-      assert(result === 'last Tuesday at 12:00 AM')
+      assert(result === 'أخر الثلاثاء عند 12:00 ص')
     })
 
     it('yesterday', function() {
@@ -270,7 +272,7 @@ describe('en-US locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === 'أمس عند 10:22 PM')
+      assert(result === 'أمس عند 10:22 م')
     })
 
     it('today', function() {
@@ -279,7 +281,7 @@ describe('en-US locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === 'اليوم عند 4:50 PM')
+      assert(result === 'اليوم عند 4:50 م')
     })
 
     it('tomorrow', function() {
@@ -288,7 +290,7 @@ describe('en-US locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === 'غداً عند 7:30 AM')
+      assert(result === 'غداً عند 7:30 ص')
     })
 
     it('next week', function() {
@@ -297,7 +299,7 @@ describe('en-US locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === 'Sunday at 12:00 PM')
+      assert(result === 'الأحد عند 12:00 م')
     })
 
     it('after the next week', function() {
