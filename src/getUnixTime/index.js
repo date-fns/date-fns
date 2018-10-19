@@ -16,13 +16,15 @@ import getTime from '../getTime/index.js'
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
- * // Get the timestamp of 29 February 2012 11:45:05:
- * var result = getTime(new Date(2012, 1, 29, 11, 45, 5))
- * //=> 1330515905
+ * // Get the timestamp of 29 February 2012 11:45:05 CET:
+ * var result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))
+ * //=> 1330512305
  */
-export default function getUnixTime (dirtyDate, dirtyOptions) {
+export default function getUnixTime(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   return Math.floor(getTime(dirtyDate, dirtyOptions) / 1000)
