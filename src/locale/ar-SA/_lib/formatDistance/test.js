@@ -4,216 +4,294 @@
 import assert from 'power-assert'
 import formatDistance from '.'
 
-describe('en-US locale > formatDistance', function () {
-  describe('lessThanXSeconds', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 1) === 'less than a second')
+describe('sa-AR locale > formatDistance', function() {
+  describe('lessThanXSeconds', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXSeconds', 1) === 'أقل من ثانية واحدة')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('lessThanXSeconds', 2) === 'less than 2 seconds')
-      })
-    })
-  })
-
-  describe('xSeconds', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 1) === '1 second')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXSeconds', 5) === 'أقل من 5 ثواني')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xSeconds', 2) === '2 seconds')
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXSeconds', 20) === 'أقل من 20 ثانية')
       })
     })
   })
 
-  describe('halfAMinute', function () {
-    it('returns a proper string', function () {
-      assert(formatDistance('halfAMinute') === 'half a minute')
-    })
-
-    it('ignores the second argument', function () {
-      assert(formatDistance('halfAMinute', 123) === 'half a minute')
-    })
-  })
-
-  describe('lessThanXMinutes', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 1) === 'less than a minute')
+  describe('xSeconds', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xSeconds', 1) === 'ثانية واحدة')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('lessThanXMinutes', 2) === 'less than 2 minutes')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xSeconds', 5) === '5 ثواني')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xSeconds', 20) === '20 ثانية')
       })
     })
   })
 
-  describe('xMinutes', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 1) === '1 minute')
+  describe('halfAMinute', function() {
+    it('returns a proper string', function() {
+      assert(formatDistance('halfAMinute') === 'نصف دقيقة')
+    })
+
+    it('ignores the second argument', function() {
+      assert(formatDistance('halfAMinute', 123) === 'نصف دقيقة')
+    })
+  })
+
+  describe('lessThanXMinutes', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXMinutes', 1) === 'أقل من دقيقة')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xMinutes', 2) === '2 minutes')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXMinutes', 5) === 'أقل من 5 دقائق')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('lessThanXMinutes', 20) === 'أقل من 20 دقيقة')
       })
     })
   })
 
-  describe('aboutXHours', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 1) === 'about 1 hour')
+  describe('xMinutes', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMinutes', 1) === 'دقيقة واحدة')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXHours', 2) === 'about 2 hours')
-      })
-    })
-  })
-
-  describe('xHours', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xHours', 1) === '1 hour')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMinutes', 5) === '5 دقائق')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xHours', 2) === '2 hours')
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMinutes', 20) === '20 دقيقة')
       })
     })
   })
 
-  describe('xDays', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xDays', 1) === '1 day')
+  describe('aboutXHours', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXHours', 1) === 'ساعة واحدة تقريباً')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xDays', 2) === '2 days')
-      })
-    })
-  })
-
-  describe('aboutXMonths', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 1) === 'about 1 month')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXHours', 5) === '5 ساعات تقريباً')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXMonths', 2) === 'about 2 months')
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXHours', 20) === '20 ساعة تقريباً')
       })
     })
   })
 
-  describe('xMonths', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 1) === '1 month')
+  describe('xHours', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xHours', 1) === 'ساعة واحدة')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xMonths', 2) === '2 months')
-      })
-    })
-  })
-
-  describe('aboutXYears', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 1) === 'about 1 year')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xHours', 5) === '5 ساعات')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('aboutXYears', 2) === 'about 2 years')
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xHours', 20) === '20 ساعة')
       })
     })
   })
 
-  describe('xYears', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xYears', 1) === '1 year')
+  describe('xDays', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xDays', 1) === 'يوم واحد')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('xYears', 2) === '2 years')
-      })
-    })
-  })
-
-  describe('overXYears', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 1) === 'over 1 year')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xDays', 5) === '5 أيام')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('overXYears', 2) === 'over 2 years')
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xDays', 20) === '20 يوم')
       })
     })
   })
 
-  describe('almostXYears', function () {
-    context('when the count equals 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 1) === 'almost 1 year')
+  describe('aboutXMonths', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXMonths', 1) === 'شهر واحد تقريباً')
       })
     })
 
-    context('when the count is more than 1', function () {
-      it('returns a proper string', function () {
-        assert(formatDistance('almostXYears', 2) === 'almost 2 years')
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXMonths', 5) === '5 أشهر تقريباً')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXMonths', 20) === '20 شهر تقريباً')
       })
     })
   })
 
-  context('with a past suffix', function () {
-    it('adds `ago` to a string', function () {
+  describe('xMonths', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMonths', 1) === 'شهر واحد')
+      })
+    })
+
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMonths', 5) === '5 أشهر')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xMonths', 20) === '20 شهر')
+      })
+    })
+  })
+
+  describe('aboutXYears', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXYears', 1) === 'عام واحد تقريباً')
+      })
+    })
+
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXYears', 5) === '5 أعوام تقريباً')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('aboutXYears', 20) === '20 عام تقريباً')
+      })
+    })
+  })
+
+  describe('xYears', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xYears', 1) === 'عام واحد')
+      })
+    })
+
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xYears', 5) === '5 أعوام')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('xYears', 20) === '20 عام')
+      })
+    })
+  })
+
+  describe('overXYears', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('overXYears', 1) === 'أكثر من عام')
+      })
+    })
+
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('overXYears', 5) === 'أكثر من 5 أعوام')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('overXYears', 20) === 'أكثر من 20 عام')
+      })
+    })
+  })
+
+  describe('almostXYears', function() {
+    context('when the count equals 1', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('almostXYears', 1) === 'عام واحد تقريباً')
+      })
+    })
+
+    context('when the count is betweem three and ten', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('almostXYears', 5) === '5 أعوام تقريباً')
+      })
+    })
+
+    context('when the count is more than 10', function() {
+      it('returns a proper string', function() {
+        assert(formatDistance('almostXYears', 20) === '20 عام تقريباً')
+      })
+    })
+  })
+
+  context('with a past suffix', function() {
+    it('adds `ago` to a string', function() {
       var result = formatDistance('aboutXYears', 1, {
         addSuffix: true,
         comparison: -1
       })
-      assert(result === 'about 1 year ago')
+      assert(result === 'منذ عام واحد تقريباً')
     })
   })
 
-  context('with a future suffix', function () {
-    it('adds `in` to a string', function () {
+  context('with a future suffix', function() {
+    it('adds `in` to a string', function() {
       var result = formatDistance('halfAMinute', null, {
         addSuffix: true,
         comparison: 1
       })
-      assert(result === 'in half a minute')
+      assert(result === 'في خلال نصف دقيقة')
     })
   })
 })
