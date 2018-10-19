@@ -63,10 +63,10 @@ var formattingDayPeriodValues = {
     pm: 'p',
     midnight: 'mn',
     noon: 'md',
-    morning: 'de la mañana',
-    afternoon: 'de la tarde',
-    evening: 'de la tarde',
-    night: 'de la noche'
+    morning: 'de manhã',
+    afternoon: 'de tarde',
+    evening: 'de tarde',
+    night: 'de noite'
   },
   abbreviated: {
     am: 'AM',
