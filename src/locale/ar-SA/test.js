@@ -126,7 +126,7 @@ describe('en-US locale', function() {
       it('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 in the morning')
+          assert(result === '10 في الصباح')
         })
       })
     })
@@ -184,12 +184,12 @@ describe('en-US locale', function() {
 
       it('long date + time', function() {
         var result = format(date, 'PPPp', { locale: locale })
-        assert(result === 'أبريل 5, 1986 في 10:32 ص')
+        assert(result === 'أبريل 5, 1986 عند 10:32 ص')
       })
 
       it('full date + time', function() {
         var result = format(date, 'PPPPp', { locale: locale })
-        assert(result === 'السبت, أبريل 5, 1986 في 10:32 ص')
+        assert(result === 'السبت, أبريل 5, 1986 عند 10:32 ص')
       })
     })
   })
@@ -317,19 +317,21 @@ describe('en-US locale', function() {
 
     describe('era', function() {
       it('abbreviated', function() {
-        var result = parse('10000 BC', 'yyyyy G', baseDate, { locale: locale })
+        var result = parse('10000 ق.م.', 'yyyyy G', baseDate, {
+          locale: locale
+        })
         assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
       })
 
       it('wide', function() {
-        var result = parse('2018 Anno Domini', 'yyyy GGGG', baseDate, {
+        var result = parse('2018 بعد الميلاد', 'yyyy GGGG', baseDate, {
           locale: locale
         })
         assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
       })
 
       it('narrow', function() {
-        var result = parse('44 B', 'y GGGGG', baseDate, { locale: locale })
+        var result = parse('44 ق', 'y GGGGG', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
       })
     })
@@ -346,12 +348,12 @@ describe('en-US locale', function() {
       })
 
       it('abbreviated', function() {
-        var result = parse('Q3', 'QQQ', baseDate, { locale: locale })
+        var result = parse('ر3', 'QQQ', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
       })
 
       it('wide', function() {
-        var result = parse('4st quarter', 'QQQQ', baseDate, { locale: locale })
+        var result = parse('الربع 4', 'QQQQ', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
       })
 
@@ -368,17 +370,17 @@ describe('en-US locale', function() {
       })
 
       it('abbreviated', function() {
-        var result = parse('Nov', 'MMM', baseDate, { locale: locale })
+        var result = parse('ن', 'MMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
       })
 
       it('wide', function() {
-        var result = parse('February', 'MMMM', baseDate, { locale: locale })
+        var result = parse('ف', 'MMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
       })
 
       it('narrow', function() {
-        var result = parse('J', 'MMMMM', baseDate, { locale: locale })
+        var result = parse('ي', 'MMMMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
       })
     })
@@ -400,22 +402,22 @@ describe('en-US locale', function() {
 
     describe('day of week', function() {
       it('abbreviated', function() {
-        var result = parse('Mon', 'E', baseDate, { locale: locale })
+        var result = parse('اثن', 'E', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
       })
 
       it('wide', function() {
-        var result = parse('Tuesday', 'EEEE', baseDate, { locale: locale })
+        var result = parse('الثلاثاء', 'EEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
       })
 
       it('narrow', function() {
-        var result = parse('W', 'EEEEE', baseDate, { locale: locale })
+        var result = parse('ر', 'EEEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
       })
 
       it('short', function() {
-        var result = parse('Th', 'EEEEEE', baseDate, { locale: locale })
+        var result = parse('خ', 'EEEEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
