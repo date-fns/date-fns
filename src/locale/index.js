@@ -4,6 +4,7 @@ module.exports = {
   af: require('./af/index.js'),
   bn: require('./bn/index.js'),
   de: require('./de/index.js'),
+  el: require('./el/index.js'),
   enCA: require('./en-CA/index.js'),
   enGB: require('./en-GB/index.js'),
   enUS: require('./en-US/index.js'),
