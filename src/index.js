@@ -50,6 +50,7 @@ module.exports = {
   formatDistance: require('./formatDistance/index.js'),
   formatDistanceStrict: require('./formatDistanceStrict/index.js'),
   formatRelative: require('./formatRelative/index.js'),
+  fromUnixTime: require('./fromUnixTime/index.js'),
   getDate: require('./getDate/index.js'),
   getDay: require('./getDay/index.js'),
   getDayOfYear: require('./getDayOfYear/index.js'),

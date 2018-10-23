@@ -329,6 +329,11 @@ declare module.exports: {
     options?: Options
   ) => string,
 
+  fromUnixTime: (
+    unixTime: number,
+    options?: Options
+  ) => Date,
+
   getDate: (
     date: Date | string | number,
     options?: Options
