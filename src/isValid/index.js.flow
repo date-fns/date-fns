@@ -47,7 +47,4 @@ type Locale = {
   }
 }
 
-declare module.exports: (
-  date: any,
-  options?: Options
-) => boolean
+declare module.exports: (date: any, options?: Options) => boolean

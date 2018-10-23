@@ -49,7 +49,8 @@ type Locale = {
 
 type CurriedFn1<A, R> = <A>(a: A) => R
 
-type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
-  | <A, B>(a: A, b: B) => R
+type CurriedFn2<A, B, R> = <A>(
+  a: A
+) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
 declare module.exports: CurriedFn2<Options, Date | string | number, boolean>

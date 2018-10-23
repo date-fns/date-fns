@@ -49,83 +49,338 @@ type Locale = {
 
 type CurriedFn1<A, R> = <A>(a: A) => R
 
-type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
-  | <A, B>(a: A, b: B) => R
+type CurriedFn2<A, B, R> = <A>(
+  a: A
+) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
-  | <A,B>(a: A, b: B) => CurriedFn1<C, R>
-  | <A,B,C>(a: A, b: B, c: C) => R
+type CurriedFn3<A, B, C, R> = <A>(
+  a: A
+) =>
+  | CurriedFn2<B, C, R>
+  | (<A, B>(
+      a: A,
+      b: B
+    ) => CurriedFn1<C, R> | (<A, B, C>(a: A, b: B, c: C) => R))
 
-type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
-  | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
-  | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
-  | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
+type CurriedFn4<A, B, C, D, R> = <A>(
+  a: A
+) =>
+  | CurriedFn3<B, C, D, R>
+  | (<A, B>(
+      a: A,
+      b: B
+    ) =>
+      | CurriedFn2<C, D, R>
+      | (<A, B, C>(
+          a: A,
+          b: B,
+          c: C
+        ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
 declare module.exports: {
   addDays: CurriedFn2<number, Date | string | number, Date>,
   addDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   addHours: CurriedFn2<number, Date | string | number, Date>,
-  addHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addHoursWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addISOWeekYears: CurriedFn2<number, Date | string | number, Date>,
-  addISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addISOWeekYearsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addMilliseconds: CurriedFn2<number, Date | string | number, Date>,
-  addMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addMillisecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addMinutes: CurriedFn2<number, Date | string | number, Date>,
-  addMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addMinutesWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addMonths: CurriedFn2<number, Date | string | number, Date>,
-  addMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addMonthsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addQuarters: CurriedFn2<number, Date | string | number, Date>,
-  addQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addQuartersWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addSeconds: CurriedFn2<number, Date | string | number, Date>,
-  addSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addSecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addWeeks: CurriedFn2<number, Date | string | number, Date>,
-  addWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addWeeksWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   addYears: CurriedFn2<number, Date | string | number, Date>,
-  addYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  addYearsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,
-  areIntervalsOverlappingWithOptions: CurriedFn3<Options, Interval, Interval, boolean>,
-  closestIndexTo: CurriedFn2<(Date | string | number)[], Date | string | number, number>,
-  closestIndexToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, number>,
-  closestTo: CurriedFn2<(Date | string | number)[], Date | string | number, Date>,
-  closestToWithOptions: CurriedFn3<Options, (Date | string | number)[], Date | string | number, Date>,
-  compareAsc: CurriedFn2<Date | string | number, Date | string | number, number>,
-  compareAscWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  compareDesc: CurriedFn2<Date | string | number, Date | string | number, number>,
-  compareDescWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarDays: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarISOWeeks: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarISOWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarMonths: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarQuarters: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarWeeks: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInCalendarYears: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInCalendarYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInDays: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInDaysWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInHours: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInHoursWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInISOWeekYears: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInISOWeekYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInMilliseconds: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInMillisecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInMinutes: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInMinutesWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInMonths: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInMonthsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInQuarters: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInQuartersWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInSeconds: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInSecondsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInWeeks: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInWeeksWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
-  differenceInYears: CurriedFn2<Date | string | number, Date | string | number, number>,
-  differenceInYearsWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, number>,
+  areIntervalsOverlappingWithOptions: CurriedFn3<
+    Options,
+    Interval,
+    Interval,
+    boolean
+  >,
+  closestIndexTo: CurriedFn2<
+    (Date | string | number)[],
+    Date | string | number,
+    number
+  >,
+  closestIndexToWithOptions: CurriedFn3<
+    Options,
+    (Date | string | number)[],
+    Date | string | number,
+    number
+  >,
+  closestTo: CurriedFn2<
+    (Date | string | number)[],
+    Date | string | number,
+    Date
+  >,
+  closestToWithOptions: CurriedFn3<
+    Options,
+    (Date | string | number)[],
+    Date | string | number,
+    Date
+  >,
+  compareAsc: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  compareAscWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  compareDesc: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  compareDescWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarDays: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarDaysWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarISOWeeks: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarISOWeeksWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarISOWeekYears: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarMonths: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarMonthsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarQuarters: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarQuartersWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarWeeks: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarWeeksWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarYears: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInCalendarYearsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInDays: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInDaysWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInHours: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInHoursWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInISOWeekYears: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInISOWeekYearsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMilliseconds: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMillisecondsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMinutes: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMinutesWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMonths: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInMonthsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInQuarters: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInQuartersWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInSeconds: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInSecondsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInWeeks: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInWeeksWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInYears: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
+  differenceInYearsWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    number
+  >,
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
   eachWeekOfInterval: CurriedFn1<Interval, Date[]>,
@@ -139,7 +394,11 @@ declare module.exports: {
   endOfISOWeek: CurriedFn1<Date | string | number, Date>,
   endOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   endOfISOWeekYear: CurriedFn1<Date | string | number, Date>,
-  endOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  endOfISOWeekYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Date
+  >,
   endOfMinute: CurriedFn1<Date | string | number, Date>,
   endOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   endOfMonth: CurriedFn1<Date | string | number, Date>,
@@ -153,13 +412,45 @@ declare module.exports: {
   endOfYear: CurriedFn1<Date | string | number, Date>,
   endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   format: CurriedFn2<string, Date | string | number, string>,
-  formatDistance: CurriedFn2<Date | string | number, Date | string | number, string>,
-  formatDistanceStrict: CurriedFn2<Date | string | number, Date | string | number, string>,
-  formatDistanceStrictWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>,
-  formatDistanceWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>,
-  formatRelative: CurriedFn2<Date | string | number, Date | string | number, string>,
-  formatRelativeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, string>,
-  formatWithOptions: CurriedFn3<Options, string, Date | string | number, string>,
+  formatDistance: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatDistanceStrict: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatDistanceStrictWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatDistanceWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatRelative: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatRelativeWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    string
+  >,
+  formatWithOptions: CurriedFn3<
+    Options,
+    string,
+    Date | string | number,
+    string
+  >,
   fromUnixTime: CurriedFn1<number, Date>,
   fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>,
   getDate: CurriedFn1<Date | string | number, number>,
@@ -168,7 +459,11 @@ declare module.exports: {
   getDayOfYear: CurriedFn1<Date | string | number, number>,
   getDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getDaysInMonth: CurriedFn1<Date | string | number, number>,
-  getDaysInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getDaysInMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getDaysInYear: CurriedFn1<Date | string | number, number>,
   getDaysInYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getDayWithOptions: CurriedFn2<Options, Date | string | number, number>,
@@ -180,18 +475,35 @@ declare module.exports: {
   getISODayWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getISOWeek: CurriedFn1<Date | string | number, number>,
   getISOWeeksInYear: CurriedFn1<Date | string | number, number>,
-  getISOWeeksInYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getISOWeeksInYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getISOWeekWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getISOWeekYear: CurriedFn1<Date | string | number, number>,
-  getISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getISOWeekYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getMilliseconds: CurriedFn1<Date | string | number, number>,
-  getMillisecondsWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getMillisecondsWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getMinutes: CurriedFn1<Date | string | number, number>,
   getMinutesWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getMonth: CurriedFn1<Date | string | number, number>,
   getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>,
-  getOverlappingDaysInIntervalsWithOptions: CurriedFn3<Options, Interval, Interval, number>,
+  getOverlappingDaysInIntervalsWithOptions: CurriedFn3<
+    Options,
+    Interval,
+    Interval,
+    number
+  >,
   getQuarter: CurriedFn1<Date | string | number, number>,
   getQuarterWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getSeconds: CurriedFn1<Date | string | number, number>,
@@ -202,52 +514,173 @@ declare module.exports: {
   getUnixTimeWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getWeek: CurriedFn1<Date | string | number, number>,
   getWeekOfMonth: CurriedFn1<Date | string | number, number>,
-  getWeekOfMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getWeekOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getWeeksInMonth: CurriedFn1<Date | string | number, number>,
-  getWeeksInMonthWithOptions: CurriedFn2<Options, Date | string | number, number>,
+  getWeeksInMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    number
+  >,
   getWeekWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getWeekYear: CurriedFn1<Date | string | number, number>,
   getWeekYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
   getYear: CurriedFn1<Date | string | number, number>,
   getYearWithOptions: CurriedFn2<Options, Date | string | number, number>,
   isAfter: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isAfterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
+  isAfterWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
   isBefore: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isBeforeWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
+  isBeforeWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
   isDate: CurriedFn1<any, boolean>,
   isDateWithOptions: CurriedFn2<Options, any, boolean>,
   isEqual: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isEqualWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
+  isEqualWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
   isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>,
-  isFirstDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
+  isFirstDayOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    boolean
+  >,
   isFriday: CurriedFn1<Date | string | number, boolean>,
   isFridayWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
   isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>,
-  isLastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
+  isLastDayOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    boolean
+  >,
   isLeapYear: CurriedFn1<Date | string | number, boolean>,
   isLeapYearWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
   isMonday: CurriedFn1<Date | string | number, boolean>,
   isMondayWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
-  isSameDay: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameDayWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameHour: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameHourWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameISOWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameISOWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameISOWeekYear: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameISOWeekYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameMinute: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameMinuteWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameMonth: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameMonthWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameQuarter: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameQuarterWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameSecond: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameSecondWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameWeek: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameWeekWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
-  isSameYear: CurriedFn2<Date | string | number, Date | string | number, boolean>,
-  isSameYearWithOptions: CurriedFn3<Options, Date | string | number, Date | string | number, boolean>,
+  isSameDay: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameDayWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameHour: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameHourWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameISOWeek: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameISOWeekWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameISOWeekYear: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameISOWeekYearWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameMinute: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameMinuteWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameMonth: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameMonthWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameQuarter: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameQuarterWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameSecond: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameSecondWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameWeek: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameWeekWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameYear: CurriedFn2<
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
+  isSameYearWithOptions: CurriedFn3<
+    Options,
+    Date | string | number,
+    Date | string | number,
+    boolean
+  >,
   isSaturday: CurriedFn1<Date | string | number, boolean>,
   isSaturdayWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
   isSunday: CurriedFn1<Date | string | number, boolean>,
@@ -263,17 +696,34 @@ declare module.exports: {
   isWeekend: CurriedFn1<Date | string | number, boolean>,
   isWeekendWithOptions: CurriedFn2<Options, Date | string | number, boolean>,
   isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>,
-  isWithinIntervalWithOptions: CurriedFn3<Options, Interval, Date | string | number, boolean>,
+  isWithinIntervalWithOptions: CurriedFn3<
+    Options,
+    Interval,
+    Date | string | number,
+    boolean
+  >,
   lastDayOfDecade: CurriedFn1<Date | string | number, Date>,
   lastDayOfDecadeWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>,
-  lastDayOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  lastDayOfISOWeekWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Date
+  >,
   lastDayOfISOWeekYear: CurriedFn1<Date | string | number, Date>,
-  lastDayOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  lastDayOfISOWeekYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Date
+  >,
   lastDayOfMonth: CurriedFn1<Date | string | number, Date>,
   lastDayOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   lastDayOfQuarter: CurriedFn1<Date | string | number, Date>,
-  lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  lastDayOfQuarterWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Date
+  >,
   lastDayOfWeek: CurriedFn1<Date | string | number, Date>,
   lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   lastDayOfYear: CurriedFn1<Date | string | number, Date>,
@@ -283,37 +733,103 @@ declare module.exports: {
   min: CurriedFn1<(Date | string | number)[], Date>,
   minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>,
   parse: CurriedFn3<Date | string | number, string, string, Date>,
-  parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>,
+  parseWithOptions: CurriedFn4<
+    Options,
+    Date | string | number,
+    string,
+    string,
+    Date
+  >,
   roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>,
-  roundToNearestMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  roundToNearestMinutesWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setDate: CurriedFn2<number, Date | string | number, Date>,
   setDateWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   setDay: CurriedFn2<number, Date | string | number, Date>,
   setDayOfYear: CurriedFn2<number, Date | string | number, Date>,
-  setDayOfYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setDayOfYearWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setDayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   setHours: CurriedFn2<number, Date | string | number, Date>,
-  setHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setHoursWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setISODay: CurriedFn2<number, Date | string | number, Date>,
-  setISODayWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setISODayWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setISOWeek: CurriedFn2<number, Date | string | number, Date>,
-  setISOWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setISOWeekWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setISOWeekYear: CurriedFn2<number, Date | string | number, Date>,
-  setISOWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setISOWeekYearWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setMilliseconds: CurriedFn2<number, Date | string | number, Date>,
-  setMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setMillisecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setMinutes: CurriedFn2<number, Date | string | number, Date>,
-  setMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setMinutesWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setMonth: CurriedFn2<number, Date | string | number, Date>,
-  setMonthWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setMonthWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setQuarter: CurriedFn2<number, Date | string | number, Date>,
-  setQuarterWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setQuarterWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setSeconds: CurriedFn2<number, Date | string | number, Date>,
-  setSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setSecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setWeek: CurriedFn2<number, Date | string | number, Date>,
   setWeekWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   setWeekYear: CurriedFn2<number, Date | string | number, Date>,
-  setWeekYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  setWeekYearWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   setYear: CurriedFn2<number, Date | string | number, Date>,
   setYearWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   startOfDay: CurriedFn1<Date | string | number, Date>,
@@ -325,7 +841,11 @@ declare module.exports: {
   startOfISOWeek: CurriedFn1<Date | string | number, Date>,
   startOfISOWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   startOfISOWeekYear: CurriedFn1<Date | string | number, Date>,
-  startOfISOWeekYearWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  startOfISOWeekYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Date
+  >,
   startOfMinute: CurriedFn1<Date | string | number, Date>,
   startOfMinuteWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   startOfMonth: CurriedFn1<Date | string | number, Date>,
@@ -343,23 +863,68 @@ declare module.exports: {
   subDays: CurriedFn2<number, Date | string | number, Date>,
   subDaysWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
   subHours: CurriedFn2<number, Date | string | number, Date>,
-  subHoursWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subHoursWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subISOWeekYears: CurriedFn2<number, Date | string | number, Date>,
-  subISOWeekYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subISOWeekYearsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subMilliseconds: CurriedFn2<number, Date | string | number, Date>,
-  subMillisecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subMillisecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subMinutes: CurriedFn2<number, Date | string | number, Date>,
-  subMinutesWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subMinutesWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subMonths: CurriedFn2<number, Date | string | number, Date>,
-  subMonthsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subMonthsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subQuarters: CurriedFn2<number, Date | string | number, Date>,
-  subQuartersWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subQuartersWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subSeconds: CurriedFn2<number, Date | string | number, Date>,
-  subSecondsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subSecondsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subWeeks: CurriedFn2<number, Date | string | number, Date>,
-  subWeeksWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subWeeksWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   subYears: CurriedFn2<number, Date | string | number, Date>,
-  subYearsWithOptions: CurriedFn3<Options, number, Date | string | number, Date>,
+  subYearsWithOptions: CurriedFn3<
+    Options,
+    number,
+    Date | string | number,
+    Date
+  >,
   toDate: CurriedFn1<Date | string | number, Date>,
   toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
 }

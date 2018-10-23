@@ -47,7 +47,4 @@ type Locale = {
   }
 }
 
-declare module.exports: (
-  unixTime: number,
-  options?: Options
-) => Date
+declare module.exports: (unixTime: number, options?: Options) => Date
