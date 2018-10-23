@@ -4,12 +4,12 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name fromUnixTime
  * @category Timestamp Helpers
- * @summary Create a date from a UNIX timestamp.
+ * @summary Create a date from a Unix timestamp.
  *
  * @description
- * Create a date from a UNIX timestamp.
+ * Create a date from a Unix timestamp.
  *
- * @param {Number} unixTime - the given UNIX timestamp
+ * @param {Number} unixTime - the given Unix timestamp
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the date
@@ -19,7 +19,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * @example
  * // Create the date 29 February 2012 11:45:05:
  * var result = fromUnixTime(1330515905)
- * //=> 1330515905
+ * //=> Wed Feb 29 2012 11:45:05
  */
 export default function fromUnixTime(dirtyUnixTime, dirtyOptions) {
   if (arguments.length < 1) {
