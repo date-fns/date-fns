@@ -30,6 +30,7 @@ type Interval = {
   start: Date | string | number,
   end: Date | string | number
 }
+type IntervalAliased = Interval
 
 type Options = {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
@@ -42,6 +43,7 @@ type Options = {
   roundingMethod?: 'floor' | 'ceil' | 'round',
   awareOfUnicodeTokens?: boolean
 }
+type OptionsAliased = Options
 
 type Locale = {
   formatDistance: Function,
@@ -70,6 +72,17 @@ type Locale = {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
   }
+}
+type LocaleAliased = Locale
+
+// Exported Type Aliases
+
+declare module 'date-fns' {
+  export type Interval = IntervalAliased
+
+  export type Options = OptionsAliased
+
+  export type Locale = LocaleAliased
 }
 
 // Regular Functions

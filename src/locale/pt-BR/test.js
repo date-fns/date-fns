@@ -88,8 +88,8 @@ describe('pt-BR locale', function () {
       })
 
       it('ordinal day of week', function () {
-        var result = format(date, "eo 'dia de la semana'", { locale: locale })
-        assert(result === '7º dia de la semana')
+        var result = format(date, "eo 'dia da semana'", { locale: locale })
+        assert(result === '7º dia da semana')
       })
     })
 
@@ -112,7 +112,7 @@ describe('pt-BR locale', function () {
       it('flexible day periods', function () {
         it('works as expected', function () {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 de la mañana')
+          assert(result === '10 da manhã')
         })
       })
     })
