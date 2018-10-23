@@ -17371,6 +17371,9 @@ declare module 'date-fns/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arSA: Locale
+  namespace arSA {}
+
   const bg: Locale
   namespace bg {}
 
@@ -17526,6 +17529,11 @@ declare module 'date-fns/locale/ar' {
 declare module 'date-fns/locale/ar-DZ' {
   import {arDZ} from 'date-fns/locale'
   export = arDZ
+}
+
+declare module 'date-fns/locale/ar-SA' {
+  import {arSA} from 'date-fns/locale'
+  export = arSA
 }
 
 declare module 'date-fns/locale/bg' {
@@ -17778,6 +17786,11 @@ declare module 'date-fns/locale/ar-DZ/index' {
   export = arDZ
 }
 
+declare module 'date-fns/locale/ar-SA/index' {
+  import {arSA} from 'date-fns/locale'
+  export = arSA
+}
+
 declare module 'date-fns/locale/bg/index' {
   import {bg} from 'date-fns/locale'
   export = bg
@@ -18028,6 +18041,11 @@ declare module 'date-fns/locale/ar-DZ/index.js' {
   export = arDZ
 }
 
+declare module 'date-fns/locale/ar-SA/index.js' {
+  import {arSA} from 'date-fns/locale'
+  export = arSA
+}
+
 declare module 'date-fns/locale/bg/index.js' {
   import {bg} from 'date-fns/locale'
   export = bg
@@ -18275,6 +18293,9 @@ declare module 'date-fns/esm/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arSA: Locale
+  namespace arSA {}
+
   const bg: Locale
   namespace bg {}
 
@@ -18430,6 +18451,11 @@ declare module 'date-fns/esm/locale/ar' {
 declare module 'date-fns/esm/locale/ar-DZ' {
   import {arDZ} from 'date-fns/esm/locale'
   export default arDZ
+}
+
+declare module 'date-fns/esm/locale/ar-SA' {
+  import {arSA} from 'date-fns/esm/locale'
+  export default arSA
 }
 
 declare module 'date-fns/esm/locale/bg' {
@@ -18682,6 +18708,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index' {
   export default arDZ
 }
 
+declare module 'date-fns/esm/locale/ar-SA/index' {
+  import {arSA} from 'date-fns/esm/locale'
+  export default arSA
+}
+
 declare module 'date-fns/esm/locale/bg/index' {
   import {bg} from 'date-fns/esm/locale'
   export default bg
@@ -18930,6 +18961,11 @@ declare module 'date-fns/esm/locale/ar/index.js' {
 declare module 'date-fns/esm/locale/ar-DZ/index.js' {
   import {arDZ} from 'date-fns/esm/locale'
   export default arDZ
+}
+
+declare module 'date-fns/esm/locale/ar-SA/index.js' {
+  import {arSA} from 'date-fns/esm/locale'
+  export default arSA
 }
 
 declare module 'date-fns/esm/locale/bg/index.js' {

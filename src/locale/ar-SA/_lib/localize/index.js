@@ -12,19 +12,51 @@ var quarterValues = {
   wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع']
 }
 
-// prettier-ignore
 var monthValues = {
   narrow: ['ي', 'ف', 'م', 'أ', 'م', 'ي', 'ي', 'أ', 'س', 'أ', 'ن', 'د'],
-  abbreviated:  ['ينا', 'فبر', 'مارس', 'أبريل', 'مايو', 'يونـ', 'يولـ', 'أغسـ', 'سبتـ', 'أكتـ', 'نوفـ', 'ديسـ'],
-  wide:  ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+  abbreviated: [
+    'ينا',
+    'فبر',
+    'مارس',
+    'أبريل',
+    'مايو',
+    'يونـ',
+    'يولـ',
+    'أغسـ',
+    'سبتـ',
+    'أكتـ',
+    'نوفـ',
+    'ديسـ'
+  ],
+  wide: [
+    'يناير',
+    'فبراير',
+    'مارس',
+    'أبريل',
+    'مايو',
+    'يونيو',
+    'يوليو',
+    'أغسطس',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر'
+  ]
 }
 
-// prettier-ignore
 var dayValues = {
   narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
   short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
-  abbreviated:  ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
-  wide: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت']
+  abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
+  wide: [
+    'الأحد',
+    'الاثنين',
+    'الثلاثاء',
+    'الأربعاء',
+    'الخميس',
+    'الجمعة',
+    'السبت'
+  ]
 }
 
 var dayPeriodValues = {
@@ -90,19 +122,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
-
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
+function ordinalNumber(dirtyNumber) {
   return String(dirtyNumber)
 }
 
