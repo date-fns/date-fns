@@ -34,6 +34,7 @@ declare module.exports: {
   af: Locale,
   ar: Locale,
   arDZ: Locale,
+  arSA: Locale,
   bg: Locale,
   bn: Locale,
   ca: Locale,

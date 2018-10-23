@@ -26,7 +26,6 @@ var matchMonthPatterns = {
   narrow: /^[يفمأمسند]/i,
   abbreviated: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i,
   wide: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i
-  //wide: /^(ين|ف|مار|أب|ماي|يون|يول|أغ|س|أك|ن|د)/i
 }
 var parseMonthPatterns = {
   narrow: [

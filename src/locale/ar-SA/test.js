@@ -10,7 +10,7 @@ import formatDistanceStrict from '../../formatDistanceStrict'
 import formatRelative from '../../formatRelative'
 import parse from '../../parse'
 
-describe('en-US locale', function() {
+describe('ar-SA locale', function() {
   context('with `format`', function() {
     var date = new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900)
 
