@@ -9,6 +9,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * @description
  * Rounds the given date to the nearest minute
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

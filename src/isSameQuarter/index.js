@@ -8,6 +8,7 @@ import startOfQuarter from '../startOfQuarter/index.js'
  * @description
  * Are the given dates in the same year quarter?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -22,6 +22,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

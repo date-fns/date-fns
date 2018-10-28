@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Get the number of days in a month of the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

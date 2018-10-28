@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Get the number of calendar months between the given dates.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

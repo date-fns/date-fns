@@ -8,6 +8,7 @@ import startOfWeek from '../startOfWeek/index.js'
  * @description
  * Are the given dates in the same week?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -12,6 +12,7 @@ import toDate from '../toDate/index.js'
  *
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -10,6 +10,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * @description
  * Add the specified number of months to the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

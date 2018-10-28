@@ -10,6 +10,7 @@ import endOfMonth from '../endOfMonth/index.js'
  * @description
  * Is the given date the last day of a month?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

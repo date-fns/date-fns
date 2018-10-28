@@ -9,6 +9,7 @@ import addQuarters from '../addQuarters/index.js'
  * @description
  * Subtract the specified number of year quarters from the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -8,6 +8,7 @@ import startOfMinute from '../startOfMinute/index.js'
  * @description
  * Are the given dates in the same minute?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

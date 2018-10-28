@@ -8,6 +8,7 @@ import getTime from '../getTime/index.js'
  * @description
  * Get the seconds timestamp of the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

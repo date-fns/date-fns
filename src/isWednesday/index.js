@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Is the given date Wednesday?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

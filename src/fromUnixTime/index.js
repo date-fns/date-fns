@@ -9,6 +9,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * @description
  * Create a date from a Unix timestamp.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

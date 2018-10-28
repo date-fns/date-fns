@@ -9,6 +9,7 @@ import addMinutes from '../addMinutes/index.js'
  * @description
  * Subtract the specified number of minutes from the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

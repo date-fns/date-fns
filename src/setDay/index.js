@@ -10,6 +10,7 @@ import addDays from '../addDays/index.js'
  * @description
  * Set the day of the week to the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

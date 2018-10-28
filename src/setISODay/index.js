@@ -13,6 +13,7 @@ import getISODay from '../getISODay/index.js'
  * ISO week starts with Monday.
  * 7 is the index of Sunday, 1 is the index of Monday etc.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

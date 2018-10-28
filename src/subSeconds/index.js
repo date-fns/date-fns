@@ -9,6 +9,7 @@ import addSeconds from '../addSeconds/index.js'
  * @description
  * Subtract the specified number of seconds from the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

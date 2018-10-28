@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Does the given date fall on a weekend?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

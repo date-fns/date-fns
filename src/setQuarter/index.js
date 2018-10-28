@@ -10,6 +10,7 @@ import setMonth from '../setMonth/index.js'
  * @description
  * Set the year quarter to the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

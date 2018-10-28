@@ -10,6 +10,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * @description
  * Get the number of hours between the given dates.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -9,6 +9,7 @@ import toDate from '../toDate/index.js'
  * Compare the two dates and return -1 if the first date is after the second,
  * 1 if the first date is before the second or 0 if dates are equal.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -64,6 +64,7 @@ var patterns = {
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  * All *date-fns* functions will throw `RangeError` if `options.additionalDigits` is not 0, 1, 2 or undefined.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

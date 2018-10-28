@@ -10,6 +10,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * @description
  * Get the day of the year of the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

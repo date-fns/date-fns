@@ -9,6 +9,7 @@ import addDays from '../addDays/index.js'
  * @description
  * Add the specified number of week to the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

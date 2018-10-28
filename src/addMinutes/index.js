@@ -11,6 +11,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @description
  * Add the specified number of minutes to the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

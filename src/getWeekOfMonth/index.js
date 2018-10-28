@@ -11,6 +11,7 @@ import getDay from '../getDay/index.js'
  * @description
  * Get the week of the month of the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

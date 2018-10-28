@@ -10,6 +10,7 @@ import addWeeks from '../addWeeks/index.js'
  * @description
  * Return the array of weeks within the specified time interval.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

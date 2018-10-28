@@ -18,6 +18,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

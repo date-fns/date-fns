@@ -8,6 +8,7 @@ import startOfDay from '../startOfDay/index.js'
  * @description
  * Are the given dates in the same day?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

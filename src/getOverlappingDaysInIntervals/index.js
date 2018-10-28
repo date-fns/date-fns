@@ -10,6 +10,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two time intervals
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

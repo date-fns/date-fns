@@ -10,6 +10,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @description
  * Get the number of minutes between the given dates.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

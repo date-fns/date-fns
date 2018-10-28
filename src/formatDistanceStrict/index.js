@@ -28,6 +28,7 @@ var MINUTES_IN_YEAR = 525600
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

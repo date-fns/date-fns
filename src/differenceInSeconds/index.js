@@ -8,6 +8,7 @@ import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
  * @description
  * Get the number of seconds between the given dates.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

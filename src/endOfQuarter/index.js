@@ -9,6 +9,7 @@ import toDate from '../toDate/index.js'
  * Return the end of a year quarter for the given date.
  * The result will be in the local timezone.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

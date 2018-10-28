@@ -275,6 +275,7 @@ var doubleQuoteRegExp = /''/g
  *
  * 8. These tokens are often confused with others. See: https://git.io/fxCyr
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

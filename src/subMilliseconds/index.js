@@ -9,6 +9,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
  * @description
  * Subtract the specified number of milliseconds from the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

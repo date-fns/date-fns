@@ -10,6 +10,7 @@ import compareAsc from '../compareAsc/index.js'
  * @description
  * Get the number of full months between the given dates.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

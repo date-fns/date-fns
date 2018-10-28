@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Return the array of dates within the specified time interval.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

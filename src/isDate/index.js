@@ -6,6 +6,7 @@
  * @description
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

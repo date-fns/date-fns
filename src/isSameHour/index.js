@@ -8,6 +8,7 @@ import startOfHour from '../startOfHour/index.js'
  * @description
  * Are the given dates in the same hour?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

@@ -8,6 +8,7 @@ import toDate from '../toDate/index.js'
  * @description
  * Are the given dates in the same year?
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

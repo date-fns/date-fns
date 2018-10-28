@@ -10,6 +10,7 @@ import startOfMonth from '../startOfMonth/index.js'
  * @description
  * Get the number of calendar weeks the month in the given date spans.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.

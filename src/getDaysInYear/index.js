@@ -9,6 +9,7 @@ import isLeapYear from '../isLeapYear/index.js'
  * @description
  * Get the number of days in a year of the given date.
  *
+ *
  * ### v2.0.0 breaking changes:
  * 
  * - Some changes are common for whole library.
