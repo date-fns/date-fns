@@ -8,6 +8,12 @@ import toDate from '../toDate/index.js'
  * @description
  * Get the year of the given date.
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}

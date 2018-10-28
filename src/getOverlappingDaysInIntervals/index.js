@@ -10,6 +10,12 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @description
  * Get the number of days that overlap in two time intervals
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

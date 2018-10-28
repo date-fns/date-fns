@@ -8,6 +8,12 @@ import startOfHour from '../startOfHour/index.js'
  * @description
  * Are the given dates in the same hour?
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

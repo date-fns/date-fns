@@ -8,6 +8,12 @@ import toDate from '../toDate/index.js'
  * @description
  * Is the given time interval overlapping with another time interval?
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link docs/types/Options}

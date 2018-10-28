@@ -97,6 +97,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'v2-Behaviour-Changes',
+      category: 'General',
+      title: 'v2.0.0 behaviour changes',
+      description: 'Changes common for all functions',
+      path: path.join(__dirname, 'v2BehaviourChanges.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',

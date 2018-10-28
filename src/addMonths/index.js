@@ -10,6 +10,12 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * @description
  * Add the specified number of months to the given date.
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of months to be added
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

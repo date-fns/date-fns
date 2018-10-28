@@ -6,6 +6,12 @@
  * @description
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {*} value - the value to check
  * @param {Options} [options] - the object with options. Unused; present for FP submodule compatibility sake. See [Options]{@link https://date-fns.org/docs/Options}
  * @returns {boolean} true if the given value is a date

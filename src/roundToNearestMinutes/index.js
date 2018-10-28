@@ -9,6 +9,12 @@ import toInteger from '../_lib/toInteger/index.js'
  * @description
  * Rounds the given date to the nearest minute
  *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - Some changes are common for whole library.
+ *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
+ *   for more details.
+ *
  * @param {Date|String|Number} date - the date to round
  * @param {Number} [nearestTo=1] - the closest minute to round to, must be between 1 and 30 inclusive
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
