@@ -18,6 +18,14 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - Function renamed:
+ *
+ *   `endOfISOYear` → `endOfISOWeekYear`
+ *
+ *   ISO week year is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g. `addWeekYears`.
+ *
  * @param {Date|String|Number} date - the original date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}

@@ -18,6 +18,14 @@ import subISOWeekYears from '../subISOWeekYears/index.js'
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - Function renamed:
+ *
+ *   `differenceInISOYears` → `differenceInISOWeekYears`
+ *
+ *   ISO week year is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g. `addWeekYears`.
+ *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

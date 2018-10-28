@@ -19,6 +19,14 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - Function renamed:
+ *
+ *   `setISOYear` → `setISOWeekYear`
+ *
+ *   ISO week year is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g. `setWeekYear`.
+ *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
