@@ -13,7 +13,7 @@ import endOfMonth from '../endOfMonth/index.js'
  * @param {Date|String|Number} date - the given month
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @returns {Array} an array containing all the Saturdays and Sundays
+ * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
  *
  * @example

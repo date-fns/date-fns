@@ -381,7 +381,7 @@ declare module 'date-fns' {
 
   }
 
-  function eachWeekendOfInterval(interval: Interval, options?: Options): Array
+  function eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
   namespace eachWeekendOfInterval {
 
   }
@@ -389,7 +389,7 @@ declare module 'date-fns' {
   function eachWeekendOfMonth(
     date: Date | string | number,
     options?: Options
-  ): Array
+  ): Date[]
   namespace eachWeekendOfMonth {
 
   }
@@ -397,7 +397,7 @@ declare module 'date-fns' {
   function eachWeekendOfYear(
     date: Date | string | number,
     options?: Options
-  ): Array
+  ): Date[]
   namespace eachWeekendOfYear {
 
   }
@@ -4093,17 +4093,17 @@ declare module 'date-fns/fp' {
 
   }
 
-  const eachWeekendOfInterval: CurriedFn1<Interval, Array>
+  const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {
 
   }
 
-  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Array>
+  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachWeekendOfIntervalWithOptions {
 
   }
 
-  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Array>
+  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Date[]>
   namespace eachWeekendOfMonth {
 
   }
@@ -4111,13 +4111,13 @@ declare module 'date-fns/fp' {
   const eachWeekendOfMonthWithOptions: CurriedFn2<
     Options,
     Date | string | number,
-    Array
+    Date[]
   >
   namespace eachWeekendOfMonthWithOptions {
 
   }
 
-  const eachWeekendOfYear: CurriedFn1<Date | string | number, Array>
+  const eachWeekendOfYear: CurriedFn1<Date | string | number, Date[]>
   namespace eachWeekendOfYear {
 
   }
@@ -4125,7 +4125,7 @@ declare module 'date-fns/fp' {
   const eachWeekendOfYearWithOptions: CurriedFn2<
     Options,
     Date | string | number,
-    Array
+    Date[]
   >
   namespace eachWeekendOfYearWithOptions {
 
@@ -10687,7 +10687,7 @@ declare module 'date-fns/esm' {
 
   }
 
-  function eachWeekendOfInterval(interval: Interval, options?: Options): Array
+  function eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
   namespace eachWeekendOfInterval {
 
   }
@@ -10695,7 +10695,7 @@ declare module 'date-fns/esm' {
   function eachWeekendOfMonth(
     date: Date | string | number,
     options?: Options
-  ): Array
+  ): Date[]
   namespace eachWeekendOfMonth {
 
   }
@@ -10703,7 +10703,7 @@ declare module 'date-fns/esm' {
   function eachWeekendOfYear(
     date: Date | string | number,
     options?: Options
-  ): Array
+  ): Date[]
   namespace eachWeekendOfYear {
 
   }
@@ -14399,17 +14399,17 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const eachWeekendOfInterval: CurriedFn1<Interval, Array>
+  const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {
 
   }
 
-  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Array>
+  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachWeekendOfIntervalWithOptions {
 
   }
 
-  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Array>
+  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Date[]>
   namespace eachWeekendOfMonth {
 
   }
@@ -14417,13 +14417,13 @@ declare module 'date-fns/esm/fp' {
   const eachWeekendOfMonthWithOptions: CurriedFn2<
     Options,
     Date | string | number,
-    Array
+    Date[]
   >
   namespace eachWeekendOfMonthWithOptions {
 
   }
 
-  const eachWeekendOfYear: CurriedFn1<Date | string | number, Array>
+  const eachWeekendOfYear: CurriedFn1<Date | string | number, Date[]>
   namespace eachWeekendOfYear {
 
   }
@@ -14431,7 +14431,7 @@ declare module 'date-fns/esm/fp' {
   const eachWeekendOfYearWithOptions: CurriedFn2<
     Options,
     Date | string | number,
-    Array
+    Date[]
   >
   namespace eachWeekendOfYearWithOptions {
 
@@ -22938,11 +22938,11 @@ interface dateFns {
 
   eachDayOfInterval(interval: Interval, options?: Options): Date[]
 
-  eachWeekendOfInterval(interval: Interval, options?: Options): Array
+  eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
 
-  eachWeekendOfMonth(date: Date | string | number, options?: Options): Array
+  eachWeekendOfMonth(date: Date | string | number, options?: Options): Date[]
 
-  eachWeekendOfYear(date: Date | string | number, options?: Options): Array
+  eachWeekendOfYear(date: Date | string | number, options?: Options): Date[]
 
   eachWeekOfInterval(interval: Interval, options?: Options): Date[]
 

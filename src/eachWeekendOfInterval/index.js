@@ -17,7 +17,7 @@ import isWeekend from '../isWeekend/index.js'
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @returns {Array} an array containing all the Saturdays and Sundays
+ * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
