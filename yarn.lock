@@ -2624,10 +2624,10 @@ firebase@^3.7.1:
     rsvp "3.2.1"
     xmlhttprequest "1.8.0"
 
-flow-bin@0.72:
-  version "0.72.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.72.0.tgz#12051180fb2db7ccb728fefe67c77e955e92a44d"
-  integrity sha1-EgURgPstt8y3KP7+Z8d+lV6SpE0=
+flow-bin@0.84.0:
+  version "0.84.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.84.0.tgz#4cb2364c750fb37a7840524fa62456b53f64cdcb"
+  integrity sha512-ocji8eEYp+YfICsm+F6cIHUcD7v5sb0/ADEXm6gyUKdjQzmSckMrPUdZtyfP973t3YGHKliUMxMvIBHyR5LbXQ==
 
 for-in@^0.1.5:
   version "0.1.6"

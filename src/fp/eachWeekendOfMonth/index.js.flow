@@ -47,4 +47,6 @@ type Locale = {
   }
 }
 
-declare module.exports: (interval: Interval, options?: Options) => Date[]
+type CurriedFn1<A, R> = <A>(a: A) => R
+
+declare module.exports: CurriedFn1<Date | string | number, Date[]>

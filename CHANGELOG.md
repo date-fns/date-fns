@@ -15,14 +15,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 ### Added
 
--   New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions.
-
-    -   `eachWeekendOfInterval`
-
-    -   `eachWeekendOfMonth`
-
-    -   `eachWeekendOfYear`
-
 - FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
   functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
@@ -141,7 +133,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [fi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/775). Kudos to [@sjuvonen](https://github.com/sjuvonen).
 
-
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
@@ -171,6 +162,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
 
 - Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
+
+-   New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
+
+    -   `eachWeekendOfInterval`
+
+    -   `eachWeekendOfMonth`
+
+    -   `eachWeekendOfYear`
 
 ### Changed
 
