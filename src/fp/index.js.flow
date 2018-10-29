@@ -383,6 +383,20 @@ declare module.exports: {
   >,
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
+  eachWeekendOfInterval: CurriedFn1<Interval, Array>,
+  eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Array>,
+  eachWeekendOfMonth: CurriedFn1<Date | string | number, Array>,
+  eachWeekendOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >,
+  eachWeekendOfYear: CurriedFn1<Date | string | number, Array>,
+  eachWeekendOfYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >,
   eachWeekOfInterval: CurriedFn1<Interval, Date[]>,
   eachWeekOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
   endOfDay: CurriedFn1<Date | string | number, Date>,

@@ -14,7 +14,8 @@ type Options = {
   includeSeconds?: boolean,
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round'
+  roundingMethod?: 'floor' | 'ceil' | 'round',
+  awareOfUnicodeTokens?: boolean
 }
 
 type Locale = {
@@ -46,7 +47,4 @@ type Locale = {
   }
 }
 
-declare module.exports: (
-  interval: Interval,
-  options?: Options
-) => Array
+declare module.exports: (interval: Interval, options?: Options) => Array

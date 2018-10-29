@@ -381,6 +381,27 @@ declare module 'date-fns' {
 
   }
 
+  function eachWeekendOfInterval(interval: Interval, options?: Options): Array
+  namespace eachWeekendOfInterval {
+
+  }
+
+  function eachWeekendOfMonth(
+    date: Date | string | number,
+    options?: Options
+  ): Array
+  namespace eachWeekendOfMonth {
+
+  }
+
+  function eachWeekendOfYear(
+    date: Date | string | number,
+    options?: Options
+  ): Array
+  namespace eachWeekendOfYear {
+
+  }
+
   function eachWeekOfInterval(interval: Interval, options?: Options): Date[]
   namespace eachWeekOfInterval {
 
@@ -1365,6 +1386,21 @@ declare module 'date-fns/eachDayOfInterval' {
   export = eachDayOfInterval
 }
 
+declare module 'date-fns/eachWeekendOfInterval' {
+  import { eachWeekendOfInterval } from 'date-fns'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/eachWeekendOfMonth' {
+  import { eachWeekendOfMonth } from 'date-fns'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/eachWeekendOfYear' {
+  import { eachWeekendOfYear } from 'date-fns'
+  export = eachWeekendOfYear
+}
+
 declare module 'date-fns/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns'
   export = eachWeekOfInterval
@@ -2115,6 +2151,21 @@ declare module 'date-fns/eachDayOfInterval/index' {
   export = eachDayOfInterval
 }
 
+declare module 'date-fns/eachWeekendOfInterval/index' {
+  import { eachWeekendOfInterval } from 'date-fns'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/eachWeekendOfMonth/index' {
+  import { eachWeekendOfMonth } from 'date-fns'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/eachWeekendOfYear/index' {
+  import { eachWeekendOfYear } from 'date-fns'
+  export = eachWeekendOfYear
+}
+
 declare module 'date-fns/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns'
   export = eachWeekOfInterval
@@ -2863,6 +2914,21 @@ declare module 'date-fns/differenceInYears/index.js' {
 declare module 'date-fns/eachDayOfInterval/index.js' {
   import { eachDayOfInterval } from 'date-fns'
   export = eachDayOfInterval
+}
+
+declare module 'date-fns/eachWeekendOfInterval/index.js' {
+  import { eachWeekendOfInterval } from 'date-fns'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/eachWeekendOfMonth/index.js' {
+  import { eachWeekendOfMonth } from 'date-fns'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/eachWeekendOfYear/index.js' {
+  import { eachWeekendOfYear } from 'date-fns'
+  export = eachWeekendOfYear
 }
 
 declare module 'date-fns/eachWeekOfInterval/index.js' {
@@ -4024,6 +4090,44 @@ declare module 'date-fns/fp' {
 
   const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {
+
+  }
+
+  const eachWeekendOfInterval: CurriedFn1<Interval, Array>
+  namespace eachWeekendOfInterval {
+
+  }
+
+  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Array>
+  namespace eachWeekendOfIntervalWithOptions {
+
+  }
+
+  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Array>
+  namespace eachWeekendOfMonth {
+
+  }
+
+  const eachWeekendOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >
+  namespace eachWeekendOfMonthWithOptions {
+
+  }
+
+  const eachWeekendOfYear: CurriedFn1<Date | string | number, Array>
+  namespace eachWeekendOfYear {
+
+  }
+
+  const eachWeekendOfYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >
+  namespace eachWeekendOfYearWithOptions {
 
   }
 
@@ -6027,6 +6131,36 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
   export = eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachWeekendOfInterval' {
+  import { eachWeekendOfInterval } from 'date-fns/fp'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekendOfIntervalWithOptions' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonth' {
+  import { eachWeekendOfMonth } from 'date-fns/fp'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonthWithOptions' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfYear' {
+  import { eachWeekendOfYear } from 'date-fns/fp'
+  export = eachWeekendOfYear
+}
+
+declare module 'date-fns/fp/eachWeekendOfYearWithOptions' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfYearWithOptions
+}
+
 declare module 'date-fns/fp/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns/fp'
   export = eachWeekOfInterval
@@ -7525,6 +7659,36 @@ declare module 'date-fns/fp/eachDayOfInterval/index' {
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/fp'
   export = eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfInterval/index' {
+  import { eachWeekendOfInterval } from 'date-fns/fp'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekendOfIntervalWithOptions/index' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonth/index' {
+  import { eachWeekendOfMonth } from 'date-fns/fp'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonthWithOptions/index' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfYear/index' {
+  import { eachWeekendOfYear } from 'date-fns/fp'
+  export = eachWeekendOfYear
+}
+
+declare module 'date-fns/fp/eachWeekendOfYearWithOptions/index' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfYearWithOptions
 }
 
 declare module 'date-fns/fp/eachWeekOfInterval/index' {
@@ -9027,6 +9191,36 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index.js' {
   export = eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachWeekendOfInterval/index.js' {
+  import { eachWeekendOfInterval } from 'date-fns/fp'
+  export = eachWeekendOfInterval
+}
+
+declare module 'date-fns/fp/eachWeekendOfIntervalWithOptions/index.js' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonth/index.js' {
+  import { eachWeekendOfMonth } from 'date-fns/fp'
+  export = eachWeekendOfMonth
+}
+
+declare module 'date-fns/fp/eachWeekendOfMonthWithOptions/index.js' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/fp/eachWeekendOfYear/index.js' {
+  import { eachWeekendOfYear } from 'date-fns/fp'
+  export = eachWeekendOfYear
+}
+
+declare module 'date-fns/fp/eachWeekendOfYearWithOptions/index.js' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/fp'
+  export = eachWeekendOfYearWithOptions
+}
+
 declare module 'date-fns/fp/eachWeekOfInterval/index.js' {
   import { eachWeekOfInterval } from 'date-fns/fp'
   export = eachWeekOfInterval
@@ -10493,6 +10687,27 @@ declare module 'date-fns/esm' {
 
   }
 
+  function eachWeekendOfInterval(interval: Interval, options?: Options): Array
+  namespace eachWeekendOfInterval {
+
+  }
+
+  function eachWeekendOfMonth(
+    date: Date | string | number,
+    options?: Options
+  ): Array
+  namespace eachWeekendOfMonth {
+
+  }
+
+  function eachWeekendOfYear(
+    date: Date | string | number,
+    options?: Options
+  ): Array
+  namespace eachWeekendOfYear {
+
+  }
+
   function eachWeekOfInterval(interval: Interval, options?: Options): Date[]
   namespace eachWeekOfInterval {
 
@@ -11477,6 +11692,21 @@ declare module 'date-fns/esm/eachDayOfInterval' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachWeekendOfInterval' {
+  import { eachWeekendOfInterval } from 'date-fns/esm'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/eachWeekendOfMonth' {
+  import { eachWeekendOfMonth } from 'date-fns/esm'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/eachWeekendOfYear' {
+  import { eachWeekendOfYear } from 'date-fns/esm'
+  export default eachWeekendOfYear
+}
+
 declare module 'date-fns/esm/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns/esm'
   export default eachWeekOfInterval
@@ -12227,6 +12457,21 @@ declare module 'date-fns/esm/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachWeekendOfInterval/index' {
+  import { eachWeekendOfInterval } from 'date-fns/esm'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/eachWeekendOfMonth/index' {
+  import { eachWeekendOfMonth } from 'date-fns/esm'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/eachWeekendOfYear/index' {
+  import { eachWeekendOfYear } from 'date-fns/esm'
+  export default eachWeekendOfYear
+}
+
 declare module 'date-fns/esm/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns/esm'
   export default eachWeekOfInterval
@@ -12975,6 +13220,21 @@ declare module 'date-fns/esm/differenceInYears/index.js' {
 declare module 'date-fns/esm/eachDayOfInterval/index.js' {
   import { eachDayOfInterval } from 'date-fns/esm'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/esm/eachWeekendOfInterval/index.js' {
+  import { eachWeekendOfInterval } from 'date-fns/esm'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/eachWeekendOfMonth/index.js' {
+  import { eachWeekendOfMonth } from 'date-fns/esm'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/eachWeekendOfYear/index.js' {
+  import { eachWeekendOfYear } from 'date-fns/esm'
+  export default eachWeekendOfYear
 }
 
 declare module 'date-fns/esm/eachWeekOfInterval/index.js' {
@@ -14136,6 +14396,44 @@ declare module 'date-fns/esm/fp' {
 
   const eachDayOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
   namespace eachDayOfIntervalWithOptions {
+
+  }
+
+  const eachWeekendOfInterval: CurriedFn1<Interval, Array>
+  namespace eachWeekendOfInterval {
+
+  }
+
+  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Array>
+  namespace eachWeekendOfIntervalWithOptions {
+
+  }
+
+  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Array>
+  namespace eachWeekendOfMonth {
+
+  }
+
+  const eachWeekendOfMonthWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >
+  namespace eachWeekendOfMonthWithOptions {
+
+  }
+
+  const eachWeekendOfYear: CurriedFn1<Date | string | number, Array>
+  namespace eachWeekendOfYear {
+
+  }
+
+  const eachWeekendOfYearWithOptions: CurriedFn2<
+    Options,
+    Date | string | number,
+    Array
+  >
+  namespace eachWeekendOfYearWithOptions {
 
   }
 
@@ -16139,6 +16437,36 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachWeekendOfInterval' {
+  import { eachWeekendOfInterval } from 'date-fns/esm/fp'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfIntervalWithOptions' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonth' {
+  import { eachWeekendOfMonth } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonthWithOptions' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYear' {
+  import { eachWeekendOfYear } from 'date-fns/esm/fp'
+  export default eachWeekendOfYear
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYearWithOptions' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfYearWithOptions
+}
+
 declare module 'date-fns/esm/fp/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns/esm/fp'
   export default eachWeekOfInterval
@@ -17639,6 +17967,36 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachWeekendOfInterval/index' {
+  import { eachWeekendOfInterval } from 'date-fns/esm/fp'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfIntervalWithOptions/index' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonth/index' {
+  import { eachWeekendOfMonth } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonthWithOptions/index' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYear/index' {
+  import { eachWeekendOfYear } from 'date-fns/esm/fp'
+  export default eachWeekendOfYear
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYearWithOptions/index' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfYearWithOptions
+}
+
 declare module 'date-fns/esm/fp/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns/esm/fp'
   export default eachWeekOfInterval
@@ -19137,6 +19495,36 @@ declare module 'date-fns/esm/fp/eachDayOfInterval/index.js' {
 declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfInterval/index.js' {
+  import { eachWeekendOfInterval } from 'date-fns/esm/fp'
+  export default eachWeekendOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfIntervalWithOptions/index.js' {
+  import { eachWeekendOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonth/index.js' {
+  import { eachWeekendOfMonth } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonth
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfMonthWithOptions/index.js' {
+  import { eachWeekendOfMonthWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfMonthWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYear/index.js' {
+  import { eachWeekendOfYear } from 'date-fns/esm/fp'
+  export default eachWeekendOfYear
+}
+
+declare module 'date-fns/esm/fp/eachWeekendOfYearWithOptions/index.js' {
+  import { eachWeekendOfYearWithOptions } from 'date-fns/esm/fp'
+  export default eachWeekendOfYearWithOptions
 }
 
 declare module 'date-fns/esm/fp/eachWeekOfInterval/index.js' {
@@ -22549,6 +22937,12 @@ interface dateFns {
   ): number
 
   eachDayOfInterval(interval: Interval, options?: Options): Date[]
+
+  eachWeekendOfInterval(interval: Interval, options?: Options): Array
+
+  eachWeekendOfMonth(date: Date | string | number, options?: Options): Array
+
+  eachWeekendOfYear(date: Date | string | number, options?: Options): Array
 
   eachWeekOfInterval(interval: Interval, options?: Options): Date[]
 

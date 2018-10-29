@@ -56,6 +56,11 @@ export { default as differenceInWeeks } from './differenceInWeeks/index.js'
 export { default as differenceInYears } from './differenceInYears/index.js'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
+export {
+  default as eachWeekendOfInterval
+} from './eachWeekendOfInterval/index.js'
+export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
+export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
 export { default as endOfHour } from './endOfHour/index.js'

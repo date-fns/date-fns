@@ -150,6 +150,20 @@ export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
 export {
   default as eachWeekOfIntervalWithOptions
 } from './eachWeekOfIntervalWithOptions/index.js'
+export {
+  default as eachWeekendOfInterval
+} from './eachWeekendOfInterval/index.js'
+export {
+  default as eachWeekendOfIntervalWithOptions
+} from './eachWeekendOfIntervalWithOptions/index.js'
+export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
+export {
+  default as eachWeekendOfMonthWithOptions
+} from './eachWeekendOfMonthWithOptions/index.js'
+export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
+export {
+  default as eachWeekendOfYearWithOptions
+} from './eachWeekendOfYearWithOptions/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDayWithOptions } from './endOfDayWithOptions/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
