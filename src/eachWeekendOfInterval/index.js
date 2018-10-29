@@ -24,45 +24,41 @@ import isWeekend from '../isWeekend/index.js'
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
- * var result = eachWeekendOfInterval(
- *   {start: new Date(2022, 8, 17),
+ * var result = eachWeekendOfInterval({
+ *   start: new Date(2022, 8, 17),
  *   end: new Date(2022, 8, 30)
- * },
- *   {weekStartsOn: 2}
- * )
- * //=> ['Sat Sep 17 2022', 'Sun Sep 18 2022', 'Sat Sep 24 2022', 'Sun Sep 25 2022']
+ * })
+ * //=> [
+ *   2022-09-17T22:00:00.000Z,
+ *   2022-09-23T22:00:00.000Z,
+ *   2022-09-24T22:00:00.000Z
+ * ]
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
- * var result = eachWeekendOfInterval(
- *   {start: new Date(2016, 2, 5),
- *   end: new Date(2016, 2, 19)
- * },
- *   {weekStartsOn: 2}
- * )
- * //=> ['Sat Mar 05 2016', 'Sun Mar 06 2016, 'Sat Mar 12 2016', 'Sun Mar 13 2016', 'Sat Mar 19 2016']
- *
- * @example
- * // Lists all Saturdays and Sundays in the given date interval
- * var result = eachWeekendOfInterval(
- *   {start: new Date(2016, 2, 25),
+ * var result = eachWeekendOfInterval({
+ *   start: new Date(2016, 2, 25),
  *   end: new Date(2016, 2, 5)
- * },
- *   {weekStartsOn: 2}
- * )
- * //=> RangeError
+ * })
+ * //=> RangeError: Invalid interval
  */
-
-export default function eachWeekendOfInterval (dirtyInterval, dirtyOptions) {
+export default function eachWeekendOfInterval(dirtyInterval, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var options = dirtyOptions || {}
   var locale = options.locale
-  var localeWeekStartsOn = locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn = options.weekStartsOn == null ? defaultWeekStartsOn : toInteger(options.weekStartsOn)
+  var localeWeekStartsOn =
+    locale && locale.options && locale.options.weekStartsOn
+  var defaultWeekStartsOn =
+    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var weekStartsOn =
+    options.weekStartsOn == null
+      ? defaultWeekStartsOn
+      : toInteger(options.weekStartsOn)
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
