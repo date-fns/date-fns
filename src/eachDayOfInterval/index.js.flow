@@ -47,7 +47,4 @@ type Locale = {
   }
 }
 
-declare module.exports: (
-  interval: Interval,
-  options?: Options
-) => Date[]
+declare module.exports: (interval: Interval, options?: Options) => Date[]

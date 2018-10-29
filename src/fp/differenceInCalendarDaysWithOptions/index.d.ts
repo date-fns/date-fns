@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import {differenceInCalendarDaysWithOptions} from 'date-fns/fp'
+import { differenceInCalendarDaysWithOptions } from 'date-fns/fp'
 export = differenceInCalendarDaysWithOptions
