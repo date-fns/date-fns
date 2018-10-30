@@ -17,9 +17,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  *
  * ### v2.0.0 breaking changes:
  * 
- * - Some changes are common for whole library.
- *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
- *   for more details.
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} isoWeekYear - the ISO week-numbering year of the new date

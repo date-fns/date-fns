@@ -11,9 +11,7 @@ import toDate from '../toDate/index.js'
  *
  * ### v2.0.0 breaking changes:
  * 
- * - Some changes are common for whole library.
- *   See [docs/v2BehaviourChanges.md](https://github.com/date-fns/date-fns/blob/master/docs/v2BehaviourChanges.md)
- *   for more details.
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/types/Interval}
