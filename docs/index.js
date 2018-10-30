@@ -97,11 +97,11 @@ module.exports = {
     },
     {
       type: 'markdown',
-      urlId: 'v2-Behaviour-Changes',
+      urlId: 'Upgrade-Guide',
       category: 'General',
-      title: 'v2.0.0 behaviour changes',
-      description: 'Changes common for all functions',
-      path: path.join(__dirname, 'v2BehaviourChanges.md')
+      title: 'Upgrade guide',
+      description: 'Changes from v1 to v2',
+      path: path.join(__dirname, 'upgradeGuide.md')
     },
     {
       type: 'markdown',

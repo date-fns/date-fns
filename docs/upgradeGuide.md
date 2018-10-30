@@ -1,6 +1,8 @@
-Changes in v2 that are common for all functions:
+# v2 Upgrade Guide
 
-- **BREAKING**: function submodules now use camelCase naming schema:
+## Common changes
+
+- Function submodules now use camelCase naming schema:
 
   ```javascript
   // Before v2.0.0
@@ -10,12 +12,12 @@ Changes in v2 that are common for all functions:
   import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
   ```
 
-- **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
+- Functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
   This change is introduced for consistency with ECMAScript standard library which does the same.
   See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
-- **BREAKING**: all functions now implicitly convert arguments by following rules:
+- All functions now implicitly convert arguments by following rules:
 
   |           | date          | number | string      | boolean |
   |-----------|---------------|--------|-------------|---------|
@@ -50,17 +52,17 @@ Changes in v2 that are common for all functions:
   See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
   [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
 
-- **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
+- `null` now is not a valid date. `isValid(null)` returns `false`;
   `toDate(null)` returns an invalid date. Since `toDate` is used internally
   by all the functions, operations over `null` will also return an invalid date.
   [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
 
-- **BREAKING**: all functions now check if the passed number of arguments is less
+- All functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
 
-- **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
+- The Bower & UMD/CDN package versions are no longer supported.
 
-- **BREAKING**: new locale format.
+- New locale format.
   See [docs/Locale](https://date-fns.org/docs/Locale).
   Locales renamed:
 
