@@ -20,7 +20,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|String|Number} date - the date to be changed
