@@ -14,6 +14,39 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * ### v2.0.0 breaking changes:
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * 
+ * - Function renamed:
+ * 
+ *   `getOverlappingDaysInRanges` → `getOverlappingDaysInIntervals`
+ * 
+ *   This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
+ * 
+ *   ```
+ *   2.1.3
+ *   time interval
+ *   part of the time axis limited by two instants
+ *   ```
+ * 
+ *   Also this function now accepts an object with `start` and `end` properties
+ *   instead of two arguments as an interval.
+ *   This function now throws `RangeError` if the start of the interval is after its end
+ *   or if any date in interval is `Invalid Date`.
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ * 
+ *   getOverlappingDaysInRanges(
+ *     new Date(2014, 0, 10), new Date(2014, 0, 20),
+ *     new Date(2014, 0, 17), new Date(2014, 0, 21)
+ *   )
+ * 
+ *   // v2.0.0 onward
+ * 
+ *   getOverlappingDaysInIntervals(
+ *     {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
+ *     {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+ *   )
+ *   ```
  *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
