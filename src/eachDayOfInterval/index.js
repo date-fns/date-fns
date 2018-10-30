@@ -10,34 +10,33 @@ import toDate from '../toDate/index.js'
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Function renamed:
- * 
- *   `eachDay` → `eachDayOfInterval`
- * 
- *   This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
- * 
+ * - The function was renamed from `eachDay` to `eachDayOfInterval`.
+ *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
+ *
  *   ```
  *   2.1.3
  *   time interval
  *   part of the time axis limited by two instants
  *   ```
- * 
- *   Also this function now accepts an object with `start` and `end` properties
+ *
+ *   Also, this function now accepts an object with `start` and `end` properties
  *   instead of two arguments as an interval.
  *   This function now throws `RangeError` if the start of the interval is after its end
- *   or if any date in interval is `Invalid Date`.
- * 
+ *   or if any date in the interval is `Invalid Date`.
+ *
  *   ```javascript
  *   // Before v2.0.0
- * 
+ *
  *   eachDay(new Date(2014, 0, 10), new Date(2014, 0, 20))
- * 
+ *
  *   // v2.0.0 onward
- * 
- *   eachDayOfInterval({start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)})
+ *
+ *   eachDayOfInterval(
+ *     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) }
+ *   )
  *   ```
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
@@ -63,9 +62,11 @@ import toDate from '../toDate/index.js'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval (dirtyInterval, dirtyOptions) {
+export default function eachDayOfInterval(dirtyInterval, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var interval = dirtyInterval || {}

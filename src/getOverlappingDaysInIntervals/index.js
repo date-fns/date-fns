@@ -12,39 +12,36 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- * 
- * - Function renamed:
- * 
- *   `getOverlappingDaysInRanges` → `getOverlappingDaysInIntervals`
- * 
- *   This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
- * 
+ *
+ * - The function was renamed from `getOverlappingDaysInRanges` to `getOverlappingDaysInIntervals`.
+ *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
+ *
  *   ```
  *   2.1.3
  *   time interval
  *   part of the time axis limited by two instants
  *   ```
- * 
- *   Also this function now accepts an object with `start` and `end` properties
+ *
+ *   Also, this function now accepts an object with `start` and `end` properties
  *   instead of two arguments as an interval.
  *   This function now throws `RangeError` if the start of the interval is after its end
- *   or if any date in interval is `Invalid Date`.
- * 
+ *   or if any date in the interval is `Invalid Date`.
+ *
  *   ```javascript
  *   // Before v2.0.0
- * 
+ *
  *   getOverlappingDaysInRanges(
  *     new Date(2014, 0, 10), new Date(2014, 0, 20),
  *     new Date(2014, 0, 17), new Date(2014, 0, 21)
  *   )
- * 
+ *
  *   // v2.0.0 onward
- * 
+ *
  *   getOverlappingDaysInIntervals(
- *     {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
- *     {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+ *     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *     { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
  *   )
  *   ```
  *
@@ -74,9 +71,15 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
-export default function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyIntervalRight, dirtyOptions) {
+export default function getOverlappingDaysInIntervals(
+  dirtyIntervalLeft,
+  dirtyIntervalRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var intervalLeft = dirtyIntervalLeft || {}
@@ -91,19 +94,17 @@ export default function getOverlappingDaysInIntervals (dirtyIntervalLeft, dirtyI
     throw new RangeError('Invalid interval')
   }
 
-  var isOverlapping = leftStartTime < rightEndTime && rightStartTime < leftEndTime
+  var isOverlapping =
+    leftStartTime < rightEndTime && rightStartTime < leftEndTime
 
   if (!isOverlapping) {
     return 0
   }
 
-  var overlapStartDate = rightStartTime < leftStartTime
-    ? leftStartTime
-    : rightStartTime
+  var overlapStartDate =
+    rightStartTime < leftStartTime ? leftStartTime : rightStartTime
 
-  var overlapEndDate = rightEndTime > leftEndTime
-    ? leftEndTime
-    : rightEndTime
+  var overlapEndDate = rightEndTime > leftEndTime ? leftEndTime : rightEndTime
 
   var differenceInMs = overlapEndDate - overlapStartDate
 
