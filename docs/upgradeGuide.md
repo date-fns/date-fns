@@ -35,13 +35,13 @@
   - as before, arguments expected to be `Date` are converted to `Date` using *date-fns'* `toDate` function;
   - arguments expected to be numbers are converted to integer numbers using our custom `toInteger` implementation
     (see [#765](https://github.com/date-fns/date-fns/pull/765));
-  - arguments expected to be strings arguments are converted to strings using JavaScript's `String` function;
-  - arguments expected to be booleans are converted to strings using JavaScript's `Boolean` function.
+  - arguments expected to be strings are converted to strings using JavaScript's `String` function;
+  - arguments expected to be booleans are converted to boolean using JavaScript's `Boolean` function.
 
   `null` and `undefined` passed to optional arguments (i.e. properties of `options` argument)
   are ignored as if no argument was passed.
 
-  If any of resulting arguments is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
+  If any argument is invalid (i.e. `NaN` for numbers and `Invalid Date` for dates),
   an invalid value will be returned:
 
   - `false` for functions that return booleans (expect `isValid`);
