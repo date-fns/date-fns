@@ -12,6 +12,9 @@ import toDate from '../toDate/index.js'
  * ### v2.0.0 breaking changes:
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * 
+ * - Now `closestTo` doesn't throw an exception
+ *   when the second argument is not an instance of array.
  *
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Date[]|String[]|Number[]} datesArray - the array to search

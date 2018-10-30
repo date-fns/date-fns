@@ -53,6 +53,33 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - Function renamed:
+ *
+ *   `distanceInWords` → `formatDistance`
+ *
+ *   to make its name consistent with `format` and `formatRelative`.
+ *
+ * - The order of arguments is swapped to make the function
+ *   consistent with `differenceIn...` fuctions.
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ * 
+ *   distanceInWords(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 11, 32, 0),
+ *     {addSuffix: true}
+ *   ) //=> 'in about 1 hour'
+ * 
+ *   // v2.0.0 onward
+ * 
+ *   formatDistance(
+ *     new Date(1986, 3, 4, 11, 32, 0),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     {addSuffix: true}
+ *   ) //=> 'in about 1 hour'
+ *   ```
+ *
  * @param {Date|String|Number} date - the date
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

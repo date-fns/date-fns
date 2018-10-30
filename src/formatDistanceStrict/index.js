@@ -33,6 +33,74 @@ var MINUTES_IN_YEAR = 525600
  * 
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - Function renamed:
+ *
+ *   `distanceInWordsStrict` → `formatDistanceStrict`
+ *
+ *   to make its name consistent with `format` and `formatRelative`.
+ *
+ * - The order of arguments is swapped to make the function
+ *   consistent with `differenceIn...` fuctions.
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ * 
+ *   distanceInWordsStrict(
+ *     new Date(2015, 0, 2),
+ *     new Date(2014, 6, 2)
+ *   ) //=> '6 months'
+ * 
+ *   // v2.0.0 onward
+ * 
+ *   formatDistanceStrict(
+ *     new Date(2014, 6, 2),
+ *     new Date(2015, 0, 2)
+ *   ) //=> '6 months'
+ *   ```
+ *
+ * - `partialMethod` option is renamed to `roundingMethod`.
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ * 
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     {partialMethod: 'ceil'}
+ *   ) //=> '2 minutes'
+ * 
+ *   // v2.0.0 onward
+ * 
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     {roundingMethod: 'ceil'}
+ *   ) //=> '2 minutes'
+ *   ```
+ * 
+ * - If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
+ * 
+ * - `unit` option now takes one of the strings:
+ *   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ * 
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     {unit: 'm'}
+ *   )
+ * 
+ *   // v2.0.0 onward
+ * 
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     {unit: 'minute'}
+ *   )
+ *   ```
+ *
  * @param {Date|String|Number} date - the date
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
