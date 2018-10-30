@@ -14,14 +14,11 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Function renamed:
- *
- *   `getISOYear` → `getISOWeekYear`
- *
- *   ISO week year is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ * - The function was renamed from `getISOYear` to `getISOWeekYear`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g. `getWeekYear`.
  *
@@ -37,9 +34,11 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * var result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear (dirtyDate, dirtyOptions) {
+export default function getISOWeekYear(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var date = toDate(dirtyDate, dirtyOptions)

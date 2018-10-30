@@ -14,14 +14,11 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- * 
- * - Function renamed:
  *
- *   `addISOYears` -> `addISOWeekYears`
- *
- *   ISO week year is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ * - The function was renamed from `addISOYears` to `addISOWeekYears`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g. `addWeekYears`.
  *
@@ -38,11 +35,17 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  * var result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
-export default function addISOWeekYears (dirtyDate, dirtyAmount, dirtyOptions) {
+export default function addISOWeekYears(dirtyDate, dirtyAmount, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var amount = toInteger(dirtyAmount)
-  return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate, dirtyOptions) + amount, dirtyOptions)
+  return setISOWeekYear(
+    dirtyDate,
+    getISOWeekYear(dirtyDate, dirtyOptions) + amount,
+    dirtyOptions
+  )
 }
