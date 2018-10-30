@@ -33,10 +33,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Function renamed:
- *
- *   `distanceInWordsStrict` → `formatDistanceStrict`
- *
+ * - The function was renamed from `distanceInWordsStrict` to `formatDistanceStrict`
  *   to make its name consistent with `format` and `formatRelative`.
  *
  * - The order of arguments is swapped to make the function
@@ -80,7 +77,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * - If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
  *
- * - `unit` option now takes one of the strings:
+ * - `unit` option now accepts one of the strings:
  *   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
  *
  *   ```javascript

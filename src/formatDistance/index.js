@@ -53,10 +53,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Function renamed:
- *
- *   `distanceInWords` → `formatDistance`
- *
+ * - The function was renamed from `distanceInWords ` to `formatDistance `
  *   to make its name consistent with `format` and `formatRelative`.
  *
  * - The order of arguments is swapped to make the function

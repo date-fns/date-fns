@@ -66,27 +66,27 @@ var patterns = {
  *
  *
  * ### v2.0.0 breaking changes:
- * 
+ *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Old `parse` was renamed to `toDate`.
- * 
+ * - The previous `parse` implementation was renamed to `toDate`.
+ *
  *   ```javascript
  *   // Before v2.0.0
  *   parse('2016-01-01')
- * 
+ *
  *   // v2.0.0 onward
  *   toDate('2016-01-01')
  *   ```
- * 
+ *
  * - `toDate` now validates separate date and time values in ISO-8601 strings
  *   and returns `Invalid Date` if the date is invalid.
- * 
+ *
  *   ```javascript
  *   toDate('2018-13-32')
  *   //=> Invalid Date
  *   ```
- * 
+ *
  * - `toDate` now doesn't fall back to `new Date` constructor
  *   if it fails to parse a string argument. Instead, it returns `Invalid Date`.
  *
@@ -108,9 +108,11 @@ var patterns = {
  * var result = toDate('+02014101', {additionalDigits: 1})
  * //=> Fri Apr 11 2014 00:00:00
  */
-export default function toDate (argument, dirtyOptions) {
+export default function toDate(argument, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   if (argument === null) {
@@ -119,20 +121,37 @@ export default function toDate (argument, dirtyOptions) {
 
   var options = dirtyOptions || {}
 
-  var additionalDigits = options.additionalDigits == null ? DEFAULT_ADDITIONAL_DIGITS : toInteger(options.additionalDigits)
-  if (additionalDigits !== 2 && additionalDigits !== 1 && additionalDigits !== 0) {
+  var additionalDigits =
+    options.additionalDigits == null
+      ? DEFAULT_ADDITIONAL_DIGITS
+      : toInteger(options.additionalDigits)
+  if (
+    additionalDigits !== 2 &&
+    additionalDigits !== 1 &&
+    additionalDigits !== 0
+  ) {
     throw new RangeError('additionalDigits must be 0, 1 or 2')
   }
 
   // Clone the date
-  if (argument instanceof Date ||
-    (typeof argument === 'object' && Object.prototype.toString.call(argument) === '[object Date]')
+  if (
+    argument instanceof Date ||
+    (typeof argument === 'object' &&
+      Object.prototype.toString.call(argument) === '[object Date]')
   ) {
     // Prevent the date to lose the milliseconds when passed to new Date() in IE10
     return new Date(argument.getTime())
-  } else if (typeof argument === 'number' || Object.prototype.toString.call(argument) === '[object Number]') {
+  } else if (
+    typeof argument === 'number' ||
+    Object.prototype.toString.call(argument) === '[object Number]'
+  ) {
     return new Date(argument)
-  } else if (!(typeof argument === 'string' || Object.prototype.toString.call(argument) === '[object String]')) {
+  } else if (
+    !(
+      typeof argument === 'string' ||
+      Object.prototype.toString.call(argument) === '[object String]'
+    )
+  ) {
     return new Date(NaN)
   }
 
@@ -169,7 +188,9 @@ export default function toDate (argument, dirtyOptions) {
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
-      offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time + offset))
+      offset = getTimezoneOffsetInMilliseconds(
+        new Date(timestamp + time + offset)
+      )
     }
 
     return new Date(timestamp + time + offset)
@@ -178,7 +199,7 @@ export default function toDate (argument, dirtyOptions) {
   }
 }
 
-function splitDateString (dateString) {
+function splitDateString(dateString) {
   var dateStrings = {}
   var array = dateString.split(patterns.dateTimeDelimeter)
   var timeString
@@ -208,7 +229,7 @@ function splitDateString (dateString) {
   return dateStrings
 }
 
-function parseYear (dateString, additionalDigits) {
+function parseYear(dateString, additionalDigits) {
   var patternYYY = patterns.YYY[additionalDigits]
   var patternYYYYY = patterns.YYYYY[additionalDigits]
 
@@ -240,7 +261,7 @@ function parseYear (dateString, additionalDigits) {
   }
 }
 
-function parseDate (dateString, year) {
+function parseDate(dateString, year) {
   // Invalid ISO-formatted year
   if (year === null) {
     return null
@@ -330,7 +351,7 @@ function parseDate (dateString, year) {
   return null
 }
 
-function parseTime (timeString) {
+function parseTime(timeString) {
   var token
   var hours
   var minutes
@@ -357,8 +378,9 @@ function parseTime (timeString) {
       return NaN
     }
 
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE
+    return (
+      (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    )
   }
 
   // hh:mm:ss or hhmmss
@@ -372,16 +394,18 @@ function parseTime (timeString) {
       return NaN
     }
 
-    return (hours % 24) * MILLISECONDS_IN_HOUR +
+    return (
+      (hours % 24) * MILLISECONDS_IN_HOUR +
       minutes * MILLISECONDS_IN_MINUTE +
       seconds * 1000
+    )
   }
 
   // Invalid ISO-formatted time
   return null
 }
 
-function parseTimezone (timezoneString) {
+function parseTimezone(timezoneString) {
   var token
   var absoluteOffset
 
@@ -403,7 +427,7 @@ function parseTimezone (timezoneString) {
     }
 
     absoluteOffset = hours * MILLISECONDS_IN_HOUR
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   // ±hh:mm or ±hhmm
@@ -416,14 +440,15 @@ function parseTimezone (timezoneString) {
       return NaN
     }
 
-    absoluteOffset = hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    return (token[1] === '+') ? -absoluteOffset : absoluteOffset
+    absoluteOffset =
+      hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
+    return token[1] === '+' ? -absoluteOffset : absoluteOffset
   }
 
   return 0
 }
 
-function dayOfISOWeekYear (isoWeekYear, week, day) {
+function dayOfISOWeekYear(isoWeekYear, week, day) {
   week = week || 0
   day = day || 0
   var date = new Date(0)
@@ -439,11 +464,11 @@ function dayOfISOWeekYear (isoWeekYear, week, day) {
 var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-function isLeapYearIndex (year) {
+function isLeapYearIndex(year) {
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }
 
-function validateDate (year, month, date) {
+function validateDate(year, month, date) {
   if (month < 0 || month > 11) {
     return false
   }
@@ -465,7 +490,7 @@ function validateDate (year, month, date) {
   return true
 }
 
-function validateDayOfYearDate (year, dayOfYear) {
+function validateDayOfYearDate(year, dayOfYear) {
   if (dayOfYear < 1) {
     return false
   }
@@ -481,7 +506,7 @@ function validateDayOfYearDate (year, dayOfYear) {
   return true
 }
 
-function validateWeekDate (year, week, day) {
+function validateWeekDate(year, week, day) {
   if (week < 0 || week > 52) {
     return false
   }
@@ -493,7 +518,7 @@ function validateWeekDate (year, week, day) {
   return true
 }
 
-function validateTime (hours, minutes, seconds) {
+function validateTime(hours, minutes, seconds) {
   if (hours != null && (hours < 0 || hours >= 25)) {
     return false
   }
@@ -509,7 +534,7 @@ function validateTime (hours, minutes, seconds) {
   return true
 }
 
-function validateTimezone (hours, minutes) {
+function validateTimezone(hours, minutes) {
   if (minutes != null && (minutes < 0 || minutes > 59)) {
     return false
   }

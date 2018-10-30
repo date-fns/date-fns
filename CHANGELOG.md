@@ -565,7 +565,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: in `formatDistanceStrict`, if `roundingMethod` is not specified,
   it now defaults to `round` instead of `floor`.
 
-- **BREAKING**: `unit` option in `formatDistanceStrict` now takes one of the strings:
+- **BREAKING**: `unit` option in `formatDistanceStrict` now accepts one of the strings:
   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
 
   ```javascript
