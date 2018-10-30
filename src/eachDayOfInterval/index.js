@@ -8,6 +8,11 @@ import toDate from '../toDate/index.js'
  * @description
  * Return the array of dates within the specified time interval.
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}

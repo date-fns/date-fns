@@ -12,6 +12,11 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be added
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

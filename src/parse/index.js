@@ -261,6 +261,11 @@ var notWhitespaceRegExp = /\S/
  * Invalid Date is a Date, whose time value is NaN.
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
  * @param {Date|String|Number} baseDate - defines values missing from the parsed dateString

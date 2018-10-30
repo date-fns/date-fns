@@ -9,6 +9,11 @@ import toDate from '../toDate/index.js'
  * @description
  * Get the number of calendar quarters between the given dates.
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

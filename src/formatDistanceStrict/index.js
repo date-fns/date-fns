@@ -28,6 +28,11 @@ var MINUTES_IN_YEAR = 525600
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} date - the date
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

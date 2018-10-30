@@ -275,6 +275,11 @@ var doubleQuoteRegExp = /''/g
  *
  * 8. These tokens are often confused with others. See: https://git.io/fxCyr
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

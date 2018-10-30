@@ -22,6 +22,11 @@ import subMilliseconds from '../subMilliseconds/index.js'
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} date - the date to format
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

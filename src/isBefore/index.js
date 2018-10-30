@@ -8,6 +8,11 @@ import toDate from '../toDate/index.js'
  * @description
  * Is the first date before the second one?
  *
+ *
+ * ### v2.0.0 breaking changes:
+ * 
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|String|Number} date - the date that should be before the other one to return true
  * @param {Date|String|Number} dateToCompare - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

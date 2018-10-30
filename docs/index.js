@@ -97,6 +97,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Upgrade-Guide',
+      category: 'General',
+      title: 'Upgrade guide',
+      description: 'Changes from v1 to v2',
+      path: path.join(__dirname, 'upgradeGuide.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
