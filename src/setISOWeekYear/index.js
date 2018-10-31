@@ -19,6 +19,11 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The function was renamed from `setISOYear` to `setISOWeekYear`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
+ *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -32,14 +37,24 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * var result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear (dirtyDate, dirtyISOWeekYear, dirtyOptions) {
+export default function setISOWeekYear(
+  dirtyDate,
+  dirtyISOWeekYear,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
   var isoWeekYear = toInteger(dirtyISOWeekYear)
-  var diff = differenceInCalendarDays(date, startOfISOWeekYear(date, dirtyOptions), dirtyOptions)
+  var diff = differenceInCalendarDays(
+    date,
+    startOfISOWeekYear(date, dirtyOptions),
+    dirtyOptions
+  )
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)

@@ -15,6 +15,11 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The function was renamed from `isSameISOYear` to `isSameISOWeekYear`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
+ *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -31,9 +36,15 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  * )
  * //=> true
  */
-export default function isSameISOWeekYear (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function isSameISOWeekYear(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft, dirtyOptions)

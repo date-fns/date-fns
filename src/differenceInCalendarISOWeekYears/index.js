@@ -15,6 +15,11 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The function was renamed from `differenceInCalendarISOYears` to `differenceInCalendarISOWeekYears`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
+ *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -31,10 +36,19 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  * )
  * //=> 2
  */
-export default function differenceInCalendarISOWeekYears (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInCalendarISOWeekYears(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  return getISOWeekYear(dirtyDateLeft, dirtyOptions) - getISOWeekYear(dirtyDateRight, dirtyOptions)
+  return (
+    getISOWeekYear(dirtyDateLeft, dirtyOptions) -
+    getISOWeekYear(dirtyDateRight, dirtyOptions)
+  )
 }
