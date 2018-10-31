@@ -461,7 +461,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `getOverlappingDaysInRanges` → `getOverlappingDaysInIntervals`
   - `isWithinRange` → `isWithinInterval`
 
-  This change was made to mirror the use of word "interval" in standard ISO 8601:2004 terminology:
+  This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
 
   ```
   2.1.3
@@ -472,7 +472,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   Also these functions now accept an object with `start` and `end` properties
   instead of two arguments as an interval. All these functions
   throw `RangeError` if the start of the interval is after its end
-  or if any date in interval is `Invalid Date`.
+  or if any date in the interval is `Invalid Date`.
 
   ```javascript
   // Before v2.0.0
@@ -497,20 +497,22 @@ for the list of changes made since `v2.0.0-alpha.1`.
   // v2.0.0 onward
 
   areIntervalsOverlapping(
-    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
-    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+    { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
   )
 
-  eachDayOfInterval({start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)})
+  eachDayOfInterval(
+    { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) }
+  )
 
   getOverlappingDaysInIntervals(
-    {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
-    {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+    { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+    { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
   )
 
   isWithinInterval(
     new Date(2014, 0, 3),
-    {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
+    { start: new Date(2014, 0, 1), end: new Date(2014, 0, 7) }
   )
   ```
 

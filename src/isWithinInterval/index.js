@@ -13,6 +13,36 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The function was renamed from `isWithinRange` to `isWithinInterval`.
+ *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
+ *
+ *   ```
+ *   2.1.3
+ *   time interval
+ *   part of the time axis limited by two instants
+ *   ```
+ *
+ *   Also, this function now accepts an object with `start` and `end` properties
+ *   instead of two arguments as an interval.
+ *   This function now throws `RangeError` if the start of the interval is after its end
+ *   or if any date in the interval is `Invalid Date`.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   isWithinRange(
+ *     new Date(2014, 0, 3),
+ *     new Date(2014, 0, 1), new Date(2014, 0, 7)
+ *   )
+ *
+ *   // v2.0.0 onward
+ *
+ *   isWithinInterval(
+ *     new Date(2014, 0, 3),
+ *     { start: new Date(2014, 0, 1), end: new Date(2014, 0, 7) }
+ *   )
+ *   ```
+ *
  * @param {Date|String|Number} date - the date to check
  * @param {Interval} interval - the interval to check
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -39,9 +69,15 @@ import toDate from '../toDate/index.js'
  * )
  * //=> false
  */
-export default function isWithinInterval (dirtyDate, dirtyInterval, dirtyOptions) {
+export default function isWithinInterval(
+  dirtyDate,
+  dirtyInterval,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var interval = dirtyInterval || {}
