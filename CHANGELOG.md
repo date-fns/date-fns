@@ -174,7 +174,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 ### Changed
 
 - **BREAKING**: new format string API for `format` function
-  which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table):
+  which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
+  See [this post](https://blog.date-fns.org/post/unicode-tokens-in-date-fns-v2-sreatyki91jg) for more details.
 
   | Unit                            | Pattern | Result examples                   |
   |---------------------------------|---------|-----------------------------------|
@@ -426,7 +427,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - `isThisYear(date)` → `isSameYear(date, new Date())`
   - `isThisISOYear(date)` → `isSameISOYear(date, new Date())`
 
-- **BREAKING**: make the second argument of `format` non-optional in favor of explicitness.
+- **BREAKING**: make the second argument of `format` required for the sake of explicitness.
 
   ```javascript
   // Before v2.0.0
@@ -529,7 +530,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   distanceInWords(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 11, 32, 0),
-    {addSuffix: true}
+    { addSuffix: true }
   ) //=> 'in about 1 hour'
 
   // v2.0.0 onward
@@ -537,7 +538,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   formatDistance(
     new Date(1986, 3, 4, 11, 32, 0),
     new Date(1986, 3, 4, 10, 32, 0),
-    {addSuffix: true}
+    { addSuffix: true }
   ) //=> 'in about 1 hour'
   ```
 
@@ -549,7 +550,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    {partialMethod: 'ceil'}
+    { partialMethod: 'ceil' }
   ) //=> '2 minutes'
 
   // v2.0.0 onward
@@ -557,14 +558,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {roundingMethod: 'ceil'}
+    { roundingMethod: 'ceil' }
   ) //=> '2 minutes'
   ```
 
 - **BREAKING**: in `formatDistanceStrict`, if `roundingMethod` is not specified,
   it now defaults to `round` instead of `floor`.
 
-- **BREAKING**: `unit` option in `formatDistanceStrict` now takes one of the strings:
+- **BREAKING**: `unit` option in `formatDistanceStrict` now accepts one of the strings:
   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
 
   ```javascript
@@ -573,7 +574,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   distanceInWordsStrict(
     new Date(1986, 3, 4, 10, 32, 0),
     new Date(1986, 3, 4, 10, 33, 1),
-    {unit: 'm'}
+    { unit: 'm' }
   )
 
   // v2.0.0 onward
@@ -581,7 +582,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   formatDistanceStrict(
     new Date(1986, 3, 4, 10, 33, 1),
     new Date(1986, 3, 4, 10, 32, 0),
-    {unit: 'minute'}
+    { unit: 'minute' }
   )
   ```
 
@@ -625,7 +626,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   ```
 
 - **BREAKING**: now `closestTo` and `closestIndexTo` don't throw an exception
-  when the second argument is not an instance of array.
+  when the second argument is not an array, and return Invalid Date instead.
 
 - **BREAKING**: now `isValid` doesn't throw an exception
   if the first argument is not an instance of Date.

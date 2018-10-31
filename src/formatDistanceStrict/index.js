@@ -33,6 +33,71 @@ var MINUTES_IN_YEAR = 525600
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The function was renamed from `distanceInWordsStrict` to `formatDistanceStrict`
+ *   to make its name consistent with `format` and `formatRelative`.
+ *
+ * - The order of arguments is swapped to make the function
+ *   consistent with `differenceIn...` functions.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(2015, 0, 2),
+ *     new Date(2014, 6, 2)
+ *   ) //=> '6 months'
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(2014, 6, 2),
+ *     new Date(2015, 0, 2)
+ *   ) //=> '6 months'
+ *   ```
+ *
+ * - `partialMethod` option is renamed to `roundingMethod`.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     { partialMethod: 'ceil' }
+ *   ) //=> '2 minutes'
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     { roundingMethod: 'ceil' }
+ *   ) //=> '2 minutes'
+ *   ```
+ *
+ * - If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
+ *
+ * - `unit` option now accepts one of the strings:
+ *   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     { unit: 'm' }
+ *   )
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     { unit: 'minute' }
+ *   )
+ *   ```
+ *
  * @param {Date|String|Number} date - the date
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
@@ -105,9 +170,15 @@ var MINUTES_IN_YEAR = 525600
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatDistanceStrict(
+  dirtyDate,
+  dirtyBaseDate,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var options = dirtyOptions || {}
@@ -137,7 +208,8 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     dateRight = toDate(dirtyBaseDate, options)
   }
 
-  var roundingMethod = options.roundingMethod == null ? 'round' : String(options.roundingMethod)
+  var roundingMethod =
+    options.roundingMethod == null ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -151,7 +223,10 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   }
 
   var seconds = differenceInSeconds(dateRight, dateLeft, dirtyOptions)
-  var offsetInSeconds = (getTimezoneOffsetInMilliseconds(dateRight) - getTimezoneOffsetInMilliseconds(dateLeft)) / 1000
+  var offsetInSeconds =
+    (getTimezoneOffsetInMilliseconds(dateRight) -
+      getTimezoneOffsetInMilliseconds(dateLeft)) /
+    1000
   var minutes = roundingMethodFn((seconds - offsetInSeconds) / 60)
 
   var unit
@@ -177,30 +252,32 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   if (unit === 'second') {
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
-  // 1 up to 60 mins
+    // 1 up to 60 mins
   } else if (unit === 'minute') {
     return locale.formatDistance('xMinutes', minutes, localizeOptions)
 
-  // 1 up to 24 hours
+    // 1 up to 24 hours
   } else if (unit === 'hour') {
     var hours = roundingMethodFn(minutes / 60)
     return locale.formatDistance('xHours', hours, localizeOptions)
 
-  // 1 up to 30 days
+    // 1 up to 30 days
   } else if (unit === 'day') {
     var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
 
-  // 1 up to 12 months
+    // 1 up to 12 months
   } else if (unit === 'month') {
     var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', months, localizeOptions)
 
-  // 1 year up to max Date
+    // 1 year up to max Date
   } else if (unit === 'year') {
     var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
 
-  throw new RangeError("unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'")
+  throw new RangeError(
+    "unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'"
+  )
 }

@@ -265,6 +265,18 @@ var notWhitespaceRegExp = /\S/
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * 
+ * - Old `parse` was renamed to `toDate`.
+ *   Now `parse` is a new function which parses a string using a provided format.
+ * 
+ *   ```javascript
+ *   // Before v2.0.0
+ *   parse('2016-01-01')
+ * 
+ *   // v2.0.0 onward
+ *   toDate('2016-01-01')
+ *   parse('2016-01-01', 'yyyy-MM-dd', new Date())
+ *   ```
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens

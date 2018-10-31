@@ -280,6 +280,22 @@ var doubleQuoteRegExp = /''/g
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
+ * - The second argument is now required for the sake of explicitness.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *   format(new Date(2016, 0, 1))
+ *
+ *   // v2.0.0 onward
+ *   format(new Date(2016, 0, 1), "yyyy-MM-dd'T'HH:mm:ss.SSSxxx")
+ *   ```
+ *
+ * - New format string API for `format` function
+ *   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
+ *   See [this post](https://blog.date-fns.org/post/unicode-tokens-in-date-fns-v2-sreatyki91jg) for more details.
+ *
+ * - Characters are now escaped using single quote symbols (`'`) instead of square brackets.
+ *
  * @param {Date|String|Number} date - the original date
  * @param {String} format - the string of tokens
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
