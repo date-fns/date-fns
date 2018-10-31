@@ -450,8 +450,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   i.e. "ISO year" renamed to "ISO week year", which is short for
   [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
-  It makes them consistent with locale-dependent week-numbering year helpers
-  e.g. `startOfWeekYear`.
+  It makes them consistent with locale-dependent week-numbering year helpers,
+  e.g., `startOfWeekYear`.
 
 - **BREAKING**: functions renamed:
 

@@ -18,7 +18,7 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  * - The function was renamed from `differenceInCalendarISOYears` to `differenceInCalendarISOWeekYears`.
  *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g. `addWeekYears`.
+ *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
  * @param {Date|String|Number} dateLeft - the later date
  * @param {Date|String|Number} dateRight - the earlier date

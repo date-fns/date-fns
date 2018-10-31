@@ -18,7 +18,7 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  * - The function was renamed from `isSameISOYear` to `isSameISOWeekYear`.
  *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g. `getWeekYear`.
+ *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
  * @param {Date|String|Number} dateLeft - the first date to check
  * @param {Date|String|Number} dateRight - the second date to check

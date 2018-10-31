@@ -20,7 +20,7 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * - The function was renamed from `getISOYear` to `getISOWeekYear`.
  *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g. `getWeekYear`.
+ *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
  * @param {Date|String|Number} date - the given date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}

@@ -20,7 +20,7 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  * - The function was renamed from `addISOYears` to `addISOWeekYears`.
  *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
  *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g. `addWeekYears`.
+ *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
  * @param {Date|String|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be added
