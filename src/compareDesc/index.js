@@ -24,10 +24,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
- * var result = compareDesc(
- *   new Date(1987, 1, 11),
- *   new Date(1989, 6, 10)
- * )
+ * var result = compareDesc(new Date(1987, 1, 11), new Date(1989, 6, 10))
  * //=> 1
  *
  * @example
@@ -43,9 +40,15 @@ import toDate from '../toDate/index.js'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function compareDesc(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
@@ -57,7 +60,7 @@ export default function compareDesc (dirtyDateLeft, dirtyDateRight, dirtyOptions
     return -1
   } else if (diff < 0) {
     return 1
-  // Return 0 if diff is 0; return NaN if diff is NaN
+    // Return 0 if diff is 0; return NaN if diff is NaN
   } else {
     return diff
   }

@@ -115,10 +115,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = formatDistanceStrict(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 2)
- * )
+ * var result = formatDistanceStrict(new Date(2014, 6, 2), new Date(2015, 0, 2))
  * //=> '6 months'
  *
  * @example
@@ -126,48 +123,41 @@ var MINUTES_IN_YEAR = 525600
  * // and 1 January 2015 00:00:00?
  * var result = formatDistanceStrict(
  *   new Date(2015, 0, 1, 0, 0, 15),
- *   new Date(2015, 0, 1, 0, 0, 0),
+ *   new Date(2015, 0, 1, 0, 0, 0)
  * )
  * //=> '15 seconds'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = formatDistanceStrict(
- *   new Date(2015, 0, 1),
- *   new Date(2016, 0, 1),
- *   {addSuffix: true}
- * )
+ * var result = formatDistanceStrict(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ *   addSuffix: true
+ * })
  * //=> '1 year ago'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, in minutes?
- * var result = formatDistanceStrict(
- *   new Date(2016, 0, 1),
- *   new Date(2015, 0, 1),
- *   {unit: 'minute'}
- * )
+ * var result = formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
+ *   unit: 'minute'
+ * })
  * //=> '525600 minutes'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 28 January 2015, in months, rounded up?
- * var result = formatDistanceStrict(
- *   new Date(2015, 0, 28),
- *   new Date(2015, 0, 1),
- *   {unit: 'month', roundingMethod: 'ceil'}
- * )
+ * var result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
+ *   unit: 'month',
+ *   roundingMethod: 'ceil'
+ * })
  * //=> '1 month'
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = formatDistanceStrict(
- *   new Date(2016, 7, 1),
- *   new Date(2015, 0, 1),
- *   {locale: eoLocale}
- * )
+ * var result = formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eoLocale
+ * })
  * //=> '1 jaro'
  */
 export default function formatDistanceStrict(

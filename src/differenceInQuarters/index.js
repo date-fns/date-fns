@@ -23,15 +23,18 @@ import differenceInMonths from '../differenceInMonths/index.js'
  *
  * @example
  * // How many full quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInQuarters(
- *   new Date(2014, 6, 2),
- *   new Date(2013, 11, 31)
- * )
+ * var result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
-export default function differenceInQuarters (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInQuarters(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight, dirtyOptions) / 3

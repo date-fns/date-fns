@@ -27,28 +27,27 @@ import startOfMonth from '../startOfMonth/index.js'
  *
  * @example
  * // How many calendar weeks does February 2015 span?
- * var result = getWeeksInMonth(
- *   new Date(2015, 1, 8)
- * )
+ * var result = getWeeksInMonth(new Date(2015, 1, 8))
  * //=> 4
  *
  * @example
  * // If the week starts on Monday,
  * // how many calendar weeks does July 2017 span?
- * var result = getWeeksInMonth(
- *   new Date(2017, 6, 5),
- *   {weekStartsOn: 1}
- * )
+ * var result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth (dirtyDate, dirtyOptions) {
+export default function getWeeksInMonth(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
-  return differenceInCalendarWeeks(
-    lastDayOfMonth(dirtyDate, dirtyOptions),
-    startOfMonth(dirtyDate, dirtyOptions),
-    dirtyOptions
-  ) + 1
+  return (
+    differenceInCalendarWeeks(
+      lastDayOfMonth(dirtyDate, dirtyOptions),
+      startOfMonth(dirtyDate, dirtyOptions),
+      dirtyOptions
+    ) + 1
+  )
 }

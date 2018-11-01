@@ -30,10 +30,7 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  *
  * @example
  * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?
- * var result = isSameISOWeekYear(
- *   new Date(2003, 11, 29),
- *   new Date(2005, 0, 2)
- * )
+ * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
 export default function isSameISOWeekYear(

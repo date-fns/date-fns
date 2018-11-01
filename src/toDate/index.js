@@ -105,7 +105,7 @@ var patterns = {
  * @example
  * // Convert string '+02014101' to date,
  * // if the additional number of digits in the extended year format is 1:
- * var result = toDate('+02014101', {additionalDigits: 1})
+ * var result = toDate('+02014101', { additionalDigits: 1 })
  * //=> Fri Apr 11 2014 00:00:00
  */
 export default function toDate(argument, dirtyOptions) {

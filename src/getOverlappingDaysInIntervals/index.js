@@ -58,16 +58,16 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * @example
  * // For overlapping time intervals adds 1 for each started overlapping day:
  * getOverlappingDaysInIntervals(
- *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
- *   {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
  * )
  * //=> 3
  *
  * @example
  * // For non-overlapping time intervals returns 0:
  * getOverlappingDaysInIntervals(
- *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
- *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 21), end: new Date(2014, 0, 22) }
  * )
  * //=> 0
  */

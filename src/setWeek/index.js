@@ -42,12 +42,17 @@ import getWeek from '../getWeek/index.js'
  * // Set the 1st week to 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January:
- * var result = setWeek(new Date(2005, 0, 2), 1, {weekStartsOn: 1, firstWeekContainsDate: 4})
+ * var result = setWeek(new Date(2005, 0, 2), 1, {
+ *   weekStartsOn: 1,
+ *   firstWeekContainsDate: 4
+ * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek (dirtyDate, dirtyWeek, dirtyOptions) {
+export default function setWeek(dirtyDate, dirtyWeek, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var date = toDate(dirtyDate, dirtyOptions)

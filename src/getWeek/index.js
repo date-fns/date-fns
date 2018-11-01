@@ -42,17 +42,24 @@ var MILLISECONDS_IN_WEEK = 604800000
  * // Which week of the local week numbering year is 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January?
- * var result = getISOWeek(new Date(2005, 0, 2), {weekStartsOn: 1, firstWeekContainsDate: 4})
+ * var result = getISOWeek(new Date(2005, 0, 2), {
+ *   weekStartsOn: 1,
+ *   firstWeekContainsDate: 4
+ * })
  * //=> 53
  */
 
-export default function getWeek (dirtyDate, dirtyOptions) {
+export default function getWeek(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
-  var diff = startOfWeek(date, dirtyOptions).getTime() - startOfWeekYear(date, dirtyOptions).getTime()
+  var diff =
+    startOfWeek(date, dirtyOptions).getTime() -
+    startOfWeekYear(date, dirtyOptions).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

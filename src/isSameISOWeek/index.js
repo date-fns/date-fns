@@ -26,15 +26,18 @@ import cloneObject from '../_lib/cloneObject/index.js'
  *
  * @example
  * // Are 1 September 2014 and 7 September 2014 in the same ISO week?
- * var result = isSameISOWeek(
- *   new Date(2014, 8, 1),
- *   new Date(2014, 8, 7)
- * )
+ * var result = isSameISOWeek(new Date(2014, 8, 1), new Date(2014, 8, 7))
  * //=> true
  */
-export default function isSameISOWeek (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function isSameISOWeek(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var isSameWeekOptions = cloneObject(dirtyOptions)

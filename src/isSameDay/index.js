@@ -23,15 +23,14 @@ import startOfDay from '../startOfDay/index.js'
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
- * var result = isSameDay(
- *   new Date(2014, 8, 4, 6, 0),
- *   new Date(2014, 8, 4, 18, 0)
- * )
+ * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  */
-export default function isSameDay (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function isSameDay(dirtyDateLeft, dirtyDateRight, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var dateLeftStartOfDay = startOfDay(dirtyDateLeft, dirtyOptions)

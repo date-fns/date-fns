@@ -265,14 +265,14 @@ var notWhitespaceRegExp = /\S/
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- * 
+ *
  * - Old `parse` was renamed to `toDate`.
  *   Now `parse` is a new function which parses a string using a provided format.
- * 
+ *
  *   ```javascript
  *   // Before v2.0.0
  *   parse('2016-01-01')
- * 
+ *
  *   // v2.0.0 onward
  *   toDate('2016-01-01')
  *   parse('2016-01-01', 'yyyy-MM-dd', new Date())
@@ -300,22 +300,15 @@ var notWhitespaceRegExp = /\S/
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
- * var result = parse(
- *   '02/11/2014',
- *   'MM/dd/yyyy',
- *   new Date()
- * )
+ * var result = parse('02/11/2014', 'MM/dd/yyyy', new Date())
  * //=> Tue Feb 11 2014 00:00:00
  *
  * @example
  * // Parse 28th of February in Esperanto locale in the context of 2010 year:
  * import eo from 'date-fns/locale/eo'
- * var result = parse(
- *   '28-a de februaro',
- *   "do 'de' MMMM",
- *   new Date(2010, 0, 1),
- *   {locale: eo}
- * )
+ * var result = parse('28-a de februaro', "do 'de' MMMM", new Date(2010, 0, 1), {
+ *   locale: eo
+ * })
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse(
