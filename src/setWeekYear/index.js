@@ -44,19 +44,23 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  * // Set the local week-numbering year 2004 to 2 January 2010,
  * // if Monday is the first day of week
  * // and 4 January is always in the first week of the year:
- * var result = setWeekYear(new Date(2010, 0, 2), 2004, {weekStartsOn: 1, firstWeekContainsDate: 4})
+ * var result = setWeekYear(new Date(2010, 0, 2), 2004, {
+ *   weekStartsOn: 1,
+ *   firstWeekContainsDate: 4
+ * })
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setWeekYear (dirtyDate, dirtyWeekYear, dirtyOptions) {
+export default function setWeekYear(dirtyDate, dirtyWeekYear, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var options = dirtyOptions || {}
   var locale = options.locale
-  var localeFirstWeekContainsDate = locale &&
-    locale.options &&
-    locale.options.firstWeekContainsDate
+  var localeFirstWeekContainsDate =
+    locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
@@ -68,7 +72,11 @@ export default function setWeekYear (dirtyDate, dirtyWeekYear, dirtyOptions) {
 
   var date = toDate(dirtyDate, dirtyOptions)
   var weekYear = toInteger(dirtyWeekYear)
-  var diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions), dirtyOptions)
+  var diff = differenceInCalendarDays(
+    date,
+    startOfWeekYear(date, dirtyOptions),
+    dirtyOptions
+  )
   var firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)

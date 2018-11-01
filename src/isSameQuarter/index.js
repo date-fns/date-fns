@@ -23,15 +23,18 @@ import startOfQuarter from '../startOfQuarter/index.js'
  *
  * @example
  * // Are 1 January 2014 and 8 March 2014 in the same quarter?
- * var result = isSameQuarter(
- *   new Date(2014, 0, 1),
- *   new Date(2014, 2, 8)
- * )
+ * var result = isSameQuarter(new Date(2014, 0, 1), new Date(2014, 2, 8))
  * //=> true
  */
-export default function isSameQuarter (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function isSameQuarter(
+  dirtyDateLeft,
+  dirtyDateRight,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft, dirtyOptions)

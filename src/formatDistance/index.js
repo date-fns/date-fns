@@ -91,10 +91,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = formatDistance(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 1)
- * )
+ * var result = formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
  * //=> '6 months'
  *
  * @example
@@ -103,28 +100,24 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * var result = formatDistance(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),
- *   {includeSeconds: true}
+ *   { includeSeconds: true }
  * )
  * //=> 'less than 20 seconds'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = formatDistance(
- *   new Date(2015, 0, 1),
- *   new Date(2016, 0, 1),
- *   {addSuffix: true}
- * )
+ * var result = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ *   addSuffix: true
+ * })
  * //=> 'about 1 year ago'
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = formatDistance(
- *   new Date(2016, 7, 1),
- *   new Date(2015, 0, 1),
- *   {locale: eoLocale}
- * )
+ * var result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eoLocale
+ * })
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {

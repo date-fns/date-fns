@@ -55,16 +55,16 @@ import toDate from '../toDate/index.js'
  * @example
  * // For overlapping time intervals:
  * areIntervalsOverlapping(
- *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
- *   {start: new Date(2014, 0, 17), end: new Date(2014, 0, 21)}
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
  * )
  * //=> true
  *
  * @example
  * // For non-overlapping time intervals:
  * areIntervalsOverlapping(
- *   {start: new Date(2014, 0, 10), end: new Date(2014, 0, 20)},
- *   {start: new Date(2014, 0, 21), end: new Date(2014, 0, 22)}
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 21), end: new Date(2014, 0, 22) }
  * )
  * //=> false
  */

@@ -39,17 +39,19 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * @example
  * // Which week numbering year is 26 December 2004 if week starts on Saturday?
- * var result = getWeekYear(new Date(2004, 11, 26), {weekStartsOn: 6})
+ * var result = getWeekYear(new Date(2004, 11, 26), { weekStartsOn: 6 })
  * //=> 2004
  *
  * @example
  * // Which week numbering year is 26 December 2004 if the first week contains 4 January?
- * var result = getWeekYear(new Date(2004, 11, 26), {firstWeekContainsDate: 4})
+ * var result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear (dirtyDate, dirtyOptions) {
+export default function getWeekYear(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var date = toDate(dirtyDate, dirtyOptions)
@@ -57,9 +59,8 @@ export default function getWeekYear (dirtyDate, dirtyOptions) {
 
   var options = dirtyOptions || {}
   var locale = options.locale
-  var localeFirstWeekContainsDate = locale &&
-    locale.options &&
-    locale.options.firstWeekContainsDate
+  var localeFirstWeekContainsDate =
+    locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
@@ -71,7 +72,9 @@ export default function getWeekYear (dirtyDate, dirtyOptions) {
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
+    throw new RangeError(
+      'firstWeekContainsDate must be between 1 and 7 inclusively'
+    )
   }
 
   var firstWeekOfNextYear = new Date(0)

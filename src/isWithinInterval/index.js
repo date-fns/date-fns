@@ -55,18 +55,18 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // For the date within the interval:
- * isWithinInterval(
- *   new Date(2014, 0, 3),
- *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
- * )
+ * isWithinInterval(new Date(2014, 0, 3), {
+ *   start: new Date(2014, 0, 1),
+ *   end: new Date(2014, 0, 7)
+ * })
  * //=> true
  *
  * @example
  * // For the date outside of the interval:
- * isWithinInterval(
- *   new Date(2014, 0, 10),
- *   {start: new Date(2014, 0, 1), end: new Date(2014, 0, 7)}
- * )
+ * isWithinInterval(new Date(2014, 0, 10), {
+ *   start: new Date(2014, 0, 1),
+ *   end: new Date(2014, 0, 7)
+ * })
  * //=> false
  */
 export default function isWithinInterval(
