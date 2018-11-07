@@ -1,6 +1,5 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 import utils from '../utils.js'
-import { isFunction } from 'util'
 var eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
