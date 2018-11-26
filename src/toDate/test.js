@@ -129,7 +129,7 @@ describe('toDate', function () {
         assert.deepEqual(result, date)
       })
 
-      it('parses centruries after 9999 AD', function () {
+      it('parses centuries after 9999 AD', function () {
         var result = toDate('+0123')
         assert.deepEqual(result, new Date(12300, 0 /* Jan */, 1))
       })
