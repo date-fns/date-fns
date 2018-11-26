@@ -99,7 +99,7 @@ var localize = {
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   })
 }
 
