@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import startOfWeek from '.'
 
 describe('startOfWeek', function () {
-  it('returns the date with the time setted to 00:00:00 and the date setted to the first day of a week', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of a week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = startOfWeek(date)
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))

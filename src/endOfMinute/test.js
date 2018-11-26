@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import endOfMinute from '.'
 
 describe('endOfMinute', function () {
-  it('returns the date with the time setted to the last millisecond before a minute ends', function () {
+  it('returns the date with the time set to the last millisecond before a minute ends', function () {
     var date = new Date(2014, 11, 1, 22, 15)
     var result = endOfMinute(date)
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 15, 59, 999))

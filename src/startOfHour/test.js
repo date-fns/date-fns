@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import startOfHour from '.'
 
 describe('startOfHour', function () {
-  it('returns the date with the time setted to the first millisecond of an hour', function () {
+  it('returns the date with the time set to the first millisecond of an hour', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55)
     var result = startOfHour(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 2, 11))

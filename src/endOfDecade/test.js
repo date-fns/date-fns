@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import endOfDecade from '.'
 
 describe('endOfDecade', function () {
-  it('returns the date with the time setted to 23:59:59.999 and the date setted to the last millisecond of a decade', function () {
+  it('returns the date with the time set to 23:59:59.999 and the date set to the last millisecond of a decade', function () {
     var date = new Date(2017, 3 /* Apr */, 10, 0, 0, 0)
     var result = endOfDecade(date)
     assert.deepEqual(result,

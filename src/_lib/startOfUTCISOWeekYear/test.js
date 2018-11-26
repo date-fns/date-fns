@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import startOfUTCISOWeekYear from '.'
 
 describe('startOfUTCISOWeekYear', function () {
-  it('returns the date with the time setted to 00:00:00 and the date setted to the first day of an ISO year', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of an ISO year', function () {
     var result = startOfUTCISOWeekYear(new Date(Date.UTC(2009, 0 /* Jan */, 1, 16, 0)))
     assert.deepEqual(result, new Date(Date.UTC(2008, 11 /* Dec */, 29, 0, 0, 0, 0)))
   })

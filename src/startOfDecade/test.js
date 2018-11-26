@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import startOfDecade from '.'
 
 describe('startOfDecade', function () {
-  it('returns the date with the time setted to 00:00:00 and the date setted to the first day of a year', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of a year', function () {
     var date = new Date(1953, 3 /* Apr */, 13)
     var result = startOfDecade(date)
     assert.deepEqual(result, new Date(1950, 0 /* Jan */, 1))
