@@ -713,7 +713,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 ### Fixed
 
-- Fix the `toDate` bug occuring when parsing ISO-8601 style dates (but not valid ISO format)
+- Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
   with a trailing Z (e.g `2012-01Z`), it returned Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
 
 - Fix `differenceIn...` functions returning negative zero in some cases:
