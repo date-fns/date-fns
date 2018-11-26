@@ -31,7 +31,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   import formatWithOptions from 'date-fns/fp/formatWithOptions'
   import eo from 'date-fns/locale/eo'
 
-  // If FP function has not recieved enough arguments, it returns another function
+  // If FP function has not received enough arguments, it returns another function
   const addFiveYears = addYears(5)
 
   // Several arguments can be curried at once
