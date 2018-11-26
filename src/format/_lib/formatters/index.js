@@ -361,7 +361,7 @@ var formatters = {
       // Numerical value (same as in `e`)
       case 'c':
         return String(localDayOfWeek)
-      // Padded numberical value
+      // Padded numerical value
       case 'cc':
         return addLeadingZeros(localDayOfWeek, token.length)
       // 1st, 2nd, ..., 7th
