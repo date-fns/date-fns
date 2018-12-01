@@ -65,6 +65,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Time-Zones',
+      category: 'General',
+      title: 'Time Zones',
+      description: 'Time zone functions',
+      path: path.join(__dirname, 'timeZones.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'ECMAScript-Modules',
       category: 'General',
       title: 'ECMAScript Modules',
