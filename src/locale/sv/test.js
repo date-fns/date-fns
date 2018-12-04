@@ -247,7 +247,7 @@ describe('sv locale', function () {
 
     it('last week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {locale: locale})
-      assert(result === 'förra tisdagen kl. 00:00')
+      assert(result === 'i tisdags kl. 00:00')
     })
 
     it('yesterday', function () {
@@ -267,7 +267,7 @@ describe('sv locale', function () {
 
     it('next week', function () {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 6, 12, 0), baseDate, {locale: locale})
-      assert(result === 'söndag kl. 12:00')
+      assert(result === 'på söndag kl. 12:00')
     })
 
     it('after the next week', function () {
