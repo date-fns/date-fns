@@ -6,7 +6,7 @@ var formatDistanceLocale = {
 
   xSeconds: {
     one: '1 saniye',
-    other: '{{count}} sayniye'
+    other: '{{count}} saniye'
   },
 
   halfAMinute: 'yarım dakika',
@@ -62,8 +62,8 @@ var formatDistanceLocale = {
   },
 
   almostXYears: {
-    one: 'nerdeyse 1 yıl',
-    other: 'nerdeyse {{count}} yıl'
+    one: 'neredeyse 1 yıl',
+    other: 'neredeyse {{count}} yıl'
   }
 }
 
