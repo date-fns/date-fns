@@ -6,7 +6,7 @@ var formatDistanceLocale = {
 
   xSeconds: {
     one: '1 saniye',
-    other: '{{count}} saniye'
+    other: '{{count}} sayniye'
   },
 
   halfAMinute: 'yarım dakika',
@@ -62,18 +62,12 @@ var formatDistanceLocale = {
   },
 
   almostXYears: {
-    one: 'neredeyse 1 yıl',
-    other: 'neredeyse {{count}} yıl'
+    one: 'nerdeyse 1 yıl',
+    other: 'nerdeyse {{count}} yıl'
   }
 }
 
-var extraWordTokens = [
-  'lessThanXSeconds',
-  'lessThanXMinutes',
-  'overXYears'
-]
-
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -86,15 +80,10 @@ export default function formatDistance (token, count, options) {
   }
 
   if (options.addSuffix) {
-    var extraWord = ''
-    if (extraWordTokens.indexOf(token) > -1) {
-      extraWord = ' bir süre'
-    }
-
     if (options.comparison > 0) {
-      return result + extraWord + ' içinde'
+      return result + 'sonra'
     } else {
-      return result + extraWord + ' önce'
+      return result + ' önce'
     }
   }
 
