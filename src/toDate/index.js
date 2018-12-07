@@ -1,3 +1,4 @@
+import addDays from '../addDays'
 import toInteger from '../_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
@@ -186,8 +187,18 @@ export default function toDate(argument, dirtyOptions) {
         return new Date(NaN)
       }
     } else {
-      // get offset accurate to hour in timezones that change offset
-      offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
+      var fullTime = timestamp + time
+      var fullTimeDate = new Date(fullTime)
+
+      offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
+
+      // Correct time when it's coming from DST
+      var offsetDiff =
+        getTimezoneOffsetInMilliseconds(addDays(fullTimeDate, 1)) -
+        getTimezoneOffsetInMilliseconds(fullTimeDate)
+      if (offsetDiff > 0) {
+        offset += offsetDiff
+      }
     }
 
     return new Date(timestamp + time + offset)
