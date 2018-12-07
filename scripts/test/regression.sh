@@ -9,3 +9,4 @@ set -ex
 export PATH="$(yarn bin):$PATH"
 
 env TZ=America/Sao_Paulo babel-node ./test/regression/972.js
+env TZ=America/Sao_Paulo babel-node ./test/regression/992.js
