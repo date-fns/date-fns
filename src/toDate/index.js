@@ -1,4 +1,3 @@
-import addDays from '../addDays'
 import toInteger from '../_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
@@ -192,9 +191,12 @@ export default function toDate(argument, dirtyOptions) {
 
       offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
 
-      // Correct time when it's coming from DST
+      // Adjust time when it's coming from DST
+      var fullTimeDateNextDay = new Date(fullTime).setDate(
+        fullTimeDate.getDate() + amount
+      )
       var offsetDiff =
-        getTimezoneOffsetInMilliseconds(addDays(fullTimeDate, 1)) -
+        getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
         getTimezoneOffsetInMilliseconds(fullTimeDate)
       if (offsetDiff > 0) {
         offset += offsetDiff
