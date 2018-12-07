@@ -188,9 +188,6 @@ export default function toDate(argument, dirtyOptions) {
     } else {
       // get offset accurate to hour in timezones that change offset
       offset = getTimezoneOffsetInMilliseconds(new Date(timestamp + time))
-      offset = getTimezoneOffsetInMilliseconds(
-        new Date(timestamp + time + offset)
-      )
     }
 
     return new Date(timestamp + time + offset)
