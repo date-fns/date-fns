@@ -1,9 +1,9 @@
 var formatRelativeLocale = {
-  lastWeek: "'förra' EEEE'en kl.' p",
+  lastWeek: "'i' EEEE's kl.' p",
   yesterday: "'igår kl.' p",
   today: "'idag kl.' p",
   tomorrow: "'imorgon kl.' p",
-  nextWeek: "EEEE 'kl.' p",
+  nextWeek: "'på' EEEE 'kl.' p",
   other: 'P'
 }
 
