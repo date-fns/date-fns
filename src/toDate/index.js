@@ -192,9 +192,8 @@ export default function toDate(argument, dirtyOptions) {
       offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
 
       // Adjust time when it's coming from DST
-      var fullTimeDateNextDay = new Date(fullTime).setDate(
-        fullTimeDate.getDate() + amount
-      )
+      var fullTimeDateNextDay = new Date(fullTime)
+      fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
       var offsetDiff =
         getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
         getTimezoneOffsetInMilliseconds(fullTimeDate)
