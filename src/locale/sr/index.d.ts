@@ -1,1 +1,1 @@
-declare module 'date-fns/locale/de' { }
+declare module 'date-fns/locale/sr' { }

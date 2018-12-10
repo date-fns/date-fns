@@ -34,6 +34,6 @@ cp dist/date_fns_docs.json $dir/docs.json
 find "$dir" -type f -name "test.js" -delete
 find "$dir" -type f -name "benchmark.js" -delete
 cd "$dir" || exit
-npm publish
+# npm publish
 cd - || exit
 rm -rf "$dir"

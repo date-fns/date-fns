@@ -3192,6 +3192,7 @@ declare module 'date-fns/sub_years/index.js' {
 }
 
 declare module 'date-fns/locale/ar' {}
+declare module 'date-fns/locale/be' {}
 declare module 'date-fns/locale/bg' {}
 declare module 'date-fns/locale/ca' {}
 declare module 'date-fns/locale/cs' {}
@@ -3220,12 +3221,14 @@ declare module 'date-fns/locale/ro' {}
 declare module 'date-fns/locale/ru' {}
 declare module 'date-fns/locale/sk' {}
 declare module 'date-fns/locale/sl' {}
+declare module 'date-fns/locale/sr' {}
 declare module 'date-fns/locale/sv' {}
 declare module 'date-fns/locale/th' {}
 declare module 'date-fns/locale/tr' {}
 declare module 'date-fns/locale/zh_cn' {}
 declare module 'date-fns/locale/zh_tw' {}
 declare module 'date-fns/locale/ar/index' {}
+declare module 'date-fns/locale/be/index' {}
 declare module 'date-fns/locale/bg/index' {}
 declare module 'date-fns/locale/ca/index' {}
 declare module 'date-fns/locale/cs/index' {}
@@ -3254,12 +3257,14 @@ declare module 'date-fns/locale/ro/index' {}
 declare module 'date-fns/locale/ru/index' {}
 declare module 'date-fns/locale/sk/index' {}
 declare module 'date-fns/locale/sl/index' {}
+declare module 'date-fns/locale/sr/index' {}
 declare module 'date-fns/locale/sv/index' {}
 declare module 'date-fns/locale/th/index' {}
 declare module 'date-fns/locale/tr/index' {}
 declare module 'date-fns/locale/zh_cn/index' {}
 declare module 'date-fns/locale/zh_tw/index' {}
 declare module 'date-fns/locale/ar/index.js' {}
+declare module 'date-fns/locale/be/index.js' {}
 declare module 'date-fns/locale/bg/index.js' {}
 declare module 'date-fns/locale/ca/index.js' {}
 declare module 'date-fns/locale/cs/index.js' {}
@@ -3288,6 +3293,7 @@ declare module 'date-fns/locale/ro/index.js' {}
 declare module 'date-fns/locale/ru/index.js' {}
 declare module 'date-fns/locale/sk/index.js' {}
 declare module 'date-fns/locale/sl/index.js' {}
+declare module 'date-fns/locale/sr/index.js' {}
 declare module 'date-fns/locale/sv/index.js' {}
 declare module 'date-fns/locale/th/index.js' {}
 declare module 'date-fns/locale/tr/index.js' {}
