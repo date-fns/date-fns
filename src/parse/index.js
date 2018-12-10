@@ -108,7 +108,7 @@ function parse (argument, dirtyOptions) {
     }
 
     if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
+      offset = parseTimezone(dateStrings.timezone) * MILLISECONDS_IN_MINUTE
     } else {
       var fullTime = timestamp + time
       var fullTimeDate = new Date(fullTime)
@@ -126,7 +126,7 @@ function parse (argument, dirtyOptions) {
       }
     }
 
-    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
+    return new Date(timestamp + time + offset)
   } else {
     return new Date(argument)
   }
