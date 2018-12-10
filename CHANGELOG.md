@@ -724,6 +724,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
   See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
+- [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
+
 ## [1.28.5] - 2017-05-19
 
 ### Fixed
