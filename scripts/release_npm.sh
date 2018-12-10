@@ -36,4 +36,4 @@ find "$dir" -type f -name "benchmark.js" -delete
 cd "$dir" || exit
 npm publish
 cd - || exit
-rm -rf "$dir"
+# rm -rf "$dir"
