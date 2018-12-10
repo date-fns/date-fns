@@ -1,3 +1,4 @@
+var getTimezoneOffsetInMilliseconds = require('../_lib/getTimezoneOffsetInMilliseconds/index.js')
 var isDate = require('../is_date/index.js')
 
 var MILLISECONDS_IN_HOUR = 3600000
@@ -107,14 +108,25 @@ function parse (argument, dirtyOptions) {
     }
 
     if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
+      offset = parseTimezone(dateStrings.timezone) * MILLISECONDS_IN_MINUTE
     } else {
-      // get offset accurate to hour in timezones that change offset
-      offset = new Date(timestamp + time).getTimezoneOffset()
-      offset = new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE).getTimezoneOffset()
+      var fullTime = timestamp + time
+      var fullTimeDate = new Date(fullTime)
+
+      offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
+
+      // Adjust time when it's coming from DST
+      var fullTimeDateNextDay = new Date(fullTime)
+      fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
+      var offsetDiff =
+        getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
+        getTimezoneOffsetInMilliseconds(fullTimeDate)
+      if (offsetDiff > 0) {
+        offset += offsetDiff
+      }
     }
 
-    return new Date(timestamp + time + offset * MILLISECONDS_IN_MINUTE)
+    return new Date(timestamp + time + offset)
   } else {
     return new Date(argument)
   }
