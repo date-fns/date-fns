@@ -21,6 +21,8 @@ then
 
   yarn test -- --single-run
 
+  ./scripts/test/dst.sh
+
   prebuild
   ./scripts/test/tz.sh
 
