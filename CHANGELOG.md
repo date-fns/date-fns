@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+## [1.30.0] - 2018-12-10
+
 ### Fixed
 
 - [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1005). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details. This fix was backported from v2.
