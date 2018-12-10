@@ -1,3 +1,4 @@
+var getTimezoneOffsetInMilliseconds = require('../_lib/getTimezoneOffsetInMilliseconds')
 var isDate = require('../is_date/index.js')
 
 var MILLISECONDS_IN_HOUR = 3600000
