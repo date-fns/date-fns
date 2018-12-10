@@ -16,6 +16,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44). See PR [#789](https://github.com/date-fns/date-fns/issues/789). This fix was backported from v2.
 
+- [Fix misspelled January in the Thai locale](https://github.com/date-fns/date-fns/pull/913). Thanks to [@ratchapol-an](https://github.com/ratchapol-an)!
+
+### Added
+
+- [Added Serbian locale](https://github.com/date-fns/date-fns/pull/717). Kudos to [@mawi12345](https://github.com/mawi12345)!
+
+- [Added Belarusian locale](https://github.com/date-fns/date-fns/pull/716). Kudos to [@mawi12345](https://github.com/mawi12345) again!
+
 ## [1.29.0] - 2017-10-11
 
 ### Fixed
