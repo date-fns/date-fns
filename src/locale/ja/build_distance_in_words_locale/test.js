@@ -213,6 +213,26 @@ describe('ja locale > buildDistanceInWordsLocale', function () {
       })
       assert(result === '1年ぐらい前')
     })
+
+    context('and locale data has `oneWithSuffix`', function () {
+      it('adds `ago` to a `oneWithSuffix`', function () {
+        var result = buildDistanceInWordsLocale().localize('almostXYears', 1, {
+          addSuffix: true,
+          comparison: -1
+        })
+        assert(result === '1年ぐらい前')
+      })
+    })
+
+    context('and locale data has `otherWithSuffix`', function () {
+      it('adds `ago` to a `otherWithSuffix`', function () {
+        var result = buildDistanceInWordsLocale().localize('almostXYears', 2, {
+          addSuffix: true,
+          comparison: -1
+        })
+        assert(result === '2年ぐらい前')
+      })
+    })
   })
 
   context('with a future suffix', function () {

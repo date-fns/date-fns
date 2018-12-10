@@ -64,7 +64,9 @@ function buildDistanceInWordsLocale () {
 
     almostXYears: {
       one: '1年以下',
-      other: '{{count}}年以下'
+      other: '{{count}}年以下',
+      oneWithSuffix: '1年ぐらい',
+      otherWithSuffix: '{{count}}年ぐらい'
     }
   }
 
@@ -75,9 +77,17 @@ function buildDistanceInWordsLocale () {
     if (typeof distanceInWordsLocale[token] === 'string') {
       result = distanceInWordsLocale[token]
     } else if (count === 1) {
-      result = distanceInWordsLocale[token].one
+      if (options.addSuffix && distanceInWordsLocale[token].oneWithSuffix) {
+        result = distanceInWordsLocale[token].oneWithSuffix
+      } else {
+        result = distanceInWordsLocale[token].one
+      }
     } else {
-      result = distanceInWordsLocale[token].other.replace('{{count}}', count)
+      if (options.addSuffix && distanceInWordsLocale[token].otherWithSuffix) {
+        result = distanceInWordsLocale[token].otherWithSuffix.replace('{{count}}', count)
+      } else {
+        result = distanceInWordsLocale[token].other.replace('{{count}}', count)
+      }
     }
 
     if (options.addSuffix) {
