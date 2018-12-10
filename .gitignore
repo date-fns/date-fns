@@ -5,3 +5,5 @@ dist/compressed
 test.espowered.js
 .envrc
 .idea/
+.vscode
+examples/*/dist
