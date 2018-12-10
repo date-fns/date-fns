@@ -24,6 +24,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - [Added Belarusian locale](https://github.com/date-fns/date-fns/pull/716). Kudos to [@mawi12345](https://github.com/mawi12345) again!
 
+### Changed
+
+- [Improve ja translation of distanceInWords](https://github.com/date-fns/date-fns/pull/880). Thanks to (@kudohamu)[https://github.com/kudohamu]!
+
 ## [1.29.0] - 2017-10-11
 
 ### Fixed
