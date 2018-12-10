@@ -10,7 +10,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-## [1.30.0] - 2018-12-10
+## [1.30.1] - 2018-12-10
 
 ### Fixed
 
@@ -29,6 +29,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 ### Changed
 
 - [Improve ja translation of distanceInWords](https://github.com/date-fns/date-fns/pull/880). Thanks to (@kudohamu)[https://github.com/kudohamu]!
+
+## [1.30.0] - 2018-12-10
+
+⚠️ The release got failed.
 
 ## [1.29.0] - 2017-10-11
 
@@ -1034,7 +1038,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - `startOfDay`
 
-[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.29.0...HEAD
+[Unreleased]: https://github.com/date-fns/date-fns/compare/v1.30.1...HEAD
+[1.30.0]: https://github.com/date-fns/date-fns/compare/v1.29.0...v1.30.1
+[1.30.0]: https://github.com/date-fns/date-fns/compare/v1.29.0...v1.30.0
 [1.29.0]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.29.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
 [1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
