@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import lastDayOfDecade from '.'
 
 describe('lastDayOfDecade', function () {
-  it('returns the date with the time setted to 00:00:00 and the date setted to the last day of a decade', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the last day of a decade', function () {
     var date = new Date(1985, 9 /* Oct */, 20)
     var result = lastDayOfDecade(date)
     assert.deepEqual(result,

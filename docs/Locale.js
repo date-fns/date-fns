@@ -32,7 +32,7 @@
  * @property {Object} formatLong - the object with functions that return localized formats
  * @property {Function} date - the function that returns a localized long date format
  * @property {Function} time - the function that returns a localized long time format
- * @property {Function} dateTime - the function that returns a localized format of date and time comboned
+ * @property {Function} dateTime - the function that returns a localized format of date and time combined
  *
  * @property {Object} match — the object with functions used to match and parse various localized values.
  *   Required by `parse`

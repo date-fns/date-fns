@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import lastDayOfISOWeek from '.'
 
 describe('lastDayOfISOWeek', function () {
-  it('returns the date with the time setted to 00:00:00 and the date setted to the last day of an ISO week', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the last day of an ISO week', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = lastDayOfISOWeek(date)
     assert.deepEqual(result,

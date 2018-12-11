@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import endOfHour from '.'
 
 describe('endOfHour', function () {
-  it('returns the date with the time setted to the last millisecond before an hour ends', function () {
+  it('returns the date with the time set to the last millisecond before an hour ends', function () {
     var date = new Date(2014, 11, 1, 22, 15)
     var result = endOfHour(date)
     assert.deepEqual(result, new Date(2014, 11, 1, 22, 59, 59, 999))

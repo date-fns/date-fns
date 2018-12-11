@@ -24,7 +24,7 @@ import { addYears, formatWithOptions } from 'date-fns/fp'
 import { eo } from 'date-fns/locale'
 import toUpper from 'lodash/fp/toUpper' // 'date-fns/fp' is compatible with 'lodash/fp'!
 
-// If FP function has not recieved enough arguments, it returns another function
+// If FP function has not received enough arguments, it returns another function
 const addFiveYears = addYears(5)
 
 // Several arguments can be curried at once

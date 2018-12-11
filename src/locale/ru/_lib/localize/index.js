@@ -143,7 +143,7 @@ var localize = {
     values: dayPeriodValues,
     defaultWidth: 'any',
     formattingValues: formattingDayPeriodValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   })
 }
 

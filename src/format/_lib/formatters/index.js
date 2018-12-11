@@ -361,7 +361,7 @@ var formatters = {
       // Numerical value (same as in `e`)
       case 'c':
         return String(localDayOfWeek)
-      // Padded numberical value
+      // Padded numerical value
       case 'cc':
         return addLeadingZeros(localDayOfWeek, token.length)
       // 1st, 2nd, ..., 7th
@@ -578,18 +578,18 @@ var formatters = {
       case 'X':
         return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
-      // Hours, minutes and optional seconds without `:` delimeter
+      // Hours, minutes and optional seconds without `:` delimiter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
       // so this token always has the same output as `XX`
       case 'XXXX':
-      case 'XX': // Hours and minutes without `:` delimeter
+      case 'XX': // Hours and minutes without `:` delimiter
         return formatTimezone(timezoneOffset)
 
-      // Hours, minutes and optional seconds with `:` delimeter
+      // Hours, minutes and optional seconds with `:` delimiter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
       // so this token always has the same output as `XXX`
       case 'XXXXX':
-      case 'XXX': // Hours and minutes with `:` delimeter
+      case 'XXX': // Hours and minutes with `:` delimiter
       default:
         return formatTimezone(timezoneOffset, ':')
     }
@@ -605,18 +605,18 @@ var formatters = {
       case 'x':
         return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
-      // Hours, minutes and optional seconds without `:` delimeter
+      // Hours, minutes and optional seconds without `:` delimiter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
       // so this token always has the same output as `xx`
       case 'xxxx':
-      case 'xx': // Hours and minutes without `:` delimeter
+      case 'xx': // Hours and minutes without `:` delimiter
         return formatTimezone(timezoneOffset)
 
-      // Hours, minutes and optional seconds with `:` delimeter
+      // Hours, minutes and optional seconds with `:` delimiter
       // Note: neither ISO-8601 nor JavaScript supports seconds in timezone offsets
       // so this token always has the same output as `xxx`
       case 'xxxxx':
-      case 'xxx': // Hours and minutes with `:` delimeter
+      case 'xxx': // Hours and minutes with `:` delimiter
       default:
         return formatTimezone(timezoneOffset, ':')
     }
@@ -682,24 +682,24 @@ function addLeadingZeros (number, targetLength) {
   return sign + output
 }
 
-function formatTimezone (offset, dirtyDelimeter) {
-  var delimeter = dirtyDelimeter || ''
+function formatTimezone (offset, dirtyDelimiter) {
+  var delimiter = dirtyDelimiter || ''
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
   var hours = addLeadingZeros(Math.floor(absOffset / 60), 2)
   var minutes = addLeadingZeros(absOffset % 60, 2)
-  return sign + hours + delimeter + minutes
+  return sign + hours + delimiter + minutes
 }
 
-function formatTimezoneWithOptionalMinutes (offset, dirtyDelimeter) {
+function formatTimezoneWithOptionalMinutes (offset, dirtyDelimiter) {
   if (offset % 60 === 0) {
     var sign = offset > 0 ? '-' : '+'
     return sign + addLeadingZeros(Math.abs(offset) / 60, 2)
   }
-  return formatTimezone(offset, dirtyDelimeter)
+  return formatTimezone(offset, dirtyDelimiter)
 }
 
-function formatTimezoneShort (offset, dirtyDelimeter) {
+function formatTimezoneShort (offset, dirtyDelimiter) {
   var sign = offset > 0 ? '-' : '+'
   var absOffset = Math.abs(offset)
   var hours = Math.floor(absOffset / 60)
@@ -707,8 +707,8 @@ function formatTimezoneShort (offset, dirtyDelimeter) {
   if (minutes === 0) {
     return sign + String(hours)
   }
-  var delimeter = dirtyDelimeter || ''
-  return sign + String(hours) + delimeter + addLeadingZeros(minutes, 2)
+  var delimiter = dirtyDelimiter || ''
+  return sign + String(hours) + delimiter + addLeadingZeros(minutes, 2)
 }
 
 export default formatters

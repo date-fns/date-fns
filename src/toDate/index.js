@@ -6,9 +6,9 @@ var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
 
 var patterns = {
-  dateTimeDelimeter: /[T ]/,
+  dateTimeDelimiter: /[T ]/,
   plainTime: /:/,
-  timeZoneDelimeter: /[Z ]/i,
+  timeZoneDelimiter: /[Z ]/i,
 
   // year tokens
   YY: /^(\d{2})$/,
@@ -210,7 +210,7 @@ export default function toDate(argument, dirtyOptions) {
 
 function splitDateString(dateString) {
   var dateStrings = {}
-  var array = dateString.split(patterns.dateTimeDelimeter)
+  var array = dateString.split(patterns.dateTimeDelimiter)
   var timeString
 
   if (patterns.plainTime.test(array[0])) {
@@ -219,8 +219,8 @@ function splitDateString(dateString) {
   } else {
     dateStrings.date = array[0]
     timeString = array[1]
-    if (patterns.timeZoneDelimeter.test(dateStrings.date)) {
-      dateStrings.date = dateString.split(patterns.timeZoneDelimeter)[0]
+    if (patterns.timeZoneDelimiter.test(dateStrings.date)) {
+      dateStrings.date = dateString.split(patterns.timeZoneDelimiter)[0]
       timeString = dateString.substr(dateStrings.date.length, dateString.length)
     }
   }

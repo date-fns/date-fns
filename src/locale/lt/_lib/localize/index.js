@@ -126,7 +126,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
-    defaulFormattingWidth: 'wide',
+    defaultFormattingWidth: 'wide',
     argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
@@ -136,21 +136,21 @@ var localize = {
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   })
 }
 
