@@ -4,12 +4,12 @@
 // var assert = require('power-assert')
 // var slLocale = require('./')
 
-describe.skip('sl locale', function() {
-  it('exports distanceInWords object', function() {
-    assert(typeof slLocale.distanceInWords === 'object')
-  })
+// describe('sl locale', function() {
+//   it('exports distanceInWords object', function() {
+//     assert(typeof slLocale.distanceInWords === 'object')
+//   })
 
-  it('exports format object', function() {
-    assert(typeof slLocale.format === 'object')
-  })
-})
+//   it('exports format object', function() {
+//     assert(typeof slLocale.format === 'object')
+//   })
+// })
