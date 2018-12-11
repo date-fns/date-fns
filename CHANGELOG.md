@@ -726,6 +726,48 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
 
+## [1.30.1] - 2018-12-10
+
+### Fixed
+
+- [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1005). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details. This fix was backported from v2.
+
+- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44). See PR [#789](https://github.com/date-fns/date-fns/issues/789). This fix was backported from v2.
+
+- [Fix misspelled January in the Thai locale](https://github.com/date-fns/date-fns/pull/913). Thanks to [@ratchapol-an](https://github.com/ratchapol-an)!
+
+### Added
+
+- [Added Serbian locale](https://github.com/date-fns/date-fns/pull/717). Kudos to [@mawi12345](https://github.com/mawi12345)!
+
+- [Added Belarusian locale](https://github.com/date-fns/date-fns/pull/716). Kudos to [@mawi12345](https://github.com/mawi12345) again!
+
+### Changed
+
+- [Improve ja translation of distanceInWords](https://github.com/date-fns/date-fns/pull/880). Thanks to [@kudohamu](https://github.com/kudohamu)!
+
+## [1.30.0] - 2018-12-10
+
+⚠️ The release got failed.
+
+## [1.29.0] - 2017-10-11
+
+### Fixed
+
+- Fix Italian translations for `formatDistance`. ([see the issue: #550](https://github.com/date-fns/date-fns/issues/550); [see the PR: #552](https://github.com/date-fns/date-fns/pull/552))
+  Thanks to [@giofilo](https://github.com/giofilo)!
+
+### Added
+
+- [Hungarian locale (hu)](https://github.com/date-fns/date-fns/pull/503)
+  (thanks to László Horváth [@horvathlg](https://github.com/horvathlg))
+
+- [Slovenian locale (sl)](https://github.com/date-fns/date-fns/pull/505)
+  (thanks to Adam Stradovnik [@Neoglyph](https://github.com/Neoglyph))
+
+- Add `step` to `eachDay` function. Thanks to [@BDav24](https://github.com/BDav24).
+  See PR [#487](https://github.com/date-fns/date-fns/pull/487).
+
 ## [1.28.5] - 2017-05-19
 
 ### Fixed
