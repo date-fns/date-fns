@@ -33,6 +33,8 @@
  *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
  *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
  *   See: https://git.io/fxCyr
+ * @property {Number} [step=1] - used by `eachDayOfInterval`.
+ *   The value to increment or decrement by.
  *
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2.
  *   Thrown by **all** functions
@@ -58,6 +60,8 @@
  *   Thrown by `parse`
  * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
  *   Thrown by `format` and `parse`
+ * @throws {RangeError} `options.step` must be a number greater than 1.
+ *   Thrown by `eachDayOfInterval`.
  *
  * @example
  * // For 15 December 12345 AD, represent the start of the week in Esperanto,
