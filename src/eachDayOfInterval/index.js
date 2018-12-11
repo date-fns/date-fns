@@ -41,9 +41,11 @@ import toDate from '../toDate/index.js'
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
@@ -85,9 +87,14 @@ export default function eachDayOfInterval(dirtyInterval, dirtyOptions) {
   var currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
 
+  var step =
+    dirtyOptions && 'step' in dirtyOptions ? Number(dirtyOptions.step) : 1
+  if (step < 1 || isNaN(step))
+    throw new RangeError('`options.step` must be a number greater than 1')
+
   while (currentDate.getTime() <= endTime) {
     dates.push(toDate(currentDate, dirtyOptions))
-    currentDate.setDate(currentDate.getDate() + 1)
+    currentDate.setDate(currentDate.getDate() + step)
   }
 
   return dates
