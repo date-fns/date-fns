@@ -4,6 +4,8 @@
 // /**
 //  * @category Locales
 //  * @summary Slovenian locale.
+//  * @language Slovenian
+//  * @iso-639-2 slv
 //  * @author Adam Stradovnik [@Neoglyph]{@link https://github.com/Neoglyph}
 //  */
 // module.exports = {

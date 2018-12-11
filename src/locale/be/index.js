@@ -4,6 +4,8 @@
 // /**
 //  * @category Locales
 //  * @summary Belarusian locale.
+//  * @language Belarusian
+//  * @iso-639-2 bel
 //  * @author Martin Wind [@arvigeus]{@link https://github.com/mawi12345}
 //  */
 // module.exports = {
