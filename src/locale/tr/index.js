@@ -10,6 +10,7 @@ import match from './_lib/match/index.js'
  * @summary Turkish locale.
  * @language Turkish
  * @iso-639-2 tur
+ * @author Alpcan Aydın [@alpcanaydin]{@link https://github.com/alpcanaydin}
  * @author Berkay Sargın [@berkaey]{@link https://github.com/berkaey}
  */
 var locale = {
