@@ -124,8 +124,8 @@ describe('eachDayOfInterval', function() {
       {
         start: new Date(2014, 9 /* Oct */, 6),
         end: new Date(2014, 9 /* Oct */, 12)
-        // $ExpectedMistake
       },
+      // $ExpectedMistake
       { additionalDigits: NaN }
     )
     assert.throws(block, RangeError)
