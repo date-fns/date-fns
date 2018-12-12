@@ -1,42 +1,41 @@
-var path = require('path')
+const path = require('path')
 
-var config = {
-  cache: true,
-  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'inline-source-map',
+const isProduction = process.env.NODE_ENV === 'production'
+
+const config = {
+  mode: isProduction ? 'production' : 'development',
+  devtool: isProduction ? 'source-map' : 'inline-source-map',
   entry: getEntryConfig(),
   output: getOutputConfig(),
   module: {
-    loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-      {test: /\.json$/, loader: 'json'}
-    ]
+    rules: [{ test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' }]
   }
 }
 
-function getEntryConfig () {
+module.exports = config
+
+function getEntryConfig() {
   if (process.env.BUILD_TESTS) {
     return {
-      'tests': './testWithoutLocales.js'
+      tests: './testWithoutLocales.js'
     }
   } else if (process.env.NODE_ENV === 'test') {
-    return {}
+    return undefined
   } else {
     return {
-      'date_fns': './tmp/umd/index.js'
+      date_fns: './tmp/umd/index.js'
     }
   }
 }
 
-function getOutputConfig () {
+function getOutputConfig() {
   if (process.env.BUILD_TESTS) {
     return {
       path: path.join(process.cwd(), 'tmp'),
       filename: '[name].js'
     }
   } else if (process.env.NODE_ENV === 'test') {
-    return {
-      path: '/'
-    }
+    return undefined
   } else {
     return {
       path: path.join(process.cwd(), 'dist'),
@@ -46,5 +45,3 @@ function getOutputConfig () {
     }
   }
 }
-
-module.exports = config
