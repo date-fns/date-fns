@@ -1,32 +1,32 @@
-function dateLongFormatter (pattern, formatLong, options) {
+function dateLongFormatter(pattern, formatLong, options) {
   switch (pattern) {
     case 'P':
-      return formatLong.date({width: 'short'})
+      return formatLong.date({ width: 'short' })
     case 'PP':
-      return formatLong.date({width: 'medium'})
+      return formatLong.date({ width: 'medium' })
     case 'PPP':
-      return formatLong.date({width: 'long'})
+      return formatLong.date({ width: 'long' })
     case 'PPPP':
     default:
-      return formatLong.date({width: 'full'})
+      return formatLong.date({ width: 'full' })
   }
 }
 
-function timeLongFormatter (pattern, formatLong, options) {
+function timeLongFormatter(pattern, formatLong, options) {
   switch (pattern) {
     case 'p':
-      return formatLong.time({width: 'short'})
+      return formatLong.time({ width: 'short' })
     case 'pp':
-      return formatLong.time({width: 'medium'})
+      return formatLong.time({ width: 'medium' })
     case 'ppp':
-      return formatLong.time({width: 'long'})
+      return formatLong.time({ width: 'long' })
     case 'pppp':
     default:
-      return formatLong.time({width: 'full'})
+      return formatLong.time({ width: 'full' })
   }
 }
 
-function dateTimeLongFormatter (pattern, formatLong, options) {
+function dateTimeLongFormatter(pattern, formatLong, options) {
   var matchResult = pattern.match(/(P+)(p+)?/)
   var datePattern = matchResult[1]
   var timePattern = matchResult[2]
@@ -39,17 +39,17 @@ function dateTimeLongFormatter (pattern, formatLong, options) {
 
   switch (datePattern) {
     case 'P':
-      dateTimeFormat = formatLong.dateTime({width: 'short'})
+      dateTimeFormat = formatLong.dateTime({ width: 'short' })
       break
     case 'PP':
-      dateTimeFormat = formatLong.dateTime({width: 'medium'})
+      dateTimeFormat = formatLong.dateTime({ width: 'medium' })
       break
     case 'PPP':
-      dateTimeFormat = formatLong.dateTime({width: 'long'})
+      dateTimeFormat = formatLong.dateTime({ width: 'long' })
       break
     case 'PPPP':
     default:
-      dateTimeFormat = formatLong.dateTime({width: 'full'})
+      dateTimeFormat = formatLong.dateTime({ width: 'full' })
       break
   }
 

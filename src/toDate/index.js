@@ -7,40 +7,13 @@ var DEFAULT_ADDITIONAL_DIGITS = 2
 
 var patterns = {
   dateTimeDelimiter: /[T ]/,
-  plainTime: /:/,
   timeZoneDelimiter: /[Z ]/i,
-
-  // year tokens
-  YY: /^(\d{2})$/,
-  YYY: [
-    /^([+-]\d{2})$/, // 0 additional digits
-    /^([+-]\d{3})$/, // 1 additional digit
-    /^([+-]\d{4})$/ // 2 additional digits
-  ],
-  YYYY: /^(\d{4})/,
-  YYYYY: [
-    /^([+-]\d{4})/, // 0 additional digits
-    /^([+-]\d{5})/, // 1 additional digit
-    /^([+-]\d{6})/ // 2 additional digits
-  ],
-
-  // date tokens
-  MM: /^-(\d{2})$/,
-  DDD: /^-?(\d{3})$/,
-  MMDD: /^-?(\d{2})-?(\d{2})$/,
-  Www: /^-?W(\d{2})$/,
-  WwwD: /^-?W(\d{2})-?(\d{1})$/,
-
-  HH: /^(\d{2}([.,]\d*)?)$/,
-  HHMM: /^(\d{2}):?(\d{2}([.,]\d*)?)$/,
-  HHMMSS: /^(\d{2}):?(\d{2}):?(\d{2}([.,]\d*)?)$/,
-
-  // timezone tokens
-  timezone: /([Z+-].*)$/,
-  timezoneZ: /^(Z)$/,
-  timezoneHH: /^([+-])(\d{2})$/,
-  timezoneHHMM: /^([+-])(\d{2}):?(\d{2})$/
+  timezone: /([Z+-].*)$/
 }
+
+var dateRegex = /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$/
+var timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[.,]\d*)?))?$/
+var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
 
 /**
  * @name toDate
@@ -115,10 +88,6 @@ export default function toDate(argument, dirtyOptions) {
     )
   }
 
-  if (argument === null) {
-    return new Date(NaN)
-  }
-
   var options = dirtyOptions || {}
 
   var additionalDigits =
@@ -156,56 +125,46 @@ export default function toDate(argument, dirtyOptions) {
   }
 
   var dateStrings = splitDateString(argument)
-
   var parseYearResult = parseYear(dateStrings.date, additionalDigits)
-  var year = parseYearResult.year
-  var restDateString = parseYearResult.restDateString
+  var date = parseDate(parseYearResult.restDateString, parseYearResult.year)
 
-  var date = parseDate(restDateString, year)
-
-  if (isNaN(date)) {
+  if (isNaN(date) || !date) {
     return new Date(NaN)
   }
 
-  if (date) {
-    var timestamp = date.getTime()
-    var time = 0
-    var offset
+  var timestamp = date.getTime()
+  var time = 0
+  var offset
 
-    if (dateStrings.time) {
-      time = parseTime(dateStrings.time)
-
-      if (isNaN(time)) {
-        return new Date(NaN)
-      }
+  if (dateStrings.time) {
+    time = parseTime(dateStrings.time)
+    if (isNaN(time)) {
+      return new Date(NaN)
     }
+  }
 
-    if (dateStrings.timezone) {
-      offset = parseTimezone(dateStrings.timezone)
-      if (isNaN(offset)) {
-        return new Date(NaN)
-      }
-    } else {
-      var fullTime = timestamp + time
-      var fullTimeDate = new Date(fullTime)
-
-      offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
-
-      // Adjust time when it's coming from DST
-      var fullTimeDateNextDay = new Date(fullTime)
-      fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
-      var offsetDiff =
-        getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) -
-        getTimezoneOffsetInMilliseconds(fullTimeDate)
-      if (offsetDiff > 0) {
-        offset += offsetDiff
-      }
+  if (dateStrings.timezone) {
+    offset = parseTimezone(dateStrings.timezone)
+    if (isNaN(offset)) {
+      return new Date(NaN)
     }
-
-    return new Date(timestamp + time + offset)
   } else {
-    return new Date(NaN)
+    var fullTime = timestamp + time
+    var fullTimeDate = new Date(fullTime)
+
+    offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
+
+    // Adjust time when it's coming from DST
+    var fullTimeDateNextDay = new Date(fullTime)
+    fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
+    var offsetDiff =
+      getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) - offset
+    if (offsetDiff > 0) {
+      offset += offsetDiff
+    }
   }
+
+  return new Date(timestamp + time + offset)
 }
 
 function splitDateString(dateString) {
@@ -213,7 +172,7 @@ function splitDateString(dateString) {
   var array = dateString.split(patterns.dateTimeDelimiter)
   var timeString
 
-  if (patterns.plainTime.test(array[0])) {
+  if (/:/.test(array[0])) {
     dateStrings.date = null
     timeString = array[0]
   } else {
@@ -239,314 +198,152 @@ function splitDateString(dateString) {
 }
 
 function parseYear(dateString, additionalDigits) {
-  var patternYYY = patterns.YYY[additionalDigits]
-  var patternYYYYY = patterns.YYYYY[additionalDigits]
+  var regex = new RegExp(
+    '^(?:(\\d{4}|[+-]\\d{' +
+      (4 + additionalDigits) +
+      '})|(\\d{2}|[+-]\\d{' +
+      (2 + additionalDigits) +
+      '})$)'
+  )
 
-  var token
-
-  // YYYY or ±YYYYY
-  token = patterns.YYYY.exec(dateString) || patternYYYYY.exec(dateString)
-  if (token) {
-    var yearString = token[1]
-    return {
-      year: parseInt(yearString, 10),
-      restDateString: dateString.slice(yearString.length)
-    }
-  }
-
-  // YY or ±YYY
-  token = patterns.YY.exec(dateString) || patternYYY.exec(dateString)
-  if (token) {
-    var centuryString = token[1]
-    return {
-      year: parseInt(centuryString, 10) * 100,
-      restDateString: dateString.slice(centuryString.length)
-    }
-  }
-
+  var captures = dateString.match(regex)
   // Invalid ISO-formatted year
+  if (!captures) return { year: null }
+
+  var year = captures[1] && parseInt(captures[1])
+  var century = captures[2] && parseInt(captures[2])
+
   return {
-    year: null
+    year: century == null ? year : century * 100,
+    restDateString: dateString.slice((captures[1] || captures[2]).length)
   }
 }
 
 function parseDate(dateString, year) {
   // Invalid ISO-formatted year
-  if (year === null) {
-    return null
-  }
+  if (year === null) return null
 
-  var token
-  var date
-  var month
-  var week
+  var captures = dateString.match(dateRegex)
+  // Invalid ISO-formatted string
+  if (!captures) return null
 
-  // YYYY
-  if (dateString.length === 0) {
-    date = new Date(0)
-    date.setUTCFullYear(year)
-    return date
-  }
+  var isWeekDate = !!captures[4]
+  var dayOfYear = parseDateUnit(captures[1])
+  var month = parseDateUnit(captures[2]) - 1
+  var day = parseDateUnit(captures[3])
+  var week = parseDateUnit(captures[4]) - 1
+  var dayOfWeek = parseDateUnit(captures[5]) - 1
 
-  // YYYY-MM
-  token = patterns.MM.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-
-    if (!validateDate(year, month)) {
-      return new Date(NaN)
-    }
-
-    date.setUTCFullYear(year, month)
-    return date
-  }
-
-  // YYYY-DDD or YYYYDDD
-  token = patterns.DDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    var dayOfYear = parseInt(token[1], 10)
-
-    if (!validateDayOfYearDate(year, dayOfYear)) {
-      return new Date(NaN)
-    }
-
-    date.setUTCFullYear(year, 0, dayOfYear)
-    return date
-  }
-
-  // YYYY-MM-DD or YYYYMMDD
-  token = patterns.MMDD.exec(dateString)
-  if (token) {
-    date = new Date(0)
-    month = parseInt(token[1], 10) - 1
-    var day = parseInt(token[2], 10)
-
-    if (!validateDate(year, month, day)) {
-      return new Date(NaN)
-    }
-
-    date.setUTCFullYear(year, month, day)
-    return date
-  }
-
-  // YYYY-Www or YYYYWww
-  token = patterns.Www.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-
-    if (!validateWeekDate(year, week)) {
-      return new Date(NaN)
-    }
-
-    return dayOfISOWeekYear(year, week)
-  }
-
-  // YYYY-Www-D or YYYYWwwD
-  token = patterns.WwwD.exec(dateString)
-  if (token) {
-    week = parseInt(token[1], 10) - 1
-    var dayOfWeek = parseInt(token[2], 10) - 1
-
+  if (isWeekDate) {
     if (!validateWeekDate(year, week, dayOfWeek)) {
       return new Date(NaN)
     }
-
     return dayOfISOWeekYear(year, week, dayOfWeek)
+  } else {
+    var date = new Date(0)
+    if (
+      !validateDate(year, month, day) ||
+      !validateDayOfYearDate(year, dayOfYear)
+    ) {
+      return new Date(NaN)
+    }
+    date.setUTCFullYear(year, month, Math.max(dayOfYear, day))
+    return date
   }
+}
 
-  // Invalid ISO-formatted date
-  return null
+function parseDateUnit(value) {
+  return value ? parseInt(value) : 1
 }
 
 function parseTime(timeString) {
-  var token
-  var hours
-  var minutes
+  var captures = timeString.match(timeRegex)
+  if (!captures) return null // Invalid ISO-formatted time
 
-  // hh
-  token = patterns.HH.exec(timeString)
-  if (token) {
-    hours = parseFloat(token[1].replace(',', '.'))
+  var hours = parseTimeUnit(captures[1])
+  var minutes = parseTimeUnit(captures[2])
+  var seconds = parseTimeUnit(captures[3])
 
-    if (!validateTime(hours)) {
-      return NaN
-    }
-
-    return (hours % 24) * MILLISECONDS_IN_HOUR
+  if (!validateTime(hours, minutes, seconds)) {
+    return NaN
   }
 
-  // hh:mm or hhmm
-  token = patterns.HHMM.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseFloat(token[2].replace(',', '.'))
+  return (
+    (hours % 24) * MILLISECONDS_IN_HOUR +
+    minutes * MILLISECONDS_IN_MINUTE +
+    seconds * 1000
+  )
+}
 
-    if (!validateTime(hours, minutes)) {
-      return NaN
-    }
-
-    return (
-      (hours % 24) * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    )
-  }
-
-  // hh:mm:ss or hhmmss
-  token = patterns.HHMMSS.exec(timeString)
-  if (token) {
-    hours = parseInt(token[1], 10)
-    minutes = parseInt(token[2], 10)
-    var seconds = parseFloat(token[3].replace(',', '.'))
-
-    if (!validateTime(hours, minutes, seconds)) {
-      return NaN
-    }
-
-    return (
-      (hours % 24) * MILLISECONDS_IN_HOUR +
-      minutes * MILLISECONDS_IN_MINUTE +
-      seconds * 1000
-    )
-  }
-
-  // Invalid ISO-formatted time
-  return null
+function parseTimeUnit(value) {
+  return (value && parseFloat(value.replace(',', '.'))) || 0
 }
 
 function parseTimezone(timezoneString) {
-  var token
-  var absoluteOffset
+  if (timezoneString === 'Z') return 0
 
-  // Z
-  token = patterns.timezoneZ.exec(timezoneString)
-  if (token) {
-    return 0
+  var captures = timezoneString.match(timezoneRegex)
+  if (!captures) return 0
+
+  var sign = captures[1] === '+' ? -1 : 1
+  var hours = parseInt(captures[2])
+  var minutes = (captures[3] && parseInt(captures[3])) || 0
+
+  if (!validateTimezone(hours, minutes)) {
+    return NaN
   }
 
-  var hours
-
-  // ±hh
-  token = patterns.timezoneHH.exec(timezoneString)
-  if (token) {
-    hours = parseInt(token[2], 10)
-
-    if (!validateTimezone(hours)) {
-      return NaN
-    }
-
-    absoluteOffset = hours * MILLISECONDS_IN_HOUR
-    return token[1] === '+' ? -absoluteOffset : absoluteOffset
-  }
-
-  // ±hh:mm or ±hhmm
-  token = patterns.timezoneHHMM.exec(timezoneString)
-  if (token) {
-    hours = parseInt(token[2], 10)
-    var minutes = parseInt(token[3], 10)
-
-    if (!validateTimezone(hours, minutes)) {
-      return NaN
-    }
-
-    absoluteOffset =
-      hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE
-    return token[1] === '+' ? -absoluteOffset : absoluteOffset
-  }
-
-  return 0
+  return (
+    sign * (hours * MILLISECONDS_IN_HOUR + minutes * MILLISECONDS_IN_MINUTE)
+  )
 }
 
 function dayOfISOWeekYear(isoWeekYear, week, day) {
-  week = week || 0
-  day = day || 0
   var date = new Date(0)
   date.setUTCFullYear(isoWeekYear, 0, 4)
   var fourthOfJanuaryDay = date.getUTCDay() || 7
-  var diff = week * 7 + day + 1 - fourthOfJanuaryDay
+  var diff = (week || 0) * 7 + (day || 0) + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
 
 // Validation functions
 
-var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+// February is null to handle the leap year (using ||)
+var daysInMonths = [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 function isLeapYearIndex(year) {
-  return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+  return year % 400 === 0 || (year % 4 === 0 && year % 100)
 }
 
 function validateDate(year, month, date) {
-  if (month < 0 || month > 11) {
-    return false
-  }
-
-  if (date != null) {
-    if (date < 1) {
-      return false
-    }
-
-    var isLeapYear = isLeapYearIndex(year)
-    if (isLeapYear && date > DAYS_IN_MONTH_LEAP_YEAR[month]) {
-      return false
-    }
-    if (!isLeapYear && date > DAYS_IN_MONTH[month]) {
-      return false
-    }
-  }
-
-  return true
+  return !(
+    month < 0 ||
+    month > 11 ||
+    date < 1 ||
+    date > (daysInMonths[month] || (isLeapYearIndex(year) ? 29 : 28))
+  )
 }
 
 function validateDayOfYearDate(year, dayOfYear) {
-  if (dayOfYear < 1) {
-    return false
-  }
-
-  var isLeapYear = isLeapYearIndex(year)
-  if (isLeapYear && dayOfYear > 366) {
-    return false
-  }
-  if (!isLeapYear && dayOfYear > 365) {
-    return false
-  }
-
-  return true
+  return !(dayOfYear < 1 || dayOfYear > (isLeapYearIndex(year) ? 366 : 365))
 }
 
-function validateWeekDate(year, week, day) {
-  if (week < 0 || week > 52) {
-    return false
-  }
-
-  if (day != null && (day < 0 || day > 6)) {
-    return false
-  }
-
-  return true
+function validateWeekDate(_year, week, day) {
+  return !(week < 0 || week > 52 || day < 0 || day > 6)
 }
 
 function validateTime(hours, minutes, seconds) {
-  if (hours != null && (hours < 0 || hours >= 25)) {
-    return false
-  }
-
-  if (minutes != null && (minutes < 0 || minutes >= 60)) {
-    return false
-  }
-
-  if (seconds != null && (seconds < 0 || seconds >= 60)) {
-    return false
-  }
-
-  return true
+  return !(
+    seconds < 0 ||
+    seconds >= 60 ||
+    minutes < 0 ||
+    minutes >= 60 ||
+    hours < 0 ||
+    hours >= 25
+  )
 }
 
-function validateTimezone(hours, minutes) {
-  if (minutes != null && (minutes < 0 || minutes > 59)) {
-    return false
-  }
-
-  return true
+function validateTimezone(_hours, minutes) {
+  return !(minutes < 0 || minutes > 59)
 }
