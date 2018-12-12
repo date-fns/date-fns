@@ -3,8 +3,8 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import formatters from './_lib/formatters/index.js'
-import longFormatters from './_lib/longFormatters/index.js'
+import formatters from '../_lib/format/formatters/index.js'
+import longFormatters from '../_lib/format/longFormatters/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import {
   isProtectedToken,
