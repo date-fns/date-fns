@@ -745,6 +745,16 @@ describe('parse', function() {
       var result = parse('567890', 'SSSSSS', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567))
     })
+
+    it('after timestamp', () => {
+      const time = new Date(1987, 1, 11, 0, 0, 0).getTime()
+      const result = parse(
+        `${Math.floor(time / 1000)}.123`,
+        't.SSS',
+        Date.now()
+      )
+      assert.deepEqual(result, new Date(1987, 1, 11, 0, 0, 0, 123))
+    })
   })
 
   describe('timezone (ISO-8601 w/ Z)', function() {
