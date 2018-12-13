@@ -163,13 +163,15 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
 
--   New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
+- New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
 
-    -   `eachWeekendOfInterval`
+    - `eachWeekendOfInterval`
 
-    -   `eachWeekendOfMonth`
+    - `eachWeekendOfMonth`
 
-    -   `eachWeekendOfYear`
+    - `eachWeekendOfYear`
+
+- Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
 
 ### Changed
 
