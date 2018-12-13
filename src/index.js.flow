@@ -15,7 +15,8 @@ type Options = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
+  step?: number
 }
 
 type Locale = {
@@ -491,6 +492,12 @@ declare module.exports: {
   lastDayOfWeek: (date: Date | string | number, options?: Options) => Date,
 
   lastDayOfYear: (date: Date | string | number, options?: Options) => Date,
+
+  lightFormat: (
+    date: Date | string | number,
+    format: string,
+    options?: Options
+  ) => string,
 
   max: (datesArray: (Date | string | number)[], options?: Options) => Date,
 

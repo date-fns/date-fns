@@ -112,6 +112,7 @@ module.exports = {
   lastDayOfQuarter: require('./lastDayOfQuarter/index.js'),
   lastDayOfWeek: require('./lastDayOfWeek/index.js'),
   lastDayOfYear: require('./lastDayOfYear/index.js'),
+  lightFormat: require('./lightFormat/index.js'),
   max: require('./max/index.js'),
   min: require('./min/index.js'),
   parse: require('./parse/index.js'),

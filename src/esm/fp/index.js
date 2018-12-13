@@ -432,6 +432,10 @@ export { default as lastDayOfYear } from './lastDayOfYear/index.js'
 export {
   default as lastDayOfYearWithOptions
 } from './lastDayOfYearWithOptions/index.js'
+export { default as lightFormat } from './lightFormat/index.js'
+export {
+  default as lightFormatWithOptions
+} from './lightFormatWithOptions/index.js'
 export { default as max } from './max/index.js'
 export { default as maxWithOptions } from './maxWithOptions/index.js'
 export { default as min } from './min/index.js'

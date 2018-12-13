@@ -15,7 +15,8 @@ type Options = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
+  step?: number
 }
 
 type Locale = {
@@ -742,6 +743,13 @@ declare module.exports: {
   lastDayOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>,
   lastDayOfYear: CurriedFn1<Date | string | number, Date>,
   lastDayOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>,
+  lightFormat: CurriedFn2<string, Date | string | number, string>,
+  lightFormatWithOptions: CurriedFn3<
+    Options,
+    string,
+    Date | string | number,
+    string
+  >,
   max: CurriedFn1<(Date | string | number)[], Date>,
   maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>,
   min: CurriedFn1<(Date | string | number)[], Date>,

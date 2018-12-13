@@ -223,6 +223,8 @@ module.exports = {
   lastDayOfWeekWithOptions: require('./lastDayOfWeekWithOptions/index.js'),
   lastDayOfYear: require('./lastDayOfYear/index.js'),
   lastDayOfYearWithOptions: require('./lastDayOfYearWithOptions/index.js'),
+  lightFormat: require('./lightFormat/index.js'),
+  lightFormatWithOptions: require('./lightFormatWithOptions/index.js'),
   max: require('./max/index.js'),
   maxWithOptions: require('./maxWithOptions/index.js'),
   min: require('./min/index.js'),

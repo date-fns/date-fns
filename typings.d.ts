@@ -42,6 +42,7 @@ type Options = {
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
   roundingMethod?: 'floor' | 'ceil' | 'round'
   awareOfUnicodeTokens?: boolean
+  step?: number
 }
 type OptionsAliased = Options
 
@@ -892,6 +893,15 @@ declare module 'date-fns' {
 
   function lastDayOfYear(date: Date | string | number, options?: Options): Date
   namespace lastDayOfYear {
+
+  }
+
+  function lightFormat(
+    date: Date | string | number,
+    format: string,
+    options?: Options
+  ): string
+  namespace lightFormat {
 
   }
 
@@ -1776,6 +1786,11 @@ declare module 'date-fns/lastDayOfYear' {
   export = lastDayOfYear
 }
 
+declare module 'date-fns/lightFormat' {
+  import { lightFormat } from 'date-fns'
+  export = lightFormat
+}
+
 declare module 'date-fns/max' {
   import { max } from 'date-fns'
   export = max
@@ -2541,6 +2556,11 @@ declare module 'date-fns/lastDayOfYear/index' {
   export = lastDayOfYear
 }
 
+declare module 'date-fns/lightFormat/index' {
+  import { lightFormat } from 'date-fns'
+  export = lightFormat
+}
+
 declare module 'date-fns/max/index' {
   import { max } from 'date-fns'
   export = max
@@ -3304,6 +3324,11 @@ declare module 'date-fns/lastDayOfWeek/index.js' {
 declare module 'date-fns/lastDayOfYear/index.js' {
   import { lastDayOfYear } from 'date-fns'
   export = lastDayOfYear
+}
+
+declare module 'date-fns/lightFormat/index.js' {
+  import { lightFormat } from 'date-fns'
+  export = lightFormat
 }
 
 declare module 'date-fns/max/index.js' {
@@ -5200,6 +5225,21 @@ declare module 'date-fns/fp' {
 
   }
 
+  const lightFormat: CurriedFn2<string, Date | string | number, string>
+  namespace lightFormat {
+
+  }
+
+  const lightFormatWithOptions: CurriedFn3<
+    Options,
+    string,
+    Date | string | number,
+    string
+  >
+  namespace lightFormatWithOptions {
+
+  }
+
   const max: CurriedFn1<(Date | string | number)[], Date>
   namespace max {
 
@@ -6911,6 +6951,16 @@ declare module 'date-fns/fp/lastDayOfYearWithOptions' {
   export = lastDayOfYearWithOptions
 }
 
+declare module 'date-fns/fp/lightFormat' {
+  import { lightFormat } from 'date-fns/fp'
+  export = lightFormat
+}
+
+declare module 'date-fns/fp/lightFormatWithOptions' {
+  import { lightFormatWithOptions } from 'date-fns/fp'
+  export = lightFormatWithOptions
+}
+
 declare module 'date-fns/fp/max' {
   import { max } from 'date-fns/fp'
   export = max
@@ -8439,6 +8489,16 @@ declare module 'date-fns/fp/lastDayOfYear/index' {
 declare module 'date-fns/fp/lastDayOfYearWithOptions/index' {
   import { lastDayOfYearWithOptions } from 'date-fns/fp'
   export = lastDayOfYearWithOptions
+}
+
+declare module 'date-fns/fp/lightFormat/index' {
+  import { lightFormat } from 'date-fns/fp'
+  export = lightFormat
+}
+
+declare module 'date-fns/fp/lightFormatWithOptions/index' {
+  import { lightFormatWithOptions } from 'date-fns/fp'
+  export = lightFormatWithOptions
 }
 
 declare module 'date-fns/fp/max/index' {
@@ -9971,6 +10031,16 @@ declare module 'date-fns/fp/lastDayOfYearWithOptions/index.js' {
   export = lastDayOfYearWithOptions
 }
 
+declare module 'date-fns/fp/lightFormat/index.js' {
+  import { lightFormat } from 'date-fns/fp'
+  export = lightFormat
+}
+
+declare module 'date-fns/fp/lightFormatWithOptions/index.js' {
+  import { lightFormatWithOptions } from 'date-fns/fp'
+  export = lightFormatWithOptions
+}
+
 declare module 'date-fns/fp/max/index.js' {
   import { max } from 'date-fns/fp'
   export = max
@@ -11201,6 +11271,15 @@ declare module 'date-fns/esm' {
 
   }
 
+  function lightFormat(
+    date: Date | string | number,
+    format: string,
+    options?: Options
+  ): string
+  namespace lightFormat {
+
+  }
+
   function max(datesArray: (Date | string | number)[], options?: Options): Date
   namespace max {
 
@@ -12082,6 +12161,11 @@ declare module 'date-fns/esm/lastDayOfYear' {
   export default lastDayOfYear
 }
 
+declare module 'date-fns/esm/lightFormat' {
+  import { lightFormat } from 'date-fns/esm'
+  export default lightFormat
+}
+
 declare module 'date-fns/esm/max' {
   import { max } from 'date-fns/esm'
   export default max
@@ -12847,6 +12931,11 @@ declare module 'date-fns/esm/lastDayOfYear/index' {
   export default lastDayOfYear
 }
 
+declare module 'date-fns/esm/lightFormat/index' {
+  import { lightFormat } from 'date-fns/esm'
+  export default lightFormat
+}
+
 declare module 'date-fns/esm/max/index' {
   import { max } from 'date-fns/esm'
   export default max
@@ -13610,6 +13699,11 @@ declare module 'date-fns/esm/lastDayOfWeek/index.js' {
 declare module 'date-fns/esm/lastDayOfYear/index.js' {
   import { lastDayOfYear } from 'date-fns/esm'
   export default lastDayOfYear
+}
+
+declare module 'date-fns/esm/lightFormat/index.js' {
+  import { lightFormat } from 'date-fns/esm'
+  export default lightFormat
 }
 
 declare module 'date-fns/esm/max/index.js' {
@@ -15506,6 +15600,21 @@ declare module 'date-fns/esm/fp' {
 
   }
 
+  const lightFormat: CurriedFn2<string, Date | string | number, string>
+  namespace lightFormat {
+
+  }
+
+  const lightFormatWithOptions: CurriedFn3<
+    Options,
+    string,
+    Date | string | number,
+    string
+  >
+  namespace lightFormatWithOptions {
+
+  }
+
   const max: CurriedFn1<(Date | string | number)[], Date>
   namespace max {
 
@@ -17217,6 +17326,16 @@ declare module 'date-fns/esm/fp/lastDayOfYearWithOptions' {
   export default lastDayOfYearWithOptions
 }
 
+declare module 'date-fns/esm/fp/lightFormat' {
+  import { lightFormat } from 'date-fns/esm/fp'
+  export default lightFormat
+}
+
+declare module 'date-fns/esm/fp/lightFormatWithOptions' {
+  import { lightFormatWithOptions } from 'date-fns/esm/fp'
+  export default lightFormatWithOptions
+}
+
 declare module 'date-fns/esm/fp/max' {
   import { max } from 'date-fns/esm/fp'
   export default max
@@ -18745,6 +18864,16 @@ declare module 'date-fns/esm/fp/lastDayOfYear/index' {
 declare module 'date-fns/esm/fp/lastDayOfYearWithOptions/index' {
   import { lastDayOfYearWithOptions } from 'date-fns/esm/fp'
   export default lastDayOfYearWithOptions
+}
+
+declare module 'date-fns/esm/fp/lightFormat/index' {
+  import { lightFormat } from 'date-fns/esm/fp'
+  export default lightFormat
+}
+
+declare module 'date-fns/esm/fp/lightFormatWithOptions/index' {
+  import { lightFormatWithOptions } from 'date-fns/esm/fp'
+  export default lightFormatWithOptions
 }
 
 declare module 'date-fns/esm/fp/max/index' {
@@ -20277,6 +20406,16 @@ declare module 'date-fns/esm/fp/lastDayOfYearWithOptions/index.js' {
   export default lastDayOfYearWithOptions
 }
 
+declare module 'date-fns/esm/fp/lightFormat/index.js' {
+  import { lightFormat } from 'date-fns/esm/fp'
+  export default lightFormat
+}
+
+declare module 'date-fns/esm/fp/lightFormatWithOptions/index.js' {
+  import { lightFormatWithOptions } from 'date-fns/esm/fp'
+  export default lightFormatWithOptions
+}
+
 declare module 'date-fns/esm/fp/max/index.js' {
   import { max } from 'date-fns/esm/fp'
   export default max
@@ -20720,6 +20859,11 @@ declare module 'date-fns/locale' {
 
   }
 
+  const be: Locale
+  namespace be {
+
+  }
+
   const bg: Locale
   namespace bg {
 
@@ -20915,6 +21059,11 @@ declare module 'date-fns/locale' {
 
   }
 
+  const sl: Locale
+  namespace sl {
+
+  }
+
   const sr: Locale
   namespace sr {
 
@@ -20974,6 +21123,11 @@ declare module 'date-fns/locale/ar-DZ' {
 declare module 'date-fns/locale/ar-SA' {
   import { arSA } from 'date-fns/locale'
   export = arSA
+}
+
+declare module 'date-fns/locale/be' {
+  import { be } from 'date-fns/locale'
+  export = be
 }
 
 declare module 'date-fns/locale/bg' {
@@ -21171,6 +21325,11 @@ declare module 'date-fns/locale/sk' {
   export = sk
 }
 
+declare module 'date-fns/locale/sl' {
+  import { sl } from 'date-fns/locale'
+  export = sl
+}
+
 declare module 'date-fns/locale/sr' {
   import { sr } from 'date-fns/locale'
   export = sr
@@ -21229,6 +21388,11 @@ declare module 'date-fns/locale/ar-DZ/index' {
 declare module 'date-fns/locale/ar-SA/index' {
   import { arSA } from 'date-fns/locale'
   export = arSA
+}
+
+declare module 'date-fns/locale/be/index' {
+  import { be } from 'date-fns/locale'
+  export = be
 }
 
 declare module 'date-fns/locale/bg/index' {
@@ -21426,6 +21590,11 @@ declare module 'date-fns/locale/sk/index' {
   export = sk
 }
 
+declare module 'date-fns/locale/sl/index' {
+  import { sl } from 'date-fns/locale'
+  export = sl
+}
+
 declare module 'date-fns/locale/sr/index' {
   import { sr } from 'date-fns/locale'
   export = sr
@@ -21484,6 +21653,11 @@ declare module 'date-fns/locale/ar-DZ/index.js' {
 declare module 'date-fns/locale/ar-SA/index.js' {
   import { arSA } from 'date-fns/locale'
   export = arSA
+}
+
+declare module 'date-fns/locale/be/index.js' {
+  import { be } from 'date-fns/locale'
+  export = be
 }
 
 declare module 'date-fns/locale/bg/index.js' {
@@ -21681,6 +21855,11 @@ declare module 'date-fns/locale/sk/index.js' {
   export = sk
 }
 
+declare module 'date-fns/locale/sl/index.js' {
+  import { sl } from 'date-fns/locale'
+  export = sl
+}
+
 declare module 'date-fns/locale/sr/index.js' {
   import { sr } from 'date-fns/locale'
   export = sr
@@ -21741,6 +21920,11 @@ declare module 'date-fns/esm/locale' {
 
   const arSA: Locale
   namespace arSA {
+
+  }
+
+  const be: Locale
+  namespace be {
 
   }
 
@@ -21939,6 +22123,11 @@ declare module 'date-fns/esm/locale' {
 
   }
 
+  const sl: Locale
+  namespace sl {
+
+  }
+
   const sr: Locale
   namespace sr {
 
@@ -21998,6 +22187,11 @@ declare module 'date-fns/esm/locale/ar-DZ' {
 declare module 'date-fns/esm/locale/ar-SA' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
+}
+
+declare module 'date-fns/esm/locale/be' {
+  import { be } from 'date-fns/esm/locale'
+  export default be
 }
 
 declare module 'date-fns/esm/locale/bg' {
@@ -22195,6 +22389,11 @@ declare module 'date-fns/esm/locale/sk' {
   export default sk
 }
 
+declare module 'date-fns/esm/locale/sl' {
+  import { sl } from 'date-fns/esm/locale'
+  export default sl
+}
+
 declare module 'date-fns/esm/locale/sr' {
   import { sr } from 'date-fns/esm/locale'
   export default sr
@@ -22253,6 +22452,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index' {
 declare module 'date-fns/esm/locale/ar-SA/index' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
+}
+
+declare module 'date-fns/esm/locale/be/index' {
+  import { be } from 'date-fns/esm/locale'
+  export default be
 }
 
 declare module 'date-fns/esm/locale/bg/index' {
@@ -22450,6 +22654,11 @@ declare module 'date-fns/esm/locale/sk/index' {
   export default sk
 }
 
+declare module 'date-fns/esm/locale/sl/index' {
+  import { sl } from 'date-fns/esm/locale'
+  export default sl
+}
+
 declare module 'date-fns/esm/locale/sr/index' {
   import { sr } from 'date-fns/esm/locale'
   export default sr
@@ -22508,6 +22717,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index.js' {
 declare module 'date-fns/esm/locale/ar-SA/index.js' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
+}
+
+declare module 'date-fns/esm/locale/be/index.js' {
+  import { be } from 'date-fns/esm/locale'
+  export default be
 }
 
 declare module 'date-fns/esm/locale/bg/index.js' {
@@ -22703,6 +22917,11 @@ declare module 'date-fns/esm/locale/ru/index.js' {
 declare module 'date-fns/esm/locale/sk/index.js' {
   import { sk } from 'date-fns/esm/locale'
   export default sk
+}
+
+declare module 'date-fns/esm/locale/sl/index.js' {
+  import { sl } from 'date-fns/esm/locale'
+  export default sl
 }
 
 declare module 'date-fns/esm/locale/sr/index.js' {
@@ -23169,6 +23388,12 @@ interface dateFns {
   lastDayOfWeek(date: Date | string | number, options?: Options): Date
 
   lastDayOfYear(date: Date | string | number, options?: Options): Date
+
+  lightFormat(
+    date: Date | string | number,
+    format: string,
+    options?: Options
+  ): string
 
   max(datesArray: (Date | string | number)[], options?: Options): Date
 
