@@ -158,6 +158,7 @@ describe('eachDayOfInterval', function() {
     })
 
     it('throws TypeError error if `options.step` is NaN', () => {
+      // $ExpectedMistake
       assert.throws(() => eachDayOfInterval(interval, { step: 'w' }), stepError)
       assert.throws(() => eachDayOfInterval(interval, { step: NaN }), stepError)
     })
