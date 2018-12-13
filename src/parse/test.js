@@ -1103,11 +1103,11 @@ describe('parse', function() {
       assert.deepEqual(result, new Date(2000, 3 /* Apr */, 12))
     })
 
-    it('timestamp overwrites everything', function() {
+    it('milliseconds timestamp overwrites everything', function() {
       var dateString = '512969520900 512969520 2014-07-02T05:30:15.123+06:00'
       var formatString = "T t yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(512969520000))
+      assert.deepEqual(result, new Date(512969520900))
     })
   })
 

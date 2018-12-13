@@ -9,7 +9,7 @@ import {
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
 
-var TIMEZONE_UNIT_PRIORITY = 20
+var TIMEZONE_UNIT_PRIORITY = 10
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -165,24 +165,24 @@ var notWhitespaceRegExp = /\S/
  * | Second                          |  50 | s       | 0, 1, ..., 59                     |       |
  * |                                 |     | so      | 0th, 1st, ..., 59th               | 5     |
  * |                                 |     | ss      | 00, 01, ..., 59                   |       |
- * | Fraction of second              |  40 | S       | 0, 1, ..., 9                      |       |
+ * | Seconds timestamp               |  40 | t       | 512969520                         |       |
+ * |                                 |     | tt      | ...                               | 2     |
+ * | Fraction of second              |  30 | S       | 0, 1, ..., 9                      |       |
  * |                                 |     | SS      | 00, 01, ..., 99                   |       |
  * |                                 |     | SSS     | 000, 0001, ..., 999               |       |
  * |                                 |     | SSSS    | ...                               | 2     |
- * | Timezone (ISO-8601 w/ Z)        |  20 | X       | -08, +0530, Z                     |       |
+ * | Milliseconds timestamp          |  20 | T       | 512969520900                      |       |
+ * |                                 |     | TT      | ...                               | 2     |
+ * | Timezone (ISO-8601 w/ Z)        |  10 | X       | -08, +0530, Z                     |       |
  * |                                 |     | XX      | -0800, +0530, Z                   |       |
  * |                                 |     | XXX     | -08:00, +05:30, Z                 |       |
  * |                                 |     | XXXX    | -0800, +0530, Z, +123456          | 2     |
  * |                                 |     | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
- * | Timezone (ISO-8601 w/o Z)       |  20 | x       | -08, +0530, +00                   |       |
+ * | Timezone (ISO-8601 w/o Z)       |  10 | x       | -08, +0530, +00                   |       |
  * |                                 |     | xx      | -0800, +0530, +0000               |       |
  * |                                 |     | xxx     | -08:00, +05:30, +00:00            | 2     |
  * |                                 |     | xxxx    | -0800, +0530, +0000, +123456      |       |
  * |                                 |     | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
- * | Seconds timestamp               |  10 | t       | 512969520                         |       |
- * |                                 |     | tt      | ...                               | 2     |
- * | Milliseconds timestamp          |  10 | T       | 512969520900                      |       |
- * |                                 |     | TT      | ...                               | 2     |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
@@ -475,6 +475,7 @@ export default function parse(
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
   var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
+  var flags = {}
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
 
@@ -485,13 +486,23 @@ export default function parse(
       return new Date(NaN)
     }
 
-    utcDate = setter.set(utcDate, setter.value, subFnOptions)
+    var result = setter.set(utcDate, flags, setter.value, subFnOptions)
+    if (Array.isArray(result)) {
+      utcDate = result[0]
+      flags = Object.assign({}, flags, result[1])
+    } else {
+      utcDate = result
+    }
   }
 
   return utcDate
 }
 
-function dateToSystemTimezone(date) {
+function dateToSystemTimezone(date, flags) {
+  if (flags.timestampIsSet) {
+    return date
+  }
+
   var convertedDate = new Date(0)
   convertedDate.setFullYear(
     date.getUTCFullYear(),
