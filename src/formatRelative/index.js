@@ -31,23 +31,27 @@ import subMilliseconds from '../subMilliseconds/index.js'
  * @param {Date|String|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {Formats} [options.formats=null] - the formats object from which the format is picked.
+ *                  Falls back to default locale if none is provided.
+ *                  Can be provided as either a function or an Object.
  * @returns {String} the date in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
- * @throws {RangeError} `options.locale` must contain `formatRelative` property
+ * @throws {RangeError} `options.locale` must contain `formatRelative` property or formats be provided separately
  */
 export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
   }
 
-  var date = toDate(dirtyDate, dirtyOptions)
-  var baseDate = toDate(dirtyBaseDate, dirtyOptions)
+  const date = toDate(dirtyDate, dirtyOptions)
+  const baseDate = toDate(dirtyBaseDate, dirtyOptions)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  const options = dirtyOptions || {}
+  const locale = options.locale || defaultLocale
+  const formats = options.formats || locale.formatRelative
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -57,17 +61,17 @@ export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) 
     throw new RangeError('locale must contain formatLong property')
   }
 
-  if (!locale.formatRelative) {
-    throw new RangeError('locale must contain formatRelative property')
+  if (!formats) {
+    throw new RangeError('locale must contain formatRelative property or formats be provided separately')
   }
 
-  var diff = differenceInCalendarDays(date, baseDate, options)
+  const diff = differenceInCalendarDays(date, baseDate, options)
 
   if (isNaN(diff)) {
     return 'Invalid Date'
   }
 
-  var token
+  let token
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {
@@ -86,6 +90,6 @@ export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) 
 
   var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date), options)
   var utcBaseDate = subMilliseconds(baseDate, getTimezoneOffsetInMilliseconds(baseDate), options)
-  var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
+  var formatStr = typeof formats === 'function' ? formats(token, utcDate, utcBaseDate, options) : formats[token]
   return format(date, formatStr, options)
 }

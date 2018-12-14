@@ -73,6 +73,20 @@ describe('formatRelative', function () {
     })
   })
 
+  describe('custom format', function () {
+    it('accepts formats as a function', function () {
+      const formats = (token, date, baseDate, options) => "'formats work'"
+      const result = formatRelative(new Date(1986, 2 /* Mar */, 28, 16, 50), baseDate, {formats: formats})
+      assert(result === 'formats work')
+    })
+
+    it('accepts formats as an object', function () {
+      const formats = {today: "'on this very day at' p"}
+      const result = formatRelative(new Date(1986, 3 /* Apr */, 4, 16, 50), baseDate, {formats: formats})
+      assert(result === 'on this very day at 4:50 PM')
+    })
+  })
+
   describe('custom locale', function () {
     it('allows to pass a custom locale', function () {
       var customLocale = {
