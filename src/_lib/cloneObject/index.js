@@ -1,12 +1,5 @@
-export default function cloneObject (dirtyObject) {
-  dirtyObject = dirtyObject || {}
-  var object = {}
+import assign from '../assign/index.js'
 
-  for (var property in dirtyObject) {
-    if (dirtyObject.hasOwnProperty(property)) {
-      object[property] = dirtyObject[property]
-    }
-  }
-
-  return object
+export default function cloneObject(dirtyObject) {
+  return assign({}, dirtyObject)
 }

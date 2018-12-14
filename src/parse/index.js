@@ -1,4 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
+import assign from '../_lib/assign/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
@@ -487,9 +488,11 @@ export default function parse(
     }
 
     var result = setter.set(utcDate, flags, setter.value, subFnOptions)
-    if (Array.isArray(result)) {
+    // Result is tuple (date, flags)
+    if (result[0]) {
       utcDate = result[0]
-      flags = Object.assign({}, flags, result[1])
+      assign(flags, result[1])
+      // Result is date
     } else {
       utcDate = result
     }
