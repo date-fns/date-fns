@@ -3,6 +3,6 @@
 import fn from '../../isLeapYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isLeapYearWithOptions = convertToFP(fn, 2)
+var isLeapYearWithOptions = convertToFP(fn, 1)
 
 export default isLeapYearWithOptions

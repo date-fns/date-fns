@@ -1363,13 +1363,6 @@ describe('parse', function() {
     })
   })
 
-  it('accepts a string as `baseDate`', function() {
-    var dateString = '6 p.m.'
-    var formatString = 'h aaaa'
-    var result = parse(dateString, formatString, baseDate.toISOString())
-    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
-  })
-
   it('accepts a timestamp as `baseDate`', function() {
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
@@ -1448,14 +1441,6 @@ describe('parse', function() {
       })
       assert.throws(block, RangeError)
     })
-  })
-
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function() {
-    // $ExpectedMistake
-    var block = parse.bind(null, '16', 'yy', baseDate, {
-      additionalDigits: NaN
-    })
-    assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 3 arguments', function() {

@@ -3,6 +3,6 @@
 import fn from '../../startOfSecond/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfSecondWithOptions = convertToFP(fn, 2)
+var startOfSecondWithOptions = convertToFP(fn, 1)
 
 export default startOfSecondWithOptions

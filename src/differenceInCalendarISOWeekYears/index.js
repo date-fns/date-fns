@@ -10,7 +10,6 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -20,13 +19,10 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar ISO week-numbering years
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
@@ -38,8 +34,7 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  */
 export default function differenceInCalendarISOWeekYears(
   dirtyDateLeft,
-  dirtyDateRight,
-  dirtyOptions
+  dirtyDateRight
 ) {
   if (arguments.length < 2) {
     throw new TypeError(
@@ -47,8 +42,5 @@ export default function differenceInCalendarISOWeekYears(
     )
   }
 
-  return (
-    getISOWeekYear(dirtyDateLeft, dirtyOptions) -
-    getISOWeekYear(dirtyDateRight, dirtyOptions)
-  )
+  return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
 }

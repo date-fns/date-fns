@@ -1,4 +1,4 @@
-function dateLongFormatter(pattern, formatLong, options) {
+function dateLongFormatter(pattern, formatLong) {
   switch (pattern) {
     case 'P':
       return formatLong.date({ width: 'short' })
@@ -12,7 +12,7 @@ function dateLongFormatter(pattern, formatLong, options) {
   }
 }
 
-function timeLongFormatter(pattern, formatLong, options) {
+function timeLongFormatter(pattern, formatLong) {
   switch (pattern) {
     case 'p':
       return formatLong.time({ width: 'short' })
@@ -26,13 +26,13 @@ function timeLongFormatter(pattern, formatLong, options) {
   }
 }
 
-function dateTimeLongFormatter(pattern, formatLong, options) {
+function dateTimeLongFormatter(pattern, formatLong) {
   var matchResult = pattern.match(/(P+)(p+)?/)
   var datePattern = matchResult[1]
   var timePattern = matchResult[2]
 
   if (!timePattern) {
-    return dateLongFormatter(pattern, formatLong, options)
+    return dateLongFormatter(pattern, formatLong)
   }
 
   var dateTimeFormat
@@ -54,8 +54,8 @@ function dateTimeLongFormatter(pattern, formatLong, options) {
   }
 
   return dateTimeFormat
-    .replace('{{date}}', dateLongFormatter(datePattern, formatLong, options))
-    .replace('{{time}}', timeLongFormatter(timePattern, formatLong, options))
+    .replace('{{date}}', dateLongFormatter(datePattern, formatLong))
+    .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
 var longFormatters = {

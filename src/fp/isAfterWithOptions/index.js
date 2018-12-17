@@ -3,6 +3,6 @@
 import fn from '../../isAfter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isAfterWithOptions = convertToFP(fn, 3)
+var isAfterWithOptions = convertToFP(fn, 2)
 
 export default isAfterWithOptions

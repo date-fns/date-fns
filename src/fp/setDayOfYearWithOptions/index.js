@@ -3,6 +3,6 @@
 import fn from '../../setDayOfYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setDayOfYearWithOptions = convertToFP(fn, 3)
+var setDayOfYearWithOptions = convertToFP(fn, 2)
 
 export default setDayOfYearWithOptions

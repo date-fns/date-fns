@@ -2,8 +2,8 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 type Interval = {
-  start: Date | string | number,
-  end: Date | string | number
+  start: Date | number,
+  end: Date | number
 }
 
 type Options = {
@@ -54,8 +54,4 @@ type CurriedFn2<A, B, R> = <A>(
   a: A
 ) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-declare module.exports: CurriedFn2<
-  (Date | string | number)[],
-  Date | string | number,
-  number
->
+declare module.exports: CurriedFn2<(Date | number)[], Date | number, number>

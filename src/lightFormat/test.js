@@ -7,30 +7,6 @@ import lightFormat from '.'
 describe('lightFormat', () => {
   const date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
 
-  var offset = date.getTimezoneOffset()
-  var absoluteOffset = Math.abs(offset)
-  var hours = Math.floor(absoluteOffset / 60)
-  var hoursLeadingZero = hours < 10 ? '0' : ''
-  var minutes = absoluteOffset % 60
-  var minutesLeadingZero = minutes < 10 ? '0' : ''
-  var sign = offset > 0 ? '-' : '+'
-
-  var timezone =
-    sign + hoursLeadingZero + hours + ':' + minutesLeadingZero + minutes
-  var timezoneShort = timezone.replace(':', '')
-  var timezoneWithOptionalMinutesShort =
-    minutes === 0 ? sign + hoursLeadingZero + hours : timezoneShort
-
-  var timezoneWithZ = offset === 0 ? 'Z' : timezone
-  var timezoneWithZShort = offset === 0 ? 'Z' : timezoneShort
-  var timezoneWithOptionalMinutesAndZShort =
-    offset === 0 ? 'Z' : timezoneWithOptionalMinutesShort
-
-  it('accepts a string', () => {
-    var date = new Date(1987, 1, 11).toISOString()
-    assert(lightFormat(date, 'yyyy-MM-dd') === '1987-02-11')
-  })
-
   it('accepts a timestamp', () => {
     var date = new Date(2014, 3, 4).getTime()
     assert(lightFormat(date, 'yyyy-MM-dd') === '2014-04-04')

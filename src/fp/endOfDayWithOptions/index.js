@@ -3,6 +3,6 @@
 import fn from '../../endOfDay/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfDayWithOptions = convertToFP(fn, 2)
+var endOfDayWithOptions = convertToFP(fn, 1)
 
 export default endOfDayWithOptions

@@ -6,7 +6,6 @@
  * @description
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -36,7 +35,7 @@
  * var result = isDate({})
  * //=> false
  */
-export default function isDate (value) {
+export default function isDate(value) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

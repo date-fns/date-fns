@@ -3,6 +3,6 @@
 import fn from '../../isSameHour/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameHourWithOptions = convertToFP(fn, 3)
+var isSameHourWithOptions = convertToFP(fn, 2)
 
 export default isSameHourWithOptions

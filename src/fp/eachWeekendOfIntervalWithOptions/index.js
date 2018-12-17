@@ -3,6 +3,6 @@
 import fn from '../../eachWeekendOfInterval/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var eachWeekendOfIntervalWithOptions = convertToFP(fn, 2)
+var eachWeekendOfIntervalWithOptions = convertToFP(fn, 1)
 
 export default eachWeekendOfIntervalWithOptions

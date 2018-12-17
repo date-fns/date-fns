@@ -3,6 +3,6 @@
 import fn from '../../setMilliseconds/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setMillisecondsWithOptions = convertToFP(fn, 3)
+var setMillisecondsWithOptions = convertToFP(fn, 2)
 
 export default setMillisecondsWithOptions

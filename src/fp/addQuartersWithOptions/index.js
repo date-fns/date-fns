@@ -3,6 +3,6 @@
 import fn from '../../addQuarters/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addQuartersWithOptions = convertToFP(fn, 3)
+var addQuartersWithOptions = convertToFP(fn, 2)
 
 export default addQuartersWithOptions

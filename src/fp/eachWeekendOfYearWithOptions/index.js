@@ -3,6 +3,6 @@
 import fn from '../../eachWeekendOfYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var eachWeekendOfYearWithOptions = convertToFP(fn, 2)
+var eachWeekendOfYearWithOptions = convertToFP(fn, 1)
 
 export default eachWeekendOfYearWithOptions

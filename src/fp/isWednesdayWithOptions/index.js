@@ -3,6 +3,6 @@
 import fn from '../../isWednesday/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isWednesdayWithOptions = convertToFP(fn, 2)
+var isWednesdayWithOptions = convertToFP(fn, 1)
 
 export default isWednesdayWithOptions

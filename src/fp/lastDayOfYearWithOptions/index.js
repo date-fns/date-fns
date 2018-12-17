@@ -3,6 +3,6 @@
 import fn from '../../lastDayOfYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var lastDayOfYearWithOptions = convertToFP(fn, 2)
+var lastDayOfYearWithOptions = convertToFP(fn, 1)
 
 export default lastDayOfYearWithOptions

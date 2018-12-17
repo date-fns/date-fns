@@ -10,31 +10,32 @@ import endOfYear from '../endOfYear/index.js'
  * @description
  * Get all the Saturdays and Sundays in the year.
  *
- * @param {Date|String|Number} date - the given year
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date|Number} date - the given year
  * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
+ * @throws {RangeError} The passed date is invalid
  *
  * @example
  * // Lists all Saturdays and Sundays in the year
  * var result = eachWeekendOfYear(new Date(2020, 1, 1))
  * //=> [
- *   2020-01-03T23:00:00.000Z,
- *   2020-01-04T23:00:00.000Z,
- *   2020-01-10T23:00:00.000Z,
- *   ...
- *   2020-12-26T23:00:00.000Z
+ * //   Sat Jan 03 2020 00:00:00,
+ * //   Sun Jan 04 2020 00:00:00,
+ * //   ...
+ * //   Sun Dec 27 2020 00:00:00
+ * // ]
  * ]
  */
-export default function eachWeekendOfYear(dirtyDate, dirtyOptions) {
+export default function eachWeekendOfYear(dirtyDate) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 arguments required, but only ' + arguments.length + ' present'
     )
   }
 
-  var startDate = startOfYear(dirtyDate, dirtyOptions)
-  var endDate = endOfYear(dirtyDate, dirtyOptions)
+  var startDate = startOfYear(dirtyDate)
+  if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
+
+  var endDate = endOfYear(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

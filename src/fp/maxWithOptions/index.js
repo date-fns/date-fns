@@ -3,6 +3,6 @@
 import fn from '../../max/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var maxWithOptions = convertToFP(fn, 2)
+var maxWithOptions = convertToFP(fn, 1)
 
 export default maxWithOptions

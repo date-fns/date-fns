@@ -8,5 +8,5 @@ set -ex
 
 export PATH="$(yarn bin):$PATH"
 
-env TZ=America/Sao_Paulo babel-node ./test/dst/toDate/basic.js
-env TZ=Pacific/Apia babel-node ./test/dst/toDate/samoa.js
+env TZ=America/Sao_Paulo babel-node ./test/dst/parseISO/basic.js
+env TZ=Pacific/Apia babel-node ./test/dst/parseISO/samoa.js

@@ -3,6 +3,6 @@
 import fn from '../../setDate/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setDateWithOptions = convertToFP(fn, 3)
+var setDateWithOptions = convertToFP(fn, 2)
 
 export default setDateWithOptions

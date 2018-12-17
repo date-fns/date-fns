@@ -3,6 +3,6 @@
 import fn from '../../setISODay/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setISODayWithOptions = convertToFP(fn, 3)
+var setISODayWithOptions = convertToFP(fn, 2)
 
 export default setISODayWithOptions

@@ -3,6 +3,6 @@
 import fn from '../../subMinutes/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subMinutesWithOptions = convertToFP(fn, 3)
+var subMinutesWithOptions = convertToFP(fn, 2)
 
 export default subMinutesWithOptions

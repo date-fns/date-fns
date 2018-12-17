@@ -28,7 +28,6 @@ var MINUTES_IN_YEAR = 525600
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -98,17 +97,15 @@ var MINUTES_IN_YEAR = 525600
  *   )
  *   ```
  *
- * @param {Date|String|Number} date - the date
- * @param {Date|String|Number} baseDate - the date to compare with
+ * @param {Date|Number} date - the date
+ * @param {Date|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
@@ -178,7 +175,7 @@ export default function formatDistanceStrict(
     throw new RangeError('locale must contain localize.formatDistance property')
   }
 
-  var comparison = compareAsc(dirtyDate, dirtyBaseDate, options)
+  var comparison = compareAsc(dirtyDate, dirtyBaseDate)
 
   if (isNaN(comparison)) {
     return 'Invalid Date'
@@ -191,11 +188,11 @@ export default function formatDistanceStrict(
   var dateLeft
   var dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate, options)
-    dateRight = toDate(dirtyDate, options)
+    dateLeft = toDate(dirtyBaseDate)
+    dateRight = toDate(dirtyDate)
   } else {
-    dateLeft = toDate(dirtyDate, options)
-    dateRight = toDate(dirtyBaseDate, options)
+    dateLeft = toDate(dirtyDate)
+    dateRight = toDate(dirtyBaseDate)
   }
 
   var roundingMethod =
@@ -212,7 +209,7 @@ export default function formatDistanceStrict(
     throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft, dirtyOptions)
+  var seconds = differenceInSeconds(dateRight, dateLeft)
   var offsetInSeconds =
     (getTimezoneOffsetInMilliseconds(dateRight) -
       getTimezoneOffsetInMilliseconds(dateLeft)) /

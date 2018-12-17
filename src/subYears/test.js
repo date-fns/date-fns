@@ -4,45 +4,40 @@
 import assert from 'power-assert'
 import subYears from '.'
 
-describe('subYears', function () {
-  it('subtracts the given number of years', function () {
+describe('subYears', function() {
+  it('subtracts the given number of years', function() {
     var result = subYears(new Date(2014, 8 /* Sep */, 1), 5)
     assert.deepEqual(result, new Date(2009, 8 /* Sep */, 1))
   })
 
-  it('accepts a string', function () {
-    var result = subYears(new Date(2014, 8 /* Sep */, 1).toISOString(), 12)
-    assert.deepEqual(result, new Date(2002, 8 /* Sep */, 1))
-  })
-
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', function() {
     var result = subYears(new Date(2014, 8 /* Sep */, 1).getTime(), 12)
     assert.deepEqual(result, new Date(2002, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', function () {
+  it('converts a fractional number to an integer', function() {
     var result = subYears(new Date(2014, 8 /* Sep */, 1), 5.1)
     assert.deepEqual(result, new Date(2009, 8 /* Sep */, 1))
   })
 
-  it('implicitly converts number arguments', function () {
+  it('implicitly converts number arguments', function() {
     // $ExpectedMistake
     var result = subYears(new Date(2014, 8 /* Sep */, 1), '5')
     assert.deepEqual(result, new Date(2009, 8 /* Sep */, 1))
   })
 
-  it('does not mutate the original date', function () {
+  it('does not mutate the original date', function() {
     var date = new Date(2014, 8 /* Sep */, 1)
     subYears(date, 12)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('handles the leap years properly', function () {
+  it('handles the leap years properly', function() {
     var result = subYears(new Date(2016, 1 /* Feb */, 29), 1)
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 28))
   })
 
-  it('handles dates before 100 AD', function () {
+  it('handles dates before 100 AD', function() {
     var initialDate = new Date(0)
     initialDate.setFullYear(0, 1 /* Feb */, 29)
     initialDate.setHours(0, 0, 0, 0)
@@ -53,23 +48,17 @@ describe('subYears', function () {
     assert.deepEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', function() {
     var result = subYears(new Date(NaN), 5)
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function () {
+  it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = subYears(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function () {
-    // $ExpectedMistake
-    var block = subYears.bind(null, new Date(2014, 8 /* Sep */, 1), 5, {additionalDigits: NaN})
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function() {
     assert.throws(subYears.bind(null), TypeError)
     assert.throws(subYears.bind(null, 1), TypeError)
   })

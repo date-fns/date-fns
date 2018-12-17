@@ -27,8 +27,8 @@ interface CurriedFn4<A, B, C, D, R> {
 // Type Aliases
 
 type Interval = {
-  start: Date | string | number
-  end: Date | string | number
+  start: Date | number
+  end: Date | number
 }
 type IntervalAliased = Interval
 
@@ -89,189 +89,136 @@ declare module 'date-fns' {
 // Regular Functions
 
 declare module 'date-fns' {
-  function addDays(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addDays(date: Date | number, amount: number): Date
   namespace addDays {
 
   }
 
-  function addHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addHours(date: Date | number, amount: number): Date
   namespace addHours {
 
   }
 
-  function addISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addISOWeekYears(date: Date | number, amount: number): Date
   namespace addISOWeekYears {
 
   }
 
-  function addMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMilliseconds(date: Date | number, amount: number): Date
   namespace addMilliseconds {
 
   }
 
-  function addMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMinutes(date: Date | number, amount: number): Date
   namespace addMinutes {
 
   }
 
-  function addMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMonths(date: Date | number, amount: number): Date
   namespace addMonths {
 
   }
 
-  function addQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addQuarters(date: Date | number, amount: number): Date
   namespace addQuarters {
 
   }
 
-  function addSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {
 
   }
 
-  function addWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {
 
   }
 
-  function addYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addYears(date: Date | number, amount: number): Date
   namespace addYears {
 
   }
 
   function areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): boolean
   namespace areIntervalsOverlapping {
 
   }
 
   function closestIndexTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
   ): number
   namespace closestIndexTo {
 
   }
 
   function closestTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
   ): Date
   namespace closestTo {
 
   }
 
-  function compareAsc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  function compareAsc(dateLeft: Date | number, dateRight: Date | number): number
   namespace compareAsc {
 
   }
 
   function compareDesc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace compareDesc {
 
   }
 
   function differenceInCalendarDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarDays {
 
   }
 
   function differenceInCalendarISOWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarISOWeeks {
 
   }
 
   function differenceInCalendarISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarISOWeekYears {
 
   }
 
   function differenceInCalendarMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarMonths {
 
   }
 
   function differenceInCalendarQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarQuarters {
 
   }
 
   function differenceInCalendarWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): number
   namespace differenceInCalendarWeeks {
@@ -279,99 +226,88 @@ declare module 'date-fns' {
   }
 
   function differenceInCalendarYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarYears {
 
   }
 
   function differenceInDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInDays {
 
   }
 
   function differenceInHours(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInHours {
 
   }
 
   function differenceInISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInISOWeekYears {
 
   }
 
   function differenceInMilliseconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMilliseconds {
 
   }
 
   function differenceInMinutes(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMinutes {
 
   }
 
   function differenceInMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMonths {
 
   }
 
   function differenceInQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInQuarters {
 
   }
 
   function differenceInSeconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInSeconds {
 
   }
 
   function differenceInWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInWeeks {
 
   }
 
   function differenceInYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInYears {
 
@@ -382,23 +318,17 @@ declare module 'date-fns' {
 
   }
 
-  function eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
+  function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {
 
   }
 
-  function eachWeekendOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): Date[]
+  function eachWeekendOfMonth(date: Date | number): Date[]
   namespace eachWeekendOfMonth {
 
   }
 
-  function eachWeekendOfYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date[]
+  function eachWeekendOfYear(date: Date | number): Date[]
   namespace eachWeekendOfYear {
 
   }
@@ -408,66 +338,63 @@ declare module 'date-fns' {
 
   }
 
-  function endOfDay(date: Date | string | number, options?: Options): Date
+  function endOfDay(date: Date | number): Date
   namespace endOfDay {
 
   }
 
-  function endOfDecade(date: Date | string | number, options?: Options): Date
+  function endOfDecade(date: Date | number, options?: Options): Date
   namespace endOfDecade {
 
   }
 
-  function endOfHour(date: Date | string | number, options?: Options): Date
+  function endOfHour(date: Date | number): Date
   namespace endOfHour {
 
   }
 
-  function endOfISOWeek(date: Date | string | number, options?: Options): Date
+  function endOfISOWeek(date: Date | number): Date
   namespace endOfISOWeek {
 
   }
 
-  function endOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function endOfISOWeekYear(date: Date | number): Date
   namespace endOfISOWeekYear {
 
   }
 
-  function endOfMinute(date: Date | string | number, options?: Options): Date
+  function endOfMinute(date: Date | number): Date
   namespace endOfMinute {
 
   }
 
-  function endOfMonth(date: Date | string | number, options?: Options): Date
+  function endOfMonth(date: Date | number): Date
   namespace endOfMonth {
 
   }
 
-  function endOfQuarter(date: Date | string | number, options?: Options): Date
+  function endOfQuarter(date: Date | number): Date
   namespace endOfQuarter {
 
   }
 
-  function endOfSecond(date: Date | string | number, options?: Options): Date
+  function endOfSecond(date: Date | number): Date
   namespace endOfSecond {
 
   }
 
-  function endOfWeek(date: Date | string | number, options?: Options): Date
+  function endOfWeek(date: Date | number, options?: Options): Date
   namespace endOfWeek {
 
   }
 
-  function endOfYear(date: Date | string | number, options?: Options): Date
+  function endOfYear(date: Date | number): Date
   namespace endOfYear {
 
   }
 
   function format(
-    date: Date | string | number,
+    date: Date | number,
     format: string,
     options?: Options
   ): string
@@ -476,8 +403,8 @@ declare module 'date-fns' {
   }
 
   function formatDistance(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatDistance {
@@ -485,8 +412,8 @@ declare module 'date-fns' {
   }
 
   function formatDistanceStrict(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatDistanceStrict {
@@ -494,178 +421,148 @@ declare module 'date-fns' {
   }
 
   function formatRelative(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatRelative {
 
   }
 
-  function fromUnixTime(unixTime: number, options?: Options): Date
+  function fromUnixTime(unixTime: number): Date
   namespace fromUnixTime {
 
   }
 
-  function getDate(date: Date | string | number, options?: Options): number
+  function getDate(date: Date | number): number
   namespace getDate {
 
   }
 
-  function getDay(date: Date | string | number, options?: Options): number
+  function getDay(date: Date | number): number
   namespace getDay {
 
   }
 
-  function getDayOfYear(date: Date | string | number, options?: Options): number
+  function getDayOfYear(date: Date | number): number
   namespace getDayOfYear {
 
   }
 
-  function getDaysInMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getDaysInMonth(date: Date | number): number
   namespace getDaysInMonth {
 
   }
 
-  function getDaysInYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getDaysInYear(date: Date | number): number
   namespace getDaysInYear {
 
   }
 
-  function getDecade(date: Date | string | number, options?: Options): number
+  function getDecade(date: Date | number): number
   namespace getDecade {
 
   }
 
-  function getHours(date: Date | string | number, options?: Options): number
+  function getHours(date: Date | number): number
   namespace getHours {
 
   }
 
-  function getISODay(date: Date | string | number, options?: Options): number
+  function getISODay(date: Date | number): number
   namespace getISODay {
 
   }
 
-  function getISOWeek(date: Date | string | number, options?: Options): number
+  function getISOWeek(date: Date | number): number
   namespace getISOWeek {
 
   }
 
-  function getISOWeeksInYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getISOWeeksInYear(date: Date | number): number
   namespace getISOWeeksInYear {
 
   }
 
-  function getISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getISOWeekYear(date: Date | number): number
   namespace getISOWeekYear {
 
   }
 
-  function getMilliseconds(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getMilliseconds(date: Date | number): number
   namespace getMilliseconds {
 
   }
 
-  function getMinutes(date: Date | string | number, options?: Options): number
+  function getMinutes(date: Date | number): number
   namespace getMinutes {
 
   }
 
-  function getMonth(date: Date | string | number, options?: Options): number
+  function getMonth(date: Date | number): number
   namespace getMonth {
 
   }
 
   function getOverlappingDaysInIntervals(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): number
   namespace getOverlappingDaysInIntervals {
 
   }
 
-  function getQuarter(date: Date | string | number, options?: Options): number
+  function getQuarter(date: Date | number): number
   namespace getQuarter {
 
   }
 
-  function getSeconds(date: Date | string | number, options?: Options): number
+  function getSeconds(date: Date | number): number
   namespace getSeconds {
 
   }
 
-  function getTime(date: Date | string | number, options?: Options): number
+  function getTime(date: Date | number): number
   namespace getTime {
 
   }
 
-  function getUnixTime(date: Date | string | number, options?: Options): number
+  function getUnixTime(date: Date | number): number
   namespace getUnixTime {
 
   }
 
-  function getWeek(date: Date | string | number, options?: Options): number
+  function getWeek(date: Date | number, options?: Options): number
   namespace getWeek {
 
   }
 
-  function getWeekOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getWeekOfMonth(date: Date | number, options?: Options): number
   namespace getWeekOfMonth {
 
   }
 
-  function getWeeksInMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getWeeksInMonth(date: Date | number, options?: Options): number
   namespace getWeeksInMonth {
 
   }
 
-  function getWeekYear(date: Date | string | number, options?: Options): number
+  function getWeekYear(date: Date | number, options?: Options): number
   namespace getWeekYear {
 
   }
 
-  function getYear(date: Date | string | number, options?: Options): number
+  function getYear(date: Date | number): number
   namespace getYear {
 
   }
 
-  function isAfter(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {
 
   }
 
-  function isBefore(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {
 
   }
@@ -675,121 +572,100 @@ declare module 'date-fns' {
 
   }
 
-  function isEqual(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {
 
   }
 
-  function isFirstDayOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): boolean
+  function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {
 
   }
 
-  function isFriday(date: Date | string | number, options?: Options): boolean
+  function isFriday(date: Date | number): boolean
   namespace isFriday {
 
   }
 
-  function isLastDayOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): boolean
+  function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {
 
   }
 
-  function isLeapYear(date: Date | string | number, options?: Options): boolean
+  function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {
 
   }
 
-  function isMonday(date: Date | string | number, options?: Options): boolean
+  function isMonday(date: Date | number): boolean
   namespace isMonday {
 
   }
 
-  function isSameDay(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {
 
   }
 
   function isSameHour(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameHour {
 
   }
 
   function isSameISOWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameISOWeek {
 
   }
 
   function isSameISOWeekYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameISOWeekYear {
 
   }
 
   function isSameMinute(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameMinute {
 
   }
 
   function isSameMonth(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameMonth {
 
   }
 
   function isSameQuarter(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameQuarter {
 
   }
 
   function isSameSecond(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameSecond {
 
   }
 
   function isSameWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): boolean
   namespace isSameWeek {
@@ -797,120 +673,99 @@ declare module 'date-fns' {
   }
 
   function isSameYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameYear {
 
   }
 
-  function isSaturday(date: Date | string | number, options?: Options): boolean
+  function isSaturday(date: Date | number): boolean
   namespace isSaturday {
 
   }
 
-  function isSunday(date: Date | string | number, options?: Options): boolean
+  function isSunday(date: Date | number): boolean
   namespace isSunday {
 
   }
 
-  function isThursday(date: Date | string | number, options?: Options): boolean
+  function isThursday(date: Date | number): boolean
   namespace isThursday {
 
   }
 
-  function isTuesday(date: Date | string | number, options?: Options): boolean
+  function isTuesday(date: Date | number): boolean
   namespace isTuesday {
 
   }
 
-  function isValid(date: any, options?: Options): boolean
+  function isValid(date: any): boolean
   namespace isValid {
 
   }
 
-  function isWednesday(date: Date | string | number, options?: Options): boolean
+  function isWednesday(date: Date | number): boolean
   namespace isWednesday {
 
   }
 
-  function isWeekend(date: Date | string | number, options?: Options): boolean
+  function isWeekend(date: Date | number): boolean
   namespace isWeekend {
 
   }
 
-  function isWithinInterval(
-    date: Date | string | number,
-    interval: Interval,
-    options?: Options
-  ): boolean
+  function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {
 
   }
 
-  function lastDayOfDecade(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {
 
   }
 
-  function lastDayOfISOWeek(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfISOWeek(date: Date | number): Date
   namespace lastDayOfISOWeek {
 
   }
 
-  function lastDayOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfISOWeekYear(date: Date | number): Date
   namespace lastDayOfISOWeekYear {
 
   }
 
-  function lastDayOfMonth(date: Date | string | number, options?: Options): Date
+  function lastDayOfMonth(date: Date | number): Date
   namespace lastDayOfMonth {
 
   }
 
-  function lastDayOfQuarter(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfQuarter(date: Date | number, options?: Options): Date
   namespace lastDayOfQuarter {
 
   }
 
-  function lastDayOfWeek(date: Date | string | number, options?: Options): Date
+  function lastDayOfWeek(date: Date | number, options?: Options): Date
   namespace lastDayOfWeek {
 
   }
 
-  function lastDayOfYear(date: Date | string | number, options?: Options): Date
+  function lastDayOfYear(date: Date | number): Date
   namespace lastDayOfYear {
 
   }
 
-  function lightFormat(
-    date: Date | string | number,
-    format: string,
-    options?: Options
-  ): string
+  function lightFormat(date: Date | number, format: string): string
   namespace lightFormat {
 
   }
 
-  function max(datesArray: (Date | string | number)[], options?: Options): Date
+  function max(datesArray: (Date | number)[]): Date
   namespace max {
 
   }
 
-  function min(datesArray: (Date | string | number)[], options?: Options): Date
+  function min(datesArray: (Date | number)[]): Date
   namespace min {
 
   }
@@ -918,141 +773,90 @@ declare module 'date-fns' {
   function parse(
     dateString: string,
     formatString: string,
-    baseDate: Date | string | number,
+    baseDate: Date | number,
     options?: Options
   ): Date
   namespace parse {
 
   }
 
-  function roundToNearestMinutes(
-    date: Date | string | number,
-    nearestTo?: number,
-    options?: Options
-  ): Date
+  function parseISO(argument: string, options?: Options): Date
+  namespace parseISO {
+
+  }
+
+  function roundToNearestMinutes(date: Date | number, options?: Options): Date
   namespace roundToNearestMinutes {
 
   }
 
-  function setDate(
-    date: Date | string | number,
-    dayOfMonth: number,
-    options?: Options
-  ): Date
+  function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {
 
   }
 
-  function setDay(
-    date: Date | string | number,
-    day: number,
-    options?: Options
-  ): Date
+  function setDay(date: Date | number, day: number, options?: Options): Date
   namespace setDay {
 
   }
 
-  function setDayOfYear(
-    date: Date | string | number,
-    dayOfYear: number,
-    options?: Options
-  ): Date
+  function setDayOfYear(date: Date | number, dayOfYear: number): Date
   namespace setDayOfYear {
 
   }
 
-  function setHours(
-    date: Date | string | number,
-    hours: number,
-    options?: Options
-  ): Date
+  function setHours(date: Date | number, hours: number): Date
   namespace setHours {
 
   }
 
-  function setISODay(
-    date: Date | string | number,
-    day: number,
-    options?: Options
-  ): Date
+  function setISODay(date: Date | number, day: number): Date
   namespace setISODay {
 
   }
 
-  function setISOWeek(
-    date: Date | string | number,
-    isoWeek: number,
-    options?: Options
-  ): Date
+  function setISOWeek(date: Date | number, isoWeek: number): Date
   namespace setISOWeek {
 
   }
 
-  function setISOWeekYear(
-    date: Date | string | number,
-    isoWeekYear: number,
-    options?: Options
-  ): Date
+  function setISOWeekYear(date: Date | number, isoWeekYear: number): Date
   namespace setISOWeekYear {
 
   }
 
-  function setMilliseconds(
-    date: Date | string | number,
-    milliseconds: number,
-    options?: Options
-  ): Date
+  function setMilliseconds(date: Date | number, milliseconds: number): Date
   namespace setMilliseconds {
 
   }
 
-  function setMinutes(
-    date: Date | string | number,
-    minutes: number,
-    options?: Options
-  ): Date
+  function setMinutes(date: Date | number, minutes: number): Date
   namespace setMinutes {
 
   }
 
-  function setMonth(
-    date: Date | string | number,
-    month: number,
-    options?: Options
-  ): Date
+  function setMonth(date: Date | number, month: number): Date
   namespace setMonth {
 
   }
 
-  function setQuarter(
-    date: Date | string | number,
-    quarter: number,
-    options?: Options
-  ): Date
+  function setQuarter(date: Date | number, quarter: number): Date
   namespace setQuarter {
 
   }
 
-  function setSeconds(
-    date: Date | string | number,
-    seconds: number,
-    options?: Options
-  ): Date
+  function setSeconds(date: Date | number, seconds: number): Date
   namespace setSeconds {
 
   }
 
-  function setWeek(
-    date: Date | string | number,
-    week: number,
-    options?: Options
-  ): Date
+  function setWeek(date: Date | number, week: number, options?: Options): Date
   namespace setWeek {
 
   }
 
   function setWeekYear(
-    date: Date | string | number,
+    date: Date | number,
     weekYear: number,
     options?: Options
   ): Date
@@ -1060,172 +864,122 @@ declare module 'date-fns' {
 
   }
 
-  function setYear(
-    date: Date | string | number,
-    year: number,
-    options?: Options
-  ): Date
+  function setYear(date: Date | number, year: number): Date
   namespace setYear {
 
   }
 
-  function startOfDay(date: Date | string | number, options?: Options): Date
+  function startOfDay(date: Date | number): Date
   namespace startOfDay {
 
   }
 
-  function startOfDecade(date: Date | string | number, options?: Options): Date
+  function startOfDecade(date: Date | number): Date
   namespace startOfDecade {
 
   }
 
-  function startOfHour(date: Date | string | number, options?: Options): Date
+  function startOfHour(date: Date | number): Date
   namespace startOfHour {
 
   }
 
-  function startOfISOWeek(date: Date | string | number, options?: Options): Date
+  function startOfISOWeek(date: Date | number): Date
   namespace startOfISOWeek {
 
   }
 
-  function startOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function startOfISOWeekYear(date: Date | number): Date
   namespace startOfISOWeekYear {
 
   }
 
-  function startOfMinute(date: Date | string | number, options?: Options): Date
+  function startOfMinute(date: Date | number): Date
   namespace startOfMinute {
 
   }
 
-  function startOfMonth(date: Date | string | number, options?: Options): Date
+  function startOfMonth(date: Date | number): Date
   namespace startOfMonth {
 
   }
 
-  function startOfQuarter(date: Date | string | number, options?: Options): Date
+  function startOfQuarter(date: Date | number): Date
   namespace startOfQuarter {
 
   }
 
-  function startOfSecond(date: Date | string | number, options?: Options): Date
+  function startOfSecond(date: Date | number): Date
   namespace startOfSecond {
 
   }
 
-  function startOfWeek(date: Date | string | number, options?: Options): Date
+  function startOfWeek(date: Date | number, options?: Options): Date
   namespace startOfWeek {
 
   }
 
-  function startOfWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function startOfWeekYear(date: Date | number, options?: Options): Date
   namespace startOfWeekYear {
 
   }
 
-  function startOfYear(date: Date | string | number, options?: Options): Date
+  function startOfYear(date: Date | number): Date
   namespace startOfYear {
 
   }
 
-  function subDays(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subDays(date: Date | number, amount: number): Date
   namespace subDays {
 
   }
 
-  function subHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subHours(date: Date | number, amount: number): Date
   namespace subHours {
 
   }
 
-  function subISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subISOWeekYears(date: Date | number, amount: number): Date
   namespace subISOWeekYears {
 
   }
 
-  function subMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMilliseconds(date: Date | number, amount: number): Date
   namespace subMilliseconds {
 
   }
 
-  function subMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMinutes(date: Date | number, amount: number): Date
   namespace subMinutes {
 
   }
 
-  function subMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMonths(date: Date | number, amount: number): Date
   namespace subMonths {
 
   }
 
-  function subQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subQuarters(date: Date | number, amount: number): Date
   namespace subQuarters {
 
   }
 
-  function subSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subSeconds(date: Date | number, amount: number): Date
   namespace subSeconds {
 
   }
 
-  function subWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subWeeks(date: Date | number, amount: number): Date
   namespace subWeeks {
 
   }
 
-  function subYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subYears(date: Date | number, amount: number): Date
   namespace subYears {
 
   }
 
-  function toDate(argument: Date | string | number, options?: Options): Date
+  function toDate(argument: Date | number): Date
   namespace toDate {
 
   }
@@ -1804,6 +1558,11 @@ declare module 'date-fns/min' {
 declare module 'date-fns/parse' {
   import { parse } from 'date-fns'
   export = parse
+}
+
+declare module 'date-fns/parseISO' {
+  import { parseISO } from 'date-fns'
+  export = parseISO
 }
 
 declare module 'date-fns/roundToNearestMinutes' {
@@ -2576,6 +2335,11 @@ declare module 'date-fns/parse/index' {
   export = parse
 }
 
+declare module 'date-fns/parseISO/index' {
+  import { parseISO } from 'date-fns'
+  export = parseISO
+}
+
 declare module 'date-fns/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns'
   export = roundToNearestMinutes
@@ -3346,6 +3110,11 @@ declare module 'date-fns/parse/index.js' {
   export = parse
 }
 
+declare module 'date-fns/parseISO/index.js' {
+  import { parseISO } from 'date-fns'
+  export = parseISO
+}
+
 declare module 'date-fns/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns'
   export = roundToNearestMinutes
@@ -3544,152 +3313,102 @@ declare module 'date-fns/toDate/index.js' {
 // FP Functions
 
 declare module 'date-fns/fp' {
-  const addDays: CurriedFn2<number, Date | string | number, Date>
+  const addDays: CurriedFn2<number, Date | number, Date>
   namespace addDays {
 
   }
 
-  const addDaysWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addDaysWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addDaysWithOptions {
 
   }
 
-  const addHours: CurriedFn2<number, Date | string | number, Date>
+  const addHours: CurriedFn2<number, Date | number, Date>
   namespace addHours {
 
   }
 
-  const addHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addHoursWithOptions {
 
   }
 
-  const addISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  const addISOWeekYears: CurriedFn2<number, Date | number, Date>
   namespace addISOWeekYears {
 
   }
 
-  const addISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addISOWeekYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addISOWeekYearsWithOptions {
 
   }
 
-  const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const addMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace addMilliseconds {
 
   }
 
-  const addMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMillisecondsWithOptions {
 
   }
 
-  const addMinutes: CurriedFn2<number, Date | string | number, Date>
+  const addMinutes: CurriedFn2<number, Date | number, Date>
   namespace addMinutes {
 
   }
 
-  const addMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMinutesWithOptions {
 
   }
 
-  const addMonths: CurriedFn2<number, Date | string | number, Date>
+  const addMonths: CurriedFn2<number, Date | number, Date>
   namespace addMonths {
 
   }
 
-  const addMonthsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMonthsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMonthsWithOptions {
 
   }
 
-  const addQuarters: CurriedFn2<number, Date | string | number, Date>
+  const addQuarters: CurriedFn2<number, Date | number, Date>
   namespace addQuarters {
 
   }
 
-  const addQuartersWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addQuartersWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addQuartersWithOptions {
 
   }
 
-  const addSeconds: CurriedFn2<number, Date | string | number, Date>
+  const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {
 
   }
 
-  const addSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addSecondsWithOptions {
 
   }
 
-  const addWeeks: CurriedFn2<number, Date | string | number, Date>
+  const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {
 
   }
 
-  const addWeeksWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addWeeksWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addWeeksWithOptions {
 
   }
 
-  const addYears: CurriedFn2<number, Date | string | number, Date>
+  const addYears: CurriedFn2<number, Date | number, Date>
   namespace addYears {
 
   }
 
-  const addYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addYearsWithOptions {
 
   }
@@ -3699,8 +3418,7 @@ declare module 'date-fns/fp' {
 
   }
 
-  const areIntervalsOverlappingWithOptions: CurriedFn3<
-    Options,
+  const areIntervalsOverlappingWithOptions: CurriedFn2<
     Interval,
     Interval,
     boolean
@@ -3709,95 +3427,62 @@ declare module 'date-fns/fp' {
 
   }
 
-  const closestIndexTo: CurriedFn2<
-    (Date | string | number)[],
-    Date | string | number,
-    number
-  >
+  const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {
 
   }
 
-  const closestIndexToWithOptions: CurriedFn3<
-    Options,
-    (Date | string | number)[],
-    Date | string | number,
+  const closestIndexToWithOptions: CurriedFn2<
+    (Date | number)[],
+    Date | number,
     number
   >
   namespace closestIndexToWithOptions {
 
   }
 
-  const closestTo: CurriedFn2<
-    (Date | string | number)[],
-    Date | string | number,
-    Date
-  >
+  const closestTo: CurriedFn2<(Date | number)[], Date | number, Date>
   namespace closestTo {
 
   }
 
-  const closestToWithOptions: CurriedFn3<
-    Options,
-    (Date | string | number)[],
-    Date | string | number,
-    Date
-  >
+  const closestToWithOptions: CurriedFn2<(Date | number)[], Date | number, Date>
   namespace closestToWithOptions {
 
   }
 
-  const compareAsc: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareAsc: CurriedFn2<Date | number, Date | number, number>
   namespace compareAsc {
 
   }
 
-  const compareAscWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareAscWithOptions: CurriedFn2<Date | number, Date | number, number>
   namespace compareAscWithOptions {
 
   }
 
-  const compareDesc: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {
 
   }
 
-  const compareDescWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareDescWithOptions: CurriedFn2<Date | number, Date | number, number>
   namespace compareDescWithOptions {
 
   }
 
   const differenceInCalendarDays: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarDays {
 
   }
 
-  const differenceInCalendarDaysWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarDaysWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarDaysWithOptions {
@@ -3805,18 +3490,17 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarISOWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeeks {
 
   }
 
-  const differenceInCalendarISOWeeksWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarISOWeeksWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeeksWithOptions {
@@ -3824,18 +3508,17 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarISOWeekYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeekYears {
 
   }
 
-  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeekYearsWithOptions {
@@ -3843,18 +3526,17 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarMonths: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarMonths {
 
   }
 
-  const differenceInCalendarMonthsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarMonthsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarMonthsWithOptions {
@@ -3862,18 +3544,17 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarQuarters: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarQuarters {
 
   }
 
-  const differenceInCalendarQuartersWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarQuartersWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarQuartersWithOptions {
@@ -3881,8 +3562,8 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarWeeks {
@@ -3891,8 +3572,8 @@ declare module 'date-fns/fp' {
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarWeeksWithOptions {
@@ -3900,56 +3581,45 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInCalendarYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarYears {
 
   }
 
-  const differenceInCalendarYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarYearsWithOptions {
 
   }
 
-  const differenceInDays: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInDays: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInDays {
 
   }
 
-  const differenceInDaysWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInDaysWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInDaysWithOptions {
 
   }
 
-  const differenceInHours: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInHours: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInHours {
 
   }
 
-  const differenceInHoursWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInHoursWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInHoursWithOptions {
@@ -3957,18 +3627,17 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInISOWeekYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInISOWeekYears {
 
   }
 
-  const differenceInISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInISOWeekYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInISOWeekYearsWithOptions {
@@ -3976,132 +3645,101 @@ declare module 'date-fns/fp' {
   }
 
   const differenceInMilliseconds: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMilliseconds {
 
   }
 
-  const differenceInMillisecondsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMillisecondsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMillisecondsWithOptions {
 
   }
 
-  const differenceInMinutes: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInMinutes: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMinutes {
 
   }
 
-  const differenceInMinutesWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMinutesWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMinutesWithOptions {
 
   }
 
-  const differenceInMonths: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInMonths: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMonths {
 
   }
 
-  const differenceInMonthsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMonthsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMonthsWithOptions {
 
   }
 
-  const differenceInQuarters: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInQuarters: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInQuarters {
 
   }
 
-  const differenceInQuartersWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInQuartersWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInQuartersWithOptions {
 
   }
 
-  const differenceInSeconds: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInSeconds: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInSeconds {
 
   }
 
-  const differenceInSecondsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInSecondsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInSecondsWithOptions {
 
   }
 
-  const differenceInWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInWeeks: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInWeeks {
 
   }
 
-  const differenceInWeeksWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInWeeksWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInWeeksWithOptions {
 
   }
 
-  const differenceInYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {
 
   }
 
-  const differenceInYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInYearsWithOptions {
@@ -4123,35 +3761,27 @@ declare module 'date-fns/fp' {
 
   }
 
-  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  const eachWeekendOfIntervalWithOptions: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfIntervalWithOptions {
 
   }
 
-  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Date[]>
+  const eachWeekendOfMonth: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfMonth {
 
   }
 
-  const eachWeekendOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date[]
-  >
+  const eachWeekendOfMonthWithOptions: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfMonthWithOptions {
 
   }
 
-  const eachWeekendOfYear: CurriedFn1<Date | string | number, Date[]>
+  const eachWeekendOfYear: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYear {
 
   }
 
-  const eachWeekendOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date[]
-  >
+  const eachWeekendOfYearWithOptions: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYearWithOptions {
 
   }
@@ -4166,167 +3796,135 @@ declare module 'date-fns/fp' {
 
   }
 
-  const endOfDay: CurriedFn1<Date | string | number, Date>
+  const endOfDay: CurriedFn1<Date | number, Date>
   namespace endOfDay {
 
   }
 
-  const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfDayWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfDayWithOptions {
 
   }
 
-  const endOfDecade: CurriedFn1<Date | string | number, Date>
+  const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {
 
   }
 
-  const endOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfDecadeWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace endOfDecadeWithOptions {
 
   }
 
-  const endOfHour: CurriedFn1<Date | string | number, Date>
+  const endOfHour: CurriedFn1<Date | number, Date>
   namespace endOfHour {
 
   }
 
-  const endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfHourWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfHourWithOptions {
 
   }
 
-  const endOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeek: CurriedFn1<Date | number, Date>
   namespace endOfISOWeek {
 
   }
 
-  const endOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekWithOptions {
 
   }
 
-  const endOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekYear {
 
   }
 
-  const endOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekYearWithOptions {
 
   }
 
-  const endOfMinute: CurriedFn1<Date | string | number, Date>
+  const endOfMinute: CurriedFn1<Date | number, Date>
   namespace endOfMinute {
 
   }
 
-  const endOfMinuteWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfMinuteWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfMinuteWithOptions {
 
   }
 
-  const endOfMonth: CurriedFn1<Date | string | number, Date>
+  const endOfMonth: CurriedFn1<Date | number, Date>
   namespace endOfMonth {
 
   }
 
-  const endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfMonthWithOptions {
 
   }
 
-  const endOfQuarter: CurriedFn1<Date | string | number, Date>
+  const endOfQuarter: CurriedFn1<Date | number, Date>
   namespace endOfQuarter {
 
   }
 
-  const endOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfQuarterWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfQuarterWithOptions {
 
   }
 
-  const endOfSecond: CurriedFn1<Date | string | number, Date>
+  const endOfSecond: CurriedFn1<Date | number, Date>
   namespace endOfSecond {
 
   }
 
-  const endOfSecondWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfSecondWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfSecondWithOptions {
 
   }
 
-  const endOfWeek: CurriedFn1<Date | string | number, Date>
+  const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {
 
   }
 
-  const endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace endOfWeekWithOptions {
 
   }
 
-  const endOfYear: CurriedFn1<Date | string | number, Date>
+  const endOfYear: CurriedFn1<Date | number, Date>
   namespace endOfYear {
 
   }
 
-  const endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfYearWithOptions {
 
   }
 
-  const format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | number, string>
   namespace format {
 
   }
 
-  const formatDistance: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatDistance: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistance {
 
   }
 
-  const formatDistanceStrict: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatDistanceStrict: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistanceStrict {
 
   }
 
   const formatDistanceStrictWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatDistanceStrictWithOptions {
@@ -4335,39 +3933,30 @@ declare module 'date-fns/fp' {
 
   const formatDistanceWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatDistanceWithOptions {
 
   }
 
-  const formatRelative: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {
 
   }
 
   const formatRelativeWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatRelativeWithOptions {
 
   }
 
-  const formatWithOptions: CurriedFn3<
-    Options,
-    string,
-    Date | string | number,
-    string
-  >
+  const formatWithOptions: CurriedFn3<Options, string, Date | number, string>
   namespace formatWithOptions {
 
   }
@@ -4377,187 +3966,147 @@ declare module 'date-fns/fp' {
 
   }
 
-  const fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>
+  const fromUnixTimeWithOptions: CurriedFn1<number, Date>
   namespace fromUnixTimeWithOptions {
 
   }
 
-  const getDate: CurriedFn1<Date | string | number, number>
+  const getDate: CurriedFn1<Date | number, number>
   namespace getDate {
 
   }
 
-  const getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDateWithOptions: CurriedFn1<Date | number, number>
   namespace getDateWithOptions {
 
   }
 
-  const getDay: CurriedFn1<Date | string | number, number>
+  const getDay: CurriedFn1<Date | number, number>
   namespace getDay {
 
   }
 
-  const getDayOfYear: CurriedFn1<Date | string | number, number>
+  const getDayOfYear: CurriedFn1<Date | number, number>
   namespace getDayOfYear {
 
   }
 
-  const getDayOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDayOfYearWithOptions: CurriedFn1<Date | number, number>
   namespace getDayOfYearWithOptions {
 
   }
 
-  const getDaysInMonth: CurriedFn1<Date | string | number, number>
+  const getDaysInMonth: CurriedFn1<Date | number, number>
   namespace getDaysInMonth {
 
   }
 
-  const getDaysInMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDaysInMonthWithOptions: CurriedFn1<Date | number, number>
   namespace getDaysInMonthWithOptions {
 
   }
 
-  const getDaysInYear: CurriedFn1<Date | string | number, number>
+  const getDaysInYear: CurriedFn1<Date | number, number>
   namespace getDaysInYear {
 
   }
 
-  const getDaysInYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDaysInYearWithOptions: CurriedFn1<Date | number, number>
   namespace getDaysInYearWithOptions {
 
   }
 
-  const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayWithOptions: CurriedFn1<Date | number, number>
   namespace getDayWithOptions {
 
   }
 
-  const getDecade: CurriedFn1<Date | string | number, number>
+  const getDecade: CurriedFn1<Date | number, number>
   namespace getDecade {
 
   }
 
-  const getDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDecadeWithOptions: CurriedFn1<Date | number, number>
   namespace getDecadeWithOptions {
 
   }
 
-  const getHours: CurriedFn1<Date | string | number, number>
+  const getHours: CurriedFn1<Date | number, number>
   namespace getHours {
 
   }
 
-  const getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getHoursWithOptions: CurriedFn1<Date | number, number>
   namespace getHoursWithOptions {
 
   }
 
-  const getISODay: CurriedFn1<Date | string | number, number>
+  const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {
 
   }
 
-  const getISODayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISODayWithOptions: CurriedFn1<Date | number, number>
   namespace getISODayWithOptions {
 
   }
 
-  const getISOWeek: CurriedFn1<Date | string | number, number>
+  const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {
 
   }
 
-  const getISOWeeksInYear: CurriedFn1<Date | string | number, number>
+  const getISOWeeksInYear: CurriedFn1<Date | number, number>
   namespace getISOWeeksInYear {
 
   }
 
-  const getISOWeeksInYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeeksInYearWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeeksInYearWithOptions {
 
   }
 
-  const getISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeekWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeekWithOptions {
 
   }
 
-  const getISOWeekYear: CurriedFn1<Date | string | number, number>
+  const getISOWeekYear: CurriedFn1<Date | number, number>
   namespace getISOWeekYear {
 
   }
 
-  const getISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeekYearWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeekYearWithOptions {
 
   }
 
-  const getMilliseconds: CurriedFn1<Date | string | number, number>
+  const getMilliseconds: CurriedFn1<Date | number, number>
   namespace getMilliseconds {
 
   }
 
-  const getMillisecondsWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getMillisecondsWithOptions: CurriedFn1<Date | number, number>
   namespace getMillisecondsWithOptions {
 
   }
 
-  const getMinutes: CurriedFn1<Date | string | number, number>
+  const getMinutes: CurriedFn1<Date | number, number>
   namespace getMinutes {
 
   }
 
-  const getMinutesWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getMinutesWithOptions: CurriedFn1<Date | number, number>
   namespace getMinutesWithOptions {
 
   }
 
-  const getMonth: CurriedFn1<Date | string | number, number>
+  const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {
 
   }
 
-  const getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMonthWithOptions: CurriedFn1<Date | number, number>
   namespace getMonthWithOptions {
 
   }
@@ -4567,8 +4116,7 @@ declare module 'date-fns/fp' {
 
   }
 
-  const getOverlappingDaysInIntervalsWithOptions: CurriedFn3<
-    Options,
+  const getOverlappingDaysInIntervalsWithOptions: CurriedFn2<
     Interval,
     Interval,
     number
@@ -4577,154 +4125,112 @@ declare module 'date-fns/fp' {
 
   }
 
-  const getQuarter: CurriedFn1<Date | string | number, number>
+  const getQuarter: CurriedFn1<Date | number, number>
   namespace getQuarter {
 
   }
 
-  const getQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getQuarterWithOptions: CurriedFn1<Date | number, number>
   namespace getQuarterWithOptions {
 
   }
 
-  const getSeconds: CurriedFn1<Date | string | number, number>
+  const getSeconds: CurriedFn1<Date | number, number>
   namespace getSeconds {
 
   }
 
-  const getSecondsWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getSecondsWithOptions: CurriedFn1<Date | number, number>
   namespace getSecondsWithOptions {
 
   }
 
-  const getTime: CurriedFn1<Date | string | number, number>
+  const getTime: CurriedFn1<Date | number, number>
   namespace getTime {
 
   }
 
-  const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getTimeWithOptions: CurriedFn1<Date | number, number>
   namespace getTimeWithOptions {
 
   }
 
-  const getUnixTime: CurriedFn1<Date | string | number, number>
+  const getUnixTime: CurriedFn1<Date | number, number>
   namespace getUnixTime {
 
   }
 
-  const getUnixTimeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getUnixTimeWithOptions: CurriedFn1<Date | number, number>
   namespace getUnixTimeWithOptions {
 
   }
 
-  const getWeek: CurriedFn1<Date | string | number, number>
+  const getWeek: CurriedFn1<Date | number, number>
   namespace getWeek {
 
   }
 
-  const getWeekOfMonth: CurriedFn1<Date | string | number, number>
+  const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {
 
   }
 
-  const getWeekOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeekOfMonthWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekOfMonthWithOptions {
 
   }
 
-  const getWeeksInMonth: CurriedFn1<Date | string | number, number>
+  const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {
 
   }
 
-  const getWeeksInMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeeksInMonthWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeeksInMonthWithOptions {
 
   }
 
-  const getWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getWeekWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekWithOptions {
 
   }
 
-  const getWeekYear: CurriedFn1<Date | string | number, number>
+  const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {
 
   }
 
-  const getWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeekYearWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekYearWithOptions {
 
   }
 
-  const getYear: CurriedFn1<Date | string | number, number>
+  const getYear: CurriedFn1<Date | number, number>
   namespace getYear {
 
   }
 
-  const getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getYearWithOptions: CurriedFn1<Date | number, number>
   namespace getYearWithOptions {
 
   }
 
-  const isAfter: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {
 
   }
 
-  const isAfterWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isAfterWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfterWithOptions {
 
   }
 
-  const isBefore: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {
 
   }
 
-  const isBeforeWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isBeforeWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBeforeWithOptions {
 
   }
@@ -4739,337 +4245,231 @@ declare module 'date-fns/fp' {
 
   }
 
-  const isEqual: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {
 
   }
 
-  const isEqualWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isEqualWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqualWithOptions {
 
   }
 
-  const isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {
 
   }
 
-  const isFirstDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isFirstDayOfMonthWithOptions: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonthWithOptions {
 
   }
 
-  const isFriday: CurriedFn1<Date | string | number, boolean>
+  const isFriday: CurriedFn1<Date | number, boolean>
   namespace isFriday {
 
   }
 
-  const isFridayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isFridayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isFridayWithOptions {
 
   }
 
-  const isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isLastDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonth {
 
   }
 
-  const isLastDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isLastDayOfMonthWithOptions: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonthWithOptions {
 
   }
 
-  const isLeapYear: CurriedFn1<Date | string | number, boolean>
+  const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {
 
   }
 
-  const isLeapYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isLeapYearWithOptions: CurriedFn1<Date | number, boolean>
   namespace isLeapYearWithOptions {
 
   }
 
-  const isMonday: CurriedFn1<Date | string | number, boolean>
+  const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {
 
   }
 
-  const isMondayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isMondayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isMondayWithOptions {
 
   }
 
-  const isSameDay: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameDay: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDay {
 
   }
 
-  const isSameDayWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameDayWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDayWithOptions {
 
   }
 
-  const isSameHour: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameHour: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameHour {
 
   }
 
-  const isSameHourWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameHourWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameHourWithOptions {
 
   }
 
-  const isSameISOWeek: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameISOWeek: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameISOWeek {
 
   }
 
-  const isSameISOWeekWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameISOWeekWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameISOWeekWithOptions {
 
   }
 
-  const isSameISOWeekYear: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameISOWeekYear: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameISOWeekYear {
 
   }
 
-  const isSameISOWeekYearWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameISOWeekYearWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameISOWeekYearWithOptions {
 
   }
 
-  const isSameMinute: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameMinute: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameMinute {
 
   }
 
-  const isSameMinuteWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameMinuteWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameMinuteWithOptions {
 
   }
 
-  const isSameMonth: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameMonth: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameMonth {
 
   }
 
-  const isSameMonthWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameMonthWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameMonthWithOptions {
 
   }
 
-  const isSameQuarter: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameQuarter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameQuarter {
 
   }
 
-  const isSameQuarterWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameQuarterWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameQuarterWithOptions {
 
   }
 
-  const isSameSecond: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameSecond: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameSecond {
 
   }
 
-  const isSameSecondWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameSecondWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameSecondWithOptions {
 
   }
 
-  const isSameWeek: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameWeek: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameWeek {
 
   }
 
   const isSameWeekWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameWeekWithOptions {
 
   }
 
-  const isSameYear: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameYear: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameYear {
 
   }
 
-  const isSameYearWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameYearWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameYearWithOptions {
 
   }
 
-  const isSaturday: CurriedFn1<Date | string | number, boolean>
+  const isSaturday: CurriedFn1<Date | number, boolean>
   namespace isSaturday {
 
   }
 
-  const isSaturdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isSaturdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isSaturdayWithOptions {
 
   }
 
-  const isSunday: CurriedFn1<Date | string | number, boolean>
+  const isSunday: CurriedFn1<Date | number, boolean>
   namespace isSunday {
 
   }
 
-  const isSundayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isSundayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isSundayWithOptions {
 
   }
 
-  const isThursday: CurriedFn1<Date | string | number, boolean>
+  const isThursday: CurriedFn1<Date | number, boolean>
   namespace isThursday {
 
   }
 
-  const isThursdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isThursdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isThursdayWithOptions {
 
   }
 
-  const isTuesday: CurriedFn1<Date | string | number, boolean>
+  const isTuesday: CurriedFn1<Date | number, boolean>
   namespace isTuesday {
 
   }
 
-  const isTuesdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isTuesdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isTuesdayWithOptions {
 
   }
@@ -5079,195 +4479,163 @@ declare module 'date-fns/fp' {
 
   }
 
-  const isValidWithOptions: CurriedFn2<Options, any, boolean>
+  const isValidWithOptions: CurriedFn1<any, boolean>
   namespace isValidWithOptions {
 
   }
 
-  const isWednesday: CurriedFn1<Date | string | number, boolean>
+  const isWednesday: CurriedFn1<Date | number, boolean>
   namespace isWednesday {
 
   }
 
-  const isWednesdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isWednesdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isWednesdayWithOptions {
 
   }
 
-  const isWeekend: CurriedFn1<Date | string | number, boolean>
+  const isWeekend: CurriedFn1<Date | number, boolean>
   namespace isWeekend {
 
   }
 
-  const isWeekendWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isWeekendWithOptions: CurriedFn1<Date | number, boolean>
   namespace isWeekendWithOptions {
 
   }
 
-  const isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
+  const isWithinInterval: CurriedFn2<Interval, Date | number, boolean>
   namespace isWithinInterval {
 
   }
 
-  const isWithinIntervalWithOptions: CurriedFn3<
-    Options,
+  const isWithinIntervalWithOptions: CurriedFn2<
     Interval,
-    Date | string | number,
+    Date | number,
     boolean
   >
   namespace isWithinIntervalWithOptions {
 
   }
 
-  const lastDayOfDecade: CurriedFn1<Date | string | number, Date>
+  const lastDayOfDecade: CurriedFn1<Date | number, Date>
   namespace lastDayOfDecade {
 
   }
 
-  const lastDayOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfDecadeWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfDecadeWithOptions {
 
   }
 
-  const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeek {
 
   }
 
-  const lastDayOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekWithOptions {
 
   }
 
-  const lastDayOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekYear {
 
   }
 
-  const lastDayOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekYearWithOptions {
 
   }
 
-  const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
+  const lastDayOfMonth: CurriedFn1<Date | number, Date>
   namespace lastDayOfMonth {
 
   }
 
-  const lastDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfMonthWithOptions {
 
   }
 
-  const lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
+  const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {
 
   }
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace lastDayOfQuarterWithOptions {
 
   }
 
-  const lastDayOfWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {
 
   }
 
-  const lastDayOfWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace lastDayOfWeekWithOptions {
 
   }
 
-  const lastDayOfYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfYear: CurriedFn1<Date | number, Date>
   namespace lastDayOfYear {
 
   }
 
-  const lastDayOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfYearWithOptions {
 
   }
 
-  const lightFormat: CurriedFn2<string, Date | string | number, string>
+  const lightFormat: CurriedFn2<string, Date | number, string>
   namespace lightFormat {
 
   }
 
-  const lightFormatWithOptions: CurriedFn3<
-    Options,
-    string,
-    Date | string | number,
-    string
-  >
+  const lightFormatWithOptions: CurriedFn2<string, Date | number, string>
   namespace lightFormatWithOptions {
 
   }
 
-  const max: CurriedFn1<(Date | string | number)[], Date>
+  const max: CurriedFn1<(Date | number)[], Date>
   namespace max {
 
   }
 
-  const maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const maxWithOptions: CurriedFn1<(Date | number)[], Date>
   namespace maxWithOptions {
 
   }
 
-  const min: CurriedFn1<(Date | string | number)[], Date>
+  const min: CurriedFn1<(Date | number)[], Date>
   namespace min {
 
   }
 
-  const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const minWithOptions: CurriedFn1<(Date | number)[], Date>
   namespace minWithOptions {
 
   }
 
-  const parse: CurriedFn3<Date | string | number, string, string, Date>
+  const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {
+
+  }
+
+  const parseISO: CurriedFn1<string, Date>
+  namespace parseISO {
+
+  }
+
+  const parseISOWithOptions: CurriedFn2<Options, string, Date>
+  namespace parseISOWithOptions {
 
   }
 
   const parseWithOptions: CurriedFn4<
     Options,
-    Date | string | number,
+    Date | number,
     string,
     string,
     Date
@@ -5276,566 +4644,396 @@ declare module 'date-fns/fp' {
 
   }
 
-  const roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>
+  const roundToNearestMinutes: CurriedFn1<Date | number, Date>
   namespace roundToNearestMinutes {
 
   }
 
-  const roundToNearestMinutesWithOptions: CurriedFn3<
+  const roundToNearestMinutesWithOptions: CurriedFn2<
     Options,
-    number,
-    Date | string | number,
+    Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {
 
   }
 
-  const setDate: CurriedFn2<number, Date | string | number, Date>
+  const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {
 
   }
 
-  const setDateWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDateWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setDateWithOptions {
 
   }
 
-  const setDay: CurriedFn2<number, Date | string | number, Date>
+  const setDay: CurriedFn2<number, Date | number, Date>
   namespace setDay {
 
   }
 
-  const setDayOfYear: CurriedFn2<number, Date | string | number, Date>
+  const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {
 
   }
 
-  const setDayOfYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDayOfYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYearWithOptions {
 
   }
 
-  const setDayWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDayWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setDayWithOptions {
 
   }
 
-  const setHours: CurriedFn2<number, Date | string | number, Date>
+  const setHours: CurriedFn2<number, Date | number, Date>
   namespace setHours {
 
   }
 
-  const setHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setHoursWithOptions {
 
   }
 
-  const setISODay: CurriedFn2<number, Date | string | number, Date>
+  const setISODay: CurriedFn2<number, Date | number, Date>
   namespace setISODay {
 
   }
 
-  const setISODayWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISODayWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISODayWithOptions {
 
   }
 
-  const setISOWeek: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeek: CurriedFn2<number, Date | number, Date>
   namespace setISOWeek {
 
   }
 
-  const setISOWeekWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISOWeekWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekWithOptions {
 
   }
 
-  const setISOWeekYear: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekYear {
 
   }
 
-  const setISOWeekYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISOWeekYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekYearWithOptions {
 
   }
 
-  const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const setMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace setMilliseconds {
 
   }
 
-  const setMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMillisecondsWithOptions {
 
   }
 
-  const setMinutes: CurriedFn2<number, Date | string | number, Date>
+  const setMinutes: CurriedFn2<number, Date | number, Date>
   namespace setMinutes {
 
   }
 
-  const setMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMinutesWithOptions {
 
   }
 
-  const setMonth: CurriedFn2<number, Date | string | number, Date>
+  const setMonth: CurriedFn2<number, Date | number, Date>
   namespace setMonth {
 
   }
 
-  const setMonthWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMonthWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMonthWithOptions {
 
   }
 
-  const setQuarter: CurriedFn2<number, Date | string | number, Date>
+  const setQuarter: CurriedFn2<number, Date | number, Date>
   namespace setQuarter {
 
   }
 
-  const setQuarterWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setQuarterWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setQuarterWithOptions {
 
   }
 
-  const setSeconds: CurriedFn2<number, Date | string | number, Date>
+  const setSeconds: CurriedFn2<number, Date | number, Date>
   namespace setSeconds {
 
   }
 
-  const setSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setSecondsWithOptions {
 
   }
 
-  const setWeek: CurriedFn2<number, Date | string | number, Date>
+  const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {
 
   }
 
-  const setWeekWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setWeekWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setWeekWithOptions {
 
   }
 
-  const setWeekYear: CurriedFn2<number, Date | string | number, Date>
+  const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {
 
   }
 
-  const setWeekYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setWeekYearWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setWeekYearWithOptions {
 
   }
 
-  const setYear: CurriedFn2<number, Date | string | number, Date>
+  const setYear: CurriedFn2<number, Date | number, Date>
   namespace setYear {
 
   }
 
-  const setYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setYearWithOptions {
 
   }
 
-  const startOfDay: CurriedFn1<Date | string | number, Date>
+  const startOfDay: CurriedFn1<Date | number, Date>
   namespace startOfDay {
 
   }
 
-  const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfDayWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfDayWithOptions {
 
   }
 
-  const startOfDecade: CurriedFn1<Date | string | number, Date>
+  const startOfDecade: CurriedFn1<Date | number, Date>
   namespace startOfDecade {
 
   }
 
-  const startOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfDecadeWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfDecadeWithOptions {
 
   }
 
-  const startOfHour: CurriedFn1<Date | string | number, Date>
+  const startOfHour: CurriedFn1<Date | number, Date>
   namespace startOfHour {
 
   }
 
-  const startOfHourWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfHourWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfHourWithOptions {
 
   }
 
-  const startOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeek: CurriedFn1<Date | number, Date>
   namespace startOfISOWeek {
 
   }
 
-  const startOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekWithOptions {
 
   }
 
-  const startOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekYear {
 
   }
 
-  const startOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekYearWithOptions {
 
   }
 
-  const startOfMinute: CurriedFn1<Date | string | number, Date>
+  const startOfMinute: CurriedFn1<Date | number, Date>
   namespace startOfMinute {
 
   }
 
-  const startOfMinuteWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfMinuteWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfMinuteWithOptions {
 
   }
 
-  const startOfMonth: CurriedFn1<Date | string | number, Date>
+  const startOfMonth: CurriedFn1<Date | number, Date>
   namespace startOfMonth {
 
   }
 
-  const startOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfMonthWithOptions {
 
   }
 
-  const startOfQuarter: CurriedFn1<Date | string | number, Date>
+  const startOfQuarter: CurriedFn1<Date | number, Date>
   namespace startOfQuarter {
 
   }
 
-  const startOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfQuarterWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfQuarterWithOptions {
 
   }
 
-  const startOfSecond: CurriedFn1<Date | string | number, Date>
+  const startOfSecond: CurriedFn1<Date | number, Date>
   namespace startOfSecond {
 
   }
 
-  const startOfSecondWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfSecondWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfSecondWithOptions {
 
   }
 
-  const startOfWeek: CurriedFn1<Date | string | number, Date>
+  const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {
 
   }
 
-  const startOfWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace startOfWeekWithOptions {
 
   }
 
-  const startOfWeekYear: CurriedFn1<Date | string | number, Date>
+  const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {
 
   }
 
-  const startOfWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfWeekYearWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace startOfWeekYearWithOptions {
 
   }
 
-  const startOfYear: CurriedFn1<Date | string | number, Date>
+  const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {
 
   }
 
-  const startOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfYearWithOptions {
 
   }
 
-  const subDays: CurriedFn2<number, Date | string | number, Date>
+  const subDays: CurriedFn2<number, Date | number, Date>
   namespace subDays {
 
   }
 
-  const subDaysWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subDaysWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subDaysWithOptions {
 
   }
 
-  const subHours: CurriedFn2<number, Date | string | number, Date>
+  const subHours: CurriedFn2<number, Date | number, Date>
   namespace subHours {
 
   }
 
-  const subHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subHoursWithOptions {
 
   }
 
-  const subISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  const subISOWeekYears: CurriedFn2<number, Date | number, Date>
   namespace subISOWeekYears {
 
   }
 
-  const subISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subISOWeekYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subISOWeekYearsWithOptions {
 
   }
 
-  const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const subMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace subMilliseconds {
 
   }
 
-  const subMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMillisecondsWithOptions {
 
   }
 
-  const subMinutes: CurriedFn2<number, Date | string | number, Date>
+  const subMinutes: CurriedFn2<number, Date | number, Date>
   namespace subMinutes {
 
   }
 
-  const subMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMinutesWithOptions {
 
   }
 
-  const subMonths: CurriedFn2<number, Date | string | number, Date>
+  const subMonths: CurriedFn2<number, Date | number, Date>
   namespace subMonths {
 
   }
 
-  const subMonthsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMonthsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMonthsWithOptions {
 
   }
 
-  const subQuarters: CurriedFn2<number, Date | string | number, Date>
+  const subQuarters: CurriedFn2<number, Date | number, Date>
   namespace subQuarters {
 
   }
 
-  const subQuartersWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subQuartersWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subQuartersWithOptions {
 
   }
 
-  const subSeconds: CurriedFn2<number, Date | string | number, Date>
+  const subSeconds: CurriedFn2<number, Date | number, Date>
   namespace subSeconds {
 
   }
 
-  const subSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subSecondsWithOptions {
 
   }
 
-  const subWeeks: CurriedFn2<number, Date | string | number, Date>
+  const subWeeks: CurriedFn2<number, Date | number, Date>
   namespace subWeeks {
 
   }
 
-  const subWeeksWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subWeeksWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subWeeksWithOptions {
 
   }
 
-  const subYears: CurriedFn2<number, Date | string | number, Date>
+  const subYears: CurriedFn2<number, Date | number, Date>
   namespace subYears {
 
   }
 
-  const subYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subYearsWithOptions {
 
   }
 
-  const toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {
 
   }
 
-  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn1<Date | number, Date>
   namespace toDateWithOptions {
 
   }
@@ -6984,6 +6182,16 @@ declare module 'date-fns/fp/minWithOptions' {
 declare module 'date-fns/fp/parse' {
   import { parse } from 'date-fns/fp'
   export = parse
+}
+
+declare module 'date-fns/fp/parseISO' {
+  import { parseISO } from 'date-fns/fp'
+  export = parseISO
+}
+
+declare module 'date-fns/fp/parseISOWithOptions' {
+  import { parseISOWithOptions } from 'date-fns/fp'
+  export = parseISOWithOptions
 }
 
 declare module 'date-fns/fp/parseWithOptions' {
@@ -8526,6 +7734,16 @@ declare module 'date-fns/fp/parse/index' {
   export = parse
 }
 
+declare module 'date-fns/fp/parseISO/index' {
+  import { parseISO } from 'date-fns/fp'
+  export = parseISO
+}
+
+declare module 'date-fns/fp/parseISOWithOptions/index' {
+  import { parseISOWithOptions } from 'date-fns/fp'
+  export = parseISOWithOptions
+}
+
 declare module 'date-fns/fp/parseWithOptions/index' {
   import { parseWithOptions } from 'date-fns/fp'
   export = parseWithOptions
@@ -10066,6 +9284,16 @@ declare module 'date-fns/fp/parse/index.js' {
   export = parse
 }
 
+declare module 'date-fns/fp/parseISO/index.js' {
+  import { parseISO } from 'date-fns/fp'
+  export = parseISO
+}
+
+declare module 'date-fns/fp/parseISOWithOptions/index.js' {
+  import { parseISOWithOptions } from 'date-fns/fp'
+  export = parseISOWithOptions
+}
+
 declare module 'date-fns/fp/parseWithOptions/index.js' {
   import { parseWithOptions } from 'date-fns/fp'
   export = parseWithOptions
@@ -10464,189 +9692,136 @@ declare module 'date-fns/fp/toDateWithOptions/index.js' {
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
-  function addDays(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addDays(date: Date | number, amount: number): Date
   namespace addDays {
 
   }
 
-  function addHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addHours(date: Date | number, amount: number): Date
   namespace addHours {
 
   }
 
-  function addISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addISOWeekYears(date: Date | number, amount: number): Date
   namespace addISOWeekYears {
 
   }
 
-  function addMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMilliseconds(date: Date | number, amount: number): Date
   namespace addMilliseconds {
 
   }
 
-  function addMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMinutes(date: Date | number, amount: number): Date
   namespace addMinutes {
 
   }
 
-  function addMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addMonths(date: Date | number, amount: number): Date
   namespace addMonths {
 
   }
 
-  function addQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addQuarters(date: Date | number, amount: number): Date
   namespace addQuarters {
 
   }
 
-  function addSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {
 
   }
 
-  function addWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {
 
   }
 
-  function addYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function addYears(date: Date | number, amount: number): Date
   namespace addYears {
 
   }
 
   function areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): boolean
   namespace areIntervalsOverlapping {
 
   }
 
   function closestIndexTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
   ): number
   namespace closestIndexTo {
 
   }
 
   function closestTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
   ): Date
   namespace closestTo {
 
   }
 
-  function compareAsc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  function compareAsc(dateLeft: Date | number, dateRight: Date | number): number
   namespace compareAsc {
 
   }
 
   function compareDesc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace compareDesc {
 
   }
 
   function differenceInCalendarDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarDays {
 
   }
 
   function differenceInCalendarISOWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarISOWeeks {
 
   }
 
   function differenceInCalendarISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarISOWeekYears {
 
   }
 
   function differenceInCalendarMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarMonths {
 
   }
 
   function differenceInCalendarQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarQuarters {
 
   }
 
   function differenceInCalendarWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): number
   namespace differenceInCalendarWeeks {
@@ -10654,99 +9829,88 @@ declare module 'date-fns/esm' {
   }
 
   function differenceInCalendarYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInCalendarYears {
 
   }
 
   function differenceInDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInDays {
 
   }
 
   function differenceInHours(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInHours {
 
   }
 
   function differenceInISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInISOWeekYears {
 
   }
 
   function differenceInMilliseconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMilliseconds {
 
   }
 
   function differenceInMinutes(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMinutes {
 
   }
 
   function differenceInMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInMonths {
 
   }
 
   function differenceInQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInQuarters {
 
   }
 
   function differenceInSeconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInSeconds {
 
   }
 
   function differenceInWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInWeeks {
 
   }
 
   function differenceInYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
   namespace differenceInYears {
 
@@ -10757,23 +9921,17 @@ declare module 'date-fns/esm' {
 
   }
 
-  function eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
+  function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {
 
   }
 
-  function eachWeekendOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): Date[]
+  function eachWeekendOfMonth(date: Date | number): Date[]
   namespace eachWeekendOfMonth {
 
   }
 
-  function eachWeekendOfYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date[]
+  function eachWeekendOfYear(date: Date | number): Date[]
   namespace eachWeekendOfYear {
 
   }
@@ -10783,66 +9941,63 @@ declare module 'date-fns/esm' {
 
   }
 
-  function endOfDay(date: Date | string | number, options?: Options): Date
+  function endOfDay(date: Date | number): Date
   namespace endOfDay {
 
   }
 
-  function endOfDecade(date: Date | string | number, options?: Options): Date
+  function endOfDecade(date: Date | number, options?: Options): Date
   namespace endOfDecade {
 
   }
 
-  function endOfHour(date: Date | string | number, options?: Options): Date
+  function endOfHour(date: Date | number): Date
   namespace endOfHour {
 
   }
 
-  function endOfISOWeek(date: Date | string | number, options?: Options): Date
+  function endOfISOWeek(date: Date | number): Date
   namespace endOfISOWeek {
 
   }
 
-  function endOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function endOfISOWeekYear(date: Date | number): Date
   namespace endOfISOWeekYear {
 
   }
 
-  function endOfMinute(date: Date | string | number, options?: Options): Date
+  function endOfMinute(date: Date | number): Date
   namespace endOfMinute {
 
   }
 
-  function endOfMonth(date: Date | string | number, options?: Options): Date
+  function endOfMonth(date: Date | number): Date
   namespace endOfMonth {
 
   }
 
-  function endOfQuarter(date: Date | string | number, options?: Options): Date
+  function endOfQuarter(date: Date | number): Date
   namespace endOfQuarter {
 
   }
 
-  function endOfSecond(date: Date | string | number, options?: Options): Date
+  function endOfSecond(date: Date | number): Date
   namespace endOfSecond {
 
   }
 
-  function endOfWeek(date: Date | string | number, options?: Options): Date
+  function endOfWeek(date: Date | number, options?: Options): Date
   namespace endOfWeek {
 
   }
 
-  function endOfYear(date: Date | string | number, options?: Options): Date
+  function endOfYear(date: Date | number): Date
   namespace endOfYear {
 
   }
 
   function format(
-    date: Date | string | number,
+    date: Date | number,
     format: string,
     options?: Options
   ): string
@@ -10851,8 +10006,8 @@ declare module 'date-fns/esm' {
   }
 
   function formatDistance(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatDistance {
@@ -10860,8 +10015,8 @@ declare module 'date-fns/esm' {
   }
 
   function formatDistanceStrict(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatDistanceStrict {
@@ -10869,178 +10024,148 @@ declare module 'date-fns/esm' {
   }
 
   function formatRelative(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
   namespace formatRelative {
 
   }
 
-  function fromUnixTime(unixTime: number, options?: Options): Date
+  function fromUnixTime(unixTime: number): Date
   namespace fromUnixTime {
 
   }
 
-  function getDate(date: Date | string | number, options?: Options): number
+  function getDate(date: Date | number): number
   namespace getDate {
 
   }
 
-  function getDay(date: Date | string | number, options?: Options): number
+  function getDay(date: Date | number): number
   namespace getDay {
 
   }
 
-  function getDayOfYear(date: Date | string | number, options?: Options): number
+  function getDayOfYear(date: Date | number): number
   namespace getDayOfYear {
 
   }
 
-  function getDaysInMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getDaysInMonth(date: Date | number): number
   namespace getDaysInMonth {
 
   }
 
-  function getDaysInYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getDaysInYear(date: Date | number): number
   namespace getDaysInYear {
 
   }
 
-  function getDecade(date: Date | string | number, options?: Options): number
+  function getDecade(date: Date | number): number
   namespace getDecade {
 
   }
 
-  function getHours(date: Date | string | number, options?: Options): number
+  function getHours(date: Date | number): number
   namespace getHours {
 
   }
 
-  function getISODay(date: Date | string | number, options?: Options): number
+  function getISODay(date: Date | number): number
   namespace getISODay {
 
   }
 
-  function getISOWeek(date: Date | string | number, options?: Options): number
+  function getISOWeek(date: Date | number): number
   namespace getISOWeek {
 
   }
 
-  function getISOWeeksInYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getISOWeeksInYear(date: Date | number): number
   namespace getISOWeeksInYear {
 
   }
 
-  function getISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getISOWeekYear(date: Date | number): number
   namespace getISOWeekYear {
 
   }
 
-  function getMilliseconds(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getMilliseconds(date: Date | number): number
   namespace getMilliseconds {
 
   }
 
-  function getMinutes(date: Date | string | number, options?: Options): number
+  function getMinutes(date: Date | number): number
   namespace getMinutes {
 
   }
 
-  function getMonth(date: Date | string | number, options?: Options): number
+  function getMonth(date: Date | number): number
   namespace getMonth {
 
   }
 
   function getOverlappingDaysInIntervals(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): number
   namespace getOverlappingDaysInIntervals {
 
   }
 
-  function getQuarter(date: Date | string | number, options?: Options): number
+  function getQuarter(date: Date | number): number
   namespace getQuarter {
 
   }
 
-  function getSeconds(date: Date | string | number, options?: Options): number
+  function getSeconds(date: Date | number): number
   namespace getSeconds {
 
   }
 
-  function getTime(date: Date | string | number, options?: Options): number
+  function getTime(date: Date | number): number
   namespace getTime {
 
   }
 
-  function getUnixTime(date: Date | string | number, options?: Options): number
+  function getUnixTime(date: Date | number): number
   namespace getUnixTime {
 
   }
 
-  function getWeek(date: Date | string | number, options?: Options): number
+  function getWeek(date: Date | number, options?: Options): number
   namespace getWeek {
 
   }
 
-  function getWeekOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getWeekOfMonth(date: Date | number, options?: Options): number
   namespace getWeekOfMonth {
 
   }
 
-  function getWeeksInMonth(
-    date: Date | string | number,
-    options?: Options
-  ): number
+  function getWeeksInMonth(date: Date | number, options?: Options): number
   namespace getWeeksInMonth {
 
   }
 
-  function getWeekYear(date: Date | string | number, options?: Options): number
+  function getWeekYear(date: Date | number, options?: Options): number
   namespace getWeekYear {
 
   }
 
-  function getYear(date: Date | string | number, options?: Options): number
+  function getYear(date: Date | number): number
   namespace getYear {
 
   }
 
-  function isAfter(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {
 
   }
 
-  function isBefore(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {
 
   }
@@ -11050,121 +10175,100 @@ declare module 'date-fns/esm' {
 
   }
 
-  function isEqual(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {
 
   }
 
-  function isFirstDayOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): boolean
+  function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {
 
   }
 
-  function isFriday(date: Date | string | number, options?: Options): boolean
+  function isFriday(date: Date | number): boolean
   namespace isFriday {
 
   }
 
-  function isLastDayOfMonth(
-    date: Date | string | number,
-    options?: Options
-  ): boolean
+  function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {
 
   }
 
-  function isLeapYear(date: Date | string | number, options?: Options): boolean
+  function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {
 
   }
 
-  function isMonday(date: Date | string | number, options?: Options): boolean
+  function isMonday(date: Date | number): boolean
   namespace isMonday {
 
   }
 
-  function isSameDay(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {
 
   }
 
   function isSameHour(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameHour {
 
   }
 
   function isSameISOWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameISOWeek {
 
   }
 
   function isSameISOWeekYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameISOWeekYear {
 
   }
 
   function isSameMinute(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameMinute {
 
   }
 
   function isSameMonth(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameMonth {
 
   }
 
   function isSameQuarter(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameQuarter {
 
   }
 
   function isSameSecond(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameSecond {
 
   }
 
   function isSameWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): boolean
   namespace isSameWeek {
@@ -11172,120 +10276,99 @@ declare module 'date-fns/esm' {
   }
 
   function isSameYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): boolean
   namespace isSameYear {
 
   }
 
-  function isSaturday(date: Date | string | number, options?: Options): boolean
+  function isSaturday(date: Date | number): boolean
   namespace isSaturday {
 
   }
 
-  function isSunday(date: Date | string | number, options?: Options): boolean
+  function isSunday(date: Date | number): boolean
   namespace isSunday {
 
   }
 
-  function isThursday(date: Date | string | number, options?: Options): boolean
+  function isThursday(date: Date | number): boolean
   namespace isThursday {
 
   }
 
-  function isTuesday(date: Date | string | number, options?: Options): boolean
+  function isTuesday(date: Date | number): boolean
   namespace isTuesday {
 
   }
 
-  function isValid(date: any, options?: Options): boolean
+  function isValid(date: any): boolean
   namespace isValid {
 
   }
 
-  function isWednesday(date: Date | string | number, options?: Options): boolean
+  function isWednesday(date: Date | number): boolean
   namespace isWednesday {
 
   }
 
-  function isWeekend(date: Date | string | number, options?: Options): boolean
+  function isWeekend(date: Date | number): boolean
   namespace isWeekend {
 
   }
 
-  function isWithinInterval(
-    date: Date | string | number,
-    interval: Interval,
-    options?: Options
-  ): boolean
+  function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {
 
   }
 
-  function lastDayOfDecade(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {
 
   }
 
-  function lastDayOfISOWeek(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfISOWeek(date: Date | number): Date
   namespace lastDayOfISOWeek {
 
   }
 
-  function lastDayOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfISOWeekYear(date: Date | number): Date
   namespace lastDayOfISOWeekYear {
 
   }
 
-  function lastDayOfMonth(date: Date | string | number, options?: Options): Date
+  function lastDayOfMonth(date: Date | number): Date
   namespace lastDayOfMonth {
 
   }
 
-  function lastDayOfQuarter(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function lastDayOfQuarter(date: Date | number, options?: Options): Date
   namespace lastDayOfQuarter {
 
   }
 
-  function lastDayOfWeek(date: Date | string | number, options?: Options): Date
+  function lastDayOfWeek(date: Date | number, options?: Options): Date
   namespace lastDayOfWeek {
 
   }
 
-  function lastDayOfYear(date: Date | string | number, options?: Options): Date
+  function lastDayOfYear(date: Date | number): Date
   namespace lastDayOfYear {
 
   }
 
-  function lightFormat(
-    date: Date | string | number,
-    format: string,
-    options?: Options
-  ): string
+  function lightFormat(date: Date | number, format: string): string
   namespace lightFormat {
 
   }
 
-  function max(datesArray: (Date | string | number)[], options?: Options): Date
+  function max(datesArray: (Date | number)[]): Date
   namespace max {
 
   }
 
-  function min(datesArray: (Date | string | number)[], options?: Options): Date
+  function min(datesArray: (Date | number)[]): Date
   namespace min {
 
   }
@@ -11293,141 +10376,90 @@ declare module 'date-fns/esm' {
   function parse(
     dateString: string,
     formatString: string,
-    baseDate: Date | string | number,
+    baseDate: Date | number,
     options?: Options
   ): Date
   namespace parse {
 
   }
 
-  function roundToNearestMinutes(
-    date: Date | string | number,
-    nearestTo?: number,
-    options?: Options
-  ): Date
+  function parseISO(argument: string, options?: Options): Date
+  namespace parseISO {
+
+  }
+
+  function roundToNearestMinutes(date: Date | number, options?: Options): Date
   namespace roundToNearestMinutes {
 
   }
 
-  function setDate(
-    date: Date | string | number,
-    dayOfMonth: number,
-    options?: Options
-  ): Date
+  function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {
 
   }
 
-  function setDay(
-    date: Date | string | number,
-    day: number,
-    options?: Options
-  ): Date
+  function setDay(date: Date | number, day: number, options?: Options): Date
   namespace setDay {
 
   }
 
-  function setDayOfYear(
-    date: Date | string | number,
-    dayOfYear: number,
-    options?: Options
-  ): Date
+  function setDayOfYear(date: Date | number, dayOfYear: number): Date
   namespace setDayOfYear {
 
   }
 
-  function setHours(
-    date: Date | string | number,
-    hours: number,
-    options?: Options
-  ): Date
+  function setHours(date: Date | number, hours: number): Date
   namespace setHours {
 
   }
 
-  function setISODay(
-    date: Date | string | number,
-    day: number,
-    options?: Options
-  ): Date
+  function setISODay(date: Date | number, day: number): Date
   namespace setISODay {
 
   }
 
-  function setISOWeek(
-    date: Date | string | number,
-    isoWeek: number,
-    options?: Options
-  ): Date
+  function setISOWeek(date: Date | number, isoWeek: number): Date
   namespace setISOWeek {
 
   }
 
-  function setISOWeekYear(
-    date: Date | string | number,
-    isoWeekYear: number,
-    options?: Options
-  ): Date
+  function setISOWeekYear(date: Date | number, isoWeekYear: number): Date
   namespace setISOWeekYear {
 
   }
 
-  function setMilliseconds(
-    date: Date | string | number,
-    milliseconds: number,
-    options?: Options
-  ): Date
+  function setMilliseconds(date: Date | number, milliseconds: number): Date
   namespace setMilliseconds {
 
   }
 
-  function setMinutes(
-    date: Date | string | number,
-    minutes: number,
-    options?: Options
-  ): Date
+  function setMinutes(date: Date | number, minutes: number): Date
   namespace setMinutes {
 
   }
 
-  function setMonth(
-    date: Date | string | number,
-    month: number,
-    options?: Options
-  ): Date
+  function setMonth(date: Date | number, month: number): Date
   namespace setMonth {
 
   }
 
-  function setQuarter(
-    date: Date | string | number,
-    quarter: number,
-    options?: Options
-  ): Date
+  function setQuarter(date: Date | number, quarter: number): Date
   namespace setQuarter {
 
   }
 
-  function setSeconds(
-    date: Date | string | number,
-    seconds: number,
-    options?: Options
-  ): Date
+  function setSeconds(date: Date | number, seconds: number): Date
   namespace setSeconds {
 
   }
 
-  function setWeek(
-    date: Date | string | number,
-    week: number,
-    options?: Options
-  ): Date
+  function setWeek(date: Date | number, week: number, options?: Options): Date
   namespace setWeek {
 
   }
 
   function setWeekYear(
-    date: Date | string | number,
+    date: Date | number,
     weekYear: number,
     options?: Options
   ): Date
@@ -11435,172 +10467,122 @@ declare module 'date-fns/esm' {
 
   }
 
-  function setYear(
-    date: Date | string | number,
-    year: number,
-    options?: Options
-  ): Date
+  function setYear(date: Date | number, year: number): Date
   namespace setYear {
 
   }
 
-  function startOfDay(date: Date | string | number, options?: Options): Date
+  function startOfDay(date: Date | number): Date
   namespace startOfDay {
 
   }
 
-  function startOfDecade(date: Date | string | number, options?: Options): Date
+  function startOfDecade(date: Date | number): Date
   namespace startOfDecade {
 
   }
 
-  function startOfHour(date: Date | string | number, options?: Options): Date
+  function startOfHour(date: Date | number): Date
   namespace startOfHour {
 
   }
 
-  function startOfISOWeek(date: Date | string | number, options?: Options): Date
+  function startOfISOWeek(date: Date | number): Date
   namespace startOfISOWeek {
 
   }
 
-  function startOfISOWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function startOfISOWeekYear(date: Date | number): Date
   namespace startOfISOWeekYear {
 
   }
 
-  function startOfMinute(date: Date | string | number, options?: Options): Date
+  function startOfMinute(date: Date | number): Date
   namespace startOfMinute {
 
   }
 
-  function startOfMonth(date: Date | string | number, options?: Options): Date
+  function startOfMonth(date: Date | number): Date
   namespace startOfMonth {
 
   }
 
-  function startOfQuarter(date: Date | string | number, options?: Options): Date
+  function startOfQuarter(date: Date | number): Date
   namespace startOfQuarter {
 
   }
 
-  function startOfSecond(date: Date | string | number, options?: Options): Date
+  function startOfSecond(date: Date | number): Date
   namespace startOfSecond {
 
   }
 
-  function startOfWeek(date: Date | string | number, options?: Options): Date
+  function startOfWeek(date: Date | number, options?: Options): Date
   namespace startOfWeek {
 
   }
 
-  function startOfWeekYear(
-    date: Date | string | number,
-    options?: Options
-  ): Date
+  function startOfWeekYear(date: Date | number, options?: Options): Date
   namespace startOfWeekYear {
 
   }
 
-  function startOfYear(date: Date | string | number, options?: Options): Date
+  function startOfYear(date: Date | number): Date
   namespace startOfYear {
 
   }
 
-  function subDays(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subDays(date: Date | number, amount: number): Date
   namespace subDays {
 
   }
 
-  function subHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subHours(date: Date | number, amount: number): Date
   namespace subHours {
 
   }
 
-  function subISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subISOWeekYears(date: Date | number, amount: number): Date
   namespace subISOWeekYears {
 
   }
 
-  function subMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMilliseconds(date: Date | number, amount: number): Date
   namespace subMilliseconds {
 
   }
 
-  function subMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMinutes(date: Date | number, amount: number): Date
   namespace subMinutes {
 
   }
 
-  function subMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subMonths(date: Date | number, amount: number): Date
   namespace subMonths {
 
   }
 
-  function subQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subQuarters(date: Date | number, amount: number): Date
   namespace subQuarters {
 
   }
 
-  function subSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subSeconds(date: Date | number, amount: number): Date
   namespace subSeconds {
 
   }
 
-  function subWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subWeeks(date: Date | number, amount: number): Date
   namespace subWeeks {
 
   }
 
-  function subYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  function subYears(date: Date | number, amount: number): Date
   namespace subYears {
 
   }
 
-  function toDate(argument: Date | string | number, options?: Options): Date
+  function toDate(argument: Date | number): Date
   namespace toDate {
 
   }
@@ -12179,6 +11161,11 @@ declare module 'date-fns/esm/min' {
 declare module 'date-fns/esm/parse' {
   import { parse } from 'date-fns/esm'
   export default parse
+}
+
+declare module 'date-fns/esm/parseISO' {
+  import { parseISO } from 'date-fns/esm'
+  export default parseISO
 }
 
 declare module 'date-fns/esm/roundToNearestMinutes' {
@@ -12951,6 +11938,11 @@ declare module 'date-fns/esm/parse/index' {
   export default parse
 }
 
+declare module 'date-fns/esm/parseISO/index' {
+  import { parseISO } from 'date-fns/esm'
+  export default parseISO
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
@@ -13721,6 +12713,11 @@ declare module 'date-fns/esm/parse/index.js' {
   export default parse
 }
 
+declare module 'date-fns/esm/parseISO/index.js' {
+  import { parseISO } from 'date-fns/esm'
+  export default parseISO
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
@@ -13919,152 +12916,102 @@ declare module 'date-fns/esm/toDate/index.js' {
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
-  const addDays: CurriedFn2<number, Date | string | number, Date>
+  const addDays: CurriedFn2<number, Date | number, Date>
   namespace addDays {
 
   }
 
-  const addDaysWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addDaysWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addDaysWithOptions {
 
   }
 
-  const addHours: CurriedFn2<number, Date | string | number, Date>
+  const addHours: CurriedFn2<number, Date | number, Date>
   namespace addHours {
 
   }
 
-  const addHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addHoursWithOptions {
 
   }
 
-  const addISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  const addISOWeekYears: CurriedFn2<number, Date | number, Date>
   namespace addISOWeekYears {
 
   }
 
-  const addISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addISOWeekYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addISOWeekYearsWithOptions {
 
   }
 
-  const addMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const addMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace addMilliseconds {
 
   }
 
-  const addMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMillisecondsWithOptions {
 
   }
 
-  const addMinutes: CurriedFn2<number, Date | string | number, Date>
+  const addMinutes: CurriedFn2<number, Date | number, Date>
   namespace addMinutes {
 
   }
 
-  const addMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMinutesWithOptions {
 
   }
 
-  const addMonths: CurriedFn2<number, Date | string | number, Date>
+  const addMonths: CurriedFn2<number, Date | number, Date>
   namespace addMonths {
 
   }
 
-  const addMonthsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addMonthsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addMonthsWithOptions {
 
   }
 
-  const addQuarters: CurriedFn2<number, Date | string | number, Date>
+  const addQuarters: CurriedFn2<number, Date | number, Date>
   namespace addQuarters {
 
   }
 
-  const addQuartersWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addQuartersWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addQuartersWithOptions {
 
   }
 
-  const addSeconds: CurriedFn2<number, Date | string | number, Date>
+  const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {
 
   }
 
-  const addSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addSecondsWithOptions {
 
   }
 
-  const addWeeks: CurriedFn2<number, Date | string | number, Date>
+  const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {
 
   }
 
-  const addWeeksWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addWeeksWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addWeeksWithOptions {
 
   }
 
-  const addYears: CurriedFn2<number, Date | string | number, Date>
+  const addYears: CurriedFn2<number, Date | number, Date>
   namespace addYears {
 
   }
 
-  const addYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const addYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace addYearsWithOptions {
 
   }
@@ -14074,8 +13021,7 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const areIntervalsOverlappingWithOptions: CurriedFn3<
-    Options,
+  const areIntervalsOverlappingWithOptions: CurriedFn2<
     Interval,
     Interval,
     boolean
@@ -14084,95 +13030,62 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const closestIndexTo: CurriedFn2<
-    (Date | string | number)[],
-    Date | string | number,
-    number
-  >
+  const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {
 
   }
 
-  const closestIndexToWithOptions: CurriedFn3<
-    Options,
-    (Date | string | number)[],
-    Date | string | number,
+  const closestIndexToWithOptions: CurriedFn2<
+    (Date | number)[],
+    Date | number,
     number
   >
   namespace closestIndexToWithOptions {
 
   }
 
-  const closestTo: CurriedFn2<
-    (Date | string | number)[],
-    Date | string | number,
-    Date
-  >
+  const closestTo: CurriedFn2<(Date | number)[], Date | number, Date>
   namespace closestTo {
 
   }
 
-  const closestToWithOptions: CurriedFn3<
-    Options,
-    (Date | string | number)[],
-    Date | string | number,
-    Date
-  >
+  const closestToWithOptions: CurriedFn2<(Date | number)[], Date | number, Date>
   namespace closestToWithOptions {
 
   }
 
-  const compareAsc: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareAsc: CurriedFn2<Date | number, Date | number, number>
   namespace compareAsc {
 
   }
 
-  const compareAscWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareAscWithOptions: CurriedFn2<Date | number, Date | number, number>
   namespace compareAscWithOptions {
 
   }
 
-  const compareDesc: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {
 
   }
 
-  const compareDescWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const compareDescWithOptions: CurriedFn2<Date | number, Date | number, number>
   namespace compareDescWithOptions {
 
   }
 
   const differenceInCalendarDays: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarDays {
 
   }
 
-  const differenceInCalendarDaysWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarDaysWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarDaysWithOptions {
@@ -14180,18 +13093,17 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarISOWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeeks {
 
   }
 
-  const differenceInCalendarISOWeeksWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarISOWeeksWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeeksWithOptions {
@@ -14199,18 +13111,17 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarISOWeekYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeekYears {
 
   }
 
-  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarISOWeekYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarISOWeekYearsWithOptions {
@@ -14218,18 +13129,17 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarMonths: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarMonths {
 
   }
 
-  const differenceInCalendarMonthsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarMonthsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarMonthsWithOptions {
@@ -14237,18 +13147,17 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarQuarters: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarQuarters {
 
   }
 
-  const differenceInCalendarQuartersWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarQuartersWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarQuartersWithOptions {
@@ -14256,8 +13165,8 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarWeeks {
@@ -14266,8 +13175,8 @@ declare module 'date-fns/esm/fp' {
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarWeeksWithOptions {
@@ -14275,56 +13184,45 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInCalendarYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarYears {
 
   }
 
-  const differenceInCalendarYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInCalendarYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInCalendarYearsWithOptions {
 
   }
 
-  const differenceInDays: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInDays: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInDays {
 
   }
 
-  const differenceInDaysWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInDaysWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInDaysWithOptions {
 
   }
 
-  const differenceInHours: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInHours: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInHours {
 
   }
 
-  const differenceInHoursWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInHoursWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInHoursWithOptions {
@@ -14332,18 +13230,17 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInISOWeekYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInISOWeekYears {
 
   }
 
-  const differenceInISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInISOWeekYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInISOWeekYearsWithOptions {
@@ -14351,132 +13248,101 @@ declare module 'date-fns/esm/fp' {
   }
 
   const differenceInMilliseconds: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMilliseconds {
 
   }
 
-  const differenceInMillisecondsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMillisecondsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMillisecondsWithOptions {
 
   }
 
-  const differenceInMinutes: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInMinutes: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMinutes {
 
   }
 
-  const differenceInMinutesWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMinutesWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMinutesWithOptions {
 
   }
 
-  const differenceInMonths: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInMonths: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMonths {
 
   }
 
-  const differenceInMonthsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInMonthsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInMonthsWithOptions {
 
   }
 
-  const differenceInQuarters: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInQuarters: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInQuarters {
 
   }
 
-  const differenceInQuartersWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInQuartersWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInQuartersWithOptions {
 
   }
 
-  const differenceInSeconds: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInSeconds: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInSeconds {
 
   }
 
-  const differenceInSecondsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInSecondsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInSecondsWithOptions {
 
   }
 
-  const differenceInWeeks: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInWeeks: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInWeeks {
 
   }
 
-  const differenceInWeeksWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInWeeksWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInWeeksWithOptions {
 
   }
 
-  const differenceInYears: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    number
-  >
+  const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {
 
   }
 
-  const differenceInYearsWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const differenceInYearsWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     number
   >
   namespace differenceInYearsWithOptions {
@@ -14498,35 +13364,27 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const eachWeekendOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>
+  const eachWeekendOfIntervalWithOptions: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfIntervalWithOptions {
 
   }
 
-  const eachWeekendOfMonth: CurriedFn1<Date | string | number, Date[]>
+  const eachWeekendOfMonth: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfMonth {
 
   }
 
-  const eachWeekendOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date[]
-  >
+  const eachWeekendOfMonthWithOptions: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfMonthWithOptions {
 
   }
 
-  const eachWeekendOfYear: CurriedFn1<Date | string | number, Date[]>
+  const eachWeekendOfYear: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYear {
 
   }
 
-  const eachWeekendOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date[]
-  >
+  const eachWeekendOfYearWithOptions: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYearWithOptions {
 
   }
@@ -14541,167 +13399,135 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const endOfDay: CurriedFn1<Date | string | number, Date>
+  const endOfDay: CurriedFn1<Date | number, Date>
   namespace endOfDay {
 
   }
 
-  const endOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfDayWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfDayWithOptions {
 
   }
 
-  const endOfDecade: CurriedFn1<Date | string | number, Date>
+  const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {
 
   }
 
-  const endOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfDecadeWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace endOfDecadeWithOptions {
 
   }
 
-  const endOfHour: CurriedFn1<Date | string | number, Date>
+  const endOfHour: CurriedFn1<Date | number, Date>
   namespace endOfHour {
 
   }
 
-  const endOfHourWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfHourWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfHourWithOptions {
 
   }
 
-  const endOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeek: CurriedFn1<Date | number, Date>
   namespace endOfISOWeek {
 
   }
 
-  const endOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekWithOptions {
 
   }
 
-  const endOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const endOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekYear {
 
   }
 
-  const endOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfISOWeekYearWithOptions {
 
   }
 
-  const endOfMinute: CurriedFn1<Date | string | number, Date>
+  const endOfMinute: CurriedFn1<Date | number, Date>
   namespace endOfMinute {
 
   }
 
-  const endOfMinuteWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfMinuteWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfMinuteWithOptions {
 
   }
 
-  const endOfMonth: CurriedFn1<Date | string | number, Date>
+  const endOfMonth: CurriedFn1<Date | number, Date>
   namespace endOfMonth {
 
   }
 
-  const endOfMonthWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfMonthWithOptions {
 
   }
 
-  const endOfQuarter: CurriedFn1<Date | string | number, Date>
+  const endOfQuarter: CurriedFn1<Date | number, Date>
   namespace endOfQuarter {
 
   }
 
-  const endOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfQuarterWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfQuarterWithOptions {
 
   }
 
-  const endOfSecond: CurriedFn1<Date | string | number, Date>
+  const endOfSecond: CurriedFn1<Date | number, Date>
   namespace endOfSecond {
 
   }
 
-  const endOfSecondWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const endOfSecondWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfSecondWithOptions {
 
   }
 
-  const endOfWeek: CurriedFn1<Date | string | number, Date>
+  const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {
 
   }
 
-  const endOfWeekWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace endOfWeekWithOptions {
 
   }
 
-  const endOfYear: CurriedFn1<Date | string | number, Date>
+  const endOfYear: CurriedFn1<Date | number, Date>
   namespace endOfYear {
 
   }
 
-  const endOfYearWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const endOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace endOfYearWithOptions {
 
   }
 
-  const format: CurriedFn2<string, Date | string | number, string>
+  const format: CurriedFn2<string, Date | number, string>
   namespace format {
 
   }
 
-  const formatDistance: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatDistance: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistance {
 
   }
 
-  const formatDistanceStrict: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatDistanceStrict: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistanceStrict {
 
   }
 
   const formatDistanceStrictWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatDistanceStrictWithOptions {
@@ -14710,39 +13536,30 @@ declare module 'date-fns/esm/fp' {
 
   const formatDistanceWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatDistanceWithOptions {
 
   }
 
-  const formatRelative: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    string
-  >
+  const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {
 
   }
 
   const formatRelativeWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     string
   >
   namespace formatRelativeWithOptions {
 
   }
 
-  const formatWithOptions: CurriedFn3<
-    Options,
-    string,
-    Date | string | number,
-    string
-  >
+  const formatWithOptions: CurriedFn3<Options, string, Date | number, string>
   namespace formatWithOptions {
 
   }
@@ -14752,187 +13569,147 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const fromUnixTimeWithOptions: CurriedFn2<Options, number, Date>
+  const fromUnixTimeWithOptions: CurriedFn1<number, Date>
   namespace fromUnixTimeWithOptions {
 
   }
 
-  const getDate: CurriedFn1<Date | string | number, number>
+  const getDate: CurriedFn1<Date | number, number>
   namespace getDate {
 
   }
 
-  const getDateWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDateWithOptions: CurriedFn1<Date | number, number>
   namespace getDateWithOptions {
 
   }
 
-  const getDay: CurriedFn1<Date | string | number, number>
+  const getDay: CurriedFn1<Date | number, number>
   namespace getDay {
 
   }
 
-  const getDayOfYear: CurriedFn1<Date | string | number, number>
+  const getDayOfYear: CurriedFn1<Date | number, number>
   namespace getDayOfYear {
 
   }
 
-  const getDayOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDayOfYearWithOptions: CurriedFn1<Date | number, number>
   namespace getDayOfYearWithOptions {
 
   }
 
-  const getDaysInMonth: CurriedFn1<Date | string | number, number>
+  const getDaysInMonth: CurriedFn1<Date | number, number>
   namespace getDaysInMonth {
 
   }
 
-  const getDaysInMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDaysInMonthWithOptions: CurriedFn1<Date | number, number>
   namespace getDaysInMonthWithOptions {
 
   }
 
-  const getDaysInYear: CurriedFn1<Date | string | number, number>
+  const getDaysInYear: CurriedFn1<Date | number, number>
   namespace getDaysInYear {
 
   }
 
-  const getDaysInYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDaysInYearWithOptions: CurriedFn1<Date | number, number>
   namespace getDaysInYearWithOptions {
 
   }
 
-  const getDayWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getDayWithOptions: CurriedFn1<Date | number, number>
   namespace getDayWithOptions {
 
   }
 
-  const getDecade: CurriedFn1<Date | string | number, number>
+  const getDecade: CurriedFn1<Date | number, number>
   namespace getDecade {
 
   }
 
-  const getDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getDecadeWithOptions: CurriedFn1<Date | number, number>
   namespace getDecadeWithOptions {
 
   }
 
-  const getHours: CurriedFn1<Date | string | number, number>
+  const getHours: CurriedFn1<Date | number, number>
   namespace getHours {
 
   }
 
-  const getHoursWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getHoursWithOptions: CurriedFn1<Date | number, number>
   namespace getHoursWithOptions {
 
   }
 
-  const getISODay: CurriedFn1<Date | string | number, number>
+  const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {
 
   }
 
-  const getISODayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISODayWithOptions: CurriedFn1<Date | number, number>
   namespace getISODayWithOptions {
 
   }
 
-  const getISOWeek: CurriedFn1<Date | string | number, number>
+  const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {
 
   }
 
-  const getISOWeeksInYear: CurriedFn1<Date | string | number, number>
+  const getISOWeeksInYear: CurriedFn1<Date | number, number>
   namespace getISOWeeksInYear {
 
   }
 
-  const getISOWeeksInYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeeksInYearWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeeksInYearWithOptions {
 
   }
 
-  const getISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeekWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeekWithOptions {
 
   }
 
-  const getISOWeekYear: CurriedFn1<Date | string | number, number>
+  const getISOWeekYear: CurriedFn1<Date | number, number>
   namespace getISOWeekYear {
 
   }
 
-  const getISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getISOWeekYearWithOptions: CurriedFn1<Date | number, number>
   namespace getISOWeekYearWithOptions {
 
   }
 
-  const getMilliseconds: CurriedFn1<Date | string | number, number>
+  const getMilliseconds: CurriedFn1<Date | number, number>
   namespace getMilliseconds {
 
   }
 
-  const getMillisecondsWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getMillisecondsWithOptions: CurriedFn1<Date | number, number>
   namespace getMillisecondsWithOptions {
 
   }
 
-  const getMinutes: CurriedFn1<Date | string | number, number>
+  const getMinutes: CurriedFn1<Date | number, number>
   namespace getMinutes {
 
   }
 
-  const getMinutesWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getMinutesWithOptions: CurriedFn1<Date | number, number>
   namespace getMinutesWithOptions {
 
   }
 
-  const getMonth: CurriedFn1<Date | string | number, number>
+  const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {
 
   }
 
-  const getMonthWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getMonthWithOptions: CurriedFn1<Date | number, number>
   namespace getMonthWithOptions {
 
   }
@@ -14942,8 +13719,7 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const getOverlappingDaysInIntervalsWithOptions: CurriedFn3<
-    Options,
+  const getOverlappingDaysInIntervalsWithOptions: CurriedFn2<
     Interval,
     Interval,
     number
@@ -14952,154 +13728,112 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const getQuarter: CurriedFn1<Date | string | number, number>
+  const getQuarter: CurriedFn1<Date | number, number>
   namespace getQuarter {
 
   }
 
-  const getQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getQuarterWithOptions: CurriedFn1<Date | number, number>
   namespace getQuarterWithOptions {
 
   }
 
-  const getSeconds: CurriedFn1<Date | string | number, number>
+  const getSeconds: CurriedFn1<Date | number, number>
   namespace getSeconds {
 
   }
 
-  const getSecondsWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getSecondsWithOptions: CurriedFn1<Date | number, number>
   namespace getSecondsWithOptions {
 
   }
 
-  const getTime: CurriedFn1<Date | string | number, number>
+  const getTime: CurriedFn1<Date | number, number>
   namespace getTime {
 
   }
 
-  const getTimeWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getTimeWithOptions: CurriedFn1<Date | number, number>
   namespace getTimeWithOptions {
 
   }
 
-  const getUnixTime: CurriedFn1<Date | string | number, number>
+  const getUnixTime: CurriedFn1<Date | number, number>
   namespace getUnixTime {
 
   }
 
-  const getUnixTimeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getUnixTimeWithOptions: CurriedFn1<Date | number, number>
   namespace getUnixTimeWithOptions {
 
   }
 
-  const getWeek: CurriedFn1<Date | string | number, number>
+  const getWeek: CurriedFn1<Date | number, number>
   namespace getWeek {
 
   }
 
-  const getWeekOfMonth: CurriedFn1<Date | string | number, number>
+  const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {
 
   }
 
-  const getWeekOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeekOfMonthWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekOfMonthWithOptions {
 
   }
 
-  const getWeeksInMonth: CurriedFn1<Date | string | number, number>
+  const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {
 
   }
 
-  const getWeeksInMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeeksInMonthWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeeksInMonthWithOptions {
 
   }
 
-  const getWeekWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getWeekWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekWithOptions {
 
   }
 
-  const getWeekYear: CurriedFn1<Date | string | number, number>
+  const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {
 
   }
 
-  const getWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    number
-  >
+  const getWeekYearWithOptions: CurriedFn2<Options, Date | number, number>
   namespace getWeekYearWithOptions {
 
   }
 
-  const getYear: CurriedFn1<Date | string | number, number>
+  const getYear: CurriedFn1<Date | number, number>
   namespace getYear {
 
   }
 
-  const getYearWithOptions: CurriedFn2<Options, Date | string | number, number>
+  const getYearWithOptions: CurriedFn1<Date | number, number>
   namespace getYearWithOptions {
 
   }
 
-  const isAfter: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {
 
   }
 
-  const isAfterWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isAfterWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfterWithOptions {
 
   }
 
-  const isBefore: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {
 
   }
 
-  const isBeforeWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isBeforeWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBeforeWithOptions {
 
   }
@@ -15114,337 +13848,231 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const isEqual: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {
 
   }
 
-  const isEqualWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isEqualWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqualWithOptions {
 
   }
 
-  const isFirstDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {
 
   }
 
-  const isFirstDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isFirstDayOfMonthWithOptions: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonthWithOptions {
 
   }
 
-  const isFriday: CurriedFn1<Date | string | number, boolean>
+  const isFriday: CurriedFn1<Date | number, boolean>
   namespace isFriday {
 
   }
 
-  const isFridayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isFridayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isFridayWithOptions {
 
   }
 
-  const isLastDayOfMonth: CurriedFn1<Date | string | number, boolean>
+  const isLastDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonth {
 
   }
 
-  const isLastDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isLastDayOfMonthWithOptions: CurriedFn1<Date | number, boolean>
   namespace isLastDayOfMonthWithOptions {
 
   }
 
-  const isLeapYear: CurriedFn1<Date | string | number, boolean>
+  const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {
 
   }
 
-  const isLeapYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isLeapYearWithOptions: CurriedFn1<Date | number, boolean>
   namespace isLeapYearWithOptions {
 
   }
 
-  const isMonday: CurriedFn1<Date | string | number, boolean>
+  const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {
 
   }
 
-  const isMondayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isMondayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isMondayWithOptions {
 
   }
 
-  const isSameDay: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameDay: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDay {
 
   }
 
-  const isSameDayWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameDayWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDayWithOptions {
 
   }
 
-  const isSameHour: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameHour: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameHour {
 
   }
 
-  const isSameHourWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameHourWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameHourWithOptions {
 
   }
 
-  const isSameISOWeek: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameISOWeek: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameISOWeek {
 
   }
 
-  const isSameISOWeekWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameISOWeekWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameISOWeekWithOptions {
 
   }
 
-  const isSameISOWeekYear: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameISOWeekYear: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameISOWeekYear {
 
   }
 
-  const isSameISOWeekYearWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameISOWeekYearWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameISOWeekYearWithOptions {
 
   }
 
-  const isSameMinute: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameMinute: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameMinute {
 
   }
 
-  const isSameMinuteWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameMinuteWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameMinuteWithOptions {
 
   }
 
-  const isSameMonth: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameMonth: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameMonth {
 
   }
 
-  const isSameMonthWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameMonthWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameMonthWithOptions {
 
   }
 
-  const isSameQuarter: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameQuarter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameQuarter {
 
   }
 
-  const isSameQuarterWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameQuarterWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameQuarterWithOptions {
 
   }
 
-  const isSameSecond: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameSecond: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameSecond {
 
   }
 
-  const isSameSecondWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
+  const isSameSecondWithOptions: CurriedFn2<
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameSecondWithOptions {
 
   }
 
-  const isSameWeek: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameWeek: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameWeek {
 
   }
 
   const isSameWeekWithOptions: CurriedFn3<
     Options,
-    Date | string | number,
-    Date | string | number,
+    Date | number,
+    Date | number,
     boolean
   >
   namespace isSameWeekWithOptions {
 
   }
 
-  const isSameYear: CurriedFn2<
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameYear: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameYear {
 
   }
 
-  const isSameYearWithOptions: CurriedFn3<
-    Options,
-    Date | string | number,
-    Date | string | number,
-    boolean
-  >
+  const isSameYearWithOptions: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameYearWithOptions {
 
   }
 
-  const isSaturday: CurriedFn1<Date | string | number, boolean>
+  const isSaturday: CurriedFn1<Date | number, boolean>
   namespace isSaturday {
 
   }
 
-  const isSaturdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isSaturdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isSaturdayWithOptions {
 
   }
 
-  const isSunday: CurriedFn1<Date | string | number, boolean>
+  const isSunday: CurriedFn1<Date | number, boolean>
   namespace isSunday {
 
   }
 
-  const isSundayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isSundayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isSundayWithOptions {
 
   }
 
-  const isThursday: CurriedFn1<Date | string | number, boolean>
+  const isThursday: CurriedFn1<Date | number, boolean>
   namespace isThursday {
 
   }
 
-  const isThursdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isThursdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isThursdayWithOptions {
 
   }
 
-  const isTuesday: CurriedFn1<Date | string | number, boolean>
+  const isTuesday: CurriedFn1<Date | number, boolean>
   namespace isTuesday {
 
   }
 
-  const isTuesdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isTuesdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isTuesdayWithOptions {
 
   }
@@ -15454,195 +14082,163 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const isValidWithOptions: CurriedFn2<Options, any, boolean>
+  const isValidWithOptions: CurriedFn1<any, boolean>
   namespace isValidWithOptions {
 
   }
 
-  const isWednesday: CurriedFn1<Date | string | number, boolean>
+  const isWednesday: CurriedFn1<Date | number, boolean>
   namespace isWednesday {
 
   }
 
-  const isWednesdayWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isWednesdayWithOptions: CurriedFn1<Date | number, boolean>
   namespace isWednesdayWithOptions {
 
   }
 
-  const isWeekend: CurriedFn1<Date | string | number, boolean>
+  const isWeekend: CurriedFn1<Date | number, boolean>
   namespace isWeekend {
 
   }
 
-  const isWeekendWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    boolean
-  >
+  const isWeekendWithOptions: CurriedFn1<Date | number, boolean>
   namespace isWeekendWithOptions {
 
   }
 
-  const isWithinInterval: CurriedFn2<Interval, Date | string | number, boolean>
+  const isWithinInterval: CurriedFn2<Interval, Date | number, boolean>
   namespace isWithinInterval {
 
   }
 
-  const isWithinIntervalWithOptions: CurriedFn3<
-    Options,
+  const isWithinIntervalWithOptions: CurriedFn2<
     Interval,
-    Date | string | number,
+    Date | number,
     boolean
   >
   namespace isWithinIntervalWithOptions {
 
   }
 
-  const lastDayOfDecade: CurriedFn1<Date | string | number, Date>
+  const lastDayOfDecade: CurriedFn1<Date | number, Date>
   namespace lastDayOfDecade {
 
   }
 
-  const lastDayOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfDecadeWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfDecadeWithOptions {
 
   }
 
-  const lastDayOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeek {
 
   }
 
-  const lastDayOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekWithOptions {
 
   }
 
-  const lastDayOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekYear {
 
   }
 
-  const lastDayOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfISOWeekYearWithOptions {
 
   }
 
-  const lastDayOfMonth: CurriedFn1<Date | string | number, Date>
+  const lastDayOfMonth: CurriedFn1<Date | number, Date>
   namespace lastDayOfMonth {
 
   }
 
-  const lastDayOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfMonthWithOptions {
 
   }
 
-  const lastDayOfQuarter: CurriedFn1<Date | string | number, Date>
+  const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {
 
   }
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfQuarterWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace lastDayOfQuarterWithOptions {
 
   }
 
-  const lastDayOfWeek: CurriedFn1<Date | string | number, Date>
+  const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {
 
   }
 
-  const lastDayOfWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace lastDayOfWeekWithOptions {
 
   }
 
-  const lastDayOfYear: CurriedFn1<Date | string | number, Date>
+  const lastDayOfYear: CurriedFn1<Date | number, Date>
   namespace lastDayOfYear {
 
   }
 
-  const lastDayOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const lastDayOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace lastDayOfYearWithOptions {
 
   }
 
-  const lightFormat: CurriedFn2<string, Date | string | number, string>
+  const lightFormat: CurriedFn2<string, Date | number, string>
   namespace lightFormat {
 
   }
 
-  const lightFormatWithOptions: CurriedFn3<
-    Options,
-    string,
-    Date | string | number,
-    string
-  >
+  const lightFormatWithOptions: CurriedFn2<string, Date | number, string>
   namespace lightFormatWithOptions {
 
   }
 
-  const max: CurriedFn1<(Date | string | number)[], Date>
+  const max: CurriedFn1<(Date | number)[], Date>
   namespace max {
 
   }
 
-  const maxWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const maxWithOptions: CurriedFn1<(Date | number)[], Date>
   namespace maxWithOptions {
 
   }
 
-  const min: CurriedFn1<(Date | string | number)[], Date>
+  const min: CurriedFn1<(Date | number)[], Date>
   namespace min {
 
   }
 
-  const minWithOptions: CurriedFn2<Options, (Date | string | number)[], Date>
+  const minWithOptions: CurriedFn1<(Date | number)[], Date>
   namespace minWithOptions {
 
   }
 
-  const parse: CurriedFn3<Date | string | number, string, string, Date>
+  const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {
+
+  }
+
+  const parseISO: CurriedFn1<string, Date>
+  namespace parseISO {
+
+  }
+
+  const parseISOWithOptions: CurriedFn2<Options, string, Date>
+  namespace parseISOWithOptions {
 
   }
 
   const parseWithOptions: CurriedFn4<
     Options,
-    Date | string | number,
+    Date | number,
     string,
     string,
     Date
@@ -15651,566 +14247,396 @@ declare module 'date-fns/esm/fp' {
 
   }
 
-  const roundToNearestMinutes: CurriedFn2<number, Date | string | number, Date>
+  const roundToNearestMinutes: CurriedFn1<Date | number, Date>
   namespace roundToNearestMinutes {
 
   }
 
-  const roundToNearestMinutesWithOptions: CurriedFn3<
+  const roundToNearestMinutesWithOptions: CurriedFn2<
     Options,
-    number,
-    Date | string | number,
+    Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {
 
   }
 
-  const setDate: CurriedFn2<number, Date | string | number, Date>
+  const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {
 
   }
 
-  const setDateWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDateWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setDateWithOptions {
 
   }
 
-  const setDay: CurriedFn2<number, Date | string | number, Date>
+  const setDay: CurriedFn2<number, Date | number, Date>
   namespace setDay {
 
   }
 
-  const setDayOfYear: CurriedFn2<number, Date | string | number, Date>
+  const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {
 
   }
 
-  const setDayOfYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDayOfYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYearWithOptions {
 
   }
 
-  const setDayWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setDayWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setDayWithOptions {
 
   }
 
-  const setHours: CurriedFn2<number, Date | string | number, Date>
+  const setHours: CurriedFn2<number, Date | number, Date>
   namespace setHours {
 
   }
 
-  const setHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setHoursWithOptions {
 
   }
 
-  const setISODay: CurriedFn2<number, Date | string | number, Date>
+  const setISODay: CurriedFn2<number, Date | number, Date>
   namespace setISODay {
 
   }
 
-  const setISODayWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISODayWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISODayWithOptions {
 
   }
 
-  const setISOWeek: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeek: CurriedFn2<number, Date | number, Date>
   namespace setISOWeek {
 
   }
 
-  const setISOWeekWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISOWeekWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekWithOptions {
 
   }
 
-  const setISOWeekYear: CurriedFn2<number, Date | string | number, Date>
+  const setISOWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekYear {
 
   }
 
-  const setISOWeekYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setISOWeekYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setISOWeekYearWithOptions {
 
   }
 
-  const setMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const setMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace setMilliseconds {
 
   }
 
-  const setMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMillisecondsWithOptions {
 
   }
 
-  const setMinutes: CurriedFn2<number, Date | string | number, Date>
+  const setMinutes: CurriedFn2<number, Date | number, Date>
   namespace setMinutes {
 
   }
 
-  const setMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMinutesWithOptions {
 
   }
 
-  const setMonth: CurriedFn2<number, Date | string | number, Date>
+  const setMonth: CurriedFn2<number, Date | number, Date>
   namespace setMonth {
 
   }
 
-  const setMonthWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setMonthWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setMonthWithOptions {
 
   }
 
-  const setQuarter: CurriedFn2<number, Date | string | number, Date>
+  const setQuarter: CurriedFn2<number, Date | number, Date>
   namespace setQuarter {
 
   }
 
-  const setQuarterWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setQuarterWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setQuarterWithOptions {
 
   }
 
-  const setSeconds: CurriedFn2<number, Date | string | number, Date>
+  const setSeconds: CurriedFn2<number, Date | number, Date>
   namespace setSeconds {
 
   }
 
-  const setSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setSecondsWithOptions {
 
   }
 
-  const setWeek: CurriedFn2<number, Date | string | number, Date>
+  const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {
 
   }
 
-  const setWeekWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setWeekWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setWeekWithOptions {
 
   }
 
-  const setWeekYear: CurriedFn2<number, Date | string | number, Date>
+  const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {
 
   }
 
-  const setWeekYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setWeekYearWithOptions: CurriedFn3<Options, number, Date | number, Date>
   namespace setWeekYearWithOptions {
 
   }
 
-  const setYear: CurriedFn2<number, Date | string | number, Date>
+  const setYear: CurriedFn2<number, Date | number, Date>
   namespace setYear {
 
   }
 
-  const setYearWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const setYearWithOptions: CurriedFn2<number, Date | number, Date>
   namespace setYearWithOptions {
 
   }
 
-  const startOfDay: CurriedFn1<Date | string | number, Date>
+  const startOfDay: CurriedFn1<Date | number, Date>
   namespace startOfDay {
 
   }
 
-  const startOfDayWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const startOfDayWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfDayWithOptions {
 
   }
 
-  const startOfDecade: CurriedFn1<Date | string | number, Date>
+  const startOfDecade: CurriedFn1<Date | number, Date>
   namespace startOfDecade {
 
   }
 
-  const startOfDecadeWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfDecadeWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfDecadeWithOptions {
 
   }
 
-  const startOfHour: CurriedFn1<Date | string | number, Date>
+  const startOfHour: CurriedFn1<Date | number, Date>
   namespace startOfHour {
 
   }
 
-  const startOfHourWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfHourWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfHourWithOptions {
 
   }
 
-  const startOfISOWeek: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeek: CurriedFn1<Date | number, Date>
   namespace startOfISOWeek {
 
   }
 
-  const startOfISOWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfISOWeekWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekWithOptions {
 
   }
 
-  const startOfISOWeekYear: CurriedFn1<Date | string | number, Date>
+  const startOfISOWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekYear {
 
   }
 
-  const startOfISOWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfISOWeekYearWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfISOWeekYearWithOptions {
 
   }
 
-  const startOfMinute: CurriedFn1<Date | string | number, Date>
+  const startOfMinute: CurriedFn1<Date | number, Date>
   namespace startOfMinute {
 
   }
 
-  const startOfMinuteWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfMinuteWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfMinuteWithOptions {
 
   }
 
-  const startOfMonth: CurriedFn1<Date | string | number, Date>
+  const startOfMonth: CurriedFn1<Date | number, Date>
   namespace startOfMonth {
 
   }
 
-  const startOfMonthWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfMonthWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfMonthWithOptions {
 
   }
 
-  const startOfQuarter: CurriedFn1<Date | string | number, Date>
+  const startOfQuarter: CurriedFn1<Date | number, Date>
   namespace startOfQuarter {
 
   }
 
-  const startOfQuarterWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfQuarterWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfQuarterWithOptions {
 
   }
 
-  const startOfSecond: CurriedFn1<Date | string | number, Date>
+  const startOfSecond: CurriedFn1<Date | number, Date>
   namespace startOfSecond {
 
   }
 
-  const startOfSecondWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfSecondWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfSecondWithOptions {
 
   }
 
-  const startOfWeek: CurriedFn1<Date | string | number, Date>
+  const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {
 
   }
 
-  const startOfWeekWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfWeekWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace startOfWeekWithOptions {
 
   }
 
-  const startOfWeekYear: CurriedFn1<Date | string | number, Date>
+  const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {
 
   }
 
-  const startOfWeekYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfWeekYearWithOptions: CurriedFn2<Options, Date | number, Date>
   namespace startOfWeekYearWithOptions {
 
   }
 
-  const startOfYear: CurriedFn1<Date | string | number, Date>
+  const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {
 
   }
 
-  const startOfYearWithOptions: CurriedFn2<
-    Options,
-    Date | string | number,
-    Date
-  >
+  const startOfYearWithOptions: CurriedFn1<Date | number, Date>
   namespace startOfYearWithOptions {
 
   }
 
-  const subDays: CurriedFn2<number, Date | string | number, Date>
+  const subDays: CurriedFn2<number, Date | number, Date>
   namespace subDays {
 
   }
 
-  const subDaysWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subDaysWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subDaysWithOptions {
 
   }
 
-  const subHours: CurriedFn2<number, Date | string | number, Date>
+  const subHours: CurriedFn2<number, Date | number, Date>
   namespace subHours {
 
   }
 
-  const subHoursWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subHoursWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subHoursWithOptions {
 
   }
 
-  const subISOWeekYears: CurriedFn2<number, Date | string | number, Date>
+  const subISOWeekYears: CurriedFn2<number, Date | number, Date>
   namespace subISOWeekYears {
 
   }
 
-  const subISOWeekYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subISOWeekYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subISOWeekYearsWithOptions {
 
   }
 
-  const subMilliseconds: CurriedFn2<number, Date | string | number, Date>
+  const subMilliseconds: CurriedFn2<number, Date | number, Date>
   namespace subMilliseconds {
 
   }
 
-  const subMillisecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMillisecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMillisecondsWithOptions {
 
   }
 
-  const subMinutes: CurriedFn2<number, Date | string | number, Date>
+  const subMinutes: CurriedFn2<number, Date | number, Date>
   namespace subMinutes {
 
   }
 
-  const subMinutesWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMinutesWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMinutesWithOptions {
 
   }
 
-  const subMonths: CurriedFn2<number, Date | string | number, Date>
+  const subMonths: CurriedFn2<number, Date | number, Date>
   namespace subMonths {
 
   }
 
-  const subMonthsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subMonthsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subMonthsWithOptions {
 
   }
 
-  const subQuarters: CurriedFn2<number, Date | string | number, Date>
+  const subQuarters: CurriedFn2<number, Date | number, Date>
   namespace subQuarters {
 
   }
 
-  const subQuartersWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subQuartersWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subQuartersWithOptions {
 
   }
 
-  const subSeconds: CurriedFn2<number, Date | string | number, Date>
+  const subSeconds: CurriedFn2<number, Date | number, Date>
   namespace subSeconds {
 
   }
 
-  const subSecondsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subSecondsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subSecondsWithOptions {
 
   }
 
-  const subWeeks: CurriedFn2<number, Date | string | number, Date>
+  const subWeeks: CurriedFn2<number, Date | number, Date>
   namespace subWeeks {
 
   }
 
-  const subWeeksWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subWeeksWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subWeeksWithOptions {
 
   }
 
-  const subYears: CurriedFn2<number, Date | string | number, Date>
+  const subYears: CurriedFn2<number, Date | number, Date>
   namespace subYears {
 
   }
 
-  const subYearsWithOptions: CurriedFn3<
-    Options,
-    number,
-    Date | string | number,
-    Date
-  >
+  const subYearsWithOptions: CurriedFn2<number, Date | number, Date>
   namespace subYearsWithOptions {
 
   }
 
-  const toDate: CurriedFn1<Date | string | number, Date>
+  const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {
 
   }
 
-  const toDateWithOptions: CurriedFn2<Options, Date | string | number, Date>
+  const toDateWithOptions: CurriedFn1<Date | number, Date>
   namespace toDateWithOptions {
 
   }
@@ -17359,6 +15785,16 @@ declare module 'date-fns/esm/fp/minWithOptions' {
 declare module 'date-fns/esm/fp/parse' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
+}
+
+declare module 'date-fns/esm/fp/parseISO' {
+  import { parseISO } from 'date-fns/esm/fp'
+  export default parseISO
+}
+
+declare module 'date-fns/esm/fp/parseISOWithOptions' {
+  import { parseISOWithOptions } from 'date-fns/esm/fp'
+  export default parseISOWithOptions
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions' {
@@ -18901,6 +17337,16 @@ declare module 'date-fns/esm/fp/parse/index' {
   export default parse
 }
 
+declare module 'date-fns/esm/fp/parseISO/index' {
+  import { parseISO } from 'date-fns/esm/fp'
+  export default parseISO
+}
+
+declare module 'date-fns/esm/fp/parseISOWithOptions/index' {
+  import { parseISOWithOptions } from 'date-fns/esm/fp'
+  export default parseISOWithOptions
+}
+
 declare module 'date-fns/esm/fp/parseWithOptions/index' {
   import { parseWithOptions } from 'date-fns/esm/fp'
   export default parseWithOptions
@@ -20439,6 +18885,16 @@ declare module 'date-fns/esm/fp/minWithOptions/index.js' {
 declare module 'date-fns/esm/fp/parse/index.js' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
+}
+
+declare module 'date-fns/esm/fp/parseISO/index.js' {
+  import { parseISO } from 'date-fns/esm/fp'
+  export default parseISO
+}
+
+declare module 'date-fns/esm/fp/parseISOWithOptions/index.js' {
+  import { parseISOWithOptions } from 'date-fns/esm/fp'
+  export default parseISOWithOptions
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions/index.js' {
@@ -22967,596 +21423,374 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 // dateFns Global Interface
 
 interface dateFns {
-  addDays(date: Date | string | number, amount: number, options?: Options): Date
+  addDays(date: Date | number, amount: number): Date
 
-  addHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addHours(date: Date | number, amount: number): Date
 
-  addISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addISOWeekYears(date: Date | number, amount: number): Date
 
-  addMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addMilliseconds(date: Date | number, amount: number): Date
 
-  addMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addMinutes(date: Date | number, amount: number): Date
 
-  addMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addMonths(date: Date | number, amount: number): Date
 
-  addQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addQuarters(date: Date | number, amount: number): Date
 
-  addSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addSeconds(date: Date | number, amount: number): Date
 
-  addWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addWeeks(date: Date | number, amount: number): Date
 
-  addYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  addYears(date: Date | number, amount: number): Date
 
   areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): boolean
 
   closestIndexTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
   ): number
 
-  closestTo(
-    dateToCompare: Date | string | number,
-    datesArray: (Date | string | number)[],
-    options?: Options
-  ): Date
+  closestTo(dateToCompare: Date | number, datesArray: (Date | number)[]): Date
 
-  compareAsc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  compareAsc(dateLeft: Date | number, dateRight: Date | number): number
 
-  compareDesc(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  compareDesc(dateLeft: Date | number, dateRight: Date | number): number
 
   differenceInCalendarDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInCalendarISOWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInCalendarISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInCalendarMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInCalendarQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInCalendarWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): number
 
   differenceInCalendarYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
-  differenceInDays(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInDays(dateLeft: Date | number, dateRight: Date | number): number
 
-  differenceInHours(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInHours(dateLeft: Date | number, dateRight: Date | number): number
 
   differenceInISOWeekYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
   differenceInMilliseconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
-  differenceInMinutes(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInMinutes(dateLeft: Date | number, dateRight: Date | number): number
 
-  differenceInMonths(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInMonths(dateLeft: Date | number, dateRight: Date | number): number
 
   differenceInQuarters(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
+    dateLeft: Date | number,
+    dateRight: Date | number
   ): number
 
-  differenceInSeconds(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInSeconds(dateLeft: Date | number, dateRight: Date | number): number
 
-  differenceInWeeks(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInWeeks(dateLeft: Date | number, dateRight: Date | number): number
 
-  differenceInYears(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): number
+  differenceInYears(dateLeft: Date | number, dateRight: Date | number): number
 
   eachDayOfInterval(interval: Interval, options?: Options): Date[]
 
-  eachWeekendOfInterval(interval: Interval, options?: Options): Date[]
+  eachWeekendOfInterval(interval: Interval): Date[]
 
-  eachWeekendOfMonth(date: Date | string | number, options?: Options): Date[]
+  eachWeekendOfMonth(date: Date | number): Date[]
 
-  eachWeekendOfYear(date: Date | string | number, options?: Options): Date[]
+  eachWeekendOfYear(date: Date | number): Date[]
 
   eachWeekOfInterval(interval: Interval, options?: Options): Date[]
 
-  endOfDay(date: Date | string | number, options?: Options): Date
+  endOfDay(date: Date | number): Date
 
-  endOfDecade(date: Date | string | number, options?: Options): Date
+  endOfDecade(date: Date | number, options?: Options): Date
 
-  endOfHour(date: Date | string | number, options?: Options): Date
+  endOfHour(date: Date | number): Date
 
-  endOfISOWeek(date: Date | string | number, options?: Options): Date
+  endOfISOWeek(date: Date | number): Date
 
-  endOfISOWeekYear(date: Date | string | number, options?: Options): Date
+  endOfISOWeekYear(date: Date | number): Date
 
-  endOfMinute(date: Date | string | number, options?: Options): Date
+  endOfMinute(date: Date | number): Date
 
-  endOfMonth(date: Date | string | number, options?: Options): Date
+  endOfMonth(date: Date | number): Date
 
-  endOfQuarter(date: Date | string | number, options?: Options): Date
+  endOfQuarter(date: Date | number): Date
 
-  endOfSecond(date: Date | string | number, options?: Options): Date
+  endOfSecond(date: Date | number): Date
 
-  endOfWeek(date: Date | string | number, options?: Options): Date
+  endOfWeek(date: Date | number, options?: Options): Date
 
-  endOfYear(date: Date | string | number, options?: Options): Date
+  endOfYear(date: Date | number): Date
 
-  format(
-    date: Date | string | number,
-    format: string,
-    options?: Options
-  ): string
+  format(date: Date | number, format: string, options?: Options): string
 
   formatDistance(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
 
   formatDistanceStrict(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
 
   formatRelative(
-    date: Date | string | number,
-    baseDate: Date | string | number,
+    date: Date | number,
+    baseDate: Date | number,
     options?: Options
   ): string
 
-  fromUnixTime(unixTime: number, options?: Options): Date
+  fromUnixTime(unixTime: number): Date
 
-  getDate(date: Date | string | number, options?: Options): number
+  getDate(date: Date | number): number
 
-  getDay(date: Date | string | number, options?: Options): number
+  getDay(date: Date | number): number
 
-  getDayOfYear(date: Date | string | number, options?: Options): number
+  getDayOfYear(date: Date | number): number
 
-  getDaysInMonth(date: Date | string | number, options?: Options): number
+  getDaysInMonth(date: Date | number): number
 
-  getDaysInYear(date: Date | string | number, options?: Options): number
+  getDaysInYear(date: Date | number): number
 
-  getDecade(date: Date | string | number, options?: Options): number
+  getDecade(date: Date | number): number
 
-  getHours(date: Date | string | number, options?: Options): number
+  getHours(date: Date | number): number
 
-  getISODay(date: Date | string | number, options?: Options): number
+  getISODay(date: Date | number): number
 
-  getISOWeek(date: Date | string | number, options?: Options): number
+  getISOWeek(date: Date | number): number
 
-  getISOWeeksInYear(date: Date | string | number, options?: Options): number
+  getISOWeeksInYear(date: Date | number): number
 
-  getISOWeekYear(date: Date | string | number, options?: Options): number
+  getISOWeekYear(date: Date | number): number
 
-  getMilliseconds(date: Date | string | number, options?: Options): number
+  getMilliseconds(date: Date | number): number
 
-  getMinutes(date: Date | string | number, options?: Options): number
+  getMinutes(date: Date | number): number
 
-  getMonth(date: Date | string | number, options?: Options): number
+  getMonth(date: Date | number): number
 
   getOverlappingDaysInIntervals(
     intervalLeft: Interval,
-    intervalRight: Interval,
-    options?: Options
+    intervalRight: Interval
   ): number
 
-  getQuarter(date: Date | string | number, options?: Options): number
+  getQuarter(date: Date | number): number
 
-  getSeconds(date: Date | string | number, options?: Options): number
+  getSeconds(date: Date | number): number
 
-  getTime(date: Date | string | number, options?: Options): number
+  getTime(date: Date | number): number
 
-  getUnixTime(date: Date | string | number, options?: Options): number
+  getUnixTime(date: Date | number): number
 
-  getWeek(date: Date | string | number, options?: Options): number
+  getWeek(date: Date | number, options?: Options): number
 
-  getWeekOfMonth(date: Date | string | number, options?: Options): number
+  getWeekOfMonth(date: Date | number, options?: Options): number
 
-  getWeeksInMonth(date: Date | string | number, options?: Options): number
+  getWeeksInMonth(date: Date | number, options?: Options): number
 
-  getWeekYear(date: Date | string | number, options?: Options): number
+  getWeekYear(date: Date | number, options?: Options): number
 
-  getYear(date: Date | string | number, options?: Options): number
+  getYear(date: Date | number): number
 
-  isAfter(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  isAfter(date: Date | number, dateToCompare: Date | number): boolean
 
-  isBefore(
-    date: Date | string | number,
-    dateToCompare: Date | string | number,
-    options?: Options
-  ): boolean
+  isBefore(date: Date | number, dateToCompare: Date | number): boolean
 
   isDate(value: any, options?: Options): boolean
 
-  isEqual(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isFirstDayOfMonth(date: Date | string | number, options?: Options): boolean
+  isFirstDayOfMonth(date: Date | number): boolean
 
-  isFriday(date: Date | string | number, options?: Options): boolean
+  isFriday(date: Date | number): boolean
 
-  isLastDayOfMonth(date: Date | string | number, options?: Options): boolean
+  isLastDayOfMonth(date: Date | number): boolean
 
-  isLeapYear(date: Date | string | number, options?: Options): boolean
+  isLeapYear(date: Date | number): boolean
 
-  isMonday(date: Date | string | number, options?: Options): boolean
+  isMonday(date: Date | number): boolean
 
-  isSameDay(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameHour(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameHour(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameISOWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameISOWeek(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameISOWeekYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameISOWeekYear(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameMinute(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameMinute(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameMonth(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameMonth(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameQuarter(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameQuarter(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSameSecond(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameSecond(dateLeft: Date | number, dateRight: Date | number): boolean
 
   isSameWeek(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
+    dateLeft: Date | number,
+    dateRight: Date | number,
     options?: Options
   ): boolean
 
-  isSameYear(
-    dateLeft: Date | string | number,
-    dateRight: Date | string | number,
-    options?: Options
-  ): boolean
+  isSameYear(dateLeft: Date | number, dateRight: Date | number): boolean
 
-  isSaturday(date: Date | string | number, options?: Options): boolean
+  isSaturday(date: Date | number): boolean
 
-  isSunday(date: Date | string | number, options?: Options): boolean
+  isSunday(date: Date | number): boolean
 
-  isThursday(date: Date | string | number, options?: Options): boolean
+  isThursday(date: Date | number): boolean
 
-  isTuesday(date: Date | string | number, options?: Options): boolean
+  isTuesday(date: Date | number): boolean
 
-  isValid(date: any, options?: Options): boolean
+  isValid(date: any): boolean
 
-  isWednesday(date: Date | string | number, options?: Options): boolean
+  isWednesday(date: Date | number): boolean
 
-  isWeekend(date: Date | string | number, options?: Options): boolean
+  isWeekend(date: Date | number): boolean
 
-  isWithinInterval(
-    date: Date | string | number,
-    interval: Interval,
-    options?: Options
-  ): boolean
+  isWithinInterval(date: Date | number, interval: Interval): boolean
 
-  lastDayOfDecade(date: Date | string | number, options?: Options): Date
+  lastDayOfDecade(date: Date | number): Date
 
-  lastDayOfISOWeek(date: Date | string | number, options?: Options): Date
+  lastDayOfISOWeek(date: Date | number): Date
 
-  lastDayOfISOWeekYear(date: Date | string | number, options?: Options): Date
+  lastDayOfISOWeekYear(date: Date | number): Date
 
-  lastDayOfMonth(date: Date | string | number, options?: Options): Date
+  lastDayOfMonth(date: Date | number): Date
 
-  lastDayOfQuarter(date: Date | string | number, options?: Options): Date
+  lastDayOfQuarter(date: Date | number, options?: Options): Date
 
-  lastDayOfWeek(date: Date | string | number, options?: Options): Date
+  lastDayOfWeek(date: Date | number, options?: Options): Date
 
-  lastDayOfYear(date: Date | string | number, options?: Options): Date
+  lastDayOfYear(date: Date | number): Date
 
-  lightFormat(
-    date: Date | string | number,
-    format: string,
-    options?: Options
-  ): string
+  lightFormat(date: Date | number, format: string): string
 
-  max(datesArray: (Date | string | number)[], options?: Options): Date
+  max(datesArray: (Date | number)[]): Date
 
-  min(datesArray: (Date | string | number)[], options?: Options): Date
+  min(datesArray: (Date | number)[]): Date
 
   parse(
     dateString: string,
     formatString: string,
-    baseDate: Date | string | number,
+    baseDate: Date | number,
     options?: Options
   ): Date
 
-  roundToNearestMinutes(
-    date: Date | string | number,
-    nearestTo?: number,
-    options?: Options
-  ): Date
+  parseISO(argument: string, options?: Options): Date
 
-  setDate(
-    date: Date | string | number,
-    dayOfMonth: number,
-    options?: Options
-  ): Date
+  roundToNearestMinutes(date: Date | number, options?: Options): Date
 
-  setDay(date: Date | string | number, day: number, options?: Options): Date
+  setDate(date: Date | number, dayOfMonth: number): Date
 
-  setDayOfYear(
-    date: Date | string | number,
-    dayOfYear: number,
-    options?: Options
-  ): Date
+  setDay(date: Date | number, day: number, options?: Options): Date
 
-  setHours(date: Date | string | number, hours: number, options?: Options): Date
+  setDayOfYear(date: Date | number, dayOfYear: number): Date
 
-  setISODay(date: Date | string | number, day: number, options?: Options): Date
+  setHours(date: Date | number, hours: number): Date
 
-  setISOWeek(
-    date: Date | string | number,
-    isoWeek: number,
-    options?: Options
-  ): Date
+  setISODay(date: Date | number, day: number): Date
 
-  setISOWeekYear(
-    date: Date | string | number,
-    isoWeekYear: number,
-    options?: Options
-  ): Date
+  setISOWeek(date: Date | number, isoWeek: number): Date
 
-  setMilliseconds(
-    date: Date | string | number,
-    milliseconds: number,
-    options?: Options
-  ): Date
+  setISOWeekYear(date: Date | number, isoWeekYear: number): Date
 
-  setMinutes(
-    date: Date | string | number,
-    minutes: number,
-    options?: Options
-  ): Date
+  setMilliseconds(date: Date | number, milliseconds: number): Date
 
-  setMonth(date: Date | string | number, month: number, options?: Options): Date
+  setMinutes(date: Date | number, minutes: number): Date
 
-  setQuarter(
-    date: Date | string | number,
-    quarter: number,
-    options?: Options
-  ): Date
+  setMonth(date: Date | number, month: number): Date
 
-  setSeconds(
-    date: Date | string | number,
-    seconds: number,
-    options?: Options
-  ): Date
+  setQuarter(date: Date | number, quarter: number): Date
 
-  setWeek(date: Date | string | number, week: number, options?: Options): Date
+  setSeconds(date: Date | number, seconds: number): Date
 
-  setWeekYear(
-    date: Date | string | number,
-    weekYear: number,
-    options?: Options
-  ): Date
+  setWeek(date: Date | number, week: number, options?: Options): Date
 
-  setYear(date: Date | string | number, year: number, options?: Options): Date
+  setWeekYear(date: Date | number, weekYear: number, options?: Options): Date
 
-  startOfDay(date: Date | string | number, options?: Options): Date
+  setYear(date: Date | number, year: number): Date
 
-  startOfDecade(date: Date | string | number, options?: Options): Date
+  startOfDay(date: Date | number): Date
 
-  startOfHour(date: Date | string | number, options?: Options): Date
+  startOfDecade(date: Date | number): Date
 
-  startOfISOWeek(date: Date | string | number, options?: Options): Date
+  startOfHour(date: Date | number): Date
 
-  startOfISOWeekYear(date: Date | string | number, options?: Options): Date
+  startOfISOWeek(date: Date | number): Date
 
-  startOfMinute(date: Date | string | number, options?: Options): Date
+  startOfISOWeekYear(date: Date | number): Date
 
-  startOfMonth(date: Date | string | number, options?: Options): Date
+  startOfMinute(date: Date | number): Date
 
-  startOfQuarter(date: Date | string | number, options?: Options): Date
+  startOfMonth(date: Date | number): Date
 
-  startOfSecond(date: Date | string | number, options?: Options): Date
+  startOfQuarter(date: Date | number): Date
 
-  startOfWeek(date: Date | string | number, options?: Options): Date
+  startOfSecond(date: Date | number): Date
 
-  startOfWeekYear(date: Date | string | number, options?: Options): Date
+  startOfWeek(date: Date | number, options?: Options): Date
 
-  startOfYear(date: Date | string | number, options?: Options): Date
+  startOfWeekYear(date: Date | number, options?: Options): Date
 
-  subDays(date: Date | string | number, amount: number, options?: Options): Date
+  startOfYear(date: Date | number): Date
 
-  subHours(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subDays(date: Date | number, amount: number): Date
 
-  subISOWeekYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subHours(date: Date | number, amount: number): Date
 
-  subMilliseconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subISOWeekYears(date: Date | number, amount: number): Date
 
-  subMinutes(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subMilliseconds(date: Date | number, amount: number): Date
 
-  subMonths(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subMinutes(date: Date | number, amount: number): Date
 
-  subQuarters(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subMonths(date: Date | number, amount: number): Date
 
-  subSeconds(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subQuarters(date: Date | number, amount: number): Date
 
-  subWeeks(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subSeconds(date: Date | number, amount: number): Date
 
-  subYears(
-    date: Date | string | number,
-    amount: number,
-    options?: Options
-  ): Date
+  subWeeks(date: Date | number, amount: number): Date
 
-  toDate(argument: Date | string | number, options?: Options): Date
+  subYears(date: Date | number, amount: number): Date
+
+  toDate(argument: Date | number): Date
 }

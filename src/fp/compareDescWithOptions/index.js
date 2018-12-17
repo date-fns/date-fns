@@ -3,6 +3,6 @@
 import fn from '../../compareDesc/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var compareDescWithOptions = convertToFP(fn, 3)
+var compareDescWithOptions = convertToFP(fn, 2)
 
 export default compareDescWithOptions

@@ -3,6 +3,6 @@
 import fn from '../../fromUnixTime/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var fromUnixTimeWithOptions = convertToFP(fn, 2)
+var fromUnixTimeWithOptions = convertToFP(fn, 1)
 
 export default fromUnixTimeWithOptions

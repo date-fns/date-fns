@@ -8,7 +8,6 @@ import toDate from '../toDate/index.js'
  * @description
  * Return the latest of the given dates.
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -26,12 +25,9 @@ import toDate from '../toDate/index.js'
  *   var maxDate = max(dates)
  *   ```
  *
- * @param {Date[]|String[]|Number[]} datesArray - the dates to compare
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date[]|Number[]} datesArray - the dates to compare
  * @returns {Date} the latest of the dates
  * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which of these dates is the latest?
@@ -43,7 +39,7 @@ import toDate from '../toDate/index.js'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray, dirtyOptions) {
+export default function max(dirtyDatesArray) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
@@ -66,7 +62,7 @@ export default function max(dirtyDatesArray, dirtyOptions) {
 
   var result
   datesArray.forEach(function(dirtyDate) {
-    var currentDate = toDate(dirtyDate, dirtyOptions)
+    var currentDate = toDate(dirtyDate)
 
     if (result === undefined || result < currentDate || isNaN(currentDate)) {
       result = currentDate

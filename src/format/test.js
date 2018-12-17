@@ -35,11 +35,6 @@ describe('format', function() {
   var timestamp = date.getTime().toString()
   var secondsTimestamp = Math.floor(date.getTime() / 1000).toString()
 
-  it('accepts a string', function() {
-    var date = new Date(2014, 3, 4).toISOString()
-    assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
-  })
-
   it('accepts a timestamp', function() {
     var date = new Date(2014, 3, 4).getTime()
     assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
@@ -519,9 +514,6 @@ describe('format', function() {
   })
 
   describe('time zone', function() {
-    it('should toDate the given date in a local timezone', function() {
-      assert(format('2015-01-01', 'yyyy-MM-dd') === '2015-01-01')
-    })
     it('ISO-8601 with Z', function() {
       var result = format(date, 'X XX XXX XXXX XXXXX')
       var expectedResult = [
@@ -727,12 +719,6 @@ describe('format', function() {
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
       firstWeekContainsDate: NaN
     })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function() {
-    // $ExpectedMistake
-    var block = format.bind(null, date, 'yyyy-MM-dd', { additionalDigits: NaN })
     assert.throws(block, RangeError)
   })
 

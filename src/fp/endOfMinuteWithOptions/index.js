@@ -3,6 +3,6 @@
 import fn from '../../endOfMinute/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfMinuteWithOptions = convertToFP(fn, 2)
+var endOfMinuteWithOptions = convertToFP(fn, 1)
 
 export default endOfMinuteWithOptions

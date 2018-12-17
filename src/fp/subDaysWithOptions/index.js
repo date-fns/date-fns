@@ -3,6 +3,6 @@
 import fn from '../../subDays/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subDaysWithOptions = convertToFP(fn, 3)
+var subDaysWithOptions = convertToFP(fn, 2)
 
 export default subDaysWithOptions
