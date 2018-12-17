@@ -118,8 +118,8 @@ var formatters = {
   },
 
   // ISO week-numbering year
-  R: function(date, token, _localize, options) {
-    var isoWeekYear = getUTCISOWeekYear(date, options)
+  R: function(date, token) {
+    var isoWeekYear = getUTCISOWeekYear(date)
 
     // Padding
     return addLeadingZeros(isoWeekYear, token.length)
@@ -236,7 +236,7 @@ var formatters = {
   },
 
   // Stand-alone month
-  L: function(date, token, localize, options) {
+  L: function(date, token, localize) {
     var month = date.getUTCMonth()
     switch (token) {
       // 1, 2, ..., 12
@@ -276,8 +276,8 @@ var formatters = {
   },
 
   // ISO week of year
-  I: function(date, token, localize, options) {
-    var isoWeek = getUTCISOWeek(date, options)
+  I: function(date, token, localize) {
+    var isoWeek = getUTCISOWeek(date)
 
     if (token === 'Io') {
       return localize.ordinalNumber(isoWeek, { unit: 'week' })
@@ -296,8 +296,8 @@ var formatters = {
   },
 
   // Day of year
-  D: function(date, token, localize, options) {
-    var dayOfYear = getUTCDayOfYear(date, options)
+  D: function(date, token, localize) {
+    var dayOfYear = getUTCDayOfYear(date)
 
     if (token === 'Do') {
       return localize.ordinalNumber(dayOfYear, { unit: 'dayOfYear' })
@@ -307,7 +307,7 @@ var formatters = {
   },
 
   // Day of week
-  E: function(date, token, localize, options) {
+  E: function(date, token, localize) {
     var dayOfWeek = date.getUTCDay()
     switch (token) {
       // Tue
@@ -414,7 +414,7 @@ var formatters = {
   },
 
   // ISO day of week
-  i: function(date, token, localize, options) {
+  i: function(date, token, localize) {
     var dayOfWeek = date.getUTCDay()
     var isoDayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
     switch (token) {
@@ -611,7 +611,7 @@ var formatters = {
   },
 
   // Fraction of second
-  S: function(date, token, localize, options) {
+  S: function(date, token) {
     var numberOfDigits = token.length
     var milliseconds = date.getUTCMilliseconds()
     var fractionalSeconds = Math.floor(
@@ -679,7 +679,7 @@ var formatters = {
   },
 
   // Timezone (GMT)
-  O: function(date, token, localize, options) {
+  O: function(date, token, _localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -697,7 +697,7 @@ var formatters = {
   },
 
   // Timezone (specific non-location)
-  z: function(date, token, localize, options) {
+  z: function(date, token, _localize, options) {
     var originalDate = options._originalDate || date
     var timezoneOffset = originalDate.getTimezoneOffset()
 
@@ -715,14 +715,14 @@ var formatters = {
   },
 
   // Seconds timestamp
-  t: function(date, token, localize, options) {
+  t: function(date, token, _localize, options) {
     var originalDate = options._originalDate || date
     var timestamp = Math.floor(originalDate.getTime() / 1000)
     return addLeadingZeros(timestamp, token.length)
   },
 
   // Milliseconds timestamp
-  T: function(date, token, localize, options) {
+  T: function(date, token, _localize, options) {
     var originalDate = options._originalDate || date
     var timestamp = originalDate.getTime()
     return addLeadingZeros(timestamp, token.length)

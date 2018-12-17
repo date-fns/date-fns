@@ -48,7 +48,6 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * | 40 secs ... 60 secs    | less than a minute   |
  * | 60 secs ... 90 secs    | 1 minute             |
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -77,16 +76,14 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *   ) //=> 'in about 1 hour'
  *   ```
  *
- * @param {Date|String|Number} date - the date
- * @param {Date|String|Number} baseDate - the date to compare with
+ * @param {Date|Number} date - the date
+ * @param {Date|Number} baseDate - the date to compare with
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
@@ -134,7 +131,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     throw new RangeError('locale must contain formatDistance property')
   }
 
-  var comparison = compareAsc(dirtyDate, dirtyBaseDate, options)
+  var comparison = compareAsc(dirtyDate, dirtyBaseDate)
 
   if (isNaN(comparison)) {
     return 'Invalid Date'
@@ -147,14 +144,14 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
   var dateLeft
   var dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate, options)
-    dateRight = toDate(dirtyDate, options)
+    dateLeft = toDate(dirtyBaseDate)
+    dateRight = toDate(dirtyDate)
   } else {
-    dateLeft = toDate(dirtyDate, options)
-    dateRight = toDate(dirtyBaseDate, options)
+    dateLeft = toDate(dirtyDate)
+    dateRight = toDate(dirtyBaseDate)
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft, options)
+  var seconds = differenceInSeconds(dateRight, dateLeft)
   var offsetInSeconds =
     (getTimezoneOffsetInMilliseconds(dateRight) -
       getTimezoneOffsetInMilliseconds(dateLeft)) /
@@ -214,7 +211,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }
 
-  months = differenceInMonths(dateRight, dateLeft, options)
+  months = differenceInMonths(dateRight, dateLeft)
 
   // 2 months up to 12 months
   if (months < 12) {

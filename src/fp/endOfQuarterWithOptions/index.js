@@ -3,6 +3,6 @@
 import fn from '../../endOfQuarter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfQuarterWithOptions = convertToFP(fn, 2)
+var endOfQuarterWithOptions = convertToFP(fn, 1)
 
 export default endOfQuarterWithOptions

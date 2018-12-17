@@ -3,9 +3,11 @@ import toDate from '../../toDate/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function setUTCISODay (dirtyDate, dirtyDay, dirtyOptions) {
+export default function setUTCISODay(dirtyDate, dirtyDay) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var day = toInteger(dirtyDay)
@@ -15,7 +17,7 @@ export default function setUTCISODay (dirtyDate, dirtyDay, dirtyOptions) {
   }
 
   var weekStartsOn = 1
-  var date = toDate(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate)
   var currentDay = date.getUTCDay()
 
   var remainder = day % 7

@@ -3,6 +3,6 @@
 import fn from '../../setMinutes/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setMinutesWithOptions = convertToFP(fn, 3)
+var setMinutesWithOptions = convertToFP(fn, 2)
 
 export default setMinutesWithOptions

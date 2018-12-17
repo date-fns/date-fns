@@ -230,6 +230,8 @@ module.exports = {
   min: require('./min/index.js'),
   minWithOptions: require('./minWithOptions/index.js'),
   parse: require('./parse/index.js'),
+  parseISO: require('./parseISO/index.js'),
+  parseISOWithOptions: require('./parseISOWithOptions/index.js'),
   parseWithOptions: require('./parseWithOptions/index.js'),
   roundToNearestMinutes: require('./roundToNearestMinutes/index.js'),
   roundToNearestMinutesWithOptions: require('./roundToNearestMinutesWithOptions/index.js'),

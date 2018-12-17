@@ -3,6 +3,6 @@
 import fn from '../../getDay/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getDayWithOptions = convertToFP(fn, 2)
+var getDayWithOptions = convertToFP(fn, 1)
 
 export default getDayWithOptions

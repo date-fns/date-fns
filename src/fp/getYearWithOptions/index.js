@@ -3,6 +3,6 @@
 import fn from '../../getYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getYearWithOptions = convertToFP(fn, 2)
+var getYearWithOptions = convertToFP(fn, 1)
 
 export default getYearWithOptions

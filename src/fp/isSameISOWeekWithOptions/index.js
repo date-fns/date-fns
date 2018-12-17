@@ -3,6 +3,6 @@
 import fn from '../../isSameISOWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameISOWeekWithOptions = convertToFP(fn, 3)
+var isSameISOWeekWithOptions = convertToFP(fn, 2)
 
 export default isSameISOWeekWithOptions

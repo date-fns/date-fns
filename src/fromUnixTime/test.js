@@ -15,13 +15,6 @@ describe('fromUnixTime', function() {
     assert(isNaN(result.getTime()))
   })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function() {
-    var timestamp = 1330515499
-    // $ExpectedMistake
-    var block = fromUnixTime.bind(null, timestamp, { additionalDigits: NaN })
-    assert.throws(block, RangeError)
-  })
-
   it('throws TypeError exception if passed less than 1 argument', function() {
     assert.throws(fromUnixTime.bind(null), TypeError)
   })

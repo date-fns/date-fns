@@ -2,8 +2,8 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 type Interval = {
-  start: Date | string | number,
-  end: Date | string | number
+  start: Date | number,
+  end: Date | number
 }
 
 type Options = {
@@ -48,4 +48,4 @@ type Locale = {
   }
 }
 
-declare module.exports: (date: any, options?: Options) => boolean
+declare module.exports: (date: any) => boolean

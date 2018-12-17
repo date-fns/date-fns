@@ -173,6 +173,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
 
+- `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
+
 ### Changed
 
 - **BREAKING**: new format string API for `format` function

@@ -3,6 +3,6 @@
 import fn from '../../endOfMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfMonthWithOptions = convertToFP(fn, 2)
+var endOfMonthWithOptions = convertToFP(fn, 1)
 
 export default endOfMonthWithOptions

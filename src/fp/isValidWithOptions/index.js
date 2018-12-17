@@ -3,6 +3,6 @@
 import fn from '../../isValid/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isValidWithOptions = convertToFP(fn, 2)
+var isValidWithOptions = convertToFP(fn, 1)
 
 export default isValidWithOptions

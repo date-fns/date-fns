@@ -3,6 +3,6 @@
 import fn from '../../isSameSecond/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameSecondWithOptions = convertToFP(fn, 3)
+var isSameSecondWithOptions = convertToFP(fn, 2)
 
 export default isSameSecondWithOptions

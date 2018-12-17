@@ -3,6 +3,6 @@
 import fn from '../../isWithinInterval/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isWithinIntervalWithOptions = convertToFP(fn, 3)
+var isWithinIntervalWithOptions = convertToFP(fn, 2)
 
 export default isWithinIntervalWithOptions

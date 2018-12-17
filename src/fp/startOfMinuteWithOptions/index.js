@@ -3,6 +3,6 @@
 import fn from '../../startOfMinute/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfMinuteWithOptions = convertToFP(fn, 2)
+var startOfMinuteWithOptions = convertToFP(fn, 1)
 
 export default startOfMinuteWithOptions

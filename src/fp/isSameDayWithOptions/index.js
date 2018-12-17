@@ -3,6 +3,6 @@
 import fn from '../../isSameDay/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameDayWithOptions = convertToFP(fn, 3)
+var isSameDayWithOptions = convertToFP(fn, 2)
 
 export default isSameDayWithOptions

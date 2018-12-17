@@ -3,6 +3,6 @@
 import fn from '../../isSameYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameYearWithOptions = convertToFP(fn, 3)
+var isSameYearWithOptions = convertToFP(fn, 2)
 
 export default isSameYearWithOptions

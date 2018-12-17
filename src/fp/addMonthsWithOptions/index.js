@@ -3,6 +3,6 @@
 import fn from '../../addMonths/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addMonthsWithOptions = convertToFP(fn, 3)
+var addMonthsWithOptions = convertToFP(fn, 2)
 
 export default addMonthsWithOptions

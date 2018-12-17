@@ -3,6 +3,6 @@
 import fn from '../../compareAsc/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var compareAscWithOptions = convertToFP(fn, 3)
+var compareAscWithOptions = convertToFP(fn, 2)
 
 export default compareAscWithOptions

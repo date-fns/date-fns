@@ -3,6 +3,6 @@
 import fn from '../../getDaysInYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getDaysInYearWithOptions = convertToFP(fn, 2)
+var getDaysInYearWithOptions = convertToFP(fn, 1)
 
 export default getDaysInYearWithOptions

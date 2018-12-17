@@ -3,6 +3,6 @@
 import fn from '../../subHours/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subHoursWithOptions = convertToFP(fn, 3)
+var subHoursWithOptions = convertToFP(fn, 2)
 
 export default subHoursWithOptions

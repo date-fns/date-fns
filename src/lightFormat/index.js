@@ -71,19 +71,16 @@ var doubleQuoteRegExp = /''/g
  * |                                 | xxxx    | -0800, +0530, +0000, +123456      |
  * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |
  *
- * @param {Date|String|Number} date - the original date
+ * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
-export default function lightFormat(dirtyDate, dirtyFormatStr, options) {
+export default function lightFormat(dirtyDate, dirtyFormatStr) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
@@ -92,9 +89,9 @@ export default function lightFormat(dirtyDate, dirtyFormatStr, options) {
 
   var formatStr = String(dirtyFormatStr)
 
-  var originalDate = toDate(dirtyDate, options)
+  var originalDate = toDate(dirtyDate)
 
-  if (!isValid(originalDate, options)) {
+  if (!isValid(originalDate)) {
     return 'Invalid Date'
   }
 
@@ -102,7 +99,7 @@ export default function lightFormat(dirtyDate, dirtyFormatStr, options) {
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
   var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  var utcDate = subMilliseconds(originalDate, timezoneOffset, options)
+  var utcDate = subMilliseconds(originalDate, timezoneOffset)
 
   var result = formatStr
     .match(formattingTokensRegExp)

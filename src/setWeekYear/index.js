@@ -18,20 +18,17 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|String|Number} date - the date to be changed
+ * @param {Date|Number} date - the date to be changed
  * @param {Number} weekYear - the local week-numbering year of the new date
  * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Date} the new date with the local week-numbering year set
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
@@ -70,13 +67,9 @@ export default function setWeekYear(dirtyDate, dirtyWeekYear, dirtyOptions) {
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
-  var date = toDate(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate)
   var weekYear = toInteger(dirtyWeekYear)
-  var diff = differenceInCalendarDays(
-    date,
-    startOfWeekYear(date, dirtyOptions),
-    dirtyOptions
-  )
+  var diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions))
   var firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)

@@ -3,6 +3,6 @@
 import fn from '../../getMinutes/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getMinutesWithOptions = convertToFP(fn, 2)
+var getMinutesWithOptions = convertToFP(fn, 1)
 
 export default getMinutesWithOptions

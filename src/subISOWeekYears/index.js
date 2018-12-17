@@ -11,7 +11,6 @@ import addISOWeekYears from '../addISOWeekYears/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -21,20 +20,17 @@ import addISOWeekYears from '../addISOWeekYears/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param {Date|String|Number} date - the date to be changed
+ * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of ISO week-numbering years to be subtracted
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the new date with the ISO week-numbering years subtracted
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:
  * var result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-export default function subISOWeekYears(dirtyDate, dirtyAmount, dirtyOptions) {
+export default function subISOWeekYears(dirtyDate, dirtyAmount) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
@@ -42,5 +38,5 @@ export default function subISOWeekYears(dirtyDate, dirtyAmount, dirtyOptions) {
   }
 
   var amount = toInteger(dirtyAmount)
-  return addISOWeekYears(dirtyDate, -amount, dirtyOptions)
+  return addISOWeekYears(dirtyDate, -amount)
 }

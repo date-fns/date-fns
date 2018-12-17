@@ -8,7 +8,6 @@ import toDate from '../toDate/index.js'
  * @description
  * Is the given date within the interval?
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -43,13 +42,10 @@ import toDate from '../toDate/index.js'
  *   )
  *   ```
  *
- * @param {Date|String|Number} date - the date to check
+ * @param {Date|Number} date - the date to check
  * @param {Interval} interval - the interval to check
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Boolean} the date is within the interval
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -69,11 +65,7 @@ import toDate from '../toDate/index.js'
  * })
  * //=> false
  */
-export default function isWithinInterval(
-  dirtyDate,
-  dirtyInterval,
-  dirtyOptions
-) {
+export default function isWithinInterval(dirtyDate, dirtyInterval) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
@@ -81,9 +73,9 @@ export default function isWithinInterval(
   }
 
   var interval = dirtyInterval || {}
-  var time = toDate(dirtyDate, dirtyOptions).getTime()
-  var startTime = toDate(interval.start, dirtyOptions).getTime()
-  var endTime = toDate(interval.end, dirtyOptions).getTime()
+  var time = toDate(dirtyDate).getTime()
+  var startTime = toDate(interval.start).getTime()
+  var endTime = toDate(interval.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {

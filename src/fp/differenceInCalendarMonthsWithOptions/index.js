@@ -3,6 +3,6 @@
 import fn from '../../differenceInCalendarMonths/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var differenceInCalendarMonthsWithOptions = convertToFP(fn, 3)
+var differenceInCalendarMonthsWithOptions = convertToFP(fn, 2)
 
 export default differenceInCalendarMonthsWithOptions

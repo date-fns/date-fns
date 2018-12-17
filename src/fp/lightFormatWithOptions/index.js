@@ -3,6 +3,6 @@
 import fn from '../../lightFormat/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var lightFormatWithOptions = convertToFP(fn, 3)
+var lightFormatWithOptions = convertToFP(fn, 2)
 
 export default lightFormatWithOptions
