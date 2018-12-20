@@ -77,7 +77,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - is locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/1026).
   Kudos to [@lamayg](https://github.com/lamayg).
 
-
 - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
   (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
 
