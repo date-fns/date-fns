@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 var eraValues = {
   narrow: ['f.Kr.', 'e.Kr.'],
   abbreviated: ['f.Kr.', 'e.Kr.'],
-  wide: ['fyrir Krist	', 'eftir Krist']
+  wide: ['fyrir Krist', 'eftir Krist']
 }
 
 var quarterValues = {
