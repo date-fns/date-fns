@@ -748,6 +748,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
 
+- Fix bug in Galician locale caused by incorrect usage of `getHours`
+  instead of `getUTCHours`.
+
 ## [1.30.1] - 2018-12-10
 
 ### Fixed
