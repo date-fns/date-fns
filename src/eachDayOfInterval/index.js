@@ -39,7 +39,7 @@ import toDate from '../toDate/index.js'
  *   ```
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {TypeError} 1 argument required

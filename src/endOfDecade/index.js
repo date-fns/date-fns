@@ -14,7 +14,7 @@ import toDate from '../toDate/index.js'
  *
  * @param {Date|Number} date - the original date
  * @returns {Date} the end of a decade
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {Object} [options] - an object with options.
  * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2

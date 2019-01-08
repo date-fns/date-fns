@@ -15,7 +15,7 @@ import addWeeks from '../addWeeks/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {Object} [options] - an object with options.
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date[]} the array with starts of weeks from the week of the interval start to the week of the interval end
  * @throws {TypeError} 1 argument required

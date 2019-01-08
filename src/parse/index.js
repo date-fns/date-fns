@@ -281,7 +281,7 @@ var notWhitespaceRegExp = /\S/
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
  * @param {Date|Number} baseDate - defines values missing from the parsed dateString
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
