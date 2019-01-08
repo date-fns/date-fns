@@ -12,10 +12,22 @@
   import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
   ```
 
+- Functions now don't accept strings as arguments. Strings should
+  be parsed using `parseISO` (ISO 8601) or `parse`.
+
+  See [this post](https://blog.date-fns.org/post/TODO) for more details.
+
+  ```javascript
+  // Before v2.0.0
+  addDays('2016-01-01', 1)
+
+  // v2.0.0 onward
+  addDays(parseISO('2016-01-01'), 1)
+  ```
+
 - Functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
   This change is introduced for consistency with ECMAScript standard library which does the same.
-  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 - All functions now implicitly convert arguments by following rules:
 

@@ -19,8 +19,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
   functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
 
-  Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
-  and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
+  Functions with options (`format`, `parse`, etc.) have two FP counterparts:
+  one that has the options object as its first argument and one that hasn't.
+  The name of the former has `WithOptions` added to the end of its name.
 
   In FP functions, the order of arguments is reversed.
 
@@ -176,6 +177,29 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
 
 ### Changed
+
+- **BREAKING**: now functions don't accept string arguments, but only
+  numbers or dates. When a string is passed, it will result in
+  an unexpected result (`Invalid Date`, `NaN`, etc).
+
+  From now on a string should be parsed using `parseISO` (ISO 8601)
+  or `parse`.
+
+  In v1 we've used `new Date()` to parse strings, but it resulted in many
+  hard-to-track bugs caused by inconsistencies in different browsers.
+  To address that we've implemented our ISO 8601 parser but that made
+  library to significantly grow in size. To prevent inevitable bugs
+  and keep the library tiny, we made this trade-off.
+
+  See [this post](https://blog.date-fns.org/post/TODO) for more details.
+
+  ```javascript
+  // Before v2.0.0
+  addDays('2016-01-01', 1)
+
+  // v2.0.0 onward
+  addDays(parseISO('2016-01-01'), 1)
+  ```
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
@@ -592,28 +616,27 @@ for the list of changes made since `v2.0.0-alpha.1`.
   )
   ```
 
-- **BREAKING**: `parse` renamed to `toDate`,
-  created a new function `parse` which parses a string using a provided format.
+- **BREAKING**: `parse` that previously used to convert strings and
+  numbers to dates now parse only strings in an arbitrary format
+  specified as an argument. Use `toDate` to coerce numbers and `parseISO`
+  to parse ISO 8601 strings.
 
   ```javascript
   // Before v2.0.0
   parse('2016-01-01')
+  parse(1547005581366)
+  parse(new Date()) // Clone the date
 
   // v2.0.0 onward
-  toDate('2016-01-01')
   parse('2016-01-01', 'yyyy-MM-dd', new Date())
+  parseISO('2016-01-01')
+  toDate(1547005581366)
+  toDate(new Date()) // Clone the date
   ```
 
-- **BREAKING**: `toDate` now validates separate date and time values in ISO-8601 strings
-  and returns `Invalid Date` if the date is invalid.
-
-  ```javascript
-  toDate('2018-13-32')
-  //=> Invalid Date
-  ```
-
-- **BREAKING**: `toDate` now doesn't fall back to `new Date` constructor
-  if it fails to parse a string argument. Instead, it returns `Invalid Date`.
+- **BREAKING**: `toDate` (previously `parse`) now doesn't accept string
+  arguments but only numbers and dates. `toDate` called with an invalid
+  argument will return `Invalid Date`.
 
 - **BREAKING**: new locale format.
   See [docs/Locale](https://date-fns.org/docs/Locale).
@@ -659,7 +682,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
   This change is introduced for consistency with ECMAScript standard library which does the same.
-  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 - **BREAKING**: all functions now implicitly convert arguments by following rules:
 
@@ -698,10 +720,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
-
-- Every function now has `options` as the last argument which is passed to all its dependencies
-  for consistency and future features.
-  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
 
