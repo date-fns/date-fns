@@ -30,9 +30,9 @@ describe('addMilliseconds', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
     var result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 5),
+      // $ExpectedMistake
       '750'
     )
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 755))

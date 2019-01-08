@@ -6,19 +6,6 @@ type Interval = {
   end: Date | number
 }
 
-type Options = {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  additionalDigits?: 0 | 1 | 2,
-  locale?: Locale,
-  includeSeconds?: boolean,
-  addSuffix?: boolean,
-  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean,
-  step?: number
-}
-
 type Locale = {
   formatDistance: Function,
   formatRelative: Function,
@@ -116,7 +103,10 @@ declare module.exports: {
   differenceInCalendarWeeks: (
     dateLeft: Date | number,
     dateRight: Date | number,
-    options?: Options
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
   ) => number,
 
   differenceInCalendarYears: (
@@ -174,7 +164,12 @@ declare module.exports: {
     dateRight: Date | number
   ) => number,
 
-  eachDayOfInterval: (interval: Interval, options?: Options) => Date[],
+  eachDayOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ) => Date[],
 
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
@@ -182,11 +177,21 @@ declare module.exports: {
 
   eachWeekendOfYear: (date: Date | number) => Date[],
 
-  eachWeekOfInterval: (interval: Interval, options?: Options) => Date[],
+  eachWeekOfInterval: (
+    interval: Interval,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ) => Date[],
 
   endOfDay: (date: Date | number) => Date,
 
-  endOfDecade: (date: Date | number, options?: Options) => Date,
+  endOfDecade: (
+    date: Date | number,
+    options?: {
+      additionalDigits?: 0 | 1 | 2
+    }
+  ) => Date,
 
   endOfHour: (date: Date | number) => Date,
 
@@ -202,28 +207,55 @@ declare module.exports: {
 
   endOfSecond: (date: Date | number) => Date,
 
-  endOfWeek: (date: Date | number, options?: Options) => Date,
+  endOfWeek: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
+  ) => Date,
 
   endOfYear: (date: Date | number) => Date,
 
-  format: (date: Date | number, format: string, options?: Options) => string,
+  format: (
+    date: Date | number,
+    format: string,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: number,
+      locale?: Locale,
+      awareOfUnicodeTokens?: boolean
+    }
+  ) => string,
 
   formatDistance: (
     date: Date | number,
     baseDate: Date | number,
-    options?: Options
+    options?: {
+      includeSeconds?: boolean,
+      addSuffix?: boolean,
+      locale?: Locale
+    }
   ) => string,
 
   formatDistanceStrict: (
     date: Date | number,
     baseDate: Date | number,
-    options?: Options
+    options?: {
+      addSuffix?: boolean,
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+      roundingMethod?: 'floor' | 'ceil' | 'round',
+      locale?: Locale
+    }
   ) => string,
 
   formatRelative: (
     date: Date | number,
     baseDate: Date | number,
-    options?: Options
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
   ) => string,
 
   fromUnixTime: (unixTime: number) => Date,
@@ -269,13 +301,36 @@ declare module.exports: {
 
   getUnixTime: (date: Date | number) => number,
 
-  getWeek: (date: Date | number, options?: Options) => number,
+  getWeek: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
+  ) => number,
 
-  getWeekOfMonth: (date: Date | number, options?: Options) => number,
+  getWeekOfMonth: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ) => number,
 
-  getWeeksInMonth: (date: Date | number, options?: Options) => number,
+  getWeeksInMonth: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
+  ) => number,
 
-  getWeekYear: (date: Date | number, options?: Options) => number,
+  getWeekYear: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
+  ) => number,
 
   getYear: (date: Date | number) => number,
 
@@ -283,7 +338,7 @@ declare module.exports: {
 
   isBefore: (date: Date | number, dateToCompare: Date | number) => boolean,
 
-  isDate: (value: any, options?: Options) => boolean,
+  isDate: (value: any) => boolean,
 
   isEqual: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 
@@ -319,7 +374,10 @@ declare module.exports: {
   isSameWeek: (
     dateLeft: Date | number,
     dateRight: Date | number,
-    options?: Options
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
   ) => boolean,
 
   isSameYear: (dateLeft: Date | number, dateRight: Date | number) => boolean,
@@ -348,9 +406,20 @@ declare module.exports: {
 
   lastDayOfMonth: (date: Date | number) => Date,
 
-  lastDayOfQuarter: (date: Date | number, options?: Options) => Date,
+  lastDayOfQuarter: (
+    date: Date | number,
+    options?: {
+      additionalDigits?: 0 | 1 | 2
+    }
+  ) => Date,
 
-  lastDayOfWeek: (date: Date | number, options?: Options) => Date,
+  lastDayOfWeek: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
+  ) => Date,
 
   lastDayOfYear: (date: Date | number) => Date,
 
@@ -364,16 +433,38 @@ declare module.exports: {
     dateString: string,
     formatString: string,
     baseDate: Date | number,
-    options?: Options
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+      awareOfUnicodeTokens?: boolean
+    }
   ) => Date,
 
-  parseISO: (argument: string, options?: Options) => Date,
+  parseISO: (
+    argument: string,
+    options?: {
+      additionalDigits?: 0 | 1 | 2
+    }
+  ) => Date,
 
-  roundToNearestMinutes: (date: Date | number, options?: Options) => Date,
+  roundToNearestMinutes: (
+    date: Date | number,
+    options?: {
+      nearestTo?: number
+    }
+  ) => Date,
 
   setDate: (date: Date | number, dayOfMonth: number) => Date,
 
-  setDay: (date: Date | number, day: number, options?: Options) => Date,
+  setDay: (
+    date: Date | number,
+    day: number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
+  ) => Date,
 
   setDayOfYear: (date: Date | number, dayOfYear: number) => Date,
 
@@ -395,12 +486,22 @@ declare module.exports: {
 
   setSeconds: (date: Date | number, seconds: number) => Date,
 
-  setWeek: (date: Date | number, week: number, options?: Options) => Date,
+  setWeek: (
+    date: Date | number,
+    week: number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
+  ) => Date,
 
   setWeekYear: (
     date: Date | number,
     weekYear: number,
-    options?: Options
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
   ) => Date,
 
   setYear: (date: Date | number, year: number) => Date,
@@ -423,9 +524,21 @@ declare module.exports: {
 
   startOfSecond: (date: Date | number) => Date,
 
-  startOfWeek: (date: Date | number, options?: Options) => Date,
+  startOfWeek: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    }
+  ) => Date,
 
-  startOfWeekYear: (date: Date | number, options?: Options) => Date,
+  startOfWeekYear: (
+    date: Date | number,
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
+  ) => Date,
 
   startOfYear: (date: Date | number) => Date,
 

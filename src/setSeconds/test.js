@@ -27,9 +27,9 @@ describe('setSeconds', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
     var result = setSeconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
+      // $ExpectedMistake
       '45'
     )
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 30, 45, 500))

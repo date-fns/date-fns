@@ -100,10 +100,10 @@ describe('formatRelative', function() {
           return "P 'perfectly!'"
         }
       }
-      // $ExpectedMistake
       var result = formatRelative(
         new Date(1986, 2 /* Mar */, 28, 16, 50),
         baseDate,
+        // $ExpectedMistake
         { locale: customLocale }
       )
       assert(result === 'It works perfectly!')

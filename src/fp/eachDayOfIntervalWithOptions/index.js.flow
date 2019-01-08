@@ -6,19 +6,6 @@ type Interval = {
   end: Date | number
 }
 
-type Options = {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  additionalDigits?: 0 | 1 | 2,
-  locale?: Locale,
-  includeSeconds?: boolean,
-  addSuffix?: boolean,
-  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean,
-  step?: number
-}
-
 type Locale = {
   formatDistance: Function,
   formatRelative: Function,
@@ -54,4 +41,4 @@ type CurriedFn2<A, B, R> = <A>(
   a: A
 ) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-declare module.exports: CurriedFn2<Options, Interval, Date[]>
+declare module.exports: CurriedFn2<Object, Interval, Date[]>

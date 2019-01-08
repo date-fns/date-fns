@@ -97,10 +97,10 @@ describe('lastDayOfWeek', function() {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {
-    // $ExpectedMistake
     var block = lastDayOfWeek.bind(
       null,
       new Date(2014, 8 /* Sep */, 2, 11, 55, 0),
+      // $ExpectedMistake
       { weekStartsOn: NaN }
     )
     assert.throws(block, RangeError)
