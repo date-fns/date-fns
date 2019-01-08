@@ -127,13 +127,13 @@ describe('eachWeekOfInterval', function() {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', function() {
-    // $ExpectedMistake
     var block = eachWeekOfInterval.bind(
       null,
       {
         start: new Date(2014, 9 /* Oct */, 6, 6, 35),
         end: new Date(2014, 10 /* Nov */, 25, 22, 15)
       },
+      // $ExpectedMistake
       { weekStartsOn: NaN }
     )
     assert.throws(block, RangeError)

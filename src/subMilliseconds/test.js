@@ -30,9 +30,9 @@ describe('subMilliseconds', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
     var result = subMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
+      // $ExpectedMistake
       '750'
     )
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 45, 29, 250))
