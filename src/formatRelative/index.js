@@ -66,7 +66,7 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
   var diff = differenceInCalendarDays(date, baseDate)
 
   if (isNaN(diff)) {
-    return 'Invalid Date'
+    throw new RangeError('Invalid time value')
   }
 
   var token
