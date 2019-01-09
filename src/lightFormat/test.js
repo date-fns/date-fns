@@ -109,8 +109,11 @@ describe('lightFormat', () => {
     })
   })
 
-  it("returns String('Invalid Date') if the date isn't valid", () => {
-    assert(lightFormat(new Date(NaN), 'MMMM d, yyyy') === 'Invalid Date')
+  it("throws RangeError if the date isn't valid", () => {
+    assert.throws(
+      lightFormat.bind(null, new Date(NaN), 'MMMM d, yyyy'),
+      RangeError
+    )
   })
 
   it('implicitly converts `formatString`', () => {
