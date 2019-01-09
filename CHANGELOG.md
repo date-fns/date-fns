@@ -728,6 +728,11 @@ for the list of changes made since `v2.0.0-alpha.1`.
   by all the functions, operations over `null` will also return an invalid date.
   [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
 
+- **BREAKING**: `format`, `formatDistance` (previously `distanceInWords`) and
+  `formatDistanceStrict` (previously `distanceInWordsStrict`) now throw
+  `RangeError` if one the passed arguments is invalid. It reflects behavior of
+  `toISOString` and Intl API. See [#1032](https://github.com/date-fns/date-fns/pull/1032).
+
 - `toDate` (previously `parse`) and `isValid` functions now accept `any` type
   as the first argument.
 
