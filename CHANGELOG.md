@@ -683,6 +683,11 @@ for the list of changes made since `v2.0.0-alpha.1`.
   are not `undefined` or have expected values.
   This change is introduced for consistency with ECMAScript standard library which does the same.
 
+- **BREAKING**: `format`, `formatDistance` (previously `distanceInWords`) and
+  `formatDistanceStrict` (previously `distanceInWordsStrict`) now throw
+  `RangeError` if one the passed arguments is invalid. It reflects behavior of
+  `toISOString` and Intl API. See [#1032](https://github.com/date-fns/date-fns/pull/1032).
+
 - **BREAKING**: all functions now implicitly convert arguments by following rules:
 
   |           | date          | number | string      | boolean |
@@ -712,8 +717,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `false` for functions that return booleans (expect `isValid`);
   - `Invalid Date` for functions that return dates;
-  - `NaN` for functions that return numbers;
-  - and `String('Invalid Date')` for functions that return strings.
+  - and `NaN` for functions that return numbers.
 
   See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
   [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
@@ -727,11 +731,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
   `toDate(null)` returns an invalid date. Since `toDate` is used internally
   by all the functions, operations over `null` will also return an invalid date.
   [See #537](https://github.com/date-fns/date-fns/issues/537) for the reasoning.
-
-- **BREAKING**: `format`, `formatDistance` (previously `distanceInWords`) and
-  `formatDistanceStrict` (previously `distanceInWordsStrict`) now throw
-  `RangeError` if one the passed arguments is invalid. It reflects behavior of
-  `toISOString` and Intl API. See [#1032](https://github.com/date-fns/date-fns/pull/1032).
 
 - `toDate` (previously `parse`) and `isValid` functions now accept `any` type
   as the first argument.
