@@ -385,7 +385,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
-    return 'Invalid Date'
+    throw new RangeError('Invalid time value')
   }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
