@@ -670,7 +670,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   | `new Date('')`            | `false`       | `false`       |
   | `new Date(1488370835081)` | `true`        | `true`        |
   | `new Date(NaN)`           | `false`       | `false`       |
-  | `'2016-01-01'`            | `TypeError`   | `true`        |
+  | `'2016-01-01'`            | `TypeError`   | `false`        |
   | `''`                      | `TypeError`   | `false`       |
   | `1488370835081`           | `TypeError`   | `true`        |
   | `NaN`                     | `TypeError`   | `false`       |
