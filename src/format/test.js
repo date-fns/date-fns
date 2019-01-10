@@ -641,8 +641,11 @@ describe('format', function() {
   })
 
   describe('edge cases', function() {
-    it("returns String('Invalid Date') if the date isn't valid", function() {
-      assert(format(new Date(NaN), 'MMMM d, yyyy') === 'Invalid Date')
+    it('throws RangeError if the time value is invalid', () => {
+      assert.throws(
+        format.bind(null, new Date(NaN), 'MMMM d, yyyy'),
+        RangeError
+      )
     })
 
     it('handles dates before 100 AD', function() {

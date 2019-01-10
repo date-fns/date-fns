@@ -134,7 +134,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
   var comparison = compareAsc(dirtyDate, dirtyBaseDate)
 
   if (isNaN(comparison)) {
-    return 'Invalid Date'
+    throw new RangeError('Invalid time value')
   }
 
   var localizeOptions = cloneObject(options)

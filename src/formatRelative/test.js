@@ -60,19 +60,29 @@ describe('formatRelative', function() {
   })
 
   describe('edge cases', function() {
-    it("returns String('Invalid Date') if the date isn't valid", function() {
-      assert(formatRelative(new Date(NaN), baseDate) === 'Invalid Date')
-    })
-
-    it("returns String('Invalid Date') if the base date isn't valid", function() {
-      assert(
-        formatRelative(new Date(2017, 0 /* Jan */, 1), new Date(NaN)) ===
-          'Invalid Date'
+    it("throws RangeError if the date isn't valid", function() {
+      assert.throws(
+        formatRelative.bind(null, new Date(NaN), baseDate),
+        RangeError
       )
     })
 
-    it("returns String('Invalid Date') if both dates aren't valid", function() {
-      assert(formatRelative(new Date(NaN), new Date(NaN)) === 'Invalid Date')
+    it("throws RangeError if the base date isn't valid", function() {
+      assert.throws(
+        formatRelative.bind(
+          null,
+          new Date(2017, 0 /* Jan */, 1),
+          new Date(NaN)
+        ),
+        RangeError
+      )
+    })
+
+    it("throws RangeError if both dates aren't valid", function() {
+      assert.throws(
+        formatRelative.bind(null, new Date(NaN), new Date(NaN)),
+        RangeError
+      )
     })
 
     it('handles dates before 100 AD', function() {
