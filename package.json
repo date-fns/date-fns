@@ -20,7 +20,7 @@
     "lint": "echo \"Due to ongoing migration to Prettier, the linter is disabled.\"",
     "benchmark": "env TEST_BENCHMARK=true yarn test -- --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
-    "postinstall": "node ./docs/printV2Notice.js"
+    "postinstall": "node ./docs/printV2Notice.js && npx babel src --out-dir ."
   },
   "husky": {
     "hooks": {
