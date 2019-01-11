@@ -15,7 +15,7 @@
 - Functions now don't accept strings as arguments. Strings should
   be parsed using `parseISO` (ISO 8601) or `parse`.
 
-  See [this post](https://blog.date-fns.org/post/TODO) for more details.
+  See [this post](https://blog.date-fns.org/post/we-cut-date-fns-v2-minimal-build-size-down-to-300-bytes-and-now-its-the-smallest-date-library-18f2nvh2z0yal) for more details.
 
   ```javascript
   // Before v2.0.0
