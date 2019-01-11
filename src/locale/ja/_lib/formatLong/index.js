@@ -11,7 +11,7 @@ var timeFormats = {
   full: 'H時mm分ss秒 zzzz',
   long: 'H:mm:ss z',
   medium: 'H:mm:ss',
-  short: 'H:mm'
+  short: 'H時m分'
 }
 
 var dateTimeFormats = {
