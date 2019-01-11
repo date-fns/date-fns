@@ -208,21 +208,21 @@ describe('ja locale > formatDistance', function () {
 
     context('and locale data has `oneWithSuffix`', function () {
       it('adds `ago` to a `oneWithSuffix`', function () {
-        var result = formatDistance('almostXYears', 1, {
+        var result = formatDistance('lessThanXSeconds', 1, {
           addSuffix: true,
           comparison: -1
         })
-        assert(result === '1年近く前')
+        assert(result === '約1秒前')
       })
     })
 
     context('and locale data has `otherWithSuffix`', function () {
       it('adds `ago` to a `otherWithSuffix`', function () {
-        var result = formatDistance('almostXYears', 2, {
+        var result = formatDistance('lessThanXMinutes', 2, {
           addSuffix: true,
           comparison: -1
         })
-        assert(result === '2年近く前')
+        assert(result === '約2分前')
       })
     })
   })
