@@ -1,7 +1,9 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: '1秒未満',
-    other: '{{count}}秒未満'
+    other: '{{count}}秒未満',
+    oneWithSuffix: '約1秒',
+    otherWithSuffix: '約{{count}}秒'
   },
 
   xSeconds: {
@@ -13,7 +15,9 @@ var formatDistanceLocale = {
 
   lessThanXMinutes: {
     one: '1分未満',
-    other: '{{count}}分未満'
+    other: '{{count}}分未満',
+    oneWithSuffix: '約1分',
+    otherWithSuffix: '約{{count}}分'
   },
 
   xMinutes: {
@@ -74,9 +78,17 @@ export default function formatDistance (token, count, options) {
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    if (options.addSuffix && formatDistanceLocale[token].oneWithSuffix) {
+      result = formatDistanceLocale[token].oneWithSuffix
+    } else {
+      result = formatDistanceLocale[token].one
+    }
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    if (options.addSuffix && formatDistanceLocale[token].otherWithSuffix) {
+      result = formatDistanceLocale[token].otherWithSuffix.replace('{{count}}', count)
+    } else {
+      result = formatDistanceLocale[token].other.replace('{{count}}', count)
+    }
   }
 
   if (options.addSuffix) {
