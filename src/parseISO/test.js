@@ -348,6 +348,12 @@ describe('parseISO', () => {
       assert(isNaN(result))
     })
 
+    it('returns Invalid Date if argument is non-date string containing a colon', () => {
+      const result = parseISO('00:00')
+      assert(result instanceof Date)
+      assert(isNaN(result))
+    })
+
     it('returns Invalid Date if argument is NaN', () => {
       // $ExpectedMistake
       const result = parseISO(NaN)
