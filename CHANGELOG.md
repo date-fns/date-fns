@@ -10,6 +10,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
+- Refactor Belarusian locale: add declensions and genitive cases.
+
 ## [1.30.1] - 2018-12-10
 
 ### Fixed
