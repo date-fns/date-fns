@@ -103,8 +103,12 @@ export default function parseISO(argument, dirtyOptions) {
   }
 
   var dateStrings = splitDateString(argument)
-  var parseYearResult = parseYear(dateStrings.date, additionalDigits)
-  var date = parseDate(parseYearResult.restDateString, parseYearResult.year)
+
+  var date
+  if (dateStrings.date) {
+    var parseYearResult = parseYear(dateStrings.date, additionalDigits)
+    date = parseDate(parseYearResult.restDateString, parseYearResult.year)
+  }
 
   if (isNaN(date) || !date) {
     return new Date(NaN)
