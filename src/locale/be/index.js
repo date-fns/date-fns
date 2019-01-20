@@ -1,18 +1,27 @@
-// var buildDistanceInWordsLocale = require('./build_distance_in_words_locale/index.js')
-// var buildFormatLocale = require('./build_format_locale/index.js')
+import formatDistance from './_lib/formatDistance/index.js'
+import formatLong from './_lib/formatLong/index.js'
+import formatRelative from './_lib/formatRelative/index.js'
+import localize from './_lib/localize/index.js'
+import match from './_lib/match/index.js'
 
-// /**
-//  * @category Locales
-//  * @summary Belarusian locale.
-//  * @language Belarusian
-//  * @iso-639-2 bel
-//  * @author Martin Wind [@arvigeus]{@link https://github.com/mawi12345}
-//  */
-// module.exports = {
-//   distanceInWords: buildDistanceInWordsLocale(),
-//   format: buildFormatLocale()
-// }
+/**
+ * @type {Locale}
+ * @category Locales
+ * @summary Belarusian locale.
+ * @language Belarusian
+ * @iso-639-2 bel
+ * @author Kiryl Anokhin [@alyrik]{@link https://github.com/alyrik}
+ */
+var locale = {
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 1
+  }
+}
 
-throw new Error(
-  'be locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA'
-)
+export default locale
