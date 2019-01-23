@@ -90,7 +90,7 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 Run all tests:
 
 ```sh
-yarn test
+yarn test // does this pass on travis? it fails on my local.
 ```
 
 Run tests once:
