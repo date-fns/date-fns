@@ -10,6 +10,7 @@ import match from './_lib/match/index.js'
  * @summary Catalan locale.
  * @language Catalan
  * @iso-639-2 cat
+ * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
  */
 var locale = {

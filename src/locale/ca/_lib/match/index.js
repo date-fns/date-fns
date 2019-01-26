@@ -64,7 +64,7 @@ var parseMonthPatterns = {
 
 var matchDayPatterns = {
   narrow: /^(dg|dl|dt|dm|dj|dv|ds)/i,
-  short: /^(dg.|dl.|dt.|dm.|dj.|dv.|ds.)/i,
+  short: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
   abbreviated: /^(diu|dil|dima|dim|dij|div|dis)/i,
   wide: /^(diumenge|dilluns|dimarts|dimecres|dijous|divendres|dissabte)/i
 }
