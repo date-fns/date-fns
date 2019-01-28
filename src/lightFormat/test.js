@@ -109,6 +109,11 @@ describe('lightFormat', () => {
     })
   })
 
+  it('fractional seconds', function() {
+    var result = lightFormat(date, 'S SS SSS SSSS')
+    assert(result === '1 12 123 1230')
+  })
+
   it("throws RangeError if the date isn't valid", () => {
     assert.throws(
       lightFormat.bind(null, new Date(NaN), 'MMMM d, yyyy'),
