@@ -176,6 +176,23 @@ describe('fi locale > buildFormatLocale', function () {
       })
     })
 
+    describe('Do MMMM', function () {
+      it('returns an ordinal day and a month in the genitive case', function () {
+        var months = [
+          'tammikuuta', 'helmikuuta', 'maaliskuuta', 'huhtikuuta', 'toukokuuta', 'kesäkuuta',
+          'heinäkuuta', 'elokuuta', 'syyskuuta', 'lokakuuta', 'marraskuuta', 'joulukuuta'
+        ]
+        var formatters = {
+          D: function () {
+            return 3
+          }
+        }
+        months.forEach(function (month, index) {
+          assert(buildFormatLocale().formatters['Do MMMM'](new Date(2016, index, 3), formatters) === '3. ' + month)
+        })
+      })
+    })
+
     describe('meridiem', function () {
       ['A', 'a', 'aa'].forEach(function (formatter) {
         it(formatter + ' returns the correct string for 00:00', function () {

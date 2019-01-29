@@ -3,6 +3,7 @@ var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_re
 function buildFormatLocale () {
   var months3char = ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu']
   var monthsFull = ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
+  var monthsGenitive = ['tammikuuta', 'helmikuuta', 'maaliskuuta', 'huhtikuuta', 'toukokuuta', 'kesäkuuta', 'heinäkuuta', 'elokuuta', 'syyskuuta', 'lokakuuta', 'marraskuuta', 'joulukuuta']
   var weekdays2char = ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la']
   var weekdaysFull = ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
 
@@ -54,6 +55,16 @@ function buildFormatLocale () {
   ordinalFormatters.forEach(function (formatterToken) {
     formatters[formatterToken + 'o'] = function (date, formatters) {
       return formatters[formatterToken](date).toString() + '.'
+    }
+  })
+
+  // Generate formatters like 'Do MMMM',
+  // where month is in the genitive case: tammikuuta, helmikuuta, ..., joulukuuta
+  var monthsGenitiveFormatters = ['Do']
+  monthsGenitiveFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + ' MMMM'] = function (date, commonFormatters) {
+      var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
+      return formatter(date, commonFormatters) + ' ' + monthsGenitive[date.getMonth()]
     }
   })
 
