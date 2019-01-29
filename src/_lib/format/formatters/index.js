@@ -612,12 +612,7 @@ var formatters = {
 
   // Fraction of second
   S: function(date, token) {
-    var numberOfDigits = token.length
-    var milliseconds = date.getUTCMilliseconds()
-    var fractionalSeconds = Math.floor(
-      milliseconds * Math.pow(10, numberOfDigits - 3)
-    )
-    return addLeadingZeros(fractionalSeconds, numberOfDigits)
+    return lightFormatters.S(date, token)
   },
 
   // Timezone (ISO-8601. If offset is 0, output is always `'Z'`)

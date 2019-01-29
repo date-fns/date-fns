@@ -109,6 +109,16 @@ var formatters = {
   // Second
   s: function(date, token) {
     return addLeadingZeros(date.getUTCSeconds(), token.length)
+  },
+
+  // Fraction of second
+  S: function(date, token) {
+    var numberOfDigits = token.length
+    var milliseconds = date.getUTCMilliseconds()
+    var fractionalSeconds = Math.floor(
+      milliseconds * Math.pow(10, numberOfDigits - 3)
+    )
+    return addLeadingZeros(fractionalSeconds, token.length)
   }
 }
 
