@@ -126,6 +126,10 @@ describe('lightFormat', () => {
     assert(lightFormat(date, formatString) === '2014-04-04')
   })
 
+  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
+    assert.throws(lightFormat.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
+  })
+
   it('throws TypeError exception if passed less than 2 arguments', () => {
     assert.throws(lightFormat.bind(null), TypeError)
     assert.throws(lightFormat.bind(null, 1), TypeError)

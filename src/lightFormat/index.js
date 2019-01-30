@@ -17,6 +17,7 @@ var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
+var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name lightFormat
@@ -32,7 +33,6 @@ var doubleQuoteRegExp = /''/g
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.
- * (see the last example)
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
@@ -75,6 +75,7 @@ var doubleQuoteRegExp = /''/g
  * @param {String} format - the string of tokens
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
  * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
@@ -117,6 +118,14 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
       var formatter = formatters[firstCharacter]
       if (formatter) {
         return formatter(utcDate, substring, null, {})
+      }
+
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError(
+          'Format string contains an unescaped latin alphabet character `' +
+            firstCharacter +
+            '`'
+        )
       }
 
       return substring
