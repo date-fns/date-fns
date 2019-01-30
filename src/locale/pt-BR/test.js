@@ -372,12 +372,12 @@ describe('pt-BR locale', function () {
       })
 
       it('narrow', function () {
-        var result = parse('4º', 'EEEEE', baseDate, { locale: locale })
+        var result = parse('4ª', 'EEEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
       })
 
       it('short', function () {
-        var result = parse('5º', 'EEEEEE', baseDate, { locale: locale })
+        var result = parse('5ª', 'EEEEEE', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
       })
     })
