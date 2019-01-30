@@ -12,9 +12,6 @@ var quarterValues = {
   wide: ['1er trimestre', '2on trimestre', '3er trimestre', '4rt trimestre']
 }
 
-// If you are making a new locale based on this one, check if the same is true for the language you're working on.
-// Generally, formatted dates should look like they are in the middle of a sentence,
-// e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['g', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
