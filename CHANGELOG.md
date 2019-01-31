@@ -361,12 +361,23 @@ for the list of changes made since `v2.0.0-alpha.1`.
   |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     |
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
+  `format` now throws RangeError if it encounters an unescaped latin character
+  that isn't a valid formatting token.
 
-  To use `D`,`DD`, `YY`, `YYYY` tokens you should set `awareOfUnicodeTokens`:
+  To use `YY` and `YYYY` tokens that represent week-numbering years,
+  you should set `useAdditionalWeekYearTokens` option:
 
   ```javascript
-  format(Date.now(), 'YY', { awareOfUnicodeTokens: true })
+  format(Date.now(), 'YY', { useAdditionalWeekYearTokens: true })
   //=> '86'
+  ```
+
+  To use `D` and `DD` tokens which represent days of the year,
+  set `useAdditionalDayOfYearTokens` option:
+
+  ```javascript
+  format(Date.now(), 'D', { useAdditionalDayOfYearTokens: true })
+  //=> '364'
   ```
 
 - **BREAKING**: function submodules now use camelCase naming schema:
