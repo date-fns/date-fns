@@ -7,56 +7,82 @@ var parseOrdinalNumberPattern = /\d+/i
 var matchEraPatterns = {
   narrow: /^(b|a)/i,
   abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i
+  wide: /^(مىيلادىدىن بۇرۇن|مىيلادىدىن كىيىن)/i
 }
 var parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i]
+  any: [/^بۇرۇن/i, /^كىيىن/i]
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234](th|st|nd|rd)? quarter/i
+  abbreviated: /^چ[1234]/i,
+  wide: /^چارەك [1234]/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
 var matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  narrow: /^[يفمئامئ‍ئاسۆند]/i,
+  abbreviated: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
+  wide: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^ي/i,
+    /^ف/i,
+    /^م/i,
+    /^ا/i,
+    /^م/i,
+    /^ى‍/i,
+    /^ى‍/i,
+    /^ا‍/i,
+    /^س/i,
+    /^ۆ/i,
+    /^ن/i,
+    /^د/i
+  ],
+  any: [
+    /^يان/i,
+    /^فېۋ/i,
+    /^مار/i,
+    /^ئاپ/i,
+    /^ماي/i,
+    /^ئىيۇن/i,
+    /^ئىيول/i,
+    /^ئاۋ/i,
+    /^سىن/i,
+    /^ئۆك/i,
+    /^نوي/i,
+    /^دىك/i
+  ]
 }
 
 var matchDayPatterns = {
-  narrow: /^[smtwf]/i,
-  short: /^(su|mo|tu|we|th|fr|sa)/i,
-  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  narrow: /^[دسچپجشي]/i,
+  short: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
+  abbreviated: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
+  wide: /^(يەكشەنبە|دۈشەنبە|سەيشەنبە|چارشەنبە|پەيشەنبە|جۈمە|شەنبە)/i
 }
 var parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  narrow: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i],
+  any: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i]
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+  narrow: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i,
+  any: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mi/i,
-    noon: /^no/i,
-    morning: /morning/i,
-    afternoon: /afternoon/i,
-    evening: /evening/i,
-    night: /night/i
+    am: /^ئە/i,
+    pm: /^چ/i,
+    midnight: /^ك/i,
+    noon: /^چ/i,
+    morning: /ئەتىگەن/i,
+    afternoon: /چۈشتىن كىيىن/i,
+    evening: /ئاخشىم/i,
+    night: /كىچە/i
   }
 }
 
@@ -64,7 +90,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -81,7 +107,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),
