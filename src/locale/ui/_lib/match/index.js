@@ -5,8 +5,7 @@ var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(b|a)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
+  narrow: /^(ب|ك)/i,
   wide: /^(مىيلادىدىن بۇرۇن|مىيلادىدىن كىيىن)/i
 }
 var parseEraPatterns = {
