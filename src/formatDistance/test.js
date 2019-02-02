@@ -82,6 +82,12 @@ describe('formatDistance', function() {
       })
       assert(result === '3 weeks')
     })
+    it('4 week', function() {
+      var result = formatDistance(new Date(1986, 0, 30), new Date(1986, 0, 1), {
+        includeWeeks: true
+      })
+      assert(result === '4 weeks')
+    })
   })
 
   describe('minutes', function() {

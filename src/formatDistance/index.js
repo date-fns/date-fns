@@ -205,7 +205,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
-    if (options.includeWeeks && days < 28) {
+    if (options.includeWeeks) {
       var weeks = Math.round(minutes / MINUTES_IN_WEEK)
 
       return locale.formatDistance('xWeeks', weeks, localizeOptions)
