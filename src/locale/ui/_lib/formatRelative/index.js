@@ -1,12 +1,12 @@
 var formatRelativeLocale = {
-  lastWeek: "'last' eeee 'at' p",
-  yesterday: "'yesterday at' p",
-  today: "'today at' p",
-  tomorrow: "'tomorrow at' p",
-  nextWeek: "eeee 'at' p",
+  lastWeek: "'ئ‍ۆتكەن' eeee 'دە' p",
+  yesterday: "'تۈنۈگۈن دە' p",
+  today: "'بۈگۈن دە' p",
+  tomorrow: "'ئەتە دە' p",
+  nextWeek: "eeee 'دە' p",
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   return formatRelativeLocale[token]
 }
