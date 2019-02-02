@@ -63,6 +63,27 @@ describe('formatDistance', function() {
     })
   })
 
+  describe('weeks', function() {
+    it('1 week', function() {
+      var result = formatDistance(new Date(1986, 0, 14), new Date(1986, 0, 7), {
+        includeWeeks: true
+      })
+      assert(result === '1 week')
+    })
+    it('2 weeks', function() {
+      var result = formatDistance(new Date(1986, 0, 15), new Date(1986, 0, 1), {
+        includeWeeks: true
+      })
+      assert(result === '2 weeks')
+    })
+    it('3 week', function() {
+      var result = formatDistance(new Date(1986, 0, 22), new Date(1986, 0, 1), {
+        includeWeeks: true
+      })
+      assert(result === '3 weeks')
+    })
+  })
+
   describe('minutes', function() {
     it('less than a minute', function() {
       var result = formatDistance(
