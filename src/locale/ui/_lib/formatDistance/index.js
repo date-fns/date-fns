@@ -1,73 +1,73 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'less than a second',
-    other: 'less than {{count}} seconds'
+    one: 'بىر سىكۇنت ئىچىدە',
+    other: 'سىكۇنت ئىچىدە {{count}}'
   },
 
   xSeconds: {
-    one: '1 second',
-    other: '{{count}} seconds'
+    one: 'بىر سىكۇنت',
+    other: 'سىكۇنت {{count}}'
   },
 
-  halfAMinute: 'half a minute',
+  halfAMinute: 'يىرىم مىنۇت',
 
   lessThanXMinutes: {
-    one: 'less than a minute',
-    other: 'less than {{count}} minutes'
+    one: 'بىر مىنۇت ئىچىدە',
+    other: 'مىنۇت ئىچىدە {{count}}'
   },
 
   xMinutes: {
-    one: '1 minute',
-    other: '{{count}} minutes'
+    one: 'بىر مىنۇت',
+    other: 'مىنۇت {{count}}'
   },
 
   aboutXHours: {
-    one: 'about 1 hour',
-    other: 'about {{count}} hours'
+    one: 'تەخمىنەن بىر سائەت',
+    other: 'سائەت {{count}} تەخمىنەن'
   },
 
   xHours: {
-    one: '1 hour',
-    other: '{{count}} hours'
+    one: 'بىر سائەت',
+    other: 'سائەت {{count}}'
   },
 
   xDays: {
-    one: '1 day',
-    other: '{{count}} days'
+    one: 'بىر كۈن',
+    other: 'كۈن {{count}}'
   },
 
   aboutXMonths: {
-    one: 'about 1 month',
-    other: 'about {{count}} months'
+    one: 'تەخمىنەن بىر ئاي',
+    other: 'ئاي {{count}} تەخمىنەن'
   },
 
   xMonths: {
-    one: '1 month',
-    other: '{{count}} months'
+    one: 'بىر ئاي',
+    other: 'ئاي {{count}}'
   },
 
   aboutXYears: {
-    one: 'about 1 year',
-    other: 'about {{count}} years'
+    one: 'تەخمىنەن بىر يىل',
+    other: 'يىل {{count}} تەخمىنەن'
   },
 
   xYears: {
-    one: '1 year',
-    other: '{{count}} years'
+    one: 'بىر يىل',
+    other: 'يىل {{count}}'
   },
 
   overXYears: {
-    one: 'over 1 year',
-    other: 'over {{count}} years'
+    one: 'بىر يىلدىن ئارتۇق',
+    other: 'يىلدىن ئارتۇق {{count}}'
   },
 
   almostXYears: {
-    one: 'almost 1 year',
-    other: 'almost {{count}} years'
+    one: 'ئاساسەن بىر يىل',
+    other: 'يىل {{count}} ئاساسەن'
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
