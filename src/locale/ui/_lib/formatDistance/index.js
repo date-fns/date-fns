@@ -83,7 +83,7 @@ export default function formatDistance(token, count, options) {
     if (options.comparison > 0) {
       return result
     } else {
-      return result + 'بولدى '
+      return result + ' بولدى'
     }
   }
 
