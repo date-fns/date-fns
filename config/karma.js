@@ -131,11 +131,18 @@ function config(config) {
       public: 'public'
     },
 
+    coveageIstanbulReporter: {
+      reports: ['html', 'lcovonly'],
+      fixWebpackSourcePaths: true
+    },
+
     mochaReporter: {
       output: 'minimal'
     },
 
     plugins: [
+      'karma-coverage',
+      'karma-coverage-istanbul-reporter',
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
@@ -206,7 +213,7 @@ function getReportersConfig() {
   } else if (process.env.TEST_BENCHMARK) {
     return ['benchmark', 'benchmark-json']
   } else {
-    return ['mocha', 'count']
+    return ['mocha', 'count', 'coverage-istanbul']
   }
 }
 
