@@ -32,7 +32,7 @@ jobs:
       if: tag IS present
       script: ./scripts/release/release.sh
     - stage: Produce Coverage
-      script: npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/coveralls/js
+      script: npm test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 cache: yarn
 
