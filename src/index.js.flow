@@ -224,7 +224,8 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: number,
       locale?: Locale,
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean,
+      useAdditionalDayOfYearTokens?: boolean
     }
   ) => string,
 
@@ -437,7 +438,8 @@ declare module.exports: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean,
+      useAdditionalDayOfYearTokens?: boolean
     }
   ) => Date,
 
