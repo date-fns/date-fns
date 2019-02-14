@@ -14,8 +14,34 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['T', 'H', 'M', 'H', 'T', 'K', 'H', 'E', 'S', 'L', 'M', 'J'],
-  abbreviated: ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'],
-  wide: ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
+  abbreviated: [
+    'tammi',
+    'helmi',
+    'maalis',
+    'huhti',
+    'touko',
+    'kesä',
+    'heinä',
+    'elo',
+    'syys',
+    'loka',
+    'marras',
+    'joulu'
+  ],
+  wide: [
+    'tammikuu',
+    'helmikuu',
+    'maaliskuu',
+    'huhtikuu',
+    'toukokuu',
+    'kesäkuu',
+    'heinäkuu',
+    'elokuu',
+    'syyskuu',
+    'lokakuu',
+    'marraskuu',
+    'joulukuu'
+  ]
 }
 
 var formattingMonthValues = {
@@ -28,7 +54,15 @@ var dayValues = {
   narrow: ['S', 'M', 'T', 'K', 'T', 'P', 'L'],
   short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
   abbreviated: ['sunn.', 'maan.', 'tiis.', 'kesk.', 'torst.', 'perj.', 'la'],
-  wide: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
+  wide: [
+    'sunnuntai',
+    'maanantai',
+    'tiistai',
+    'keskiviikko',
+    'torstai',
+    'perjantai',
+    'lauantai'
+  ]
 }
 
 var formattingDayValues = {
@@ -54,10 +88,19 @@ var dayPeriodValues = {
     pm: 'ip',
     midnight: 'keskiyö',
     noon: 'keskipäivä',
+
     morning: 'ap',
+    morning1: 'ap',
+    morning2: 'ap',
     afternoon: 'ip',
+    afternoon1: 'ip',
+    afternoon2: 'ip',
     evening: 'illalla',
-    night: 'yöllä'
+    evening1: 'illalla',
+    evening2: 'illalla',
+    night: 'yöllä',
+    night1: 'yöllä',
+    night2: 'yöllä'
   },
   wide: {
     am: 'ap',
@@ -71,13 +114,42 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
+var dayPeriodHours = {
+  morning1: 5,
+  morning2: 10,
+  afternoon1: 12,
+  afternoon2: 12,
+  evening1: 18,
+  evening2: 18,
+  night1: 11,
+  night2: 12
+}
+/*
+var dayPeriodNameEnum = {
+  am: 'ap',
+  pm: 'ip',
+  midnight: 'keskiyöllä',
+  noon: 'keskipäivällä',
+  morning1: 'aamu',
+  morning2: 'aamupäivällä',
+  afternoon1: 'iltapäivällä',
+  afternoon2: 'iltapäivällä',
+  evening1: 'illalla',
+  evening2: 'illalla',
+  night1: 'yöllä',
+  night2: 'yöllä'
+}
+ */
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  periods: dayPeriodHours,
+  /*   periodNames: dayPeriodNameEnum, */
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -87,7 +159,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

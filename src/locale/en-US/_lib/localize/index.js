@@ -18,15 +18,49 @@ var quarterValues = {
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  abbreviated: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ],
+  wide: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
 }
 
 var dayValues = {
   narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  wide: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  wide: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
 }
 
 var dayPeriodValues = {
@@ -94,7 +128,18 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+var dayPeriodHours = {
+  morning1: 6,
+  morning2: 6,
+  afternoon1: 12,
+  afternoon2: 12,
+  evening1: 18,
+  evening2: 18,
+  night1: 21,
+  night2: 0
+}
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
@@ -124,6 +169,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  periods: dayPeriodHours,
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
@@ -132,7 +178,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

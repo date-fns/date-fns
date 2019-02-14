@@ -61,6 +61,7 @@ var dayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'morgen',
+    morning1: 'formiddag',
     afternoon: 'eftermiddag',
     evening: 'aften',
     night: 'nat'
@@ -71,6 +72,7 @@ var dayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'morgen',
+    morning1: 'formiddag',
     afternoon: 'eftermiddag',
     evening: 'aften',
     night: 'nat'
@@ -81,6 +83,7 @@ var dayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'morgen',
+    morning1: 'formiddag',
     afternoon: 'eftermiddag',
     evening: 'aften',
     night: 'nat'
@@ -94,6 +97,7 @@ var formattingDayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'om morgenen',
+    morning1: 'om formiddagen',
     afternoon: 'om eftermiddagen',
     evening: 'om aftenen',
     night: 'om natten'
@@ -104,6 +108,7 @@ var formattingDayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'om morgenen',
+    morning1: 'om formiddagen',
     afternoon: 'om eftermiddagen',
     evening: 'om aftenen',
     night: 'om natten'
@@ -114,10 +119,22 @@ var formattingDayPeriodValues = {
     midnight: 'midnat',
     noon: 'middag',
     morning: 'om morgenen',
+    morning1: 'om formiddagen',
     afternoon: 'om eftermiddagen',
     evening: 'om aftenen',
     night: 'om natten'
   }
+}
+
+var dayPeriodHours = {
+  morning1: 5,
+  morning2: 10,
+  afternoon1: 12,
+  afternoon2: 12,
+  evening1: 18,
+  evening2: 18,
+  night1: 0,
+  night2: 0
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -127,6 +144,8 @@ function ordinalNumber(dirtyNumber) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  periods: dayPeriodHours,
 
   era: buildLocalizeFn({
     values: eraValues,
