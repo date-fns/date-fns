@@ -3,11 +3,12 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import formatters from './_lib/formatters/index.js'
-import longFormatters from './_lib/longFormatters/index.js'
+import formatters from '../_lib/format/formatters/index.js'
+import longFormatters from '../_lib/format/longFormatters/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import {
-  isProtectedToken,
+  isProtectedWeekYearToken,
+  isProtectedDayOfYearToken,
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
 
@@ -30,6 +31,7 @@ var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
+var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name format
@@ -111,9 +113,9 @@ var doubleQuoteRegExp = /''/g
  * | Day of month                    | d       | 1, 2, ..., 31                     |       |
  * |                                 | do      | 1st, 2nd, ..., 31st               | 7     |
  * |                                 | dd      | 01, 02, ..., 31                   |       |
- * | Day of year                     | D       | 1, 2, ..., 365, 366               | 8     |
+ * | Day of year                     | D       | 1, 2, ..., 365, 366               | 9     |
  * |                                 | Do      | 1st, 2nd, ..., 365th, 366th       | 7     |
- * |                                 | DD      | 01, 02, ..., 365, 366             | 8     |
+ * |                                 | DD      | 01, 02, ..., 365, 366             | 9     |
  * |                                 | DDD     | 001, 002, ..., 365, 366           |       |
  * |                                 | DDDD    | ...                               | 3     |
  * | Day of week (formatting)        | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
@@ -273,8 +275,11 @@ var doubleQuoteRegExp = /''/g
  *    - `P`: long localized date
  *    - `p`: long localized time
  *
- * 8. These tokens are often confused with others. See: https://git.io/fxCyr
+ * 8. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://git.io/fxCyr
  *
+ * 9. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://git.io/fxCyr
  *
  * ### v2.0.0 breaking changes:
  *
@@ -296,25 +301,27 @@ var doubleQuoteRegExp = /''/g
  *
  * - Characters are now escaped using single quote symbols (`'`) instead of square brackets.
  *
- * @param {Date|String|Number} date - the original date
+ * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Object} [options] - an object with options.
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
- *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
- *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
- *   See: https://git.io/fxCyr
+ * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ *   see: https://git.io/fxCyr
+ * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ *   see: https://git.io/fxCyr
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
- * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `d` instead of `D` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `dd` instead of `DD` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -385,17 +392,17 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     throw new RangeError('locale must contain formatLong property')
   }
 
-  var originalDate = toDate(dirtyDate, options)
+  var originalDate = toDate(dirtyDate)
 
-  if (!isValid(originalDate, options)) {
-    return 'Invalid Date'
+  if (!isValid(originalDate)) {
+    throw new RangeError('Invalid time value')
   }
 
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
   var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  var utcDate = subMilliseconds(originalDate, timezoneOffset, options)
+  var utcDate = subMilliseconds(originalDate, timezoneOffset)
 
   var formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
@@ -429,10 +436,27 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
 
       var formatter = formatters[firstCharacter]
       if (formatter) {
-        if (!options.awareOfUnicodeTokens && isProtectedToken(substring)) {
+        if (
+          !options.useAdditionalWeekYearTokens &&
+          isProtectedWeekYearToken(substring)
+        ) {
+          throwProtectedError(substring)
+        }
+        if (
+          !options.useAdditionalDayOfYearTokens &&
+          isProtectedDayOfYearToken(substring)
+        ) {
           throwProtectedError(substring)
         }
         return formatter(utcDate, substring, locale.localize, formatterOptions)
+      }
+
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError(
+          'Format string contains an unescaped latin alphabet character `' +
+            firstCharacter +
+            '`'
+        )
       }
 
       return substring

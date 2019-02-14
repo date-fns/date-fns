@@ -141,9 +141,11 @@ export { default as lastDayOfMonth } from './lastDayOfMonth/index.js'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index.js'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index.js'
 export { default as lastDayOfYear } from './lastDayOfYear/index.js'
+export { default as lightFormat } from './lightFormat/index.js'
 export { default as max } from './max/index.js'
 export { default as min } from './min/index.js'
 export { default as parse } from './parse/index.js'
+export { default as parseISO } from './parseISO/index.js'
 export {
   default as roundToNearestMinutes
 } from './roundToNearestMinutes/index.js'

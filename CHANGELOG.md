@@ -19,8 +19,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
   functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
 
-  Each non-FP function has two FP counterparts: one that has [Options](docs/Options) object as its first argument
-  and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
+  Functions with options (`format`, `parse`, etc.) have two FP counterparts:
+  one that has the options object as its first argument and one that hasn't.
+  The name of the former has `WithOptions` added to the end of its name.
 
   In FP functions, the order of arguments is reversed.
 
@@ -73,6 +74,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   ```
 
 - `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
+
+- is locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/1026).
+  Kudos to [@lamayg](https://github.com/lamayg).
 
 - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
   (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
@@ -163,15 +167,42 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
 
--   New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
+- New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
 
-    -   `eachWeekendOfInterval`
+    - `eachWeekendOfInterval`
 
-    -   `eachWeekendOfMonth`
+    - `eachWeekendOfMonth`
 
-    -   `eachWeekendOfYear`
+    - `eachWeekendOfYear`
+
+- Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
+
+- `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
 
 ### Changed
+
+- **BREAKING**: now functions don't accept string arguments, but only
+  numbers or dates. When a string is passed, it will result in
+  an unexpected result (`Invalid Date`, `NaN`, etc).
+
+  From now on a string should be parsed using `parseISO` (ISO 8601)
+  or `parse`.
+
+  In v1 we've used `new Date()` to parse strings, but it resulted in many
+  hard-to-track bugs caused by inconsistencies in different browsers.
+  To address that we've implemented our ISO 8601 parser but that made
+  library to significantly grow in size. To prevent inevitable bugs
+  and keep the library tiny, we made this trade-off.
+
+  See [this post](https://blog.date-fns.org/post/we-cut-date-fns-v2-minimal-build-size-down-to-300-bytes-and-now-its-the-smallest-date-library-18f2nvh2z0yal) for more details.
+
+  ```javascript
+  // Before v2.0.0
+  addDays('2016-01-01', 1)
+
+  // v2.0.0 onward
+  addDays(parseISO('2016-01-01'), 1)
+  ```
 
 - **BREAKING**: new format string API for `format` function
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
@@ -330,12 +361,23 @@ for the list of changes made since `v2.0.0-alpha.1`.
   |                                 | PPPPpppp| Sunday, May 29th, 1453 at ...     |
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
+  `format` now throws RangeError if it encounters an unescaped latin character
+  that isn't a valid formatting token.
 
-  To use `D`,`DD`, `YY`, `YYYY` tokens you should set `awareOfUnicodeTokens`:
+  To use `YY` and `YYYY` tokens that represent week-numbering years,
+  you should set `useAdditionalWeekYearTokens` option:
 
   ```javascript
-  format(Date.now(), 'YY', { awareOfUnicodeTokens: true })
+  format(Date.now(), 'YY', { useAdditionalWeekYearTokens: true })
   //=> '86'
+  ```
+
+  To use `D` and `DD` tokens which represent days of the year,
+  set `useAdditionalDayOfYearTokens` option:
+
+  ```javascript
+  format(Date.now(), 'D', { useAdditionalDayOfYearTokens: true })
+  //=> '364'
   ```
 
 - **BREAKING**: function submodules now use camelCase naming schema:
@@ -588,28 +630,27 @@ for the list of changes made since `v2.0.0-alpha.1`.
   )
   ```
 
-- **BREAKING**: `parse` renamed to `toDate`,
-  created a new function `parse` which parses a string using a provided format.
+- **BREAKING**: `parse` that previously used to convert strings and
+  numbers to dates now parse only strings in an arbitrary format
+  specified as an argument. Use `toDate` to coerce numbers and `parseISO`
+  to parse ISO 8601 strings.
 
   ```javascript
   // Before v2.0.0
   parse('2016-01-01')
+  parse(1547005581366)
+  parse(new Date()) // Clone the date
 
   // v2.0.0 onward
-  toDate('2016-01-01')
   parse('2016-01-01', 'yyyy-MM-dd', new Date())
+  parseISO('2016-01-01')
+  toDate(1547005581366)
+  toDate(new Date()) // Clone the date
   ```
 
-- **BREAKING**: `toDate` now validates separate date and time values in ISO-8601 strings
-  and returns `Invalid Date` if the date is invalid.
-
-  ```javascript
-  toDate('2018-13-32')
-  //=> Invalid Date
-  ```
-
-- **BREAKING**: `toDate` now doesn't fall back to `new Date` constructor
-  if it fails to parse a string argument. Instead, it returns `Invalid Date`.
+- **BREAKING**: `toDate` (previously `parse`) now doesn't accept string
+  arguments but only numbers and dates. `toDate` called with an invalid
+  argument will return `Invalid Date`.
 
 - **BREAKING**: new locale format.
   See [docs/Locale](https://date-fns.org/docs/Locale).
@@ -643,7 +684,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   | `new Date('')`            | `false`       | `false`       |
   | `new Date(1488370835081)` | `true`        | `true`        |
   | `new Date(NaN)`           | `false`       | `false`       |
-  | `'2016-01-01'`            | `TypeError`   | `true`        |
+  | `'2016-01-01'`            | `TypeError`   | `false`        |
   | `''`                      | `TypeError`   | `false`       |
   | `1488370835081`           | `TypeError`   | `true`        |
   | `NaN`                     | `TypeError`   | `false`       |
@@ -655,7 +696,11 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - **BREAKING**: functions now throw `RangeError` if optional values passed to `options`
   are not `undefined` or have expected values.
   This change is introduced for consistency with ECMAScript standard library which does the same.
-  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
+
+- **BREAKING**: `format`, `formatDistance` (previously `distanceInWords`) and
+  `formatDistanceStrict` (previously `distanceInWordsStrict`) now throw
+  `RangeError` if one the passed arguments is invalid. It reflects behavior of
+  `toISOString` and Intl API. See [#1032](https://github.com/date-fns/date-fns/pull/1032).
 
 - **BREAKING**: all functions now implicitly convert arguments by following rules:
 
@@ -686,18 +731,13 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `false` for functions that return booleans (expect `isValid`);
   - `Invalid Date` for functions that return dates;
-  - `NaN` for functions that return numbers;
-  - and `String('Invalid Date')` for functions that return strings.
+  - and `NaN` for functions that return numbers.
 
   See tests and PRs [#460](https://github.com/date-fns/date-fns/pull/460) and
   [#765](https://github.com/date-fns/date-fns/pull/765) for exact behavior.
 
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
-
-- Every function now has `options` as the last argument which is passed to all its dependencies
-  for consistency and future features.
-  See [docs/Options.js](https://github.com/date-fns/date-fns/blob/master/docs/Options.js)
 
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
 
@@ -725,6 +765,12 @@ for the list of changes made since `v2.0.0-alpha.1`.
   See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
 - [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
+
+- Fixed DST issue in `eachDayOfInterval` that caused time in the days
+  after DST change to have the shift as well.
+
+- Fix bug in Galician locale caused by incorrect usage of `getHours`
+  instead of `getUTCHours`.
 
 ## [1.30.1] - 2018-12-10
 

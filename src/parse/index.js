@@ -1,15 +1,17 @@
 import toInteger from '../_lib/toInteger/index.js'
+import assign from '../_lib/assign/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import parsers from './_lib/parsers/index.js'
 import {
-  isProtectedToken,
+  isProtectedWeekYearToken,
+  isProtectedDayOfYearToken,
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
 
-var TIMEZONE_UNIT_PRIORITY = 20
+var TIMEZONE_UNIT_PRIORITY = 10
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -28,6 +30,7 @@ var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
 
 var notWhitespaceRegExp = /\S/
+var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name parse
@@ -108,9 +111,9 @@ var notWhitespaceRegExp = /\S/
  * | Day of month                    |  90 | d       | 1, 2, ..., 31                     |       |
  * |                                 |     | do      | 1st, 2nd, ..., 31st               | 5     |
  * |                                 |     | dd      | 01, 02, ..., 31                   |       |
- * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               | 6     |
+ * | Day of year                     |  90 | D       | 1, 2, ..., 365, 366               | 7     |
  * |                                 |     | Do      | 1st, 2nd, ..., 365th, 366th       | 5     |
- * |                                 |     | DD      | 01, 02, ..., 365, 366             | 6     |
+ * |                                 |     | DD      | 01, 02, ..., 365, 366             | 7     |
  * |                                 |     | DDD     | 001, 002, ..., 365, 366           |       |
  * |                                 |     | DDDD    | ...                               | 2     |
  * | Day of week (formatting)        |  90 | E..EEE  | Mon, Tue, Wed, ..., Su            |       |
@@ -165,24 +168,24 @@ var notWhitespaceRegExp = /\S/
  * | Second                          |  50 | s       | 0, 1, ..., 59                     |       |
  * |                                 |     | so      | 0th, 1st, ..., 59th               | 5     |
  * |                                 |     | ss      | 00, 01, ..., 59                   |       |
- * | Fraction of second              |  40 | S       | 0, 1, ..., 9                      |       |
+ * | Seconds timestamp               |  40 | t       | 512969520                         |       |
+ * |                                 |     | tt      | ...                               | 2     |
+ * | Fraction of second              |  30 | S       | 0, 1, ..., 9                      |       |
  * |                                 |     | SS      | 00, 01, ..., 99                   |       |
  * |                                 |     | SSS     | 000, 0001, ..., 999               |       |
  * |                                 |     | SSSS    | ...                               | 2     |
- * | Timezone (ISO-8601 w/ Z)        |  20 | X       | -08, +0530, Z                     |       |
+ * | Milliseconds timestamp          |  20 | T       | 512969520900                      |       |
+ * |                                 |     | TT      | ...                               | 2     |
+ * | Timezone (ISO-8601 w/ Z)        |  10 | X       | -08, +0530, Z                     |       |
  * |                                 |     | XX      | -0800, +0530, Z                   |       |
  * |                                 |     | XXX     | -08:00, +05:30, Z                 |       |
  * |                                 |     | XXXX    | -0800, +0530, Z, +123456          | 2     |
  * |                                 |     | XXXXX   | -08:00, +05:30, Z, +12:34:56      |       |
- * | Timezone (ISO-8601 w/o Z)       |  20 | x       | -08, +0530, +00                   |       |
+ * | Timezone (ISO-8601 w/o Z)       |  10 | x       | -08, +0530, +00                   |       |
  * |                                 |     | xx      | -0800, +0530, +0000               |       |
  * |                                 |     | xxx     | -08:00, +05:30, +00:00            | 2     |
  * |                                 |     | xxxx    | -0800, +0530, +0000, +123456      |       |
  * |                                 |     | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
- * | Seconds timestamp               |  10 | t       | 512969520                         |       |
- * |                                 |     | tt      | ...                               | 2     |
- * | Milliseconds timestamp          |  10 | T       | 512969520900                      |       |
- * |                                 |     | TT      | ...                               | 2     |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
@@ -238,7 +241,11 @@ var notWhitespaceRegExp = /\S/
  *    - `R`: ISO week-numbering year
  *    - `o`: ordinal number modifier
  *
- * 6. These tokens are often confused with others. See: https://git.io/fxCyr
+ * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
+ *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://git.io/fxCyr
+ *
+ * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
+ *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://git.io/fxCyr
  *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
@@ -261,7 +268,6 @@ var notWhitespaceRegExp = /\S/
  * Invalid Date is a Date, whose time value is NaN.
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
@@ -280,23 +286,25 @@ var notWhitespaceRegExp = /\S/
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
- * @param {Date|String|Number} baseDate - defines values missing from the parsed dateString
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date|Number} baseDate - defines values missing from the parsed dateString
+ * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.awareOfUnicodeTokens=false] - if true, allows usage of Unicode tokens causes confusion:
- *   - Some of the day of year tokens (`D`, `DD`) that are confused with the day of month tokens (`d`, `dd`).
- *   - Some of the local week-numbering year tokens (`YY`, `YYYY`) that are confused with the calendar year tokens (`yy`, `yyyy`).
- *   See: https://git.io/fxCyr
+ * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ *   see: https://git.io/fxCyr
+ * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ *   see: https://git.io/fxCyr
  * @returns {Date} the parsed date
  * @throws {TypeError} 3 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} `options.awareOfUnicodeTokens` must be set to `true` to use `XX` token; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `d` instead of `D` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `dd` instead of `DD` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
  * // Parse 11 February 2014 from middle-endian format:
@@ -366,7 +374,7 @@ export default function parse(
 
   if (formatString === '') {
     if (dateString === '') {
-      return toDate(dirtyBaseDate, options)
+      return toDate(dirtyBaseDate)
     } else {
       return new Date(NaN)
     }
@@ -394,7 +402,16 @@ export default function parse(
   for (i = 0; i < tokens.length; i++) {
     var token = tokens[i]
 
-    if (!options.awareOfUnicodeTokens && isProtectedToken(token)) {
+    if (
+      !options.useAdditionalWeekYearTokens &&
+      isProtectedWeekYearToken(token)
+    ) {
+      throwProtectedError(token)
+    }
+    if (
+      !options.useAdditionalDayOfYearTokens &&
+      isProtectedDayOfYearToken(token)
+    ) {
       throwProtectedError(token)
     }
 
@@ -422,6 +439,14 @@ export default function parse(
 
       dateString = parseResult.rest
     } else {
+      if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
+        throw new RangeError(
+          'Format string contains an unescaped latin alphabet character `' +
+            firstCharacter +
+            '`'
+        )
+      }
+
       // Replace two single quote characters with one single quote character
       if (token === "''") {
         token = "'"
@@ -464,7 +489,7 @@ export default function parse(
       return setterArray[0]
     })
 
-  var date = toDate(dirtyBaseDate, options)
+  var date = toDate(dirtyBaseDate)
 
   if (isNaN(date)) {
     return new Date(NaN)
@@ -475,6 +500,7 @@ export default function parse(
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
   var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
 
+  var flags = {}
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
 
@@ -485,13 +511,25 @@ export default function parse(
       return new Date(NaN)
     }
 
-    utcDate = setter.set(utcDate, setter.value, subFnOptions)
+    var result = setter.set(utcDate, flags, setter.value, subFnOptions)
+    // Result is tuple (date, flags)
+    if (result[0]) {
+      utcDate = result[0]
+      assign(flags, result[1])
+      // Result is date
+    } else {
+      utcDate = result
+    }
   }
 
   return utcDate
 }
 
-function dateToSystemTimezone(date) {
+function dateToSystemTimezone(date, flags) {
+  if (flags.timestampIsSet) {
+    return date
+  }
+
   var convertedDate = new Date(0)
   convertedDate.setFullYear(
     date.getUTCFullYear(),

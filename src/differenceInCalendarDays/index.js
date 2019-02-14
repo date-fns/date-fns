@@ -12,18 +12,14 @@ var MILLISECONDS_IN_DAY = 86400000
  * Get the number of calendar days between the given dates. This means that the times are removed
  * from the dates and then the difference in days is calculated.
  *
- *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar days
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many calendar days are between
@@ -41,18 +37,23 @@ var MILLISECONDS_IN_DAY = 86400000
  * )
  * //=> 1
  */
-export default function differenceInCalendarDays (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInCalendarDays(
+  dirtyDateLeft,
+  dirtyDateRight
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var startOfDayLeft = startOfDay(dirtyDateLeft, dirtyOptions)
-  var startOfDayRight = startOfDay(dirtyDateRight, dirtyOptions)
+  var startOfDayLeft = startOfDay(dirtyDateLeft)
+  var startOfDayRight = startOfDay(dirtyDateRight)
 
-  var timestampLeft = startOfDayLeft.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfDayLeft)
-  var timestampRight = startOfDayRight.getTime() -
-    getTimezoneOffsetInMilliseconds(startOfDayRight)
+  var timestampLeft =
+    startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)
+  var timestampRight =
+    startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight)
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant

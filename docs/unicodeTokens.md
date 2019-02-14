@@ -37,17 +37,18 @@ parse('11.02.87', 'd.MM.yy', new Date()).toString()
 ```
 
 To help with the issue, `format` and `parse` functions won't accept
-`D`, `DD`, `YY` and `YYYY` without `awareOfUnicodeTokens` option:
+these tokens without `useAdditionalDayOfYearTokens` option for `D` and `DD` and
+`useAdditionalWeekYearTokens` options for `YY` and `YYYY`:
 
 ```js
-format(new Date(), 'D', { awareOfUnicodeTokens: true })
+format(new Date(), 'D', { useAdditionalDayOfYearTokens: true })
 //=> '283'
 
-parse('365+1987', 'DD+YYYY', new Date(), { awareOfUnicodeTokens: true }).toString()
+parse('365+1987', 'DD+YYYY', new Date(), {
+  useAdditionalDayOfYearTokens: true,
+  useAdditionalWeekYearTokens: true
+}).toString()
 //=> 'Wed Dec 31 1986 00:00:00 GMT+0200 (EET)'
 ```
-
-The option is supposed to be a temporary solution and might be removed
-in the future minor or major versions.
 
 [Unicode tokens]: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table

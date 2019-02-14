@@ -1,11 +1,11 @@
 process.env.PHANTOMJS_BIN = 'node_modules/.bin/phantomjs'
 process.env.NODE_ENV = 'test'
 
-var webpackConfig = require('./webpack')
-var countReporter = require('./_lib/countReporter')
-var benchmarkJSONReporter = require('./_lib/benchmarkJSONReporter')
+const webpackConfig = require('./webpack')
+const countReporter = require('./_lib/countReporter')
+const benchmarkJSONReporter = require('./_lib/benchmarkJSONReporter')
 
-var sauceLabsLaunchers = {
+const sauceLabsLaunchers = {
   // TODO: See if Safari became more reliable
   safari: {
     base: 'SauceLabs',
@@ -83,13 +83,13 @@ var sauceLabsLaunchers = {
   }
 }
 
-var localLaunchers = {
+const localLaunchers = {
   LocalChrome: {
     base: 'Chrome'
   }
 }
 
-var travisLaunchers = {
+const travisLaunchers = {
   ChromeTravis: {
     base: 'ChromeHeadless',
     // NOTE: We need to launch Chrome with --no-sandbox.
@@ -98,7 +98,7 @@ var travisLaunchers = {
   }
 }
 
-function config (config) {
+function config(config) {
   config.set({
     frameworks: getFrameworksConfig(),
     files: getFilesConfig(),
@@ -119,10 +119,10 @@ function config (config) {
     // so waiting time must be insanely high.
     browserNoActivityTimeout: process.env.TEST_CROSS_BROWSER
       ? 60 * 60 * 1000 /* 1 hour */
-      : 10 * 1000, /* 10 sec */
+      : 10 * 1000 /* 10 sec */,
     captureTimeout: process.env.TEST_CROSS_BROWSER
       ? 120 * 1000 /* 2 min */
-      : 60 * 1000, /* 1 min */
+      : 60 * 1000 /* 1 min */,
 
     sauceLabs: {
       startConnect: false,
@@ -146,17 +146,21 @@ function config (config) {
       'karma-webpack',
       'karma-benchmark',
       'karma-benchmark-reporter',
-      {'reporter:count': ['type', countReporter]},
-      {'reporter:benchmark-json': ['type', benchmarkJSONReporter]}
+      { 'reporter:count': ['type', countReporter] },
+      { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] }
     ],
 
-    customLaunchers: process.env.TEST_CROSS_BROWSER ? sauceLabsLaunchers : process.env.TRAVIS ? travisLaunchers : localLaunchers,
+    customLaunchers: process.env.TEST_CROSS_BROWSER
+      ? sauceLabsLaunchers
+      : process.env.TRAVIS
+        ? travisLaunchers
+        : localLaunchers,
     browsers: getBrowsersConfig(),
     reporters: getReportersConfig()
   })
 }
 
-function getFrameworksConfig () {
+function getFrameworksConfig() {
   if (process.env.TEST_BENCHMARK) {
     return ['benchmark']
   } else {
@@ -164,30 +168,27 @@ function getFrameworksConfig () {
   }
 }
 
-function getFilesConfig () {
+function getFilesConfig() {
   if (process.env.USE_STATIC_TESTS) {
     return ['../tmp/tests.js']
   } else if (process.env.TEST_BENCHMARK) {
-    return [
-      '../node_modules/moment/moment.js',
-      '../benchmark.js'
-    ]
+    return ['../node_modules/moment/moment.js', '../benchmark.js']
   } else {
     return ['../test.js']
   }
 }
 
-function getPreprocessorsConfig () {
+function getPreprocessorsConfig() {
   if (process.env.USE_STATIC_TESTS) {
-    return {'../tmp/tests.js': ['sourcemap']}
+    return { '../tmp/tests.js': ['sourcemap'] }
   } else if (process.env.TEST_BENCHMARK) {
-    return {'../benchmark.js': ['webpack', 'sourcemap']}
+    return { '../benchmark.js': ['webpack', 'sourcemap'] }
   } else {
-    return {'../test.js': ['webpack', 'sourcemap']}
+    return { '../test.js': ['webpack', 'sourcemap'] }
   }
 }
 
-function getBrowsersConfig () {
+function getBrowsersConfig() {
   if (process.env.TEST_CROSS_BROWSER) {
     return Object.keys(sauceLabsLaunchers)
   } else if (process.env.TEST_BENCHMARK) {
@@ -199,7 +200,7 @@ function getBrowsersConfig () {
   }
 }
 
-function getReportersConfig () {
+function getReportersConfig() {
   if (process.env.TEST_CROSS_BROWSER) {
     return ['dots', 'saucelabs', 'count']
   } else if (process.env.TEST_BENCHMARK) {

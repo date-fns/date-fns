@@ -10,31 +10,35 @@ import endOfMonth from '../endOfMonth/index.js'
  * @description
  * Get all the Saturdays and Sundays in the given month.
  *
- * @param {Date|String|Number} date - the given month
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Date|Number} date - the given month
  * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
+ * @throws {RangeError} The passed date is invalid
  *
  * @example
  * // Lists all Saturdays and Sundays in the given month
- * var result = eachWeekendOfMonth(new Date(2020, 1, 1))
+ * var result = eachWeekendOfMonth(new Date(2022, 1, 1))
  * //=> [
- *   2020-02-01T23:00:00.000Z,
- *   2020-02-07T23:00:00.000Z,
- *   2020-02-08T23:00:00.000Z,
- *   ...
- *   2020-02-28T23:00:00.000Z
- * ]
+ * //   Sat Feb 05 2022 00:00:00,
+ * //   Sun Feb 06 2022 00:00:00,
+ * //   Sat Feb 12 2022 00:00:00,
+ * //   Sun Feb 13 2022 00:00:00,
+ * //   Sat Feb 19 2022 00:00:00,
+ * //   Sun Feb 20 2022 00:00:00,
+ * //   Sat Feb 26 2022 00:00:00,
+ * //   Sun Feb 27 2022 00:00:00
+ * // ]
  */
-export default function eachWeekendOfMonth(dirtyDate, dirtyOptions) {
+export default function eachWeekendOfMonth(dirtyDate) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 arguments required, but only ' + arguments.length + ' present'
     )
   }
 
-  var startDate = startOfMonth(dirtyDate, dirtyOptions)
-  var endDate = endOfMonth(dirtyDate, dirtyOptions)
+  var startDate = startOfMonth(dirtyDate)
+  if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
+
+  var endDate = endOfMonth(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

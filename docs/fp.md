@@ -14,8 +14,9 @@ that support [currying](https://en.wikipedia.org/wiki/Currying).
 
 FP functions are provided via `'date-fns/fp'` submodule.
 
-Each non-FP function has two FP counterparts: one that has [Options](https://date-fns.org/docs/Options) object as its first argument
-and one that hasn't. The name of the former has `WithOptions` added to the end of its name.
+Functions with options (`format`, `parse`, etc.) have two FP counterparts:
+one that has the options object as its first argument and one that hasn't.
+The name of the former has `WithOptions` added to the end of its name.
 
 In **date-fns'** FP functions, the order of arguments is reversed.
 
@@ -28,7 +29,7 @@ import toUpper from 'lodash/fp/toUpper' // 'date-fns/fp' is compatible with 'lod
 const addFiveYears = addYears(5)
 
 // Several arguments can be curried at once
-const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
+const dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
 
 const dates = [
   new Date(2017, 0 /* Jan */, 1),

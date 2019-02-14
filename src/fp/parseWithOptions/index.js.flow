@@ -2,20 +2,8 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 type Interval = {
-  start: Date | string | number,
-  end: Date | string | number
-}
-
-type Options = {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  additionalDigits?: 0 | 1 | 2,
-  locale?: Locale,
-  includeSeconds?: boolean,
-  addSuffix?: boolean,
-  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  start: Date | number,
+  end: Date | number
 }
 
 type Locale = {
@@ -77,10 +65,4 @@ type CurriedFn4<A, B, C, D, R> = <A>(
           c: C
         ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
-declare module.exports: CurriedFn4<
-  Options,
-  Date | string | number,
-  string,
-  string,
-  Date
->
+declare module.exports: CurriedFn4<Object, Date | number, string, string, Date>

@@ -2,8 +2,8 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 type Interval = {
-  start: Date | string | number,
-  end: Date | string | number
+  start: Date | number,
+  end: Date | number
 }
 
 type Options = {
@@ -15,7 +15,8 @@ type Options = {
   addSuffix?: boolean,
   unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
   roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  awareOfUnicodeTokens?: boolean,
+  step?: number
 }
 
 type Locale = {

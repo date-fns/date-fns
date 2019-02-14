@@ -4,8 +4,8 @@
 import assert from 'power-assert'
 import eachDayOfInterval from '.'
 
-describe('eachDayOfInterval', function() {
-  it('returns an array with starts of days from the day of the start date to the day of the end date', function() {
+describe('eachDayOfInterval', () => {
+  it('returns an array with starts of days from the day of the start date to the day of the end date', () => {
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 9 /* Oct */, 12)
@@ -21,23 +21,7 @@ describe('eachDayOfInterval', function() {
     ])
   })
 
-  it('accepts strings', function() {
-    var result = eachDayOfInterval({
-      start: new Date(2014, 9 /* Oct */, 6).toISOString(),
-      end: new Date(2014, 9 /* Oct */, 12).toISOString()
-    })
-    assert.deepEqual(result, [
-      new Date(2014, 9 /* Oct */, 6),
-      new Date(2014, 9 /* Oct */, 7),
-      new Date(2014, 9 /* Oct */, 8),
-      new Date(2014, 9 /* Oct */, 9),
-      new Date(2014, 9 /* Oct */, 10),
-      new Date(2014, 9 /* Oct */, 11),
-      new Date(2014, 9 /* Oct */, 12)
-    ])
-  })
-
-  it('accepts timestamps', function() {
+  it('accepts timestamps', () => {
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 9 /* Oct */, 12).getTime()
@@ -53,7 +37,7 @@ describe('eachDayOfInterval', function() {
     ])
   })
 
-  it('handles the dates that are not starts of days', function() {
+  it('handles the dates that are not starts of days', () => {
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 9 /* Oct */, 12, 22, 15)
@@ -69,7 +53,7 @@ describe('eachDayOfInterval', function() {
     ])
   })
 
-  it('returns one day if the both arguments are on the same day', function() {
+  it('returns one day if the both arguments are on the same day', () => {
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 15)
@@ -77,7 +61,7 @@ describe('eachDayOfInterval', function() {
     assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
-  it('returns one day if the both arguments are the same', function() {
+  it('returns one day if the both arguments are the same', () => {
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)
@@ -85,7 +69,7 @@ describe('eachDayOfInterval', function() {
     assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
-  it('throws an exception if the start date is after the end date', function() {
+  it('throws an exception if the start date is after the end date', () => {
     var block = eachDayOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6)
@@ -93,7 +77,7 @@ describe('eachDayOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the start date is `Invalid Date`', function() {
+  it('throws an exception if the start date is `Invalid Date`', () => {
     var block = eachDayOfInterval.bind(null, {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6)
@@ -101,7 +85,7 @@ describe('eachDayOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the end date is `Invalid Date`', function() {
+  it('throws an exception if the end date is `Invalid Date`', () => {
     var block = eachDayOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN)
@@ -109,7 +93,7 @@ describe('eachDayOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', function() {
+  it('throws an exception if the interval is undefined', () => {
     var block = eachDayOfInterval.bind(
       null,
       // $ExpectedMistake
@@ -118,20 +102,7 @@ describe('eachDayOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function() {
-    var block = eachDayOfInterval.bind(
-      null,
-      {
-        start: new Date(2014, 9 /* Oct */, 6),
-        end: new Date(2014, 9 /* Oct */, 12)
-      },
-      // $ExpectedMistake
-      { additionalDigits: NaN }
-    )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', () => {
     assert.throws(eachDayOfInterval.bind(null), TypeError)
   })
 
@@ -158,6 +129,7 @@ describe('eachDayOfInterval', function() {
     })
 
     it('throws TypeError error if `options.step` is NaN', () => {
+      // $ExpectedMistake
       assert.throws(() => eachDayOfInterval(interval, { step: 'w' }), stepError)
       assert.throws(() => eachDayOfInterval(interval, { step: NaN }), stepError)
     })

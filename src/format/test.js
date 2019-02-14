@@ -35,11 +35,6 @@ describe('format', function() {
   var timestamp = date.getTime().toString()
   var secondsTimestamp = Math.floor(date.getTime() / 1000).toString()
 
-  it('accepts a string', function() {
-    var date = new Date(2014, 3, 4).toISOString()
-    assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
-  })
-
   it('accepts a timestamp', function() {
     var date = new Date(2014, 3, 4).getTime()
     assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
@@ -57,9 +52,7 @@ describe('format', function() {
 
   describe('ordinal numbers', function() {
     it('ordinal day of an ordinal month', function() {
-      var result = format(date, "do 'day of the' Mo 'month' of YYYY", {
-        awareOfUnicodeTokens: true
-      })
+      var result = format(date, "do 'day of the' Mo 'month of' yyyy")
       assert(result === '4th day of the 4th month of 1986')
     })
 
@@ -135,14 +128,14 @@ describe('format', function() {
     describe('local week-numbering year', function() {
       it('works as expected', function() {
         var result = format(date, 'Y Yo YY YYY YYYY YYYYY', {
-          awareOfUnicodeTokens: true
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
       it('the first week of the next year', function() {
         var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
-          awareOfUnicodeTokens: true
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2014')
       })
@@ -151,14 +144,14 @@ describe('format', function() {
         var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
           weekStartsOn: 1,
           firstWeekContainsDate: 4,
-          awareOfUnicodeTokens: true
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2013')
       })
 
       it('the first week of year', function() {
         var result = format(new Date(2016, 0 /* Jan */, 1), 'YYYY', {
-          awareOfUnicodeTokens: true
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2016')
       })
@@ -311,7 +304,7 @@ describe('format', function() {
     describe('day of year', function() {
       it('works as expected', function() {
         var result = format(date, 'D Do DD DDD DDDDD', {
-          awareOfUnicodeTokens: true
+          useAdditionalDayOfYearTokens: true
         })
         assert(result === '94 94th 94 094 00094')
       })
@@ -320,7 +313,7 @@ describe('format', function() {
         var result = format(
           new Date(1992, 11 /* Dec */, 31, 23, 59, 59, 999),
           'D',
-          { awareOfUnicodeTokens: true }
+          { useAdditionalDayOfYearTokens: true }
         )
         assert(result === '366')
       })
@@ -519,9 +512,6 @@ describe('format', function() {
   })
 
   describe('time zone', function() {
-    it('should toDate the given date in a local timezone', function() {
-      assert(format('2015-01-01', 'yyyy-MM-dd') === '2015-01-01')
-    })
     it('ISO-8601 with Z', function() {
       var result = format(date, 'X XX XXX XXXX XXXXX')
       var expectedResult = [
@@ -649,8 +639,11 @@ describe('format', function() {
   })
 
   describe('edge cases', function() {
-    it("returns String('Invalid Date') if the date isn't valid", function() {
-      assert(format(new Date(NaN), 'MMMM d, yyyy') === 'Invalid Date')
+    it('throws RangeError if the time value is invalid', () => {
+      assert.throws(
+        format.bind(null, new Date(NaN), 'MMMM d, yyyy'),
+        RangeError
+      )
     })
 
     it('handles dates before 100 AD', function() {
@@ -730,10 +723,8 @@ describe('format', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function() {
-    // $ExpectedMistake
-    var block = format.bind(null, date, 'yyyy-MM-dd', { additionalDigits: NaN })
-    assert.throws(block, RangeError)
+  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
+    assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
@@ -741,18 +732,20 @@ describe('format', function() {
     assert.throws(format.bind(null, 1), TypeError)
   })
 
-  describe('awareOfUnicodeTokens option', () => {
+  describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       const block = format.bind(null, date, 'yyyy-MM-D')
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `D` token; see: https://git.io/fxCyr'
+        'Use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows D token if awareOfUnicodeTokens is set to true', () => {
-      const result = format(date, 'yyyy-MM-D', { awareOfUnicodeTokens: true })
+    it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
+      const result = format(date, 'yyyy-MM-D', {
+        useAdditionalDayOfYearTokens: true
+      })
       assert.deepEqual(result, '1986-04-94')
     })
 
@@ -761,12 +754,14 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `DD` token; see: https://git.io/fxCyr'
+        'Use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows DD token if awareOfUnicodeTokens is set to true', () => {
-      const result = format(date, 'yyyy-MM-DD', { awareOfUnicodeTokens: true })
+    it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
+      const result = format(date, 'yyyy-MM-DD', {
+        useAdditionalDayOfYearTokens: true
+      })
       assert.deepEqual(result, '1986-04-94')
     })
 
@@ -775,12 +770,14 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `YY` token; see: https://git.io/fxCyr'
+        'Use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows YY token if awareOfUnicodeTokens is set to true', () => {
-      const result = format(date, 'YY-MM-dd', { awareOfUnicodeTokens: true })
+    it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
+      const result = format(date, 'YY-MM-dd', {
+        useAdditionalWeekYearTokens: true
+      })
       assert.deepEqual(result, '86-04-04')
     })
 
@@ -789,12 +786,14 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `YY` token; see: https://git.io/fxCyr'
+        'Use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows YYYY token if awareOfUnicodeTokens is set to true', () => {
-      const result = format(date, 'YYYY-MM-dd', { awareOfUnicodeTokens: true })
+    it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
+      const result = format(date, 'YYYY-MM-dd', {
+        useAdditionalWeekYearTokens: true
+      })
       assert.deepEqual(result, '1986-04-04')
     })
   })
