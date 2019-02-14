@@ -140,6 +140,18 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
   var number = Number(dirtyNumber)
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+
+  if (
+    unit === 'date' ||
+    unit === 'hour' ||
+    unit === 'minute' ||
+    unit === 'second'
+  ) {
+    return number.toString()
+  }
+
   return '第 ' + number.toString()
 }
 
