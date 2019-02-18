@@ -67,7 +67,7 @@ export default function getWeekYear(dirtyDate, dirtyOptions) {
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+  // Test if firstWeekContainsDate is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
     throw new RangeError(
       'firstWeekContainsDate must be between 1 and 7 inclusively'
