@@ -11,6 +11,14 @@ describe('ko locale > localize', function() {
         Array.from({ length: 100 }, (_, i) => i + 1).forEach(i => {
           assert(localize.ordinalNumber(i) === `${i}번째`)
         })
+
+        Array.from({ length: 100 }, (_, i) => i + 1).forEach(i => {
+          assert(localize.ordinalNumber(i, { unit: 'minute' }) === `${i}`)
+        })
+
+        Array.from({ length: 100 }, (_, i) => i + 1).forEach(i => {
+          assert(localize.ordinalNumber(i, { unit: 'second' }) === `${i}`)
+        })
       })
     })
   })
