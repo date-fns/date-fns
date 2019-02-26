@@ -135,17 +135,17 @@ describe('de locale', function () {
 
       it('medium date', function () {
         var result = format(date, 'PP', {locale: locale})
-        assert(result === '5 Apr, 1986')
+        assert(result === '5. Apr. 1986')
       })
 
       it('long date', function () {
         var result = format(date, 'PPP', {locale: locale})
-        assert(result === '5. April, 1986')
+        assert(result === '5. April 1986')
       })
 
       it('full date', function () {
         var result = format(date, 'PPPP', {locale: locale})
-        assert(result === 'Samstag, 5. April, 1986')
+        assert(result === 'Samstag, 5. April 1986')
       })
 
       it('short time', function () {
@@ -160,22 +160,22 @@ describe('de locale', function () {
 
       it('short date + time', function () {
         var result = format(date, 'Pp', {locale: locale})
-        assert(result === '05.04.1986, 10:32')
+        assert(result === '05.04.1986 10:32')
       })
 
       it('medium date + time', function () {
         var result = format(date, 'PPpp', {locale: locale})
-        assert(result === '5 Apr, 1986, 10:32:00')
+        assert(result === '5. Apr. 1986 10:32:00')
       })
 
       it('long date + time', function () {
         var result = format(date, 'PPPp', {locale: locale})
-        assert(result === '5. April, 1986 um 10:32')
+        assert(result === '5. April 1986 um 10:32')
       })
 
       it('full date + time', function () {
         var result = format(date, 'PPPPp', {locale: locale})
-        assert(result === 'Samstag, 5. April, 1986 um 10:32')
+        assert(result === 'Samstag, 5. April 1986 um 10:32')
       })
     })
   })
