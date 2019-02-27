@@ -6,11 +6,11 @@ var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
   narrow: /^(mö|ms)/i,
-  abbreviated: /^(m\.?\s?ö\.?|m\.?\s?s\.?)/i,
+  abbreviated: /^(mö|ms)/i,
   wide: /^(milattan önce|milattan sonra)/i
 }
 var parseEraPatterns = {
-  any: [/^m/i]
+  any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i]
 }
 
 var matchQuarterPatterns = {
