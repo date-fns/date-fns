@@ -15,11 +15,18 @@ var parseEraPatterns = {
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^(ilk çeyrek|ikinci çeyrek|üçüncü çeyrek|son çeyrek)/i
+  abbreviated: /^[1234]ç/i,
+  wide: /^((i|İ)lk|(i|İ)kinci|üçüncü|son) çeyrek/i
 }
 var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
+  any: [/1/i, /2/i, /3/i, /4/i],
+  abbreviated: [/1ç/i, /2ç/i, /3ç/i, /4ç/i],
+  wide: [
+    /^(i|İ)lk çeyrek/i,
+    /(i|İ)kinci çeyrek/i,
+    /üçüncü çeyrek/i,
+    /son çeyrek/i
+  ]
 }
 
 var matchMonthPatterns = {
@@ -60,29 +67,38 @@ var parseMonthPatterns = {
 
 var matchDayPatterns = {
   narrow: /^[psçc]/i,
-  short: /^(pz|pa|sa|ça|pe|cu|cm)/i,
-  abbreviated: /^(paz|pzt|sal|çar|per|cum|cmt)/i,
+  short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
+  abbreviated: /^(paz|pts|sal|çar|per|cum|cts)/i,
   wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i
 }
 var parseDayPatterns = {
   narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i],
-  any: [/^pa/i, /^pa/i, /^s/i, /^ç/i, /^pe/i, /^cu/i, /^cu/i]
+  any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i],
+  wide: [
+    /^pazar/i,
+    /^pazartesi/i,
+    /^salı/i,
+    /^çarşamba/i,
+    /^perşembe/i,
+    /^cuma/i,
+    /cumartesi/i
+  ]
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(a|p|ge|ö (sabah|öğleden sonra|akşam|gece yarısı))/i,
-  any: /^([ap]\.?\s?g\.?|gece|öğle (sabah|öğleden sonra|akşam|gece yarısı))/i
+  narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
+  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^ge/i,
+    am: /^ö\.?ö\.?/i,
+    pm: /^ö\.?s\.?/i,
+    midnight: /^(gy|gece yarısı)/i,
     noon: /^öğ/i,
-    morning: /sabah/i,
-    afternoon: /öğleden sonra/i,
-    evening: /akşam/i,
-    night: /gece/i
+    morning: /^sa/i,
+    afternoon: /^öğleden sonra/i,
+    evening: /^ak/i,
+    night: /^ge/i
   }
 }
 
