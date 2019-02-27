@@ -1,9 +1,9 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var eraValues = {
-  uppercase: ['MÖ', 'MS'],
-  lowercase: ['mö', 'ms'],
-  long: ['milattan önce', 'milattan sonra']
+  abbreviated: ['MÖ', 'MS'],
+  narrow: ['MÖ', 'MS'],
+  wide: ['milattan önce', 'milattan sonra']
 }
 
 var quarterValues = {
@@ -61,30 +61,30 @@ var dayValues = {
 
 var dayPeriodValues = {
   narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'gece yarısı',
-    noon: 'öğlen',
-    morning: 'sabah',
-    afternoon: 'öğleden sonra',
-    evening: 'akşam',
-    night: 'gece'
+    am: 'öö',
+    pm: 'ös',
+    midnight: 'gy',
+    noon: 'ö',
+    morning: 'sa',
+    afternoon: 'ös',
+    evening: 'ak',
+    night: 'ge'
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'ÖÖ',
+    pm: 'ÖS',
     midnight: 'gece yarısı',
-    noon: 'öğlen',
+    noon: 'öğle',
     morning: 'sabah',
     afternoon: 'öğleden sonra',
     evening: 'akşam',
     night: 'gece'
   },
   wide: {
-    am: 'A.M.',
-    pm: 'P.M.',
+    am: 'Ö.Ö.',
+    pm: 'Ö.S.',
     midnight: 'gece yarısı',
-    noon: 'öğlen',
+    noon: 'öğle',
     morning: 'sabah',
     afternoon: 'öğleden sonra',
     evening: 'akşam',
@@ -94,34 +94,34 @@ var dayPeriodValues = {
 
 var formattingDayPeriodValues = {
   narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'gece yarısı',
-    noon: 'öğlen',
-    morning: 'sabah',
-    afternoon: 'öğleden sonra',
-    evening: 'akşam',
-    night: 'gece'
+    am: 'öö',
+    pm: 'ös',
+    midnight: 'gy',
+    noon: 'ö',
+    morning: 'sa',
+    afternoon: 'ös',
+    evening: 'ak',
+    night: 'ge'
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'ÖÖ',
+    pm: 'ÖS',
     midnight: 'gece yarısı',
     noon: 'öğlen',
-    morning: 'sabah',
+    morning: 'sabahleyin',
     afternoon: 'öğleden sonra',
-    evening: 'akşam',
-    night: 'gece'
+    evening: 'akşamleyin',
+    night: 'geceleyin'
   },
   wide: {
-    am: 'A.M.',
-    pm: 'P.M.',
-    midnight: 'gece yarısı',
+    am: 'ö.ö.',
+    pm: 'ö.s.',
+    midnight: 'geceleyin',
     noon: 'öğlen',
-    morning: 'sabah',
+    morning: 'sabahleyin',
     afternoon: 'öğleden sonra',
-    evening: 'akşam',
-    night: 'gece'
+    evening: 'akşamleyin',
+    night: 'geceleyin'
   }
 }
 
