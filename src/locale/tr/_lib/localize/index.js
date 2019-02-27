@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 var eraValues = {
   abbreviated: ['MÖ', 'MS'],
   narrow: ['MÖ', 'MS'],
-  wide: ['milattan önce', 'milattan sonra']
+  wide: ['Milattan Önce', 'Milattan Sonra']
 }
 
 var quarterValues = {
