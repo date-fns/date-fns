@@ -127,48 +127,6 @@ var formattingDayPeriodValues = {
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + "'inci"
-      case 2:
-        return number + "'inci"
-      case 3:
-        return number + "'üncü"
-      case 4:
-        return number + "'üncü"
-      case 5:
-        return number + "'inci"
-      case 6:
-        return number + "'ıncı"
-      case 7:
-        return number + "'inci"
-      case 8:
-        return number + "'inci"
-      case 9:
-        return number + "'uncu"
-      case 10:
-        return number + "'uncu"
-      case 20:
-        return number + "'inci"
-      case 30:
-        return number + "'uncu"
-      case 50:
-        return number + "'inci"
-      case 60:
-        return number + "'ıncı"
-      case 70:
-        return number + "'inci"
-      case 80:
-        return number + "'inci"
-      case 90:
-        return number + "'ıncı"
-      case 100:
-        return number + "'üncü"
-    }
-  }
   return number + '.'
 }
 
