@@ -116,7 +116,7 @@ var formattingDayPeriodValues = {
   wide: {
     am: 'ö.ö.',
     pm: 'ö.s.',
-    midnight: 'geceleyin',
+    midnight: 'gece yarısı',
     noon: 'öğlen',
     morning: 'sabahleyin',
     afternoon: 'öğleden sonra',
