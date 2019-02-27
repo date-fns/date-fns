@@ -15,8 +15,8 @@ var timeFormats = {
 }
 
 var dateTimeFormats = {
-  full: '{{date}} saat {{time}}',
-  long: '{{date}} saat {{time}}',
+  full: "{{date}} 'saat' {{time}}",
+  long: "{{date}} 'saat' {{time}}",
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}'
 }
