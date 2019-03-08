@@ -12,6 +12,7 @@ module.exports = {
   eo: require('./eo/index.js'),
   es: require('./es/index.js'),
   et: require('./et/index.js'),
+  faIR: require('./fa-IR/index.js'),
   fr: require('./fr/index.js'),
   gl: require('./gl/index.js'),
   he: require('./he/index.js'),
