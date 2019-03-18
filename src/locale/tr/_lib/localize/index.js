@@ -106,31 +106,31 @@ var formattingDayPeriodValues = {
     am: 'öö',
     pm: 'ös',
     midnight: 'gece yarısı',
-    noon: 'gece',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    noon: 'öğlen',
+    morning: 'sabahleyin',
+    afternoon: 'öğleden sonra',
+    evening: 'akşamleyin',
+    night: 'geceleyin'
   },
   abbreviated: {
     am: 'öö',
     pm: 'ös',
     midnight: 'gece yarısı',
-    noon: 'gece',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    noon: 'öğlen',
+    morning: 'sabahleyin',
+    afternoon: 'öğleden sonra',
+    evening: 'akşamleyin',
+    night: 'geceleyin'
   },
   wide: {
     am: 'öö',
     pm: 'ös',
     midnight: 'gece yarısı',
-    noon: 'gece',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    noon: 'öğlen',
+    morning: 'sabahleyin',
+    afternoon: 'öğleden sonra',
+    evening: 'akşamleyin',
+    night: 'geceleyin'
   }
 }
 
