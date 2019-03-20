@@ -408,7 +408,8 @@ declare module 'date-fns' {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
   namespace format {
@@ -840,7 +841,8 @@ declare module 'date-fns' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
   namespace parse {
@@ -7409,7 +7411,8 @@ declare module 'date-fns/esm' {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
   namespace format {
@@ -7841,7 +7844,8 @@ declare module 'date-fns/esm' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
   namespace parse {
@@ -16367,7 +16371,8 @@ interface dateFns {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
 
@@ -16577,7 +16582,8 @@ interface dateFns {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
 
