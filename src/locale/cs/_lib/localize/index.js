@@ -1,17 +1,16 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var eraValues = {
-  // narrow: ['B', 'A'], not in cs
+  narrow: ['př. n. l.', 'n. l.'],
   abbreviated: ['př. n. l.', 'n. l.'],
   wide: ['před naším letopočtem', 'našeho letopočtu']
 }
 
-// not in cs
-// var quarterValues = {
-//   narrow: ['1', '2', '3', '4'],
-//   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-//   wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
-// }
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí'],
+  wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
+}
 
 // v1
 // var monthValues = {
@@ -153,14 +152,13 @@ var localize = {
     defaultWidth: 'wide'
   }),
 
-  // not in cs
-  // quarter: buildLocalizeFn({
-  //   values: quarterValues,
-  //   defaultWidth: 'wide',
-  //   argumentCallback: function (quarter) {
-  //     return Number(quarter) - 1
-  //   }
-  // }),
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
 
   month: buildLocalizeFn({
     values: monthValues,
