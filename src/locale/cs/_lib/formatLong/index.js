@@ -4,17 +4,19 @@ import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 // var formatLong = buildFormatLongFn({
 //   LT: 'h:mm aa',
 //   LTS: 'h:mm:ss aa',
+
 //   L: 'MM/DD/YYYY',
 //   LL: 'MMMM D YYYY',
+
 //   LLL: 'MMMM D YYYY h:mm aa',
 //   LLLL: 'dddd, MMMM D YYYY h:mm aa'
 // })
 
 var dateFormats = {
-  full: 'EEEE d. MMMM y',
-  long: 'd. MMMM y',
-  medium: 'd. M. y',
-  short: 'dd.MM.yy'
+  full: 'EEEE, d. MMMM yyyy',
+  long: 'd. MMMM yyyy',
+  medium: 'd.M.yyyy',
+  short: 'd.M.yy'
 }
 
 var timeFormats = {
