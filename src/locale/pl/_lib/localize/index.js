@@ -22,7 +22,6 @@ var monthValues = {
   abbreviated: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"],
   wide: ["styczeń", "luty", "marzec", "kwiecień", "maj", "czerwiec", "lipiec", "sierpień", "wrzesień", "październik", "listopad", "grudzień"],
 }
-
 var monthFormattingValues = {
   narrow: ["s", "l", "m", "k", "m", "c", "l", "s", "w", "p", "l", "g"],
   abbreviated: ["sty", "lut", "mar", "kwi", "maj", "cze", "lip", "sie", "wrz", "paź", "lis", "gru"],
@@ -35,7 +34,6 @@ var dayValues = {
   abbreviated: ["niedz.", "pon.", "wt.", "śr.", "czw.", "pt.", "sob."],
   wide: ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"]
 }
-
 var dayFormattingValues = {
   narrow: ["n", "p", "w", "ś", "c", "p", "s"],
   short: ["nie", "pon", "wto", "śro", "czw", "pią", "sob"],
