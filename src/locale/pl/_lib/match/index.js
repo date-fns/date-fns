@@ -20,17 +20,43 @@ var matchQuarterPatterns = {
 }
 var parseQuarterPatterns = {
   narrow: [/1/i, /2/i, /3/i, /4/i],
-  any: [/I/i, /II/i, /III/i, /IV/i]
+  any: [/^I kw/i, /^II kw/i, /^III kw/i, /^IV kw/i]
 }
 
 var matchMonthPatterns = {
   narrow: /^[slmkcwpg]/i,
   abbreviated: /^(sty|lut|mar|kwi|maj|cze|lip|sie|wrz|pa(ź|z)|lis|gru)/i,
-  wide: /^(stycze(ń|n)|luty|marzec|kwiecie(ń|n)|maj|czerwiec|lipiec|sierpie(ń|n)|wrzesie(ń|n)|pa(ź|z)dziernik|listopad|grudzie(ń|n))/i
+  wide: /^(stycze(ń|n)|stycznia|luty|lutego|marzec|marca|kwiecie(ń|n)|kwietnia|maj|maja|czerwiec|czerwca|lipiec|lipca|sierpie(ń|n)|sierpnia|wrzesie(ń|n)|wrze(ś|s)nia|pa(ź|z)dziernik|pa(ź|z)dziernika|listopad|listopada|grudzie(ń|n)|grudnia)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^s/i, /^l/i, /^m/i, /^k/i, /^m/i, /^c/i, /^l/i, /^s/i, /^w/i, /^p/i, /^l/i, /^g/i],
-  any: [/^st/i, /^lu/i, /^mar/i, /^k/i, /^maj/i, /^c/i, /^lip/i, /^si/i, /^w/i, /^p/i, /^lis/i, /^g/i]
+  narrow: [
+    /^s/i,
+    /^l/i,
+    /^m/i,
+    /^k/i,
+    /^m/i,
+    /^c/i,
+    /^l/i,
+    /^s/i,
+    /^w/i,
+    /^p/i,
+    /^l/i,
+    /^g/i
+  ],
+  any: [
+    /^st/i,
+    /^lu/i,
+    /^mar/i,
+    /^k/i,
+    /^maj/i,
+    /^c/i,
+    /^lip/i,
+    /^si/i,
+    /^w/i,
+    /^p/i,
+    /^lis/i,
+    /^g/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -46,19 +72,29 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^(a|p|o\s*p(ó|o)(ł|l)n\.?|(w|po)\s*po(ł|l)\.?|rano|wiecz\.?|w\s*nocy)/i,
-  any: /^(am|pm|o\s*p(ó|o)(ł|l)nocy|(w|po)\s*po(ł|l)udni(e|u)|rano|wieczorem|w\s*nocy)/i
+  narrow: /^(^a$|^p$|pó(ł|l)n\.?|o\s*pó(ł|l)n\.?|po(ł|l)\.?|w\s*po(ł|l)\.?|po\s*po(ł|l)\.?|rano|wiecz\.?|noc|w\s*nocy)/i,
+  any: /^(am|pm|pó(ł|l)noc|o\s*pó(ł|l)nocy|po(ł|l)udnie|w\s*po(ł|l)udnie|popo(ł|l)udnie|po\s*po(ł|l)udniu|rano|wieczór|wieczorem|noc|w\s*nocy)/i
 }
 var parseDayPeriodPatterns = {
-  any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^p(ó|o)(ł|l)n/i,
-    noon: /^w\s*po(ł|l)/i,
+  narrow: {
+    am: /^a$/i,
+    pm: /^p$/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
     morning: /rano/i,
     afternoon: /po\s*po(ł|l)/i,
     evening: /wiecz/i,
-    night: /w nocy/i
+    night: /noc/i
+  },
+  any: {
+    am: /^am/i,
+    pm: /^pm/i,
+    midnight: /pó(ł|l)n/i,
+    noon: /po(ł|l)/i,
+    morning: /rano/i,
+    afternoon: /po\s*po(ł|l)/i,
+    evening: /wiecz/i,
+    night: /noc/i
   }
 }
 
@@ -66,7 +102,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -83,7 +119,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),
