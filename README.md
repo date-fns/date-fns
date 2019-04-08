@@ -36,6 +36,8 @@ npm install date-fns --save
 yarn add date-fns
 ```
 
+Each function is available as a component in a [bit collection](https://bit.dev/date-fns/date-fns).
+
 ## Docs
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
