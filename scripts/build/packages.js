@@ -29,7 +29,7 @@ Promise.all([listAll().map(module => writePackage(module.fullPath))]).then(
 
 function writePackage(fullPath) {
   const dirPath = path.dirname(fullPath)
-  const typingsRelativePath = path.relative(dirPath, `./src/typings.d.ts`)
+  const typingsRelativePath = `./index.d.ts`
   const packagePath = path.resolve(
     rootPath,
     `${dirPath.replace('./src/', './')}/package.json`
@@ -64,7 +64,8 @@ function getModulePackage(fullPath) {
     dirPath,
     `./src/esm/${subPath}/index.js`
   )
-  return { module: esmRelativePath }
+  const cjsRelativePath = './index.js'
+  return { module: esmRelativePath, main: cjsRelativePath }
 }
 
 function listAll() {
