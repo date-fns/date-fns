@@ -97,6 +97,11 @@ declare module 'date-fns' {
   function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {}
 
+  function addWeekDays(date: Date | number, amount: number): Date
+  namespace addWeekDays {
+
+  }
+
   function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {}
 
@@ -319,6 +324,7 @@ declare module 'date-fns' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
+      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -838,6 +844,11 @@ declare module 'date-fns/addQuarters' {
 declare module 'date-fns/addSeconds' {
   import { addSeconds } from 'date-fns'
   export default addSeconds
+}
+
+declare module 'date-fns/addWeekDays' {
+  import { addWeekDays } from 'date-fns'
+  export = addWeekDays
 }
 
 declare module 'date-fns/addWeeks' {
@@ -1620,6 +1631,11 @@ declare module 'date-fns/addSeconds/index' {
   export default addSeconds
 }
 
+declare module 'date-fns/addWeekDays/index' {
+  import { addWeekDays } from 'date-fns'
+  export = addWeekDays
+}
+
 declare module 'date-fns/addWeeks/index' {
   import { addWeeks } from 'date-fns'
   export default addWeeks
@@ -2400,6 +2416,11 @@ declare module 'date-fns/addSeconds/index.js' {
   export default addSeconds
 }
 
+declare module 'date-fns/addWeekDays/index.js' {
+  import { addWeekDays } from 'date-fns'
+  export = addWeekDays
+}
+
 declare module 'date-fns/addWeeks/index.js' {
   import { addWeeks } from 'date-fns'
   export default addWeeks
@@ -3167,6 +3188,11 @@ declare module 'date-fns/fp' {
   const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {}
 
+  const addWeekDays: CurriedFn2<number, Date | number, Date>
+  namespace addWeekDays {
+
+  }
+
   const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {}
 
@@ -3801,6 +3827,11 @@ declare module 'date-fns/fp/addQuarters' {
 declare module 'date-fns/fp/addSeconds' {
   import { addSeconds } from 'date-fns/fp'
   export = addSeconds
+}
+
+declare module 'date-fns/fp/addWeekDays' {
+  import { addWeekDays } from 'date-fns/fp'
+  export = addWeekDays
 }
 
 declare module 'date-fns/fp/addWeeks' {
@@ -4703,6 +4734,11 @@ declare module 'date-fns/fp/addSeconds/index' {
   export = addSeconds
 }
 
+declare module 'date-fns/fp/addWeekDays/index' {
+  import { addWeekDays } from 'date-fns/fp'
+  export = addWeekDays
+}
+
 declare module 'date-fns/fp/addWeeks/index' {
   import { addWeeks } from 'date-fns/fp'
   export = addWeeks
@@ -5603,6 +5639,11 @@ declare module 'date-fns/fp/addSeconds/index.js' {
   export = addSeconds
 }
 
+declare module 'date-fns/fp/addWeekDays/index.js' {
+  import { addWeekDays } from 'date-fns/fp'
+  export = addWeekDays
+}
+
 declare module 'date-fns/fp/addWeeks/index.js' {
   import { addWeeks } from 'date-fns/fp'
   export = addWeeks
@@ -6490,6 +6531,11 @@ declare module 'date-fns/esm' {
   function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {}
 
+  function addWeekDays(date: Date | number, amount: number): Date
+  namespace addWeekDays {
+
+  }
+
   function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {}
 
@@ -6712,6 +6758,7 @@ declare module 'date-fns/esm' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
+      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -7231,6 +7278,11 @@ declare module 'date-fns/esm/addQuarters' {
 declare module 'date-fns/esm/addSeconds' {
   import { addSeconds } from 'date-fns/esm'
   export default addSeconds
+}
+
+declare module 'date-fns/esm/addWeekDays' {
+  import { addWeekDays } from 'date-fns/esm'
+  export default addWeekDays
 }
 
 declare module 'date-fns/esm/addWeeks' {
@@ -8013,6 +8065,11 @@ declare module 'date-fns/esm/addSeconds/index' {
   export default addSeconds
 }
 
+declare module 'date-fns/esm/addWeekDays/index' {
+  import { addWeekDays } from 'date-fns/esm'
+  export default addWeekDays
+}
+
 declare module 'date-fns/esm/addWeeks/index' {
   import { addWeeks } from 'date-fns/esm'
   export default addWeeks
@@ -8793,6 +8850,11 @@ declare module 'date-fns/esm/addSeconds/index.js' {
   export default addSeconds
 }
 
+declare module 'date-fns/esm/addWeekDays/index.js' {
+  import { addWeekDays } from 'date-fns/esm'
+  export default addWeekDays
+}
+
 declare module 'date-fns/esm/addWeeks/index.js' {
   import { addWeeks } from 'date-fns/esm'
   export default addWeeks
@@ -9560,6 +9622,11 @@ declare module 'date-fns/esm/fp' {
   const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {}
 
+  const addWeekDays: CurriedFn2<number, Date | number, Date>
+  namespace addWeekDays {
+
+  }
+
   const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {}
 
@@ -10194,6 +10261,11 @@ declare module 'date-fns/esm/fp/addQuarters' {
 declare module 'date-fns/esm/fp/addSeconds' {
   import { addSeconds } from 'date-fns/esm/fp'
   export default addSeconds
+}
+
+declare module 'date-fns/esm/fp/addWeekDays' {
+  import { addWeekDays } from 'date-fns/esm/fp'
+  export default addWeekDays
 }
 
 declare module 'date-fns/esm/fp/addWeeks' {
@@ -11096,6 +11168,11 @@ declare module 'date-fns/esm/fp/addSeconds/index' {
   export default addSeconds
 }
 
+declare module 'date-fns/esm/fp/addWeekDays/index' {
+  import { addWeekDays } from 'date-fns/esm/fp'
+  export default addWeekDays
+}
+
 declare module 'date-fns/esm/fp/addWeeks/index' {
   import { addWeeks } from 'date-fns/esm/fp'
   export default addWeeks
@@ -11994,6 +12071,11 @@ declare module 'date-fns/esm/fp/addQuarters/index.js' {
 declare module 'date-fns/esm/fp/addSeconds/index.js' {
   import { addSeconds } from 'date-fns/esm/fp'
   export default addSeconds
+}
+
+declare module 'date-fns/esm/fp/addWeekDays/index.js' {
+  import { addWeekDays } from 'date-fns/esm/fp'
+  export default addWeekDays
 }
 
 declare module 'date-fns/esm/fp/addWeeks/index.js' {
@@ -14935,6 +15017,8 @@ interface dateFns {
 
   addSeconds(date: Date | number, amount: number): Date
 
+  addWeekDays(date: Date | number, amount: number): Date
+
   addWeeks(date: Date | number, amount: number): Date
 
   addYears(date: Date | number, amount: number): Date
@@ -15089,6 +15173,7 @@ interface dateFns {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
+      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }

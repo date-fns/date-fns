@@ -52,6 +52,8 @@ declare module.exports: {
 
   addSeconds: (date: Date | number, amount: number) => Date,
 
+  addWeekDays: (date: Date | number, amount: number) => Date,
+
   addWeeks: (date: Date | number, amount: number) => Date,
 
   addYears: (date: Date | number, amount: number) => Date,
@@ -230,6 +232,7 @@ declare module.exports: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: number,
+      locale?: Locale,
       useAdditionalWeekYearTokens?: boolean,
       useAdditionalDayOfYearTokens?: boolean
     }

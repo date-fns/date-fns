@@ -8,6 +8,7 @@ export { default as addMinutes } from './addMinutes/index.js'
 export { default as addMonths } from './addMonths/index.js'
 export { default as addQuarters } from './addQuarters/index.js'
 export { default as addSeconds } from './addSeconds/index.js'
+export { default as addWeekDays } from './addWeekDays/index.js'
 export { default as addWeeks } from './addWeeks/index.js'
 export { default as addYears } from './addYears/index.js'
 export {

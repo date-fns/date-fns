@@ -11,6 +11,7 @@ module.exports = {
   addMonths: require('./addMonths/index.js'),
   addQuarters: require('./addQuarters/index.js'),
   addSeconds: require('./addSeconds/index.js'),
+  addWeekDays: require('./addWeekDays/index.js'),
   addWeeks: require('./addWeeks/index.js'),
   addYears: require('./addYears/index.js'),
   areIntervalsOverlapping: require('./areIntervalsOverlapping/index.js'),
