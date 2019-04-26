@@ -13,6 +13,15 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
 for the list of changes made since `v2.0.0-alpha.1`.
 
+### Added
+
+- New function [addWeekDays](https://github.com/date-fns/date-fns/pull/1154),
+  similar to addDays but ignoring weekends.
+
+  End date can thus only ever be mon/tue/wed/thu/fri.
+
+  Does not count as businessdays since it doesn't avoid counting on holidays.
+
 ### Fixed
 
 - Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
