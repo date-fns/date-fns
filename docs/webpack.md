@@ -12,10 +12,10 @@ Let's assume that we have a single point in which supported locales are present:
 export const supportedLocales = ['en', 'de', 'pl', 'it']
 ```
 
-We could alslo have a function that formats the date:
+We could also have a function that formats the date:
 
 ```js
-const getLocale = locale => require(`date-fns/locale/${locale}/index.js`)
+const getLocale = locale => import(`date-fns/locale/${locale}/index.js`)
 
 const formatDate = (date, formatStyle, locale) => {
   return format(date, formatStyle, {
