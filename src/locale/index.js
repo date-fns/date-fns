@@ -21,6 +21,7 @@ module.exports = {
   lt: require('./lt/index.js'),
   nb: require('./nb/index.js'),
   nl: require('./nl/index.js'),
+  nn: require('./nn/index.js'),
   pt: require('./pt/index.js'),
   ptBR: require('./pt-BR/index.js'),
   ru: require('./ru/index.js'),
