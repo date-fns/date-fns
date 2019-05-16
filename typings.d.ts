@@ -408,7 +408,8 @@ declare module 'date-fns' {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
   namespace format {
@@ -840,7 +841,8 @@ declare module 'date-fns' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
   namespace parse {
@@ -7409,7 +7411,8 @@ declare module 'date-fns/esm' {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
   namespace format {
@@ -7841,7 +7844,8 @@ declare module 'date-fns/esm' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
   namespace parse {
@@ -14265,6 +14269,11 @@ declare module 'date-fns/locale' {
 
   }
 
+  const nn: Locale
+  namespace nn {
+
+  }
+
   const pl: Locale
   namespace pl {
 
@@ -14529,6 +14538,11 @@ declare module 'date-fns/locale/nl' {
 declare module 'date-fns/locale/nl-BE' {
   import { nlBE } from 'date-fns/locale'
   export = nlBE
+}
+
+declare module 'date-fns/locale/nn' {
+  import { nn } from 'date-fns/locale'
+  export = nn
 }
 
 declare module 'date-fns/locale/pl' {
@@ -14796,6 +14810,11 @@ declare module 'date-fns/locale/nl-BE/index' {
   export = nlBE
 }
 
+declare module 'date-fns/locale/nn/index' {
+  import { nn } from 'date-fns/locale'
+  export = nn
+}
+
 declare module 'date-fns/locale/pl/index' {
   import { pl } from 'date-fns/locale'
   export = pl
@@ -15059,6 +15078,11 @@ declare module 'date-fns/locale/nl/index.js' {
 declare module 'date-fns/locale/nl-BE/index.js' {
   import { nlBE } from 'date-fns/locale'
   export = nlBE
+}
+
+declare module 'date-fns/locale/nn/index.js' {
+  import { nn } from 'date-fns/locale'
+  export = nn
 }
 
 declare module 'date-fns/locale/pl/index.js' {
@@ -15329,6 +15353,11 @@ declare module 'date-fns/esm/locale' {
 
   }
 
+  const nn: Locale
+  namespace nn {
+
+  }
+
   const pl: Locale
   namespace pl {
 
@@ -15593,6 +15622,11 @@ declare module 'date-fns/esm/locale/nl' {
 declare module 'date-fns/esm/locale/nl-BE' {
   import { nlBE } from 'date-fns/esm/locale'
   export default nlBE
+}
+
+declare module 'date-fns/esm/locale/nn' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
 }
 
 declare module 'date-fns/esm/locale/pl' {
@@ -15860,6 +15894,11 @@ declare module 'date-fns/esm/locale/nl-BE/index' {
   export default nlBE
 }
 
+declare module 'date-fns/esm/locale/nn/index' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
+}
+
 declare module 'date-fns/esm/locale/pl/index' {
   import { pl } from 'date-fns/esm/locale'
   export default pl
@@ -16125,6 +16164,11 @@ declare module 'date-fns/esm/locale/nl-BE/index.js' {
   export default nlBE
 }
 
+declare module 'date-fns/esm/locale/nn/index.js' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
+}
+
 declare module 'date-fns/esm/locale/pl/index.js' {
   import { pl } from 'date-fns/esm/locale'
   export default pl
@@ -16367,7 +16411,8 @@ interface dateFns {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): string
 
@@ -16577,7 +16622,8 @@ interface dateFns {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-      awareOfUnicodeTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
     }
   ): Date
 
