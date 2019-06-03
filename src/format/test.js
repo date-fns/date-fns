@@ -479,7 +479,7 @@ describe('format', function() {
 
       it('5 PM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 17, 0, 0, 900)
-        assert(format(date, 'h B') === '5 in the evening')
+        assert(format(date, 'h B') === '5 in the afternoon')
       })
 
       it('12 AM', function() {
@@ -489,7 +489,7 @@ describe('format', function() {
 
       it('4 AM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 4, 0, 0, 900)
-        assert(format(date, 'h B') === '4 in the morning')
+        assert(format(date, 'h B') === '4 at night')
       })
     })
   })

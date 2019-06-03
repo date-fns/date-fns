@@ -1,6 +1,6 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'mindre end et sekund',
+    one: 'mindre end ét sekund',
     other: 'mindre end {{count}} sekunder'
   },
 
@@ -9,10 +9,10 @@ var formatDistanceLocale = {
     other: '{{count}} sekunder'
   },
 
-  halfAMinute: 'et halvt minut',
+  halfAMinute: 'ét halvt minut',
 
   lessThanXMinutes: {
-    one: 'mindre end et minut',
+    one: 'mindre end ét minut',
     other: 'mindre end {{count}} minutter'
   },
 
@@ -67,7 +67,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

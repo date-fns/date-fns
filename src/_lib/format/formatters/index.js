@@ -12,9 +12,17 @@ var dayPeriodEnum = {
   midnight: 'midnight',
   noon: 'noon',
   morning: 'morning',
+  morning1: 'morning',
+  morning2: 'morning',
   afternoon: 'afternoon',
+  afternoon1: 'afternoon',
+  afternoon2: 'afternoon',
   evening: 'evening',
-  night: 'night'
+  evening1: 'evening',
+  evening2: 'evening',
+  night: 'night',
+  night1: 'night',
+  night2: 'night'
 }
 
 /*
@@ -516,15 +524,41 @@ var formatters = {
   // in the morning, in the afternoon, in the evening, at night
   B: function(date, token, localize) {
     var hours = date.getUTCHours()
+    const {
+      evening1,
+      evening2,
+      morning1,
+      morning2,
+      afternoon1,
+      afternoon2,
+      night1,
+      night2
+    } = localize.periods
+
     var dayPeriodEnumValue
-    if (hours >= 17) {
-      dayPeriodEnumValue = dayPeriodEnum.evening
-    } else if (hours >= 12) {
-      dayPeriodEnumValue = dayPeriodEnum.afternoon
-    } else if (hours >= 4) {
-      dayPeriodEnumValue = dayPeriodEnum.morning
-    } else {
-      dayPeriodEnumValue = dayPeriodEnum.night
+    if (hours >= evening1) {
+      dayPeriodEnumValue = dayPeriodEnum.evening1
+      console.log(dayPeriodEnum.evening1)
+    } else if (hours >= evening2) {
+      dayPeriodEnumValue = dayPeriodEnum.evening2
+      console.log(dayPeriodEnum.evening2)
+    } else if (hours >= afternoon1) {
+      dayPeriodEnumValue = dayPeriodEnum.afternoon1
+      console.log(dayPeriodEnum.afternoon1)
+    } else if (hours >= afternoon2) {
+      dayPeriodEnumValue = dayPeriodEnum.afternoon2
+      console.log(dayPeriodEnum.afternoon2)
+    } else if (hours >= morning1) {
+      dayPeriodEnumValue = dayPeriodEnum.morning1
+      console.log(dayPeriodEnum.morning1)
+    } else if (hours >= morning2) {
+      dayPeriodEnumValue = dayPeriodEnum.morning2
+      console.log(dayPeriodEnum.morning2)
+    } else if (hours >= night1) {
+      dayPeriodEnumValue = dayPeriodEnum.night1
+      console.log(dayPeriodEnum.night1)
+    } else if (hours >= night2) {
+      dayPeriodEnumValue = dayPeriodEnum.night2
     }
 
     switch (token) {
