@@ -79,7 +79,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   Kudos to [@lamayg](https://github.com/lamayg).
 
 - [Norwegian Nynorsk locale (nn)](https://github.com/date-fns/date-fns/pull/1172)
-  (thanks to Mats Byrkjeland)[@draperunner](https://github.com/draperunner)
+  (thanks to Mats Byrkjeland [@draperunner](https://github.com/draperunner))
 
 - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
   (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
