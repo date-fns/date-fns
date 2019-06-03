@@ -1,8 +1,8 @@
-// import formatDistance from './_lib/formatDistance/index.js'
-// import formatLong from './_lib/formatLong/index.js'
-// import formatRelative from './_lib/formatRelative/index.js'
-// import localize from './_lib/localize/index.js'
-// import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index.js'
+import formatLong from './_lib/formatLong/index.js'
+import formatRelative from './_lib/formatRelative/index.js'
+import localize from './_lib/localize/index.js'
+import match from './_lib/match/index.js'
 
 /**
  * @type {Locale}
@@ -11,19 +11,18 @@
  * @language Chinese Traditional
  * @iso-639-2 zho
  * @author tonypai [@tpai]{@link https://github.com/tpai}
+ * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
  */
-// var locale = {
-//   formatDistance: formatDistance,
-//   formatLong: formatLong,
-//   formatRelative: formatRelative,
-//   localize: localize,
-//   match: match,
-//   options: {
-//     weekStartsOn: 0 /* Sunday */,
-//     firstWeekContainsDate: 1
-//   }
-// }
+var locale = {
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4
+  }
+}
 
-// export default locale
-
-throw new Error('zh-TW locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+export default locale
