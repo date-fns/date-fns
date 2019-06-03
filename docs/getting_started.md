@@ -38,7 +38,7 @@ dates.sort(dateFns.compareAsc)
 ## Installation
 
 The library is available as an [npm package](https://www.npmjs.com/package/date-fns),
-a Bower package, and is also distributed through a [CDN](http://cdn.date-fns.org/).
+a Bower package, and is also distributed through [cdnjs](https://cdnjs.com/libraries/date-fns).
 
 ### npm
 
@@ -76,10 +76,10 @@ dateFns.isToday(new Date())
 
 ### CDN
 
-To start using date-fns, simply add the following code into HTML:
+date-fns is available on [cdnjs](https://cdnjs.com/libraries/date-fns), simply add the following code into HTML:
 
 ```html
-<script src="http://cdn.date-fns.org/VERSION/date_fns.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/VERSION/date_fns.js"></script>
 <script>
   dateFns.isToday(new Date())
   //=> true
@@ -87,14 +87,6 @@ To start using date-fns, simply add the following code into HTML:
 ```
 
 Replace `VERSION` with a proper version number e.g. `v1.0.0`.
-
-See the [full list](http://cdn.date-fns.org/) of resources available on the CDN:
-
-- `http://cdn.date-fns.org/VERSION/date_fns.js`
-- `http://cdn.date-fns.org/VERSION/date_fns.js.map`
-- `http://cdn.date-fns.org/VERSION/date_fns.min.js`
-- `http://cdn.date-fns.org/VERSION/date_fns.min.js.map`
-- `http://cdn.date-fns.org/VERSION/date_fns_docs.json`
 
 ### GitHub Releases
 
