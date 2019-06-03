@@ -120,16 +120,6 @@ var formattingDayPeriodValues = {
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
-  // If ordinal numbers depend on context, for example,
-  // if they are different for different grammatical genders,
-  // use `options.unit`:
-  //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
-  //
-  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
-  // 'day', 'hour', 'minute', 'second'
-
   return dirtyOptions &&
     (dirtyOptions.unit === 'minute' || dirtyOptions.unit === 'second')
     ? number.toString()
