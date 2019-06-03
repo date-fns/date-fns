@@ -142,6 +142,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [lv locale](https://github.com/date-fns/date-fns/pull/1175). Kudos to [@prudolfs](https://github.com/prudolfs).
 
+- [pl locale was updated for v2](https://github.com/date-fns/date-fns/pull/1140). Thanks to [@Mutisz](https://github.com/Mutisz)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
