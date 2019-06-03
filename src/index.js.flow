@@ -104,8 +104,8 @@ declare module.exports: {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => number,
 
@@ -180,6 +180,7 @@ declare module.exports: {
   eachWeekOfInterval: (
     interval: Interval,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date[],
@@ -210,8 +211,8 @@ declare module.exports: {
   endOfWeek: (
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date,
 
@@ -221,9 +222,9 @@ declare module.exports: {
     date: Date | number,
     format: string,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: number,
-      locale?: Locale,
       useAdditionalWeekYearTokens?: boolean,
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -254,8 +255,8 @@ declare module.exports: {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => string,
 
@@ -305,6 +306,7 @@ declare module.exports: {
   getWeek: (
     date: Date | number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -313,6 +315,7 @@ declare module.exports: {
   getWeekOfMonth: (
     date: Date | number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => number,
@@ -320,14 +323,15 @@ declare module.exports: {
   getWeeksInMonth: (
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => number,
 
   getWeekYear: (
     date: Date | number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -376,8 +380,8 @@ declare module.exports: {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => boolean,
 
@@ -417,8 +421,8 @@ declare module.exports: {
   lastDayOfWeek: (
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date,
 
@@ -463,8 +467,8 @@ declare module.exports: {
     date: Date | number,
     day: number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date,
 
@@ -492,6 +496,7 @@ declare module.exports: {
     date: Date | number,
     week: number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -501,6 +506,7 @@ declare module.exports: {
     date: Date | number,
     weekYear: number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -529,14 +535,15 @@ declare module.exports: {
   startOfWeek: (
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date,
 
   startOfWeekYear: (
     date: Date | number,
     options?: {
+      locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }

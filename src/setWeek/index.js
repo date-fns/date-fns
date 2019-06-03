@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
 import getWeek from '../getWeek/index.js'
+import toDate from '../toDate/index.js'
+import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name setWeek
@@ -23,6 +23,7 @@ import getWeek from '../getWeek/index.js'
  * @param {Date|Number} date - the date to be changed
  * @param {Number} week - the week of the new date
  * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Date} the new date with the local week set
