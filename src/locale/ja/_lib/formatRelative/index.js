@@ -1,9 +1,9 @@
 var formatRelativeLocale = {
-  lastWeek: '前のeeeeのp',
+  lastWeek: '先週のeeeeのp',
   yesterday: '昨日のp',
   today: '今日のp',
   tomorrow: '明日のp',
-  nextWeek: '次のeeeeのp',
+  nextWeek: '翌週のeeeeのp',
   other: 'P'
 }
 
