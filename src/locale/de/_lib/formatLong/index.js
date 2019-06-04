@@ -1,10 +1,11 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
+// DIN 5008: https://de.wikipedia.org/wiki/Datumsformat#DIN_5008
 var dateFormats = {
-  full: 'EEEE, do MMMM, y',
-  long: 'do MMMM, y',
-  medium: 'd MMM, y',
-  short: 'dd.MM.y'
+  full: 'EEEE, do MMMM y', // Montag, 7. Januar 2018
+  long: 'do MMMM y',       // 7. Januar 2018
+  medium: 'do MMM. y',     // 7. Jan. 2018
+  short: 'dd.MM.y'         // 07.01.2018
 }
 
 var timeFormats = {
@@ -17,8 +18,8 @@ var timeFormats = {
 var dateTimeFormats = {
   full: "{{date}} 'um' {{time}}",
   long: "{{date}} 'um' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
+  medium: '{{date}} {{time}}',
+  short: '{{date}} {{time}}'
 }
 
 var formatLong = {

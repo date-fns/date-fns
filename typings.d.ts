@@ -204,8 +204,8 @@ declare module 'date-fns' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
   namespace differenceInCalendarWeeks {
@@ -328,6 +328,7 @@ declare module 'date-fns' {
   function eachWeekOfInterval(
     interval: Interval,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
@@ -388,8 +389,8 @@ declare module 'date-fns' {
   function endOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace endOfWeek {
@@ -405,6 +406,7 @@ declare module 'date-fns' {
     date: Date | number,
     format: string,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
@@ -447,8 +449,8 @@ declare module 'date-fns' {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
   namespace formatRelative {
@@ -561,6 +563,7 @@ declare module 'date-fns' {
   function getWeek(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -572,6 +575,7 @@ declare module 'date-fns' {
   function getWeekOfMonth(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -582,8 +586,8 @@ declare module 'date-fns' {
   function getWeeksInMonth(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
   namespace getWeeksInMonth {
@@ -593,6 +597,7 @@ declare module 'date-fns' {
   function getWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -716,8 +721,8 @@ declare module 'date-fns' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
   namespace isSameWeek {
@@ -805,8 +810,8 @@ declare module 'date-fns' {
   function lastDayOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace lastDayOfWeek {
@@ -878,8 +883,8 @@ declare module 'date-fns' {
     date: Date | number,
     day: number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace setDay {
@@ -940,6 +945,7 @@ declare module 'date-fns' {
     date: Date | number,
     week: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -952,6 +958,7 @@ declare module 'date-fns' {
     date: Date | number,
     weekYear: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -1013,8 +1020,8 @@ declare module 'date-fns' {
   function startOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace startOfWeek {
@@ -1024,6 +1031,7 @@ declare module 'date-fns' {
   function startOfWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -7207,8 +7215,8 @@ declare module 'date-fns/esm' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
   namespace differenceInCalendarWeeks {
@@ -7331,6 +7339,7 @@ declare module 'date-fns/esm' {
   function eachWeekOfInterval(
     interval: Interval,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
@@ -7391,8 +7400,8 @@ declare module 'date-fns/esm' {
   function endOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace endOfWeek {
@@ -7408,6 +7417,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     format: string,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
@@ -7450,8 +7460,8 @@ declare module 'date-fns/esm' {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
   namespace formatRelative {
@@ -7564,6 +7574,7 @@ declare module 'date-fns/esm' {
   function getWeek(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -7575,6 +7586,7 @@ declare module 'date-fns/esm' {
   function getWeekOfMonth(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -7585,8 +7597,8 @@ declare module 'date-fns/esm' {
   function getWeeksInMonth(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
   namespace getWeeksInMonth {
@@ -7596,6 +7608,7 @@ declare module 'date-fns/esm' {
   function getWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -7719,8 +7732,8 @@ declare module 'date-fns/esm' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
   namespace isSameWeek {
@@ -7808,8 +7821,8 @@ declare module 'date-fns/esm' {
   function lastDayOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace lastDayOfWeek {
@@ -7881,8 +7894,8 @@ declare module 'date-fns/esm' {
     date: Date | number,
     day: number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace setDay {
@@ -7943,6 +7956,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     week: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -7955,6 +7969,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     weekYear: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -8016,8 +8031,8 @@ declare module 'date-fns/esm' {
   function startOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
   namespace startOfWeek {
@@ -8027,6 +8042,7 @@ declare module 'date-fns/esm' {
   function startOfWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -14244,6 +14260,11 @@ declare module 'date-fns/locale' {
 
   }
 
+  const lv: Locale
+  namespace lv {
+
+  }
+
   const mk: Locale
   namespace mk {
 
@@ -14266,6 +14287,11 @@ declare module 'date-fns/locale' {
 
   const nlBE: Locale
   namespace nlBE {
+
+  }
+
+  const nn: Locale
+  namespace nn {
 
   }
 
@@ -14510,6 +14536,11 @@ declare module 'date-fns/locale/lt' {
   export = lt
 }
 
+declare module 'date-fns/locale/lv' {
+  import { lv } from 'date-fns/locale'
+  export = lv
+}
+
 declare module 'date-fns/locale/mk' {
   import { mk } from 'date-fns/locale'
   export = mk
@@ -14533,6 +14564,11 @@ declare module 'date-fns/locale/nl' {
 declare module 'date-fns/locale/nl-BE' {
   import { nlBE } from 'date-fns/locale'
   export = nlBE
+}
+
+declare module 'date-fns/locale/nn' {
+  import { nn } from 'date-fns/locale'
+  export = nn
 }
 
 declare module 'date-fns/locale/pl' {
@@ -14775,6 +14811,11 @@ declare module 'date-fns/locale/lt/index' {
   export = lt
 }
 
+declare module 'date-fns/locale/lv/index' {
+  import { lv } from 'date-fns/locale'
+  export = lv
+}
+
 declare module 'date-fns/locale/mk/index' {
   import { mk } from 'date-fns/locale'
   export = mk
@@ -14798,6 +14839,11 @@ declare module 'date-fns/locale/nl/index' {
 declare module 'date-fns/locale/nl-BE/index' {
   import { nlBE } from 'date-fns/locale'
   export = nlBE
+}
+
+declare module 'date-fns/locale/nn/index' {
+  import { nn } from 'date-fns/locale'
+  export = nn
 }
 
 declare module 'date-fns/locale/pl/index' {
@@ -15040,6 +15086,11 @@ declare module 'date-fns/locale/lt/index.js' {
   export = lt
 }
 
+declare module 'date-fns/locale/lv/index.js' {
+  import { lv } from 'date-fns/locale'
+  export = lv
+}
+
 declare module 'date-fns/locale/mk/index.js' {
   import { mk } from 'date-fns/locale'
   export = mk
@@ -15063,6 +15114,11 @@ declare module 'date-fns/locale/nl/index.js' {
 declare module 'date-fns/locale/nl-BE/index.js' {
   import { nlBE } from 'date-fns/locale'
   export = nlBE
+}
+
+declare module 'date-fns/locale/nn/index.js' {
+  import { nn } from 'date-fns/locale'
+  export = nn
 }
 
 declare module 'date-fns/locale/pl/index.js' {
@@ -15308,6 +15364,11 @@ declare module 'date-fns/esm/locale' {
 
   }
 
+  const lv: Locale
+  namespace lv {
+
+  }
+
   const mk: Locale
   namespace mk {
 
@@ -15330,6 +15391,11 @@ declare module 'date-fns/esm/locale' {
 
   const nlBE: Locale
   namespace nlBE {
+
+  }
+
+  const nn: Locale
+  namespace nn {
 
   }
 
@@ -15574,6 +15640,11 @@ declare module 'date-fns/esm/locale/lt' {
   export default lt
 }
 
+declare module 'date-fns/esm/locale/lv' {
+  import { lv } from 'date-fns/esm/locale'
+  export default lv
+}
+
 declare module 'date-fns/esm/locale/mk' {
   import { mk } from 'date-fns/esm/locale'
   export default mk
@@ -15597,6 +15668,11 @@ declare module 'date-fns/esm/locale/nl' {
 declare module 'date-fns/esm/locale/nl-BE' {
   import { nlBE } from 'date-fns/esm/locale'
   export default nlBE
+}
+
+declare module 'date-fns/esm/locale/nn' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
 }
 
 declare module 'date-fns/esm/locale/pl' {
@@ -15839,6 +15915,11 @@ declare module 'date-fns/esm/locale/lt/index' {
   export default lt
 }
 
+declare module 'date-fns/esm/locale/lv/index' {
+  import { lv } from 'date-fns/esm/locale'
+  export default lv
+}
+
 declare module 'date-fns/esm/locale/mk/index' {
   import { mk } from 'date-fns/esm/locale'
   export default mk
@@ -15862,6 +15943,11 @@ declare module 'date-fns/esm/locale/nl/index' {
 declare module 'date-fns/esm/locale/nl-BE/index' {
   import { nlBE } from 'date-fns/esm/locale'
   export default nlBE
+}
+
+declare module 'date-fns/esm/locale/nn/index' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
 }
 
 declare module 'date-fns/esm/locale/pl/index' {
@@ -16104,6 +16190,11 @@ declare module 'date-fns/esm/locale/lt/index.js' {
   export default lt
 }
 
+declare module 'date-fns/esm/locale/lv/index.js' {
+  import { lv } from 'date-fns/esm/locale'
+  export default lv
+}
+
 declare module 'date-fns/esm/locale/mk/index.js' {
   import { mk } from 'date-fns/esm/locale'
   export default mk
@@ -16127,6 +16218,11 @@ declare module 'date-fns/esm/locale/nl/index.js' {
 declare module 'date-fns/esm/locale/nl-BE/index.js' {
   import { nlBE } from 'date-fns/esm/locale'
   export default nlBE
+}
+
+declare module 'date-fns/esm/locale/nn/index.js' {
+  import { nn } from 'date-fns/esm/locale'
+  export default nn
 }
 
 declare module 'date-fns/esm/locale/pl/index.js' {
@@ -16272,8 +16368,8 @@ interface dateFns {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
 
@@ -16327,6 +16423,7 @@ interface dateFns {
   eachWeekOfInterval(
     interval: Interval,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
@@ -16357,8 +16454,8 @@ interface dateFns {
   endOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
 
@@ -16368,6 +16465,7 @@ interface dateFns {
     date: Date | number,
     format: string,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       locale?: Locale
@@ -16401,8 +16499,8 @@ interface dateFns {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
 
@@ -16452,6 +16550,7 @@ interface dateFns {
   getWeek(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -16460,6 +16559,7 @@ interface dateFns {
   getWeekOfMonth(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -16467,14 +16567,15 @@ interface dateFns {
   getWeeksInMonth(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
 
   getWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -16520,8 +16621,8 @@ interface dateFns {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
 
@@ -16561,8 +16662,8 @@ interface dateFns {
   lastDayOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
 
@@ -16607,8 +16708,8 @@ interface dateFns {
     date: Date | number,
     day: number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
 
@@ -16636,6 +16737,7 @@ interface dateFns {
     date: Date | number,
     week: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -16645,6 +16747,7 @@ interface dateFns {
     date: Date | number,
     weekYear: number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -16673,14 +16776,15 @@ interface dateFns {
   startOfWeek(
     date: Date | number,
     options?: {
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
 
   startOfWeekYear(
     date: Date | number,
     options?: {
+      locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }

@@ -78,6 +78,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - is locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/1026).
   Kudos to [@lamayg](https://github.com/lamayg).
 
+- [Norwegian Nynorsk locale (nn)](https://github.com/date-fns/date-fns/pull/1172)
+  (thanks to Mats Byrkjeland [@draperunner](https://github.com/draperunner))
+
 - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
   (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
 
@@ -136,6 +139,14 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - [vi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/846). Kudos to [@lihop](https://github.com/lihop) and [@trongthanh](https://github.com/trongthanh).
 
 - [fi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/775). Kudos to [@sjuvonen](https://github.com/sjuvonen).
+
+- [lv locale](https://github.com/date-fns/date-fns/pull/1175). Kudos to [@prudolfs](https://github.com/prudolfs).
+
+- [pl locale was updated for v2](https://github.com/date-fns/date-fns/pull/1140). Thanks to [@Mutisz](https://github.com/Mutisz)!
+
+- [ko locale was updated for v2](https://github.com/date-fns/date-fns/pull/1100). Kudos to [@iamssen](https://github.com/iamssen)!
+
+- [zh-TW locale was updated for v2](https://github.com/date-fns/date-fns/pull/1101). Credits go to [@jackhsu978](https://github.com/jackhsu978)!
 
 - New locale-dependent week-numbering year helpers:
 
