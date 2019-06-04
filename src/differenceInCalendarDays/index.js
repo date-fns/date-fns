@@ -32,7 +32,7 @@ var MILLISECONDS_IN_DAY = 86400000
  * // How many calendar days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
  * var result = differenceInCalendarDays(
- *   new Date(2011, 6, 2, 0, 1),
+ *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
  * //=> 1

@@ -52,7 +52,7 @@ export default function toDate(argument) {
       typeof console !== 'undefined'
     ) {
       console.warn(
-        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fpAk2"
+        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
       )
       console.warn(new Error().stack)
     }

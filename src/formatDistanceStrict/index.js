@@ -141,7 +141,7 @@ var MINUTES_IN_YEAR = 525600
  * //=> '525600 minutes'
  *
  * @example
- * // What is the distance from 1 January 2016
+ * // What is the distance from 1 January 2015
  * // to 28 January 2015, in months, rounded up?
  * var result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
  *   unit: 'month',

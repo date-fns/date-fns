@@ -39,7 +39,7 @@ describe('toDate', () => {
       toDate('1987-02-11')
       assert(
         console.warn.calledWith(
-          "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fpAk2"
+          "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
         )
       )
     })
