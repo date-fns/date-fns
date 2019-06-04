@@ -152,6 +152,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [ar-DZ locale was updated for v2](https://github.com/date-fns/date-fns/pull/1168). Kudos to [@elshahat](https://github.com/elshahat)!
 
+- [Added Persian (fa-IR) locale](https://github.com/date-fns/date-fns/pull/1113). Credits go to [@mort3za](https://github.com/mort3za)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
