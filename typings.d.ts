@@ -409,7 +409,6 @@ declare module 'date-fns' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -7420,7 +7419,6 @@ declare module 'date-fns/esm' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -16468,7 +16466,6 @@ interface dateFns {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
