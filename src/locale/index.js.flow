@@ -49,6 +49,7 @@ declare module.exports: {
   eo: Locale,
   es: Locale,
   et: Locale,
+  faIR: Locale,
   fi: Locale,
   fil: Locale,
   fr: Locale,
