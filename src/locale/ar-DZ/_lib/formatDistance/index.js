@@ -1,73 +1,99 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'أقل من ثانية واحدة',
-    other: 'أقل من {{count}} ثواني'
+    two: 'أقل من ثانتين',
+    threeToTen: 'أقل من {{count}} ثواني',
+    other: 'أقل من {{count}} ثانية'
   },
 
   xSeconds: {
     one: 'ثانية واحدة',
-    other: '{{count}} ثواني'
+    two: 'ثانتين',
+    threeToTen: '{{count}} ثواني',
+    other: '{{count}} ثانية'
   },
 
   halfAMinute: 'نصف دقيقة',
 
   lessThanXMinutes: {
     one: 'أقل من دقيقة',
+    two: 'أقل من دقيقتين',
+    threeToTen: 'أقل من {{count}} دقائق',
     other: 'أقل من {{count}} دقيقة'
   },
 
   xMinutes: {
     one: 'دقيقة واحدة',
-    other: '{{count}} دقائق'
+    two: 'دقيقتين',
+    threeToTen: '{{count}} دقائق',
+    other: '{{count}} دقيقة'
   },
 
   aboutXHours: {
     one: 'ساعة واحدة تقريباً',
-    other: '{{count}} ساعات تقريباً'
+    two: 'ساعتين تقريباً',
+    threeToTen: '{{count}} ساعات تقريباً',
+    other: '{{count}} ساعة تقريباً'
   },
 
   xHours: {
     one: 'ساعة واحدة',
-    other: '{{count}} ساعات'
+    two: 'ساعتين',
+    threeToTen: '{{count}} ساعات',
+    other: '{{count}} ساعة'
   },
 
   xDays: {
     one: 'يوم واحد',
-    other: '{{count}} أيام'
+    two: 'يومين',
+    threeToTen: '{{count}} أيام',
+    other: '{{count}} يوم'
   },
 
   aboutXMonths: {
     one: 'شهر واحد تقريباً',
-    other: '{{count}} أشهر تقريباً'
+    two: 'شهرين تقريباً',
+    threeToTen: '{{count}} أشهر تقريباً',
+    other: '{{count}} شهر تقريباً'
   },
 
   xMonths: {
     one: 'شهر واحد',
-    other: '{{count}} أشهر'
+    two: 'شهرين',
+    threeToTen: '{{count}} أشهر',
+    other: '{{count}} شهر'
   },
 
   aboutXYears: {
     one: 'عام واحد تقريباً',
-    other: '{{count}} أعوام تقريباً'
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
   },
 
   xYears: {
     one: 'عام واحد',
-    other: '{{count}} أعوام'
+    two: 'عامين',
+    threeToTen: '{{count}} أعوام',
+    other: '{{count}} عام'
   },
 
   overXYears: {
     one: 'أكثر من عام',
-    other: 'أكثر من {{count}} أعوام'
+    two: 'أكثر من عامين',
+    threeToTen: 'أكثر من {{count}} أعوام',
+    other: 'أكثر من {{count}} عام'
   },
 
   almostXYears: {
     one: 'عام واحد تقريباً',
-    other: '{{count}} أعوام تقريباً'
+    two: 'عامين تقريباً',
+    threeToTen: '{{count}} أعوام تقريباً',
+    other: '{{count}} عام تقريباً'
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -75,6 +101,10 @@ export default function formatDistance (token, count, options) {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
     result = formatDistanceLocale[token].one
+  } else if (count === 2) {
+    result = formatDistanceLocale[token].two
+  } else if (count <= 10) {
+    result = formatDistanceLocale[token].threeToTen.replace('{{count}}', count)
   } else {
     result = formatDistanceLocale[token].other.replace('{{count}}', count)
   }
