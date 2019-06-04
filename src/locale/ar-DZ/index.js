@@ -10,6 +10,7 @@ import match from './_lib/match/index.js'
  * @summary Arabic locale (Modern Standard Arabic ).
  * @language Modern Standard Arabic (Algeria) [ar-dz]
  * @iso-639-2 ara
+ * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
  * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
  */
 var locale = {
