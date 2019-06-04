@@ -148,6 +148,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [zh-TW locale was updated for v2](https://github.com/date-fns/date-fns/pull/1101). Credits go to [@jackhsu978](https://github.com/jackhsu978)!
 
+- [sk locale was updated for v2](https://github.com/date-fns/date-fns/pull/1090). Thank you, [@mareksuscak](https://github.com/mareksuscak)!
+
 - New locale-dependent week-numbering year helpers:
 
   - `getWeek`
