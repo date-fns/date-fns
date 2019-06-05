@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import startOfWeek from '../startOfWeek/index.js'
 import addWeeks from '../addWeeks/index.js'
+import startOfWeek from '../startOfWeek/index.js'
+import toDate from '../toDate/index.js'
 
 /**
  * @name eachWeekOfInterval
@@ -16,6 +16,7 @@ import addWeeks from '../addWeeks/index.js'
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
  * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Date[]} the array with starts of weeks from the week of the interval start to the week of the interval end
  * @throws {TypeError} 1 argument required
