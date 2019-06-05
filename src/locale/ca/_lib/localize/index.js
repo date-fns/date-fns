@@ -1,50 +1,190 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['dg', 'dl', 'dt', 'dc', 'dj', 'dv', 'ds'],
-  short: ['dge', 'dls', 'dts', 'dcs', 'djs', 'dvs', 'dss'],
-  long: ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte']
+var eraValues = {
+  narrow: ['AC', 'DC'],
+  abbreviated: ['AC', 'DC'],
+  wide: ['Abans de Crist', 'Després de Crist']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['T1', 'T2', 'T3', 'T4'],
+  wide: ['1er trimestre', '2on trimestre', '3er trimestre', '4rt trimestre']
 }
 
 var monthValues = {
-  short: ['gen', 'feb', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'oct', 'nov', 'des'],
-  long: ['gener', 'febrer', 'març', 'abril', 'maig', 'juny', 'juliol', 'agost', 'setembre', 'octobre', 'novembre', 'desembre']
+  narrow: ['g', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
+  abbreviated: [
+    'gen',
+    'febr',
+    'març',
+    'abr',
+    'maig',
+    'juny',
+    'jul',
+    'ag',
+    'set',
+    'oct',
+    'nov',
+    'des'
+  ],
+  wide: [
+    'gener',
+    'febrer',
+    'març',
+    'abril',
+    'maig',
+    'juny',
+    'juliol',
+    'agost',
+    'setembre',
+    'octubre',
+    'novembre',
+    'desembre'
+  ]
 }
 
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['a.m.', 'p.m.']
+var dayValues = {
+  narrow: ['dg', 'dl', 'dt', 'dm', 'dj', 'dv', 'ds'],
+  short: ['dg.', 'dl.', 'dt.', 'dm.', 'dj.', 'dv.', 'ds.'],
+  abbreviated: ['diu', 'dil', 'dima', 'dim', 'dij', 'div', 'dis'],
+  wide: [
+    'diumenge',
+    'dilluns',
+    'dimarts',
+    'dimecres',
+    'dijous',
+    'divendres',
+    'dissabte'
+  ]
 }
 
-function ordinalNumber (dirtyNumber) {
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'v',
+    morning: 'matí',
+    afternoon: 'tarda',
+    evening: 'vespre',
+    night: 'nit'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mitjanit',
+    noon: 'migdia',
+    morning: 'matí',
+    afternoon: 'tarda',
+    evening: 'vespre',
+    night: 'nit'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'mitjanit',
+    noon: 'migdia',
+    morning: 'matí',
+    afternoon: 'tarda',
+    evening: 'vespre',
+    night: 'nit'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mn',
+    noon: 'md',
+    morning: 'del matí',
+    afternoon: 'de la tarda',
+    evening: 'del vespre',
+    night: 'de la nit'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'mitjanit',
+    noon: 'migdia',
+    morning: 'del matí',
+    afternoon: 'de la tarda',
+    evening: 'del vespre',
+    night: 'de la nit'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'mitjanit',
+    noon: 'migdia',
+    morning: 'del matí',
+    afternoon: 'de la tarda',
+    evening: 'del vespre',
+    night: 'de la nit'
+  }
+}
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
-  switch (number) {
-    case 1:
-      return '1r'
-    case 2:
-      return '2n'
-    case 3:
-      return '3r'
-    case 4:
-      return '4t'
-    default:
-      return number + 'è'
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
+
+  var rem100 = number % 100
+  if (rem100 > 20 || rem100 < 10) {
+    switch (rem100 % 10) {
+      case 1:
+        return number + 'er'
+      case 2:
+        return number + 'on'
+      case 3:
+        return number + 'er'
+      case 4:
+        return number + 'rt'
+    }
   }
+  return number + 'è'
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
 }
 
 export default localize
