@@ -742,6 +742,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - [Great Britain English locale (en-GB)](https://github.com/date-fns/date-fns/pull/563)
     by [@glintik](https://github.com/glintik).
 
+  - [Uighur locale (ug)](https://github.com/date-fns/date-fns/pull/1080)
+    by [@abduwaly](https://github.com/abduwaly).
+
 ## [1.30.1] - 2018-12-10
 
 ### Fixed
