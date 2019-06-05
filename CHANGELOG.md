@@ -13,188 +13,26 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
 for the list of changes made since `v2.0.0-alpha.1`.
 
-### Added
+### Fixed
 
-- FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
-  that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
-  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
+- Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
+  with a trailing Z (e.g `2012-01Z`), it returned Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
 
-  Functions with options (`format`, `parse`, etc.) have two FP counterparts:
-  one that has the options object as its first argument and one that hasn't.
-  The name of the former has `WithOptions` added to the end of its name.
+- Fix `differenceIn...` functions returning negative zero in some cases:
+  [#692](https://github.com/date-fns/date-fns/issues/692)
 
-  In FP functions, the order of arguments is reversed.
+- `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
 
-  See [FP Guide](docs/fp) for more information.
+- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
+  See PR [#789](https://github.com/date-fns/date-fns/pull/789).
 
-  ```javascript
-  import addYears from 'date-fns/fp/addYears'
-  import formatWithOptions from 'date-fns/fp/formatWithOptions'
-  import eo from 'date-fns/locale/eo'
+- [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
 
-  // If FP function has not received enough arguments, it returns another function
-  const addFiveYears = addYears(5)
+- Fixed DST issue in `eachDayOfInterval` that caused time in the days
+  after DST change to have the shift as well.
 
-  // Several arguments can be curried at once
-  const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
-
-  const dates = [
-    new Date(2017, 0 /* Jan */, 1),
-    new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2)
-  ]
-
-  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
-  //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
-  ```
-
-- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules).
-
-  It allows usage with bundlers that support tree-shaking,
-  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
-
-  ```javascript
-  // Without tree-shaking:
-  import format from 'date-fns/format'
-  import parse from 'date-fns/parse'
-
-  // With tree-shaking:
-  import { format, parse } from 'date-fns'
-  ```
-
-  Also, ESM functions provide default export, they can be used with TypeScript
-  to import functions in more idiomatic way:
-
-  ```typescript
-  // Before
-  import * as format from 'date-fns/format'
-
-  // Now
-  import format from 'date-fns/format'
-  ```
-
-- `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
-
-- is locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/1026).
-  Kudos to [@lamayg](https://github.com/lamayg).
-
-- [Norwegian Nynorsk locale (nn)](https://github.com/date-fns/date-fns/pull/1172)
-  (thanks to Mats Byrkjeland [@draperunner](https://github.com/draperunner))
-
-- [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
-  (thanks to Andrii Korzh [@korzhyk](https://github.com/korzhyk))
-
-- [Vietnamese locale (vi)](https://github.com/date-fns/date-fns/pull/546)
-  (kudos to [@trongthanh](https://github.com/trongthanh))
-
-- Flow typings for `index.js`, `fp/index.js`, `locale/index.js`, and their ESM equivalents.
-  See PR [#558](https://github.com/date-fns/date-fns/pull/558)
-
-- [en-GB locale](https://github.com/date-fns/date-fns/pull/563)
-  (kudos to [@glintik](https://github.com/glintik))
-
-- [Fixes danish locale support for long and relative formats](https://github.com/date-fns/date-fns/pull/555) (kudos to [@stefanbugge](https://github.com/stefanbugge))
-
-- [Support for long and relative formats for German locale](https://github.com/date-fns/date-fns/pull/553) (thanks to [@vanvuongngo](https://github.com/vanvuongngo)).
-
-- [fr-CH locale](https://github.com/date-fns/date-fns/pull/553) (kudos to [@vanvuongngo](https://github.com/vanvuongngo)).
-
-- [Support for long and relative formats for Swedish locale](https://github.com/date-fns/date-fns/pull/570) (thanks to [@alexandernanberg](https://github.com/alexandernanberg)).
-
-- [en-CA locale](https://github.com/date-fns/date-fns/pull/688) (kudos to [@markowsiak](https://github.com/markowsiak)).
-
-- sv locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/749).
-  Kudos to [@alexandernanberg](https://github.com/alexandernanberg).
-
-- nb locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/757).
-  Kudos to [@dagstuan](https://github.com/dagstuan).
-
-- de locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/766).
-  Kudos to [@pex](https://github.com/pex).
-
-- uk locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/769).
-  Kudos to [@shcherbyakdev](https://github.com/shcherbyakdev).
-
-- fr locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/778).
-  Kudos to [@Lakston](https://github.com/Lakston ).
-
-- zh-CN locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
-  Kudos to [@cubicwork](https://github.com/cubicwork).
-
-- es locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/792).
-  Kudos to [@YagoCarballo](https://github.com/YagoCarballo).
-
-- pt-BR locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/807).
-  Thanks to [@YagoCarballo](https://github.com/YagoCarballo) again!
-
-- nl locale [is updated for v2 format](https://github.com/date-fns/date-fns/pull/811).
-  Thanks to the teamwork of [@curry684](https://github.com/curry684) and [@stefanvermaas](https://github.com/stefanvermaas)!
-
-- [hu and lt locales](https://github.com/date-fns/date-fns/pull/864). Thanks to [@izifortune](https://github.com/izifortune) and [pardoeryanair](https://github.com/pardoeryanair).
-
-- [bn locale](https://github.com/date-fns/date-fns/pull/845). Kudos to [@nutboltu](https://github.com/nutboltu) and [@touhidrahman](https://github.com/touhidrahman).
-
-- [it locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/855). Thanks to [@vin-car](https://github.com/vin-car)
-
-- [vi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/846). Kudos to [@lihop](https://github.com/lihop) and [@trongthanh](https://github.com/trongthanh).
-
-- [fi locale is updated for v2 format](https://github.com/date-fns/date-fns/pull/775). Kudos to [@sjuvonen](https://github.com/sjuvonen).
-
-- [lv locale](https://github.com/date-fns/date-fns/pull/1175). Kudos to [@prudolfs](https://github.com/prudolfs).
-
-- [pl locale was updated for v2](https://github.com/date-fns/date-fns/pull/1140). Thanks to [@Mutisz](https://github.com/Mutisz)!
-
-- [ko locale was updated for v2](https://github.com/date-fns/date-fns/pull/1100). Kudos to [@iamssen](https://github.com/iamssen)!
-
-- [zh-TW locale was updated for v2](https://github.com/date-fns/date-fns/pull/1101). Credits go to [@jackhsu978](https://github.com/jackhsu978)!
-
-- [sk locale was updated for v2](https://github.com/date-fns/date-fns/pull/1090). Thank you, [@mareksuscak](https://github.com/mareksuscak)!
-
-- [ar-DZ locale was updated for v2](https://github.com/date-fns/date-fns/pull/1168). Kudos to [@elshahat](https://github.com/elshahat)!
-
-- [Added Persian (fa-IR) locale](https://github.com/date-fns/date-fns/pull/1113). Credits go to [@mort3za](https://github.com/mort3za)!
-
-- New locale-dependent week-numbering year helpers:
-
-  - `getWeek`
-
-  - `getWeekYear`
-
-  - `setWeek`
-
-  - `setWeekYear`
-
-  - `startOfWeekYear`
-
-- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
-
-- [Added `getUnixTime` function](https://github.com/date-fns/date-fns/pull/870). Kudos to [@Kingwl](https://github.com/Kingwl).
-
-- [New decade helpers](https://github.com/date-fns/date-fns/pull/839). Thanks to [@y-nk](https://github.com/y-nk)!
-
-  - `getDecade`
-
-  - `startOfDecade`
-
-  - `endOfDecade`
-
-  - `lastDayOfDecade`
-
-- [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
-
-- Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
-
-- New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
-
-    - `eachWeekendOfInterval`
-
-    - `eachWeekendOfMonth`
-
-    - `eachWeekendOfYear`
-
-- Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
-
-- `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
+- Fix bug in Galician locale caused by incorrect usage of `getHours`
+  instead of `getUTCHours`.
 
 ### Changed
 
@@ -768,26 +606,141 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Exclude `docs.json` from the npm package](https://github.com/date-fns/date-fns/pull/837). Kudos to [@hawkrives](https://github.com/hawkrives).
 
-### Fixed
+### Added
 
-- Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
-  with a trailing Z (e.g `2012-01Z`), it returned Invalid Date for FireFox/IE11 [#510](https://github.com/date-fns/date-fns/issue/510)
+- FP functions like those in [lodash](https://github.com/lodash/lodash/wiki/FP-Guide),
+  that support [currying](https://en.wikipedia.org/wiki/Currying), and, as a consequence,
+  functional-style [function composing](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba).
 
-- Fix `differenceIn...` functions returning negative zero in some cases:
-  [#692](https://github.com/date-fns/date-fns/issues/692)
+  Functions with options (`format`, `parse`, etc.) have two FP counterparts:
+  one that has the options object as its first argument and one that hasn't.
+  The name of the former has `WithOptions` added to the end of its name.
 
-- `isDate` now works properly with dates passed across iframes [#754](https://github.com/date-fns/date-fns/pull/754).
+  In FP functions, the order of arguments is reversed.
 
-- Fix a few bugs that appear in timezones with offsets that include seconds (e.g. GMT+00:57:44).
-  See PR [#789](https://github.com/date-fns/date-fns/pull/789).
+  See [FP Guide](docs/fp) for more information.
 
-- [Fixed DST issue](https://github.com/date-fns/date-fns/pull/1003). See [#972](https://github.com/date-fns/date-fns/issues/972) and [#992](https://github.com/date-fns/date-fns/issues/992) for more details.
+  ```javascript
+  import addYears from 'date-fns/fp/addYears'
+  import formatWithOptions from 'date-fns/fp/formatWithOptions'
+  import eo from 'date-fns/locale/eo'
 
-- Fixed DST issue in `eachDayOfInterval` that caused time in the days
-  after DST change to have the shift as well.
+  // If FP function has not received enough arguments, it returns another function
+  const addFiveYears = addYears(5)
 
-- Fix bug in Galician locale caused by incorrect usage of `getHours`
-  instead of `getUTCHours`.
+  // Several arguments can be curried at once
+  const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
+
+  const dates = [
+    new Date(2017, 0 /* Jan */, 1),
+    new Date(2017, 1 /* Feb */, 11),
+    new Date(2017, 6 /* Jul */, 2)
+  ]
+
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
+  ```
+
+- Added support for [ECMAScript Modules](http://www.ecma-international.org/ecma-262/6.0/#sec-modules).
+
+  It allows usage with bundlers that support tree-shaking,
+  like [rollup.js](http://rollupjs.org) and [webpack](https://webpack.js.org):
+
+  ```javascript
+  // Without tree-shaking:
+  import format from 'date-fns/format'
+  import parse from 'date-fns/parse'
+
+  // With tree-shaking:
+  import { format, parse } from 'date-fns'
+  ```
+
+  Also, ESM functions provide default export, they can be used with TypeScript
+  to import functions in more idiomatic way:
+
+  ```typescript
+  // Before
+  import * as format from 'date-fns/format'
+
+  // Now
+  import format from 'date-fns/format'
+  ```
+
+- `formatRelative` function. See [formatRelative](https://date-fns.org/docs/formatRelative)
+
+- Flow typings for `index.js`, `fp/index.js`, `locale/index.js`, and their ESM equivalents.
+  See PR [#558](https://github.com/date-fns/date-fns/pull/558)
+
+- New locale-dependent week-numbering year helpers:
+
+  - `getWeek`
+
+  - `getWeekYear`
+
+  - `setWeek`
+
+  - `setWeekYear`
+
+  - `startOfWeekYear`
+
+- Added `eachWeekOfInterval`, the weekly equivalent of `eachDayOfInterval`
+
+- [Added `getUnixTime` function](https://github.com/date-fns/date-fns/pull/870). Kudos to [@Kingwl](https://github.com/Kingwl).
+
+- [New decade helpers](https://github.com/date-fns/date-fns/pull/839). Thanks to [@y-nk](https://github.com/y-nk)!
+
+  - `getDecade`
+
+  - `startOfDecade`
+
+  - `endOfDecade`
+
+  - `lastDayOfDecade`
+
+- [New `roundToNearestMinutes` function](https://github.com/date-fns/date-fns/pull/928). Kudos to [@xkizer](https://github.com/xkizer).
+
+- Added new function `fromUnixTime`. Thansk to [@xkizer](https://github.com/xkizer).
+
+- New interval, month, and year helpers to fetch a list of all Saturdays and Sundays (weekends) for a given date interval. `eachWeekendOfInterval` is the handler function while the other two are wrapper functions. Kudos to [@laekettavong](https://github.com/laekettavong)!
+
+    - `eachWeekendOfInterval`
+
+    - `eachWeekendOfMonth`
+
+    - `eachWeekendOfYear`
+
+- Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
+
+- `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
+
+- New locales:
+
+  - [Norwegian Nynorsk locale (nn)](https://github.com/date-fns/date-fns/pull/1172)
+    by [@draperunner](https://github.com/draperunner).
+
+  - [Ukrainian locale (ua)](https://github.com/date-fns/date-fns/pull/532)
+    by [@korzhyk](https://github.com/korzhyk).
+
+  - [Vietnamese locale (vi)](https://github.com/date-fns/date-fns/pull/546)
+    by [@trongthanh](https://github.com/trongthanh).
+
+  - [Persian locale (fa-IR)](https://github.com/date-fns/date-fns/pull/1113)
+    by [@mort3za](https://github.com/mort3za).
+
+  - [Latvian locale (lv)](https://github.com/date-fns/date-fns/pull/1175) 
+    by [@prudolfs](https://github.com/prudolfs).
+
+  - [Bengali locale (bb)](https://github.com/date-fns/date-fns/pull/845)
+    by [@nutboltu](https://github.com/nutboltu) and [@touhidrahman](https://github.com/touhidrahman).
+
+  - [Hungarian (hu) and  Lithuanian (lt) locales](https://github.com/date-fns/date-fns/pull/864)
+    by [@izifortune](https://github.com/izifortune) and [pardoeryanair](https://github.com/pardoeryanair).
+
+  - [Canadian English locale (en-CA)](https://github.com/date-fns/date-fns/pull/688)
+    by [@markowsiak](https://github.com/markowsiak).
+
+  - [Great Britain English locale (en-GB)](https://github.com/date-fns/date-fns/pull/563)
+    by [@glintik](https://github.com/glintik).
 
 ## [1.30.1] - 2018-12-10
 
