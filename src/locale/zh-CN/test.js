@@ -49,8 +49,8 @@ describe('zh-CN locale', function() {
 
     describe('month', function() {
       it('formatting month', function() {
-        var result = format(date, "MMMM do '天'", { locale: locale })
-        assert(result === '四月 第 5 天')
+        var result = format(date, "MMMM do '日'", { locale: locale })
+        assert(result === '四月 5 日')
       })
 
       it('stand-alone month', function() {
@@ -78,7 +78,7 @@ describe('zh-CN locale', function() {
     describe('day', function() {
       it('ordinal date', function() {
         var result = format(date, "'今天是' do '日'", { locale: locale })
-        assert(result === '今天是 第 5 日')
+        assert(result === '今天是 5 日')
       })
 
       it('ordinal day of year', function() {
@@ -102,7 +102,7 @@ describe('zh-CN locale', function() {
     describe('day period and hour', function() {
       it('ordinal hour', function() {
         var result = format(date, "ho '时'", { locale: locale })
-        assert(result === '第 10 时')
+        assert(result === '10 时')
       })
 
       it('AM, PM', function() {
@@ -129,12 +129,12 @@ describe('zh-CN locale', function() {
 
     it('ordinal minute', function() {
       var result = format(date, "mo '分'", { locale: locale })
-      assert(result === '第 32 分')
+      assert(result === '32 分')
     })
 
     it('ordinal second', function() {
       var result = format(date, "so '秒'", { locale: locale })
-      assert(result === '第 0 秒')
+      assert(result === '0 秒')
     })
 
     describe('long format', function() {
