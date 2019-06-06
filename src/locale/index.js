@@ -2,7 +2,9 @@
 
 module.exports = {
   af: require('./af/index.js'),
+  arDZ: require('./ar-DZ/index.js'),
   arSA: require('./ar-SA/index.js'),
+  be: require('./be/index.js'),
   bn: require('./bn/index.js'),
   da: require('./da/index.js'),
   de: require('./de/index.js'),
@@ -14,10 +16,13 @@ module.exports = {
   es: require('./es/index.js'),
   et: require('./et/index.js'),
   faIR: require('./fa-IR/index.js'),
+  fi: require('./fi/index.js'),
   fr: require('./fr/index.js'),
   gl: require('./gl/index.js'),
   he: require('./he/index.js'),
   hu: require('./hu/index.js'),
+  id: require('./id/index.js'),
+  is: require('./is/index.js'),
   it: require('./it/index.js'),
   ja: require('./ja/index.js'),
   ko: require('./ko/index.js'),
@@ -29,9 +34,15 @@ module.exports = {
   pl: require('./pl/index.js'),
   pt: require('./pt/index.js'),
   ptBR: require('./pt-BR/index.js'),
+  ro: require('./ro/index.js'),
   ru: require('./ru/index.js'),
+  sk: require('./sk/index.js'),
   sv: require('./sv/index.js'),
+  th: require('./th/index.js'),
+  tr: require('./tr/index.js'),
+  ug: require('./ug/index.js'),
   uk: require('./uk/index.js'),
   vi: require('./vi/index.js'),
-  zhCN: require('./zh-CN/index.js')
+  zhCN: require('./zh-CN/index.js'),
+  zhTW: require('./zh-TW/index.js')
 }
