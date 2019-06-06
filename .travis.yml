@@ -31,6 +31,8 @@ jobs:
     - stage: deploy
       if: tag IS present
       script: ./scripts/release/release.sh
+    - stage: Coverage report
+      script: ./scripts/test/coverageReport.sh
 
 cache: yarn
 

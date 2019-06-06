@@ -39,9 +39,10 @@ declare module.exports: (
   date: Date | number,
   format: string,
   options?: {
+    locale?: Locale,
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     firstWeekContainsDate?: number,
-    locale?: Locale,
-    awareOfUnicodeTokens?: boolean
+    useAdditionalWeekYearTokens?: boolean,
+    useAdditionalDayOfYearTokens?: boolean
   }
 ) => string

@@ -2,7 +2,7 @@
 
 ## Removing unused languages from dynamic import
 
-If locale is required dynamically all languages in the date-fns are loaded by webpack into bundle (~160kb) or split across the chunks. This prolongs the build process and increases the amount of space taken. However it is possible to use webpack to trim down languages using [ContextReplacementPlugin].
+If locale is required dynamically all languages in the date-fns are loaded by webpack into bundle (~160kb) or split across the chunks. This prolongs the build process and increases the amount of space taken. However, it is possible to use webpack to trim down languages using [ContextReplacementPlugin].
 
 Let's assume that we have a single point in which supported locales are present:
 
@@ -12,7 +12,7 @@ Let's assume that we have a single point in which supported locales are present:
 export const supportedLocales = ['en', 'de', 'pl', 'it']
 ```
 
-We could alslo have a function that formats the date:
+We could also have a function that formats the date:
 
 ```js
 const getLocale = locale => require(`date-fns/locale/${locale}/index.js`)

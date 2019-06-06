@@ -8,13 +8,13 @@
  * It's a part of the release process.
  */
 
-const {getFirebaseDB} = require('../_lib/firebase')
+const { getFirebaseDB } = require('../_lib/firebase')
 const path = require('path')
 const fs = require('fs')
 const childProcess = require('child_process')
 const listLocales = require('../_lib/listLocales')
 const countries = require('world-countries')
-const {version} = require('../../package.json')
+const { version } = require('../../package.json')
 
 const prereleaseRegExp = /(test|alpha|beta|rc)/
 
@@ -28,8 +28,8 @@ const features = {
   utc: false
 }
 
-function generateLocale (tag, locale) {
-  const {code, fullPath} = locale
+function generateLocale(tag, locale) {
+  const { code, fullPath } = locale
   const source = fs.readFileSync(path.join(process.cwd(), fullPath)).toString()
   const languageName = source.match(/\* @language (.*)/)[1]
   const iso639dash2 = source.match(/\* @iso-639-2 (.*)/)[1]
@@ -52,27 +52,41 @@ function generateLocale (tag, locale) {
   }
 }
 
-function generateVersionData () {
+function generateVersionData() {
   const tag = `v${version}`
 
-  const commit = childProcess.execSync('git rev-parse HEAD')
+  const commit = childProcess
+    .execSync('git rev-parse HEAD')
     .toString()
     .replace(/[\s\n]/g, '')
 
-  const date = parseInt(
-    childProcess.execSync('git show -s --format=%ct')
-      .toString()
-      .replace(/[\s\n]/g, ''),
-    10
-  ) * 1000
+  const date =
+    parseInt(
+      childProcess
+        .execSync('git show -s --format=%ct')
+        .toString()
+        .replace(/[\s\n]/g, ''),
+      10
+    ) * 1000
 
-  const docsJSON = fs.readFileSync(path.resolve(process.cwd(), 'tmp/docs.json'))
+  const docsJSON = fs
+    .readFileSync(path.resolve(process.cwd(), 'tmp/docs.json'))
     .toString()
   const docs = JSON.parse(docsJSON)
   const docsCategories = Object.keys(docs)
-  const docsPages = docsCategories.reduce((acc, category) => acc.concat(docs[category]), [])
-  const docsKeys = docsPages
-    .map(({urlId, category, title, description}, index) => ({urlId, category, title, description, key: index}))
+  const docsPages = docsCategories.reduce(
+    (acc, category) => acc.concat(docs[category]),
+    []
+  )
+  const docsKeys = docsPages.map(
+    ({ urlId, category, title, description }, index) => ({
+      urlId,
+      category,
+      title,
+      description,
+      key: index
+    })
+  )
 
   const locales = listLocales().map(generateLocale.bind(null, tag))
 
@@ -89,8 +103,8 @@ function generateVersionData () {
   }
 }
 
-function generateDocs (data) {
-  const {tag, docsPages, docsKeys, docsCategories} = data
+function generateDocs(data) {
+  const { tag, docsPages, docsKeys, docsCategories } = data
 
   return {
     tag,
@@ -100,15 +114,8 @@ function generateDocs (data) {
   }
 }
 
-function generateVersion (data, docsKey) {
-  const {
-    tag,
-    date,
-    commit,
-    prerelease,
-    features,
-    locales
-  } = data
+function generateVersion(data, docsKey) {
+  const { tag, date, commit, prerelease, features, locales } = data
 
   return {
     tag,
@@ -140,7 +147,7 @@ getFirebaseDB()
     console.log('Done!')
     process.exit(0)
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err)
     process.exit(1)
   })

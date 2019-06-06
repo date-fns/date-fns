@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 import { endOfWeek } from 'date-fns/fp'
-export = endOfWeek
+export default endOfWeek

@@ -1,16 +1,16 @@
-import toInteger from '../_lib/toInteger/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import defaultLocale from '../locale/en-US/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index.js'
 import formatters from '../_lib/format/formatters/index.js'
 import longFormatters from '../_lib/format/longFormatters/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import {
-  isProtectedWeekYearToken,
   isProtectedDayOfYearToken,
+  isProtectedWeekYearToken,
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
+import toInteger from '../_lib/toInteger/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -304,9 +304,9 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens
  * @param {Object} [options] - an object with options.
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Number} [options.firstWeekContainsDate=1] - the day of January, which is
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
  *   see: https://git.io/fxCyr
  * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;

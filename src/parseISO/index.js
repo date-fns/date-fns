@@ -120,7 +120,7 @@ export default function parseISO(argument, dirtyOptions) {
 
   if (dateStrings.time) {
     time = parseTime(dateStrings.time)
-    if (isNaN(time)) {
+    if (isNaN(time) || time === null) {
       return new Date(NaN)
     }
   }
