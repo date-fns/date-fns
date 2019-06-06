@@ -31,8 +31,8 @@ jobs:
     - stage: deploy
       if: tag IS present
       script: ./scripts/release/release.sh
-    - stage: Produce Coverage
-      script: yarn test --single-run && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+    - stage: Coverage report
+      script: ./scripts/test/coverageReport.sh
 
 cache: yarn
 

@@ -140,9 +140,10 @@ function config(config) {
       output: 'minimal'
     },
 
-    plugins: [
-      'karma-coverage',
-      'karma-coverage-istanbul-reporter',
+    plugins: (process.env.COVERAGE_REPORT
+      ? ['karma-coverage', 'karma-coverage-istanbul-reporter']
+      : []
+    ).concat([
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
@@ -155,13 +156,13 @@ function config(config) {
       'karma-benchmark-reporter',
       { 'reporter:count': ['type', countReporter] },
       { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] }
-    ],
+    ]),
 
     customLaunchers: process.env.TEST_CROSS_BROWSER
       ? sauceLabsLaunchers
       : process.env.TRAVIS
-        ? travisLaunchers
-        : localLaunchers,
+      ? travisLaunchers
+      : localLaunchers,
     browsers: getBrowsersConfig(),
     reporters: getReportersConfig()
   })
@@ -212,8 +213,10 @@ function getReportersConfig() {
     return ['dots', 'saucelabs', 'count']
   } else if (process.env.TEST_BENCHMARK) {
     return ['benchmark', 'benchmark-json']
+  } else if (process.env.COVERAGE_REPORT) {
+    return ['coverage-istanbul']
   } else {
-    return ['mocha', 'count', 'coverage-istanbul']
+    return ['mocha', 'count']
   }
 }
 
