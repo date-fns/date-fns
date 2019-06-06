@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/date-fns/date-fns/badge.svg?branch=master)](https://coveralls.io/github/date-fns/date-fns?branch=master)
+
 # ![](https://cdn.rawgit.com/date-fns/date-fns/c5bcd92d04f14da194e6298101a6509b1c3b30f0/docs/logo.svg) date-fns
 
 [🙏 **Please help us to make the best date library for JavaScript. We need your support!**](https://opencollective.com/date-fns)
