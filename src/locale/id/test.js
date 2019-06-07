@@ -125,7 +125,7 @@ describe('id locale', function() {
         assert(result === 'tengah malam, tengah malam, tengah malam')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, "'Jam' h B", { locale: locale })
           assert(result === 'Jam 10 di waktu pagi')

@@ -121,7 +121,7 @@ describe('ko locale', function() {
         assert(result === '자정, 자정, 자정')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'B h', { locale: locale })
           assert(result === '아침 10')
