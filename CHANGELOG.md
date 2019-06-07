@@ -713,7 +713,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
 
-- Add constants:
+- Add constants that can be imported directly from `date-fns` or the submodule `date-fns/constants`:
 
   - `maxTime`
 
@@ -733,7 +733,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
   - [Persian locale (fa-IR)](https://github.com/date-fns/date-fns/pull/1113)
     by [@mort3za](https://github.com/mort3za).
 
-  - [Latvian locale (lv)](https://github.com/date-fns/date-fns/pull/1175) 
+  - [Latvian locale (lv)](https://github.com/date-fns/date-fns/pull/1175)
     by [@prudolfs](https://github.com/prudolfs).
 
   - [Bengali locale (bb)](https://github.com/date-fns/date-fns/pull/845)
