@@ -40,16 +40,63 @@ var quarterValues = {
 }
 
 var monthValues = {
-  narrow: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
-  abbreviated: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
-  wide: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']
+  narrow: [
+    'জানু',
+    'ফেব্রু',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্ট',
+    'অক্টো',
+    'নভে',
+    'ডিসে'
+  ],
+  abbreviated: [
+    'জানু',
+    'ফেব্রু',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্ট',
+    'অক্টো',
+    'নভে',
+    'ডিসে'
+  ],
+  wide: [
+    'জানুয়ারি',
+    'ফেব্রুয়ারি',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্টেম্বর',
+    'অক্টোবর',
+    'নভেম্বর',
+    'ডিসেম্বর'
+  ]
 }
 
 var dayValues = {
   narrow: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
   short: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
   abbreviated: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
-  wide: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার ', 'শুক্রবার', 'শনিবার']
+  wide: [
+    'রবিবার',
+    'সোমবার',
+    'মঙ্গলবার',
+    'বুধবার',
+    'বৃহস্পতিবার ',
+    'শুক্রবার',
+    'শনিবার'
+  ]
 }
 
 var dayPeriodValues = {
@@ -117,7 +164,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function dateOrdinalNumber (number, localeNumber) {
+function dateOrdinalNumber(number, localeNumber) {
   if (number > 18 && number <= 31) {
     return localeNumber + 'শে'
   } else {
@@ -135,10 +182,10 @@ function dateOrdinalNumber (number, localeNumber) {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = localize.localeToNumber(dirtyNumber)
   var localeNumber = localize.numberToLocale(number)
-  const { unit } = dirtyOptions
+  var unit = dirtyOptions.unit
 
   if (unit === 'date') {
     return dateOrdinalNumber(number, localeNumber)
@@ -164,15 +211,15 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   }
 }
 
-function localeToNumber (locale) {
-  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+function localeToNumber(locale) {
+  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function(match) {
     return numberValues.number[match]
   })
   return Number(number)
 }
 
-function numberToLocale (number) {
-  return number.toString().replace(/\d/g, function (match) {
+function numberToLocale(number) {
+  return number.toString().replace(/\d/g, function(match) {
     return numberValues.locale[match]
   })
 }
@@ -192,7 +239,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
@@ -211,7 +258,7 @@ var localize = {
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   })
 }
 

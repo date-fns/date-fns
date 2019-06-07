@@ -3,7 +3,6 @@
 
 import assert from 'power-assert'
 import locale from '.'
-
 import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
@@ -49,15 +48,15 @@ describe('zh-CN locale', function() {
 
     describe('month', function() {
       it('formatting month', function() {
-        var result = format(date, "MMMM do '天'", { locale: locale })
-        assert(result === '四月 第 5 天')
+        var result = format(date, "MMMM do '日'", { locale: locale })
+        assert(result === '四月 5 日')
       })
 
       it('stand-alone month', function() {
         var result = format(date, "Lo '月', LLL, LLLL, LLLLL", {
           locale: locale
         })
-        assert(result === '第 4 月, 四月, 四月, 四')
+        assert(result === '第 4 月, 4月, 四月, 四')
       })
     })
 
@@ -78,7 +77,7 @@ describe('zh-CN locale', function() {
     describe('day', function() {
       it('ordinal date', function() {
         var result = format(date, "'今天是' do '日'", { locale: locale })
-        assert(result === '今天是 第 5 日')
+        assert(result === '今天是 5 日')
       })
 
       it('ordinal day of year', function() {
@@ -102,7 +101,7 @@ describe('zh-CN locale', function() {
     describe('day period and hour', function() {
       it('ordinal hour', function() {
         var result = format(date, "ho '时'", { locale: locale })
-        assert(result === '第 10 时')
+        assert(result === '10 时')
       })
 
       it('AM, PM', function() {
@@ -129,63 +128,63 @@ describe('zh-CN locale', function() {
 
     it('ordinal minute', function() {
       var result = format(date, "mo '分'", { locale: locale })
-      assert(result === '第 32 分')
+      assert(result === '32 分')
     })
 
     it('ordinal second', function() {
       var result = format(date, "so '秒'", { locale: locale })
-      assert(result === '第 0 秒')
+      assert(result === '0 秒')
     })
 
     describe('long format', function() {
       it('short date', function() {
         var result = format(date, 'P', { locale: locale })
-        assert(result === '04/05/1986')
+        assert(result === '86-04-05')
       })
 
       it('medium date', function() {
         var result = format(date, 'PP', { locale: locale })
-        assert(result === '四月 5, 1986')
+        assert(result === '1986-04-05')
       })
 
       it('long date', function() {
         var result = format(date, 'PPP', { locale: locale })
-        assert(result === '四月 5日, 1986')
+        assert(result === '1986年4月5日')
       })
 
       it('full date', function() {
         var result = format(date, 'PPPP', { locale: locale })
-        assert(result === '星期六, 四月 5日, 1986')
+        assert(result === '1986年4月5日 星期六')
       })
 
       it('short time', function() {
         var result = format(date, 'p', { locale: locale })
-        assert(result === '10:32 上午')
+        assert(result === '上午 10:32')
       })
 
       it('medium time', function() {
         var result = format(date, 'pp', { locale: locale })
-        assert(result === '10:32:00 上午')
+        assert(result === '上午 10:32:00')
       })
 
       it('short date + time', function() {
         var result = format(date, 'Pp', { locale: locale })
-        assert(result === '04/05/1986 10:32 上午')
+        assert(result === '86-04-05 上午 10:32')
       })
 
       it('medium date + time', function() {
         var result = format(date, 'PPpp', { locale: locale })
-        assert(result === '四月 5, 1986 10:32:00 上午')
+        assert(result === '1986-04-05 上午 10:32:00')
       })
 
       it('long date + time', function() {
         var result = format(date, 'PPPp', { locale: locale })
-        assert(result === '四月 5日, 1986 10:32 上午')
+        assert(result === '1986年4月5日 上午 10:32')
       })
 
       it('full date + time', function() {
         var result = format(date, 'PPPPp', { locale: locale })
-        assert(result === '星期六, 四月 5日, 1986 10:32 上午')
+        assert(result === '1986年4月5日 星期六 上午 10:32')
       })
     })
   })
@@ -259,7 +258,7 @@ describe('zh-CN locale', function() {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {
         locale: locale
       })
-      assert(result === '上个 星期二 12:00 上午')
+      assert(result === '上个 星期二 上午 12:00')
     })
 
     it('yesterday', function() {
@@ -268,7 +267,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '昨天 10:22 下午')
+      assert(result === '昨天 下午 10:22')
     })
 
     it('today', function() {
@@ -277,7 +276,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '今天 4:50 下午')
+      assert(result === '今天 下午 4:50')
     })
 
     it('tomorrow', function() {
@@ -286,7 +285,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '明天 7:30 上午')
+      assert(result === '明天 上午 7:30')
     })
 
     it('next week', function() {
@@ -295,7 +294,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '下个 星期日 12:00 下午')
+      assert(result === '下个 星期日 下午 12:00')
     })
 
     it('after the next week', function() {
@@ -304,7 +303,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '04/11/1986')
+      assert(result === '86-04-11')
     })
   })
 
@@ -364,7 +363,7 @@ describe('zh-CN locale', function() {
       })
 
       it('abbreviated', function() {
-        var result = parse('十一', 'MMM', baseDate, { locale: locale })
+        var result = parse('11月', 'MMM', baseDate, { locale: locale })
         assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
       })
 

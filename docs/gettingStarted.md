@@ -46,7 +46,7 @@ To use submodule features, [install the npm package](#npm) and then import a fun
 
 ```js
 // The main submodule:
-const addDays from 'date-fns/addDays'
+import addDays from 'date-fns/addDays'
 
 // FP variation:
 import addDays from 'date-fns/fp/addDays'

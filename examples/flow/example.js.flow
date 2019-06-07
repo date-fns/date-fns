@@ -1,8 +1,8 @@
 // @flow
 
-var format = require('date-fns/format')
+const format = require('date-fns/format')
 
-var dateString : string = '2017-01-25T21:28:15.000Z'
-var formatString : string = 'dd.MM.yyyy HH:mm:ss'
-var result : string = format(dateString, formatString)
+const dateString : Date = new Date(2017, 0, 25, 21, 28, 15)
+const formatString : string = 'dd.MM.yyyy HH:mm:ss'
+const result : string = format(dateString, formatString)
 console.log(result === '25.01.2017 21:28:15')

@@ -28,27 +28,91 @@ var MINUTES_IN_YEAR = 525600
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param {Date|String|Number} date - the date
- * @param {Date|String|Number} baseDate - the date to compare with
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * - The function was renamed from `distanceInWordsStrict` to `formatDistanceStrict`
+ *   to make its name consistent with `format` and `formatRelative`.
+ *
+ * - The order of arguments is swapped to make the function
+ *   consistent with `differenceIn...` functions.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(2015, 0, 2),
+ *     new Date(2014, 6, 2)
+ *   ) //=> '6 months'
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(2014, 6, 2),
+ *     new Date(2015, 0, 2)
+ *   ) //=> '6 months'
+ *   ```
+ *
+ * - `partialMethod` option is renamed to `roundingMethod`.
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     { partialMethod: 'ceil' }
+ *   ) //=> '2 minutes'
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     { roundingMethod: 'ceil' }
+ *   ) //=> '2 minutes'
+ *   ```
+ *
+ * - If `roundingMethod` is not specified, it now defaults to `round` instead of `floor`.
+ *
+ * - `unit` option now accepts one of the strings:
+ *   'second', 'minute', 'hour', 'day', 'month' or 'year' instead of 's', 'm', 'h', 'd', 'M' or 'Y'
+ *
+ *   ```javascript
+ *   // Before v2.0.0
+ *
+ *   distanceInWordsStrict(
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     { unit: 'm' }
+ *   )
+ *
+ *   // v2.0.0 onward
+ *
+ *   formatDistanceStrict(
+ *     new Date(1986, 3, 4, 10, 33, 1),
+ *     new Date(1986, 3, 4, 10, 32, 0),
+ *     { unit: 'minute' }
+ *   )
+ *   ```
+ *
+ * @param {Date|Number} date - the date
+ * @param {Date|Number} baseDate - the date to compare with
+ * @param {Object} [options] - an object with options.
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = formatDistanceStrict(
- *   new Date(2014, 6, 2),
- *   new Date(2015, 0, 2)
- * )
+ * var result = formatDistanceStrict(new Date(2014, 6, 2), new Date(2015, 0, 2))
  * //=> '6 months'
  *
  * @example
@@ -56,53 +120,52 @@ var MINUTES_IN_YEAR = 525600
  * // and 1 January 2015 00:00:00?
  * var result = formatDistanceStrict(
  *   new Date(2015, 0, 1, 0, 0, 15),
- *   new Date(2015, 0, 1, 0, 0, 0),
+ *   new Date(2015, 0, 1, 0, 0, 0)
  * )
  * //=> '15 seconds'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = formatDistanceStrict(
- *   new Date(2015, 0, 1),
- *   new Date(2016, 0, 1),
- *   {addSuffix: true}
- * )
+ * var result = formatDistanceStrict(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ *   addSuffix: true
+ * })
  * //=> '1 year ago'
  *
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, in minutes?
- * var result = formatDistanceStrict(
- *   new Date(2016, 0, 1),
- *   new Date(2015, 0, 1),
- *   {unit: 'minute'}
- * )
+ * var result = formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
+ *   unit: 'minute'
+ * })
  * //=> '525600 minutes'
  *
  * @example
- * // What is the distance from 1 January 2016
+ * // What is the distance from 1 January 2015
  * // to 28 January 2015, in months, rounded up?
- * var result = formatDistanceStrict(
- *   new Date(2015, 0, 28),
- *   new Date(2015, 0, 1),
- *   {unit: 'month', roundingMethod: 'ceil'}
- * )
+ * var result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
+ *   unit: 'month',
+ *   roundingMethod: 'ceil'
+ * })
  * //=> '1 month'
  *
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = formatDistanceStrict(
- *   new Date(2016, 7, 1),
- *   new Date(2015, 0, 1),
- *   {locale: eoLocale}
- * )
+ * var result = formatDistanceStrict(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ *   locale: eoLocale
+ * })
  * //=> '1 jaro'
  */
-export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatDistanceStrict(
+  dirtyDate,
+  dirtyBaseDate,
+  dirtyOptions
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
   var options = dirtyOptions || {}
@@ -112,10 +175,10 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     throw new RangeError('locale must contain localize.formatDistance property')
   }
 
-  var comparison = compareAsc(dirtyDate, dirtyBaseDate, options)
+  var comparison = compareAsc(dirtyDate, dirtyBaseDate)
 
   if (isNaN(comparison)) {
-    return 'Invalid Date'
+    throw new RangeError('Invalid time value')
   }
 
   var localizeOptions = cloneObject(options)
@@ -125,14 +188,15 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   var dateLeft
   var dateRight
   if (comparison > 0) {
-    dateLeft = toDate(dirtyBaseDate, options)
-    dateRight = toDate(dirtyDate, options)
+    dateLeft = toDate(dirtyBaseDate)
+    dateRight = toDate(dirtyDate)
   } else {
-    dateLeft = toDate(dirtyDate, options)
-    dateRight = toDate(dirtyBaseDate, options)
+    dateLeft = toDate(dirtyDate)
+    dateRight = toDate(dirtyBaseDate)
   }
 
-  var roundingMethod = options.roundingMethod == null ? 'round' : String(options.roundingMethod)
+  var roundingMethod =
+    options.roundingMethod == null ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
 
   if (roundingMethod === 'floor') {
@@ -145,8 +209,11 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
     throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft, dirtyOptions)
-  var offsetInSeconds = (getTimezoneOffsetInMilliseconds(dateRight) - getTimezoneOffsetInMilliseconds(dateLeft)) / 1000
+  var seconds = differenceInSeconds(dateRight, dateLeft)
+  var offsetInSeconds =
+    (getTimezoneOffsetInMilliseconds(dateRight) -
+      getTimezoneOffsetInMilliseconds(dateLeft)) /
+    1000
   var minutes = roundingMethodFn((seconds - offsetInSeconds) / 60)
 
   var unit
@@ -172,30 +239,32 @@ export default function formatDistanceStrict (dirtyDate, dirtyBaseDate, dirtyOpt
   if (unit === 'second') {
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
-  // 1 up to 60 mins
+    // 1 up to 60 mins
   } else if (unit === 'minute') {
     return locale.formatDistance('xMinutes', minutes, localizeOptions)
 
-  // 1 up to 24 hours
+    // 1 up to 24 hours
   } else if (unit === 'hour') {
     var hours = roundingMethodFn(minutes / 60)
     return locale.formatDistance('xHours', hours, localizeOptions)
 
-  // 1 up to 30 days
+    // 1 up to 30 days
   } else if (unit === 'day') {
     var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
 
-  // 1 up to 12 months
+    // 1 up to 12 months
   } else if (unit === 'month') {
     var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', months, localizeOptions)
 
-  // 1 year up to max Date
+    // 1 year up to max Date
   } else if (unit === 'year') {
     var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
 
-  throw new RangeError("unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'")
+  throw new RangeError(
+    "unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'"
+  )
 }

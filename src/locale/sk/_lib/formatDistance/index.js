@@ -1,4 +1,7 @@
-function declensionGroup (scheme, count) {
+// NOTE: should prolly be improved
+// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
+
+function declensionGroup(scheme, count) {
   if (count === 1) {
     return scheme.one
   }
@@ -11,21 +14,23 @@ function declensionGroup (scheme, count) {
   return scheme.other
 }
 
-function declension (scheme, count, time) {
+function declension(scheme, count, time) {
   var group = declensionGroup(scheme, count)
   var finalText = group[time] || group
   return finalText.replace('{{count}}', count)
 }
 
-function extractPreposition (token) {
-  var result = ['lessThan', 'about', 'over', 'almost'].filter(function (preposition) {
+function extractPreposition(token) {
+  var result = ['lessThan', 'about', 'over', 'almost'].filter(function(
+    preposition
+  ) {
     return !!token.match(new RegExp('^' + preposition))
   })
 
   return result[0]
 }
 
-function prefixPreposition (preposition) {
+function prefixPreposition(preposition) {
   var translation = ''
 
   if (preposition === 'almost') {
@@ -39,7 +44,7 @@ function prefixPreposition (preposition) {
   return translation.length > 0 ? translation + ' ' : ''
 }
 
-function suffixPreposition (preposition) {
+function suffixPreposition(preposition) {
   var translation = ''
 
   if (preposition === 'lessThan') {
@@ -53,7 +58,7 @@ function suffixPreposition (preposition) {
   return translation.length > 0 ? translation + ' ' : ''
 }
 
-function lowercaseFirstLetter (string) {
+function lowercaseFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
 
@@ -175,7 +180,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var preposition = extractPreposition(token) || ''
@@ -183,12 +188,26 @@ export default function formatDistance (token, count, options) {
   var scheme = formatDistanceLocale[key]
 
   if (!options.addSuffix) {
-    return prefixPreposition(preposition) + suffixPreposition(preposition) + declension(scheme, count, 'regular')
+    return (
+      prefixPreposition(preposition) +
+      suffixPreposition(preposition) +
+      declension(scheme, count, 'regular')
+    )
   }
 
   if (options.comparison > 0) {
-    return prefixPreposition(preposition) + 'za ' + suffixPreposition(preposition) + declension(scheme, count, 'future')
+    return (
+      prefixPreposition(preposition) +
+      'o ' +
+      suffixPreposition(preposition) +
+      declension(scheme, count, 'future')
+    )
   } else {
-    return prefixPreposition(preposition) + 'pred ' + suffixPreposition(preposition) + declension(scheme, count, 'past')
+    return (
+      prefixPreposition(preposition) +
+      'pred ' +
+      suffixPreposition(preposition) +
+      declension(scheme, count, 'past')
+    )
   }
 }

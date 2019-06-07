@@ -3,7 +3,6 @@
 
 import assert from 'power-assert'
 import locale from '.'
-
 import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
@@ -136,7 +135,7 @@ describe('sv locale', function() {
     describe('long format', function() {
       it('short date', function() {
         var result = format(date, 'P', { locale: locale })
-        assert(result === '05-04-1986')
+        assert(result === '1986-04-05')
       })
 
       it('medium date', function() {
@@ -166,7 +165,7 @@ describe('sv locale', function() {
 
       it('short date + time', function() {
         var result = format(date, 'Pp', { locale: locale })
-        assert(result === '05-04-1986 10:32')
+        assert(result === '1986-04-05 10:32')
       })
 
       it('medium date + time', function() {
@@ -255,7 +254,7 @@ describe('sv locale', function() {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {
         locale: locale
       })
-      assert(result === 'förra tisdagen kl. 00:00')
+      assert(result === 'i tisdags kl. 00:00')
     })
 
     it('yesterday', function() {
@@ -291,7 +290,7 @@ describe('sv locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === 'söndag kl. 12:00')
+      assert(result === 'på söndag kl. 12:00')
     })
 
     it('after the next week', function() {
@@ -300,7 +299,7 @@ describe('sv locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '11-04-1986')
+      assert(result === '1986-04-11')
     })
   })
 

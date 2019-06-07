@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import {lastDayOfISOWeek} from 'date-fns'
-export = lastDayOfISOWeek
+import { lastDayOfISOWeek } from 'date-fns'
+export default lastDayOfISOWeek

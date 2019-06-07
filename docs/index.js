@@ -49,6 +49,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Constants',
+      category: 'General',
+      title: 'Constants',
+      description: 'Useful constants',
+      path: path.join(__dirname, 'constants.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'I18n',
       category: 'General',
       title: 'I18n',
@@ -62,6 +70,14 @@ module.exports = {
       title: 'I18n Contribution Guide',
       description: 'Locales manual',
       path: path.join(__dirname, 'i18nContributionGuide.md')
+    },
+    {
+      type: 'markdown',
+      urlId: 'Time-Zones',
+      category: 'General',
+      title: 'Time Zones',
+      description: 'Time zone functions',
+      path: path.join(__dirname, 'timeZones.md')
     },
     {
       type: 'markdown',
@@ -97,6 +113,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Upgrade-Guide',
+      category: 'General',
+      title: 'Upgrade guide',
+      description: 'Changes from v1 to v2',
+      path: path.join(__dirname, 'upgradeGuide.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'License',
       category: 'General',
       title: 'License',
@@ -108,9 +132,6 @@ module.exports = {
   sharedDocs: [
     {
       fullPath: path.join(__dirname, 'Interval.js')
-    },
-    {
-      fullPath: path.join(__dirname, 'Options.js')
     },
     {
       fullPath: path.join(__dirname, 'Locale.js')

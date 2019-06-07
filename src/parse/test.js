@@ -99,13 +99,15 @@ describe('parse', function() {
 
     describe('two-digit numeric year', function() {
       it('works as expected', function() {
-        var result = parse('02', 'YY', baseDate, { awareOfUnicodeTokens: true })
+        var result = parse('02', 'YY', baseDate, {
+          useAdditionalWeekYearTokens: true
+        })
         assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
       })
 
       it('gets the 100 year range from `baseDate`', function() {
         var result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2), {
-          awareOfUnicodeTokens: true
+          useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(1901, 11 /* Dec */, 29))
       })
@@ -118,7 +120,7 @@ describe('parse', function() {
 
     it('four-digit zero-padding', function() {
       var result = parse('2018', 'YYYY', baseDate, {
-        awareOfUnicodeTokens: true
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2017, 11 /* Dec */, 31))
     })
@@ -387,7 +389,9 @@ describe('parse', function() {
 
   describe('day of year', function() {
     it('numeric', function() {
-      var result = parse('200', 'D', baseDate, { awareOfUnicodeTokens: true })
+      var result = parse('200', 'D', baseDate, {
+        useAdditionalDayOfYearTokens: true
+      })
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
@@ -397,7 +401,9 @@ describe('parse', function() {
     })
 
     it('two-digit zero-padding', function() {
-      var result = parse('01', 'DD', baseDate, { awareOfUnicodeTokens: true })
+      var result = parse('01', 'DD', baseDate, {
+        useAdditionalDayOfYearTokens: true
+      })
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -744,6 +750,16 @@ describe('parse', function() {
     it('specified amount of digits', function() {
       var result = parse('567890', 'SSSSSS', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567))
+    })
+
+    it('after timestamp', () => {
+      const time = new Date(1987, 1, 11, 0, 0, 0).getTime()
+      const result = parse(
+        `${Math.floor(time / 1000)}.123`,
+        't.SSS',
+        Date.now()
+      )
+      assert.deepEqual(result, new Date(1987, 1, 11, 0, 0, 0, 123))
     })
   })
 
@@ -1093,11 +1109,11 @@ describe('parse', function() {
       assert.deepEqual(result, new Date(2000, 3 /* Apr */, 12))
     })
 
-    it('timestamp overwrites everything', function() {
+    it('milliseconds timestamp overwrites everything', function() {
       var dateString = '512969520900 512969520 2014-07-02T05:30:15.123+06:00'
       var formatString = "T t yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(512969520000))
+      assert.deepEqual(result, new Date(512969520900))
     })
   })
 
@@ -1157,7 +1173,9 @@ describe('parse', function() {
       })
 
       it('works correctly for two-digit year zero', function() {
-        var result = parse('00', 'YY', baseDate, { awareOfUnicodeTokens: true })
+        var result = parse('00', 'YY', baseDate, {
+          useAdditionalWeekYearTokens: true
+        })
         assert.deepEqual(result, new Date(1999, 11 /* Dec */, 26))
       })
     })
@@ -1223,20 +1241,22 @@ describe('parse', function() {
 
     describe('day of year', function() {
       it('returns `Invalid Date` for invalid day of the year', function() {
-        var result = parse('0', 'D', baseDate, { awareOfUnicodeTokens: true })
+        var result = parse('0', 'D', baseDate, {
+          useAdditionalDayOfYearTokens: true
+        })
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for 366th day of non-leap year', function() {
         var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {
-          awareOfUnicodeTokens: true
+          useAdditionalDayOfYearTokens: true
         })
         assert(result instanceof Date && isNaN(result))
       })
 
       it('parses 366th day of leap year', function() {
         var result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1), {
-          awareOfUnicodeTokens: true
+          useAdditionalDayOfYearTokens: true
         })
         assert.deepEqual(result, new Date(2012, 11 /* Dec */, 31))
       })
@@ -1363,13 +1383,6 @@ describe('parse', function() {
     })
   })
 
-  it('accepts a string as `baseDate`', function() {
-    var dateString = '6 p.m.'
-    var formatString = 'h aaaa'
-    var result = parse(dateString, formatString, baseDate.toISOString())
-    assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
-  })
-
   it('accepts a timestamp as `baseDate`', function() {
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
@@ -1450,14 +1463,6 @@ describe('parse', function() {
     })
   })
 
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', function() {
-    // $ExpectedMistake
-    var block = parse.bind(null, '16', 'yy', baseDate, {
-      additionalDigits: NaN
-    })
-    assert.throws(block, RangeError)
-  })
-
   it('throws TypeError exception if passed less than 3 arguments', function() {
     assert.throws(parse.bind(null), TypeError)
     // $ExpectedMistake
@@ -1476,21 +1481,28 @@ describe('parse', function() {
       var result = parse('2016-11-05   \n', 'yyyy-MM-dd', baseDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5))
     })
+
+    it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
+      assert.throws(
+        parse.bind(null, '2016-11-05-nnnn', 'yyyy-MM-dd-nnnn', baseDate),
+        RangeError
+      )
+    })
   })
 
-  describe('awareOfUnicodeTokens option', () => {
+  describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       const block = parse.bind(null, '2016-11-5', 'yyyy-MM-D', baseDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `D` token; see: https://git.io/fxCyr'
+        'Use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows D token if awareOfUnicodeTokens is set to true', () => {
+    it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = parse('2016-11-5', 'yyyy-MM-D', new Date(1987, 1, 11), {
-        awareOfUnicodeTokens: true
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
@@ -1500,13 +1512,13 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `DD` token; see: https://git.io/fxCyr'
+        'Use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows DD token if awareOfUnicodeTokens is set to true', () => {
+    it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = parse('2016-11-05', 'yyyy-MM-DD', new Date(1987, 1, 11), {
-        awareOfUnicodeTokens: true
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
@@ -1516,13 +1528,13 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `YY` token; see: https://git.io/fxCyr'
+        'Use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows YY token if awareOfUnicodeTokens is set to true', () => {
+    it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = parse('16-11-05', 'YY-MM-dd', new Date(1987, 1, 11), {
-        awareOfUnicodeTokens: true
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 10, 5))
     })
@@ -1532,13 +1544,13 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        '`options.awareOfUnicodeTokens` must be set to `true` to use `YY` token; see: https://git.io/fxCyr'
+        'Use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr'
       )
     })
 
-    it('allows YYYY token if awareOfUnicodeTokens is set to true', () => {
+    it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = parse('2016-11-05', 'YYYY-MM-dd', new Date(1987, 1, 11), {
-        awareOfUnicodeTokens: true
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 10, 5))
     })

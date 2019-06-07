@@ -1,8 +1,8 @@
-// import formatDistance from './_lib/formatDistance/index.js'
-// import formatLong from './_lib/formatLong/index.js'
-// import formatRelative from './_lib/formatRelative/index.js'
-// import localize from './_lib/localize/index.js'
-// import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index.js'
+import formatLong from './_lib/formatLong/index.js'
+import formatRelative from './_lib/formatRelative/index.js'
+import localize from './_lib/localize/index.js'
+import match from './_lib/match/index.js'
 
 /**
  * @type {Locale}
@@ -11,19 +11,19 @@
  * @language Romanian
  * @iso-639-2 ron
  * @author Sergiu Munteanu [@jsergiu]{@link https://github.com/jsergiu}
+ * @author Adrian Ocneanu [@aocneanu]{@link https://github.com/aocneanu}
+ * @author Mihai Ocneanu [@gandesc]{@link https://github.com/gandesc}
  */
-// var locale = {
-//   formatDistance: formatDistance,
-//   formatLong: formatLong,
-//   formatRelative: formatRelative,
-//   localize: localize,
-//   match: match,
-//   options: {
-//     weekStartsOn: 1 /* Monday */,
-//     firstWeekContainsDate: 1
-//   }
-// }
+var locale = {
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 1
+  }
+}
 
-// export default locale
-
-throw new Error('ro locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+export default locale

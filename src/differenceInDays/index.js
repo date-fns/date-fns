@@ -10,13 +10,14 @@ import compareAsc from '../compareAsc/index.js'
  * @description
  * Get the number of full day periods between the given dates.
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full days
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many full days are between
@@ -29,27 +30,29 @@ import compareAsc from '../compareAsc/index.js'
  * // How many days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
  * var result = differenceInDays(
- *   new Date(2011, 6, 2, 0, 1),
+ *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
  * //=> 0
-*/
-export default function differenceInDays (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+ */
+export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
-  var dateRight = toDate(dirtyDateRight, dirtyOptions)
+  var dateLeft = toDate(dirtyDateLeft)
+  var dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight, dirtyOptions))
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
 
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
+  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
   var result = sign * (difference - isLastDayNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result

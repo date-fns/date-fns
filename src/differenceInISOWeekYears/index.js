@@ -13,13 +13,19 @@ import subISOWeekYears from '../subISOWeekYears/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * - The function was renamed from `differenceInISOYears` to `differenceInISOWeekYears`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
+ *
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of full ISO week-numbering years
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
@@ -29,22 +35,29 @@ import subISOWeekYears from '../subISOWeekYears/index.js'
  * )
  * //=> 1
  */
-export default function differenceInISOWeekYears (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInISOWeekYears(
+  dirtyDateLeft,
+  dirtyDateRight
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var dateLeft = toDate(dirtyDateLeft, dirtyOptions)
-  var dateRight = toDate(dirtyDateRight, dirtyOptions)
+  var dateLeft = toDate(dirtyDateLeft)
+  var dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight, dirtyOptions)
-  var difference = Math.abs(differenceInCalendarISOWeekYears(dateLeft, dateRight, dirtyOptions))
-  dateLeft = subISOWeekYears(dateLeft, sign * difference, dirtyOptions)
+  var sign = compareAsc(dateLeft, dateRight)
+  var difference = Math.abs(
+    differenceInCalendarISOWeekYears(dateLeft, dateRight)
+  )
+  dateLeft = subISOWeekYears(dateLeft, sign * difference)
 
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight, dirtyOptions) === -sign
+  var isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight) === -sign
   var result = sign * (difference - isLastISOWeekYearNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result

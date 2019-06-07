@@ -3,7 +3,6 @@
 
 import assert from 'power-assert'
 import locale from '.'
-
 import format from '../../format'
 import formatDistance from '../../formatDistance'
 import formatDistanceStrict from '../../formatDistanceStrict'
@@ -193,7 +192,7 @@ describe('hu locale', function() {
         new Date(1986, 3, 4, 10, 32, 0),
         { locale: locale, includeSeconds: true }
       )
-      assert(result === 'fél perce')
+      assert(result === 'fél perc múlva')
     })
 
     context('when `addSuffix` option is true', function() {
@@ -203,7 +202,7 @@ describe('hu locale', function() {
           new Date(1986, 3, 4, 10, 32, 0),
           { locale: locale, includeSeconds: true, addSuffix: true }
         )
-        assert(result === 'kevesebb, mint 10 másodperc múlva')
+        assert(result === 'kevesebb mint 10 másodperc múlva')
       })
 
       it('adds a past suffix', function() {
@@ -212,7 +211,7 @@ describe('hu locale', function() {
           new Date(1986, 3, 4, 11, 32, 0),
           { locale: locale, addSuffix: true }
         )
-        assert(result === 'körülbelül egy órája ezelőtt')
+        assert(result === 'körülbelül 1 órával ezelőtt')
       })
     })
   })
@@ -224,7 +223,7 @@ describe('hu locale', function() {
         new Date(1986, 3, 4, 12, 32, 0),
         { locale: locale, unit: 'minute' }
       )
-      assert(result === '120 perc')
+      assert(result === '120 perce')
     })
 
     describe('when `addSuffix` option is true', function() {
@@ -243,7 +242,7 @@ describe('hu locale', function() {
           new Date(1986, 3, 4, 11, 32, 0),
           { locale: locale, addSuffix: true }
         )
-        assert(result === 'egy órája ezelőtt')
+        assert(result === '1 órával ezelőtt')
       })
     })
   })

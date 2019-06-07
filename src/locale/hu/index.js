@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  *
  * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
  * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
+ * @author Zoltan Szepesi [@twodcube]{@link https://github.com/twodcube}
  */
 var locale = {
   formatDistance: formatDistance,

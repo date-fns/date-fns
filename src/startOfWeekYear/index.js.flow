@@ -2,20 +2,8 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 type Interval = {
-  start: Date | string | number,
-  end: Date | string | number
-}
-
-type Options = {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
-  additionalDigits?: 0 | 1 | 2,
-  locale?: Locale,
-  includeSeconds?: boolean,
-  addSuffix?: boolean,
-  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-  roundingMethod?: 'floor' | 'ceil' | 'round',
-  awareOfUnicodeTokens?: boolean
+  start: Date | number,
+  end: Date | number
 }
 
 type Locale = {
@@ -48,6 +36,10 @@ type Locale = {
 }
 
 declare module.exports: (
-  date: Date | string | number,
-  options?: Options
+  date: Date | number,
+  options?: {
+    locale?: Locale,
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+  }
 ) => Date

@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import {lastDayOfISOWeekYear} from 'date-fns/fp'
-export = lastDayOfISOWeekYear
+import { lastDayOfISOWeekYear } from 'date-fns/fp'
+export default lastDayOfISOWeekYear

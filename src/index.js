@@ -1,5 +1,7 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+var constants = require('./constants/index.js')
+
 module.exports = {
   addDays: require('./addDays/index.js'),
   addHours: require('./addHours/index.js'),
@@ -35,6 +37,9 @@ module.exports = {
   differenceInYears: require('./differenceInYears/index.js'),
   eachDayOfInterval: require('./eachDayOfInterval/index.js'),
   eachWeekOfInterval: require('./eachWeekOfInterval/index.js'),
+  eachWeekendOfInterval: require('./eachWeekendOfInterval/index.js'),
+  eachWeekendOfMonth: require('./eachWeekendOfMonth/index.js'),
+  eachWeekendOfYear: require('./eachWeekendOfYear/index.js'),
   endOfDay: require('./endOfDay/index.js'),
   endOfDecade: require('./endOfDecade/index.js'),
   endOfHour: require('./endOfHour/index.js'),
@@ -50,6 +55,7 @@ module.exports = {
   formatDistance: require('./formatDistance/index.js'),
   formatDistanceStrict: require('./formatDistanceStrict/index.js'),
   formatRelative: require('./formatRelative/index.js'),
+  fromUnixTime: require('./fromUnixTime/index.js'),
   getDate: require('./getDate/index.js'),
   getDay: require('./getDay/index.js'),
   getDayOfYear: require('./getDayOfYear/index.js'),
@@ -108,9 +114,11 @@ module.exports = {
   lastDayOfQuarter: require('./lastDayOfQuarter/index.js'),
   lastDayOfWeek: require('./lastDayOfWeek/index.js'),
   lastDayOfYear: require('./lastDayOfYear/index.js'),
+  lightFormat: require('./lightFormat/index.js'),
   max: require('./max/index.js'),
   min: require('./min/index.js'),
   parse: require('./parse/index.js'),
+  parseISO: require('./parseISO/index.js'),
   roundToNearestMinutes: require('./roundToNearestMinutes/index.js'),
   setDate: require('./setDate/index.js'),
   setDay: require('./setDay/index.js'),
@@ -149,5 +157,7 @@ module.exports = {
   subSeconds: require('./subSeconds/index.js'),
   subWeeks: require('./subWeeks/index.js'),
   subYears: require('./subYears/index.js'),
-  toDate: require('./toDate/index.js')
+  toDate: require('./toDate/index.js'),
+  maxTime: constants.maxTime,
+  minTime: constants.minTime
 }

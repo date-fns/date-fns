@@ -1,9 +1,9 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import format from '../format/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import format from '../format/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
 /**
  * @name formatRelative
@@ -22,24 +22,31 @@ import subMilliseconds from '../subMilliseconds/index.js'
  * | Next 6 days               | Sunday at 04:30 AM        |
  * | Other                     | 12/31/2017                |
  *
- * @param {Date|String|Number} date - the date to format
- * @param {Date|String|Number} baseDate - the date to compare with
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} date - the date to format
+ * @param {Date|Number} baseDate - the date to compare with
+ * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {String} the date in words
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var date = toDate(dirtyDate, dirtyOptions)
-  var baseDate = toDate(dirtyBaseDate, dirtyOptions)
+  var date = toDate(dirtyDate)
+  var baseDate = toDate(dirtyBaseDate)
 
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
@@ -56,10 +63,10 @@ export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) 
     throw new RangeError('locale must contain formatRelative property')
   }
 
-  var diff = differenceInCalendarDays(date, baseDate, options)
+  var diff = differenceInCalendarDays(date, baseDate)
 
   if (isNaN(diff)) {
-    return 'Invalid Date'
+    throw new RangeError('Invalid time value')
   }
 
   var token
@@ -79,8 +86,11 @@ export default function formatRelative (dirtyDate, dirtyBaseDate, dirtyOptions) 
     token = 'other'
   }
 
-  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date), options)
-  var utcBaseDate = subMilliseconds(baseDate, getTimezoneOffsetInMilliseconds(baseDate), options)
+  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+  var utcBaseDate = subMilliseconds(
+    baseDate,
+    getTimezoneOffsetInMilliseconds(baseDate)
+  )
   var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
   return format(date, formatStr, options)
 }

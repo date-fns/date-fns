@@ -32,7 +32,7 @@
  * @property {Object} formatLong - the object with functions that return localized formats
  * @property {Function} date - the function that returns a localized long date format
  * @property {Function} time - the function that returns a localized long time format
- * @property {Function} dateTime - the function that returns a localized format of date and time comboned
+ * @property {Function} dateTime - the function that returns a localized format of date and time combined
  *
  * @property {Object} match — the object with functions used to match and parse various localized values.
  *   Required by `parse`
@@ -43,7 +43,7 @@
  * @property {Function} match.day - the function that parses a localized day of the week
  * @property {Function} match.dayPeriod - the function that parses a localized time of the day
  *
- * @property {Object} [options] - the object with default `weekStartsOn`. See [Options]{@link https://date-fns.org/docs/Options}
+ * @property {Object} [options] - an object with locale options.
  * @property {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday).
  *   Used by `differenceInCalendarWeeks`, `endOfWeek`, `format`, `getWeek`, `getWeekOfMonth`,
  *   `getWeeksInMonth`, `isSameWeek`, `isSameWeek`, `lastDayOfWeek`, `parse`, `setDay`,

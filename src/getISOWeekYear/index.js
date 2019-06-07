@@ -12,35 +12,43 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} date - the given date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * - The function was renamed from `getISOYear` to `getISOWeekYear`.
+ *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *   This change makes the name consistent with
+ *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
+ *
+ * @param {Date|Number} date - the given date
  * @returns {Number} the ISO week-numbering year
  * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which ISO-week numbering year is 2 January 2005?
  * var result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear (dirtyDate, dirtyOptions) {
+export default function getISOWeekYear(dirtyDate) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var date = toDate(dirtyDate, dirtyOptions)
+  var date = toDate(dirtyDate)
   var year = date.getFullYear()
 
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear, dirtyOptions)
+  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
 
   var fourthOfJanuaryOfThisYear = new Date(0)
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear, dirtyOptions)
+  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1

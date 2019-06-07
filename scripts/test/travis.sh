@@ -9,7 +9,7 @@ set -ex
 export PATH="$(yarn bin):$PATH"
 
 function prebuild {
-  env BUILD_TESTS=true webpack --config ./config/webpack.js
+  env BUILD_TESTS=true webpack-cli --config ./config/webpack.js
 }
 
 if [ "$TEST_SUITE" == "main" ]
@@ -20,6 +20,8 @@ then
   ./scripts/test/smoke.sh
 
   yarn test -- --single-run
+
+  ./scripts/test/dst.sh
 
   prebuild
   ./scripts/test/tz.sh

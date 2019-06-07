@@ -15,21 +15,81 @@ var quarterValues = {
 var monthValues = {
   // ДСТУ 3582:2013
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
-  abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
-  wide: ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень']
+  abbreviated: [
+    'січ.',
+    'лют.',
+    'берез.',
+    'квіт.',
+    'трав.',
+    'черв.',
+    'лип.',
+    'серп.',
+    'верес.',
+    'жовт.',
+    'листоп.',
+    'груд.'
+  ],
+  wide: [
+    'січень',
+    'лютий',
+    'березень',
+    'квітень',
+    'травень',
+    'червень',
+    'липень',
+    'серпень',
+    'вересень',
+    'жовтень',
+    'листопад',
+    'грудень'
+  ]
 }
 
 var formattingMonthValues = {
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
-  abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
-  wide: ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
+  abbreviated: [
+    'січ.',
+    'лют.',
+    'берез.',
+    'квіт.',
+    'трав.',
+    'черв.',
+    'лип.',
+    'серп.',
+    'верес.',
+    'жовт.',
+    'листоп.',
+    'груд.'
+  ],
+  wide: [
+    'січня',
+    'лютого',
+    'березня',
+    'квітня',
+    'травня',
+    'червня',
+    'липня',
+    'серпня',
+    'вересня',
+    'жовтня',
+    'листопада',
+    'грудня'
+  ]
 }
 
 var dayValues = {
   narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
   abbreviated: ['нед', 'пон', 'вів', 'сер', 'чтв', 'птн', 'суб'],
-  wide: ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота']
+  wide: [
+    'неділя',
+    'понеділок',
+    'вівторок',
+    'середа',
+    'четвер',
+    'п’ятниця',
+    'субота'
+  ]
 }
 
 var dayPeriodValues = {
@@ -98,7 +158,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
@@ -129,7 +189,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
@@ -150,7 +210,7 @@ var localize = {
     values: dayPeriodValues,
     defaultWidth: 'any',
     formattingValues: formattingDayPeriodValues,
-    defaulFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide'
   })
 }
 

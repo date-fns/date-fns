@@ -8,13 +8,17 @@ import toDate from '../toDate/index.js'
  * @description
  * Return a date from the array closest to the given date.
  *
- * @param {Date|String|Number} dateToCompare - the date to compare with
- * @param {Date[]|String[]|Number[]} datesArray - the array to search
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * - Now, `closestTo` doesn't throw an exception
+ *   when the second argument is not an array, and returns Invalid Date instead.
+ *
+ * @param {Date|Number} dateToCompare - the date to compare with
+ * @param {Date[]|Number[]} datesArray - the array to search
  * @returns {Date} the date from the array closest to the given date
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
@@ -25,12 +29,14 @@ import toDate from '../toDate/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOptions) {
+export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions)
+  var dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(dateToCompare)) {
     return new Date(NaN)
@@ -43,19 +49,19 @@ export default function closestTo (dirtyDateToCompare, dirtyDatesArray, dirtyOpt
   if (dirtyDatesArray == null) {
     datesArray = []
 
-  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
+    // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   } else if (typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
 
-  // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
+    // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
   } else {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
   var result
   var minDistance
-  datesArray.forEach(function (dirtyDate) {
-    var currentDate = toDate(dirtyDate, dirtyOptions)
+  datesArray.forEach(function(dirtyDate) {
+    var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {
       result = new Date(NaN)

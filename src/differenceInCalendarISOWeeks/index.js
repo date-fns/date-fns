@@ -13,13 +13,14 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} dateLeft - the later date
- * @param {Date|String|Number} dateRight - the earlier date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
  * @returns {Number} the number of calendar ISO weeks
  * @throws {TypeError} 2 arguments required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
@@ -29,17 +30,24 @@ var MILLISECONDS_IN_WEEK = 604800000
  * )
  * //=> 3
  */
-export default function differenceInCalendarISOWeeks (dirtyDateLeft, dirtyDateRight, dirtyOptions) {
+export default function differenceInCalendarISOWeeks(
+  dirtyDateLeft,
+  dirtyDateRight
+) {
   if (arguments.length < 2) {
-    throw new TypeError('2 arguments required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '2 arguments required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft, dirtyOptions)
-  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight, dirtyOptions)
+  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
+  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
 
-  var timestampLeft = startOfISOWeekLeft.getTime() -
+  var timestampLeft =
+    startOfISOWeekLeft.getTime() -
     getTimezoneOffsetInMilliseconds(startOfISOWeekLeft)
-  var timestampRight = startOfISOWeekRight.getTime() -
+  var timestampRight =
+    startOfISOWeekRight.getTime() -
     getTimezoneOffsetInMilliseconds(startOfISOWeekRight)
 
   // Round the number of days to the nearest integer

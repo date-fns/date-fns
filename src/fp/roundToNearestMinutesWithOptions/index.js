@@ -3,6 +3,6 @@
 import fn from '../../roundToNearestMinutes/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var roundToNearestMinutesWithOptions = convertToFP(fn, 3)
+var roundToNearestMinutesWithOptions = convertToFP(fn, 2)
 
 export default roundToNearestMinutesWithOptions

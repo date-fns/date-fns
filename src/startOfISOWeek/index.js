@@ -1,5 +1,4 @@
 import startOfWeek from '../startOfWeek/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
 
 /**
  * @name startOfISOWeek
@@ -12,24 +11,25 @@ import cloneObject from '../_lib/cloneObject/index.js'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|String|Number} date - the original date
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @param {Date|Number} date - the original date
  * @returns {Date} the start of an ISO week
  * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The start of an ISO week for 2 September 2014 11:55:00:
  * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfISOWeek (dirtyDate, dirtyOptions) {
+export default function startOfISOWeek(dirtyDate) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
-  var startOfWeekOptions = cloneObject(dirtyOptions)
-  startOfWeekOptions.weekStartsOn = 1
-  return startOfWeek(dirtyDate, startOfWeekOptions)
+  return startOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

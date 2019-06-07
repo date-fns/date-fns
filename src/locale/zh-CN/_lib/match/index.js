@@ -24,12 +24,38 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^(一|二|三|四|五|六|七|八|九|十[二一])/i,
-  abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i,
+  abbreviated: /^(一|二|三|四|五|六|七|八|九|十[二一]|\d|1[12])月/i,
   wide: /^(一|二|三|四|五|六|七|八|九|十[二一])月/i
 }
 var parseMonthPatterns = {
-  narrow: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i],
-  any: [/^一/i, /^二/i, /^三/i, /^四/i, /^五/i, /^六/i, /^七/i, /^八/i, /^九/i, /^十(?!(一|二))/i, /^十一/i, /^十二/i]
+  narrow: [
+    /^一/i,
+    /^二/i,
+    /^三/i,
+    /^四/i,
+    /^五/i,
+    /^六/i,
+    /^七/i,
+    /^八/i,
+    /^九/i,
+    /^十(?!(一|二))/i,
+    /^十一/i,
+    /^十二/i
+  ],
+  any: [
+    /^一|[!\d]1[!\d]/i,
+    /^二|[!\d]2[!\d]/i,
+    /^三|3/i,
+    /^四|4/i,
+    /^五|5/i,
+    /^六|6/i,
+    /^七|7/i,
+    /^八|8/i,
+    /^九|9/i,
+    /^十(?!(一|二))|10/i,
+    /^十一|11/i,
+    /^十二|12/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -62,7 +88,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -79,7 +105,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

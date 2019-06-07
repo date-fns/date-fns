@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import {isLeapYear} from 'date-fns/fp'
-export = isLeapYear
+import { isLeapYear } from 'date-fns/fp'
+export default isLeapYear
