@@ -148,7 +148,8 @@ function config(config) {
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      'karma-sauce-launcher',
+      // TODO: Make it work
+      // 'karma-sauce-launcher',
       'karma-sinon',
       'karma-sourcemap-loader',
       'karma-webpack',
