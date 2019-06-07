@@ -713,6 +713,12 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
 
+- Add constants:
+
+  - `maxTime`
+
+  - `minTime`
+
 - New locales:
 
   - [Norwegian Nynorsk locale (nn)](https://github.com/date-fns/date-fns/pull/1172)

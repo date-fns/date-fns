@@ -571,5 +571,9 @@ declare module.exports: {
 
   subYears: (date: Date | number, amount: number) => Date,
 
-  toDate: (argument: Date | number) => Date
+  toDate: (argument: Date | number) => Date,
+
+  maxTime: number,
+
+  minTime: number
 }
