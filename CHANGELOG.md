@@ -10,10 +10,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [Unreleased]
 
-### Added
-
-- Add constants for max and min dates
-
 [See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
 for the list of changes made since `v2.0.0-alpha.1`.
 
@@ -716,6 +712,12 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - Build-efficient `lightFormat` that only supports the popular subset of tokens. See [#1050](https://github.com/date-fns/date-fns/pull/1015).
 
 - `parseISO` function that parses ISO 8601 strings. See [#1023](https://github.com/date-fns/date-fns/pull/1023).
+
+- Add constants:
+
+  - `maxTime`
+
+  - `minTime`
 
 - New locales:
 
