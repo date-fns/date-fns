@@ -124,7 +124,7 @@ describe('nl locale', function() {
       describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === "10 uur 's ochtends")
+          assert(result === "10 's ochtends")
         })
       })
     })

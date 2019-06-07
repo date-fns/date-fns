@@ -118,7 +118,7 @@ describe('hu locale', function() {
       describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 in the morning')
+          assert(result === '10 reggel')
         })
       })
     })

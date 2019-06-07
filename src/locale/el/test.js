@@ -126,7 +126,7 @@ describe('el locale', function() {
       describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 το πρωί')
+          assert(result === '10 πρωί')
         })
       })
     })

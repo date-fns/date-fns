@@ -124,7 +124,7 @@ describe('ro locale', function() {
       describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 de la mañana')
+          assert(result === '10 dimineață')
         })
       })
     })
