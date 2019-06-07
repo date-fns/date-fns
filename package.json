@@ -18,7 +18,7 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "lint": "echo \"Due to ongoing migration to Prettier, the linter is disabled.\"",
-    "benchmark": "env TEST_BENCHMARK=true yarn test -- --single-run",
+    "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
     "postinstall": "node ./docs/printV2Notice.js"
   },
