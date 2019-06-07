@@ -55,7 +55,7 @@ function generateFlowFnTyping(fn, aliasDeclarations) {
   writeFile(`src/${title}/index.js.flow`, typingFile)
 }
 
-function generateFlowFnIndexTyping(fns, aliasDeclarations) {
+function generateFlowFnIndexTyping(fns, aliasDeclarations, constants) {
   const fnsDeclarations = fns.map(({ title, args, content }) => {
     const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
     const returns = getType(content.returns[0].type.names)
@@ -66,7 +66,10 @@ function generateFlowFnIndexTyping(fns, aliasDeclarations) {
     ${addSeparator(aliasDeclarations, '\n')}
 
     declare module.exports: {
-      ${addSeparator(fnsDeclarations, ',\n')}
+      ${addSeparator(
+        fnsDeclarations.concat(generateConstantsDeclarations(constants)),
+        ',\n'
+      )}
     }
   `
 
@@ -89,7 +92,7 @@ function generateFlowFPFnTyping(fn, aliasDeclarations) {
   writeFile(`src/fp/${title}/index.js.flow`, typingFile)
 }
 
-function generateFlowFPFnIndexTyping(fns, aliasDeclarations) {
+function generateFlowFPFnIndexTyping(fns, aliasDeclarations, constants) {
   const fnsDeclarations = fns.map(
     ({ title, args, content }) =>
       `${title}: ${getFPFnType(args, content.returns[0].type.names)}`
@@ -101,7 +104,10 @@ function generateFlowFPFnIndexTyping(fns, aliasDeclarations) {
     ${addSeparator(getFlowFPTypeAliases(), '\n')}
 
     declare module.exports: {
-      ${addSeparator(fnsDeclarations, ',')}
+      ${addSeparator(
+        fnsDeclarations.concat(generateConstantsDeclarations(constants)),
+        ','
+      )}
     }
   `
 
@@ -132,7 +138,7 @@ function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
   writeFile('src/locale/index.js.flow', typingFile)
 }
 
-function generateFlowTypings(fns, aliases, locales) {
+function generateFlowTypings(fns, aliases, locales, constants) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
   const localeAliasDeclaration = getFlowTypeAlias(
     aliases.find(alias => alias.title === 'Locale')
@@ -152,13 +158,19 @@ function generateFlowTypings(fns, aliases, locales) {
 
   generateFlowFnIndexTyping(
     fns.filter(({ isFPFn }) => !isFPFn),
-    aliasDeclarations
+    aliasDeclarations,
+    constants
   )
   generateFlowFPFnIndexTyping(
     fns.filter(({ isFPFn }) => isFPFn),
-    aliasDeclarations
+    aliasDeclarations,
+    constants
   )
   generateFlowLocaleIndexTyping(locales, localeAliasDeclaration)
+}
+
+function generateConstantsDeclarations(constants) {
+  return constants.map(c => `${c.name}: ${c.type.names.join(' | ')}`)
 }
 
 function writeFile(relativePath, content) {

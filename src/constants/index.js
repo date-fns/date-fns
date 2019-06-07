@@ -1,14 +1,15 @@
-const maxMillis = Math.pow(10, 8) * 24 * 60 * 60 * 1000
+/**
+ *  Maximum allowed time.
+ *  @constant
+ *  @type {number}
+ *  @default
+ */
+export const maxTime = Math.pow(10, 8) * 24 * 60 * 60 * 1000
 
 /**
- * @name constants
- * @category Constants
- * @summary Useful constants for base dates
- *
- * @description
- * Useful constants for base dates
+ *  Minimum allowed time.
+ *  @constant
+ *  @type {number}
+ *  @default
  */
-
-export const maxDate = new Date(maxMillis)
-export const epochDate = new Date(0)
-export const minDate = new Date(-maxMillis)
+export const minTime = -maxTime
