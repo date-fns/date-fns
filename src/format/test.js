@@ -738,7 +738,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr'
+        /Use `d` instead of `D` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -754,7 +754,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr'
+        /Use `dd` instead of `DD` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -770,7 +770,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr'
+        /Use `yy` instead of `YY` for formatting years; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -786,7 +786,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr'
+        /Use `yyyy` instead of `YYYY` for formatting years; see: https:\/\/git.io\/fxCyr/
       )
     })
 

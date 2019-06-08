@@ -12,6 +12,7 @@ env:
   - TEST_SUITE=main
   - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
   - TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=1
+  - TEST_SUITE=node
 
 before_install:
   - export CHROME_BIN=chromium-browser
@@ -39,4 +40,4 @@ cache: yarn
 
 addons:
   chrome: stable
-  sauce_connect: true
+  # sauce_connect: true

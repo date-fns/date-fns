@@ -36,6 +36,10 @@ then
   yarn test-cross-browser
   env TEST_CROSS_BROWSER=true yarn test --single-run
 
+elif [ "$TEST_SUITE" == "node" ]
+then
+  ./scripts/test/node.sh
+
 else
   printf "\n\033[0;31m" "UNKNOWN SUITE!" "\033[0m\n"
   exit 1

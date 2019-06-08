@@ -173,10 +173,10 @@ describe('be locale', function() {
         assert(result === 'поўн., поўнач, поўн.')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
-          assert(result === '10 раніцы')
+          assert(result === '10 ран.')
         })
       })
     })

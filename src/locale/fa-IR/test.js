@@ -119,7 +119,7 @@ describe('fa-IR locale', function() {
         assert(result === 'نیمه‌شب, نیمه‌شب, ن')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
           assert(result === '10 صبح')

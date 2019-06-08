@@ -1,9 +1,11 @@
 // @flow
 /* eslint-env mocha */
 
-// import assert from 'power-assert'
+import assert from 'power-assert'
 // import locale from '.'
 
-describe.skip('sr locale', function () {
-
+describe('sr locale', function() {
+  it('hopes to get tests one day', () => {
+    assert('hope')
+  })
 })

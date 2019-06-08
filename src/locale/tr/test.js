@@ -121,7 +121,7 @@ describe('tr locale', function() {
         assert(result === 'gece yarısı, gece yarısı, gy')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         var result = format(date, 'B h', { locale: locale })
         assert(result === 'sabahleyin 10')
       })

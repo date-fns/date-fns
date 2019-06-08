@@ -3,6 +3,7 @@
 
 import assert from 'power-assert'
 import toDate from '.'
+import sinon from 'sinon'
 
 describe('toDate', () => {
   describe('date argument', () => {

@@ -148,8 +148,8 @@ function config(config) {
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      'karma-sauce-launcher',
-      'karma-sinon',
+      // TODO: Make it work
+      // 'karma-sauce-launcher',
       'karma-sourcemap-loader',
       'karma-webpack',
       'karma-benchmark',
@@ -172,7 +172,7 @@ function getFrameworksConfig() {
   if (process.env.TEST_BENCHMARK) {
     return ['benchmark']
   } else {
-    return ['mocha', 'sinon']
+    return ['mocha']
   }
 }
 
