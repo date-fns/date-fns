@@ -39,4 +39,4 @@ cache: yarn
 
 addons:
   chrome: stable
-  sauce_connect: true
+  # sauce_connect: true
