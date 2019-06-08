@@ -8,6 +8,8 @@ set -ex
 
 export PATH="$(yarn bin):$PATH"
 
+# Update and source nvm
+curl -o ~/.nvm/nvm.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/nvm.sh
 source ~/.nvm/nvm.sh
 
 for version in 8 9 10 11 12
