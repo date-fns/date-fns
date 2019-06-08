@@ -374,7 +374,6 @@ describe('da locale', function() {
 
       it('abbreviated', function() {
         var result = parse('nov', 'MMM', baseDate, { locale: locale })
-        console.log(parse('feb', 'MMM', baseDate, { locale: locale }))
         assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
       })
 
