@@ -8,6 +8,8 @@ set -ex
 
 export PATH="$(yarn bin):$PATH"
 
+source ~/.nvm/nvm.sh
+
 for version in 8 9 10 11 12
 do
   echo "Running tests using Node.js $version"
