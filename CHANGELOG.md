@@ -18,9 +18,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - New function [addBusinessDays](https://github.com/date-fns/date-fns/pull/1154),
   similar to addDays but ignoring weekends.
 
-  End date can thus only ever be mon/tue/wed/thu/fri.
+  End date can therefore only ever be mon/tue/wed/thu/fri.
 
-  Does not count as businessdays since it doesn't avoid counting on holidays.
+  Doesn't avoid counting holidays that fall on mon/tue/wed/thu/fri.
 
 ### Fixed
 
