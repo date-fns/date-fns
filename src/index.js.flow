@@ -52,7 +52,7 @@ declare module.exports: {
 
   addSeconds: (date: Date | number, amount: number) => Date,
 
-  addWeekDays: (date: Date | number, amount: number) => Date,
+  addBusinessDays: (date: Date | number, amount: number) => Date,
 
   addWeeks: (date: Date | number, amount: number) => Date,
 

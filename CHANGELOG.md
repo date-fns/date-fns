@@ -15,7 +15,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 ### Added
 
-- New function [addWeekDays](https://github.com/date-fns/date-fns/pull/1154),
+- New function [addBusinessDays](https://github.com/date-fns/date-fns/pull/1154),
   similar to addDays but ignoring weekends.
 
   End date can thus only ever be mon/tue/wed/thu/fri.

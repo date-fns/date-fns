@@ -74,7 +74,7 @@ declare module.exports: {
   addMonths: CurriedFn2<number, Date | number, Date>,
   addQuarters: CurriedFn2<number, Date | number, Date>,
   addSeconds: CurriedFn2<number, Date | number, Date>,
-  addWeekDays: CurriedFn2<number, Date | number, Date>,
+  addBusinessDays: CurriedFn2<number, Date | number, Date>,
   addWeeks: CurriedFn2<number, Date | number, Date>,
   addYears: CurriedFn2<number, Date | number, Date>,
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,

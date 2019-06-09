@@ -3,7 +3,7 @@ import isWeekend from '../isWeekend/index.js'
 import toDate from '../toDate/index.js'
 
 /**
- * @name addWeekDays
+ * @name addBusinessDays
  * @category Day Helpers
  * @summary Add the specified number of weekdays (mo - fri) to the given date, ignoring weekends.
  *
@@ -17,10 +17,10 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Add 10 weekdays to 1 September 2014:
- * var result = addWeekDays(new Date(2014, 8, 1), 10)
+ * var result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
-export default function addWeekDays(dirtyDate, dirtyAmount) {
+export default function addBusinessDays(dirtyDate, dirtyAmount) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
