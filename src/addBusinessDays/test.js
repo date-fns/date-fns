@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import addBusinessDays from '.'
 
 describe('addBusinessDays', function() {
-  it('adds the given number of weekdays', function() {
+  it('adds the given number of business days', function() {
     var result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
   })
