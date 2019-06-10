@@ -5,10 +5,10 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name addBusinessDays
  * @category Day Helpers
- * @summary Add the specified number of weekdays (mo - fri) to the given date, ignoring weekends.
+ * @summary Add the specified number of business days (mon - fri) to the given date.
  *
  * @description
- * Add the specified number of weekdays (mo - fri) to the given date, ignoring weekends.
+ * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of weekdays to be added
@@ -16,7 +16,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Add 10 weekdays to 1 September 2014:
+ * // Add 10 business days to 1 September 2014:
  * var result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */

@@ -13,15 +13,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
 for the list of changes made since `v2.0.0-alpha.1`.
 
-### Added
-
-- New function [addBusinessDays](https://github.com/date-fns/date-fns/pull/1154),
-  similar to addDays but ignoring weekends.
-
-  End date can therefore only ever be mon/tue/wed/thu/fri.
-
-  Doesn't avoid counting holidays that fall on mon/tue/wed/thu/fri.
-
 ### Fixed
 
 - Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
@@ -769,6 +760,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - [Add new function `differenceInBusinessDays`](https://github.com/date-fns/date-fns/pull/1194)
   which calculates the difference in business days. Kudos to [@ThorrStevens](https://github.com/ThorrStevens)!
+
+- [Add new function `addBusinessDays`](https://github.com/date-fns/date-fns/pull/1154),
+  similar to `addDays` but ignoring weekends. Thanks to [@ThorrStevens](https://github.com/ThorrStevens)!
 
 ## [1.30.1] - 2018-12-10
 
