@@ -761,6 +761,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 - [Add new function `differenceInBusinessDays`](https://github.com/date-fns/date-fns/pull/1194)
   which calculates the difference in business days. Kudos to [@ThorrStevens](https://github.com/ThorrStevens)!
 
+- [Add new function `addBusinessDays`](https://github.com/date-fns/date-fns/pull/1154),
+  similar to `addDays` but ignoring weekends. Thanks to [@ThorrStevens](https://github.com/ThorrStevens)!
+
 ## [1.30.1] - 2018-12-10
 
 ### Fixed

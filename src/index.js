@@ -3,6 +3,7 @@
 var constants = require('./constants/index.js')
 
 module.exports = {
+  addBusinessDays: require('./addBusinessDays/index.js'),
   addDays: require('./addDays/index.js'),
   addHours: require('./addHours/index.js'),
   addISOWeekYears: require('./addISOWeekYears/index.js'),
