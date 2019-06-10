@@ -18,6 +18,7 @@ module.exports = {
   closestTo: require('./closestTo/index.js'),
   compareAsc: require('./compareAsc/index.js'),
   compareDesc: require('./compareDesc/index.js'),
+  differenceInBusinessDays: require('./differenceInBusinessDays/index.js'),
   differenceInCalendarDays: require('./differenceInCalendarDays/index.js'),
   differenceInCalendarISOWeekYears: require('./differenceInCalendarISOWeekYears/index.js'),
   differenceInCalendarISOWeeks: require('./differenceInCalendarISOWeeks/index.js'),

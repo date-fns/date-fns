@@ -75,6 +75,11 @@ declare module.exports: {
 
   compareDesc: (dateLeft: Date | number, dateRight: Date | number) => number,
 
+  differenceInBusinessDays: (
+    dateLeft: Date | number,
+    dateRight: Date | number
+  ) => number,
+
   differenceInCalendarDays: (
     dateLeft: Date | number,
     dateRight: Date | number

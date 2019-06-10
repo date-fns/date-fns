@@ -81,6 +81,7 @@ declare module.exports: {
   closestTo: CurriedFn2<(Date | number)[], Date | number, Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,
   compareDesc: CurriedFn2<Date | number, Date | number, number>,
+  differenceInBusinessDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarISOWeeks: CurriedFn2<
     Date | number,
