@@ -36,6 +36,8 @@ type Locale = {
 }
 
 declare module.exports: {
+  addBusinessDays: (date: Date | number, amount: number) => Date,
+
   addDays: (date: Date | number, amount: number) => Date,
 
   addHours: (date: Date | number, amount: number) => Date,
@@ -51,8 +53,6 @@ declare module.exports: {
   addQuarters: (date: Date | number, amount: number) => Date,
 
   addSeconds: (date: Date | number, amount: number) => Date,
-
-  addBusinessDays: (date: Date | number, amount: number) => Date,
 
   addWeeks: (date: Date | number, amount: number) => Date,
 
@@ -232,7 +232,6 @@ declare module.exports: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: number,
-      locale?: Locale,
       useAdditionalWeekYearTokens?: boolean,
       useAdditionalDayOfYearTokens?: boolean
     }

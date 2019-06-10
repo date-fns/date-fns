@@ -66,6 +66,7 @@ type CurriedFn4<A, B, C, D, R> = <A>(
         ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
 declare module.exports: {
+  addBusinessDays: CurriedFn2<number, Date | number, Date>,
   addDays: CurriedFn2<number, Date | number, Date>,
   addHours: CurriedFn2<number, Date | number, Date>,
   addISOWeekYears: CurriedFn2<number, Date | number, Date>,
@@ -74,7 +75,6 @@ declare module.exports: {
   addMonths: CurriedFn2<number, Date | number, Date>,
   addQuarters: CurriedFn2<number, Date | number, Date>,
   addSeconds: CurriedFn2<number, Date | number, Date>,
-  addBusinessDays: CurriedFn2<number, Date | number, Date>,
   addWeeks: CurriedFn2<number, Date | number, Date>,
   addYears: CurriedFn2<number, Date | number, Date>,
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,

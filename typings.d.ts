@@ -73,6 +73,9 @@ declare module 'date-fns' {
 // Regular Functions
 
 declare module 'date-fns' {
+  function addBusinessDays(date: Date | number, amount: number): Date
+  namespace addBusinessDays {}
+
   function addDays(date: Date | number, amount: number): Date
   namespace addDays {}
 
@@ -96,11 +99,6 @@ declare module 'date-fns' {
 
   function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {}
-
-  function addBusinessDays(date: Date | number, amount: number): Date
-  namespace addBusinessDays {
-
-  }
 
   function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {}
@@ -324,7 +322,6 @@ declare module 'date-fns' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -806,6 +803,11 @@ declare module 'date-fns' {
   const minTime: number
 }
 
+declare module 'date-fns/addBusinessDays' {
+  import { addBusinessDays } from 'date-fns'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/addDays' {
   import { addDays } from 'date-fns'
   export default addDays
@@ -844,11 +846,6 @@ declare module 'date-fns/addQuarters' {
 declare module 'date-fns/addSeconds' {
   import { addSeconds } from 'date-fns'
   export default addSeconds
-}
-
-declare module 'date-fns/addBusinessDays' {
-  import { addBusinessDays } from 'date-fns'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/addWeeks' {
@@ -1591,6 +1588,11 @@ declare module 'date-fns/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/addBusinessDays/index' {
+  import { addBusinessDays } from 'date-fns'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/addDays/index' {
   import { addDays } from 'date-fns'
   export default addDays
@@ -1629,11 +1631,6 @@ declare module 'date-fns/addQuarters/index' {
 declare module 'date-fns/addSeconds/index' {
   import { addSeconds } from 'date-fns'
   export default addSeconds
-}
-
-declare module 'date-fns/addBusinessDays/index' {
-  import { addBusinessDays } from 'date-fns'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/addWeeks/index' {
@@ -2376,6 +2373,11 @@ declare module 'date-fns/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/addBusinessDays/index.js' {
+  import { addBusinessDays } from 'date-fns'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/addDays/index.js' {
   import { addDays } from 'date-fns'
   export default addDays
@@ -2414,11 +2416,6 @@ declare module 'date-fns/addQuarters/index.js' {
 declare module 'date-fns/addSeconds/index.js' {
   import { addSeconds } from 'date-fns'
   export default addSeconds
-}
-
-declare module 'date-fns/addBusinessDays/index.js' {
-  import { addBusinessDays } from 'date-fns'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/addWeeks/index.js' {
@@ -3164,6 +3161,9 @@ declare module 'date-fns/toDate/index.js' {
 // FP Functions
 
 declare module 'date-fns/fp' {
+  const addBusinessDays: CurriedFn2<number, Date | number, Date>
+  namespace addBusinessDays {}
+
   const addDays: CurriedFn2<number, Date | number, Date>
   namespace addDays {}
 
@@ -3187,11 +3187,6 @@ declare module 'date-fns/fp' {
 
   const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {}
-
-  const addBusinessDays: CurriedFn2<number, Date | number, Date>
-  namespace addBusinessDays {
-
-  }
 
   const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {}
@@ -3789,6 +3784,11 @@ declare module 'date-fns/fp' {
   const minTime: number
 }
 
+declare module 'date-fns/fp/addBusinessDays' {
+  import { addBusinessDays } from 'date-fns/fp'
+  export = addBusinessDays
+}
+
 declare module 'date-fns/fp/addDays' {
   import { addDays } from 'date-fns/fp'
   export = addDays
@@ -3827,11 +3827,6 @@ declare module 'date-fns/fp/addQuarters' {
 declare module 'date-fns/fp/addSeconds' {
   import { addSeconds } from 'date-fns/fp'
   export = addSeconds
-}
-
-declare module 'date-fns/fp/addBusinessDays' {
-  import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/fp/addWeeks' {
@@ -4694,6 +4689,11 @@ declare module 'date-fns/fp/toDate' {
   export = toDate
 }
 
+declare module 'date-fns/fp/addBusinessDays/index' {
+  import { addBusinessDays } from 'date-fns/fp'
+  export = addBusinessDays
+}
+
 declare module 'date-fns/fp/addDays/index' {
   import { addDays } from 'date-fns/fp'
   export = addDays
@@ -4732,11 +4732,6 @@ declare module 'date-fns/fp/addQuarters/index' {
 declare module 'date-fns/fp/addSeconds/index' {
   import { addSeconds } from 'date-fns/fp'
   export = addSeconds
-}
-
-declare module 'date-fns/fp/addBusinessDays/index' {
-  import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/fp/addWeeks/index' {
@@ -5599,6 +5594,11 @@ declare module 'date-fns/fp/toDate/index' {
   export = toDate
 }
 
+declare module 'date-fns/fp/addBusinessDays/index.js' {
+  import { addBusinessDays } from 'date-fns/fp'
+  export = addBusinessDays
+}
+
 declare module 'date-fns/fp/addDays/index.js' {
   import { addDays } from 'date-fns/fp'
   export = addDays
@@ -5637,11 +5637,6 @@ declare module 'date-fns/fp/addQuarters/index.js' {
 declare module 'date-fns/fp/addSeconds/index.js' {
   import { addSeconds } from 'date-fns/fp'
   export = addSeconds
-}
-
-declare module 'date-fns/fp/addBusinessDays/index.js' {
-  import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
 }
 
 declare module 'date-fns/fp/addWeeks/index.js' {
@@ -6507,6 +6502,9 @@ declare module 'date-fns/fp/toDate/index.js' {
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
+  function addBusinessDays(date: Date | number, amount: number): Date
+  namespace addBusinessDays {}
+
   function addDays(date: Date | number, amount: number): Date
   namespace addDays {}
 
@@ -6530,11 +6528,6 @@ declare module 'date-fns/esm' {
 
   function addSeconds(date: Date | number, amount: number): Date
   namespace addSeconds {}
-
-  function addBusinessDays(date: Date | number, amount: number): Date
-  namespace addBusinessDays {
-
-  }
 
   function addWeeks(date: Date | number, amount: number): Date
   namespace addWeeks {}
@@ -6758,7 +6751,6 @@ declare module 'date-fns/esm' {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }
@@ -7240,6 +7232,11 @@ declare module 'date-fns/esm' {
   const minTime: number
 }
 
+declare module 'date-fns/esm/addBusinessDays' {
+  import { addBusinessDays } from 'date-fns/esm'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/addDays' {
   import { addDays } from 'date-fns/esm'
   export default addDays
@@ -7278,11 +7275,6 @@ declare module 'date-fns/esm/addQuarters' {
 declare module 'date-fns/esm/addSeconds' {
   import { addSeconds } from 'date-fns/esm'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/addBusinessDays' {
-  import { addBusinessDays } from 'date-fns/esm'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/addWeeks' {
@@ -8025,6 +8017,11 @@ declare module 'date-fns/esm/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/addBusinessDays/index' {
+  import { addBusinessDays } from 'date-fns/esm'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/addDays/index' {
   import { addDays } from 'date-fns/esm'
   export default addDays
@@ -8063,11 +8060,6 @@ declare module 'date-fns/esm/addQuarters/index' {
 declare module 'date-fns/esm/addSeconds/index' {
   import { addSeconds } from 'date-fns/esm'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/addBusinessDays/index' {
-  import { addBusinessDays } from 'date-fns/esm'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/addWeeks/index' {
@@ -8810,6 +8802,11 @@ declare module 'date-fns/esm/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/esm/addBusinessDays/index.js' {
+  import { addBusinessDays } from 'date-fns/esm'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/addDays/index.js' {
   import { addDays } from 'date-fns/esm'
   export default addDays
@@ -8848,11 +8845,6 @@ declare module 'date-fns/esm/addQuarters/index.js' {
 declare module 'date-fns/esm/addSeconds/index.js' {
   import { addSeconds } from 'date-fns/esm'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/addBusinessDays/index.js' {
-  import { addBusinessDays } from 'date-fns/esm'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/addWeeks/index.js' {
@@ -9598,6 +9590,9 @@ declare module 'date-fns/esm/toDate/index.js' {
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
+  const addBusinessDays: CurriedFn2<number, Date | number, Date>
+  namespace addBusinessDays {}
+
   const addDays: CurriedFn2<number, Date | number, Date>
   namespace addDays {}
 
@@ -9621,11 +9616,6 @@ declare module 'date-fns/esm/fp' {
 
   const addSeconds: CurriedFn2<number, Date | number, Date>
   namespace addSeconds {}
-
-  const addBusinessDays: CurriedFn2<number, Date | number, Date>
-  namespace addBusinessDays {
-
-  }
 
   const addWeeks: CurriedFn2<number, Date | number, Date>
   namespace addWeeks {}
@@ -10223,6 +10213,11 @@ declare module 'date-fns/esm/fp' {
   const minTime: number
 }
 
+declare module 'date-fns/esm/fp/addBusinessDays' {
+  import { addBusinessDays } from 'date-fns/esm/fp'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/fp/addDays' {
   import { addDays } from 'date-fns/esm/fp'
   export default addDays
@@ -10261,11 +10256,6 @@ declare module 'date-fns/esm/fp/addQuarters' {
 declare module 'date-fns/esm/fp/addSeconds' {
   import { addSeconds } from 'date-fns/esm/fp'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/fp/addBusinessDays' {
-  import { addBusinessDays } from 'date-fns/esm/fp'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/fp/addWeeks' {
@@ -11128,6 +11118,11 @@ declare module 'date-fns/esm/fp/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/fp/addBusinessDays/index' {
+  import { addBusinessDays } from 'date-fns/esm/fp'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/fp/addDays/index' {
   import { addDays } from 'date-fns/esm/fp'
   export default addDays
@@ -11166,11 +11161,6 @@ declare module 'date-fns/esm/fp/addQuarters/index' {
 declare module 'date-fns/esm/fp/addSeconds/index' {
   import { addSeconds } from 'date-fns/esm/fp'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/fp/addBusinessDays/index' {
-  import { addBusinessDays } from 'date-fns/esm/fp'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/fp/addWeeks/index' {
@@ -12033,6 +12023,11 @@ declare module 'date-fns/esm/fp/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/esm/fp/addBusinessDays/index.js' {
+  import { addBusinessDays } from 'date-fns/esm/fp'
+  export default addBusinessDays
+}
+
 declare module 'date-fns/esm/fp/addDays/index.js' {
   import { addDays } from 'date-fns/esm/fp'
   export default addDays
@@ -12071,11 +12066,6 @@ declare module 'date-fns/esm/fp/addQuarters/index.js' {
 declare module 'date-fns/esm/fp/addSeconds/index.js' {
   import { addSeconds } from 'date-fns/esm/fp'
   export default addSeconds
-}
-
-declare module 'date-fns/esm/fp/addBusinessDays/index.js' {
-  import { addBusinessDays } from 'date-fns/esm/fp'
-  export default addBusinessDays
 }
 
 declare module 'date-fns/esm/fp/addWeeks/index.js' {
@@ -15001,6 +14991,8 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 // dateFns Global Interface
 
 interface dateFns {
+  addBusinessDays(date: Date | number, amount: number): Date
+
   addDays(date: Date | number, amount: number): Date
 
   addHours(date: Date | number, amount: number): Date
@@ -15016,8 +15008,6 @@ interface dateFns {
   addQuarters(date: Date | number, amount: number): Date
 
   addSeconds(date: Date | number, amount: number): Date
-
-  addBusinessDays(date: Date | number, amount: number): Date
 
   addWeeks(date: Date | number, amount: number): Date
 
@@ -15173,7 +15163,6 @@ interface dateFns {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
-      locale?: Locale
       useAdditionalWeekYearTokens?: boolean
       useAdditionalDayOfYearTokens?: boolean
     }

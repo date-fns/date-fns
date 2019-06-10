@@ -1,5 +1,6 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+export { default as addBusinessDays } from './addBusinessDays/index.js'
 export { default as addDays } from './addDays/index.js'
 export { default as addHours } from './addHours/index.js'
 export { default as addISOWeekYears } from './addISOWeekYears/index.js'
@@ -8,7 +9,6 @@ export { default as addMinutes } from './addMinutes/index.js'
 export { default as addMonths } from './addMonths/index.js'
 export { default as addQuarters } from './addQuarters/index.js'
 export { default as addSeconds } from './addSeconds/index.js'
-export { default as addBusinessDays } from './addBusinessDays/index.js'
 export { default as addWeeks } from './addWeeks/index.js'
 export { default as addYears } from './addYears/index.js'
 export {

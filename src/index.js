@@ -3,6 +3,7 @@
 var constants = require('./constants/index.js')
 
 module.exports = {
+  addBusinessDays: require('./addBusinessDays/index.js'),
   addDays: require('./addDays/index.js'),
   addHours: require('./addHours/index.js'),
   addISOWeekYears: require('./addISOWeekYears/index.js'),
@@ -11,7 +12,6 @@ module.exports = {
   addMonths: require('./addMonths/index.js'),
   addQuarters: require('./addQuarters/index.js'),
   addSeconds: require('./addSeconds/index.js'),
-  addBusinessDays: require('./addBusinessDays/index.js'),
   addWeeks: require('./addWeeks/index.js'),
   addYears: require('./addYears/index.js'),
   areIntervalsOverlapping: require('./areIntervalsOverlapping/index.js'),
