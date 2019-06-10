@@ -13,19 +13,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
 for the list of changes made since `v2.0.0-alpha.1`.
 
-### Added
-
-- Added new feature `differenceInBusinessDays`,
-  which counts all days in a range, except for weekends.
-
-  ```javascript
-  var amountOfBusinessDays = differenceInBusinessDays(
-    new Date(2018, 0, 1),
-    new Date(2019, 0, 1)
-  )
-  // => 261 (52 weekends excluded = 104 days skipped)
-  ```
-
 ### Fixed
 
 - Fix the `toDate` bug occurring when parsing ISO-8601 style dates (but not valid ISO format)
@@ -770,6 +757,9 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - [Uighur locale (ug)](https://github.com/date-fns/date-fns/pull/1080)
     by [@abduwaly](https://github.com/abduwaly).
+
+- [Add new function `differenceInBusinessDays`](https://github.com/date-fns/date-fns/pull/1194)
+  which calculates the difference in business days. Kudos to [@ThorrStevens](https://github.com/ThorrStevens)!
 
 ## [1.30.1] - 2018-12-10
 
