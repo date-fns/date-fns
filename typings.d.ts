@@ -130,6 +130,12 @@ declare module 'date-fns' {
   ): number
   namespace compareDesc {}
 
+  function differenceInBusinessDays(
+    dateLeft: Date | number,
+    dateRight: Date | number
+  ): number
+  namespace differenceInBusinessDays {}
+
   function differenceInCalendarDays(
     dateLeft: Date | number,
     dateRight: Date | number
@@ -867,6 +873,11 @@ declare module 'date-fns/compareAsc' {
 declare module 'date-fns/compareDesc' {
   import { compareDesc } from 'date-fns'
   export default compareDesc
+}
+
+declare module 'date-fns/differenceInBusinessDays' {
+  import { differenceInBusinessDays } from 'date-fns'
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/differenceInCalendarDays' {
@@ -1644,6 +1655,11 @@ declare module 'date-fns/compareDesc/index' {
   export default compareDesc
 }
 
+declare module 'date-fns/differenceInBusinessDays/index' {
+  import { differenceInBusinessDays } from 'date-fns'
+  export default differenceInBusinessDays
+}
+
 declare module 'date-fns/differenceInCalendarDays/index' {
   import { differenceInCalendarDays } from 'date-fns'
   export default differenceInCalendarDays
@@ -2419,6 +2435,11 @@ declare module 'date-fns/compareDesc/index.js' {
   export default compareDesc
 }
 
+declare module 'date-fns/differenceInBusinessDays/index.js' {
+  import { differenceInBusinessDays } from 'date-fns'
+  export default differenceInBusinessDays
+}
+
 declare module 'date-fns/differenceInCalendarDays/index.js' {
   import { differenceInCalendarDays } from 'date-fns'
   export default differenceInCalendarDays
@@ -3167,6 +3188,13 @@ declare module 'date-fns/fp' {
   const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {}
 
+  const differenceInBusinessDays: CurriedFn2<
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInBusinessDays {}
+
   const differenceInCalendarDays: CurriedFn2<
     Date | number,
     Date | number,
@@ -3808,6 +3836,11 @@ declare module 'date-fns/fp/compareAsc' {
 declare module 'date-fns/fp/compareDesc' {
   import { compareDesc } from 'date-fns/fp'
   export = compareDesc
+}
+
+declare module 'date-fns/fp/differenceInBusinessDays' {
+  import { differenceInBusinessDays } from 'date-fns/fp'
+  export = differenceInBusinessDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarDays' {
@@ -4705,6 +4738,11 @@ declare module 'date-fns/fp/compareDesc/index' {
   export = compareDesc
 }
 
+declare module 'date-fns/fp/differenceInBusinessDays/index' {
+  import { differenceInBusinessDays } from 'date-fns/fp'
+  export = differenceInBusinessDays
+}
+
 declare module 'date-fns/fp/differenceInCalendarDays/index' {
   import { differenceInCalendarDays } from 'date-fns/fp'
   export = differenceInCalendarDays
@@ -5600,6 +5638,11 @@ declare module 'date-fns/fp/compareDesc/index.js' {
   export = compareDesc
 }
 
+declare module 'date-fns/fp/differenceInBusinessDays/index.js' {
+  import { differenceInBusinessDays } from 'date-fns/fp'
+  export = differenceInBusinessDays
+}
+
 declare module 'date-fns/fp/differenceInCalendarDays/index.js' {
   import { differenceInCalendarDays } from 'date-fns/fp'
   export = differenceInCalendarDays
@@ -6480,6 +6523,12 @@ declare module 'date-fns/esm' {
   ): number
   namespace compareDesc {}
 
+  function differenceInBusinessDays(
+    dateLeft: Date | number,
+    dateRight: Date | number
+  ): number
+  namespace differenceInBusinessDays {}
+
   function differenceInCalendarDays(
     dateLeft: Date | number,
     dateRight: Date | number
@@ -7217,6 +7266,11 @@ declare module 'date-fns/esm/compareAsc' {
 declare module 'date-fns/esm/compareDesc' {
   import { compareDesc } from 'date-fns/esm'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/differenceInBusinessDays' {
+  import { differenceInBusinessDays } from 'date-fns/esm'
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/esm/differenceInCalendarDays' {
@@ -7994,6 +8048,11 @@ declare module 'date-fns/esm/compareDesc/index' {
   export default compareDesc
 }
 
+declare module 'date-fns/esm/differenceInBusinessDays/index' {
+  import { differenceInBusinessDays } from 'date-fns/esm'
+  export default differenceInBusinessDays
+}
+
 declare module 'date-fns/esm/differenceInCalendarDays/index' {
   import { differenceInCalendarDays } from 'date-fns/esm'
   export default differenceInCalendarDays
@@ -8769,6 +8828,11 @@ declare module 'date-fns/esm/compareDesc/index.js' {
   export default compareDesc
 }
 
+declare module 'date-fns/esm/differenceInBusinessDays/index.js' {
+  import { differenceInBusinessDays } from 'date-fns/esm'
+  export default differenceInBusinessDays
+}
+
 declare module 'date-fns/esm/differenceInCalendarDays/index.js' {
   import { differenceInCalendarDays } from 'date-fns/esm'
   export default differenceInCalendarDays
@@ -9517,6 +9581,13 @@ declare module 'date-fns/esm/fp' {
   const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {}
 
+  const differenceInBusinessDays: CurriedFn2<
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInBusinessDays {}
+
   const differenceInCalendarDays: CurriedFn2<
     Date | number,
     Date | number,
@@ -10158,6 +10229,11 @@ declare module 'date-fns/esm/fp/compareAsc' {
 declare module 'date-fns/esm/fp/compareDesc' {
   import { compareDesc } from 'date-fns/esm/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/fp/differenceInBusinessDays' {
+  import { differenceInBusinessDays } from 'date-fns/esm/fp'
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/esm/fp/differenceInCalendarDays' {
@@ -11055,6 +11131,11 @@ declare module 'date-fns/esm/fp/compareDesc/index' {
   export default compareDesc
 }
 
+declare module 'date-fns/esm/fp/differenceInBusinessDays/index' {
+  import { differenceInBusinessDays } from 'date-fns/esm/fp'
+  export default differenceInBusinessDays
+}
+
 declare module 'date-fns/esm/fp/differenceInCalendarDays/index' {
   import { differenceInCalendarDays } from 'date-fns/esm/fp'
   export default differenceInCalendarDays
@@ -11948,6 +12029,11 @@ declare module 'date-fns/esm/fp/compareAsc/index.js' {
 declare module 'date-fns/esm/fp/compareDesc/index.js' {
   import { compareDesc } from 'date-fns/esm/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/fp/differenceInBusinessDays/index.js' {
+  import { differenceInBusinessDays } from 'date-fns/esm/fp'
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/esm/fp/differenceInCalendarDays/index.js' {
@@ -14868,6 +14954,11 @@ interface dateFns {
   compareAsc(dateLeft: Date | number, dateRight: Date | number): number
 
   compareDesc(dateLeft: Date | number, dateRight: Date | number): number
+
+  differenceInBusinessDays(
+    dateLeft: Date | number,
+    dateRight: Date | number
+  ): number
 
   differenceInCalendarDays(
     dateLeft: Date | number,

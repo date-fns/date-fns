@@ -18,6 +18,9 @@ export { default as closestTo } from './closestTo/index.js'
 export { default as compareAsc } from './compareAsc/index.js'
 export { default as compareDesc } from './compareDesc/index.js'
 export {
+  default as differenceInBusinessDays
+} from './differenceInBusinessDays/index.js'
+export {
   default as differenceInCalendarDays
 } from './differenceInCalendarDays/index.js'
 export {
