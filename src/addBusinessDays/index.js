@@ -11,8 +11,8 @@ import toInteger from '../_lib/toInteger/index.js'
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of weekdays to be added
- * @returns {Date} the new date with the weekdays added
+ * @param {Number} amount - the amount of business days to be added
+ * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  *
  * @example
