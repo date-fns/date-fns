@@ -1,6 +1,14 @@
 // @flow
 /* eslint-env mocha */
 
+import assert from 'power-assert'
+
+describe('sl locale > formatDistance', function() {
+  it('hopes to get tests one day', () => {
+    assert('hope')
+  })
+})
+
 // var assert = require('power-assert')
 // var buildDistanceInWordsLocale = require('./')
 

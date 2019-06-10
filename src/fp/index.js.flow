@@ -281,5 +281,7 @@ declare module.exports: {
   subSeconds: CurriedFn2<number, Date | number, Date>,
   subWeeks: CurriedFn2<number, Date | number, Date>,
   subYears: CurriedFn2<number, Date | number, Date>,
-  toDate: CurriedFn1<Date | number, Date>
+  toDate: CurriedFn1<Date | number, Date>,
+  maxTime: number,
+  minTime: number
 }

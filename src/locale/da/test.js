@@ -121,7 +121,7 @@ describe('da locale', function() {
         assert(result === 'midnat, midnat, midnat')
       })
 
-      it('flexible day periods', function() {
+      describe('flexible day periods', function() {
         it('works as expected', function() {
           var result = format(date, 'h B', { locale: locale })
           assert(result === '10 om morgenen')
@@ -374,7 +374,6 @@ describe('da locale', function() {
 
       it('abbreviated', function() {
         var result = parse('nov', 'MMM', baseDate, { locale: locale })
-        console.log(parse('feb', 'MMM', baseDate, { locale: locale }))
         assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
       })
 

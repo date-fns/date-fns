@@ -788,6 +788,10 @@ declare module 'date-fns' {
 
   function toDate(argument: Date | number): Date
   namespace toDate {}
+
+  const maxTime: number
+
+  const minTime: number
 }
 
 declare module 'date-fns/addDays' {
@@ -3725,6 +3729,10 @@ declare module 'date-fns/fp' {
 
   const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {}
+
+  const maxTime: number
+
+  const minTime: number
 }
 
 declare module 'date-fns/fp/addDays' {
@@ -7130,6 +7138,10 @@ declare module 'date-fns/esm' {
 
   function toDate(argument: Date | number): Date
   namespace toDate {}
+
+  const maxTime: number
+
+  const minTime: number
 }
 
 declare module 'date-fns/esm/addDays' {
@@ -10067,6 +10079,10 @@ declare module 'date-fns/esm/fp' {
 
   const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {}
+
+  const maxTime: number
+
+  const minTime: number
 }
 
 declare module 'date-fns/esm/fp/addDays' {
@@ -15326,4 +15342,8 @@ interface dateFns {
   subYears(date: Date | number, amount: number): Date
 
   toDate(argument: Date | number): Date
+
+  maxTime: number
+
+  minTime: number
 }

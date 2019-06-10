@@ -1,5 +1,7 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+var constants = require('../constants/index.js')
+
 module.exports = {
   addDays: require('./addDays/index.js'),
   addHours: require('./addHours/index.js'),
@@ -180,5 +182,7 @@ module.exports = {
   subSeconds: require('./subSeconds/index.js'),
   subWeeks: require('./subWeeks/index.js'),
   subYears: require('./subYears/index.js'),
-  toDate: require('./toDate/index.js')
+  toDate: require('./toDate/index.js'),
+  maxTime: constants.maxTime,
+  minTime: constants.minTime
 }
