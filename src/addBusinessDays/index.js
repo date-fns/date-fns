@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
 import isWeekend from '../isWeekend/index.js'
 import toDate from '../toDate/index.js'
+import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name addBusinessDays
@@ -32,9 +32,11 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
 
   if (isNaN(amount)) return new Date(NaN)
 
+  var hours = date.getHours()
   var numWeekDays = 0
   while (numWeekDays < amount) {
     date.setDate(date.getDate() + 1)
+    date.setHours(hours)
     if (!isWeekend(date)) numWeekDays++
   }
 
