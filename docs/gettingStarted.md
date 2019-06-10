@@ -81,3 +81,41 @@ import { formatDistance, subDays } from 'date-fns'
 formatDistance(subDays(new Date(), 3), new Date())
 //=> "3 days ago"
 ```
+
+## Try date-fns
+
+Try and use date-fns functions via [Bit components](https://bit.dev/date-fns/date-fns).
+
+* Note: Individual functions are not recommended to be used as library dependencies.
+
+Install as packages via bit.dev:
+
+```bash
+npm login --registry=https://node.bit.dev --scope=@bit
+
+npm i @bit/date-fns.date-fns.get-week-year
+# or
+yarn add @bit/date-fns.date-fns.get-week-year
+```
+
+Import with Bit:
+
+```
+npm i -g bit-bin
+
+bit import date-fns.date-fns/get-week-year
+```
+
+Start using:
+
+```js
+import getWeekYear from "@bit/date-fns.date-fns.get-week-year";
+// Which week numbering year is 26 December 2004 if week starts on Saturday?
+
+export default getWeekYear(
+  new Date(2004, 11, 26),
+  {
+    weekStartsOn: 6,
+  },
+); //=> 2004
+```
