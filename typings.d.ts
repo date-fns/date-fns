@@ -565,6 +565,9 @@ declare module 'date-fns' {
   function isThisISOWeek(date: Date | number): boolean
   namespace isThisISOWeek {}
 
+  function isThisMinute(date: Date | number): boolean
+  namespace isThisMinute {}
+
   function isThisMonth(date: Date | number): boolean
   namespace isThisMonth {}
 
@@ -1335,6 +1338,11 @@ declare module 'date-fns/isThisHour' {
 declare module 'date-fns/isThisISOWeek' {
   import { isThisISOWeek } from 'date-fns'
   export default isThisISOWeek
+}
+
+declare module 'date-fns/isThisMinute' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
 }
 
 declare module 'date-fns/isThisMonth' {
@@ -2152,6 +2160,11 @@ declare module 'date-fns/isThisISOWeek/index' {
   export default isThisISOWeek
 }
 
+declare module 'date-fns/isThisMinute/index' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
+}
+
 declare module 'date-fns/isThisMonth/index' {
   import { isThisMonth } from 'date-fns'
   export default isThisMonth
@@ -2965,6 +2978,11 @@ declare module 'date-fns/isThisHour/index.js' {
 declare module 'date-fns/isThisISOWeek/index.js' {
   import { isThisISOWeek } from 'date-fns'
   export default isThisISOWeek
+}
+
+declare module 'date-fns/isThisMinute/index.js' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
 }
 
 declare module 'date-fns/isThisMonth/index.js' {
@@ -7108,6 +7126,9 @@ declare module 'date-fns/esm' {
   function isThisISOWeek(date: Date | number): boolean
   namespace isThisISOWeek {}
 
+  function isThisMinute(date: Date | number): boolean
+  namespace isThisMinute {}
+
   function isThisMonth(date: Date | number): boolean
   namespace isThisMonth {}
 
@@ -7878,6 +7899,11 @@ declare module 'date-fns/esm/isThisHour' {
 declare module 'date-fns/esm/isThisISOWeek' {
   import { isThisISOWeek } from 'date-fns/esm'
   export default isThisISOWeek
+}
+
+declare module 'date-fns/esm/isThisMinute' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
 }
 
 declare module 'date-fns/esm/isThisMonth' {
@@ -8695,6 +8721,11 @@ declare module 'date-fns/esm/isThisISOWeek/index' {
   export default isThisISOWeek
 }
 
+declare module 'date-fns/esm/isThisMinute/index' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
+}
+
 declare module 'date-fns/esm/isThisMonth/index' {
   import { isThisMonth } from 'date-fns/esm'
   export default isThisMonth
@@ -9508,6 +9539,11 @@ declare module 'date-fns/esm/isThisHour/index.js' {
 declare module 'date-fns/esm/isThisISOWeek/index.js' {
   import { isThisISOWeek } from 'date-fns/esm'
   export default isThisISOWeek
+}
+
+declare module 'date-fns/esm/isThisMinute/index.js' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
 }
 
 declare module 'date-fns/esm/isThisMonth/index.js' {
@@ -15557,6 +15593,8 @@ interface dateFns {
   isThisHour(date: Date | number): boolean
 
   isThisISOWeek(date: Date | number): boolean
+
+  isThisMinute(date: Date | number): boolean
 
   isThisMonth(date: Date | number): boolean
 

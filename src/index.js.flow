@@ -402,6 +402,8 @@ declare module.exports: {
 
   isThisISOWeek: (date: Date | number) => boolean,
 
+  isThisMinute: (date: Date | number) => boolean,
+
   isThisMonth: (date: Date | number) => boolean,
 
   isThisQuarter: (date: Date | number) => boolean,
