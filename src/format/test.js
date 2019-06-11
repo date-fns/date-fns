@@ -288,7 +288,7 @@ describe('format', function() {
       })
     })
 
-    describe.only('local week of the month', function() {
+    describe('local week of the month', function() {
       it('works as expected', function() {
         var date = new Date(2019, 0, 1)
         var result = format(date, 'W Wo WW')
