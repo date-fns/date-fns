@@ -574,6 +574,9 @@ declare module 'date-fns' {
   function isThisQuarter(date: Date | number): boolean
   namespace isThisQuarter {}
 
+  function isThisSecond(date: Date | number): boolean
+  namespace isThisSecond {}
+
   function isThisWeek(
     date: Date | number,
     options?: {
@@ -1353,6 +1356,11 @@ declare module 'date-fns/isThisMonth' {
 declare module 'date-fns/isThisQuarter' {
   import { isThisQuarter } from 'date-fns'
   export default isThisQuarter
+}
+
+declare module 'date-fns/isThisSecond' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
 }
 
 declare module 'date-fns/isThisWeek' {
@@ -2175,6 +2183,11 @@ declare module 'date-fns/isThisQuarter/index' {
   export default isThisQuarter
 }
 
+declare module 'date-fns/isThisSecond/index' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
+}
+
 declare module 'date-fns/isThisWeek/index' {
   import { isThisWeek } from 'date-fns'
   export default isThisWeek
@@ -2993,6 +3006,11 @@ declare module 'date-fns/isThisMonth/index.js' {
 declare module 'date-fns/isThisQuarter/index.js' {
   import { isThisQuarter } from 'date-fns'
   export default isThisQuarter
+}
+
+declare module 'date-fns/isThisSecond/index.js' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
 }
 
 declare module 'date-fns/isThisWeek/index.js' {
@@ -7135,6 +7153,9 @@ declare module 'date-fns/esm' {
   function isThisQuarter(date: Date | number): boolean
   namespace isThisQuarter {}
 
+  function isThisSecond(date: Date | number): boolean
+  namespace isThisSecond {}
+
   function isThisWeek(
     date: Date | number,
     options?: {
@@ -7914,6 +7935,11 @@ declare module 'date-fns/esm/isThisMonth' {
 declare module 'date-fns/esm/isThisQuarter' {
   import { isThisQuarter } from 'date-fns/esm'
   export default isThisQuarter
+}
+
+declare module 'date-fns/esm/isThisSecond' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
 }
 
 declare module 'date-fns/esm/isThisWeek' {
@@ -8736,6 +8762,11 @@ declare module 'date-fns/esm/isThisQuarter/index' {
   export default isThisQuarter
 }
 
+declare module 'date-fns/esm/isThisSecond/index' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
+}
+
 declare module 'date-fns/esm/isThisWeek/index' {
   import { isThisWeek } from 'date-fns/esm'
   export default isThisWeek
@@ -9554,6 +9585,11 @@ declare module 'date-fns/esm/isThisMonth/index.js' {
 declare module 'date-fns/esm/isThisQuarter/index.js' {
   import { isThisQuarter } from 'date-fns/esm'
   export default isThisQuarter
+}
+
+declare module 'date-fns/esm/isThisSecond/index.js' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
 }
 
 declare module 'date-fns/esm/isThisWeek/index.js' {
@@ -15599,6 +15635,8 @@ interface dateFns {
   isThisMonth(date: Date | number): boolean
 
   isThisQuarter(date: Date | number): boolean
+
+  isThisSecond(date: Date | number): boolean
 
   isThisWeek(
     date: Date | number,

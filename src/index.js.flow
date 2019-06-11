@@ -408,6 +408,8 @@ declare module.exports: {
 
   isThisQuarter: (date: Date | number) => boolean,
 
+  isThisSecond: (date: Date | number) => boolean,
+
   isThisWeek: (
     date: Date | number,
     options?: {
