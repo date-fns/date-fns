@@ -559,6 +559,9 @@ declare module 'date-fns' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisHour(date: Date | number): boolean
+  namespace isThisHour {}
+
   function isThisISOWeek(date: Date | number): boolean
   namespace isThisISOWeek {}
 
@@ -1322,6 +1325,11 @@ declare module 'date-fns/isSaturday' {
 declare module 'date-fns/isSunday' {
   import { isSunday } from 'date-fns'
   export default isSunday
+}
+
+declare module 'date-fns/isThisHour' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
 }
 
 declare module 'date-fns/isThisISOWeek' {
@@ -2134,6 +2142,11 @@ declare module 'date-fns/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/isThisHour/index' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
+}
+
 declare module 'date-fns/isThisISOWeek/index' {
   import { isThisISOWeek } from 'date-fns'
   export default isThisISOWeek
@@ -2942,6 +2955,11 @@ declare module 'date-fns/isSaturday/index.js' {
 declare module 'date-fns/isSunday/index.js' {
   import { isSunday } from 'date-fns'
   export default isSunday
+}
+
+declare module 'date-fns/isThisHour/index.js' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
 }
 
 declare module 'date-fns/isThisISOWeek/index.js' {
@@ -7084,6 +7102,9 @@ declare module 'date-fns/esm' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisHour(date: Date | number): boolean
+  namespace isThisHour {}
+
   function isThisISOWeek(date: Date | number): boolean
   namespace isThisISOWeek {}
 
@@ -7847,6 +7868,11 @@ declare module 'date-fns/esm/isSaturday' {
 declare module 'date-fns/esm/isSunday' {
   import { isSunday } from 'date-fns/esm'
   export default isSunday
+}
+
+declare module 'date-fns/esm/isThisHour' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
 }
 
 declare module 'date-fns/esm/isThisISOWeek' {
@@ -8659,6 +8685,11 @@ declare module 'date-fns/esm/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/esm/isThisHour/index' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
+}
+
 declare module 'date-fns/esm/isThisISOWeek/index' {
   import { isThisISOWeek } from 'date-fns/esm'
   export default isThisISOWeek
@@ -9467,6 +9498,11 @@ declare module 'date-fns/esm/isSaturday/index.js' {
 declare module 'date-fns/esm/isSunday/index.js' {
   import { isSunday } from 'date-fns/esm'
   export default isSunday
+}
+
+declare module 'date-fns/esm/isThisHour/index.js' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
 }
 
 declare module 'date-fns/esm/isThisISOWeek/index.js' {
@@ -15517,6 +15553,8 @@ interface dateFns {
   isSaturday(date: Date | number): boolean
 
   isSunday(date: Date | number): boolean
+
+  isThisHour(date: Date | number): boolean
 
   isThisISOWeek(date: Date | number): boolean
 
