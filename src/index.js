@@ -55,6 +55,7 @@ module.exports = {
   endOfTomorrow: require('./endOfTomorrow/index.js'),
   endOfWeek: require('./endOfWeek/index.js'),
   endOfYear: require('./endOfYear/index.js'),
+  endOfYesterday: require('./endOfYesterday/index.js'),
   format: require('./format/index.js'),
   formatDistance: require('./formatDistance/index.js'),
   formatDistanceStrict: require('./formatDistanceStrict/index.js'),

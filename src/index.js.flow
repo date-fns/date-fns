@@ -229,6 +229,8 @@ declare module.exports: {
 
   endOfYear: (date: Date | number) => Date,
 
+  endOfYesterday: () => Date,
+
   format: (
     date: Date | number,
     format: string,

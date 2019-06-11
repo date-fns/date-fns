@@ -321,6 +321,9 @@ declare module 'date-fns' {
   function endOfYear(date: Date | number): Date
   namespace endOfYear {}
 
+  function endOfYesterday(): Date
+  namespace endOfYesterday {}
+
   function format(
     date: Date | number,
     format: string,
@@ -1097,6 +1100,11 @@ declare module 'date-fns/endOfWeek' {
 declare module 'date-fns/endOfYear' {
   import { endOfYear } from 'date-fns'
   export default endOfYear
+}
+
+declare module 'date-fns/endOfYesterday' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/format' {
@@ -1934,6 +1942,11 @@ declare module 'date-fns/endOfYear/index' {
   export default endOfYear
 }
 
+declare module 'date-fns/endOfYesterday/index' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
+}
+
 declare module 'date-fns/format/index' {
   import { format } from 'date-fns'
   export default format
@@ -2767,6 +2780,11 @@ declare module 'date-fns/endOfWeek/index.js' {
 declare module 'date-fns/endOfYear/index.js' {
   import { endOfYear } from 'date-fns'
   export default endOfYear
+}
+
+declare module 'date-fns/endOfYesterday/index.js' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/format/index.js' {
@@ -6936,6 +6954,9 @@ declare module 'date-fns/esm' {
   function endOfYear(date: Date | number): Date
   namespace endOfYear {}
 
+  function endOfYesterday(): Date
+  namespace endOfYesterday {}
+
   function format(
     date: Date | number,
     format: string,
@@ -7712,6 +7733,11 @@ declare module 'date-fns/esm/endOfWeek' {
 declare module 'date-fns/esm/endOfYear' {
   import { endOfYear } from 'date-fns/esm'
   export default endOfYear
+}
+
+declare module 'date-fns/esm/endOfYesterday' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/esm/format' {
@@ -8549,6 +8575,11 @@ declare module 'date-fns/esm/endOfYear/index' {
   export default endOfYear
 }
 
+declare module 'date-fns/esm/endOfYesterday/index' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
+}
+
 declare module 'date-fns/esm/format/index' {
   import { format } from 'date-fns/esm'
   export default format
@@ -9382,6 +9413,11 @@ declare module 'date-fns/esm/endOfWeek/index.js' {
 declare module 'date-fns/esm/endOfYear/index.js' {
   import { endOfYear } from 'date-fns/esm'
   export default endOfYear
+}
+
+declare module 'date-fns/esm/endOfYesterday/index.js' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/esm/format/index.js' {
@@ -15531,6 +15567,8 @@ interface dateFns {
   ): Date
 
   endOfYear(date: Date | number): Date
+
+  endOfYesterday(): Date
 
   format(
     date: Date | number,

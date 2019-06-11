@@ -78,6 +78,7 @@ export { default as endOfToday } from './endOfToday/index.js'
 export { default as endOfTomorrow } from './endOfTomorrow/index.js'
 export { default as endOfWeek } from './endOfWeek/index.js'
 export { default as endOfYear } from './endOfYear/index.js'
+export { default as endOfYesterday } from './endOfYesterday/index.js'
 export { default as format } from './format/index.js'
 export { default as formatDistance } from './formatDistance/index.js'
 export {
