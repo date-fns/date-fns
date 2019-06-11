@@ -502,6 +502,9 @@ declare module 'date-fns' {
   function isFriday(date: Date | number): boolean
   namespace isFriday {}
 
+  function isFuture(date: Date | number): boolean
+  namespace isFuture {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -1295,6 +1298,11 @@ declare module 'date-fns/isFirstDayOfMonth' {
 declare module 'date-fns/isFriday' {
   import { isFriday } from 'date-fns'
   export default isFriday
+}
+
+declare module 'date-fns/isFuture' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
 }
 
 declare module 'date-fns/isLastDayOfMonth' {
@@ -2142,6 +2150,11 @@ declare module 'date-fns/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/isFuture/index' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
+}
+
 declare module 'date-fns/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns'
   export default isLastDayOfMonth
@@ -2985,6 +2998,11 @@ declare module 'date-fns/isFirstDayOfMonth/index.js' {
 declare module 'date-fns/isFriday/index.js' {
   import { isFriday } from 'date-fns'
   export default isFriday
+}
+
+declare module 'date-fns/isFuture/index.js' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
 }
 
 declare module 'date-fns/isLastDayOfMonth/index.js' {
@@ -7160,6 +7178,9 @@ declare module 'date-fns/esm' {
   function isFriday(date: Date | number): boolean
   namespace isFriday {}
 
+  function isFuture(date: Date | number): boolean
+  namespace isFuture {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -7953,6 +7974,11 @@ declare module 'date-fns/esm/isFirstDayOfMonth' {
 declare module 'date-fns/esm/isFriday' {
   import { isFriday } from 'date-fns/esm'
   export default isFriday
+}
+
+declare module 'date-fns/esm/isFuture' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
 }
 
 declare module 'date-fns/esm/isLastDayOfMonth' {
@@ -8800,6 +8826,11 @@ declare module 'date-fns/esm/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/isFuture/index' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
+}
+
 declare module 'date-fns/esm/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/esm'
   export default isLastDayOfMonth
@@ -9643,6 +9674,11 @@ declare module 'date-fns/esm/isFirstDayOfMonth/index.js' {
 declare module 'date-fns/esm/isFriday/index.js' {
   import { isFriday } from 'date-fns/esm'
   export default isFriday
+}
+
+declare module 'date-fns/esm/isFuture/index.js' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
 }
 
 declare module 'date-fns/esm/isLastDayOfMonth/index.js' {
@@ -15761,6 +15797,8 @@ interface dateFns {
   isFirstDayOfMonth(date: Date | number): boolean
 
   isFriday(date: Date | number): boolean
+
+  isFuture(date: Date | number): boolean
 
   isLastDayOfMonth(date: Date | number): boolean
 

@@ -373,6 +373,8 @@ declare module.exports: {
 
   isFriday: (date: Date | number) => boolean,
 
+  isFuture: (date: Date | number) => boolean,
+
   isLastDayOfMonth: (date: Date | number) => boolean,
 
   isLeapYear: (date: Date | number) => boolean,
