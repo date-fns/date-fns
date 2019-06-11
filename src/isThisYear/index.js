@@ -21,7 +21,6 @@ import isSameYear from '../isSameYear/index.js'
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-
 export default function isThisYear(dirtyDate) {
   if (arguments.length < 1) {
     throw new TypeError(
