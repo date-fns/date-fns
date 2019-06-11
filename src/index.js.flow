@@ -609,6 +609,8 @@ declare module.exports: {
 
   startOfYear: (date: Date | number) => Date,
 
+  startOfYesterday: () => Date,
+
   subDays: (date: Date | number, amount: number) => Date,
 
   subHours: (date: Date | number, amount: number) => Date,

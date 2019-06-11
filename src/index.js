@@ -168,6 +168,7 @@ module.exports = {
   startOfWeek: require('./startOfWeek/index.js'),
   startOfWeekYear: require('./startOfWeekYear/index.js'),
   startOfYear: require('./startOfYear/index.js'),
+  startOfYesterday: require('./startOfYesterday/index.js'),
   subDays: require('./subDays/index.js'),
   subHours: require('./subHours/index.js'),
   subISOWeekYears: require('./subISOWeekYears/index.js'),

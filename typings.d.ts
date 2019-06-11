@@ -835,6 +835,9 @@ declare module 'date-fns' {
   function startOfYear(date: Date | number): Date
   namespace startOfYear {}
 
+  function startOfYesterday(): Date
+  namespace startOfYesterday {}
+
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
 
@@ -1696,6 +1699,11 @@ declare module 'date-fns/startOfWeekYear' {
 declare module 'date-fns/startOfYear' {
   import { startOfYear } from 'date-fns'
   export default startOfYear
+}
+
+declare module 'date-fns/startOfYesterday' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/subDays' {
@@ -2578,6 +2586,11 @@ declare module 'date-fns/startOfYear/index' {
   export default startOfYear
 }
 
+declare module 'date-fns/startOfYesterday/index' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
+}
+
 declare module 'date-fns/subDays/index' {
   import { subDays } from 'date-fns'
   export default subDays
@@ -3456,6 +3469,11 @@ declare module 'date-fns/startOfWeekYear/index.js' {
 declare module 'date-fns/startOfYear/index.js' {
   import { startOfYear } from 'date-fns'
   export default startOfYear
+}
+
+declare module 'date-fns/startOfYesterday/index.js' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/subDays/index.js' {
@@ -7637,6 +7655,9 @@ declare module 'date-fns/esm' {
   function startOfYear(date: Date | number): Date
   namespace startOfYear {}
 
+  function startOfYesterday(): Date
+  namespace startOfYesterday {}
+
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
 
@@ -8498,6 +8519,11 @@ declare module 'date-fns/esm/startOfWeekYear' {
 declare module 'date-fns/esm/startOfYear' {
   import { startOfYear } from 'date-fns/esm'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/startOfYesterday' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/esm/subDays' {
@@ -9380,6 +9406,11 @@ declare module 'date-fns/esm/startOfYear/index' {
   export default startOfYear
 }
 
+declare module 'date-fns/esm/startOfYesterday/index' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
+}
+
 declare module 'date-fns/esm/subDays/index' {
   import { subDays } from 'date-fns/esm'
   export default subDays
@@ -10258,6 +10289,11 @@ declare module 'date-fns/esm/startOfWeekYear/index.js' {
 declare module 'date-fns/esm/startOfYear/index.js' {
   import { startOfYear } from 'date-fns/esm'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/startOfYesterday/index.js' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/esm/subDays/index.js' {
@@ -16282,6 +16318,8 @@ interface dateFns {
   ): Date
 
   startOfYear(date: Date | number): Date
+
+  startOfYesterday(): Date
 
   subDays(date: Date | number, amount: number): Date
 
