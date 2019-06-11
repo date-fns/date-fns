@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import endOfToday from '.'
 
@@ -18,7 +18,7 @@ describe('endOfToday', () => {
   })
 
   it('returns the current date with the time setted to 23:59:59.999', () => {
-    var result = endOfToday()
+    const result = endOfToday()
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 25, 23, 59, 59, 999))
   })
 })

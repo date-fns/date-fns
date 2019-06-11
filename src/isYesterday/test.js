@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import isYesterday from '.'
 
@@ -16,17 +16,17 @@ describe('isYesterday', () => {
   })
 
   it('returns true if the given date is yesterday', () => {
-    var result = isYesterday(new Date(2014, 8 /* Sep */, 24))
+    const result = isYesterday(new Date(2014, 8 /* Sep */, 24))
     assert(result === true)
   })
 
   it('returns false if the given date is not yesterday', () => {
-    var result = isYesterday(new Date(2014, 8 /* Sep */, 25))
+    const result = isYesterday(new Date(2014, 8 /* Sep */, 25))
     assert(result === false)
   })
 
   it('accepts a timestamp', () => {
-    var result = isYesterday(new Date(2014, 8 /* Sep */, 24).getTime())
+    const result = isYesterday(new Date(2014, 8 /* Sep */, 24).getTime())
     assert(result === true)
   })
 

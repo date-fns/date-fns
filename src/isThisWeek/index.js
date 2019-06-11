@@ -12,6 +12,10 @@ import isSameWeek from '../isSameWeek/index.js'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|Number} date - the date to check
  * @param {Object} [options] - the object with options
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
@@ -39,5 +43,5 @@ export default function isThisWeek(dirtyDate, options) {
     )
   }
 
-  return isSameWeek(Date.now(), dirtyDate, options)
+  return isSameWeek(dirtyDate, Date.now(), options)
 }

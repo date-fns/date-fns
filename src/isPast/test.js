@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import isPast from '.'
 
@@ -16,22 +16,22 @@ describe('isPast', () => {
   })
 
   it('returns true if the given date is in the past', () => {
-    var result = isPast(new Date(2014, 6 /* Jul */, 2))
+    const result = isPast(new Date(2014, 6 /* Jul */, 2))
     assert(result === true)
   })
 
   it('returns false if the given date is in the future', () => {
-    var result = isPast(new Date(2014, 11 /* Dec */, 31))
+    const result = isPast(new Date(2014, 11 /* Dec */, 31))
     assert(result === false)
   })
 
   it('returns false if the given date is now', () => {
-    var result = isPast(new Date(2014, 8 /* Sep */, 25))
+    const result = isPast(new Date(2014, 8 /* Sep */, 25))
     assert(result === false)
   })
 
   it('accepts a timestamp', () => {
-    var result = isPast(new Date(2014, 6 /* Jul */, 2).getTime())
+    const result = isPast(new Date(2014, 6 /* Jul */, 2).getTime())
     assert(result === true)
   })
 

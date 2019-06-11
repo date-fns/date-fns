@@ -16,17 +16,17 @@ describe('isThisQuarter', function() {
   })
 
   it('returns true if the given date and the current date have the same quarter (and year)', function() {
-    var date = new Date(2014, 6 /* Jul */, 2)
+    const date = new Date(2014, 6 /* Jul */, 2)
     assert(isThisQuarter(date) === true)
   })
 
   it('returns false if the given date and the current date have different quarters', function() {
-    var date = new Date(2014, 1 /* Feb */, 11)
+    const date = new Date(2014, 1 /* Feb */, 11)
     assert(isThisQuarter(date) === false)
   })
 
   it('accepts a timestamp', function() {
-    var date = new Date(2014, 6 /* Jul */, 2).getTime()
+    const date = new Date(2014, 6 /* Jul */, 2).getTime()
     assert(isThisQuarter(date) === true)
   })
 

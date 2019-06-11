@@ -12,6 +12,10 @@ import isSameMinute from '../isSameMinute/index.js'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this minute
  * @throws {TypeError} 1 argument required

@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import isThisSecond from '.'
 
@@ -18,17 +18,17 @@ describe('isThisSecond', () => {
   })
 
   it('returns true if the given date and the current date have the same second', () => {
-    var date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15)
+    const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15)
     assert(isThisSecond(date) === true)
   })
 
   it('returns false if the given date and the current date have different seconds', () => {
-    var date = new Date(2014, 8 /* Sep */, 25, 18, 30, 16)
+    const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 16)
     assert(isThisSecond(date) === false)
   })
 
   it('accepts a timestamp', () => {
-    var date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 250).getTime()
+    const date = new Date(2014, 8 /* Sep */, 25, 18, 30, 15, 250).getTime()
     assert(isThisSecond(date) === true)
   })
 

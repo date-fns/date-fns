@@ -199,7 +199,6 @@ declare module.exports: {
   isLastDayOfMonth: CurriedFn1<Date | number, boolean>,
   isLeapYear: CurriedFn1<Date | number, boolean>,
   isMonday: CurriedFn1<Date | number, boolean>,
-  isPast: CurriedFn1<Date | number, boolean>,
   isSameDay: CurriedFn2<Date | number, Date | number, boolean>,
   isSameHour: CurriedFn2<Date | number, Date | number, boolean>,
   isSameISOWeek: CurriedFn2<Date | number, Date | number, boolean>,
