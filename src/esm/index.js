@@ -152,6 +152,7 @@ export { default as isValid } from './isValid/index.js'
 export { default as isWednesday } from './isWednesday/index.js'
 export { default as isWeekend } from './isWeekend/index.js'
 export { default as isWithinInterval } from './isWithinInterval/index.js'
+export { default as isYesterday } from './isYesterday/index.js'
 export { default as lastDayOfDecade } from './lastDayOfDecade/index.js'
 export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index.js'
 export {

@@ -455,6 +455,8 @@ declare module.exports: {
 
   isWithinInterval: (date: Date | number, interval: Interval) => boolean,
 
+  isYesterday: (date: Date | number) => boolean,
+
   lastDayOfDecade: (date: Date | number) => Date,
 
   lastDayOfISOWeek: (date: Date | number) => Date,

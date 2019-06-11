@@ -125,6 +125,7 @@ module.exports = {
   isWednesday: require('./isWednesday/index.js'),
   isWeekend: require('./isWeekend/index.js'),
   isWithinInterval: require('./isWithinInterval/index.js'),
+  isYesterday: require('./isYesterday/index.js'),
   lastDayOfDecade: require('./lastDayOfDecade/index.js'),
   lastDayOfISOWeek: require('./lastDayOfISOWeek/index.js'),
   lastDayOfISOWeekYear: require('./lastDayOfISOWeekYear/index.js'),

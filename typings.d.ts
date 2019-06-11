@@ -638,6 +638,9 @@ declare module 'date-fns' {
   function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {}
 
+  function isYesterday(date: Date | number): boolean
+  namespace isYesterday {}
+
   function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {}
 
@@ -1472,6 +1475,11 @@ declare module 'date-fns/isWeekend' {
 declare module 'date-fns/isWithinInterval' {
   import { isWithinInterval } from 'date-fns'
   export default isWithinInterval
+}
+
+declare module 'date-fns/isYesterday' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
 }
 
 declare module 'date-fns/lastDayOfDecade' {
@@ -2339,6 +2347,11 @@ declare module 'date-fns/isWithinInterval/index' {
   export default isWithinInterval
 }
 
+declare module 'date-fns/isYesterday/index' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
+}
+
 declare module 'date-fns/lastDayOfDecade/index' {
   import { lastDayOfDecade } from 'date-fns'
   export default lastDayOfDecade
@@ -3202,6 +3215,11 @@ declare module 'date-fns/isWeekend/index.js' {
 declare module 'date-fns/isWithinInterval/index.js' {
   import { isWithinInterval } from 'date-fns'
   export default isWithinInterval
+}
+
+declare module 'date-fns/isYesterday/index.js' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
 }
 
 declare module 'date-fns/lastDayOfDecade/index.js' {
@@ -7386,6 +7404,9 @@ declare module 'date-fns/esm' {
   function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {}
 
+  function isYesterday(date: Date | number): boolean
+  namespace isYesterday {}
+
   function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {}
 
@@ -8220,6 +8241,11 @@ declare module 'date-fns/esm/isWeekend' {
 declare module 'date-fns/esm/isWithinInterval' {
   import { isWithinInterval } from 'date-fns/esm'
   export default isWithinInterval
+}
+
+declare module 'date-fns/esm/isYesterday' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
 }
 
 declare module 'date-fns/esm/lastDayOfDecade' {
@@ -9087,6 +9113,11 @@ declare module 'date-fns/esm/isWithinInterval/index' {
   export default isWithinInterval
 }
 
+declare module 'date-fns/esm/isYesterday/index' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
+}
+
 declare module 'date-fns/esm/lastDayOfDecade/index' {
   import { lastDayOfDecade } from 'date-fns/esm'
   export default lastDayOfDecade
@@ -9950,6 +9981,11 @@ declare module 'date-fns/esm/isWeekend/index.js' {
 declare module 'date-fns/esm/isWithinInterval/index.js' {
   import { isWithinInterval } from 'date-fns/esm'
   export default isWithinInterval
+}
+
+declare module 'date-fns/esm/isYesterday/index.js' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
 }
 
 declare module 'date-fns/esm/lastDayOfDecade/index.js' {
@@ -16020,6 +16056,8 @@ interface dateFns {
   isWeekend(date: Date | number): boolean
 
   isWithinInterval(date: Date | number, interval: Interval): boolean
+
+  isYesterday(date: Date | number): boolean
 
   lastDayOfDecade(date: Date | number): Date
 
