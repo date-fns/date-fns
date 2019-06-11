@@ -84,6 +84,7 @@ export { default as formatDistance } from './formatDistance/index.js'
 export {
   default as formatDistanceStrict
 } from './formatDistanceStrict/index.js'
+export { default as formatDistanceToNow } from './formatDistanceToNow/index.js'
 export { default as formatRelative } from './formatRelative/index.js'
 export { default as fromUnixTime } from './fromUnixTime/index.js'
 export { default as getDate } from './getDate/index.js'

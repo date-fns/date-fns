@@ -360,6 +360,16 @@ declare module 'date-fns' {
   ): string
   namespace formatDistanceStrict {}
 
+  function formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNow {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -1120,6 +1130,11 @@ declare module 'date-fns/formatDistance' {
 declare module 'date-fns/formatDistanceStrict' {
   import { formatDistanceStrict } from 'date-fns'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/formatDistanceToNow' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/formatRelative' {
@@ -1962,6 +1977,11 @@ declare module 'date-fns/formatDistanceStrict/index' {
   export default formatDistanceStrict
 }
 
+declare module 'date-fns/formatDistanceToNow/index' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
+}
+
 declare module 'date-fns/formatRelative/index' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
@@ -2800,6 +2820,11 @@ declare module 'date-fns/formatDistance/index.js' {
 declare module 'date-fns/formatDistanceStrict/index.js' {
   import { formatDistanceStrict } from 'date-fns'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/formatDistanceToNow/index.js' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/formatRelative/index.js' {
@@ -6993,6 +7018,16 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatDistanceStrict {}
 
+  function formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNow {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -7753,6 +7788,11 @@ declare module 'date-fns/esm/formatDistance' {
 declare module 'date-fns/esm/formatDistanceStrict' {
   import { formatDistanceStrict } from 'date-fns/esm'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatDistanceToNow' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/esm/formatRelative' {
@@ -8595,6 +8635,11 @@ declare module 'date-fns/esm/formatDistanceStrict/index' {
   export default formatDistanceStrict
 }
 
+declare module 'date-fns/esm/formatDistanceToNow/index' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
+}
+
 declare module 'date-fns/esm/formatRelative/index' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
@@ -9433,6 +9478,11 @@ declare module 'date-fns/esm/formatDistance/index.js' {
 declare module 'date-fns/esm/formatDistanceStrict/index.js' {
   import { formatDistanceStrict } from 'date-fns/esm'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatDistanceToNow/index.js' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/esm/formatRelative/index.js' {
@@ -15599,6 +15649,15 @@ interface dateFns {
       addSuffix?: boolean
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
+      locale?: Locale
+    }
+  ): string
+
+  formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
       locale?: Locale
     }
   ): string

@@ -59,6 +59,7 @@ module.exports = {
   format: require('./format/index.js'),
   formatDistance: require('./formatDistance/index.js'),
   formatDistanceStrict: require('./formatDistanceStrict/index.js'),
+  formatDistanceToNow: require('./formatDistanceToNow/index.js'),
   formatRelative: require('./formatRelative/index.js'),
   fromUnixTime: require('./fromUnixTime/index.js'),
   getDate: require('./getDate/index.js'),

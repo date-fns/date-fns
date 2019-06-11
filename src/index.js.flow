@@ -264,6 +264,15 @@ declare module.exports: {
     }
   ) => string,
 
+  formatDistanceToNow: (
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean,
+      addSuffix?: boolean,
+      locale?: Locale
+    }
+  ) => string,
+
   formatRelative: (
     date: Date | number,
     baseDate: Date | number,
