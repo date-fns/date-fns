@@ -366,9 +366,8 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   to make them consistent with `format` and `formatRelative`.
 
-- **BREAKING**: The order of arguments of `distanceInWords`,
-  `distanceInWordsStrict` and `distanceInWordsToNow` is swapped to make them
-  consistent with `differenceIn...` functions.
+- **BREAKING**: The order of arguments of `distanceInWords` and `distanceInWordsStrict`
+  is swapped to make them consistent with `differenceIn...` functions.
 
   ```javascript
   // Before v2.0.0
