@@ -298,8 +298,8 @@ describe('format', function() {
       it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function() {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, 'W Wo WW', {
-          weekStartsOn: 1,
-          firstWeekContainsDate: 4
+          weekStartsOn: 0,
+          firstWeekContainsDate: 3
         })
         assert(result === '2 2nd 02')
       })
