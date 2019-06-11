@@ -19,7 +19,7 @@ describe('startOfTomorrow', function() {
 
   it('handles dates before 100 AD', function() {
     const now = new Date(0)
-    now.setFullYear(14, 8 /* Sep */, 25, 14, 30, 45, 500)
+    now.setFullYear(14, 8 /* Sep */, 25)
     now.setHours(0, 0, 0, 0)
     const clock = sinon.useFakeTimers(now.getTime())
 

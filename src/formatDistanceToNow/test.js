@@ -21,7 +21,7 @@ describe('formatDistanceToNow', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 58), {
           includeSeconds: true
         })
-        assert(result === 'less than 4 seconds')
+        assert(result === 'less than 5 seconds')
       })
 
       it('less than 10 seconds', () => {
@@ -201,6 +201,7 @@ describe('formatDistanceToNow', () => {
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
+        // $ExpectedMistake
         locale: customLocale
       })
 
@@ -212,8 +213,8 @@ describe('formatDistanceToNow', () => {
         const customLocale = {}
         const block = formatDistanceToNow.bind(
           null,
-          new Date(1986, 3, 4, 10, 32, 0),
           // $ExpectedMistake
+          new Date(1986, 3, 4, 10, 32, 0),
           { includeSeconds: true, locale: customLocale }
         )
         assert.throws(block, RangeError)
