@@ -586,6 +586,8 @@ declare module.exports: {
 
   startOfSecond: (date: Date | number) => Date,
 
+  startOfToday: () => Date,
+
   startOfWeek: (
     date: Date | number,
     options?: {

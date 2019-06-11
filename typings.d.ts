@@ -807,6 +807,9 @@ declare module 'date-fns' {
   function startOfSecond(date: Date | number): Date
   namespace startOfSecond {}
 
+  function startOfToday(): Date
+  namespace startOfToday {}
+
   function startOfWeek(
     date: Date | number,
     options?: {
@@ -1665,6 +1668,11 @@ declare module 'date-fns/startOfQuarter' {
 declare module 'date-fns/startOfSecond' {
   import { startOfSecond } from 'date-fns'
   export default startOfSecond
+}
+
+declare module 'date-fns/startOfToday' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
 }
 
 declare module 'date-fns/startOfWeek' {
@@ -2537,6 +2545,11 @@ declare module 'date-fns/startOfSecond/index' {
   export default startOfSecond
 }
 
+declare module 'date-fns/startOfToday/index' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
+}
+
 declare module 'date-fns/startOfWeek/index' {
   import { startOfWeek } from 'date-fns'
   export default startOfWeek
@@ -3405,6 +3418,11 @@ declare module 'date-fns/startOfQuarter/index.js' {
 declare module 'date-fns/startOfSecond/index.js' {
   import { startOfSecond } from 'date-fns'
   export default startOfSecond
+}
+
+declare module 'date-fns/startOfToday/index.js' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
 }
 
 declare module 'date-fns/startOfWeek/index.js' {
@@ -7573,6 +7591,9 @@ declare module 'date-fns/esm' {
   function startOfSecond(date: Date | number): Date
   namespace startOfSecond {}
 
+  function startOfToday(): Date
+  namespace startOfToday {}
+
   function startOfWeek(
     date: Date | number,
     options?: {
@@ -8431,6 +8452,11 @@ declare module 'date-fns/esm/startOfQuarter' {
 declare module 'date-fns/esm/startOfSecond' {
   import { startOfSecond } from 'date-fns/esm'
   export default startOfSecond
+}
+
+declare module 'date-fns/esm/startOfToday' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
 }
 
 declare module 'date-fns/esm/startOfWeek' {
@@ -9303,6 +9329,11 @@ declare module 'date-fns/esm/startOfSecond/index' {
   export default startOfSecond
 }
 
+declare module 'date-fns/esm/startOfToday/index' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
+}
+
 declare module 'date-fns/esm/startOfWeek/index' {
   import { startOfWeek } from 'date-fns/esm'
   export default startOfWeek
@@ -10171,6 +10202,11 @@ declare module 'date-fns/esm/startOfQuarter/index.js' {
 declare module 'date-fns/esm/startOfSecond/index.js' {
   import { startOfSecond } from 'date-fns/esm'
   export default startOfSecond
+}
+
+declare module 'date-fns/esm/startOfToday/index.js' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
 }
 
 declare module 'date-fns/esm/startOfWeek/index.js' {
@@ -16187,6 +16223,8 @@ interface dateFns {
   startOfQuarter(date: Date | number): Date
 
   startOfSecond(date: Date | number): Date
+
+  startOfToday(): Date
 
   startOfWeek(
     date: Date | number,
