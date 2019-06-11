@@ -381,6 +381,8 @@ declare module.exports: {
 
   isMonday: (date: Date | number) => boolean,
 
+  isPast: (date: Date | number) => boolean,
+
   isSameDay: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 
   isSameHour: (dateLeft: Date | number, dateRight: Date | number) => boolean,

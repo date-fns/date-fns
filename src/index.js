@@ -96,6 +96,7 @@ module.exports = {
   isLastDayOfMonth: require('./isLastDayOfMonth/index.js'),
   isLeapYear: require('./isLeapYear/index.js'),
   isMonday: require('./isMonday/index.js'),
+  isPast: require('./isPast/index.js'),
   isSameDay: require('./isSameDay/index.js'),
   isSameHour: require('./isSameHour/index.js'),
   isSameISOWeek: require('./isSameISOWeek/index.js'),

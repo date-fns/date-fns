@@ -514,6 +514,9 @@ declare module 'date-fns' {
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
 
+  function isPast(date: Date | number): boolean
+  namespace isPast {}
+
   function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {}
 
@@ -1318,6 +1321,11 @@ declare module 'date-fns/isLeapYear' {
 declare module 'date-fns/isMonday' {
   import { isMonday } from 'date-fns'
   export default isMonday
+}
+
+declare module 'date-fns/isPast' {
+  import { isPast } from 'date-fns'
+  export default isPast
 }
 
 declare module 'date-fns/isSameDay' {
@@ -2170,6 +2178,11 @@ declare module 'date-fns/isMonday/index' {
   export default isMonday
 }
 
+declare module 'date-fns/isPast/index' {
+  import { isPast } from 'date-fns'
+  export default isPast
+}
+
 declare module 'date-fns/isSameDay/index' {
   import { isSameDay } from 'date-fns'
   export default isSameDay
@@ -3020,6 +3033,11 @@ declare module 'date-fns/isMonday/index.js' {
   export default isMonday
 }
 
+declare module 'date-fns/isPast/index.js' {
+  import { isPast } from 'date-fns'
+  export default isPast
+}
+
 declare module 'date-fns/isSameDay/index.js' {
   import { isSameDay } from 'date-fns'
   export default isSameDay
@@ -3770,6 +3788,9 @@ declare module 'date-fns/fp' {
 
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
+
+  const isPast: CurriedFn1<Date | number, boolean>
+  namespace isPast {}
 
   const isSameDay: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDay {}
@@ -4534,6 +4555,11 @@ declare module 'date-fns/fp/isLeapYear' {
 declare module 'date-fns/fp/isMonday' {
   import { isMonday } from 'date-fns/fp'
   export = isMonday
+}
+
+declare module 'date-fns/fp/isPast' {
+  import { isPast } from 'date-fns/fp'
+  export = isPast
 }
 
 declare module 'date-fns/fp/isSameDay' {
@@ -5441,6 +5467,11 @@ declare module 'date-fns/fp/isMonday/index' {
   export = isMonday
 }
 
+declare module 'date-fns/fp/isPast/index' {
+  import { isPast } from 'date-fns/fp'
+  export = isPast
+}
+
 declare module 'date-fns/fp/isSameDay/index' {
   import { isSameDay } from 'date-fns/fp'
   export = isSameDay
@@ -6346,6 +6377,11 @@ declare module 'date-fns/fp/isMonday/index.js' {
   export = isMonday
 }
 
+declare module 'date-fns/fp/isPast/index.js' {
+  import { isPast } from 'date-fns/fp'
+  export = isPast
+}
+
 declare module 'date-fns/fp/isSameDay/index.js' {
   import { isSameDay } from 'date-fns/fp'
   export = isSameDay
@@ -7190,6 +7226,9 @@ declare module 'date-fns/esm' {
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
 
+  function isPast(date: Date | number): boolean
+  namespace isPast {}
+
   function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {}
 
@@ -7994,6 +8033,11 @@ declare module 'date-fns/esm/isLeapYear' {
 declare module 'date-fns/esm/isMonday' {
   import { isMonday } from 'date-fns/esm'
   export default isMonday
+}
+
+declare module 'date-fns/esm/isPast' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
 }
 
 declare module 'date-fns/esm/isSameDay' {
@@ -8846,6 +8890,11 @@ declare module 'date-fns/esm/isMonday/index' {
   export default isMonday
 }
 
+declare module 'date-fns/esm/isPast/index' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
+}
+
 declare module 'date-fns/esm/isSameDay/index' {
   import { isSameDay } from 'date-fns/esm'
   export default isSameDay
@@ -9696,6 +9745,11 @@ declare module 'date-fns/esm/isMonday/index.js' {
   export default isMonday
 }
 
+declare module 'date-fns/esm/isPast/index.js' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
+}
+
 declare module 'date-fns/esm/isSameDay/index.js' {
   import { isSameDay } from 'date-fns/esm'
   export default isSameDay
@@ -10446,6 +10500,9 @@ declare module 'date-fns/esm/fp' {
 
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
+
+  const isPast: CurriedFn1<Date | number, boolean>
+  namespace isPast {}
 
   const isSameDay: CurriedFn2<Date | number, Date | number, boolean>
   namespace isSameDay {}
@@ -11210,6 +11267,11 @@ declare module 'date-fns/esm/fp/isLeapYear' {
 declare module 'date-fns/esm/fp/isMonday' {
   import { isMonday } from 'date-fns/esm/fp'
   export default isMonday
+}
+
+declare module 'date-fns/esm/fp/isPast' {
+  import { isPast } from 'date-fns/esm/fp'
+  export default isPast
 }
 
 declare module 'date-fns/esm/fp/isSameDay' {
@@ -12117,6 +12179,11 @@ declare module 'date-fns/esm/fp/isMonday/index' {
   export default isMonday
 }
 
+declare module 'date-fns/esm/fp/isPast/index' {
+  import { isPast } from 'date-fns/esm/fp'
+  export default isPast
+}
+
 declare module 'date-fns/esm/fp/isSameDay/index' {
   import { isSameDay } from 'date-fns/esm/fp'
   export default isSameDay
@@ -13020,6 +13087,11 @@ declare module 'date-fns/esm/fp/isLeapYear/index.js' {
 declare module 'date-fns/esm/fp/isMonday/index.js' {
   import { isMonday } from 'date-fns/esm/fp'
   export default isMonday
+}
+
+declare module 'date-fns/esm/fp/isPast/index.js' {
+  import { isPast } from 'date-fns/esm/fp'
+  export default isPast
 }
 
 declare module 'date-fns/esm/fp/isSameDay/index.js' {
@@ -15805,6 +15877,8 @@ interface dateFns {
   isLeapYear(date: Date | number): boolean
 
   isMonday(date: Date | number): boolean
+
+  isPast(date: Date | number): boolean
 
   isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
 
