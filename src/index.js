@@ -164,6 +164,7 @@ module.exports = {
   startOfQuarter: require('./startOfQuarter/index.js'),
   startOfSecond: require('./startOfSecond/index.js'),
   startOfToday: require('./startOfToday/index.js'),
+  startOfTomorrow: require('./startOfTomorrow/index.js'),
   startOfWeek: require('./startOfWeek/index.js'),
   startOfWeekYear: require('./startOfWeekYear/index.js'),
   startOfYear: require('./startOfYear/index.js'),
