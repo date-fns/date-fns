@@ -559,6 +559,9 @@ declare module 'date-fns' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisMonth(date: Date | number): boolean
+  namespace isThisMonth {}
+
   function isThisQuarter(date: Date | number): boolean
   namespace isThisQuarter {}
 
@@ -1307,6 +1310,11 @@ declare module 'date-fns/isSaturday' {
 declare module 'date-fns/isSunday' {
   import { isSunday } from 'date-fns'
   export default isSunday
+}
+
+declare module 'date-fns/isThisMonth' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
 }
 
 declare module 'date-fns/isThisQuarter' {
@@ -2104,6 +2112,11 @@ declare module 'date-fns/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/isThisMonth/index' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
+}
+
 declare module 'date-fns/isThisQuarter/index' {
   import { isThisQuarter } from 'date-fns'
   export default isThisQuarter
@@ -2897,6 +2910,11 @@ declare module 'date-fns/isSaturday/index.js' {
 declare module 'date-fns/isSunday/index.js' {
   import { isSunday } from 'date-fns'
   export default isSunday
+}
+
+declare module 'date-fns/isThisMonth/index.js' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
 }
 
 declare module 'date-fns/isThisQuarter/index.js' {
@@ -7024,6 +7042,9 @@ declare module 'date-fns/esm' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisMonth(date: Date | number): boolean
+  namespace isThisMonth {}
+
   function isThisQuarter(date: Date | number): boolean
   namespace isThisQuarter {}
 
@@ -7772,6 +7793,11 @@ declare module 'date-fns/esm/isSaturday' {
 declare module 'date-fns/esm/isSunday' {
   import { isSunday } from 'date-fns/esm'
   export default isSunday
+}
+
+declare module 'date-fns/esm/isThisMonth' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
 }
 
 declare module 'date-fns/esm/isThisQuarter' {
@@ -8569,6 +8595,11 @@ declare module 'date-fns/esm/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/esm/isThisMonth/index' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
+}
+
 declare module 'date-fns/esm/isThisQuarter/index' {
   import { isThisQuarter } from 'date-fns/esm'
   export default isThisQuarter
@@ -9362,6 +9393,11 @@ declare module 'date-fns/esm/isSaturday/index.js' {
 declare module 'date-fns/esm/isSunday/index.js' {
   import { isSunday } from 'date-fns/esm'
   export default isSunday
+}
+
+declare module 'date-fns/esm/isThisMonth/index.js' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
 }
 
 declare module 'date-fns/esm/isThisQuarter/index.js' {
@@ -15397,6 +15433,8 @@ interface dateFns {
   isSaturday(date: Date | number): boolean
 
   isSunday(date: Date | number): boolean
+
+  isThisMonth(date: Date | number): boolean
 
   isThisQuarter(date: Date | number): boolean
 
