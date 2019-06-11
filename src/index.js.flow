@@ -404,6 +404,14 @@ declare module.exports: {
 
   isThisQuarter: (date: Date | number) => boolean,
 
+  isThisWeek: (
+    date: Date | number,
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ) => boolean,
+
   isThisYear: (date: Date | number) => boolean,
 
   isThursday: (date: Date | number) => boolean,
