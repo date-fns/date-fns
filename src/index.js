@@ -51,6 +51,7 @@ module.exports = {
   endOfMonth: require('./endOfMonth/index.js'),
   endOfQuarter: require('./endOfQuarter/index.js'),
   endOfSecond: require('./endOfSecond/index.js'),
+  endOfToday: require('./endOfToday/index.js'),
   endOfWeek: require('./endOfWeek/index.js'),
   endOfYear: require('./endOfYear/index.js'),
   format: require('./format/index.js'),

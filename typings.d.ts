@@ -303,6 +303,9 @@ declare module 'date-fns' {
   function endOfSecond(date: Date | number): Date
   namespace endOfSecond {}
 
+  function endOfToday(): Date
+  namespace endOfToday {}
+
   function endOfWeek(
     date: Date | number,
     options?: {
@@ -1071,6 +1074,11 @@ declare module 'date-fns/endOfQuarter' {
 declare module 'date-fns/endOfSecond' {
   import { endOfSecond } from 'date-fns'
   export default endOfSecond
+}
+
+declare module 'date-fns/endOfToday' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
 }
 
 declare module 'date-fns/endOfWeek' {
@@ -1898,6 +1906,11 @@ declare module 'date-fns/endOfSecond/index' {
   export default endOfSecond
 }
 
+declare module 'date-fns/endOfToday/index' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
+}
+
 declare module 'date-fns/endOfWeek/index' {
   import { endOfWeek } from 'date-fns'
   export default endOfWeek
@@ -2721,6 +2734,11 @@ declare module 'date-fns/endOfQuarter/index.js' {
 declare module 'date-fns/endOfSecond/index.js' {
   import { endOfSecond } from 'date-fns'
   export default endOfSecond
+}
+
+declare module 'date-fns/endOfToday/index.js' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
 }
 
 declare module 'date-fns/endOfWeek/index.js' {
@@ -6882,6 +6900,9 @@ declare module 'date-fns/esm' {
   function endOfSecond(date: Date | number): Date
   namespace endOfSecond {}
 
+  function endOfToday(): Date
+  namespace endOfToday {}
+
   function endOfWeek(
     date: Date | number,
     options?: {
@@ -7650,6 +7671,11 @@ declare module 'date-fns/esm/endOfQuarter' {
 declare module 'date-fns/esm/endOfSecond' {
   import { endOfSecond } from 'date-fns/esm'
   export default endOfSecond
+}
+
+declare module 'date-fns/esm/endOfToday' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
 }
 
 declare module 'date-fns/esm/endOfWeek' {
@@ -8477,6 +8503,11 @@ declare module 'date-fns/esm/endOfSecond/index' {
   export default endOfSecond
 }
 
+declare module 'date-fns/esm/endOfToday/index' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
+}
+
 declare module 'date-fns/esm/endOfWeek/index' {
   import { endOfWeek } from 'date-fns/esm'
   export default endOfWeek
@@ -9300,6 +9331,11 @@ declare module 'date-fns/esm/endOfQuarter/index.js' {
 declare module 'date-fns/esm/endOfSecond/index.js' {
   import { endOfSecond } from 'date-fns/esm'
   export default endOfSecond
+}
+
+declare module 'date-fns/esm/endOfToday/index.js' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
 }
 
 declare module 'date-fns/esm/endOfWeek/index.js' {
@@ -15445,6 +15481,8 @@ interface dateFns {
   endOfQuarter(date: Date | number): Date
 
   endOfSecond(date: Date | number): Date
+
+  endOfToday(): Date
 
   endOfWeek(
     date: Date | number,
