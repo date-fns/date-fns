@@ -20,6 +20,7 @@ import isSameISOWeek from '../isSameISOWeek/index.js'
  *
  * @param {Date|Number} date - the date to check
  * @returns {Boolean} the date is in this ISO week
+ * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
