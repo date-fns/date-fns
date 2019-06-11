@@ -1,10 +1,11 @@
-import lightFormatters from '../lightFormatters/index'
-import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index'
-import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index'
-import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'
-import getUTCWeek from '../../../_lib/getUTCWeek/index'
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
-import addLeadingZeros from '../../addLeadingZeros/index'
+import lightFormatters from '../lightFormatters/index.js'
+import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
+import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
+import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
+import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
+import addLeadingZeros from '../../addLeadingZeros/index.js'
+import getWeekOfMonth from '../../../getWeekOfMonth/index.js'
 
 var dayPeriodEnum = {
   am: 'am',
@@ -273,6 +274,17 @@ var formatters = {
     }
 
     return addLeadingZeros(week, token.length)
+  },
+
+  // Week of the month
+  W: function(date, token, localize, options) {
+    var isoWeek = getWeekOfMonth(date, options)
+
+    if (token === 'Wo') {
+      return localize.ordinalNumber(isoWeek, { unit: 'week' })
+    }
+
+    return addLeadingZeros(isoWeek, token.length)
   },
 
   // ISO week of year

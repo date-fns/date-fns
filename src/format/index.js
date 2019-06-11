@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+var formattingTokensRegExp = /[yYQqMLwWIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
