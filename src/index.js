@@ -118,6 +118,7 @@ module.exports = {
   isThisWeek: require('./isThisWeek/index.js'),
   isThisYear: require('./isThisYear/index.js'),
   isThursday: require('./isThursday/index.js'),
+  isToday: require('./isToday/index.js'),
   isTuesday: require('./isTuesday/index.js'),
   isValid: require('./isValid/index.js'),
   isWednesday: require('./isWednesday/index.js'),
