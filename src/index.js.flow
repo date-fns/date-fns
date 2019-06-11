@@ -217,6 +217,8 @@ declare module.exports: {
 
   endOfToday: () => Date,
 
+  endOfTomorrow: () => Date,
+
   endOfWeek: (
     date: Date | number,
     options?: {
