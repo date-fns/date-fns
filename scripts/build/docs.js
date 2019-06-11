@@ -36,21 +36,32 @@ function generateDocsFromSource() {
           'no-cache': true
         })[0]
     )
-    .map(doc => ({
-      type: 'jsdoc',
-      kind: 'function',
-      urlId: doc.name,
-      category: doc.category,
-      title: doc.name,
-      description: doc.summary,
-      content: doc
-    }))
+    .map(doc => {
+      const pureTag =
+        doc.customTags && doc.customTags.find(t => t.tag === 'pure')
+      const pure = (pureTag && pureTag.value) !== 'false'
+      return {
+        type: 'jsdoc',
+        kind: 'function',
+        urlId: doc.name,
+        category: doc.category,
+        title: doc.name,
+        description: doc.summary,
+        content: doc,
+        pure
+      }
+    })
     .reduce(
       (array, doc) =>
         array
           .concat(generateFnDoc(doc))
-          .concat(generateFPFnDoc(doc))
-          .concat(generateFPFnWithOptionsDoc(doc) || []),
+          .concat(
+            doc.pure
+              ? [generateFPFnDoc(doc)].concat(
+                  generateFPFnWithOptionsDoc(doc) || []
+                )
+              : []
+          ),
       []
     )
 

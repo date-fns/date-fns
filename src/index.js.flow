@@ -398,6 +398,8 @@ declare module.exports: {
 
   isSunday: (date: Date | number) => boolean,
 
+  isThisYear: (date: Date | number) => boolean,
+
   isThursday: (date: Date | number) => boolean,
 
   isTuesday: (date: Date | number) => boolean,
