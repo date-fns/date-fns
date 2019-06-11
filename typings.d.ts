@@ -620,6 +620,9 @@ declare module 'date-fns' {
   function isToday(date: Date | number): boolean
   namespace isToday {}
 
+  function isTomorrow(date: Date | number): boolean
+  namespace isTomorrow {}
+
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
 
@@ -1439,6 +1442,11 @@ declare module 'date-fns/isThursday' {
 declare module 'date-fns/isToday' {
   import { isToday } from 'date-fns'
   export default isToday
+}
+
+declare module 'date-fns/isTomorrow' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
 }
 
 declare module 'date-fns/isTuesday' {
@@ -2301,6 +2309,11 @@ declare module 'date-fns/isToday/index' {
   export default isToday
 }
 
+declare module 'date-fns/isTomorrow/index' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
+}
+
 declare module 'date-fns/isTuesday/index' {
   import { isTuesday } from 'date-fns'
   export default isTuesday
@@ -3159,6 +3172,11 @@ declare module 'date-fns/isThursday/index.js' {
 declare module 'date-fns/isToday/index.js' {
   import { isToday } from 'date-fns'
   export default isToday
+}
+
+declare module 'date-fns/isTomorrow/index.js' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
 }
 
 declare module 'date-fns/isTuesday/index.js' {
@@ -7350,6 +7368,9 @@ declare module 'date-fns/esm' {
   function isToday(date: Date | number): boolean
   namespace isToday {}
 
+  function isTomorrow(date: Date | number): boolean
+  namespace isTomorrow {}
+
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
 
@@ -8169,6 +8190,11 @@ declare module 'date-fns/esm/isThursday' {
 declare module 'date-fns/esm/isToday' {
   import { isToday } from 'date-fns/esm'
   export default isToday
+}
+
+declare module 'date-fns/esm/isTomorrow' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
 }
 
 declare module 'date-fns/esm/isTuesday' {
@@ -9031,6 +9057,11 @@ declare module 'date-fns/esm/isToday/index' {
   export default isToday
 }
 
+declare module 'date-fns/esm/isTomorrow/index' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
+}
+
 declare module 'date-fns/esm/isTuesday/index' {
   import { isTuesday } from 'date-fns/esm'
   export default isTuesday
@@ -9889,6 +9920,11 @@ declare module 'date-fns/esm/isThursday/index.js' {
 declare module 'date-fns/esm/isToday/index.js' {
   import { isToday } from 'date-fns/esm'
   export default isToday
+}
+
+declare module 'date-fns/esm/isTomorrow/index.js' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
 }
 
 declare module 'date-fns/esm/isTuesday/index.js' {
@@ -15972,6 +16008,8 @@ interface dateFns {
   isThursday(date: Date | number): boolean
 
   isToday(date: Date | number): boolean
+
+  isTomorrow(date: Date | number): boolean
 
   isTuesday(date: Date | number): boolean
 

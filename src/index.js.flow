@@ -443,6 +443,8 @@ declare module.exports: {
 
   isToday: (date: Date | number) => boolean,
 
+  isTomorrow: (date: Date | number) => boolean,
+
   isTuesday: (date: Date | number) => boolean,
 
   isValid: (date: any) => boolean,
