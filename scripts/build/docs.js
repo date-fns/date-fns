@@ -281,7 +281,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
 }
 
 function withOptions(args) {
-  return args[0].name === 'options'
+  return args && args[0].name === 'options'
 }
 
 function generateUsageTabs(isFPFn) {
@@ -353,7 +353,9 @@ function paramsToTree(dirtyParams) {
 }
 
 function generateSyntaxString(name, args, isFPFn) {
-  if (isFPFn) {
+  if (!args) {
+    return undefined
+  } else if (isFPFn) {
     return args.reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
   } else {
     const argsString = args
