@@ -132,11 +132,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} dní'
     }
   },
-
-  // aboutXMonths: {
-  //   one: 'about 1 month',
-  //   other: 'about {{count}} months'
-  // },
   aboutXMonths: {
     one: {
       regular: 'přibližně měsíc',

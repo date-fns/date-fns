@@ -12,13 +12,6 @@ var quarterValues = {
   wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
 }
 
-// v1
-// var monthValues = {
-//   short: ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'],
-//   long: ['leden', 'únor', 'březen', 'duben', 'květen', 'červen', 'červenec', 'srpen', 'září', 'říjen', 'listopad', 'prosinec']
-// }
-
-// v2
 var monthValues = {
   narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
   abbreviated: [
@@ -50,14 +43,6 @@ var monthValues = {
     'prosinec'
   ]
 }
-// v1
-// var weekdayValues = {
-//   narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
-//   short: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'],
-//   long: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
-// }
-
-// v2
 var dayValues = {
   narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
@@ -65,14 +50,6 @@ var dayValues = {
   wide: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
 }
 
-// v1
-// var timeOfDayValues = {
-//   uppercase: ['DOP.', 'ODP.'],
-//   lowercase: ['dop.', 'odp.'],
-//   long: ['dopoledne', 'odpoledne']
-// }
-
-// v2
 var dayPeriodValues = {
   narrow: {
     am: 'odp.',
