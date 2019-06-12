@@ -36,21 +36,32 @@ function generateDocsFromSource() {
           'no-cache': true
         })[0]
     )
-    .map(doc => ({
-      type: 'jsdoc',
-      kind: 'function',
-      urlId: doc.name,
-      category: doc.category,
-      title: doc.name,
-      description: doc.summary,
-      content: doc
-    }))
+    .map(doc => {
+      const pureTag =
+        doc.customTags && doc.customTags.find(t => t.tag === 'pure')
+      const pure = (pureTag && pureTag.value) !== 'false'
+      return {
+        type: 'jsdoc',
+        kind: 'function',
+        urlId: doc.name,
+        category: doc.category,
+        title: doc.name,
+        description: doc.summary,
+        content: doc,
+        pure
+      }
+    })
     .reduce(
       (array, doc) =>
         array
           .concat(generateFnDoc(doc))
-          .concat(generateFPFnDoc(doc))
-          .concat(generateFPFnWithOptionsDoc(doc) || []),
+          .concat(
+            doc.pure
+              ? [generateFPFnDoc(doc)].concat(
+                  generateFPFnWithOptionsDoc(doc) || []
+                )
+              : []
+          ),
       []
     )
 
@@ -270,7 +281,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
 }
 
 function withOptions(args) {
-  return args[0].name === 'options'
+  return args && args[0].name === 'options'
 }
 
 function generateUsageTabs(isFPFn) {
@@ -342,7 +353,9 @@ function paramsToTree(dirtyParams) {
 }
 
 function generateSyntaxString(name, args, isFPFn) {
-  if (isFPFn) {
+  if (!args) {
+    return undefined
+  } else if (isFPFn) {
     return args.reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
   } else {
     const argsString = args

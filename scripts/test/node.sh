@@ -4,8 +4,6 @@
 #
 # It's a part of the test process.
 
-set -ex
-
 export PATH="$(yarn bin):$PATH"
 
 # Update and source nvm
@@ -17,5 +15,5 @@ do
   echo "Running tests using Node.js $version"
   nvm install $version
   npm rebuild
-  jest
+  jest || exit 1
 done

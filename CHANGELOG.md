@@ -263,67 +263,6 @@ for the list of changes made since `v2.0.0-alpha.1`.
   var maxDate = max(dates)
   ```
 
-- **BREAKING**: remove all functions that create the current date internally:
-
-  - `distanceInWordsToNow`
-  - `isFuture`
-  - `isPast`
-  - `endOfToday`
-  - `endOfTomorrow`
-  - `endOfYesterday`
-  - `startOfToday`
-  - `startOfTomorrow`
-  - `startOfYesterday`
-  - `isToday`
-  - `isTomorrow`
-  - `isYesterday`
-  - `isThisSecond`
-  - `isThisMinute`
-  - `isThisHour`
-  - `isThisWeek`
-  - `isThisISOWeek`
-  - `isThisMonth`
-  - `isThisQuarter`
-  - `isThisYear`
-  - `isThisISOYear`
-
-  These functions are not pure, cannot have FP-versions [#253](https://github.com/date-fns/date-fns/issues/253)
-  and would add extra code for UTC-versions [#376](https://github.com/date-fns/date-fns/issues/376).
-
-  See issue: [#377](https://github.com/date-fns/date-fns/issues/377)
-
-  ```javascript
-  // Before v2.0.0
-  var result = endOfToday()
-
-  // v2.0.0 onward
-  var result = endOfDay(new Date())
-  ```
-
-  Upgrade guide:
-
-  - `distanceInWordsToNow(date)` → `formatDistance(date, new Date())`
-  - `isFuture(date)` → `isAfter(date, new Date())`
-  - `isPast(date)` → `isBefore(date, new Date())`
-  - `endOfToday()` → `endOfDay(new Date())`
-  - `endOfTomorrow()` → `endOfDay(addDays(new Date(), 1))`
-  - `endOfYesterday()` → `endOfDay(subDays(new Date(), 1))`
-  - `startOfToday()` → `startOfDay(new Date())`
-  - `startOfTomorrow()` → `startOfDay(addDays(new Date(), 1))`
-  - `startOfYesterday()` → `startOfDay(subDays(new Date(), 1))`
-  - `isToday(date)` → `isSameDay(new Date(), date)`
-  - `isTomorrow(date)` → `isSameDay(date, addDays(new Date(), 1))`
-  - `isYesterday(date)` → `isSameDay(date, subDays(new Date(), 1))`
-  - `isThisSecond(date)` → `isSameSecond(date, new Date())`
-  - `isThisMinute(date)` → `isSameMinute(date, new Date())`
-  - `isThisHour(date)` → `isSameHour(date, new Date())`
-  - `isThisWeek(date)` → `isSameWeek(date, new Date())`
-  - `isThisISOWeek(date)` → `isSameISOWeek(date, new Date())`
-  - `isThisMonth(date)` → `isSameMonth(date, new Date())`
-  - `isThisQuarter(date)` → `isSameQuarter(date, new Date())`
-  - `isThisYear(date)` → `isSameYear(date, new Date())`
-  - `isThisISOYear(date)` → `isSameISOYear(date, new Date())`
-
 - **BREAKING**: make the second argument of `format` required for the sake of explicitness.
 
   ```javascript
@@ -423,6 +362,7 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
   - `distanceInWords` → `formatDistance`
   - `distanceInWordsStrict` → `formatDistanceStrict`
+  - `distanceInWordsToNow` → `formatDistanceToNow`
 
   to make them consistent with `format` and `formatRelative`.
 

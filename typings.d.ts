@@ -303,6 +303,12 @@ declare module 'date-fns' {
   function endOfSecond(date: Date | number): Date
   namespace endOfSecond {}
 
+  function endOfToday(): Date
+  namespace endOfToday {}
+
+  function endOfTomorrow(): Date
+  namespace endOfTomorrow {}
+
   function endOfWeek(
     date: Date | number,
     options?: {
@@ -314,6 +320,9 @@ declare module 'date-fns' {
 
   function endOfYear(date: Date | number): Date
   namespace endOfYear {}
+
+  function endOfYesterday(): Date
+  namespace endOfYesterday {}
 
   function format(
     date: Date | number,
@@ -350,6 +359,16 @@ declare module 'date-fns' {
     }
   ): string
   namespace formatDistanceStrict {}
+
+  function formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNow {}
 
   function formatRelative(
     date: Date | number,
@@ -483,6 +502,9 @@ declare module 'date-fns' {
   function isFriday(date: Date | number): boolean
   namespace isFriday {}
 
+  function isFuture(date: Date | number): boolean
+  namespace isFuture {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -491,6 +513,9 @@ declare module 'date-fns' {
 
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
+
+  function isPast(date: Date | number): boolean
+  namespace isPast {}
 
   function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {}
@@ -559,8 +584,44 @@ declare module 'date-fns' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisHour(date: Date | number): boolean
+  namespace isThisHour {}
+
+  function isThisISOWeek(date: Date | number): boolean
+  namespace isThisISOWeek {}
+
+  function isThisMinute(date: Date | number): boolean
+  namespace isThisMinute {}
+
+  function isThisMonth(date: Date | number): boolean
+  namespace isThisMonth {}
+
+  function isThisQuarter(date: Date | number): boolean
+  namespace isThisQuarter {}
+
+  function isThisSecond(date: Date | number): boolean
+  namespace isThisSecond {}
+
+  function isThisWeek(
+    date: Date | number,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ): boolean
+  namespace isThisWeek {}
+
+  function isThisYear(date: Date | number): boolean
+  namespace isThisYear {}
+
   function isThursday(date: Date | number): boolean
   namespace isThursday {}
+
+  function isToday(date: Date | number): boolean
+  namespace isToday {}
+
+  function isTomorrow(date: Date | number): boolean
+  namespace isTomorrow {}
 
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
@@ -576,6 +637,9 @@ declare module 'date-fns' {
 
   function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {}
+
+  function isYesterday(date: Date | number): boolean
+  namespace isYesterday {}
 
   function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {}
@@ -743,6 +807,12 @@ declare module 'date-fns' {
   function startOfSecond(date: Date | number): Date
   namespace startOfSecond {}
 
+  function startOfToday(): Date
+  namespace startOfToday {}
+
+  function startOfTomorrow(): Date
+  namespace startOfTomorrow {}
+
   function startOfWeek(
     date: Date | number,
     options?: {
@@ -764,6 +834,9 @@ declare module 'date-fns' {
 
   function startOfYear(date: Date | number): Date
   namespace startOfYear {}
+
+  function startOfYesterday(): Date
+  namespace startOfYesterday {}
 
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
@@ -1043,6 +1116,16 @@ declare module 'date-fns/endOfSecond' {
   export default endOfSecond
 }
 
+declare module 'date-fns/endOfToday' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
+}
+
+declare module 'date-fns/endOfTomorrow' {
+  import { endOfTomorrow } from 'date-fns'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/endOfWeek' {
   import { endOfWeek } from 'date-fns'
   export default endOfWeek
@@ -1051,6 +1134,11 @@ declare module 'date-fns/endOfWeek' {
 declare module 'date-fns/endOfYear' {
   import { endOfYear } from 'date-fns'
   export default endOfYear
+}
+
+declare module 'date-fns/endOfYesterday' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/format' {
@@ -1066,6 +1154,11 @@ declare module 'date-fns/formatDistance' {
 declare module 'date-fns/formatDistanceStrict' {
   import { formatDistanceStrict } from 'date-fns'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/formatDistanceToNow' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/formatRelative' {
@@ -1228,6 +1321,11 @@ declare module 'date-fns/isFriday' {
   export default isFriday
 }
 
+declare module 'date-fns/isFuture' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
+}
+
 declare module 'date-fns/isLastDayOfMonth' {
   import { isLastDayOfMonth } from 'date-fns'
   export default isLastDayOfMonth
@@ -1241,6 +1339,11 @@ declare module 'date-fns/isLeapYear' {
 declare module 'date-fns/isMonday' {
   import { isMonday } from 'date-fns'
   export default isMonday
+}
+
+declare module 'date-fns/isPast' {
+  import { isPast } from 'date-fns'
+  export default isPast
 }
 
 declare module 'date-fns/isSameDay' {
@@ -1303,9 +1406,59 @@ declare module 'date-fns/isSunday' {
   export default isSunday
 }
 
+declare module 'date-fns/isThisHour' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
+}
+
+declare module 'date-fns/isThisISOWeek' {
+  import { isThisISOWeek } from 'date-fns'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/isThisMinute' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
+}
+
+declare module 'date-fns/isThisMonth' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
+}
+
+declare module 'date-fns/isThisQuarter' {
+  import { isThisQuarter } from 'date-fns'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/isThisSecond' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
+}
+
+declare module 'date-fns/isThisWeek' {
+  import { isThisWeek } from 'date-fns'
+  export default isThisWeek
+}
+
+declare module 'date-fns/isThisYear' {
+  import { isThisYear } from 'date-fns'
+  export default isThisYear
+}
+
 declare module 'date-fns/isThursday' {
   import { isThursday } from 'date-fns'
   export default isThursday
+}
+
+declare module 'date-fns/isToday' {
+  import { isToday } from 'date-fns'
+  export default isToday
+}
+
+declare module 'date-fns/isTomorrow' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
 }
 
 declare module 'date-fns/isTuesday' {
@@ -1331,6 +1484,11 @@ declare module 'date-fns/isWeekend' {
 declare module 'date-fns/isWithinInterval' {
   import { isWithinInterval } from 'date-fns'
   export default isWithinInterval
+}
+
+declare module 'date-fns/isYesterday' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
 }
 
 declare module 'date-fns/lastDayOfDecade' {
@@ -1518,6 +1676,16 @@ declare module 'date-fns/startOfSecond' {
   export default startOfSecond
 }
 
+declare module 'date-fns/startOfToday' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
+}
+
+declare module 'date-fns/startOfTomorrow' {
+  import { startOfTomorrow } from 'date-fns'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/startOfWeek' {
   import { startOfWeek } from 'date-fns'
   export default startOfWeek
@@ -1531,6 +1699,11 @@ declare module 'date-fns/startOfWeekYear' {
 declare module 'date-fns/startOfYear' {
   import { startOfYear } from 'date-fns'
   export default startOfYear
+}
+
+declare module 'date-fns/startOfYesterday' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/subDays' {
@@ -1828,6 +2001,16 @@ declare module 'date-fns/endOfSecond/index' {
   export default endOfSecond
 }
 
+declare module 'date-fns/endOfToday/index' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
+}
+
+declare module 'date-fns/endOfTomorrow/index' {
+  import { endOfTomorrow } from 'date-fns'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/endOfWeek/index' {
   import { endOfWeek } from 'date-fns'
   export default endOfWeek
@@ -1836,6 +2019,11 @@ declare module 'date-fns/endOfWeek/index' {
 declare module 'date-fns/endOfYear/index' {
   import { endOfYear } from 'date-fns'
   export default endOfYear
+}
+
+declare module 'date-fns/endOfYesterday/index' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/format/index' {
@@ -1851,6 +2039,11 @@ declare module 'date-fns/formatDistance/index' {
 declare module 'date-fns/formatDistanceStrict/index' {
   import { formatDistanceStrict } from 'date-fns'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/formatDistanceToNow/index' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/formatRelative/index' {
@@ -2013,6 +2206,11 @@ declare module 'date-fns/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/isFuture/index' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
+}
+
 declare module 'date-fns/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns'
   export default isLastDayOfMonth
@@ -2026,6 +2224,11 @@ declare module 'date-fns/isLeapYear/index' {
 declare module 'date-fns/isMonday/index' {
   import { isMonday } from 'date-fns'
   export default isMonday
+}
+
+declare module 'date-fns/isPast/index' {
+  import { isPast } from 'date-fns'
+  export default isPast
 }
 
 declare module 'date-fns/isSameDay/index' {
@@ -2088,9 +2291,59 @@ declare module 'date-fns/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/isThisHour/index' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
+}
+
+declare module 'date-fns/isThisISOWeek/index' {
+  import { isThisISOWeek } from 'date-fns'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/isThisMinute/index' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
+}
+
+declare module 'date-fns/isThisMonth/index' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
+}
+
+declare module 'date-fns/isThisQuarter/index' {
+  import { isThisQuarter } from 'date-fns'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/isThisSecond/index' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
+}
+
+declare module 'date-fns/isThisWeek/index' {
+  import { isThisWeek } from 'date-fns'
+  export default isThisWeek
+}
+
+declare module 'date-fns/isThisYear/index' {
+  import { isThisYear } from 'date-fns'
+  export default isThisYear
+}
+
 declare module 'date-fns/isThursday/index' {
   import { isThursday } from 'date-fns'
   export default isThursday
+}
+
+declare module 'date-fns/isToday/index' {
+  import { isToday } from 'date-fns'
+  export default isToday
+}
+
+declare module 'date-fns/isTomorrow/index' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
 }
 
 declare module 'date-fns/isTuesday/index' {
@@ -2116,6 +2369,11 @@ declare module 'date-fns/isWeekend/index' {
 declare module 'date-fns/isWithinInterval/index' {
   import { isWithinInterval } from 'date-fns'
   export default isWithinInterval
+}
+
+declare module 'date-fns/isYesterday/index' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
 }
 
 declare module 'date-fns/lastDayOfDecade/index' {
@@ -2303,6 +2561,16 @@ declare module 'date-fns/startOfSecond/index' {
   export default startOfSecond
 }
 
+declare module 'date-fns/startOfToday/index' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
+}
+
+declare module 'date-fns/startOfTomorrow/index' {
+  import { startOfTomorrow } from 'date-fns'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/startOfWeek/index' {
   import { startOfWeek } from 'date-fns'
   export default startOfWeek
@@ -2316,6 +2584,11 @@ declare module 'date-fns/startOfWeekYear/index' {
 declare module 'date-fns/startOfYear/index' {
   import { startOfYear } from 'date-fns'
   export default startOfYear
+}
+
+declare module 'date-fns/startOfYesterday/index' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/subDays/index' {
@@ -2613,6 +2886,16 @@ declare module 'date-fns/endOfSecond/index.js' {
   export default endOfSecond
 }
 
+declare module 'date-fns/endOfToday/index.js' {
+  import { endOfToday } from 'date-fns'
+  export default endOfToday
+}
+
+declare module 'date-fns/endOfTomorrow/index.js' {
+  import { endOfTomorrow } from 'date-fns'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/endOfWeek/index.js' {
   import { endOfWeek } from 'date-fns'
   export default endOfWeek
@@ -2621,6 +2904,11 @@ declare module 'date-fns/endOfWeek/index.js' {
 declare module 'date-fns/endOfYear/index.js' {
   import { endOfYear } from 'date-fns'
   export default endOfYear
+}
+
+declare module 'date-fns/endOfYesterday/index.js' {
+  import { endOfYesterday } from 'date-fns'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/format/index.js' {
@@ -2636,6 +2924,11 @@ declare module 'date-fns/formatDistance/index.js' {
 declare module 'date-fns/formatDistanceStrict/index.js' {
   import { formatDistanceStrict } from 'date-fns'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/formatDistanceToNow/index.js' {
+  import { formatDistanceToNow } from 'date-fns'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/formatRelative/index.js' {
@@ -2798,6 +3091,11 @@ declare module 'date-fns/isFriday/index.js' {
   export default isFriday
 }
 
+declare module 'date-fns/isFuture/index.js' {
+  import { isFuture } from 'date-fns'
+  export default isFuture
+}
+
 declare module 'date-fns/isLastDayOfMonth/index.js' {
   import { isLastDayOfMonth } from 'date-fns'
   export default isLastDayOfMonth
@@ -2811,6 +3109,11 @@ declare module 'date-fns/isLeapYear/index.js' {
 declare module 'date-fns/isMonday/index.js' {
   import { isMonday } from 'date-fns'
   export default isMonday
+}
+
+declare module 'date-fns/isPast/index.js' {
+  import { isPast } from 'date-fns'
+  export default isPast
 }
 
 declare module 'date-fns/isSameDay/index.js' {
@@ -2873,9 +3176,59 @@ declare module 'date-fns/isSunday/index.js' {
   export default isSunday
 }
 
+declare module 'date-fns/isThisHour/index.js' {
+  import { isThisHour } from 'date-fns'
+  export default isThisHour
+}
+
+declare module 'date-fns/isThisISOWeek/index.js' {
+  import { isThisISOWeek } from 'date-fns'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/isThisMinute/index.js' {
+  import { isThisMinute } from 'date-fns'
+  export default isThisMinute
+}
+
+declare module 'date-fns/isThisMonth/index.js' {
+  import { isThisMonth } from 'date-fns'
+  export default isThisMonth
+}
+
+declare module 'date-fns/isThisQuarter/index.js' {
+  import { isThisQuarter } from 'date-fns'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/isThisSecond/index.js' {
+  import { isThisSecond } from 'date-fns'
+  export default isThisSecond
+}
+
+declare module 'date-fns/isThisWeek/index.js' {
+  import { isThisWeek } from 'date-fns'
+  export default isThisWeek
+}
+
+declare module 'date-fns/isThisYear/index.js' {
+  import { isThisYear } from 'date-fns'
+  export default isThisYear
+}
+
 declare module 'date-fns/isThursday/index.js' {
   import { isThursday } from 'date-fns'
   export default isThursday
+}
+
+declare module 'date-fns/isToday/index.js' {
+  import { isToday } from 'date-fns'
+  export default isToday
+}
+
+declare module 'date-fns/isTomorrow/index.js' {
+  import { isTomorrow } from 'date-fns'
+  export default isTomorrow
 }
 
 declare module 'date-fns/isTuesday/index.js' {
@@ -2901,6 +3254,11 @@ declare module 'date-fns/isWeekend/index.js' {
 declare module 'date-fns/isWithinInterval/index.js' {
   import { isWithinInterval } from 'date-fns'
   export default isWithinInterval
+}
+
+declare module 'date-fns/isYesterday/index.js' {
+  import { isYesterday } from 'date-fns'
+  export default isYesterday
 }
 
 declare module 'date-fns/lastDayOfDecade/index.js' {
@@ -3088,6 +3446,16 @@ declare module 'date-fns/startOfSecond/index.js' {
   export default startOfSecond
 }
 
+declare module 'date-fns/startOfToday/index.js' {
+  import { startOfToday } from 'date-fns'
+  export default startOfToday
+}
+
+declare module 'date-fns/startOfTomorrow/index.js' {
+  import { startOfTomorrow } from 'date-fns'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/startOfWeek/index.js' {
   import { startOfWeek } from 'date-fns'
   export default startOfWeek
@@ -3101,6 +3469,11 @@ declare module 'date-fns/startOfWeekYear/index.js' {
 declare module 'date-fns/startOfYear/index.js' {
   import { startOfYear } from 'date-fns'
   export default startOfYear
+}
+
+declare module 'date-fns/startOfYesterday/index.js' {
+  import { startOfYesterday } from 'date-fns'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/subDays/index.js' {
@@ -6732,6 +7105,12 @@ declare module 'date-fns/esm' {
   function endOfSecond(date: Date | number): Date
   namespace endOfSecond {}
 
+  function endOfToday(): Date
+  namespace endOfToday {}
+
+  function endOfTomorrow(): Date
+  namespace endOfTomorrow {}
+
   function endOfWeek(
     date: Date | number,
     options?: {
@@ -6743,6 +7122,9 @@ declare module 'date-fns/esm' {
 
   function endOfYear(date: Date | number): Date
   namespace endOfYear {}
+
+  function endOfYesterday(): Date
+  namespace endOfYesterday {}
 
   function format(
     date: Date | number,
@@ -6779,6 +7161,16 @@ declare module 'date-fns/esm' {
     }
   ): string
   namespace formatDistanceStrict {}
+
+  function formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNow {}
 
   function formatRelative(
     date: Date | number,
@@ -6912,6 +7304,9 @@ declare module 'date-fns/esm' {
   function isFriday(date: Date | number): boolean
   namespace isFriday {}
 
+  function isFuture(date: Date | number): boolean
+  namespace isFuture {}
+
   function isLastDayOfMonth(date: Date | number): boolean
   namespace isLastDayOfMonth {}
 
@@ -6920,6 +7315,9 @@ declare module 'date-fns/esm' {
 
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
+
+  function isPast(date: Date | number): boolean
+  namespace isPast {}
 
   function isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isSameDay {}
@@ -6988,8 +7386,44 @@ declare module 'date-fns/esm' {
   function isSunday(date: Date | number): boolean
   namespace isSunday {}
 
+  function isThisHour(date: Date | number): boolean
+  namespace isThisHour {}
+
+  function isThisISOWeek(date: Date | number): boolean
+  namespace isThisISOWeek {}
+
+  function isThisMinute(date: Date | number): boolean
+  namespace isThisMinute {}
+
+  function isThisMonth(date: Date | number): boolean
+  namespace isThisMonth {}
+
+  function isThisQuarter(date: Date | number): boolean
+  namespace isThisQuarter {}
+
+  function isThisSecond(date: Date | number): boolean
+  namespace isThisSecond {}
+
+  function isThisWeek(
+    date: Date | number,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ): boolean
+  namespace isThisWeek {}
+
+  function isThisYear(date: Date | number): boolean
+  namespace isThisYear {}
+
   function isThursday(date: Date | number): boolean
   namespace isThursday {}
+
+  function isToday(date: Date | number): boolean
+  namespace isToday {}
+
+  function isTomorrow(date: Date | number): boolean
+  namespace isTomorrow {}
 
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
@@ -7005,6 +7439,9 @@ declare module 'date-fns/esm' {
 
   function isWithinInterval(date: Date | number, interval: Interval): boolean
   namespace isWithinInterval {}
+
+  function isYesterday(date: Date | number): boolean
+  namespace isYesterday {}
 
   function lastDayOfDecade(date: Date | number): Date
   namespace lastDayOfDecade {}
@@ -7172,6 +7609,12 @@ declare module 'date-fns/esm' {
   function startOfSecond(date: Date | number): Date
   namespace startOfSecond {}
 
+  function startOfToday(): Date
+  namespace startOfToday {}
+
+  function startOfTomorrow(): Date
+  namespace startOfTomorrow {}
+
   function startOfWeek(
     date: Date | number,
     options?: {
@@ -7193,6 +7636,9 @@ declare module 'date-fns/esm' {
 
   function startOfYear(date: Date | number): Date
   namespace startOfYear {}
+
+  function startOfYesterday(): Date
+  namespace startOfYesterday {}
 
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
@@ -7472,6 +7918,16 @@ declare module 'date-fns/esm/endOfSecond' {
   export default endOfSecond
 }
 
+declare module 'date-fns/esm/endOfToday' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
+}
+
+declare module 'date-fns/esm/endOfTomorrow' {
+  import { endOfTomorrow } from 'date-fns/esm'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/esm/endOfWeek' {
   import { endOfWeek } from 'date-fns/esm'
   export default endOfWeek
@@ -7480,6 +7936,11 @@ declare module 'date-fns/esm/endOfWeek' {
 declare module 'date-fns/esm/endOfYear' {
   import { endOfYear } from 'date-fns/esm'
   export default endOfYear
+}
+
+declare module 'date-fns/esm/endOfYesterday' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/esm/format' {
@@ -7495,6 +7956,11 @@ declare module 'date-fns/esm/formatDistance' {
 declare module 'date-fns/esm/formatDistanceStrict' {
   import { formatDistanceStrict } from 'date-fns/esm'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatDistanceToNow' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/esm/formatRelative' {
@@ -7657,6 +8123,11 @@ declare module 'date-fns/esm/isFriday' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/isFuture' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
+}
+
 declare module 'date-fns/esm/isLastDayOfMonth' {
   import { isLastDayOfMonth } from 'date-fns/esm'
   export default isLastDayOfMonth
@@ -7670,6 +8141,11 @@ declare module 'date-fns/esm/isLeapYear' {
 declare module 'date-fns/esm/isMonday' {
   import { isMonday } from 'date-fns/esm'
   export default isMonday
+}
+
+declare module 'date-fns/esm/isPast' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
 }
 
 declare module 'date-fns/esm/isSameDay' {
@@ -7732,9 +8208,59 @@ declare module 'date-fns/esm/isSunday' {
   export default isSunday
 }
 
+declare module 'date-fns/esm/isThisHour' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
+}
+
+declare module 'date-fns/esm/isThisISOWeek' {
+  import { isThisISOWeek } from 'date-fns/esm'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/esm/isThisMinute' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
+}
+
+declare module 'date-fns/esm/isThisMonth' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
+}
+
+declare module 'date-fns/esm/isThisQuarter' {
+  import { isThisQuarter } from 'date-fns/esm'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/esm/isThisSecond' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
+}
+
+declare module 'date-fns/esm/isThisWeek' {
+  import { isThisWeek } from 'date-fns/esm'
+  export default isThisWeek
+}
+
+declare module 'date-fns/esm/isThisYear' {
+  import { isThisYear } from 'date-fns/esm'
+  export default isThisYear
+}
+
 declare module 'date-fns/esm/isThursday' {
   import { isThursday } from 'date-fns/esm'
   export default isThursday
+}
+
+declare module 'date-fns/esm/isToday' {
+  import { isToday } from 'date-fns/esm'
+  export default isToday
+}
+
+declare module 'date-fns/esm/isTomorrow' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
 }
 
 declare module 'date-fns/esm/isTuesday' {
@@ -7760,6 +8286,11 @@ declare module 'date-fns/esm/isWeekend' {
 declare module 'date-fns/esm/isWithinInterval' {
   import { isWithinInterval } from 'date-fns/esm'
   export default isWithinInterval
+}
+
+declare module 'date-fns/esm/isYesterday' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
 }
 
 declare module 'date-fns/esm/lastDayOfDecade' {
@@ -7947,6 +8478,16 @@ declare module 'date-fns/esm/startOfSecond' {
   export default startOfSecond
 }
 
+declare module 'date-fns/esm/startOfToday' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
+}
+
+declare module 'date-fns/esm/startOfTomorrow' {
+  import { startOfTomorrow } from 'date-fns/esm'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/esm/startOfWeek' {
   import { startOfWeek } from 'date-fns/esm'
   export default startOfWeek
@@ -7960,6 +8501,11 @@ declare module 'date-fns/esm/startOfWeekYear' {
 declare module 'date-fns/esm/startOfYear' {
   import { startOfYear } from 'date-fns/esm'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/startOfYesterday' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/esm/subDays' {
@@ -8257,6 +8803,16 @@ declare module 'date-fns/esm/endOfSecond/index' {
   export default endOfSecond
 }
 
+declare module 'date-fns/esm/endOfToday/index' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
+}
+
+declare module 'date-fns/esm/endOfTomorrow/index' {
+  import { endOfTomorrow } from 'date-fns/esm'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/esm/endOfWeek/index' {
   import { endOfWeek } from 'date-fns/esm'
   export default endOfWeek
@@ -8265,6 +8821,11 @@ declare module 'date-fns/esm/endOfWeek/index' {
 declare module 'date-fns/esm/endOfYear/index' {
   import { endOfYear } from 'date-fns/esm'
   export default endOfYear
+}
+
+declare module 'date-fns/esm/endOfYesterday/index' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/esm/format/index' {
@@ -8280,6 +8841,11 @@ declare module 'date-fns/esm/formatDistance/index' {
 declare module 'date-fns/esm/formatDistanceStrict/index' {
   import { formatDistanceStrict } from 'date-fns/esm'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatDistanceToNow/index' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/esm/formatRelative/index' {
@@ -8442,6 +9008,11 @@ declare module 'date-fns/esm/isFriday/index' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/isFuture/index' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
+}
+
 declare module 'date-fns/esm/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/esm'
   export default isLastDayOfMonth
@@ -8455,6 +9026,11 @@ declare module 'date-fns/esm/isLeapYear/index' {
 declare module 'date-fns/esm/isMonday/index' {
   import { isMonday } from 'date-fns/esm'
   export default isMonday
+}
+
+declare module 'date-fns/esm/isPast/index' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
 }
 
 declare module 'date-fns/esm/isSameDay/index' {
@@ -8517,9 +9093,59 @@ declare module 'date-fns/esm/isSunday/index' {
   export default isSunday
 }
 
+declare module 'date-fns/esm/isThisHour/index' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
+}
+
+declare module 'date-fns/esm/isThisISOWeek/index' {
+  import { isThisISOWeek } from 'date-fns/esm'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/esm/isThisMinute/index' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
+}
+
+declare module 'date-fns/esm/isThisMonth/index' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
+}
+
+declare module 'date-fns/esm/isThisQuarter/index' {
+  import { isThisQuarter } from 'date-fns/esm'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/esm/isThisSecond/index' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
+}
+
+declare module 'date-fns/esm/isThisWeek/index' {
+  import { isThisWeek } from 'date-fns/esm'
+  export default isThisWeek
+}
+
+declare module 'date-fns/esm/isThisYear/index' {
+  import { isThisYear } from 'date-fns/esm'
+  export default isThisYear
+}
+
 declare module 'date-fns/esm/isThursday/index' {
   import { isThursday } from 'date-fns/esm'
   export default isThursday
+}
+
+declare module 'date-fns/esm/isToday/index' {
+  import { isToday } from 'date-fns/esm'
+  export default isToday
+}
+
+declare module 'date-fns/esm/isTomorrow/index' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
 }
 
 declare module 'date-fns/esm/isTuesday/index' {
@@ -8545,6 +9171,11 @@ declare module 'date-fns/esm/isWeekend/index' {
 declare module 'date-fns/esm/isWithinInterval/index' {
   import { isWithinInterval } from 'date-fns/esm'
   export default isWithinInterval
+}
+
+declare module 'date-fns/esm/isYesterday/index' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
 }
 
 declare module 'date-fns/esm/lastDayOfDecade/index' {
@@ -8732,6 +9363,16 @@ declare module 'date-fns/esm/startOfSecond/index' {
   export default startOfSecond
 }
 
+declare module 'date-fns/esm/startOfToday/index' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
+}
+
+declare module 'date-fns/esm/startOfTomorrow/index' {
+  import { startOfTomorrow } from 'date-fns/esm'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/esm/startOfWeek/index' {
   import { startOfWeek } from 'date-fns/esm'
   export default startOfWeek
@@ -8745,6 +9386,11 @@ declare module 'date-fns/esm/startOfWeekYear/index' {
 declare module 'date-fns/esm/startOfYear/index' {
   import { startOfYear } from 'date-fns/esm'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/startOfYesterday/index' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/esm/subDays/index' {
@@ -9042,6 +9688,16 @@ declare module 'date-fns/esm/endOfSecond/index.js' {
   export default endOfSecond
 }
 
+declare module 'date-fns/esm/endOfToday/index.js' {
+  import { endOfToday } from 'date-fns/esm'
+  export default endOfToday
+}
+
+declare module 'date-fns/esm/endOfTomorrow/index.js' {
+  import { endOfTomorrow } from 'date-fns/esm'
+  export default endOfTomorrow
+}
+
 declare module 'date-fns/esm/endOfWeek/index.js' {
   import { endOfWeek } from 'date-fns/esm'
   export default endOfWeek
@@ -9050,6 +9706,11 @@ declare module 'date-fns/esm/endOfWeek/index.js' {
 declare module 'date-fns/esm/endOfYear/index.js' {
   import { endOfYear } from 'date-fns/esm'
   export default endOfYear
+}
+
+declare module 'date-fns/esm/endOfYesterday/index.js' {
+  import { endOfYesterday } from 'date-fns/esm'
+  export default endOfYesterday
 }
 
 declare module 'date-fns/esm/format/index.js' {
@@ -9065,6 +9726,11 @@ declare module 'date-fns/esm/formatDistance/index.js' {
 declare module 'date-fns/esm/formatDistanceStrict/index.js' {
   import { formatDistanceStrict } from 'date-fns/esm'
   export default formatDistanceStrict
+}
+
+declare module 'date-fns/esm/formatDistanceToNow/index.js' {
+  import { formatDistanceToNow } from 'date-fns/esm'
+  export default formatDistanceToNow
 }
 
 declare module 'date-fns/esm/formatRelative/index.js' {
@@ -9227,6 +9893,11 @@ declare module 'date-fns/esm/isFriday/index.js' {
   export default isFriday
 }
 
+declare module 'date-fns/esm/isFuture/index.js' {
+  import { isFuture } from 'date-fns/esm'
+  export default isFuture
+}
+
 declare module 'date-fns/esm/isLastDayOfMonth/index.js' {
   import { isLastDayOfMonth } from 'date-fns/esm'
   export default isLastDayOfMonth
@@ -9240,6 +9911,11 @@ declare module 'date-fns/esm/isLeapYear/index.js' {
 declare module 'date-fns/esm/isMonday/index.js' {
   import { isMonday } from 'date-fns/esm'
   export default isMonday
+}
+
+declare module 'date-fns/esm/isPast/index.js' {
+  import { isPast } from 'date-fns/esm'
+  export default isPast
 }
 
 declare module 'date-fns/esm/isSameDay/index.js' {
@@ -9302,9 +9978,59 @@ declare module 'date-fns/esm/isSunday/index.js' {
   export default isSunday
 }
 
+declare module 'date-fns/esm/isThisHour/index.js' {
+  import { isThisHour } from 'date-fns/esm'
+  export default isThisHour
+}
+
+declare module 'date-fns/esm/isThisISOWeek/index.js' {
+  import { isThisISOWeek } from 'date-fns/esm'
+  export default isThisISOWeek
+}
+
+declare module 'date-fns/esm/isThisMinute/index.js' {
+  import { isThisMinute } from 'date-fns/esm'
+  export default isThisMinute
+}
+
+declare module 'date-fns/esm/isThisMonth/index.js' {
+  import { isThisMonth } from 'date-fns/esm'
+  export default isThisMonth
+}
+
+declare module 'date-fns/esm/isThisQuarter/index.js' {
+  import { isThisQuarter } from 'date-fns/esm'
+  export default isThisQuarter
+}
+
+declare module 'date-fns/esm/isThisSecond/index.js' {
+  import { isThisSecond } from 'date-fns/esm'
+  export default isThisSecond
+}
+
+declare module 'date-fns/esm/isThisWeek/index.js' {
+  import { isThisWeek } from 'date-fns/esm'
+  export default isThisWeek
+}
+
+declare module 'date-fns/esm/isThisYear/index.js' {
+  import { isThisYear } from 'date-fns/esm'
+  export default isThisYear
+}
+
 declare module 'date-fns/esm/isThursday/index.js' {
   import { isThursday } from 'date-fns/esm'
   export default isThursday
+}
+
+declare module 'date-fns/esm/isToday/index.js' {
+  import { isToday } from 'date-fns/esm'
+  export default isToday
+}
+
+declare module 'date-fns/esm/isTomorrow/index.js' {
+  import { isTomorrow } from 'date-fns/esm'
+  export default isTomorrow
 }
 
 declare module 'date-fns/esm/isTuesday/index.js' {
@@ -9330,6 +10056,11 @@ declare module 'date-fns/esm/isWeekend/index.js' {
 declare module 'date-fns/esm/isWithinInterval/index.js' {
   import { isWithinInterval } from 'date-fns/esm'
   export default isWithinInterval
+}
+
+declare module 'date-fns/esm/isYesterday/index.js' {
+  import { isYesterday } from 'date-fns/esm'
+  export default isYesterday
 }
 
 declare module 'date-fns/esm/lastDayOfDecade/index.js' {
@@ -9517,6 +10248,16 @@ declare module 'date-fns/esm/startOfSecond/index.js' {
   export default startOfSecond
 }
 
+declare module 'date-fns/esm/startOfToday/index.js' {
+  import { startOfToday } from 'date-fns/esm'
+  export default startOfToday
+}
+
+declare module 'date-fns/esm/startOfTomorrow/index.js' {
+  import { startOfTomorrow } from 'date-fns/esm'
+  export default startOfTomorrow
+}
+
 declare module 'date-fns/esm/startOfWeek/index.js' {
   import { startOfWeek } from 'date-fns/esm'
   export default startOfWeek
@@ -9530,6 +10271,11 @@ declare module 'date-fns/esm/startOfWeekYear/index.js' {
 declare module 'date-fns/esm/startOfYear/index.js' {
   import { startOfYear } from 'date-fns/esm'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/startOfYesterday/index.js' {
+  import { startOfYesterday } from 'date-fns/esm'
+  export default startOfYesterday
 }
 
 declare module 'date-fns/esm/subDays/index.js' {
@@ -15146,6 +15892,10 @@ interface dateFns {
 
   endOfSecond(date: Date | number): Date
 
+  endOfToday(): Date
+
+  endOfTomorrow(): Date
+
   endOfWeek(
     date: Date | number,
     options?: {
@@ -15155,6 +15905,8 @@ interface dateFns {
   ): Date
 
   endOfYear(date: Date | number): Date
+
+  endOfYesterday(): Date
 
   format(
     date: Date | number,
@@ -15185,6 +15937,15 @@ interface dateFns {
       addSuffix?: boolean
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
+      locale?: Locale
+    }
+  ): string
+
+  formatDistanceToNow(
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean
+      addSuffix?: boolean
       locale?: Locale
     }
   ): string
@@ -15289,11 +16050,15 @@ interface dateFns {
 
   isFriday(date: Date | number): boolean
 
+  isFuture(date: Date | number): boolean
+
   isLastDayOfMonth(date: Date | number): boolean
 
   isLeapYear(date: Date | number): boolean
 
   isMonday(date: Date | number): boolean
+
+  isPast(date: Date | number): boolean
 
   isSameDay(dateLeft: Date | number, dateRight: Date | number): boolean
 
@@ -15326,7 +16091,33 @@ interface dateFns {
 
   isSunday(date: Date | number): boolean
 
+  isThisHour(date: Date | number): boolean
+
+  isThisISOWeek(date: Date | number): boolean
+
+  isThisMinute(date: Date | number): boolean
+
+  isThisMonth(date: Date | number): boolean
+
+  isThisQuarter(date: Date | number): boolean
+
+  isThisSecond(date: Date | number): boolean
+
+  isThisWeek(
+    date: Date | number,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ): boolean
+
+  isThisYear(date: Date | number): boolean
+
   isThursday(date: Date | number): boolean
+
+  isToday(date: Date | number): boolean
+
+  isTomorrow(date: Date | number): boolean
 
   isTuesday(date: Date | number): boolean
 
@@ -15337,6 +16128,8 @@ interface dateFns {
   isWeekend(date: Date | number): boolean
 
   isWithinInterval(date: Date | number, interval: Interval): boolean
+
+  isYesterday(date: Date | number): boolean
 
   lastDayOfDecade(date: Date | number): Date
 
@@ -15467,6 +16260,10 @@ interface dateFns {
 
   startOfSecond(date: Date | number): Date
 
+  startOfToday(): Date
+
+  startOfTomorrow(): Date
+
   startOfWeek(
     date: Date | number,
     options?: {
@@ -15485,6 +16282,8 @@ interface dateFns {
   ): Date
 
   startOfYear(date: Date | number): Date
+
+  startOfYesterday(): Date
 
   subDays(date: Date | number, amount: number): Date
 

@@ -1,26 +1,29 @@
-const {
-  addSeparator,
-  formatBlock
-} = require('./formatBlock')
+const { addSeparator, formatBlock } = require('./formatBlock')
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 
-function correctTypeCase (type) {
+function correctTypeCase(type) {
   if (lowerCaseTypes.includes(type)) {
     return type.toLowerCase()
   }
   return type
 }
 
-function getParams (params, {leftBorder = '{', rightBorder = '}'} = {}) {
-  if (params.length === 0) {
+function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
+  if (!params || params.length === 0) {
     return leftBorder + rightBorder
   }
 
   const formattedParams = addSeparator(
     params.map(param => {
-      const {name, props, optional, variable, type: {names: typeNames}} = param
-      const type = getType(typeNames, {props, forceArray: variable})
+      const {
+        name,
+        props,
+        optional,
+        variable,
+        type: { names: typeNames }
+      } = param
+      const type = getType(typeNames, { props, forceArray: variable })
       return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
     }),
     ','
@@ -33,7 +36,7 @@ function getParams (params, {leftBorder = '{', rightBorder = '}'} = {}) {
   `
 }
 
-function getType (types, {props = [], forceArray = false} = {}) {
+function getType(types, { props = [], forceArray = false } = {}) {
   const typeStrings = types.map(type => {
     if (type === '*') {
       return 'any'
@@ -60,7 +63,8 @@ function getType (types, {props = [], forceArray = false} = {}) {
     return caseCorrectedType
   })
 
-  const allArrayTypes = typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
+  const allArrayTypes =
+    typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
   if (allArrayTypes) {
     return `(${typeStrings.map(type => type.replace('[]', '')).join(' | ')})[]`
   }
@@ -68,9 +72,8 @@ function getType (types, {props = [], forceArray = false} = {}) {
   return typeStrings.join(' | ')
 }
 
-function getFPFnType (params, returns) {
-  const fpParams = params
-    .map(param => param.type.names)
+function getFPFnType(params, returns) {
+  const fpParams = params.map(param => param.type.names)
 
   const arity = fpParams.length
 
