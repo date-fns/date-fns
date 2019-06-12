@@ -131,24 +131,32 @@ function config(config) {
       public: 'public'
     },
 
+    coveageIstanbulReporter: {
+      reports: ['html', 'lcovonly'],
+      fixWebpackSourcePaths: true
+    },
+
     mochaReporter: {
       output: 'minimal'
     },
 
-    plugins: [
+    plugins: (process.env.COVERAGE_REPORT
+      ? ['karma-coverage', 'karma-coverage-istanbul-reporter']
+      : []
+    ).concat([
       'karma-mocha',
       'karma-mocha-reporter',
       'karma-phantomjs-launcher',
       'karma-chrome-launcher',
-      'karma-sauce-launcher',
-      'karma-sinon',
+      // TODO: Make it work
+      // 'karma-sauce-launcher',
       'karma-sourcemap-loader',
       'karma-webpack',
       'karma-benchmark',
       'karma-benchmark-reporter',
       { 'reporter:count': ['type', countReporter] },
       { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] }
-    ],
+    ]),
 
     customLaunchers: process.env.TEST_CROSS_BROWSER
       ? sauceLabsLaunchers
@@ -164,7 +172,7 @@ function getFrameworksConfig() {
   if (process.env.TEST_BENCHMARK) {
     return ['benchmark']
   } else {
-    return ['mocha', 'sinon']
+    return ['mocha']
   }
 }
 
@@ -205,6 +213,8 @@ function getReportersConfig() {
     return ['dots', 'saucelabs', 'count']
   } else if (process.env.TEST_BENCHMARK) {
     return ['benchmark', 'benchmark-json']
+  } else if (process.env.COVERAGE_REPORT) {
+    return ['coverage-istanbul']
   } else {
     return ['mocha', 'count']
   }

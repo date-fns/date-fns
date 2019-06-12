@@ -64,16 +64,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SS      | 00, 01, ..., 99                   |
  * |                                 | SSS     | 000, 0001, ..., 999               |
  * |                                 | SSSS    | ...                               |
- * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |
- * |                                 | XX      | -0800, +0530, Z                   |
- * |                                 | XXX     | -08:00, +05:30, Z                 |
- * |                                 | XXXX    | -0800, +0530, Z, +123456          |
- * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |
- * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |
- * |                                 | xx      | -0800, +0530, +0000               |
- * |                                 | xxx     | -08:00, +05:30, +00:00            |
- * |                                 | xxxx    | -0800, +0530, +0000, +123456      |
- * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |
  *
  * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens

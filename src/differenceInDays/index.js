@@ -30,7 +30,7 @@ import compareAsc from '../compareAsc/index.js'
  * // How many days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
  * var result = differenceInDays(
- *   new Date(2011, 6, 2, 0, 1),
+ *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
  * //=> 0

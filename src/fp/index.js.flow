@@ -66,6 +66,7 @@ type CurriedFn4<A, B, C, D, R> = <A>(
         ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
 declare module.exports: {
+  addBusinessDays: CurriedFn2<number, Date | number, Date>,
   addDays: CurriedFn2<number, Date | number, Date>,
   addHours: CurriedFn2<number, Date | number, Date>,
   addISOWeekYears: CurriedFn2<number, Date | number, Date>,
@@ -81,6 +82,7 @@ declare module.exports: {
   closestTo: CurriedFn2<(Date | number)[], Date | number, Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,
   compareDesc: CurriedFn2<Date | number, Date | number, number>,
+  differenceInBusinessDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarISOWeeks: CurriedFn2<
     Date | number,
@@ -281,5 +283,7 @@ declare module.exports: {
   subSeconds: CurriedFn2<number, Date | number, Date>,
   subWeeks: CurriedFn2<number, Date | number, Date>,
   subYears: CurriedFn2<number, Date | number, Date>,
-  toDate: CurriedFn1<Date | number, Date>
+  toDate: CurriedFn1<Date | number, Date>,
+  maxTime: number,
+  minTime: number
 }

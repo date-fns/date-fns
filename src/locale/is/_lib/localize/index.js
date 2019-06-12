@@ -14,15 +14,49 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'Á', 'S', 'Ó', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'sept.', 'okt.', 'nóv.', 'des.'],
-  wide: ['janúar', 'febrúar', 'mars', 'apríl', 'maí', 'júní', 'júlí', 'ágúst', 'september', 'október', 'nóvember', 'desember']
+  abbreviated: [
+    'jan.',
+    'feb.',
+    'mars',
+    'apríl',
+    'maí',
+    'júní',
+    'júlí',
+    'ágúst',
+    'sept.',
+    'okt.',
+    'nóv.',
+    'des.'
+  ],
+  wide: [
+    'janúar',
+    'febrúar',
+    'mars',
+    'apríl',
+    'maí',
+    'júní',
+    'júlí',
+    'ágúst',
+    'september',
+    'október',
+    'nóvember',
+    'desember'
+  ]
 }
 
 var dayValues = {
   narrow: ['S', 'M', 'Þ', 'M', 'F', 'F', 'L'],
   short: ['Su', 'Má', 'Þr', 'Mi', 'Fi', 'Fö', 'La'],
   abbreviated: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau'],
-  wide: ['sunnudagur', 'mánudagur', 'þriðjudagur', 'miðvikudagur', 'fimmtudagur', 'föstudagur', 'laugardagur']
+  wide: [
+    'sunnudagur',
+    'mánudagur',
+    'þriðjudagur',
+    'miðvikudagur',
+    'fimmtudagur',
+    'föstudagur',
+    'laugardagur'
+  ]
 }
 
 var dayPeriodValues = {
@@ -107,7 +141,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

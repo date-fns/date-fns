@@ -67,13 +67,7 @@ var formatDistanceLocale = {
   }
 }
 
-var extraWordTokens = [
-  'lessThanXSeconds',
-  'lessThanXMinutes',
-  'overXYears'
-]
-
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -86,15 +80,10 @@ export default function formatDistance (token, count, options) {
   }
 
   if (options.addSuffix) {
-    var extraWord = ''
-    if (extraWordTokens.indexOf(token) > -1) {
-      extraWord = ' bir süre'
-    }
-
     if (options.comparison > 0) {
-      return result + extraWord + ' içinde'
+      return result + ' sonra'
     } else {
-      return result + extraWord + ' önce'
+      return result + ' önce'
     }
   }
 

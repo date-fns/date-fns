@@ -28,7 +28,7 @@ babel src --source-root src --out-dir "$dir" --ignore test.js,benchmark.js --cop
 # Copy ES (a.k.a. ES6, ES2016, ES2017, etc.) files
 
 # Copy the source code
-for fnDir in $(find src -type d -maxdepth 1 -mindepth 1 | sed 's/src\///' | sed 's/\///')
+for fnDir in $(find src -maxdepth 1 -mindepth 1 -type d | sed 's/src\///' | sed 's/\///')
 do
   if [ "$fnDir" == "esm" ]
   then

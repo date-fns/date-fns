@@ -38,6 +38,7 @@ type Locale = {
 declare module.exports: (
   interval: Interval,
   options?: {
+    locale?: Locale,
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   }
 ) => Date[]

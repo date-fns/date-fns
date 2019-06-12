@@ -1,6 +1,9 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+var constants = require('../constants/index.js')
+
 module.exports = {
+  addBusinessDays: require('./addBusinessDays/index.js'),
   addDays: require('./addDays/index.js'),
   addHours: require('./addHours/index.js'),
   addISOWeekYears: require('./addISOWeekYears/index.js'),
@@ -16,6 +19,7 @@ module.exports = {
   closestTo: require('./closestTo/index.js'),
   compareAsc: require('./compareAsc/index.js'),
   compareDesc: require('./compareDesc/index.js'),
+  differenceInBusinessDays: require('./differenceInBusinessDays/index.js'),
   differenceInCalendarDays: require('./differenceInCalendarDays/index.js'),
   differenceInCalendarISOWeekYears: require('./differenceInCalendarISOWeekYears/index.js'),
   differenceInCalendarISOWeeks: require('./differenceInCalendarISOWeeks/index.js'),
@@ -180,5 +184,7 @@ module.exports = {
   subSeconds: require('./subSeconds/index.js'),
   subWeeks: require('./subWeeks/index.js'),
   subYears: require('./subYears/index.js'),
-  toDate: require('./toDate/index.js')
+  toDate: require('./toDate/index.js'),
+  maxTime: constants.maxTime,
+  minTime: constants.minTime
 }

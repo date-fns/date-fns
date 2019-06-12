@@ -1496,7 +1496,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr'
+        /Use `d` instead of `D` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -1512,7 +1512,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr'
+        /Use `dd` instead of `DD` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -1528,7 +1528,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr'
+        /Use `yy` instead of `YY` for formatting years; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -1544,7 +1544,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        'Use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr'
+        /Use `yyyy` instead of `YYYY` for formatting years; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -1553,6 +1553,133 @@ describe('parse', function() {
         useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 10, 5))
+    })
+  })
+
+  describe('long format', function() {
+    it('short date', function() {
+      var expected = new Date(1995, 4 /* May */, 26)
+      var dateString = '05/26/1995'
+      var formatString = 'P'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('medium date', function() {
+      var expected = new Date(1995, 4 /* May */, 26)
+      var dateString = 'May 26, 1995'
+      var formatString = 'PP'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('long date', function() {
+      var expected = new Date(1995, 4 /* May */, 26)
+      var dateString = 'May 26th, 1995'
+      var formatString = 'PPP'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('full date', function() {
+      var expected = new Date(1995, 4 /* May */, 26)
+      var dateString = 'Friday, May 26th, 1995'
+      var formatString = 'PPPP'
+      var result = parse(dateString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('short time', function() {
+      var expected = new Date(
+        baseDate.getFullYear(),
+        baseDate.getMonth(),
+        baseDate.getDate(),
+        10,
+        32
+      )
+      var timeString = '10:32 AM'
+      var formatString = 'p'
+      var result = parse(timeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('medium time', function() {
+      var expected = new Date(
+        baseDate.getFullYear(),
+        baseDate.getMonth(),
+        baseDate.getDate(),
+        10,
+        32,
+        55
+      )
+      var timeString = '10:32:55 AM'
+      var formatString = 'pp'
+      var result = parse(timeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('short date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      var dateTimeString = '05/26/1995, 10:32 AM'
+      var formatString = 'Pp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('medium date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      var dateTimeString = 'May 26, 1995, 10:32 AM'
+      var formatString = 'PPp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('long date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      var dateTimeString = 'May 26th, 1995 at 10:32 AM'
+      var formatString = 'PPPp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('full date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32)
+      var dateTimeString = 'Friday, May 26th, 1995 at 10:32 AM'
+      var formatString = 'PPPPp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('short date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      var dateTimeString = '05/26/1995, 10:32:55 AM'
+      var formatString = 'Ppp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('medium date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      var dateTimeString = 'May 26, 1995, 10:32:55 AM'
+      var formatString = 'PPpp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('long date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      var dateTimeString = 'May 26th, 1995 at 10:32:55 AM'
+      var formatString = 'PPPpp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
+    })
+
+    it('full date + short time', function() {
+      var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
+      var dateTimeString = 'Friday, May 26th, 1995 at 10:32:55 AM'
+      var formatString = 'PPPPpp'
+      var result = parse(dateTimeString, formatString, baseDate)
+      assert.deepEqual(result, expected)
     })
   })
 })
