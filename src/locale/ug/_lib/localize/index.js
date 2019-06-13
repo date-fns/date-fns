@@ -136,7 +136,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return String(dirtyNumber)
 }
 

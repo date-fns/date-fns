@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: function (date, baseDate, options) {
+  lastWeek: function(date, _baseDate, _options) {
     var weekday = date.getUTCDay()
     var last = weekday === 0 || weekday === 6 ? 'último' : 'última'
     return "'" + last + "' eeee 'às' p"
@@ -11,7 +11,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {

@@ -20,28 +20,96 @@ var formattingQuarterValues = {
 
 var monthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
-  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
-  wide: ['sausis', 'vasaris', 'kovas', 'balandis', 'gegužė', 'birželis', 'liepa', 'rugpjūtis', 'rugsėjis', 'spalis', 'lapkritis', 'gruodis']
+  abbreviated: [
+    'saus.',
+    'vas.',
+    'kov.',
+    'bal.',
+    'geg.',
+    'birž.',
+    'liep.',
+    'rugp.',
+    'rugs.',
+    'spal.',
+    'lapkr.',
+    'gruod.'
+  ],
+  wide: [
+    'sausis',
+    'vasaris',
+    'kovas',
+    'balandis',
+    'gegužė',
+    'birželis',
+    'liepa',
+    'rugpjūtis',
+    'rugsėjis',
+    'spalis',
+    'lapkritis',
+    'gruodis'
+  ]
 }
 
 var formattingMonthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
-  abbreviated: ['saus.', 'vas.', 'kov.', 'bal.', 'geg.', 'birž.', 'liep.', 'rugp.', 'rugs.', 'spal.', 'lapkr.', 'gruod.'],
-  wide: ['sausio', 'vasario', 'kovo', 'balandžio', 'gegužės', 'birželio', 'liepos', 'rugpjūčio', 'rugsėjo', 'spalio', 'lapkričio', 'gruodžio']
+  abbreviated: [
+    'saus.',
+    'vas.',
+    'kov.',
+    'bal.',
+    'geg.',
+    'birž.',
+    'liep.',
+    'rugp.',
+    'rugs.',
+    'spal.',
+    'lapkr.',
+    'gruod.'
+  ],
+  wide: [
+    'sausio',
+    'vasario',
+    'kovo',
+    'balandžio',
+    'gegužės',
+    'birželio',
+    'liepos',
+    'rugpjūčio',
+    'rugsėjo',
+    'spalio',
+    'lapkričio',
+    'gruodžio'
+  ]
 }
 
 var dayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
   abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
-  wide: ['sekmadienis', 'pirmadienis', 'antradienis', 'trečiadienis', 'ketvirtadienis', 'penktadienis', 'šeštadienis']
+  wide: [
+    'sekmadienis',
+    'pirmadienis',
+    'antradienis',
+    'trečiadienis',
+    'ketvirtadienis',
+    'penktadienis',
+    'šeštadienis'
+  ]
 }
 
 var formattingDayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
   abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
-  wide: ['sekmadienį', 'pirmadienį', 'antradienį', 'trečiadienį', 'ketvirtadienį', 'penktadienį', 'šeštadienį']
+  wide: [
+    'sekmadienį',
+    'pirmadienį',
+    'antradienį',
+    'trečiadienį',
+    'ketvirtadienį',
+    'penktadienį',
+    'šeštadienį'
+  ]
 }
 
 var dayPeriodValues = {
@@ -109,7 +177,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '-oji'
 }
@@ -127,7 +195,7 @@ var localize = {
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
     defaultFormattingWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

@@ -1,5 +1,5 @@
 const firebase = require('firebase')
-const {snakeCase} = require('lodash')
+const { snakeCase } = require('lodash')
 
 module.exports = {
   getFirebaseDB
@@ -22,7 +22,7 @@ firebase.initializeApp({
   databaseURL: firebaseDatabaseURL
 })
 
-function getFirebaseDB (db) {
+function getFirebaseDB() {
   return firebase
     .auth()
     .signInWithEmailAndPassword(firebaseEmail, firebasePassword)
