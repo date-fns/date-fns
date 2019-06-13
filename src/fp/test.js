@@ -2,7 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import fp from '.'
+import * as fp from '.'
 
 describe('FP functions', function() {
   it('addDays', function() {

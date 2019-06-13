@@ -1,7 +1,0 @@
-{
-  "presets": [
-    ["@babel/preset-env", { "modules": "commonjs" }],
-    "babel-preset-power-assert"
-  ],
-  "plugins": ["add-module-exports"]
-}
