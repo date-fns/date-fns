@@ -20,15 +20,49 @@ var formattingQuarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'Á', 'M', 'J', 'J', 'A', 'Sz', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'],
-  wide: ['január', 'február', 'március', 'április', 'május', 'június', 'július', 'augusztus', 'szeptember', 'október', 'november', 'december']
+  abbreviated: [
+    'jan.',
+    'febr.',
+    'márc.',
+    'ápr.',
+    'máj.',
+    'jún.',
+    'júl.',
+    'aug.',
+    'szept.',
+    'okt.',
+    'nov.',
+    'dec.'
+  ],
+  wide: [
+    'január',
+    'február',
+    'március',
+    'április',
+    'május',
+    'június',
+    'július',
+    'augusztus',
+    'szeptember',
+    'október',
+    'november',
+    'december'
+  ]
 }
 
 var dayValues = {
   narrow: ['V', 'H', 'K', 'Sz', 'Cs', 'P', 'Sz'],
   short: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
   abbreviated: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
-  wide: ['vasárnap', 'hétfő', 'kedd', 'szerda', 'csütörtök', 'péntek', 'szombat']
+  wide: [
+    'vasárnap',
+    'hétfő',
+    'kedd',
+    'szerda',
+    'csütörtök',
+    'péntek',
+    'szombat'
+  ]
 }
 
 var dayPeriodValues = {
@@ -64,7 +98,7 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
@@ -81,7 +115,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

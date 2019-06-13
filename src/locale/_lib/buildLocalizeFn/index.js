@@ -6,13 +6,13 @@ export default function buildLocalizeFn(args) {
 
     var valuesArray
     if (context === 'formatting' && args.formattingValues) {
-      var defaultWidth = args.defaultFormattingWidth || args.defaultWidth
-      var width = options.width ? String(options.width) : defaultWidth
+      const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
+      const width = options.width ? String(options.width) : defaultWidth
       valuesArray =
         args.formattingValues[width] || args.formattingValues[defaultWidth]
     } else {
-      var defaultWidth = args.defaultWidth
-      var width = options.width ? String(options.width) : args.defaultWidth
+      const defaultWidth = args.defaultWidth
+      const width = options.width ? String(options.width) : args.defaultWidth
       valuesArray = args.values[width] || args.values[defaultWidth]
     }
     var index = args.argumentCallback

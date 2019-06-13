@@ -144,7 +144,7 @@ function buildGroupsTemplate(groups) {
 /**
  * Returns promise to list of static docs with its contents.
  */
-function getListOfStaticDocs(staticDocs) {
+function getListOfStaticDocs() {
   return Promise.all(
     docsConfig.staticDocs.map(staticDoc => {
       return fsp
@@ -159,7 +159,7 @@ function getListOfStaticDocs(staticDocs) {
 /**
  * Returns promise to list of shared docs with its contents.
  */
-function generateSharedDocs(sharedDocs) {
+function generateSharedDocs() {
   const docs = docsConfig.sharedDocs
     .map(
       fn =>
@@ -329,7 +329,7 @@ function paramsToTree(dirtyParams) {
   }, {})
 
   return params
-    .map((param, index) => {
+    .map(param => {
       const { name, isProperty } = param
 
       const indexOfDot = name.indexOf('.')

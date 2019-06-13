@@ -797,15 +797,15 @@ describe('FP functions', function() {
   })
 
   it('roundToNearestMinutesWithOptions', function() {
-    var result = fp.roundToNearestMinutesWithOptions({ nearestTo: 5 })(
+    const resultA = fp.roundToNearestMinutesWithOptions({ nearestTo: 5 })(
       new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99)
     )
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 10))
+    assert.deepEqual(resultA, new Date(2014, 6 /* Jul */, 10, 12, 10))
 
-    var result = fp.roundToNearestMinutesWithOptions({})(
+    const resultB = fp.roundToNearestMinutesWithOptions({})(
       new Date(2014, 6 /* Jul */, 10, 12, 11, 34, 99)
     )
-    assert.deepEqual(result, new Date(2014, 6 /* Jul */, 10, 12, 12))
+    assert.deepEqual(resultB, new Date(2014, 6 /* Jul */, 10, 12, 12))
   })
 
   it('setDate', function() {

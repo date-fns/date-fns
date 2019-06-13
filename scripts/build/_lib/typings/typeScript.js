@@ -230,7 +230,7 @@ function getTypeScriptInterfaceDefinition(fn) {
   return `${title}${params}: ${returns}`
 }
 
-function generateTypescriptFnTyping(fn, aliasDeclarations) {
+function generateTypescriptFnTyping(fn) {
   const typingFile = formatTypeScriptFile`
     import {${fn.title}} from 'date-fns'
     export default ${fn.title}
