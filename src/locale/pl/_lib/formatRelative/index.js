@@ -46,7 +46,7 @@ function getAdjective(token, date, baseDate, options) {
 }
 
 function dayAndTimeWithAdjective(token, date, baseDate, options) {
-  const adjective = getAdjective(token, date, baseDate, options)
+  var adjective = getAdjective(token, date, baseDate, options)
   return `'${adjective}' eeee 'o' p`
 }
 
