@@ -17,7 +17,7 @@
   "module": "esm/index.js",
   "scripts": {
     "test": "karma start config/karma.js",
-    "lint": "echo \"Due to ongoing migration to Prettier, the linter is disabled.\"",
+    "lint": "eslint .",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
     "postinstall": "node ./docs/printV2Notice.js"
@@ -32,10 +32,6 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "semi": false
   },
   "dependencies": {},
   "devDependencies": {
