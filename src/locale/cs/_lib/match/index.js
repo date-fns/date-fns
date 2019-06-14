@@ -1,12 +1,12 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
 var matchOrdinalNumberPattern = /^(\d+)\.?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
   narrow: /^(p[řr]ed Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
-  abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed  n\. l\.|po Kr\.|n\. l\.)/i,
+  abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed n\. l\.|po Kr\.|n\. l\.)/i,
   wide: /^(p[řr]ed Kristem|pred na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i
 }
 

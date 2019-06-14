@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 ces
  * @author David Rus [@davidrus]{@link https://github.com/davidrus}
  * @author Pavel Hrách [@SilenY]{@link https://github.com/SilenY}
- * @author Jozef Bíroš [@JozefBiros]{@lint https://github.com/JozefBiros}
+ * @author Jozef Bíroš [@JozefBiros]{@link https://github.com/JozefBiros}
  */
 var locale = {
   formatDistance: formatDistance,
