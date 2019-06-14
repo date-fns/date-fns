@@ -161,8 +161,8 @@ function config(config) {
     customLaunchers: process.env.TEST_CROSS_BROWSER
       ? sauceLabsLaunchers
       : process.env.TRAVIS
-      ? travisLaunchers
-      : localLaunchers,
+        ? travisLaunchers
+        : localLaunchers,
     browsers: getBrowsersConfig(),
     reporters: getReportersConfig()
   })
