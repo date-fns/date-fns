@@ -20,12 +20,12 @@
  *
  * @example
  * // Clone the date:
- * var result = toDate(new Date(2014, 1, 11, 11, 30, 30))
+ * const result = toDate(new Date(2014, 1, 11, 11, 30, 30))
  * //=> Tue Feb 11 2014 11:30:30
  *
  * @example
  * // Convert the timestamp to date:
- * var result = toDate(1392098430000)
+ * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate(argument) {
@@ -35,7 +35,7 @@ export default function toDate(argument) {
     )
   }
 
-  var argStr = Object.prototype.toString.call(argument)
+  const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date
   if (
@@ -51,9 +51,11 @@ export default function toDate(argument) {
       (typeof argument === 'string' || argStr === '[object String]') &&
       typeof console !== 'undefined'
     ) {
+      // eslint-disable-next-line no-console
       console.warn(
         "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
       )
+      // eslint-disable-next-line no-console
       console.warn(new Error().stack)
     }
     return new Date(NaN)

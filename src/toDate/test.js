@@ -2,8 +2,8 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
-import toDate from '.'
 import sinon from 'sinon'
+import toDate from '.'
 
 describe('toDate', () => {
   describe('date argument', () => {
@@ -35,10 +35,11 @@ describe('toDate', () => {
 
     it('prints deprecation warning if the argument is a string', () => {
       // $ExpectedMistake
-      console.warn = sinon.spy()
+      console.warn = sinon.spy() // eslint-disable-line no-console
       // $ExpectedMistake
       toDate('1987-02-11')
       assert(
+        // eslint-disable-next-line no-console
         console.warn.calledWith(
           "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
         )
@@ -107,13 +108,13 @@ function mockConsoleWarn() {
   let originalWarn
 
   beforeEach(() => {
-    originalWarn = console.warn
+    originalWarn = console.warn // eslint-disable-line no-console
     // $ExpectedMistake
-    console.warn = () => {}
+    console.warn = () => {} // eslint-disable-line no-console
   })
 
   afterEach(() => {
     // $ExpectedMistake
-    console.warn = originalWarn
+    console.warn = originalWarn // eslint-disable-line no-console
   })
 }

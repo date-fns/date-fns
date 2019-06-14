@@ -144,7 +144,7 @@ function generateFlowTypings(fns, aliases, locales, constants) {
     aliases.find(alias => alias.title === 'Locale')
   )
 
-  fns.forEach((fn, index) => {
+  fns.forEach(fn => {
     if (fn.isFPFn) {
       generateFlowFPFnTyping(fn, aliasDeclarations)
     } else {

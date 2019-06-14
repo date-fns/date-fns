@@ -3,12 +3,7 @@
 
 import assert from 'power-assert'
 import locale from '.'
-
 import format from '../../format'
-import formatDistance from '../../formatDistance'
-import formatDistanceStrict from '../../formatDistanceStrict'
-import formatRelative from '../../formatRelative'
-import parse from '../../parse'
 
 describe('id locale', function() {
   context('with `format`', function() {

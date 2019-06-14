@@ -129,7 +129,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _options) {
   var number = Number(dirtyNumber)
   return '第 ' + number.toString()
 }

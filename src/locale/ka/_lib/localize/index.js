@@ -1,5 +1,5 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
@@ -81,7 +81,7 @@ var timeOfDayValues = {
   long: ['a.m.', 'p.m.']
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
@@ -107,7 +107,7 @@ var localize = {
   weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
   month: buildLocalizeFn(monthValues, 'long'),
   months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
+  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function(hours) {
     return hours / 12 >= 1 ? 1 : 0
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')

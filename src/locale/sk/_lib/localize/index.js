@@ -160,7 +160,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '.'
 }

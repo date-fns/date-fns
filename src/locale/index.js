@@ -1,48 +1,46 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
-module.exports = {
-  af: require('./af/index.js'),
-  arDZ: require('./ar-DZ/index.js'),
-  arSA: require('./ar-SA/index.js'),
-  be: require('./be/index.js'),
-  bn: require('./bn/index.js'),
-  da: require('./da/index.js'),
-  de: require('./de/index.js'),
-  el: require('./el/index.js'),
-  enCA: require('./en-CA/index.js'),
-  enGB: require('./en-GB/index.js'),
-  enUS: require('./en-US/index.js'),
-  eo: require('./eo/index.js'),
-  es: require('./es/index.js'),
-  et: require('./et/index.js'),
-  faIR: require('./fa-IR/index.js'),
-  fi: require('./fi/index.js'),
-  fr: require('./fr/index.js'),
-  gl: require('./gl/index.js'),
-  he: require('./he/index.js'),
-  hu: require('./hu/index.js'),
-  id: require('./id/index.js'),
-  is: require('./is/index.js'),
-  it: require('./it/index.js'),
-  ja: require('./ja/index.js'),
-  ko: require('./ko/index.js'),
-  lt: require('./lt/index.js'),
-  lv: require('./lv/index.js'),
-  nb: require('./nb/index.js'),
-  nl: require('./nl/index.js'),
-  nn: require('./nn/index.js'),
-  pl: require('./pl/index.js'),
-  pt: require('./pt/index.js'),
-  ptBR: require('./pt-BR/index.js'),
-  ro: require('./ro/index.js'),
-  ru: require('./ru/index.js'),
-  sk: require('./sk/index.js'),
-  sv: require('./sv/index.js'),
-  th: require('./th/index.js'),
-  tr: require('./tr/index.js'),
-  ug: require('./ug/index.js'),
-  uk: require('./uk/index.js'),
-  vi: require('./vi/index.js'),
-  zhCN: require('./zh-CN/index.js'),
-  zhTW: require('./zh-TW/index.js')
-}
+export { default as af } from './af/index.js'
+export { default as arDZ } from './ar-DZ/index.js'
+export { default as arSA } from './ar-SA/index.js'
+export { default as be } from './be/index.js'
+export { default as bn } from './bn/index.js'
+export { default as da } from './da/index.js'
+export { default as de } from './de/index.js'
+export { default as el } from './el/index.js'
+export { default as enCA } from './en-CA/index.js'
+export { default as enGB } from './en-GB/index.js'
+export { default as enUS } from './en-US/index.js'
+export { default as eo } from './eo/index.js'
+export { default as es } from './es/index.js'
+export { default as et } from './et/index.js'
+export { default as faIR } from './fa-IR/index.js'
+export { default as fi } from './fi/index.js'
+export { default as fr } from './fr/index.js'
+export { default as gl } from './gl/index.js'
+export { default as he } from './he/index.js'
+export { default as hu } from './hu/index.js'
+export { default as id } from './id/index.js'
+export { default as is } from './is/index.js'
+export { default as it } from './it/index.js'
+export { default as ja } from './ja/index.js'
+export { default as ko } from './ko/index.js'
+export { default as lt } from './lt/index.js'
+export { default as lv } from './lv/index.js'
+export { default as nb } from './nb/index.js'
+export { default as nl } from './nl/index.js'
+export { default as nn } from './nn/index.js'
+export { default as pl } from './pl/index.js'
+export { default as pt } from './pt/index.js'
+export { default as ptBR } from './pt-BR/index.js'
+export { default as ro } from './ro/index.js'
+export { default as ru } from './ru/index.js'
+export { default as sk } from './sk/index.js'
+export { default as sv } from './sv/index.js'
+export { default as th } from './th/index.js'
+export { default as tr } from './tr/index.js'
+export { default as ug } from './ug/index.js'
+export { default as uk } from './uk/index.js'
+export { default as vi } from './vi/index.js'
+export { default as zhCN } from './zh-CN/index.js'
+export { default as zhTW } from './zh-TW/index.js'
