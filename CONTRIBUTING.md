@@ -106,8 +106,8 @@ To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
 
 > const toDate = require('./src/toDate')
 undefined
-> toDate('2017-11-17').toString()
-'Fri Nov 17 2017 00:00:00 GMT+0100 (CET)'
+> toDate(1392098430000).toString()
+'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
 >
 ```
 
