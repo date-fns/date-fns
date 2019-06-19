@@ -18,6 +18,7 @@
   "scripts": {
     "test": "karma start config/karma.js",
     "lint": "eslint .",
+    "locale-snapshots": "env TZ=utc babel-node ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
     "postinstall": "node ./docs/printV2Notice.js"
