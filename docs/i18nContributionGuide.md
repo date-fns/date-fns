@@ -872,15 +872,12 @@ Your best guess is to copy `formatDistance` property from another locale and cha
 
 ### Tests
 
-Take `test.js` from existing locale (e.g. `en-US`) and replace the test results with expected values.
-Don't forget to replace the locale code in the test description:
+To test locales we use snapshots. See [`en-US` snapshot](https://github.com/date-fns/date-fns/blob/master/src/locale/en-US/snapshot.md) for an example.
 
-```javascript
-// Before
-describe('en-US locale', function () {
-// After
-describe('foo-BAR locale', function () {
-```
+To generate snapshots, run `yarn locale-snapshots`. The snapshot for the locale
+you're working on will appear in the root locale directory (e.g. `src/locales/ru/snapshot.md`).
+
+Once you are done with the locale, generate the snapshot and review the output values.
 
 ## Creating a locale with the same language as another locale
 
