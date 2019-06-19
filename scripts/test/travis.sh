@@ -17,6 +17,7 @@ then
   yarn lint
   flow check
   ./scripts/test/systemJS.js
+  yarn locale-snapshots test
   ./scripts/test/smoke.sh
 
   yarn test --single-run
