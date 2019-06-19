@@ -20,7 +20,7 @@ const config = {
                 options: { esModules: true }
               },
               enforce: 'post',
-              exclude: /node_modules|test.js$/
+              exclude: /node_modules|test.js|src\/locale$/
             }
           ]
         : []
