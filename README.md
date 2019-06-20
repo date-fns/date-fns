@@ -10,15 +10,19 @@
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
-[**140+ functions** for all occasions](https://date-fns.org/docs/).
+[**180+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-import {format, compareAsc} from 'date-fns/esm'
+import { compareAsc, format } from 'date-fns'
 
-format(new Date(2014, 1, 11), 'MM/dd/yyyy')
-//=> '02/11/2014'
+format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+//=> '2014/02/11'
 
-const dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]
+const dates = [
+  new Date(1995, 6, 2),
+  new Date(1987, 1, 11),
+  new Date(1989, 6, 10)
+]
 dates.sort(compareAsc)
 //=> [
 //   Wed Feb 11 1987 00:00:00,
