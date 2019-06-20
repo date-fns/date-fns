@@ -1,5 +1,8 @@
 const presets = []
-const plugins = ['@babel/plugin-transform-block-scoping']
+const plugins = [
+  '@babel/plugin-transform-block-scoping',
+  '@babel/plugin-transform-template-literals'
+]
 
 if (process.env.NODE_ENV === 'test') {
   presets.push('babel-preset-power-assert')
