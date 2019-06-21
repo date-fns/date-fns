@@ -43,7 +43,7 @@ License: MIT
 ### Synopsis
 
 ```js
-const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-timezone')
+const { zonedTimeToUtc, utcToZonedTime, format } = require('date-fns-tz')
 
 // Set the date to "2018-09-01T16:01:36.386Z"
 const utcDate = zonedTimeToUtc('2018-09-01 18:01:36.386', 'Europe/Berlin')
