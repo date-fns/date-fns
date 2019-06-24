@@ -43,6 +43,38 @@ var monthValues = {
     'prosinec'
   ]
 }
+var formattingMonthValues = {
+  narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
+  abbreviated: [
+    'led',
+    'úno',
+    'bře',
+    'dub',
+    'kvě',
+    'čvn',
+    'čvc',
+    'srp',
+    'zář',
+    'říj',
+    'lis',
+    'pro'
+  ],
+  wide: [
+    'ledna',
+    'února',
+    'března',
+    'dubna',
+    'května',
+    'června',
+    'července',
+    'srpna',
+    'září',
+    'října',
+    'listopadu',
+    'prosince'
+  ]
+}
+
 var dayValues = {
   narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
@@ -139,7 +171,9 @@ var localize = {
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
   }),
 
   day: buildLocalizeFn({
