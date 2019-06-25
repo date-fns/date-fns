@@ -326,8 +326,8 @@ var parsers = {
     validate: function(_date, value, _options) {
       return value.isTwoDigitYear || value.year > 0
     },
-    set: function(date, flags, value, options) {
-      var currentYear = getUTCWeekYear(date, options)
+    set: function(date, flags, value, _options) {
+      var currentYear = date.getUTCFullYear()
 
       if (value.isTwoDigitYear) {
         var normalizedTwoDigitYear = normalizeTwoDigitYear(
@@ -374,7 +374,7 @@ var parsers = {
       return value.isTwoDigitYear || value.year > 0
     },
     set: function(date, flags, value, options) {
-      var currentYear = date.getUTCFullYear()
+      var currentYear = getUTCWeekYear(date, options)
 
       if (value.isTwoDigitYear) {
         var normalizedTwoDigitYear = normalizeTwoDigitYear(
