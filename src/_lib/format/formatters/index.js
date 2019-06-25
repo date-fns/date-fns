@@ -5,7 +5,7 @@ import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
 import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
 import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
 import addLeadingZeros from '../../addLeadingZeros/index.js'
-import getWeekOfMonth from '../../../getWeekOfMonth/index.js'
+import getUTCWeekOfMonth from '../../../_lib/getUTCWeekOfMonth'
 
 var dayPeriodEnum = {
   am: 'am',
@@ -278,7 +278,7 @@ var formatters = {
 
   // Week of the month
   W: function(date, token, localize, options) {
-    var isoWeek = getWeekOfMonth(date, options)
+    var isoWeek = getUTCWeekOfMonth(date, options)
 
     if (token === 'Wo') {
       return localize.ordinalNumber(isoWeek, { unit: 'week' })
