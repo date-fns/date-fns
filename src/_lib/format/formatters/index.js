@@ -5,7 +5,7 @@ import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
 import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
 import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
 import addLeadingZeros from '../../addLeadingZeros/index.js'
-import getUTCWeekOfMonth from '../../../_lib/getUTCWeekOfMonth1'
+import getUTCWeekOfMonth from '../../../_lib/getUTCWeekOfMonth/index.js'
 
 var dayPeriodEnum = {
   am: 'am',
