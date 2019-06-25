@@ -41,6 +41,20 @@ describe('parse', function() {
       var result = parse('44 B', 'Y GGGGG', baseDate)
       assert.deepEqual(result, new Date(-44, 11 /* Dec */, 30))
     })
+
+    it('parses stand-alone BC', function() {
+      var result = parse('BC', 'G', baseDate)
+      const expectedResult = new Date(0, 0 /* Jan */, 1)
+      expectedResult.setFullYear(0)
+      assert.deepEqual(result, expectedResult)
+    })
+
+    it('parses stand-alone AD', function() {
+      var result = parse('AD', 'G', baseDate)
+      const expectedResult = new Date(1, 0 /* Jan */, 1)
+      expectedResult.setFullYear(1)
+      assert.deepEqual(result, expectedResult)
+    })
   })
 
   describe('calendar year', function() {
