@@ -26,7 +26,7 @@ var parseQuarterPatterns = {
 var matchMonthPatterns = {
   narrow: /^[lúubdkčcszřrlp]/i,
   abbreviated: /^(led|[úu]no|b[řr]e|dub|kv[ěe]|[čc]vn|[čc]vc|srp|z[áa][řr]|[řr][íi]j|lis|pro)/i,
-  wide: /^(leden|[úu]nor|b[řr]ezen|duben|kv[ěe]ten|[čc]erven|[čc]ervenec|srpen|z[áa][řr][íi]|[řr][íi]jen|listopad|prosinec)/i
+  wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven|[čc]ervna|[čc]ervenec|[čc]ervence|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopada?|prosinec|prosince)/i
 }
 
 var parseMonthPatterns = {
