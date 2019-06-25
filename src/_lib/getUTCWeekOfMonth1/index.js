@@ -1,7 +1,7 @@
 import toInteger from '../toInteger'
-import getUTCDay from '../getUTCDay'
-import getUTCDate from '../getUTCDate'
-import startOfUTCMonth from '../startOfUTCMonth'
+import getUTCDay from '../getUTCDay1'
+import getUTCDate from '../getUTCDate1'
+import startOfUTCMonth from '../startOfUTCMonth1'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
