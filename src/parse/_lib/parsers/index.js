@@ -282,9 +282,10 @@ var parsers = {
           )
       }
     },
-    set: function(date, _flags, value, _options) {
+    set: function(date, flags, value, _options) {
       // Sets year 10 BC if BC, or 10 AC if AC
-      date.setUTCFullYear(value === 1 ? 10 : -9, 0, 1)
+      flags.era = value
+      date.setUTCFullYear(value === 1 ? 1 : 0, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
     }
@@ -322,10 +323,10 @@ var parsers = {
           return parseNDigits(token.length, string, valueCallback)
       }
     },
-    validate: function(date, value, _options) {
+    validate: function(_date, value, _options) {
       return value.isTwoDigitYear || value.year > 0
     },
-    set: function(date, _flags, value, options) {
+    set: function(date, flags, value, options) {
       var currentYear = getUTCWeekYear(date, options)
 
       if (value.isTwoDigitYear) {
@@ -338,7 +339,8 @@ var parsers = {
         return date
       }
 
-      var year = currentYear > 0 ? value.year : 1 - value.year
+      var year =
+        !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -371,7 +373,7 @@ var parsers = {
     validate: function(_date, value, _options) {
       return value.isTwoDigitYear || value.year > 0
     },
-    set: function(date, _flags, value, options) {
+    set: function(date, flags, value, options) {
       var currentYear = date.getUTCFullYear()
 
       if (value.isTwoDigitYear) {
@@ -388,7 +390,8 @@ var parsers = {
         return startOfUTCWeek(date, options)
       }
 
-      var year = currentYear > 0 ? value.year : 1 - value.year
+      var year =
+        !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, options.firstWeekContainsDate)
       date.setUTCHours(0, 0, 0, 0)
       return startOfUTCWeek(date, options)
