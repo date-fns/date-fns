@@ -2,7 +2,9 @@ const presets = []
 const plugins = [
   '@babel/plugin-transform-block-scoping',
   '@babel/plugin-transform-template-literals',
-  '@babel/plugin-transform-arrow-functions'
+  '@babel/plugin-transform-arrow-functions',
+  '@babel/plugin-transform-parameters',
+  '@babel/plugin-transform-destructuring'
 ]
 
 if (process.env.NODE_ENV === 'test') {
