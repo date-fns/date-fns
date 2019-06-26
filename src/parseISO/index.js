@@ -213,7 +213,7 @@ function parseDate(dateString, year) {
   var dayOfYear = parseDateUnit(captures[1])
   var month = parseDateUnit(captures[2]) - 1
   var day = parseDateUnit(captures[3])
-  var week = parseDateUnit(captures[4]) - 1
+  var week = parseDateUnit(captures[4])
   var dayOfWeek = parseDateUnit(captures[5]) - 1
 
   if (isWeekDate) {
@@ -284,7 +284,7 @@ function dayOfISOWeekYear(isoWeekYear, week, day) {
   var date = new Date(0)
   date.setUTCFullYear(isoWeekYear, 0, 4)
   var fourthOfJanuaryDay = date.getUTCDay() || 7
-  var diff = (week || 0) * 7 + (day || 0) + 1 - fourthOfJanuaryDay
+  var diff = (week - 1 || 0) * 7 + (day || 0) + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
@@ -312,7 +312,7 @@ function validateDayOfYearDate(year, dayOfYear) {
 }
 
 function validateWeekDate(_year, week, day) {
-  return week >= 0 && week <= 52 && day >= 0 && day <= 6
+  return week >= 1 && week <= 53 && day >= 0 && day <= 6
 }
 
 function validateTime(hours, minutes, seconds) {
