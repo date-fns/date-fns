@@ -243,7 +243,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *    | BC 1 |   1 |   0 |
  *    | BC 2 |   2 |  -1 |
  *
- *    Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
+ *    Also `yy` will try to guess the century of two digit year by proximity with `backupDate`:
  *
  *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
  *
@@ -286,18 +286,18 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * Units of an equal priority overwrite each other in the order of appearance.
  *
  * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
- * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
+ * the values will be taken from 3rd argument `backupDate` which works as a context of parsing.
  *
- * `baseDate` must be passed for correct work of the function.
- * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `backupDate` must be passed for correct work of the function.
+ * If you're not sure which `backupDate` to supply, create a new instance of Date:
  * `parse('02/11/2014', 'MM/dd/yyyy', new Date())`
  * In this case parsing will be done in the context of the current date.
- * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * If `backupDate` is `Invalid Date` or a value not convertible to valid `Date`,
  * then `Invalid Date` will be returned.
  *
  * The result may vary by locale.
  *
- * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ * If `formatString` matches with `dateString` but does not provides tokens, `backupDate` will be returned.
  *
  * If parsing failed, `Invalid Date` will be returned.
  * Invalid Date is a Date, whose time value is NaN.
@@ -321,7 +321,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
- * @param {Date|Number} baseDate - defines values missing from the parsed dateString
+ * @param {Date|Number} backupDate - defines values missing from the parsed dateString
  * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
@@ -357,7 +357,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse(
   dirtyDateString,
   dirtyFormatString,
-  dirtyBaseDate,
+  dirtyBackupDate,
   dirtyOptions
 ) {
   if (arguments.length < 3) {
@@ -409,7 +409,7 @@ export default function parse(
 
   if (formatString === '') {
     if (dateString === '') {
-      return toDate(dirtyBaseDate)
+      return toDate(dirtyBackupDate)
     } else {
       return new Date(NaN)
     }
@@ -563,7 +563,7 @@ export default function parse(
       return setterArray[0]
     })
 
-  var date = toDate(dirtyBaseDate)
+  var date = toDate(dirtyBackupDate)
 
   if (isNaN(date)) {
     return new Date(NaN)
