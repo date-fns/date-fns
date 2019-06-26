@@ -5,52 +5,52 @@ import assert from 'power-assert'
 import parse from '.'
 
 describe('parse', function() {
-  var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
+  var backupDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
   it('escapes characters between the single quote characters', function() {
     var result = parse(
       '2018 hello world July 2nd',
       "yyyy 'hello world' MMMM do",
-      baseDate
+      backupDate
     )
     assert.deepEqual(result, new Date(2018, 6 /* Jul */, 2))
   })
 
   it('two single quote characters are transformed into a "real" single quote', function() {
-    var result = parse("'5 o'clock'", "''h 'o''clock'''", baseDate)
+    var result = parse("'5 o'clock'", "''h 'o''clock'''", backupDate)
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
   })
 
   describe('era', function() {
     it('abbreviated', function() {
-      var result = parse('10000 BC', 'yyyyy G', baseDate)
+      var result = parse('10000 BC', 'yyyyy G', backupDate)
       assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
     })
 
     it('wide', function() {
-      var result = parse('2018 Anno Domini', 'yyyy GGGG', baseDate)
+      var result = parse('2018 Anno Domini', 'yyyy GGGG', backupDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('44 B', 'y GGGGG', baseDate)
+      var result = parse('44 B', 'y GGGGG', backupDate)
       assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
     })
 
     it('with week-numbering year', function() {
-      var result = parse('44 B', 'Y GGGGG', baseDate)
+      var result = parse('44 B', 'Y GGGGG', backupDate)
       assert.deepEqual(result, new Date(-44, 11 /* Dec */, 30))
     })
 
     it('parses stand-alone BC', function() {
-      var result = parse('BC', 'G', baseDate)
+      var result = parse('BC', 'G', backupDate)
       const expectedResult = new Date(0, 0 /* Jan */, 1)
       expectedResult.setFullYear(0)
       assert.deepEqual(result, expectedResult)
     })
 
     it('parses stand-alone AD', function() {
-      var result = parse('AD', 'G', baseDate)
+      var result = parse('AD', 'G', backupDate)
       const expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
@@ -69,7 +69,7 @@ describe('parse', function() {
             null,
             `${example} 420`,
             `${token} G`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -85,41 +85,41 @@ describe('parse', function() {
 
   describe('calendar year', function() {
     it('numeric', function() {
-      var result = parse('2017', 'y', baseDate)
+      var result = parse('2017', 'y', backupDate)
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('2017th', 'yo', baseDate)
+      var result = parse('2017th', 'yo', backupDate)
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     describe('two-digit numeric year', function() {
       it('works as expected', function() {
-        var result = parse('02', 'yy', baseDate)
+        var result = parse('02', 'yy', backupDate)
         assert.deepEqual(result, new Date(2002, 0 /* Jan */, 1))
       })
 
-      it('gets the 100 year range from `baseDate`', function() {
+      it('gets the 100 year range from `backupDate`', function() {
         var result = parse('02', 'yy', new Date(1860, 6 /* Jul */, 2))
         assert.deepEqual(result, new Date(1902, 0 /* Jan */, 1))
       })
     })
 
     it('three-digit zero-padding', function() {
-      var result = parse('123', 'yyy', baseDate)
+      var result = parse('123', 'yyy', backupDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', function() {
-      var result = parse('0044', 'yyyy', baseDate)
+      var result = parse('0044', 'yyyy', backupDate)
       var expectedResult = new Date(44, 0 /* Jan */, 1)
       expectedResult.setFullYear(44)
       assert.deepEqual(result, expectedResult)
     })
 
     it('specified amount of digits', function() {
-      var result = parse('000001', 'yyyyyy', baseDate)
+      var result = parse('000001', 'yyyyyy', backupDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
@@ -144,7 +144,7 @@ describe('parse', function() {
             null,
             `${example} 2019`,
             `${token} y`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -160,24 +160,24 @@ describe('parse', function() {
 
   describe('local week-numbering year', function() {
     it('numeric', function() {
-      var result = parse('2002', 'Y', baseDate)
+      var result = parse('2002', 'Y', backupDate)
       assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
     })
 
     it('ordinal', function() {
-      var result = parse('12345th', 'Yo', baseDate)
+      var result = parse('12345th', 'Yo', backupDate)
       assert.deepEqual(result, new Date(12344, 11 /* Dec */, 31))
     })
 
     describe('two-digit numeric year', function() {
       it('works as expected', function() {
-        var result = parse('02', 'YY', baseDate, {
+        var result = parse('02', 'YY', backupDate, {
           useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
       })
 
-      it('gets the 100 year range from `baseDate`', function() {
+      it('gets the 100 year range from `backupDate`', function() {
         var result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2), {
           useAdditionalWeekYearTokens: true
         })
@@ -186,19 +186,19 @@ describe('parse', function() {
     })
 
     it('three-digit zero-padding', function() {
-      var result = parse('123', 'YYY', baseDate)
+      var result = parse('123', 'YYY', backupDate)
       assert.deepEqual(result, new Date(122, 11 /* Dec */, 27))
     })
 
     it('four-digit zero-padding', function() {
-      var result = parse('2018', 'YYYY', baseDate, {
+      var result = parse('2018', 'YYYY', backupDate, {
         useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2017, 11 /* Dec */, 31))
     })
 
     it('specified amount of digits', function() {
-      var result = parse('000001', 'YYYYYY', baseDate)
+      var result = parse('000001', 'YYYYYY', backupDate)
       var expectedResult = new Date(0)
       expectedResult.setFullYear(0, 11 /* Dec */, 31)
       expectedResult.setHours(0, 0, 0, 0)
@@ -206,7 +206,7 @@ describe('parse', function() {
     })
 
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function() {
-      var result = parse('2018', 'Y', baseDate, {
+      var result = parse('2018', 'Y', backupDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: 4
       })
@@ -235,7 +235,7 @@ describe('parse', function() {
             null,
             `${example} 2019`,
             `${token} Y`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -252,27 +252,27 @@ describe('parse', function() {
 
   describe('ISO week-numbering year', function() {
     it('numeric', function() {
-      var result = parse('-1234', 'R', baseDate)
+      var result = parse('-1234', 'R', backupDate)
       assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 3))
     })
 
     it('two-digit zero-padding', function() {
-      var result = parse('-02', 'RR', baseDate)
+      var result = parse('-02', 'RR', backupDate)
       assert.deepEqual(result, new Date(-3, 11 /* Dec */, 29))
     })
 
     it('three-digit zero-padding', function() {
-      var result = parse('123', 'RRR', baseDate)
+      var result = parse('123', 'RRR', backupDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 4))
     })
 
     it('four-digit zero-padding', function() {
-      var result = parse('2018', 'RRRR', baseDate)
+      var result = parse('2018', 'RRRR', backupDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
-      var result = parse('000001', 'RRRRRR', baseDate)
+      var result = parse('000001', 'RRRRRR', backupDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
@@ -302,7 +302,7 @@ describe('parse', function() {
             null,
             `${example} 2019`,
             `${token} R`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -319,27 +319,27 @@ describe('parse', function() {
 
   describe('extended year', function() {
     it('numeric', function() {
-      var result = parse('-1234', 'u', baseDate)
+      var result = parse('-1234', 'u', backupDate)
       assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 1))
     })
 
     it('two-digit zero-padding', function() {
-      var result = parse('-02', 'uu', baseDate)
+      var result = parse('-02', 'uu', backupDate)
       assert.deepEqual(result, new Date(-2, 0 /* Jan */, 1))
     })
 
     it('three-digit zero-padding', function() {
-      var result = parse('123', 'uuu', baseDate)
+      var result = parse('123', 'uuu', backupDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', function() {
-      var result = parse('2018', 'uuuu', baseDate)
+      var result = parse('2018', 'uuuu', backupDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
-      var result = parse('000001', 'uuuuuu', baseDate)
+      var result = parse('000001', 'uuuuuu', backupDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
@@ -365,7 +365,7 @@ describe('parse', function() {
             null,
             `${example} 2019`,
             `${token} u`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -381,32 +381,32 @@ describe('parse', function() {
 
   describe('quarter (formatting)', function() {
     it('numeric', function() {
-      var result = parse('1', 'Q', baseDate)
+      var result = parse('1', 'Q', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('1st', 'Qo', baseDate)
+      var result = parse('1st', 'Qo', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('02', 'QQ', baseDate)
+      var result = parse('02', 'QQ', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Q3', 'QQQ', baseDate)
+      var result = parse('Q3', 'QQQ', backupDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', function() {
-      var result = parse('4st quarter', 'QQQQ', baseDate)
+      var result = parse('4st quarter', 'QQQQ', backupDate)
       assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('1', 'QQQQQ', baseDate)
+      var result = parse('1', 'QQQQQ', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -433,7 +433,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} Q`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -450,32 +450,32 @@ describe('parse', function() {
 
   describe('quarter (stand-alone)', function() {
     it('numeric', function() {
-      var result = parse('1', 'q', baseDate)
+      var result = parse('1', 'q', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('1th', 'qo', baseDate)
+      var result = parse('1th', 'qo', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('02', 'qq', baseDate)
+      var result = parse('02', 'qq', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Q3', 'qqq', baseDate)
+      var result = parse('Q3', 'qqq', backupDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', function() {
-      var result = parse('4th quarter', 'qqqq', baseDate)
+      var result = parse('4th quarter', 'qqqq', backupDate)
       assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('1', 'qqqqq', baseDate)
+      var result = parse('1', 'qqqqq', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -502,7 +502,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} q`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -519,32 +519,32 @@ describe('parse', function() {
 
   describe('month (formatting)', function() {
     it('numeric', function() {
-      var result = parse('6', 'M', baseDate)
+      var result = parse('6', 'M', backupDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('6th', 'Mo', baseDate)
+      var result = parse('6th', 'Mo', backupDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'MM', baseDate)
+      var result = parse('01', 'MM', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Nov', 'MMM', baseDate)
+      var result = parse('Nov', 'MMM', backupDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', function() {
-      var result = parse('February', 'MMMM', baseDate)
+      var result = parse('February', 'MMMM', backupDate)
       assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('J', 'MMMMM', baseDate)
+      var result = parse('J', 'MMMMM', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -570,7 +570,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} M`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -587,32 +587,32 @@ describe('parse', function() {
 
   describe('month (stand-alone)', function() {
     it('numeric', function() {
-      var result = parse('6', 'L', baseDate)
+      var result = parse('6', 'L', backupDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('6th', 'Lo', baseDate)
+      var result = parse('6th', 'Lo', backupDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'LL', baseDate)
+      var result = parse('01', 'LL', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Nov', 'LLL', baseDate)
+      var result = parse('Nov', 'LLL', backupDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', function() {
-      var result = parse('February', 'LLLL', baseDate)
+      var result = parse('February', 'LLLL', backupDate)
       assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('J', 'LLLLL', baseDate)
+      var result = parse('J', 'LLLLL', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
@@ -638,7 +638,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} L`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -655,22 +655,22 @@ describe('parse', function() {
 
   describe('local week of year', function() {
     it('numeric', function() {
-      var result = parse('49', 'w', baseDate)
+      var result = parse('49', 'w', backupDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('ordinal', function() {
-      var result = parse('49th', 'wo', baseDate)
+      var result = parse('49th', 'wo', backupDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'ww', baseDate)
+      var result = parse('01', 'ww', backupDate)
       assert.deepEqual(result, new Date(1985, 11 /* Dec */, 29))
     })
 
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function() {
-      var result = parse('49', 'w', baseDate, {
+      var result = parse('49', 'w', backupDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: 4
       })
@@ -699,7 +699,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} w`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -716,17 +716,17 @@ describe('parse', function() {
 
   describe('ISO week of year', function() {
     it('numeric', function() {
-      var result = parse('49', 'I', baseDate)
+      var result = parse('49', 'I', backupDate)
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('49th', 'Io', baseDate)
+      var result = parse('49th', 'Io', backupDate)
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'II', baseDate)
+      var result = parse('01', 'II', backupDate)
       assert.deepEqual(result, new Date(1985, 11 /* Dec */, 30))
     })
 
@@ -753,7 +753,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} I`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -770,17 +770,17 @@ describe('parse', function() {
 
   describe('day of month', function() {
     it('numeric', function() {
-      var result = parse('28', 'd', baseDate)
+      var result = parse('28', 'd', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('ordinal', function() {
-      var result = parse('28th', 'do', baseDate)
+      var result = parse('28th', 'do', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'dd', baseDate)
+      var result = parse('01', 'dd', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
@@ -805,7 +805,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} d`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -822,31 +822,31 @@ describe('parse', function() {
 
   describe('day of year', function() {
     it('numeric', function() {
-      var result = parse('200', 'D', baseDate, {
+      var result = parse('200', 'D', backupDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
     it('ordinal', function() {
-      var result = parse('200th', 'Do', baseDate)
+      var result = parse('200th', 'Do', backupDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
     it('two-digit zero-padding', function() {
-      var result = parse('01', 'DD', baseDate, {
+      var result = parse('01', 'DD', backupDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('three-digit zero-padding', function() {
-      var result = parse('001', 'DDD', baseDate)
+      var result = parse('001', 'DDD', backupDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
-      var result = parse('000200', 'DDDDDD', baseDate)
+      var result = parse('000200', 'DDDDDD', backupDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
 
@@ -874,7 +874,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} D`,
-            baseDate,
+            backupDate,
             { useAdditionalDayOfYearTokens: true }
           )
           assert.throws(block, RangeError)
@@ -891,27 +891,27 @@ describe('parse', function() {
 
   describe('day of week (formatting)', function() {
     it('abbreviated', function() {
-      var result = parse('Mon', 'E', baseDate)
+      var result = parse('Mon', 'E', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('wide', function() {
-      var result = parse('Tuesday', 'EEEE', baseDate)
+      var result = parse('Tuesday', 'EEEE', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('narrow', function() {
-      var result = parse('W', 'EEEEE', baseDate)
+      var result = parse('W', 'EEEEE', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('short', function() {
-      var result = parse('Th', 'EEEEEE', baseDate)
+      var result = parse('Th', 'EEEEEE', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('allows to specify which day is the first day of the week', function() {
-      var result = parse('Thursday', 'EEEE', baseDate, {
+      var result = parse('Thursday', 'EEEE', backupDate, {
         weekStartsOn: /* Fri */ 5
       })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
@@ -932,7 +932,7 @@ describe('parse', function() {
             null,
             `${example} Mon`,
             `${token} E`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -949,37 +949,37 @@ describe('parse', function() {
 
   describe('ISO day of week (formatting)', function() {
     it('numeric', function() {
-      var result = parse('1', 'i', baseDate)
+      var result = parse('1', 'i', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
-      var result = parse('1st', 'io', baseDate)
+      var result = parse('1st', 'io', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
-      var result = parse('02', 'ii', baseDate)
+      var result = parse('02', 'ii', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Wed', 'iii', baseDate)
+      var result = parse('Wed', 'iii', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
-      var result = parse('Thursday', 'iiii', baseDate)
+      var result = parse('Thursday', 'iiii', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
-      var result = parse('S', 'iiiii', baseDate)
+      var result = parse('S', 'iiiii', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
     })
 
     it('short', function() {
-      var result = parse('Fr', 'iiiiii', baseDate)
+      var result = parse('Fr', 'iiiiii', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
@@ -1007,7 +1007,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} i`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -1024,42 +1024,42 @@ describe('parse', function() {
 
   describe('local day of week (formatting)', function() {
     it('numeric', function() {
-      var result = parse('2', 'e', baseDate)
+      var result = parse('2', 'e', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
-      var result = parse('2nd', 'eo', baseDate)
+      var result = parse('2nd', 'eo', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
-      var result = parse('03', 'ee', baseDate)
+      var result = parse('03', 'ee', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Wed', 'eee', baseDate)
+      var result = parse('Wed', 'eee', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
-      var result = parse('Thursday', 'eeee', baseDate)
+      var result = parse('Thursday', 'eeee', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
-      var result = parse('S', 'eeeee', baseDate)
+      var result = parse('S', 'eeeee', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', function() {
-      var result = parse('Fr', 'eeeeee', baseDate)
+      var result = parse('Fr', 'eeeeee', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
     it('allows to specify which day is the first day of the week', function() {
-      var result = parse('7th', 'eo', baseDate, { weekStartsOn: /* Fri */ 5 })
+      var result = parse('7th', 'eo', backupDate, { weekStartsOn: /* Fri */ 5 })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
 
@@ -1087,7 +1087,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} e`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -1104,42 +1104,42 @@ describe('parse', function() {
 
   describe('local day of week (stand-alone)', function() {
     it('numeric', function() {
-      var result = parse('2', 'c', baseDate)
+      var result = parse('2', 'c', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
-      var result = parse('2nd', 'co', baseDate)
+      var result = parse('2nd', 'co', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
-      var result = parse('03', 'cc', baseDate)
+      var result = parse('03', 'cc', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
-      var result = parse('Wed', 'ccc', baseDate)
+      var result = parse('Wed', 'ccc', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
-      var result = parse('Thursday', 'cccc', baseDate)
+      var result = parse('Thursday', 'cccc', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
-      var result = parse('S', 'ccccc', baseDate)
+      var result = parse('S', 'ccccc', backupDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', function() {
-      var result = parse('Fr', 'cccccc', baseDate)
+      var result = parse('Fr', 'cccccc', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
 
     it('allows to specify which day is the first day of the week', function() {
-      var result = parse('7th', 'co', baseDate, { weekStartsOn: /* Fri */ 5 })
+      var result = parse('7th', 'co', backupDate, { weekStartsOn: /* Fri */ 5 })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
 
@@ -1167,7 +1167,7 @@ describe('parse', function() {
             null,
             `${example} 1`,
             `${token} c`,
-            baseDate,
+            backupDate,
             options
           )
           assert.throws(block, RangeError)
@@ -1184,27 +1184,27 @@ describe('parse', function() {
 
   describe('AM, PM', function() {
     it('abbreviated', function() {
-      var result = parse('5 AM', 'h a', baseDate)
+      var result = parse('5 AM', 'h a', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
     })
 
     it('12 AM', function() {
-      var result = parse('12 AM', 'h aa', baseDate)
+      var result = parse('12 AM', 'h aa', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('12 PM', function() {
-      var result = parse('12 PM', 'h aaa', baseDate)
+      var result = parse('12 PM', 'h aaa', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', function() {
-      var result = parse('5 p.m.', 'h aaaa', baseDate)
+      var result = parse('5 p.m.', 'h aaaa', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
     it('narrow', function() {
-      var result = parse('11 a', 'h aaaaa', baseDate)
+      var result = parse('11 a', 'h aaaaa', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
     })
 
@@ -1224,7 +1224,7 @@ describe('parse', function() {
             null,
             `${example} AM`,
             `${token} a`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -1240,17 +1240,17 @@ describe('parse', function() {
 
   describe('AM, PM, noon, midnight', function() {
     it('abbreviated', function() {
-      var result = parse('noon', 'b', baseDate)
+      var result = parse('noon', 'b', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', function() {
-      var result = parse('midnight', 'bbbb', baseDate)
+      var result = parse('midnight', 'bbbb', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('narrow', function() {
-      var result = parse('mi', 'bbbbb', baseDate)
+      var result = parse('mi', 'bbbbb', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1270,7 +1270,7 @@ describe('parse', function() {
             null,
             `${example} AM`,
             `${token} b`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -1286,17 +1286,17 @@ describe('parse', function() {
 
   describe('flexible day period', function() {
     it('abbreviated', function() {
-      var result = parse('2 at night', 'h B', baseDate)
+      var result = parse('2 at night', 'h B', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
     })
 
     it('wide', function() {
-      var result = parse('12 in the afternoon', 'h BBBB', baseDate)
+      var result = parse('12 in the afternoon', 'h BBBB', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('narrow', function() {
-      var result = parse('5 in the evening', 'h BBBBB', baseDate)
+      var result = parse('5 in the evening', 'h BBBBB', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
@@ -1313,7 +1313,7 @@ describe('parse', function() {
             null,
             `${example} in the morning`,
             `${token} B`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -1329,17 +1329,17 @@ describe('parse', function() {
 
   describe('hour [1-12]', function() {
     it('numeric', function() {
-      var result = parse('1', 'h', baseDate)
+      var result = parse('1', 'h', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('1st', 'ho', baseDate)
+      var result = parse('1st', 'ho', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('01', 'hh', baseDate)
+      var result = parse('01', 'hh', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
@@ -1353,7 +1353,12 @@ describe('parse', function() {
         ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when h is used after ${token}`, () => {
-          const block = parse.bind(null, `${example} 1`, `${token} h`, baseDate)
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} h`,
+            backupDate
+          )
           assert.throws(block, RangeError)
           assert.throws(
             block,
@@ -1368,17 +1373,17 @@ describe('parse', function() {
 
   describe('hour [0-23]', function() {
     it('numeric', function() {
-      var result = parse('12', 'H', baseDate)
+      var result = parse('12', 'H', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', function() {
-      var result = parse('12th', 'Ho', baseDate)
+      var result = parse('12th', 'Ho', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', function() {
-      var result = parse('00', 'HH', baseDate)
+      var result = parse('00', 'HH', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1394,7 +1399,12 @@ describe('parse', function() {
         ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when H is used after ${token}`, () => {
-          const block = parse.bind(null, `${example} 1`, `${token} H`, baseDate)
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} H`,
+            backupDate
+          )
           assert.throws(block, RangeError)
           assert.throws(
             block,
@@ -1409,17 +1419,17 @@ describe('parse', function() {
 
   describe('hour [0-11]', function() {
     it('numeric', function() {
-      var result = parse('1', 'K', baseDate)
+      var result = parse('1', 'K', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function() {
-      var result = parse('1st', 'Ko', baseDate)
+      var result = parse('1st', 'Ko', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function() {
-      var result = parse('1', 'KK', baseDate)
+      var result = parse('1', 'KK', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
@@ -1435,7 +1445,12 @@ describe('parse', function() {
         ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when K is used after ${token}`, () => {
-          const block = parse.bind(null, `${example} 1`, `${token} K`, baseDate)
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} K`,
+            backupDate
+          )
           assert.throws(block, RangeError)
           assert.throws(
             block,
@@ -1450,17 +1465,17 @@ describe('parse', function() {
 
   describe('hour [1-24]', function() {
     it('numeric', function() {
-      var result = parse('12', 'k', baseDate)
+      var result = parse('12', 'k', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', function() {
-      var result = parse('12th', 'ko', baseDate)
+      var result = parse('12th', 'ko', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', function() {
-      var result = parse('24', 'kk', baseDate)
+      var result = parse('24', 'kk', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
@@ -1476,7 +1491,12 @@ describe('parse', function() {
         ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when k is used after ${token}`, () => {
-          const block = parse.bind(null, `${example} 1`, `${token} k`, baseDate)
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} k`,
+            backupDate
+          )
           assert.throws(block, RangeError)
           assert.throws(
             block,
@@ -1491,17 +1511,17 @@ describe('parse', function() {
 
   describe('minute', function() {
     it('numeric', function() {
-      var result = parse('25', 'm', baseDate)
+      var result = parse('25', 'm', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('ordinal', function() {
-      var result = parse('25th', 'mo', baseDate)
+      var result = parse('25th', 'mo', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('zero-padding', function() {
-      var result = parse('05', 'mm', baseDate)
+      var result = parse('05', 'mm', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 5))
     })
 
@@ -1513,7 +1533,7 @@ describe('parse', function() {
               null,
               `${example} 1`,
               `${token} m`,
-              baseDate
+              backupDate
             )
             assert.throws(block, RangeError)
             assert.throws(
@@ -1530,17 +1550,17 @@ describe('parse', function() {
 
   describe('second', function() {
     it('numeric', function() {
-      var result = parse('25', 's', baseDate)
+      var result = parse('25', 's', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('ordinal', function() {
-      var result = parse('25th', 'so', baseDate)
+      var result = parse('25th', 'so', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('zero-padding', function() {
-      var result = parse('05', 'ss', baseDate)
+      var result = parse('05', 'ss', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 5))
     })
 
@@ -1552,7 +1572,7 @@ describe('parse', function() {
               null,
               `${example} 1`,
               `${token} s`,
-              baseDate
+              backupDate
             )
             assert.throws(block, RangeError)
             assert.throws(
@@ -1569,22 +1589,22 @@ describe('parse', function() {
 
   describe('fraction of second', function() {
     it('1/10 of second', function() {
-      var result = parse('1', 'S', baseDate)
+      var result = parse('1', 'S', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100))
     })
 
     it('1/100 of second', function() {
-      var result = parse('12', 'SS', baseDate)
+      var result = parse('12', 'SS', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120))
     })
 
     it('millisecond', function() {
-      var result = parse('123', 'SSS', baseDate)
+      var result = parse('123', 'SSS', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123))
     })
 
     it('specified amount of digits', function() {
-      var result = parse('567890', 'SSSSSS', baseDate)
+      var result = parse('567890', 'SSSSSS', backupDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567))
     })
 
@@ -1596,7 +1616,7 @@ describe('parse', function() {
               null,
               `${example} 1`,
               `${token} S`,
-              baseDate
+              backupDate
             )
             assert.throws(block, RangeError)
             assert.throws(
@@ -1617,7 +1637,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1626,7 +1646,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1635,7 +1655,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:00'))
       })
@@ -1646,7 +1666,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1655,7 +1675,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1666,7 +1686,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1675,7 +1695,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1686,7 +1706,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1695,7 +1715,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1704,7 +1724,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
@@ -1715,7 +1735,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1724,7 +1744,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1733,7 +1753,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
@@ -1751,7 +1771,7 @@ describe('parse', function() {
             null,
             `${example} -0530`,
             `${token} X`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -1771,7 +1791,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1780,7 +1800,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1789,7 +1809,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123+05:00'))
       })
@@ -1800,7 +1820,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1809,7 +1829,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1820,7 +1840,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1829,7 +1849,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1840,7 +1860,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1849,7 +1869,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1858,7 +1878,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
@@ -1869,7 +1889,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123-05:30'))
       })
@@ -1878,7 +1898,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:38:38.123Z'))
       })
@@ -1887,7 +1907,7 @@ describe('parse', function() {
         var result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
-          baseDate
+          backupDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
@@ -1905,7 +1925,7 @@ describe('parse', function() {
             null,
             `${example} -0530`,
             `${token} x`,
-            baseDate
+            backupDate
           )
           assert.throws(block, RangeError)
           assert.throws(
@@ -1921,7 +1941,7 @@ describe('parse', function() {
 
   describe('seconds timestamp', function() {
     it('numeric', function() {
-      var result = parse('512969520', 't', baseDate)
+      var result = parse('512969520', 't', backupDate)
       assert.deepEqual(result, new Date(512969520000))
     })
 
@@ -1929,13 +1949,13 @@ describe('parse', function() {
       var result = parse(
         '00000000000512969520',
         'tttttttttttttttttttt',
-        baseDate
+        backupDate
       )
       assert.deepEqual(result, new Date(512969520000))
     })
 
     it(`throws an error when it is used after any token`, () => {
-      const block = parse.bind(null, `1 512969520`, `h t`, baseDate)
+      const block = parse.bind(null, `1 512969520`, `h t`, backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1948,7 +1968,7 @@ describe('parse', function() {
 
   describe('milliseconds timestamp', function() {
     it('numeric', function() {
-      var result = parse('512969520900', 'T', baseDate)
+      var result = parse('512969520900', 'T', backupDate)
       assert.deepEqual(result, new Date(512969520900))
     })
 
@@ -1956,13 +1976,13 @@ describe('parse', function() {
       var result = parse(
         '00000000512969520900',
         'TTTTTTTTTTTTTTTTTTTT',
-        baseDate
+        backupDate
       )
       assert.deepEqual(result, new Date(512969520900))
     })
 
     it(`throws an error when it is used after any token`, () => {
-      const block = parse.bind(null, `1 512969520900`, `h T`, baseDate)
+      const block = parse.bind(null, `1 512969520900`, `h T`, backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1975,41 +1995,41 @@ describe('parse', function() {
 
   describe('common formats', function() {
     it('ISO-8601', function() {
-      var result = parse('20161105T040404', "yyyyMMdd'T'HHmmss", baseDate)
+      var result = parse('20161105T040404', "yyyyMMdd'T'HHmmss", backupDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('ISO week-numbering date', function() {
-      var result = parse('2016W474T153005', "RRRR'W'IIi'T'HHmmss", baseDate)
+      var result = parse('2016W474T153005', "RRRR'W'IIi'T'HHmmss", backupDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0))
     })
 
     it('ISO day of year date', function() {
-      var result = parse('2010123T235959', "yyyyDDD'T'HHmmss", baseDate)
+      var result = parse('2010123T235959', "yyyyDDD'T'HHmmss", backupDate)
       assert.deepEqual(result, new Date(2010, 4 /* May */, 3, 23, 59, 59, 0))
     })
 
     it('Date.prototype.toString()', function() {
       var dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
       var formatString = "EEE MMM dd yyyy HH:mm:ss 'GMT'xx"
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, new Date(dateString))
     })
 
     it('Date.prototype.toISOString()', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, new Date(dateString))
     })
 
     it('middle-endian', function() {
-      var result = parse('5 a.m. 07/02/2016', 'h aaaa MM/dd/yyyy', baseDate)
+      var result = parse('5 a.m. 07/02/2016', 'h aaaa MM/dd/yyyy', backupDate)
       assert.deepEqual(result, new Date(2016, 6 /* Jul */, 2, 5, 0, 0, 0))
     })
 
     it('little-endian', function() {
-      var result = parse('02.07.1995', 'dd.MM.yyyy', baseDate)
+      var result = parse('02.07.1995', 'dd.MM.yyyy', backupDate)
       assert.deepEqual(result, new Date(1995, 6 /* Jul */, 2, 0, 0, 0, 0))
     })
   })
@@ -2018,7 +2038,7 @@ describe('parse', function() {
     it("units of lower priority don't overwrite values of higher priority", function() {
       var dateString = '+06:00 123 15 30 05 02 07 2014'
       var formatString = 'xxx SSS ss mm HH dd MM yyyy'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, new Date('2014-07-02T05:30:15.123+06:00'))
     })
   })
@@ -2028,7 +2048,7 @@ describe('parse', function() {
       // eslint-disable-next-line no-new-wrappers
       var dateString = new String('20161105T040404')
       // $ExpectedMistake
-      var result = parse(dateString, "yyyyMMdd'T'HHmmss", baseDate)
+      var result = parse(dateString, "yyyyMMdd'T'HHmmss", backupDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
@@ -2036,13 +2056,13 @@ describe('parse', function() {
       // eslint-disable-next-line no-new-wrappers
       var formatString = new String("yyyyMMdd'T'HHmmss")
       // $ExpectedMistake
-      var result = parse('20161105T040404', formatString, baseDate)
+      var result = parse('20161105T040404', formatString, backupDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('`options.weekStartsOn`', function() {
       // $ExpectedMistake
-      var result = parse('2018', 'Y', baseDate, {
+      var result = parse('2018', 'Y', backupDate, {
         weekStartsOn: '1' /* Mon */,
         firstWeekContainsDate: 4
       })
@@ -2051,7 +2071,7 @@ describe('parse', function() {
 
     it('`options.firstWeekContainsDate`', function() {
       // $ExpectedMistake
-      var result = parse('2018', 'Y', baseDate, {
+      var result = parse('2018', 'Y', backupDate, {
         weekStartsOn: 1 /* Mon */,
         firstWeekContainsDate: '4'
       })
@@ -2062,24 +2082,24 @@ describe('parse', function() {
   describe('with `options.strictValidation` = true', function() {
     describe('calendar year', function() {
       it('returns `Invalid Date` for year zero', function() {
-        var result = parse('0', 'y', baseDate)
+        var result = parse('0', 'y', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('works correctly for two-digit year zero', function() {
-        var result = parse('00', 'yy', baseDate)
+        var result = parse('00', 'yy', backupDate)
         assert.deepEqual(result, new Date(2000, 0 /* Jan */, 1))
       })
     })
 
     describe('local week-numbering year', function() {
       it('returns `Invalid Date` for year zero', function() {
-        var result = parse('0', 'Y', baseDate)
+        var result = parse('0', 'Y', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('works correctly for two-digit year zero', function() {
-        var result = parse('00', 'YY', baseDate, {
+        var result = parse('00', 'YY', backupDate, {
           useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(1999, 11 /* Dec */, 26))
@@ -2088,42 +2108,42 @@ describe('parse', function() {
 
     describe('quarter (formatting)', function() {
       it('returns `Invalid Date` for invalid quarter', function() {
-        var result = parse('0', 'Q', baseDate)
+        var result = parse('0', 'Q', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('quarter (stand-alone)', function() {
       it('returns `Invalid Date` for invalid quarter', function() {
-        var result = parse('5', 'q', baseDate)
+        var result = parse('5', 'q', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (formatting)', function() {
       it('returns `Invalid Date` for invalid month', function() {
-        var result = parse('00', 'MM', baseDate)
+        var result = parse('00', 'MM', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (stand-alone)', function() {
       it('returns `Invalid Date` for invalid month', function() {
-        var result = parse('13', 'LL', baseDate)
+        var result = parse('13', 'LL', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local week of year', function() {
       it('returns `Invalid Date` for invalid week', function() {
-        var result = parse('0', 'w', baseDate)
+        var result = parse('0', 'w', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('ISO week of year', function() {
       it('returns `Invalid Date` for invalid week', function() {
-        var result = parse('54', 'II', baseDate)
+        var result = parse('54', 'II', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
@@ -2147,7 +2167,7 @@ describe('parse', function() {
 
     describe('day of year', function() {
       it('returns `Invalid Date` for invalid day of the year', function() {
-        var result = parse('0', 'D', baseDate, {
+        var result = parse('0', 'D', backupDate, {
           useAdditionalDayOfYearTokens: true
         })
         assert(result instanceof Date && isNaN(result))
@@ -2170,88 +2190,88 @@ describe('parse', function() {
 
     describe('ISO day of week (formatting)', function() {
       it('returns `Invalid Date` for day zero', function() {
-        var result = parse('0', 'i', baseDate)
+        var result = parse('0', 'i', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
-        var result = parse('8', 'i', baseDate)
+        var result = parse('8', 'i', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (formatting)', function() {
       it('returns `Invalid Date` for day zero', function() {
-        var result = parse('0', 'e', baseDate)
+        var result = parse('0', 'e', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
-        var result = parse('8', 'e', baseDate)
+        var result = parse('8', 'e', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (stand-alone)', function() {
       it('returns `Invalid Date` for day zero', function() {
-        var result = parse('0', 'c', baseDate)
+        var result = parse('0', 'c', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
-        var result = parse('8', 'c', baseDate)
+        var result = parse('8', 'c', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-12]', function() {
       it('returns `Invalid Date` for hour zero', function() {
-        var result = parse('00', 'hh', baseDate)
+        var result = parse('00', 'hh', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function() {
-        var result = parse('13', 'hh', baseDate)
+        var result = parse('13', 'hh', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-23]', function() {
       it('returns `Invalid Date` for invalid hour', function() {
-        var result = parse('24', 'HH', baseDate)
+        var result = parse('24', 'HH', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-11]', function() {
       it('returns `Invalid Date` for invalid hour', function() {
-        var result = parse('12', 'KK', baseDate)
+        var result = parse('12', 'KK', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-24]', function() {
       it('returns `Invalid Date` for hour zero', function() {
-        var result = parse('00', 'kk', baseDate)
+        var result = parse('00', 'kk', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function() {
-        var result = parse('25', 'kk', baseDate)
+        var result = parse('25', 'kk', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('minute', function() {
       it('returns `Invalid Date` for invalid minute', function() {
-        var result = parse('60', 'mm', baseDate)
+        var result = parse('60', 'mm', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('second', function() {
       it('returns `Invalid Date` for invalid second', function() {
-        var result = parse('60', 'ss', baseDate)
+        var result = parse('60', 'ss', backupDate)
         assert(result instanceof Date && isNaN(result))
       })
     })
@@ -2270,7 +2290,7 @@ describe('parse', function() {
         }
       }
       // $ExpectedMistake
-      var result = parse('2018 foobar', "y G 'it works!'", baseDate, {
+      var result = parse('2018 foobar', "y G 'it works!'", backupDate, {
         locale: customLocale
       })
       assert.deepEqual(result, new Date(-2017, 0 /* Jan */, 1))
@@ -2281,7 +2301,7 @@ describe('parse', function() {
         null,
         '2016-11-25 04 AM',
         'yyyy-MM-dd hh a',
-        baseDate,
+        backupDate,
         // $ExpectedMistake
         { locale: {} }
       )
@@ -2289,59 +2309,59 @@ describe('parse', function() {
     })
   })
 
-  it('accepts a timestamp as `baseDate`', function() {
+  it('accepts a timestamp as `backupDate`', function() {
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
-    var result = parse(dateString, formatString, baseDate.getTime())
+    var result = parse(dateString, formatString, backupDate.getTime())
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
   })
 
-  it('does not mutate `baseDate`', function() {
-    var baseDateClone1 = new Date(baseDate.getTime())
-    var baseDateClone2 = new Date(baseDate.getTime())
+  it('does not mutate `backupDate`', function() {
+    var backupDateClone1 = new Date(backupDate.getTime())
+    var backupDateClone2 = new Date(backupDate.getTime())
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
-    parse(dateString, formatString, baseDateClone1)
-    assert.deepEqual(baseDateClone1, baseDateClone2)
+    parse(dateString, formatString, backupDateClone1)
+    assert.deepEqual(backupDateClone1, backupDateClone2)
   })
 
   describe('failure', function() {
-    it('returns `baseDate` if `dateString` and `formatString` are empty strings', function() {
+    it('returns `backupDate` if `dateString` and `formatString` are empty strings', function() {
       var dateString = ''
       var formatString = ''
-      var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, baseDate)
+      var result = parse(dateString, formatString, backupDate)
+      assert.deepEqual(result, backupDate)
     })
 
-    it('returns `baseDate` if no tokens in `formatString` are provided', function() {
+    it('returns `backupDate` if no tokens in `formatString` are provided', function() {
       var dateString = 'not a token'
       var formatString = "'not a token'"
-      var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, baseDate)
+      var result = parse(dateString, formatString, backupDate)
+      assert.deepEqual(result, backupDate)
     })
 
     it("returns `Invalid Date`  if `formatString` doesn't match `dateString`", function() {
       var dateString = '2017-01-01'
       var formatString = 'yyyy/MM/dd'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert(result instanceof Date && isNaN(result))
     })
 
     it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', function() {
       var dateString = '2017-01-01'
       var formatString = 'MMMM do yyyy'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert(result instanceof Date && isNaN(result))
     })
 
     it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', function() {
       var dateString = '2017-01-01'
       var formatString = ''
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert(result instanceof Date && isNaN(result))
     })
 
-    it('returns `Invalid Date` if `baseDate` is `Invalid Date`', function() {
+    it('returns `Invalid Date` if `backupDate` is `Invalid Date`', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       var result = parse(dateString, formatString, new Date(NaN))
@@ -2352,7 +2372,7 @@ describe('parse', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       // $ExpectedMistake
-      var block = parse.bind(null, dateString, formatString, baseDate, {
+      var block = parse.bind(null, dateString, formatString, backupDate, {
         weekStartsOn: NaN
       })
       assert.throws(block, RangeError)
@@ -2362,7 +2382,7 @@ describe('parse', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       // $ExpectedMistake
-      var block = parse.bind(null, dateString, formatString, baseDate, {
+      var block = parse.bind(null, dateString, formatString, backupDate, {
         firstWeekContainsDate: NaN
       })
       assert.throws(block, RangeError)
@@ -2379,18 +2399,18 @@ describe('parse', function() {
 
   describe('edge cases', function() {
     it('returns Invalid Date if the string contains some remaining input after parsing', function() {
-      var result = parse('2016-11-05T040404', 'yyyy-MM-dd', baseDate)
+      var result = parse('2016-11-05T040404', 'yyyy-MM-dd', backupDate)
       assert(result instanceof Date && isNaN(result))
     })
 
     it('parses normally if the remaining input is just whitespace', function() {
-      var result = parse('2016-11-05   \n', 'yyyy-MM-dd', baseDate)
+      var result = parse('2016-11-05   \n', 'yyyy-MM-dd', backupDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5))
     })
 
     it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
       assert.throws(
-        parse.bind(null, '2016-11-05-nnnn', 'yyyy-MM-dd-nnnn', baseDate),
+        parse.bind(null, '2016-11-05-nnnn', 'yyyy-MM-dd-nnnn', backupDate),
         RangeError
       )
     })
@@ -2398,7 +2418,7 @@ describe('parse', function() {
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
-      const block = parse.bind(null, '2016 5', 'yyyy D', baseDate)
+      const block = parse.bind(null, '2016 5', 'yyyy D', backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -2407,14 +2427,14 @@ describe('parse', function() {
     })
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = parse('2016 5', 'yyyy D', baseDate, {
+      const result = parse('2016 5', 'yyyy D', backupDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
 
     it('throws an error if DD token is used', () => {
-      const block = parse.bind(null, '2016 05', 'yyyy DD', baseDate)
+      const block = parse.bind(null, '2016 05', 'yyyy DD', backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -2423,14 +2443,14 @@ describe('parse', function() {
     })
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = parse('2016 05', 'yyyy DD', baseDate, {
+      const result = parse('2016 05', 'yyyy DD', backupDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
 
     it('throws an error if YY token is used', () => {
-      const block = parse.bind(null, '16 1', 'YY w', baseDate)
+      const block = parse.bind(null, '16 1', 'YY w', backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -2439,14 +2459,14 @@ describe('parse', function() {
     })
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = parse('16 1', 'YY w', baseDate, {
+      const result = parse('16 1', 'YY w', backupDate, {
         useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 11, 27))
     })
 
     it('throws an error if YYYY token is used', () => {
-      const block = parse.bind(null, '2016 1', 'YYYY w', baseDate)
+      const block = parse.bind(null, '2016 1', 'YYYY w', backupDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -2455,7 +2475,7 @@ describe('parse', function() {
     })
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = parse('2016 1', 'YYYY w', baseDate, {
+      const result = parse('2016 1', 'YYYY w', backupDate, {
         useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 11, 27))
@@ -2467,7 +2487,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = '05/26/1995'
       var formatString = 'P'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2475,7 +2495,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'May 26, 1995'
       var formatString = 'PP'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2483,7 +2503,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'May 26th, 1995'
       var formatString = 'PPP'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2491,36 +2511,36 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'Friday, May 26th, 1995'
       var formatString = 'PPPP'
-      var result = parse(dateString, formatString, baseDate)
+      var result = parse(dateString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
     it('short time', function() {
       var expected = new Date(
-        baseDate.getFullYear(),
-        baseDate.getMonth(),
-        baseDate.getDate(),
+        backupDate.getFullYear(),
+        backupDate.getMonth(),
+        backupDate.getDate(),
         10,
         32
       )
       var timeString = '10:32 AM'
       var formatString = 'p'
-      var result = parse(timeString, formatString, baseDate)
+      var result = parse(timeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
     it('medium time', function() {
       var expected = new Date(
-        baseDate.getFullYear(),
-        baseDate.getMonth(),
-        baseDate.getDate(),
+        backupDate.getFullYear(),
+        backupDate.getMonth(),
+        backupDate.getDate(),
         10,
         32,
         55
       )
       var timeString = '10:32:55 AM'
       var formatString = 'pp'
-      var result = parse(timeString, formatString, baseDate)
+      var result = parse(timeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2528,7 +2548,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = '05/26/1995, 10:32 AM'
       var formatString = 'Pp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2536,7 +2556,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'May 26, 1995, 10:32 AM'
       var formatString = 'PPp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2544,7 +2564,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'May 26th, 1995 at 10:32 AM'
       var formatString = 'PPPp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2552,7 +2572,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'Friday, May 26th, 1995 at 10:32 AM'
       var formatString = 'PPPPp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2560,7 +2580,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = '05/26/1995, 10:32:55 AM'
       var formatString = 'Ppp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2568,7 +2588,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'May 26, 1995, 10:32:55 AM'
       var formatString = 'PPpp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2576,7 +2596,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'May 26th, 1995 at 10:32:55 AM'
       var formatString = 'PPPpp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
 
@@ -2584,7 +2604,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'Friday, May 26th, 1995 at 10:32:55 AM'
       var formatString = 'PPPPpp'
-      var result = parse(dateTimeString, formatString, baseDate)
+      var result = parse(dateTimeString, formatString, backupDate)
       assert.deepEqual(result, expected)
     })
   })
