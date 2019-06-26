@@ -316,10 +316,6 @@ function validateWeekDate(_year, week, day) {
 }
 
 function validateTime(hours, minutes, seconds) {
-  if (hours === 24) {
-    return minutes === 0 && seconds === 0
-  }
-
   return (
     seconds >= 0 &&
     seconds < 60 &&
