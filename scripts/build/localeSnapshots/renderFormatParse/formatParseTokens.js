@@ -33,10 +33,6 @@ const dayOfWeekDates = [
   new Date(2019, 1, 15, 12, 13, 14, 15)
 ]
 
-const tzDates = [new Date(2019, 1, 11, 12, 13, 14, 15)]
-
-const timestampDates = [0, 540000000000]
-
 const timeOfDayDates = [
   new Date(2019, 1, 11, 11, 13, 14, 15),
   new Date(2019, 1, 11, 14, 13, 14, 15),
@@ -56,84 +52,63 @@ const localizedDates = [
 
 const formatParseTokens = [
   {
-    title: 'Era',
-    tokens: ['G', 'GG', 'GGG', 'GGGG', 'GGGGG'],
-    dates: [
-      new Date(1987, 1, 11, 12, 13, 14, 15),
-      new Date(-2500, 1, 1, 12, 13, 14, 15)
-    ]
-  },
-
-  {
     title: 'Calendar year',
-    tokens: ['y', 'yo', 'yy', 'yyy', 'yyyy', 'yyyyy'],
+    tokens: ['yo'],
     dates: yearDates
   },
 
   {
     title: 'Local week-numbering year',
-    tokens: ['Y', 'Yo', 'YY', 'YYY', 'YYYY', 'YYYYY'],
+    tokens: ['Yo'],
     dates: yearDates,
     options: { useAdditionalWeekYearTokens: true }
   },
 
   {
-    title: 'ISO week-numbering year',
-    tokens: ['R', 'RR', 'RRR', 'RRRR', 'RRRRR'],
-    dates: yearDates
-  },
-
-  {
-    title: 'Extended year',
-    tokens: ['u', 'uu', 'uuu', 'uuuu', 'uuuuu'],
-    dates: yearDates
-  },
-
-  {
     title: 'Quarter (formatting)',
-    tokens: ['Q', 'Qo', 'QQ', 'QQQ', 'QQQQ', 'QQQQQ'],
+    tokens: ['Qo', 'QQQ', 'QQQQ', 'QQQQQ'],
     dates: quarterDates
   },
 
   {
     title: 'Quarter (stand-alone)',
-    tokens: ['q', 'qo', 'qq', 'qqq', 'qqqq', 'qqqqq'],
+    tokens: ['qo', 'qqq', 'qqqq'],
     dates: quarterDates
   },
 
   {
     title: 'Month (formatting)',
-    tokens: ['M', 'Mo', 'MM', 'MMM', 'MMMM', 'MMMMM'],
+    tokens: ['Mo', 'MMM', 'MMMM', 'MMMMM'],
     dates: monthDates
   },
 
   {
     title: 'Month (stand-alone)	',
-    tokens: ['L', 'Lo', 'LL', 'LLL', 'LLLL', 'LLLLL'],
+    tokens: ['Lo', 'LLL', 'LLLL', 'LLLLL'],
     dates: monthDates
   },
 
   {
     title: 'Local week of year',
-    tokens: ['w', 'wo', 'ww'],
+    tokens: ['wo'],
     dates: weekOfYearDates
   },
 
   {
     title: 'ISO week of year',
-    tokens: ['I', 'Io', 'II'],
+    tokens: ['Io'],
     dates: weekOfYearDates
   },
 
   {
     title: 'Day of month',
-    tokens: ['d', 'do', 'dd'],
+    tokens: ['do'],
     dates: dayOfMonthDates
   },
 
   {
     title: 'Day of year',
-    tokens: ['D', 'Do', 'DD', 'DDD', 'DDDD'],
+    tokens: ['Do'],
     dates: dayOfYearDates,
     options: { useAdditionalDayOfYearTokens: true }
   },
@@ -146,19 +121,19 @@ const formatParseTokens = [
 
   {
     title: 'ISO day of week (formatting)',
-    tokens: ['i', 'io', 'ii', 'iii', 'iiii', 'iiiii', 'iiiiii'],
+    tokens: ['io', 'iii', 'iiii', 'iiiii', 'iiiiii'],
     dates: dayOfWeekDates
   },
 
   {
     title: 'Local day of week (formatting)',
-    tokens: ['e', 'eo', 'ee', 'eee', 'eeee', 'eeeee', 'eeeeee'],
+    tokens: ['eo', 'eee', 'eeee', 'eeeee', 'eeeeee'],
     dates: dayOfWeekDates
   },
 
   {
     title: 'Local day of week (stand-alone)',
-    tokens: ['c', 'co', 'cc', 'ccc', 'cccc', 'ccccc', 'cccccc'],
+    tokens: ['co', 'ccc', 'cccc', 'ccccc', 'cccccc'],
     dates: dayOfWeekDates
   },
 
@@ -182,31 +157,31 @@ const formatParseTokens = [
 
   {
     title: 'Hour [1-12]',
-    tokens: ['h', 'ho', 'hh'],
+    tokens: ['ho'],
     dates: hourDates
   },
 
   {
     title: 'Hour [0-23]',
-    tokens: ['H', 'Ho', 'HH'],
+    tokens: ['Ho'],
     dates: hourDates
   },
 
   {
     title: 'Hour [0-11]',
-    tokens: ['K', 'Ko', 'KK'],
+    tokens: ['Ko'],
     dates: hourDates
   },
 
   {
     title: 'Hour [1-24]',
-    tokens: ['k', 'ko', 'kk'],
+    tokens: ['ko'],
     dates: hourDates
   },
 
   {
     title: 'Minute',
-    tokens: ['m', 'mo', 'mm'],
+    tokens: ['mo'],
     dates: [
       new Date(2019, 0, 1, 12, 1, 14, 15),
       new Date(2019, 3, 1, 12, 55, 14, 15)
@@ -215,58 +190,11 @@ const formatParseTokens = [
 
   {
     title: 'Second',
-    tokens: ['s', 'so', 'ss'],
+    tokens: ['so'],
     dates: [
       new Date(2019, 0, 1, 12, 13, 1, 15),
       new Date(2019, 3, 1, 12, 13, 55, 15)
     ]
-  },
-
-  {
-    title: 'Fraction of second',
-    tokens: ['S', 'SS', 'SSS', 'SSSS'],
-    dates: [
-      new Date(2019, 0, 1, 12, 13, 14, 1),
-      new Date(2019, 3, 1, 12, 13, 14, 999)
-    ]
-  },
-
-  {
-    title: 'Timezone (ISO-8601 w/ Z)',
-    tokens: ['X', 'XX', 'XXX', 'XXXX', 'XXXXX'],
-    dates: tzDates
-  },
-
-  {
-    title: 'Timezone (ISO-8601 w/o Z)',
-    tokens: ['x', 'xx', 'xxx', 'xxxx', 'xxxxx'],
-    dates: tzDates
-  },
-
-  {
-    title: 'Timezone (GMT)',
-    tokens: ['O', 'OO', 'OOO', 'OOOO'],
-    dates: tzDates,
-    skipParse: true
-  },
-
-  {
-    title: 'Timezone (specific non-locat.)',
-    tokens: ['z', 'zz', 'zzz', 'zzzz'],
-    dates: tzDates,
-    skipParse: true
-  },
-
-  {
-    title: 'Seconds timestamp',
-    tokens: ['t', 'tt'],
-    dates: timestampDates
-  },
-
-  {
-    title: 'Milliseconds timestamp',
-    tokens: ['T', 'TT'],
-    dates: timestampDates
   },
 
   {

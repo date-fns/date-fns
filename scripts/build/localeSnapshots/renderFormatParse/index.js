@@ -7,8 +7,8 @@ import formatParseTokens from './formatParseTokens'
 export default function renderFormatParse(locale) {
   return `## \`format\` and \`parse\`
 
-| Title | Token string | Date | \`format\` result | \`parse\` result | Equals |
-|-|-|-|-|-|-|
+| Title | Token string | Date | \`format\` result | \`parse\` result |
+|-|-|-|-|-|
 ${formatParseTokens
   .map(({ title, tokens, dates, options = {}, skipParse }) => {
     return tokens
@@ -42,18 +42,13 @@ ${formatParseTokens
               : isValid(parsedDate)
               ? parsedDate.toISOString()
               : 'Invalid Date'
-            const equals = skipParse
-              ? 'NA'
-              : dateString === parseResult
-              ? '✅'
-              : '❌'
 
             if (dateIndex === 0 && tokenIndex === 0) {
-              return `| ${title} | ${token} | ${dateString} | ${formatResult} | ${parseResult} | ${equals} |`
+              return `| ${title} | ${token} | ${dateString} | ${formatResult} | ${parseResult} |`
             } else if (dateIndex === 0) {
-              return `| | ${token} | ${dateString} | ${formatResult} | ${parseResult} | ${equals} |`
+              return `| | ${token} | ${dateString} | ${formatResult} | ${parseResult} |`
             } else {
-              return `| | | ${dateString} | ${formatResult} | ${parseResult} | ${equals} |`
+              return `| | | ${dateString} | ${formatResult} | ${parseResult} |`
             }
           })
           .join('\n')
