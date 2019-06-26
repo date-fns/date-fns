@@ -55,6 +55,32 @@ describe('parse', function() {
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
     })
+
+    describe('validation', () => {
+      ;[
+        ['G', 'BC'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when G is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 420`,
+            `${token} G`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`G\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('calendar year', function() {
@@ -97,6 +123,38 @@ describe('parse', function() {
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
+    })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['w', '1'],
+        ['I', '1'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when y is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 2019`,
+            `${token} y`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`y\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -154,6 +212,42 @@ describe('parse', function() {
       })
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when Y is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 2019`,
+            `${token} Y`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`Y\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('ISO week-numbering year', function() {
@@ -183,6 +277,44 @@ describe('parse', function() {
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
     })
+
+    describe('validation', () => {
+      ;[
+        ['G', 'AD'],
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when R is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 2019`,
+            `${token} R`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`R\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('extended year', function() {
@@ -211,6 +343,39 @@ describe('parse', function() {
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
       assert.deepEqual(result, expectedResult)
+    })
+
+    describe('validation', () => {
+      ;[
+        ['G', 'AD'],
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['w', '1'],
+        ['I', '1'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when u is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 2019`,
+            `${token} u`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`u\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -244,6 +409,43 @@ describe('parse', function() {
       var result = parse('1', 'QQQQQ', baseDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when Q is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} Q`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`Q\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('quarter (stand-alone)', function() {
@@ -275,6 +477,43 @@ describe('parse', function() {
     it('narrow', function() {
       var result = parse('1', 'qqqqq', baseDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when q is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} q`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`q\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -308,6 +547,42 @@ describe('parse', function() {
       var result = parse('J', 'MMMMM', baseDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when M is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} M`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`M\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('month (stand-alone)', function() {
@@ -340,6 +615,42 @@ describe('parse', function() {
       var result = parse('J', 'LLLLL', baseDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when L is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} L`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`L\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('local week of year', function() {
@@ -365,6 +676,42 @@ describe('parse', function() {
       })
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when w is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} w`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`w\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('ISO week of year', function() {
@@ -382,6 +729,43 @@ describe('parse', function() {
       var result = parse('01', 'II', baseDate)
       assert.deepEqual(result, new Date(1985, 11 /* Dec */, 30))
     })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when I is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} I`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`I\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('day of month', function() {
@@ -398,6 +782,41 @@ describe('parse', function() {
     it('zero-padding', function() {
       var result = parse('01', 'dd', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when d is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} d`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`d\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -430,6 +849,44 @@ describe('parse', function() {
       var result = parse('000200', 'DDDDDD', baseDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
+
+    describe('validation', () => {
+      ;[
+        ['Y', '2019'],
+        ['R', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1'],
+        ['E', 'Mon'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, _options]) => {
+        it(`throws an error when D is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} D`,
+            baseDate,
+            { useAdditionalDayOfYearTokens: true }
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`D\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('day of week (formatting)', function() {
@@ -458,6 +915,35 @@ describe('parse', function() {
         weekStartsOn: /* Fri */ 5
       })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['E', 'Mon'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when E is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} Mon`,
+            `${token} E`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`E\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -495,6 +981,44 @@ describe('parse', function() {
     it('short', function() {
       var result = parse('Fr', 'iiiiii', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['Y', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['w', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['E', 'Mon'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when i is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} i`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`i\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -538,6 +1062,44 @@ describe('parse', function() {
       var result = parse('7th', 'eo', baseDate, { weekStartsOn: /* Fri */ 5 })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['E', 'Mon'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when e is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} e`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`e\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('local day of week (stand-alone)', function() {
@@ -580,6 +1142,44 @@ describe('parse', function() {
       var result = parse('7th', 'co', baseDate, { weekStartsOn: /* Fri */ 5 })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
+
+    describe('validation', () => {
+      ;[
+        ['y', '2019'],
+        ['R', '2019'],
+        ['u', '2019'],
+        ['Q', '1'],
+        ['q', '1'],
+        ['M', '1'],
+        ['L', '1'],
+        ['I', '1'],
+        ['d', '1'],
+        ['D', '1', { useAdditionalDayOfYearTokens: true }],
+        ['E', 'Mon'],
+        ['i', '1'],
+        ['e', '1'],
+        ['c', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example, options]) => {
+        it(`throws an error when c is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} 1`,
+            `${token} c`,
+            baseDate,
+            options
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`c\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('AM, PM', function() {
@@ -607,6 +1207,35 @@ describe('parse', function() {
       var result = parse('11 a', 'h aaaaa', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
     })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['B', 'in the morning'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when a is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} AM`,
+            `${token} a`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`a\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('AM, PM, noon, midnight', function() {
@@ -623,6 +1252,35 @@ describe('parse', function() {
     it('narrow', function() {
       var result = parse('mi', 'bbbbb', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['B', 'in the morning'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when b is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} AM`,
+            `${token} b`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`b\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -641,6 +1299,32 @@ describe('parse', function() {
       var result = parse('5 in the evening', 'h BBBBB', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['B', 'in the morning'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when B is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} in the morning`,
+            `${token} B`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`B\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('hour [1-12]', function() {
@@ -657,6 +1341,28 @@ describe('parse', function() {
     it('zero-padding', function() {
       var result = parse('01', 'hh', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['h', '1'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when h is used after ${token}`, () => {
+          const block = parse.bind(null, `${example} 1`, `${token} h`, baseDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`h\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -675,6 +1381,30 @@ describe('parse', function() {
       var result = parse('00', 'HH', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['h', '1'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when H is used after ${token}`, () => {
+          const block = parse.bind(null, `${example} 1`, `${token} H`, baseDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`H\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('hour [0-11]', function() {
@@ -691,6 +1421,30 @@ describe('parse', function() {
     it('zero-padding', function() {
       var result = parse('1', 'KK', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
+    })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['h', '1'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when K is used after ${token}`, () => {
+          const block = parse.bind(null, `${example} 1`, `${token} K`, baseDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`K\` at the same time`
+            )
+          )
+        })
+      })
     })
   })
 
@@ -709,6 +1463,30 @@ describe('parse', function() {
       var result = parse('24', 'kk', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
+
+    describe('validation', () => {
+      ;[
+        ['a', 'AM'],
+        ['b', 'AM'],
+        ['h', '1'],
+        ['H', '1'],
+        ['K', '1'],
+        ['k', '1'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when k is used after ${token}`, () => {
+          const block = parse.bind(null, `${example} 1`, `${token} k`, baseDate)
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`k\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('minute', function() {
@@ -726,6 +1504,28 @@ describe('parse', function() {
       var result = parse('05', 'mm', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 5))
     })
+
+    describe('validation', () => {
+      ;[['m', '1'], ['t', '512969520'], ['T', '512969520900']].forEach(
+        ([token, example]) => {
+          it(`throws an error when m is used after ${token}`, () => {
+            const block = parse.bind(
+              null,
+              `${example} 1`,
+              `${token} m`,
+              baseDate
+            )
+            assert.throws(block, RangeError)
+            assert.throws(
+              block,
+              new RegExp(
+                `The format string mustn't contain \`${token}\` and \`m\` at the same time`
+              )
+            )
+          })
+        }
+      )
+    })
   })
 
   describe('second', function() {
@@ -742,6 +1542,28 @@ describe('parse', function() {
     it('zero-padding', function() {
       var result = parse('05', 'ss', baseDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 5))
+    })
+
+    describe('validation', () => {
+      ;[['s', '1'], ['t', '512969520'], ['T', '512969520900']].forEach(
+        ([token, example]) => {
+          it(`throws an error when s is used after ${token}`, () => {
+            const block = parse.bind(
+              null,
+              `${example} 1`,
+              `${token} s`,
+              baseDate
+            )
+            assert.throws(block, RangeError)
+            assert.throws(
+              block,
+              new RegExp(
+                `The format string mustn't contain \`${token}\` and \`s\` at the same time`
+              )
+            )
+          })
+        }
+      )
     })
   })
 
@@ -766,14 +1588,26 @@ describe('parse', function() {
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567))
     })
 
-    it('after timestamp', () => {
-      const time = new Date(1987, 1, 11, 0, 0, 0).getTime()
-      const result = parse(
-        `${Math.floor(time / 1000)}.123`,
-        't.SSS',
-        Date.now()
+    describe('validation', () => {
+      ;[['S', '1'], ['t', '512969520'], ['T', '512969520900']].forEach(
+        ([token, example]) => {
+          it(`throws an error when S is used after ${token}`, () => {
+            const block = parse.bind(
+              null,
+              `${example} 1`,
+              `${token} S`,
+              baseDate
+            )
+            assert.throws(block, RangeError)
+            assert.throws(
+              block,
+              new RegExp(
+                `The format string mustn't contain \`${token}\` and \`S\` at the same time`
+              )
+            )
+          })
+        }
       )
-      assert.deepEqual(result, new Date(1987, 1, 11, 0, 0, 0, 123))
     })
   })
 
@@ -902,6 +1736,31 @@ describe('parse', function() {
           baseDate
         )
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
+      })
+    })
+
+    describe('validation', () => {
+      ;[
+        ['X', '-0530'],
+        ['x', '-0530'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when X is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} -0530`,
+            `${token} X`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`X\` at the same time`
+            )
+          )
+        })
       })
     })
   })
@@ -1033,6 +1892,31 @@ describe('parse', function() {
         assert.deepEqual(result, new Date('2016-11-25T16:37:53.123+05:30'))
       })
     })
+
+    describe('validation', () => {
+      ;[
+        ['X', '-0530'],
+        ['x', '-0530'],
+        ['t', '512969520'],
+        ['T', '512969520900']
+      ].forEach(([token, example]) => {
+        it(`throws an error when x is used after ${token}`, () => {
+          const block = parse.bind(
+            null,
+            `${example} -0530`,
+            `${token} x`,
+            baseDate
+          )
+          assert.throws(block, RangeError)
+          assert.throws(
+            block,
+            new RegExp(
+              `The format string mustn't contain \`${token}\` and \`x\` at the same time`
+            )
+          )
+        })
+      })
+    })
   })
 
   describe('seconds timestamp', function() {
@@ -1049,6 +1933,17 @@ describe('parse', function() {
       )
       assert.deepEqual(result, new Date(512969520000))
     })
+
+    it(`throws an error when it is used after any token`, () => {
+      const block = parse.bind(null, `1 512969520`, `h t`, baseDate)
+      assert.throws(block, RangeError)
+      assert.throws(
+        block,
+        new RegExp(
+          `The format string mustn't contain \`t\` and any other token at the same time`
+        )
+      )
+    })
   })
 
   describe('milliseconds timestamp', function() {
@@ -1064,6 +1959,17 @@ describe('parse', function() {
         baseDate
       )
       assert.deepEqual(result, new Date(512969520900))
+    })
+
+    it(`throws an error when it is used after any token`, () => {
+      const block = parse.bind(null, `1 512969520900`, `h T`, baseDate)
+      assert.throws(block, RangeError)
+      assert.throws(
+        block,
+        new RegExp(
+          `The format string mustn't contain \`T\` and any other token at the same time`
+        )
+      )
     })
   })
 
@@ -1114,20 +2020,6 @@ describe('parse', function() {
       var formatString = 'xxx SSS ss mm HH dd MM yyyy'
       var result = parse(dateString, formatString, baseDate)
       assert.deepEqual(result, new Date('2014-07-02T05:30:15.123+06:00'))
-    })
-
-    it('units of equal priority overwrite each other in order of appearance', function() {
-      var dateString = '25 1950 75 2000 January Feb 03 4 1 123 12'
-      var formatString = 'RR RRRR yy yyyy MMMM MMM MM M d DDD dd'
-      var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(2000, 3 /* Apr */, 12))
-    })
-
-    it('milliseconds timestamp overwrites everything', function() {
-      var dateString = '512969520900 512969520 2014-07-02T05:30:15.123+06:00'
-      var formatString = "T t yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
-      var result = parse(dateString, formatString, baseDate)
-      assert.deepEqual(result, new Date(512969520900))
     })
   })
 
@@ -1506,7 +2398,7 @@ describe('parse', function() {
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
-      const block = parse.bind(null, '2016-11-5', 'yyyy-MM-D', baseDate)
+      const block = parse.bind(null, '2016 5', 'yyyy D', baseDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1515,14 +2407,14 @@ describe('parse', function() {
     })
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = parse('2016-11-5', 'yyyy-MM-D', new Date(1987, 1, 11), {
+      const result = parse('2016 5', 'yyyy D', baseDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
 
     it('throws an error if DD token is used', () => {
-      const block = parse.bind(null, '2016-11-05', 'yyyy-MM-DD', baseDate)
+      const block = parse.bind(null, '2016 05', 'yyyy DD', baseDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1531,14 +2423,14 @@ describe('parse', function() {
     })
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
-      const result = parse('2016-11-05', 'yyyy-MM-DD', new Date(1987, 1, 11), {
+      const result = parse('2016 05', 'yyyy DD', baseDate, {
         useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
 
     it('throws an error if YY token is used', () => {
-      const block = parse.bind(null, '16-11-05', 'YY-MM-dd', baseDate)
+      const block = parse.bind(null, '16 1', 'YY w', baseDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1547,14 +2439,14 @@ describe('parse', function() {
     })
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = parse('16-11-05', 'YY-MM-dd', new Date(1987, 1, 11), {
+      const result = parse('16 1', 'YY w', baseDate, {
         useAdditionalWeekYearTokens: true
       })
-      assert.deepEqual(result, new Date(2015, 10, 5))
+      assert.deepEqual(result, new Date(2015, 11, 27))
     })
 
     it('throws an error if YYYY token is used', () => {
-      const block = parse.bind(null, '2016-11-05', 'YYYY-MM-dd', baseDate)
+      const block = parse.bind(null, '2016 1', 'YYYY w', baseDate)
       assert.throws(block, RangeError)
       assert.throws(
         block,
@@ -1563,10 +2455,10 @@ describe('parse', function() {
     })
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
-      const result = parse('2016-11-05', 'YYYY-MM-dd', new Date(1987, 1, 11), {
+      const result = parse('2016 1', 'YYYY w', baseDate, {
         useAdditionalWeekYearTokens: true
       })
-      assert.deepEqual(result, new Date(2015, 10, 5))
+      assert.deepEqual(result, new Date(2015, 11, 27))
     })
   })
 

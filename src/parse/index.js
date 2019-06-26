@@ -1,16 +1,16 @@
-import toInteger from '../_lib/toInteger/index.js'
-import assign from '../_lib/assign/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import parsers from './_lib/parsers/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index.js'
+import assign from '../_lib/assign/index.js'
 import longFormatters from '../_lib/format/longFormatters/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import {
-  isProtectedWeekYearToken,
   isProtectedDayOfYearToken,
+  isProtectedWeekYearToken,
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
+import toInteger from '../_lib/toInteger/index.js'
+import parsers from './_lib/parsers/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -54,6 +54,16 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * Format of the format string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
  * with a few additions (see note 5 below the table).
+ *
+ * Not all tokens are compatible. Combinations that don't make sense or could lead to bugs are prohibited
+ * and will throw `RangeError`. For example usage of 24-hour format token with AM/PM token will throw an exception:
+ *
+ * ```javascript
+ * parse('23 AM', 'HH a', new Date())
+ * //=> RangeError: The format string mustn't contain `HH` and `a` at the same time
+ * ```
+ *
+ * See the compatibility table: https://docs.google.com/spreadsheets/d/e/2PACX-1vQOPU3xUhplll6dyoMmVUXHKl_8CRDs6_ueLmex3SoqwhuolkuN3O05l4rqx5h1dKX8eb46Ul-CCSrq/pubhtml?gid=0&single=true
  *
  * Accepted format string patterns:
  * | Unit                            |Prior| Pattern | Result examples                   | Notes |
@@ -435,6 +445,8 @@ export default function parse(
     .join('')
     .match(formattingTokensRegExp)
 
+  const usedTokens = []
+
   for (i = 0; i < tokens.length; i++) {
     var token = tokens[i]
 
@@ -454,6 +466,32 @@ export default function parse(
     var firstCharacter = token[0]
     var parser = parsers[firstCharacter]
     if (parser) {
+      const { incompatibleTokens } = parser
+      if (Array.isArray(incompatibleTokens)) {
+        let incompatibleToken
+        for (let i = 0; i < usedTokens.length; i++) {
+          const usedToken = usedTokens[i].token
+          if (
+            incompatibleTokens.indexOf(usedToken) !== -1 ||
+            usedToken === firstCharacter
+          ) {
+            incompatibleToken = usedTokens[i]
+            break
+          }
+        }
+        if (incompatibleToken) {
+          throw new RangeError(
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
+          )
+        }
+      } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
+        throw new RangeError(
+          `The format string mustn't contain \`${token}\` and any other token at the same time`
+        )
+      }
+
+      usedTokens.push({ token: firstCharacter, fullToken: token })
+
       var parseResult = parser.parse(
         dateString,
         token,
