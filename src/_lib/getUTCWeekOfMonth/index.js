@@ -1,6 +1,6 @@
 import toInteger from '../toInteger/index.js'
-import getUTCDayOfWeek from '../getUTCDayOfWeek/index.js'
-import getUTCDateOfMonth from '../getUTCDateOfMonth/index.js'
+import getUTCDay from '../getUTCDay/index.js'
+import getUTCDate from '../getUTCDate/index.js'
 import startOfUTCMonth from '../startOfUTCMonth/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
@@ -28,12 +28,12 @@ export default function getUTCWeekOfMonth(date, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var startWeekDay = getUTCDayOfWeek(startOfUTCMonth(date))
-  var currentWeekDay = getUTCDayOfWeek(date)
+  var startWeekDay = getUTCDay(startOfUTCMonth(date))
+  var currentWeekDay = getUTCDay(date)
 
   var startWeekDayWithOptions =
     startWeekDay < weekStartsOn ? 7 - weekStartsOn : startWeekDay
   var diff = startWeekDayWithOptions > currentWeekDay ? 7 - weekStartsOn : 0
 
-  return Math.ceil((getUTCDateOfMonth(date) + diff) / 7)
+  return Math.ceil((getUTCDate(date) + diff) / 7)
 }
