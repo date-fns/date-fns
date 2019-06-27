@@ -7,7 +7,7 @@ import getUTCDay from '.'
 describe('getUTCDay', function() {
   it('returns day of the month for the given date', function() {
     var result = getUTCDay(new Date(Date.UTC(2019, 6 /* Jul */, 2)))
-    assert(result, 2)
+    assert(result === 2)
   })
 
   it('accepts a timestamp', function() {
