@@ -90,11 +90,6 @@ describe('parseISO', () => {
         const result = parseISO('2014-02-11T1130')
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
       })
-
-      it('parses 24:00 as midnight', () => {
-        const result = parseISO('2014-02-11T2400')
-        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 0, 0))
-      })
     })
 
     describe('extended century representation', () => {
@@ -292,9 +287,15 @@ describe('parseISO', () => {
     })
 
     describe('time', () => {
-      it('parses 24:00 as midnight', () => {
+      it('parses 24:00 as midnight of the next day', () => {
         const result = parseISO('2014-02-11T24:00')
-        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 0, 0))
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 12, 0, 0))
+      })
+
+      it('returns `Invalid Date` for anything after 24:00', () => {
+        const result = parseISO('2014-02-11T24:01')
+        assert(result instanceof Date)
+        assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hours', () => {
