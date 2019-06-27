@@ -292,12 +292,10 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 12, 0, 0))
       })
 
-      it('parses 24:mm as correct time of the next day', () => {
-        const result = parseISO('2014-02-11T24:59:59.999')
-        assert.deepEqual(
-          result,
-          new Date(2014, 1 /* Feb */, 12, 0, 59, 59, 999)
-        )
+      it('returns `Invalid Date` for anything after 24:00', () => {
+        const result = parseISO('2014-02-11T24:01')
+        assert(result instanceof Date)
+        assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hours', () => {
