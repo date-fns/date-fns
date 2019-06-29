@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { differenceInBusinessDays } from 'date-fns/fp'
-export default differenceInBusinessDays
+declare var differenceInBusinessDays: any;
+export default differenceInBusinessDays;

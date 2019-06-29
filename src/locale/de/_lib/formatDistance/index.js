@@ -9,7 +9,6 @@ var formatDistanceLocale = {
       other: 'weniger als {{count}} Sekunden'
     }
   },
-
   xSeconds: {
     standalone: {
       one: 'eine Sekunde',
@@ -20,12 +19,10 @@ var formatDistanceLocale = {
       other: '{{count}} Sekunden'
     }
   },
-
   halfAMinute: {
     standalone: 'eine halbe Minute',
     withPreposition: 'einer halben Minute'
   },
-
   lessThanXMinutes: {
     standalone: {
       one: 'weniger als eine Minute',
@@ -36,7 +33,6 @@ var formatDistanceLocale = {
       other: 'weniger als {{count}} Minuten'
     }
   },
-
   xMinutes: {
     standalone: {
       one: 'eine Minute',
@@ -47,7 +43,6 @@ var formatDistanceLocale = {
       other: '{{count}} Minuten'
     }
   },
-
   aboutXHours: {
     standalone: {
       one: 'etwa eine Stunde',
@@ -58,7 +53,6 @@ var formatDistanceLocale = {
       other: 'etwa {{count}} Stunden'
     }
   },
-
   xHours: {
     standalone: {
       one: 'eine Stunde',
@@ -69,7 +63,6 @@ var formatDistanceLocale = {
       other: '{{count}} Stunden'
     }
   },
-
   xDays: {
     standalone: {
       one: 'ein Tag',
@@ -80,7 +73,6 @@ var formatDistanceLocale = {
       other: '{{count}} Tagen'
     }
   },
-
   aboutXMonths: {
     standalone: {
       one: 'etwa ein Monat',
@@ -91,7 +83,6 @@ var formatDistanceLocale = {
       other: 'etwa {{count}} Monaten'
     }
   },
-
   xMonths: {
     standalone: {
       one: 'ein Monat',
@@ -102,7 +93,6 @@ var formatDistanceLocale = {
       other: '{{count}} Monaten'
     }
   },
-
   aboutXYears: {
     standalone: {
       one: 'etwa ein Jahr',
@@ -113,7 +103,6 @@ var formatDistanceLocale = {
       other: 'etwa {{count}} Jahren'
     }
   },
-
   xYears: {
     standalone: {
       one: 'ein Jahr',
@@ -124,7 +113,6 @@ var formatDistanceLocale = {
       other: '{{count}} Jahren'
     }
   },
-
   overXYears: {
     standalone: {
       one: 'mehr als ein Jahr',
@@ -135,7 +123,6 @@ var formatDistanceLocale = {
       other: 'mehr als {{count}} Jahren'
     }
   },
-
   almostXYears: {
     standalone: {
       one: 'fast ein Jahr',
@@ -147,14 +134,11 @@ var formatDistanceLocale = {
     }
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
-
   var usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
-
   var result
   if (typeof usageGroup === 'string') {
     result = usageGroup
@@ -163,7 +147,6 @@ export default function formatDistance(token, count, options) {
   } else {
     result = usageGroup.other.replace('{{count}}', count)
   }
-
   if (options.addSuffix) {
     if (options.comparison > 0) {
       return 'in ' + result
@@ -171,6 +154,5 @@ export default function formatDistance(token, count, options) {
       return 'vor ' + result
     }
   }
-
   return result
 }

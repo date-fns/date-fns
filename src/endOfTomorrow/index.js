@@ -26,7 +26,6 @@ export default function endOfTomorrow() {
   var year = now.getFullYear()
   var month = now.getMonth()
   var day = now.getDate()
-
   var date = new Date(0)
   date.setFullYear(year, month, day + 1)
   date.setHours(23, 59, 59, 999)

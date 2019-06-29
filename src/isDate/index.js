@@ -40,7 +40,6 @@ export default function isDate(value) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return (
     value instanceof Date ||
     (typeof value === 'object' &&

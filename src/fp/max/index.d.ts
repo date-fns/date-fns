@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { max } from 'date-fns/fp'
-export default max
+declare var max: any;
+export default max;

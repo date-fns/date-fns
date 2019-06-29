@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name startOfMonth
  * @category Month Helpers
@@ -28,7 +27,6 @@ export default function startOfMonth(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   date.setDate(1)
   date.setHours(0, 0, 0, 0)

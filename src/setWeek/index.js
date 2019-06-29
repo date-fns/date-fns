@@ -1,7 +1,6 @@
-import getWeek from '../getWeek/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import getWeek from '../getWeek/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name setWeek
  * @category Week Helpers
@@ -52,7 +51,6 @@ export default function setWeek(dirtyDate, dirtyWeek, dirtyOptions) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var week = toInteger(dirtyWeek)
   var diff = getWeek(date, dirtyOptions) - week

@@ -1,6 +1,5 @@
-import addDays from '../addDays/index.js'
-import isSameDay from '../isSameDay/index.js'
-
+import addDays from '../addDays/index'
+import isSameDay from '../isSameDay/index'
 /**
  * @name isTomorrow
  * @category Day Helpers
@@ -32,6 +31,5 @@ export default function isTomorrow(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameDay(dirtyDate, addDays(Date.now(), 1))
 }

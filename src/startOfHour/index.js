@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name startOfHour
  * @category Hour Helpers
@@ -28,7 +27,6 @@ export default function startOfHour(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   date.setMinutes(0, 0, 0)
   return date

@@ -1,7 +1,6 @@
-import eachDayOfInterval from '../eachDayOfInterval/index.js'
-import isSunday from '../isSunday/index.js'
-import isWeekend from '../isWeekend/index.js'
-
+import eachDayOfInterval from '../eachDayOfInterval/index'
+import isSunday from '../isSunday/index'
+import isWeekend from '../isWeekend/index'
 /**
  * @name eachWeekendOfInterval
  * @category Interval Helpers
@@ -35,7 +34,6 @@ export default function eachWeekendOfInterval(interval) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateInterval = eachDayOfInterval(interval)
   var weekends = []
   var index = 0

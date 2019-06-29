@@ -34,9 +34,7 @@ export default function toDate(argument) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   const argStr = Object.prototype.toString.call(argument)
-
   // Clone the date
   if (
     argument instanceof Date ||

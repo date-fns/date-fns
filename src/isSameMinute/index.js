@@ -1,5 +1,4 @@
-import startOfMinute from '../startOfMinute/index.js'
-
+import startOfMinute from '../startOfMinute/index'
 /**
  * @name isSameMinute
  * @category Minute Helpers
@@ -32,9 +31,7 @@ export default function isSameMinute(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
   var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
-
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

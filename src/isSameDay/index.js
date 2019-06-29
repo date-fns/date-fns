@@ -1,5 +1,4 @@
-import startOfDay from '../startOfDay/index.js'
-
+import startOfDay from '../startOfDay/index'
 /**
  * @name isSameDay
  * @category Day Helpers
@@ -28,9 +27,7 @@ export default function isSameDay(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
   var dateRightStartOfDay = startOfDay(dirtyDateRight)
-
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }

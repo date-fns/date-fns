@@ -1,5 +1,4 @@
-import isSameWeek from '../isSameWeek/index.js'
-
+import isSameWeek from '../isSameWeek/index'
 /**
  * @name isSameISOWeek
  * @category ISO Week Helpers
@@ -30,6 +29,5 @@ export default function isSameISOWeek(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
 }

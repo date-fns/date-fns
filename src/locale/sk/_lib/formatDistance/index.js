@@ -1,67 +1,51 @@
 // NOTE: should prolly be improved
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
-
 function declensionGroup(scheme, count) {
   if (count === 1) {
     return scheme.one
   }
-
   if (count >= 2 && count <= 4) {
     return scheme.twoFour
   }
-
   // if count === null || count === 0 || count >= 5
   return scheme.other
 }
-
 function declension(scheme, count, time) {
   var group = declensionGroup(scheme, count)
   var finalText = group[time] || group
   return finalText.replace('{{count}}', count)
 }
-
 function extractPreposition(token) {
   var result = ['lessThan', 'about', 'over', 'almost'].filter(function(
     preposition
   ) {
     return !!token.match(new RegExp('^' + preposition))
   })
-
   return result[0]
 }
-
 function prefixPreposition(preposition) {
   var translation = ''
-
   if (preposition === 'almost') {
     translation = 'takmer'
   }
-
   if (preposition === 'about') {
     translation = 'približne'
   }
-
   return translation.length > 0 ? translation + ' ' : ''
 }
-
 function suffixPreposition(preposition) {
   var translation = ''
-
   if (preposition === 'lessThan') {
     translation = 'menej než'
   }
-
   if (preposition === 'over') {
     translation = 'viac než'
   }
-
   return translation.length > 0 ? translation + ' ' : ''
 }
-
 function lowercaseFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
-
 var formatDistanceLocale = {
   xSeconds: {
     one: {
@@ -80,7 +64,6 @@ var formatDistanceLocale = {
       future: '{{count}} sekúnd'
     }
   },
-
   halfAMinute: {
     other: {
       regular: 'pol minúty',
@@ -88,7 +71,6 @@ var formatDistanceLocale = {
       future: 'pol minúty'
     }
   },
-
   xMinutes: {
     one: {
       regular: 'minúta',
@@ -106,7 +88,6 @@ var formatDistanceLocale = {
       future: '{{count}} minút'
     }
   },
-
   xHours: {
     one: {
       regular: 'hodina',
@@ -124,7 +105,6 @@ var formatDistanceLocale = {
       future: '{{count}} hodín'
     }
   },
-
   xDays: {
     one: {
       regular: 'deň',
@@ -142,7 +122,6 @@ var formatDistanceLocale = {
       future: '{{count}} dní'
     }
   },
-
   xMonths: {
     one: {
       regular: 'mesiac',
@@ -160,7 +139,6 @@ var formatDistanceLocale = {
       future: '{{count}} mesiacov'
     }
   },
-
   xYears: {
     one: {
       regular: 'rok',
@@ -179,14 +157,11 @@ var formatDistanceLocale = {
     }
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
-
   var preposition = extractPreposition(token) || ''
   var key = lowercaseFirstLetter(token.substring(preposition.length))
   var scheme = formatDistanceLocale[key]
-
   if (!options.addSuffix) {
     return (
       prefixPreposition(preposition) +
@@ -194,7 +169,6 @@ export default function formatDistance(token, count, options) {
       declension(scheme, count, 'regular')
     )
   }
-
   if (options.comparison > 0) {
     return (
       prefixPreposition(preposition) +

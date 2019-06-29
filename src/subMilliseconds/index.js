@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMilliseconds from '../addMilliseconds/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addMilliseconds from '../addMilliseconds/index'
 /**
  * @name subMilliseconds
  * @category Millisecond Helpers
@@ -29,7 +28,6 @@ export default function subMilliseconds(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, -amount)
 }

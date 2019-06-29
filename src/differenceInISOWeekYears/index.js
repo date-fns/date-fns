@@ -1,8 +1,7 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index.js'
-import compareAsc from '../compareAsc/index.js'
-import subISOWeekYears from '../subISOWeekYears/index.js'
-
+import toDate from '../toDate/index'
+import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
+import compareAsc from '../compareAsc/index'
+import subISOWeekYears from '../subISOWeekYears/index'
 /**
  * @name differenceInISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -44,16 +43,13 @@ export default function differenceInISOWeekYears(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(
     differenceInCalendarISOWeekYears(dateLeft, dateRight)
   )
   dateLeft = subISOWeekYears(dateLeft, sign * difference)
-
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value

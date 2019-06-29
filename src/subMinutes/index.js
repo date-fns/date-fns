@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMinutes from '../addMinutes/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addMinutes from '../addMinutes/index'
 /**
  * @name subMinutes
  * @category Minute Helpers
@@ -29,7 +28,6 @@ export default function subMinutes(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addMinutes(dirtyDate, -amount)
 }

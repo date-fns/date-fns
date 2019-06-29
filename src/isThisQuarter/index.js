@@ -1,5 +1,4 @@
-import isSameQuarter from '../isSameQuarter/index.js'
-
+import isSameQuarter from '../isSameQuarter/index'
 /**
  * @name isThisQuarter
  * @category Quarter Helpers
@@ -31,6 +30,5 @@ export default function isThisQuarter(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameQuarter(Date.now(), dirtyDate)
 }

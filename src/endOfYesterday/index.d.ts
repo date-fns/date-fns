@@ -1,4 +1,24 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { endOfYesterday } from 'date-fns'
-export default endOfYesterday
+/**
+ * @name endOfYesterday
+ * @category Day Helpers
+ * @summary Return the end of yesterday.
+ * @pure false
+ *
+ * @description
+ * Return the end of yesterday.
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @returns {Date} the end of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = endOfYesterday()
+ * //=> Sun Oct 5 2014 23:59:59.999
+ */
+export default function endOfYesterday(): Date;

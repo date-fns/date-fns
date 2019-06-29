@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { lastDayOfWeek } from 'date-fns/fp'
-export default lastDayOfWeek
+declare var lastDayOfWeek: any;
+export default lastDayOfWeek;

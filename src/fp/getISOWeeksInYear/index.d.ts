@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { getISOWeeksInYear } from 'date-fns/fp'
-export default getISOWeeksInYear
+declare var getISOWeeksInYear: any;
+export default getISOWeeksInYear;

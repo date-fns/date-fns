@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { getTime } from 'date-fns/fp'
-export default getTime
+declare var getTime: any;
+export default getTime;

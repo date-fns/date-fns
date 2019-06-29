@@ -7,7 +7,6 @@ var accusativeWeekdays = [
   'pátek',
   'sobotu'
 ]
-
 var formatRelativeLocale = {
   lastWeek: "'poslední' eeee 've' p",
   yesterday: "'včera v' p",
@@ -19,13 +18,10 @@ var formatRelativeLocale = {
   },
   other: 'P'
 }
-
 export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
-
   if (typeof format === 'function') {
     return format(date, baseDate, options)
   }
-
   return format
 }

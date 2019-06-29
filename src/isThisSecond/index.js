@@ -1,5 +1,4 @@
-import isSameSecond from '../isSameSecond/index.js'
-
+import isSameSecond from '../isSameSecond/index'
 /**
  * @name isThisSecond
  * @category Second Helpers
@@ -32,6 +31,5 @@ export default function isThisSecond(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameSecond(Date.now(), dirtyDate)
 }

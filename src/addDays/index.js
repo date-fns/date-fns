@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
 /**
  * @name addDays
  * @category Day Helpers
@@ -29,7 +28,6 @@ export default function addDays(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var amount = toInteger(dirtyAmount)
   date.setDate(date.getDate() + amount)

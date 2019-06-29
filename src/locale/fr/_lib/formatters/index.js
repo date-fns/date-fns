@@ -1,5 +1,4 @@
 var formatters = {}
-
 // Special case for day of month ordinals in long date format context:
 // 1er mars, 2 mars, 3 mars, …
 // See https://github.com/date-fns/date-fns/issues/437
@@ -15,5 +14,4 @@ monthsTokens.forEach(function(monthToken) {
     )
   }
 })
-
 export default formatters

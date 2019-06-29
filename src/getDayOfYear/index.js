@@ -1,7 +1,6 @@
-import toDate from '../toDate/index.js'
-import startOfYear from '../startOfYear/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-
+import toDate from '../toDate/index'
+import startOfYear from '../startOfYear/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
 /**
  * @name getDayOfYear
  * @category Day Helpers
@@ -29,7 +28,6 @@ export default function getDayOfYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var diff = differenceInCalendarDays(date, startOfYear(date))
   var dayOfYear = diff + 1

@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { endOfDecadeWithOptions } from 'date-fns/fp'
-export default endOfDecadeWithOptions
+declare var endOfDecadeWithOptions: any;
+export default endOfDecadeWithOptions;

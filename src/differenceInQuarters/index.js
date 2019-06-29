@@ -1,5 +1,4 @@
-import differenceInMonths from '../differenceInMonths/index.js'
-
+import differenceInMonths from '../differenceInMonths/index'
 /**
  * @name differenceInQuarters
  * @category Quarter Helpers
@@ -28,7 +27,6 @@ export default function differenceInQuarters(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

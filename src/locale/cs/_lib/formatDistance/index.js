@@ -16,7 +16,6 @@ var formatDistanceLocale = {
       future: 'za méně než {{count}} vteřin'
     }
   },
-
   xSeconds: {
     one: {
       regular: 'vteřina',
@@ -34,7 +33,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} vteřin'
     }
   },
-
   halfAMinute: {
     other: {
       regular: 'půl minuty',
@@ -42,7 +40,6 @@ var formatDistanceLocale = {
       future: 'za půl minuty'
     }
   },
-
   lessThanXMinutes: {
     one: {
       regular: 'méně než minuta',
@@ -60,7 +57,6 @@ var formatDistanceLocale = {
       future: 'za méně než {{count}} minut'
     }
   },
-
   xMinutes: {
     one: {
       regular: 'minuta',
@@ -78,7 +74,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} minut'
     }
   },
-
   aboutXHours: {
     one: {
       regular: 'přibližně hodina',
@@ -96,7 +91,6 @@ var formatDistanceLocale = {
       future: 'přibližně za {{count}} hodin'
     }
   },
-
   xHours: {
     one: {
       regular: 'hodina',
@@ -114,7 +108,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} hodin'
     }
   },
-
   xDays: {
     one: {
       regular: 'den',
@@ -149,7 +142,6 @@ var formatDistanceLocale = {
       future: 'přibližně za {{count}} měsíců'
     }
   },
-
   xMonths: {
     one: {
       regular: 'měsíc',
@@ -167,7 +159,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} měsíců'
     }
   },
-
   aboutXYears: {
     one: {
       regular: 'přibližně rok',
@@ -185,7 +176,6 @@ var formatDistanceLocale = {
       future: 'přibližně za {{count}} roků'
     }
   },
-
   xYears: {
     one: {
       regular: 'rok',
@@ -203,7 +193,6 @@ var formatDistanceLocale = {
       future: 'za {{count}} roků'
     }
   },
-
   overXYears: {
     one: {
       regular: 'více než rok',
@@ -221,7 +210,6 @@ var formatDistanceLocale = {
       future: 'za více než {{count}} roků'
     }
   },
-
   almostXYears: {
     one: {
       regular: 'skoro rok',
@@ -240,11 +228,9 @@ var formatDistanceLocale = {
     }
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
   var scheme = formatDistanceLocale[token]
-
   // cs pluralization
   var pluralToken
   if (typeof scheme.other === 'object') {
@@ -256,7 +242,6 @@ export default function formatDistance(token, count, options) {
   } else {
     pluralToken = 'many'
   }
-
   // times
   var suffixExist = options.addSuffix === true
   var comparison = options.comparison
@@ -268,6 +253,5 @@ export default function formatDistance(token, count, options) {
   } else {
     timeToken = 'regular'
   }
-
   return scheme[pluralToken][timeToken].replace('{{count}}', count)
 }

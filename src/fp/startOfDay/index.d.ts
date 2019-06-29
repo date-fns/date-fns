@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { startOfDay } from 'date-fns/fp'
-export default startOfDay
+declare var startOfDay: any;
+export default startOfDay;

@@ -1,5 +1,4 @@
-import isSameHour from '../isSameHour/index.js'
-
+import isSameHour from '../isSameHour/index'
 /**
  * @name isThisHour
  * @category Hour Helpers
@@ -32,6 +31,5 @@ export default function isThisHour(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameHour(Date.now(), dirtyDate)
 }

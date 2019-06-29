@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { subQuarters } from 'date-fns/fp'
-export default subQuarters
+declare var subQuarters: any;
+export default subQuarters;

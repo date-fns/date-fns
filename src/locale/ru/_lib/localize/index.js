@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['до н.э.', 'н.э.'],
   abbreviated: ['до н. э.', 'н. э.'],
   wide: ['до нашей эры', 'нашей эры']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
   wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
 }
-
 var monthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
   abbreviated: [
@@ -74,7 +71,6 @@ var formattingMonthValues = {
     'декабря'
   ]
 }
-
 var dayValues = {
   narrow: ['В', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
@@ -89,7 +85,6 @@ var dayValues = {
     'суббота'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ДП',
@@ -154,12 +149,10 @@ var formattingDayPeriodValues = {
     night: 'ночи'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
-
   if (unit === 'date') {
     suffix = '-е'
   } else if (unit === 'week' || unit === 'minute' || unit === 'second') {
@@ -167,18 +160,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   } else {
     suffix = '-й'
   }
-
   return dirtyNumber + suffix
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -186,19 +175,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
@@ -206,5 +192,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

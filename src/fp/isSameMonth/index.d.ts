@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isSameMonth } from 'date-fns/fp'
-export default isSameMonth
+declare var isSameMonth: any;
+export default isSameMonth;

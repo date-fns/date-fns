@@ -1,14 +1,12 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import compareAsc from '../compareAsc/index.js'
-import toDate from '../toDate/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import compareAsc from '../compareAsc/index'
+import toDate from '../toDate/index'
+import differenceInSeconds from '../differenceInSeconds/index'
+import cloneObject from '../_lib/cloneObject/index'
+import defaultLocale from '../locale/en-US/index'
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_YEAR = 525600
-
 /**
  * @name formatDistanceStrict
  * @category Common Helpers
@@ -167,24 +165,18 @@ export default function formatDistanceStrict(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
-
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain localize.formatDistance property')
   }
-
   var comparison = compareAsc(dirtyDate, dirtyBaseDate)
-
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
   }
-
   var localizeOptions = cloneObject(options)
   localizeOptions.addSuffix = Boolean(options.addSuffix)
   localizeOptions.comparison = comparison
-
   var dateLeft
   var dateRight
   if (comparison > 0) {
@@ -194,11 +186,9 @@ export default function formatDistanceStrict(
     dateLeft = toDate(dirtyDate)
     dateRight = toDate(dirtyBaseDate)
   }
-
   var roundingMethod =
     options.roundingMethod == null ? 'round' : String(options.roundingMethod)
   var roundingMethodFn
-
   if (roundingMethod === 'floor') {
     roundingMethodFn = Math.floor
   } else if (roundingMethod === 'ceil') {
@@ -208,14 +198,12 @@ export default function formatDistanceStrict(
   } else {
     throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
   }
-
   var seconds = differenceInSeconds(dateRight, dateLeft)
   var offsetInSeconds =
     (getTimezoneOffsetInMilliseconds(dateRight) -
       getTimezoneOffsetInMilliseconds(dateLeft)) /
     1000
   var minutes = roundingMethodFn((seconds - offsetInSeconds) / 60)
-
   var unit
   if (options.unit == null) {
     if (minutes < 1) {
@@ -234,36 +222,29 @@ export default function formatDistanceStrict(
   } else {
     unit = String(options.unit)
   }
-
   // 0 up to 60 seconds
   if (unit === 'second') {
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
-
     // 1 up to 60 mins
   } else if (unit === 'minute') {
     return locale.formatDistance('xMinutes', minutes, localizeOptions)
-
     // 1 up to 24 hours
   } else if (unit === 'hour') {
     var hours = roundingMethodFn(minutes / 60)
     return locale.formatDistance('xHours', hours, localizeOptions)
-
     // 1 up to 30 days
   } else if (unit === 'day') {
     var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
-
     // 1 up to 12 months
   } else if (unit === 'month') {
     var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', months, localizeOptions)
-
     // 1 year up to max Date
   } else if (unit === 'year') {
     var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
-
   throw new RangeError(
     "unit must be 'second', 'minute', 'hour', 'day', 'month' or 'year'"
   )

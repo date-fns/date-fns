@@ -1,7 +1,6 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
-import compareAsc from '../compareAsc/index.js'
-
+import toDate from '../toDate/index'
+import differenceInCalendarYears from '../differenceInCalendarYears/index'
+import compareAsc from '../compareAsc/index'
 /**
  * @name differenceInYears
  * @category Year Helpers
@@ -30,14 +29,11 @@ export default function differenceInYears(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
   dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)
-
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign

@@ -1,6 +1,5 @@
-import toDate from '../toDate/index.js'
-import isLeapYear from '../isLeapYear/index.js'
-
+import toDate from '../toDate/index'
+import isLeapYear from '../isLeapYear/index'
 /**
  * @name getDaysInYear
  * @category Year Helpers
@@ -28,12 +27,9 @@ export default function getDaysInYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
-
   if (isNaN(date)) {
     return NaN
   }
-
   return isLeapYear(date) ? 366 : 365
 }

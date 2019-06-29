@@ -1,5 +1,4 @@
-import differenceInDays from '../differenceInDays/index.js'
-
+import differenceInDays from '../differenceInDays/index'
 /**
  * @name differenceInWeeks
  * @category Week Helpers
@@ -28,7 +27,6 @@ export default function differenceInWeeks(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

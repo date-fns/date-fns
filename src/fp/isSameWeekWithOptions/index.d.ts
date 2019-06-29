@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isSameWeekWithOptions } from 'date-fns/fp'
-export default isSameWeekWithOptions
+declare var isSameWeekWithOptions: any;
+export default isSameWeekWithOptions;

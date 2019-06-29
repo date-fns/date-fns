@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isPast
  * @category Common Helpers
@@ -31,6 +30,5 @@ export default function isPast(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return toDate(dirtyDate).getTime() < Date.now()
 }

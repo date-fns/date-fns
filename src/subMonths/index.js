@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMonths from '../addMonths/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addMonths from '../addMonths/index'
 /**
  * @name subMonths
  * @category Month Helpers
@@ -29,7 +28,6 @@ export default function subMonths(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, -amount)
 }

@@ -1,7 +1,6 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
-import compareAsc from '../compareAsc/index.js'
-
+import toDate from '../toDate/index'
+import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
+import compareAsc from '../compareAsc/index'
 /**
  * @name differenceInMonths
  * @category Month Helpers
@@ -30,14 +29,11 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
   dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
-
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign

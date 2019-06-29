@@ -1,8 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMilliseconds from '../addMilliseconds/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addMilliseconds from '../addMilliseconds/index'
 var MILLISECONDS_IN_MINUTE = 60000
-
 /**
  * @name addMinutes
  * @category Minute Helpers
@@ -31,7 +29,6 @@ export default function addMinutes(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
 }

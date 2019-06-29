@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getDecade
  * @category Decade Helpers
@@ -27,7 +26,6 @@ export default function getDecade(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = Math.floor(year / 10) * 10

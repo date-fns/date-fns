@@ -1,5 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
-
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 var accusativeWeekdays = [
   'воскресенье',
   'понедельник',
@@ -9,10 +8,8 @@ var accusativeWeekdays = [
   'пятницу',
   'субботу'
 ]
-
 function lastWeek(day) {
   var weekday = accusativeWeekdays[day]
-
   switch (day) {
     case 0:
       return "'в прошлое " + weekday + " в' p"
@@ -26,20 +23,16 @@ function lastWeek(day) {
       return "'в прошлую " + weekday + " в' p"
   }
 }
-
 function thisWeek(day) {
   var weekday = accusativeWeekdays[day]
-
   if (day === 2 /* Tue */) {
     return "'во " + weekday + " в' p"
   } else {
     return "'в " + weekday + " в' p"
   }
 }
-
 function nextWeek(day) {
   var weekday = accusativeWeekdays[day]
-
   switch (day) {
     case 0:
       return "'в следующее " + weekday + " в' p"
@@ -53,7 +46,6 @@ function nextWeek(day) {
       return "'в следующую " + weekday + " в' p"
   }
 }
-
 var formatRelativeLocale = {
   lastWeek: function(date, baseDate, options) {
     var day = date.getUTCDay()
@@ -76,13 +68,10 @@ var formatRelativeLocale = {
   },
   other: 'P'
 }
-
 export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
-
   if (typeof format === 'function') {
     return format(date, baseDate, options)
   }
-
   return format
 }

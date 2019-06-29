@@ -1,5 +1,4 @@
-import startOfDay from '../startOfDay/index.js'
-
+import startOfDay from '../startOfDay/index'
 /**
  * @name startOfToday
  * @category Day Helpers

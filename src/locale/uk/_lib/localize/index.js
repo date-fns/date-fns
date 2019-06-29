@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['до н.е.', 'н.е.'],
   abbreviated: ['до н. е.', 'н. е.'],
   wide: ['до нашої ери', 'нашої ери']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
   wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
 }
-
 var monthValues = {
   // ДСТУ 3582:2013
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
@@ -44,7 +41,6 @@ var monthValues = {
     'грудень'
   ]
 }
-
 var formattingMonthValues = {
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
   abbreviated: [
@@ -76,7 +72,6 @@ var formattingMonthValues = {
     'грудня'
   ]
 }
-
 var dayValues = {
   narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
@@ -91,7 +86,6 @@ var dayValues = {
     'субота'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ДП',
@@ -124,7 +118,6 @@ var dayPeriodValues = {
     night: 'ніч'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'ДП',
@@ -157,12 +150,10 @@ var formattingDayPeriodValues = {
     night: 'ночі'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
-
   if (unit === 'date') {
     if (dirtyNumber === 3 || dirtyNumber === 23) {
       suffix = '-є'
@@ -174,18 +165,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   } else {
     suffix = '-й'
   }
-
   return dirtyNumber + suffix
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -193,19 +180,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
@@ -213,5 +197,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

@@ -1,5 +1,4 @@
-import startOfSecond from '../startOfSecond/index.js'
-
+import startOfSecond from '../startOfSecond/index'
 /**
  * @name isSameSecond
  * @category Second Helpers
@@ -32,9 +31,7 @@ export default function isSameSecond(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
-
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

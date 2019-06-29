@@ -1,7 +1,6 @@
-import isWeekend from '../isWeekend/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import isWeekend from '../isWeekend/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name addBusinessDays
  * @category Day Helpers
@@ -26,12 +25,9 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var amount = toInteger(dirtyAmount)
-
   if (isNaN(amount)) return new Date(NaN)
-
   var hours = date.getHours()
   var numWeekDays = 0
   while (numWeekDays < amount) {
@@ -39,6 +35,5 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
     date.setHours(hours)
     if (!isWeekend(date)) numWeekDays++
   }
-
   return date
 }

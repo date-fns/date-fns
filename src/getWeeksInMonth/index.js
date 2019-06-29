@@ -1,7 +1,6 @@
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
-import lastDayOfMonth from '../lastDayOfMonth/index.js'
-import startOfMonth from '../startOfMonth/index.js'
-
+import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
+import lastDayOfMonth from '../lastDayOfMonth/index'
+import startOfMonth from '../startOfMonth/index'
 /**
  * @name getWeeksInMonth
  * @category Week Helpers
@@ -39,7 +38,6 @@ export default function getWeeksInMonth(date, options) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return (
     differenceInCalendarWeeks(
       lastDayOfMonth(date),

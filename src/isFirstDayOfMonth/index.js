@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isFirstDayOfMonth
  * @category Month Helpers
@@ -27,6 +26,5 @@ export default function isFirstDayOfMonth(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return toDate(dirtyDate).getDate() === 1
 }

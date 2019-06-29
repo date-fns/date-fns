@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['да н.э.', 'н.э.'],
   abbreviated: ['да н. э.', 'н. э.'],
   wide: ['да нашай эры', 'нашай эры']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'],
   wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал']
 }
-
 var monthValues = {
   narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
   abbreviated: [
@@ -74,7 +71,6 @@ var formattingMonthValues = {
     'снежня'
   ]
 }
-
 var dayValues = {
   narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
@@ -89,7 +85,6 @@ var dayValues = {
     'субота'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ДП',
@@ -154,13 +149,11 @@ var formattingDayPeriodValues = {
     night: 'ночы'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var number = Number(dirtyNumber)
   var suffix
-
   /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
    *  For date-month combinations should be used `d` formatter.
    *  Correct:   `d MMMM` (4 верасня)
@@ -184,18 +177,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
         ? '-і'
         : '-ы'
   }
-
   return number + suffix
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -203,19 +192,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
@@ -223,5 +209,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

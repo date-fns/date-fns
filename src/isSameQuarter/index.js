@@ -1,5 +1,4 @@
-import startOfQuarter from '../startOfQuarter/index.js'
-
+import startOfQuarter from '../startOfQuarter/index'
 /**
  * @name isSameQuarter
  * @category Quarter Helpers
@@ -28,9 +27,7 @@ export default function isSameQuarter(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
   var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
-
   return dateLeftStartOfQuarter.getTime() === dateRightStartOfQuarter.getTime()
 }

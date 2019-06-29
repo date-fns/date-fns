@@ -1,7 +1,6 @@
-import getWeekYear from '../getWeekYear/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import getWeekYear from '../getWeekYear/index'
+import startOfWeek from '../startOfWeek/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name startOfWeekYear
  * @category Week-Numbering Year Helpers
@@ -51,7 +50,6 @@ export default function startOfWeekYear(dirtyDate, dirtyOptions) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeFirstWeekContainsDate =
@@ -64,7 +62,6 @@ export default function startOfWeekYear(dirtyDate, dirtyOptions) {
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
-
   var year = getWeekYear(dirtyDate, dirtyOptions)
   var firstWeek = new Date(0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)

@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['ق', 'ب'],
   abbreviated: ['ق.م.', 'ب.م.'],
   wide: ['قبل الميلاد', 'بعد الميلاد']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
   wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع']
 }
-
 var monthValues = {
   narrow: ['ج', 'ف', 'م', 'أ', 'م', 'ج', 'ج', 'أ', 'س', 'أ', 'ن', 'د'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'ديسمبر'
   ]
 }
-
 var dayValues = {
   narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
   short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
@@ -58,7 +54,6 @@ var dayValues = {
     'السبت'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ص',
@@ -121,19 +116,15 @@ var formattingDayPeriodValues = {
     night: 'في الليل'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   return String(dirtyNumber)
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -141,17 +132,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -159,5 +147,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name startOfDay
  * @category Day Helpers
@@ -28,7 +27,6 @@ export default function startOfDay(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)
   return date

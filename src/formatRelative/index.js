@@ -1,10 +1,9 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import format from '../format/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import format from '../format/index'
+import defaultLocale from '../locale/en-US/index'
+import subMilliseconds from '../subMilliseconds/index'
+import toDate from '../toDate/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 /**
  * @name formatRelative
  * @category Common Helpers
@@ -44,31 +43,23 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var baseDate = toDate(dirtyBaseDate)
-
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
-
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
   }
-
   if (!locale.formatLong) {
     throw new RangeError('locale must contain formatLong property')
   }
-
   if (!locale.formatRelative) {
     throw new RangeError('locale must contain formatRelative property')
   }
-
   var diff = differenceInCalendarDays(date, baseDate)
-
   if (isNaN(diff)) {
     throw new RangeError('Invalid time value')
   }
-
   var token
   if (diff < -6) {
     token = 'other'
@@ -85,7 +76,6 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
   } else {
     token = 'other'
   }
-
   var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
   var utcBaseDate = subMilliseconds(
     baseDate,

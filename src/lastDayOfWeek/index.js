@@ -1,6 +1,5 @@
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name lastDayOfWeek
  * @category Week Helpers
@@ -38,7 +37,6 @@ export default function lastDayOfWeek(dirtyDate, dirtyOptions) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn =
@@ -49,16 +47,13 @@ export default function lastDayOfWeek(dirtyDate, dirtyOptions) {
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
-
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
     throw new RangeError('weekStartsOn must be between 0 and 6')
   }
-
   var date = toDate(dirtyDate)
   var day = date.getDay()
   var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
-
   date.setHours(0, 0, 0, 0)
   date.setDate(date.getDate() + diff)
   return date

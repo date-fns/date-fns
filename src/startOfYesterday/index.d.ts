@@ -1,4 +1,24 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { startOfYesterday } from 'date-fns'
-export default startOfYesterday
+/**
+ * @name startOfYesterday
+ * @category Day Helpers
+ * @summary Return the start of yesterday.
+ * @pure false
+ *
+ * @description
+ * Return the start of yesterday.
+ *
+ * > ⚠️ Please note that this function is not present in the FP submodule as
+ * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ *
+ * ### v2.0.0 breaking changes:
+ *
+ * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ *
+ * @returns {Date} the start of yesterday
+ *
+ * @example
+ * // If today is 6 October 2014:
+ * var result = startOfYesterday()
+ * //=> Sun Oct 5 2014 00:00:00
+ */
+export default function startOfYesterday(): Date;

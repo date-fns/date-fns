@@ -1,6 +1,5 @@
-import isSameDay from '../isSameDay/index.js'
-import subDays from '../subDays/index.js'
-
+import isSameDay from '../isSameDay/index'
+import subDays from '../subDays/index'
 /**
  * @name isYesterday
  * @category Day Helpers
@@ -32,6 +31,5 @@ export default function isYesterday(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameDay(dirtyDate, subDays(Date.now(), 1))
 }

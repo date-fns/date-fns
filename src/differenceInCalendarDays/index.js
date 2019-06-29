@@ -1,8 +1,6 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import startOfDay from '../startOfDay/index.js'
-
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import startOfDay from '../startOfDay/index'
 var MILLISECONDS_IN_DAY = 86400000
-
 /**
  * @name differenceInCalendarDays
  * @category Day Helpers
@@ -46,15 +44,12 @@ export default function differenceInCalendarDays(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var startOfDayLeft = startOfDay(dirtyDateLeft)
   var startOfDayRight = startOfDay(dirtyDateRight)
-
   var timestampLeft =
     startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)
   var timestampRight =
     startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight)
-
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a day is not constant
   // (e.g. it's different in the day of the daylight saving time clock shift)

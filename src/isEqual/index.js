@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isEqual
  * @category Common Helpers
@@ -31,7 +30,6 @@ export default function isEqual(dirtyLeftDate, dirtyRightDate) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyLeftDate)
   var dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()

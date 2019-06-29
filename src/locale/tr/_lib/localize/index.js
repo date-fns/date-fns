@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   abbreviated: ['MÖ', 'MS'],
   narrow: ['MÖ', 'MS'],
   wide: ['Milattan Önce', 'Milattan Sonra']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1Ç', '2Ç', '3Ç', '4Ç'],
   wide: ['İlk çeyrek', 'İkinci Çeyrek', 'Üçüncü çeyrek', 'Son çeyrek']
 }
-
 var monthValues = {
   narrow: ['O', 'Ş', 'M', 'N', 'M', 'H', 'T', 'A', 'E', 'E', 'K', 'A'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'Aralık'
   ]
 }
-
 var dayValues = {
   narrow: ['P', 'P', 'S', 'Ç', 'P', 'C', 'C'],
   short: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
@@ -58,7 +54,6 @@ var dayValues = {
     'Cumartesi'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'öö',
@@ -91,7 +86,6 @@ var dayPeriodValues = {
     night: 'gece'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'öö',
@@ -124,20 +118,16 @@ var formattingDayPeriodValues = {
     night: 'geceleyin'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -145,17 +135,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -163,5 +150,4 @@ var localize = {
     defaulFormattingWidth: 'wide'
   })
 }
-
 export default localize

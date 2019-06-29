@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { toDate } from 'date-fns/fp'
-export default toDate
+declare var toDate: any;
+export default toDate;

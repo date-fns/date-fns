@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['πΧ', 'μΧ'],
   abbreviated: ['π.Χ.', 'μ.Χ.'],
   wide: ['προ Χριστού', 'μετά Χριστόν']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
   wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
 }
-
 var monthValues = {
   narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'Δεκέμβριος'
   ]
 }
-
 var formattingMonthValues = {
   narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
   abbreviated: [
@@ -75,7 +71,6 @@ var formattingMonthValues = {
     'Δεκεμβρίου'
   ]
 }
-
 var dayValues = {
   narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'],
   short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
@@ -90,7 +85,6 @@ var dayValues = {
     'Σάββατο'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'πμ',
@@ -123,12 +117,10 @@ var dayPeriodValues = {
     night: 'νύχτα'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
-
   if (unit === 'year' || unit === 'month') {
     suffix = 'ος'
   } else if (
@@ -142,10 +134,8 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   } else {
     suffix = 'ο'
   }
-
   return dirtyNumber + suffix
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
@@ -174,5 +164,4 @@ var localize = {
     defaultWidth: 'wide'
   })
 }
-
 export default localize

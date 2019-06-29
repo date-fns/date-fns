@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isWednesday } from 'date-fns/fp'
-export default isWednesday
+declare var isWednesday: any;
+export default isWednesday;

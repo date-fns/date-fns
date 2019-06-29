@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getHours
  * @category Hour Helpers
@@ -27,7 +26,6 @@ export default function getHours(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var hours = date.getHours()
   return hours

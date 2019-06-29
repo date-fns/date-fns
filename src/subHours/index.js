@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addHours from '../addHours/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addHours from '../addHours/index'
 /**
  * @name subHours
  * @category Hour Helpers
@@ -29,7 +28,6 @@ export default function subHours(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addHours(dirtyDate, -amount)
 }

@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getQuarter
  * @category Quarter Helpers
@@ -27,7 +26,6 @@ export default function getQuarter(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter

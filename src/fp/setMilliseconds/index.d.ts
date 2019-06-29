@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { setMilliseconds } from 'date-fns/fp'
-export default setMilliseconds
+declare var setMilliseconds: any;
+export default setMilliseconds;

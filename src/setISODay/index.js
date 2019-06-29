@@ -1,8 +1,7 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import addDays from '../addDays/index.js'
-import getISODay from '../getISODay/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import addDays from '../addDays/index'
+import getISODay from '../getISODay/index'
 /**
  * @name setISODay
  * @category Weekday Helpers
@@ -33,7 +32,6 @@ export default function setISODay(dirtyDate, dirtyDay) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var day = toInteger(dirtyDay)
   var currentDay = getISODay(date)

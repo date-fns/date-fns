@@ -1,8 +1,6 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import addWeeks from '../addWeeks/index.js'
-
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import addWeeks from '../addWeeks/index'
 var MILLISECONDS_IN_WEEK = 604800000
-
 /**
  * @name getISOWeeksInYear
  * @category ISO Week-Numbering Year Helpers
@@ -32,7 +30,6 @@ export default function getISOWeeksInYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var thisYear = startOfISOWeekYear(dirtyDate)
   var nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   var diff = nextYear.valueOf() - thisYear.valueOf()

@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addWeeks from '../addWeeks/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addWeeks from '../addWeeks/index'
 /**
  * @name subWeeks
  * @category Week Helpers
@@ -29,7 +28,6 @@ export default function subWeeks(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addWeeks(dirtyDate, -amount)
 }

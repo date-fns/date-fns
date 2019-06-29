@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['BC', 'AD'],
   abbreviated: ['BC', 'AD'],
   wide: ['기원전', '서기']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1분기', '2분기', '3분기', '4분기']
 }
-
 var monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   abbreviated: [
@@ -43,14 +40,12 @@ var monthValues = {
     '12월'
   ]
 }
-
 var dayValues = {
   narrow: ['일', '월', '화', '수', '목', '금', '토'],
   short: ['일', '월', '화', '수', '목', '금', '토'],
   abbreviated: ['일', '월', '화', '수', '목', '금', '토'],
   wide: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: '오전',
@@ -83,7 +78,6 @@ var dayPeriodValues = {
     night: '밤'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: '오전',
@@ -116,24 +110,19 @@ var formattingDayPeriodValues = {
     night: '밤'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-
   return dirtyOptions &&
     (dirtyOptions.unit === 'minute' || dirtyOptions.unit === 'second')
     ? number.toString()
     : number + '번째'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -141,17 +130,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -159,5 +145,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

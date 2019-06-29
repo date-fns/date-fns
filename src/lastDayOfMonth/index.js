@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name lastDayOfMonth
  * @category Month Helpers
@@ -28,7 +27,6 @@ export default function lastDayOfMonth(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var month = date.getMonth()
   date.setFullYear(date.getFullYear(), month + 1, 0)

@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['v.Chr.', 'n.Chr.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
   wide: ['vor Christus', 'nach Christus']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
 }
-
 // Note: in German, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -47,7 +44,6 @@ var monthValues = {
     'Dezember'
   ]
 }
-
 var dayValues = {
   narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
   short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
@@ -62,7 +58,6 @@ var dayValues = {
     'Samstag'
   ]
 }
-
 // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
 var dayPeriodValues = {
   narrow: {
@@ -128,21 +123,16 @@ var formattingDayPeriodValues = {
     night: 'nachts'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
-
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -150,17 +140,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -168,5 +155,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

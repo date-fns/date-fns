@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { closestTo } from 'date-fns/fp'
-export default closestTo
+declare var closestTo: any;
+export default closestTo;

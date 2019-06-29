@@ -1,16 +1,14 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInMonths from '../differenceInMonths/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import toDate from '../toDate/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-
+import compareAsc from '../compareAsc/index'
+import differenceInMonths from '../differenceInMonths/index'
+import differenceInSeconds from '../differenceInSeconds/index'
+import defaultLocale from '../locale/en-US/index'
+import toDate from '../toDate/index'
+import cloneObject from '../_lib/cloneObject/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
 var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_TWO_MONTHS = 86400
-
 /**
  * @name formatDistance
  * @category Common Helpers
@@ -123,24 +121,18 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
-
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
   }
-
   var comparison = compareAsc(dirtyDate, dirtyBaseDate)
-
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
   }
-
   var localizeOptions = cloneObject(options)
   localizeOptions.addSuffix = Boolean(options.addSuffix)
   localizeOptions.comparison = comparison
-
   var dateLeft
   var dateRight
   if (comparison > 0) {
@@ -150,7 +142,6 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     dateLeft = toDate(dirtyDate)
     dateRight = toDate(dirtyBaseDate)
   }
-
   var seconds = differenceInSeconds(dateRight, dateLeft)
   var offsetInSeconds =
     (getTimezoneOffsetInMilliseconds(dateRight) -
@@ -158,7 +149,6 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     1000
   var minutes = Math.round((seconds - offsetInSeconds) / 60)
   var months
-
   // 0 up to 2 mins
   if (minutes < 2) {
     if (options.includeSeconds) {
@@ -182,55 +172,43 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
         return locale.formatDistance('xMinutes', minutes, localizeOptions)
       }
     }
-
     // 2 mins up to 0.75 hrs
   } else if (minutes < 45) {
     return locale.formatDistance('xMinutes', minutes, localizeOptions)
-
     // 0.75 hrs up to 1.5 hrs
   } else if (minutes < 90) {
     return locale.formatDistance('aboutXHours', 1, localizeOptions)
-
     // 1.5 hrs up to 24 hrs
   } else if (minutes < MINUTES_IN_DAY) {
     var hours = Math.round(minutes / 60)
     return locale.formatDistance('aboutXHours', hours, localizeOptions)
-
     // 1 day up to 1.75 days
   } else if (minutes < MINUTES_IN_ALMOST_TWO_DAYS) {
     return locale.formatDistance('xDays', 1, localizeOptions)
-
     // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
-
     // 1 month up to 2 months
   } else if (minutes < MINUTES_IN_TWO_MONTHS) {
     months = Math.round(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('aboutXMonths', months, localizeOptions)
   }
-
   months = differenceInMonths(dateRight, dateLeft)
-
   // 2 months up to 12 months
   if (months < 12) {
     var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', nearestMonth, localizeOptions)
-
     // 1 year up to max Date
   } else {
     var monthsSinceStartOfYear = months % 12
     var years = Math.floor(months / 12)
-
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {
       return locale.formatDistance('aboutXYears', years, localizeOptions)
-
       // N years 3 months up to N years 9 months
     } else if (monthsSinceStartOfYear < 9) {
       return locale.formatDistance('overXYears', years, localizeOptions)
-
       // N years 9 months up to N year 12 months
     } else {
       return locale.formatDistance('almostXYears', years + 1, localizeOptions)

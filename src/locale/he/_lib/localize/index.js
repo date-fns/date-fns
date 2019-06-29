@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['לפנה״ס', 'לספירה'],
   abbreviated: ['לפנה״ס', 'לספירה'],
   wide: ['לפני הספירה', 'לספירה']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
 }
-
 var monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'דצמבר'
   ]
 }
-
 var dayValues = {
   narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
   short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
@@ -66,7 +62,6 @@ var dayValues = {
     'יום שבת'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'לפנה״צ',
@@ -131,18 +126,13 @@ var formattingDayPeriodValues = {
     night: 'בלילה'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-
   // We only show words till 10
   if (number <= 0 || number > 10) return number
-
   var options = dirtyOptions || {}
   var unit = String(options.unit)
-
   var isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
-
   var male = [
     'ראשון',
     'שני',
@@ -167,19 +157,15 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     'תשיעית',
     'עשירית'
   ]
-
   var index = number - 1
   return isFemale ? female[index] : male[index]
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -187,17 +173,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -205,5 +188,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

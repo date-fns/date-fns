@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['v.C.', 'n.C.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
   wide: ['voor Christus', 'na Christus']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
   wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
 }
-
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'december'
   ]
 }
-
 var dayValues = {
   narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
   short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
@@ -58,7 +54,6 @@ var dayValues = {
     'zaterdag'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -91,20 +86,16 @@ var dayPeriodValues = {
     night: "'s nachts"
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + 'e'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -112,21 +103,17 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide'
   })
 }
-
 export default localize

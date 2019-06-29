@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isFirstDayOfMonth } from 'date-fns/fp'
-export default isFirstDayOfMonth
+declare var isFirstDayOfMonth: any;
+export default isFirstDayOfMonth;

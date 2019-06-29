@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { endOfHour } from 'date-fns/fp'
-export default endOfHour
+declare var endOfHour: any;
+export default endOfHour;

@@ -1,6 +1,5 @@
-import getISOWeekYear from '../getISOWeekYear/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
-
+import getISOWeekYear from '../getISOWeekYear/index'
+import startOfISOWeek from '../startOfISOWeek/index'
 /**
  * @name endOfISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -37,7 +36,6 @@ export default function endOfISOWeekYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var year = getISOWeekYear(dirtyDate)
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)

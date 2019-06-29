@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { lastDayOfQuarter } from 'date-fns/fp'
-export default lastDayOfQuarter
+declare var lastDayOfQuarter: any;
+export default lastDayOfQuarter;

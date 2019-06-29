@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name areIntervalsOverlapping
  * @category Interval Helpers
@@ -74,18 +73,15 @@ export default function areIntervalsOverlapping(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var intervalLeft = dirtyIntervalLeft || {}
   var intervalRight = dirtyIntervalRight || {}
   var leftStartTime = toDate(intervalLeft.start).getTime()
   var leftEndTime = toDate(intervalLeft.end).getTime()
   var rightStartTime = toDate(intervalRight.start).getTime()
   var rightEndTime = toDate(intervalRight.end).getTime()
-
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
     throw new RangeError('Invalid interval')
   }
-
   return leftStartTime < rightEndTime && rightStartTime < leftEndTime
 }

@@ -1,8 +1,7 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import startOfWeekYear from '../startOfWeekYear/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name setWeekYear
  * @category Week-Numbering Year Helpers
@@ -54,7 +53,6 @@ export default function setWeekYear(dirtyDate, dirtyWeekYear, dirtyOptions) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeFirstWeekContainsDate =
@@ -67,7 +65,6 @@ export default function setWeekYear(dirtyDate, dirtyWeekYear, dirtyOptions) {
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
-
   var date = toDate(dirtyDate)
   var weekYear = toInteger(dirtyWeekYear)
   var diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions))

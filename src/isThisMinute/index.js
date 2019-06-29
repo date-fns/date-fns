@@ -1,5 +1,4 @@
-import isSameMinute from '../isSameMinute/index.js'
-
+import isSameMinute from '../isSameMinute/index'
 /**
  * @name isThisMinute
  * @category Minute Helpers
@@ -26,13 +25,11 @@ import isSameMinute from '../isSameMinute/index.js'
  * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
  */
-
 export default function isThisMinute(dirtyDate) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameMinute(Date.now(), dirtyDate)
 }

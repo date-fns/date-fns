@@ -1,5 +1,4 @@
-import lastDayOfWeek from '../lastDayOfWeek/index.js'
-
+import lastDayOfWeek from '../lastDayOfWeek/index'
 /**
  * @name lastDayOfISOWeek
  * @category ISO Week Helpers
@@ -30,6 +29,5 @@ export default function lastDayOfISOWeek(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

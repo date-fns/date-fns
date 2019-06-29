@@ -8,7 +8,6 @@ var formatDistanceLocale = {
     dual: 'manje od {{count}} sekunde',
     other: 'manje od {{count}} sekundi'
   },
-
   xSeconds: {
     one: {
       standalone: '1 sekunda',
@@ -18,9 +17,7 @@ var formatDistanceLocale = {
     dual: '{{count}} sekunde',
     other: '{{count}} sekundi'
   },
-
   halfAMinute: 'pola minute',
-
   lessThanXMinutes: {
     one: {
       standalone: 'manje od 1 minute',
@@ -30,7 +27,6 @@ var formatDistanceLocale = {
     dual: 'manje od {{count}} minute',
     other: 'manje od {{count}} minuta'
   },
-
   xMinutes: {
     one: {
       standalone: '1 minuta',
@@ -40,7 +36,6 @@ var formatDistanceLocale = {
     dual: '{{count}} minute',
     other: '{{count}} minuta'
   },
-
   aboutXHours: {
     one: {
       standalone: 'oko 1 sat',
@@ -50,7 +45,6 @@ var formatDistanceLocale = {
     dual: 'oko {{count}} sata',
     other: 'oko {{count}} sati'
   },
-
   xHours: {
     one: {
       standalone: '1 sat',
@@ -60,7 +54,6 @@ var formatDistanceLocale = {
     dual: '{{count}} sata',
     other: '{{count}} sati'
   },
-
   xDays: {
     one: {
       standalone: '1 dan',
@@ -70,7 +63,6 @@ var formatDistanceLocale = {
     dual: '{{count}} dana',
     other: '{{count}} dana'
   },
-
   aboutXMonths: {
     one: {
       standalone: 'oko 1 mjesec',
@@ -80,7 +72,6 @@ var formatDistanceLocale = {
     dual: 'oko {{count}} mjeseca',
     other: 'oko {{count}} mjeseci'
   },
-
   xMonths: {
     one: {
       standalone: '1 mjesec',
@@ -90,7 +81,6 @@ var formatDistanceLocale = {
     dual: '{{count}} mjeseca',
     other: '{{count}} mjeseci'
   },
-
   aboutXYears: {
     one: {
       standalone: 'oko 1 godinu',
@@ -100,7 +90,6 @@ var formatDistanceLocale = {
     dual: 'oko {{count}} godine',
     other: 'oko {{count}} godina'
   },
-
   xYears: {
     one: {
       standalone: '1 godina',
@@ -110,7 +99,6 @@ var formatDistanceLocale = {
     dual: '{{count}} godine',
     other: '{{count}} godina'
   },
-
   overXYears: {
     one: {
       standalone: 'preko 1 godinu',
@@ -120,7 +108,6 @@ var formatDistanceLocale = {
     dual: 'preko {{count}} godine',
     other: 'preko {{count}} godina'
   },
-
   almostXYears: {
     one: {
       standalone: 'gotovo 1 godinu',
@@ -131,12 +118,9 @@ var formatDistanceLocale = {
     other: 'gotovo {{count}} godina'
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
-
   var result
-
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
@@ -158,7 +142,6 @@ export default function formatDistance(token, count, options) {
   } else {
     result = formatDistanceLocale[token].other.replace('{{count}}', count)
   }
-
   if (options.addSuffix) {
     if (options.comparison > 0) {
       return 'za ' + result
@@ -166,6 +149,5 @@ export default function formatDistance(token, count, options) {
       return 'prije ' + result
     }
   }
-
   return result
 }

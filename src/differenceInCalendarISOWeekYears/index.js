@@ -1,5 +1,4 @@
-import getISOWeekYear from '../getISOWeekYear/index.js'
-
+import getISOWeekYear from '../getISOWeekYear/index'
 /**
  * @name differenceInCalendarISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -41,6 +40,5 @@ export default function differenceInCalendarISOWeekYears(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   return getISOWeekYear(dirtyDateLeft) - getISOWeekYear(dirtyDateRight)
 }

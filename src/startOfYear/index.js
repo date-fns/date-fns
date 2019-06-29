@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name startOfYear
  * @category Year Helpers
@@ -28,7 +27,6 @@ export default function startOfYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var cleanDate = toDate(dirtyDate)
   var date = new Date(0)
   date.setFullYear(cleanDate.getFullYear(), 0, 1)

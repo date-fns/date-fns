@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name differenceInMilliseconds
  * @category Millisecond Helpers
@@ -35,7 +34,6 @@ export default function differenceInMilliseconds(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
   return dateLeft.getTime() - dateRight.getTime()

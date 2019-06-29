@@ -1,5 +1,4 @@
 var formatters = {}
-
 var genetiveMonths = [
   'siječnja',
   'veljače',
@@ -14,7 +13,6 @@ var genetiveMonths = [
   'studenog',
   'prosinca'
 ]
-
 // Generate formatters like 'D MMMM',
 // where month is in the genitive case: january, february, ..., december
 var monthsGenitiveFormatters = ['D', 'Do', 'DD']
@@ -25,5 +23,4 @@ monthsGenitiveFormatters.forEach(function(formatterToken) {
     return formatter(date, options) + ' ' + genetiveMonths[date.getUTCMonth()]
   }
 })
-
 export default formatters

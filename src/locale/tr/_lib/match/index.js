@@ -1,9 +1,7 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 var parseOrdinalNumberPattern = /\d+/i
-
 var matchEraPatterns = {
   narrow: /^(mö|ms)/i,
   abbreviated: /^(mö|ms)/i,
@@ -12,7 +10,6 @@ var matchEraPatterns = {
 var parseEraPatterns = {
   any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i]
 }
-
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]ç/i,
@@ -28,7 +25,6 @@ var parseQuarterPatterns = {
     /son çeyrek/i
   ]
 }
-
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
   abbreviated: /^(oca|şub|mar|nis|may|haz|tem|ağu|eyl|eki|kas|ara)/i,
@@ -64,7 +60,6 @@ var parseMonthPatterns = {
     /^a/i
   ]
 }
-
 var matchDayPatterns = {
   narrow: /^[psçc]/i,
   short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
@@ -84,7 +79,6 @@ var parseDayPatterns = {
     /cumartesi/i
   ]
 }
-
 var matchDayPeriodPatterns = {
   narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
   any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i
@@ -101,7 +95,6 @@ var parseDayPeriodPatterns = {
     night: /^ge/i
   }
 }
-
 var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
@@ -110,14 +103,12 @@ var match = {
       return parseInt(value, 10)
     }
   }),
-
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
     defaultParseWidth: 'any'
   }),
-
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
     defaultMatchWidth: 'wide',
@@ -127,21 +118,18 @@ var match = {
       return index + 1
     }
   }),
-
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
     defaultParseWidth: 'any'
   }),
-
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
     defaultParseWidth: 'any'
   }),
-
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
@@ -149,5 +137,4 @@ var match = {
     defaultParseWidth: 'any'
   })
 }
-
 export default match

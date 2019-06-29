@@ -1,6 +1,5 @@
-import getQuarter from '../getQuarter/index.js'
-import toDate from '../toDate/index.js'
-
+import getQuarter from '../getQuarter/index'
+import toDate from '../toDate/index'
 /**
  * @name differenceInCalendarQuarters
  * @category Quarter Helpers
@@ -35,12 +34,9 @@ export default function differenceInCalendarQuarters(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
   var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
-
   return yearDiff * 4 + quarterDiff
 }

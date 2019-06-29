@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name min
  * @category Common Helpers
@@ -45,29 +44,23 @@ export default function min(dirtyDatesArray) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var datesArray
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
-
     // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   } else if (typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
-
     // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
   } else {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
-
   var result
   datesArray.forEach(function(dirtyDate) {
     var currentDate = toDate(dirtyDate)
-
     if (result === undefined || result > currentDate || isNaN(currentDate)) {
       result = currentDate
     }
   })
-
   return result
 }

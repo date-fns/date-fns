@@ -1,7 +1,6 @@
-import addDays from '../addDays/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import addDays from '../addDays/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name setDay
  * @category Weekday Helpers
@@ -39,7 +38,6 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn =
@@ -50,19 +48,15 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
-
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
-
-  var date = toDate(dirtyDate, options)
+  var date = toDate(dirtyDate)
   var day = toInteger(dirtyDay)
   var currentDay = date.getDay()
-
   var remainder = day % 7
   var dayIndex = (remainder + 7) % 7
-
   var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
-  return addDays(date, diff, options)
+  return addDays(date, diff)
 }

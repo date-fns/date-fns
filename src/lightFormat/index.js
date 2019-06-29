@@ -1,9 +1,8 @@
-import toDate from '../toDate/index.js'
-import formatters from '../_lib/format/lightFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import isValid from '../isValid/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-
+import toDate from '../toDate/index'
+import formatters from '../_lib/format/lightFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import isValid from '../isValid/index'
+import subMilliseconds from '../subMilliseconds/index'
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
 // - '' matches two quote characters in a row
@@ -14,11 +13,9 @@ import subMilliseconds from '../subMilliseconds/index.js'
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
-
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
-
 /**
  * @name lightFormat
  * @category Common Helpers
@@ -81,21 +78,16 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var formatStr = String(dirtyFormatStr)
-
   var originalDate = toDate(dirtyDate)
-
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
-
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
   var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
   var utcDate = subMilliseconds(originalDate, timezoneOffset)
-
   var result = formatStr
     .match(formattingTokensRegExp)
     .map(function(substring) {
@@ -103,17 +95,14 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
       if (substring === "''") {
         return "'"
       }
-
       var firstCharacter = substring[0]
       if (firstCharacter === "'") {
         return cleanEscapedString(substring)
       }
-
       var formatter = formatters[firstCharacter]
       if (formatter) {
         return formatter(utcDate, substring, null, {})
       }
-
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
           'Format string contains an unescaped latin alphabet character `' +
@@ -121,14 +110,11 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
             '`'
         )
       }
-
       return substring
     })
     .join('')
-
   return result
 }
-
 function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
 }

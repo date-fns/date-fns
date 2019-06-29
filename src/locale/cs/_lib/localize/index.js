@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['př. n. l.', 'n. l.'],
   abbreviated: ['př. n. l.', 'n. l.'],
   wide: ['před naším letopočtem', 'našeho letopočtu']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí'],
   wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
 }
-
 var monthValues = {
   narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
   abbreviated: [
@@ -74,14 +71,12 @@ var formattingMonthValues = {
     'prosince'
   ]
 }
-
 var dayValues = {
   narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   abbreviated: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'],
   wide: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'odp.',
@@ -114,7 +109,6 @@ var dayPeriodValues = {
     night: 'noc'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'odp.',
@@ -147,20 +141,16 @@ var formattingDayPeriodValues = {
     night: 'noc'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -168,19 +158,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -188,5 +175,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

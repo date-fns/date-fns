@@ -1,23 +1,19 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['pr. Kr.', 'po Kr.'],
   abbreviated: ['pr. Kr.', 'po Kr.'],
   wide: ['prieš Kristų', 'po Kristaus']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I ketv.', 'II ketv.', 'III ketv.', 'IV ketv.'],
   wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
 }
-
 var formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I k.', 'II k.', 'III k.', 'IV k.'],
   wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
 }
-
 var monthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
   abbreviated: [
@@ -49,7 +45,6 @@ var monthValues = {
     'gruodis'
   ]
 }
-
 var formattingMonthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
   abbreviated: [
@@ -81,7 +76,6 @@ var formattingMonthValues = {
     'gruodžio'
   ]
 }
-
 var dayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
@@ -96,7 +90,6 @@ var dayValues = {
     'šeštadienis'
   ]
 }
-
 var formattingDayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
@@ -111,7 +104,6 @@ var formattingDayValues = {
     'šeštadienį'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'pr. p.',
@@ -176,20 +168,16 @@ var formattingDayPeriodValues = {
     night: 'naktis'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '-oji'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -199,21 +187,18 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayValues,
     defaultFormattingWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -221,5 +206,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

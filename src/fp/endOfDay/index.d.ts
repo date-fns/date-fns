@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { endOfDay } from 'date-fns/fp'
-export default endOfDay
+declare var endOfDay: any;
+export default endOfDay;

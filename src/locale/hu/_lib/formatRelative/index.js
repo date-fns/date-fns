@@ -7,7 +7,6 @@ var accusativeWeekdays = [
   'pénteken',
   'szombaton'
 ]
-
 function week(isFuture) {
   return function(date, _baseDate, _options) {
     var day = date.getUTCDay()
@@ -28,13 +27,10 @@ var formatRelativeLocale = {
   nextWeek: week(true),
   other: 'P'
 }
-
 export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
-
   if (typeof format === 'function') {
     return format(date, baseDate, options)
   }
-
   return format
 }

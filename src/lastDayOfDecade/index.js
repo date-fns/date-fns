@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name lastDayOfDecade
  * @category Decade Helpers
@@ -27,7 +26,6 @@ export default function lastDayOfDecade(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = 9 + Math.floor(year / 10) * 10

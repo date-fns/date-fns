@@ -1,24 +1,20 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['B', 'คศ'],
   abbreviated: ['BC', 'ค.ศ.'],
   wide: ['ปีก่อนคริสตกาล', 'คริสต์ศักราช']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['ไตรมาสแรก', 'ไตรมาสที่สอง', 'ไตรมาสที่สาม', 'ไตรมาสที่สี่']
 }
-
 var dayValues = {
   narrow: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
   short: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
   abbreviated: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
   wide: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์']
 }
-
 var monthValues = {
   narrow: [
     'ม.ค.',
@@ -63,7 +59,6 @@ var monthValues = {
     'ธันวาคม'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ก่อนเที่ยง',
@@ -96,7 +91,6 @@ var dayPeriodValues = {
     night: 'กลางคืน'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'ก่อนเที่ยง',
@@ -129,20 +123,16 @@ var formattingDayPeriodValues = {
     night: 'ตอนกลางคืน'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -150,17 +140,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -168,5 +155,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

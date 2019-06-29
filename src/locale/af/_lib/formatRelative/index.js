@@ -6,7 +6,6 @@ var formatRelativeLocale = {
   nextWeek: "eeee 'om' p",
   other: 'P'
 }
-
 export default function formatRelative(token) {
   return formatRelativeLocale[token]
 }

@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isLeapYear
  * @category Year Helpers
@@ -27,7 +26,6 @@ export default function isLeapYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)

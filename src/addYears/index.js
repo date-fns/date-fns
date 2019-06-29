@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMonths from '../addMonths/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addMonths from '../addMonths/index'
 /**
  * @name addYears
  * @category Year Helpers
@@ -29,7 +28,6 @@ export default function addYears(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, amount * 12)
 }

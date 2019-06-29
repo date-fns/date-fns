@@ -3,24 +3,19 @@ function declension(scheme, count) {
   if (scheme.one !== undefined && count === 1) {
     return scheme.one
   }
-
   var rem10 = count % 10
   var rem100 = count % 100
-
   // 1, 21, 31, ...
   if (rem10 === 1 && rem100 !== 11) {
     return scheme.singularNominative.replace('{{count}}', count)
-
     // 2, 3, 4, 22, 23, 24, 32 ...
   } else if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 > 20)) {
     return scheme.singularGenitive.replace('{{count}}', count)
-
     // 5, 6, 7, 8, 9, 10, 11, ...
   } else {
     return scheme.pluralGenitive.replace('{{count}}', count)
   }
 }
-
 function buildLocalizeTokenFn(scheme) {
   return function(count, options) {
     if (options.addSuffix) {
@@ -42,7 +37,6 @@ function buildLocalizeTokenFn(scheme) {
     }
   }
 }
-
 var formatDistanceLocale = {
   lessThanXSeconds: buildLocalizeTokenFn({
     regular: {
@@ -58,7 +52,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'меньше, чем через {{count}} секунд'
     }
   }),
-
   xSeconds: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} секунда',
@@ -76,7 +69,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'через {{count}} секунд'
     }
   }),
-
   halfAMinute: function(_, options) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
@@ -85,10 +77,8 @@ var formatDistanceLocale = {
         return 'полминуты назад'
       }
     }
-
     return 'полминуты'
   },
-
   lessThanXMinutes: buildLocalizeTokenFn({
     regular: {
       one: 'меньше минуты',
@@ -103,7 +93,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'меньше, чем через {{count}} минут'
     }
   }),
-
   xMinutes: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} минута',
@@ -121,7 +110,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'через {{count}} минут'
     }
   }),
-
   aboutXHours: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'около {{count}} часа',
@@ -134,7 +122,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'приблизительно через {{count}} часов'
     }
   }),
-
   xHours: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} час',
@@ -142,7 +129,6 @@ var formatDistanceLocale = {
       pluralGenitive: '{{count}} часов'
     }
   }),
-
   xDays: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} день',
@@ -150,7 +136,6 @@ var formatDistanceLocale = {
       pluralGenitive: '{{count}} дней'
     }
   }),
-
   aboutXMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'около {{count}} месяца',
@@ -163,7 +148,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'приблизительно через {{count}} месяцев'
     }
   }),
-
   xMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} месяц',
@@ -171,7 +155,6 @@ var formatDistanceLocale = {
       pluralGenitive: '{{count}} месяцев'
     }
   }),
-
   aboutXYears: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'около {{count}} года',
@@ -184,7 +167,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'приблизительно через {{count}} лет'
     }
   }),
-
   xYears: buildLocalizeTokenFn({
     regular: {
       singularNominative: '{{count}} год',
@@ -192,7 +174,6 @@ var formatDistanceLocale = {
       pluralGenitive: '{{count}} лет'
     }
   }),
-
   overXYears: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'больше {{count}} года',
@@ -205,7 +186,6 @@ var formatDistanceLocale = {
       pluralGenitive: 'больше, чем через {{count}} лет'
     }
   }),
-
   almostXYears: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'почти {{count}} год',
@@ -219,7 +199,6 @@ var formatDistanceLocale = {
     }
   })
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
   return formatDistanceLocale[token](count, options)

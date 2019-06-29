@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isBefore
  * @category Common Helpers
@@ -28,7 +27,6 @@ export default function isBefore(dirtyDate, dirtyDateToCompare) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var dateToCompare = toDate(dirtyDateToCompare)
   return date.getTime() < dateToCompare.getTime()

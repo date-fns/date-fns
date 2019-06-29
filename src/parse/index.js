@@ -1,19 +1,17 @@
-import defaultLocale from '../locale/en-US/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import assign from '../_lib/assign/index.js'
-import longFormatters from '../_lib/format/longFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import defaultLocale from '../locale/en-US/index'
+import subMilliseconds from '../subMilliseconds/index'
+import toDate from '../toDate/index'
+import assign from '../_lib/assign/index'
+import longFormatters from '../_lib/format/longFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError
-} from '../_lib/protectedTokens/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import parsers from './_lib/parsers/index.js'
-
+} from '../_lib/protectedTokens/index'
+import toInteger from '../_lib/toInteger/index'
+import parsers from './_lib/parsers/index'
 var TIMEZONE_UNIT_PRIORITY = 10
-
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
 //   (one of the certain letters followed by `o`)
@@ -26,17 +24,13 @@ var TIMEZONE_UNIT_PRIORITY = 10
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
-
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
 var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
-
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
-
 var notWhitespaceRegExp = /\S/
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
-
 /**
  * @name parse
  * @category Common Helpers
@@ -365,17 +359,13 @@ export default function parse(
       '3 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
-
   var locale = options.locale || defaultLocale
-
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
-
   var localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
@@ -386,14 +376,12 @@ export default function parse(
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
-
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
     throw new RangeError(
       'firstWeekContainsDate must be between 1 and 7 inclusively'
     )
   }
-
   var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
   var defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
@@ -401,12 +389,10 @@ export default function parse(
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
-
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
-
   if (formatString === '') {
     if (dateString === '') {
       return toDate(dirtyBackupDate)
@@ -414,13 +400,11 @@ export default function parse(
       return new Date(NaN)
     }
   }
-
   var subFnOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
     locale: locale
   }
-
   // If timezone isn't specified, it will be set to the system timezone
   var setters = [
     {
@@ -429,9 +413,7 @@ export default function parse(
       index: 0
     }
   ]
-
   var i
-
   var tokens = formatString
     .match(longFormattingTokensRegExp)
     .map(function(substring) {
@@ -444,12 +426,9 @@ export default function parse(
     })
     .join('')
     .match(formattingTokensRegExp)
-
   const usedTokens = []
-
   for (i = 0; i < tokens.length; i++) {
     var token = tokens[i]
-
     if (
       !options.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
@@ -462,7 +441,6 @@ export default function parse(
     ) {
       throwProtectedError(token)
     }
-
     var firstCharacter = token[0]
     var parser = parsers[firstCharacter]
     if (parser) {
@@ -489,20 +467,16 @@ export default function parse(
           `The format string mustn't contain \`${token}\` and any other token at the same time`
         )
       }
-
       usedTokens.push({ token: firstCharacter, fullToken: token })
-
       var parseResult = parser.parse(
         dateString,
         token,
         locale.match,
         subFnOptions
       )
-
       if (!parseResult) {
         return new Date(NaN)
       }
-
       setters.push({
         priority: parser.priority,
         set: parser.set,
@@ -510,7 +484,6 @@ export default function parse(
         value: parseResult.value,
         index: setters.length
       })
-
       dateString = parseResult.rest
     } else {
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
@@ -520,14 +493,12 @@ export default function parse(
             '`'
         )
       }
-
       // Replace two single quote characters with one single quote character
       if (token === "''") {
         token = "'"
       } else if (firstCharacter === "'") {
         token = cleanEscapedString(token)
       }
-
       // Cut token from string, or, if string doesn't match the token, return Invalid Date
       if (dateString.indexOf(token) === 0) {
         dateString = dateString.slice(token.length)
@@ -536,12 +507,10 @@ export default function parse(
       }
     }
   }
-
   // Check if the remaining input contains something other than whitespace
   if (dateString.length > 0 && notWhitespaceRegExp.test(dateString)) {
     return new Date(NaN)
   }
-
   var uniquePrioritySetters = setters
     .map(function(setter) {
       return setter.priority
@@ -562,29 +531,23 @@ export default function parse(
     .map(function(setterArray) {
       return setterArray[0]
     })
-
   var date = toDate(dirtyBackupDate)
-
   if (isNaN(date)) {
     return new Date(NaN)
   }
-
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
   var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-
   var flags = {}
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-
     if (
       setter.validate &&
       !setter.validate(utcDate, setter.value, subFnOptions)
     ) {
       return new Date(NaN)
     }
-
     var result = setter.set(utcDate, flags, setter.value, subFnOptions)
     // Result is tuple (date, flags)
     if (result[0]) {
@@ -595,15 +558,12 @@ export default function parse(
       utcDate = result
     }
   }
-
   return utcDate
 }
-
 function dateToSystemTimezone(date, flags) {
   if (flags.timestampIsSet) {
     return date
   }
-
   var convertedDate = new Date(0)
   convertedDate.setFullYear(
     date.getUTCFullYear(),
@@ -618,7 +578,6 @@ function dateToSystemTimezone(date, flags) {
   )
   return convertedDate
 }
-
 function cleanEscapedString(input) {
   return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
 }

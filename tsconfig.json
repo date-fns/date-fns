@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": false,
     "checkJs": false,
     "module": "es2015",
     "target": "es2017",

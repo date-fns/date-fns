@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['eaa.', 'jaa.'],
   abbreviated: ['eaa.', 'jaa.'],
   wide: ['ennen ajanlaskun alkua', 'jälkeen ajanlaskun alun']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1. kvartaali', '2. kvartaali', '3. kvartaali', '4. kvartaali']
 }
-
 var monthValues = {
   narrow: ['T', 'H', 'M', 'H', 'T', 'K', 'H', 'E', 'S', 'L', 'M', 'J'],
   abbreviated: [
@@ -43,13 +40,11 @@ var monthValues = {
     'joulukuu'
   ]
 }
-
 var formattingMonthValues = {
   narrow: monthValues.narrow,
   abbreviated: monthValues.abbreviated,
   wide: monthValues.wide.map(name => name + 'ta')
 }
-
 var dayValues = {
   narrow: ['S', 'M', 'T', 'K', 'T', 'P', 'L'],
   short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
@@ -64,14 +59,12 @@ var dayValues = {
     'lauantai'
   ]
 }
-
 var formattingDayValues = {
   narrow: dayValues.narrow,
   short: dayValues.short,
   abbreviated: dayValues.abbreviated,
   wide: dayValues.wide.map(name => name + 'na')
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ap',
@@ -104,20 +97,16 @@ var dayPeriodValues = {
     night: 'yöllä'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -125,23 +114,19 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     formattingValues: formattingMonthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     formattingValues: formattingDayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide'
   })
 }
-
 export default localize

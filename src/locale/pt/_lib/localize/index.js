@@ -1,22 +1,18 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + 'º'
 }
-
 var eraValues = {
   narrow: ['aC', 'dC'],
   abbreviated: ['a.C.', 'd.C.'],
   wide: ['antes de Cristo', 'depois de Cristo']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
   wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
 }
-
 var monthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
@@ -48,7 +44,6 @@ var monthValues = {
     'dezembro'
   ]
 }
-
 var dayValues = {
   narrow: ['d', 's', 't', 'q', 'q', 's', 's'],
   short: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
@@ -63,7 +58,6 @@ var dayValues = {
     'sábado'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -96,7 +90,6 @@ var dayPeriodValues = {
     night: 'madrugada'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -129,15 +122,12 @@ var formattingDayPeriodValues = {
     night: 'da madrugada'
   }
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -145,17 +135,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',

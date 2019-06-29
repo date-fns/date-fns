@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 var weekdays = [
   'svētdienā',
   'pirmdienā',
@@ -8,13 +8,11 @@ var weekdays = [
   'piektdienā',
   'sestdienā'
 ]
-
 var formatRelativeLocale = {
   lastWeek: function(date, baseDate, options) {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
-
     var weekday = weekdays[date.getUTCDay()]
     return "'Pagājušā " + weekday + " plkst.' p"
   },
@@ -25,19 +23,15 @@ var formatRelativeLocale = {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
-
     var weekday = weekdays[date.getUTCDay()]
     return "'Nākamajā " + weekday + " plkst.' p"
   },
   other: 'P'
 }
-
 export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
-
   if (typeof format === 'function') {
     return format(date, baseDate, options)
   }
-
   return format
 }

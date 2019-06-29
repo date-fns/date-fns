@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addSeconds from '../addSeconds/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addSeconds from '../addSeconds/index'
 /**
  * @name subSeconds
  * @category Second Helpers
@@ -29,7 +28,6 @@ export default function subSeconds(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addSeconds(dirtyDate, -amount)
 }

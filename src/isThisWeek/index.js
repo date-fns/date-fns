@@ -1,5 +1,4 @@
-import isSameWeek from '../isSameWeek/index.js'
-
+import isSameWeek from '../isSameWeek/index'
 /**
  * @name isThisWeek
  * @category Week Helpers
@@ -35,13 +34,11 @@ import isSameWeek from '../isSameWeek/index.js'
  * var result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-
 export default function isThisWeek(dirtyDate, options) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameWeek(dirtyDate, Date.now(), options)
 }

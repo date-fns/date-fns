@@ -1,8 +1,7 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
 /**
  * @name setISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -39,7 +38,6 @@ export default function setISOWeekYear(dirtyDate, dirtyISOWeekYear) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var isoWeekYear = toInteger(dirtyISOWeekYear)
   var diff = differenceInCalendarDays(date, startOfISOWeekYear(date))

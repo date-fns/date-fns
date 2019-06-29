@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isLastDayOfMonth } from 'date-fns/fp'
-export default isLastDayOfMonth
+declare var isLastDayOfMonth: any;
+export default isLastDayOfMonth;

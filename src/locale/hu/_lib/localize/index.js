@@ -1,23 +1,19 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['ie.', 'isz.'],
   abbreviated: ['i. e.', 'i. sz.'],
   wide: ['Krisztus előtt', 'időszámításunk szerint']
 }
-
 var quarterValues = {
   narrow: ['1.', '2.', '3.', '4.'],
   abbreviated: ['1. n.év', '2. n.év', '3. n.év', '4. n.év'],
   wide: ['1. negyedév', '2. negyedév', '3. negyedév', '4. negyedév']
 }
-
 var formattingQuarterValues = {
   narrow: ['I.', 'II.', 'III.', 'IV.'],
   abbreviated: ['I. n.év', 'II. n.év', 'III. n.év', 'IV. n.év'],
   wide: ['I. negyedév', 'II. negyedév', 'III. negyedév', 'IV. negyedév']
 }
-
 var monthValues = {
   narrow: ['J', 'F', 'M', 'Á', 'M', 'J', 'J', 'A', 'Sz', 'O', 'N', 'D'],
   abbreviated: [
@@ -49,7 +45,6 @@ var monthValues = {
     'december'
   ]
 }
-
 var dayValues = {
   narrow: ['V', 'H', 'K', 'Sz', 'Cs', 'P', 'Sz'],
   short: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
@@ -64,7 +59,6 @@ var dayValues = {
     'szombat'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'de.',
@@ -97,20 +91,16 @@ var dayPeriodValues = {
     night: 'éjjel'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -119,22 +109,18 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

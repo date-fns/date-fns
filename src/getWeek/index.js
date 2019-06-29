@@ -1,9 +1,7 @@
-import startOfWeek from '../startOfWeek/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
-
+import startOfWeek from '../startOfWeek/index'
+import startOfWeekYear from '../startOfWeekYear/index'
+import toDate from '../toDate/index'
 var MILLISECONDS_IN_WEEK = 604800000
-
 /**
  * @name getWeek
  * @category Week Helpers
@@ -46,19 +44,16 @@ var MILLISECONDS_IN_WEEK = 604800000
  * })
  * //=> 53
  */
-
 export default function getWeek(dirtyDate, options) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var diff =
     startOfWeek(date, options).getTime() -
     startOfWeekYear(date, options).getTime()
-
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)

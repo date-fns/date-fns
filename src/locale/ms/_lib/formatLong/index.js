@@ -1,5 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
-
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 var formatLong = buildFormatLongFn({
   LT: 'HH:mm',
   LTS: 'HH:mm:ss',
@@ -8,5 +7,4 @@ var formatLong = buildFormatLongFn({
   LLL: 'D MMMM YYYY HH:mm',
   LLLL: 'dddd, D MMMM YYYY HH:mm'
 })
-
 export default formatLong

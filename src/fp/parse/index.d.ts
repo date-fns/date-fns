@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { parse } from 'date-fns/fp'
-export default parse
+declare var parse: any;
+export default parse;

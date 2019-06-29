@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { compareDesc } from 'date-fns/fp'
-export default compareDesc
+declare var compareDesc: any;
+export default compareDesc;

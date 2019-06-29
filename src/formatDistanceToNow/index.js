@@ -1,5 +1,4 @@
-import distanceInWords from '../formatDistance/index.js'
-
+import distanceInWords from '../formatDistance/index'
 /**
  * @name formatDistanceToNow
  * @category Common Helpers
@@ -110,6 +109,5 @@ export default function formatDistanceToNow(dirtyDate, dirtyOptions) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return distanceInWords(dirtyDate, Date.now(), dirtyOptions)
 }

@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['前', '公元'],
   abbreviated: ['前', '公元'],
   wide: ['公元前', '公元']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
   wide: ['第一刻鐘', '第二刻鐘', '第三刻鐘', '第四刻鐘']
 }
-
 var monthValues = {
   narrow: [
     '一',
@@ -56,14 +53,12 @@ var monthValues = {
     '十二月'
   ]
 }
-
 var dayValues = {
   narrow: ['日', '一', '二', '三', '四', '五', '六'],
   short: ['日', '一', '二', '三', '四', '五', '六'],
   abbreviated: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
   wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: '上',
@@ -128,20 +123,16 @@ var formattingDayPeriodValues = {
     night: '夜間'
   }
 }
-
 function ordinalNumber(dirtyNumber, _options) {
   var number = Number(dirtyNumber)
   return '第 ' + number.toString()
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -149,17 +140,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -167,5 +155,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

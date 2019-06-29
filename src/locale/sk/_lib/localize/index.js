@@ -1,19 +1,16 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1772
 var eraValues = {
   narrow: ['pred Kr.', 'po Kr.'],
   abbreviated: ['pred Kr.', 'po Kr.'],
   wide: ['pred Kristom', 'po Kristovi']
 }
-
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1780
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1. štvrťrok', '2. štvrťrok', '3. štvrťrok', '4. štvrťrok']
 }
-
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1804
 var monthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
@@ -77,7 +74,6 @@ var formattingMonthValues = {
     'decembra'
   ]
 }
-
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1876
 var dayValues = {
   narrow: ['n', 'p', 'u', 's', 'š', 'p', 's'],
@@ -93,7 +89,6 @@ var dayValues = {
     'sobota'
   ]
 }
-
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1932
 var dayPeriodValues = {
   narrow: {
@@ -159,20 +154,16 @@ var formattingDayPeriodValues = {
     night: 'v noci'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues
     // defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -180,19 +171,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -200,5 +188,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

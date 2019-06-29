@@ -3,70 +3,56 @@ var formatDistanceLocale = {
     one: translateSeconds,
     other: translate
   },
-
   xSeconds: {
     one: translateSeconds,
     other: translate
   },
-
   halfAMinute: 'pusė minutės',
-
   lessThanXMinutes: {
     one: translateSingular,
     other: translate
   },
-
   xMinutes: {
     one: translateSingular,
     other: translate
   },
-
   aboutXHours: {
     one: translateSingular,
     other: translate
   },
-
   xHours: {
     one: translateSingular,
     other: translate
   },
-
   xDays: {
     one: translateSingular,
     other: translate
   },
-
   aboutXMonths: {
     one: translateSingular,
     other: translate
   },
-
   xMonths: {
     one: translateSingular,
     other: translate
   },
-
   aboutXYears: {
     one: translateSingular,
     other: translate
   },
-
   xYears: {
     one: translateSingular,
     other: translate
   },
-
   overXYears: {
     one: translateSingular,
     other: translate
   },
-
   almostXYears: {
     one: translateSingular,
     other: translate
   }
 }
-
 var translations = {
   xseconds_other: 'sekundė_sekundžių_sekundes',
   xminutes_one: 'minutė_minutės_minutę',
@@ -114,12 +100,10 @@ function translate(number, addSuffix, key, isFuture) {
     }
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
   var adverb = token.match(/about|over|almost|lessthan/i)
   var unit = token.replace(adverb, '')
-
   var result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
@@ -136,11 +120,9 @@ export default function formatDistance(token, count, options) {
       unit.toLowerCase() + '_other'
     )
   }
-
   if (adverb) {
     result = translations[adverb[0].toLowerCase()] + ' ' + result
   }
-
   if (options.addSuffix) {
     if (options.comparison > 0) {
       return 'po ' + result
@@ -148,6 +130,5 @@ export default function formatDistance(token, count, options) {
       return 'prieš ' + result
     }
   }
-
   return result
 }

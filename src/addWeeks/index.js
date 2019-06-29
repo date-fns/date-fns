@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addDays from '../addDays/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addDays from '../addDays/index'
 /**
  * @name addWeeks
  * @category Week Helpers
@@ -29,7 +28,6 @@ export default function addWeeks(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   var days = amount * 7
   return addDays(dirtyDate, days)

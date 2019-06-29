@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isWednesday
  * @category Weekday Helpers
@@ -27,6 +26,5 @@ export default function isWednesday(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return toDate(dirtyDate).getDay() === 3
 }

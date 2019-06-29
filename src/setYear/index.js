@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
 /**
  * @name setYear
  * @category Year Helpers
@@ -29,15 +28,12 @@ export default function setYear(dirtyDate, dirtyYear) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var year = toInteger(dirtyYear)
-
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(date)) {
     return new Date(NaN)
   }
-
   date.setFullYear(year)
   return date
 }

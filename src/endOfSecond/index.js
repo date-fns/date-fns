@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name endOfSecond
  * @category Second Helpers
@@ -28,7 +27,6 @@ export default function endOfSecond(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   date.setMilliseconds(999)
   return date

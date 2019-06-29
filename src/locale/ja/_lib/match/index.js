@@ -1,9 +1,7 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 var matchOrdinalNumberPattern = /^第?\d+/i
 var parseOrdinalNumberPattern = /\d+/i
-
 var matchEraPatterns = {
   narrow: /^(B\.?C\.?|A\.?D\.?)/i,
   abbreviated: /^(紀元[前後]|西暦)/i,
@@ -13,7 +11,6 @@ var parseEraPatterns = {
   narrow: [/^B/i, /^A/i],
   any: [/^(紀元前)/i, /^(西暦|紀元後)/i]
 }
-
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^Q[1234]/i,
@@ -22,7 +19,6 @@ var matchQuarterPatterns = {
 var parseQuarterPatterns = {
   any: [/(1|一|１)/i, /(2|二|２)/i, /(3|三|３)/i, /(4|四|４)/i]
 }
-
 var matchMonthPatterns = {
   narrow: /^([123456789]|1[012])/,
   abbreviated: /^([123456789]|1[012])月/i,
@@ -44,7 +40,6 @@ var parseMonthPatterns = {
     /^12/
   ]
 }
-
 var matchDayPatterns = {
   narrow: /^[日月火水木金土]/,
   short: /^[日月火水木金土]/,
@@ -54,7 +49,6 @@ var matchDayPatterns = {
 var parseDayPatterns = {
   any: [/^日/, /^月/, /^火/, /^水/, /^木/, /^金/, /^土/]
 }
-
 var matchDayPeriodPatterns = {
   any: /^(AM|PM|午前|午後|正午|深夜|真夜中|夜|朝)/i
 }
@@ -70,7 +64,6 @@ var parseDayPeriodPatterns = {
     night: /^深夜/i
   }
 }
-
 var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
@@ -79,14 +72,12 @@ var match = {
       return parseInt(value, 10)
     }
   }),
-
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
     defaultParseWidth: 'any'
   }),
-
   quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
     defaultMatchWidth: 'wide',
@@ -96,21 +87,18 @@ var match = {
       return index + 1
     }
   }),
-
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
     defaultParseWidth: 'any'
   }),
-
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
     defaultParseWidth: 'any'
   }),
-
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
@@ -118,5 +106,4 @@ var match = {
     defaultParseWidth: 'any'
   })
 }
-
 export default match

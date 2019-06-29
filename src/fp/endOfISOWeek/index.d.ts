@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { endOfISOWeek } from 'date-fns/fp'
-export default endOfISOWeek
+declare var endOfISOWeek: any;
+export default endOfISOWeek;

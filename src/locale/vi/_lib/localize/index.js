@@ -1,27 +1,22 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 // Vietnamese locale reference: http://www.localeplanet.com/icu/vi-VN/index.html
 // Capitalization reference: http://hcmup.edu.vn/index.php?option=com_content&view=article&id=4106%3Avit-hoa-trong-vn-bn-hanh-chinh&catid=2345%3Atham-kho&Itemid=4103&lang=vi&site=134
-
 var eraValues = {
   narrow: ['TCN', 'SCN'],
   abbreviated: ['trước CN', 'sau CN'],
   wide: ['trước Công Nguyên', 'sau Công Nguyên']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
 }
-
 var formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   // I notice many news outlet use this "quý II/2018"
   wide: ['quý I', 'quý II', 'quý III', 'quý IV']
 }
-
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -102,7 +97,6 @@ var formattingMonthValues = {
     'tháng 12'
   ]
 }
-
 var dayValues = {
   narrow: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
   short: ['CN', 'Th 2', 'Th 3', 'Th 4', 'Th 5', 'Th 6', 'Th 7'],
@@ -117,7 +111,6 @@ var dayValues = {
     'Thứ Bảy'
   ]
 }
-
 // Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
 // `abbreviated` are just like English but I'm leaving the `wide`
 // format being localized with abbreviations found in some systems (SÁng / CHiều);
@@ -157,7 +150,6 @@ var dayPeriodValues = {
     night: 'đêm'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'am',
@@ -190,7 +182,6 @@ var formattingDayPeriodValues = {
     night: 'vào ban đêm'
   }
 }
-
 // If ordinal numbers depend on context, for example,
 // if they are different for different grammatical genders,
 // use `options.unit`:
@@ -204,7 +195,6 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var number = parseInt(dirtyNumber, 10)
-
   if (unit === 'quarter') {
     // many news outlets use "quý I"...
     switch (number) {
@@ -249,19 +239,15 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
       return 'thứ ' + number
     }
   }
-
   // there are no different forms of ordinal numbers in Vietnamese
   return number
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -271,19 +257,16 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -291,5 +274,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

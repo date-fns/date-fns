@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { getWeekYearWithOptions } from 'date-fns/fp'
-export default getWeekYearWithOptions
+declare var getWeekYearWithOptions: any;
+export default getWeekYearWithOptions;

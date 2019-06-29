@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { subDays } from 'date-fns/fp'
-export default subDays
+declare var subDays: any;
+export default subDays;

@@ -1,6 +1,5 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
 var weekdayValues = {
   narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
   short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
@@ -14,7 +13,6 @@ var weekdayValues = {
     'السبت'
   ]
 }
-
 var monthValues = {
   short: [
     'يناير',
@@ -45,17 +43,14 @@ var monthValues = {
     'كانون الأول ديسمبر'
   ]
 }
-
 var timeOfDayValues = {
   uppercase: ['صباح', 'مساء'],
   lowercase: ['ص', 'م'],
   long: ['صباحاً', 'مساءً']
 }
-
 function ordinalNumber(dirtyNumber) {
   return String(dirtyNumber)
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   weekday: buildLocalizeFn(weekdayValues, 'long'),
@@ -67,5 +62,4 @@ var localize = {
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }
-
 export default localize

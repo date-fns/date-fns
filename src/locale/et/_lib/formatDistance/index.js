@@ -9,7 +9,6 @@ var formatDistanceLocale = {
       other: 'vähem kui {{count}} sekundi'
     }
   },
-
   xSeconds: {
     standalone: {
       one: 'üks sekund',
@@ -20,12 +19,10 @@ var formatDistanceLocale = {
       other: '{{count}} sekundi'
     }
   },
-
   halfAMinute: {
     standalone: 'pool minutit',
     withPreposition: 'poole minuti'
   },
-
   lessThanXMinutes: {
     standalone: {
       one: 'vähem kui üks minut',
@@ -36,7 +33,6 @@ var formatDistanceLocale = {
       other: 'vähem kui {{count}} minuti'
     }
   },
-
   xMinutes: {
     standalone: {
       one: 'üks minut',
@@ -47,7 +43,6 @@ var formatDistanceLocale = {
       other: '{{count}} minuti'
     }
   },
-
   aboutXHours: {
     standalone: {
       one: 'umbes üks tund',
@@ -58,7 +53,6 @@ var formatDistanceLocale = {
       other: 'umbes {{count}} tunni'
     }
   },
-
   xHours: {
     standalone: {
       one: 'üks tund',
@@ -69,7 +63,6 @@ var formatDistanceLocale = {
       other: '{{count}} tunni'
     }
   },
-
   xDays: {
     standalone: {
       one: 'üks päev',
@@ -80,7 +73,6 @@ var formatDistanceLocale = {
       other: '{{count}} päeva'
     }
   },
-
   aboutXMonths: {
     standalone: {
       one: 'umbes üks kuu',
@@ -91,7 +83,6 @@ var formatDistanceLocale = {
       other: 'umbes {{count}} kuu'
     }
   },
-
   xMonths: {
     standalone: {
       one: 'üks kuu',
@@ -102,7 +93,6 @@ var formatDistanceLocale = {
       other: '{{count}} kuu'
     }
   },
-
   aboutXYears: {
     standalone: {
       one: 'umbes üks aasta',
@@ -113,7 +103,6 @@ var formatDistanceLocale = {
       other: 'umbes {{count}} aasta'
     }
   },
-
   xYears: {
     standalone: {
       one: 'üks aasta',
@@ -124,7 +113,6 @@ var formatDistanceLocale = {
       other: '{{count}} aasta'
     }
   },
-
   overXYears: {
     standalone: {
       one: 'rohkem kui üks aasta',
@@ -135,7 +123,6 @@ var formatDistanceLocale = {
       other: 'rohkem kui {{count}} aasta'
     }
   },
-
   almostXYears: {
     standalone: {
       one: 'peaaegu üks aasta',
@@ -147,14 +134,11 @@ var formatDistanceLocale = {
     }
   }
 }
-
 export default function formatDistance(token, count, options) {
   options = options || {}
-
   var usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
-
   var result
   if (typeof usageGroup === 'string') {
     result = usageGroup
@@ -163,7 +147,6 @@ export default function formatDistance(token, count, options) {
   } else {
     result = usageGroup.other.replace('{{count}}', count)
   }
-
   if (options.addSuffix) {
     if (options.comparison > 0) {
       return result + ' pärast'
@@ -171,6 +154,5 @@ export default function formatDistance(token, count, options) {
       return result + ' eest'
     }
   }
-
   return result
 }

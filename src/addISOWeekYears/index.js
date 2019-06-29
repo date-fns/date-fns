@@ -1,7 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import getISOWeekYear from '../getISOWeekYear/index.js'
-import setISOWeekYear from '../setISOWeekYear/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import getISOWeekYear from '../getISOWeekYear/index'
+import setISOWeekYear from '../setISOWeekYear/index'
 /**
  * @name addISOWeekYears
  * @category ISO Week-Numbering Year Helpers
@@ -37,7 +36,6 @@ export default function addISOWeekYears(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
 }

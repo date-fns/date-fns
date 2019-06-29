@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { subWeeks } from 'date-fns/fp'
-export default subWeeks
+declare var subWeeks: any;
+export default subWeeks;

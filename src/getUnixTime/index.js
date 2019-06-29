@@ -1,5 +1,4 @@
-import getTime from '../getTime/index.js'
-
+import getTime from '../getTime/index'
 /**
  * @name getUnixTime
  * @category Timestamp Helpers
@@ -27,6 +26,5 @@ export default function getUnixTime(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return Math.floor(getTime(dirtyDate) / 1000)
 }

@@ -1,7 +1,6 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import compareAsc from '../compareAsc/index.js'
-
+import toDate from '../toDate/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import compareAsc from '../compareAsc/index'
 /**
  * @name differenceInDays
  * @category Day Helpers
@@ -41,15 +40,11 @@ export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
-
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
-
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign

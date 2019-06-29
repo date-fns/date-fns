@@ -1,8 +1,7 @@
-import getDate from '../getDate/index.js'
-import getDay from '../getDay/index.js'
-import startOfMonth from '../startOfMonth/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import getDate from '../getDate/index'
+import getDay from '../getDay/index'
+import startOfMonth from '../startOfMonth/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name getWeekOfMonth
  * @category Week Helpers
@@ -34,7 +33,6 @@ export default function getWeekOfMonth(date, dirtyOptions) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn =
@@ -45,18 +43,14 @@ export default function getWeekOfMonth(date, dirtyOptions) {
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
-
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
-
   var startWeekDay = getDay(startOfMonth(date))
   var currentWeekDay = getDay(date)
-
   var startWeekDayWithOptions =
     startWeekDay < weekStartsOn ? 7 - weekStartsOn : startWeekDay
   var diff = startWeekDayWithOptions > currentWeekDay ? 7 - weekStartsOn : 0
-
   return Math.ceil((getDate(date) + diff) / 7)
 }

@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { startOfDecade } from 'date-fns/fp'
-export default startOfDecade
+declare var startOfDecade: any;
+export default startOfDecade;

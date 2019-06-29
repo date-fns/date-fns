@@ -1,12 +1,11 @@
+'use strict'
 // Same as nl
-// import formatDistance from '../nl/_lib/formatDistance/index.js'
-// import formatRelative from '../nl/_lib/formatRelative/index.js'
-// import localize from '../nl/_lib/localize/index.js'
-// import match from '../nl/_lib/match/index.js'
-
+// import formatDistance from '../nl/_lib/formatDistance/index'
+// import formatRelative from '../nl/_lib/formatRelative/index'
+// import localize from '../nl/_lib/localize/index'
+// import match from '../nl/_lib/match/index'
 // Unique for nl-BE
-// import formatLong from './_lib/formatLong/index.js'
-
+// import formatLong from './_lib/formatLong/index'
 /**
  * @type {Locale}
  * @category Locales
@@ -28,9 +27,7 @@
 //     firstWeekContainsDate: 4
 //   }
 // }
-
 // export default locale
-
 throw new Error(
   'nl-BE locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA'
 )

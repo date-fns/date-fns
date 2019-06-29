@@ -1,6 +1,5 @@
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -18,7 +17,6 @@ var weekdayValues = {
     'შაბათი'
   ]
 }
-
 var monthValues = {
   short: [
     'იან',
@@ -49,7 +47,6 @@ var monthValues = {
     'დეკემბერი'
   ]
 }
-
 // `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
 // Use the system which is used the most commonly in the locale.
 // For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
@@ -62,7 +59,7 @@ var monthValues = {
 //
 //   var localize = {
 //     // The callback takes the hours as the argument and returns the array index
-//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
+//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours: any) {
 //       if (hours >= 17) {
 //         return 3
 //       } else if (hours >= 12) {
@@ -80,10 +77,8 @@ var timeOfDayValues = {
   lowercase: ['am', 'pm'],
   long: ['a.m.', 'p.m.']
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
-
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
@@ -93,14 +88,11 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   //
   // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
   // 'dayOfMonth' or 'dayOfWeek'
-
   if (number === 1) {
     return number + '-ლი'
   }
-
   return number + '-ე'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   weekday: buildLocalizeFn(weekdayValues, 'long'),
@@ -112,5 +104,4 @@ var localize = {
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }
-
 export default localize

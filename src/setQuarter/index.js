@@ -1,7 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import setMonth from '../setMonth/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import setMonth from '../setMonth/index'
 /**
  * @name setQuarter
  * @category Quarter Helpers
@@ -30,7 +29,6 @@ export default function setQuarter(dirtyDate, dirtyQuarter) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var quarter = toInteger(dirtyQuarter)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1

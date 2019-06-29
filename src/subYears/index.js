@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addYears from '../addYears/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import addYears from '../addYears/index'
 /**
  * @name subYears
  * @category Year Helpers
@@ -29,7 +28,6 @@ export default function subYears(dirtyDate, dirtyAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var amount = toInteger(dirtyAmount)
   return addYears(dirtyDate, -amount)
 }

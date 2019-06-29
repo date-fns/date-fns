@@ -1,7 +1,6 @@
-import addWeeks from '../addWeeks/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
-
+import addWeeks from '../addWeeks/index'
+import startOfWeek from '../startOfWeek/index'
+import toDate from '../toDate/index'
 /**
  * @name eachWeekOfInterval
  * @category Interval Helpers
@@ -47,37 +46,27 @@ export default function eachWeekOfInterval(dirtyInterval, options) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)
-
   var endTime = endDate.getTime()
-
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {
     throw new RangeError('Invalid interval')
   }
-
   var startDateWeek = startOfWeek(startDate, options)
   var endDateWeek = startOfWeek(endDate, options)
-
   // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
   startDateWeek.setHours(15)
   endDateWeek.setHours(15)
-
   endTime = endDateWeek.getTime()
-
   var weeks = []
-
   var currentWeek = startDateWeek
-
   while (currentWeek.getTime() <= endTime) {
     currentWeek.setHours(0)
     weeks.push(toDate(currentWeek))
     currentWeek = addWeeks(currentWeek, 1)
     currentWeek.setHours(15)
   }
-
   return weeks
 }

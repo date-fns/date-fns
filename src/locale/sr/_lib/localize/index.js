@@ -1,6 +1,5 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
 var weekdayValues = {
   narrow: ['ne', 'po', 'ut', 'sr', 'če', 'pe', 'su'],
   short: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
@@ -14,7 +13,6 @@ var weekdayValues = {
     'subota'
   ]
 }
-
 var monthValues = {
   short: [
     'jan',
@@ -45,16 +43,13 @@ var monthValues = {
     'decembar'
   ]
 }
-
 var timeOfDayValues = {
   long: ['ujutro', 'popodne']
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   weekday: buildLocalizeFn(weekdayValues, 'long'),
@@ -66,5 +61,4 @@ var localize = {
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }
-
 export default localize

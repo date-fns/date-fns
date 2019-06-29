@@ -1,5 +1,4 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
-
+import differenceInMilliseconds from '../differenceInMilliseconds/index'
 /**
  * @name differenceInSeconds
  * @category Second Helpers
@@ -32,7 +31,6 @@ export default function differenceInSeconds(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

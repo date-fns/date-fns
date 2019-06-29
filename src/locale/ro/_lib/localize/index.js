@@ -1,11 +1,9 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['Î', 'D'],
   abbreviated: ['Î.d.C.', 'D.C.'],
   wide: ['Înainte de Cristos', 'După Cristos']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
@@ -16,7 +14,6 @@ var quarterValues = {
     'al patrulea trimestru'
   ]
 }
-
 var monthValues = {
   narrow: ['I', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
@@ -48,14 +45,12 @@ var monthValues = {
     'decembrie'
   ]
 }
-
 var dayValues = {
   narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
   short: ['du', 'lu', 'ma', 'mi', 'jo', 'vi', 'sâ'],
   abbreviated: ['dum', 'lun', 'mar', 'mie', 'joi', 'vin', 'sâm'],
   wide: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'a',
@@ -88,7 +83,6 @@ var dayPeriodValues = {
     night: 'noapte'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'a',
@@ -121,20 +115,16 @@ var formattingDayPeriodValues = {
     night: 'noapte'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return String(number)
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -142,17 +132,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -160,5 +147,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

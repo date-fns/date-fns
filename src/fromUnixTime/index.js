@@ -1,6 +1,5 @@
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
 /**
  * @name fromUnixTime
  * @category Timestamp Helpers
@@ -28,8 +27,6 @@ export default function fromUnixTime(dirtyUnixTime) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var unixTime = toInteger(dirtyUnixTime)
-
   return toDate(unixTime * 1000)
 }

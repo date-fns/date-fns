@@ -1,7 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import getISOWeek from '../getISOWeek/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import getISOWeek from '../getISOWeek/index'
 /**
  * @name setISOWeek
  * @category ISO Week Helpers
@@ -32,7 +31,6 @@ export default function setISOWeek(dirtyDate, dirtyISOWeek) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var isoWeek = toInteger(dirtyISOWeek)
   var diff = getISOWeek(date) - isoWeek

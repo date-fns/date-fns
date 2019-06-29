@@ -1,7 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import getDaysInMonth from '../getDaysInMonth/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import getDaysInMonth from '../getDaysInMonth/index'
 /**
  * @name setMonth
  * @category Month Helpers
@@ -30,12 +29,10 @@ export default function setMonth(dirtyDate, dirtyMonth) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var month = toInteger(dirtyMonth)
   var year = date.getFullYear()
   var day = date.getDate()
-
   var dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(year, month, 15)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)

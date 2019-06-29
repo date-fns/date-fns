@@ -1,5 +1,4 @@
-import endOfWeek from '../endOfWeek/index.js'
-
+import endOfWeek from '../endOfWeek/index'
 /**
  * @name endOfISOWeek
  * @category ISO Week Helpers
@@ -30,6 +29,5 @@ export default function endOfISOWeek(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return endOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

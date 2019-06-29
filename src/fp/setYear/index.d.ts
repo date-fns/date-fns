@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { setYear } from 'date-fns/fp'
-export default setYear
+declare var setYear: any;
+export default setYear;

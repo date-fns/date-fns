@@ -1,5 +1,4 @@
-import isSameDay from '../isSameDay/index.js'
-
+import isSameDay from '../isSameDay/index'
 /**
  * @name isToday
  * @category Day Helpers
@@ -31,6 +30,5 @@ export default function isToday(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameDay(dirtyDate, Date.now())
 }

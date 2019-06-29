@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name compareDesc
  * @category Common Helpers
@@ -42,12 +41,9 @@ export default function compareDesc(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
-
   var diff = dateLeft.getTime() - dateRight.getTime()
-
   if (diff > 0) {
     return -1
   } else if (diff < 0) {

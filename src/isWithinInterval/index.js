@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name isWithinInterval
  * @category Interval Helpers
@@ -71,16 +70,13 @@ export default function isWithinInterval(dirtyDate, dirtyInterval) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var interval = dirtyInterval || {}
   var time = toDate(dirtyDate).getTime()
   var startTime = toDate(interval.start).getTime()
   var endTime = toDate(interval.end).getTime()
-
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {
     throw new RangeError('Invalid interval')
   }
-
   return time >= startTime && time <= endTime
 }

@@ -1,22 +1,18 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return String(number)
 }
-
 var eraValues = {
   narrow: ['p.n.e.', 'n.e.'],
   abbreviated: ['p.n.e.', 'n.e.'],
   wide: ['przed naszą erą', 'naszej ery']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
   wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał']
 }
-
 var monthValues = {
   narrow: ['S', 'L', 'M', 'K', 'M', 'C', 'L', 'S', 'W', 'P', 'L', 'G'],
   abbreviated: [
@@ -79,7 +75,6 @@ var monthFormattingValues = {
     'grudnia'
   ]
 }
-
 var dayValues = {
   narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
   short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
@@ -108,7 +103,6 @@ var dayFormattingValues = {
     'sobota'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'a',
@@ -173,15 +167,12 @@ var dayPeriodFormattingValues = {
     night: 'w nocy'
   }
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -189,21 +180,18 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: monthFormattingValues,
     defaultFormattingWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: dayFormattingValues,
     defaultFormattingWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -211,5 +199,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { isSameDay } from 'date-fns/fp'
-export default isSameDay
+declare var isSameDay: any;
+export default isSameDay;

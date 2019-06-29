@@ -1,8 +1,6 @@
-import startOfWeek from '../startOfWeek/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-
+import startOfWeek from '../startOfWeek/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 var MILLISECONDS_IN_WEEK = 604800000
-
 /**
  * @name differenceInCalendarWeeks
  * @category Week Helpers
@@ -52,16 +50,13 @@ export default function differenceInCalendarWeeks(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
   var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
-
   var timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)
   var timestampRight =
     startOfWeekRight.getTime() -
     getTimezoneOffsetInMilliseconds(startOfWeekRight)
-
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)

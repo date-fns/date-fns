@@ -1,5 +1,4 @@
-import isSameMonth from '../isSameMonth/index.js'
-
+import isSameMonth from '../isSameMonth/index'
 /**
  * @name isThisMonth
  * @category Month Helpers
@@ -25,13 +24,11 @@ import isSameMonth from '../isSameMonth/index.js'
  * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-
 export default function isThisMonth(dirtyDate) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameMonth(Date.now(), dirtyDate)
 }

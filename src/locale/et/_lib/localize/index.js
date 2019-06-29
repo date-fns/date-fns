@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['e.m.a', 'm.a.j'],
   abbreviated: ['e.m.a', 'm.a.j'],
   wide: ['enne meie ajaarvamist', 'meie ajaarvamise järgi']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
   wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
 }
-
 var monthValues = {
   narrow: ['J', 'V', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
@@ -43,7 +40,6 @@ var monthValues = {
     'detsember'
   ]
 }
-
 var dayValues = {
   narrow: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
   short: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
@@ -66,7 +62,6 @@ var dayValues = {
     'laupäev'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -99,7 +94,6 @@ var dayPeriodValues = {
     night: 'öö'
   }
 }
-
 var formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
@@ -132,20 +126,16 @@ var formattingDayPeriodValues = {
     night: 'öösel'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + '.'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -153,24 +143,20 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     formattingValues: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     formattingValues: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     formattingValues: formattingDayPeriodValues,
     defaultWidth: 'wide'
   })
 }
-
 export default localize

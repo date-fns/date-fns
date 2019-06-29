@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { getOverlappingDaysInIntervals } from 'date-fns/fp'
-export default getOverlappingDaysInIntervals
+declare var getOverlappingDaysInIntervals: any;
+export default getOverlappingDaysInIntervals;

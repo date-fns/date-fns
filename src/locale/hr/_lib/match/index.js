@@ -1,25 +1,20 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
-
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildParseFn from '../../../_lib/buildParseFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import parseDecimal from '../../../_lib/parseDecimal/index'
 var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
-
 var matchWeekdaysPatterns = {
   narrow: /^(ne|po|ut|sr|če|pe|su)/i,
   short: /^(ned|pon|uto|sri|čet|pet|sub)/i,
   long: /^(nedjelja|ponedjeljak|utorak|srijeda|četvrtak|petak|subota)/i
 }
-
 var parseWeekdayPatterns = {
   any: [/^ne/i, /^po/i, /^ut/i, /^sr/i, /^če/i, /^pe/i, /^su/i]
 }
-
 var matchMonthsPatterns = {
   short: /^(sij|velj|ožu|tra|svi|lip|srp|kol|ruj|lis|stu|pro)/i,
   long: /^(siječanj|veljača|ožujak|travanj|svibanj|lipanj|srpanj|kolovoz|rujan|listopad|studeni|prosinac)/i
 }
-
 var parseMonthPatterns = {
   any: [
     /^si/i,
@@ -36,15 +31,12 @@ var parseMonthPatterns = {
     /^p/i
   ]
 }
-
 var matchTimesOfDayPatterns = {
   long: /^(ujutro|popodne)/i
 }
-
 var parseTimeOfDayPatterns = {
   any: [/^u/i, /^p/i]
 }
-
 var match = {
   ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
   ordinalNumber: parseDecimal,
@@ -55,5 +47,4 @@ var match = {
   timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
   timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
 }
-
 export default match

@@ -1,7 +1,5 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
-
+import differenceInMilliseconds from '../differenceInMilliseconds/index'
 var MILLISECONDS_IN_HOUR = 3600000
-
 /**
  * @name differenceInHours
  * @category Hour Helpers
@@ -33,7 +31,6 @@ export default function differenceInHours(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_HOUR

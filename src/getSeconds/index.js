@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getSeconds
  * @category Second Helpers
@@ -27,7 +26,6 @@ export default function getSeconds(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var seconds = date.getSeconds()
   return seconds

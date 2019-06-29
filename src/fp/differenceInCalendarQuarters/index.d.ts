@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { differenceInCalendarQuarters } from 'date-fns/fp'
-export default differenceInCalendarQuarters
+declare var differenceInCalendarQuarters: any;
+export default differenceInCalendarQuarters;

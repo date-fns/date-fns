@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name endOfMinute
  * @category Minute Helpers
@@ -28,7 +27,6 @@ export default function endOfMinute(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   date.setSeconds(59, 999)
   return date

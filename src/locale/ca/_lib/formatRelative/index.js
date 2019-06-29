@@ -6,7 +6,6 @@ var formatRelativeLocale = {
   nextWeek: "eeee 'a la' p",
   other: 'P'
 }
-
 var formatRelativeLocalePlural = {
   lastWeek: "'el' eeee 'passat a les' p",
   yesterday: "'ahir a les' p",
@@ -15,7 +14,6 @@ var formatRelativeLocalePlural = {
   nextWeek: "eeee 'a les' p",
   other: 'P'
 }
-
 export default function formatRelative(token, date, _baseDate, _options) {
   if (date.getUTCHours() !== 1) {
     return formatRelativeLocalePlural[token]

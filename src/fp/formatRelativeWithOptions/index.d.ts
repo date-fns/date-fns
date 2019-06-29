@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { formatRelativeWithOptions } from 'date-fns/fp'
-export default formatRelativeWithOptions
+declare var formatRelativeWithOptions: any;
+export default formatRelativeWithOptions;

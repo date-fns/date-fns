@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { startOfQuarter } from 'date-fns/fp'
-export default startOfQuarter
+declare var startOfQuarter: any;
+export default startOfQuarter;

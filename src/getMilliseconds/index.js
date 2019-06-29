@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getMilliseconds
  * @category Millisecond Helpers
@@ -27,7 +26,6 @@ export default function getMilliseconds(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var milliseconds = date.getMilliseconds()
   return milliseconds

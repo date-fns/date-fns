@@ -1,5 +1,4 @@
-import startOfWeek from '../startOfWeek/index.js'
-
+import startOfWeek from '../startOfWeek/index'
 /**
  * @name isSameWeek
  * @category Week Helpers
@@ -44,9 +43,7 @@ export default function isSameWeek(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
-
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }

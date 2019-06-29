@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name getDaysInMonth
  * @category Month Helpers
@@ -27,7 +26,6 @@ export default function getDaysInMonth(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var monthIndex = date.getMonth()

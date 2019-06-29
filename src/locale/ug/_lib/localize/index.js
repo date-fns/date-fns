@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['ب', 'ك'],
   abbreviated: ['ب', 'ك'],
   wide: ['مىيلادىدىن بۇرۇن', 'مىيلادىدىن كىيىن']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1', '2', '3', '4'],
   wide: ['بىرىنجى چارەك', 'ئىككىنجى چارەك', 'ئۈچىنجى چارەك', 'تۆتىنجى چارەك']
 }
-
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -47,7 +44,6 @@ var monthValues = {
     'دىكابىر'
   ]
 }
-
 var dayValues = {
   narrow: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
   short: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
@@ -70,7 +66,6 @@ var dayValues = {
     'شەنبە'
   ]
 }
-
 var dayPeriodValues = {
   narrow: {
     am: 'ئە',
@@ -135,19 +130,15 @@ var formattingDayPeriodValues = {
     night: 'كىچىدە'
   }
 }
-
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return String(dirtyNumber)
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -155,17 +146,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -173,5 +161,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

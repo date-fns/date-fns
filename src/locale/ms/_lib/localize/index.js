@@ -1,6 +1,5 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
 // Note: in Malay, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
@@ -10,7 +9,6 @@ var weekdayValues = {
   short: ['Ahd', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab'],
   long: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu']
 }
-
 var monthValues = {
   short: [
     'Jan',
@@ -41,16 +39,13 @@ var monthValues = {
     'Disember'
   ]
 }
-
 var timeOfDayValues = {
   uppercase: ['AM', 'PM'],
   lowercase: ['am', 'pm'],
   long: ['a.m.', 'p.m.']
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
-
   switch (number) {
     case 1:
       return 'pertama'
@@ -62,7 +57,6 @@ function ordinalNumber(dirtyNumber) {
       return 'ke-' + number
   }
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   weekday: buildLocalizeFn(weekdayValues, 'long'),
@@ -74,5 +68,4 @@ var localize = {
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }
-
 export default localize

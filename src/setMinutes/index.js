@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
 /**
  * @name setMinutes
  * @category Minute Helpers
@@ -29,7 +28,6 @@ export default function setMinutes(dirtyDate, dirtyMinutes) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var minutes = toInteger(dirtyMinutes)
   date.setMinutes(minutes)

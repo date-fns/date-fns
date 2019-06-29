@@ -1,4 +1,2 @@
-// This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
-
-import { differenceInSeconds } from 'date-fns/fp'
-export default differenceInSeconds
+declare var differenceInSeconds: any;
+export default differenceInSeconds;

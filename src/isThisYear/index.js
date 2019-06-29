@@ -1,5 +1,4 @@
-import isSameYear from '../isSameYear/index.js'
-
+import isSameYear from '../isSameYear/index'
 /**
  * @name isThisYear
  * @category Year Helpers
@@ -31,6 +30,5 @@ export default function isThisYear(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   return isSameYear(dirtyDate, Date.now())
 }

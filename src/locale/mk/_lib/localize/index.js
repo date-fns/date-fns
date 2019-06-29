@@ -1,6 +1,5 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
 var weekdayValues = {
   narrow: ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са'],
   short: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
@@ -14,7 +13,6 @@ var weekdayValues = {
     'сабота'
   ]
 }
-
 var monthValues = {
   short: [
     'јан',
@@ -45,14 +43,11 @@ var monthValues = {
     'декември'
   ]
 }
-
 var timeOfDayValues = {
   long: ['претпладне', 'попладне']
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
-
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
@@ -67,7 +62,6 @@ function ordinalNumber(dirtyNumber) {
   }
   return number + '-ти'
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
   weekday: buildLocalizeFn(weekdayValues, 'long'),
@@ -79,5 +73,4 @@ var localize = {
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }
-
 export default localize

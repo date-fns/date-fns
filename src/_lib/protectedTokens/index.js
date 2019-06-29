@@ -1,14 +1,11 @@
 var protectedDayOfYearTokens = ['D', 'DD']
 var protectedWeekYearTokens = ['YY', 'YYYY']
-
 export function isProtectedDayOfYearToken(token) {
   return protectedDayOfYearTokens.indexOf(token) !== -1
 }
-
 export function isProtectedWeekYearToken(token) {
   return protectedWeekYearTokens.indexOf(token) !== -1
 }
-
 export function throwProtectedError(token) {
   if (token === 'YYYY') {
     throw new RangeError(

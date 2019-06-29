@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['BC', 'AC'],
   abbreviated: ['紀元前', '西暦'],
   wide: ['紀元前', '西暦']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['第1四半期', '第2四半期', '第3四半期', '第4四半期']
 }
-
 var monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   abbreviated: [
@@ -43,14 +40,12 @@ var monthValues = {
     '12月'
   ]
 }
-
 var dayValues = {
   narrow: ['日', '月', '火', '水', '木', '金', '土'],
   short: ['日', '月', '火', '水', '木', '金', '土'],
   abbreviated: ['日', '月', '火', '水', '木', '金', '土'],
   wide: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: '午前',
@@ -115,20 +110,16 @@ var formattingDayPeriodValues = {
     night: '深夜'
   }
 }
-
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -136,17 +127,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -154,5 +142,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

@@ -6,7 +6,6 @@ var formatRelativeLocale = {
   nextWeek: '翌週のeeeeのp',
   other: 'P'
 }
-
 export default function formatRelative(token, _date, _baseDate, _options) {
   return formatRelativeLocale[token]
 }

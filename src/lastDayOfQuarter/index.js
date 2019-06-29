@@ -1,5 +1,4 @@
-import toDate from '../toDate/index.js'
-
+import toDate from '../toDate/index'
 /**
  * @name lastDayOfQuarter
  * @category Quarter Helpers
@@ -31,7 +30,6 @@ export default function lastDayOfQuarter(dirtyDate) {
       '1 argument required, but only ' + arguments.length + ' present'
     )
   }
-
   var date = toDate(dirtyDate)
   var currentMonth = date.getMonth()
   var month = currentMonth - (currentMonth % 3) + 3

@@ -1,17 +1,14 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['前', '公元'],
   abbreviated: ['前', '公元'],
   wide: ['公元前', '公元']
 }
-
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
   wide: ['第一刻钟', '第二刻钟', '第三刻钟', '第四刻钟']
 }
-
 var monthValues = {
   narrow: [
     '一',
@@ -56,14 +53,12 @@ var monthValues = {
     '十二月'
   ]
 }
-
 var dayValues = {
   narrow: ['日', '一', '二', '三', '四', '五', '六'],
   short: ['日', '一', '二', '三', '四', '五', '六'],
   abbreviated: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
   wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 }
-
 var dayPeriodValues = {
   narrow: {
     am: '上',
@@ -128,7 +123,6 @@ var formattingDayPeriodValues = {
     night: '夜间'
   }
 }
-
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
@@ -142,7 +136,6 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
   var options = dirtyOptions || {}
   var unit = String(options.unit)
-
   if (
     unit === 'date' ||
     unit === 'hour' ||
@@ -151,18 +144,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   ) {
     return number.toString()
   }
-
   return '第 ' + number.toString()
 }
-
 var localize = {
   ordinalNumber: ordinalNumber,
-
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
@@ -170,17 +159,14 @@ var localize = {
       return Number(quarter) - 1
     }
   }),
-
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
@@ -188,5 +174,4 @@ var localize = {
     defaultFormattingWidth: 'wide'
   })
 }
-
 export default localize

@@ -1,5 +1,4 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
 /**
  * @name isSameISOWeekYear
  * @category ISO Week-Numbering Year Helpers
@@ -35,9 +34,7 @@ export default function isSameISOWeekYear(dirtyDateLeft, dirtyDateRight) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-
   var dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
   var dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
-
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }
