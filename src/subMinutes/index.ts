@@ -23,7 +23,10 @@ import addMinutes from '../addMinutes/index'
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-export default function subMinutes(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subMinutes(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

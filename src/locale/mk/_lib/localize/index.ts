@@ -4,19 +4,53 @@ import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index'
 var weekdayValues = {
   narrow: ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са'],
   short: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
-  long: ['недела', 'понеделник', 'вторник', 'среда', 'четврток', 'петок', 'сабота']
+  long: [
+    'недела',
+    'понеделник',
+    'вторник',
+    'среда',
+    'четврток',
+    'петок',
+    'сабота'
+  ]
 }
 
 var monthValues = {
-  short: ['јан', 'фев', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'ное', 'дек'],
-  long: ['јануари', 'февруари', 'март', 'април', 'мај', 'јуни', 'јули', 'август', 'септември', 'октомври', 'ноември', 'декември']
+  short: [
+    'јан',
+    'фев',
+    'мар',
+    'апр',
+    'мај',
+    'јун',
+    'јул',
+    'авг',
+    'сеп',
+    'окт',
+    'ное',
+    'дек'
+  ],
+  long: [
+    'јануари',
+    'февруари',
+    'март',
+    'април',
+    'мај',
+    'јуни',
+    'јули',
+    'август',
+    'септември',
+    'октомври',
+    'ноември',
+    'декември'
+  ]
 }
 
 var timeOfDayValues = {
   long: ['претпладне', 'попладне']
 }
 
-function ordinalNumber (dirtyNumber: number) {
+function ordinalNumber(dirtyNumber: number) {
   var number = Number(dirtyNumber)
 
   var rem100 = number % 100
@@ -40,8 +74,8 @@ var localize = {
   weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
   month: buildLocalizeFn(monthValues, 'long'),
   months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours: any) {
-    return (hours / 12) >= 1 ? 1 : 0
+  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function(hours: any) {
+    return hours / 12 >= 1 ? 1 : 0
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }

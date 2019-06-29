@@ -80,7 +80,11 @@ var formatDistanceLocale: any = {
   }
 }
 
-export default function formatDistance (token: any, count: number, options: any) {
+export default function formatDistance(
+  token: any,
+  count: number,
+  options: any
+) {
   options = options || {}
 
   // Return word instead of `in one day` or `one day ago`

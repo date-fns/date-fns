@@ -1,14 +1,39 @@
 // TODO@ts: Figure out why this was removed
 
 var commonFormatterKeys = [
-  'M', 'MM', 'Q', 'D', 'DD', 'DDD', 'DDDD', 'd',
-  'E', 'W', 'WW', 'YY', 'YYYY', 'GG', 'GGGG',
-  'H', 'HH', 'h', 'hh', 'm', 'mm',
-  's', 'ss', 'S', 'SS', 'SSS',
-  'Z', 'ZZ', 'X', 'x'
+  'M',
+  'MM',
+  'Q',
+  'D',
+  'DD',
+  'DDD',
+  'DDDD',
+  'd',
+  'E',
+  'W',
+  'WW',
+  'YY',
+  'YYYY',
+  'GG',
+  'GGGG',
+  'H',
+  'HH',
+  'h',
+  'hh',
+  'm',
+  'mm',
+  's',
+  'ss',
+  'S',
+  'SS',
+  'SSS',
+  'Z',
+  'ZZ',
+  'X',
+  'x'
 ]
 
-function buildFormattingTokensRegExp (formatters: any) {
+function buildFormattingTokensRegExp(formatters: any) {
   var formatterKeys = []
   for (var key in formatters) {
     if (formatters.hasOwnProperty(key)) {
@@ -21,7 +46,8 @@ function buildFormattingTokensRegExp (formatters: any) {
     .sort()
     .reverse()
   var formattingTokensRegExp = new RegExp(
-    '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)', 'g'
+    '(\\[[^\\[]*\\])|(\\\\)?' + '(' + formattingTokens.join('|') + '|.)',
+    'g'
   )
 
   return formattingTokensRegExp

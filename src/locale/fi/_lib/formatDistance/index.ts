@@ -38,7 +38,7 @@ var formatDistanceLocale: any = {
   halfAMinute: {
     one: 'puoli minuuttia',
     other: 'puoli minuuttia',
-    futureTense: function (_text: any) {
+    futureTense: function(_text: any) {
       return 'puolen minuutin'
     }
   },

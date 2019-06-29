@@ -69,7 +69,11 @@ var formatDistanceLocale: any = {
   }
 }
 
-export default function formatDistance (token: any, count: number, options: any) {
+export default function formatDistance(
+  token: any,
+  count: number,
+  options: any
+) {
   options = options || {}
 
   var result
@@ -78,7 +82,10 @@ export default function formatDistance (token: any, count: number, options: any)
   } else if (count === 1) {
     result = formatDistanceLocale[token].one
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', localize.numberToLocale(count))
+    result = formatDistanceLocale[token].other.replace(
+      '{{count}}',
+      localize.numberToLocale(count)
+    )
   }
 
   if (options.addSuffix) {

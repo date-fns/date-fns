@@ -341,7 +341,11 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * var result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format(dirtyDate: Date | number, dirtyFormatStr: string, dirtyOptions: any) {
+export default function format(
+  dirtyDate: Date | number,
+  dirtyFormatStr: string,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

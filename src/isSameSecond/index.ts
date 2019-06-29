@@ -26,7 +26,10 @@ import startOfSecond from '../startOfSecond/index'
  * )
  * //=> true
  */
-export default function isSameSecond(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameSecond(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

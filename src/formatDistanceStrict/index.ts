@@ -158,7 +158,7 @@ var MINUTES_IN_YEAR = 525600
  * //=> '1 jaro'
  */
 export default function formatDistanceStrict(
-  dirtyDate: Date | number,
+  dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
   dirtyOptions: any
 ) {

@@ -26,7 +26,10 @@ import differenceInMilliseconds from '../differenceInMilliseconds/index'
  * )
  * //=> 12
  */
-export default function differenceInSeconds(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInSeconds(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

@@ -36,7 +36,10 @@ import toDate from '../toDate/index'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function compareDesc(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

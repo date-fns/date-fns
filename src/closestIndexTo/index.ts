@@ -31,7 +31,10 @@ import toDate from '../toDate/index'
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
+export default function closestIndexTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
@@ -62,7 +65,7 @@ export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyD
 
   var result: any
   var minDistance: any
-  datesArray.forEach(function (dirtyDate: any, index: any) {
+  datesArray.forEach(function(dirtyDate: any, index: any) {
     var currentDate: any = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

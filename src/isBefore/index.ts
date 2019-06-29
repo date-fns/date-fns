@@ -22,7 +22,10 @@ import toDate from '../toDate/index'
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore(dirtyDate: Date | number, dirtyDateToCompare: Date | number) {
+export default function isBefore(
+  dirtyDate: Date | number,
+  dirtyDateToCompare: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

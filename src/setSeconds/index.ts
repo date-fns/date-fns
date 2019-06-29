@@ -23,7 +23,10 @@ import toDate from '../toDate/index'
  * var result = setSeconds(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:30:45
  */
-export default function setSeconds(dirtyDate: Date | number, dirtySeconds: number) {
+export default function setSeconds(
+  dirtyDate: Date | number,
+  dirtySeconds: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

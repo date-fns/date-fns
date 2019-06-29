@@ -46,7 +46,11 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(dirtyDate: Date | number, dirtyWeek: number, dirtyOptions: any) {
+export default function setWeek(
+  dirtyDate: Date | number,
+  dirtyWeek: number,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

@@ -1,8 +1,16 @@
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 
-var accusativeWeekdays = ['неділю', 'понеділок', 'вівторок', 'середу', 'четвер', 'п’ятницю', 'суботу']
+var accusativeWeekdays = [
+  'неділю',
+  'понеділок',
+  'вівторок',
+  'середу',
+  'четвер',
+  'п’ятницю',
+  'суботу'
+]
 
-function lastWeek (day: number) {
+function lastWeek(day: number) {
   var weekday = accusativeWeekdays[day]
 
   switch (day) {
@@ -18,13 +26,13 @@ function lastWeek (day: number) {
   }
 }
 
-function thisWeek (day: number) {
+function thisWeek(day: number) {
   var weekday = accusativeWeekdays[day]
 
   return "'у " + weekday + " о' p"
 }
 
-function nextWeek (day: number) {
+function nextWeek(day: number) {
   var weekday = accusativeWeekdays[day]
 
   switch (day) {
@@ -41,7 +49,7 @@ function nextWeek (day: number) {
 }
 
 var formatRelativeLocale: any = {
-  lastWeek: function (date: any, baseDate: any, options: any) {
+  lastWeek: function(date: any, baseDate: any, options: any) {
     var day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
@@ -52,7 +60,7 @@ var formatRelativeLocale: any = {
   yesterday: "'вчора о' p",
   today: "'сьогодні о' p",
   tomorrow: "'завтра о' p",
-  nextWeek: function (date: any, baseDate: any, options: any) {
+  nextWeek: function(date: any, baseDate: any, options: any) {
     var day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
@@ -63,7 +71,12 @@ var formatRelativeLocale: any = {
   other: 'P'
 }
 
-export default function formatRelative (token: any, date: any, baseDate: any, options: any) {
+export default function formatRelative(
+  token: any,
+  date: any,
+  baseDate: any,
+  options: any
+) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {

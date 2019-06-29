@@ -31,7 +31,10 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * var result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
-export default function addISOWeekYears(dirtyDate: Date | number, dirtyAmount: number) {
+export default function addISOWeekYears(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

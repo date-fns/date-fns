@@ -52,17 +52,13 @@ export {
 } from './differenceInMilliseconds/index'
 export { default as differenceInMinutes } from './differenceInMinutes/index'
 export { default as differenceInMonths } from './differenceInMonths/index'
-export {
-  default as differenceInQuarters
-} from './differenceInQuarters/index'
+export { default as differenceInQuarters } from './differenceInQuarters/index'
 export { default as differenceInSeconds } from './differenceInSeconds/index'
 export { default as differenceInWeeks } from './differenceInWeeks/index'
 export { default as differenceInYears } from './differenceInYears/index'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index'
-export {
-  default as eachWeekendOfInterval
-} from './eachWeekendOfInterval/index'
+export { default as eachWeekendOfInterval } from './eachWeekendOfInterval/index'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index'
 export { default as endOfDay } from './endOfDay/index'
@@ -81,9 +77,7 @@ export { default as endOfYear } from './endOfYear/index'
 export { default as endOfYesterday } from './endOfYesterday/index'
 export { default as format } from './format/index'
 export { default as formatDistance } from './formatDistance/index'
-export {
-  default as formatDistanceStrict
-} from './formatDistanceStrict/index'
+export { default as formatDistanceStrict } from './formatDistanceStrict/index'
 export { default as formatDistanceToNow } from './formatDistanceToNow/index'
 export { default as formatRelative } from './formatRelative/index'
 export { default as fromUnixTime } from './fromUnixTime/index'
@@ -155,9 +149,7 @@ export { default as isWithinInterval } from './isWithinInterval/index'
 export { default as isYesterday } from './isYesterday/index'
 export { default as lastDayOfDecade } from './lastDayOfDecade/index'
 export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index'
-export {
-  default as lastDayOfISOWeekYear
-} from './lastDayOfISOWeekYear/index'
+export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index'
@@ -167,9 +159,7 @@ export { default as max } from './max/index'
 export { default as min } from './min/index'
 export { default as parse } from './parse/index'
 export { default as parseISO } from './parseISO/index'
-export {
-  default as roundToNearestMinutes
-} from './roundToNearestMinutes/index'
+export { default as roundToNearestMinutes } from './roundToNearestMinutes/index'
 export { default as setDate } from './setDate/index'
 export { default as setDay } from './setDay/index'
 export { default as setDayOfYear } from './setDayOfYear/index'

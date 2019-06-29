@@ -29,7 +29,10 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index'
  * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameISOWeekYear(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

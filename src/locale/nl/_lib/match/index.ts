@@ -28,8 +28,34 @@ var matchMonthPatterns = {
   wide: /^(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^jan/i, /^feb/i, /^mrt/i, /^apr/i, /^mei/i, /^jun/i, /^jul/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i]
+  narrow: [
+    /^j/i,
+    /^f/i,
+    /^m/i,
+    /^a/i,
+    /^m/i,
+    /^j/i,
+    /^j/i,
+    /^a/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ],
+  any: [
+    /^jan/i,
+    /^feb/i,
+    /^mrt/i,
+    /^apr/i,
+    /^mei/i,
+    /^jun/i,
+    /^jul/i,
+    /^aug/i,
+    /^sep/i,
+    /^okt/i,
+    /^nov/i,
+    /^dec/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -63,7 +89,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value: any) {
+    valueCallback: function(value: any) {
       return parseInt(value, 10)
     }
   }),
@@ -80,7 +106,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index: any) {
+    valueCallback: function(index: any) {
       return index + 1
     }
   }),

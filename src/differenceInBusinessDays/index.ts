@@ -51,7 +51,7 @@ export default function differenceInBusinessDays(
       : { start: dateLeft, end: dateRight }
 
   var daysOfInterval = eachDayOfInterval(interval)
-  var difference = daysOfInterval.filter(function (day: any) {
+  var difference = daysOfInterval.filter(function(day: any) {
     return !isWeekend(day)
   })
   // Substruct 1 because interval contains both starting and ending dates

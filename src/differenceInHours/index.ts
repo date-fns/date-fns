@@ -27,7 +27,10 @@ var MILLISECONDS_IN_HOUR = 3600000
  * )
  * //=> 12
  */
-export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInHours(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

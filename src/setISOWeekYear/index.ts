@@ -33,7 +33,10 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index'
  * var result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number) {
+export default function setISOWeekYear(
+  dirtyDate: Date | number,
+  dirtyISOWeekYear: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

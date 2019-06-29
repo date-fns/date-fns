@@ -117,7 +117,11 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * })
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions: any) {
+export default function formatDistance(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

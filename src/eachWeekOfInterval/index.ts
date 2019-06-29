@@ -1,7 +1,7 @@
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 
 /**
  * @name eachWeekOfInterval
@@ -42,7 +42,10 @@ import { Interval } from '../types.js';
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval(dirtyInterval: Interval, options: any) {
+export default function eachWeekOfInterval(
+  dirtyInterval: Interval,
+  options: any
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

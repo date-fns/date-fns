@@ -23,7 +23,10 @@ import toDate from '../toDate/index'
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-export default function setDayOfYear(dirtyDate: Date | number, dirtyDayOfYear: number) {
+export default function setDayOfYear(
+  dirtyDate: Date | number,
+  dirtyDayOfYear: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

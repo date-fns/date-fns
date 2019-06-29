@@ -28,8 +28,34 @@ var matchMonthPatterns = {
   wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i
 }
 var parseMonthPatterns = {
-  narrow: [/^я/i, /^ф/i, /^м/i, /^а/i, /^м/i, /^и/i, /^и/i, /^а/i, /^с/i, /^о/i, /^н/i, /^я/i],
-  any: [/^я/i, /^ф/i, /^мар/i, /^ап/i, /^ма[йя]/i, /^июн/i, /^июл/i, /^ав/i, /^с/i, /^о/i, /^н/i, /^д/i]
+  narrow: [
+    /^я/i,
+    /^ф/i,
+    /^м/i,
+    /^а/i,
+    /^м/i,
+    /^и/i,
+    /^и/i,
+    /^а/i,
+    /^с/i,
+    /^о/i,
+    /^н/i,
+    /^я/i
+  ],
+  any: [
+    /^я/i,
+    /^ф/i,
+    /^мар/i,
+    /^ап/i,
+    /^ма[йя]/i,
+    /^июн/i,
+    /^июл/i,
+    /^ав/i,
+    /^с/i,
+    /^о/i,
+    /^н/i,
+    /^д/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -65,7 +91,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value: any) {
+    valueCallback: function(value: any) {
       return parseInt(value, 10)
     }
   }),
@@ -82,7 +108,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index: any) {
+    valueCallback: function(index: any) {
       return index + 1
     }
   }),

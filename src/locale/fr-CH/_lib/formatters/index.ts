@@ -4,13 +4,15 @@ var formatters: any = {}
 // 1er mars, 2 mars, 3 mars, …
 // See https://github.com/date-fns/date-fns/issues/437
 var monthsTokens = ['MMM', 'MMMM']
-monthsTokens.forEach(function (monthToken: any) {
-  formatters['Do ' + monthToken] = function (date: any, options: any) {
+monthsTokens.forEach(function(monthToken: any) {
+  formatters['Do ' + monthToken] = function(date: any, options: any) {
     var commonFormatters = options.formatters
     var dayOfMonthToken = date.getUTCDate() === 1 ? 'Do' : 'D'
     var dayOfMonthFormatter = commonFormatters[dayOfMonthToken]
     var monthFormatter = commonFormatters[monthToken]
-    return dayOfMonthFormatter(date, options) + ' ' + monthFormatter(date, options)
+    return (
+      dayOfMonthFormatter(date, options) + ' ' + monthFormatter(date, options)
+    )
   }
 })
 

@@ -45,7 +45,12 @@ function getAdjective(token: any, date: any, baseDate: any, options: any) {
   return adjectives[grammaticalGender]
 }
 
-function dayAndTimeWithAdjective(token: any, date: any, baseDate: any, options: any) {
+function dayAndTimeWithAdjective(
+  token: any,
+  date: any,
+  baseDate: any,
+  options: any
+) {
   var adjective = getAdjective(token, date, baseDate, options)
   return `'${adjective}' eeee 'o' p`
 }
@@ -59,7 +64,12 @@ var formatRelativeLocale: any = {
   other: 'P'
 }
 
-export default function formatRelative(token: any, date: any, baseDate: any, options: any) {
+export default function formatRelative(
+  token: any,
+  date: any,
+  baseDate: any,
+  options: any
+) {
   var format = formatRelativeLocale[token]
   if (typeof format === 'function') {
     return format(token, date, baseDate, options)

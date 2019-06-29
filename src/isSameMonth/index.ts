@@ -22,7 +22,10 @@ import toDate from '../toDate/index'
  * var result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export default function isSameMonth(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameMonth(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

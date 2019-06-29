@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 
 var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 

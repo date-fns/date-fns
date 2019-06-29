@@ -30,7 +30,20 @@ var matchMonthPatterns = {
   wide: /^(জানুয়ারি|ফেব্রুয়ারি|মার্চ|এপ্রিল|মে|জুন|জুলাই|আগস্ট|সেপ্টেম্বর|অক্টোবর|নভেম্বর|ডিসেম্বর)/i
 }
 var parseMonthPatterns = {
-  any: [/^জানু/i, /^ফেব্রু/i, /^মার্চ/i, /^এপ্রিল/i, /^মে/i, /^জুন/i, /^জুলাই/i, /^আগস্ট/i, /^সেপ্ট/i, /^অক্টো/i, /^নভে/i, /^ডিসে/i]
+  any: [
+    /^জানু/i,
+    /^ফেব্রু/i,
+    /^মার্চ/i,
+    /^এপ্রিল/i,
+    /^মে/i,
+    /^জুন/i,
+    /^জুলাই/i,
+    /^আগস্ট/i,
+    /^সেপ্ট/i,
+    /^অক্টো/i,
+    /^নভে/i,
+    /^ডিসে/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -42,8 +55,24 @@ var matchDayPatterns = {
 var parseDayPatterns = {
   narrow: [/^র/i, /^সো/i, /^ম/i, /^বু/i, /^বৃ/i, /^শু/i, /^শ/i],
   short: [/^রবি/i, /^সোম/i, /^মঙ্গল/i, /^বুধ/i, /^বৃহ/i, /^শুক্র/i, /^শনি/i],
-  abbreviated: [/^রবি/i, /^সোম/i, /^মঙ্গল/i, /^বুধ/i, /^বৃহ/i, /^শুক্র/i, /^শনি/i],
-  wide: [/^রবিবার/i, /^সোমবার/i, /^মঙ্গলবার/i, /^বুধবার/i, /^বৃহস্পতিবার /i, /^শুক্রবার/i, /^শনিবার/i]
+  abbreviated: [
+    /^রবি/i,
+    /^সোম/i,
+    /^মঙ্গল/i,
+    /^বুধ/i,
+    /^বৃহ/i,
+    /^শুক্র/i,
+    /^শনি/i
+  ],
+  wide: [
+    /^রবিবার/i,
+    /^সোমবার/i,
+    /^মঙ্গলবার/i,
+    /^বুধবার/i,
+    /^বৃহস্পতিবার /i,
+    /^শুক্রবার/i,
+    /^শনিবার/i
+  ]
 }
 
 var matchDayPeriodPatterns = {
@@ -68,7 +97,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value: any) {
+    valueCallback: function(value: any) {
       return parseInt(value, 10)
     }
   }),
@@ -85,7 +114,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index: any) {
+    valueCallback: function(index: any) {
       return index + 1
     }
   }),

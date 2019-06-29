@@ -22,7 +22,10 @@ import startOfQuarter from '../startOfQuarter/index'
  * var result = isSameQuarter(new Date(2014, 0, 1), new Date(2014, 2, 8))
  * //=> true
  */
-export default function isSameQuarter(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameQuarter(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

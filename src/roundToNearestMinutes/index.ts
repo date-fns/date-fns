@@ -25,7 +25,10 @@ import toInteger from '../_lib/toInteger/index'
  * var result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34))
  * //=> Thu Jul 10 2014 12:13:00
  */
-export default function roundToNearestMinutes(dirtyDate: Date | number, options: any) {
+export default function roundToNearestMinutes(
+  dirtyDate: Date | number,
+  options: any
+) {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')
   }

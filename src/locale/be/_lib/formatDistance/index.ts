@@ -22,7 +22,7 @@ function declension(scheme: any, count: any) {
 }
 
 function buildLocalizeTokenFn(scheme: any) {
-  return function (count: any, options: any) {
+  return function(count: any, options: any) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         if (scheme.future) {
@@ -77,7 +77,7 @@ var formatDistanceLocale: any = {
     }
   }),
 
-  halfAMinute: function (_: any, options: any) {
+  halfAMinute: function(_: any, options: any) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         return 'праз паўхвіліны'

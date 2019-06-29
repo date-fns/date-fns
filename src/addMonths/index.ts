@@ -24,7 +24,10 @@ import getDaysInMonth from '../getDaysInMonth/index'
  * var result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-export default function addMonths(dirtyDate: Date | number, dirtyAmount: number) {
+export default function addMonths(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

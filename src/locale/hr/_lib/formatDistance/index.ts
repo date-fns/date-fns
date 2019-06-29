@@ -132,7 +132,11 @@ var formatDistanceLocale: any = {
   }
 }
 
-export default function formatDistance (token: any, count: number, options: any) {
+export default function formatDistance(
+  token: any,
+  count: number,
+  options: any
+) {
   options = options || {}
 
   var result
@@ -150,7 +154,8 @@ export default function formatDistance (token: any, count: number, options: any)
       result = formatDistanceLocale[token].one.standalone
     }
   } else if (
-    count % 10 > 1 && count % 10 < 5 && // if last digit is between 2 and 4
+    count % 10 > 1 &&
+    count % 10 < 5 && // if last digit is between 2 and 4
     String(count).substr(-2, 1) !== '1' // unless the 2nd to last digit is "1"
   ) {
     result = formatDistanceLocale[token].dual.replace('{{count}}', count)

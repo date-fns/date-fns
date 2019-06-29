@@ -357,7 +357,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse(
   dirtyDateString: string,
   dirtyFormatString: string,
-  dirtyBackupDate: Date | number,
+  dirtyBackupDate: Date | number,
   dirtyOptions: any
 ) {
   if (arguments.length < 3) {
@@ -543,23 +543,23 @@ export default function parse(
   }
 
   var uniquePrioritySetters = setters
-    .map(function (setter: any) {
+    .map(function(setter: any) {
       return setter.priority
     })
-    .sort(function (a: any, b: any) {
+    .sort(function(a: any, b: any) {
       return b - a
     })
-    .filter(function (priority: any, index: any, array: any) {
+    .filter(function(priority: any, index: any, array: any) {
       return array.indexOf(priority) === index
     })
-    .map(function (priority: any) {
+    .map(function(priority: any) {
       return setters
-        .filter(function (setter: any) {
+        .filter(function(setter: any) {
           return setter.priority === priority
         })
         .reverse()
     })
-    .map(function (setterArray: any) {
+    .map(function(setterArray: any) {
       return setterArray[0]
     })
 

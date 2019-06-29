@@ -23,7 +23,10 @@ import addSeconds from '../addSeconds/index'
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-export default function subSeconds(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subSeconds(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

@@ -45,7 +45,10 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear(dirtyDate: Date | number, dirtyOptions: any) {
+export default function startOfWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

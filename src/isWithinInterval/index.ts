@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 
 /**
  * @name isWithinInterval
@@ -66,7 +66,10 @@ import { Interval } from '../types.js';
  * })
  * //=> false
  */
-export default function isWithinInterval(dirtyDate: Date | number, dirtyInterval: Interval) {
+export default function isWithinInterval(
+  dirtyDate: Date | number,
+  dirtyInterval: Interval
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

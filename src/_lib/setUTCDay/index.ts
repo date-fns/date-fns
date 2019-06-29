@@ -3,7 +3,11 @@ import toDate from '../../toDate/index'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function setUTCDay(dirtyDate: Date | number, dirtyDay: number, dirtyOptions: any) {
+export default function setUTCDay(
+  dirtyDate: Date | number,
+  dirtyDay: number,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

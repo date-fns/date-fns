@@ -24,7 +24,10 @@ import isSameWeek from '../isSameWeek/index'
  * var result = isSameISOWeek(new Date(2014, 8, 1), new Date(2014, 8, 7))
  * //=> true
  */
-export default function isSameISOWeek(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameISOWeek(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

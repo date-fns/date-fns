@@ -21,7 +21,20 @@ var matchMonthsPatterns = {
 }
 
 var parseMonthPatterns = {
-  any: [/^ია/i, /^თ/i, /^მარ/i, /^აპ/i, /^მაი/i, /^ივნ/i, /^ივლ/i, /^აგ/i, /^ს/i, /^ო/i, /^ნ/i, /^დ/i]
+  any: [
+    /^ია/i,
+    /^თ/i,
+    /^მარ/i,
+    /^აპ/i,
+    /^მაი/i,
+    /^ივნ/i,
+    /^ივლ/i,
+    /^აგ/i,
+    /^ს/i,
+    /^ო/i,
+    /^ნ/i,
+    /^დ/i
+  ]
 }
 
 // `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.

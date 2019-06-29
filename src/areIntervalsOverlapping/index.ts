@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import { Interval } from '../types';
+import { Interval } from '../types'
 
 /**
  * @name areIntervalsOverlapping
@@ -68,7 +68,7 @@ import { Interval } from '../types';
  */
 export default function areIntervalsOverlapping(
   dirtyIntervalLeft: Interval,
-  dirtyIntervalRight : Interval
+  dirtyIntervalRight: Interval
 ) {
   if (arguments.length < 2) {
     throw new TypeError(

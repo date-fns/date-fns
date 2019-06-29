@@ -35,7 +35,10 @@ import compareAsc from '../compareAsc/index'
  * )
  * //=> 0
  */
-export default function differenceInDays(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInDays(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

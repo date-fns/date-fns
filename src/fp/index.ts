@@ -55,9 +55,7 @@ export {
 } from './differenceInMilliseconds/index'
 export { default as differenceInMinutes } from './differenceInMinutes/index'
 export { default as differenceInMonths } from './differenceInMonths/index'
-export {
-  default as differenceInQuarters
-} from './differenceInQuarters/index'
+export { default as differenceInQuarters } from './differenceInQuarters/index'
 export { default as differenceInSeconds } from './differenceInSeconds/index'
 export { default as differenceInWeeks } from './differenceInWeeks/index'
 export { default as differenceInYears } from './differenceInYears/index'
@@ -69,9 +67,7 @@ export { default as eachWeekOfInterval } from './eachWeekOfInterval/index'
 export {
   default as eachWeekOfIntervalWithOptions
 } from './eachWeekOfIntervalWithOptions/index'
-export {
-  default as eachWeekendOfInterval
-} from './eachWeekendOfInterval/index'
+export { default as eachWeekendOfInterval } from './eachWeekendOfInterval/index'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index'
 export { default as endOfDay } from './endOfDay/index'
@@ -87,15 +83,11 @@ export { default as endOfMonth } from './endOfMonth/index'
 export { default as endOfQuarter } from './endOfQuarter/index'
 export { default as endOfSecond } from './endOfSecond/index'
 export { default as endOfWeek } from './endOfWeek/index'
-export {
-  default as endOfWeekWithOptions
-} from './endOfWeekWithOptions/index'
+export { default as endOfWeekWithOptions } from './endOfWeekWithOptions/index'
 export { default as endOfYear } from './endOfYear/index'
 export { default as format } from './format/index'
 export { default as formatDistance } from './formatDistance/index'
-export {
-  default as formatDistanceStrict
-} from './formatDistanceStrict/index'
+export { default as formatDistanceStrict } from './formatDistanceStrict/index'
 export {
   default as formatDistanceStrictWithOptions
 } from './formatDistanceStrictWithOptions/index'
@@ -163,9 +155,7 @@ export { default as isSameMonth } from './isSameMonth/index'
 export { default as isSameQuarter } from './isSameQuarter/index'
 export { default as isSameSecond } from './isSameSecond/index'
 export { default as isSameWeek } from './isSameWeek/index'
-export {
-  default as isSameWeekWithOptions
-} from './isSameWeekWithOptions/index'
+export { default as isSameWeekWithOptions } from './isSameWeekWithOptions/index'
 export { default as isSameYear } from './isSameYear/index'
 export { default as isSaturday } from './isSaturday/index'
 export { default as isSunday } from './isSunday/index'
@@ -177,9 +167,7 @@ export { default as isWeekend } from './isWeekend/index'
 export { default as isWithinInterval } from './isWithinInterval/index'
 export { default as lastDayOfDecade } from './lastDayOfDecade/index'
 export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index'
-export {
-  default as lastDayOfISOWeekYear
-} from './lastDayOfISOWeekYear/index'
+export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index'
 export {
@@ -197,9 +185,7 @@ export { default as parse } from './parse/index'
 export { default as parseISO } from './parseISO/index'
 export { default as parseISOWithOptions } from './parseISOWithOptions/index'
 export { default as parseWithOptions } from './parseWithOptions/index'
-export {
-  default as roundToNearestMinutes
-} from './roundToNearestMinutes/index'
+export { default as roundToNearestMinutes } from './roundToNearestMinutes/index'
 export {
   default as roundToNearestMinutesWithOptions
 } from './roundToNearestMinutesWithOptions/index'

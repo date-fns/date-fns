@@ -22,7 +22,10 @@ import differenceInMonths from '../differenceInMonths/index'
  * var result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
-export default function differenceInQuarters(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInQuarters(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

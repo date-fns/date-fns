@@ -24,7 +24,10 @@ import compareAsc from '../compareAsc/index'
  * var result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInMonths(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

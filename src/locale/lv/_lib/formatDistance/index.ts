@@ -1,5 +1,5 @@
 function buildLocalizeTokenFn(schema: any) {
-  return function (count: any, options: any) {
+  return function(count: any, options: any) {
     if (count === 1) {
       if (options.addSuffix) {
         return schema.one[0].replace('{{time}}', schema.one[2])
@@ -38,7 +38,7 @@ var formatDistanceLocale: any = {
     other: ['{{count}} {{time}}', 'sekunde', 'sekundes', 'sekundes', 'sekundēm']
   }),
 
-  halfAMinute: function (count: any, options: any) {
+  halfAMinute: function(count: any, options: any) {
     if (options.addSuffix) {
       return 'pusminūtes'
     } else {

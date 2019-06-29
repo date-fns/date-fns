@@ -1,5 +1,5 @@
 import toDate from '../toDate/index'
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 
 /**
  * @name eachDayOfInterval
@@ -62,7 +62,10 @@ import { Interval } from '../types.js';
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval: Interval, options?: any) {
+export default function eachDayOfInterval(
+  dirtyInterval: Interval,
+  options?: any
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

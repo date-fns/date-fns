@@ -1,4 +1,4 @@
-export default function toInteger (dirtyNumber: number | boolean) {
+export default function toInteger(dirtyNumber: number | boolean) {
   if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
     return NaN
   }

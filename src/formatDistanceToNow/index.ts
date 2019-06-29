@@ -104,7 +104,10 @@ import distanceInWords from '../formatDistance/index'
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(dirtyDate: Date | number, dirtyOptions: any) {
+export default function formatDistanceToNow(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

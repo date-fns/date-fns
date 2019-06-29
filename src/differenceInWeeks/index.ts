@@ -22,7 +22,10 @@ import differenceInDays from '../differenceInDays/index'
  * var result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
  * //=> 2
  */
-export default function differenceInWeeks(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInWeeks(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

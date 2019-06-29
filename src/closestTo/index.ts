@@ -29,7 +29,10 @@ import toDate from '../toDate/index'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
+export default function closestTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

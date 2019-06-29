@@ -23,7 +23,10 @@ import addWeeks from '../addWeeks/index'
  * var result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-export default function subWeeks(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subWeeks(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

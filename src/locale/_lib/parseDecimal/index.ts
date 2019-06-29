@@ -1,5 +1,3 @@
-function parseDecimal() {
+function parseDecimal() {}
 
-}
-
-export default parseDecimal;
+export default parseDecimal

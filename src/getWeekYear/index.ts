@@ -45,7 +45,10 @@ import toInteger from '../_lib/toInteger/index'
  * var result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear(dirtyDate: Date | number, dirtyOptions: any) {
+export default function getWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'

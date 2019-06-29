@@ -33,7 +33,11 @@ import toInteger from '../_lib/toInteger/index'
  * var result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setDay(dirtyDate: Date | number, dirtyDay: number, dirtyOptions: any) {
+export default function setDay(
+  dirtyDate: Date | number,
+  dirtyDay: number,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

@@ -13,14 +13,19 @@ var formatRelativeLocale: any = {
   yesterday: "'včera v' p",
   today: "'dnes v' p",
   tomorrow: "'zítra v' p",
-  nextWeek: function (date: any, _baseDate: any, _options: any) {
+  nextWeek: function(date: any, _baseDate: any, _options: any) {
     var day = date.getUTCDay()
     return "'v " + accusativeWeekdays[day] + " o' p"
   },
   other: 'P'
 }
 
-export default function formatRelative(token: any, date: any, baseDate: any, options: any) {
+export default function formatRelative(
+  token: any,
+  date: any,
+  baseDate: any,
+  options: any
+) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {

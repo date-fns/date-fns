@@ -100,7 +100,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter: any) {
+    argumentCallback: function(quarter: any) {
       return Number(quarter) - 1
     }
   }),

@@ -23,7 +23,10 @@ import addMilliseconds from '../addMilliseconds/index'
  * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
-export default function subMilliseconds(dirtyDate: Date | number, dirtyAmount: number) {
+export default function subMilliseconds(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

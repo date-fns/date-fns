@@ -151,7 +151,7 @@ export default function parseISO(argument: string, dirtyOptions: any) {
 
 function splitDateString(dateString: string) {
   // TODO@ts: Figure out proper type
-  var dateStrings: { date?: any, time?: any, timezone?: any } = {}
+  var dateStrings: { date?: any; time?: any; timezone?: any } = {}
   var array = dateString.split(patterns.dateTimeDelimiter)
   var timeString
 

@@ -22,7 +22,10 @@ import startOfHour from '../startOfHour/index'
  * var result = isSameHour(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 6, 30))
  * //=> true
  */
-export default function isSameHour(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function isSameHour(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

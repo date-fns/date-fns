@@ -23,7 +23,10 @@ import addMonths from '../addMonths/index'
  * var result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-export default function addQuarters(dirtyDate: Date | number, dirtyAmount: number) {
+export default function addQuarters(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

@@ -23,7 +23,10 @@ import toDate from '../toDate/index'
  * var result = addMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:30.750
  */
-export default function addMilliseconds(dirtyDate: Date | number, dirtyAmount: number) {
+export default function addMilliseconds(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

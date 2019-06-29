@@ -24,7 +24,10 @@ import compareAsc from '../compareAsc/index'
  * var result = differenceInYears(new Date(2015, 1, 11), new Date(2013, 11, 31))
  * //=> 1
  */
-export default function differenceInYears(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
+export default function differenceInYears(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'

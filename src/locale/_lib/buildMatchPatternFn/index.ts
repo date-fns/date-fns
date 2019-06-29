@@ -1,5 +1,5 @@
-export default function buildMatchPatternFn (args: any) {
-  return function (dirtyString: any, dirtyOptions: any) {
+export default function buildMatchPatternFn(args: any) {
+  return function(dirtyString: any, dirtyOptions: any) {
     var string = String(dirtyString)
     var options = dirtyOptions || {}
 
@@ -13,7 +13,9 @@ export default function buildMatchPatternFn (args: any) {
     if (!parseResult) {
       return null
     }
-    var value = args.valueCallback ? args.valueCallback(parseResult[0]) : parseResult[0]
+    var value = args.valueCallback
+      ? args.valueCallback(parseResult[0])
+      : parseResult[0]
     value = options.valueCallback ? options.valueCallback(value) : value
 
     return {

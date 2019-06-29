@@ -83,7 +83,11 @@ var wordMapping = [
   'tolv'
 ]
 
-export default function formatDistance (token: any, count: number, options: any) {
+export default function formatDistance(
+  token: any,
+  count: number,
+  options: any
+) {
   options = options || {
     onlyNumeric: false
   }
@@ -96,7 +100,10 @@ export default function formatDistance (token: any, count: number, options: any)
     if (options.onlyNumeric) {
       result = translation.plural.replace('{{count}}', count)
     } else {
-      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count)
+      result = translation.plural.replace(
+        '{{count}}',
+        count < 13 ? wordMapping[count] : count
+      )
     }
   } else {
     result = translation.singular

@@ -38,7 +38,11 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions: any) {
+export default function formatRelative(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions: any
+) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
