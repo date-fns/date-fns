@@ -22,12 +22,12 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: 'circa un\'ora',
+    one: "circa un'ora",
     other: 'circa {{count}} ore'
   },
 
   xHours: {
-    one: 'un\'ora',
+    one: "un'ora",
     other: '{{count}} ore'
   },
 
@@ -67,7 +67,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

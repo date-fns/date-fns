@@ -21,7 +21,20 @@ var matchMonthsPatterns = {
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mar/i, /^av/i, /^mai$/i, /^juin/i, /^juil/i, /^ao/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  any: [
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^av/i,
+    /^mai$/i,
+    /^juin/i,
+    /^juil/i,
+    /^ao/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ]
 }
 
 var matchTimesOfDayPatterns = {

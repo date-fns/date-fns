@@ -12,8 +12,34 @@ var weekdayValues = {
 }
 
 var monthValues = {
-  short: ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'],
-  long: ['Januari', 'Februari', 'Mac', 'April', 'Mei', 'Jun', 'Julai', 'Ogos', 'September', 'Oktober', 'November', 'Disember']
+  short: [
+    'Jan',
+    'Feb',
+    'Mac',
+    'Apr',
+    'Mei',
+    'Jun',
+    'Jul',
+    'Ogo',
+    'Sep',
+    'Okt',
+    'Nov',
+    'Dis'
+  ],
+  long: [
+    'Januari',
+    'Februari',
+    'Mac',
+    'April',
+    'Mei',
+    'Jun',
+    'Julai',
+    'Ogos',
+    'September',
+    'Oktober',
+    'November',
+    'Disember'
+  ]
 }
 
 var timeOfDayValues = {
@@ -22,7 +48,7 @@ var timeOfDayValues = {
   long: ['a.m.', 'p.m.']
 }
 
-function ordinalNumber (dirtyNumber) {
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
 
   switch (number) {
@@ -43,8 +69,8 @@ var localize = {
   weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
   month: buildLocalizeFn(monthValues, 'long'),
   months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function(hours) {
+    return hours / 12 >= 1 ? 1 : 0
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
 }

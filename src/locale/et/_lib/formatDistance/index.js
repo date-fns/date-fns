@@ -79,7 +79,6 @@ var formatDistanceLocale = {
       one: 'ühe päeva',
       other: '{{count}} päeva'
     }
-
   },
 
   aboutXMonths: {
@@ -149,7 +148,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var usageGroup = options.addSuffix

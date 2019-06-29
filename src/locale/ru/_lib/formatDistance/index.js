@@ -1,4 +1,4 @@
-function declension (scheme, count) {
+function declension(scheme, count) {
   // scheme for count=1 exists
   if (scheme.one !== undefined && count === 1) {
     return scheme.one
@@ -11,18 +11,18 @@ function declension (scheme, count) {
   if (rem10 === 1 && rem100 !== 11) {
     return scheme.singularNominative.replace('{{count}}', count)
 
-  // 2, 3, 4, 22, 23, 24, 32 ...
-  } else if ((rem10 >= 2 && rem10 <= 4) && (rem100 < 10 || rem100 > 20)) {
+    // 2, 3, 4, 22, 23, 24, 32 ...
+  } else if (rem10 >= 2 && rem10 <= 4 && (rem100 < 10 || rem100 > 20)) {
     return scheme.singularGenitive.replace('{{count}}', count)
 
-  // 5, 6, 7, 8, 9, 10, 11, ...
+    // 5, 6, 7, 8, 9, 10, 11, ...
   } else {
     return scheme.pluralGenitive.replace('{{count}}', count)
   }
 }
 
-function buildLocalizeTokenFn (scheme) {
-  return function (count, options) {
+function buildLocalizeTokenFn(scheme) {
+  return function(count, options) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         if (scheme.future) {
@@ -77,7 +77,7 @@ var formatDistanceLocale = {
     }
   }),
 
-  halfAMinute: function (_, options) {
+  halfAMinute: function(_, options) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         return 'через полминуты'
@@ -220,7 +220,7 @@ var formatDistanceLocale = {
   })
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
   return formatDistanceLocale[token](count, options)
 }

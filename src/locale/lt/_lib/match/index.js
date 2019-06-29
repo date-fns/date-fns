@@ -22,7 +22,6 @@ var matchQuarterPatterns = {
 var parseQuarterPatterns = {
   narrow: [/1/i, /2/i, /3/i, /4/i],
   any: [/I$/i, /II$/i, /III/i, /IV/i]
-
 }
 
 var matchMonthPatterns = {
@@ -31,8 +30,34 @@ var matchMonthPatterns = {
   wide: /^(sausi(s|o)|vasari(s|o)|kov(a|o)s|balandž?i(s|o)|gegužės?|birželi(s|o)|liep(a|os)|rugpjū(t|č)i(s|o)|rugsėj(is|o)|spali(s|o)|lapkri(t|č)i(s|o)|gruodž?i(s|o))/i
 }
 var parseMonthPatterns = {
-  narrow: [/^s/i, /^v/i, /^k/i, /^b/i, /^g/i, /^b/i, /^l/i, /^r/i, /^r/i, /^s/i, /^l/i, /^g/i],
-  any: [/^saus/i, /^vas/i, /^kov/i, /^bal/i, /^geg/i, /^birž/i, /^liep/i, /^rugp/i, /^rugs/i, /^spal/i, /^lapkr/i, /^gruod/i]
+  narrow: [
+    /^s/i,
+    /^v/i,
+    /^k/i,
+    /^b/i,
+    /^g/i,
+    /^b/i,
+    /^l/i,
+    /^r/i,
+    /^r/i,
+    /^s/i,
+    /^l/i,
+    /^g/i
+  ],
+  any: [
+    /^saus/i,
+    /^vas/i,
+    /^kov/i,
+    /^bal/i,
+    /^geg/i,
+    /^birž/i,
+    /^liep/i,
+    /^rugp/i,
+    /^rugs/i,
+    /^spal/i,
+    /^lapkr/i,
+    /^gruod/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -78,7 +103,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -95,7 +120,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

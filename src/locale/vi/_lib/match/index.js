@@ -34,10 +34,62 @@ var matchMonthPatterns = {
   wide: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i
 }
 var parseMonthPatterns = {
-  narrow: [/0?1$/i, /0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  short: [/thg[ _]?0?1$/i, /thg[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  abbreviated: [/tháng[ _]?0?1$/i, /tháng[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  wide: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i]
+  narrow: [
+    /0?1$/i,
+    /0?2/i,
+    /3/,
+    /4/,
+    /5/,
+    /6/,
+    /7/,
+    /8/,
+    /9/,
+    /10/,
+    /11/,
+    /12/
+  ],
+  short: [
+    /thg[ _]?0?1$/i,
+    /thg[ _]?0?2/i,
+    /3/,
+    /4/,
+    /5/,
+    /6/,
+    /7/,
+    /8/,
+    /9/,
+    /10/,
+    /11/,
+    /12/
+  ],
+  abbreviated: [
+    /tháng[ _]?0?1$/i,
+    /tháng[ _]?0?2/i,
+    /3/,
+    /4/,
+    /5/,
+    /6/,
+    /7/,
+    /8/,
+    /9/,
+    /10/,
+    /11/,
+    /12/
+  ],
+  wide: [
+    /tháng ?Một$/i,
+    /tháng ?Hai$/i,
+    /Ba/i,
+    /Tư/i,
+    /Năm/i,
+    /Sáu/i,
+    /Bảy/i,
+    /Tám/i,
+    /Chín/i,
+    /Mười$/i,
+    /Mười ?Một$/i,
+    /Mười ?Hai$/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -75,7 +127,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -92,7 +144,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

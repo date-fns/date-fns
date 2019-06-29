@@ -4,12 +4,16 @@
 
 import lastDayOfISOWeek from '.'
 
-suite('lastDayOfISOWeek', function () {
-  benchmark('date-fns', function () {
-    return lastDayOfISOWeek(this.date)
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
+suite(
+  'lastDayOfISOWeek',
+  function() {
+    benchmark('date-fns', function() {
+      return lastDayOfISOWeek(this.date)
+    })
+  },
+  {
+    setup: function() {
+      this.date = new Date()
+    }
   }
-})
+)

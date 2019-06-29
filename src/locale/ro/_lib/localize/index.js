@@ -9,13 +9,44 @@ var eraValues = {
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['primul trimestru', 'al doilea trimestru', 'al treilea trimestru', 'al patrulea trimestru']
+  wide: [
+    'primul trimestru',
+    'al doilea trimestru',
+    'al treilea trimestru',
+    'al patrulea trimestru'
+  ]
 }
 
 var monthValues = {
   narrow: ['I', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['ian', 'feb', 'mar', 'apr', 'mai', 'iun', 'iul', 'aug', 'sep', 'oct', 'noi', 'dec'],
-  wide: ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie']
+  abbreviated: [
+    'ian',
+    'feb',
+    'mar',
+    'apr',
+    'mai',
+    'iun',
+    'iul',
+    'aug',
+    'sep',
+    'oct',
+    'noi',
+    'dec'
+  ],
+  wide: [
+    'ianuarie',
+    'februarie',
+    'martie',
+    'aprilie',
+    'mai',
+    'iunie',
+    'iulie',
+    'august',
+    'septembrie',
+    'octombrie',
+    'noiembrie',
+    'decembrie'
+  ]
 }
 
 var dayValues = {
@@ -91,7 +122,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return String(number)
 }
@@ -107,7 +138,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

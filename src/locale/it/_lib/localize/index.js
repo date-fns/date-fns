@@ -14,15 +14,49 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['G', 'F', 'M', 'A', 'M', 'G', 'L', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic'],
-  wide: ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+  abbreviated: [
+    'gen',
+    'feb',
+    'mar',
+    'apr',
+    'mag',
+    'giu',
+    'lug',
+    'ago',
+    'set',
+    'ott',
+    'nov',
+    'dic'
+  ],
+  wide: [
+    'gennaio',
+    'febbraio',
+    'marzo',
+    'aprile',
+    'maggio',
+    'giugno',
+    'luglio',
+    'agosto',
+    'settembre',
+    'ottobre',
+    'novembre',
+    'dicembre'
+  ]
 }
 
 var dayValues = {
   narrow: ['D', 'L', 'M', 'M', 'G', 'V', 'S'],
   short: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
   abbreviated: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
-  wide: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato']
+  wide: [
+    'domenica',
+    'lunedì',
+    'martedì',
+    'mercoledì',
+    'giovedì',
+    'venerdì',
+    'sabato'
+  ]
 }
 
 var dayPeriodValues = {
@@ -90,7 +124,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
   return number + 'º'
 }
@@ -106,7 +140,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

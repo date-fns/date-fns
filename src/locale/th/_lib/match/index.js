@@ -28,8 +28,34 @@ var matchMonthPatterns = {
   wide: /^(มกราคม|กุมภาพันธ์|มีนาคม|เมษายน|พฤษภาคม|มิถุนายน|กรกฎาคม|สิงหาคม|กันยายน|ตุลาคม|พฤศจิกายน|ธันวาคม)/i
 }
 var parseMonthPatterns = {
-  wide: [/^มก/i, /^กุม/i, /^มี/i, /^เม/i, /^พฤษ/i, /^มิ/i, /^กรก/i, /^ส/i, /^กัน/i, /^ต/i, /^พฤศ/i, /^ธ/i],
-  any: [/^ม\.?ค\.?/i, /^ก\.?พ\.?/i, /^มี\.?ค\.?/i, /^เม\.?ย\.?/i, /^พ\.?ค\.?/i, /^มิ\.?ย\.?/i, /^ก\.?ค\.?/i, /^ส\.?ค\.?/i, /^ก\.?ย\.?/i, /^ต\.?ค\.?/i, /^พ\.?ย\.?/i, /^ธ\.?ค\.?/i]
+  wide: [
+    /^มก/i,
+    /^กุม/i,
+    /^มี/i,
+    /^เม/i,
+    /^พฤษ/i,
+    /^มิ/i,
+    /^กรก/i,
+    /^ส/i,
+    /^กัน/i,
+    /^ต/i,
+    /^พฤศ/i,
+    /^ธ/i
+  ],
+  any: [
+    /^ม\.?ค\.?/i,
+    /^ก\.?พ\.?/i,
+    /^มี\.?ค\.?/i,
+    /^เม\.?ย\.?/i,
+    /^พ\.?ค\.?/i,
+    /^มิ\.?ย\.?/i,
+    /^ก\.?ค\.?/i,
+    /^ส\.?ค\.?/i,
+    /^ก\.?ย\.?/i,
+    /^ต\.?ค\.?/i,
+    /^พ\.?ย\.?/i,
+    /^ธ\.?ค\.?/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -63,7 +89,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -80,7 +106,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

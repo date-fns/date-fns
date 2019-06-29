@@ -14,15 +14,49 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
-  wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+  abbreviated: [
+    'janv.',
+    'févr.',
+    'mars',
+    'avr.',
+    'mai',
+    'juin',
+    'juil.',
+    'août',
+    'sept.',
+    'oct.',
+    'nov.',
+    'déc.'
+  ],
+  wide: [
+    'janvier',
+    'février',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'août',
+    'septembre',
+    'octobre',
+    'novembre',
+    'décembre'
+  ]
 }
 
 var dayValues = {
   narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
   short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
   abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
-  wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+  wide: [
+    'dimanche',
+    'lundi',
+    'mardi',
+    'mercredi',
+    'jeudi',
+    'vendredi',
+    'samedi'
+  ]
 }
 
 var dayPeriodValues = {
@@ -58,7 +92,7 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
   var options = dirtyOptions || {}
@@ -97,7 +131,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
