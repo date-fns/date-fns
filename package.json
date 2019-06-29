@@ -45,6 +45,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@babel/plugin-transform-parameters": "^7.4.4",
     "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",

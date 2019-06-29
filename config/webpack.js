@@ -39,6 +39,7 @@ function getEntryConfig() {
     return undefined
   } else {
     return {
+      // eslint-disable-next-line @typescript-eslint/camelcase
       date_fns: './tmp/umd/index.js'
     }
   }
