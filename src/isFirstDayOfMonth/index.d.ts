@@ -19,4 +19,4 @@
  * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean;
+export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean

@@ -1,2 +1,2 @@
-declare var subMilliseconds: any;
-export default subMilliseconds;
+declare var subMilliseconds: any
+export default subMilliseconds

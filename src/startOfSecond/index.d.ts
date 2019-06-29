@@ -20,4 +20,4 @@
  * var result = startOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.000
  */
-export default function startOfSecond(dirtyDate: Date | number): Date;
+export default function startOfSecond(dirtyDate: Date | number): Date

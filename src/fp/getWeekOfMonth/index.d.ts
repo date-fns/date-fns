@@ -1,2 +1,2 @@
-declare var getWeekOfMonth: any;
-export default getWeekOfMonth;
+declare var getWeekOfMonth: any
+export default getWeekOfMonth

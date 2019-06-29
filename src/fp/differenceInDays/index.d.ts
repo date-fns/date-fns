@@ -1,2 +1,2 @@
-declare var differenceInDays: any;
-export default differenceInDays;
+declare var differenceInDays: any
+export default differenceInDays

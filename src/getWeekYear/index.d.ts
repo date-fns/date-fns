@@ -41,4 +41,7 @@
  * var result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear(dirtyDate: Date | number, dirtyOptions: any): number;
+export default function getWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+): number

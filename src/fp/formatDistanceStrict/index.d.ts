@@ -1,2 +1,2 @@
-declare var formatDistanceStrict: any;
-export default formatDistanceStrict;
+declare var formatDistanceStrict: any
+export default formatDistanceStrict

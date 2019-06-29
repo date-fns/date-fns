@@ -19,4 +19,4 @@
  * var result = startOfDecade(new Date(2015, 9, 21, 00, 00, 00))
  * //=> Jan 01 2010 00:00:00
  */
-export default function startOfDecade(dirtyDate: Date | number): Date;
+export default function startOfDecade(dirtyDate: Date | number): Date

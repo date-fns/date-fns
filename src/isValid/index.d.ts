@@ -55,4 +55,4 @@
  * var result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate: Date | number): boolean;
+export default function isValid(dirtyDate: Date | number): boolean

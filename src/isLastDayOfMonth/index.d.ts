@@ -19,4 +19,4 @@
  * var result = isLastDayOfMonth(new Date(2014, 1, 28))
  * //=> true
  */
-export default function isLastDayOfMonth(dirtyDate: Date | number): boolean;
+export default function isLastDayOfMonth(dirtyDate: Date | number): boolean

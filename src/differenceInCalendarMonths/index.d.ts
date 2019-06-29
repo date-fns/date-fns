@@ -23,4 +23,7 @@
  * )
  * //=> 8
  */
-export default function differenceInCalendarMonths(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInCalendarMonths(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

@@ -37,4 +37,8 @@
  * )
  * //=> 2
  */
-export default function differenceInCalendarWeeks(dirtyDateLeft: Date | number, dirtyDateRight: Date | number, dirtyOptions: any): number;
+export default function differenceInCalendarWeeks(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number,
+  dirtyOptions: any
+): number

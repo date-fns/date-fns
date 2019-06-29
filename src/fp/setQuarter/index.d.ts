@@ -1,2 +1,2 @@
-declare var setQuarter: any;
-export default setQuarter;
+declare var setQuarter: any
+export default setQuarter

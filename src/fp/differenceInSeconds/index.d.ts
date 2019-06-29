@@ -1,2 +1,2 @@
-declare var differenceInSeconds: any;
-export default differenceInSeconds;
+declare var differenceInSeconds: any
+export default differenceInSeconds

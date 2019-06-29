@@ -1,2 +1,2 @@
-declare var closestIndexTo: any;
-export default closestIndexTo;
+declare var closestIndexTo: any
+export default closestIndexTo

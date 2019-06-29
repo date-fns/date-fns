@@ -27,4 +27,7 @@
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]): any;
+export default function closestTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+): any

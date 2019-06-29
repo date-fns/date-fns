@@ -37,4 +37,4 @@
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray: (Date | number)[]): any;
+export default function max(dirtyDatesArray: (Date | number)[]): any

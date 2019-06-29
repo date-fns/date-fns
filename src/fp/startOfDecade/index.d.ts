@@ -1,2 +1,2 @@
-declare var startOfDecade: any;
-export default startOfDecade;
+declare var startOfDecade: any
+export default startOfDecade

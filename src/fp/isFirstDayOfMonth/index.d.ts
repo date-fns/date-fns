@@ -1,2 +1,2 @@
-declare var isFirstDayOfMonth: any;
-export default isFirstDayOfMonth;
+declare var isFirstDayOfMonth: any
+export default isFirstDayOfMonth

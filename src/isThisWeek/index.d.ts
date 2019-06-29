@@ -33,4 +33,7 @@
  * var result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
-export default function isThisWeek(dirtyDate: Date | number, options: any): boolean;
+export default function isThisWeek(
+  dirtyDate: Date | number,
+  options: any
+): boolean

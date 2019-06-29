@@ -22,4 +22,4 @@
  * // ]
  * ]
  */
-export default function eachWeekendOfYear(dirtyDate: Date | number): Date[];
+export default function eachWeekendOfYear(dirtyDate: Date | number): Date[]

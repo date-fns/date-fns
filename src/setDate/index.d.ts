@@ -20,4 +20,7 @@
  * var result = setDate(new Date(2014, 8, 1), 30)
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function setDate(dirtyDate: Date | number, dirtyDayOfMonth: number): Date;
+export default function setDate(
+  dirtyDate: Date | number,
+  dirtyDayOfMonth: number
+): Date

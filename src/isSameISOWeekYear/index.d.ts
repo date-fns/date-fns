@@ -27,4 +27,7 @@
  * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean;
+export default function isSameISOWeekYear(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean

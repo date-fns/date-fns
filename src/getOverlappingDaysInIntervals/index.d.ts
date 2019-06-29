@@ -1,4 +1,4 @@
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 /**
  * @name getOverlappingDaysInIntervals
  * @category Interval Helpers
@@ -64,4 +64,7 @@ import { Interval } from '../types.js';
  * )
  * //=> 0
  */
-export default function getOverlappingDaysInIntervals(dirtyIntervalLeft: Interval, dirtyIntervalRight: Interval): number;
+export default function getOverlappingDaysInIntervals(
+  dirtyIntervalLeft: Interval,
+  dirtyIntervalRight: Interval
+): number

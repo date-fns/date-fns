@@ -1,2 +1,2 @@
-declare var isSameWeek: any;
-export default isSameWeek;
+declare var isSameWeek: any
+export default isSameWeek

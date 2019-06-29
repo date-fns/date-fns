@@ -1,2 +1,2 @@
-declare var subWeeks: any;
-export default subWeeks;
+declare var subWeeks: any
+export default subWeeks

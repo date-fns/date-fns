@@ -1,2 +1,2 @@
-declare var isEqual: any;
-export default isEqual;
+declare var isEqual: any
+export default isEqual

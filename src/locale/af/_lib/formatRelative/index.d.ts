@@ -1,1 +1,1 @@
-export default function formatRelative(token: any): any;
+export default function formatRelative(token: any): any

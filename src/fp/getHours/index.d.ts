@@ -1,2 +1,2 @@
-declare var getHours: any;
-export default getHours;
+declare var getHours: any
+export default getHours

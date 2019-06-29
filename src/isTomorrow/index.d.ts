@@ -23,4 +23,4 @@
  * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export default function isTomorrow(dirtyDate: Date | number): boolean;
+export default function isTomorrow(dirtyDate: Date | number): boolean

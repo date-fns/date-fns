@@ -1,2 +1,2 @@
-declare var setISODay: any;
-export default setISODay;
+declare var setISODay: any
+export default setISODay

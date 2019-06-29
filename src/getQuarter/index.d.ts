@@ -19,4 +19,4 @@
  * var result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-export default function getQuarter(dirtyDate: Date | number): number;
+export default function getQuarter(dirtyDate: Date | number): number

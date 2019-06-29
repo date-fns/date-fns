@@ -1,2 +1,2 @@
-declare var getDate: any;
-export default getDate;
+declare var getDate: any
+export default getDate

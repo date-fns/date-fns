@@ -1,2 +1,2 @@
-declare var isWithinInterval: any;
-export default isWithinInterval;
+declare var isWithinInterval: any
+export default isWithinInterval

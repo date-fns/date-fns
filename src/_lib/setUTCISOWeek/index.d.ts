@@ -1,1 +1,4 @@
-export default function setUTCISOWeek(dirtyDate: Date | number, dirtyISOWeek: number): Date;
+export default function setUTCISOWeek(
+  dirtyDate: Date | number,
+  dirtyISOWeek: number
+): Date

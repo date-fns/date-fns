@@ -31,4 +31,8 @@
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions: any): any;
+export default function formatRelative(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions: any
+): any

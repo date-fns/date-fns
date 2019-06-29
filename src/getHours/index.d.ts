@@ -19,4 +19,4 @@
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours(dirtyDate: Date | number): number;
+export default function getHours(dirtyDate: Date | number): number

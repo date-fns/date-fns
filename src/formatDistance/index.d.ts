@@ -104,4 +104,8 @@
  * })
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions: any): any;
+export default function formatDistance(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions: any
+): any

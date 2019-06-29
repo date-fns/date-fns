@@ -1,4 +1,4 @@
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 /**
  * @name eachDayOfInterval
  * @category Interval Helpers
@@ -60,4 +60,7 @@ import { Interval } from '../types.js';
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval: Interval, options?: any): Date[];
+export default function eachDayOfInterval(
+  dirtyInterval: Interval,
+  options?: any
+): Date[]

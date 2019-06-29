@@ -23,4 +23,4 @@
  * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-export default function isThisMonth(dirtyDate: Date | number): boolean;
+export default function isThisMonth(dirtyDate: Date | number): boolean

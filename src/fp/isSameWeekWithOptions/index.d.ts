@@ -1,2 +1,2 @@
-declare var isSameWeekWithOptions: any;
-export default isSameWeekWithOptions;
+declare var isSameWeekWithOptions: any
+export default isSameWeekWithOptions

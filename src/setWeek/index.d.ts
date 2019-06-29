@@ -42,4 +42,8 @@
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(dirtyDate: Date | number, dirtyWeek: number, dirtyOptions: any): Date;
+export default function setWeek(
+  dirtyDate: Date | number,
+  dirtyWeek: number,
+  dirtyOptions: any
+): Date

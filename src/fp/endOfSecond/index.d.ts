@@ -1,2 +1,2 @@
-declare var endOfSecond: any;
-export default endOfSecond;
+declare var endOfSecond: any
+export default endOfSecond

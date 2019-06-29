@@ -22,4 +22,7 @@
  * var result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay(dirtyDate: Date | number, dirtyDay: number): Date;
+export default function setISODay(
+  dirtyDate: Date | number,
+  dirtyDay: number
+): Date

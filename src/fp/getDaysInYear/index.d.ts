@@ -1,2 +1,2 @@
-declare var getDaysInYear: any;
-export default getDaysInYear;
+declare var getDaysInYear: any
+export default getDaysInYear

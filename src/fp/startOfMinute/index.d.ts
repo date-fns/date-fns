@@ -1,2 +1,2 @@
-declare var startOfMinute: any;
-export default startOfMinute;
+declare var startOfMinute: any
+export default startOfMinute

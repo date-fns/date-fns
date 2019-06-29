@@ -1,2 +1,2 @@
-declare var longFormatters: any;
-export default longFormatters;
+declare var longFormatters: any
+export default longFormatters

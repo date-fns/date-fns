@@ -1,2 +1,2 @@
-declare var getMilliseconds: any;
-export default getMilliseconds;
+declare var getMilliseconds: any
+export default getMilliseconds

@@ -1,4 +1,4 @@
-import { Interval } from '../types.js';
+import { Interval } from '../types.js'
 /**
  * @name isWithinInterval
  * @category Interval Helpers
@@ -64,4 +64,7 @@ import { Interval } from '../types.js';
  * })
  * //=> false
  */
-export default function isWithinInterval(dirtyDate: Date | number, dirtyInterval: Interval): boolean;
+export default function isWithinInterval(
+  dirtyDate: Date | number,
+  dirtyInterval: Interval
+): boolean

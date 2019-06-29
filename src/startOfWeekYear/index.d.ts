@@ -41,4 +41,7 @@
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear(dirtyDate: Date | number, dirtyOptions: any): Date;
+export default function startOfWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+): Date

@@ -1,2 +1,2 @@
-declare var endOfYear: any;
-export default endOfYear;
+declare var endOfYear: any
+export default endOfYear

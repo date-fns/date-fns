@@ -23,4 +23,7 @@
  * )
  * //=> false
  */
-export default function isEqual(dirtyLeftDate: any, dirtyRightDate: any): boolean;
+export default function isEqual(
+  dirtyLeftDate: any,
+  dirtyRightDate: any
+): boolean

@@ -23,4 +23,7 @@
  * var result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth(date: Date | number, dirtyOptions: any): number;
+export default function getWeekOfMonth(
+  date: Date | number,
+  dirtyOptions: any
+): number

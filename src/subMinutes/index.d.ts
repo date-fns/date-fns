@@ -20,4 +20,7 @@
  * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
-export default function subMinutes(dirtyDate: Date | number, dirtyAmount: number): Date;
+export default function subMinutes(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date

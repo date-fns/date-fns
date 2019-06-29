@@ -1,2 +1,2 @@
-declare var isBefore: any;
-export default isBefore;
+declare var isBefore: any
+export default isBefore

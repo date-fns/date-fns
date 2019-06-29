@@ -1,2 +1,2 @@
-declare var formatWithOptions: any;
-export default formatWithOptions;
+declare var formatWithOptions: any
+export default formatWithOptions

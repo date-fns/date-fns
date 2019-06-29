@@ -20,4 +20,4 @@
  * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
-export default function endOfYear(dirtyDate: Date | number): Date;
+export default function endOfYear(dirtyDate: Date | number): Date

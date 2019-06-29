@@ -1,2 +1,2 @@
-declare var getUnixTime: any;
-export default getUnixTime;
+declare var getUnixTime: any
+export default getUnixTime

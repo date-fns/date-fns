@@ -30,4 +30,7 @@
  * )
  * //=> 2
  */
-export default function differenceInCalendarISOWeekYears(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInCalendarISOWeekYears(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

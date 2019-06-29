@@ -1,1 +1,1 @@
-export default function assign(target: any, dirtyObject: any): any;
+export default function assign(target: any, dirtyObject: any): any

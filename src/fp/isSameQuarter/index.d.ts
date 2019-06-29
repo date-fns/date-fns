@@ -1,2 +1,2 @@
-declare var isSameQuarter: any;
-export default isSameQuarter;
+declare var isSameQuarter: any
+export default isSameQuarter

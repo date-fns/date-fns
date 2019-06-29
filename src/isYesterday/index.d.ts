@@ -23,4 +23,4 @@
  * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
-export default function isYesterday(dirtyDate: Date | number): boolean;
+export default function isYesterday(dirtyDate: Date | number): boolean

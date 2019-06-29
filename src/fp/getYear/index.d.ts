@@ -1,2 +1,2 @@
-declare var getYear: any;
-export default getYear;
+declare var getYear: any
+export default getYear

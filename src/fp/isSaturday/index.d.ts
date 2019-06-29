@@ -1,2 +1,2 @@
-declare var isSaturday: any;
-export default isSaturday;
+declare var isSaturday: any
+export default isSaturday

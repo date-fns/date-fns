@@ -1,2 +1,2 @@
-declare var parseWithOptions: any;
-export default parseWithOptions;
+declare var parseWithOptions: any
+export default parseWithOptions

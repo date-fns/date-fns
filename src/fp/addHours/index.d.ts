@@ -1,2 +1,2 @@
-declare var addHours: any;
-export default addHours;
+declare var addHours: any
+export default addHours

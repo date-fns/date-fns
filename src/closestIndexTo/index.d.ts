@@ -29,4 +29,7 @@
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]): any;
+export default function closestIndexTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+): any

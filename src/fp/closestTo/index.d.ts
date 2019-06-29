@@ -1,2 +1,2 @@
-declare var closestTo: any;
-export default closestTo;
+declare var closestTo: any
+export default closestTo

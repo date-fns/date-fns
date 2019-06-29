@@ -19,4 +19,4 @@
  * var result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade(dirtyDate: Date | number): number;
+export default function getDecade(dirtyDate: Date | number): number

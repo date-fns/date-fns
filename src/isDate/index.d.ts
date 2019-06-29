@@ -34,4 +34,4 @@
  * var result = isDate({})
  * //=> false
  */
-export default function isDate(value: any): boolean;
+export default function isDate(value: any): boolean

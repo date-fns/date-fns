@@ -55,4 +55,4 @@
  * var result = parseISO('+02014101', { additionalDigits: 1 })
  * //=> Fri Apr 11 2014 00:00:00
  */
-export default function parseISO(argument: string, dirtyOptions: any): Date;
+export default function parseISO(argument: string, dirtyOptions: any): Date

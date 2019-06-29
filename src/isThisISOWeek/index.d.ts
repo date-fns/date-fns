@@ -25,4 +25,4 @@
  * var result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
-export default function isThisISOWeek(dirtyDate: Date | number): boolean;
+export default function isThisISOWeek(dirtyDate: Date | number): boolean

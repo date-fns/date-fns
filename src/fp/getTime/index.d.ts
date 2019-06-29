@@ -1,2 +1,2 @@
-declare var getTime: any;
-export default getTime;
+declare var getTime: any
+export default getTime

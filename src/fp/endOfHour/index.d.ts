@@ -1,2 +1,2 @@
-declare var endOfHour: any;
-export default endOfHour;
+declare var endOfHour: any
+export default endOfHour

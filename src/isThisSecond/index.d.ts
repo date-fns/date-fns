@@ -24,4 +24,4 @@
  * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
  * //=> true
  */
-export default function isThisSecond(dirtyDate: Date | number): boolean;
+export default function isThisSecond(dirtyDate: Date | number): boolean

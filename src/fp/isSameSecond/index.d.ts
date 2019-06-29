@@ -1,2 +1,2 @@
-declare var isSameSecond: any;
-export default isSameSecond;
+declare var isSameSecond: any
+export default isSameSecond

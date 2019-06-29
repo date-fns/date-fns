@@ -29,4 +29,7 @@
  * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfWeek(dirtyDate: Date | number, dirtyOptions: any): Date;
+export default function startOfWeek(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+): Date

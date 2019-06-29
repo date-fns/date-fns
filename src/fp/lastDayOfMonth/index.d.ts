@@ -1,2 +1,2 @@
-declare var lastDayOfMonth: any;
-export default lastDayOfMonth;
+declare var lastDayOfMonth: any
+export default lastDayOfMonth

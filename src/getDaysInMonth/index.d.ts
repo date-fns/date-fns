@@ -19,4 +19,4 @@
  * var result = getDaysInMonth(new Date(2000, 1))
  * //=> 29
  */
-export default function getDaysInMonth(dirtyDate: Date | number): number;
+export default function getDaysInMonth(dirtyDate: Date | number): number

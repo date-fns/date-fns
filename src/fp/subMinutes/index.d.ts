@@ -1,2 +1,2 @@
-declare var subMinutes: any;
-export default subMinutes;
+declare var subMinutes: any
+export default subMinutes

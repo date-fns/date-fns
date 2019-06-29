@@ -1,2 +1,2 @@
-declare var setISOWeekYear: any;
-export default setISOWeekYear;
+declare var setISOWeekYear: any
+export default setISOWeekYear

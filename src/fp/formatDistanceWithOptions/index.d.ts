@@ -1,2 +1,2 @@
-declare var formatDistanceWithOptions: any;
-export default formatDistanceWithOptions;
+declare var formatDistanceWithOptions: any
+export default formatDistanceWithOptions

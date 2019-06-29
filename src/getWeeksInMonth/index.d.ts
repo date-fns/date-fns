@@ -29,4 +29,7 @@
  * var result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth(date: Date | number, options: any): number;
+export default function getWeeksInMonth(
+  date: Date | number,
+  options: any
+): number

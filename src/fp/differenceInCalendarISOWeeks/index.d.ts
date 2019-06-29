@@ -1,2 +1,2 @@
-declare var differenceInCalendarISOWeeks: any;
-export default differenceInCalendarISOWeeks;
+declare var differenceInCalendarISOWeeks: any
+export default differenceInCalendarISOWeeks

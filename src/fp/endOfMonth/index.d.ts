@@ -1,2 +1,2 @@
-declare var endOfMonth: any;
-export default endOfMonth;
+declare var endOfMonth: any
+export default endOfMonth

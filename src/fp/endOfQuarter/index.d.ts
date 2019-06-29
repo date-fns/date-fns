@@ -1,2 +1,2 @@
-declare var endOfQuarter: any;
-export default endOfQuarter;
+declare var endOfQuarter: any
+export default endOfQuarter

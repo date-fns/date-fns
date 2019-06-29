@@ -1,2 +1,2 @@
-declare var startOfSecond: any;
-export default startOfSecond;
+declare var startOfSecond: any
+export default startOfSecond

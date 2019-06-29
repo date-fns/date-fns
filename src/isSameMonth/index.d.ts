@@ -20,4 +20,7 @@
  * var result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
-export default function isSameMonth(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean;
+export default function isSameMonth(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean

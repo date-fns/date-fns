@@ -1,2 +1,2 @@
-declare var getSeconds: any;
-export default getSeconds;
+declare var getSeconds: any
+export default getSeconds

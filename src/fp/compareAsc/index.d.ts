@@ -1,2 +1,2 @@
-declare var compareAsc: any;
-export default compareAsc;
+declare var compareAsc: any
+export default compareAsc

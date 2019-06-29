@@ -23,4 +23,4 @@
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture(dirtyDate: Date | number): boolean;
+export default function isFuture(dirtyDate: Date | number): boolean

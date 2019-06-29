@@ -1,2 +1,2 @@
-declare var roundToNearestMinutesWithOptions: any;
-export default roundToNearestMinutesWithOptions;
+declare var roundToNearestMinutesWithOptions: any
+export default roundToNearestMinutesWithOptions

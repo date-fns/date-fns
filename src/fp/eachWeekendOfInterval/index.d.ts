@@ -1,2 +1,2 @@
-declare var eachWeekendOfInterval: any;
-export default eachWeekendOfInterval;
+declare var eachWeekendOfInterval: any
+export default eachWeekendOfInterval

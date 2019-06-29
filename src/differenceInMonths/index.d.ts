@@ -20,4 +20,7 @@
  * var result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInMonths(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

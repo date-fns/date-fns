@@ -1,1 +1,1 @@
-export default function cloneObject(dirtyObject: any): any;
+export default function cloneObject(dirtyObject: any): any

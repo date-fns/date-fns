@@ -1,2 +1,2 @@
-declare var getWeeksInMonthWithOptions: any;
-export default getWeeksInMonthWithOptions;
+declare var getWeeksInMonthWithOptions: any
+export default getWeeksInMonthWithOptions

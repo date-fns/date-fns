@@ -102,4 +102,7 @@
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(dirtyDate: Date | number, dirtyOptions: any): any;
+export default function formatDistanceToNow(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+): any

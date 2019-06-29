@@ -28,4 +28,4 @@
  * var result = endOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
-export default function endOfISOWeekYear(dirtyDate: Date | number): Date;
+export default function endOfISOWeekYear(dirtyDate: Date | number): Date

@@ -1,2 +1,2 @@
-declare var addYears: any;
-export default addYears;
+declare var addYears: any
+export default addYears

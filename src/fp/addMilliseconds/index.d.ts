@@ -1,2 +1,2 @@
-declare var addMilliseconds: any;
-export default addMilliseconds;
+declare var addMilliseconds: any
+export default addMilliseconds

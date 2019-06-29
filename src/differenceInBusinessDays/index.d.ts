@@ -23,4 +23,7 @@
  * )
  * //=> 136
  */
-export default function differenceInBusinessDays(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number | Date;
+export default function differenceInBusinessDays(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number | Date

@@ -1,2 +1,2 @@
-declare var isSameYear: any;
-export default isSameYear;
+declare var isSameYear: any
+export default isSameYear

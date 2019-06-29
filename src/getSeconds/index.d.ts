@@ -19,4 +19,4 @@
  * var result = getSeconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 5
  */
-export default function getSeconds(dirtyDate: Date | number): number;
+export default function getSeconds(dirtyDate: Date | number): number

@@ -1,2 +1,2 @@
-declare var getMonth: any;
-export default getMonth;
+declare var getMonth: any
+export default getMonth

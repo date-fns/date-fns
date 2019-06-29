@@ -1,2 +1,2 @@
-declare var subMonths: any;
-export default subMonths;
+declare var subMonths: any
+export default subMonths

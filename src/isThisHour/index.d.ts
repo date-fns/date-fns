@@ -24,4 +24,4 @@
  * var result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export default function isThisHour(dirtyDate: Date | number): boolean;
+export default function isThisHour(dirtyDate: Date | number): boolean

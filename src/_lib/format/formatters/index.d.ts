@@ -1,2 +1,2 @@
-declare var formatters: any;
-export default formatters;
+declare var formatters: any
+export default formatters

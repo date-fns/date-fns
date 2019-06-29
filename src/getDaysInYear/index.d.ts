@@ -19,4 +19,4 @@
  * var result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear(dirtyDate: Date | number): number;
+export default function getDaysInYear(dirtyDate: Date | number): number

@@ -19,4 +19,4 @@
  * var result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
-export default function isTuesday(dirtyDate: Date | number): boolean;
+export default function isTuesday(dirtyDate: Date | number): boolean

@@ -1,2 +1,2 @@
-declare var getWeekYear: any;
-export default getWeekYear;
+declare var getWeekYear: any
+export default getWeekYear

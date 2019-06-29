@@ -1,2 +1,2 @@
-declare var lastDayOfQuarterWithOptions: any;
-export default lastDayOfQuarterWithOptions;
+declare var lastDayOfQuarterWithOptions: any
+export default lastDayOfQuarterWithOptions

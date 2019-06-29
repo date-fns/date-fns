@@ -1,2 +1,2 @@
-declare var endOfWeekWithOptions: any;
-export default endOfWeekWithOptions;
+declare var endOfWeekWithOptions: any
+export default endOfWeekWithOptions

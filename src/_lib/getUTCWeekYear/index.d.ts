@@ -1,1 +1,4 @@
-export default function getUTCWeekYear(dirtyDate: Date | number, dirtyOptions: any): number;
+export default function getUTCWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions: any
+): number

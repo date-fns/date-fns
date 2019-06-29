@@ -1,2 +1,2 @@
-declare var differenceInCalendarMonths: any;
-export default differenceInCalendarMonths;
+declare var differenceInCalendarMonths: any
+export default differenceInCalendarMonths

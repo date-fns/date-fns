@@ -1,2 +1,2 @@
-declare var lightFormat: any;
-export default lightFormat;
+declare var lightFormat: any
+export default lightFormat

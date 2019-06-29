@@ -21,4 +21,4 @@
  * var result = endOfTomorrow()
  * //=> Tue Oct 7 2014 23:59:59.999
  */
-export default function endOfTomorrow(): Date;
+export default function endOfTomorrow(): Date

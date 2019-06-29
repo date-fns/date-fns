@@ -23,4 +23,4 @@
  * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate: Date | number): boolean;
+export default function isThisQuarter(dirtyDate: Date | number): boolean

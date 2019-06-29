@@ -1,2 +1,2 @@
-declare var subSeconds: any;
-export default subSeconds;
+declare var subSeconds: any
+export default subSeconds

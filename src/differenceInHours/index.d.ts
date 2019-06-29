@@ -23,4 +23,7 @@
  * )
  * //=> 12
  */
-export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInHours(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

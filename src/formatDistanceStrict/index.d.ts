@@ -146,4 +146,8 @@
  * })
  * //=> '1 jaro'
  */
-export default function formatDistanceStrict(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions: any): any;
+export default function formatDistanceStrict(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions: any
+): any

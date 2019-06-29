@@ -306,4 +306,8 @@
  * var result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format(dirtyDate: Date | number, dirtyFormatStr: string, dirtyOptions: any): any;
+export default function format(
+  dirtyDate: Date | number,
+  dirtyFormatStr: string,
+  dirtyOptions: any
+): any

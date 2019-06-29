@@ -1,2 +1,2 @@
-declare var lastDayOfDecade: any;
-export default lastDayOfDecade;
+declare var lastDayOfDecade: any
+export default lastDayOfDecade

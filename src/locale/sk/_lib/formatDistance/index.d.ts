@@ -1,1 +1,5 @@
-export default function formatDistance(token: any, count: any, options: any): string;
+export default function formatDistance(
+  token: any,
+  count: any,
+  options: any
+): string

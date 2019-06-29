@@ -1,2 +1,2 @@
-declare var subQuarters: any;
-export default subQuarters;
+declare var subQuarters: any
+export default subQuarters

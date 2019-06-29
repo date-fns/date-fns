@@ -24,4 +24,7 @@
  * )
  * //=> 1100
  */
-export default function differenceInMilliseconds(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInMilliseconds(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

@@ -1,1 +1,1 @@
-export default function addLeadingZeros(number: any, targetLength: any): string;
+export default function addLeadingZeros(number: any, targetLength: any): string

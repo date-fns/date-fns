@@ -1,2 +1,2 @@
-declare var isSameHour: any;
-export default isSameHour;
+declare var isSameHour: any
+export default isSameHour

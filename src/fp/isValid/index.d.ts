@@ -1,2 +1,2 @@
-declare var isValid: any;
-export default isValid;
+declare var isValid: any
+export default isValid

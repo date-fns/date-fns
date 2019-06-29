@@ -1,2 +1,2 @@
-declare var getISODay: any;
-export default getISODay;
+declare var getISODay: any
+export default getISODay

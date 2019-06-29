@@ -21,4 +21,4 @@
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export default function getISOWeek(dirtyDate: Date | number): number;
+export default function getISOWeek(dirtyDate: Date | number): number

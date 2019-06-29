@@ -1,2 +1,2 @@
-declare var addBusinessDays: any;
-export default addBusinessDays;
+declare var addBusinessDays: any
+export default addBusinessDays

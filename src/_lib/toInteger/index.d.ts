@@ -1,1 +1,1 @@
-export default function toInteger(dirtyNumber: number | boolean): number;
+export default function toInteger(dirtyNumber: number | boolean): number

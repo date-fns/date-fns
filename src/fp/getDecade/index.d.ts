@@ -1,2 +1,2 @@
-declare var getDecade: any;
-export default getDecade;
+declare var getDecade: any
+export default getDecade

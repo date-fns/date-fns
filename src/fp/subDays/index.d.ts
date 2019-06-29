@@ -1,2 +1,2 @@
-declare var subDays: any;
-export default subDays;
+declare var subDays: any
+export default subDays

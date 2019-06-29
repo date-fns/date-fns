@@ -1,2 +1,2 @@
-declare var areIntervalsOverlapping: any;
-export default areIntervalsOverlapping;
+declare var areIntervalsOverlapping: any
+export default areIntervalsOverlapping

@@ -1,2 +1,2 @@
-declare var getWeekWithOptions: any;
-export default getWeekWithOptions;
+declare var getWeekWithOptions: any
+export default getWeekWithOptions

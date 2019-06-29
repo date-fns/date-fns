@@ -40,4 +40,4 @@
  * })
  * //=> 53
  */
-export default function getWeek(dirtyDate: Date | number, options: any): number;
+export default function getWeek(dirtyDate: Date | number, options: any): number

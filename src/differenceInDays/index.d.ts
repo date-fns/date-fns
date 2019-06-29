@@ -31,4 +31,7 @@
  * )
  * //=> 0
  */
-export default function differenceInDays(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInDays(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

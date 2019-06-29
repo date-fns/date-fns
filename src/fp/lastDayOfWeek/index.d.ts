@@ -1,2 +1,2 @@
-declare var lastDayOfWeek: any;
-export default lastDayOfWeek;
+declare var lastDayOfWeek: any
+export default lastDayOfWeek

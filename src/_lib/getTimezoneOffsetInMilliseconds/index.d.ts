@@ -9,4 +9,4 @@
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-export default function getTimezoneOffsetInMilliseconds(dirtyDate: Date): number;
+export default function getTimezoneOffsetInMilliseconds(dirtyDate: Date): number

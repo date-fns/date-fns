@@ -20,4 +20,7 @@
  * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours(dirtyDate: Date | number, dirtyHours: number): Date;
+export default function setHours(
+  dirtyDate: Date | number,
+  dirtyHours: number
+): Date

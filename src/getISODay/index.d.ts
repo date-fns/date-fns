@@ -22,4 +22,4 @@
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay(dirtyDate: Date | number): number;
+export default function getISODay(dirtyDate: Date | number): number

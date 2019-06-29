@@ -1,2 +1,2 @@
-declare var isAfter: any;
-export default isAfter;
+declare var isAfter: any
+export default isAfter

@@ -1,2 +1,2 @@
-declare var isDateWithOptions: any;
-export default isDateWithOptions;
+declare var isDateWithOptions: any
+export default isDateWithOptions

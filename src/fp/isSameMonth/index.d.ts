@@ -1,2 +1,2 @@
-declare var isSameMonth: any;
-export default isSameMonth;
+declare var isSameMonth: any
+export default isSameMonth

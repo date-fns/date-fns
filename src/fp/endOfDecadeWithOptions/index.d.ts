@@ -1,2 +1,2 @@
-declare var endOfDecadeWithOptions: any;
-export default endOfDecadeWithOptions;
+declare var endOfDecadeWithOptions: any
+export default endOfDecadeWithOptions

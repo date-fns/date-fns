@@ -19,4 +19,4 @@
  * var result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear(dirtyDate: Date | number): number;
+export default function getYear(dirtyDate: Date | number): number

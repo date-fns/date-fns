@@ -1,2 +1,2 @@
-declare var min: any;
-export default min;
+declare var min: any
+export default min

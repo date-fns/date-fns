@@ -1,2 +1,2 @@
-declare var formatRelative: any;
-export default formatRelative;
+declare var formatRelative: any
+export default formatRelative

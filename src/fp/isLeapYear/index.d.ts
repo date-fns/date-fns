@@ -1,2 +1,2 @@
-declare var isLeapYear: any;
-export default isLeapYear;
+declare var isLeapYear: any
+export default isLeapYear

@@ -315,4 +315,9 @@
  * })
  * //=> Sun Feb 28 2010 00:00:00
  */
-export default function parse(dirtyDateString: string, dirtyFormatString: string, dirtyBackupDate: Date | number, dirtyOptions: any): Date;
+export default function parse(
+  dirtyDateString: string,
+  dirtyFormatString: string,
+  dirtyBackupDate: Date | number,
+  dirtyOptions: any
+): Date

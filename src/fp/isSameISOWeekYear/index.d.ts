@@ -1,2 +1,2 @@
-declare var isSameISOWeekYear: any;
-export default isSameISOWeekYear;
+declare var isSameISOWeekYear: any
+export default isSameISOWeekYear

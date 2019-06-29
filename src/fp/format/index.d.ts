@@ -1,2 +1,2 @@
-declare var format: any;
-export default format;
+declare var format: any
+export default format

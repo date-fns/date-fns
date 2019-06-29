@@ -1,2 +1,2 @@
-declare var parseISO: any;
-export default parseISO;
+declare var parseISO: any
+export default parseISO

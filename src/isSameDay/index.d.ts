@@ -20,4 +20,7 @@
  * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  */
-export default function isSameDay(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean;
+export default function isSameDay(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean

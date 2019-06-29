@@ -1,2 +1,2 @@
-declare var toDate: any;
-export default toDate;
+declare var toDate: any
+export default toDate

@@ -19,4 +19,4 @@
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear(dirtyDate: Date | number): boolean;
+export default function isLeapYear(dirtyDate: Date | number): boolean

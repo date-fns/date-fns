@@ -1,2 +1,2 @@
-declare var fromUnixTime: any;
-export default fromUnixTime;
+declare var fromUnixTime: any
+export default fromUnixTime

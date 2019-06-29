@@ -54,4 +54,7 @@
  * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
-export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr: string): any;
+export default function lightFormat(
+  dirtyDate: Date | number,
+  dirtyFormatStr: string
+): any

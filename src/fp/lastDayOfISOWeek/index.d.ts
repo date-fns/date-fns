@@ -1,2 +1,2 @@
-declare var lastDayOfISOWeek: any;
-export default lastDayOfISOWeek;
+declare var lastDayOfISOWeek: any
+export default lastDayOfISOWeek

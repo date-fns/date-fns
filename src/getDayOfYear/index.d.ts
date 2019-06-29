@@ -19,4 +19,4 @@
  * var result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export default function getDayOfYear(dirtyDate: Date | number): number;
+export default function getDayOfYear(dirtyDate: Date | number): number

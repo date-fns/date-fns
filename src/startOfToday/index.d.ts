@@ -21,4 +21,4 @@
  * var result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-export default function startOfToday(): Date;
+export default function startOfToday(): Date

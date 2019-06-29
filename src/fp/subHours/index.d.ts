@@ -1,2 +1,2 @@
-declare var subHours: any;
-export default subHours;
+declare var subHours: any
+export default subHours

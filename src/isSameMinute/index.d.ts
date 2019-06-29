@@ -24,4 +24,7 @@
  * )
  * //=> true
  */
-export default function isSameMinute(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean;
+export default function isSameMinute(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean

@@ -20,4 +20,7 @@
  * var result = differenceInYears(new Date(2015, 1, 11), new Date(2013, 11, 31))
  * //=> 1
  */
-export default function differenceInYears(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInYears(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

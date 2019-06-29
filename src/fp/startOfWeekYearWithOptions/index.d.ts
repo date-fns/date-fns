@@ -1,2 +1,2 @@
-declare var startOfWeekYearWithOptions: any;
-export default startOfWeekYearWithOptions;
+declare var startOfWeekYearWithOptions: any
+export default startOfWeekYearWithOptions

@@ -1,2 +1,2 @@
-declare var differenceInQuarters: any;
-export default differenceInQuarters;
+declare var differenceInQuarters: any
+export default differenceInQuarters

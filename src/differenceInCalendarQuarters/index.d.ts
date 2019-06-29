@@ -23,4 +23,7 @@
  * )
  * //=> 3
  */
-export default function differenceInCalendarQuarters(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function differenceInCalendarQuarters(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

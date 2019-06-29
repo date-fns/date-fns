@@ -20,4 +20,7 @@
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours(dirtyDate: Date | number, dirtyAmount: number): Date;
+export default function subHours(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date

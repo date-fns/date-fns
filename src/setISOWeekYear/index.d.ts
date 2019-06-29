@@ -28,4 +28,7 @@
  * var result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number): Date;
+export default function setISOWeekYear(
+  dirtyDate: Date | number,
+  dirtyISOWeekYear: number
+): Date

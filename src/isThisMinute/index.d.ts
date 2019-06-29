@@ -24,4 +24,4 @@
  * var result = isThisMinute(new Date(2014, 8, 25, 18, 30))
  * //=> true
  */
-export default function isThisMinute(dirtyDate: Date | number): boolean;
+export default function isThisMinute(dirtyDate: Date | number): boolean

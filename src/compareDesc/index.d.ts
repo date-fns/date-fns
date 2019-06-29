@@ -34,4 +34,7 @@
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number;
+export default function compareDesc(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number

@@ -22,4 +22,7 @@
  * var result = roundToNearestMinutes(new Date(2014, 6, 10, 12, 12, 34))
  * //=> Thu Jul 10 2014 12:13:00
  */
-export default function roundToNearestMinutes(dirtyDate: Date | number, options: any): Date;
+export default function roundToNearestMinutes(
+  dirtyDate: Date | number,
+  options: any
+): Date

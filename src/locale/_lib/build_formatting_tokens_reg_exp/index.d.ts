@@ -1,2 +1,2 @@
-declare function buildFormattingTokensRegExp(formatters: any): RegExp;
-export default buildFormattingTokensRegExp;
+declare function buildFormattingTokensRegExp(formatters: any): RegExp
+export default buildFormattingTokensRegExp

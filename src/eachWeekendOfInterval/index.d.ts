@@ -25,4 +25,4 @@
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval(interval: any): Date[];
+export default function eachWeekendOfInterval(interval: any): Date[]

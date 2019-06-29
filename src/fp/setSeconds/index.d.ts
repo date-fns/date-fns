@@ -1,2 +1,2 @@
-declare var setSeconds: any;
-export default setSeconds;
+declare var setSeconds: any
+export default setSeconds

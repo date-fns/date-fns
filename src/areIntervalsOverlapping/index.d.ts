@@ -1,4 +1,4 @@
-import { Interval } from '../types';
+import { Interval } from '../types'
 /**
  * @name areIntervalsOverlapping
  * @category Interval Helpers
@@ -64,4 +64,7 @@ import { Interval } from '../types';
  * )
  * //=> false
  */
-export default function areIntervalsOverlapping(dirtyIntervalLeft: Interval, dirtyIntervalRight: Interval): boolean;
+export default function areIntervalsOverlapping(
+  dirtyIntervalLeft: Interval,
+  dirtyIntervalRight: Interval
+): boolean

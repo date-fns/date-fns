@@ -32,4 +32,8 @@
  * })
  * //=> false
  */
-export default function isSameWeek(dirtyDateLeft: Date | number, dirtyDateRight: Date | number, dirtyOptions: any): boolean;
+export default function isSameWeek(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number,
+  dirtyOptions: any
+): boolean

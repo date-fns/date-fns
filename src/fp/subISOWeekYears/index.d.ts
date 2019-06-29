@@ -1,2 +1,2 @@
-declare var subISOWeekYears: any;
-export default subISOWeekYears;
+declare var subISOWeekYears: any
+export default subISOWeekYears

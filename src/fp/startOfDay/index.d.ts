@@ -1,2 +1,2 @@
-declare var startOfDay: any;
-export default startOfDay;
+declare var startOfDay: any
+export default startOfDay

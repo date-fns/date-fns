@@ -1,1 +1,1 @@
-export default function getUTCISOWeek(dirtyDate: Date | number): number;
+export default function getUTCISOWeek(dirtyDate: Date | number): number

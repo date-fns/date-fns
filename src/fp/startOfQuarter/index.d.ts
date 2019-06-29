@@ -1,2 +1,2 @@
-declare var startOfQuarter: any;
-export default startOfQuarter;
+declare var startOfQuarter: any
+export default startOfQuarter

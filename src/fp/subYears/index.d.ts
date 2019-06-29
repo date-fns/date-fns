@@ -1,2 +1,2 @@
-declare var subYears: any;
-export default subYears;
+declare var subYears: any
+export default subYears

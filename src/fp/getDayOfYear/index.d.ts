@@ -1,2 +1,2 @@
-declare var getDayOfYear: any;
-export default getDayOfYear;
+declare var getDayOfYear: any
+export default getDayOfYear

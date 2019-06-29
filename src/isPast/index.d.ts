@@ -23,4 +23,4 @@
  * var result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isPast(dirtyDate: Date | number): boolean;
+export default function isPast(dirtyDate: Date | number): boolean

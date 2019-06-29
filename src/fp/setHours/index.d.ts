@@ -1,2 +1,2 @@
-declare var setHours: any;
-export default setHours;
+declare var setHours: any
+export default setHours

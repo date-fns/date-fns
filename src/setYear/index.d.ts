@@ -20,4 +20,7 @@
  * var result = setYear(new Date(2014, 8, 1), 2013)
  * //=> Sun Sep 01 2013 00:00:00
  */
-export default function setYear(dirtyDate: Date | number, dirtyYear: number): any;
+export default function setYear(
+  dirtyDate: Date | number,
+  dirtyYear: number
+): any

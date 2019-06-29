@@ -22,4 +22,4 @@
  * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfISOWeek(dirtyDate: Date | number): Date;
+export default function startOfISOWeek(dirtyDate: Date | number): Date

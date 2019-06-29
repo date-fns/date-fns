@@ -1,2 +1,2 @@
-declare var startOfWeek: any;
-export default startOfWeek;
+declare var startOfWeek: any
+export default startOfWeek

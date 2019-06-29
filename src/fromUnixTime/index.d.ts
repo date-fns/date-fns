@@ -19,4 +19,4 @@
  * var result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(dirtyUnixTime: number): Date;
+export default function fromUnixTime(dirtyUnixTime: number): Date

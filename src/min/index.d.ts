@@ -37,4 +37,4 @@
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min(dirtyDatesArray: (Date | number)[]): any;
+export default function min(dirtyDatesArray: (Date | number)[]): any
