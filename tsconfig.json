@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "module": "es2015",
+    "target": "es2017",
+    "strict": true,
+    "declaration": true,
+    "types": []
+  },
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}
