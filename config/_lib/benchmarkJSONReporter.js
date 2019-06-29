@@ -2,10 +2,10 @@ var fs = require('fs')
 
 var benchmarkResultFilename = './tmp/benchmark.json'
 
-function benchmarkJSONReporter () {
+function benchmarkJSONReporter() {
   var benchmarkResult = {}
 
-  this.onSpecComplete = function (_, result) {
+  this.onSpecComplete = function(_, result) {
     var fnName = result.benchmark.suite
     var libraryName = result.benchmark.name
     var operationsPerSecond = Math.floor(result.benchmark.hz)
@@ -17,11 +17,11 @@ function benchmarkJSONReporter () {
     benchmarkResult[fnName][libraryName] = operationsPerSecond
   }
 
-  this.onRunComplete = function () {
+  this.onRunComplete = function() {
     var benchmarkResultArray = []
     for (var fnName in benchmarkResult) {
       if (benchmarkResult.hasOwnProperty(fnName)) {
-        var element = {fn: fnName}
+        var element = { fn: fnName }
 
         if (benchmarkResult[fnName]['date-fns']) {
           element.dateFns = benchmarkResult[fnName]['date-fns']
@@ -35,13 +35,18 @@ function benchmarkJSONReporter () {
       }
     }
 
-    fs.writeFile(benchmarkResultFilename, JSON.stringify(benchmarkResultArray), 'utf-8', function (err) {
-      if (err) {
-        throw err
-      }
+    fs.writeFile(
+      benchmarkResultFilename,
+      JSON.stringify(benchmarkResultArray),
+      'utf-8',
+      function(err) {
+        if (err) {
+          throw err
+        }
 
-      console.log('See results at ' + benchmarkResultFilename)
-    })
+        console.log('See results at ' + benchmarkResultFilename)
+      }
+    )
   }
 }
 

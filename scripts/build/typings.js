@@ -12,7 +12,7 @@ const listLocales = require('../_lib/listLocales')
 const getConstants = require('../_lib/getConstants')
 const jsDocs = require(path.resolve(process.cwd(), 'tmp/docs.json'))
 
-const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
+// const { generateTypeScriptTypings } = require('./_lib/typings/typeScript')
 const { generateFlowTypings } = require('./_lib/typings/flow')
 
 const locales = listLocales()
@@ -27,5 +27,5 @@ const constants = getConstants()
 
 const aliases = jsDocs['Types']
 
-generateTypeScriptTypings(fns, aliases, locales, constants)
+// generateTypeScriptTypings(fns, aliases, locales, constants)
 generateFlowTypings(fns, aliases, locales, constants)

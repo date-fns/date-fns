@@ -17,7 +17,7 @@
   "module": "esm/index.js",
   "scripts": {
     "test": "karma start config/karma.js",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .js,.ts",
     "locale-snapshots": "env TZ=utc babel-node ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",

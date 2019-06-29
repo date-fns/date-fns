@@ -5,8 +5,5 @@ export default {
   entry: 'fp.js',
   dest: 'dist/fp.js',
   format: 'cjs',
-  plugins: [
-    resolve({jsnext: true, main: true}),
-    commonjs()
-  ]
+  plugins: [resolve({ jsnext: true, main: true }), commonjs()]
 }

@@ -31,7 +31,11 @@ SystemJS.config({
 Promise.all(
   importFiles(listFns())
     .concat(importFiles(listFPFns()))
-    .concat(importFiles(listLocales().filter(({code}) => !outdatedLocales.includes(code))))
+    .concat(
+      importFiles(
+        listLocales().filter(({ code }) => !outdatedLocales.includes(code))
+      )
+    )
 ).then(
   () => {
     console.log('SystemJS support is OK')
@@ -42,7 +46,7 @@ Promise.all(
   }
 )
 
-function importFiles (files) {
+function importFiles(files) {
   return files.map(file =>
     SystemJS.import(path.join(process.cwd(), file.fullPath))
   )

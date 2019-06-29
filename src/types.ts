@@ -1,9 +1,9 @@
-export type Interval = {
+export interface Interval {
   start: Date | number
   end: Date | number
 }
 
-export type Locale = {
+export interface Locale {
   formatDistance: Function
   formatRelative: Function
   localize: {
@@ -14,7 +14,7 @@ export type Locale = {
     day: Function
     dayPeriod: Function
   }
-  formatLong: Object
+  formatLong: Record<string, any>
   date: Function
   time: Function
   dateTime: Function
