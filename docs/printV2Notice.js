@@ -1,4 +1,14 @@
-console.log(`
+const env = process.env
+const CI = is(env.CI)
+const DISABLE_OPENCOLLECTIVE = is(env.DISABLE_OPENCOLLECTIVE)
+const SILENT = ['silent', 'error', 'warn'].includes(env.npm_config_loglevel)
+
+function is(it) {
+  return !!it && it !== '0' && it !== 'false'
+}
+
+if (!CI && !DISABLE_OPENCOLLECTIVE && !SILENT) {
+  console.log(`
 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
   Thank you for testing (⩗) date-fns v2!
@@ -11,3 +21,4 @@ console.log(`
 
 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 `)
+}
