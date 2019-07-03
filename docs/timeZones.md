@@ -98,5 +98,5 @@ const output = formatToTimeZone(date, format, { timeZone: 'Europe/Berlin' })
 ### More Info
 
 - [Installation and Getting Started](https://github.com/prantlf/date-fns-timezone#installation-and-getting-started)
-- [Usage Scenarios](https://github.com/prantlf/date-fns-timezone/docs/usage.md#usage-scenarios)
-- [API Reference](https://github.com/prantlf/date-fns-timezone/docs/API.md#api-reference)
+- [Usage Scenarios](https://github.com/prantlf/date-fns-timezone/blob/master/docs/usage.md#usage-scenarios)
+- [API Reference](https://github.com/prantlf/date-fns-timezone/blob/master/docs/API.md#api-reference)
