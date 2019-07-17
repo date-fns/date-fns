@@ -373,7 +373,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map(module => module.definition)
 
   const globalInterfaceDefinition = formatBlock`
-    interface dateFns {
+    export interface dateFns {
       ${addSeparator(
         nonFPFns
           .map(getTypeScriptInterfaceDefinition)
