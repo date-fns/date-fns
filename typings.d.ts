@@ -13704,6 +13704,9 @@ declare module 'date-fns/locale' {
   const cs: Locale
   namespace cs {}
 
+  const cy: Locale
+  namespace cy {}
+
   const da: Locale
   namespace da {}
 
@@ -13892,6 +13895,11 @@ declare module 'date-fns/locale/ca' {
 declare module 'date-fns/locale/cs' {
   import { cs } from 'date-fns/locale'
   export = cs
+}
+
+declare module 'date-fns/locale/cy' {
+  import { cy } from 'date-fns/locale'
+  export = cy
 }
 
 declare module 'date-fns/locale/da' {
@@ -14179,6 +14187,11 @@ declare module 'date-fns/locale/cs/index' {
   export = cs
 }
 
+declare module 'date-fns/locale/cy/index' {
+  import { cy } from 'date-fns/locale'
+  export = cy
+}
+
 declare module 'date-fns/locale/da/index' {
   import { da } from 'date-fns/locale'
   export = da
@@ -14464,6 +14477,11 @@ declare module 'date-fns/locale/cs/index.js' {
   export = cs
 }
 
+declare module 'date-fns/locale/cy/index.js' {
+  import { cy } from 'date-fns/locale'
+  export = cy
+}
+
 declare module 'date-fns/locale/da/index.js' {
   import { da } from 'date-fns/locale'
   export = da
@@ -14734,6 +14752,9 @@ declare module 'date-fns/esm/locale' {
   const cs: Locale
   namespace cs {}
 
+  const cy: Locale
+  namespace cy {}
+
   const da: Locale
   namespace da {}
 
@@ -14922,6 +14943,11 @@ declare module 'date-fns/esm/locale/ca' {
 declare module 'date-fns/esm/locale/cs' {
   import { cs } from 'date-fns/esm/locale'
   export default cs
+}
+
+declare module 'date-fns/esm/locale/cy' {
+  import { cy } from 'date-fns/esm/locale'
+  export default cy
 }
 
 declare module 'date-fns/esm/locale/da' {
@@ -15209,6 +15235,11 @@ declare module 'date-fns/esm/locale/cs/index' {
   export default cs
 }
 
+declare module 'date-fns/esm/locale/cy/index' {
+  import { cy } from 'date-fns/esm/locale'
+  export default cy
+}
+
 declare module 'date-fns/esm/locale/da/index' {
   import { da } from 'date-fns/esm/locale'
   export default da
@@ -15494,6 +15525,11 @@ declare module 'date-fns/esm/locale/cs/index.js' {
   export default cs
 }
 
+declare module 'date-fns/esm/locale/cy/index.js' {
+  import { cy } from 'date-fns/esm/locale'
+  export default cy
+}
+
 declare module 'date-fns/esm/locale/da/index.js' {
   import { da } from 'date-fns/esm/locale'
   export default da
@@ -15736,7 +15772,7 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 
 // dateFns Global Interface
 
-interface dateFns {
+export interface dateFns {
   addBusinessDays(date: Date | number, amount: number): Date
 
   addDays(date: Date | number, amount: number): Date

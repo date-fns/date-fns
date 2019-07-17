@@ -40,6 +40,7 @@ declare module.exports: {
   bn: Locale,
   ca: Locale,
   cs: Locale,
+  cy: Locale,
   da: Locale,
   de: Locale,
   el: Locale,
