@@ -15772,7 +15772,7 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 
 // dateFns Global Interface
 
-export interface dateFns {
+interface dateFns {
   addBusinessDays(date: Date | number, amount: number): Date
 
   addDays(date: Date | number, amount: number): Date
