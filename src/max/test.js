@@ -5,6 +5,10 @@ import assert from 'power-assert'
 import max from '.'
 
 describe('max', function() {
+  function isInvalidDate (dirtyDate) {
+    return dirtyDate instanceof Date && isNaN(dirtyDate)
+  }
+
   it('returns the latest date', function() {
     var result = max([
       new Date(1989, 6 /* Jul */, 10),
@@ -13,7 +17,7 @@ describe('max', function() {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('allows to pass more than 2 arguments', function() {
+  it('accepts array with more than 2 entries', function() {
     var result = max([
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
@@ -37,7 +41,7 @@ describe('max', function() {
       new Date(NaN),
       new Date(1987, 1 /* Feb */, 11)
     ])
-    assert(result instanceof Date && isNaN(result))
+    assert(isInvalidDate(result))
   })
 
   it('returns `Invalid Date` if any given value is undefined', function() {
@@ -47,12 +51,12 @@ describe('max', function() {
       undefined,
       new Date(1987, 1 /* Feb */, 11)
     ])
-    assert(result instanceof Date && isNaN(result))
+    assert(isInvalidDate(result))
   })
 
-  it('returns undefined for empty array', function() {
+  it('returns `Invalid Date` for empty array', function() {
     var result = max([])
-    assert(result === undefined)
+    assert(isInvalidDate(result))
   })
 
   it('converts Array-like objects into Array', function() {
@@ -65,16 +69,19 @@ describe('max', function() {
     assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('converts undefined into empty array', function() {
+  it('converts iterable objects into Array', function() {
     // $ExpectedMistake
-    var result = max(undefined)
-    assert(result === undefined)
+    var result = max(new Set([
+      new Date(1989, 6 /* Jul */, 10),
+      new Date(1987, 1 /* Feb */, 11),
+    ]))
+    assert.deepEqual(result, new Date(1989, 6 /* Jul */, 10))
   })
 
-  it('converts null into empty array', function() {
+  it('returns `Invalid Date` if given a non-iterable value', function() {
     // $ExpectedMistake
-    var result = max(null)
-    assert(result === undefined)
+    var result = max(undefined)
+    assert(isInvalidDate(result))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {
