@@ -3,6 +3,7 @@ var buildFormattingTokensRegExp = require('../../_lib/build_formatting_tokens_re
 function buildFormatLocale () {
   // http://new.gramota.ru/spravka/buro/search-answer?s=242637
   var monthsShort = ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.']
+  var monthsShortGenitive = ['янв.', 'фев.', 'марта', 'апр.', 'мая', 'июня', 'июля', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.']
   var monthsFull = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
   var monthsGenitive = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   var weekdays2char = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб']
@@ -77,6 +78,15 @@ function buildFormatLocale () {
     formatters[formatterToken + ' MMMM'] = function (date, commonFormatters) {
       var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
       return formatter(date, commonFormatters) + ' ' + monthsGenitive[date.getMonth()]
+    }
+  })
+
+  // Generate formatters like 'D MMM',
+  // where month is in the genitive case: янв., фев., марта, апр., мая, ..., дек.
+  monthsGenitiveFormatters.forEach(function (formatterToken) {
+    formatters[formatterToken + ' MMM'] = function (date, commonFormatters) {
+      var formatter = formatters[formatterToken] || commonFormatters[formatterToken]
+      return formatter(date, commonFormatters) + ' ' + monthsShortGenitive[date.getMonth()]
     }
   })
 
