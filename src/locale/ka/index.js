@@ -11,6 +11,7 @@ import match from './_lib/match/index.js'
  * @language Georgian
  * @iso-639-2 geo
  * @author Lado Lomidze [@Landish]{@link https://github.com/Landish}
+ * @author Nick Shvelidze [@shvelo]{@link https://github.com/shvelo}
  */
 var locale = {
   formatDistance: formatDistance,
