@@ -9,8 +9,9 @@
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
-**date-fns** is like [lodash](https://lodash.com) for dates. It has
+**date-fns** is like [RamdaJs](https://ramdajs.com) for dates. It has
 [**180+ functions** for all occasions](https://date-fns.org/docs/).
+It emphasizes a purer functional style.
 
 ```js
 import { compareAsc, format } from 'date-fns'
