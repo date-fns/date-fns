@@ -1,26 +1,37 @@
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+
+var eraValues = {
+  narrow: ['ჩ.წ-მდე', 'ჩ.წ'],
+  abbreviated: ['ჩვ.წ-მდე', 'ჩვ.წ'],
+  wide: ['ჩვენს წელთაღრიცხვამდე', 'ჩვენი წელთაღრიცხვით']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-ლი კვ', '2-ე კვ', '3-ე კვ', '4-ე კვ'],
+  wide: ['1-ლი კვარტალი', '2-ე კვარტალი', '3-ე კვარტალი', '4-ე კვარტალი']
+}
 
 // Note: in English, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var weekdayValues = {
-  narrow: ['კვ', 'ორ', 'სა', 'ოთ', 'ხუ', 'პა', 'შა'],
-  short: ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
-  long: [
-    'კვირა',
-    'ორშაბათი',
-    'სამშაბათი',
-    'ოთხშაბათი',
-    'ხუთშაბათი',
-    'პარასკევი',
-    'შაბათი'
-  ]
-}
-
 var monthValues = {
-  short: [
+  narrow: [
+    'ია',
+    'თე',
+    'მა',
+    'აპ',
+    'მს',
+    'ვნ',
+    'ვლ',
+    'აგ',
+    'სე',
+    'ოქ',
+    'ნო',
+    'დე'
+  ],
+  abbreviated: [
     'იან',
     'თებ',
     'მარ',
@@ -34,7 +45,7 @@ var monthValues = {
     'ნოე',
     'დეკ'
   ],
-  long: [
+  wide: [
     'იანვარი',
     'თებერვალი',
     'მარტი',
@@ -50,35 +61,84 @@ var monthValues = {
   ]
 }
 
-// `timeOfDay` is used to designate which part of the day it is, when used with 12-hour clock.
-// Use the system which is used the most commonly in the locale.
-// For example, if the country doesn't use a.m./p.m., you can use `night`/`morning`/`afternoon`/`evening`:
-//
-//   var timeOfDayValues = {
-//     any: ['in the night', 'in the morning', 'in the afternoon', 'in the evening']
-//   }
-//
-// And later:
-//
-//   var localize = {
-//     // The callback takes the hours as the argument and returns the array index
-//     timeOfDay: buildLocalizeFn(timeOfDayValues, 'any', function (hours) {
-//       if (hours >= 17) {
-//         return 3
-//       } else if (hours >= 12) {
-//         return 2
-//       } else if (hours >= 4) {
-//         return 1
-//       } else {
-//         return 0
-//       }
-//     }),
-//     timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'any')
-//   }
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['a.m.', 'p.m.']
+var dayValues = {
+  narrow: ['კვ', 'ორ', 'სა', 'ოთ', 'ხუ', 'პა', 'შა'],
+  short: ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
+  abbreviated: ['კვი', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
+  wide: [
+    'კვირა',
+    'ორშაბათი',
+    'სამშაბათი',
+    'ოთხშაბათი',
+    'ხუთშაბათი',
+    'პარასკევი',
+    'შაბათი'
+  ]
+}
+
+var dayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'შუაღამე',
+    noon: 'შუადღე',
+    morning: 'დილა',
+    afternoon: 'საღამო',
+    evening: 'საღამო',
+    night: 'ღამე'
+  }
+}
+var formattingDayPeriodValues = {
+  narrow: {
+    am: 'a',
+    pm: 'p',
+    midnight: 'mi',
+    noon: 'n',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'შუაღამეს',
+    noon: 'შუადღისას',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  },
+  wide: {
+    am: 'a.m.',
+    pm: 'p.m.',
+    midnight: 'midnight',
+    noon: 'შუადღისას',
+    morning: 'დილით',
+    afternoon: 'ნაშუადღევს',
+    evening: 'საღამოს',
+    night: 'ღამით'
+  }
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -91,8 +151,8 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   //   var options = dirtyOptions || {}
   //   var unit = String(options.unit)
   //
-  // where `unit` can be 'month', 'quarter', 'week', 'isoWeek', 'dayOfYear',
-  // 'dayOfMonth' or 'dayOfWeek'
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
 
   if (number === 1) {
     return number + '-ლი'
@@ -103,14 +163,36 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function(hours) {
-    return hours / 12 >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide',
+    formattingValues: formattingDayPeriodValues,
+    defaultFormattingWidth: 'wide'
+  })
 }
 
 export default localize
