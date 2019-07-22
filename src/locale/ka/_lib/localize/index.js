@@ -112,8 +112,8 @@ var formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
-    midnight: 'mi',
-    noon: 'n',
+    midnight: 'შუაღამით',
+    noon: 'შუადღისას',
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
     evening: 'საღამოს',
@@ -122,7 +122,7 @@ var formattingDayPeriodValues = {
   abbreviated: {
     am: 'AM',
     pm: 'PM',
-    midnight: 'შუაღამეს',
+    midnight: 'შუაღამით',
     noon: 'შუადღისას',
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
@@ -132,7 +132,7 @@ var formattingDayPeriodValues = {
   wide: {
     am: 'a.m.',
     pm: 'p.m.',
-    midnight: 'midnight',
+    midnight: 'შუაღამით',
     noon: 'შუადღისას',
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
