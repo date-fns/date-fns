@@ -29,29 +29,14 @@ var matchMonthPatterns = {
   any: /^(ია|თე|მა|აპ|მს|ვნ|ვლ|აგ|სე|ოქ|ნო|დე)/i
 }
 var parseMonthPatterns = {
-  narrow: [
-    /^ია/i,
-    /^თე/i,
-    /^მა/i,
-    /^აპ/i,
-    /^მს/i,
-    /^ვნ/i,
-    /^ვლ/i,
-    /^აგ/i,
-    /^სე/i,
-    /^ოქ/i,
-    /^ნო/i,
-    /^დე/i
-  ],
-
   any: [
     /^ია/i,
     /^თ/i,
     /^მარ/i,
     /^აპ/i,
     /^მაი/i,
-    /^ივნ/i,
-    /^ივლ/i,
+    /^ი?ვნ/i,
+    /^ი?ვლ/i,
     /^აგ/i,
     /^ს/i,
     /^ო/i,
@@ -78,7 +63,7 @@ var parseDayPeriodPatterns = {
     pm: /^p/i,
     midnight: /^შუაღ/i,
     noon: /^შუადღ/i,
-    morning: /დილა/i,
+    morning: /^დილ/i,
     afternoon: /ნაშუადღევს/i,
     evening: /საღამო/i,
     night: /ღამ/i

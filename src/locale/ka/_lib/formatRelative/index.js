@@ -1,9 +1,9 @@
 var formatRelativeLocale = {
-  lastWeek: '[წინა] dddd LT[-ზე]',
-  yesterday: '[გუშინ] LT[-ზე]',
-  today: '[დღეს] LT[-ზე]',
-  tomorrow: '[ხვალ] LT[-ზე]',
-  nextWeek: '[შემდეგი] dddd LT[-ზე]',
+  lastWeek: "'წინა' eeee LT'-ზე'",
+  yesterday: "'გუშინ' LT'-ზე'",
+  today: "'დღეს' LT'-ზე'",
+  tomorrow: "'ხვალ' LT'-ზე'",
+  nextWeek: "'შემდეგი' eeee LT'-ზე'",
   other: 'L'
 }
 
