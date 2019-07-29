@@ -5,14 +5,12 @@ var formatRelativeLocale = {
     switch (day) {
       case 0:
         return "'prošlu nedjelju u' p"
-      case 1:
-      case 2:
       case 3:
         return "'prošlu srijedu u' p"
-      case 4:
-      case 5:
       case 6:
         return "'prošlu subotu u' p"
+      default:
+        return "'prošli' EEEE 'u' p"
     }
 
     return "'prošli' EEEE 'u' p"
@@ -26,14 +24,12 @@ var formatRelativeLocale = {
     switch (day) {
       case 0:
         return "'iduću nedjelju u' p"
-      case 1:
-      case 2:
       case 3:
         return "'iduću srijedu u' p"
-      case 4:
-      case 5:
       case 6:
         return "'iduću subotu u' p"
+      default:
+        return "'prošli' EEEE 'u' p"
     }
 
     return "'idući' EEEE 'u' p"
