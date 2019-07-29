@@ -12,8 +12,6 @@ var formatRelativeLocale = {
       default:
         return "'prošli' EEEE 'u' p"
     }
-
-    return "'prošli' EEEE 'u' p"
   },
   yesterday: "'jučer u' p",
   today: "'danas u' p",
@@ -31,8 +29,6 @@ var formatRelativeLocale = {
       default:
         return "'prošli' EEEE 'u' p"
     }
-
-    return "'idući' EEEE 'u' p"
   },
   other: 'P'
 }
