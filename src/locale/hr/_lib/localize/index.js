@@ -12,28 +12,114 @@ var eraValues = {
 }
 
 var monthValues = {
-  narrow: ['1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', '11.', '12.'],
-  abbreviated: ['sij', 'velj', 'ožu', 'tra', 'svi', 'lip', 'srp', 'kol', 'ruj', 'lis', 'stu', 'pro'],
-  wide: ['siječanj', 'veljača', 'ožujak', 'travanj', 'svibanj', 'lipanj', 'srpanj', 'kolovoz', 'rujan', 'listopad', 'studeni', 'prosinac']
+  narrow: [
+    '1.',
+    '2.',
+    '3.',
+    '4.',
+    '5.',
+    '6.',
+    '7.',
+    '8.',
+    '9.',
+    '10.',
+    '11.',
+    '12.'
+  ],
+  abbreviated: [
+    'sij',
+    'velj',
+    'ožu',
+    'tra',
+    'svi',
+    'lip',
+    'srp',
+    'kol',
+    'ruj',
+    'lis',
+    'stu',
+    'pro'
+  ],
+  wide: [
+    'siječanj',
+    'veljača',
+    'ožujak',
+    'travanj',
+    'svibanj',
+    'lipanj',
+    'srpanj',
+    'kolovoz',
+    'rujan',
+    'listopad',
+    'studeni',
+    'prosinac'
+  ]
 }
 
 var formattingMonthValues = {
-  narrow: ['1.', '2.', '3.', '4.', '5.', '6.', '7.', '8.', '9.', '10.', '11.', '12.'],
-  abbreviated: ['sij', 'velj', 'ožu', 'tra', 'svi', 'lip', 'srp', 'kol', 'ruj', 'lis', 'stu', 'pro'],
-  wide: ['siječnja', 'veljače', 'ožujka', 'travnja', 'svibnja', 'lipnja', 'srpnja', 'kolovoza', 'rujna', 'listopada', 'studenog', 'prosinca']
+  narrow: [
+    '1.',
+    '2.',
+    '3.',
+    '4.',
+    '5.',
+    '6.',
+    '7.',
+    '8.',
+    '9.',
+    '10.',
+    '11.',
+    '12.'
+  ],
+  abbreviated: [
+    'sij',
+    'velj',
+    'ožu',
+    'tra',
+    'svi',
+    'lip',
+    'srp',
+    'kol',
+    'ruj',
+    'lis',
+    'stu',
+    'pro'
+  ],
+  wide: [
+    'siječnja',
+    'veljače',
+    'ožujka',
+    'travnja',
+    'svibnja',
+    'lipnja',
+    'srpnja',
+    'kolovoza',
+    'rujna',
+    'listopada',
+    'studenog',
+    'prosinca'
+  ]
 }
 
 var quarterValues = {
   narrow: ['1.', '2.', '3.', '4.'],
   abbreviated: ['1. kv.', '2. kv.', '3. kv.', '4. kv.'],
-  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal'],
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
 }
 
 var dayValues = {
-  narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  narrow: ['N', 'P', 'U', 'S', 'Č', 'P', 'S'],
   short: ['ned', 'pon', 'uto', 'sri', 'čet', 'pet', 'sub'],
   abbreviated: ['ned', 'pon', 'uto', 'sri', 'čet', 'pet', 'sub'],
-  wide: ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota']
+  wide: [
+    'nedjelja',
+    'ponedjeljak',
+    'utorak',
+    'srijeda',
+    'četvrtak',
+    'petak',
+    'subota'
+  ]
 }
 
 var formattingDayPeriodValues = {
@@ -111,7 +197,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
