@@ -1,6 +1,7 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: "menys d'un segon",
+    eleven: "menys d'once segons",
     other: 'menys de {{count}} segons'
   },
 
@@ -13,6 +14,7 @@ var formatDistanceLocale = {
 
   lessThanXMinutes: {
     one: "menys d'un minut",
+    eleven: "menys d'once minuts",
     other: 'menys de {{count}} minuts'
   },
 
@@ -58,6 +60,7 @@ var formatDistanceLocale = {
 
   overXYears: {
     one: "més d'un any",
+    eleven: "més d'once anys",
     other: 'més de {{count}} anys'
   },
 
@@ -67,7 +70,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -75,6 +78,8 @@ export default function formatDistance (token, count, options) {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
     result = formatDistanceLocale[token].one
+  } else if (count === 11 && formatDistanceLocale[token].eleven) {
+    result = formatDistanceLocale[token].eleven
   } else {
     result = formatDistanceLocale[token].other.replace('{{count}}', count)
   }
