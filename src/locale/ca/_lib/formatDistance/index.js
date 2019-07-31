@@ -1,7 +1,17 @@
+/**
+ * Davant de les xifres que es diuen amb vocal inicial, 1 i 11, s'apostrofen els articles el i la i la preposició de igual que si estiguessin escrits amb lletres.
+ *    l'1 de juliol ('l'u')
+ *    l'11 de novembre ('l'onze')
+ *    l'11a clàusula del contracte ('l'onzena')
+ *    la contractació d'11 jugadors ('d'onze')
+ *    l'aval d'11.000 socis ('d'onze mil')
+ *
+ * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/index.html?input_cercar=apostrofaci%25F3+davant+xifres&action=Principal&method=detall_completa&numPagina=1&idHit=11236&database=FITXES_PUB&tipusFont=Fitxes%20de%20l%27Optimot&idFont=11236&titol=apostrofaci%F3%20davant%20de%20xifres%20%2F%20apostrofaci%F3%20davant%20de%201%20i%2011&numeroResultat=1&clickLink=detall&tipusCerca=cerca.normes
+ */
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: "menys d'un segon",
-    eleven: "menys d'once segons",
+    eleven: "menys d'onze segons",
     other: 'menys de {{count}} segons'
   },
 
@@ -14,7 +24,7 @@ var formatDistanceLocale = {
 
   lessThanXMinutes: {
     one: "menys d'un minut",
-    eleven: "menys d'once minuts",
+    eleven: "menys d'onze minuts",
     other: 'menys de {{count}} minuts'
   },
 
@@ -60,7 +70,7 @@ var formatDistanceLocale = {
 
   overXYears: {
     one: "més d'un any",
-    eleven: "més d'once anys",
+    eleven: "més d'onze anys",
     other: 'més de {{count}} anys'
   },
 
