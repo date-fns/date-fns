@@ -7,10 +7,34 @@ import differenceInBusinessDays from '.'
 describe('differenceInBusinessDays', function() {
   it('returns the number of business days between the given dates, excluding weekends', function() {
     var result = differenceInBusinessDays(
-      new Date(2014, 6 /* Jul */, 20),
+      new Date(2014, 6 /* Jul */, 18),
       new Date(2014, 0 /* Jan */, 10)
     )
     assert(result === 135)
+  })
+
+  it('the same except given first date falls on a weekend', function() {
+    var result = differenceInBusinessDays(
+      new Date(2019, 6 /* Jul */, 20),
+      new Date(2019, 6 /* Jul */, 18)
+    )
+    assert(result === 2)
+  })
+
+  it('the same except given second date falls on a weekend', function() {
+    var result = differenceInBusinessDays(
+      new Date(2019, 6 /* Jul */, 23),
+      new Date(2019, 6 /* Jul */, 20)
+    )
+    assert(result === 1)
+  })
+
+  it('the same except both given dates fall on a weekend', function() {
+    var result = differenceInBusinessDays(
+      new Date(2019, 6 /* Jul */, 28),
+      new Date(2019, 6 /* Jul */, 20)
+    )
+    assert(result === 5)
   })
 
   it('returns a negative number if the time value of the first date is smaller', function() {
@@ -23,7 +47,7 @@ describe('differenceInBusinessDays', function() {
 
   it('accepts timestamps', function() {
     var result = differenceInBusinessDays(
-      new Date(2014, 6, 20).getTime(),
+      new Date(2014, 6, 18).getTime(),
       new Date(2014, 0, 10).getTime()
     )
     assert(result === 135)
