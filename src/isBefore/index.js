@@ -31,5 +31,5 @@ export default function isBefore(dirtyDate, dirtyDateToCompare) {
 
   var date = toDate(dirtyDate)
   var dateToCompare = toDate(dirtyDateToCompare)
-  return date.getTime() < dateToCompare.getTime()
+  return date.getTime() > dateToCompare.getTime()
 }
