@@ -16,7 +16,7 @@ for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 import { compareAsc, format } from 'date-fns'
 
 format(new Date(2014, 1, 11), 'yyyy-MM-dd')
-//=> '2014/02/11'
+//=> '2014-02-11'
 
 const dates = [
   new Date(1995, 6, 2),
