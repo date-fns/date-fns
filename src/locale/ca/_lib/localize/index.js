@@ -19,7 +19,7 @@ var eraValues = {
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1er trimestre', '2on trimestre', '3er trimestre', '4rt trimestre']
+  wide: ['1r trimestre', '2n trimestre', '3r trimestre', '4t trimestre']
 }
 
 /**

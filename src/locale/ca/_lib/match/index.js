@@ -1,33 +1,31 @@
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(è|er|on|er|rt)?/i
+var matchOrdinalNumberPattern = /^(\d+)(è|r|n|r|t)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(ac|dc|a|d)/i,
-  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
-  wide: /^(abans de crist|abans de la era com[uú]|despr[eé]s de crist|era com[uú])/i
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a. de C.|d. de C.)/i,
+  wide: /^(abans de Crist|despr[eé]s de Crist)/i
 }
 var parseEraPatterns = {
-  any: [/^ac/i, /^dc/i],
-  wide: [
-    /^(abans de crist|abans de la era com[uú])/i,
-    /^(despr[eé]s de crist|era com[uú])/i
-  ]
+  narrow: [/^aC/i, /^dC/i],
+  abbreviated: [/^(a. de C.)/i, /^(d. de C.)/i],
+  wide: [/^(abans de Crist)/i, /^(despr[eé]s de Crist)/i]
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^T[1234]/i,
-  wide: /^[1234](è|er|on|er|rt)? trimestre/i
+  wide: /^[1234](è|r|n|r|t)? trimestre/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
 var matchMonthPatterns = {
-  narrow: /^[gfmajsond]/i,
+  narrow: /^(GN|FB|MÇ|AB|MG|JN|JL|AG|ST|OC|NV|DS)/i,
   abbreviated: /^(gen.|febr.|març|abr.|maig|juny|jul.|ag.|set.|oct.|nov.|des.)/i,
   wide: /^(gener|febrer|març|abril|maig|juny|juliol|agost|setembre|octubre|novembre|desembre)/i
 }
@@ -46,7 +44,7 @@ var parseMonthPatterns = {
     /^NV/i,
     /^DS/i
   ],
-  any: [
+  abbreviated: [
     /^gen./i,
     /^febr./i,
     /^març/i,
@@ -59,6 +57,20 @@ var parseMonthPatterns = {
     /^oct./i,
     /^nov./i,
     /^des./i
+  ],
+  wide: [
+    /^gener/i,
+    /^febrer/i,
+    /^març/i,
+    /^abril/i,
+    /^maig/i,
+    /^juny/i,
+    /^juliol/i,
+    /^agost/i,
+    /^setembre/i,
+    /^octubre/i,
+    /^novembre/i,
+    /^desembre/i
   ]
 }
 
@@ -79,8 +91,7 @@ var parseDayPatterns = {
     /^dijous/i,
     /^divendres/i,
     /^disssabte/i
-  ],
-  any: [/^dg/i, /^dl/i, /^dt/i, /^dm/i, /^dj/i, /^dv/i, /^ds/i]
+  ]
 }
 
 var matchDayPeriodPatterns = {
