@@ -51,10 +51,10 @@ var monthValues = {
   abbreviated: [
     'gen.',
     'febr.',
-    'març.',
+    'març',
     'abr.',
-    'maig.',
-    'juny.',
+    'maig',
+    'juny',
     'jul.',
     'ag.',
     'set.',
