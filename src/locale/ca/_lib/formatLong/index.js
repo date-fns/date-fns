@@ -14,20 +14,6 @@ var timeFormats = {
   short: 'HH:mm'
 }
 
-var dateTimeFormatsSingular = {
-  full: "{{date}} 'a la' {{time}}",
-  long: "{{date}} 'a la' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-}
-
-var dateTimeFormatsPlural = {
-  full: "{{date}} 'a les' {{time}}",
-  long: "{{date}} 'a les' {{time}}",
-  medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
-}
-
 var dateTimeFormats = {
   full: "{{date}} 'a les' {{time}}",
   long: "{{date}} 'a les' {{time}}",
@@ -48,16 +34,6 @@ var formatLong = {
 
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'full'
-  }),
-
-  dateTimeSingular: buildFormatLongFn({
-    formats: dateTimeFormatsSingular,
-    defaultWidth: 'full'
-  }),
-
-  dateTimePlural: buildFormatLongFn({
-    formats: dateTimeFormatsPlural,
     defaultWidth: 'full'
   })
 }
