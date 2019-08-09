@@ -54,8 +54,8 @@ export default function differenceInBusinessDays(
   var difference = daysOfInterval.filter(function(day) {
     return !isWeekend(day)
   })
-  // Substruct 1 because interval contains both starting and ending dates
-  var result = sign * (difference.length - 1)
+  // Subtract 1 if interval contains ending date that falls on a weekday
+  var result = sign * (difference.length - (isWeekend(dateLeft) ? 0 : 1))
 
   // Prevent negative zero
   return result === 0 ? 0 : result
