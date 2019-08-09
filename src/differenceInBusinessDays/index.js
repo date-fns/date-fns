@@ -46,10 +46,10 @@ export default function differenceInBusinessDays(
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return new Date(NaN)
 
-  var calenderDifference = differenceInCalendarDays(dateLeft, dateRight)
-  var sign = calenderDifference < 0 ? -1 : 1
+  var calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+  var sign = calendarDifference < 0 ? -1 : 1
 
-  var weeks = toInteger(calenderDifference / 7)
+  var weeks = toInteger(calendarDifference / 7)
 
   var result = weeks * 5
   dateRight = addDays(dateRight, weeks * 7)
