@@ -13,6 +13,16 @@ describe('differenceInBusinessDays', function() {
     assert(result === 135)
   })
 
+  it('can handle long ranges', function() {
+    this.timeout(500 /* 500 ms test timeout */)
+
+    var result = differenceInBusinessDays(
+      new Date(15000, 0 /* Jan */, 1),
+      new Date(2014, 0 /* Jan */, 1)
+    )
+    assert(result === 3387885)
+  })
+
   it('the same except given first date falls on a weekend', function() {
     var result = differenceInBusinessDays(
       new Date(2019, 6 /* Jul */, 20),

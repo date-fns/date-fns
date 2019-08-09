@@ -1,8 +1,10 @@
-import compareAsc from '../compareAsc/index.js'
-import eachDayOfInterval from '../eachDayOfInterval/index.js'
 import isValid from '../isValid/index.js'
 import isWeekend from '../isWeekend/index.js'
 import toDate from '../toDate/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import addDays from '../addDays/index.js'
+import isSameDay from '../isSameDay/index.js'
+import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name differenceInBusinessDays
@@ -44,19 +46,20 @@ export default function differenceInBusinessDays(
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return new Date(NaN)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var interval =
-    sign > 0
-      ? { start: dateRight, end: dateLeft }
-      : { start: dateLeft, end: dateRight }
+  var calenderDifference = differenceInCalendarDays(dateLeft, dateRight)
+  var sign = calenderDifference < 0 ? -1 : 1
 
-  var daysOfInterval = eachDayOfInterval(interval)
-  var difference = daysOfInterval.filter(function(day) {
-    return !isWeekend(day)
-  })
-  // Subtract 1 if interval contains ending date that falls on a weekday
-  var result = sign * (difference.length - (isWeekend(dateLeft) ? 0 : 1))
+  var weeks = toInteger(calenderDifference / 7)
 
-  // Prevent negative zero
+  var result = weeks * 5
+  dateRight = addDays(dateRight, weeks * 7)
+
+  // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
+  while (!isSameDay(dateLeft, dateRight)) {
+    // sign is used to account for both negative and positive differences
+    result += isWeekend(dateRight) ? 0 : sign
+    dateRight = addDays(dateRight, sign)
+  }
+
   return result === 0 ? 0 : result
 }
