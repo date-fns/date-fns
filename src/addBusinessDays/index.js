@@ -33,12 +33,17 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
   if (isNaN(amount)) return new Date(NaN)
 
   var hours = date.getHours()
-  var numWeekDays = 0
-  while (numWeekDays < amount) {
-    date.setDate(date.getDate() + 1)
-    date.setHours(hours)
-    if (!isWeekend(date)) numWeekDays++
+  var sign = amount < 0 ? -1 : 1
+
+  date.setDate(date.getDate() + toInteger(amount / 5) * 7)
+  amount %= 5 // to get remaining days not part of a full week
+
+  // only loops over remaining days or if day is a weekend, ensures a business day is returned
+  while (amount || isWeekend(date)) {
+    date.setDate(date.getDate() + sign)
+    if (!isWeekend(date)) amount -= sign
   }
 
+  date.setHours(hours)
   return date
 }
