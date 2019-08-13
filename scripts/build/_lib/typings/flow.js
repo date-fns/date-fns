@@ -15,22 +15,22 @@ const getFlowFPTypeAliases = (arity = 4) =>
     'type CurriedFn1<A, R> = <A>(a: A) => R',
 
     formatBlock`
-    type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
-      | <A, B>(a: A, b: B) => R
-  `,
+      type CurriedFn2<A, B, R> = <A>(a: A) => CurriedFn1<B, R>
+        | <A, B>(a: A, b: B) => R
+    `,
 
     formatBlock`
-    type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
-      | <A,B>(a: A, b: B) => CurriedFn1<C, R>
-      | <A,B,C>(a: A, b: B, c: C) => R
-  `,
+      type CurriedFn3<A, B, C, R> = <A>(a: A) => CurriedFn2<B, C, R>
+        | <A,B>(a: A, b: B) => CurriedFn1<C, R>
+        | <A,B,C>(a: A, b: B, c: C) => R
+    `,
 
     formatBlock`
-    type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
-      | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
-      | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
-      | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
-  `
+      type CurriedFn4<A, B, C, D, R> = <A>(a: A) => CurriedFn3<B, C, D, R>
+        | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
+        | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
+        | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
+    `
   ].slice(0, arity)
 
 function getFlowTypeAlias(type) {

@@ -18,34 +18,34 @@ const {
 const getTypeScriptFPInterfaces = (arity = 4) =>
   [
     formatBlock`
-    interface CurriedFn1<A, R> {
-      (a: A): R
-    }
-  `,
+      interface CurriedFn1<A, R> {
+        (a: A): R
+      }
+    `,
 
     formatBlock`
-    interface CurriedFn2<A, B, R> {
-      (a: A): CurriedFn1<B, R>
-      (a: A, b: B): R
-    }
-  `,
+      interface CurriedFn2<A, B, R> {
+        (a: A): CurriedFn1<B, R>
+        (a: A, b: B): R
+      }
+    `,
 
     formatBlock`
-    interface CurriedFn3<A, B, C, R> {
-      (a: A): CurriedFn2<B, C, R>
-      (a: A, b: B): CurriedFn1<C, R>
-      (a: A, b: B, c: C): R
-    }
-  `,
+      interface CurriedFn3<A, B, C, R> {
+        (a: A): CurriedFn2<B, C, R>
+        (a: A, b: B): CurriedFn1<C, R>
+        (a: A, b: B, c: C): R
+      }
+    `,
 
     formatBlock`
-    interface CurriedFn4<A, B, C, D, R> {
-      (a: A): CurriedFn3<B, C, D, R>
-      (a: A, b: B): CurriedFn2<C, D, R>
-      (a: A, b: B, c: C): CurriedFn1<D, R>
-      (a: A, b: B, c: C, d: D): R
-    }
-  `
+      interface CurriedFn4<A, B, C, D, R> {
+        (a: A): CurriedFn3<B, C, D, R>
+        (a: A, b: B): CurriedFn2<C, D, R>
+        (a: A, b: B, c: C): CurriedFn1<D, R>
+        (a: A, b: B, c: C, d: D): R
+      }
+    `
   ].slice(0, arity)
 
 function getTypeScriptTypeAlias(type) {
