@@ -8,3 +8,4 @@ docs.json
 .idea
 .vscode
 coverage
+test/ts/*.js
