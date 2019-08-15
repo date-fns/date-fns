@@ -14,8 +14,9 @@ describe('differenceInBusinessDays', function() {
   })
 
   it('can handle long ranges', function() {
-    this.timeout(500 /* 500 ms test timeout */)
-
+    if (typeof this.timeout === 'function') {
+      this.timeout(500 /* 500 ms test timeout */)
+    }
     var result = differenceInBusinessDays(
       new Date(15000, 0 /* Jan */, 1),
       new Date(2014, 0 /* Jan */, 1)

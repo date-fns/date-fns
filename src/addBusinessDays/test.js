@@ -16,7 +16,9 @@ describe('addBusinessDays', function() {
   })
 
   it('can handle a large number of business days', function() {
-    this.timeout(500 /* 500 ms test timeout */)
+    if (typeof this.timeout === 'function') {
+      this.timeout(500 /* 500 ms test timeout */)
+    }
 
     var result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
     assert.deepEqual(result, new Date(15000, 0 /* Jan */, 1))
