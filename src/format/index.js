@@ -348,6 +348,10 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     )
   }
 
+  if (!dirtyDate) {
+    return ''
+  }
+
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
