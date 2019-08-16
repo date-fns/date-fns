@@ -10,6 +10,20 @@ describe('addBusinessDays', function() {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
   })
 
+  it('handles negative amount', function() {
+    var result = addBusinessDays(new Date(2014, 8 /* Sep */, 15), -10)
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
+  })
+
+  it('can handle a large number of business days', function() {
+    if (typeof this.timeout === 'function') {
+      this.timeout(500 /* 500 ms test timeout */)
+    }
+
+    var result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
+    assert.deepEqual(result, new Date(15000, 0 /* Jan */, 1))
+  })
+
   it('accepts a timestamp', function() {
     var result = addBusinessDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
