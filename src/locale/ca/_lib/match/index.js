@@ -1,76 +1,88 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(è|er|on|er|rt)?/i
+var matchOrdinalNumberPattern = /^(\d+)(è|r|n|r|t)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(ac|dc|a|d)/i,
-  abbreviated: /^(a\.?\s?c\.?|a\.?\s?e\.?\s?c\.?|d\.?\s?c\.?|e\.?\s?c\.?)/i,
-  wide: /^(abans de crist|abans de la era com[uú]|despr[eé]s de crist|era com[uú])/i
+  narrow: /^(aC|dC)/i,
+  abbreviated: /^(a. de C.|d. de C.)/i,
+  wide: /^(abans de Crist|despr[eé]s de Crist)/i
 }
 var parseEraPatterns = {
-  any: [/^ac/i, /^dc/i],
-  wide: [
-    /^(abans de crist|abans de la era com[uú])/i,
-    /^(despr[eé]s de crist|era com[uú])/i
-  ]
+  narrow: [/^aC/i, /^dC/i],
+  abbreviated: [/^(a. de C.)/i, /^(d. de C.)/i],
+  wide: [/^(abans de Crist)/i, /^(despr[eé]s de Crist)/i]
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^T[1234]/i,
-  wide: /^[1234](è|er|on|er|rt)? trimestre/i
+  wide: /^[1234](è|r|n|r|t)? trimestre/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
 var matchMonthPatterns = {
-  narrow: /^[gfmajsond]/i,
-  abbreviated: /^(gen|febr|març|abr|maig|juny|jul|ag|set|oct|nov|des)/i,
+  narrow: /^(GN|FB|MÇ|AB|MG|JN|JL|AG|ST|OC|NV|DS)/i,
+  abbreviated: /^(gen.|febr.|març|abr.|maig|juny|jul.|ag.|set.|oct.|nov.|des.)/i,
   wide: /^(gener|febrer|març|abril|maig|juny|juliol|agost|setembre|octubre|novembre|desembre)/i
 }
 var parseMonthPatterns = {
   narrow: [
-    /^g/i,
-    /^f/i,
-    /^m/i,
-    /^a/i,
-    /^m/i,
-    /^j/i,
-    /^j/i,
-    /^a/i,
-    /^s/i,
-    /^o/i,
-    /^n/i,
-    /^d/i
+    /^GN/i,
+    /^FB/i,
+    /^MÇ/i,
+    /^AB/i,
+    /^MG/i,
+    /^JN/i,
+    /^JL/i,
+    /^AG/i,
+    /^ST/i,
+    /^OC/i,
+    /^NV/i,
+    /^DS/i
   ],
-  any: [
-    /^gen/i,
-    /^febr/i,
+  abbreviated: [
+    /^gen./i,
+    /^febr./i,
     /^març/i,
-    /^abr/i,
+    /^abr./i,
     /^maig/i,
     /^juny/i,
-    /^jul/i,
-    /^ag/i,
-    /^set/i,
-    /^oct/i,
-    /^nov/i,
-    /^des/i
+    /^jul./i,
+    /^ag./i,
+    /^set./i,
+    /^oct./i,
+    /^nov./i,
+    /^des./i
+  ],
+  wide: [
+    /^gener/i,
+    /^febrer/i,
+    /^març/i,
+    /^abril/i,
+    /^maig/i,
+    /^juny/i,
+    /^juliol/i,
+    /^agost/i,
+    /^setembre/i,
+    /^octubre/i,
+    /^novembre/i,
+    /^desembre/i
   ]
 }
 
 var matchDayPatterns = {
-  narrow: /^(dg|dl|dt|dm|dj|dv|ds)/i,
+  narrow: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
   short: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
-  abbreviated: /^(diu|dil|dima|dim|dij|div|dis)/i,
+  abbreviated: /^(dg\.|dl\.|dt\.|dm\.|dj\.|dv\.|ds\.)/i,
   wide: /^(diumenge|dilluns|dimarts|dimecres|dijous|divendres|dissabte)/i
 }
 var parseDayPatterns = {
-  narrow: [/^dg/i, /^dl/i, /^dt/i, /^dm/i, /^dj/i, /^dv/i, /^ds/i],
-  abbreviated: [/^diu/i, /^dil/i, /^dima/i, /^dim/i, /^dij/i, /^div/i, /^dis/i],
+  narrow: [/^dg./i, /^dl./i, /^dt./i, /^dm./i, /^dj./i, /^dv./i, /^ds./i],
+  abbreviated: [/^dg./i, /^dl./i, /^dt./i, /^dm./i, /^dj./i, /^dv./i, /^ds./i],
   wide: [
     /^diumenge/i,
     /^dilluns/i,
@@ -79,20 +91,20 @@ var parseDayPatterns = {
     /^dijous/i,
     /^divendres/i,
     /^disssabte/i
-  ],
-  any: [/^dg/i, /^dl/i, /^dt/i, /^dm/i, /^dj/i, /^dv/i, /^ds/i]
+  ]
 }
 
 var matchDayPeriodPatterns = {
   narrow: /^(a|p|mn|md|(del|de la) (matí|tarda|vespre|nit))/i,
-  any: /^([ap]\.?\s?m\.?|mitjanit|migdia|(del|de la) (matí|tarda|vespre|nit))/i
+  abbreviated: /^([ap]\.?\s?m\.?|mitjanit|migdia|(del|de la) (matí|tarda|vespre|nit))/i,
+  wide: /^(ante meridiem|post meridiem|mitjanit|migdia|(del|de la) (matí|tarda|vespre|nit))/i
 }
 var parseDayPeriodPatterns = {
   any: {
     am: /^a/i,
     pm: /^p/i,
-    midnight: /^mit/i,
-    noon: /^mig/i,
+    midnight: /^mitjanit/i,
+    noon: /^migdia/i,
     morning: /matí/i,
     afternoon: /tarda/i,
     evening: /vespre/i,
