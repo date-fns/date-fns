@@ -381,6 +381,10 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
         '\n'
       )}
     }
+
+    declare module 'date-fns' {
+      export default dateFns
+    }
   `
 
   const typingFile = formatTypeScriptFile`
