@@ -4159,2717 +4159,2717 @@ declare module 'date-fns/fp' {
 
 declare module 'date-fns/fp/addBusinessDays' {
   import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
+  export default addBusinessDays
 }
 
 declare module 'date-fns/fp/addDays' {
   import { addDays } from 'date-fns/fp'
-  export = addDays
+  export default addDays
 }
 
 declare module 'date-fns/fp/addHours' {
   import { addHours } from 'date-fns/fp'
-  export = addHours
+  export default addHours
 }
 
 declare module 'date-fns/fp/addISOWeekYears' {
   import { addISOWeekYears } from 'date-fns/fp'
-  export = addISOWeekYears
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/fp/addMilliseconds' {
   import { addMilliseconds } from 'date-fns/fp'
-  export = addMilliseconds
+  export default addMilliseconds
 }
 
 declare module 'date-fns/fp/addMinutes' {
   import { addMinutes } from 'date-fns/fp'
-  export = addMinutes
+  export default addMinutes
 }
 
 declare module 'date-fns/fp/addMonths' {
   import { addMonths } from 'date-fns/fp'
-  export = addMonths
+  export default addMonths
 }
 
 declare module 'date-fns/fp/addQuarters' {
   import { addQuarters } from 'date-fns/fp'
-  export = addQuarters
+  export default addQuarters
 }
 
 declare module 'date-fns/fp/addSeconds' {
   import { addSeconds } from 'date-fns/fp'
-  export = addSeconds
+  export default addSeconds
 }
 
 declare module 'date-fns/fp/addWeeks' {
   import { addWeeks } from 'date-fns/fp'
-  export = addWeeks
+  export default addWeeks
 }
 
 declare module 'date-fns/fp/addYears' {
   import { addYears } from 'date-fns/fp'
-  export = addYears
+  export default addYears
 }
 
 declare module 'date-fns/fp/areIntervalsOverlapping' {
   import { areIntervalsOverlapping } from 'date-fns/fp'
-  export = areIntervalsOverlapping
+  export default areIntervalsOverlapping
 }
 
 declare module 'date-fns/fp/closestIndexTo' {
   import { closestIndexTo } from 'date-fns/fp'
-  export = closestIndexTo
+  export default closestIndexTo
 }
 
 declare module 'date-fns/fp/closestTo' {
   import { closestTo } from 'date-fns/fp'
-  export = closestTo
+  export default closestTo
 }
 
 declare module 'date-fns/fp/compareAsc' {
   import { compareAsc } from 'date-fns/fp'
-  export = compareAsc
+  export default compareAsc
 }
 
 declare module 'date-fns/fp/compareDesc' {
   import { compareDesc } from 'date-fns/fp'
-  export = compareDesc
+  export default compareDesc
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays' {
   import { differenceInBusinessDays } from 'date-fns/fp'
-  export = differenceInBusinessDays
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarDays' {
   import { differenceInCalendarDays } from 'date-fns/fp'
-  export = differenceInCalendarDays
+  export default differenceInCalendarDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeeks' {
   import { differenceInCalendarISOWeeks } from 'date-fns/fp'
-  export = differenceInCalendarISOWeeks
+  export default differenceInCalendarISOWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeekYears' {
   import { differenceInCalendarISOWeekYears } from 'date-fns/fp'
-  export = differenceInCalendarISOWeekYears
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths' {
   import { differenceInCalendarMonths } from 'date-fns/fp'
-  export = differenceInCalendarMonths
+  export default differenceInCalendarMonths
 }
 
 declare module 'date-fns/fp/differenceInCalendarQuarters' {
   import { differenceInCalendarQuarters } from 'date-fns/fp'
-  export = differenceInCalendarQuarters
+  export default differenceInCalendarQuarters
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeks' {
   import { differenceInCalendarWeeks } from 'date-fns/fp'
-  export = differenceInCalendarWeeks
+  export default differenceInCalendarWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeksWithOptions' {
   import { differenceInCalendarWeeksWithOptions } from 'date-fns/fp'
-  export = differenceInCalendarWeeksWithOptions
+  export default differenceInCalendarWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarYears' {
   import { differenceInCalendarYears } from 'date-fns/fp'
-  export = differenceInCalendarYears
+  export default differenceInCalendarYears
 }
 
 declare module 'date-fns/fp/differenceInDays' {
   import { differenceInDays } from 'date-fns/fp'
-  export = differenceInDays
+  export default differenceInDays
 }
 
 declare module 'date-fns/fp/differenceInHours' {
   import { differenceInHours } from 'date-fns/fp'
-  export = differenceInHours
+  export default differenceInHours
 }
 
 declare module 'date-fns/fp/differenceInISOWeekYears' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
-  export = differenceInISOWeekYears
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds' {
   import { differenceInMilliseconds } from 'date-fns/fp'
-  export = differenceInMilliseconds
+  export default differenceInMilliseconds
 }
 
 declare module 'date-fns/fp/differenceInMinutes' {
   import { differenceInMinutes } from 'date-fns/fp'
-  export = differenceInMinutes
+  export default differenceInMinutes
 }
 
 declare module 'date-fns/fp/differenceInMonths' {
   import { differenceInMonths } from 'date-fns/fp'
-  export = differenceInMonths
+  export default differenceInMonths
 }
 
 declare module 'date-fns/fp/differenceInQuarters' {
   import { differenceInQuarters } from 'date-fns/fp'
-  export = differenceInQuarters
+  export default differenceInQuarters
 }
 
 declare module 'date-fns/fp/differenceInSeconds' {
   import { differenceInSeconds } from 'date-fns/fp'
-  export = differenceInSeconds
+  export default differenceInSeconds
 }
 
 declare module 'date-fns/fp/differenceInWeeks' {
   import { differenceInWeeks } from 'date-fns/fp'
-  export = differenceInWeeks
+  export default differenceInWeeks
 }
 
 declare module 'date-fns/fp/differenceInYears' {
   import { differenceInYears } from 'date-fns/fp'
-  export = differenceInYears
+  export default differenceInYears
 }
 
 declare module 'date-fns/fp/eachDayOfInterval' {
   import { eachDayOfInterval } from 'date-fns/fp'
-  export = eachDayOfInterval
+  export default eachDayOfInterval
 }
 
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachDayOfIntervalWithOptions
+  export default eachDayOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/eachWeekendOfInterval' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
-  export = eachWeekendOfInterval
+  export default eachWeekendOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekendOfMonth' {
   import { eachWeekendOfMonth } from 'date-fns/fp'
-  export = eachWeekendOfMonth
+  export default eachWeekendOfMonth
 }
 
 declare module 'date-fns/fp/eachWeekendOfYear' {
   import { eachWeekendOfYear } from 'date-fns/fp'
-  export = eachWeekendOfYear
+  export default eachWeekendOfYear
 }
 
 declare module 'date-fns/fp/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns/fp'
-  export = eachWeekOfInterval
+  export default eachWeekOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachWeekOfIntervalWithOptions
+  export default eachWeekOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/endOfDay' {
   import { endOfDay } from 'date-fns/fp'
-  export = endOfDay
+  export default endOfDay
 }
 
 declare module 'date-fns/fp/endOfDecade' {
   import { endOfDecade } from 'date-fns/fp'
-  export = endOfDecade
+  export default endOfDecade
 }
 
 declare module 'date-fns/fp/endOfDecadeWithOptions' {
   import { endOfDecadeWithOptions } from 'date-fns/fp'
-  export = endOfDecadeWithOptions
+  export default endOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/endOfHour' {
   import { endOfHour } from 'date-fns/fp'
-  export = endOfHour
+  export default endOfHour
 }
 
 declare module 'date-fns/fp/endOfISOWeek' {
   import { endOfISOWeek } from 'date-fns/fp'
-  export = endOfISOWeek
+  export default endOfISOWeek
 }
 
 declare module 'date-fns/fp/endOfISOWeekYear' {
   import { endOfISOWeekYear } from 'date-fns/fp'
-  export = endOfISOWeekYear
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/fp/endOfMinute' {
   import { endOfMinute } from 'date-fns/fp'
-  export = endOfMinute
+  export default endOfMinute
 }
 
 declare module 'date-fns/fp/endOfMonth' {
   import { endOfMonth } from 'date-fns/fp'
-  export = endOfMonth
+  export default endOfMonth
 }
 
 declare module 'date-fns/fp/endOfQuarter' {
   import { endOfQuarter } from 'date-fns/fp'
-  export = endOfQuarter
+  export default endOfQuarter
 }
 
 declare module 'date-fns/fp/endOfSecond' {
   import { endOfSecond } from 'date-fns/fp'
-  export = endOfSecond
+  export default endOfSecond
 }
 
 declare module 'date-fns/fp/endOfWeek' {
   import { endOfWeek } from 'date-fns/fp'
-  export = endOfWeek
+  export default endOfWeek
 }
 
 declare module 'date-fns/fp/endOfWeekWithOptions' {
   import { endOfWeekWithOptions } from 'date-fns/fp'
-  export = endOfWeekWithOptions
+  export default endOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/endOfYear' {
   import { endOfYear } from 'date-fns/fp'
-  export = endOfYear
+  export default endOfYear
 }
 
 declare module 'date-fns/fp/format' {
   import { format } from 'date-fns/fp'
-  export = format
+  export default format
 }
 
 declare module 'date-fns/fp/formatDistance' {
   import { formatDistance } from 'date-fns/fp'
-  export = formatDistance
+  export default formatDistance
 }
 
 declare module 'date-fns/fp/formatDistanceStrict' {
   import { formatDistanceStrict } from 'date-fns/fp'
-  export = formatDistanceStrict
+  export default formatDistanceStrict
 }
 
 declare module 'date-fns/fp/formatDistanceStrictWithOptions' {
   import { formatDistanceStrictWithOptions } from 'date-fns/fp'
-  export = formatDistanceStrictWithOptions
+  export default formatDistanceStrictWithOptions
 }
 
 declare module 'date-fns/fp/formatDistanceWithOptions' {
   import { formatDistanceWithOptions } from 'date-fns/fp'
-  export = formatDistanceWithOptions
+  export default formatDistanceWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative' {
   import { formatRelative } from 'date-fns/fp'
-  export = formatRelative
+  export default formatRelative
 }
 
 declare module 'date-fns/fp/formatRelativeWithOptions' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
-  export = formatRelativeWithOptions
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions' {
   import { formatWithOptions } from 'date-fns/fp'
-  export = formatWithOptions
+  export default formatWithOptions
 }
 
 declare module 'date-fns/fp/fromUnixTime' {
   import { fromUnixTime } from 'date-fns/fp'
-  export = fromUnixTime
+  export default fromUnixTime
 }
 
 declare module 'date-fns/fp/getDate' {
   import { getDate } from 'date-fns/fp'
-  export = getDate
+  export default getDate
 }
 
 declare module 'date-fns/fp/getDay' {
   import { getDay } from 'date-fns/fp'
-  export = getDay
+  export default getDay
 }
 
 declare module 'date-fns/fp/getDayOfYear' {
   import { getDayOfYear } from 'date-fns/fp'
-  export = getDayOfYear
+  export default getDayOfYear
 }
 
 declare module 'date-fns/fp/getDaysInMonth' {
   import { getDaysInMonth } from 'date-fns/fp'
-  export = getDaysInMonth
+  export default getDaysInMonth
 }
 
 declare module 'date-fns/fp/getDaysInYear' {
   import { getDaysInYear } from 'date-fns/fp'
-  export = getDaysInYear
+  export default getDaysInYear
 }
 
 declare module 'date-fns/fp/getDecade' {
   import { getDecade } from 'date-fns/fp'
-  export = getDecade
+  export default getDecade
 }
 
 declare module 'date-fns/fp/getHours' {
   import { getHours } from 'date-fns/fp'
-  export = getHours
+  export default getHours
 }
 
 declare module 'date-fns/fp/getISODay' {
   import { getISODay } from 'date-fns/fp'
-  export = getISODay
+  export default getISODay
 }
 
 declare module 'date-fns/fp/getISOWeek' {
   import { getISOWeek } from 'date-fns/fp'
-  export = getISOWeek
+  export default getISOWeek
 }
 
 declare module 'date-fns/fp/getISOWeeksInYear' {
   import { getISOWeeksInYear } from 'date-fns/fp'
-  export = getISOWeeksInYear
+  export default getISOWeeksInYear
 }
 
 declare module 'date-fns/fp/getISOWeekYear' {
   import { getISOWeekYear } from 'date-fns/fp'
-  export = getISOWeekYear
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/fp/getMilliseconds' {
   import { getMilliseconds } from 'date-fns/fp'
-  export = getMilliseconds
+  export default getMilliseconds
 }
 
 declare module 'date-fns/fp/getMinutes' {
   import { getMinutes } from 'date-fns/fp'
-  export = getMinutes
+  export default getMinutes
 }
 
 declare module 'date-fns/fp/getMonth' {
   import { getMonth } from 'date-fns/fp'
-  export = getMonth
+  export default getMonth
 }
 
 declare module 'date-fns/fp/getOverlappingDaysInIntervals' {
   import { getOverlappingDaysInIntervals } from 'date-fns/fp'
-  export = getOverlappingDaysInIntervals
+  export default getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/fp/getQuarter' {
   import { getQuarter } from 'date-fns/fp'
-  export = getQuarter
+  export default getQuarter
 }
 
 declare module 'date-fns/fp/getSeconds' {
   import { getSeconds } from 'date-fns/fp'
-  export = getSeconds
+  export default getSeconds
 }
 
 declare module 'date-fns/fp/getTime' {
   import { getTime } from 'date-fns/fp'
-  export = getTime
+  export default getTime
 }
 
 declare module 'date-fns/fp/getUnixTime' {
   import { getUnixTime } from 'date-fns/fp'
-  export = getUnixTime
+  export default getUnixTime
 }
 
 declare module 'date-fns/fp/getWeek' {
   import { getWeek } from 'date-fns/fp'
-  export = getWeek
+  export default getWeek
 }
 
 declare module 'date-fns/fp/getWeekOfMonth' {
   import { getWeekOfMonth } from 'date-fns/fp'
-  export = getWeekOfMonth
+  export default getWeekOfMonth
 }
 
 declare module 'date-fns/fp/getWeekOfMonthWithOptions' {
   import { getWeekOfMonthWithOptions } from 'date-fns/fp'
-  export = getWeekOfMonthWithOptions
+  export default getWeekOfMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeeksInMonth' {
   import { getWeeksInMonth } from 'date-fns/fp'
-  export = getWeeksInMonth
+  export default getWeeksInMonth
 }
 
 declare module 'date-fns/fp/getWeeksInMonthWithOptions' {
   import { getWeeksInMonthWithOptions } from 'date-fns/fp'
-  export = getWeeksInMonthWithOptions
+  export default getWeeksInMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeekWithOptions' {
   import { getWeekWithOptions } from 'date-fns/fp'
-  export = getWeekWithOptions
+  export default getWeekWithOptions
 }
 
 declare module 'date-fns/fp/getWeekYear' {
   import { getWeekYear } from 'date-fns/fp'
-  export = getWeekYear
+  export default getWeekYear
 }
 
 declare module 'date-fns/fp/getWeekYearWithOptions' {
   import { getWeekYearWithOptions } from 'date-fns/fp'
-  export = getWeekYearWithOptions
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear' {
   import { getYear } from 'date-fns/fp'
-  export = getYear
+  export default getYear
 }
 
 declare module 'date-fns/fp/isAfter' {
   import { isAfter } from 'date-fns/fp'
-  export = isAfter
+  export default isAfter
 }
 
 declare module 'date-fns/fp/isBefore' {
   import { isBefore } from 'date-fns/fp'
-  export = isBefore
+  export default isBefore
 }
 
 declare module 'date-fns/fp/isDate' {
   import { isDate } from 'date-fns/fp'
-  export = isDate
+  export default isDate
 }
 
 declare module 'date-fns/fp/isEqual' {
   import { isEqual } from 'date-fns/fp'
-  export = isEqual
+  export default isEqual
 }
 
 declare module 'date-fns/fp/isFirstDayOfMonth' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
-  export = isFirstDayOfMonth
+  export default isFirstDayOfMonth
 }
 
 declare module 'date-fns/fp/isFriday' {
   import { isFriday } from 'date-fns/fp'
-  export = isFriday
+  export default isFriday
 }
 
 declare module 'date-fns/fp/isLastDayOfMonth' {
   import { isLastDayOfMonth } from 'date-fns/fp'
-  export = isLastDayOfMonth
+  export default isLastDayOfMonth
 }
 
 declare module 'date-fns/fp/isLeapYear' {
   import { isLeapYear } from 'date-fns/fp'
-  export = isLeapYear
+  export default isLeapYear
 }
 
 declare module 'date-fns/fp/isMonday' {
   import { isMonday } from 'date-fns/fp'
-  export = isMonday
+  export default isMonday
 }
 
 declare module 'date-fns/fp/isSameDay' {
   import { isSameDay } from 'date-fns/fp'
-  export = isSameDay
+  export default isSameDay
 }
 
 declare module 'date-fns/fp/isSameHour' {
   import { isSameHour } from 'date-fns/fp'
-  export = isSameHour
+  export default isSameHour
 }
 
 declare module 'date-fns/fp/isSameISOWeek' {
   import { isSameISOWeek } from 'date-fns/fp'
-  export = isSameISOWeek
+  export default isSameISOWeek
 }
 
 declare module 'date-fns/fp/isSameISOWeekYear' {
   import { isSameISOWeekYear } from 'date-fns/fp'
-  export = isSameISOWeekYear
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/fp/isSameMinute' {
   import { isSameMinute } from 'date-fns/fp'
-  export = isSameMinute
+  export default isSameMinute
 }
 
 declare module 'date-fns/fp/isSameMonth' {
   import { isSameMonth } from 'date-fns/fp'
-  export = isSameMonth
+  export default isSameMonth
 }
 
 declare module 'date-fns/fp/isSameQuarter' {
   import { isSameQuarter } from 'date-fns/fp'
-  export = isSameQuarter
+  export default isSameQuarter
 }
 
 declare module 'date-fns/fp/isSameSecond' {
   import { isSameSecond } from 'date-fns/fp'
-  export = isSameSecond
+  export default isSameSecond
 }
 
 declare module 'date-fns/fp/isSameWeek' {
   import { isSameWeek } from 'date-fns/fp'
-  export = isSameWeek
+  export default isSameWeek
 }
 
 declare module 'date-fns/fp/isSameWeekWithOptions' {
   import { isSameWeekWithOptions } from 'date-fns/fp'
-  export = isSameWeekWithOptions
+  export default isSameWeekWithOptions
 }
 
 declare module 'date-fns/fp/isSameYear' {
   import { isSameYear } from 'date-fns/fp'
-  export = isSameYear
+  export default isSameYear
 }
 
 declare module 'date-fns/fp/isSaturday' {
   import { isSaturday } from 'date-fns/fp'
-  export = isSaturday
+  export default isSaturday
 }
 
 declare module 'date-fns/fp/isSunday' {
   import { isSunday } from 'date-fns/fp'
-  export = isSunday
+  export default isSunday
 }
 
 declare module 'date-fns/fp/isThursday' {
   import { isThursday } from 'date-fns/fp'
-  export = isThursday
+  export default isThursday
 }
 
 declare module 'date-fns/fp/isTuesday' {
   import { isTuesday } from 'date-fns/fp'
-  export = isTuesday
+  export default isTuesday
 }
 
 declare module 'date-fns/fp/isValid' {
   import { isValid } from 'date-fns/fp'
-  export = isValid
+  export default isValid
 }
 
 declare module 'date-fns/fp/isWednesday' {
   import { isWednesday } from 'date-fns/fp'
-  export = isWednesday
+  export default isWednesday
 }
 
 declare module 'date-fns/fp/isWeekend' {
   import { isWeekend } from 'date-fns/fp'
-  export = isWeekend
+  export default isWeekend
 }
 
 declare module 'date-fns/fp/isWithinInterval' {
   import { isWithinInterval } from 'date-fns/fp'
-  export = isWithinInterval
+  export default isWithinInterval
 }
 
 declare module 'date-fns/fp/lastDayOfDecade' {
   import { lastDayOfDecade } from 'date-fns/fp'
-  export = lastDayOfDecade
+  export default lastDayOfDecade
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeek' {
   import { lastDayOfISOWeek } from 'date-fns/fp'
-  export = lastDayOfISOWeek
+  export default lastDayOfISOWeek
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeekYear' {
   import { lastDayOfISOWeekYear } from 'date-fns/fp'
-  export = lastDayOfISOWeekYear
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/fp/lastDayOfMonth' {
   import { lastDayOfMonth } from 'date-fns/fp'
-  export = lastDayOfMonth
+  export default lastDayOfMonth
 }
 
 declare module 'date-fns/fp/lastDayOfQuarter' {
   import { lastDayOfQuarter } from 'date-fns/fp'
-  export = lastDayOfQuarter
+  export default lastDayOfQuarter
 }
 
 declare module 'date-fns/fp/lastDayOfQuarterWithOptions' {
   import { lastDayOfQuarterWithOptions } from 'date-fns/fp'
-  export = lastDayOfQuarterWithOptions
+  export default lastDayOfQuarterWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfWeek' {
   import { lastDayOfWeek } from 'date-fns/fp'
-  export = lastDayOfWeek
+  export default lastDayOfWeek
 }
 
 declare module 'date-fns/fp/lastDayOfWeekWithOptions' {
   import { lastDayOfWeekWithOptions } from 'date-fns/fp'
-  export = lastDayOfWeekWithOptions
+  export default lastDayOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfYear' {
   import { lastDayOfYear } from 'date-fns/fp'
-  export = lastDayOfYear
+  export default lastDayOfYear
 }
 
 declare module 'date-fns/fp/lightFormat' {
   import { lightFormat } from 'date-fns/fp'
-  export = lightFormat
+  export default lightFormat
 }
 
 declare module 'date-fns/fp/max' {
   import { max } from 'date-fns/fp'
-  export = max
+  export default max
 }
 
 declare module 'date-fns/fp/min' {
   import { min } from 'date-fns/fp'
-  export = min
+  export default min
 }
 
 declare module 'date-fns/fp/parse' {
   import { parse } from 'date-fns/fp'
-  export = parse
+  export default parse
 }
 
 declare module 'date-fns/fp/parseISO' {
   import { parseISO } from 'date-fns/fp'
-  export = parseISO
+  export default parseISO
 }
 
 declare module 'date-fns/fp/parseISOWithOptions' {
   import { parseISOWithOptions } from 'date-fns/fp'
-  export = parseISOWithOptions
+  export default parseISOWithOptions
 }
 
 declare module 'date-fns/fp/parseWithOptions' {
   import { parseWithOptions } from 'date-fns/fp'
-  export = parseWithOptions
+  export default parseWithOptions
 }
 
 declare module 'date-fns/fp/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/fp'
-  export = roundToNearestMinutes
+  export default roundToNearestMinutes
 }
 
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
-  export = roundToNearestMinutesWithOptions
+  export default roundToNearestMinutesWithOptions
 }
 
 declare module 'date-fns/fp/setDate' {
   import { setDate } from 'date-fns/fp'
-  export = setDate
+  export default setDate
 }
 
 declare module 'date-fns/fp/setDay' {
   import { setDay } from 'date-fns/fp'
-  export = setDay
+  export default setDay
 }
 
 declare module 'date-fns/fp/setDayOfYear' {
   import { setDayOfYear } from 'date-fns/fp'
-  export = setDayOfYear
+  export default setDayOfYear
 }
 
 declare module 'date-fns/fp/setDayWithOptions' {
   import { setDayWithOptions } from 'date-fns/fp'
-  export = setDayWithOptions
+  export default setDayWithOptions
 }
 
 declare module 'date-fns/fp/setHours' {
   import { setHours } from 'date-fns/fp'
-  export = setHours
+  export default setHours
 }
 
 declare module 'date-fns/fp/setISODay' {
   import { setISODay } from 'date-fns/fp'
-  export = setISODay
+  export default setISODay
 }
 
 declare module 'date-fns/fp/setISOWeek' {
   import { setISOWeek } from 'date-fns/fp'
-  export = setISOWeek
+  export default setISOWeek
 }
 
 declare module 'date-fns/fp/setISOWeekYear' {
   import { setISOWeekYear } from 'date-fns/fp'
-  export = setISOWeekYear
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/fp/setMilliseconds' {
   import { setMilliseconds } from 'date-fns/fp'
-  export = setMilliseconds
+  export default setMilliseconds
 }
 
 declare module 'date-fns/fp/setMinutes' {
   import { setMinutes } from 'date-fns/fp'
-  export = setMinutes
+  export default setMinutes
 }
 
 declare module 'date-fns/fp/setMonth' {
   import { setMonth } from 'date-fns/fp'
-  export = setMonth
+  export default setMonth
 }
 
 declare module 'date-fns/fp/setQuarter' {
   import { setQuarter } from 'date-fns/fp'
-  export = setQuarter
+  export default setQuarter
 }
 
 declare module 'date-fns/fp/setSeconds' {
   import { setSeconds } from 'date-fns/fp'
-  export = setSeconds
+  export default setSeconds
 }
 
 declare module 'date-fns/fp/setWeek' {
   import { setWeek } from 'date-fns/fp'
-  export = setWeek
+  export default setWeek
 }
 
 declare module 'date-fns/fp/setWeekWithOptions' {
   import { setWeekWithOptions } from 'date-fns/fp'
-  export = setWeekWithOptions
+  export default setWeekWithOptions
 }
 
 declare module 'date-fns/fp/setWeekYear' {
   import { setWeekYear } from 'date-fns/fp'
-  export = setWeekYear
+  export default setWeekYear
 }
 
 declare module 'date-fns/fp/setWeekYearWithOptions' {
   import { setWeekYearWithOptions } from 'date-fns/fp'
-  export = setWeekYearWithOptions
+  export default setWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setYear' {
   import { setYear } from 'date-fns/fp'
-  export = setYear
+  export default setYear
 }
 
 declare module 'date-fns/fp/startOfDay' {
   import { startOfDay } from 'date-fns/fp'
-  export = startOfDay
+  export default startOfDay
 }
 
 declare module 'date-fns/fp/startOfDecade' {
   import { startOfDecade } from 'date-fns/fp'
-  export = startOfDecade
+  export default startOfDecade
 }
 
 declare module 'date-fns/fp/startOfHour' {
   import { startOfHour } from 'date-fns/fp'
-  export = startOfHour
+  export default startOfHour
 }
 
 declare module 'date-fns/fp/startOfISOWeek' {
   import { startOfISOWeek } from 'date-fns/fp'
-  export = startOfISOWeek
+  export default startOfISOWeek
 }
 
 declare module 'date-fns/fp/startOfISOWeekYear' {
   import { startOfISOWeekYear } from 'date-fns/fp'
-  export = startOfISOWeekYear
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/fp/startOfMinute' {
   import { startOfMinute } from 'date-fns/fp'
-  export = startOfMinute
+  export default startOfMinute
 }
 
 declare module 'date-fns/fp/startOfMonth' {
   import { startOfMonth } from 'date-fns/fp'
-  export = startOfMonth
+  export default startOfMonth
 }
 
 declare module 'date-fns/fp/startOfQuarter' {
   import { startOfQuarter } from 'date-fns/fp'
-  export = startOfQuarter
+  export default startOfQuarter
 }
 
 declare module 'date-fns/fp/startOfSecond' {
   import { startOfSecond } from 'date-fns/fp'
-  export = startOfSecond
+  export default startOfSecond
 }
 
 declare module 'date-fns/fp/startOfWeek' {
   import { startOfWeek } from 'date-fns/fp'
-  export = startOfWeek
+  export default startOfWeek
 }
 
 declare module 'date-fns/fp/startOfWeekWithOptions' {
   import { startOfWeekWithOptions } from 'date-fns/fp'
-  export = startOfWeekWithOptions
+  export default startOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/startOfWeekYear' {
   import { startOfWeekYear } from 'date-fns/fp'
-  export = startOfWeekYear
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/fp/startOfWeekYearWithOptions' {
   import { startOfWeekYearWithOptions } from 'date-fns/fp'
-  export = startOfWeekYearWithOptions
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear' {
   import { startOfYear } from 'date-fns/fp'
-  export = startOfYear
+  export default startOfYear
 }
 
 declare module 'date-fns/fp/subDays' {
   import { subDays } from 'date-fns/fp'
-  export = subDays
+  export default subDays
 }
 
 declare module 'date-fns/fp/subHours' {
   import { subHours } from 'date-fns/fp'
-  export = subHours
+  export default subHours
 }
 
 declare module 'date-fns/fp/subISOWeekYears' {
   import { subISOWeekYears } from 'date-fns/fp'
-  export = subISOWeekYears
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/fp/subMilliseconds' {
   import { subMilliseconds } from 'date-fns/fp'
-  export = subMilliseconds
+  export default subMilliseconds
 }
 
 declare module 'date-fns/fp/subMinutes' {
   import { subMinutes } from 'date-fns/fp'
-  export = subMinutes
+  export default subMinutes
 }
 
 declare module 'date-fns/fp/subMonths' {
   import { subMonths } from 'date-fns/fp'
-  export = subMonths
+  export default subMonths
 }
 
 declare module 'date-fns/fp/subQuarters' {
   import { subQuarters } from 'date-fns/fp'
-  export = subQuarters
+  export default subQuarters
 }
 
 declare module 'date-fns/fp/subSeconds' {
   import { subSeconds } from 'date-fns/fp'
-  export = subSeconds
+  export default subSeconds
 }
 
 declare module 'date-fns/fp/subWeeks' {
   import { subWeeks } from 'date-fns/fp'
-  export = subWeeks
+  export default subWeeks
 }
 
 declare module 'date-fns/fp/subYears' {
   import { subYears } from 'date-fns/fp'
-  export = subYears
+  export default subYears
 }
 
 declare module 'date-fns/fp/toDate' {
   import { toDate } from 'date-fns/fp'
-  export = toDate
+  export default toDate
 }
 
 declare module 'date-fns/fp/addBusinessDays/index' {
   import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
+  export default addBusinessDays
 }
 
 declare module 'date-fns/fp/addDays/index' {
   import { addDays } from 'date-fns/fp'
-  export = addDays
+  export default addDays
 }
 
 declare module 'date-fns/fp/addHours/index' {
   import { addHours } from 'date-fns/fp'
-  export = addHours
+  export default addHours
 }
 
 declare module 'date-fns/fp/addISOWeekYears/index' {
   import { addISOWeekYears } from 'date-fns/fp'
-  export = addISOWeekYears
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/fp/addMilliseconds/index' {
   import { addMilliseconds } from 'date-fns/fp'
-  export = addMilliseconds
+  export default addMilliseconds
 }
 
 declare module 'date-fns/fp/addMinutes/index' {
   import { addMinutes } from 'date-fns/fp'
-  export = addMinutes
+  export default addMinutes
 }
 
 declare module 'date-fns/fp/addMonths/index' {
   import { addMonths } from 'date-fns/fp'
-  export = addMonths
+  export default addMonths
 }
 
 declare module 'date-fns/fp/addQuarters/index' {
   import { addQuarters } from 'date-fns/fp'
-  export = addQuarters
+  export default addQuarters
 }
 
 declare module 'date-fns/fp/addSeconds/index' {
   import { addSeconds } from 'date-fns/fp'
-  export = addSeconds
+  export default addSeconds
 }
 
 declare module 'date-fns/fp/addWeeks/index' {
   import { addWeeks } from 'date-fns/fp'
-  export = addWeeks
+  export default addWeeks
 }
 
 declare module 'date-fns/fp/addYears/index' {
   import { addYears } from 'date-fns/fp'
-  export = addYears
+  export default addYears
 }
 
 declare module 'date-fns/fp/areIntervalsOverlapping/index' {
   import { areIntervalsOverlapping } from 'date-fns/fp'
-  export = areIntervalsOverlapping
+  export default areIntervalsOverlapping
 }
 
 declare module 'date-fns/fp/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/fp'
-  export = closestIndexTo
+  export default closestIndexTo
 }
 
 declare module 'date-fns/fp/closestTo/index' {
   import { closestTo } from 'date-fns/fp'
-  export = closestTo
+  export default closestTo
 }
 
 declare module 'date-fns/fp/compareAsc/index' {
   import { compareAsc } from 'date-fns/fp'
-  export = compareAsc
+  export default compareAsc
 }
 
 declare module 'date-fns/fp/compareDesc/index' {
   import { compareDesc } from 'date-fns/fp'
-  export = compareDesc
+  export default compareDesc
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays/index' {
   import { differenceInBusinessDays } from 'date-fns/fp'
-  export = differenceInBusinessDays
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarDays/index' {
   import { differenceInCalendarDays } from 'date-fns/fp'
-  export = differenceInCalendarDays
+  export default differenceInCalendarDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeeks/index' {
   import { differenceInCalendarISOWeeks } from 'date-fns/fp'
-  export = differenceInCalendarISOWeeks
+  export default differenceInCalendarISOWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeekYears/index' {
   import { differenceInCalendarISOWeekYears } from 'date-fns/fp'
-  export = differenceInCalendarISOWeekYears
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths/index' {
   import { differenceInCalendarMonths } from 'date-fns/fp'
-  export = differenceInCalendarMonths
+  export default differenceInCalendarMonths
 }
 
 declare module 'date-fns/fp/differenceInCalendarQuarters/index' {
   import { differenceInCalendarQuarters } from 'date-fns/fp'
-  export = differenceInCalendarQuarters
+  export default differenceInCalendarQuarters
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeks/index' {
   import { differenceInCalendarWeeks } from 'date-fns/fp'
-  export = differenceInCalendarWeeks
+  export default differenceInCalendarWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeksWithOptions/index' {
   import { differenceInCalendarWeeksWithOptions } from 'date-fns/fp'
-  export = differenceInCalendarWeeksWithOptions
+  export default differenceInCalendarWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarYears/index' {
   import { differenceInCalendarYears } from 'date-fns/fp'
-  export = differenceInCalendarYears
+  export default differenceInCalendarYears
 }
 
 declare module 'date-fns/fp/differenceInDays/index' {
   import { differenceInDays } from 'date-fns/fp'
-  export = differenceInDays
+  export default differenceInDays
 }
 
 declare module 'date-fns/fp/differenceInHours/index' {
   import { differenceInHours } from 'date-fns/fp'
-  export = differenceInHours
+  export default differenceInHours
 }
 
 declare module 'date-fns/fp/differenceInISOWeekYears/index' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
-  export = differenceInISOWeekYears
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds/index' {
   import { differenceInMilliseconds } from 'date-fns/fp'
-  export = differenceInMilliseconds
+  export default differenceInMilliseconds
 }
 
 declare module 'date-fns/fp/differenceInMinutes/index' {
   import { differenceInMinutes } from 'date-fns/fp'
-  export = differenceInMinutes
+  export default differenceInMinutes
 }
 
 declare module 'date-fns/fp/differenceInMonths/index' {
   import { differenceInMonths } from 'date-fns/fp'
-  export = differenceInMonths
+  export default differenceInMonths
 }
 
 declare module 'date-fns/fp/differenceInQuarters/index' {
   import { differenceInQuarters } from 'date-fns/fp'
-  export = differenceInQuarters
+  export default differenceInQuarters
 }
 
 declare module 'date-fns/fp/differenceInSeconds/index' {
   import { differenceInSeconds } from 'date-fns/fp'
-  export = differenceInSeconds
+  export default differenceInSeconds
 }
 
 declare module 'date-fns/fp/differenceInWeeks/index' {
   import { differenceInWeeks } from 'date-fns/fp'
-  export = differenceInWeeks
+  export default differenceInWeeks
 }
 
 declare module 'date-fns/fp/differenceInYears/index' {
   import { differenceInYears } from 'date-fns/fp'
-  export = differenceInYears
+  export default differenceInYears
 }
 
 declare module 'date-fns/fp/eachDayOfInterval/index' {
   import { eachDayOfInterval } from 'date-fns/fp'
-  export = eachDayOfInterval
+  export default eachDayOfInterval
 }
 
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachDayOfIntervalWithOptions
+  export default eachDayOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
-  export = eachWeekendOfInterval
+  export default eachWeekendOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekendOfMonth/index' {
   import { eachWeekendOfMonth } from 'date-fns/fp'
-  export = eachWeekendOfMonth
+  export default eachWeekendOfMonth
 }
 
 declare module 'date-fns/fp/eachWeekendOfYear/index' {
   import { eachWeekendOfYear } from 'date-fns/fp'
-  export = eachWeekendOfYear
+  export default eachWeekendOfYear
 }
 
 declare module 'date-fns/fp/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns/fp'
-  export = eachWeekOfInterval
+  export default eachWeekOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachWeekOfIntervalWithOptions
+  export default eachWeekOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/endOfDay/index' {
   import { endOfDay } from 'date-fns/fp'
-  export = endOfDay
+  export default endOfDay
 }
 
 declare module 'date-fns/fp/endOfDecade/index' {
   import { endOfDecade } from 'date-fns/fp'
-  export = endOfDecade
+  export default endOfDecade
 }
 
 declare module 'date-fns/fp/endOfDecadeWithOptions/index' {
   import { endOfDecadeWithOptions } from 'date-fns/fp'
-  export = endOfDecadeWithOptions
+  export default endOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/endOfHour/index' {
   import { endOfHour } from 'date-fns/fp'
-  export = endOfHour
+  export default endOfHour
 }
 
 declare module 'date-fns/fp/endOfISOWeek/index' {
   import { endOfISOWeek } from 'date-fns/fp'
-  export = endOfISOWeek
+  export default endOfISOWeek
 }
 
 declare module 'date-fns/fp/endOfISOWeekYear/index' {
   import { endOfISOWeekYear } from 'date-fns/fp'
-  export = endOfISOWeekYear
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/fp/endOfMinute/index' {
   import { endOfMinute } from 'date-fns/fp'
-  export = endOfMinute
+  export default endOfMinute
 }
 
 declare module 'date-fns/fp/endOfMonth/index' {
   import { endOfMonth } from 'date-fns/fp'
-  export = endOfMonth
+  export default endOfMonth
 }
 
 declare module 'date-fns/fp/endOfQuarter/index' {
   import { endOfQuarter } from 'date-fns/fp'
-  export = endOfQuarter
+  export default endOfQuarter
 }
 
 declare module 'date-fns/fp/endOfSecond/index' {
   import { endOfSecond } from 'date-fns/fp'
-  export = endOfSecond
+  export default endOfSecond
 }
 
 declare module 'date-fns/fp/endOfWeek/index' {
   import { endOfWeek } from 'date-fns/fp'
-  export = endOfWeek
+  export default endOfWeek
 }
 
 declare module 'date-fns/fp/endOfWeekWithOptions/index' {
   import { endOfWeekWithOptions } from 'date-fns/fp'
-  export = endOfWeekWithOptions
+  export default endOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/endOfYear/index' {
   import { endOfYear } from 'date-fns/fp'
-  export = endOfYear
+  export default endOfYear
 }
 
 declare module 'date-fns/fp/format/index' {
   import { format } from 'date-fns/fp'
-  export = format
+  export default format
 }
 
 declare module 'date-fns/fp/formatDistance/index' {
   import { formatDistance } from 'date-fns/fp'
-  export = formatDistance
+  export default formatDistance
 }
 
 declare module 'date-fns/fp/formatDistanceStrict/index' {
   import { formatDistanceStrict } from 'date-fns/fp'
-  export = formatDistanceStrict
+  export default formatDistanceStrict
 }
 
 declare module 'date-fns/fp/formatDistanceStrictWithOptions/index' {
   import { formatDistanceStrictWithOptions } from 'date-fns/fp'
-  export = formatDistanceStrictWithOptions
+  export default formatDistanceStrictWithOptions
 }
 
 declare module 'date-fns/fp/formatDistanceWithOptions/index' {
   import { formatDistanceWithOptions } from 'date-fns/fp'
-  export = formatDistanceWithOptions
+  export default formatDistanceWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative/index' {
   import { formatRelative } from 'date-fns/fp'
-  export = formatRelative
+  export default formatRelative
 }
 
 declare module 'date-fns/fp/formatRelativeWithOptions/index' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
-  export = formatRelativeWithOptions
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions/index' {
   import { formatWithOptions } from 'date-fns/fp'
-  export = formatWithOptions
+  export default formatWithOptions
 }
 
 declare module 'date-fns/fp/fromUnixTime/index' {
   import { fromUnixTime } from 'date-fns/fp'
-  export = fromUnixTime
+  export default fromUnixTime
 }
 
 declare module 'date-fns/fp/getDate/index' {
   import { getDate } from 'date-fns/fp'
-  export = getDate
+  export default getDate
 }
 
 declare module 'date-fns/fp/getDay/index' {
   import { getDay } from 'date-fns/fp'
-  export = getDay
+  export default getDay
 }
 
 declare module 'date-fns/fp/getDayOfYear/index' {
   import { getDayOfYear } from 'date-fns/fp'
-  export = getDayOfYear
+  export default getDayOfYear
 }
 
 declare module 'date-fns/fp/getDaysInMonth/index' {
   import { getDaysInMonth } from 'date-fns/fp'
-  export = getDaysInMonth
+  export default getDaysInMonth
 }
 
 declare module 'date-fns/fp/getDaysInYear/index' {
   import { getDaysInYear } from 'date-fns/fp'
-  export = getDaysInYear
+  export default getDaysInYear
 }
 
 declare module 'date-fns/fp/getDecade/index' {
   import { getDecade } from 'date-fns/fp'
-  export = getDecade
+  export default getDecade
 }
 
 declare module 'date-fns/fp/getHours/index' {
   import { getHours } from 'date-fns/fp'
-  export = getHours
+  export default getHours
 }
 
 declare module 'date-fns/fp/getISODay/index' {
   import { getISODay } from 'date-fns/fp'
-  export = getISODay
+  export default getISODay
 }
 
 declare module 'date-fns/fp/getISOWeek/index' {
   import { getISOWeek } from 'date-fns/fp'
-  export = getISOWeek
+  export default getISOWeek
 }
 
 declare module 'date-fns/fp/getISOWeeksInYear/index' {
   import { getISOWeeksInYear } from 'date-fns/fp'
-  export = getISOWeeksInYear
+  export default getISOWeeksInYear
 }
 
 declare module 'date-fns/fp/getISOWeekYear/index' {
   import { getISOWeekYear } from 'date-fns/fp'
-  export = getISOWeekYear
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/fp/getMilliseconds/index' {
   import { getMilliseconds } from 'date-fns/fp'
-  export = getMilliseconds
+  export default getMilliseconds
 }
 
 declare module 'date-fns/fp/getMinutes/index' {
   import { getMinutes } from 'date-fns/fp'
-  export = getMinutes
+  export default getMinutes
 }
 
 declare module 'date-fns/fp/getMonth/index' {
   import { getMonth } from 'date-fns/fp'
-  export = getMonth
+  export default getMonth
 }
 
 declare module 'date-fns/fp/getOverlappingDaysInIntervals/index' {
   import { getOverlappingDaysInIntervals } from 'date-fns/fp'
-  export = getOverlappingDaysInIntervals
+  export default getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/fp/getQuarter/index' {
   import { getQuarter } from 'date-fns/fp'
-  export = getQuarter
+  export default getQuarter
 }
 
 declare module 'date-fns/fp/getSeconds/index' {
   import { getSeconds } from 'date-fns/fp'
-  export = getSeconds
+  export default getSeconds
 }
 
 declare module 'date-fns/fp/getTime/index' {
   import { getTime } from 'date-fns/fp'
-  export = getTime
+  export default getTime
 }
 
 declare module 'date-fns/fp/getUnixTime/index' {
   import { getUnixTime } from 'date-fns/fp'
-  export = getUnixTime
+  export default getUnixTime
 }
 
 declare module 'date-fns/fp/getWeek/index' {
   import { getWeek } from 'date-fns/fp'
-  export = getWeek
+  export default getWeek
 }
 
 declare module 'date-fns/fp/getWeekOfMonth/index' {
   import { getWeekOfMonth } from 'date-fns/fp'
-  export = getWeekOfMonth
+  export default getWeekOfMonth
 }
 
 declare module 'date-fns/fp/getWeekOfMonthWithOptions/index' {
   import { getWeekOfMonthWithOptions } from 'date-fns/fp'
-  export = getWeekOfMonthWithOptions
+  export default getWeekOfMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeeksInMonth/index' {
   import { getWeeksInMonth } from 'date-fns/fp'
-  export = getWeeksInMonth
+  export default getWeeksInMonth
 }
 
 declare module 'date-fns/fp/getWeeksInMonthWithOptions/index' {
   import { getWeeksInMonthWithOptions } from 'date-fns/fp'
-  export = getWeeksInMonthWithOptions
+  export default getWeeksInMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeekWithOptions/index' {
   import { getWeekWithOptions } from 'date-fns/fp'
-  export = getWeekWithOptions
+  export default getWeekWithOptions
 }
 
 declare module 'date-fns/fp/getWeekYear/index' {
   import { getWeekYear } from 'date-fns/fp'
-  export = getWeekYear
+  export default getWeekYear
 }
 
 declare module 'date-fns/fp/getWeekYearWithOptions/index' {
   import { getWeekYearWithOptions } from 'date-fns/fp'
-  export = getWeekYearWithOptions
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear/index' {
   import { getYear } from 'date-fns/fp'
-  export = getYear
+  export default getYear
 }
 
 declare module 'date-fns/fp/isAfter/index' {
   import { isAfter } from 'date-fns/fp'
-  export = isAfter
+  export default isAfter
 }
 
 declare module 'date-fns/fp/isBefore/index' {
   import { isBefore } from 'date-fns/fp'
-  export = isBefore
+  export default isBefore
 }
 
 declare module 'date-fns/fp/isDate/index' {
   import { isDate } from 'date-fns/fp'
-  export = isDate
+  export default isDate
 }
 
 declare module 'date-fns/fp/isEqual/index' {
   import { isEqual } from 'date-fns/fp'
-  export = isEqual
+  export default isEqual
 }
 
 declare module 'date-fns/fp/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
-  export = isFirstDayOfMonth
+  export default isFirstDayOfMonth
 }
 
 declare module 'date-fns/fp/isFriday/index' {
   import { isFriday } from 'date-fns/fp'
-  export = isFriday
+  export default isFriday
 }
 
 declare module 'date-fns/fp/isLastDayOfMonth/index' {
   import { isLastDayOfMonth } from 'date-fns/fp'
-  export = isLastDayOfMonth
+  export default isLastDayOfMonth
 }
 
 declare module 'date-fns/fp/isLeapYear/index' {
   import { isLeapYear } from 'date-fns/fp'
-  export = isLeapYear
+  export default isLeapYear
 }
 
 declare module 'date-fns/fp/isMonday/index' {
   import { isMonday } from 'date-fns/fp'
-  export = isMonday
+  export default isMonday
 }
 
 declare module 'date-fns/fp/isSameDay/index' {
   import { isSameDay } from 'date-fns/fp'
-  export = isSameDay
+  export default isSameDay
 }
 
 declare module 'date-fns/fp/isSameHour/index' {
   import { isSameHour } from 'date-fns/fp'
-  export = isSameHour
+  export default isSameHour
 }
 
 declare module 'date-fns/fp/isSameISOWeek/index' {
   import { isSameISOWeek } from 'date-fns/fp'
-  export = isSameISOWeek
+  export default isSameISOWeek
 }
 
 declare module 'date-fns/fp/isSameISOWeekYear/index' {
   import { isSameISOWeekYear } from 'date-fns/fp'
-  export = isSameISOWeekYear
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/fp/isSameMinute/index' {
   import { isSameMinute } from 'date-fns/fp'
-  export = isSameMinute
+  export default isSameMinute
 }
 
 declare module 'date-fns/fp/isSameMonth/index' {
   import { isSameMonth } from 'date-fns/fp'
-  export = isSameMonth
+  export default isSameMonth
 }
 
 declare module 'date-fns/fp/isSameQuarter/index' {
   import { isSameQuarter } from 'date-fns/fp'
-  export = isSameQuarter
+  export default isSameQuarter
 }
 
 declare module 'date-fns/fp/isSameSecond/index' {
   import { isSameSecond } from 'date-fns/fp'
-  export = isSameSecond
+  export default isSameSecond
 }
 
 declare module 'date-fns/fp/isSameWeek/index' {
   import { isSameWeek } from 'date-fns/fp'
-  export = isSameWeek
+  export default isSameWeek
 }
 
 declare module 'date-fns/fp/isSameWeekWithOptions/index' {
   import { isSameWeekWithOptions } from 'date-fns/fp'
-  export = isSameWeekWithOptions
+  export default isSameWeekWithOptions
 }
 
 declare module 'date-fns/fp/isSameYear/index' {
   import { isSameYear } from 'date-fns/fp'
-  export = isSameYear
+  export default isSameYear
 }
 
 declare module 'date-fns/fp/isSaturday/index' {
   import { isSaturday } from 'date-fns/fp'
-  export = isSaturday
+  export default isSaturday
 }
 
 declare module 'date-fns/fp/isSunday/index' {
   import { isSunday } from 'date-fns/fp'
-  export = isSunday
+  export default isSunday
 }
 
 declare module 'date-fns/fp/isThursday/index' {
   import { isThursday } from 'date-fns/fp'
-  export = isThursday
+  export default isThursday
 }
 
 declare module 'date-fns/fp/isTuesday/index' {
   import { isTuesday } from 'date-fns/fp'
-  export = isTuesday
+  export default isTuesday
 }
 
 declare module 'date-fns/fp/isValid/index' {
   import { isValid } from 'date-fns/fp'
-  export = isValid
+  export default isValid
 }
 
 declare module 'date-fns/fp/isWednesday/index' {
   import { isWednesday } from 'date-fns/fp'
-  export = isWednesday
+  export default isWednesday
 }
 
 declare module 'date-fns/fp/isWeekend/index' {
   import { isWeekend } from 'date-fns/fp'
-  export = isWeekend
+  export default isWeekend
 }
 
 declare module 'date-fns/fp/isWithinInterval/index' {
   import { isWithinInterval } from 'date-fns/fp'
-  export = isWithinInterval
+  export default isWithinInterval
 }
 
 declare module 'date-fns/fp/lastDayOfDecade/index' {
   import { lastDayOfDecade } from 'date-fns/fp'
-  export = lastDayOfDecade
+  export default lastDayOfDecade
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeek/index' {
   import { lastDayOfISOWeek } from 'date-fns/fp'
-  export = lastDayOfISOWeek
+  export default lastDayOfISOWeek
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeekYear/index' {
   import { lastDayOfISOWeekYear } from 'date-fns/fp'
-  export = lastDayOfISOWeekYear
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/fp/lastDayOfMonth/index' {
   import { lastDayOfMonth } from 'date-fns/fp'
-  export = lastDayOfMonth
+  export default lastDayOfMonth
 }
 
 declare module 'date-fns/fp/lastDayOfQuarter/index' {
   import { lastDayOfQuarter } from 'date-fns/fp'
-  export = lastDayOfQuarter
+  export default lastDayOfQuarter
 }
 
 declare module 'date-fns/fp/lastDayOfQuarterWithOptions/index' {
   import { lastDayOfQuarterWithOptions } from 'date-fns/fp'
-  export = lastDayOfQuarterWithOptions
+  export default lastDayOfQuarterWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfWeek/index' {
   import { lastDayOfWeek } from 'date-fns/fp'
-  export = lastDayOfWeek
+  export default lastDayOfWeek
 }
 
 declare module 'date-fns/fp/lastDayOfWeekWithOptions/index' {
   import { lastDayOfWeekWithOptions } from 'date-fns/fp'
-  export = lastDayOfWeekWithOptions
+  export default lastDayOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfYear/index' {
   import { lastDayOfYear } from 'date-fns/fp'
-  export = lastDayOfYear
+  export default lastDayOfYear
 }
 
 declare module 'date-fns/fp/lightFormat/index' {
   import { lightFormat } from 'date-fns/fp'
-  export = lightFormat
+  export default lightFormat
 }
 
 declare module 'date-fns/fp/max/index' {
   import { max } from 'date-fns/fp'
-  export = max
+  export default max
 }
 
 declare module 'date-fns/fp/min/index' {
   import { min } from 'date-fns/fp'
-  export = min
+  export default min
 }
 
 declare module 'date-fns/fp/parse/index' {
   import { parse } from 'date-fns/fp'
-  export = parse
+  export default parse
 }
 
 declare module 'date-fns/fp/parseISO/index' {
   import { parseISO } from 'date-fns/fp'
-  export = parseISO
+  export default parseISO
 }
 
 declare module 'date-fns/fp/parseISOWithOptions/index' {
   import { parseISOWithOptions } from 'date-fns/fp'
-  export = parseISOWithOptions
+  export default parseISOWithOptions
 }
 
 declare module 'date-fns/fp/parseWithOptions/index' {
   import { parseWithOptions } from 'date-fns/fp'
-  export = parseWithOptions
+  export default parseWithOptions
 }
 
 declare module 'date-fns/fp/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/fp'
-  export = roundToNearestMinutes
+  export default roundToNearestMinutes
 }
 
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
-  export = roundToNearestMinutesWithOptions
+  export default roundToNearestMinutesWithOptions
 }
 
 declare module 'date-fns/fp/setDate/index' {
   import { setDate } from 'date-fns/fp'
-  export = setDate
+  export default setDate
 }
 
 declare module 'date-fns/fp/setDay/index' {
   import { setDay } from 'date-fns/fp'
-  export = setDay
+  export default setDay
 }
 
 declare module 'date-fns/fp/setDayOfYear/index' {
   import { setDayOfYear } from 'date-fns/fp'
-  export = setDayOfYear
+  export default setDayOfYear
 }
 
 declare module 'date-fns/fp/setDayWithOptions/index' {
   import { setDayWithOptions } from 'date-fns/fp'
-  export = setDayWithOptions
+  export default setDayWithOptions
 }
 
 declare module 'date-fns/fp/setHours/index' {
   import { setHours } from 'date-fns/fp'
-  export = setHours
+  export default setHours
 }
 
 declare module 'date-fns/fp/setISODay/index' {
   import { setISODay } from 'date-fns/fp'
-  export = setISODay
+  export default setISODay
 }
 
 declare module 'date-fns/fp/setISOWeek/index' {
   import { setISOWeek } from 'date-fns/fp'
-  export = setISOWeek
+  export default setISOWeek
 }
 
 declare module 'date-fns/fp/setISOWeekYear/index' {
   import { setISOWeekYear } from 'date-fns/fp'
-  export = setISOWeekYear
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/fp/setMilliseconds/index' {
   import { setMilliseconds } from 'date-fns/fp'
-  export = setMilliseconds
+  export default setMilliseconds
 }
 
 declare module 'date-fns/fp/setMinutes/index' {
   import { setMinutes } from 'date-fns/fp'
-  export = setMinutes
+  export default setMinutes
 }
 
 declare module 'date-fns/fp/setMonth/index' {
   import { setMonth } from 'date-fns/fp'
-  export = setMonth
+  export default setMonth
 }
 
 declare module 'date-fns/fp/setQuarter/index' {
   import { setQuarter } from 'date-fns/fp'
-  export = setQuarter
+  export default setQuarter
 }
 
 declare module 'date-fns/fp/setSeconds/index' {
   import { setSeconds } from 'date-fns/fp'
-  export = setSeconds
+  export default setSeconds
 }
 
 declare module 'date-fns/fp/setWeek/index' {
   import { setWeek } from 'date-fns/fp'
-  export = setWeek
+  export default setWeek
 }
 
 declare module 'date-fns/fp/setWeekWithOptions/index' {
   import { setWeekWithOptions } from 'date-fns/fp'
-  export = setWeekWithOptions
+  export default setWeekWithOptions
 }
 
 declare module 'date-fns/fp/setWeekYear/index' {
   import { setWeekYear } from 'date-fns/fp'
-  export = setWeekYear
+  export default setWeekYear
 }
 
 declare module 'date-fns/fp/setWeekYearWithOptions/index' {
   import { setWeekYearWithOptions } from 'date-fns/fp'
-  export = setWeekYearWithOptions
+  export default setWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setYear/index' {
   import { setYear } from 'date-fns/fp'
-  export = setYear
+  export default setYear
 }
 
 declare module 'date-fns/fp/startOfDay/index' {
   import { startOfDay } from 'date-fns/fp'
-  export = startOfDay
+  export default startOfDay
 }
 
 declare module 'date-fns/fp/startOfDecade/index' {
   import { startOfDecade } from 'date-fns/fp'
-  export = startOfDecade
+  export default startOfDecade
 }
 
 declare module 'date-fns/fp/startOfHour/index' {
   import { startOfHour } from 'date-fns/fp'
-  export = startOfHour
+  export default startOfHour
 }
 
 declare module 'date-fns/fp/startOfISOWeek/index' {
   import { startOfISOWeek } from 'date-fns/fp'
-  export = startOfISOWeek
+  export default startOfISOWeek
 }
 
 declare module 'date-fns/fp/startOfISOWeekYear/index' {
   import { startOfISOWeekYear } from 'date-fns/fp'
-  export = startOfISOWeekYear
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/fp/startOfMinute/index' {
   import { startOfMinute } from 'date-fns/fp'
-  export = startOfMinute
+  export default startOfMinute
 }
 
 declare module 'date-fns/fp/startOfMonth/index' {
   import { startOfMonth } from 'date-fns/fp'
-  export = startOfMonth
+  export default startOfMonth
 }
 
 declare module 'date-fns/fp/startOfQuarter/index' {
   import { startOfQuarter } from 'date-fns/fp'
-  export = startOfQuarter
+  export default startOfQuarter
 }
 
 declare module 'date-fns/fp/startOfSecond/index' {
   import { startOfSecond } from 'date-fns/fp'
-  export = startOfSecond
+  export default startOfSecond
 }
 
 declare module 'date-fns/fp/startOfWeek/index' {
   import { startOfWeek } from 'date-fns/fp'
-  export = startOfWeek
+  export default startOfWeek
 }
 
 declare module 'date-fns/fp/startOfWeekWithOptions/index' {
   import { startOfWeekWithOptions } from 'date-fns/fp'
-  export = startOfWeekWithOptions
+  export default startOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/startOfWeekYear/index' {
   import { startOfWeekYear } from 'date-fns/fp'
-  export = startOfWeekYear
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/fp/startOfWeekYearWithOptions/index' {
   import { startOfWeekYearWithOptions } from 'date-fns/fp'
-  export = startOfWeekYearWithOptions
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear/index' {
   import { startOfYear } from 'date-fns/fp'
-  export = startOfYear
+  export default startOfYear
 }
 
 declare module 'date-fns/fp/subDays/index' {
   import { subDays } from 'date-fns/fp'
-  export = subDays
+  export default subDays
 }
 
 declare module 'date-fns/fp/subHours/index' {
   import { subHours } from 'date-fns/fp'
-  export = subHours
+  export default subHours
 }
 
 declare module 'date-fns/fp/subISOWeekYears/index' {
   import { subISOWeekYears } from 'date-fns/fp'
-  export = subISOWeekYears
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/fp/subMilliseconds/index' {
   import { subMilliseconds } from 'date-fns/fp'
-  export = subMilliseconds
+  export default subMilliseconds
 }
 
 declare module 'date-fns/fp/subMinutes/index' {
   import { subMinutes } from 'date-fns/fp'
-  export = subMinutes
+  export default subMinutes
 }
 
 declare module 'date-fns/fp/subMonths/index' {
   import { subMonths } from 'date-fns/fp'
-  export = subMonths
+  export default subMonths
 }
 
 declare module 'date-fns/fp/subQuarters/index' {
   import { subQuarters } from 'date-fns/fp'
-  export = subQuarters
+  export default subQuarters
 }
 
 declare module 'date-fns/fp/subSeconds/index' {
   import { subSeconds } from 'date-fns/fp'
-  export = subSeconds
+  export default subSeconds
 }
 
 declare module 'date-fns/fp/subWeeks/index' {
   import { subWeeks } from 'date-fns/fp'
-  export = subWeeks
+  export default subWeeks
 }
 
 declare module 'date-fns/fp/subYears/index' {
   import { subYears } from 'date-fns/fp'
-  export = subYears
+  export default subYears
 }
 
 declare module 'date-fns/fp/toDate/index' {
   import { toDate } from 'date-fns/fp'
-  export = toDate
+  export default toDate
 }
 
 declare module 'date-fns/fp/addBusinessDays/index.js' {
   import { addBusinessDays } from 'date-fns/fp'
-  export = addBusinessDays
+  export default addBusinessDays
 }
 
 declare module 'date-fns/fp/addDays/index.js' {
   import { addDays } from 'date-fns/fp'
-  export = addDays
+  export default addDays
 }
 
 declare module 'date-fns/fp/addHours/index.js' {
   import { addHours } from 'date-fns/fp'
-  export = addHours
+  export default addHours
 }
 
 declare module 'date-fns/fp/addISOWeekYears/index.js' {
   import { addISOWeekYears } from 'date-fns/fp'
-  export = addISOWeekYears
+  export default addISOWeekYears
 }
 
 declare module 'date-fns/fp/addMilliseconds/index.js' {
   import { addMilliseconds } from 'date-fns/fp'
-  export = addMilliseconds
+  export default addMilliseconds
 }
 
 declare module 'date-fns/fp/addMinutes/index.js' {
   import { addMinutes } from 'date-fns/fp'
-  export = addMinutes
+  export default addMinutes
 }
 
 declare module 'date-fns/fp/addMonths/index.js' {
   import { addMonths } from 'date-fns/fp'
-  export = addMonths
+  export default addMonths
 }
 
 declare module 'date-fns/fp/addQuarters/index.js' {
   import { addQuarters } from 'date-fns/fp'
-  export = addQuarters
+  export default addQuarters
 }
 
 declare module 'date-fns/fp/addSeconds/index.js' {
   import { addSeconds } from 'date-fns/fp'
-  export = addSeconds
+  export default addSeconds
 }
 
 declare module 'date-fns/fp/addWeeks/index.js' {
   import { addWeeks } from 'date-fns/fp'
-  export = addWeeks
+  export default addWeeks
 }
 
 declare module 'date-fns/fp/addYears/index.js' {
   import { addYears } from 'date-fns/fp'
-  export = addYears
+  export default addYears
 }
 
 declare module 'date-fns/fp/areIntervalsOverlapping/index.js' {
   import { areIntervalsOverlapping } from 'date-fns/fp'
-  export = areIntervalsOverlapping
+  export default areIntervalsOverlapping
 }
 
 declare module 'date-fns/fp/closestIndexTo/index.js' {
   import { closestIndexTo } from 'date-fns/fp'
-  export = closestIndexTo
+  export default closestIndexTo
 }
 
 declare module 'date-fns/fp/closestTo/index.js' {
   import { closestTo } from 'date-fns/fp'
-  export = closestTo
+  export default closestTo
 }
 
 declare module 'date-fns/fp/compareAsc/index.js' {
   import { compareAsc } from 'date-fns/fp'
-  export = compareAsc
+  export default compareAsc
 }
 
 declare module 'date-fns/fp/compareDesc/index.js' {
   import { compareDesc } from 'date-fns/fp'
-  export = compareDesc
+  export default compareDesc
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays/index.js' {
   import { differenceInBusinessDays } from 'date-fns/fp'
-  export = differenceInBusinessDays
+  export default differenceInBusinessDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarDays/index.js' {
   import { differenceInCalendarDays } from 'date-fns/fp'
-  export = differenceInCalendarDays
+  export default differenceInCalendarDays
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeeks/index.js' {
   import { differenceInCalendarISOWeeks } from 'date-fns/fp'
-  export = differenceInCalendarISOWeeks
+  export default differenceInCalendarISOWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarISOWeekYears/index.js' {
   import { differenceInCalendarISOWeekYears } from 'date-fns/fp'
-  export = differenceInCalendarISOWeekYears
+  export default differenceInCalendarISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInCalendarMonths/index.js' {
   import { differenceInCalendarMonths } from 'date-fns/fp'
-  export = differenceInCalendarMonths
+  export default differenceInCalendarMonths
 }
 
 declare module 'date-fns/fp/differenceInCalendarQuarters/index.js' {
   import { differenceInCalendarQuarters } from 'date-fns/fp'
-  export = differenceInCalendarQuarters
+  export default differenceInCalendarQuarters
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeks/index.js' {
   import { differenceInCalendarWeeks } from 'date-fns/fp'
-  export = differenceInCalendarWeeks
+  export default differenceInCalendarWeeks
 }
 
 declare module 'date-fns/fp/differenceInCalendarWeeksWithOptions/index.js' {
   import { differenceInCalendarWeeksWithOptions } from 'date-fns/fp'
-  export = differenceInCalendarWeeksWithOptions
+  export default differenceInCalendarWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInCalendarYears/index.js' {
   import { differenceInCalendarYears } from 'date-fns/fp'
-  export = differenceInCalendarYears
+  export default differenceInCalendarYears
 }
 
 declare module 'date-fns/fp/differenceInDays/index.js' {
   import { differenceInDays } from 'date-fns/fp'
-  export = differenceInDays
+  export default differenceInDays
 }
 
 declare module 'date-fns/fp/differenceInHours/index.js' {
   import { differenceInHours } from 'date-fns/fp'
-  export = differenceInHours
+  export default differenceInHours
 }
 
 declare module 'date-fns/fp/differenceInISOWeekYears/index.js' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
-  export = differenceInISOWeekYears
+  export default differenceInISOWeekYears
 }
 
 declare module 'date-fns/fp/differenceInMilliseconds/index.js' {
   import { differenceInMilliseconds } from 'date-fns/fp'
-  export = differenceInMilliseconds
+  export default differenceInMilliseconds
 }
 
 declare module 'date-fns/fp/differenceInMinutes/index.js' {
   import { differenceInMinutes } from 'date-fns/fp'
-  export = differenceInMinutes
+  export default differenceInMinutes
 }
 
 declare module 'date-fns/fp/differenceInMonths/index.js' {
   import { differenceInMonths } from 'date-fns/fp'
-  export = differenceInMonths
+  export default differenceInMonths
 }
 
 declare module 'date-fns/fp/differenceInQuarters/index.js' {
   import { differenceInQuarters } from 'date-fns/fp'
-  export = differenceInQuarters
+  export default differenceInQuarters
 }
 
 declare module 'date-fns/fp/differenceInSeconds/index.js' {
   import { differenceInSeconds } from 'date-fns/fp'
-  export = differenceInSeconds
+  export default differenceInSeconds
 }
 
 declare module 'date-fns/fp/differenceInWeeks/index.js' {
   import { differenceInWeeks } from 'date-fns/fp'
-  export = differenceInWeeks
+  export default differenceInWeeks
 }
 
 declare module 'date-fns/fp/differenceInYears/index.js' {
   import { differenceInYears } from 'date-fns/fp'
-  export = differenceInYears
+  export default differenceInYears
 }
 
 declare module 'date-fns/fp/eachDayOfInterval/index.js' {
   import { eachDayOfInterval } from 'date-fns/fp'
-  export = eachDayOfInterval
+  export default eachDayOfInterval
 }
 
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index.js' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachDayOfIntervalWithOptions
+  export default eachDayOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
-  export = eachWeekendOfInterval
+  export default eachWeekendOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekendOfMonth/index.js' {
   import { eachWeekendOfMonth } from 'date-fns/fp'
-  export = eachWeekendOfMonth
+  export default eachWeekendOfMonth
 }
 
 declare module 'date-fns/fp/eachWeekendOfYear/index.js' {
   import { eachWeekendOfYear } from 'date-fns/fp'
-  export = eachWeekendOfYear
+  export default eachWeekendOfYear
 }
 
 declare module 'date-fns/fp/eachWeekOfInterval/index.js' {
   import { eachWeekOfInterval } from 'date-fns/fp'
-  export = eachWeekOfInterval
+  export default eachWeekOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index.js' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
-  export = eachWeekOfIntervalWithOptions
+  export default eachWeekOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/endOfDay/index.js' {
   import { endOfDay } from 'date-fns/fp'
-  export = endOfDay
+  export default endOfDay
 }
 
 declare module 'date-fns/fp/endOfDecade/index.js' {
   import { endOfDecade } from 'date-fns/fp'
-  export = endOfDecade
+  export default endOfDecade
 }
 
 declare module 'date-fns/fp/endOfDecadeWithOptions/index.js' {
   import { endOfDecadeWithOptions } from 'date-fns/fp'
-  export = endOfDecadeWithOptions
+  export default endOfDecadeWithOptions
 }
 
 declare module 'date-fns/fp/endOfHour/index.js' {
   import { endOfHour } from 'date-fns/fp'
-  export = endOfHour
+  export default endOfHour
 }
 
 declare module 'date-fns/fp/endOfISOWeek/index.js' {
   import { endOfISOWeek } from 'date-fns/fp'
-  export = endOfISOWeek
+  export default endOfISOWeek
 }
 
 declare module 'date-fns/fp/endOfISOWeekYear/index.js' {
   import { endOfISOWeekYear } from 'date-fns/fp'
-  export = endOfISOWeekYear
+  export default endOfISOWeekYear
 }
 
 declare module 'date-fns/fp/endOfMinute/index.js' {
   import { endOfMinute } from 'date-fns/fp'
-  export = endOfMinute
+  export default endOfMinute
 }
 
 declare module 'date-fns/fp/endOfMonth/index.js' {
   import { endOfMonth } from 'date-fns/fp'
-  export = endOfMonth
+  export default endOfMonth
 }
 
 declare module 'date-fns/fp/endOfQuarter/index.js' {
   import { endOfQuarter } from 'date-fns/fp'
-  export = endOfQuarter
+  export default endOfQuarter
 }
 
 declare module 'date-fns/fp/endOfSecond/index.js' {
   import { endOfSecond } from 'date-fns/fp'
-  export = endOfSecond
+  export default endOfSecond
 }
 
 declare module 'date-fns/fp/endOfWeek/index.js' {
   import { endOfWeek } from 'date-fns/fp'
-  export = endOfWeek
+  export default endOfWeek
 }
 
 declare module 'date-fns/fp/endOfWeekWithOptions/index.js' {
   import { endOfWeekWithOptions } from 'date-fns/fp'
-  export = endOfWeekWithOptions
+  export default endOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/endOfYear/index.js' {
   import { endOfYear } from 'date-fns/fp'
-  export = endOfYear
+  export default endOfYear
 }
 
 declare module 'date-fns/fp/format/index.js' {
   import { format } from 'date-fns/fp'
-  export = format
+  export default format
 }
 
 declare module 'date-fns/fp/formatDistance/index.js' {
   import { formatDistance } from 'date-fns/fp'
-  export = formatDistance
+  export default formatDistance
 }
 
 declare module 'date-fns/fp/formatDistanceStrict/index.js' {
   import { formatDistanceStrict } from 'date-fns/fp'
-  export = formatDistanceStrict
+  export default formatDistanceStrict
 }
 
 declare module 'date-fns/fp/formatDistanceStrictWithOptions/index.js' {
   import { formatDistanceStrictWithOptions } from 'date-fns/fp'
-  export = formatDistanceStrictWithOptions
+  export default formatDistanceStrictWithOptions
 }
 
 declare module 'date-fns/fp/formatDistanceWithOptions/index.js' {
   import { formatDistanceWithOptions } from 'date-fns/fp'
-  export = formatDistanceWithOptions
+  export default formatDistanceWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative/index.js' {
   import { formatRelative } from 'date-fns/fp'
-  export = formatRelative
+  export default formatRelative
 }
 
 declare module 'date-fns/fp/formatRelativeWithOptions/index.js' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
-  export = formatRelativeWithOptions
+  export default formatRelativeWithOptions
 }
 
 declare module 'date-fns/fp/formatWithOptions/index.js' {
   import { formatWithOptions } from 'date-fns/fp'
-  export = formatWithOptions
+  export default formatWithOptions
 }
 
 declare module 'date-fns/fp/fromUnixTime/index.js' {
   import { fromUnixTime } from 'date-fns/fp'
-  export = fromUnixTime
+  export default fromUnixTime
 }
 
 declare module 'date-fns/fp/getDate/index.js' {
   import { getDate } from 'date-fns/fp'
-  export = getDate
+  export default getDate
 }
 
 declare module 'date-fns/fp/getDay/index.js' {
   import { getDay } from 'date-fns/fp'
-  export = getDay
+  export default getDay
 }
 
 declare module 'date-fns/fp/getDayOfYear/index.js' {
   import { getDayOfYear } from 'date-fns/fp'
-  export = getDayOfYear
+  export default getDayOfYear
 }
 
 declare module 'date-fns/fp/getDaysInMonth/index.js' {
   import { getDaysInMonth } from 'date-fns/fp'
-  export = getDaysInMonth
+  export default getDaysInMonth
 }
 
 declare module 'date-fns/fp/getDaysInYear/index.js' {
   import { getDaysInYear } from 'date-fns/fp'
-  export = getDaysInYear
+  export default getDaysInYear
 }
 
 declare module 'date-fns/fp/getDecade/index.js' {
   import { getDecade } from 'date-fns/fp'
-  export = getDecade
+  export default getDecade
 }
 
 declare module 'date-fns/fp/getHours/index.js' {
   import { getHours } from 'date-fns/fp'
-  export = getHours
+  export default getHours
 }
 
 declare module 'date-fns/fp/getISODay/index.js' {
   import { getISODay } from 'date-fns/fp'
-  export = getISODay
+  export default getISODay
 }
 
 declare module 'date-fns/fp/getISOWeek/index.js' {
   import { getISOWeek } from 'date-fns/fp'
-  export = getISOWeek
+  export default getISOWeek
 }
 
 declare module 'date-fns/fp/getISOWeeksInYear/index.js' {
   import { getISOWeeksInYear } from 'date-fns/fp'
-  export = getISOWeeksInYear
+  export default getISOWeeksInYear
 }
 
 declare module 'date-fns/fp/getISOWeekYear/index.js' {
   import { getISOWeekYear } from 'date-fns/fp'
-  export = getISOWeekYear
+  export default getISOWeekYear
 }
 
 declare module 'date-fns/fp/getMilliseconds/index.js' {
   import { getMilliseconds } from 'date-fns/fp'
-  export = getMilliseconds
+  export default getMilliseconds
 }
 
 declare module 'date-fns/fp/getMinutes/index.js' {
   import { getMinutes } from 'date-fns/fp'
-  export = getMinutes
+  export default getMinutes
 }
 
 declare module 'date-fns/fp/getMonth/index.js' {
   import { getMonth } from 'date-fns/fp'
-  export = getMonth
+  export default getMonth
 }
 
 declare module 'date-fns/fp/getOverlappingDaysInIntervals/index.js' {
   import { getOverlappingDaysInIntervals } from 'date-fns/fp'
-  export = getOverlappingDaysInIntervals
+  export default getOverlappingDaysInIntervals
 }
 
 declare module 'date-fns/fp/getQuarter/index.js' {
   import { getQuarter } from 'date-fns/fp'
-  export = getQuarter
+  export default getQuarter
 }
 
 declare module 'date-fns/fp/getSeconds/index.js' {
   import { getSeconds } from 'date-fns/fp'
-  export = getSeconds
+  export default getSeconds
 }
 
 declare module 'date-fns/fp/getTime/index.js' {
   import { getTime } from 'date-fns/fp'
-  export = getTime
+  export default getTime
 }
 
 declare module 'date-fns/fp/getUnixTime/index.js' {
   import { getUnixTime } from 'date-fns/fp'
-  export = getUnixTime
+  export default getUnixTime
 }
 
 declare module 'date-fns/fp/getWeek/index.js' {
   import { getWeek } from 'date-fns/fp'
-  export = getWeek
+  export default getWeek
 }
 
 declare module 'date-fns/fp/getWeekOfMonth/index.js' {
   import { getWeekOfMonth } from 'date-fns/fp'
-  export = getWeekOfMonth
+  export default getWeekOfMonth
 }
 
 declare module 'date-fns/fp/getWeekOfMonthWithOptions/index.js' {
   import { getWeekOfMonthWithOptions } from 'date-fns/fp'
-  export = getWeekOfMonthWithOptions
+  export default getWeekOfMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeeksInMonth/index.js' {
   import { getWeeksInMonth } from 'date-fns/fp'
-  export = getWeeksInMonth
+  export default getWeeksInMonth
 }
 
 declare module 'date-fns/fp/getWeeksInMonthWithOptions/index.js' {
   import { getWeeksInMonthWithOptions } from 'date-fns/fp'
-  export = getWeeksInMonthWithOptions
+  export default getWeeksInMonthWithOptions
 }
 
 declare module 'date-fns/fp/getWeekWithOptions/index.js' {
   import { getWeekWithOptions } from 'date-fns/fp'
-  export = getWeekWithOptions
+  export default getWeekWithOptions
 }
 
 declare module 'date-fns/fp/getWeekYear/index.js' {
   import { getWeekYear } from 'date-fns/fp'
-  export = getWeekYear
+  export default getWeekYear
 }
 
 declare module 'date-fns/fp/getWeekYearWithOptions/index.js' {
   import { getWeekYearWithOptions } from 'date-fns/fp'
-  export = getWeekYearWithOptions
+  export default getWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/getYear/index.js' {
   import { getYear } from 'date-fns/fp'
-  export = getYear
+  export default getYear
 }
 
 declare module 'date-fns/fp/isAfter/index.js' {
   import { isAfter } from 'date-fns/fp'
-  export = isAfter
+  export default isAfter
 }
 
 declare module 'date-fns/fp/isBefore/index.js' {
   import { isBefore } from 'date-fns/fp'
-  export = isBefore
+  export default isBefore
 }
 
 declare module 'date-fns/fp/isDate/index.js' {
   import { isDate } from 'date-fns/fp'
-  export = isDate
+  export default isDate
 }
 
 declare module 'date-fns/fp/isEqual/index.js' {
   import { isEqual } from 'date-fns/fp'
-  export = isEqual
+  export default isEqual
 }
 
 declare module 'date-fns/fp/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
-  export = isFirstDayOfMonth
+  export default isFirstDayOfMonth
 }
 
 declare module 'date-fns/fp/isFriday/index.js' {
   import { isFriday } from 'date-fns/fp'
-  export = isFriday
+  export default isFriday
 }
 
 declare module 'date-fns/fp/isLastDayOfMonth/index.js' {
   import { isLastDayOfMonth } from 'date-fns/fp'
-  export = isLastDayOfMonth
+  export default isLastDayOfMonth
 }
 
 declare module 'date-fns/fp/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/fp'
-  export = isLeapYear
+  export default isLeapYear
 }
 
 declare module 'date-fns/fp/isMonday/index.js' {
   import { isMonday } from 'date-fns/fp'
-  export = isMonday
+  export default isMonday
 }
 
 declare module 'date-fns/fp/isSameDay/index.js' {
   import { isSameDay } from 'date-fns/fp'
-  export = isSameDay
+  export default isSameDay
 }
 
 declare module 'date-fns/fp/isSameHour/index.js' {
   import { isSameHour } from 'date-fns/fp'
-  export = isSameHour
+  export default isSameHour
 }
 
 declare module 'date-fns/fp/isSameISOWeek/index.js' {
   import { isSameISOWeek } from 'date-fns/fp'
-  export = isSameISOWeek
+  export default isSameISOWeek
 }
 
 declare module 'date-fns/fp/isSameISOWeekYear/index.js' {
   import { isSameISOWeekYear } from 'date-fns/fp'
-  export = isSameISOWeekYear
+  export default isSameISOWeekYear
 }
 
 declare module 'date-fns/fp/isSameMinute/index.js' {
   import { isSameMinute } from 'date-fns/fp'
-  export = isSameMinute
+  export default isSameMinute
 }
 
 declare module 'date-fns/fp/isSameMonth/index.js' {
   import { isSameMonth } from 'date-fns/fp'
-  export = isSameMonth
+  export default isSameMonth
 }
 
 declare module 'date-fns/fp/isSameQuarter/index.js' {
   import { isSameQuarter } from 'date-fns/fp'
-  export = isSameQuarter
+  export default isSameQuarter
 }
 
 declare module 'date-fns/fp/isSameSecond/index.js' {
   import { isSameSecond } from 'date-fns/fp'
-  export = isSameSecond
+  export default isSameSecond
 }
 
 declare module 'date-fns/fp/isSameWeek/index.js' {
   import { isSameWeek } from 'date-fns/fp'
-  export = isSameWeek
+  export default isSameWeek
 }
 
 declare module 'date-fns/fp/isSameWeekWithOptions/index.js' {
   import { isSameWeekWithOptions } from 'date-fns/fp'
-  export = isSameWeekWithOptions
+  export default isSameWeekWithOptions
 }
 
 declare module 'date-fns/fp/isSameYear/index.js' {
   import { isSameYear } from 'date-fns/fp'
-  export = isSameYear
+  export default isSameYear
 }
 
 declare module 'date-fns/fp/isSaturday/index.js' {
   import { isSaturday } from 'date-fns/fp'
-  export = isSaturday
+  export default isSaturday
 }
 
 declare module 'date-fns/fp/isSunday/index.js' {
   import { isSunday } from 'date-fns/fp'
-  export = isSunday
+  export default isSunday
 }
 
 declare module 'date-fns/fp/isThursday/index.js' {
   import { isThursday } from 'date-fns/fp'
-  export = isThursday
+  export default isThursday
 }
 
 declare module 'date-fns/fp/isTuesday/index.js' {
   import { isTuesday } from 'date-fns/fp'
-  export = isTuesday
+  export default isTuesday
 }
 
 declare module 'date-fns/fp/isValid/index.js' {
   import { isValid } from 'date-fns/fp'
-  export = isValid
+  export default isValid
 }
 
 declare module 'date-fns/fp/isWednesday/index.js' {
   import { isWednesday } from 'date-fns/fp'
-  export = isWednesday
+  export default isWednesday
 }
 
 declare module 'date-fns/fp/isWeekend/index.js' {
   import { isWeekend } from 'date-fns/fp'
-  export = isWeekend
+  export default isWeekend
 }
 
 declare module 'date-fns/fp/isWithinInterval/index.js' {
   import { isWithinInterval } from 'date-fns/fp'
-  export = isWithinInterval
+  export default isWithinInterval
 }
 
 declare module 'date-fns/fp/lastDayOfDecade/index.js' {
   import { lastDayOfDecade } from 'date-fns/fp'
-  export = lastDayOfDecade
+  export default lastDayOfDecade
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeek/index.js' {
   import { lastDayOfISOWeek } from 'date-fns/fp'
-  export = lastDayOfISOWeek
+  export default lastDayOfISOWeek
 }
 
 declare module 'date-fns/fp/lastDayOfISOWeekYear/index.js' {
   import { lastDayOfISOWeekYear } from 'date-fns/fp'
-  export = lastDayOfISOWeekYear
+  export default lastDayOfISOWeekYear
 }
 
 declare module 'date-fns/fp/lastDayOfMonth/index.js' {
   import { lastDayOfMonth } from 'date-fns/fp'
-  export = lastDayOfMonth
+  export default lastDayOfMonth
 }
 
 declare module 'date-fns/fp/lastDayOfQuarter/index.js' {
   import { lastDayOfQuarter } from 'date-fns/fp'
-  export = lastDayOfQuarter
+  export default lastDayOfQuarter
 }
 
 declare module 'date-fns/fp/lastDayOfQuarterWithOptions/index.js' {
   import { lastDayOfQuarterWithOptions } from 'date-fns/fp'
-  export = lastDayOfQuarterWithOptions
+  export default lastDayOfQuarterWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfWeek/index.js' {
   import { lastDayOfWeek } from 'date-fns/fp'
-  export = lastDayOfWeek
+  export default lastDayOfWeek
 }
 
 declare module 'date-fns/fp/lastDayOfWeekWithOptions/index.js' {
   import { lastDayOfWeekWithOptions } from 'date-fns/fp'
-  export = lastDayOfWeekWithOptions
+  export default lastDayOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/lastDayOfYear/index.js' {
   import { lastDayOfYear } from 'date-fns/fp'
-  export = lastDayOfYear
+  export default lastDayOfYear
 }
 
 declare module 'date-fns/fp/lightFormat/index.js' {
   import { lightFormat } from 'date-fns/fp'
-  export = lightFormat
+  export default lightFormat
 }
 
 declare module 'date-fns/fp/max/index.js' {
   import { max } from 'date-fns/fp'
-  export = max
+  export default max
 }
 
 declare module 'date-fns/fp/min/index.js' {
   import { min } from 'date-fns/fp'
-  export = min
+  export default min
 }
 
 declare module 'date-fns/fp/parse/index.js' {
   import { parse } from 'date-fns/fp'
-  export = parse
+  export default parse
 }
 
 declare module 'date-fns/fp/parseISO/index.js' {
   import { parseISO } from 'date-fns/fp'
-  export = parseISO
+  export default parseISO
 }
 
 declare module 'date-fns/fp/parseISOWithOptions/index.js' {
   import { parseISOWithOptions } from 'date-fns/fp'
-  export = parseISOWithOptions
+  export default parseISOWithOptions
 }
 
 declare module 'date-fns/fp/parseWithOptions/index.js' {
   import { parseWithOptions } from 'date-fns/fp'
-  export = parseWithOptions
+  export default parseWithOptions
 }
 
 declare module 'date-fns/fp/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/fp'
-  export = roundToNearestMinutes
+  export default roundToNearestMinutes
 }
 
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index.js' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
-  export = roundToNearestMinutesWithOptions
+  export default roundToNearestMinutesWithOptions
 }
 
 declare module 'date-fns/fp/setDate/index.js' {
   import { setDate } from 'date-fns/fp'
-  export = setDate
+  export default setDate
 }
 
 declare module 'date-fns/fp/setDay/index.js' {
   import { setDay } from 'date-fns/fp'
-  export = setDay
+  export default setDay
 }
 
 declare module 'date-fns/fp/setDayOfYear/index.js' {
   import { setDayOfYear } from 'date-fns/fp'
-  export = setDayOfYear
+  export default setDayOfYear
 }
 
 declare module 'date-fns/fp/setDayWithOptions/index.js' {
   import { setDayWithOptions } from 'date-fns/fp'
-  export = setDayWithOptions
+  export default setDayWithOptions
 }
 
 declare module 'date-fns/fp/setHours/index.js' {
   import { setHours } from 'date-fns/fp'
-  export = setHours
+  export default setHours
 }
 
 declare module 'date-fns/fp/setISODay/index.js' {
   import { setISODay } from 'date-fns/fp'
-  export = setISODay
+  export default setISODay
 }
 
 declare module 'date-fns/fp/setISOWeek/index.js' {
   import { setISOWeek } from 'date-fns/fp'
-  export = setISOWeek
+  export default setISOWeek
 }
 
 declare module 'date-fns/fp/setISOWeekYear/index.js' {
   import { setISOWeekYear } from 'date-fns/fp'
-  export = setISOWeekYear
+  export default setISOWeekYear
 }
 
 declare module 'date-fns/fp/setMilliseconds/index.js' {
   import { setMilliseconds } from 'date-fns/fp'
-  export = setMilliseconds
+  export default setMilliseconds
 }
 
 declare module 'date-fns/fp/setMinutes/index.js' {
   import { setMinutes } from 'date-fns/fp'
-  export = setMinutes
+  export default setMinutes
 }
 
 declare module 'date-fns/fp/setMonth/index.js' {
   import { setMonth } from 'date-fns/fp'
-  export = setMonth
+  export default setMonth
 }
 
 declare module 'date-fns/fp/setQuarter/index.js' {
   import { setQuarter } from 'date-fns/fp'
-  export = setQuarter
+  export default setQuarter
 }
 
 declare module 'date-fns/fp/setSeconds/index.js' {
   import { setSeconds } from 'date-fns/fp'
-  export = setSeconds
+  export default setSeconds
 }
 
 declare module 'date-fns/fp/setWeek/index.js' {
   import { setWeek } from 'date-fns/fp'
-  export = setWeek
+  export default setWeek
 }
 
 declare module 'date-fns/fp/setWeekWithOptions/index.js' {
   import { setWeekWithOptions } from 'date-fns/fp'
-  export = setWeekWithOptions
+  export default setWeekWithOptions
 }
 
 declare module 'date-fns/fp/setWeekYear/index.js' {
   import { setWeekYear } from 'date-fns/fp'
-  export = setWeekYear
+  export default setWeekYear
 }
 
 declare module 'date-fns/fp/setWeekYearWithOptions/index.js' {
   import { setWeekYearWithOptions } from 'date-fns/fp'
-  export = setWeekYearWithOptions
+  export default setWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/setYear/index.js' {
   import { setYear } from 'date-fns/fp'
-  export = setYear
+  export default setYear
 }
 
 declare module 'date-fns/fp/startOfDay/index.js' {
   import { startOfDay } from 'date-fns/fp'
-  export = startOfDay
+  export default startOfDay
 }
 
 declare module 'date-fns/fp/startOfDecade/index.js' {
   import { startOfDecade } from 'date-fns/fp'
-  export = startOfDecade
+  export default startOfDecade
 }
 
 declare module 'date-fns/fp/startOfHour/index.js' {
   import { startOfHour } from 'date-fns/fp'
-  export = startOfHour
+  export default startOfHour
 }
 
 declare module 'date-fns/fp/startOfISOWeek/index.js' {
   import { startOfISOWeek } from 'date-fns/fp'
-  export = startOfISOWeek
+  export default startOfISOWeek
 }
 
 declare module 'date-fns/fp/startOfISOWeekYear/index.js' {
   import { startOfISOWeekYear } from 'date-fns/fp'
-  export = startOfISOWeekYear
+  export default startOfISOWeekYear
 }
 
 declare module 'date-fns/fp/startOfMinute/index.js' {
   import { startOfMinute } from 'date-fns/fp'
-  export = startOfMinute
+  export default startOfMinute
 }
 
 declare module 'date-fns/fp/startOfMonth/index.js' {
   import { startOfMonth } from 'date-fns/fp'
-  export = startOfMonth
+  export default startOfMonth
 }
 
 declare module 'date-fns/fp/startOfQuarter/index.js' {
   import { startOfQuarter } from 'date-fns/fp'
-  export = startOfQuarter
+  export default startOfQuarter
 }
 
 declare module 'date-fns/fp/startOfSecond/index.js' {
   import { startOfSecond } from 'date-fns/fp'
-  export = startOfSecond
+  export default startOfSecond
 }
 
 declare module 'date-fns/fp/startOfWeek/index.js' {
   import { startOfWeek } from 'date-fns/fp'
-  export = startOfWeek
+  export default startOfWeek
 }
 
 declare module 'date-fns/fp/startOfWeekWithOptions/index.js' {
   import { startOfWeekWithOptions } from 'date-fns/fp'
-  export = startOfWeekWithOptions
+  export default startOfWeekWithOptions
 }
 
 declare module 'date-fns/fp/startOfWeekYear/index.js' {
   import { startOfWeekYear } from 'date-fns/fp'
-  export = startOfWeekYear
+  export default startOfWeekYear
 }
 
 declare module 'date-fns/fp/startOfWeekYearWithOptions/index.js' {
   import { startOfWeekYearWithOptions } from 'date-fns/fp'
-  export = startOfWeekYearWithOptions
+  export default startOfWeekYearWithOptions
 }
 
 declare module 'date-fns/fp/startOfYear/index.js' {
   import { startOfYear } from 'date-fns/fp'
-  export = startOfYear
+  export default startOfYear
 }
 
 declare module 'date-fns/fp/subDays/index.js' {
   import { subDays } from 'date-fns/fp'
-  export = subDays
+  export default subDays
 }
 
 declare module 'date-fns/fp/subHours/index.js' {
   import { subHours } from 'date-fns/fp'
-  export = subHours
+  export default subHours
 }
 
 declare module 'date-fns/fp/subISOWeekYears/index.js' {
   import { subISOWeekYears } from 'date-fns/fp'
-  export = subISOWeekYears
+  export default subISOWeekYears
 }
 
 declare module 'date-fns/fp/subMilliseconds/index.js' {
   import { subMilliseconds } from 'date-fns/fp'
-  export = subMilliseconds
+  export default subMilliseconds
 }
 
 declare module 'date-fns/fp/subMinutes/index.js' {
   import { subMinutes } from 'date-fns/fp'
-  export = subMinutes
+  export default subMinutes
 }
 
 declare module 'date-fns/fp/subMonths/index.js' {
   import { subMonths } from 'date-fns/fp'
-  export = subMonths
+  export default subMonths
 }
 
 declare module 'date-fns/fp/subQuarters/index.js' {
   import { subQuarters } from 'date-fns/fp'
-  export = subQuarters
+  export default subQuarters
 }
 
 declare module 'date-fns/fp/subSeconds/index.js' {
   import { subSeconds } from 'date-fns/fp'
-  export = subSeconds
+  export default subSeconds
 }
 
 declare module 'date-fns/fp/subWeeks/index.js' {
   import { subWeeks } from 'date-fns/fp'
-  export = subWeeks
+  export default subWeeks
 }
 
 declare module 'date-fns/fp/subYears/index.js' {
   import { subYears } from 'date-fns/fp'
-  export = subYears
+  export default subYears
 }
 
 declare module 'date-fns/fp/toDate/index.js' {
   import { toDate } from 'date-fns/fp'
-  export = toDate
+  export default toDate
 }
 
 // ECMAScript Module Functions
@@ -13854,872 +13854,872 @@ declare module 'date-fns/locale' {
 
 declare module 'date-fns/locale/af' {
   import { af } from 'date-fns/locale'
-  export = af
+  export default af
 }
 
 declare module 'date-fns/locale/ar' {
   import { ar } from 'date-fns/locale'
-  export = ar
+  export default ar
 }
 
 declare module 'date-fns/locale/ar-DZ' {
   import { arDZ } from 'date-fns/locale'
-  export = arDZ
+  export default arDZ
 }
 
 declare module 'date-fns/locale/ar-SA' {
   import { arSA } from 'date-fns/locale'
-  export = arSA
+  export default arSA
 }
 
 declare module 'date-fns/locale/be' {
   import { be } from 'date-fns/locale'
-  export = be
+  export default be
 }
 
 declare module 'date-fns/locale/bg' {
   import { bg } from 'date-fns/locale'
-  export = bg
+  export default bg
 }
 
 declare module 'date-fns/locale/bn' {
   import { bn } from 'date-fns/locale'
-  export = bn
+  export default bn
 }
 
 declare module 'date-fns/locale/ca' {
   import { ca } from 'date-fns/locale'
-  export = ca
+  export default ca
 }
 
 declare module 'date-fns/locale/cs' {
   import { cs } from 'date-fns/locale'
-  export = cs
+  export default cs
 }
 
 declare module 'date-fns/locale/cy' {
   import { cy } from 'date-fns/locale'
-  export = cy
+  export default cy
 }
 
 declare module 'date-fns/locale/da' {
   import { da } from 'date-fns/locale'
-  export = da
+  export default da
 }
 
 declare module 'date-fns/locale/de' {
   import { de } from 'date-fns/locale'
-  export = de
+  export default de
 }
 
 declare module 'date-fns/locale/el' {
   import { el } from 'date-fns/locale'
-  export = el
+  export default el
 }
 
 declare module 'date-fns/locale/en-CA' {
   import { enCA } from 'date-fns/locale'
-  export = enCA
+  export default enCA
 }
 
 declare module 'date-fns/locale/en-GB' {
   import { enGB } from 'date-fns/locale'
-  export = enGB
+  export default enGB
 }
 
 declare module 'date-fns/locale/en-US' {
   import { enUS } from 'date-fns/locale'
-  export = enUS
+  export default enUS
 }
 
 declare module 'date-fns/locale/eo' {
   import { eo } from 'date-fns/locale'
-  export = eo
+  export default eo
 }
 
 declare module 'date-fns/locale/es' {
   import { es } from 'date-fns/locale'
-  export = es
+  export default es
 }
 
 declare module 'date-fns/locale/et' {
   import { et } from 'date-fns/locale'
-  export = et
+  export default et
 }
 
 declare module 'date-fns/locale/fa-IR' {
   import { faIR } from 'date-fns/locale'
-  export = faIR
+  export default faIR
 }
 
 declare module 'date-fns/locale/fi' {
   import { fi } from 'date-fns/locale'
-  export = fi
+  export default fi
 }
 
 declare module 'date-fns/locale/fil' {
   import { fil } from 'date-fns/locale'
-  export = fil
+  export default fil
 }
 
 declare module 'date-fns/locale/fr' {
   import { fr } from 'date-fns/locale'
-  export = fr
+  export default fr
 }
 
 declare module 'date-fns/locale/fr-CH' {
   import { frCH } from 'date-fns/locale'
-  export = frCH
+  export default frCH
 }
 
 declare module 'date-fns/locale/gl' {
   import { gl } from 'date-fns/locale'
-  export = gl
+  export default gl
 }
 
 declare module 'date-fns/locale/he' {
   import { he } from 'date-fns/locale'
-  export = he
+  export default he
 }
 
 declare module 'date-fns/locale/hr' {
   import { hr } from 'date-fns/locale'
-  export = hr
+  export default hr
 }
 
 declare module 'date-fns/locale/hu' {
   import { hu } from 'date-fns/locale'
-  export = hu
+  export default hu
 }
 
 declare module 'date-fns/locale/id' {
   import { id } from 'date-fns/locale'
-  export = id
+  export default id
 }
 
 declare module 'date-fns/locale/is' {
   import { is } from 'date-fns/locale'
-  export = is
+  export default is
 }
 
 declare module 'date-fns/locale/it' {
   import { it } from 'date-fns/locale'
-  export = it
+  export default it
 }
 
 declare module 'date-fns/locale/ja' {
   import { ja } from 'date-fns/locale'
-  export = ja
+  export default ja
 }
 
 declare module 'date-fns/locale/ka' {
   import { ka } from 'date-fns/locale'
-  export = ka
+  export default ka
 }
 
 declare module 'date-fns/locale/ko' {
   import { ko } from 'date-fns/locale'
-  export = ko
+  export default ko
 }
 
 declare module 'date-fns/locale/lt' {
   import { lt } from 'date-fns/locale'
-  export = lt
+  export default lt
 }
 
 declare module 'date-fns/locale/lv' {
   import { lv } from 'date-fns/locale'
-  export = lv
+  export default lv
 }
 
 declare module 'date-fns/locale/mk' {
   import { mk } from 'date-fns/locale'
-  export = mk
+  export default mk
 }
 
 declare module 'date-fns/locale/ms' {
   import { ms } from 'date-fns/locale'
-  export = ms
+  export default ms
 }
 
 declare module 'date-fns/locale/nb' {
   import { nb } from 'date-fns/locale'
-  export = nb
+  export default nb
 }
 
 declare module 'date-fns/locale/nl' {
   import { nl } from 'date-fns/locale'
-  export = nl
+  export default nl
 }
 
 declare module 'date-fns/locale/nl-BE' {
   import { nlBE } from 'date-fns/locale'
-  export = nlBE
+  export default nlBE
 }
 
 declare module 'date-fns/locale/nn' {
   import { nn } from 'date-fns/locale'
-  export = nn
+  export default nn
 }
 
 declare module 'date-fns/locale/pl' {
   import { pl } from 'date-fns/locale'
-  export = pl
+  export default pl
 }
 
 declare module 'date-fns/locale/pt' {
   import { pt } from 'date-fns/locale'
-  export = pt
+  export default pt
 }
 
 declare module 'date-fns/locale/pt-BR' {
   import { ptBR } from 'date-fns/locale'
-  export = ptBR
+  export default ptBR
 }
 
 declare module 'date-fns/locale/ro' {
   import { ro } from 'date-fns/locale'
-  export = ro
+  export default ro
 }
 
 declare module 'date-fns/locale/ru' {
   import { ru } from 'date-fns/locale'
-  export = ru
+  export default ru
 }
 
 declare module 'date-fns/locale/sk' {
   import { sk } from 'date-fns/locale'
-  export = sk
+  export default sk
 }
 
 declare module 'date-fns/locale/sl' {
   import { sl } from 'date-fns/locale'
-  export = sl
+  export default sl
 }
 
 declare module 'date-fns/locale/sr' {
   import { sr } from 'date-fns/locale'
-  export = sr
+  export default sr
 }
 
 declare module 'date-fns/locale/sv' {
   import { sv } from 'date-fns/locale'
-  export = sv
+  export default sv
 }
 
 declare module 'date-fns/locale/th' {
   import { th } from 'date-fns/locale'
-  export = th
+  export default th
 }
 
 declare module 'date-fns/locale/tr' {
   import { tr } from 'date-fns/locale'
-  export = tr
+  export default tr
 }
 
 declare module 'date-fns/locale/ug' {
   import { ug } from 'date-fns/locale'
-  export = ug
+  export default ug
 }
 
 declare module 'date-fns/locale/uk' {
   import { uk } from 'date-fns/locale'
-  export = uk
+  export default uk
 }
 
 declare module 'date-fns/locale/vi' {
   import { vi } from 'date-fns/locale'
-  export = vi
+  export default vi
 }
 
 declare module 'date-fns/locale/zh-CN' {
   import { zhCN } from 'date-fns/locale'
-  export = zhCN
+  export default zhCN
 }
 
 declare module 'date-fns/locale/zh-TW' {
   import { zhTW } from 'date-fns/locale'
-  export = zhTW
+  export default zhTW
 }
 
 declare module 'date-fns/locale/af/index' {
   import { af } from 'date-fns/locale'
-  export = af
+  export default af
 }
 
 declare module 'date-fns/locale/ar/index' {
   import { ar } from 'date-fns/locale'
-  export = ar
+  export default ar
 }
 
 declare module 'date-fns/locale/ar-DZ/index' {
   import { arDZ } from 'date-fns/locale'
-  export = arDZ
+  export default arDZ
 }
 
 declare module 'date-fns/locale/ar-SA/index' {
   import { arSA } from 'date-fns/locale'
-  export = arSA
+  export default arSA
 }
 
 declare module 'date-fns/locale/be/index' {
   import { be } from 'date-fns/locale'
-  export = be
+  export default be
 }
 
 declare module 'date-fns/locale/bg/index' {
   import { bg } from 'date-fns/locale'
-  export = bg
+  export default bg
 }
 
 declare module 'date-fns/locale/bn/index' {
   import { bn } from 'date-fns/locale'
-  export = bn
+  export default bn
 }
 
 declare module 'date-fns/locale/ca/index' {
   import { ca } from 'date-fns/locale'
-  export = ca
+  export default ca
 }
 
 declare module 'date-fns/locale/cs/index' {
   import { cs } from 'date-fns/locale'
-  export = cs
+  export default cs
 }
 
 declare module 'date-fns/locale/cy/index' {
   import { cy } from 'date-fns/locale'
-  export = cy
+  export default cy
 }
 
 declare module 'date-fns/locale/da/index' {
   import { da } from 'date-fns/locale'
-  export = da
+  export default da
 }
 
 declare module 'date-fns/locale/de/index' {
   import { de } from 'date-fns/locale'
-  export = de
+  export default de
 }
 
 declare module 'date-fns/locale/el/index' {
   import { el } from 'date-fns/locale'
-  export = el
+  export default el
 }
 
 declare module 'date-fns/locale/en-CA/index' {
   import { enCA } from 'date-fns/locale'
-  export = enCA
+  export default enCA
 }
 
 declare module 'date-fns/locale/en-GB/index' {
   import { enGB } from 'date-fns/locale'
-  export = enGB
+  export default enGB
 }
 
 declare module 'date-fns/locale/en-US/index' {
   import { enUS } from 'date-fns/locale'
-  export = enUS
+  export default enUS
 }
 
 declare module 'date-fns/locale/eo/index' {
   import { eo } from 'date-fns/locale'
-  export = eo
+  export default eo
 }
 
 declare module 'date-fns/locale/es/index' {
   import { es } from 'date-fns/locale'
-  export = es
+  export default es
 }
 
 declare module 'date-fns/locale/et/index' {
   import { et } from 'date-fns/locale'
-  export = et
+  export default et
 }
 
 declare module 'date-fns/locale/fa-IR/index' {
   import { faIR } from 'date-fns/locale'
-  export = faIR
+  export default faIR
 }
 
 declare module 'date-fns/locale/fi/index' {
   import { fi } from 'date-fns/locale'
-  export = fi
+  export default fi
 }
 
 declare module 'date-fns/locale/fil/index' {
   import { fil } from 'date-fns/locale'
-  export = fil
+  export default fil
 }
 
 declare module 'date-fns/locale/fr/index' {
   import { fr } from 'date-fns/locale'
-  export = fr
+  export default fr
 }
 
 declare module 'date-fns/locale/fr-CH/index' {
   import { frCH } from 'date-fns/locale'
-  export = frCH
+  export default frCH
 }
 
 declare module 'date-fns/locale/gl/index' {
   import { gl } from 'date-fns/locale'
-  export = gl
+  export default gl
 }
 
 declare module 'date-fns/locale/he/index' {
   import { he } from 'date-fns/locale'
-  export = he
+  export default he
 }
 
 declare module 'date-fns/locale/hr/index' {
   import { hr } from 'date-fns/locale'
-  export = hr
+  export default hr
 }
 
 declare module 'date-fns/locale/hu/index' {
   import { hu } from 'date-fns/locale'
-  export = hu
+  export default hu
 }
 
 declare module 'date-fns/locale/id/index' {
   import { id } from 'date-fns/locale'
-  export = id
+  export default id
 }
 
 declare module 'date-fns/locale/is/index' {
   import { is } from 'date-fns/locale'
-  export = is
+  export default is
 }
 
 declare module 'date-fns/locale/it/index' {
   import { it } from 'date-fns/locale'
-  export = it
+  export default it
 }
 
 declare module 'date-fns/locale/ja/index' {
   import { ja } from 'date-fns/locale'
-  export = ja
+  export default ja
 }
 
 declare module 'date-fns/locale/ka/index' {
   import { ka } from 'date-fns/locale'
-  export = ka
+  export default ka
 }
 
 declare module 'date-fns/locale/ko/index' {
   import { ko } from 'date-fns/locale'
-  export = ko
+  export default ko
 }
 
 declare module 'date-fns/locale/lt/index' {
   import { lt } from 'date-fns/locale'
-  export = lt
+  export default lt
 }
 
 declare module 'date-fns/locale/lv/index' {
   import { lv } from 'date-fns/locale'
-  export = lv
+  export default lv
 }
 
 declare module 'date-fns/locale/mk/index' {
   import { mk } from 'date-fns/locale'
-  export = mk
+  export default mk
 }
 
 declare module 'date-fns/locale/ms/index' {
   import { ms } from 'date-fns/locale'
-  export = ms
+  export default ms
 }
 
 declare module 'date-fns/locale/nb/index' {
   import { nb } from 'date-fns/locale'
-  export = nb
+  export default nb
 }
 
 declare module 'date-fns/locale/nl/index' {
   import { nl } from 'date-fns/locale'
-  export = nl
+  export default nl
 }
 
 declare module 'date-fns/locale/nl-BE/index' {
   import { nlBE } from 'date-fns/locale'
-  export = nlBE
+  export default nlBE
 }
 
 declare module 'date-fns/locale/nn/index' {
   import { nn } from 'date-fns/locale'
-  export = nn
+  export default nn
 }
 
 declare module 'date-fns/locale/pl/index' {
   import { pl } from 'date-fns/locale'
-  export = pl
+  export default pl
 }
 
 declare module 'date-fns/locale/pt/index' {
   import { pt } from 'date-fns/locale'
-  export = pt
+  export default pt
 }
 
 declare module 'date-fns/locale/pt-BR/index' {
   import { ptBR } from 'date-fns/locale'
-  export = ptBR
+  export default ptBR
 }
 
 declare module 'date-fns/locale/ro/index' {
   import { ro } from 'date-fns/locale'
-  export = ro
+  export default ro
 }
 
 declare module 'date-fns/locale/ru/index' {
   import { ru } from 'date-fns/locale'
-  export = ru
+  export default ru
 }
 
 declare module 'date-fns/locale/sk/index' {
   import { sk } from 'date-fns/locale'
-  export = sk
+  export default sk
 }
 
 declare module 'date-fns/locale/sl/index' {
   import { sl } from 'date-fns/locale'
-  export = sl
+  export default sl
 }
 
 declare module 'date-fns/locale/sr/index' {
   import { sr } from 'date-fns/locale'
-  export = sr
+  export default sr
 }
 
 declare module 'date-fns/locale/sv/index' {
   import { sv } from 'date-fns/locale'
-  export = sv
+  export default sv
 }
 
 declare module 'date-fns/locale/th/index' {
   import { th } from 'date-fns/locale'
-  export = th
+  export default th
 }
 
 declare module 'date-fns/locale/tr/index' {
   import { tr } from 'date-fns/locale'
-  export = tr
+  export default tr
 }
 
 declare module 'date-fns/locale/ug/index' {
   import { ug } from 'date-fns/locale'
-  export = ug
+  export default ug
 }
 
 declare module 'date-fns/locale/uk/index' {
   import { uk } from 'date-fns/locale'
-  export = uk
+  export default uk
 }
 
 declare module 'date-fns/locale/vi/index' {
   import { vi } from 'date-fns/locale'
-  export = vi
+  export default vi
 }
 
 declare module 'date-fns/locale/zh-CN/index' {
   import { zhCN } from 'date-fns/locale'
-  export = zhCN
+  export default zhCN
 }
 
 declare module 'date-fns/locale/zh-TW/index' {
   import { zhTW } from 'date-fns/locale'
-  export = zhTW
+  export default zhTW
 }
 
 declare module 'date-fns/locale/af/index.js' {
   import { af } from 'date-fns/locale'
-  export = af
+  export default af
 }
 
 declare module 'date-fns/locale/ar/index.js' {
   import { ar } from 'date-fns/locale'
-  export = ar
+  export default ar
 }
 
 declare module 'date-fns/locale/ar-DZ/index.js' {
   import { arDZ } from 'date-fns/locale'
-  export = arDZ
+  export default arDZ
 }
 
 declare module 'date-fns/locale/ar-SA/index.js' {
   import { arSA } from 'date-fns/locale'
-  export = arSA
+  export default arSA
 }
 
 declare module 'date-fns/locale/be/index.js' {
   import { be } from 'date-fns/locale'
-  export = be
+  export default be
 }
 
 declare module 'date-fns/locale/bg/index.js' {
   import { bg } from 'date-fns/locale'
-  export = bg
+  export default bg
 }
 
 declare module 'date-fns/locale/bn/index.js' {
   import { bn } from 'date-fns/locale'
-  export = bn
+  export default bn
 }
 
 declare module 'date-fns/locale/ca/index.js' {
   import { ca } from 'date-fns/locale'
-  export = ca
+  export default ca
 }
 
 declare module 'date-fns/locale/cs/index.js' {
   import { cs } from 'date-fns/locale'
-  export = cs
+  export default cs
 }
 
 declare module 'date-fns/locale/cy/index.js' {
   import { cy } from 'date-fns/locale'
-  export = cy
+  export default cy
 }
 
 declare module 'date-fns/locale/da/index.js' {
   import { da } from 'date-fns/locale'
-  export = da
+  export default da
 }
 
 declare module 'date-fns/locale/de/index.js' {
   import { de } from 'date-fns/locale'
-  export = de
+  export default de
 }
 
 declare module 'date-fns/locale/el/index.js' {
   import { el } from 'date-fns/locale'
-  export = el
+  export default el
 }
 
 declare module 'date-fns/locale/en-CA/index.js' {
   import { enCA } from 'date-fns/locale'
-  export = enCA
+  export default enCA
 }
 
 declare module 'date-fns/locale/en-GB/index.js' {
   import { enGB } from 'date-fns/locale'
-  export = enGB
+  export default enGB
 }
 
 declare module 'date-fns/locale/en-US/index.js' {
   import { enUS } from 'date-fns/locale'
-  export = enUS
+  export default enUS
 }
 
 declare module 'date-fns/locale/eo/index.js' {
   import { eo } from 'date-fns/locale'
-  export = eo
+  export default eo
 }
 
 declare module 'date-fns/locale/es/index.js' {
   import { es } from 'date-fns/locale'
-  export = es
+  export default es
 }
 
 declare module 'date-fns/locale/et/index.js' {
   import { et } from 'date-fns/locale'
-  export = et
+  export default et
 }
 
 declare module 'date-fns/locale/fa-IR/index.js' {
   import { faIR } from 'date-fns/locale'
-  export = faIR
+  export default faIR
 }
 
 declare module 'date-fns/locale/fi/index.js' {
   import { fi } from 'date-fns/locale'
-  export = fi
+  export default fi
 }
 
 declare module 'date-fns/locale/fil/index.js' {
   import { fil } from 'date-fns/locale'
-  export = fil
+  export default fil
 }
 
 declare module 'date-fns/locale/fr/index.js' {
   import { fr } from 'date-fns/locale'
-  export = fr
+  export default fr
 }
 
 declare module 'date-fns/locale/fr-CH/index.js' {
   import { frCH } from 'date-fns/locale'
-  export = frCH
+  export default frCH
 }
 
 declare module 'date-fns/locale/gl/index.js' {
   import { gl } from 'date-fns/locale'
-  export = gl
+  export default gl
 }
 
 declare module 'date-fns/locale/he/index.js' {
   import { he } from 'date-fns/locale'
-  export = he
+  export default he
 }
 
 declare module 'date-fns/locale/hr/index.js' {
   import { hr } from 'date-fns/locale'
-  export = hr
+  export default hr
 }
 
 declare module 'date-fns/locale/hu/index.js' {
   import { hu } from 'date-fns/locale'
-  export = hu
+  export default hu
 }
 
 declare module 'date-fns/locale/id/index.js' {
   import { id } from 'date-fns/locale'
-  export = id
+  export default id
 }
 
 declare module 'date-fns/locale/is/index.js' {
   import { is } from 'date-fns/locale'
-  export = is
+  export default is
 }
 
 declare module 'date-fns/locale/it/index.js' {
   import { it } from 'date-fns/locale'
-  export = it
+  export default it
 }
 
 declare module 'date-fns/locale/ja/index.js' {
   import { ja } from 'date-fns/locale'
-  export = ja
+  export default ja
 }
 
 declare module 'date-fns/locale/ka/index.js' {
   import { ka } from 'date-fns/locale'
-  export = ka
+  export default ka
 }
 
 declare module 'date-fns/locale/ko/index.js' {
   import { ko } from 'date-fns/locale'
-  export = ko
+  export default ko
 }
 
 declare module 'date-fns/locale/lt/index.js' {
   import { lt } from 'date-fns/locale'
-  export = lt
+  export default lt
 }
 
 declare module 'date-fns/locale/lv/index.js' {
   import { lv } from 'date-fns/locale'
-  export = lv
+  export default lv
 }
 
 declare module 'date-fns/locale/mk/index.js' {
   import { mk } from 'date-fns/locale'
-  export = mk
+  export default mk
 }
 
 declare module 'date-fns/locale/ms/index.js' {
   import { ms } from 'date-fns/locale'
-  export = ms
+  export default ms
 }
 
 declare module 'date-fns/locale/nb/index.js' {
   import { nb } from 'date-fns/locale'
-  export = nb
+  export default nb
 }
 
 declare module 'date-fns/locale/nl/index.js' {
   import { nl } from 'date-fns/locale'
-  export = nl
+  export default nl
 }
 
 declare module 'date-fns/locale/nl-BE/index.js' {
   import { nlBE } from 'date-fns/locale'
-  export = nlBE
+  export default nlBE
 }
 
 declare module 'date-fns/locale/nn/index.js' {
   import { nn } from 'date-fns/locale'
-  export = nn
+  export default nn
 }
 
 declare module 'date-fns/locale/pl/index.js' {
   import { pl } from 'date-fns/locale'
-  export = pl
+  export default pl
 }
 
 declare module 'date-fns/locale/pt/index.js' {
   import { pt } from 'date-fns/locale'
-  export = pt
+  export default pt
 }
 
 declare module 'date-fns/locale/pt-BR/index.js' {
   import { ptBR } from 'date-fns/locale'
-  export = ptBR
+  export default ptBR
 }
 
 declare module 'date-fns/locale/ro/index.js' {
   import { ro } from 'date-fns/locale'
-  export = ro
+  export default ro
 }
 
 declare module 'date-fns/locale/ru/index.js' {
   import { ru } from 'date-fns/locale'
-  export = ru
+  export default ru
 }
 
 declare module 'date-fns/locale/sk/index.js' {
   import { sk } from 'date-fns/locale'
-  export = sk
+  export default sk
 }
 
 declare module 'date-fns/locale/sl/index.js' {
   import { sl } from 'date-fns/locale'
-  export = sl
+  export default sl
 }
 
 declare module 'date-fns/locale/sr/index.js' {
   import { sr } from 'date-fns/locale'
-  export = sr
+  export default sr
 }
 
 declare module 'date-fns/locale/sv/index.js' {
   import { sv } from 'date-fns/locale'
-  export = sv
+  export default sv
 }
 
 declare module 'date-fns/locale/th/index.js' {
   import { th } from 'date-fns/locale'
-  export = th
+  export default th
 }
 
 declare module 'date-fns/locale/tr/index.js' {
   import { tr } from 'date-fns/locale'
-  export = tr
+  export default tr
 }
 
 declare module 'date-fns/locale/ug/index.js' {
   import { ug } from 'date-fns/locale'
-  export = ug
+  export default ug
 }
 
 declare module 'date-fns/locale/uk/index.js' {
   import { uk } from 'date-fns/locale'
-  export = uk
+  export default uk
 }
 
 declare module 'date-fns/locale/vi/index.js' {
   import { vi } from 'date-fns/locale'
-  export = vi
+  export default vi
 }
 
 declare module 'date-fns/locale/zh-CN/index.js' {
   import { zhCN } from 'date-fns/locale'
-  export = zhCN
+  export default zhCN
 }
 
 declare module 'date-fns/locale/zh-TW/index.js' {
   import { zhTW } from 'date-fns/locale'
-  export = zhTW
+  export default zhTW
 }
 
 // ECMAScript Module Locales
