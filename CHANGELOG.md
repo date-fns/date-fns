@@ -8,10 +8,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## [Unreleased]
+## [2.0.0] - 2019-08-20
 
-[See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
-for the list of changes made since `v2.0.0-alpha.1`.
+If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136).
 
 ### Fixed
 
