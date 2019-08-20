@@ -16347,3 +16347,7 @@ interface dateFns {
 
   minTime: number
 }
+
+declare module 'date-fns' {
+  export default dateFns
+}
