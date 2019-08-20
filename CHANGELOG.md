@@ -1731,7 +1731,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.5...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/date-fns/date-fns/compare/v1.28.5...v2.0.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
 [1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
 [1.28.3]: https://github.com/date-fns/date-fns/compare/v1.28.2...v1.28.3
