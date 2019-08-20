@@ -1,10 +1,6 @@
 # ![](https://cdn.rawgit.com/date-fns/date-fns/c5bcd92d04f14da194e6298101a6509b1c3b30f0/docs/logo.svg) date-fns
 
-[🙏 **Please help us to make the best date library for JavaScript. We need your support!**](https://opencollective.com/date-fns)
-
-⚠️ **Warning**: the current master represents v2 pre-release version of the library. [See v1 branch](https://github.com/date-fns/date-fns/tree/v1).
-
-**Pinned**: see [a brief comparison with Moment.js](https://github.com/date-fns/date-fns/issues/275#issuecomment-264934189).
+🔥🔥🔥 **date-fns v2 is out!** 🔥🔥🔥
 
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
