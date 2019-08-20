@@ -1,8 +1,9 @@
+import isDate from '../isDate/index.js'
+import isValid from '../isValid/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import formatters from '../_lib/format/lightFormatters/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import isValid from '../isValid/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -70,6 +71,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} format string contains an unescaped latin alphabet character
+ * @throws {TypeError} The first argument should be a number (timestamp ms) or `Date` instance
  *
  * @example
  * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
@@ -79,6 +81,12 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
+    )
+  }
+
+  if (typeof dirtyDate !== 'number' && !isDate(dirtyDate)) {
+    throw new TypeError(
+      'The first argument should be a number (timestamp ms) or `Date` instance'
     )
   }
 

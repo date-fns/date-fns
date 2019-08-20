@@ -1,4 +1,5 @@
 import isValid from '../isValid/index.js'
+import isDate from '../isDate/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import toDate from '../toDate/index.js'
@@ -313,6 +314,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *   see: https://git.io/fxCyr
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
+ * @throws {TypeError} The first argument should be a number (timestamp ms) or `Date` instance
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -345,6 +347,12 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
+    )
+  }
+
+  if (typeof dirtyDate !== 'number' && !isDate(dirtyDate)) {
+    throw new TypeError(
+      'The first argument should be a number (timestamp ms) or `Date` instance'
     )
   }
 

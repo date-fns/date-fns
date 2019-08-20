@@ -732,6 +732,11 @@ describe('format', function() {
     assert.throws(format.bind(null, 1), TypeError)
   })
 
+  it('throws TypeError exception if the first argument null or undefined', function() {
+    assert.throws(format.bind(null, null, 'yyyy-MM-dd'), TypeError)
+    assert.throws(format.bind(null, undefined, 'yyyy-MM-dd'), TypeError)
+  })
+
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
     it('throws an error if D token is used', () => {
       const block = format.bind(null, date, 'yyyy-MM-D')

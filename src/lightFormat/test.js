@@ -139,4 +139,9 @@ describe('lightFormat', () => {
     assert.throws(lightFormat.bind(null), TypeError)
     assert.throws(lightFormat.bind(null, 1), TypeError)
   })
+
+  it('throws TypeError exception if the first argument null or undefined', function() {
+    assert.throws(lightFormat.bind(null, null, 'yyyy-MM-dd'), TypeError)
+    assert.throws(lightFormat.bind(null, undefined, 'yyyy-MM-dd'), TypeError)
+  })
 })
