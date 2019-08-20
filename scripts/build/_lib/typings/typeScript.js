@@ -163,7 +163,7 @@ function getTypeScriptFPFnModuleDefinition(submodule, fnSuffix, isDefault, fn) {
   const definition = formatBlock`
     declare module '${moduleName}' {
       import {${title}} from 'date-fns${submodule}/fp'
-      export ${isDefault ? 'default' : '='} ${title}
+      export default ${title}
     }
   `
 
@@ -212,7 +212,7 @@ function getTypeScriptLocaleModuleDefinition(
   const definition = formatBlock`
     declare module '${moduleName}' {
       import {${name}} from 'date-fns${submodule}/locale'
-      export ${isDefault ? 'default' : '='} ${name}
+      export default ${name}
     }
   `
 
