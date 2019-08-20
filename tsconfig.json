@@ -19,7 +19,6 @@
     }
   },
   "include": [
-    "test/ts/test.ts",
     "typings.d.ts"
   ],
   "exclude": [
