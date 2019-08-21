@@ -36,7 +36,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (see note 7 below the table).
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   |
