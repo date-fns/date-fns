@@ -2,6 +2,11 @@
 
 🔥🔥🔥 **date-fns v2 is out!** 🔥🔥🔥
 
+⭐️ **Upgrading from v1 to v2?**
+
+- [See the changelog](https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md)
+- Check out [@date-fns/upgrade](https://github.com/date-fns/date-fns-upgrade) and [@date-fns/upgrade-codemod](https://github.com/date-fns/date-fns-upgrade-codemod), they could help you with the upgrade!
+
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
@@ -40,6 +45,12 @@ yarn add date-fns
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
+
+## JavaScript jobs by date-fns
+
+👋 Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend)
+
+✉️ Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
 
 ## License
 
