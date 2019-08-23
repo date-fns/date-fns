@@ -8,6 +8,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.0.1] - 2019-08-23
+
+### Fixed
+
+- [Fix](https://github.com/date-fns/date-fns/pull/1046) `getWeekOfMonth` with `options.weekStartsOn` set to 1 [not working for Sundays](https://github.com/date-fns/date-fns/issues/1040). Kudos to [@waseemahmad31](https://github.com/waseemahmad31)!
+
 ## [2.0.0] - 2019-08-20
 
 If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136).
@@ -1731,7 +1737,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/date-fns/date-fns/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/date-fns/date-fns/compare/v1.28.5...v2.0.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
 [1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
