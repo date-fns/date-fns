@@ -5,9 +5,9 @@ var formatters = {}
 // See https://github.com/date-fns/date-fns/issues/437
 var monthsTokens = ['MMM', 'MMMM']
 monthsTokens.forEach(function (monthToken) {
-  formatters['Do ' + monthToken] = function (date, options) {
+  formatters['io ' + monthToken] = function (date, options) {
     var commonFormatters = options.formatters
-    var dayOfMonthToken = date.getUTCDate() === 1 ? 'Do' : 'D'
+    var dayOfMonthToken = date.getUTCDate() === 1 ? 'io' : 'i'
     var dayOfMonthFormatter = commonFormatters[dayOfMonthToken]
     var monthFormatter = commonFormatters[monthToken]
     return dayOfMonthFormatter(date, options) + ' ' + monthFormatter(date, options)
