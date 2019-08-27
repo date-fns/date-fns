@@ -2,11 +2,9 @@
 
 ## Table of Contents
 
-- [Overview](#usage)
+- [Overview](#overview)
 
-- [`date-fns-tz`](#supported-languages)
-
-- [`date-fns-timezone`](#adding-new-language)
+- [`date-fns-tz`](#date-fns-tz)
 
 ## Overview
 
@@ -59,44 +57,6 @@ const pattern = 'D.M.YYYY HH:mm:ss.SSS [GMT]Z (z)'
 const output = format(zonedDate, pattern, { timeZone })
 ```
 
-### More Info
+### Links
 
 - [API / Usage Scenarios](https://github.com/marnusw/date-fns-tz#time-zone-helpers)
-
-
-## [`date-fns-timezone`](https://www.npmjs.com/package/date-fns-timezone)
-
-Provides parsing and formatting date strings and time zone conversions supporting IANA time zones, 
-following the design of functions in `date-fns`. List of canonical time zone names is provided by 
-[`timezone-support`](https://github.com/prantlf/timezone-support).
-
-The data from `timezone-support` is bundled with the application, but is fairly light-weight
-and allows implementing a complete features set for time zone management.
-
-Compatible with `date-fns` version 1
-
-License: MIT
-
-### Synopsis
-
-```js
-const { listTimeZones } = require('timezone-support')
-const { parseFromTimeZone, formatToTimeZone } = require('date-fns-timezone')
-
-// List canonical time zone names: [ 'Africa/Abidjan', ... ]
-const timeZones = listTimeZones()
-
-// Set the date to "2018-09-01T16:01:36.386Z"
-const utcDate = parseFromTimeZone('2018-09-01 18:01:36.386', { timeZone: 'Europe/Berlin' })
-
-// Set the output to "1.9.2018 18:01:36.386 GMT+02:00 (CEST)"
-const date = new Date('2018-09-01Z16:01:36.386Z')
-const format = 'D.M.YYYY HH:mm:ss.SSS [GMT]Z (z)'
-const output = formatToTimeZone(date, format, { timeZone: 'Europe/Berlin' })
-```
-
-### More Info
-
-- [Installation and Getting Started](https://github.com/prantlf/date-fns-timezone#installation-and-getting-started)
-- [Usage Scenarios](https://github.com/prantlf/date-fns-timezone/blob/master/docs/usage.md#usage-scenarios)
-- [API Reference](https://github.com/prantlf/date-fns-timezone/blob/master/docs/API.md#api-reference)
