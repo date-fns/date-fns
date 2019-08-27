@@ -42,8 +42,8 @@ export default function isDate(value) {
   }
 
   return (
-    value instanceof Date ||
+    (value instanceof Date ||
     (typeof value === 'object' &&
-      Object.prototype.toString.call(value) === '[object Date]')
+      Object.prototype.toString.call(value) === '[object Date]')) && !isNaN(value.getTime())
   )
 }
