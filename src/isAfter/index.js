@@ -18,7 +18,7 @@ import toDate from '../toDate/index.js'
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Is 10 July 1989 after 11 February 1987?
+ * // Is 10 June 1989 after 11 January 1987?
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */

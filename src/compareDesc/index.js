@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
+ * // Compare 11 January 1987 and 10 June 1989 reverse chronologically:
  * var result = compareDesc(new Date(1987, 1, 11), new Date(1989, 6, 10))
  * //=> 1
  *
