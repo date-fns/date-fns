@@ -13752,6 +13752,9 @@ declare module 'date-fns/locale' {
   const gl: Locale
   namespace gl {}
 
+  const gu: Locale
+  namespace gu {}
+
   const he: Locale
   namespace he {}
 
@@ -13975,6 +13978,11 @@ declare module 'date-fns/locale/fr-CH' {
 declare module 'date-fns/locale/gl' {
   import { gl } from 'date-fns/locale'
   export default gl
+}
+
+declare module 'date-fns/locale/gu' {
+  import { gu } from 'date-fns/locale'
+  export default gu
 }
 
 declare module 'date-fns/locale/he' {
@@ -14267,6 +14275,11 @@ declare module 'date-fns/locale/gl/index' {
   export default gl
 }
 
+declare module 'date-fns/locale/gu/index' {
+  import { gu } from 'date-fns/locale'
+  export default gu
+}
+
 declare module 'date-fns/locale/he/index' {
   import { he } from 'date-fns/locale'
   export default he
@@ -14557,6 +14570,11 @@ declare module 'date-fns/locale/gl/index.js' {
   export default gl
 }
 
+declare module 'date-fns/locale/gu/index.js' {
+  import { gu } from 'date-fns/locale'
+  export default gu
+}
+
 declare module 'date-fns/locale/he/index.js' {
   import { he } from 'date-fns/locale'
   export default he
@@ -14800,6 +14818,9 @@ declare module 'date-fns/esm/locale' {
   const gl: Locale
   namespace gl {}
 
+  const gu: Locale
+  namespace gu {}
+
   const he: Locale
   namespace he {}
 
@@ -15023,6 +15044,11 @@ declare module 'date-fns/esm/locale/fr-CH' {
 declare module 'date-fns/esm/locale/gl' {
   import { gl } from 'date-fns/esm/locale'
   export default gl
+}
+
+declare module 'date-fns/esm/locale/gu' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
 }
 
 declare module 'date-fns/esm/locale/he' {
@@ -15315,6 +15341,11 @@ declare module 'date-fns/esm/locale/gl/index' {
   export default gl
 }
 
+declare module 'date-fns/esm/locale/gu/index' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
+}
+
 declare module 'date-fns/esm/locale/he/index' {
   import { he } from 'date-fns/esm/locale'
   export default he
@@ -15603,6 +15634,11 @@ declare module 'date-fns/esm/locale/fr-CH/index.js' {
 declare module 'date-fns/esm/locale/gl/index.js' {
   import { gl } from 'date-fns/esm/locale'
   export default gl
+}
+
+declare module 'date-fns/esm/locale/gu/index.js' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
 }
 
 declare module 'date-fns/esm/locale/he/index.js' {
