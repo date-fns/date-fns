@@ -2,35 +2,35 @@
 
 ## Table of Contents
 
-- [Adding a new locale](#usage)
+- [Adding a new locale](#adding-a-new-locale)
 
   - [Choosing a directory name for a locale](#choosing-a-directory-name-for-a-locale)
 
-  - [index.js](#indexjs)
+  - [index.js](#index.js)
 
   - [localize](#localize)
 
-    - [localize.ordinalNumber](#localizeordinalnumber)
+    - [localize.ordinalNumber](#localize.ordinalnumber)
 
-    - [localize.era and using buildLocalizeFn function](#localizeera-and-using-buildlocalizefn-function)
+    - [localize.era and using buildLocalizeFn function](#localize.era-and-using-buildlocalizefn-function)
 
     - [Formatting localizers](#formatting-localizers)
 
-    - [localize.quarter](#localizequarter)
+    - [localize.quarter](#localize.quarter)
 
-    - [localize.month](#localizemonth)
+    - [localize.month](#localize.month)
 
-    - [localize.day](#localizeday)
+    - [localize.day](#localize.day)
 
-    - [localize.dayPeriod](#localizedayperiod)
+    - [localize.dayPeriod](#localize.dayperiod)
 
   - [formatLong](#formatlong)
 
-    - [formatLong.dateFormats](#formatlongdateformats)
+    - [formatLong.dateFormats](#formatlong.dateformats)
 
-    - [formatLong.timeFormats](#formatlongtimeformats)
+    - [formatLong.timeFormats](#formatlong.timeformats)
 
-    - [formatLong.dateTimeFormats](#formatlongdatetimeformats)
+    - [formatLong.dateTimeFormats](#formatlong.datetimeformats)
 
   - [formatRelative](#formatrelative)
 
