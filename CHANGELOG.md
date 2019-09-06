@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.1.0] - 2019-09-06
+
+Thanks to date-fns contributors: [@ManadayM](https://github.com/ManadayM), [@illuminist](https://github.com/illuminist), [@visualfanatic](https://github.com/visualfanatic), [@vsaarinen](https://github.com/vsaarinen) and at least but not least [@leshakoss](https://github.com/leshakoss)!
+
+### Fixed
+
+- [Set start of the week to the Sunday for Thai locale](https://github.com/date-fns/date-fns/pull/1402).
+- [Fixed month matching in Polish locale](https://github.com/date-fns/date-fns/pull/1404).
+- [Fixed `eachWeekendOfInterval` skipping the first date in the supplied interval](https://github.com/date-fns/date-fns/pull/1407).
+
+### Added
+
+- [Added Gujarati locale](https://github.com/date-fns/date-fns/pull/1400).
+
 ## [2.0.1] - 2019-08-23
 
 ### Fixed
