@@ -83,6 +83,7 @@ declare module.exports: {
   sl: Locale,
   sr: Locale,
   sv: Locale,
+  ta: Locale,
   th: Locale,
   tr: Locale,
   ug: Locale,
