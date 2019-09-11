@@ -74,8 +74,8 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - Don't change the library version.
 
-[Write good commit messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-[CHANGELOG]: https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md
+[write good commit messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+[changelog]: https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md
 
 ## Getting Started
 
@@ -106,8 +106,8 @@ To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
 
 > const toDate = require('./src/toDate')
 undefined
-> toDate('2017-11-17').toString()
-'Fri Nov 17 2017 00:00:00 GMT+0100 (CET)'
+> toDate(1392098430000).toString()
+'Tue Feb 11 2014 01:00:30 GMT-0500 (Eastern Standard Time)'
 >
 ```
 
@@ -129,13 +129,15 @@ Rebuild FP functions, typings and indices by using the following script. It coul
 
 ### Lint the Code
 
-The project follows [JavaScript Standard Style]. To lint the code, run:
+The project follows [Prettier] code style and uses [ESLint] as the linter.
+To lint the code, run:
 
 ```bash
-yarn run lint
+yarn lint
 ```
 
-[JavaScript Standard Style]: http://standardjs.com/
+[prettier]: https://prettier.io/
+[eslint]: https://eslint.org/
 
 ### Use EditorConfig
 
@@ -143,7 +145,7 @@ The project uses [EditorConfig] to define basic coding style guides.
 Please install a plugin for your editor of choice or manually enforce
 the rules listed in [.editorconfig].
 
-[EditorConfig]: http://editorconfig.org
+[editorconfig]: http://editorconfig.org
 [.editorconfig]: https://github.com/date-fns/date-fns.org/blob/master/.editorconfig
 
 ## Documentation

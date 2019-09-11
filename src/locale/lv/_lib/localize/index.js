@@ -203,8 +203,8 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  return dirtyNumber + '.'
+function ordinalNumber(number, _options) {
+  return number + '.'
 }
 
 var localize = {

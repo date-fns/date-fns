@@ -1,10 +1,23 @@
+var accusativeWeekdays = [
+  'vasárnap',
+  'hétfőn',
+  'kedden',
+  'szerdán',
+  'csütörtökön',
+  'pénteken',
+  'szombaton'
+]
 
-var accusativeWeekdays = ['vasárnap', 'hétfőn', 'kedden', 'szerdán', 'csütörtökön', 'pénteken', 'szombaton']
-
-function week (isFuture) {
-  return function (date, baseDate, options) {
+function week(isFuture) {
+  return function(date, _baseDate, _options) {
     var day = date.getUTCDay()
-    return (isFuture ? '' : "'múlt' ") + "'" + accusativeWeekdays[day] + "'" + " p'-kor'"
+    return (
+      (isFuture ? '' : "'múlt' ") +
+      "'" +
+      accusativeWeekdays[day] +
+      "'" +
+      " p'-kor'"
+    )
   }
 }
 var formatRelativeLocale = {
@@ -16,7 +29,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {

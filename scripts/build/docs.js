@@ -36,21 +36,32 @@ function generateDocsFromSource() {
           'no-cache': true
         })[0]
     )
-    .map(doc => ({
-      type: 'jsdoc',
-      kind: 'function',
-      urlId: doc.name,
-      category: doc.category,
-      title: doc.name,
-      description: doc.summary,
-      content: doc
-    }))
+    .map(doc => {
+      const pureTag =
+        doc.customTags && doc.customTags.find(t => t.tag === 'pure')
+      const pure = (pureTag && pureTag.value) !== 'false'
+      return {
+        type: 'jsdoc',
+        kind: 'function',
+        urlId: doc.name,
+        category: doc.category,
+        title: doc.name,
+        description: doc.summary,
+        content: doc,
+        pure
+      }
+    })
     .reduce(
       (array, doc) =>
         array
           .concat(generateFnDoc(doc))
-          .concat(generateFPFnDoc(doc))
-          .concat(generateFPFnWithOptionsDoc(doc) || []),
+          .concat(
+            doc.pure
+              ? [generateFPFnDoc(doc)].concat(
+                  generateFPFnWithOptionsDoc(doc) || []
+                )
+              : []
+          ),
       []
     )
 
@@ -133,7 +144,7 @@ function buildGroupsTemplate(groups) {
 /**
  * Returns promise to list of static docs with its contents.
  */
-function getListOfStaticDocs(staticDocs) {
+function getListOfStaticDocs() {
   return Promise.all(
     docsConfig.staticDocs.map(staticDoc => {
       return fsp
@@ -148,7 +159,7 @@ function getListOfStaticDocs(staticDocs) {
 /**
  * Returns promise to list of shared docs with its contents.
  */
-function generateSharedDocs(sharedDocs) {
+function generateSharedDocs() {
   const docs = docsConfig.sharedDocs
     .map(
       fn =>
@@ -270,7 +281,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
 }
 
 function withOptions(args) {
-  return args[0].name === 'options'
+  return args && args[0].name === 'options'
 }
 
 function generateUsageTabs(isFPFn) {
@@ -318,7 +329,7 @@ function paramsToTree(dirtyParams) {
   }, {})
 
   return params
-    .map((param, index) => {
+    .map(param => {
       const { name, isProperty } = param
 
       const indexOfDot = name.indexOf('.')
@@ -342,7 +353,9 @@ function paramsToTree(dirtyParams) {
 }
 
 function generateSyntaxString(name, args, isFPFn) {
-  if (isFPFn) {
+  if (!args) {
+    return undefined
+  } else if (isFPFn) {
     return args.reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
   } else {
     const argsString = args

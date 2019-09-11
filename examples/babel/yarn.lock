@@ -353,10 +353,12 @@ babel-plugin-check-es2015-constants@^6.22.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-date-fns@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-date-fns/-/babel-plugin-date-fns-0.1.0.tgz#6ad4e66129bc051bec9300a0a256e73a983c04a6"
-  integrity sha1-atTmYSm8BRvskwCgolbnOpg8BKY=
+babel-plugin-date-fns@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-date-fns/-/babel-plugin-date-fns-0.2.1.tgz#17b6e4666a05411857ac04af4318ff5fb72895f2"
+  integrity sha512-XdcYohZbmetNsEHG32QV+uC17J3LKfE5O5/47N+Ee9zR1xdqXPRm/Am1VbGidva7dFpRzXmdk4TYofS9Qq+1Tw==
+  dependencies:
+    lodash.snakecase "^4.1.1"
 
 babel-plugin-minify-constant-folding@^0.0.4:
   version "0.0.4"
@@ -1774,6 +1776,11 @@ lodash.isplainobject@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
   integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
+  integrity sha1-OdcUo1NXFHg3rv1ktdy7Fr7Nj40=
 
 lodash.some@^4.6.0:
   version "4.6.0"

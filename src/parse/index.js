@@ -1,15 +1,16 @@
-import toInteger from '../_lib/toInteger/index.js'
-import assign from '../_lib/assign/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import parsers from './_lib/parsers/index.js'
+import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index.js'
+import assign from '../_lib/assign/index.js'
+import longFormatters from '../_lib/format/longFormatters/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import {
-  isProtectedWeekYearToken,
   isProtectedDayOfYearToken,
+  isProtectedWeekYearToken,
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
+import toInteger from '../_lib/toInteger/index.js'
+import parsers from './_lib/parsers/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -25,6 +26,10 @@ var TIMEZONE_UNIT_PRIORITY = 10
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+
+// This RegExp catches symbols escaped by quotes, and also
+// sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
+var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
 var escapedStringRegExp = /^'(.*?)'?$/
 var doubleQuoteRegExp = /''/g
@@ -49,6 +54,16 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * Format of the format string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
  * with a few additions (see note 5 below the table).
+ *
+ * Not all tokens are compatible. Combinations that don't make sense or could lead to bugs are prohibited
+ * and will throw `RangeError`. For example usage of 24-hour format token with AM/PM token will throw an exception:
+ *
+ * ```javascript
+ * parse('23 AM', 'HH a', new Date())
+ * //=> RangeError: The format string mustn't contain `HH` and `a` at the same time
+ * ```
+ *
+ * See the compatibility table: https://docs.google.com/spreadsheets/d/e/2PACX-1vQOPU3xUhplll6dyoMmVUXHKl_8CRDs6_ueLmex3SoqwhuolkuN3O05l4rqx5h1dKX8eb46Ul-CCSrq/pubhtml?gid=0&single=true
  *
  * Accepted format string patterns:
  * | Unit                            |Prior| Pattern | Result examples                   | Notes |
@@ -186,6 +201,16 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 |     | xxx     | -08:00, +05:30, +00:00            | 2     |
  * |                                 |     | xxxx    | -0800, +0530, +0000, +123456      |       |
  * |                                 |     | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |       |
+ * | Long localized date             |  NA | P       | 05/29/1453                        | 5,8   |
+ * |                                 |     | PP      | May 29, 1453                      |       |
+ * |                                 |     | PPP     | May 29th, 1453                    |       |
+ * |                                 |     | PPPP    | Sunday, May 29th, 1453            | 2,5,8 |
+ * | Long localized time             |  NA | p       | 12:00 AM                          | 5,8   |
+ * |                                 |     | pp      | 12:00:00 AM                       |       |
+ * | Combination of date and time    |  NA | Pp      | 05/29/1453, 12:00 AM              |       |
+ * |                                 |     | PPpp    | May 29, 1453, 12:00:00 AM         |       |
+ * |                                 |     | PPPpp   | May 29th, 1453 at ...             |       |
+ * |                                 |     | PPPPpp  | Sunday, May 29th, 1453 at ...     | 2,5,8 |
  * Notes:
  * 1. "Formatting" units (e.g. formatting quarter) in the default en-US locale
  *    are the same as "stand-alone" units, but are different in some languages.
@@ -218,7 +243,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *    | BC 1 |   1 |   0 |
  *    | BC 2 |   2 |  -1 |
  *
- *    Also `yy` will try to guess the century of two digit year by proximity with `baseDate`:
+ *    Also `yy` will try to guess the century of two digit year by proximity with `backupDate`:
  *
  *    `parse('50', 'yy', new Date(2018, 0, 1)) //=> Sat Jan 01 2050 00:00:00`
  *
@@ -240,6 +265,8 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *    - `I`: ISO week of year
  *    - `R`: ISO week-numbering year
  *    - `o`: ordinal number modifier
+ *    - `P`: long localized date
+ *    - `p`: long localized time
  *
  * 6. `YY` and `YYYY` tokens represent week-numbering years but they are often confused with years.
  *    You should enable `options.useAdditionalWeekYearTokens` to use them. See: https://git.io/fxCyr
@@ -247,22 +274,30 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * 7. `D` and `DD` tokens represent days of the year but they are ofthen confused with days of the month.
  *    You should enable `options.useAdditionalDayOfYearTokens` to use them. See: https://git.io/fxCyr
  *
+ * 8. `P+` tokens do not have a defined priority since they are merely aliases to other tokens based
+ *    on the given locale.
+ *
+ *    using `en-US` locale: `P` => `MM/dd/yyyy`
+ *    using `en-US` locale: `p` => `hh:mm a`
+ *    using `pt-BR` locale: `P` => `dd/MM/yyyy`
+ *    using `pt-BR` locale: `p` => `HH:mm`
+ *
  * Values will be assigned to the date in the descending order of its unit's priority.
  * Units of an equal priority overwrite each other in the order of appearance.
  *
  * If no values of higher priority are parsed (e.g. when parsing string 'January 1st' without a year),
- * the values will be taken from 3rd argument `baseDate` which works as a context of parsing.
+ * the values will be taken from 3rd argument `backupDate` which works as a context of parsing.
  *
- * `baseDate` must be passed for correct work of the function.
- * If you're not sure which `baseDate` to supply, create a new instance of Date:
+ * `backupDate` must be passed for correct work of the function.
+ * If you're not sure which `backupDate` to supply, create a new instance of Date:
  * `parse('02/11/2014', 'MM/dd/yyyy', new Date())`
  * In this case parsing will be done in the context of the current date.
- * If `baseDate` is `Invalid Date` or a value not convertible to valid `Date`,
+ * If `backupDate` is `Invalid Date` or a value not convertible to valid `Date`,
  * then `Invalid Date` will be returned.
  *
  * The result may vary by locale.
  *
- * If `formatString` matches with `dateString` but does not provides tokens, `baseDate` will be returned.
+ * If `formatString` matches with `dateString` but does not provides tokens, `backupDate` will be returned.
  *
  * If parsing failed, `Invalid Date` will be returned.
  * Invalid Date is a Date, whose time value is NaN.
@@ -286,7 +321,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens
- * @param {Date|Number} baseDate - defines values missing from the parsed dateString
+ * @param {Date|Number} backupDate - defines values missing from the parsed dateString
  * @param {Object} [options] - an object with options.
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
@@ -300,10 +335,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr
- * @throws {RangeError} use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr
- * @throws {RangeError} use `d` instead of `D` for formating days of the month; see: https://git.io/fxCyr
- * @throws {RangeError} use `dd` instead of `DD` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
@@ -322,7 +357,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 export default function parse(
   dirtyDateString,
   dirtyFormatString,
-  dirtyBaseDate,
+  dirtyBackupDate,
   dirtyOptions
 ) {
   if (arguments.length < 3) {
@@ -374,7 +409,7 @@ export default function parse(
 
   if (formatString === '') {
     if (dateString === '') {
-      return toDate(dirtyBaseDate)
+      return toDate(dirtyBackupDate)
     } else {
       return new Date(NaN)
     }
@@ -397,7 +432,20 @@ export default function parse(
 
   var i
 
-  var tokens = formatString.match(formattingTokensRegExp)
+  var tokens = formatString
+    .match(longFormattingTokensRegExp)
+    .map(function(substring) {
+      var firstCharacter = substring[0]
+      if (firstCharacter === 'p' || firstCharacter === 'P') {
+        var longFormatter = longFormatters[firstCharacter]
+        return longFormatter(substring, locale.formatLong, subFnOptions)
+      }
+      return substring
+    })
+    .join('')
+    .match(formattingTokensRegExp)
+
+  const usedTokens = []
 
   for (i = 0; i < tokens.length; i++) {
     var token = tokens[i]
@@ -418,6 +466,32 @@ export default function parse(
     var firstCharacter = token[0]
     var parser = parsers[firstCharacter]
     if (parser) {
+      const { incompatibleTokens } = parser
+      if (Array.isArray(incompatibleTokens)) {
+        let incompatibleToken
+        for (let i = 0; i < usedTokens.length; i++) {
+          const usedToken = usedTokens[i].token
+          if (
+            incompatibleTokens.indexOf(usedToken) !== -1 ||
+            usedToken === firstCharacter
+          ) {
+            incompatibleToken = usedTokens[i]
+            break
+          }
+        }
+        if (incompatibleToken) {
+          throw new RangeError(
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
+          )
+        }
+      } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
+        throw new RangeError(
+          `The format string mustn't contain \`${token}\` and any other token at the same time`
+        )
+      }
+
+      usedTokens.push({ token: firstCharacter, fullToken: token })
+
       var parseResult = parser.parse(
         dateString,
         token,
@@ -489,7 +563,7 @@ export default function parse(
       return setterArray[0]
     })
 
-  var date = toDate(dirtyBaseDate)
+  var date = toDate(dirtyBackupDate)
 
   if (isNaN(date)) {
     return new Date(NaN)

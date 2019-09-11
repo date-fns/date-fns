@@ -4,8 +4,6 @@ See [example.js], [fp.js], [misc.js] and [minimal.js] for source code examples.
 
 See [package.json scripts](./package.json) for CLI usage.
 
-See [package.json scripts] for CLI usage.
-
 [example.js]: ./example.js
 [fp.js]: ./fp.js
 [misc.js]: ./misc.js

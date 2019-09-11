@@ -36,6 +36,8 @@ type Locale = {
 }
 
 declare module.exports: {
+  addBusinessDays: (date: Date | number, amount: number) => Date,
+
   addDays: (date: Date | number, amount: number) => Date,
 
   addHours: (date: Date | number, amount: number) => Date,
@@ -74,6 +76,11 @@ declare module.exports: {
   compareAsc: (dateLeft: Date | number, dateRight: Date | number) => number,
 
   compareDesc: (dateLeft: Date | number, dateRight: Date | number) => number,
+
+  differenceInBusinessDays: (
+    dateLeft: Date | number,
+    dateRight: Date | number
+  ) => number,
 
   differenceInCalendarDays: (
     dateLeft: Date | number,
@@ -208,6 +215,10 @@ declare module.exports: {
 
   endOfSecond: (date: Date | number) => Date,
 
+  endOfToday: () => Date,
+
+  endOfTomorrow: () => Date,
+
   endOfWeek: (
     date: Date | number,
     options?: {
@@ -217,6 +228,8 @@ declare module.exports: {
   ) => Date,
 
   endOfYear: (date: Date | number) => Date,
+
+  endOfYesterday: () => Date,
 
   format: (
     date: Date | number,
@@ -247,6 +260,15 @@ declare module.exports: {
       addSuffix?: boolean,
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
       roundingMethod?: 'floor' | 'ceil' | 'round',
+      locale?: Locale
+    }
+  ) => string,
+
+  formatDistanceToNow: (
+    date: Date | number,
+    options?: {
+      includeSeconds?: boolean,
+      addSuffix?: boolean,
       locale?: Locale
     }
   ) => string,
@@ -351,11 +373,15 @@ declare module.exports: {
 
   isFriday: (date: Date | number) => boolean,
 
+  isFuture: (date: Date | number) => boolean,
+
   isLastDayOfMonth: (date: Date | number) => boolean,
 
   isLeapYear: (date: Date | number) => boolean,
 
   isMonday: (date: Date | number) => boolean,
+
+  isPast: (date: Date | number) => boolean,
 
   isSameDay: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 
@@ -391,7 +417,33 @@ declare module.exports: {
 
   isSunday: (date: Date | number) => boolean,
 
+  isThisHour: (date: Date | number) => boolean,
+
+  isThisISOWeek: (date: Date | number) => boolean,
+
+  isThisMinute: (date: Date | number) => boolean,
+
+  isThisMonth: (date: Date | number) => boolean,
+
+  isThisQuarter: (date: Date | number) => boolean,
+
+  isThisSecond: (date: Date | number) => boolean,
+
+  isThisWeek: (
+    date: Date | number,
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ) => boolean,
+
+  isThisYear: (date: Date | number) => boolean,
+
   isThursday: (date: Date | number) => boolean,
+
+  isToday: (date: Date | number) => boolean,
+
+  isTomorrow: (date: Date | number) => boolean,
 
   isTuesday: (date: Date | number) => boolean,
 
@@ -402,6 +454,8 @@ declare module.exports: {
   isWeekend: (date: Date | number) => boolean,
 
   isWithinInterval: (date: Date | number, interval: Interval) => boolean,
+
+  isYesterday: (date: Date | number) => boolean,
 
   lastDayOfDecade: (date: Date | number) => Date,
 
@@ -437,7 +491,7 @@ declare module.exports: {
   parse: (
     dateString: string,
     formatString: string,
-    baseDate: Date | number,
+    backupDate: Date | number,
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
@@ -532,6 +586,10 @@ declare module.exports: {
 
   startOfSecond: (date: Date | number) => Date,
 
+  startOfToday: () => Date,
+
+  startOfTomorrow: () => Date,
+
   startOfWeek: (
     date: Date | number,
     options?: {
@@ -550,6 +608,8 @@ declare module.exports: {
   ) => Date,
 
   startOfYear: (date: Date | number) => Date,
+
+  startOfYesterday: () => Date,
 
   subDays: (date: Date | number, amount: number) => Date,
 
@@ -571,5 +631,9 @@ declare module.exports: {
 
   subYears: (date: Date | number, amount: number) => Date,
 
-  toDate: (argument: Date | number) => Date
+  toDate: (argument: Date | number) => Date,
+
+  maxTime: number,
+
+  minTime: number
 }

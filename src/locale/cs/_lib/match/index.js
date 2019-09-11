@@ -1,47 +1,140 @@
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
 
-var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
+var matchOrdinalNumberPattern = /^(\d+)\.?/i
+var parseOrdinalNumberPattern = /\d+/i
 
-var matchWeekdaysPatterns = {
-  narrow: /^(su|mo|tu|we|th|fr|sa)/i,
-  short: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  long: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+var matchEraPatterns = {
+  narrow: /^(p[řr]ed Kr\.|pred n\. l\.|po Kr\.|n\. l\.)/i,
+  abbreviated: /^(pe[řr]ed Kr\.|pe[řr]ed n\. l\.|po Kr\.|n\. l\.)/i,
+  wide: /^(p[řr]ed Kristem|pred na[šs][íi]m letopo[čc]tem|po Kristu|na[šs]eho letopo[čc]tu)/i
 }
 
-var parseWeekdayPatterns = {
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+var parseEraPatterns = {
+  any: [/^p[řr]/i, /^(po|n)/i]
 }
 
-var matchMonthsPatterns = {
-  short: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  long: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+var matchQuarterPatterns = {
+  narrow: /^[1234]/i,
+  abbreviated: /^[1234]\. [čc]tvrtlet[íi]/i,
+  wide: /^[1234]\. [čc]tvrtlet[íi]/i
+}
+var parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i]
+}
+
+var matchMonthPatterns = {
+  narrow: /^[lúubdkčcszřrlp]/i,
+  abbreviated: /^(led|[úu]no|b[řr]e|dub|kv[ěe]|[čc]vn|[čc]vc|srp|z[áa][řr]|[řr][íi]j|lis|pro)/i,
+  wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven|[čc]ervna|[čc]ervenec|[čc]ervence|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopada?|prosinec|prosince)/i
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^l/i,
+    /^[úu]/i,
+    /^b/i,
+    /^d/i,
+    /^k/i,
+    /^[čc]/i,
+    /^[čc]/i,
+    /^s/i,
+    /^z/i,
+    /^[řr]/i,
+    /^l/i,
+    /^p/i
+  ],
+  any: [
+    /^led/i,
+    /^[úu]n/i,
+    /^brez/i,
+    /^dub/i,
+    /^kvet/i,
+    /^[čc]erv/i,
+    /^[čc]erven/i,
+    /^srp/i,
+    /^z[áa]r/i,
+    /^[řr][íi]j/i,
+    /^list/i,
+    /^pros/i
+  ]
 }
 
-var matchTimesOfDayPatterns = {
-  short: /^(am|pm)/i,
-  long: /^([ap]\.?\s?m\.?)/i
+var matchDayPatterns = {
+  narrow: /^[npuúsčps]/i,
+  short: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
+  abbreviated: /^(ne|po|[úu]t|st|[čc]t|p[áa]|so)/i,
+  wide: /^(ned[ěe]le|pond[ěe]l[íi]|[úu]ter[ýy]|st[řr]eda|[čc]tvrtek|p[áa]tek|sobota)/i
 }
 
-var parseTimeOfDayPatterns = {
-  any: [/^a/i, /^p/i]
+var parseDayPatterns = {
+  narrow: [/^n/i, /^p/i, /^[úu]/i, /^s/i, /^[čc]/i, /^p/i, /^s/i],
+  any: [/^ne/i, /^po/i, /^ut/i, /^st/i, /^[čc]t/i, /^p/i, /^so/i]
+}
+
+var matchDayPeriodPatterns = {
+  narrow: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i,
+  any: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i
+}
+var parseDayPeriodPatterns = {
+  any: {
+    am: /^dopoledne/i,
+    pm: /^odpoledne/i,
+    midnight: /^p[ůu]lnoc/i,
+    noon: /^poledne/i,
+    morning: /r[áa]no/i,
+    afternoon: /odpoledne/i,
+    evening: /ve[čc]er/i,
+    night: /noc/i
+  }
 }
 
 var match = {
-  ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
-  ordinalNumber: parseDecimal,
-  weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
-  weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  months: buildMatchFn(matchMonthsPatterns, 'long'),
-  month: buildParseFn(parseMonthPatterns, 'any'),
-  timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  ordinalNumber: buildMatchPatternFn({
+    matchPattern: matchOrdinalNumberPattern,
+    parsePattern: parseOrdinalNumberPattern,
+    valueCallback: function(value) {
+      return parseInt(value, 10)
+    }
+  }),
+
+  era: buildMatchFn({
+    matchPatterns: matchEraPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseEraPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  quarter: buildMatchFn({
+    matchPatterns: matchQuarterPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseQuarterPatterns,
+    defaultParseWidth: 'any',
+    valueCallback: function(index) {
+      return index + 1
+    }
+  }),
+
+  month: buildMatchFn({
+    matchPatterns: matchMonthPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseMonthPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  day: buildMatchFn({
+    matchPatterns: matchDayPatterns,
+    defaultMatchWidth: 'wide',
+    parsePatterns: parseDayPatterns,
+    defaultParseWidth: 'any'
+  }),
+
+  dayPeriod: buildMatchFn({
+    matchPatterns: matchDayPeriodPatterns,
+    defaultMatchWidth: 'any',
+    parsePatterns: parseDayPeriodPatterns,
+    defaultParseWidth: 'any'
+  })
 }
 
 export default match

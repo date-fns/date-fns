@@ -18,6 +18,19 @@ describe('eachWeekendOfInterval', function() {
     ])
   })
 
+  it('returns all weekends within the interval when starting on a weekend', function() {
+    var result = eachWeekendOfInterval({
+      start: new Date(2018, 8 /* Sept */, 22),
+      end: new Date(2018, 8 /* Sept */, 30)
+    })
+    assert.deepEqual(result, [
+      new Date(2018, 8 /* Sept */, 22),
+      new Date(2018, 8 /* Sept */, 23),
+      new Date(2018, 8 /* Sept */, 29),
+      new Date(2018, 8 /* Sept */, 30)
+    ])
+  })
+
   it('throws `RangeError` invalid interval start date is used', function() {
     // $ExpectedMistake
     var block = eachWeekendOfInterval.bind(null, {

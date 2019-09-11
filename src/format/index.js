@@ -317,10 +317,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr
- * @throws {RangeError} use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr
- * @throws {RangeError} use `d` instead of `D` for formating days of the month; see: https://git.io/fxCyr
- * @throws {RangeError} use `dd` instead of `DD` for formating days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://git.io/fxCyr
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example

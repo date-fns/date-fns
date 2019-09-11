@@ -25,12 +25,9 @@ const locales = listLocales().filter(
   ({ code }) => !outdatedLocales.includes(code)
 )
 
-writeFile('src/index.js', generateIndex(fns))
-writeFile('src/fp/index.js', generateIndex(fpFns))
-writeFile('src/locale/index.js', generateIndex(locales))
-writeFile('src/esm/index.js', generateESMIndex(fns))
-writeFile('src/esm/fp/index.js', generateESMIndex(fpFns))
-writeFile('src/esm/locale/index.js', generateESMIndex(locales))
+writeFile('src/index.js', generateIndex(fns, false, true))
+writeFile('src/fp/index.js', generateIndex(fpFns, true, true))
+writeFile('src/locale/index.js', generateIndex(locales, false, false))
 
 function writeFile(relativePath, content) {
   return fs.writeFileSync(
@@ -39,29 +36,20 @@ function writeFile(relativePath, content) {
   )
 }
 
-function generateIndex(files) {
-  const propertyRequireLines = files.map(
-    fn => `  ${fn.name}: require('${fn.path.replace(/\.js$/, '')}/index.js')`
-  )
-
-  const indexLines = [generatedAutomaticallyMessage]
-    .concat('')
-    .concat('module.exports = {')
-    .concat(propertyRequireLines.join(',\n'))
-    .concat('}')
-    .join('\n')
-
-  return `${indexLines}\n`
-}
-
-function generateESMIndex(files) {
-  const fileLines = files.map(
-    fn =>
-      `export { default as ${fn.name} } from '${fn.path.replace(
-        /\.js$/,
-        ''
-      )}/index.js'`
-  )
+function generateIndex(files, isFP, includeConstants) {
+  const fileLines = files
+    .map(
+      fn =>
+        `export { default as ${fn.name} } from '${fn.path.replace(
+          /\.js$/,
+          ''
+        )}/index.js'`
+    )
+    .concat(
+      includeConstants
+        ? `export * from '${isFP ? '..' : '.'}/constants/index.js'`
+        : []
+    )
 
   const indexLines = [generatedAutomaticallyMessage]
     .concat('')

@@ -51,12 +51,25 @@ export default function getWeekOfMonth(date, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
+  var currentDayOfMonth = getDate(date)
+  if (isNaN(currentDayOfMonth)) {
+    return currentDayOfMonth
+  }
+
   var startWeekDay = getDay(startOfMonth(date))
-  var currentWeekDay = getDay(date)
+  var lastDayOfFirstWeek = 0
 
-  var startWeekDayWithOptions =
-    startWeekDay < weekStartsOn ? 7 - weekStartsOn : startWeekDay
-  var diff = startWeekDayWithOptions > currentWeekDay ? 7 - weekStartsOn : 0
+  if (startWeekDay >= weekStartsOn) {
+    lastDayOfFirstWeek = weekStartsOn + 7 - startWeekDay
+  } else {
+    lastDayOfFirstWeek = weekStartsOn - startWeekDay
+  }
 
-  return Math.ceil((getDate(date) + diff) / 7)
+  var weekNumber = 1
+
+  if (currentDayOfMonth > lastDayOfFirstWeek) {
+    var remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek
+    weekNumber = weekNumber + Math.ceil(remainingDaysAfterFirstWeek / 7)
+  }
+  return weekNumber
 }

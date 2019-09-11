@@ -47,17 +47,16 @@ export default function max(dirtyDatesArray) {
   }
 
   var datesArray
-  // `dirtyDatesArray` is undefined or null
-  if (dirtyDatesArray == null) {
-    datesArray = []
-
-    // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  } else if (typeof dirtyDatesArray.forEach === 'function') {
+  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
+  if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
 
-    // If `dirtyDatesArray` is Array-like Object, convert to Array. Otherwise, make it empty Array
-  } else {
+    // If `dirtyDatesArray` is Array-like Object, convert to Array.
+  } else if (typeof dirtyDatesArray === 'object' && dirtyDatesArray !== null) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
+  } else {
+    // `dirtyDatesArray` is non-iterable, return Invalid Date
+    return new Date(NaN)
   }
 
   var result
@@ -69,5 +68,5 @@ export default function max(dirtyDatesArray) {
     }
   })
 
-  return result
+  return result || new Date(NaN)
 }

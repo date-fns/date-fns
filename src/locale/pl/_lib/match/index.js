@@ -26,7 +26,7 @@ var parseQuarterPatterns = {
 var matchMonthPatterns = {
   narrow: /^[slmkcwpg]/i,
   abbreviated: /^(sty|lut|mar|kwi|maj|cze|lip|sie|wrz|pa(ź|z)|lis|gru)/i,
-  wide: /^(stycze(ń|n)|stycznia|luty|lutego|marzec|marca|kwiecie(ń|n)|kwietnia|maj|maja|czerwiec|czerwca|lipiec|lipca|sierpie(ń|n)|sierpnia|wrzesie(ń|n)|wrze(ś|s)nia|pa(ź|z)dziernik|pa(ź|z)dziernika|listopad|listopada|grudzie(ń|n)|grudnia)/i
+  wide: /^(stycznia|stycze(ń|n)|lutego|luty|marca|marzec|kwietnia|kwiecie(ń|n)|maja|maj|czerwca|czerwiec|lipca|lipiec|sierpnia|sierpie(ń|n)|wrze(ś|s)nia|wrzesie(ń|n)|pa(ź|z)dziernika|pa(ź|z)dziernik|listopada|listopad|grudnia|grudzie(ń|n))/i
 }
 var parseMonthPatterns = {
   narrow: [

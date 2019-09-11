@@ -16,7 +16,7 @@ var formatRelativeLocale = {
     }
 
     var weekday = weekdays[date.getUTCDay()]
-    return "'Pagājušā' " + weekday + " 'plkst.' p"
+    return "'Pagājušā " + weekday + " plkst.' p"
   },
   yesterday: "'Vakar plkst.' p",
   today: "'Šodien plkst.' p",
@@ -27,7 +27,7 @@ var formatRelativeLocale = {
     }
 
     var weekday = weekdays[date.getUTCDay()]
-    return "'Nākamajā' " + weekday + " 'plkst.' p"
+    return "'Nākamajā " + weekday + " plkst.' p"
   },
   other: 'P'
 }

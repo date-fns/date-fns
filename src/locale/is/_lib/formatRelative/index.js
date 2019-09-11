@@ -7,6 +7,6 @@ var formatRelativeLocale = {
   other: 'L'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, _date, _baseDate, _options) {
   return formatRelativeLocale[token]
 }
