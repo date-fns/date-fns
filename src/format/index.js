@@ -29,7 +29,7 @@ var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
 var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'(.*?)'?$/
+var escapedStringRegExp = /^'([^]*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 

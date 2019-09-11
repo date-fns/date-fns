@@ -15,7 +15,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'(.*?)'?$/
+var escapedStringRegExp = /^'([^]*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
