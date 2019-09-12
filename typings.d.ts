@@ -715,13 +715,13 @@ declare module 'date-fns' {
   function set(
     date: Date | number,
     values: {
-      year: number
-      month: number
-      date: number
-      hours: number
-      minutes: number
-      seconds: number
-      milliseconds: number
+      year?: number
+      month?: number
+      date?: number
+      hours?: number
+      minutes?: number
+      seconds?: number
+      milliseconds?: number
     }
   ): Date
   namespace set {}
@@ -7564,13 +7564,13 @@ declare module 'date-fns/esm' {
   function set(
     date: Date | number,
     values: {
-      year: number
-      month: number
-      date: number
-      hours: number
-      minutes: number
-      seconds: number
-      milliseconds: number
+      year?: number
+      month?: number
+      date?: number
+      hours?: number
+      minutes?: number
+      seconds?: number
+      milliseconds?: number
     }
   ): Date
   namespace set {}
@@ -16430,13 +16430,13 @@ interface dateFns {
   set(
     date: Date | number,
     values: {
-      year: number
-      month: number
-      date: number
-      hours: number
-      minutes: number
-      seconds: number
-      milliseconds: number
+      year?: number
+      month?: number
+      date?: number
+      hours?: number
+      minutes?: number
+      seconds?: number
+      milliseconds?: number
     }
   ): Date
 
