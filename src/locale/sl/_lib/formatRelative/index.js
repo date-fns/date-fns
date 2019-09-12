@@ -13,7 +13,7 @@ var formatRelativeLocale = {
         return "'prejšnji' EEEE 'ob' p"
     }
   },
-  yesterday: "'jutri ob' p",
+  yesterday: "'včeraj ob' p",
   today: "'danes ob' p",
   tomorrow: "'jutri ob' p",
   nextWeek: function(date) {
