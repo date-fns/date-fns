@@ -19,13 +19,13 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Object} values - an object with options
- * @param {Number} values.year - the number of years to be set
- * @param {Number} values.month - the number of months to be set
- * @param {Number} values.date - the number of days to be set
- * @param {Number} values.hours - the number of hours to be set
- * @param {Number} values.minutes - the number of minutes to be set
- * @param {Number} values.seconds - the number of seconds to be set
- * @param {Number} values.milliseconds - the number of milliseconds to be set
+ * @param {Number} [values.year] - the number of years to be set
+ * @param {Number} [values.month] - the number of months to be set
+ * @param {Number} [values.date] - the number of days to be set
+ * @param {Number} [values.hours] - the number of hours to be set
+ * @param {Number} [values.minutes] - the number of minutes to be set
+ * @param {Number} [values.seconds] - the number of seconds to be set
+ * @param {Number} [values.milliseconds] - the number of milliseconds to be set
  * @returns {Date} the new date with options set
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `values` must be an object
