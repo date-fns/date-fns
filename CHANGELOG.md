@@ -10,14 +10,15 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.2.0] - 2019-09-12
 
-Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal) and [@SneakyFish5](https://github.com/SneakyFish5).
+Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal) and [@SneakyFish5](https://github.com/SneakyFish5) and [@CarterLi](https://github.com/CarterLi).
 
 ### Added
 
-- [Add new set function](https://github.com/date-fns/date-fns/pull/1398).
+- [Add new `set` function](https://github.com/date-fns/date-fns/pull/1398).
 - [Updated Slovenian (sl) locale for v2](https://github.com/date-fns/date-fns/pull/1418).
 - [Added Tamil (ta) locale](https://github.com/date-fns/date-fns/pull/1411).
 - [Added Hindi (hi) locale](https://github.com/date-fns/date-fns/pull/1409).
+- [Added support of `\n` in `format`, `lightFormat` and `parse`](https://github.com/date-fns/date-fns/pull/1417).
 
 ## [2.1.0] - 2019-09-06
 
