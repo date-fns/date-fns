@@ -8,6 +8,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.2.0] - 2019-09-12
+
+Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal) and [@SneakyFish5](https://github.com/SneakyFish5).
+
+### Added
+
+- [Add new set function](https://github.com/date-fns/date-fns/pull/1398).
+- [Updated Slovenian (sl) locale for v2](https://github.com/date-fns/date-fns/pull/1418).
+- [Added Tamil (ta) locale](https://github.com/date-fns/date-fns/pull/1411).
+- [Added Hindi (hi) locale](https://github.com/date-fns/date-fns/pull/1409).
+
 ## [2.1.0] - 2019-09-06
 
 Thanks to date-fns contributors: [@ManadayM](https://github.com/ManadayM), [@illuminist](https://github.com/illuminist), [@visualfanatic](https://github.com/visualfanatic), [@vsaarinen](https://github.com/vsaarinen) and at least but not least [@leshakoss](https://github.com/leshakoss)!
@@ -1751,7 +1762,9 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.0.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.2.0...HEAD
+[2.2.0]: https://github.com/date-fns/date-fns/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/date-fns/date-fns/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/date-fns/date-fns/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/date-fns/date-fns/compare/v1.28.5...v2.0.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
