@@ -712,6 +712,20 @@ declare module 'date-fns' {
   ): Date
   namespace roundToNearestMinutes {}
 
+  function set(
+    date: Date | number,
+    values: {
+      year: number
+      month: number
+      date: number
+      hours: number
+      minutes: number
+      seconds: number
+      milliseconds: number
+    }
+  ): Date
+  namespace set {}
+
   function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {}
 
@@ -1554,6 +1568,11 @@ declare module 'date-fns/parseISO' {
 declare module 'date-fns/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/set' {
+  import { set } from 'date-fns'
+  export default set
 }
 
 declare module 'date-fns/setDate' {
@@ -2441,6 +2460,11 @@ declare module 'date-fns/roundToNearestMinutes/index' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/set/index' {
+  import { set } from 'date-fns'
+  export default set
+}
+
 declare module 'date-fns/setDate/index' {
   import { setDate } from 'date-fns'
   export default setDate
@@ -3326,6 +3350,11 @@ declare module 'date-fns/roundToNearestMinutes/index.js' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/set/index.js' {
+  import { set } from 'date-fns'
+  export default set
+}
+
 declare module 'date-fns/setDate/index.js' {
   import { setDate } from 'date-fns'
   export default setDate
@@ -4022,6 +4051,9 @@ declare module 'date-fns/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const set: CurriedFn2<Object, Date | number, Date>
+  namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {}
@@ -4845,6 +4877,11 @@ declare module 'date-fns/fp/roundToNearestMinutes' {
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/fp/set' {
+  import { set } from 'date-fns/fp'
+  export default set
 }
 
 declare module 'date-fns/fp/setDate' {
@@ -5752,6 +5789,11 @@ declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/fp/set/index' {
+  import { set } from 'date-fns/fp'
+  export default set
+}
+
 declare module 'date-fns/fp/setDate/index' {
   import { setDate } from 'date-fns/fp'
   export default setDate
@@ -6657,6 +6699,11 @@ declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index.js' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/fp/set/index.js' {
+  import { set } from 'date-fns/fp'
+  export default set
+}
+
 declare module 'date-fns/fp/setDate/index.js' {
   import { setDate } from 'date-fns/fp'
   export default setDate
@@ -7514,6 +7561,20 @@ declare module 'date-fns/esm' {
   ): Date
   namespace roundToNearestMinutes {}
 
+  function set(
+    date: Date | number,
+    values: {
+      year: number
+      month: number
+      date: number
+      hours: number
+      minutes: number
+      seconds: number
+      milliseconds: number
+    }
+  ): Date
+  namespace set {}
+
   function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {}
 
@@ -8356,6 +8417,11 @@ declare module 'date-fns/esm/parseISO' {
 declare module 'date-fns/esm/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/esm/set' {
+  import { set } from 'date-fns/esm'
+  export default set
 }
 
 declare module 'date-fns/esm/setDate' {
@@ -9243,6 +9309,11 @@ declare module 'date-fns/esm/roundToNearestMinutes/index' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/esm/set/index' {
+  import { set } from 'date-fns/esm'
+  export default set
+}
+
 declare module 'date-fns/esm/setDate/index' {
   import { setDate } from 'date-fns/esm'
   export default setDate
@@ -10128,6 +10199,11 @@ declare module 'date-fns/esm/roundToNearestMinutes/index.js' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/esm/set/index.js' {
+  import { set } from 'date-fns/esm'
+  export default set
+}
+
 declare module 'date-fns/esm/setDate/index.js' {
   import { setDate } from 'date-fns/esm'
   export default setDate
@@ -10824,6 +10900,9 @@ declare module 'date-fns/esm/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const set: CurriedFn2<Object, Date | number, Date>
+  namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {}
@@ -11647,6 +11726,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/set' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
 }
 
 declare module 'date-fns/esm/fp/setDate' {
@@ -12554,6 +12638,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/esm/fp/set/index' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
+}
+
 declare module 'date-fns/esm/fp/setDate/index' {
   import { setDate } from 'date-fns/esm/fp'
   export default setDate
@@ -13457,6 +13546,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes/index.js' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index.js' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/set/index.js' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
 }
 
 declare module 'date-fns/esm/fp/setDate/index.js' {
@@ -16330,6 +16424,19 @@ interface dateFns {
     date: Date | number,
     options?: {
       nearestTo?: number
+    }
+  ): Date
+
+  set(
+    date: Date | number,
+    values: {
+      year: number
+      month: number
+      date: number
+      hours: number
+      minutes: number
+      seconds: number
+      milliseconds: number
     }
   ): Date
 

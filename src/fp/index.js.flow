@@ -241,6 +241,7 @@ declare module.exports: {
   parseWithOptions: CurriedFn4<Object, Date | number, string, string, Date>,
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<Object, Date | number, Date>,
+  set: CurriedFn2<Object, Date | number, Date>,
   setDate: CurriedFn2<number, Date | number, Date>,
   setDay: CurriedFn2<number, Date | number, Date>,
   setDayOfYear: CurriedFn2<number, Date | number, Date>,
