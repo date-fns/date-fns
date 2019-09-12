@@ -20,6 +20,15 @@ describe('parse', function() {
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
   })
 
+  it('accepts new line charactor', function() {
+    var result = parse(
+      '2014-04-04\n05:00:00',
+      "yyyy-MM-dd'\n'HH:mm:ss",
+      backupDate
+    )
+    assert.deepEqual(result, new Date(2014, 3 /* Apr */, 4, 5))
+  })
+
   describe('era', function() {
     it('abbreviated', function() {
       var result = parse('10000 BC', 'yyyyy G', backupDate)

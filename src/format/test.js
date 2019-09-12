@@ -50,6 +50,11 @@ describe('format', function() {
     assert(format(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
+  it('accepts new line charactor', function() {
+    var date = new Date(2014, 3, 4, 5)
+    assert.equal(format(date, "yyyy-MM-dd'\n'HH:mm:ss"), '2014-04-04\n05:00:00')
+  })
+
   describe('ordinal numbers', function() {
     it('ordinal day of an ordinal month', function() {
       var result = format(date, "do 'day of the' Mo 'month of' yyyy")
