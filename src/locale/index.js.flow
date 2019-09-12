@@ -58,6 +58,7 @@ declare module.exports: {
   gl: Locale,
   gu: Locale,
   he: Locale,
+  hi: Locale,
   hr: Locale,
   hu: Locale,
   id: Locale,
