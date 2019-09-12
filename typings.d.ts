@@ -13833,6 +13833,9 @@ declare module 'date-fns/locale' {
   const sv: Locale
   namespace sv {}
 
+  const ta: Locale
+  namespace ta {}
+
   const th: Locale
   namespace th {}
 
@@ -14113,6 +14116,11 @@ declare module 'date-fns/locale/sr' {
 declare module 'date-fns/locale/sv' {
   import { sv } from 'date-fns/locale'
   export default sv
+}
+
+declare module 'date-fns/locale/ta' {
+  import { ta } from 'date-fns/locale'
+  export default ta
 }
 
 declare module 'date-fns/locale/th' {
@@ -14410,6 +14418,11 @@ declare module 'date-fns/locale/sv/index' {
   export default sv
 }
 
+declare module 'date-fns/locale/ta/index' {
+  import { ta } from 'date-fns/locale'
+  export default ta
+}
+
 declare module 'date-fns/locale/th/index' {
   import { th } from 'date-fns/locale'
   export default th
@@ -14705,6 +14718,11 @@ declare module 'date-fns/locale/sv/index.js' {
   export default sv
 }
 
+declare module 'date-fns/locale/ta/index.js' {
+  import { ta } from 'date-fns/locale'
+  export default ta
+}
+
 declare module 'date-fns/locale/th/index.js' {
   import { th } from 'date-fns/locale'
   export default th
@@ -14898,6 +14916,9 @@ declare module 'date-fns/esm/locale' {
 
   const sv: Locale
   namespace sv {}
+
+  const ta: Locale
+  namespace ta {}
 
   const th: Locale
   namespace th {}
@@ -15179,6 +15200,11 @@ declare module 'date-fns/esm/locale/sr' {
 declare module 'date-fns/esm/locale/sv' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
+}
+
+declare module 'date-fns/esm/locale/ta' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
 }
 
 declare module 'date-fns/esm/locale/th' {
@@ -15476,6 +15502,11 @@ declare module 'date-fns/esm/locale/sv/index' {
   export default sv
 }
 
+declare module 'date-fns/esm/locale/ta/index' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
+}
+
 declare module 'date-fns/esm/locale/th/index' {
   import { th } from 'date-fns/esm/locale'
   export default th
@@ -15769,6 +15800,11 @@ declare module 'date-fns/esm/locale/sr/index.js' {
 declare module 'date-fns/esm/locale/sv/index.js' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
+}
+
+declare module 'date-fns/esm/locale/ta/index.js' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
 }
 
 declare module 'date-fns/esm/locale/th/index.js' {
