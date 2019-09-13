@@ -51,6 +51,7 @@
     "babel-loader": "8.0.6",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-preset-power-assert": "^3.0.0",
+    "chance": "1.1.0",
     "cloc": "^2.2.0",
     "coveralls": "^3.0.6",
     "eslint": "^5.16.0",
