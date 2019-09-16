@@ -11,22 +11,22 @@ import listLocales from '../../scripts/_lib/listLocales'
 const chance = new Chance(42)
 
 listLocales().forEach(({ name, code }) => {
-  describe(`${name}`, () => {
-    chance.n(chance.date, 10).forEach(date => {
-      it(`parse(format(${date.toISOString()})) = ${date.toISOString()}`, () => {
-        const locale = require(path.join('..', '..', 'src', 'locale', code))
-        const formattedDate = format(
-          date,
-          locale.formatLong.date({ width: 'long' }),
-          { locale }
-        )
+  ;['P', 'PP', 'PPP', 'PPPP'].forEach(formatString => {
+    describe(`${name}, ${formatString} format`, () => {
+      chance.n(chance.date, 10).forEach(date => {
+        it(`parse(format(${date.toLocaleDateString()})) = ${date.toLocaleDateString()}`, () => {
+          const locale = require(path.join('..', '..', 'src', 'locale', code))
+          const formattedDate = format(date, formatString, { locale })
 
-        const parsedDate = parse(formattedDate, 'PPP', date, { locale })
+          const parsedDate = parse(formattedDate, formatString, date, {
+            locale
+          })
 
-        assert.deepEqual(
-          parsedDate.toLocaleDateString(),
-          date.toLocaleDateString()
-        )
+          assert.deepEqual(
+            parsedDate.toLocaleDateString(),
+            date.toLocaleDateString()
+          )
+        })
       })
     })
   })
