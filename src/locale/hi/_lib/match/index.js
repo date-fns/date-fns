@@ -1,8 +1,9 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import localize from '../localize/index.js'
 
-var matchOrdinalNumberPattern = /^\d+\./i
-var parseOrdinalNumberPattern = /\d+/i
+var matchOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
+var parseOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
 
 var matchEraPatterns = {
   narrow: /^(ईसा-पूर्व|ईस्वी)/i,
@@ -24,7 +25,7 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[जफ़माअप्मईजूनजुअगसिअक्तनदि]/i,
-  abbreviated: /^(जन|फ़|मा|अप्|मई|जून|जुल|अग|सित|अक्तू|नव|दिस)/i,
+  abbreviated: /^(जन|फ़र|मार्च|अप्|मई|जून|जुल|अग|सित|अक्तू|नव|दिस)/i,
   wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्तूबर|नवंबर|दिसंबर)/i
 }
 var parseMonthPatterns = {
@@ -43,7 +44,7 @@ var parseMonthPatterns = {
     /^दि/i
   ],
   any: [
-    /^ज/i,
+    /^जन/i,
     /^फ़/i,
     /^मा/i,
     /^अप्/i,
@@ -90,9 +91,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function(value) {
-      return parseInt(value, 10)
-    }
+    valueCallback: localize.localeToNumber
   }),
 
   era: buildMatchFn({
