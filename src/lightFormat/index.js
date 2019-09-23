@@ -71,7 +71,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {
