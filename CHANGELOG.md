@@ -8,9 +8,9 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## [2.2.0] - 2019-09-12
+## [2.2.1] - 2019-09-12
 
-Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal) and [@SneakyFish5](https://github.com/SneakyFish5) and [@CarterLi](https://github.com/CarterLi).
+Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal), [@SneakyFish5](https://github.com/SneakyFish5) and [@CarterLi](https://github.com/CarterLi).
 
 ### Added
 
