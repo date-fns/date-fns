@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(-?(ին|րդ))?/i
+var matchOrdinalNumberPattern = /^(\d+)((-|֊)?(ին|րդ))?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
@@ -16,7 +16,7 @@ var parseEraPatterns = {
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^ք[1234]/i,
-  wide: /^[1234](-ին|֊րդ) քառորդ/i
+  wide: /^[1234]((-|֊)?(ին|րդ)) քառորդ/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
@@ -72,8 +72,8 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^([ap]\.?\s?m\.?|կեսգիշեր|կեսօր|(առավոտը?|ցերեկը?|երեկո(յան)?|գիշերը?))/i,
-  any: /^([ap]\.?\s?m\.?|կեսգիշեր|կեսօր|(առավոտը?|ցերեկը?|երեկո(յան)?|գիշերը?))/i
+  narrow: /^([ap]|կեսգշ|կեսօր|(առավոտը?|ցերեկը?|երեկո(յան)?|գիշերը?))/i,
+  any: /^([ap]\.?\s?m\.?|կեսգիշեր(ին)?|կեսօր(ին)?|(առավոտը?|ցերեկը?|երեկո(յան)?|գիշերը?))/i
 }
 var parseDayPeriodPatterns = {
   any: {
