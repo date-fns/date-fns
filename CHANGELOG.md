@@ -112,157 +112,157 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
   See [this post](https://blog.date-fns.org/post/unicode-tokens-in-date-fns-v2-sreatyki91jg) for more details.
 
-  | Unit                            | Pattern  | Result examples                   |
-  | ------------------------------- | -------- | --------------------------------- |
-  | Era                             | G..GGG   | AD, BC                            |
-  |                                 | GGGG     | Anno Domini, Before Christ        |
-  |                                 | GGGGG    | A, B                              |
-  | Calendar year                   | y        | 44, 1, 1900, 2017                 |
-  |                                 | yo       | 44th, 1st, 0th, 17th              |
-  |                                 | yy       | 44, 01, 00, 17                    |
-  |                                 | yyy      | 044, 001, 1900, 2017              |
-  |                                 | yyyy     | 0044, 0001, 1900, 2017            |
-  |                                 | yyyyy    | ...                               |
-  | Local week-numbering year       | Y        | 44, 1, 1900, 2017                 |
-  |                                 | Yo       | 44th, 1st, 1900th, 2017th         |
-  |                                 | YY       | 44, 01, 00, 17                    |
-  |                                 | YYY      | 044, 001, 1900, 2017              |
-  |                                 | YYYY     | 0044, 0001, 1900, 2017            |
-  |                                 | YYYYY    | ...                               |
-  | ISO week-numbering year         | R        | -43, 0, 1, 1900, 2017             |
-  |                                 | RR       | -43, 00, 01, 1900, 2017           |
-  |                                 | RRR      | -043, 000, 001, 1900, 2017        |
-  |                                 | RRRR     | -0043, 0000, 0001, 1900, 2017     |
-  |                                 | RRRRR    | ...                               |
-  | Extended year                   | u        | -43, 0, 1, 1900, 2017             |
-  |                                 | uu       | -43, 01, 1900, 2017               |
-  |                                 | uuu      | -043, 001, 1900, 2017             |
-  |                                 | uuuu     | -0043, 0001, 1900, 2017           |
-  |                                 | uuuuu    | ...                               |
-  | Quarter (formatting)            | Q        | 1, 2, 3, 4                        |
-  |                                 | Qo       | 1st, 2nd, 3rd, 4th                |
-  |                                 | QQ       | 01, 02, 03, 04                    |
-  |                                 | QQQ      | Q1, Q2, Q3, Q4                    |
-  |                                 | QQQQ     | 1st quarter, 2nd quarter, ...     |
-  |                                 | QQQQQ    | 1, 2, 3, 4                        |
-  | Quarter (stand-alone)           | q        | 1, 2, 3, 4                        |
-  |                                 | qo       | 1st, 2nd, 3rd, 4th                |
-  |                                 | qq       | 01, 02, 03, 04                    |
-  |                                 | qqq      | Q1, Q2, Q3, Q4                    |
-  |                                 | qqqq     | 1st quarter, 2nd quarter, ...     |
-  |                                 | qqqqq    | 1, 2, 3, 4                        |
-  | Month (formatting)              | M        | 1, 2, ..., 12                     |
-  |                                 | Mo       | 1st, 2nd, ..., 12th               |
-  |                                 | MM       | 01, 02, ..., 12                   |
-  |                                 | MMM      | Jan, Feb, ..., Dec                |
-  |                                 | MMMM     | January, February, ..., December  |
-  |                                 | MMMMM    | J, F, ..., D                      |
-  | Month (stand-alone)             | L        | 1, 2, ..., 12                     |
-  |                                 | Lo       | 1st, 2nd, ..., 12th               |
-  |                                 | LL       | 01, 02, ..., 12                   |
-  |                                 | LLL      | Jan, Feb, ..., Dec                |
-  |                                 | LLLL     | January, February, ..., December  |
-  |                                 | LLLLL    | J, F, ..., D                      |
-  | Local week of year              | w        | 1, 2, ..., 53                     |
-  |                                 | wo       | 1st, 2nd, ..., 53th               |
-  |                                 | ww       | 01, 02, ..., 53                   |
-  | ISO week of year                | I        | 1, 2, ..., 53                     |
-  |                                 | Io       | 1st, 2nd, ..., 53th               |
-  |                                 | II       | 01, 02, ..., 53                   |
-  | Day of month                    | d        | 1, 2, ..., 31                     |
-  |                                 | do       | 1st, 2nd, ..., 31st               |
-  |                                 | dd       | 01, 02, ..., 31                   |
-  | Day of year                     | D        | 1, 2, ..., 365, 366               |
-  |                                 | Do       | 1st, 2nd, ..., 365th, 366th       |
-  |                                 | DD       | 01, 02, ..., 365, 366             |
-  |                                 | DDD      | 001, 002, ..., 365, 366           |
-  |                                 | DDDD     | ...                               |
-  | Day of week (formatting)        | E..EEE   | Mon, Tue, Wed, ..., Su            |
-  |                                 | EEEE     | Monday, Tuesday, ..., Sunday      |
-  |                                 | EEEEE    | M, T, W, T, F, S, S               |
-  |                                 | EEEEEE   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | ISO day of week (formatting)    | i        | 1, 2, 3, ..., 7                   |
-  |                                 | io       | 1st, 2nd, ..., 7th                |
-  |                                 | ii       | 01, 02, ..., 07                   |
-  |                                 | iii      | Mon, Tue, Wed, ..., Su            |
-  |                                 | iiii     | Monday, Tuesday, ..., Sunday      |
-  |                                 | iiiii    | M, T, W, T, F, S, S               |
-  |                                 | iiiiii   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | Local day of week (formatting)  | e        | 2, 3, 4, ..., 1                   |
-  |                                 | eo       | 2nd, 3rd, ..., 1st                |
-  |                                 | ee       | 02, 03, ..., 01                   |
-  |                                 | eee      | Mon, Tue, Wed, ..., Su            |
-  |                                 | eeee     | Monday, Tuesday, ..., Sunday      |
-  |                                 | eeeee    | M, T, W, T, F, S, S               |
-  |                                 | eeeeee   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | Local day of week (stand-alone) | c        | 2, 3, 4, ..., 1                   |
-  |                                 | co       | 2nd, 3rd, ..., 1st                |
-  |                                 | cc       | 02, 03, ..., 01                   |
-  |                                 | ccc      | Mon, Tue, Wed, ..., Su            |
-  |                                 | cccc     | Monday, Tuesday, ..., Sunday      |
-  |                                 | ccccc    | M, T, W, T, F, S, S               |
-  |                                 | cccccc   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | AM, PM                          | a..aaa   | AM, PM                            |
-  |                                 | aaaa     | a.m., p.m.                        |
-  |                                 | aaaaa    | a, p                              |
-  | AM, PM, noon, midnight          | b..bbb   | AM, PM, noon, midnight            |
-  |                                 | bbbb     | a.m., p.m., noon, midnight        |
-  |                                 | bbbbb    | a, p, n, mi                       |
-  | Flexible day period             | B..BBB   | at night, in the morning, ...     |
-  |                                 | BBBB     | at night, in the morning, ...     |
-  |                                 | BBBBB    | at night, in the morning, ...     |
-  | Hour [1-12]                     | h        | 1, 2, ..., 11, 12                 |
-  |                                 | ho       | 1st, 2nd, ..., 11th, 12th         |
-  |                                 | hh       | 01, 02, ..., 11, 12               |
-  | Hour [0-23]                     | H        | 0, 1, 2, ..., 23                  |
-  |                                 | Ho       | 0th, 1st, 2nd, ..., 23rd          |
-  |                                 | HH       | 00, 01, 02, ..., 23               |
-  | Hour [0-11]                     | K        | 1, 2, ..., 11, 0                  |
-  |                                 | Ko       | 1st, 2nd, ..., 11th, 0th          |
-  |                                 | KK       | 1, 2, ..., 11, 0                  |
-  | Hour [1-24]                     | k        | 24, 1, 2, ..., 23                 |
-  |                                 | ko       | 24th, 1st, 2nd, ..., 23rd         |
-  |                                 | kk       | 24, 01, 02, ..., 23               |
-  | Minute                          | m        | 0, 1, ..., 59                     |
-  |                                 | mo       | 0th, 1st, ..., 59th               |
-  |                                 | mm       | 00, 01, ..., 59                   |
-  | Second                          | s        | 0, 1, ..., 59                     |
-  |                                 | so       | 0th, 1st, ..., 59th               |
-  |                                 | ss       | 00, 01, ..., 59                   |
-  | Fraction of second              | S        | 0, 1, ..., 9                      |
-  |                                 | SS       | 00, 01, ..., 99                   |
-  |                                 | SSS      | 000, 0001, ..., 999               |
-  |                                 | SSSS     | ...                               |
-  | Timezone (ISO-8601 w/ Z)        | X        | -08, +0530, Z                     |
-  |                                 | XX       | -0800, +0530, Z                   |
-  |                                 | XXX      | -08:00, +05:30, Z                 |
-  |                                 | XXXX     | -0800, +0530, Z, +123456          |
-  |                                 | XXXXX    | -08:00, +05:30, Z, +12:34:56      |
-  | Timezone (ISO-8601 w/o Z)       | x        | -08, +0530, +00                   |
-  |                                 | xx       | -0800, +0530, +0000               |
-  |                                 | xxx      | -08:00, +05:30, +00:00            |
-  |                                 | xxxx     | -0800, +0530, +0000, +123456      |
-  |                                 | xxxxx    | -08:00, +05:30, +00:00, +12:34:56 |
-  | Timezone (GMT)                  | O...OOO  | GMT-8, GMT+5:30, GMT+0            |
-  |                                 | OOOO     | GMT-08:00, GMT+05:30, GMT+00:00   |
-  | Timezone (specific non-locat.)  | z...zzz  | GMT-8, GMT+5:30, GMT+0            |
-  |                                 | zzzz     | GMT-08:00, GMT+05:30, GMT+00:00   |
-  | Seconds timestamp               | t        | 512969520                         |
-  |                                 | tt       | ...                               |
-  | Milliseconds timestamp          | T        | 512969520900                      |
-  |                                 | TT       | ...                               |
-  | Long localized date             | P        | 5/29/53                           |
-  |                                 | PP       | May 29, 1453                      |
-  |                                 | PPP      | May 29th, 1453                    |
-  |                                 | PPPP     | Sunday, May 29th, 1453            |
-  | Long localized time             | p        | 12:00 AM                          |
-  |                                 | pp       | 12:00:00 AM                       |
-  |                                 | ppp      | 12:00:00 AM GMT+2                 |
-  |                                 | pppp     | 12:00:00 AM GMT+02:00             |
-  | Combination of date and time    | Pp       | 5/29/53, 12:00 AM                 |
-  |                                 | PPpp     | May 29, 1453, 12:00 AM            |
-  |                                 | PPPppp   | May 29th, 1453 at ...             |
-  |                                 | PPPPpppp | Sunday, May 29th, 1453 at ...     |
+  | Unit                            | v2 Pattern | v1 Pattern | Result examples                   |
+  | ------------------------------- | ---------- | ---------- | --------------------------------- |
+  | Era                             | G..GGG     |            | AD, BC                            |
+  |                                 | GGGG       |            | Anno Domini, Before Christ        |
+  |                                 | GGGGG      |            | A, B                              |
+  | Calendar year                   | y          |            | 44, 1, 1900, 2017                 |
+  |                                 | yo         |            | 44th, 1st, 0th, 17th              |
+  |                                 | yy         | YY         | 44, 01, 00, 17                    |
+  |                                 | yyy        |            | 044, 001, 1900, 2017              |
+  |                                 | yyyy       | YYYY       | 0044, 0001, 1900, 2017            |
+  |                                 | yyyyy      |            | ...                               |
+  | Local week-numbering year       | Y          |            | 44, 1, 1900, 2017                 |
+  |                                 | Yo         |            | 44th, 1st, 1900th, 2017th         |
+  |                                 | YY         |            | 44, 01, 00, 17                    |
+  |                                 | YYY        |            | 044, 001, 1900, 2017              |
+  |                                 | YYYY       |            | 0044, 0001, 1900, 2017            |
+  |                                 | YYYYY      |            | ...                               |
+  | ISO week-numbering year         | R          |            | -43, 0, 1, 1900, 2017             |
+  |                                 | RR         | GG         | -43, 00, 01, 1900, 2017           |
+  |                                 | RRR        |            | -043, 000, 001, 1900, 2017        |
+  |                                 | RRRR       | GGGG       | -0043, 0000, 0001, 1900, 2017     |
+  |                                 | RRRRR      |            | ...                               |
+  | Extended year                   | u          |            | -43, 0, 1, 1900, 2017             |
+  |                                 | uu         |            | -43, 01, 1900, 2017               |
+  |                                 | uuu        |            | -043, 001, 1900, 2017             |
+  |                                 | uuuu       |            | -0043, 0001, 1900, 2017           |
+  |                                 | uuuuu      |            | ...                               |
+  | Quarter (formatting)            | Q          |            | 1, 2, 3, 4                        |
+  |                                 | Qo         |            | 1st, 2nd, 3rd, 4th                |
+  |                                 | QQ         |            | 01, 02, 03, 04                    |
+  |                                 | QQQ        |            | Q1, Q2, Q3, Q4                    |
+  |                                 | QQQQ       |            | 1st quarter, 2nd quarter, ...     |
+  |                                 | QQQQQ      |            | 1, 2, 3, 4                        |
+  | Quarter (stand-alone)           | q          | Q          | 1, 2, 3, 4                        |
+  |                                 | qo         | Qo         | 1st, 2nd, 3rd, 4th                |
+  |                                 | qq         |            | 01, 02, 03, 04                    |
+  |                                 | qqq        |            | Q1, Q2, Q3, Q4                    |
+  |                                 | qqqq       |            | 1st quarter, 2nd quarter, ...     |
+  |                                 | qqqqq      |            | 1, 2, 3, 4                        |
+  | Month (formatting)              | M          |            | 1, 2, ..., 12                     |
+  |                                 | Mo         |            | 1st, 2nd, ..., 12th               |
+  |                                 | MM         |            | 01, 02, ..., 12                   |
+  |                                 | MMM        |            | Jan, Feb, ..., Dec                |
+  |                                 | MMMM       |            | January, February, ..., December  |
+  |                                 | MMMMM      |            | J, F, ..., D                      |
+  | Month (stand-alone)             | L          | M          | 1, 2, ..., 12                     |
+  |                                 | Lo         |            | 1st, 2nd, ..., 12th               |
+  |                                 | LL         | MM         | 01, 02, ..., 12                   |
+  |                                 | LLL        | MMM        | Jan, Feb, ..., Dec                |
+  |                                 | LLLL       | MMMM       | January, February, ..., December  |
+  |                                 | LLLLL      |            | J, F, ..., D                      |
+  | Local week of year              | w          |            | 1, 2, ..., 53                     |
+  |                                 | wo         |            | 1st, 2nd, ..., 53th               |
+  |                                 | ww         |            | 01, 02, ..., 53                   |
+  | ISO week of year                | I          | W          | 1, 2, ..., 53                     |
+  |                                 | Io         | Wo         | 1st, 2nd, ..., 53th               |
+  |                                 | II         | WW         | 01, 02, ..., 53                   |
+  | Day of month                    | d          | D          | 1, 2, ..., 31                     |
+  |                                 | do         | Do         | 1st, 2nd, ..., 31st               |
+  |                                 | dd         | DD         | 01, 02, ..., 31                   |
+  | Day of year                     | D          | DDD        | 1, 2, ..., 365, 366               |
+  |                                 | Do         | DDDo       | 1st, 2nd, ..., 365th, 366th       |
+  |                                 | DD         |            | 01, 02, ..., 365, 366             |
+  |                                 | DDD        | DDDD       | 001, 002, ..., 365, 366           |
+  |                                 | DDDD       |            | ...                               |
+  | Day of week (formatting)        | E..EEE     |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | EEEE       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | EEEEE      |            | M, T, W, T, F, S, S               |
+  |                                 | EEEEEE     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | ISO day of week (formatting)    | i          | E          | 1, 2, 3, ..., 7                   |
+  |                                 | io         | do         | 1st, 2nd, ..., 7th                |
+  |                                 | ii         |            | 01, 02, ..., 07                   |
+  |                                 | iii        | ddd        | Mon, Tue, Wed, ..., Su            |
+  |                                 | iiii       | dddd       | Monday, Tuesday, ..., Sunday      |
+  |                                 | iiiii      |            | M, T, W, T, F, S, S               |
+  |                                 | iiiiii     | dd         | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | Local day of week (formatting)  | e          |            | 2, 3, 4, ..., 1                   |
+  |                                 | eo         |            | 2nd, 3rd, ..., 1st                |
+  |                                 | ee         |            | 02, 03, ..., 01                   |
+  |                                 | eee        |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | eeee       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | eeeee      |            | M, T, W, T, F, S, S               |
+  |                                 | eeeeee     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | Local day of week (stand-alone) | c          |            | 2, 3, 4, ..., 1                   |
+  |                                 | co         |            | 2nd, 3rd, ..., 1st                |
+  |                                 | cc         |            | 02, 03, ..., 01                   |
+  |                                 | ccc        |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | cccc       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | ccccc      |            | M, T, W, T, F, S, S               |
+  |                                 | cccccc     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | AM, PM                          | a..aaa     | A          | AM, PM                            |
+  |                                 | aaaa       | aa         | a.m., p.m.                        |
+  |                                 | aaaaa      |            | a, p                              |
+  | AM, PM, noon, midnight          | b..bbb     |            | AM, PM, noon, midnight            |
+  |                                 | bbbb       |            | a.m., p.m., noon, midnight        |
+  |                                 | bbbbb      |            | a, p, n, mi                       |
+  | Flexible day period             | B..BBB     |            | at night, in the morning, ...     |
+  |                                 | BBBB       |            | at night, in the morning, ...     |
+  |                                 | BBBBB      |            | at night, in the morning, ...     |
+  | Hour [1-12]                     | h          |            | 1, 2, ..., 11, 12                 |
+  |                                 | ho         |            | 1st, 2nd, ..., 11th, 12th         |
+  |                                 | hh         |            | 01, 02, ..., 11, 12               |
+  | Hour [0-23]                     | H          |            | 0, 1, 2, ..., 23                  |
+  |                                 | Ho         |            | 0th, 1st, 2nd, ..., 23rd          |
+  |                                 | HH         |            | 00, 01, 02, ..., 23               |
+  | Hour [0-11]                     | K          |            | 1, 2, ..., 11, 0                  |
+  |                                 | Ko         |            | 1st, 2nd, ..., 11th, 0th          |
+  |                                 | KK         |            | 1, 2, ..., 11, 0                  |
+  | Hour [1-24]                     | k          |            | 24, 1, 2, ..., 23                 |
+  |                                 | ko         |            | 24th, 1st, 2nd, ..., 23rd         |
+  |                                 | kk         |            | 24, 01, 02, ..., 23               |
+  | Minute                          | m          |            | 0, 1, ..., 59                     |
+  |                                 | mo         |            | 0th, 1st, ..., 59th               |
+  |                                 | mm         |            | 00, 01, ..., 59                   |
+  | Second                          | s          |            | 0, 1, ..., 59                     |
+  |                                 | so         |            | 0th, 1st, ..., 59th               |
+  |                                 | ss         |            | 00, 01, ..., 59                   |
+  | Fraction of second              | S          |            | 0, 1, ..., 9                      |
+  |                                 | SS         |            | 00, 01, ..., 99                   |
+  |                                 | SSS        |            | 000, 0001, ..., 999               |
+  |                                 | SSSS       |            | ...                               |
+  | Timezone (ISO-8601 w/ Z)        | X          |            | -08, +0530, Z                     |
+  |                                 | XX         |            | -0800, +0530, Z                   |
+  |                                 | XXX        |            | -08:00, +05:30, Z                 |
+  |                                 | XXXX       |            | -0800, +0530, Z, +123456          |
+  |                                 | XXXXX      |            | -08:00, +05:30, Z, +12:34:56      |
+  | Timezone (ISO-8601 w/o Z)       | x          |            | -08, +0530, +00                   |
+  |                                 | xx         | ZZ         | -0800, +0530, +0000               |
+  |                                 | xxx        | Z          | -08:00, +05:30, +00:00            |
+  |                                 | xxxx       |            | -0800, +0530, +0000, +123456      |
+  |                                 | xxxxx      |            | -08:00, +05:30, +00:00, +12:34:56 |
+  | Timezone (GMT)                  | O...OOO    |            | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | OOOO       |            | GMT-08:00, GMT+05:30, GMT+00:00   |
+  | Timezone (specific non-locat.)  | z...zzz    |            | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | zzzz       |            | GMT-08:00, GMT+05:30, GMT+00:00   |
+  | Seconds timestamp               | t          | X          | 512969520                         |
+  |                                 | tt         |            | ...                               |
+  | Milliseconds timestamp          | T          | x          | 512969520900                      |
+  |                                 | TT         |            | ...                               |
+  | Long localized date             | P          |            | 5/29/53                           |
+  |                                 | PP         |            | May 29, 1453                      |
+  |                                 | PPP        |            | May 29th, 1453                    |
+  |                                 | PPPP       |            | Sunday, May 29th, 1453            |
+  | Long localized time             | p          |            | 12:00 AM                          |
+  |                                 | pp         |            | 12:00:00 AM                       |
+  |                                 | ppp        |            | 12:00:00 AM GMT+2                 |
+  |                                 | pppp       |            | 12:00:00 AM GMT+02:00             |
+  | Combination of date and time    | Pp         |            | 5/29/53, 12:00 AM                 |
+  |                                 | PPpp       |            | May 29, 1453, 12:00 AM            |
+  |                                 | PPPppp     |            | May 29th, 1453 at ...             |
+  |                                 | PPPPpppp   |            | Sunday, May 29th, 1453 at ...     |
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
   `format` now throws RangeError if it encounters an unescaped latin character
