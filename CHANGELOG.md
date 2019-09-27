@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.4.0] - 2019-09-27
+
+This release brought to you by these amazing people: [@lovelovedokidoki](https://github.com/lovelovedokidoki), [@alexigityan](https://github.com/alexigityan), [@kalekseev](https://github.com/kalekseev) and [@andybangs](https://github.com/andybangs). You rock!
+
+### Fixed
+
+- [Fixed Vietnamese parsing patterns](https://github.com/date-fns/date-fns/pull/1445).
+- [Fixed Czech parsing regexes](https://github.com/date-fns/date-fns/pull/1446).
+- [Fixed offset for Eastern Hemisphere in `parseISO`](https://github.com/date-fns/date-fns/pull/1450).
+
+### Added
+
+- [Added Armenian locale support](https://github.com/date-fns/date-fns/pull/1448).
+
 ## [2.3.0] - 2019-09-24
 
 Huge thanks to [@lovelovedokidoki](https://github.com/lovelovedokidoki) who improved 8 (!) locales in an unstoppable open-source rampage and [@VesterDe](https://github.com/VesterDe) for fixing Slovenian locale 👏
@@ -1781,7 +1795,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.3.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.4.0...HEAD
+[2.4.0]: https://github.com/date-fns/date-fns/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/date-fns/date-fns/compare/v2.2.1...v2.3.0
 [2.2.1]: https://github.com/date-fns/date-fns/compare/v2.1.0...v2.2.1
 [2.1.0]: https://github.com/date-fns/date-fns/compare/v2.0.1...v2.1.0
