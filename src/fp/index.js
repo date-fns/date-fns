@@ -203,6 +203,7 @@ export {
 export {
   default as roundToNearestMinutesWithOptions
 } from './roundToNearestMinutesWithOptions/index.js'
+export { default as set } from './set/index.js'
 export { default as setDate } from './setDate/index.js'
 export { default as setDay } from './setDay/index.js'
 export { default as setDayOfYear } from './setDayOfYear/index.js'

@@ -15,7 +15,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'(.*?)'?$/
+var escapedStringRegExp = /^'([^]*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
@@ -36,7 +36,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (see note 7 below the table).
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   |
@@ -72,7 +71,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {

@@ -37,7 +37,8 @@ cd - || exit
 
 ./scripts/build/docs.js
 ./scripts/release/updateFirebase.js
-if [ "$IS_PRE_RELEASE" = false ]
-then
-  ./scripts/release/tweet.js
-fi
+# TODO: Reanimate it
+# if [ "$IS_PRE_RELEASE" = false ]
+# then
+#   ./scripts/release/tweet.js
+# fi

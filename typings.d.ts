@@ -712,6 +712,20 @@ declare module 'date-fns' {
   ): Date
   namespace roundToNearestMinutes {}
 
+  function set(
+    date: Date | number,
+    values: {
+      year?: number
+      month?: number
+      date?: number
+      hours?: number
+      minutes?: number
+      seconds?: number
+      milliseconds?: number
+    }
+  ): Date
+  namespace set {}
+
   function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {}
 
@@ -1554,6 +1568,11 @@ declare module 'date-fns/parseISO' {
 declare module 'date-fns/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/set' {
+  import { set } from 'date-fns'
+  export default set
 }
 
 declare module 'date-fns/setDate' {
@@ -2441,6 +2460,11 @@ declare module 'date-fns/roundToNearestMinutes/index' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/set/index' {
+  import { set } from 'date-fns'
+  export default set
+}
+
 declare module 'date-fns/setDate/index' {
   import { setDate } from 'date-fns'
   export default setDate
@@ -3326,6 +3350,11 @@ declare module 'date-fns/roundToNearestMinutes/index.js' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/set/index.js' {
+  import { set } from 'date-fns'
+  export default set
+}
+
 declare module 'date-fns/setDate/index.js' {
   import { setDate } from 'date-fns'
   export default setDate
@@ -4022,6 +4051,9 @@ declare module 'date-fns/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const set: CurriedFn2<Object, Date | number, Date>
+  namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {}
@@ -4845,6 +4877,11 @@ declare module 'date-fns/fp/roundToNearestMinutes' {
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/fp/set' {
+  import { set } from 'date-fns/fp'
+  export default set
 }
 
 declare module 'date-fns/fp/setDate' {
@@ -5752,6 +5789,11 @@ declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/fp/set/index' {
+  import { set } from 'date-fns/fp'
+  export default set
+}
+
 declare module 'date-fns/fp/setDate/index' {
   import { setDate } from 'date-fns/fp'
   export default setDate
@@ -6657,6 +6699,11 @@ declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index.js' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/fp/set/index.js' {
+  import { set } from 'date-fns/fp'
+  export default set
+}
+
 declare module 'date-fns/fp/setDate/index.js' {
   import { setDate } from 'date-fns/fp'
   export default setDate
@@ -7514,6 +7561,20 @@ declare module 'date-fns/esm' {
   ): Date
   namespace roundToNearestMinutes {}
 
+  function set(
+    date: Date | number,
+    values: {
+      year?: number
+      month?: number
+      date?: number
+      hours?: number
+      minutes?: number
+      seconds?: number
+      milliseconds?: number
+    }
+  ): Date
+  namespace set {}
+
   function setDate(date: Date | number, dayOfMonth: number): Date
   namespace setDate {}
 
@@ -8356,6 +8417,11 @@ declare module 'date-fns/esm/parseISO' {
 declare module 'date-fns/esm/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/esm/set' {
+  import { set } from 'date-fns/esm'
+  export default set
 }
 
 declare module 'date-fns/esm/setDate' {
@@ -9243,6 +9309,11 @@ declare module 'date-fns/esm/roundToNearestMinutes/index' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/esm/set/index' {
+  import { set } from 'date-fns/esm'
+  export default set
+}
+
 declare module 'date-fns/esm/setDate/index' {
   import { setDate } from 'date-fns/esm'
   export default setDate
@@ -10128,6 +10199,11 @@ declare module 'date-fns/esm/roundToNearestMinutes/index.js' {
   export default roundToNearestMinutes
 }
 
+declare module 'date-fns/esm/set/index.js' {
+  import { set } from 'date-fns/esm'
+  export default set
+}
+
 declare module 'date-fns/esm/setDate/index.js' {
   import { setDate } from 'date-fns/esm'
   export default setDate
@@ -10824,6 +10900,9 @@ declare module 'date-fns/esm/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const set: CurriedFn2<Object, Date | number, Date>
+  namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
   namespace setDate {}
@@ -11647,6 +11726,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/set' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
 }
 
 declare module 'date-fns/esm/fp/setDate' {
@@ -12554,6 +12638,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/esm/fp/set/index' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
+}
+
 declare module 'date-fns/esm/fp/setDate/index' {
   import { setDate } from 'date-fns/esm/fp'
   export default setDate
@@ -13459,6 +13548,11 @@ declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index.js' {
   export default roundToNearestMinutesWithOptions
 }
 
+declare module 'date-fns/esm/fp/set/index.js' {
+  import { set } from 'date-fns/esm/fp'
+  export default set
+}
+
 declare module 'date-fns/esm/fp/setDate/index.js' {
   import { setDate } from 'date-fns/esm/fp'
   export default setDate
@@ -13752,8 +13846,14 @@ declare module 'date-fns/locale' {
   const gl: Locale
   namespace gl {}
 
+  const gu: Locale
+  namespace gu {}
+
   const he: Locale
   namespace he {}
+
+  const hi: Locale
+  namespace hi {}
 
   const hr: Locale
   namespace hr {}
@@ -13829,6 +13929,9 @@ declare module 'date-fns/locale' {
 
   const sv: Locale
   namespace sv {}
+
+  const ta: Locale
+  namespace ta {}
 
   const th: Locale
   namespace th {}
@@ -13977,9 +14080,19 @@ declare module 'date-fns/locale/gl' {
   export default gl
 }
 
+declare module 'date-fns/locale/gu' {
+  import { gu } from 'date-fns/locale'
+  export default gu
+}
+
 declare module 'date-fns/locale/he' {
   import { he } from 'date-fns/locale'
   export default he
+}
+
+declare module 'date-fns/locale/hi' {
+  import { hi } from 'date-fns/locale'
+  export default hi
 }
 
 declare module 'date-fns/locale/hr' {
@@ -14105,6 +14218,11 @@ declare module 'date-fns/locale/sr' {
 declare module 'date-fns/locale/sv' {
   import { sv } from 'date-fns/locale'
   export default sv
+}
+
+declare module 'date-fns/locale/ta' {
+  import { ta } from 'date-fns/locale'
+  export default ta
 }
 
 declare module 'date-fns/locale/th' {
@@ -14267,9 +14385,19 @@ declare module 'date-fns/locale/gl/index' {
   export default gl
 }
 
+declare module 'date-fns/locale/gu/index' {
+  import { gu } from 'date-fns/locale'
+  export default gu
+}
+
 declare module 'date-fns/locale/he/index' {
   import { he } from 'date-fns/locale'
   export default he
+}
+
+declare module 'date-fns/locale/hi/index' {
+  import { hi } from 'date-fns/locale'
+  export default hi
 }
 
 declare module 'date-fns/locale/hr/index' {
@@ -14395,6 +14523,11 @@ declare module 'date-fns/locale/sr/index' {
 declare module 'date-fns/locale/sv/index' {
   import { sv } from 'date-fns/locale'
   export default sv
+}
+
+declare module 'date-fns/locale/ta/index' {
+  import { ta } from 'date-fns/locale'
+  export default ta
 }
 
 declare module 'date-fns/locale/th/index' {
@@ -14557,9 +14690,19 @@ declare module 'date-fns/locale/gl/index.js' {
   export default gl
 }
 
+declare module 'date-fns/locale/gu/index.js' {
+  import { gu } from 'date-fns/locale'
+  export default gu
+}
+
 declare module 'date-fns/locale/he/index.js' {
   import { he } from 'date-fns/locale'
   export default he
+}
+
+declare module 'date-fns/locale/hi/index.js' {
+  import { hi } from 'date-fns/locale'
+  export default hi
 }
 
 declare module 'date-fns/locale/hr/index.js' {
@@ -14687,6 +14830,11 @@ declare module 'date-fns/locale/sv/index.js' {
   export default sv
 }
 
+declare module 'date-fns/locale/ta/index.js' {
+  import { ta } from 'date-fns/locale'
+  export default ta
+}
+
 declare module 'date-fns/locale/th/index.js' {
   import { th } from 'date-fns/locale'
   export default th
@@ -14800,8 +14948,14 @@ declare module 'date-fns/esm/locale' {
   const gl: Locale
   namespace gl {}
 
+  const gu: Locale
+  namespace gu {}
+
   const he: Locale
   namespace he {}
+
+  const hi: Locale
+  namespace hi {}
 
   const hr: Locale
   namespace hr {}
@@ -14877,6 +15031,9 @@ declare module 'date-fns/esm/locale' {
 
   const sv: Locale
   namespace sv {}
+
+  const ta: Locale
+  namespace ta {}
 
   const th: Locale
   namespace th {}
@@ -15025,9 +15182,19 @@ declare module 'date-fns/esm/locale/gl' {
   export default gl
 }
 
+declare module 'date-fns/esm/locale/gu' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
+}
+
 declare module 'date-fns/esm/locale/he' {
   import { he } from 'date-fns/esm/locale'
   export default he
+}
+
+declare module 'date-fns/esm/locale/hi' {
+  import { hi } from 'date-fns/esm/locale'
+  export default hi
 }
 
 declare module 'date-fns/esm/locale/hr' {
@@ -15153,6 +15320,11 @@ declare module 'date-fns/esm/locale/sr' {
 declare module 'date-fns/esm/locale/sv' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
+}
+
+declare module 'date-fns/esm/locale/ta' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
 }
 
 declare module 'date-fns/esm/locale/th' {
@@ -15315,9 +15487,19 @@ declare module 'date-fns/esm/locale/gl/index' {
   export default gl
 }
 
+declare module 'date-fns/esm/locale/gu/index' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
+}
+
 declare module 'date-fns/esm/locale/he/index' {
   import { he } from 'date-fns/esm/locale'
   export default he
+}
+
+declare module 'date-fns/esm/locale/hi/index' {
+  import { hi } from 'date-fns/esm/locale'
+  export default hi
 }
 
 declare module 'date-fns/esm/locale/hr/index' {
@@ -15443,6 +15625,11 @@ declare module 'date-fns/esm/locale/sr/index' {
 declare module 'date-fns/esm/locale/sv/index' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
+}
+
+declare module 'date-fns/esm/locale/ta/index' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
 }
 
 declare module 'date-fns/esm/locale/th/index' {
@@ -15605,9 +15792,19 @@ declare module 'date-fns/esm/locale/gl/index.js' {
   export default gl
 }
 
+declare module 'date-fns/esm/locale/gu/index.js' {
+  import { gu } from 'date-fns/esm/locale'
+  export default gu
+}
+
 declare module 'date-fns/esm/locale/he/index.js' {
   import { he } from 'date-fns/esm/locale'
   export default he
+}
+
+declare module 'date-fns/esm/locale/hi/index.js' {
+  import { hi } from 'date-fns/esm/locale'
+  export default hi
 }
 
 declare module 'date-fns/esm/locale/hr/index.js' {
@@ -15733,6 +15930,11 @@ declare module 'date-fns/esm/locale/sr/index.js' {
 declare module 'date-fns/esm/locale/sv/index.js' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
+}
+
+declare module 'date-fns/esm/locale/ta/index.js' {
+  import { ta } from 'date-fns/esm/locale'
+  export default ta
 }
 
 declare module 'date-fns/esm/locale/th/index.js' {
@@ -16235,6 +16437,19 @@ declare module 'date-fns' {
       date: Date | number,
       options?: {
         nearestTo?: number
+      }
+    ): Date
+
+    set(
+      date: Date | number,
+      values: {
+        year?: number
+        month?: number
+        date?: number
+        hours?: number
+        minutes?: number
+        seconds?: number
+        milliseconds?: number
       }
     ): Date
 

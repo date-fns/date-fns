@@ -39,8 +39,8 @@ export default function eachWeekendOfInterval(interval) {
   var dateInterval = eachDayOfInterval(interval)
   var weekends = []
   var index = 0
-  while (index++ < dateInterval.length) {
-    var date = dateInterval[index]
+  while (index < dateInterval.length) {
+    var date = dateInterval[index++]
     if (isWeekend(date)) {
       weekends.push(date)
       if (isSunday(date)) index = index + 5

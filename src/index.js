@@ -170,6 +170,7 @@ export { default as parseISO } from './parseISO/index.js'
 export {
   default as roundToNearestMinutes
 } from './roundToNearestMinutes/index.js'
+export { default as set } from './set/index.js'
 export { default as setDate } from './setDate/index.js'
 export { default as setDay } from './setDay/index.js'
 export { default as setDayOfYear } from './setDayOfYear/index.js'

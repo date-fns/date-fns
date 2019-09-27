@@ -8,10 +8,59 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## [Unreleased]
+## [2.3.0] - 2019-09-24
 
-[See v2 Pre-Releases Change Log](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136)
-for the list of changes made since `v2.0.0-alpha.1`.
+Huge thanks to [@lovelovedokidoki](https://github.com/lovelovedokidoki) who improved 8 (!) locales in an unstoppable open-source rampage and [@VesterDe](https://github.com/VesterDe) for fixing Slovenian locale 👏
+
+### Fixed
+
+- [Fixed the translation of "yesterday" in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1420).
+- [Fixed French parsing issues with June and August](https://github.com/date-fns/date-fns/pull/1430).
+- [Improved Turkish parsing](https://github.com/date-fns/date-fns/pull/1432).
+- [Fixed "March" in Dutch parsing patterns](https://github.com/date-fns/date-fns/pull/1433).
+- [Fixed Hindi parsing patterns](https://github.com/date-fns/date-fns/pull/1434).
+
+### Added
+
+- [Added Finnish matching patterns](https://github.com/date-fns/date-fns/pull/1425).
+- [Accept abbreviated March, June, July in Norwegian locales](https://github.com/date-fns/date-fns/pull/1431).
+- [Added parsing for Greek months with long formatting](https://github.com/date-fns/date-fns/pull/1435).
+
+## [2.2.1] - 2019-09-12
+
+Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal), [@SneakyFish5](https://github.com/SneakyFish5) and [@CarterLi](https://github.com/CarterLi).
+
+### Added
+
+- [Added new `set` function](https://github.com/date-fns/date-fns/pull/1398).
+- [Updated Slovenian (sl) locale for v2](https://github.com/date-fns/date-fns/pull/1418).
+- [Added Tamil (ta) locale](https://github.com/date-fns/date-fns/pull/1411).
+- [Added Hindi (hi) locale](https://github.com/date-fns/date-fns/pull/1409).
+- [Added support of `\n` in `format`, `lightFormat` and `parse`](https://github.com/date-fns/date-fns/pull/1417).
+
+## [2.1.0] - 2019-09-06
+
+Thanks to date-fns contributors: [@ManadayM](https://github.com/ManadayM), [@illuminist](https://github.com/illuminist), [@visualfanatic](https://github.com/visualfanatic), [@vsaarinen](https://github.com/vsaarinen) and at least but not least [@leshakoss](https://github.com/leshakoss)!
+
+### Fixed
+
+- [Set start of the week to the Sunday for Thai locale](https://github.com/date-fns/date-fns/pull/1402).
+- [Fixed month matching in Polish locale](https://github.com/date-fns/date-fns/pull/1404).
+- [Fixed `eachWeekendOfInterval` skipping the first date in the supplied interval](https://github.com/date-fns/date-fns/pull/1407).
+
+### Added
+
+- [Added Gujarati locale](https://github.com/date-fns/date-fns/pull/1400).
+
+## [2.0.1] - 2019-08-23
+
+### Fixed
+
+- [Fix](https://github.com/date-fns/date-fns/pull/1046) `getWeekOfMonth` with `options.weekStartsOn` set to 1 [not working for Sundays](https://github.com/date-fns/date-fns/issues/1040). Kudos to [@waseemahmad31](https://github.com/waseemahmad31)!
+
+## [2.0.0] - 2019-08-20
+
+If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https://gist.github.com/kossnocorp/a307a464760b405bb78ef5020a4ab136).
 
 ### Fixed
 
@@ -1732,7 +1781,12 @@ for the list of changes made since `v2.0.0-alpha.1`.
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v1.28.5...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/date-fns/date-fns/compare/v2.2.1...v2.3.0
+[2.2.1]: https://github.com/date-fns/date-fns/compare/v2.1.0...v2.2.1
+[2.1.0]: https://github.com/date-fns/date-fns/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/date-fns/date-fns/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/date-fns/date-fns/compare/v1.28.5...v2.0.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5
 [1.28.4]: https://github.com/date-fns/date-fns/compare/v1.28.3...v1.28.4
 [1.28.3]: https://github.com/date-fns/date-fns/compare/v1.28.2...v1.28.3
