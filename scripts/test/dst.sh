@@ -10,6 +10,7 @@ export PATH="$(yarn bin):$PATH"
 export NODE_ENV=test
 
 env TZ=America/Sao_Paulo babel-node ./test/dst/parseISO/basic.js
+env TZ=Australia/Sydney babel-node ./test/dst/parseISO/sydney.js
 env TZ=Pacific/Apia babel-node ./test/dst/parseISO/samoa.js
 env TZ=Asia/Damascus babel-node ./test/dst/eachDayOfInterval/basic.js
 env TZ=America/Santiago babel-node ./test/dst/addBusinessDays/basic.js

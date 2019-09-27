@@ -137,10 +137,14 @@ export default function parseISO(argument, dirtyOptions) {
     offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
 
     // Adjust time when it's coming from DST
-    var fullTimeDateNextDay = new Date(fullTime)
-    fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
+    var fullTimeDateDiffDay = new Date(fullTime)
+    if (offset > 0) {
+      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() + 1)
+    } else {
+      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() - 1)
+    }
     var offsetDiff =
-      getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) - offset
+      getTimezoneOffsetInMilliseconds(fullTimeDateDiffDay) - offset
     if (offsetDiff > 0) {
       offset += offsetDiff
     }
