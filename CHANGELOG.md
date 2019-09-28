@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.4.1] - 2019-09-28
+
+Thanks to [@mrclayman](https://github.com/mrclayman) for reporting the issue and [@leshakoss](https://github.com/leshakoss) for fixing it.
+
+### Fixed
+
+- [Fixed am/pm mixup in the Czech locale](https://github.com/date-fns/date-fns/pull/1453).
+
 ## [2.4.0] - 2019-09-27
 
 This release brought to you by these amazing people: [@lovelovedokidoki](https://github.com/lovelovedokidoki), [@alexigityan](https://github.com/alexigityan), [@kalekseev](https://github.com/kalekseev) and [@andybangs](https://github.com/andybangs). You rock!
@@ -1795,7 +1803,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.4.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.4.1...HEAD
+[2.4.1]: https://github.com/date-fns/date-fns/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/date-fns/date-fns/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/date-fns/date-fns/compare/v2.2.1...v2.3.0
 [2.2.1]: https://github.com/date-fns/date-fns/compare/v2.1.0...v2.2.1
