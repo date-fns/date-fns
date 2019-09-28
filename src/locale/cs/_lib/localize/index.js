@@ -84,8 +84,8 @@ var dayValues = {
 
 var dayPeriodValues = {
   narrow: {
-    am: 'odp.',
-    pm: 'dop.',
+    am: 'dop.',
+    pm: 'odp.',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
@@ -94,8 +94,8 @@ var dayPeriodValues = {
     night: 'noc'
   },
   abbreviated: {
-    am: 'odp.',
-    pm: 'dop.',
+    am: 'dop.',
+    pm: 'odp.',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
@@ -104,8 +104,8 @@ var dayPeriodValues = {
     night: 'noc'
   },
   wide: {
-    am: 'odpoledne',
-    pm: 'dopoledne',
+    am: 'dopoledne',
+    pm: 'odpoledne',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
@@ -117,8 +117,8 @@ var dayPeriodValues = {
 
 var formattingDayPeriodValues = {
   narrow: {
-    am: 'odp.',
-    pm: 'dop.',
+    am: 'dop.',
+    pm: 'odp.',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
@@ -127,8 +127,8 @@ var formattingDayPeriodValues = {
     night: 'noc'
   },
   abbreviated: {
-    am: 'odp.',
-    pm: 'dop.',
+    am: 'dop.',
+    pm: 'odp.',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
@@ -137,8 +137,8 @@ var formattingDayPeriodValues = {
     night: 'noc'
   },
   wide: {
-    am: 'odpoledne',
-    pm: 'dopoledne',
+    am: 'dopoledne',
+    pm: 'odpoledne',
     midnight: 'půlnoc',
     noon: 'poledne',
     morning: 'ráno',
