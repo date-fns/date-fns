@@ -47,4 +47,3 @@ find "$dir" -type f -name "benchmark.js" -delete
 find "$dir/esm" -type f -name "package.json" -delete
 
 ./scripts/build/packages.js
-./scripts/build/removeOutdatedLocales.js $dir
