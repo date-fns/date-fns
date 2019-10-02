@@ -21,12 +21,7 @@ const mode = process.argv[2] || 'generate'
 if (process.env.TZ.toLowerCase() !== 'utc')
   throw new Error('The locale snapshots generation must be run with TZ=utc')
 
-const outdatedLocales = JSON.parse(
-  readFileSync(path.join(process.cwd(), 'outdatedLocales.json'), 'utf8')
-)
-const locales = listLocales().filter(
-  ({ code }) => !outdatedLocales.includes(code)
-)
+const locales = listLocales()
 
 Promise.all(
   locales.map(localeObj => {
