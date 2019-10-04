@@ -3,12 +3,22 @@
 
 import assert from 'power-assert'
 import startOfDay from '.'
+import utc from '../utc'
 
 describe('startOfDay', function() {
   it('returns the date with the time set to 00:00:00', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = startOfDay(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 2, 0, 0, 0, 0))
+  })
+
+  it('works with UTC', function() {
+    var date = utc(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    var result = startOfDay(date)
+    assert.deepEqual(
+      result,
+      new Date(Date.UTC(2014, 8 /* Sep */, 2, 0, 0, 0, 0))
+    )
   })
 
   it('accepts a timestamp', function() {

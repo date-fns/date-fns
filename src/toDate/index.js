@@ -1,3 +1,5 @@
+import DateWithTimeZone from '../_lib/DateWithTimeZone'
+
 /**
  * @name toDate
  * @category Common Helpers
@@ -38,7 +40,9 @@ export default function toDate(argument) {
   const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date
-  if (
+  if (argument instanceof DateWithTimeZone) {
+    return new DateWithTimeZone(argument.timeZone, argument.getTime())
+  } else if (
     argument instanceof Date ||
     (typeof argument === 'object' && argStr === '[object Date]')
   ) {
