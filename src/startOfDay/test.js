@@ -3,7 +3,7 @@
 
 import assert from 'power-assert'
 import startOfDay from '.'
-import utc from '../utc'
+import localToUTC from '../localToUTC'
 
 describe('startOfDay', function() {
   it('returns the date with the time set to 00:00:00', function() {
@@ -13,7 +13,7 @@ describe('startOfDay', function() {
   })
 
   it('works with UTC', function() {
-    var date = utc(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
+    var date = localToUTC(new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
     var result = startOfDay(date)
     assert.deepEqual(
       result,
