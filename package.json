@@ -55,6 +55,7 @@
     "coveralls": "^3.0.6",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
+    "fast-check": "^1.17.0",
     "firebase": "^3.7.1",
     "flow-bin": "0.84.0",
     "fs-promise": "^1.0.0",
