@@ -4,6 +4,11 @@ import formatRelative from './_lib/formatRelative/index.js'
 import localize from './_lib/localize/index.js'
 import match from './_lib/match/index.js'
 
+const options = {
+  weekStartsOn: 0 /* Sunday */,
+  firstWeekContainsDate: 1
+}
+
 /**
  * @type {Locale}
  * @category Locales
@@ -19,10 +24,8 @@ var locale = {
   formatRelative: formatRelative,
   localize: localize,
   match: match,
-  options: {
-    weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+  options: options
 }
 
 export default locale
+export { formatDistance, formatLong, formatRelative, localize, match, options }
