@@ -29,7 +29,7 @@ import toDate from '../toDate/index.js'
  *   | `new Date('')`            | `false`       | `false`       |
  *   | `new Date(1488370835081)` | `true`        | `true`        |
  *   | `new Date(NaN)`           | `false`       | `false`       |
- *   | `'2016-01-01'`            | `TypeError`   | `false`        |
+ *   | `'2016-01-01'`            | `TypeError`   | `false`       |
  *   | `''`                      | `TypeError`   | `false`       |
  *   | `1488370835081`           | `TypeError`   | `true`        |
  *   | `NaN`                     | `TypeError`   | `false`       |
