@@ -35,7 +35,7 @@ const getFlowFPTypeAliases = (arity = 4) =>
 
 function getFlowTypeAlias(type) {
   const { title, properties } = type
-  return `type ${title} = ${getParams(properties)}`
+  return `export type ${title} = ${getParams(properties)}`
 }
 
 function generateFlowFnTyping(fn, aliasDeclarations) {
