@@ -1,7 +1,7 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-type Locale = {
+export type Locale = {
   formatDistance: Function,
   formatRelative: Function,
   localize: {
