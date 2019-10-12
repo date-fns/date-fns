@@ -337,6 +337,19 @@ declare module 'date-fns' {
   ): string
   namespace format {}
 
+  function formatConstants(
+    date: Date | number,
+    formatName: string,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      firstWeekContainsDate?: number
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ): string
+  namespace formatConstants {}
+
   function formatDistance(
     date: Date | number,
     baseDate: Date | number,
@@ -1158,6 +1171,11 @@ declare module 'date-fns/endOfYesterday' {
 declare module 'date-fns/format' {
   import { format } from 'date-fns'
   export default format
+}
+
+declare module 'date-fns/formatConstants' {
+  import { formatConstants } from 'date-fns'
+  export default formatConstants
 }
 
 declare module 'date-fns/formatDistance' {
@@ -2050,6 +2068,11 @@ declare module 'date-fns/format/index' {
   export default format
 }
 
+declare module 'date-fns/formatConstants/index' {
+  import { formatConstants } from 'date-fns'
+  export default formatConstants
+}
+
 declare module 'date-fns/formatDistance/index' {
   import { formatDistance } from 'date-fns'
   export default formatDistance
@@ -2940,6 +2963,11 @@ declare module 'date-fns/format/index.js' {
   export default format
 }
 
+declare module 'date-fns/formatConstants/index.js' {
+  import { formatConstants } from 'date-fns'
+  export default formatConstants
+}
+
 declare module 'date-fns/formatDistance/index.js' {
   import { formatDistance } from 'date-fns'
   export default formatDistance
@@ -3776,6 +3804,17 @@ declare module 'date-fns/fp' {
   const format: CurriedFn2<string, Date | number, string>
   namespace format {}
 
+  const formatConstants: CurriedFn2<string, Date | number, string>
+  namespace formatConstants {}
+
+  const formatConstantsWithOptions: CurriedFn3<
+    Object,
+    string,
+    Date | number,
+    string
+  >
+  namespace formatConstantsWithOptions {}
+
   const formatDistance: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistance {}
 
@@ -4467,6 +4506,16 @@ declare module 'date-fns/fp/endOfYear' {
 declare module 'date-fns/fp/format' {
   import { format } from 'date-fns/fp'
   export default format
+}
+
+declare module 'date-fns/fp/formatConstants' {
+  import { formatConstants } from 'date-fns/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/fp/formatConstantsWithOptions' {
+  import { formatConstantsWithOptions } from 'date-fns/fp'
+  export default formatConstantsWithOptions
 }
 
 declare module 'date-fns/fp/formatDistance' {
@@ -5379,6 +5428,16 @@ declare module 'date-fns/fp/format/index' {
   export default format
 }
 
+declare module 'date-fns/fp/formatConstants/index' {
+  import { formatConstants } from 'date-fns/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/fp/formatConstantsWithOptions/index' {
+  import { formatConstantsWithOptions } from 'date-fns/fp'
+  export default formatConstantsWithOptions
+}
+
 declare module 'date-fns/fp/formatDistance/index' {
   import { formatDistance } from 'date-fns/fp'
   export default formatDistance
@@ -6289,6 +6348,16 @@ declare module 'date-fns/fp/format/index.js' {
   export default format
 }
 
+declare module 'date-fns/fp/formatConstants/index.js' {
+  import { formatConstants } from 'date-fns/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/fp/formatConstantsWithOptions/index.js' {
+  import { formatConstantsWithOptions } from 'date-fns/fp'
+  export default formatConstantsWithOptions
+}
+
 declare module 'date-fns/fp/formatDistance/index.js' {
   import { formatDistance } from 'date-fns/fp'
   export default formatDistance
@@ -7186,6 +7255,19 @@ declare module 'date-fns/esm' {
   ): string
   namespace format {}
 
+  function formatConstants(
+    date: Date | number,
+    formatName: string,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      firstWeekContainsDate?: number
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ): string
+  namespace formatConstants {}
+
   function formatDistance(
     date: Date | number,
     baseDate: Date | number,
@@ -8007,6 +8089,11 @@ declare module 'date-fns/esm/endOfYesterday' {
 declare module 'date-fns/esm/format' {
   import { format } from 'date-fns/esm'
   export default format
+}
+
+declare module 'date-fns/esm/formatConstants' {
+  import { formatConstants } from 'date-fns/esm'
+  export default formatConstants
 }
 
 declare module 'date-fns/esm/formatDistance' {
@@ -8899,6 +8986,11 @@ declare module 'date-fns/esm/format/index' {
   export default format
 }
 
+declare module 'date-fns/esm/formatConstants/index' {
+  import { formatConstants } from 'date-fns/esm'
+  export default formatConstants
+}
+
 declare module 'date-fns/esm/formatDistance/index' {
   import { formatDistance } from 'date-fns/esm'
   export default formatDistance
@@ -9789,6 +9881,11 @@ declare module 'date-fns/esm/format/index.js' {
   export default format
 }
 
+declare module 'date-fns/esm/formatConstants/index.js' {
+  import { formatConstants } from 'date-fns/esm'
+  export default formatConstants
+}
+
 declare module 'date-fns/esm/formatDistance/index.js' {
   import { formatDistance } from 'date-fns/esm'
   export default formatDistance
@@ -10625,6 +10722,17 @@ declare module 'date-fns/esm/fp' {
   const format: CurriedFn2<string, Date | number, string>
   namespace format {}
 
+  const formatConstants: CurriedFn2<string, Date | number, string>
+  namespace formatConstants {}
+
+  const formatConstantsWithOptions: CurriedFn3<
+    Object,
+    string,
+    Date | number,
+    string
+  >
+  namespace formatConstantsWithOptions {}
+
   const formatDistance: CurriedFn2<Date | number, Date | number, string>
   namespace formatDistance {}
 
@@ -11316,6 +11424,16 @@ declare module 'date-fns/esm/fp/endOfYear' {
 declare module 'date-fns/esm/fp/format' {
   import { format } from 'date-fns/esm/fp'
   export default format
+}
+
+declare module 'date-fns/esm/fp/formatConstants' {
+  import { formatConstants } from 'date-fns/esm/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/esm/fp/formatConstantsWithOptions' {
+  import { formatConstantsWithOptions } from 'date-fns/esm/fp'
+  export default formatConstantsWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatDistance' {
@@ -12228,6 +12346,16 @@ declare module 'date-fns/esm/fp/format/index' {
   export default format
 }
 
+declare module 'date-fns/esm/fp/formatConstants/index' {
+  import { formatConstants } from 'date-fns/esm/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/esm/fp/formatConstantsWithOptions/index' {
+  import { formatConstantsWithOptions } from 'date-fns/esm/fp'
+  export default formatConstantsWithOptions
+}
+
 declare module 'date-fns/esm/fp/formatDistance/index' {
   import { formatDistance } from 'date-fns/esm/fp'
   export default formatDistance
@@ -13136,6 +13264,16 @@ declare module 'date-fns/esm/fp/endOfYear/index.js' {
 declare module 'date-fns/esm/fp/format/index.js' {
   import { format } from 'date-fns/esm/fp'
   export default format
+}
+
+declare module 'date-fns/esm/fp/formatConstants/index.js' {
+  import { formatConstants } from 'date-fns/esm/fp'
+  export default formatConstants
+}
+
+declare module 'date-fns/esm/fp/formatConstantsWithOptions/index.js' {
+  import { formatConstantsWithOptions } from 'date-fns/esm/fp'
+  export default formatConstantsWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatDistance/index.js' {
@@ -16185,6 +16323,18 @@ interface dateFns {
   format(
     date: Date | number,
     format: string,
+    options?: {
+      locale?: Locale
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      firstWeekContainsDate?: number
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ): string
+
+  formatConstants(
+    date: Date | number,
+    formatName: string,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6

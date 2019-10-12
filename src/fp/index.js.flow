@@ -139,6 +139,8 @@ declare module.exports: {
   endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>,
   endOfYear: CurriedFn1<Date | number, Date>,
   format: CurriedFn2<string, Date | number, string>,
+  formatConstants: CurriedFn2<string, Date | number, string>,
+  formatConstantsWithOptions: CurriedFn3<Object, string, Date | number, string>,
   formatDistance: CurriedFn2<Date | number, Date | number, string>,
   formatDistanceStrict: CurriedFn2<Date | number, Date | number, string>,
   formatDistanceStrictWithOptions: CurriedFn3<

@@ -243,6 +243,18 @@ declare module.exports: {
     }
   ) => string,
 
+  formatConstants: (
+    date: Date | number,
+    formatName: string,
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: number,
+      useAdditionalWeekYearTokens?: boolean,
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ) => string,
+
   formatDistance: (
     date: Date | number,
     baseDate: Date | number,
