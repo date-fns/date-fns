@@ -8,8 +8,8 @@ const FORMATS = {
   RFC_7231_DATE: 'E, dd MMM yyyy',
   RFC_7231_TIME: "HH:mm:ss 'GMT'",
   // ISO8601 source: http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm.
-  ISO_8601: 'yyyyMMddTHHmmss',
-  ISO_8601_EXTENDED: 'yyyy-MM-ddTHH:mm:ss',
+  ISO_8601: "yyyy-MM-dd'T'HH:mm:ss",
+  ISO_8601_SHORT: "yyyyMMdd'T'HHmmss",
   // ISO9075 source: https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_get-format.
   ISO_9075: 'yyyy-MM-dd HH:mm:ss',
   ISO_9075_DATE: 'yyyy-MM-dd',
@@ -19,7 +19,7 @@ const FORMATS = {
 /**
  * @name formatConstants
  * @category Common Helpers
- * @summary Format the date.
+ * @summary Format the date using any of the standardized format.
  *
  * @description
  * Return the formatted date string in the given standardized format. The result may vary by locale.
@@ -94,5 +94,5 @@ export default function formatConstants(
   }
 
   // Since we have the `format` function already, we can just re-use it.
-  return format(dirtyDate, FORMATS, dirtyOptions)
+  return format(dirtyDate, FORMATS[standardFormat], dirtyOptions)
 }
