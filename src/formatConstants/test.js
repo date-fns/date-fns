@@ -139,6 +139,15 @@ describe('formatConstants', () => {
     assert.throws(formatConstants.bind(null, new Date(), 'ISO_8600'), TypeError)
     assert.throws(formatConstants.bind(null, new Date(), 'RFC_7230'), TypeError)
     assert.throws(formatConstants.bind(null, new Date(), 'RFC_9071'), TypeError)
+
+    try {
+      formatConstants(new Date(), 'RFC_9071')
+    } catch (err) {
+      assert.deepEqual(
+        err.message,
+        'Invalid format, expected any of {RFC_7231 | RFC_7231_DATE | RFC_7231_TIME | ISO_8601 | ISO_8601_SHORT | ISO_9075 | ISO_9075_DATE | ISO_9075_TIME}'
+      )
+    }
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
