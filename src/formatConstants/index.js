@@ -1,4 +1,4 @@
-import format from '../format'
+import format from '../format/index.js'
 
 // This FORMATS variable contains all the pre-defined date, time, and datetime formats.
 // For each standard used, there is a link for the source.
