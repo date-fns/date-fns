@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -25,7 +26,8 @@ const config = {
           ]
         : []
     )
-  }
+  },
+  plugins: getPlugins()
 }
 
 module.exports = config
@@ -60,4 +62,15 @@ function getOutputConfig() {
       libraryTarget: 'umd'
     }
   }
+}
+
+function getPlugins() {
+  return process.env.NODE_ENV === 'test'
+    ? [
+        new webpack.ContextReplacementPlugin(
+          /power-assert-formatter[\\/]lib/,
+          new RegExp('^\\./.*\\.js$')
+        )
+      ]
+    : undefined
 }
