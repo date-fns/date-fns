@@ -13810,6 +13810,9 @@ declare module 'date-fns/locale' {
   const el: Locale
   namespace el {}
 
+  const enAU: Locale
+  namespace enAU {}
+
   const enCA: Locale
   namespace enCA {}
 
@@ -14027,6 +14030,11 @@ declare module 'date-fns/locale/de' {
 declare module 'date-fns/locale/el' {
   import { el } from 'date-fns/locale'
   export default el
+}
+
+declare module 'date-fns/locale/en-AU' {
+  import { enAU } from 'date-fns/locale'
+  export default enAU
 }
 
 declare module 'date-fns/locale/en-CA' {
@@ -14349,6 +14357,11 @@ declare module 'date-fns/locale/el/index' {
   export default el
 }
 
+declare module 'date-fns/locale/en-AU/index' {
+  import { enAU } from 'date-fns/locale'
+  export default enAU
+}
+
 declare module 'date-fns/locale/en-CA/index' {
   import { enCA } from 'date-fns/locale'
   export default enCA
@@ -14669,6 +14682,11 @@ declare module 'date-fns/locale/el/index.js' {
   export default el
 }
 
+declare module 'date-fns/locale/en-AU/index.js' {
+  import { enAU } from 'date-fns/locale'
+  export default enAU
+}
+
 declare module 'date-fns/locale/en-CA/index.js' {
   import { enCA } from 'date-fns/locale'
   export default enCA
@@ -14966,6 +14984,9 @@ declare module 'date-fns/esm/locale' {
   const el: Locale
   namespace el {}
 
+  const enAU: Locale
+  namespace enAU {}
+
   const enCA: Locale
   namespace enCA {}
 
@@ -15183,6 +15204,11 @@ declare module 'date-fns/esm/locale/de' {
 declare module 'date-fns/esm/locale/el' {
   import { el } from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-AU' {
+  import { enAU } from 'date-fns/esm/locale'
+  export default enAU
 }
 
 declare module 'date-fns/esm/locale/en-CA' {
@@ -15505,6 +15531,11 @@ declare module 'date-fns/esm/locale/el/index' {
   export default el
 }
 
+declare module 'date-fns/esm/locale/en-AU/index' {
+  import { enAU } from 'date-fns/esm/locale'
+  export default enAU
+}
+
 declare module 'date-fns/esm/locale/en-CA/index' {
   import { enCA } from 'date-fns/esm/locale'
   export default enCA
@@ -15823,6 +15854,11 @@ declare module 'date-fns/esm/locale/de/index.js' {
 declare module 'date-fns/esm/locale/el/index.js' {
   import { el } from 'date-fns/esm/locale'
   export default el
+}
+
+declare module 'date-fns/esm/locale/en-AU/index.js' {
+  import { enAU } from 'date-fns/esm/locale'
+  export default enAU
 }
 
 declare module 'date-fns/esm/locale/en-CA/index.js' {
