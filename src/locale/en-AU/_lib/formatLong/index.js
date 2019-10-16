@@ -8,10 +8,10 @@ var dateFormats = {
 }
 
 var timeFormats = {
-  full: 'HH:mm:ss zzzz',
-  long: 'HH:mm:ss z',
-  medium: 'HH:mm:ss',
-  short: 'HH:mm'
+  full: 'h:mm:ss a zzzz',
+  long: 'h:mm:ss a z',
+  medium: 'h:mm:ss a',
+  short: 'h:mm a'
 }
 
 var dateTimeFormats = {
