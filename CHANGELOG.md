@@ -8,6 +8,23 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.5.0] - 2019-10-16
+
+Kudos to [@dkozickis](https://github.com/dkozickis), [@drugoi](https://github.com/drugoi), [@kranthilakum](https://github.com/kranthilakum), [@102](https://github.com/102), [@gpetrioli](https://github.com/gpetrioli) and [@JulienMalige](https://github.com/JulienMalige) for making the release happen.
+
+### Fixed
+
+- [Fixed compatibility with IE11 by removing `findIndex` from the code](https://github.com/date-fns/date-fns/pull/1457).
+- [Fixed Greek locale patterns](https://github.com/date-fns/date-fns/pull/1480).
+
+### Added
+
+- [Added Kazakh (kk) locale](https://github.com/date-fns/date-fns/pull/1460).
+- [Added Telugu (te) locale](https://github.com/date-fns/date-fns/pull/1464).
+- [Added Canadian French (fr-CA) locale](https://github.com/date-fns/date-fns/issues/1465).
+- [Added Australian English (en-AU) locale](https://github.com/date-fns/date-fns/pull/1470).
+- [Exported `Interval` and `Locale` types from Flow typings](https://github.com/date-fns/date-fns/pull/1475).
+
 ## [2.4.1] - 2019-09-28
 
 Thanks to [@mrclayman](https://github.com/mrclayman) for reporting the issue and [@leshakoss](https://github.com/leshakoss) for fixing it.
@@ -1803,7 +1820,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.4.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.5.0...HEAD
+[2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0
 [2.4.1]: https://github.com/date-fns/date-fns/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/date-fns/date-fns/compare/v2.3.0...v2.4.0
 [2.3.0]: https://github.com/date-fns/date-fns/compare/v2.2.1...v2.3.0
