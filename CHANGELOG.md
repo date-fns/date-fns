@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.5.1] - 2019-10-18
+
+Thanks to [@mitchellbutler](https://github.com/mitchellbutler) for the bug fix!
+
+### Fixed
+
+- [Fixed infinite loop in `addBusinessDays`](https://github.com/date-fns/date-fns/pull/1486).
+
 ## [2.5.0] - 2019-10-16
 
 Kudos to [@dkozickis](https://github.com/dkozickis), [@drugoi](https://github.com/drugoi), [@kranthilakum](https://github.com/kranthilakum), [@102](https://github.com/102), [@gpetrioli](https://github.com/gpetrioli) and [@JulienMalige](https://github.com/JulienMalige) for making the release happen.
@@ -1820,7 +1828,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.5.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.5.1...HEAD
+[2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0
 [2.4.1]: https://github.com/date-fns/date-fns/compare/v2.4.0...v2.4.1
 [2.4.0]: https://github.com/date-fns/date-fns/compare/v2.3.0...v2.4.0
