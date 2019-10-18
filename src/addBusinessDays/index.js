@@ -38,10 +38,12 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
   date.setDate(date.getDate() + toInteger(amount / 5) * 7)
   amount %= 5 // to get remaining days not part of a full week
 
+  var shiftSize = Math.abs(amount)
+
   // only loops over remaining days or if day is a weekend, ensures a business day is returned
-  while (amount || isWeekend(date)) {
+  while (shiftSize > 0 || isWeekend(date)) {
+    if (!isWeekend(date)) shiftSize -= 1
     date.setDate(date.getDate() + sign)
-    if (!isWeekend(date)) amount -= sign
   }
 
   date.setHours(hours)
