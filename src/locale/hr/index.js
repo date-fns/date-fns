@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Ivan Jeržabek [@jerzabek]{@link https://github.com/jerzabek}
  */
 var locale = {
+  code: 'hr',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

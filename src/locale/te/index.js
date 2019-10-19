@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Kranthi Lakum [@kranthilakum]{@link https://github.com/kranthilakum}
  */
 var locale = {
+  code: 'te',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

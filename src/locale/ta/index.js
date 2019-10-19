@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Sibiraj [@sibiraj-s]{@link https://github.com/sibiraj-s}
  */
 var locale = {
+  code: 'ta',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

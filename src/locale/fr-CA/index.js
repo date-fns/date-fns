@@ -18,6 +18,7 @@ import formatLong from './_lib/formatLong/index.js'
  * @author Gabriele Petrioli [@gpetrioli]{@link https://github.com/gpetrioli}
  */
 var locale = {
+  code: 'fr-CA',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

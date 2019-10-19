@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Theodoros Orfanidis [@teoulas]{@link https://github.com/teoulas}
  */
 var locale = {
+  code: 'el',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

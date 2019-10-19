@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Arnór Ýmir [@lamayg]{@link https://github.com/lamayg}
  */
 var locale = {
+  code: 'is',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

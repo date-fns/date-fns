@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Adrián de la Rosa [@adrm]{@link https://github.com/adrm}
  */
 var locale = {
+  code: 'pt',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

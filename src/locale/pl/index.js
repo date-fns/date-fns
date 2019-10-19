@@ -16,6 +16,7 @@ import match from './_lib/match/index.js'
  * @author Mateusz Tokarski [@mutisz]{@link https://github.com/mutisz}
  */
 var locale = {
+  code: 'pl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

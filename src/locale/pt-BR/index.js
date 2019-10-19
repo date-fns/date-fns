@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Yago Carballo [@yagocarballo]{@link https://github.com/YagoCarballo}
  */
 var locale = {
+  code: 'pt-BR',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -16,6 +16,7 @@ import match from './_lib/match/index.js'
  * @author Try Ajitiono [@imballinst]{@link https://github.com/imballinst}
  */
 var locale = {
+  code: 'id',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

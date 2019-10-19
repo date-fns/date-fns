@@ -18,6 +18,7 @@ import match from './_lib/match/index.js'
  * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
  */
 var locale = {
+  code: 'nl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -13,6 +13,7 @@ import match from '../en-US/_lib/match/index.js'
  * @author Alex [@glintik]{@link https://github.com/glintik}
  */
 var locale = {
+  code: 'en-GB',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

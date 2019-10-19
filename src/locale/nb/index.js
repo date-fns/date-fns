@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Dag Stuan [@dagstuan]{@link https://github.com/dagstuan}
  */
 var locale = {
+  code: 'nb',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

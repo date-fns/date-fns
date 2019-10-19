@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  */
 
 var locale = {
+  code: 'hy',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

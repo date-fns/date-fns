@@ -13,6 +13,7 @@ import match from '../en-US/_lib/match/index.js'
  * @author Julien Malige [@JulienMalige]{@link https://github.com/JulienMalige}
  */
 var locale = {
+  code: 'en-AU',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

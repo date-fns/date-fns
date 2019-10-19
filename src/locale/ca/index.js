@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
  */
 var locale = {
+  code: 'ca',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author  Jirawat I. [@nodtem66]{@link https://github.com/nodtem66}
  */
 var locale = {
+  code: 'th',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Mihai Ocneanu [@gandesc]{@link https://github.com/gandesc}
  */
 var locale = {
+  code: 'ro',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

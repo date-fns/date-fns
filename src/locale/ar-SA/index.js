@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}
  */
 var locale = {
+  code: 'ar-SA',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

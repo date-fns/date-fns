@@ -18,6 +18,7 @@ import match from './_lib/match/index.js'
  * @author Zoltan Szepesi [@twodcube]{@link https://github.com/twodcube}
  */
 var locale = {
+  code: 'hu',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

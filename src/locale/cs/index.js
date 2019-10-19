@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Jozef Bíroš [@JozefBiros]{@link https://github.com/JozefBiros}
  */
 var locale = {
+  code: 'cs',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

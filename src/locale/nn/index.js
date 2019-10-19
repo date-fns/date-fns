@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Mats Byrkjeland [@draperunner]{@link https://github.com/draperunner}
  */
 var locale = {
+  code: 'nn',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

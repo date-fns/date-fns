@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Rūdolfs Puķītis [@prudolfs]{@link https://github.com/prudolfs}
  */
 var locale = {
+  code: 'lv',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
