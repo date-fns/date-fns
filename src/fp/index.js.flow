@@ -238,6 +238,7 @@ declare module.exports: {
   parse: CurriedFn3<Date | number, string, string, Date>,
   parseISO: CurriedFn1<string, Date>,
   parseISOWithOptions: CurriedFn2<Object, string, Date>,
+  parseJSON: CurriedFn1<string | number | Date, Date>,
   parseWithOptions: CurriedFn4<Object, Date | number, string, string, Date>,
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<Object, Date | number, Date>,
