@@ -16,8 +16,9 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @param {Boolean} [options.time=true] - if true, the time part will be returned.
  * @param {Boolean} [options.extended=true] - if true, the date and time notations will use the extended version.
  * @returns {String} the formatted date string
- * @throws {RangeError} date parameter is not a number or a Date object
+ * @throws {TypeError} no parameters passed
  * @throws {TypeError} one of `options.date` or `options.time` must be true
+ * @throws {RangeError} date parameter is not a number or a Date object
  *
  * @example
  * // Represent 18 September 2019 in ISO 9075 format:
