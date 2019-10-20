@@ -5,7 +5,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 /**
  * @name formatISO9075
  * @category Common Helpers
- * @summary Format the date according to the ISO 9075 standard (http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
+ * @summary Format the date according to the ISO 9075 standard (https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_get-format).
  *
  * @description
  * Return the formatted date string in ISO 9075 format. Options may be passed to control the parts and notations of the date.
