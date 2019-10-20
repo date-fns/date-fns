@@ -30,6 +30,18 @@ describe('formatISO8601', () => {
     )
   })
 
+  it('should show date only when options.time is false', () => {
+    assert.deepEqual(formatISO8601(sampleDate1, { time: false }), '2019-03-03')
+    assert.deepEqual(formatISO8601(sampleDate2, { time: false }), '2019-10-04')
+    assert.deepEqual(formatISO8601(sampleDate3, { time: false }), '2019-12-11')
+  })
+
+  it('should show time only when options.date is false', () => {
+    assert.deepEqual(formatISO8601(sampleDate1, { date: false }), '19:00:52')
+    assert.deepEqual(formatISO8601(sampleDate2, { date: false }), '12:30:13')
+    assert.deepEqual(formatISO8601(sampleDate3, { date: false }), '01:00:00')
+  })
+
   it('throws TypeError when options.date and options.time are both false', function() {
     try {
       formatISO8601(new Date(), { date: false, time: false })
