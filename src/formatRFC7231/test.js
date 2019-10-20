@@ -9,18 +9,18 @@ describe('formatRFC7231', () => {
   const sampleDate2 = new Date(2019, 9, 4, 12, 30, 13)
   const sampleDate3 = new Date(2019, 11, 11, 1, 0, 0)
 
-  it('should convert to the extended format', () => {
+  it('should convert to the RFC 7231 format', () => {
     assert.deepEqual(
       formatRFC7231(sampleDate1),
-      'Wed, 18 Sep 2019 19:00:52 GMT'
+      'Sun, 03 Mar 2019 08:00:52 GMT'
     )
     assert.deepEqual(
       formatRFC7231(sampleDate2),
-      'Wed, 04 Oct 2019 12:30:13 GMT'
+      'Fri, 04 Oct 2019 02:30:13 GMT'
     )
     assert.deepEqual(
       formatRFC7231(sampleDate3),
-      'Wed, 11 Dec 2019 01:00:00 GMT'
+      'Tue, 10 Dec 2019 14:00:00 GMT'
     )
   })
 
