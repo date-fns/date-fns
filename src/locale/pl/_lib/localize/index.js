@@ -1,23 +1,23 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return String(number)
 }
 
-var eraValues = {
+const eraValues = {
   narrow: ['p.n.e.', 'n.e.'],
   abbreviated: ['p.n.e.', 'n.e.'],
   wide: ['przed naszą erą', 'naszej ery']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
   wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['S', 'L', 'M', 'K', 'M', 'C', 'L', 'S', 'W', 'P', 'L', 'G'],
   abbreviated: [
     'sty',
@@ -48,7 +48,7 @@ var monthValues = {
     'grudzień'
   ]
 }
-var monthFormattingValues = {
+const monthFormattingValues = {
   narrow: ['s', 'l', 'm', 'k', 'm', 'c', 'l', 's', 'w', 'p', 'l', 'g'],
   abbreviated: [
     'sty',
@@ -80,7 +80,7 @@ var monthFormattingValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['N', 'P', 'W', 'Ś', 'C', 'P', 'S'],
   short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
   abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
@@ -94,7 +94,7 @@ var dayValues = {
     'sobota'
   ]
 }
-var dayFormattingValues = {
+const dayFormattingValues = {
   narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'],
   short: ['nie', 'pon', 'wto', 'śro', 'czw', 'pią', 'sob'],
   abbreviated: ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'],
@@ -109,7 +109,7 @@ var dayFormattingValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -141,7 +141,7 @@ var dayPeriodValues = {
     night: 'noc'
   }
 }
-var dayPeriodFormattingValues = {
+const dayPeriodFormattingValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -174,7 +174,7 @@ var dayPeriodFormattingValues = {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

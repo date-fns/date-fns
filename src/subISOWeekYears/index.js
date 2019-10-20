@@ -27,7 +27,7 @@ import addISOWeekYears from '../addISOWeekYears/index.js'
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:
- * var result = subISOWeekYears(new Date(2014, 8, 1), 5)
+ * const result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
 export default function subISOWeekYears(dirtyDate, dirtyAmount) {
@@ -37,6 +37,6 @@ export default function subISOWeekYears(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addISOWeekYears(dirtyDate, -amount)
 }

@@ -6,7 +6,7 @@ import differenceInCalendarDays from '.'
 
 describe('differenceInCalendarDays', function() {
   it('returns the number of calendar days between the given dates', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
     )
@@ -14,7 +14,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns a negative number if the time value of the first date is smaller', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
@@ -22,7 +22,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime()
     )
@@ -31,7 +31,7 @@ describe('differenceInCalendarDays', function() {
 
   describe('edge cases', function() {
     it('the difference is less than a day, but the given dates are in different calendar days', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 4, 23, 59)
       )
@@ -39,7 +39,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the same for the swapped dates', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 4, 23, 59),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -47,7 +47,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the time values of the given the given dates are the same', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 6, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -55,7 +55,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the given the given dates are the same', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -67,18 +67,18 @@ describe('differenceInCalendarDays', function() {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
@@ -86,7 +86,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
@@ -94,7 +94,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
-    var result = differenceInCalendarDays(new Date(NaN), new Date(NaN))
+    const result = differenceInCalendarDays(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 

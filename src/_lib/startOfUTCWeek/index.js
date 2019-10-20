@@ -10,13 +10,13 @@ export default function startOfUTCWeek(dirtyDate, dirtyOptions) {
     )
   }
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -26,9 +26,9 @@ export default function startOfUTCWeek(dirtyDate, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var date = toDate(dirtyDate)
-  var day = date.getUTCDay()
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  const date = toDate(dirtyDate)
+  const day = date.getUTCDay()
+  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 
   date.setUTCDate(date.getUTCDate() - diff)
   date.setUTCHours(0, 0, 0, 0)

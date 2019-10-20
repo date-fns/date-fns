@@ -3,6 +3,6 @@
 import fn from '../../getWeekYear/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getWeekYearWithOptions = convertToFP(fn, 2)
+const getWeekYearWithOptions = convertToFP(fn, 2)
 
 export default getWeekYearWithOptions

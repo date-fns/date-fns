@@ -3,6 +3,6 @@
 import fn from '../../parse/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var parse = convertToFP(fn, 3)
+const parse = convertToFP(fn, 3)
 
 export default parse

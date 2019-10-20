@@ -3,6 +3,6 @@
 import fn from '../../isSameWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameWeek = convertToFP(fn, 2)
+const isSameWeek = convertToFP(fn, 2)
 
 export default isSameWeek

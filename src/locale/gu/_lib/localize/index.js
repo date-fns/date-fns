@@ -2,7 +2,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1621 - #1630
-var eraValues = {
+const eraValues = {
   narrow: ['ઈસપૂ', 'ઈસ'],
   abbreviated: ['ઈ.સ.પૂર્વે', 'ઈ.સ.'],
   wide: ['ઈસવીસન પૂર્વે', 'ઈસવીસન']
@@ -10,7 +10,7 @@ var eraValues = {
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1631 - #1654
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1લો ત્રિમાસ', '2જો ત્રિમાસ', '3જો ત્રિમાસ', '4થો ત્રિમાસ']
@@ -23,7 +23,7 @@ var quarterValues = {
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1655 - #1726
-var monthValues = {
+const monthValues = {
   narrow: ['જા', 'ફે', 'મા', 'એ', 'મે', 'જૂ', 'જુ', 'ઓ', 'સ', 'ઓ', 'ન', 'ડિ'],
   abbreviated: [
     'જાન્યુ',
@@ -57,7 +57,7 @@ var monthValues = {
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1727 - #1768
-var dayValues = {
+const dayValues = {
   narrow: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
   short: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
   abbreviated: ['રવિ', 'સોમ', 'મંગળ', 'બુધ', 'ગુરુ', 'શુક્ર', 'શનિ'],
@@ -74,7 +74,7 @@ var dayValues = {
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1783 - #1824
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -106,7 +106,7 @@ var dayPeriodValues = {
     night: 'રાત્રે'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -140,11 +140,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

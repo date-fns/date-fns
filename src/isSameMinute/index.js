@@ -20,7 +20,7 @@ import startOfMinute from '../startOfMinute/index.js'
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15
  * // in the same minute?
- * var result = isSameMinute(
+ * const result = isSameMinute(
  *   new Date(2014, 8, 4, 6, 30),
  *   new Date(2014, 8, 4, 6, 30, 15)
  * )
@@ -33,8 +33,8 @@ export default function isSameMinute(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+  const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
+  const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

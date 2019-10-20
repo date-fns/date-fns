@@ -9,8 +9,8 @@ export default function isSameUTCWeek(dirtyDateLeft, dirtyDateRight, options) {
     )
   }
 
-  var dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options)
-  var dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options)
+  const dateLeftStartOfWeek = startOfUTCWeek(dirtyDateLeft, options)
+  const dateRightStartOfWeek = startOfUTCWeek(dirtyDateRight, options)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }

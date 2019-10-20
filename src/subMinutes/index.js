@@ -20,7 +20,7 @@ import addMinutes from '../addMinutes/index.js'
  *
  * @example
  * // Subtract 30 minutes from 10 July 2014 12:00:00:
- * var result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * const result = subMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 11:30:00
  */
 export default function subMinutes(dirtyDate, dirtyAmount) {
@@ -30,6 +30,6 @@ export default function subMinutes(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMinutes(dirtyDate, -amount)
 }

@@ -22,14 +22,14 @@ import compareAsc from '../compareAsc/index.js'
  * @example
  * // How many full days are between
  * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * var result = differenceInDays(
+ * const result = differenceInDays(
  *   new Date(2012, 6, 2, 0, 0),
  *   new Date(2011, 6, 2, 23, 0)
  * )
  * //=> 365
  * // How many days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
- * var result = differenceInDays(
+ * const result = differenceInDays(
  *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
@@ -42,18 +42,18 @@ export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  const sign = compareAsc(dateLeft, dateRight)
+  const difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
 
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastDayNotFull)
+  const isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
+  const result = sign * (difference - isLastDayNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

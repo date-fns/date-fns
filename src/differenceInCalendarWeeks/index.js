@@ -1,7 +1,7 @@
 import startOfWeek from '../startOfWeek/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
-var MILLISECONDS_IN_WEEK = 604800000
+const MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * @name differenceInCalendarWeeks
@@ -26,7 +26,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @example
  * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInCalendarWeeks(
+ * const result = differenceInCalendarWeeks(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 6, 5)
  * )
@@ -35,7 +35,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * @example
  * // If the week starts on Monday,
  * // how many calendar weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInCalendarWeeks(
+ * const result = differenceInCalendarWeeks(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 6, 5),
  *   { weekStartsOn: 1 }
@@ -53,12 +53,12 @@ export default function differenceInCalendarWeeks(
     )
   }
 
-  var startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
-  var startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
+  const startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
+  const startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
 
-  var timestampLeft =
+  const timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)
-  var timestampRight =
+  const timestampRight =
     startOfWeekRight.getTime() -
     getTimezoneOffsetInMilliseconds(startOfWeekRight)
 

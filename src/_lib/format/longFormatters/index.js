@@ -27,15 +27,15 @@ function timeLongFormatter(pattern, formatLong) {
 }
 
 function dateTimeLongFormatter(pattern, formatLong) {
-  var matchResult = pattern.match(/(P+)(p+)?/)
-  var datePattern = matchResult[1]
-  var timePattern = matchResult[2]
+  const matchResult = pattern.match(/(P+)(p+)?/)
+  const datePattern = matchResult[1]
+  const timePattern = matchResult[2]
 
   if (!timePattern) {
     return dateLongFormatter(pattern, formatLong)
   }
 
-  var dateTimeFormat
+  let dateTimeFormat
 
   switch (datePattern) {
     case 'P':
@@ -58,7 +58,7 @@ function dateTimeLongFormatter(pattern, formatLong) {
     .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
-var longFormatters = {
+const longFormatters = {
   p: timeLongFormatter,
   P: dateTimeLongFormatter
 }

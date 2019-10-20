@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'ئ‍ۆتكەن' eeee 'دە' p",
   yesterday: "'تۈنۈگۈن دە' p",
   today: "'بۈگۈن دە' p",

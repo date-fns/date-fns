@@ -3,7 +3,7 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 // CLDR #1846 - #1849
-var dateFormats = {
+const dateFormats = {
   full: 'EEEE, d MMMM, y',
   long: 'd MMMM, y',
   medium: 'd MMM, y',
@@ -11,21 +11,21 @@ var dateFormats = {
 }
 
 // CLDR #1850 - #1853
-var timeFormats = {
+const timeFormats = {
   full: 'a h:mm:ss zzzz',
   long: 'a h:mm:ss z',
   medium: 'a h:mm:ss',
   short: 'a h:mm'
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: '{{date}} {{time}}',
   long: '{{date}} {{time}}',
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

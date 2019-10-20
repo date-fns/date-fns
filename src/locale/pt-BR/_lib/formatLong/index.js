@@ -1,27 +1,27 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
-var dateFormats = {
+const dateFormats = {
   full: "EEEE, d 'de' MMMM 'de' y",
   long: "d 'de' MMMM 'de' y",
   medium: 'd MMM y',
   short: 'dd/MM/yyyy'
 }
 
-var timeFormats = {
+const timeFormats = {
   full: 'HH:mm:ss zzzz',
   long: 'HH:mm:ss z',
   medium: 'HH:mm:ss',
   short: 'HH:mm'
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: "{{date}} 'às' {{time}}",
   long: "{{date}} 'às' {{time}}",
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

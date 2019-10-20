@@ -1,9 +1,17 @@
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
 
-var accusativeWeekdays = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу']
+const accusativeWeekdays = [
+  'воскресенье',
+  'понедельник',
+  'вторник',
+  'среду',
+  'четверг',
+  'пятницу',
+  'субботу'
+]
 
-function lastWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function lastWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   switch (day) {
     case 0:
@@ -19,8 +27,8 @@ function lastWeek (day) {
   }
 }
 
-function thisWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function thisWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   if (day === 2 /* Tue */) {
     return "'во " + weekday + " в' p"
@@ -29,8 +37,8 @@ function thisWeek (day) {
   }
 }
 
-function nextWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function nextWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   switch (day) {
     case 0:
@@ -46,9 +54,9 @@ function nextWeek (day) {
   }
 }
 
-var formatRelativeLocale = {
-  lastWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+const formatRelativeLocale = {
+  lastWeek: function(date, baseDate, options) {
+    const day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -58,8 +66,8 @@ var formatRelativeLocale = {
   yesterday: "'вчера в' p",
   today: "'сегодня в' p",
   tomorrow: "'завтра в' p",
-  nextWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+  nextWeek: function(date, baseDate, options) {
+    const day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -69,8 +77,8 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+export default function formatRelative(token, date, baseDate, options) {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date, baseDate, options)

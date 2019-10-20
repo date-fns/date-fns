@@ -20,7 +20,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
  *
  * @example
  * // Subtract 750 milliseconds from 10 July 2014 12:45:30.000:
- * var result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
+ * const result = subMilliseconds(new Date(2014, 6, 10, 12, 45, 30, 0), 750)
  * //=> Thu Jul 10 2014 12:45:29.250
  */
 export default function subMilliseconds(dirtyDate, dirtyAmount) {
@@ -30,6 +30,6 @@ export default function subMilliseconds(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, -amount)
 }

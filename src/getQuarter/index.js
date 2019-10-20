@@ -18,7 +18,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which quarter is 2 July 2014?
- * var result = getQuarter(new Date(2014, 6, 2))
+ * const result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
 export default function getQuarter(dirtyDate) {
@@ -28,7 +28,7 @@ export default function getQuarter(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var quarter = Math.floor(date.getMonth() / 3) + 1
+  const date = toDate(dirtyDate)
+  const quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }

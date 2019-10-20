@@ -1,9 +1,17 @@
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
 
-var accusativeWeekdays = ['неділю', 'понеділок', 'вівторок', 'середу', 'четвер', 'п’ятницю', 'суботу']
+const accusativeWeekdays = [
+  'неділю',
+  'понеділок',
+  'вівторок',
+  'середу',
+  'четвер',
+  'п’ятницю',
+  'суботу'
+]
 
-function lastWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function lastWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   switch (day) {
     case 0:
@@ -18,14 +26,14 @@ function lastWeek (day) {
   }
 }
 
-function thisWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function thisWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   return "'у " + weekday + " о' p"
 }
 
-function nextWeek (day) {
-  var weekday = accusativeWeekdays[day]
+function nextWeek(day) {
+  const weekday = accusativeWeekdays[day]
 
   switch (day) {
     case 0:
@@ -40,9 +48,9 @@ function nextWeek (day) {
   }
 }
 
-var formatRelativeLocale = {
-  lastWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+const formatRelativeLocale = {
+  lastWeek: function(date, baseDate, options) {
+    const day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -52,8 +60,8 @@ var formatRelativeLocale = {
   yesterday: "'вчора о' p",
   today: "'сьогодні о' p",
   tomorrow: "'завтра о' p",
-  nextWeek: function (date, baseDate, options) {
-    var day = date.getUTCDay()
+  nextWeek: function(date, baseDate, options) {
+    const day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
     } else {
@@ -63,8 +71,8 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+export default function formatRelative(token, date, baseDate, options) {
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(date, baseDate, options)

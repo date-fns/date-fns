@@ -19,7 +19,7 @@ import differenceInDays from '../differenceInDays/index.js'
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
+ * const result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
  * //=> 2
  */
 export default function differenceInWeeks(dirtyDateLeft, dirtyDateRight) {
@@ -29,6 +29,6 @@ export default function differenceInWeeks(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
+  const diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

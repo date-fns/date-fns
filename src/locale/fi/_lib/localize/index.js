@@ -1,44 +1,78 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['eaa.', 'jaa.'],
   abbreviated: ['eaa.', 'jaa.'],
   wide: ['ennen ajanlaskun alkua', 'jälkeen ajanlaskun alun']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. kvartaali', '2. kvartaali', '3. kvartaali', '4. kvartaali']
+  wide: ['1. kconsttaali', '2. kconsttaali', '3. kconsttaali', '4. kconsttaali']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['T', 'H', 'M', 'H', 'T', 'K', 'H', 'E', 'S', 'L', 'M', 'J'],
-  abbreviated: ['tammi', 'helmi', 'maalis', 'huhti', 'touko', 'kesä', 'heinä', 'elo', 'syys', 'loka', 'marras', 'joulu'],
-  wide: ['tammikuu', 'helmikuu', 'maaliskuu', 'huhtikuu', 'toukokuu', 'kesäkuu', 'heinäkuu', 'elokuu', 'syyskuu', 'lokakuu', 'marraskuu', 'joulukuu']
+  abbreviated: [
+    'tammi',
+    'helmi',
+    'maalis',
+    'huhti',
+    'touko',
+    'kesä',
+    'heinä',
+    'elo',
+    'syys',
+    'loka',
+    'marras',
+    'joulu'
+  ],
+  wide: [
+    'tammikuu',
+    'helmikuu',
+    'maaliskuu',
+    'huhtikuu',
+    'toukokuu',
+    'kesäkuu',
+    'heinäkuu',
+    'elokuu',
+    'syyskuu',
+    'lokakuu',
+    'marraskuu',
+    'joulukuu'
+  ]
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: monthValues.narrow,
   abbreviated: monthValues.abbreviated,
   wide: monthValues.wide.map(name => name + 'ta')
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'T', 'K', 'T', 'P', 'L'],
   short: ['su', 'ma', 'ti', 'ke', 'to', 'pe', 'la'],
   abbreviated: ['sunn.', 'maan.', 'tiis.', 'kesk.', 'torst.', 'perj.', 'la'],
-  wide: ['sunnuntai', 'maanantai', 'tiistai', 'keskiviikko', 'torstai', 'perjantai', 'lauantai']
+  wide: [
+    'sunnuntai',
+    'maanantai',
+    'tiistai',
+    'keskiviikko',
+    'torstai',
+    'perjantai',
+    'lauantai'
+  ]
 }
 
-var formattingDayValues = {
+const formattingDayValues = {
   narrow: dayValues.narrow,
   short: dayValues.short,
   abbreviated: dayValues.abbreviated,
   wide: dayValues.wide.map(name => name + 'na')
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ap',
     pm: 'ip',
@@ -71,12 +105,12 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
@@ -87,7 +121,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

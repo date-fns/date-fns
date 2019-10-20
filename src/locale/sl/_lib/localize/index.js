@@ -1,17 +1,17 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return String(number).concat('.')
 }
 
-var eraValues = {
+const eraValues = {
   narrow: ['pr. n. št.', 'po n. št.'],
   abbreviated: ['pr. n. št.', 'po n. št.'],
   wide: ['pred našim štetjem', 'po našem štetju']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
     'jan.',
@@ -43,13 +43,13 @@ var monthValues = {
   ]
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. čet.', '2. čet.', '3. čet.', '4. čet.'],
   wide: ['1. četrtletje', '2. četrtletje', '3. četrtletje', '4. četrtletje']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['n', 'p', 't', 's', 'č', 'p', 's'],
   short: ['ned.', 'pon.', 'tor.', 'sre.', 'čet.', 'pet.', 'sob.'],
   abbreviated: ['ned.', 'pon.', 'tor.', 'sre.', 'čet.', 'pet.', 'sob.'],
@@ -64,7 +64,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValuesStandalone = {
+const dayPeriodValuesStandalone = {
   narrow: {
     am: 'd',
     pm: 'p',
@@ -97,7 +97,7 @@ var dayPeriodValuesStandalone = {
   }
 }
 
-var dayPeriodValuesFormatting = {
+const dayPeriodValuesFormatting = {
   narrow: {
     am: 'd',
     pm: 'p',
@@ -130,7 +130,7 @@ var dayPeriodValuesFormatting = {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
     values: eraValues,

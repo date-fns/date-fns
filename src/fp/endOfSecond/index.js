@@ -3,6 +3,6 @@
 import fn from '../../endOfSecond/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfSecond = convertToFP(fn, 1)
+const endOfSecond = convertToFP(fn, 1)
 
 export default endOfSecond

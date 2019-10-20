@@ -3,6 +3,6 @@
 import fn from '../../formatDistanceStrict/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var formatDistanceStrictWithOptions = convertToFP(fn, 3)
+const formatDistanceStrictWithOptions = convertToFP(fn, 3)
 
 export default formatDistanceStrictWithOptions

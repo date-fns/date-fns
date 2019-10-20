@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: {
       regular: 'méně než vteřina',
@@ -243,10 +243,10 @@ var formatDistanceLocale = {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var scheme = formatDistanceLocale[token]
+  const scheme = formatDistanceLocale[token]
 
   // cs pluralization
-  var pluralToken
+  let pluralToken
   if (typeof scheme.other === 'object') {
     pluralToken = 'other'
   } else if (count === 1) {
@@ -258,9 +258,9 @@ export default function formatDistance(token, count, options) {
   }
 
   // times
-  var suffixExist = options.addSuffix === true
-  var comparison = options.comparison
-  var timeToken
+  const suffixExist = options.addSuffix === true
+  const comparison = options.comparison
+  let timeToken
   if (suffixExist && comparison === -1) {
     timeToken = 'past'
   } else if (suffixExist && comparison === 1) {

@@ -1,6 +1,6 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
-var dateFormats = {
+const dateFormats = {
   // thứ Sáu, ngày 25 tháng 08 năm 2017
   full: "EEEE, 'ngày' d MMMM 'năm' y",
   // ngày 25 tháng 08 năm 2017
@@ -11,14 +11,14 @@ var dateFormats = {
   short: 'dd/MM/y'
 }
 
-var timeFormats = {
+const timeFormats = {
   full: 'HH:mm:ss zzzz',
   long: 'HH:mm:ss z',
   medium: 'HH:mm:ss',
   short: 'HH:mm'
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   // thứ Sáu, ngày 25 tháng 08 năm 2017 23:25:59
   full: '{{date}} {{time}}',
   // ngày 25 tháng 08 năm 2017 23:25
@@ -27,7 +27,7 @@ var dateTimeFormats = {
   short: '{{date}} {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

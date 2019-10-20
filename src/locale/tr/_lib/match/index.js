@@ -1,24 +1,24 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(mö|ms)/i,
   abbreviated: /^(mö|ms)/i,
   wide: /^(milattan önce|milattan sonra)/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]ç/i,
   wide: /^((i|İ)lk|(i|İ)kinci|üçüncü|son) çeyrek/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i],
   abbreviated: [/1ç/i, /2ç/i, /3ç/i, /4ç/i],
   wide: [
@@ -29,12 +29,12 @@ var parseQuarterPatterns = {
   ]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^[oşmnhtaek]/i,
   abbreviated: /^(oca|şub|mar|nis|may|haz|tem|ağu|eyl|eki|kas|ara)/i,
   wide: /^(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^o/i,
     /^ş/i,
@@ -65,13 +65,13 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[psçc]/i,
   short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
   abbreviated: /^(paz|pts|sal|çar|per|cum|cts)/i,
   wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i],
   any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i],
   wide: [
@@ -85,11 +85,11 @@ var parseDayPatterns = {
   ]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
   any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^ö\.?ö\.?/i,
     pm: /^ö\.?s\.?/i,
@@ -102,7 +102,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

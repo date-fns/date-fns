@@ -44,17 +44,17 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // For the valid date:
- * var result = isValid(new Date(2014, 1, 31))
+ * const result = isValid(new Date(2014, 1, 31))
  * //=> true
  *
  * @example
  * // For the value, convertable into a date:
- * var result = isValid(1393804800000)
+ * const result = isValid(1393804800000)
  * //=> true
  *
  * @example
  * // For the invalid date:
- * var result = isValid(new Date(''))
+ * const result = isValid(new Date(''))
  * //=> false
  */
 export default function isValid(dirtyDate) {
@@ -64,6 +64,6 @@ export default function isValid(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   return !isNaN(date)
 }

@@ -3,6 +3,6 @@
 import fn from '../../addDays/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addDays = convertToFP(fn, 2)
+const addDays = convertToFP(fn, 2)
 
 export default addDays

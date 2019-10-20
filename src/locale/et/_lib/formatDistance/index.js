@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     standalone: {
       one: 'vähem kui üks sekund',
@@ -79,7 +79,6 @@ var formatDistanceLocale = {
       one: 'ühe päeva',
       other: '{{count}} päeva'
     }
-
   },
 
   aboutXMonths: {
@@ -149,14 +148,14 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var usageGroup = options.addSuffix
+  const usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
 
-  var result
+  let result
   if (typeof usageGroup === 'string') {
     result = usageGroup
   } else if (count === 1) {

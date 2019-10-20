@@ -1,31 +1,62 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['aK', 'pK'],
   abbreviated: ['a.K.E.', 'p.K.E.'],
   wide: ['antaŭ Komuna Erao', 'Komuna Erao']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1-a kvaronjaro', '2-a kvaronjaro', '3-a kvaronjaro', '4-a kvaronjaro']
+  wide: [
+    '1-a kconstonjaro',
+    '2-a kconstonjaro',
+    '3-a kconstonjaro',
+    '4-a kconstonjaro'
+  ]
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec'],
-  wide: ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
+  abbreviated: [
+    'jan',
+    'feb',
+    'mar',
+    'apr',
+    'maj',
+    'jun',
+    'jul',
+    'aŭg',
+    'sep',
+    'okt',
+    'nov',
+    'dec'
+  ],
+  wide: [
+    'januaro',
+    'februaro',
+    'marto',
+    'aprilo',
+    'majo',
+    'junio',
+    'julio',
+    'aŭgusto',
+    'septembro',
+    'oktobro',
+    'novembro',
+    'decembro'
+  ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['D', 'L', 'M', 'M', 'Ĵ', 'V', 'S'],
   short: ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa'],
   abbreviated: ['dim', 'lun', 'mar', 'mer', 'ĵaŭ', 'ven', 'sab'],
   wide: ['dimanĉo', 'lundo', 'mardo', 'merkredo', 'ĵaŭdo', 'vendredo', 'sabato']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -58,12 +89,12 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  const number = Number(dirtyNumber)
   return number + '-a'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
@@ -74,7 +105,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

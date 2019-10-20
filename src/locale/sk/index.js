@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 slk
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
-var locale = {
+const locale = {
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

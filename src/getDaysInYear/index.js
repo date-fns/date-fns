@@ -19,7 +19,7 @@ import isLeapYear from '../isLeapYear/index.js'
  *
  * @example
  * // How many days are in 2012?
- * var result = getDaysInYear(new Date(2012, 0, 1))
+ * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
 export default function getDaysInYear(dirtyDate) {
@@ -29,7 +29,7 @@ export default function getDaysInYear(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
 
   if (isNaN(date)) {
     return NaN

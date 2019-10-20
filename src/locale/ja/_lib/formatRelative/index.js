@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: '先週のeeeeのp',
   yesterday: '昨日のp',
   today: '今日のp',

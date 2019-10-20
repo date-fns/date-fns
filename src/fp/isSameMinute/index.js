@@ -3,6 +3,6 @@
 import fn from '../../isSameMinute/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameMinute = convertToFP(fn, 2)
+const isSameMinute = convertToFP(fn, 2)
 
 export default isSameMinute

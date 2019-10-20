@@ -12,7 +12,7 @@
  * @iso-639-2 ara
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
  */
-// var locale = {
+// const locale = {
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,
 //   formatRelative: formatRelative,
@@ -26,4 +26,6 @@
 
 // export default locale
 
-throw new Error('ar locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+throw new Error(
+  'ar locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA'
+)

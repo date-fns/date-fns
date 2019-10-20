@@ -18,7 +18,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which decade belongs 27 November 1942?
- * var result = getDecade(new Date(1942, 10, 27))
+ * const result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
 export default function getDecade(dirtyDate) {
@@ -28,8 +28,8 @@ export default function getDecade(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
-  var decade = Math.floor(year / 10) * 10
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
+  const decade = Math.floor(year / 10) * 10
   return decade
 }

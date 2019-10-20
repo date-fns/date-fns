@@ -6,7 +6,7 @@ import isWithinInterval from '.'
 
 describe('isWithinInterval', function() {
   it('returns true if the given date in within the given interval', function() {
-    var result = isWithinInterval(new Date(2014, 9 /* Oct */, 31), {
+    const result = isWithinInterval(new Date(2014, 9 /* Oct */, 31), {
       start: new Date(2014, 8 /* Sep */, 1),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -14,7 +14,7 @@ describe('isWithinInterval', function() {
   })
 
   it('returns true if the given date has same time as the left boundary of the interval', function() {
-    var result = isWithinInterval(new Date(2014, 8 /* Sep */, 1), {
+    const result = isWithinInterval(new Date(2014, 8 /* Sep */, 1), {
       start: new Date(2014, 8 /* Sep */, 1),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -22,7 +22,7 @@ describe('isWithinInterval', function() {
   })
 
   it('returns true if the given date has same time as the right boundary of the interval', function() {
-    var result = isWithinInterval(new Date(2014, 11 /* Dec */, 31), {
+    const result = isWithinInterval(new Date(2014, 11 /* Dec */, 31), {
       start: new Date(2014, 8 /* Sep */, 1),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -30,7 +30,7 @@ describe('isWithinInterval', function() {
   })
 
   it('returns true if the given date and the both boundaries are the same', function() {
-    var result = isWithinInterval(new Date(2014, 11 /* Dec */, 31), {
+    const result = isWithinInterval(new Date(2014, 11 /* Dec */, 31), {
       start: new Date(2014, 11 /* Dec */, 31),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -38,7 +38,7 @@ describe('isWithinInterval', function() {
   })
 
   it('returns false if the given date is outside of the interval', function() {
-    var result = isWithinInterval(new Date(2014, 1 /* Feb */, 11), {
+    const result = isWithinInterval(new Date(2014, 1 /* Feb */, 11), {
       start: new Date(2014, 8 /* Sep */, 1),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -46,7 +46,7 @@ describe('isWithinInterval', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = isWithinInterval(new Date(2014, 9 /* Oct */, 31).getTime(), {
+    const result = isWithinInterval(new Date(2014, 9 /* Oct */, 31).getTime(), {
       start: new Date(2014, 8 /* Sep */, 1).getTime(),
       end: new Date(2014, 11 /* Dec */, 31).getTime()
     })
@@ -54,7 +54,7 @@ describe('isWithinInterval', function() {
   })
 
   it('throws an exception if the start date is after the end date', function() {
-    var block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
+    const block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
       start: new Date(2014, 11 /* Dec */, 31),
       end: new Date(2014, 8 /* Sep */, 1)
     })
@@ -62,7 +62,7 @@ describe('isWithinInterval', function() {
   })
 
   it('throws an exception if the interval is undefined', function() {
-    var block = isWithinInterval.bind(
+    const block = isWithinInterval.bind(
       null,
       new Date(2014, 9 /* Oct */, 31),
       // $ExpectedMistake
@@ -72,7 +72,7 @@ describe('isWithinInterval', function() {
   })
 
   it('returns false if the given date is `Invalid Date`', function() {
-    var result = isWithinInterval(new Date(NaN), {
+    const result = isWithinInterval(new Date(NaN), {
       start: new Date(2014, 8 /* Sep */, 1),
       end: new Date(2014, 11 /* Dec */, 31)
     })
@@ -80,7 +80,7 @@ describe('isWithinInterval', function() {
   })
 
   it('throws an exception if the start date is `Invalid Date`', function() {
-    var block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
+    const block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
       start: new Date(NaN),
       end: new Date(2014, 8 /* Sep */, 1)
     })
@@ -88,7 +88,7 @@ describe('isWithinInterval', function() {
   })
 
   it('throws an exception if the end date is `Invalid Date`', function() {
-    var block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
+    const block = isWithinInterval.bind(null, new Date(2014, 9 /* Oct */, 31), {
       start: new Date(2014, 11 /* Dec */, 31),
       end: new Date(NaN)
     })

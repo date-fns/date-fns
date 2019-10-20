@@ -12,13 +12,13 @@ export default function buildMatchFn(args) {
     if (!matchResult) {
       return null
     }
-    var matchedString = matchResult[0]
+    const matchedString = matchResult[0]
 
     var parsePatterns =
       (width && args.parsePatterns[width]) ||
       args.parsePatterns[args.defaultParseWidth]
 
-    var value
+    let value
     if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
       value = findIndex(parsePatterns, function(pattern) {
         return pattern.test(string)

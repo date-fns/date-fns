@@ -20,7 +20,7 @@ import addYears from '../addYears/index.js'
  *
  * @example
  * // Subtract 5 years from 1 September 2014:
- * var result = subYears(new Date(2014, 8, 1), 5)
+ * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears(dirtyDate, dirtyAmount) {
@@ -30,6 +30,6 @@ export default function subYears(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addYears(dirtyDate, -amount)
 }

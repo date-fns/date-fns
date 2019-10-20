@@ -5,12 +5,12 @@ import assert from 'power-assert'
 import min from '.'
 
 describe('min', function() {
-  function isInvalidDate (dirtyDate) {
+  function isInvalidDate(dirtyDate) {
     return dirtyDate instanceof Date && isNaN(dirtyDate)
   }
 
   it('returns the earliest date', function() {
-    var result = min([
+    const result = min([
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     ])
@@ -18,7 +18,7 @@ describe('min', function() {
   })
 
   it('accepts array with more than 2 entries', function() {
-    var result = min([
+    const result = min([
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
       new Date(1985, 6 /* Jul */, 2),
@@ -28,7 +28,7 @@ describe('min', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = min([
+    const result = min([
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()
     ])
@@ -36,7 +36,7 @@ describe('min', function() {
   })
 
   it('returns `Invalid Date` if any given date is invalid', function() {
-    var result = min([
+    const result = min([
       new Date(1989, 6 /* Jul */, 10),
       new Date(NaN),
       new Date(1987, 1 /* Feb */, 11)
@@ -45,7 +45,7 @@ describe('min', function() {
   })
 
   it('returns `Invalid Date` if any given value is undefined', function() {
-    var result = min([
+    const result = min([
       new Date(1989, 6 /* Jul */, 10),
       // $ExpectedMistake
       undefined,
@@ -55,13 +55,13 @@ describe('min', function() {
   })
 
   it('returns `Invalid Date` for empty array', function() {
-    var result = min([])
+    const result = min([])
     assert(isInvalidDate(result))
   })
 
   it('converts Array-like objects into Array', function() {
     // $ExpectedMistake
-    var result = min({
+    const result = min({
       '0': new Date(1989, 6 /* Jul */, 10),
       '1': new Date(1987, 1 /* Feb */, 11),
       length: 2
@@ -71,16 +71,18 @@ describe('min', function() {
 
   it('converts iterable objects into Array', function() {
     // $ExpectedMistake
-    var result = min(new Set([
-      new Date(1989, 6 /* Jul */, 10),
-      new Date(1987, 1 /* Feb */, 11),
-    ]))
+    const result = min(
+      new Set([
+        new Date(1989, 6 /* Jul */, 10),
+        new Date(1987, 1 /* Feb */, 11)
+      ])
+    )
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 
   it('returns `Invalid Date` if given a non-iterable value', function() {
     // $ExpectedMistake
-    var result = min(undefined)
+    const result = min(undefined)
     assert(isInvalidDate(result))
   })
 

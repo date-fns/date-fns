@@ -3,6 +3,6 @@
 import fn from '../../isBefore/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isBefore = convertToFP(fn, 2)
+const isBefore = convertToFP(fn, 2)
 
 export default isBefore

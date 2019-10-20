@@ -7,7 +7,7 @@ export default function assign(target, dirtyObject) {
 
   dirtyObject = dirtyObject || {}
 
-  for (var property in dirtyObject) {
+  for (let property in dirtyObject) {
     if (dirtyObject.hasOwnProperty(property)) {
       target[property] = dirtyObject[property]
     }

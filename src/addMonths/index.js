@@ -21,7 +21,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  *
  * @example
  * // Add 5 months to 1 September 2014:
- * var result = addMonths(new Date(2014, 8, 1), 5)
+ * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
 export default function addMonths(dirtyDate, dirtyAmount) {
@@ -31,13 +31,13 @@ export default function addMonths(dirtyDate, dirtyAmount) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
-  var desiredMonth = date.getMonth() + amount
-  var dateWithDesiredMonth = new Date(0)
+  const date = toDate(dirtyDate)
+  const amount = toInteger(dirtyAmount)
+  const desiredMonth = date.getMonth() + amount
+  const dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(date.getFullYear(), desiredMonth, 1)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
-  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  const daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
   date.setMonth(desiredMonth, Math.min(daysInMonth, date.getDate()))

@@ -20,7 +20,7 @@ import endOfDay from '../endOfDay/index.js'
  *
  * @example
  * // If today is 6 October 2014:
- * var result = endOfToday()
+ * const result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
 export default function endOfToday() {

@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The end of an hour for 2 September 2014 11:55:00:
- * var result = endOfHour(new Date(2014, 8, 2, 11, 55))
+ * const result = endOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:59:59.999
  */
 export default function endOfHour(dirtyDate) {
@@ -29,7 +29,7 @@ export default function endOfHour(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   date.setMinutes(59, 59, 999)
   return date
 }

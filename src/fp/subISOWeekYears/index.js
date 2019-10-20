@@ -3,6 +3,6 @@
 import fn from '../../subISOWeekYears/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subISOWeekYears = convertToFP(fn, 2)
+const subISOWeekYears = convertToFP(fn, 2)
 
 export default subISOWeekYears

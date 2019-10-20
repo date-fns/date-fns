@@ -15,7 +15,7 @@ import match from './_lib/match/index.js'
  * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
  * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
  */
-var locale = {
+const locale = {
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

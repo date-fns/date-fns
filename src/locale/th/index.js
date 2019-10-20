@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author [@hawkup]{@link https://github.com/hawkup}
  * @author  Jirawat I. [@nodtem66]{@link https://github.com/nodtem66}
  */
-var locale = {
+const locale = {
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -3,6 +3,6 @@
 import fn from '../../addWeeks/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addWeeks = convertToFP(fn, 2)
+const addWeeks = convertToFP(fn, 2)
 
 export default addWeeks

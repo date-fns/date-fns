@@ -3,6 +3,6 @@
 import fn from '../../setQuarter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setQuarter = convertToFP(fn, 2)
+const setQuarter = convertToFP(fn, 2)
 
 export default setQuarter

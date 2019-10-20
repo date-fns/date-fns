@@ -10,10 +10,10 @@ export default function startOfUTCISOWeekYear(dirtyDate) {
     )
   }
 
-  var year = getUTCISOWeekYear(dirtyDate)
-  var fourthOfJanuary = new Date(0)
+  const year = getUTCISOWeekYear(dirtyDate)
+  const fourthOfJanuary = new Date(0)
   fourthOfJanuary.setUTCFullYear(year, 0, 4)
   fourthOfJanuary.setUTCHours(0, 0, 0, 0)
-  var date = startOfUTCISOWeek(fourthOfJanuary)
+  const date = startOfUTCISOWeek(fourthOfJanuary)
   return date
 }

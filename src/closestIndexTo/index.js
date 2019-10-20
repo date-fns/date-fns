@@ -22,13 +22,13 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which date is closer to 6 September 2015?
- * var dateToCompare = new Date(2015, 8, 6)
- * var datesArray = [
+ * const dateToCompare = new Date(2015, 8, 6)
+ * const datesArray = [
  *   new Date(2015, 0, 1),
  *   new Date(2016, 0, 1),
  *   new Date(2017, 0, 1)
  * ]
- * var result = closestIndexTo(dateToCompare, datesArray)
+ * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
 export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
@@ -38,15 +38,15 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     )
   }
 
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(dateToCompare)) {
     return NaN
   }
 
-  var timeToCompare = dateToCompare.getTime()
+  const timeToCompare = dateToCompare.getTime()
 
-  var datesArray
+  let datesArray
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -60,10 +60,10 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  var result
-  var minDistance
+  let result
+  let minDistance
   datesArray.forEach(function(dirtyDate, index) {
-    var currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {
       result = NaN
@@ -71,7 +71,7 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
       return
     }
 
-    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    const distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result == null || distance < minDistance) {
       result = index
       minDistance = distance

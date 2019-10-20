@@ -3,6 +3,6 @@
 import fn from '../../isDate/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isDateWithOptions = convertToFP(fn, 2)
+const isDateWithOptions = convertToFP(fn, 2)
 
 export default isDateWithOptions

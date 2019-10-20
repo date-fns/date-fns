@@ -20,7 +20,7 @@ import addHours from '../addHours/index.js'
  *
  * @example
  * // Subtract 2 hours from 11 July 2014 01:00:00:
- * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
+ * const result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
 export default function subHours(dirtyDate, dirtyAmount) {
@@ -30,6 +30,6 @@ export default function subHours(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addHours(dirtyDate, -amount)
 }

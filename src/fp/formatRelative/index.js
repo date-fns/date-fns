@@ -3,6 +3,6 @@
 import fn from '../../formatRelative/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var formatRelative = convertToFP(fn, 2)
+const formatRelative = convertToFP(fn, 2)
 
 export default formatRelative

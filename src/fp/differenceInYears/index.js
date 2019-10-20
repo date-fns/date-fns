@@ -3,6 +3,6 @@
 import fn from '../../differenceInYears/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var differenceInYears = convertToFP(fn, 2)
+const differenceInYears = convertToFP(fn, 2)
 
 export default differenceInYears

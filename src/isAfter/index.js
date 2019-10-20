@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Is 10 July 1989 after 11 February 1987?
- * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
+ * const result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
 export default function isAfter(dirtyDate, dirtyDateToCompare) {
@@ -29,7 +29,7 @@ export default function isAfter(dirtyDate, dirtyDateToCompare) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const date = toDate(dirtyDate)
+  const dateToCompare = toDate(dirtyDateToCompare)
   return date.getTime() > dateToCompare.getTime()
 }

@@ -3,6 +3,6 @@
 import fn from '../../addSeconds/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addSeconds = convertToFP(fn, 2)
+const addSeconds = convertToFP(fn, 2)
 
 export default addSeconds

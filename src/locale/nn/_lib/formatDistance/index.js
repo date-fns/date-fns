@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     singular: 'mindre enn eitt sekund',
     plural: 'mindre enn {{count}} sekund'
@@ -67,7 +67,7 @@ var formatDistanceLocale = {
   }
 }
 
-var wordMapping = [
+const wordMapping = [
   'null',
   'ein',
   'to',
@@ -88,8 +88,8 @@ export default function formatDistance(token, count, options) {
     onlyNumeric: false
   }
 
-  var translation = formatDistanceLocale[token]
-  var result
+  const translation = formatDistanceLocale[token]
+  let result
   if (typeof translation === 'string') {
     result = translation
   } else if (count === 0 || count > 1) {

@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['př. n. l.', 'n. l.'],
   abbreviated: ['př. n. l.', 'n. l.'],
   wide: ['před naším letopočtem', 'našeho letopočtu']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí'],
   wide: ['1. čtvrtletí', '2. čtvrtletí', '3. čtvrtletí', '4. čtvrtletí']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
   abbreviated: [
     'led',
@@ -43,7 +43,7 @@ var monthValues = {
     'prosinec'
   ]
 }
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['L', 'Ú', 'B', 'D', 'K', 'Č', 'Č', 'S', 'Z', 'Ř', 'L', 'P'],
   abbreviated: [
     'led',
@@ -75,14 +75,14 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   short: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
   abbreviated: ['ned', 'pon', 'úte', 'stř', 'čtv', 'pát', 'sob'],
   wide: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'dop.',
     pm: 'odp.',
@@ -115,7 +115,7 @@ var dayPeriodValues = {
   }
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'dop.',
     pm: 'odp.',
@@ -149,11 +149,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

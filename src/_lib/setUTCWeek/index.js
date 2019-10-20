@@ -11,9 +11,9 @@ export default function setUTCWeek(dirtyDate, dirtyWeek, options) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var week = toInteger(dirtyWeek)
-  var diff = getUTCWeek(date, options) - week
+  const date = toDate(dirtyDate)
+  const week = toInteger(dirtyWeek)
+  const diff = getUTCWeek(date, options) - week
   date.setUTCDate(date.getUTCDate() - diff * 7)
   return date
 }

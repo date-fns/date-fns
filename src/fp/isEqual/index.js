@@ -3,6 +3,6 @@
 import fn from '../../isEqual/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isEqual = convertToFP(fn, 2)
+const isEqual = convertToFP(fn, 2)
 
 export default isEqual

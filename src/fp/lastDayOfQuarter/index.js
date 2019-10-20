@@ -3,6 +3,6 @@
 import fn from '../../lastDayOfQuarter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var lastDayOfQuarter = convertToFP(fn, 1)
+const lastDayOfQuarter = convertToFP(fn, 1)
 
 export default lastDayOfQuarter

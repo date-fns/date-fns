@@ -19,7 +19,7 @@ import startOfDay from '../startOfDay/index.js'
  *
  * @example
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
- * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
+ * const result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  */
 export default function isSameDay(dirtyDateLeft, dirtyDateRight) {
@@ -29,8 +29,8 @@ export default function isSameDay(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  var dateRightStartOfDay = startOfDay(dirtyDateRight)
+  const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
+  const dateRightStartOfDay = startOfDay(dirtyDateRight)
 
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }

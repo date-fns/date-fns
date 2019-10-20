@@ -1,4 +1,4 @@
-var translations = {
+const translations = {
   about: 'körülbelül',
   over: 'több mint',
   almost: 'majdnem',
@@ -6,7 +6,7 @@ var translations = {
 }
 
 function translate(number, addSuffix, key, comparison) {
-  var num = number
+  const num = number
   switch (key) {
     case 'xseconds':
       if (comparison === -1 && addSuffix) return num + ' másodperccel ezelőtt'
@@ -55,10 +55,10 @@ function translate(number, addSuffix, key, comparison) {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var adverb = token.match(/about|over|almost|lessthan/i)
-  var unit = token.replace(adverb, '')
+  const adverb = token.match(/about|over|almost|lessthan/i)
+  const unit = token.replace(adverb, '')
 
-  var result
+  let result
   result = translate(
     count,
     options.addSuffix,

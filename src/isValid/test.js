@@ -6,12 +6,12 @@ import isValid from '.'
 
 describe('isValid', function() {
   it('returns true if the given date is valid', function() {
-    var result = isValid(new Date())
+    const result = isValid(new Date())
     assert(result === true)
   })
 
   it('returns false if the given date is invalid', function() {
-    var result = isValid(new Date(''))
+    const result = isValid(new Date(''))
     assert(result === false)
   })
 
@@ -21,7 +21,7 @@ describe('isValid', function() {
   })
 
   it('treats null as an invalid date', function() {
-    var result = isValid(null)
+    const result = isValid(null)
     assert(result === false)
   })
 

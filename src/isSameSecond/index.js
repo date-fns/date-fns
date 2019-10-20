@@ -20,7 +20,7 @@ import startOfSecond from '../startOfSecond/index.js'
  * @example
  * // Are 4 September 2014 06:30:15.000 and 4 September 2014 06:30.15.500
  * // in the same second?
- * var result = isSameSecond(
+ * const result = isSameSecond(
  *   new Date(2014, 8, 4, 6, 30, 15),
  *   new Date(2014, 8, 4, 6, 30, 15, 500)
  * )
@@ -33,8 +33,8 @@ export default function isSameSecond(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
+  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }

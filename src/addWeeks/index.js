@@ -20,7 +20,7 @@ import addDays from '../addDays/index.js'
  *
  * @example
  * // Add 4 weeks to 1 September 2014:
- * var result = addWeeks(new Date(2014, 8, 1), 4)
+ * const result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
 export default function addWeeks(dirtyDate, dirtyAmount) {
@@ -30,7 +30,7 @@ export default function addWeeks(dirtyDate, dirtyAmount) {
     )
   }
 
-  var amount = toInteger(dirtyAmount)
-  var days = amount * 7
+  const amount = toInteger(dirtyAmount)
+  const days = amount * 7
   return addDays(dirtyDate, days)
 }

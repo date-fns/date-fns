@@ -3,6 +3,6 @@
 import fn from '../../closestTo/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var closestTo = convertToFP(fn, 2)
+const closestTo = convertToFP(fn, 2)
 
 export default closestTo

@@ -3,6 +3,6 @@
 import fn from '../../compareDesc/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var compareDesc = convertToFP(fn, 2)
+const compareDesc = convertToFP(fn, 2)
 
 export default compareDesc

@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Set 4 hours to 1 September 2014 11:30:00:
- * var result = setHours(new Date(2014, 8, 1, 11, 30), 4)
+ * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
 export default function setHours(dirtyDate, dirtyHours) {
@@ -30,8 +30,8 @@ export default function setHours(dirtyDate, dirtyHours) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var hours = toInteger(dirtyHours)
+  const date = toDate(dirtyDate)
+  const hours = toInteger(dirtyHours)
   date.setHours(hours)
   return date
 }

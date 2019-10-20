@@ -1,21 +1,21 @@
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
 
-var adjectivesLastWeek = {
+const adjectivesLastWeek = {
   masculine: 'ostatni',
   feminine: 'ostatnia'
 }
 
-var adjectivesThisWeek = {
+const adjectivesThisWeek = {
   masculine: 'ten',
   feminine: 'ta'
 }
 
-var adjectivesNextWeek = {
+const adjectivesNextWeek = {
   masculine: 'następny',
   feminine: 'następna'
 }
 
-var dayGrammaticalGender = {
+const dayGrammaticalGender = {
   0: 'feminine',
   1: 'masculine',
   2: 'masculine',
@@ -38,19 +38,19 @@ function getAdjectives(token, date, baseDate, options) {
 }
 
 function getAdjective(token, date, baseDate, options) {
-  var day = date.getUTCDay()
-  var adjectives = getAdjectives(token, date, baseDate, options)
-  var grammaticalGender = dayGrammaticalGender[day]
+  const day = date.getUTCDay()
+  const adjectives = getAdjectives(token, date, baseDate, options)
+  const grammaticalGender = dayGrammaticalGender[day]
 
   return adjectives[grammaticalGender]
 }
 
 function dayAndTimeWithAdjective(token, date, baseDate, options) {
-  var adjective = getAdjective(token, date, baseDate, options)
+  const adjective = getAdjective(token, date, baseDate, options)
   return `'${adjective}' eeee 'o' p`
 }
 
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: dayAndTimeWithAdjective,
   yesterday: "'wczoraj o' p",
   today: "'dzisiaj o' p",
@@ -60,7 +60,7 @@ var formatRelativeLocale = {
 }
 
 export default function formatRelative(token, date, baseDate, options) {
-  var format = formatRelativeLocale[token]
+  const format = formatRelativeLocale[token]
   if (typeof format === 'function') {
     return format(token, date, baseDate, options)
   }

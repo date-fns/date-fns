@@ -25,12 +25,12 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Set Sunday to 1 September 2014:
- * var result = setDay(new Date(2014, 8, 1), 0)
+ * const result = setDay(new Date(2014, 8, 1), 0)
  * //=> Sun Aug 31 2014 00:00:00
  *
  * @example
  * // If week starts with Monday, set Sunday to 1 September 2014:
- * var result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
+ * const result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
@@ -40,13 +40,13 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
     )
   }
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -56,13 +56,13 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var date = toDate(dirtyDate, options)
-  var day = toInteger(dirtyDay)
-  var currentDay = date.getDay()
+  const date = toDate(dirtyDate, options)
+  const day = toInteger(dirtyDay)
+  const currentDay = date.getDay()
 
-  var remainder = day % 7
-  var dayIndex = (remainder + 7) % 7
+  const remainder = day % 7
+  const dayIndex = (remainder + 7) % 7
 
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  const diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
   return addDays(date, diff, options)
 }

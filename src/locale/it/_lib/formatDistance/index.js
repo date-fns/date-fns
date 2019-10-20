@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'meno di un secondo',
     other: 'meno di {{count}} secondi'
@@ -22,12 +22,12 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: 'circa un\'ora',
+    one: "circa un'ora",
     other: 'circa {{count}} ore'
   },
 
   xHours: {
-    one: 'un\'ora',
+    one: "un'ora",
     other: '{{count}} ore'
   },
 
@@ -67,10 +67,10 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var result
+  let result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

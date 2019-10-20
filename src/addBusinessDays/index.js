@@ -17,7 +17,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Add 10 business days to 1 September 2014:
- * var result = addBusinessDays(new Date(2014, 8, 1), 10)
+ * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
 export default function addBusinessDays(dirtyDate, dirtyAmount) {
@@ -27,13 +27,13 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
+  const date = toDate(dirtyDate)
+  let amount = toInteger(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
 
-  var hours = date.getHours()
-  var sign = amount < 0 ? -1 : 1
+  const hours = date.getHours()
+  const sign = amount < 0 ? -1 : 1
 
   date.setDate(date.getDate() + toInteger(amount / 5) * 7)
   amount %= 5 // to get remaining days not part of a full week

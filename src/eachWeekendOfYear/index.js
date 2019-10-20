@@ -17,7 +17,7 @@ import endOfYear from '../endOfYear/index.js'
  *
  * @example
  * // Lists all Saturdays and Sundays in the year
- * var result = eachWeekendOfYear(new Date(2020, 1, 1))
+ * const result = eachWeekendOfYear(new Date(2020, 1, 1))
  * //=> [
  * //   Sat Jan 03 2020 00:00:00,
  * //   Sun Jan 04 2020 00:00:00,
@@ -33,9 +33,9 @@ export default function eachWeekendOfYear(dirtyDate) {
     )
   }
 
-  var startDate = startOfYear(dirtyDate)
+  const startDate = startOfYear(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 
-  var endDate = endOfYear(dirtyDate)
+  const endDate = endOfYear(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same month?
- * var result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
+ * const result = isSameMonth(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
 export default function isSameMonth(dirtyDateLeft, dirtyDateRight) {
@@ -29,8 +29,8 @@ export default function isSameMonth(dirtyDateLeft, dirtyDateRight) {
     )
   }
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
   return (
     dateLeft.getFullYear() === dateRight.getFullYear() &&
     dateLeft.getMonth() === dateRight.getMonth()

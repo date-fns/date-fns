@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: {
       default: 'ஒரு வினாடிக்கு குறைவாக',
@@ -188,7 +188,7 @@ function getFormatDistanceLocaleWithSuffix(resultObj, options) {
 }
 
 export default function formatDistance(token, count, options = {}) {
-  var result
+  let result
   if (formatDistanceLocale[token].default) {
     result = getFormatDistanceLocaleWithSuffix(
       formatDistanceLocale[token],

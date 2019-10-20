@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['AC', 'DC'],
   abbreviated: ['AC', 'DC'],
   wide: ['antes de cristo', 'depois de cristo']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
   wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
     'jan',
@@ -44,14 +44,14 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
   short: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
   abbreviated: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
   wide: ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -83,7 +83,7 @@ var dayPeriodValues = {
     night: 'noite'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -117,9 +117,9 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const number = Number(dirtyNumber)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
   if (unit === 'week' || unit === 'isoWeek') {
     return number + 'ª'
@@ -127,7 +127,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return number + 'º'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

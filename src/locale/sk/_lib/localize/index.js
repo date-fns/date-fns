@@ -1,21 +1,21 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1772
-var eraValues = {
+const eraValues = {
   narrow: ['pred Kr.', 'po Kr.'],
   abbreviated: ['pred Kr.', 'po Kr.'],
   wide: ['pred Kristom', 'po Kristovi']
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1780
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1. štvrťrok', '2. štvrťrok', '3. štvrťrok', '4. štvrťrok']
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1804
-var monthValues = {
+const monthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
     'jan',
@@ -46,7 +46,7 @@ var monthValues = {
     'december'
   ]
 }
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
     'jan',
@@ -79,7 +79,7 @@ var formattingMonthValues = {
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1876
-var dayValues = {
+const dayValues = {
   narrow: ['n', 'p', 'u', 's', 'š', 'p', 's'],
   short: ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
   abbreviated: ['ne', 'po', 'ut', 'st', 'št', 'pi', 'so'],
@@ -95,7 +95,7 @@ var dayValues = {
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1932
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -127,7 +127,7 @@ var dayPeriodValues = {
     night: 'noc'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -161,11 +161,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

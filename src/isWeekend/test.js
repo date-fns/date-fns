@@ -6,22 +6,22 @@ import isWeekend from '.'
 
 describe('isWeekend', function() {
   it('returns true if the given date is in a weekend', function() {
-    var result = isWeekend(new Date(2014, 9 /* Oct */, 5))
+    const result = isWeekend(new Date(2014, 9 /* Oct */, 5))
     assert(result === true)
   })
 
   it('returns false if the given date is not in a weekend', function() {
-    var result = isWeekend(new Date(2014, 9 /* Oct */, 6))
+    const result = isWeekend(new Date(2014, 9 /* Oct */, 6))
     assert(result === false)
   })
 
   it('accepts a timestamp', function() {
-    var result = isWeekend(new Date(2014, 9 /* Oct */, 5).getTime())
+    const result = isWeekend(new Date(2014, 9 /* Oct */, 5).getTime())
     assert(result === true)
   })
 
   it('returns false if the given date is `Invalid Date`', function() {
-    var result = isWeekend(new Date(NaN))
+    const result = isWeekend(new Date(NaN))
     assert(result === false)
   })
 

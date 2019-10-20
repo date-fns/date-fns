@@ -16,13 +16,13 @@ import toDate from '../toDate/index.js'
  *
  *   ```javascript
  *   // Before v2.0.0
- *   var date1 = new Date(1989, 6, 10)
- *   var date2 = new Date(1987, 1, 11)
- *   var minDate = min(date1, date2)
+ *   const date1 = new Date(1989, 6, 10)
+ *   const date2 = new Date(1987, 1, 11)
+ *   const minDate = min(date1, date2)
  *
  *   // v2.0.0 onward:
- *   var dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
- *   var minDate = min(dates)
+ *   const dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
+ *   const minDate = min(dates)
  *   ```
  *
  * @param {Date[]|Number[]} datesArray - the dates to compare
@@ -31,7 +31,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which of these dates is the earliest?
- * var result = min([
+ * const result = min([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),
@@ -46,7 +46,7 @@ export default function min(dirtyDatesArray) {
     )
   }
 
-  var datesArray
+  let datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
@@ -59,9 +59,9 @@ export default function min(dirtyDatesArray) {
     return new Date(NaN)
   }
 
-  var result
+  let result
   datesArray.forEach(function(dirtyDate) {
-    var currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate)
 
     if (result === undefined || result > currentDate || isNaN(currentDate)) {
       result = currentDate

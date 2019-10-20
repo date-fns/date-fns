@@ -3,6 +3,6 @@
 import fn from '../../eachDayOfInterval/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var eachDayOfInterval = convertToFP(fn, 1)
+const eachDayOfInterval = convertToFP(fn, 1)
 
 export default eachDayOfInterval

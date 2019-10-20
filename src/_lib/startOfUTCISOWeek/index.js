@@ -9,11 +9,11 @@ export default function startOfUTCISOWeek(dirtyDate) {
     )
   }
 
-  var weekStartsOn = 1
+  const weekStartsOn = 1
 
-  var date = toDate(dirtyDate)
-  var day = date.getUTCDay()
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  const date = toDate(dirtyDate)
+  const day = date.getUTCDay()
+  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 
   date.setUTCDate(date.getUTCDate() - diff)
   date.setUTCHours(0, 0, 0, 0)

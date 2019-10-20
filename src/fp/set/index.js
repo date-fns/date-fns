@@ -3,6 +3,6 @@
 import fn from '../../set/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var set = convertToFP(fn, 2)
+const set = convertToFP(fn, 2)
 
 export default set

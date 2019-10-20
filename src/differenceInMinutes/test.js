@@ -6,7 +6,7 @@ import differenceInMinutes from '.'
 
 describe('differenceInMinutes', function() {
   it('returns the number of minutes between the given dates', function() {
-    var result = differenceInMinutes(
+    const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20),
       new Date(2014, 6 /* Jul */, 2, 12, 6)
     )
@@ -14,7 +14,7 @@ describe('differenceInMinutes', function() {
   })
 
   it('returns a negative number if the time value of the first date is smaller', function() {
-    var result = differenceInMinutes(
+    const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 6),
       new Date(2014, 6 /* Jul */, 2, 12, 20)
     )
@@ -22,7 +22,7 @@ describe('differenceInMinutes', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = differenceInMinutes(
+    const result = differenceInMinutes(
       new Date(2014, 8 /* Sep */, 5, 18, 45).getTime(),
       new Date(2014, 8 /* Sep */, 5, 18, 15).getTime()
     )
@@ -31,7 +31,7 @@ describe('differenceInMinutes', function() {
 
   describe('edge cases', function() {
     it('the difference is less than a minute, but the given dates are in different calendar minutes', function() {
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 12),
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59)
       )
@@ -39,7 +39,7 @@ describe('differenceInMinutes', function() {
     })
 
     it('the same for the swapped dates', function() {
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59),
         new Date(2014, 8 /* Sep */, 5, 12, 12)
       )
@@ -47,7 +47,7 @@ describe('differenceInMinutes', function() {
     })
 
     it('the difference is an integral number of minutes', function() {
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 25),
         new Date(2014, 8 /* Sep */, 5, 12, 15)
       )
@@ -55,7 +55,7 @@ describe('differenceInMinutes', function() {
     })
 
     it('the given dates are the same', function() {
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -67,18 +67,18 @@ describe('differenceInMinutes', function() {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function() {
-    var result = differenceInMinutes(
+    const result = differenceInMinutes(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
@@ -86,7 +86,7 @@ describe('differenceInMinutes', function() {
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
-    var result = differenceInMinutes(
+    const result = differenceInMinutes(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
@@ -94,7 +94,7 @@ describe('differenceInMinutes', function() {
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
-    var result = differenceInMinutes(new Date(NaN), new Date(NaN))
+    const result = differenceInMinutes(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 

@@ -3,6 +3,6 @@
 import fn from '../../endOfWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfWeek = convertToFP(fn, 1)
+const endOfWeek = convertToFP(fn, 1)
 
 export default endOfWeek

@@ -3,6 +3,6 @@
 import fn from '../../subSeconds/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subSeconds = convertToFP(fn, 2)
+const subSeconds = convertToFP(fn, 2)
 
 export default subSeconds

@@ -6,7 +6,7 @@ import isSameWeek from '.'
 
 describe('isSameWeek', function() {
   it('returns true if the given dates have the same week', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4)
     )
@@ -14,7 +14,7 @@ describe('isSameWeek', function() {
   })
 
   it('returns false if the given dates have different weeks', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 30),
       new Date(2014, 8 /* Sep */, 4)
     )
@@ -22,7 +22,7 @@ describe('isSameWeek', function() {
   })
 
   it('allows to specify which day is the first day of the week', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
       { weekStartsOn: 1 }
@@ -31,7 +31,7 @@ describe('isSameWeek', function() {
   })
 
   it('allows to specify which day is the first day of the week in locale', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
       {
@@ -45,7 +45,7 @@ describe('isSameWeek', function() {
   })
 
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
       {
@@ -60,7 +60,7 @@ describe('isSameWeek', function() {
   })
 
   it('implicitly converts options', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),
       // $ExpectedMistake
@@ -70,7 +70,7 @@ describe('isSameWeek', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = isSameWeek(
+    const result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31).getTime(),
       new Date(2014, 8 /* Sep */, 4).getTime()
     )
@@ -78,22 +78,22 @@ describe('isSameWeek', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
-    var result = isSameWeek(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
+    const result = isSameWeek(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
     assert(result === false)
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
-    var result = isSameWeek(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
+    const result = isSameWeek(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
     assert(result === false)
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
-    var result = isSameWeek(new Date(NaN), new Date(NaN))
+    const result = isSameWeek(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {
-    var block = isSameWeek.bind(
+    const block = isSameWeek.bind(
       null,
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4),

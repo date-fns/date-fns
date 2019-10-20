@@ -3,6 +3,6 @@
 import fn from '../../subMonths/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subMonths = convertToFP(fn, 2)
+const subMonths = convertToFP(fn, 2)
 
 export default subMonths

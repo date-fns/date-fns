@@ -1,6 +1,6 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var numberValues = {
+const numberValues = {
   locale: {
     '1': '১',
     '2': '২',
@@ -27,32 +27,79 @@ var numberValues = {
   }
 }
 
-var eraValues = {
+const eraValues = {
   narrow: ['খ্রিঃপূঃ', 'খ্রিঃ'],
   abbreviated: ['খ্রিঃপূর্ব', 'খ্রিঃ'],
   wide: ['খ্রিস্টপূর্ব', 'খ্রিস্টাব্দ']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['১', '২', '৩', '৪'],
   abbreviated: ['১ত্রৈ', '২ত্রৈ', '৩ত্রৈ', '৪ত্রৈ'],
   wide: ['১ম ত্রৈমাসিক', '২য় ত্রৈমাসিক', '৩য় ত্রৈমাসিক', '৪র্থ ত্রৈমাসিক']
 }
 
-var monthValues = {
-  narrow: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
-  abbreviated: ['জানু', 'ফেব্রু', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্ট', 'অক্টো', 'নভে', 'ডিসে'],
-  wide: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর']
+const monthValues = {
+  narrow: [
+    'জানু',
+    'ফেব্রু',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্ট',
+    'অক্টো',
+    'নভে',
+    'ডিসে'
+  ],
+  abbreviated: [
+    'জানু',
+    'ফেব্রু',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্ট',
+    'অক্টো',
+    'নভে',
+    'ডিসে'
+  ],
+  wide: [
+    'জানুয়ারি',
+    'ফেব্রুয়ারি',
+    'মার্চ',
+    'এপ্রিল',
+    'মে',
+    'জুন',
+    'জুলাই',
+    'আগস্ট',
+    'সেপ্টেম্বর',
+    'অক্টোবর',
+    'নভেম্বর',
+    'ডিসেম্বর'
+  ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
   short: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
   abbreviated: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
-  wide: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার ', 'শুক্রবার', 'শনিবার']
+  wide: [
+    'রবিবার',
+    'সোমবার',
+    'মঙ্গলবার',
+    'বুধবার',
+    'বৃহস্পতিবার ',
+    'শুক্রবার',
+    'শনিবার'
+  ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'পূ',
     pm: 'অপ',
@@ -84,7 +131,7 @@ var dayPeriodValues = {
     night: 'রাত'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'পূ',
     pm: 'অপ',
@@ -117,7 +164,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function dateOrdinalNumber (number, localeNumber) {
+function dateOrdinalNumber(number, localeNumber) {
   if (number > 18 && number <= 31) {
     return localeNumber + 'শে'
   } else {
@@ -135,17 +182,17 @@ function dateOrdinalNumber (number, localeNumber) {
   }
 }
 
-function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var number = localize.localeToNumber(dirtyNumber)
-  var localeNumber = localize.numberToLocale(number)
-  var unit = dirtyOptions.unit
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  const number = localize.localeToNumber(dirtyNumber)
+  const localeNumber = localize.numberToLocale(number)
+  const unit = dirtyOptions.unit
 
   if (unit === 'date') {
     return dateOrdinalNumber(number, localeNumber)
   }
   if (number > 10 || number === 0) return localeNumber + 'তম'
 
-  var rem10 = number % 10
+  const rem10 = number % 10
   switch (rem10) {
     case 2:
     case 3:
@@ -164,20 +211,20 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   }
 }
 
-function localeToNumber (locale) {
-  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+function localeToNumber(locale) {
+  const number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function(match) {
     return numberValues.number[match]
   })
   return Number(number)
 }
 
-function numberToLocale (number) {
-  return number.toString().replace(/\d/g, function (match) {
+function numberToLocale(number) {
+  return number.toString().replace(/\d/g, function(match) {
     return numberValues.locale[match]
   })
 }
 
-var localize = {
+const localize = {
   localeToNumber: localeToNumber,
 
   numberToLocale: numberToLocale,
@@ -192,7 +239,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),

@@ -1,6 +1,6 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var numberValues = {
+const numberValues = {
   locale: {
     '1': '१',
     '2': '२',
@@ -28,13 +28,13 @@ var numberValues = {
 }
 
 // CLDR #1585 - #1592
-var eraValues = {
+const eraValues = {
   narrow: ['ईसा-पूर्व', 'ईस्वी'],
   abbreviated: ['ईसा-पूर्व', 'ईस्वी'],
   wide: ['ईसा-पूर्व', 'ईसवी सन']
 }
 // CLDR #1593 - #1616
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['ति1', 'ति2', 'ति3', 'ति4'],
   wide: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही', 'चौथी तिमाही']
@@ -46,7 +46,7 @@ var quarterValues = {
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 // https://www.unicode.org/cldr/charts/32/summary/hi.html
 // CLDR #1617 - #1688
-var monthValues = {
+const monthValues = {
   narrow: [
     'ज',
     'फ़',
@@ -92,7 +92,7 @@ var monthValues = {
 }
 
 // CLDR #1689 - #1744
-var dayValues = {
+const dayValues = {
   narrow: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
   short: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
   abbreviated: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
@@ -107,7 +107,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'पूर्वाह्न',
     pm: 'अपराह्न',
@@ -139,7 +139,7 @@ var dayPeriodValues = {
     night: 'रात'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'पूर्वाह्न',
     pm: 'अपराह्न',
@@ -173,10 +173,10 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = localize.localeToNumber(dirtyNumber)
-  var localeNumber = localize.numberToLocale(number)
+  const number = localize.localeToNumber(dirtyNumber)
+  const localeNumber = localize.numberToLocale(number)
 
-  var rem10 = number % 10
+  const rem10 = number % 10
   switch (rem10) {
     case 2:
     case 3:
@@ -193,7 +193,7 @@ function ordinalNumber(dirtyNumber) {
 }
 
 function localeToNumber(locale) {
-  var number = locale.toString().replace(/[१२३४५६७८९०]/g, function(match) {
+  const number = locale.toString().replace(/[१२३४५६७८९०]/g, function(match) {
     return numberValues.number[match]
   })
   return Number(number)
@@ -205,7 +205,7 @@ function numberToLocale(number) {
   })
 }
 
-var localize = {
+const localize = {
   localeToNumber: localeToNumber,
   numberToLocale: numberToLocale,
   ordinalNumber: ordinalNumber,

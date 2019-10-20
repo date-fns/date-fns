@@ -22,7 +22,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:
- * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfQuarter(dirtyDate) {
@@ -32,9 +32,9 @@ export default function lastDayOfQuarter(dirtyDate) {
     )
   }
 
-  var date = toDate(dirtyDate)
-  var currentMonth = date.getMonth()
-  var month = currentMonth - (currentMonth % 3) + 3
+  const date = toDate(dirtyDate)
+  const currentMonth = date.getMonth()
+  const month = currentMonth - (currentMonth % 3) + 3
   date.setMonth(month, 0)
   date.setHours(0, 0, 0, 0)
   return date

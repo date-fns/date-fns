@@ -10,20 +10,20 @@ export default function setUTCISODay(dirtyDate, dirtyDay) {
     )
   }
 
-  var day = toInteger(dirtyDay)
+  let day = toInteger(dirtyDay)
 
   if (day % 7 === 0) {
     day = day - 7
   }
 
-  var weekStartsOn = 1
-  var date = toDate(dirtyDate)
-  var currentDay = date.getUTCDay()
+  const weekStartsOn = 1
+  const date = toDate(dirtyDate)
+  const currentDay = date.getUTCDay()
 
-  var remainder = day % 7
-  var dayIndex = (remainder + 7) % 7
+  const remainder = day % 7
+  const dayIndex = (remainder + 7) % 7
 
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  const diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
 
   date.setUTCDate(date.getUTCDate() + diff)
   return date
