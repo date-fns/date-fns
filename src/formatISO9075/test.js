@@ -43,32 +43,26 @@ describe('formatISO9075', () => {
   })
 
   it('throws TypeError when options.date and options.time are both false', function() {
-    try {
-      formatISO9075(new Date(), { date: false, time: false })
-    } catch (err) {
-      assert.deepEqual(err.name, 'TypeError')
-      assert.deepEqual(
-        err.message,
-        'Either options.date or options.time must be true'
-      )
-    }
+    const block = formatISO9075.bind(null, new Date(), {
+      date: false,
+      time: false
+    })
+
+    assert.throws(block, TypeError)
+    assert.throws(block, 'Either options.date or options.time must be true')
   })
 
   it('throws TypeError if no parameters are passed', function() {
-    try {
-      formatISO9075()
-    } catch (err) {
-      assert.deepEqual(err.name, 'TypeError')
-      assert.deepEqual(err.message, `1 arguments required, but only 0 present`)
-    }
+    const block = formatISO9075.bind(null)
+
+    assert.throws(block, TypeError)
+    assert.throws(block, '1 arguments required, but only 0 present')
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
-    try {
-      formatISO9075(new Date(NaN))
-    } catch (err) {
-      assert.deepEqual(err.name, 'RangeError')
-      assert.deepEqual(err.message, 'Invalid time value')
-    }
+    const block = formatISO9075.bind(null, new Date(NaN))
+
+    assert.throws(block, RangeError)
+    assert.throws(block, 'Invalid time value')
   })
 })

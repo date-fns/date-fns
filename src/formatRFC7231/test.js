@@ -25,20 +25,16 @@ describe('formatRFC7231', () => {
   })
 
   it('throws TypeError if no parameters are passed', function() {
-    try {
-      formatRFC7231()
-    } catch (err) {
-      assert.deepEqual(err.name, 'TypeError')
-      assert.deepEqual(err.message, `1 arguments required, but only 0 present`)
-    }
+    const block = formatRFC7231.bind(null)
+
+    assert.throws(block, TypeError)
+    assert.throws(block, '1 arguments required, but only 0 present')
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
-    try {
-      formatRFC7231(new Date(NaN))
-    } catch (err) {
-      assert.deepEqual(err.name, 'RangeError')
-      assert.deepEqual(err.message, 'Invalid time value')
-    }
+    const block = formatRFC7231.bind(null, new Date(NaN))
+
+    assert.throws(block, RangeError)
+    assert.throws(block, 'Invalid time value')
   })
 })
