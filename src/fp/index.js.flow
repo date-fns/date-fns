@@ -139,8 +139,6 @@ declare module.exports: {
   endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>,
   endOfYear: CurriedFn1<Date | number, Date>,
   format: CurriedFn2<string, Date | number, string>,
-  formatConstants: CurriedFn2<string, Date | number, string>,
-  formatConstantsWithOptions: CurriedFn3<Object, string, Date | number, string>,
   formatDistance: CurriedFn2<Date | number, Date | number, string>,
   formatDistanceStrict: CurriedFn2<Date | number, Date | number, string>,
   formatDistanceStrictWithOptions: CurriedFn3<
@@ -155,6 +153,10 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatISO8601: CurriedFn1<Date | number, string>,
+  formatISO8601WithOptions: CurriedFn2<Object, Date | number, string>,
+  formatISO9075: CurriedFn1<Date | number, string>,
+  formatISO9075WithOptions: CurriedFn2<Object, Date | number, string>,
   formatRelative: CurriedFn2<Date | number, Date | number, string>,
   formatRelativeWithOptions: CurriedFn3<
     Object,
@@ -162,6 +164,8 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatRFC7231: CurriedFn1<Date | number, string>,
+  formatRFC7231WithOptions: CurriedFn2<Object, Date | number, string>,
   formatWithOptions: CurriedFn3<Object, string, Date | number, string>,
   fromUnixTime: CurriedFn1<number, Date>,
   getDate: CurriedFn1<Date | number, number>,
