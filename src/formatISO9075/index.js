@@ -3,12 +3,12 @@ import isValid from '../isValid/index.js'
 import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 
 /**
- * @name formatISO8601
+ * @name formatISO9075
  * @category Common Helpers
- * @summary Format the date according to the ISO 8601 standard (http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
+ * @summary Format the date according to the ISO 9075 standard (http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
  *
  * @description
- * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
+ * Return the formatted date string in ISO 9075 format. Options may be passed to control the parts and notations of the date.
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
@@ -20,26 +20,26 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @throws {TypeError} one of `options.date` or `options.time` must be true
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52))
- * //=> '2019-09-18T19:00:52'
+ * // Represent 18 September 2019 in ISO 9075 format:
+ * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52))
+ * //=> '2019-09-18 19:00:52'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601, short format:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { extended: false })
- * //=> '20190918T190052'
+ * // Represent 18 September 2019 in ISO 9075, short format:
+ * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { extended: false })
+ * //=> '20190918 190052'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format, date only:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { time: false })
+ * // Represent 18 September 2019 in ISO 9075 format, date only:
+ * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { time: false })
  * //=> '2019-09-18'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format, time only:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { date: false })
+ * // Represent 18 September 2019 in ISO 9075 format, time only:
+ * const result = formatISO9075(new Date(2019, 8, 18, 19, 0, 52), { date: false })
  * //=> '19:00:52'
  */
-export default function formatISO8601(
+export default function formatISO9075(
   dirtyDate,
   dirtyOptions = {
     date: true,
@@ -96,7 +96,7 @@ export default function formatISO8601(
   }
 
   if (showTime) {
-    const separator = result !== '' ? 'T' : ''
+    const separator = result !== '' ? ' ' : ''
 
     // HHmmss or HH:mm:ss.
     // If date is present, append "T" before the time string.
