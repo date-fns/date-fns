@@ -242,6 +242,7 @@ export {
   default as startOfWeekYearWithOptions
 } from './startOfWeekYearWithOptions/index.js'
 export { default as startOfYear } from './startOfYear/index.js'
+export { default as subBusinessDays } from './subBusinessDays/index.js'
 export { default as subDays } from './subDays/index.js'
 export { default as subHours } from './subHours/index.js'
 export { default as subISOWeekYears } from './subISOWeekYears/index.js'

@@ -852,6 +852,9 @@ declare module 'date-fns' {
   function startOfYesterday(): Date
   namespace startOfYesterday {}
 
+  function subBusinessDays(date: Date | number, amount: number): Date
+  namespace subBusinessDays {}
+
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
 
@@ -1723,6 +1726,11 @@ declare module 'date-fns/startOfYear' {
 declare module 'date-fns/startOfYesterday' {
   import { startOfYesterday } from 'date-fns'
   export default startOfYesterday
+}
+
+declare module 'date-fns/subBusinessDays' {
+  import { subBusinessDays } from 'date-fns'
+  export default subBusinessDays
 }
 
 declare module 'date-fns/subDays' {
@@ -2615,6 +2623,11 @@ declare module 'date-fns/startOfYesterday/index' {
   export default startOfYesterday
 }
 
+declare module 'date-fns/subBusinessDays/index' {
+  import { subBusinessDays } from 'date-fns'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/subDays/index' {
   import { subDays } from 'date-fns'
   export default subDays
@@ -3505,6 +3518,11 @@ declare module 'date-fns/startOfYesterday/index.js' {
   export default startOfYesterday
 }
 
+declare module 'date-fns/subBusinessDays/index.js' {
+  import { subBusinessDays } from 'date-fns'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/subDays/index.js' {
   import { subDays } from 'date-fns'
   export default subDays
@@ -4150,6 +4168,9 @@ declare module 'date-fns/fp' {
 
   const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {}
+
+  const subBusinessDays: CurriedFn2<number, Date | number, Date>
+  namespace subBusinessDays {}
 
   const subDays: CurriedFn2<number, Date | number, Date>
   namespace subDays {}
@@ -5042,6 +5063,11 @@ declare module 'date-fns/fp/startOfWeekYearWithOptions' {
 declare module 'date-fns/fp/startOfYear' {
   import { startOfYear } from 'date-fns/fp'
   export default startOfYear
+}
+
+declare module 'date-fns/fp/subBusinessDays' {
+  import { subBusinessDays } from 'date-fns/fp'
+  export default subBusinessDays
 }
 
 declare module 'date-fns/fp/subDays' {
@@ -5954,6 +5980,11 @@ declare module 'date-fns/fp/startOfYear/index' {
   export default startOfYear
 }
 
+declare module 'date-fns/fp/subBusinessDays/index' {
+  import { subBusinessDays } from 'date-fns/fp'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/fp/subDays/index' {
   import { subDays } from 'date-fns/fp'
   export default subDays
@@ -6864,6 +6895,11 @@ declare module 'date-fns/fp/startOfYear/index.js' {
   export default startOfYear
 }
 
+declare module 'date-fns/fp/subBusinessDays/index.js' {
+  import { subBusinessDays } from 'date-fns/fp'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/fp/subDays/index.js' {
   import { subDays } from 'date-fns/fp'
   export default subDays
@@ -7700,6 +7736,9 @@ declare module 'date-fns/esm' {
 
   function startOfYesterday(): Date
   namespace startOfYesterday {}
+
+  function subBusinessDays(date: Date | number, amount: number): Date
+  namespace subBusinessDays {}
 
   function subDays(date: Date | number, amount: number): Date
   namespace subDays {}
@@ -8572,6 +8611,11 @@ declare module 'date-fns/esm/startOfYear' {
 declare module 'date-fns/esm/startOfYesterday' {
   import { startOfYesterday } from 'date-fns/esm'
   export default startOfYesterday
+}
+
+declare module 'date-fns/esm/subBusinessDays' {
+  import { subBusinessDays } from 'date-fns/esm'
+  export default subBusinessDays
 }
 
 declare module 'date-fns/esm/subDays' {
@@ -9464,6 +9508,11 @@ declare module 'date-fns/esm/startOfYesterday/index' {
   export default startOfYesterday
 }
 
+declare module 'date-fns/esm/subBusinessDays/index' {
+  import { subBusinessDays } from 'date-fns/esm'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/esm/subDays/index' {
   import { subDays } from 'date-fns/esm'
   export default subDays
@@ -10354,6 +10403,11 @@ declare module 'date-fns/esm/startOfYesterday/index.js' {
   export default startOfYesterday
 }
 
+declare module 'date-fns/esm/subBusinessDays/index.js' {
+  import { subBusinessDays } from 'date-fns/esm'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/esm/subDays/index.js' {
   import { subDays } from 'date-fns/esm'
   export default subDays
@@ -10999,6 +11053,9 @@ declare module 'date-fns/esm/fp' {
 
   const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {}
+
+  const subBusinessDays: CurriedFn2<number, Date | number, Date>
+  namespace subBusinessDays {}
 
   const subDays: CurriedFn2<number, Date | number, Date>
   namespace subDays {}
@@ -11891,6 +11948,11 @@ declare module 'date-fns/esm/fp/startOfWeekYearWithOptions' {
 declare module 'date-fns/esm/fp/startOfYear' {
   import { startOfYear } from 'date-fns/esm/fp'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/fp/subBusinessDays' {
+  import { subBusinessDays } from 'date-fns/esm/fp'
+  export default subBusinessDays
 }
 
 declare module 'date-fns/esm/fp/subDays' {
@@ -12803,6 +12865,11 @@ declare module 'date-fns/esm/fp/startOfYear/index' {
   export default startOfYear
 }
 
+declare module 'date-fns/esm/fp/subBusinessDays/index' {
+  import { subBusinessDays } from 'date-fns/esm/fp'
+  export default subBusinessDays
+}
+
 declare module 'date-fns/esm/fp/subDays/index' {
   import { subDays } from 'date-fns/esm/fp'
   export default subDays
@@ -13711,6 +13778,11 @@ declare module 'date-fns/esm/fp/startOfWeekYearWithOptions/index.js' {
 declare module 'date-fns/esm/fp/startOfYear/index.js' {
   import { startOfYear } from 'date-fns/esm/fp'
   export default startOfYear
+}
+
+declare module 'date-fns/esm/fp/subBusinessDays/index.js' {
+  import { subBusinessDays } from 'date-fns/esm/fp'
+  export default subBusinessDays
 }
 
 declare module 'date-fns/esm/fp/subDays/index.js' {
@@ -16715,6 +16787,8 @@ interface dateFns {
   startOfYear(date: Date | number): Date
 
   startOfYesterday(): Date
+
+  subBusinessDays(date: Date | number, amount: number): Date
 
   subDays(date: Date | number, amount: number): Date
 
