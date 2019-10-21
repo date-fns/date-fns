@@ -49,20 +49,20 @@ describe('formatISO8601', () => {
     })
 
     assert.throws(block, TypeError)
-    assert.throws(block, 'Either options.date or options.time must be true')
+    assert.throws(block, /Either options.date or options.time must be true/)
   })
 
   it('throws TypeError if no parameters are passed', function() {
     const block = formatISO8601.bind(null)
 
     assert.throws(block, TypeError)
-    assert.throws(block, '1 arguments required, but only 0 present')
+    assert.throws(block, /1 arguments required, but only 0 present/)
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
     const block = formatISO8601.bind(null, new Date(NaN))
 
     assert.throws(block, RangeError)
-    assert.throws(block, 'Invalid time value')
+    assert.throws(block, /Invalid time value/)
   })
 })

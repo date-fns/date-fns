@@ -51,20 +51,20 @@ describe('formatRFC3339', () => {
     })
 
     assert.throws(block, TypeError)
-    assert.throws(block, 'Fraction should be within the range of 0 and 3')
+    assert.throws(block, /Fraction should be within the range of 0 and 3/)
   })
 
   it('throws TypeError if no parameters are passed', function() {
     const block = formatRFC3339.bind(null)
 
     assert.throws(block, TypeError)
-    assert.throws(block, '1 arguments required, but only 0 present')
+    assert.throws(block, /1 arguments required, but only 0 present/)
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
     const block = formatRFC3339.bind(null, new Date(NaN))
 
     assert.throws(block, RangeError)
-    assert.throws(block, 'Invalid time value')
+    assert.throws(block, /Invalid time value/)
   })
 })
