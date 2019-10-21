@@ -38,6 +38,6 @@ type Locale = {
 declare module.exports: (
   date: Date | number,
   options?: {
-    fraction?: boolean
+    fraction?: number
   }
 ) => string

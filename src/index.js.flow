@@ -303,7 +303,7 @@ declare module.exports: {
   formatRFC3339: (
     date: Date | number,
     options?: {
-      fraction?: boolean
+      fraction?: number
     }
   ) => string,
 

@@ -403,7 +403,7 @@ declare module 'date-fns' {
   function formatRFC3339(
     date: Date | number,
     options?: {
-      fraction?: boolean
+      fraction?: number
     }
   ): string
   namespace formatRFC3339 {}
@@ -7493,7 +7493,7 @@ declare module 'date-fns/esm' {
   function formatRFC3339(
     date: Date | number,
     options?: {
-      fraction?: boolean
+      fraction?: number
     }
   ): string
   namespace formatRFC3339 {}
@@ -16736,7 +16736,7 @@ interface dateFns {
   formatRFC3339(
     date: Date | number,
     options?: {
-      fraction?: boolean
+      fraction?: number
     }
   ): string
 

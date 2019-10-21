@@ -12,7 +12,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.fraction=0] - returns the number of digits of millisecond (minimum: 0, maximum: 3).
+ * @param {Number} [options.fraction=0] - returns the number of digits of millisecond (minimum: 0, maximum: 3).
  * @returns {String} the formatted date string
  * @throws {TypeError} no parameters passed
  * @throws {TypeError} `options.fraction` is invalid (either of less than 0 or more than 3).
