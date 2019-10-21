@@ -164,6 +164,8 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatRFC3339: CurriedFn1<Date | number, string>,
+  formatRFC3339WithOptions: CurriedFn2<Object, Date | number, string>,
   formatRFC7231: CurriedFn1<Date | number, string>,
   formatRFC7231WithOptions: CurriedFn2<Object, Date | number, string>,
   formatWithOptions: CurriedFn3<Object, string, Date | number, string>,

@@ -3,7 +3,7 @@ import isValid from '../isValid/index.js'
 import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 
 /**
- * @name formatISO3339
+ * @name formatRFC3339
  * @category Common Helpers
  * @summary Format the date according to the ISO 3339 standard (https://tools.ietf.org/html/rfc3339#section-5.6).
  *
@@ -20,25 +20,25 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format:
- * const result = formatISO3339(new Date(2019, 8, 18, 19, 0, 52))
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format, 2 milliseconds fraction:
- * const result = formatISO3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fraction: 2 })
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fraction: 2 })
  * //=> '2019-09-18T19:00:52.23Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format, 3 milliseconds fraction
- * const result = formatISO3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fraction: 3 })
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fraction: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format in Australian Eastern Standard Time:
- * const result = formatISO3339(new Date(2019, 8, 18, 19, 0, 52))
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52.234+10:00'
  */
-export default function formatISO3339(
+export default function formatRFC3339(
   dirtyDate,
   dirtyOptions = {
     fraction: 0

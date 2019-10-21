@@ -400,6 +400,14 @@ declare module 'date-fns' {
   ): string
   namespace formatRelative {}
 
+  function formatRFC3339(
+    date: Date | number,
+    options?: {
+      fraction?: boolean
+    }
+  ): string
+  namespace formatRFC3339 {}
+
   function formatRFC7231(
     date: Date | number,
     options?: {
@@ -1217,6 +1225,11 @@ declare module 'date-fns/formatISO9075' {
 declare module 'date-fns/formatRelative' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
+}
+
+declare module 'date-fns/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
 }
 
 declare module 'date-fns/formatRFC7231' {
@@ -2124,6 +2137,11 @@ declare module 'date-fns/formatRelative/index' {
   export default formatRelative
 }
 
+declare module 'date-fns/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
+}
+
 declare module 'date-fns/formatRFC7231/index' {
   import { formatRFC7231 } from 'date-fns'
   export default formatRFC7231
@@ -3029,6 +3047,11 @@ declare module 'date-fns/formatRelative/index.js' {
   export default formatRelative
 }
 
+declare module 'date-fns/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
+}
+
 declare module 'date-fns/formatRFC7231/index.js' {
   import { formatRFC7231 } from 'date-fns'
   export default formatRFC7231
@@ -3895,6 +3918,12 @@ declare module 'date-fns/fp' {
   >
   namespace formatRelativeWithOptions {}
 
+  const formatRFC3339: CurriedFn1<Date | number, string>
+  namespace formatRFC3339 {}
+
+  const formatRFC3339WithOptions: CurriedFn2<Object, Date | number, string>
+  namespace formatRFC3339WithOptions {}
+
   const formatRFC7231: CurriedFn1<Date | number, string>
   namespace formatRFC7231 {}
 
@@ -4609,6 +4638,16 @@ declare module 'date-fns/fp/formatRelative' {
 declare module 'date-fns/fp/formatRelativeWithOptions' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/fp/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
 }
 
 declare module 'date-fns/fp/formatRFC7231' {
@@ -5551,6 +5590,16 @@ declare module 'date-fns/fp/formatRelativeWithOptions/index' {
   export default formatRelativeWithOptions
 }
 
+declare module 'date-fns/fp/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions/index' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
+}
+
 declare module 'date-fns/fp/formatRFC7231/index' {
   import { formatRFC7231 } from 'date-fns/fp'
   export default formatRFC7231
@@ -6489,6 +6538,16 @@ declare module 'date-fns/fp/formatRelative/index.js' {
 declare module 'date-fns/fp/formatRelativeWithOptions/index.js' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/fp/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions/index.js' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
 }
 
 declare module 'date-fns/fp/formatRFC7231/index.js' {
@@ -7431,6 +7490,14 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatRelative {}
 
+  function formatRFC3339(
+    date: Date | number,
+    options?: {
+      fraction?: boolean
+    }
+  ): string
+  namespace formatRFC3339 {}
+
   function formatRFC7231(
     date: Date | number,
     options?: {
@@ -8248,6 +8315,11 @@ declare module 'date-fns/esm/formatISO9075' {
 declare module 'date-fns/esm/formatRelative' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
+}
+
+declare module 'date-fns/esm/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
 }
 
 declare module 'date-fns/esm/formatRFC7231' {
@@ -9155,6 +9227,11 @@ declare module 'date-fns/esm/formatRelative/index' {
   export default formatRelative
 }
 
+declare module 'date-fns/esm/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
+}
+
 declare module 'date-fns/esm/formatRFC7231/index' {
   import { formatRFC7231 } from 'date-fns/esm'
   export default formatRFC7231
@@ -10060,6 +10137,11 @@ declare module 'date-fns/esm/formatRelative/index.js' {
   export default formatRelative
 }
 
+declare module 'date-fns/esm/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
+}
+
 declare module 'date-fns/esm/formatRFC7231/index.js' {
   import { formatRFC7231 } from 'date-fns/esm'
   export default formatRFC7231
@@ -10926,6 +11008,12 @@ declare module 'date-fns/esm/fp' {
   >
   namespace formatRelativeWithOptions {}
 
+  const formatRFC3339: CurriedFn1<Date | number, string>
+  namespace formatRFC3339 {}
+
+  const formatRFC3339WithOptions: CurriedFn2<Object, Date | number, string>
+  namespace formatRFC3339WithOptions {}
+
   const formatRFC7231: CurriedFn1<Date | number, string>
   namespace formatRFC7231 {}
 
@@ -11640,6 +11728,16 @@ declare module 'date-fns/esm/fp/formatRelative' {
 declare module 'date-fns/esm/fp/formatRelativeWithOptions' {
   import { formatRelativeWithOptions } from 'date-fns/esm/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
 }
 
 declare module 'date-fns/esm/fp/formatRFC7231' {
@@ -12582,6 +12680,16 @@ declare module 'date-fns/esm/fp/formatRelativeWithOptions/index' {
   export default formatRelativeWithOptions
 }
 
+declare module 'date-fns/esm/fp/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions/index' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
+}
+
 declare module 'date-fns/esm/fp/formatRFC7231/index' {
   import { formatRFC7231 } from 'date-fns/esm/fp'
   export default formatRFC7231
@@ -13520,6 +13628,16 @@ declare module 'date-fns/esm/fp/formatRelative/index.js' {
 declare module 'date-fns/esm/fp/formatRelativeWithOptions/index.js' {
   import { formatRelativeWithOptions } from 'date-fns/esm/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions/index.js' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
 }
 
 declare module 'date-fns/esm/fp/formatRFC7231/index.js' {
@@ -16612,6 +16730,13 @@ interface dateFns {
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+    }
+  ): string
+
+  formatRFC3339(
+    date: Date | number,
+    options?: {
+      fraction?: boolean
     }
   ): string
 
