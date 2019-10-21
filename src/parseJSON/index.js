@@ -30,7 +30,7 @@ import toDate from '../toDate/index.js'
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
-export default function index(argument) {
+export default function parseJSON(argument) {
   if (arguments.length < 1) {
     throw new TypeError(
       '1 argument required, but only ' + arguments.length + ' present'
