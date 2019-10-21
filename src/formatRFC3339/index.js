@@ -80,12 +80,15 @@ export default function formatRFC3339(
   const tzOffset = originalDate.getTimezoneOffset()
 
   if (tzOffset !== 0) {
-    const hourOffset = addLeadingZeros(tzOffset / 60, 2)
-    const minuteOffset = addLeadingZeros(tzOffset % 60, 2)
+    const absoluteOffset = Math.abs(tzOffset)
+    const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+    const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'
 
     offset = `${sign}${hourOffset}${minuteOffset}`
+  } else {
+    offset = 'Z'
   }
 
   return `${year}-${month}-${day}T${hour}:${minute}:${second}${millisecond}${offset}`
