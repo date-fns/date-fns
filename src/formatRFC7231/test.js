@@ -3,11 +3,16 @@
 
 import assert from 'power-assert'
 import formatRFC7231 from '.'
+import addMinutes from '../addMinutes/index.js'
 
 describe('formatRFC7231', () => {
-  const sampleDate1 = new Date(2019, 2, 3, 19, 0, 52)
-  const sampleDate2 = new Date(2019, 9, 4, 12, 30, 13)
-  const sampleDate3 = new Date(2019, 11, 11, 1, 0, 0)
+  const dt = new Date()
+  const tzOffset = dt.getTimezoneOffset()
+
+  // Force normalize the date so it will work fine in other timezones.
+  const sampleDate1 = addMinutes(new Date(2019, 2, 3, 19, 0, 52), tzOffset)
+  const sampleDate2 = addMinutes(new Date(2019, 9, 4, 12, 30, 13), tzOffset)
+  const sampleDate3 = addMinutes(new Date(2019, 11, 11, 1, 0, 0), tzOffset)
 
   it('should convert to the RFC 7231 format', () => {
     assert.deepEqual(
