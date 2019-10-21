@@ -34,13 +34,13 @@ describe('formatRFC7231', () => {
     const block = formatRFC7231.bind(null)
 
     assert.throws(block, TypeError)
-    assert.throws(block, '1 arguments required, but only 0 present')
+    assert.throws(block, /1 arguments required, but only 0 present/)
   })
 
   it('throws RangeError if the date is `Invalid Date`', function() {
     const block = formatRFC7231.bind(null, new Date(NaN))
 
     assert.throws(block, RangeError)
-    assert.throws(block, 'Invalid time value')
+    assert.throws(block, /Invalid time value/)
   })
 })
