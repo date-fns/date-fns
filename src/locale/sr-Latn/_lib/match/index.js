@@ -5,18 +5,18 @@ var matchOrdinalNumberPattern = /^(\d+)\./i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
-  narrow: /^(пр\.н\.е\.|АД)/i,
-  abbreviated: /^(пр\.\s?Хр\.|по\.\s?Хр\.)/i,
-  wide: /^(Пре Христа|пре нове ере|После Христа|нова ера)/i
+  narrow: /^(pr\.n\.e\.|AD)/i,
+  abbreviated: /^(pr\.\s?Hr\.|po\.\s?Hr\.)/i,
+  wide: /^(Pre Hrista|pre nove ere|Posle Hrista|nova era)/i
 }
 var parseEraPatterns = {
-  any: [/^пр/i, /^(по|нова)/i]
+  any: [/^pr/i, /^(po|nova)/i]
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^[1234]\.\s?кв\.?/i,
-  wide: /^[1234]\. квартал/i
+  abbreviated: /^[1234]\.\s?kv\.?/i,
+  wide: /^[1234]\. kvartal/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
@@ -24,51 +24,51 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^(10|11|12|[123456789])\./i,
-  abbreviated: /^(јан|феб|мар|апр|мај|јун|јул|авг|сеп|окт|нов|дец)/i,
-  wide: /^((јануар|јануара)|(фебруар|фебруара)|(март|марта)|(април|априла)|(мја|маја)|(јун|јуна)|(јул|јула)|(август|августа)|(септембар|септембра)|(октобар|октобра)|(новембар|новембра)|(децембар|децембра))/i
+  abbreviated: /^(jan|feb|mar|apr|maj|jun|jul|avg|sep|okt|nov|dec)/i,
+  wide: /^((januar|januara)|(februar|februara)|(mart|marta)|(april|aprila)|(maj|maja)|(jun|juna)|(jul|jula)|(avgust|avgusta)|(septembar|septembra)|(oktobar|oktobra)|(novembar|novembra)|(decembar|decembra))/i
 }
 var parseMonthPatterns = {
   narrow: [/(10|11|12|[123456789])/i],
   any: [
-    /^ја/i,
-    /^ф/i,
-    /^мар/i,
-    /^ап/i,
-    /^мај/i,
-    /^јун/i,
-    /^јул/i,
-    /^авг/i,
-    /^с/i,
-    /^о/i,
-    /^н/i,
-    /^д/i
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^maj/i,
+    /^jun/i,
+    /^jul/i,
+    /^avg/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
   ]
 }
 
 var matchDayPatterns = {
-  narrow: /^[пусчн]/i,
-  short: /^(нед|пон|уто|сре|чет|пет|суб)/i,
-  abbreviated: /^(нед|пон|уто|сре|чет|пет|суб)/i,
-  wide: /^(недеља|понедељак|уторак|среда|четвртак|петак|субота)/i
+  narrow: /^[npusčc]/i,
+  short: /^(ned|pon|uto|sre|(čet|cet)|pet|sub)/i,
+  abbreviated: /^(ned|pon|uto|sre|(čet|cet)|pet|sub)/i,
+  wide: /^(nedjelja|ponedjeljak|utorak|sreda|(četvrtak|cetvrtak)|petak|subota)/i
 }
 var parseDayPatterns = {
-  narrow: [/^п/i, /^у/i, /^с/i, /^ч/i, /^н/i],
-  any: [/^нед/i, /^пон/i, /^уто/i, /^сре/i, /^чет/i, /^пет/i, /^суб/i]
+  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(ам|пм|поноћ|(по)?подне|увече|ноћу|после подне|ујутру)/i
+  any: /^(am|pm|ponoc|ponoć|(po)?podne|uvece|uveče|noću|posle podne|ujutru)/i
 }
 var parseDayPeriodPatterns = {
   any: {
     am: /^a/i,
     pm: /^p/i,
-    midnight: /^поно/i,
-    noon: /^под/i,
-    morning: /ујутру/i,
-    afternoon: /(после\s|по)+подне/i,
-    evening: /(увече)/i,
-    night: /(ноћу)/i
+    midnight: /^pono/i,
+    noon: /^pod/i,
+    morning: /jutro/i,
+    afternoon: /(posle\s|po)+podne/i,
+    evening: /(uvece|uveče)/i,
+    night: /(nocu|noću)/i
   }
 }
 

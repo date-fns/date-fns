@@ -4,30 +4,30 @@ var formatRelativeLocale = {
 
     switch (day) {
       case 0:
-        return "'прошле недеље у' p"
+        return "'prošle nedelje u' p"
       case 3:
-        return "'прошле среде у' p"
+        return "'prošle srede u' p"
       case 6:
-        return "'прошле суботе у' p"
+        return "'prošle subote u' p"
       default:
-        return "'прошли' EEEE 'у' p"
+        return "'prošli' EEEE 'u' p"
     }
   },
-  yesterday: "'јуче у' p",
-  today: "'данас у' p",
-  tomorrow: "'сутра у' p",
+  yesterday: "'juče u' p",
+  today: "'danas u' p",
+  tomorrow: "'sutra u' p",
   nextWeek: function(date) {
     var day = date.getUTCDay()
 
     switch (day) {
       case 0:
-        return "'следеће недеље у' p"
+        return "'sledeće nedelje u' p"
       case 3:
-        return "'следећу среду у' p"
+        return "'sledeću sredu u' p"
       case 6:
-        return "'следећу суботу у' p"
+        return "'sledeću subotu u' p"
       default:
-        return "'следећи' EEEE 'у' p"
+        return "'sledeći' EEEE 'u' p"
     }
   },
   other: 'P'

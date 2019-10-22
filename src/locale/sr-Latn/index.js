@@ -7,13 +7,13 @@ import match from './_lib/match/index.js'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Serbian cyrillic locale.
+ * @summary Serbian latin locale.
  * @language Serbian
  * @iso-639-2 srp
  * @author Igor Radivojević [@rogyvoje]{@link https://github.com/rogyvoje}
  */
 var locale = {
-  code: 'sr',
+  code: 'sr-Latn',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
