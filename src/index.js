@@ -167,6 +167,7 @@ export { default as max } from './max/index.js'
 export { default as min } from './min/index.js'
 export { default as parse } from './parse/index.js'
 export { default as parseISO } from './parseISO/index.js'
+export { default as parseJSON } from './parseJSON/index.js'
 export {
   default as roundToNearestMinutes
 } from './roundToNearestMinutes/index.js'

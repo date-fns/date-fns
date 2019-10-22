@@ -704,6 +704,9 @@ declare module 'date-fns' {
   ): Date
   namespace parseISO {}
 
+  function parseJSON(argument: string | number | Date): Date
+  namespace parseJSON {}
+
   function roundToNearestMinutes(
     date: Date | number,
     options?: {
@@ -1563,6 +1566,11 @@ declare module 'date-fns/parse' {
 declare module 'date-fns/parseISO' {
   import { parseISO } from 'date-fns'
   export default parseISO
+}
+
+declare module 'date-fns/parseJSON' {
+  import { parseJSON } from 'date-fns'
+  export default parseJSON
 }
 
 declare module 'date-fns/roundToNearestMinutes' {
@@ -2455,6 +2463,11 @@ declare module 'date-fns/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/parseJSON/index' {
+  import { parseJSON } from 'date-fns'
+  export default parseJSON
+}
+
 declare module 'date-fns/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
@@ -3345,6 +3358,11 @@ declare module 'date-fns/parseISO/index.js' {
   export default parseISO
 }
 
+declare module 'date-fns/parseJSON/index.js' {
+  import { parseJSON } from 'date-fns'
+  export default parseJSON
+}
+
 declare module 'date-fns/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
@@ -4032,6 +4050,9 @@ declare module 'date-fns/fp' {
 
   const parseISOWithOptions: CurriedFn2<Object, string, Date>
   namespace parseISOWithOptions {}
+
+  const parseJSON: CurriedFn1<string | number | Date, Date>
+  namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
     Object,
@@ -4862,6 +4883,11 @@ declare module 'date-fns/fp/parseISO' {
 declare module 'date-fns/fp/parseISOWithOptions' {
   import { parseISOWithOptions } from 'date-fns/fp'
   export default parseISOWithOptions
+}
+
+declare module 'date-fns/fp/parseJSON' {
+  import { parseJSON } from 'date-fns/fp'
+  export default parseJSON
 }
 
 declare module 'date-fns/fp/parseWithOptions' {
@@ -5774,6 +5800,11 @@ declare module 'date-fns/fp/parseISOWithOptions/index' {
   export default parseISOWithOptions
 }
 
+declare module 'date-fns/fp/parseJSON/index' {
+  import { parseJSON } from 'date-fns/fp'
+  export default parseJSON
+}
+
 declare module 'date-fns/fp/parseWithOptions/index' {
   import { parseWithOptions } from 'date-fns/fp'
   export default parseWithOptions
@@ -6684,6 +6715,11 @@ declare module 'date-fns/fp/parseISOWithOptions/index.js' {
   export default parseISOWithOptions
 }
 
+declare module 'date-fns/fp/parseJSON/index.js' {
+  import { parseJSON } from 'date-fns/fp'
+  export default parseJSON
+}
+
 declare module 'date-fns/fp/parseWithOptions/index.js' {
   import { parseWithOptions } from 'date-fns/fp'
   export default parseWithOptions
@@ -7553,6 +7589,9 @@ declare module 'date-fns/esm' {
   ): Date
   namespace parseISO {}
 
+  function parseJSON(argument: string | number | Date): Date
+  namespace parseJSON {}
+
   function roundToNearestMinutes(
     date: Date | number,
     options?: {
@@ -8412,6 +8451,11 @@ declare module 'date-fns/esm/parse' {
 declare module 'date-fns/esm/parseISO' {
   import { parseISO } from 'date-fns/esm'
   export default parseISO
+}
+
+declare module 'date-fns/esm/parseJSON' {
+  import { parseJSON } from 'date-fns/esm'
+  export default parseJSON
 }
 
 declare module 'date-fns/esm/roundToNearestMinutes' {
@@ -9304,6 +9348,11 @@ declare module 'date-fns/esm/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/esm/parseJSON/index' {
+  import { parseJSON } from 'date-fns/esm'
+  export default parseJSON
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
@@ -10194,6 +10243,11 @@ declare module 'date-fns/esm/parseISO/index.js' {
   export default parseISO
 }
 
+declare module 'date-fns/esm/parseJSON/index.js' {
+  import { parseJSON } from 'date-fns/esm'
+  export default parseJSON
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
@@ -10881,6 +10935,9 @@ declare module 'date-fns/esm/fp' {
 
   const parseISOWithOptions: CurriedFn2<Object, string, Date>
   namespace parseISOWithOptions {}
+
+  const parseJSON: CurriedFn1<string | number | Date, Date>
+  namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
     Object,
@@ -11711,6 +11768,11 @@ declare module 'date-fns/esm/fp/parseISO' {
 declare module 'date-fns/esm/fp/parseISOWithOptions' {
   import { parseISOWithOptions } from 'date-fns/esm/fp'
   export default parseISOWithOptions
+}
+
+declare module 'date-fns/esm/fp/parseJSON' {
+  import { parseJSON } from 'date-fns/esm/fp'
+  export default parseJSON
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions' {
@@ -12623,6 +12685,11 @@ declare module 'date-fns/esm/fp/parseISOWithOptions/index' {
   export default parseISOWithOptions
 }
 
+declare module 'date-fns/esm/fp/parseJSON/index' {
+  import { parseJSON } from 'date-fns/esm/fp'
+  export default parseJSON
+}
+
 declare module 'date-fns/esm/fp/parseWithOptions/index' {
   import { parseWithOptions } from 'date-fns/esm/fp'
   export default parseWithOptions
@@ -13531,6 +13598,11 @@ declare module 'date-fns/esm/fp/parseISO/index.js' {
 declare module 'date-fns/esm/fp/parseISOWithOptions/index.js' {
   import { parseISOWithOptions } from 'date-fns/esm/fp'
   export default parseISOWithOptions
+}
+
+declare module 'date-fns/esm/fp/parseJSON/index.js' {
+  import { parseJSON } from 'date-fns/esm/fp'
+  export default parseJSON
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions/index.js' {
@@ -16599,6 +16671,8 @@ interface dateFns {
       additionalDigits?: 0 | 1 | 2
     }
   ): Date
+
+  parseJSON(argument: string | number | Date): Date
 
   roundToNearestMinutes(
     date: Date | number,

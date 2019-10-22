@@ -508,6 +508,8 @@ declare module.exports: {
     }
   ) => Date,
 
+  parseJSON: (argument: string | number | Date) => Date,
+
   roundToNearestMinutes: (
     date: Date | number,
     options?: {
