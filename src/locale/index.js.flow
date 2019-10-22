@@ -87,6 +87,7 @@ declare module.exports: {
   sk: Locale,
   sl: Locale,
   sr: Locale,
+  srLatn: Locale,
   sv: Locale,
   ta: Locale,
   te: Locale,

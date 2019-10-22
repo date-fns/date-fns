@@ -13939,6 +13939,9 @@ declare module 'date-fns/locale' {
   const sr: Locale
   namespace sr {}
 
+  const srLatn: Locale
+  namespace srLatn {}
+
   const sv: Locale
   namespace sv {}
 
@@ -14248,6 +14251,11 @@ declare module 'date-fns/locale/sl' {
 declare module 'date-fns/locale/sr' {
   import { sr } from 'date-fns/locale'
   export default sr
+}
+
+declare module 'date-fns/locale/sr-Latn' {
+  import { srLatn } from 'date-fns/locale'
+  export default srLatn
 }
 
 declare module 'date-fns/locale/sv' {
@@ -14580,6 +14588,11 @@ declare module 'date-fns/locale/sr/index' {
   export default sr
 }
 
+declare module 'date-fns/locale/sr-Latn/index' {
+  import { srLatn } from 'date-fns/locale'
+  export default srLatn
+}
+
 declare module 'date-fns/locale/sv/index' {
   import { sv } from 'date-fns/locale'
   export default sv
@@ -14910,6 +14923,11 @@ declare module 'date-fns/locale/sr/index.js' {
   export default sr
 }
 
+declare module 'date-fns/locale/sr-Latn/index.js' {
+  import { srLatn } from 'date-fns/locale'
+  export default srLatn
+}
+
 declare module 'date-fns/locale/sv/index.js' {
   import { sv } from 'date-fns/locale'
   export default sv
@@ -15130,6 +15148,9 @@ declare module 'date-fns/esm/locale' {
 
   const sr: Locale
   namespace sr {}
+
+  const srLatn: Locale
+  namespace srLatn {}
 
   const sv: Locale
   namespace sv {}
@@ -15440,6 +15461,11 @@ declare module 'date-fns/esm/locale/sl' {
 declare module 'date-fns/esm/locale/sr' {
   import { sr } from 'date-fns/esm/locale'
   export default sr
+}
+
+declare module 'date-fns/esm/locale/sr-Latn' {
+  import { srLatn } from 'date-fns/esm/locale'
+  export default srLatn
 }
 
 declare module 'date-fns/esm/locale/sv' {
@@ -15772,6 +15798,11 @@ declare module 'date-fns/esm/locale/sr/index' {
   export default sr
 }
 
+declare module 'date-fns/esm/locale/sr-Latn/index' {
+  import { srLatn } from 'date-fns/esm/locale'
+  export default srLatn
+}
+
 declare module 'date-fns/esm/locale/sv/index' {
   import { sv } from 'date-fns/esm/locale'
   export default sv
@@ -16100,6 +16131,11 @@ declare module 'date-fns/esm/locale/sl/index.js' {
 declare module 'date-fns/esm/locale/sr/index.js' {
   import { sr } from 'date-fns/esm/locale'
   export default sr
+}
+
+declare module 'date-fns/esm/locale/sr-Latn/index.js' {
+  import { srLatn } from 'date-fns/esm/locale'
+  export default srLatn
 }
 
 declare module 'date-fns/esm/locale/sv/index.js' {
