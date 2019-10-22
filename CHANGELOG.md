@@ -8,6 +8,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.6.0] - 2019-10-22
+
+Kudos to [@marnusw](https://github.com/marnusw), [@cdrikd](https://github.com/cdrikd) and [@rogyvoje](https://github.com/rogyvoje) for working on the release!
+
+### Added
+
+- [Added `parseJSON` - lightweight function (just 411 B) that parses dates formatted with `toJSON`](https://github.com/date-fns/date-fns/pull/1463).
+- [Added the language code to each locale](https://github.com/date-fns/date-fns/pull/1489).
+- [Added `subBusinessDays` function](https://github.com/date-fns/date-fns/pull/1491).
+- [Added both Serbian - cyrillic (sr) and latin (sr-Latn) locales](https://github.com/date-fns/date-fns/pull/1494).
+
 ## [2.5.1] - 2019-10-18
 
 Thanks to [@mitchellbutler](https://github.com/mitchellbutler) for the bug fix!
@@ -1828,7 +1839,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.5.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.6.0...HEAD
+[2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
 [2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0
 [2.4.1]: https://github.com/date-fns/date-fns/compare/v2.4.0...v2.4.1
