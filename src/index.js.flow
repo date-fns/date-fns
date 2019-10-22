@@ -626,6 +626,8 @@ declare module.exports: {
 
   startOfYesterday: () => Date,
 
+  subBusinessDays: (date: Date | number, amount: number) => Date,
+
   subDays: (date: Date | number, amount: number) => Date,
 
   subHours: (date: Date | number, amount: number) => Date,

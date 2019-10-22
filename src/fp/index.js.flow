@@ -275,6 +275,7 @@ declare module.exports: {
   startOfWeekYear: CurriedFn1<Date | number, Date>,
   startOfWeekYearWithOptions: CurriedFn2<Object, Date | number, Date>,
   startOfYear: CurriedFn1<Date | number, Date>,
+  subBusinessDays: CurriedFn2<number, Date | number, Date>,
   subDays: CurriedFn2<number, Date | number, Date>,
   subHours: CurriedFn2<number, Date | number, Date>,
   subISOWeekYears: CurriedFn2<number, Date | number, Date>,
