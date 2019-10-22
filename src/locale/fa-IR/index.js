@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Morteza Ziyae [@mort3za]{@link https://github.com/mort3za}
  */
 var locale = {
+  code: 'fa-IR',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

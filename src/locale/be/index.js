@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Martin Wind [@arvigeus]{@link https://github.com/mawi12345}
  */
 var locale = {
+  code: 'be',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

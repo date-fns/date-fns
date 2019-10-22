@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Abduwaly M. [@abduwaly]{@link https://github.com/abduwaly}
  */
 var locale = {
+  code: 'ug',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

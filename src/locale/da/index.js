@@ -16,6 +16,7 @@ import match from './_lib/match/index.js'
  * @author [@stefanbugge]{@link https://github.com/stefanbugge}
  */
 var locale = {
+  code: 'da',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

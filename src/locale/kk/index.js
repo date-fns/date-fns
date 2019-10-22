@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Nikita Bayev [@drugoi]{@link https://github.com/drugoi}
  */
 var locale = {
+  code: 'kk',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

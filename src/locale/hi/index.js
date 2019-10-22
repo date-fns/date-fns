@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Mukesh Mandiwal [@mukeshmandiwal]{@link https://github.com/mukeshmandiwal}
  */
 var locale = {
+  code: 'hi',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

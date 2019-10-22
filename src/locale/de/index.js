@@ -17,6 +17,7 @@ import match from './_lib/match/index.js'
  * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
  */
 var locale = {
+  code: 'de',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

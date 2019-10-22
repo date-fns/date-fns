@@ -14,6 +14,7 @@ import match from '../en-US/_lib/match/index.js'
  * @author Marco Imperatore [@mimperatore]{@link https://github.com/mimperatore}
  */
 var locale = {
+  code: 'en-CA',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

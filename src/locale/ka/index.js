@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Nick Shvelidze [@shvelo]{@link https://github.com/shvelo}
  */
 var locale = {
+  code: 'ka',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

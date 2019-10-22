@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Mato Žgajner [@mzgajner]{@link https://github.com/mzgajner}
  */
 var locale = {
+  code: 'sl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

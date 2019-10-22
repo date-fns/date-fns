@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Fidel Pita [@fidelpita]{@link https://github.com/fidelpita}
  */
 var locale = {
+  code: 'gl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

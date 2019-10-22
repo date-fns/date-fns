@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Elwyn Malethan [@elmomalmo]{@link https://github.com/elmomalmo}
  */
 var locale = {
+  code: 'cy',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

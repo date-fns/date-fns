@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Manaday Mavani [@ManadayM]{@link https://github.com/manadaym}
  */
 var locale = {
+  code: 'gu',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

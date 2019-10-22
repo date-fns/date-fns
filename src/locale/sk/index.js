@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
 var locale = {
+  code: 'sk',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
