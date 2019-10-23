@@ -370,7 +370,7 @@ declare module 'date-fns' {
   ): string
   namespace formatDistanceToNow {}
 
-  function formatISO8601(
+  function formatISO(
     date: Date | number,
     options?: {
       date?: boolean
@@ -378,7 +378,7 @@ declare module 'date-fns' {
       extended?: boolean
     }
   ): string
-  namespace formatISO8601 {}
+  namespace formatISO {}
 
   function formatISO9075(
     date: Date | number,
@@ -1212,9 +1212,9 @@ declare module 'date-fns/formatDistanceToNow' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/formatISO8601' {
-  import { formatISO8601 } from 'date-fns'
-  export default formatISO8601
+declare module 'date-fns/formatISO' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
 }
 
 declare module 'date-fns/formatISO9075' {
@@ -2122,9 +2122,9 @@ declare module 'date-fns/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/formatISO8601/index' {
-  import { formatISO8601 } from 'date-fns'
-  export default formatISO8601
+declare module 'date-fns/formatISO/index' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
 }
 
 declare module 'date-fns/formatISO9075/index' {
@@ -3032,9 +3032,9 @@ declare module 'date-fns/formatDistanceToNow/index.js' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/formatISO8601/index.js' {
-  import { formatISO8601 } from 'date-fns'
-  export default formatISO8601
+declare module 'date-fns/formatISO/index.js' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
 }
 
 declare module 'date-fns/formatISO9075/index.js' {
@@ -3895,17 +3895,17 @@ declare module 'date-fns/fp' {
   >
   namespace formatDistanceWithOptions {}
 
-  const formatISO8601: CurriedFn1<Date | number, string>
-  namespace formatISO8601 {}
-
-  const formatISO8601WithOptions: CurriedFn2<Object, Date | number, string>
-  namespace formatISO8601WithOptions {}
+  const formatISO: CurriedFn1<Date | number, string>
+  namespace formatISO {}
 
   const formatISO9075: CurriedFn1<Date | number, string>
   namespace formatISO9075 {}
 
   const formatISO9075WithOptions: CurriedFn2<Object, Date | number, string>
   namespace formatISO9075WithOptions {}
+
+  const formatISOWithOptions: CurriedFn2<Object, Date | number, string>
+  namespace formatISOWithOptions {}
 
   const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {}
@@ -4610,14 +4610,9 @@ declare module 'date-fns/fp/formatDistanceWithOptions' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/fp/formatISO8601' {
-  import { formatISO8601 } from 'date-fns/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/fp/formatISO8601WithOptions' {
-  import { formatISO8601WithOptions } from 'date-fns/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/fp/formatISO' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/fp/formatISO9075' {
@@ -4628,6 +4623,11 @@ declare module 'date-fns/fp/formatISO9075' {
 declare module 'date-fns/fp/formatISO9075WithOptions' {
   import { formatISO9075WithOptions } from 'date-fns/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative' {
@@ -5560,14 +5560,9 @@ declare module 'date-fns/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/fp/formatISO8601/index' {
-  import { formatISO8601 } from 'date-fns/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/fp/formatISO8601WithOptions/index' {
-  import { formatISO8601WithOptions } from 'date-fns/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/fp/formatISO/index' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/fp/formatISO9075/index' {
@@ -5578,6 +5573,11 @@ declare module 'date-fns/fp/formatISO9075/index' {
 declare module 'date-fns/fp/formatISO9075WithOptions/index' {
   import { formatISO9075WithOptions } from 'date-fns/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions/index' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative/index' {
@@ -6510,14 +6510,9 @@ declare module 'date-fns/fp/formatDistanceWithOptions/index.js' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/fp/formatISO8601/index.js' {
-  import { formatISO8601 } from 'date-fns/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/fp/formatISO8601WithOptions/index.js' {
-  import { formatISO8601WithOptions } from 'date-fns/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/fp/formatISO/index.js' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/fp/formatISO9075/index.js' {
@@ -6528,6 +6523,11 @@ declare module 'date-fns/fp/formatISO9075/index.js' {
 declare module 'date-fns/fp/formatISO9075WithOptions/index.js' {
   import { formatISO9075WithOptions } from 'date-fns/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions/index.js' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/fp/formatRelative/index.js' {
@@ -7460,7 +7460,7 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatDistanceToNow {}
 
-  function formatISO8601(
+  function formatISO(
     date: Date | number,
     options?: {
       date?: boolean
@@ -7468,7 +7468,7 @@ declare module 'date-fns/esm' {
       extended?: boolean
     }
   ): string
-  namespace formatISO8601 {}
+  namespace formatISO {}
 
   function formatISO9075(
     date: Date | number,
@@ -8302,9 +8302,9 @@ declare module 'date-fns/esm/formatDistanceToNow' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/esm/formatISO8601' {
-  import { formatISO8601 } from 'date-fns/esm'
-  export default formatISO8601
+declare module 'date-fns/esm/formatISO' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/formatISO9075' {
@@ -9212,9 +9212,9 @@ declare module 'date-fns/esm/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/esm/formatISO8601/index' {
-  import { formatISO8601 } from 'date-fns/esm'
-  export default formatISO8601
+declare module 'date-fns/esm/formatISO/index' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/formatISO9075/index' {
@@ -10122,9 +10122,9 @@ declare module 'date-fns/esm/formatDistanceToNow/index.js' {
   export default formatDistanceToNow
 }
 
-declare module 'date-fns/esm/formatISO8601/index.js' {
-  import { formatISO8601 } from 'date-fns/esm'
-  export default formatISO8601
+declare module 'date-fns/esm/formatISO/index.js' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/formatISO9075/index.js' {
@@ -10985,17 +10985,17 @@ declare module 'date-fns/esm/fp' {
   >
   namespace formatDistanceWithOptions {}
 
-  const formatISO8601: CurriedFn1<Date | number, string>
-  namespace formatISO8601 {}
-
-  const formatISO8601WithOptions: CurriedFn2<Object, Date | number, string>
-  namespace formatISO8601WithOptions {}
+  const formatISO: CurriedFn1<Date | number, string>
+  namespace formatISO {}
 
   const formatISO9075: CurriedFn1<Date | number, string>
   namespace formatISO9075 {}
 
   const formatISO9075WithOptions: CurriedFn2<Object, Date | number, string>
   namespace formatISO9075WithOptions {}
+
+  const formatISOWithOptions: CurriedFn2<Object, Date | number, string>
+  namespace formatISOWithOptions {}
 
   const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {}
@@ -11700,14 +11700,9 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/esm/fp/formatISO8601' {
-  import { formatISO8601 } from 'date-fns/esm/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/esm/fp/formatISO8601WithOptions' {
-  import { formatISO8601WithOptions } from 'date-fns/esm/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/esm/fp/formatISO' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/fp/formatISO9075' {
@@ -11718,6 +11713,11 @@ declare module 'date-fns/esm/fp/formatISO9075' {
 declare module 'date-fns/esm/fp/formatISO9075WithOptions' {
   import { formatISO9075WithOptions } from 'date-fns/esm/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatRelative' {
@@ -12650,14 +12650,9 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/esm/fp/formatISO8601/index' {
-  import { formatISO8601 } from 'date-fns/esm/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/esm/fp/formatISO8601WithOptions/index' {
-  import { formatISO8601WithOptions } from 'date-fns/esm/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/esm/fp/formatISO/index' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/fp/formatISO9075/index' {
@@ -12668,6 +12663,11 @@ declare module 'date-fns/esm/fp/formatISO9075/index' {
 declare module 'date-fns/esm/fp/formatISO9075WithOptions/index' {
   import { formatISO9075WithOptions } from 'date-fns/esm/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions/index' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatRelative/index' {
@@ -13600,14 +13600,9 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions/index.js' {
   export default formatDistanceWithOptions
 }
 
-declare module 'date-fns/esm/fp/formatISO8601/index.js' {
-  import { formatISO8601 } from 'date-fns/esm/fp'
-  export default formatISO8601
-}
-
-declare module 'date-fns/esm/fp/formatISO8601WithOptions/index.js' {
-  import { formatISO8601WithOptions } from 'date-fns/esm/fp'
-  export default formatISO8601WithOptions
+declare module 'date-fns/esm/fp/formatISO/index.js' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
 }
 
 declare module 'date-fns/esm/fp/formatISO9075/index.js' {
@@ -13618,6 +13613,11 @@ declare module 'date-fns/esm/fp/formatISO9075/index.js' {
 declare module 'date-fns/esm/fp/formatISO9075WithOptions/index.js' {
   import { formatISO9075WithOptions } from 'date-fns/esm/fp'
   export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions/index.js' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatRelative/index.js' {
@@ -16706,7 +16706,7 @@ interface dateFns {
     }
   ): string
 
-  formatISO8601(
+  formatISO(
     date: Date | number,
     options?: {
       date?: boolean

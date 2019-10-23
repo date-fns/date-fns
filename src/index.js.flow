@@ -273,7 +273,7 @@ declare module.exports: {
     }
   ) => string,
 
-  formatISO8601: (
+  formatISO: (
     date: Date | number,
     options?: {
       date?: boolean,

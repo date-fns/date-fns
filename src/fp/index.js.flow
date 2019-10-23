@@ -153,10 +153,10 @@ declare module.exports: {
     Date | number,
     string
   >,
-  formatISO8601: CurriedFn1<Date | number, string>,
-  formatISO8601WithOptions: CurriedFn2<Object, Date | number, string>,
+  formatISO: CurriedFn1<Date | number, string>,
   formatISO9075: CurriedFn1<Date | number, string>,
   formatISO9075WithOptions: CurriedFn2<Object, Date | number, string>,
+  formatISOWithOptions: CurriedFn2<Object, Date | number, string>,
   formatRelative: CurriedFn2<Date | number, Date | number, string>,
   formatRelativeWithOptions: CurriedFn3<
     Object,

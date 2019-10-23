@@ -102,6 +102,7 @@ export {
 export {
   default as formatDistanceWithOptions
 } from './formatDistanceWithOptions/index.js'
+export { default as formatISO } from './formatISO/index.js'
 export { default as formatISO8601 } from './formatISO8601/index.js'
 export {
   default as formatISO8601WithOptions
@@ -110,6 +111,9 @@ export { default as formatISO9075 } from './formatISO9075/index.js'
 export {
   default as formatISO9075WithOptions
 } from './formatISO9075WithOptions/index.js'
+export {
+  default as formatISOWithOptions
+} from './formatISOWithOptions/index.js'
 export { default as formatRFC3339 } from './formatRFC3339/index.js'
 export {
   default as formatRFC3339WithOptions
