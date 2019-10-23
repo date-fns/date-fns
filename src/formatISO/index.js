@@ -3,7 +3,7 @@ import isValid from '../isValid/index.js'
 import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 
 /**
- * @name formatISO8601
+ * @name formatISO
  * @category Common Helpers
  * @summary Format the date according to the ISO 8601 standard (http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
  *
@@ -22,25 +22,25 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52))
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601, short format:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { extended: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { extended: false })
  * //=> '20190918T190052'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, date only:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { time: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { time: false })
  * //=> '2019-09-18'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, time only:
- * const result = formatISO8601(new Date(2019, 8, 18, 19, 0, 52), { date: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { date: false })
  * //=> '19:00:52'
  */
-export default function formatISO8601(
+export default function formatISO(
   dirtyDate,
   dirtyOptions = {
     date: true,
