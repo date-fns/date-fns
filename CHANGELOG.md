@@ -63,7 +63,7 @@ Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.co
 Kudos to [@marnusw](https://github.com/marnusw), [@cdrikd](https://github.com/cdrikd) and [@rogyvoje](https://github.com/rogyvoje) for working on the release!
 
 ### Added
-
+- [Added `add` - function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1504) 
 - [Added `parseJSON` - lightweight function (just 411 B) that parses dates formatted with `toJSON`](https://github.com/date-fns/date-fns/pull/1463).
 - [Added the language code to each locale](https://github.com/date-fns/date-fns/pull/1489).
 - [Added `subBusinessDays` function](https://github.com/date-fns/date-fns/pull/1491).
