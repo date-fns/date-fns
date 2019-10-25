@@ -1,5 +1,6 @@
 // This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
 
+export { default as add } from './add/index.js'
 export { default as addBusinessDays } from './addBusinessDays/index.js'
 export { default as addDays } from './addDays/index.js'
 export { default as addHours } from './addHours/index.js'

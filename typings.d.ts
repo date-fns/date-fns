@@ -73,6 +73,9 @@ declare module 'date-fns' {
 // Regular Functions
 
 declare module 'date-fns' {
+  function add(date: Date | number, amount: Object): Date
+  namespace add {}
+
   function addBusinessDays(date: Date | number, amount: number): Date
   namespace addBusinessDays {}
 
@@ -935,6 +938,11 @@ declare module 'date-fns' {
   const maxTime: number
 
   const minTime: number
+}
+
+declare module 'date-fns/add' {
+  import { add } from 'date-fns'
+  export default add
 }
 
 declare module 'date-fns/addBusinessDays' {
@@ -1872,6 +1880,11 @@ declare module 'date-fns/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/add/index' {
+  import { add } from 'date-fns'
+  export default add
+}
+
 declare module 'date-fns/addBusinessDays/index' {
   import { addBusinessDays } from 'date-fns'
   export default addBusinessDays
@@ -2805,6 +2818,11 @@ declare module 'date-fns/subYears/index' {
 declare module 'date-fns/toDate/index' {
   import { toDate } from 'date-fns'
   export default toDate
+}
+
+declare module 'date-fns/add/index.js' {
+  import { add } from 'date-fns'
+  export default add
 }
 
 declare module 'date-fns/addBusinessDays/index.js' {
@@ -3745,6 +3763,9 @@ declare module 'date-fns/toDate/index.js' {
 // FP Functions
 
 declare module 'date-fns/fp' {
+  const add: CurriedFn2<Object, Date | number, Date>
+  namespace add {}
+
   const addBusinessDays: CurriedFn2<number, Date | number, Date>
   namespace addBusinessDays {}
 
@@ -4600,6 +4621,11 @@ declare module 'date-fns/fp' {
   const maxTime: number
 
   const minTime: number
+}
+
+declare module 'date-fns/fp/add' {
+  import { add } from 'date-fns/fp'
+  export default add
 }
 
 declare module 'date-fns/fp/addBusinessDays' {
@@ -5577,6 +5603,11 @@ declare module 'date-fns/fp/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/fp/add/index' {
+  import { add } from 'date-fns/fp'
+  export default add
+}
+
 declare module 'date-fns/fp/addBusinessDays/index' {
   import { addBusinessDays } from 'date-fns/fp'
   export default addBusinessDays
@@ -6550,6 +6581,11 @@ declare module 'date-fns/fp/subYears/index' {
 declare module 'date-fns/fp/toDate/index' {
   import { toDate } from 'date-fns/fp'
   export default toDate
+}
+
+declare module 'date-fns/fp/add/index.js' {
+  import { add } from 'date-fns/fp'
+  export default add
 }
 
 declare module 'date-fns/fp/addBusinessDays/index.js' {
@@ -7530,6 +7566,9 @@ declare module 'date-fns/fp/toDate/index.js' {
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
+  function add(date: Date | number, amount: Object): Date
+  namespace add {}
+
   function addBusinessDays(date: Date | number, amount: number): Date
   namespace addBusinessDays {}
 
@@ -8392,6 +8431,11 @@ declare module 'date-fns/esm' {
   const maxTime: number
 
   const minTime: number
+}
+
+declare module 'date-fns/esm/add' {
+  import { add } from 'date-fns/esm'
+  export default add
 }
 
 declare module 'date-fns/esm/addBusinessDays' {
@@ -9329,6 +9373,11 @@ declare module 'date-fns/esm/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/add/index' {
+  import { add } from 'date-fns/esm'
+  export default add
+}
+
 declare module 'date-fns/esm/addBusinessDays/index' {
   import { addBusinessDays } from 'date-fns/esm'
   export default addBusinessDays
@@ -10262,6 +10311,11 @@ declare module 'date-fns/esm/subYears/index' {
 declare module 'date-fns/esm/toDate/index' {
   import { toDate } from 'date-fns/esm'
   export default toDate
+}
+
+declare module 'date-fns/esm/add/index.js' {
+  import { add } from 'date-fns/esm'
+  export default add
 }
 
 declare module 'date-fns/esm/addBusinessDays/index.js' {
@@ -11202,6 +11256,9 @@ declare module 'date-fns/esm/toDate/index.js' {
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
+  const add: CurriedFn2<Object, Date | number, Date>
+  namespace add {}
+
   const addBusinessDays: CurriedFn2<number, Date | number, Date>
   namespace addBusinessDays {}
 
@@ -12057,6 +12114,11 @@ declare module 'date-fns/esm/fp' {
   const maxTime: number
 
   const minTime: number
+}
+
+declare module 'date-fns/esm/fp/add' {
+  import { add } from 'date-fns/esm/fp'
+  export default add
 }
 
 declare module 'date-fns/esm/fp/addBusinessDays' {
@@ -13034,6 +13096,11 @@ declare module 'date-fns/esm/fp/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/fp/add/index' {
+  import { add } from 'date-fns/esm/fp'
+  export default add
+}
+
 declare module 'date-fns/esm/fp/addBusinessDays/index' {
   import { addBusinessDays } from 'date-fns/esm/fp'
   export default addBusinessDays
@@ -14007,6 +14074,11 @@ declare module 'date-fns/esm/fp/subYears/index' {
 declare module 'date-fns/esm/fp/toDate/index' {
   import { toDate } from 'date-fns/esm/fp'
   export default toDate
+}
+
+declare module 'date-fns/esm/fp/add/index.js' {
+  import { add } from 'date-fns/esm/fp'
+  export default add
 }
 
 declare module 'date-fns/esm/fp/addBusinessDays/index.js' {
@@ -17407,6 +17479,8 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 // dateFns Global Interface
 
 interface dateFns {
+  add(date: Date | number, amount: Object): Date
+
   addBusinessDays(date: Date | number, amount: number): Date
 
   addDays(date: Date | number, amount: number): Date
