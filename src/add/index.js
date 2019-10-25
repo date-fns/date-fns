@@ -7,6 +7,18 @@ import addMonths from '../addMonths/index.js'
 import addQuarters from '../addQuarters/index.js'
 import addYears from '../addYears/index.js'
 import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index.js'
+
+const DEFAULT = {
+  hours: 0,
+  years: 0,
+  days: 0,
+  quarters: 0,
+  weeks: 0,
+  months: 0,
+  minutes: 0,
+  seconds: 0
+}
 
 /**
  * @name add
@@ -30,16 +42,22 @@ import toDate from '../toDate/index'
  * var result = add(new Date(2014, 6, 10, 12, 45, 0), {minutes: 15, hours: 2, seconds: 30})
  * //=> Thu Jul 10 2014 15:00:30
  */
-export default function add(dirtyDate, dirtyAmount) {
+export default function add(dirtyDate, givenAmount) {
   if (arguments.length < 2) {
     throw new TypeError(
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-  if (typeof dirtyAmount !== 'object' || !Object.keys(dirtyAmount).length) {
-    return new Date(NaN)
+  if (typeof givenAmount !== 'object' || !Object.keys(givenAmount).length) {
+    throw new TypeError(
+      '2nd argument expected Object, found ' + typeof givenAmount
+    )
   }
   const givenDate = toDate(dirtyDate)
+  const dirtyAmount = {
+    ...DEFAULT,
+    ...givenAmount
+  }
   const {
     hours,
     years,
@@ -56,17 +74,20 @@ export default function add(dirtyDate, dirtyAmount) {
         addWeeks(
           addDays(
             addHours(
-              addMinutes(addSeconds(givenDate, seconds || 0), minutes || 0),
-              hours || 0
+              addMinutes(
+                addSeconds(givenDate, toInteger(seconds)),
+                toInteger(minutes)
+              ),
+              toInteger(hours)
             ),
-            days || 0
+            toInteger(days)
           ),
-          weeks || 0
+          toInteger(weeks)
         ),
-        months || 0
+        toInteger(months)
       ),
-      quarters || 0
+      toInteger(quarters)
     ),
-    years || 0
+    toInteger(years)
   )
 }
