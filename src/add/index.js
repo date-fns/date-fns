@@ -6,7 +6,7 @@ import addWeeks from '../addWeeks/index.js'
 import addMonths from '../addMonths/index.js'
 import addQuarters from '../addQuarters/index.js'
 import addYears from '../addYears/index.js'
-import toDate from '../toDate/index'
+import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 
 const DEFAULT = {
