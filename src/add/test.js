@@ -49,12 +49,12 @@ describe('add', function() {
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = add(new Date(NaN), 1)
+    var result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1), NaN)
+    var result = add(new Date(2014, 8 /* Sep */, 1), { hours: NaN })
     assert(result instanceof Date && isNaN(result))
   })
 
