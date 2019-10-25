@@ -54,10 +54,8 @@ export default function add(dirtyDate, givenAmount) {
     )
   }
   const givenDate = toDate(dirtyDate)
-  const dirtyAmount = {
-    ...DEFAULT,
-    ...givenAmount
-  }
+  const dirtyAmount = Object.assign({}, DEFAULT)
+  Object.assign(dirtyAmount, givenAmount)
   const {
     hours,
     years,
