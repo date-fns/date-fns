@@ -24,51 +24,51 @@ interface CurriedFn4<A, B, C, D, R> {
   (a: A, b: B, c: C, d: D): R
 }
 
-// Type Aliases
-
-type Interval = {
-  start: Date | number
-  end: Date | number
-}
-type IntervalAliased = Interval
-
-type Locale = {
-  formatDistance?: (...args: Array<any>) => any
-  formatRelative?: (...args: Array<any>) => any
-  localize?: {
-    ordinalNumber: (...args: Array<any>) => any
-    era: (...args: Array<any>) => any
-    quarter: (...args: Array<any>) => any
-    month: (...args: Array<any>) => any
-    day: (...args: Array<any>) => any
-    dayPeriod: (...args: Array<any>) => any
-  }
-  formatLong?: {
-    date: (...args: Array<any>) => any
-    time: (...args: Array<any>) => any
-    dateTime: (...args: Array<any>) => any
-  }
-  match?: {
-    ordinalNumber: (...args: Array<any>) => any
-    era: (...args: Array<any>) => any
-    quarter: (...args: Array<any>) => any
-    month: (...args: Array<any>) => any
-    day: (...args: Array<any>) => any
-    dayPeriod: (...args: Array<any>) => any
-  }
-  options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
-}
-type LocaleAliased = Locale
-
-// Exported Type Aliases
+// Exported types
 
 declare module 'date-fns' {
-  export type Interval = IntervalAliased
+  export type Interval = dateFns.Interval
 
-  export type Locale = LocaleAliased
+  export type Locale = dateFns.Locale
+}
+
+// Separate module for Locale and Interval types
+
+declare module dateFns {
+  type Interval = {
+    start: Date | number
+    end: Date | number
+  }
+
+  type Locale = {
+    formatDistance?: (...args: Array<any>) => any
+    formatRelative?: (...args: Array<any>) => any
+    localize?: {
+      ordinalNumber: (...args: Array<any>) => any
+      era: (...args: Array<any>) => any
+      quarter: (...args: Array<any>) => any
+      month: (...args: Array<any>) => any
+      day: (...args: Array<any>) => any
+      dayPeriod: (...args: Array<any>) => any
+    }
+    formatLong?: {
+      date: (...args: Array<any>) => any
+      time: (...args: Array<any>) => any
+      dateTime: (...args: Array<any>) => any
+    }
+    match?: {
+      ordinalNumber: (...args: Array<any>) => any
+      era: (...args: Array<any>) => any
+      quarter: (...args: Array<any>) => any
+      month: (...args: Array<any>) => any
+      day: (...args: Array<any>) => any
+      dayPeriod: (...args: Array<any>) => any
+    }
+    options?: {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+    }
+  }
 }
 
 // Regular Functions
@@ -111,8 +111,8 @@ declare module 'date-fns' {
   namespace addYears {}
 
   function areIntervalsOverlapping(
-    intervalLeft: Interval,
-    intervalRight: Interval,
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval,
     options?: {
       inclusive?: boolean
     }
@@ -180,7 +180,7 @@ declare module 'date-fns' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -253,17 +253,17 @@ declare module 'date-fns' {
   namespace differenceInYears {}
 
   function eachDayOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
       step?: number
     }
   ): Date[]
   namespace eachDayOfInterval {}
 
-  function eachMonthOfInterval(interval: Interval): Date[]
+  function eachMonthOfInterval(interval: dateFns.Interval): Date[]
   namespace eachMonthOfInterval {}
 
-  function eachWeekendOfInterval(interval: Interval): Date[]
+  function eachWeekendOfInterval(interval: dateFns.Interval): Date[]
   namespace eachWeekendOfInterval {}
 
   function eachWeekendOfMonth(date: Date | number): Date[]
@@ -273,15 +273,15 @@ declare module 'date-fns' {
   namespace eachWeekendOfYear {}
 
   function eachWeekOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
   namespace eachWeekOfInterval {}
 
-  function eachYearOfInterval(interval: Interval): Date[]
+  function eachYearOfInterval(interval: dateFns.Interval): Date[]
   namespace eachYearOfInterval {}
 
   function endOfDay(date: Date | number): Date
@@ -325,7 +325,7 @@ declare module 'date-fns' {
   function endOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -341,7 +341,7 @@ declare module 'date-fns' {
     date: Date | number,
     format: string,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       useAdditionalWeekYearTokens?: boolean
@@ -356,7 +356,7 @@ declare module 'date-fns' {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistance {}
@@ -368,7 +368,7 @@ declare module 'date-fns' {
       addSuffix?: boolean
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistanceStrict {}
@@ -378,7 +378,7 @@ declare module 'date-fns' {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistanceToNow {}
@@ -405,7 +405,7 @@ declare module 'date-fns' {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
@@ -468,8 +468,8 @@ declare module 'date-fns' {
   namespace getMonth {}
 
   function getOverlappingDaysInIntervals(
-    intervalLeft: Interval,
-    intervalRight: Interval
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval
   ): number
   namespace getOverlappingDaysInIntervals {}
 
@@ -488,7 +488,7 @@ declare module 'date-fns' {
   function getWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -498,7 +498,7 @@ declare module 'date-fns' {
   function getWeekOfMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -507,7 +507,7 @@ declare module 'date-fns' {
   function getWeeksInMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -516,7 +516,7 @@ declare module 'date-fns' {
   function getWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -611,7 +611,7 @@ declare module 'date-fns' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -650,7 +650,7 @@ declare module 'date-fns' {
   function isThisWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -680,7 +680,10 @@ declare module 'date-fns' {
   function isWeekend(date: Date | number): boolean
   namespace isWeekend {}
 
-  function isWithinInterval(date: Date | number, interval: Interval): boolean
+  function isWithinInterval(
+    date: Date | number,
+    interval: dateFns.Interval
+  ): boolean
   namespace isWithinInterval {}
 
   function isYesterday(date: Date | number): boolean
@@ -709,7 +712,7 @@ declare module 'date-fns' {
   function lastDayOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -732,7 +735,7 @@ declare module 'date-fns' {
     formatString: string,
     backupDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       useAdditionalWeekYearTokens?: boolean
@@ -781,7 +784,7 @@ declare module 'date-fns' {
     date: Date | number,
     day: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -821,7 +824,7 @@ declare module 'date-fns' {
     date: Date | number,
     week: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -832,7 +835,7 @@ declare module 'date-fns' {
     date: Date | number,
     weekYear: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -878,7 +881,7 @@ declare module 'date-fns' {
   function startOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -887,7 +890,7 @@ declare module 'date-fns' {
   function startOfWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -3800,15 +3803,19 @@ declare module 'date-fns/fp' {
   const addYears: CurriedFn2<number, Date | number, Date>
   namespace addYears {}
 
-  const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
+  const areIntervalsOverlapping: CurriedFn2<
+    dateFns.Interval,
+    dateFns.Interval,
+    boolean
+  >
   namespace areIntervalsOverlapping {}
 
   const areIntervalsOverlappingWithOptions: CurriedFn3<
     {
       inclusive?: boolean
     },
-    Interval,
-    Interval,
+    dateFns.Interval,
+    dateFns.Interval,
     boolean
   >
   namespace areIntervalsOverlappingWithOptions {}
@@ -3877,7 +3884,7 @@ declare module 'date-fns/fp' {
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -3930,22 +3937,22 @@ declare module 'date-fns/fp' {
   const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {}
 
-  const eachDayOfInterval: CurriedFn1<Interval, Date[]>
+  const eachDayOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachDayOfInterval {}
 
   const eachDayOfIntervalWithOptions: CurriedFn2<
     {
       step?: number
     },
-    Interval,
+    dateFns.Interval,
     Date[]
   >
   namespace eachDayOfIntervalWithOptions {}
 
-  const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
+  const eachMonthOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachMonthOfInterval {}
 
-  const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
+  const eachWeekendOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachWeekendOfInterval {}
 
   const eachWeekendOfMonth: CurriedFn1<Date | number, Date[]>
@@ -3954,20 +3961,20 @@ declare module 'date-fns/fp' {
   const eachWeekendOfYear: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYear {}
 
-  const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
+  const eachWeekOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachWeekOfInterval {}
 
   const eachWeekOfIntervalWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
-    Interval,
+    dateFns.Interval,
     Date[]
   >
   namespace eachWeekOfIntervalWithOptions {}
 
-  const eachYearOfInterval: CurriedFn1<Interval, Date[]>
+  const eachYearOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachYearOfInterval {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
@@ -4012,7 +4019,7 @@ declare module 'date-fns/fp' {
   const endOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -4033,7 +4040,7 @@ declare module 'date-fns/fp' {
 
   const formatDistanceStrictWithOptions: CurriedFn3<
     {
-      locale?: Locale
+      locale?: dateFns.Locale
       roundingMethod?: 'floor' | 'ceil' | 'round'
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       addSuffix?: boolean
@@ -4046,7 +4053,7 @@ declare module 'date-fns/fp' {
 
   const formatDistanceWithOptions: CurriedFn3<
     {
-      locale?: Locale
+      locale?: dateFns.Locale
       addSuffix?: boolean
       includeSeconds?: boolean
     },
@@ -4088,7 +4095,7 @@ declare module 'date-fns/fp' {
   const formatRelativeWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -4117,7 +4124,7 @@ declare module 'date-fns/fp' {
       useAdditionalWeekYearTokens?: boolean
       firstWeekContainsDate?: number
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     string,
     Date | number,
@@ -4170,7 +4177,11 @@ declare module 'date-fns/fp' {
   const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {}
 
-  const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
+  const getOverlappingDaysInIntervals: CurriedFn2<
+    dateFns.Interval,
+    dateFns.Interval,
+    number
+  >
   namespace getOverlappingDaysInIntervals {}
 
   const getQuarter: CurriedFn1<Date | number, number>
@@ -4194,7 +4205,7 @@ declare module 'date-fns/fp' {
   const getWeekOfMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -4207,7 +4218,7 @@ declare module 'date-fns/fp' {
   const getWeeksInMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -4218,7 +4229,7 @@ declare module 'date-fns/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -4232,7 +4243,7 @@ declare module 'date-fns/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -4302,7 +4313,7 @@ declare module 'date-fns/fp' {
   const isSameWeekWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -4334,7 +4345,7 @@ declare module 'date-fns/fp' {
   const isWeekend: CurriedFn1<Date | number, boolean>
   namespace isWeekend {}
 
-  const isWithinInterval: CurriedFn2<Interval, Date | number, boolean>
+  const isWithinInterval: CurriedFn2<dateFns.Interval, Date | number, boolean>
   namespace isWithinInterval {}
 
   const lastDayOfDecade: CurriedFn1<Date | number, Date>
@@ -4367,7 +4378,7 @@ declare module 'date-fns/fp' {
   const lastDayOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -4410,7 +4421,7 @@ declare module 'date-fns/fp' {
       useAdditionalWeekYearTokens?: boolean
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     string,
@@ -4458,7 +4469,7 @@ declare module 'date-fns/fp' {
   const setDayWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -4500,7 +4511,7 @@ declare module 'date-fns/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -4515,7 +4526,7 @@ declare module 'date-fns/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -4559,7 +4570,7 @@ declare module 'date-fns/fp' {
   const startOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -4573,7 +4584,7 @@ declare module 'date-fns/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -7604,8 +7615,8 @@ declare module 'date-fns/esm' {
   namespace addYears {}
 
   function areIntervalsOverlapping(
-    intervalLeft: Interval,
-    intervalRight: Interval,
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval,
     options?: {
       inclusive?: boolean
     }
@@ -7673,7 +7684,7 @@ declare module 'date-fns/esm' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -7746,17 +7757,17 @@ declare module 'date-fns/esm' {
   namespace differenceInYears {}
 
   function eachDayOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
       step?: number
     }
   ): Date[]
   namespace eachDayOfInterval {}
 
-  function eachMonthOfInterval(interval: Interval): Date[]
+  function eachMonthOfInterval(interval: dateFns.Interval): Date[]
   namespace eachMonthOfInterval {}
 
-  function eachWeekendOfInterval(interval: Interval): Date[]
+  function eachWeekendOfInterval(interval: dateFns.Interval): Date[]
   namespace eachWeekendOfInterval {}
 
   function eachWeekendOfMonth(date: Date | number): Date[]
@@ -7766,15 +7777,15 @@ declare module 'date-fns/esm' {
   namespace eachWeekendOfYear {}
 
   function eachWeekOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
   namespace eachWeekOfInterval {}
 
-  function eachYearOfInterval(interval: Interval): Date[]
+  function eachYearOfInterval(interval: dateFns.Interval): Date[]
   namespace eachYearOfInterval {}
 
   function endOfDay(date: Date | number): Date
@@ -7818,7 +7829,7 @@ declare module 'date-fns/esm' {
   function endOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -7834,7 +7845,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     format: string,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       useAdditionalWeekYearTokens?: boolean
@@ -7849,7 +7860,7 @@ declare module 'date-fns/esm' {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistance {}
@@ -7861,7 +7872,7 @@ declare module 'date-fns/esm' {
       addSuffix?: boolean
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistanceStrict {}
@@ -7871,7 +7882,7 @@ declare module 'date-fns/esm' {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
   namespace formatDistanceToNow {}
@@ -7898,7 +7909,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
@@ -7961,8 +7972,8 @@ declare module 'date-fns/esm' {
   namespace getMonth {}
 
   function getOverlappingDaysInIntervals(
-    intervalLeft: Interval,
-    intervalRight: Interval
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval
   ): number
   namespace getOverlappingDaysInIntervals {}
 
@@ -7981,7 +7992,7 @@ declare module 'date-fns/esm' {
   function getWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -7991,7 +8002,7 @@ declare module 'date-fns/esm' {
   function getWeekOfMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -8000,7 +8011,7 @@ declare module 'date-fns/esm' {
   function getWeeksInMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -8009,7 +8020,7 @@ declare module 'date-fns/esm' {
   function getWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -8104,7 +8115,7 @@ declare module 'date-fns/esm' {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -8143,7 +8154,7 @@ declare module 'date-fns/esm' {
   function isThisWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -8173,7 +8184,10 @@ declare module 'date-fns/esm' {
   function isWeekend(date: Date | number): boolean
   namespace isWeekend {}
 
-  function isWithinInterval(date: Date | number, interval: Interval): boolean
+  function isWithinInterval(
+    date: Date | number,
+    interval: dateFns.Interval
+  ): boolean
   namespace isWithinInterval {}
 
   function isYesterday(date: Date | number): boolean
@@ -8202,7 +8216,7 @@ declare module 'date-fns/esm' {
   function lastDayOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -8225,7 +8239,7 @@ declare module 'date-fns/esm' {
     formatString: string,
     backupDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       useAdditionalWeekYearTokens?: boolean
@@ -8274,7 +8288,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     day: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -8314,7 +8328,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     week: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -8325,7 +8339,7 @@ declare module 'date-fns/esm' {
     date: Date | number,
     weekYear: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -8371,7 +8385,7 @@ declare module 'date-fns/esm' {
   function startOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -8380,7 +8394,7 @@ declare module 'date-fns/esm' {
   function startOfWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -11293,15 +11307,19 @@ declare module 'date-fns/esm/fp' {
   const addYears: CurriedFn2<number, Date | number, Date>
   namespace addYears {}
 
-  const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
+  const areIntervalsOverlapping: CurriedFn2<
+    dateFns.Interval,
+    dateFns.Interval,
+    boolean
+  >
   namespace areIntervalsOverlapping {}
 
   const areIntervalsOverlappingWithOptions: CurriedFn3<
     {
       inclusive?: boolean
     },
-    Interval,
-    Interval,
+    dateFns.Interval,
+    dateFns.Interval,
     boolean
   >
   namespace areIntervalsOverlappingWithOptions {}
@@ -11370,7 +11388,7 @@ declare module 'date-fns/esm/fp' {
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -11423,22 +11441,22 @@ declare module 'date-fns/esm/fp' {
   const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {}
 
-  const eachDayOfInterval: CurriedFn1<Interval, Date[]>
+  const eachDayOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachDayOfInterval {}
 
   const eachDayOfIntervalWithOptions: CurriedFn2<
     {
       step?: number
     },
-    Interval,
+    dateFns.Interval,
     Date[]
   >
   namespace eachDayOfIntervalWithOptions {}
 
-  const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
+  const eachMonthOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachMonthOfInterval {}
 
-  const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
+  const eachWeekendOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachWeekendOfInterval {}
 
   const eachWeekendOfMonth: CurriedFn1<Date | number, Date[]>
@@ -11447,20 +11465,20 @@ declare module 'date-fns/esm/fp' {
   const eachWeekendOfYear: CurriedFn1<Date | number, Date[]>
   namespace eachWeekendOfYear {}
 
-  const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
+  const eachWeekOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachWeekOfInterval {}
 
   const eachWeekOfIntervalWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
-    Interval,
+    dateFns.Interval,
     Date[]
   >
   namespace eachWeekOfIntervalWithOptions {}
 
-  const eachYearOfInterval: CurriedFn1<Interval, Date[]>
+  const eachYearOfInterval: CurriedFn1<dateFns.Interval, Date[]>
   namespace eachYearOfInterval {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
@@ -11505,7 +11523,7 @@ declare module 'date-fns/esm/fp' {
   const endOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -11526,7 +11544,7 @@ declare module 'date-fns/esm/fp' {
 
   const formatDistanceStrictWithOptions: CurriedFn3<
     {
-      locale?: Locale
+      locale?: dateFns.Locale
       roundingMethod?: 'floor' | 'ceil' | 'round'
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       addSuffix?: boolean
@@ -11539,7 +11557,7 @@ declare module 'date-fns/esm/fp' {
 
   const formatDistanceWithOptions: CurriedFn3<
     {
-      locale?: Locale
+      locale?: dateFns.Locale
       addSuffix?: boolean
       includeSeconds?: boolean
     },
@@ -11581,7 +11599,7 @@ declare module 'date-fns/esm/fp' {
   const formatRelativeWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -11610,7 +11628,7 @@ declare module 'date-fns/esm/fp' {
       useAdditionalWeekYearTokens?: boolean
       firstWeekContainsDate?: number
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     string,
     Date | number,
@@ -11663,7 +11681,11 @@ declare module 'date-fns/esm/fp' {
   const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {}
 
-  const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
+  const getOverlappingDaysInIntervals: CurriedFn2<
+    dateFns.Interval,
+    dateFns.Interval,
+    number
+  >
   namespace getOverlappingDaysInIntervals {}
 
   const getQuarter: CurriedFn1<Date | number, number>
@@ -11687,7 +11709,7 @@ declare module 'date-fns/esm/fp' {
   const getWeekOfMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -11700,7 +11722,7 @@ declare module 'date-fns/esm/fp' {
   const getWeeksInMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -11711,7 +11733,7 @@ declare module 'date-fns/esm/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -11725,7 +11747,7 @@ declare module 'date-fns/esm/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     number
@@ -11795,7 +11817,7 @@ declare module 'date-fns/esm/fp' {
   const isSameWeekWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date | number,
@@ -11827,7 +11849,7 @@ declare module 'date-fns/esm/fp' {
   const isWeekend: CurriedFn1<Date | number, boolean>
   namespace isWeekend {}
 
-  const isWithinInterval: CurriedFn2<Interval, Date | number, boolean>
+  const isWithinInterval: CurriedFn2<dateFns.Interval, Date | number, boolean>
   namespace isWithinInterval {}
 
   const lastDayOfDecade: CurriedFn1<Date | number, Date>
@@ -11860,7 +11882,7 @@ declare module 'date-fns/esm/fp' {
   const lastDayOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -11903,7 +11925,7 @@ declare module 'date-fns/esm/fp' {
       useAdditionalWeekYearTokens?: boolean
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     string,
@@ -11951,7 +11973,7 @@ declare module 'date-fns/esm/fp' {
   const setDayWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -11993,7 +12015,7 @@ declare module 'date-fns/esm/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -12008,7 +12030,7 @@ declare module 'date-fns/esm/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     number,
     Date | number,
@@ -12052,7 +12074,7 @@ declare module 'date-fns/esm/fp' {
   const startOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -12066,7 +12088,7 @@ declare module 'date-fns/esm/fp' {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-      locale?: Locale
+      locale?: dateFns.Locale
     },
     Date | number,
     Date
@@ -15060,208 +15082,208 @@ declare module 'date-fns/esm/fp/toDate/index.js' {
 // Regular Locales
 
 declare module 'date-fns/locale' {
-  const af: Locale
+  const af: dateFns.Locale
   namespace af {}
 
-  const ar: Locale
+  const ar: dateFns.Locale
   namespace ar {}
 
-  const arDZ: Locale
+  const arDZ: dateFns.Locale
   namespace arDZ {}
 
-  const arSA: Locale
+  const arSA: dateFns.Locale
   namespace arSA {}
 
-  const az: Locale
+  const az: dateFns.Locale
   namespace az {}
 
-  const be: Locale
+  const be: dateFns.Locale
   namespace be {}
 
-  const bg: Locale
+  const bg: dateFns.Locale
   namespace bg {}
 
-  const bn: Locale
+  const bn: dateFns.Locale
   namespace bn {}
 
-  const ca: Locale
+  const ca: dateFns.Locale
   namespace ca {}
 
-  const cs: Locale
+  const cs: dateFns.Locale
   namespace cs {}
 
-  const cy: Locale
+  const cy: dateFns.Locale
   namespace cy {}
 
-  const da: Locale
+  const da: dateFns.Locale
   namespace da {}
 
-  const de: Locale
+  const de: dateFns.Locale
   namespace de {}
 
-  const el: Locale
+  const el: dateFns.Locale
   namespace el {}
 
-  const enAU: Locale
+  const enAU: dateFns.Locale
   namespace enAU {}
 
-  const enCA: Locale
+  const enCA: dateFns.Locale
   namespace enCA {}
 
-  const enGB: Locale
+  const enGB: dateFns.Locale
   namespace enGB {}
 
-  const enUS: Locale
+  const enUS: dateFns.Locale
   namespace enUS {}
 
-  const eo: Locale
+  const eo: dateFns.Locale
   namespace eo {}
 
-  const es: Locale
+  const es: dateFns.Locale
   namespace es {}
 
-  const et: Locale
+  const et: dateFns.Locale
   namespace et {}
 
-  const faIR: Locale
+  const faIR: dateFns.Locale
   namespace faIR {}
 
-  const fi: Locale
+  const fi: dateFns.Locale
   namespace fi {}
 
-  const fil: Locale
+  const fil: dateFns.Locale
   namespace fil {}
 
-  const fr: Locale
+  const fr: dateFns.Locale
   namespace fr {}
 
-  const frCA: Locale
+  const frCA: dateFns.Locale
   namespace frCA {}
 
-  const frCH: Locale
+  const frCH: dateFns.Locale
   namespace frCH {}
 
-  const gl: Locale
+  const gl: dateFns.Locale
   namespace gl {}
 
-  const gu: Locale
+  const gu: dateFns.Locale
   namespace gu {}
 
-  const he: Locale
+  const he: dateFns.Locale
   namespace he {}
 
-  const hi: Locale
+  const hi: dateFns.Locale
   namespace hi {}
 
-  const hr: Locale
+  const hr: dateFns.Locale
   namespace hr {}
 
-  const hu: Locale
+  const hu: dateFns.Locale
   namespace hu {}
 
-  const hy: Locale
+  const hy: dateFns.Locale
   namespace hy {}
 
-  const id: Locale
+  const id: dateFns.Locale
   namespace id {}
 
-  const is: Locale
+  const is: dateFns.Locale
   namespace is {}
 
-  const it: Locale
+  const it: dateFns.Locale
   namespace it {}
 
-  const ja: Locale
+  const ja: dateFns.Locale
   namespace ja {}
 
-  const ka: Locale
+  const ka: dateFns.Locale
   namespace ka {}
 
-  const kk: Locale
+  const kk: dateFns.Locale
   namespace kk {}
 
-  const ko: Locale
+  const ko: dateFns.Locale
   namespace ko {}
 
-  const lt: Locale
+  const lt: dateFns.Locale
   namespace lt {}
 
-  const lv: Locale
+  const lv: dateFns.Locale
   namespace lv {}
 
-  const mk: Locale
+  const mk: dateFns.Locale
   namespace mk {}
 
-  const ms: Locale
+  const ms: dateFns.Locale
   namespace ms {}
 
-  const nb: Locale
+  const nb: dateFns.Locale
   namespace nb {}
 
-  const nl: Locale
+  const nl: dateFns.Locale
   namespace nl {}
 
-  const nlBE: Locale
+  const nlBE: dateFns.Locale
   namespace nlBE {}
 
-  const nn: Locale
+  const nn: dateFns.Locale
   namespace nn {}
 
-  const pl: Locale
+  const pl: dateFns.Locale
   namespace pl {}
 
-  const pt: Locale
+  const pt: dateFns.Locale
   namespace pt {}
 
-  const ptBR: Locale
+  const ptBR: dateFns.Locale
   namespace ptBR {}
 
-  const ro: Locale
+  const ro: dateFns.Locale
   namespace ro {}
 
-  const ru: Locale
+  const ru: dateFns.Locale
   namespace ru {}
 
-  const sk: Locale
+  const sk: dateFns.Locale
   namespace sk {}
 
-  const sl: Locale
+  const sl: dateFns.Locale
   namespace sl {}
 
-  const sr: Locale
+  const sr: dateFns.Locale
   namespace sr {}
 
-  const srLatn: Locale
+  const srLatn: dateFns.Locale
   namespace srLatn {}
 
-  const sv: Locale
+  const sv: dateFns.Locale
   namespace sv {}
 
-  const ta: Locale
+  const ta: dateFns.Locale
   namespace ta {}
 
-  const te: Locale
+  const te: dateFns.Locale
   namespace te {}
 
-  const th: Locale
+  const th: dateFns.Locale
   namespace th {}
 
-  const tr: Locale
+  const tr: dateFns.Locale
   namespace tr {}
 
-  const ug: Locale
+  const ug: dateFns.Locale
   namespace ug {}
 
-  const uk: Locale
+  const uk: dateFns.Locale
   namespace uk {}
 
-  const vi: Locale
+  const vi: dateFns.Locale
   namespace vi {}
 
-  const zhCN: Locale
+  const zhCN: dateFns.Locale
   namespace zhCN {}
 
-  const zhTW: Locale
+  const zhTW: dateFns.Locale
   namespace zhTW {}
 }
 
@@ -16288,208 +16310,208 @@ declare module 'date-fns/locale/zh-TW/index.js' {
 // ECMAScript Module Locales
 
 declare module 'date-fns/esm/locale' {
-  const af: Locale
+  const af: dateFns.Locale
   namespace af {}
 
-  const ar: Locale
+  const ar: dateFns.Locale
   namespace ar {}
 
-  const arDZ: Locale
+  const arDZ: dateFns.Locale
   namespace arDZ {}
 
-  const arSA: Locale
+  const arSA: dateFns.Locale
   namespace arSA {}
 
-  const az: Locale
+  const az: dateFns.Locale
   namespace az {}
 
-  const be: Locale
+  const be: dateFns.Locale
   namespace be {}
 
-  const bg: Locale
+  const bg: dateFns.Locale
   namespace bg {}
 
-  const bn: Locale
+  const bn: dateFns.Locale
   namespace bn {}
 
-  const ca: Locale
+  const ca: dateFns.Locale
   namespace ca {}
 
-  const cs: Locale
+  const cs: dateFns.Locale
   namespace cs {}
 
-  const cy: Locale
+  const cy: dateFns.Locale
   namespace cy {}
 
-  const da: Locale
+  const da: dateFns.Locale
   namespace da {}
 
-  const de: Locale
+  const de: dateFns.Locale
   namespace de {}
 
-  const el: Locale
+  const el: dateFns.Locale
   namespace el {}
 
-  const enAU: Locale
+  const enAU: dateFns.Locale
   namespace enAU {}
 
-  const enCA: Locale
+  const enCA: dateFns.Locale
   namespace enCA {}
 
-  const enGB: Locale
+  const enGB: dateFns.Locale
   namespace enGB {}
 
-  const enUS: Locale
+  const enUS: dateFns.Locale
   namespace enUS {}
 
-  const eo: Locale
+  const eo: dateFns.Locale
   namespace eo {}
 
-  const es: Locale
+  const es: dateFns.Locale
   namespace es {}
 
-  const et: Locale
+  const et: dateFns.Locale
   namespace et {}
 
-  const faIR: Locale
+  const faIR: dateFns.Locale
   namespace faIR {}
 
-  const fi: Locale
+  const fi: dateFns.Locale
   namespace fi {}
 
-  const fil: Locale
+  const fil: dateFns.Locale
   namespace fil {}
 
-  const fr: Locale
+  const fr: dateFns.Locale
   namespace fr {}
 
-  const frCA: Locale
+  const frCA: dateFns.Locale
   namespace frCA {}
 
-  const frCH: Locale
+  const frCH: dateFns.Locale
   namespace frCH {}
 
-  const gl: Locale
+  const gl: dateFns.Locale
   namespace gl {}
 
-  const gu: Locale
+  const gu: dateFns.Locale
   namespace gu {}
 
-  const he: Locale
+  const he: dateFns.Locale
   namespace he {}
 
-  const hi: Locale
+  const hi: dateFns.Locale
   namespace hi {}
 
-  const hr: Locale
+  const hr: dateFns.Locale
   namespace hr {}
 
-  const hu: Locale
+  const hu: dateFns.Locale
   namespace hu {}
 
-  const hy: Locale
+  const hy: dateFns.Locale
   namespace hy {}
 
-  const id: Locale
+  const id: dateFns.Locale
   namespace id {}
 
-  const is: Locale
+  const is: dateFns.Locale
   namespace is {}
 
-  const it: Locale
+  const it: dateFns.Locale
   namespace it {}
 
-  const ja: Locale
+  const ja: dateFns.Locale
   namespace ja {}
 
-  const ka: Locale
+  const ka: dateFns.Locale
   namespace ka {}
 
-  const kk: Locale
+  const kk: dateFns.Locale
   namespace kk {}
 
-  const ko: Locale
+  const ko: dateFns.Locale
   namespace ko {}
 
-  const lt: Locale
+  const lt: dateFns.Locale
   namespace lt {}
 
-  const lv: Locale
+  const lv: dateFns.Locale
   namespace lv {}
 
-  const mk: Locale
+  const mk: dateFns.Locale
   namespace mk {}
 
-  const ms: Locale
+  const ms: dateFns.Locale
   namespace ms {}
 
-  const nb: Locale
+  const nb: dateFns.Locale
   namespace nb {}
 
-  const nl: Locale
+  const nl: dateFns.Locale
   namespace nl {}
 
-  const nlBE: Locale
+  const nlBE: dateFns.Locale
   namespace nlBE {}
 
-  const nn: Locale
+  const nn: dateFns.Locale
   namespace nn {}
 
-  const pl: Locale
+  const pl: dateFns.Locale
   namespace pl {}
 
-  const pt: Locale
+  const pt: dateFns.Locale
   namespace pt {}
 
-  const ptBR: Locale
+  const ptBR: dateFns.Locale
   namespace ptBR {}
 
-  const ro: Locale
+  const ro: dateFns.Locale
   namespace ro {}
 
-  const ru: Locale
+  const ru: dateFns.Locale
   namespace ru {}
 
-  const sk: Locale
+  const sk: dateFns.Locale
   namespace sk {}
 
-  const sl: Locale
+  const sl: dateFns.Locale
   namespace sl {}
 
-  const sr: Locale
+  const sr: dateFns.Locale
   namespace sr {}
 
-  const srLatn: Locale
+  const srLatn: dateFns.Locale
   namespace srLatn {}
 
-  const sv: Locale
+  const sv: dateFns.Locale
   namespace sv {}
 
-  const ta: Locale
+  const ta: dateFns.Locale
   namespace ta {}
 
-  const te: Locale
+  const te: dateFns.Locale
   namespace te {}
 
-  const th: Locale
+  const th: dateFns.Locale
   namespace th {}
 
-  const tr: Locale
+  const tr: dateFns.Locale
   namespace tr {}
 
-  const ug: Locale
+  const ug: dateFns.Locale
   namespace ug {}
 
-  const uk: Locale
+  const uk: dateFns.Locale
   namespace uk {}
 
-  const vi: Locale
+  const vi: dateFns.Locale
   namespace vi {}
 
-  const zhCN: Locale
+  const zhCN: dateFns.Locale
   namespace zhCN {}
 
-  const zhTW: Locale
+  const zhTW: dateFns.Locale
   namespace zhTW {}
 }
 
@@ -17541,8 +17563,8 @@ interface dateFns {
   addYears(date: Date | number, amount: number): Date
 
   areIntervalsOverlapping(
-    intervalLeft: Interval,
-    intervalRight: Interval,
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval,
     options?: {
       inclusive?: boolean
     }
@@ -17593,7 +17615,7 @@ interface dateFns {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -17633,29 +17655,29 @@ interface dateFns {
   differenceInYears(dateLeft: Date | number, dateRight: Date | number): number
 
   eachDayOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
       step?: number
     }
   ): Date[]
 
-  eachMonthOfInterval(interval: Interval): Date[]
+  eachMonthOfInterval(interval: dateFns.Interval): Date[]
 
-  eachWeekendOfInterval(interval: Interval): Date[]
+  eachWeekendOfInterval(interval: dateFns.Interval): Date[]
 
   eachWeekendOfMonth(date: Date | number): Date[]
 
   eachWeekendOfYear(date: Date | number): Date[]
 
   eachWeekOfInterval(
-    interval: Interval,
+    interval: dateFns.Interval,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
 
-  eachYearOfInterval(interval: Interval): Date[]
+  eachYearOfInterval(interval: dateFns.Interval): Date[]
 
   endOfDay(date: Date | number): Date
 
@@ -17687,7 +17709,7 @@ interface dateFns {
   endOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -17700,7 +17722,7 @@ interface dateFns {
     date: Date | number,
     format: string,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: number
       useAdditionalWeekYearTokens?: boolean
@@ -17714,7 +17736,7 @@ interface dateFns {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
 
@@ -17725,7 +17747,7 @@ interface dateFns {
       addSuffix?: boolean
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
 
@@ -17734,7 +17756,7 @@ interface dateFns {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
-      locale?: Locale
+      locale?: dateFns.Locale
     }
   ): string
 
@@ -17758,7 +17780,7 @@ interface dateFns {
     date: Date | number,
     baseDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
@@ -17803,8 +17825,8 @@ interface dateFns {
   getMonth(date: Date | number): number
 
   getOverlappingDaysInIntervals(
-    intervalLeft: Interval,
-    intervalRight: Interval
+    intervalLeft: dateFns.Interval,
+    intervalRight: dateFns.Interval
   ): number
 
   getQuarter(date: Date | number): number
@@ -17818,7 +17840,7 @@ interface dateFns {
   getWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -17827,7 +17849,7 @@ interface dateFns {
   getWeekOfMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -17835,7 +17857,7 @@ interface dateFns {
   getWeeksInMonth(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): number
@@ -17843,7 +17865,7 @@ interface dateFns {
   getWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -17895,7 +17917,7 @@ interface dateFns {
     dateLeft: Date | number,
     dateRight: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -17921,7 +17943,7 @@ interface dateFns {
   isThisWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): boolean
@@ -17942,7 +17964,7 @@ interface dateFns {
 
   isWeekend(date: Date | number): boolean
 
-  isWithinInterval(date: Date | number, interval: Interval): boolean
+  isWithinInterval(date: Date | number, interval: dateFns.Interval): boolean
 
   isYesterday(date: Date | number): boolean
 
@@ -17964,7 +17986,7 @@ interface dateFns {
   lastDayOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -17982,7 +18004,7 @@ interface dateFns {
     formatString: string,
     backupDate: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
       useAdditionalWeekYearTokens?: boolean
@@ -18025,7 +18047,7 @@ interface dateFns {
     date: Date | number,
     day: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -18054,7 +18076,7 @@ interface dateFns {
     date: Date | number,
     week: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -18064,7 +18086,7 @@ interface dateFns {
     date: Date | number,
     weekYear: number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }
@@ -18097,7 +18119,7 @@ interface dateFns {
   startOfWeek(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date
@@ -18105,7 +18127,7 @@ interface dateFns {
   startOfWeekYear(
     date: Date | number,
     options?: {
-      locale?: Locale
+      locale?: dateFns.Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
     }

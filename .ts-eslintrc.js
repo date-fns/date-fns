@@ -14,6 +14,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': ['off'],
     '@typescript-eslint/no-explicit-any': ['off'],
     '@typescript-eslint/prefer-interface': ['off'],
+    '@typescript-eslint/prefer-namespace-keyword': ['off'],
     '@typescript-eslint/class-name-casing': ['off'],
     '@typescript-eslint/ban-types': ['off'],
     '@typescript-eslint/array-type': ['off'],

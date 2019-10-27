@@ -10,6 +10,20 @@ const {
   formatTypeScriptFile
 } = require('./formatBlock')
 
+const exportedTypesDecorator = func => (...args) => {
+  let type = func(...args)
+
+  if (['Locale', 'Interval'].some(t => type.includes(t))) {
+    type = type.replace(/(Locale|Interval)/g, match => `dateFns.${match}`)
+  }
+
+  return type
+}
+
+const decoratedGetType = exportedTypesDecorator(getType)
+const decoratedGetParams = exportedTypesDecorator(getParams)
+const decoratedGetFPFnType = exportedTypesDecorator(getFPFnType)
+
 /**
  * Return curried function interfaces for a specific FP function arity.
  * @param {Number} [arity=4]
@@ -48,26 +62,33 @@ const getTypeScriptFPInterfaces = (arity = 4) =>
     `
   ].slice(0, arity)
 
-function getTypeScriptTypeAlias(type) {
-  const { title, properties } = type
+function getExportedType(type) {
+  const { title } = type
 
   return formatBlock`
-    type ${title} = ${getParams(properties)}
-    type ${title}Aliased = ${title}
+    export type ${title} = dateFns.${title}
   `
 }
 
 function getExportedTypeScriptTypeAlias(type) {
-  const { title } = type
+  const { title, properties } = type
 
   return formatBlock`
-    export type ${title} = ${title}Aliased
+    type ${title} = ${decoratedGetParams(properties)}
   `
 }
 
-function getExportedTypeScriptTypeAliases(aliases) {
+function getExportedTypesModuleDefinition(aliases) {
   return formatBlock`
     declare module 'date-fns' {
+      ${addSeparator(aliases.map(getExportedType), '\n')}
+    }
+  `
+}
+
+function getTypeScriptDateFnsSeparateModuleDefinition(aliases) {
+  return formatBlock`
+    declare module dateFns {
       ${addSeparator(aliases.map(getExportedTypeScriptTypeAlias), '\n')}
     }
   `
@@ -136,8 +157,8 @@ function getTypeScriptFnModuleDefinition(submodule, fnSuffix, fn) {
 function getTypeScriptFnDefinition(fn) {
   const { title, args, content } = fn
 
-  const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const params = decoratedGetParams(args, { leftBorder: '(', rightBorder: ')' })
+  const returns = decoratedGetType(content.returns[0].type.names)
 
   return formatBlock`
     function ${title} ${params}: ${returns}
@@ -148,7 +169,7 @@ function getTypeScriptFnDefinition(fn) {
 function getTypeScriptFPFnDefinition(fn) {
   const { title, args, content } = fn
 
-  const type = getFPFnType(args, content.returns[0].type.names)
+  const type = decoratedGetFPFnType(args, content.returns[0].type.names)
 
   return formatBlock`
     const ${title}: ${type}
@@ -194,7 +215,7 @@ function getTypeScriptLocaleDefinition(locale) {
   const { name } = locale
 
   return formatBlock`
-    const ${name}: Locale
+    const ${name}: dateFns.Locale
     namespace ${name} {}
   `
 }
@@ -224,8 +245,8 @@ function getTypeScriptLocaleModuleDefinition(
 
 function getTypeScriptInterfaceDefinition(fn) {
   const { title, args, content } = fn
-  const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const params = decoratedGetParams(args, { leftBorder: '(', rightBorder: ')' })
+  const returns = decoratedGetType(content.returns[0].type.names)
 
   return `${title}${params}: ${returns}`
 }
@@ -325,9 +346,11 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     )
     .map(module => module.definition)
 
-  const aliasDefinitions = aliases.map(getTypeScriptTypeAlias)
+  const exportedTypeDefinitions = [getExportedTypesModuleDefinition(aliases)]
 
-  const exportedAliasDefinitions = [getExportedTypeScriptTypeAliases(aliases)]
+  const separateModuleDefinitions = [
+    getTypeScriptDateFnsSeparateModuleDefinition(aliases)
+  ]
 
   const localeModuleDefinitions = [
     getTypeScriptLocaleIndexModuleDefinition('', locales)
@@ -388,13 +411,13 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
 
     ${addSeparator(getTypeScriptFPInterfaces(), '\n')}
 
-    // Type Aliases
+    // Exported types
 
-    ${addSeparator(aliasDefinitions, '\n')}
+    ${addSeparator(exportedTypeDefinitions, '\n')}
 
-    // Exported Type Aliases
+    // Separate module for Locale and Interval types
 
-    ${addSeparator(exportedAliasDefinitions, '\n')}
+    ${addSeparator(separateModuleDefinitions, '\n')}
 
     // Regular Functions
 
