@@ -77,8 +77,8 @@ var formattingMonthValues = {
 
 var dayValues = {
   narrow: ['Ж', 'Д', 'С', 'С', 'Б', 'Ж', 'С'],
-  short: ['жс', 'дс', 'сс', 'ср', 'бс', 'жм', 'сб'],
-  abbreviated: ['жс', 'дс', 'сс', 'ср', 'бс', 'жм', 'сб'],
+  short: ['жк', 'дй', 'сй', 'ср', 'бй', 'жм', 'сн'],
+  abbreviated: ['жек', 'дүй', 'сей', 'сәр', 'бей', 'жұм', 'сен'],
   wide: [
     'жексенбі',
     'дүйсенбі',
@@ -117,11 +117,11 @@ var formattingDayPeriodValues = {
     am: 'ТД',
     pm: 'ТК',
     midnight: 'түн ортасында',
-    noon: 'түс.',
-    morning: 'таң.',
-    afternoon: 'күн.',
-    evening: 'кеш.',
-    night: 'түн.'
+    noon: 'түс',
+    morning: 'таң',
+    afternoon: 'күн',
+    evening: 'кеш',
+    night: 'түн'
   },
   wide: {
     am: 'ТД',
