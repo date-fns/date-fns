@@ -16,7 +16,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param {Date|Number} date - the date to round
  * @param {Object} [options] - an object with options.
- * @param {Number} [options.nearestTo=1] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
+ * @param {Number} [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
  * @returns {Date} the new date rounded to the closest minute
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.nearestTo` must be between 1 and 30
