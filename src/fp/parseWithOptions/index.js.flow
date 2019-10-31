@@ -1,11 +1,6 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-export type Interval = {
-  start: Date | number,
-  end: Date | number
-}
-
 export type Locale = {
   formatDistance: Function,
   formatRelative: Function,

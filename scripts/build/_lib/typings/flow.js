@@ -38,16 +38,37 @@ function getFlowTypeAlias(type) {
   return `export type ${title} = ${getParams(properties)}`
 }
 
+function isAliasUsedInArg(title, arg) {
+  const argIsOfTheType = arg.type.names.includes(title)
+  const argHasPropsOfTheType =
+    arg.props && arg.props.some(prop => isAliasUsedInArg(title, prop))
+  return argIsOfTheType || argHasPropsOfTheType
+}
+
+function filterUsedAliasDeclarations(aliasDeclarations, args) {
+  const filteredEntries = Object.entries(aliasDeclarations).filter(
+    ([title]) => args && args.some(arg => isAliasUsedInArg(title, arg))
+  )
+  return filteredEntries.reduce(
+    (acc, [title, declaration]) => ({ ...acc, [title]: declaration }),
+    {}
+  )
+}
+
 function generateFlowFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
   const returns = getType(content.returns[0].type.names)
+  const usedAliasDeclarations = filterUsedAliasDeclarations(
+    aliasDeclarations,
+    args
+  )
 
   const moduleDeclaration = `declare module.exports: ${params} => ${returns}`
 
   const typingFile = formatFlowFile`
-    ${addSeparator(aliasDeclarations, '\n')}
+    ${addSeparator(Object.values(usedAliasDeclarations), '\n')}
 
     ${moduleDeclaration}
   `
@@ -63,7 +84,7 @@ function generateFlowFnIndexTyping(fns, aliasDeclarations, constants) {
   })
 
   const typingFile = formatFlowFile`
-    ${addSeparator(aliasDeclarations, '\n')}
+    ${addSeparator(Object.values(aliasDeclarations), '\n')}
 
     declare module.exports: {
       ${addSeparator(
@@ -80,9 +101,13 @@ function generateFlowFPFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
   const type = getFPFnType(args, content.returns[0].type.names)
+  const usedAliasDeclarations = filterUsedAliasDeclarations(
+    aliasDeclarations,
+    args
+  )
 
   const typingFile = formatFlowFile`
-    ${addSeparator(aliasDeclarations, '\n')}
+    ${addSeparator(Object.values(usedAliasDeclarations), '\n')}
 
     ${addSeparator(getFlowFPTypeAliases(args.length), '\n')}
 
@@ -99,7 +124,7 @@ function generateFlowFPFnIndexTyping(fns, aliasDeclarations, constants) {
   )
 
   const typingFile = formatFlowFile`
-    ${addSeparator(aliasDeclarations, '\n')}
+    ${addSeparator(Object.values(aliasDeclarations), '\n')}
 
     ${addSeparator(getFlowFPTypeAliases(), '\n')}
 
@@ -139,7 +164,10 @@ function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
 }
 
 function generateFlowTypings(fns, aliases, locales, constants) {
-  const aliasDeclarations = aliases.map(getFlowTypeAlias)
+  const aliasDeclarations = aliases.reduce(
+    (acc, alias) => ({ ...acc, [alias.title]: getFlowTypeAlias(alias) }),
+    {}
+  )
   const localeAliasDeclaration = getFlowTypeAlias(
     aliases.find(alias => alias.title === 'Locale')
   )

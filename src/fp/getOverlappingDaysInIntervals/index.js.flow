@@ -6,35 +6,6 @@ export type Interval = {
   end: Date | number
 }
 
-export type Locale = {
-  formatDistance: Function,
-  formatRelative: Function,
-  localize: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
-  },
-  formatLong: Object,
-  date: Function,
-  time: Function,
-  dateTime: Function,
-  match: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
-  },
-  options?: {
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
-}
-
 type CurriedFn1<A, R> = <A>(a: A) => R
 
 type CurriedFn2<A, B, R> = <A>(
