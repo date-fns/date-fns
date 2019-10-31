@@ -60,10 +60,10 @@ function generateFlowFnTyping(fn, aliasDeclarations) {
 
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
   const returns = getType(content.returns[0].type.names)
-  const usedAliasDeclarations = filterUsedAliasDeclarations(
-    aliasDeclarations,
-    args
-  )
+  const usedAliasDeclarations = filterUsedAliasDeclarations(aliasDeclarations, [
+    ...(args || []),
+    ...(content.returns || [])
+  ])
 
   const moduleDeclaration = `declare module.exports: ${params} => ${returns}`
 
@@ -101,10 +101,10 @@ function generateFlowFPFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
   const type = getFPFnType(args, content.returns[0].type.names)
-  const usedAliasDeclarations = filterUsedAliasDeclarations(
-    aliasDeclarations,
-    args
-  )
+  const usedAliasDeclarations = filterUsedAliasDeclarations(aliasDeclarations, [
+    ...(args || []),
+    ...(content.returns || [])
+  ])
 
   const typingFile = formatFlowFile`
     ${addSeparator(Object.values(usedAliasDeclarations), '\n')}
