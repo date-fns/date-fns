@@ -3697,7 +3697,10 @@ declare module 'date-fns/fp' {
   namespace differenceInCalendarWeeks {}
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     number
@@ -3752,7 +3755,13 @@ declare module 'date-fns/fp' {
   const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  const eachDayOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
   namespace eachDayOfIntervalWithOptions {}
 
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
@@ -3767,7 +3776,14 @@ declare module 'date-fns/fp' {
   const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekOfInterval {}
 
-  const eachWeekOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachWeekOfIntervalWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Interval,
+    Date[]
+  >
   namespace eachWeekOfIntervalWithOptions {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
@@ -3776,7 +3792,13 @@ declare module 'date-fns/fp' {
   const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {}
 
-  const endOfDecadeWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfDecadeWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace endOfDecadeWithOptions {}
 
   const endOfHour: CurriedFn1<Date | number, Date>
@@ -3803,7 +3825,14 @@ declare module 'date-fns/fp' {
   const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {}
 
-  const endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace endOfWeekWithOptions {}
 
   const endOfYear: CurriedFn1<Date | number, Date>
@@ -3819,7 +3848,12 @@ declare module 'date-fns/fp' {
   namespace formatDistanceStrict {}
 
   const formatDistanceStrictWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      addSuffix?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -3827,7 +3861,11 @@ declare module 'date-fns/fp' {
   namespace formatDistanceStrictWithOptions {}
 
   const formatDistanceWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      addSuffix?: boolean
+      includeSeconds?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -3838,14 +3876,28 @@ declare module 'date-fns/fp' {
   namespace formatRelative {}
 
   const formatRelativeWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatRelativeWithOptions {}
 
-  const formatWithOptions: CurriedFn3<Object, string, Date | number, string>
+  const formatWithOptions: CurriedFn3<
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: number
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    string,
+    Date | number,
+    string
+  >
   namespace formatWithOptions {}
 
   const fromUnixTime: CurriedFn1<number, Date>
@@ -3914,22 +3966,52 @@ declare module 'date-fns/fp' {
   const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {}
 
-  const getWeekOfMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekOfMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekOfMonthWithOptions {}
 
   const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {}
 
-  const getWeeksInMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeeksInMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeeksInMonthWithOptions {}
 
-  const getWeekWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekWithOptions {}
 
   const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {}
 
-  const getWeekYearWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | number, number>
@@ -3990,7 +4072,10 @@ declare module 'date-fns/fp' {
   namespace isSameWeek {}
 
   const isSameWeekWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     boolean
@@ -4039,13 +4124,26 @@ declare module 'date-fns/fp' {
   const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {}
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfQuarterWithOptions {}
 
   const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {}
 
-  const lastDayOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfWeekWithOptions {}
 
   const lastDayOfYear: CurriedFn1<Date | number, Date>
@@ -4066,14 +4164,26 @@ declare module 'date-fns/fp' {
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
 
-  const parseISOWithOptions: CurriedFn2<Object, string, Date>
+  const parseISOWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    string,
+    Date
+  >
   namespace parseISOWithOptions {}
 
   const parseJSON: CurriedFn1<string | number | Date, Date>
   namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
-    Object,
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     string,
     string,
@@ -4085,13 +4195,27 @@ declare module 'date-fns/fp' {
   namespace roundToNearestMinutes {}
 
   const roundToNearestMinutesWithOptions: CurriedFn2<
-    Object,
+    {
+      nearestTo?: number
+    },
     Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
 
-  const set: CurriedFn2<Object, Date | number, Date>
+  const set: CurriedFn2<
+    {
+      milliseconds?: number
+      seconds?: number
+      minutes?: number
+      hours?: number
+      date?: number
+      month?: number
+      year?: number
+    },
+    Date | number,
+    Date
+  >
   namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
@@ -4103,7 +4227,15 @@ declare module 'date-fns/fp' {
   const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {}
 
-  const setDayWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setDayWithOptions: CurriedFn3<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setDayWithOptions {}
 
   const setHours: CurriedFn2<number, Date | number, Date>
@@ -4136,13 +4268,31 @@ declare module 'date-fns/fp' {
   const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {}
 
-  const setWeekWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekWithOptions {}
 
   const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {}
 
-  const setWeekYearWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekYearWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekYearWithOptions {}
 
   const setYear: CurriedFn2<number, Date | number, Date>
@@ -4178,13 +4328,28 @@ declare module 'date-fns/fp' {
   const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {}
 
-  const startOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekWithOptions {}
 
   const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {}
 
-  const startOfWeekYearWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | number, Date>
@@ -10618,7 +10783,10 @@ declare module 'date-fns/esm/fp' {
   namespace differenceInCalendarWeeks {}
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     number
@@ -10673,7 +10841,13 @@ declare module 'date-fns/esm/fp' {
   const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  const eachDayOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
   namespace eachDayOfIntervalWithOptions {}
 
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
@@ -10688,7 +10862,14 @@ declare module 'date-fns/esm/fp' {
   const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekOfInterval {}
 
-  const eachWeekOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachWeekOfIntervalWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Interval,
+    Date[]
+  >
   namespace eachWeekOfIntervalWithOptions {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
@@ -10697,7 +10878,13 @@ declare module 'date-fns/esm/fp' {
   const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {}
 
-  const endOfDecadeWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfDecadeWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace endOfDecadeWithOptions {}
 
   const endOfHour: CurriedFn1<Date | number, Date>
@@ -10724,7 +10911,14 @@ declare module 'date-fns/esm/fp' {
   const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {}
 
-  const endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace endOfWeekWithOptions {}
 
   const endOfYear: CurriedFn1<Date | number, Date>
@@ -10740,7 +10934,12 @@ declare module 'date-fns/esm/fp' {
   namespace formatDistanceStrict {}
 
   const formatDistanceStrictWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      addSuffix?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -10748,7 +10947,11 @@ declare module 'date-fns/esm/fp' {
   namespace formatDistanceStrictWithOptions {}
 
   const formatDistanceWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      addSuffix?: boolean
+      includeSeconds?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -10759,14 +10962,28 @@ declare module 'date-fns/esm/fp' {
   namespace formatRelative {}
 
   const formatRelativeWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatRelativeWithOptions {}
 
-  const formatWithOptions: CurriedFn3<Object, string, Date | number, string>
+  const formatWithOptions: CurriedFn3<
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: number
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    string,
+    Date | number,
+    string
+  >
   namespace formatWithOptions {}
 
   const fromUnixTime: CurriedFn1<number, Date>
@@ -10835,22 +11052,52 @@ declare module 'date-fns/esm/fp' {
   const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {}
 
-  const getWeekOfMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekOfMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekOfMonthWithOptions {}
 
   const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {}
 
-  const getWeeksInMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeeksInMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeeksInMonthWithOptions {}
 
-  const getWeekWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekWithOptions {}
 
   const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {}
 
-  const getWeekYearWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | number, number>
@@ -10911,7 +11158,10 @@ declare module 'date-fns/esm/fp' {
   namespace isSameWeek {}
 
   const isSameWeekWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     boolean
@@ -10960,13 +11210,26 @@ declare module 'date-fns/esm/fp' {
   const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {}
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfQuarterWithOptions {}
 
   const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {}
 
-  const lastDayOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfWeekWithOptions {}
 
   const lastDayOfYear: CurriedFn1<Date | number, Date>
@@ -10987,14 +11250,26 @@ declare module 'date-fns/esm/fp' {
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
 
-  const parseISOWithOptions: CurriedFn2<Object, string, Date>
+  const parseISOWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    string,
+    Date
+  >
   namespace parseISOWithOptions {}
 
   const parseJSON: CurriedFn1<string | number | Date, Date>
   namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
-    Object,
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     string,
     string,
@@ -11006,13 +11281,27 @@ declare module 'date-fns/esm/fp' {
   namespace roundToNearestMinutes {}
 
   const roundToNearestMinutesWithOptions: CurriedFn2<
-    Object,
+    {
+      nearestTo?: number
+    },
     Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
 
-  const set: CurriedFn2<Object, Date | number, Date>
+  const set: CurriedFn2<
+    {
+      milliseconds?: number
+      seconds?: number
+      minutes?: number
+      hours?: number
+      date?: number
+      month?: number
+      year?: number
+    },
+    Date | number,
+    Date
+  >
   namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
@@ -11024,7 +11313,15 @@ declare module 'date-fns/esm/fp' {
   const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {}
 
-  const setDayWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setDayWithOptions: CurriedFn3<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setDayWithOptions {}
 
   const setHours: CurriedFn2<number, Date | number, Date>
@@ -11057,13 +11354,31 @@ declare module 'date-fns/esm/fp' {
   const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {}
 
-  const setWeekWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekWithOptions {}
 
   const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {}
 
-  const setWeekYearWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekYearWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekYearWithOptions {}
 
   const setYear: CurriedFn2<number, Date | number, Date>
@@ -11099,13 +11414,28 @@ declare module 'date-fns/esm/fp' {
   const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {}
 
-  const startOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekWithOptions {}
 
   const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {}
 
-  const startOfWeekYearWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | number, Date>
