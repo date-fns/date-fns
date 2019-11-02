@@ -250,7 +250,7 @@ var distanceInWordsLocaleFuture = {
   xMonths: {
     one: '{{count}} mesec',
     two: '{{count}} meseca',
-    few: '{{count}} meseci',
+    few: '{{count}} mesece',
     other: '{{count}} mesecev'
   },
 
