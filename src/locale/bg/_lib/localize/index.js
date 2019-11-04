@@ -87,12 +87,9 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
         return number + '-в' + ending
       case 2:
         return number + '-р' + ending
-      case 7:
-      case 8:
-        return number + '-м' + ending
     }
   }
-  return number + '-т' + ending
+  return number + '-' + ending
 }
 
 var localize = {
