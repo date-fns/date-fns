@@ -1,7 +1,7 @@
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(-?(в|р)?[аи])?/i
+var matchOrdinalNumberPattern = /^(\d+)(-?[врмт][аи]|-?т?(ен|на)|-?(ев|ева))?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {

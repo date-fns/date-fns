@@ -70,26 +70,44 @@ var dayPeriodValues = {
   }
 }
 
+function isFeminine(unit) {
+  return (
+    unit === 'year' || unit === 'week' || unit === 'minute' || unit === 'second'
+  )
+}
+
+function numberWithSuffix(number, unit, masculine, feminine) {
+  var suffix = isFeminine(unit) ? feminine : masculine
+  return number + '-' + suffix
+}
+
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var number = Number(dirtyNumber)
 
-  var ending = 'и'
-  if (unit === 'year' || unit === 'minute' || unit === 'second') {
-    ending = 'а'
+  if (number === 0) {
+    return numberWithSuffix(0, unit, 'ев', 'ева')
+  } else if (number % 1000 === 0) {
+    return numberWithSuffix(number, unit, 'ен', 'на')
+  } else if (number % 100 === 0) {
+    return numberWithSuffix(number, unit, 'тен', 'тна')
   }
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return number + '-в' + ending
+        return numberWithSuffix(number, unit, 'ви', 'ва')
       case 2:
-        return number + '-р' + ending
+        return numberWithSuffix(number, unit, 'ри', 'ра')
+      case 7:
+      case 8:
+        return numberWithSuffix(number, unit, 'ми', 'ма')
     }
   }
-  return number + '-' + ending
+
+  return numberWithSuffix(number, unit, 'ти', 'та')
 }
 
 var localize = {
