@@ -10,16 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.7.0] - 2019-11-07
 
-Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss) and [@fintara](https://github.com/fintara) for contributing to the release.
+Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss), [@fintara](https://github.com/fintara), [@kpr-hellofresh](https://github.com/kpr-hellofresh) for contributing to the release.
 
 ### Fixed
 
 - [Fixed a mistake in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1529).
+- [Fixed incorrect behavior of `parseISO` in Firefox caused by differences in `getTimezoneOffset`](https://github.com/date-fns/date-fns/pull/1495).
 
 ### Changed
 
 - [Make object arguments types more elaborate in Flow type definitions](https://github.com/date-fns/date-fns/pull/1519).
 - [Get rid of deprecated Function in Flow type definitions](https://github.com/date-fns/date-fns/pull/1520).
+- [Allow `parseJSON` to accept strings without trailing 'Z' symbol and with up to 6 digits in the milliseconds' field](https://github.com/date-fns/date-fns/pull/1499).
 
 ### Added
 
@@ -1856,7 +1858,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.6.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.7.0...HEAD
+[2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
 [2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0
