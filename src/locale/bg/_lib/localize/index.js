@@ -1,54 +1,145 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
 
-var weekdayValues = {
-  narrow: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
-  short: ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб'],
-  long: ['неделя', 'понеделник', 'вторник', 'сряда', 'четвъртък', 'петък', 'събота']
+var eraValues = {
+  narrow: ['пр.н.е.', 'н.е.'],
+  abbreviated: ['преди н. е.', 'н. е.'],
+  wide: ['преди новата ера', 'новата ера']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-ви кв.', '2-ри кв.', '3-ти кв.', '4-ти кв.'],
+  wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал']
 }
 
 var monthValues = {
-  short: ['яну', 'фев', 'мар', 'апр', 'май', 'юни', 'юли', 'авг', 'сеп', 'окт', 'ное', 'дек'],
-  long: ['януари', 'февруари', 'март', 'април', 'май', 'юни', 'юли', 'август', 'септември', 'октомври', 'ноември', 'декември']
+  short: [
+    'яну',
+    'фев',
+    'мар',
+    'апр',
+    'май',
+    'юни',
+    'юли',
+    'авг',
+    'сеп',
+    'окт',
+    'ное',
+    'дек'
+  ],
+  wide: [
+    'януари',
+    'февруари',
+    'март',
+    'април',
+    'май',
+    'юни',
+    'юли',
+    'август',
+    'септември',
+    'октомври',
+    'ноември',
+    'декември'
+  ]
 }
 
-var timeOfDayValues = {
-  long: ['сутринта', 'на обяд', 'следобед', 'вечерта']
+var dayValues = {
+  narrow: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+  short: ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб'],
+  wide: [
+    'неделя',
+    'понеделник',
+    'вторник',
+    'сряда',
+    'четвъртък',
+    'петък',
+    'събота'
+  ]
 }
 
-function ordinalNumber (dirtyNumber) {
+var dayPeriodValues = {
+  wide: {
+    am: 'преди обяд',
+    pm: 'след обяд',
+    midnight: 'в полунощ',
+    noon: 'на обяд',
+    morning: 'сутринта',
+    afternoon: 'следобед',
+    evening: 'вечерта',
+    night: 'през нощта'
+  }
+}
+
+function isFeminine(unit) {
+  return (
+    unit === 'year' || unit === 'week' || unit === 'minute' || unit === 'second'
+  )
+}
+
+function numberWithSuffix(number, unit, masculine, feminine) {
+  var suffix = isFeminine(unit) ? feminine : masculine
+  return number + '-' + suffix
+}
+
+function ordinalNumber(dirtyNumber, dirtyOptions) {
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
   var number = Number(dirtyNumber)
+
+  if (number === 0) {
+    return numberWithSuffix(0, unit, 'ев', 'ева')
+  } else if (number % 1000 === 0) {
+    return numberWithSuffix(number, unit, 'ен', 'на')
+  } else if (number % 100 === 0) {
+    return numberWithSuffix(number, unit, 'тен', 'тна')
+  }
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return number + '-ви'
+        return numberWithSuffix(number, unit, 'ви', 'ва')
       case 2:
-        return number + '-ри'
+        return numberWithSuffix(number, unit, 'ри', 'ра')
+      case 7:
+      case 8:
+        return numberWithSuffix(number, unit, 'ми', 'ма')
     }
   }
-  return number + '-и'
+
+  return numberWithSuffix(number, unit, 'ти', 'та')
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    if (hours >= 17) {
-      return 3
-    } else if (hours >= 12) {
-      return 2
-    } else if (hours >= 4) {
-      return 1
-    } else {
-      return 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
     }
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize
