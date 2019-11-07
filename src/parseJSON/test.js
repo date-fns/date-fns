@@ -32,6 +32,34 @@ describe('parseJSON', function() {
     assert.equal(parsedDate.toISOString(), expectedDate)
   })
 
+  it('parses a fully formed ISO date without Z', () => {
+    const date = '2000-03-15T05:20:10.123'
+    const expectedDate = '2000-03-15T05:20:10.123Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
+  it('parses a fully formed ISO date without Z and with 6-digit millisecond part', () => {
+    const date = '2000-03-15T05:20:10.123456'
+    const expectedDate = '2000-03-15T05:20:10.123Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
+  it('parses a fully formed ISO with 1-digit millisecond part', () => {
+    const date = '2000-03-15T05:20:10.1Z'
+    const expectedDate = '2000-03-15T05:20:10.100Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
+  it('parses a fully formed ISO with 2-digit millisecond part', () => {
+    const date = '2000-03-15T05:20:10.12Z'
+    const expectedDate = '2000-03-15T05:20:10.120Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
   it('clones a date object', () => {
     const date = new Date(2000, 2, 15, 5, 20, 10, 20)
     const parsedDate = parseJSON(date)
