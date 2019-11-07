@@ -43,7 +43,7 @@ function getType(types, { props = [], forceArray = false } = {}) {
     }
 
     if (type === 'function') {
-      return 'Function'
+      return '(...args: Array<any>) => any'
     }
 
     if (type.startsWith('Array.')) {
