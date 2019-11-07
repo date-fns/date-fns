@@ -6,7 +6,7 @@ import toDate from '../toDate/index.js'
  * @summary Is the given time interval overlapping with another time interval?
  *
  * @description
- * Is the given time interval overlapping with another time interval?
+ * Is the given time interval overlapping with another time interval? Adjacent intervals do not count as overlapping.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -62,6 +62,14 @@ import toDate from '../toDate/index.js'
  * areIntervalsOverlapping(
  *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
  *   { start: new Date(2014, 0, 21), end: new Date(2014, 0, 22) }
+ * )
+ * //=> false
+ *
+ * @example
+ * // For adjacent time intervals:
+ * areIntervalsOverlapping(
+ *   { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
+ *   { start: new Date(2014, 0, 20), end: new Date(2014, 0, 30) }
  * )
  * //=> false
  */
