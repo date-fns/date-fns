@@ -115,9 +115,6 @@ export {
   default as formatRFC3339WithOptions
 } from './formatRFC3339WithOptions/index.js'
 export { default as formatRFC7231 } from './formatRFC7231/index.js'
-export {
-  default as formatRFC7231WithOptions
-} from './formatRFC7231WithOptions/index.js'
 export { default as formatRelative } from './formatRelative/index.js'
 export {
   default as formatRelativeWithOptions

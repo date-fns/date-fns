@@ -38,6 +38,7 @@ export type Locale = {
 declare module.exports: (
   date: Date | number,
   options?: {
-    secondFractionDigits?: 0 | 1 | 2 | 3
+    format?: 'extended' | 'basic',
+    representation?: 'complete' | 'date' | 'time'
   }
 ) => string

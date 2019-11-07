@@ -35,9 +35,16 @@ export type Locale = {
   }
 }
 
-declare module.exports: (
-  date: Date | number,
-  options?: {
+type CurriedFn1<A, R> = <A>(a: A) => R
+
+type CurriedFn2<A, B, R> = <A>(
+  a: A
+) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
+
+declare module.exports: CurriedFn2<
+  {
     secondFractionDigits?: 0 | 1 | 2 | 3
-  }
-) => string
+  },
+  Date | number,
+  string
+>

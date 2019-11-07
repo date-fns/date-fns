@@ -4,7 +4,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 
 /**
- * @name formatISO3339
+ * @name formatRFC3339
  * @category Common Helpers
  * @summary Format the date according to the ISO 3339 standard (https://tools.ietf.org/html/rfc3339#section-5.6).
  *
@@ -21,7 +21,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format:
- * const result = formatISO3339(new Date(2019, 8, 18, 19, 0, 52))
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52Z'
  *
  * @example

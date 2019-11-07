@@ -35,9 +35,4 @@ export type Locale = {
   }
 }
 
-declare module.exports: (
-  date: Date | number,
-  options?: {
-    secondFractionDigits?: 0 | 1 | 2 | 3
-  }
-) => string
+declare module.exports: (date: Date | number) => string
