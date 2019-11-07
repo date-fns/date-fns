@@ -41,4 +41,12 @@ type CurriedFn2<A, B, R> = <A>(
   a: A
 ) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-declare module.exports: CurriedFn2<Object, Date | number, Date>
+declare module.exports: CurriedFn2<
+  {
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    locale?: Locale
+  },
+  Date | number,
+  Date
+>

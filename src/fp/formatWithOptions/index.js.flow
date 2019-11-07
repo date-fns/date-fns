@@ -50,4 +50,15 @@ type CurriedFn3<A, B, C, R> = <A>(
       b: B
     ) => CurriedFn1<C, R> | (<A, B, C>(a: A, b: B, c: C) => R))
 
-declare module.exports: CurriedFn3<Object, string, Date | number, string>
+declare module.exports: CurriedFn3<
+  {
+    useAdditionalDayOfYearTokens?: boolean,
+    useAdditionalWeekYearTokens?: boolean,
+    firstWeekContainsDate?: number,
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    locale?: Locale
+  },
+  string,
+  Date | number,
+  string
+>
