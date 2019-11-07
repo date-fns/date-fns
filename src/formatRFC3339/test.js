@@ -26,45 +26,47 @@ function generateOffset(date) {
 }
 
 describe('formatRFC3339', () => {
-  const sampleDate1 = new Date(2019, 2, 3, 19, 0, 52)
-  const sampleDate2 = new Date(2019, 9, 4, 12, 30, 13)
-  const sampleDate3 = new Date(2019, 11, 11, 1, 0, 0)
+  it('formats RFC-3339 date string', () => {
+    var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
+  })
 
-  it('should convert to RFC 3339 format', () => {
-    assert.deepEqual(
-      formatRFC3339(sampleDate1),
-      `2019-03-03T19:00:52${generateOffset(sampleDate1)}`
-    )
-    assert.deepEqual(
-      formatRFC3339(sampleDate2),
-      `2019-10-04T12:30:13${generateOffset(sampleDate2)}`
-    )
-    assert.deepEqual(
-      formatRFC3339(sampleDate3),
-      `2019-12-11T01:00:00${generateOffset(sampleDate3)}`
+  it('accepts a timestamp', function() {
+    var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+    var time = date.getTime()
+    assert(formatRFC3339(time) === `2019-10-04T12:30:13${generateOffset(date)}`)
+  })
+
+  it('allows to specify digits of second fractions', function() {
+    var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
+    assert(
+      formatRFC3339(date, { secondFractionDigits: 3 }) ===
+        `2019-12-11T01:00:00.789${generateOffset(date)}`
     )
   })
 
-  it('throws TypeError when options.fraction is not within range of 0 and 3', function() {
-    const block = formatRFC3339.bind(null, new Date(), {
-      fraction: 4
+  it('implicitly converts options', function() {
+    var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    // $ExpectedMistake
+    var result = formatRFC3339(date, {
+      secondFractionDigits: '2'
     })
-
-    assert.throws(block, TypeError)
-    assert.throws(block, /Fraction should be within the range of 0 and 3/)
+    assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
 
-  it('throws TypeError if no parameters are passed', function() {
-    const block = formatRFC3339.bind(null)
-
-    assert.throws(block, TypeError)
-    assert.throws(block, /1 arguments required, but only 0 present/)
-  })
-
-  it('throws RangeError if the date is `Invalid Date`', function() {
-    const block = formatRFC3339.bind(null, new Date(NaN))
-
+  it('throws `RangeError` if `options.secondFractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function() {
+    // $ExpectedMistake
+    var block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
+      secondFractionDigits: NaN
+    })
     assert.throws(block, RangeError)
-    assert.throws(block, /Invalid time value/)
+  })
+
+  it('throws RangeError if the time value is invalid', () => {
+    assert.throws(formatRFC3339.bind(null, new Date(NaN)), RangeError)
+  })
+
+  it('throws TypeError exception if passed less than 1 argument', function() {
+    assert.throws(formatRFC3339.bind(null), TypeError)
   })
 })

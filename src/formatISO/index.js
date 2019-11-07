@@ -12,13 +12,13 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.date=true] - if true, the date part will be returned.
- * @param {Boolean} [options.time=true] - if true, the time part will be returned.
- * @param {Boolean} [options.extended=true] - if true, the date and time notations will use the extended version.
+ * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', doesn't show delimeters between date and time values.
+ * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time, or both.
  * @returns {String} the formatted date string
- * @throws {TypeError} no parameters passed
- * @throws {TypeError} one of `options.date` or `options.time` must be true
- * @throws {RangeError} date parameter is not a number or a Date object
+ * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `options.format` must be 'extended' or 'basic'
+ * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format:
@@ -27,30 +27,23 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601, short format:
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { extended: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: 'basic' })
  * //=> '20190918T190052'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, date only:
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { time: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'date' })
  * //=> '2019-09-18'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, time only:
- * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { date: false })
+ * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52'
  */
-export default function formatISO(
-  dirtyDate,
-  dirtyOptions = {
-    date: true,
-    time: true,
-    extended: true
-  }
-) {
+export default function formatISO(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
     throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
+      `1 argument required, but only ${arguments.length} present`
     )
   }
 
@@ -68,16 +61,26 @@ export default function formatISO(
   const minute = addLeadingZeros(originalDate.getMinutes(), 2)
   const second = addLeadingZeros(originalDate.getSeconds(), 2)
 
-  // Explicitly declare false because `undefined` will be resolved to `true`.
-  if (dirtyOptions.date === false && dirtyOptions.time === false) {
-    throw new TypeError('Either options.date or options.time must be true')
+  const options = dirtyOptions || {}
+  const format = options.format == null ? 'extended' : String(options.format)
+  const representation =
+    options.representation == null ? 'complete' : String(options.representation)
+
+  if (format !== 'extended' && format !== 'basic') {
+    throw new RangeError("format must be 'extended' or 'basic'")
   }
 
-  // Handle unpassed option fields.
-  const showDate = dirtyOptions.date === undefined ? true : dirtyOptions.date
-  const showTime = dirtyOptions.time === undefined ? true : dirtyOptions.time
-  const extended =
-    dirtyOptions.extended === undefined ? true : dirtyOptions.extended
+  if (
+    representation !== 'date' &&
+    representation !== 'time' &&
+    representation !== 'complete'
+  ) {
+    throw new RangeError("representation must be 'date', 'time', or 'complete'")
+  }
+
+  const showDate = representation !== 'time'
+  const showTime = representation !== 'date'
+  const extended = format === 'extended'
 
   // Result variables.
   let result = ''
