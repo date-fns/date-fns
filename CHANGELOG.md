@@ -8,6 +8,23 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.7.0] - 2019-11-07
+
+Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss) and [@fintara](https://github.com/fintara) for contributing to the release.
+
+### Fixed
+
+- [Fixed a mistake in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1529).
+
+### Changed
+
+- [Make object arguments types more elaborate in Flow type definitions](https://github.com/date-fns/date-fns/pull/1519).
+- [Get rid of deprecated Function in Flow type definitions](https://github.com/date-fns/date-fns/pull/1520).
+
+### Added
+
+- [Added Bulgarian (bg) locale](https://github.com/date-fns/date-fns/pull/1522).
+
 ## [2.6.0] - 2019-10-22
 
 Kudos to [@marnusw](https://github.com/marnusw), [@cdrikd](https://github.com/cdrikd) and [@rogyvoje](https://github.com/rogyvoje) for working on the release!
