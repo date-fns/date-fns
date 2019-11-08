@@ -12,7 +12,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
- * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', doesn't show delimeters between date and time values.
+ * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
  * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time, or both.
  * @returns {String} the formatted date string
  * @throws {TypeError} 1 argument required

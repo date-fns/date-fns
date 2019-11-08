@@ -53,7 +53,7 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
       ? 0
       : toInteger(options.secondFractionDigits)
 
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
+  // Test if secondFractionDigits is between 0 and 3 _and_ is not NaN
   if (!(secondFractionDigits >= 0 && secondFractionDigits <= 3)) {
     throw new RangeError(
       'secondFractionDigits must be between 0 and 3 inclusively'
