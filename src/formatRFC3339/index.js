@@ -13,11 +13,11 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
- * @param {0|1|2|3} [options.secondFractionDigits=0] - how many digits will represent fractions of second
+ * @param {0|1|2|3} [options.fractionDigits=0] - number of digits after the decimal point after seconds
  * @returns {String} the formatted date string
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.secondFractionDigits` must be between 0 and 3
+ * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format:
@@ -26,12 +26,12 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format, 2 digits of second fraction:
- * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { secondFractionDigits: 2 })
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 2 })
  * //=> '2019-09-18T19:00:52.23Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format, 3 digits of second fraction
- * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { secondFractionDigits: 3 })
+ * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
 export default function formatRFC3339(dirtyDate, dirtyOptions) {
@@ -48,16 +48,12 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
   }
 
   const options = dirtyOptions || {}
-  const secondFractionDigits =
-    options.secondFractionDigits == null
-      ? 0
-      : toInteger(options.secondFractionDigits)
+  const fractionDigits =
+    options.fractionDigits == null ? 0 : toInteger(options.fractionDigits)
 
-  // Test if secondFractionDigits is between 0 and 3 _and_ is not NaN
-  if (!(secondFractionDigits >= 0 && secondFractionDigits <= 3)) {
-    throw new RangeError(
-      'secondFractionDigits must be between 0 and 3 inclusively'
-    )
+  // Test if fractionDigits is between 0 and 3 _and_ is not NaN
+  if (!(fractionDigits >= 0 && fractionDigits <= 3)) {
+    throw new RangeError('fractionDigits must be between 0 and 3 inclusively')
   }
 
   const day = addLeadingZeros(originalDate.getDate(), 2)
@@ -69,13 +65,12 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
   const second = addLeadingZeros(originalDate.getSeconds(), 2)
 
   let fractionalSecond = ''
-  if (secondFractionDigits > 0) {
+  if (fractionDigits > 0) {
     const milliseconds = originalDate.getMilliseconds()
     const fractionalSeconds = Math.floor(
-      milliseconds * Math.pow(10, secondFractionDigits - 3)
+      milliseconds * Math.pow(10, fractionDigits - 3)
     )
-    fractionalSecond =
-      '.' + addLeadingZeros(fractionalSeconds, secondFractionDigits)
+    fractionalSecond = '.' + addLeadingZeros(fractionalSeconds, fractionDigits)
   }
 
   let offset = ''

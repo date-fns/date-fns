@@ -222,7 +222,7 @@ declare module.exports: {
   formatRFC3339: CurriedFn1<Date | number, string>,
   formatRFC3339WithOptions: CurriedFn2<
     {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     },
     Date | number,
     string

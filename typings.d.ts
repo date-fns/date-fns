@@ -401,7 +401,7 @@ declare module 'date-fns' {
   function formatRFC3339(
     date: Date | number,
     options?: {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     }
   ): string
   namespace formatRFC3339 {}
@@ -4006,7 +4006,7 @@ declare module 'date-fns/fp' {
 
   const formatRFC3339WithOptions: CurriedFn2<
     {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     },
     Date | number,
     string
@@ -7722,7 +7722,7 @@ declare module 'date-fns/esm' {
   function formatRFC3339(
     date: Date | number,
     options?: {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     }
   ): string
   namespace formatRFC3339 {}
@@ -11327,7 +11327,7 @@ declare module 'date-fns/esm/fp' {
 
   const formatRFC3339WithOptions: CurriedFn2<
     {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     },
     Date | number,
     string
@@ -17376,7 +17376,7 @@ interface dateFns {
   formatRFC3339(
     date: Date | number,
     options?: {
-      secondFractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3
     }
   ): string
 
