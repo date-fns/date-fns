@@ -68,12 +68,14 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
   const minute = addLeadingZeros(originalDate.getMinutes(), 2)
   const second = addLeadingZeros(originalDate.getSeconds(), 2)
 
-  let millisecond = ''
-
+  let fractionalSecond = ''
   if (secondFractionDigits > 0) {
-    const dirtyMillisecond = originalDate.getMilliseconds().toString()
-
-    millisecond = `.${dirtyMillisecond.slice(0, secondFractionDigits)}`
+    const milliseconds = originalDate.getMilliseconds()
+    const fractionalSeconds = Math.floor(
+      milliseconds * Math.pow(10, secondFractionDigits - 3)
+    )
+    fractionalSecond =
+      '.' + addLeadingZeros(fractionalSeconds, secondFractionDigits)
   }
 
   let offset = ''
@@ -91,5 +93,5 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
     offset = 'Z'
   }
 
-  return `${year}-${month}-${day}T${hour}:${minute}:${second}${millisecond}${offset}`
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}${fractionalSecond}${offset}`
 }

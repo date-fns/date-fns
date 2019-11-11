@@ -53,14 +53,6 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     throw new RangeError('Invalid time value')
   }
 
-  const day = addLeadingZeros(originalDate.getDate(), 2)
-  const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
-  const year = originalDate.getFullYear()
-
-  const hour = addLeadingZeros(originalDate.getHours(), 2)
-  const minute = addLeadingZeros(originalDate.getMinutes(), 2)
-  const second = addLeadingZeros(originalDate.getSeconds(), 2)
-
   const options = dirtyOptions || {}
   const format = options.format == null ? 'extended' : String(options.format)
   const representation =
@@ -78,32 +70,31 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     throw new RangeError("representation must be 'date', 'time', or 'complete'")
   }
 
-  const showDate = representation !== 'time'
-  const showTime = representation !== 'date'
-  const extended = format === 'extended'
-
-  // Result variables.
   let result = ''
-  let dateDelimiter = ''
-  let timeDelimiter = ''
 
-  // Set delimiter, if extended. Otherwise, keep it empty.
-  if (extended) {
-    dateDelimiter = '-'
-    timeDelimiter = ':'
-  }
+  const dateDelimiter = format === 'extended' ? '-' : ''
+  const timeDelimiter = format === 'extended' ? ':' : ''
 
-  // Write result if date options is true.
-  if (showDate) {
+  // Representation is either 'date' or 'complete'
+  if (representation !== 'time') {
+    const day = addLeadingZeros(originalDate.getDate(), 2)
+    const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
+    const year = addLeadingZeros(originalDate.getFullYear(), 4)
+
     // yyyyMMdd or yyyy-MM-dd.
     result = `${year}${dateDelimiter}${month}${dateDelimiter}${day}`
   }
 
-  if (showTime) {
-    const separator = result !== '' ? 'T' : ''
+  // Representation is either 'time' or 'complete'
+  if (representation !== 'date') {
+    const hour = addLeadingZeros(originalDate.getHours(), 2)
+    const minute = addLeadingZeros(originalDate.getMinutes(), 2)
+    const second = addLeadingZeros(originalDate.getSeconds(), 2)
+
+    // If there's also date, separate it with time with 'T'
+    const separator = result === '' ? '' : 'T'
 
     // HHmmss or HH:mm:ss.
-    // If date is present, append "T" before the time string.
     result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}`
   }
 

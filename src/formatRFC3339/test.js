@@ -45,6 +45,14 @@ describe('formatRFC3339', () => {
     )
   })
 
+  it('works when ms < 100', function() {
+    var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
+    assert(
+      formatRFC3339(date, { secondFractionDigits: 2 }) ===
+        `2019-12-11T01:00:00.01${generateOffset(date)}`
+    )
+  })
+
   it('implicitly converts options', function() {
     var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     // $ExpectedMistake

@@ -56,6 +56,7 @@ export default function parseJSON(argument) {
         )
       )
     }
+    return new Date(NaN)
   }
   return toDate(argument)
 }
