@@ -122,7 +122,7 @@ var formatDistanceLocale = {
       future: 'za den'
     },
     few: {
-      regular: '{{count}} dni',
+      regular: '{{count}} dny',
       past: 'před {{count}} dny',
       future: 'za {{count}} dny'
     },
