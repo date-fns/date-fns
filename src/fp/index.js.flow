@@ -191,6 +191,24 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatISO: CurriedFn1<Date | number, string>,
+  formatISO9075: CurriedFn1<Date | number, string>,
+  formatISO9075WithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time',
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >,
+  formatISOWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time',
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >,
   formatRelative: CurriedFn2<Date | number, Date | number, string>,
   formatRelativeWithOptions: CurriedFn3<
     {
@@ -201,6 +219,15 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatRFC3339: CurriedFn1<Date | number, string>,
+  formatRFC3339WithOptions: CurriedFn2<
+    {
+      fractionDigits?: 0 | 1 | 2 | 3
+    },
+    Date | number,
+    string
+  >,
+  formatRFC7231: CurriedFn1<Date | number, string>,
   formatWithOptions: CurriedFn3<
     {
       useAdditionalDayOfYearTokens?: boolean,

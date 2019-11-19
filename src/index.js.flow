@@ -273,6 +273,22 @@ declare module.exports: {
     }
   ) => string,
 
+  formatISO: (
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic',
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ) => string,
+
+  formatISO9075: (
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic',
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ) => string,
+
   formatRelative: (
     date: Date | number,
     baseDate: Date | number,
@@ -281,6 +297,15 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => string,
+
+  formatRFC3339: (
+    date: Date | number,
+    options?: {
+      fractionDigits?: 0 | 1 | 2 | 3
+    }
+  ) => string,
+
+  formatRFC7231: (date: Date | number) => string,
 
   fromUnixTime: (unixTime: number) => Date,
 
