@@ -8,6 +8,19 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.8.0] - 2019-11-19
+
+Kudos to [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@Imballinst](https://github.com/Imballinst), [@leshakoss](https://github.com/leshakoss) and [@Neorth](https://github.com/Neorth) for working on the release.
+
+### Fixed
+
+- [Remove the next week preposition in the Swedish locale](https://github.com/date-fns/date-fns/pull/1538).
+
+### Added
+
+- [Added Malay (ms) locale](https://github.com/date-fns/date-fns/pull/1537).
+- [Added `formatISO`, `formatISO9075`, `formatRFC3339`, and `formatRFC7231` functions](https://github.com/date-fns/date-fns/pull/1536).
+
 ## [2.7.0] - 2019-11-07
 
 Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss), [@fintara](https://github.com/fintara), [@kpr-hellofresh](https://github.com/kpr-hellofresh) for contributing to the release.
@@ -1858,7 +1871,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.7.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.8.0...HEAD
+[2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
 [2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
 [2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
