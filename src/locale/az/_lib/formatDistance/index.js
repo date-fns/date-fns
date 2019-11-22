@@ -1,9 +1,3 @@
-'use strict'
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-exports.default = formatDistance
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'bir saniyədən az',
@@ -60,7 +54,7 @@ var formatDistanceLocale = {
   }
 }
 
-function formatDistance(token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
   var result
 
@@ -82,5 +76,3 @@ function formatDistance(token, count, options) {
 
   return result
 }
-
-module.exports = exports.default

@@ -1,17 +1,4 @@
-'use strict'
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-exports.default = void 0
-
-var _index = _interopRequireDefault(
-  require('../../../_lib/buildFormatLongFn/index.js')
-)
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj }
-}
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 var dateFormats = {
   full: 'EEEE, do MMMM y',
@@ -33,19 +20,20 @@ var dateTimeFormats = {
   short: '{{date}}, {{time}}'
 }
 var formatLong = {
-  date: (0, _index.default)({
+  date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'
   }),
-  time: (0, _index.default)({
+
+  time: buildFormatLongFn({
     formats: timeFormats,
     defaultWidth: 'full'
   }),
-  dateTime: (0, _index.default)({
+
+  dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
     defaultWidth: 'full'
   })
 }
-var _default = formatLong
-exports.default = _default
-module.exports = exports.default
+
+export default formatLong

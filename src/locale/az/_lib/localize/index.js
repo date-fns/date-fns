@@ -1,17 +1,4 @@
-'use strict'
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-exports.default = void 0
-
-var _index = _interopRequireDefault(
-  require('../../../_lib/buildLocalizeFn/index.js')
-)
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj }
-}
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var eraValues = {
   narrow: ['B', 'A'],
@@ -177,32 +164,31 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  era: (0, _index.default)({
+  era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
   }),
-  quarter: (0, _index.default)({
+  quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
-  month: (0, _index.default)({
+  month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
   }),
-  day: (0, _index.default)({
+  day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
   }),
-  dayPeriod: (0, _index.default)({
+  dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
     defaultFormattingWidth: 'wide'
   })
 }
-var _default = localize
-exports.default = _default
-module.exports = exports.default
+
+export default localize

@@ -1,21 +1,5 @@
-'use strict'
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-exports.default = void 0
-
-var _index = _interopRequireDefault(
-  require('../../../_lib/buildMatchPatternFn/index.js')
-)
-
-var _index2 = _interopRequireDefault(
-  require('../../../_lib/buildMatchFn/index.js')
-)
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj }
-}
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
 var matchOrdinalNumberPattern = /^(\d+)(-?(ci|inci|nci|uncu|üncü|ncı))?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -138,20 +122,20 @@ var parseDayPeriodPatterns = {
   }
 }
 var match = {
-  ordinalNumber: (0, _index.default)({
+  ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
     valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
-  era: (0, _index2.default)({
+  era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
     defaultParseWidth: 'any'
   }),
-  quarter: (0, _index2.default)({
+  quarter: buildMatchFn({
     matchPatterns: matchQuarterPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
@@ -160,25 +144,23 @@ var match = {
       return index + 1
     }
   }),
-  month: (0, _index2.default)({
+  month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
     defaultParseWidth: 'any'
   }),
-  day: (0, _index2.default)({
+  day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
     defaultParseWidth: 'any'
   }),
-  dayPeriod: (0, _index2.default)({
+  dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
     defaultParseWidth: 'any'
   })
 }
-var _default = match
-exports.default = _default
-module.exports = exports.default
+export default match

@@ -1,9 +1,3 @@
-'use strict'
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
-exports.default = formatRelative
 var formatRelativeLocale = {
   lastWeek: "'sonuncu' eeee p -'də'",
   yesterday: "'dünən' p -'də'",
@@ -13,7 +7,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-function formatRelative(token, _date, _baseDate, _options) {
+export default function formatRelative(token, _date, _baseDate, _options) {
   return formatRelativeLocale[token]
 }
 
