@@ -9,8 +9,9 @@ import match from './_lib/match/index.js'
  * @category Locales
  * @summary Azerbaijani locale.
  * @language Azerbaijani
- * @iso-639-2 az
+ * @iso-639-2 aze
  */
+
 var locale = {
   code: 'az',
   formatDistance: formatDistance,
