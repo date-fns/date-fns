@@ -178,6 +178,8 @@ declare module.exports: {
     }
   ) => Date[],
 
+  eachMonthOfInterval: (interval: Interval) => Date[],
+
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
   eachWeekendOfMonth: (date: Date | number) => Date[],
@@ -191,6 +193,8 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date[],
+
+  eachYearOfInterval: (interval: Interval) => Date[],
 
   endOfDay: (date: Date | number) => Date,
 
