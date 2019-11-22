@@ -9,11 +9,8 @@ import toDate from '../toDate/index.js'
  * Return the array of months within the specified time interval.
  *
  * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
- * @param {Options} [options] - the object with options. See [Options]{@link https://date-fns.org/docs/Options}
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
  * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -33,14 +30,16 @@ import toDate from '../toDate/index.js'
  * //   Wed Aug 06 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval, dirtyOptions) {
+export default function eachMonthOfInterval(dirtyInterval) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var interval = dirtyInterval || {}
-  var startDate = toDate(interval.start, dirtyOptions)
-  var endDate = toDate(interval.end, dirtyOptions)
+  var startDate = toDate(interval.start)
+  var endDate = toDate(interval.end)
 
   var endTime = endDate.getTime()
 
@@ -55,7 +54,7 @@ export default function eachMonthOfInterval(dirtyInterval, dirtyOptions) {
   currentDate.setHours(0, 0, 0, 0)
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate, dirtyOptions))
+    dates.push(toDate(currentDate))
     currentDate.setMonth(currentDate.getMonth() + 1)
   }
 

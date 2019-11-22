@@ -20,21 +20,6 @@ describe('eachYearOfInterval', function() {
     ])
   })
 
-  it('accepts strings', function() {
-    var result = eachYearOfInterval({
-      start: new Date(2012, 9 /* Oct */, 6).toISOString(),
-      end: new Date(2017, 9 /* Oct */, 12).toISOString()
-    })
-    assert.deepEqual(result, [
-      new Date(2012, 0 /* Jan */, 1),
-      new Date(2013, 0 /* Jan */, 1),
-      new Date(2014, 0 /* Jan */, 1),
-      new Date(2015, 0 /* Jan */, 1),
-      new Date(2016, 0 /* Jan */, 1),
-      new Date(2017, 0 /* Jan */, 1)
-    ])
-  })
-
   it('accepts timestamps', function() {
     var result = eachYearOfInterval({
       start: new Date(2012, 9 /* Oct */, 6).getTime(),
@@ -110,19 +95,6 @@ describe('eachYearOfInterval', function() {
       null,
       // $ExpectedMistake
       undefined
-    )
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined', function() {
-    var block = eachYearOfInterval.bind(
-      null,
-      {
-        start: new Date(2014, 9 /* Oct */, 6),
-        end: new Date(2014, 9 /* Oct */, 12)
-        // $ExpectedMistake
-      },
-      { additionalDigits: NaN }
     )
     assert.throws(block, RangeError)
   })
