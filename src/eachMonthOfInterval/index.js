@@ -21,13 +21,13 @@ import toDate from '../toDate/index.js'
  *   end: new Date(2014, 7, 10)
  * })
  * //=> [
- * //   Thu Feb 06 2014 00:00:00,
- * //   Thu Mar 06 2014 00:00:00,
- * //   Sun Apr 06 2014 00:00:00,
- * //   Tue May 06 2014 00:00:00,
- * //   Fri Jun 06 2014 00:00:00,
- * //   Sun Jul 06 2014 00:00:00,
- * //   Wed Aug 06 2014 00:00:00
+ * //   Sat Feb 01 2014 00:00:00,
+ * //   Sat Mar 01 2014 00:00:00,
+ * //   Tue Apr 01 2014 00:00:00,
+ * //   Thu May 01 2014 00:00:00,
+ * //   Sun Jun 01 2014 00:00:00,
+ * //   Tue Jul 01 2014 00:00:00,
+ * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
 export default function eachMonthOfInterval(dirtyInterval) {
@@ -52,6 +52,7 @@ export default function eachMonthOfInterval(dirtyInterval) {
 
   var currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
+  currentDate.setDate(1)
 
   while (currentDate.getTime() <= endTime) {
     dates.push(toDate(currentDate))
