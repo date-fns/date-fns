@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## Unreleased
+
+Thanks to [@mborgbrant](https://github.com/mborgbrant).
+
+### Added
+
+- [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
+
 ## [2.8.1] - 2019-11-22
 
 Thanks to [@Imballinst](https://github.com/Imballinst) for the bug fix!
