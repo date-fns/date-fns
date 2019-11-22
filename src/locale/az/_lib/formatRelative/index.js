@@ -10,5 +10,3 @@ var formatRelativeLocale = {
 export default function formatRelative(token, _date, _baseDate, _options) {
   return formatRelativeLocale[token]
 }
-
-module.exports = exports.default
