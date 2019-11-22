@@ -24,15 +24,17 @@ import toDate from '../toDate/index.js'
  *   end: new Date(2017, 7, 10)
  * })
  * //=> [
- * //   Thu Feb 06 2014 00:00:00,
- * //   Thu Feb 06 2015 00:00:00,
- * //   Sun Feb 06 2016 00:00:00,
- * //   Tue Feb 06 2017 00:00:00
+ * //   Wed Jan 01 2014 00:00:00,
+ * //   Thu Jan 01 2015 00:00:00,
+ * //   Fri Jan 01 2016 00:00:00,
+ * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
 export default function eachYearOfInterval(dirtyInterval, dirtyOptions) {
   if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only ' + arguments.length + ' present')
+    throw new TypeError(
+      '1 argument required, but only ' + arguments.length + ' present'
+    )
   }
 
   var interval = dirtyInterval || {}
@@ -50,6 +52,7 @@ export default function eachYearOfInterval(dirtyInterval, dirtyOptions) {
 
   var currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
+  currentDate.setMonth(0, 1)
 
   while (currentDate.getTime() <= endTime) {
     dates.push(toDate(currentDate, dirtyOptions))
