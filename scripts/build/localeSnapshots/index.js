@@ -52,15 +52,12 @@ ${renderFormatRelative(locale)}
     )
     const formattedSnapshot = prettier(snapshot, 'markdown')
 
-    if (mode === 'test' || code == 'az') {
+    if (mode === 'test') {
       return readFile(snapshotPath, 'utf8').then(snapshotFileContent => {
-        if (snapshotFileContent !== formattedSnapshot) {
-          console.log(snapshotFileContent)
-          console.log(formattedSnapshot)
+        if (snapshotFileContent !== formattedSnapshot)
           throw new Error(
             `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
           )
-        } else console.log('they are equal')
       })
     } else {
       return writeFile(snapshotPath, formattedSnapshot)
