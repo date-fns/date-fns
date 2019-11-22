@@ -83,7 +83,7 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'
 
-    offset = `${sign}${hourOffset}${minuteOffset}`
+    offset = `${sign}${hourOffset}:${minuteOffset}`
   } else {
     offset = 'Z'
   }
