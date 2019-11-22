@@ -130,7 +130,6 @@ declare module.exports: {
     Date[]
   >,
   eachMonthOfInterval: CurriedFn1<Interval, Date[]>,
-  eachMonthOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
   eachWeekendOfInterval: CurriedFn1<Interval, Date[]>,
   eachWeekendOfMonth: CurriedFn1<Date | number, Date[]>,
   eachWeekendOfYear: CurriedFn1<Date | number, Date[]>,
@@ -144,7 +143,6 @@ declare module.exports: {
     Date[]
   >,
   eachYearOfInterval: CurriedFn1<Interval, Date[]>,
-  eachYearOfIntervalWithOptions: CurriedFn2<Options, Interval, Date[]>,
   endOfDay: CurriedFn1<Date | number, Date>,
   endOfDecade: CurriedFn1<Date | number, Date>,
   endOfDecadeWithOptions: CurriedFn2<

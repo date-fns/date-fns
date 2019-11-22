@@ -66,9 +66,6 @@ export {
   default as eachDayOfIntervalWithOptions
 } from './eachDayOfIntervalWithOptions/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
-export {
-  default as eachMonthOfIntervalWithOptions
-} from './eachMonthOfIntervalWithOptions/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
 export {
   default as eachWeekOfIntervalWithOptions
@@ -79,9 +76,6 @@ export {
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index.js'
-export {
-  default as eachYearOfIntervalWithOptions
-} from './eachYearOfIntervalWithOptions/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
 export {

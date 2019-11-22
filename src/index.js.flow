@@ -178,7 +178,7 @@ declare module.exports: {
     }
   ) => Date[],
 
-  eachMonthOfInterval: (interval: Interval, options?: Options) => Date[],
+  eachMonthOfInterval: (interval: Interval) => Date[],
 
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
@@ -194,7 +194,7 @@ declare module.exports: {
     }
   ) => Date[],
 
-  eachYearOfInterval: (interval: Interval, options?: Options) => Date[],
+  eachYearOfInterval: (interval: Interval) => Date[],
 
   endOfDay: (date: Date | number) => Date,
 
