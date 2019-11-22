@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.8.1] - 2019-11-22
+
+Thanks to [@Imballinst](https://github.com/Imballinst) for the bug fix!
+
+### Fixed
+
+- [Add colon between the hour and minutes for `formatRFC3339`](https://github.com/date-fns/date-fns/pull/1549). [See #1548](https://github.com/date-fns/date-fns/issues/1548).
+
 ## [2.8.0] - 2019-11-19
 
 Kudos to [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@Imballinst](https://github.com/Imballinst), [@leshakoss](https://github.com/leshakoss) and [@Neorth](https://github.com/Neorth) for working on the release.
@@ -1871,7 +1879,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.8.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.8.1...HEAD
+[2.8.1]: https://github.com/date-fns/date-fns/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
 [2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
