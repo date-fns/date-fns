@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name parseJSON
@@ -33,11 +34,7 @@ import toDate from '../toDate/index.js'
  * @throws {TypeError} 1 argument required
  */
 export default function parseJSON(argument) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   if (typeof argument === 'string') {
     var parts = argument.match(

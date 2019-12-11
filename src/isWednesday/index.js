@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isWednesday
@@ -22,11 +23,7 @@ import toDate from '../toDate/index.js'
  * //=> true
  */
 export default function isWednesday(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDay() === 3
 }

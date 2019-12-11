@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addBusinessDays from '../addBusinessDays/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subBusinessDays
@@ -20,11 +21,7 @@ import addBusinessDays from '../addBusinessDays/index.js'
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
 export default function subBusinessDays(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addBusinessDays(dirtyDate, -amount)

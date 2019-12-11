@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getDecade
@@ -22,11 +23,7 @@ import toDate from '../toDate/index.js'
  * //=> 1940
  */
 export default function getDecade(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var year = date.getFullYear()

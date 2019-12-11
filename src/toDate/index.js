@@ -1,3 +1,5 @@
+import requiredArgs from '../_lib/requiredArgs/index.js'
+
 /**
  * @name toDate
  * @category Common Helpers
@@ -29,11 +31,7 @@
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate(argument) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   const argStr = Object.prototype.toString.call(argument)
 

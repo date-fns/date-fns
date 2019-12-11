@@ -1,4 +1,5 @@
 import getTime from '../getTime/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getUnixTime
@@ -22,11 +23,7 @@ import getTime from '../getTime/index.js'
  * //=> 1330512305
  */
 export default function getUnixTime(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return Math.floor(getTime(dirtyDate) / 1000)
 }

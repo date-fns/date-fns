@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addISOWeekYears from '../addISOWeekYears/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subISOWeekYears
@@ -31,11 +32,7 @@ import addISOWeekYears from '../addISOWeekYears/index.js'
  * //=> Mon Aug 31 2009 00:00:00
  */
 export default function subISOWeekYears(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addISOWeekYears(dirtyDate, -amount)

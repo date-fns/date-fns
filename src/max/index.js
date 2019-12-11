@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name max
@@ -40,11 +41,7 @@ import toDate from '../toDate/index.js'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export default function max(dirtyDatesArray) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method

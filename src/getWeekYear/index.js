@@ -1,6 +1,7 @@
 import startOfWeek from '../startOfWeek/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getWeekYear
@@ -46,11 +47,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> 2004
  */
 export default function getWeekYear(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var year = date.getFullYear()

@@ -1,4 +1,5 @@
 import isSameHour from '../isSameHour/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isThisHour
@@ -27,11 +28,7 @@ import isSameHour from '../isSameHour/index.js'
  * //=> true
  */
 export default function isThisHour(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameHour(Date.now(), dirtyDate)
 }

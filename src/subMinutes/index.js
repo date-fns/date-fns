@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMinutes from '../addMinutes/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subMinutes
@@ -24,11 +25,7 @@ import addMinutes from '../addMinutes/index.js'
  * //=> Thu Jul 10 2014 11:30:00
  */
 export default function subMinutes(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addMinutes(dirtyDate, -amount)

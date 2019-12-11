@@ -1,6 +1,7 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index.js'
 import startOfMonth from '../startOfMonth/index.js'
 import endOfMonth from '../endOfMonth/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachWeekendOfMonth
@@ -30,11 +31,7 @@ import endOfMonth from '../endOfMonth/index.js'
  * // ]
  */
 export default function eachWeekendOfMonth(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var startDate = startOfMonth(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')

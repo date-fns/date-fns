@@ -1,6 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getDaysInMonth from '../getDaysInMonth/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name addMonths
@@ -25,11 +26,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * //=> Sun Feb 01 2015 00:00:00
  */
 export default function addMonths(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var amount = toInteger(dirtyAmount)

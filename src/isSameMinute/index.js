@@ -1,4 +1,5 @@
 import startOfMinute from '../startOfMinute/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameMinute
@@ -27,11 +28,7 @@ import startOfMinute from '../startOfMinute/index.js'
  * //=> true
  */
 export default function isSameMinute(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
   var dateRightStartOfMinute = startOfMinute(dirtyDateRight)

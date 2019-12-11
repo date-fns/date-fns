@@ -1,4 +1,5 @@
 import isSameDay from '../isSameDay/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isToday
@@ -26,11 +27,7 @@ import isSameDay from '../isSameDay/index.js'
  * //=> true
  */
 export default function isToday(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameDay(dirtyDate, Date.now())
 }

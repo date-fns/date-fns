@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMonths from '../addMonths/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subMonths
@@ -24,11 +25,7 @@ import addMonths from '../addMonths/index.js'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function subMonths(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, -amount)

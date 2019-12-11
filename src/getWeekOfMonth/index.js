@@ -2,6 +2,7 @@ import getDate from '../getDate/index.js'
 import getDay from '../getDay/index.js'
 import startOfMonth from '../startOfMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getWeekOfMonth
@@ -29,11 +30,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> 2
  */
 export default function getWeekOfMonth(date, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale

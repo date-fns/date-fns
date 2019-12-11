@@ -1,4 +1,5 @@
 import isSameMinute from '../isSameMinute/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isThisMinute
@@ -28,11 +29,7 @@ import isSameMinute from '../isSameMinute/index.js'
  */
 
 export default function isThisMinute(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameMinute(Date.now(), dirtyDate)
 }

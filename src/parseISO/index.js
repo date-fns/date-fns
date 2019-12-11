@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -73,11 +74,7 @@ var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 export default function parseISO(argument, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
 

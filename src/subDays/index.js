@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addDays from '../addDays/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subDays
@@ -24,11 +25,7 @@ import addDays from '../addDays/index.js'
  * //=> Fri Aug 22 2014 00:00:00
  */
 export default function subDays(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addDays(dirtyDate, -amount)

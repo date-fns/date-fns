@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isWithinInterval
@@ -74,11 +75,7 @@ import toDate from '../toDate/index.js'
  * isWithinInterval(date, { start: date, end }) // => true
  */
 export default function isWithinInterval(dirtyDate, dirtyInterval) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var interval = dirtyInterval || {}
   var time = toDate(dirtyDate).getTime()

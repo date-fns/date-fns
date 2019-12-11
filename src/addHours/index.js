@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 
@@ -26,11 +27,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * //=> Fri Jul 11 2014 01:00:00
  */
 export default function addHours(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)

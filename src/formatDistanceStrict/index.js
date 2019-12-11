@@ -4,6 +4,7 @@ import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import defaultLocale from '../locale/en-US/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -164,11 +165,7 @@ export default function formatDistanceStrict(
   dirtyBaseDate,
   dirtyOptions
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale

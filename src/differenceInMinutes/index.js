@@ -1,4 +1,5 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -36,11 +37,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * //=> -1
  */
 export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /

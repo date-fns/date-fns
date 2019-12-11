@@ -1,5 +1,6 @@
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name fromUnixTime
@@ -23,11 +24,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Wed Feb 29 2012 11:45:05
  */
 export default function fromUnixTime(dirtyUnixTime) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var unixTime = toInteger(dirtyUnixTime)
 

@@ -1,4 +1,5 @@
 import startOfWeek from '../startOfWeek/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameWeek
@@ -39,11 +40,7 @@ export default function isSameWeek(
   dirtyDateRight,
   dirtyOptions
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
   var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)

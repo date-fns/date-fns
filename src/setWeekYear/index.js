@@ -2,6 +2,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setWeekYear
@@ -49,11 +50,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setWeekYear(dirtyDate, dirtyWeekYear, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale

@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setMilliseconds
@@ -24,11 +25,7 @@ import toDate from '../toDate/index.js'
  * //=> Mon Sep 01 2014 11:30:40.300
  */
 export default function setMilliseconds(dirtyDate, dirtyMilliseconds) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var milliseconds = toInteger(dirtyMilliseconds)
