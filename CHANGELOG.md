@@ -8,6 +8,54 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## Unreleased
+
+Thanks to [@mborgbrant](https://github.com/mborgbrant).
+
+### Added
+
+- [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
+
+## [2.8.1] - 2019-11-22
+
+Thanks to [@Imballinst](https://github.com/Imballinst) for the bug fix!
+
+### Fixed
+
+- [Add colon between the hour and minutes for `formatRFC3339`](https://github.com/date-fns/date-fns/pull/1549). [See #1548](https://github.com/date-fns/date-fns/issues/1548).
+
+## [2.8.0] - 2019-11-19
+
+Kudos to [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@Imballinst](https://github.com/Imballinst), [@leshakoss](https://github.com/leshakoss) and [@Neorth](https://github.com/Neorth) for working on the release.
+
+### Fixed
+
+- [Remove the next week preposition in the Swedish locale](https://github.com/date-fns/date-fns/pull/1538).
+
+### Added
+
+- [Added Malay (ms) locale](https://github.com/date-fns/date-fns/pull/1537).
+- [Added `formatISO`, `formatISO9075`, `formatRFC3339`, and `formatRFC7231` functions](https://github.com/date-fns/date-fns/pull/1536).
+
+## [2.7.0] - 2019-11-07
+
+Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss), [@fintara](https://github.com/fintara), [@kpr-hellofresh](https://github.com/kpr-hellofresh) for contributing to the release.
+
+### Fixed
+
+- [Fixed a mistake in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1529).
+- [Fixed incorrect behavior of `parseISO` in Firefox caused by differences in `getTimezoneOffset`](https://github.com/date-fns/date-fns/pull/1495).
+
+### Changed
+
+- [Make object arguments types more elaborate in Flow type definitions](https://github.com/date-fns/date-fns/pull/1519).
+- [Get rid of deprecated Function in Flow type definitions](https://github.com/date-fns/date-fns/pull/1520).
+- [Allow `parseJSON` to accept strings without trailing 'Z' symbol and with up to 6 digits in the milliseconds' field](https://github.com/date-fns/date-fns/pull/1499).
+
+### Added
+
+- [Added Bulgarian (bg) locale](https://github.com/date-fns/date-fns/pull/1522).
+
 ## [2.6.0] - 2019-10-22
 
 Kudos to [@marnusw](https://github.com/marnusw), [@cdrikd](https://github.com/cdrikd) and [@rogyvoje](https://github.com/rogyvoje) for working on the release!
@@ -1839,7 +1887,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.6.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.8.1...HEAD
+[2.8.1]: https://github.com/date-fns/date-fns/compare/v2.8.0...v2.8.1
+[2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
+[2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
 [2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
 [2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
 [2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0

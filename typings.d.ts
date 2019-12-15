@@ -33,27 +33,27 @@ type Interval = {
 type IntervalAliased = Interval
 
 type Locale = {
-  formatDistance: Function
-  formatRelative: Function
+  formatDistance: (...args: Array<any>) => any
+  formatRelative: (...args: Array<any>) => any
   localize: {
-    ordinalNumber: Function
-    era: Function
-    quarter: Function
-    month: Function
-    day: Function
-    dayPeriod: Function
+    ordinalNumber: (...args: Array<any>) => any
+    era: (...args: Array<any>) => any
+    quarter: (...args: Array<any>) => any
+    month: (...args: Array<any>) => any
+    day: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any
   }
   formatLong: Object
-  date: Function
-  time: Function
-  dateTime: Function
+  date: (...args: Array<any>) => any
+  time: (...args: Array<any>) => any
+  dateTime: (...args: Array<any>) => any
   match: {
-    ordinalNumber: Function
-    era: Function
-    quarter: Function
-    month: Function
-    day: Function
-    dayPeriod: Function
+    ordinalNumber: (...args: Array<any>) => any
+    era: (...args: Array<any>) => any
+    quarter: (...args: Array<any>) => any
+    month: (...args: Array<any>) => any
+    day: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any
   }
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -256,6 +256,9 @@ declare module 'date-fns' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachMonthOfInterval(interval: Interval): Date[]
+  namespace eachMonthOfInterval {}
+
   function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {}
 
@@ -273,6 +276,9 @@ declare module 'date-fns' {
     }
   ): Date[]
   namespace eachWeekOfInterval {}
+
+  function eachYearOfInterval(interval: Interval): Date[]
+  namespace eachYearOfInterval {}
 
   function endOfDay(date: Date | number): Date
   namespace endOfDay {}
@@ -373,6 +379,24 @@ declare module 'date-fns' {
   ): string
   namespace formatDistanceToNow {}
 
+  function formatISO(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+  namespace formatISO {}
+
+  function formatISO9075(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+  namespace formatISO9075 {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -382,6 +406,17 @@ declare module 'date-fns' {
     }
   ): string
   namespace formatRelative {}
+
+  function formatRFC3339(
+    date: Date | number,
+    options?: {
+      fractionDigits?: 0 | 1 | 2 | 3
+    }
+  ): string
+  namespace formatRFC3339 {}
+
+  function formatRFC7231(date: Date | number): string
+  namespace formatRFC7231 {}
 
   function fromUnixTime(unixTime: number): Date
   namespace fromUnixTime {}
@@ -1079,6 +1114,11 @@ declare module 'date-fns/eachDayOfInterval' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/eachMonthOfInterval' {
+  import { eachMonthOfInterval } from 'date-fns'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/eachWeekendOfInterval' {
   import { eachWeekendOfInterval } from 'date-fns'
   export default eachWeekendOfInterval
@@ -1097,6 +1137,11 @@ declare module 'date-fns/eachWeekendOfYear' {
 declare module 'date-fns/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/eachYearOfInterval' {
+  import { eachYearOfInterval } from 'date-fns'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/endOfDay' {
@@ -1189,9 +1234,29 @@ declare module 'date-fns/formatDistanceToNow' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/formatISO' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
+}
+
+declare module 'date-fns/formatISO9075' {
+  import { formatISO9075 } from 'date-fns'
+  export default formatISO9075
+}
+
 declare module 'date-fns/formatRelative' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
+}
+
+declare module 'date-fns/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/formatRFC7231' {
+  import { formatRFC7231 } from 'date-fns'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fromUnixTime' {
@@ -1984,6 +2049,11 @@ declare module 'date-fns/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/eachMonthOfInterval/index' {
+  import { eachMonthOfInterval } from 'date-fns'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns'
   export default eachWeekendOfInterval
@@ -2002,6 +2072,11 @@ declare module 'date-fns/eachWeekendOfYear/index' {
 declare module 'date-fns/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/eachYearOfInterval/index' {
+  import { eachYearOfInterval } from 'date-fns'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/endOfDay/index' {
@@ -2094,9 +2169,29 @@ declare module 'date-fns/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/formatISO/index' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
+}
+
+declare module 'date-fns/formatISO9075/index' {
+  import { formatISO9075 } from 'date-fns'
+  export default formatISO9075
+}
+
 declare module 'date-fns/formatRelative/index' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
+}
+
+declare module 'date-fns/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/formatRFC7231/index' {
+  import { formatRFC7231 } from 'date-fns'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fromUnixTime/index' {
@@ -2889,6 +2984,11 @@ declare module 'date-fns/eachDayOfInterval/index.js' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/eachMonthOfInterval/index.js' {
+  import { eachMonthOfInterval } from 'date-fns'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns'
   export default eachWeekendOfInterval
@@ -2907,6 +3007,11 @@ declare module 'date-fns/eachWeekendOfYear/index.js' {
 declare module 'date-fns/eachWeekOfInterval/index.js' {
   import { eachWeekOfInterval } from 'date-fns'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/eachYearOfInterval/index.js' {
+  import { eachYearOfInterval } from 'date-fns'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/endOfDay/index.js' {
@@ -2999,9 +3104,29 @@ declare module 'date-fns/formatDistanceToNow/index.js' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/formatISO/index.js' {
+  import { formatISO } from 'date-fns'
+  export default formatISO
+}
+
+declare module 'date-fns/formatISO9075/index.js' {
+  import { formatISO9075 } from 'date-fns'
+  export default formatISO9075
+}
+
 declare module 'date-fns/formatRelative/index.js' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
+}
+
+declare module 'date-fns/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/formatRFC7231/index.js' {
+  import { formatRFC7231 } from 'date-fns'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fromUnixTime/index.js' {
@@ -3718,7 +3843,10 @@ declare module 'date-fns/fp' {
   namespace differenceInCalendarWeeks {}
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     number
@@ -3773,8 +3901,17 @@ declare module 'date-fns/fp' {
   const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  const eachDayOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
   namespace eachDayOfIntervalWithOptions {}
+
+  const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachMonthOfInterval {}
 
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {}
@@ -3788,8 +3925,18 @@ declare module 'date-fns/fp' {
   const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekOfInterval {}
 
-  const eachWeekOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachWeekOfIntervalWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Interval,
+    Date[]
+  >
   namespace eachWeekOfIntervalWithOptions {}
+
+  const eachYearOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachYearOfInterval {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
   namespace endOfDay {}
@@ -3797,7 +3944,13 @@ declare module 'date-fns/fp' {
   const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {}
 
-  const endOfDecadeWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfDecadeWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace endOfDecadeWithOptions {}
 
   const endOfHour: CurriedFn1<Date | number, Date>
@@ -3824,7 +3977,14 @@ declare module 'date-fns/fp' {
   const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {}
 
-  const endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace endOfWeekWithOptions {}
 
   const endOfYear: CurriedFn1<Date | number, Date>
@@ -3840,7 +4000,12 @@ declare module 'date-fns/fp' {
   namespace formatDistanceStrict {}
 
   const formatDistanceStrictWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      addSuffix?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -3848,25 +4013,84 @@ declare module 'date-fns/fp' {
   namespace formatDistanceStrictWithOptions {}
 
   const formatDistanceWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      addSuffix?: boolean
+      includeSeconds?: boolean
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatDistanceWithOptions {}
 
+  const formatISO: CurriedFn1<Date | number, string>
+  namespace formatISO {}
+
+  const formatISO9075: CurriedFn1<Date | number, string>
+  namespace formatISO9075 {}
+
+  const formatISO9075WithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >
+  namespace formatISO9075WithOptions {}
+
+  const formatISOWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >
+  namespace formatISOWithOptions {}
+
   const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {}
 
   const formatRelativeWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatRelativeWithOptions {}
 
-  const formatWithOptions: CurriedFn3<Object, string, Date | number, string>
+  const formatRFC3339: CurriedFn1<Date | number, string>
+  namespace formatRFC3339 {}
+
+  const formatRFC3339WithOptions: CurriedFn2<
+    {
+      fractionDigits?: 0 | 1 | 2 | 3
+    },
+    Date | number,
+    string
+  >
+  namespace formatRFC3339WithOptions {}
+
+  const formatRFC7231: CurriedFn1<Date | number, string>
+  namespace formatRFC7231 {}
+
+  const formatWithOptions: CurriedFn3<
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: number
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    string,
+    Date | number,
+    string
+  >
   namespace formatWithOptions {}
 
   const fromUnixTime: CurriedFn1<number, Date>
@@ -3935,22 +4159,52 @@ declare module 'date-fns/fp' {
   const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {}
 
-  const getWeekOfMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekOfMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekOfMonthWithOptions {}
 
   const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {}
 
-  const getWeeksInMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeeksInMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeeksInMonthWithOptions {}
 
-  const getWeekWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekWithOptions {}
 
   const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {}
 
-  const getWeekYearWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | number, number>
@@ -4011,7 +4265,10 @@ declare module 'date-fns/fp' {
   namespace isSameWeek {}
 
   const isSameWeekWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     boolean
@@ -4060,13 +4317,26 @@ declare module 'date-fns/fp' {
   const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {}
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfQuarterWithOptions {}
 
   const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {}
 
-  const lastDayOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfWeekWithOptions {}
 
   const lastDayOfYear: CurriedFn1<Date | number, Date>
@@ -4087,14 +4357,26 @@ declare module 'date-fns/fp' {
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
 
-  const parseISOWithOptions: CurriedFn2<Object, string, Date>
+  const parseISOWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    string,
+    Date
+  >
   namespace parseISOWithOptions {}
 
   const parseJSON: CurriedFn1<string | number | Date, Date>
   namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
-    Object,
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     string,
     string,
@@ -4106,13 +4388,27 @@ declare module 'date-fns/fp' {
   namespace roundToNearestMinutes {}
 
   const roundToNearestMinutesWithOptions: CurriedFn2<
-    Object,
+    {
+      nearestTo?: number
+    },
     Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
 
-  const set: CurriedFn2<Object, Date | number, Date>
+  const set: CurriedFn2<
+    {
+      milliseconds?: number
+      seconds?: number
+      minutes?: number
+      hours?: number
+      date?: number
+      month?: number
+      year?: number
+    },
+    Date | number,
+    Date
+  >
   namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
@@ -4124,7 +4420,15 @@ declare module 'date-fns/fp' {
   const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {}
 
-  const setDayWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setDayWithOptions: CurriedFn3<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setDayWithOptions {}
 
   const setHours: CurriedFn2<number, Date | number, Date>
@@ -4157,13 +4461,31 @@ declare module 'date-fns/fp' {
   const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {}
 
-  const setWeekWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekWithOptions {}
 
   const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {}
 
-  const setWeekYearWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekYearWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekYearWithOptions {}
 
   const setYear: CurriedFn2<number, Date | number, Date>
@@ -4199,13 +4521,28 @@ declare module 'date-fns/fp' {
   const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {}
 
-  const startOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekWithOptions {}
 
   const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {}
 
-  const startOfWeekYearWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | number, Date>
@@ -4442,6 +4779,11 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachMonthOfInterval' {
+  import { eachMonthOfInterval } from 'date-fns/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/fp/eachWeekendOfInterval' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
   export default eachWeekendOfInterval
@@ -4465,6 +4807,11 @@ declare module 'date-fns/fp/eachWeekOfInterval' {
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachYearOfInterval' {
+  import { eachYearOfInterval } from 'date-fns/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/fp/endOfDay' {
@@ -4557,6 +4904,26 @@ declare module 'date-fns/fp/formatDistanceWithOptions' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/fp/formatISO' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/fp/formatISO9075' {
+  import { formatISO9075 } from 'date-fns/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/fp/formatISO9075WithOptions' {
+  import { formatISO9075WithOptions } from 'date-fns/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/fp/formatRelative' {
   import { formatRelative } from 'date-fns/fp'
   export default formatRelative
@@ -4565,6 +4932,21 @@ declare module 'date-fns/fp/formatRelative' {
 declare module 'date-fns/fp/formatRelativeWithOptions' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/fp/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/fp/formatRFC7231' {
+  import { formatRFC7231 } from 'date-fns/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fp/formatWithOptions' {
@@ -5367,6 +5749,11 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachMonthOfInterval/index' {
+  import { eachMonthOfInterval } from 'date-fns/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/fp/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
   export default eachWeekendOfInterval
@@ -5390,6 +5777,11 @@ declare module 'date-fns/fp/eachWeekOfInterval/index' {
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachYearOfInterval/index' {
+  import { eachYearOfInterval } from 'date-fns/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/fp/endOfDay/index' {
@@ -5482,6 +5874,26 @@ declare module 'date-fns/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/fp/formatISO/index' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/fp/formatISO9075/index' {
+  import { formatISO9075 } from 'date-fns/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/fp/formatISO9075WithOptions/index' {
+  import { formatISO9075WithOptions } from 'date-fns/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions/index' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/fp/formatRelative/index' {
   import { formatRelative } from 'date-fns/fp'
   export default formatRelative
@@ -5490,6 +5902,21 @@ declare module 'date-fns/fp/formatRelative/index' {
 declare module 'date-fns/fp/formatRelativeWithOptions/index' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/fp/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions/index' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/fp/formatRFC7231/index' {
+  import { formatRFC7231 } from 'date-fns/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fp/formatWithOptions/index' {
@@ -6292,6 +6719,11 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index.js' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachMonthOfInterval/index.js' {
+  import { eachMonthOfInterval } from 'date-fns/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/fp/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
   export default eachWeekendOfInterval
@@ -6315,6 +6747,11 @@ declare module 'date-fns/fp/eachWeekOfInterval/index.js' {
 declare module 'date-fns/fp/eachWeekOfIntervalWithOptions/index.js' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachYearOfInterval/index.js' {
+  import { eachYearOfInterval } from 'date-fns/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/fp/endOfDay/index.js' {
@@ -6407,6 +6844,26 @@ declare module 'date-fns/fp/formatDistanceWithOptions/index.js' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/fp/formatISO/index.js' {
+  import { formatISO } from 'date-fns/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/fp/formatISO9075/index.js' {
+  import { formatISO9075 } from 'date-fns/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/fp/formatISO9075WithOptions/index.js' {
+  import { formatISO9075WithOptions } from 'date-fns/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/fp/formatISOWithOptions/index.js' {
+  import { formatISOWithOptions } from 'date-fns/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/fp/formatRelative/index.js' {
   import { formatRelative } from 'date-fns/fp'
   export default formatRelative
@@ -6415,6 +6872,21 @@ declare module 'date-fns/fp/formatRelative/index.js' {
 declare module 'date-fns/fp/formatRelativeWithOptions/index.js' {
   import { formatRelativeWithOptions } from 'date-fns/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/fp/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/fp/formatRFC3339WithOptions/index.js' {
+  import { formatRFC3339WithOptions } from 'date-fns/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/fp/formatRFC7231/index.js' {
+  import { formatRFC7231 } from 'date-fns/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/fp/formatWithOptions/index.js' {
@@ -7213,6 +7685,9 @@ declare module 'date-fns/esm' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachMonthOfInterval(interval: Interval): Date[]
+  namespace eachMonthOfInterval {}
+
   function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {}
 
@@ -7230,6 +7705,9 @@ declare module 'date-fns/esm' {
     }
   ): Date[]
   namespace eachWeekOfInterval {}
+
+  function eachYearOfInterval(interval: Interval): Date[]
+  namespace eachYearOfInterval {}
 
   function endOfDay(date: Date | number): Date
   namespace endOfDay {}
@@ -7330,6 +7808,24 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatDistanceToNow {}
 
+  function formatISO(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+  namespace formatISO {}
+
+  function formatISO9075(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+  namespace formatISO9075 {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -7339,6 +7835,17 @@ declare module 'date-fns/esm' {
     }
   ): string
   namespace formatRelative {}
+
+  function formatRFC3339(
+    date: Date | number,
+    options?: {
+      fractionDigits?: 0 | 1 | 2 | 3
+    }
+  ): string
+  namespace formatRFC3339 {}
+
+  function formatRFC7231(date: Date | number): string
+  namespace formatRFC7231 {}
 
   function fromUnixTime(unixTime: number): Date
   namespace fromUnixTime {}
@@ -8036,6 +8543,11 @@ declare module 'date-fns/esm/eachDayOfInterval' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachMonthOfInterval' {
+  import { eachMonthOfInterval } from 'date-fns/esm'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/eachWeekendOfInterval' {
   import { eachWeekendOfInterval } from 'date-fns/esm'
   export default eachWeekendOfInterval
@@ -8054,6 +8566,11 @@ declare module 'date-fns/esm/eachWeekendOfYear' {
 declare module 'date-fns/esm/eachWeekOfInterval' {
   import { eachWeekOfInterval } from 'date-fns/esm'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/eachYearOfInterval' {
+  import { eachYearOfInterval } from 'date-fns/esm'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/endOfDay' {
@@ -8146,9 +8663,29 @@ declare module 'date-fns/esm/formatDistanceToNow' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/esm/formatISO' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/formatISO9075' {
+  import { formatISO9075 } from 'date-fns/esm'
+  export default formatISO9075
+}
+
 declare module 'date-fns/esm/formatRelative' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
+}
+
+declare module 'date-fns/esm/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/formatRFC7231' {
+  import { formatRFC7231 } from 'date-fns/esm'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fromUnixTime' {
@@ -8941,6 +9478,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachMonthOfInterval/index' {
+  import { eachMonthOfInterval } from 'date-fns/esm'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/esm'
   export default eachWeekendOfInterval
@@ -8959,6 +9501,11 @@ declare module 'date-fns/esm/eachWeekendOfYear/index' {
 declare module 'date-fns/esm/eachWeekOfInterval/index' {
   import { eachWeekOfInterval } from 'date-fns/esm'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/eachYearOfInterval/index' {
+  import { eachYearOfInterval } from 'date-fns/esm'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/endOfDay/index' {
@@ -9051,9 +9598,29 @@ declare module 'date-fns/esm/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/esm/formatISO/index' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/formatISO9075/index' {
+  import { formatISO9075 } from 'date-fns/esm'
+  export default formatISO9075
+}
+
 declare module 'date-fns/esm/formatRelative/index' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
+}
+
+declare module 'date-fns/esm/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/formatRFC7231/index' {
+  import { formatRFC7231 } from 'date-fns/esm'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fromUnixTime/index' {
@@ -9846,6 +10413,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index.js' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachMonthOfInterval/index.js' {
+  import { eachMonthOfInterval } from 'date-fns/esm'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns/esm'
   export default eachWeekendOfInterval
@@ -9864,6 +10436,11 @@ declare module 'date-fns/esm/eachWeekendOfYear/index.js' {
 declare module 'date-fns/esm/eachWeekOfInterval/index.js' {
   import { eachWeekOfInterval } from 'date-fns/esm'
   export default eachWeekOfInterval
+}
+
+declare module 'date-fns/esm/eachYearOfInterval/index.js' {
+  import { eachYearOfInterval } from 'date-fns/esm'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/endOfDay/index.js' {
@@ -9956,9 +10533,29 @@ declare module 'date-fns/esm/formatDistanceToNow/index.js' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/esm/formatISO/index.js' {
+  import { formatISO } from 'date-fns/esm'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/formatISO9075/index.js' {
+  import { formatISO9075 } from 'date-fns/esm'
+  export default formatISO9075
+}
+
 declare module 'date-fns/esm/formatRelative/index.js' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
+}
+
+declare module 'date-fns/esm/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/esm'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/formatRFC7231/index.js' {
+  import { formatRFC7231 } from 'date-fns/esm'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fromUnixTime/index.js' {
@@ -10675,7 +11272,10 @@ declare module 'date-fns/esm/fp' {
   namespace differenceInCalendarWeeks {}
 
   const differenceInCalendarWeeksWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     number
@@ -10730,8 +11330,17 @@ declare module 'date-fns/esm/fp' {
   const eachDayOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachDayOfInterval {}
 
-  const eachDayOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachDayOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
   namespace eachDayOfIntervalWithOptions {}
+
+  const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachMonthOfInterval {}
 
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {}
@@ -10745,8 +11354,18 @@ declare module 'date-fns/esm/fp' {
   const eachWeekOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekOfInterval {}
 
-  const eachWeekOfIntervalWithOptions: CurriedFn2<Object, Interval, Date[]>
+  const eachWeekOfIntervalWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Interval,
+    Date[]
+  >
   namespace eachWeekOfIntervalWithOptions {}
+
+  const eachYearOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachYearOfInterval {}
 
   const endOfDay: CurriedFn1<Date | number, Date>
   namespace endOfDay {}
@@ -10754,7 +11373,13 @@ declare module 'date-fns/esm/fp' {
   const endOfDecade: CurriedFn1<Date | number, Date>
   namespace endOfDecade {}
 
-  const endOfDecadeWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfDecadeWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace endOfDecadeWithOptions {}
 
   const endOfHour: CurriedFn1<Date | number, Date>
@@ -10781,7 +11406,14 @@ declare module 'date-fns/esm/fp' {
   const endOfWeek: CurriedFn1<Date | number, Date>
   namespace endOfWeek {}
 
-  const endOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const endOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace endOfWeekWithOptions {}
 
   const endOfYear: CurriedFn1<Date | number, Date>
@@ -10797,7 +11429,12 @@ declare module 'date-fns/esm/fp' {
   namespace formatDistanceStrict {}
 
   const formatDistanceStrictWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      addSuffix?: boolean
+    },
     Date | number,
     Date | number,
     string
@@ -10805,25 +11442,84 @@ declare module 'date-fns/esm/fp' {
   namespace formatDistanceStrictWithOptions {}
 
   const formatDistanceWithOptions: CurriedFn3<
-    Object,
+    {
+      locale?: Locale
+      addSuffix?: boolean
+      includeSeconds?: boolean
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatDistanceWithOptions {}
 
+  const formatISO: CurriedFn1<Date | number, string>
+  namespace formatISO {}
+
+  const formatISO9075: CurriedFn1<Date | number, string>
+  namespace formatISO9075 {}
+
+  const formatISO9075WithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >
+  namespace formatISO9075WithOptions {}
+
+  const formatISOWithOptions: CurriedFn2<
+    {
+      representation?: 'complete' | 'date' | 'time'
+      format?: 'extended' | 'basic'
+    },
+    Date | number,
+    string
+  >
+  namespace formatISOWithOptions {}
+
   const formatRelative: CurriedFn2<Date | number, Date | number, string>
   namespace formatRelative {}
 
   const formatRelativeWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     string
   >
   namespace formatRelativeWithOptions {}
 
-  const formatWithOptions: CurriedFn3<Object, string, Date | number, string>
+  const formatRFC3339: CurriedFn1<Date | number, string>
+  namespace formatRFC3339 {}
+
+  const formatRFC3339WithOptions: CurriedFn2<
+    {
+      fractionDigits?: 0 | 1 | 2 | 3
+    },
+    Date | number,
+    string
+  >
+  namespace formatRFC3339WithOptions {}
+
+  const formatRFC7231: CurriedFn1<Date | number, string>
+  namespace formatRFC7231 {}
+
+  const formatWithOptions: CurriedFn3<
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: number
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    string,
+    Date | number,
+    string
+  >
   namespace formatWithOptions {}
 
   const fromUnixTime: CurriedFn1<number, Date>
@@ -10892,22 +11588,52 @@ declare module 'date-fns/esm/fp' {
   const getWeekOfMonth: CurriedFn1<Date | number, number>
   namespace getWeekOfMonth {}
 
-  const getWeekOfMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekOfMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekOfMonthWithOptions {}
 
   const getWeeksInMonth: CurriedFn1<Date | number, number>
   namespace getWeeksInMonth {}
 
-  const getWeeksInMonthWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeeksInMonthWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeeksInMonthWithOptions {}
 
-  const getWeekWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekWithOptions {}
 
   const getWeekYear: CurriedFn1<Date | number, number>
   namespace getWeekYear {}
 
-  const getWeekYearWithOptions: CurriedFn2<Object, Date | number, number>
+  const getWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    number
+  >
   namespace getWeekYearWithOptions {}
 
   const getYear: CurriedFn1<Date | number, number>
@@ -10968,7 +11694,10 @@ declare module 'date-fns/esm/fp' {
   namespace isSameWeek {}
 
   const isSameWeekWithOptions: CurriedFn3<
-    Object,
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     Date | number,
     boolean
@@ -11017,13 +11746,26 @@ declare module 'date-fns/esm/fp' {
   const lastDayOfQuarter: CurriedFn1<Date | number, Date>
   namespace lastDayOfQuarter {}
 
-  const lastDayOfQuarterWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfQuarterWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfQuarterWithOptions {}
 
   const lastDayOfWeek: CurriedFn1<Date | number, Date>
   namespace lastDayOfWeek {}
 
-  const lastDayOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const lastDayOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace lastDayOfWeekWithOptions {}
 
   const lastDayOfYear: CurriedFn1<Date | number, Date>
@@ -11044,14 +11786,26 @@ declare module 'date-fns/esm/fp' {
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
 
-  const parseISOWithOptions: CurriedFn2<Object, string, Date>
+  const parseISOWithOptions: CurriedFn2<
+    {
+      additionalDigits?: 0 | 1 | 2
+    },
+    string,
+    Date
+  >
   namespace parseISOWithOptions {}
 
   const parseJSON: CurriedFn1<string | number | Date, Date>
   namespace parseJSON {}
 
   const parseWithOptions: CurriedFn4<
-    Object,
+    {
+      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalWeekYearTokens?: boolean
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
     Date | number,
     string,
     string,
@@ -11063,13 +11817,27 @@ declare module 'date-fns/esm/fp' {
   namespace roundToNearestMinutes {}
 
   const roundToNearestMinutesWithOptions: CurriedFn2<
-    Object,
+    {
+      nearestTo?: number
+    },
     Date | number,
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
 
-  const set: CurriedFn2<Object, Date | number, Date>
+  const set: CurriedFn2<
+    {
+      milliseconds?: number
+      seconds?: number
+      minutes?: number
+      hours?: number
+      date?: number
+      month?: number
+      year?: number
+    },
+    Date | number,
+    Date
+  >
   namespace set {}
 
   const setDate: CurriedFn2<number, Date | number, Date>
@@ -11081,7 +11849,15 @@ declare module 'date-fns/esm/fp' {
   const setDayOfYear: CurriedFn2<number, Date | number, Date>
   namespace setDayOfYear {}
 
-  const setDayWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setDayWithOptions: CurriedFn3<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setDayWithOptions {}
 
   const setHours: CurriedFn2<number, Date | number, Date>
@@ -11114,13 +11890,31 @@ declare module 'date-fns/esm/fp' {
   const setWeek: CurriedFn2<number, Date | number, Date>
   namespace setWeek {}
 
-  const setWeekWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekWithOptions {}
 
   const setWeekYear: CurriedFn2<number, Date | number, Date>
   namespace setWeekYear {}
 
-  const setWeekYearWithOptions: CurriedFn3<Object, number, Date | number, Date>
+  const setWeekYearWithOptions: CurriedFn3<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    number,
+    Date | number,
+    Date
+  >
   namespace setWeekYearWithOptions {}
 
   const setYear: CurriedFn2<number, Date | number, Date>
@@ -11156,13 +11950,28 @@ declare module 'date-fns/esm/fp' {
   const startOfWeek: CurriedFn1<Date | number, Date>
   namespace startOfWeek {}
 
-  const startOfWeekWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekWithOptions: CurriedFn2<
+    {
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekWithOptions {}
 
   const startOfWeekYear: CurriedFn1<Date | number, Date>
   namespace startOfWeekYear {}
 
-  const startOfWeekYearWithOptions: CurriedFn2<Object, Date | number, Date>
+  const startOfWeekYearWithOptions: CurriedFn2<
+    {
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      locale?: Locale
+    },
+    Date | number,
+    Date
+  >
   namespace startOfWeekYearWithOptions {}
 
   const startOfYear: CurriedFn1<Date | number, Date>
@@ -11399,6 +12208,11 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachMonthOfInterval' {
+  import { eachMonthOfInterval } from 'date-fns/esm/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/fp/eachWeekendOfInterval' {
   import { eachWeekendOfInterval } from 'date-fns/esm/fp'
   export default eachWeekendOfInterval
@@ -11422,6 +12236,11 @@ declare module 'date-fns/esm/fp/eachWeekOfInterval' {
 declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachYearOfInterval' {
+  import { eachYearOfInterval } from 'date-fns/esm/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/fp/endOfDay' {
@@ -11514,6 +12333,26 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISO' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/fp/formatISO9075' {
+  import { formatISO9075 } from 'date-fns/esm/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/esm/fp/formatISO9075WithOptions' {
+  import { formatISO9075WithOptions } from 'date-fns/esm/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/esm/fp/formatRelative' {
   import { formatRelative } from 'date-fns/esm/fp'
   export default formatRelative
@@ -11522,6 +12361,21 @@ declare module 'date-fns/esm/fp/formatRelative' {
 declare module 'date-fns/esm/fp/formatRelativeWithOptions' {
   import { formatRelativeWithOptions } from 'date-fns/esm/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC7231' {
+  import { formatRFC7231 } from 'date-fns/esm/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions' {
@@ -12324,6 +13178,11 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachMonthOfInterval/index' {
+  import { eachMonthOfInterval } from 'date-fns/esm/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/fp/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/esm/fp'
   export default eachWeekendOfInterval
@@ -12347,6 +13206,11 @@ declare module 'date-fns/esm/fp/eachWeekOfInterval/index' {
 declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions/index' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachYearOfInterval/index' {
+  import { eachYearOfInterval } from 'date-fns/esm/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/fp/endOfDay/index' {
@@ -12439,6 +13303,26 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISO/index' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/fp/formatISO9075/index' {
+  import { formatISO9075 } from 'date-fns/esm/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/esm/fp/formatISO9075WithOptions/index' {
+  import { formatISO9075WithOptions } from 'date-fns/esm/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions/index' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/esm/fp/formatRelative/index' {
   import { formatRelative } from 'date-fns/esm/fp'
   export default formatRelative
@@ -12447,6 +13331,21 @@ declare module 'date-fns/esm/fp/formatRelative/index' {
 declare module 'date-fns/esm/fp/formatRelativeWithOptions/index' {
   import { formatRelativeWithOptions } from 'date-fns/esm/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339/index' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions/index' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC7231/index' {
+  import { formatRFC7231 } from 'date-fns/esm/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions/index' {
@@ -13249,6 +14148,11 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachMonthOfInterval/index.js' {
+  import { eachMonthOfInterval } from 'date-fns/esm/fp'
+  export default eachMonthOfInterval
+}
+
 declare module 'date-fns/esm/fp/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns/esm/fp'
   export default eachWeekendOfInterval
@@ -13272,6 +14176,11 @@ declare module 'date-fns/esm/fp/eachWeekOfInterval/index.js' {
 declare module 'date-fns/esm/fp/eachWeekOfIntervalWithOptions/index.js' {
   import { eachWeekOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachWeekOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachYearOfInterval/index.js' {
+  import { eachYearOfInterval } from 'date-fns/esm/fp'
+  export default eachYearOfInterval
 }
 
 declare module 'date-fns/esm/fp/endOfDay/index.js' {
@@ -13364,6 +14273,26 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions/index.js' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISO/index.js' {
+  import { formatISO } from 'date-fns/esm/fp'
+  export default formatISO
+}
+
+declare module 'date-fns/esm/fp/formatISO9075/index.js' {
+  import { formatISO9075 } from 'date-fns/esm/fp'
+  export default formatISO9075
+}
+
+declare module 'date-fns/esm/fp/formatISO9075WithOptions/index.js' {
+  import { formatISO9075WithOptions } from 'date-fns/esm/fp'
+  export default formatISO9075WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatISOWithOptions/index.js' {
+  import { formatISOWithOptions } from 'date-fns/esm/fp'
+  export default formatISOWithOptions
+}
+
 declare module 'date-fns/esm/fp/formatRelative/index.js' {
   import { formatRelative } from 'date-fns/esm/fp'
   export default formatRelative
@@ -13372,6 +14301,21 @@ declare module 'date-fns/esm/fp/formatRelative/index.js' {
 declare module 'date-fns/esm/fp/formatRelativeWithOptions/index.js' {
   import { formatRelativeWithOptions } from 'date-fns/esm/fp'
   export default formatRelativeWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339/index.js' {
+  import { formatRFC3339 } from 'date-fns/esm/fp'
+  export default formatRFC3339
+}
+
+declare module 'date-fns/esm/fp/formatRFC3339WithOptions/index.js' {
+  import { formatRFC3339WithOptions } from 'date-fns/esm/fp'
+  export default formatRFC3339WithOptions
+}
+
+declare module 'date-fns/esm/fp/formatRFC7231/index.js' {
+  import { formatRFC7231 } from 'date-fns/esm/fp'
+  export default formatRFC7231
 }
 
 declare module 'date-fns/esm/fp/formatWithOptions/index.js' {
@@ -16527,6 +17471,8 @@ interface dateFns {
     }
   ): Date[]
 
+  eachMonthOfInterval(interval: Interval): Date[]
+
   eachWeekendOfInterval(interval: Interval): Date[]
 
   eachWeekendOfMonth(date: Date | number): Date[]
@@ -16540,6 +17486,8 @@ interface dateFns {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): Date[]
+
+  eachYearOfInterval(interval: Interval): Date[]
 
   endOfDay(date: Date | number): Date
 
@@ -16622,6 +17570,22 @@ interface dateFns {
     }
   ): string
 
+  formatISO(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+
+  formatISO9075(
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic'
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ): string
+
   formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -16630,6 +17594,15 @@ interface dateFns {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ): string
+
+  formatRFC3339(
+    date: Date | number,
+    options?: {
+      fractionDigits?: 0 | 1 | 2 | 3
+    }
+  ): string
+
+  formatRFC7231(date: Date | number): string
 
   fromUnixTime(unixTime: number): Date
 

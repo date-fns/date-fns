@@ -43,7 +43,7 @@ function getType(types, { props = [], forceArray = false } = {}) {
     }
 
     if (type === 'function') {
-      return 'Function'
+      return '(...args: Array<any>) => any'
     }
 
     if (type.startsWith('Array.')) {
@@ -73,13 +73,15 @@ function getType(types, { props = [], forceArray = false } = {}) {
 }
 
 function getFPFnType(params, returns) {
-  const fpParams = params.map(param => param.type.names)
+  const fpParamTypes = params.map(param =>
+    getType(param.type.names, { props: param.props })
+  )
 
-  const arity = fpParams.length
+  const arity = fpParamTypes.length
 
-  fpParams.push(returns)
+  fpParamTypes.push(getType(returns))
 
-  return `CurriedFn${arity}<${fpParams.map(getType).join(', ')}>`
+  return `CurriedFn${arity}<${fpParamTypes.join(', ')}>`
 }
 
 module.exports = {

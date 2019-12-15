@@ -6,7 +6,7 @@ import toDate from '../toDate/index.js'
  * @summary Is the given date within the interval?
  *
  * @description
- * Is the given date within the interval?
+ * Is the given date within the interval? (Including start and end.)
  *
  * ### v2.0.0 breaking changes:
  *
@@ -64,6 +64,14 @@ import toDate from '../toDate/index.js'
  *   end: new Date(2014, 0, 7)
  * })
  * //=> false
+ *
+ * @example
+ * // For date equal to interval start:
+ * isWithinInterval(date, { start, end: date }) // => true
+ *
+ * @example
+ * // For date equal to interval end:
+ * isWithinInterval(date, { start: date, end }) // => true
  */
 export default function isWithinInterval(dirtyDate, dirtyInterval) {
   if (arguments.length < 2) {

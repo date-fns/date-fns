@@ -106,6 +106,8 @@ var MINUTES_IN_YEAR = 525600
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  * @throws {RangeError} `options.locale` must contain `formatDistance` property

@@ -66,6 +66,7 @@ export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
 export {
   default as eachDayOfIntervalWithOptions
 } from './eachDayOfIntervalWithOptions/index.js'
+export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
 export {
   default as eachWeekOfIntervalWithOptions
@@ -75,6 +76,7 @@ export {
 } from './eachWeekendOfInterval/index.js'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
+export { default as eachYearOfInterval } from './eachYearOfInterval/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
 export {
@@ -103,6 +105,19 @@ export {
 export {
   default as formatDistanceWithOptions
 } from './formatDistanceWithOptions/index.js'
+export { default as formatISO } from './formatISO/index.js'
+export { default as formatISO9075 } from './formatISO9075/index.js'
+export {
+  default as formatISO9075WithOptions
+} from './formatISO9075WithOptions/index.js'
+export {
+  default as formatISOWithOptions
+} from './formatISOWithOptions/index.js'
+export { default as formatRFC3339 } from './formatRFC3339/index.js'
+export {
+  default as formatRFC3339WithOptions
+} from './formatRFC3339WithOptions/index.js'
+export { default as formatRFC7231 } from './formatRFC7231/index.js'
 export { default as formatRelative } from './formatRelative/index.js'
 export {
   default as formatRelativeWithOptions

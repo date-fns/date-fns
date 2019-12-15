@@ -8,7 +8,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * @summary Get the number of minutes between the given dates.
  *
  * @description
- * Get the number of minutes between the given dates.
+ * Get the signed number of full (rounded towards 0) minutes between the given dates.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -26,6 +26,14 @@ var MILLISECONDS_IN_MINUTE = 60000
  *   new Date(2014, 6, 2, 12, 7, 59)
  * )
  * //=> 12
+ *
+ * @example
+ * // How many minutes are from 10:01:59 to 10:00:00
+ * var result = differenceInMinutes(
+ *   new Date(2000, 0, 1, 10, 0, 0),
+ *   new Date(2000, 0, 1, 10, 1, 59)
+ * )
+ * //=> -1
  */
 export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
   if (arguments.length < 2) {

@@ -7,27 +7,27 @@ export type Interval = {
 }
 
 export type Locale = {
-  formatDistance: Function,
-  formatRelative: Function,
+  formatDistance: (...args: Array<any>) => any,
+  formatRelative: (...args: Array<any>) => any,
   localize: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
+    ordinalNumber: (...args: Array<any>) => any,
+    era: (...args: Array<any>) => any,
+    quarter: (...args: Array<any>) => any,
+    month: (...args: Array<any>) => any,
+    day: (...args: Array<any>) => any,
+    dayPeriod: (...args: Array<any>) => any
   },
   formatLong: Object,
-  date: Function,
-  time: Function,
-  dateTime: Function,
+  date: (...args: Array<any>) => any,
+  time: (...args: Array<any>) => any,
+  dateTime: (...args: Array<any>) => any,
   match: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
+    ordinalNumber: (...args: Array<any>) => any,
+    era: (...args: Array<any>) => any,
+    quarter: (...args: Array<any>) => any,
+    month: (...args: Array<any>) => any,
+    day: (...args: Array<any>) => any,
+    dayPeriod: (...args: Array<any>) => any
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
@@ -65,4 +65,16 @@ type CurriedFn4<A, B, C, D, R> = <A>(
           c: C
         ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
-declare module.exports: CurriedFn4<Object, Date | number, string, string, Date>
+declare module.exports: CurriedFn4<
+  {
+    useAdditionalDayOfYearTokens?: boolean,
+    useAdditionalWeekYearTokens?: boolean,
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+    locale?: Locale
+  },
+  Date | number,
+  string,
+  string,
+  Date
+>

@@ -84,6 +84,8 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
