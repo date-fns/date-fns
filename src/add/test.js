@@ -6,8 +6,38 @@ import add from '.'
 
 describe('add', function() {
   it('adds the values from the given object', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
+    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50, 10000), {
+      milliseconds: 30000,
+      seconds: 30,
+      minutes: 9,
+      hours: 5,
+      days: 7,
+      weeks: 1,
+      months: 9,
+      quarters: 5,
+      years: 2
+    })
+    assert.deepEqual(result, new Date(2018, 8 /* Sep */, 15, 15, 30))
+  })
+
+  it('returns same date object when passed empty amount values', function() {
+    var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {})
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+  })
+
+  it('returns same date object when passed all zero values', function() {
+    var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
+      milliseconds: 0,
+      seconds: 0,
+      minutes: 0,
+      hours: 0,
+      days: 0,
+      weeks: 0,
+      months: 0,
+      quarters: 0,
+      years: 0
+    })
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('accepts a timestamp', function() {
@@ -54,7 +84,7 @@ describe('add', function() {
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1), { hours: NaN })
+    var result = add(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result))
   })
 
