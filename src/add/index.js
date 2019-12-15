@@ -1,46 +1,51 @@
-import addSeconds from '../addSeconds/index.js'
-import addMinutes from '../addMinutes/index.js'
-import addHours from '../addHours/index.js'
-import addDays from '../addDays/index.js'
-import addWeeks from '../addWeeks/index.js'
-import addMonths from '../addMonths/index.js'
-import addQuarters from '../addQuarters/index.js'
-import addYears from '../addYears/index.js'
 import toDate from '../toDate/index.js'
+import getDaysInMonth from '../getDaysInMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-
-const DEFAULT = {
-  hours: 0,
-  years: 0,
-  days: 0,
-  quarters: 0,
-  weeks: 0,
-  months: 0,
-  minutes: 0,
-  seconds: 0
-}
 
 /**
  * @name add
  * @category Combined time Helpers
- * @summary Add the specified seconds, minutes, hours, days, months, quarters and years to the given date.
+ * @summary Add the specified milliseconds, seconds, minutes, hours, days, months, quarters and years to the given date.
  *
  * @description
- * Add the specified seconds, minutes, hours, days, months, quarters and years to the given date.
- *
- * ### v2.0.0 breaking changes:
+ * Add the specified milliseconds ,seconds, minutes, hours, days, months, quarters and years to the given date.
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Object} amount - the object with seconds, minutes, hours, days, months, quarters and years to be added
+ * @param {Object} amount - the object with milliseconds, seconds, minutes, hours, days, months, quarters and years to be added
+ *
+ * | Key                 |            Significance              |
+ * |---------------------|------------------------------------- |
+ * | milliseconds        |   Amount of milliseconds to be added |
+ * | seconds             |   Amount of seconds to be added      |
+ * | minutes             |   Amount of minutes to be added      |
+ * | hours               |   Amount of hours to be added        |
+ * | days                |   Amount of days to be added         |
+ * | weeks               |   Amount of weeks to be added        |
+ * | months              |   Amount of months to be added       |
+ * | quarters            |   Amount of quarters to be added     |
+ * | years               |   Amount of years to be added        |
+ *
+ * All values default to 0
+ *
  * @returns {Date} the new date with the seconds added
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Add 2 hours, 15 minutes and 30 seconds to 10 July 2014 12:45:00:
- * var result = add(new Date(2014, 6, 10, 12, 45, 0), {minutes: 15, hours: 2, seconds: 30})
- * //=> Thu Jul 10 2014 15:00:30
+ * // Add followind amount to 'Mon Sep 01 2014 10:20:00 GMT+0530 (India Standard Time)':
+ * var result = add(new Date(2014, 8 , 1, 10, 19, 50, 10000), {
+ *     milliseconds: 30000,
+ *     seconds: 30,
+ *     minutes: 9,
+ *     hours: 5,
+ *     days: 7,
+ *     weeks: 1,
+ *     months: 9,
+ *     quarters: 5,
+ *     years: 2
+ *   })
+ * => Sat Sep 15 2018 15:30:00 GMT+0530 (India Standard Time)
  */
 export default function add(dirtyDate, givenAmount) {
   if (arguments.length < 2) {
@@ -48,44 +53,36 @@ export default function add(dirtyDate, givenAmount) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
-  if (typeof givenAmount !== 'object' || !Object.keys(givenAmount).length) {
-    throw new TypeError(
-      '2nd argument expected Object, found ' + typeof givenAmount
-    )
+
+  if (!givenAmount) {
+    return new Date(NaN)
   }
-  const givenDate = toDate(dirtyDate)
-  const dirtyAmount = Object.assign({}, DEFAULT)
-  Object.assign(dirtyAmount, givenAmount)
-  const {
-    hours,
-    years,
-    days,
-    quarters,
-    weeks,
-    months,
-    minutes,
-    seconds
-  } = dirtyAmount
-  return addYears(
-    addQuarters(
-      addMonths(
-        addWeeks(
-          addDays(
-            addHours(
-              addMinutes(
-                addSeconds(givenDate, toInteger(seconds)),
-                toInteger(minutes)
-              ),
-              toInteger(hours)
-            ),
-            toInteger(days)
-          ),
-          toInteger(weeks)
-        ),
-        toInteger(months)
-      ),
-      toInteger(quarters)
-    ),
-    toInteger(years)
-  )
+  const finalDate = toDate(dirtyDate)
+  if (Object.keys(givenAmount).length === 0) {
+    return finalDate
+  }
+  let milliseconds = toInteger(givenAmount.milliseconds) || 0
+  let seconds = toInteger(givenAmount.seconds) || 0
+  let minutes = toInteger(givenAmount.minutes) || 0
+  let hours = toInteger(givenAmount.hours) || 0
+  let days = toInteger(givenAmount.days) || 0
+  let months = toInteger(givenAmount.months) || 0
+  const quarters = toInteger(givenAmount.quarters) || 0
+  const weeks = toInteger(givenAmount.weeks) || 0
+  const years = toInteger(givenAmount.years) || 0
+
+  months += years * 12 + quarters * 3
+  let desiredMonth = finalDate.getMonth() + months
+  let dateWithDesiredMonth = new Date(0)
+  dateWithDesiredMonth.setFullYear(finalDate.getFullYear(), desiredMonth, 1)
+  dateWithDesiredMonth.setHours(0, 0, 0, 0)
+  let daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  finalDate.setMonth(desiredMonth, Math.min(daysInMonth, finalDate.getDate()))
+  days += weeks * 7
+  hours += days * 24
+  minutes += hours * 60
+  seconds += minutes * 60
+  milliseconds += seconds * 1000
+  finalDate.setTime(finalDate.getTime() + milliseconds)
+  return finalDate
 }
