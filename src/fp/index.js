@@ -14,6 +14,9 @@ export { default as addYears } from './addYears/index.js'
 export {
   default as areIntervalsOverlapping
 } from './areIntervalsOverlapping/index.js'
+export {
+  default as areIntervalsOverlappingWithOptions
+} from './areIntervalsOverlappingWithOptions/index.js'
 export { default as closestIndexTo } from './closestIndexTo/index.js'
 export { default as closestTo } from './closestTo/index.js'
 export { default as compareAsc } from './compareAsc/index.js'

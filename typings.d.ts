@@ -108,7 +108,10 @@ declare module 'date-fns' {
 
   function areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval
+    intervalRight: Interval,
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
   namespace areIntervalsOverlapping {}
 
@@ -3760,6 +3763,16 @@ declare module 'date-fns/fp' {
   const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
   namespace areIntervalsOverlapping {}
 
+  const areIntervalsOverlappingWithOptions: CurriedFn3<
+    {
+      inclusive?: boolean
+    },
+    Interval,
+    Interval,
+    boolean
+  >
+  namespace areIntervalsOverlappingWithOptions {}
+
   const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {}
 
@@ -4626,6 +4639,11 @@ declare module 'date-fns/fp/addYears' {
 declare module 'date-fns/fp/areIntervalsOverlapping' {
   import { areIntervalsOverlapping } from 'date-fns/fp'
   export default areIntervalsOverlapping
+}
+
+declare module 'date-fns/fp/areIntervalsOverlappingWithOptions' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/fp'
+  export default areIntervalsOverlappingWithOptions
 }
 
 declare module 'date-fns/fp/closestIndexTo' {
@@ -5593,6 +5611,11 @@ declare module 'date-fns/fp/areIntervalsOverlapping/index' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/fp/areIntervalsOverlappingWithOptions/index' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/fp'
+  export default areIntervalsOverlappingWithOptions
+}
+
 declare module 'date-fns/fp/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/fp'
   export default closestIndexTo
@@ -6558,6 +6581,11 @@ declare module 'date-fns/fp/areIntervalsOverlapping/index.js' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/fp/areIntervalsOverlappingWithOptions/index.js' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/fp'
+  export default areIntervalsOverlappingWithOptions
+}
+
 declare module 'date-fns/fp/closestIndexTo/index.js' {
   import { closestIndexTo } from 'date-fns/fp'
   export default closestIndexTo
@@ -7501,7 +7529,10 @@ declare module 'date-fns/esm' {
 
   function areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval
+    intervalRight: Interval,
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
   namespace areIntervalsOverlapping {}
 
@@ -11153,6 +11184,16 @@ declare module 'date-fns/esm/fp' {
   const areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>
   namespace areIntervalsOverlapping {}
 
+  const areIntervalsOverlappingWithOptions: CurriedFn3<
+    {
+      inclusive?: boolean
+    },
+    Interval,
+    Interval,
+    boolean
+  >
+  namespace areIntervalsOverlappingWithOptions {}
+
   const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {}
 
@@ -12019,6 +12060,11 @@ declare module 'date-fns/esm/fp/addYears' {
 declare module 'date-fns/esm/fp/areIntervalsOverlapping' {
   import { areIntervalsOverlapping } from 'date-fns/esm/fp'
   export default areIntervalsOverlapping
+}
+
+declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/esm/fp'
+  export default areIntervalsOverlappingWithOptions
 }
 
 declare module 'date-fns/esm/fp/closestIndexTo' {
@@ -12986,6 +13032,11 @@ declare module 'date-fns/esm/fp/areIntervalsOverlapping/index' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions/index' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/esm/fp'
+  export default areIntervalsOverlappingWithOptions
+}
+
 declare module 'date-fns/esm/fp/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/esm/fp'
   export default closestIndexTo
@@ -13949,6 +14000,11 @@ declare module 'date-fns/esm/fp/addYears/index.js' {
 declare module 'date-fns/esm/fp/areIntervalsOverlapping/index.js' {
   import { areIntervalsOverlapping } from 'date-fns/esm/fp'
   export default areIntervalsOverlapping
+}
+
+declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions/index.js' {
+  import { areIntervalsOverlappingWithOptions } from 'date-fns/esm/fp'
+  export default areIntervalsOverlappingWithOptions
 }
 
 declare module 'date-fns/esm/fp/closestIndexTo/index.js' {
@@ -17303,7 +17359,10 @@ interface dateFns {
 
   areIntervalsOverlapping(
     intervalLeft: Interval,
-    intervalRight: Interval
+    intervalRight: Interval,
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
 
   closestIndexTo(

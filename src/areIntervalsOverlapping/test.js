@@ -180,6 +180,32 @@ describe('areIntervalsOverlapping', function() {
     assert.throws(block, RangeError)
   })
 
+  context('when the inclusive option is true', function() {
+    it("returns true for an interval with the same startDateTime as the initial time intervals's endDateTime", function() {
+      var oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0)
+      var oneDayOverlapIntervalEnd = new Date(2016, 11, 14, 13, 0, 0)
+
+      var isOverlapping = areIntervalsOverlapping(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
+        { inclusive: true }
+      )
+      assert(isOverlapping)
+    })
+
+    it("returns true for an interval with the same endDateTime as the initial time interval's startDateTime", function() {
+      var oneDayOverlapIntervalStart = new Date(2016, 10, 3, 15, 0, 0)
+      var oneDayOverlapIntervalEnd = new Date(2016, 10, 10, 13, 0, 0)
+
+      var isOverlapping = areIntervalsOverlapping(
+        { start: initialIntervalStart, end: initialIntervalEnd },
+        { start: oneDayOverlapIntervalStart, end: oneDayOverlapIntervalEnd },
+        { inclusive: true }
+      )
+      assert(isOverlapping)
+    })
+  })
+
   context('one of the dates is `Invalid Date`', function() {
     it('throws an exception if the start date of the initial time interval is `Invalid Date`', function() {
       var block = areIntervalsOverlapping.bind(
