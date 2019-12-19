@@ -44,7 +44,7 @@ import toDate from '../toDate/index.js'
  *
  * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/types/Interval}
  * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/types/Interval}
- * @param {Options} [options] - the object with options
+ * @param {Object} [options] - the object with options
  * @param {Boolean} [options.inclusive=false] - whether the comparison is inclusive or not
  * @returns {Boolean} whether the time intervals are overlapping
  * @throws {TypeError} 2 arguments required

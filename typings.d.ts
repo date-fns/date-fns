@@ -109,7 +109,9 @@ declare module 'date-fns' {
   function areIntervalsOverlapping(
     intervalLeft: Interval,
     intervalRight: Interval,
-    options?: Options
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
   namespace areIntervalsOverlapping {}
 
@@ -3762,7 +3764,9 @@ declare module 'date-fns/fp' {
   namespace areIntervalsOverlapping {}
 
   const areIntervalsOverlappingWithOptions: CurriedFn3<
-    Options,
+    {
+      inclusive?: boolean
+    },
     Interval,
     Interval,
     boolean
@@ -7526,7 +7530,9 @@ declare module 'date-fns/esm' {
   function areIntervalsOverlapping(
     intervalLeft: Interval,
     intervalRight: Interval,
-    options?: Options
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
   namespace areIntervalsOverlapping {}
 
@@ -11179,7 +11185,9 @@ declare module 'date-fns/esm/fp' {
   namespace areIntervalsOverlapping {}
 
   const areIntervalsOverlappingWithOptions: CurriedFn3<
-    Options,
+    {
+      inclusive?: boolean
+    },
     Interval,
     Interval,
     boolean
@@ -17352,7 +17360,9 @@ interface dateFns {
   areIntervalsOverlapping(
     intervalLeft: Interval,
     intervalRight: Interval,
-    options?: Options
+    options?: {
+      inclusive?: boolean
+    }
   ): boolean
 
   closestIndexTo(

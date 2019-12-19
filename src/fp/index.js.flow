@@ -79,7 +79,9 @@ declare module.exports: {
   addYears: CurriedFn2<number, Date | number, Date>,
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,
   areIntervalsOverlappingWithOptions: CurriedFn3<
-    Options,
+    {
+      inclusive?: boolean
+    },
     Interval,
     Interval,
     boolean
