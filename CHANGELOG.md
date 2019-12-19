@@ -10,12 +10,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay).
+Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty).
 
 ### Added
 
 - [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
 - [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
+- [Added `isExists` function that checks if the given date is exists]().
 
 ## [2.8.1] - 2019-11-22
 
