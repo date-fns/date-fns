@@ -1,8 +1,8 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../isLegitimate/index.js'
+import fn from '../../isExists/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isLegitimate = convertToFP(fn, 3)
+var isExists = convertToFP(fn, 3)
 
-export default isLegitimate
+export default isExists

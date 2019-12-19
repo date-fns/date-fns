@@ -398,6 +398,8 @@ declare module.exports: {
 
   isEqual: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 
+  isExists: (year: number, month: number, day: number) => boolean,
+
   isFirstDayOfMonth: (date: Date | number) => boolean,
 
   isFriday: (date: Date | number) => boolean,
@@ -407,8 +409,6 @@ declare module.exports: {
   isLastDayOfMonth: (date: Date | number) => boolean,
 
   isLeapYear: (date: Date | number) => boolean,
-
-  isLegitimate: (year: any, month: any, day: any) => boolean,
 
   isMonday: (date: Date | number) => boolean,
 

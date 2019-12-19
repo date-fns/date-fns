@@ -531,6 +531,9 @@ declare module 'date-fns' {
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {}
 
+  function isExists(year: number, month: number, day: number): boolean
+  namespace isExists {}
+
   function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {}
 
@@ -545,9 +548,6 @@ declare module 'date-fns' {
 
   function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {}
-
-  function isLegitimate(year: any, month: any, day: any): boolean
-  namespace isLegitimate {}
 
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
@@ -1399,6 +1399,11 @@ declare module 'date-fns/isEqual' {
   export default isEqual
 }
 
+declare module 'date-fns/isExists' {
+  import { isExists } from 'date-fns'
+  export default isExists
+}
+
 declare module 'date-fns/isFirstDayOfMonth' {
   import { isFirstDayOfMonth } from 'date-fns'
   export default isFirstDayOfMonth
@@ -1422,11 +1427,6 @@ declare module 'date-fns/isLastDayOfMonth' {
 declare module 'date-fns/isLeapYear' {
   import { isLeapYear } from 'date-fns'
   export default isLeapYear
-}
-
-declare module 'date-fns/isLegitimate' {
-  import { isLegitimate } from 'date-fns'
-  export default isLegitimate
 }
 
 declare module 'date-fns/isMonday' {
@@ -2334,6 +2334,11 @@ declare module 'date-fns/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/isExists/index' {
+  import { isExists } from 'date-fns'
+  export default isExists
+}
+
 declare module 'date-fns/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns'
   export default isFirstDayOfMonth
@@ -2357,11 +2362,6 @@ declare module 'date-fns/isLastDayOfMonth/index' {
 declare module 'date-fns/isLeapYear/index' {
   import { isLeapYear } from 'date-fns'
   export default isLeapYear
-}
-
-declare module 'date-fns/isLegitimate/index' {
-  import { isLegitimate } from 'date-fns'
-  export default isLegitimate
 }
 
 declare module 'date-fns/isMonday/index' {
@@ -3269,6 +3269,11 @@ declare module 'date-fns/isEqual/index.js' {
   export default isEqual
 }
 
+declare module 'date-fns/isExists/index.js' {
+  import { isExists } from 'date-fns'
+  export default isExists
+}
+
 declare module 'date-fns/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns'
   export default isFirstDayOfMonth
@@ -3292,11 +3297,6 @@ declare module 'date-fns/isLastDayOfMonth/index.js' {
 declare module 'date-fns/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns'
   export default isLeapYear
-}
-
-declare module 'date-fns/isLegitimate/index.js' {
-  import { isLegitimate } from 'date-fns'
-  export default isLegitimate
 }
 
 declare module 'date-fns/isMonday/index.js' {
@@ -4219,6 +4219,9 @@ declare module 'date-fns/fp' {
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {}
 
+  const isExists: CurriedFn3<number, number, number, boolean>
+  namespace isExists {}
+
   const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {}
 
@@ -4230,9 +4233,6 @@ declare module 'date-fns/fp' {
 
   const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {}
-
-  const isLegitimate: CurriedFn3<any, any, any, boolean>
-  namespace isLegitimate {}
 
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
@@ -5114,6 +5114,11 @@ declare module 'date-fns/fp/isEqual' {
   export default isEqual
 }
 
+declare module 'date-fns/fp/isExists' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
+}
+
 declare module 'date-fns/fp/isFirstDayOfMonth' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
   export default isFirstDayOfMonth
@@ -5132,11 +5137,6 @@ declare module 'date-fns/fp/isLastDayOfMonth' {
 declare module 'date-fns/fp/isLeapYear' {
   import { isLeapYear } from 'date-fns/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/fp/isLegitimate' {
-  import { isLegitimate } from 'date-fns/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/fp/isMonday' {
@@ -6084,6 +6084,11 @@ declare module 'date-fns/fp/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/fp/isExists/index' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
+}
+
 declare module 'date-fns/fp/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
   export default isFirstDayOfMonth
@@ -6102,11 +6107,6 @@ declare module 'date-fns/fp/isLastDayOfMonth/index' {
 declare module 'date-fns/fp/isLeapYear/index' {
   import { isLeapYear } from 'date-fns/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/fp/isLegitimate/index' {
-  import { isLegitimate } from 'date-fns/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/fp/isMonday/index' {
@@ -7054,6 +7054,11 @@ declare module 'date-fns/fp/isEqual/index.js' {
   export default isEqual
 }
 
+declare module 'date-fns/fp/isExists/index.js' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
+}
+
 declare module 'date-fns/fp/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
   export default isFirstDayOfMonth
@@ -7072,11 +7077,6 @@ declare module 'date-fns/fp/isLastDayOfMonth/index.js' {
 declare module 'date-fns/fp/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/fp/isLegitimate/index.js' {
-  import { isLegitimate } from 'date-fns/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/fp/isMonday/index.js' {
@@ -7960,6 +7960,9 @@ declare module 'date-fns/esm' {
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {}
 
+  function isExists(year: number, month: number, day: number): boolean
+  namespace isExists {}
+
   function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {}
 
@@ -7974,9 +7977,6 @@ declare module 'date-fns/esm' {
 
   function isLeapYear(date: Date | number): boolean
   namespace isLeapYear {}
-
-  function isLegitimate(year: any, month: any, day: any): boolean
-  namespace isLegitimate {}
 
   function isMonday(date: Date | number): boolean
   namespace isMonday {}
@@ -8828,6 +8828,11 @@ declare module 'date-fns/esm/isEqual' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/isExists' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
+}
+
 declare module 'date-fns/esm/isFirstDayOfMonth' {
   import { isFirstDayOfMonth } from 'date-fns/esm'
   export default isFirstDayOfMonth
@@ -8851,11 +8856,6 @@ declare module 'date-fns/esm/isLastDayOfMonth' {
 declare module 'date-fns/esm/isLeapYear' {
   import { isLeapYear } from 'date-fns/esm'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/isLegitimate' {
-  import { isLegitimate } from 'date-fns/esm'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/isMonday' {
@@ -9763,6 +9763,11 @@ declare module 'date-fns/esm/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/isExists/index' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
+}
+
 declare module 'date-fns/esm/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/esm'
   export default isFirstDayOfMonth
@@ -9786,11 +9791,6 @@ declare module 'date-fns/esm/isLastDayOfMonth/index' {
 declare module 'date-fns/esm/isLeapYear/index' {
   import { isLeapYear } from 'date-fns/esm'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/isLegitimate/index' {
-  import { isLegitimate } from 'date-fns/esm'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/isMonday/index' {
@@ -10698,6 +10698,11 @@ declare module 'date-fns/esm/isEqual/index.js' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/isExists/index.js' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
+}
+
 declare module 'date-fns/esm/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns/esm'
   export default isFirstDayOfMonth
@@ -10721,11 +10726,6 @@ declare module 'date-fns/esm/isLastDayOfMonth/index.js' {
 declare module 'date-fns/esm/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/esm'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/isLegitimate/index.js' {
-  import { isLegitimate } from 'date-fns/esm'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/isMonday/index.js' {
@@ -11648,6 +11648,9 @@ declare module 'date-fns/esm/fp' {
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {}
 
+  const isExists: CurriedFn3<number, number, number, boolean>
+  namespace isExists {}
+
   const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {}
 
@@ -11659,9 +11662,6 @@ declare module 'date-fns/esm/fp' {
 
   const isLeapYear: CurriedFn1<Date | number, boolean>
   namespace isLeapYear {}
-
-  const isLegitimate: CurriedFn3<any, any, any, boolean>
-  namespace isLegitimate {}
 
   const isMonday: CurriedFn1<Date | number, boolean>
   namespace isMonday {}
@@ -12543,6 +12543,11 @@ declare module 'date-fns/esm/fp/isEqual' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/fp/isExists' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
+}
+
 declare module 'date-fns/esm/fp/isFirstDayOfMonth' {
   import { isFirstDayOfMonth } from 'date-fns/esm/fp'
   export default isFirstDayOfMonth
@@ -12561,11 +12566,6 @@ declare module 'date-fns/esm/fp/isLastDayOfMonth' {
 declare module 'date-fns/esm/fp/isLeapYear' {
   import { isLeapYear } from 'date-fns/esm/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/fp/isLegitimate' {
-  import { isLegitimate } from 'date-fns/esm/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/fp/isMonday' {
@@ -13513,6 +13513,11 @@ declare module 'date-fns/esm/fp/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/fp/isExists/index' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
+}
+
 declare module 'date-fns/esm/fp/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/esm/fp'
   export default isFirstDayOfMonth
@@ -13531,11 +13536,6 @@ declare module 'date-fns/esm/fp/isLastDayOfMonth/index' {
 declare module 'date-fns/esm/fp/isLeapYear/index' {
   import { isLeapYear } from 'date-fns/esm/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/fp/isLegitimate/index' {
-  import { isLegitimate } from 'date-fns/esm/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/fp/isMonday/index' {
@@ -14483,6 +14483,11 @@ declare module 'date-fns/esm/fp/isEqual/index.js' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/fp/isExists/index.js' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
+}
+
 declare module 'date-fns/esm/fp/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns/esm/fp'
   export default isFirstDayOfMonth
@@ -14501,11 +14506,6 @@ declare module 'date-fns/esm/fp/isLastDayOfMonth/index.js' {
 declare module 'date-fns/esm/fp/isLeapYear/index.js' {
   import { isLeapYear } from 'date-fns/esm/fp'
   export default isLeapYear
-}
-
-declare module 'date-fns/esm/fp/isLegitimate/index.js' {
-  import { isLegitimate } from 'date-fns/esm/fp'
-  export default isLegitimate
 }
 
 declare module 'date-fns/esm/fp/isMonday/index.js' {
@@ -17689,6 +17689,8 @@ interface dateFns {
 
   isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
 
+  isExists(year: number, month: number, day: number): boolean
+
   isFirstDayOfMonth(date: Date | number): boolean
 
   isFriday(date: Date | number): boolean
@@ -17698,8 +17700,6 @@ interface dateFns {
   isLastDayOfMonth(date: Date | number): boolean
 
   isLeapYear(date: Date | number): boolean
-
-  isLegitimate(year: any, month: any, day: any): boolean
 
   isMonday(date: Date | number): boolean
 
