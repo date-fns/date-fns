@@ -92,7 +92,7 @@ import toDate from '../toDate/index.js'
 export default function areIntervalsOverlapping(
   dirtyIntervalLeft,
   dirtyIntervalRight,
-  options
+  options = {}
 ) {
   if (arguments.length < 2) {
     throw new TypeError(
@@ -100,14 +100,12 @@ export default function areIntervalsOverlapping(
     )
   }
 
-  var options = dirtyOptions || {}
-
-  var intervalLeft = dirtyIntervalLeft || {}
-  var intervalRight = dirtyIntervalRight || {}
-  var leftStartTime = toDate(intervalLeft.start).getTime()
-  var leftEndTime = toDate(intervalLeft.end).getTime()
-  var rightStartTime = toDate(intervalRight.start).getTime()
-  var rightEndTime = toDate(intervalRight.end).getTime()
+  const intervalLeft = dirtyIntervalLeft || {}
+  const intervalRight = dirtyIntervalRight || {}
+  const leftStartTime = toDate(intervalLeft.start).getTime()
+  const leftEndTime = toDate(intervalLeft.end).getTime()
+  const rightStartTime = toDate(intervalRight.start).getTime()
+  const rightEndTime = toDate(intervalRight.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
