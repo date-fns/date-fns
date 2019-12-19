@@ -10,11 +10,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@mborgbrant](https://github.com/mborgbrant).
+Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay).
 
 ### Added
 
 - [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
+- [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
 
 ## [2.8.1] - 2019-11-22
 
