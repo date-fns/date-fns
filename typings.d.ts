@@ -534,6 +534,9 @@ declare module 'date-fns' {
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {}
 
+  function isExists(year: number, month: number, day: number): boolean
+  namespace isExists {}
+
   function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {}
 
@@ -1397,6 +1400,11 @@ declare module 'date-fns/isDate' {
 declare module 'date-fns/isEqual' {
   import { isEqual } from 'date-fns'
   export default isEqual
+}
+
+declare module 'date-fns/isExists' {
+  import { isExists } from 'date-fns'
+  export default isExists
 }
 
 declare module 'date-fns/isFirstDayOfMonth' {
@@ -2329,6 +2337,11 @@ declare module 'date-fns/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/isExists/index' {
+  import { isExists } from 'date-fns'
+  export default isExists
+}
+
 declare module 'date-fns/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns'
   export default isFirstDayOfMonth
@@ -3257,6 +3270,11 @@ declare module 'date-fns/isDate/index.js' {
 declare module 'date-fns/isEqual/index.js' {
   import { isEqual } from 'date-fns'
   export default isEqual
+}
+
+declare module 'date-fns/isExists/index.js' {
+  import { isExists } from 'date-fns'
+  export default isExists
 }
 
 declare module 'date-fns/isFirstDayOfMonth/index.js' {
@@ -4214,6 +4232,9 @@ declare module 'date-fns/fp' {
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {}
 
+  const isExists: CurriedFn3<number, number, number, boolean>
+  namespace isExists {}
+
   const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {}
 
@@ -5109,6 +5130,11 @@ declare module 'date-fns/fp/isDate' {
 declare module 'date-fns/fp/isEqual' {
   import { isEqual } from 'date-fns/fp'
   export default isEqual
+}
+
+declare module 'date-fns/fp/isExists' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
 }
 
 declare module 'date-fns/fp/isFirstDayOfMonth' {
@@ -6081,6 +6107,11 @@ declare module 'date-fns/fp/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/fp/isExists/index' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
+}
+
 declare module 'date-fns/fp/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
   export default isFirstDayOfMonth
@@ -7051,6 +7082,11 @@ declare module 'date-fns/fp/isEqual/index.js' {
   export default isEqual
 }
 
+declare module 'date-fns/fp/isExists/index.js' {
+  import { isExists } from 'date-fns/fp'
+  export default isExists
+}
+
 declare module 'date-fns/fp/isFirstDayOfMonth/index.js' {
   import { isFirstDayOfMonth } from 'date-fns/fp'
   export default isFirstDayOfMonth
@@ -7955,6 +7991,9 @@ declare module 'date-fns/esm' {
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
   namespace isEqual {}
 
+  function isExists(year: number, month: number, day: number): boolean
+  namespace isExists {}
+
   function isFirstDayOfMonth(date: Date | number): boolean
   namespace isFirstDayOfMonth {}
 
@@ -8818,6 +8857,11 @@ declare module 'date-fns/esm/isDate' {
 declare module 'date-fns/esm/isEqual' {
   import { isEqual } from 'date-fns/esm'
   export default isEqual
+}
+
+declare module 'date-fns/esm/isExists' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
 }
 
 declare module 'date-fns/esm/isFirstDayOfMonth' {
@@ -9750,6 +9794,11 @@ declare module 'date-fns/esm/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/isExists/index' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
+}
+
 declare module 'date-fns/esm/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/esm'
   export default isFirstDayOfMonth
@@ -10678,6 +10727,11 @@ declare module 'date-fns/esm/isDate/index.js' {
 declare module 'date-fns/esm/isEqual/index.js' {
   import { isEqual } from 'date-fns/esm'
   export default isEqual
+}
+
+declare module 'date-fns/esm/isExists/index.js' {
+  import { isExists } from 'date-fns/esm'
+  export default isExists
 }
 
 declare module 'date-fns/esm/isFirstDayOfMonth/index.js' {
@@ -11635,6 +11689,9 @@ declare module 'date-fns/esm/fp' {
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
   namespace isEqual {}
 
+  const isExists: CurriedFn3<number, number, number, boolean>
+  namespace isExists {}
+
   const isFirstDayOfMonth: CurriedFn1<Date | number, boolean>
   namespace isFirstDayOfMonth {}
 
@@ -12530,6 +12587,11 @@ declare module 'date-fns/esm/fp/isDate' {
 declare module 'date-fns/esm/fp/isEqual' {
   import { isEqual } from 'date-fns/esm/fp'
   export default isEqual
+}
+
+declare module 'date-fns/esm/fp/isExists' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
 }
 
 declare module 'date-fns/esm/fp/isFirstDayOfMonth' {
@@ -13502,6 +13564,11 @@ declare module 'date-fns/esm/fp/isEqual/index' {
   export default isEqual
 }
 
+declare module 'date-fns/esm/fp/isExists/index' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
+}
+
 declare module 'date-fns/esm/fp/isFirstDayOfMonth/index' {
   import { isFirstDayOfMonth } from 'date-fns/esm/fp'
   export default isFirstDayOfMonth
@@ -14470,6 +14537,11 @@ declare module 'date-fns/esm/fp/isDate/index.js' {
 declare module 'date-fns/esm/fp/isEqual/index.js' {
   import { isEqual } from 'date-fns/esm/fp'
   export default isEqual
+}
+
+declare module 'date-fns/esm/fp/isExists/index.js' {
+  import { isExists } from 'date-fns/esm/fp'
+  export default isExists
 }
 
 declare module 'date-fns/esm/fp/isFirstDayOfMonth/index.js' {
@@ -17675,6 +17747,8 @@ interface dateFns {
   isDate(value: any): boolean
 
   isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
+
+  isExists(year: number, month: number, day: number): boolean
 
   isFirstDayOfMonth(date: Date | number): boolean
 

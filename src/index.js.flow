@@ -401,6 +401,8 @@ declare module.exports: {
 
   isEqual: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 
+  isExists: (year: number, month: number, day: number) => boolean,
+
   isFirstDayOfMonth: (date: Date | number) => boolean,
 
   isFriday: (date: Date | number) => boolean,
