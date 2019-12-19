@@ -31,8 +31,8 @@ export default function isExists(year, month, day) {
 
   const date = new Date(year, month, day)
   return (
-    date.getFullYear() === (year | 0) &&
-    date.getMonth() === (month | 0) &&
-    date.getDate() === (day | 0)
+    date.getFullYear() === year &&
+    date.getMonth() === month &&
+    date.getDate() === day
   )
 }

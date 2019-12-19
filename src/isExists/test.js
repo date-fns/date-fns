@@ -15,11 +15,6 @@ describe('isValid', function() {
     assert(result === false)
   })
 
-  it('accepts strings', function() {
-    assert(isExists('2018', '0', '31') === true)
-    assert(isExists('2018', '1', '31') === false)
-  })
-
   it('throws TypeError exception if passed less than 3 arguments', function() {
     assert.throws(isExists.bind(null), TypeError)
   })
