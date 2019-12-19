@@ -78,6 +78,12 @@ declare module.exports: {
   addWeeks: CurriedFn2<number, Date | number, Date>,
   addYears: CurriedFn2<number, Date | number, Date>,
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,
+  areIntervalsOverlappingWithOptions: CurriedFn3<
+    Options,
+    Interval,
+    Interval,
+    boolean
+  >,
   closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>,
   closestTo: CurriedFn2<(Date | number)[], Date | number, Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,

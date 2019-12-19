@@ -60,7 +60,8 @@ declare module.exports: {
 
   areIntervalsOverlapping: (
     intervalLeft: Interval,
-    intervalRight: Interval
+    intervalRight: Interval,
+    options?: Options
   ) => boolean,
 
   closestIndexTo: (
