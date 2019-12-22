@@ -5,6 +5,7 @@ import assert from 'power-assert'
 import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
 
+// This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(originalDate, extended) {
   // Add the timezone.
   let tzOffset = ''
