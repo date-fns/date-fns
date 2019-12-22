@@ -8,23 +8,23 @@ import addLeadingZeros from '../_lib/addLeadingZeros'
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(originalDate, extended) {
   // Add the timezone.
-  let tzOffset = ''
-  const offset = originalDate.getTimezoneOffset()
+  let offset = ''
+  const tzOffset = originalDate.getTimezoneOffset()
 
-  if (offset !== 0 || extended) {
-    const absoluteOffset = Math.abs(offset)
+  if (tzOffset !== 0 || extended) {
+    const absoluteOffset = Math.abs(tzOffset)
     const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
-    const sign = offset < 0 ? '+' : '-'
+    const sign = tzOffset < 0 ? '+' : '-'
 
-    tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+    offset = `${sign}${hourOffset}:${minuteOffset}`
   } else {
     // The notation "Z" only applies for basic format AND if the timezone offset is 0.
-    tzOffset = 'Z'
+    offset = 'Z'
   }
 
-  return tzOffset
+  return offset
 }
 
 describe('formatISO', () => {
