@@ -3,25 +3,53 @@
 
 import assert from 'power-assert'
 import formatISO from '.'
+import addLeadingZeros from '../_lib/addLeadingZeros'
+
+function generateOffset(originalDate, extended) {
+  // Add the timezone.
+  let tzOffset = ''
+  const offset = originalDate.getTimezoneOffset()
+
+  if (offset !== 0 || extended) {
+    const absoluteOffset = Math.abs(offset)
+    const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+    const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
+    // If less than 0, the sign is +, because it is ahead of time.
+    const sign = offset < 0 ? '+' : '-'
+
+    tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+  } else {
+    // The notation "Z" only applies for basic format AND if the timezone offset is 0.
+    tzOffset = 'Z'
+  }
+
+  return tzOffset
+}
 
 describe('formatISO', () => {
   it('formats ISO-8601 extended format', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
-    assert(formatISO(date) === '2019-03-03T19:00:52')
+    const tzOffsetExtended = generateOffset(date, true)
+    assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123).getTime()
-    assert(formatISO(date) === '2019-03-03T19:00:52')
+    const tzOffsetExtended = generateOffset(new Date(date), true)
+    assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
   })
 
   it('formats ISO-8601 basic format', () => {
     const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-    assert(formatISO(date, { format: 'basic' }) === '20191004T123013')
+    const tzOffsetBasic = generateOffset(date, false)
+    assert(
+      formatISO(date, { format: 'basic' }) === `20191004T123013${tzOffsetBasic}`
+    )
   })
 
   it('formats only date', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
+
     assert(
       formatISO(date, { representation: 'date', format: 'extended' }) ===
         '2019-12-11'
@@ -34,12 +62,16 @@ describe('formatISO', () => {
 
   it('formats only time', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    const tzOffsetBasic = generateOffset(date, false)
+    const tzOffsetExtended = generateOffset(date, true)
+
     assert(
       formatISO(date, { representation: 'time', format: 'extended' }) ===
-        '19:00:52'
+        `19:00:52${tzOffsetExtended}`
     )
     assert(
-      formatISO(date, { representation: 'time', format: 'basic' }) === '190052'
+      formatISO(date, { representation: 'time', format: 'basic' }) ===
+        `190052${tzOffsetBasic}`
     )
   })
 
@@ -50,7 +82,8 @@ describe('formatISO', () => {
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // $ExpectedMistake
       var result = formatISO(date, { format: format })
-      assert(result === '20191004T123013')
+      const tzOffsetExtended = generateOffset(date, true)
+      assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
     it('`representation`', function() {
@@ -58,8 +91,9 @@ describe('formatISO', () => {
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // $ExpectedMistake
+      const tzOffsetExtended = generateOffset(date, true)
       var result = formatISO(date, { representation: representation })
-      assert(result === '12:30:13')
+      assert(result === `12:30:13${tzOffsetExtended}`)
     })
   })
 

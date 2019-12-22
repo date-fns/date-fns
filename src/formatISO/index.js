@@ -71,6 +71,7 @@ export default function formatISO(dirtyDate, dirtyOptions) {
   }
 
   let result = ''
+  let tzOffset = ''
 
   const dateDelimiter = format === 'extended' ? '-' : ''
   const timeDelimiter = format === 'extended' ? ':' : ''
@@ -87,6 +88,22 @@ export default function formatISO(dirtyDate, dirtyOptions) {
 
   // Representation is either 'time' or 'complete'
   if (representation !== 'date') {
+    // Add the timezone.
+    const offset = originalDate.getTimezoneOffset()
+
+    if (offset !== 0 || format === 'extended') {
+      const absoluteOffset = Math.abs(offset)
+      const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+      const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
+      // If less than 0, the sign is +, because it is ahead of time.
+      const sign = offset < 0 ? '+' : '-'
+
+      tzOffset = `${sign}${hourOffset}:${minuteOffset}`
+    } else {
+      // The notation "Z" only applies for basic format AND if the timezone offset is 0.
+      tzOffset = 'Z'
+    }
+
     const hour = addLeadingZeros(originalDate.getHours(), 2)
     const minute = addLeadingZeros(originalDate.getMinutes(), 2)
     const second = addLeadingZeros(originalDate.getSeconds(), 2)
@@ -95,7 +112,7 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     const separator = result === '' ? '' : 'T'
 
     // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}`
+    result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}${tzOffset}`
   }
 
   return result
