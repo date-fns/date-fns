@@ -13,7 +13,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Object} amount - the object with milliseconds, seconds, minutes, hours, days, months, quarters and years to be added
+ * @param {Object|NaN} amount - the object with milliseconds, seconds, minutes, hours, days, months, quarters and years to be added
  *
  * | Key                 |            Significance              |
  * |---------------------|------------------------------------- |
