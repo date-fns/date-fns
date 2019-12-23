@@ -20,7 +20,6 @@ function generateOffset(originalDate, extended) {
 
     offset = `${sign}${hourOffset}:${minuteOffset}`
   } else {
-    // The notation "Z" only applies for basic format AND if the timezone offset is 0.
     offset = 'Z'
   }
 

@@ -91,7 +91,7 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     // Add the timezone.
     const offset = originalDate.getTimezoneOffset()
 
-    if (offset !== 0 || format === 'extended') {
+    if (offset !== 0) {
       const absoluteOffset = Math.abs(offset)
       const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
       const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
@@ -100,7 +100,6 @@ export default function formatISO(dirtyDate, dirtyOptions) {
 
       tzOffset = `${sign}${hourOffset}:${minuteOffset}`
     } else {
-      // The notation "Z" only applies for basic format AND if the timezone offset is 0.
       tzOffset = 'Z'
     }
 
