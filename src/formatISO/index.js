@@ -12,7 +12,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  *
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
- * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
+ * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values and hide time zone.
  * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time, or both.
  * @returns {String} the formatted date string
  * @throws {TypeError} 1 argument required
@@ -23,7 +23,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @example
  * // Represent 18 September 2019 in ISO 8601 format:
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
- * //=> '2019-09-18T19:00:52'
+ * //=> '2019-09-18T19:00:52Z'
  *
  * @example
  * // Represent 18 September 2019 in ISO 8601, short format:
@@ -38,7 +38,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @example
  * // Represent 18 September 2019 in ISO 8601 format, time only:
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
- * //=> '19:00:52'
+ * //=> '19:00:52Z'
  */
 export default function formatISO(dirtyDate, dirtyOptions) {
   if (arguments.length < 1) {
@@ -110,8 +110,11 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     // If there's also date, separate it with time with 'T'
     const separator = result === '' ? '' : 'T'
 
+    // Creates a time string consisting of hour, minute, and second, separated by delimiters, if defined.
+    const time = [hour, minute, second].join(timeDelimiter)
+
     // HHmmss or HH:mm:ss.
-    result = `${result}${separator}${hour}${timeDelimiter}${minute}${timeDelimiter}${second}${tzOffset}`
+    result = `${result}${separator}${time}${tzOffset}`
   }
 
   return result

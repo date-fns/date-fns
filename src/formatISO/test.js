@@ -62,16 +62,15 @@ describe('formatISO', () => {
 
   it('formats only time', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
-    const tzOffsetBasic = generateOffset(date)
-    const tzOffsetExtended = generateOffset(date)
+    const tzOffset = generateOffset(date)
 
     assert(
       formatISO(date, { representation: 'time', format: 'extended' }) ===
-        `19:00:52${tzOffsetExtended}`
+        `19:00:52${tzOffset}`
     )
     assert(
       formatISO(date, { representation: 'time', format: 'basic' }) ===
-        `190052${tzOffsetBasic}`
+        `190052${tzOffset}`
     )
   })
 
