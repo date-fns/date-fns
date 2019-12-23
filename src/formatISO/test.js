@@ -81,9 +81,9 @@ describe('formatISO', () => {
       // eslint-disable-next-line no-new-wrappers
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+      const tzOffsetExtended = generateOffset(date, true)
       // $ExpectedMistake
       var result = formatISO(date, { format: format })
-      const tzOffsetExtended = generateOffset(date, true)
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
@@ -91,8 +91,8 @@ describe('formatISO', () => {
       // eslint-disable-next-line no-new-wrappers
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      // $ExpectedMistake
       const tzOffsetExtended = generateOffset(date, true)
+      // $ExpectedMistake
       var result = formatISO(date, { representation: representation })
       assert(result === `12:30:13${tzOffsetExtended}`)
     })
