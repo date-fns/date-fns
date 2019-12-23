@@ -21,12 +21,12 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format:
+ * // Represent 18 September 2019 in ISO 8601 format (UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52Z'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601, short format:
+ * // Represent 18 September 2019 in ISO 8601, short format (UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: 'basic' })
  * //=> '20190918T190052'
  *
@@ -36,7 +36,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * //=> '2019-09-18'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format, time only:
+ * // Represent 18 September 2019 in ISO 8601 format, time only (UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
