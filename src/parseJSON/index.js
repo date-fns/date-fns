@@ -18,7 +18,8 @@ import toDate from '../toDate/index.js'
  *     - `2000-03-15T05:20:10+00:00`: With a zero offset, the default JSON encoded format in some other languages
  *     - `2000-03-15T05:20:10+0000`: With a zero offset without a colon
  *     - `2000-03-15T05:20:10`: Without a trailing 'Z' symbol
- *     - `2000-03-15T05:20:10.134566`: Up to 6 digits in milliseconds field. Only first 3 are taken into account since JS does now allow fractional milliseconds
+ *     - `2000-03-15T05:20:10.1234567`: Up to 7 digits in milliseconds field. Only first 3 are taken into account since JS does not allow fractional milliseconds
+ *     - `2000-03-15 05:20:10`: With a space instead of a 'T' separator for APIs returning a SQL date without reformatting
  *
  * For convenience and ease of use these other input types are also supported
  * via [toDate]{@link https://date-fns.org/docs/toDate}:
@@ -41,7 +42,7 @@ export default function parseJSON(argument) {
 
   if (typeof argument === 'string') {
     var parts = argument.match(
-      /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,6}))?(?:Z|\+00:?00)?/
+      /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|\+00:?00)?/
     )
     if (parts) {
       return new Date(
