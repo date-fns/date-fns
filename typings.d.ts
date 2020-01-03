@@ -33,6 +33,7 @@ type Interval = {
 type IntervalAliased = Interval
 
 type Locale = {
+  code?: string
   formatDistance?: (...args: Array<any>) => any
   formatRelative?: (...args: Array<any>) => any
   localize?: {
@@ -15069,6 +15070,9 @@ declare module 'date-fns/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arMA: Locale
+  namespace arMA {}
+
   const arSA: Locale
   namespace arSA {}
 
@@ -15278,6 +15282,11 @@ declare module 'date-fns/locale/ar' {
 declare module 'date-fns/locale/ar-DZ' {
   import { arDZ } from 'date-fns/locale'
   export default arDZ
+}
+
+declare module 'date-fns/locale/ar-MA' {
+  import { arMA } from 'date-fns/locale'
+  export default arMA
 }
 
 declare module 'date-fns/locale/ar-SA' {
@@ -15620,6 +15629,11 @@ declare module 'date-fns/locale/ar-DZ/index' {
   export default arDZ
 }
 
+declare module 'date-fns/locale/ar-MA/index' {
+  import { arMA } from 'date-fns/locale'
+  export default arMA
+}
+
 declare module 'date-fns/locale/ar-SA/index' {
   import { arSA } from 'date-fns/locale'
   export default arSA
@@ -15960,6 +15974,11 @@ declare module 'date-fns/locale/ar-DZ/index.js' {
   export default arDZ
 }
 
+declare module 'date-fns/locale/ar-MA/index.js' {
+  import { arMA } from 'date-fns/locale'
+  export default arMA
+}
+
 declare module 'date-fns/locale/ar-SA/index.js' {
   import { arSA } from 'date-fns/locale'
   export default arSA
@@ -16297,6 +16316,9 @@ declare module 'date-fns/esm/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arMA: Locale
+  namespace arMA {}
+
   const arSA: Locale
   namespace arSA {}
 
@@ -16506,6 +16528,11 @@ declare module 'date-fns/esm/locale/ar' {
 declare module 'date-fns/esm/locale/ar-DZ' {
   import { arDZ } from 'date-fns/esm/locale'
   export default arDZ
+}
+
+declare module 'date-fns/esm/locale/ar-MA' {
+  import { arMA } from 'date-fns/esm/locale'
+  export default arMA
 }
 
 declare module 'date-fns/esm/locale/ar-SA' {
@@ -16848,6 +16875,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index' {
   export default arDZ
 }
 
+declare module 'date-fns/esm/locale/ar-MA/index' {
+  import { arMA } from 'date-fns/esm/locale'
+  export default arMA
+}
+
 declare module 'date-fns/esm/locale/ar-SA/index' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
@@ -17186,6 +17218,11 @@ declare module 'date-fns/esm/locale/ar/index.js' {
 declare module 'date-fns/esm/locale/ar-DZ/index.js' {
   import { arDZ } from 'date-fns/esm/locale'
   export default arDZ
+}
+
+declare module 'date-fns/esm/locale/ar-MA/index.js' {
+  import { arMA } from 'date-fns/esm/locale'
+  export default arMA
 }
 
 declare module 'date-fns/esm/locale/ar-SA/index.js' {
