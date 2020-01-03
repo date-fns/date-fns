@@ -73,7 +73,7 @@ declare module 'date-fns' {
 // Regular Functions
 
 declare module 'date-fns' {
-  function add(date: Date | number, amount: Object): Date
+  function add(date: Date | number, duration: Object): Date
   namespace add {}
 
   function addBusinessDays(date: Date | number, amount: number): Date
@@ -7566,7 +7566,7 @@ declare module 'date-fns/fp/toDate/index.js' {
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
-  function add(date: Date | number, amount: Object): Date
+  function add(date: Date | number, duration: Object): Date
   namespace add {}
 
   function addBusinessDays(date: Date | number, amount: number): Date
@@ -17479,7 +17479,7 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 // dateFns Global Interface
 
 interface dateFns {
-  add(date: Date | number, amount: Object): Date
+  add(date: Date | number, duration: Object): Date
 
   addBusinessDays(date: Date | number, amount: number): Date
 

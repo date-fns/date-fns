@@ -35,4 +35,4 @@ export type Locale = {
   }
 }
 
-declare module.exports: (date: Date | number, amount: Object) => Date
+declare module.exports: (date: Date | number, duration: Object) => Date
