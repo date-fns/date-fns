@@ -223,7 +223,7 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:15:00.000Z | přibližně hodina  | přibližně hodina       | přibližně před hodinou    |
 | 1999-12-31T23:00:00.000Z | přibližně hodina  | přibližně hodina       | přibližně před hodinou    |
 | 1999-12-31T18:00:00.000Z | přibližně 6 hodin | přibližně 6 hodin      | přibližně před 6 hodinami |
-| 1999-12-30T00:00:00.000Z | 2 dni             | 2 dni                  | před 2 dny                |
+| 1999-12-30T00:00:00.000Z | 2 dny             | 2 dny                  | před 2 dny                |
 | 1999-12-15T00:00:00.000Z | 17 dní            | 17 dní                 | před 17 dny               |
 | 1999-12-01T00:00:00.000Z | přibližně měsíc   | přibližně měsíc        | přibližně před měsícem    |
 | 1999-11-01T00:00:00.000Z | 2 měsíce          | 2 měsíce               | před 2 měsíci             |
@@ -275,7 +275,7 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:15:00.000Z | 45 minut  | před 45 minutami  | hodina                         |
 | 1999-12-31T23:00:00.000Z | hodina    | před hodinou      | hodina                         |
 | 1999-12-31T18:00:00.000Z | 6 hodin   | před 6 hodinami   | 6 hodin                        |
-| 1999-12-30T00:00:00.000Z | 2 dni     | před 2 dny        | 48 hodin                       |
+| 1999-12-30T00:00:00.000Z | 2 dny     | před 2 dny        | 48 hodin                       |
 | 1999-12-15T00:00:00.000Z | 17 dní    | před 17 dny       | 408 hodin                      |
 | 1999-12-01T00:00:00.000Z | měsíc     | před měsícem      | 744 hodin                      |
 | 1999-11-01T00:00:00.000Z | 2 měsíce  | před 2 měsíci     | 1464 hodin                     |
