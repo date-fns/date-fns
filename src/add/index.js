@@ -5,13 +5,13 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name add
  * @category Combined time Helpers
- * @summary Add the specified milliseconds, seconds, minutes, hours, days, months, quarters and years to the given date.
+ * @summary Add the specified milliseconds, seconds, minutes, hours, days, months and years to the given date.
  *
  * @description
- * Add the specified milliseconds, seconds, minutes, hours, days, months, quarters and years to the given date.
+ * Add the specified milliseconds, seconds, minutes, hours, days, months and years to the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Object} duration - the object with milliseconds, seconds, minutes, hours, days, months, quarters and years to be added
+ * @param {Object} duration - the object with milliseconds, seconds, minutes, hours, days, months and years to be added
  *
  * | Key            | Description                          |
  * |----------------|------------------------------------- |
@@ -22,7 +22,6 @@ import toInteger from '../_lib/toInteger/index.js'
  * | days           | Amount of days to be added           |
  * | weeks          | Amount of weeks to be added          |
  * | months         | Amount of months to be added         |
- * | quarters       | Amount of quarters to be added       |
  * | years          | Amount of years to be added          |
  *
  * All values default to 0
@@ -39,7 +38,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *   hours: 5,
  *   days: 7,
  *   weeks: 1,
- *   months: 9,
+ *   months: 24,
  *   years: 2
  * })
  * // => Sat Sep 15 2018 15:30:00 GMT+0530 (India Standard Time)
@@ -50,15 +49,11 @@ export default function add(dirtyDate, duration) {
       '2 arguments required, but only ' + arguments.length + ' present'
     )
   }
+  if (!duration || typeof duration !== 'object')
+    throw new RangeError('duration must be an object')
 
-  if (!duration) {
-    return new Date(NaN)
-  }
   const finalDate = toDate(dirtyDate)
-  if (typeof duration === 'number') {
-    finalDate.setTime(finalDate.getTime() + duration)
-    return finalDate
-  }
+
   if (Object.keys(duration).length === 0) {
     return finalDate
   }
@@ -69,11 +64,10 @@ export default function add(dirtyDate, duration) {
   let hours = 'hours' in duration ? toInteger(duration.hours) : 0
   let days = 'days' in duration ? toInteger(duration.days) : 0
   let months = 'months' in duration ? toInteger(duration.months) : 0
-  const quarters = 'quarters' in duration ? toInteger(duration.quarters) : 0
   const weeks = 'weeks' in duration ? toInteger(duration.weeks) : 0
   const years = 'years' in duration ? toInteger(duration.years) : 0
 
-  months += years * 12 + quarters * 3
+  months += years * 12
   let desiredMonth = finalDate.getMonth() + months
   let dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(finalDate.getFullYear(), desiredMonth, 1)
