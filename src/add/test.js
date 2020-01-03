@@ -14,10 +14,9 @@ describe('add', function() {
       days: 7,
       weeks: 1,
       months: 9,
-      quarters: 5,
       years: 2
     })
-    assert.deepEqual(result, new Date(2018, 8 /* Sep */, 15, 15, 30))
+    assert.deepEqual(result, new Date(2017, 5 /* Sep */, 15, 15, 30))
   })
 
   it('returns same date object when passed empty amount values', function() {
@@ -34,7 +33,6 @@ describe('add', function() {
       days: 0,
       weeks: 0,
       months: 0,
-      quarters: 0,
       years: 0
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
@@ -83,9 +81,12 @@ describe('add', function() {
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result))
+  it('throws RangeError exception if passed Number as duration', function() {
+    assert.throws(add.bind(null, new Date(2014, 8, 1), 1000), RangeError)
+  })
+
+  it('throws RangeError exception if passed NaN as duration', function() {
+    assert.throws(add.bind(null, new Date(2014, 8, 1), NaN), RangeError)
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
