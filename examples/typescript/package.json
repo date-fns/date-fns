@@ -6,7 +6,7 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^3.5.3",
+    "typescript": "^3.7.2",
     "webpack": "^2.7.0"
   },
   "scripts": {
