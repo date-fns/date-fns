@@ -2,6 +2,7 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
 export type Locale = {
+  code?: string,
   formatDistance?: (...args: Array<any>) => any,
   formatRelative?: (...args: Array<any>) => any,
   localize?: {
@@ -35,6 +36,7 @@ declare module.exports: {
   af: Locale,
   ar: Locale,
   arDZ: Locale,
+  arMA: Locale,
   arSA: Locale,
   az: Locale,
   be: Locale,

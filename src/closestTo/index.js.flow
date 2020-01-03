@@ -7,6 +7,7 @@ export type Interval = {
 }
 
 export type Locale = {
+  code?: string,
   formatDistance?: (...args: Array<any>) => any,
   formatRelative?: (...args: Array<any>) => any,
   localize?: {

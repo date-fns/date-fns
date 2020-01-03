@@ -9,6 +9,7 @@
  *
  * @typedef {Object} Locale
  *
+ * @property {string} [code] - the locale code (ISO 639-1 + optional country code)
  * @property {Function} [formatDistance] - the function that takes a token
  *   passed by `formatDistance` or `formatDistanceStrict` and payload,
  *   and returns localized distance in words.
