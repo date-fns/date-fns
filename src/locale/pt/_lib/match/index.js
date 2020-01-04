@@ -51,7 +51,7 @@ var parseMonthPatterns = {
     /^f/i,
     /^mar/i,
     /^ab/i,
-    /^may/i,
+    /^mai/i,
     /^jun/i,
     /^jul/i,
     /^ag/i,
