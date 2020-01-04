@@ -10,18 +10,32 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic).
+Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic), [@Anshuman71](https://github.com/Anshuman71), [@talgautb](https://github.com/talgautb), [@filipjuza](https://github.com/filipjuza), [@tobyzerner](https://github.com/tobyzerner), [@emil9453](https://github.com/emil9453), [@fintara](https://github.com/fintara), [@pascaliske](https://github.com/pascaliske), [@rramiachraf](https://github.com/rramiachraf), [@marnusw](https://github.com/marnusw)
+
+### Fixed
+
+- [Removed dots from short day period names in the Kazakh locale](https://github.com/date-fns/date-fns/pull/1512).
+- [Fixed typo in formatDistance in the Czech locale](https://github.com/date-fns/date-fns/pull/1540).
+- [Fixed shortenings in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1560).
+- [Fixed regex for the May in the Portuguese locale](https://github.com/date-fns/date-fns/pull/1565).
 
 ### Added
 
 - [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
 - [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
 - [Added `isExists` function that checks if the given date is exists](https://github.com/date-fns/date-fns/pull/682).
-- [Added `add` function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1504).
+- [Added `add` function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1581).
+- [Added Azerbaijani (az) locale](https://github.com/date-fns/date-fns/pull/1547).
+- [Added Moroccan Arabic (ar-MA) locale](https://github.com/date-fns/date-fns/pull/1578).
 
 ### Changed
 
 - [Reduced the total minified build size by 1Kb/4%](https://github.com/date-fns/date-fns/pull/1563).
+- [Made all properties in `Locale` type optional](https://github.com/date-fns/date-fns/pull/1542).
+- [Added missing properties to `Locale` type](https://github.com/date-fns/date-fns/pull/1542).
+- [Add the locale code to `Locale` type](https://github.com/date-fns/date-fns/pull/1580).
+- [Added support of space time separator to `parseJSON`](https://github.com/date-fns/date-fns/pull/1579).
+- [Allowed up to 7 digits in milliseconds in `parseJSON`](https://github.com/date-fns/date-fns/pull/1579).
 
 ## [2.8.1] - 2019-11-22
 
