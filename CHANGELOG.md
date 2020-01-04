@@ -10,13 +10,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty).
+Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic).
 
 ### Added
 
 - [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
 - [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
-- [Added `isExists` function that checks if the given date is exists]().
+- [Added `isExists` function that checks if the given date is exists](https://github.com/date-fns/date-fns/pull/682).
+- [Added `add` function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1504).
+
+### Changed
+
+- [Reduced the total minified build size by 1Kb/4%](https://github.com/date-fns/date-fns/pull/1563).
 
 ## [2.8.1] - 2019-11-22
 

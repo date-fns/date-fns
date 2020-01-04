@@ -36,6 +36,8 @@ export type Locale = {
 }
 
 declare module.exports: {
+  add: (date: Date | number, duration: Object) => Date,
+
   addBusinessDays: (date: Date | number, amount: number) => Date,
 
   addDays: (date: Date | number, amount: number) => Date,
