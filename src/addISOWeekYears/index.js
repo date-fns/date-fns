@@ -1,6 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import getISOWeekYear from '../getISOWeekYear/index.js'
 import setISOWeekYear from '../setISOWeekYear/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name addISOWeekYears
@@ -32,11 +33,7 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  * //=> Fri Jun 26 2015 00:00:00
  */
 export default function addISOWeekYears(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)

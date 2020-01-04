@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addSeconds from '../addSeconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subSeconds
@@ -24,11 +25,7 @@ import addSeconds from '../addSeconds/index.js'
  * //=> Thu Jul 10 2014 12:44:30
  */
 export default function subSeconds(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addSeconds(dirtyDate, -amount)

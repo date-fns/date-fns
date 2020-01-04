@@ -1,4 +1,5 @@
 import distanceInWords from '../formatDistance/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name formatDistanceToNow
@@ -106,11 +107,7 @@ import distanceInWords from '../formatDistance/index.js'
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistanceToNow(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return distanceInWords(dirtyDate, Date.now(), dirtyOptions)
 }

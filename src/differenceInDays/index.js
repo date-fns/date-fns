@@ -1,6 +1,7 @@
 import toDate from '../toDate/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import compareAsc from '../compareAsc/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInDays
@@ -36,11 +37,7 @@ import compareAsc from '../compareAsc/index.js'
  * //=> 0
  */
 export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

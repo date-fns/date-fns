@@ -1,4 +1,5 @@
 import isSameYear from '../isSameYear/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isThisYear
@@ -26,11 +27,7 @@ import isSameYear from '../isSameYear/index.js'
  * //=> true
  */
 export default function isThisYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameYear(dirtyDate, Date.now())
 }

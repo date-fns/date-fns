@@ -1,3 +1,5 @@
+import requiredArgs from '../_lib/requiredArgs/index.js'
+
 /**
  * @name isDate
  * @category Common Helpers
@@ -35,11 +37,7 @@
  * //=> false
  */
 export default function isDate(value) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return (
     value instanceof Date ||

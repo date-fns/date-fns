@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachYearOfInterval
@@ -28,11 +29,7 @@ import toDate from '../toDate/index.js'
  * // ]
  */
 export default function eachYearOfInterval(dirtyInterval) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)

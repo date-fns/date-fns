@@ -1,4 +1,5 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInSeconds
@@ -27,11 +28,7 @@ import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
  * //=> 12
  */
 export default function differenceInSeconds(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)

@@ -5,6 +5,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import addDays from '../addDays/index.js'
 import isSameDay from '../isSameDay/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInBusinessDays
@@ -35,11 +36,7 @@ export default function differenceInBusinessDays(
   dirtyDateLeft,
   dirtyDateRight
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

@@ -1,5 +1,6 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -34,11 +35,7 @@ export default function differenceInCalendarISOWeeks(
   dirtyDateLeft,
   dirtyDateRight
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)

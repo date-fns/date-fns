@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name areIntervalsOverlapping
@@ -94,11 +95,7 @@ export default function areIntervalsOverlapping(
   dirtyIntervalRight,
   options = {}
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   const intervalLeft = dirtyIntervalLeft || {}
   const intervalRight = dirtyIntervalRight || {}

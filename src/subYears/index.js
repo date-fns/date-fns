@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addYears from '../addYears/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subYears
@@ -24,11 +25,7 @@ import addYears from '../addYears/index.js'
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addYears(dirtyDate, -amount)

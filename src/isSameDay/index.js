@@ -1,4 +1,5 @@
 import startOfDay from '../startOfDay/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameDay
@@ -23,11 +24,7 @@ import startOfDay from '../startOfDay/index.js'
  * //=> true
  */
 export default function isSameDay(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
   var dateRightStartOfDay = startOfDay(dirtyDateRight)

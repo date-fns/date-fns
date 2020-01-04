@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addQuarters from '../addQuarters/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subQuarters
@@ -24,11 +25,7 @@ import addQuarters from '../addQuarters/index.js'
  * //=> Sun Dec 01 2013 00:00:00
  */
 export default function subQuarters(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addQuarters(dirtyDate, -amount)

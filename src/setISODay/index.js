@@ -2,6 +2,7 @@ import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import addDays from '../addDays/index.js'
 import getISODay from '../getISODay/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setISODay
@@ -28,11 +29,7 @@ import getISODay from '../getISODay/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setISODay(dirtyDate, dirtyDay) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var day = toInteger(dirtyDay)

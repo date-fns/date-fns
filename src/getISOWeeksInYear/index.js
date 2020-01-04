@@ -1,5 +1,6 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import addWeeks from '../addWeeks/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -27,11 +28,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 export default function getISOWeeksInYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var thisYear = startOfISOWeekYear(dirtyDate)
   var nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))

@@ -1,6 +1,7 @@
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
 import lastDayOfMonth from '../lastDayOfMonth/index.js'
 import startOfMonth from '../startOfMonth/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getWeeksInMonth
@@ -34,11 +35,7 @@ import startOfMonth from '../startOfMonth/index.js'
  * //=> 6
  */
 export default function getWeeksInMonth(date, options) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return (
     differenceInCalendarWeeks(

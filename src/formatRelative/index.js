@@ -4,6 +4,7 @@ import defaultLocale from '../locale/en-US/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name formatRelative
@@ -41,11 +42,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
 export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var baseDate = toDate(dirtyBaseDate)

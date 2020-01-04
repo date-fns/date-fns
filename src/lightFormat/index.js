@@ -3,6 +3,7 @@ import formatters from '../_lib/format/lightFormatters/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import isValid from '../isValid/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -75,11 +76,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var formatStr = String(dirtyFormatStr)
 

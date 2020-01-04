@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subMilliseconds
@@ -24,11 +25,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
  * //=> Thu Jul 10 2014 12:45:29.250
  */
 export default function subMilliseconds(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, -amount)

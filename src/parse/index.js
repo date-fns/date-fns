@@ -11,6 +11,7 @@ import {
 } from '../_lib/protectedTokens/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import parsers from './_lib/parsers/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -360,11 +361,7 @@ export default function parse(
   dirtyBackupDate,
   dirtyOptions
 ) {
-  if (arguments.length < 3) {
-    throw new TypeError(
-      '3 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(3, arguments)
 
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)

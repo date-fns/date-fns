@@ -11,6 +11,7 @@ import {
   throwProtectedError
 } from '../_lib/protectedTokens/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -343,11 +344,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> "3 o'clock"
  */
 export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}

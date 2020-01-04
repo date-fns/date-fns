@@ -1,6 +1,7 @@
 import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name set
@@ -42,11 +43,7 @@ import toInteger from '../_lib/toInteger/index.js'
  */
 
 export default function set(dirtyDate, values) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {
     throw new RangeError('values parameter must be an object')

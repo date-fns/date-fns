@@ -1,6 +1,7 @@
 import addDays from '../addDays/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setDay
@@ -34,11 +35,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale
