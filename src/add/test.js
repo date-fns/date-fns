@@ -6,35 +6,19 @@ import add from '.'
 
 describe('add', function() {
   it('adds the values from the given object', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50, 10000), {
-      milliseconds: 30000,
+    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
       seconds: 30,
       minutes: 9,
       hours: 5,
       days: 7,
-      weeks: 1,
       months: 9,
       years: 2
     })
-    assert.deepEqual(result, new Date(2017, 5 /* Sep */, 15, 15, 30))
+    assert.deepEqual(result, new Date(2017, 5 /* June */, 8, 15, 29, 20))
   })
 
-  it('returns same date object when passed empty amount values', function() {
+  it('returns same date object when passed empty duration values', function() {
     var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {})
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
-  })
-
-  it('returns same date object when passed all zero values', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
-      milliseconds: 0,
-      seconds: 0,
-      minutes: 0,
-      hours: 0,
-      days: 0,
-      weeks: 0,
-      months: 0,
-      years: 0
-    })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
@@ -82,11 +66,9 @@ describe('add', function() {
   })
 
   it('throws RangeError exception if passed Number as duration', function() {
-    assert.throws(add.bind(null, new Date(2014, 8, 1), 1000), RangeError)
-  })
-
-  it('throws RangeError exception if passed NaN as duration', function() {
-    assert.throws(add.bind(null, new Date(2014, 8, 1), NaN), RangeError)
+    // $ExpectedMistake
+    const result = add(new Date(2014, 8, 1), 'wut')
+    assert(result instanceof Date && isNaN(result))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
