@@ -60,6 +60,27 @@ describe('parseJSON', function() {
     assert.equal(parsedDate.toISOString(), expectedDate)
   })
 
+  it('parses supported formats with a space time separator instead of a T', () => {
+    const date = '2000-03-15 05:20:10.123Z'
+    const expectedDate = '2000-03-15T05:20:10.123Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
+  it('parses the SQL datetime format without milliseconds', () => {
+    const date = '2000-03-15 05:20:10'
+    const expectedDate = '2000-03-15T05:20:10.000Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
+  it('parses the SQL datetime format with up to 7 millisecond digits', () => {
+    const date = '2000-03-15 05:20:10.1234567'
+    const expectedDate = '2000-03-15T05:20:10.123Z'
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate)
+  })
+
   it('clones a date object', () => {
     const date = new Date(2000, 2, 15, 5, 20, 10, 20)
     const parsedDate = parseJSON(date)
