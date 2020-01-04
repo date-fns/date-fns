@@ -117,11 +117,11 @@ var formattingDayPeriodValues = {
     am: 'ТД',
     pm: 'ТК',
     midnight: 'түн ортасында',
-    noon: 'түс.',
-    morning: 'таң.',
-    afternoon: 'күн.',
-    evening: 'кеш.',
-    night: 'түн.'
+    noon: 'түс',
+    morning: 'таң',
+    afternoon: 'күн',
+    evening: 'кеш',
+    night: 'түн'
   },
   wide: {
     am: 'ТД',
