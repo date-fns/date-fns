@@ -3,6 +3,7 @@
 export { default as af } from './af/index.js'
 export { default as arDZ } from './ar-DZ/index.js'
 export { default as arSA } from './ar-SA/index.js'
+export { default as az } from './az/index.js'
 export { default as be } from './be/index.js'
 export { default as bg } from './bg/index.js'
 export { default as bn } from './bn/index.js'
