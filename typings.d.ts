@@ -33,9 +33,9 @@ type Interval = {
 type IntervalAliased = Interval
 
 type Locale = {
-  formatDistance: (...args: Array<any>) => any
-  formatRelative: (...args: Array<any>) => any
-  localize: {
+  formatDistance?: (...args: Array<any>) => any
+  formatRelative?: (...args: Array<any>) => any
+  localize?: {
     ordinalNumber: (...args: Array<any>) => any
     era: (...args: Array<any>) => any
     quarter: (...args: Array<any>) => any
@@ -43,11 +43,12 @@ type Locale = {
     day: (...args: Array<any>) => any
     dayPeriod: (...args: Array<any>) => any
   }
-  formatLong: Object
-  date: (...args: Array<any>) => any
-  time: (...args: Array<any>) => any
-  dateTime: (...args: Array<any>) => any
-  match: {
+  formatLong?: {
+    date: (...args: Array<any>) => any
+    time: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any
+  }
+  match?: {
     ordinalNumber: (...args: Array<any>) => any
     era: (...args: Array<any>) => any
     quarter: (...args: Array<any>) => any
