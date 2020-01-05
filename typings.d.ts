@@ -64,18 +64,30 @@ type Locale = {
 }
 type LocaleAliased = Locale
 
+type Duration = {
+  years?: number
+  months?: number
+  days?: number
+  hours?: number
+  minutes?: number
+  seconds?: number
+}
+type DurationAliased = Duration
+
 // Exported Type Aliases
 
 declare module 'date-fns' {
   export type Interval = IntervalAliased
 
   export type Locale = LocaleAliased
+
+  export type Duration = DurationAliased
 }
 
 // Regular Functions
 
 declare module 'date-fns' {
-  function add(date: Date | number, duration: Object): Date
+  function add(date: Date | number, duration: Duration): Date
   namespace add {}
 
   function addBusinessDays(date: Date | number, amount: number): Date
@@ -901,7 +913,7 @@ declare module 'date-fns' {
   function startOfYesterday(): Date
   namespace startOfYesterday {}
 
-  function sub(date: Date | number, duration: Object): Date
+  function sub(date: Date | number, duration: Duration): Date
   namespace sub {}
 
   function subBusinessDays(date: Date | number, amount: number): Date
@@ -3783,7 +3795,7 @@ declare module 'date-fns/toDate/index.js' {
 // FP Functions
 
 declare module 'date-fns/fp' {
-  const add: CurriedFn2<Object, Date | number, Date>
+  const add: CurriedFn2<Duration, Date | number, Date>
   namespace add {}
 
   const addBusinessDays: CurriedFn2<number, Date | number, Date>
@@ -4602,7 +4614,7 @@ declare module 'date-fns/fp' {
   const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {}
 
-  const sub: CurriedFn2<Object, Date | number, Date>
+  const sub: CurriedFn2<Duration, Date | number, Date>
   namespace sub {}
 
   const subBusinessDays: CurriedFn2<number, Date | number, Date>
@@ -7604,7 +7616,7 @@ declare module 'date-fns/fp/toDate/index.js' {
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
-  function add(date: Date | number, duration: Object): Date
+  function add(date: Date | number, duration: Duration): Date
   namespace add {}
 
   function addBusinessDays(date: Date | number, amount: number): Date
@@ -8430,7 +8442,7 @@ declare module 'date-fns/esm' {
   function startOfYesterday(): Date
   namespace startOfYesterday {}
 
-  function sub(date: Date | number, duration: Object): Date
+  function sub(date: Date | number, duration: Duration): Date
   namespace sub {}
 
   function subBusinessDays(date: Date | number, amount: number): Date
@@ -11312,7 +11324,7 @@ declare module 'date-fns/esm/toDate/index.js' {
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
-  const add: CurriedFn2<Object, Date | number, Date>
+  const add: CurriedFn2<Duration, Date | number, Date>
   namespace add {}
 
   const addBusinessDays: CurriedFn2<number, Date | number, Date>
@@ -12131,7 +12143,7 @@ declare module 'date-fns/esm/fp' {
   const startOfYear: CurriedFn1<Date | number, Date>
   namespace startOfYear {}
 
-  const sub: CurriedFn2<Object, Date | number, Date>
+  const sub: CurriedFn2<Duration, Date | number, Date>
   namespace sub {}
 
   const subBusinessDays: CurriedFn2<number, Date | number, Date>
@@ -17625,7 +17637,7 @@ declare module 'date-fns/esm/locale/zh-TW/index.js' {
 // dateFns Global Interface
 
 interface dateFns {
-  add(date: Date | number, duration: Object): Date
+  add(date: Date | number, duration: Duration): Date
 
   addBusinessDays(date: Date | number, amount: number): Date
 
@@ -18224,7 +18236,7 @@ interface dateFns {
 
   startOfYesterday(): Date
 
-  sub(date: Date | number, duration: Object): Date
+  sub(date: Date | number, duration: Duration): Date
 
   subBusinessDays(date: Date | number, amount: number): Date
 

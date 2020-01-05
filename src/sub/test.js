@@ -35,6 +35,7 @@ describe('sub', () => {
   })
 
   it('implicitly converts number arguments', () => {
+    // $ExpectedMistake
     const result = sub(new Date(2014, 8 /* Sep */, 1, 14), { hours: '4.2' })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })

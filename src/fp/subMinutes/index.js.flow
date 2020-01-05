@@ -37,6 +37,15 @@ export type Locale = {
   }
 }
 
+export type Duration = {
+  years?: number,
+  months?: number,
+  days?: number,
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+}
+
 type CurriedFn1<A, R> = <A>(a: A) => R
 
 type CurriedFn2<A, B, R> = <A>(

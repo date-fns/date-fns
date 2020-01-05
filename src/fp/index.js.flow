@@ -37,6 +37,15 @@ export type Locale = {
   }
 }
 
+export type Duration = {
+  years?: number,
+  months?: number,
+  days?: number,
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+}
+
 type CurriedFn1<A, R> = <A>(a: A) => R
 
 type CurriedFn2<A, B, R> = <A>(
@@ -68,7 +77,7 @@ type CurriedFn4<A, B, C, D, R> = <A>(
         ) => CurriedFn1<D, R> | (<A, B, C, D>(a: A, b: B, c: C, d: D) => R)))
 
 declare module.exports: {
-  add: CurriedFn2<Object, Date | number, Date>,
+  add: CurriedFn2<Duration, Date | number, Date>,
   addBusinessDays: CurriedFn2<number, Date | number, Date>,
   addDays: CurriedFn2<number, Date | number, Date>,
   addHours: CurriedFn2<number, Date | number, Date>,
@@ -491,7 +500,7 @@ declare module.exports: {
     Date
   >,
   startOfYear: CurriedFn1<Date | number, Date>,
-  sub: CurriedFn2<Object, Date | number, Date>,
+  sub: CurriedFn2<Duration, Date | number, Date>,
   subBusinessDays: CurriedFn2<number, Date | number, Date>,
   subDays: CurriedFn2<number, Date | number, Date>,
   subHours: CurriedFn2<number, Date | number, Date>,
