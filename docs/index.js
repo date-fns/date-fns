@@ -135,6 +135,9 @@ module.exports = {
     },
     {
       fullPath: path.join(__dirname, 'Locale.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Duration.js')
     }
   ]
 }

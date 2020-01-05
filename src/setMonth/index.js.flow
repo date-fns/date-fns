@@ -37,4 +37,13 @@ export type Locale = {
   }
 }
 
+export type Duration = {
+  years?: number,
+  months?: number,
+  days?: number,
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+}
+
 declare module.exports: (date: Date | number, month: number) => Date

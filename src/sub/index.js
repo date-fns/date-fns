@@ -13,7 +13,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * Subtract the specified years, months, days, hours, minutes and seconds from the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Object} duration - the object with years, months, days, hours, minutes and seconds to be subtracted
+ * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|

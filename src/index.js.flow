@@ -37,8 +37,17 @@ export type Locale = {
   }
 }
 
+export type Duration = {
+  years?: number,
+  months?: number,
+  days?: number,
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+}
+
 declare module.exports: {
-  add: (date: Date | number, duration: Object) => Date,
+  add: (date: Date | number, duration: Duration) => Date,
 
   addBusinessDays: (date: Date | number, amount: number) => Date,
 
@@ -664,7 +673,7 @@ declare module.exports: {
 
   startOfYesterday: () => Date,
 
-  sub: (date: Date | number, duration: Object) => Date,
+  sub: (date: Date | number, duration: Duration) => Date,
 
   subBusinessDays: (date: Date | number, amount: number) => Date,
 
