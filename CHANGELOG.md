@@ -25,6 +25,8 @@ Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://git
 - [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
 - [Added `isExists` function that checks if the given date is exists](https://github.com/date-fns/date-fns/pull/682).
 - [Added `add` function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1581).
+- [Added `sub` function, the opposite of `add`](https://github.com/date-fns/date-fns/pull/1583).
+- [Added `Duration` type used in `add` and `sub`](https://github.com/date-fns/date-fns/pull/1583).
 - [Added Azerbaijani (az) locale](https://github.com/date-fns/date-fns/pull/1547).
 - [Added Moroccan Arabic (ar-MA) locale](https://github.com/date-fns/date-fns/pull/1578).
 
