@@ -664,6 +664,8 @@ declare module.exports: {
 
   startOfYesterday: () => Date,
 
+  sub: (date: Date | number, duration: Object) => Date,
+
   subBusinessDays: (date: Date | number, amount: number) => Date,
 
   subDays: (date: Date | number, amount: number) => Date,
