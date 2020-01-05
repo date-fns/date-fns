@@ -1,3 +1,4 @@
+import addDays from '../addDays/index.js'
 import addMonths from '../addMonths/index.js'
 import toDate from '../toDate/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
@@ -55,12 +56,14 @@ export default function add(dirtyDate, duration) {
   // Add years and months
   const dateWithMonths = addMonths(toDate(dirtyDate), months + years * 12)
 
+  // Add days
+  const dateWithDays = addDays(dateWithMonths, days)
+
   // Add days, hours, minutes and seconds
-  const hoursToAdd = hours + days * 24
-  const minutesToAdd = minutes + hoursToAdd * 60
+  const minutesToAdd = minutes + hours * 60
   const secondsToAdd = seconds + minutesToAdd * 60
   const msToAdd = secondsToAdd * 1000
-  const finalDate = new Date(dateWithMonths.getTime() + msToAdd)
+  const finalDate = new Date(dateWithDays.getTime() + msToAdd)
 
   return finalDate
 }
