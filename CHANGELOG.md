@@ -14,6 +14,7 @@ Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://git
 
 ### Fixed
 
+- [Fixed a bug with addBusinessDays returning the Tuesday when adding 1 day on weekends. Now it returns the Monday](https://github.com/date-fns/date-fns/pull/1588).
 - [Removed dots from short day period names in the Kazakh locale](https://github.com/date-fns/date-fns/pull/1512).
 - [Fixed typo in formatDistance in the Czech locale](https://github.com/date-fns/date-fns/pull/1540).
 - [Fixed shortenings in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1560).
