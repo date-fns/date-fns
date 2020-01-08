@@ -8,13 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## Unreleased
+## [2.9.0] - 2020-01-08
 
 Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic), [@Anshuman71](https://github.com/Anshuman71), [@talgautb](https://github.com/talgautb), [@filipjuza](https://github.com/filipjuza), [@tobyzerner](https://github.com/tobyzerner), [@emil9453](https://github.com/emil9453), [@fintara](https://github.com/fintara), [@pascaliske](https://github.com/pascaliske), [@rramiachraf](https://github.com/rramiachraf), [@marnusw](https://github.com/marnusw)
 
 ### Fixed
 
 - [Fixed a bug with addBusinessDays returning the Tuesday when adding 1 day on weekends. Now it returns the Monday](https://github.com/date-fns/date-fns/pull/1588).
+- [Added missing timezone to `formatISO`](https://github.com/date-fns/date-fns/pull/1576).
 - [Removed dots from short day period names in the Kazakh locale](https://github.com/date-fns/date-fns/pull/1512).
 - [Fixed typo in formatDistance in the Czech locale](https://github.com/date-fns/date-fns/pull/1540).
 - [Fixed shortenings in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1560).
@@ -1911,7 +1912,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.8.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.9.0...HEAD
+[2.9.0]: https://github.com/date-fns/date-fns/compare/v2.8.1...v2.9.0
 [2.8.1]: https://github.com/date-fns/date-fns/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
 [2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
