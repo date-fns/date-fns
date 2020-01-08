@@ -15,6 +15,27 @@ describe('addBusinessDays', function() {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
+  it('returns the Monday when 1 day is added on the Friday', () => {
+    assert.deepEqual(
+      addBusinessDays(new Date(2020, 0 /* Jan */, 10), 1), // Friday
+      new Date(2020, 0 /* Jan */, 13) // Monday
+    )
+  })
+
+  it('returns the Monday when 1 day is added on the Satuday', () => {
+    assert.deepEqual(
+      addBusinessDays(new Date(2020, 0 /* Jan */, 11), 1), // Saturday
+      new Date(2020, 0 /* Jan */, 13) // Monday
+    )
+  })
+
+  it('returns the Monday when 1 day is added on the Sunday', () => {
+    assert.deepEqual(
+      addBusinessDays(new Date(2020, 0 /* Jan */, 12), 1), // Sunday
+      new Date(2020, 0 /* Jan */, 13) // Monday
+    )
+  })
+
   it('can handle a large number of business days', function() {
     if (typeof this.timeout === 'function') {
       this.timeout(500 /* 500 ms test timeout */)

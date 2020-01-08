@@ -24,25 +24,28 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
 export default function addBusinessDays(dirtyDate, dirtyAmount) {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
+  const date = toDate(dirtyDate)
+  const amount = toInteger(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
 
-  var hours = date.getHours()
-  var sign = amount < 0 ? -1 : 1
+  const hours = date.getHours()
+  const sign = amount < 0 ? -1 : 1
+  const fullWeeks = toInteger(amount / 5)
 
-  date.setDate(date.getDate() + toInteger(amount / 5) * 7)
-  amount %= 5 // to get remaining days not part of a full week
+  date.setDate(date.getDate() + fullWeeks * 7)
 
-  var shiftSize = Math.abs(amount)
+  // Get remaining days not part of a full week
+  let restDays = Math.abs(amount % 5)
 
-  // only loops over remaining days or if day is a weekend, ensures a business day is returned
-  while (shiftSize > 0 || isWeekend(date)) {
-    if (!isWeekend(date)) shiftSize -= 1
+  // Loops over remaining days
+  while (restDays > 0) {
     date.setDate(date.getDate() + sign)
+    if (!isWeekend(date)) restDays -= 1
   }
 
+  // Restore hours to avoid DST lag
   date.setHours(hours)
+
   return date
 }
