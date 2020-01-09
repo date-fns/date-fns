@@ -15,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of hours to be subtracted
+ * @param {Number} amount - the amount of hours to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the hours subtracted
  * @throws {TypeError} 2 arguments required
  *

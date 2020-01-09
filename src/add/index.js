@@ -13,7 +13,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * Add the specified years, months, days, hours, minutes and seconds to the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be added
+ * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
