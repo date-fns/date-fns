@@ -721,6 +721,11 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
 
+- **BREAKING**: all functions that accept numbers as arguments, now coerce
+  values using `Number()` and also round decimals. Positive decimals are
+  rounded using `Math.floor`, decimals less than zero are rounded using
+  `Math.ceil`.
+
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
 
 - **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
