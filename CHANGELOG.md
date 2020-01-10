@@ -8,6 +8,13 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## Unreleased
+
+### Added
+
+- [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added `weeks` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1592).
+
 ## [2.9.0] - 2020-01-08
 
 Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic), [@Anshuman71](https://github.com/Anshuman71), [@talgautb](https://github.com/talgautb), [@filipjuza](https://github.com/filipjuza), [@tobyzerner](https://github.com/tobyzerner), [@emil9453](https://github.com/emil9453), [@fintara](https://github.com/fintara), [@pascaliske](https://github.com/pascaliske), [@rramiachraf](https://github.com/rramiachraf), [@marnusw](https://github.com/marnusw) and [@Imballinst](https://github.com/Imballinst) for working on the release.
