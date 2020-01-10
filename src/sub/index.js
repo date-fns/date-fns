@@ -7,18 +7,19 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name sub
  * @category Common Helpers
- * @summary Subtract the specified years, months, days, hours, minutes and seconds from the given date.
+ * @summary Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
  * @description
- * Subtract the specified years, months, days, hours, minutes and seconds from the given date.
+ * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be subtracted
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
  * | years   | Amount of years to be subtracted   |
  * | months  | Amount of months to be subtracted  |
+ * | weeks   | Amount of weeks to be subtracted   |
  * | days    | Amount of days to be subtracted    |
  * | hours   | Amount of hours to be subtracted   |
  * | minutes | Amount of minutes to be subtracted |
@@ -30,10 +31,11 @@ import toInteger from '../_lib/toInteger/index.js'
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Subtract the following duration from 8 June 2017 15:29:20
- * const result = sub(new Date(2017, 5, 8, 15, 29, 20), {
+ * // Subtract the following duration from 15 June 2017 15:29:20
+ * const result = sub(new Date(2017, 5, 15, 15, 29, 20), {
  *   years: 2,
  *   months: 9,
+ *   weeks: 1,
  *   days: 7,
  *   hours: 5,
  *   minutes: 9,
@@ -48,6 +50,7 @@ export default function sub(dirtyDate, duration) {
 
   const years = 'years' in duration ? toInteger(duration.years) : 0
   const months = 'months' in duration ? toInteger(duration.months) : 0
+  const weeks = 'weeks' in duration ? toInteger(duration.weeks) : 0
   const days = 'days' in duration ? toInteger(duration.days) : 0
   const hours = 'hours' in duration ? toInteger(duration.hours) : 0
   const minutes = 'minutes' in duration ? toInteger(duration.minutes) : 0
@@ -56,8 +59,8 @@ export default function sub(dirtyDate, duration) {
   // Subtract years and months
   const dateWithoutMonths = subMonths(toDate(dirtyDate), months + years * 12)
 
-  // Subtract days
-  const dateWithoutDays = subDays(dateWithoutMonths, days)
+  // Subtract weeks and days
+  const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7)
 
   // Subtract hours, minutes and seconds
   const minutestoSub = minutes + hours * 60

@@ -6,9 +6,10 @@ import sub from '.'
 
 describe('sub', () => {
   it('subtracts the duration from the given date', () => {
-    const result = sub(new Date(2017, 5 /* June */, 8, 15, 29, 20), {
+    const result = sub(new Date(2017, 5 /* June */, 15, 15, 29, 20), {
       years: 2,
       months: 9,
+      weeks: 1,
       days: 7,
       hours: 5,
       minutes: 9,
