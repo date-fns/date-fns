@@ -17,7 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * @example
  * // Each month between 6 February 2014 and 10 August 2014:
- * var result = eachDayOfInterval({
+ * var result = eachMonthOfInterval({
  *   start: new Date(2014, 1, 6),
  *   end: new Date(2014, 7, 10)
  * })
