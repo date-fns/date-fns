@@ -9,6 +9,7 @@
  *
  * @property {number} [years]
  * @property {number} [months]
+ * @property {number} [weeks]
  * @property {number} [days]
  * @property {number} [hours]
  * @property {number} [minutes]

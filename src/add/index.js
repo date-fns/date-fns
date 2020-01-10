@@ -7,18 +7,19 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name add
  * @category Common Helpers
- * @summary Add the specified years, months, days, hours, minutes and seconds to the given date.
+ * @summary Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @description
- * Add the specified years, months, days, hours, minutes and seconds to the given date.
+ * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
  * | years          | Amount of years to be added        |
  * | months         | Amount of months to be added       |
+ * | weeks          | Amount of weeks to be added       |
  * | days           | Amount of days to be added         |
  * | hours          | Amount of hours to be added        |
  * | minutes        | Amount of minutes to be added      |
@@ -33,13 +34,14 @@ import toInteger from '../_lib/toInteger/index.js'
  * // Add the following duration to 1 September 2014, 10:19:50
  * var result = add(new Date(2014, 8, 1, 10, 19, 50), {
  *   years: 2,
- *   months: 24,
+ *   months: 9,
+ *   weeks: 1,
  *   days: 7,
  *   hours: 5,
  *   minutes: 9,
  *   seconds: 30,
  * })
- * //=> Sat Sep 8 2018 15:29:20
+ * //=> Thu Jun 15 2017 15:29:20
  */
 export default function add(dirtyDate, duration) {
   requiredArgs(2, arguments)
@@ -48,6 +50,7 @@ export default function add(dirtyDate, duration) {
 
   const years = 'years' in duration ? toInteger(duration.years) : 0
   const months = 'months' in duration ? toInteger(duration.months) : 0
+  const weeks = 'weeks' in duration ? toInteger(duration.weeks) : 0
   const days = 'days' in duration ? toInteger(duration.days) : 0
   const hours = 'hours' in duration ? toInteger(duration.hours) : 0
   const minutes = 'minutes' in duration ? toInteger(duration.minutes) : 0
@@ -56,8 +59,8 @@ export default function add(dirtyDate, duration) {
   // Add years and months
   const dateWithMonths = addMonths(toDate(dirtyDate), months + years * 12)
 
-  // Add days
-  const dateWithDays = addDays(dateWithMonths, days)
+  // Add weeks and days
+  const dateWithDays = addDays(dateWithMonths, days + weeks * 7)
 
   // Add days, hours, minutes and seconds
   const minutesToAdd = minutes + hours * 60

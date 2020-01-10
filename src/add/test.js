@@ -7,14 +7,15 @@ import add from '.'
 describe('add', function() {
   it('adds the values from the given object', function() {
     var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
-      seconds: 30,
-      minutes: 9,
-      hours: 5,
-      days: 7,
+      years: 2,
       months: 9,
-      years: 2
+      weeks: 1,
+      days: 7,
+      hours: 5,
+      minutes: 9,
+      seconds: 30
     })
-    assert.deepEqual(result, new Date(2017, 5 /* June */, 8, 15, 29, 20))
+    assert.deepEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20))
   })
 
   it('returns same date object when passed empty duration values', function() {
