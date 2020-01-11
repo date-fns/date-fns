@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  *
  * // Is 11 July 1989 09:00 before 11 July 1989 10:00 by day?
- * var result = isBeforeDay(new Date(1989, 6, 10, 9), new Date(1989, 6, 11, 10))
+ * var result = isBeforeDay(new Date(1989, 6, 11, 9), new Date(1989, 6, 11, 10))
  * //=> false
  */
 export default function isBeforeDay(dirtyDate, dirtyDateToCompare) {
