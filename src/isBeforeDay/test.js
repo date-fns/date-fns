@@ -21,7 +21,7 @@ describe('isBeforeDay', function() {
     assert(result === false)
   })
 
-  it('returns false if the first date is equal to the second one', function() {
+  it('returns false if the first date is equal to the second one by day', function() {
     var result = isBeforeDay(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
