@@ -4,6 +4,7 @@
 import assert from 'power-assert'
 import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
+import parseISO from '../parseISO'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(originalDate) {
@@ -13,7 +14,7 @@ function generateOffset(originalDate) {
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+    const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'
@@ -31,6 +32,13 @@ describe('formatISO', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const tzOffsetExtended = generateOffset(date)
     assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
+  })
+
+  it('formats in ISO format properly when minuteOffset>0 ', () => {
+    assert(
+      formatISO(parseISO('2019-03-03T19:00:52+05:30')) ===
+        '2019-03-03T19:00:52+05:30'
+    )
   })
 
   it('accepts a timestamp', () => {
