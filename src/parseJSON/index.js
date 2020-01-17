@@ -15,22 +15,29 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * The following formats are supported:
  *
  *     - `2000-03-15T05:20:10.123Z`: The output of `.toISOString()` and `JSON.stringify(new Date())`
+ *
  *     - `2000-03-15T05:20:10Z`: Without milliseconds
+ *
  *     - `2000-03-15T05:20:10+00:00`: With a zero offset, the default JSON encoded format in some other languages
+ *
  *     - `2000-03-15T05:20:10+0000`: With a zero offset without a colon
+ *
  *     - `2000-03-15T05:20:10`: Without a trailing 'Z' symbol
+ *
  *     - `2000-03-15T05:20:10.1234567`: Up to 7 digits in milliseconds field. Only first 3 are taken into account since JS does not allow fractional milliseconds
+ *
  *     - `2000-03-15 05:20:10`: With a space instead of a 'T' separator for APIs returning a SQL date without reformatting
  *
  * For convenience and ease of use these other input types are also supported
  * via [toDate]{@link https://date-fns.org/docs/toDate}:
  *
  *     - A `Date` instance will be cloned
+ *
  *     - A `number` will be treated as a timestamp
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO1806 date string to convert
+ * @param {String|Number|Date} argument A fully formed ISO 8601 date string to convert
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
