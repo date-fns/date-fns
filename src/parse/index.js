@@ -308,17 +308,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - Old `parse` was renamed to `toDate`.
- *   Now `parse` is a new function which parses a string using a provided format.
- *
- *   ```javascript
- *   // Before v2.0.0
- *   parse('2016-01-01')
- *
- *   // v2.0.0 onward
- *   toDate('2016-01-01')
- *   parse('2016-01-01', 'yyyy-MM-dd', new Date())
- *   ```
+ * - The v1 `parse` implementation was split into two functions.
+ *   If you have a date|timestamp you should use `toDate`.
+ *   If you have a string in ISO 8601 format then you should use `parseISO`.
+ *   For strings in other formats you should use the new `parse` implementation which will parse the string using a provided format.
  *
  * @param {String} dateString - the string to parse
  * @param {String} formatString - the string of tokens

@@ -34,16 +34,6 @@ var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - The previous `parse` implementation was renamed to `parseISO`.
- *
- *   ```javascript
- *   // Before v2.0.0
- *   parse('2016-01-01')
- *
- *   // v2.0.0 onward
- *   parseISO('2016-01-01')
- *   ```
- *
  * - `parseISO` now validates separate date and time values in ISO-8601 strings
  *   and returns `Invalid Date` if the date is invalid.
  *
