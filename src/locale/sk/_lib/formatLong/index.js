@@ -4,8 +4,8 @@ import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 var dateFormats = {
   full: 'EEEE d. MMMM y',
   long: 'd. MMMM y',
-  medium: 'd. M. y',
-  short: 'd. M. y'
+  medium: 'd. MMM. y',
+  short: 'dd.MM.y'
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#2149
