@@ -495,7 +495,7 @@ declare module.exports: {
 
   isTuesday: (date: Date | number) => boolean,
 
-  isValid: (date: any) => boolean,
+  isValid: (date: Date | number) => boolean,
 
   isWednesday: (date: Date | number) => boolean,
 

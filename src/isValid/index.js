@@ -39,7 +39,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   that try to coerce arguments to the expected type
  *   (which is also the case with other *date-fns* functions).
  *
- * @param {*} date - the date to check
+ * @param {Date | Number} date - the value to check, in the form of Date object or number (in milliseconds Unix time)
  * @returns {Boolean} the date is valid
  * @throws {TypeError} 1 argument required
  *

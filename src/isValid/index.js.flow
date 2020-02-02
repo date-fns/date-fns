@@ -47,4 +47,4 @@ export type Duration = {
   seconds?: number
 }
 
-declare module.exports: (date: any) => boolean
+declare module.exports: (date: Date | number) => boolean
