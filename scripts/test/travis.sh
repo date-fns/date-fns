@@ -24,6 +24,7 @@ then
   yarn test --single-run
 
   ./scripts/test/dst.sh
+  ./scripts/test/formatISO.sh
 
   prebuild
   ./scripts/test/tz.sh
