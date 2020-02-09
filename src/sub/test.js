@@ -6,16 +6,17 @@ import sub from '.'
 
 describe('sub', () => {
   it('subtracts the duration from the given date', () => {
-    const result = sub(new Date(2017, 5 /* June */, 15, 15, 29, 20), {
+    const result = sub(new Date(2017, 5 /* June */, 15, 15, 29, 20, 500), {
       years: 2,
       months: 9,
       weeks: 1,
       days: 7,
       hours: 5,
       minutes: 9,
-      seconds: 30
+      seconds: 30,
+      milliseconds: 200
     })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
+    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50, 300))
   })
 
   it('returns same date object when passed empty duration', () => {

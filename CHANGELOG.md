@@ -14,6 +14,8 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 - [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
 - [Added `weeks` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added `milliseconds` to `Duration`](https://github.com/date-fns/date-fns/pull/1634).
+- [Added `milliseconds` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1634).
 
 ## [2.9.0] - 2020-01-08
 

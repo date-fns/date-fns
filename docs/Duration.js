@@ -14,6 +14,7 @@
  * @property {number} [hours]
  * @property {number} [minutes]
  * @property {number} [seconds]
+ * @property {number} [milliseconds]
  */
 const Duration = {}
 module.exports = Duration
