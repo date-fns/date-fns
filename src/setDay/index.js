@@ -60,6 +60,10 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
   var remainder = day % 7
   var dayIndex = (remainder + 7) % 7
 
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  var delta = 7 - weekStartsOn
+  var diff =
+    day < 0 || day > 6
+      ? day - ((currentDay + delta) % 7)
+      : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
   return addDays(date, diff, options)
 }
