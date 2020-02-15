@@ -25,12 +25,12 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
- * // Set Sunday to 1 September 2014:
+ * // Set week day to Sunday, with the default weekStartsOn of Sunday:
  * var result = setDay(new Date(2014, 8, 1), 0)
  * //=> Sun Aug 31 2014 00:00:00
  *
  * @example
- * // If week starts with Monday, set Sunday to 1 September 2014:
+ * // Set week day to Sunday, with a weekStartsOn of Monday:
  * var result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
