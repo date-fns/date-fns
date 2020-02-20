@@ -539,7 +539,7 @@ declare module.exports: {
   parse: (
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,

@@ -744,7 +744,7 @@ declare module 'date-fns' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -8273,7 +8273,7 @@ declare module 'date-fns/esm' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -18102,7 +18102,7 @@ interface dateFns {
   parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
