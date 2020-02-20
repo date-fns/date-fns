@@ -1067,7 +1067,9 @@ describe('parse', function() {
     })
 
     it('allows to specify which day is the first day of the week', function() {
-      var result = parse('7th', 'eo', referenceDate, { weekStartsOn: /* Fri */ 5 })
+      var result = parse('7th', 'eo', referenceDate, {
+        weekStartsOn: /* Fri */ 5
+      })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
 
@@ -1147,7 +1149,9 @@ describe('parse', function() {
     })
 
     it('allows to specify which day is the first day of the week', function() {
-      var result = parse('7th', 'co', referenceDate, { weekStartsOn: /* Fri */ 5 })
+      var result = parse('7th', 'co', referenceDate, {
+        weekStartsOn: /* Fri */ 5
+      })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
 
@@ -2008,7 +2012,11 @@ describe('parse', function() {
     })
 
     it('ISO week-numbering date', function() {
-      var result = parse('2016W474T153005', "RRRR'W'IIi'T'HHmmss", referenceDate)
+      var result = parse(
+        '2016W474T153005',
+        "RRRR'W'IIi'T'HHmmss",
+        referenceDate
+      )
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 24, 15, 30, 5, 0))
     })
 
@@ -2032,7 +2040,11 @@ describe('parse', function() {
     })
 
     it('middle-endian', function() {
-      var result = parse('5 a.m. 07/02/2016', 'h aaaa MM/dd/yyyy', referenceDate)
+      var result = parse(
+        '5 a.m. 07/02/2016',
+        'h aaaa MM/dd/yyyy',
+        referenceDate
+      )
       assert.deepEqual(result, new Date(2016, 6 /* Jul */, 2, 5, 0, 0, 0))
     })
 
@@ -2430,7 +2442,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `d` instead of `D` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
+        /Use `d` instead of `D` for formatting days of the month using `yyyy D` to the input `2016 5`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2446,7 +2458,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `dd` instead of `DD` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
+        /Use `dd` instead of `DD` for formatting days of the month using `yyyy DD` to the input `2016 05`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2462,7 +2474,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yy` instead of `YY` for formatting years; see: https:\/\/git.io\/fxCyr/
+        /Use `yy` instead of `YY` for formatting years using `YY w` to the input `16 1`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2478,7 +2490,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yyyy` instead of `YYYY` for formatting years; see: https:\/\/git.io\/fxCyr/
+        /Use `yyyy` instead of `YYYY` for formatting years using `YYYY w` to the input `2016 1`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
