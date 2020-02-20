@@ -451,13 +451,13 @@ export default function parse(
       !options.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token)
+      throwProtectedError(token, formatString, dirtyDateString)
     }
     if (
       !options.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token)
+      throwProtectedError(token, formatString, dirtyDateString)
     }
 
     var firstCharacter = token[0]
