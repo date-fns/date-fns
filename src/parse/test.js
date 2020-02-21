@@ -2442,7 +2442,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `d` instead of `D` for formatting days of the month using `yyyy D` to the input `2016 5`; see: https:\/\/git.io\/fxCyr/
+        /Use `d` instead of `D` \(in `yyyy D`\) for formatting days of the month to the input `2016 5`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2458,7 +2458,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `dd` instead of `DD` for formatting days of the month using `yyyy DD` to the input `2016 05`; see: https:\/\/git.io\/fxCyr/
+        /Use `dd` instead of `DD` \(in `yyyy DD`\) for formatting days of the month to the input `2016 05`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2474,7 +2474,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yy` instead of `YY` for formatting years using `YY w` to the input `16 1`; see: https:\/\/git.io\/fxCyr/
+        /Use `yy` instead of `YY` \(in `YY w`\) for formatting years to the input `16 1`; see: https:\/\/git.io\/fxCyr/
       )
     })
 
@@ -2490,7 +2490,7 @@ describe('parse', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yyyy` instead of `YYYY` for formatting years using `YYYY w` to the input `2016 1`; see: https:\/\/git.io\/fxCyr/
+        /Use `yyyy` instead of `YYYY` \(in `YYYY w`\) for formatting years to the input `2016 1`; see: https:\/\/git.io\/fxCyr/
       )
     })
 

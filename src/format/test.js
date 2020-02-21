@@ -743,7 +743,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /(Use `d` instead of `D` for formatting days of the month using `yyyy-MM-D` to the input `Fri Apr 04 1986 10:32:55)|(`; see: https:\/\/git.io\/fxCyr)/g
+        /(Use `d` instead of `D` \(in `yyyy-MM-D`\) for formatting days of the month to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -759,7 +759,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /(Use `dd` instead of `DD` for formatting days of the month using `yyyy-MM-DD` to the input `Fri Apr 04 1986 10:32:55)|(`; see: https:\/\/git.io\/fxCyr)/g
+        /(Use `dd` instead of `DD` \(in `yyyy-MM-DD`\) for formatting days of the month to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -775,7 +775,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /(Use `yy` instead of `YY` for formatting days of the month using `YY-MM-dd` to the input `Fri Apr 04 1986 10:32:55)|(`; see: https:\/\/git.io\/fxCyr)/g
+        /(Use `yy` instead of `YY` \(in `YY-MM-dd`\) for formatting years to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -791,7 +791,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /(Use `yyyy` instead of `YYYY` for formatting days of the month using `YYYY-MM-dd` to the input `Fri Apr 04 1986 10:32:55)|(`; see: https:\/\/git.io\/fxCyr)/g
+        /(Use `yyyy` instead of `YYYY` \(in `YYYY-MM-dd`\) for formatting years to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
