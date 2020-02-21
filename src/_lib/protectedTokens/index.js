@@ -12,19 +12,19 @@ export function isProtectedWeekYearToken(token) {
 export function throwProtectedError(token, format, input) {
   if (token === 'YYYY') {
     throw new RangeError(
-      `Use \`yyyy\` instead of \`YYYY\` for formatting years using \`${format}\` to the input \`${input}\`; see: https://git.io/fxCyr`
+      `Use \`yyyy\` instead of \`YYYY\` (in \`${format}\`) for formatting years to the input \`${input}\`; see: https://git.io/fxCyr`
     )
   } else if (token === 'YY') {
     throw new RangeError(
-      `Use \`yy\` instead of \`YY\` for formatting years using \`${format}\` to the input \`${input}\`; see: https://git.io/fxCyr`
+      `Use \`yy\` instead of \`YY\` (in \`${format}\`) for formatting years to the input \`${input}\`; see: https://git.io/fxCyr`
     )
   } else if (token === 'D') {
     throw new RangeError(
-      `Use \`d\` instead of \`D\` for formatting days of the month using \`${format}\` to the input \`${input}\`; see: https://git.io/fxCyr`
+      `Use \`d\` instead of \`D\` (in \`${format}\`) for formatting days of the month to the input \`${input}\`; see: https://git.io/fxCyr`
     )
   } else if (token === 'DD') {
     throw new RangeError(
-      `Use \`dd\` instead of \`DD\` for formatting days of the month using \`${format}\` to the input \`${input}\`; see: https://git.io/fxCyr`
+      `Use \`dd\` instead of \`DD\` (in \`${format}\`) for formatting days of the month to the input \`${input}\`; see: https://git.io/fxCyr`
     )
   }
 }
