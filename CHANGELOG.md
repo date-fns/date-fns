@@ -8,7 +8,11 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## Unreleased
+## [2.10.0] - 2020-02-25
+
+### Fixed
+
+- [Fixed `formatISO` when formatting time with timezones with minute offsets > 0](https://github.com/date-fns/date-fns/pull/1599).
 
 ### Added
 
