@@ -12,7 +12,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Fixed
 
-- [Fixed `formatISO` when formatting time with timezones with minute offsets > 0](https://github.com/date-fns/date-fns/pull/1599).
+- [Fixed `formatISO` when formatting time with timezones with minute offsets > 0](https://github.com/date-fns/date-fns/pull/1599). Kudos to [@dcRUSTy](https://github.com/dcRUSTy).
 
 ### Added
 
