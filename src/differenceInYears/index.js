@@ -2,7 +2,6 @@ import toDate from '../toDate/index.js'
 import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
 import compareAsc from '../compareAsc/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
-import isLeapYear from '../isLeapYear'
 
 /**
  * @name differenceInYears
