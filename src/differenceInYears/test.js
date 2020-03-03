@@ -54,12 +54,20 @@ describe('differenceInYears', function() {
       assert(result === -2)
     })
 
-    it('supports equal dates', () => {
+    it('supports equal dates of same year', () => {
       var result = differenceInYears(
         new Date(2004, 1 /* Feb */, 29, 0, 0),
         new Date(2004, 1 /* Feb */, 29, 0, 0)
       )
       assert(result === 0)
+    })
+
+    it('supports equal dates of different years', () => {
+      var result = differenceInYears(
+        new Date(2008, 1 /* Feb */, 29, 0, 0),
+        new Date(2004, 1 /* Feb */, 29, 0, 0)
+      )
+      assert(result === 4)
     })
   })
 
