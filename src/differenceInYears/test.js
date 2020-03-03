@@ -29,6 +29,32 @@ describe('differenceInYears', function() {
     assert(result === 4)
   })
 
+  describe('leap days', function() {
+    it('supports past dates', () => {
+      var result = differenceInYears(
+        new Date(2004, 1 /* Feb */, 29, 0, 0),
+        new Date(2002, 2 /* Mar */, 1, 0, 0)
+      )
+      assert(result === 1)
+    })
+
+    it('supports future dates', () => {
+      var result = differenceInYears(
+        new Date(2004, 1 /* Feb */, 29, 0, 0),
+        new Date(2006, 2 /* Mar */, 1, 0, 0)
+      )
+      assert(result === -2)
+    })
+
+    it('supports equal dates', () => {
+      var result = differenceInYears(
+        new Date(2004, 1 /* Feb */, 29, 0, 0),
+        new Date(2004, 1 /* Feb */, 29, 0, 0)
+      )
+      assert(result === 0)
+    })
+  })
+
   describe('edge cases', function() {
     it('the difference is less than a year, but the given dates are in different calendar years', function() {
       var result = differenceInYears(
