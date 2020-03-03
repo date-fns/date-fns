@@ -30,12 +30,20 @@ describe('differenceInYears', function() {
   })
 
   describe('leap days', function() {
-    it('supports past dates', () => {
+    it('supports past dates with right side larger', () => {
       var result = differenceInYears(
         new Date(2004, 1 /* Feb */, 29, 0, 0),
         new Date(2002, 2 /* Mar */, 1, 0, 0)
       )
       assert(result === 1)
+    })
+
+    it('supports past dates with right side smaller', () => {
+      var result = differenceInYears(
+        new Date(2004, 1 /* Feb */, 29, 0, 0),
+        new Date(2002, 1 /* Feb */, 28, 0, 0)
+      )
+      assert(result === 2)
     })
 
     it('supports future dates', () => {
