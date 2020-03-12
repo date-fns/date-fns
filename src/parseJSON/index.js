@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO1806 date string to convert
+ * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
