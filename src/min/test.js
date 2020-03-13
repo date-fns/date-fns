@@ -70,8 +70,8 @@ describe('min', function() {
   })
 
   it('converts iterable objects into Array', function() {
-    // $ExpectedMistake
     var result = min(
+      // $ExpectedMistake
       new Set([
         new Date(1989, 6 /* Jul */, 10),
         new Date(1987, 1 /* Feb */, 11)
