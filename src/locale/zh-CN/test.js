@@ -255,11 +255,18 @@ describe('zh-CN locale', function() {
   context('with `formatRelative`', function() {
     var baseDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
-    it('last week', function() {
+    it('last week (in last week)', function() {
+      var result = formatRelative(new Date(1986, 2 /* March */, 30), baseDate, {
+        locale: locale
+      })
+      assert(result === '上个星期日 上午 12:00')
+    })
+
+    it('last week (in same week)', function() {
       var result = formatRelative(new Date(1986, 3 /* Apr */, 1), baseDate, {
         locale: locale
       })
-      assert(result === '上个 星期二 上午 12:00')
+      assert(result === '星期二 上午 12:00')
     })
 
     it('yesterday', function() {
@@ -289,13 +296,22 @@ describe('zh-CN locale', function() {
       assert(result === '明天 上午 7:30')
     })
 
-    it('next week', function() {
+    it('next week (in same week)', function() {
       var result = formatRelative(
         new Date(1986, 3 /* Apr */, 6, 12, 0),
         baseDate,
         { locale: locale }
       )
-      assert(result === '下个 星期日 下午 12:00')
+      assert(result === '星期日 下午 12:00')
+    })
+
+    it('next week (in next week)', function() {
+      var result = formatRelative(
+        new Date(1986, 3 /* Apr */, 7, 12, 0),
+        baseDate,
+        { locale: locale }
+      )
+      assert(result === '下个星期一 下午 12:00')
     })
 
     it('after the next week', function() {
@@ -304,7 +320,7 @@ describe('zh-CN locale', function() {
         baseDate,
         { locale: locale }
       )
-      assert(result === '86-04-11')
+      assert(result === '1986-04-11 下午 4:50')
     })
   })
 
