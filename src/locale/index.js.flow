@@ -79,6 +79,7 @@ declare module.exports: {
   lv: Locale,
   mk: Locale,
   ms: Locale,
+  mt: Locale,
   nb: Locale,
   nl: Locale,
   nlBE: Locale,
