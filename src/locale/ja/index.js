@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
  */
 var locale = {
+  code: 'ja',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

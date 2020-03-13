@@ -2,35 +2,35 @@
 
 ## Table of Contents
 
-- [Adding a new locale](#usage)
+- [Adding a new locale](#adding-a-new-locale)
 
   - [Choosing a directory name for a locale](#choosing-a-directory-name-for-a-locale)
 
-  - [index.js](#indexjs)
+  - [index.js](#index.js)
 
   - [localize](#localize)
 
-    - [localize.ordinalNumber](#localizeordinalnumber)
+    - [localize.ordinalNumber](#localize.ordinalnumber)
 
-    - [localize.era and using buildLocalizeFn function](#localizeera-and-using-buildlocalizefn-function)
+    - [localize.era and using buildLocalizeFn function](#localize.era-and-using-buildlocalizefn-function)
 
     - [Formatting localizers](#formatting-localizers)
 
-    - [localize.quarter](#localizequarter)
+    - [localize.quarter](#localize.quarter)
 
-    - [localize.month](#localizemonth)
+    - [localize.month](#localize.month)
 
-    - [localize.day](#localizeday)
+    - [localize.day](#localize.day)
 
-    - [localize.dayPeriod](#localizedayperiod)
+    - [localize.dayPeriod](#localize.dayperiod)
 
   - [formatLong](#formatlong)
 
-    - [formatLong.dateFormats](#formatlongdateformats)
+    - [formatLong.dateFormats](#formatlong.dateformats)
 
-    - [formatLong.timeFormats](#formatlongtimeformats)
+    - [formatLong.timeFormats](#formatlong.timeformats)
 
-    - [formatLong.dateTimeFormats](#formatlongdatetimeformats)
+    - [formatLong.dateTimeFormats](#formatlong.datetimeformats)
 
   - [formatRelative](#formatrelative)
 
@@ -116,6 +116,7 @@ import match from './_lib/match/index.js'
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
 var locale = {
+  code: 'en',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -872,15 +873,12 @@ Your best guess is to copy `formatDistance` property from another locale and cha
 
 ### Tests
 
-Take `test.js` from existing locale (e.g. `en-US`) and replace the test results with expected values.
-Don't forget to replace the locale code in the test description:
+To test locales we use snapshots. See [`en-US` snapshot](https://github.com/date-fns/date-fns/blob/master/src/locale/en-US/snapshot.md) for an example.
 
-```javascript
-// Before
-describe('en-US locale', function () {
-// After
-describe('foo-BAR locale', function () {
-```
+To generate snapshots, run `yarn locale-snapshots`. The snapshot for the locale
+you're working on will appear in the root locale directory (e.g. `src/locales/ru/snapshot.md`).
+
+Once you are done with the locale, generate the snapshot and review the output values.
 
 ## Creating a locale with the same language as another locale
 

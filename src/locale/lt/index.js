@@ -17,6 +17,7 @@ import match from './_lib/match/index.js'
  * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
  */
 var locale = {
+  code: 'lt',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

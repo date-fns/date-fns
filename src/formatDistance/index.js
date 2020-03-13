@@ -1,10 +1,11 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import compareAsc from '../compareAsc/index.js'
-import toDate from '../toDate/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
 import differenceInMonths from '../differenceInMonths/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
+import differenceInSeconds from '../differenceInSeconds/index.js'
 import defaultLocale from '../locale/en-US/index.js'
+import toDate from '../toDate/index.js'
+import cloneObject from '../_lib/cloneObject/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -52,7 +53,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * - The function was renamed from `distanceInWords ` to `formatDistance `
+ * - The function was renamed from `distanceInWords ` to `formatDistance`
  *   to make its name consistent with `format` and `formatRelative`.
  *
  * - The order of arguments is swapped to make the function
@@ -84,6 +85,8 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
@@ -118,11 +121,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale

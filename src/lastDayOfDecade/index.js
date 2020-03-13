@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name lastDayOfDecade
@@ -22,11 +23,7 @@ import toDate from '../toDate/index.js'
  * //=> Wed Dec 31 2019 00:00:00
  */
 export default function lastDayOfDecade(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var year = date.getFullYear()

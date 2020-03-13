@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
  */
 var locale = {
+  code: 'fi',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

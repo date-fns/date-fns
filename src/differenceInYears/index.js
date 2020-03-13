@@ -1,6 +1,7 @@
 import toDate from '../toDate/index.js'
 import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
 import compareAsc from '../compareAsc/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInYears
@@ -25,11 +26,7 @@ import compareAsc from '../compareAsc/index.js'
  * //=> 1
  */
 export default function differenceInYears(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

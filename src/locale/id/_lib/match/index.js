@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
 var matchOrdinalNumberPattern = /^ke-(\d+)?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -15,8 +15,8 @@ var parseEraPatterns = {
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^K\-?\s[1234]/i,
-  wide: /^Kuartal ke\-?\s?[1234]/i
+  abbreviated: /^K-?\s[1234]/i,
+  wide: /^Kuartal ke-?\s?[1234]/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]

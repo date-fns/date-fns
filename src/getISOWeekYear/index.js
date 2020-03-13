@@ -1,5 +1,6 @@
 import toDate from '../toDate/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getISOWeekYear
@@ -31,11 +32,7 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * //=> 2004
  */
 export default function getISOWeekYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var year = date.getFullYear()

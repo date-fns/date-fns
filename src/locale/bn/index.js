@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Farhad Yasir [@nutboltu]{@link https://github.com/nutboltu}
  */
 var locale = {
+  code: 'bn',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

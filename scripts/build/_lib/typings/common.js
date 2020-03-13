@@ -1,26 +1,29 @@
-const {
-  addSeparator,
-  formatBlock
-} = require('./formatBlock')
+const { addSeparator, formatBlock } = require('./formatBlock')
 
 const lowerCaseTypes = ['String', 'Number', 'Boolean']
 
-function correctTypeCase (type) {
+function correctTypeCase(type) {
   if (lowerCaseTypes.includes(type)) {
     return type.toLowerCase()
   }
   return type
 }
 
-function getParams (params, {leftBorder = '{', rightBorder = '}'} = {}) {
-  if (params.length === 0) {
+function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
+  if (!params || params.length === 0) {
     return leftBorder + rightBorder
   }
 
   const formattedParams = addSeparator(
     params.map(param => {
-      const {name, props, optional, variable, type: {names: typeNames}} = param
-      const type = getType(typeNames, {props, forceArray: variable})
+      const {
+        name,
+        props,
+        optional,
+        variable,
+        type: { names: typeNames }
+      } = param
+      const type = getType(typeNames, { props, forceArray: variable })
       return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
     }),
     ','
@@ -33,14 +36,14 @@ function getParams (params, {leftBorder = '{', rightBorder = '}'} = {}) {
   `
 }
 
-function getType (types, {props = [], forceArray = false} = {}) {
+function getType(types, { props = [], forceArray = false } = {}) {
   const typeStrings = types.map(type => {
     if (type === '*') {
       return 'any'
     }
 
     if (type === 'function') {
-      return 'Function'
+      return '(...args: Array<any>) => any'
     }
 
     if (type.startsWith('Array.')) {
@@ -60,7 +63,8 @@ function getType (types, {props = [], forceArray = false} = {}) {
     return caseCorrectedType
   })
 
-  const allArrayTypes = typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
+  const allArrayTypes =
+    typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
   if (allArrayTypes) {
     return `(${typeStrings.map(type => type.replace('[]', '')).join(' | ')})[]`
   }
@@ -68,15 +72,16 @@ function getType (types, {props = [], forceArray = false} = {}) {
   return typeStrings.join(' | ')
 }
 
-function getFPFnType (params, returns) {
-  const fpParams = params
-    .map(param => param.type.names)
+function getFPFnType(params, returns) {
+  const fpParamTypes = params.map(param =>
+    getType(param.type.names, { props: param.props })
+  )
 
-  const arity = fpParams.length
+  const arity = fpParamTypes.length
 
-  fpParams.push(returns)
+  fpParamTypes.push(getType(returns))
 
-  return `CurriedFn${arity}<${fpParams.map(getType).join(', ')}>`
+  return `CurriedFn${arity}<${fpParamTypes.join(', ')}>`
 }
 
 module.exports = {

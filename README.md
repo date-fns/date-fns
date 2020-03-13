@@ -1,24 +1,29 @@
 # ![](https://cdn.rawgit.com/date-fns/date-fns/c5bcd92d04f14da194e6298101a6509b1c3b30f0/docs/logo.svg) date-fns
 
-[🙏 **Please help us to make the best date library for JavaScript. We need your support!**](https://opencollective.com/date-fns)
+🔥🔥🔥 **date-fns v2 is out!** 🔥🔥🔥
 
-⚠️ **Warning**: the current master represents v2 pre-release version of the library. [See v1 branch](https://github.com/date-fns/date-fns/tree/v1).
+⭐️ **Upgrading from v1 to v2?**
 
-**Pinned**: see [a brief comparison with Moment.js](https://github.com/date-fns/date-fns/issues/275#issuecomment-264934189).
+- [See the changelog](https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md)
+- Check out [@date-fns/upgrade](https://github.com/date-fns/date-fns-upgrade) and [@date-fns/upgrade-codemod](https://github.com/date-fns/date-fns-upgrade-codemod), they could help you with the upgrade!
 
 **date-fns** provides the most comprehensive, yet simple and consistent toolset
 for manipulating **JavaScript dates** in **a browser** & **Node.js**.
 
 **date-fns** is like [lodash](https://lodash.com) for dates. It has
-[**140+ functions** for all occasions](https://date-fns.org/docs/).
+[**180+ functions** for all occasions](https://date-fns.org/docs/).
 
 ```js
-import {format, compareAsc} from 'date-fns/esm'
+import { compareAsc, format } from 'date-fns'
 
-format(new Date(2014, 1, 11), 'MM/dd/yyyy')
-//=> '02/11/2014'
+format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+//=> '2014-02-11'
 
-const dates = [new Date(1995, 6, 2), new Date(1987, 1, 11), new Date(1989, 6, 10)]
+const dates = [
+  new Date(1995, 6, 2),
+  new Date(1987, 1, 11),
+  new Date(1989, 6, 10)
+]
 dates.sort(compareAsc)
 //=> [
 //   Wed Feb 11 1987 00:00:00,
@@ -40,6 +45,12 @@ yarn add date-fns
 
 [See date-fns.org](https://date-fns.org/) for more details, API,
 and other docs.
+
+## JavaScript jobs by date-fns
+
+👋 Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend)
+
+✉️ Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
 
 ## License
 

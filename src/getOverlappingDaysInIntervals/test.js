@@ -139,7 +139,7 @@ describe('getOverlappingDaysInIntervals', function() {
     })
   })
 
-  it('accepts timestamp', function() {
+  it('accepts a timestamp', function() {
     var initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0).getTime()
     var initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0).getTime()
 

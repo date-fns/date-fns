@@ -1,6 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getISOWeek from '../getISOWeek/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setISOWeek
@@ -27,11 +28,7 @@ import getISOWeek from '../getISOWeek/index.js'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setISOWeek(dirtyDate, dirtyISOWeek) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var isoWeek = toInteger(dirtyISOWeek)

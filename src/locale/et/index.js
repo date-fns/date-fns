@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Priit Hansen [@HansenPriit]{@link https://github.com/priithansen}
  */
 var locale = {
+  code: 'et',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

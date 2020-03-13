@@ -1,4 +1,5 @@
 import startOfHour from '../startOfHour/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameHour
@@ -23,11 +24,7 @@ import startOfHour from '../startOfHour/index.js'
  * //=> true
  */
 export default function isSameHour(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
   var dateRightStartOfHour = startOfHour(dirtyDateRight)

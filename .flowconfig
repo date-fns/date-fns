@@ -1,5 +1,4 @@
 [ignore]
-.*node_modules*
 .*examples*
 [options]
 suppress_comment= \\(.\\|\n\\)*\\$ExpectedMistake

@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
  */
 var locale = {
+  code: 'it',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -7,6 +7,7 @@ const ignoredFiles = [
   'locale',
   'esm',
   'fp',
+  'constants',
   'index.js',
   'test.js',
   'index.js.flow',

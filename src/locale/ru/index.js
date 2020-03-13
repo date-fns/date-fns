@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
 var locale = {
+  code: 'ru',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

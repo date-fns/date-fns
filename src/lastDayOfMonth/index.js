@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name lastDayOfMonth
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Tue Sep 30 2014 00:00:00
  */
 export default function lastDayOfMonth(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var month = date.getMonth()

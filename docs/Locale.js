@@ -9,16 +9,17 @@
  *
  * @typedef {Object} Locale
  *
- * @property {Function} formatDistance - the function that takes a token
+ * @property {string} [code] - the locale code (ISO 639-1 + optional country code)
+ * @property {Function} [formatDistance] - the function that takes a token
  *   passed by `formatDistance` or `formatDistanceStrict` and payload,
  *   and returns localized distance in words.
  *   Required by `formatDistance` and `formatDistanceStrict`
  *
- * @property {Function} formatRelative - the function that takes a token
+ * @property {Function} [formatRelative] - the function that takes a token
  *   passed by `formatRelative` and two dates and returns the localized relative date format.
  *   Required by `formatRelative`
  *
- * @property {Object} localize - the object with functions used to localize various values.
+ * @property {Object} [localize] - the object with functions used to localize various values.
  *   Required by `format` and `formatRelative`
  * @property {Function} localize.ordinalNumber - the function that localizes an ordinal number
  * @property {Function} localize.era - the function that takes 0 or 1 and returns localized era
@@ -29,12 +30,12 @@
  *   'am', 'pm', 'midnight', 'noon', 'morning', 'afternoon', 'evening' or 'night'
  *   and returns localized time of the day
  *
- * @property {Object} formatLong - the object with functions that return localized formats
- * @property {Function} date - the function that returns a localized long date format
- * @property {Function} time - the function that returns a localized long time format
- * @property {Function} dateTime - the function that returns a localized format of date and time combined
+ * @property {Object} [formatLong] - the object with functions that return localized formats
+ * @property {Function} formatLong.date - the function that returns a localized long date format
+ * @property {Function} formatLong.time - the function that returns a localized long time format
+ * @property {Function} formatLong.dateTime - the function that returns a localized format of date and time combined
  *
- * @property {Object} match — the object with functions used to match and parse various localized values.
+ * @property {Object} [match] — the object with functions used to match and parse various localized values.
  *   Required by `parse`
  * @property {Function} match.ordinalNumber - the function that parses a localized ordinal number
  * @property {Function} match.era - the function that parses a localized era

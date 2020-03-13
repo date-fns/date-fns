@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -73,11 +74,7 @@ var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 export default function parseISO(argument, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
 
@@ -120,7 +117,7 @@ export default function parseISO(argument, dirtyOptions) {
 
   if (dateStrings.time) {
     time = parseTime(dateStrings.time)
-    if (isNaN(time)) {
+    if (isNaN(time) || time === null) {
       return new Date(NaN)
     }
   }
@@ -137,10 +134,14 @@ export default function parseISO(argument, dirtyOptions) {
     offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
 
     // Adjust time when it's coming from DST
-    var fullTimeDateNextDay = new Date(fullTime)
-    fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
+    var fullTimeDateDiffDay = new Date(fullTime)
+    if (offset > 0) {
+      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() + 1)
+    } else {
+      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() - 1)
+    }
     var offsetDiff =
-      getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) - offset
+      getTimezoneOffsetInMilliseconds(fullTimeDateDiffDay) - offset
     if (offsetDiff > 0) {
       offset += offsetDiff
     }
@@ -213,7 +214,7 @@ function parseDate(dateString, year) {
   var dayOfYear = parseDateUnit(captures[1])
   var month = parseDateUnit(captures[2]) - 1
   var day = parseDateUnit(captures[3])
-  var week = parseDateUnit(captures[4]) - 1
+  var week = parseDateUnit(captures[4])
   var dayOfWeek = parseDateUnit(captures[5]) - 1
 
   if (isWeekDate) {
@@ -251,7 +252,7 @@ function parseTime(timeString) {
   }
 
   return (
-    (hours % 24) * MILLISECONDS_IN_HOUR +
+    hours * MILLISECONDS_IN_HOUR +
     minutes * MILLISECONDS_IN_MINUTE +
     seconds * 1000
   )
@@ -284,7 +285,7 @@ function dayOfISOWeekYear(isoWeekYear, week, day) {
   var date = new Date(0)
   date.setUTCFullYear(isoWeekYear, 0, 4)
   var fourthOfJanuaryDay = date.getUTCDay() || 7
-  var diff = (week || 0) * 7 + (day || 0) + 1 - fourthOfJanuaryDay
+  var diff = (week - 1) * 7 + day + 1 - fourthOfJanuaryDay
   date.setUTCDate(date.getUTCDate() + diff)
   return date
 }
@@ -299,33 +300,37 @@ function isLeapYearIndex(year) {
 }
 
 function validateDate(year, month, date) {
-  return !(
-    month < 0 ||
-    month > 11 ||
-    date < 1 ||
-    date > (daysInMonths[month] || (isLeapYearIndex(year) ? 29 : 28))
+  return (
+    month >= 0 &&
+    month <= 11 &&
+    date >= 1 &&
+    date <= (daysInMonths[month] || (isLeapYearIndex(year) ? 29 : 28))
   )
 }
 
 function validateDayOfYearDate(year, dayOfYear) {
-  return !(dayOfYear < 1 || dayOfYear > (isLeapYearIndex(year) ? 366 : 365))
+  return dayOfYear >= 1 && dayOfYear <= (isLeapYearIndex(year) ? 366 : 365)
 }
 
 function validateWeekDate(_year, week, day) {
-  return !(week < 0 || week > 52 || day < 0 || day > 6)
+  return week >= 1 && week <= 53 && day >= 0 && day <= 6
 }
 
 function validateTime(hours, minutes, seconds) {
-  return !(
-    seconds < 0 ||
-    seconds >= 60 ||
-    minutes < 0 ||
-    minutes >= 60 ||
-    hours < 0 ||
-    hours >= 25
+  if (hours === 24) {
+    return minutes === 0 && seconds === 0
+  }
+
+  return (
+    seconds >= 0 &&
+    seconds < 60 &&
+    minutes >= 0 &&
+    minutes < 60 &&
+    hours >= 0 &&
+    hours < 25
   )
 }
 
 function validateTimezone(_hours, minutes) {
-  return !(minutes < 0 || minutes > 59)
+  return minutes >= 0 && minutes <= 59
 }

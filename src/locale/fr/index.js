@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  */
 
 var locale = {
+  code: 'fr',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

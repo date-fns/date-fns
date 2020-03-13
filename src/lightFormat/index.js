@@ -3,6 +3,7 @@ import formatters from '../_lib/format/lightFormatters/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import isValid from '../isValid/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -15,7 +16,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'(.*?)'?$/
+var escapedStringRegExp = /^'([^]*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
@@ -36,7 +37,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * Format of the string is based on Unicode Technical Standard #35:
  * https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
- * with a few additions (see note 7 below the table).
  *
  * Accepted patterns:
  * | Unit                            | Pattern | Result examples                   |
@@ -64,16 +64,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SS      | 00, 01, ..., 99                   |
  * |                                 | SSS     | 000, 0001, ..., 999               |
  * |                                 | SSSS    | ...                               |
- * | Timezone (ISO-8601 w/ Z)        | X       | -08, +0530, Z                     |
- * |                                 | XX      | -0800, +0530, Z                   |
- * |                                 | XXX     | -08:00, +05:30, Z                 |
- * |                                 | XXXX    | -0800, +0530, Z, +123456          |
- * |                                 | XXXXX   | -08:00, +05:30, Z, +12:34:56      |
- * | Timezone (ISO-8601 w/o Z)       | x       | -08, +0530, +00                   |
- * |                                 | xx      | -0800, +0530, +0000               |
- * |                                 | xxx     | -08:00, +05:30, +00:00            |
- * |                                 | xxxx    | -0800, +0530, +0000, +123456      |
- * |                                 | xxxxx   | -08:00, +05:30, +00:00, +12:34:56 |
  *
  * @param {Date|Number} date - the original date
  * @param {String} format - the string of tokens
@@ -82,15 +72,11 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var formatStr = String(dirtyFormatStr)
 

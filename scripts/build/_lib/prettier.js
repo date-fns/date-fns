@@ -1,7 +1,6 @@
 const prettier = require('prettier')
-const packageJSON = require('../../../package.json')
-const config = packageJSON.prettier
+const config = require('../../../.prettierrc')
 
-module.exports = (code, parser = 'babylon') => {
+module.exports = (code, parser = 'babel') => {
   return prettier.format(code, Object.assign(config, { parser }))
 }

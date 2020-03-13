@@ -1,5 +1,6 @@
 import getISOWeekYear from '../getISOWeekYear/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name lastDayOfISOWeekYear
@@ -32,11 +33,7 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * //=> Sun Jan 01 2006 00:00:00
  */
 export default function lastDayOfISOWeekYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var year = getISOWeekYear(dirtyDate)
   var fourthOfJanuary = new Date(0)

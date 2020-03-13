@@ -1,6 +1,7 @@
 import toDate from '../toDate/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import compareAsc from '../compareAsc/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInDays
@@ -30,17 +31,13 @@ import compareAsc from '../compareAsc/index.js'
  * // How many days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
  * var result = differenceInDays(
- *   new Date(2011, 6, 2, 0, 1),
+ *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
  * //=> 0
  */
 export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

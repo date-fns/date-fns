@@ -4,6 +4,7 @@ import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import defaultLocale from '../locale/en-US/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -106,6 +107,8 @@ var MINUTES_IN_YEAR = 525600
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'
  * @throws {RangeError} `options.unit` must be 'second', 'minute', 'hour', 'day', 'month' or 'year'
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
@@ -141,7 +144,7 @@ var MINUTES_IN_YEAR = 525600
  * //=> '525600 minutes'
  *
  * @example
- * // What is the distance from 1 January 2016
+ * // What is the distance from 1 January 2015
  * // to 28 January 2015, in months, rounded up?
  * var result = formatDistanceStrict(new Date(2015, 0, 28), new Date(2015, 0, 1), {
  *   unit: 'month',
@@ -162,11 +165,7 @@ export default function formatDistanceStrict(
   dirtyBaseDate,
   dirtyOptions
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale

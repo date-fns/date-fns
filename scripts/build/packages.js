@@ -50,6 +50,7 @@ function writePackage(fullPath) {
 function getInitialPackages() {
   return listFns()
     .concat(listFPFns())
+    .concat(listLocales())
     .concat(extraModules)
     .reduce((acc, module) => {
       acc[module.fullPath] = getModulePackage(module.fullPath)

@@ -1,10 +1,12 @@
-export default function buildMatchFn (args) {
-  return function (dirtyString, dirtyOptions) {
+export default function buildMatchFn(args) {
+  return function(dirtyString, dirtyOptions) {
     var string = String(dirtyString)
     var options = dirtyOptions || {}
     var width = options.width
 
-    var matchPattern = (width && args.matchPatterns[width]) || args.matchPatterns[args.defaultMatchWidth]
+    var matchPattern =
+      (width && args.matchPatterns[width]) ||
+      args.matchPatterns[args.defaultMatchWidth]
     var matchResult = string.match(matchPattern)
 
     if (!matchResult) {
@@ -12,15 +14,17 @@ export default function buildMatchFn (args) {
     }
     var matchedString = matchResult[0]
 
-    var parsePatterns = (width && args.parsePatterns[width]) || args.parsePatterns[args.defaultParseWidth]
+    var parsePatterns =
+      (width && args.parsePatterns[width]) ||
+      args.parsePatterns[args.defaultParseWidth]
 
     var value
     if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
-      value = parsePatterns.findIndex(function (pattern) {
+      value = findIndex(parsePatterns, function(pattern) {
         return pattern.test(string)
       })
     } else {
-      value = findKey(parsePatterns, function (pattern) {
+      value = findKey(parsePatterns, function(pattern) {
         return pattern.test(string)
       })
     }
@@ -35,9 +39,17 @@ export default function buildMatchFn (args) {
   }
 }
 
-function findKey (object, predicate) {
+function findKey(object, predicate) {
   for (var key in object) {
     if (object.hasOwnProperty(key) && predicate(object[key])) {
+      return key
+    }
+  }
+}
+
+function findIndex(array, predicate) {
+  for (var key = 0; key < array.length; key++) {
+    if (predicate(array[key])) {
       return key
     }
   }

@@ -3,10 +3,10 @@ var formatRelativeLocale = {
   yesterday: "'igår kl.' p",
   today: "'idag kl.' p",
   tomorrow: "'imorgon kl.' p",
-  nextWeek: "'på' EEEE 'kl.' p",
+  nextWeek: "EEEE 'kl.' p",
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, _date, _baseDate, _options) {
   return formatRelativeLocale[token]
 }

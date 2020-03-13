@@ -49,6 +49,14 @@ module.exports = {
     },
     {
       type: 'markdown',
+      urlId: 'Constants',
+      category: 'General',
+      title: 'Constants',
+      description: 'Useful constants',
+      path: path.join(__dirname, 'constants.md')
+    },
+    {
+      type: 'markdown',
       urlId: 'I18n',
       category: 'General',
       title: 'I18n',
@@ -127,6 +135,9 @@ module.exports = {
     },
     {
       fullPath: path.join(__dirname, 'Locale.js')
+    },
+    {
+      fullPath: path.join(__dirname, 'Duration.js')
     }
   ]
 }

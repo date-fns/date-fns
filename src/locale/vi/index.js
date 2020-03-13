@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Leroy Hopson [@lihop]{@link https://github.com/lihop}
  */
 var locale = {
+  code: 'vi',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

@@ -1,4 +1,4 @@
-function declensionGroup (scheme, count) {
+function declensionGroup(scheme, count) {
   if (count === 1) {
     return scheme.one
   }
@@ -20,7 +20,7 @@ function declensionGroup (scheme, count) {
   return scheme.other
 }
 
-function declension (scheme, count, time) {
+function declension(scheme, count, time) {
   time = time || 'regular'
   var group = declensionGroup(scheme, count)
   var finalText = group[time] || group
@@ -141,7 +141,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var scheme = formatDistanceLocale[token]

@@ -1,6 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getDaysInMonth from '../getDaysInMonth/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name addMonths
@@ -15,7 +16,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be added
+ * @param {Number} amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the months added
  * @throws {TypeError} 2 arguments required
  *
@@ -25,11 +26,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * //=> Sun Feb 01 2015 00:00:00
  */
 export default function addMonths(dirtyDate, dirtyAmount) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var amount = toInteger(dirtyAmount)

@@ -1,6 +1,7 @@
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
 import lastDayOfMonth from '../lastDayOfMonth/index.js'
 import startOfMonth from '../startOfMonth/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getWeeksInMonth
@@ -16,8 +17,8 @@ import startOfMonth from '../startOfMonth/index.js'
  *
  * @param {Date|Number} date - the given date
  * @param {Object} [options] - an object with options.
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {Number} the number of calendar weeks
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -34,11 +35,7 @@ import startOfMonth from '../startOfMonth/index.js'
  * //=> 6
  */
 export default function getWeeksInMonth(date, options) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return (
     differenceInCalendarWeeks(

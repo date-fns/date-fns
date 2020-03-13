@@ -15,6 +15,7 @@ import match from './_lib/match/index.js'
  * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
  */
 var locale = {
+  code: 'sv',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

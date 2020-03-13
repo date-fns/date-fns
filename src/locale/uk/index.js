@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Andriy Shcherbyak [@shcherbyakdev]{@link https://github.com/shcherbyakdev}
  */
 var locale = {
+  code: 'uk',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

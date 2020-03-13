@@ -1,4 +1,5 @@
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name startOfMinute
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Mon Dec 01 2014 22:15:00
  */
 export default function startOfMinute(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   date.setSeconds(0, 0)

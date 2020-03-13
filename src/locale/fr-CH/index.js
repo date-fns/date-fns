@@ -17,6 +17,7 @@
  * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
  */
 // var locale = {
+//   code: 'fr-CH',
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,
 //   formatRelative: formatRelative,
@@ -32,4 +33,6 @@
 
 // export default locale
 
-throw new Error('fr-CH locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+throw new Error(
+  'fr-CH locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA'
+)

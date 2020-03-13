@@ -16,12 +16,15 @@ if [ "$TEST_SUITE" == "main" ]
 then
   yarn lint
   flow check
+  yarn lint-types
   ./scripts/test/systemJS.js
+  yarn locale-snapshots test
   ./scripts/test/smoke.sh
 
-  yarn test -- --single-run
+  yarn test --single-run
 
   ./scripts/test/dst.sh
+  ./scripts/test/formatISO.sh
 
   prebuild
   ./scripts/test/tz.sh
@@ -34,7 +37,11 @@ then
 elif [ "$TEST_SUITE" == "cross_browser" ] && [ "$SAUCE_USERNAME" != "" ]
 then
   yarn test-cross-browser
-  env TEST_CROSS_BROWSER=true yarn test -- --single-run
+  env TEST_CROSS_BROWSER=true yarn test --single-run
+
+elif [ "$TEST_SUITE" == "node" ]
+then
+  ./scripts/test/node.sh
 
 else
   printf "\n\033[0;31m" "UNKNOWN SUITE!" "\033[0m\n"

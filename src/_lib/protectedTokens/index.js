@@ -12,11 +12,11 @@ export function isProtectedWeekYearToken(token) {
 export function throwProtectedError(token) {
   if (token === 'YYYY') {
     throw new RangeError(
-      'Use `yyyy` instead of `YYYY` for formating years; see: https://git.io/fxCyr'
+      'Use `yyyy` instead of `YYYY` for formatting years; see: https://git.io/fxCyr'
     )
   } else if (token === 'YY') {
     throw new RangeError(
-      'Use `yy` instead of `YY` for formating years; see: https://git.io/fxCyr'
+      'Use `yy` instead of `YY` for formatting years; see: https://git.io/fxCyr'
     )
   } else if (token === 'D') {
     throw new RangeError(

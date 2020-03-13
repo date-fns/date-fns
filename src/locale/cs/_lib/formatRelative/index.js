@@ -1,12 +1,31 @@
+var accusativeWeekdays = [
+  'neděli',
+  'pondělí',
+  'úterý',
+  'středu',
+  'čtvrtek',
+  'pátek',
+  'sobotu'
+]
+
 var formatRelativeLocale = {
-  lastWeek: '[last] dddd [at] LT',
-  yesterday: '[yesterday at] LT',
-  today: '[today at] LT',
-  tomorrow: '[tomorrow at] LT',
-  nextWeek: 'dddd [at] LT',
-  other: 'L'
+  lastWeek: "'poslední' eeee 've' p",
+  yesterday: "'včera v' p",
+  today: "'dnes v' p",
+  tomorrow: "'zítra v' p",
+  nextWeek: function(date, _baseDate, _options) {
+    var day = date.getUTCDay()
+    return "'v " + accusativeWeekdays[day] + " o' p"
+  },
+  other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
-  return formatRelativeLocale[token]
+export default function formatRelative(token, date, baseDate, options) {
+  var format = formatRelativeLocale[token]
+
+  if (typeof format === 'function') {
+    return format(date, baseDate, options)
+  }
+
+  return format
 }

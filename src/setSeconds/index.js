@@ -1,5 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
+import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setSeconds
@@ -24,11 +25,7 @@ import toDate from '../toDate/index.js'
  * //=> Mon Sep 01 2014 11:30:45
  */
 export default function setSeconds(dirtyDate, dirtySeconds) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var seconds = toInteger(dirtySeconds)
