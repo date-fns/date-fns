@@ -9,7 +9,7 @@ import match from './_lib/match/index.js'
  * @category Locales
  * @summary Maltese locale.
  * @language Maltese
- * @iso-639-2 mt
+ * @iso-639-2 mlt
  * @author Andras Matzon [@amatzon](@link https://github.com/amatzon)
  * @author Bryan Borg [@bryanMt](@link https://github.com/bryanMt)
  */
