@@ -8,6 +8,30 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.11.0] - 2020-03-13
+
+Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.com/Mukhammadali), [@altrim](https://github.com/altrim), [@leepowellcouk](https://github.com/leepowellcouk), [@amatzon](@https://github.com/amatzon), [@bryanMt](https://github.com/bryanMt), [@kalekseev](https://github.com/kalekseev), [@eugene-platov](https://github.com/eugene-platov) and [@tjrobinson](https://github.com/tjrobinson) for working on the release.
+
+### Fixed
+
+- [Fixed a bug in `differenceInYears` causing incorrect results when the left date is a leap day](https://github.com/date-fns/date-fns/pull/1654).
+- [Fixed `parseISO` to work correctly around time shift dates](https://github.com/date-fns/date-fns/pull/1667).
+- [Fixed `format` to work correctly with GMT-0752/GMT-0456 and similar timezones](https://github.com/date-fns/date-fns/pull/1666).
+
+### Changed
+
+- [Changed `getDay` typings to return `0|1|2|3|4|5|6` instead of `number`](https://github.com/date-fns/date-fns/pull/1668).
+- [Improved Chinese locale](https://github.com/date-fns/date-fns/pull/1664):
+  - Change date format to meet the national standard (GB/T 7408-2005).
+  - Improve `ordinalNumber` function behavior.
+  - Add prefix in `formatRelative` depending on if it's a current week or not.
+
+### Added
+
+- [Added Uzbek `uz` locale](https://github.com/date-fns/date-fns/pull/1648).
+- [Updated Macedonian locale for v2](https://github.com/date-fns/date-fns/pull/1649).
+- [Added Maltese `mt` locale](https://github.com/date-fns/date-fns/pull/1658).
+
 ## [2.10.0] - 2020-02-25
 
 ### Fixed
