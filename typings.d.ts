@@ -442,7 +442,7 @@ declare module 'date-fns' {
   function getDate(date: Date | number): number
   namespace getDate {}
 
-  function getDay(date: Date | number): number
+  function getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
   namespace getDay {}
 
   function getDayOfYear(date: Date | number): number
@@ -744,7 +744,7 @@ declare module 'date-fns' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -4163,7 +4163,7 @@ declare module 'date-fns/fp' {
   const getDate: CurriedFn1<Date | number, number>
   namespace getDate {}
 
-  const getDay: CurriedFn1<Date | number, number>
+  const getDay: CurriedFn1<Date | number, 0 | 1 | 2 | 3 | 4 | 5 | 6>
   namespace getDay {}
 
   const getDayOfYear: CurriedFn1<Date | number, number>
@@ -7971,7 +7971,7 @@ declare module 'date-fns/esm' {
   function getDate(date: Date | number): number
   namespace getDate {}
 
-  function getDay(date: Date | number): number
+  function getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
   namespace getDay {}
 
   function getDayOfYear(date: Date | number): number
@@ -8273,7 +8273,7 @@ declare module 'date-fns/esm' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -11692,7 +11692,7 @@ declare module 'date-fns/esm/fp' {
   const getDate: CurriedFn1<Date | number, number>
   namespace getDate {}
 
-  const getDay: CurriedFn1<Date | number, number>
+  const getDay: CurriedFn1<Date | number, 0 | 1 | 2 | 3 | 4 | 5 | 6>
   namespace getDay {}
 
   const getDayOfYear: CurriedFn1<Date | number, number>
@@ -17898,7 +17898,7 @@ interface dateFns {
 
   getDate(date: Date | number): number
 
-  getDay(date: Date | number): number
+  getDay(date: Date | number): 0 | 1 | 2 | 3 | 4 | 5 | 6
 
   getDayOfYear(date: Date | number): number
 
@@ -18102,7 +18102,7 @@ interface dateFns {
   parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6

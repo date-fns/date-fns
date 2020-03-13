@@ -332,7 +332,7 @@ declare module.exports: {
 
   getDate: (date: Date | number) => number,
 
-  getDay: (date: Date | number) => number,
+  getDay: (date: Date | number) => 0 | 1 | 2 | 3 | 4 | 5 | 6,
 
   getDayOfYear: (date: Date | number) => number,
 
@@ -539,7 +539,7 @@ declare module.exports: {
   parse: (
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
