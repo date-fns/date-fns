@@ -7,7 +7,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * @summary Rounds the given date to the nearest minute
  *
  * @description
- * Rounds the given date to the nearest minute (or number of minutes). 
+ * Rounds the given date to the nearest minute (or number of minutes).
  * Rounds up when the given date is exactly between the nearest round minutes.
  *
  * ### v2.0.0 breaking changes:

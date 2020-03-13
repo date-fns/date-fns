@@ -10,9 +10,8 @@ export default function startOfUTCWeekYear(dirtyDate, dirtyOptions) {
 
   var options = dirtyOptions || {}
   var locale = options.locale
-  var localeFirstWeekContainsDate = locale &&
-    locale.options &&
-    locale.options.firstWeekContainsDate
+  var localeFirstWeekContainsDate =
+    locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1

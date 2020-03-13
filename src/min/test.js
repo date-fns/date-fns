@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import min from '.'
 
 describe('min', function() {
-  function isInvalidDate (dirtyDate) {
+  function isInvalidDate(dirtyDate) {
     return dirtyDate instanceof Date && isNaN(dirtyDate)
   }
 
@@ -70,11 +70,13 @@ describe('min', function() {
   })
 
   it('converts iterable objects into Array', function() {
-    // $ExpectedMistake
-    var result = min(new Set([
-      new Date(1989, 6 /* Jul */, 10),
-      new Date(1987, 1 /* Feb */, 11),
-    ]))
+    var result = min(
+      // $ExpectedMistake
+      new Set([
+        new Date(1989, 6 /* Jul */, 10),
+        new Date(1987, 1 /* Feb */, 11)
+      ])
+    )
     assert.deepEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
 

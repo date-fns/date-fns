@@ -478,7 +478,9 @@ export default function parse(
         }
         if (incompatibleToken) {
           throw new RangeError(
-            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
+            `The format string mustn't contain \`${
+              incompatibleToken.fullToken
+            }\` and \`${token}\` at the same time`
           )
         }
       } else if (parser.incompatibleTokens === '*' && usedTokens.length) {

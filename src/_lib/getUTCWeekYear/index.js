@@ -13,9 +13,8 @@ export default function getUTCWeekYear(dirtyDate, dirtyOptions) {
 
   var options = dirtyOptions || {}
   var locale = options.locale
-  var localeFirstWeekContainsDate = locale &&
-    locale.options &&
-    locale.options.firstWeekContainsDate
+  var localeFirstWeekContainsDate =
+    locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
@@ -27,7 +26,9 @@ export default function getUTCWeekYear(dirtyDate, dirtyOptions) {
 
   // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError('firstWeekContainsDate must be between 1 and 7 inclusively')
+    throw new RangeError(
+      'firstWeekContainsDate must be between 1 and 7 inclusively'
+    )
   }
 
   var firstWeekOfNextYear = new Date(0)
