@@ -1,5 +1,4 @@
 import toInteger from '../_lib/toInteger/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_HOUR = 3600000
@@ -128,23 +127,23 @@ export default function parseISO(argument, dirtyOptions) {
       return new Date(NaN)
     }
   } else {
-    var fullTime = timestamp + time
-    var fullTimeDate = new Date(fullTime)
-
-    offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
-
-    // Adjust time when it's coming from DST
-    var fullTimeDateDiffDay = new Date(fullTime)
-    if (offset > 0) {
-      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() + 1)
-    } else {
-      fullTimeDateDiffDay.setDate(fullTimeDate.getDate() - 1)
-    }
-    var offsetDiff =
-      getTimezoneOffsetInMilliseconds(fullTimeDateDiffDay) - offset
-    if (offsetDiff > 0) {
-      offset += offsetDiff
-    }
+    var dirtyDate = new Date(timestamp + time)
+    // js parsed string assuming it's in UTC timezone
+    // but we need it to be parsed in our timezone
+    // so we use utc values to build date in our timezone.
+    // Year values from 0 to 99 map to the years 1900 to 1999
+    // so set year explicitly with setFullYear.
+    var result = new Date(
+      dirtyDate.getUTCFullYear(),
+      dirtyDate.getUTCMonth(),
+      dirtyDate.getUTCDate(),
+      dirtyDate.getUTCHours(),
+      dirtyDate.getUTCMinutes(),
+      dirtyDate.getUTCSeconds(),
+      dirtyDate.getUTCMilliseconds()
+    )
+    result.setFullYear(dirtyDate.getUTCFullYear())
+    return result
   }
 
   return new Date(timestamp + time + offset)
