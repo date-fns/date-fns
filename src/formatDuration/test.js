@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import formatDuration from '.'
 
-describe.only('formatDuration', () => {
+describe('formatDuration', () => {
   it('formats full duration', () => {
     assert(
       formatDuration({
