@@ -50,6 +50,20 @@ var formatDistanceLocale = {
     other: '{{count}} يوم'
   },
 
+  aboutXWeeks: {
+    one: 'شهر واحد تقريباً', // TODO
+    two: 'شهرين تقريباً', // TODO
+    threeToTen: '{{count}} أشهر تقريباً', // TODO
+    other: '{{count}} شهر تقريباً' // TODO
+  },
+
+  xWeeks: {
+    one: 'شهر واحد', // TODO
+    two: 'شهرين', // TODO
+    threeToTen: '{{count}} أشهر', // TODO
+    other: '{{count}} شهر' // TODO
+  },
+
   aboutXMonths: {
     one: 'شهر واحد تقريباً',
     two: 'شهرين تقريباً',
