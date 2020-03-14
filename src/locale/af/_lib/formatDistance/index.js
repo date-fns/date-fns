@@ -1,6 +1,6 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'minder as \'n sekonde',
+    one: "minder as 'n sekonde",
     other: 'minder as {{count}} sekondes'
   },
 
@@ -9,15 +9,15 @@ var formatDistanceLocale = {
     other: '{{count}} sekondes'
   },
 
-  halfAMinute: '\'n halwe minuut',
+  halfAMinute: "'n halwe minuut",
 
   lessThanXMinutes: {
-    one: 'minder as \'n minuut',
+    one: "minder as 'n minuut",
     other: 'minder as {{count}} minute'
   },
 
   xMinutes: {
-    one: '\'n minuut',
+    one: "'n minuut",
     other: '{{count}} minute'
   },
 
@@ -34,6 +34,16 @@ var formatDistanceLocale = {
   xDays: {
     one: '1 dag',
     other: '{{count}} dae'
+  },
+
+  aboutXWeeks: {
+    one: 'ongeveer 1 week',
+    other: 'ongeveer {{count}} weke'
+  },
+
+  xWeeks: {
+    one: '1 week',
+    other: '{{count}} weke'
   },
 
   aboutXMonths: {
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
