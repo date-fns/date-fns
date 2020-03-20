@@ -294,6 +294,16 @@ declare module.exports: {
     }
   ) => string,
 
+  formatDistanceToNowStrict: (
+    date: Date | number,
+    options?: {
+      addSuffix?: boolean,
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+      roundingMethod?: 'floor' | 'ceil' | 'round',
+      locale?: Locale
+    }
+  ) => string,
+
   formatISO: (
     date: Date | number,
     options?: {

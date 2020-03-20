@@ -88,6 +88,9 @@ export {
   default as formatDistanceStrict
 } from './formatDistanceStrict/index.js'
 export { default as formatDistanceToNow } from './formatDistanceToNow/index.js'
+export {
+  default as formatDistanceToNowStrict
+} from './formatDistanceToNowStrict/index.js'
 export { default as formatISO } from './formatISO/index.js'
 export { default as formatISO9075 } from './formatISO9075/index.js'
 export { default as formatRFC3339 } from './formatRFC3339/index.js'
