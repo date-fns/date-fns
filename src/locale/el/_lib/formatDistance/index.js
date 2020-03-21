@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} ημέρες'
   },
 
+  aboutXWeeks: {
+    one: 'περίπου 1 μήνας', // TODO
+    other: 'περίπου {{count}} μήνες' // TODO
+  },
+
+  xWeeks: {
+    one: '1 μήνας', // TODO
+    other: '{{count}} μήνες' // TODO
+  },
+
   aboutXMonths: {
     one: 'περίπου 1 μήνας',
     other: 'περίπου {{count}} μήνες'

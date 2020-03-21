@@ -143,6 +143,24 @@ var formatDistanceLocale = {
     }
   },
 
+  xWeeks: {
+    one: {
+      regular: 'mesiac', // TODO
+      past: 'mesiacom', // TODO
+      future: 'mesiac' // TODO
+    },
+    twoFour: {
+      regular: '{{count}} mesiace', // TODO
+      past: '{{count}} mesiacmi', // TODO
+      future: '{{count}} mesiace' // TODO
+    },
+    other: {
+      regular: '{{count}} mesiacov', // TODO
+      past: '{{count}} mesiacmi', // TODO
+      future: '{{count}} mesiacov' // TODO
+    }
+  },
+
   xMonths: {
     one: {
       regular: 'mesiac',

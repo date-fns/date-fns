@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: 'كۈن {{count}}'
   },
 
+  aboutXWeeks: {
+    one: 'تەخمىنەن بىر ئاي', // TODO
+    other: 'ئاي {{count}} تەخمىنەن' // TODO
+  },
+
+  xWeeks: {
+    one: 'بىر ئاي', // TODO
+    other: 'ئاي {{count}}' // TODO
+  },
+
   aboutXMonths: {
     one: 'تەخمىنەن بىر ئاي',
     other: 'ئاي {{count}} تەخمىنەن'

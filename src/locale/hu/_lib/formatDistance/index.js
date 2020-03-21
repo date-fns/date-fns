@@ -38,6 +38,12 @@ function translate(number, addSuffix, key, comparison) {
       if (comparison === 1) return num + ' nap múlva'
       return num + ' nap'
 
+    case 'xweeks':
+      if (comparison === -1 && addSuffix) return num + ' hónappal ezelőtt' // TODO
+      if (comparison === -1 && !addSuffix) return num + ' hónapja' // TODO
+      if (comparison === 1) return num + ' hónap múlva' // TODO
+      return num + ' hónap' // TODO
+
     case 'xmonths':
       if (comparison === -1 && addSuffix) return num + ' hónappal ezelőtt'
       if (comparison === -1 && !addSuffix) return num + ' hónapja'

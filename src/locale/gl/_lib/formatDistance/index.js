@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} días'
   },
 
+  aboutXWeeks: {
+    one: 'arredor de 1 mes', // TODO
+    other: 'arredor de {{count}} meses' // TODO
+  },
+
+  xWeeks: {
+    one: '1 mes', // TODO
+    other: '{{count}} meses' // TODO
+  },
+
   aboutXMonths: {
     one: 'arredor de 1 mes',
     other: 'arredor de {{count}} meses'
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

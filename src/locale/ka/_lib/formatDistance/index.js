@@ -47,6 +47,18 @@ var formatDistanceLocale = {
     future: '{{count}} დღეში'
   },
 
+  aboutXWeeks: {
+    past: 'დაახლოებით {{count}} თვის წინ', // TODO
+    present: 'დაახლოებით {{count}} თვე', // TODO
+    future: 'დაახლოებით {{count}} თვეში' // TODO
+  },
+
+  xWeeks: {
+    past: '{{count}} თვის წინ', // TODO
+    present: '{{count}} თვე', // TODO
+    future: '{{count}} თვეში' // TODO
+  },
+
   aboutXMonths: {
     past: 'დაახლოებით {{count}} თვის წინ',
     present: 'დაახლოებით {{count}} თვე',
@@ -84,7 +96,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

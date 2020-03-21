@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} 天'
   },
 
+  aboutXWeeks: {
+    one: '大約 1 個月', // TODO
+    other: '大約 {{count}} 個月' // TODO
+  },
+
+  xWeeks: {
+    one: '1 個月', // TODO
+    other: '{{count}} 個月' // TODO
+  },
+
   aboutXMonths: {
     one: '大約 1 個月',
     other: '大約 {{count}} 個月'
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

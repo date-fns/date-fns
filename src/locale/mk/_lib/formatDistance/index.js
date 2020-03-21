@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} дена'
   },
 
+  aboutXWeeks: {
+    one: 'околу 1 месец', // TODO
+    other: 'околу {{count}} месеци' // TODO
+  },
+
+  xWeeks: {
+    one: '1 месец', // TODO
+    other: '{{count}} месеци' // TODO
+  },
+
   aboutXMonths: {
     one: 'околу 1 месец',
     other: 'околу {{count}} месеци'

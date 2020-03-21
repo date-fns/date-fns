@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} kun'
   },
 
+  aboutXWeeks: {
+    one: 'tahminan 1 oy', // TODO
+    other: 'tahminan {{count}} oy' // TODO
+  },
+
+  xWeeks: {
+    one: '1 oy', // TODO
+    other: '{{count}} oy' // TODO
+  },
+
   aboutXMonths: {
     one: 'tahminan 1 oy',
     other: 'tahminan {{count}} oy'
