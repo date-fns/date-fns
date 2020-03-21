@@ -38,6 +38,16 @@ var formatDistanceLocale = {
     other: '{{count}} দিন'
   },
 
+  aboutXWeeks: {
+    one: 'প্রায় ১ মাস', // TODO
+    other: 'প্রায় {{count}} মাস' // TODO
+  },
+
+  xWeeks: {
+    one: '১ মাস', // TODO
+    other: '{{count}} মাস' // TODO
+  },
+
   aboutXMonths: {
     one: 'প্রায় ১ মাস',
     other: 'প্রায় {{count}} মাস'
@@ -69,7 +79,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -78,7 +88,10 @@ export default function formatDistance (token, count, options) {
   } else if (count === 1) {
     result = formatDistanceLocale[token].one
   } else {
-    result = formatDistanceLocale[token].other.replace('{{count}}', localize.numberToLocale(count))
+    result = formatDistanceLocale[token].other.replace(
+      '{{count}}',
+      localize.numberToLocale(count)
+    )
   }
 
   if (options.addSuffix) {

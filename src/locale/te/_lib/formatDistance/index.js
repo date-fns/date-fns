@@ -82,6 +82,28 @@ var formatDistanceLocale = {
     }
   },
 
+  aboutXWeeks: {
+    standalone: {
+      one: 'సుమారు ఒక నెల', // TODO
+      other: 'సుమారు {{count}} నెలలు' // TODO
+    },
+    withPreposition: {
+      one: 'సుమారు ఒక నెల', // TODO
+      other: 'సుమారు {{count}} నెలల' // TODO
+    }
+  },
+
+  xWeeks: {
+    standalone: {
+      one: 'ఒక నెల', // TODO CLDR #1281
+      other: '{{count}} నెలలు' // TODO
+    },
+    withPreposition: {
+      one: 'ఒక నెల', // TODO
+      other: '{{count}} నెలల' // TODO
+    }
+  },
+
   aboutXMonths: {
     standalone: {
       one: 'సుమారు ఒక నెల',

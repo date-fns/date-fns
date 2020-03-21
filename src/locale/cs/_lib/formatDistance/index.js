@@ -132,17 +132,60 @@ var formatDistanceLocale = {
       future: 'za {{count}} dní'
     }
   },
+
+  aboutXWeeks: {
+    one: {
+      regular: 'přibližně měsíc', // TODO
+      past: 'přibližně před měsícem', // TODO
+      future: 'přibližně za měsíc' // TODO
+    },
+
+    few: {
+      regular: 'přibližně {{count}} měsíce', // TODO
+      past: 'přibližně před {{count}} měsíci', // TODO
+      future: 'přibližně za {{count}} měsíce' // TODO
+    },
+
+    many: {
+      regular: 'přibližně {{count}} měsíců', // TODO
+      past: 'přibližně před {{count}} měsíci', // TODO
+      future: 'přibližně za {{count}} měsíců' // TODO
+    }
+  },
+
+  xWeeks: {
+    one: {
+      regular: 'měsíc', // TODO
+      past: 'před měsícem', // TODO
+      future: 'za měsíc' // TODO
+    },
+
+    few: {
+      regular: '{{count}} měsíce', // TODO
+      past: 'před {{count}} měsíci', // TODO
+      future: 'za {{count}} měsíce' // TODO
+    },
+
+    many: {
+      regular: '{{count}} měsíců', // TODO
+      past: 'před {{count}} měsíci', // TODO
+      future: 'za {{count}} měsíců' // TODO
+    }
+  },
+
   aboutXMonths: {
     one: {
       regular: 'přibližně měsíc',
       past: 'přibližně před měsícem',
       future: 'přibližně za měsíc'
     },
+
     few: {
       regular: 'přibližně {{count}} měsíce',
       past: 'přibližně před {{count}} měsíci',
       future: 'přibližně za {{count}} měsíce'
     },
+
     many: {
       regular: 'přibližně {{count}} měsíců',
       past: 'přibližně před {{count}} měsíci',
@@ -156,11 +199,13 @@ var formatDistanceLocale = {
       past: 'před měsícem',
       future: 'za měsíc'
     },
+
     few: {
       regular: '{{count}} měsíce',
       past: 'před {{count}} měsíci',
       future: 'za {{count}} měsíce'
     },
+
     many: {
       regular: '{{count}} měsíců',
       past: 'před {{count}} měsíci',

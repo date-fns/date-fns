@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} zile'
   },
 
+  aboutXWeeks: {
+    one: 'circa 1 lună', // TODO
+    other: 'circa {{count}} luni' // TODO
+  },
+
+  xWeeks: {
+    one: '1 lună', // TODO
+    other: '{{count}} luni' // TODO
+  },
+
   aboutXMonths: {
     one: 'circa 1 lună',
     other: 'circa {{count}} luni'
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

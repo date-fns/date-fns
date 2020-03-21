@@ -48,9 +48,19 @@ var formatDistanceLocale = {
     other: '{{count}} dies'
   },
 
-  aboutXMonths: {
+  aboutXWeeks: {
     one: 'aproximadament un mes',
     other: 'aproximadament {{count}} mesos'
+  },
+
+  xWeeks: {
+    one: '1 mes', // TODO
+    other: '{{count}} mesos' // TODO
+  },
+
+  aboutXMonths: {
+    one: 'aproximadament un mes', // TODO
+    other: 'aproximadament {{count}} mesos' // TODO
   },
 
   xMonths: {

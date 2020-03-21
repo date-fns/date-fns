@@ -156,6 +156,27 @@ var formatDistanceLocale = {
     }
   }),
 
+  aboutXWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'шамамен {{count}} ай', // TODO
+      singularGenitive: 'шамамен {{count}} ай', // TODO
+      pluralGenitive: 'шамамен {{count}} ай' // TODO
+    },
+    future: {
+      singularNominative: 'шамамен {{count}} айдан кейін', // TODO
+      singularGenitive: 'шамамен {{count}} айдан кейін', // TODO
+      pluralGenitive: 'шамамен {{count}} айдан кейін' // TODO
+    }
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} ай', // TODO
+      singularGenitive: '{{count}} ай', // TODO
+      pluralGenitive: '{{count}} ай' // TODO
+    }
+  }),
+
   aboutXMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'шамамен {{count}} ай',
