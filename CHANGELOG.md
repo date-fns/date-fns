@@ -8,6 +8,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.11.1] - 2020-03-26
+
+### Fixed
+
+- Rebuilt TypeScript and flow types.
+
 ## [2.11.0] - 2020-03-13
 
 Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.com/Mukhammadali), [@altrim](https://github.com/altrim), [@leepowellcouk](https://github.com/leepowellcouk), [@amatzon](@https://github.com/amatzon), [@bryanMt](https://github.com/bryanMt), [@kalekseev](https://github.com/kalekseev), [@eugene-platov](https://github.com/eugene-platov) and [@tjrobinson](https://github.com/tjrobinson) for working on the release.
@@ -1952,7 +1958,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.9.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.11.1...HEAD
+[2.11.1]: https://github.com/date-fns/date-fns/compare/v2.11.0...v2.11.1
+[2.11.0]: https://github.com/date-fns/date-fns/compare/v2.10.0...v2.11.0
+[2.10.0]: https://github.com/date-fns/date-fns/compare/v2.9.0...v2.10.0
 [2.9.0]: https://github.com/date-fns/date-fns/compare/v2.8.1...v2.9.0
 [2.8.1]: https://github.com/date-fns/date-fns/compare/v2.8.0...v2.8.1
 [2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
