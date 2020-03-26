@@ -743,8 +743,8 @@ declare module 'date-fns' {
 
   function parse(
     dateString: string,
-    formatString: string,
-    referenceDate: Date | number,
+    formatString?: string,
+    referenceDate?: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
