@@ -143,13 +143,8 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
 
-  if (
-    unit === 'date' ||
-    unit === 'hour' ||
-    unit === 'minute' ||
-    unit === 'second'
-  ) {
-    return number.toString()
+  if (unit === 'date') {
+    return number.toString() + '号'
   }
 
   return '第 ' + number.toString()
