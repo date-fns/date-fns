@@ -15347,6 +15347,9 @@ declare module 'date-fns/locale' {
   const uk: Locale
   namespace uk {}
 
+  const uz: Locale
+  namespace uz {}
+
   const vi: Locale
   namespace vi {}
 
@@ -15690,6 +15693,11 @@ declare module 'date-fns/locale/ug' {
 declare module 'date-fns/locale/uk' {
   import { uk } from 'date-fns/locale'
   export default uk
+}
+
+declare module 'date-fns/locale/uz' {
+  import { uz } from 'date-fns/locale'
+  export default uz
 }
 
 declare module 'date-fns/locale/vi' {
@@ -16042,6 +16050,11 @@ declare module 'date-fns/locale/uk/index' {
   export default uk
 }
 
+declare module 'date-fns/locale/uz/index' {
+  import { uz } from 'date-fns/locale'
+  export default uz
+}
+
 declare module 'date-fns/locale/vi/index' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -16392,6 +16405,11 @@ declare module 'date-fns/locale/uk/index.js' {
   export default uk
 }
 
+declare module 'date-fns/locale/uz/index.js' {
+  import { uz } from 'date-fns/locale'
+  export default uz
+}
+
 declare module 'date-fns/locale/vi/index.js' {
   import { vi } from 'date-fns/locale'
   export default vi
@@ -16610,6 +16628,9 @@ declare module 'date-fns/esm/locale' {
 
   const uk: Locale
   namespace uk {}
+
+  const uz: Locale
+  namespace uz {}
 
   const vi: Locale
   namespace vi {}
@@ -16954,6 +16975,11 @@ declare module 'date-fns/esm/locale/ug' {
 declare module 'date-fns/esm/locale/uk' {
   import { uk } from 'date-fns/esm/locale'
   export default uk
+}
+
+declare module 'date-fns/esm/locale/uz' {
+  import { uz } from 'date-fns/esm/locale'
+  export default uz
 }
 
 declare module 'date-fns/esm/locale/vi' {
@@ -17306,6 +17332,11 @@ declare module 'date-fns/esm/locale/uk/index' {
   export default uk
 }
 
+declare module 'date-fns/esm/locale/uz/index' {
+  import { uz } from 'date-fns/esm/locale'
+  export default uz
+}
+
 declare module 'date-fns/esm/locale/vi/index' {
   import { vi } from 'date-fns/esm/locale'
   export default vi
@@ -17654,6 +17685,11 @@ declare module 'date-fns/esm/locale/ug/index.js' {
 declare module 'date-fns/esm/locale/uk/index.js' {
   import { uk } from 'date-fns/esm/locale'
   export default uk
+}
+
+declare module 'date-fns/esm/locale/uz/index.js' {
+  import { uz } from 'date-fns/esm/locale'
+  export default uz
 }
 
 declare module 'date-fns/esm/locale/vi/index.js' {
