@@ -21,11 +21,11 @@ export default function buildMatchFn(args) {
     var value
     if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
       value = findIndex(parsePatterns, function(pattern) {
-        return pattern.test(string)
+        return pattern.test(matchedString)
       })
     } else {
       value = findKey(parsePatterns, function(pattern) {
-        return pattern.test(string)
+        return pattern.test(matchedString)
       })
     }
 
