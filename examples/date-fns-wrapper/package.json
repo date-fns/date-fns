@@ -1,0 +1,27 @@
+{
+  "name": "date-fns-wrapper-browserify",
+  "version": "0.1.0",
+  "description": "wrapping date-fns utility with Browserify",
+  "main": "date-fns-wrapper.js",
+  "author": "Sasha Koss <koss@nocorp.me>",
+  "license": "MIT",
+  "dependencies": {
+    "babili": "^0.0.9",
+    "browserify": "^13.3.0",
+    "gzip-size-cli": "^1.0.0",
+    "pretty-bytes-cli": "^2.0.0"
+  },
+  "scripts": {
+    "build": "yarn run build-date-fns && yarn run build-browserify && yarn run build-babili",
+    "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
+    "build-browserify": "yarn run build-browserify-date-fns-wrapper",
+    "build-browserify-date-fns-wrapper": "mkdir -p dist && browserify date-fns-wrapper.js --s getDateFromFormat > dist/date-fns-wrapper.js",
+    "build-babili": "yarn run build-babili-date-fns-wrapper && yarn run stats-size",
+    "build-babili-date-fns-wrapper": "babili dist/date-fns-wrapper.js --out-file dist/date-fns-wrapper.min.js --minified --no-comments",
+    "stats-size": "gzip-size dist/date-fns-wrapper.min.js | pretty-bytes",
+    "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",
+    "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
+    "test-fp": "test $(env TZ=UTC node ./dist/fp.min.js) = true",
+    "test-misc": "test $(env TZ=UTC node ./dist/misc.min.js) = true"
+  }
+}
