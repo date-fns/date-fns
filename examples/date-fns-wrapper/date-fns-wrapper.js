@@ -45,7 +45,7 @@ const argumentCheck = function(dateFormat, duration, locale) {
 
   if (!Object.keys(locales).includes(locale)) {
     throw new Error(
-      'No such locale supported. We only support `ja` or `en-US` for locale'
+      'No such locale supported. Currently we only support `ja` or `en-US` for locale'
     )
   }
 }

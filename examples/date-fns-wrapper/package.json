@@ -11,6 +11,10 @@
     "gzip-size-cli": "^1.0.0",
     "pretty-bytes-cli": "^2.0.0"
   },
+  "devDependencies": {
+    "jest": "25.1.0",
+    "date-fns": "2.11.1"
+  },
   "scripts": {
     "build": "yarn run build-date-fns && yarn run build-browserify && yarn run build-babili",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
@@ -19,7 +23,7 @@
     "build-babili": "yarn run build-babili-date-fns-wrapper && yarn run stats-size",
     "build-babili-date-fns-wrapper": "babili dist/date-fns-wrapper.js --out-file dist/date-fns-wrapper.min.js --minified --no-comments",
     "stats-size": "gzip-size dist/date-fns-wrapper.min.js | pretty-bytes",
-    "test": "yarn run test-example && yarn run test-fp && yarn run test-misc",
+    "test": "jest",
     "test-example": "test $(env TZ=UTC node ./dist/example.min.js) = true",
     "test-fp": "test $(env TZ=UTC node ./dist/fp.min.js) = true",
     "test-misc": "test $(env TZ=UTC node ./dist/misc.min.js) = true"
