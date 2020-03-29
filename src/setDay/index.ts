@@ -34,7 +34,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
+export default function setDay(dirtyDate: Date | number, dirtyDay: number, dirtyOptions): Date {
   requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}

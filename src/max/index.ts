@@ -40,7 +40,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray) {
+export default function max(dirtyDatesArray: (Date | number)[]) {
   requiredArgs(1, arguments)
 
   var datesArray
@@ -57,7 +57,7 @@ export default function max(dirtyDatesArray) {
   }
 
   var result
-  datesArray.forEach(function(dirtyDate) {
+  datesArray.forEach(function(dirtyDate: Date | number) {
     var currentDate = toDate(dirtyDate)
 
     if (result === undefined || result < currentDate || isNaN(currentDate)) {

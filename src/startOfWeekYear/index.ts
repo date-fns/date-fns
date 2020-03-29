@@ -46,7 +46,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear(dirtyDate, dirtyOptions) {
+export default function startOfWeekYear(dirtyDate: Date | number, dirtyOptions): Date {
   requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}

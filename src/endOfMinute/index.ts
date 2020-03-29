@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:59.999
  */
-export default function endOfMinute(dirtyDate) {
+export default function endOfMinute(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

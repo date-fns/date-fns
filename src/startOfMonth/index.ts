@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = startOfMonth(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfMonth(dirtyDate) {
+export default function startOfMonth(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

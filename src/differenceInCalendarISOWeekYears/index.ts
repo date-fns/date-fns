@@ -34,8 +34,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 2
  */
 export default function differenceInCalendarISOWeekYears(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

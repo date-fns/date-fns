@@ -27,8 +27,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 8
  */
 export default function differenceInCalendarMonths(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

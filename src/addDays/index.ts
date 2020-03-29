@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-export default function addDays(dirtyDate, dirtyAmount) {
+export default function addDays(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)

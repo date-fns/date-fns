@@ -28,7 +28,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
-export default function getISOWeek(dirtyDate) {
+export default function getISOWeek(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

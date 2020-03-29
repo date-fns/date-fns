@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth(date, dirtyOptions) {
+export default function getWeekOfMonth(date, dirtyOptions): number {
   requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}

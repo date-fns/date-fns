@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export default function getDayOfYear(dirtyDate) {
+export default function getDayOfYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

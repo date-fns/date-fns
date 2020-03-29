@@ -44,8 +44,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 2
  */
 export default function differenceInCalendarWeeks(
-  dirtyDateLeft,
-  dirtyDateRight,
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number,
   dirtyOptions
 ) {
   requiredArgs(2, arguments)

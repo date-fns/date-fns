@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
-export default function endOfQuarter(dirtyDate) {
+export default function endOfQuarter(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

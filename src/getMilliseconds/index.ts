@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export default function getMilliseconds(dirtyDate) {
+export default function getMilliseconds(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

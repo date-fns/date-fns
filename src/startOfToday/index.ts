@@ -23,6 +23,6 @@ import startOfDay from '../startOfDay/index.js'
  * var result = startOfToday()
  * //=> Mon Oct 6 2014 00:00:00
  */
-export default function startOfToday() {
+export default function startOfToday(): Date {
   return startOfDay(Date.now())
 }

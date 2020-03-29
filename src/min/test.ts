@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import min from '.'
 
 describe('min', function() {
-  function isInvalidDate(dirtyDate) {
+  function isInvalidDate(dirtyDate: Date | number): boolean {
     return dirtyDate instanceof Date && isNaN(dirtyDate)
   }
 

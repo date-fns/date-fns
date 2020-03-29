@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export default function toDate(argument) {
+export default function toDate(argument: Date | number): Date {
   requiredArgs(1, arguments)
 
   const argStr = Object.prototype.toString.call(argument)

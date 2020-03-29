@@ -25,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = differenceInYears(new Date(2015, 1, 11), new Date(2013, 11, 31))
  * //=> 1
  */
-export default function differenceInYears(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInYears(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)

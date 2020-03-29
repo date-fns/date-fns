@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade(dirtyDate) {
+export default function getDecade(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

@@ -37,7 +37,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export default function compareAsc(dirtyDateLeft, dirtyDateRight) {
+export default function compareAsc(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)

@@ -36,7 +36,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> -1
  */
-export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInMinutes(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
   var diff =

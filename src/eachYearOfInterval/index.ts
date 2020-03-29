@@ -28,7 +28,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export default function eachYearOfInterval(dirtyInterval) {
+export default function eachYearOfInterval(dirtyInterval): Date[] {
   requiredArgs(1, arguments)
 
   var interval = dirtyInterval || {}

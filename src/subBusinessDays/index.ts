@@ -20,7 +20,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays(dirtyDate, dirtyAmount) {
+export default function subBusinessDays(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)

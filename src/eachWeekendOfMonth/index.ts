@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export default function eachWeekendOfMonth(dirtyDate) {
+export default function eachWeekendOfMonth(dirtyDate: Date | number): Date[] {
   requiredArgs(1, arguments)
 
   var startDate = startOfMonth(dirtyDate)

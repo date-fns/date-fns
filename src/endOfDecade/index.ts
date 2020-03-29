@@ -25,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfDecade(new Date(1984, 4, 12, 00, 00, 00))
  * //=> Dec 31 1989 23:59:59.999
  */
-export default function endOfDecade(dirtyDate) {
+export default function endOfDecade(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

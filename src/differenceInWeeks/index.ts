@@ -44,7 +44,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 8
  */
-export default function differenceInWeeks(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInWeeks(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7

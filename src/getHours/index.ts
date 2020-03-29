@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getHours(new Date(2012, 1, 29, 11, 45))
  * //=> 11
  */
-export default function getHours(dirtyDate) {
+export default function getHours(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

@@ -4,7 +4,7 @@ import requiredArgs from '../requiredArgs/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function setUTCISODay(dirtyDate, dirtyDay) {
+export default function setUTCISODay(dirtyDate: Date | number, dirtyDay: number): Date {
   requiredArgs(2, arguments)
 
   var day = toInteger(dirtyDay)

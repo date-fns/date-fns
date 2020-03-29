@@ -31,7 +31,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval) {
+export default function eachMonthOfInterval(dirtyInterval): Date[] {
   requiredArgs(1, arguments)
 
   var interval = dirtyInterval || {}

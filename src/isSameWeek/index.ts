@@ -36,8 +36,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> false
  */
 export default function isSameWeek(
-  dirtyDateLeft,
-  dirtyDateRight,
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number,
   dirtyOptions
 ) {
   requiredArgs(2, arguments)

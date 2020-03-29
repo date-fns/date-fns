@@ -32,7 +32,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
-export default function roundToNearestMinutes(dirtyDate, options) {
+export default function roundToNearestMinutes(dirtyDate: Date | number, options) {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')
   }

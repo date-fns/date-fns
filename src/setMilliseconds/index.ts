@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-export default function setMilliseconds(dirtyDate, dirtyMilliseconds) {
+export default function setMilliseconds(dirtyDate: Date | number, dirtyMilliseconds: number): Date {
   requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)

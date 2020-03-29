@@ -33,7 +33,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfWeek(dirtyDate, dirtyOptions) {
+export default function endOfWeek(dirtyDate: Date | number, dirtyOptions): Date {
   requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}

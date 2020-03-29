@@ -58,7 +58,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate) {
+export default function isValid(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

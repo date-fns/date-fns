@@ -37,7 +37,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc(dirtyDateLeft, dirtyDateRight) {
+export default function compareDesc(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)

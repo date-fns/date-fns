@@ -37,8 +37,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 1
  */
 export default function differenceInISOWeekYears(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

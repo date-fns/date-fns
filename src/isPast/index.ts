@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isPast(dirtyDate) {
+export default function isPast(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getTime() < Date.now()

@@ -24,7 +24,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours(dirtyDate, dirtyAmount) {
+export default function subHours(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)

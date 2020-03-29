@@ -26,7 +26,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
-export default function addHours(dirtyDate, dirtyAmount) {
+export default function addHours(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)

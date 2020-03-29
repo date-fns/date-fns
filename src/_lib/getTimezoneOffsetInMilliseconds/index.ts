@@ -15,7 +15,7 @@ function getDateMillisecondsPart(date) {
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-export default function getTimezoneOffsetInMilliseconds(dirtyDate) {
+export default function getTimezoneOffsetInMilliseconds(dirtyDate: Date | number) {
   var date = new Date(dirtyDate.getTime())
   var baseTimezoneOffset = Math.ceil(date.getTimezoneOffset())
   date.setSeconds(0, 0)

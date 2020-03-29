@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 12
  */
-export default function differenceInSeconds(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInSeconds(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
   var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000

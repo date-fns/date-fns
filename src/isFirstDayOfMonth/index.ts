@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isFirstDayOfMonth(new Date(2014, 8, 1))
  * //=> true
  */
-export default function isFirstDayOfMonth(dirtyDate) {
+export default function isFirstDayOfMonth(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDate() === 1

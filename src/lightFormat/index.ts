@@ -75,7 +75,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
-export default function lightFormat(dirtyDate, dirtyFormatStr) {
+export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
   requiredArgs(2, arguments)
 
   var formatStr = String(dirtyFormatStr)

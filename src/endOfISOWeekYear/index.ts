@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
-export default function endOfISOWeekYear(dirtyDate) {
+export default function endOfISOWeekYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var year = getISOWeekYear(dirtyDate)

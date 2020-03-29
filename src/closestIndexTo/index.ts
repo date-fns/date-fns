@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
+export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
   requiredArgs(2, arguments)
 
   var dateToCompare = toDate(dirtyDateToCompare)
@@ -59,7 +59,7 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate, index) {
+  datesArray.forEach(function(dirtyDate: Date | number, index) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

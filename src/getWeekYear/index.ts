@@ -46,7 +46,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear(dirtyDate, dirtyOptions) {
+export default function getWeekYear(dirtyDate: Date | number, dirtyOptions): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

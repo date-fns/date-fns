@@ -47,7 +47,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(dirtyDate, dirtyWeek, dirtyOptions) {
+export default function setWeek(dirtyDate: Date | number, dirtyWeek: number, dirtyOptions): Date {
   requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)

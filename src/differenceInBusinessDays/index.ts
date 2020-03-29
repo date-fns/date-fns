@@ -33,8 +33,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 136
  */
 export default function differenceInBusinessDays(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

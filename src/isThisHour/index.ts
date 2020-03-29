@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
-export default function isThisHour(dirtyDate) {
+export default function isThisHour(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameHour(Date.now(), dirtyDate)

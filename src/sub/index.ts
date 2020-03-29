@@ -43,7 +43,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub(dirtyDate, duration) {
+export default function sub(dirtyDate: Date | number, duration): Date {
   requiredArgs(2, arguments)
 
   if (!duration || typeof duration !== 'object') return new Date(NaN)

@@ -34,7 +34,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth(date, options) {
+export default function getWeeksInMonth(date, options): number {
   requiredArgs(1, arguments)
 
   return (

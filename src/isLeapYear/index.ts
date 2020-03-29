@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear(dirtyDate) {
+export default function isLeapYear(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

@@ -31,7 +31,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear(dirtyDate) {
+export default function getISOWeekYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate) {
+export default function isThisQuarter(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameQuarter(Date.now(), dirtyDate)

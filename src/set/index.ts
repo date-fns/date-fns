@@ -42,7 +42,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(dirtyDate, values) {
+export default function(dirtyDate: number: Date | number, values) {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {

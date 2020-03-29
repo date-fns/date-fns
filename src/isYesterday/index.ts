@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
-export default function isYesterday(dirtyDate) {
+export default function isYesterday(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameDay(dirtyDate, subDays(Date.now(), 1))

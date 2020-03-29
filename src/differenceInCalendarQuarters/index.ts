@@ -28,8 +28,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 3
  */
 export default function differenceInCalendarQuarters(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

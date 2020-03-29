@@ -120,7 +120,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * })
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate, dirtyOptions) {
   requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}

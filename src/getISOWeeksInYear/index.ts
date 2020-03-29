@@ -27,7 +27,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * var result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear(dirtyDate) {
+export default function getISOWeeksInYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var thisYear = startOfISOWeekYear(dirtyDate)

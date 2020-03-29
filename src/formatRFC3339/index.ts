@@ -34,7 +34,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339(dirtyDate, dirtyOptions) {
+export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 arguments required, but only ${arguments.length} present`

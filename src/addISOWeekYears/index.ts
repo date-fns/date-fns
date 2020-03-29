@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
-export default function addISOWeekYears(dirtyDate, dirtyAmount) {
+export default function addISOWeekYears(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
   var amount = toInteger(dirtyAmount)

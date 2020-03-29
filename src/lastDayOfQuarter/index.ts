@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = lastDayOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 00:00:00
  */
-export default function lastDayOfQuarter(dirtyDate) {
+export default function lastDayOfQuarter(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

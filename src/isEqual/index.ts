@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> false
  */
-export default function isEqual(dirtyLeftDate, dirtyRightDate) {
+export default function isEqual(dirtyLeftDate, dirtyRightDate): boolean {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyLeftDate)

@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture(dirtyDate) {
+export default function isFuture(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getTime() > Date.now()

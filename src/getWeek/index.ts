@@ -48,7 +48,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 
-export default function getWeek(dirtyDate, options) {
+export default function getWeek(dirtyDate: Date | number, options): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

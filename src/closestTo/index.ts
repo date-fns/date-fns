@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
+export default function closestTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
   requiredArgs(2, arguments)
 
   var dateToCompare = toDate(dirtyDateToCompare)
@@ -57,7 +57,7 @@ export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate) {
+  datesArray.forEach(function(dirtyDate: Date | number) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

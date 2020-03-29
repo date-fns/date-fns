@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
-export default function lastDayOfISOWeekYear(dirtyDate) {
+export default function lastDayOfISOWeekYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var year = getISOWeekYear(dirtyDate)

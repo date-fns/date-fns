@@ -294,7 +294,7 @@ function dayOfISOWeekYear(isoWeekYear, week, day) {
 // February is null to handle the leap year (using ||)
 var daysInMonths = [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-function isLeapYearIndex(year) {
+function isLeapYearIndex(year): boolean {
   return year % 400 === 0 || (year % 4 === 0 && year % 100)
 }
 

@@ -39,8 +39,8 @@ var MILLISECONDS_IN_DAY = 86400000
  * //=> 1
  */
 export default function differenceInCalendarDays(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

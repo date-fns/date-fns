@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = startOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfISOWeekYear(dirtyDate) {
+export default function startOfISOWeekYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var year = getISOWeekYear(dirtyDate)

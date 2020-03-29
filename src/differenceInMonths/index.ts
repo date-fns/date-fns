@@ -25,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInMonths(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)

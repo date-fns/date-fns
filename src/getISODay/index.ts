@@ -25,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay(dirtyDate) {
+export default function getISODay(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

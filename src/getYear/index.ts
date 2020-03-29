@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
-export default function getYear(dirtyDate) {
+export default function getYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

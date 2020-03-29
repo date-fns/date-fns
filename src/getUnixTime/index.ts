@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getUnixTime(new Date(2012, 1, 29, 11, 45, 5))
  * //=> 1330512305
  */
-export default function getUnixTime(dirtyDate) {
+export default function getUnixTime(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   return Math.floor(getTime(dirtyDate) / 1000)

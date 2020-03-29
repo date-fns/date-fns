@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isSaturday(new Date(2014, 8, 27))
  * //=> true
  */
-export default function isSaturday(dirtyDate) {
+export default function isSaturday(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDay() === 6

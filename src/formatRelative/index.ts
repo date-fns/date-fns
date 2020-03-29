@@ -41,7 +41,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate, dirtyOptions) {
   requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)

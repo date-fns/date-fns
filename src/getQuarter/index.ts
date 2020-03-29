@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-export default function getQuarter(dirtyDate) {
+export default function getQuarter(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)

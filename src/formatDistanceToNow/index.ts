@@ -106,7 +106,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(dirtyDate, dirtyOptions) {
+export default function formatDistanceToNow(dirtyDate: Date | number, dirtyOptions) {
   requiredArgs(1, arguments)
 
   return distanceInWords(dirtyDate, Date.now(), dirtyOptions)

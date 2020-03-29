@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isAfter(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> true
  */
-export default function isAfter(dirtyDate, dirtyDateToCompare) {
+export default function isAfter(dirtyDate: Date | number, dirtyDateToCompare: Date | number): boolean {
   requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)

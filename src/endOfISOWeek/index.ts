@@ -25,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfISOWeek(dirtyDate) {
+export default function endOfISOWeek(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   return endOfWeek(dirtyDate, { weekStartsOn: 1 })

@@ -40,7 +40,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO(dirtyDate, dirtyOptions) {
+export default function formatISO(dirtyDate: Date | number, dirtyOptions) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`

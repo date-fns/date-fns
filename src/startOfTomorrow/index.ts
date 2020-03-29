@@ -21,7 +21,7 @@
  * var result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
-export default function startOfTomorrow() {
+export default function startOfTomorrow(): Date {
   var now = new Date()
   var year = now.getFullYear()
   var month = now.getMonth()

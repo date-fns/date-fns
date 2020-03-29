@@ -28,8 +28,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 1100
  */
 export default function differenceInMilliseconds(
-  dirtyDateLeft,
-  dirtyDateRight
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
 ) {
   requiredArgs(2, arguments)
 

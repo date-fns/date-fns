@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval(interval) {
+export default function eachWeekendOfInterval(interval): Date[] {
   requiredArgs(1, arguments)
 
   var dateInterval = eachDayOfInterval(interval)

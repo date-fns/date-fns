@@ -22,7 +22,7 @@
  * var result = isExists(2018, 1, 31)
  * //=> false
  */
-export default function isExists(year, month, day) {
+export default function isExists(year, month, day): boolean {
   if (arguments.length < 3) {
     throw new TypeError(
       '3 argument required, but only ' + arguments.length + ' present'

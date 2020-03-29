@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  */
 
-export default function isThisISOWeek(dirtyDate) {
+export default function isThisISOWeek(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameISOWeek(dirtyDate, Date.now())

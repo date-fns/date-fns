@@ -28,7 +28,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  */
 
-export default function isThisMinute(dirtyDate) {
+export default function isThisMinute(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameMinute(Date.now(), dirtyDate)

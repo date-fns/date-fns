@@ -208,7 +208,7 @@ var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 // User for validation
-function isLeapYearIndex(year) {
+function isLeapYearIndex(year): boolean {
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }
 

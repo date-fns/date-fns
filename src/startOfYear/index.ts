@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Jan 01 2014 00:00:00
  */
-export default function startOfYear(dirtyDate) {
+export default function startOfYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
   var cleanDate = toDate(dirtyDate)

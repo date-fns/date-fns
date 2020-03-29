@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisYear(dirtyDate) {
+export default function isThisYear(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return isSameYear(dirtyDate, Date.now())
