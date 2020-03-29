@@ -1,14 +1,19 @@
-# Usage With Browserify
-
-See [example.js](./example.js), [fp.js](./fp.js) and [misc.js](./misc.js) for source code examples.
+# Wrapper func of date-fns and minifies to run on Browsers with Browserify
 
 See [package.json scripts](./package.json) for CLI usage.
 
 ## Build Example
 
 ```sh
-yarn
+yarn # at project root
+yarn # at here
 yarn run build
+```
+
+## Test Example
+
+```sh
+yarn test
 ```
 
 See ./dist for output.
@@ -18,6 +23,6 @@ See ./dist for output.
 You can see minimal build size (when you use just one function):
 
 ```sh
-gzip-size dist/example.min.js | pretty-bytes
+gzip-size dist/date-fns-wrapper.min.js | pretty-bytes
 #=> 7.15 kB
 ```
