@@ -34,13 +34,15 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 0
  */
+var MILLISECONDS_IN_DAY = 86400000
+
 export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 
-  var result = (dateLeft - dateRight) / 86400000
+  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY
 
   // round towards zero
   if (result > 0) return Math.floor(result)
