@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(번째)?/i
+var matchOrdinalNumberPattern = /^(\d+)(일|번째)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
