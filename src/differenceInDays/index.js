@@ -8,6 +8,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * @description
  * Get the number of full day periods between the given dates.
+ * This function returns the difference in days as an integer whole number of 24 hour periods between two timestamps,  and thereby ignores DST changes.
+ *
  *
  * ### v2.0.0 breaking changes:
  *
