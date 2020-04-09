@@ -8,6 +8,22 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.12.0] - 2020-04-09
+
+Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.com/skyuplam), [@so99ynoodles](https://github.com/so99ynoodles), [@dkozickis](https://github.com/dkozickis), [@belgamo](https://github.com/belgamo), [@akgondber](https://github.com/akgondber) and [@BoomDev](https://github.com/BoomDev) for working on the release!
+
+### Fixed
+
+- [Fixed minulý štvrtok in Slovak locale](https://github.com/date-fns/date-fns/pull/1701).
+- Fixed date ordinalNumber for [ja/zh-CN/zh-TW](https://github.com/date-fns/date-fns/pull/1690) and [ko](https://github.com/date-fns/date-fns/pull/1696).
+- [Fixed quarters parsing](https://github.com/date-fns/date-fns/pull/1694).
+- [Fixed `setDay` with `weekStartsOn` != 0](https://github.com/date-fns/date-fns/pull/1639).
+- [Fixed required arguments exception message](https://github.com/date-fns/date-fns/pull/1674).
+
+### Added
+
+- [Added new function `formatDistanceToNowStrict`](https://github.com/date-fns/date-fns/pull/1679).
+
 ## [2.11.1] - 2020-03-26
 
 ### Fixed
