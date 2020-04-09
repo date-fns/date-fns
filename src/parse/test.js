@@ -387,6 +387,28 @@ describe('parse', function() {
     })
   })
 
+  describe('quarter with following year', function() {
+    it('first quarter', function() {
+      var result = parse('Q1/2020', 'QQQ/yyyy', referenceDate)
+      assert.deepEqual(result, new Date(2020, 0 /* Jan */, 1))
+    })
+
+    it('second quarter', function() {
+      var result = parse('Q2/2020', 'QQQ/yyyy', referenceDate)
+      assert.deepEqual(result, new Date(2020, 3 /* Apr */, 1))
+    })
+
+    it('third quarter', function() {
+      var result = parse('Q3/2020', 'QQQ/yyyy', referenceDate)
+      assert.deepEqual(result, new Date(2020, 6 /* Jul */, 1))
+    })
+
+    it('fourth quarter', function() {
+      var result = parse('Q4/2020', 'QQQ/yyyy', referenceDate)
+      assert.deepEqual(result, new Date(2020, 9 /* Oct */, 1))
+    })
+  })
+
   describe('quarter (formatting)', function() {
     it('numeric', function() {
       var result = parse('1', 'Q', referenceDate)
