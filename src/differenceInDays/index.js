@@ -1,6 +1,4 @@
 import toDate from '../toDate/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import compareAsc from '../compareAsc/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
@@ -10,6 +8,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * @description
  * Get the number of full day periods between the given dates.
+ * This function returns the difference in days as an integer whole number of 24 hour periods between two timestamps,  and thereby ignores DST changes.
+ *
  *
  * ### v2.0.0 breaking changes:
  *
@@ -36,21 +36,17 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 0
  */
+var MILLISECONDS_IN_DAY = 86400000
+
 export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  var result = (dateLeft - dateRight) / MILLISECONDS_IN_DAY
 
-  dateLeft.setDate(dateLeft.getDate() - sign * difference)
-
-  // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastDayNotFull)
-  // Prevent negative zero
-  return result === 0 ? 0 : result
+  // round towards zero
+  if (result > 0) return Math.floor(result)
+  return Math.ceil(result)
 }

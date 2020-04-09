@@ -62,6 +62,16 @@ describe('differenceInDays', function() {
       assert(result === 0)
     })
 
+    it('ignores any localtime differences with DST', function() {
+      const a = new Date('2019-10-05T15:00:00.000Z') // for TZ=Australia/Sydney, this is 1 hour before DST
+      const b = new Date('2019-10-06T14:00:00.000Z') // for TZ=Australia/Sydney, this is 1 day  after DST
+      const c = new Date('2019-10-07T14:00:00.000Z') // for TZ=Australia/Sydney, this is 2 days after DST
+
+      assert(differenceInDays(c, b) === 1)
+      assert(differenceInDays(b, a) === 0) // 23 hours < 1 day
+      assert(differenceInDays(c, a) === 1) // 47 hours < 2 days
+    })
+
     it('does not return -0 when the given dates are the same', () => {
       function isNegativeZero(x) {
         return x === 0 && 1 / x < 0
