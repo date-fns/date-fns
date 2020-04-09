@@ -397,6 +397,17 @@ declare module 'date-fns' {
   ): string
   namespace formatDistanceToNow {}
 
+  function formatDistanceToNowStrict(
+    date: Date | number,
+    options?: {
+      addSuffix?: boolean
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNowStrict {}
+
   function formatISO(
     date: Date | number,
     options?: {
@@ -1256,6 +1267,11 @@ declare module 'date-fns/formatDistanceStrict' {
 declare module 'date-fns/formatDistanceToNow' {
   import { formatDistanceToNow } from 'date-fns'
   export default formatDistanceToNow
+}
+
+declare module 'date-fns/formatDistanceToNowStrict' {
+  import { formatDistanceToNowStrict } from 'date-fns'
+  export default formatDistanceToNowStrict
 }
 
 declare module 'date-fns/formatISO' {
@@ -2203,6 +2219,11 @@ declare module 'date-fns/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/formatDistanceToNowStrict/index' {
+  import { formatDistanceToNowStrict } from 'date-fns'
+  export default formatDistanceToNowStrict
+}
+
 declare module 'date-fns/formatISO/index' {
   import { formatISO } from 'date-fns'
   export default formatISO
@@ -3146,6 +3167,11 @@ declare module 'date-fns/formatDistanceStrict/index.js' {
 declare module 'date-fns/formatDistanceToNow/index.js' {
   import { formatDistanceToNow } from 'date-fns'
   export default formatDistanceToNow
+}
+
+declare module 'date-fns/formatDistanceToNowStrict/index.js' {
+  import { formatDistanceToNowStrict } from 'date-fns'
+  export default formatDistanceToNowStrict
 }
 
 declare module 'date-fns/formatISO/index.js' {
@@ -7926,6 +7952,17 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatDistanceToNow {}
 
+  function formatDistanceToNowStrict(
+    date: Date | number,
+    options?: {
+      addSuffix?: boolean
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      roundingMethod?: 'floor' | 'ceil' | 'round'
+      locale?: Locale
+    }
+  ): string
+  namespace formatDistanceToNowStrict {}
+
   function formatISO(
     date: Date | number,
     options?: {
@@ -8785,6 +8822,11 @@ declare module 'date-fns/esm/formatDistanceStrict' {
 declare module 'date-fns/esm/formatDistanceToNow' {
   import { formatDistanceToNow } from 'date-fns/esm'
   export default formatDistanceToNow
+}
+
+declare module 'date-fns/esm/formatDistanceToNowStrict' {
+  import { formatDistanceToNowStrict } from 'date-fns/esm'
+  export default formatDistanceToNowStrict
 }
 
 declare module 'date-fns/esm/formatISO' {
@@ -9732,6 +9774,11 @@ declare module 'date-fns/esm/formatDistanceToNow/index' {
   export default formatDistanceToNow
 }
 
+declare module 'date-fns/esm/formatDistanceToNowStrict/index' {
+  import { formatDistanceToNowStrict } from 'date-fns/esm'
+  export default formatDistanceToNowStrict
+}
+
 declare module 'date-fns/esm/formatISO/index' {
   import { formatISO } from 'date-fns/esm'
   export default formatISO
@@ -10675,6 +10722,11 @@ declare module 'date-fns/esm/formatDistanceStrict/index.js' {
 declare module 'date-fns/esm/formatDistanceToNow/index.js' {
   import { formatDistanceToNow } from 'date-fns/esm'
   export default formatDistanceToNow
+}
+
+declare module 'date-fns/esm/formatDistanceToNowStrict/index.js' {
+  import { formatDistanceToNowStrict } from 'date-fns/esm'
+  export default formatDistanceToNowStrict
 }
 
 declare module 'date-fns/esm/formatISO/index.js' {
@@ -17928,6 +17980,16 @@ interface dateFns {
     options?: {
       includeSeconds?: boolean
       addSuffix?: boolean
+      locale?: Locale
+    }
+  ): string
+
+  formatDistanceToNowStrict(
+    date: Date | number,
+    options?: {
+      addSuffix?: boolean
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+      roundingMethod?: 'floor' | 'ceil' | 'round'
       locale?: Locale
     }
   ): string
