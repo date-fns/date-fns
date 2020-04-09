@@ -10,7 +10,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.12.0] - 2020-04-09
 
-Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.com/skyuplam), [@so99ynoodles](https://github.com/so99ynoodles), [@dkozickis](https://github.com/dkozickis), [@belgamo](https://github.com/belgamo), [@akgondber](https://github.com/akgondber) and [@BoomDev](https://github.com/BoomDev) for working on the release!
+Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.com/skyuplam), [@so99ynoodles](https://github.com/so99ynoodles), [@dkozickis](https://github.com/dkozickis), [@belgamo](https://github.com/belgamo), [@akgondber](https://github.com/akgondber), [@dcousens](https://github.com/dcousens) and [@BoomDev](https://github.com/BoomDev) for working on the release!
 
 ### Fixed
 
@@ -18,6 +18,7 @@ Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.c
 - Fixed date ordinalNumber for [ja/zh-CN/zh-TW](https://github.com/date-fns/date-fns/pull/1690) and [ko](https://github.com/date-fns/date-fns/pull/1696).
 - [Fixed quarters parsing](https://github.com/date-fns/date-fns/pull/1694).
 - [Fixed `setDay` with `weekStartsOn` != 0](https://github.com/date-fns/date-fns/pull/1639).
+- [Fixed differenceInDays across DST](https://github.com/date-fns/date-fns/pull/1630).
 - [Fixed required arguments exception message](https://github.com/date-fns/date-fns/pull/1674).
 
 ### Added
