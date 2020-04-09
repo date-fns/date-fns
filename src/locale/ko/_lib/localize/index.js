@@ -120,10 +120,18 @@ var formattingDayPeriodValues = {
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
-  return dirtyOptions &&
-    (dirtyOptions.unit === 'minute' || dirtyOptions.unit === 'second')
-    ? number.toString()
-    : number + '번째'
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+
+  switch (unit) {
+    case 'minute':
+    case 'second':
+      return number
+    case 'date':
+      return number + '일'
+    default:
+      return number + '번째'
+  }
 }
 
 var localize = {

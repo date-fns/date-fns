@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
  * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
  * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
+ * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
 var locale = {
   code: 'ja',
@@ -29,5 +30,3 @@ var locale = {
 }
 
 export default locale
-
-// throw new Error('ja locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')

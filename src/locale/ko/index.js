@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 kor
  * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
  * @author Lee Seoyoen [@iamssen]{@link https://github.com/iamssen}
+ * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
 var locale = {
   code: 'ko',
