@@ -44,6 +44,10 @@ Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.
 
 - [Fixed `formatISO` when formatting time with timezones with minute offsets > 0](https://github.com/date-fns/date-fns/pull/1599). Kudos to [@dcRUSTy](https://github.com/dcRUSTy).
 
+### Fixed
+
+- Fixed a bug in setDay when using weekStartsOn that is not 0
+
 ### Added
 
 - [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
