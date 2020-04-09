@@ -50,14 +50,14 @@ describe('setDay', function() {
   })
 
   it('specifies Monday as the first day of the week', function() {
-    var result = setDay(new Date(2014, 8 /* Sep */, 7), 1, {
+    var result = setDay(new Date(2014, 8 /* Sep */, 6), 1, {
       weekStartsOn: 1
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('specifies Tuesday as the first day of the week', function() {
-    var result = setDay(new Date(2014, 8 /* Sep */, 7), 1, {
+    var result = setDay(new Date(2014, 8 /* Sep */, 6), 1, {
       weekStartsOn: 2
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
