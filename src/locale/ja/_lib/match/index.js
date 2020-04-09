@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^第?\d+/i
+var matchOrdinalNumberPattern = /^第?\d+(日)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
@@ -29,7 +29,20 @@ var matchMonthPatterns = {
   wide: /^([123456789]|1[012])月/i
 }
 var parseMonthPatterns = {
-  any: [/^1/, /^2/, /^3/, /^4/, /^5/, /^6/, /^7/, /^8/, /^9/, /^10/, /^11/, /^12/]
+  any: [
+    /^1/,
+    /^2/,
+    /^3/,
+    /^4/,
+    /^5/,
+    /^6/,
+    /^7/,
+    /^8/,
+    /^9/,
+    /^10/,
+    /^11/,
+    /^12/
+  ]
 }
 
 var matchDayPatterns = {
@@ -62,7 +75,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -79,7 +92,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

@@ -14,6 +14,7 @@ import match from './_lib/match/index.js'
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
  * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
  * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
+ * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
 var locale = {
   code: 'zh-CN',

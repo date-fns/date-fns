@@ -13,6 +13,7 @@ import match from './_lib/match/index.js'
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
  * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
+ * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
 var locale = {
   code: 'ja',
