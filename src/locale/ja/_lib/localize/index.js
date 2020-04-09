@@ -118,15 +118,24 @@ var formattingDayPeriodValues = {
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
+
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
+
   var options = dirtyOptions || {}
   var unit = String(options.unit)
 
-  switch (unit) {
-    case 'date':
-      return number + '日'
-    default:
-      return number
+  if (unit === 'date') {
+    return number + '日'
   }
+  return number
 }
 
 var localize = {

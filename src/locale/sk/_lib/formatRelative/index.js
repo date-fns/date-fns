@@ -16,7 +16,7 @@ function lastWeek(day) {
 
   switch (day) {
     case 0: /* Sun */
-    case 4: /* Wed */
+    case 3: /* Wed */
     case 6 /* Sat */:
       return "'minulú " + weekday + " o' p"
     default:

@@ -12,6 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 zho
  * @author tonypai [@tpai]{@link https://github.com/tpai}
  * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
+ * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
 var locale = {
   code: 'zh-TW',

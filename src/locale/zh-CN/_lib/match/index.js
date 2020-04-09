@@ -1,7 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(第\s*)?\d+/i
+var matchOrdinalNumberPattern = /^(第\s*)?\d+(日|时|分|秒)?/i
 var parseOrdinalNumberPattern = /\d+/i
 
 var matchEraPatterns = {
@@ -43,8 +43,8 @@ var parseMonthPatterns = {
     /^十二/i
   ],
   any: [
-    /^一|[!\d]1[!\d]/i,
-    /^二|[!\d]2[!\d]/i,
+    /^一|1/i,
+    /^二|2/i,
     /^三|3/i,
     /^四|4/i,
     /^五|5/i,
@@ -69,17 +69,17 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(上午|下午|午夜|[中正]午|早上|下午|晚上?|凌晨)/i
+  any: /^(上午?|下午?|午夜|[中正]午|早上?|下午|晚上?|凌晨|)/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^上午/i,
-    pm: /^下午/i,
+    am: /^上午?/i,
+    pm: /^下午?/i,
     midnight: /^午夜/i,
     noon: /^[中正]午/i,
     morning: /^早上/i,
     afternoon: /^下午/i,
-    evening: /^晚/i,
+    evening: /^晚上?/i,
     night: /^凌晨/i
   }
 }

@@ -129,9 +129,34 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber(dirtyNumber, _options) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-  return '第 ' + number.toString()
+
+  // If ordinal numbers depend on context, for example,
+  // if they are different for different grammatical genders,
+  // use `options.unit`:
+  //
+  //   var options = dirtyOptions || {}
+  //   var unit = String(options.unit)
+  //
+  // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
+  // 'day', 'hour', 'minute', 'second'
+
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+
+  switch (unit) {
+    case 'date':
+      return number.toString() + '日'
+    case 'hour':
+      return number.toString() + '時'
+    case 'minute':
+      return number.toString() + '分'
+    case 'second':
+      return number.toString() + '秒'
+    default:
+      return '第 ' + number.toString()
+  }
 }
 
 var localize = {
