@@ -5,19 +5,45 @@ import differenceInDays from '../differenceInDays/index.js'
 import differenceInHours from '../differenceInHours/index.js'
 import differenceInMinutes from '../differenceInMinutes/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
+import isValid from '../isValid/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
 import toDate from '../toDate/index.js'
 import sub from '../sub/index.js'
 
-// input date1
-// input date2
-// output <String> P(n)Y(n)M(n)DT(n)H(n)M(n)S
+/**
+ * @name getISODurationString
+ * @category Common Helpers
+ * @summary Get the duration between 2 dates according to ISO 8601 Duration standards (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
+ *
+ * @param {Date} dirtyDateLeft
+ * @param {Date} dirtyDateRight
+ *
+ * @returns {String} The ISO 8601 Duration string
+ * @throws {TypeError} Requires 2 Arguments
+ * @throws {RangeError} `dateLeft` must not be Invalid Date
+ * @throws {RangeError} `dateRight` must not be Invalid Date
+ *
+ * @example
+ * // Get the ISO 8601 Duration between January 15, 1929 and April 4, 1968.
+ * const result = getISODurationString(
+ *     new Date(1929, 0, 15, 12, 0, 0),
+ *     new Date(1968, 3, 4, 19, 5, 0)
+ * )
+ * // => 'P39Y2M20DT0H0M0S'
+ */
 
 export default function getISODurationString(dirtyDateLeft, dirtyDateRight) {
   requiredArgs(2, arguments)
 
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
+
+  if (!isValid(dateLeft)) {
+    throw new RangeError('Left Date is invalid')
+  }
+  if (!isValid(dateRight)) {
+    throw new RangeError('Right Date is invalid')
+  }
 
   const sign = compareAsc(dateLeft, dateRight)
 
