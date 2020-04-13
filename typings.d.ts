@@ -463,6 +463,12 @@ declare module 'date-fns' {
   function getISODay(date: Date | number): number
   namespace getISODay {}
 
+  function getISODurationString(
+    dirtyDateLeft: Date,
+    dirtyDateRight: Date
+  ): string
+  namespace getISODurationString {}
+
   function getISOWeek(date: Date | number): number
   namespace getISOWeek {}
 
@@ -744,7 +750,7 @@ declare module 'date-fns' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -1326,6 +1332,11 @@ declare module 'date-fns/getHours' {
 declare module 'date-fns/getISODay' {
   import { getISODay } from 'date-fns'
   export default getISODay
+}
+
+declare module 'date-fns/getISODurationString' {
+  import { getISODurationString } from 'date-fns'
+  export default getISODurationString
 }
 
 declare module 'date-fns/getISOWeek' {
@@ -2273,6 +2284,11 @@ declare module 'date-fns/getISODay/index' {
   export default getISODay
 }
 
+declare module 'date-fns/getISODurationString/index' {
+  import { getISODurationString } from 'date-fns'
+  export default getISODurationString
+}
+
 declare module 'date-fns/getISOWeek/index' {
   import { getISOWeek } from 'date-fns'
   export default getISOWeek
@@ -3216,6 +3232,11 @@ declare module 'date-fns/getHours/index.js' {
 declare module 'date-fns/getISODay/index.js' {
   import { getISODay } from 'date-fns'
   export default getISODay
+}
+
+declare module 'date-fns/getISODurationString/index.js' {
+  import { getISODurationString } from 'date-fns'
+  export default getISODurationString
 }
 
 declare module 'date-fns/getISOWeek/index.js' {
@@ -4184,6 +4205,9 @@ declare module 'date-fns/fp' {
   const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {}
 
+  const getISODurationString: CurriedFn2<Date, Date, string>
+  namespace getISODurationString {}
+
   const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {}
 
@@ -5072,6 +5096,11 @@ declare module 'date-fns/fp/getHours' {
 declare module 'date-fns/fp/getISODay' {
   import { getISODay } from 'date-fns/fp'
   export default getISODay
+}
+
+declare module 'date-fns/fp/getISODurationString' {
+  import { getISODurationString } from 'date-fns/fp'
+  export default getISODurationString
 }
 
 declare module 'date-fns/fp/getISOWeek' {
@@ -6059,6 +6088,11 @@ declare module 'date-fns/fp/getISODay/index' {
   export default getISODay
 }
 
+declare module 'date-fns/fp/getISODurationString/index' {
+  import { getISODurationString } from 'date-fns/fp'
+  export default getISODurationString
+}
+
 declare module 'date-fns/fp/getISOWeek/index' {
   import { getISOWeek } from 'date-fns/fp'
   export default getISOWeek
@@ -7044,6 +7078,11 @@ declare module 'date-fns/fp/getISODay/index.js' {
   export default getISODay
 }
 
+declare module 'date-fns/fp/getISODurationString/index.js' {
+  import { getISODurationString } from 'date-fns/fp'
+  export default getISODurationString
+}
+
 declare module 'date-fns/fp/getISOWeek/index.js' {
   import { getISOWeek } from 'date-fns/fp'
   export default getISOWeek
@@ -7992,6 +8031,12 @@ declare module 'date-fns/esm' {
   function getISODay(date: Date | number): number
   namespace getISODay {}
 
+  function getISODurationString(
+    dirtyDateLeft: Date,
+    dirtyDateRight: Date
+  ): string
+  namespace getISODurationString {}
+
   function getISOWeek(date: Date | number): number
   namespace getISOWeek {}
 
@@ -8273,7 +8318,7 @@ declare module 'date-fns/esm' {
   function parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
@@ -8855,6 +8900,11 @@ declare module 'date-fns/esm/getHours' {
 declare module 'date-fns/esm/getISODay' {
   import { getISODay } from 'date-fns/esm'
   export default getISODay
+}
+
+declare module 'date-fns/esm/getISODurationString' {
+  import { getISODurationString } from 'date-fns/esm'
+  export default getISODurationString
 }
 
 declare module 'date-fns/esm/getISOWeek' {
@@ -9802,6 +9852,11 @@ declare module 'date-fns/esm/getISODay/index' {
   export default getISODay
 }
 
+declare module 'date-fns/esm/getISODurationString/index' {
+  import { getISODurationString } from 'date-fns/esm'
+  export default getISODurationString
+}
+
 declare module 'date-fns/esm/getISOWeek/index' {
   import { getISOWeek } from 'date-fns/esm'
   export default getISOWeek
@@ -10745,6 +10800,11 @@ declare module 'date-fns/esm/getHours/index.js' {
 declare module 'date-fns/esm/getISODay/index.js' {
   import { getISODay } from 'date-fns/esm'
   export default getISODay
+}
+
+declare module 'date-fns/esm/getISODurationString/index.js' {
+  import { getISODurationString } from 'date-fns/esm'
+  export default getISODurationString
 }
 
 declare module 'date-fns/esm/getISOWeek/index.js' {
@@ -11713,6 +11773,9 @@ declare module 'date-fns/esm/fp' {
   const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {}
 
+  const getISODurationString: CurriedFn2<Date, Date, string>
+  namespace getISODurationString {}
+
   const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {}
 
@@ -12601,6 +12664,11 @@ declare module 'date-fns/esm/fp/getHours' {
 declare module 'date-fns/esm/fp/getISODay' {
   import { getISODay } from 'date-fns/esm/fp'
   export default getISODay
+}
+
+declare module 'date-fns/esm/fp/getISODurationString' {
+  import { getISODurationString } from 'date-fns/esm/fp'
+  export default getISODurationString
 }
 
 declare module 'date-fns/esm/fp/getISOWeek' {
@@ -13588,6 +13656,11 @@ declare module 'date-fns/esm/fp/getISODay/index' {
   export default getISODay
 }
 
+declare module 'date-fns/esm/fp/getISODurationString/index' {
+  import { getISODurationString } from 'date-fns/esm/fp'
+  export default getISODurationString
+}
+
 declare module 'date-fns/esm/fp/getISOWeek/index' {
   import { getISOWeek } from 'date-fns/esm/fp'
   export default getISOWeek
@@ -14571,6 +14644,11 @@ declare module 'date-fns/esm/fp/getHours/index.js' {
 declare module 'date-fns/esm/fp/getISODay/index.js' {
   import { getISODay } from 'date-fns/esm/fp'
   export default getISODay
+}
+
+declare module 'date-fns/esm/fp/getISODurationString/index.js' {
+  import { getISODurationString } from 'date-fns/esm/fp'
+  export default getISODurationString
 }
 
 declare module 'date-fns/esm/fp/getISOWeek/index.js' {
@@ -17912,6 +17990,8 @@ interface dateFns {
 
   getISODay(date: Date | number): number
 
+  getISODurationString(dirtyDateLeft: Date, dirtyDateRight: Date): string
+
   getISOWeek(date: Date | number): number
 
   getISOWeeksInYear(date: Date | number): number
@@ -18102,7 +18182,7 @@ interface dateFns {
   parse(
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6

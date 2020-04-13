@@ -102,6 +102,9 @@ export { default as getDaysInYear } from './getDaysInYear/index.js'
 export { default as getDecade } from './getDecade/index.js'
 export { default as getHours } from './getHours/index.js'
 export { default as getISODay } from './getISODay/index.js'
+export {
+  default as getISODurationString
+} from './getISODurationString/index.js'
 export { default as getISOWeek } from './getISOWeek/index.js'
 export { default as getISOWeekYear } from './getISOWeekYear/index.js'
 export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'

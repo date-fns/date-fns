@@ -272,6 +272,7 @@ declare module.exports: {
   getDecade: CurriedFn1<Date | number, number>,
   getHours: CurriedFn1<Date | number, number>,
   getISODay: CurriedFn1<Date | number, number>,
+  getISODurationString: CurriedFn2<Date, Date, string>,
   getISOWeek: CurriedFn1<Date | number, number>,
   getISOWeeksInYear: CurriedFn1<Date | number, number>,
   getISOWeekYear: CurriedFn1<Date | number, number>,
