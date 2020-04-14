@@ -310,6 +310,8 @@ declare module.exports: {
     }
   ) => string,
 
+  formatISODuration: (duration: Duration) => string,
+
   formatRelative: (
     date: Date | number,
     baseDate: Date | number,
@@ -345,8 +347,6 @@ declare module.exports: {
   getHours: (date: Date | number) => number,
 
   getISODay: (date: Date | number) => number,
-
-  getISODurationString: (dirtyDateLeft: Date, dirtyDateRight: Date) => string,
 
   getISOWeek: (date: Date | number) => number,
 
@@ -408,6 +408,8 @@ declare module.exports: {
   ) => number,
 
   getYear: (date: Date | number) => number,
+
+  intervalToDuration: (interval: Interval) => Duration,
 
   isAfter: (date: Date | number, dateToCompare: Date | number) => boolean,
 

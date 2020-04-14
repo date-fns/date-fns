@@ -415,6 +415,9 @@ declare module 'date-fns' {
   ): string
   namespace formatISO9075 {}
 
+  function formatISODuration(duration: Duration): string
+  namespace formatISODuration {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -462,12 +465,6 @@ declare module 'date-fns' {
 
   function getISODay(date: Date | number): number
   namespace getISODay {}
-
-  function getISODurationString(
-    dirtyDateLeft: Date,
-    dirtyDateRight: Date
-  ): string
-  namespace getISODurationString {}
 
   function getISOWeek(date: Date | number): number
   namespace getISOWeek {}
@@ -545,6 +542,9 @@ declare module 'date-fns' {
 
   function getYear(date: Date | number): number
   namespace getYear {}
+
+  function intervalToDuration(interval: Interval): Duration
+  namespace intervalToDuration {}
 
   function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {}
@@ -1274,6 +1274,11 @@ declare module 'date-fns/formatISO9075' {
   export default formatISO9075
 }
 
+declare module 'date-fns/formatISODuration' {
+  import { formatISODuration } from 'date-fns'
+  export default formatISODuration
+}
+
 declare module 'date-fns/formatRelative' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
@@ -1332,11 +1337,6 @@ declare module 'date-fns/getHours' {
 declare module 'date-fns/getISODay' {
   import { getISODay } from 'date-fns'
   export default getISODay
-}
-
-declare module 'date-fns/getISODurationString' {
-  import { getISODurationString } from 'date-fns'
-  export default getISODurationString
 }
 
 declare module 'date-fns/getISOWeek' {
@@ -1417,6 +1417,11 @@ declare module 'date-fns/getWeekYear' {
 declare module 'date-fns/getYear' {
   import { getYear } from 'date-fns'
   export default getYear
+}
+
+declare module 'date-fns/intervalToDuration' {
+  import { intervalToDuration } from 'date-fns'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/isAfter' {
@@ -2224,6 +2229,11 @@ declare module 'date-fns/formatISO9075/index' {
   export default formatISO9075
 }
 
+declare module 'date-fns/formatISODuration/index' {
+  import { formatISODuration } from 'date-fns'
+  export default formatISODuration
+}
+
 declare module 'date-fns/formatRelative/index' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
@@ -2282,11 +2292,6 @@ declare module 'date-fns/getHours/index' {
 declare module 'date-fns/getISODay/index' {
   import { getISODay } from 'date-fns'
   export default getISODay
-}
-
-declare module 'date-fns/getISODurationString/index' {
-  import { getISODurationString } from 'date-fns'
-  export default getISODurationString
 }
 
 declare module 'date-fns/getISOWeek/index' {
@@ -2367,6 +2372,11 @@ declare module 'date-fns/getWeekYear/index' {
 declare module 'date-fns/getYear/index' {
   import { getYear } from 'date-fns'
   export default getYear
+}
+
+declare module 'date-fns/intervalToDuration/index' {
+  import { intervalToDuration } from 'date-fns'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/isAfter/index' {
@@ -3174,6 +3184,11 @@ declare module 'date-fns/formatISO9075/index.js' {
   export default formatISO9075
 }
 
+declare module 'date-fns/formatISODuration/index.js' {
+  import { formatISODuration } from 'date-fns'
+  export default formatISODuration
+}
+
 declare module 'date-fns/formatRelative/index.js' {
   import { formatRelative } from 'date-fns'
   export default formatRelative
@@ -3232,11 +3247,6 @@ declare module 'date-fns/getHours/index.js' {
 declare module 'date-fns/getISODay/index.js' {
   import { getISODay } from 'date-fns'
   export default getISODay
-}
-
-declare module 'date-fns/getISODurationString/index.js' {
-  import { getISODurationString } from 'date-fns'
-  export default getISODurationString
 }
 
 declare module 'date-fns/getISOWeek/index.js' {
@@ -3317,6 +3327,11 @@ declare module 'date-fns/getWeekYear/index.js' {
 declare module 'date-fns/getYear/index.js' {
   import { getYear } from 'date-fns'
   export default getYear
+}
+
+declare module 'date-fns/intervalToDuration/index.js' {
+  import { intervalToDuration } from 'date-fns'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/isAfter/index.js' {
@@ -4125,6 +4140,9 @@ declare module 'date-fns/fp' {
   >
   namespace formatISO9075WithOptions {}
 
+  const formatISODuration: CurriedFn1<Duration, string>
+  namespace formatISODuration {}
+
   const formatISOWithOptions: CurriedFn2<
     {
       representation?: 'complete' | 'date' | 'time'
@@ -4204,9 +4222,6 @@ declare module 'date-fns/fp' {
 
   const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {}
-
-  const getISODurationString: CurriedFn2<Date, Date, string>
-  namespace getISODurationString {}
 
   const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {}
@@ -4297,6 +4312,9 @@ declare module 'date-fns/fp' {
 
   const getYear: CurriedFn1<Date | number, number>
   namespace getYear {}
+
+  const intervalToDuration: CurriedFn1<Interval, Duration>
+  namespace intervalToDuration {}
 
   const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {}
@@ -5018,6 +5036,11 @@ declare module 'date-fns/fp/formatISO9075WithOptions' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/fp/formatISODuration' {
+  import { formatISODuration } from 'date-fns/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/fp/formatISOWithOptions' {
   import { formatISOWithOptions } from 'date-fns/fp'
   export default formatISOWithOptions
@@ -5096,11 +5119,6 @@ declare module 'date-fns/fp/getHours' {
 declare module 'date-fns/fp/getISODay' {
   import { getISODay } from 'date-fns/fp'
   export default getISODay
-}
-
-declare module 'date-fns/fp/getISODurationString' {
-  import { getISODurationString } from 'date-fns/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/fp/getISOWeek' {
@@ -5201,6 +5219,11 @@ declare module 'date-fns/fp/getWeekYearWithOptions' {
 declare module 'date-fns/fp/getYear' {
   import { getYear } from 'date-fns/fp'
   export default getYear
+}
+
+declare module 'date-fns/fp/intervalToDuration' {
+  import { intervalToDuration } from 'date-fns/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/fp/isAfter' {
@@ -6008,6 +6031,11 @@ declare module 'date-fns/fp/formatISO9075WithOptions/index' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/fp/formatISODuration/index' {
+  import { formatISODuration } from 'date-fns/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/fp/formatISOWithOptions/index' {
   import { formatISOWithOptions } from 'date-fns/fp'
   export default formatISOWithOptions
@@ -6086,11 +6114,6 @@ declare module 'date-fns/fp/getHours/index' {
 declare module 'date-fns/fp/getISODay/index' {
   import { getISODay } from 'date-fns/fp'
   export default getISODay
-}
-
-declare module 'date-fns/fp/getISODurationString/index' {
-  import { getISODurationString } from 'date-fns/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/fp/getISOWeek/index' {
@@ -6191,6 +6214,11 @@ declare module 'date-fns/fp/getWeekYearWithOptions/index' {
 declare module 'date-fns/fp/getYear/index' {
   import { getYear } from 'date-fns/fp'
   export default getYear
+}
+
+declare module 'date-fns/fp/intervalToDuration/index' {
+  import { intervalToDuration } from 'date-fns/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/fp/isAfter/index' {
@@ -6998,6 +7026,11 @@ declare module 'date-fns/fp/formatISO9075WithOptions/index.js' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/fp/formatISODuration/index.js' {
+  import { formatISODuration } from 'date-fns/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/fp/formatISOWithOptions/index.js' {
   import { formatISOWithOptions } from 'date-fns/fp'
   export default formatISOWithOptions
@@ -7076,11 +7109,6 @@ declare module 'date-fns/fp/getHours/index.js' {
 declare module 'date-fns/fp/getISODay/index.js' {
   import { getISODay } from 'date-fns/fp'
   export default getISODay
-}
-
-declare module 'date-fns/fp/getISODurationString/index.js' {
-  import { getISODurationString } from 'date-fns/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/fp/getISOWeek/index.js' {
@@ -7181,6 +7209,11 @@ declare module 'date-fns/fp/getWeekYearWithOptions/index.js' {
 declare module 'date-fns/fp/getYear/index.js' {
   import { getYear } from 'date-fns/fp'
   export default getYear
+}
+
+declare module 'date-fns/fp/intervalToDuration/index.js' {
+  import { intervalToDuration } from 'date-fns/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/fp/isAfter/index.js' {
@@ -7983,6 +8016,9 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatISO9075 {}
 
+  function formatISODuration(duration: Duration): string
+  namespace formatISODuration {}
+
   function formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -8030,12 +8066,6 @@ declare module 'date-fns/esm' {
 
   function getISODay(date: Date | number): number
   namespace getISODay {}
-
-  function getISODurationString(
-    dirtyDateLeft: Date,
-    dirtyDateRight: Date
-  ): string
-  namespace getISODurationString {}
 
   function getISOWeek(date: Date | number): number
   namespace getISOWeek {}
@@ -8113,6 +8143,9 @@ declare module 'date-fns/esm' {
 
   function getYear(date: Date | number): number
   namespace getYear {}
+
+  function intervalToDuration(interval: Interval): Duration
+  namespace intervalToDuration {}
 
   function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {}
@@ -8842,6 +8875,11 @@ declare module 'date-fns/esm/formatISO9075' {
   export default formatISO9075
 }
 
+declare module 'date-fns/esm/formatISODuration' {
+  import { formatISODuration } from 'date-fns/esm'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/formatRelative' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
@@ -8900,11 +8938,6 @@ declare module 'date-fns/esm/getHours' {
 declare module 'date-fns/esm/getISODay' {
   import { getISODay } from 'date-fns/esm'
   export default getISODay
-}
-
-declare module 'date-fns/esm/getISODurationString' {
-  import { getISODurationString } from 'date-fns/esm'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/getISOWeek' {
@@ -8985,6 +9018,11 @@ declare module 'date-fns/esm/getWeekYear' {
 declare module 'date-fns/esm/getYear' {
   import { getYear } from 'date-fns/esm'
   export default getYear
+}
+
+declare module 'date-fns/esm/intervalToDuration' {
+  import { intervalToDuration } from 'date-fns/esm'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/isAfter' {
@@ -9792,6 +9830,11 @@ declare module 'date-fns/esm/formatISO9075/index' {
   export default formatISO9075
 }
 
+declare module 'date-fns/esm/formatISODuration/index' {
+  import { formatISODuration } from 'date-fns/esm'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/formatRelative/index' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
@@ -9850,11 +9893,6 @@ declare module 'date-fns/esm/getHours/index' {
 declare module 'date-fns/esm/getISODay/index' {
   import { getISODay } from 'date-fns/esm'
   export default getISODay
-}
-
-declare module 'date-fns/esm/getISODurationString/index' {
-  import { getISODurationString } from 'date-fns/esm'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/getISOWeek/index' {
@@ -9935,6 +9973,11 @@ declare module 'date-fns/esm/getWeekYear/index' {
 declare module 'date-fns/esm/getYear/index' {
   import { getYear } from 'date-fns/esm'
   export default getYear
+}
+
+declare module 'date-fns/esm/intervalToDuration/index' {
+  import { intervalToDuration } from 'date-fns/esm'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/isAfter/index' {
@@ -10742,6 +10785,11 @@ declare module 'date-fns/esm/formatISO9075/index.js' {
   export default formatISO9075
 }
 
+declare module 'date-fns/esm/formatISODuration/index.js' {
+  import { formatISODuration } from 'date-fns/esm'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/formatRelative/index.js' {
   import { formatRelative } from 'date-fns/esm'
   export default formatRelative
@@ -10800,11 +10848,6 @@ declare module 'date-fns/esm/getHours/index.js' {
 declare module 'date-fns/esm/getISODay/index.js' {
   import { getISODay } from 'date-fns/esm'
   export default getISODay
-}
-
-declare module 'date-fns/esm/getISODurationString/index.js' {
-  import { getISODurationString } from 'date-fns/esm'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/getISOWeek/index.js' {
@@ -10885,6 +10928,11 @@ declare module 'date-fns/esm/getWeekYear/index.js' {
 declare module 'date-fns/esm/getYear/index.js' {
   import { getYear } from 'date-fns/esm'
   export default getYear
+}
+
+declare module 'date-fns/esm/intervalToDuration/index.js' {
+  import { intervalToDuration } from 'date-fns/esm'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/isAfter/index.js' {
@@ -11693,6 +11741,9 @@ declare module 'date-fns/esm/fp' {
   >
   namespace formatISO9075WithOptions {}
 
+  const formatISODuration: CurriedFn1<Duration, string>
+  namespace formatISODuration {}
+
   const formatISOWithOptions: CurriedFn2<
     {
       representation?: 'complete' | 'date' | 'time'
@@ -11772,9 +11823,6 @@ declare module 'date-fns/esm/fp' {
 
   const getISODay: CurriedFn1<Date | number, number>
   namespace getISODay {}
-
-  const getISODurationString: CurriedFn2<Date, Date, string>
-  namespace getISODurationString {}
 
   const getISOWeek: CurriedFn1<Date | number, number>
   namespace getISOWeek {}
@@ -11865,6 +11913,9 @@ declare module 'date-fns/esm/fp' {
 
   const getYear: CurriedFn1<Date | number, number>
   namespace getYear {}
+
+  const intervalToDuration: CurriedFn1<Interval, Duration>
+  namespace intervalToDuration {}
 
   const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {}
@@ -12586,6 +12637,11 @@ declare module 'date-fns/esm/fp/formatISO9075WithOptions' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISODuration' {
+  import { formatISODuration } from 'date-fns/esm/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/fp/formatISOWithOptions' {
   import { formatISOWithOptions } from 'date-fns/esm/fp'
   export default formatISOWithOptions
@@ -12664,11 +12720,6 @@ declare module 'date-fns/esm/fp/getHours' {
 declare module 'date-fns/esm/fp/getISODay' {
   import { getISODay } from 'date-fns/esm/fp'
   export default getISODay
-}
-
-declare module 'date-fns/esm/fp/getISODurationString' {
-  import { getISODurationString } from 'date-fns/esm/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/fp/getISOWeek' {
@@ -12769,6 +12820,11 @@ declare module 'date-fns/esm/fp/getWeekYearWithOptions' {
 declare module 'date-fns/esm/fp/getYear' {
   import { getYear } from 'date-fns/esm/fp'
   export default getYear
+}
+
+declare module 'date-fns/esm/fp/intervalToDuration' {
+  import { intervalToDuration } from 'date-fns/esm/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/fp/isAfter' {
@@ -13576,6 +13632,11 @@ declare module 'date-fns/esm/fp/formatISO9075WithOptions/index' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISODuration/index' {
+  import { formatISODuration } from 'date-fns/esm/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/fp/formatISOWithOptions/index' {
   import { formatISOWithOptions } from 'date-fns/esm/fp'
   export default formatISOWithOptions
@@ -13654,11 +13715,6 @@ declare module 'date-fns/esm/fp/getHours/index' {
 declare module 'date-fns/esm/fp/getISODay/index' {
   import { getISODay } from 'date-fns/esm/fp'
   export default getISODay
-}
-
-declare module 'date-fns/esm/fp/getISODurationString/index' {
-  import { getISODurationString } from 'date-fns/esm/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/fp/getISOWeek/index' {
@@ -13759,6 +13815,11 @@ declare module 'date-fns/esm/fp/getWeekYearWithOptions/index' {
 declare module 'date-fns/esm/fp/getYear/index' {
   import { getYear } from 'date-fns/esm/fp'
   export default getYear
+}
+
+declare module 'date-fns/esm/fp/intervalToDuration/index' {
+  import { intervalToDuration } from 'date-fns/esm/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/fp/isAfter/index' {
@@ -14566,6 +14627,11 @@ declare module 'date-fns/esm/fp/formatISO9075WithOptions/index.js' {
   export default formatISO9075WithOptions
 }
 
+declare module 'date-fns/esm/fp/formatISODuration/index.js' {
+  import { formatISODuration } from 'date-fns/esm/fp'
+  export default formatISODuration
+}
+
 declare module 'date-fns/esm/fp/formatISOWithOptions/index.js' {
   import { formatISOWithOptions } from 'date-fns/esm/fp'
   export default formatISOWithOptions
@@ -14644,11 +14710,6 @@ declare module 'date-fns/esm/fp/getHours/index.js' {
 declare module 'date-fns/esm/fp/getISODay/index.js' {
   import { getISODay } from 'date-fns/esm/fp'
   export default getISODay
-}
-
-declare module 'date-fns/esm/fp/getISODurationString/index.js' {
-  import { getISODurationString } from 'date-fns/esm/fp'
-  export default getISODurationString
 }
 
 declare module 'date-fns/esm/fp/getISOWeek/index.js' {
@@ -14749,6 +14810,11 @@ declare module 'date-fns/esm/fp/getWeekYearWithOptions/index.js' {
 declare module 'date-fns/esm/fp/getYear/index.js' {
   import { getYear } from 'date-fns/esm/fp'
   export default getYear
+}
+
+declare module 'date-fns/esm/fp/intervalToDuration/index.js' {
+  import { intervalToDuration } from 'date-fns/esm/fp'
+  export default intervalToDuration
 }
 
 declare module 'date-fns/esm/fp/isAfter/index.js' {
@@ -17954,6 +18020,8 @@ interface dateFns {
     }
   ): string
 
+  formatISODuration(duration: Duration): string
+
   formatRelative(
     date: Date | number,
     baseDate: Date | number,
@@ -17989,8 +18057,6 @@ interface dateFns {
   getHours(date: Date | number): number
 
   getISODay(date: Date | number): number
-
-  getISODurationString(dirtyDateLeft: Date, dirtyDateRight: Date): string
 
   getISOWeek(date: Date | number): number
 
@@ -18052,6 +18118,8 @@ interface dateFns {
   ): number
 
   getYear(date: Date | number): number
+
+  intervalToDuration(interval: Interval): Duration
 
   isAfter(date: Date | number, dateToCompare: Date | number): boolean
 

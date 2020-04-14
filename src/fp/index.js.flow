@@ -224,6 +224,7 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatISODuration: CurriedFn1<Duration, string>,
   formatISOWithOptions: CurriedFn2<
     {
       representation?: 'complete' | 'date' | 'time',
@@ -272,7 +273,6 @@ declare module.exports: {
   getDecade: CurriedFn1<Date | number, number>,
   getHours: CurriedFn1<Date | number, number>,
   getISODay: CurriedFn1<Date | number, number>,
-  getISODurationString: CurriedFn2<Date, Date, string>,
   getISOWeek: CurriedFn1<Date | number, number>,
   getISOWeeksInYear: CurriedFn1<Date | number, number>,
   getISOWeekYear: CurriedFn1<Date | number, number>,
@@ -323,6 +323,7 @@ declare module.exports: {
     number
   >,
   getYear: CurriedFn1<Date | number, number>,
+  intervalToDuration: CurriedFn1<Interval, Duration>,
   isAfter: CurriedFn2<Date | number, Date | number, boolean>,
   isBefore: CurriedFn2<Date | number, Date | number, boolean>,
   isDate: CurriedFn1<any, boolean>,

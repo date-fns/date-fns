@@ -1,4 +1,4 @@
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-import { getISODurationString } from 'date-fns/fp'
-export default getISODurationString
+import { formatISODuration } from 'date-fns/fp'
+export default formatISODuration

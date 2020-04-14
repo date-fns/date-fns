@@ -113,6 +113,7 @@ export { default as formatISO9075 } from './formatISO9075/index.js'
 export {
   default as formatISO9075WithOptions
 } from './formatISO9075WithOptions/index.js'
+export { default as formatISODuration } from './formatISODuration/index.js'
 export {
   default as formatISOWithOptions
 } from './formatISOWithOptions/index.js'
@@ -135,9 +136,6 @@ export { default as getDaysInYear } from './getDaysInYear/index.js'
 export { default as getDecade } from './getDecade/index.js'
 export { default as getHours } from './getHours/index.js'
 export { default as getISODay } from './getISODay/index.js'
-export {
-  default as getISODurationString
-} from './getISODurationString/index.js'
 export { default as getISOWeek } from './getISOWeek/index.js'
 export { default as getISOWeekYear } from './getISOWeekYear/index.js'
 export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
@@ -166,6 +164,7 @@ export {
   default as getWeeksInMonthWithOptions
 } from './getWeeksInMonthWithOptions/index.js'
 export { default as getYear } from './getYear/index.js'
+export { default as intervalToDuration } from './intervalToDuration/index.js'
 export { default as isAfter } from './isAfter/index.js'
 export { default as isBefore } from './isBefore/index.js'
 export { default as isDate } from './isDate/index.js'
