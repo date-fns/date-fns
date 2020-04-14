@@ -6,16 +6,6 @@ import formatISODuration from '.'
 import intervalToDuration from '../intervalToDuration'
 
 describe('formatISODuration', function() {
-  it('Returns a TypeError when there are no arguments', function() {
-    const result = formatISODuration.bind(null)
-    assert.throws(result, TypeError)
-  })
-
-  it('Returns an Error when the argument is not an Object', function() {
-    const result = formatISODuration.bind(null, 7)
-    assert.throws(result, Error)
-  })
-
   it('Everything returns correct duration for arbitrary dates', function() {
     const start = new Date(1929, 0, 15, 12, 0, 0)
     const end = new Date(1968, 3, 4, 19, 5, 0)
