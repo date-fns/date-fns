@@ -5,33 +5,33 @@ import assert from 'power-assert'
 import eachMonthOfInterval from '.'
 
 describe('eachMonthOfInterval', function() {
-  it('returns an array with starts of days from the day of the start date to the day of the end date', function() {
+  it('returns an array with starts of months from the month of the start date to the month of the end date', function() {
     var result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */, 6),
       end: new Date(2014, 7 /* Aug */, 12)
     })
     assert.deepEqual(result, [
-      new Date(2014, 2 /* Oct */, 1),
-      new Date(2014, 3 /* Oct */, 1),
-      new Date(2014, 4 /* Oct */, 1),
-      new Date(2014, 5 /* Oct */, 1),
-      new Date(2014, 6 /* Oct */, 1),
-      new Date(2014, 7 /* Oct */, 1)
+      new Date(2014, 2 /* Mar */, 1),
+      new Date(2014, 3 /* Apr */, 1),
+      new Date(2014, 4 /* May */, 1),
+      new Date(2014, 5 /* Jun */, 1),
+      new Date(2014, 6 /* Jul */, 1),
+      new Date(2014, 7 /* Aug */, 1)
     ])
   })
 
   it('accepts timestamps', function() {
     var result = eachMonthOfInterval({
-      start: new Date(2014, 2 /* Mar */, 6),
-      end: new Date(2014, 7 /* Aug */, 12)
+      start: new Date(2014, 2 /* Mar */, 6).getTime(),
+      end: new Date(2014, 7 /* Aug */, 12).getTime()
     })
     assert.deepEqual(result, [
-      new Date(2014, 2 /* Oct */, 1),
-      new Date(2014, 3 /* Oct */, 1),
-      new Date(2014, 4 /* Oct */, 1),
-      new Date(2014, 5 /* Oct */, 1),
-      new Date(2014, 6 /* Oct */, 1),
-      new Date(2014, 7 /* Oct */, 1)
+      new Date(2014, 2 /* Mar */, 1),
+      new Date(2014, 3 /* Apr */, 1),
+      new Date(2014, 4 /* May */, 1),
+      new Date(2014, 5 /* Jun */, 1),
+      new Date(2014, 6 /* Jul */, 1),
+      new Date(2014, 7 /* Aug */, 1)
     ])
   })
 
@@ -41,27 +41,27 @@ describe('eachMonthOfInterval', function() {
       end: new Date(2014, 7 /* Aug */, 12, 22, 15)
     })
     assert.deepEqual(result, [
-      new Date(2014, 2 /* Oct */, 1),
-      new Date(2014, 3 /* Oct */, 1),
-      new Date(2014, 4 /* Oct */, 1),
-      new Date(2014, 5 /* Oct */, 1),
-      new Date(2014, 6 /* Oct */, 1),
-      new Date(2014, 7 /* Oct */, 1)
+      new Date(2014, 2 /* Mar */, 1),
+      new Date(2014, 3 /* Apr */, 1),
+      new Date(2014, 4 /* May */, 1),
+      new Date(2014, 5 /* Jun */, 1),
+      new Date(2014, 6 /* Jul */, 1),
+      new Date(2014, 7 /* Aug */, 1)
     ])
   })
 
   it('handles the dates that are not containing days', function() {
     var result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */),
-      end: new Date(2014, 7 /* Oct */)
+      end: new Date(2014, 7 /* Aug */)
     })
     assert.deepEqual(result, [
-      new Date(2014, 2 /* Oct */, 1),
-      new Date(2014, 3 /* Oct */, 1),
-      new Date(2014, 4 /* Oct */, 1),
-      new Date(2014, 5 /* Oct */, 1),
-      new Date(2014, 6 /* Oct */, 1),
-      new Date(2014, 7 /* Oct */, 1)
+      new Date(2014, 2 /* Mar */, 1),
+      new Date(2014, 3 /* Apr */, 1),
+      new Date(2014, 4 /* May */, 1),
+      new Date(2014, 5 /* Jun */, 1),
+      new Date(2014, 6 /* Jul */, 1),
+      new Date(2014, 7 /* Aug */, 1)
     ])
   })
 
