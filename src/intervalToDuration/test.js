@@ -4,7 +4,22 @@
 import assert from 'power-assert'
 import intervalToDuration from '.'
 
-describe.only('intervalToDuration', function() {
+describe('intervalToDuration', function() {
+  it('Throws a RangeError if the start date is invalid', function() {
+    const start = null
+    const end = new Date(1968, 3, 4, 19, 5, 0)
+    const result = intervalToDuration.bind(null, { start, end })
+
+    assert.throws(result, RangeError)
+  })
+  it('Throws a RangeError if the end date is invalid', function() {
+    const start = new Date(1929, 0, 15, 12, 0, 0)
+    const end = null
+    const result = intervalToDuration.bind(null, { start, end })
+
+    assert.throws(result, RangeError)
+  })
+
   it('Returns correct duration for arbitrary dates', function() {
     const start = new Date(1929, 0, 15, 12, 0, 0)
     const end = new Date(1968, 3, 4, 19, 5, 0)
