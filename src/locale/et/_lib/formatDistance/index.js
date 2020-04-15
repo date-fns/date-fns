@@ -83,23 +83,23 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     standalone: {
-      one: 'umbes üks kuu', // TODO
-      other: 'umbes {{count}} kuud' // TODO
+      one: 'umbes üks nädal',
+      other: 'umbes {{count}} nädalat'
     },
     withPreposition: {
-      one: 'umbes ühe kuu', // TODO
-      other: 'umbes {{count}} kuu' // TODO
+      one: 'umbes ühe nädala',
+      other: 'umbes {{count}} nädala'
     }
   },
 
   xWeeks: {
     standalone: {
-      one: 'üks kuu', // TODO
-      other: '{{count}} kuud' // TODO
+      one: 'üks nädal',
+      other: '{{count}} nädalat'
     },
     withPreposition: {
-      one: 'ühe kuu', // TODO
-      other: '{{count}} kuu' // TODO
+      one: 'ühe nädala',
+      other: '{{count}} nädala'
     }
   },
 
