@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    singular: 'omtrent en måned', // TODO
-    plural: 'omtrent {{count}} måneder' // TODO
+    singular: 'omtrent en uke',
+    plural: 'omtrent {{count}} uker'
   },
 
   xWeeks: {
-    singular: 'en måned', // TODO
-    plural: '{{count}} måneder' // TODO
+    singular: 'en uke',
+    plural: '{{count}} uker'
   },
 
   aboutXMonths: {
