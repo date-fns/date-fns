@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'cirka 1 måned', // TODO
-    other: 'cirka {{count}} måneder' // TODO
+    one: 'cirka 1 uge',
+    other: 'cirka {{count}} uger'
   },
 
   xWeeks: {
-    one: '1 måned', // TODO
-    other: '{{count}} måneder' // TODO
+    one: '1 uge',
+    other: '{{count}} uger'
   },
 
   aboutXMonths: {
