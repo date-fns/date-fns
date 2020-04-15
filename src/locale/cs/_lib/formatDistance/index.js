@@ -135,41 +135,41 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     one: {
-      regular: 'přibližně měsíc', // TODO
-      past: 'přibližně před měsícem', // TODO
-      future: 'přibližně za měsíc' // TODO
+      regular: 'přibližně týden',
+      past: 'přibližně před týdnem',
+      future: 'přibližně za týden'
     },
 
     few: {
-      regular: 'přibližně {{count}} měsíce', // TODO
-      past: 'přibližně před {{count}} měsíci', // TODO
-      future: 'přibližně za {{count}} měsíce' // TODO
+      regular: 'přibližně {{count}} týdny',
+      past: 'přibližně před {{count}} týdny',
+      future: 'přibližně za {{count}} týdny'
     },
 
     many: {
-      regular: 'přibližně {{count}} měsíců', // TODO
-      past: 'přibližně před {{count}} měsíci', // TODO
-      future: 'přibližně za {{count}} měsíců' // TODO
+      regular: 'přibližně {{count}} týdnů',
+      past: 'přibližně před {{count}} týdny',
+      future: 'přibližně za {{count}} týdnů'
     }
   },
 
   xWeeks: {
     one: {
-      regular: 'měsíc', // TODO
-      past: 'před měsícem', // TODO
-      future: 'za měsíc' // TODO
+      regular: 'týden',
+      past: 'před týdnem',
+      future: 'za týden'
     },
 
     few: {
-      regular: '{{count}} měsíce', // TODO
-      past: 'před {{count}} měsíci', // TODO
-      future: 'za {{count}} měsíce' // TODO
+      regular: '{{count}} týdny',
+      past: 'před {{count}} týdny',
+      future: 'za {{count}} týdny'
     },
 
     many: {
-      regular: '{{count}} měsíců', // TODO
-      past: 'před {{count}} měsíci', // TODO
-      future: 'za {{count}} měsíců' // TODO
+      regular: '{{count}} týdnů',
+      past: 'před {{count}} týdny',
+      future: 'za {{count}} týdnů'
     }
   },
 
