@@ -41,13 +41,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: '約1か月', // TODO
-    other: '約{{count}}か月' // TODO
+    one: '約1週間',
+    other: '約{{count}}週間'
   },
 
   xWeeks: {
-    one: '1か月', // TODO
-    other: '{{count}}か月' // TODO
+    one: '1週間',
+    other: '{{count}}週間'
   },
 
   aboutXMonths: {
