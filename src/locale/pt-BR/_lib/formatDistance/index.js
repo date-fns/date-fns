@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'cerca de 1 mês', // TODO
-    other: 'cerca de {{count}} meses' // TODO
+    one: 'cerca de 1 mês',
+    other: 'cerca de {{count}} meses'
   },
 
   xWeeks: {
-    one: '1 mês', // TODO
-    other: '{{count}} meses' // TODO
+    one: '1 mês',
+    other: '{{count}} meses'
   },
 
   aboutXMonths: {
