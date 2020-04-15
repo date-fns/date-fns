@@ -42,13 +42,13 @@ var formatDistanceLocale = {
   },
 
   xWeeks: {
-    one: '1 monato', // TODO
-    other: '{{count}} monatoj' // TODO
+    one: '1 semajno',
+    other: '{{count}} semajnoj'
   },
 
   aboutXWeeks: {
-    one: 'proksimume 1 jaro', // TODO
-    other: 'proksimume {{count}} jaroj' // TODO
+    one: 'proksimume 1 semajno',
+    other: 'proksimume {{count}} semajnoj'
   },
 
   xMonths: {
