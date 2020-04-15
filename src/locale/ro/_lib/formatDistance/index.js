@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'circa 1 lună', // TODO
-    other: 'circa {{count}} luni' // TODO
+    one: 'circa o săptămână',
+    other: 'circa {{count}} săptămâni'
   },
 
   xWeeks: {
-    one: '1 lună', // TODO
-    other: '{{count}} luni' // TODO
+    one: '1 săptămână',
+    other: '{{count}} săptămâni'
   },
 
   aboutXMonths: {
