@@ -44,15 +44,15 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'בערך חודש', // TODO
-    two: 'בערך חודשיים', // TODO
-    other: 'בערך {{count}} חודשים' // TODO
+    one: 'בערך שבוע',
+    two: 'בערך שבועיים',
+    other: 'בערך {{count}} שבועות'
   },
 
   xWeeks: {
-    one: 'חודש', // TODO
-    two: 'חודשיים', // TODO
-    other: '{{count}} חודשים' // TODO
+    one: 'שבוע',
+    two: 'שבועיים',
+    other: '{{count}} שבועות'
   },
 
   aboutXMonths: {
