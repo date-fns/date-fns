@@ -42,8 +42,8 @@ var formatDistanceLocale = {
   },
 
   xWeeks: {
-    one: '1 bulan', // TODO
-    other: '{{count}} bulan' // TODO
+    one: '1 minggu',
+    other: '{{count}} minggu'
   },
 
   aboutXMonths: {
