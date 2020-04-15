@@ -39,13 +39,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'প্রায় ১ মাস', // TODO
-    other: 'প্রায় {{count}} মাস' // TODO
+    one: 'প্রায় ১ সপ্তাহ',
+    other: 'প্রায় {{count}} সপ্তাহ'
   },
 
   xWeeks: {
-    one: '১ মাস', // TODO
-    other: '{{count}} মাস' // TODO
+    one: '১ সপ্তাহ',
+    other: '{{count}} সপ্তাহ'
   },
 
   aboutXMonths: {
