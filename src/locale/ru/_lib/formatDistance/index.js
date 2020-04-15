@@ -153,22 +153,22 @@ var formatDistanceLocale = {
 
   aboutXWeeks: buildLocalizeTokenFn({
     regular: {
-      singularNominative: 'около {{count}} недели', // TODO
-      singularGenitive: 'около {{count}} недели', // TODO
-      pluralGenitive: 'около {{count}} недель' // TODO
+      singularNominative: 'около {{count}} недели',
+      singularGenitive: 'около {{count}} недель',
+      pluralGenitive: 'около {{count}} недель'
     },
     future: {
-      singularNominative: 'приблизительно через {{count}} неделю', // TODO
-      singularGenitive: 'приблизительно через {{count}} недели', // TODO
-      pluralGenitive: 'приблизительно через {{count}} недель' // TODO
+      singularNominative: 'приблизительно через {{count}} неделю',
+      singularGenitive: 'приблизительно через {{count}} недели',
+      pluralGenitive: 'приблизительно через {{count}} недель'
     }
   }),
 
   xWeeks: buildLocalizeTokenFn({
     regular: {
-      singularNominative: '{{count}} неделя', // TODO
-      singularGenitive: '{{count}} недели', // TODO
-      pluralGenitive: '{{count}} недель' // TODO
+      singularNominative: '{{count}} неделя',
+      singularGenitive: '{{count}} недели',
+      pluralGenitive: '{{count}} недель'
     }
   }),
 
