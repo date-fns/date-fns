@@ -37,7 +37,7 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    singular: 'ungefär en vecka ',
+    singular: 'ungefär en vecka',
     plural: 'ungefär {{count}} vecka'
   },
 
