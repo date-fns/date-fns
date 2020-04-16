@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'tahminan 1 oy', // TODO
-    other: 'tahminan {{count}} oy' // TODO
+    one: 'tahminan 1 hafta',
+    other: 'tahminan {{count}} hafta'
   },
 
   xWeeks: {
-    one: '1 oy', // TODO
-    other: '{{count}} oy' // TODO
+    one: '1 hafta',
+    other: '{{count}} hafta'
   },
 
   aboutXMonths: {
