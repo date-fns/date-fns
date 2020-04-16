@@ -15,7 +15,7 @@ function futureDays(text) {
 }
 
 function futureWeeks(text) {
-  return text.replace(/(kuukausi|kuukautta)/, 'kuukauden') // TODO
+  return text.replace(/(viikko|viikkoa)/, 'viikon')
 }
 
 function futureMonths(text) {
@@ -78,15 +78,15 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'noin kuukausi', // TODO
-    other: 'noin {{count}} kuukautta', // TODO
+    one: 'noin viikko',
+    other: 'noin {{count}} viikkoa',
     futureTense: futureWeeks
   },
 
   xWeeks: {
-    one: 'kuukausi', // TODO
-    other: '{{count}} kuukautta', // TODO
-    futureTense: futureWeeks // TODO
+    one: 'viikko',
+    other: '{{count}} viikkoa',
+    futureTense: futureWeeks
   },
 
   aboutXMonths: {
