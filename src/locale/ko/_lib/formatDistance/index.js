@@ -38,13 +38,11 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     one: '약 1주',
-    two: '약 2주',
     other: '약 {{count}}주'
   },
 
   xWeeks: {
     one: '1주',
-    two: '2주',
     other: '{{count}}주'
   },
 
