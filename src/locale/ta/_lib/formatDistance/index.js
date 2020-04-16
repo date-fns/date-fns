@@ -98,27 +98,27 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     one: {
-      default: 'சுமார் 1 மாதம்', // TODO
-      in: 'சுமார் 1 மாதத்தில்', // TODO
-      ago: 'சுமார் 1 மாதத்திற்கு முன்பு' // TODO
+      default: 'சுமார் 1 மாதம்',
+      in: 'சுமார் 1 மாதத்தில்',
+      ago: 'சுமார் 1 மாதத்திற்கு முன்பு'
     },
     other: {
-      default: 'சுமார் {{count}} மாதங்கள்', // TODO
-      in: 'சுமார் {{count}} மாதங்களில்', // TODO
-      ago: 'சுமார் {{count}} மாதங்களுக்கு முன்பு' // TODO
+      default: 'சுமார் {{count}} மாதங்கள்',
+      in: 'சுமார் {{count}} மாதங்களில்',
+      ago: 'சுமார் {{count}} மாதங்களுக்கு முன்பு'
     }
   },
 
   xWeeks: {
     one: {
-      default: '1 மாதம்', // TODO
-      in: '1 மாதத்தில்', // TODO
-      ago: '1 மாதம் முன்பு' // TODO
+      default: '1 மாதம்',
+      in: '1 மாதத்தில்',
+      ago: '1 மாதம் முன்பு'
     },
     other: {
-      default: '{{count}} மாதங்கள்', // TODO
-      in: '{{count}} மாதங்களில்', // TODO
-      ago: '{{count}} மாதங்களுக்கு முன்பு' // TODO
+      default: '{{count}} மாதங்கள்',
+      in: '{{count}} மாதங்களில்',
+      ago: '{{count}} மாதங்களுக்கு முன்பு'
     }
   },
 
