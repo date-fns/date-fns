@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'u.þ.b. 1 mánuður', // TODO
-    other: 'u.þ.b. {{count}} mánuðir' // TODO
+    one: 'um viku',
+    other: 'um {{count}} vikur'
   },
 
   xWeeks: {
-    one: '1 mánuður', // TODO
-    other: '{{count}} mánuðir' // TODO
+    one: '1 viku',
+    other: '{{count}} vikur'
   },
 
   aboutXMonths: {
