@@ -156,6 +156,16 @@ var formatDistanceLocale = {
     }
   }),
 
+  aboutXWeeks: {
+    one: 'шамамен 1 апта',
+    other: 'шамамен {{count}} апта'
+  },
+
+  xWeeks: {
+    one: '1 апта',
+    other: '{{count}} апта'
+  },
+
   aboutXMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'шамамен {{count}} ай',

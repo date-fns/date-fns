@@ -40,6 +40,16 @@ var formatDistanceLocale = {
     other: '{{count}}日'
   },
 
+  aboutXWeeks: {
+    one: '約1週間',
+    other: '約{{count}}週間'
+  },
+
+  xWeeks: {
+    one: '1週間',
+    other: '{{count}}週間'
+  },
+
   aboutXMonths: {
     one: '約1か月',
     other: '約{{count}}か月'

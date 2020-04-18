@@ -71,6 +71,26 @@ var formatDistanceLocale = {
     other: '{{count}} dana'
   },
 
+  aboutXWeeks: {
+    one: {
+      standalone: 'oko 1 mesec', // TODO
+      withPrepositionAgo: 'oko 1 mesec', // TODO
+      withPrepositionIn: 'oko 1 mesec' // TODO
+    },
+    dual: 'oko {{count}} meseca', // TODO
+    other: 'oko {{count}} meseci' // TODO
+  },
+
+  xWeeks: {
+    one: {
+      standalone: '1 mesec', // TODO
+      withPrepositionAgo: '1 mesec', // TODO
+      withPrepositionIn: '1 mesec' // TODO
+    },
+    dual: '{{count}} meseca', // TODO
+    other: '{{count}} meseci' // TODO
+  },
+
   aboutXMonths: {
     one: {
       standalone: 'oko 1 mesec',

@@ -43,6 +43,18 @@ var formatDistanceLocale = {
     other: '{{count}} ימים'
   },
 
+  aboutXWeeks: {
+    one: 'בערך שבוע',
+    two: 'בערך שבועיים',
+    other: 'בערך {{count}} שבועות'
+  },
+
+  xWeeks: {
+    one: 'שבוע',
+    two: 'שבועיים',
+    other: '{{count}} שבועות'
+  },
+
   aboutXMonths: {
     one: 'בערך חודש',
     two: 'בערך חודשיים',
@@ -80,7 +92,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   // Return word instead of `in one day` or `one day ago`

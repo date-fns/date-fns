@@ -22,7 +22,7 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: 'arredor de 1 hora',
+    one: 'arredor dunha hora',
     other: 'arredor de {{count}} horas'
   },
 
@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} días'
   },
 
+  aboutXWeeks: {
+    one: 'arredor dunha semana',
+    other: 'arredor de {{count}} semanas'
+  },
+
+  xWeeks: {
+    one: '1 semana',
+    other: '{{count}} semanas'
+  },
+
   aboutXMonths: {
     one: 'arredor de 1 mes',
     other: 'arredor de {{count}} meses'
@@ -47,7 +57,7 @@ var formatDistanceLocale = {
   },
 
   aboutXYears: {
-    one: 'arredor de 1 ano',
+    one: 'arredor dun ano',
     other: 'arredor de {{count}} anos'
   },
 
@@ -57,17 +67,17 @@ var formatDistanceLocale = {
   },
 
   overXYears: {
-    one: 'mais de 1 ano',
-    other: 'mais de {{count}} anos'
+    one: 'máis dun ano',
+    other: 'máis de {{count}} anos'
   },
 
   almostXYears: {
-    one: 'casi 1 ano',
-    other: 'casi {{count}} anos'
+    one: 'case un ano',
+    other: 'case {{count}} anos'
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
