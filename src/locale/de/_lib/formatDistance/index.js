@@ -83,23 +83,23 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     standalone: {
-      one: 'etwa ein Monat', // TODO
-      other: 'etwa {{count}} Monate' // TODO
+      one: 'etwa ein Woche',
+      other: 'etwa {{count}} Wochen'
     },
     withPreposition: {
-      one: 'etwa einem Monat', // TODO
-      other: 'etwa {{count}} Monaten' // TODO
+      one: 'etwa einem Woche',
+      other: 'etwa {{count}} Wochen'
     }
   },
 
   xWeeks: {
     standalone: {
-      one: 'ein Monat', // TODO
-      other: '{{count}} Monate' // TODO
+      one: 'ein Woche',
+      other: '{{count}} Wochen'
     },
     withPreposition: {
-      one: 'einem Monat', // TODO
-      other: '{{count}} Monaten' // TODO
+      one: 'einem Woche',
+      other: '{{count}} Wochen'
     }
   },
 
