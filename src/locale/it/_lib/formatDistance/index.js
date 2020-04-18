@@ -22,18 +22,28 @@ var formatDistanceLocale = {
   },
 
   aboutXHours: {
-    one: 'circa un\'ora',
+    one: "circa un'ora",
     other: 'circa {{count}} ore'
   },
 
   xHours: {
-    one: 'un\'ora',
+    one: "un'ora",
     other: '{{count}} ore'
   },
 
   xDays: {
     one: 'un giorno',
     other: '{{count}} giorni'
+  },
+
+  aboutXWeeks: {
+    one: 'circa un mese', // TODO
+    other: 'circa {{count}} mesi' // TODO
+  },
+
+  xWeeks: {
+    one: 'un mese', // TODO
+    other: '{{count}} mesi' // TODO
   },
 
   aboutXMonths: {
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

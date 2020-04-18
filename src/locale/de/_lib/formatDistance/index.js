@@ -79,7 +79,28 @@ var formatDistanceLocale = {
       one: 'einem Tag',
       other: '{{count}} Tagen'
     }
+  },
 
+  aboutXWeeks: {
+    standalone: {
+      one: 'etwa ein Woche',
+      other: 'etwa {{count}} Wochen'
+    },
+    withPreposition: {
+      one: 'etwa einem Woche',
+      other: 'etwa {{count}} Wochen'
+    }
+  },
+
+  xWeeks: {
+    standalone: {
+      one: 'ein Woche',
+      other: '{{count}} Wochen'
+    },
+    withPreposition: {
+      one: 'einem Woche',
+      other: '{{count}} Wochen'
+    }
   },
 
   aboutXMonths: {
@@ -149,7 +170,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var usageGroup = options.addSuffix

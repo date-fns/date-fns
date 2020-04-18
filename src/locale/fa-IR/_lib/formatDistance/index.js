@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} روز'
   },
 
+  aboutXWeeks: {
+    one: 'حدود 1 ماه', // TODO
+    other: 'حدود {{count}} ماه' // TODO
+  },
+
+  xWeeks: {
+    one: '1 ماه', // TODO
+    other: '{{count}} ماه' // TODO
+  },
+
   aboutXMonths: {
     one: 'حدود 1 ماه',
     other: 'حدود {{count}} ماه'

@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} kun'
   },
 
+  aboutXWeeks: {
+    one: 'tahminan 1 hafta',
+    other: 'tahminan {{count}} hafta'
+  },
+
+  xWeeks: {
+    one: '1 hafta',
+    other: '{{count}} hafta'
+  },
+
   aboutXMonths: {
     one: 'tahminan 1 oy',
     other: 'tahminan {{count}} oy'

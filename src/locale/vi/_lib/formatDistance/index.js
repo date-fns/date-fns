@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} ngày'
   },
 
+  aboutXWeeks: {
+    one: 'khoảng 1 tuần',
+    other: 'khoảng {{count}} tuần'
+  },
+
+  xWeeks: {
+    one: '1 tuần',
+    other: '{{count}} tuần'
+  },
+
   aboutXMonths: {
     one: 'khoảng 1 tháng',
     other: 'khoảng {{count}} tháng'
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
