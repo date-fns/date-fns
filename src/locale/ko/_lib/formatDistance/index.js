@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: '약 1개월', // TODO
-    other: '약 {{count}}개월' // TODO
+    one: '약 1주',
+    other: '약 {{count}}주'
   },
 
   xWeeks: {
-    one: '1개월', // TODO
-    other: '{{count}}개월' // TODO
+    one: '1주',
+    other: '{{count}}주'
   },
 
   aboutXMonths: {
