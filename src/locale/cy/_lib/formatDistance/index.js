@@ -39,17 +39,17 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'tua 1 mis', // TODO
-    two: 'tua 2 fis', // TODO
-    other: 'tua {{count}} mis' // TODO
+    one: 'tua 1 wythnos',
+    two: 'tua pythefnos',
+    other: 'tua {{count}} wythnos'
   },
 
   xWeeks: {
-    one: '1 mis', // TODO
-    two: '2 fis', // TODO
-    other: '{{count}} mis' // TODO
+    one: '1 wythnos',
+    two: 'pythefnos',
+    other: '{{count}} wythnos'
   },
-
+  
   aboutXMonths: {
     one: 'tua 1 mis',
     two: 'tua 2 fis',
