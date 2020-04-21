@@ -105,15 +105,15 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'około miesiąc', // TODO
-    twoFour: 'około {{count}} miesiące', // TODO
-    other: 'około {{count}} miesięcy' // TODO
+    one: 'około tygodnia',
+    twoFour: 'około {{count}} tygodni',
+    other: 'około {{count}} tygodni'
   },
 
   xWeeks: {
-    one: 'miesiąc', // TODO
-    twoFour: '{{count}} miesiące', // TODO
-    other: '{{count}} miesięcy' // TODO
+    one: 'tydzień'
+    twoFour: '{{count}} tygodnie'
+    other: '{{count}} tygodni'
   },
 
   aboutXMonths: {
