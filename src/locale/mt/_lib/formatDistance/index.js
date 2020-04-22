@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'madwar xahar', // TODO
-    other: 'madwar {{count}} xhur' // TODO
+    one: 'madwar ġimgħa',
+    other: 'madwar {{count}} ġimgħat'
   },
 
   xWeeks: {
-    one: 'xahar', // TODO
-    other: '{{count}} xhur' // TODO
+    one: 'ġimgħa',
+    other: '{{count}} ġimgħat'
   },
 
   aboutXMonths: {
