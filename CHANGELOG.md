@@ -12,11 +12,17 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@JorenVos](https://github.com/JorenVos) for working on the release!
+Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) for working on the release!
 
 ### Fixed
 
 - [Fixed mei abbreviation in the Dutch locale](https://github.com/date-fns/date-fns/pull/1752).
+
+### Added
+
+- [Added Kannada locale support](https://github.com/date-fns/date-fns/pull/1747).
+- [Added `formatISODuration` function](https://github.com/date-fns/date-fns/pull/1713).
+- [Added `intervalToDuration` function](https://github.com/date-fns/date-fns/pull/1713).
 
 ## [2.12.0] - 2020-04-09
 
