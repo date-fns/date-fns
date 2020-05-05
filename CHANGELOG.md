@@ -8,6 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## 2.13.0
+
+## Unreleased
+
+Thanks to [@JorenVos](https://github.com/JorenVos) for working on the release!
+
+### Fixed
+
+- [Fixed mei abbreviation in the Dutch locale](https://github.com/date-fns/date-fns/pull/1752).
+
 ## [2.12.0] - 2020-04-09
 
 Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.com/skyuplam), [@so99ynoodles](https://github.com/so99ynoodles), [@dkozickis](https://github.com/dkozickis), [@belgamo](https://github.com/belgamo), [@akgondber](https://github.com/akgondber), [@dcousens](https://github.com/dcousens) and [@BoomDev](https://github.com/BoomDev) for working on the release!
