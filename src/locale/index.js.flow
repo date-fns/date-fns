@@ -74,6 +74,7 @@ declare module.exports: {
   ja: Locale,
   ka: Locale,
   kk: Locale,
+  kn: Locale,
   ko: Locale,
   lt: Locale,
   lv: Locale,
