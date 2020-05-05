@@ -61,9 +61,8 @@ var formatDistanceLocale = {
     one: 'أسبوع واحد',
     two: 'أسبوعين',
     threeToTen: '{{count}} أسابيع',
-    other: '{{count}} أسبوع',
-  
-},
+    other: '{{count}} أسبوع'
+  },
 
   aboutXMonths: {
     one: 'شهر واحد تقريباً',
