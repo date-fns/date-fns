@@ -85,8 +85,8 @@ var translations = {
   xhours_other: 'valandos_valandų_valandas',
   xdays_one: 'diena_dienos_dieną',
   xdays_other: 'dienos_dienų_dienas',
-  xweeks_one: 'mėnuo_mėnesio_mėnesį', // TODO
-  xweeks_other: 'mėnesiai_mėnesių_mėnesius', // TODO
+  xweeks_one: 'savaitė_savaitės_savaitę',
+  xweeks_other: 'savaitės_savaičių_savaites',
   xmonths_one: 'mėnuo_mėnesio_mėnesį',
   xmonths_other: 'mėnesiai_mėnesių_mėnesius',
   xyears_one: 'metai_metų_metus',
