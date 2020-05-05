@@ -3,6 +3,7 @@
 
 import assert from 'power-assert'
 import differenceInDays from '.'
+import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('differenceInDays', function() {
   it('returns the number of full days between the given dates', function() {
@@ -62,15 +63,102 @@ describe('differenceInDays', function() {
       assert(result === 0)
     })
 
-    it('ignores any localtime differences with DST', function() {
-      const a = new Date('2019-10-05T15:00:00.000Z') // for TZ=Australia/Sydney, this is 1 hour before DST
-      const b = new Date('2019-10-06T14:00:00.000Z') // for TZ=Australia/Sydney, this is 1 day  after DST
-      const c = new Date('2019-10-07T14:00:00.000Z') // for TZ=Australia/Sydney, this is 2 days after DST
+    const dstTransitions = getDstTransitions(2017)
+    const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
+    const tz =
+      Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
+    dstOnly(
+      `works across DST start & end in local timezone: ${tz || '(unknown)'}`,
+      function() {
+        const { start, end } = dstTransitions
+        const HOUR = 1000 * 60 * 60
+        function sameTime(t1, t2) {
+          return (
+            t1.getHours() === t2.getHours() &&
+            t1.getMinutes() === t2.getMinutes() &&
+            t1.getSeconds() === t2.getSeconds() &&
+            t1.getMilliseconds() === t2.getMilliseconds()
+          )
+        }
 
-      assert(differenceInDays(c, b) === 1)
-      assert(differenceInDays(b, a) === 0) // 23 hours < 1 day
-      assert(differenceInDays(c, a) === 1) // 47 hours < 2 days
-    })
+        // TEST DST START (SPRING)
+
+        // anchor to one hour before the boundary
+        {
+          const a = new Date(start.getTime() - HOUR) // 1 hour before DST
+          const b = new Date(a.getTime() + 23 * HOUR) // 1 day later, same local time
+          const c = new Date(a.getTime() + 47 * HOUR) // 2 days later, same local time
+
+          assert(sameTime(a, b))
+          assert(sameTime(a, c))
+          assert(sameTime(b, c))
+          assert(differenceInDays(c, b) === 1) // normal 24-hour day
+          assert(differenceInDays(b, a) === 1) // 23 hours -> 1 day
+          assert(differenceInDays(c, a) === 2) // 47 hours -> 2 days
+        }
+        // anchor exactly, the boundary
+        {
+          const a = start // exactly when DST starts
+          const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
+          const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
+
+          assert(sameTime(a, b))
+          assert(sameTime(a, c))
+          assert(sameTime(b, c))
+          assert(differenceInDays(c, b) === 1) // normal 24-hour day
+          assert(differenceInDays(b, a) === 1) // normal 24-hour day
+          assert(differenceInDays(c, a) === 2) // 2 normal 24-hour days
+        }
+
+        // TEST DST END (FALL)
+
+        // make sure that diffs across a "fall back" DST boundary won't report a full day
+        // until 25 hours have elapsed.
+        {
+          const a = new Date(end.getTime() - HOUR / 2) // 1 hour before Standard Time starts
+          const b = new Date(a.getTime() + 24.75 * HOUR) // 1 day later, 15 mins earlier local time
+          const c = new Date(a.getTime() + 48.75 * HOUR) // 2 days later, 15 mins earlier local time
+
+          assert(differenceInDays(c, b) === 1) // normal 24-hour day
+          assert(differenceInDays(b, a) === 0) // 24.75 hours -> 0 full days (because hour lost to DST)
+          assert(differenceInDays(c, a) === 1) // 48.75 hours -> 1 full day (because hour lost to DST)
+        }
+        // anchor to one hour before the boundary
+        {
+          const a = new Date(end.getTime() - HOUR) // 1 hour before Standard Time start
+          const b = new Date(a.getTime() + 25 * HOUR) // 1 day later, same local time
+          const c = new Date(a.getTime() + 49 * HOUR) // 2 days later, same local time
+
+          assert(sameTime(a, b))
+          assert(sameTime(a, c))
+          assert(sameTime(b, c))
+          assert(differenceInDays(c, b) === 1) // normal 24-hour day
+          assert(differenceInDays(b, a) === 1) // 25 hours -> 1 day
+          assert(differenceInDays(c, a) === 2) // 49 hours -> 2 days
+        }
+        // anchor to one hour after the boundary
+        {
+          const a = new Date(end.getTime() + HOUR) // 1 hour after Standard Time start
+          const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
+          const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
+
+          assert(sameTime(a, b))
+          assert(sameTime(a, c))
+          assert(sameTime(b, c))
+          assert(differenceInDays(c, b) === 1) // normal 24-hour day
+          assert(differenceInDays(b, a) === 1) // normal 24-hour day
+          assert(differenceInDays(c, a) === 2) // 2 normal 24-hour days
+        }
+        // anchor exactly at the boundary
+        {
+          const a = end // exactly when Standard Time starts
+          const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
+          const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
+          assert(differenceInDays(b, a) === 1) // normal 24-hour day
+          assert(differenceInDays(c, a) === 2) // 2 normal 24-hour days
+        }
+      }
+    )
 
     it('does not return -0 when the given dates are the same', () => {
       function isNegativeZero(x) {
