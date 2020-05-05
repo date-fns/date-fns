@@ -48,15 +48,15 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    past: 'დაახლოებით {{count}} თვის წინ', // TODO
-    present: 'დაახლოებით {{count}} თვე', // TODO
-    future: 'დაახლოებით {{count}} თვეში' // TODO
+    past: 'დაახლოებით {{count}} კვირას წინ',
+    present: 'დაახლოებით {{count}} კვირა',
+    future: 'დაახლოებით {{count}} კვირაში'
   },
 
   xWeeks: {
-    past: '{{count}} თვის წინ', // TODO
-    present: '{{count}} თვე', // TODO
-    future: '{{count}} თვეში' // TODO
+    past: '{{count}} კვირას კვირა',
+    present: '{{count}} კვირა',
+    future: '{{count}} კვირაში'
   },
 
   aboutXMonths: {
