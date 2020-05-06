@@ -8,16 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## 2.13.0
+## [2.13.0] - 2020-05-06
 
 ## Unreleased
 
-Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe), [@justingrant](http://github.com/justingrant) for working on the release!
+Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) and [@justingrant](http://github.com/justingrant) for working on the release!
 
 ### Fixed
 
 - [Fixed mei abbreviation in the Dutch locale](https://github.com/date-fns/date-fns/pull/1752).
-- [Fix differenceInDays DST behavior broken in 2.12.0](https://github.com/date-fns/date-fns/pull/1754).
+- [Fixed `differenceInDays` DST behavior broken in 2.12.0](https://github.com/date-fns/date-fns/pull/1754).
 
 ### Added
 
@@ -1996,7 +1996,9 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.11.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.13.0...HEAD
+[2.13.0]: https://github.com/date-fns/date-fns/compare/v2.12.0...v2.13.0
+[2.12.0]: https://github.com/date-fns/date-fns/compare/v2.11.1...v2.12.0
 [2.11.1]: https://github.com/date-fns/date-fns/compare/v2.11.0...v2.11.1
 [2.11.0]: https://github.com/date-fns/date-fns/compare/v2.10.0...v2.11.0
 [2.10.0]: https://github.com/date-fns/date-fns/compare/v2.9.0...v2.10.0
