@@ -12,11 +12,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## Unreleased
 
-Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) for working on the release!
+Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe), [@justingrant](http://github.com/justingrant) for working on the release!
 
 ### Fixed
 
 - [Fixed mei abbreviation in the Dutch locale](https://github.com/date-fns/date-fns/pull/1752).
+- [Fix differenceInDays DST behavior broken in 2.12.0](https://github.com/date-fns/date-fns/pull/1754).
 
 ### Added
 
