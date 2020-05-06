@@ -10,8 +10,6 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.13.0] - 2020-05-06
 
-## Unreleased
-
 Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) and [@justingrant](http://github.com/justingrant) for working on the release!
 
 ### Fixed
