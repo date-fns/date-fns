@@ -15546,6 +15546,9 @@ declare module 'date-fns/locale' {
   const et: Locale
   namespace et {}
 
+  const eu: Locale
+  namespace eu {}
+
   const faIR: Locale
   namespace faIR {}
 
@@ -15805,6 +15808,11 @@ declare module 'date-fns/locale/es' {
 declare module 'date-fns/locale/et' {
   import { et } from 'date-fns/locale'
   export default et
+}
+
+declare module 'date-fns/locale/eu' {
+  import { eu } from 'date-fns/locale'
+  export default eu
 }
 
 declare module 'date-fns/locale/fa-IR' {
@@ -16167,6 +16175,11 @@ declare module 'date-fns/locale/et/index' {
   export default et
 }
 
+declare module 'date-fns/locale/eu/index' {
+  import { eu } from 'date-fns/locale'
+  export default eu
+}
+
 declare module 'date-fns/locale/fa-IR/index' {
   import { faIR } from 'date-fns/locale'
   export default faIR
@@ -16527,6 +16540,11 @@ declare module 'date-fns/locale/et/index.js' {
   export default et
 }
 
+declare module 'date-fns/locale/eu/index.js' {
+  import { eu } from 'date-fns/locale'
+  export default eu
+}
+
 declare module 'date-fns/locale/fa-IR/index.js' {
   import { faIR } from 'date-fns/locale'
   export default faIR
@@ -16846,6 +16864,9 @@ declare module 'date-fns/esm/locale' {
   const et: Locale
   namespace et {}
 
+  const eu: Locale
+  namespace eu {}
+
   const faIR: Locale
   namespace faIR {}
 
@@ -17105,6 +17126,11 @@ declare module 'date-fns/esm/locale/es' {
 declare module 'date-fns/esm/locale/et' {
   import { et } from 'date-fns/esm/locale'
   export default et
+}
+
+declare module 'date-fns/esm/locale/eu' {
+  import { eu } from 'date-fns/esm/locale'
+  export default eu
 }
 
 declare module 'date-fns/esm/locale/fa-IR' {
@@ -17467,6 +17493,11 @@ declare module 'date-fns/esm/locale/et/index' {
   export default et
 }
 
+declare module 'date-fns/esm/locale/eu/index' {
+  import { eu } from 'date-fns/esm/locale'
+  export default eu
+}
+
 declare module 'date-fns/esm/locale/fa-IR/index' {
   import { faIR } from 'date-fns/esm/locale'
   export default faIR
@@ -17825,6 +17856,11 @@ declare module 'date-fns/esm/locale/es/index.js' {
 declare module 'date-fns/esm/locale/et/index.js' {
   import { et } from 'date-fns/esm/locale'
   export default et
+}
+
+declare module 'date-fns/esm/locale/eu/index.js' {
+  import { eu } from 'date-fns/esm/locale'
+  export default eu
 }
 
 declare module 'date-fns/esm/locale/fa-IR/index.js' {
