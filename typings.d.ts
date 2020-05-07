@@ -369,6 +369,7 @@ declare module 'date-fns' {
     baseDate: Date | number,
     options?: {
       includeSeconds?: boolean
+      includeWeeks?: boolean
       addSuffix?: boolean
       locale?: Locale
     }
@@ -7996,6 +7997,7 @@ declare module 'date-fns/esm' {
     baseDate: Date | number,
     options?: {
       includeSeconds?: boolean
+      includeWeeks?: boolean
       addSuffix?: boolean
       locale?: Locale
     }
@@ -18139,6 +18141,7 @@ interface dateFns {
     baseDate: Date | number,
     options?: {
       includeSeconds?: boolean
+      includeWeeks?: boolean
       addSuffix?: boolean
       locale?: Locale
     }

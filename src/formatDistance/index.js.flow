@@ -52,6 +52,7 @@ declare module.exports: (
   baseDate: Date | number,
   options?: {
     includeSeconds?: boolean,
+    includeWeeks?: boolean,
     addSuffix?: boolean,
     locale?: Locale
   }

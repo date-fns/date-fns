@@ -9,6 +9,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
+var MINUTES_IN_WEEK = 10080
 var MINUTES_IN_MONTH = 43200
 var MINUTES_IN_TWO_MONTHS = 86400
 
@@ -81,6 +82,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Date|Number} baseDate - the date to compare with
  * @param {Object} [options] - an object with options.
  * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param {Boolean} [options.includeWeeks=false] - distances less than a month will include weeks
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
@@ -202,6 +204,11 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
     // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
     var days = Math.round(minutes / MINUTES_IN_DAY)
+    if (options.includeWeeks) {
+      var weeks = Math.round(minutes / MINUTES_IN_WEEK)
+
+      return locale.formatDistance('xWeeks', weeks, localizeOptions)
+    }
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 month up to 2 months
