@@ -8,8 +8,13 @@ var eraValues = {
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
-  abbreviated: ['1-ви кв.', '2-ри кв.', '3-ти кв.', '4-ти кв.'],
-  wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал']
+  abbreviated: ['1-во тримес.', '2-ро тримес.', '3-то тримес.', '4-то тримес.'],
+  wide: [
+    '1-во тримесечие',
+    '2-ро тримесечие',
+    '3-то тримесечие',
+    '4-то тримесечие'
+  ]
 }
 
 var monthValues = {
@@ -77,8 +82,12 @@ function isFeminine(unit) {
   )
 }
 
-function numberWithSuffix(number, unit, masculine, feminine) {
-  var suffix = isFeminine(unit) ? feminine : masculine
+function isNeuter(unit) {
+  return unit === 'quarter'
+}
+
+function numberWithSuffix(number, unit, masculine, feminine, neuter) {
+  var suffix = isNeuter(unit) ? neuter : isFeminine(unit) ? feminine : masculine
   return number + '-' + suffix
 }
 
@@ -88,27 +97,27 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
   if (number === 0) {
-    return numberWithSuffix(0, unit, 'ев', 'ева')
+    return numberWithSuffix(0, unit, 'ев', 'ева', 'ево')
   } else if (number % 1000 === 0) {
-    return numberWithSuffix(number, unit, 'ен', 'на')
+    return numberWithSuffix(number, unit, 'ен', 'на', 'но')
   } else if (number % 100 === 0) {
-    return numberWithSuffix(number, unit, 'тен', 'тна')
+    return numberWithSuffix(number, unit, 'тен', 'тна', 'тно')
   }
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return numberWithSuffix(number, unit, 'ви', 'ва')
+        return numberWithSuffix(number, unit, 'ви', 'ва', 'во')
       case 2:
-        return numberWithSuffix(number, unit, 'ри', 'ра')
+        return numberWithSuffix(number, unit, 'ри', 'ра', 'ро')
       case 7:
       case 8:
-        return numberWithSuffix(number, unit, 'ми', 'ма')
+        return numberWithSuffix(number, unit, 'ми', 'ма', 'мо')
     }
   }
 
-  return numberWithSuffix(number, unit, 'ти', 'та')
+  return numberWithSuffix(number, unit, 'ти', 'та', 'то')
 }
 
 var localize = {

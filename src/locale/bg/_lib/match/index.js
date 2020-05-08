@@ -15,8 +15,8 @@ var parseEraPatterns = {
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
-  abbreviated: /^[1234](-?[врт]?и?)? кв.?/i,
-  wide: /^[1234](-?[врт]?и?)? квартал/i
+  abbreviated: /^[1234](-?[врт]?o?)? тримес.?/i,
+  wide: /^[1234](-?[врт]?о?)? тримесечие/i
 }
 var parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
