@@ -111,8 +111,8 @@ var formatDistanceLocale = {
   },
 
   xWeeks: {
-    one: 'tydzień'
-    twoFour: '{{count}} tygodnie'
+    one: 'tydzień',
+    twoFour: '{{count}} tygodnie',
     other: '{{count}} tygodni'
   },
 
