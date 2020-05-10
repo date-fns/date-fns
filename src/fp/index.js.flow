@@ -214,6 +214,16 @@ declare module.exports: {
     Date | number,
     string
   >,
+  formatDuration: CurriedFn1<Duration, string>,
+  formatDurationWithOptions: CurriedFn2<
+    {
+      delimiter?: string,
+      zero?: boolean,
+      format?: string[]
+    },
+    Duration,
+    string
+  >,
   formatISO: CurriedFn1<Date | number, string>,
   formatISO9075: CurriedFn1<Date | number, string>,
   formatISO9075WithOptions: CurriedFn2<

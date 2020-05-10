@@ -304,6 +304,15 @@ declare module.exports: {
     }
   ) => string,
 
+  formatDuration: (
+    duration: Duration,
+    options?: {
+      format?: string[],
+      zero?: boolean,
+      delimiter?: string
+    }
+  ) => string,
+
   formatISO: (
     date: Date | number,
     options?: {

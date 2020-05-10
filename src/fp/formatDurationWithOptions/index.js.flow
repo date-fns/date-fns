@@ -47,11 +47,18 @@ export type Duration = {
   seconds?: number
 }
 
-declare module.exports: (
-  duration: Duration,
-  options?: {
-    format?: string[],
+type CurriedFn1<A, R> = <A>(a: A) => R
+
+type CurriedFn2<A, B, R> = <A>(
+  a: A
+) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
+
+declare module.exports: CurriedFn2<
+  {
+    delimiter?: string,
     zero?: boolean,
-    delimiter?: string
-  }
-) => string
+    format?: string[]
+  },
+  Duration,
+  string
+>
