@@ -408,6 +408,16 @@ declare module 'date-fns' {
   ): string
   namespace formatDistanceToNowStrict {}
 
+  function formatDuration(
+    duration: Duration,
+    options?: {
+      format?: string[]
+      zero?: boolean
+      delimiter?: string
+    }
+  ): string
+  namespace formatDuration {}
+
   function formatISO(
     date: Date | number,
     options?: {
@@ -1278,6 +1288,11 @@ declare module 'date-fns/formatDistanceToNow' {
 declare module 'date-fns/formatDistanceToNowStrict' {
   import { formatDistanceToNowStrict } from 'date-fns'
   export default formatDistanceToNowStrict
+}
+
+declare module 'date-fns/formatDuration' {
+  import { formatDuration } from 'date-fns'
+  export default formatDuration
 }
 
 declare module 'date-fns/formatISO' {
@@ -2240,6 +2255,11 @@ declare module 'date-fns/formatDistanceToNowStrict/index' {
   export default formatDistanceToNowStrict
 }
 
+declare module 'date-fns/formatDuration/index' {
+  import { formatDuration } from 'date-fns'
+  export default formatDuration
+}
+
 declare module 'date-fns/formatISO/index' {
   import { formatISO } from 'date-fns'
   export default formatISO
@@ -3200,6 +3220,11 @@ declare module 'date-fns/formatDistanceToNowStrict/index.js' {
   export default formatDistanceToNowStrict
 }
 
+declare module 'date-fns/formatDuration/index.js' {
+  import { formatDuration } from 'date-fns'
+  export default formatDuration
+}
+
 declare module 'date-fns/formatISO/index.js' {
   import { formatISO } from 'date-fns'
   export default formatISO
@@ -4150,6 +4175,20 @@ declare module 'date-fns/fp' {
   >
   namespace formatDistanceWithOptions {}
 
+  const formatDuration: CurriedFn1<Duration, string>
+  namespace formatDuration {}
+
+  const formatDurationWithOptions: CurriedFn2<
+    {
+      delimiter?: string
+      zero?: boolean
+      format?: string[]
+    },
+    Duration,
+    string
+  >
+  namespace formatDurationWithOptions {}
+
   const formatISO: CurriedFn1<Date | number, string>
   namespace formatISO {}
 
@@ -5045,6 +5084,16 @@ declare module 'date-fns/fp/formatDistanceStrictWithOptions' {
 declare module 'date-fns/fp/formatDistanceWithOptions' {
   import { formatDistanceWithOptions } from 'date-fns/fp'
   export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/fp/formatDuration' {
+  import { formatDuration } from 'date-fns/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/fp/formatDurationWithOptions' {
+  import { formatDurationWithOptions } from 'date-fns/fp'
+  export default formatDurationWithOptions
 }
 
 declare module 'date-fns/fp/formatISO' {
@@ -6042,6 +6091,16 @@ declare module 'date-fns/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/fp/formatDuration/index' {
+  import { formatDuration } from 'date-fns/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/fp/formatDurationWithOptions/index' {
+  import { formatDurationWithOptions } from 'date-fns/fp'
+  export default formatDurationWithOptions
+}
+
 declare module 'date-fns/fp/formatISO/index' {
   import { formatISO } from 'date-fns/fp'
   export default formatISO
@@ -7035,6 +7094,16 @@ declare module 'date-fns/fp/formatDistanceStrictWithOptions/index.js' {
 declare module 'date-fns/fp/formatDistanceWithOptions/index.js' {
   import { formatDistanceWithOptions } from 'date-fns/fp'
   export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/fp/formatDuration/index.js' {
+  import { formatDuration } from 'date-fns/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/fp/formatDurationWithOptions/index.js' {
+  import { formatDurationWithOptions } from 'date-fns/fp'
+  export default formatDurationWithOptions
 }
 
 declare module 'date-fns/fp/formatISO/index.js' {
@@ -8035,6 +8104,16 @@ declare module 'date-fns/esm' {
   ): string
   namespace formatDistanceToNowStrict {}
 
+  function formatDuration(
+    duration: Duration,
+    options?: {
+      format?: string[]
+      zero?: boolean
+      delimiter?: string
+    }
+  ): string
+  namespace formatDuration {}
+
   function formatISO(
     date: Date | number,
     options?: {
@@ -8905,6 +8984,11 @@ declare module 'date-fns/esm/formatDistanceToNow' {
 declare module 'date-fns/esm/formatDistanceToNowStrict' {
   import { formatDistanceToNowStrict } from 'date-fns/esm'
   export default formatDistanceToNowStrict
+}
+
+declare module 'date-fns/esm/formatDuration' {
+  import { formatDuration } from 'date-fns/esm'
+  export default formatDuration
 }
 
 declare module 'date-fns/esm/formatISO' {
@@ -9867,6 +9951,11 @@ declare module 'date-fns/esm/formatDistanceToNowStrict/index' {
   export default formatDistanceToNowStrict
 }
 
+declare module 'date-fns/esm/formatDuration/index' {
+  import { formatDuration } from 'date-fns/esm'
+  export default formatDuration
+}
+
 declare module 'date-fns/esm/formatISO/index' {
   import { formatISO } from 'date-fns/esm'
   export default formatISO
@@ -10827,6 +10916,11 @@ declare module 'date-fns/esm/formatDistanceToNowStrict/index.js' {
   export default formatDistanceToNowStrict
 }
 
+declare module 'date-fns/esm/formatDuration/index.js' {
+  import { formatDuration } from 'date-fns/esm'
+  export default formatDuration
+}
+
 declare module 'date-fns/esm/formatISO/index.js' {
   import { formatISO } from 'date-fns/esm'
   export default formatISO
@@ -11777,6 +11871,20 @@ declare module 'date-fns/esm/fp' {
   >
   namespace formatDistanceWithOptions {}
 
+  const formatDuration: CurriedFn1<Duration, string>
+  namespace formatDuration {}
+
+  const formatDurationWithOptions: CurriedFn2<
+    {
+      delimiter?: string
+      zero?: boolean
+      format?: string[]
+    },
+    Duration,
+    string
+  >
+  namespace formatDurationWithOptions {}
+
   const formatISO: CurriedFn1<Date | number, string>
   namespace formatISO {}
 
@@ -12672,6 +12780,16 @@ declare module 'date-fns/esm/fp/formatDistanceStrictWithOptions' {
 declare module 'date-fns/esm/fp/formatDistanceWithOptions' {
   import { formatDistanceWithOptions } from 'date-fns/esm/fp'
   export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatDuration' {
+  import { formatDuration } from 'date-fns/esm/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/esm/fp/formatDurationWithOptions' {
+  import { formatDurationWithOptions } from 'date-fns/esm/fp'
+  export default formatDurationWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatISO' {
@@ -13669,6 +13787,16 @@ declare module 'date-fns/esm/fp/formatDistanceWithOptions/index' {
   export default formatDistanceWithOptions
 }
 
+declare module 'date-fns/esm/fp/formatDuration/index' {
+  import { formatDuration } from 'date-fns/esm/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/esm/fp/formatDurationWithOptions/index' {
+  import { formatDurationWithOptions } from 'date-fns/esm/fp'
+  export default formatDurationWithOptions
+}
+
 declare module 'date-fns/esm/fp/formatISO/index' {
   import { formatISO } from 'date-fns/esm/fp'
   export default formatISO
@@ -14662,6 +14790,16 @@ declare module 'date-fns/esm/fp/formatDistanceStrictWithOptions/index.js' {
 declare module 'date-fns/esm/fp/formatDistanceWithOptions/index.js' {
   import { formatDistanceWithOptions } from 'date-fns/esm/fp'
   export default formatDistanceWithOptions
+}
+
+declare module 'date-fns/esm/fp/formatDuration/index.js' {
+  import { formatDuration } from 'date-fns/esm/fp'
+  export default formatDuration
+}
+
+declare module 'date-fns/esm/fp/formatDurationWithOptions/index.js' {
+  import { formatDurationWithOptions } from 'date-fns/esm/fp'
+  export default formatDurationWithOptions
 }
 
 declare module 'date-fns/esm/fp/formatISO/index.js' {
@@ -18171,6 +18309,15 @@ interface dateFns {
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
       roundingMethod?: 'floor' | 'ceil' | 'round'
       locale?: Locale
+    }
+  ): string
+
+  formatDuration(
+    duration: Duration,
+    options?: {
+      format?: string[]
+      zero?: boolean
+      delimiter?: string
     }
   ): string
 

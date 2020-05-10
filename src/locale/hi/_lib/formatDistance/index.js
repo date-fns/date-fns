@@ -38,6 +38,16 @@ var formatDistanceLocale = {
     other: '{{count}} दिन'
   },
 
+  aboutXWeeks: {
+    one: 'लगभग १ सप्ताह',
+    other: 'लगभग {{count}} सप्ताह'
+  },
+
+  xWeeks: {
+    one: '१ सप्ताह',
+    other: '{{count}} सप्ताह'
+  },
+
   aboutXMonths: {
     one: 'लगभग १ महीना',
     other: 'लगभग {{count}} महीने'

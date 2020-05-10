@@ -71,6 +71,26 @@ var formatDistanceLocale = {
     other: '{{count}} dana'
   },
 
+  aboutXWeeks: {
+    one: {
+      standalone: 'oko 1 tjedan',
+      withPrepositionAgo: 'oko 1 tjedan',
+      withPrepositionIn: 'oko 1 tjedan'
+    },
+    dual: 'oko {{count}} tjedna',
+    other: 'oko {{count}} tjedana'
+  },
+
+  xWeeks: {
+    one: {
+      standalone: '1 tjedan',
+      withPrepositionAgo: '1 tjedan',
+      withPrepositionIn: '1 tjedan'
+    },
+    dual: '{{count}} tjedna',
+    other: '{{count}} tjedana'
+  },
+
   aboutXMonths: {
     one: {
       standalone: 'oko 1 mjesec',
@@ -132,7 +152,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -150,7 +170,8 @@ export default function formatDistance (token, count, options) {
       result = formatDistanceLocale[token].one.standalone
     }
   } else if (
-    count % 10 > 1 && count % 10 < 5 && // if last digit is between 2 and 4
+    count % 10 > 1 &&
+    count % 10 < 5 && // if last digit is between 2 and 4
     String(count).substr(-2, 1) !== '1' // unless the 2nd to last digit is "1"
   ) {
     result = formatDistanceLocale[token].dual.replace('{{count}}', count)

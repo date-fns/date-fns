@@ -82,6 +82,28 @@ var formatDistanceLocale = {
     }
   },
 
+  aboutXWeeks: {
+    standalone: {
+      one: 'సుమారు ఒక వారం',
+      other: 'సుమారు {{count}} వారాలు'
+    },
+    withPreposition: {
+      one: 'సుమారు ఒక వారం',
+      other: 'సుమారు {{count}} వారాలల'
+    }
+  },
+
+  xWeeks: {
+    standalone: {
+      one: 'ఒక వారం',
+      other: '{{count}} వారాలు'
+    },
+    withPreposition: {
+      one: 'ఒక వారం',
+      other: '{{count}} వారాలల'
+    }
+  },
+
   aboutXMonths: {
     standalone: {
       one: 'సుమారు ఒక నెల',

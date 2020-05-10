@@ -71,6 +71,26 @@ var formatDistanceLocale = {
     other: '{{count}} дана'
   },
 
+  aboutXWeeks: {
+    one: {
+      standalone: 'око 1 недељу',
+      withPrepositionAgo: 'око 1 недељу',
+      withPrepositionIn: 'око 1 недељу'
+    },
+    dual: 'око {{count}} недеље',
+    other: 'око {{count}} недеље'
+  },
+
+  xWeeks: {
+    one: {
+      standalone: '1 недељу',
+      withPrepositionAgo: '1 недељу',
+      withPrepositionIn: '1 недељу'
+    },
+    dual: '{{count}} недеље',
+    other: '{{count}} недеље'
+  },
+
   aboutXMonths: {
     one: {
       standalone: 'око 1 месец',

@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} ġranet'
   },
 
+  aboutXWeeks: {
+    one: 'madwar ġimgħa',
+    other: 'madwar {{count}} ġimgħat'
+  },
+
+  xWeeks: {
+    one: 'ġimgħa',
+    other: '{{count}} ġimgħat'
+  },
+
   aboutXMonths: {
     one: 'madwar xahar',
     other: 'madwar {{count}} xhur'

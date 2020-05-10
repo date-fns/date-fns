@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     other: '{{count}} dagar'
   },
 
+  aboutXWeeks: {
+    one: 'um viku',
+    other: 'um {{count}} vikur'
+  },
+
+  xWeeks: {
+    one: '1 viku',
+    other: '{{count}} vikur'
+  },
+
   aboutXMonths: {
     one: 'u.þ.b. 1 mánuður',
     other: 'u.þ.b. {{count}} mánuðir'
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

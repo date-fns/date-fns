@@ -36,6 +36,16 @@ var formatDistanceLocale = {
     plural: '{{count}} dagar'
   },
 
+  aboutXWeeks: {
+    singular: 'ungefär en vecka',
+    plural: 'ungefär {{count}} vecka'
+  },
+
+  xWeeks: {
+    singular: 'en vecka',
+    plural: '{{count}} vecka'
+  },
+
   aboutXMonths: {
     singular: 'ungefär en månad',
     plural: 'ungefär {{count}} månader'
@@ -83,7 +93,7 @@ var wordMapping = [
   'tolv'
 ]
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {
     onlyNumeric: false
   }
@@ -96,7 +106,10 @@ export default function formatDistance (token, count, options) {
     if (options.onlyNumeric) {
       result = translation.plural.replace('{{count}}', count)
     } else {
-      result = translation.plural.replace('{{count}}', count < 13 ? wordMapping[count] : count)
+      result = translation.plural.replace(
+        '{{count}}',
+        count < 13 ? wordMapping[count] : count
+      )
     }
   } else {
     result = translation.singular

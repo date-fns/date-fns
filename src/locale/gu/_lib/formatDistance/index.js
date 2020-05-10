@@ -37,6 +37,16 @@ var formatDistanceLocale = {
     other: '{{count}} દિવસ'
   },
 
+  aboutXWeeks: {
+    one: 'આશરે 1 અઠવાડિયું',
+    other: 'આશરે {{count}} અઠવાડિયા'
+  },
+
+  xWeeks: {
+    one: '1 અઠવાડિયું',
+    other: '{{count}} અઠવાડિયા'
+  },
+
   aboutXMonths: {
     one: 'આશરે 1 મહિનો',
     other: 'આશરે {{count}} મહિના'

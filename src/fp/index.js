@@ -108,6 +108,10 @@ export {
 export {
   default as formatDistanceWithOptions
 } from './formatDistanceWithOptions/index.js'
+export { default as formatDuration } from './formatDuration/index.js'
+export {
+  default as formatDurationWithOptions
+} from './formatDurationWithOptions/index.js'
 export { default as formatISO } from './formatISO/index.js'
 export { default as formatISO9075 } from './formatISO9075/index.js'
 export {

@@ -161,6 +161,27 @@ var formatDistanceLocale = {
     }
   }),
 
+  aboutXWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: 'каля {{count}} месяца', // TODO
+      singularGenitive: 'каля {{count}} месяцаў', // TODO
+      pluralGenitive: 'каля {{count}} месяцаў' // TODO
+    },
+    future: {
+      singularNominative: 'прыблізна праз {{count}} месяц', // TODO
+      singularGenitive: 'прыблізна праз {{count}} месяцы', // TODO
+      pluralGenitive: 'прыблізна праз {{count}} месяцаў' // TODO
+    }
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    regular: {
+      singularNominative: '{{count}} месяц',
+      singularGenitive: '{{count}} месяцы',
+      pluralGenitive: '{{count}} месяцаў'
+    }
+  }),
+
   aboutXMonths: buildLocalizeTokenFn({
     regular: {
       singularNominative: 'каля {{count}} месяца',

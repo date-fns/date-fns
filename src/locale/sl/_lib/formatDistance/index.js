@@ -50,6 +50,20 @@ var distanceInWordsLocale = {
     other: '{{count}} dni'
   },
 
+  aboutXWeeks: {
+    one: 'približno {{count}} teden',
+    two: 'približno {{count}} tedna',
+    few: 'približno {{count}} tedne',
+    other: 'približno {{count}} tednov'
+  },
+
+  xWeeks: {
+    one: '{{count}} teden',
+    two: '{{count}} tedna',
+    few: '{{count}} tedne',
+    other: '{{count}} tednov'
+  },
+
   aboutXMonths: {
     one: 'približno {{count}} mesec',
     two: 'približno {{count}} meseca',
