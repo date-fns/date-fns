@@ -73,22 +73,22 @@ var formatDistanceLocale = {
 
   aboutXWeeks: {
     one: {
-      standalone: 'oko 1 mesec', // TODO
-      withPrepositionAgo: 'oko 1 mesec', // TODO
-      withPrepositionIn: 'oko 1 mesec' // TODO
+      standalone: 'oko 1 nedjelju',
+      withPrepositionAgo: 'oko 1 nedjelju',
+      withPrepositionIn: 'oko 1 nedjelju'
     },
-    dual: 'oko {{count}} meseca', // TODO
-    other: 'oko {{count}} meseci' // TODO
+    dual: 'oko {{count}} nedjelje',
+    other: 'oko {{count}} nedjelje'
   },
 
   xWeeks: {
     one: {
-      standalone: '1 mesec', // TODO
-      withPrepositionAgo: '1 mesec', // TODO
-      withPrepositionIn: '1 mesec' // TODO
+      standalone: '1 nedjelju',
+      withPrepositionAgo: '1 nedjelju',
+      withPrepositionIn: '1 nedjelju'
     },
-    dual: '{{count}} meseca', // TODO
-    other: '{{count}} meseci' // TODO
+    dual: '{{count}} nedjelje',
+    other: '{{count}} nedjelje'
   },
 
   aboutXMonths: {
