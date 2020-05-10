@@ -51,17 +51,17 @@ var distanceInWordsLocale = {
   },
 
   aboutXWeeks: {
-    one: 'približno {{count}} mesec', // TODO
-    two: 'približno {{count}} meseca', // TODO
-    few: 'približno {{count}} mesece', // TODO
-    other: 'približno {{count}} mesecev' // TODO
+    one: 'približno {{count}} teden',
+    two: 'približno {{count}} tedna',
+    few: 'približno {{count}} tedne',
+    other: 'približno {{count}} tednov'
   },
 
   xWeeks: {
-    one: '{{count}} mesec', // TODO
-    two: '{{count}} meseca', // TODO
-    few: '{{count}} meseci', // TODO
-    other: '{{count}} mesecev' // TODO
+    one: '{{count}} teden',
+    two: '{{count}} tedna',
+    few: '{{count}} tedne',
+    other: '{{count}} tednov'
   },
 
   aboutXMonths: {
