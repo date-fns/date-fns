@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: 'yaklaşık 1 ay', // TODO
-    other: 'yaklaşık {{count}} ay' // TODO
+    one: 'yaklaşık 1 hafta',
+    other: 'yaklaşık {{count}} hafta'
   },
 
   xWeeks: {
-    one: '1 ay', // TODO
-    other: '{{count}} ay' // TODO
+    one: '1 hafta',
+    other: '{{count}} hafta'
   },
 
   aboutXMonths: {
