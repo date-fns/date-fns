@@ -37,13 +37,13 @@ var formatDistanceLocale = {
   },
 
   aboutXWeeks: {
-    one: '大約 1 個月', // TODO
-    other: '大約 {{count}} 個月' // TODO
+    one: '大約 1 个星期',
+    other: '大約 {{count}} 个星期'
   },
 
   xWeeks: {
-    one: '1 個月', // TODO
-    other: '{{count}} 個月' // TODO
+    one: '1 个星期',
+    other: '{{count}} 个星期'
   },
 
   aboutXMonths: {
