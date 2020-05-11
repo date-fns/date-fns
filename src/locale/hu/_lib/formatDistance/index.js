@@ -64,7 +64,7 @@ function translate(number, addSuffix, key, comparison) {
     ? withSuffixes[key][comparison]
     : withoutSuffixes[key]
 
-  if (key == 'halfaminute') {
+  if (key === 'halfaminute') {
     return translated
   }
 
