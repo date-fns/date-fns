@@ -13,20 +13,23 @@ import sub from '../sub/index.js'
 /**
  * @name intervalToDuration
  * @category Common Helpers
- * @summary Get the Duration between 2 dates in an Interval Object
+ * @summary Convert interval to duration
  *
- * @param {Interval} interval The Interval Object
+ * @description
+ * Convert a interval object to a duration object.
  *
- * @returns {Duration} The Duration Object
- * @throws {TypeError} Requires 2 Arguments
+ * @param {Interval} interval - the interval to convert to duration
+ *
+ * @returns {Duration} The duration Object
+ * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date
  *
  * @example
- * // Get the Duration between January 15, 1929 and April 4, 1968.
- * const result = intervalToDuration({
- *     new Date(1929, 0, 15, 12, 0, 0),
- *     new Date(1968, 3, 4, 19, 5, 0)
+ * // Get the duration between January 15, 1929 and April 4, 1968.
+ * intervalToDuration({
+ *   start: new Date(1929, 0, 15, 12, 0, 0),
+ *   end: new Date(1968, 3, 4, 19, 5, 0)
  * })
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
