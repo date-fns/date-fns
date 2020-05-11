@@ -3,16 +3,19 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
 /**
  * @name formatISODuration
  * @category Common Helpers
- * @summary Format a Duration Object according to ISO 8601 Duration standards (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
+ * @summary Format a duration object according as ISO 8601 duration string
  *
- * @param {Duration} duration
+ * @description
+ * Format a duration object according to the ISO 8601 duration standard (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
  *
- * @returns {String} The ISO 8601 Duration string
+ * @param {Duration} duration - the duration to format
+ *
+ * @returns {String} The ISO 8601 duration string
  * @throws {TypeError} Requires 1 argument
  * @throws {Error} Argument must be an object
  *
  * @example
- * // Get the ISO 8601 Duration between January 15, 1929 and April 4, 1968.
+ * // Format the given duration as ISO 8601 string
  * const result = formatISODuration({ years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 })
  * // => 'P39Y2M20DT0H0M0S'
  */
