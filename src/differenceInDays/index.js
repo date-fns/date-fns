@@ -70,14 +70,14 @@ function compareLocalAsc(dateLeft, dateRight) {
  * // How many full days are between
  * // 1 March 2020 0:00 and 1 June 2020 0:00 ?
  * // Note: because local time is used, the
- * // result will always be 51 days, even in
+ * // result will always be 92 days, even in
  * // time zones where DST starts and the
- * // period has only 51*24-1 hours.
+ * // period has only 92*24-1 hours.
  * var result = differenceInDays(
  *   new Date(2020, 5, 1),
  *   new Date(2020, 2, 1)
  * )
-//=> 51
+//=> 92
  */
 export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   requiredArgs(2, arguments)
