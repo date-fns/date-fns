@@ -274,6 +274,14 @@ declare module 'date-fns' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachHourOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+  namespace eachHourOfInterval {}
+
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
@@ -1163,6 +1171,11 @@ declare module 'date-fns/differenceInYears' {
 declare module 'date-fns/eachDayOfInterval' {
   import { eachDayOfInterval } from 'date-fns'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/eachHourOfInterval' {
+  import { eachHourOfInterval } from 'date-fns'
+  export default eachHourOfInterval
 }
 
 declare module 'date-fns/eachMonthOfInterval' {
@@ -2130,6 +2143,11 @@ declare module 'date-fns/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/eachHourOfInterval/index' {
+  import { eachHourOfInterval } from 'date-fns'
+  export default eachHourOfInterval
+}
+
 declare module 'date-fns/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns'
   export default eachMonthOfInterval
@@ -3093,6 +3111,11 @@ declare module 'date-fns/differenceInYears/index.js' {
 declare module 'date-fns/eachDayOfInterval/index.js' {
   import { eachDayOfInterval } from 'date-fns'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/eachHourOfInterval/index.js' {
+  import { eachHourOfInterval } from 'date-fns'
+  export default eachHourOfInterval
 }
 
 declare module 'date-fns/eachMonthOfInterval/index.js' {
@@ -4061,6 +4084,18 @@ declare module 'date-fns/fp' {
   >
   namespace eachDayOfIntervalWithOptions {}
 
+  const eachHourOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachHourOfInterval {}
+
+  const eachHourOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
+  namespace eachHourOfIntervalWithOptions {}
+
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
@@ -4959,6 +4994,16 @@ declare module 'date-fns/fp/eachDayOfInterval' {
 declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/fp'
   export default eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachHourOfInterval' {
+  import { eachHourOfInterval } from 'date-fns/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/fp/eachHourOfIntervalWithOptions' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachHourOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/eachMonthOfInterval' {
@@ -5966,6 +6011,16 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachHourOfInterval/index' {
+  import { eachHourOfInterval } from 'date-fns/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/fp/eachHourOfIntervalWithOptions/index' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachHourOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/fp'
   export default eachMonthOfInterval
@@ -6971,6 +7026,16 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions/index.js' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachHourOfInterval/index.js' {
+  import { eachHourOfInterval } from 'date-fns/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/fp/eachHourOfIntervalWithOptions/index.js' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachHourOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns/fp'
   export default eachMonthOfInterval
@@ -7970,6 +8035,14 @@ declare module 'date-fns/esm' {
   ): Date[]
   namespace eachDayOfInterval {}
 
+  function eachHourOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+  namespace eachHourOfInterval {}
+
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
@@ -8859,6 +8932,11 @@ declare module 'date-fns/esm/differenceInYears' {
 declare module 'date-fns/esm/eachDayOfInterval' {
   import { eachDayOfInterval } from 'date-fns/esm'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/esm/eachHourOfInterval' {
+  import { eachHourOfInterval } from 'date-fns/esm'
+  export default eachHourOfInterval
 }
 
 declare module 'date-fns/esm/eachMonthOfInterval' {
@@ -9826,6 +9904,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index' {
   export default eachDayOfInterval
 }
 
+declare module 'date-fns/esm/eachHourOfInterval/index' {
+  import { eachHourOfInterval } from 'date-fns/esm'
+  export default eachHourOfInterval
+}
+
 declare module 'date-fns/esm/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/esm'
   export default eachMonthOfInterval
@@ -10789,6 +10872,11 @@ declare module 'date-fns/esm/differenceInYears/index.js' {
 declare module 'date-fns/esm/eachDayOfInterval/index.js' {
   import { eachDayOfInterval } from 'date-fns/esm'
   export default eachDayOfInterval
+}
+
+declare module 'date-fns/esm/eachHourOfInterval/index.js' {
+  import { eachHourOfInterval } from 'date-fns/esm'
+  export default eachHourOfInterval
 }
 
 declare module 'date-fns/esm/eachMonthOfInterval/index.js' {
@@ -11757,6 +11845,18 @@ declare module 'date-fns/esm/fp' {
   >
   namespace eachDayOfIntervalWithOptions {}
 
+  const eachHourOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachHourOfInterval {}
+
+  const eachHourOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
+  namespace eachHourOfIntervalWithOptions {}
+
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
@@ -12655,6 +12755,16 @@ declare module 'date-fns/esm/fp/eachDayOfInterval' {
 declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachHourOfInterval' {
+  import { eachHourOfInterval } from 'date-fns/esm/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachHourOfIntervalWithOptions
 }
 
 declare module 'date-fns/esm/fp/eachMonthOfInterval' {
@@ -13662,6 +13772,16 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index' {
   export default eachDayOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachHourOfInterval/index' {
+  import { eachHourOfInterval } from 'date-fns/esm/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions/index' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachHourOfIntervalWithOptions
+}
+
 declare module 'date-fns/esm/fp/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/esm/fp'
   export default eachMonthOfInterval
@@ -14665,6 +14785,16 @@ declare module 'date-fns/esm/fp/eachDayOfInterval/index.js' {
 declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js' {
   import { eachDayOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachDayOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachHourOfInterval/index.js' {
+  import { eachHourOfInterval } from 'date-fns/esm/fp'
+  export default eachHourOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions/index.js' {
+  import { eachHourOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachHourOfIntervalWithOptions
 }
 
 declare module 'date-fns/esm/fp/eachMonthOfInterval/index.js' {
@@ -18197,6 +18327,13 @@ interface dateFns {
   differenceInYears(dateLeft: Date | number, dateRight: Date | number): number
 
   eachDayOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+
+  eachHourOfInterval(
     interval: Interval,
     options?: {
       step?: number
