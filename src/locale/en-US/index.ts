@@ -3,6 +3,7 @@ import formatLong from './_lib/formatLong/index.js'
 import formatRelative from './_lib/formatRelative/index.js'
 import localize from './_lib/localize/index.js'
 import match from './_lib/match/index.js'
+import Locale from '../../_types/Locale'
 
 /**
  * @type {Locale}
@@ -13,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
-var locale = {
+var locale: Locale = {
   code: 'en-US',
   formatDistance: formatDistance,
   formatLong: formatLong,

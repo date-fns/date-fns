@@ -17,18 +17,17 @@ export type FormatDistanceFn = (
     | 'overXYears'
     | 'almostXYears',
   count: number,
-  options: {
+  options?: {
     addSuffix?: boolean
     comparison?: -1 | 0 | 1
   }
-
 ) => string
 
 export type FormatRelativeFn = (
   token: 'lastWeek' | 'yesterday' | 'today' | 'tomorrow' | 'nextWeek' | 'other',
   date: Date | number,
   baseDate: Date | number,
-  options: WeekFnOptions
+  options?: WeekFnOptions
 ) => string
 
 export type LocalizeFn<TValue> = (
@@ -74,7 +73,7 @@ export interface LocaleOptions {
   firstWeekContainsDate?: 1|2|3|4|5|6|7
 }
 
-export interface Locale {
+export default interface Locale {
   code: string,
   formatDistance: FormatDistanceFn,
   formatRelative: FormatRelativeFn,

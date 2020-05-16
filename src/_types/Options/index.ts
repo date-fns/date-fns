@@ -1,4 +1,4 @@
-import { Locale } from '../Locale'
+import Locale from '../Locale'
 
 export interface AreIntervalsOverlappingOptions {
   inclusive?: boolean
@@ -43,6 +43,13 @@ export interface FormatISOOptions {
 
 export interface FormatRFC3339Options {
   fractionDigits?: 0 | 1 | 2 | 3
+}
+
+type FormatDurationFormatString = 'years' | 'months' | 'weeks' | 'days' | 'hours' | 'minutes' | 'seconds'
+export interface FormatDurationOptions extends LocaleFnOptions {
+  format?: FormatDurationFormatString[]
+  zero?: boolean
+  delimiter?: string
 }
 
 export interface ParseISOOptions {

@@ -1,4 +1,4 @@
-export interface Duration {
+export default interface Duration {
   years?: number,
   months?: number,
   weeks?: number,

@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import Duration from '../_types/Duration'
 
 /**
  * @name formatISODuration
@@ -27,7 +28,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 'P39Y2M20DT0H0M0S'
  */
 
-export default function formatISODuration(duration) {
+export default function formatISODuration(duration: Duration) {
   requiredArgs(1, arguments)
 
   if (typeof duration !== 'object')

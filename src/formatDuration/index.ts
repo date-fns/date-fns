@@ -1,4 +1,6 @@
 import defaultLocale from '../locale/en-US/index.js'
+import Duration from '../_types/Duration'
+import { FormatDurationOptions } from '../_types/Options'
 
 const defaultFormat = [
   'years',
@@ -72,7 +74,7 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration, options = {}) {
+export default function formatDuration(duration: Duration, options: FormatDurationOptions = {}) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
