@@ -29,11 +29,11 @@ export {
   default as differenceInCalendarDays
 } from './differenceInCalendarDays/index.js'
 export {
-  default as differenceInCalendarISOWeeks
-} from './differenceInCalendarISOWeeks/index.js'
-export {
   default as differenceInCalendarISOWeekYears
 } from './differenceInCalendarISOWeekYears/index.js'
+export {
+  default as differenceInCalendarISOWeeks
+} from './differenceInCalendarISOWeeks/index.js'
 export {
   default as differenceInCalendarMonths
 } from './differenceInCalendarMonths/index.js'
@@ -70,15 +70,15 @@ export {
   default as eachDayOfIntervalWithOptions
 } from './eachDayOfIntervalWithOptions/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
+export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
+export {
+  default as eachWeekOfIntervalWithOptions
+} from './eachWeekOfIntervalWithOptions/index.js'
 export {
   default as eachWeekendOfInterval
 } from './eachWeekendOfInterval/index.js'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
-export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
-export {
-  default as eachWeekOfIntervalWithOptions
-} from './eachWeekOfIntervalWithOptions/index.js'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
@@ -121,15 +121,15 @@ export { default as formatISODuration } from './formatISODuration/index.js'
 export {
   default as formatISOWithOptions
 } from './formatISOWithOptions/index.js'
-export { default as formatRelative } from './formatRelative/index.js'
-export {
-  default as formatRelativeWithOptions
-} from './formatRelativeWithOptions/index.js'
 export { default as formatRFC3339 } from './formatRFC3339/index.js'
 export {
   default as formatRFC3339WithOptions
 } from './formatRFC3339WithOptions/index.js'
 export { default as formatRFC7231 } from './formatRFC7231/index.js'
+export { default as formatRelative } from './formatRelative/index.js'
+export {
+  default as formatRelativeWithOptions
+} from './formatRelativeWithOptions/index.js'
 export { default as formatWithOptions } from './formatWithOptions/index.js'
 export { default as fromUnixTime } from './fromUnixTime/index.js'
 export { default as getDate } from './getDate/index.js'
@@ -141,8 +141,8 @@ export { default as getDecade } from './getDecade/index.js'
 export { default as getHours } from './getHours/index.js'
 export { default as getISODay } from './getISODay/index.js'
 export { default as getISOWeek } from './getISOWeek/index.js'
-export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
 export { default as getISOWeekYear } from './getISOWeekYear/index.js'
+export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
 export { default as getMilliseconds } from './getMilliseconds/index.js'
 export { default as getMinutes } from './getMinutes/index.js'
 export { default as getMonth } from './getMonth/index.js'
@@ -158,15 +158,15 @@ export { default as getWeekOfMonth } from './getWeekOfMonth/index.js'
 export {
   default as getWeekOfMonthWithOptions
 } from './getWeekOfMonthWithOptions/index.js'
-export { default as getWeeksInMonth } from './getWeeksInMonth/index.js'
-export {
-  default as getWeeksInMonthWithOptions
-} from './getWeeksInMonthWithOptions/index.js'
 export { default as getWeekWithOptions } from './getWeekWithOptions/index.js'
 export { default as getWeekYear } from './getWeekYear/index.js'
 export {
   default as getWeekYearWithOptions
 } from './getWeekYearWithOptions/index.js'
+export { default as getWeeksInMonth } from './getWeeksInMonth/index.js'
+export {
+  default as getWeeksInMonthWithOptions
+} from './getWeeksInMonthWithOptions/index.js'
 export { default as getYear } from './getYear/index.js'
 export { default as intervalToDuration } from './intervalToDuration/index.js'
 export { default as isAfter } from './isAfter/index.js'
