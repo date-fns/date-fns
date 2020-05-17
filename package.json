@@ -1,6 +1,6 @@
 {
   "name": "date-fns",
-  "version": "1.0.0",
+  "version": "DON'T CHANGE; IT'S SET AUTOMATICALLY DURING DEPLOYMENT; ALSO, USE YARN FOR DEVELOPMENT",
   "sideEffects": false,
   "contributors": [
     "Sasha Koss <koss@nocorp.me>",
