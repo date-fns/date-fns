@@ -15736,6 +15736,9 @@ declare module 'date-fns/locale' {
   const enGB: Locale
   namespace enGB {}
 
+  const enIN: Locale
+  namespace enIN {}
+
   const enUS: Locale
   namespace enUS {}
 
@@ -15990,6 +15993,11 @@ declare module 'date-fns/locale/en-CA' {
 declare module 'date-fns/locale/en-GB' {
   import { enGB } from 'date-fns/locale'
   export default enGB
+}
+
+declare module 'date-fns/locale/en-IN' {
+  import { enIN } from 'date-fns/locale'
+  export default enIN
 }
 
 declare module 'date-fns/locale/en-US' {
@@ -16357,6 +16365,11 @@ declare module 'date-fns/locale/en-GB/index' {
   export default enGB
 }
 
+declare module 'date-fns/locale/en-IN/index' {
+  import { enIN } from 'date-fns/locale'
+  export default enIN
+}
+
 declare module 'date-fns/locale/en-US/index' {
   import { enUS } from 'date-fns/locale'
   export default enUS
@@ -16722,6 +16735,11 @@ declare module 'date-fns/locale/en-GB/index.js' {
   export default enGB
 }
 
+declare module 'date-fns/locale/en-IN/index.js' {
+  import { enIN } from 'date-fns/locale'
+  export default enIN
+}
+
 declare module 'date-fns/locale/en-US/index.js' {
   import { enUS } from 'date-fns/locale'
   export default enUS
@@ -17054,6 +17072,9 @@ declare module 'date-fns/esm/locale' {
   const enGB: Locale
   namespace enGB {}
 
+  const enIN: Locale
+  namespace enIN {}
+
   const enUS: Locale
   namespace enUS {}
 
@@ -17308,6 +17329,11 @@ declare module 'date-fns/esm/locale/en-CA' {
 declare module 'date-fns/esm/locale/en-GB' {
   import { enGB } from 'date-fns/esm/locale'
   export default enGB
+}
+
+declare module 'date-fns/esm/locale/en-IN' {
+  import { enIN } from 'date-fns/esm/locale'
+  export default enIN
 }
 
 declare module 'date-fns/esm/locale/en-US' {
@@ -17675,6 +17701,11 @@ declare module 'date-fns/esm/locale/en-GB/index' {
   export default enGB
 }
 
+declare module 'date-fns/esm/locale/en-IN/index' {
+  import { enIN } from 'date-fns/esm/locale'
+  export default enIN
+}
+
 declare module 'date-fns/esm/locale/en-US/index' {
   import { enUS } from 'date-fns/esm/locale'
   export default enUS
@@ -18038,6 +18069,11 @@ declare module 'date-fns/esm/locale/en-CA/index.js' {
 declare module 'date-fns/esm/locale/en-GB/index.js' {
   import { enGB } from 'date-fns/esm/locale'
   export default enGB
+}
+
+declare module 'date-fns/esm/locale/en-IN/index.js' {
+  import { enIN } from 'date-fns/esm/locale'
+  export default enIN
 }
 
 declare module 'date-fns/esm/locale/en-US/index.js' {

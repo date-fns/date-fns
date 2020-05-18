@@ -51,6 +51,7 @@ declare module.exports: {
   enAU: Locale,
   enCA: Locale,
   enGB: Locale,
+  enIN: Locale,
   enUS: Locale,
   eo: Locale,
   es: Locale,
