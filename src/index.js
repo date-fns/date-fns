@@ -60,6 +60,7 @@ export { default as differenceInSeconds } from './differenceInSeconds/index.js'
 export { default as differenceInWeeks } from './differenceInWeeks/index.js'
 export { default as differenceInYears } from './differenceInYears/index.js'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
+export { default as eachHourOfInterval } from './eachHourOfInterval/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
 export {
   default as eachQuarterOfInterval
