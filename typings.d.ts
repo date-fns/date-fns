@@ -277,6 +277,9 @@ declare module 'date-fns' {
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
+  function eachQuarterOfInterval(interval: Interval): Date[]
+  namespace eachQuarterOfInterval {}
+
   function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {}
 
@@ -1168,6 +1171,11 @@ declare module 'date-fns/eachDayOfInterval' {
 declare module 'date-fns/eachMonthOfInterval' {
   import { eachMonthOfInterval } from 'date-fns'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/eachQuarterOfInterval' {
+  import { eachQuarterOfInterval } from 'date-fns'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/eachWeekendOfInterval' {
@@ -2135,6 +2143,11 @@ declare module 'date-fns/eachMonthOfInterval/index' {
   export default eachMonthOfInterval
 }
 
+declare module 'date-fns/eachQuarterOfInterval/index' {
+  import { eachQuarterOfInterval } from 'date-fns'
+  export default eachQuarterOfInterval
+}
+
 declare module 'date-fns/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns'
   export default eachWeekendOfInterval
@@ -3098,6 +3111,11 @@ declare module 'date-fns/eachDayOfInterval/index.js' {
 declare module 'date-fns/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/eachQuarterOfInterval/index.js' {
+  import { eachQuarterOfInterval } from 'date-fns'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/eachWeekendOfInterval/index.js' {
@@ -4064,6 +4082,9 @@ declare module 'date-fns/fp' {
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
+  const eachQuarterOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachQuarterOfInterval {}
+
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {}
 
@@ -4964,6 +4985,11 @@ declare module 'date-fns/fp/eachDayOfIntervalWithOptions' {
 declare module 'date-fns/fp/eachMonthOfInterval' {
   import { eachMonthOfInterval } from 'date-fns/fp'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/fp/eachQuarterOfInterval' {
+  import { eachQuarterOfInterval } from 'date-fns/fp'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/fp/eachWeekendOfInterval' {
@@ -5971,6 +5997,11 @@ declare module 'date-fns/fp/eachMonthOfInterval/index' {
   export default eachMonthOfInterval
 }
 
+declare module 'date-fns/fp/eachQuarterOfInterval/index' {
+  import { eachQuarterOfInterval } from 'date-fns/fp'
+  export default eachQuarterOfInterval
+}
+
 declare module 'date-fns/fp/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
   export default eachWeekendOfInterval
@@ -6976,6 +7007,11 @@ declare module 'date-fns/fp/eachMonthOfInterval/index.js' {
   export default eachMonthOfInterval
 }
 
+declare module 'date-fns/fp/eachQuarterOfInterval/index.js' {
+  import { eachQuarterOfInterval } from 'date-fns/fp'
+  export default eachQuarterOfInterval
+}
+
 declare module 'date-fns/fp/eachWeekendOfInterval/index.js' {
   import { eachWeekendOfInterval } from 'date-fns/fp'
   export default eachWeekendOfInterval
@@ -7973,6 +8009,9 @@ declare module 'date-fns/esm' {
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
+  function eachQuarterOfInterval(interval: Interval): Date[]
+  namespace eachQuarterOfInterval {}
+
   function eachWeekendOfInterval(interval: Interval): Date[]
   namespace eachWeekendOfInterval {}
 
@@ -8864,6 +8903,11 @@ declare module 'date-fns/esm/eachDayOfInterval' {
 declare module 'date-fns/esm/eachMonthOfInterval' {
   import { eachMonthOfInterval } from 'date-fns/esm'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/esm/eachQuarterOfInterval' {
+  import { eachQuarterOfInterval } from 'date-fns/esm'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/esm/eachWeekendOfInterval' {
@@ -9831,6 +9875,11 @@ declare module 'date-fns/esm/eachMonthOfInterval/index' {
   export default eachMonthOfInterval
 }
 
+declare module 'date-fns/esm/eachQuarterOfInterval/index' {
+  import { eachQuarterOfInterval } from 'date-fns/esm'
+  export default eachQuarterOfInterval
+}
+
 declare module 'date-fns/esm/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/esm'
   export default eachWeekendOfInterval
@@ -10794,6 +10843,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index.js' {
 declare module 'date-fns/esm/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns/esm'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/esm/eachQuarterOfInterval/index.js' {
+  import { eachQuarterOfInterval } from 'date-fns/esm'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/esm/eachWeekendOfInterval/index.js' {
@@ -11760,6 +11814,9 @@ declare module 'date-fns/esm/fp' {
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
+  const eachQuarterOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachQuarterOfInterval {}
+
   const eachWeekendOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachWeekendOfInterval {}
 
@@ -12660,6 +12717,11 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions' {
 declare module 'date-fns/esm/fp/eachMonthOfInterval' {
   import { eachMonthOfInterval } from 'date-fns/esm/fp'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachQuarterOfInterval' {
+  import { eachQuarterOfInterval } from 'date-fns/esm/fp'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/esm/fp/eachWeekendOfInterval' {
@@ -13667,6 +13729,11 @@ declare module 'date-fns/esm/fp/eachMonthOfInterval/index' {
   export default eachMonthOfInterval
 }
 
+declare module 'date-fns/esm/fp/eachQuarterOfInterval/index' {
+  import { eachQuarterOfInterval } from 'date-fns/esm/fp'
+  export default eachQuarterOfInterval
+}
+
 declare module 'date-fns/esm/fp/eachWeekendOfInterval/index' {
   import { eachWeekendOfInterval } from 'date-fns/esm/fp'
   export default eachWeekendOfInterval
@@ -14670,6 +14737,11 @@ declare module 'date-fns/esm/fp/eachDayOfIntervalWithOptions/index.js' {
 declare module 'date-fns/esm/fp/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns/esm/fp'
   export default eachMonthOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachQuarterOfInterval/index.js' {
+  import { eachQuarterOfInterval } from 'date-fns/esm/fp'
+  export default eachQuarterOfInterval
 }
 
 declare module 'date-fns/esm/fp/eachWeekendOfInterval/index.js' {
@@ -18204,6 +18276,8 @@ interface dateFns {
   ): Date[]
 
   eachMonthOfInterval(interval: Interval): Date[]
+
+  eachQuarterOfInterval(interval: Interval): Date[]
 
   eachWeekendOfInterval(interval: Interval): Date[]
 

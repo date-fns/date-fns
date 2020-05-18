@@ -197,6 +197,8 @@ declare module.exports: {
 
   eachMonthOfInterval: (interval: Interval) => Date[],
 
+  eachQuarterOfInterval: (interval: Interval) => Date[],
+
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
   eachWeekendOfMonth: (date: Date | number) => Date[],
