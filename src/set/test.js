@@ -6,7 +6,7 @@ import set from '.'
 
 describe('set', function() {
   it('sets all values', function() {
-    var result = set(new Date(2013), {
+    var result = set(new Date(2013, 0 /* Jan */), {
       year: 2014,
       month: 8, // Sep
       date: 20,
