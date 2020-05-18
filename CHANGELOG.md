@@ -8,6 +8,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## Unreleased
+
+Thanks to [@justingrant](http://github.com/justingrant) for working on the release!
+
+### Fixed
+
+- [Fix DST issues with add & addMonths](https://github.com/date-fns/date-fns/pull/1760).
+
+### Added
+
+-
+
 ## [2.13.0] - 2020-05-06
 
 Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) and [@justingrant](http://github.com/justingrant) for working on the release!

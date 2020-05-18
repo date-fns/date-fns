@@ -29,6 +29,13 @@ export default function addDays(dirtyDate, dirtyAmount) {
 
   var date = toDate(dirtyDate)
   var amount = toInteger(dirtyAmount)
+  if (isNaN(amount)) {
+    return new Date(NaN)
+  }
+  if (!amount) {
+    // If 0 days, no-op to avoid changing times in the hour before end of DST
+    return date
+  }
   date.setDate(date.getDate() + amount)
   return date
 }

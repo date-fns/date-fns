@@ -3,6 +3,7 @@
 
 import assert from 'power-assert'
 import addMonths from '.'
+import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('addMonths', function() {
   it('adds the given number of months', function() {
@@ -63,4 +64,106 @@ describe('addMonths', function() {
     assert.throws(addMonths.bind(null), TypeError)
     assert.throws(addMonths.bind(null, 1), TypeError)
   })
+
+  const dstTransitions = getDstTransitions(2017)
+  const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
+  const HOUR = 1000 * 60 * 60
+  const override = (base, year, month, day, hour, minute) =>
+    new Date(
+      year == null ? base.getFullYear() : year,
+      month == null ? base.getMonth() : month,
+      day == null ? base.getDate() : day,
+      hour == null ? base.getHours() : hour,
+      minute == null ? base.getMinutes() : minute
+    )
+
+  dstOnly(
+    `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = dstTransitions.start
+      var result = addMonths(date, 2)
+      assert.deepEqual(
+        result,
+        override(date, date.getFullYear(), date.getMonth() + 2)
+      )
+    }
+  )
+
+  dstOnly(
+    `works at DST-start - 30 mins in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = new Date(dstTransitions.start.getTime() - 0.5 * HOUR)
+      var result = addMonths(date, 2)
+      var expected = override(date, date.getFullYear(), date.getMonth() + 2)
+      assert.deepEqual(result, expected)
+    }
+  )
+
+  dstOnly(
+    `works at DST-start - 60 mins in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = new Date(dstTransitions.start.getTime() - 1 * HOUR)
+      var result = addMonths(date, 2)
+      var expected = override(date, date.getFullYear(), date.getMonth() + 2)
+      assert.deepEqual(result, expected)
+    }
+  )
+
+  dstOnly(
+    `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = dstTransitions.end
+      var result = addMonths(date, 2)
+      assert.deepEqual(
+        result,
+        override(
+          date,
+          date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
+          (date.getMonth() + 2) % 12 // protect against wrap for Nov.
+        )
+      )
+    }
+  )
+
+  dstOnly(
+    `works at DST-end - 30 mins in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = new Date(dstTransitions.end.getTime() - 0.5 * HOUR)
+      var result = addMonths(date, 2)
+      assert.deepEqual(
+        result,
+        override(
+          date,
+          date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
+          (date.getMonth() + 2) % 12 // protect against wrap for Nov.
+        )
+      )
+    }
+  )
+
+  dstOnly(
+    `works at DST-end - 60 mins in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = new Date(dstTransitions.end.getTime() - 1 * HOUR)
+      var result = addMonths(date, 2)
+      assert.deepEqual(
+        result,
+        override(
+          date,
+          date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
+          (date.getMonth() + 2) % 12 // protect against wrap for Nov.
+        )
+      )
+    }
+  )
+
+  dstOnly(
+    `doesn't mutate if zero increment is used: ${tz || '(unknown)'}`,
+    function() {
+      var date = new Date(dstTransitions.end)
+      var result = addMonths(date, 0)
+      assert.deepEqual(result, date)
+    }
+  )
 })

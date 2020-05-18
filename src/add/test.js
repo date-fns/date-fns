@@ -3,6 +3,7 @@
 
 import assert from 'power-assert'
 import add from '.'
+import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('add', function() {
   it('adds the values from the given object', function() {
@@ -50,6 +51,20 @@ describe('add', function() {
     var result = add(date, { months: 9 })
     assert.deepEqual(result, new Date(2015, 8 /* Sep */, 30))
   })
+
+  const dstTransitions = getDstTransitions(2017)
+  const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
+  const HOUR = 1000 * 60 * 60
+
+  dstOnly(
+    `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
+    function() {
+      var date = dstTransitions.end
+      var result = add(date, { hours: 1 })
+      assert.deepEqual(result, new Date(date.getTime() + HOUR))
+    }
+  )
 
   it('handles dates before 100 AD', function() {
     var initialDate = new Date(0)
