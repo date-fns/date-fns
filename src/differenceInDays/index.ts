@@ -93,7 +93,7 @@ export default function differenceInDays(dirtyDateLeft: Date | number, dirtyDate
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastDayNotFull = compareLocalAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastDayNotFull)
+  var result = sign * (difference - (isLastDayNotFull ? 1 : 0))
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

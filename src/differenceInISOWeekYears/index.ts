@@ -55,7 +55,7 @@ export default function differenceInISOWeekYears(
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastISOWeekYearNotFull)
+  var result = sign * (difference - (isLastISOWeekYearNotFull ? 1 : 0))
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

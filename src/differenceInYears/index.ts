@@ -36,13 +36,13 @@ export default function differenceInYears(dirtyDateLeft: Date | number, dirtyDat
 
   // Set both dates to a valid leap year for accurate comparison when dealing
   // with leap days
-  dateLeft.setFullYear('1584')
-  dateRight.setFullYear('1584')
+  dateLeft.setFullYear(1584)
+  dateRight.setFullYear(1584)
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastYearNotFull)
+  var result = sign * (difference - (isLastYearNotFull ? 1 : 0))
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

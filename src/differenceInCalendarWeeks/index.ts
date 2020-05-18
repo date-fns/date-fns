@@ -1,6 +1,7 @@
 import startOfWeek from '../startOfWeek/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import { WeekFnOptions } from '../_types/Options/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -46,7 +47,7 @@ var MILLISECONDS_IN_WEEK = 604800000
 export default function differenceInCalendarWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  dirtyOptions
+  dirtyOptions?: WeekFnOptions 
 ) {
   requiredArgs(2, arguments)
 

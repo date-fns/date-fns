@@ -1,5 +1,6 @@
 import toDate from '../toDate/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import Interval from '../_types/Interval/index.js'
 
 /**
  * @name eachDayOfInterval
@@ -62,10 +63,9 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval, options): Date[] {
+export default function eachDayOfInterval(interval: Interval, options): Date[] {
   requiredArgs(1, arguments)
 
-  var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)
 

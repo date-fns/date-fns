@@ -1,5 +1,7 @@
 import toDate from '../toDate/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import Interval from '../_types/Interval/index.js'
+import { AreIntervalsOverlappingOptions } from '../_types/Options/index.js'
 
 /**
  * @name areIntervalsOverlapping
@@ -91,14 +93,12 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  */
 export default function areIntervalsOverlapping(
-  dirtyIntervalLeft,
-  dirtyIntervalRight,
-  options = {}
+  intervalLeft: Interval,
+  intervalRight: Interval,
+  options: AreIntervalsOverlappingOptions = {}
 ) {
   requiredArgs(2, arguments)
 
-  const intervalLeft = dirtyIntervalLeft || {}
-  const intervalRight = dirtyIntervalRight || {}
   const leftStartTime = toDate(intervalLeft.start).getTime()
   const leftEndTime = toDate(intervalLeft.end).getTime()
   const rightStartTime = toDate(intervalRight.start).getTime()
