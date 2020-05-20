@@ -1,7 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setQuarter
@@ -15,8 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} quarter - the quarter of the new date
+ * @param  date - the date to be changed
+ * @param  quarter - the quarter of the new date
  * @returns {Date} the new date with the quarter set
  * @throws {TypeError} 2 arguments required
  *
@@ -25,9 +24,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-export default function setQuarter(dirtyDate: Date | number, dirtyQuarter: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setQuarter(
+  dirtyDate: Date | number,
+  dirtyQuarter: number
+): Date {
   var date = toDate(dirtyDate)
   var quarter = toInteger(dirtyQuarter)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1

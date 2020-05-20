@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setDayOfYear
@@ -14,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} dayOfYear - the day of the year of the new date
+ * @param  date - the date to be changed
+ * @param  dayOfYear - the day of the year of the new date
  * @returns {Date} the new date with the day of the year set
  * @throws {TypeError} 2 arguments required
  *
@@ -24,9 +23,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setDayOfYear(new Date(2014, 6, 2), 2)
  * //=> Thu Jan 02 2014 00:00:00
  */
-export default function setDayOfYear(dirtyDate: Date | number, dirtyDayOfYear: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setDayOfYear(
+  dirtyDate: Date | number,
+  dirtyDayOfYear: number
+): Date {
   var date = toDate(dirtyDate)
   var dayOfYear = toInteger(dirtyDayOfYear)
   date.setMonth(0)

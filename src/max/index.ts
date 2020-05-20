@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name max
@@ -26,7 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   var maxDate = max(dates)
  *   ```
  *
- * @param {Date[]|Number[]} datesArray - the dates to compare
+ * @param  datesArray - the dates to compare
  * @returns {Date} the latest of the dates
  * @throws {TypeError} 1 argument required
  *
@@ -41,8 +40,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export default function max(dirtyDatesArray: (Date | number)[]) {
-  requiredArgs(1, arguments)
-
   var datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
@@ -57,7 +54,7 @@ export default function max(dirtyDatesArray: (Date | number)[]) {
   }
 
   var result
-  datesArray.forEach(function(dirtyDate: Date | number) {
+  datesArray.forEach(function (dirtyDate: Date | number) {
     var currentDate = toDate(dirtyDate)
 
     if (result === undefined || result < currentDate || isNaN(currentDate)) {

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name compareDesc
@@ -14,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
+ * @param  dateLeft - the first date to compare
+ * @param  dateRight - the second date to compare
  * @returns {Number} the result of the comparison
  * @throws {TypeError} 2 arguments required
  *
@@ -37,9 +36,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //   Wed Feb 11 1987 00:00:00
  * // ]
  */
-export default function compareDesc(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
-  requiredArgs(2, arguments)
-
+export default function compareDesc(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+) {
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 

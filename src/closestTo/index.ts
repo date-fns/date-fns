@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name closestTo
@@ -16,8 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * - Now, `closestTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date|Number} dateToCompare - the date to compare with
- * @param {Date[]|Number[]} datesArray - the array to search
+ * @param  dateToCompare - the date to compare with
+ * @param  datesArray - the array to search
  * @returns {Date} the date from the array closest to the given date
  * @throws {TypeError} 2 arguments required
  *
@@ -30,9 +29,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
-  requiredArgs(2, arguments)
-
+export default function closestTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+) {
   var dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(dateToCompare.getTime())) {
@@ -57,7 +57,7 @@ export default function closestTo(dirtyDateToCompare: Date | number, dirtyDatesA
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate: Date | number) {
+  datesArray.forEach(function (dirtyDate: Date | number) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate.getTime())) {

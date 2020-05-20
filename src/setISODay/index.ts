@@ -2,7 +2,6 @@ import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import addDays from '../addDays/index.js'
 import getISODay from '../getISODay/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setISODay
@@ -18,8 +17,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} day - the day of the ISO week of the new date
+ * @param  date - the date to be changed
+ * @param  day - the day of the ISO week of the new date
  * @returns {Date} the new date with the day of the ISO week set
  * @throws {TypeError} 2 arguments required
  *
@@ -28,9 +27,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay(dirtyDate: Date | number, dirtyDay: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setISODay(
+  dirtyDate: Date | number,
+  dirtyDay: number
+): Date {
   var date = toDate(dirtyDate)
   var day = toInteger(dirtyDay)
   var currentDay = getISODay(date)

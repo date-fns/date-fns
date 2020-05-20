@@ -1,5 +1,4 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameISOWeekYear
@@ -20,8 +19,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
+ * @param  dateLeft - the first date to check
+ * @param  dateRight - the second date to check
  * @returns {Boolean} the dates are in the same ISO week-numbering year
  * @throws {TypeError} 2 arguments required
  *
@@ -30,9 +29,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
-  requiredArgs(2, arguments)
-
+export default function isSameISOWeekYear(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   var dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
   var dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
 

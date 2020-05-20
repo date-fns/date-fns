@@ -1,7 +1,6 @@
 import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import { DateValues } from 'src/types.js'
 
 /**
@@ -19,15 +18,15 @@ import { DateValues } from 'src/types.js'
  * to use native `Date#setX` methods. If you use this function, you may not want to include the
  * other `setX` functions that date-fns provides if you are concerned about the bundle size.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Object} values - an object with options
- * @param {Number} [values.year] - the number of years to be set
- * @param {Number} [values.month] - the number of months to be set
- * @param {Number} [values.date] - the number of days to be set
- * @param {Number} [values.hours] - the number of hours to be set
- * @param {Number} [values.minutes] - the number of minutes to be set
- * @param {Number} [values.seconds] - the number of seconds to be set
- * @param {Number} [values.milliseconds] - the number of milliseconds to be set
+ * @param  date - the date to be changed
+ * @param  values - an object with options
+ * @param  [values.year] - the number of years to be set
+ * @param  [values.month] - the number of months to be set
+ * @param  [values.date] - the number of days to be set
+ * @param  [values.hours] - the number of hours to be set
+ * @param  [values.minutes] - the number of minutes to be set
+ * @param  [values.seconds] - the number of seconds to be set
+ * @param  [values.milliseconds] - the number of milliseconds to be set
  * @returns {Date} the new date with options set
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `values` must be an object
@@ -44,8 +43,6 @@ import { DateValues } from 'src/types.js'
  */
 
 export default function set(dirtyDate: Date | number, values: DateValues) {
-  requiredArgs(2, arguments)
-
   if (typeof values !== 'object' || values === null) {
     throw new RangeError('values parameter must be an object')
   }

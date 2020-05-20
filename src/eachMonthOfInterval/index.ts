@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachMonthOfInterval
@@ -9,7 +8,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param
  * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -32,8 +31,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * // ]
  */
 export default function eachMonthOfInterval(dirtyInterval): Date[] {
-  requiredArgs(1, arguments)
-
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)

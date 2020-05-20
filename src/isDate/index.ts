@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index.js'
-
 /**
  * @name isDate
  * @category Common Helpers
@@ -12,7 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {*} value - the value to check
+ * @param  value - the value to check
  * @returns {boolean} true if the given value is a date
  * @throws {TypeError} 1 arguments required
  *
@@ -37,8 +35,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> false
  */
 export default function isDate(value): boolean {
-  requiredArgs(1, arguments)
-
   return (
     value instanceof Date ||
     (typeof value === 'object' &&

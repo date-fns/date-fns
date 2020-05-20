@@ -6,7 +6,6 @@ import differenceInHours from '../differenceInHours/index.js'
 import differenceInMinutes from '../differenceInMinutes/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
 import isValid from '../isValid/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import toDate from '../toDate/index.js'
 import sub from '../sub/index.js'
 
@@ -18,7 +17,7 @@ import sub from '../sub/index.js'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param {Interval} interval - the interval to convert to duration
+ * @param  interval - the interval to convert to duration
  *
  * @returns {Duration} The duration Object
  * @throws {TypeError} Requires 2 arguments
@@ -35,8 +34,6 @@ import sub from '../sub/index.js'
  */
 
 export default function intervalToDuration({ start, end }) {
-  requiredArgs(1, arguments)
-
   const dateLeft = toDate(start)
   const dateRight = toDate(end)
 
@@ -53,7 +50,7 @@ export default function intervalToDuration({ start, end }) {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   }
 
   const sign = compareAsc(dateLeft, dateRight)
@@ -73,7 +70,7 @@ export default function intervalToDuration({ start, end }) {
   duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
 
   const remainingSeconds = sub(remainingMinutes, {
-    minutes: sign * duration.minutes
+    minutes: sign * duration.minutes,
   })
   duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
 

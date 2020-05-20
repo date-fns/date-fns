@@ -1,7 +1,6 @@
 import addDays from '../addDays/index.js'
 import addMonths from '../addMonths/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import Duration from '../_types/Duration'
 
@@ -13,8 +12,8 @@ import Duration from '../_types/Duration'
  * @description
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param  date - the date to be changed
+ * @param  duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
@@ -44,9 +43,10 @@ import Duration from '../_types/Duration'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add(dirtyDate: Date | number, duration: Duration): Date {
-  requiredArgs(2, arguments)
-
+export default function add(
+  dirtyDate: Date | number,
+  duration: Duration
+): Date {
   if (!duration || typeof duration !== 'object') return new Date(NaN)
 
   const years = 'years' in duration ? toInteger(duration.years) : 0

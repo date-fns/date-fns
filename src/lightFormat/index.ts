@@ -3,7 +3,6 @@ import formatters from '../_lib/format/lightFormatters/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import isValid from '../isValid/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -65,8 +64,8 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SSS     | 000, 0001, ..., 999               |
  * |                                 | SSSS    | ...                               |
  *
- * @param {Date|Number} date - the original date
- * @param {String} format - the string of tokens
+ * @param  date - the original date
+ * @param  format - the string of tokens
  * @returns {String} the formatted date string
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} format string contains an unescaped latin alphabet character
@@ -76,8 +75,6 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
-  requiredArgs(2, arguments)
-
   var formatStr = String(dirtyFormatStr)
 
   var originalDate = toDate(dirtyDate)
@@ -94,7 +91,7 @@ export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
 
   var result = formatStr
     .match(formattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"

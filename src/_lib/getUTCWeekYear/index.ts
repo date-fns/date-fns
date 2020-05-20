@@ -5,9 +5,10 @@ import requiredArgs from '../requiredArgs/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function getUTCWeekYear(dirtyDate: Date | number, dirtyOptions): number {
-  requiredArgs(1, arguments)
-
+export default function getUTCWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions
+): number {
   var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getUTCFullYear()
 

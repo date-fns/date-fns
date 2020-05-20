@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name endOfMinute
@@ -14,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the end of a minute
  * @throws {TypeError} 1 argument required
  *
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Mon Dec 01 2014 22:15:59.999
  */
 export default function endOfMinute(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   date.setSeconds(59, 999)
   return date

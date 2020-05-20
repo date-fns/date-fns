@@ -1,5 +1,4 @@
 import differenceInDays from '../differenceInDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInWeeks
@@ -22,8 +21,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of full weeks
  * @throws {TypeError} 2 arguments required
  *
@@ -44,9 +43,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 8
  */
-export default function differenceInWeeks(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
-  requiredArgs(2, arguments)
-
+export default function differenceInWeeks(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

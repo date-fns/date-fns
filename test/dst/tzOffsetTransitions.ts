@@ -5,7 +5,7 @@
  * forward and the last back transitions in the year,
  * except transitions in Jan or Dec which are likely
  * to be permanent TZ changes rather than DST changes.
- * @param {number} year
+ * @param  year
  * @returns object with two Date-valued properties:
  * - `start` is the first instant of DST in the Spring,
  *   or undefined if there's no DST in this year.
@@ -16,7 +16,7 @@
 export function getDstTransitions(year) {
   var result = {
     start: undefined,
-    end: undefined
+    end: undefined,
   }
   var transitions = getTzOffsetTransitions(year)
   for (var i = 0; i < transitions.length; i++) {
@@ -65,7 +65,7 @@ function previousTickTimezoneOffset(date) {
  * year.  These are almost always DST transitions,
  * but sometimes there are non-DST changes, e.g.
  * when a country changes its time zone
- * @param {number} year
+ * @param  year
  * @returns array of objects, each  with the following 
  * propeerties:
  * - `date` - a `Date` representing the first instant
@@ -98,7 +98,7 @@ export function getTzOffsetTransitions(year) {
           date: date,
           type: tzOffset < baseTzOffset ? 'forward' : 'back',
           before: -baseTzOffset,
-          after: -tzOffset
+          after: -tzOffset,
         })
         baseTzOffset = tzOffset
       } else {
@@ -121,7 +121,7 @@ export function getTzOffsetTransitions(year) {
               date: transitionDate,
               type: tzOffset < baseTzOffset ? 'forward' : 'back',
               before: -baseTzOffset,
-              after: -tzOffset
+              after: -tzOffset,
             })
             baseTzOffset = tzOffset
             break // assuming only 1 transition per day

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getDay
@@ -13,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {0|1|2|3|4|5|6} the day of week
  * @throws {TypeError} 1 argument required
  *
@@ -23,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 3
  */
 export default function getDay(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var day = date.getDay()
   return day

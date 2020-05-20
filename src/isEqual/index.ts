@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isEqual
@@ -13,8 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
+ * @param  dateLeft - the first date to compare
+ * @param  dateRight - the second date to compare
  * @returns {Boolean} the dates are equal
  * @throws {TypeError} 2 arguments required
  *
@@ -27,8 +26,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> false
  */
 export default function isEqual(dirtyLeftDate, dirtyRightDate): boolean {
-  requiredArgs(2, arguments)
-
   var dateLeft = toDate(dirtyLeftDate)
   var dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()

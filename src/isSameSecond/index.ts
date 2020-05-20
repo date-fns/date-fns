@@ -1,5 +1,4 @@
 import startOfSecond from '../startOfSecond/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameSecond
@@ -13,8 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
+ * @param  dateLeft - the first date to check
+ * @param  dateRight - the second date to check
  * @returns {Boolean} the dates are in the same second
  * @throws {TypeError} 2 arguments required
  *
@@ -27,9 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> true
  */
-export default function isSameSecond(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
-  requiredArgs(2, arguments)
-
+export default function isSameSecond(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
 

@@ -1,5 +1,4 @@
 import getTime from '../getTime/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getUnixTime
@@ -13,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the timestamp
  * @throws {TypeError} 1 argument required
  *
@@ -23,7 +22,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 1330512305
  */
 export default function getUnixTime(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   return Math.floor(getTime(dirtyDate) / 1000)
 }

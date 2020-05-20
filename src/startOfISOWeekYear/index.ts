@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name startOfISOWeekYear
@@ -18,7 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the start of an ISO week-numbering year
  * @throws {TypeError} 1 argument required
  *
@@ -28,8 +27,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfISOWeekYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var year = getISOWeekYear(dirtyDate)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year, 0, 4)

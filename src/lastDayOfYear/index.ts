@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name lastDayOfYear
@@ -14,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the last day of a year
  * @throws {TypeError} 1 argument required
  *
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Wed Dec 31 2014 00:00:00
  */
 export default function lastDayOfYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)

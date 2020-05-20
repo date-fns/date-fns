@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isValid
@@ -39,7 +38,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   that try to coerce arguments to the expected type
  *   (which is also the case with other *date-fns* functions).
  *
- * @param {*} date - the date to check
+ * @param  date - the date to check
  * @returns {Boolean} the date is valid
  * @throws {TypeError} 1 argument required
  *
@@ -59,8 +58,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> false
  */
 export default function isValid(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   return !isNaN(date)
 }

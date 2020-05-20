@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name parseJSON
@@ -30,13 +29,11 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param {String|Number|Date} argument A fully formed ISO8601 date string to convert
+ * @param  argument A fully formed ISO8601 date string to convert
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
 export default function parseJSON(argument) {
-  requiredArgs(1, arguments)
-
   if (typeof argument === 'string') {
     var parts = argument.match(
       /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|\+00:?00)?/

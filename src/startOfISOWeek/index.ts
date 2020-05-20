@@ -1,5 +1,4 @@
 import startOfWeek from '../startOfWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name startOfISOWeek
@@ -16,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the start of an ISO week
  * @throws {TypeError} 1 argument required
  *
@@ -26,7 +25,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfISOWeek(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   return startOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

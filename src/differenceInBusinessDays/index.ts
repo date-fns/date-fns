@@ -5,7 +5,6 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import addDays from '../addDays/index.js'
 import isSameDay from '../isSameDay/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInBusinessDays
@@ -18,8 +17,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of business days
  * @throws {TypeError} 2 arguments required
  *
@@ -36,8 +35,6 @@ export default function differenceInBusinessDays(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  requiredArgs(2, arguments)
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 

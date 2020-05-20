@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getDecade
@@ -13,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the year of decade
  * @throws {TypeError} 1 argument required
  *
@@ -23,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 1940
  */
 export default function getDecade(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = Math.floor(year / 10) * 10

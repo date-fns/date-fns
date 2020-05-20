@@ -1,5 +1,4 @@
 import lastDayOfWeek from '../lastDayOfWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name lastDayOfISOWeek
@@ -16,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the last day of an ISO week
  * @throws {TypeError} 1 argument required
  *
@@ -26,7 +25,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfISOWeek(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   return lastDayOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

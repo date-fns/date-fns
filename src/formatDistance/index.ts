@@ -5,7 +5,6 @@ import defaultLocale from '../locale/en-US/index.js'
 import toDate from '../toDate/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -77,12 +76,12 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *   ) //=> 'in about 1 hour'
  *   ```
  *
- * @param {Date|Number} date - the date
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param  date - the date
+ * @param  baseDate - the date to compare with
+ * @param  [options] - an object with options.
+ * @param  [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param  [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
@@ -120,9 +119,11 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * })
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate, dirtyOptions) {
-  requiredArgs(2, arguments)
-
+export default function formatDistance(
+  dirtyDate: Date | number,
+  dirtyBaseDate,
+  dirtyOptions
+) {
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 

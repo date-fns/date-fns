@@ -1,7 +1,6 @@
 import eachDayOfInterval from '../eachDayOfInterval/index.js'
 import isSunday from '../isSunday/index.js'
 import isWeekend from '../isWeekend/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachWeekendOfInterval
@@ -11,7 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @param {Interval} interval - the given interval. See [Interval]{@link docs/types/Interval}
+ * @param
  * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -31,8 +30,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * // ]
  */
 export default function eachWeekendOfInterval(interval): Date[] {
-  requiredArgs(1, arguments)
-
   var dateInterval = eachDayOfInterval(interval)
   var weekends = []
   var index = 0

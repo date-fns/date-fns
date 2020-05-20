@@ -1,7 +1,6 @@
 import eachWeekendOfInterval from '../eachWeekendOfInterval/index.js'
 import startOfYear from '../startOfYear/index.js'
 import endOfYear from '../endOfYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachWeekendOfYear
@@ -11,7 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @description
  * Get all the Saturdays and Sundays in the year.
  *
- * @param {Date|Number} date - the given year
+ * @param  date - the given year
  * @returns {Date[]} an array containing all the Saturdays and Sundays
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The passed date is invalid
@@ -28,8 +27,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * ]
  */
 export default function eachWeekendOfYear(dirtyDate: Date | number): Date[] {
-  requiredArgs(1, arguments)
-
   var startDate = startOfYear(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 

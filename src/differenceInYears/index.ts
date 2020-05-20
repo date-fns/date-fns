@@ -1,7 +1,6 @@
 import toDate from '../toDate/index.js'
 import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
 import compareAsc from '../compareAsc/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInYears
@@ -15,8 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of full years
  * @throws {TypeError} 2 arguments required
  *
@@ -25,9 +24,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = differenceInYears(new Date(2015, 1, 11), new Date(2013, 11, 31))
  * //=> 1
  */
-export default function differenceInYears(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
-  requiredArgs(2, arguments)
-
+export default function differenceInYears(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 

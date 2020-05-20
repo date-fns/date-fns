@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name startOfDecade
@@ -13,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the start of a decade
  * @throws {TypeError} 1 argument required
  *
@@ -23,8 +22,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Jan 01 2010 00:00:00
  */
 export default function startOfDecade(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = Math.floor(year / 10) * 10

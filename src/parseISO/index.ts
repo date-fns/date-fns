@@ -1,4 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import { AdditionalDigitsOptions, AdditionaDigits } from 'src/types.js'
 
 const MILLISECONDS_IN_HOUR = 3600000
@@ -73,8 +72,6 @@ export default function parseISO(
   argument: string,
   options?: AdditionalDigitsOptions
 ) {
-  requiredArgs(1, arguments)
-
   const additionalDigits =
     options?.additionalDigits ?? DEFAULT_ADDITIONAL_DIGITS
 

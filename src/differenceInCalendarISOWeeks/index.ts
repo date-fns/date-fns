@@ -1,6 +1,5 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -18,8 +17,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of calendar ISO weeks
  * @throws {TypeError} 2 arguments required
  *
@@ -35,8 +34,6 @@ export default function differenceInCalendarISOWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  requiredArgs(2, arguments)
-
   var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
   var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
 

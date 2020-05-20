@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getISOWeekYear
@@ -22,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the ISO week-numbering year
  * @throws {TypeError} 1 argument required
  *
@@ -32,8 +31,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 2004
  */
 export default function getISOWeekYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
 

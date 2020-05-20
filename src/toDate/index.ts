@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index.js'
-
 /**
  * @name toDate
  * @category Common Helpers
@@ -16,7 +14,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  *
- * @param {Date|Number} argument - the value to convert
+ * @param  argument - the value to convert
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  *
@@ -31,8 +29,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate(argument: Date | number): Date {
-  requiredArgs(1, arguments)
-
   const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date

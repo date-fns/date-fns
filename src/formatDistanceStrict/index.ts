@@ -4,7 +4,6 @@ import toDate from '../toDate/index.js'
 import differenceInSeconds from '../differenceInSeconds/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import defaultLocale from '../locale/en-US/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -98,13 +97,13 @@ var MINUTES_IN_YEAR = 525600
  *   )
  *   ```
  *
- * @param {Date|Number} date - the date
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param  date - the date
+ * @param  baseDate - the date to compare with
+ * @param  [options] - an object with options.
+ * @param  [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param  [options.unit] - if specified, will force a unit
+ * @param  [options.roundingMethod='round'] - which way to round partial units
+ * @param
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
@@ -165,8 +164,6 @@ export default function formatDistanceStrict(
   dirtyBaseDate,
   dirtyOptions
 ) {
-  requiredArgs(2, arguments)
-
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale
 

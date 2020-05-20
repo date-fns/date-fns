@@ -1,7 +1,6 @@
 import toDate from '../toDate/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -19,7 +18,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the ISO week
  * @throws {TypeError} 1 argument required
  *
@@ -29,8 +28,6 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 export default function getISOWeek(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var diff = startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
 

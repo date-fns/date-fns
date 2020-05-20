@@ -1,6 +1,5 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import addWeeks from '../addWeeks/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -18,7 +17,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the number of ISO weeks in a year
  * @throws {TypeError} 1 argument required
  *
@@ -28,8 +27,6 @@ var MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 export default function getISOWeeksInYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var thisYear = startOfISOWeekYear(dirtyDate)
   var nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   var diff = nextYear.valueOf() - thisYear.valueOf()

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 
@@ -45,8 +44,8 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *   )
  *   ```
  *
- * @param {Interval} intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
- * @param {Interval} intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
+ * @param
+ * @param
  * @returns {Number} the number of days that overlap in two time intervals
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -72,8 +71,6 @@ export default function getOverlappingDaysInIntervals(
   dirtyIntervalLeft,
   dirtyIntervalRight
 ) {
-  requiredArgs(2, arguments)
-
   var intervalLeft = dirtyIntervalLeft || {}
   var intervalRight = dirtyIntervalRight || {}
   var leftStartTime = toDate(intervalLeft.start).getTime()

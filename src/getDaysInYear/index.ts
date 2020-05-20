@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import isLeapYear from '../isLeapYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getDaysInYear
@@ -14,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the number of days in a year
  * @throws {TypeError} 1 argument required
  *
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 366
  */
 export default function getDaysInYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
 
   if (isNaN(date)) {

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isWednesday
@@ -13,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param  date - the date to check
  * @returns {Boolean} the date is Wednesday
  * @throws {TypeError} 1 argument required
  *
@@ -23,7 +22,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  */
 export default function isWednesday(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
   return toDate(dirtyDate).getDay() === 3
 }

@@ -1,7 +1,6 @@
 import getWeek from '../getWeek/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setWeek
@@ -21,12 +20,12 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} week - the week of the new date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param  date - the date to be changed
+ * @param  week - the week of the new date
+ * @param  [options] - an object with options.
+ * @param
+ * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param  [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Date} the new date with the local week set
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -47,9 +46,11 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * })
  * //=> Sun Jan 4 2004 00:00:00
  */
-export default function setWeek(dirtyDate: Date | number, dirtyWeek: number, dirtyOptions): Date {
-  requiredArgs(2, arguments)
-
+export default function setWeek(
+  dirtyDate: Date | number,
+  dirtyWeek: number,
+  dirtyOptions
+): Date {
   var date = toDate(dirtyDate)
   var week = toInteger(dirtyWeek)
   var diff = getWeek(date, dirtyOptions) - week

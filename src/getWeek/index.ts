@@ -1,7 +1,6 @@
 import startOfWeek from '../startOfWeek/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -23,11 +22,11 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param  date - the given date
+ * @param  [options] - an object with options.
+ * @param
+ * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param  [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
  * @returns {Number} the week
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
@@ -49,8 +48,6 @@ var MILLISECONDS_IN_WEEK = 604800000
  */
 
 export default function getWeek(dirtyDate: Date | number, options): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var diff =
     startOfWeek(date, options).getTime() -

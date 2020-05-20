@@ -1,7 +1,6 @@
 import subDays from '../subDays/index.js'
 import subMonths from '../subMonths/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 
 /**
@@ -12,8 +11,8 @@ import toInteger from '../_lib/toInteger/index.js'
  * @description
  * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
+ * @param  date - the date to be changed
+ * @param  duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
  *
  * | Key     | Description                        |
  * |---------|------------------------------------|
@@ -44,8 +43,6 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Mon Sep 1 2014 10:19:50
  */
 export default function sub(dirtyDate: Date | number, duration): Date {
-  requiredArgs(2, arguments)
-
   if (!duration || typeof duration !== 'object') return new Date(NaN)
 
   const years = 'years' in duration ? toInteger(duration.years) : 0

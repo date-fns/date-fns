@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 import Interval from '../_types/Interval/index.js'
 
 /**
@@ -40,9 +39,9 @@ import Interval from '../_types/Interval/index.js'
  *   )
  *   ```
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
+ * @param
+ * @param  [options] - an object with options.
+ * @param  [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.step` must be a number greater than 1
@@ -64,8 +63,6 @@ import Interval from '../_types/Interval/index.js'
  * // ]
  */
 export default function eachDayOfInterval(interval: Interval, options): Date[] {
-  requiredArgs(1, arguments)
-
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)
 

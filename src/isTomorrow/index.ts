@@ -1,6 +1,5 @@
 import addDays from '../addDays/index.js'
 import isSameDay from '../isSameDay/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isTomorrow
@@ -18,7 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param  date - the date to check
  * @returns {Boolean} the date is tomorrow
  * @throws {TypeError} 1 argument required
  *
@@ -28,7 +27,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> true
  */
 export default function isTomorrow(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
   return isSameDay(dirtyDate, addDays(Date.now(), 1))
 }

@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name endOfDay
@@ -14,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the end of a day
  * @throws {TypeError} 1 argument required
  *
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Tue Sep 02 2014 23:59:59.999
  */
 export default function endOfDay(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   date.setHours(23, 59, 59, 999)
   return date

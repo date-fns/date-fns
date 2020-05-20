@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInMilliseconds
@@ -13,8 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of milliseconds
  * @throws {TypeError} 2 arguments required
  *
@@ -31,8 +30,6 @@ export default function differenceInMilliseconds(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  requiredArgs(2, arguments)
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
   return dateLeft.getTime() - dateRight.getTime()

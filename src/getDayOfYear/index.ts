@@ -1,7 +1,6 @@
 import toDate from '../toDate/index.js'
 import startOfYear from '../startOfYear/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name getDayOfYear
@@ -15,7 +14,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
+ * @param  date - the given date
  * @returns {Number} the day of year
  * @throws {TypeError} 1 argument required
  *
@@ -25,8 +24,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> 183
  */
 export default function getDayOfYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
   var date = toDate(dirtyDate)
   var diff = differenceInCalendarDays(date, startOfYear(date))
   var dayOfYear = diff + 1

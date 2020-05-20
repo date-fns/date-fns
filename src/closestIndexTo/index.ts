@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name closestIndexTo
@@ -16,8 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * - Now, `closestIndexTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date|Number} dateToCompare - the date to compare with
- * @param {Date[]|Number[]} datesArray - the array to search
+ * @param  dateToCompare - the date to compare with
+ * @param  datesArray - the array to search
  * @returns {Number} an index of the date closest to the given date
  * @throws {TypeError} 2 arguments required
  *
@@ -32,9 +31,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyDatesArray: (Date | number)[]) {
-  requiredArgs(2, arguments)
-
+export default function closestIndexTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+) {
   var dateToCompare = toDate(dirtyDateToCompare)
 
   if (isNaN(dateToCompare.getTime())) {
@@ -59,7 +59,7 @@ export default function closestIndexTo(dirtyDateToCompare: Date | number, dirtyD
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate: Date | number, index) {
+  datesArray.forEach(function (dirtyDate: Date | number, index) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate.getTime())) {

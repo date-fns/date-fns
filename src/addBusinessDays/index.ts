@@ -1,7 +1,6 @@
 import isWeekend from '../isWeekend/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name addBusinessDays
@@ -11,8 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param  date - the date to be changed
+ * @param  amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  *
@@ -21,9 +20,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
-export default function addBusinessDays(dirtyDate: Date | number, dirtyAmount: number): Date {
-  requiredArgs(2, arguments)
-
+export default function addBusinessDays(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   const date = toDate(dirtyDate)
   const amount = toInteger(dirtyAmount)
 

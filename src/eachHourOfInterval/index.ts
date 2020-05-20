@@ -1,6 +1,5 @@
 import addHours from '../addHours/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name eachHourOfInterval
@@ -10,9 +9,9 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
+ * @param
+ * @param  [options] - an object with options.
+ * @param  [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of hours from the hour of the interval start to the hour of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.step` must be a number greater than 1
@@ -33,8 +32,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * // ]
  */
 export default function eachHourOfInterval(dirtyInterval, options) {
-  requiredArgs(1, arguments)
-
   const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

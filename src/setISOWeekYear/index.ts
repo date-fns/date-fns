@@ -2,7 +2,6 @@ import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setISOWeekYear
@@ -24,8 +23,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
+ * @param  date - the date to be changed
+ * @param  isoWeekYear - the ISO week-numbering year of the new date
  * @returns {Date} the new date with the ISO week-numbering year set
  * @throws {TypeError} 2 arguments required
  *
@@ -34,9 +33,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setISOWeekYear(
+  dirtyDate: Date | number,
+  dirtyISOWeekYear: number
+): Date {
   var date = toDate(dirtyDate)
   var isoWeekYear = toInteger(dirtyISOWeekYear)
   var diff = differenceInCalendarDays(date, startOfISOWeekYear(date))

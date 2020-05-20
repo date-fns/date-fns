@@ -4,7 +4,6 @@ import defaultLocale from '../locale/en-US/index.js'
 import subMilliseconds from '../subMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name formatRelative
@@ -27,11 +26,11 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to format
- * @param {Date|Number} baseDate - the date to compare with
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param  date - the date to format
+ * @param  baseDate - the date to compare with
+ * @param  [options] - an object with options.
+ * @param
+ * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
  * @returns {String} the date in words
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} `date` must not be Invalid Date
@@ -41,9 +40,11 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate, dirtyOptions) {
-  requiredArgs(2, arguments)
-
+export default function formatRelative(
+  dirtyDate: Date | number,
+  dirtyBaseDate,
+  dirtyOptions
+) {
   var date = toDate(dirtyDate)
   var baseDate = toDate(dirtyBaseDate)
 

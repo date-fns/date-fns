@@ -1,5 +1,4 @@
 import isSameMinute from '../isSameMinute/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isThisMinute
@@ -17,7 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param  date - the date to check
  * @returns {Boolean} the date is in this minute
  * @throws {TypeError} 1 argument required
  *
@@ -29,7 +28,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  */
 
 export default function isThisMinute(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
   return isSameMinute(Date.now(), dirtyDate)
 }

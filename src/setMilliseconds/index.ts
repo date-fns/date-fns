@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setMilliseconds
@@ -14,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} milliseconds - the milliseconds of the new date
+ * @param  date - the date to be changed
+ * @param  milliseconds - the milliseconds of the new date
  * @returns {Date} the new date with the milliseconds set
  * @throws {TypeError} 2 arguments required
  *
@@ -24,9 +23,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setMilliseconds(new Date(2014, 8, 1, 11, 30, 40, 500), 300)
  * //=> Mon Sep 01 2014 11:30:40.300
  */
-export default function setMilliseconds(dirtyDate: Date | number, dirtyMilliseconds: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setMilliseconds(
+  dirtyDate: Date | number,
+  dirtyMilliseconds: number
+): Date {
   var date = toDate(dirtyDate)
   var milliseconds = toInteger(dirtyMilliseconds)
   date.setMilliseconds(milliseconds)

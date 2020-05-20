@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up
@@ -47,8 +46,8 @@ function compareLocalAsc(dateLeft, dateRight) {
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of full days according to the local timezone
  * @throws {TypeError} 2 arguments required
  *
@@ -79,9 +78,10 @@ function compareLocalAsc(dateLeft, dateRight) {
  * )
 //=> 92
  */
-export default function differenceInDays(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
-  requiredArgs(2, arguments)
-
+export default function differenceInDays(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 

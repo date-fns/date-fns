@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isWithinInterval
@@ -43,8 +42,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   )
  *   ```
  *
- * @param {Date|Number} date - the date to check
- * @param {Interval} interval - the interval to check
+ * @param  date - the date to check
+ * @param  interval - the interval to check
  * @returns {Boolean} the date is within the interval
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after its end
@@ -74,9 +73,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * // For date equal to interval end:
  * isWithinInterval(date, { start: date, end }) // => true
  */
-export default function isWithinInterval(dirtyDate: Date | number, dirtyInterval): boolean {
-  requiredArgs(2, arguments)
-
+export default function isWithinInterval(
+  dirtyDate: Date | number,
+  dirtyInterval
+): boolean {
   var interval = dirtyInterval || {}
   var time = toDate(dirtyDate).getTime()
   var startTime = toDate(interval.start).getTime()

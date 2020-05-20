@@ -1,7 +1,6 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getISOWeek from '../getISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setISOWeek
@@ -17,8 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeek - the ISO week of the new date
+ * @param  date - the date to be changed
+ * @param  isoWeek - the ISO week of the new date
  * @returns {Date} the new date with the ISO week set
  * @throws {TypeError} 2 arguments required
  *
@@ -27,9 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(dirtyDate: Date | number, dirtyISOWeek: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setISOWeek(
+  dirtyDate: Date | number,
+  dirtyISOWeek: number
+): Date {
   var date = toDate(dirtyDate)
   var isoWeek = toInteger(dirtyISOWeek)
   var diff = getISOWeek(date) - isoWeek

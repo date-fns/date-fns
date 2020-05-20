@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addISOWeekYears from '../addISOWeekYears/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name subISOWeekYears
@@ -21,8 +20,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param  date - the date to be changed
+ * @param  amount - the amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  * @returns {Date} the new date with the ISO week-numbering years subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -31,9 +30,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = subISOWeekYears(new Date(2014, 8, 1), 5)
  * //=> Mon Aug 31 2009 00:00:00
  */
-export default function subISOWeekYears(dirtyDate: Date | number, dirtyAmount: number): Date {
-  requiredArgs(2, arguments)
-
+export default function subISOWeekYears(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   var amount = toInteger(dirtyAmount)
   return addISOWeekYears(dirtyDate, -amount)
 }

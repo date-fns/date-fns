@@ -1,5 +1,4 @@
 import distanceInStrictWords from '../formatDistanceStrict/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name formatDistanceToNowStrict
@@ -21,12 +20,12 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * | 1 ... 11 months        | [1..11] months      |
  * | 1 ... N years          | [1..N]  years       |
  *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - an object with options.
- * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
- * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param  date - the given date
+ * @param  [options] - an object with options.
+ * @param  [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param  [options.unit] - if specified, will force a unit
+ * @param  [options.roundingMethod='round'] - which way to round partial units
+ * @param
  * @returns {String} the distance in words
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
@@ -76,7 +75,5 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> '1 jaro'
  */
 export default function formatDistanceToNowStrict(dirtyDate, dirtyOptions) {
-  requiredArgs(1, arguments)
-
   return distanceInStrictWords(dirtyDate, Date.now(), dirtyOptions)
 }

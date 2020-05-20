@@ -1,5 +1,4 @@
 import isSameWeek from '../isSameWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameISOWeek
@@ -15,8 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
+ * @param  dateLeft - the first date to check
+ * @param  dateRight - the second date to check
  * @returns {Boolean} the dates are in the same ISO week
  * @throws {TypeError} 2 arguments required
  *
@@ -25,8 +24,9 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isSameISOWeek(new Date(2014, 8, 1), new Date(2014, 8, 7))
  * //=> true
  */
-export default function isSameISOWeek(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
-  requiredArgs(2, arguments)
-
+export default function isSameISOWeek(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })
 }

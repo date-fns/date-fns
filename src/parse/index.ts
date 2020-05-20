@@ -7,11 +7,10 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError
+  throwProtectedError,
 } from '../_lib/protectedTokens/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import parsers from './_lib/parsers/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -320,16 +319,16 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *   parse('2016-01-01', 'yyyy-MM-dd', new Date())
  *   ```
  *
- * @param {String} dateString - the string to parse
- * @param {String} formatString - the string of tokens
- * @param {Date|Number} referenceDate - defines values missing from the parsed dateString
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @param {Boolean} [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ * @param  dateString - the string to parse
+ * @param  formatString - the string of tokens
+ * @param  referenceDate - defines values missing from the parsed dateString
+ * @param  [options] - an object with options.
+ * @param
+ * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param  [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
+ * @param  [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
  *   see: https://git.io/fxCyr
- * @param {Boolean} [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ * @param  [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://git.io/fxCyr
  * @returns {Date} the parsed date
  * @throws {TypeError} 3 arguments required
@@ -361,8 +360,6 @@ export default function parse(
   dirtyReferenceDate,
   dirtyOptions
 ) {
-  requiredArgs(3, arguments)
-
   var dateString = String(dirtyDateString)
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
@@ -415,7 +412,7 @@ export default function parse(
   var subFnOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
-    locale: locale
+    locale: locale,
   }
 
   // If timezone isn't specified, it will be set to the system timezone
@@ -423,15 +420,15 @@ export default function parse(
     {
       priority: TIMEZONE_UNIT_PRIORITY,
       set: dateToSystemTimezone,
-      index: 0
-    }
+      index: 0,
+    },
   ]
 
   var i
 
   var tokens = formatString
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -478,9 +475,7 @@ export default function parse(
         }
         if (incompatibleToken) {
           throw new RangeError(
-            `The format string mustn't contain \`${
-              incompatibleToken.fullToken
-            }\` and \`${token}\` at the same time`
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
           )
         }
       } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
@@ -507,7 +502,7 @@ export default function parse(
         set: parser.set,
         validate: parser.validate,
         value: parseResult.value,
-        index: setters.length
+        index: setters.length,
       })
 
       dateString = parseResult.rest
@@ -542,23 +537,23 @@ export default function parse(
   }
 
   var uniquePrioritySetters = setters
-    .map(function(setter) {
+    .map(function (setter) {
       return setter.priority
     })
-    .sort(function(a, b) {
+    .sort(function (a, b) {
       return b - a
     })
-    .filter(function(priority, index, array) {
+    .filter(function (priority, index, array) {
       return array.indexOf(priority) === index
     })
-    .map(function(priority) {
+    .map(function (priority) {
       return setters
-        .filter(function(setter) {
+        .filter(function (setter) {
           return setter.priority === priority
         })
         .reverse()
     })
-    .map(function(setterArray) {
+    .map(function (setterArray) {
       return setterArray[0]
     })
 

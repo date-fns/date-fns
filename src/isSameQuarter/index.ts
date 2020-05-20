@@ -1,5 +1,4 @@
 import startOfQuarter from '../startOfQuarter/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name isSameQuarter
@@ -13,8 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
+ * @param  dateLeft - the first date to check
+ * @param  dateRight - the second date to check
  * @returns {Boolean} the dates are in the same quarter
  * @throws {TypeError} 2 arguments required
  *
@@ -23,9 +22,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = isSameQuarter(new Date(2014, 0, 1), new Date(2014, 2, 8))
  * //=> true
  */
-export default function isSameQuarter(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
-  requiredArgs(2, arguments)
-
+export default function isSameQuarter(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
   var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)
 

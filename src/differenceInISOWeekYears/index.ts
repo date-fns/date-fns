@@ -2,7 +2,6 @@ import toDate from '../toDate/index.js'
 import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index.js'
 import compareAsc from '../compareAsc/index.js'
 import subISOWeekYears from '../subISOWeekYears/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name differenceInISOWeekYears
@@ -23,8 +22,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
+ * @param  dateLeft - the later date
+ * @param  dateRight - the earlier date
  * @returns {Number} the number of full ISO week-numbering years
  * @throws {TypeError} 2 arguments required
  *
@@ -40,8 +39,6 @@ export default function differenceInISOWeekYears(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  requiredArgs(2, arguments)
-
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 

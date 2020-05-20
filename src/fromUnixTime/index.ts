@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name fromUnixTime
@@ -14,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Number} unixTime - the given Unix timestamp
+ * @param  unixTime - the given Unix timestamp
  * @returns {Date} the date
  * @throws {TypeError} 1 argument required
  *
@@ -24,8 +23,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Wed Feb 29 2012 11:45:05
  */
 export default function fromUnixTime(dirtyUnixTime) {
-  requiredArgs(1, arguments)
-
   var unixTime = toInteger(dirtyUnixTime)
 
   return toDate(unixTime * 1000)

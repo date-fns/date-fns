@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name setMinutes
@@ -14,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} minutes - the minutes of the new date
+ * @param  date - the date to be changed
+ * @param  minutes - the minutes of the new date
  * @returns {Date} the new date with the minutes set
  * @throws {TypeError} 2 arguments required
  *
@@ -24,9 +23,10 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-export default function setMinutes(dirtyDate: Date | number, dirtyMinutes: number): Date {
-  requiredArgs(2, arguments)
-
+export default function setMinutes(
+  dirtyDate: Date | number,
+  dirtyMinutes: number
+): Date {
   var date = toDate(dirtyDate)
   var minutes = toInteger(dirtyMinutes)
   date.setMinutes(minutes)

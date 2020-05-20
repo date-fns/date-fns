@@ -1,6 +1,5 @@
 import getISOWeekYear from '../getISOWeekYear/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name endOfISOWeekYear
@@ -23,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param {Date|Number} date - the original date
+ * @param  date - the original date
  * @returns {Date} the end of an ISO week-numbering year
  * @throws {TypeError} 1 argument required
  *
@@ -33,8 +32,6 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Sun Jan 01 2006 23:59:59.999
  */
 export default function endOfISOWeekYear(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
   var year = getISOWeekYear(dirtyDate)
   var fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)

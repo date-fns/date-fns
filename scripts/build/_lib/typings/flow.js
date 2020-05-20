@@ -8,7 +8,7 @@ const { addSeparator, formatBlock, formatFlowFile } = require('./formatBlock')
 
 /**
  * Return curried function type aliases for a specific FP function arity.
- * @param {Number} [arity=4]
+ * @param  [arity=4]
  */
 const getFlowFPTypeAliases = (arity = 4) =>
   [
@@ -30,7 +30,7 @@ const getFlowFPTypeAliases = (arity = 4) =>
         | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
         | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
         | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
-    `
+    `,
   ].slice(0, arity)
 
 function getFlowTypeAlias(type) {
@@ -131,7 +131,10 @@ function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
     ${localeAliasDeclaration}
 
     declare module.exports: {
-      ${addSeparator(locales.map(({ name }) => `${name}: Locale`), ',')}
+      ${addSeparator(
+        locales.map(({ name }) => `${name}: Locale`),
+        ','
+      )}
     }
   `
 
@@ -141,10 +144,10 @@ function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
 function generateFlowTypings(fns, aliases, locales, constants) {
   const aliasDeclarations = aliases.map(getFlowTypeAlias)
   const localeAliasDeclaration = getFlowTypeAlias(
-    aliases.find(alias => alias.title === 'Locale')
+    aliases.find((alias) => alias.title === 'Locale')
   )
 
-  fns.forEach(fn => {
+  fns.forEach((fn) => {
     if (fn.isFPFn) {
       generateFlowFPFnTyping(fn, aliasDeclarations)
     } else {
@@ -152,7 +155,7 @@ function generateFlowTypings(fns, aliases, locales, constants) {
     }
   })
 
-  locales.forEach(locale => {
+  locales.forEach((locale) => {
     generateFlowLocaleTyping(locale, localeAliasDeclaration)
   })
 
@@ -170,7 +173,7 @@ function generateFlowTypings(fns, aliases, locales, constants) {
 }
 
 function generateConstantsDeclarations(constants) {
-  return constants.map(c => `${c.name}: ${c.type.names.join(' | ')}`)
+  return constants.map((c) => `${c.name}: ${c.type.names.join(' | ')}`)
 }
 
 function writeFile(relativePath, content) {
@@ -181,5 +184,5 @@ function writeFile(relativePath, content) {
 }
 
 module.exports = {
-  generateFlowTypings
+  generateFlowTypings,
 }

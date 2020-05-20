@@ -14,9 +14,9 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to round
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
+ * @param  date - the date to round
+ * @param  [options] - an object with options.
+ * @param  [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
  * @returns {Date} the new date rounded to the closest minute
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.nearestTo` must be between 1 and 30
@@ -32,7 +32,10 @@ import toInteger from '../_lib/toInteger/index.js'
  * // rounds up because given date is exactly between 12:00:00 and 12:15:00
  * //=> Thu Jul 10 2014 12:15:00
  */
-export default function roundToNearestMinutes(dirtyDate: Date | number, options) {
+export default function roundToNearestMinutes(
+  dirtyDate: Date | number,
+  options
+) {
   if (arguments.length < 1) {
     throw new TypeError('1 argument required, but only none provided present')
   }

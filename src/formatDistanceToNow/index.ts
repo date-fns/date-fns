@@ -1,5 +1,4 @@
 import distanceInWords from '../formatDistance/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
 
 /**
  * @name formatDistanceToNow
@@ -61,11 +60,11 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  *   //=> 'in 6 months'
  *   ```
  *
- * @param {Date|Number} date - the given date
- * @param {Object} [options] - the object with options
- * @param {Boolean} [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param {Boolean} [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param  date - the given date
+ * @param  [options] - the object with options
+ * @param  [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param  [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
+ * @param
  * @returns {String} the distance in words
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
@@ -106,8 +105,9 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(dirtyDate: Date | number, dirtyOptions) {
-  requiredArgs(1, arguments)
-
+export default function formatDistanceToNow(
+  dirtyDate: Date | number,
+  dirtyOptions
+) {
   return distanceInWords(dirtyDate, Date.now(), dirtyOptions)
 }

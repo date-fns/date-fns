@@ -9,7 +9,7 @@ const defaultFormat = [
   'days',
   'hours',
   'minutes',
-  'seconds'
+  'seconds',
 ]
 
 /**
@@ -20,12 +20,12 @@ const defaultFormat = [
  * @description
  * Return human-readable duration string i.e. "9 months 2 days"
  *
- * @param {Duration} duration - the duration to format
- * @param {Object} [options] - an object with options.
+ * @param  duration - the duration to format
+ * @param  [options] - an object with options.
 
- * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
- * @param {boolean} [options.zero=false] - should be zeros be included in the output?
- * @param {string} [options.delimiter=' '] - delimiter string
+ * @param  [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
+ * @param  [options.zero=false] - should be zeros be included in the output?
+ * @param  [options.delimiter=' '] - delimiter string
  * @returns {string} the formatted date string
  * @throws {TypeError} 1 argument required
  *
@@ -74,7 +74,10 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration: Duration, options: FormatDurationOptions = {}) {
+export default function formatDuration(
+  duration: Duration,
+  options: FormatDurationOptions = {}
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
@@ -88,7 +91,7 @@ export default function formatDuration(duration: Duration, options: FormatDurati
 
   const result = format
     .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, m => m.toUpperCase())}`
+      const token = `x${unit.replace(/(^.)/, (m) => m.toUpperCase())}`
       const addChunk =
         typeof duration[unit] === 'number' && (zero || duration[unit])
       return addChunk
