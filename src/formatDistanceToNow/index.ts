@@ -66,7 +66,7 @@ import distanceInWords from '../formatDistance/index.js'
  * @param [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
  * @param
  * @returns The distance in words
- *  @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example

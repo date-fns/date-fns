@@ -12,7 +12,7 @@ import isWeekend from '../isWeekend/index.js'
  *
  * @param
  * @returns an array containing all the Saturdays and Sundays
- *  @throws {RangeError} The start of an interval cannot be after its end
+ * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example

@@ -21,7 +21,7 @@ import isSameWeek from '../isSameWeek/index.js'
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @returns The date is in this week
- *  @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?

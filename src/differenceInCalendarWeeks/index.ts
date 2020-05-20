@@ -18,7 +18,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @returns The number of calendar weeks

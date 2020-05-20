@@ -19,7 +19,7 @@ import { DateValues } from 'src/types.js'
  * other `setX` functions that date-fns provides if you are concerned about the bundle size.
  *
  * @param date - The date to be changed
- * @param values - An object with options
+ * @param values - The options object
  * @param [values.year] - The number of years to be set
  * @param [values.month] - The number of months to be set
  * @param [values.date] - The number of days to be set

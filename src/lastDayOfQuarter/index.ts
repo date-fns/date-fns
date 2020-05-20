@@ -15,7 +15,7 @@ import toDate from '../toDate/index.js'
  *
  * @param date - The original date
  * @returns The last day of a quarter
- *  @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:

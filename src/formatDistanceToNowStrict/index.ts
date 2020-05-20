@@ -21,13 +21,13 @@ import distanceInStrictWords from '../formatDistanceStrict/index.js'
  * | 1 ... N years          | [1..N]  years       |
  *
  * @param date - The given date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param [options.unit] - if specified, will force a unit
  * @param [options.roundingMethod='round'] - which way to round partial units
  * @param
  * @returns The distance in words
- *  @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example

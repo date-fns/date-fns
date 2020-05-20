@@ -1,7 +1,7 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekYearFnOptions } from 'src/types.js'
 
 /**
  * @name setWeekYear
@@ -24,7 +24,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param date - The date to be changed
  * @param weekYear - The local week-numbering year of the new date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year
@@ -49,29 +49,19 @@ import toInteger from '../_lib/toInteger/index.js'
  */
 export default function setWeekYear(
   dirtyDate: Date | number,
-  dirtyWeekYear: number,
-  dirtyOptions
+  weekYear: number,
+  options: WeekYearFnOptions = {}
 ) {
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
-
+  const firstWeekContainsDate =
+    options.firstWeekContainsDate ??
+    options.locale?.options?.firstWeekContainsDate ??
+    1
   var date = toDate(dirtyDate)
-  var weekYear = toInteger(dirtyWeekYear)
-  var diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions))
+  var diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
   var firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  date = startOfWeekYear(firstWeek, dirtyOptions)
+  date = startOfWeekYear(firstWeek, options)
   date.setDate(date.getDate() + diff)
   return date
 }

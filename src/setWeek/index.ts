@@ -22,7 +22,7 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param date - The date to be changed
  * @param week - The week of the new date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year

@@ -78,7 +78,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @param date - The date
  * @param baseDate - The date to compare with
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param [options.includeSeconds=false] - distances less than a minute are more detailed
  * @param [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param

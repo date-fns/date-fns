@@ -10,7 +10,7 @@ import toDate from '../toDate/index.js'
  *
  * @param
  * @returns The array with starts of months from the month of the interval start to the month of the interval end
- *  @throws {RangeError} The start of an interval cannot be after its end
+ * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example

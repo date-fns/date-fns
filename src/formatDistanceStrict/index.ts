@@ -99,7 +99,7 @@ var MINUTES_IN_YEAR = 525600
  *
  * @param date - The date
  * @param baseDate - The date to compare with
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param [options.unit] - if specified, will force a unit
  * @param [options.roundingMethod='round'] - which way to round partial units

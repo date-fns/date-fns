@@ -11,11 +11,11 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
  *
  * @param date - The original date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param [options.format='extended'] - if 'basic', hide delimiters between date and time values.
  * @param [options.representation='complete'] - format date, time with time zone, or both.
  * @returns The formatted date string
- *  @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
  *

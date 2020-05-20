@@ -303,7 +303,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @param date - The original date
  * @param format - The string of tokens
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @param [options.firstWeekContainsDate=1] - The day of January, which is

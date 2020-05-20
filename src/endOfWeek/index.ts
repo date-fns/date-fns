@@ -15,11 +15,11 @@ import toInteger from '../_lib/toInteger/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The original date
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @returns The end of a week
- *  @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // The end of a week for 2 September 2014 11:55:00:

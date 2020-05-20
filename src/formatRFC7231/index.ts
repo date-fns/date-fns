@@ -29,7 +29,7 @@ const months = [
  *
  * @param date - The original date
  * @returns The formatted date string
- *  @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example
  * // Represent 18 September 2019 in RFC 7231 format:

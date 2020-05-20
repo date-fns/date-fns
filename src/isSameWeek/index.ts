@@ -14,7 +14,7 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @returns The dates are in the same week

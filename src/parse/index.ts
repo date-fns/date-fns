@@ -322,7 +322,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @param dateString - The string to parse
  * @param formatString - The string of tokens
  * @param referenceDate - defines values missing from the parsed dateString
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year

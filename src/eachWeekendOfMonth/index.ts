@@ -12,7 +12,7 @@ import endOfMonth from '../endOfMonth/index.js'
  *
  * @param date - The given month
  * @returns an array containing all the Saturdays and Sundays
- *  @throws {RangeError} The passed date is invalid
+ * @throws {RangeError} The passed date is invalid
  *
  * @example
  * // Lists all Saturdays and Sundays in the given month

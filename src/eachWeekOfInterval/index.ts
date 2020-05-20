@@ -15,11 +15,11 @@ import toDate from '../toDate/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param
- * @param [options] - An object with options.
+ * @param [options] - The options object
  * @param
  * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
  * @returns The array with starts of weeks from the week of the interval start to the week of the interval end
- *  @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
+ * @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

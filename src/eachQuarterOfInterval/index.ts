@@ -12,7 +12,7 @@ import toDate from '../toDate/index.js'
  *
  * @param
  * @returns The array with starts of quarters from the quarter of the interval start to the quarter of the interval end
- *  @throws {RangeError} The start of an interval cannot be after its end
+ * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example

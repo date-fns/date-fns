@@ -21,7 +21,7 @@ const defaultFormat = [
  * Return human-readable duration string i.e. "9 months 2 days"
  *
  * @param duration - The duration to format
- * @param [options] - An object with options.
+ * @param [options] - The options object
 
  * @param [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - The array of units to format
  * @param [options.zero=false] - should be zeros be included in the output?
