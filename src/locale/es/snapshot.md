@@ -182,7 +182,7 @@
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 may 1453, 23:59:59                                     | 1453-05-29T23:59:59.000Z |
 |                                 | PPPppp       | 1987-02-11T12:13:14.015Z | 11 de febrero de 1987 a las 12:13:14 GMT+0                | Errored                  |
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 de mayo de 1453 a las 23:59:59 GMT+0                   | Errored                  |
-|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987 a las 12:13:14 GMT+00:00 | 1987-02-11T12:13:14.000Z |
+|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987 a las 12:13:14 GMT+00:00 | Errored                  |
 |                                 |              | 1453-05-29T23:59:59.999Z | domingo, 29 de mayo de 1453 a las 23:59:59 GMT+00:00      | Errored                  |
 
 ## `formatDistance`
