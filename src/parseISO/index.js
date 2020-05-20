@@ -155,7 +155,7 @@ function splitDateString(dateString) {
   var timeString
 
   // The regex match should only return at maximum two array.
-  // [date] or [date, time].
+  // [date], [time], or [date, time].
   if (array.length > 2) {
     return dateStrings
   }
