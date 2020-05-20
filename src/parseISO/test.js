@@ -286,6 +286,14 @@ describe('parseISO', () => {
       })
     })
 
+    describe('date', () => {
+      it('returns `Invalid Date` when date contains spaces', () => {
+        const result = parseISO('2014-02-11  basketball')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+    })
+
     describe('time', () => {
       it('parses 24:00 as midnight of the next day', () => {
         const result = parseISO('2014-02-11T24:00')
@@ -322,8 +330,8 @@ describe('parseISO', () => {
         assert(isNaN(result))
       })
 
-      it('returns `Invalid Date` when time contains space', () => {
-        const result = parseISO('2014-02-11T21 basketball')
+      it('returns `Invalid Date` when time contains spaces', () => {
+        const result = parseISO('21:59:00  basketball')
         assert(result instanceof Date)
         assert(isNaN(result))
       })
