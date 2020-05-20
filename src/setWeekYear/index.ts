@@ -1,7 +1,7 @@
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
 import toDate from '../toDate/index.js'
-import { WeekYearFnOptions } from 'src/types.js'
+import { WeekYearFnOptions } from '../types.js'
 
 /**
  * @name setWeekYear

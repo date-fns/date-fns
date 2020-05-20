@@ -1,6 +1,6 @@
 import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
-import { DateValues } from 'src/types.js'
+import { DateValues } from '../types.js'
 
 /**
  * @name set

@@ -1,7 +1,6 @@
 import toDate from '../toDate/index.js'
 import isValid from '../isValid/index.js'
 import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
-import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name formatRFC3339
@@ -12,11 +11,9 @@ import toInteger from '../_lib/toInteger/index.js'
  * Return the formatted date string in ISO 3339 format. Options may be passed to control the parts and notations of the date.
  *
  * @param date - The original date
- * @param [options] - The options object
- * @param [options.fractionDigits=0] - number of digits after the decimal point after seconds
+ * @param options - The options object
  * @returns The formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
- * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
  * @example
  * // Represent 18 September 2019 in ISO 3339 format:
@@ -33,32 +30,20 @@ import toInteger from '../_lib/toInteger/index.js'
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 arguments required, but only ${arguments.length} present`
-    )
-  }
-
+export default function formatRFC3339(
+  dirtyDate: Date | number,
+  options: { fractionDigits?: 0 | 1 | 2 | 3 } = {}
+) {
   const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
-  const fractionDigits =
-    options.fractionDigits == null ? 0 : toInteger(options.fractionDigits)
-
-  // Test if fractionDigits is between 0 and 3 _and_ is not NaN
-  if (!(fractionDigits >= 0 && fractionDigits <= 3)) {
-    throw new RangeError('fractionDigits must be between 0 and 3 inclusively')
-  }
-
+  const fractionDigits = options.fractionDigits ?? 0
   const day = addLeadingZeros(originalDate.getDate(), 2)
   const month = addLeadingZeros(originalDate.getMonth() + 1, 2)
   const year = originalDate.getFullYear()
-
   const hour = addLeadingZeros(originalDate.getHours(), 2)
   const minute = addLeadingZeros(originalDate.getMinutes(), 2)
   const second = addLeadingZeros(originalDate.getSeconds(), 2)

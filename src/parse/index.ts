@@ -9,8 +9,8 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index.js'
-import toInteger from '../_lib/toInteger/index.js'
 import parsers from './_lib/parsers/index.js'
+import { WeekYearFnOptions } from '../types.js'
 
 const TIMEZONE_UNIT_PRIORITY = 10
 
@@ -354,46 +354,19 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse(
-  dirtyDateString,
-  dirtyFormatString,
-  dirtyReferenceDate,
-  dirtyOptions
+  dateString: string,
+  formatString: string,
+  dirtyReferenceDate: Date | number,
+  options: WeekYearFnOptions = {}
 ) {
-  const dateString = String(dirtyDateString)
-  const formatString = String(dirtyFormatString)
-  const options = dirtyOptions || {}
-
   const locale = options.locale || defaultLocale
-
-  if (!locale.match) {
-    throw new RangeError('locale must contain match property')
-  }
-
-  const localeFirstWeekContainsDate =
-    locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
   const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+    options.firstWeekContainsDate ??
+    options.locale?.options?.firstWeekContainsDate ??
+    1
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+    options.weekStartsOn ?? options.locale?.options?.weekStartsOn ?? 0
 
   // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
   if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
@@ -423,7 +396,7 @@ export default function parse(
     },
   ]
 
-  const i
+  let i
 
   const tokens = formatString
     .match(longFormattingTokensRegExp)

@@ -12,10 +12,9 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "importHelpers": true,
-    "baseUrl": ".",
+    "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "rootDirs": ["src"],
     "outDir": "lib"
   },
   "exclude": ["node_modules", "dist", "**/benchmark.ts"]

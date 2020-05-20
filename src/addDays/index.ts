@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -22,13 +21,9 @@ import toDate from '../toDate/index.js'
  * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
-export default function addDays(dirtyDate: Date | number, dirtyAmount: number) {
+export default function addDays(dirtyDate: Date | number, amount: number) {
   const date = toDate(dirtyDate)
-  const amount = toInteger(dirtyAmount)
-  if (isNaN(amount)) {
-    return new Date(NaN)
-  }
-  if (!amount) {
+  if (amount === 0) {
     // If 0 days, no-op to avoid changing times in the hour before end of DST
     return date
   }

@@ -1,14 +1,15 @@
-import toDate from '../../toDate/index.js'
 import startOfUTCWeek from '../startOfUTCWeek/index.js'
 import startOfUTCWeekYear from '../startOfUTCWeekYear/index.js'
-import requiredArgs from '../requiredArgs/index.js'
+import { WeekFnOptions } from '../../types.js'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function getUTCWeek(dirtyDate: Date | number, options): number {
-  const date = toDate(dirtyDate)
+export default function getUTCWeek(
+  date: Date | number,
+  options: WeekFnOptions = {}
+): number {
   const diff =
     startOfUTCWeek(date, options).getTime() -
     startOfUTCWeekYear(date, options).getTime()

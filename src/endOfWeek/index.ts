@@ -1,5 +1,5 @@
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekFnOptions } from '../types.js'
 
 /**
  * @name endOfWeek
@@ -31,24 +31,12 @@ import toInteger from '../_lib/toInteger/index.js'
  * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfWeek(dirtyDate: Date | number, dirtyOptions) {
-  const options = dirtyOptions || {}
-
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+export default function endOfWeek(
+  dirtyDate: Date | number,
+  options: WeekFnOptions = {}
+) {
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
-
+    options.weekStartsOn ?? options.locale?.options?.weekStartsOn ?? 0
   const date = toDate(dirtyDate)
   const day = date.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)

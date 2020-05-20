@@ -1,17 +1,15 @@
-import toInteger from '../toInteger/index.js'
 import toDate from '../../toDate/index.js'
 import getUTCWeek from '../getUTCWeek/index.js'
-import requiredArgs from '../requiredArgs/index.js'
+import { WeekFnOptions } from '../../types.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
 export default function setUTCWeek(
   dirtyDate: Date | number,
-  dirtyWeek: number,
-  options
+  week: number,
+  options: WeekFnOptions = {}
 ) {
   const date = toDate(dirtyDate)
-  const week = toInteger(dirtyWeek)
   const diff = getUTCWeek(date, options) - week
   date.setUTCDate(date.getUTCDate() - diff * 7)
   return date

@@ -1,4 +1,4 @@
-import { AdditionalDigitsOptions, AdditionaDigits } from 'src/types.js'
+import { AdditionalDigitsOptions, AdditionaDigits } from '../types.js'
 
 const MILLISECONDS_IN_HOUR = 3600000
 const MILLISECONDS_IN_MINUTE = 60000

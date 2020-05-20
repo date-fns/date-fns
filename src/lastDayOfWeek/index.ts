@@ -1,5 +1,5 @@
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekFnOptions } from '../types.js'
 
 /**
  * @name lastDayOfWeek
@@ -15,11 +15,8 @@ import toInteger from '../_lib/toInteger/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The original date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The last day of a week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // The last day of a week for 2 September 2014 11:55:00:
@@ -31,23 +28,12 @@ import toInteger from '../_lib/toInteger/index.js'
  * const result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function lastDayOfWeek(dirtyDate: Date | number, dirtyOptions) {
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+export default function lastDayOfWeek(
+  dirtyDate: Date | number,
+  options: WeekFnOptions = {}
+) {
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6')
-  }
-
+    options.weekStartsOn ?? options.locale?.options?.weekStartsOn ?? 0
   const date = toDate(dirtyDate)
   const day = date.getDay()
   const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addMilliseconds from '../addMilliseconds/index.js'
  * const result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
-export default function addSeconds(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-) {
-  const amount = toInteger(dirtyAmount)
-  return addMilliseconds(dirtyDate, amount * 1000)
+export default function addSeconds(date: Date | number, amount: number) {
+  return addMilliseconds(date, amount * 1000)
 }

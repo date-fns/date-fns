@@ -1,31 +1,22 @@
-import toInteger from '../toInteger/index.js'
 import getUTCWeekYear from '../getUTCWeekYear/index.js'
 import startOfUTCWeek from '../startOfUTCWeek/index.js'
-import requiredArgs from '../requiredArgs/index.js'
+import { WeekYearFnOptions } from '../../types.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
 export default function startOfUTCWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions
+  options: WeekYearFnOptions = {}
 ) {
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
   const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+    options.firstWeekContainsDate ??
+    options.locale?.options?.firstWeekContainsDate ??
+    1
 
-  const year = getUTCWeekYear(dirtyDate, dirtyOptions)
+  const year = getUTCWeekYear(dirtyDate, options)
   const firstWeek = new Date(0)
   firstWeek.setUTCFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setUTCHours(0, 0, 0, 0)
-  const date = startOfUTCWeek(firstWeek, dirtyOptions)
+  const date = startOfUTCWeek(firstWeek, options)
   return date
 }

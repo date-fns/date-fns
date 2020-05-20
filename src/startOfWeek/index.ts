@@ -1,4 +1,4 @@
-import { WeekFnOptions } from 'src/types.js'
+import { WeekFnOptions } from '../types.js'
 import toDate from '../toDate/index.js'
 
 /**

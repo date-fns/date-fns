@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addMonths from '../addMonths/index.js'
 
 /**
@@ -22,11 +21,7 @@ import addMonths from '../addMonths/index.js'
  * const result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-export default function addQuarters(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-) {
-  const amount = toInteger(dirtyAmount)
+export default function addQuarters(date: Date | number, amount: number) {
   const months = amount * 3
-  return addMonths(dirtyDate, months)
+  return addMonths(date, months)
 }

@@ -1,6 +1,6 @@
 import getWeek from '../getWeek/index.js'
 import toDate from '../toDate/index.js'
-import { WeekFnOptions } from 'src/types.js'
+import { WeekFnOptions } from '../types.js'
 
 /**
  * @name setWeek

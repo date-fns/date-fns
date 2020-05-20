@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import getISOWeekYear from '../getISOWeekYear/index.js'
 import setISOWeekYear from '../setISOWeekYear/index.js'
 
@@ -30,10 +29,6 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
-export default function addISOWeekYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-) {
-  const amount = toInteger(dirtyAmount)
-  return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
+export default function addISOWeekYears(date: Date | number, amount: number) {
+  return setISOWeekYear(date, getISOWeekYear(date) + amount)
 }

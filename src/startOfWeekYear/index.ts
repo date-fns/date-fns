@@ -1,6 +1,6 @@
 import getWeekYear from '../getWeekYear/index.js'
 import startOfWeek from '../startOfWeek/index.js'
-import { WeekYearFnOptions } from 'src/types.js'
+import { WeekYearFnOptions } from '../types.js'
 
 /**
  * @name startOfWeekYear

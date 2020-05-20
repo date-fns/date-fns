@@ -10,7 +10,7 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekYearFnOptions } from '../types.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -343,44 +343,16 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  */
 export default function format(
   dirtyDate: Date | number,
-  dirtyFormatStr,
-  dirtyOptions
+  formatStr: string,
+  options: WeekYearFnOptions = {}
 ) {
-  const formatStr = String(dirtyFormatStr)
-  const options = dirtyOptions || {}
-
-  const locale = options.locale || defaultLocale
-
-  const localeFirstWeekContainsDate =
-    locale.options && locale.options.firstWeekContainsDate
-  const defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
   const firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
-
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
-  if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
-    throw new RangeError(
-      'firstWeekContainsDate must be between 1 and 7 inclusively'
-    )
-  }
-
-  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+    options.firstWeekContainsDate ??
+    options.locale?.options?.firstWeekContainsDate ??
+    1
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options.weekStartsOn ?? options.locale?.options?.weekStartsOn ?? 0
+  const locale = options.locale || defaultLocale
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')

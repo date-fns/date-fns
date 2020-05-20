@@ -4,7 +4,6 @@ import toDate from '../toDate/index.js'
 import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 import addDays from '../addDays/index.js'
 import isSameDay from '../isSameDay/index.js'
-import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name differenceInBusinessDays
@@ -35,16 +34,15 @@ export default function differenceInBusinessDays(
   dirtyDateRight: Date | number
 ) {
   const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
+  let dateRight = toDate(dirtyDateRight)
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return new Date(NaN)
+  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
 
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
   const sign = calendarDifference < 0 ? -1 : 1
+  const weeks = calendarDifference / 7
 
-  const weeks = toInteger(calendarDifference / 7)
-
-  const result = weeks * 5
+  let result = weeks * 5
   dateRight = addDays(dateRight, weeks * 7)
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
