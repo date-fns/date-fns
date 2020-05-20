@@ -1,5 +1,4 @@
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
 
 /**
  * @name roundToNearestMinutes
@@ -15,8 +14,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The date to round
- * @param [options] - The options object
- * @param [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
+ * @param options - The options object
  * @returns The new date rounded to the closest minute
  * @throws {RangeError} `options.nearestTo` must be between 1 and 30
  *
@@ -33,18 +31,11 @@ import toInteger from '../_lib/toInteger/index.js'
  */
 export default function roundToNearestMinutes(
   dirtyDate: Date | number,
-  options
+  options: { nearestTo?: number } = {}
 ) {
-  if (arguments.length < 1) {
-    throw new TypeError('1 argument required, but only none provided present')
-  }
-
-  const nearestTo =
-    options && 'nearestTo' in options ? toInteger(options.nearestTo) : 1
-
-  if (nearestTo < 1 || nearestTo > 30) {
+  const nearestTo = options.nearestTo ?? 1
+  if (nearestTo < 1 || nearestTo > 30)
     throw new RangeError('`options.nearestTo` must be between 1 and 30')
-  }
 
   const date = toDate(dirtyDate)
   const seconds = date.getSeconds() // relevant if nearestTo is 1, which is the default case

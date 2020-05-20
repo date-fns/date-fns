@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getDaysInMonth from '../getDaysInMonth/index.js'
 
@@ -23,9 +22,8 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-export default function setMonth(dirtyDate: Date | number, dirtyMonth: number) {
+export default function setMonth(dirtyDate: Date | number, month: number) {
   const date = toDate(dirtyDate)
-  const month = toInteger(dirtyMonth)
   const year = date.getFullYear()
   const day = date.getDate()
 

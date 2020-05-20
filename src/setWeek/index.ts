@@ -1,6 +1,6 @@
 import getWeek from '../getWeek/index.js'
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekFnOptions } from 'src/types.js'
 
 /**
  * @name setWeek
@@ -22,13 +22,8 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @param date - The date to be changed
  * @param week - The week of the new date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
- * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year
+ * @param options - The options object
  * @returns The new date with the local week set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
@@ -47,12 +42,11 @@ import toInteger from '../_lib/toInteger/index.js'
  */
 export default function setWeek(
   dirtyDate: Date | number,
-  dirtyWeek: number,
-  dirtyOptions
+  week: number,
+  options: WeekFnOptions
 ) {
   const date = toDate(dirtyDate)
-  const week = toInteger(dirtyWeek)
-  const diff = getWeek(date, dirtyOptions) - week
+  const diff = getWeek(date, options) - week
   date.setDate(date.getDate() - diff * 7)
   return date
 }

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -22,9 +21,8 @@ import toDate from '../toDate/index.js'
  * const result = setHours(new Date(2014, 8, 1, 11, 30), 4)
  * //=> Mon Sep 01 2014 04:30:00
  */
-export default function setHours(dirtyDate: Date | number, dirtyHours: number) {
+export default function setHours(dirtyDate: Date | number, hours: number) {
   const date = toDate(dirtyDate)
-  const hours = toInteger(dirtyHours)
   date.setHours(hours)
   return date
 }

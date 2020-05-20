@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -24,10 +23,9 @@ import toDate from '../toDate/index.js'
  */
 export default function setMilliseconds(
   dirtyDate: Date | number,
-  dirtyMilliseconds: number
+  milliseconds: number
 ) {
   const date = toDate(dirtyDate)
-  const milliseconds = toInteger(dirtyMilliseconds)
   date.setMilliseconds(milliseconds)
   return date
 }

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import getISOWeek from '../getISOWeek/index.js'
 
@@ -25,12 +24,8 @@ import getISOWeek from '../getISOWeek/index.js'
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(
-  dirtyDate: Date | number,
-  dirtyISOWeek: number
-) {
+export default function setISOWeek(dirtyDate: Date | number, isoWeek: number) {
   const date = toDate(dirtyDate)
-  const isoWeek = toInteger(dirtyISOWeek)
   const diff = getISOWeek(date) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date

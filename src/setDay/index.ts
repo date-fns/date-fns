@@ -1,6 +1,6 @@
 import addDays from '../addDays/index.js'
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekFnOptions } from 'src/types.js'
 
 /**
  * @name setDay
@@ -34,27 +34,13 @@ import toInteger from '../_lib/toInteger/index.js'
  */
 export default function setDay(
   dirtyDate: Date | number,
-  dirtyDay: number,
-  dirtyOptions
+  day: number,
+  options: WeekFnOptions = {}
 ) {
-  const options = dirtyOptions || {}
-  const locale = options.locale
-  const localeWeekStartsOn =
-    locale && locale.options && locale.options.weekStartsOn
-  const defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
   const weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
+    options.weekStartsOn ?? options.locale?.options?.weekStartsOn ?? 0
 
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
-
-  const date = toDate(dirtyDate, options)
-  const day = toInteger(dirtyDay)
+  const date = toDate(dirtyDate)
   const currentDay = date.getDay()
 
   const remainder = day % 7
@@ -65,5 +51,5 @@ export default function setDay(
     day < 0 || day > 6
       ? day - ((currentDay + delta) % 7)
       : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
-  return addDays(date, diff, options)
+  return addDays(date, diff)
 }

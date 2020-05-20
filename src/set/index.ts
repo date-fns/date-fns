@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
-import toInteger from '../_lib/toInteger/index.js'
 import { DateValues } from 'src/types.js'
 
 /**
@@ -42,43 +41,34 @@ import { DateValues } from 'src/types.js'
  */
 
 export default function set(dirtyDate: Date | number, values: DateValues) {
-  if (typeof values !== 'object' || values === null) {
-    throw new RangeError('values parameter must be an object')
-  }
+  let date = toDate(dirtyDate)
 
-  const date = toDate(dirtyDate)
-
-  // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date)) {
-    return new Date(NaN)
-  }
-
-  if (values.year != null) {
+  if (typeof values.year === 'number') {
     date.setFullYear(values.year)
   }
 
-  if (values.month != null) {
+  if (typeof values.month === 'number') {
     date = setMonth(date, values.month)
   }
 
-  if (values.date != null) {
-    date.setDate(toInteger(values.date))
+  if (typeof values.date === 'number') {
+    date.setDate(values.date)
   }
 
-  if (values.hours != null) {
-    date.setHours(toInteger(values.hours))
+  if (typeof values.hours === 'number') {
+    date.setHours(values.hours)
   }
 
-  if (values.minutes != null) {
-    date.setMinutes(toInteger(values.minutes))
+  if (typeof values.minutes === 'number') {
+    date.setMinutes(values.minutes)
   }
 
-  if (values.seconds != null) {
-    date.setSeconds(toInteger(values.seconds))
+  if (typeof values.seconds === 'number') {
+    date.setSeconds(values.seconds)
   }
 
-  if (values.milliseconds != null) {
-    date.setMilliseconds(toInteger(values.milliseconds))
+  if (typeof values.milliseconds === 'number') {
+    date.setMilliseconds(values.milliseconds)
   }
 
   return date

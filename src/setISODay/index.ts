@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 import addDays from '../addDays/index.js'
 import getISODay from '../getISODay/index.js'
@@ -26,9 +25,8 @@ import getISODay from '../getISODay/index.js'
  * const result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay(dirtyDate: Date | number, dirtyDay: number) {
+export default function setISODay(dirtyDate: Date | number, day: number) {
   const date = toDate(dirtyDate)
-  const day = toInteger(dirtyDay)
   const currentDay = getISODay(date)
   const diff = day - currentDay
   return addDays(date, diff)
