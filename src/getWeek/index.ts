@@ -1,6 +1,6 @@
 import startOfWeek from '../startOfWeek/index.js'
 import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
+import { WeekFnOptions } from '../types.js'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -23,13 +23,8 @@ const MILLISECONDS_IN_WEEK = 604800000
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The given date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
- * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year
+ * @param options - The options object
  * @returns The week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
@@ -46,8 +41,10 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 53
  */
 
-export default function getWeek(dirtyDate: Date | number, options): number {
-  const date = toDate(dirtyDate)
+export default function getWeek(
+  date: Date | number,
+  options: WeekFnOptions = {}
+) {
   const diff =
     startOfWeek(date, options).getTime() -
     startOfWeekYear(date, options).getTime()

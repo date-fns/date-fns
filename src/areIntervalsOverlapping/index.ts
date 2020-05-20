@@ -1,6 +1,5 @@
 import toDate from '../toDate/index.js'
 import Interval from '../_types/Interval/index.js'
-import { AreIntervalsOverlappingOptions } from '../_types/Options/index.js'
 
 /**
  * @name areIntervalsOverlapping
@@ -44,11 +43,10 @@ import { AreIntervalsOverlappingOptions } from '../_types/Options/index.js'
  *   )
  *   ```
  *
- * @param
- * @param
- * @param [options] - The object with options
- * @param [options.inclusive=false] - whether the comparison is inclusive or not
- * @returns whether the time intervals are overlapping
+ * @param intervalLeft - An interval to check
+ * @param intervalRight - An interval to check
+ * @param options - The object with options
+ * @returns Whether the time intervals are overlapping
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -93,7 +91,7 @@ import { AreIntervalsOverlappingOptions } from '../_types/Options/index.js'
 export default function areIntervalsOverlapping(
   intervalLeft: Interval,
   intervalRight: Interval,
-  options: AreIntervalsOverlappingOptions = {}
+  options: { inclusive?: boolean } = {}
 ) {
   const leftStartTime = toDate(intervalLeft.start).getTime()
   const leftEndTime = toDate(intervalLeft.end).getTime()

@@ -16,11 +16,8 @@ import { WeekFnOptions } from '../types.js'
  *
  * @param date - The date to be changed
  * @param day - The day of the week of the new date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The new date with the day of the week set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Set week day to Sunday, with the default weekStartsOn of Sunday:

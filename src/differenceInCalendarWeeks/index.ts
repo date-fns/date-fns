@@ -18,11 +18,8 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * @param dateLeft - The later date
  * @param dateRight - The earlier date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The number of calendar weeks
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // How many calendar weeks are between 5 July 2014 and 20 July 2014?
@@ -43,12 +40,12 @@ const MILLISECONDS_IN_WEEK = 604800000
  * //=> 2
  */
 export default function differenceInCalendarWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number,
-  dirtyOptions?: WeekFnOptions
+  dateLeft: Date | number,
+  dateRight: Date | number,
+  options?: WeekFnOptions
 ) {
-  const startOfWeekLeft = startOfWeek(dirtyDateLeft, dirtyOptions)
-  const startOfWeekRight = startOfWeek(dirtyDateRight, dirtyOptions)
+  const startOfWeekLeft = startOfWeek(dateLeft, options)
+  const startOfWeekRight = startOfWeek(dateRight, options)
 
   const timestampLeft =
     startOfWeekLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfWeekLeft)

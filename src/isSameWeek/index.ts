@@ -1,4 +1,5 @@
 import startOfWeek from '../startOfWeek/index.js'
+import { WeekFnOptions } from '../types.js'
 
 /**
  * @name isSameWeek
@@ -14,11 +15,8 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * @param dateLeft - The first date to check
  * @param dateRight - The second date to check
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The dates are in the same week
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?
@@ -34,12 +32,11 @@ import startOfWeek from '../startOfWeek/index.js'
  * //=> false
  */
 export default function isSameWeek(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number,
-  dirtyOptions
+  dateLeft: Date | number,
+  dateRight: Date | number,
+  options: WeekFnOptions = {}
 ) {
-  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
-  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
-
+  const dateLeftStartOfWeek = startOfWeek(dateLeft, options)
+  const dateRightStartOfWeek = startOfWeek(dateRight, options)
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }

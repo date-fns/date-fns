@@ -68,7 +68,7 @@ export default function formatRelative(
     throw new RangeError('Invalid time value')
   }
 
-  const token
+  let token
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {

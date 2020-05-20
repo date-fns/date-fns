@@ -24,13 +24,8 @@ import { WeekYearFnOptions } from '../types.js'
  *
  * @param date - The date to be changed
  * @param weekYear - The local week-numbering year of the new date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
- * @param [options.firstWeekContainsDate=1] - The day of January, which is always in the first week of the year
+ * @param options - The options object
  * @returns The new date with the local week-numbering year set
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
- * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *
  * @example
  * // Set the local week-numbering year 2004 to 2 January 2010 with default options:
@@ -56,7 +51,7 @@ export default function setWeekYear(
     options.firstWeekContainsDate ??
     options.locale?.options?.firstWeekContainsDate ??
     1
-  const date = toDate(dirtyDate)
+  let date = toDate(dirtyDate)
   const diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
   const firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)

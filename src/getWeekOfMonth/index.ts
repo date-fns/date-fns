@@ -16,9 +16,7 @@ import { WeekFnOptions } from '../types.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The given date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The week of month
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *

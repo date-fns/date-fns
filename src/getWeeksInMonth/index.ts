@@ -1,6 +1,7 @@
 import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
 import lastDayOfMonth from '../lastDayOfMonth/index.js'
 import startOfMonth from '../startOfMonth/index.js'
+import { WeekFnOptions } from '../types.js'
 
 /**
  * @name getWeeksInMonth
@@ -15,11 +16,8 @@ import startOfMonth from '../startOfMonth/index.js'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - The given date
- * @param [options] - The options object
- * @param
- * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param options - The options object
  * @returns The number of calendar weeks
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // How many calendar weeks does February 2015 span?
@@ -32,7 +30,10 @@ import startOfMonth from '../startOfMonth/index.js'
  * const result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth(date, options): number {
+export default function getWeeksInMonth(
+  date: Date | number,
+  options: WeekFnOptions = {}
+) {
   return (
     differenceInCalendarWeeks(
       lastDayOfMonth(date),
