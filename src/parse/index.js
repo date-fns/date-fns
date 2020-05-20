@@ -556,7 +556,9 @@ export default function parse(
         .filter(function(setter) {
           return setter.priority === priority
         })
-        .reverse()
+        .sort(function (a, b) {
+          return (b.subPriority || 0) - (a.subPriority || 0);
+        })
     })
     .map(function(setterArray) {
       return setterArray[0]
