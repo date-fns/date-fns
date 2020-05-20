@@ -30,7 +30,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate('1987-02-11')
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('prints deprecation warning if the argument is a string', () => {
@@ -49,41 +49,41 @@ describe('toDate', () => {
     it('returns Invalid Date if argument is NaN', () => {
       const result = toDate(NaN)
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is Invalid Date', () => {
       const result = toDate(new Date(NaN))
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is null', () => {
       // $ExpectedMistake
       const result = toDate(null)
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is undefined', () => {
       // $ExpectedMistake
       const result = toDate(undefined)
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is false', () => {
       // $ExpectedMistake
       const result = toDate(false)
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
 
     it('returns Invalid Date if argument is true', () => {
       // $ExpectedMistake
       const result = toDate(true)
       assert(result instanceof Date)
-      assert(isNaN(result))
+      assert(isNaN(result.getTime()))
     })
   })
 

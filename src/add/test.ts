@@ -79,13 +79,13 @@ describe('add', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = add(new Date(NaN), { hours: 5 })
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws RangeError exception if passed Number as duration', function() {
     // $ExpectedMistake
     const result = add(new Date(2014, 8, 1), 'wut')
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

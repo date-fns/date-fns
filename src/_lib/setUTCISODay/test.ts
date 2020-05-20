@@ -65,12 +65,12 @@ describe('setUTCISODay', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setUTCISODay(new Date(NaN), 3)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setUTCISODay(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {

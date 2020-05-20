@@ -43,7 +43,7 @@ describe('setSeconds', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setSeconds(new Date(NaN), 45)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
@@ -51,7 +51,7 @@ describe('setSeconds', function() {
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       NaN
     )
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

@@ -17,7 +17,7 @@ describe('getQuarter', function() {
 
   it('returns NaN if the given date is invalid', function() {
     var result = getQuarter(new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {

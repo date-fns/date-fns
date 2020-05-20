@@ -122,12 +122,12 @@ describe('set', function() {
 
     it('returns Invalid Date if any value in values is NaN', function() {
       var result = set(new Date(2014, 8 /* Sep */), { year: NaN })
-      assert.deepEqual(isNaN(result), isNaN(new Date(NaN)))
+      assert.deepEqual(isNaN(result.getTime()), isNaN(new Date(NaN)))
     })
 
     it('returns Invalid Date the initial date was Invalid Date as well', function() {
       var result = set(new Date(NaN), { year: 2019 })
-      assert.deepEqual(isNaN(result), isNaN(new Date(NaN)))
+      assert.deepEqual(isNaN(result.getTime()), isNaN(new Date(NaN)))
     })
 
     it('throws RangeError exception if `values` is not an object', function() {

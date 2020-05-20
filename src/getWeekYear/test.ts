@@ -25,7 +25,7 @@ describe('getWeekYear', function() {
 
   it('returns NaN if the given date is invalid', function() {
     var result = getWeekYear(new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function() {

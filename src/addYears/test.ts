@@ -50,12 +50,12 @@ describe('addYears', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addYears(new Date(NaN), 5)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addYears(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

@@ -54,12 +54,12 @@ describe('setISOWeekYear', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setISOWeekYear(new Date(NaN), 2007)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setISOWeekYear(new Date(2008, 11 /* Dec */, 29), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

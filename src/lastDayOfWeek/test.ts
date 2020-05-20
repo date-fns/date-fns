@@ -93,7 +93,7 @@ describe('lastDayOfWeek', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = lastDayOfWeek(new Date(NaN))
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {

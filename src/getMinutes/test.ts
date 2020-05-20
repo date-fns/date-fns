@@ -17,7 +17,7 @@ describe('getMinutes', function() {
 
   it('returns NaN if the given date is invalid', function() {
     var result = getMinutes(new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {

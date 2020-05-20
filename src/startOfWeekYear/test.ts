@@ -34,7 +34,7 @@ describe('startOfWeekYear', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = startOfWeekYear(new Date(NaN))
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function() {

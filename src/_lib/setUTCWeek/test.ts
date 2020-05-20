@@ -44,12 +44,12 @@ describe('setUTCWeek', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setUTCWeek(new Date(NaN), 53)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setUTCWeek(new Date(2004, 7 /* Aug */, 7), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function() {

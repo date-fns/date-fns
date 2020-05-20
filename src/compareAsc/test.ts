@@ -57,17 +57,17 @@ describe('compareAsc', function() {
 
   it('returns NaN if the first date is `Invalid Date`', function() {
     var result = compareAsc(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
     var result = compareAsc(new Date(1989, 6 /* Jul */, 10), new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
     var result = compareAsc(new Date(NaN), new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

@@ -54,12 +54,12 @@ describe('setWeekYear', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setWeekYear(new Date(NaN), 2007)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setWeekYear(new Date(2008, 11 /* Dec */, 29), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function() {

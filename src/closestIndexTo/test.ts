@@ -45,7 +45,7 @@ describe('closestIndexTo', function() {
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2)
     ])
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if any date in the given array is `Invalid Date`', function() {
@@ -55,7 +55,7 @@ describe('closestIndexTo', function() {
       new Date(NaN),
       new Date(2012, 6 /* Jul */, 2)
     ])
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if any value in the given array is undefined', function() {
@@ -66,7 +66,7 @@ describe('closestIndexTo', function() {
       undefined,
       new Date(2012, 6 /* Jul */, 2)
     ])
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('converts Array-like objects into Array', function() {

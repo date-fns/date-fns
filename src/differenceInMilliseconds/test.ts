@@ -48,7 +48,7 @@ describe('differenceInMilliseconds', function() {
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
@@ -56,12 +56,12 @@ describe('differenceInMilliseconds', function() {
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
     var result = differenceInMilliseconds(new Date(NaN), new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {

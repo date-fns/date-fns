@@ -49,7 +49,7 @@ describe('startOfUTCISOWeekYear', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = startOfUTCISOWeekYear(new Date(NaN))
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {

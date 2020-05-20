@@ -53,7 +53,7 @@ describe('getWeeksInMonth', function() {
 
   it('returns NaN if the date is `Invalid Date`', function() {
     var result = getWeeksInMonth(new Date(NaN))
-    assert(isNaN(result))
+    assert(isNaN(result.getTime()))
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {
