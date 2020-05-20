@@ -29,7 +29,7 @@ import toDate from '../toDate/index.js'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval)[] {
+export default function eachMonthOfInterval(dirtyInterval) {
   const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

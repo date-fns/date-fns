@@ -40,7 +40,7 @@ import toDate from '../toDate/index.js'
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval(dirtyInterval, options)[] {
+export default function eachWeekOfInterval(dirtyInterval, options) {
   const interval = dirtyInterval || {}
   const startDate = toDate(interval.start)
   const endDate = toDate(interval.end)

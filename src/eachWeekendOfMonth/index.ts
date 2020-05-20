@@ -28,7 +28,7 @@ import endOfMonth from '../endOfMonth/index.js'
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export default function eachWeekendOfMonth(dirtyDate: Date | number)[] {
+export default function eachWeekendOfMonth(dirtyDate: Date | number) {
   const startDate = startOfMonth(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 

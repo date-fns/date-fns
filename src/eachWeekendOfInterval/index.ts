@@ -28,7 +28,7 @@ import isWeekend from '../isWeekend/index.js'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval(interval)[] {
+export default function eachWeekendOfInterval(interval) {
   const dateInterval = eachDayOfInterval(interval)
   const weekends = []
   const index = 0
