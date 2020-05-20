@@ -45,8 +45,8 @@ const removeIndentFromArray = (array, indent, ignoreFirstElement) =>
 
 /**
  * Add a specified separator to the end of every string in the array, except the last one
- * @param  stringsArray
- * @returns {String[]} stringsArray with added separators
+ * @param stringsArray
+ * @returns stringsArray with added separators
  */
 const addSeparator = (stringsArray, separator) =>
   stringsArray.map((string, index) =>
@@ -55,9 +55,9 @@ const addSeparator = (stringsArray, separator) =>
 
 /**
  * Tag function that formats a code block by putting correct indentation to it
- * @param  rawStrings
- * @param  substitutions
- * @returns {String} formatted code block
+ * @param rawStrings
+ * @param substitutions
+ * @returns formatted code block
  *
  * @example
  * const result = formatBlock`
@@ -113,9 +113,9 @@ const formatBlock = (rawStrings, ...substitutions) => {
 
 /**
  * Tag function that formats a Flow file by putting the correct indentation, header and footer to it
- * @param  rawStrings
- * @param  substitutions
- * @returns {String} formatted file content
+ * @param rawStrings
+ * @param substitutions
+ * @returns formatted file content
  */
 const formatFlowFile = (...args) =>
   flowHeader +
@@ -127,9 +127,9 @@ const formatFlowFile = (...args) =>
 
 /**
  * Tag function that formats a TypeScript file by putting the correct indentation, header and footer to it
- * @param  rawStrings
- * @param  substitutions
- * @returns {String} formatted file content
+ * @param rawStrings
+ * @param substitutions
+ * @returns formatted file content
  */
 const formatTypeScriptFile = (...args) =>
   generatedAutomaticallyMessage + '\n\n' + formatBlock(...args) + '\n'

@@ -5,7 +5,7 @@
  * forward and the last back transitions in the year,
  * except transitions in Jan or Dec which are likely
  * to be permanent TZ changes rather than DST changes.
- * @param  year
+ * @param year
  * @returns object with two Date-valued properties:
  * - `start` is the first instant of DST in the Spring,
  *   or undefined if there's no DST in this year.
@@ -65,7 +65,7 @@ function previousTickTimezoneOffset(date) {
  * year.  These are almost always DST transitions,
  * but sometimes there are non-DST changes, e.g.
  * when a country changes its time zone
- * @param  year
+ * @param year
  * @returns array of objects, each  with the following 
  * propeerties:
  * - `date` - a `Date` representing the first instant

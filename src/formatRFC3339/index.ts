@@ -11,12 +11,11 @@ import toInteger from '../_lib/toInteger/index.js'
  * @description
  * Return the formatted date string in ISO 3339 format. Options may be passed to control the parts and notations of the date.
  *
- * @param  date - the original date
- * @param  [options] - an object with options.
- * @param  [options.fractionDigits=0] - number of digits after the decimal point after seconds
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `date` must not be Invalid Date
+ * @param date - The original date
+ * @param [options] - An object with options.
+ * @param [options.fractionDigits=0] - number of digits after the decimal point after seconds
+ * @returns The formatted date string
+ *  @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
  * @example

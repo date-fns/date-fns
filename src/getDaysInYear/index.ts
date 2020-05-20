@@ -13,9 +13,8 @@ import isLeapYear from '../isLeapYear/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {Number} the number of days in a year
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The number of days in a year
  *
  * @example
  * // How many days are in 2012?

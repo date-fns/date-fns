@@ -25,9 +25,8 @@ import toDate from '../toDate/index.js'
  *   var minDate = min(dates)
  *   ```
  *
- * @param  datesArray - the dates to compare
- * @returns {Date} the earliest of the dates
- * @throws {TypeError} 1 argument required
+ * @param datesArray - The dates to compare
+ * @returns The earliest of the dates
  *
  * @example
  * // Which of these dates is the earliest?

@@ -26,13 +26,12 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to format
- * @param  baseDate - the date to compare with
- * @param  [options] - an object with options.
+ * @param date - The date to format
+ * @param baseDate - The date to compare with
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {String} the date in words
- * @throws {TypeError} 2 arguments required
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The date in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6

@@ -40,11 +40,10 @@ import Interval from '../_types/Interval/index.js'
  *   ```
  *
  * @param
- * @param  [options] - an object with options.
- * @param  [options.step=1] - the step to increment by. The value should be more than 1.
- * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.step` must be a number greater than 1
+ * @param [options] - An object with options.
+ * @param [options.step=1] - The step to increment by. The value should be more than 1.
+ * @returns The array with starts of days from the day of the interval start to the day of the interval end
+ *  @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

@@ -97,15 +97,14 @@ var MINUTES_IN_YEAR = 525600
  *   )
  *   ```
  *
- * @param  date - the date
- * @param  baseDate - the date to compare with
- * @param  [options] - an object with options.
- * @param  [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
- * @param  [options.unit] - if specified, will force a unit
- * @param  [options.roundingMethod='round'] - which way to round partial units
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param [options] - An object with options.
+ * @param [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param [options.unit] - if specified, will force a unit
+ * @param [options.roundingMethod='round'] - which way to round partial units
  * @param
- * @returns {String} the distance in words
- * @throws {TypeError} 2 arguments required
+ * @returns The distance in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.roundingMethod` must be 'floor', 'ceil' or 'round'

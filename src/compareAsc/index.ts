@@ -13,10 +13,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the first date to compare
- * @param  dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The first date to compare
+ * @param dateRight - The second date to compare
+ * @returns The result of the comparison
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989:

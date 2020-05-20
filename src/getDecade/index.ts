@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {Number} the year of decade
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The year of decade
  *
  * @example
  * // Which decade belongs 27 November 1942?

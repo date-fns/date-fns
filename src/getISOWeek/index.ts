@@ -18,9 +18,8 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {Number} the ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The ISO week
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?

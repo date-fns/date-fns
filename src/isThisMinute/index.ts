@@ -16,9 +16,8 @@ import isSameMinute from '../isSameMinute/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is in this minute
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is in this minute
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,

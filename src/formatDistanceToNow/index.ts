@@ -60,14 +60,13 @@ import distanceInWords from '../formatDistance/index.js'
  *   //=> 'in 6 months'
  *   ```
  *
- * @param  date - the given date
- * @param  [options] - the object with options
- * @param  [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param  [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
+ * @param date - The given date
+ * @param [options] - The object with options
+ * @param [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param [options.addSuffix=false] - result specifies if now is earlier or later than the passed date
  * @param
- * @returns {String} the distance in words
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `date` must not be Invalid Date
+ * @returns The distance in words
+ *  @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example

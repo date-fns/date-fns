@@ -76,14 +76,13 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *   ) //=> 'in about 1 hour'
  *   ```
  *
- * @param  date - the date
- * @param  baseDate - the date to compare with
- * @param  [options] - an object with options.
- * @param  [options.includeSeconds=false] - distances less than a minute are more detailed
- * @param  [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
+ * @param date - The date
+ * @param baseDate - The date to compare with
+ * @param [options] - An object with options.
+ * @param [options.includeSeconds=false] - distances less than a minute are more detailed
+ * @param [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param
- * @returns {String} the distance in words
- * @throws {TypeError} 2 arguments required
+ * @returns The distance in words
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property

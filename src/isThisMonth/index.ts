@@ -16,9 +16,8 @@ import isSameMonth from '../isSameMonth/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is in this month
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is in this month
  *
  * @example
  * // If today is 25 September 2014, is 15 September 2014 in this month?

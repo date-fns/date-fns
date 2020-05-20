@@ -19,10 +19,9 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
- * @param  dateLeft - the first date to check
- * @param  dateRight - the second date to check
- * @returns {Boolean} the dates are in the same ISO week-numbering year
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ * @returns The dates are in the same ISO week-numbering year
  *
  * @example
  * // Are 29 December 2003 and 2 January 2005 in the same ISO week-numbering year?

@@ -38,9 +38,8 @@ import toDate from '../toDate/index.js'
  *   that try to coerce arguments to the expected type
  *   (which is also the case with other *date-fns* functions).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is valid
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is valid
  *
  * @example
  * // For the valid date:

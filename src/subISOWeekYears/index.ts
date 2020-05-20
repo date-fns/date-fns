@@ -20,10 +20,9 @@ import addISOWeekYears from '../addISOWeekYears/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param  date - the date to be changed
- * @param  amount - the amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the ISO week-numbering years subtracted
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param amount - The amount of ISO week-numbering years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns The new date with the ISO week-numbering years subtracted
  *
  * @example
  * // Subtract 5 ISO week-numbering years from 1 September 2014:

@@ -12,8 +12,8 @@ import Duration from '../_types/Duration'
  * @description
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
- * @param  date - the date to be changed
- * @param  duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param date - The date to be changed
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
  *
  * | Key            | Description                        |
  * |----------------|------------------------------------|
@@ -27,8 +27,7 @@ import Duration from '../_types/Duration'
  *
  * All values default to 0
  *
- * @returns {Date} the new date with the seconds added
- * @throws {TypeError} 2 arguments required
+ * @returns The new date with the seconds added
  *
  * @example
  * // Add the following duration to 1 September 2014, 10:19:50

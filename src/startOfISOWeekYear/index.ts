@@ -17,9 +17,8 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the original date
- * @returns {Date} the start of an ISO week-numbering year
- * @throws {TypeError} 1 argument required
+ * @param date - The original date
+ * @returns The start of an ISO week-numbering year
  *
  * @example
  * // The start of an ISO week-numbering year for 2 July 2005:

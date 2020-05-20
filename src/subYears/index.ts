@@ -13,10 +13,9 @@ import addYears from '../addYears/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  amount - the amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the years subtracted
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param amount - The amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns The new date with the years subtracted
  *
  * @example
  * // Subtract 5 years from 1 September 2014:

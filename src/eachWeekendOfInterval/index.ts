@@ -11,9 +11,8 @@ import isWeekend from '../isWeekend/index.js'
  * Get all the Saturdays and Sundays in the given date interval.
  *
  * @param
- * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} The start of an interval cannot be after its end
+ * @returns an array containing all the Saturdays and Sundays
+ *  @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example

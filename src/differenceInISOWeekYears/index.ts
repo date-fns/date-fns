@@ -22,10 +22,9 @@ import subISOWeekYears from '../subISOWeekYears/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param  dateLeft - the later date
- * @param  dateRight - the earlier date
- * @returns {Number} the number of full ISO week-numbering years
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @returns The number of full ISO week-numbering years
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?

@@ -14,13 +14,12 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  day - the day of the week of the new date
- * @param  [options] - an object with options.
+ * @param date - The date to be changed
+ * @param day - The day of the week of the new date
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Date} the new date with the day of the week set
- * @throws {TypeError} 2 arguments required
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The new date with the day of the week set
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

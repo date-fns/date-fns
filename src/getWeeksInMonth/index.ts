@@ -14,12 +14,11 @@ import startOfMonth from '../startOfMonth/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @param  [options] - an object with options.
+ * @param date - The given date
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Number} the number of calendar weeks
- * @throws {TypeError} 2 arguments required
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The number of calendar weeks
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

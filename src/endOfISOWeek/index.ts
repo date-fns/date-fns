@@ -15,9 +15,8 @@ import endOfWeek from '../endOfWeek/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the original date
- * @returns {Date} the end of an ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - The original date
+ * @returns The end of an ISO week
  *
  * @example
  * // The end of an ISO week for 2 September 2014 11:55:00:

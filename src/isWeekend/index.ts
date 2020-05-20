@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date falls on a weekend
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date falls on a weekend
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?

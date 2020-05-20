@@ -46,8 +46,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *
  * @param
  * @param
- * @returns {Number} the number of days that overlap in two time intervals
- * @throws {TypeError} 2 arguments required
+ * @returns The number of days that overlap in two time intervals
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

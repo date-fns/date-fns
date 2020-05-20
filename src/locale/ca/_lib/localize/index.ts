@@ -178,8 +178,8 @@ var formattingDayPeriodValues = {
  *
  * Reference: https://aplicacions.llengua.gencat.cat/llc/AppJava/pdf/abrevia.pdf#page=18
  *
- * @param  dirtyNumber
- * @param  [_dirtyOptions]
+ * @param dirtyNumber
+ * @param [_dirtyOptions]
  */
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)

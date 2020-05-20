@@ -12,13 +12,12 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the first date to check
- * @param  dateRight - the second date to check
- * @param  [options] - an object with options.
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Boolean} the dates are in the same week
- * @throws {TypeError} 2 arguments required
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The dates are in the same week
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

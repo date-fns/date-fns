@@ -64,10 +64,9 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 | SSS     | 000, 0001, ..., 999               |
  * |                                 | SSSS    | ...                               |
  *
- * @param  date - the original date
- * @param  format - the string of tokens
- * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
+ * @param date - The original date
+ * @param format - The string of tokens
+ * @returns The formatted date string
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example

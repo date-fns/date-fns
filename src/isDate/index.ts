@@ -10,9 +10,8 @@
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  value - the value to check
- * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 arguments required
+ * @param value - The value to check
+ * @returns true if the given value is a date
  *
  * @example
  * // For a valid date:

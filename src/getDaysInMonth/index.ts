@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {Number} the number of days in a month
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The number of days in a month
  *
  * @example
  * // How many days are in February 2000?

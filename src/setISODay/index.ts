@@ -17,10 +17,9 @@ import getISODay from '../getISODay/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  day - the day of the ISO week of the new date
- * @returns {Date} the new date with the day of the ISO week set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param day - The day of the ISO week of the new date
+ * @returns The new date with the day of the ISO week set
  *
  * @example
  * // Set Sunday to 1 September 2014:

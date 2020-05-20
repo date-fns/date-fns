@@ -23,10 +23,9 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param  date - the date to be changed
- * @param  isoWeekYear - the ISO week-numbering year of the new date
- * @returns {Date} the new date with the ISO week-numbering year set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param isoWeekYear - The ISO week-numbering year of the new date
+ * @returns The new date with the ISO week-numbering year set
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:

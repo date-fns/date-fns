@@ -21,9 +21,8 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
- * @param  date - the given date
- * @returns {Number} the ISO week-numbering year
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The ISO week-numbering year
  *
  * @example
  * // Which ISO-week numbering year is 2 January 2005?

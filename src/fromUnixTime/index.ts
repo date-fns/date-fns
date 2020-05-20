@@ -13,9 +13,8 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  unixTime - the given Unix timestamp
- * @returns {Date} the date
- * @throws {TypeError} 1 argument required
+ * @param unixTime - The given Unix timestamp
+ * @returns The date
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:

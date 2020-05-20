@@ -13,10 +13,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  dayOfMonth - the day of the month of the new date
- * @returns {Date} the new date with the day of the month set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param dayOfMonth - The day of the month of the new date
+ * @returns The new date with the day of the month set
  *
  * @example
  * // Set the 30th day of the month to 1 September 2014:

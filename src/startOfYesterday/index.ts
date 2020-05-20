@@ -14,7 +14,7 @@
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @returns {Date} the start of yesterday
+ * @returns The start of yesterday
  *
  * @example
  * // If today is 6 October 2014:

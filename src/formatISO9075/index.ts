@@ -10,13 +10,12 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
  * @description
  * Return the formatted date string in ISO 9075 format. Options may be passed to control the parts and notations of the date.
  *
- * @param  date - the original date
- * @param  [options] - an object with options.
- * @param  [options.format='extended'] - if 'basic', hide delimiters between date and time values.
- * @param  [options.representation='complete'] - format date, time, or both.
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `date` must not be Invalid Date
+ * @param date - The original date
+ * @param [options] - An object with options.
+ * @param [options.format='extended'] - if 'basic', hide delimiters between date and time values.
+ * @param [options.representation='complete'] - format date, time, or both.
+ * @returns The formatted date string
+ *  @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
  *

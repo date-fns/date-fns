@@ -12,10 +12,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the original date
- * @returns {Date} the end of a decade
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
+ * @param date - The original date
+ * @returns The end of a decade
+ *  @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The end of a decade for 12 May 1984 00:00:00:

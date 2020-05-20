@@ -15,10 +15,9 @@ import toDate from '../toDate/index.js'
  * - Now, `closestTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param  dateToCompare - the date to compare with
- * @param  datesArray - the array to search
- * @returns {Date} the date from the array closest to the given date
- * @throws {TypeError} 2 arguments required
+ * @param dateToCompare - The date to compare with
+ * @param datesArray - The array to search
+ * @returns The date from the array closest to the given date
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?

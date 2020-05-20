@@ -12,10 +12,9 @@ import startOfMinute from '../startOfMinute/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the first date to check
- * @param  dateRight - the second date to check
- * @returns {Boolean} the dates are in the same minute
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ * @returns The dates are in the same minute
  *
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15

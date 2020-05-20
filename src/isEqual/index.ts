@@ -12,10 +12,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the first date to compare
- * @param  dateRight - the second date to compare
- * @returns {Boolean} the dates are equal
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The first date to compare
+ * @param dateRight - The second date to compare
+ * @returns The dates are equal
  *
  * @example
  * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?

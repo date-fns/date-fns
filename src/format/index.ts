@@ -301,18 +301,17 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * - Characters are now escaped using single quote symbols (`'`) instead of square brackets.
  *
- * @param  date - the original date
- * @param  format - the string of tokens
- * @param  [options] - an object with options.
+ * @param date - The original date
+ * @param format - The string of tokens
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param  [options.firstWeekContainsDate=1] - the day of January, which is
- * @param  [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @param [options.firstWeekContainsDate=1] - The day of January, which is
+ * @param [options.useAdditionalWeekYearTokens=false] - if true, allows usage of the week-numbering year tokens `YY` and `YYYY`;
  *   see: https://git.io/fxCyr
- * @param  [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
+ * @param [options.useAdditionalDayOfYearTokens=false] - if true, allows usage of the day of year tokens `D` and `DD`;
  *   see: https://git.io/fxCyr
- * @returns {String} the formatted date string
- * @throws {TypeError} 2 arguments required
+ * @returns The formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property

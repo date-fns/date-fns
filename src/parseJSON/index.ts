@@ -29,10 +29,9 @@ import toDate from '../toDate/index.js'
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param  argument A fully formed ISO8601 date string to convert
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
- */
+ * @param argument A fully formed ISO8601 date string to convert
+ * @returns The parsed date in the local time zone
+ * /
 export default function parseJSON(argument) {
   if (typeof argument === 'string') {
     var parts = argument.match(

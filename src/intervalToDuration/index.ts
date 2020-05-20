@@ -17,9 +17,9 @@ import sub from '../sub/index.js'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param  interval - the interval to convert to duration
+ * @param interval - The interval to convert to duration
  *
- * @returns {Duration} The duration Object
+ * @returns The duration Object
  * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date

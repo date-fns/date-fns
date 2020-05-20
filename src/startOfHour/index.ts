@@ -13,9 +13,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the original date
- * @returns {Date} the start of an hour
- * @throws {TypeError} 1 argument required
+ * @param date - The original date
+ * @returns The start of an hour
  *
  * @example
  * // The start of an hour for 2 September 2014 11:55:00:

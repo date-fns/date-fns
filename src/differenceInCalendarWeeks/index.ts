@@ -16,13 +16,12 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the later date
- * @param  dateRight - the earlier date
- * @param  [options] - an object with options.
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @param [options] - An object with options.
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Number} the number of calendar weeks
- * @throws {TypeError} 2 arguments required
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The number of calendar weeks
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

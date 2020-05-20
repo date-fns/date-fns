@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is the first day of a month
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is the first day of a month
  *
  * @example
  * // Is 1 September 2014 the first day of a month?

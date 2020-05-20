@@ -46,10 +46,9 @@ import { AreIntervalsOverlappingOptions } from '../_types/Options/index.js'
  *
  * @param
  * @param
- * @param  [options] - the object with options
- * @param  [options.inclusive=false] - whether the comparison is inclusive or not
- * @returns {Boolean} whether the time intervals are overlapping
- * @throws {TypeError} 2 arguments required
+ * @param [options] - The object with options
+ * @param [options.inclusive=false] - whether the comparison is inclusive or not
+ * @returns whether the time intervals are overlapping
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

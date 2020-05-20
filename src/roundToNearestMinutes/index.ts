@@ -14,12 +14,11 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to round
- * @param  [options] - an object with options.
- * @param  [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
- * @returns {Date} the new date rounded to the closest minute
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.nearestTo` must be between 1 and 30
+ * @param date - The date to round
+ * @param [options] - An object with options.
+ * @param [options.nearestTo=1] - nearest number of minutes to round to. E.g. `15` to round to quarter hours.
+ * @returns The new date rounded to the closest minute
+ *  @throws {RangeError} `options.nearestTo` must be between 1 and 30
  *
  * @example
  * // Round 10 July 2014 12:12:34 to nearest minute:

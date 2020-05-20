@@ -13,10 +13,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  year - the year of the new date
- * @returns {Date} the new date with the year set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param year - The year of the new date
+ * @returns The new date with the year set
  *
  * @example
  * // Set year 2013 to 1 September 2014:

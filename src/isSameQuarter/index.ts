@@ -12,10 +12,9 @@ import startOfQuarter from '../startOfQuarter/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the first date to check
- * @param  dateRight - the second date to check
- * @returns {Boolean} the dates are in the same quarter
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The first date to check
+ * @param dateRight - The second date to check
+ * @returns The dates are in the same quarter
  *
  * @example
  * // Are 1 January 2014 and 8 March 2014 in the same quarter?

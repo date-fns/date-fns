@@ -16,7 +16,7 @@ import startOfDay from '../startOfDay/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @returns {Date} the start of today
+ * @returns The start of today
  *
  * @example
  * // If today is 6 October 2014:

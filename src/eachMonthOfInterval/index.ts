@@ -9,9 +9,8 @@ import toDate from '../toDate/index.js'
  * Return the array of months within the specified time interval.
  *
  * @param
- * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} The start of an interval cannot be after its end
+ * @returns The array with starts of months from the month of the interval start to the month of the interval end
+ *  @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example

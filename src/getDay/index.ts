@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {0|1|2|3|4|5|6} the day of week
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The day of week
  *
  * @example
  * // Which day of the week is 29 February 2012?

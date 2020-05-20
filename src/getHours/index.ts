@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the given date
- * @returns {Number} the hours
- * @throws {TypeError} 1 argument required
+ * @param date - The given date
+ * @returns The hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:

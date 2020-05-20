@@ -17,10 +17,9 @@ import toInteger from '../_lib/toInteger/index.js'
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param  dateLeft - the later date
- * @param  dateRight - the earlier date
- * @returns {Number} the number of business days
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @returns The number of business days
  *
  * @example
  * // How many business days are between

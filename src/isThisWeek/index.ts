@@ -16,13 +16,12 @@ import isSameWeek from '../isSameWeek/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @param  [options] - the object with options
+ * @param date - The date to check
+ * @param [options] - The object with options
  * @param
- * @param  [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Boolean} the date is in this week
- * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
+ * @param [options.weekStartsOn=0] - The index of the first day of the week (0 - Sunday)
+ * @returns The date is in this week
+ *  @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?

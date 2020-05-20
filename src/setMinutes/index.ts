@@ -13,10 +13,9 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  minutes - the minutes of the new date
- * @returns {Date} the new date with the minutes set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param minutes - The minutes of the new date
+ * @returns The new date with the minutes set
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:

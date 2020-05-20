@@ -17,9 +17,8 @@ import isSameDay from '../isSameDay/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is tomorrow
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is tomorrow
  *
  * @example
  * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?

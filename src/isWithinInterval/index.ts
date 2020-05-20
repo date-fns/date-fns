@@ -42,10 +42,9 @@ import toDate from '../toDate/index.js'
  *   )
  *   ```
  *
- * @param  date - the date to check
- * @param  interval - the interval to check
- * @returns {Boolean} the date is within the interval
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to check
+ * @param interval - The interval to check
+ * @returns The date is within the interval
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

@@ -16,9 +16,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to check
- * @returns {Boolean} the date is in the past
- * @throws {TypeError} 1 argument required
+ * @param date - The date to check
+ * @returns The date is in the past
  *
  * @example
  * // If today is 6 October 2014, is 2 July 2014 in the past?

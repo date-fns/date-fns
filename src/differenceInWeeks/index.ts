@@ -21,10 +21,9 @@ import differenceInDays from '../differenceInDays/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the later date
- * @param  dateRight - the earlier date
- * @returns {Number} the number of full weeks
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @returns The number of full weeks
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?

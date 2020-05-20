@@ -16,10 +16,9 @@ import getISOWeek from '../getISOWeek/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  isoWeek - the ISO week of the new date
- * @returns {Date} the new date with the ISO week set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param isoWeek - The ISO week of the new date
+ * @returns The new date with the ISO week set
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:

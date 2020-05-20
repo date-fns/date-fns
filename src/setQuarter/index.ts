@@ -14,10 +14,9 @@ import setMonth from '../setMonth/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the date to be changed
- * @param  quarter - the quarter of the new date
- * @returns {Date} the new date with the quarter set
- * @throws {TypeError} 2 arguments required
+ * @param date - The date to be changed
+ * @param quarter - The quarter of the new date
+ * @returns The new date with the quarter set
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:

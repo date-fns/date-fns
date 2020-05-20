@@ -17,10 +17,9 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  dateLeft - the later date
- * @param  dateRight - the earlier date
- * @returns {Number} the number of calendar ISO weeks
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - The later date
+ * @param dateRight - The earlier date
+ * @returns The number of calendar ISO weeks
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?

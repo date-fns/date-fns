@@ -8,7 +8,7 @@ const { addSeparator, formatBlock, formatFlowFile } = require('./formatBlock')
 
 /**
  * Return curried function type aliases for a specific FP function arity.
- * @param  [arity=4]
+ * @param [arity=4]
  */
 const getFlowFPTypeAliases = (arity = 4) =>
   [

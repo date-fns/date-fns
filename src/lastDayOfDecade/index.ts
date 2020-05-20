@@ -12,9 +12,8 @@ import toDate from '../toDate/index.js'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param  date - the original date
- * @returns {Date} the last day of a decade
- * @throws {TypeError} 1 argument required
+ * @param date - The original date
+ * @returns The last day of a decade
  *
  * @example
  * // The last day of a decade for 21 December 2012 21:12:00:
