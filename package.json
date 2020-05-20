@@ -94,7 +94,7 @@
     "mz": "^2.7.0",
     "node-fetch": "^1.7.3",
     "power-assert": "^1.6.1",
-    "prettier": "^1.18.2",
+    "prettier": "2",
     "rimraf": "^2.7.1",
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
