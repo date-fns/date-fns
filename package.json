@@ -98,7 +98,7 @@
     "snazzy": "^7.0.0",
     "systemjs": "^0.19.39",
     "systemjs-plugin-babel": "0.0.17",
-    "typescript": "^3.7.2",
+    "typescript": "3.9",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
     "world-countries": "^1.8.1"
