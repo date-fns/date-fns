@@ -2,6 +2,7 @@ import toDate from '../toDate/index.js'
 import setMonth from '../setMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import { DateValues } from 'src/types.js'
 
 /**
  * @name set
@@ -42,7 +43,7 @@ import requiredArgs from '../_lib/requiredArgs/index.js'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function(dirtyDate: number: Date | number, values) {
+export default function set(dirtyDate: Date | number, values: DateValues) {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {

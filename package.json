@@ -49,6 +49,8 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-parameters": "^7.4.4",
     "@babel/plugin-transform-template-literals": "^7.4.4",
+    "@types/jest": "^25.2.3",
+    "@types/power-assert": "^1.5.3",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
     "babel-eslint": "^10.0.2",
