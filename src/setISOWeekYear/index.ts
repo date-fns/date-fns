@@ -35,7 +35,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 export default function setISOWeekYear(
   dirtyDate: Date | number,
   dirtyISOWeekYear: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var isoWeekYear = toInteger(dirtyISOWeekYear)
   var diff = differenceInCalendarDays(date, startOfISOWeekYear(date))

@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * var result = startOfDecade(new Date(2015, 9, 21, 00, 00, 00))
  * //=> Jan 01 2010 00:00:00
  */
-export default function startOfDecade(dirtyDate: Date | number): Date {
+export default function startOfDecade(dirtyDate: Date | number) {
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = Math.floor(year / 10) * 10

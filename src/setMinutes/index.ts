@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
 export default function setMinutes(
   dirtyDate: Date | number,
   dirtyMinutes: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var minutes = toInteger(dirtyMinutes)
   date.setMinutes(minutes)

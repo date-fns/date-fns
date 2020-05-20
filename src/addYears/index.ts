@@ -25,7 +25,7 @@ import addMonths from '../addMonths/index.js'
 export default function addYears(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, amount * 12)
 }

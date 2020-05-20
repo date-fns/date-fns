@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addQuarters from '../addQuarters/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addQuarters from '../addQuarters/index.js'
  * var result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-export default function subQuarters(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addQuarters(dirtyDate, -amount)
+export default function subQuarters(date: Date | number, amount: number) {
+  return addQuarters(date, -amount)
 }

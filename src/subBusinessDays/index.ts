@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addBusinessDays from '../addBusinessDays/index.js'
 
 /**
@@ -18,10 +17,6 @@ import addBusinessDays from '../addBusinessDays/index.js'
  * var result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addBusinessDays(dirtyDate, -amount)
+export default function subBusinessDays(date: Date | number, amount: number) {
+  return addBusinessDays(date, -amount)
 }

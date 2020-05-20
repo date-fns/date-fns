@@ -33,7 +33,7 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
 export default function addISOWeekYears(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
 }

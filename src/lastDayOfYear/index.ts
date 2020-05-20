@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-export default function lastDayOfYear(dirtyDate: Date | number): Date {
+export default function lastDayOfYear(dirtyDate: Date | number) {
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addSeconds from '../addSeconds/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addSeconds from '../addSeconds/index.js'
  * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
-export default function subSeconds(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addSeconds(dirtyDate, -amount)
+export default function subSeconds(date: Date | number, amount: number) {
+  return addSeconds(date, -amount)
 }

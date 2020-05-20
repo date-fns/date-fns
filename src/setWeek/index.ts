@@ -49,7 +49,7 @@ export default function setWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
   dirtyOptions
-): Date {
+) {
   var date = toDate(dirtyDate)
   var week = toInteger(dirtyWeek)
   var diff = getWeek(date, dirtyOptions) - week

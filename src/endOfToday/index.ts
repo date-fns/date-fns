@@ -23,6 +23,6 @@ import endOfDay from '../endOfDay/index.js'
  * var result = endOfToday()
  * //=> Mon Oct 6 2014 23:59:59.999
  */
-export default function endOfToday(): Date {
+export default function endOfToday() {
   return endOfDay(Date.now())
 }

@@ -26,7 +26,7 @@ import setMonth from '../setMonth/index.js'
 export default function setQuarter(
   dirtyDate: Date | number,
   dirtyQuarter: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var quarter = toInteger(dirtyQuarter)
   var oldQuarter = Math.floor(date.getMonth() / 3) + 1

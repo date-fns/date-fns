@@ -51,7 +51,7 @@ export default function setWeekYear(
   dirtyDate: Date | number,
   dirtyWeekYear: number,
   dirtyOptions
-): Date {
+) {
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeFirstWeekContainsDate =

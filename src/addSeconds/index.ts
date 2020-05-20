@@ -25,7 +25,7 @@ import addMilliseconds from '../addMilliseconds/index.js'
 export default function addSeconds(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * 1000)
 }

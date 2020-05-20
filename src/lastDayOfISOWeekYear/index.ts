@@ -30,7 +30,7 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  * var result = lastDayOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 00:00:00
  */
-export default function lastDayOfISOWeekYear(dirtyDate: Date | number): Date {
+export default function lastDayOfISOWeekYear(dirtyDate: Date | number) {
   var year = getISOWeekYear(dirtyDate)
   var fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(year + 1, 0, 4)

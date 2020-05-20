@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
 export default function addMilliseconds(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var timestamp = toDate(dirtyDate).getTime()
   var amount = toInteger(dirtyAmount)
   return new Date(timestamp + amount)

@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
 export default function setSeconds(
   dirtyDate: Date | number,
   dirtySeconds: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var seconds = toInteger(dirtySeconds)
   date.setSeconds(seconds)

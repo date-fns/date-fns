@@ -27,7 +27,7 @@ var MILLISECONDS_IN_HOUR = 3600000
 export default function addHours(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
 }

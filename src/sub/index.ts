@@ -1,7 +1,7 @@
 import subDays from '../subDays/index.js'
 import subMonths from '../subMonths/index.js'
 import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import Duration from 'src/_types/Duration/index.js'
 
 /**
  * @name sub
@@ -41,16 +41,14 @@ import toInteger from '../_lib/toInteger/index.js'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub(dirtyDate: Date | number, duration): Date {
-  if (!duration || typeof duration !== 'object') return new Date(NaN)
-
-  const years = 'years' in duration ? toInteger(duration.years) : 0
-  const months = 'months' in duration ? toInteger(duration.months) : 0
-  const weeks = 'weeks' in duration ? toInteger(duration.weeks) : 0
-  const days = 'days' in duration ? toInteger(duration.days) : 0
-  const hours = 'hours' in duration ? toInteger(duration.hours) : 0
-  const minutes = 'minutes' in duration ? toInteger(duration.minutes) : 0
-  const seconds = 'seconds' in duration ? toInteger(duration.seconds) : 0
+export default function sub(dirtyDate: Date | number, duration: Duration) {
+  const years = duration.years || 0
+  const months = duration.months || 0
+  const weeks = duration.weeks || 0
+  const days = duration.days || 0
+  const hours = duration.hours || 0
+  const minutes = duration.minutes || 0
+  const seconds = duration.seconds || 0
 
   // Subtract years and months
   const dateWithoutMonths = subMonths(toDate(dirtyDate), months + years * 12)

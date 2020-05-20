@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import toDate from '../toDate/index.js'
 
 /**
@@ -22,20 +21,14 @@ import toDate from '../toDate/index.js'
  * var result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-export default function addMonths(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
-  if (isNaN(amount)) {
-    return new Date(NaN)
-  }
-  if (!amount) {
+export default function addMonths(dirtyDate: Date | number, amount: number) {
+  const date = toDate(dirtyDate)
+
+  if (amount === 0) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
     return date
   }
-  var dayOfMonth = date.getDate()
+  const dayOfMonth = date.getDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 1, 0) returns 31 Dec 2019 and
@@ -45,9 +38,9 @@ export default function addMonths(
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  var endOfDesiredMonth = new Date(date.getTime())
+  const endOfDesiredMonth = new Date(date.getTime())
   endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0)
-  var daysInMonth = endOfDesiredMonth.getDate()
+  const daysInMonth = endOfDesiredMonth.getDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
     // and we're done.

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addYears from '../addYears/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addYears from '../addYears/index.js'
  * var result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-export default function subYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addYears(dirtyDate, -amount)
+export default function subYears(date: Date | number, amount: number) {
+  return addYears(date, -amount)
 }

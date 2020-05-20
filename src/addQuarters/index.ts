@@ -25,7 +25,7 @@ import addMonths from '../addMonths/index.js'
 export default function addQuarters(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   var months = amount * 3
   return addMonths(dirtyDate, months)

@@ -25,7 +25,7 @@ import endOfYear from '../endOfYear/index.js'
  * // ]
  * ]
  */
-export default function eachWeekendOfYear(dirtyDate: Date | number): Date[] {
+export default function eachWeekendOfYear(dirtyDate: Date | number)[] {
   var startDate = startOfYear(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 

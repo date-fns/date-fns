@@ -61,7 +61,7 @@ import Interval from '../_types/Interval/index.js'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(interval: Interval, options): Date[] {
+export default function eachDayOfInterval(interval: Interval, options)[] {
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)
 

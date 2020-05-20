@@ -25,7 +25,7 @@ import toDate from '../toDate/index.js'
 export default function setDate(
   dirtyDate: Date | number,
   dirtyDayOfMonth: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var dayOfMonth = toInteger(dirtyDayOfMonth)
   date.setDate(dayOfMonth)

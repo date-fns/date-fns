@@ -1,6 +1,6 @@
 import getWeekYear from '../getWeekYear/index.js'
 import startOfWeek from '../startOfWeek/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import { WeekYearFnOptions } from 'src/types.js'
 
 /**
  * @name startOfWeekYear
@@ -45,26 +45,17 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear(
-  dirtyDate: Date | number,
-  dirtyOptions
-): Date {
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
-    locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
-    localeFirstWeekContainsDate == null
-      ? 1
-      : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
-    options.firstWeekContainsDate == null
-      ? defaultFirstWeekContainsDate
-      : toInteger(options.firstWeekContainsDate)
+  date: Date | number,
+  options: WeekYearFnOptions = {}
+) {
+  const firstWeekContainsDate =
+    options.firstWeekContainsDate ??
+    options.locale?.options?.firstWeekContainsDate ??
+    1
 
-  var year = getWeekYear(dirtyDate, dirtyOptions)
+  var year = getWeekYear(date, options)
   var firstWeek = new Date(0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  var date = startOfWeek(firstWeek, dirtyOptions)
-  return date
+  return startOfWeek(firstWeek, options)
 }

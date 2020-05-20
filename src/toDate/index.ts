@@ -27,7 +27,7 @@
  * const result = toDate(1392098430000)
  * //=> Tue Feb 11 2014 11:30:30
  */
-export default function toDate(argument: Date | number): Date {
+export default function toDate(argument: Date | number) {
   const argStr = Object.prototype.toString.call(argument)
 
   // Clone the date

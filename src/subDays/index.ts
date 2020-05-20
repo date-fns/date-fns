@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addDays from '../addDays/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addDays from '../addDays/index.js'
  * var result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-export default function subDays(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addDays(dirtyDate, -amount)
+export default function subDays(date: Date | number, amount: number) {
+  return addDays(date, -amount)
 }

@@ -9,7 +9,7 @@ export default function setUTCWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
   options
-): Date {
+) {
   var date = toDate(dirtyDate)
   var week = toInteger(dirtyWeek)
   var diff = getUTCWeek(date, options) - week

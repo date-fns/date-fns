@@ -28,7 +28,7 @@ import getISOWeek from '../getISOWeek/index.js'
 export default function setISOWeek(
   dirtyDate: Date | number,
   dirtyISOWeek: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var isoWeek = toInteger(dirtyISOWeek)
   var diff = getISOWeek(date) - isoWeek

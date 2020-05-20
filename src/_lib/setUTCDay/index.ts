@@ -8,7 +8,7 @@ export default function setUTCDay(
   dirtyDate: Date | number,
   dirtyDay: number,
   dirtyOptions
-): Date {
+) {
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn =

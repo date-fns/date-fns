@@ -8,7 +8,7 @@ import requiredArgs from '../requiredArgs/index.js'
 export default function startOfUTCWeekYear(
   dirtyDate: Date | number,
   dirtyOptions
-): Date {
+) {
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeFirstWeekContainsDate =

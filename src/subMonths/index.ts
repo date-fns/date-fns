@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addMonths from '../addMonths/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addMonths from '../addMonths/index.js'
  * var result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addMonths(dirtyDate, -amount)
+export default function subMonths(date: Date | number, amount: number) {
+  return addMonths(date, -amount)
 }

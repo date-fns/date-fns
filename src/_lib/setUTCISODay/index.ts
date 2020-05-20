@@ -7,7 +7,7 @@ import requiredArgs from '../requiredArgs/index.js'
 export default function setUTCISODay(
   dirtyDate: Date | number,
   dirtyDay: number
-): Date {
+) {
   var day = toInteger(dirtyDay)
 
   if (day % 7 === 0) {

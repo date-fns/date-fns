@@ -26,7 +26,7 @@ import toDate from '../toDate/index.js'
  * //   Sun Jan 01 2017 00:00:00
  * // ]
  */
-export default function eachYearOfInterval(dirtyInterval): Date[] {
+export default function eachYearOfInterval(dirtyInterval)[] {
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)
   var endDate = toDate(interval.end)

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addWeeks from '../addWeeks/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addWeeks from '../addWeeks/index.js'
  * var result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-export default function subWeeks(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addWeeks(dirtyDate, -amount)
+export default function subWeeks(date: Date | number, amount: number) {
+  return addWeeks(date, -amount)
 }

@@ -1,4 +1,3 @@
-import toInteger from '../_lib/toInteger/index.js'
 import addHours from '../addHours/index.js'
 
 /**
@@ -22,10 +21,6 @@ import addHours from '../addHours/index.js'
  * var result = subHours(new Date(2014, 6, 11, 1, 0), 2)
  * //=> Thu Jul 10 2014 23:00:00
  */
-export default function subHours(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  var amount = toInteger(dirtyAmount)
-  return addHours(dirtyDate, -amount)
+export default function subHours(date: Date | number, amount: number) {
+  return addHours(date, -amount)
 }

@@ -42,10 +42,7 @@ import Duration from '../_types/Duration'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add(
-  dirtyDate: Date | number,
-  duration: Duration
-): Date {
+export default function add(dirtyDate: Date | number, duration: Duration) {
   if (!duration || typeof duration !== 'object') return new Date(NaN)
 
   const years = 'years' in duration ? toInteger(duration.years) : 0

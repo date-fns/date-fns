@@ -8,7 +8,7 @@ import requiredArgs from '../requiredArgs/index.js'
 export default function setUTCISOWeek(
   dirtyDate: Date | number,
   dirtyISOWeek: number
-): Date {
+) {
   var date = toDate(dirtyDate)
   var isoWeek = toInteger(dirtyISOWeek)
   var diff = getUTCISOWeek(date) - isoWeek

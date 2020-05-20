@@ -25,7 +25,7 @@ import addDays from '../addDays/index.js'
 export default function addWeeks(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   var days = amount * 7
   return addDays(dirtyDate, days)

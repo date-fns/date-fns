@@ -18,6 +18,16 @@ export interface WeekStartOptions {
 
 export type WeekFnOptions = LocaleOptions & WeekStartOptions
 
+export type FirstWeekContainsDate = 1 | 2 | 3 | 4 | 5 | 6 | 7
+
+export interface WeekYearOptions {
+  firstWeekContainsDate?: FirstWeekContainsDate
+}
+
+export type WeekYearFnOptions = LocaleOptions &
+  WeekStartOptions &
+  WeekYearOptions
+
 export interface DateValues {
   year?: number
   month?: number

@@ -27,7 +27,7 @@ var MILLISECONDS_IN_MINUTE = 60000
 export default function addMinutes(
   dirtyDate: Date | number,
   dirtyAmount: number
-): Date {
+) {
   var amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
 }

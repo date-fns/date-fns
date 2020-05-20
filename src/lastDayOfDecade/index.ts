@@ -20,7 +20,7 @@ import toDate from '../toDate/index.js'
  * var result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))
  * //=> Wed Dec 31 2019 00:00:00
  */
-export default function lastDayOfDecade(dirtyDate: Date | number): Date {
+export default function lastDayOfDecade(dirtyDate: Date | number) {
   var date = toDate(dirtyDate)
   var year = date.getFullYear()
   var decade = 9 + Math.floor(year / 10) * 10

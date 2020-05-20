@@ -4,10 +4,7 @@ import requiredArgs from '../requiredArgs/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function startOfUTCWeek(
-  dirtyDate: Date | number,
-  dirtyOptions
-): Date {
+export default function startOfUTCWeek(dirtyDate: Date | number, dirtyOptions) {
   var options = dirtyOptions || {}
   var locale = options.locale
   var localeWeekStartsOn =

@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  * var result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfDay(dirtyDate: Date | number): Date {
+export default function startOfDay(dirtyDate: Date | number) {
   var date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)
   return date
