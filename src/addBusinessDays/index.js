@@ -2,6 +2,8 @@ import isWeekend from '../isWeekend/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSunday from '../isSunday/index.js'
+import isSaturday from '../isSaturday/index.js'
 
 /**
  * @name addBusinessDays
@@ -25,6 +27,7 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
+  const startedOnWeekend = isWeekend(date)
   const amount = toInteger(dirtyAmount)
 
   if (isNaN(amount)) return new Date(NaN)
@@ -42,6 +45,16 @@ export default function addBusinessDays(dirtyDate, dirtyAmount) {
   while (restDays > 0) {
     date.setDate(date.getDate() + sign)
     if (!isWeekend(date)) restDays -= 1
+  }
+
+  // If the date is a weekend day and we reduce a dividable of
+  // 5 from it, we land on a weekend date.
+  // To counter this, we add days accordingly to land on the next business day
+  if (startedOnWeekend && isWeekend(date) && amount !== 0) {
+    // If we're reducing days, we want to add days until we land on a weekday
+    // If we're adding days we want to reduce days until we land on a weekday
+    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
+    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
   }
 
   // Restore hours to avoid DST lag
