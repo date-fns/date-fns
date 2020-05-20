@@ -3,6 +3,6 @@
 import fn from '../../setSeconds/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setSeconds = convertToFP(fn, 2)
+const setSeconds = convertToFP(fn, 2)
 
 export default setSeconds

@@ -6,7 +6,7 @@ import differenceInCalendarMonths from '.'
 
 describe('differenceInCalendarMonths', function() {
   it('returns the number of calendar months between the given dates', function() {
-    var result = differenceInCalendarMonths(
+    const result = differenceInCalendarMonths(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
     )
@@ -14,7 +14,7 @@ describe('differenceInCalendarMonths', function() {
   })
 
   it('returns a negative number if the time value of the first date is smaller', function() {
-    var result = differenceInCalendarMonths(
+    const result = differenceInCalendarMonths(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
@@ -22,7 +22,7 @@ describe('differenceInCalendarMonths', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = differenceInCalendarMonths(
+    const result = differenceInCalendarMonths(
       new Date(2014, 7 /* Aug */, 2).getTime(),
       new Date(2010, 6 /* Jul */, 2).getTime()
     )
@@ -31,7 +31,7 @@ describe('differenceInCalendarMonths', function() {
 
   describe('edge cases', function() {
     it('the difference is less than a month, but the given dates are in different calendar months', function() {
-      var result = differenceInCalendarMonths(
+      const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 1),
         new Date(2014, 7 /* Aug */, 31)
       )
@@ -39,7 +39,7 @@ describe('differenceInCalendarMonths', function() {
     })
 
     it('the same for the swapped dates', function() {
-      var result = differenceInCalendarMonths(
+      const result = differenceInCalendarMonths(
         new Date(2014, 7 /* Aug */, 31),
         new Date(2014, 8 /* Sep */, 1)
       )
@@ -47,7 +47,7 @@ describe('differenceInCalendarMonths', function() {
     })
 
     it('the days of months of the given dates are the same', function() {
-      var result = differenceInCalendarMonths(
+      const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 6),
         new Date(2014, 7 /* Aug */, 6)
       )
@@ -55,7 +55,7 @@ describe('differenceInCalendarMonths', function() {
     })
 
     it('the given dates are the same', function() {
-      var result = differenceInCalendarMonths(
+      const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -67,18 +67,18 @@ describe('differenceInCalendarMonths', function() {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInCalendarMonths(
+      const result = differenceInCalendarMonths(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function() {
-    var result = differenceInCalendarMonths(
+    const result = differenceInCalendarMonths(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
@@ -86,7 +86,7 @@ describe('differenceInCalendarMonths', function() {
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
-    var result = differenceInCalendarMonths(
+    const result = differenceInCalendarMonths(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
@@ -94,7 +94,7 @@ describe('differenceInCalendarMonths', function() {
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
-    var result = differenceInCalendarMonths(new Date(NaN), new Date(NaN))
+    const result = differenceInCalendarMonths(new Date(NaN), new Date(NaN))
     assert(isNaN(result.getTime()))
   })
 

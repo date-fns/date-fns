@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['前', '公元'],
   abbreviated: ['前', '公元'],
   wide: ['公元前', '公元']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
   wide: ['第一刻钟', '第二刻钟', '第三刻钟', '第四刻钟']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     '一',
     '二',
@@ -57,14 +57,14 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['日', '一', '二', '三', '四', '五', '六'],
   short: ['日', '一', '二', '三', '四', '五', '六'],
   abbreviated: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
   wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -96,7 +96,7 @@ var dayPeriodValues = {
     night: '夜间'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -134,14 +134,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   // if they are different for different grammatical genders,
   // use `options.unit`:
   //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
+  //   const options = dirtyOptions || {}
+  //   const unit = String(options.unit)
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
-  var number = Number(dirtyNumber)
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const number = Number(dirtyNumber)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
   switch (unit) {
     case 'date':
@@ -157,7 +157,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

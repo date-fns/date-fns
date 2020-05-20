@@ -3,6 +3,6 @@
 import fn from '../../isLastDayOfMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isLastDayOfMonth = convertToFP(fn, 1)
+const isLastDayOfMonth = convertToFP(fn, 1)
 
 export default isLastDayOfMonth

@@ -27,13 +27,13 @@ import setISOWeekYear from '../setISOWeekYear/index.js'
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:
- * var result = addISOWeekYears(new Date(2010, 6, 2), 5)
+ * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
  * //=> Fri Jun 26 2015 00:00:00
  */
 export default function addISOWeekYears(
   dirtyDate: Date | number,
   dirtyAmount: number
 ) {
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return setISOWeekYear(dirtyDate, getISOWeekYear(dirtyDate) + amount)
 }

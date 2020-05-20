@@ -18,7 +18,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // How many calendar months are between 31 January 2014 and 1 September 2014?
- * var result = differenceInCalendarMonths(
+ * const result = differenceInCalendarMonths(
  *   new Date(2014, 8, 1),
  *   new Date(2014, 0, 31)
  * )
@@ -28,11 +28,11 @@ export default function differenceInCalendarMonths(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
 
   return yearDiff * 12 + monthDiff
 }

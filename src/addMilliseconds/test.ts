@@ -6,7 +6,7 @@ import addMilliseconds from '.'
 
 describe('addMilliseconds', function() {
   it('adds the given number of milliseconds', function() {
-    var result = addMilliseconds(
+    const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       750
     )
@@ -14,7 +14,7 @@ describe('addMilliseconds', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = addMilliseconds(
+    const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0).getTime(),
       500
     )
@@ -22,7 +22,7 @@ describe('addMilliseconds', function() {
   })
 
   it('converts a fractional number to an integer', function() {
-    var result = addMilliseconds(
+    const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       750.75
     )
@@ -30,7 +30,7 @@ describe('addMilliseconds', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    var result = addMilliseconds(
+    const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 5),
       // $ExpectedMistake
       '750'
@@ -39,18 +39,18 @@ describe('addMilliseconds', function() {
   })
 
   it('does not mutate the original date', function() {
-    var date = new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0)
+    const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0)
     addMilliseconds(date, 250)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0))
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = addMilliseconds(new Date(NaN), 750)
+    const result = addMilliseconds(new Date(NaN), 750)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = addMilliseconds(
+    const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       NaN
     )

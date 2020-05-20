@@ -1,6 +1,6 @@
 import localize from '../localize/index.js'
 // Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: '१ सेकंड से कम', // CLDR #1310
     other: '{{count}} सेकंड से कम'
@@ -82,7 +82,7 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

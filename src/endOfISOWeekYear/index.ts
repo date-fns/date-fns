@@ -27,15 +27,15 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  * @example
  * // The end of an ISO week-numbering year for 2 July 2005:
- * var result = endOfISOWeekYear(new Date(2005, 6, 2))
+ * const result = endOfISOWeekYear(new Date(2005, 6, 2))
  * //=> Sun Jan 01 2006 23:59:59.999
  */
 export default function endOfISOWeekYear(dirtyDate: Date | number) {
-  var year = getISOWeekYear(dirtyDate)
-  var fourthOfJanuaryOfNextYear = new Date(0)
+  const year = getISOWeekYear(dirtyDate)
+  const fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var date = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  const date = startOfISOWeek(fourthOfJanuaryOfNextYear)
   date.setMilliseconds(date.getMilliseconds() - 1)
   return date
 }

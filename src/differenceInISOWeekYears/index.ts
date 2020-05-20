@@ -28,7 +28,7 @@ import subISOWeekYears from '../subISOWeekYears/index.js'
  *
  * @example
  * // How many full ISO week-numbering years are between 1 January 2010 and 1 January 2012?
- * var result = differenceInISOWeekYears(
+ * const result = differenceInISOWeekYears(
  *   new Date(2012, 0, 1),
  *   new Date(2010, 0, 1)
  * )
@@ -38,11 +38,11 @@ export default function differenceInISOWeekYears(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(
+  const sign = compareAsc(dateLeft, dateRight)
+  const difference = Math.abs(
     differenceInCalendarISOWeekYears(dateLeft, dateRight)
   )
   dateLeft = subISOWeekYears(dateLeft, sign * difference)
@@ -50,8 +50,8 @@ export default function differenceInISOWeekYears(
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - (isLastISOWeekYearNotFull ? 1 : 0))
+  const isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  const result = sign * (difference - (isLastISOWeekYearNotFull ? 1 : 0))
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

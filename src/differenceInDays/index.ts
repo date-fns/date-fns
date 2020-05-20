@@ -6,7 +6,7 @@ import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
 // having the same representation in local time, e.g. one hour before
 // DST ends vs. the instant that DST ends.
 function compareLocalAsc(dateLeft, dateRight) {
-  var diff =
+  const diff =
     dateLeft.getFullYear() - dateRight.getFullYear() ||
     dateLeft.getMonth() - dateRight.getMonth() ||
     dateLeft.getDate() - dateRight.getDate() ||
@@ -53,14 +53,14 @@ function compareLocalAsc(dateLeft, dateRight) {
  * @example
  * // How many full days are between
  * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * var result = differenceInDays(
+ * const result = differenceInDays(
  *   new Date(2012, 6, 2, 0, 0),
  *   new Date(2011, 6, 2, 23, 0)
  * )
  * //=> 365
  * // How many full days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
- * var result = differenceInDays(
+ * const result = differenceInDays(
  *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
@@ -71,7 +71,7 @@ function compareLocalAsc(dateLeft, dateRight) {
  * // result will always be 92 days, even in
  * // time zones where DST starts and the
  * // period has only 92*24-1 hours.
- * var result = differenceInDays(
+ * const result = differenceInDays(
  *   new Date(2020, 5, 1),
  *   new Date(2020, 2, 1)
  * )
@@ -81,18 +81,18 @@ export default function differenceInDays(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ): number {
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var sign = compareLocalAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
+  const sign = compareLocalAsc(dateLeft, dateRight)
+  const difference = Math.abs(differenceInCalendarDays(dateLeft, dateRight))
 
   dateLeft.setDate(dateLeft.getDate() - sign * difference)
 
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastDayNotFull = compareLocalAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - (isLastDayNotFull ? 1 : 0))
+  const isLastDayNotFull = compareLocalAsc(dateLeft, dateRight) === -sign
+  const result = sign * (difference - (isLastDayNotFull ? 1 : 0))
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

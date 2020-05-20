@@ -47,26 +47,26 @@ describe('formatISO9075', () => {
   describe('implicitly converts options', function() {
     it('`format`', function() {
       // eslint-disable-next-line no-new-wrappers
-      var format = new String('basic')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+      const format = new String('basic')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // $ExpectedMistake
-      var result = formatISO9075(date, { format: format })
+      const result = formatISO9075(date, { format: format })
       assert(result === '20191004 123013')
     })
 
     it('`representation`', function() {
       // eslint-disable-next-line no-new-wrappers
-      var representation = new String('time')
-      var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+      const representation = new String('time')
+      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // $ExpectedMistake
-      var result = formatISO9075(date, { representation: representation })
+      const result = formatISO9075(date, { representation: representation })
       assert(result === '12:30:13')
     })
   })
 
   it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
     // $ExpectedMistake
-    var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
+    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       format: 'something else'
     })
     assert.throws(block, RangeError)
@@ -74,7 +74,7 @@ describe('formatISO9075', () => {
 
   it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
     // $ExpectedMistake
-    var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
+    const block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       representation: 'something else'
     })
     assert.throws(block, RangeError)

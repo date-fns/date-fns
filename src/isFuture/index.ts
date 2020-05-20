@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // If today is 6 October 2014, is 31 December 2014 in the future?
- * var result = isFuture(new Date(2014, 11, 31))
+ * const result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
 export default function isFuture(dirtyDate: Date | number): boolean {

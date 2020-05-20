@@ -1,31 +1,31 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['f.Kr.', 'e.Kr.'],
   abbreviated: ['f.Kr.', 'e.Kr.'],
   wide: ['før Kristus', 'etter Kristus']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'mai', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'des.'],
   wide: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
   short: ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
   abbreviated: ['søn', 'man', 'tir', 'ons', 'tor', 'fre', 'lør'],
   wide: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -59,11 +59,11 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

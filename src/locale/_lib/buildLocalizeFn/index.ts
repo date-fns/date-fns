@@ -1,10 +1,10 @@
 export default function buildLocalizeFn(args) {
   return function(dirtyIndex, dirtyOptions) {
-    var options = dirtyOptions || {}
+    const options = dirtyOptions || {}
 
-    var context = options.context ? String(options.context) : 'standalone'
+    const context = options.context ? String(options.context) : 'standalone'
 
-    var valuesArray
+    const valuesArray
     if (context === 'formatting' && args.formattingValues) {
       const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
       const width = options.width ? String(options.width) : defaultWidth
@@ -15,7 +15,7 @@ export default function buildLocalizeFn(args) {
       const width = options.width ? String(options.width) : args.defaultWidth
       valuesArray = args.values[width] || args.values[defaultWidth]
     }
-    var index = args.argumentCallback
+    const index = args.argumentCallback
       ? args.argumentCallback(dirtyIndex)
       : dirtyIndex
     return valuesArray[index]

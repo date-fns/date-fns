@@ -1,32 +1,32 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(ب|ك)/i,
   wide: /^(مىيلادىدىن بۇرۇن|مىيلادىدىن كىيىن)/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/^بۇرۇن/i, /^كىيىن/i]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^چ[1234]/i,
   wide: /^چارەك [1234]/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^[يفمئامئ‍ئاسۆند]/i,
   abbreviated: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i,
   wide: /^(يانۋار|فېۋىرال|مارت|ئاپرىل|ماي|ئىيۇن|ئىيول|ئاۋغۇست|سىنتەبىر|ئۆكتەبىر|نويابىر|دىكابىر)/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^ي/i,
     /^ف/i,
@@ -57,22 +57,22 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[دسچپجشي]/i,
   short: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
   abbreviated: /^(يە|دۈ|سە|چا|پە|جۈ|شە)/i,
   wide: /^(يەكشەنبە|دۈشەنبە|سەيشەنبە|چارشەنبە|پەيشەنبە|جۈمە|شەنبە)/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i],
   any: [/^ي/i, /^د/i, /^س/i, /^چ/i, /^پ/i, /^ج/i, /^ش/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i,
   any: /^(ئە|چ|ك|چ|(دە|ئەتىگەن) ( ئە‍|چۈشتىن كىيىن|ئاخشىم|كىچە))/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^ئە/i,
     pm: /^چ/i,
@@ -85,7 +85,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

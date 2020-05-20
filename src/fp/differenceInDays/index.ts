@@ -3,6 +3,6 @@
 import fn from '../../differenceInDays/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var differenceInDays = convertToFP(fn, 2)
+const differenceInDays = convertToFP(fn, 2)
 
 export default differenceInDays

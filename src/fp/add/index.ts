@@ -3,6 +3,6 @@
 import fn from '../../add/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var add = convertToFP(fn, 2)
+const add = convertToFP(fn, 2)
 
 export default add

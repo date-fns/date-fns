@@ -16,7 +16,7 @@ import match from './_lib/match/index.js'
  * @author RomanErnst [@pex]{@link https://github.com/pex}
  * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
  */
-var locale = {
+const locale = {
   code: 'de',
   formatDistance: formatDistance,
   formatLong: formatLong,

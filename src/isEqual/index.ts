@@ -18,14 +18,14 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Are 2 July 2014 06:30:45.000 and 2 July 2014 06:30:45.500 equal?
- * var result = isEqual(
+ * const result = isEqual(
  *   new Date(2014, 6, 2, 6, 30, 45, 0),
  *   new Date(2014, 6, 2, 6, 30, 45, 500)
  * )
  * //=> false
  */
 export default function isEqual(dirtyLeftDate, dirtyRightDate): boolean {
-  var dateLeft = toDate(dirtyLeftDate)
-  var dateRight = toDate(dirtyRightDate)
+  const dateLeft = toDate(dirtyLeftDate)
+  const dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()
 }

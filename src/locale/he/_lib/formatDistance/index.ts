@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'פחות משנייה',
     two: 'פחות משתי שניות',
@@ -97,18 +97,18 @@ export default function formatDistance(token, count, options) {
 
   // Return word instead of `in one day` or `one day ago`
   if (token === 'xDays' && options.addSuffix && count <= 2) {
-    var past = {
+    const past = {
       1: 'אתמול',
       2: 'שלשום'
     }
-    var future = {
+    const future = {
       1: 'מחר',
       2: 'מחרתיים'
     }
     return options.comparison > 0 ? future[count] : past[count]
   }
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

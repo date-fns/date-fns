@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 aze
  */
 
-var locale = {
+const locale = {
   code: 'az',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -12,7 +12,7 @@ import match from '../en-US/_lib/match/index.js'
  * @iso-639-2 eng
  * @author Julien Malige [@JulienMalige]{@link https://github.com/JulienMalige}
  */
-var locale = {
+const locale = {
   code: 'en-AU',
   formatDistance: formatDistance,
   formatLong: formatLong,

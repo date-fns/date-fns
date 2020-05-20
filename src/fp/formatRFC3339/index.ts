@@ -3,6 +3,6 @@
 import fn from '../../formatRFC3339/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var formatRFC3339 = convertToFP(fn, 1)
+const formatRFC3339 = convertToFP(fn, 1)
 
 export default formatRFC3339

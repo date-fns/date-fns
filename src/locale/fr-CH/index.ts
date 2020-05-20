@@ -16,7 +16,7 @@
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
  */
-// var locale = {
+// const locale = {
 //   code: 'fr-CH',
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,

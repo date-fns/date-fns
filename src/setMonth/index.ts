@@ -20,19 +20,19 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  *
  * @example
  * // Set February to 1 September 2014:
- * var result = setMonth(new Date(2014, 8, 1), 1)
+ * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth(dirtyDate: Date | number, dirtyMonth: number) {
-  var date = toDate(dirtyDate)
-  var month = toInteger(dirtyMonth)
-  var year = date.getFullYear()
-  var day = date.getDate()
+  const date = toDate(dirtyDate)
+  const month = toInteger(dirtyMonth)
+  const year = date.getFullYear()
+  const day = date.getDate()
 
-  var dateWithDesiredMonth = new Date(0)
+  const dateWithDesiredMonth = new Date(0)
   dateWithDesiredMonth.setFullYear(year, month, 15)
   dateWithDesiredMonth.setHours(0, 0, 0, 0)
-  var daysInMonth = getDaysInMonth(dateWithDesiredMonth)
+  const daysInMonth = getDaysInMonth(dateWithDesiredMonth)
   // Set the last day of the new month
   // if the original date was the last day of the longer month
   date.setMonth(month, Math.min(day, daysInMonth))

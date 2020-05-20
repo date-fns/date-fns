@@ -1,7 +1,7 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 import addWeeks from '../addWeeks/index.js'
 
-var MILLISECONDS_IN_WEEK = 604800000
+const MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * @name getISOWeeksInYear
@@ -22,13 +22,13 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?
- * var result = getISOWeeksInYear(new Date(2015, 1, 11))
+ * const result = getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
 export default function getISOWeeksInYear(dirtyDate: Date | number): number {
-  var thisYear = startOfISOWeekYear(dirtyDate)
-  var nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
-  var diff = nextYear.valueOf() - thisYear.valueOf()
+  const thisYear = startOfISOWeekYear(dirtyDate)
+  const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
+  const diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer
   // because the number of milliseconds in a week is not constant
   // (e.g. it's different in the week of the daylight saving time clock shift)

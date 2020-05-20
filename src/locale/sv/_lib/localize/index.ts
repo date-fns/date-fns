@@ -1,24 +1,24 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['f.Kr.', 'e.Kr.'],
   abbreviated: ['f.Kr.', 'e.Kr.'],
   wide: ['före Kristus', 'efter Kristus']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1:a kvartalet', '2:a kvartalet', '3:e kvartalet', '4:e kvartalet']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'maj', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
   wide: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
   short: ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'],
   abbreviated: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
@@ -26,7 +26,7 @@ var dayValues = {
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sv.html#1888
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'fm',
     pm: 'em',
@@ -58,7 +58,7 @@ var dayPeriodValues = {
     night: 'natt'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'fm',
     pm: 'em',
@@ -92,9 +92,9 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
-  var rem100 = number % 100
+  const rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
@@ -105,7 +105,7 @@ function ordinalNumber (dirtyNumber) {
   return number + ':e'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

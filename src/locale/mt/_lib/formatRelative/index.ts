@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "eeee 'li għadda' 'fil-'p",
   yesterday: "'Il-bieraħ fil-'p",
   today: "'Illum fil-'p",

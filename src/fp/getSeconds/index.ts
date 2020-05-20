@@ -3,6 +3,6 @@
 import fn from '../../getSeconds/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getSeconds = convertToFP(fn, 1)
+const getSeconds = convertToFP(fn, 1)
 
 export default getSeconds

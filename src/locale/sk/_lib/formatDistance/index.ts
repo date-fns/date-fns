@@ -15,13 +15,13 @@ function declensionGroup(scheme, count) {
 }
 
 function declension(scheme, count, time) {
-  var group = declensionGroup(scheme, count)
-  var finalText = group[time] || group
+  const group = declensionGroup(scheme, count)
+  const finalText = group[time] || group
   return finalText.replace('{{count}}', count)
 }
 
 function extractPreposition(token) {
-  var result = ['lessThan', 'about', 'over', 'almost'].filter(function(
+  const result = ['lessThan', 'about', 'over', 'almost'].filter(function(
     preposition
   ) {
     return !!token.match(new RegExp('^' + preposition))
@@ -31,7 +31,7 @@ function extractPreposition(token) {
 }
 
 function prefixPreposition(preposition) {
-  var translation = ''
+  const translation = ''
 
   if (preposition === 'almost') {
     translation = 'takmer'
@@ -45,7 +45,7 @@ function prefixPreposition(preposition) {
 }
 
 function suffixPreposition(preposition) {
-  var translation = ''
+  const translation = ''
 
   if (preposition === 'lessThan') {
     translation = 'menej než'
@@ -62,7 +62,7 @@ function lowercaseFirstLetter(string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   xSeconds: {
     one: {
       regular: 'sekunda',
@@ -201,9 +201,9 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var preposition = extractPreposition(token) || ''
-  var key = lowercaseFirstLetter(token.substring(preposition.length))
-  var scheme = formatDistanceLocale[key]
+  const preposition = extractPreposition(token) || ''
+  const key = lowercaseFirstLetter(token.substring(preposition.length))
+  const scheme = formatDistanceLocale[key]
 
   if (!options.addSuffix) {
     return (

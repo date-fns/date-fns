@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 uzb
  * @author Mukhammadali [@mukhammadali]{@link https://github.com/Mukhammadali}
  */
-var locale = {
+const locale = {
   code: 'uz',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale

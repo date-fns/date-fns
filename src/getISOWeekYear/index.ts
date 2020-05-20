@@ -26,22 +26,22 @@ import startOfISOWeek from '../startOfISOWeek/index.js'
  *
  * @example
  * // Which ISO-week numbering year is 2 January 2005?
- * var result = getISOWeekYear(new Date(2005, 0, 2))
+ * const result = getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
 export default function getISOWeekYear(dirtyDate: Date | number): number {
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
 
-  var fourthOfJanuaryOfNextYear = new Date(0)
+  const fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
   fourthOfJanuaryOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
+  const startOfNextYear = startOfISOWeek(fourthOfJanuaryOfNextYear)
 
-  var fourthOfJanuaryOfThisYear = new Date(0)
+  const fourthOfJanuaryOfThisYear = new Date(0)
   fourthOfJanuaryOfThisYear.setFullYear(year, 0, 4)
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
+  const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1

@@ -1,24 +1,24 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['pr. Kr.', 'po Kr.'],
   abbreviated: ['pr. Kr.', 'po Kr.'],
   wide: ['prieš Kristų', 'po Kristaus']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I ketv.', 'II ketv.', 'III ketv.', 'IV ketv.'],
   wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
 }
 
-var formattingQuarterValues = {
+const formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I k.', 'II k.', 'III k.', 'IV k.'],
   wide: ['I ketvirtis', 'II ketvirtis', 'III ketvirtis', 'IV ketvirtis']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
   abbreviated: [
     'saus.',
@@ -50,7 +50,7 @@ var monthValues = {
   ]
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['S', 'V', 'K', 'B', 'G', 'B', 'L', 'R', 'R', 'S', 'L', 'G'],
   abbreviated: [
     'saus.',
@@ -82,7 +82,7 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
   abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
@@ -97,7 +97,7 @@ var dayValues = {
   ]
 }
 
-var formattingDayValues = {
+const formattingDayValues = {
   narrow: ['S', 'P', 'A', 'T', 'K', 'P', 'Š'],
   short: ['Sk', 'Pr', 'An', 'Tr', 'Kt', 'Pn', 'Št'],
   abbreviated: ['sk', 'pr', 'an', 'tr', 'kt', 'pn', 'št'],
@@ -112,7 +112,7 @@ var formattingDayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'pr. p.',
     pm: 'pop.',
@@ -144,7 +144,7 @@ var dayPeriodValues = {
     night: 'naktis'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'pr. p.',
     pm: 'pop.',
@@ -178,11 +178,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + '-oji'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

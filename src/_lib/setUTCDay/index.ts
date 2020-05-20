@@ -9,13 +9,13 @@ export default function setUTCDay(
   dirtyDay: number,
   dirtyOptions
 ) {
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -25,15 +25,15 @@ export default function setUTCDay(
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var date = toDate(dirtyDate)
-  var day = toInteger(dirtyDay)
+  const date = toDate(dirtyDate)
+  const day = toInteger(dirtyDay)
 
-  var currentDay = date.getUTCDay()
+  const currentDay = date.getUTCDay()
 
-  var remainder = day % 7
-  var dayIndex = (remainder + 7) % 7
+  const remainder = day % 7
+  const dayIndex = (remainder + 7) % 7
 
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  const diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
 
   date.setUTCDate(date.getUTCDate() + diff)
   return date

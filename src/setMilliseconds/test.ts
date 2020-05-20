@@ -6,7 +6,7 @@ import setMilliseconds from '.'
 
 describe('setMilliseconds', function() {
   it('sets the milliseconds', function() {
-    var result = setMilliseconds(
+    const result = setMilliseconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       300
     )
@@ -14,7 +14,7 @@ describe('setMilliseconds', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = setMilliseconds(
+    const result = setMilliseconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 15, 750).getTime(),
       755
     )
@@ -22,7 +22,7 @@ describe('setMilliseconds', function() {
   })
 
   it('converts a fractional number to an integer', function() {
-    var result = setMilliseconds(
+    const result = setMilliseconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       300.999
     )
@@ -30,7 +30,7 @@ describe('setMilliseconds', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    var result = setMilliseconds(
+    const result = setMilliseconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       // $ExpectedMistake
       '300'
@@ -39,18 +39,18 @@ describe('setMilliseconds', function() {
   })
 
   it('does not mutate the original date', function() {
-    var date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
+    const date = new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500)
     setMilliseconds(date, 137)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500))
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = setMilliseconds(new Date(NaN), 300)
+    const result = setMilliseconds(new Date(NaN), 300)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = setMilliseconds(
+    const result = setMilliseconds(
       new Date(2014, 8 /* Sep */, 1, 11, 30, 40, 500),
       NaN
     )

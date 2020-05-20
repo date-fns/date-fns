@@ -1,31 +1,31 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['av. J.-C', 'ap. J.-C'],
   abbreviated: ['av. J.-C', 'ap. J.-C'],
   wide: ['avant Jésus-Christ', 'après Jésus-Christ']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['T1', 'T2', 'T3', 'T4'],
   abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
   wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
   wide: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
   short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
   abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
   wide: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -59,11 +59,11 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const suffix
 
   if (number === 0) {
     return number
@@ -86,7 +86,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   return number + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

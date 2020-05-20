@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['前', '公元'],
   abbreviated: ['前', '公元'],
   wide: ['公元前', '公元']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
   wide: ['第一刻鐘', '第二刻鐘', '第三刻鐘', '第四刻鐘']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     '一',
     '二',
@@ -57,14 +57,14 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['日', '一', '二', '三', '四', '五', '六'],
   short: ['日', '一', '二', '三', '四', '五', '六'],
   abbreviated: ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
   wide: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -96,7 +96,7 @@ var dayPeriodValues = {
     night: '夜間'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: '上',
     pm: '下',
@@ -130,20 +130,20 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
   //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
+  //   const options = dirtyOptions || {}
+  //   const unit = String(options.unit)
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
   switch (unit) {
     case 'date':
@@ -159,7 +159,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

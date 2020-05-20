@@ -1,12 +1,12 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['пр.н.е.', 'н.е.'],
   abbreviated: ['преди н. е.', 'н. е.'],
   wide: ['преди новата ера', 'новата ера']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-во тримес.', '2-ро тримес.', '3-то тримес.', '4-то тримес.'],
   wide: [
@@ -17,7 +17,7 @@ var quarterValues = {
   ]
 }
 
-var monthValues = {
+const monthValues = {
   abbreviated: [
     'яну',
     'фев',
@@ -48,7 +48,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
   abbreviated: ['нед', 'пон', 'вто', 'сря', 'чет', 'пет', 'съб'],
@@ -63,7 +63,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   wide: {
     am: 'преди обяд',
     pm: 'след обяд',
@@ -87,14 +87,14 @@ function isNeuter(unit) {
 }
 
 function numberWithSuffix(number, unit, masculine, feminine, neuter) {
-  var suffix = isNeuter(unit) ? neuter : isFeminine(unit) ? feminine : masculine
+  const suffix = isNeuter(unit) ? neuter : isFeminine(unit) ? feminine : masculine
   return number + '-' + suffix
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var number = Number(dirtyNumber)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const number = Number(dirtyNumber)
 
   if (number === 0) {
     return numberWithSuffix(0, unit, 'ев', 'ева', 'ево')
@@ -104,7 +104,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     return numberWithSuffix(number, unit, 'тен', 'тна', 'тно')
   }
 
-  var rem100 = number % 100
+  const rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
@@ -120,7 +120,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return numberWithSuffix(number, unit, 'ти', 'та', 'то')
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Lee Seoyoen [@iamssen]{@link https://github.com/iamssen}
  * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
-var locale = {
+const locale = {
   code: 'ko',
   formatDistance: formatDistance,
   formatLong: formatLong,

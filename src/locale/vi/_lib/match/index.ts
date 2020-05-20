@@ -1,28 +1,28 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(tcn|scn)/i,
   abbreviated: /^(trước CN|sau CN)/i,
   wide: /^(trước Công Nguyên|sau Công Nguyên)/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/^t/i, /^s/i]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^([1234]|i{1,3}v?)/i,
   abbreviated: /^q([1234]|i{1,3}v?)/i,
   wide: /^quý ([1234]|i{1,3}v?)/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/(1|i)$/i, /(2|ii)$/i, /(3|iii)$/i, /(4|iv)$/i]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   // month number may contain leading 0, 'thg' prefix may have space, underscore or empty before number
   // note the order of '1' since it is a sub-string of '10', so must be lower priority
   narrow: /^(0?[2-9]|10|11|12|0?1)/i,
@@ -31,7 +31,7 @@ var matchMonthPatterns = {
   // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
   wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười|Mười ?Một|Mười ?Hai|0?[1-9](?!\d)|10|11|12)/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /0?1$/i,
     /0?2/i,
@@ -76,25 +76,25 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^(CN|T2|T3|T4|T5|T6|T7)/i,
   short: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
   abbreviated: /^(CN|Th ?2|Th ?3|Th ?4|Th ?5|Th ?6|Th ?7)/i,
   wide: /^(Chủ ?Nhật|Chúa ?Nhật|thứ ?Hai|thứ ?Ba|thứ ?Tư|thứ ?Năm|thứ ?Sáu|thứ ?Bảy)/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
   short: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
   abbreviated: [/CN/i, /2/i, /3/i, /4/i, /5/i, /6/i, /7/i],
   wide: [/(Chủ|Chúa) ?Nhật/i, /Hai/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(a|p|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
   abbreviated: /^(am|pm|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i,
   wide: /^(ch[^i]*|sa|nửa đêm|trưa|(giờ) (sáng|chiều|tối|đêm))/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^(a|sa)/i,
     pm: /^(p|ch[^i]*)/i,
@@ -107,7 +107,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

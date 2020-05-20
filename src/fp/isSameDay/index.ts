@@ -3,6 +3,6 @@
 import fn from '../../isSameDay/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameDay = convertToFP(fn, 2)
+const isSameDay = convertToFP(fn, 2)
 
 export default isSameDay

@@ -18,13 +18,13 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The end of a quarter for 2 September 2014 11:55:00:
- * var result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = endOfQuarter(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 30 2014 23:59:59.999
  */
 export default function endOfQuarter(dirtyDate: Date | number) {
-  var date = toDate(dirtyDate)
-  var currentMonth = date.getMonth()
-  var month = currentMonth - (currentMonth % 3) + 3
+  const date = toDate(dirtyDate)
+  const currentMonth = date.getMonth()
+  const month = currentMonth - (currentMonth % 3) + 3
   date.setMonth(month, 0)
   date.setHours(23, 59, 59, 999)
   return date

@@ -25,7 +25,7 @@ import getISOWeekYear from '../getISOWeekYear/index.js'
  *
  * @example
  * // How many calendar ISO week-numbering years are 1 January 2010 and 1 January 2012?
- * var result = differenceInCalendarISOWeekYears(
+ * const result = differenceInCalendarISOWeekYears(
  *   new Date(2012, 0, 1),
  *   new Date(2010, 0, 1)
  * )

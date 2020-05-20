@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'o' eeee 'pasado á' LT",
   yesterday: "'onte á' p",
   today: "'hoxe á' p",
@@ -7,7 +7,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-var formatRelativeLocalePlural = {
+const formatRelativeLocalePlural = {
   lastWeek: "'o' eeee 'pasado ás' p",
   yesterday: "'onte ás' p",
   today: "'hoxe ás' p",

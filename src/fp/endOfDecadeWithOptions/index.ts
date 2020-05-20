@@ -3,6 +3,6 @@
 import fn from '../../endOfDecade/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var endOfDecadeWithOptions = convertToFP(fn, 2)
+const endOfDecadeWithOptions = convertToFP(fn, 2)
 
 export default endOfDecadeWithOptions

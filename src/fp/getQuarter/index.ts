@@ -3,6 +3,6 @@
 import fn from '../../getQuarter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getQuarter = convertToFP(fn, 1)
+const getQuarter = convertToFP(fn, 1)
 
 export default getQuarter

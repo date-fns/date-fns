@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 nno
  * @author Mats Byrkjeland [@draperunner]{@link https://github.com/draperunner}
  */
-var locale = {
+const locale = {
   code: 'nn',
   formatDistance: formatDistance,
   formatLong: formatLong,

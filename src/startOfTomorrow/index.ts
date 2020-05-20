@@ -18,16 +18,16 @@
  *
  * @example
  * // If today is 6 October 2014:
- * var result = startOfTomorrow()
+ * const result = startOfTomorrow()
  * //=> Tue Oct 7 2014 00:00:00
  */
 export default function startOfTomorrow() {
-  var now = new Date()
-  var year = now.getFullYear()
-  var month = now.getMonth()
-  var day = now.getDate()
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = now.getMonth()
+  const day = now.getDate()
 
-  var date = new Date(0)
+  const date = new Date(0)
   date.setFullYear(year, month, day + 1)
   date.setHours(0, 0, 0, 0)
   return date

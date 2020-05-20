@@ -3,6 +3,6 @@
 import fn from '../../format/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var formatWithOptions = convertToFP(fn, 3)
+const formatWithOptions = convertToFP(fn, 3)
 
 export default formatWithOptions

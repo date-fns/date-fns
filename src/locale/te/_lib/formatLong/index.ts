@@ -2,7 +2,7 @@ import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
 
 // CLDR #1807 - #1811
-var dateFormats = {
+const dateFormats = {
   full: 'd, MMMM y, EEEE',
   long: 'd MMMM, y',
   medium: 'd MMM, y',
@@ -10,7 +10,7 @@ var dateFormats = {
 }
 
 // CLDR #1807 - #1811
-var timeFormats = {
+const timeFormats = {
   full: 'h:mm:ss a zzzz',
   long: 'h:mm:ss a z',
   medium: 'h:mm:ss a',
@@ -18,14 +18,14 @@ var timeFormats = {
 }
 
 // CLDR #1815 - #1818
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: "{{date}} {{time}}'కి'",
   long: "{{date}} {{time}}'కి'",
   medium: '{{date}} {{time}}',
   short: '{{date}} {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

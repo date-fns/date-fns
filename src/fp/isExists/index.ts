@@ -3,6 +3,6 @@
 import fn from '../../isExists/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isExists = convertToFP(fn, 3)
+const isExists = convertToFP(fn, 3)
 
 export default isExists

@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
  * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
  */
-var locale = {
+const locale = {
   code: 'ar-DZ',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -18,13 +18,13 @@ import differenceInMonths from '../differenceInMonths/index.js'
  *
  * @example
  * // How many full quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
+ * const result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
 export default function differenceInQuarters(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ): number {
-  var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
+  const diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

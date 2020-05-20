@@ -32,14 +32,14 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Set the 1st week to 2 January 2005 with default options:
- * var result = setWeek(new Date(2005, 0, 2), 1)
+ * const result = setWeek(new Date(2005, 0, 2), 1)
  * //=> Sun Dec 26 2004 00:00:00
  *
  * @example
  * // Set the 1st week to 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January:
- * var result = setWeek(new Date(2005, 0, 2), 1, {
+ * const result = setWeek(new Date(2005, 0, 2), 1, {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })
@@ -50,9 +50,9 @@ export default function setWeek(
   dirtyWeek: number,
   dirtyOptions
 ) {
-  var date = toDate(dirtyDate)
-  var week = toInteger(dirtyWeek)
-  var diff = getWeek(date, dirtyOptions) - week
+  const date = toDate(dirtyDate)
+  const week = toInteger(dirtyWeek)
+  const diff = getWeek(date, dirtyOptions) - week
   date.setDate(date.getDate() - diff * 7)
   return date
 }

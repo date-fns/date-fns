@@ -6,11 +6,11 @@ import setUTCWeek from '../../../_lib/setUTCWeek/index.js'
 import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index.js'
 import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index.js'
 
-var MILLISECONDS_IN_HOUR = 3600000
-var MILLISECONDS_IN_MINUTE = 60000
-var MILLISECONDS_IN_SECOND = 1000
+const MILLISECONDS_IN_HOUR = 3600000
+const MILLISECONDS_IN_MINUTE = 60000
+const MILLISECONDS_IN_SECOND = 1000
 
-var numericPatterns = {
+const numericPatterns = {
   month: /^(1[0-2]|0?\d)/, // 0 to 12
   date: /^(3[0-1]|[0-2]?\d)/, // 0 to 31
   dayOfYear: /^(36[0-6]|3[0-5]\d|[0-2]?\d?\d)/, // 0 to 366
@@ -34,7 +34,7 @@ var numericPatterns = {
   fourDigitsSigned: /^-?\d{1,4}/ // 0 to 9999, -0 to -9999
 }
 
-var timezonePatterns = {
+const timezonePatterns = {
   basicOptionalMinutes: /^([+-])(\d{2})(\d{2})?|Z/,
   basic: /^([+-])(\d{2})(\d{2})|Z/,
   basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
@@ -43,13 +43,13 @@ var timezonePatterns = {
 }
 
 function parseNumericPattern(pattern, string, valueCallback) {
-  var matchResult = string.match(pattern)
+  const matchResult = string.match(pattern)
 
   if (!matchResult) {
     return null
   }
 
-  var value = parseInt(matchResult[0], 10)
+  const value = parseInt(matchResult[0], 10)
 
   return {
     value: valueCallback ? valueCallback(value) : value,
@@ -58,7 +58,7 @@ function parseNumericPattern(pattern, string, valueCallback) {
 }
 
 function parseTimezonePattern(pattern, string) {
-  var matchResult = string.match(pattern)
+  const matchResult = string.match(pattern)
 
   if (!matchResult) {
     return null
@@ -72,10 +72,10 @@ function parseTimezonePattern(pattern, string) {
     }
   }
 
-  var sign = matchResult[1] === '+' ? 1 : -1
-  var hours = matchResult[2] ? parseInt(matchResult[2], 10) : 0
-  var minutes = matchResult[3] ? parseInt(matchResult[3], 10) : 0
-  var seconds = matchResult[5] ? parseInt(matchResult[5], 10) : 0
+  const sign = matchResult[1] === '+' ? 1 : -1
+  const hours = matchResult[2] ? parseInt(matchResult[2], 10) : 0
+  const minutes = matchResult[3] ? parseInt(matchResult[3], 10) : 0
+  const seconds = matchResult[5] ? parseInt(matchResult[5], 10) : 0
 
   return {
     value:
@@ -184,28 +184,28 @@ function dayPeriodEnumToHours(enumValue) {
 }
 
 function normalizeTwoDigitYear(twoDigitYear, currentYear) {
-  var isCommonEra = currentYear > 0
+  const isCommonEra = currentYear > 0
   // Absolute number of the current year:
   // 1 -> 1 AC
   // 0 -> 1 BC
   // -1 -> 2 BC
-  var absCurrentYear = isCommonEra ? currentYear : 1 - currentYear
+  const absCurrentYear = isCommonEra ? currentYear : 1 - currentYear
 
-  var result
+  const result
   if (absCurrentYear <= 50) {
     result = twoDigitYear || 100
   } else {
-    var rangeEnd = absCurrentYear + 50
-    var rangeEndCentury = Math.floor(rangeEnd / 100) * 100
-    var isPreviousCentury = twoDigitYear >= rangeEnd % 100
+    const rangeEnd = absCurrentYear + 50
+    const rangeEndCentury = Math.floor(rangeEnd / 100) * 100
+    const isPreviousCentury = twoDigitYear >= rangeEnd % 100
     result = twoDigitYear + rangeEndCentury - (isPreviousCentury ? 100 : 0)
   }
 
   return isCommonEra ? result : 1 - result
 }
 
-var DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-var DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+const DAYS_IN_MONTH_LEAP_YEAR = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 // User for validation
 function isLeapYearIndex(year): boolean {
@@ -255,7 +255,7 @@ function isLeapYearIndex(year): boolean {
  *   `Y` is supposed to be used in conjunction with `w` and `e`
  *   for week-numbering date specific to the locale.
  */
-var parsers = {
+const parsers = {
   // Era
   G: {
     priority: 140,
@@ -308,7 +308,7 @@ var parsers = {
     priority: 130,
 
     parse: function(string, token, match, _options) {
-      var valueCallback = function(year) {
+      const valueCallback = function(year) {
         return {
           year: year,
           isTwoDigitYear: token === 'yy'
@@ -333,10 +333,10 @@ var parsers = {
     },
 
     set: function(date, flags, value, _options) {
-      var currentYear = date.getUTCFullYear()
+      const currentYear = date.getUTCFullYear()
 
       if (value.isTwoDigitYear) {
-        var normalizedTwoDigitYear = normalizeTwoDigitYear(
+        const normalizedTwoDigitYear = normalizeTwoDigitYear(
           value.year,
           currentYear
         )
@@ -345,7 +345,7 @@ var parsers = {
         return date
       }
 
-      var year =
+      const year =
         !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, 1)
       date.setUTCHours(0, 0, 0, 0)
@@ -360,7 +360,7 @@ var parsers = {
     priority: 130,
 
     parse: function(string, token, match, _options) {
-      var valueCallback = function(year) {
+      const valueCallback = function(year) {
         return {
           year: year,
           isTwoDigitYear: token === 'YY'
@@ -385,10 +385,10 @@ var parsers = {
     },
 
     set: function(date, flags, value, options) {
-      var currentYear = getUTCWeekYear(date, options)
+      const currentYear = getUTCWeekYear(date, options)
 
       if (value.isTwoDigitYear) {
-        var normalizedTwoDigitYear = normalizeTwoDigitYear(
+        const normalizedTwoDigitYear = normalizeTwoDigitYear(
           value.year,
           currentYear
         )
@@ -401,7 +401,7 @@ var parsers = {
         return startOfUTCWeek(date, options)
       }
 
-      var year =
+      const year =
         !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
       date.setUTCFullYear(year, 0, options.firstWeekContainsDate)
       date.setUTCHours(0, 0, 0, 0)
@@ -438,7 +438,7 @@ var parsers = {
     },
 
     set: function(_date, _flags, value, _options) {
-      var firstWeekOfYear = new Date(0)
+      const firstWeekOfYear = new Date(0)
       firstWeekOfYear.setUTCFullYear(value, 0, 4)
       firstWeekOfYear.setUTCHours(0, 0, 0, 0)
       return startOfUTCISOWeek(firstWeekOfYear)
@@ -629,7 +629,7 @@ var parsers = {
     priority: 110,
 
     parse: function(string, token, match, _options) {
-      var valueCallback = function(value) {
+      const valueCallback = function(value) {
         return value - 1
       }
 
@@ -708,7 +708,7 @@ var parsers = {
     priority: 110,
 
     parse: function(string, token, match, _options) {
-      var valueCallback = function(value) {
+      const valueCallback = function(value) {
         return value - 1
       }
 
@@ -879,9 +879,9 @@ var parsers = {
     },
 
     validate: function(date, value, _options) {
-      var year = date.getUTCFullYear()
-      var isLeapYear = isLeapYearIndex(year)
-      var month = date.getUTCMonth()
+      const year = date.getUTCFullYear()
+      const isLeapYear = isLeapYearIndex(year)
+      const month = date.getUTCMonth()
       if (isLeapYear) {
         return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
       } else {
@@ -928,8 +928,8 @@ var parsers = {
     },
 
     validate: function(date, value, _options) {
-      var year = date.getUTCFullYear()
-      var isLeapYear = isLeapYearIndex(year)
+      const year = date.getUTCFullYear()
+      const isLeapYear = isLeapYearIndex(year)
       if (isLeapYear) {
         return value >= 1 && value <= 366
       } else {
@@ -1021,8 +1021,8 @@ var parsers = {
   e: {
     priority: 90,
     parse: function(string, token, match, options) {
-      var valueCallback = function(value) {
-        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+      const valueCallback = function(value) {
+        const wholeWeekDays = Math.floor((value - 1) / 7) * 7
         return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays
       }
 
@@ -1103,8 +1103,8 @@ var parsers = {
     priority: 90,
 
     parse: function(string, token, match, options) {
-      var valueCallback = function(value) {
-        var wholeWeekDays = Math.floor((value - 1) / 7) * 7
+      const valueCallback = function(value) {
+        const wholeWeekDays = Math.floor((value - 1) / 7) * 7
         return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays
       }
 
@@ -1187,7 +1187,7 @@ var parsers = {
     priority: 90,
 
     parse: function(string, token, match, _options) {
-      var valueCallback = function(value) {
+      const valueCallback = function(value) {
         if (value === 0) {
           return 7
         }
@@ -1445,7 +1445,7 @@ var parsers = {
     },
 
     set: function(date, _flags, value, _options) {
-      var isPM = date.getUTCHours() >= 12
+      const isPM = date.getUTCHours() >= 12
       if (isPM && value < 12) {
         date.setUTCHours(value + 12, 0, 0, 0)
       } else if (!isPM && value === 12) {
@@ -1506,7 +1506,7 @@ var parsers = {
     },
 
     set: function(date, _flags, value, _options) {
-      var isPM = date.getUTCHours() >= 12
+      const isPM = date.getUTCHours() >= 12
       if (isPM && value < 12) {
         date.setUTCHours(value + 12, 0, 0, 0)
       } else {
@@ -1538,7 +1538,7 @@ var parsers = {
     },
 
     set: function(date, _flags, value, _options) {
-      var hours = value <= 24 ? value % 24 : value
+      const hours = value <= 24 ? value % 24 : value
       date.setUTCHours(hours, 0, 0, 0)
       return date
     },
@@ -1605,7 +1605,7 @@ var parsers = {
     priority: 30,
 
     parse: function(string, token, _match, _options) {
-      var valueCallback = function(value) {
+      const valueCallback = function(value) {
         return Math.floor(value * Math.pow(10, -token.length + 3))
       }
       return parseNDigits(token.length, string, valueCallback)

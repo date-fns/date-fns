@@ -76,10 +76,10 @@ export default function isWithinInterval(
   dirtyDate: Date | number,
   dirtyInterval
 ): boolean {
-  var interval = dirtyInterval || {}
-  var time = toDate(dirtyDate).getTime()
-  var startTime = toDate(interval.start).getTime()
-  var endTime = toDate(interval.end).getTime()
+  const interval = dirtyInterval || {}
+  const time = toDate(dirtyDate).getTime()
+  const startTime = toDate(interval.start).getTime()
+  const endTime = toDate(interval.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {

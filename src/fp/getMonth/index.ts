@@ -3,6 +3,6 @@
 import fn from '../../getMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getMonth = convertToFP(fn, 1)
+const getMonth = convertToFP(fn, 1)
 
 export default getMonth

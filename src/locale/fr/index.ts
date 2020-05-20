@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  */
 
-var locale = {
+const locale = {
   code: 'fr',
   formatDistance: formatDistance,
   formatLong: formatLong,

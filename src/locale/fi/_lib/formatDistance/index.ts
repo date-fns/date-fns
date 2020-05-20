@@ -26,7 +26,7 @@ function futureYears(text) {
   return text.replace(/(vuosi|vuotta)/, 'vuoden')
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'alle sekunti',
     other: 'alle {{count}} sekuntia',
@@ -129,8 +129,8 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var distance = formatDistanceLocale[token]
-  var result =
+  const distance = formatDistanceLocale[token]
+  const result =
     count === 1 ? distance.one : distance.other.replace('{{count}}', count)
 
   if (options.addSuffix) {

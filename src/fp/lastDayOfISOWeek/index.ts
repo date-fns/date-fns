@@ -3,6 +3,6 @@
 import fn from '../../lastDayOfISOWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var lastDayOfISOWeek = convertToFP(fn, 1)
+const lastDayOfISOWeek = convertToFP(fn, 1)
 
 export default lastDayOfISOWeek

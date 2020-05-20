@@ -1,24 +1,24 @@
 export default function buildMatchFn(args) {
   return function(dirtyString, dirtyOptions) {
-    var string = String(dirtyString)
-    var options = dirtyOptions || {}
-    var width = options.width
+    const string = String(dirtyString)
+    const options = dirtyOptions || {}
+    const width = options.width
 
-    var matchPattern =
+    const matchPattern =
       (width && args.matchPatterns[width]) ||
       args.matchPatterns[args.defaultMatchWidth]
-    var matchResult = string.match(matchPattern)
+    const matchResult = string.match(matchPattern)
 
     if (!matchResult) {
       return null
     }
-    var matchedString = matchResult[0]
+    const matchedString = matchResult[0]
 
-    var parsePatterns =
+    const parsePatterns =
       (width && args.parsePatterns[width]) ||
       args.parsePatterns[args.defaultParseWidth]
 
-    var value
+    const value
     if (Object.prototype.toString.call(parsePatterns) === '[object Array]') {
       value = findIndex(parsePatterns, function(pattern) {
         return pattern.test(matchedString)
@@ -40,7 +40,7 @@ export default function buildMatchFn(args) {
 }
 
 function findKey(object, predicate) {
-  for (var key in object) {
+  for (const key in object) {
     if (object.hasOwnProperty(key) && predicate(object[key])) {
       return key
     }
@@ -48,7 +48,7 @@ function findKey(object, predicate) {
 }
 
 function findIndex(array, predicate) {
-  for (var key = 0; key < array.length; key++) {
+  for (const key = 0; key < array.length; key++) {
     if (predicate(array[key])) {
       return key
     }

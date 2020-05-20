@@ -19,15 +19,15 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:
- * var result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
+ * const result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
 export default function setMinutes(
   dirtyDate: Date | number,
   dirtyMinutes: number
 ) {
-  var date = toDate(dirtyDate)
-  var minutes = toInteger(dirtyMinutes)
+  const date = toDate(dirtyDate)
+  const minutes = toInteger(dirtyMinutes)
   date.setMinutes(minutes)
   return date
 }

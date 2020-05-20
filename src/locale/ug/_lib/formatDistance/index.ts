@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'بىر سىكۇنت ئىچىدە',
     other: 'سىكۇنت ئىچىدە {{count}}'
@@ -80,7 +80,7 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

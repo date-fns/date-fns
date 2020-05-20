@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Guillermo Grau [@guigrpa]{@link https://github.com/guigrpa}
  * @author Alex Vizcaino [@avizcaino]{@link https://github.com/avizcaino}
  */
-var locale = {
+const locale = {
   code: 'ca',
   formatDistance: formatDistance,
   formatLong: formatLong,

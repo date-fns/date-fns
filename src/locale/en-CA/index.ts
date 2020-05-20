@@ -13,7 +13,7 @@ import match from '../en-US/_lib/match/index.js'
  * @author Mark Owsiak [@markowsiak]{@link https://github.com/markowsiak}
  * @author Marco Imperatore [@mimperatore]{@link https://github.com/mimperatore}
  */
-var locale = {
+const locale = {
   code: 'en-CA',
   formatDistance: formatDistance,
   formatLong: formatLong,

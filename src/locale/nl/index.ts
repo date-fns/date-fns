@@ -17,7 +17,7 @@ import match from './_lib/match/index.js'
  * @author Niels Keurentjes [@curry684]{@link https://github.com/curry684}
  * @author Stefan Vermaas [@stefanvermaas]{@link https://github.com/stefanvermaas}
  */
-var locale = {
+const locale = {
   code: 'nl',
   formatDistance: formatDistance,
   formatLong: formatLong,

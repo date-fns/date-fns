@@ -20,7 +20,7 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * @example
  * // The start of an ISO week for 2 September 2014 11:55:00:
- * var result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = startOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfISOWeek(dirtyDate: Date | number) {

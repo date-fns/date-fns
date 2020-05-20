@@ -15,7 +15,7 @@ import match from './_lib/match/index.js'
  * @author Budi Irawan [@deerawan]{@link https://github.com/deerawan}
  * @author Try Ajitiono [@imballinst]{@link https://github.com/imballinst}
  */
-var locale = {
+const locale = {
   code: 'id',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -19,7 +19,7 @@ import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
  * @example
  * // How many seconds are between
  * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?
- * var result = differenceInSeconds(
+ * const result = differenceInSeconds(
  *   new Date(2014, 6, 2, 12, 30, 20, 0),
  *   new Date(2014, 6, 2, 12, 30, 7, 999)
  * )
@@ -29,6 +29,6 @@ export default function differenceInSeconds(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ): number {
-  var diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
+  const diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

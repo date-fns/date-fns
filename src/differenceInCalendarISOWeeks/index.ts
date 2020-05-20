@@ -1,7 +1,7 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
 
-var MILLISECONDS_IN_WEEK = 604800000
+const MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * @name differenceInCalendarISOWeeks
@@ -23,7 +23,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @example
  * // How many calendar ISO weeks are between 6 July 2014 and 21 July 2014?
- * var result = differenceInCalendarISOWeeks(
+ * const result = differenceInCalendarISOWeeks(
  *   new Date(2014, 6, 21),
  *   new Date(2014, 6, 6)
  * )
@@ -33,13 +33,13 @@ export default function differenceInCalendarISOWeeks(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  var startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
-  var startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
+  const startOfISOWeekLeft = startOfISOWeek(dirtyDateLeft)
+  const startOfISOWeekRight = startOfISOWeek(dirtyDateRight)
 
-  var timestampLeft =
+  const timestampLeft =
     startOfISOWeekLeft.getTime() -
     getTimezoneOffsetInMilliseconds(startOfISOWeekLeft)
-  var timestampRight =
+  const timestampRight =
     startOfISOWeekRight.getTime() -
     getTimezoneOffsetInMilliseconds(startOfISOWeekRight)
 

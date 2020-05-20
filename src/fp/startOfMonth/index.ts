@@ -3,6 +3,6 @@
 import fn from '../../startOfMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfMonth = convertToFP(fn, 1)
+const startOfMonth = convertToFP(fn, 1)
 
 export default startOfMonth

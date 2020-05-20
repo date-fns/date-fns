@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['да н.э.', 'н.э.'],
   abbreviated: ['да н. э.', 'н. э.'],
   wide: ['да нашай эры', 'нашай эры']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'],
   wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
   abbreviated: [
     'студз.',
@@ -43,7 +43,7 @@ var monthValues = {
     'снежань'
   ]
 }
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
   abbreviated: [
     'студз.',
@@ -75,7 +75,7 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
   abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'],
@@ -90,7 +90,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -122,7 +122,7 @@ var dayPeriodValues = {
     night: 'ноч'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -156,10 +156,10 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var number = Number(dirtyNumber)
-  var suffix
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const number = Number(dirtyNumber)
+  const suffix
 
   /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
    *  For date-month combinations should be used `d` formatter.
@@ -188,7 +188,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return number + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

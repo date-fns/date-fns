@@ -34,7 +34,7 @@ import toDate from '../toDate/index.js'
  * /
 export default function parseJSON(argument) {
   if (typeof argument === 'string') {
-    var parts = argument.match(
+    const parts = argument.match(
       /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|\+00:?00)?/
     )
     if (parts) {

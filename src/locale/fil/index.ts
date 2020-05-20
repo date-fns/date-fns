@@ -12,7 +12,7 @@
  * @iso-639-2 fil
  * @author Ian De La Cruz [@RIanDeLaCruz]{@link https://github.com/RIanDeLaCruz}
  */
-// var locale = {
+// const locale = {
 //   code: 'fil',
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,

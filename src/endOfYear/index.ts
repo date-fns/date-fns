@@ -18,12 +18,12 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The end of a year for 2 September 2014 11:55:00:
- * var result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
+ * const result = endOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 23:59:59.999
  */
 export default function endOfYear(dirtyDate: Date | number) {
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(23, 59, 59, 999)
   return date

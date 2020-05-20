@@ -1,12 +1,12 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
   wide: ['Before Christ', 'Anno Domini']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
@@ -16,7 +16,7 @@ var quarterValues = {
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'Jan',
@@ -48,7 +48,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -63,7 +63,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -95,7 +95,7 @@ var dayPeriodValues = {
     night: 'night'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -129,19 +129,19 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
   //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
+  //   const options = dirtyOptions || {}
+  //   const unit = String(options.unit)
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
 
-  var rem100 = number % 100
+  const rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
@@ -155,7 +155,7 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number + 'th'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

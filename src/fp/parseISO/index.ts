@@ -3,6 +3,6 @@
 import fn from '../../parseISO/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var parseISO = convertToFP(fn, 1)
+const parseISO = convertToFP(fn, 1)
 
 export default parseISO

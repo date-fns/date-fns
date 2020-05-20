@@ -3,6 +3,6 @@
 import fn from '../../isFirstDayOfMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isFirstDayOfMonth = convertToFP(fn, 1)
+const isFirstDayOfMonth = convertToFP(fn, 1)
 
 export default isFirstDayOfMonth

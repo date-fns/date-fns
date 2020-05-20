@@ -3,6 +3,6 @@
 import fn from '../../eachYearOfInterval/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var eachYearOfInterval = convertToFP(fn, 1)
+const eachYearOfInterval = convertToFP(fn, 1)
 
 export default eachYearOfInterval

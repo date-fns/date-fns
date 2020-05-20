@@ -1,11 +1,11 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
   wide: ["Hz. İsa'dan öncə", 'Anno Domini']
 }
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
   wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'] // Note: in English, the names of days of the week and months are capitalized.
@@ -13,7 +13,7 @@ var quarterValues = {
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
 }
-var monthValues = {
+const monthValues = {
   narrow: ['Y', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'Yan',
@@ -44,7 +44,7 @@ var monthValues = {
     'Dekabr'
   ]
 }
-var dayValues = {
+const dayValues = {
   narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
   short: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
   abbreviated: ['Baz', 'Baz.e', 'Çər.a', 'Çər', 'Cüm.a', 'Cüm', 'Şə'],
@@ -58,7 +58,7 @@ var dayValues = {
     'Şənbə'
   ]
 }
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -90,7 +90,7 @@ var dayPeriodValues = {
     night: 'gecə'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -123,7 +123,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-var suffixes = {
+const suffixes = {
   1: '-inci',
   5: '-inci',
   8: '-inci',
@@ -149,20 +149,20 @@ function getSuffix(number) {
     // special case for zero
     return number + '-ıncı'
   }
-  var a = number % 10,
+  const a = number % 10,
     b = (number % 100) - a,
     c = number >= 100 ? 100 : null
   return suffixes[a] || suffixes[b] || suffixes[c]
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  var suffix = getSuffix(number)
+  const number = Number(dirtyNumber)
+  const suffix = getSuffix(number)
 
   return number + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
     values: eraValues,

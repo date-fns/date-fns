@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['fvt', 'vt'],
   abbreviated: ['f.v.t.', 'v.t.'],
   wide: ['før vesterlandsk tidsregning', 'vesterlandsk tidsregning']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. kvt.', '2. kvt.', '3. kvt.', '4. kvt.'],
   wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'jan.',
@@ -47,14 +47,14 @@ var monthValues = {
 // Note that 'Days - abbreviated - Formatting' has periods at the end.
 // https://www.unicode.org/cldr/charts/32/summary/da.html#1760
 // This makes grammatical sense in danish, as most abbreviations have periods.
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
   short: ['sø', 'ma', 'ti', 'on', 'to', 'fr', 'lø'],
   abbreviated: ['søn.', 'man.', 'tir.', 'ons.', 'tor.', 'fre.', 'lør.'],
   wide: ['søndag', 'mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -87,7 +87,7 @@ var dayPeriodValues = {
   }
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -121,11 +121,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

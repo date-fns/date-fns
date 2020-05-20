@@ -16,7 +16,7 @@ import endOfMonth from '../endOfMonth/index.js'
  *
  * @example
  * // Lists all Saturdays and Sundays in the given month
- * var result = eachWeekendOfMonth(new Date(2022, 1, 1))
+ * const result = eachWeekendOfMonth(new Date(2022, 1, 1))
  * //=> [
  * //   Sat Feb 05 2022 00:00:00,
  * //   Sun Feb 06 2022 00:00:00,
@@ -29,9 +29,9 @@ import endOfMonth from '../endOfMonth/index.js'
  * // ]
  */
 export default function eachWeekendOfMonth(dirtyDate: Date | number)[] {
-  var startDate = startOfMonth(dirtyDate)
+  const startDate = startOfMonth(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 
-  var endDate = endOfMonth(dirtyDate)
+  const endDate = endOfMonth(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }

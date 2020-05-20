@@ -3,6 +3,6 @@
 import fn from '../../getDaysInMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getDaysInMonth = convertToFP(fn, 1)
+const getDaysInMonth = convertToFP(fn, 1)
 
 export default getDaysInMonth

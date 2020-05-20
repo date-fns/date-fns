@@ -7,7 +7,7 @@ function buildLocalizeTokenFn(schema) {
         return schema.one[0].replace('{{time}}', schema.one[1])
       }
     } else {
-      var rem = count % 10 === 1 && count % 100 !== 11
+      const rem = count % 10 === 1 && count % 100 !== 11
       if (options.addSuffix) {
         return schema.other[0]
           .replace('{{time}}', rem ? schema.other[3] : schema.other[4])
@@ -21,7 +21,7 @@ function buildLocalizeTokenFn(schema) {
   }
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: buildLocalizeTokenFn({
     one: ['mazāk par {{time}}', 'sekundi', 'sekundi'],
     other: [
@@ -144,7 +144,7 @@ var formatDistanceLocale = {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var result = formatDistanceLocale[token](count, options)
+  const result = formatDistanceLocale[token](count, options)
 
   if (options.addSuffix) {
     if (options.comparison > 0) {

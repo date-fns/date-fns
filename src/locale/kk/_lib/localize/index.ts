@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['б.з.д.', 'б.з.'],
   abbreviated: ['б.з.д.', 'б.з.'],
   wide: ['біздің заманымызға дейін', 'біздің заманымыз']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ші тоқ.', '2-ші тоқ.', '3-ші тоқ.', '4-ші тоқ.'],
   wide: ['1-ші тоқсан', '2-ші тоқсан', '3-ші тоқсан', '4-ші тоқсан']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['Қ', 'А', 'Н', 'С', 'М', 'М', 'Ш', 'Т', 'Қ', 'Қ', 'Қ', 'Ж'],
   abbreviated: [
     'қаң',
@@ -43,7 +43,7 @@ var monthValues = {
     'желтоқсан'
   ]
 }
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['Қ', 'А', 'Н', 'С', 'М', 'М', 'Ш', 'Т', 'Қ', 'Қ', 'Қ', 'Ж'],
   abbreviated: [
     'қаң',
@@ -75,7 +75,7 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Ж', 'Д', 'С', 'С', 'Б', 'Ж', 'С'],
   short: ['жс', 'дс', 'сс', 'ср', 'бс', 'жм', 'сб'],
   abbreviated: ['жс', 'дс', 'сс', 'ср', 'бс', 'жм', 'сб'],
@@ -90,7 +90,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ТД',
     pm: 'ТК',
@@ -112,7 +112,7 @@ var dayPeriodValues = {
     night: 'түн'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ТД',
     pm: 'ТК',
@@ -136,9 +136,9 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const suffix
 
   if (unit === 'date') {
     suffix = '-ші'
@@ -151,7 +151,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return dirtyNumber + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

@@ -17,7 +17,7 @@
  * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
  * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
  */
-// var locale = {
+// const locale = {
 //   code: 'nl-BE',
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,

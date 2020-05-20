@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 lav
  * @author Rūdolfs Puķītis [@prudolfs]{@link https://github.com/prudolfs}
  */
-var locale = {
+const locale = {
   code: 'lv',
   formatDistance: formatDistance,
   formatLong: formatLong,

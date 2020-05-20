@@ -22,7 +22,7 @@ import subDays from '../subDays/index.js'
  *
  * @example
  * // If today is 6 October 2014, is 5 October 14:00:00 yesterday?
- * var result = isYesterday(new Date(2014, 9, 5, 14, 0))
+ * const result = isYesterday(new Date(2014, 9, 5, 14, 0))
  * //=> true
  */
 export default function isYesterday(dirtyDate: Date | number): boolean {

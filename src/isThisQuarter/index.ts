@@ -21,7 +21,7 @@ import isSameQuarter from '../isSameQuarter/index.js'
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
- * var result = isThisQuarter(new Date(2014, 6, 2))
+ * const result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
 export default function isThisQuarter(dirtyDate: Date | number): boolean {

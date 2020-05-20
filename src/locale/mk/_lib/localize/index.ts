@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['пр.н.е.', 'н.е.'],
   abbreviated: ['пред н. е.', 'н. е.'],
   wide: ['пред нашата ера', 'нашата ера']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ви кв.', '2-ри кв.', '3-ти кв.', '4-ти кв.'],
   wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал']
 }
 
-var monthValues = {
+const monthValues = {
   abbreviated: [
     'јан',
     'фев',
@@ -43,7 +43,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са'],
   abbreviated: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
@@ -58,7 +58,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   wide: {
     am: 'претпладне',
     pm: 'попладне',
@@ -72,9 +72,9 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
-  var rem100 = number % 100
+  const rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
@@ -89,7 +89,7 @@ function ordinalNumber(dirtyNumber) {
   return number + '-ти'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

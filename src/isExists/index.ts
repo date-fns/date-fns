@@ -13,12 +13,12 @@
  *
  * @example
  * // For the valid date:
- * var result = isExists(2018, 0, 31)
+ * const result = isExists(2018, 0, 31)
  * //=> true
  *
  * @example
  * // For the invalid date:
- * var result = isExists(2018, 1, 31)
+ * const result = isExists(2018, 1, 31)
  * //=> false
  */
 export default function isExists(year, month, day): boolean {

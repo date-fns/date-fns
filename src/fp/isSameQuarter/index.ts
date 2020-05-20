@@ -3,6 +3,6 @@
 import fn from '../../isSameQuarter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isSameQuarter = convertToFP(fn, 2)
+const isSameQuarter = convertToFP(fn, 2)
 
 export default isSameQuarter

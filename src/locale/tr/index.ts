@@ -17,7 +17,7 @@ import match from './_lib/match/index.js'
  *
  *
  */
-var locale = {
+const locale = {
   code: 'tr',
   formatDistance: formatDistance,
   formatLong: formatLong,

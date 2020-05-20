@@ -1,34 +1,34 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(-ლი|-ე)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(-ლი|-ე)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(ჩვ?\.წ)/i,
   abbreviated: /^(ჩვ?\.წ)/i,
   wide: /^(ჩვენს წელთაღრიცხვამდე|ქრისტეშობამდე|ჩვენი წელთაღრიცხვით|ქრისტეშობიდან)/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [
     /^(ჩვენს წელთაღრიცხვამდე|ქრისტეშობამდე)/i,
     /^(ჩვენი წელთაღრიცხვით|ქრისტეშობიდან)/i
   ]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]-(ლი|ე)? კვ/i,
   wide: /^[1234]-(ლი|ე)? კვარტალი/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   any: /^(ია|თე|მა|აპ|მს|ვნ|ვლ|აგ|სე|ოქ|ნო|დე)/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   any: [
     /^ია/i,
     /^თ/i,
@@ -45,19 +45,19 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^(კვ|ორ|სა|ოთ|ხუ|პა|შა)/i,
   short: /^(კვი|ორშ|სამ|ოთხ|ხუთ|პარ|შაბ)/i,
   long: /^(კვირა|ორშაბათი|სამშაბათი|ოთხშაბათი|ხუთშაბათი|პარასკევი|შაბათი)/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   any: [/^კვ/i, /^ორ/i, /^სა/i, /^ოთ/i, /^ხუ/i, /^პა/i, /^შა/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   any: /^([ap]\.?\s?m\.?|შუაღ|დილ)/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^a/i,
     pm: /^p/i,
@@ -70,7 +70,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

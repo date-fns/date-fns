@@ -18,7 +18,7 @@ import addSeconds from '../addSeconds/index.js'
  *
  * @example
  * // Subtract 30 seconds from 10 July 2014 12:45:00:
- * var result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * const result = subSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:44:30
  */
 export default function subSeconds(date: Date | number, amount: number) {

@@ -10,7 +10,7 @@ describe('max', function() {
   }
 
   it('returns the latest date', function() {
-    var result = max([
+    const result = max([
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     ])
@@ -18,7 +18,7 @@ describe('max', function() {
   })
 
   it('accepts array with more than 2 entries', function() {
-    var result = max([
+    const result = max([
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
       new Date(1995, 6 /* Jul */, 2),
@@ -28,7 +28,7 @@ describe('max', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = max([
+    const result = max([
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()
     ])
@@ -36,7 +36,7 @@ describe('max', function() {
   })
 
   it('returns `Invalid Date` if any given date is invalid', function() {
-    var result = max([
+    const result = max([
       new Date(1989, 6 /* Jul */, 10),
       new Date(NaN),
       new Date(1987, 1 /* Feb */, 11)
@@ -45,7 +45,7 @@ describe('max', function() {
   })
 
   it('returns `Invalid Date` if any given value is undefined', function() {
-    var result = max([
+    const result = max([
       new Date(1989, 6 /* Jul */, 10),
       // $ExpectedMistake
       undefined,
@@ -55,13 +55,13 @@ describe('max', function() {
   })
 
   it('returns `Invalid Date` for empty array', function() {
-    var result = max([])
+    const result = max([])
     assert(isInvalidDate(result))
   })
 
   it('converts Array-like objects into Array', function() {
     // $ExpectedMistake
-    var result = max({
+    const result = max({
       '0': new Date(1989, 6 /* Jul */, 10),
       '1': new Date(1987, 1 /* Feb */, 11),
       length: 2
@@ -70,7 +70,7 @@ describe('max', function() {
   })
 
   it('converts iterable objects into Array', function() {
-    var result = max(
+    const result = max(
       // $ExpectedMistake
       new Set([
         new Date(1989, 6 /* Jul */, 10),
@@ -82,7 +82,7 @@ describe('max', function() {
 
   it('returns `Invalid Date` if given a non-iterable value', function() {
     // $ExpectedMistake
-    var result = max(undefined)
+    const result = max(undefined)
     assert(isInvalidDate(result))
   })
 

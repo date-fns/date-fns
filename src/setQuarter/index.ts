@@ -20,16 +20,16 @@ import setMonth from '../setMonth/index.js'
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:
- * var result = setQuarter(new Date(2014, 6, 2), 2)
+ * const result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
 export default function setQuarter(
   dirtyDate: Date | number,
   dirtyQuarter: number
 ) {
-  var date = toDate(dirtyDate)
-  var quarter = toInteger(dirtyQuarter)
-  var oldQuarter = Math.floor(date.getMonth() / 3) + 1
-  var diff = quarter - oldQuarter
+  const date = toDate(dirtyDate)
+  const quarter = toInteger(dirtyQuarter)
+  const oldQuarter = Math.floor(date.getMonth() / 3) + 1
+  const diff = quarter - oldQuarter
   return setMonth(date, date.getMonth() + diff * 3)
 }

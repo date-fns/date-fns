@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'την προηγούμενη' eeee 'στις' p",
   yesterday: "'χθες στις' p",
   today: "'σήμερα στις' p",

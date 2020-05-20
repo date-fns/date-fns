@@ -1,31 +1,31 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['לפנה״ס', 'לספירה'],
   abbreviated: ['לפנה״ס', 'לספירה'],
   wide: ['לפני הספירה', 'לספירה']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   abbreviated: ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יוני', 'יולי', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'],
   wide: ['ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני', 'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
   short: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
   abbreviated: ['יום א׳', 'יום ב׳', 'יום ג׳', 'יום ד׳', 'יום ה׳', 'יום ו׳', 'שבת'],
   wide: ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'יום שבת']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'לפנה״צ',
     pm: 'אחה״צ',
@@ -57,7 +57,7 @@ var dayPeriodValues = {
     night: 'לילה'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'לפנה״צ',
     pm: 'אחה״צ',
@@ -91,24 +91,24 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   // We only show words till 10
   if (number <= 0 || number > 10) return number
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
-  var isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
+  const isFemale = ['year', 'hour', 'minute', 'second'].indexOf(unit) >= 0
 
-  var male = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שביעי', 'שמיני', 'תשיעי', 'עשירי']
-  var female = ['ראשונה', 'שנייה', 'שלישית', 'רביעית', 'חמישית', 'שישית', 'שביעית', 'שמינית', 'תשיעית', 'עשירית']
+  const male = ['ראשון', 'שני', 'שלישי', 'רביעי', 'חמישי', 'שישי', 'שביעי', 'שמיני', 'תשיעי', 'עשירי']
+  const female = ['ראשונה', 'שנייה', 'שלישית', 'רביעית', 'חמישית', 'שישית', 'שביעית', 'שמינית', 'תשיעית', 'עשירית']
 
-  var index = number - 1
+  const index = number - 1
   return isFemale ? female[index] : male[index]
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

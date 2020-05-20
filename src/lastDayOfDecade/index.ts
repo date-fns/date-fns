@@ -17,13 +17,13 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The last day of a decade for 21 December 2012 21:12:00:
- * var result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))
+ * const result = lastDayOfDecade(new Date(2012, 11, 21, 21, 12, 00))
  * //=> Wed Dec 31 2019 00:00:00
  */
 export default function lastDayOfDecade(dirtyDate: Date | number) {
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
-  var decade = 9 + Math.floor(year / 10) * 10
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
+  const decade = 9 + Math.floor(year / 10) * 10
   date.setFullYear(decade + 1, 0, 0)
   date.setHours(0, 0, 0, 0)
   return date

@@ -1,5 +1,5 @@
 // Source: https://www.unicode.org/cldr/charts/32/summary/gu.html
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'હમણાં', // CLDR #1461
     other: '​આશરે {{count}} સેકંડ'
@@ -81,7 +81,7 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

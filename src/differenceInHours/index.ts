@@ -1,6 +1,6 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
 
-var MILLISECONDS_IN_HOUR = 3600000
+const MILLISECONDS_IN_HOUR = 3600000
 
 /**
  * @name differenceInHours
@@ -20,7 +20,7 @@ var MILLISECONDS_IN_HOUR = 3600000
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
- * var result = differenceInHours(
+ * const result = differenceInHours(
  *   new Date(2014, 6, 2, 19, 0),
  *   new Date(2014, 6, 2, 6, 50)
  * )
@@ -30,7 +30,7 @@ export default function differenceInHours(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ): number {
-  var diff =
+  const diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_HOUR
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)

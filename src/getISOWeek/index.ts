@@ -2,7 +2,7 @@ import toDate from '../toDate/index.js'
 import startOfISOWeek from '../startOfISOWeek/index.js'
 import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
 
-var MILLISECONDS_IN_WEEK = 604800000
+const MILLISECONDS_IN_WEEK = 604800000
 
 /**
  * @name getISOWeek
@@ -23,12 +23,13 @@ var MILLISECONDS_IN_WEEK = 604800000
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?
- * var result = getISOWeek(new Date(2005, 0, 2))
+ * const result = getISOWeek(new Date(2005, 0, 2))
  * //=> 53
  */
 export default function getISOWeek(dirtyDate: Date | number): number {
-  var date = toDate(dirtyDate)
-  var diff = startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
+  const date = toDate(dirtyDate)
+  const diff =
+    startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

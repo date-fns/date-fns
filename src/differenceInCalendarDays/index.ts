@@ -1,7 +1,7 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import startOfDay from '../startOfDay/index.js'
 
-var MILLISECONDS_IN_DAY = 86400000
+const MILLISECONDS_IN_DAY = 86400000
 
 /**
  * @name differenceInCalendarDays
@@ -23,14 +23,14 @@ var MILLISECONDS_IN_DAY = 86400000
  * @example
  * // How many calendar days are between
  * // 2 July 2011 23:00:00 and 2 July 2012 00:00:00?
- * var result = differenceInCalendarDays(
+ * const result = differenceInCalendarDays(
  *   new Date(2012, 6, 2, 0, 0),
  *   new Date(2011, 6, 2, 23, 0)
  * )
  * //=> 366
  * // How many calendar days are between
  * // 2 July 2011 23:59:00 and 3 July 2011 00:01:00?
- * var result = differenceInCalendarDays(
+ * const result = differenceInCalendarDays(
  *   new Date(2011, 6, 3, 0, 1),
  *   new Date(2011, 6, 2, 23, 59)
  * )
@@ -40,12 +40,12 @@ export default function differenceInCalendarDays(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  var startOfDayLeft = startOfDay(dirtyDateLeft)
-  var startOfDayRight = startOfDay(dirtyDateRight)
+  const startOfDayLeft = startOfDay(dirtyDateLeft)
+  const startOfDayRight = startOfDay(dirtyDateRight)
 
-  var timestampLeft =
+  const timestampLeft =
     startOfDayLeft.getTime() - getTimezoneOffsetInMilliseconds(startOfDayLeft)
-  var timestampRight =
+  const timestampRight =
     startOfDayRight.getTime() - getTimezoneOffsetInMilliseconds(startOfDayRight)
 
   // Round the number of days to the nearest integer

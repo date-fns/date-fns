@@ -24,17 +24,17 @@ import toInteger from '../_lib/toInteger/index.js'
  *
  * @example
  * // Which week of the month is 9 November 2017?
- * var result = getWeekOfMonth(new Date(2017, 10, 9))
+ * const result = getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
 export default function getWeekOfMonth(date, dirtyOptions): number {
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -44,13 +44,13 @@ export default function getWeekOfMonth(date, dirtyOptions): number {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var currentDayOfMonth = getDate(date)
+  const currentDayOfMonth = getDate(date)
   if (isNaN(currentDayOfMonth)) {
     return currentDayOfMonth
   }
 
-  var startWeekDay = getDay(startOfMonth(date))
-  var lastDayOfFirstWeek = 0
+  const startWeekDay = getDay(startOfMonth(date))
+  const lastDayOfFirstWeek = 0
 
   if (startWeekDay >= weekStartsOn) {
     lastDayOfFirstWeek = weekStartsOn + 7 - startWeekDay
@@ -58,10 +58,10 @@ export default function getWeekOfMonth(date, dirtyOptions): number {
     lastDayOfFirstWeek = weekStartsOn - startWeekDay
   }
 
-  var weekNumber = 1
+  const weekNumber = 1
 
   if (currentDayOfMonth > lastDayOfFirstWeek) {
-    var remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek
+    const remainingDaysAfterFirstWeek = currentDayOfMonth - lastDayOfFirstWeek
     weekNumber = weekNumber + Math.ceil(remainingDaysAfterFirstWeek / 7)
   }
   return weekNumber

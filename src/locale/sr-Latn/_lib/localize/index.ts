@@ -1,17 +1,17 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return String(number).concat('.')
 }
 
-var eraValues = {
+const eraValues = {
   narrow: ['pr.n.e.', 'AD'],
   abbreviated: ['pr. Hr.', 'po. Hr.'],
   wide: ['Pre Hrista', 'Posle Hrista']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: [
     '1.',
     '2.',
@@ -56,7 +56,7 @@ var monthValues = {
   ]
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: [
     '1.',
     '2.',
@@ -101,13 +101,13 @@ var formattingMonthValues = {
   ]
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1.', '2.', '3.', '4.'],
   abbreviated: ['1. kv.', '2. kv.', '3. kv.', '4. kv.'],
   wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['N', 'P', 'U', 'S', 'Č', 'P', 'S'],
   short: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
   abbreviated: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
@@ -122,7 +122,7 @@ var dayValues = {
   ]
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -155,7 +155,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -188,7 +188,7 @@ var dayPeriodValues = {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
     values: eraValues,

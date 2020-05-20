@@ -4,100 +4,100 @@
 import assert from 'power-assert'
 import lastDayOfWeek from '.'
 
-describe('lastDayOfWeek', function() {
-  it('returns the date with the time set to 00:00:00 and the date set to the last day of a week', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = lastDayOfWeek(date)
+describe('lastDayOfWeek', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the last day of a week', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = lastDayOfWeek(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 6))
   })
 
-  it('allows to specify which day is the first day of the week', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = lastDayOfWeek(date, { weekStartsOn: 1 })
+  it('allows to specify which day is the first day of the week', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = lastDayOfWeek(date, { weekStartsOn: 1 })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
-  it('allows to specify which day is the first day of the week in locale', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = lastDayOfWeek(date, {
+  it('allows to specify which day is the first day of the week in locale', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = lastDayOfWeek(date, {
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 1 }
-      }
+        options: { weekStartsOn: 1 },
+      },
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
-    var result = lastDayOfWeek(date, {
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    const result = lastDayOfWeek(date, {
       weekStartsOn: 1,
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 0 }
-      }
+        options: { weekStartsOn: 0 },
+      },
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
-  it('implicitly converts options', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+  it('implicitly converts options', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     // $ExpectedMistake
-    var result = lastDayOfWeek(date, { weekStartsOn: '1' })
+    const result = lastDayOfWeek(date, { weekStartsOn: '1' })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
-  it('accepts a timestamp', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
-    var result = lastDayOfWeek(date)
+  it('accepts a timestamp', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
+    const result = lastDayOfWeek(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 6))
   })
 
-  it('does not mutate the original date', function() {
-    var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+  it('does not mutate the original date', function () {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     lastDayOfWeek(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
-  describe('edge cases', function() {
-    context('when the given day is before the start of a week', function() {
-      it('it returns the last day of a week', function() {
-        var date = new Date(2014, 9 /* Oct */, 6)
-        var result = lastDayOfWeek(date, { weekStartsOn: 3 })
+  describe('edge cases', function () {
+    context('when the given day is before the start of a week', function () {
+      it('it returns the last day of a week', function () {
+        const date = new Date(2014, 9 /* Oct */, 6)
+        const result = lastDayOfWeek(date, { weekStartsOn: 3 })
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 7))
       })
     })
 
-    context('when the given day is the start of a week', function() {
-      it('it returns the last day of a week', function() {
-        var date = new Date(2014, 9 /* Oct */, 8)
-        var result = lastDayOfWeek(date, { weekStartsOn: 3 })
+    context('when the given day is the start of a week', function () {
+      it('it returns the last day of a week', function () {
+        const date = new Date(2014, 9 /* Oct */, 8)
+        const result = lastDayOfWeek(date, { weekStartsOn: 3 })
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14))
       })
     })
 
-    context('when the given day is after the start of a week', function() {
-      it('it returns the last day of a week', function() {
-        var date = new Date(2014, 9 /* Oct */, 10)
-        var result = lastDayOfWeek(date, { weekStartsOn: 3 })
+    context('when the given day is after the start of a week', function () {
+      it('it returns the last day of a week', function () {
+        const date = new Date(2014, 9 /* Oct */, 10)
+        const result = lastDayOfWeek(date, { weekStartsOn: 3 })
         assert.deepEqual(result, new Date(2014, 9 /* Oct */, 14))
       })
     })
 
-    it('handles the week at the end of a year', function() {
-      var date = new Date(2014, 11 /* Dec */, 29)
-      var result = lastDayOfWeek(date, { weekStartsOn: 5 })
+    it('handles the week at the end of a year', function () {
+      const date = new Date(2014, 11 /* Dec */, 29)
+      const result = lastDayOfWeek(date, { weekStartsOn: 5 })
       assert.deepEqual(result, new Date(2015, 0 /* Jan */, 1))
     })
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = lastDayOfWeek(new Date(NaN))
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    const result = lastDayOfWeek(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {
-    var block = lastDayOfWeek.bind(
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
+    const block = lastDayOfWeek.bind(
       null,
       new Date(2014, 8 /* Sep */, 2, 11, 55, 0),
       // $ExpectedMistake
@@ -106,7 +106,7 @@ describe('lastDayOfWeek', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(lastDayOfWeek.bind(null), TypeError)
   })
 })

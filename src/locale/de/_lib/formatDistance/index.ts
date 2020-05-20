@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     standalone: {
       one: 'weniger als eine Sekunde',
@@ -173,11 +173,11 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var usageGroup = options.addSuffix
+  const usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
 
-  var result
+  const result
   if (typeof usageGroup === 'string') {
     result = usageGroup
   } else if (count === 1) {

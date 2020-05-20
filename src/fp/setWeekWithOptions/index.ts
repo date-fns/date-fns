@@ -3,6 +3,6 @@
 import fn from '../../setWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var setWeekWithOptions = convertToFP(fn, 3)
+const setWeekWithOptions = convertToFP(fn, 3)
 
 export default setWeekWithOptions

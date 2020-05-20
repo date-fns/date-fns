@@ -9,7 +9,7 @@ function checkWeek(_date, _baseDate, _options, baseFormat) {
   return "'上个'" + baseFormat // in last week
 }
 
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: checkWeek, // days before yesterday, maybe in this week or last week
   yesterday: "'昨天' p",
   today: "'今天' p",
@@ -19,7 +19,7 @@ var formatRelativeLocale = {
 }
 
 export default function formatRelative(token, _date, _baseDate, _options) {
-  var format = formatRelativeLocale[token]
+  const format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
     return format(_date, _baseDate, _options, 'eeee p')

@@ -3,14 +3,14 @@ function declensionGroup(scheme, count) {
     return scheme.one
   }
 
-  var rem100 = count % 100
+  const rem100 = count % 100
 
   // ends with 11-20
   if (rem100 <= 20 && rem100 > 10) {
     return scheme.other
   }
 
-  var rem10 = rem100 % 10
+  const rem10 = rem100 % 10
 
   // ends with 2, 3, 4
   if (rem10 >= 2 && rem10 <= 4) {
@@ -22,12 +22,12 @@ function declensionGroup(scheme, count) {
 
 function declension(scheme, count, time) {
   time = time || 'regular'
-  var group = declensionGroup(scheme, count)
-  var finalText = group[time] || group
+  const group = declensionGroup(scheme, count)
+  const finalText = group[time] || group
   return finalText.replace('{{count}}', count)
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: {
       regular: 'mniej niż sekunda',
@@ -156,7 +156,7 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var scheme = formatDistanceLocale[token]
+  const scheme = formatDistanceLocale[token]
   if (!options.addSuffix) {
     return declension(scheme, count)
   }

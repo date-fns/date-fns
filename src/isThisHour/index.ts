@@ -22,7 +22,7 @@ import isSameHour from '../isSameHour/index.js'
  * @example
  * // If now is 25 September 2014 18:30:15.500,
  * // is 25 September 2014 18:00:00 in this hour?
- * var result = isThisHour(new Date(2014, 8, 25, 18))
+ * const result = isThisHour(new Date(2014, 8, 25, 18))
  * //=> true
  */
 export default function isThisHour(dirtyDate: Date | number): boolean {

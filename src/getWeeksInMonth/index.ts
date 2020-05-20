@@ -23,13 +23,13 @@ import startOfMonth from '../startOfMonth/index.js'
  *
  * @example
  * // How many calendar weeks does February 2015 span?
- * var result = getWeeksInMonth(new Date(2015, 1, 8))
+ * const result = getWeeksInMonth(new Date(2015, 1, 8))
  * //=> 4
  *
  * @example
  * // If the week starts on Monday,
  * // how many calendar weeks does July 2017 span?
- * var result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
+ * const result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
 export default function getWeeksInMonth(date, options): number {

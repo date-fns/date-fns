@@ -1,6 +1,6 @@
 import localize from '../localize/index.js'
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'প্রায় ১ সেকেন্ড',
     other: 'প্রায় {{count}} সেকেন্ড'
@@ -82,7 +82,7 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

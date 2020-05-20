@@ -3,6 +3,6 @@
 import fn from '../../getOverlappingDaysInIntervals/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var getOverlappingDaysInIntervals = convertToFP(fn, 2)
+const getOverlappingDaysInIntervals = convertToFP(fn, 2)
 
 export default getOverlappingDaysInIntervals

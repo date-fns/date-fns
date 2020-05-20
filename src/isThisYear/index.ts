@@ -21,7 +21,7 @@ import isSameYear from '../isSameYear/index.js'
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this year?
- * var result = isThisYear(new Date(2014, 6, 2))
+ * const result = isThisYear(new Date(2014, 6, 2))
  * //=> true
  */
 export default function isThisYear(dirtyDate: Date | number): boolean {

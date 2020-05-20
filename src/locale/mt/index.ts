@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Andras Matzon [@amatzon](@link https://github.com/amatzon)
  * @author Bryan Borg [@bryanMt](@link https://github.com/bryanMt)
  */
-var locale = {
+const locale = {
   code: 'mt',
   formatDistance: formatDistance,
   formatLong: formatLong,

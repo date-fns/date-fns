@@ -32,12 +32,12 @@ import { DateValues } from 'src/types.js'
  *
  * @example
  * // Transform 1 September 2014 into 20 October 2015 in a single line:
- * var result = set(new Date(2014, 8, 20), { year: 2015, month: 9, date: 20 })
+ * const result = set(new Date(2014, 8, 20), { year: 2015, month: 9, date: 20 })
  * //=> Tue Oct 20 2015 00:00:00
  *
  * @example
  * // Set 12 PM to 1 September 2014 01:23:45 to 1 September 2014 12:00:00:
- * var result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
+ * const result = set(new Date(2014, 8, 1, 1, 23, 45), { hours: 12 })
  * //=> Mon Sep 01 2014 12:23:45
  */
 
@@ -46,7 +46,7 @@ export default function set(dirtyDate: Date | number, values: DateValues) {
     throw new RangeError('values parameter must be an object')
   }
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
   if (isNaN(date)) {

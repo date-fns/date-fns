@@ -22,13 +22,13 @@ import startOfWeek from '../startOfWeek/index.js'
  *
  * @example
  * // Are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4))
+ * const result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4))
  * //=> true
  *
  * @example
  * // If week starts with Monday,
  * // are 31 August 2014 and 4 September 2014 in the same week?
- * var result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4), {
+ * const result = isSameWeek(new Date(2014, 7, 31), new Date(2014, 8, 4), {
  *   weekStartsOn: 1
  * })
  * //=> false
@@ -38,8 +38,8 @@ export default function isSameWeek(
   dirtyDateRight: Date | number,
   dirtyOptions
 ) {
-  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
-  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
+  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
+  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }

@@ -1,6 +1,6 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
-var formatLong = buildFormatLongFn({
+const formatLong = buildFormatLongFn({
   LT: 'h:mm aa',
   LTS: 'h:mm:ss aa',
   L: 'MM/DD/YYYY',

@@ -16,7 +16,7 @@ import match from './_lib/match/index.js'
  * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
-var locale = {
+const locale = {
   code: 'ja',
   formatDistance: formatDistance,
   formatLong: formatLong,

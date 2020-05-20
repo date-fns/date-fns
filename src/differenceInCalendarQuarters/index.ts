@@ -19,7 +19,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // How many calendar quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInCalendarQuarters(
+ * const result = differenceInCalendarQuarters(
  *   new Date(2014, 6, 2),
  *   new Date(2013, 11, 31)
  * )
@@ -29,11 +29,11 @@ export default function differenceInCalendarQuarters(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
 ) {
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
 
   return yearDiff * 4 + quarterDiff
 }

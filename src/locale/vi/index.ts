@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Thanh Tran [@trongthanh]{@link https://github.com/trongthanh}
  * @author Leroy Hopson [@lihop]{@link https://github.com/lihop}
  */
-var locale = {
+const locale = {
   code: 'vi',
   formatDistance: formatDistance,
   formatLong: formatLong,

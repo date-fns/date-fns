@@ -7,7 +7,7 @@ import isWeekend from '../isWeekend'
 
 describe('eachWeekendOfYear', () => {
   it('returns all weekends of the given year', () => {
-    var result = eachWeekendOfYear(new Date(2020, 0, 1))
+    const result = eachWeekendOfYear(new Date(2020, 0, 1))
     assert(result.length === 104)
     assert(result.every(isWeekend))
     assert.deepEqual(result[0], new Date(2020, 0, 4))

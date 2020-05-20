@@ -3,6 +3,6 @@
 import fn from '../../min/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var min = convertToFP(fn, 1)
+const min = convertToFP(fn, 1)
 
 export default min

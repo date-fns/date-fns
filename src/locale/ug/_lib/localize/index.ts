@@ -1,12 +1,12 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['ب', 'ك'],
   abbreviated: ['ب', 'ك'],
   wide: ['مىيلادىدىن بۇرۇن', 'مىيلادىدىن كىيىن']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1', '2', '3', '4'],
   wide: ['بىرىنجى چارەك', 'ئىككىنجى چارەك', 'ئۈچىنجى چارەك', 'تۆتىنجى چارەك']
@@ -16,7 +16,7 @@ var quarterValues = {
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
+const monthValues = {
   narrow: ['ي', 'ف', 'م', 'ا', 'م', 'ى', 'ى', 'ا', 'س', 'ۆ', 'ن', 'د'],
   abbreviated: [
     'يانۋار',
@@ -48,7 +48,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
   short: ['ي', 'د', 'س', 'چ', 'پ', 'ج', 'ش'],
   abbreviated: [
@@ -71,7 +71,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ئە',
     pm: 'چ',
@@ -103,7 +103,7 @@ var dayPeriodValues = {
     night: 'كىچە'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ئە',
     pm: 'چ',
@@ -140,7 +140,7 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return String(dirtyNumber)
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

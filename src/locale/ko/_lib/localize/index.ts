@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['BC', 'AD'],
   abbreviated: ['BC', 'AD'],
   wide: ['기원전', '서기']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   wide: ['1분기', '2분기', '3분기', '4분기']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   abbreviated: [
     '1월',
@@ -44,14 +44,14 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['일', '월', '화', '수', '목', '금', '토'],
   short: ['일', '월', '화', '수', '목', '금', '토'],
   abbreviated: ['일', '월', '화', '수', '목', '금', '토'],
   wide: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: '오전',
     pm: '오후',
@@ -84,7 +84,7 @@ var dayPeriodValues = {
   }
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: '오전',
     pm: '오후',
@@ -118,10 +118,10 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
 
   switch (unit) {
     case 'minute':
@@ -134,7 +134,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   }
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

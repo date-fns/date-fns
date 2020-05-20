@@ -1,12 +1,12 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['p.m.ē', 'm.ē'],
   abbreviated: ['p. m. ē.', 'm. ē.'],
   wide: ['pirms mūsu ēras', 'mūsu ērā']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. cet.', '2. cet.', '3. cet.', '4. cet.'],
   wide: [
@@ -17,7 +17,7 @@ var quarterValues = {
   ]
 }
 
-var formattingQuarterValues = {
+const formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. cet.', '2. cet.', '3. cet.', '4. cet.'],
   wide: [
@@ -28,7 +28,7 @@ var formattingQuarterValues = {
   ]
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'janv.',
@@ -60,7 +60,7 @@ var monthValues = {
   ]
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'janv.',
@@ -92,7 +92,7 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'P', 'O', 'T', 'C', 'P', 'S'],
   short: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'],
   abbreviated: [
@@ -115,7 +115,7 @@ var dayValues = {
   ]
 }
 
-var formattingDayValues = {
+const formattingDayValues = {
   narrow: ['S', 'P', 'O', 'T', 'C', 'P', 'S'],
   short: ['Sv', 'P', 'O', 'T', 'C', 'Pk', 'S'],
   abbreviated: [
@@ -138,7 +138,7 @@ var formattingDayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -170,7 +170,7 @@ var dayPeriodValues = {
     night: 'nakts'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -207,7 +207,7 @@ function ordinalNumber(number, _options) {
   return number + '.'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // If today is 6 October 2014, is 2 July 2014 in the past?
- * var result = isPast(new Date(2014, 6, 2))
+ * const result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
 export default function isPast(dirtyDate: Date | number): boolean {

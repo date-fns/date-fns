@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 tel
  * @author Kranthi Lakum [@kranthilakum]{@link https://github.com/kranthilakum}
  */
-var locale = {
+const locale = {
   code: 'te',
   formatDistance: formatDistance,
   formatLong: formatLong,

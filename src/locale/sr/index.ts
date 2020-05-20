@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 srp
  * @author Igor Radivojević [@rogyvoje]{@link https://github.com/rogyvoje}
  */
-var locale = {
+const locale = {
   code: 'sr',
   formatDistance: formatDistance,
   formatLong: formatLong,

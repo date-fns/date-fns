@@ -1,6 +1,6 @@
 // Source: https://www.unicode.org/cldr/charts/32/summary/gu.html
 
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'પાછલા' eeee p", // CLDR #1384
   yesterday: "'ગઈકાલે' p", // CLDR #1409
   today: "'આજે' p", // CLDR #1410

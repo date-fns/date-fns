@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['πΧ', 'μΧ'],
   abbreviated: ['π.Χ.', 'μ.Χ.'],
   wide: ['προ Χριστού', 'μετά Χριστόν']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
   wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
   abbreviated: [
     'Ιαν',
@@ -44,7 +44,7 @@ var monthValues = {
   ]
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['Ι', 'Φ', 'Μ', 'Α', 'Μ', 'Ι', 'Ι', 'Α', 'Σ', 'Ο', 'Ν', 'Δ'],
   abbreviated: [
     'Ιαν',
@@ -76,7 +76,7 @@ var formattingMonthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Κ', 'Δ', 'T', 'Τ', 'Π', 'Π', 'Σ'],
   short: ['Κυ', 'Δε', 'Τρ', 'Τε', 'Πέ', 'Πα', 'Σά'],
   abbreviated: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
@@ -91,7 +91,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'πμ',
     pm: 'μμ',
@@ -125,9 +125,9 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const suffix
 
   if (unit === 'year' || unit === 'month') {
     suffix = 'ος'
@@ -146,7 +146,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return dirtyNumber + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
     values: eraValues,

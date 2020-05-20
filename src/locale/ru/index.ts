@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
-var locale = {
+const locale = {
   code: 'ru',
   formatDistance: formatDistance,
   formatLong: formatLong,

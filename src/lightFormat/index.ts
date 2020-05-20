@@ -13,11 +13,11 @@ import subMilliseconds from '../subMilliseconds/index.js'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'([^]*?)'?$/
-var doubleQuoteRegExp = /''/g
-var unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const escapedStringRegExp = /^'([^]*?)'?$/
+const doubleQuoteRegExp = /''/g
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name lightFormat
@@ -70,13 +70,13 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '1987-02-11'
  */
 export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
-  var formatStr = String(dirtyFormatStr)
+  const formatStr = String(dirtyFormatStr)
 
-  var originalDate = toDate(dirtyDate)
+  const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -85,10 +85,10 @@ export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  var utcDate = subMilliseconds(originalDate, timezoneOffset)
+  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
+  const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
-  var result = formatStr
+  const result = formatStr
     .match(formattingTokensRegExp)
     .map(function (substring) {
       // Replace two single quote characters with one single quote character
@@ -96,12 +96,12 @@ export default function lightFormat(dirtyDate: Date | number, dirtyFormatStr) {
         return "'"
       }
 
-      var firstCharacter = substring[0]
+      const firstCharacter = substring[0]
       if (firstCharacter === "'") {
         return cleanEscapedString(substring)
       }
 
-      var formatter = formatters[firstCharacter]
+      const formatter = formatters[firstCharacter]
       if (formatter) {
         return formatter(utcDate, substring, null, {})
       }

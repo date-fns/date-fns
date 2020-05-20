@@ -1,33 +1,33 @@
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)\./i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)\./i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(пр\.н\.е\.|АД)/i,
   abbreviated: /^(пр\.\s?Хр\.|по\.\s?Хр\.)/i,
   wide: /^(Пре Христа|пре нове ере|После Христа|нова ера)/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/^пр/i, /^(по|нова)/i]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]\.\s?кв\.?/i,
   wide: /^[1234]\. квартал/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^(10|11|12|[123456789])\./i,
   abbreviated: /^(јан|феб|мар|апр|мај|јун|јул|авг|сеп|окт|нов|дец)/i,
   wide: /^((јануар|јануара)|(фебруар|фебруара)|(март|марта)|(април|априла)|(мја|маја)|(јун|јуна)|(јул|јула)|(август|августа)|(септембар|септембра)|(октобар|октобра)|(новембар|новембра)|(децембар|децембра))/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [/(10|11|12|[123456789])/i],
   any: [
     /^ја/i,
@@ -45,21 +45,21 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[пусчн]/i,
   short: /^(нед|пон|уто|сре|чет|пет|суб)/i,
   abbreviated: /^(нед|пон|уто|сре|чет|пет|суб)/i,
   wide: /^(недеља|понедељак|уторак|среда|четвртак|петак|субота)/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [/^п/i, /^у/i, /^с/i, /^ч/i, /^н/i],
   any: [/^нед/i, /^пон/i, /^уто/i, /^сре/i, /^чет/i, /^пет/i, /^суб/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   any: /^(ам|пм|поноћ|(по)?подне|увече|ноћу|после подне|ујутру)/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^a/i,
     pm: /^p/i,
@@ -72,7 +72,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

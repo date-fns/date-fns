@@ -4,58 +4,58 @@
 import assert from 'power-assert'
 import differenceInMinutes from '.'
 
-describe('differenceInMinutes', function() {
-  it('returns the number of minutes between the given dates', function() {
-    var result = differenceInMinutes(
+describe('differenceInMinutes', function () {
+  it('returns the number of minutes between the given dates', function () {
+    const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20),
       new Date(2014, 6 /* Jul */, 2, 12, 6)
     )
     assert(result === 14)
   })
 
-  it('returns a negative number if the time value of the first date is smaller', function() {
-    var result = differenceInMinutes(
+  it('returns a negative number if the time value of the first date is smaller', function () {
+    const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 6),
       new Date(2014, 6 /* Jul */, 2, 12, 20)
     )
     assert(result === -14)
   })
 
-  it('accepts timestamps', function() {
-    var result = differenceInMinutes(
+  it('accepts timestamps', function () {
+    const result = differenceInMinutes(
       new Date(2014, 8 /* Sep */, 5, 18, 45).getTime(),
       new Date(2014, 8 /* Sep */, 5, 18, 15).getTime()
     )
     assert(result === 30)
   })
 
-  describe('edge cases', function() {
-    it('the difference is less than a minute, but the given dates are in different calendar minutes', function() {
-      var result = differenceInMinutes(
+  describe('edge cases', function () {
+    it('the difference is less than a minute, but the given dates are in different calendar minutes', function () {
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 12),
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59)
       )
       assert(result === 0)
     })
 
-    it('the same for the swapped dates', function() {
-      var result = differenceInMinutes(
+    it('the same for the swapped dates', function () {
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 11, 59),
         new Date(2014, 8 /* Sep */, 5, 12, 12)
       )
       assert(result === 0)
     })
 
-    it('the difference is an integral number of minutes', function() {
-      var result = differenceInMinutes(
+    it('the difference is an integral number of minutes', function () {
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 12, 25),
         new Date(2014, 8 /* Sep */, 5, 12, 15)
       )
       assert(result === 10)
     })
 
-    it('the given dates are the same', function() {
-      var result = differenceInMinutes(
+    it('the given dates are the same', function () {
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -67,38 +67,38 @@ describe('differenceInMinutes', function() {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInMinutes(
+      const result = differenceInMinutes(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
-  it('returns NaN if the first date is `Invalid Date`', function() {
-    var result = differenceInMinutes(
+  it('returns NaN if the first date is `Invalid Date`', function () {
+    const result = differenceInMinutes(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
     assert(isNaN(result.getTime()))
   })
 
-  it('returns NaN if the second date is `Invalid Date`', function() {
-    var result = differenceInMinutes(
+  it('returns NaN if the second date is `Invalid Date`', function () {
+    const result = differenceInMinutes(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
     assert(isNaN(result.getTime()))
   })
 
-  it('returns NaN if the both dates are `Invalid Date`', function() {
-    var result = differenceInMinutes(new Date(NaN), new Date(NaN))
+  it('returns NaN if the both dates are `Invalid Date`', function () {
+    const result = differenceInMinutes(new Date(NaN), new Date(NaN))
     assert(isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function() {
+  it('throws TypeError exception if passed less than 2 arguments', function () {
     assert.throws(differenceInMinutes.bind(null), TypeError)
     assert.throws(differenceInMinutes.bind(null, 1), TypeError)
   })

@@ -1,7 +1,7 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1986
-var dateFormats = {
+const dateFormats = {
   full: 'EEEE d. MMMM y',
   long: 'd. MMMM y',
   medium: 'd. M. y',
@@ -9,7 +9,7 @@ var dateFormats = {
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#2149
-var timeFormats = {
+const timeFormats = {
   full: 'H:mm:ss zzzz',
   long: 'H:mm:ss z',
   medium: 'H:mm:ss',
@@ -17,14 +17,14 @@ var timeFormats = {
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1994
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: '{{date}}, {{time}}',
   long: '{{date}}, {{time}}',
   medium: '{{date}}, {{time}}',
   short: '{{date}} {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

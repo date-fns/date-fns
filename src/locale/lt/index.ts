@@ -16,7 +16,7 @@ import match from './_lib/match/index.js'
  * @author Pavlo Shpak [@pshpak]{@link https://github.com/pshpak}
  * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
  */
-var locale = {
+const locale = {
   code: 'lt',
   formatDistance: formatDistance,
   formatLong: formatLong,

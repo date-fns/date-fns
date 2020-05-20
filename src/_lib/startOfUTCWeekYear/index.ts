@@ -9,23 +9,23 @@ export default function startOfUTCWeekYear(
   dirtyDate: Date | number,
   dirtyOptions
 ) {
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
-  var year = getUTCWeekYear(dirtyDate, dirtyOptions)
-  var firstWeek = new Date(0)
+  const year = getUTCWeekYear(dirtyDate, dirtyOptions)
+  const firstWeek = new Date(0)
   firstWeek.setUTCFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setUTCHours(0, 0, 0, 0)
-  var date = startOfUTCWeek(firstWeek, dirtyOptions)
+  const date = startOfUTCWeek(firstWeek, dirtyOptions)
   return date
 }

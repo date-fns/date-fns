@@ -3,6 +3,6 @@
 import fn from '../../isAfter/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var isAfter = convertToFP(fn, 2)
+const isAfter = convertToFP(fn, 2)
 
 export default isAfter

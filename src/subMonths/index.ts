@@ -18,7 +18,7 @@ import addMonths from '../addMonths/index.js'
  *
  * @example
  * // Subtract 5 months from 1 February 2015:
- * var result = subMonths(new Date(2015, 1, 1), 5)
+ * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function subMonths(date: Date | number, amount: number) {

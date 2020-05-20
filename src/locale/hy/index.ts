@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Alex Igityan [@alexigityan]{@link https://github.com/alexigityan}
  */
 
-var locale = {
+const locale = {
   code: 'hy',
   formatDistance: formatDistance,
   formatLong: formatLong,

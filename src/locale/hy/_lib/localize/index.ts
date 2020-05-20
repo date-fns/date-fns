@@ -1,16 +1,16 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['Ք', 'Մ'],
   abbreviated: ['ՔԱ', 'ՄԹ'],
   wide: ['Քրիստոսից առաջ', 'Մեր թվարկության']
 }
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Ք1', 'Ք2', 'Ք3', 'Ք4'],
   wide: ['1֊ին քառորդ', '2֊րդ քառորդ', '3֊րդ քառորդ', '4֊րդ քառորդ']
 }
-var monthValues = {
+const monthValues = {
   narrow: ['Հ', 'Փ', 'Մ', 'Ա', 'Մ', 'Հ', 'Հ', 'Օ', 'Ս', 'Հ', 'Ն', 'Դ'],
   abbreviated: [
     'հուն',
@@ -41,7 +41,7 @@ var monthValues = {
     'դեկտեմբեր'
   ]
 }
-var dayValues = {
+const dayValues = {
   narrow: ['Կ', 'Ե', 'Ե', 'Չ', 'Հ', 'Ո', 'Շ'],
   short: ['կր', 'եր', 'եք', 'չք', 'հգ', 'ուր', 'շբ'],
   abbreviated: ['կիր', 'երկ', 'երք', 'չոր', 'հնգ', 'ուրբ', 'շաբ'],
@@ -55,7 +55,7 @@ var dayValues = {
     'շաբաթ'
   ]
 }
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -87,7 +87,7 @@ var dayPeriodValues = {
     night: 'գիշեր'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -121,17 +121,17 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber) // If ordinal numbers depend on context, for example,
+  const number = Number(dirtyNumber) // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
   //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
+  //   const options = dirtyOptions || {}
+  //   const unit = String(options.unit)
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
 
-  var rem100 = number % 100
+  const rem100 = number % 100
 
   if (rem100 < 10) {
     if (rem100 % 10 === 1) {
@@ -142,7 +142,7 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number + '֊րդ'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

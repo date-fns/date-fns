@@ -17,7 +17,7 @@ import formatLong from './_lib/formatLong/index.js'
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  * @author Gabriele Petrioli [@gpetrioli]{@link https://github.com/gpetrioli}
  */
-var locale = {
+const locale = {
   code: 'fr-CA',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -28,8 +28,8 @@ var locale = {
   // Unique for fr-CA
   options: {
     weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale

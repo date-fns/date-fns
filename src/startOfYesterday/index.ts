@@ -18,16 +18,16 @@
  *
  * @example
  * // If today is 6 October 2014:
- * var result = startOfYesterday()
+ * const result = startOfYesterday()
  * //=> Sun Oct 5 2014 00:00:00
  */
 export default function startOfYesterday() {
-  var now = new Date()
-  var year = now.getFullYear()
-  var month = now.getMonth()
-  var day = now.getDate()
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = now.getMonth()
+  const day = now.getDate()
 
-  var date = new Date(0)
+  const date = new Date(0)
   date.setFullYear(year, month, day - 1)
   date.setHours(0, 0, 0, 0)
   return date

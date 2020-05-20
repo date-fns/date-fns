@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Pavel Hrách [@SilenY]{@link https://github.com/SilenY}
  * @author Jozef Bíroš [@JozefBiros]{@link https://github.com/JozefBiros}
  */
-var locale = {
+const locale = {
   code: 'cs',
   formatDistance: formatDistance,
   formatLong: formatLong,

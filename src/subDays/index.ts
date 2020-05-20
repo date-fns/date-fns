@@ -18,7 +18,7 @@ import addDays from '../addDays/index.js'
  *
  * @example
  * // Subtract 10 days from 1 September 2014:
- * var result = subDays(new Date(2014, 8, 1), 10)
+ * const result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
 export default function subDays(date: Date | number, amount: number) {

@@ -18,7 +18,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Add 5 months to 1 September 2014:
- * var result = addMonths(new Date(2014, 8, 1), 5)
+ * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
 export default function addMonths(dirtyDate: Date | number, amount: number) {

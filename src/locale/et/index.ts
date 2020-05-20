@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 est
  * @author Priit Hansen [@HansenPriit]{@link https://github.com/priithansen}
  */
-var locale = {
+const locale = {
   code: 'et',
   formatDistance: formatDistance,
   formatLong: formatLong,

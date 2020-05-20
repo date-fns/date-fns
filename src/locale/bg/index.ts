@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Nikolay Stoynov [@arvigeus]{@link https://github.com/arvigeus}
  * @author Tsvetan Ovedenski [@fintara]{@link https://github.com/fintara}
  */
-var locale = {
+const locale = {
   code: 'bg',
   formatDistance: formatDistance,
   formatLong: formatLong,

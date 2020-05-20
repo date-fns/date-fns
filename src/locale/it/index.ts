@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Giovanni Polimeni [@giofilo]{@link https://github.com/giofilo}
  * @author Vincenzo Carrese [@vin-car]{@link https://github.com/vin-car}
  */
-var locale = {
+const locale = {
   code: 'it',
   formatDistance: formatDistance,
   formatLong: formatLong,

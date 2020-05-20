@@ -23,7 +23,7 @@ import isSameISOWeek from '../isSameISOWeek/index.js'
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
- * var result = isThisISOWeek(new Date(2014, 8, 22))
+ * const result = isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
 

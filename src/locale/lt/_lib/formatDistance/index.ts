@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: translateSeconds,
     other: translate
@@ -77,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-var translations = {
+const translations = {
   xseconds_other: 'sekundė_sekundžių_sekundes',
   xminutes_one: 'minutė_minutės_minutę',
   xminutes_other: 'minutės_minučių_minutes',
@@ -113,7 +113,7 @@ function forms(key) {
   return translations[key].split('_')
 }
 function translate(number, addSuffix, key, isFuture) {
-  var result = number + ' '
+  const result = number + ' '
   if (number === 1) {
     return result + translateSingular(number, addSuffix, key[0], isFuture)
   } else if (!addSuffix) {
@@ -129,10 +129,10 @@ function translate(number, addSuffix, key, isFuture) {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var adverb = token.match(/about|over|almost|lessthan/i)
-  var unit = token.replace(adverb, '')
+  const adverb = token.match(/about|over|almost|lessthan/i)
+  const unit = token.replace(adverb, '')
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

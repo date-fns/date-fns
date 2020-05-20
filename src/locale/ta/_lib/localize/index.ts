@@ -2,13 +2,13 @@
 
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['கி.மு.', 'கி.பி.'],
   abbreviated: ['கி.மு.', 'கி.பி.'], // CLDR #1624, #1626
   wide: ['கிறிஸ்துவுக்கு முன்', 'அன்னோ டோமினி'] // CLDR #1620, #1622
 }
 
-var quarterValues = {
+const quarterValues = {
   // CLDR #1644 - #1647
   narrow: ['1', '2', '3', '4'],
   // CLDR #1636 - #1639
@@ -22,7 +22,7 @@ var quarterValues = {
   ]
 }
 
-var monthValues = {
+const monthValues = {
   // CLDR #700 - #711
   narrow: ['ஜ', 'பி', 'மா', 'ஏ', 'மே', 'ஜூ', 'ஜூ', 'ஆ', 'செ', 'அ', 'ந', 'டி'],
   // CLDR #1676 - #1687
@@ -57,7 +57,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   // CLDR #1766 - #1772
   narrow: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'],
   // CLDR #1752 - #1758
@@ -77,7 +77,7 @@ var dayValues = {
 }
 
 // CLDR #1780 - #1845
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'மு.ப',
     pm: 'பி.ப',
@@ -111,7 +111,7 @@ var dayPeriodValues = {
 }
 
 // CLDR #1780 - #1845
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'மு.ப',
     pm: 'பி.ப',
@@ -145,19 +145,19 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   // If ordinal numbers depend on context, for example,
   // if they are different for different grammatical genders,
   // use `options.unit`:
   //
-  //   var options = dirtyOptions || {}
-  //   var unit = String(options.unit)
+  //   const options = dirtyOptions || {}
+  //   const unit = String(options.unit)
   //
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
 
-  // var rem100 = number % 100
+  // const rem100 = number % 100
   // if (rem100 > 20 || rem100 < 10) {
   //   switch (rem100 % 10) {
   //     case 1:
@@ -172,7 +172,7 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

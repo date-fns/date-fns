@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 slk
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
-var locale = {
+const locale = {
   code: 'sk',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale

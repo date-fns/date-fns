@@ -1,5 +1,5 @@
-var protectedDayOfYearTokens = ['D', 'DD']
-var protectedWeekYearTokens = ['YY', 'YYYY']
+const protectedDayOfYearTokens = ['D', 'DD']
+const protectedWeekYearTokens = ['YY', 'YYYY']
 
 export function isProtectedDayOfYearToken(token) {
   return protectedDayOfYearTokens.indexOf(token) !== -1

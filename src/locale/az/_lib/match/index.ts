@@ -1,30 +1,30 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(-?(ci|inci|nci|uncu|üncü|ncı))?/i
-var parseOrdinalNumberPattern = /\d+/i
-var matchEraPatterns = {
+const matchOrdinalNumberPattern = /^(\d+)(-?(ci|inci|nci|uncu|üncü|ncı))?/i
+const parseOrdinalNumberPattern = /\d+/i
+const matchEraPatterns = {
   narrow: /^(b|a)$/i,
   abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)$/i,
   wide: /^(Hz. İsa'dan öncə|ümumi eradan əvvəl|anno domini|ümumi dövr)$/i
 }
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/^b$/i, /^(a|c)$/i]
 }
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]$/i,
   abbreviated: /^K[1234]$/i,
   wide: /^[1234](ci)? kvartal$/i
 }
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^[(?-i)yfmaisond]$/i,
   abbreviated: /^(Yan|Fev|Mar|Apr|May|İyun|İyul|Avq|Sen|Okt|Noy|Dek)$/i,
   wide: /^(Yanvar|Fevral|Mart|Aprel|May|İyun|İyul|Avgust|Sentyabr|Oktyabr|Noyabr|Dekabr)$/i
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^[(?-i)y]$/i,
     /^[(?-i)f]$/i,
@@ -69,13 +69,13 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^(B\.|B\.e|Ç\.a|Ç\.|C\.a|C\.|Ş\.)$/i,
   short: /^(B\.|B\.e|Ç\.a|Ç\.|C\.a|C\.|Ş\.)$/i,
   abbreviated: /^(Baz\.e|Çər|Çər\.a|Cüm|Cüm\.a|Şə)$/i,
   wide: /^(Bazar|Bazar ertəsi|Çərşənbə axşamı|Çərşənbə|Cümə axşamı|Cümə|Şənbə)$/i
 }
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [
     /^B\.$/i,
     /^B\.e$/i,
@@ -105,11 +105,11 @@ var parseDayPatterns = {
   any: [/^B\.$/i, /^B\.e$/i, /^Ç\.a$/i, /^Ç\.$/i, /^C\.a$/i, /^C\.$/i, /^Ş\.$/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(a|p|gecəyarı|gün|səhər|gündüz|axşam|gecə)$/i,
   any: /^(am|pm|a\.m\.|p\.m\.|AM|PM|gecəyarı|gün|səhər|gündüz|axşam|gecə)$/i
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^a$/i,
     pm: /^p$/i,
@@ -121,7 +121,7 @@ var parseDayPeriodPatterns = {
     night: /gecə$/i
   }
 }
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

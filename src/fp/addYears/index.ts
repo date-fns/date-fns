@@ -3,6 +3,6 @@
 import fn from '../../addYears/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addYears = convertToFP(fn, 2)
+const addYears = convertToFP(fn, 2)
 
 export default addYears

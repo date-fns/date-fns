@@ -6,10 +6,10 @@ import toDate from '../toDate/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 
-var MINUTES_IN_DAY = 1440
-var MINUTES_IN_ALMOST_TWO_DAYS = 2520
-var MINUTES_IN_MONTH = 43200
-var MINUTES_IN_TWO_MONTHS = 86400
+const MINUTES_IN_DAY = 1440
+const MINUTES_IN_ALMOST_TWO_DAYS = 2520
+const MINUTES_IN_MONTH = 43200
+const MINUTES_IN_TWO_MONTHS = 86400
 
 /**
  * @name formatDistance
@@ -89,13 +89,13 @@ var MINUTES_IN_TWO_MONTHS = 86400
  *
  * @example
  * // What is the distance between 2 July 2014 and 1 January 2015?
- * var result = formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
+ * const result = formatDistance(new Date(2014, 6, 2), new Date(2015, 0, 1))
  * //=> '6 months'
  *
  * @example
  * // What is the distance between 1 January 2015 00:00:15
  * // and 1 January 2015 00:00:00, including seconds?
- * var result = formatDistance(
+ * const result = formatDistance(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   new Date(2015, 0, 1, 0, 0, 0),
  *   { includeSeconds: true }
@@ -105,7 +105,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @example
  * // What is the distance from 1 January 2016
  * // to 1 January 2015, with a suffix?
- * var result = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
+ * const result = formatDistance(new Date(2015, 0, 1), new Date(2016, 0, 1), {
  *   addSuffix: true
  * })
  * //=> 'about 1 year ago'
@@ -113,7 +113,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @example
  * // What is the distance between 1 August 2016 and 1 January 2015 in Esperanto?
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
+ * const result = formatDistance(new Date(2016, 7, 1), new Date(2015, 0, 1), {
  *   locale: eoLocale
  * })
  * //=> 'pli ol 1 jaro'
@@ -123,25 +123,25 @@ export default function formatDistance(
   dirtyBaseDate,
   dirtyOptions
 ) {
-  var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  const options = dirtyOptions || {}
+  const locale = options.locale || defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')
   }
 
-  var comparison = compareAsc(dirtyDate, dirtyBaseDate)
+  const comparison = compareAsc(dirtyDate, dirtyBaseDate)
 
   if (isNaN(comparison)) {
     throw new RangeError('Invalid time value')
   }
 
-  var localizeOptions = cloneObject(options)
+  const localizeOptions = cloneObject(options)
   localizeOptions.addSuffix = Boolean(options.addSuffix)
   localizeOptions.comparison = comparison
 
-  var dateLeft
-  var dateRight
+  const dateLeft
+  const dateRight
   if (comparison > 0) {
     dateLeft = toDate(dirtyBaseDate)
     dateRight = toDate(dirtyDate)
@@ -150,13 +150,13 @@ export default function formatDistance(
     dateRight = toDate(dirtyBaseDate)
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft)
-  var offsetInSeconds =
+  const seconds = differenceInSeconds(dateRight, dateLeft)
+  const offsetInSeconds =
     (getTimezoneOffsetInMilliseconds(dateRight) -
       getTimezoneOffsetInMilliseconds(dateLeft)) /
     1000
-  var minutes = Math.round((seconds - offsetInSeconds) / 60)
-  var months
+  const minutes = Math.round((seconds - offsetInSeconds) / 60)
+  const months
 
   // 0 up to 2 mins
   if (minutes < 2) {
@@ -192,7 +192,7 @@ export default function formatDistance(
 
     // 1.5 hrs up to 24 hrs
   } else if (minutes < MINUTES_IN_DAY) {
-    var hours = Math.round(minutes / 60)
+    const hours = Math.round(minutes / 60)
     return locale.formatDistance('aboutXHours', hours, localizeOptions)
 
     // 1 day up to 1.75 days
@@ -201,7 +201,7 @@ export default function formatDistance(
 
     // 1.75 days up to 30 days
   } else if (minutes < MINUTES_IN_MONTH) {
-    var days = Math.round(minutes / MINUTES_IN_DAY)
+    const days = Math.round(minutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 month up to 2 months
@@ -214,13 +214,13 @@ export default function formatDistance(
 
   // 2 months up to 12 months
   if (months < 12) {
-    var nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
+    const nearestMonth = Math.round(minutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', nearestMonth, localizeOptions)
 
     // 1 year up to max Date
   } else {
-    var monthsSinceStartOfYear = months % 12
-    var years = Math.floor(months / 12)
+    const monthsSinceStartOfYear = months % 12
+    const years = Math.floor(months / 12)
 
     // N years up to 1 years 3 months
     if (monthsSinceStartOfYear < 3) {

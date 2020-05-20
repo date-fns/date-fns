@@ -1,6 +1,6 @@
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
 
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'గత' eeee p", // CLDR #1384
   yesterday: "'నిన్న' p", // CLDR #1393
   today: "'ఈ రోజు' p", // CLDR #1394

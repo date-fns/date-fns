@@ -3,6 +3,6 @@
 import fn from '../../startOfWeek/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var startOfWeekWithOptions = convertToFP(fn, 2)
+const startOfWeekWithOptions = convertToFP(fn, 2)
 
 export default startOfWeekWithOptions

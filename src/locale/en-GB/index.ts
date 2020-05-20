@@ -12,7 +12,7 @@ import match from '../en-US/_lib/match/index.js'
  * @iso-639-2 eng
  * @author Alex [@glintik]{@link https://github.com/glintik}
  */
-var locale = {
+const locale = {
   code: 'en-GB',
   formatDistance: formatDistance,
   formatLong: formatLong,

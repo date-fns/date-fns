@@ -20,7 +20,7 @@ import endOfWeek from '../endOfWeek/index.js'
  *
  * @example
  * // The end of an ISO week for 2 September 2014 11:55:00:
- * var result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = endOfISOWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfISOWeek(dirtyDate: Date | number) {

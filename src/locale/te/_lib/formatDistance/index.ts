@@ -1,5 +1,5 @@
 // Source: https://www.unicode.org/cldr/charts/32/summary/te.html
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     standalone: {
       one: 'సెకను కన్నా తక్కువ',
@@ -174,11 +174,11 @@ var formatDistanceLocale = {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var usageGroup = options.addSuffix
+  const usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
 
-  var result
+  const result
   if (typeof usageGroup === 'string') {
     result = usageGroup
   } else if (count === 1) {

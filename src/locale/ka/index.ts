@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Lado Lomidze [@Landish]{@link https://github.com/Landish}
  * @author Nick Shvelidze [@shvelo]{@link https://github.com/shvelo}
  */
-var locale = {
+const locale = {
   code: 'ka',
   formatDistance: formatDistance,
   formatLong: formatLong,

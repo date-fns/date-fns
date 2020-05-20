@@ -1,4 +1,4 @@
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'inqas minn sekonda',
     other: 'inqas minn {{count}} sekondi'
@@ -83,9 +83,9 @@ var formatDistanceLocale = {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var adverb = token.match(/years/i)
+  const adverb = token.match(/years/i)
 
-  var result
+  const result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {

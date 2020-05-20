@@ -16,13 +16,13 @@ import toDate from '../toDate/index.js'
  *
  *   ```javascript
  *   // Before v2.0.0
- *   var date1 = new Date(1989, 6, 10)
- *   var date2 = new Date(1987, 1, 11)
- *   var maxDate = max(date1, date2)
+ *   const date1 = new Date(1989, 6, 10)
+ *   const date2 = new Date(1987, 1, 11)
+ *   const maxDate = max(date1, date2)
  *
  *   // v2.0.0 onward:
- *   var dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
- *   var maxDate = max(dates)
+ *   const dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
+ *   const maxDate = max(dates)
  *   ```
  *
  * @param datesArray - The dates to compare
@@ -30,7 +30,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which of these dates is the latest?
- * var result = max([
+ * const result = max([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),
@@ -39,7 +39,7 @@ import toDate from '../toDate/index.js'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export default function max(dirtyDatesArray: (Date | number)[]) {
-  var datesArray
+  const datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
@@ -52,9 +52,9 @@ export default function max(dirtyDatesArray: (Date | number)[]) {
     return new Date(NaN)
   }
 
-  var result
+  const result
   datesArray.forEach(function (dirtyDate: Date | number) {
-    var currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate)
 
     if (result === undefined || result < currentDate || isNaN(currentDate)) {
       result = currentDate

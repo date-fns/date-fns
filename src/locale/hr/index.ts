@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Manico [@manico]{@link https://github.com/manico}
  * @author Ivan Jeržabek [@jerzabek]{@link https://github.com/jerzabek}
  */
-var locale = {
+const locale = {
   code: 'hr',
   formatDistance: formatDistance,
   formatLong: formatLong,

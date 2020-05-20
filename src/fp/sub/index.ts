@@ -3,6 +3,6 @@
 import fn from '../../sub/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var sub = convertToFP(fn, 2)
+const sub = convertToFP(fn, 2)
 
 export default sub

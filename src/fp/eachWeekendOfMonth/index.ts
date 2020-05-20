@@ -3,6 +3,6 @@
 import fn from '../../eachWeekendOfMonth/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var eachWeekendOfMonth = convertToFP(fn, 1)
+const eachWeekendOfMonth = convertToFP(fn, 1)
 
 export default eachWeekendOfMonth

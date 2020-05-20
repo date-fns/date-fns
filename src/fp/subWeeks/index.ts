@@ -3,6 +3,6 @@
 import fn from '../../subWeeks/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subWeeks = convertToFP(fn, 2)
+const subWeeks = convertToFP(fn, 2)
 
 export default subWeeks

@@ -14,7 +14,7 @@ import Locale from '../../_types/Locale'
  * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
-var locale: Locale = {
+const locale: Locale = {
   code: 'en-US',
   formatDistance: formatDistance,
   formatLong: formatLong,

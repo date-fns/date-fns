@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 ara
  * @author Achraf Rrami [@rramiachraf]{@link https://github.com/rramiachraf}
  */
-var locale = {
+const locale = {
   code: 'ar-MA',
   formatDistance: formatDistance,
   formatLong: formatLong,

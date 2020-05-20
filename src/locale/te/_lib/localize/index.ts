@@ -3,21 +3,21 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 // Source: https://dsal.uchicago.edu/dictionaries/brown/
 
 // CLDR #1605 - #1608
-var eraValues = {
+const eraValues = {
   narrow: ['క్రీ.పూ.', 'క్రీ.శ.'],
   abbreviated: ['క్రీ.పూ.', 'క్రీ.శ.'],
   wide: ['క్రీస్తు పూర్వం', 'క్రీస్తుశకం']
 }
 
 // CLDR #1613 - #1628
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['త్రై1', 'త్రై2', 'త్రై3', 'త్రై4'],
   wide: ['1వ త్రైమాసికం', '2వ త్రైమాసికం', '3వ త్రైమాసికం', '4వ త్రైమాసికం']
 }
 
 // CLDR #1637 - #1708
-var monthValues = {
+const monthValues = {
   narrow: ['జ', 'ఫి', 'మా', 'ఏ', 'మే', 'జూ', 'జు', 'ఆ', 'సె', 'అ', 'న', 'డి'],
   abbreviated: [
     'జన',
@@ -50,7 +50,7 @@ var monthValues = {
 }
 
 // CLDR #1709 - #1764
-var dayValues = {
+const dayValues = {
   narrow: ['ఆ', 'సో', 'మ', 'బు', 'గు', 'శు', 'శ'],
   short: ['ఆది', 'సోమ', 'మంగళ', 'బుధ', 'గురు', 'శుక్ర', 'శని'],
   abbreviated: ['ఆది', 'సోమ', 'మంగళ', 'బుధ', 'గురు', 'శుక్ర', 'శని'],
@@ -66,7 +66,7 @@ var dayValues = {
 }
 
 // CLDR #1767 - #1806
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'పూర్వాహ్నం',
     pm: 'అపరాహ్నం',
@@ -98,7 +98,7 @@ var dayPeriodValues = {
     night: 'రాత్రి'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'పూర్వాహ్నం',
     pm: 'అపరాహ్నం',
@@ -132,11 +132,11 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + 'వ'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

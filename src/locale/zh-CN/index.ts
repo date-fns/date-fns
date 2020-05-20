@@ -16,7 +16,7 @@ import match from './_lib/match/index.js'
  * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
  * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
-var locale = {
+const locale = {
   code: 'zh-CN',
   formatDistance: formatDistance,
   formatLong: formatLong,

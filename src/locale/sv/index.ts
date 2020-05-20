@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Alexander Nanberg [@alexandernanberg]{@link https://github.com/alexandernanberg}
  * @author Henrik Andersson [@limelights]{@link https://github.com/limelights}
  */
-var locale = {
+const locale = {
   code: 'sv',
   formatDistance: formatDistance,
   formatLong: formatLong,

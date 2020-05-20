@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Andrii Korzh [@korzhyk]{@link https://github.com/korzhyk}
  * @author Andriy Shcherbyak [@shcherbyakdev]{@link https://github.com/shcherbyakdev}
  */
-var locale = {
+const locale = {
   code: 'uk',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 uig
  * @author Abduwaly M. [@abduwaly]{@link https://github.com/abduwaly}
  */
-var locale = {
+const locale = {
   code: 'ug',
   formatDistance: formatDistance,
   formatLong: formatLong,

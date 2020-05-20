@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Adam Stradovnik [@Neoglyph]{@link https://github.com/Neoglyph}
  * @author Mato Žgajner [@mzgajner]{@link https://github.com/mzgajner}
  */
-var locale = {
+const locale = {
   code: 'sl',
   formatDistance: formatDistance,
   formatLong: formatLong,

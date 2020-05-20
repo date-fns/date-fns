@@ -18,11 +18,11 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // The end of a minute for 1 December 2014 22:15:45.400:
- * var result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * const result = endOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:59.999
  */
 export default function endOfMinute(dirtyDate: Date | number) {
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   date.setSeconds(59, 999)
   return date
 }

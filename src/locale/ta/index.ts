@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 tam
  * @author Sibiraj [@sibiraj-s]{@link https://github.com/sibiraj-s}
  */
-var locale = {
+const locale = {
   code: 'ta',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -17,7 +17,7 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Is 23 September 2014 Tuesday?
- * var result = isTuesday(new Date(2014, 8, 23))
+ * const result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
 export default function isTuesday(dirtyDate: Date | number): boolean {

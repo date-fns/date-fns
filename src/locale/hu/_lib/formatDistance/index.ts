@@ -1,4 +1,4 @@
-var translations = {
+const translations = {
   about: 'körülbelül',
   over: 'több mint',
   almost: 'majdnem',
@@ -73,10 +73,10 @@ function translate(number, addSuffix, key, comparison) {
 
 export default function formatDistance(token, count, options) {
   options = options || {}
-  var adverb = token.match(/about|over|almost|lessthan/i)
-  var unit = token.replace(adverb, '')
+  const adverb = token.match(/about|over|almost|lessthan/i)
+  const unit = token.replace(adverb, '')
 
-  var result
+  const result
   result = translate(
     count,
     options.addSuffix,

@@ -1,7 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
 
-var MILLISECONDS_IN_MINUTE = 60000
+const MILLISECONDS_IN_MINUTE = 60000
 
 /**
  * @name addMinutes
@@ -21,13 +21,13 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @example
  * // Add 30 minutes to 10 July 2014 12:00:00:
- * var result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
+ * const result = addMinutes(new Date(2014, 6, 10, 12, 0), 30)
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes(
   dirtyDate: Date | number,
   dirtyAmount: number
 ) {
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_MINUTE)
 }

@@ -1,4 +1,4 @@
-var distanceInWordsLocale = {
+const distanceInWordsLocale = {
   lessThanXSeconds: {
     one: 'manj kot {{count}} sekunda',
     two: 'manj kot {{count}} sekundi',
@@ -107,7 +107,7 @@ var distanceInWordsLocale = {
   }
 }
 
-var distanceInWordsLocalePast = {
+const distanceInWordsLocalePast = {
   lessThanXSeconds: {
     one: 'manj kot {{count}} sekundo',
     two: 'manj kot {{count}} sekundama',
@@ -202,7 +202,7 @@ var distanceInWordsLocalePast = {
   }
 }
 
-var distanceInWordsLocaleFuture = {
+const distanceInWordsLocaleFuture = {
   lessThanXSeconds: {
     one: 'manj kot {{count}} sekundo',
     two: 'manj kot {{count}} sekundi',
@@ -314,8 +314,8 @@ function getFormFromCount(count) {
 export default function formatDistance(token, count, options) {
   options = options || {}
 
-  var localeObject = distanceInWordsLocale
-  var result = ''
+  const localeObject = distanceInWordsLocale
+  const result = ''
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
@@ -330,7 +330,7 @@ export default function formatDistance(token, count, options) {
   if (typeof localeObject[token] === 'string') {
     result += localeObject[token]
   } else {
-    var form = getFormFromCount(count)
+    const form = getFormFromCount(count)
     result += localeObject[token][form].replace('{{count}}', count)
   }
 

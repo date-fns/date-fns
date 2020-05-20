@@ -3,6 +3,6 @@
 import fn from '../../subBusinessDays/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var subBusinessDays = convertToFP(fn, 2)
+const subBusinessDays = convertToFP(fn, 2)
 
 export default subBusinessDays

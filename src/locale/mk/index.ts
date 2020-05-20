@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Petar Vlahu [@vlahupetar]{@link https://github.com/vlahupetar}
  * @author Altrim Beqiri [@altrim]{@link https://github.com/altrim}
  */
-var locale = {
+const locale = {
   code: 'mk',
   formatDistance: formatDistance,
   formatLong: formatLong,

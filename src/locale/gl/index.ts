@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Alberto Doval - Cocodin Technology[@cocodinTech]{@link https://github.com/cocodinTech}
  * @author Fidel Pita [@fidelpita]{@link https://github.com/fidelpita}
  */
-var locale = {
+const locale = {
   code: 'gl',
   formatDistance: formatDistance,
   formatLong: formatLong,

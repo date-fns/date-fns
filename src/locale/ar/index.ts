@@ -12,7 +12,7 @@
  * @iso-639-2 ara
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
  */
-// var locale = {
+// const locale = {
 //   code: 'ar',
 //   formatDistance: formatDistance,
 //   formatLong: formatLong,

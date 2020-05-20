@@ -1,36 +1,36 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(일|번째)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(일|번째)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
   abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
   wide: /^(기원전|서기)/i
 }
 
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/^(bc|기원전)/i, /^(ad|서기)/i]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^q[1234]/i,
   wide: /^[1234]사?분기/i
 }
 
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^(1[012]|[123456789])/,
   abbreviated: /^(1[012]|[123456789])월/i,
   wide: /^(1[012]|[123456789])월/i
 }
 
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   any: [
     /^1월?$/,
     /^2/,
@@ -47,22 +47,22 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[일월화수목금토]/,
   short: /^[일월화수목금토]/,
   abbreviated: /^[일월화수목금토]/,
   wide: /^[일월화수목금토]요일/
 }
 
-var parseDayPatterns = {
+const parseDayPatterns = {
   any: [/^일/, /^월/, /^화/, /^수/, /^목/, /^금/, /^토/]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   any: /^(am|pm|오전|오후|자정|정오|아침|저녁|밤)/i
 }
 
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^(am|오전)/i,
     pm: /^(pm|오후)/i,
@@ -75,7 +75,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

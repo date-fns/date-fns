@@ -17,7 +17,7 @@ import match from './_lib/match/index.js'
  * @author Eduardo Pardo [@eduardopsll]{@link https://github.com/eduardopsll}
  * @author Zoltan Szepesi [@twodcube]{@link https://github.com/twodcube}
  */
-var locale = {
+const locale = {
   code: 'hu',
   formatDistance: formatDistance,
   formatLong: formatLong,

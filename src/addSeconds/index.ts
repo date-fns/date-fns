@@ -19,13 +19,13 @@ import addMilliseconds from '../addMilliseconds/index.js'
  *
  * @example
  * // Add 30 seconds to 10 July 2014 12:45:00:
- * var result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
+ * const result = addSeconds(new Date(2014, 6, 10, 12, 45, 0), 30)
  * //=> Thu Jul 10 2014 12:45:30
  */
 export default function addSeconds(
   dirtyDate: Date | number,
   dirtyAmount: number
 ) {
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * 1000)
 }

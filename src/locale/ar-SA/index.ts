@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 ara
  * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}
  */
-var locale = {
+const locale = {
   code: 'ar-SA',
   formatDistance: formatDistance,
   formatLong: formatLong,

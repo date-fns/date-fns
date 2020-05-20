@@ -1,18 +1,18 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['v.C.', 'n.C.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
   wide: ['voor Christus', 'na Christus']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
   wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'jan.',
@@ -44,7 +44,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
   short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
   abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
@@ -59,7 +59,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -93,11 +93,11 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
   return number + 'e'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

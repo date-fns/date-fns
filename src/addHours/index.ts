@@ -1,7 +1,7 @@
 import toInteger from '../_lib/toInteger/index.js'
 import addMilliseconds from '../addMilliseconds/index.js'
 
-var MILLISECONDS_IN_HOUR = 3600000
+const MILLISECONDS_IN_HOUR = 3600000
 
 /**
  * @name addHours
@@ -21,13 +21,13 @@ var MILLISECONDS_IN_HOUR = 3600000
  *
  * @example
  * // Add 2 hours to 10 July 2014 23:00:00:
- * var result = addHours(new Date(2014, 6, 10, 23, 0), 2)
+ * const result = addHours(new Date(2014, 6, 10, 23, 0), 2)
  * //=> Fri Jul 11 2014 01:00:00
  */
 export default function addHours(
   dirtyDate: Date | number,
   dirtyAmount: number
 ) {
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMilliseconds(dirtyDate, amount * MILLISECONDS_IN_HOUR)
 }

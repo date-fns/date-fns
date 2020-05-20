@@ -3,6 +3,6 @@
 import fn from '../../areIntervalsOverlapping/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var areIntervalsOverlappingWithOptions = convertToFP(fn, 3)
+const areIntervalsOverlappingWithOptions = convertToFP(fn, 3)
 
 export default areIntervalsOverlappingWithOptions

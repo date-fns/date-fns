@@ -71,7 +71,7 @@ import distanceInWords from '../formatDistance/index.js'
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?
- * var result = formatDistanceToNow(
+ * const result = formatDistanceToNow(
  *   new Date(2014, 6, 2)
  * )
  * //=> '6 months'
@@ -79,7 +79,7 @@ import distanceInWords from '../formatDistance/index.js'
  * @example
  * // If now is 1 January 2015 00:00:00,
  * // what is the distance to 1 January 2015 00:00:15, including seconds?
- * var result = formatDistanceToNow(
+ * const result = formatDistanceToNow(
  *   new Date(2015, 0, 1, 0, 0, 15),
  *   {includeSeconds: true}
  * )
@@ -88,7 +88,7 @@ import distanceInWords from '../formatDistance/index.js'
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 January 2016, with a suffix?
- * var result = formatDistanceToNow(
+ * const result = formatDistanceToNow(
  *   new Date(2016, 0, 1),
  *   {addSuffix: true}
  * )
@@ -97,8 +97,8 @@ import distanceInWords from '../formatDistance/index.js'
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 August 2016 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
- * var result = formatDistanceToNow(
+ * const eoLocale = require('date-fns/locale/eo')
+ * const result = formatDistanceToNow(
  *   new Date(2016, 7, 1),
  *   {locale: eoLocale}
  * )

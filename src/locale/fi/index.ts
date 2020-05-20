@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Edo Rivai [@mikolajgrzyb]{@link https://github.com/mikolajgrzyb}
  * @author Samu Juvonen [@sjuvonen]{@link https://github.com/sjuvonen}
  */
-var locale = {
+const locale = {
   code: 'fi',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -18,7 +18,7 @@ import addQuarters from '../addQuarters/index.js'
  *
  * @example
  * // Subtract 3 quarters from 1 September 2014:
- * var result = subQuarters(new Date(2014, 8, 1), 3)
+ * const result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
 export default function subQuarters(date: Date | number, amount: number) {

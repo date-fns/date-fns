@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 ira
  * @author Morteza Ziyae [@mort3za]{@link https://github.com/mort3za}
  */
-var locale = {
+const locale = {
   code: 'fa-IR',
   formatDistance: formatDistance,
   formatLong: formatLong,

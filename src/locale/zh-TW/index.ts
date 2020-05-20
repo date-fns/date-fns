@@ -14,7 +14,7 @@ import match from './_lib/match/index.js'
  * @author Jack Hsu [@jackhsu978]{@link https://github.com/jackhsu978}
  * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
-var locale = {
+const locale = {
   code: 'zh-TW',
   formatDistance: formatDistance,
   formatLong: formatLong,

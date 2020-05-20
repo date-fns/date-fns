@@ -19,12 +19,12 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Add 10 days to 1 September 2014:
- * var result = addDays(new Date(2014, 8, 1), 10)
+ * const result = addDays(new Date(2014, 8, 1), 10)
  * //=> Thu Sep 11 2014 00:00:00
  */
 export default function addDays(dirtyDate: Date | number, dirtyAmount: number) {
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
+  const date = toDate(dirtyDate)
+  const amount = toInteger(dirtyAmount)
   if (isNaN(amount)) {
     return new Date(NaN)
   }

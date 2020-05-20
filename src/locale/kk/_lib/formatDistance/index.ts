@@ -4,8 +4,8 @@ function declension(scheme, count) {
     return scheme.one
   }
 
-  var rem10 = count % 10
-  var rem100 = count % 100
+  const rem10 = count % 10
+  const rem100 = count % 100
 
   // 1, 21, 31, ...
   if (rem10 === 1 && rem100 !== 11) {
@@ -43,7 +43,7 @@ function buildLocalizeTokenFn(scheme) {
   }
 }
 
-var formatDistanceLocale = {
+const formatDistanceLocale = {
   lessThanXSeconds: buildLocalizeTokenFn({
     regular: {
       one: '1 секундтан аз',

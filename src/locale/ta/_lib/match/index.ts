@@ -1,26 +1,26 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
 import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
 
-var matchOrdinalNumberPattern = /^(\d+)(வது)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(வது)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(கி.மு.|கி.பி.)/i,
   abbreviated: /^(கி\.?\s?மு\.?|கி\.?\s?பி\.?)/,
   wide: /^(கிறிஸ்துவுக்கு\sமுன்|அன்னோ\sடோமினி)/i
 }
 
-var parseEraPatterns = {
+const parseEraPatterns = {
   any: [/கி\.?\s?மு\.?/, /கி\.?\s?பி\.?/]
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^காலா.[1234]/i,
   wide: /^(ஒன்றாம்|இரண்டாம்|மூன்றாம்|நான்காம்) காலாண்டு/i
 }
 
-var parseQuarterPatterns = {
+const parseQuarterPatterns = {
   narrow: [/1/i, /2/i, /3/i, /4/i],
   any: [
     /(1|காலா.1|ஒன்றாம்)/i,
@@ -30,13 +30,13 @@ var parseQuarterPatterns = {
   ]
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^(ஜ|பி|மா|ஏ|மே|ஜூ|ஆ|செ|அ|ந|டி)$/i,
   abbreviated: /^(ஜன.|பிப்.|மார்.|ஏப்.|மே|ஜூன்|ஜூலை|ஆக.|செப்.|அக்.|நவ.|டிச.)/i,
   wide: /^(ஜனவரி|பிப்ரவரி|மார்ச்|ஏப்ரல்|மே|ஜூன்|ஜூலை|ஆகஸ்ட்|செப்டம்பர்|அக்டோபர்|நவம்பர்|டிசம்பர்)/i
 }
 
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^ஜ$/i,
     /^பி/i,
@@ -67,24 +67,24 @@ var parseMonthPatterns = {
   ]
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^(ஞா|தி|செ|பு|வி|வெ|ச)/i,
   short: /^(ஞா|தி|செ|பு|வி|வெ|ச)/i,
   abbreviated: /^(ஞாயி.|திங்.|செவ்.|புத.|வியா.|வெள்.|சனி)/i,
   wide: /^(ஞாயிறு|திங்கள்|செவ்வாய்|புதன்|வியாழன்|வெள்ளி|சனி)/i
 }
 
-var parseDayPatterns = {
+const parseDayPatterns = {
   narrow: [/^ஞா/i, /^தி/i, /^செ/i, /^பு/i, /^வி/i, /^வெ/i, /^ச/i],
   any: [/^ஞா/i, /^தி/i, /^செ/i, /^பு/i, /^வி/i, /^வெ/i, /^ச/i]
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(மு.ப|பி.ப|நள்|நண்|காலை|மதியம்|மாலை|இரவு)/i,
   any: /^(மு.ப|பி.ப|முற்பகல்|பிற்பகல்|நள்ளிரவு|நண்பகல்|காலை|மதியம்|மாலை|இரவு)/i
 }
 
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^மு/i,
     pm: /^பி/i,
@@ -97,7 +97,7 @@ var parseDayPeriodPatterns = {
   }
 }
 
-var match = {
+const match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,

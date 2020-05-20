@@ -1,12 +1,12 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['C', 'O'],
   abbreviated: ['CC', 'OC'],
   wide: ['Cyn Crist', 'Ar ôl Crist']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Ch1', 'Ch2', 'Ch3', 'Ch4'],
   wide: ['Chwarter 1af', '2ail chwarter', '3ydd chwarter', '4ydd chwarter']
@@ -16,7 +16,7 @@ var quarterValues = {
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
+const monthValues = {
   narrow: ['I', 'Ch', 'Ma', 'E', 'Mi', 'Me', 'G', 'A', 'Md', 'H', 'T', 'Rh'],
   abbreviated: [
     'Ion',
@@ -48,7 +48,7 @@ var monthValues = {
   ]
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'Ll', 'M', 'M', 'I', 'G', 'S'],
   short: ['Su', 'Ll', 'Ma', 'Me', 'Ia', 'Gw', 'Sa'],
   abbreviated: ['Sul', 'Llun', 'Maw', 'Mer', 'Iau', 'Gwe', 'Sad'],
@@ -63,7 +63,7 @@ var dayValues = {
   ]
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'b',
     pm: 'h',
@@ -95,7 +95,7 @@ var dayPeriodValues = {
     night: 'nos'
   }
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'b',
     pm: 'h',
@@ -129,7 +129,7 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   if (number < 20) {
     switch (number) {
@@ -167,7 +167,7 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   return number + 'ain'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

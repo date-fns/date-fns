@@ -20,12 +20,12 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
- * var result = getISODay(new Date(2012, 1, 26))
+ * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
 export default function getISODay(dirtyDate: Date | number): number {
-  var date = toDate(dirtyDate)
-  var day = date.getDay()
+  const date = toDate(dirtyDate)
+  const day = date.getDay()
 
   if (day === 0) {
     day = 7

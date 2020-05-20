@@ -15,7 +15,7 @@ import match from './_lib/match/index.js'
  * @author [@kgram]{@link https://github.com/kgram}
  * @author [@stefanbugge]{@link https://github.com/stefanbugge}
  */
-var locale = {
+const locale = {
   code: 'da',
   formatDistance: formatDistance,
   formatLong: formatLong,

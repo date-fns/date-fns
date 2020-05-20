@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 msa
  * @author Ruban Selvarajah [@Zyten]{@link https://github.com/Zyten}
  */
-var locale = {
+const locale = {
   code: 'ms',
   formatDistance: formatDistance,
   formatLong: formatLong,

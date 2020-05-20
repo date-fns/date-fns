@@ -31,7 +31,7 @@ import Duration from '../_types/Duration'
  *
  * @example
  * // Add the following duration to 1 September 2014, 10:19:50
- * var result = add(new Date(2014, 8, 1, 10, 19, 50), {
+ * const result = add(new Date(2014, 8, 1, 10, 19, 50), {
  *   years: 2,
  *   months: 9,
  *   weeks: 1,

@@ -1,4 +1,4 @@
-var formatRelativeLocale = {
+const formatRelativeLocale = {
   lastWeek: "'el' eeee 'pasado a la' LT",
   yesterday: "'ayer a la' p",
   today: "'hoy a la' p",
@@ -7,7 +7,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-var formatRelativeLocalePlural = {
+const formatRelativeLocalePlural = {
   lastWeek: "'el' eeee 'pasado a las' p",
   yesterday: "'ayer a las' p",
   today: "'hoy a las' p",

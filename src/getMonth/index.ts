@@ -17,11 +17,11 @@ import toDate from '../toDate/index.js'
  *
  * @example
  * // Which month is 29 February 2012?
- * var result = getMonth(new Date(2012, 1, 29))
+ * const result = getMonth(new Date(2012, 1, 29))
  * //=> 1
  */
 export default function getMonth(dirtyDate: Date | number): number {
-  var date = toDate(dirtyDate)
-  var month = date.getMonth()
+  const date = toDate(dirtyDate)
+  const month = date.getMonth()
   return month
 }

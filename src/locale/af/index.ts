@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 afr
  * @author Marnus Weststrate [@marnusw]{@link https://github.com/marnusw}
  */
-var locale = {
+const locale = {
   code: 'af',
   formatDistance: formatDistance,
   formatLong: formatLong,

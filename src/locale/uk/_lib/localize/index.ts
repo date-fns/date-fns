@@ -1,38 +1,38 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
-var eraValues = {
+const eraValues = {
   narrow: ['до н.е.', 'н.е.'],
   abbreviated: ['до н. е.', 'н. е.'],
   wide: ['до нашої ери', 'нашої ери']
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
   wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
 }
 
-var monthValues = {
+const monthValues = {
   // ДСТУ 3582:2013
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
   abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
   wide: ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень']
 }
 
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['С', 'Л', 'Б', 'К', 'Т', 'Ч', 'Л', 'С', 'В', 'Ж', 'Л', 'Г'],
   abbreviated: ['січ.', 'лют.', 'берез.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'верес.', 'жовт.', 'листоп.', 'груд.'],
   wide: ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
   abbreviated: ['нед', 'пон', 'вів', 'сер', 'чтв', 'птн', 'суб'],
   wide: ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота']
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -65,7 +65,7 @@ var dayPeriodValues = {
   }
 }
 
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -99,9 +99,9 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber (dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const suffix
 
   if (unit === 'date') {
     if (dirtyNumber === 3 || dirtyNumber === 23) {
@@ -118,7 +118,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
   return dirtyNumber + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({

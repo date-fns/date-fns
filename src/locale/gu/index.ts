@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 guj
  * @author Manaday Mavani [@ManadayM]{@link https://github.com/manadaym}
  */
-var locale = {
+const locale = {
   code: 'gu',
   formatDistance: formatDistance,
   formatLong: formatLong,

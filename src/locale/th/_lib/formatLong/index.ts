@@ -1,27 +1,27 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
 
-var dateFormats = {
+const dateFormats = {
   full: 'วันEEEEที่ do MMMM y',
   long: 'do MMMM y',
   medium: 'd MMM y',
   short: 'dd/MM/yyyy'
 }
 
-var timeFormats = {
+const timeFormats = {
   full: 'H:mm:ss น. zzzz',
   long: 'H:mm:ss น. z',
   medium: 'H:mm:ss น.',
   short: 'H:mm น.'
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: "{{date}} 'เวลา' {{time}}",
   long: "{{date}} 'เวลา' {{time}}",
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}'
 }
 
-var formatLong = {
+const formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

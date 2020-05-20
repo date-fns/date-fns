@@ -3,6 +3,6 @@
 import fn from '../../addMinutes/index.js'
 import convertToFP from '../_lib/convertToFP/index.js'
 
-var addMinutes = convertToFP(fn, 2)
+const addMinutes = convertToFP(fn, 2)
 
 export default addMinutes

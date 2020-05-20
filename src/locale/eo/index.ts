@@ -12,7 +12,7 @@ import match from './_lib/match/index.js'
  * @iso-639-2 epo
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
-var locale = {
+const locale = {
   code: 'eo',
   formatDistance: formatDistance,
   formatLong: formatLong,

@@ -44,11 +44,11 @@ export default function formatRelative(
   dirtyBaseDate,
   dirtyOptions
 ) {
-  var date = toDate(dirtyDate)
-  var baseDate = toDate(dirtyBaseDate)
+  const date = toDate(dirtyDate)
+  const baseDate = toDate(dirtyBaseDate)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  const options = dirtyOptions || {}
+  const locale = options.locale || defaultLocale
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -62,13 +62,13 @@ export default function formatRelative(
     throw new RangeError('locale must contain formatRelative property')
   }
 
-  var diff = differenceInCalendarDays(date, baseDate)
+  const diff = differenceInCalendarDays(date, baseDate)
 
   if (isNaN(diff)) {
     throw new RangeError('Invalid time value')
   }
 
-  var token
+  const token
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {
@@ -85,11 +85,11 @@ export default function formatRelative(
     token = 'other'
   }
 
-  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-  var utcBaseDate = subMilliseconds(
+  const utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+  const utcBaseDate = subMilliseconds(
     baseDate,
     getTimezoneOffsetInMilliseconds(baseDate)
   )
-  var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
+  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
   return format(date, formatStr, options)
 }

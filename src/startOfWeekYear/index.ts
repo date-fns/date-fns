@@ -25,14 +25,14 @@ import { WeekYearFnOptions } from 'src/types.js'
  *
  * @example
  * // The start of an a week-numbering year for 2 July 2005 with default settings:
- * var result = startOfWeekYear(new Date(2005, 6, 2))
+ * const result = startOfWeekYear(new Date(2005, 6, 2))
  * //=> Sun Dec 26 2004 00:00:00
  *
  * @example
  * // The start of a week-numbering year for 2 July 2005
  * // if Monday is the first day of week
  * // and 4 January is always in the first week of the year:
- * var result = startOfWeekYear(new Date(2005, 6, 2), {
+ * const result = startOfWeekYear(new Date(2005, 6, 2), {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })
@@ -47,8 +47,8 @@ export default function startOfWeekYear(
     options.locale?.options?.firstWeekContainsDate ??
     1
 
-  var year = getWeekYear(date, options)
-  var firstWeek = new Date(0)
+  const year = getWeekYear(date, options)
+  const firstWeek = new Date(0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
   return startOfWeek(firstWeek, options)

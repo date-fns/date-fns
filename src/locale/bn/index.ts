@@ -13,7 +13,7 @@ import match from './_lib/match/index.js'
  * @author Touhidur Rahman [@touhidrahman]{@link https://github.com/touhidrahman}
  * @author Farhad Yasir [@nutboltu]{@link https://github.com/nutboltu}
  */
-var locale = {
+const locale = {
   code: 'bn',
   formatDistance: formatDistance,
   formatLong: formatLong,
