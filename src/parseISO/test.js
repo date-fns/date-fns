@@ -331,7 +331,7 @@ describe('parseISO', () => {
       })
 
       it('returns `Invalid Date` when time contains spaces', () => {
-        const result = parseISO('21:59:00  basketball')
+        const result = parseISO('2014-02-11T21:59:00  basketball')
         assert(result instanceof Date)
         assert(isNaN(result))
       })
