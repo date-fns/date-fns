@@ -550,8 +550,8 @@ export default function parse(
     .sort(function(a, b) {
       return b - a
     })
-    .filter(function(priority, index, array) {	
-      return array.indexOf(priority) === index	
+    .filter(function(priority, index, array) {
+      return array.indexOf(priority) === index
     })
     .map(function(priority) {
       return setters
