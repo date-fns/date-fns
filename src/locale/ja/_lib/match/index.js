@@ -30,7 +30,7 @@ var matchMonthPatterns = {
 }
 var parseMonthPatterns = {
   any: [
-    /^1/,
+    /^1\D/,
     /^2/,
     /^3/,
     /^4/,
