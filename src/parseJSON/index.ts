@@ -31,7 +31,7 @@ import toDate from '../toDate/index'
  *
  * @param argument A fully formed ISO8601 date string to convert
  * @returns The parsed date in the local time zone
- * /
+ */
 export default function parseJSON(argument) {
   if (typeof argument === 'string') {
     const parts = argument.match(
