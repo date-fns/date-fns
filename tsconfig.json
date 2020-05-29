@@ -12,7 +12,7 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "importHelpers": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "outDir": "lib"
