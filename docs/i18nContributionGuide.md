@@ -76,12 +76,12 @@ Use the two/three letter code:
 - if the language is used in only one country (e.g. `fil` instead of `fil-PH`).
 
 - if all countries who use the language
-also use the same regional standards: the first day of the week,
-the week numbering (see: https://en.wikipedia.org/wiki/Week#Week_numbering),
-calendar date format (see: https://en.wikipedia.org/wiki/Calendar_date)
-and date representation (see: https://en.wikipedia.org/wiki/Date_and_time_representation_by_country
-and: https://en.wikipedia.org/wiki/Date_format_by_country)
-(e.g. `ca` instead of `ca-ES` and `ca-AD`).
+  also use the same regional standards: the first day of the week,
+  the week numbering (see: https://en.wikipedia.org/wiki/Week#Week_numbering),
+  calendar date format (see: https://en.wikipedia.org/wiki/Calendar_date)
+  and date representation (see: https://en.wikipedia.org/wiki/Date_and_time_representation_by_country
+  and: https://en.wikipedia.org/wiki/Date_format_by_country)
+  (e.g. `ca` instead of `ca-ES` and `ca-AD`).
 
 ### index.js
 
@@ -89,11 +89,11 @@ Locale's `index.js` is where all the properties of the locale are combined in a 
 documented in JSDoc format.
 
 ```javascript
-import formatDistance from './_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
-import localize from './_lib/localize/index.js'
-import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
+import localize from './_lib/localize/index'
+import match from './_lib/match/index'
 
 /**
  * @type {Locale}
@@ -130,8 +130,8 @@ var locale = {
     // Nth of January which is always in the first week of the year. See:
     // https://en.wikipedia.org/wiki/Week#Week_numbering
     // http://www.pjh2.de/datetime/weeknumber/wnd.php?l=en
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
@@ -149,7 +149,7 @@ var localize = {
   quarter,
   month,
   day,
-  dayPeriod
+  dayPeriod,
 }
 
 export default localize
@@ -161,7 +161,7 @@ Function that takes a numeric argument and returns a string with ordinal number:
 
 ```js
 // In `en-US` locale:
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
   var rem100 = number % 100
@@ -190,7 +190,7 @@ use `options.unit` argument which could be one of the values 'year', 'quarter', 
 
 ```js
 // In `ru` locale:
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
@@ -217,19 +217,19 @@ From CLDR chart, use ['Date & Time'/'Gregorian'/'Eras'](https://www.unicode.org/
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
-  wide: ['Before Christ', 'Anno Domini']
+  wide: ['Before Christ', 'Anno Domini'],
 }
 
 var localize = {
   // ...
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   // ...
 }
@@ -240,7 +240,7 @@ export default localize
 General usage of the function:
 
 ```js
-var result = locale.localize.era(1, {width: 'abbreviated'})
+var result = locale.localize.era(1, { width: 'abbreviated' })
 //=> 'AD'
 ```
 
@@ -250,7 +250,7 @@ The same is true for all other `localize` functions.
 `width` for `localize.era` function could be either 'narrow', 'abbreviated' or 'wide'.
 
 ```js
-var result = locale.localize.era(1, {width: 'foobar'})
+var result = locale.localize.era(1, { width: 'foobar' })
 //=> 'Anno Domini'
 ```
 
@@ -276,13 +276,65 @@ and formatting month is in the genitive case ("января" as in "1-е янв�
 // In `ru` locale:
 var monthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
-  abbreviated: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
-  wide: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+  abbreviated: [
+    'янв.',
+    'фев.',
+    'март',
+    'апр.',
+    'май',
+    'июнь',
+    'июль',
+    'авг.',
+    'сент.',
+    'окт.',
+    'нояб.',
+    'дек.',
+  ],
+  wide: [
+    'январь',
+    'февраль',
+    'март',
+    'апрель',
+    'май',
+    'июнь',
+    'июль',
+    'август',
+    'сентябрь',
+    'октябрь',
+    'ноябрь',
+    'декабрь',
+  ],
 }
 var formattingMonthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
-  abbreviated: ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
-  wide: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+  abbreviated: [
+    'янв.',
+    'фев.',
+    'мар.',
+    'апр.',
+    'мая',
+    'июн.',
+    'июл.',
+    'авг.',
+    'сент.',
+    'окт.',
+    'нояб.',
+    'дек.',
+  ],
+  wide: [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря',
+  ],
 }
 
 var localize = {
@@ -291,7 +343,7 @@ var localize = {
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
   // ...
 }
@@ -307,12 +359,12 @@ From CLDR chart, use ['Date & Time'/'Gregorian'/'Quarters'](https://www.unicode.
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
+  wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter'],
 }
 
 var localize = {
@@ -322,7 +374,7 @@ var localize = {
     defaultWidth: 'wide',
     argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   // ...
 }
@@ -341,19 +393,45 @@ From CLDR chart, use ['Date & Time'/'Gregorian'/'Months'](https://www.unicode.or
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  abbreviated: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ],
+  wide: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 }
 
 var localize = {
   // ...
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   // ...
 }
@@ -370,8 +448,34 @@ e.g. in Spanish language the weekdays and months should be in the lowercase:
 // In `es` locale:
 var monthValues = {
   narrow: ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'],
-  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  abbreviated: [
+    'ene.',
+    'feb.',
+    'mar.',
+    'abr.',
+    'may.',
+    'jun.',
+    'jul.',
+    'ago.',
+    'sep.',
+    'oct.',
+    'nov.',
+    'dic.',
+  ],
+  wide: [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+  ],
 }
 ```
 
@@ -385,20 +489,28 @@ From CLDR chart, use ['Date & Time'/'Gregorian'/'Days'](https://www.unicode.org/
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var dayValues = {
   narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  wide: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  wide: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
 }
 
 var localize = {
   // ...
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   // ...
 }
@@ -417,7 +529,7 @@ From CLDR chart, use ['Date & Time'/'Gregorian'/'Day periods'](https://www.unico
 
 ```js
 // In `en-US` locale:
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var dayPeriodValues = {
   narrow: {
@@ -428,7 +540,7 @@ var dayPeriodValues = {
     morning: 'in the morning',
     afternoon: 'in the afternoon',
     evening: 'in the evening',
-    night: 'at night'
+    night: 'at night',
   },
   abbreviated: {
     am: 'AM',
@@ -438,7 +550,7 @@ var dayPeriodValues = {
     morning: 'in the morning',
     afternoon: 'in the afternoon',
     evening: 'in the evening',
-    night: 'at night'
+    night: 'at night',
   },
   wide: {
     am: 'a.m.',
@@ -448,16 +560,16 @@ var dayPeriodValues = {
     morning: 'in the morning',
     afternoon: 'in the afternoon',
     evening: 'in the evening',
-    night: 'at night'
-  }
+    night: 'at night',
+  },
 }
 
 var localize = {
   // ...
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize
@@ -477,19 +589,19 @@ from the CLDR chart as a reference.
 
 ```js
 // In `en-US` locale
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
   full: 'EEEE, MMMM do, y',
   long: 'MMMM do, y',
   medium: 'MMM d, y',
-  short: 'MM/dd/yyyy'
+  short: 'MM/dd/yyyy',
 }
 
 var formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
   // ...
 }
@@ -516,20 +628,20 @@ Use some variation of 'h:mm aa' for 12-hour clock locales or 'H:mm' for 24-hour 
 
 ```js
 // In `en-US` locale
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var timeFormats = {
   full: 'h:mm:ss a zzzz',
   long: 'h:mm:ss a z',
   medium: 'h:mm:ss a',
-  short: 'h:mm a'
+  short: 'h:mm a',
 }
 
 var formatLong = {
   // ...
   time: buildFormatLongFn({
     formats: timeFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
   // ...
 }
@@ -545,21 +657,21 @@ values from the CLDR chart.
 
 ```js
 // In `en-US` locale
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateTimeFormats = {
   full: "{{date}} 'at' {{time}}",
   long: "{{date}} 'at' {{time}}",
   medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
+  short: '{{date}}, {{time}}',
 }
 
 var formatLong = {
   // ...
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'full'
-  })
+    defaultWidth: 'full',
+  }),
 }
 
 export default formatLong
@@ -582,10 +694,10 @@ var formatRelativeLocale = {
   today: "'today at' p",
   tomorrow: "'tomorrow at' p",
   nextWeek: "eeee 'at' p",
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   return formatRelativeLocale[token]
 }
 ```
@@ -601,11 +713,19 @@ and declension of word "прошлый" which depends on the grammatical gender 
 
 ```javascript
 // In `ru` locale
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 
-var accusativeWeekdays = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу']
+var accusativeWeekdays = [
+  'воскресенье',
+  'понедельник',
+  'вторник',
+  'среду',
+  'четверг',
+  'пятницу',
+  'субботу',
+]
 
-function lastWeek (day) {
+function lastWeek(day) {
   var weekday = accusativeWeekdays[day]
 
   switch (day) {
@@ -622,11 +742,11 @@ function lastWeek (day) {
   }
 }
 
-function thisWeek (day) {
+function thisWeek(day) {
   // ...
 }
 
-function nextWeek (day) {
+function nextWeek(day) {
   // ...
 }
 
@@ -650,10 +770,10 @@ var formatRelativeLocale = {
       return nextWeek(day)
     }
   },
-  other: 'P'
+  other: 'P',
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
@@ -671,8 +791,8 @@ Contains the functions used by `parse` to parse a localized value:
 
 ```js
 // In `en-US` locale:
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -680,45 +800,71 @@ var parseOrdinalNumberPattern = /\d+/i
 var matchEraPatterns = {
   narrow: /^(b|a)/i,
   abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i
+  wide: /^(before christ|before common era|anno domini|common era)/i,
 }
 var parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i]
+  any: [/^b/i, /^(a|c)/i],
 }
 
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^q[1234]/i,
-  wide: /^[1234](th|st|nd|rd)? quarter/i
+  wide: /^[1234](th|st|nd|rd)? quarter/i,
 }
 var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
+  any: [/1/i, /2/i, /3/i, /4/i],
 }
 
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
   abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i,
 }
 var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^j/i,
+    /^f/i,
+    /^m/i,
+    /^a/i,
+    /^m/i,
+    /^j/i,
+    /^j/i,
+    /^a/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i,
+  ],
+  any: [
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^may/i,
+    /^jun/i,
+    /^jul/i,
+    /^au/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i,
+  ],
 }
 
 var matchDayPatterns = {
   narrow: /^[smtwf]/i,
   short: /^(su|mo|tu|we|th|fr|sa)/i,
   abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i,
 }
 var parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i],
 }
 
 var matchDayPeriodPatterns = {
   narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i
+  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
 }
 var parseDayPeriodPatterns = {
   any: {
@@ -729,8 +875,8 @@ var parseDayPeriodPatterns = {
     morning: /morning/i,
     afternoon: /afternoon/i,
     evening: /evening/i,
-    night: /night/i
-  }
+    night: /night/i,
+  },
 }
 
 var match = {
@@ -739,14 +885,14 @@ var match = {
     parsePattern: parseOrdinalNumberPattern,
     valueCallback: function (value) {
       return parseInt(value, 10)
-    }
+    },
   }),
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   quarter: buildMatchFn({
@@ -756,29 +902,29 @@ var match = {
     defaultParseWidth: 'any',
     valueCallback: function (index) {
       return index + 1
-    }
+    },
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
+    defaultParseWidth: 'any',
+  }),
 }
 
 export default match
@@ -795,7 +941,7 @@ Note that the patterns for `parsePatterns` don't necessary contain the whole wor
 // In `en-US` locale:
 var parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i],
 }
 ```
 
@@ -811,11 +957,11 @@ var matchDayPatterns = {
   narrow: /^[dlmĵjvs]/i,
   short: /^(di|lu|ma|me|(ĵ|jx|jh|j)a|ve|sa)/i,
   abbreviated: /^(dim|lun|mar|mer|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)|ven|sab)/i,
-  wide: /^(diman(ĉ|cx|ch|c)o|lundo|mardo|merkredo|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)do|vendredo|sabato)/i
+  wide: /^(diman(ĉ|cx|ch|c)o|lundo|mardo|merkredo|(ĵ|jx|jh|j)a(ŭ|ux|uh|u)do|vendredo|sabato)/i,
 }
 var parseDayPatterns = {
   narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^(j|ĵ)/i, /^v/i, /^s/i],
-  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^(j|ĵ)/i, /^v/i, /^s/i]
+  any: [/^d/i, /^l/i, /^ma/i, /^me/i, /^(j|ĵ)/i, /^v/i, /^s/i],
 }
 ```
 
@@ -829,7 +975,7 @@ Try to match any possible way of writing the word. Don't forget the grammatical 
 var matchMonthPatterns = {
   narrow: /^[яфмаисонд]/i,
   abbreviated: /^(янв|фев|март?|апр|ма[йя]|июн[ья]?|июл[ья]?|авг|сент?|окт|нояб?|дек)/i,
-  wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i
+  wide: /^(январ[ья]|феврал[ья]|марта?|апрел[ья]|ма[йя]|июн[ья]|июл[ья]|августа?|сентябр[ья]|октябр[ья]|октябр[ья]|ноябр[ья]|декабр[ья])/i,
 }
 ```
 
@@ -841,7 +987,7 @@ var matchDayPatterns = {
   narrow: /^[впсч]/i,
   short: /^(вс|во|пн|по|вт|ср|чт|че|пт|пя|сб|су)\.?/i,
   abbreviated: /^(вск|вос|пнд|пон|втр|вто|срд|сре|чтв|чет|птн|пят|суб).?/i,
-  wide: /^(воскресень[ея]|понедельника?|вторника?|сред[аы]|четверга?|пятниц[аы]|суббот[аы])/i
+  wide: /^(воскресень[ея]|понедельника?|вторника?|сред[аы]|четверга?|пятниц[аы]|суббот[аы])/i,
 }
 ```
 
@@ -887,13 +1033,13 @@ but replace unique properties.
 
 ```javascript
 // Same as en-US
-import formatDistance from '../en-US/_lib/formatDistance/index.js'
-import formatRelative from '../en-US/_lib/formatRelative/index.js'
-import localize from '../en-US/_lib/localize/index.js'
-import match from '../en-US/_lib/match/index.js'
+import formatDistance from '../en-US/_lib/formatDistance/index'
+import formatRelative from '../en-US/_lib/formatRelative/index'
+import localize from '../en-US/_lib/localize/index'
+import match from '../en-US/_lib/match/index'
 
 // Unique for en-GB
-import formatLong from './_lib/formatLong/index.js'
+import formatLong from './_lib/formatLong/index'
 
 /**
  * @type {Locale}
@@ -913,8 +1059,8 @@ var locale = {
   // Unique for en-GB
   options: {
     weekStartsOn: 1,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale

@@ -25,9 +25,9 @@ const locales = listLocales().filter(
   ({ code }) => !outdatedLocales.includes(code)
 )
 
-writeFile('src/index.js', generateIndex(fns, false, true))
-writeFile('src/fp/index.js', generateIndex(fpFns, true, true))
-writeFile('src/locale/index.js', generateIndex(locales, false, false))
+writeFile('src/index', generateIndex(fns, false, true))
+writeFile('src/fp/index', generateIndex(fpFns, true, true))
+writeFile('src/locale/index', generateIndex(locales, false, false))
 
 function writeFile(relativePath, content) {
   return fs.writeFileSync(
@@ -39,15 +39,15 @@ function writeFile(relativePath, content) {
 function generateIndex(files, isFP, includeConstants) {
   const fileLines = files
     .map(
-      fn =>
+      (fn) =>
         `export { default as ${fn.name} } from '${fn.path.replace(
           /\.js$/,
           ''
-        )}/index.js'`
+        )}/index'`
     )
     .concat(
       includeConstants
-        ? `export * from '${isFP ? '..' : '.'}/constants/index.js'`
+        ? `export * from '${isFP ? '..' : '.'}/constants/index'`
         : []
     )
 

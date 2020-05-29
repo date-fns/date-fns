@@ -1,4 +1,4 @@
-import distanceInStrictWords from '../formatDistanceStrict/index.js'
+import distanceInStrictWords from '../formatDistanceStrict/index'
 
 /**
  * @name formatDistanceToNowStrict

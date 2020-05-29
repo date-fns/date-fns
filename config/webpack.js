@@ -44,7 +44,7 @@ function getEntryConfig() {
     return undefined
   } else {
     return {
-      date_fns: './tmp/umd/index.js',
+      date_fns: './tmp/umd/index',
     }
   }
 }

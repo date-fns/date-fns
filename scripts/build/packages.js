@@ -17,13 +17,13 @@ const rootPath =
   process.env.PACKAGE_OUTPUT_PATH || path.resolve(process.cwd(), 'tmp/package')
 
 const extraModules = [
-  { fullPath: './src/fp/index.js' },
-  { fullPath: './src/locale/index.js' }
+  { fullPath: './src/fp/index' },
+  { fullPath: './src/locale/index' },
 ]
 
 const initialPackages = getInitialPackages()
 
-Promise.all([listAll().map(module => writePackage(module.fullPath))]).then(
+Promise.all([listAll().map((module) => writePackage(module.fullPath))]).then(
   'package.json files are generated'
 )
 
@@ -39,7 +39,7 @@ function writePackage(fullPath) {
     packagePath,
     JSON.stringify(
       Object.assign({ sideEffects: false }, initialPackages[fullPath] || {}, {
-        typings: typingsRelativePath
+        typings: typingsRelativePath,
       }),
       null,
       2
@@ -75,7 +75,7 @@ function listAll() {
     .concat(extraModules)
     .reduce((acc, module) => {
       const esmModule = Object.assign({}, module, {
-        fullPath: module.fullPath.replace('./src/', './src/esm/')
+        fullPath: module.fullPath.replace('./src/', './src/esm/'),
       })
       return acc.concat([module, esmModule])
     }, [])

@@ -1,13 +1,13 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInYears from '../differenceInYears/index.js'
-import differenceInMonths from '../differenceInMonths/index.js'
-import differenceInDays from '../differenceInDays/index.js'
-import differenceInHours from '../differenceInHours/index.js'
-import differenceInMinutes from '../differenceInMinutes/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import isValid from '../isValid/index.js'
-import toDate from '../toDate/index.js'
-import sub from '../sub/index.js'
+import compareAsc from '../compareAsc/index'
+import differenceInYears from '../differenceInYears/index'
+import differenceInMonths from '../differenceInMonths/index'
+import differenceInDays from '../differenceInDays/index'
+import differenceInHours from '../differenceInHours/index'
+import differenceInMinutes from '../differenceInMinutes/index'
+import differenceInSeconds from '../differenceInSeconds/index'
+import isValid from '../isValid/index'
+import toDate from '../toDate/index'
+import sub from '../sub/index'
 
 /**
  * @name intervalToDuration

@@ -1,17 +1,17 @@
 // Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
 
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'],
   abbreviated: ['ಕ್ರಿ.ಪೂ', 'ಕ್ರಿ.ಶ'], // CLDR #1618, #1620
-  wide: ['ಕ್ರಿಸ್ತ ಪೂರ್ವ', 'ಕ್ರಿಸ್ತ ಶಕ'] // CLDR #1614, #1616
+  wide: ['ಕ್ರಿಸ್ತ ಪೂರ್ವ', 'ಕ್ರಿಸ್ತ ಶಕ'], // CLDR #1614, #1616
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['ತ್ರೈ 1', 'ತ್ರೈ 2', 'ತ್ರೈ 3', 'ತ್ರೈ 4'], // CLDR #1630 - #1638
-  wide: ['1ನೇ ತ್ರೈಮಾಸಿಕ', '2ನೇ ತ್ರೈಮಾಸಿಕ', '3ನೇ ತ್ರೈಮಾಸಿಕ', '4ನೇ ತ್ರೈಮಾಸಿಕ'] // CLDR #1622 - #1629
+  wide: ['1ನೇ ತ್ರೈಮಾಸಿಕ', '2ನೇ ತ್ರೈಮಾಸಿಕ', '3ನೇ ತ್ರೈಮಾಸಿಕ', '4ನೇ ತ್ರೈಮಾಸಿಕ'], // CLDR #1622 - #1629
 }
 
 // CLDR #1646 - #1717
@@ -29,7 +29,7 @@ var monthValues = {
     'ಸೆಪ್ಟೆಂ',
     'ಅಕ್ಟೋ',
     'ನವೆಂ',
-    'ಡಿಸೆಂ'
+    'ಡಿಸೆಂ',
   ],
   wide: [
     'ಜನವರಿ',
@@ -43,8 +43,8 @@ var monthValues = {
     'ಸೆಪ್ಟೆಂಬರ್',
     'ಅಕ್ಟೋಬರ್',
     'ನವೆಂಬರ್',
-    'ಡಿಸೆಂಬರ್'
-  ]
+    'ಡಿಸೆಂಬರ್',
+  ],
 }
 
 // CLDR #1718 - #1773
@@ -59,8 +59,8 @@ var dayValues = {
     'ಬುಧವಾರ',
     'ಗುರುವಾರ',
     'ಶುಕ್ರವಾರ',
-    'ಶನಿವಾರ'
-  ]
+    'ಶನಿವಾರ',
+  ],
 }
 
 // CLDR #1774 - #1815
@@ -73,7 +73,7 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾಹ್ನ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   abbreviated: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -83,7 +83,7 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   wide: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -93,8 +93,8 @@ var dayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
-  }
+    night: 'ರಾತ್ರಿ',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -105,7 +105,7 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   abbreviated: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -115,7 +115,7 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
+    night: 'ರಾತ್ರಿ',
   },
   wide: {
     am: 'ಪೂರ್ವಾಹ್ನ',
@@ -125,8 +125,8 @@ var formattingDayPeriodValues = {
     morning: 'ಬೆಳಗ್ಗೆ',
     afternoon: 'ಮಧ್ಯಾನ್ಹ',
     evening: 'ಸಂಜೆ',
-    night: 'ರಾತ್ರಿ'
-  }
+    night: 'ರಾತ್ರಿ',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -139,33 +139,33 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

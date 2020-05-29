@@ -1,6 +1,6 @@
-import addQuarters from '../addQuarters/index.js'
-import startOfQuarter from '../startOfQuarter/index.js'
-import toDate from '../toDate/index.js'
+import addQuarters from '../addQuarters/index'
+import startOfQuarter from '../startOfQuarter/index'
+import toDate from '../toDate/index'
 
 /**
  * @name eachQuarterOfInterval

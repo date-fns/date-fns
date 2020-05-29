@@ -1,15 +1,20 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['k.a.', 'k.o.'],
   abbreviated: ['k.a.', 'k.o.'],
-  wide: ['kristo aurretik', 'kristo ondoren']
+  wide: ['kristo aurretik', 'kristo ondoren'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1H', '2H', '3H', '4H'],
-  wide: ['1. hiruhilekoa', '2. hiruhilekoa', '3. hiruhilekoa', '4. hiruhilekoa']
+  wide: [
+    '1. hiruhilekoa',
+    '2. hiruhilekoa',
+    '3. hiruhilekoa',
+    '4. hiruhilekoa',
+  ],
 }
 
 var monthValues = {
@@ -26,7 +31,7 @@ var monthValues = {
     'ira',
     'urr',
     'aza',
-    'abe'
+    'abe',
   ],
   wide: [
     'urtarrila',
@@ -40,8 +45,8 @@ var monthValues = {
     'iraila',
     'urria',
     'azaroa',
-    'abendua'
-  ]
+    'abendua',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +60,8 @@ var dayValues = {
     'asteazkena',
     'osteguna',
     'ostirala',
-    'larunbata'
-  ]
+    'larunbata',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +73,7 @@ var dayPeriodValues = {
     morning: 'goiza',
     afternoon: 'arratsaldea',
     evening: 'arratsaldea',
-    night: 'gaua'
+    night: 'gaua',
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +83,7 @@ var dayPeriodValues = {
     morning: 'goiza',
     afternoon: 'arratsaldea',
     evening: 'arratsaldea',
-    night: 'gaua'
+    night: 'gaua',
   },
   wide: {
     am: 'a.m.',
@@ -88,8 +93,8 @@ var dayPeriodValues = {
     morning: 'goiza',
     afternoon: 'arratsaldea',
     evening: 'arratsaldea',
-    night: 'gaua'
-  }
+    night: 'gaua',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -101,7 +106,7 @@ var formattingDayPeriodValues = {
     morning: 'goizean',
     afternoon: 'arratsaldean',
     evening: 'arratsaldean',
-    night: 'gauean'
+    night: 'gauean',
   },
   abbreviated: {
     am: 'AM',
@@ -111,7 +116,7 @@ var formattingDayPeriodValues = {
     morning: 'goizean',
     afternoon: 'arratsaldean',
     evening: 'arratsaldean',
-    night: 'gauean'
+    night: 'gauean',
   },
   wide: {
     am: 'a.m.',
@@ -121,8 +126,8 @@ var formattingDayPeriodValues = {
     morning: 'goizean',
     afternoon: 'arratsaldean',
     evening: 'arratsaldean',
-    night: 'gauean'
-  }
+    night: 'gauean',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -135,33 +140,33 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

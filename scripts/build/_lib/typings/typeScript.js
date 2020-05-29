@@ -269,7 +269,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
       nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index'))
     )
     .concat(
-      nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index.js'))
+      nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '/index'))
     )
     .map((module) => module.definition)
 
@@ -286,7 +286,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     )
     .concat(
       fpFns.map(
-        getTypeScriptFPFnModuleDefinition.bind(null, '', '/index.js', false)
+        getTypeScriptFPFnModuleDefinition.bind(null, '', '/index', false)
       )
     )
     .map((module) => module.definition)
@@ -305,9 +305,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
       nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index'))
     )
     .concat(
-      nonFPFns.map(
-        getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index.js')
-      )
+      nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', '/index'))
     )
     .map((module) => module.definition)
 
@@ -324,7 +322,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     )
     .concat(
       fpFns.map(
-        getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '/index.js', true)
+        getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '/index', true)
       )
     )
     .map((module) => module.definition)
@@ -346,7 +344,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     )
     .concat(
       locales.map(
-        getTypeScriptLocaleModuleDefinition.bind(null, '', '/index.js', false)
+        getTypeScriptLocaleModuleDefinition.bind(null, '', '/index', false)
       )
     )
     .map((module) => module.definition)
@@ -366,12 +364,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     )
     .concat(
       locales.map(
-        getTypeScriptLocaleModuleDefinition.bind(
-          null,
-          '/esm',
-          '/index.js',
-          true
-        )
+        getTypeScriptLocaleModuleDefinition.bind(null, '/esm', '/index', true)
       )
     )
     .map((module) => module.definition)

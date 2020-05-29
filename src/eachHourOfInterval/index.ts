@@ -1,5 +1,5 @@
-import addHours from '../addHours/index.js'
-import toDate from '../toDate/index.js'
+import addHours from '../addHours/index'
+import toDate from '../toDate/index'
 
 /**
  * @name eachHourOfInterval
