@@ -1,6 +1,6 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import startOfWeekYear from '../startOfWeekYear/index'
+import toDate from '../toDate/index'
 import { WeekYearFnOptions } from '../types.js'
 
 /**

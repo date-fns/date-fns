@@ -1,4 +1,4 @@
-import differenceInDays from '../differenceInDays/index.js'
+import differenceInDays from '../differenceInDays/index'
 
 /**
  * @name differenceInWeeks

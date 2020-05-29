@@ -1,10 +1,10 @@
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
-import setUTCDay from '../../../_lib/setUTCDay/index.js'
-import setUTCISODay from '../../../_lib/setUTCISODay/index.js'
-import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index.js'
-import setUTCWeek from '../../../_lib/setUTCWeek/index.js'
-import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index.js'
-import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index.js'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
+import setUTCDay from '../../../_lib/setUTCDay/index'
+import setUTCISODay from '../../../_lib/setUTCISODay/index'
+import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index'
+import setUTCWeek from '../../../_lib/setUTCWeek/index'
+import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index'
+import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
 
 const MILLISECONDS_IN_HOUR = 3600000
 const MILLISECONDS_IN_MINUTE = 60000

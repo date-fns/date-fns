@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import toDate from '../toDate/index'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
 
 /**
  * @name setISOWeekYear

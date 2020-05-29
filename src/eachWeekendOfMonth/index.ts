@@ -1,6 +1,6 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index.js'
-import startOfMonth from '../startOfMonth/index.js'
-import endOfMonth from '../endOfMonth/index.js'
+import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
+import startOfMonth from '../startOfMonth/index'
+import endOfMonth from '../endOfMonth/index'
 
 /**
  * @name eachWeekendOfMonth

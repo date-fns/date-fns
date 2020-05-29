@@ -1,5 +1,5 @@
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
+import startOfWeek from '../startOfWeek/index'
+import toDate from '../toDate/index'
 import { WeekYearFnOptions } from '../types.js'
 
 /**

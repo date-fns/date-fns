@@ -1,4 +1,4 @@
-import startOfWeek from '../startOfWeek/index.js'
+import startOfWeek from '../startOfWeek/index'
 import { WeekFnOptions } from '../types.js'
 
 /**

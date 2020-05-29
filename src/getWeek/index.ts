@@ -1,5 +1,5 @@
-import startOfWeek from '../startOfWeek/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
+import startOfWeek from '../startOfWeek/index'
+import startOfWeekYear from '../startOfWeekYear/index'
 import { WeekFnOptions } from '../types.js'
 
 const MILLISECONDS_IN_WEEK = 604800000

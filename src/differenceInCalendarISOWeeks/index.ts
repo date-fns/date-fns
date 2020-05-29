@@ -1,5 +1,5 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import startOfISOWeek from '../startOfISOWeek/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 

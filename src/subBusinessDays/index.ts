@@ -1,4 +1,4 @@
-import addBusinessDays from '../addBusinessDays/index.js'
+import addBusinessDays from '../addBusinessDays/index'
 
 /**
  * @name subBusinessDays

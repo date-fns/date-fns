@@ -1,4 +1,4 @@
-import addMilliseconds from '../addMilliseconds/index.js'
+import addMilliseconds from '../addMilliseconds/index'
 
 const MILLISECONDS_IN_MINUTE = 60000
 

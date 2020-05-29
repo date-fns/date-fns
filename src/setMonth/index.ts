@@ -1,5 +1,5 @@
-import toDate from '../toDate/index.js'
-import getDaysInMonth from '../getDaysInMonth/index.js'
+import toDate from '../toDate/index'
+import getDaysInMonth from '../getDaysInMonth/index'
 
 /**
  * @name setMonth

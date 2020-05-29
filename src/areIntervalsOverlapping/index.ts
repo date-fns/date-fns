@@ -1,5 +1,5 @@
-import toDate from '../toDate/index.js'
-import Interval from '../_types/Interval/index.js'
+import toDate from '../toDate/index'
+import Interval from '../_types/Interval/index'
 
 /**
  * @name areIntervalsOverlapping

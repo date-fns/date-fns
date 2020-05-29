@@ -1,5 +1,5 @@
-import getUTCISOWeekYear from '../getUTCISOWeekYear/index.js'
-import startOfUTCISOWeek from '../startOfUTCISOWeek/index.js'
+import getUTCISOWeekYear from '../getUTCISOWeekYear/index'
+import startOfUTCISOWeek from '../startOfUTCISOWeek/index'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376

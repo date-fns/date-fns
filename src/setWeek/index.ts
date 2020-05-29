@@ -1,5 +1,5 @@
-import getWeek from '../getWeek/index.js'
-import toDate from '../toDate/index.js'
+import getWeek from '../getWeek/index'
+import toDate from '../toDate/index'
 import { WeekFnOptions } from '../types.js'
 
 /**

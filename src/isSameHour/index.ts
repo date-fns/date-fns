@@ -1,4 +1,4 @@
-import startOfHour from '../startOfHour/index.js'
+import startOfHour from '../startOfHour/index'
 
 /**
  * @name isSameHour

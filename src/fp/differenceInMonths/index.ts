@@ -1,7 +1,7 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../differenceInMonths/index.js'
-import convertToFP from '../_lib/convertToFP/index.js'
+import fn from '../../differenceInMonths/index'
+import convertToFP from '../_lib/convertToFP/index'
 
 const differenceInMonths = convertToFP(fn, 2)
 

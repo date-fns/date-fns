@@ -1,4 +1,4 @@
-import startOfSecond from '../startOfSecond/index.js'
+import startOfSecond from '../startOfSecond/index'
 
 /**
  * @name isSameSecond

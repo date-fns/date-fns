@@ -1,4 +1,4 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 // https://www.unicode.org/cldr/charts/32/summary/gu.html
 // #1621 - #1630

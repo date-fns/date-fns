@@ -1,7 +1,7 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildParseFn from '../../../_lib/buildParseFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import parseDecimal from '../../../_lib/parseDecimal/index'
 
 const matchOrdinalNumbersPattern = /^(\d+)(e|er|ère|ème|ième)?/i
 

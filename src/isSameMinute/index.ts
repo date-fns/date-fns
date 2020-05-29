@@ -1,4 +1,4 @@
-import startOfMinute from '../startOfMinute/index.js'
+import startOfMinute from '../startOfMinute/index'
 
 /**
  * @name isSameMinute

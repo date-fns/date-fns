@@ -1,4 +1,4 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
 
 /**
  * @name isSameISOWeekYear

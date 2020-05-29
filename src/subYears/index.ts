@@ -1,4 +1,4 @@
-import addYears from '../addYears/index.js'
+import addYears from '../addYears/index'
 
 /**
  * @name subYears

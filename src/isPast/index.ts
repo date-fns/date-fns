@@ -1,4 +1,4 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
 
 /**
  * @name isPast

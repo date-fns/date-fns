@@ -1,7 +1,7 @@
-import subDays from '../subDays/index.js'
-import subMonths from '../subMonths/index.js'
-import toDate from '../toDate/index.js'
-import Duration from 'src/_types/Duration/index.js'
+import subDays from '../subDays/index'
+import subMonths from '../subMonths/index'
+import toDate from '../toDate/index'
+import Duration from 'src/_types/Duration/index'
 
 /**
  * @name sub

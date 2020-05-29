@@ -1,4 +1,4 @@
-import addHours from '../addHours/index.js'
+import addHours from '../addHours/index'
 
 /**
  * @name subHours

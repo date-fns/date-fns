@@ -1,4 +1,4 @@
-import addMilliseconds from '../addMilliseconds/index.js'
+import addMilliseconds from '../addMilliseconds/index'
 
 /**
  * @name subMilliseconds

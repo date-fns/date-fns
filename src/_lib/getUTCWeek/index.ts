@@ -1,5 +1,5 @@
-import startOfUTCWeek from '../startOfUTCWeek/index.js'
-import startOfUTCWeekYear from '../startOfUTCWeekYear/index.js'
+import startOfUTCWeek from '../startOfUTCWeek/index'
+import startOfUTCWeekYear from '../startOfUTCWeekYear/index'
 import { WeekFnOptions } from '../../types.js'
 
 const MILLISECONDS_IN_WEEK = 604800000

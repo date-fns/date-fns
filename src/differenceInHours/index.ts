@@ -1,4 +1,4 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
+import differenceInMilliseconds from '../differenceInMilliseconds/index'
 
 const MILLISECONDS_IN_HOUR = 3600000
 

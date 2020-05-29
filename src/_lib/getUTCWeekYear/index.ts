@@ -1,5 +1,5 @@
-import toDate from '../../toDate/index.js'
-import startOfUTCWeek from '../startOfUTCWeek/index.js'
+import toDate from '../../toDate/index'
+import startOfUTCWeek from '../startOfUTCWeek/index'
 import { WeekYearFnOptions } from '../../types.js'
 
 // This function will be a part of public API when UTC function will be implemented.

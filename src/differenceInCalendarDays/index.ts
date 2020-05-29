@@ -1,5 +1,5 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import startOfDay from '../startOfDay/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import startOfDay from '../startOfDay/index'
 
 const MILLISECONDS_IN_DAY = 86400000
 

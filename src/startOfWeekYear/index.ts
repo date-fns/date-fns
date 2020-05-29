@@ -1,5 +1,5 @@
-import getWeekYear from '../getWeekYear/index.js'
-import startOfWeek from '../startOfWeek/index.js'
+import getWeekYear from '../getWeekYear/index'
+import startOfWeek from '../startOfWeek/index'
 import { WeekYearFnOptions } from '../types.js'
 
 /**

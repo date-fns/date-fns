@@ -1,6 +1,6 @@
-import eachDayOfInterval from '../eachDayOfInterval/index.js'
-import isSunday from '../isSunday/index.js'
-import isWeekend from '../isWeekend/index.js'
+import eachDayOfInterval from '../eachDayOfInterval/index'
+import isSunday from '../isSunday/index'
+import isWeekend from '../isWeekend/index'
 
 /**
  * @name eachWeekendOfInterval

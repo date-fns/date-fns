@@ -1,4 +1,4 @@
-import addMonths from '../addMonths/index.js'
+import addMonths from '../addMonths/index'
 
 /**
  * @name subMonths

@@ -1,8 +1,8 @@
-import toDate from '../toDate/index.js'
-import formatters from '../_lib/format/lightFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import isValid from '../isValid/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index'
+import formatters from '../_lib/format/lightFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import isValid from '../isValid/index'
+import subMilliseconds from '../subMilliseconds/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter

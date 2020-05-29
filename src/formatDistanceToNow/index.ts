@@ -1,4 +1,4 @@
-import distanceInWords from '../formatDistance/index.js'
+import distanceInWords from '../formatDistance/index'
 
 /**
  * @name formatDistanceToNow

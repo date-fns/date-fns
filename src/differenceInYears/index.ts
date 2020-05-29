@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
-import compareAsc from '../compareAsc/index.js'
+import toDate from '../toDate/index'
+import differenceInCalendarYears from '../differenceInCalendarYears/index'
+import compareAsc from '../compareAsc/index'
 
 /**
  * @name differenceInYears

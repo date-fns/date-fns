@@ -1,5 +1,5 @@
-import addDays from '../addDays/index.js'
-import toDate from '../toDate/index.js'
+import addDays from '../addDays/index'
+import toDate from '../toDate/index'
 import { WeekFnOptions } from '../types.js'
 
 /**

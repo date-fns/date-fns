@@ -1,6 +1,6 @@
-import getDate from '../getDate/index.js'
-import getDay from '../getDay/index.js'
-import startOfMonth from '../startOfMonth/index.js'
+import getDate from '../getDate/index'
+import getDay from '../getDay/index'
+import startOfMonth from '../startOfMonth/index'
 import { WeekFnOptions } from '../types.js'
 
 /**

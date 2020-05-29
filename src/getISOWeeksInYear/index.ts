@@ -1,5 +1,5 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import addWeeks from '../addWeeks/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import addWeeks from '../addWeeks/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 

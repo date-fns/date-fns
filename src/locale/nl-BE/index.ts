@@ -1,11 +1,11 @@
 // Same as nl
-// import formatDistance from '../nl/_lib/formatDistance/index.js'
-// import formatRelative from '../nl/_lib/formatRelative/index.js'
-// import localize from '../nl/_lib/localize/index.js'
-// import match from '../nl/_lib/match/index.js'
+// import formatDistance from '../nl/_lib/formatDistance/index'
+// import formatRelative from '../nl/_lib/formatRelative/index'
+// import localize from '../nl/_lib/localize/index'
+// import match from '../nl/_lib/match/index'
 
 // Unique for nl-BE
-// import formatLong from './_lib/formatLong/index.js'
+// import formatLong from './_lib/formatLong/index'
 
 /**
  * @type {Locale}

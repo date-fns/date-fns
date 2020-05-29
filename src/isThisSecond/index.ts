@@ -1,4 +1,4 @@
-import isSameSecond from '../isSameSecond/index.js'
+import isSameSecond from '../isSameSecond/index'
 
 /**
  * @name isThisSecond

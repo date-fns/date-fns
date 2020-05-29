@@ -1,6 +1,6 @@
-import addDays from '../addDays/index.js'
-import addMonths from '../addMonths/index.js'
-import toDate from '../toDate/index.js'
+import addDays from '../addDays/index'
+import addMonths from '../addMonths/index'
+import toDate from '../toDate/index'
 import Duration from '../_types/Duration'
 
 /**
@@ -41,7 +41,10 @@ import Duration from '../_types/Duration'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add(dirtyDate: Date | number, duration: Duration) {
+export default function add(
+  dirtyDate: Date | number,
+  duration: Duration
+): Date {
   const years = duration.years ?? 0
   const months = duration.months ?? 0
   const weeks = duration.weeks ?? 0

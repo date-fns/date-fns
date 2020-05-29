@@ -1,4 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 //Source: https://www.unicode.org/cldr/charts/32/summary/gu.html
 const dateFormats = {

@@ -1,5 +1,5 @@
 import { WeekFnOptions } from '../types.js'
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
 
 /**
  * @name startOfWeek

@@ -1,5 +1,5 @@
-import isWeekend from '../isWeekend/index.js'
-import toDate from '../toDate/index.js'
+import isWeekend from '../isWeekend/index'
+import toDate from '../toDate/index'
 
 /**
  * @name addBusinessDays
@@ -21,7 +21,7 @@ import toDate from '../toDate/index.js'
 export default function addBusinessDays(
   dirtyDate: Date | number,
   amount: number
-) {
+): Date {
   const date = toDate(dirtyDate)
 
   if (isNaN(amount)) return new Date(NaN)

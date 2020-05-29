@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import startOfYear from '../startOfYear/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
+import toDate from '../toDate/index'
+import startOfYear from '../startOfYear/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
 
 /**
  * @name getDayOfYear

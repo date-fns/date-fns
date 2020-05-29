@@ -1,4 +1,4 @@
-import addLeadingZeros from '../../addLeadingZeros/index.js'
+import addLeadingZeros from '../../addLeadingZeros/index'
 
 /*
  * |     | Unit                           |     | Unit                           |

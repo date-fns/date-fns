@@ -1,5 +1,5 @@
-import getISOWeekYear from '../getISOWeekYear/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
+import getISOWeekYear from '../getISOWeekYear/index'
+import startOfISOWeek from '../startOfISOWeek/index'
 
 /**
  * @name endOfISOWeekYear

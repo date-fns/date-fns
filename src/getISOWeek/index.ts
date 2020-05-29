@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import toDate from '../toDate/index'
+import startOfISOWeek from '../startOfISOWeek/index'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 

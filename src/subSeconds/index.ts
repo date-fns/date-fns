@@ -1,4 +1,4 @@
-import addSeconds from '../addSeconds/index.js'
+import addSeconds from '../addSeconds/index'
 
 /**
  * @name subSeconds

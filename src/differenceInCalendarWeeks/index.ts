@@ -1,6 +1,6 @@
-import startOfWeek from '../startOfWeek/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import { WeekFnOptions } from '../_types/Options/index.js'
+import startOfWeek from '../startOfWeek/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import { WeekFnOptions } from '../_types/Options/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 

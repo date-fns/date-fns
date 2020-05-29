@@ -1,4 +1,4 @@
-import defaultLocale from '../locale/en-US/index.js'
+import defaultLocale from '../locale/en-US/index'
 import Duration from '../_types/Duration'
 import { FormatDurationOptions } from '../_types/Options'
 

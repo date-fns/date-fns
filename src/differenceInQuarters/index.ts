@@ -1,4 +1,4 @@
-import differenceInMonths from '../differenceInMonths/index.js'
+import differenceInMonths from '../differenceInMonths/index'
 
 /**
  * @name differenceInQuarters
