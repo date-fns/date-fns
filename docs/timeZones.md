@@ -54,7 +54,7 @@ const zonedDate = utcToZonedTime(date, timeZone)
 // zonedDate could be used to initialize a date picker or display the formatted local date/time
 
 // Set the output to "1.9.2018 18:01:36.386 GMT+02:00 (CEST)"
-const pattern = 'd.m.yyyy HH:mm:ss.SSS \'GMT\' XXX (z)'
+const pattern = 'd.M.yyyy HH:mm:ss.SSS \'GMT\' XXX (z)'
 const output = format(zonedDate, pattern, { timeZone: 'Europe/Berlin' })
 ```
 
