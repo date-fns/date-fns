@@ -1,3 +1,5 @@
+Copyright (C) 2020 Sasha Koss and Lesha Koss
+
 # License
 
 date-fns is licensed under the [MIT license](http://kossnocorp.mit-license.org).
