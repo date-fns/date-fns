@@ -1,7 +1,7 @@
 import addDays from '../addDays/index'
 import addMonths from '../addMonths/index'
 import toDate from '../toDate/index'
-import { Duration } from '../types''
+import { Duration } from '../types'
 
 /**
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
