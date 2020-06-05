@@ -2,11 +2,6 @@ import isWeekend from '../isWeekend/index'
 import trunc from '../_lib/trunc'
 
 /**
- * @name addBusinessDays
- * @category Day Helpers
- * @summary Add the specified number of business days (mon - fri) to the given date.
- *
- * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param date - The date to be changed
@@ -14,9 +9,13 @@ import trunc from '../_lib/trunc'
  * @returns The new date with the business days added
  *
  * @example
- * // Add 10 business days to 1 September 2014:
+ * Add 10 business days to 1 September 2014:
+ * ```
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
+ * ```
+ *
+ * @category Day Helpers
  */
 export default function addBusinessDays(
   dirtyDate: Date | number,
