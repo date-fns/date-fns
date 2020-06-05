@@ -1,4 +1,4 @@
-import { Duration } from '../types
+import { Duration } from '../types'
 
 /**
  * @name formatISODuration

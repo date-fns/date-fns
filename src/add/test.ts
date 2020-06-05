@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import add from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
-describe.only('add', () => {
+describe('add', () => {
   it('adds the values from the given object', () => {
     const result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
       years: 2,
