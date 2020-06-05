@@ -1,5 +1,5 @@
 import defaultLocale from '../locale/en-US/index'
-import Duration from '../_types/Duration'
+import { Duration } from '../types
 import { FormatDurationOptions } from '../_types/Options'
 
 const defaultFormat = [
