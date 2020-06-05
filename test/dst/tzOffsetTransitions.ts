@@ -29,7 +29,7 @@ export function getDstTransitions(year: number) {
       if (t.type === 'back' && !result.end) result.end = t.date
     }
   }
-  return result
+  return result as Interval
 }
 
 function isValidDate(d: Date) {

@@ -36,12 +36,6 @@ describe.only('add', () => {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
-  it('implicitly converts number arguments', () => {
-    // $ExpectedMistake
-    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: '4.2' })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1, 10)
     add(date, { hours: 4 })
@@ -64,7 +58,10 @@ describe.only('add', () => {
     () => {
       const date = dstTransitions.end
       const result = add(date, { hours: 1 })
-      assert.deepEqual(result, new Date(date.getTime() + HOUR))
+      assert.deepEqual(
+        result,
+        new Date((typeof date === 'number' ? date : date.getTime()) + HOUR)
+      )
     }
   )
 
@@ -82,16 +79,5 @@ describe.only('add', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws RangeError exception if passed Number as duration', () => {
-    // $ExpectedMistake
-    const result = add(new Date(2014, 8, 1), 'wut')
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    assert.throws(add.bind(null), TypeError)
-    assert.throws(add.bind(null, 1), TypeError)
   })
 })

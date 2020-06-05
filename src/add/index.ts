@@ -1,35 +1,18 @@
 import addDays from '../addDays/index'
 import addMonths from '../addMonths/index'
 import toDate from '../toDate/index'
-import Duration from '../_types/Duration'
+import type Duration from '../_types/Duration'
 
 /**
- * @name add
- * @category Common Helpers
- * @summary Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
- *
- * @description
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @param date - The date to be changed
  * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- *
- * | Key            | Description                        |
- * |----------------|------------------------------------|
- * | years          | Amount of years to be added        |
- * | months         | Amount of months to be added       |
- * | weeks          | Amount of weeks to be added       |
- * | days           | Amount of days to be added         |
- * | hours          | Amount of hours to be added        |
- * | minutes        | Amount of minutes to be added      |
- * | seconds        | Amount of seconds to be added      |
- *
- * All values default to 0
- *
  * @returns The new date with the seconds added
  *
  * @example
- * // Add the following duration to 1 September 2014, 10:19:50
+ * Add the following duration to 1 September 2014, 10:19:50:
+ * ```ts
  * const result = add(new Date(2014, 8, 1, 10, 19, 50), {
  *   years: 2,
  *   months: 9,
@@ -40,18 +23,21 @@ import Duration from '../_types/Duration'
  *   seconds: 30,
  * })
  * //=> Thu Jun 15 2017 15:29:20
+ * ```
+ *
+ * @category Common Helpers
  */
 export default function add(
   dirtyDate: Date | number,
   duration: Duration
 ): Date {
-  const years = duration.years ?? 0
-  const months = duration.months ?? 0
-  const weeks = duration.weeks ?? 0
-  const days = duration.days ?? 0
-  const hours = duration.hours ?? 0
-  const minutes = duration.minutes ?? 0
-  const seconds = duration.seconds ?? 0
+  const years = trunc(duration.years)
+  const months = trunc(duration.months)
+  const weeks = trunc(duration.weeks)
+  const days = trunc(duration.days)
+  const hours = trunc(duration.hours)
+  const minutes = trunc(duration.minutes)
+  const seconds = trunc(duration.seconds)
 
   // Add years and months
   const date = toDate(dirtyDate)
@@ -69,4 +55,9 @@ export default function add(
   const finalDate = new Date(dateWithDays.getTime() + msToAdd)
 
   return finalDate
+}
+
+function trunc(number: number | undefined) {
+  if (number === undefined) return 0
+  return number < 0 ? Math.ceil(number) : Math.floor(number)
 }
