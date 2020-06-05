@@ -4,7 +4,7 @@
 import assert from 'power-assert'
 import addBusinessDays from '.'
 
-describe.only('addBusinessDays', () => {
+describe('addBusinessDays', () => {
   it('adds the given number of business days', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
@@ -37,27 +37,12 @@ describe.only('addBusinessDays', () => {
   })
 
   it('can handle a large number of business days', () => {
-    if (typeof this.timeout === 'function') {
-      this.timeout(500 /* 500 ms test timeout */)
-    }
-
     const result = addBusinessDays(new Date(2014, 0 /* Jan */, 1), 3387885)
     assert.deepEqual(result, new Date(15000, 0 /* Jan */, 1))
   })
 
   it('accepts a timestamp', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10.5)
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
-  })
-
-  it('implicitly converts number arguments', () => {
-    // $ExpectedMistake
-    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), '10')
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
   })
 
@@ -75,10 +60,5 @@ describe.only('addBusinessDays', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    assert.throws(addBusinessDays.bind(null), TypeError)
-    assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
 })

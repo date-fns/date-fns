@@ -1,6 +1,5 @@
 import addDays from '../addDays/index'
 import addMonths from '../addMonths/index'
-import toDate from '../toDate/index'
 import { Duration } from '../types'
 
 /**
@@ -31,16 +30,16 @@ export default function add(
   dirtyDate: Date | number,
   duration: Duration
 ): Date {
-  const years = trunc(duration.years)
-  const months = trunc(duration.months)
-  const weeks = trunc(duration.weeks)
-  const days = trunc(duration.days)
-  const hours = trunc(duration.hours)
-  const minutes = trunc(duration.minutes)
-  const seconds = trunc(duration.seconds)
+  const years = duration.years ?? 0
+  const months = duration.months ?? 0
+  const weeks = duration.weeks ?? 0
+  const days = duration.days ?? 0
+  const hours = duration.hours ?? 0
+  const minutes = duration.minutes ?? 0
+  const seconds = duration.seconds ?? 0
 
   // Add years and months
-  const date = toDate(dirtyDate)
+  const date = new Date(dirtyDate)
   const dateWithMonths =
     months || years ? addMonths(date, months + years * 12) : date
 
@@ -55,9 +54,4 @@ export default function add(
   const finalDate = new Date(dateWithDays.getTime() + msToAdd)
 
   return finalDate
-}
-
-function trunc(number: number | undefined) {
-  if (number === undefined) return 0
-  return number < 0 ? Math.ceil(number) : Math.floor(number)
 }

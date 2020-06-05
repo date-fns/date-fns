@@ -1,5 +1,5 @@
 import isWeekend from '../isWeekend/index'
-import toDate from '../toDate/index'
+import trunc from '../_lib/trunc'
 
 /**
  * @name addBusinessDays
@@ -22,13 +22,13 @@ export default function addBusinessDays(
   dirtyDate: Date | number,
   amount: number
 ): Date {
-  const date = toDate(dirtyDate)
+  const date = new Date(dirtyDate)
 
   if (isNaN(amount)) return new Date(NaN)
 
   const hours = date.getHours()
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = amount / 5
+  const fullWeeks = trunc(amount / 5)
 
   date.setDate(date.getDate() + fullWeeks * 7)
 
