@@ -5,12 +5,12 @@ import trunc from '../_lib/trunc'
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
  * @param date - The date to be changed
- * @param amount - The amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of business days to be added
  * @returns The new date with the business days added
  *
  * @example
  * Add 10 business days to 1 September 2014:
- * ```
+ * ```ts
  * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  * ```

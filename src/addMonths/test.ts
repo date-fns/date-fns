@@ -5,41 +5,41 @@ import assert from 'power-assert'
 import addMonths from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
-describe('addMonths', function () {
-  it('adds the given number of months', function () {
+describe.only('addMonths', () => {
+  it('adds the given number of months', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5)
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 1))
   })
 
-  it('accepts a timestamp', function () {
+  it('accepts a timestamp', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1).getTime(), 12)
     assert.deepEqual(result, new Date(2015, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', function () {
+  it('converts a fractional number to an integer', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5.75)
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 1))
   })
 
-  it('implicitly converts number arguments', function () {
+  it('implicitly converts number arguments', () => {
     // $ExpectedMistake
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), '5')
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 1))
   })
 
-  it('does not mutate the original date', function () {
+  it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addMonths(date, 12)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('works well if the desired month has fewer days and the provided date is in the last day of a month', function () {
+  it('works well if the desired month has fewer days and the provided date is in the last day of a month', () => {
     const date = new Date(2014, 11 /* Dec */, 31)
     const result = addMonths(date, 2)
     assert.deepEqual(result, new Date(2015, 1 /* Feb */, 28))
   })
 
-  it('handles dates before 100 AD', function () {
+  it('handles dates before 100 AD', () => {
     const initialDate = new Date(0)
     initialDate.setFullYear(0, 0 /* Jan */, 31)
     initialDate.setHours(0, 0, 0, 0)
@@ -50,17 +50,17 @@ describe('addMonths', function () {
     assert.deepEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = addMonths(new Date(NaN), 5)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function () {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', () => {
     assert.throws(addMonths.bind(null), TypeError)
     assert.throws(addMonths.bind(null, 1), TypeError)
   })
@@ -80,7 +80,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = dstTransitions.start
       const result = addMonths(date, 2)
       assert.deepEqual(
@@ -92,7 +92,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-start - 30 mins in local timezone: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = new Date(dstTransitions.start.getTime() - 0.5 * HOUR)
       const result = addMonths(date, 2)
       const expected = override(date, date.getFullYear(), date.getMonth() + 2)
@@ -102,7 +102,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-start - 60 mins in local timezone: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = new Date(dstTransitions.start.getTime() - 1 * HOUR)
       const result = addMonths(date, 2)
       const expected = override(date, date.getFullYear(), date.getMonth() + 2)
@@ -112,7 +112,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = dstTransitions.end
       const result = addMonths(date, 2)
       assert.deepEqual(
@@ -128,8 +128,8 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-end - 30 mins in local timezone: ${tz || '(unknown)'}`,
-    function () {
-      const date = new Date(dstTransitions.end.getTime() - 0.5 * HOUR)
+    () => {
+      const date = new Date(new Date(dstTransitions.end).getTime() - 0.5 * HOUR)
       const result = addMonths(date, 2)
       assert.deepEqual(
         result,
@@ -144,7 +144,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `works at DST-end - 60 mins in local timezone: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = new Date(dstTransitions.end.getTime() - 1 * HOUR)
       const result = addMonths(date, 2)
       assert.deepEqual(
@@ -160,7 +160,7 @@ describe('addMonths', function () {
 
   dstOnly(
     `doesn't mutate if zero increment is used: ${tz || '(unknown)'}`,
-    function () {
+    () => {
       const date = new Date(dstTransitions.end)
       const result = addMonths(date, 0)
       assert.deepEqual(result, date)

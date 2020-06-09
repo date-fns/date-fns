@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import addDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
-describe.only('addDays', () => {
+describe('addDays', () => {
   it('adds the given number of days', () => {
     const result = addDays(new Date(2014, 8 /* Sep */, 1), 10)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 11))

@@ -6,7 +6,7 @@ import { Duration } from '../types'
  * Add the specified years, months, weeks, days, hours, minutes and seconds to the given date.
  *
  * @param date - The date to be changed
- * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param duration - The object with years, months, weeks, days, hours, minutes and seconds to be added
  * @returns The new date with the seconds added
  *
  * @example

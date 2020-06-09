@@ -1,28 +1,21 @@
-import toDate from '../toDate/index'
-
 /**
- * @name addMonths
- * @category Month Helpers
- * @summary Add the specified number of months to the given date.
- *
- * @description
  * Add the specified number of months to the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - The date to be changed
- * @param amount - The amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - The amount of months to be added
  * @returns The new date with the months added
  *
  * @example
- * // Add 5 months to 1 September 2014:
+ * Add 5 months to 1 September 2014:
+ * ```ts
  * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
+ * ```
+ *
+ * @category Month Helpers
  */
 export default function addMonths(dirtyDate: Date | number, amount: number) {
-  const date = toDate(dirtyDate)
+  const date = new Date(dirtyDate)
 
   if (amount === 0) {
     // If 0 months, no-op to avoid changing times in the hour before end of DST
