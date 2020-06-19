@@ -15,18 +15,18 @@ var quarterValues = {
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
-    'jan.',
-    'feb.',
-    'mrt.',
-    'apr.',
+    'jan',
+    'feb',
+    'mrt',
+    'apr',
     'mei',
-    'jun.',
-    'jul.',
-    'aug.',
-    'sep.',
-    'okt.',
-    'nov.',
-    'dec.'
+    'jun',
+    'jul',
+    'aug',
+    'sep',
+    'okt',
+    'nov',
+    'dec'
   ],
   wide: [
     'januari',
