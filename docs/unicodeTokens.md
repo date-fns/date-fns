@@ -9,7 +9,7 @@ to resolve.
 
 ## Popular mistakes
 
-There are 4 tokens that caus most of the confusion:
+There are 4 tokens that cause most of the confusion:
 
 - `D` and `DD` that represent the day of a year (1, 2, ..., 365, 366)
   are often confused with `d` and `dd` that represent the day of a month
