@@ -14,14 +14,40 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'maj', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
-  wide: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december']
+  abbreviated: [
+    'jan.',
+    'feb.',
+    'mars',
+    'apr.',
+    'maj',
+    'juni',
+    'juli',
+    'aug.',
+    'sep.',
+    'okt.',
+    'nov.',
+    'dec.'
+  ],
+  wide: [
+    'januari',
+    'februari',
+    'mars',
+    'april',
+    'maj',
+    'juni',
+    'juli',
+    'augusti',
+    'september',
+    'oktober',
+    'november',
+    'december'
+  ]
 }
 
 var dayValues = {
   narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
   short: ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'],
-  abbreviated: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
+  abbreviated: ['sön.', 'mån.', 'tis.', 'ons.', 'tor.', 'fre.', 'lör.'],
   wide: ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag']
 }
 
@@ -32,18 +58,18 @@ var dayPeriodValues = {
     pm: 'em',
     midnight: 'midnatt',
     noon: 'middag',
-    morning: 'morg.',
-    afternoon: 'efterm.',
+    morning: 'morgon',
+    afternoon: 'eftermiddag',
     evening: 'kväll',
     night: 'natt'
   },
   abbreviated: {
-    am: 'f.m.',
-    pm: 'e.m.',
+    am: 'fm.',
+    pm: 'em.',
     midnight: 'midnatt',
     noon: 'middag',
     morning: 'morgon',
-    afternoon: 'efterm.',
+    afternoon: 'eftermiddag',
     evening: 'kväll',
     night: 'natt'
   },
@@ -64,18 +90,18 @@ var formattingDayPeriodValues = {
     pm: 'em',
     midnight: 'midnatt',
     noon: 'middag',
-    morning: 'på morg.',
-    afternoon: 'på efterm.',
+    morning: 'på morgonen',
+    afternoon: 'på eftermiddagen',
     evening: 'på kvällen',
     night: 'på natten'
   },
   abbreviated: {
-    am: 'fm',
-    pm: 'em',
+    am: 'fm.',
+    pm: 'em.',
     midnight: 'midnatt',
     noon: 'middag',
-    morning: 'på morg.',
-    afternoon: 'på efterm.',
+    morning: 'på morgonen',
+    afternoon: 'på eftermiddagen',
     evening: 'på kvällen',
     night: 'på natten'
   },
@@ -91,7 +117,7 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
 
   var rem100 = number % 100
@@ -116,7 +142,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
+    argumentCallback: function(quarter) {
       return Number(quarter) - 1
     }
   }),
