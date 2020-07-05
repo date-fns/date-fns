@@ -516,6 +516,13 @@ declare module 'date-fns' {
   function getMonth(date: Date | number): number
   namespace getMonth {}
 
+  function getNthDayOfMonth(
+    date: Date | number,
+    day: number,
+    week: Date | number
+  ): Date
+  namespace getNthDayOfMonth {}
+
   function getOverlappingDaysInIntervals(
     intervalLeft: Interval,
     intervalRight: Interval
@@ -1419,6 +1426,11 @@ declare module 'date-fns/getMinutes' {
 declare module 'date-fns/getMonth' {
   import { getMonth } from 'date-fns'
   export default getMonth
+}
+
+declare module 'date-fns/getNthDayOfMonth' {
+  import { getNthDayOfMonth } from 'date-fns'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/getOverlappingDaysInIntervals' {
@@ -2396,6 +2408,11 @@ declare module 'date-fns/getMonth/index' {
   export default getMonth
 }
 
+declare module 'date-fns/getNthDayOfMonth/index' {
+  import { getNthDayOfMonth } from 'date-fns'
+  export default getNthDayOfMonth
+}
+
 declare module 'date-fns/getOverlappingDaysInIntervals/index' {
   import { getOverlappingDaysInIntervals } from 'date-fns'
   export default getOverlappingDaysInIntervals
@@ -3369,6 +3386,11 @@ declare module 'date-fns/getMinutes/index.js' {
 declare module 'date-fns/getMonth/index.js' {
   import { getMonth } from 'date-fns'
   export default getMonth
+}
+
+declare module 'date-fns/getNthDayOfMonth/index.js' {
+  import { getNthDayOfMonth } from 'date-fns'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/getOverlappingDaysInIntervals/index.js' {
@@ -4362,6 +4384,9 @@ declare module 'date-fns/fp' {
   const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {}
 
+  const getNthDayOfMonth: CurriedFn3<Date | number, number, Date | number, Date>
+  namespace getNthDayOfMonth {}
+
   const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
   namespace getOverlappingDaysInIntervals {}
 
@@ -5295,6 +5320,11 @@ declare module 'date-fns/fp/getMinutes' {
 declare module 'date-fns/fp/getMonth' {
   import { getMonth } from 'date-fns/fp'
   export default getMonth
+}
+
+declare module 'date-fns/fp/getNthDayOfMonth' {
+  import { getNthDayOfMonth } from 'date-fns/fp'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/fp/getOverlappingDaysInIntervals' {
@@ -6317,6 +6347,11 @@ declare module 'date-fns/fp/getMonth/index' {
   export default getMonth
 }
 
+declare module 'date-fns/fp/getNthDayOfMonth/index' {
+  import { getNthDayOfMonth } from 'date-fns/fp'
+  export default getNthDayOfMonth
+}
+
 declare module 'date-fns/fp/getOverlappingDaysInIntervals/index' {
   import { getOverlappingDaysInIntervals } from 'date-fns/fp'
   export default getOverlappingDaysInIntervals
@@ -7337,6 +7372,11 @@ declare module 'date-fns/fp/getMonth/index.js' {
   export default getMonth
 }
 
+declare module 'date-fns/fp/getNthDayOfMonth/index.js' {
+  import { getNthDayOfMonth } from 'date-fns/fp'
+  export default getNthDayOfMonth
+}
+
 declare module 'date-fns/fp/getOverlappingDaysInIntervals/index.js' {
   import { getOverlappingDaysInIntervals } from 'date-fns/fp'
   export default getOverlappingDaysInIntervals
@@ -8313,6 +8353,13 @@ declare module 'date-fns/esm' {
   function getMonth(date: Date | number): number
   namespace getMonth {}
 
+  function getNthDayOfMonth(
+    date: Date | number,
+    day: number,
+    week: Date | number
+  ): Date
+  namespace getNthDayOfMonth {}
+
   function getOverlappingDaysInIntervals(
     intervalLeft: Interval,
     intervalRight: Interval
@@ -9216,6 +9263,11 @@ declare module 'date-fns/esm/getMinutes' {
 declare module 'date-fns/esm/getMonth' {
   import { getMonth } from 'date-fns/esm'
   export default getMonth
+}
+
+declare module 'date-fns/esm/getNthDayOfMonth' {
+  import { getNthDayOfMonth } from 'date-fns/esm'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/esm/getOverlappingDaysInIntervals' {
@@ -10193,6 +10245,11 @@ declare module 'date-fns/esm/getMonth/index' {
   export default getMonth
 }
 
+declare module 'date-fns/esm/getNthDayOfMonth/index' {
+  import { getNthDayOfMonth } from 'date-fns/esm'
+  export default getNthDayOfMonth
+}
+
 declare module 'date-fns/esm/getOverlappingDaysInIntervals/index' {
   import { getOverlappingDaysInIntervals } from 'date-fns/esm'
   export default getOverlappingDaysInIntervals
@@ -11166,6 +11223,11 @@ declare module 'date-fns/esm/getMinutes/index.js' {
 declare module 'date-fns/esm/getMonth/index.js' {
   import { getMonth } from 'date-fns/esm'
   export default getMonth
+}
+
+declare module 'date-fns/esm/getNthDayOfMonth/index.js' {
+  import { getNthDayOfMonth } from 'date-fns/esm'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/esm/getOverlappingDaysInIntervals/index.js' {
@@ -12159,6 +12221,9 @@ declare module 'date-fns/esm/fp' {
   const getMonth: CurriedFn1<Date | number, number>
   namespace getMonth {}
 
+  const getNthDayOfMonth: CurriedFn3<Date | number, number, Date | number, Date>
+  namespace getNthDayOfMonth {}
+
   const getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>
   namespace getOverlappingDaysInIntervals {}
 
@@ -13092,6 +13157,11 @@ declare module 'date-fns/esm/fp/getMinutes' {
 declare module 'date-fns/esm/fp/getMonth' {
   import { getMonth } from 'date-fns/esm/fp'
   export default getMonth
+}
+
+declare module 'date-fns/esm/fp/getNthDayOfMonth' {
+  import { getNthDayOfMonth } from 'date-fns/esm/fp'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/esm/fp/getOverlappingDaysInIntervals' {
@@ -14114,6 +14184,11 @@ declare module 'date-fns/esm/fp/getMonth/index' {
   export default getMonth
 }
 
+declare module 'date-fns/esm/fp/getNthDayOfMonth/index' {
+  import { getNthDayOfMonth } from 'date-fns/esm/fp'
+  export default getNthDayOfMonth
+}
+
 declare module 'date-fns/esm/fp/getOverlappingDaysInIntervals/index' {
   import { getOverlappingDaysInIntervals } from 'date-fns/esm/fp'
   export default getOverlappingDaysInIntervals
@@ -15132,6 +15207,11 @@ declare module 'date-fns/esm/fp/getMinutes/index.js' {
 declare module 'date-fns/esm/fp/getMonth/index.js' {
   import { getMonth } from 'date-fns/esm/fp'
   export default getMonth
+}
+
+declare module 'date-fns/esm/fp/getNthDayOfMonth/index.js' {
+  import { getNthDayOfMonth } from 'date-fns/esm/fp'
+  export default getNthDayOfMonth
 }
 
 declare module 'date-fns/esm/fp/getOverlappingDaysInIntervals/index.js' {
@@ -18669,6 +18749,8 @@ interface dateFns {
   getMinutes(date: Date | number): number
 
   getMonth(date: Date | number): number
+
+  getNthDayOfMonth(date: Date | number, day: number, week: Date | number): Date
 
   getOverlappingDaysInIntervals(
     intervalLeft: Interval,

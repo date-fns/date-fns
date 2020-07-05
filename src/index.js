@@ -117,6 +117,7 @@ export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
 export { default as getMilliseconds } from './getMilliseconds/index.js'
 export { default as getMinutes } from './getMinutes/index.js'
 export { default as getMonth } from './getMonth/index.js'
+export { default as getNthDayOfMonth } from './getNthDayOfMonth/index.js'
 export {
   default as getOverlappingDaysInIntervals
 } from './getOverlappingDaysInIntervals/index.js'
