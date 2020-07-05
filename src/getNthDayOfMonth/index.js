@@ -6,6 +6,8 @@ import getDay from '../getDay/index.js'
 import addDays from '../addDays/index.js'
 import getDaysInMonth from '../getDaysInMonth/index.js'
 
+var DAYS_IN_A_WEEK = 7
+
 /**
  * @name getNthDayOfMonth
  * @category Month Helpers
@@ -42,12 +44,14 @@ export default function getNthDayOfMonth(dirtyDate, dirtyDay, dirtyWeek) {
 
   var week = toInteger(dirtyWeek)
   var startOfMonthVal = startOfMonth(date)
-  var daysToBeAdded = (week - 1) * 7 + ((7 + day - getDay(startOfMonthVal)) % 7)
+  var daysToBeAdded =
+    (week - 1) * DAYS_IN_A_WEEK +
+    ((DAYS_IN_A_WEEK + day - getDay(startOfMonthVal)) % DAYS_IN_A_WEEK)
   var nthDayOfMonth = addDays(startOfMonthVal, daysToBeAdded)
 
   //Test if the days to be added excees the current month
   if (daysToBeAdded >= getDaysInMonth(date)) {
-    throw new RangeError('the nth day exceeds the current month')
+    throw new RangeError('the nth day exceeds the month')
   }
 
   return nthDayOfMonth
