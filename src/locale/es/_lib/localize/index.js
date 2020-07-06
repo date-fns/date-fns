@@ -21,7 +21,7 @@ var monthValues = {
 var dayValues = {
   narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
   short: ['do', 'lu', 'ma', 'mi', 'ju', 'vi', 'sa'],
-  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sab'],
+  abbreviated: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
   wide: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado']
 }
 
