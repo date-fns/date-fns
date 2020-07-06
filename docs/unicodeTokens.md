@@ -1,22 +1,22 @@
 # Unicode Tokens
 
-Starting with v2 `format` and `parse` uses [Unicode tokens].
+Starting with v2, `format` and `parse` use [Unicode tokens].
 
 The tokens are different from Moment.js and other libraries that opted to use
 custom formatting rules. While usage of a standard ensures compatibility and
-the future of the library it causes confusion that this document intended
+the future of the library, it causes confusion that this document intends
 to resolve.
 
 ## Popular mistakes
 
-There are 4 tokens that causes the most of confusion:
+There are 4 tokens that cause most of the confusion:
 
 - `D` and `DD` that represent the day of a year (1, 2, ..., 365, 366)
   are often confused with `d` and `dd` that represent the day of a month
   (1, 2, ..., 31).
 
 - `YY` and `YYYY` that represent the local week-numbering year (44, 01, 00, 17)
-  are often confused with `yy` and `yyyy` that represent the the calendar year.
+  are often confused with `yy` and `yyyy` that represent the calendar year.
 
 ```js
 // ❌ Wrong!
