@@ -7,32 +7,33 @@ import toInteger from '../_lib/toInteger/index.js'
 /**
  * @name sub
  * @category Common Helpers
- * @summary Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
+ * @summary Subtract the specified years, months, weeks, days, hours, minutes, seconds and milliseconds from the given date.
  *
  * @description
- * Subtract the specified years, months, weeks, days, hours, minutes and seconds from the given date.
+ * Subtract the specified years, months, weeks, days, hours, minutes, seconds and milliseconds from the given date.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be subtracted
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes, seconds, and milliseconds to be subtracted
  *
- * | Key     | Description                        |
- * |---------|------------------------------------|
- * | years   | Amount of years to be subtracted   |
- * | months  | Amount of months to be subtracted  |
- * | weeks   | Amount of weeks to be subtracted   |
- * | days    | Amount of days to be subtracted    |
- * | hours   | Amount of hours to be subtracted   |
- * | minutes | Amount of minutes to be subtracted |
- * | seconds | Amount of seconds to be subtracted |
+ * | Key          | Description                             |
+ * |--------------|-----------------------------------------|
+ * | years        | Amount of years to be subtracted        |
+ * | months       | Amount of months to be subtracted       |
+ * | weeks        | Amount of weeks to be subtracted        |
+ * | days         | Amount of days to be subtracted         |
+ * | hours        | Amount of hours to be subtracted        |
+ * | minutes      | Amount of minutes to be subtracted      |
+ * | seconds      | Amount of seconds to be subtracted      |
+ * | milliseconds | Amount of milliseconds to be subtracted |
  *
  * All values default to 0
  *
- * @returns {Date} the new date with the seconds subtracted
+ * @returns {Date} the new date with the duration subtracted
  * @throws {TypeError} 2 arguments required
  *
  * @example
  * // Subtract the following duration from 15 June 2017 15:29:20
- * const result = sub(new Date(2017, 5, 15, 15, 29, 20), {
+ * const result = sub(new Date(2017, 5, 15, 15, 29, 20, 500), {
  *   years: 2,
  *   months: 9,
  *   weeks: 1,
@@ -40,8 +41,9 @@ import toInteger from '../_lib/toInteger/index.js'
  *   hours: 5,
  *   minutes: 9,
  *   seconds: 30
+ *   milliseconds: 200
  * })
- * //=> Mon Sep 1 2014 10:19:50
+ * //=> Mon Sep 1 2014 10:19:50.300
  */
 export default function sub(dirtyDate, duration) {
   requiredArgs(2, arguments)
@@ -55,6 +57,8 @@ export default function sub(dirtyDate, duration) {
   const hours = 'hours' in duration ? toInteger(duration.hours) : 0
   const minutes = 'minutes' in duration ? toInteger(duration.minutes) : 0
   const seconds = 'seconds' in duration ? toInteger(duration.seconds) : 0
+  const milliseconds =
+    'milliseconds' in duration ? toInteger(duration.milliseconds) : 0
 
   // Subtract years and months
   const dateWithoutMonths = subMonths(toDate(dirtyDate), months + years * 12)
@@ -65,7 +69,7 @@ export default function sub(dirtyDate, duration) {
   // Subtract hours, minutes and seconds
   const minutestoSub = minutes + hours * 60
   const secondstoSub = seconds + minutestoSub * 60
-  const mstoSub = secondstoSub * 1000
+  const mstoSub = milliseconds + secondstoSub * 1000
   const finalDate = new Date(dateWithoutDays.getTime() - mstoSub)
 
   return finalDate

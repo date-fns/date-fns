@@ -72,6 +72,7 @@ type Duration = {
   hours?: number
   minutes?: number
   seconds?: number
+  milliseconds?: number
 }
 type DurationAliased = Duration
 

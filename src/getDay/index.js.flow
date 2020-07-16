@@ -44,7 +44,8 @@ export type Duration = {
   days?: number,
   hours?: number,
   minutes?: number,
-  seconds?: number
+  seconds?: number,
+  milliseconds?: number
 }
 
 declare module.exports: (date: Date | number) => 0 | 1 | 2 | 3 | 4 | 5 | 6

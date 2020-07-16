@@ -7,16 +7,17 @@ import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('add', function() {
   it('adds the values from the given object', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
+    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50, 500), {
       years: 2,
       months: 9,
       weeks: 1,
       days: 7,
       hours: 5,
       minutes: 9,
-      seconds: 30
+      seconds: 30,
+      milliseconds: 200
     })
-    assert.deepEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20))
+    assert.deepEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20, 300))
   })
 
   it('returns same date object when passed empty duration values', function() {
