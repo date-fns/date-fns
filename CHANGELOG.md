@@ -8,6 +8,27 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.14.0] - 2020-05-18
+
+Kudos to [@julamb](https://github.com/julamb), [@JacobSoderblom](https://github.com/JacobSoderblom), [@justingrant](http://github.com/justingrant), [@dragunoff](https://github.com/dragunoff), [@jmate0321](https://github.com/jmate0321), [@gbhasha](https://github.com/gbhasha), [@rasck](https://github.com/rasck), [@AlbertoPdRF](https://github.com/AlbertoPdRF), [@sebastianhaberey](https://github.com/sebastianhaberey) and [@giogonzo](https://github.com/giogonzo) for working on the release!
+
+### Fixed
+
+- [Fixed DST issues with `add`, `addDays` and `addMonths`](https://github.com/date-fns/date-fns/pull/1760).
+- [Fixed "quarter" translation in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1763).
+- [Fixed `formatDistance` strings in the Hungarian locale](https://github.com/date-fns/date-fns/pull/1765).
+- [Fixed Danish month abbreviations](https://github.com/date-fns/date-fns/pull/1774).
+- [Fixed parsing of mei in the Dutch locale](https://github.com/date-fns/date-fns/pull/1774).
+- [Fixed missing preposition in `formatLong` in the Spanish locale](https://github.com/date-fns/date-fns/pull/1775).
+- [Fixed `formatRelative` in the Italian locale](https://github.com/date-fns/date-fns/pull/1777).
+
+### Added
+
+- [Added `eachQuarterOfInterval`](https://github.com/date-fns/date-fns/pull/1715).
+- [Added Basque (`eu`) locale](https://github.com/date-fns/date-fns/pull/1759).
+- [Added Indian English (`en-IN`) locale](https://github.com/date-fns/date-fns/pull/1767).
+- [Added `eachHourOfInterval`](https://github.com/date-fns/date-fns/pull/1776).
+
 ## [2.13.0] - 2020-05-06
 
 Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) and [@justingrant](http://github.com/justingrant) for working on the release!
@@ -84,6 +105,7 @@ Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.
 
 - [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
 - [Added `weeks` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added details message in `throwProtectedError`](https://github.com/date-fns/date-fns/pull/1592).
 
 ## [2.9.0] - 2020-01-08
 
@@ -1994,7 +2016,8 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.13.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.14.0...HEAD
+[2.14.0]: https://github.com/date-fns/date-fns/compare/v2.13.0...v2.14.0
 [2.13.0]: https://github.com/date-fns/date-fns/compare/v2.12.0...v2.13.0
 [2.12.0]: https://github.com/date-fns/date-fns/compare/v2.11.1...v2.12.0
 [2.11.1]: https://github.com/date-fns/date-fns/compare/v2.11.0...v2.11.1

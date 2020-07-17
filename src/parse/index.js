@@ -336,10 +336,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  * @throws {RangeError} `options.locale` must contain `match` property
- * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years; see: https://git.io/fxCyr
- * @throws {RangeError} use `yy` instead of `YY` for formatting years; see: https://git.io/fxCyr
- * @throws {RangeError} use `d` instead of `D` for formatting days of the month; see: https://git.io/fxCyr
- * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yyyy` instead of `YYYY` for formatting years using [format provided] to the input [input provided]; see: https://git.io/fxCyr
+ * @throws {RangeError} use `yy` instead of `YY` for formatting years using [format provided] to the input [input provided]; see: https://git.io/fxCyr
+ * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
+ * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
@@ -422,6 +422,7 @@ export default function parse(
   var setters = [
     {
       priority: TIMEZONE_UNIT_PRIORITY,
+      subPriority: -1,
       set: dateToSystemTimezone,
       index: 0
     }
@@ -451,13 +452,13 @@ export default function parse(
       !options.useAdditionalWeekYearTokens &&
       isProtectedWeekYearToken(token)
     ) {
-      throwProtectedError(token)
+      throwProtectedError(token, formatString, dirtyDateString)
     }
     if (
       !options.useAdditionalDayOfYearTokens &&
       isProtectedDayOfYearToken(token)
     ) {
-      throwProtectedError(token)
+      throwProtectedError(token, formatString, dirtyDateString)
     }
 
     var firstCharacter = token[0]
@@ -504,6 +505,7 @@ export default function parse(
 
       setters.push({
         priority: parser.priority,
+        subPriority: parser.subPriority || 0,
         set: parser.set,
         validate: parser.validate,
         value: parseResult.value,
@@ -556,7 +558,9 @@ export default function parse(
         .filter(function(setter) {
           return setter.priority === priority
         })
-        .reverse()
+        .sort(function(a, b) {
+          return b.subPriority - a.subPriority
+        })
     })
     .map(function(setterArray) {
       return setterArray[0]

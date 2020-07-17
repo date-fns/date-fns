@@ -866,6 +866,8 @@ var parsers = {
   // Day of the month
   d: {
     priority: 90,
+    
+    subPriority: 1,
 
     parse: function(string, token, match, _options) {
       switch (token) {
@@ -914,6 +916,8 @@ var parsers = {
   // Day of year
   D: {
     priority: 90,
+    
+    subPriority: 1,
 
     parse: function(string, token, match, _options) {
       switch (token) {

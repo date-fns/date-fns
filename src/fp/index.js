@@ -69,7 +69,14 @@ export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
 export {
   default as eachDayOfIntervalWithOptions
 } from './eachDayOfIntervalWithOptions/index.js'
+export { default as eachHourOfInterval } from './eachHourOfInterval/index.js'
+export {
+  default as eachHourOfIntervalWithOptions
+} from './eachHourOfIntervalWithOptions/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
+export {
+  default as eachQuarterOfInterval
+} from './eachQuarterOfInterval/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
 export {
   default as eachWeekOfIntervalWithOptions

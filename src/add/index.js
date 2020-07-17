@@ -57,10 +57,13 @@ export default function add(dirtyDate, duration) {
   const seconds = 'seconds' in duration ? toInteger(duration.seconds) : 0
 
   // Add years and months
-  const dateWithMonths = addMonths(toDate(dirtyDate), months + years * 12)
+  const date = toDate(dirtyDate)
+  const dateWithMonths =
+    months || years ? addMonths(date, months + years * 12) : date
 
   // Add weeks and days
-  const dateWithDays = addDays(dateWithMonths, days + weeks * 7)
+  const dateWithDays =
+    days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths
 
   // Add days, hours, minutes and seconds
   const minutesToAdd = minutes + hours * 60

@@ -11,8 +11,8 @@ describe('getYear', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = getYear(new Date(20000, 3 /* Apr */, 2).getTime())
-    assert(result === 20000)
+    var result = getYear(new Date(2000, 3 /* Apr */, 2).getTime())
+    assert(result === 2000)
   })
 
   it('returns NaN if the given date is invalid', function() {

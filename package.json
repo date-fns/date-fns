@@ -13,8 +13,8 @@
     "type": "opencollective",
     "url": "https://opencollective.com/date-fns"
   },
-  "engine": {
-    "node": ">= 0.11"
+  "engines": {
+    "node": ">=0.11"
   },
   "typings": "./typings.d.ts",
   "main": "index.js",

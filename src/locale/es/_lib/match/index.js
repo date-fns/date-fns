@@ -37,7 +37,7 @@ var matchDayPatterns = {
   narrow: /^[dlmjvs]/i,
   short: /^(do|lu|ma|mi|ju|vi|sa)/i,
   abbreviated: /^(dom|lun|mar|mie|jue|vie|sab)/i,
-  wide: /^(domingo|lunes|martes|miercoles|jueves|viernes|s[áa]bado)/i
+  wide: /^(domingo|lunes|martes|mi[ée]rcoles|jueves|viernes|s[áa]bado)/i
 }
 var parseDayPatterns = {
   narrow: [/^d/i, /^l/i, /^m/i, /^m/i, /^j/i, /^v/i, /^s/i],

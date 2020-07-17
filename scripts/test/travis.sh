@@ -15,7 +15,6 @@ function prebuild {
 if [ "$TEST_SUITE" == "main" ]
 then
   yarn lint
-  flow check
   yarn lint-types
   ./scripts/test/systemJS.js
   yarn locale-snapshots test

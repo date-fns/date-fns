@@ -195,7 +195,16 @@ declare module.exports: {
     }
   ) => Date[],
 
+  eachHourOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ) => Date[],
+
   eachMonthOfInterval: (interval: Interval) => Date[],
+
+  eachQuarterOfInterval: (interval: Interval) => Date[],
 
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
