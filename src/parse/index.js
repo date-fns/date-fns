@@ -422,6 +422,7 @@ export default function parse(
   var setters = [
     {
       priority: TIMEZONE_UNIT_PRIORITY,
+      subPriority: -1,
       set: dateToSystemTimezone,
       index: 0
     }
@@ -504,6 +505,7 @@ export default function parse(
 
       setters.push({
         priority: parser.priority,
+        subPriority: parser.subPriority || 0,
         set: parser.set,
         validate: parser.validate,
         value: parseResult.value,
@@ -556,7 +558,9 @@ export default function parse(
         .filter(function(setter) {
           return setter.priority === priority
         })
-        .reverse()
+        .sort(function(a, b) {
+          return b.subPriority - a.subPriority
+        })
     })
     .map(function(setterArray) {
       return setterArray[0]
