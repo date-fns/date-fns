@@ -8,6 +8,32 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.15.0] - 2020-07-17
+
+Thanks to [@belgamo](https://github.com/belgamo), [@Matsuuu](https://github.com/Matsuuu), [@Imballinst](https://github.com/Imballinst), [@arsnyder16](https://github.com/arsnyder16), [@pankajupadhyay29](https://github.com/pankajupadhyay29), [@DCBN](https://github.com/DCBN), [@leedriscoll](https://github.com/leedriscoll), [@gottsohn](https://github.com/gottsohn), [@mukuljainx](https://github.com/mukuljainx) and [@dtriana](https://github.com/dtriana) for working on the release. Also kudos to [@KidkArolis](https://github.com/KidkArolis), [@imgx64](https://github.com/imgx64), [@fjc0k](https://github.com/fjc0k), [@wmonk](https://github.com/wmonk), [@djD-REK](https://github.com/djD-REK), [@dandv](https://github.com/dandv), [@psimk](https://github.com/psimk) and [@brimworks](https://github.com/brimworks) for improving the documentation.
+
+### Fixed
+
+- [Fixed behavior of `addBusinessDays` when input date is a weekend day](https://github.com/date-fns/date-fns/pull/1790).
+- [Fixed `parseISO` not returning `Invalid Date` on incorrect string when there are spaces in it](https://github.com/date-fns/date-fns/pull/1791).
+- [Fixed `es` round-tripping dates with Wednesday](https://github.com/date-fns/date-fns/pull/1792).
+- [Fixed round-trip bug with `d`/`EEEE` ordering in tokens like `PPPPP`](https://github.com/date-fns/date-fns/pull/1795).
+- [Fixed issues with parsing values in Japanese](https://github.com/date-fns/date-fns/pull/1807).
+- [Fixed Hungarian breaking IE11](https://github.com/date-fns/date-fns/pull/1842).
+- [Fixed Spanish accents in Saturday and Wednesday](https://github.com/date-fns/date-fns/pull/1872).
+
+### Changed
+
+- [Improved the message of protected tokens error](https://github.com/date-fns/date-fns/pull/1641).
+
+### Added
+
+- [Added Swiss-French `fr-CH` locale](https://github.com/date-fns/date-fns/pull/1810).
+- [Added Flemish `nl-BE` locale](https://github.com/date-fns/date-fns/pull/1812).
+- [Added Scottish Gaelic `gd` locale](https://github.com/date-fns/date-fns/pull/1832).
+- [Added New Zealand English `en-NZ` locale](https://github.com/date-fns/date-fns/pull/1835).
+- [Added `isMatch` function](https://github.com/date-fns/date-fns/pull/1868).
+
 ## [2.14.0] - 2020-05-18
 
 Kudos to [@julamb](https://github.com/julamb), [@JacobSoderblom](https://github.com/JacobSoderblom), [@justingrant](http://github.com/justingrant), [@dragunoff](https://github.com/dragunoff), [@jmate0321](https://github.com/jmate0321), [@gbhasha](https://github.com/gbhasha), [@rasck](https://github.com/rasck), [@AlbertoPdRF](https://github.com/AlbertoPdRF), [@sebastianhaberey](https://github.com/sebastianhaberey) and [@giogonzo](https://github.com/giogonzo) for working on the release!
