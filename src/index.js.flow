@@ -459,6 +459,18 @@ declare module.exports: {
 
   isLeapYear: (date: Date | number) => boolean,
 
+  isMatch: (
+    dateString: string,
+    formatString: string,
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+      useAdditionalWeekYearTokens?: boolean,
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ) => boolean,
+
   isMonday: (date: Date | number) => boolean,
 
   isPast: (date: Date | number) => boolean,

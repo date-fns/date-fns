@@ -352,6 +352,19 @@ declare module.exports: {
   isFriday: CurriedFn1<Date | number, boolean>,
   isLastDayOfMonth: CurriedFn1<Date | number, boolean>,
   isLeapYear: CurriedFn1<Date | number, boolean>,
+  isMatch: CurriedFn2<string, string, boolean>,
+  isMatchWithOptions: CurriedFn3<
+    {
+      useAdditionalDayOfYearTokens?: boolean,
+      useAdditionalWeekYearTokens?: boolean,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      locale?: Locale
+    },
+    string,
+    string,
+    boolean
+  >,
   isMonday: CurriedFn1<Date | number, boolean>,
   isSameDay: CurriedFn2<Date | number, Date | number, boolean>,
   isSameHour: CurriedFn2<Date | number, Date | number, boolean>,
