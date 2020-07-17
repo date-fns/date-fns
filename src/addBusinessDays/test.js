@@ -81,4 +81,11 @@ describe('addBusinessDays', function() {
     assert.throws(addBusinessDays.bind(null), TypeError)
     assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
+  it('starting from a weekend day should land on a weekday when reducing a divisible by 5', function() {
+    const substractResult = addBusinessDays(new Date(2019, 7, 18), -5)
+    assert.deepEqual(substractResult, new Date(2019, 7, 12))
+
+    const addResult = addBusinessDays(new Date(2019, 7, 18), 5)
+    assert.deepEqual(addResult, new Date(2019, 7, 23))
+  })
 })

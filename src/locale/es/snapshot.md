@@ -166,7 +166,7 @@
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 may 1453                                               | 1453-05-29T00:00:00.000Z |
 |                                 | PPP          | 1987-02-11T12:13:14.015Z | 11 de febrero de 1987                                     | 1987-02-11T00:00:00.000Z |
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 de mayo de 1453                                        | 1453-05-29T00:00:00.000Z |
-|                                 | PPPP         | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987                          | Invalid Date             |
+|                                 | PPPP         | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987                          | 1987-02-11T00:00:00.000Z |
 |                                 |              | 1453-05-29T23:59:59.999Z | domingo, 29 de mayo de 1453                               | 1453-05-29T00:00:00.000Z |
 | Long localized time             | p            | 1987-02-11T12:13:14.015Z | 12:13                                                     | 1987-02-11T12:13:00.000Z |
 |                                 |              | 1453-05-29T23:59:59.999Z | 23:59                                                     | 1453-05-29T23:59:00.000Z |
@@ -182,7 +182,7 @@
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 may 1453, 23:59:59                                     | 1453-05-29T23:59:59.000Z |
 |                                 | PPPppp       | 1987-02-11T12:13:14.015Z | 11 de febrero de 1987 a las 12:13:14 GMT+0                | Errored                  |
 |                                 |              | 1453-05-29T23:59:59.999Z | 29 de mayo de 1453 a las 23:59:59 GMT+0                   | Errored                  |
-|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987 a las 12:13:14 GMT+00:00 | Invalid Date             |
+|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | miércoles, 11 de febrero de 1987 a las 12:13:14 GMT+00:00 | Errored                  |
 |                                 |              | 1453-05-29T23:59:59.999Z | domingo, 29 de mayo de 1453 a las 23:59:59 GMT+00:00      | Errored                  |
 
 ## `formatDistance`

@@ -105,6 +105,7 @@ Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.
 
 - [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
 - [Added `weeks` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added details message in `throwProtectedError`](https://github.com/date-fns/date-fns/pull/1592).
 
 ## [2.9.0] - 2020-01-08
 
