@@ -63,6 +63,7 @@ declare module.exports: {
   fr: Locale,
   frCA: Locale,
   frCH: Locale,
+  gd: Locale,
   gl: Locale,
   gu: Locale,
   he: Locale,
