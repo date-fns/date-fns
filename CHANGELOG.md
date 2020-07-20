@@ -28,7 +28,7 @@ Thanks to [@belgamo](https://github.com/belgamo), [@Matsuuu](https://github.com/
 
 ### Added
 
-- [Added Swiss-French `fr-CH` locale](https://github.com/date-fns/date-fns/pull/1810).
+- [Added Swiss-French `fr-CH` locale](https://github.com/date-fns/date-fns/pull/1809).
 - [Added Flemish `nl-BE` locale](https://github.com/date-fns/date-fns/pull/1812).
 - [Added Scottish Gaelic `gd` locale](https://github.com/date-fns/date-fns/pull/1832).
 - [Added New Zealand English `en-NZ` locale](https://github.com/date-fns/date-fns/pull/1835).
