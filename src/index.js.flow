@@ -318,7 +318,8 @@ declare module.exports: {
     options?: {
       format?: string[],
       zero?: boolean,
-      delimiter?: string
+      delimiter?: string,
+      locale?: Locale
     }
   ) => string,
 
