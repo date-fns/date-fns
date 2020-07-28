@@ -12,6 +12,7 @@ import {
 } from '../_lib/protectedTokens/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -349,7 +350,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getGlobalLocale() || defaultLocale
 
   var localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate

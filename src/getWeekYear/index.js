@@ -2,6 +2,7 @@ import startOfWeek from '../startOfWeek/index.js'
 import toDate from '../toDate/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 /**
  * @name getWeekYear
@@ -53,7 +54,7 @@ export default function getWeekYear(dirtyDate, dirtyOptions) {
   var year = date.getFullYear()
 
   var options = dirtyOptions || {}
-  var locale = options.locale
+  var locale = options.locale || getGlobalLocale()
   var localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =

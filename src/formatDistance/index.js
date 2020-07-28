@@ -6,6 +6,7 @@ import toDate from '../toDate/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -124,7 +125,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
   requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getGlobalLocale() || defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain formatDistance property')

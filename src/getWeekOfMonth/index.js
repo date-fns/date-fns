@@ -3,6 +3,7 @@ import getDay from '../getDay/index.js'
 import startOfMonth from '../startOfMonth/index.js'
 import toInteger from '../_lib/toInteger/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 /**
  * @name getWeekOfMonth
@@ -33,7 +34,7 @@ export default function getWeekOfMonth(date, dirtyOptions) {
   requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
-  var locale = options.locale
+  var locale = options.locale || getGlobalLocale()
   var localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
   var defaultWeekStartsOn =

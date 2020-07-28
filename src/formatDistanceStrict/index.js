@@ -5,6 +5,7 @@ import differenceInSeconds from '../differenceInSeconds/index.js'
 import cloneObject from '../_lib/cloneObject/index.js'
 import defaultLocale from '../locale/en-US/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200
@@ -168,7 +169,7 @@ export default function formatDistanceStrict(
   requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getGlobalLocale() || defaultLocale
 
   if (!locale.formatDistance) {
     throw new RangeError('locale must contain localize.formatDistance property')

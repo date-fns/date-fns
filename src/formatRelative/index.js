@@ -5,6 +5,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
 import toDate from '../toDate/index.js'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 /**
  * @name formatRelative
@@ -48,7 +49,7 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
   var baseDate = toDate(dirtyBaseDate)
 
   var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getGlobalLocale() || defaultLocale
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')

@@ -2,6 +2,7 @@ import toInteger from '../toInteger/index.js'
 import getUTCWeekYear from '../getUTCWeekYear/index.js'
 import startOfUTCWeek from '../startOfUTCWeek/index.js'
 import requiredArgs from '../requiredArgs/index.js'
+import getGlobalLocale from '../getGlobalLocale/index.js'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
@@ -9,7 +10,7 @@ export default function startOfUTCWeekYear(dirtyDate, dirtyOptions) {
   requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
-  var locale = options.locale
+  var locale = options.locale || getGlobalLocale()
   var localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
   var defaultFirstWeekContainsDate =

@@ -12,6 +12,7 @@ import {
 import toInteger from '../_lib/toInteger/index.js'
 import parsers from './_lib/parsers/index.js'
 import requiredArgs from '../_lib/requiredArgs/index.js'
+import getGlobalLocale from '../_lib/getGlobalLocale/index.js'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -367,7 +368,7 @@ export default function parse(
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || getGlobalLocale() || defaultLocale
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
@@ -479,9 +480,7 @@ export default function parse(
         }
         if (incompatibleToken) {
           throw new RangeError(
-            `The format string mustn't contain \`${
-              incompatibleToken.fullToken
-            }\` and \`${token}\` at the same time`
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
           )
         }
       } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
