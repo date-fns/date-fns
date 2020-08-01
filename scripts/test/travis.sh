@@ -24,6 +24,7 @@ then
 
   ./scripts/test/dst.sh
   ./scripts/test/formatISO.sh
+  ./scripts/test/formatRFC3339.sh
 
   prebuild
   ./scripts/test/tz.sh
