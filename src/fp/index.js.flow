@@ -228,6 +228,7 @@ declare module.exports: {
     {
       delimiter?: string,
       zero?: boolean,
+      locale?: Locale,
       format?: string[]
     },
     Duration,

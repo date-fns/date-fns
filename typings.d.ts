@@ -423,6 +423,7 @@ declare module 'date-fns' {
     duration: Duration,
     options?: {
       format?: string[]
+      locale?: Locale
       zero?: boolean
       delimiter?: string
     }
@@ -4266,6 +4267,7 @@ declare module 'date-fns/fp' {
     {
       delimiter?: string
       zero?: boolean
+      locale?: Locale
       format?: string[]
     },
     Duration,
@@ -8295,6 +8297,7 @@ declare module 'date-fns/esm' {
     duration: Duration,
     options?: {
       format?: string[]
+      locale?: Locale
       zero?: boolean
       delimiter?: string
     }
@@ -12138,6 +12141,7 @@ declare module 'date-fns/esm/fp' {
     {
       delimiter?: string
       zero?: boolean
+      locale?: Locale
       format?: string[]
     },
     Duration,
@@ -18821,6 +18825,7 @@ interface dateFns {
     duration: Duration,
     options?: {
       format?: string[]
+      locale?: Locale
       zero?: boolean
       delimiter?: string
     }

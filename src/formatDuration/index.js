@@ -22,6 +22,7 @@ const defaultFormat = [
  * @param {Object} [options] - an object with options.
 
  * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
+ * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @param {boolean} [options.zero=false] - should be zeros be included in the output?
  * @param {string} [options.delimiter=' '] - delimiter string
  * @returns {string} the formatted date string

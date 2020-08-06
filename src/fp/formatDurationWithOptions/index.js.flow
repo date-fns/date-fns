@@ -57,6 +57,7 @@ declare module.exports: CurriedFn2<
   {
     delimiter?: string,
     zero?: boolean,
+    locale?: Locale,
     format?: string[]
   },
   Duration,
