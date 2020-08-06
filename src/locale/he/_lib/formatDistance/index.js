@@ -28,7 +28,7 @@ var formatDistanceLocale = {
   aboutXHours: {
     one: 'כשעה',
     two: 'כשעתיים',
-    other: 'כ{{count}} שעות'
+    other: 'כ־{{count}} שעות'
   },
 
   xHours: {
@@ -46,7 +46,7 @@ var formatDistanceLocale = {
   aboutXWeeks: {
     one: 'כשבוע',
     two: 'כשבועיים',
-    other: 'כ{{count}} שבועות'
+    other: 'כ־{{count}} שבועות'
   },
 
   xWeeks: {
@@ -58,7 +58,7 @@ var formatDistanceLocale = {
   aboutXMonths: {
     one: 'כחודש',
     two: 'כחודשיים',
-    other: 'כ{{count}} חודשים'
+    other: 'כ־{{count}} חודשים'
   },
 
   xMonths: {
@@ -70,7 +70,7 @@ var formatDistanceLocale = {
   aboutXYears: {
     one: 'כשנה',
     two: 'כשנתיים',
-    other: 'כ{{count}} שנים'
+    other: 'כ־{{count}} שנים'
   },
 
   xYears: {
