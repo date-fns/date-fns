@@ -388,6 +388,12 @@ declare module.exports: {
 
   getMonth: (date: Date | number) => number,
 
+  getNthDayOfMonth: (
+    date: Date | number,
+    day: number,
+    week: Date | number
+  ) => Date,
+
   getOverlappingDaysInIntervals: (
     intervalLeft: Interval,
     intervalRight: Interval

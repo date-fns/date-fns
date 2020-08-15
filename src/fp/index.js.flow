@@ -298,6 +298,7 @@ declare module.exports: {
   getMilliseconds: CurriedFn1<Date | number, number>,
   getMinutes: CurriedFn1<Date | number, number>,
   getMonth: CurriedFn1<Date | number, number>,
+  getNthDayOfMonth: CurriedFn3<Date | number, number, Date | number, Date>,
   getOverlappingDaysInIntervals: CurriedFn2<Interval, Interval, number>,
   getQuarter: CurriedFn1<Date | number, number>,
   getSeconds: CurriedFn1<Date | number, number>,
