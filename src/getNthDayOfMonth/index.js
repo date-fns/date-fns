@@ -27,9 +27,9 @@ var DAYS_IN_A_WEEK = 7
  *
  *
  * @example
- * // What is the 3rd Wednesday of 12 July 2020?
- * var result = getNthDayOfMonth(new Date(2020, 6, 12))
- * //=> new Date(2020, 6, 15)
+ * // What is the 4th Wednesday of 1st July, 2020?
+ * var result = getNthDayOfMonth(new Date(2020, 6, 1), 3, 4)
+ * //=> Wed Jul 22 2020 00:00:00 (4th Wednesday of the month)
  */
 export default function getNthDayOfMonth(dirtyDate, dirtyDay, dirtyWeek) {
   requiredArgs(3, arguments)
