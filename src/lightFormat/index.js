@@ -73,7 +73,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @example
  * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
- * //=> '1987-02-11'
+ * //=> '2014-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {
   requiredArgs(2, arguments)
