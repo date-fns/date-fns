@@ -32,7 +32,7 @@ var formatDistanceLocale = {
       other: 'manner wéi {{count}} Minutten'
     },
     withPreposition: {
-      one: 'manner wéi enger Minute',
+      one: 'manner wéi enger Minutt',
       other: 'manner wéi {{count}} Minutten'
     }
   },
@@ -143,7 +143,7 @@ var formatDistanceLocale = {
     },
     withPreposition: {
       one: 'engem Joer',
-      other: '{{count}} Joeren'
+      other: '{{count}} Joer'
     }
   },
 

@@ -56,7 +56,7 @@
 |                                 |              | 2019-02-15T12:13:14.015Z | Freideg                                          | 2019-02-15T00:00:00.000Z |
 |                                 | EEEEE        | 2019-02-11T12:13:14.015Z | M                                                | Invalid Date             |
 |                                 |              | 2019-02-15T12:13:14.015Z | F                                                | 2019-02-15T00:00:00.000Z |
-|                                 | EEEEEE       | 2019-02-11T12:13:14.015Z | Mé                                               | Invalid Date             |
+|                                 | EEEEEE       | 2019-02-11T12:13:14.015Z | Mé                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | Fr                                               | 2019-02-15T00:00:00.000Z |
 | ISO day of week (formatting)    | io           | 2019-02-11T12:13:14.015Z | 1.                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | 5.                                               | 2019-02-15T00:00:00.000Z |
@@ -66,7 +66,7 @@
 |                                 |              | 2019-02-15T12:13:14.015Z | Freideg                                          | 2019-02-15T00:00:00.000Z |
 |                                 | iiiii        | 2019-02-11T12:13:14.015Z | M                                                | Invalid Date             |
 |                                 |              | 2019-02-15T12:13:14.015Z | F                                                | 2019-02-15T00:00:00.000Z |
-|                                 | iiiiii       | 2019-02-11T12:13:14.015Z | Mé                                               | Invalid Date             |
+|                                 | iiiiii       | 2019-02-11T12:13:14.015Z | Mé                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | Fr                                               | 2019-02-15T00:00:00.000Z |
 | Local day of week (formatting)  | eo           | 2019-02-11T12:13:14.015Z | 1.                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | 5.                                               | 2019-02-15T00:00:00.000Z |
@@ -76,7 +76,7 @@
 |                                 |              | 2019-02-15T12:13:14.015Z | Freideg                                          | 2019-02-15T00:00:00.000Z |
 |                                 | eeeee        | 2019-02-11T12:13:14.015Z | M                                                | Invalid Date             |
 |                                 |              | 2019-02-15T12:13:14.015Z | F                                                | 2019-02-15T00:00:00.000Z |
-|                                 | eeeeee       | 2019-02-11T12:13:14.015Z | Mé                                               | Invalid Date             |
+|                                 | eeeeee       | 2019-02-11T12:13:14.015Z | Mé                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | Fr                                               | 2019-02-15T00:00:00.000Z |
 | Local day of week (stand-alone) | co           | 2019-02-11T12:13:14.015Z | 1.                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | 5.                                               | 2019-02-15T00:00:00.000Z |
@@ -86,7 +86,7 @@
 |                                 |              | 2019-02-15T12:13:14.015Z | Freideg                                          | 2019-02-15T00:00:00.000Z |
 |                                 | ccccc        | 2019-02-11T12:13:14.015Z | M                                                | Invalid Date             |
 |                                 |              | 2019-02-15T12:13:14.015Z | F                                                | 2019-02-15T00:00:00.000Z |
-|                                 | cccccc       | 2019-02-11T12:13:14.015Z | Mé                                               | Invalid Date             |
+|                                 | cccccc       | 2019-02-11T12:13:14.015Z | Mé                                               | 2019-02-11T00:00:00.000Z |
 |                                 |              | 2019-02-15T12:13:14.015Z | Fr                                               | 2019-02-15T00:00:00.000Z |
 | AM, PM                          | a            | 2019-02-11T11:13:14.015Z | moies                                            | Invalid Date             |
 |                                 |              | 2019-02-11T14:13:14.015Z | nomëttes                                         | Invalid Date             |
@@ -210,13 +210,13 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:30:00.000Z | 30 Minutten           | 30 Minutten            | a 30 Minutten                |
 | 2000-01-01T00:15:00.000Z | 15 Minutten           | 15 Minutten            | a 15 Minutten                |
 | 2000-01-01T00:01:00.000Z | eng Minutt            | eng Minutt             | an enger Minutt              |
-| 2000-01-01T00:00:25.000Z | manner wéi eng Minutt | eng hallef Minutt      | a manner wéi enger Minute    |
-| 2000-01-01T00:00:15.000Z | manner wéi eng Minutt | manner wéi 20 Sekonnen | a manner wéi enger Minute    |
-| 2000-01-01T00:00:05.000Z | manner wéi eng Minutt | manner wéi 10 Sekonnen | a manner wéi enger Minute    |
-| 2000-01-01T00:00:00.000Z | manner wéi eng Minutt | manner wéi 5 Sekonnen  | viru manner wéi enger Minute |
-| 1999-12-31T23:59:55.000Z | manner wéi eng Minutt | manner wéi 10 Sekonnen | viru manner wéi enger Minute |
-| 1999-12-31T23:59:45.000Z | manner wéi eng Minutt | manner wéi 20 Sekonnen | viru manner wéi enger Minute |
-| 1999-12-31T23:59:35.000Z | manner wéi eng Minutt | eng hallef Minutt      | viru manner wéi enger Minute |
+| 2000-01-01T00:00:25.000Z | manner wéi eng Minutt | eng hallef Minutt      | a manner wéi enger Minutt    |
+| 2000-01-01T00:00:15.000Z | manner wéi eng Minutt | manner wéi 20 Sekonnen | a manner wéi enger Minutt    |
+| 2000-01-01T00:00:05.000Z | manner wéi eng Minutt | manner wéi 10 Sekonnen | a manner wéi enger Minutt    |
+| 2000-01-01T00:00:00.000Z | manner wéi eng Minutt | manner wéi 5 Sekonnen  | viru manner wéi enger Minutt |
+| 1999-12-31T23:59:55.000Z | manner wéi eng Minutt | manner wéi 10 Sekonnen | viru manner wéi enger Minutt |
+| 1999-12-31T23:59:45.000Z | manner wéi eng Minutt | manner wéi 20 Sekonnen | viru manner wéi enger Minutt |
+| 1999-12-31T23:59:35.000Z | manner wéi eng Minutt | eng hallef Minutt      | viru manner wéi enger Minutt |
 | 1999-12-31T23:59:00.000Z | eng Minutt            | eng Minutt             | virun enger Minutt           |
 | 1999-12-31T23:45:00.000Z | 15 Minutten           | 15 Minutten            | viru 15 Minutten             |
 | 1999-12-31T23:30:00.000Z | 30 Minutten           | 30 Minutten            | viru 30 Minutten             |
@@ -243,11 +243,11 @@ If now is January 1st, 2000, 00:00.
 
 | Date                     | Result      | `addSuffix: true`  | With forced unit (i.e. `hour`) |
 | ------------------------ | ----------- | ------------------ | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 Joer      | a 6 Joeren         | 52608 Stonnen                  |
-| 2005-01-01T00:00:00.000Z | 5 Joer      | a 5 Joeren         | 43848 Stonnen                  |
-| 2004-01-01T00:00:00.000Z | 4 Joer      | a 4 Joeren         | 35064 Stonnen                  |
-| 2003-01-01T00:00:00.000Z | 3 Joer      | a 3 Joeren         | 26304 Stonnen                  |
-| 2002-01-01T00:00:00.000Z | 2 Joer      | a 2 Joeren         | 17544 Stonnen                  |
+| 2006-01-01T00:00:00.000Z | 6 Joer      | a 6 Joer           | 52608 Stonnen                  |
+| 2005-01-01T00:00:00.000Z | 5 Joer      | a 5 Joer           | 43848 Stonnen                  |
+| 2004-01-01T00:00:00.000Z | 4 Joer      | a 4 Joer           | 35064 Stonnen                  |
+| 2003-01-01T00:00:00.000Z | 3 Joer      | a 3 Joer           | 26304 Stonnen                  |
+| 2002-01-01T00:00:00.000Z | 2 Joer      | a 2 Joer           | 17544 Stonnen                  |
 | 2001-06-01T00:00:00.000Z | ee Joer     | an engem Joer      | 12408 Stonnen                  |
 | 2001-02-01T00:00:00.000Z | ee Joer     | an engem Joer      | 9528 Stonnen                   |
 | 2001-01-01T00:00:00.000Z | ee Joer     | an engem Joer      | 8784 Stonnen                   |
@@ -282,12 +282,12 @@ If now is January 1st, 2000, 00:00.
 | 1999-06-01T00:00:00.000Z | 7 Méint     | viru 7 Méint       | 5136 Stonnen                   |
 | 1999-01-01T00:00:00.000Z | ee Joer     | virun engem Joer   | 8760 Stonnen                   |
 | 1998-12-01T00:00:00.000Z | ee Joer     | virun engem Joer   | 9504 Stonnen                   |
-| 1998-06-01T00:00:00.000Z | 2 Joer      | viru 2 Joeren      | 13896 Stonnen                  |
-| 1998-01-01T00:00:00.000Z | 2 Joer      | viru 2 Joeren      | 17520 Stonnen                  |
-| 1997-01-01T00:00:00.000Z | 3 Joer      | viru 3 Joeren      | 26280 Stonnen                  |
-| 1996-01-01T00:00:00.000Z | 4 Joer      | viru 4 Joeren      | 35064 Stonnen                  |
-| 1995-01-01T00:00:00.000Z | 5 Joer      | viru 5 Joeren      | 43824 Stonnen                  |
-| 1994-01-01T00:00:00.000Z | 6 Joer      | viru 6 Joeren      | 52584 Stonnen                  |
+| 1998-06-01T00:00:00.000Z | 2 Joer      | viru 2 Joer        | 13896 Stonnen                  |
+| 1998-01-01T00:00:00.000Z | 2 Joer      | viru 2 Joer        | 17520 Stonnen                  |
+| 1997-01-01T00:00:00.000Z | 3 Joer      | viru 3 Joer        | 26280 Stonnen                  |
+| 1996-01-01T00:00:00.000Z | 4 Joer      | viru 4 Joer        | 35064 Stonnen                  |
+| 1995-01-01T00:00:00.000Z | 5 Joer      | viru 5 Joer        | 43824 Stonnen                  |
+| 1994-01-01T00:00:00.000Z | 6 Joer      | viru 6 Joer        | 52584 Stonnen                  |
 
 ## `formatRelative`
 
