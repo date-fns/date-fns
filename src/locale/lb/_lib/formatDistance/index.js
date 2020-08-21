@@ -172,16 +172,33 @@ var formatDistanceLocale = {
 
 var EXCEPTION_CONSONANTS = ['d', 'h', 'n', 't', 'z']
 var VOWELS = ['a,', 'e', 'i', 'o', 'u']
+var DIGITS_SPOKEN_N_NEEDED = [0, 1, 2, 3, 8, 9]
+var FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED = [40, 50, 60, 70]
 
 // Eifeler Regel
-function isFinalNNeeded(nextWord) {
-  var firstLetter = nextWord.charAt(0).toLowerCase()
+function isFinalNNeeded(nextWords) {
+  var firstLetter = nextWords.charAt(0).toLowerCase()
   if (EXCEPTION_CONSONANTS.indexOf(firstLetter) != -1) {
     return true
   }
   if (VOWELS.indexOf(firstLetter) != -1) {
     return true
   }
+
+  // Numbers would need to converted into words for checking.
+  // Therefore, I have listed the digits that require a preceeding n with a few exceptions.
+  var firstWord = nextWords.split(' ')[0]
+  var number = parseInt(firstWord)
+  if (
+    number !== NaN &&
+    DIGITS_SPOKEN_N_NEEDED.indexOf(number % 10) != -1 &&
+    FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED.indexOf(
+      parseInt(firstWord.substring(0, 2))
+    ) == -1
+  ) {
+    return true
+  }
+
   // Omit other checks as they are not expected here.
   return false
 }

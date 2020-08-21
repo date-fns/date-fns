@@ -200,14 +200,14 @@ If now is January 1st, 2000, 00:00.
 | 2001-02-01T00:00:00.000Z | ongeféier ee Joer     | ongeféier ee Joer      | an ongeféier engem Joer      |
 | 2001-01-01T00:00:00.000Z | ongeféier ee Joer     | ongeféier ee Joer      | an ongeféier engem Joer      |
 | 2000-06-01T00:00:00.000Z | 5 Méint               | 5 Méint                | a 5 Méint                    |
-| 2000-03-01T00:00:00.000Z | 2 Méint               | 2 Méint                | a 2 Méint                    |
+| 2000-03-01T00:00:00.000Z | 2 Méint               | 2 Méint                | an 2 Méint                   |
 | 2000-02-01T00:00:00.000Z | ongeféier ee Mount    | ongeféier ee Mount     | an ongeféier engem Mount     |
 | 2000-01-15T00:00:00.000Z | 14 Deeg               | 14 Deeg                | a 14 Deeg                    |
 | 2000-01-02T00:00:00.000Z | een Dag               | een Dag                | an engem Dag                 |
 | 2000-01-01T06:00:00.000Z | ongeféier 6 Stonnen   | ongeféier 6 Stonnen    | an ongeféier 6 Stonnen       |
 | 2000-01-01T01:00:00.000Z | ongeféier eng Stonn   | ongeféier eng Stonn    | an ongeféier enger Stonn     |
 | 2000-01-01T00:45:00.000Z | ongeféier eng Stonn   | ongeféier eng Stonn    | an ongeféier enger Stonn     |
-| 2000-01-01T00:30:00.000Z | 30 Minutten           | 30 Minutten            | a 30 Minutten                |
+| 2000-01-01T00:30:00.000Z | 30 Minutten           | 30 Minutten            | an 30 Minutten               |
 | 2000-01-01T00:15:00.000Z | 15 Minutten           | 15 Minutten            | a 15 Minutten                |
 | 2000-01-01T00:01:00.000Z | eng Minutt            | eng Minutt             | an enger Minutt              |
 | 2000-01-01T00:00:25.000Z | manner wéi eng Minutt | eng hallef Minutt      | a manner wéi enger Minutt    |
@@ -219,14 +219,14 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:35.000Z | manner wéi eng Minutt | eng hallef Minutt      | viru manner wéi enger Minutt |
 | 1999-12-31T23:59:00.000Z | eng Minutt            | eng Minutt             | virun enger Minutt           |
 | 1999-12-31T23:45:00.000Z | 15 Minutten           | 15 Minutten            | viru 15 Minutten             |
-| 1999-12-31T23:30:00.000Z | 30 Minutten           | 30 Minutten            | viru 30 Minutten             |
+| 1999-12-31T23:30:00.000Z | 30 Minutten           | 30 Minutten            | virun 30 Minutten            |
 | 1999-12-31T23:15:00.000Z | ongeféier eng Stonn   | ongeféier eng Stonn    | virun ongeféier enger Stonn  |
 | 1999-12-31T23:00:00.000Z | ongeféier eng Stonn   | ongeféier eng Stonn    | virun ongeféier enger Stonn  |
 | 1999-12-31T18:00:00.000Z | ongeféier 6 Stonnen   | ongeféier 6 Stonnen    | virun ongeféier 6 Stonnen    |
-| 1999-12-30T00:00:00.000Z | 2 Deeg                | 2 Deeg                 | viru 2 Deeg                  |
+| 1999-12-30T00:00:00.000Z | 2 Deeg                | 2 Deeg                 | virun 2 Deeg                 |
 | 1999-12-15T00:00:00.000Z | 17 Deeg               | 17 Deeg                | viru 17 Deeg                 |
 | 1999-12-01T00:00:00.000Z | ongeféier ee Mount    | ongeféier ee Mount     | virun ongeféier engem Mount  |
-| 1999-11-01T00:00:00.000Z | 2 Méint               | 2 Méint                | viru 2 Méint                 |
+| 1999-11-01T00:00:00.000Z | 2 Méint               | 2 Méint                | virun 2 Méint                |
 | 1999-06-01T00:00:00.000Z | 7 Méint               | 7 Méint                | viru 7 Méint                 |
 | 1999-01-01T00:00:00.000Z | ongeféier ee Joer     | ongeféier ee Joer      | virun ongeféier engem Joer   |
 | 1998-12-01T00:00:00.000Z | ongeféier ee Joer     | ongeféier ee Joer      | virun ongeféier engem Joer   |
@@ -246,45 +246,45 @@ If now is January 1st, 2000, 00:00.
 | 2006-01-01T00:00:00.000Z | 6 Joer      | a 6 Joer           | 52608 Stonnen                  |
 | 2005-01-01T00:00:00.000Z | 5 Joer      | a 5 Joer           | 43848 Stonnen                  |
 | 2004-01-01T00:00:00.000Z | 4 Joer      | a 4 Joer           | 35064 Stonnen                  |
-| 2003-01-01T00:00:00.000Z | 3 Joer      | a 3 Joer           | 26304 Stonnen                  |
-| 2002-01-01T00:00:00.000Z | 2 Joer      | a 2 Joer           | 17544 Stonnen                  |
+| 2003-01-01T00:00:00.000Z | 3 Joer      | an 3 Joer          | 26304 Stonnen                  |
+| 2002-01-01T00:00:00.000Z | 2 Joer      | an 2 Joer          | 17544 Stonnen                  |
 | 2001-06-01T00:00:00.000Z | ee Joer     | an engem Joer      | 12408 Stonnen                  |
 | 2001-02-01T00:00:00.000Z | ee Joer     | an engem Joer      | 9528 Stonnen                   |
 | 2001-01-01T00:00:00.000Z | ee Joer     | an engem Joer      | 8784 Stonnen                   |
 | 2000-06-01T00:00:00.000Z | 5 Méint     | a 5 Méint          | 3648 Stonnen                   |
-| 2000-03-01T00:00:00.000Z | 2 Méint     | a 2 Méint          | 1440 Stonnen                   |
+| 2000-03-01T00:00:00.000Z | 2 Méint     | an 2 Méint         | 1440 Stonnen                   |
 | 2000-02-01T00:00:00.000Z | ee Mount    | an engem Mount     | 744 Stonnen                    |
 | 2000-01-15T00:00:00.000Z | 14 Deeg     | a 14 Deeg          | 336 Stonnen                    |
 | 2000-01-02T00:00:00.000Z | een Dag     | an engem Dag       | 24 Stonnen                     |
 | 2000-01-01T06:00:00.000Z | 6 Stonnen   | a 6 Stonnen        | 6 Stonnen                      |
 | 2000-01-01T01:00:00.000Z | eng Stonn   | an enger Stonn     | eng Stonn                      |
 | 2000-01-01T00:45:00.000Z | 45 Minutten | a 45 Minutten      | eng Stonn                      |
-| 2000-01-01T00:30:00.000Z | 30 Minutten | a 30 Minutten      | eng Stonn                      |
+| 2000-01-01T00:30:00.000Z | 30 Minutten | an 30 Minutten     | eng Stonn                      |
 | 2000-01-01T00:15:00.000Z | 15 Minutten | a 15 Minutten      | 0 Stonnen                      |
 | 2000-01-01T00:01:00.000Z | eng Minutt  | an enger Minutt    | 0 Stonnen                      |
 | 2000-01-01T00:00:25.000Z | 25 Sekonnen | a 25 Sekonnen      | 0 Stonnen                      |
 | 2000-01-01T00:00:15.000Z | 15 Sekonnen | a 15 Sekonnen      | 0 Stonnen                      |
 | 2000-01-01T00:00:05.000Z | 5 Sekonnen  | a 5 Sekonnen       | 0 Stonnen                      |
-| 2000-01-01T00:00:00.000Z | 0 Sekonnen  | viru 0 Sekonnen    | 0 Stonnen                      |
+| 2000-01-01T00:00:00.000Z | 0 Sekonnen  | virun 0 Sekonnen   | 0 Stonnen                      |
 | 1999-12-31T23:59:55.000Z | 5 Sekonnen  | viru 5 Sekonnen    | 0 Stonnen                      |
 | 1999-12-31T23:59:45.000Z | 15 Sekonnen | viru 15 Sekonnen   | 0 Stonnen                      |
 | 1999-12-31T23:59:35.000Z | 25 Sekonnen | viru 25 Sekonnen   | 0 Stonnen                      |
 | 1999-12-31T23:59:00.000Z | eng Minutt  | virun enger Minutt | 0 Stonnen                      |
 | 1999-12-31T23:45:00.000Z | 15 Minutten | viru 15 Minutten   | 0 Stonnen                      |
-| 1999-12-31T23:30:00.000Z | 30 Minutten | viru 30 Minutten   | eng Stonn                      |
+| 1999-12-31T23:30:00.000Z | 30 Minutten | virun 30 Minutten  | eng Stonn                      |
 | 1999-12-31T23:15:00.000Z | 45 Minutten | viru 45 Minutten   | eng Stonn                      |
 | 1999-12-31T23:00:00.000Z | eng Stonn   | virun enger Stonn  | eng Stonn                      |
 | 1999-12-31T18:00:00.000Z | 6 Stonnen   | viru 6 Stonnen     | 6 Stonnen                      |
-| 1999-12-30T00:00:00.000Z | 2 Deeg      | viru 2 Deeg        | 48 Stonnen                     |
+| 1999-12-30T00:00:00.000Z | 2 Deeg      | virun 2 Deeg       | 48 Stonnen                     |
 | 1999-12-15T00:00:00.000Z | 17 Deeg     | viru 17 Deeg       | 408 Stonnen                    |
 | 1999-12-01T00:00:00.000Z | ee Mount    | virun engem Mount  | 744 Stonnen                    |
-| 1999-11-01T00:00:00.000Z | 2 Méint     | viru 2 Méint       | 1464 Stonnen                   |
+| 1999-11-01T00:00:00.000Z | 2 Méint     | virun 2 Méint      | 1464 Stonnen                   |
 | 1999-06-01T00:00:00.000Z | 7 Méint     | viru 7 Méint       | 5136 Stonnen                   |
 | 1999-01-01T00:00:00.000Z | ee Joer     | virun engem Joer   | 8760 Stonnen                   |
 | 1998-12-01T00:00:00.000Z | ee Joer     | virun engem Joer   | 9504 Stonnen                   |
-| 1998-06-01T00:00:00.000Z | 2 Joer      | viru 2 Joer        | 13896 Stonnen                  |
-| 1998-01-01T00:00:00.000Z | 2 Joer      | viru 2 Joer        | 17520 Stonnen                  |
-| 1997-01-01T00:00:00.000Z | 3 Joer      | viru 3 Joer        | 26280 Stonnen                  |
+| 1998-06-01T00:00:00.000Z | 2 Joer      | virun 2 Joer       | 13896 Stonnen                  |
+| 1998-01-01T00:00:00.000Z | 2 Joer      | virun 2 Joer       | 17520 Stonnen                  |
+| 1997-01-01T00:00:00.000Z | 3 Joer      | virun 3 Joer       | 26280 Stonnen                  |
 | 1996-01-01T00:00:00.000Z | 4 Joer      | viru 4 Joer        | 35064 Stonnen                  |
 | 1995-01-01T00:00:00.000Z | 5 Joer      | viru 5 Joer        | 43824 Stonnen                  |
 | 1994-01-01T00:00:00.000Z | 6 Joer      | viru 6 Joer        | 52584 Stonnen                  |
