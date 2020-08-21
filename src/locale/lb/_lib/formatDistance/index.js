@@ -178,10 +178,10 @@ var FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED = [40, 50, 60, 70]
 // Eifeler Regel
 function isFinalNNeeded(nextWords) {
   var firstLetter = nextWords.charAt(0).toLowerCase()
-  if (EXCEPTION_CONSONANTS.indexOf(firstLetter) != -1) {
-    return true
-  }
-  if (VOWELS.indexOf(firstLetter) != -1) {
+  if (
+    VOWELS.indexOf(firstLetter) != -1 ||
+    EXCEPTION_CONSONANTS.indexOf(firstLetter) != -1
+  ) {
     return true
   }
 
