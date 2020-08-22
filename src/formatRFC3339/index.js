@@ -78,7 +78,7 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+    const hourOffset = addLeadingZeros(Math.floor(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'
