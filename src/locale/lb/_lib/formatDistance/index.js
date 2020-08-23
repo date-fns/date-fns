@@ -190,7 +190,7 @@ function isFinalNNeeded(nextWords) {
   var firstWord = nextWords.split(' ')[0]
   var number = parseInt(firstWord)
   if (
-    number !== NaN &&
+    !isNaN(number) &&
     DIGITS_SPOKEN_N_NEEDED.indexOf(number % 10) != -1 &&
     FIRST_TWO_DIGITS_SPOKEN_NO_N_NEEDED.indexOf(
       parseInt(firstWord.substring(0, 2))
