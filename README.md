@@ -1,17 +1,38 @@
-# ![](https://cdn.rawgit.com/date-fns/date-fns/c5bcd92d04f14da194e6298101a6509b1c3b30f0/docs/logo.svg) date-fns
+<p align="center">
+  <a href="https://date-fns.org/">
+    <img alt="GitPoint" title="GitPoint" src="https://i.imgur.com/SCgdGAO.png" >
+  </a>
+</p>
 
-🔥🔥🔥 **date-fns v2 is out!** 🔥🔥🔥
+<p align="center">
+  <b>date-fns</b> provides the most comprehensive, yet simple and consistent toolset 
+  <br>
+  for manipulating <b>JavaScript dates</b> in <b>a browser</b> & <b>Node.js</b>.</b>
+</p>
 
-⭐️ **Upgrading from v1 to v2?**
+<div align="center">
+  
+  [🚀&nbsp; date-fns v2 is out](#docs)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](#javascript-jobs-by-date-fns)
+  
+  <sub>
+  
+   Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
+    
+   </sub>
+</div>
 
-- [See the changelog](https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md)
-- Check out [@date-fns/upgrade](https://github.com/date-fns/date-fns-upgrade) and [@date-fns/upgrade-codemod](https://github.com/date-fns/date-fns-upgrade-codemod), they could help you with the upgrade!
 
-**date-fns** provides the most comprehensive, yet simple and consistent toolset
-for manipulating **JavaScript dates** in **a browser** & **Node.js**.
+<hr>
 
-**date-fns** is like [lodash](https://lodash.com) for dates. It has
-[**180+ functions** for all occasions](https://date-fns.org/docs/).
+# It's like [lodash](https://lodash.com) for dates
+
+- it has [**180+ functions** for all occasions](https://date-fns.org/docs/).
+- **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
+- **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
+- **Immutable & Pure**: Built using pure functions and always returns a new date instance.
+- **TypeScript & Flow**: Supports both Flow and TypeScript
+- **I18n**: Dozens of locales. Include only what you need.
+- [and many more benefits](https://date-fns.org/)
 
 ```js
 import { compareAsc, format } from 'date-fns'
@@ -48,9 +69,23 @@ and other docs.
 
 ## JavaScript jobs by date-fns
 
-👋 Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend)
+<!-- START OF README-JOB SECTION -->
 
-✉️ Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
+We help people find their JavaScript Dream-Job. Learn more about it <b><a href="https://jobs.date-fns.org/">here</a></b>.
+
+<a href="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/1/link" target="_blank"><img src="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/1/ad" width="270"></a>
+<a href="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/2/link" target="_blank"><img src="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/2/ad" width="270"></a>
+<a href="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/3/link" target="_blank"><img src="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/3/ad" width="270"></a>
+
+  👋&nbsp; Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend) 
+  <br>
+  ✉️&nbsp; Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
+  
+
+<br />
+<!-- END OF README-JOB SECTION -->
+
+
 
 ## License
 
