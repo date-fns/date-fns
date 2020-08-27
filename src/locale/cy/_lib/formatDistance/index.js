@@ -18,7 +18,7 @@ var formatDistanceLocale = {
   },
 
   xMinutes: {
-    one: '1 funud',
+    one: '1 munud',
     two: '2 funud',
     other: '{{count}} munud'
   },
@@ -35,6 +35,7 @@ var formatDistanceLocale = {
 
   xDays: {
     one: '1 diwrnod',
+    two: '2 ddiwrnod',
     other: '{{count}} diwrnod'
   },
 
@@ -49,7 +50,7 @@ var formatDistanceLocale = {
     two: 'pythefnos',
     other: '{{count}} wythnos'
   },
-  
+
   aboutXMonths: {
     one: 'tua 1 mis',
     two: 'tua 2 fis',
