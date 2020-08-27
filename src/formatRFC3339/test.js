@@ -3,6 +3,7 @@
 
 import assert from 'power-assert'
 import formatRFC3339 from '.'
+import toInteger from '../_lib/toInteger/index.js'
 import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
@@ -12,7 +13,7 @@ function generateOffset(date) {
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
-    const hourOffset = addLeadingZeros(absoluteOffset / 60, 2)
+    const hourOffset = addLeadingZeros(toInteger(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
     const sign = tzOffset < 0 ? '+' : '-'
