@@ -12,86 +12,46 @@ export { default as addQuarters } from './addQuarters/index.js'
 export { default as addSeconds } from './addSeconds/index.js'
 export { default as addWeeks } from './addWeeks/index.js'
 export { default as addYears } from './addYears/index.js'
-export {
-  default as areIntervalsOverlapping
-} from './areIntervalsOverlapping/index.js'
-export {
-  default as areIntervalsOverlappingWithOptions
-} from './areIntervalsOverlappingWithOptions/index.js'
+export { default as areIntervalsOverlapping } from './areIntervalsOverlapping/index.js'
+export { default as areIntervalsOverlappingWithOptions } from './areIntervalsOverlappingWithOptions/index.js'
 export { default as closestIndexTo } from './closestIndexTo/index.js'
 export { default as closestTo } from './closestTo/index.js'
 export { default as compareAsc } from './compareAsc/index.js'
 export { default as compareDesc } from './compareDesc/index.js'
-export {
-  default as differenceInBusinessDays
-} from './differenceInBusinessDays/index.js'
-export {
-  default as differenceInCalendarDays
-} from './differenceInCalendarDays/index.js'
-export {
-  default as differenceInCalendarISOWeekYears
-} from './differenceInCalendarISOWeekYears/index.js'
-export {
-  default as differenceInCalendarISOWeeks
-} from './differenceInCalendarISOWeeks/index.js'
-export {
-  default as differenceInCalendarMonths
-} from './differenceInCalendarMonths/index.js'
-export {
-  default as differenceInCalendarQuarters
-} from './differenceInCalendarQuarters/index.js'
-export {
-  default as differenceInCalendarWeeks
-} from './differenceInCalendarWeeks/index.js'
-export {
-  default as differenceInCalendarWeeksWithOptions
-} from './differenceInCalendarWeeksWithOptions/index.js'
-export {
-  default as differenceInCalendarYears
-} from './differenceInCalendarYears/index.js'
+export { default as differenceInBusinessDays } from './differenceInBusinessDays/index.js'
+export { default as differenceInCalendarDays } from './differenceInCalendarDays/index.js'
+export { default as differenceInCalendarISOWeekYears } from './differenceInCalendarISOWeekYears/index.js'
+export { default as differenceInCalendarISOWeeks } from './differenceInCalendarISOWeeks/index.js'
+export { default as differenceInCalendarMonths } from './differenceInCalendarMonths/index.js'
+export { default as differenceInCalendarQuarters } from './differenceInCalendarQuarters/index.js'
+export { default as differenceInCalendarWeeks } from './differenceInCalendarWeeks/index.js'
+export { default as differenceInCalendarWeeksWithOptions } from './differenceInCalendarWeeksWithOptions/index.js'
+export { default as differenceInCalendarYears } from './differenceInCalendarYears/index.js'
 export { default as differenceInDays } from './differenceInDays/index.js'
 export { default as differenceInHours } from './differenceInHours/index.js'
-export {
-  default as differenceInISOWeekYears
-} from './differenceInISOWeekYears/index.js'
-export {
-  default as differenceInMilliseconds
-} from './differenceInMilliseconds/index.js'
+export { default as differenceInISOWeekYears } from './differenceInISOWeekYears/index.js'
+export { default as differenceInMilliseconds } from './differenceInMilliseconds/index.js'
 export { default as differenceInMinutes } from './differenceInMinutes/index.js'
 export { default as differenceInMonths } from './differenceInMonths/index.js'
-export {
-  default as differenceInQuarters
-} from './differenceInQuarters/index.js'
+export { default as differenceInQuarters } from './differenceInQuarters/index.js'
 export { default as differenceInSeconds } from './differenceInSeconds/index.js'
 export { default as differenceInWeeks } from './differenceInWeeks/index.js'
 export { default as differenceInYears } from './differenceInYears/index.js'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
-export {
-  default as eachDayOfIntervalWithOptions
-} from './eachDayOfIntervalWithOptions/index.js'
+export { default as eachDayOfIntervalWithOptions } from './eachDayOfIntervalWithOptions/index.js'
 export { default as eachHourOfInterval } from './eachHourOfInterval/index.js'
-export {
-  default as eachHourOfIntervalWithOptions
-} from './eachHourOfIntervalWithOptions/index.js'
+export { default as eachHourOfIntervalWithOptions } from './eachHourOfIntervalWithOptions/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
-export {
-  default as eachQuarterOfInterval
-} from './eachQuarterOfInterval/index.js'
+export { default as eachQuarterOfInterval } from './eachQuarterOfInterval/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
-export {
-  default as eachWeekOfIntervalWithOptions
-} from './eachWeekOfIntervalWithOptions/index.js'
-export {
-  default as eachWeekendOfInterval
-} from './eachWeekendOfInterval/index.js'
+export { default as eachWeekOfIntervalWithOptions } from './eachWeekOfIntervalWithOptions/index.js'
+export { default as eachWeekendOfInterval } from './eachWeekendOfInterval/index.js'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index.js'
 export { default as endOfDay } from './endOfDay/index.js'
 export { default as endOfDecade } from './endOfDecade/index.js'
-export {
-  default as endOfDecadeWithOptions
-} from './endOfDecadeWithOptions/index.js'
+export { default as endOfDecadeWithOptions } from './endOfDecadeWithOptions/index.js'
 export { default as endOfHour } from './endOfHour/index.js'
 export { default as endOfISOWeek } from './endOfISOWeek/index.js'
 export { default as endOfISOWeekYear } from './endOfISOWeekYear/index.js'
@@ -100,43 +60,25 @@ export { default as endOfMonth } from './endOfMonth/index.js'
 export { default as endOfQuarter } from './endOfQuarter/index.js'
 export { default as endOfSecond } from './endOfSecond/index.js'
 export { default as endOfWeek } from './endOfWeek/index.js'
-export {
-  default as endOfWeekWithOptions
-} from './endOfWeekWithOptions/index.js'
+export { default as endOfWeekWithOptions } from './endOfWeekWithOptions/index.js'
 export { default as endOfYear } from './endOfYear/index.js'
 export { default as format } from './format/index.js'
 export { default as formatDistance } from './formatDistance/index.js'
-export {
-  default as formatDistanceStrict
-} from './formatDistanceStrict/index.js'
-export {
-  default as formatDistanceStrictWithOptions
-} from './formatDistanceStrictWithOptions/index.js'
-export {
-  default as formatDistanceWithOptions
-} from './formatDistanceWithOptions/index.js'
+export { default as formatDistanceStrict } from './formatDistanceStrict/index.js'
+export { default as formatDistanceStrictWithOptions } from './formatDistanceStrictWithOptions/index.js'
+export { default as formatDistanceWithOptions } from './formatDistanceWithOptions/index.js'
 export { default as formatDuration } from './formatDuration/index.js'
-export {
-  default as formatDurationWithOptions
-} from './formatDurationWithOptions/index.js'
+export { default as formatDurationWithOptions } from './formatDurationWithOptions/index.js'
 export { default as formatISO } from './formatISO/index.js'
 export { default as formatISO9075 } from './formatISO9075/index.js'
-export {
-  default as formatISO9075WithOptions
-} from './formatISO9075WithOptions/index.js'
+export { default as formatISO9075WithOptions } from './formatISO9075WithOptions/index.js'
 export { default as formatISODuration } from './formatISODuration/index.js'
-export {
-  default as formatISOWithOptions
-} from './formatISOWithOptions/index.js'
+export { default as formatISOWithOptions } from './formatISOWithOptions/index.js'
 export { default as formatRFC3339 } from './formatRFC3339/index.js'
-export {
-  default as formatRFC3339WithOptions
-} from './formatRFC3339WithOptions/index.js'
+export { default as formatRFC3339WithOptions } from './formatRFC3339WithOptions/index.js'
 export { default as formatRFC7231 } from './formatRFC7231/index.js'
 export { default as formatRelative } from './formatRelative/index.js'
-export {
-  default as formatRelativeWithOptions
-} from './formatRelativeWithOptions/index.js'
+export { default as formatRelativeWithOptions } from './formatRelativeWithOptions/index.js'
 export { default as formatWithOptions } from './formatWithOptions/index.js'
 export { default as fromUnixTime } from './fromUnixTime/index.js'
 export { default as getDate } from './getDate/index.js'
@@ -153,27 +95,19 @@ export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
 export { default as getMilliseconds } from './getMilliseconds/index.js'
 export { default as getMinutes } from './getMinutes/index.js'
 export { default as getMonth } from './getMonth/index.js'
-export {
-  default as getOverlappingDaysInIntervals
-} from './getOverlappingDaysInIntervals/index.js'
+export { default as getOverlappingDaysInIntervals } from './getOverlappingDaysInIntervals/index.js'
 export { default as getQuarter } from './getQuarter/index.js'
 export { default as getSeconds } from './getSeconds/index.js'
 export { default as getTime } from './getTime/index.js'
 export { default as getUnixTime } from './getUnixTime/index.js'
 export { default as getWeek } from './getWeek/index.js'
 export { default as getWeekOfMonth } from './getWeekOfMonth/index.js'
-export {
-  default as getWeekOfMonthWithOptions
-} from './getWeekOfMonthWithOptions/index.js'
+export { default as getWeekOfMonthWithOptions } from './getWeekOfMonthWithOptions/index.js'
 export { default as getWeekWithOptions } from './getWeekWithOptions/index.js'
 export { default as getWeekYear } from './getWeekYear/index.js'
-export {
-  default as getWeekYearWithOptions
-} from './getWeekYearWithOptions/index.js'
+export { default as getWeekYearWithOptions } from './getWeekYearWithOptions/index.js'
 export { default as getWeeksInMonth } from './getWeeksInMonth/index.js'
-export {
-  default as getWeeksInMonthWithOptions
-} from './getWeeksInMonthWithOptions/index.js'
+export { default as getWeeksInMonthWithOptions } from './getWeeksInMonthWithOptions/index.js'
 export { default as getYear } from './getYear/index.js'
 export { default as intervalToDuration } from './intervalToDuration/index.js'
 export { default as isAfter } from './isAfter/index.js'
@@ -198,9 +132,7 @@ export { default as isSameMonth } from './isSameMonth/index.js'
 export { default as isSameQuarter } from './isSameQuarter/index.js'
 export { default as isSameSecond } from './isSameSecond/index.js'
 export { default as isSameWeek } from './isSameWeek/index.js'
-export {
-  default as isSameWeekWithOptions
-} from './isSameWeekWithOptions/index.js'
+export { default as isSameWeekWithOptions } from './isSameWeekWithOptions/index.js'
 export { default as isSameYear } from './isSameYear/index.js'
 export { default as isSaturday } from './isSaturday/index.js'
 export { default as isSunday } from './isSunday/index.js'
@@ -212,18 +144,12 @@ export { default as isWeekend } from './isWeekend/index.js'
 export { default as isWithinInterval } from './isWithinInterval/index.js'
 export { default as lastDayOfDecade } from './lastDayOfDecade/index.js'
 export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index.js'
-export {
-  default as lastDayOfISOWeekYear
-} from './lastDayOfISOWeekYear/index.js'
+export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index.js'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index.js'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index.js'
-export {
-  default as lastDayOfQuarterWithOptions
-} from './lastDayOfQuarterWithOptions/index.js'
+export { default as lastDayOfQuarterWithOptions } from './lastDayOfQuarterWithOptions/index.js'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index.js'
-export {
-  default as lastDayOfWeekWithOptions
-} from './lastDayOfWeekWithOptions/index.js'
+export { default as lastDayOfWeekWithOptions } from './lastDayOfWeekWithOptions/index.js'
 export { default as lastDayOfYear } from './lastDayOfYear/index.js'
 export { default as lightFormat } from './lightFormat/index.js'
 export { default as max } from './max/index.js'
@@ -233,12 +159,8 @@ export { default as parseISO } from './parseISO/index.js'
 export { default as parseISOWithOptions } from './parseISOWithOptions/index.js'
 export { default as parseJSON } from './parseJSON/index.js'
 export { default as parseWithOptions } from './parseWithOptions/index.js'
-export {
-  default as roundToNearestMinutes
-} from './roundToNearestMinutes/index.js'
-export {
-  default as roundToNearestMinutesWithOptions
-} from './roundToNearestMinutesWithOptions/index.js'
+export { default as roundToNearestMinutes } from './roundToNearestMinutes/index.js'
+export { default as roundToNearestMinutesWithOptions } from './roundToNearestMinutesWithOptions/index.js'
 export { default as set } from './set/index.js'
 export { default as setDate } from './setDate/index.js'
 export { default as setDay } from './setDay/index.js'
@@ -256,9 +178,7 @@ export { default as setSeconds } from './setSeconds/index.js'
 export { default as setWeek } from './setWeek/index.js'
 export { default as setWeekWithOptions } from './setWeekWithOptions/index.js'
 export { default as setWeekYear } from './setWeekYear/index.js'
-export {
-  default as setWeekYearWithOptions
-} from './setWeekYearWithOptions/index.js'
+export { default as setWeekYearWithOptions } from './setWeekYearWithOptions/index.js'
 export { default as setYear } from './setYear/index.js'
 export { default as startOfDay } from './startOfDay/index.js'
 export { default as startOfDecade } from './startOfDecade/index.js'
@@ -270,13 +190,9 @@ export { default as startOfMonth } from './startOfMonth/index.js'
 export { default as startOfQuarter } from './startOfQuarter/index.js'
 export { default as startOfSecond } from './startOfSecond/index.js'
 export { default as startOfWeek } from './startOfWeek/index.js'
-export {
-  default as startOfWeekWithOptions
-} from './startOfWeekWithOptions/index.js'
+export { default as startOfWeekWithOptions } from './startOfWeekWithOptions/index.js'
 export { default as startOfWeekYear } from './startOfWeekYear/index.js'
-export {
-  default as startOfWeekYearWithOptions
-} from './startOfWeekYearWithOptions/index.js'
+export { default as startOfWeekYearWithOptions } from './startOfWeekYearWithOptions/index.js'
 export { default as startOfYear } from './startOfYear/index.js'
 export { default as sub } from './sub/index.js'
 export { default as subBusinessDays } from './subBusinessDays/index.js'

@@ -3,7 +3,7 @@
 
 export type Interval = {
   start: Date | number,
-  end: Date | number
+  end: Date | number,
 }
 
 export type Locale = {
@@ -16,12 +16,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   formatLong?: {
     date: (...args: Array<any>) => any,
     time: (...args: Array<any>) => any,
-    dateTime: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any,
   },
   match?: {
     ordinalNumber: (...args: Array<any>) => any,
@@ -29,12 +29,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  },
 }
 
 export type Duration = {
@@ -44,7 +44,7 @@ export type Duration = {
   days?: number,
   hours?: number,
   minutes?: number,
-  seconds?: number
+  seconds?: number,
 }
 
 declare module.exports: (
@@ -55,6 +55,6 @@ declare module.exports: (
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     useAdditionalWeekYearTokens?: boolean,
-    useAdditionalDayOfYearTokens?: boolean
+    useAdditionalDayOfYearTokens?: boolean,
   }
 ) => boolean

@@ -11,12 +11,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   formatLong?: {
     date: (...args: Array<any>) => any,
     time: (...args: Array<any>) => any,
-    dateTime: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any,
   },
   match?: {
     ordinalNumber: (...args: Array<any>) => any,
@@ -24,12 +24,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  },
 }
 
 declare module.exports: Locale

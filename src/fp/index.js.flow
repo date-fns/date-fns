@@ -3,7 +3,7 @@
 
 export type Interval = {
   start: Date | number,
-  end: Date | number
+  end: Date | number,
 }
 
 export type Locale = {
@@ -16,12 +16,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   formatLong?: {
     date: (...args: Array<any>) => any,
     time: (...args: Array<any>) => any,
-    dateTime: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any,
   },
   match?: {
     ordinalNumber: (...args: Array<any>) => any,
@@ -29,12 +29,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  },
 }
 
 export type Duration = {
@@ -44,7 +44,7 @@ export type Duration = {
   days?: number,
   hours?: number,
   minutes?: number,
-  seconds?: number
+  seconds?: number,
 }
 
 type CurriedFn1<A, R> = <A>(a: A) => R
@@ -93,7 +93,7 @@ declare module.exports: {
   areIntervalsOverlapping: CurriedFn2<Interval, Interval, boolean>,
   areIntervalsOverlappingWithOptions: CurriedFn3<
     {
-      inclusive?: boolean
+      inclusive?: boolean,
     },
     Interval,
     Interval,
@@ -125,7 +125,7 @@ declare module.exports: {
   differenceInCalendarWeeksWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date | number,
@@ -145,7 +145,7 @@ declare module.exports: {
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<
     {
-      step?: number
+      step?: number,
     },
     Interval,
     Date[]
@@ -153,7 +153,7 @@ declare module.exports: {
   eachHourOfInterval: CurriedFn1<Interval, Date[]>,
   eachHourOfIntervalWithOptions: CurriedFn2<
     {
-      step?: number
+      step?: number,
     },
     Interval,
     Date[]
@@ -167,7 +167,7 @@ declare module.exports: {
   eachWeekOfIntervalWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Interval,
     Date[]
@@ -177,7 +177,7 @@ declare module.exports: {
   endOfDecade: CurriedFn1<Date | number, Date>,
   endOfDecadeWithOptions: CurriedFn2<
     {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     },
     Date | number,
     Date
@@ -193,7 +193,7 @@ declare module.exports: {
   endOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date
@@ -207,7 +207,7 @@ declare module.exports: {
       locale?: Locale,
       roundingMethod?: 'floor' | 'ceil' | 'round',
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
-      addSuffix?: boolean
+      addSuffix?: boolean,
     },
     Date | number,
     Date | number,
@@ -217,7 +217,7 @@ declare module.exports: {
     {
       locale?: Locale,
       addSuffix?: boolean,
-      includeSeconds?: boolean
+      includeSeconds?: boolean,
     },
     Date | number,
     Date | number,
@@ -229,7 +229,7 @@ declare module.exports: {
       locale?: Locale,
       delimiter?: string,
       zero?: boolean,
-      format?: string[]
+      format?: string[],
     },
     Duration,
     string
@@ -239,7 +239,7 @@ declare module.exports: {
   formatISO9075WithOptions: CurriedFn2<
     {
       representation?: 'complete' | 'date' | 'time',
-      format?: 'extended' | 'basic'
+      format?: 'extended' | 'basic',
     },
     Date | number,
     string
@@ -248,7 +248,7 @@ declare module.exports: {
   formatISOWithOptions: CurriedFn2<
     {
       representation?: 'complete' | 'date' | 'time',
-      format?: 'extended' | 'basic'
+      format?: 'extended' | 'basic',
     },
     Date | number,
     string
@@ -257,7 +257,7 @@ declare module.exports: {
   formatRelativeWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date | number,
@@ -266,7 +266,7 @@ declare module.exports: {
   formatRFC3339: CurriedFn1<Date | number, string>,
   formatRFC3339WithOptions: CurriedFn2<
     {
-      fractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3,
     },
     Date | number,
     string
@@ -278,7 +278,7 @@ declare module.exports: {
       useAdditionalWeekYearTokens?: boolean,
       firstWeekContainsDate?: number,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     string,
     Date | number,
@@ -309,7 +309,7 @@ declare module.exports: {
   getWeekOfMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     number
@@ -318,7 +318,7 @@ declare module.exports: {
   getWeeksInMonthWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     number
@@ -327,7 +327,7 @@ declare module.exports: {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     number
@@ -337,7 +337,7 @@ declare module.exports: {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     number
@@ -360,7 +360,7 @@ declare module.exports: {
       useAdditionalWeekYearTokens?: boolean,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     string,
     string,
@@ -379,7 +379,7 @@ declare module.exports: {
   isSameWeekWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date | number,
@@ -401,7 +401,7 @@ declare module.exports: {
   lastDayOfQuarter: CurriedFn1<Date | number, Date>,
   lastDayOfQuarterWithOptions: CurriedFn2<
     {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     },
     Date | number,
     Date
@@ -410,7 +410,7 @@ declare module.exports: {
   lastDayOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date
@@ -423,7 +423,7 @@ declare module.exports: {
   parseISO: CurriedFn1<string, Date>,
   parseISOWithOptions: CurriedFn2<
     {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     },
     string,
     Date
@@ -435,7 +435,7 @@ declare module.exports: {
       useAdditionalWeekYearTokens?: boolean,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     string,
@@ -445,7 +445,7 @@ declare module.exports: {
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<
     {
-      nearestTo?: number
+      nearestTo?: number,
     },
     Date | number,
     Date
@@ -458,7 +458,7 @@ declare module.exports: {
       hours?: number,
       date?: number,
       month?: number,
-      year?: number
+      year?: number,
     },
     Date | number,
     Date
@@ -469,7 +469,7 @@ declare module.exports: {
   setDayWithOptions: CurriedFn3<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     number,
     Date | number,
@@ -489,7 +489,7 @@ declare module.exports: {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     number,
     Date | number,
@@ -500,7 +500,7 @@ declare module.exports: {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     number,
     Date | number,
@@ -520,7 +520,7 @@ declare module.exports: {
   startOfWeekWithOptions: CurriedFn2<
     {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date
@@ -530,7 +530,7 @@ declare module.exports: {
     {
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      locale?: Locale
+      locale?: Locale,
     },
     Date | number,
     Date
@@ -550,5 +550,5 @@ declare module.exports: {
   subYears: CurriedFn2<number, Date | number, Date>,
   toDate: CurriedFn1<Date | number, Date>,
   maxTime: number,
-  minTime: number
+  minTime: number,
 }

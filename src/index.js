@@ -12,63 +12,35 @@ export { default as addQuarters } from './addQuarters/index.js'
 export { default as addSeconds } from './addSeconds/index.js'
 export { default as addWeeks } from './addWeeks/index.js'
 export { default as addYears } from './addYears/index.js'
-export {
-  default as areIntervalsOverlapping
-} from './areIntervalsOverlapping/index.js'
+export { default as areIntervalsOverlapping } from './areIntervalsOverlapping/index.js'
 export { default as closestIndexTo } from './closestIndexTo/index.js'
 export { default as closestTo } from './closestTo/index.js'
 export { default as compareAsc } from './compareAsc/index.js'
 export { default as compareDesc } from './compareDesc/index.js'
-export {
-  default as differenceInBusinessDays
-} from './differenceInBusinessDays/index.js'
-export {
-  default as differenceInCalendarDays
-} from './differenceInCalendarDays/index.js'
-export {
-  default as differenceInCalendarISOWeekYears
-} from './differenceInCalendarISOWeekYears/index.js'
-export {
-  default as differenceInCalendarISOWeeks
-} from './differenceInCalendarISOWeeks/index.js'
-export {
-  default as differenceInCalendarMonths
-} from './differenceInCalendarMonths/index.js'
-export {
-  default as differenceInCalendarQuarters
-} from './differenceInCalendarQuarters/index.js'
-export {
-  default as differenceInCalendarWeeks
-} from './differenceInCalendarWeeks/index.js'
-export {
-  default as differenceInCalendarYears
-} from './differenceInCalendarYears/index.js'
+export { default as differenceInBusinessDays } from './differenceInBusinessDays/index.js'
+export { default as differenceInCalendarDays } from './differenceInCalendarDays/index.js'
+export { default as differenceInCalendarISOWeekYears } from './differenceInCalendarISOWeekYears/index.js'
+export { default as differenceInCalendarISOWeeks } from './differenceInCalendarISOWeeks/index.js'
+export { default as differenceInCalendarMonths } from './differenceInCalendarMonths/index.js'
+export { default as differenceInCalendarQuarters } from './differenceInCalendarQuarters/index.js'
+export { default as differenceInCalendarWeeks } from './differenceInCalendarWeeks/index.js'
+export { default as differenceInCalendarYears } from './differenceInCalendarYears/index.js'
 export { default as differenceInDays } from './differenceInDays/index.js'
 export { default as differenceInHours } from './differenceInHours/index.js'
-export {
-  default as differenceInISOWeekYears
-} from './differenceInISOWeekYears/index.js'
-export {
-  default as differenceInMilliseconds
-} from './differenceInMilliseconds/index.js'
+export { default as differenceInISOWeekYears } from './differenceInISOWeekYears/index.js'
+export { default as differenceInMilliseconds } from './differenceInMilliseconds/index.js'
 export { default as differenceInMinutes } from './differenceInMinutes/index.js'
 export { default as differenceInMonths } from './differenceInMonths/index.js'
-export {
-  default as differenceInQuarters
-} from './differenceInQuarters/index.js'
+export { default as differenceInQuarters } from './differenceInQuarters/index.js'
 export { default as differenceInSeconds } from './differenceInSeconds/index.js'
 export { default as differenceInWeeks } from './differenceInWeeks/index.js'
 export { default as differenceInYears } from './differenceInYears/index.js'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index.js'
 export { default as eachHourOfInterval } from './eachHourOfInterval/index.js'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index.js'
-export {
-  default as eachQuarterOfInterval
-} from './eachQuarterOfInterval/index.js'
+export { default as eachQuarterOfInterval } from './eachQuarterOfInterval/index.js'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index.js'
-export {
-  default as eachWeekendOfInterval
-} from './eachWeekendOfInterval/index.js'
+export { default as eachWeekendOfInterval } from './eachWeekendOfInterval/index.js'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index.js'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index.js'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index.js'
@@ -88,13 +60,9 @@ export { default as endOfYear } from './endOfYear/index.js'
 export { default as endOfYesterday } from './endOfYesterday/index.js'
 export { default as format } from './format/index.js'
 export { default as formatDistance } from './formatDistance/index.js'
-export {
-  default as formatDistanceStrict
-} from './formatDistanceStrict/index.js'
+export { default as formatDistanceStrict } from './formatDistanceStrict/index.js'
 export { default as formatDistanceToNow } from './formatDistanceToNow/index.js'
-export {
-  default as formatDistanceToNowStrict
-} from './formatDistanceToNowStrict/index.js'
+export { default as formatDistanceToNowStrict } from './formatDistanceToNowStrict/index.js'
 export { default as formatDuration } from './formatDuration/index.js'
 export { default as formatISO } from './formatISO/index.js'
 export { default as formatISO9075 } from './formatISO9075/index.js'
@@ -117,9 +85,7 @@ export { default as getISOWeeksInYear } from './getISOWeeksInYear/index.js'
 export { default as getMilliseconds } from './getMilliseconds/index.js'
 export { default as getMinutes } from './getMinutes/index.js'
 export { default as getMonth } from './getMonth/index.js'
-export {
-  default as getOverlappingDaysInIntervals
-} from './getOverlappingDaysInIntervals/index.js'
+export { default as getOverlappingDaysInIntervals } from './getOverlappingDaysInIntervals/index.js'
 export { default as getQuarter } from './getQuarter/index.js'
 export { default as getSeconds } from './getSeconds/index.js'
 export { default as getTime } from './getTime/index.js'
@@ -174,9 +140,7 @@ export { default as isWithinInterval } from './isWithinInterval/index.js'
 export { default as isYesterday } from './isYesterday/index.js'
 export { default as lastDayOfDecade } from './lastDayOfDecade/index.js'
 export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index.js'
-export {
-  default as lastDayOfISOWeekYear
-} from './lastDayOfISOWeekYear/index.js'
+export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index.js'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index.js'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index.js'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index.js'
@@ -187,9 +151,7 @@ export { default as min } from './min/index.js'
 export { default as parse } from './parse/index.js'
 export { default as parseISO } from './parseISO/index.js'
 export { default as parseJSON } from './parseJSON/index.js'
-export {
-  default as roundToNearestMinutes
-} from './roundToNearestMinutes/index.js'
+export { default as roundToNearestMinutes } from './roundToNearestMinutes/index.js'
 export { default as set } from './set/index.js'
 export { default as setDate } from './setDate/index.js'
 export { default as setDay } from './setDay/index.js'
