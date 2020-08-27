@@ -8,6 +8,26 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.16.0] - 2020-08-27
+
+Kudos to [@jvpelt](https://github.com/jvpelt), [@piotrl](https://github.com/piotrl), [@yotamofek](https://github.com/yotamofek), [@dwaxweiler](https://github.com/dwaxweiler), [@leedriscoll](https://github.com/leedriscoll) and [@bradevans](https://github.com/bradevans) for working on the release. Also thanks to [@PascalHonegger](https://github.com/PascalHonegger), [@pickfire](https://github.com/pickfire), [@TheJaredWilcurt](https://github.com/TheJaredWilcurt), [@SidKH](https://github.com/SidKH) and [@nfantone](https://github.com/nfantone) for improving the documentation.
+
+### Fixed
+
+- [Added correct translations for Welsh `1 minute` and `2 days`](https://github.com/date-fns/date-fns/pull/1903).
+- [Fixed `formatRFC3339` formatting timezone offset with minutes](https://github.com/date-fns/date-fns/pull/1890).
+- [Added missing locale type definition for `formatDuration`](https://github.com/date-fns/date-fns/pull/1881)
+- [Fixed Scottish Gaelic locale issues](https://github.com/date-fns/date-fns/pull/1914).
+
+### Changed
+
+- [Used shorter Hebrew alternative for "about"](https://github.com/date-fns/date-fns/pull/1893).
+- [Improved string arguments warning after upgrading to v2](https://github.com/date-fns/date-fns/pull/1910).
+
+### Added
+
+- [Added Luxembourgish (lb) locale](https://github.com/date-fns/date-fns/pull/1900).
+
 ## [2.15.0] - 2020-07-17
 
 Thanks to [@belgamo](https://github.com/belgamo), [@Matsuuu](https://github.com/Matsuuu), [@Imballinst](https://github.com/Imballinst), [@arsnyder16](https://github.com/arsnyder16), [@pankajupadhyay29](https://github.com/pankajupadhyay29), [@DCBN](https://github.com/DCBN), [@leedriscoll](https://github.com/leedriscoll), [@gottsohn](https://github.com/gottsohn), [@mukuljainx](https://github.com/mukuljainx) and [@dtriana](https://github.com/dtriana) for working on the release. Also kudos to [@KidkArolis](https://github.com/KidkArolis), [@imgx64](https://github.com/imgx64), [@fjc0k](https://github.com/fjc0k), [@wmonk](https://github.com/wmonk), [@djD-REK](https://github.com/djD-REK), [@dandv](https://github.com/dandv), [@psimk](https://github.com/psimk) and [@brimworks](https://github.com/brimworks) for improving the documentation.
@@ -649,7 +669,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20)
+    end: new Date(2014, 0, 20),
   })
 
   getOverlappingDaysInIntervals(
@@ -659,7 +679,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7)
+    end: new Date(2014, 0, 7),
   })
   ```
 
@@ -891,10 +911,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2)
+    new Date(2017, 6 /* Jul */, 2),
   ]
 
-  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
@@ -2042,7 +2062,9 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.14.0...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.16.0...HEAD
+[2.14.0]: https://github.com/date-fns/date-fns/compare/v2.15.0...v2.16.0
+[2.15.0]: https://github.com/date-fns/date-fns/compare/v2.14.0...v2.15.0
 [2.14.0]: https://github.com/date-fns/date-fns/compare/v2.13.0...v2.14.0
 [2.13.0]: https://github.com/date-fns/date-fns/compare/v2.12.0...v2.13.0
 [2.12.0]: https://github.com/date-fns/date-fns/compare/v2.11.1...v2.12.0
