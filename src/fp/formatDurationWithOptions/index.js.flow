@@ -55,6 +55,7 @@ type CurriedFn2<A, B, R> = <A>(
 
 declare module.exports: CurriedFn2<
   {
+    locale?: Locale,
     delimiter?: string,
     zero?: boolean,
     format?: string[]
