@@ -12,17 +12,18 @@
 
 <div align="center">
 
-  [🚀&nbsp; date-fns v2 is out](#docs)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](#javascript-jobs-by-date-fns)
+[🚀&nbsp; date-fns v2 is out](#docs)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](#javascript-jobs-by-date-fns)
 
   <sub>
 
-   Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
-  </sub>
+Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
+</sub>
+
 </div>
 
 <hr>
 
-# It's like [lodash](https://lodash.com) for dates
+# It's like [Lodash](https://lodash.com) for dates
 
 - It has [**180+ functions** for all occasions](https://date-fns.org/docs/).
 - **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
