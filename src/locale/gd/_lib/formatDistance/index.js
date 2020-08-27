@@ -6,6 +6,8 @@ var formatDistanceLocale = {
 
   xSeconds: {
     one: '1 diog',
+    two: '2 dhiog',
+    twenty: '20 diog',
     other: '{{count}} diogan'
   },
 
@@ -18,6 +20,8 @@ var formatDistanceLocale = {
 
   xMinutes: {
     one: '1 mionaid',
+    two: '2 mhionaid',
+    twenty: '20 mionaid',
     other: '{{count}} mionaidean'
   },
 
@@ -27,13 +31,15 @@ var formatDistanceLocale = {
   },
 
   xHours: {
-    one: '1 uair',
+    one: '1 uair de thìde',
+    two: '2 uair de thìde',
+    twenty: '20 uair de thìde',
     other: '{{count}} uairean de thìde'
   },
 
   xDays: {
-    one: '1 latha',
-    other: '{{count}} làithean'
+    one: '1 là',
+    other: '{{count}} là'
   },
 
   aboutXWeeks: {
@@ -85,6 +91,14 @@ export default function formatDistance(token, count, options) {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
     result = formatDistanceLocale[token].one
+  } else if (count === 2 && !!formatDistanceLocale[token].two) {
+    result = formatDistanceLocale[token].two
+  } else if (count === 9 && !!formatDistanceLocale[token].nine) {
+    result = formatDistanceLocale[token].nine
+  } else if (count === 20 && !!formatDistanceLocale[token].twenty) {
+    result = formatDistanceLocale[token].twenty
+  } else if (count === 30 && !!formatDistanceLocale[token].thirty) {
+    result = formatDistanceLocale[token].thirty
   } else {
     result = formatDistanceLocale[token].other.replace('{{count}}', count)
   }
@@ -93,7 +107,7 @@ export default function formatDistance(token, count, options) {
     if (options.comparison > 0) {
       return 'ann an ' + result
     } else {
-      return result + ' o chionn'
+      return ' o chionn' + result
     }
   }
 

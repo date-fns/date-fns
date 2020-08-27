@@ -150,13 +150,16 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return number + 'cd'
+        return number + 'd'
       case 2:
         return number + 'na'
-      case 3:
-        return number + 'tr'
     }
   }
+
+  if (rem100 === 12) {
+    return number + 'na'
+  }
+
   return number + 'mh'
 }
 
