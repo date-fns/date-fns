@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://date-fns.org/">
-    <img alt="date-fns" title="date-fns" src="https://cdn.rawgit.com/date-fns/date-fns/master/docs/logotype.svg" />
+    <img alt="date-fns" title="date-fns" src="https://raw.githubusercontent.com/date-fns/date-fns/master/docs/logotype.svg" width="300" />
   </a>
 </p>
 
@@ -11,9 +11,11 @@
 </p>
 
 <div align="center">
+
   [🚀&nbsp; date-fns v2 is out](#docs)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](#javascript-jobs-by-date-fns)
 
   <sub>
+
    Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
   </sub>
 </div>
@@ -22,7 +24,7 @@
 
 # It's like [lodash](https://lodash.com) for dates
 
-- it has [**180+ functions** for all occasions](https://date-fns.org/docs/).
+- It has [**180+ functions** for all occasions](https://date-fns.org/docs/).
 - **Modular**: Pick what you need. Works with webpack, Browserify, or Rollup and also supports tree-shaking.
 - **Native dates**: Uses existing native type. It doesn't extend core objects for safety's sake.
 - **Immutable & Pure**: Built using pure functions and always returns a new date instance.
