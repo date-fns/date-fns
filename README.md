@@ -1,26 +1,22 @@
 <p align="center">
   <a href="https://date-fns.org/">
-    <img alt="GitPoint" title="GitPoint" src="https://i.imgur.com/SCgdGAO.png" >
+    <img alt="date-fns" title="date-fns" src="https://cdn.rawgit.com/date-fns/date-fns/master/docs/logotype.svg" />
   </a>
 </p>
 
 <p align="center">
-  <b>date-fns</b> provides the most comprehensive, yet simple and consistent toolset 
+  <b>date-fns</b> provides the most comprehensive, yet simple and consistent toolset
   <br>
   for manipulating <b>JavaScript dates</b> in <b>a browser</b> & <b>Node.js</b>.</b>
 </p>
 
 <div align="center">
-  
   [🚀&nbsp; date-fns v2 is out](#docs)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](#javascript-jobs-by-date-fns)
-  
-  <sub>
-  
-   Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
-    
-   </sub>
-</div>
 
+  <sub>
+   Powering **>500k Projects** & Generating **~7 Million Downloads/Week**
+  </sub>
+</div>
 
 <hr>
 
@@ -43,7 +39,7 @@ format(new Date(2014, 1, 11), 'yyyy-MM-dd')
 const dates = [
   new Date(1995, 6, 2),
   new Date(1987, 1, 11),
-  new Date(1989, 6, 10)
+  new Date(1989, 6, 10),
 ]
 dates.sort(compareAsc)
 //=> [
@@ -77,15 +73,12 @@ We help people find their JavaScript Dream-Job. Learn more about it <b><a href="
 <a href="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/2/link" target="_blank"><img src="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/2/ad" width="270"></a>
 <a href="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/3/link" target="_blank"><img src="https://fetch.readme-jobs.com/rmj-rec1fZdbrN6qruPot/3/ad" width="270"></a>
 
-  👋&nbsp; Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend) 
-  <br>
-  ✉️&nbsp; Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
-  
+👋&nbsp; Know someone who's looking for JavaScript devs? [Recommend us a job!](https://jobs.date-fns.org/#recommend)
+<br>
+✉️&nbsp; Get jobs worth sharing to your email! [Subscribe to the newsletter](https://jobs.date-fns.org).
 
 <br />
 <!-- END OF README-JOB SECTION -->
-
-
 
 ## License
 
