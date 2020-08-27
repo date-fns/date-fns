@@ -20,7 +20,7 @@ import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
 
 Starting with v2 `format` and `parse` uses [Unicode tokens].
 
-See [Unicode Tokens doc](./unicodeTokens.md) for more details.
+See [Unicode Tokens doc](https://date-fns.org/docs/Unicode-Tokens) for more details.
 
 ### String arguments
 
