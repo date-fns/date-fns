@@ -112,8 +112,8 @@ var dayValues = {
   short: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
   abbreviated: ['ned', 'pon', 'uto', 'sre', 'čet', 'pet', 'sub'],
   wide: [
-    'nedjelja',
-    'ponedjeljak',
+    'nedelja',
+    'ponedeljak',
     'utorak',
     'sreda',
     'četvrtak',

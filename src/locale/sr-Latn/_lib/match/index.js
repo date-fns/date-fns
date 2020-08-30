@@ -49,7 +49,7 @@ var matchDayPatterns = {
   narrow: /^[npusčc]/i,
   short: /^(ned|pon|uto|sre|(čet|cet)|pet|sub)/i,
   abbreviated: /^(ned|pon|uto|sre|(čet|cet)|pet|sub)/i,
-  wide: /^(nedjelja|ponedjeljak|utorak|sreda|(četvrtak|cetvrtak)|petak|subota)/i
+  wide: /^(nedelja|ponedeljak|utorak|sreda|(četvrtak|cetvrtak)|petak|subota)/i
 }
 var parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
