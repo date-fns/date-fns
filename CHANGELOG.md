@@ -16,6 +16,7 @@ Kudos to [@aleksaps](https://github.com/aleksaps) and [@leedriscoll](https://git
 
 - [Fixed a typo in Scottish Gaelic (gd) locale](https://github.com/date-fns/date-fns/pull/1925).
 - [Fixed typos in Serbian Latin locale](https://github.com/date-fns/date-fns/pull/1928).
+- [Fixed greek grammar for Saturday on `formatRelative`](https://github.com/date-fns/date-fns/pull/1930).
 - Removed locale snapshots from the npm package making it lighter.
 
 ## [2.16.0] - 2020-08-27
@@ -679,7 +680,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20),
+    end: new Date(2014, 0, 20)
   })
 
   getOverlappingDaysInIntervals(
@@ -689,7 +690,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7),
+    end: new Date(2014, 0, 7)
   })
   ```
 
@@ -921,10 +922,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2),
+    new Date(2017, 6 /* Jul */, 2)
   ]
 
-  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
