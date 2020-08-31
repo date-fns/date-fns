@@ -12,6 +12,10 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ### Fixed
 
+Kudos to [@aleksaps](https://github.com/aleksaps) and [@leedriscoll](https://github.com/leedriscoll) for pull-requests!
+
+- [Fixed a typo in Scottish Gaelic (gd) locale](https://github.com/date-fns/date-fns/pull/1925).
+- [Fixed typos in Serbian Latin locale](https://github.com/date-fns/date-fns/pull/1928).
 - Removed locale snapshots from the npm package making it lighter.
 
 ## [2.16.0] - 2020-08-27
@@ -2068,8 +2072,9 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.16.0...HEAD
-[2.14.0]: https://github.com/date-fns/date-fns/compare/v2.15.0...v2.16.0
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.16.1...HEAD
+[2.16.1]: https://github.com/date-fns/date-fns/compare/v2.16.0...v2.16.1
+[2.16.0]: https://github.com/date-fns/date-fns/compare/v2.15.0...v2.16.0
 [2.15.0]: https://github.com/date-fns/date-fns/compare/v2.14.0...v2.15.0
 [2.14.0]: https://github.com/date-fns/date-fns/compare/v2.13.0...v2.14.0
 [2.13.0]: https://github.com/date-fns/date-fns/compare/v2.12.0...v2.13.0
