@@ -107,7 +107,7 @@ export default function formatDistance(token, count, options) {
     if (options.comparison > 0) {
       return 'ann an ' + result
     } else {
-      return ' o chionn' + result
+      return 'o chionn ' + result
     }
   }
 

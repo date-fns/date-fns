@@ -189,105 +189,105 @@
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result                | `includeSeconds: true` | `addSuffix: true`             |
-| ------------------------ | --------------------- | ---------------------- | ----------------------------- |
-| 2006-01-01T00:00:00.000Z | mu 6 bliadhnaichean   | mu 6 bliadhnaichean    | ann an mu 6 bliadhnaichean    |
-| 2005-01-01T00:00:00.000Z | mu 5 bliadhnaichean   | mu 5 bliadhnaichean    | ann an mu 5 bliadhnaichean    |
-| 2004-01-01T00:00:00.000Z | mu 4 bliadhnaichean   | mu 4 bliadhnaichean    | ann an mu 4 bliadhnaichean    |
-| 2003-01-01T00:00:00.000Z | mu 3 bliadhnaichean   | mu 3 bliadhnaichean    | ann an mu 3 bliadhnaichean    |
-| 2002-01-01T00:00:00.000Z | mu 2 bliadhnaichean   | mu 2 bliadhnaichean    | ann an mu 2 bliadhnaichean    |
-| 2001-06-01T00:00:00.000Z | còrr is bliadhna      | còrr is bliadhna       | ann an còrr is bliadhna       |
-| 2001-02-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | ann an mu bhliadhna           |
-| 2001-01-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | ann an mu bhliadhna           |
-| 2000-06-01T00:00:00.000Z | 5 mìosan              | 5 mìosan               | ann an 5 mìosan               |
-| 2000-03-01T00:00:00.000Z | 2 mìosan              | 2 mìosan               | ann an 2 mìosan               |
-| 2000-02-01T00:00:00.000Z | mu mhìos              | mu mhìos               | ann an mu mhìos               |
-| 2000-01-15T00:00:00.000Z | 14 là                 | 14 là                  | ann an 14 là                  |
-| 2000-01-02T00:00:00.000Z | 1 là                  | 1 là                   | ann an 1 là                   |
-| 2000-01-01T06:00:00.000Z | mu 6 uairean de thìde | mu 6 uairean de thìde  | ann an mu 6 uairean de thìde  |
-| 2000-01-01T01:00:00.000Z | mu uair de thìde      | mu uair de thìde       | ann an mu uair de thìde       |
-| 2000-01-01T00:45:00.000Z | mu uair de thìde      | mu uair de thìde       | ann an mu uair de thìde       |
-| 2000-01-01T00:30:00.000Z | 30 mionaidean         | 30 mionaidean          | ann an 30 mionaidean          |
-| 2000-01-01T00:15:00.000Z | 15 mionaidean         | 15 mionaidean          | ann an 15 mionaidean          |
-| 2000-01-01T00:01:00.000Z | 1 mionaid             | 1 mionaid              | ann an 1 mionaid              |
-| 2000-01-01T00:00:25.000Z | nas lugha na mionaid  | leth mhionaid          | ann an nas lugha na mionaid   |
-| 2000-01-01T00:00:15.000Z | nas lugha na mionaid  | nas lugha na 20 diogan | ann an nas lugha na mionaid   |
-| 2000-01-01T00:00:05.000Z | nas lugha na mionaid  | nas lugha na 10 diogan | ann an nas lugha na mionaid   |
-| 2000-01-01T00:00:00.000Z | nas lugha na mionaid  | nas lugha na 5 diogan  | o chionnnas lugha na mionaid  |
-| 1999-12-31T23:59:55.000Z | nas lugha na mionaid  | nas lugha na 10 diogan | o chionnnas lugha na mionaid  |
-| 1999-12-31T23:59:45.000Z | nas lugha na mionaid  | nas lugha na 20 diogan | o chionnnas lugha na mionaid  |
-| 1999-12-31T23:59:35.000Z | nas lugha na mionaid  | leth mhionaid          | o chionnnas lugha na mionaid  |
-| 1999-12-31T23:59:00.000Z | 1 mionaid             | 1 mionaid              | o chionn1 mionaid             |
-| 1999-12-31T23:45:00.000Z | 15 mionaidean         | 15 mionaidean          | o chionn15 mionaidean         |
-| 1999-12-31T23:30:00.000Z | 30 mionaidean         | 30 mionaidean          | o chionn30 mionaidean         |
-| 1999-12-31T23:15:00.000Z | mu uair de thìde      | mu uair de thìde       | o chionnmu uair de thìde      |
-| 1999-12-31T23:00:00.000Z | mu uair de thìde      | mu uair de thìde       | o chionnmu uair de thìde      |
-| 1999-12-31T18:00:00.000Z | mu 6 uairean de thìde | mu 6 uairean de thìde  | o chionnmu 6 uairean de thìde |
-| 1999-12-30T00:00:00.000Z | 2 là                  | 2 là                   | o chionn2 là                  |
-| 1999-12-15T00:00:00.000Z | 17 là                 | 17 là                  | o chionn17 là                 |
-| 1999-12-01T00:00:00.000Z | mu mhìos              | mu mhìos               | o chionnmu mhìos              |
-| 1999-11-01T00:00:00.000Z | 2 mìosan              | 2 mìosan               | o chionn2 mìosan              |
-| 1999-06-01T00:00:00.000Z | 7 mìosan              | 7 mìosan               | o chionn7 mìosan              |
-| 1999-01-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | o chionnmu bhliadhna          |
-| 1998-12-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | o chionnmu bhliadhna          |
-| 1998-06-01T00:00:00.000Z | còrr is bliadhna      | còrr is bliadhna       | o chionncòrr is bliadhna      |
-| 1998-01-01T00:00:00.000Z | mu 2 bliadhnaichean   | mu 2 bliadhnaichean    | o chionnmu 2 bliadhnaichean   |
-| 1997-01-01T00:00:00.000Z | mu 3 bliadhnaichean   | mu 3 bliadhnaichean    | o chionnmu 3 bliadhnaichean   |
-| 1996-01-01T00:00:00.000Z | mu 4 bliadhnaichean   | mu 4 bliadhnaichean    | o chionnmu 4 bliadhnaichean   |
-| 1995-01-01T00:00:00.000Z | mu 5 bliadhnaichean   | mu 5 bliadhnaichean    | o chionnmu 5 bliadhnaichean   |
-| 1994-01-01T00:00:00.000Z | mu 6 bliadhnaichean   | mu 6 bliadhnaichean    | o chionnmu 6 bliadhnaichean   |
+| Date                     | Result                | `includeSeconds: true` | `addSuffix: true`              |
+| ------------------------ | --------------------- | ---------------------- | ------------------------------ |
+| 2006-01-01T00:00:00.000Z | mu 6 bliadhnaichean   | mu 6 bliadhnaichean    | ann an mu 6 bliadhnaichean     |
+| 2005-01-01T00:00:00.000Z | mu 5 bliadhnaichean   | mu 5 bliadhnaichean    | ann an mu 5 bliadhnaichean     |
+| 2004-01-01T00:00:00.000Z | mu 4 bliadhnaichean   | mu 4 bliadhnaichean    | ann an mu 4 bliadhnaichean     |
+| 2003-01-01T00:00:00.000Z | mu 3 bliadhnaichean   | mu 3 bliadhnaichean    | ann an mu 3 bliadhnaichean     |
+| 2002-01-01T00:00:00.000Z | mu 2 bliadhnaichean   | mu 2 bliadhnaichean    | ann an mu 2 bliadhnaichean     |
+| 2001-06-01T00:00:00.000Z | còrr is bliadhna      | còrr is bliadhna       | ann an còrr is bliadhna        |
+| 2001-02-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | ann an mu bhliadhna            |
+| 2001-01-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | ann an mu bhliadhna            |
+| 2000-06-01T00:00:00.000Z | 5 mìosan              | 5 mìosan               | ann an 5 mìosan                |
+| 2000-03-01T00:00:00.000Z | 2 mìosan              | 2 mìosan               | ann an 2 mìosan                |
+| 2000-02-01T00:00:00.000Z | mu mhìos              | mu mhìos               | ann an mu mhìos                |
+| 2000-01-15T00:00:00.000Z | 14 là                 | 14 là                  | ann an 14 là                   |
+| 2000-01-02T00:00:00.000Z | 1 là                  | 1 là                   | ann an 1 là                    |
+| 2000-01-01T06:00:00.000Z | mu 6 uairean de thìde | mu 6 uairean de thìde  | ann an mu 6 uairean de thìde   |
+| 2000-01-01T01:00:00.000Z | mu uair de thìde      | mu uair de thìde       | ann an mu uair de thìde        |
+| 2000-01-01T00:45:00.000Z | mu uair de thìde      | mu uair de thìde       | ann an mu uair de thìde        |
+| 2000-01-01T00:30:00.000Z | 30 mionaidean         | 30 mionaidean          | ann an 30 mionaidean           |
+| 2000-01-01T00:15:00.000Z | 15 mionaidean         | 15 mionaidean          | ann an 15 mionaidean           |
+| 2000-01-01T00:01:00.000Z | 1 mionaid             | 1 mionaid              | ann an 1 mionaid               |
+| 2000-01-01T00:00:25.000Z | nas lugha na mionaid  | leth mhionaid          | ann an nas lugha na mionaid    |
+| 2000-01-01T00:00:15.000Z | nas lugha na mionaid  | nas lugha na 20 diogan | ann an nas lugha na mionaid    |
+| 2000-01-01T00:00:05.000Z | nas lugha na mionaid  | nas lugha na 10 diogan | ann an nas lugha na mionaid    |
+| 2000-01-01T00:00:00.000Z | nas lugha na mionaid  | nas lugha na 5 diogan  | o chionn nas lugha na mionaid  |
+| 1999-12-31T23:59:55.000Z | nas lugha na mionaid  | nas lugha na 10 diogan | o chionn nas lugha na mionaid  |
+| 1999-12-31T23:59:45.000Z | nas lugha na mionaid  | nas lugha na 20 diogan | o chionn nas lugha na mionaid  |
+| 1999-12-31T23:59:35.000Z | nas lugha na mionaid  | leth mhionaid          | o chionn nas lugha na mionaid  |
+| 1999-12-31T23:59:00.000Z | 1 mionaid             | 1 mionaid              | o chionn 1 mionaid             |
+| 1999-12-31T23:45:00.000Z | 15 mionaidean         | 15 mionaidean          | o chionn 15 mionaidean         |
+| 1999-12-31T23:30:00.000Z | 30 mionaidean         | 30 mionaidean          | o chionn 30 mionaidean         |
+| 1999-12-31T23:15:00.000Z | mu uair de thìde      | mu uair de thìde       | o chionn mu uair de thìde      |
+| 1999-12-31T23:00:00.000Z | mu uair de thìde      | mu uair de thìde       | o chionn mu uair de thìde      |
+| 1999-12-31T18:00:00.000Z | mu 6 uairean de thìde | mu 6 uairean de thìde  | o chionn mu 6 uairean de thìde |
+| 1999-12-30T00:00:00.000Z | 2 là                  | 2 là                   | o chionn 2 là                  |
+| 1999-12-15T00:00:00.000Z | 17 là                 | 17 là                  | o chionn 17 là                 |
+| 1999-12-01T00:00:00.000Z | mu mhìos              | mu mhìos               | o chionn mu mhìos              |
+| 1999-11-01T00:00:00.000Z | 2 mìosan              | 2 mìosan               | o chionn 2 mìosan              |
+| 1999-06-01T00:00:00.000Z | 7 mìosan              | 7 mìosan               | o chionn 7 mìosan              |
+| 1999-01-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | o chionn mu bhliadhna          |
+| 1998-12-01T00:00:00.000Z | mu bhliadhna          | mu bhliadhna           | o chionn mu bhliadhna          |
+| 1998-06-01T00:00:00.000Z | còrr is bliadhna      | còrr is bliadhna       | o chionn còrr is bliadhna      |
+| 1998-01-01T00:00:00.000Z | mu 2 bliadhnaichean   | mu 2 bliadhnaichean    | o chionn mu 2 bliadhnaichean   |
+| 1997-01-01T00:00:00.000Z | mu 3 bliadhnaichean   | mu 3 bliadhnaichean    | o chionn mu 3 bliadhnaichean   |
+| 1996-01-01T00:00:00.000Z | mu 4 bliadhnaichean   | mu 4 bliadhnaichean    | o chionn mu 4 bliadhnaichean   |
+| 1995-01-01T00:00:00.000Z | mu 5 bliadhnaichean   | mu 5 bliadhnaichean    | o chionn mu 5 bliadhnaichean   |
+| 1994-01-01T00:00:00.000Z | mu 6 bliadhnaichean   | mu 6 bliadhnaichean    | o chionn mu 6 bliadhnaichean   |
 
 ## `formatDistanceStrict`
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result             | `addSuffix: true`          | With forced unit (i.e. `hour`) |
-| ------------------------ | ------------------ | -------------------------- | ------------------------------ |
-| 2006-01-01T00:00:00.000Z | 6 bliadhna         | ann an 6 bliadhna          | 52608 uairean de thìde         |
-| 2005-01-01T00:00:00.000Z | 5 bliadhna         | ann an 5 bliadhna          | 43848 uairean de thìde         |
-| 2004-01-01T00:00:00.000Z | 4 bliadhna         | ann an 4 bliadhna          | 35064 uairean de thìde         |
-| 2003-01-01T00:00:00.000Z | 3 bliadhna         | ann an 3 bliadhna          | 26304 uairean de thìde         |
-| 2002-01-01T00:00:00.000Z | 2 bliadhna         | ann an 2 bliadhna          | 17544 uairean de thìde         |
-| 2001-06-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna         | 12408 uairean de thìde         |
-| 2001-02-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna         | 9528 uairean de thìde          |
-| 2001-01-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna         | 8784 uairean de thìde          |
-| 2000-06-01T00:00:00.000Z | 5 mìosan           | ann an 5 mìosan            | 3648 uairean de thìde          |
-| 2000-03-01T00:00:00.000Z | 2 mìosan           | ann an 2 mìosan            | 1440 uairean de thìde          |
-| 2000-02-01T00:00:00.000Z | 1 mìos             | ann an 1 mìos              | 744 uairean de thìde           |
-| 2000-01-15T00:00:00.000Z | 14 là              | ann an 14 là               | 336 uairean de thìde           |
-| 2000-01-02T00:00:00.000Z | 1 là               | ann an 1 là                | 24 uairean de thìde            |
-| 2000-01-01T06:00:00.000Z | 6 uairean de thìde | ann an 6 uairean de thìde  | 6 uairean de thìde             |
-| 2000-01-01T01:00:00.000Z | 1 uair de thìde    | ann an 1 uair de thìde     | 1 uair de thìde                |
-| 2000-01-01T00:45:00.000Z | 45 mionaidean      | ann an 45 mionaidean       | 1 uair de thìde                |
-| 2000-01-01T00:30:00.000Z | 30 mionaidean      | ann an 30 mionaidean       | 1 uair de thìde                |
-| 2000-01-01T00:15:00.000Z | 15 mionaidean      | ann an 15 mionaidean       | 0 uairean de thìde             |
-| 2000-01-01T00:01:00.000Z | 1 mionaid          | ann an 1 mionaid           | 0 uairean de thìde             |
-| 2000-01-01T00:00:25.000Z | 25 diogan          | ann an 25 diogan           | 0 uairean de thìde             |
-| 2000-01-01T00:00:15.000Z | 15 diogan          | ann an 15 diogan           | 0 uairean de thìde             |
-| 2000-01-01T00:00:05.000Z | 5 diogan           | ann an 5 diogan            | 0 uairean de thìde             |
-| 2000-01-01T00:00:00.000Z | 0 diogan           | o chionn0 diogan           | 0 uairean de thìde             |
-| 1999-12-31T23:59:55.000Z | 5 diogan           | o chionn5 diogan           | 0 uairean de thìde             |
-| 1999-12-31T23:59:45.000Z | 15 diogan          | o chionn15 diogan          | 0 uairean de thìde             |
-| 1999-12-31T23:59:35.000Z | 25 diogan          | o chionn25 diogan          | 0 uairean de thìde             |
-| 1999-12-31T23:59:00.000Z | 1 mionaid          | o chionn1 mionaid          | 0 uairean de thìde             |
-| 1999-12-31T23:45:00.000Z | 15 mionaidean      | o chionn15 mionaidean      | 0 uairean de thìde             |
-| 1999-12-31T23:30:00.000Z | 30 mionaidean      | o chionn30 mionaidean      | 1 uair de thìde                |
-| 1999-12-31T23:15:00.000Z | 45 mionaidean      | o chionn45 mionaidean      | 1 uair de thìde                |
-| 1999-12-31T23:00:00.000Z | 1 uair de thìde    | o chionn1 uair de thìde    | 1 uair de thìde                |
-| 1999-12-31T18:00:00.000Z | 6 uairean de thìde | o chionn6 uairean de thìde | 6 uairean de thìde             |
-| 1999-12-30T00:00:00.000Z | 2 là               | o chionn2 là               | 48 uairean de thìde            |
-| 1999-12-15T00:00:00.000Z | 17 là              | o chionn17 là              | 408 uairean de thìde           |
-| 1999-12-01T00:00:00.000Z | 1 mìos             | o chionn1 mìos             | 744 uairean de thìde           |
-| 1999-11-01T00:00:00.000Z | 2 mìosan           | o chionn2 mìosan           | 1464 uairean de thìde          |
-| 1999-06-01T00:00:00.000Z | 7 mìosan           | o chionn7 mìosan           | 5136 uairean de thìde          |
-| 1999-01-01T00:00:00.000Z | 1 bhliadhna        | o chionn1 bhliadhna        | 8760 uairean de thìde          |
-| 1998-12-01T00:00:00.000Z | 1 bhliadhna        | o chionn1 bhliadhna        | 9504 uairean de thìde          |
-| 1998-06-01T00:00:00.000Z | 2 bliadhna         | o chionn2 bliadhna         | 13896 uairean de thìde         |
-| 1998-01-01T00:00:00.000Z | 2 bliadhna         | o chionn2 bliadhna         | 17520 uairean de thìde         |
-| 1997-01-01T00:00:00.000Z | 3 bliadhna         | o chionn3 bliadhna         | 26280 uairean de thìde         |
-| 1996-01-01T00:00:00.000Z | 4 bliadhna         | o chionn4 bliadhna         | 35064 uairean de thìde         |
-| 1995-01-01T00:00:00.000Z | 5 bliadhna         | o chionn5 bliadhna         | 43824 uairean de thìde         |
-| 1994-01-01T00:00:00.000Z | 6 bliadhna         | o chionn6 bliadhna         | 52584 uairean de thìde         |
+| Date                     | Result             | `addSuffix: true`           | With forced unit (i.e. `hour`) |
+| ------------------------ | ------------------ | --------------------------- | ------------------------------ |
+| 2006-01-01T00:00:00.000Z | 6 bliadhna         | ann an 6 bliadhna           | 52608 uairean de thìde         |
+| 2005-01-01T00:00:00.000Z | 5 bliadhna         | ann an 5 bliadhna           | 43848 uairean de thìde         |
+| 2004-01-01T00:00:00.000Z | 4 bliadhna         | ann an 4 bliadhna           | 35064 uairean de thìde         |
+| 2003-01-01T00:00:00.000Z | 3 bliadhna         | ann an 3 bliadhna           | 26304 uairean de thìde         |
+| 2002-01-01T00:00:00.000Z | 2 bliadhna         | ann an 2 bliadhna           | 17544 uairean de thìde         |
+| 2001-06-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna          | 12408 uairean de thìde         |
+| 2001-02-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna          | 9528 uairean de thìde          |
+| 2001-01-01T00:00:00.000Z | 1 bhliadhna        | ann an 1 bhliadhna          | 8784 uairean de thìde          |
+| 2000-06-01T00:00:00.000Z | 5 mìosan           | ann an 5 mìosan             | 3648 uairean de thìde          |
+| 2000-03-01T00:00:00.000Z | 2 mìosan           | ann an 2 mìosan             | 1440 uairean de thìde          |
+| 2000-02-01T00:00:00.000Z | 1 mìos             | ann an 1 mìos               | 744 uairean de thìde           |
+| 2000-01-15T00:00:00.000Z | 14 là              | ann an 14 là                | 336 uairean de thìde           |
+| 2000-01-02T00:00:00.000Z | 1 là               | ann an 1 là                 | 24 uairean de thìde            |
+| 2000-01-01T06:00:00.000Z | 6 uairean de thìde | ann an 6 uairean de thìde   | 6 uairean de thìde             |
+| 2000-01-01T01:00:00.000Z | 1 uair de thìde    | ann an 1 uair de thìde      | 1 uair de thìde                |
+| 2000-01-01T00:45:00.000Z | 45 mionaidean      | ann an 45 mionaidean        | 1 uair de thìde                |
+| 2000-01-01T00:30:00.000Z | 30 mionaidean      | ann an 30 mionaidean        | 1 uair de thìde                |
+| 2000-01-01T00:15:00.000Z | 15 mionaidean      | ann an 15 mionaidean        | 0 uairean de thìde             |
+| 2000-01-01T00:01:00.000Z | 1 mionaid          | ann an 1 mionaid            | 0 uairean de thìde             |
+| 2000-01-01T00:00:25.000Z | 25 diogan          | ann an 25 diogan            | 0 uairean de thìde             |
+| 2000-01-01T00:00:15.000Z | 15 diogan          | ann an 15 diogan            | 0 uairean de thìde             |
+| 2000-01-01T00:00:05.000Z | 5 diogan           | ann an 5 diogan             | 0 uairean de thìde             |
+| 2000-01-01T00:00:00.000Z | 0 diogan           | o chionn 0 diogan           | 0 uairean de thìde             |
+| 1999-12-31T23:59:55.000Z | 5 diogan           | o chionn 5 diogan           | 0 uairean de thìde             |
+| 1999-12-31T23:59:45.000Z | 15 diogan          | o chionn 15 diogan          | 0 uairean de thìde             |
+| 1999-12-31T23:59:35.000Z | 25 diogan          | o chionn 25 diogan          | 0 uairean de thìde             |
+| 1999-12-31T23:59:00.000Z | 1 mionaid          | o chionn 1 mionaid          | 0 uairean de thìde             |
+| 1999-12-31T23:45:00.000Z | 15 mionaidean      | o chionn 15 mionaidean      | 0 uairean de thìde             |
+| 1999-12-31T23:30:00.000Z | 30 mionaidean      | o chionn 30 mionaidean      | 1 uair de thìde                |
+| 1999-12-31T23:15:00.000Z | 45 mionaidean      | o chionn 45 mionaidean      | 1 uair de thìde                |
+| 1999-12-31T23:00:00.000Z | 1 uair de thìde    | o chionn 1 uair de thìde    | 1 uair de thìde                |
+| 1999-12-31T18:00:00.000Z | 6 uairean de thìde | o chionn 6 uairean de thìde | 6 uairean de thìde             |
+| 1999-12-30T00:00:00.000Z | 2 là               | o chionn 2 là               | 48 uairean de thìde            |
+| 1999-12-15T00:00:00.000Z | 17 là              | o chionn 17 là              | 408 uairean de thìde           |
+| 1999-12-01T00:00:00.000Z | 1 mìos             | o chionn 1 mìos             | 744 uairean de thìde           |
+| 1999-11-01T00:00:00.000Z | 2 mìosan           | o chionn 2 mìosan           | 1464 uairean de thìde          |
+| 1999-06-01T00:00:00.000Z | 7 mìosan           | o chionn 7 mìosan           | 5136 uairean de thìde          |
+| 1999-01-01T00:00:00.000Z | 1 bhliadhna        | o chionn 1 bhliadhna        | 8760 uairean de thìde          |
+| 1998-12-01T00:00:00.000Z | 1 bhliadhna        | o chionn 1 bhliadhna        | 9504 uairean de thìde          |
+| 1998-06-01T00:00:00.000Z | 2 bliadhna         | o chionn 2 bliadhna         | 13896 uairean de thìde         |
+| 1998-01-01T00:00:00.000Z | 2 bliadhna         | o chionn 2 bliadhna         | 17520 uairean de thìde         |
+| 1997-01-01T00:00:00.000Z | 3 bliadhna         | o chionn 3 bliadhna         | 26280 uairean de thìde         |
+| 1996-01-01T00:00:00.000Z | 4 bliadhna         | o chionn 4 bliadhna         | 35064 uairean de thìde         |
+| 1995-01-01T00:00:00.000Z | 5 bliadhna         | o chionn 5 bliadhna         | 43824 uairean de thìde         |
+| 1994-01-01T00:00:00.000Z | 6 bliadhna         | o chionn 6 bliadhna         | 52584 uairean de thìde         |
 
 ## `formatRelative`
 
