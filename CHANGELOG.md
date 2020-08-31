@@ -10,7 +10,7 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.16.1] - 2020-07-31
 
-Kudos to [@aleksaps](https://github.com/aleksaps) and [@leedriscoll](https://github.com/leedriscoll) for pull-requests!
+Kudos to [@aleksaps](https://github.com/aleksaps), [@leedriscoll](https://github.com/leedriscoll) and [@BanForFun](https://github.com/BanForFun) for pull-requests!
 
 ### Fixed
 
@@ -680,7 +680,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20)
+    end: new Date(2014, 0, 20),
   })
 
   getOverlappingDaysInIntervals(
@@ -690,7 +690,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7)
+    end: new Date(2014, 0, 7),
   })
   ```
 
@@ -922,10 +922,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2)
+    new Date(2017, 6 /* Jul */, 2),
   ]
 
-  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
