@@ -1,6 +1,5 @@
-const presets = []
+const presets = ['@babel/preset-typescript']
 const plugins = [
-  '@babel/preset-typescript',
   '@babel/plugin-transform-block-scoping',
   '@babel/plugin-transform-template-literals',
   '@babel/plugin-transform-arrow-functions',
