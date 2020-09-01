@@ -27,13 +27,15 @@ generateDocsFromSource()
 /**
  * Generates docs object from a list of functions using extended JSDoc format.
  */
-function generateDocsFromSource() {
-  const docs = listFns()
+async function generateDocsFromSource() {
+  const fns = await listFns()
+  const docs = fns
     .map(
       fn =>
         jsDocParser.getTemplateDataSync({
           files: fn.fullPath,
-          'no-cache': true
+          'no-cache': true,
+          configure: path.resolve(process.cwd(), 'jsdoc2md.json')
         })[0]
     )
     .map(doc => {

@@ -1,9 +1,9 @@
-export default function toInteger (dirtyNumber) {
+export default function toInteger(dirtyNumber: unknown) {
   if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
     return NaN
   }
 
-  var number = Number(dirtyNumber)
+  const number = Number(dirtyNumber)
 
   if (isNaN(number)) {
     return number
