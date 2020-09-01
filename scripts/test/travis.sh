@@ -16,7 +16,6 @@ if [ "$TEST_SUITE" == "main" ]
 then
   yarn lint
   yarn lint-types
-  ./scripts/test/systemJS.js
   yarn locale-snapshots test
   ./scripts/test/smoke.sh
 
