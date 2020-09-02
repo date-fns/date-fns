@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addHours from '../addHours/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addHours from '../addHours/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subHours

@@ -1,5 +1,5 @@
-import distanceInStrictWords from '../formatDistanceStrict/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import distanceInStrictWords from '../formatDistanceStrict/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatDistanceToNowStrict

@@ -1,8 +1,8 @@
-import addDays from '../addDays/index.js'
-import addMonths from '../addMonths/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import addDays from '../addDays/index'
+import addMonths from '../addMonths/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 import { Duration } from '../types'
 
 /**

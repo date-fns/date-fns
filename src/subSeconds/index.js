@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addSeconds from '../addSeconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addSeconds from '../addSeconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subSeconds

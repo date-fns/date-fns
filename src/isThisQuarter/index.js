@@ -1,5 +1,5 @@
-import isSameQuarter from '../isSameQuarter/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameQuarter from '../isSameQuarter/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter

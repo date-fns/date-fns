@@ -1,7 +1,7 @@
-import toInteger from '../_lib/toInteger/index.js'
-import getISOWeekYear from '../getISOWeekYear/index.js'
-import setISOWeekYear from '../setISOWeekYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import getISOWeekYear from '../getISOWeekYear/index'
+import setISOWeekYear from '../setISOWeekYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addISOWeekYears

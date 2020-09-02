@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 
 var adjectivesLastWeek = {
   masculine: 'ostatni',

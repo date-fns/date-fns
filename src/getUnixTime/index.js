@@ -1,5 +1,5 @@
-import getTime from '../getTime/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getTime from '../getTime/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getUnixTime

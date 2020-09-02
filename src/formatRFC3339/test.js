@@ -3,8 +3,8 @@
 
 import assert from 'power-assert'
 import formatRFC3339 from '.'
-import toInteger from '../_lib/toInteger/index.js'
-import addLeadingZeros from '../_lib/addLeadingZeros/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(date) {

@@ -1,7 +1,7 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../startOfISOWeekYear/index.js'
-import convertToFP from '../_lib/convertToFP/index.js'
+import fn from '../../startOfISOWeekYear/index'
+import convertToFP from '../_lib/convertToFP/index'
 
 var startOfISOWeekYear = convertToFP(fn, 1)
 

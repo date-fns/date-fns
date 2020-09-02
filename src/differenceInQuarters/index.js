@@ -1,5 +1,5 @@
-import differenceInMonths from '../differenceInMonths/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInMonths from '../differenceInMonths/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInQuarters

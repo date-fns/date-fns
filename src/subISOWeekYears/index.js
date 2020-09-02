@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addISOWeekYears from '../addISOWeekYears/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addISOWeekYears from '../addISOWeekYears/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subISOWeekYears

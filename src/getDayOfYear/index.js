@@ -1,7 +1,7 @@
-import toDate from '../toDate/index.js'
-import startOfYear from '../startOfYear/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toDate from '../toDate/index'
+import startOfYear from '../startOfYear/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getDayOfYear

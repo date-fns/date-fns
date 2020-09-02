@@ -1,5 +1,5 @@
-import isSameWeek from '../isSameWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameWeek from '../isSameWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisWeek

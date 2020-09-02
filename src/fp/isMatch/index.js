@@ -1,7 +1,7 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../isMatch/index.js'
-import convertToFP from '../_lib/convertToFP/index.js'
+import fn from '../../isMatch/index'
+import convertToFP from '../_lib/convertToFP/index'
 
 var isMatch = convertToFP(fn, 2)
 

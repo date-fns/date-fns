@@ -1,7 +1,7 @@
-import toDate from '../../toDate/index.js'
-import startOfUTCWeek from '../startOfUTCWeek/index.js'
-import startOfUTCWeekYear from '../startOfUTCWeekYear/index.js'
-import requiredArgs from '../requiredArgs/index.js'
+import toDate from '../../toDate/index'
+import startOfUTCWeek from '../startOfUTCWeek/index'
+import startOfUTCWeekYear from '../startOfUTCWeekYear/index'
+import requiredArgs from '../requiredArgs/index'
 
 var MILLISECONDS_IN_WEEK = 604800000
 

@@ -1,8 +1,8 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import startOfWeekYear from '../startOfWeekYear/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setWeekYear

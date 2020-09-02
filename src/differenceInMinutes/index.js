@@ -1,5 +1,5 @@
-import differenceInMilliseconds from '../differenceInMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInMilliseconds from '../differenceInMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_MINUTE = 60000
 

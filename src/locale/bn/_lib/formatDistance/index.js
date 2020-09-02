@@ -1,4 +1,4 @@
-import localize from '../localize/index.js'
+import localize from '../localize/index'
 
 var formatDistanceLocale = {
   lessThanXSeconds: {

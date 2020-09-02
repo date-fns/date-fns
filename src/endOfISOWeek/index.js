@@ -1,5 +1,5 @@
-import endOfWeek from '../endOfWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import endOfWeek from '../endOfWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfISOWeek

@@ -1,5 +1,5 @@
 // Reference: https://www.unicode.org/cldr/charts/32/summary/kn.html
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
   full: 'EEEE, MMMM d, y', // CLDR 1816

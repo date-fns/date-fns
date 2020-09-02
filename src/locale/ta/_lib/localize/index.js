@@ -1,6 +1,6 @@
 // Ref: https://www.unicode.org/cldr/charts/32/summary/ta.html
 
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['கி.மு.', 'கி.பி.'],

@@ -1,10 +1,10 @@
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import format from '../format/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import format from '../format/index'
+import defaultLocale from '../locale/en-US/index'
+import subMilliseconds from '../subMilliseconds/index'
+import toDate from '../toDate/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatRelative

@@ -1,8 +1,8 @@
-import getDate from '../getDate/index.js'
-import getDay from '../getDay/index.js'
-import startOfMonth from '../startOfMonth/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getDate from '../getDate/index'
+import getDay from '../getDay/index'
+import startOfMonth from '../startOfMonth/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getWeekOfMonth

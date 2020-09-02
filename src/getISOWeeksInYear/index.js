@@ -1,6 +1,6 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import addWeeks from '../addWeeks/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import addWeeks from '../addWeeks/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_WEEK = 604800000
 

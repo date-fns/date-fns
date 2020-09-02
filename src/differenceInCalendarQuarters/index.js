@@ -1,6 +1,6 @@
-import getQuarter from '../getQuarter/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getQuarter from '../getQuarter/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarQuarters

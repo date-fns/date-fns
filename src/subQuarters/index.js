@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addQuarters from '../addQuarters/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addQuarters from '../addQuarters/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subQuarters

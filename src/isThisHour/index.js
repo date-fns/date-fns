@@ -1,5 +1,5 @@
-import isSameHour from '../isSameHour/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameHour from '../isSameHour/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisHour

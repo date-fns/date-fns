@@ -1,5 +1,5 @@
-import startOfSecond from '../startOfSecond/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import startOfSecond from '../startOfSecond/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameSecond

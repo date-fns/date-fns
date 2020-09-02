@@ -1,8 +1,8 @@
-import subDays from '../subDays/index.js'
-import subMonths from '../subMonths/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import subDays from '../subDays/index'
+import subMonths from '../subMonths/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name sub

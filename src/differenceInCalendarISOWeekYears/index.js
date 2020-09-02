@@ -1,5 +1,5 @@
-import getISOWeekYear from '../getISOWeekYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getISOWeekYear from '../getISOWeekYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInCalendarISOWeekYears

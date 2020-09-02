@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addDays from '../addDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addDays from '../addDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subDays

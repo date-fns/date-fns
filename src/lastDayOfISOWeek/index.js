@@ -1,5 +1,5 @@
-import lastDayOfWeek from '../lastDayOfWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import lastDayOfWeek from '../lastDayOfWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name lastDayOfISOWeek

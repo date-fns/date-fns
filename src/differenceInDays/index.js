@@ -1,6 +1,6 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toDate from '../toDate/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 // Like `compareAsc` but uses local time not UTC, which is needed
 // for accurate equality comparisons of UTC timestamps that end up

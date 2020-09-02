@@ -1,10 +1,10 @@
-import lightFormatters from '../lightFormatters/index.js'
-import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index.js'
-import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index.js'
-import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index.js'
-import getUTCWeek from '../../../_lib/getUTCWeek/index.js'
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
-import addLeadingZeros from '../../addLeadingZeros/index.js'
+import lightFormatters from '../lightFormatters/index'
+import getUTCDayOfYear from '../../../_lib/getUTCDayOfYear/index'
+import getUTCISOWeek from '../../../_lib/getUTCISOWeek/index'
+import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'
+import getUTCWeek from '../../../_lib/getUTCWeek/index'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
+import addLeadingZeros from '../../addLeadingZeros/index'
 
 var dayPeriodEnum = {
   am: 'am',

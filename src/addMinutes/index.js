@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMilliseconds from '../addMilliseconds/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addMilliseconds from '../addMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
