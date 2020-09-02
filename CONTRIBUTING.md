@@ -2,6 +2,8 @@
 
 **⚠⚠⚠ Please contribute new code in TypeScript ⚠⚠⚠**
 
+[Read more about migration to TypeScript](https://github.com/date-fns/date-fns/discussions/1932)
+
 ## Table of Contents
 
 - [How to Help?](#how-to-help)
