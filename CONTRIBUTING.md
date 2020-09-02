@@ -1,5 +1,7 @@
 # Contributing Guide
 
+**⚠⚠⚠ Please contribute new code in TypeScript ⚠⚠⚠**
+
 ## Table of Contents
 
 - [How to Help?](#how-to-help)
