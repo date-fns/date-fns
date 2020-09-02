@@ -1,7 +1,7 @@
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import startOfWeek from '../startOfWeek/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getWeekYear

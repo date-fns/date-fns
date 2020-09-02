@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
 var accusativeWeekdays = [

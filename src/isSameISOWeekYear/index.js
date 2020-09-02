@@ -1,5 +1,5 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameISOWeekYear

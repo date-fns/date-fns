@@ -1,4 +1,4 @@
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isDate

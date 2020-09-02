@@ -19,15 +19,16 @@ const outdatedLocales = require('../../outdatedLocales.json')
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
-const fns = listFns()
-const fpFns = listFPFns()
-const locales = listLocales().filter(
-  ({ code }) => !outdatedLocales.includes(code)
-)
+listFns().then(fns => {
+  const fpFns = listFPFns()
+  const locales = listLocales().filter(
+    ({ code }) => !outdatedLocales.includes(code)
+  )
 
-writeFile('src/index.js', generateIndex(fns, false, true))
-writeFile('src/fp/index.js', generateIndex(fpFns, true, true))
-writeFile('src/locale/index.js', generateIndex(locales, false, false))
+  writeFile('src/index.js', generateIndex(fns, false, true))
+  writeFile('src/fp/index.js', generateIndex(fpFns, true, true))
+  writeFile('src/locale/index.js', generateIndex(locales, false, false))
+})
 
 function writeFile(relativePath, content) {
   return fs.writeFileSync(

@@ -1,7 +1,7 @@
-import addWeeks from '../addWeeks/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import addWeeks from '../addWeeks/index'
+import startOfWeek from '../startOfWeek/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekOfInterval

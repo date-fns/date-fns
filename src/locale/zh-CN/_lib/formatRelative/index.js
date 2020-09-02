@@ -1,4 +1,4 @@
-import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
+import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 
 function checkWeek(_date, _baseDate, _options, baseFormat) {
   if (isSameUTCWeek(_date, _baseDate, _options)) {

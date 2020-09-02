@@ -1,6 +1,6 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import startOfISOWeek from '../startOfISOWeek/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import startOfISOWeek from '../startOfISOWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_WEEK = 604800000
 

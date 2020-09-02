@@ -1,5 +1,5 @@
-import differenceInDays from '../differenceInDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInDays from '../differenceInDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInWeeks

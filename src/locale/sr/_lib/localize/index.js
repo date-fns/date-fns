@@ -1,4 +1,4 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)

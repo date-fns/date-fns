@@ -1,5 +1,5 @@
-import toDate from '../../toDate/index.js'
-import requiredArgs from '../requiredArgs/index.js'
+import toDate from '../../toDate/index'
+import requiredArgs from '../requiredArgs/index'
 
 var MILLISECONDS_IN_DAY = 86400000
 

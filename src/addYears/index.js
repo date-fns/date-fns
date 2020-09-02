@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addMonths from '../addMonths/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addMonths from '../addMonths/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addYears

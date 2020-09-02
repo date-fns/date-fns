@@ -1,4 +1,4 @@
-import localize from '../localize/index.js'
+import localize from '../localize/index'
 // Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
 var formatDistanceLocale = {
   lessThanXSeconds: {

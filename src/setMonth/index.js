@@ -1,7 +1,7 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import getDaysInMonth from '../getDaysInMonth/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import getDaysInMonth from '../getDaysInMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setMonth

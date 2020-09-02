@@ -1,6 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import addBusinessDays from '../addBusinessDays/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import toInteger from '../_lib/toInteger/index'
+import addBusinessDays from '../addBusinessDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subBusinessDays

@@ -1,11 +1,11 @@
-import isValid from '../isValid/index.js'
-import isWeekend from '../isWeekend/index.js'
-import toDate from '../toDate/index.js'
-import differenceInCalendarDays from '../differenceInCalendarDays/index.js'
-import addDays from '../addDays/index.js'
-import isSameDay from '../isSameDay/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isValid from '../isValid/index'
+import isWeekend from '../isWeekend/index'
+import toDate from '../toDate/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import addDays from '../addDays/index'
+import isSameDay from '../isSameDay/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInBusinessDays

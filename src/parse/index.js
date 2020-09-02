@@ -1,17 +1,17 @@
-import defaultLocale from '../locale/en-US/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import assign from '../_lib/assign/index.js'
-import longFormatters from '../_lib/format/longFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import defaultLocale from '../locale/en-US/index'
+import subMilliseconds from '../subMilliseconds/index'
+import toDate from '../toDate/index'
+import assign from '../_lib/assign/index'
+import longFormatters from '../_lib/format/longFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError
-} from '../_lib/protectedTokens/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import parsers from './_lib/parsers/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+} from '../_lib/protectedTokens/index'
+import toInteger from '../_lib/toInteger/index'
+import parsers from './_lib/parsers/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -479,9 +479,7 @@ export default function parse(
         }
         if (incompatibleToken) {
           throw new RangeError(
-            `The format string mustn't contain \`${
-              incompatibleToken.fullToken
-            }\` and \`${token}\` at the same time`
+            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
           )
         }
       } else if (parser.incompatibleTokens === '*' && usedTokens.length) {

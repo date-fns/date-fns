@@ -1,6 +1,6 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import localize from '../localize/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import localize from '../localize/index'
 
 var matchOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
 var parseOrdinalNumberPattern = /^[०१२३४५६७८९]+/i

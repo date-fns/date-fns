@@ -1,6 +1,6 @@
 // Ref: https://www.unicode.org/cldr/charts/32/summary/ta.html
 
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 // CLDR #1846 - #1849
 var dateFormats = {

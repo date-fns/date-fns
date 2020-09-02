@@ -1,4 +1,4 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['av. J.-C', 'ap. J.-C'],

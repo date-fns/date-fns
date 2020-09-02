@@ -8,14 +8,17 @@ const config = {
   devtool: isProduction ? 'source-map' : 'inline-source-map',
   entry: getEntryConfig(),
   output: getOutputConfig(),
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' }
+      { test: /\.(js|ts)$/, exclude: /node_modules/, use: 'babel-loader' }
     ].concat(
       process.env.COVERAGE_REPORT
         ? [
             {
-              test: /\.js$/,
+              test: /\.(js|ts)$/,
               use: {
                 loader: 'istanbul-instrumenter-loader',
                 options: { esModules: true }

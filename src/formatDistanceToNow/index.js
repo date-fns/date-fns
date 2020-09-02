@@ -1,5 +1,5 @@
-import distanceInWords from '../formatDistance/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import distanceInWords from '../formatDistance/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatDistanceToNow

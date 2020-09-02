@@ -1,6 +1,6 @@
-import addHours from '../addHours/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import addHours from '../addHours/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachHourOfInterval

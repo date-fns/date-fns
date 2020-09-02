@@ -1,6 +1,6 @@
-import addDays from '../addDays/index.js'
-import isSameDay from '../isSameDay/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import addDays from '../addDays/index'
+import isSameDay from '../isSameDay/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isTomorrow

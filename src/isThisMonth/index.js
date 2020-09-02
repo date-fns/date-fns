@@ -1,5 +1,5 @@
-import isSameMonth from '../isSameMonth/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameMonth from '../isSameMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMonth

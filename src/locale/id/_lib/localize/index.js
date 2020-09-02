@@ -1,4 +1,4 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 // All data for localization are taken from this page
 // https://www.unicode.org/cldr/charts/32/summary/id.html

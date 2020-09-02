@@ -1,8 +1,9 @@
-import addDays from '../addDays/index.js'
-import addMonths from '../addMonths/index.js'
-import toDate from '../toDate/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import addDays from '../addDays/index'
+import addMonths from '../addMonths/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
+import { Duration } from '../types'
 
 /**
  * @name add
@@ -43,7 +44,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add(dirtyDate, duration) {
+export default function add(dirtyDate: Date, duration: Duration) {
   requiredArgs(2, arguments)
 
   if (!duration || typeof duration !== 'object') return new Date(NaN)

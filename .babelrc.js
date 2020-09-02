@@ -1,4 +1,4 @@
-const presets = []
+const presets = ['@babel/preset-typescript']
 const plugins = [
   '@babel/plugin-transform-block-scoping',
   '@babel/plugin-transform-template-literals',
@@ -11,12 +11,19 @@ if (process.env.NODE_ENV === 'test') {
   presets.push('babel-preset-power-assert')
 }
 
-if (process.env.TARGET !== 'esm') {
+if (process.env.BABEL_ENV !== 'esm') {
   plugins.push('@babel/plugin-transform-modules-commonjs')
   plugins.push('babel-plugin-add-module-exports')
 }
 
+if (process.env.BABEL_ENV === 'esm' || process.env.BABEL_ENV === 'commonjs') {
+  plugins.push(['babel-plugin-add-import-extension', { extension: 'js' }])
+}
+
+const overrides = [{ ignore: ['**/*.d.ts'] }]
+
 module.exports = {
   presets,
-  plugins
+  plugins,
+  overrides
 }

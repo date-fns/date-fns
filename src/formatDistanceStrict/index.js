@@ -1,10 +1,10 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import compareAsc from '../compareAsc/index.js'
-import toDate from '../toDate/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import compareAsc from '../compareAsc/index'
+import toDate from '../toDate/index'
+import differenceInSeconds from '../differenceInSeconds/index'
+import cloneObject from '../_lib/cloneObject/index'
+import defaultLocale from '../locale/en-US/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_MONTH = 43200

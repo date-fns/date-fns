@@ -1,7 +1,7 @@
-import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index.js'
-import lastDayOfMonth from '../lastDayOfMonth/index.js'
-import startOfMonth from '../startOfMonth/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
+import lastDayOfMonth from '../lastDayOfMonth/index'
+import startOfMonth from '../startOfMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getWeeksInMonth

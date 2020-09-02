@@ -1,6 +1,6 @@
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import startOfDay from '../startOfDay/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import startOfDay from '../startOfDay/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_DAY = 86400000
 

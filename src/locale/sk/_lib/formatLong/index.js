@@ -1,4 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1986
 var dateFormats = {

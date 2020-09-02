@@ -1,6 +1,6 @@
-import parse from '../parse/index.js'
-import isValid from '../isValid/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import parse from '../parse/index'
+import isValid from '../isValid/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isMatch

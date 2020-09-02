@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)(-?(е|й|є|а|я))?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -30,8 +30,34 @@ var matchMonthPatterns = {
   wide: /^(січень|січня|лютий|лютого|березень|березня|квітень|квітня|травень|травня|липень|липня|серпень|серпня|вересень|вересня|жовтень|жовтня|листопада?|грудень|грудня)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^с/i, /^л/i, /^б/i, /^к/i, /^т/i, /^ч/i, /^л/i, /^с/i, /^в/i, /^ж/i, /^л/i, /^г/i],
-  any: [/^сі/i, /^лю/i, /^б/i, /^к/i, /^т/i, /^ч/i, /^лип/i, /^се/i, /^в/i, /^ж/i, /^лис/i, /^г/i]
+  narrow: [
+    /^с/i,
+    /^л/i,
+    /^б/i,
+    /^к/i,
+    /^т/i,
+    /^ч/i,
+    /^л/i,
+    /^с/i,
+    /^в/i,
+    /^ж/i,
+    /^л/i,
+    /^г/i
+  ],
+  any: [
+    /^сі/i,
+    /^лю/i,
+    /^б/i,
+    /^к/i,
+    /^т/i,
+    /^ч/i,
+    /^лип/i,
+    /^се/i,
+    /^в/i,
+    /^ж/i,
+    /^лис/i,
+    /^г/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -69,7 +95,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -86,7 +112,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

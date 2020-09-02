@@ -23,9 +23,11 @@ const extraModules = [
 
 const initialPackages = getInitialPackages()
 
-Promise.all([listAll().map(module => writePackage(module.fullPath))]).then(
-  'package.json files are generated'
-)
+listAll()
+  .then(modules =>
+    Promise.all(modules.map(module => writePackage(module.fullPath)))
+  )
+  .then('package.json files are generated')
 
 function writePackage(fullPath) {
   const dirPath = path.dirname(fullPath)
@@ -47,8 +49,9 @@ function writePackage(fullPath) {
   )
 }
 
-function getInitialPackages() {
-  return listFns()
+async function getInitialPackages() {
+  const fns = await listFns()
+  return fns
     .concat(listFPFns())
     .concat(listLocales())
     .concat(extraModules)
@@ -68,8 +71,9 @@ function getModulePackage(fullPath) {
   return { module: esmRelativePath }
 }
 
-function listAll() {
-  return listFns()
+async function listAll() {
+  const fns = await listFns()
+  return fns
     .concat(listFPFns())
     .concat(listLocales())
     .concat(extraModules)

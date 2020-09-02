@@ -1,9 +1,9 @@
-import isWeekend from '../isWeekend/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
-import isSunday from '../isSunday/index.js'
-import isSaturday from '../isSaturday/index.js'
+import isWeekend from '../isWeekend/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
+import isSunday from '../isSunday/index'
+import isSaturday from '../isSaturday/index'
 
 /**
  * @name addBusinessDays

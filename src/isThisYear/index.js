@@ -1,5 +1,5 @@
-import isSameYear from '../isSameYear/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameYear from '../isSameYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisYear

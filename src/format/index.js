@@ -1,17 +1,17 @@
-import isValid from '../isValid/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
-import toDate from '../toDate/index.js'
-import formatters from '../_lib/format/formatters/index.js'
-import longFormatters from '../_lib/format/longFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import isValid from '../isValid/index'
+import defaultLocale from '../locale/en-US/index'
+import subMilliseconds from '../subMilliseconds/index'
+import toDate from '../toDate/index'
+import formatters from '../_lib/format/formatters/index'
+import longFormatters from '../_lib/format/longFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
   throwProtectedError
-} from '../_lib/protectedTokens/index.js'
-import toInteger from '../_lib/toInteger/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+} from '../_lib/protectedTokens/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token

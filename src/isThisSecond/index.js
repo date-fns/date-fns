@@ -1,5 +1,5 @@
-import isSameSecond from '../isSameSecond/index.js'
-import requiredArgs from '../_lib/requiredArgs/index.js'
+import isSameSecond from '../isSameSecond/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisSecond
