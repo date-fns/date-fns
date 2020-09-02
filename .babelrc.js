@@ -20,7 +20,10 @@ if (process.env.BABEL_ENV === 'esm' || process.env.BABEL_ENV === 'commonjs') {
   plugins.push(['babel-plugin-add-import-extension', { extension: 'js' }])
 }
 
+const overrides = [{ ignore: ['**/*.d.ts'] }]
+
 module.exports = {
   presets,
-  plugins
+  plugins,
+  overrides
 }
