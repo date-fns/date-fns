@@ -18,7 +18,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateToCompare - the date to compare with
  * @param {Date[]|Number[]} datesArray - the array to search
- * @returns {Date} the date from the array closest to the given date
+ * @returns {Date|undefined} the date from the array closest to the given date
  * @throws {TypeError} 2 arguments required
  *
  * @example
