@@ -4,7 +4,8 @@ const plugins = [
   '@babel/plugin-transform-template-literals',
   '@babel/plugin-transform-arrow-functions',
   '@babel/plugin-transform-parameters',
-  '@babel/plugin-transform-destructuring'
+  '@babel/plugin-transform-destructuring',
+  ['babel-plugin-add-import-extension', { extension: 'js' }]
 ]
 
 if (process.env.NODE_ENV === 'test') {
