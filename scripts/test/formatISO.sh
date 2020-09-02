@@ -9,4 +9,4 @@ set -ex
 export PATH="$(yarn bin):$PATH"
 export NODE_ENV=test
 
-env TZ=Asia/Kolkata babel-node ./test/formatISO/india.js
+env TZ=Asia/Kolkata babel-node --extensions .ts,.js ./test/formatISO/india.js
