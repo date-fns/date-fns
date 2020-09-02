@@ -142,7 +142,7 @@ declare module 'date-fns' {
   function closestTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): Date
+  ): Date | undefined
   namespace closestTo {}
 
   function compareAsc(dateLeft: Date | number, dateRight: Date | number): number
