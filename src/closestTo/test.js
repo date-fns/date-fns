@@ -36,7 +36,7 @@ describe('closestTo', function() {
   it('returns undefined if the given array is empty', function() {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     var result = closestTo(date, [])
-    assert(result == null)
+    assert(result === undefined)
   })
 
   it('returns `Invalid Date` if the given date is `Invalid Date`', function() {
