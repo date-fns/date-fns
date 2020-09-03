@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import addDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
@@ -22,7 +22,7 @@ describe('addDays', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var result = addDays(new Date(2014, 8 /* Sep */, 1), '10')
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 11))
   })
@@ -35,12 +35,12 @@ describe('addDays', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addDays(new Date(NaN), 10)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
@@ -57,15 +57,15 @@ describe('addDays', function() {
     `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
       var date = dstTransitions.start
-      var result = addDays(date, 1)
-      assert.deepEqual(result, new Date(date.getTime() + 24 * HOUR))
+      var result = addDays(date!, 1)
+      assert.deepEqual(result, new Date(date!.getTime() + 24 * HOUR))
     }
   )
 
   dstOnly(
     `works at DST-start - 30 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      var date = new Date(dstTransitions.start.getTime() - 0.5 * HOUR)
+      var date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR)
       var result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
       assert.deepEqual(result, new Date(date.getTime() + 23 * HOUR))
@@ -75,7 +75,7 @@ describe('addDays', function() {
   dstOnly(
     `works at DST-start - 60 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      var date = new Date(dstTransitions.start.getTime() - 1 * HOUR)
+      var date = new Date(dstTransitions.start!.getTime() - 1 * HOUR)
       var result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
       assert.deepEqual(result, new Date(date.getTime() + 23 * HOUR))
@@ -86,15 +86,15 @@ describe('addDays', function() {
     `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
       var date = dstTransitions.end
-      var result = addDays(date, 1)
-      assert.deepEqual(result, new Date(date.getTime() + 24 * HOUR))
+      var result = addDays(date!, 1)
+      assert.deepEqual(result, new Date(date!.getTime() + 24 * HOUR))
     }
   )
 
   dstOnly(
     `works at DST-end - 30 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      var date = new Date(dstTransitions.end.getTime() - 0.5 * HOUR)
+      var date = new Date(dstTransitions.end!.getTime() - 0.5 * HOUR)
       var result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
@@ -105,7 +105,7 @@ describe('addDays', function() {
   dstOnly(
     `works at DST-end - 60 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      var date = new Date(dstTransitions.end.getTime() - 1 * HOUR)
+      var date = new Date(dstTransitions.end!.getTime() - 1 * HOUR)
       var result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
@@ -116,7 +116,7 @@ describe('addDays', function() {
   dstOnly(
     `doesn't mutate if zero increment is used: ${tz || '(unknown)'}`,
     function() {
-      var date = new Date(dstTransitions.end)
+      var date = new Date(dstTransitions.end!)
       var result = addDays(date, 0)
       assert.deepEqual(result, date)
     }

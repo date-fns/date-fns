@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import addHours from '.'
 
 describe('addHours', function() {
@@ -21,7 +21,7 @@ describe('addHours', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), '2')
     assert.deepEqual(result, new Date(2014, 6 /* Jul */, 11, 1, 0))
   })
@@ -34,16 +34,18 @@ describe('addHours', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addHours(new Date(NaN), 2)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
+    // @ts-expect-error
     assert.throws(addHours.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(addHours.bind(null, 1), TypeError)
   })
 })

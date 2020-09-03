@@ -44,7 +44,10 @@ import { Duration } from '../types'
  * })
  * //=> Thu Jun 15 2017 15:29:20
  */
-export default function add(dirtyDate: Date, duration: Duration) {
+export default function add(
+  dirtyDate: Date | number,
+  duration: Duration
+): Date {
   requiredArgs(2, arguments)
 
   if (!duration || typeof duration !== 'object') return new Date(NaN)

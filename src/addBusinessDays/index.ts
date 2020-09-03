@@ -23,7 +23,10 @@ import isSaturday from '../isSaturday/index'
  * var result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
-export default function addBusinessDays(dirtyDate, dirtyAmount) {
+export default function addBusinessDays(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

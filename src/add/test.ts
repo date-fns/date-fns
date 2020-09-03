@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import add from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
@@ -35,7 +35,7 @@ describe('add', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: '4.2' })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
@@ -61,8 +61,8 @@ describe('add', function() {
     `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
       var date = dstTransitions.end
-      var result = add(date, { hours: 1 })
-      assert.deepEqual(result, new Date(date.getTime() + HOUR))
+      var result = add(date!, { hours: 1 })
+      assert.deepEqual(result, new Date(date!.getTime() + HOUR))
     }
   )
 
@@ -79,17 +79,19 @@ describe('add', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = add(new Date(NaN), { hours: 5 })
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws RangeError exception if passed Number as duration', function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     const result = add(new Date(2014, 8, 1), 'wut')
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
+    // @ts-expect-error
     assert.throws(add.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(add.bind(null, 1), TypeError)
   })
 })

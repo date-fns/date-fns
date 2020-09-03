@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import addBusinessDays from '.'
 
 describe('addBusinessDays', function() {
@@ -37,7 +37,9 @@ describe('addBusinessDays', function() {
   })
 
   it('can handle a large number of business days', function() {
+    // @ts-ignore
     if (typeof this.timeout === 'function') {
+      // @ts-ignore
       this.timeout(500 /* 500 ms test timeout */)
     }
 
@@ -56,7 +58,7 @@ describe('addBusinessDays', function() {
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), '10')
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
   })
@@ -69,16 +71,18 @@ describe('addBusinessDays', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addBusinessDays(new Date(NaN), 10)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
+    // @ts-expect-error
     assert.throws(addBusinessDays.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', function() {
