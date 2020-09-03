@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 
-const ignoredFiles = ['index.js', 'test.js', 'index.js.flow', 'package.json']
+const ignoredFiles = ['index.ts', 'test.ts', 'index.js.flow', 'package.json']
 
 module.exports = listLocales
 
@@ -13,6 +13,6 @@ function listLocales() {
       name: locale.replace(/-/g, ''),
       code: locale,
       path: `./${locale}`,
-      fullPath: `./src/locale/${locale}/index.js`
+      fullPath: `./src/locale/${locale}/index.ts`
     }))
 }
