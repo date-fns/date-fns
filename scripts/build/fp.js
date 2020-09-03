@@ -26,9 +26,12 @@ buildFP(fpFns)
 function getFPFn(resultFnName, initialFnName, arity) {
   return [generatedAutomaticallyMessage]
     .concat('')
-    .concat(`import fn from '../../${initialFnName}/index.js'`)
-    .concat(`import convertToFP from '../_lib/convertToFP/index.js'`)
+    .concat(`import fn from '../../${initialFnName}/index'`)
+    .concat(`import convertToFP from '../_lib/convertToFP/index'`)
     .concat('')
+    .concat(
+      '// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.'
+    )
     .concat(`var ${resultFnName} = convertToFP(fn, ${arity})`)
     .concat('')
     .concat(`export default ${resultFnName}`)
@@ -43,7 +46,7 @@ function buildFPFn({ title, generatedFrom, args: { length } }) {
   if (!fs.existsSync(fpFnDir)) {
     fs.mkdirSync(fpFnDir)
   }
-  fs.writeFileSync(`${fpFnDir}/index.js`, prettier(fpFnLines))
+  fs.writeFileSync(`${fpFnDir}/index.ts`, prettier(fpFnLines))
 }
 
 function buildFP(fns) {
