@@ -12,8 +12,8 @@ const ignoredFiles = [
   'esm',
   'fp',
   'constants',
-  'index.js',
-  'test.js',
+  'index.ts',
+  'test.ts',
   'index.js.flow',
   'package.json',
   'types.ts'

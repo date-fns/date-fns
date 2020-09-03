@@ -122,8 +122,11 @@ function generateFlowLocaleTyping(locale, localeAliasDeclaration) {
 
     declare module.exports: Locale
   `
+  const isTs = /.ts$/.test(fullPath)
 
-  writeFile(`${fullPath}.flow`, typingFile)
+  // force .js extension for .ts locale files typings
+  const path = isTs ? fullPath.replace(/ts$/, 'js') : fullPath
+  writeFile(`${path}.flow`, typingFile)
 }
 
 function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
