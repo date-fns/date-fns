@@ -102,6 +102,7 @@
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
     "snazzy": "^7.0.0",
+    "ts-migrate": "^0.1.2",
     "typescript": "^4.0.2",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
