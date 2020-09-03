@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getISOWeekYear from '.'
+
 
 describe('getISOWeekYear', function() {
   it('returns the ISO week-numbering year of the given date', function() {

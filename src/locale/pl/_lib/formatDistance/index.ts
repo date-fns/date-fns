@@ -158,6 +158,7 @@ export default function formatDistance(token, count, options) {
 
   var scheme = formatDistanceLocale[token]
   if (!options.addSuffix) {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     return declension(scheme, count)
   }
 

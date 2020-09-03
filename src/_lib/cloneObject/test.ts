@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import cloneObject from '.'
+
 
 describe('cloneObject', function () {
   it('makes a copy of an object', function () {

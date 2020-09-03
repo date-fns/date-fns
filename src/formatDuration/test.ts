@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import formatDuration from '.'
+
 
 describe('formatDuration', () => {
   it('formats full duration', () => {

@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import isSameQuarter from '.'
+
 
 describe('isSameQuarter', function() {
   it('returns true if the given dates have the same quarter (and year)', function() {

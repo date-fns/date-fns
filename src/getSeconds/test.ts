@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getSeconds from '.'
+
 
 describe('getSeconds', function() {
   it('returns the seconds of the given date', function() {

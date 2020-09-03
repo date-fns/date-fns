@@ -1,12 +1,14 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import endOfWeek from '.'
+
 
 describe('endOfWeek', function() {
   it('returns the date with the time set to 23:59:59:999 and the date set to the last day of a week', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = endOfWeek(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999))
   })
@@ -49,17 +51,20 @@ describe('endOfWeek', function() {
 
   it('accepts a timestamp', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = endOfWeek(date)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 6, 23, 59, 59, 999))
   })
 
   it('does not mutate the original date', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     endOfWeek(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   describe('edge cases', function() {
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is before the start of a week', function() {
       it('it returns the end of a week', function() {
         var date = new Date(2014, 9 /* Oct */, 6)
@@ -71,6 +76,7 @@ describe('endOfWeek', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is the start of a week', function() {
       it('it returns the end of a week', function() {
         var date = new Date(2014, 9 /* Oct */, 8)
@@ -82,6 +88,7 @@ describe('endOfWeek', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is after the start of a week', function() {
       it('it returns the end of a week', function() {
         var date = new Date(2014, 9 /* Oct */, 10)
@@ -101,7 +108,9 @@ describe('endOfWeek', function() {
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = endOfWeek(new Date(NaN))
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

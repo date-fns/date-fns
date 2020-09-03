@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import setUTCDay from '.'
+
 
 describe('setUTCDay', function() {
   it('sets the day of the week', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0)
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
   })
@@ -36,8 +38,10 @@ describe('setUTCDay', function() {
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('the day index is more than 6', function() {
     it('sets the day of the next week', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 8)
       assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 8)))
     })
@@ -57,8 +61,10 @@ describe('setUTCDay', function() {
     })
   })
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('the day index is less than 0', function() {
     it('sets the day of the last week', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), -6)
       assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 25)))
     })
@@ -79,6 +85,7 @@ describe('setUTCDay', function() {
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(
       new Date(Date.UTC(2014, 8 /* Sep */, 1)).getTime(),
       3
@@ -87,11 +94,13 @@ describe('setUTCDay', function() {
   })
 
   it('converts a fractional number to an integer', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0.9)
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
   })
 
   it('implicitly converts number arguments', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), '0')
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
   })
@@ -105,17 +114,22 @@ describe('setUTCDay', function() {
 
   it('does not mutate the original date', function() {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 1))
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     setUTCDay(date, 3)
     assert.deepEqual(date, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(new Date(NaN), 0)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCDay(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

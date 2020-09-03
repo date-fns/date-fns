@@ -93,6 +93,7 @@ export default function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   // Math.abs(diff in full days - diff in calendar days) === 1 if last calendar day is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastDayNotFull = compareLocalAsc(dateLeft, dateRight) === -sign
+  // @ts-expect-error ts-migrate(2363) FIXME: The right-hand side of an arithmetic operation mus... Remove this comment to see the full error message
   var result = sign * (difference - isLastDayNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result

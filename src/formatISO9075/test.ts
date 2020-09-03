@@ -1,17 +1,20 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import formatISO9075 from '.'
+
 
 describe('formatISO9075', () => {
   it('formats ISO-9075 extended date format', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatISO9075(date) === '2019-03-03 19:00:52')
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123).getTime()
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatISO9075(date) === '2019-03-03 19:00:52')
   })
 

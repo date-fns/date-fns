@@ -1,32 +1,40 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getWeekOfMonth from '.'
+
 
 describe('getWeekOfMonth', function() {
   it('returns the week of the month of the given date', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 15))
     assert(result === 3)
   })
 
   describe('edge cases', function() {
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is the first of a month', function() {
       it('returns the week of the month of the given date', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         var result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 1))
         assert(result === 1)
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is the last of a month #1', function() {
       it('returns the week of the month of the given date', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         var result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 30))
         assert(result === 5)
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is the last of a month #2', function() {
       it('returns the week of the month of the given date', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         var result = getWeekOfMonth(new Date(2017, 9 /* Oct */, 31))
         assert(result === 5)
       })
@@ -62,11 +70,13 @@ describe('getWeekOfMonth', function() {
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 1).getTime())
     assert(result === 1)
   })
 
   it('returns NaN if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeekOfMonth(new Date(NaN))
     assert(isNaN(result))
   })

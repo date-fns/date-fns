@@ -53,6 +53,7 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
+  // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
   var date = toDate(dirtyDate, options)
   var day = toInteger(dirtyDay)
   var currentDay = date.getDay()
@@ -65,5 +66,6 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
     day < 0 || day > 6
       ? day - ((currentDay + delta) % 7)
       : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
+  // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
   return addDays(date, diff, options)
 }

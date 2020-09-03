@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import eachHourOfInterval from '.'
+
 
 describe('eachHourOfInterval', () => {
   it('returns an array with starts of hours from the hour of the start date to the hour of the end date', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12),
       end: new Date(2014, 9 /* Oct */, 6, 15)
@@ -19,6 +21,7 @@ describe('eachHourOfInterval', () => {
   })
 
   it('accepts timestamps', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12).getTime(),
       end: new Date(2014, 9 /* Oct */, 6, 15).getTime()
@@ -32,6 +35,7 @@ describe('eachHourOfInterval', () => {
   })
 
   it('handles the hours that are not starts of hours', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12, 59, 59, 999),
       end: new Date(2014, 9 /* Oct */, 6, 15, 59, 59, 999)
@@ -45,6 +49,7 @@ describe('eachHourOfInterval', () => {
   })
 
   it('returns one hour if the both arguments are on the same hour', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12, 35),
       end: new Date(2014, 9 /* Oct */, 6, 12, 47)
@@ -53,6 +58,7 @@ describe('eachHourOfInterval', () => {
   })
 
   it('returns one hour if the both arguments are the same', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     const result = eachHourOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 12, 35),
       end: new Date(2014, 9 /* Oct */, 6, 12, 35)

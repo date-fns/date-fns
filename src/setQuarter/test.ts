@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import setQuarter from '.'
+
 
 describe('setQuarter', function() {
   it('sets the quarter of the year', function() {
@@ -50,11 +51,13 @@ describe('setQuarter', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setQuarter(new Date(NaN), 1)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setQuarter(new Date(2014, 6 /* Jul */, 2), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

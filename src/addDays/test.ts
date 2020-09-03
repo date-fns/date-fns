@@ -1,6 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
+// @ts-expect-error ts-migrate(1259) FIXME: Module '"assert"' can only be default-imported usi... Remove this comment to see the full error message
 import assert from 'assert'
 import addDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'

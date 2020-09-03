@@ -431,9 +431,11 @@ var parsers = {
 
     parse: function(string, token, _match, _options) {
       if (token === 'R') {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         return parseNDigitsSigned(4, string)
       }
 
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       return parseNDigitsSigned(token.length, string)
     },
 
@@ -469,9 +471,11 @@ var parsers = {
 
     parse: function(string, token, _match, _options) {
       if (token === 'u') {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         return parseNDigitsSigned(4, string)
       }
 
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       return parseNDigitsSigned(token.length, string)
     },
 
@@ -493,6 +497,7 @@ var parsers = {
         // 1, 2, 3, 4
         case 'Q':
         case 'QQ': // 01, 02, 03, 04
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
         // 1st, 2nd, 3rd, 4th
         case 'Qo':
@@ -563,6 +568,7 @@ var parsers = {
         // 1, 2, 3, 4
         case 'q':
         case 'qq': // 01, 02, 03, 04
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
         // 1st, 2nd, 3rd, 4th
         case 'qo':
@@ -789,10 +795,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'w':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.week, string)
         case 'wo':
           return match.ordinalNumber(string, { unit: 'week' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -829,10 +837,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'I':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.week, string)
         case 'Io':
           return match.ordinalNumber(string, { unit: 'week' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -842,6 +852,7 @@ var parsers = {
     },
 
     set: function(date, _flags, value, options) {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
       return startOfUTCISOWeek(setUTCISOWeek(date, value, options), options)
     },
 
@@ -872,10 +883,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'd':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.date, string)
         case 'do':
           return match.ordinalNumber(string, { unit: 'date' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -923,10 +936,12 @@ var parsers = {
       switch (token) {
         case 'D':
         case 'DD':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.dayOfYear, string)
         case 'Do':
           return match.ordinalNumber(string, { unit: 'date' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1202,6 +1217,7 @@ var parsers = {
         // 2
         case 'i':
         case 'ii': // 02
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
         // 2nd
         case 'io':
@@ -1279,6 +1295,7 @@ var parsers = {
     },
 
     set: function(date, _flags, value, options) {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
       date = setUTCISODay(date, value, options)
       date.setUTCHours(0, 0, 0, 0)
       return date
@@ -1436,10 +1453,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'h':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.hour12h, string)
         case 'ho':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1470,10 +1489,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'H':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.hour23h, string)
         case 'Ho':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1497,10 +1518,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'K':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.hour11h, string)
         case 'Ko':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1529,10 +1552,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'k':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.hour24h, string)
         case 'ko':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1557,10 +1582,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'm':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.minute, string)
         case 'mo':
           return match.ordinalNumber(string, { unit: 'minute' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1584,10 +1611,12 @@ var parsers = {
     parse: function(string, token, match, _options) {
       switch (token) {
         case 's':
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNumericPattern(numericPatterns.second, string)
         case 'so':
           return match.ordinalNumber(string, { unit: 'second' })
         default:
+          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           return parseNDigits(token.length, string)
       }
     },
@@ -1706,6 +1735,7 @@ var parsers = {
     priority: 40,
 
     parse: function(string, _token, _match, _options) {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       return parseAnyDigitsSigned(string)
     },
 
@@ -1721,6 +1751,7 @@ var parsers = {
     priority: 20,
 
     parse: function(string, _token, _match, _options) {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       return parseAnyDigitsSigned(string)
     },
 

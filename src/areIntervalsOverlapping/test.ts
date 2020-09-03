@@ -1,13 +1,15 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import areIntervalsOverlapping from '.'
+
 
 describe('areIntervalsOverlapping', function() {
   var initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
   var initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0)
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context("when the time intervals don't overlap", function() {
     it('returns false for a valid non overlapping interval before another interval', function() {
       var earlierIntervalStart = new Date(2016, 9, 25)
@@ -79,6 +81,7 @@ describe('areIntervalsOverlapping', function() {
     })
   })
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('when the time intervals overlap', function() {
     it('returns true for an interval included within another interval', function() {
       var includedIntervalStart = new Date(2016, 10, 14)
@@ -180,6 +183,7 @@ describe('areIntervalsOverlapping', function() {
     assert.throws(block, RangeError)
   })
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('when the inclusive option is true', function() {
     it("returns true for an interval with the same startDateTime as the initial time intervals's endDateTime", function() {
       var oneDayOverlapIntervalStart = new Date(2016, 11, 3, 15, 0, 0)
@@ -206,6 +210,7 @@ describe('areIntervalsOverlapping', function() {
     })
   })
 
+  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('one of the dates is `Invalid Date`', function() {
     it('throws an exception if the start date of the initial time interval is `Invalid Date`', function() {
       var block = areIntervalsOverlapping.bind(

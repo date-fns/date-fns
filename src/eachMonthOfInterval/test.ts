@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import eachMonthOfInterval from '.'
+
 
 describe('eachMonthOfInterval', function() {
   it('returns an array with starts of months from the month of the start date to the month of the end date', function() {

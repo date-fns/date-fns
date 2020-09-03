@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import differenceInBusinessDays from '.'
+
 
 describe('differenceInBusinessDays', function() {
   it('returns the number of business days between the given dates, excluding weekends', function() {
@@ -116,6 +117,7 @@ describe('differenceInBusinessDays', function() {
         new Date(NaN),
         new Date(2017, 0 /* Jan */, 1)
       )
+      // @ts-expect-error ts-migrate(2345) FIXME: Type 'Date' is not assignable to type 'number'.
       assert(isNaN(result))
     })
 
@@ -124,11 +126,13 @@ describe('differenceInBusinessDays', function() {
         new Date(2017, 0 /* Jan */, 1),
         new Date(NaN)
       )
+      // @ts-expect-error ts-migrate(2345) FIXME: Type 'Date' is not assignable to type 'number'.
       assert(isNaN(result))
     })
 
     it('returns NaN if the both dates are `Invalid Date`', function() {
       var result = differenceInBusinessDays(new Date(NaN), new Date(NaN))
+      // @ts-expect-error ts-migrate(2345) FIXME: Type 'Date' is not assignable to type 'number'.
       assert(isNaN(result))
     })
 

@@ -3,6 +3,7 @@
 import fn from '../../addMilliseconds/index'
 import convertToFP from '../_lib/convertToFP/index'
 
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var addMilliseconds = convertToFP(fn, 2)
 
 export default addMilliseconds

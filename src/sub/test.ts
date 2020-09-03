@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import sub from '.'
+
 
 describe('sub', () => {
   it('subtracts the duration from the given date', () => {
@@ -66,12 +67,14 @@ describe('sub', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = sub(new Date(NaN), { hours: 5 })
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('throws RangeError exception if passed Number as duration', () => {
     // $ExpectedMistake
     const result = sub(new Date(2014, 8, 1), 'wut')
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

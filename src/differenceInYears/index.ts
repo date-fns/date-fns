@@ -36,12 +36,15 @@ export default function differenceInYears(dirtyDateLeft, dirtyDateRight) {
 
   // Set both dates to a valid leap year for accurate comparison when dealing
   // with leap days
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '"1584"' is not assignable to par... Remove this comment to see the full error message
   dateLeft.setFullYear('1584')
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '"1584"' is not assignable to par... Remove this comment to see the full error message
   dateRight.setFullYear('1584')
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastYearNotFull = compareAsc(dateLeft, dateRight) === -sign
+  // @ts-expect-error ts-migrate(2363) FIXME: The right-hand side of an arithmetic operation mus... Remove this comment to see the full error message
   var result = sign * (difference - isLastYearNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result

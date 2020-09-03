@@ -1,9 +1,10 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import addMonths from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
+
 
 describe('addMonths', function() {
   it('adds the given number of months', function() {
@@ -52,11 +53,13 @@ describe('addMonths', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addMonths(new Date(NaN), 5)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
@@ -85,6 +88,7 @@ describe('addMonths', function() {
       var result = addMonths(date, 2)
       assert.deepEqual(
         result,
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
         override(date, date.getFullYear(), date.getMonth() + 2)
       )
     }
@@ -95,6 +99,7 @@ describe('addMonths', function() {
     function() {
       var date = new Date(dstTransitions.start.getTime() - 0.5 * HOUR)
       var result = addMonths(date, 2)
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
       var expected = override(date, date.getFullYear(), date.getMonth() + 2)
       assert.deepEqual(result, expected)
     }
@@ -105,6 +110,7 @@ describe('addMonths', function() {
     function() {
       var date = new Date(dstTransitions.start.getTime() - 1 * HOUR)
       var result = addMonths(date, 2)
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
       var expected = override(date, date.getFullYear(), date.getMonth() + 2)
       assert.deepEqual(result, expected)
     }
@@ -117,6 +123,7 @@ describe('addMonths', function() {
       var result = addMonths(date, 2)
       assert.deepEqual(
         result,
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
         override(
           date,
           date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
@@ -133,6 +140,7 @@ describe('addMonths', function() {
       var result = addMonths(date, 2)
       assert.deepEqual(
         result,
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
         override(
           date,
           date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
@@ -149,6 +157,7 @@ describe('addMonths', function() {
       var result = addMonths(date, 2)
       assert.deepEqual(
         result,
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 6 arguments, but got 3.
         override(
           date,
           date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),

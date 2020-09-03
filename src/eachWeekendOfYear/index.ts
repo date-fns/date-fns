@@ -31,6 +31,7 @@ export default function eachWeekendOfYear(dirtyDate) {
   requiredArgs(1, arguments)
 
   var startDate = startOfYear(dirtyDate)
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
 
   var endDate = endOfYear(dirtyDate)

@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import formatDistance from '.'
+
 
 describe('formatDistance', function() {
   describe('seconds', function() {
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the includeSeconds option is true', function() {
       it('less than 5 seconds', function() {
         var result = formatDistance(
@@ -65,6 +67,7 @@ describe('formatDistance', function() {
 
   describe('minutes', function() {
     it('less than a minute', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 20)
@@ -73,6 +76,7 @@ describe('formatDistance', function() {
     })
 
     it('1 minute', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 50)
@@ -81,6 +85,7 @@ describe('formatDistance', function() {
     })
 
     it('n minutes', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 34, 50)
@@ -91,6 +96,7 @@ describe('formatDistance', function() {
 
   describe('hours', function() {
     it('about 1 hour', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0)
@@ -99,6 +105,7 @@ describe('formatDistance', function() {
     })
 
     it('about n hours', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 13, 32, 0)
@@ -109,6 +116,7 @@ describe('formatDistance', function() {
 
   describe('days', function() {
     it('1 day', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 5, 10, 32, 0)
@@ -117,6 +125,7 @@ describe('formatDistance', function() {
     })
 
     it('n days', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 7, 10, 32, 0)
@@ -127,6 +136,7 @@ describe('formatDistance', function() {
 
   describe('months', function() {
     it('about 1 month', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 4, 4, 10, 32, 0)
@@ -135,6 +145,7 @@ describe('formatDistance', function() {
     })
 
     it('n months', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 6, 4, 10, 32, 0)
@@ -145,6 +156,7 @@ describe('formatDistance', function() {
 
   describe('years', function() {
     it('about 1 year', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 3, 4, 10, 32, 0)
@@ -153,6 +165,7 @@ describe('formatDistance', function() {
     })
 
     it('over 1 year', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 9, 4, 10, 32, 0)
@@ -161,6 +174,7 @@ describe('formatDistance', function() {
     })
 
     it('almost n years', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 2, 4, 10, 32, 0)
@@ -169,6 +183,7 @@ describe('formatDistance', function() {
     })
 
     it('about n years', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 3, 4, 10, 32, 0)
@@ -177,6 +192,7 @@ describe('formatDistance', function() {
     })
 
     it('over n years', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 9, 4, 10, 32, 0)
@@ -186,6 +202,7 @@ describe('formatDistance', function() {
   })
 
   it('accepts timestamps', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = formatDistance(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
       new Date(1986, 3, 4, 11, 32, 0).getTime()
@@ -259,6 +276,7 @@ describe('formatDistance', function() {
       assert(result === 'It works!')
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('does not contain `formatDistance` property', function() {
       it('throws `RangeError`', function() {
         var customLocale = {}

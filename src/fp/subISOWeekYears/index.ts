@@ -3,6 +3,7 @@
 import fn from '../../subISOWeekYears/index'
 import convertToFP from '../_lib/convertToFP/index'
 
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var subISOWeekYears = convertToFP(fn, 2)
 
 export default subISOWeekYears

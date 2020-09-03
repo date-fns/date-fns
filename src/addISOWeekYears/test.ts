@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import addISOWeekYears from '.'
+
 
 describe('addISOWeekYears', function() {
   it('adds the given number of ISO week-numbering years', function() {
@@ -45,11 +46,13 @@ describe('addISOWeekYears', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = addISOWeekYears(new Date(NaN), 5)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = addISOWeekYears(new Date(2010, 6 /* Jul */, 2), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

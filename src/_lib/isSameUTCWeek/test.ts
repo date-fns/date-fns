@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import isSameUTCWeek from '.'
+
 
 describe('isSameUTCWeek', function() {
   it('returns true if the given dates have the same week', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(
       new Date(Date.UTC(2014, 7 /* Aug */, 31)),
       new Date(Date.UTC(2014, 8 /* Sep */, 4))
@@ -14,6 +16,7 @@ describe('isSameUTCWeek', function() {
   })
 
   it('returns false if the given dates have different weeks', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(
       new Date(Date.UTC(2014, 7 /* Aug */, 30)),
       new Date(Date.UTC(2014, 8 /* Sep */, 4))
@@ -67,6 +70,7 @@ describe('isSameUTCWeek', function() {
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(
       Date.UTC(2014, 7 /* Aug */, 31),
       Date.UTC(2014, 8 /* Sep */, 4)
@@ -75,6 +79,7 @@ describe('isSameUTCWeek', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(
       new Date(NaN),
       new Date(Date.UTC(1989, 6 /* Jul */, 10))
@@ -83,6 +88,7 @@ describe('isSameUTCWeek', function() {
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(
       new Date(Date.UTC(1987, 1 /* Feb */, 11)),
       new Date(NaN)
@@ -91,6 +97,7 @@ describe('isSameUTCWeek', function() {
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameUTCWeek(new Date(NaN), new Date(NaN))
     assert(result === false)
   })

@@ -35,6 +35,7 @@ export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var dateToCompare = toDate(dirtyDateToCompare)
 
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
   if (isNaN(dateToCompare)) {
     return new Date(NaN)
   }
@@ -60,6 +61,7 @@ export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
   datesArray.forEach(function(dirtyDate) {
     var currentDate = toDate(dirtyDate)
 
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     if (isNaN(currentDate)) {
       result = new Date(NaN)
       minDistance = NaN

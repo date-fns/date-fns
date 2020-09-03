@@ -1,32 +1,38 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import setUTCWeek from '.'
+
 
 describe('setUTCWeek', function() {
   it('sets the local week', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(new Date(Date.UTC(2005, 0 /* Jan */, 2)), 1)
     assert.deepEqual(result, new Date(Date.UTC(2004, 11 /* Dec */, 26)))
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(Date.UTC(2009, 11 /* Dec */, 2), 1)
     assert.deepEqual(result, new Date(Date.UTC(2008, 11 /* Dec */, 31)))
   })
 
   it('converts a fractional number to an integer', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(new Date(Date.UTC(2005, 0 /* Jan */, 2)), 1.1)
     assert.deepEqual(result, new Date(Date.UTC(2004, 11 /* Dec */, 26)))
   })
 
   it('implicitly converts number arguments', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(new Date(Date.UTC(2004, 7 /* Aug */, 7)), '53')
     assert.deepEqual(result, new Date(Date.UTC(2005, 0 /* Jan */, 1)))
   })
 
   it('does not mutate the original date', function() {
     var date = new Date(2014, 6 /* Jul */, 2)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     setUTCWeek(date, 52)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 2))
   })
@@ -38,17 +44,22 @@ describe('setUTCWeek', function() {
     var expectedResult = new Date(0)
     expectedResult.setUTCFullYear(4, 11 /* Dec */, 19)
     expectedResult.setUTCHours(0, 0, 0, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(initialDate, 52)
     assert.deepEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(new Date(NaN), 53)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setUTCWeek(new Date(2004, 7 /* Aug */, 7), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

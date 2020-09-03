@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import max from '.'
+
 
 describe('max', function() {
   function isInvalidDate(dirtyDate) {
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     return dirtyDate instanceof Date && isNaN(dirtyDate)
   }
 

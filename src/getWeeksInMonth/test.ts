@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getWeeksInMonth from '.'
+
 
 describe('getWeeksInMonth', function() {
   it('returns the number of calendar weeks the month in the given date spans', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeeksInMonth(new Date(2015, 1 /* Feb */, 8, 18, 0))
     assert(result === 4)
   })
@@ -39,6 +41,7 @@ describe('getWeeksInMonth', function() {
   })
 
   it('accepts timestamps', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeeksInMonth(
       new Date(2017, 3 /* Apr */, 8, 18, 0).getTime()
     )
@@ -47,11 +50,13 @@ describe('getWeeksInMonth', function() {
 
   it('does not mutate the original date', function() {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     getWeeksInMonth(date)
     assert.deepEqual(date, new Date(2014, 8 /* Sep */, 2, 11, 55, 0))
   })
 
   it('returns NaN if the date is `Invalid Date`', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeeksInMonth(new Date(NaN))
     assert(isNaN(result))
   })

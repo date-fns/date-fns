@@ -1,6 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
+// @ts-expect-error ts-migrate(1259) FIXME: Module '"assert"' can only be default-imported usi... Remove this comment to see the full error message
 import assert from 'assert'
 import addBusinessDays from '.'
 
@@ -37,9 +38,7 @@ describe('addBusinessDays', function() {
   })
 
   it('can handle a large number of business days', function() {
-    // @ts-ignore
     if (typeof this.timeout === 'function') {
-      // @ts-ignore
       this.timeout(500 /* 500 ms test timeout */)
     }
 
@@ -80,8 +79,10 @@ describe('addBusinessDays', function() {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
+    // @ts-expect-error ts-migrate(2578) FIXME: Unused '@ts-expect-error' directive.
     // @ts-expect-error
     assert.throws(addBusinessDays.bind(null), TypeError)
+    // @ts-expect-error ts-migrate(2578) FIXME: Unused '@ts-expect-error' directive.
     // @ts-expect-error
     assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })

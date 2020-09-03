@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import assign from '.'
+
 
 describe('assign', function() {
   it('assigns properties of the second argument to the first argument', function() {

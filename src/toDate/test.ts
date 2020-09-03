@@ -1,9 +1,10 @@
 // @flow
 /* eslint-env mocha */
-
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
+
 import toDate from '.'
+
 
 describe('toDate', () => {
   describe('date argument', () => {
@@ -30,6 +31,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate('1987-02-11')
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
@@ -39,6 +41,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       toDate('1987-02-11')
       assert(
+        // @ts-expect-error ts-migrate(2339) FIXME: Property 'calledWith' does not exist on type '{ (.... Remove this comment to see the full error message
         // eslint-disable-next-line no-console
         console.warn.calledWith(
           "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
@@ -49,12 +52,14 @@ describe('toDate', () => {
     it('returns Invalid Date if argument is NaN', () => {
       const result = toDate(NaN)
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is Invalid Date', () => {
       const result = toDate(new Date(NaN))
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
@@ -62,6 +67,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate(null)
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
@@ -69,6 +75,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate(undefined)
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
@@ -76,6 +83,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate(false)
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
 
@@ -83,6 +91,7 @@ describe('toDate', () => {
       // $ExpectedMistake
       const result = toDate(true)
       assert(result instanceof Date)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(isNaN(result))
     })
   })

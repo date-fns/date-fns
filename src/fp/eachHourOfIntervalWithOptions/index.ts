@@ -3,6 +3,7 @@
 import fn from '../../eachHourOfInterval/index'
 import convertToFP from '../_lib/convertToFP/index'
 
+// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var eachHourOfIntervalWithOptions = convertToFP(fn, 2)
 
 export default eachHourOfIntervalWithOptions

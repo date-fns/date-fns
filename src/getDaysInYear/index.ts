@@ -28,6 +28,7 @@ export default function getDaysInYear(dirtyDate) {
 
   var date = toDate(dirtyDate)
 
+  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
   if (isNaN(date)) {
     return NaN
   }

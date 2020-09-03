@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import closestIndexTo from '.'
+
 
 describe('closestIndexTo', function() {
   it('returns the date index from the given array closest to the given date', function() {

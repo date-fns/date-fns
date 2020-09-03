@@ -1,9 +1,10 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import differenceInDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
+
 
 describe('differenceInDays', function() {
   it('returns the number of full days between the given dates', function() {

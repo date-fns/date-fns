@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import isSameHour from '.'
+
 
 describe('isSameHour', function() {
   it('returns true if the given dates have the same hour', function() {

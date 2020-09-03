@@ -1,11 +1,13 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import eachDayOfInterval from '.'
+
 
 describe('eachDayOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 9 /* Oct */, 12)
@@ -22,6 +24,7 @@ describe('eachDayOfInterval', () => {
   })
 
   it('accepts timestamps', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 9 /* Oct */, 12).getTime()
@@ -38,6 +41,7 @@ describe('eachDayOfInterval', () => {
   })
 
   it('handles the dates that are not starts of days', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 9 /* Oct */, 12, 22, 15)
@@ -54,6 +58,7 @@ describe('eachDayOfInterval', () => {
   })
 
   it('returns one day if the both arguments are on the same day', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 15)
@@ -62,6 +67,7 @@ describe('eachDayOfInterval', () => {
   })
 
   it('returns one day if the both arguments are the same', () => {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)

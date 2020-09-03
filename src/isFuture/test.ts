@@ -1,9 +1,10 @@
 // @flow
 /* eslint-env mocha */
-
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
+
 import isFuture from '.'
+
 
 describe('isFuture', () => {
   let clock

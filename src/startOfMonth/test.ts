@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import startOfMonth from '.'
+
 
 describe('startOfMonth', function() {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a month', function() {
@@ -25,6 +26,7 @@ describe('startOfMonth', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = startOfMonth(new Date(NaN))
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

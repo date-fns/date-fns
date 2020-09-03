@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import formatRFC7231 from '.'
+
 
 describe('formatRFC7231', () => {
   it('formats RFC-7231 date string', () => {

@@ -38,6 +38,7 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
   // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
   // If so, result must be decreased by 1 in absolute value
   var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+  // @ts-expect-error ts-migrate(2363) FIXME: The right-hand side of an arithmetic operation mus... Remove this comment to see the full error message
   var result = sign * (difference - isLastMonthNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result

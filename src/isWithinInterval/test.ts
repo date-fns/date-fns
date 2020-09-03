@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import isWithinInterval from '.'
+
 
 describe('isWithinInterval', function() {
   it('returns true if the given date in within the given interval', function() {

@@ -221,7 +221,7 @@ function localeToNumber(locale) {
 function numberToLocale(number) {
   return number.toString().replace(/\d/g, function(match) {
     return numberValues.locale[match]
-  })
+  });
 }
 
 var localize = {

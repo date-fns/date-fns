@@ -1,16 +1,19 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getWeek from '.'
+
 
 describe('getWeek', function() {
   it('returns the local week of year of the given date', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeek(new Date(2005, 0 /* Jan */, 2))
     assert(result === 2)
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeek(new Date(2008, 11 /* Dec */, 29).getTime())
     assert(result === 1)
   })
@@ -19,11 +22,13 @@ describe('getWeek', function() {
     var initialDate = new Date(0)
     initialDate.setFullYear(7, 11 /* Dec */, 30)
     initialDate.setHours(0, 0, 0, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeek(initialDate)
     assert(result === 1)
   })
 
   it('returns NaN if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = getWeek(new Date(NaN))
     assert(isNaN(result))
   })

@@ -1,12 +1,14 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
+
 import parse from '.'
 
 describe('parse', function() {
   var referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
 
   it('escapes characters between the single quote characters', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
     var result = parse(
       '2018 hello world July 2nd',
       "yyyy 'hello world' MMMM do",
@@ -16,11 +18,13 @@ describe('parse', function() {
   })
 
   it('two single quote characters are transformed into a "real" single quote', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
     var result = parse("'5 o'clock'", "''h 'o''clock'''", referenceDate)
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
   })
 
   it('accepts new line charactor', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
     var result = parse(
       '2014-04-04\n05:00:00',
       "yyyy-MM-dd'\n'HH:mm:ss",
@@ -31,26 +35,31 @@ describe('parse', function() {
 
   describe('era', function() {
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('10000 BC', 'yyyyy G', referenceDate)
       assert.deepEqual(result, new Date(-9999, 0 /* Jan */, 1))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2018 Anno Domini', 'yyyy GGGG', referenceDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('44 B', 'y GGGGG', referenceDate)
       assert.deepEqual(result, new Date(-43, 0 /* Jan */, 1))
     })
 
     it('with week-numbering year', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('44 B', 'Y GGGGG', referenceDate)
       assert.deepEqual(result, new Date(-44, 11 /* Dec */, 30))
     })
 
     it('parses stand-alone BC', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('BC', 'G', referenceDate)
       const expectedResult = new Date(0, 0 /* Jan */, 1)
       expectedResult.setFullYear(0)
@@ -58,6 +67,7 @@ describe('parse', function() {
     })
 
     it('parses stand-alone AD', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('AD', 'G', referenceDate)
       const expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
@@ -93,33 +103,39 @@ describe('parse', function() {
 
   describe('calendar year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2017', 'y', referenceDate)
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2017th', 'yo', referenceDate)
       assert.deepEqual(result, new Date(2017, 0 /* Jan */, 1))
     })
 
     describe('two-digit numeric year', function() {
       it('works as expected', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('02', 'yy', referenceDate)
         assert.deepEqual(result, new Date(2002, 0 /* Jan */, 1))
       })
 
       it('gets the 100 year range from `referenceDate`', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('02', 'yy', new Date(1860, 6 /* Jul */, 2))
         assert.deepEqual(result, new Date(1902, 0 /* Jan */, 1))
       })
     })
 
     it('three-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('123', 'yyy', referenceDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('0044', 'yyyy', referenceDate)
       var expectedResult = new Date(44, 0 /* Jan */, 1)
       expectedResult.setFullYear(44)
@@ -127,6 +143,7 @@ describe('parse', function() {
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('000001', 'yyyyyy', referenceDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
@@ -168,11 +185,13 @@ describe('parse', function() {
 
   describe('local week-numbering year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2002', 'Y', referenceDate)
       assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12345th', 'Yo', referenceDate)
       assert.deepEqual(result, new Date(12344, 11 /* Dec */, 31))
     })
@@ -194,6 +213,7 @@ describe('parse', function() {
     })
 
     it('three-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('123', 'YYY', referenceDate)
       assert.deepEqual(result, new Date(122, 11 /* Dec */, 27))
     })
@@ -206,6 +226,7 @@ describe('parse', function() {
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('000001', 'YYYYYY', referenceDate)
       var expectedResult = new Date(0)
       expectedResult.setFullYear(0, 11 /* Dec */, 31)
@@ -260,26 +281,31 @@ describe('parse', function() {
 
   describe('ISO week-numbering year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('-1234', 'R', referenceDate)
       assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 3))
     })
 
     it('two-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('-02', 'RR', referenceDate)
       assert.deepEqual(result, new Date(-3, 11 /* Dec */, 29))
     })
 
     it('three-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('123', 'RRR', referenceDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 4))
     })
 
     it('four-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2018', 'RRRR', referenceDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('000001', 'RRRRRR', referenceDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
@@ -327,26 +353,31 @@ describe('parse', function() {
 
   describe('extended year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('-1234', 'u', referenceDate)
       assert.deepEqual(result, new Date(-1234, 0 /* Jan */, 1))
     })
 
     it('two-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('-02', 'uu', referenceDate)
       assert.deepEqual(result, new Date(-2, 0 /* Jan */, 1))
     })
 
     it('three-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('123', 'uuu', referenceDate)
       assert.deepEqual(result, new Date(123, 0 /* Jan */, 1))
     })
 
     it('four-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2018', 'uuuu', referenceDate)
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('000001', 'uuuuuu', referenceDate)
       var expectedResult = new Date(1, 0 /* Jan */, 1)
       expectedResult.setFullYear(1)
@@ -389,21 +420,25 @@ describe('parse', function() {
 
   describe('quarter with following year', function() {
     it('first quarter', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q1/2020', 'QQQ/yyyy', referenceDate)
       assert.deepEqual(result, new Date(2020, 0 /* Jan */, 1))
     })
 
     it('second quarter', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q2/2020', 'QQQ/yyyy', referenceDate)
       assert.deepEqual(result, new Date(2020, 3 /* Apr */, 1))
     })
 
     it('third quarter', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q3/2020', 'QQQ/yyyy', referenceDate)
       assert.deepEqual(result, new Date(2020, 6 /* Jul */, 1))
     })
 
     it('fourth quarter', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q4/2020', 'QQQ/yyyy', referenceDate)
       assert.deepEqual(result, new Date(2020, 9 /* Oct */, 1))
     })
@@ -411,31 +446,37 @@ describe('parse', function() {
 
   describe('quarter (formatting)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'Q', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1st', 'Qo', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('02', 'QQ', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q3', 'QQQ', referenceDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('4st quarter', 'QQQQ', referenceDate)
       assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'QQQQQ', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
@@ -480,31 +521,37 @@ describe('parse', function() {
 
   describe('quarter (stand-alone)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'q', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1th', 'qo', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('02', 'qq', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Q3', 'qqq', referenceDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 1))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('4th quarter', 'qqqq', referenceDate)
       assert.deepEqual(result, new Date(1986, 9 /* Oct */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'qqqqq', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
@@ -549,31 +596,37 @@ describe('parse', function() {
 
   describe('month (formatting)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('6', 'M', referenceDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('6th', 'Mo', referenceDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'MM', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Nov', 'MMM', referenceDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('February', 'MMMM', referenceDate)
       assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('J', 'MMMMM', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
@@ -617,31 +670,37 @@ describe('parse', function() {
 
   describe('month (stand-alone)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('6', 'L', referenceDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('6th', 'Lo', referenceDate)
       assert.deepEqual(result, new Date(1986, 5 /* Jun */, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'LL', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Nov', 'LLL', referenceDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 1))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('February', 'LLLL', referenceDate)
       assert.deepEqual(result, new Date(1986, 1 /* Feb */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('J', 'LLLLL', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
@@ -685,16 +744,19 @@ describe('parse', function() {
 
   describe('local week of year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('49', 'w', referenceDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('49th', 'wo', referenceDate)
       assert.deepEqual(result, new Date(1986, 10 /* Nov */, 30))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'ww', referenceDate)
       assert.deepEqual(result, new Date(1985, 11 /* Dec */, 29))
     })
@@ -746,16 +808,19 @@ describe('parse', function() {
 
   describe('ISO week of year', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('49', 'I', referenceDate)
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('49th', 'Io', referenceDate)
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'II', referenceDate)
       assert.deepEqual(result, new Date(1985, 11 /* Dec */, 30))
     })
@@ -800,16 +865,19 @@ describe('parse', function() {
 
   describe('day of month', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('28', 'd', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('28th', 'do', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 28))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'dd', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
@@ -859,6 +927,7 @@ describe('parse', function() {
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('200th', 'Do', referenceDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
@@ -871,11 +940,13 @@ describe('parse', function() {
     })
 
     it('three-digit zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('001', 'DDD', referenceDate)
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('000200', 'DDDDDD', referenceDate)
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
@@ -921,21 +992,25 @@ describe('parse', function() {
 
   describe('day of week (formatting)', function() {
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Mon', 'E', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Tuesday', 'EEEE', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('W', 'EEEEE', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('short', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Th', 'EEEEEE', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
@@ -979,36 +1054,43 @@ describe('parse', function() {
 
   describe('ISO day of week (formatting)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'i', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1st', 'io', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('02', 'ii', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Wed', 'iii', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Thursday', 'iiii', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('S', 'iiiii', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 6))
     })
 
     it('short', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Fr', 'iiiiii', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
@@ -1054,36 +1136,43 @@ describe('parse', function() {
 
   describe('local day of week (formatting)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2', 'e', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2nd', 'eo', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('03', 'ee', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Wed', 'eee', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Thursday', 'eeee', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('S', 'eeeee', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Fr', 'eeeeee', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
@@ -1136,36 +1225,43 @@ describe('parse', function() {
 
   describe('local day of week (stand-alone)', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2', 'c', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2nd', 'co', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 31))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('03', 'cc', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 1))
     })
 
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Wed', 'ccc', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 2))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Thursday', 'cccc', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 3))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('S', 'ccccc', referenceDate)
       assert.deepEqual(result, new Date(1986, 2 /* Mar */, 30))
     })
 
     it('short', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('Fr', 'cccccc', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4))
     })
@@ -1218,26 +1314,31 @@ describe('parse', function() {
 
   describe('AM, PM', function() {
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('5 AM', 'h a', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
     })
 
     it('12 AM', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12 AM', 'h aa', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('12 PM', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12 PM', 'h aaa', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('5 p.m.', 'h aaaa', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('11 a', 'h aaaaa', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 11))
     })
@@ -1274,16 +1375,19 @@ describe('parse', function() {
 
   describe('AM, PM, noon, midnight', function() {
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('noon', 'b', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('midnight', 'bbbb', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('mi', 'bbbbb', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
@@ -1320,16 +1424,19 @@ describe('parse', function() {
 
   describe('flexible day period', function() {
     it('abbreviated', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2 at night', 'h B', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 2))
     })
 
     it('wide', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12 in the afternoon', 'h BBBB', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('narrow', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('5 in the evening', 'h BBBBB', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 17))
     })
@@ -1363,16 +1470,19 @@ describe('parse', function() {
 
   describe('hour [1-12]', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'h', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1st', 'ho', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('01', 'hh', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
@@ -1407,16 +1517,19 @@ describe('parse', function() {
 
   describe('hour [0-23]', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12', 'H', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12th', 'Ho', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('00', 'HH', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
@@ -1453,16 +1566,19 @@ describe('parse', function() {
 
   describe('hour [0-11]', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'K', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1st', 'Ko', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'KK', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 1))
     })
@@ -1499,16 +1615,19 @@ describe('parse', function() {
 
   describe('hour [1-24]', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12', 'k', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12th', 'ko', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('24', 'kk', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 0))
     })
@@ -1545,16 +1664,19 @@ describe('parse', function() {
 
   describe('minute', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('25', 'm', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('25th', 'mo', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 25))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('05', 'mm', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 5))
     })
@@ -1584,16 +1706,19 @@ describe('parse', function() {
 
   describe('second', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('25', 's', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('ordinal', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('25th', 'so', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 25))
     })
 
     it('zero-padding', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('05', 'ss', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 5))
     })
@@ -1623,21 +1748,25 @@ describe('parse', function() {
 
   describe('fraction of second', function() {
     it('1/10 of second', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('1', 'S', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 100))
     })
 
     it('1/100 of second', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('12', 'SS', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 120))
     })
 
     it('millisecond', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('123', 'SSS', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 123))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('567890', 'SSSSSS', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 567))
     })
@@ -1668,6 +1797,7 @@ describe('parse', function() {
   describe('timezone (ISO-8601 w/ Z)', function() {
     describe('X', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
@@ -1677,6 +1807,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
@@ -1686,6 +1817,7 @@ describe('parse', function() {
       })
 
       it('hours', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSX",
@@ -1697,6 +1829,7 @@ describe('parse', function() {
 
     describe('XX', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
@@ -1706,6 +1839,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXX",
@@ -1717,6 +1851,7 @@ describe('parse', function() {
 
     describe('XXX', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
@@ -1726,6 +1861,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXX",
@@ -1737,6 +1873,7 @@ describe('parse', function() {
 
     describe('XXXX', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
@@ -1746,6 +1883,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
@@ -1755,6 +1893,7 @@ describe('parse', function() {
       })
 
       it('hours, minutes and seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXX",
@@ -1766,6 +1905,7 @@ describe('parse', function() {
 
     describe('XXXXX', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
@@ -1775,6 +1915,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123Z',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
@@ -1784,6 +1925,7 @@ describe('parse', function() {
       })
 
       it('hours, minutes and seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
@@ -1822,6 +1964,7 @@ describe('parse', function() {
   describe('timezone (ISO-8601 w/o Z)', function() {
     describe('x', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
@@ -1831,6 +1974,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
@@ -1840,6 +1984,7 @@ describe('parse', function() {
       })
 
       it('hours', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+05',
           "yyyy-MM-dd'T'HH:mm:ss.SSSx",
@@ -1851,6 +1996,7 @@ describe('parse', function() {
 
     describe('xx', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
@@ -1860,6 +2006,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxx",
@@ -1871,6 +2018,7 @@ describe('parse', function() {
 
     describe('xxx', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
@@ -1880,6 +2028,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxx",
@@ -1891,6 +2040,7 @@ describe('parse', function() {
 
     describe('xxxx', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-0530',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
@@ -1900,6 +2050,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+0000',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
@@ -1909,6 +2060,7 @@ describe('parse', function() {
       })
 
       it('hours, minutes and seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+053045',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxx",
@@ -1920,6 +2072,7 @@ describe('parse', function() {
 
     describe('xxxxx', function() {
       it('hours and minutes', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123-05:30',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
@@ -1929,6 +2082,7 @@ describe('parse', function() {
       })
 
       it('GMT', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+00:00',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
@@ -1938,6 +2092,7 @@ describe('parse', function() {
       })
 
       it('hours, minutes and seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse(
           '2016-11-25T16:38:38.123+05:30:45',
           "yyyy-MM-dd'T'HH:mm:ss.SSSxxxxx",
@@ -1975,11 +2130,13 @@ describe('parse', function() {
 
   describe('seconds timestamp', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('512969520', 't', referenceDate)
       assert.deepEqual(result, new Date(512969520000))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(
         '00000000000512969520',
         'tttttttttttttttttttt',
@@ -2002,11 +2159,13 @@ describe('parse', function() {
 
   describe('milliseconds timestamp', function() {
     it('numeric', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('512969520900', 'T', referenceDate)
       assert.deepEqual(result, new Date(512969520900))
     })
 
     it('specified amount of digits', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(
         '00000000512969520900',
         'TTTTTTTTTTTTTTTTTTTT',
@@ -2029,11 +2188,13 @@ describe('parse', function() {
 
   describe('common formats', function() {
     it('ISO-8601', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('20161105T040404', "yyyyMMdd'T'HHmmss", referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
 
     it('ISO week-numbering date', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(
         '2016W474T153005',
         "RRRR'W'IIi'T'HHmmss",
@@ -2043,6 +2204,7 @@ describe('parse', function() {
     })
 
     it('ISO day of year date', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2010123T235959', "yyyyDDD'T'HHmmss", referenceDate)
       assert.deepEqual(result, new Date(2010, 4 /* May */, 3, 23, 59, 59, 0))
     })
@@ -2050,6 +2212,7 @@ describe('parse', function() {
     it('Date.prototype.toString()', function() {
       var dateString = 'Wed Jul 02 2014 05:30:15 GMT+0600'
       var formatString = "EEE MMM dd yyyy HH:mm:ss 'GMT'xx"
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, new Date(dateString))
     })
@@ -2057,11 +2220,13 @@ describe('parse', function() {
     it('Date.prototype.toISOString()', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, new Date(dateString))
     })
 
     it('middle-endian', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(
         '5 a.m. 07/02/2016',
         'h aaaa MM/dd/yyyy',
@@ -2071,6 +2236,7 @@ describe('parse', function() {
     })
 
     it('little-endian', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('02.07.1995', 'dd.MM.yyyy', referenceDate)
       assert.deepEqual(result, new Date(1995, 6 /* Jul */, 2, 0, 0, 0, 0))
     })
@@ -2080,6 +2246,7 @@ describe('parse', function() {
     it("units of lower priority don't overwrite values of higher priority", function() {
       var dateString = '+06:00 123 15 30 05 02 07 2014'
       var formatString = 'xxx SSS ss mm HH dd MM yyyy'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, new Date('2014-07-02T05:30:15.123+06:00'))
     })
@@ -2090,6 +2257,7 @@ describe('parse', function() {
       // eslint-disable-next-line no-new-wrappers
       var dateString = new String('20161105T040404')
       // $ExpectedMistake
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, "yyyyMMdd'T'HHmmss", referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
@@ -2098,6 +2266,7 @@ describe('parse', function() {
       // eslint-disable-next-line no-new-wrappers
       var formatString = new String("yyyyMMdd'T'HHmmss")
       // $ExpectedMistake
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('20161105T040404', formatString, referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5, 4, 4, 4, 0))
     })
@@ -2124,11 +2293,14 @@ describe('parse', function() {
   describe('with `options.strictValidation` = true', function() {
     describe('calendar year', function() {
       it('returns `Invalid Date` for year zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'y', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('works correctly for two-digit year zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('00', 'yy', referenceDate)
         assert.deepEqual(result, new Date(2000, 0 /* Jan */, 1))
       })
@@ -2136,7 +2308,9 @@ describe('parse', function() {
 
     describe('local week-numbering year', function() {
       it('returns `Invalid Date` for year zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'Y', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
@@ -2150,58 +2324,75 @@ describe('parse', function() {
 
     describe('quarter (formatting)', function() {
       it('returns `Invalid Date` for invalid quarter', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'Q', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('quarter (stand-alone)', function() {
       it('returns `Invalid Date` for invalid quarter', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('5', 'q', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (formatting)', function() {
       it('returns `Invalid Date` for invalid month', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('00', 'MM', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('month (stand-alone)', function() {
       it('returns `Invalid Date` for invalid month', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('13', 'LL', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local week of year', function() {
       it('returns `Invalid Date` for invalid week', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'w', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('ISO week of year', function() {
       it('returns `Invalid Date` for invalid week', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('54', 'II', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('day of month', function() {
       it('returns `Invalid Date` for invalid day of the month', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('30', 'd', new Date(2012, 1 /* Feb */, 1))
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for 29th of February of non-leap year', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('29', 'd', new Date(2014, 1 /* Feb */, 1))
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('parses 29th of February of leap year', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('29', 'd', new Date(2012, 1 /* Feb */, 1))
         assert.deepEqual(result, new Date(2012, 1 /* Feb */, 29))
       })
@@ -2212,6 +2403,7 @@ describe('parse', function() {
         var result = parse('0', 'D', referenceDate, {
           useAdditionalDayOfYearTokens: true
         })
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
@@ -2219,6 +2411,7 @@ describe('parse', function() {
         var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {
           useAdditionalDayOfYearTokens: true
         })
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
@@ -2232,88 +2425,116 @@ describe('parse', function() {
 
     describe('ISO day of week (formatting)', function() {
       it('returns `Invalid Date` for day zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'i', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('8', 'i', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (formatting)', function() {
       it('returns `Invalid Date` for day zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'e', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('8', 'e', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('local day of week (stand-alone)', function() {
       it('returns `Invalid Date` for day zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('0', 'c', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for eight day of week', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('8', 'c', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-12]', function() {
       it('returns `Invalid Date` for hour zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('00', 'hh', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('13', 'hh', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-23]', function() {
       it('returns `Invalid Date` for invalid hour', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('24', 'HH', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [0-11]', function() {
       it('returns `Invalid Date` for invalid hour', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('12', 'KK', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('hour [1-24]', function() {
       it('returns `Invalid Date` for hour zero', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('00', 'kk', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hour', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('25', 'kk', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('minute', function() {
       it('returns `Invalid Date` for invalid minute', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('60', 'mm', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
 
     describe('second', function() {
       it('returns `Invalid Date` for invalid second', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
         var result = parse('60', 'ss', referenceDate)
+        // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
         assert(result instanceof Date && isNaN(result))
       })
     })
@@ -2354,6 +2575,7 @@ describe('parse', function() {
   it('accepts a timestamp as `referenceDate`', function() {
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
     var result = parse(dateString, formatString, referenceDate.getTime())
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 18))
   })
@@ -2363,6 +2585,7 @@ describe('parse', function() {
     var referenceDateClone2 = new Date(referenceDate.getTime())
     var dateString = '6 p.m.'
     var formatString = 'h aaaa'
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
     parse(dateString, formatString, referenceDateClone1)
     assert.deepEqual(referenceDateClone1, referenceDateClone2)
   })
@@ -2371,6 +2594,7 @@ describe('parse', function() {
     it('returns `referenceDate` if `dateString` and `formatString` are empty strings', function() {
       var dateString = ''
       var formatString = ''
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, referenceDate)
     })
@@ -2378,6 +2602,7 @@ describe('parse', function() {
     it('returns `referenceDate` if no tokens in `formatString` are provided', function() {
       var dateString = 'not a token'
       var formatString = "'not a token'"
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, referenceDate)
     })
@@ -2385,28 +2610,36 @@ describe('parse', function() {
     it("returns `Invalid Date`  if `formatString` doesn't match `dateString`", function() {
       var dateString = '2017-01-01'
       var formatString = 'yyyy/MM/dd'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(result instanceof Date && isNaN(result))
     })
 
     it('returns `Invalid Date`  if `formatString` tokens failed to parse a value', function() {
       var dateString = '2017-01-01'
       var formatString = 'MMMM do yyyy'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(result instanceof Date && isNaN(result))
     })
 
     it('returns `Invalid Date` if `formatString` is empty string but `dateString` is not', function() {
       var dateString = '2017-01-01'
       var formatString = ''
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(result instanceof Date && isNaN(result))
     })
 
     it('returns `Invalid Date` if `referenceDate` is `Invalid Date`', function() {
       var dateString = '2014-07-02T05:30:15.123+06:00'
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, new Date(NaN))
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(result instanceof Date && isNaN(result))
     })
 
@@ -2441,11 +2674,14 @@ describe('parse', function() {
 
   describe('edge cases', function() {
     it('returns Invalid Date if the string contains some remaining input after parsing', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2016-11-05T040404', 'yyyy-MM-dd', referenceDate)
+      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert(result instanceof Date && isNaN(result))
     })
 
     it('parses normally if the remaining input is just whitespace', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse('2016-11-05   \n', 'yyyy-MM-dd', referenceDate)
       assert.deepEqual(result, new Date(2016, 10 /* Nov */, 5))
     })
@@ -2529,6 +2765,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = '05/26/1995'
       var formatString = 'P'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2537,6 +2774,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'May 26, 1995'
       var formatString = 'PP'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2545,6 +2783,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'May 26th, 1995'
       var formatString = 'PPP'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2553,6 +2792,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26)
       var dateString = 'Friday, May 26th, 1995'
       var formatString = 'PPPP'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2567,6 +2807,7 @@ describe('parse', function() {
       )
       var timeString = '10:32 AM'
       var formatString = 'p'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(timeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2582,6 +2823,7 @@ describe('parse', function() {
       )
       var timeString = '10:32:55 AM'
       var formatString = 'pp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(timeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2590,6 +2832,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = '05/26/1995, 10:32 AM'
       var formatString = 'Pp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2598,6 +2841,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'May 26, 1995, 10:32 AM'
       var formatString = 'PPp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2606,6 +2850,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'May 26th, 1995 at 10:32 AM'
       var formatString = 'PPPp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2614,6 +2859,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32)
       var dateTimeString = 'Friday, May 26th, 1995 at 10:32 AM'
       var formatString = 'PPPPp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2622,6 +2868,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = '05/26/1995, 10:32:55 AM'
       var formatString = 'Ppp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2630,6 +2877,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'May 26, 1995, 10:32:55 AM'
       var formatString = 'PPpp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2638,6 +2886,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'May 26th, 1995 at 10:32:55 AM'
       var formatString = 'PPPpp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })
@@ -2646,6 +2895,7 @@ describe('parse', function() {
       var expected = new Date(1995, 4 /* May */, 26, 10, 32, 55)
       var dateTimeString = 'Friday, May 26th, 1995 at 10:32:55 AM'
       var formatString = 'PPPPpp'
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 3.
       var result = parse(dateTimeString, formatString, referenceDate)
       assert.deepEqual(result, expected)
     })

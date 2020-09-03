@@ -1,33 +1,39 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import setWeekYear from '.'
+
 
 describe('setWeekYear', function() {
   it('sets the local week-numbering year, saving the week and the day of the week', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004)
     assert.deepEqual(result, new Date(2004, 0 /* Jan */, 3))
   })
 
   it('accepts a timestamp', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(2008, 11 /* Dec */, 29).getTime(), 2007)
     assert.deepEqual(result, new Date(2007, 0 /* Jan */, 1))
   })
 
   it('converts a fractional number to an integer', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(2010, 0 /* Jan */, 2), 2004.2004)
     assert.deepEqual(result, new Date(2004, 0 /* Jan */, 3))
   })
 
   it('implicitly converts number arguments', function() {
     // $ExpectedMistake
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(2008, 11 /* Dec */, 29), '2007')
     assert.deepEqual(result, new Date(2007, 0 /* Jan */, 1))
   })
 
   it('does not mutate the original date', function() {
     var date = new Date(2008, 11 /* Dec */, 29)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     setWeekYear(date, 2000)
     assert.deepEqual(date, new Date(2008, 11 /* Dec */, 29))
   })
@@ -37,6 +43,7 @@ describe('setWeekYear', function() {
     var expectedResult = new Date(0)
     expectedResult.setFullYear(7, 0 /* Jan */, 1)
     expectedResult.setHours(0, 0, 0, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(initialDate, 7)
     assert.deepEqual(result, expectedResult)
   })
@@ -48,17 +55,22 @@ describe('setWeekYear', function() {
     var expectedResult = new Date(0)
     expectedResult.setFullYear(7, 0 /* Jan */, 1)
     expectedResult.setHours(0, 0, 0, 0)
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(initialDate, 7)
     assert.deepEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(NaN), 2007)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = setWeekYear(new Date(2008, 11 /* Dec */, 29), NaN)
+    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

@@ -1,8 +1,9 @@
 // @flow
 /* eslint-env mocha */
+import assert from 'assert'
 
-import assert from 'power-assert'
 import getUTCISOWeek from '.'
+
 
 describe('getUTCISOWeek', function() {
   it('returns the ISO week of the given date', function() {

@@ -1,9 +1,10 @@
 // @flow
 /* eslint-env mocha */
-
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
+
 import formatDistanceToNowStrict from '.'
+
 
 describe('formatDistanceToNowStrict', function() {
   let clock
@@ -16,13 +17,16 @@ describe('formatDistanceToNowStrict', function() {
   })
 
   describe('seconds', function() {
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when no unit is set', function() {
       it('0 seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 32, 0))
         assert(result === '0 seconds')
       })
 
       it('5 seconds', function() {
+        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 32, 5))
         assert(result === '5 seconds')
       })
@@ -31,11 +35,13 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('minutes', function() {
     it('1 minute', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 0))
       assert(result === '1 minute')
     })
 
     it('n minutes', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 35, 0))
       assert(result === '3 minutes')
     })
@@ -43,11 +49,13 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('hours', function() {
     it('1 hour', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 11, 32, 0))
       assert(result === '1 hour')
     })
 
     it('n hours', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 13, 32, 0))
       assert(result === '3 hours')
     })
@@ -55,11 +63,13 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('days', function() {
     it('1 day', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 5, 10, 32, 0))
       assert(result === '1 day')
     })
 
     it('n days', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 7, 10, 32, 0))
       assert(result === '3 days')
     })
@@ -67,11 +77,13 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('months', function() {
     it('1 month', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 4, 4, 10, 32, 0))
       assert(result === '1 month')
     })
 
     it('n months', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 6, 4, 10, 32, 0))
       assert(result === '3 months')
     })
@@ -79,17 +91,20 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('years', function() {
     it('1 year', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1987, 3, 4, 10, 32, 0))
       assert(result === '1 year')
     })
 
     it('n years', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1991, 3, 4, 10, 32, 0))
       assert(result === '5 years')
     })
   })
 
   describe('when the unit option is supplied', function() {
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('second', function() {
       it('0 seconds', function() {
         var result = formatDistanceToNowStrict(
@@ -116,6 +131,7 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('minute', function() {
       it('0 minutes', function() {
         var result = formatDistanceToNowStrict(
@@ -142,6 +158,7 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('hour', function() {
       it('0 hours', function() {
         var result = formatDistanceToNowStrict(
@@ -168,6 +185,7 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('day', function() {
       it('0 days', function() {
         var result = formatDistanceToNowStrict(
@@ -193,6 +211,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '60 days')
       })
     })
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('month', function() {
       it('0 months', function() {
         var result = formatDistanceToNowStrict(
@@ -219,6 +238,7 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('year', function() {
       it('0 years', function() {
         var result = formatDistanceToNowStrict(
@@ -239,6 +259,7 @@ describe('formatDistanceToNowStrict', function() {
   })
 
   it('accepts timestamps', function() {
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = formatDistanceToNowStrict(
       new Date(1986, 3, 4, 11, 32, 0).getTime()
     )
@@ -263,6 +284,7 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('when the roundingMethod option is supplied', function() {
     it('default is "round"', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 59))
       assert(result === '2 minutes')
     })
@@ -354,6 +376,7 @@ describe('formatDistanceToNowStrict', function() {
       assert(result === 'It works!')
     })
 
+    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('does not contain `formatDistance` property', function() {
       it('throws `RangeError`', function() {
         var customLocale = {}
@@ -370,6 +393,7 @@ describe('formatDistanceToNowStrict', function() {
 
   describe('edge cases', function() {
     it('detects unit correctly for short months', function() {
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = formatDistanceToNowStrict(new Date(1986, 2 /* Mar */, 7))
       assert(result === '28 days')
     })
