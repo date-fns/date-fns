@@ -91,18 +91,18 @@ describe('closestTo', function() {
     assert.deepEqual(result, new Date(2015, 7 /* Aug */, 31))
   })
 
-  it('converts undefined into empty array', function() {
+  it('returns undefined when undefined is passed as second argument', function() {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, undefined)
-    assert(result == null)
+    assert(result === undefined)
   })
 
-  it('converts null into empty array', function() {
+  it('converts null into undefined', function() {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, null)
-    assert(result == null)
+    assert(result === undefined)
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
