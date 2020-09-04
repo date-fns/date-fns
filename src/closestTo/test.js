@@ -91,14 +91,14 @@ describe('closestTo', function() {
     assert.deepEqual(result, new Date(2015, 7 /* Aug */, 31))
   })
 
-  it('returns undefined when undefined is passed as second argument', function() {
+  it('returns undefined when the second argument is omitted', function() {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, undefined)
     assert(result === undefined)
   })
 
-  it('converts null into undefined', function() {
+  it('returns undefined if the given array is null', function() {
     var date = new Date(2014, 6 /* Jul */, 2).getTime()
     // $ExpectedMistake
     var result = closestTo(date, null)
