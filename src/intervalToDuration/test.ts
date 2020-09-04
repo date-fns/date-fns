@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import intervalToDuration from '.'
-
 
 describe('intervalToDuration', function() {
   it('Returns correct duration for arbitrary dates', function() {

@@ -60,7 +60,6 @@ export default function min(dirtyDatesArray) {
   datesArray.forEach(function(dirtyDate) {
     var currentDate = toDate(dirtyDate)
 
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     if (result === undefined || result > currentDate || isNaN(currentDate)) {
       result = currentDate
     }

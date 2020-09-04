@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getTimezoneOffsetInMilliseconds from '.'
-
 
 describe('getTimezoneOffsetInMilliseconds', function () {
   it('works for a modern date', function () {

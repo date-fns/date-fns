@@ -3,7 +3,6 @@
 import fn from '../../differenceInMilliseconds/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var differenceInMilliseconds = convertToFP(fn, 2)
 
 export default differenceInMilliseconds

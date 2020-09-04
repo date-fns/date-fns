@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import isLeapYear from '.'
-
 
 describe('isLeapYear', function() {
   it('returns true if the given date is in the leap year', function() {

@@ -45,7 +45,6 @@ export default function parseJSON(argument) {
       return new Date(
         Date.UTC(
           +parts[1],
-          // @ts-expect-error ts-migrate(2362) FIXME: The left-hand side of an arithmetic operation must... Remove this comment to see the full error message
           parts[2] - 1,
           +parts[3],
           +parts[4],

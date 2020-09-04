@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import parseJSON from '.'
-
 
 describe('parseJSON', function() {
   it('parses a fully formed ISO date with Z', () => {

@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getUTCDayOfYear from '.'
-
 
 describe('getUTCDayOfYear', function() {
   it('returns the day of the year of the given date', function() {

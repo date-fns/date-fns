@@ -1,10 +1,9 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import eachWeekendOfYear from '.'
 import isWeekend from '../isWeekend'
-
 
 describe('eachWeekendOfYear', () => {
   it('returns all weekends of the given year', () => {

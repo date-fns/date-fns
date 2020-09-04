@@ -1,10 +1,9 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
+
+import assert from 'power-assert'
 import sinon from 'sinon'
-
 import startOfToday from '.'
-
 
 describe('startOfToday', function() {
   let clock

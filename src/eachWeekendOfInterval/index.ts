@@ -33,7 +33,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function eachWeekendOfInterval(interval) {
   requiredArgs(1, arguments)
 
-  // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
   var dateInterval = eachDayOfInterval(interval)
   var weekends = []
   var index = 0

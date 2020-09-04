@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getISODay from '.'
-
 
 describe('getISODay', function() {
   it('returns the day of the ISO week of the given date', function() {

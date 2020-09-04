@@ -1,7 +1,6 @@
 // @flow
 /* eslint-env mocha */
 
-// @ts-expect-error ts-migrate(1259) FIXME: Module '"assert"' can only be default-imported usi... Remove this comment to see the full error message
 import assert from 'assert'
 import addHours from '.'
 
@@ -44,10 +43,8 @@ describe('addHours', function() {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
-    // @ts-expect-error ts-migrate(2578) FIXME: Unused '@ts-expect-error' directive.
     // @ts-expect-error
     assert.throws(addHours.bind(null), TypeError)
-    // @ts-expect-error ts-migrate(2578) FIXME: Unused '@ts-expect-error' directive.
     // @ts-expect-error
     assert.throws(addHours.bind(null, 1), TypeError)
   })

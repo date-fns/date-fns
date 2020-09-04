@@ -1,13 +1,11 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import roundToNearestMinutes from '.'
-
 
 describe('roundToNearestMinutes', function() {
   it('rounds given date to the nearest minute by default', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 16, 16)
     )
@@ -15,7 +13,6 @@ describe('roundToNearestMinutes', function() {
   })
 
   it('accepts a timestamp', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 13, 16).getTime()
     )
@@ -31,7 +28,6 @@ describe('roundToNearestMinutes', function() {
   })
 
   it('rounds up >=30 seconds for nearestTo=1', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 13, 30)
     )
@@ -39,7 +35,6 @@ describe('roundToNearestMinutes', function() {
   })
 
   it('rounds down <30 seconds for nearestTo=1', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = roundToNearestMinutes(
       new Date(2014, 6 /* Jul */, 10, 12, 13, 29, 999)
     )
@@ -48,15 +43,12 @@ describe('roundToNearestMinutes', function() {
 
   it('does not mutate the original date', function() {
     var date = new Date(2014, 6 /* Jul */, 10, 12, 10, 10, 99)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     roundToNearestMinutes(date)
     assert.deepEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 10, 10, 99))
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = roundToNearestMinutes(new Date(NaN))
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

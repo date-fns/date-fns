@@ -1,11 +1,10 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import formatRFC3339 from '.'
-import addLeadingZeros from '../_lib/addLeadingZeros'
-import toInteger from '../_lib/toInteger'
-
+import toInteger from '../_lib/toInteger/index'
+import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(date) {
@@ -30,14 +29,12 @@ function generateOffset(date) {
 describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {
     var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
   })
 
   it('accepts a timestamp', function() {
     var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
     var time = date.getTime()
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatRFC3339(time) === `2019-10-04T12:30:13${generateOffset(date)}`)
   })
 

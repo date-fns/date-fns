@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import format from '.'
-
 
 describe('format', function() {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -38,31 +37,26 @@ describe('format', function() {
 
   it('accepts a timestamp', function() {
     var date = new Date(2014, 3, 4).getTime()
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     assert(format(date, 'yyyy-MM-dd') === '2014-04-04')
   })
 
   it('escapes characters between the single quote characters', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = format(date, "'yyyy-'MM-dd'THH:mm:ss.SSSX' yyyy-'MM-dd'")
     assert(result === 'yyyy-04-04THH:mm:ss.SSSX 1986-MM-dd')
   })
 
   it('two single quote characters are transformed into a "real" single quote', function() {
     var date = new Date(2014, 3, 4, 5)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     assert(format(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
   it('accepts new line charactor', function() {
     var date = new Date(2014, 3, 4, 5)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     assert.equal(format(date, "yyyy-MM-dd'\n'HH:mm:ss"), '2014-04-04\n05:00:00')
   })
 
   describe('ordinal numbers', function() {
     it('ordinal day of an ordinal month', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, "do 'day of the' Mo 'month of' yyyy")
       assert(result === '4th day of the 4th month of 1986')
     })
@@ -70,7 +64,6 @@ describe('format', function() {
     it('should return a correct ordinal number', function() {
       var result = []
       for (var i = 1; i <= 31; i++) {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         result.push(format(new Date(2015, 0, i), 'do'))
       }
       var expected = [
@@ -111,7 +104,6 @@ describe('format', function() {
   })
 
   it('era', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = format(date, 'G GG GGG GGGG GGGGG')
     assert(result === 'AD AD AD Anno Domini A')
   })
@@ -119,7 +111,6 @@ describe('format', function() {
   describe('year', function() {
     describe('regular year', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'y yo yy yyy yyyy yyyyy')
         assert(result === '1986 1986th 86 1986 1986 01986')
       })
@@ -127,7 +118,6 @@ describe('format', function() {
       it('1 BC formats as 1', function() {
         var date = new Date(0, 0 /* Jan */, 1)
         date.setFullYear(0)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'y')
         assert(result === '1')
       })
@@ -135,7 +125,6 @@ describe('format', function() {
       it('2 BC formats as 2', function() {
         var date = new Date(0, 0 /* Jan */, 1)
         date.setFullYear(-1)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'y')
         assert(result === '2')
       })
@@ -175,7 +164,6 @@ describe('format', function() {
       it('1 BC formats as 1', function() {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(0)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'Y')
         assert(result === '1')
       })
@@ -183,7 +171,6 @@ describe('format', function() {
       it('2 BC formats as 2', function() {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(-1)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'Y')
         assert(result === '2')
       })
@@ -191,19 +178,16 @@ describe('format', function() {
 
     describe('ISO week-numbering year', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'R RR RRR RRRR RRRRR')
         assert(result === '1986 1986 1986 1986 01986')
       })
 
       it('the first week of the next year', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(new Date(2013, 11 /* Dec */, 30), 'RRRR')
         assert(result === '2014')
       })
 
       it('the last week of the previous year', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(new Date(2016, 0 /* Jan */, 1), 'RRRR')
         assert(result === '2015')
       })
@@ -211,7 +195,6 @@ describe('format', function() {
       it('1 BC formats as 0', function() {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(0)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'R')
         assert(result === '0')
       })
@@ -219,7 +202,6 @@ describe('format', function() {
       it('2 BC formats as -1', function() {
         var date = new Date(0, 6 /* Jul */, 2)
         date.setFullYear(-1)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'R')
         assert(result === '-1')
       })
@@ -227,7 +209,6 @@ describe('format', function() {
 
     describe('extended year', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'u uu uuu uuuu uuuuu')
         assert(result === '1986 1986 1986 1986 01986')
       })
@@ -235,7 +216,6 @@ describe('format', function() {
       it('1 BC formats as 0', function() {
         var date = new Date(0, 0, 1)
         date.setFullYear(0)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'u')
         assert(result === '0')
       })
@@ -243,7 +223,6 @@ describe('format', function() {
       it('2 BC formats as -1', function() {
         var date = new Date(0, 0, 1)
         date.setFullYear(-1)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'u')
         assert(result === '-1')
       })
@@ -252,13 +231,11 @@ describe('format', function() {
 
   describe('quarter', function() {
     it('formatting quarter', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'Q Qo QQ QQQ QQQQ QQQQQ')
       assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
 
     it('stand-alone quarter', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'q qo qq qqq qqqq qqqqq')
       assert(result === '2 2nd 02 Q2 2nd quarter 2')
     })
@@ -266,7 +243,6 @@ describe('format', function() {
     it('returns a correct quarter for each month', function() {
       var result = []
       for (var i = 0; i <= 11; i++) {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         result.push(format(new Date(1986, i, 1), 'Q'))
       }
       var expected = [
@@ -289,13 +265,11 @@ describe('format', function() {
 
   describe('month', function() {
     it('formatting month', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'M Mo MM MMM MMMM MMMMM')
       assert(result === '4 4th 04 Apr April A')
     })
 
     it('stand-alone month', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'L Lo LL LLL LLLL LLLLL')
       assert(result === '4 4th 04 Apr April A')
     })
@@ -305,7 +279,6 @@ describe('format', function() {
     describe('local week of year', function() {
       it('works as expected', function() {
         var date = new Date(1986, 3 /* Apr */, 6)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'w wo ww')
         assert(result === '15 15th 15')
       })
@@ -322,7 +295,6 @@ describe('format', function() {
 
     it('ISO week of year', function() {
       var date = new Date(1986, 3 /* Apr */, 6)
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'I Io II')
       assert(result === '14 14th 14')
     })
@@ -330,7 +302,6 @@ describe('format', function() {
 
   describe('day', function() {
     it('date', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'd do dd')
       assert(result === '4 4th 04')
     })
@@ -357,7 +328,6 @@ describe('format', function() {
   describe('week day', function() {
     describe('day of week', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'E EE EEE EEEE EEEEE EEEEEE')
         assert(result === 'Fri Fri Fri Friday F Fr')
       })
@@ -365,7 +335,6 @@ describe('format', function() {
 
     describe('ISO day of week', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'i io ii iii iiii iiiii iiiiii')
         assert(result === '5 5th 05 Fri Friday F Fr')
       })
@@ -373,7 +342,6 @@ describe('format', function() {
       it('returns a correct day of an ISO week', function() {
         var result = []
         for (var i = 1; i <= 7; i++) {
-          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           result.push(format(new Date(1986, 8 /* Sep */, i), 'i'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -383,7 +351,6 @@ describe('format', function() {
 
     describe('formatting day of week', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'e eo ee eee eeee eeeee eeeeee')
         assert(result === '6 6th 06 Fri Friday F Fr')
       })
@@ -391,7 +358,6 @@ describe('format', function() {
       it('by default, 1 is Sunday, 2 is Monday, ...', function() {
         var result = []
         for (var i = 7; i <= 13; i++) {
-          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           result.push(format(new Date(1986, 8 /* Sep */, i), 'e'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -412,7 +378,6 @@ describe('format', function() {
 
     describe('stand-alone day of week', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'c co cc ccc cccc ccccc cccccc')
         assert(result === '6 6th 06 Fri Friday F Fr')
       })
@@ -420,7 +385,6 @@ describe('format', function() {
       it('by default, 1 is Sunday, 2 is Monday, ...', function() {
         var result = []
         for (var i = 7; i <= 13; i++) {
-          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           result.push(format(new Date(1986, 8 /* Sep */, i), 'c'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
@@ -442,32 +406,27 @@ describe('format', function() {
 
   describe('day period and hour', function() {
     it('hour [1-12]', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'h ho hh')
       assert(result === '12 12th 12')
     })
 
     it('hour [0-23]', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'H Ho HH')
       assert(result === '0 0th 00')
     })
 
     it('hour [0-11]', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'K Ko KK')
       assert(result === '0 0th 00')
     })
 
     it('hour [1-24]', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0), 'k ko kk')
       assert(result === '24 24th 24')
     })
 
     describe('AM, PM', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(
           new Date(2018, 0 /* Jan */, 1, 0, 0, 0, 0),
           'a aa aaa aaaa aaaaa'
@@ -477,20 +436,17 @@ describe('format', function() {
 
       it('12 PM', function() {
         var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h H K k a') === '12 12 0 12 PM')
       })
 
       it('12 AM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h H K k a') === '12 0 0 24 AM')
       })
     })
 
     describe('AM, PM, noon, midnight', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(
           new Date(1986, 3 /* Apr */, 6, 2, 0, 0, 900),
           'b bb bbb bbbb bbbbb'
@@ -500,14 +456,12 @@ describe('format', function() {
 
       it('12 PM', function() {
         var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'b bb bbb bbbb bbbbb') === 'noon noon noon noon n')
       })
 
       it('12 AM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
         assert(
-          // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
           format(date, 'b bb bbb bbbb bbbbb') ===
             'midnight midnight midnight midnight mi'
         )
@@ -516,7 +470,6 @@ describe('format', function() {
 
     describe('flexible day periods', function() {
       it('works as expected', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = format(date, 'B, BB, BBB, BBBB, BBBBB')
         assert(
           result ===
@@ -526,45 +479,38 @@ describe('format', function() {
 
       it('12 PM', function() {
         var date = new Date(1986, 3 /* Apr */, 4, 12, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h B') === '12 in the afternoon')
       })
 
       it('5 PM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 17, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h B') === '5 in the evening')
       })
 
       it('12 AM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 0, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h B') === '12 at night')
       })
 
       it('4 AM', function() {
         var date = new Date(1986, 3 /* Apr */, 6, 4, 0, 0, 900)
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         assert(format(date, 'h B') === '4 in the morning')
       })
     })
   })
 
   it('minute', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = format(date, 'm mo mm')
     assert(result === '32 32nd 32')
   })
 
   describe('second', function() {
     it('second', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 's so ss')
       assert(result === '55 55th 55')
     })
 
     it('fractional seconds', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'S SS SSS SSSS')
       assert(result === '1 12 123 1230')
     })
@@ -572,7 +518,6 @@ describe('format', function() {
 
   describe('time zone', function() {
     it('ISO-8601 with Z', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'X XX XXX XXXX XXXXX')
       var expectedResult = [
         timezoneWithOptionalMinutesAndZShort,
@@ -585,7 +530,6 @@ describe('format', function() {
     })
 
     it('ISO-8601 without Z', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'x xx xxx xxxx xxxxx')
       var expectedResult = [
         timezoneWithOptionalMinutesShort,
@@ -598,7 +542,6 @@ describe('format', function() {
     })
 
     it('GMT', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'O OO OOO OOOO')
       var expectedResult = [
         timezoneGMTShort,
@@ -610,7 +553,6 @@ describe('format', function() {
     })
 
     it('Specific non-location', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'z zz zzz zzzz')
       var expectedResult = [
         timezoneGMTShort,
@@ -624,13 +566,11 @@ describe('format', function() {
 
   describe('timestamp', function() {
     it('seconds timestamp', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 't')
       assert(result === secondsTimestamp)
     })
 
     it('milliseconds timestamp', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'T')
       assert(result === timestamp)
     })
@@ -638,79 +578,66 @@ describe('format', function() {
 
   describe('long format', function() {
     it('short date', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'P')
       assert(result === '04/04/1986')
     })
 
     it('medium date', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PP')
       assert(result === 'Apr 4, 1986')
     })
 
     it('long date', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PPP')
       assert(result === 'April 4th, 1986')
     })
 
     it('full date', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PPPP')
       assert(result === 'Friday, April 4th, 1986')
     })
 
     it('short time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'p')
       assert(result === '10:32 AM')
     })
 
     it('medium time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'pp')
       assert(result === '10:32:55 AM')
     })
 
     it('long time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'ppp')
       assert(result === '10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'pppp')
       assert(result === '10:32:55 AM ' + timezoneGMT)
     })
 
     it('short date + time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'Pp')
       assert(result === '04/04/1986, 10:32 AM')
     })
 
     it('medium date + time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PPpp')
       assert(result === 'Apr 4, 1986, 10:32:55 AM')
     })
 
     it('long date + time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PPPppp')
       assert(result === 'April 4th, 1986 at 10:32:55 AM ' + timezoneGMTShort)
     })
 
     it('full date + time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'PPPPpppp')
       assert(result === 'Friday, April 4th, 1986 at 10:32:55 AM ' + timezoneGMT)
     })
 
     it('allows arbitrary combination of date and time', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = format(date, 'Ppppp')
       assert(result === '04/04/1986, 10:32:55 AM ' + timezoneGMT)
     })
@@ -728,7 +655,6 @@ describe('format', function() {
       var initialDate = new Date(0)
       initialDate.setFullYear(7, 11 /* Dec */, 31)
       initialDate.setHours(0, 0, 0, 0)
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       assert(format(initialDate, 'Y ww i') === '8 01 1')
     })
   })
@@ -740,7 +666,6 @@ describe('format', function() {
     var date = new Date(2014, 3, 4)
 
     // $ExpectedMistake
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     assert(format(date, formatString) === '2014-04-04')
   })
 

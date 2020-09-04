@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import set from '.'
-
 
 describe('set', function() {
   it('sets all values', function() {
@@ -123,13 +122,11 @@ describe('set', function() {
 
     it('returns Invalid Date if any value in values is NaN', function() {
       var result = set(new Date(2014, 8 /* Sep */), { year: NaN })
-      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert.deepEqual(isNaN(result), isNaN(new Date(NaN)))
     })
 
     it('returns Invalid Date the initial date was Invalid Date as well', function() {
       var result = set(new Date(NaN), { year: 2019 })
-      // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
       assert.deepEqual(isNaN(result), isNaN(new Date(NaN)))
     })
 

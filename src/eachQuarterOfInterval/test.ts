@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import eachQuarterOfInterval from '.'
-
 
 describe('eachQuarterOfInterval', function() {
   it('returns an array with starts of quarters from the quarter of the start date to the quarter of the end date', function() {

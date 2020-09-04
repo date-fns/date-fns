@@ -415,7 +415,6 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
         return longFormatter(substring, locale.formatLong, formatterOptions)
       }
       return substring

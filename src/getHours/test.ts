@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getHours from '.'
-
 
 describe('getHours', function() {
   it('returns the hours of the given date', function() {

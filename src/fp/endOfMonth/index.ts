@@ -3,7 +3,6 @@
 import fn from '../../endOfMonth/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var endOfMonth = convertToFP(fn, 1)
 
 export default endOfMonth

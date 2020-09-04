@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getUnixTime from '.'
-
 
 describe('getUnixTime', function() {
   it('returns the timestamp of the given date', function() {

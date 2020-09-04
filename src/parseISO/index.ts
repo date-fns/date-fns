@@ -101,9 +101,7 @@ export default function parseISO(argument, dirtyOptions) {
   var dateStrings = splitDateString(argument)
 
   var date
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
   if (dateStrings.date) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
     var parseYearResult = parseYear(dateStrings.date, additionalDigits)
     date = parseDate(parseYearResult.restDateString, parseYearResult.year)
   }
@@ -116,18 +114,14 @@ export default function parseISO(argument, dirtyOptions) {
   var time = 0
   var offset
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'time' does not exist on type '{}'.
   if (dateStrings.time) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'time' does not exist on type '{}'.
     time = parseTime(dateStrings.time)
     if (isNaN(time) || time === null) {
       return new Date(NaN)
     }
   }
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'timezone' does not exist on type '{}'.
   if (dateStrings.timezone) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'timezone' does not exist on type '{}'.
     offset = parseTimezone(dateStrings.timezone)
     if (isNaN(offset)) {
       return new Date(NaN)
@@ -167,18 +161,13 @@ function splitDateString(dateString) {
   }
 
   if (/:/.test(array[0])) {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
     dateStrings.date = null
     timeString = array[0]
   } else {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
     dateStrings.date = array[0]
     timeString = array[1]
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
     if (patterns.timeZoneDelimiter.test(dateStrings.date)) {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
       dateStrings.date = dateString.split(patterns.timeZoneDelimiter)[0]
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type '{}'.
       timeString = dateString.substr(dateStrings.date.length, dateString.length)
     }
   }
@@ -186,12 +175,9 @@ function splitDateString(dateString) {
   if (timeString) {
     var token = patterns.timezone.exec(timeString)
     if (token) {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'time' does not exist on type '{}'.
       dateStrings.time = timeString.replace(token[1], '')
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'timezone' does not exist on type '{}'.
       dateStrings.timezone = token[1]
     } else {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'time' does not exist on type '{}'.
       dateStrings.time = timeString
     }
   }

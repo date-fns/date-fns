@@ -627,7 +627,6 @@ var formatters = {
     switch (token) {
       // Hours and optional minutes
       case 'X':
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
       // Hours, minutes and optional seconds without `:` delimiter
@@ -635,7 +634,6 @@ var formatters = {
       // so this token always has the same output as `XX`
       case 'XXXX':
       case 'XX': // Hours and minutes without `:` delimiter
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return formatTimezone(timezoneOffset)
 
       // Hours, minutes and optional seconds with `:` delimiter
@@ -656,7 +654,6 @@ var formatters = {
     switch (token) {
       // Hours and optional minutes
       case 'x':
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return formatTimezoneWithOptionalMinutes(timezoneOffset)
 
       // Hours, minutes and optional seconds without `:` delimiter
@@ -664,7 +661,6 @@ var formatters = {
       // so this token always has the same output as `xx`
       case 'xxxx':
       case 'xx': // Hours and minutes without `:` delimiter
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
         return formatTimezone(timezoneOffset)
 
       // Hours, minutes and optional seconds with `:` delimiter

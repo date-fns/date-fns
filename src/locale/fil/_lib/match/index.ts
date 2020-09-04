@@ -1,8 +1,6 @@
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../../../_lib/buildParseFn/ind... Remove this comment to see the full error message
 import buildParseFn from '../../../_lib/buildParseFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../../../_lib/parseDecimal/ind... Remove this comment to see the full error message
 import parseDecimal from '../../../_lib/parseDecimal/index'
 
 var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
@@ -51,13 +49,10 @@ var parseTimeOfDayPatterns = {
 var match = {
   ordinalNumbers: buildMatchPatternFn(matchOrdinalNumbersPattern),
   ordinalNumber: parseDecimal,
-  // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
   weekdays: buildMatchFn(matchWeekdaysPatterns, 'long'),
   weekday: buildParseFn(parseWeekdayPatterns, 'any'),
-  // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
   months: buildMatchFn(matchMonthsPatterns, 'long'),
   month: buildParseFn(parseMonthPatterns, 'any'),
-  // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
   timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
   timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
 }

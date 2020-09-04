@@ -319,11 +319,9 @@ export default function formatDistance(token, count, options) {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      // @ts-expect-error ts-migrate(2739) FIXME: Type '{ lessThanXSeconds: { one: string; two: stri... Remove this comment to see the full error message
       localeObject = distanceInWordsLocaleFuture
       result += 'čez '
     } else {
-      // @ts-expect-error ts-migrate(2739) FIXME: Type '{ lessThanXSeconds: { one: string; two: stri... Remove this comment to see the full error message
       localeObject = distanceInWordsLocalePast
       result += 'pred '
     }

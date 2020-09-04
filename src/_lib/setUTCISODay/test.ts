@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import setUTCISODay from '.'
-
 
 describe('setUTCISODay', function() {
   it('sets the day of the ISO week', function() {
@@ -16,7 +15,6 @@ describe('setUTCISODay', function() {
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('the day index is more than 7', function() {
     it('sets the day of the next ISO week', function() {
       var result = setUTCISODay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 8)
@@ -29,7 +27,6 @@ describe('setUTCISODay', function() {
     })
   })
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('the day index is less than 1', function() {
     it('sets the day of the last ISO week', function() {
       var result = setUTCISODay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0)
@@ -68,13 +65,11 @@ describe('setUTCISODay', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     var result = setUTCISODay(new Date(NaN), 3)
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
     var result = setUTCISODay(new Date(2014, 8 /* Sep */, 1), NaN)
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

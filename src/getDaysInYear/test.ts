@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getDaysInYear from '.'
-
 
 describe('getDaysInYear', function() {
   it('returns the number of days in the year of the given date', function() {

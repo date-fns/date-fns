@@ -1,14 +1,12 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import startOfUTCWeek from '.'
-
 
 describe('startOfUTCWeek', function() {
   it('returns the date with the time set to 00:00:00 and the date set to the first day of a week', function() {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = startOfUTCWeek(date)
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
   })
@@ -48,20 +46,17 @@ describe('startOfUTCWeek', function() {
 
   it('accepts a timestamp', function() {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)).getTime()
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = startOfUTCWeek(date)
     assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
   })
 
   it('does not mutate the original date', function() {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     startOfUTCWeek(date)
     assert.deepEqual(date, new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0)))
   })
 
   describe('edge cases', function() {
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is before the start of a week', function() {
       it('it returns the start of a week', function() {
         var date = new Date(Date.UTC(2014, 9 /* Oct */, 6))
@@ -70,7 +65,6 @@ describe('startOfUTCWeek', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is the start of a week', function() {
       it('it returns the start of a week', function() {
         var date = new Date(Date.UTC(2014, 9 /* Oct */, 8))
@@ -79,7 +73,6 @@ describe('startOfUTCWeek', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when the given day is after the start of a week', function() {
       it('it returns the start of a week', function() {
         var date = new Date(Date.UTC(2014, 9 /* Oct */, 10))
@@ -90,16 +83,13 @@ describe('startOfUTCWeek', function() {
 
     it('handles the week at the start of a year', function() {
       var date = new Date(Date.UTC(2014, 0 /* Jan */, 1))
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
       var result = startOfUTCWeek(date)
       assert.deepEqual(result, new Date(Date.UTC(2013, 11 /* Dec */, 29)))
     })
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = startOfUTCWeek(new Date(NaN))
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

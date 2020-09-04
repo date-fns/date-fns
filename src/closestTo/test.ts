@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import closestTo from '.'
-
 
 describe('closestTo', function() {
   it('returns the date from the given array closest to the given date', function() {
@@ -46,7 +45,6 @@ describe('closestTo', function() {
       new Date(2015, 7 /* Aug */, 31),
       new Date(2012, 6 /* Jul */, 2)
     ])
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
@@ -57,7 +55,6 @@ describe('closestTo', function() {
       new Date(NaN),
       new Date(2012, 6 /* Jul */, 2)
     ])
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
@@ -68,7 +65,6 @@ describe('closestTo', function() {
       new Date(NaN),
       new Date(2012, 6 /* Jul */, 2)
     ])
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 
@@ -80,7 +76,6 @@ describe('closestTo', function() {
       undefined,
       new Date(2012, 6 /* Jul */, 2)
     ])
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
     assert(result instanceof Date && isNaN(result))
   })
 

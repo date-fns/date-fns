@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import eachWeekendOfInterval from '.'
-
 
 describe('eachWeekendOfInterval', function() {
   it('returns all weekends within the interval', function() {

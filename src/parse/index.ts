@@ -436,7 +436,6 @@ export default function parse(
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 3.
         return longFormatter(substring, locale.formatLong, subFnOptions)
       }
       return substring
@@ -506,7 +505,6 @@ export default function parse(
         priority: parser.priority,
         subPriority: parser.subPriority || 0,
         set: parser.set,
-        // @ts-expect-error ts-migrate(2345) FIXME: Object literal may only specify known properties, ... Remove this comment to see the full error message
         validate: parser.validate,
         value: parseResult.value,
         index: setters.length
@@ -568,7 +566,6 @@ export default function parse(
 
   var date = toDate(dirtyReferenceDate)
 
-  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
   if (isNaN(date)) {
     return new Date(NaN)
   }
@@ -583,15 +580,12 @@ export default function parse(
     var setter = uniquePrioritySetters[i]
 
     if (
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'validate' does not exist on type '{ prio... Remove this comment to see the full error message
       setter.validate &&
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'validate' does not exist on type '{ prio... Remove this comment to see the full error message
       !setter.validate(utcDate, setter.value, subFnOptions)
     ) {
       return new Date(NaN)
     }
 
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 4.
     var result = setter.set(utcDate, flags, setter.value, subFnOptions)
     // Result is tuple (date, flags)
     if (result[0]) {

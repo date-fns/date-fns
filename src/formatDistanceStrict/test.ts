@@ -1,16 +1,13 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import formatDistanceStrict from '.'
-
 
 describe('formatDistanceStrict', function() {
   describe('seconds', function() {
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('when no unit is set', function() {
       it('0 seconds', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 5),
           new Date(1986, 3, 4, 10, 32, 5)
@@ -19,7 +16,6 @@ describe('formatDistanceStrict', function() {
       })
 
       it('5 seconds', function() {
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 5)
@@ -31,7 +27,6 @@ describe('formatDistanceStrict', function() {
 
   describe('minutes', function() {
     it('1 minute', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 0)
@@ -40,7 +35,6 @@ describe('formatDistanceStrict', function() {
     })
 
     it('n minutes', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 35, 0)
@@ -51,7 +45,6 @@ describe('formatDistanceStrict', function() {
 
   describe('hours', function() {
     it('1 hour', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0)
@@ -60,7 +53,6 @@ describe('formatDistanceStrict', function() {
     })
 
     it('n hours', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 13, 32, 0)
@@ -71,7 +63,6 @@ describe('formatDistanceStrict', function() {
 
   describe('days', function() {
     it('1 day', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 5, 10, 32, 0)
@@ -80,7 +71,6 @@ describe('formatDistanceStrict', function() {
     })
 
     it('n days', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 7, 10, 32, 0)
@@ -91,7 +81,6 @@ describe('formatDistanceStrict', function() {
 
   describe('months', function() {
     it('1 month', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 4, 4, 10, 32, 0)
@@ -100,7 +89,6 @@ describe('formatDistanceStrict', function() {
     })
 
     it('n months', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 6, 4, 10, 32, 0)
@@ -111,7 +99,6 @@ describe('formatDistanceStrict', function() {
 
   describe('years', function() {
     it('1 year', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 3, 4, 10, 32, 0)
@@ -120,7 +107,6 @@ describe('formatDistanceStrict', function() {
     })
 
     it('n years', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1991, 3, 4, 10, 32, 0)
@@ -130,7 +116,6 @@ describe('formatDistanceStrict', function() {
   })
 
   describe('when the unit option is supplied', function() {
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('second', function() {
       it('0 seconds', function() {
         var result = formatDistanceStrict(
@@ -160,7 +145,6 @@ describe('formatDistanceStrict', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('minute', function() {
       it('0 minutes', function() {
         var result = formatDistanceStrict(
@@ -190,7 +174,6 @@ describe('formatDistanceStrict', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('hour', function() {
       it('0 hours', function() {
         var result = formatDistanceStrict(
@@ -220,7 +203,6 @@ describe('formatDistanceStrict', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('day', function() {
       it('0 days', function() {
         var result = formatDistanceStrict(
@@ -249,7 +231,6 @@ describe('formatDistanceStrict', function() {
         assert(result === '60 days')
       })
     })
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('month', function() {
       it('0 months', function() {
         var result = formatDistanceStrict(
@@ -279,7 +260,6 @@ describe('formatDistanceStrict', function() {
       })
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('year', function() {
       it('0 years', function() {
         var result = formatDistanceStrict(
@@ -302,7 +282,6 @@ describe('formatDistanceStrict', function() {
   })
 
   it('accepts timestamps', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
       new Date(1986, 3, 4, 11, 32, 0).getTime()
@@ -332,7 +311,6 @@ describe('formatDistanceStrict', function() {
 
   describe('when the roundingMethod option is supplied', function() {
     it('default is "round"', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 59)
@@ -439,7 +417,6 @@ describe('formatDistanceStrict', function() {
       assert(result === 'It works!')
     })
 
-    // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
     context('does not contain `formatDistance` property', function() {
       it('throws `RangeError`', function() {
         var customLocale = {}
@@ -457,7 +434,6 @@ describe('formatDistanceStrict', function() {
 
   describe('edge cases', function() {
     it('detects unit correctly for short months', function() {
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
       var result = formatDistanceStrict(
         new Date(2018, 1 /* Feb */, 1),
         new Date(2018, 2 /* Mar */, 1)

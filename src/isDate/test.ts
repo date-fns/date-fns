@@ -1,10 +1,9 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
-
-import isDate from '.'
-
 /* global HTMLIFrameElement */
+
+import assert from 'power-assert'
+import isDate from '.'
 
 describe('isDate', function() {
   it('returns true if the given value is a date object', function() {
@@ -15,7 +14,6 @@ describe('isDate', function() {
     assert(isDate(new Date(NaN)))
   })
 
-  // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'context'.
   context('with date passed from another iframe', function() {
     afterEach(function() {
       const iframe = document.getElementById('iframe')
@@ -29,7 +27,6 @@ describe('isDate', function() {
         iframe.id = 'iframe'
         iframe.addEventListener('load', function() {
           execScript('window.date = new Date()') // eslint-disable-line no-implied-eval
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'date' does not exist on type 'Window'.
           assert(isDate(iframe.contentWindow.date))
           // $ExpectedMistake sadly, but Flow doesn't know about Mocha's done
           done()
@@ -47,7 +44,6 @@ describe('isDate', function() {
       const doc = iframe.contentDocument
       const script = doc.createElement('script')
       script.innerText = scriptText
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'HTMLBodyElement' does not exist on type ... Remove this comment to see the full error message
       if (!(doc.body instanceof iframe.contentWindow.HTMLBodyElement)) {
         throw new Error(
           "Can't execute the script because iframe does not have body"

@@ -80,13 +80,9 @@ export default function formatDuration(duration, options = {}) {
     )
   }
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'format' does not exist on type '{}'.
   const format = options.format || defaultFormat
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'locale' does not exist on type '{}'.
   const locale = options.locale || defaultLocale
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'zero' does not exist on type '{}'.
   const zero = options.zero || false
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'delimiter' does not exist on type '{}'.
   const delimiter = options.delimiter || ' '
 
   const result = format

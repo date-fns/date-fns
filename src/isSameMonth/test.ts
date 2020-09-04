@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import isSameMonth from '.'
-
 
 describe('isSameMonth', function() {
   it('returns true if the given dates have the same month (and year)', function() {

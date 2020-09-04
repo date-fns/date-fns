@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import toInteger from '.'
-
 
 describe('toInteger', function () {
   it('truncates positive numbers', function () {

@@ -1,13 +1,11 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import isSameWeek from '.'
-
 
 describe('isSameWeek', function() {
   it('returns true if the given dates have the same week', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31),
       new Date(2014, 8 /* Sep */, 4)
@@ -16,7 +14,6 @@ describe('isSameWeek', function() {
   })
 
   it('returns false if the given dates have different weeks', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 30),
       new Date(2014, 8 /* Sep */, 4)
@@ -73,7 +70,6 @@ describe('isSameWeek', function() {
   })
 
   it('accepts a timestamp', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(
       new Date(2014, 7 /* Aug */, 31).getTime(),
       new Date(2014, 8 /* Sep */, 4).getTime()
@@ -82,19 +78,16 @@ describe('isSameWeek', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
     assert(result === false)
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
     assert(result === false)
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
     var result = isSameWeek(new Date(NaN), new Date(NaN))
     assert(result === false)
   })

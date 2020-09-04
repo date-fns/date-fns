@@ -1,10 +1,9 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
-
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
 function generateOffset(originalDate) {
@@ -31,14 +30,12 @@ describe('formatISO', () => {
   it('formats ISO-8601 extended format', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const tzOffsetExtended = generateOffset(date)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123).getTime()
     const tzOffsetExtended = generateOffset(new Date(date))
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
   })
 

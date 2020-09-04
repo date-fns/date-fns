@@ -8,7 +8,6 @@ import requiredArgs from '../requiredArgs/index'
 export default function getUTCWeekYear(dirtyDate, dirtyOptions) {
   requiredArgs(1, arguments)
 
-  // @ts-expect-error ts-migrate(2554) FIXME: Expected 1 arguments, but got 2.
   var date = toDate(dirtyDate, dirtyOptions)
   var year = date.getUTCFullYear()
 

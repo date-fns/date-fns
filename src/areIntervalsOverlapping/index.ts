@@ -109,7 +109,6 @@ export default function areIntervalsOverlapping(
     throw new RangeError('Invalid interval')
   }
 
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'inclusive' does not exist on type '{}'.
   if (options.inclusive) {
     return leftStartTime <= rightEndTime && rightStartTime <= leftEndTime
   }

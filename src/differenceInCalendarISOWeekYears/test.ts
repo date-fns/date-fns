@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import differenceInCalendarISOWeekYears from '.'
-
 
 describe('differenceInCalendarISOWeekYears', function() {
   it('returns the number of calendar ISO week-numbering years between the given dates', function() {

@@ -1,29 +1,29 @@
 function futureSeconds(text) {
-  return text.replace(/sekuntia?/, 'sekunnin');
+  return text.replace(/sekuntia?/, 'sekunnin')
 }
 
 function futureMinutes(text) {
-  return text.replace(/minuuttia?/, 'minuutin');
+  return text.replace(/minuuttia?/, 'minuutin')
 }
 
 function futureHours(text) {
-  return text.replace(/tuntia?/, 'tunnin');
+  return text.replace(/tuntia?/, 'tunnin')
 }
 
 function futureDays(text) {
-  return text.replace(/päivää?/, 'päivän');
+  return text.replace(/päivää?/, 'päivän')
 }
 
 function futureWeeks(text) {
-  return text.replace(/(viikko|viikkoa)/, 'viikon');
+  return text.replace(/(viikko|viikkoa)/, 'viikon')
 }
 
 function futureMonths(text) {
-  return text.replace(/(kuukausi|kuukautta)/, 'kuukauden');
+  return text.replace(/(kuukausi|kuukautta)/, 'kuukauden')
 }
 
 function futureYears(text) {
-  return text.replace(/(vuosi|vuotta)/, 'vuoden');
+  return text.replace(/(vuosi|vuotta)/, 'vuoden')
 }
 
 var formatDistanceLocale = {

@@ -3,7 +3,6 @@
 import fn from '../../getDayOfYear/index'
 import convertToFP from '../_lib/convertToFP/index'
 
-// @ts-expect-error ts-migrate(2554) FIXME: Expected 3 arguments, but got 2.
 var getDayOfYear = convertToFP(fn, 1)
 
 export default getDayOfYear

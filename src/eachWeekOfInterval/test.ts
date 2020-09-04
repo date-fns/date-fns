@@ -1,13 +1,11 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import eachWeekOfInterval from '.'
-
 
 describe('eachWeekOfInterval', function() {
   it('returns an array with starts of weeks from the week of the start date to the week of the end date', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 10 /* Nov */, 23)
@@ -25,7 +23,6 @@ describe('eachWeekOfInterval', function() {
   })
 
   it('accepts timestamps', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 10 /* Nov */, 23).getTime()
@@ -43,7 +40,6 @@ describe('eachWeekOfInterval', function() {
   })
 
   it('handles the dates that are not starts/ends of days and weeks', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 10 /* Nov */, 25, 22, 16)
@@ -82,7 +78,6 @@ describe('eachWeekOfInterval', function() {
   })
 
   it('returns one week if the both arguments are on the same week', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 8, 15)
@@ -91,7 +86,6 @@ describe('eachWeekOfInterval', function() {
   })
 
   it('returns one day if the both arguments are the same', function() {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     var result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)

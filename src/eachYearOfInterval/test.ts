@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import eachYearOfInterval from '.'
-
 
 describe('eachYearOfInterval', function() {
   it('returns an array with starts of days from the day of the start date to the day of the end date', function() {

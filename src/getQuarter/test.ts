@@ -1,9 +1,8 @@
 // @flow
 /* eslint-env mocha */
-import assert from 'assert'
 
+import assert from 'power-assert'
 import getQuarter from '.'
-
 
 describe('getQuarter', function() {
   it('returns the quarter of the given date', function() {

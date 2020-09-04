@@ -52,7 +52,6 @@ export default function set(dirtyDate, values) {
   var date = toDate(dirtyDate)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'Date' is not assignable to param... Remove this comment to see the full error message
   if (isNaN(date)) {
     return new Date(NaN)
   }

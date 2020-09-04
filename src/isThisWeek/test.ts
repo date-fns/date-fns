@@ -1,7 +1,6 @@
 // @flow
 /* eslint-env mocha */
 
-// @ts-expect-error ts-migrate(1259) FIXME: Module '"assert"' can only be default-imported usi... Remove this comment to see the full error message
 import assert from 'assert'
 import sinon from 'sinon'
 import isThisWeek from '.'
@@ -18,13 +17,11 @@ describe('isThisWeek', () => {
 
   it('returns true if the given date and the current date have the same week', () => {
     const date = new Date(2014, 8 /* Sep */, 21)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(isThisWeek(date) === true)
   })
 
   it('returns false if the given date and the current date have different weeks', () => {
     const date = new Date(2014, 8 /* Sep */, 29)
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(isThisWeek(date) === false)
   })
 
@@ -35,7 +32,6 @@ describe('isThisWeek', () => {
 
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 21).getTime()
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 2 arguments, but got 1.
     assert(isThisWeek(date) === true)
   })
 
