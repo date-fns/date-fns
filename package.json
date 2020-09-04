@@ -25,7 +25,9 @@
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
+    "ts-migrate:rename-all": "ts-migrate rename ./ && rm -rf docs/ config/ examples/ test/ scripts/ benchmark.ts jest.config.ts test.ts testWithoutLocales.ts && git checkout docs/ config/ examples/ test/ scripts/ benchmark.js jest.config.js test.js testWithoutLocales.js",
+    "ts-migrate:migrate": "ts-migrate migrate src/"
   },
   "husky": {
     "hooks": {
@@ -102,6 +104,7 @@
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
     "snazzy": "^7.0.0",
+    "ts-migrate": "^0.1.2",
     "typescript": "^4.0.2",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
