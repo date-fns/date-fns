@@ -36,8 +36,8 @@ import { supportedLocales } from './config.js'
 export default const config = {
   plugins: [
     new webpack.ContextReplacementPlugin(
-      /date\-fns[\/\\]/,
-      new RegExp(`[/\\\\\](${supportedLocales.join('|')})[/\\\\\]index\.js$`)
+      /^date-fns[/\\]locale$/,
+      new RegExp(`\\.[/\\\\](${supportedLocales.join('|')})[/\\\\]index\\.js$`)
     )
   ]
 }
