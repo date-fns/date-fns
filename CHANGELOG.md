@@ -906,7 +906,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   In FP functions, the order of arguments is reversed.
 
-  See [FP Guide](docs/fp) for more information.
+  See [FP Guide](docs/fp.md) for more information.
 
   ```javascript
   import addYears from 'date-fns/fp/addYears'
