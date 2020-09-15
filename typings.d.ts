@@ -815,6 +815,9 @@ declare module 'date-fns' {
   ): Date
   namespace parseISO {}
 
+  function parseISODuration(argument: string): Duration | null
+  namespace parseISODuration {}
+
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
 
@@ -1758,6 +1761,11 @@ declare module 'date-fns/parse' {
 declare module 'date-fns/parseISO' {
   import { parseISO } from 'date-fns'
   export default parseISO
+}
+
+declare module 'date-fns/parseISODuration' {
+  import { parseISODuration } from 'date-fns'
+  export default parseISODuration
 }
 
 declare module 'date-fns/parseJSON' {
@@ -2740,6 +2748,11 @@ declare module 'date-fns/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/parseISODuration/index' {
+  import { parseISODuration } from 'date-fns'
+  export default parseISODuration
+}
+
 declare module 'date-fns/parseJSON/index' {
   import { parseJSON } from 'date-fns'
   export default parseJSON
@@ -3720,6 +3733,11 @@ declare module 'date-fns/parseISO/index.js' {
   export default parseISO
 }
 
+declare module 'date-fns/parseISODuration/index.js' {
+  import { parseISODuration } from 'date-fns'
+  export default parseISODuration
+}
+
 declare module 'date-fns/parseJSON/index.js' {
   import { parseJSON } from 'date-fns'
   export default parseJSON
@@ -4633,6 +4651,9 @@ declare module 'date-fns/fp' {
 
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
+
+  const parseISODuration: CurriedFn1<string, Duration | null>
+  namespace parseISODuration {}
 
   const parseISOWithOptions: CurriedFn2<
     {
@@ -5642,6 +5663,11 @@ declare module 'date-fns/fp/parse' {
 declare module 'date-fns/fp/parseISO' {
   import { parseISO } from 'date-fns/fp'
   export default parseISO
+}
+
+declare module 'date-fns/fp/parseISODuration' {
+  import { parseISODuration } from 'date-fns/fp'
+  export default parseISODuration
 }
 
 declare module 'date-fns/fp/parseISOWithOptions' {
@@ -6674,6 +6700,11 @@ declare module 'date-fns/fp/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/fp/parseISODuration/index' {
+  import { parseISODuration } from 'date-fns/fp'
+  export default parseISODuration
+}
+
 declare module 'date-fns/fp/parseISOWithOptions/index' {
   import { parseISOWithOptions } from 'date-fns/fp'
   export default parseISOWithOptions
@@ -7704,6 +7735,11 @@ declare module 'date-fns/fp/parseISO/index.js' {
   export default parseISO
 }
 
+declare module 'date-fns/fp/parseISODuration/index.js' {
+  import { parseISODuration } from 'date-fns/fp'
+  export default parseISODuration
+}
+
 declare module 'date-fns/fp/parseISOWithOptions/index.js' {
   import { parseISOWithOptions } from 'date-fns/fp'
   export default parseISOWithOptions
@@ -8689,6 +8725,9 @@ declare module 'date-fns/esm' {
   ): Date
   namespace parseISO {}
 
+  function parseISODuration(argument: string): Duration | null
+  namespace parseISODuration {}
+
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
 
@@ -9632,6 +9671,11 @@ declare module 'date-fns/esm/parse' {
 declare module 'date-fns/esm/parseISO' {
   import { parseISO } from 'date-fns/esm'
   export default parseISO
+}
+
+declare module 'date-fns/esm/parseISODuration' {
+  import { parseISODuration } from 'date-fns/esm'
+  export default parseISODuration
 }
 
 declare module 'date-fns/esm/parseJSON' {
@@ -10614,6 +10658,11 @@ declare module 'date-fns/esm/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/esm/parseISODuration/index' {
+  import { parseISODuration } from 'date-fns/esm'
+  export default parseISODuration
+}
+
 declare module 'date-fns/esm/parseJSON/index' {
   import { parseJSON } from 'date-fns/esm'
   export default parseJSON
@@ -11594,6 +11643,11 @@ declare module 'date-fns/esm/parseISO/index.js' {
   export default parseISO
 }
 
+declare module 'date-fns/esm/parseISODuration/index.js' {
+  import { parseISODuration } from 'date-fns/esm'
+  export default parseISODuration
+}
+
 declare module 'date-fns/esm/parseJSON/index.js' {
   import { parseJSON } from 'date-fns/esm'
   export default parseJSON
@@ -12507,6 +12561,9 @@ declare module 'date-fns/esm/fp' {
 
   const parseISO: CurriedFn1<string, Date>
   namespace parseISO {}
+
+  const parseISODuration: CurriedFn1<string, Duration | null>
+  namespace parseISODuration {}
 
   const parseISOWithOptions: CurriedFn2<
     {
@@ -13516,6 +13573,11 @@ declare module 'date-fns/esm/fp/parse' {
 declare module 'date-fns/esm/fp/parseISO' {
   import { parseISO } from 'date-fns/esm/fp'
   export default parseISO
+}
+
+declare module 'date-fns/esm/fp/parseISODuration' {
+  import { parseISODuration } from 'date-fns/esm/fp'
+  export default parseISODuration
 }
 
 declare module 'date-fns/esm/fp/parseISOWithOptions' {
@@ -14548,6 +14610,11 @@ declare module 'date-fns/esm/fp/parseISO/index' {
   export default parseISO
 }
 
+declare module 'date-fns/esm/fp/parseISODuration/index' {
+  import { parseISODuration } from 'date-fns/esm/fp'
+  export default parseISODuration
+}
+
 declare module 'date-fns/esm/fp/parseISOWithOptions/index' {
   import { parseISOWithOptions } from 'date-fns/esm/fp'
   export default parseISOWithOptions
@@ -15576,6 +15643,11 @@ declare module 'date-fns/esm/fp/parse/index.js' {
 declare module 'date-fns/esm/fp/parseISO/index.js' {
   import { parseISO } from 'date-fns/esm/fp'
   export default parseISO
+}
+
+declare module 'date-fns/esm/fp/parseISODuration/index.js' {
+  import { parseISODuration } from 'date-fns/esm/fp'
+  export default parseISODuration
 }
 
 declare module 'date-fns/esm/fp/parseISOWithOptions/index.js' {
@@ -19141,6 +19213,8 @@ interface dateFns {
       additionalDigits?: 0 | 1 | 2
     }
   ): Date
+
+  parseISODuration(argument: string): Duration | null
 
   parseJSON(argument: string | number | Date): Date
 

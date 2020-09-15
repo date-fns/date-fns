@@ -601,6 +601,8 @@ declare module.exports: {
     }
   ) => Date,
 
+  parseISODuration: (argument: string) => Duration | null,
+
   parseJSON: (argument: string | number | Date) => Date,
 
   roundToNearestMinutes: (
