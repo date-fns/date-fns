@@ -790,6 +790,9 @@ declare module 'date-fns' {
   function max(datesArray: (Date | number)[]): Date
   namespace max {}
 
+  function milliseconds(duration: Duration): number
+  namespace milliseconds {}
+
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
 
@@ -1743,6 +1746,11 @@ declare module 'date-fns/lightFormat' {
 declare module 'date-fns/max' {
   import { max } from 'date-fns'
   export default max
+}
+
+declare module 'date-fns/milliseconds' {
+  import { milliseconds } from 'date-fns'
+  export default milliseconds
 }
 
 declare module 'date-fns/min' {
@@ -2725,6 +2733,11 @@ declare module 'date-fns/max/index' {
   export default max
 }
 
+declare module 'date-fns/milliseconds/index' {
+  import { milliseconds } from 'date-fns'
+  export default milliseconds
+}
+
 declare module 'date-fns/min/index' {
   import { min } from 'date-fns'
   export default min
@@ -3705,6 +3718,11 @@ declare module 'date-fns/max/index.js' {
   export default max
 }
 
+declare module 'date-fns/milliseconds/index.js' {
+  import { milliseconds } from 'date-fns'
+  export default milliseconds
+}
+
 declare module 'date-fns/min/index.js' {
   import { min } from 'date-fns'
   export default min
@@ -4624,6 +4642,9 @@ declare module 'date-fns/fp' {
 
   const max: CurriedFn1<(Date | number)[], Date>
   namespace max {}
+
+  const milliseconds: CurriedFn1<Duration, number>
+  namespace milliseconds {}
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
@@ -5627,6 +5648,11 @@ declare module 'date-fns/fp/lightFormat' {
 declare module 'date-fns/fp/max' {
   import { max } from 'date-fns/fp'
   export default max
+}
+
+declare module 'date-fns/fp/milliseconds' {
+  import { milliseconds } from 'date-fns/fp'
+  export default milliseconds
 }
 
 declare module 'date-fns/fp/min' {
@@ -6659,6 +6685,11 @@ declare module 'date-fns/fp/max/index' {
   export default max
 }
 
+declare module 'date-fns/fp/milliseconds/index' {
+  import { milliseconds } from 'date-fns/fp'
+  export default milliseconds
+}
+
 declare module 'date-fns/fp/min/index' {
   import { min } from 'date-fns/fp'
   export default min
@@ -7689,6 +7720,11 @@ declare module 'date-fns/fp/max/index.js' {
   export default max
 }
 
+declare module 'date-fns/fp/milliseconds/index.js' {
+  import { milliseconds } from 'date-fns/fp'
+  export default milliseconds
+}
+
 declare module 'date-fns/fp/min/index.js' {
   import { min } from 'date-fns/fp'
   export default min
@@ -8664,6 +8700,9 @@ declare module 'date-fns/esm' {
   function max(datesArray: (Date | number)[]): Date
   namespace max {}
 
+  function milliseconds(duration: Duration): number
+  namespace milliseconds {}
+
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
 
@@ -9617,6 +9656,11 @@ declare module 'date-fns/esm/lightFormat' {
 declare module 'date-fns/esm/max' {
   import { max } from 'date-fns/esm'
   export default max
+}
+
+declare module 'date-fns/esm/milliseconds' {
+  import { milliseconds } from 'date-fns/esm'
+  export default milliseconds
 }
 
 declare module 'date-fns/esm/min' {
@@ -10599,6 +10643,11 @@ declare module 'date-fns/esm/max/index' {
   export default max
 }
 
+declare module 'date-fns/esm/milliseconds/index' {
+  import { milliseconds } from 'date-fns/esm'
+  export default milliseconds
+}
+
 declare module 'date-fns/esm/min/index' {
   import { min } from 'date-fns/esm'
   export default min
@@ -11579,6 +11628,11 @@ declare module 'date-fns/esm/max/index.js' {
   export default max
 }
 
+declare module 'date-fns/esm/milliseconds/index.js' {
+  import { milliseconds } from 'date-fns/esm'
+  export default milliseconds
+}
+
 declare module 'date-fns/esm/min/index.js' {
   import { min } from 'date-fns/esm'
   export default min
@@ -12498,6 +12552,9 @@ declare module 'date-fns/esm/fp' {
 
   const max: CurriedFn1<(Date | number)[], Date>
   namespace max {}
+
+  const milliseconds: CurriedFn1<Duration, number>
+  namespace milliseconds {}
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
@@ -13501,6 +13558,11 @@ declare module 'date-fns/esm/fp/lightFormat' {
 declare module 'date-fns/esm/fp/max' {
   import { max } from 'date-fns/esm/fp'
   export default max
+}
+
+declare module 'date-fns/esm/fp/milliseconds' {
+  import { milliseconds } from 'date-fns/esm/fp'
+  export default milliseconds
 }
 
 declare module 'date-fns/esm/fp/min' {
@@ -14533,6 +14595,11 @@ declare module 'date-fns/esm/fp/max/index' {
   export default max
 }
 
+declare module 'date-fns/esm/fp/milliseconds/index' {
+  import { milliseconds } from 'date-fns/esm/fp'
+  export default milliseconds
+}
+
 declare module 'date-fns/esm/fp/min/index' {
   import { min } from 'date-fns/esm/fp'
   export default min
@@ -15563,6 +15630,11 @@ declare module 'date-fns/esm/fp/max/index.js' {
   export default max
 }
 
+declare module 'date-fns/esm/fp/milliseconds/index.js' {
+  import { milliseconds } from 'date-fns/esm/fp'
+  export default milliseconds
+}
+
 declare module 'date-fns/esm/fp/min/index.js' {
   import { min } from 'date-fns/esm/fp'
   export default min
@@ -15899,6 +15971,9 @@ declare module 'date-fns/locale' {
   const enUS: Locale
   namespace enUS {}
 
+  const enZA: Locale
+  namespace enZA {}
+
   const eo: Locale
   namespace eo {}
 
@@ -16171,6 +16246,11 @@ declare module 'date-fns/locale/en-NZ' {
 declare module 'date-fns/locale/en-US' {
   import { enUS } from 'date-fns/locale'
   export default enUS
+}
+
+declare module 'date-fns/locale/en-ZA' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
 }
 
 declare module 'date-fns/locale/eo' {
@@ -16558,6 +16638,11 @@ declare module 'date-fns/locale/en-US/index' {
   export default enUS
 }
 
+declare module 'date-fns/locale/en-ZA/index' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
+}
+
 declare module 'date-fns/locale/eo/index' {
   import { eo } from 'date-fns/locale'
   export default eo
@@ -16943,6 +17028,11 @@ declare module 'date-fns/locale/en-US/index.js' {
   export default enUS
 }
 
+declare module 'date-fns/locale/en-ZA/index.js' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
+}
+
 declare module 'date-fns/locale/eo/index.js' {
   import { eo } from 'date-fns/locale'
   export default eo
@@ -17289,6 +17379,9 @@ declare module 'date-fns/esm/locale' {
   const enUS: Locale
   namespace enUS {}
 
+  const enZA: Locale
+  namespace enZA {}
+
   const eo: Locale
   namespace eo {}
 
@@ -17561,6 +17654,11 @@ declare module 'date-fns/esm/locale/en-NZ' {
 declare module 'date-fns/esm/locale/en-US' {
   import { enUS } from 'date-fns/esm/locale'
   export default enUS
+}
+
+declare module 'date-fns/esm/locale/en-ZA' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
 }
 
 declare module 'date-fns/esm/locale/eo' {
@@ -17948,6 +18046,11 @@ declare module 'date-fns/esm/locale/en-US/index' {
   export default enUS
 }
 
+declare module 'date-fns/esm/locale/en-ZA/index' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
+}
+
 declare module 'date-fns/esm/locale/eo/index' {
   import { eo } from 'date-fns/esm/locale'
   export default eo
@@ -18331,6 +18434,11 @@ declare module 'date-fns/esm/locale/en-NZ/index.js' {
 declare module 'date-fns/esm/locale/en-US/index.js' {
   import { enUS } from 'date-fns/esm/locale'
   export default enUS
+}
+
+declare module 'date-fns/esm/locale/en-ZA/index.js' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
 }
 
 declare module 'date-fns/esm/locale/eo/index.js' {
@@ -19119,6 +19227,8 @@ interface dateFns {
   lightFormat(date: Date | number, format: string): string
 
   max(datesArray: (Date | number)[]): Date
+
+  milliseconds(duration: Duration): number
 
   min(datesArray: (Date | number)[]): Date
 

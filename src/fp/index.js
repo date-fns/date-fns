@@ -210,6 +210,7 @@ export {
 export { default as lastDayOfYear } from './lastDayOfYear/index'
 export { default as lightFormat } from './lightFormat/index'
 export { default as max } from './max/index'
+export { default as milliseconds } from './milliseconds/index'
 export { default as min } from './min/index'
 export { default as parse } from './parse/index'
 export { default as parseISO } from './parseISO/index'
