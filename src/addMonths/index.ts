@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function addMonths(
   dirtyDate: Date | number,
   dirtyAmount: number
-) {
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
