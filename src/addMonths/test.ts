@@ -62,9 +62,10 @@ describe('addMonths', function() {
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function() {
     // @ts-expect-error
     assert.throws(addMonths.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(addMonths.bind(null, 1), TypeError)
   })
 
@@ -72,23 +73,23 @@ describe('addMonths', function() {
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
   const HOUR = 1000 * 60 * 60
-  const override = (base, year, month, day, hour, minute) =>
-    new Date(
-      year == null ? base.getFullYear() : year,
-      month == null ? base.getMonth() : month,
-      day == null ? base.getDate() : day,
-      hour == null ? base.getHours() : hour,
-      minute == null ? base.getMinutes() : minute
-    )
+  const override = (
+    base: Date,
+    year = base.getFullYear(),
+    month = base.getMonth(),
+    day = base.getDate(),
+    hour = base.getHours(),
+    minute = base.getMinutes()
+  ) => new Date(year, month, day, hour, minute)
 
   dstOnly(
     `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
       const date = dstTransitions.start
-      const result = addMonths(date, 2)
+      const result = addMonths(date!, 2)
       assert.deepStrictEqual(
         result,
-        override(date, date.getFullYear(), date.getMonth() + 2)
+        override(date!, date!.getFullYear(), date!.getMonth() + 2)
       )
     }
   )
@@ -96,7 +97,7 @@ describe('addMonths', function() {
   dstOnly(
     `works at DST-start - 30 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      const date = new Date(dstTransitions.start.getTime() - 0.5 * HOUR)
+      const date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR)
       const result = addMonths(date, 2)
       const expected = override(date, date.getFullYear(), date.getMonth() + 2)
       assert.deepStrictEqual(result, expected)
@@ -106,7 +107,7 @@ describe('addMonths', function() {
   dstOnly(
     `works at DST-start - 60 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      const date = new Date(dstTransitions.start.getTime() - 1 * HOUR)
+      const date = new Date(dstTransitions.start!.getTime() - 1 * HOUR)
       const result = addMonths(date, 2)
       const expected = override(date, date.getFullYear(), date.getMonth() + 2)
       assert.deepStrictEqual(result, expected)
@@ -117,13 +118,13 @@ describe('addMonths', function() {
     `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
       const date = dstTransitions.end
-      const result = addMonths(date, 2)
+      const result = addMonths(date!, 2)
       assert.deepStrictEqual(
         result,
         override(
-          date,
-          date.getFullYear() + (date.getMonth() >= 10 ? 1 : 0),
-          (date.getMonth() + 2) % 12 // protect against wrap for Nov.
+          date!,
+          date!.getFullYear() + (date!.getMonth() >= 10 ? 1 : 0),
+          (date!.getMonth() + 2) % 12 // protect against wrap for Nov.
         )
       )
     }
@@ -132,7 +133,7 @@ describe('addMonths', function() {
   dstOnly(
     `works at DST-end - 30 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      const date = new Date(dstTransitions.end.getTime() - 0.5 * HOUR)
+      const date = new Date(dstTransitions.end!.getTime() - 0.5 * HOUR)
       const result = addMonths(date, 2)
       assert.deepStrictEqual(
         result,
@@ -148,7 +149,7 @@ describe('addMonths', function() {
   dstOnly(
     `works at DST-end - 60 mins in local timezone: ${tz || '(unknown)'}`,
     function() {
-      const date = new Date(dstTransitions.end.getTime() - 1 * HOUR)
+      const date = new Date(dstTransitions.end!.getTime() - 1 * HOUR)
       const result = addMonths(date, 2)
       assert.deepStrictEqual(
         result,
@@ -164,7 +165,7 @@ describe('addMonths', function() {
   dstOnly(
     `doesn't mutate if zero increment is used: ${tz || '(unknown)'}`,
     function() {
-      const date = new Date(dstTransitions.end)
+      const date = new Date(dstTransitions.end!)
       const result = addMonths(date, 0)
       assert.deepStrictEqual(result, date)
     }
