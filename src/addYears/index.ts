@@ -24,9 +24,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-export default function addYears(dirtyDate, dirtyAmount) {
+export default function addYears(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, amount * 12)
 }
