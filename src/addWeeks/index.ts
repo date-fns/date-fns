@@ -24,10 +24,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-export default function addWeeks(dirtyDate, dirtyAmount) {
+export default function addWeeks(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
-  var amount = toInteger(dirtyAmount)
-  var days = amount * 7
+  const amount = toInteger(dirtyAmount)
+  const days = amount * 7
   return addDays(dirtyDate, days)
 }
