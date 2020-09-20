@@ -91,10 +91,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function areIntervalsOverlapping(
-  dirtyIntervalLeft,
-  dirtyIntervalRight,
-  options = {}
-) {
+  dirtyIntervalLeft: Interval,
+  dirtyIntervalRight: Interval,
+  options = { inclusive: false }
+): boolean {
   requiredArgs(2, arguments)
 
   const intervalLeft = dirtyIntervalLeft || {}
