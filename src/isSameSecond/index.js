@@ -1,4 +1,5 @@
-import startOfSecond from '../startOfSecond/index.js'
+import startOfSecond from '../startOfSecond/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameSecond
@@ -27,11 +28,7 @@ import startOfSecond from '../startOfSecond/index.js'
  * //=> true
  */
 export default function isSameSecond(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
   var dateRightStartOfSecond = startOfSecond(dirtyDateRight)

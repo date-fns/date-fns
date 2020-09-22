@@ -1,4 +1,4 @@
-import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index.js'
+import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
   full: 'EEEE, d. MMMM yyyy',
@@ -8,10 +8,10 @@ var dateFormats = {
 }
 
 var timeFormats = {
-  full: 'h:mm:ss a zzzz',
-  long: 'h:mm:ss a z',
-  medium: 'h:mm:ss a',
-  short: 'h:mm a'
+  full: 'H:mm:ss zzzz',
+  long: 'H:mm:ss z',
+  medium: 'H:mm:ss',
+  short: 'H:mm'
 }
 
 var dateTimeFormats = {

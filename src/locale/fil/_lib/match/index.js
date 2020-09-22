@@ -1,7 +1,7 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildParseFn from '../../../_lib/buildParseFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import parseDecimal from '../../../_lib/parseDecimal/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildParseFn from '../../../_lib/buildParseFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import parseDecimal from '../../../_lib/parseDecimal/index'
 
 var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
 
@@ -21,7 +21,20 @@ var matchMonthsPatterns = {
 }
 
 var parseMonthPatterns = {
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  any: [
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^may/i,
+    /^jun/i,
+    /^jul/i,
+    /^au/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ]
 }
 
 var matchTimesOfDayPatterns = {

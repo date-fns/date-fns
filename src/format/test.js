@@ -50,6 +50,11 @@ describe('format', function() {
     assert(format(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
+  it('accepts new line charactor', function() {
+    var date = new Date(2014, 3, 4, 5)
+    assert.equal(format(date, "yyyy-MM-dd'\n'HH:mm:ss"), '2014-04-04\n05:00:00')
+  })
+
   describe('ordinal numbers', function() {
     it('ordinal day of an ordinal month', function() {
       var result = format(date, "do 'day of the' Mo 'month of' yyyy")
@@ -755,7 +760,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `d` instead of `D` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
+        /(Use `d` instead of `D` \(in `yyyy-MM-D`\) for formatting days of the month to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -771,7 +776,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `dd` instead of `DD` for formatting days of the month; see: https:\/\/git.io\/fxCyr/
+        /(Use `dd` instead of `DD` \(in `yyyy-MM-DD`\) for formatting days of the month to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -787,7 +792,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yy` instead of `YY` for formatting years; see: https:\/\/git.io\/fxCyr/
+        /(Use `yy` instead of `YY` \(in `YY-MM-dd`\) for formatting years to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 
@@ -803,7 +808,7 @@ describe('format', function() {
       assert.throws(block, RangeError)
       assert.throws(
         block,
-        /Use `yyyy` instead of `YYYY` for formatting years; see: https:\/\/git.io\/fxCyr/
+        /(Use `yyyy` instead of `YYYY` \(in `YYYY-MM-dd`\) for formatting years to the input `Fri Apr 04 1986 10:32:55).*(`; see: https:\/\/git.io\/fxCyr)/g
       )
     })
 

@@ -1,6 +1,7 @@
-import getWeek from '../getWeek/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import getWeek from '../getWeek/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setWeek
@@ -47,11 +48,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Sun Jan 4 2004 00:00:00
  */
 export default function setWeek(dirtyDate, dirtyWeek, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var week = toInteger(dirtyWeek)

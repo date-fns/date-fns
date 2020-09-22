@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -25,19 +25,55 @@ var parseQuarterPatterns = {
 var matchMonthPatterns = {
   // month number may contain leading 0, 'thg' prefix may have space, underscore or empty before number
   // note the order of '1' since it is a sub-string of '10', so must be lower priority
-  narrow: /^(0?2|0?3|0?4|0?5|0?6|0?7|0?8|0?9|10|11|12|0?1)/i,
+  narrow: /^(0?[2-9]|10|11|12|0?1)/i,
   // note the order of 'thg 1' since it is sub-string of 'thg 10', so must be lower priority
-  short: /^(thg[ _]?0?2|thg[ _]?0?3|thg[ _]?0?4|thg[ _]?0?5|thg[ _]?0?6|thg[ _]?0?7|thg[ _]?0?8|thg[ _]?0?9|thg[ _]?10|thg[ _]?11|thg[ _]?12|thg[ _]?0?1)/i,
-  // note the order of 'tháng 1' since it is sub-string of 'tháng 10', so must be lower priority
-  abbreviated: /^(tháng[ _]?0?2|tháng[ _]?0?3|tháng[ _]?0?4|tháng[ _]?0?5|tháng[ _]?0?6|tháng[ _]?0?7|tháng[ _]?0?8|tháng[ _]?0?9|tháng[ _]?10|tháng[ _]?11|tháng[ _]?12|tháng[ _]?0?1)/i,
+  abbreviated: /^thg[ _]?(0?[1-9](?!\d)|10|11|12)/i,
   // note the order of 'Mười' since it is sub-string of Mười Một, so must be lower priority
-  wide: /^(tháng ?Một|tháng ?Hai|tháng ?Ba|tháng ?Tư|tháng ?Năm|tháng ?Sáu|tháng ?Bảy|tháng ?Tám|tháng ?Chín|tháng ?Mười ?Một|tháng ?Mười ?Hai|tháng ?Mười)/i
+  wide: /^tháng ?(Một|Hai|Ba|Tư|Năm|Sáu|Bảy|Tám|Chín|Mười|Mười ?Một|Mười ?Hai|0?[1-9](?!\d)|10|11|12)/i
 }
 var parseMonthPatterns = {
-  narrow: [/0?1$/i, /0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  short: [/thg[ _]?0?1$/i, /thg[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  abbreviated: [/tháng[ _]?0?1$/i, /tháng[ _]?0?2/i, /3/, /4/, /5/, /6/, /7/, /8/, /9/, /10/, /11/, /12/],
-  wide: [/tháng ?Một$/i, /tháng ?Hai$/i, /Ba/i, /Tư/i, /Năm/i, /Sáu/i, /Bảy/i, /Tám/i, /Chín/i, /Mười$/i, /Mười ?Một$/i, /Mười ?Hai$/i]
+  narrow: [
+    /0?1$/i,
+    /0?2/i,
+    /3/,
+    /4/,
+    /5/,
+    /6/,
+    /7/,
+    /8/,
+    /9/,
+    /10/,
+    /11/,
+    /12/
+  ],
+  abbreviated: [
+    /^thg[ _]?0?1(?!\d)/i,
+    /^thg[ _]?0?2/i,
+    /^thg[ _]?0?3/i,
+    /^thg[ _]?0?4/i,
+    /^thg[ _]?0?5/i,
+    /^thg[ _]?0?6/i,
+    /^thg[ _]?0?7/i,
+    /^thg[ _]?0?8/i,
+    /^thg[ _]?0?9/i,
+    /^thg[ _]?10/i,
+    /^thg[ _]?11/i,
+    /^thg[ _]?12/i
+  ],
+  wide: [
+    /^tháng ?(Một|0?1(?!\d))/i,
+    /^tháng ?(Hai|0?2)/i,
+    /^tháng ?(Ba|0?3)/i,
+    /^tháng ?(Tư|0?4)/i,
+    /^tháng ?(Năm|0?5)/i,
+    /^tháng ?(Sáu|0?6)/i,
+    /^tháng ?(Bảy|0?7)/i,
+    /^tháng ?(Tám|0?8)/i,
+    /^tháng ?(Chín|0?9)/i,
+    /^tháng ?(Mười|10)/i,
+    /^tháng ?(Mười ?Một|11)/i,
+    /^tháng ?(Mười ?Hai|12)/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -75,7 +111,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -92,7 +128,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

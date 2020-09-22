@@ -1,6 +1,7 @@
-import addDays from '../addDays/index.js'
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import addDays from '../addDays/index'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setDay
@@ -24,21 +25,17 @@ import toInteger from '../_lib/toInteger/index.js'
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example
- * // Set Sunday to 1 September 2014:
+ * // Set week day to Sunday, with the default weekStartsOn of Sunday:
  * var result = setDay(new Date(2014, 8, 1), 0)
  * //=> Sun Aug 31 2014 00:00:00
  *
  * @example
- * // If week starts with Monday, set Sunday to 1 September 2014:
+ * // Set week day to Sunday, with a weekStartsOn of Monday:
  * var result = setDay(new Date(2014, 8, 1), 0, { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale
@@ -63,6 +60,10 @@ export default function setDay(dirtyDate, dirtyDay, dirtyOptions) {
   var remainder = day % 7
   var dayIndex = (remainder + 7) % 7
 
-  var diff = (dayIndex < weekStartsOn ? 7 : 0) + day - currentDay
+  var delta = 7 - weekStartsOn
+  var diff =
+    day < 0 || day > 6
+      ? day - ((currentDay + delta) % 7)
+      : ((dayIndex + delta) % 7) - ((currentDay + delta) % 7)
   return addDays(date, diff, options)
 }

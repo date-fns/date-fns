@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachDayOfInterval
@@ -62,11 +63,7 @@ import toDate from '../toDate/index.js'
  * // ]
  */
 export default function eachDayOfInterval(dirtyInterval, options) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)

@@ -1,6 +1,7 @@
-import getWeekYear from '../getWeekYear/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import getWeekYear from '../getWeekYear/index'
+import startOfWeek from '../startOfWeek/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfWeekYear
@@ -46,11 +47,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Mon Jan 03 2005 00:00:00
  */
 export default function startOfWeekYear(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale

@@ -1,17 +1,14 @@
-import toDate from '../../toDate/index.js'
-import startOfUTCISOWeek from '../startOfUTCISOWeek/index.js'
-import startOfUTCISOWeekYear from '../startOfUTCISOWeekYear/index.js'
+import toDate from '../../toDate/index'
+import startOfUTCISOWeek from '../startOfUTCISOWeek/index'
+import startOfUTCISOWeekYear from '../startOfUTCISOWeekYear/index'
+import requiredArgs from '../requiredArgs/index'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
 export default function getUTCISOWeek(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var diff =

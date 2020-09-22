@@ -1,5 +1,5 @@
-import toInteger from '../_lib/toInteger/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -73,11 +73,7 @@ var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
  * //=> Fri Apr 11 2014 00:00:00
  */
 export default function parseISO(argument, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
 
@@ -131,19 +127,23 @@ export default function parseISO(argument, dirtyOptions) {
       return new Date(NaN)
     }
   } else {
-    var fullTime = timestamp + time
-    var fullTimeDate = new Date(fullTime)
-
-    offset = getTimezoneOffsetInMilliseconds(fullTimeDate)
-
-    // Adjust time when it's coming from DST
-    var fullTimeDateNextDay = new Date(fullTime)
-    fullTimeDateNextDay.setDate(fullTimeDate.getDate() + 1)
-    var offsetDiff =
-      getTimezoneOffsetInMilliseconds(fullTimeDateNextDay) - offset
-    if (offsetDiff > 0) {
-      offset += offsetDiff
-    }
+    var dirtyDate = new Date(timestamp + time)
+    // js parsed string assuming it's in UTC timezone
+    // but we need it to be parsed in our timezone
+    // so we use utc values to build date in our timezone.
+    // Year values from 0 to 99 map to the years 1900 to 1999
+    // so set year explicitly with setFullYear.
+    var result = new Date(
+      dirtyDate.getUTCFullYear(),
+      dirtyDate.getUTCMonth(),
+      dirtyDate.getUTCDate(),
+      dirtyDate.getUTCHours(),
+      dirtyDate.getUTCMinutes(),
+      dirtyDate.getUTCSeconds(),
+      dirtyDate.getUTCMilliseconds()
+    )
+    result.setFullYear(dirtyDate.getUTCFullYear())
+    return result
   }
 
   return new Date(timestamp + time + offset)
@@ -153,6 +153,12 @@ function splitDateString(dateString) {
   var dateStrings = {}
   var array = dateString.split(patterns.dateTimeDelimiter)
   var timeString
+
+  // The regex match should only return at maximum two array elements.
+  // [date], [time], or [date, time].
+  if (array.length > 2) {
+    return dateStrings
+  }
 
   if (/:/.test(array[0])) {
     dateStrings.date = null

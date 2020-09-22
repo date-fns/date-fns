@@ -79,7 +79,28 @@ var formatDistanceLocale = {
       one: 'ühe päeva',
       other: '{{count}} päeva'
     }
+  },
 
+  aboutXWeeks: {
+    standalone: {
+      one: 'umbes üks nädal',
+      other: 'umbes {{count}} nädalat'
+    },
+    withPreposition: {
+      one: 'umbes ühe nädala',
+      other: 'umbes {{count}} nädala'
+    }
+  },
+
+  xWeeks: {
+    standalone: {
+      one: 'üks nädal',
+      other: '{{count}} nädalat'
+    },
+    withPreposition: {
+      one: 'ühe nädala',
+      other: '{{count}} nädala'
+    }
   },
 
   aboutXMonths: {
@@ -149,7 +170,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var usageGroup = options.addSuffix

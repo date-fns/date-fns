@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -7,14 +8,17 @@ const config = {
   devtool: isProduction ? 'source-map' : 'inline-source-map',
   entry: getEntryConfig(),
   output: getOutputConfig(),
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, use: 'babel-loader' }
+      { test: /\.(js|ts)$/, exclude: /node_modules/, use: 'babel-loader' }
     ].concat(
       process.env.COVERAGE_REPORT
         ? [
             {
-              test: /\.js$/,
+              test: /\.(js|ts)$/,
               use: {
                 loader: 'istanbul-instrumenter-loader',
                 options: { esModules: true }
@@ -25,7 +29,8 @@ const config = {
           ]
         : []
     )
-  }
+  },
+  plugins: getPlugins()
 }
 
 module.exports = config
@@ -60,4 +65,15 @@ function getOutputConfig() {
       libraryTarget: 'umd'
     }
   }
+}
+
+function getPlugins() {
+  return process.env.NODE_ENV === 'test'
+    ? [
+        new webpack.ContextReplacementPlugin(
+          /power-assert-formatter[\\/]lib/,
+          new RegExp('^\\./.*\\.js$')
+        )
+      ]
+    : undefined
 }

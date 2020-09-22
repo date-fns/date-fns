@@ -6,14 +6,14 @@
   "author": "Sasha Koss <koss@nocorp.me>",
   "license": "MIT",
   "dependencies": {
-    "typescript": "^3.5.3",
-    "webpack": "^2.7.0"
+    "typescript": "3",
+    "webpack": "^4.44.1"
   },
   "scripts": {
     "build": "yarn build-date-fns && yarn build-typescript && yarn build-webpack",
     "build-date-fns": "env PACKAGE_OUTPUT_PATH=\"$(pwd)/node_modules/date-fns\" ../../scripts/build/package.sh",
-    "build-typescript": "tsc --outDir dist example.ts fp.ts misc.ts constants.ts --lib es2015,dom",
-    "build-webpack": "webpack example=./dist/example.js fp=./dist/fp misc=./dist/misc.js constants=./dist/constants.js --output-path dist --output-filename [name].bundle.js",
+    "build-typescript": "tsc  --outDir dist example.ts fp.ts misc.ts constants.ts --lib es2015,dom --esModuleInterop",
+    "build-webpack": "webpack example=./dist/example.js fp=./dist/fp misc=./dist/misc.js constants=./dist/constants.js --mode production --output-path dist --output-filename [name].bundle.js",
     "test": "yarn test-example && yarn test-fp && yarn test-misc && yarn test-constants",
     "test-example": "test $(env TZ=UTC node ./dist/example.bundle.js) = true",
     "test-fp": "test $(env TZ=UTC node ./dist/fp.bundle.js) = true",

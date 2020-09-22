@@ -1,79 +1,155 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var weekdayValues = {
-  narrow: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
-  short: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
-  long: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi']
+var eraValues = {
+  narrow: ['av. J.-C', 'ap. J.-C'],
+  abbreviated: ['av. J.-C', 'ap. J.-C'],
+  wide: ['avant Jésus-Christ', 'après Jésus-Christ']
+}
+
+var quarterValues = {
+  narrow: ['T1', 'T2', 'T3', 'T4'],
+  abbreviated: ['1er trim.', '2ème trim.', '3ème trim.', '4ème trim.'],
+  wide: ['1er trimestre', '2ème trimestre', '3ème trimestre', '4ème trimestre']
 }
 
 var monthValues = {
-  short: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
-  long: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  abbreviated: [
+    'janv.',
+    'févr.',
+    'mars',
+    'avr.',
+    'mai',
+    'juin',
+    'juil.',
+    'août',
+    'sept.',
+    'oct.',
+    'nov.',
+    'déc.'
+  ],
+  wide: [
+    'janvier',
+    'février',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'août',
+    'septembre',
+    'octobre',
+    'novembre',
+    'décembre'
+  ]
 }
 
-var timeOfDayValues = {
-  uppercase: ['AM', 'PM'],
-  lowercase: ['am', 'pm'],
-  long: ['du matin', 'de l’après-midi', 'du soir']
+var dayValues = {
+  narrow: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+  short: ['di', 'lu', 'ma', 'me', 'je', 've', 'sa'],
+  abbreviated: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
+  wide: [
+    'dimanche',
+    'lundi',
+    'mardi',
+    'mercredi',
+    'jeudi',
+    'vendredi',
+    'samedi'
+  ]
 }
 
-function timeOfDay (dirtyHours, dirtyOptions) {
-  var hours = Number(dirtyHours)
-  var options = dirtyOptions || {}
-  var type = options.type ? String(options.type) : 'long'
-
-  if (type === 'uppercase') {
-    return (hours / 12) >= 1 ? timeOfDayValues.uppercase[1] : timeOfDayValues.uppercase[0]
-  } else if (type === 'lowercase') {
-    return (hours / 12) >= 1 ? timeOfDayValues.lowercase[1] : timeOfDayValues.lowercase[0]
+var dayPeriodValues = {
+  narrow: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'mat.',
+    afternoon: 'ap.m.',
+    evening: 'soir',
+    night: 'mat.'
+  },
+  abbreviated: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'matin',
+    afternoon: 'après-midi',
+    evening: 'soir',
+    night: 'matin'
+  },
+  wide: {
+    am: 'AM',
+    pm: 'PM',
+    midnight: 'minuit',
+    noon: 'midi',
+    morning: 'du matin',
+    afternoon: 'de l’après-midi',
+    evening: 'du soir',
+    night: 'du matin'
   }
-
-  if (hours <= 12) {
-    return timeOfDayValues.long[0]
-  } else if (hours <= 16) {
-    return timeOfDayValues.long[1]
-  } else {
-    return timeOfDayValues.long[2]
-  }
 }
 
-function masculineOrdinalNumber (number) {
-  if (number === 1) {
-    return '1er'
-  }
-
-  return number + 'e'
-}
-
-function feminineOrdinalNumber (number) {
-  if (number === 1) {
-    return '1re'
-  }
-
-  return number + 'e'
-}
-
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
-  var options = dirtyOptions || {}
-  var unit = options.unit ? String(options.unit) : null
 
-  if (unit === 'isoWeek' || unit === 'week') {
-    return feminineOrdinalNumber(number)
+  var options = dirtyOptions || {}
+  var unit = String(options.unit)
+  var suffix
+
+  if (number === 0) {
+    return number
   }
 
-  return masculineOrdinalNumber(number)
+  if (unit === 'year' || unit === 'hour' || unit === 'week') {
+    if (number === 1) {
+      suffix = 'ère'
+    } else {
+      suffix = 'ème'
+    }
+  } else {
+    if (number === 1) {
+      suffix = 'er'
+    } else {
+      suffix = 'ème'
+    }
+  }
+
+  return number + suffix
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: timeOfDay,
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
+  }),
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize

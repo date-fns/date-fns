@@ -1,5 +1,5 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -24,7 +24,7 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec)/i,
+  abbreviated: /^(jan.|feb.|mar.|apr.|maj|jun.|jul.|aug.|sep.|okt.|nov.|dec.)/i,
   wide: /^(januar|februar|marts|april|maj|juni|juli|august|september|oktober|november|december)/i
 }
 var parseMonthPatterns = {

@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISODay
@@ -25,11 +26,7 @@ import toDate from '../toDate/index.js'
  * //=> 7
  */
 export default function getISODay(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var day = date.getDay()

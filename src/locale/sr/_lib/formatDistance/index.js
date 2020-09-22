@@ -1,138 +1,158 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: {
-      standalone: 'manje od 1 sekunde',
-      withPrepositionAgo: 'manje od 1 sekunde',
-      withPrepositionIn: 'manje od 1 sekundu'
+      standalone: 'мање од 1 секунде',
+      withPrepositionAgo: 'мање од 1 секунде',
+      withPrepositionIn: 'мање од 1 секунду'
     },
-    dual: 'manje od {{count}} sekunde',
-    other: 'manje od {{count}} sekundi'
+    dual: 'мање од {{count}} секунде',
+    other: 'мање од {{count}} секунди'
   },
 
   xSeconds: {
     one: {
-      standalone: '1 sekunda',
-      withPrepositionAgo: '1 sekunde',
-      withPrepositionIn: '1 sekundu'
+      standalone: '1 секунда',
+      withPrepositionAgo: '1 секунде',
+      withPrepositionIn: '1 секунду'
     },
-    dual: '{{count}} sekunde',
-    other: '{{count}} sekundi'
+    dual: '{{count}} секунде',
+    other: '{{count}} секунди'
   },
 
-  halfAMinute: 'pola minute',
+  halfAMinute: 'пола минуте',
 
   lessThanXMinutes: {
     one: {
-      standalone: 'manje od 1 minute',
-      withPrepositionAgo: 'manje od 1 minute',
-      withPrepositionIn: 'manje od 1 minutu'
+      standalone: 'мање од 1 минуте',
+      withPrepositionAgo: 'мање од 1 минуте',
+      withPrepositionIn: 'мање од 1 минуту'
     },
-    dual: 'manje od {{count}} minute',
-    other: 'manje od {{count}} minuta'
+    dual: 'мање од {{count}} минуте',
+    other: 'мање од {{count}} минута'
   },
 
   xMinutes: {
     one: {
-      standalone: '1 minuta',
-      withPrepositionAgo: '1 minute',
-      withPrepositionIn: '1 minutu'
+      standalone: '1 минута',
+      withPrepositionAgo: '1 минуте',
+      withPrepositionIn: '1 минуту'
     },
-    dual: '{{count}} minute',
-    other: '{{count}} minuta'
+    dual: '{{count}} минуте',
+    other: '{{count}} минута'
   },
 
   aboutXHours: {
     one: {
-      standalone: 'oko 1 sat',
-      withPrepositionAgo: 'oko 1 sat',
-      withPrepositionIn: 'oko 1 sat'
+      standalone: 'око 1 сат',
+      withPrepositionAgo: 'око 1 сат',
+      withPrepositionIn: 'око 1 сат'
     },
-    dual: 'oko {{count}} sata',
-    other: 'oko {{count}} sati'
+    dual: 'око {{count}} сата',
+    other: 'око {{count}} сати'
   },
 
   xHours: {
     one: {
-      standalone: '1 sat',
-      withPrepositionAgo: '1 sat',
-      withPrepositionIn: '1 sat'
+      standalone: '1 сат',
+      withPrepositionAgo: '1 сат',
+      withPrepositionIn: '1 сат'
     },
-    dual: '{{count}} sata',
-    other: '{{count}} sati'
+    dual: '{{count}} сата',
+    other: '{{count}} сати'
   },
 
   xDays: {
     one: {
-      standalone: '1 dan',
-      withPrepositionAgo: '1 dan',
-      withPrepositionIn: '1 dan'
+      standalone: '1 дан',
+      withPrepositionAgo: '1 дан',
+      withPrepositionIn: '1 дан'
     },
-    dual: '{{count}} dana',
-    other: '{{count}} dana'
+    dual: '{{count}} дана',
+    other: '{{count}} дана'
+  },
+
+  aboutXWeeks: {
+    one: {
+      standalone: 'око 1 недељу',
+      withPrepositionAgo: 'око 1 недељу',
+      withPrepositionIn: 'око 1 недељу'
+    },
+    dual: 'око {{count}} недеље',
+    other: 'око {{count}} недеље'
+  },
+
+  xWeeks: {
+    one: {
+      standalone: '1 недељу',
+      withPrepositionAgo: '1 недељу',
+      withPrepositionIn: '1 недељу'
+    },
+    dual: '{{count}} недеље',
+    other: '{{count}} недеље'
   },
 
   aboutXMonths: {
     one: {
-      standalone: 'oko 1 mesec',
-      withPrepositionAgo: 'oko 1 mesec',
-      withPrepositionIn: 'oko 1 mesec'
+      standalone: 'око 1 месец',
+      withPrepositionAgo: 'око 1 месец',
+      withPrepositionIn: 'око 1 месец'
     },
-    dual: 'oko {{count}} meseca',
-    other: 'oko {{count}} meseci'
+    dual: 'око {{count}} месеца',
+    other: 'око {{count}} месеци'
   },
 
   xMonths: {
     one: {
-      standalone: '1 mesec',
-      withPrepositionAgo: '1 mesec',
-      withPrepositionIn: '1 mesec'
+      standalone: '1 месец',
+      withPrepositionAgo: '1 месец',
+      withPrepositionIn: '1 месец'
     },
-    dual: '{{count}} meseca',
-    other: '{{count}} meseci'
+    dual: '{{count}} месеца',
+    other: '{{count}} месеци'
   },
 
   aboutXYears: {
     one: {
-      standalone: 'oko 1 godinu',
-      withPrepositionAgo: 'oko 1 godinu',
-      withPrepositionIn: 'oko 1 godinu'
+      standalone: 'око 1 годину',
+      withPrepositionAgo: 'око 1 годину',
+      withPrepositionIn: 'око 1 годину'
     },
-    dual: 'oko {{count}} godine',
-    other: 'oko {{count}} godina'
+    dual: 'око {{count}} године',
+    other: 'око {{count}} година'
   },
 
   xYears: {
     one: {
-      standalone: '1 godina',
-      withPrepositionAgo: '1 godine',
-      withPrepositionIn: '1 godinu'
+      standalone: '1 година',
+      withPrepositionAgo: '1 године',
+      withPrepositionIn: '1 годину'
     },
-    dual: '{{count}} godine',
-    other: '{{count}} godina'
+    dual: '{{count}} године',
+    other: '{{count}} година'
   },
 
   overXYears: {
     one: {
-      standalone: 'preko 1 godinu',
-      withPrepositionAgo: 'preko 1 godinu',
-      withPrepositionIn: 'preko 1 godinu'
+      standalone: 'преко 1 годину',
+      withPrepositionAgo: 'преко 1 годину',
+      withPrepositionIn: 'преко 1 годину'
     },
-    dual: 'preko {{count}} godine',
-    other: 'preko {{count}} godina'
+    dual: 'преко {{count}} године',
+    other: 'преко {{count}} година'
   },
 
   almostXYears: {
     one: {
-      standalone: 'gotovo 1 godinu',
-      withPrepositionAgo: 'gotovo 1 godinu',
-      withPrepositionIn: 'gotovo 1 godinu'
+      standalone: 'готово 1 годину',
+      withPrepositionAgo: 'готово 1 годину',
+      withPrepositionIn: 'готово 1 годину'
     },
-    dual: 'gotovo {{count}} godine',
-    other: 'gotovo {{count}} godina'
+    dual: 'готово {{count}} године',
+    other: 'готово {{count}} година'
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result
@@ -150,7 +170,8 @@ export default function formatDistance (token, count, options) {
       result = formatDistanceLocale[token].one.standalone
     }
   } else if (
-    count % 10 > 1 && count % 10 < 5 && // if last digit is between 2 and 4
+    count % 10 > 1 &&
+    count % 10 < 5 && // if last digit is between 2 and 4
     String(count).substr(-2, 1) !== '1' // unless the 2nd to last digit is "1"
   ) {
     result = formatDistanceLocale[token].dual.replace('{{count}}', count)
@@ -160,9 +181,9 @@ export default function formatDistance (token, count, options) {
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return 'za ' + result
+      return 'за ' + result
     } else {
-      return 'pre ' + result
+      return 'пре ' + result
     }
   }
 

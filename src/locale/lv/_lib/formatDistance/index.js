@@ -83,6 +83,28 @@ var formatDistanceLocale = {
     other: ['{{count}} {{time}}', 'diena', 'dienas', 'dienas', 'dienām']
   }),
 
+  aboutXWeeks: buildLocalizeTokenFn({
+    one: ['apmēram 1 {{time}}', 'nedēļa', 'nedēļas'],
+    other: [
+      'apmēram {{count}} {{time}}',
+      'nedēļa',
+      'nedēļu',
+      'nedēļas',
+      'nedēļām'
+    ]
+  }),
+
+  xWeeks: buildLocalizeTokenFn({
+    one: ['1 {{time}}', 'nedēļa', 'nedēļas'],
+    other: [
+      '{{count}} {{time}}', // TODO
+      'nedēļa',
+      'nedēļu',
+      'nedēļas',
+      'nedēļām'
+    ]
+  }),
+
   aboutXMonths: buildLocalizeTokenFn({
     one: ['apmēram 1 {{time}}', 'mēnesis', 'mēneša'],
     other: [

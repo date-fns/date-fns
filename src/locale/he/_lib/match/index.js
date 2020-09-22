@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+|(ראשון|שני|שלישי|רביעי|חמישי|שישי|שביעי|שמיני|תשיעי|עשירי|ראשונה|שנייה|שלישית|רביעית|חמישית|שישית|שביעית|שמינית|תשיעית|עשירית))/i
 var parseOrdinalNumberPattern = /^(\d+|רא|שנ|של|רב|ח|שי|שב|שמ|ת|ע)/i
@@ -28,8 +28,34 @@ var matchMonthPatterns = {
   wide: /^(ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^1$/i, /^2/i, /^3/i, /^4/i, /^5/i, /^6/i, /^7/i, /^8/i, /^9/i, /^10/i, /^11/i, /^12/i],
-  any: [/^ינ/i, /^פ/i, /^מר/i, /^אפ/i, /^מא/i, /^יונ/i, /^יול/i, /^אוג/i, /^ס/i, /^אוק/i, /^נ/i, /^ד/i]
+  narrow: [
+    /^1$/i,
+    /^2/i,
+    /^3/i,
+    /^4/i,
+    /^5/i,
+    /^6/i,
+    /^7/i,
+    /^8/i,
+    /^9/i,
+    /^10/i,
+    /^11/i,
+    /^12/i
+  ],
+  any: [
+    /^ינ/i,
+    /^פ/i,
+    /^מר/i,
+    /^אפ/i,
+    /^מא/i,
+    /^יונ/i,
+    /^יול/i,
+    /^אוג/i,
+    /^ס/i,
+    /^אוק/i,
+    /^נ/i,
+    /^ד/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -66,11 +92,9 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       var number = parseInt(value, 10)
-      return isNaN(number)
-        ? ordinalName.indexOf(value) + 1
-        : number
+      return isNaN(number) ? ordinalName.indexOf(value) + 1 : number
     }
   }),
 
@@ -86,7 +110,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

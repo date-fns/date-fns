@@ -1,10 +1,11 @@
-import compareAsc from '../compareAsc/index.js'
-import differenceInMonths from '../differenceInMonths/index.js'
-import differenceInSeconds from '../differenceInSeconds/index.js'
-import defaultLocale from '../locale/en-US/index.js'
-import toDate from '../toDate/index.js'
-import cloneObject from '../_lib/cloneObject/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
+import compareAsc from '../compareAsc/index'
+import differenceInMonths from '../differenceInMonths/index'
+import differenceInSeconds from '../differenceInSeconds/index'
+import defaultLocale from '../locale/en-US/index'
+import toDate from '../toDate/index'
+import cloneObject from '../_lib/cloneObject/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MINUTES_IN_DAY = 1440
 var MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -84,6 +85,8 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
+ * @throws {RangeError} `date` must not be Invalid Date
+ * @throws {RangeError} `baseDate` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
@@ -118,11 +121,7 @@ var MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale || defaultLocale

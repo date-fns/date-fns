@@ -9,8 +9,12 @@
   "license": "MIT",
   "description": "Modern JavaScript date utility library",
   "repository": "https://github.com/date-fns/date-fns",
-  "engine": {
-    "node": ">= 0.11"
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/date-fns"
+  },
+  "engines": {
+    "node": ">=0.11"
   },
   "typings": "./typings.d.ts",
   "main": "index.js",
@@ -19,7 +23,7 @@
     "test": "karma start config/karma.js",
     "lint": "eslint .",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
-    "locale-snapshots": "env TZ=utc babel-node ./scripts/build/localeSnapshots/index.js",
+    "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
   },
@@ -45,10 +49,15 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/plugin-transform-parameters": "^7.4.4",
     "@babel/plugin-transform-template-literals": "^7.4.4",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.6.3",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "8.0.6",
+    "babel-plugin-add-import-extension": "^1.4.3",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-preset-power-assert": "^3.0.0",
     "cloc": "^2.2.0",
@@ -65,7 +74,8 @@
     "jest": "^24.8.0",
     "jest-plugin-context": "^2.9.0",
     "js-beautify": "^1.5.10",
-    "jsdoc-to-markdown": "leshakoss/jsdoc-to-markdown",
+    "jsdoc-babel": "^0.5.0",
+    "jsdoc-to-markdown": "6",
     "karma": "^3.1.4",
     "karma-benchmark": "^1.0.4",
     "karma-benchmark-reporter": "^0.1.1",
@@ -92,9 +102,7 @@
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
     "snazzy": "^7.0.0",
-    "systemjs": "^0.19.39",
-    "systemjs-plugin-babel": "0.0.17",
-    "typescript": "^3.5.3",
+    "typescript": "^4.0.2",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
     "world-countries": "^1.8.1"

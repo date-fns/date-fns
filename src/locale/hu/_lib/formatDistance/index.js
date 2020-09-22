@@ -5,52 +5,70 @@ var translations = {
   lessthan: 'kevesebb mint'
 }
 
-function translate(number, addSuffix, key, comparison) {
-  var num = number
-  switch (key) {
-    case 'xseconds':
-      if (comparison === -1 && addSuffix) return num + ' másodperccel ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' másodperce'
-      if (comparison === 1) return num + ' másodperc múlva'
-      return num + ' másodperc'
+const withoutSuffixes = {
+  xseconds: ' másodperc',
+  halfaminute: 'fél perc',
+  xminutes: ' perc',
+  xhours: ' óra',
+  xdays: ' nap',
+  xweeks: ' hét',
+  xmonths: ' hónap',
+  xyears: ' év'
+}
 
-    case 'halfaminute':
-      if (comparison === -1 && addSuffix) return 'fél perccel ezelőtt'
-      if (comparison === -1 && !addSuffix) return 'fél perce'
-      if (comparison === 1) return 'fél perc múlva'
-      return 'fél perc'
-
-    case 'xminutes':
-      if (comparison === -1 && addSuffix) return num + ' perccel ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' perce'
-      if (comparison === 1) return num + ' perc múlva'
-      return num + ' perc'
-
-    case 'xhours':
-      if (comparison === -1 && addSuffix) return num + ' órával ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' órája'
-      if (comparison === 1) return num + ' óra múlva'
-      return num + ' óra'
-
-    case 'xdays':
-      if (comparison === -1 && addSuffix) return num + ' nappal ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' napja'
-      if (comparison === 1) return num + ' nap múlva'
-      return num + ' nap'
-
-    case 'xmonths':
-      if (comparison === -1 && addSuffix) return num + ' hónappal ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' hónapja'
-      if (comparison === 1) return num + ' hónap múlva'
-      return num + ' hónap'
-
-    case 'xyears':
-      if (comparison === -1 && addSuffix) return num + ' évvel ezelőtt'
-      if (comparison === -1 && !addSuffix) return num + ' éve'
-      if (comparison === 1) return num + ' év múlva'
-      return num + ' év'
+const withSuffixes = {
+  xseconds: {
+    '-1': ' másodperccel ezelőtt',
+    '1': ' másodperc múlva',
+    '0': ' másodperce'
+  },
+  halfaminute: {
+    '-1': 'fél perccel ezelőtt',
+    '1': 'fél perc múlva',
+    '0': 'fél perce'
+  },
+  xminutes: {
+    '-1': ' perccel ezelőtt',
+    '1': ' perc múlva',
+    '0': ' perce'
+  },
+  xhours: {
+    '-1': ' órával ezelőtt',
+    '1': ' óra múlva',
+    '0': ' órája'
+  },
+  xdays: {
+    '-1': ' nappal ezelőtt',
+    '1': ' nap múlva',
+    '0': ' napja'
+  },
+  xweeks: {
+    '-1': ' héttel ezelőtt',
+    '1': ' hét múlva',
+    '0': ' hete'
+  },
+  xmonths: {
+    '-1': ' hónappal ezelőtt',
+    '1': ' hónap múlva',
+    '0': ' hónapja'
+  },
+  xyears: {
+    '-1': ' évvel ezelőtt',
+    '1': ' év múlva',
+    '0': ' éve'
   }
-  return ''
+}
+
+function translate(number, addSuffix, key, comparison) {
+  const translated = addSuffix
+    ? withSuffixes[key][comparison]
+    : withoutSuffixes[key]
+
+  if (key === 'halfaminute') {
+    return translated
+  }
+
+  return number + translated
 }
 
 export default function formatDistance(token, count, options) {

@@ -1,33 +1,35 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-type Interval = {
+export type Interval = {
   start: Date | number,
   end: Date | number
 }
 
-type Locale = {
-  formatDistance: Function,
-  formatRelative: Function,
-  localize: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
+export type Locale = {
+  code?: string,
+  formatDistance?: (...args: Array<any>) => any,
+  formatRelative?: (...args: Array<any>) => any,
+  localize?: {
+    ordinalNumber: (...args: Array<any>) => any,
+    era: (...args: Array<any>) => any,
+    quarter: (...args: Array<any>) => any,
+    month: (...args: Array<any>) => any,
+    day: (...args: Array<any>) => any,
+    dayPeriod: (...args: Array<any>) => any
   },
-  formatLong: Object,
-  date: Function,
-  time: Function,
-  dateTime: Function,
-  match: {
-    ordinalNumber: Function,
-    era: Function,
-    quarter: Function,
-    month: Function,
-    day: Function,
-    dayPeriod: Function
+  formatLong?: {
+    date: (...args: Array<any>) => any,
+    time: (...args: Array<any>) => any,
+    dateTime: (...args: Array<any>) => any
+  },
+  match?: {
+    ordinalNumber: (...args: Array<any>) => any,
+    era: (...args: Array<any>) => any,
+    quarter: (...args: Array<any>) => any,
+    month: (...args: Array<any>) => any,
+    day: (...args: Array<any>) => any,
+    dayPeriod: (...args: Array<any>) => any
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
@@ -35,7 +37,19 @@ type Locale = {
   }
 }
 
+export type Duration = {
+  years?: number,
+  months?: number,
+  weeks?: number,
+  days?: number,
+  hours?: number,
+  minutes?: number,
+  seconds?: number
+}
+
 declare module.exports: {
+  add: (date: Date | number, duration: Duration) => Date,
+
   addBusinessDays: (date: Date | number, amount: number) => Date,
 
   addDays: (date: Date | number, amount: number) => Date,
@@ -60,7 +74,10 @@ declare module.exports: {
 
   areIntervalsOverlapping: (
     intervalLeft: Interval,
-    intervalRight: Interval
+    intervalRight: Interval,
+    options?: {
+      inclusive?: boolean
+    }
   ) => boolean,
 
   closestIndexTo: (
@@ -178,6 +195,17 @@ declare module.exports: {
     }
   ) => Date[],
 
+  eachHourOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ) => Date[],
+
+  eachMonthOfInterval: (interval: Interval) => Date[],
+
+  eachQuarterOfInterval: (interval: Interval) => Date[],
+
   eachWeekendOfInterval: (interval: Interval) => Date[],
 
   eachWeekendOfMonth: (date: Date | number) => Date[],
@@ -191,6 +219,8 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
     }
   ) => Date[],
+
+  eachYearOfInterval: (interval: Interval) => Date[],
 
   endOfDay: (date: Date | number) => Date,
 
@@ -273,6 +303,44 @@ declare module.exports: {
     }
   ) => string,
 
+  formatDistanceToNowStrict: (
+    date: Date | number,
+    options?: {
+      addSuffix?: boolean,
+      unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+      roundingMethod?: 'floor' | 'ceil' | 'round',
+      locale?: Locale
+    }
+  ) => string,
+
+  formatDuration: (
+    duration: Duration,
+    options?: {
+      format?: string[],
+      zero?: boolean,
+      delimiter?: string,
+      locale?: Locale
+    }
+  ) => string,
+
+  formatISO: (
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic',
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ) => string,
+
+  formatISO9075: (
+    date: Date | number,
+    options?: {
+      format?: 'extended' | 'basic',
+      representation?: 'complete' | 'date' | 'time'
+    }
+  ) => string,
+
+  formatISODuration: (duration: Duration) => string,
+
   formatRelative: (
     date: Date | number,
     baseDate: Date | number,
@@ -282,11 +350,20 @@ declare module.exports: {
     }
   ) => string,
 
+  formatRFC3339: (
+    date: Date | number,
+    options?: {
+      fractionDigits?: 0 | 1 | 2 | 3
+    }
+  ) => string,
+
+  formatRFC7231: (date: Date | number) => string,
+
   fromUnixTime: (unixTime: number) => Date,
 
   getDate: (date: Date | number) => number,
 
-  getDay: (date: Date | number) => number,
+  getDay: (date: Date | number) => 0 | 1 | 2 | 3 | 4 | 5 | 6,
 
   getDayOfYear: (date: Date | number) => number,
 
@@ -361,6 +438,8 @@ declare module.exports: {
 
   getYear: (date: Date | number) => number,
 
+  intervalToDuration: (interval: Interval) => Duration,
+
   isAfter: (date: Date | number, dateToCompare: Date | number) => boolean,
 
   isBefore: (date: Date | number, dateToCompare: Date | number) => boolean,
@@ -368,6 +447,8 @@ declare module.exports: {
   isDate: (value: any) => boolean,
 
   isEqual: (dateLeft: Date | number, dateRight: Date | number) => boolean,
+
+  isExists: (year: number, month: number, day: number) => boolean,
 
   isFirstDayOfMonth: (date: Date | number) => boolean,
 
@@ -378,6 +459,18 @@ declare module.exports: {
   isLastDayOfMonth: (date: Date | number) => boolean,
 
   isLeapYear: (date: Date | number) => boolean,
+
+  isMatch: (
+    dateString: string,
+    formatString: string,
+    options?: {
+      locale?: Locale,
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+      useAdditionalWeekYearTokens?: boolean,
+      useAdditionalDayOfYearTokens?: boolean
+    }
+  ) => boolean,
 
   isMonday: (date: Date | number) => boolean,
 
@@ -491,7 +584,7 @@ declare module.exports: {
   parse: (
     dateString: string,
     formatString: string,
-    backupDate: Date | number,
+    referenceDate: Date | number,
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
@@ -508,10 +601,25 @@ declare module.exports: {
     }
   ) => Date,
 
+  parseJSON: (argument: string | number | Date) => Date,
+
   roundToNearestMinutes: (
     date: Date | number,
     options?: {
       nearestTo?: number
+    }
+  ) => Date,
+
+  set: (
+    date: Date | number,
+    values: {
+      year?: number,
+      month?: number,
+      date?: number,
+      hours?: number,
+      minutes?: number,
+      seconds?: number,
+      milliseconds?: number
     }
   ) => Date,
 
@@ -610,6 +718,10 @@ declare module.exports: {
   startOfYear: (date: Date | number) => Date,
 
   startOfYesterday: () => Date,
+
+  sub: (date: Date | number, duration: Duration) => Date,
+
+  subBusinessDays: (date: Date | number, amount: number) => Date,
 
   subDays: (date: Date | number, amount: number) => Date,
 

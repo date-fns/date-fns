@@ -1,8 +1,8 @@
-import formatDistance from '../en-US/_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from '../en-US/_lib/formatRelative/index.js'
-import localize from '../en-US/_lib/localize/index.js'
-import match from '../en-US/_lib/match/index.js'
+import formatDistance from '../en-US/_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from '../en-US/_lib/formatRelative/index'
+import localize from '../en-US/_lib/localize/index'
+import match from '../en-US/_lib/match/index'
 
 /**
  * @type {Locale}
@@ -13,6 +13,7 @@ import match from '../en-US/_lib/match/index.js'
  * @author Alex [@glintik]{@link https://github.com/glintik}
  */
 var locale = {
+  code: 'en-GB',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

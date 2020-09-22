@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfHour
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Tue Sep 02 2014 11:59:59.999
  */
 export default function endOfHour(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   date.setMinutes(59, 59, 999)

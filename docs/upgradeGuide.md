@@ -2,6 +2,8 @@
 
 ## Common changes
 
+This page covers a few of the most common problems people face when updating from v1 to v2. For a more detailed list of changes, look at the [change log for version 2.0.0](https://date-fns.org/docs/Change-Log#2.0.0-2019-08-20).
+
 ### Camel case naming schema
 
 Function submodules now use camelCase naming schema:
@@ -18,11 +20,11 @@ import differenceInCalendarISOYears from 'date-fns/differenceInCalendarISOYears'
 
 Starting with v2 `format` and `parse` uses [Unicode tokens].
 
-See [Unicode Tokens doc](./unicodeTokens.md) for more details.
+See [Unicode Tokens doc](https://date-fns.org/docs/Unicode-Tokens) for more details.
 
 ### String arguments
 
-Functions now don't accept strings as arguments. Strings should
+Functions now don't accept strings as date arguments. Strings should
 be parsed using `parseISO` (ISO 8601) or `parse`.
 
 See [this post](https://blog.date-fns.org/post/we-cut-date-fns-v2-minimal-build-size-down-to-300-bytes-and-now-its-the-smallest-date-library-18f2nvh2z0yal) for more details.

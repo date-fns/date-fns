@@ -5,7 +5,7 @@
 that enables tree-shaking for bundlers, like [rollup.js](http://rollupjs.org)
 and [webpack](https://webpack.js.org).
 
-If you have tree-shaking enabled in your browser, just import functions normally:
+If you have tree-shaking enabled in your bundler, just import functions normally:
 
 ```javascript
 import { format, parse } from 'date-fns'

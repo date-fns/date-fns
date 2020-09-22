@@ -1,4 +1,4 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
   narrow: ['前', '公元'],
@@ -143,16 +143,18 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
 
-  if (
-    unit === 'date' ||
-    unit === 'hour' ||
-    unit === 'minute' ||
-    unit === 'second'
-  ) {
-    return number.toString()
+  switch (unit) {
+    case 'date':
+      return number.toString() + '日'
+    case 'hour':
+      return number.toString() + '时'
+    case 'minute':
+      return number.toString() + '分'
+    case 'second':
+      return number.toString() + '秒'
+    default:
+      return '第 ' + number.toString()
   }
-
-  return '第 ' + number.toString()
 }
 
 var localize = {

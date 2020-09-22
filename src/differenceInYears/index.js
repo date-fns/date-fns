@@ -1,6 +1,7 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarYears from '../differenceInCalendarYears/index.js'
-import compareAsc from '../compareAsc/index.js'
+import toDate from '../toDate/index'
+import differenceInCalendarYears from '../differenceInCalendarYears/index'
+import compareAsc from '../compareAsc/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInYears
@@ -25,18 +26,18 @@ import compareAsc from '../compareAsc/index.js'
  * //=> 1
  */
 export default function differenceInYears(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarYears(dateLeft, dateRight))
-  dateLeft.setFullYear(dateLeft.getFullYear() - sign * difference)
+
+  // Set both dates to a valid leap year for accurate comparison when dealing
+  // with leap days
+  dateLeft.setFullYear('1584')
+  dateRight.setFullYear('1584')
 
   // Math.abs(diff in full years - diff in calendar years) === 1 if last calendar year is not full
   // If so, result must be decreased by 1 in absolute value

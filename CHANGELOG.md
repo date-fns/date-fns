@@ -8,6 +8,323 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.16.1] - 2020-07-31
+
+Kudos to [@aleksaps](https://github.com/aleksaps), [@leedriscoll](https://github.com/leedriscoll) and [@BanForFun](https://github.com/BanForFun) for pull-requests!
+
+### Fixed
+
+- [Fixed a typo in Scottish Gaelic (gd) locale](https://github.com/date-fns/date-fns/pull/1925).
+- [Fixed typos in Serbian Latin locale](https://github.com/date-fns/date-fns/pull/1928).
+- [Fixed greek grammar for Saturday on `formatRelative`](https://github.com/date-fns/date-fns/pull/1930).
+- Removed locale snapshots from the npm package making it lighter.
+
+## [2.16.0] - 2020-08-27
+
+Kudos to [@jvpelt](https://github.com/jvpelt), [@piotrl](https://github.com/piotrl), [@yotamofek](https://github.com/yotamofek), [@dwaxweiler](https://github.com/dwaxweiler), [@leedriscoll](https://github.com/leedriscoll) and [@bradevans](https://github.com/bradevans) for working on the release. Also thanks to [@PascalHonegger](https://github.com/PascalHonegger), [@pickfire](https://github.com/pickfire), [@TheJaredWilcurt](https://github.com/TheJaredWilcurt), [@SidKH](https://github.com/SidKH) and [@nfantone](https://github.com/nfantone) for improving the documentation.
+
+### Fixed
+
+- [Added correct translations for Welsh `1 minute` and `2 days`](https://github.com/date-fns/date-fns/pull/1903).
+- [Fixed `formatRFC3339` formatting timezone offset with minutes](https://github.com/date-fns/date-fns/pull/1890).
+- [Added missing locale type definition for `formatDuration`](https://github.com/date-fns/date-fns/pull/1881)
+- [Fixed Scottish Gaelic locale issues](https://github.com/date-fns/date-fns/pull/1914).
+
+### Changed
+
+- [Used shorter Hebrew alternative for "about"](https://github.com/date-fns/date-fns/pull/1893).
+- [Improved string arguments warning after upgrading to v2](https://github.com/date-fns/date-fns/pull/1910).
+
+### Added
+
+- [Added Luxembourgish (lb) locale](https://github.com/date-fns/date-fns/pull/1900).
+
+## [2.15.0] - 2020-07-17
+
+Thanks to [@belgamo](https://github.com/belgamo), [@Matsuuu](https://github.com/Matsuuu), [@Imballinst](https://github.com/Imballinst), [@arsnyder16](https://github.com/arsnyder16), [@pankajupadhyay29](https://github.com/pankajupadhyay29), [@DCBN](https://github.com/DCBN), [@leedriscoll](https://github.com/leedriscoll), [@gottsohn](https://github.com/gottsohn), [@mukuljainx](https://github.com/mukuljainx) and [@dtriana](https://github.com/dtriana) for working on the release. Also kudos to [@KidkArolis](https://github.com/KidkArolis), [@imgx64](https://github.com/imgx64), [@fjc0k](https://github.com/fjc0k), [@wmonk](https://github.com/wmonk), [@djD-REK](https://github.com/djD-REK), [@dandv](https://github.com/dandv), [@psimk](https://github.com/psimk) and [@brimworks](https://github.com/brimworks) for improving the documentation.
+
+### Fixed
+
+- [Fixed behavior of `addBusinessDays` when input date is a weekend day](https://github.com/date-fns/date-fns/pull/1790).
+- [Fixed `parseISO` not returning `Invalid Date` on incorrect string when there are spaces in it](https://github.com/date-fns/date-fns/pull/1791).
+- [Fixed `es` round-tripping dates with Wednesday](https://github.com/date-fns/date-fns/pull/1792).
+- [Fixed round-trip bug with `d`/`EEEE` ordering in tokens like `PPPPP`](https://github.com/date-fns/date-fns/pull/1795).
+- [Fixed issues with parsing values in Japanese](https://github.com/date-fns/date-fns/pull/1807).
+- [Fixed Hungarian breaking IE11](https://github.com/date-fns/date-fns/pull/1842).
+- [Fixed Spanish accents in Saturday and Wednesday](https://github.com/date-fns/date-fns/pull/1872).
+
+### Changed
+
+- [Improved the message of protected tokens error](https://github.com/date-fns/date-fns/pull/1641).
+
+### Added
+
+- [Added Swiss-French `fr-CH` locale](https://github.com/date-fns/date-fns/pull/1809).
+- [Added Flemish `nl-BE` locale](https://github.com/date-fns/date-fns/pull/1812).
+- [Added Scottish Gaelic `gd` locale](https://github.com/date-fns/date-fns/pull/1832).
+- [Added New Zealand English `en-NZ` locale](https://github.com/date-fns/date-fns/pull/1835).
+- [Added `isMatch` function](https://github.com/date-fns/date-fns/pull/1868).
+
+## [2.14.0] - 2020-05-18
+
+Kudos to [@julamb](https://github.com/julamb), [@JacobSoderblom](https://github.com/JacobSoderblom), [@justingrant](http://github.com/justingrant), [@dragunoff](https://github.com/dragunoff), [@jmate0321](https://github.com/jmate0321), [@gbhasha](https://github.com/gbhasha), [@rasck](https://github.com/rasck), [@AlbertoPdRF](https://github.com/AlbertoPdRF), [@sebastianhaberey](https://github.com/sebastianhaberey) and [@giogonzo](https://github.com/giogonzo) for working on the release!
+
+### Fixed
+
+- [Fixed DST issues with `add`, `addDays` and `addMonths`](https://github.com/date-fns/date-fns/pull/1760).
+- [Fixed "quarter" translation in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1763).
+- [Fixed `formatDistance` strings in the Hungarian locale](https://github.com/date-fns/date-fns/pull/1765).
+- [Fixed Danish month abbreviations](https://github.com/date-fns/date-fns/pull/1774).
+- [Fixed parsing of mei in the Dutch locale](https://github.com/date-fns/date-fns/pull/1774).
+- [Fixed missing preposition in `formatLong` in the Spanish locale](https://github.com/date-fns/date-fns/pull/1775).
+- [Fixed `formatRelative` in the Italian locale](https://github.com/date-fns/date-fns/pull/1777).
+
+### Added
+
+- [Added `eachQuarterOfInterval`](https://github.com/date-fns/date-fns/pull/1715).
+- [Added Basque (`eu`) locale](https://github.com/date-fns/date-fns/pull/1759).
+- [Added Indian English (`en-IN`) locale](https://github.com/date-fns/date-fns/pull/1767).
+- [Added `eachHourOfInterval`](https://github.com/date-fns/date-fns/pull/1776).
+
+## [2.13.0] - 2020-05-06
+
+Thanks to [@JorenVos](https://github.com/JorenVos), [@developergouli](https://github.com/developergouli), [@rhlowe](https://github.com/rhlowe) and [@justingrant](http://github.com/justingrant) for working on the release!
+
+### Fixed
+
+- [Fixed mei abbreviation in the Dutch locale](https://github.com/date-fns/date-fns/pull/1752).
+- [Fixed `differenceInDays` DST behavior broken in 2.12.0](https://github.com/date-fns/date-fns/pull/1754).
+
+### Added
+
+- [Added Kannada locale support](https://github.com/date-fns/date-fns/pull/1747).
+- [Added `formatISODuration` function](https://github.com/date-fns/date-fns/pull/1713).
+- [Added `intervalToDuration` function](https://github.com/date-fns/date-fns/pull/1713).
+
+## [2.12.0] - 2020-04-09
+
+Kudos to [@leshakoss](http://github.com/leshakoss), [@skyuplam](https://github.com/skyuplam), [@so99ynoodles](https://github.com/so99ynoodles), [@dkozickis](https://github.com/dkozickis), [@belgamo](https://github.com/belgamo), [@akgondber](https://github.com/akgondber), [@dcousens](https://github.com/dcousens) and [@BoomDev](https://github.com/BoomDev) for working on the release!
+
+### Fixed
+
+- [Fixed minulý štvrtok in Slovak locale](https://github.com/date-fns/date-fns/pull/1701).
+- Fixed date ordinalNumber for [ja/zh-CN/zh-TW](https://github.com/date-fns/date-fns/pull/1690) and [ko](https://github.com/date-fns/date-fns/pull/1696).
+- [Fixed quarters parsing](https://github.com/date-fns/date-fns/pull/1694).
+- [Fixed `setDay` with `weekStartsOn` != 0](https://github.com/date-fns/date-fns/pull/1639).
+- [Fixed differenceInDays across DST](https://github.com/date-fns/date-fns/pull/1630).
+- [Fixed required arguments exception message](https://github.com/date-fns/date-fns/pull/1674).
+
+### Added
+
+- [Added new function `formatDistanceToNowStrict`](https://github.com/date-fns/date-fns/pull/1679).
+
+## [2.11.1] - 2020-03-26
+
+### Fixed
+
+- Rebuilt TypeScript and flow types.
+
+## [2.11.0] - 2020-03-13
+
+Kudos to [@oakhan3](https://github.com/oakhan3), [@Mukhammadali](https://github.com/Mukhammadali), [@altrim](https://github.com/altrim), [@leepowellcouk](https://github.com/leepowellcouk), [@amatzon](@https://github.com/amatzon), [@bryanMt](https://github.com/bryanMt), [@kalekseev](https://github.com/kalekseev), [@eugene-platov](https://github.com/eugene-platov) and [@tjrobinson](https://github.com/tjrobinson) for working on the release.
+
+### Fixed
+
+- [Fixed a bug in `differenceInYears` causing incorrect results when the left date is a leap day](https://github.com/date-fns/date-fns/pull/1654).
+- [Fixed `parseISO` to work correctly around time shift dates](https://github.com/date-fns/date-fns/pull/1667).
+- [Fixed `format` to work correctly with GMT-0752/GMT-0456 and similar timezones](https://github.com/date-fns/date-fns/pull/1666).
+
+### Changed
+
+- [Changed `getDay` typings to return `0|1|2|3|4|5|6` instead of `number`](https://github.com/date-fns/date-fns/pull/1668).
+- [Improved Chinese locale](https://github.com/date-fns/date-fns/pull/1664):
+  - Change date format to meet the national standard (GB/T 7408-2005).
+  - Improve `ordinalNumber` function behavior.
+  - Add prefix in `formatRelative` depending on if it's a current week or not.
+
+### Added
+
+- [Added Uzbek `uz` locale](https://github.com/date-fns/date-fns/pull/1648).
+- [Updated Macedonian locale for v2](https://github.com/date-fns/date-fns/pull/1649).
+- [Added Maltese `mt` locale](https://github.com/date-fns/date-fns/pull/1658).
+
+## [2.10.0] - 2020-02-25
+
+### Fixed
+
+- [Fixed `formatISO` when formatting time with timezones with minute offsets > 0](https://github.com/date-fns/date-fns/pull/1599). Kudos to [@dcRUSTy](https://github.com/dcRUSTy).
+
+### Fixed
+
+- Fixed a bug in setDay when using weekStartsOn that is not 0
+
+### Added
+
+- [Added `weeks` to `Duration`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added `weeks` support to `add` and `sub`](https://github.com/date-fns/date-fns/pull/1592).
+- [Added details message in `throwProtectedError`](https://github.com/date-fns/date-fns/pull/1592).
+
+## [2.9.0] - 2020-01-08
+
+Thanks to [@mborgbrant](https://github.com/mborgbrant), [@saintplay](https://github.com/saintplay), [@mrenty](https://github.com/mrenty), [@kibertoad](https://github.com/kibertoad), [@levibuzolic](https://github.com/levibuzolic), [@Anshuman71](https://github.com/Anshuman71), [@talgautb](https://github.com/talgautb), [@filipjuza](https://github.com/filipjuza), [@tobyzerner](https://github.com/tobyzerner), [@emil9453](https://github.com/emil9453), [@fintara](https://github.com/fintara), [@pascaliske](https://github.com/pascaliske), [@rramiachraf](https://github.com/rramiachraf), [@marnusw](https://github.com/marnusw) and [@Imballinst](https://github.com/Imballinst) for working on the release.
+
+### Fixed
+
+- [Fixed a bug with addBusinessDays returning the Tuesday when adding 1 day on weekends. Now it returns the Monday](https://github.com/date-fns/date-fns/pull/1588).
+- [Added missing timezone to `formatISO`](https://github.com/date-fns/date-fns/pull/1576).
+- [Removed dots from short day period names in the Kazakh locale](https://github.com/date-fns/date-fns/pull/1512).
+- [Fixed typo in formatDistance in the Czech locale](https://github.com/date-fns/date-fns/pull/1540).
+- [Fixed shortenings in the Bulgarian locale](https://github.com/date-fns/date-fns/pull/1560).
+- [Fixed regex for the May in the Portuguese locale](https://github.com/date-fns/date-fns/pull/1565).
+
+### Added
+
+- [Added `eachMonthOfInterval` and `eachYearOfInterval`](https://github.com/date-fns/date-fns/pull/618).
+- [Added `inclusive` option to `areIntervalsOverlapping](https://github.com/date-fns/date-fns/pull/643).
+- [Added `isExists` function that checks if the given date is exists](https://github.com/date-fns/date-fns/pull/682).
+- [Added `add` function to add seconds, minutes, hours, weeks, years in single call](https://github.com/date-fns/date-fns/pull/1581).
+- [Added `sub` function, the opposite of `add`](https://github.com/date-fns/date-fns/pull/1583).
+- [Added `Duration` type used in `add` and `sub`](https://github.com/date-fns/date-fns/pull/1583).
+- [Added Azerbaijani (az) locale](https://github.com/date-fns/date-fns/pull/1547).
+- [Added Moroccan Arabic (ar-MA) locale](https://github.com/date-fns/date-fns/pull/1578).
+
+### Changed
+
+- [Reduced the total minified build size by 1Kb/4%](https://github.com/date-fns/date-fns/pull/1563).
+- [Made all properties in `Locale` type optional](https://github.com/date-fns/date-fns/pull/1542).
+- [Added missing properties to `Locale` type](https://github.com/date-fns/date-fns/pull/1542).
+- [Add the locale code to `Locale` type](https://github.com/date-fns/date-fns/pull/1580).
+- [Added support of space time separator to `parseJSON`](https://github.com/date-fns/date-fns/pull/1579).
+- [Allowed up to 7 digits in milliseconds in `parseJSON`](https://github.com/date-fns/date-fns/pull/1579).
+
+## [2.8.1] - 2019-11-22
+
+Thanks to [@Imballinst](https://github.com/Imballinst) for the bug fix!
+
+### Fixed
+
+- [Add colon between the hour and minutes for `formatRFC3339`](https://github.com/date-fns/date-fns/pull/1549). [See #1548](https://github.com/date-fns/date-fns/issues/1548).
+
+## [2.8.0] - 2019-11-19
+
+Kudos to [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@Imballinst](https://github.com/Imballinst), [@leshakoss](https://github.com/leshakoss) and [@Neorth](https://github.com/Neorth) for working on the release.
+
+### Fixed
+
+- [Remove the next week preposition in the Swedish locale](https://github.com/date-fns/date-fns/pull/1538).
+
+### Added
+
+- [Added Malay (ms) locale](https://github.com/date-fns/date-fns/pull/1537).
+- [Added `formatISO`, `formatISO9075`, `formatRFC3339`, and `formatRFC7231` functions](https://github.com/date-fns/date-fns/pull/1536).
+
+## [2.7.0] - 2019-11-07
+
+Thanks to [@mzgajner](https://github.com/mzgajner), [@NaridaL](https://github.com/NaridaL), [@Zyten](https://github.com/Zyten), [@leshakoss](https://github.com/leshakoss), [@fintara](https://github.com/fintara), [@kpr-hellofresh](https://github.com/kpr-hellofresh) for contributing to the release.
+
+### Fixed
+
+- [Fixed a mistake in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1529).
+- [Fixed incorrect behavior of `parseISO` in Firefox caused by differences in `getTimezoneOffset`](https://github.com/date-fns/date-fns/pull/1495).
+
+### Changed
+
+- [Make object arguments types more elaborate in Flow type definitions](https://github.com/date-fns/date-fns/pull/1519).
+- [Get rid of deprecated Function in Flow type definitions](https://github.com/date-fns/date-fns/pull/1520).
+- [Allow `parseJSON` to accept strings without trailing 'Z' symbol and with up to 6 digits in the milliseconds' field](https://github.com/date-fns/date-fns/pull/1499).
+
+### Added
+
+- [Added Bulgarian (bg) locale](https://github.com/date-fns/date-fns/pull/1522).
+
+## [2.6.0] - 2019-10-22
+
+Kudos to [@marnusw](https://github.com/marnusw), [@cdrikd](https://github.com/cdrikd) and [@rogyvoje](https://github.com/rogyvoje) for working on the release!
+
+### Added
+
+- [Added `parseJSON` - lightweight function (just 411 B) that parses dates formatted with `toJSON`](https://github.com/date-fns/date-fns/pull/1463).
+- [Added the language code to each locale](https://github.com/date-fns/date-fns/pull/1489).
+- [Added `subBusinessDays` function](https://github.com/date-fns/date-fns/pull/1491).
+- [Added both Serbian - cyrillic (sr) and latin (sr-Latn) locales](https://github.com/date-fns/date-fns/pull/1494).
+
+## [2.5.1] - 2019-10-18
+
+Thanks to [@mitchellbutler](https://github.com/mitchellbutler) for the bug fix!
+
+### Fixed
+
+- [Fixed infinite loop in `addBusinessDays`](https://github.com/date-fns/date-fns/pull/1486).
+
+## [2.5.0] - 2019-10-16
+
+Kudos to [@dkozickis](https://github.com/dkozickis), [@drugoi](https://github.com/drugoi), [@kranthilakum](https://github.com/kranthilakum), [@102](https://github.com/102), [@gpetrioli](https://github.com/gpetrioli) and [@JulienMalige](https://github.com/JulienMalige) for making the release happen.
+
+### Fixed
+
+- [Fixed compatibility with IE11 by removing `findIndex` from the code](https://github.com/date-fns/date-fns/pull/1457).
+- [Fixed Greek locale patterns](https://github.com/date-fns/date-fns/pull/1480).
+
+### Added
+
+- [Added Kazakh (kk) locale](https://github.com/date-fns/date-fns/pull/1460).
+- [Added Telugu (te) locale](https://github.com/date-fns/date-fns/pull/1464).
+- [Added Canadian French (fr-CA) locale](https://github.com/date-fns/date-fns/issues/1465).
+- [Added Australian English (en-AU) locale](https://github.com/date-fns/date-fns/pull/1470).
+- [Exported `Interval` and `Locale` types from Flow typings](https://github.com/date-fns/date-fns/pull/1475).
+
+## [2.4.1] - 2019-09-28
+
+Thanks to [@mrclayman](https://github.com/mrclayman) for reporting the issue and [@leshakoss](https://github.com/leshakoss) for fixing it.
+
+### Fixed
+
+- [Fixed am/pm mixup in the Czech locale](https://github.com/date-fns/date-fns/pull/1453).
+
+## [2.4.0] - 2019-09-27
+
+This release brought to you by these amazing people: [@lovelovedokidoki](https://github.com/lovelovedokidoki), [@alexigityan](https://github.com/alexigityan), [@kalekseev](https://github.com/kalekseev) and [@andybangs](https://github.com/andybangs). You rock!
+
+### Fixed
+
+- [Fixed Vietnamese parsing patterns](https://github.com/date-fns/date-fns/pull/1445).
+- [Fixed Czech parsing regexes](https://github.com/date-fns/date-fns/pull/1446).
+- [Fixed offset for Eastern Hemisphere in `parseISO`](https://github.com/date-fns/date-fns/pull/1450).
+
+### Added
+
+- [Added Armenian locale support](https://github.com/date-fns/date-fns/pull/1448).
+
+## [2.3.0] - 2019-09-24
+
+Huge thanks to [@lovelovedokidoki](https://github.com/lovelovedokidoki) who improved 8 (!) locales in an unstoppable open-source rampage and [@VesterDe](https://github.com/VesterDe) for fixing Slovenian locale 👏
+
+### Fixed
+
+- [Fixed the translation of "yesterday" in the Slovenian locale](https://github.com/date-fns/date-fns/pull/1420).
+- [Fixed French parsing issues with June and August](https://github.com/date-fns/date-fns/pull/1430).
+- [Improved Turkish parsing](https://github.com/date-fns/date-fns/pull/1432).
+- [Fixed "March" in Dutch parsing patterns](https://github.com/date-fns/date-fns/pull/1433).
+- [Fixed Hindi parsing patterns](https://github.com/date-fns/date-fns/pull/1434).
+
+### Added
+
+- [Added Finnish matching patterns](https://github.com/date-fns/date-fns/pull/1425).
+- [Accept abbreviated March, June, July in Norwegian locales](https://github.com/date-fns/date-fns/pull/1431).
+- [Added parsing for Greek months with long formatting](https://github.com/date-fns/date-fns/pull/1435).
+
+## [2.2.1] - 2019-09-12
+
+Kudos to date-fns contributors: [@mzgajner](https://github.com/mzgajner), [@sibiraj-s](https://github.com/sibiraj-s), [@mukeshmandiwal](https://github.com/mukeshmandiwal), [@SneakyFish5](https://github.com/SneakyFish5) and [@CarterLi](https://github.com/CarterLi).
+
+### Added
+
+- [Added new `set` function](https://github.com/date-fns/date-fns/pull/1398).
+- [Updated Slovenian (sl) locale for v2](https://github.com/date-fns/date-fns/pull/1418).
+- [Added Tamil (ta) locale](https://github.com/date-fns/date-fns/pull/1411).
+- [Added Hindi (hi) locale](https://github.com/date-fns/date-fns/pull/1409).
+- [Added support of `\n` in `format`, `lightFormat` and `parse`](https://github.com/date-fns/date-fns/pull/1417).
+
 ## [2.1.0] - 2019-09-06
 
 Thanks to date-fns contributors: [@ManadayM](https://github.com/ManadayM), [@illuminist](https://github.com/illuminist), [@visualfanatic](https://github.com/visualfanatic), [@vsaarinen](https://github.com/vsaarinen) and at least but not least [@leshakoss](https://github.com/leshakoss)!
@@ -82,157 +399,157 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   which is based on [Unicode Technical Standard #35](https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table).
   See [this post](https://blog.date-fns.org/post/unicode-tokens-in-date-fns-v2-sreatyki91jg) for more details.
 
-  | Unit                            | Pattern  | Result examples                   |
-  | ------------------------------- | -------- | --------------------------------- |
-  | Era                             | G..GGG   | AD, BC                            |
-  |                                 | GGGG     | Anno Domini, Before Christ        |
-  |                                 | GGGGG    | A, B                              |
-  | Calendar year                   | y        | 44, 1, 1900, 2017                 |
-  |                                 | yo       | 44th, 1st, 0th, 17th              |
-  |                                 | yy       | 44, 01, 00, 17                    |
-  |                                 | yyy      | 044, 001, 1900, 2017              |
-  |                                 | yyyy     | 0044, 0001, 1900, 2017            |
-  |                                 | yyyyy    | ...                               |
-  | Local week-numbering year       | Y        | 44, 1, 1900, 2017                 |
-  |                                 | Yo       | 44th, 1st, 1900th, 2017th         |
-  |                                 | YY       | 44, 01, 00, 17                    |
-  |                                 | YYY      | 044, 001, 1900, 2017              |
-  |                                 | YYYY     | 0044, 0001, 1900, 2017            |
-  |                                 | YYYYY    | ...                               |
-  | ISO week-numbering year         | R        | -43, 0, 1, 1900, 2017             |
-  |                                 | RR       | -43, 00, 01, 1900, 2017           |
-  |                                 | RRR      | -043, 000, 001, 1900, 2017        |
-  |                                 | RRRR     | -0043, 0000, 0001, 1900, 2017     |
-  |                                 | RRRRR    | ...                               |
-  | Extended year                   | u        | -43, 0, 1, 1900, 2017             |
-  |                                 | uu       | -43, 01, 1900, 2017               |
-  |                                 | uuu      | -043, 001, 1900, 2017             |
-  |                                 | uuuu     | -0043, 0001, 1900, 2017           |
-  |                                 | uuuuu    | ...                               |
-  | Quarter (formatting)            | Q        | 1, 2, 3, 4                        |
-  |                                 | Qo       | 1st, 2nd, 3rd, 4th                |
-  |                                 | QQ       | 01, 02, 03, 04                    |
-  |                                 | QQQ      | Q1, Q2, Q3, Q4                    |
-  |                                 | QQQQ     | 1st quarter, 2nd quarter, ...     |
-  |                                 | QQQQQ    | 1, 2, 3, 4                        |
-  | Quarter (stand-alone)           | q        | 1, 2, 3, 4                        |
-  |                                 | qo       | 1st, 2nd, 3rd, 4th                |
-  |                                 | qq       | 01, 02, 03, 04                    |
-  |                                 | qqq      | Q1, Q2, Q3, Q4                    |
-  |                                 | qqqq     | 1st quarter, 2nd quarter, ...     |
-  |                                 | qqqqq    | 1, 2, 3, 4                        |
-  | Month (formatting)              | M        | 1, 2, ..., 12                     |
-  |                                 | Mo       | 1st, 2nd, ..., 12th               |
-  |                                 | MM       | 01, 02, ..., 12                   |
-  |                                 | MMM      | Jan, Feb, ..., Dec                |
-  |                                 | MMMM     | January, February, ..., December  |
-  |                                 | MMMMM    | J, F, ..., D                      |
-  | Month (stand-alone)             | L        | 1, 2, ..., 12                     |
-  |                                 | Lo       | 1st, 2nd, ..., 12th               |
-  |                                 | LL       | 01, 02, ..., 12                   |
-  |                                 | LLL      | Jan, Feb, ..., Dec                |
-  |                                 | LLLL     | January, February, ..., December  |
-  |                                 | LLLLL    | J, F, ..., D                      |
-  | Local week of year              | w        | 1, 2, ..., 53                     |
-  |                                 | wo       | 1st, 2nd, ..., 53th               |
-  |                                 | ww       | 01, 02, ..., 53                   |
-  | ISO week of year                | I        | 1, 2, ..., 53                     |
-  |                                 | Io       | 1st, 2nd, ..., 53th               |
-  |                                 | II       | 01, 02, ..., 53                   |
-  | Day of month                    | d        | 1, 2, ..., 31                     |
-  |                                 | do       | 1st, 2nd, ..., 31st               |
-  |                                 | dd       | 01, 02, ..., 31                   |
-  | Day of year                     | D        | 1, 2, ..., 365, 366               |
-  |                                 | Do       | 1st, 2nd, ..., 365th, 366th       |
-  |                                 | DD       | 01, 02, ..., 365, 366             |
-  |                                 | DDD      | 001, 002, ..., 365, 366           |
-  |                                 | DDDD     | ...                               |
-  | Day of week (formatting)        | E..EEE   | Mon, Tue, Wed, ..., Su            |
-  |                                 | EEEE     | Monday, Tuesday, ..., Sunday      |
-  |                                 | EEEEE    | M, T, W, T, F, S, S               |
-  |                                 | EEEEEE   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | ISO day of week (formatting)    | i        | 1, 2, 3, ..., 7                   |
-  |                                 | io       | 1st, 2nd, ..., 7th                |
-  |                                 | ii       | 01, 02, ..., 07                   |
-  |                                 | iii      | Mon, Tue, Wed, ..., Su            |
-  |                                 | iiii     | Monday, Tuesday, ..., Sunday      |
-  |                                 | iiiii    | M, T, W, T, F, S, S               |
-  |                                 | iiiiii   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | Local day of week (formatting)  | e        | 2, 3, 4, ..., 1                   |
-  |                                 | eo       | 2nd, 3rd, ..., 1st                |
-  |                                 | ee       | 02, 03, ..., 01                   |
-  |                                 | eee      | Mon, Tue, Wed, ..., Su            |
-  |                                 | eeee     | Monday, Tuesday, ..., Sunday      |
-  |                                 | eeeee    | M, T, W, T, F, S, S               |
-  |                                 | eeeeee   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | Local day of week (stand-alone) | c        | 2, 3, 4, ..., 1                   |
-  |                                 | co       | 2nd, 3rd, ..., 1st                |
-  |                                 | cc       | 02, 03, ..., 01                   |
-  |                                 | ccc      | Mon, Tue, Wed, ..., Su            |
-  |                                 | cccc     | Monday, Tuesday, ..., Sunday      |
-  |                                 | ccccc    | M, T, W, T, F, S, S               |
-  |                                 | cccccc   | Mo, Tu, We, Th, Fr, Su, Sa        |
-  | AM, PM                          | a..aaa   | AM, PM                            |
-  |                                 | aaaa     | a.m., p.m.                        |
-  |                                 | aaaaa    | a, p                              |
-  | AM, PM, noon, midnight          | b..bbb   | AM, PM, noon, midnight            |
-  |                                 | bbbb     | a.m., p.m., noon, midnight        |
-  |                                 | bbbbb    | a, p, n, mi                       |
-  | Flexible day period             | B..BBB   | at night, in the morning, ...     |
-  |                                 | BBBB     | at night, in the morning, ...     |
-  |                                 | BBBBB    | at night, in the morning, ...     |
-  | Hour [1-12]                     | h        | 1, 2, ..., 11, 12                 |
-  |                                 | ho       | 1st, 2nd, ..., 11th, 12th         |
-  |                                 | hh       | 01, 02, ..., 11, 12               |
-  | Hour [0-23]                     | H        | 0, 1, 2, ..., 23                  |
-  |                                 | Ho       | 0th, 1st, 2nd, ..., 23rd          |
-  |                                 | HH       | 00, 01, 02, ..., 23               |
-  | Hour [0-11]                     | K        | 1, 2, ..., 11, 0                  |
-  |                                 | Ko       | 1st, 2nd, ..., 11th, 0th          |
-  |                                 | KK       | 1, 2, ..., 11, 0                  |
-  | Hour [1-24]                     | k        | 24, 1, 2, ..., 23                 |
-  |                                 | ko       | 24th, 1st, 2nd, ..., 23rd         |
-  |                                 | kk       | 24, 01, 02, ..., 23               |
-  | Minute                          | m        | 0, 1, ..., 59                     |
-  |                                 | mo       | 0th, 1st, ..., 59th               |
-  |                                 | mm       | 00, 01, ..., 59                   |
-  | Second                          | s        | 0, 1, ..., 59                     |
-  |                                 | so       | 0th, 1st, ..., 59th               |
-  |                                 | ss       | 00, 01, ..., 59                   |
-  | Fraction of second              | S        | 0, 1, ..., 9                      |
-  |                                 | SS       | 00, 01, ..., 99                   |
-  |                                 | SSS      | 000, 0001, ..., 999               |
-  |                                 | SSSS     | ...                               |
-  | Timezone (ISO-8601 w/ Z)        | X        | -08, +0530, Z                     |
-  |                                 | XX       | -0800, +0530, Z                   |
-  |                                 | XXX      | -08:00, +05:30, Z                 |
-  |                                 | XXXX     | -0800, +0530, Z, +123456          |
-  |                                 | XXXXX    | -08:00, +05:30, Z, +12:34:56      |
-  | Timezone (ISO-8601 w/o Z)       | x        | -08, +0530, +00                   |
-  |                                 | xx       | -0800, +0530, +0000               |
-  |                                 | xxx      | -08:00, +05:30, +00:00            |
-  |                                 | xxxx     | -0800, +0530, +0000, +123456      |
-  |                                 | xxxxx    | -08:00, +05:30, +00:00, +12:34:56 |
-  | Timezone (GMT)                  | O...OOO  | GMT-8, GMT+5:30, GMT+0            |
-  |                                 | OOOO     | GMT-08:00, GMT+05:30, GMT+00:00   |
-  | Timezone (specific non-locat.)  | z...zzz  | GMT-8, GMT+5:30, GMT+0            |
-  |                                 | zzzz     | GMT-08:00, GMT+05:30, GMT+00:00   |
-  | Seconds timestamp               | t        | 512969520                         |
-  |                                 | tt       | ...                               |
-  | Milliseconds timestamp          | T        | 512969520900                      |
-  |                                 | TT       | ...                               |
-  | Long localized date             | P        | 5/29/53                           |
-  |                                 | PP       | May 29, 1453                      |
-  |                                 | PPP      | May 29th, 1453                    |
-  |                                 | PPPP     | Sunday, May 29th, 1453            |
-  | Long localized time             | p        | 12:00 AM                          |
-  |                                 | pp       | 12:00:00 AM                       |
-  |                                 | ppp      | 12:00:00 AM GMT+2                 |
-  |                                 | pppp     | 12:00:00 AM GMT+02:00             |
-  | Combination of date and time    | Pp       | 5/29/53, 12:00 AM                 |
-  |                                 | PPpp     | May 29, 1453, 12:00 AM            |
-  |                                 | PPPppp   | May 29th, 1453 at ...             |
-  |                                 | PPPPpppp | Sunday, May 29th, 1453 at ...     |
+  | Unit                            | v2 Pattern | v1 Pattern | Result examples                   |
+  | ------------------------------- | ---------- | ---------- | --------------------------------- |
+  | Era                             | G..GGG     |            | AD, BC                            |
+  |                                 | GGGG       |            | Anno Domini, Before Christ        |
+  |                                 | GGGGG      |            | A, B                              |
+  | Calendar year                   | y          |            | 44, 1, 1900, 2017                 |
+  |                                 | yo         |            | 44th, 1st, 0th, 17th              |
+  |                                 | yy         | YY         | 44, 01, 00, 17                    |
+  |                                 | yyy        |            | 044, 001, 1900, 2017              |
+  |                                 | yyyy       | YYYY       | 0044, 0001, 1900, 2017            |
+  |                                 | yyyyy      |            | ...                               |
+  | Local week-numbering year       | Y          |            | 44, 1, 1900, 2017                 |
+  |                                 | Yo         |            | 44th, 1st, 1900th, 2017th         |
+  |                                 | YY         |            | 44, 01, 00, 17                    |
+  |                                 | YYY        |            | 044, 001, 1900, 2017              |
+  |                                 | YYYY       |            | 0044, 0001, 1900, 2017            |
+  |                                 | YYYYY      |            | ...                               |
+  | ISO week-numbering year         | R          |            | -43, 0, 1, 1900, 2017             |
+  |                                 | RR         | GG         | -43, 00, 01, 1900, 2017           |
+  |                                 | RRR        |            | -043, 000, 001, 1900, 2017        |
+  |                                 | RRRR       | GGGG       | -0043, 0000, 0001, 1900, 2017     |
+  |                                 | RRRRR      |            | ...                               |
+  | Extended year                   | u          |            | -43, 0, 1, 1900, 2017             |
+  |                                 | uu         |            | -43, 01, 1900, 2017               |
+  |                                 | uuu        |            | -043, 001, 1900, 2017             |
+  |                                 | uuuu       |            | -0043, 0001, 1900, 2017           |
+  |                                 | uuuuu      |            | ...                               |
+  | Quarter (formatting)            | Q          |            | 1, 2, 3, 4                        |
+  |                                 | Qo         |            | 1st, 2nd, 3rd, 4th                |
+  |                                 | QQ         |            | 01, 02, 03, 04                    |
+  |                                 | QQQ        |            | Q1, Q2, Q3, Q4                    |
+  |                                 | QQQQ       |            | 1st quarter, 2nd quarter, ...     |
+  |                                 | QQQQQ      |            | 1, 2, 3, 4                        |
+  | Quarter (stand-alone)           | q          | Q          | 1, 2, 3, 4                        |
+  |                                 | qo         | Qo         | 1st, 2nd, 3rd, 4th                |
+  |                                 | qq         |            | 01, 02, 03, 04                    |
+  |                                 | qqq        |            | Q1, Q2, Q3, Q4                    |
+  |                                 | qqqq       |            | 1st quarter, 2nd quarter, ...     |
+  |                                 | qqqqq      |            | 1, 2, 3, 4                        |
+  | Month (formatting)              | M          |            | 1, 2, ..., 12                     |
+  |                                 | Mo         |            | 1st, 2nd, ..., 12th               |
+  |                                 | MM         |            | 01, 02, ..., 12                   |
+  |                                 | MMM        |            | Jan, Feb, ..., Dec                |
+  |                                 | MMMM       |            | January, February, ..., December  |
+  |                                 | MMMMM      |            | J, F, ..., D                      |
+  | Month (stand-alone)             | L          | M          | 1, 2, ..., 12                     |
+  |                                 | Lo         |            | 1st, 2nd, ..., 12th               |
+  |                                 | LL         | MM         | 01, 02, ..., 12                   |
+  |                                 | LLL        | MMM        | Jan, Feb, ..., Dec                |
+  |                                 | LLLL       | MMMM       | January, February, ..., December  |
+  |                                 | LLLLL      |            | J, F, ..., D                      |
+  | Local week of year              | w          |            | 1, 2, ..., 53                     |
+  |                                 | wo         |            | 1st, 2nd, ..., 53th               |
+  |                                 | ww         |            | 01, 02, ..., 53                   |
+  | ISO week of year                | I          | W          | 1, 2, ..., 53                     |
+  |                                 | Io         | Wo         | 1st, 2nd, ..., 53th               |
+  |                                 | II         | WW         | 01, 02, ..., 53                   |
+  | Day of month                    | d          | D          | 1, 2, ..., 31                     |
+  |                                 | do         | Do         | 1st, 2nd, ..., 31st               |
+  |                                 | dd         | DD         | 01, 02, ..., 31                   |
+  | Day of year                     | D          | DDD        | 1, 2, ..., 365, 366               |
+  |                                 | Do         | DDDo       | 1st, 2nd, ..., 365th, 366th       |
+  |                                 | DD         |            | 01, 02, ..., 365, 366             |
+  |                                 | DDD        | DDDD       | 001, 002, ..., 365, 366           |
+  |                                 | DDDD       |            | ...                               |
+  | Day of week (formatting)        | E..EEE     |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | EEEE       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | EEEEE      |            | M, T, W, T, F, S, S               |
+  |                                 | EEEEEE     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | ISO day of week (formatting)    | i          | E          | 1, 2, 3, ..., 7                   |
+  |                                 | io         | do         | 1st, 2nd, ..., 7th                |
+  |                                 | ii         |            | 01, 02, ..., 07                   |
+  |                                 | iii        | ddd        | Mon, Tue, Wed, ..., Su            |
+  |                                 | iiii       | dddd       | Monday, Tuesday, ..., Sunday      |
+  |                                 | iiiii      |            | M, T, W, T, F, S, S               |
+  |                                 | iiiiii     | dd         | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | Local day of week (formatting)  | e          |            | 2, 3, 4, ..., 1                   |
+  |                                 | eo         |            | 2nd, 3rd, ..., 1st                |
+  |                                 | ee         |            | 02, 03, ..., 01                   |
+  |                                 | eee        |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | eeee       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | eeeee      |            | M, T, W, T, F, S, S               |
+  |                                 | eeeeee     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | Local day of week (stand-alone) | c          |            | 2, 3, 4, ..., 1                   |
+  |                                 | co         |            | 2nd, 3rd, ..., 1st                |
+  |                                 | cc         |            | 02, 03, ..., 01                   |
+  |                                 | ccc        |            | Mon, Tue, Wed, ..., Su            |
+  |                                 | cccc       |            | Monday, Tuesday, ..., Sunday      |
+  |                                 | ccccc      |            | M, T, W, T, F, S, S               |
+  |                                 | cccccc     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  | AM, PM                          | a..aaa     | A          | AM, PM                            |
+  |                                 | aaaa       | aa         | a.m., p.m.                        |
+  |                                 | aaaaa      |            | a, p                              |
+  | AM, PM, noon, midnight          | b..bbb     |            | AM, PM, noon, midnight            |
+  |                                 | bbbb       |            | a.m., p.m., noon, midnight        |
+  |                                 | bbbbb      |            | a, p, n, mi                       |
+  | Flexible day period             | B..BBB     |            | at night, in the morning, ...     |
+  |                                 | BBBB       |            | at night, in the morning, ...     |
+  |                                 | BBBBB      |            | at night, in the morning, ...     |
+  | Hour [1-12]                     | h          |            | 1, 2, ..., 11, 12                 |
+  |                                 | ho         |            | 1st, 2nd, ..., 11th, 12th         |
+  |                                 | hh         |            | 01, 02, ..., 11, 12               |
+  | Hour [0-23]                     | H          |            | 0, 1, 2, ..., 23                  |
+  |                                 | Ho         |            | 0th, 1st, 2nd, ..., 23rd          |
+  |                                 | HH         |            | 00, 01, 02, ..., 23               |
+  | Hour [0-11]                     | K          |            | 1, 2, ..., 11, 0                  |
+  |                                 | Ko         |            | 1st, 2nd, ..., 11th, 0th          |
+  |                                 | KK         |            | 1, 2, ..., 11, 0                  |
+  | Hour [1-24]                     | k          |            | 24, 1, 2, ..., 23                 |
+  |                                 | ko         |            | 24th, 1st, 2nd, ..., 23rd         |
+  |                                 | kk         |            | 24, 01, 02, ..., 23               |
+  | Minute                          | m          |            | 0, 1, ..., 59                     |
+  |                                 | mo         |            | 0th, 1st, ..., 59th               |
+  |                                 | mm         |            | 00, 01, ..., 59                   |
+  | Second                          | s          |            | 0, 1, ..., 59                     |
+  |                                 | so         |            | 0th, 1st, ..., 59th               |
+  |                                 | ss         |            | 00, 01, ..., 59                   |
+  | Fraction of second              | S          |            | 0, 1, ..., 9                      |
+  |                                 | SS         |            | 00, 01, ..., 99                   |
+  |                                 | SSS        |            | 000, 0001, ..., 999               |
+  |                                 | SSSS       |            | ...                               |
+  | Timezone (ISO-8601 w/ Z)        | X          |            | -08, +0530, Z                     |
+  |                                 | XX         |            | -0800, +0530, Z                   |
+  |                                 | XXX        |            | -08:00, +05:30, Z                 |
+  |                                 | XXXX       |            | -0800, +0530, Z, +123456          |
+  |                                 | XXXXX      |            | -08:00, +05:30, Z, +12:34:56      |
+  | Timezone (ISO-8601 w/o Z)       | x          |            | -08, +0530, +00                   |
+  |                                 | xx         | ZZ         | -0800, +0530, +0000               |
+  |                                 | xxx        | Z          | -08:00, +05:30, +00:00            |
+  |                                 | xxxx       |            | -0800, +0530, +0000, +123456      |
+  |                                 | xxxxx      |            | -08:00, +05:30, +00:00, +12:34:56 |
+  | Timezone (GMT)                  | O...OOO    |            | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | OOOO       |            | GMT-08:00, GMT+05:30, GMT+00:00   |
+  | Timezone (specific non-locat.)  | z...zzz    |            | GMT-8, GMT+5:30, GMT+0            |
+  |                                 | zzzz       |            | GMT-08:00, GMT+05:30, GMT+00:00   |
+  | Seconds timestamp               | t          | X          | 512969520                         |
+  |                                 | tt         |            | ...                               |
+  | Milliseconds timestamp          | T          | x          | 512969520900                      |
+  |                                 | TT         |            | ...                               |
+  | Long localized date             | P          |            | 5/29/53                           |
+  |                                 | PP         |            | May 29, 1453                      |
+  |                                 | PPP        |            | May 29th, 1453                    |
+  |                                 | PPPP       |            | Sunday, May 29th, 1453            |
+  | Long localized time             | p          |            | 12:00 AM                          |
+  |                                 | pp         |            | 12:00:00 AM                       |
+  |                                 | ppp        |            | 12:00:00 AM GMT+2                 |
+  |                                 | pppp       |            | 12:00:00 AM GMT+02:00             |
+  | Combination of date and time    | Pp         |            | 5/29/53, 12:00 AM                 |
+  |                                 | PPpp       |            | May 29, 1453, 12:00 AM            |
+  |                                 | PPPppp     |            | May 29th, 1453 at ...             |
+  |                                 | PPPPpppp   |            | Sunday, May 29th, 1453 at ...     |
 
   Characters are now escaped using single quote symbols (`'`) instead of square brackets.
   `format` now throws RangeError if it encounters an unescaped latin character
@@ -363,7 +680,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20)
+    end: new Date(2014, 0, 20),
   })
 
   getOverlappingDaysInIntervals(
@@ -373,7 +690,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7)
+    end: new Date(2014, 0, 7),
   })
   ```
 
@@ -560,6 +877,11 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 - **BREAKING**: all functions now check if the passed number of arguments is less
   than the number of required arguments and throw `TypeError` exception if so.
 
+- **BREAKING**: all functions that accept numbers as arguments, now coerce
+  values using `Number()` and also round decimals. Positive decimals are
+  rounded using `Math.floor`, decimals less than zero are rounded using
+  `Math.ceil`.
+
 - **BREAKING**: The Bower & UMD/CDN package versions are no longer supported.
 
 - **BREAKING**: `null` now is not a valid date. `isValid(null)` returns `false`;
@@ -600,10 +922,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2)
+    new Date(2017, 6 /* Jul */, 2),
   ]
 
-  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
@@ -1751,7 +2073,28 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
 - `startOfDay`
 
-[unreleased]: https://github.com/date-fns/date-fns/compare/v2.0.1...HEAD
+[unreleased]: https://github.com/date-fns/date-fns/compare/v2.16.1...HEAD
+[2.16.1]: https://github.com/date-fns/date-fns/compare/v2.16.0...v2.16.1
+[2.16.0]: https://github.com/date-fns/date-fns/compare/v2.15.0...v2.16.0
+[2.15.0]: https://github.com/date-fns/date-fns/compare/v2.14.0...v2.15.0
+[2.14.0]: https://github.com/date-fns/date-fns/compare/v2.13.0...v2.14.0
+[2.13.0]: https://github.com/date-fns/date-fns/compare/v2.12.0...v2.13.0
+[2.12.0]: https://github.com/date-fns/date-fns/compare/v2.11.1...v2.12.0
+[2.11.1]: https://github.com/date-fns/date-fns/compare/v2.11.0...v2.11.1
+[2.11.0]: https://github.com/date-fns/date-fns/compare/v2.10.0...v2.11.0
+[2.10.0]: https://github.com/date-fns/date-fns/compare/v2.9.0...v2.10.0
+[2.9.0]: https://github.com/date-fns/date-fns/compare/v2.8.1...v2.9.0
+[2.8.1]: https://github.com/date-fns/date-fns/compare/v2.8.0...v2.8.1
+[2.8.0]: https://github.com/date-fns/date-fns/compare/v2.7.0...v2.8.0
+[2.7.0]: https://github.com/date-fns/date-fns/compare/v2.6.0...v2.7.0
+[2.6.0]: https://github.com/date-fns/date-fns/compare/v2.5.1...v2.6.0
+[2.5.1]: https://github.com/date-fns/date-fns/compare/v2.5.0...v2.5.1
+[2.5.0]: https://github.com/date-fns/date-fns/compare/v2.4.1...v2.5.0
+[2.4.1]: https://github.com/date-fns/date-fns/compare/v2.4.0...v2.4.1
+[2.4.0]: https://github.com/date-fns/date-fns/compare/v2.3.0...v2.4.0
+[2.3.0]: https://github.com/date-fns/date-fns/compare/v2.2.1...v2.3.0
+[2.2.1]: https://github.com/date-fns/date-fns/compare/v2.1.0...v2.2.1
+[2.1.0]: https://github.com/date-fns/date-fns/compare/v2.0.1...v2.1.0
 [2.0.1]: https://github.com/date-fns/date-fns/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/date-fns/date-fns/compare/v1.28.5...v2.0.0
 [1.28.5]: https://github.com/date-fns/date-fns/compare/v1.28.4...v1.28.5

@@ -196,17 +196,17 @@ If now is January 1st, 2000, 00:00.
 | 2004-01-01T00:00:00.000Z | arredor de 4 anos  | arredor de 4 anos      | en arredor de 4 anos   |
 | 2003-01-01T00:00:00.000Z | arredor de 3 anos  | arredor de 3 anos      | en arredor de 3 anos   |
 | 2002-01-01T00:00:00.000Z | arredor de 2 anos  | arredor de 2 anos      | en arredor de 2 anos   |
-| 2001-06-01T00:00:00.000Z | mais de 1 ano      | mais de 1 ano          | en mais de 1 ano       |
-| 2001-02-01T00:00:00.000Z | arredor de 1 ano   | arredor de 1 ano       | en arredor de 1 ano    |
-| 2001-01-01T00:00:00.000Z | arredor de 1 ano   | arredor de 1 ano       | en arredor de 1 ano    |
+| 2001-06-01T00:00:00.000Z | máis dun ano       | máis dun ano           | en máis dun ano        |
+| 2001-02-01T00:00:00.000Z | arredor dun ano    | arredor dun ano        | en arredor dun ano     |
+| 2001-01-01T00:00:00.000Z | arredor dun ano    | arredor dun ano        | en arredor dun ano     |
 | 2000-06-01T00:00:00.000Z | 5 meses            | 5 meses                | en 5 meses             |
 | 2000-03-01T00:00:00.000Z | 2 meses            | 2 meses                | en 2 meses             |
 | 2000-02-01T00:00:00.000Z | arredor de 1 mes   | arredor de 1 mes       | en arredor de 1 mes    |
 | 2000-01-15T00:00:00.000Z | 14 días            | 14 días                | en 14 días             |
 | 2000-01-02T00:00:00.000Z | 1 día              | 1 día                  | en 1 día               |
 | 2000-01-01T06:00:00.000Z | arredor de 6 horas | arredor de 6 horas     | en arredor de 6 horas  |
-| 2000-01-01T01:00:00.000Z | arredor de 1 hora  | arredor de 1 hora      | en arredor de 1 hora   |
-| 2000-01-01T00:45:00.000Z | arredor de 1 hora  | arredor de 1 hora      | en arredor de 1 hora   |
+| 2000-01-01T01:00:00.000Z | arredor dunha hora | arredor dunha hora     | en arredor dunha hora  |
+| 2000-01-01T00:45:00.000Z | arredor dunha hora | arredor dunha hora     | en arredor dunha hora  |
 | 2000-01-01T00:30:00.000Z | 30 minutos         | 30 minutos             | en 30 minutos          |
 | 2000-01-01T00:15:00.000Z | 15 minutos         | 15 minutos             | en 15 minutos          |
 | 2000-01-01T00:01:00.000Z | 1 minuto           | 1 minuto               | en 1 minuto            |
@@ -220,17 +220,17 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:00.000Z | 1 minuto           | 1 minuto               | hai 1 minuto           |
 | 1999-12-31T23:45:00.000Z | 15 minutos         | 15 minutos             | hai 15 minutos         |
 | 1999-12-31T23:30:00.000Z | 30 minutos         | 30 minutos             | hai 30 minutos         |
-| 1999-12-31T23:15:00.000Z | arredor de 1 hora  | arredor de 1 hora      | hai arredor de 1 hora  |
-| 1999-12-31T23:00:00.000Z | arredor de 1 hora  | arredor de 1 hora      | hai arredor de 1 hora  |
+| 1999-12-31T23:15:00.000Z | arredor dunha hora | arredor dunha hora     | hai arredor dunha hora |
+| 1999-12-31T23:00:00.000Z | arredor dunha hora | arredor dunha hora     | hai arredor dunha hora |
 | 1999-12-31T18:00:00.000Z | arredor de 6 horas | arredor de 6 horas     | hai arredor de 6 horas |
 | 1999-12-30T00:00:00.000Z | 2 días             | 2 días                 | hai 2 días             |
 | 1999-12-15T00:00:00.000Z | 17 días            | 17 días                | hai 17 días            |
 | 1999-12-01T00:00:00.000Z | arredor de 1 mes   | arredor de 1 mes       | hai arredor de 1 mes   |
 | 1999-11-01T00:00:00.000Z | 2 meses            | 2 meses                | hai 2 meses            |
 | 1999-06-01T00:00:00.000Z | 7 meses            | 7 meses                | hai 7 meses            |
-| 1999-01-01T00:00:00.000Z | arredor de 1 ano   | arredor de 1 ano       | hai arredor de 1 ano   |
-| 1998-12-01T00:00:00.000Z | arredor de 1 ano   | arredor de 1 ano       | hai arredor de 1 ano   |
-| 1998-06-01T00:00:00.000Z | mais de 1 ano      | mais de 1 ano          | hai mais de 1 ano      |
+| 1999-01-01T00:00:00.000Z | arredor dun ano    | arredor dun ano        | hai arredor dun ano    |
+| 1998-12-01T00:00:00.000Z | arredor dun ano    | arredor dun ano        | hai arredor dun ano    |
+| 1998-06-01T00:00:00.000Z | máis dun ano       | máis dun ano           | hai máis dun ano       |
 | 1998-01-01T00:00:00.000Z | arredor de 2 anos  | arredor de 2 anos      | hai arredor de 2 anos  |
 | 1997-01-01T00:00:00.000Z | arredor de 3 anos  | arredor de 3 anos      | hai arredor de 3 anos  |
 | 1996-01-01T00:00:00.000Z | arredor de 4 anos  | arredor de 4 anos      | hai arredor de 4 anos  |

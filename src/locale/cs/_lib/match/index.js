@@ -1,5 +1,5 @@
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)\.?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -26,7 +26,7 @@ var parseQuarterPatterns = {
 var matchMonthPatterns = {
   narrow: /^[lúubdkčcszřrlp]/i,
   abbreviated: /^(led|[úu]no|b[řr]e|dub|kv[ěe]|[čc]vn|[čc]vc|srp|z[áa][řr]|[řr][íi]j|lis|pro)/i,
-  wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven|[čc]ervna|[čc]ervenec|[čc]ervence|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopada?|prosinec|prosince)/i
+  wide: /^(leden|ledna|[úu]nora?|b[řr]ezen|b[řr]ezna|duben|dubna|kv[ěe]ten|kv[ěe]tna|[čc]erven(ec|ce)?|[čc]ervna|srpen|srpna|z[áa][řr][íi]|[řr][íi]jen|[řr][íi]jna|listopad(a|u)?|prosinec|prosince)/i
 }
 
 var parseMonthPatterns = {
@@ -47,16 +47,16 @@ var parseMonthPatterns = {
   any: [
     /^led/i,
     /^[úu]n/i,
-    /^brez/i,
+    /^b[řr]e/i,
     /^dub/i,
-    /^kvet/i,
-    /^[čc]erv/i,
-    /^[čc]erven/i,
+    /^kv[ěe]/i,
+    /^[čc]vn|[čc]erven(?!\w)|[čc]ervna/i,
+    /^[čc]vc|[čc]erven(ec|ce)/i,
     /^srp/i,
-    /^z[áa]r/i,
+    /^z[áa][řr]/i,
     /^[řr][íi]j/i,
-    /^list/i,
-    /^pros/i
+    /^lis/i,
+    /^pro/i
   ]
 }
 
@@ -73,13 +73,12 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  narrow: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i,
-  any: /^((dopoledne|odpoledne)|půlnoc|poledne|(r[áa]no|odpoledne|ve[čc]er|(v )?noci))/i
+  any: /^dopoledne|dop\.?|odpoledne|odp\.?|půlnoc|poledne|r[áa]no|odpoledne|ve[čc]er|(v )?noci/i
 }
 var parseDayPeriodPatterns = {
   any: {
-    am: /^dopoledne/i,
-    pm: /^odpoledne/i,
+    am: /^dop/i,
+    pm: /^odp/i,
     midnight: /^p[ůu]lnoc/i,
     noon: /^poledne/i,
     morning: /r[áa]no/i,

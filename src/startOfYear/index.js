@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfYear
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Wed Jan 01 2014 00:00:00
  */
 export default function startOfYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var cleanDate = toDate(dirtyDate)
   var date = new Date(0)

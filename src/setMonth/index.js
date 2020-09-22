@@ -1,6 +1,7 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
-import getDaysInMonth from '../getDaysInMonth/index.js'
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import getDaysInMonth from '../getDaysInMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setMonth
@@ -25,11 +26,7 @@ import getDaysInMonth from '../getDaysInMonth/index.js'
  * //=> Sat Feb 01 2014 00:00:00
  */
 export default function setMonth(dirtyDate, dirtyMonth) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var month = toInteger(dirtyMonth)

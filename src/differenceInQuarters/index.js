@@ -1,4 +1,5 @@
-import differenceInMonths from '../differenceInMonths/index.js'
+import differenceInMonths from '../differenceInMonths/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInQuarters
@@ -23,11 +24,7 @@ import differenceInMonths from '../differenceInMonths/index.js'
  * //=> 2
  */
 export default function differenceInQuarters(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)

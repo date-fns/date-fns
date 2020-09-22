@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -12,7 +12,10 @@ var matchEraPatterns = {
 
 var parseEraPatterns = {
   any: [/^ÎC/i, /^DC/i],
-  wide: [/^(Înainte de Cristos|Înaintea erei noastre)/i, /^(După Cristos|Era noastră)/i]
+  wide: [
+    /^(Înainte de Cristos|Înaintea erei noastre)/i,
+    /^(După Cristos|Era noastră)/i
+  ]
 }
 
 var matchQuarterPatterns = {
@@ -32,8 +35,34 @@ var matchMonthPatterns = {
 }
 
 var parseMonthPatterns = {
-  narrow: [/^i/i, /^f/i, /^m/i, /^a/i, /^m/i, /^i/i, /^i/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ia/i, /^f/i, /^mar/i, /^ap/i, /^mai/i, /^iun/i, /^iul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^i/i,
+    /^f/i,
+    /^m/i,
+    /^a/i,
+    /^m/i,
+    /^i/i,
+    /^i/i,
+    /^a/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ],
+  any: [
+    /^ia/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^mai/i,
+    /^iun/i,
+    /^iul/i,
+    /^au/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ]
 }
 
 var matchDayPatterns = {
@@ -70,7 +99,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
+    valueCallback: function(value) {
       return parseInt(value, 10)
     }
   }),
@@ -87,7 +116,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function (index) {
+    valueCallback: function(index) {
       return index + 1
     }
   }),

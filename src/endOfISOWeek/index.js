@@ -1,4 +1,5 @@
-import endOfWeek from '../endOfWeek/index.js'
+import endOfWeek from '../endOfWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name endOfISOWeek
@@ -25,11 +26,7 @@ import endOfWeek from '../endOfWeek/index.js'
  * //=> Sun Sep 07 2014 23:59:59.999
  */
 export default function endOfISOWeek(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return endOfWeek(dirtyDate, { weekStartsOn: 1 })
 }

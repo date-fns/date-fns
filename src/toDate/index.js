@@ -1,3 +1,5 @@
+import requiredArgs from '../_lib/requiredArgs/index'
+
 /**
  * @name toDate
  * @category Common Helpers
@@ -29,11 +31,7 @@
  * //=> Tue Feb 11 2014 11:30:30
  */
 export default function toDate(argument) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   const argStr = Object.prototype.toString.call(argument)
 
@@ -53,7 +51,7 @@ export default function toDate(argument) {
     ) {
       // eslint-disable-next-line no-console
       console.warn(
-        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
+        "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
       )
       // eslint-disable-next-line no-console
       console.warn(new Error().stack)

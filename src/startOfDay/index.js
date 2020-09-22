@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfDay
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Tue Sep 02 2014 00:00:00
  */
 export default function startOfDay(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)

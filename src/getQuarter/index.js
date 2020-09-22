@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getQuarter
@@ -22,11 +23,7 @@ import toDate from '../toDate/index.js'
  * //=> 3
  */
 export default function getQuarter(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var quarter = Math.floor(date.getMonth() / 3) + 1

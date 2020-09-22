@@ -116,6 +116,7 @@ import match from './_lib/match/index.js'
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
 var locale = {
+  code: 'en',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

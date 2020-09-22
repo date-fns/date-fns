@@ -36,9 +36,19 @@ var formatDistanceLocale = {
     other: '{{count}} дена'
   },
 
+  aboutXWeeks: {
+    one: 'околу 1 недела',
+    other: 'околу {{count}} месеци'
+  },
+
+  xWeeks: {
+    one: '1 недела',
+    other: '{{count}} недели'
+  },
+
   aboutXMonths: {
     one: 'околу 1 месец',
-    other: 'околу {{count}} месеци'
+    other: 'околу {{count}} недели'
   },
 
   xMonths: {
@@ -67,7 +77,7 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

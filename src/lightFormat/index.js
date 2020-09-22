@@ -1,8 +1,9 @@
-import toDate from '../toDate/index.js'
-import formatters from '../_lib/format/lightFormatters/index.js'
-import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index.js'
-import isValid from '../isValid/index.js'
-import subMilliseconds from '../subMilliseconds/index.js'
+import toDate from '../toDate/index'
+import formatters from '../_lib/format/lightFormatters/index'
+import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
+import isValid from '../isValid/index'
+import subMilliseconds from '../subMilliseconds/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - (\w)\1* matches any sequences of the same letter
@@ -15,7 +16,7 @@ import subMilliseconds from '../subMilliseconds/index.js'
 // - . matches any single character unmatched by previous parts of the RegExps
 var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'(.*?)'?$/
+var escapedStringRegExp = /^'([^]*?)'?$/
 var doubleQuoteRegExp = /''/g
 var unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
@@ -71,15 +72,11 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = format(new Date(2014, 1, 11), 'yyyy-MM-dd')
- * //=> '1987-02-11'
+ * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * //=> '2014-02-11'
  */
 export default function lightFormat(dirtyDate, dirtyFormatStr) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var formatStr = String(dirtyFormatStr)
 

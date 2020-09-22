@@ -1,5 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setDayOfYear
@@ -24,11 +25,7 @@ import toDate from '../toDate/index.js'
  * //=> Thu Jan 02 2014 00:00:00
  */
 export default function setDayOfYear(dirtyDate, dirtyDayOfYear) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var dayOfYear = toInteger(dirtyDayOfYear)

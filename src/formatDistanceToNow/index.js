@@ -1,4 +1,5 @@
-import distanceInWords from '../formatDistance/index.js'
+import distanceInWords from '../formatDistance/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name formatDistanceToNow
@@ -67,6 +68,7 @@ import distanceInWords from '../formatDistance/index.js'
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 1 argument required
+ * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.locale` must contain `formatDistance` property
  *
  * @example
@@ -105,11 +107,7 @@ import distanceInWords from '../formatDistance/index.js'
  * //=> 'pli ol 1 jaro'
  */
 export default function formatDistanceToNow(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return distanceInWords(dirtyDate, Date.now(), dirtyOptions)
 }

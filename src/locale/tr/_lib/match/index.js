@@ -1,5 +1,5 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index.js'
-import buildMatchFn from '../../../_lib/buildMatchFn/index.js'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import buildMatchFn from '../../../_lib/buildMatchFn/index'
 
 var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 var parseOrdinalNumberPattern = /\d+/i
@@ -30,7 +30,7 @@ var parseQuarterPatterns = {
 }
 
 var matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
+  narrow: /^[oşmnhtaek]/i,
   abbreviated: /^(oca|şub|mar|nis|may|haz|tem|ağu|eyl|eki|kas|ara)/i,
   wide: /^(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)/i
 }
@@ -52,16 +52,16 @@ var parseMonthPatterns = {
   any: [
     /^o/i,
     /^ş/i,
-    /^ma/i,
+    /^mar/i,
     /^n/i,
-    /^ma/i,
+    /^may/i,
     /^h/i,
     /^t/i,
-    /^a/i,
+    /^ağ/i,
     /^ey/i,
     /^ek/i,
     /^k/i,
-    /^a/i
+    /^ar/i
   ]
 }
 

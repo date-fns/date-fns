@@ -16,6 +16,7 @@ module.exports = {
     '@typescript-eslint/prefer-interface': ['off'],
     '@typescript-eslint/class-name-casing': ['off'],
     '@typescript-eslint/ban-types': ['off'],
+    '@typescript-eslint/array-type': ['off'],
     '@typescript-eslint/member-delimiter-style': [
       'error',
       {

@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name closestIndexTo
@@ -32,11 +33,7 @@ import toDate from '../toDate/index.js'
  * //=> 1
  */
 export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateToCompare = toDate(dirtyDateToCompare)
 

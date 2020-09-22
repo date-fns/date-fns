@@ -1,6 +1,7 @@
-import eachWeekendOfInterval from '../eachWeekendOfInterval/index.js'
-import startOfYear from '../startOfYear/index.js'
-import endOfYear from '../endOfYear/index.js'
+import eachWeekendOfInterval from '../eachWeekendOfInterval/index'
+import startOfYear from '../startOfYear/index'
+import endOfYear from '../endOfYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekendOfYear
@@ -27,11 +28,7 @@ import endOfYear from '../endOfYear/index.js'
  * ]
  */
 export default function eachWeekendOfYear(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var startDate = startOfYear(dirtyDate)
   if (isNaN(startDate)) throw new RangeError('The passed date is invalid')

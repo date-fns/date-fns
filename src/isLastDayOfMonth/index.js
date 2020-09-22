@@ -1,6 +1,7 @@
-import toDate from '../toDate/index.js'
-import endOfDay from '../endOfDay/index.js'
-import endOfMonth from '../endOfMonth/index.js'
+import toDate from '../toDate/index'
+import endOfDay from '../endOfDay/index'
+import endOfMonth from '../endOfMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isLastDayOfMonth
@@ -24,11 +25,7 @@ import endOfMonth from '../endOfMonth/index.js'
  * //=> true
  */
 export default function isLastDayOfMonth(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   return endOfDay(date).getTime() === endOfMonth(date).getTime()

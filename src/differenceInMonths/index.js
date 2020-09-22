@@ -1,6 +1,7 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarMonths from '../differenceInCalendarMonths/index.js'
-import compareAsc from '../compareAsc/index.js'
+import toDate from '../toDate/index'
+import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
+import compareAsc from '../compareAsc/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInMonths
@@ -25,11 +26,7 @@ import compareAsc from '../compareAsc/index.js'
  * //=> 7
  */
 export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

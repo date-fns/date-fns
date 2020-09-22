@@ -1,4 +1,4 @@
-import endOfDay from '../endOfDay/index.js'
+import endOfDay from '../endOfDay/index'
 
 /**
  * @name endOfToday

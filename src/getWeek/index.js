@@ -1,6 +1,7 @@
-import startOfWeek from '../startOfWeek/index.js'
-import startOfWeekYear from '../startOfWeekYear/index.js'
-import toDate from '../toDate/index.js'
+import startOfWeek from '../startOfWeek/index'
+import startOfWeekYear from '../startOfWeekYear/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 var MILLISECONDS_IN_WEEK = 604800000
 
@@ -48,11 +49,7 @@ var MILLISECONDS_IN_WEEK = 604800000
  */
 
 export default function getWeek(dirtyDate, options) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var diff =

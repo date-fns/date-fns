@@ -1,6 +1,7 @@
-import addWeeks from '../addWeeks/index.js'
-import startOfWeek from '../startOfWeek/index.js'
-import toDate from '../toDate/index.js'
+import addWeeks from '../addWeeks/index'
+import startOfWeek from '../startOfWeek/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name eachWeekOfInterval
@@ -42,11 +43,7 @@ import toDate from '../toDate/index.js'
  * // ]
  */
 export default function eachWeekOfInterval(dirtyInterval, options) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var interval = dirtyInterval || {}
   var startDate = toDate(interval.start)

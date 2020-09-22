@@ -1,11 +1,8 @@
-// Same as nl
-// import formatDistance from '../nl/_lib/formatDistance/index.js'
-// import formatRelative from '../nl/_lib/formatRelative/index.js'
-// import localize from '../nl/_lib/localize/index.js'
-// import match from '../nl/_lib/match/index.js'
-
-// Unique for nl-BE
-// import formatLong from './_lib/formatLong/index.js'
+import formatDistance from './_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
+import localize from './_lib/localize/index'
+import match from './_lib/match/index'
 
 /**
  * @type {Locale}
@@ -16,19 +13,19 @@
  * @author Jorik Tangelder [@jtangelder]{@link https://github.com/jtangelder}
  * @author Ruben Stolk [@rubenstolk]{@link https://github.com/rubenstolk}
  * @author Lode Vanhove [@bitcrumb]{@link https://github.com/bitcrumb}
+ * @author Alex Hoeing [@dcbn]{@link https://github.com/dcbn}
  */
-// var locale = {
-//   formatDistance: formatDistance,
-//   formatLong: formatLong,
-//   formatRelative: formatRelative,
-//   localize: localize,
-//   match: match,
-//   options: {
-//     weekStartsOn: 1 /* Monday */,
-//     firstWeekContainsDate: 4
-//   }
-// }
+var locale = {
+  code: 'nl-BE',
+  formatDistance: formatDistance,
+  formatLong: formatLong,
+  formatRelative: formatRelative,
+  localize: localize,
+  match: match,
+  options: {
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4
+  }
+}
 
-// export default locale
-
-throw new Error('nl-BE locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')
+export default locale

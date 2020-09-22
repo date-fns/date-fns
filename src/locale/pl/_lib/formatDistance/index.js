@@ -104,6 +104,18 @@ var formatDistanceLocale = {
     other: '{{count}} dni'
   },
 
+  aboutXWeeks: {
+    one: 'około tygodnia',
+    twoFour: 'około {{count}} tygodni',
+    other: 'około {{count}} tygodni'
+  },
+
+  xWeeks: {
+    one: 'tydzień',
+    twoFour: '{{count}} tygodnie',
+    other: '{{count}} tygodni'
+  },
+
   aboutXMonths: {
     one: 'około miesiąc',
     twoFour: 'około {{count}} miesiące',

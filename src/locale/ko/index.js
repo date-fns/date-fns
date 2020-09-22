@@ -1,8 +1,8 @@
-import formatDistance from './_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
-import localize from './_lib/localize/index.js'
-import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
+import localize from './_lib/localize/index'
+import match from './_lib/match/index'
 
 /**
  * @type {Locale}
@@ -12,8 +12,10 @@ import match from './_lib/match/index.js'
  * @iso-639-2 kor
  * @author Hong Chulju [@angdev]{@link https://github.com/angdev}
  * @author Lee Seoyoen [@iamssen]{@link https://github.com/iamssen}
+ * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
 var locale = {
+  code: 'ko',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

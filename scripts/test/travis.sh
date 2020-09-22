@@ -15,15 +15,15 @@ function prebuild {
 if [ "$TEST_SUITE" == "main" ]
 then
   yarn lint
-  flow check
   yarn lint-types
-  ./scripts/test/systemJS.js
   yarn locale-snapshots test
   ./scripts/test/smoke.sh
 
   yarn test --single-run
 
   ./scripts/test/dst.sh
+  ./scripts/test/formatISO.sh
+  ./scripts/test/formatRFC3339.sh
 
   prebuild
   ./scripts/test/tz.sh

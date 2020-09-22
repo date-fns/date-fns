@@ -1,4 +1,5 @@
-import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
+import startOfISOWeekYear from '../startOfISOWeekYear/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameISOWeekYear
@@ -30,11 +31,7 @@ import startOfISOWeekYear from '../startOfISOWeekYear/index.js'
  * //=> true
  */
 export default function isSameISOWeekYear(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
   var dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)

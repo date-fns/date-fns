@@ -1,4 +1,5 @@
-import isSameQuarter from '../isSameQuarter/index.js'
+import isSameQuarter from '../isSameQuarter/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter
@@ -26,11 +27,7 @@ import isSameQuarter from '../isSameQuarter/index.js'
  * //=> true
  */
 export default function isThisQuarter(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameQuarter(Date.now(), dirtyDate)
 }

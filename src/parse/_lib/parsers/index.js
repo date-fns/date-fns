@@ -1,10 +1,10 @@
-import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index.js'
-import setUTCDay from '../../../_lib/setUTCDay/index.js'
-import setUTCISODay from '../../../_lib/setUTCISODay/index.js'
-import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index.js'
-import setUTCWeek from '../../../_lib/setUTCWeek/index.js'
-import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index.js'
-import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index.js'
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
+import setUTCDay from '../../../_lib/setUTCDay/index'
+import setUTCISODay from '../../../_lib/setUTCISODay/index'
+import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index'
+import setUTCWeek from '../../../_lib/setUTCWeek/index'
+import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index'
+import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
 
 var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
@@ -867,6 +867,8 @@ var parsers = {
   d: {
     priority: 90,
 
+    subPriority: 1,
+
     parse: function(string, token, match, _options) {
       switch (token) {
         case 'd':
@@ -914,6 +916,8 @@ var parsers = {
   // Day of year
   D: {
     priority: 90,
+
+    subPriority: 1,
 
     parse: function(string, token, match, _options) {
       switch (token) {

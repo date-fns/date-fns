@@ -1,4 +1,5 @@
-import startOfQuarter from '../startOfQuarter/index.js'
+import startOfQuarter from '../startOfQuarter/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameQuarter
@@ -23,11 +24,7 @@ import startOfQuarter from '../startOfQuarter/index.js'
  * //=> true
  */
 export default function isSameQuarter(dirtyDateLeft, dirtyDateRight) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeftStartOfQuarter = startOfQuarter(dirtyDateLeft)
   var dateRightStartOfQuarter = startOfQuarter(dirtyDateRight)

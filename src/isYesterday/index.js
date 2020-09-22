@@ -1,5 +1,6 @@
-import isSameDay from '../isSameDay/index.js'
-import subDays from '../subDays/index.js'
+import isSameDay from '../isSameDay/index'
+import subDays from '../subDays/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isYesterday
@@ -27,11 +28,7 @@ import subDays from '../subDays/index.js'
  * //=> true
  */
 export default function isYesterday(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameDay(dirtyDate, subDays(Date.now(), 1))
 }

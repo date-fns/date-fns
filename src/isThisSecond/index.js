@@ -1,4 +1,5 @@
-import isSameSecond from '../isSameSecond/index.js'
+import isSameSecond from '../isSameSecond/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisSecond
@@ -27,11 +28,7 @@ import isSameSecond from '../isSameSecond/index.js'
  * //=> true
  */
 export default function isThisSecond(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameSecond(Date.now(), dirtyDate)
 }

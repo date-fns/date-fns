@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfQuarter
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> Tue Jul 01 2014 00:00:00
  */
 export default function startOfQuarter(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var date = toDate(dirtyDate)
   var currentMonth = date.getMonth()

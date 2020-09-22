@@ -22,6 +22,14 @@ describe('lightFormat', () => {
     assert(lightFormat(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
+  it('accepts new line charactor', function() {
+    var date = new Date(2014, 3, 4, 5)
+    assert.equal(
+      lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss"),
+      '2014-04-04\n05:00:00'
+    )
+  })
+
   describe('year', () => {
     describe('regular year', () => {
       it('works as expected', () => {

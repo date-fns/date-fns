@@ -1,4 +1,5 @@
-import toDate from '../toDate/index.js'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isAfter
@@ -23,11 +24,7 @@ import toDate from '../toDate/index.js'
  * //=> true
  */
 export default function isAfter(dirtyDate, dirtyDateToCompare) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var dateToCompare = toDate(dirtyDateToCompare)

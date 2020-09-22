@@ -1,4 +1,5 @@
-import isSameMonth from '../isSameMonth/index.js'
+import isSameMonth from '../isSameMonth/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisMonth
@@ -27,11 +28,7 @@ import isSameMonth from '../isSameMonth/index.js'
  */
 
 export default function isThisMonth(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameMonth(Date.now(), dirtyDate)
 }

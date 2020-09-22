@@ -1,5 +1,9 @@
 # Contributing Guide
 
+**⚠⚠⚠ Please contribute new code in TypeScript ⚠⚠⚠**
+
+[Read more about migration to TypeScript](https://github.com/date-fns/date-fns/discussions/1932)
+
 ## Table of Contents
 
 - [How to Help?](#how-to-help)
@@ -66,16 +70,9 @@ Please follow the main contributing rules, to maintain date-fns' top quality:
 
 - [Write documentation](#documentation).
 
-- [Write good commit messages].
-
-- Add an entry to Unreleased section in [CHANGELOG].
-
-- Squash related commits before a PR merge.
+- Don't update the changelog.
 
 - Don't change the library version.
-
-[write good commit messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
-[changelog]: https://github.com/date-fns/date-fns/blob/master/CHANGELOG.md
 
 ## Getting Started
 

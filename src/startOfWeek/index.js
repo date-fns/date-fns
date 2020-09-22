@@ -1,5 +1,6 @@
-import toDate from '../toDate/index.js'
-import toInteger from '../_lib/toInteger/index.js'
+import toDate from '../toDate/index'
+import toInteger from '../_lib/toInteger/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name startOfWeek
@@ -33,11 +34,7 @@ import toInteger from '../_lib/toInteger/index.js'
  * //=> Mon Sep 01 2014 00:00:00
  */
 export default function startOfWeek(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   var options = dirtyOptions || {}
   var locale = options.locale

@@ -1,4 +1,5 @@
-import isSameISOWeek from '../isSameISOWeek/index.js'
+import isSameISOWeek from '../isSameISOWeek/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisISOWeek
@@ -29,11 +30,7 @@ import isSameISOWeek from '../isSameISOWeek/index.js'
  */
 
 export default function isThisISOWeek(dirtyDate) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      '1 argument required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(1, arguments)
 
   return isSameISOWeek(dirtyDate, Date.now())
 }

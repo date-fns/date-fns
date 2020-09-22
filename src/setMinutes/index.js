@@ -1,5 +1,6 @@
-import toInteger from '../_lib/toInteger/index.js'
-import toDate from '../toDate/index.js'
+import toInteger from '../_lib/toInteger/index'
+import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name setMinutes
@@ -24,11 +25,7 @@ import toDate from '../toDate/index.js'
  * //=> Mon Sep 01 2014 11:45:40
  */
 export default function setMinutes(dirtyDate, dirtyMinutes) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var date = toDate(dirtyDate)
   var minutes = toInteger(dirtyMinutes)

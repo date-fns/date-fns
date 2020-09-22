@@ -209,7 +209,7 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:45:00.000Z | tua 1 awr       | tua 1 awr              | mewn tua 1 awr        |
 | 2000-01-01T00:30:00.000Z | 30 munud        | 30 munud               | mewn 30 munud         |
 | 2000-01-01T00:15:00.000Z | 15 munud        | 15 munud               | mewn 15 munud         |
-| 2000-01-01T00:01:00.000Z | 1 funud         | 1 funud                | mewn 1 funud          |
+| 2000-01-01T00:01:00.000Z | 1 munud         | 1 munud                | mewn 1 munud          |
 | 2000-01-01T00:00:25.000Z | llai na munud   | hanner munud           | mewn llai na munud    |
 | 2000-01-01T00:00:15.000Z | llai na munud   | llai na 20 eiliad      | mewn llai na munud    |
 | 2000-01-01T00:00:05.000Z | llai na munud   | llai na 10 eiliad      | mewn llai na munud    |
@@ -217,13 +217,13 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | llai na munud   | llai na 10 eiliad      | llai na munud yn ôl   |
 | 1999-12-31T23:59:45.000Z | llai na munud   | llai na 20 eiliad      | llai na munud yn ôl   |
 | 1999-12-31T23:59:35.000Z | llai na munud   | hanner munud           | llai na munud yn ôl   |
-| 1999-12-31T23:59:00.000Z | 1 funud         | 1 funud                | 1 funud yn ôl         |
+| 1999-12-31T23:59:00.000Z | 1 munud         | 1 munud                | 1 munud yn ôl         |
 | 1999-12-31T23:45:00.000Z | 15 munud        | 15 munud               | 15 munud yn ôl        |
 | 1999-12-31T23:30:00.000Z | 30 munud        | 30 munud               | 30 munud yn ôl        |
 | 1999-12-31T23:15:00.000Z | tua 1 awr       | tua 1 awr              | tua 1 awr yn ôl       |
 | 1999-12-31T23:00:00.000Z | tua 1 awr       | tua 1 awr              | tua 1 awr yn ôl       |
 | 1999-12-31T18:00:00.000Z | tua 6 awr       | tua 6 awr              | tua 6 awr yn ôl       |
-| 1999-12-30T00:00:00.000Z | 2 diwrnod       | 2 diwrnod              | 2 diwrnod yn ôl       |
+| 1999-12-30T00:00:00.000Z | 2 ddiwrnod      | 2 ddiwrnod             | 2 ddiwrnod yn ôl      |
 | 1999-12-15T00:00:00.000Z | 17 diwrnod      | 17 diwrnod             | 17 diwrnod yn ôl      |
 | 1999-12-01T00:00:00.000Z | tua 1 mis       | tua 1 mis              | tua 1 mis yn ôl       |
 | 1999-11-01T00:00:00.000Z | 2 fis           | 2 fis                  | 2 fis yn ôl           |
@@ -261,7 +261,7 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:45:00.000Z | 45 munud   | mewn 45 munud     | 1 awr                          |
 | 2000-01-01T00:30:00.000Z | 30 munud   | mewn 30 munud     | 1 awr                          |
 | 2000-01-01T00:15:00.000Z | 15 munud   | mewn 15 munud     | 0 awr                          |
-| 2000-01-01T00:01:00.000Z | 1 funud    | mewn 1 funud      | 0 awr                          |
+| 2000-01-01T00:01:00.000Z | 1 munud    | mewn 1 munud      | 0 awr                          |
 | 2000-01-01T00:00:25.000Z | 25 eiliad  | mewn 25 eiliad    | 0 awr                          |
 | 2000-01-01T00:00:15.000Z | 15 eiliad  | mewn 15 eiliad    | 0 awr                          |
 | 2000-01-01T00:00:05.000Z | 5 eiliad   | mewn 5 eiliad     | 0 awr                          |
@@ -269,13 +269,13 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | 5 eiliad   | 5 eiliad yn ôl    | 0 awr                          |
 | 1999-12-31T23:59:45.000Z | 15 eiliad  | 15 eiliad yn ôl   | 0 awr                          |
 | 1999-12-31T23:59:35.000Z | 25 eiliad  | 25 eiliad yn ôl   | 0 awr                          |
-| 1999-12-31T23:59:00.000Z | 1 funud    | 1 funud yn ôl     | 0 awr                          |
+| 1999-12-31T23:59:00.000Z | 1 munud    | 1 munud yn ôl     | 0 awr                          |
 | 1999-12-31T23:45:00.000Z | 15 munud   | 15 munud yn ôl    | 0 awr                          |
 | 1999-12-31T23:30:00.000Z | 30 munud   | 30 munud yn ôl    | 1 awr                          |
 | 1999-12-31T23:15:00.000Z | 45 munud   | 45 munud yn ôl    | 1 awr                          |
 | 1999-12-31T23:00:00.000Z | 1 awr      | 1 awr yn ôl       | 1 awr                          |
 | 1999-12-31T18:00:00.000Z | 6 awr      | 6 awr yn ôl       | 6 awr                          |
-| 1999-12-30T00:00:00.000Z | 2 diwrnod  | 2 diwrnod yn ôl   | 48 awr                         |
+| 1999-12-30T00:00:00.000Z | 2 ddiwrnod | 2 ddiwrnod yn ôl  | 48 awr                         |
 | 1999-12-15T00:00:00.000Z | 17 diwrnod | 17 diwrnod yn ôl  | 408 awr                        |
 | 1999-12-01T00:00:00.000Z | 1 mis      | 1 mis yn ôl       | 744 awr                        |
 | 1999-11-01T00:00:00.000Z | 2 fis      | 2 fis yn ôl       | 1464 awr                       |

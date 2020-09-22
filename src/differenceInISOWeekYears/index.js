@@ -1,7 +1,8 @@
-import toDate from '../toDate/index.js'
-import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index.js'
-import compareAsc from '../compareAsc/index.js'
-import subISOWeekYears from '../subISOWeekYears/index.js'
+import toDate from '../toDate/index'
+import differenceInCalendarISOWeekYears from '../differenceInCalendarISOWeekYears/index'
+import compareAsc from '../compareAsc/index'
+import subISOWeekYears from '../subISOWeekYears/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name differenceInISOWeekYears
@@ -39,11 +40,7 @@ export default function differenceInISOWeekYears(
   dirtyDateLeft,
   dirtyDateRight
 ) {
-  if (arguments.length < 2) {
-    throw new TypeError(
-      '2 arguments required, but only ' + arguments.length + ' present'
-    )
-  }
+  requiredArgs(2, arguments)
 
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)

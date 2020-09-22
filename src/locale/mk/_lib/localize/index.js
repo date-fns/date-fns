@@ -1,22 +1,77 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
-import buildLocalizeArrayFn from '../../../_lib/buildLocalizeArrayFn/index.js'
+import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
-var weekdayValues = {
-  narrow: ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са'],
-  short: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
-  long: ['недела', 'понеделник', 'вторник', 'среда', 'четврток', 'петок', 'сабота']
+var eraValues = {
+  narrow: ['пр.н.е.', 'н.е.'],
+  abbreviated: ['пред н. е.', 'н. е.'],
+  wide: ['пред нашата ера', 'нашата ера']
+}
+
+var quarterValues = {
+  narrow: ['1', '2', '3', '4'],
+  abbreviated: ['1-ви кв.', '2-ри кв.', '3-ти кв.', '4-ти кв.'],
+  wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал']
 }
 
 var monthValues = {
-  short: ['јан', 'фев', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'ное', 'дек'],
-  long: ['јануари', 'февруари', 'март', 'април', 'мај', 'јуни', 'јули', 'август', 'септември', 'октомври', 'ноември', 'декември']
+  abbreviated: [
+    'јан',
+    'фев',
+    'мар',
+    'апр',
+    'мај',
+    'јун',
+    'јул',
+    'авг',
+    'септ',
+    'окт',
+    'ноем',
+    'дек'
+  ],
+  wide: [
+    'јануари',
+    'февруари',
+    'март',
+    'април',
+    'мај',
+    'јуни',
+    'јули',
+    'август',
+    'септември',
+    'октомври',
+    'ноември',
+    'декември'
+  ]
 }
 
-var timeOfDayValues = {
-  long: ['претпладне', 'попладне']
+var dayValues = {
+  narrow: ['Н', 'П', 'В', 'С', 'Ч', 'П', 'С'],
+  short: ['не', 'по', 'вт', 'ср', 'че', 'пе', 'са'],
+  abbreviated: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
+  wide: [
+    'недела',
+    'понеделник',
+    'вторник',
+    'среда',
+    'четврток',
+    'петок',
+    'сабота'
+  ]
 }
 
-function ordinalNumber (dirtyNumber) {
+var dayPeriodValues = {
+  wide: {
+    am: 'претпладне',
+    pm: 'попладне',
+    midnight: 'полноќ',
+    noon: 'напладне',
+    morning: 'наутро',
+    afternoon: 'попладне',
+    evening: 'навечер',
+    night: 'ноќе'
+  }
+}
+
+function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
 
   var rem100 = number % 100
@@ -36,14 +91,34 @@ function ordinalNumber (dirtyNumber) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
-  weekday: buildLocalizeFn(weekdayValues, 'long'),
-  weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
-  month: buildLocalizeFn(monthValues, 'long'),
-  months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
-    return (hours / 12) >= 1 ? 1 : 0
+
+  era: buildLocalizeFn({
+    values: eraValues,
+    defaultWidth: 'wide'
   }),
-  timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')
+
+  quarter: buildLocalizeFn({
+    values: quarterValues,
+    defaultWidth: 'wide',
+    argumentCallback: function(quarter) {
+      return Number(quarter) - 1
+    }
+  }),
+
+  month: buildLocalizeFn({
+    values: monthValues,
+    defaultWidth: 'wide'
+  }),
+
+  day: buildLocalizeFn({
+    values: dayValues,
+    defaultWidth: 'wide'
+  }),
+
+  dayPeriod: buildLocalizeFn({
+    values: dayPeriodValues,
+    defaultWidth: 'wide'
+  })
 }
 
 export default localize

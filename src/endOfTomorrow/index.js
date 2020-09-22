@@ -8,7 +8,7 @@
  * Return the end of tomorrow.
  *
  * > ⚠️ Please note that this function is not present in the FP submodule as
- * > it uses `Date.now()` internally hence impure and can't be safely curried.
+ * > it uses `new Date()` internally hence impure and can't be safely curried.
  *
  * ### v2.0.0 breaking changes:
  *

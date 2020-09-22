@@ -1,8 +1,8 @@
-import formatDistance from './_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
-import localize from './_lib/localize/index.js'
-import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
+import localize from './_lib/localize/index'
+import match from './_lib/match/index'
 
 /**
  * @type {Locale}
@@ -13,8 +13,11 @@ import match from './_lib/match/index.js'
  * @author Thomas Eilmsteiner [@DeMuu]{@link https://github.com/DeMuu}
  * @author Yamagishi Kazutoshi [@ykzts]{@link https://github.com/ykzts}
  * @author Luca Ban [@mesqueeb]{@link https://github.com/mesqueeb}
+ * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
+ * @author Taiki IKeda [@so99ynoodles]{@link https://github.com/so99ynoodles}
  */
 var locale = {
+  code: 'ja',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -27,5 +30,3 @@ var locale = {
 }
 
 export default locale
-
-// throw new Error('ja locale is currently unavailable. Please check the progress of converting this locale to v2.0.0 in this issue on Github: TBA')

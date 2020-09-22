@@ -1,8 +1,8 @@
-import formatDistance from './_lib/formatDistance/index.js'
-import formatLong from './_lib/formatLong/index.js'
-import formatRelative from './_lib/formatRelative/index.js'
-import localize from './_lib/localize/index.js'
-import match from './_lib/match/index.js'
+import formatDistance from './_lib/formatDistance/index'
+import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
+import localize from './_lib/localize/index'
+import match from './_lib/match/index'
 
 /**
  * @type {Locale}
@@ -14,8 +14,10 @@ import match from './_lib/match/index.js'
  * @author Song Shuoyun [@fnlctrl]{@link https://github.com/fnlctrl}
  * @author sabrinaM [@sabrinamiao]{@link https://github.com/sabrinamiao}
  * @author Carney Wu [@cubicwork]{@link https://github.com/cubicwork}
+ * @author Terrence Lam [@skyuplam]{@link https://github.com/skyuplam}
  */
 var locale = {
+  code: 'zh-CN',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
