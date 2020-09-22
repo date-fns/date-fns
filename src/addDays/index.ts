@@ -30,8 +30,8 @@ export default function addDays(
 ): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var amount = toInteger(dirtyAmount)
+  const date = toDate(dirtyDate)
+  const amount = toInteger(dirtyAmount)
   if (isNaN(amount)) {
     return new Date(NaN)
   }
