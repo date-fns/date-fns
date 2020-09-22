@@ -7,7 +7,7 @@ import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('add', function() {
   it('adds the values from the given object', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10, 19, 50), {
       years: 2,
       months: 9,
       weeks: 1,
@@ -16,40 +16,42 @@ describe('add', function() {
       minutes: 9,
       seconds: 30
     })
-    assert.deepEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20))
+    assert.deepStrictEqual(result, new Date(2017, 5 /* June */, 15, 15, 29, 20))
   })
 
   it('returns same date object when passed empty duration values', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {})
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {})
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('accepts a timestamp', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), { hours: 4 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
+      hours: 4
+    })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
   it('converts a fractional number to an integer', function() {
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4.2 })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4.2 })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
   it('implicitly converts number arguments', function() {
     // @ts-expect-error
-    var result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: '4.2' })
-    assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: '4.2' })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
   it('does not mutate the original date', function() {
-    var date = new Date(2014, 8 /* Sep */, 1, 10)
+    const date = new Date(2014, 8 /* Sep */, 1, 10)
     add(date, { hours: 4 })
-    assert.deepEqual(date, new Date(2014, 8 /* Sep */, 1, 10))
+    assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('works well if the desired month has fewer days and the provided date is in the last day of a month', function() {
-    var date = new Date(2014, 11 /* Dec */, 31)
-    var result = add(date, { months: 9 })
-    assert.deepEqual(result, new Date(2015, 8 /* Sep */, 30))
+    const date = new Date(2014, 11 /* Dec */, 31)
+    const result = add(date, { months: 9 })
+    assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 30))
   })
 
   const dstTransitions = getDstTransitions(2017)
@@ -60,25 +62,25 @@ describe('add', function() {
   dstOnly(
     `works at DST-end boundary in local timezone: ${tz || '(unknown)'}`,
     function() {
-      var date = dstTransitions.end
-      var result = add(date!, { hours: 1 })
-      assert.deepEqual(result, new Date(date!.getTime() + HOUR))
+      const date = dstTransitions.end
+      const result = add(date!, { hours: 1 })
+      assert.deepStrictEqual(result, new Date(date!.getTime() + HOUR))
     }
   )
 
   it('handles dates before 100 AD', function() {
-    var initialDate = new Date(0)
+    const initialDate = new Date(0)
     initialDate.setFullYear(-1, 10 /* Nov */, 30)
     initialDate.setHours(0, 0, 0, 0)
-    var expectedResult = new Date(0)
+    const expectedResult = new Date(0)
     expectedResult.setFullYear(0, 1 /* Feb */, 29)
     expectedResult.setHours(0, 0, 0, 0)
-    var result = add(initialDate, { months: 3 })
-    assert.deepEqual(result, expectedResult)
+    const result = add(initialDate, { months: 3 })
+    assert.deepStrictEqual(result, expectedResult)
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = add(new Date(NaN), { hours: 5 })
+    const result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
