@@ -10,7 +10,6 @@ import isValid from '../isValid/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toDate from '../toDate/index'
 import sub from '../sub/index'
-import { isBoolean } from 'lodash'
 
 /**
  * @name intervalToDuration
@@ -44,8 +43,16 @@ import { isBoolean } from 'lodash'
  * })
  * // => { years: 39, months: 2, weeks:2,  days: 6, hours: 7, minutes: 5, seconds: 0 }
  */
-
-export default function intervalToDuration({ start, end, showWeeks = false }) {
+interface Interval {
+  start: Date
+  end: Date
+  showWeeks?: boolean
+}
+export default function intervalToDuration({
+  start,
+  end,
+  showWeeks = false
+}: Interval): Duration {
   requiredArgs(1, arguments)
 
   const dateLeft = toDate(start)
@@ -57,7 +64,7 @@ export default function intervalToDuration({ start, end, showWeeks = false }) {
   if (!isValid(dateRight)) {
     throw new RangeError('End Date is invalid')
   }
-  if (!isBoolean(showWeeks)) {
+  if (showWeeks !== true && showWeeks !== false) {
     throw new TypeError('ShowWeeks is invalid')
   }
 
