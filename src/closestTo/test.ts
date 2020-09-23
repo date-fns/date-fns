@@ -63,17 +63,6 @@ describe('closestTo', function() {
     assert(result instanceof Date && isNaN(Number(result)))
   })
 
-  it('returns `Invalid Date` if any date in the given array is `Invalid Date`', function() {
-    const date = new Date(2014, 6 /* Jul */, 2)
-    const result = closestTo(date, [
-      new Date(2015, 7 /* Aug */, 31),
-      new Date(NaN),
-      new Date(2012, 6 /* Jul */, 2)
-    ])
-
-    assert(result instanceof Date && isNaN(Number(result)))
-  })
-
   it('returns `Invalid Date` if any value in the given array is undefined', function() {
     const date = new Date(2014, 6 /* Jul */, 2)
     const result = closestTo(date, [
@@ -93,7 +82,7 @@ describe('closestTo', function() {
       '1': new Date(2012, 6 /* Jul */, 2),
       length: 2
     }
-    //@ts-ignore
+    //@ts-expect-error
     const result = closestTo(date, object)
     assert.deepStrictEqual(result, new Date(2015, 7 /* Aug */, 31))
   })
