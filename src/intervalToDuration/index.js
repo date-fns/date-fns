@@ -10,7 +10,6 @@ import isValid from '../isValid/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toDate from '../toDate/index'
 import sub from '../sub/index'
-import { isBoolean } from 'lodash'
 
 /**
  * @name intervalToDuration
@@ -57,7 +56,7 @@ export default function intervalToDuration({ start, end, showWeeks = false }) {
   if (!isValid(dateRight)) {
     throw new RangeError('End Date is invalid')
   }
-  if (!isBoolean(showWeeks)) {
+  if (showWeeks !== true && showWeeks !== false) {
     throw new TypeError('ShowWeeks is invalid')
   }
 
