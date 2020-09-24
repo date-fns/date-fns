@@ -1,5 +1,6 @@
 // @flow
 /* eslint-env mocha */
+declare const context: any
 
 import assert from 'power-assert'
 import parseISO from '.'
@@ -25,6 +26,10 @@ describe('parseISO', () => {
         const result = parseISO('2014-02')
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 1))
       })
+      it('parses YYYY-M', () => {
+        const result = parseISO('2014-2')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 1))
+      })
     })
 
     describe('weeks', () => {
@@ -43,6 +48,16 @@ describe('parseISO', () => {
       it('parses YYYY-MM-DD', () => {
         const result = parseISO('2014-02-11')
         assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
+      })
+
+      it('parses YYYY-M-d', () => {
+        const result = parseISO('2014-2-11')
+        assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
+      })
+
+      it('parses YYYY-M-d', () => {
+        const result = parseISO('2014-2-2')
+        assert.deepEqual(result, new Date(2014, 1, /* Feb */ 2))
       })
 
       it('parses YYYYMMDD', () => {
@@ -212,6 +227,8 @@ describe('parseISO', () => {
       it('returns `Invalid Date` if the string is not an ISO formatted date', () => {
         const result = parseISO(new Date(2014, 8 /* Sep */, 1, 11).toString())
         assert(result instanceof Date)
+
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -222,6 +239,7 @@ describe('parseISO', () => {
       it('returns `Invalid Date` for invalid month', () => {
         const result = parseISO('2014-00')
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -230,12 +248,14 @@ describe('parseISO', () => {
       it('returns `Invalid Date` for invalid week', () => {
         const result = parseISO('2014-W00')
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for 54th week', () => {
         const result = parseISO('2014-W54')
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -244,12 +264,15 @@ describe('parseISO', () => {
       it('returns `Invalid Date` for invalid day of the month', () => {
         const result = parseISO('2012-02-30')
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for 29th of February of non-leap year', () => {
         const result = parseISO('2014-02-29')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
@@ -262,7 +285,9 @@ describe('parseISO', () => {
     describe('week dates', () => {
       it('returns `Invalid Date` for invalid day of the week', () => {
         const result = parseISO('2014-W02-0')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -270,13 +295,17 @@ describe('parseISO', () => {
     describe('ordinal dates', () => {
       it('returns `Invalid Date` for invalid day of the year', () => {
         const result = parseISO('2012-000')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for 366th day of non-leap year', () => {
         const result = parseISO('2014-366')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
@@ -289,7 +318,9 @@ describe('parseISO', () => {
     describe('date', () => {
       it('returns `Invalid Date` when it contains spaces after the date', () => {
         const result = parseISO('2014-02-11  basketball')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -302,37 +333,49 @@ describe('parseISO', () => {
 
       it('returns `Invalid Date` for anything after 24:00', () => {
         const result = parseISO('2014-02-11T24:01')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid hours', () => {
         const result = parseISO('2014-02-11T25')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid minutes', () => {
         const result = parseISO('2014-02-11T21:60')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid seconds', () => {
         const result = parseISO('2014-02-11T21:59:60')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` for invalid time', () => {
         const result = parseISO('2014-02-11T21:basketball')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
 
       it('returns `Invalid Date` when it contains spaces after the time', () => {
         const result = parseISO('2014-02-11T21:59:00  basketball')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -340,7 +383,9 @@ describe('parseISO', () => {
     describe('timezones', () => {
       it('returns `Invalid Date` for invalid timezone minutes', () => {
         const result = parseISO('2014-02-11T21:35:45+04:60')
+
         assert(result instanceof Date)
+        //@ts-expect-error
         assert(isNaN(result))
       })
     })
@@ -350,70 +395,98 @@ describe('parseISO', () => {
     it('returns Invalid Date for date argument', () => {
       // $ExpectedMistake
       const date = new Date(2016, 0, 1)
+      //@ts-expect-error
       const result = parseISO(date)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date for timestamp argument', () => {
       const timestamp = new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(timestamp)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is non-date string', () => {
       const result = parseISO('abc')
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is non-date string containing a colon', () => {
       const result = parseISO('00:00')
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is NaN', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(NaN)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is Invalid Date', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(new Date(NaN))
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is null', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(null)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is undefined', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(undefined)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is false', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(false)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is true', () => {
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(true)
+
       assert(result instanceof Date)
+      //@ts-expect-error
       assert(isNaN(result))
     })
   })
@@ -422,7 +495,9 @@ describe('parseISO', () => {
     it('implicitly converts instance of String into a string', () => {
       // eslint-disable-next-line no-new-wrappers
       const dateString = new String('2014-02-11')
+
       // $ExpectedMistake
+      //@ts-expect-error
       const result = parseISO(dateString)
       assert.deepEqual(result, new Date(2014, 1, /* Feb */ 11))
     })
@@ -433,7 +508,7 @@ describe('parseISO', () => {
       assert.deepEqual(result, new Date(1234, 6 /* Jul */, 2))
     })
 
-    it('throws `RangeError` if `options.additionalDigits` is not convertable to 0, 1, 2 or undefined`', () => {
+    it('throws `RangeError` if `options.additionalDigits` is not convertible to 0, 1, 2 or undefined`', () => {
       // $ExpectedMistake
       const block = parseISO.bind(null, '+12340702', { additionalDigits: 3 })
       assert.throws(block, RangeError)
