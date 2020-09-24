@@ -22,6 +22,7 @@ describe('subYears', function() {
 
   it('implicitly converts number arguments', function() {
     // $ExpectedMistake
+    // @ts-expect-error
     const result = subYears(new Date(2014, 8 /* Sep */, 1), '5')
     assert.deepEqual(result, new Date(2009, 8 /* Sep */, 1))
   })
