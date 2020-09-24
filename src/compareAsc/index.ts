@@ -21,12 +21,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989:
- * var result = compareAsc(new Date(1987, 1, 11), new Date(1989, 6, 10))
+ * const result = compareAsc(new Date(1987, 1, 11), new Date(1989, 6, 10))
  * //=> -1
  *
  * @example
  * // Sort the array of dates:
- * var result = [
+ * const result = [
  *   new Date(1995, 6, 2),
  *   new Date(1987, 1, 11),
  *   new Date(1989, 6, 10)
@@ -37,13 +37,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export default function compareAsc(dirtyDateLeft, dirtyDateRight) {
+export default function compareAsc(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var diff = dateLeft.getTime() - dateRight.getTime()
+  const diff = dateLeft.getTime() - dateRight.getTime()
 
   if (diff < 0) {
     return -1
