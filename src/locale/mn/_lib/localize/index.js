@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['НТӨ', 'НТ'],
   abbreviated: ['НТӨ', 'НТ'],
-  wide: ['Нийтийн тооллын өмнөх', 'Нийтийн тооллын']
+  wide: ['нийтийн тооллын өмнөх', 'нийтийн тооллын']
 }
 
 var quarterValues = {
@@ -46,18 +46,18 @@ var monthValues = {
     '12-р сар'
   ],
   wide: [
-    'Нэгдүгээр сар',
-    'Хоёрдугаар сар',
-    'Гуравдугаар сар',
-    'Дөрөвдүгээр сар',
-    'Тавдугаар сар',
-    'Зургаадугаар сар',
-    'Долоодугаар сар',
-    'Наймдугаар сар',
-    'Есдүгээр сар',
-    'Аравдугаар сар',
-    'Арваннэгдүгээр сар',
-    'Арван хоёрдугаар сар'
+    'нэгдүгээр сар',
+    'хоёрдугаар сар',
+    'гуравдугаар сар',
+    'дөрөвдүгээр сар',
+    'тавдугаар сар',
+    'зургаадугаар сар',
+    'долоодугаар сар',
+    'наймдугаар сар',
+    'есдүгээр сар',
+    'аравдугаар сар',
+    'арваннэгдүгээр сар',
+    'арван хоёрдугаар сар'
   ]
 }
 
@@ -100,38 +100,7 @@ var dayPeriodValues = {
     night: 'шөнө'
   }
 }
-var formattingDayPeriodValues = {
-  narrow: {
-    am: 'ү.ө.',
-    pm: 'ү.х.',
-    midnight: 'шөнө дунд',
-    noon: 'үд дунд',
-    morning: 'өглөө',
-    afternoon: 'өдөр',
-    evening: 'орой',
-    night: 'шөнө'
-  },
-  abbreviated: {
-    am: 'ү.ө.',
-    pm: 'ү.х.',
-    midnight: 'шөнө дунд',
-    noon: 'үд дунд',
-    morning: 'өглөө',
-    afternoon: 'өдөр',
-    evening: 'орой',
-    night: 'шөнө'
-  },
-  wide: {
-    am: 'ү.ө.',
-    pm: 'ү.х.',
-    midnight: 'шөнө дунд',
-    noon: 'үд дунд',
-    morning: 'өглөө',
-    afternoon: 'өдөр',
-    evening: 'орой',
-    night: 'шөнө'
-  }
-}
+var formattingDayPeriodValues = dayPeriodValues
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)

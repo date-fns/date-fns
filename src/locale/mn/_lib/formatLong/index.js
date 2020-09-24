@@ -1,10 +1,10 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
-  full: 'y оны M сарын d, EEEE',
-  long: 'y оны M сарын d',
-  medium: 'y/MM/dd',
-  short: 'y/MM/dd'
+  full: "y 'оны' MMMM'ын' d, EEEE 'гараг'",
+  long: "y 'оны' MMMM'ын' d",
+  medium: "y 'оны' MMM'ын' d",
+  short: 'y.MM.dd'
 }
 
 var timeFormats = {
