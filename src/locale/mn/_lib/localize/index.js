@@ -46,6 +46,24 @@ var monthValues = {
     '12-р сар'
   ],
   wide: [
+    'Нэгдүгээр сар',
+    'Хоёрдугаар сар',
+    'Гуравдугаар сар',
+    'Дөрөвдүгээр сар',
+    'Тавдугаар сар',
+    'Зургаадугаар сар',
+    'Долоодугаар сар',
+    'Наймдугаар сар',
+    'Есдүгээр сар',
+    'Аравдугаар сар',
+    'Арваннэгдүгээр сар',
+    'Арван хоёрдугаар сар'
+  ]
+}
+
+var formattingMonthValues = {
+  ...monthValues,
+  wide: [
     'нэгдүгээр сар',
     'хоёрдугаар сар',
     'гуравдугаар сар',
@@ -66,6 +84,11 @@ var dayValues = {
   short: ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'],
   abbreviated: ['Ням', 'Дав', 'Мяг', 'Лха', 'Пүр', 'Баа', 'Бям'],
   wide: ['Ням', 'Даваа', 'Мягмар', 'Лхагва', 'Пүрэв', 'Баасан', 'Бямба']
+}
+
+var formattingDayValues = {
+  ...dayValues,
+  wide: ['ням', 'даваа', 'мягмар', 'лхагва', 'пүрэв', 'баасан', 'бямба']
 }
 
 var dayPeriodValues = {
@@ -100,7 +123,6 @@ var dayPeriodValues = {
     night: 'шөнө'
   }
 }
-var formattingDayPeriodValues = dayPeriodValues
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
   var number = Number(dirtyNumber)
@@ -136,19 +158,21 @@ var localize = {
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
+    formattingValues: formattingMonthValues,
+    defaultFormattingWidth: 'wide'
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
+    formattingValues: formattingDayValues,
+    defaultFormattingWidth: 'wide'
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide',
-    formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
+    defaultWidth: 'wide'
   })
 }
 
