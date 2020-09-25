@@ -1,13 +1,13 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInCalendarDays from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('differenceInCalendarDays', function() {
   it('returns the number of calendar days between the given dates', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
     )
@@ -15,7 +15,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns a negative number if the time value of the first date is smaller', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
@@ -23,7 +23,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime()
     )
@@ -32,7 +32,7 @@ describe('differenceInCalendarDays', function() {
 
   describe('edge cases', function() {
     it('the difference is less than a day, but the given dates are in different calendar days', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 4, 23, 59)
       )
@@ -40,7 +40,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the same for the swapped dates', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 4, 23, 59),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -48,7 +48,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the time values of the given the given dates are the same', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 6, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -56,7 +56,7 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('the given the given dates are the same', function() {
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -64,22 +64,22 @@ describe('differenceInCalendarDays', function() {
     })
 
     it('does not return -0 when the given dates are the same', () => {
-      function isNegativeZero(x) {
+      function isNegativeZero(x: Date | number) {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInCalendarDays(
+      const result = differenceInCalendarDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(NaN),
       new Date(2017, 0 /* Jan */, 1)
     )
@@ -87,7 +87,7 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns NaN if the second date is `Invalid Date`', function() {
-    var result = differenceInCalendarDays(
+    const result = differenceInCalendarDays(
       new Date(2017, 0 /* Jan */, 1),
       new Date(NaN)
     )
@@ -95,16 +95,18 @@ describe('differenceInCalendarDays', function() {
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function() {
-    var result = differenceInCalendarDays(new Date(NaN), new Date(NaN))
+    const result = differenceInCalendarDays(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
+    //@ts-expect-error
     assert.throws(differenceInCalendarDays.bind(null), TypeError)
+    //@ts-expect-error
     assert.throws(differenceInCalendarDays.bind(null, 1), TypeError)
   })
 
-  // These tests were copy-pasted almost unchagned from DST tests for
+  // These tests were copy-pasted almost unchanged from DST tests for
   // `differenceInDays`
   const dstTransitions = getDstTransitions(2017)
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
@@ -114,7 +116,7 @@ describe('differenceInCalendarDays', function() {
     function() {
       const { start, end } = dstTransitions
       const HOUR = 1000 * 60 * 60
-      function sameTime(t1, t2) {
+      function sameTime(t1: Date, t2: Date) {
         return (
           t1.getHours() === t2.getHours() &&
           t1.getMinutes() === t2.getMinutes() &&
@@ -127,7 +129,7 @@ describe('differenceInCalendarDays', function() {
 
       // anchor to one hour before the boundary
       {
-        const a = new Date(start.getTime() - HOUR) // 1 hour before DST
+        const a = new Date(start!.getTime() - HOUR) // 1 hour before DST
         const b = new Date(a.getTime() + 23 * HOUR) // 1 day later, same local time
         const c = new Date(a.getTime() + 47 * HOUR) // 2 days later, same local time
 
@@ -141,15 +143,15 @@ describe('differenceInCalendarDays', function() {
       // anchor exactly at the boundary
       {
         const a = start // exactly when DST starts
-        const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
-        const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
+        const b = new Date(a!.getTime() + 24 * HOUR) // 1 day later, same local time
+        const c = new Date(a!.getTime() + 48 * HOUR) // 2 days later, same local time
 
-        assert(sameTime(a, b))
-        assert(sameTime(a, c))
+        assert(sameTime(a!, b))
+        assert(sameTime(a!, c))
         assert(sameTime(b, c))
         assert(differenceInCalendarDays(c, b) === 1) // normal 24-hour day
-        assert(differenceInCalendarDays(b, a) === 1) // normal 24-hour day
-        assert(differenceInCalendarDays(c, a) === 2) // 2 normal 24-hour days
+        assert(differenceInCalendarDays(b, a!) === 1) // normal 24-hour day
+        assert(differenceInCalendarDays(c, a!) === 2) // 2 normal 24-hour days
       }
 
       // TEST DST END (FALL)
@@ -157,7 +159,7 @@ describe('differenceInCalendarDays', function() {
       // make sure that diffs across a "fall back" DST boundary won't report a full day
       // until 25 hours have elapsed.
       {
-        const a = new Date(end.getTime() - HOUR / 2) // 1 hour before Standard Time starts
+        const a = new Date(end!.getTime() - HOUR / 2) // 1 hour before Standard Time starts
         const b = new Date(a.getTime() + 24.75 * HOUR) // 1 day later, 15 mins earlier local time
         const c = new Date(a.getTime() + 48.75 * HOUR) // 2 days later, 15 mins earlier local time
 
@@ -167,7 +169,7 @@ describe('differenceInCalendarDays', function() {
       }
       // anchor to one hour before the boundary
       {
-        const a = new Date(end.getTime() - HOUR) // 1 hour before Standard Time starts
+        const a = new Date(end!.getTime() - HOUR) // 1 hour before Standard Time starts
         const b = new Date(a.getTime() + 25 * HOUR) // 1 day later, same local time
         const c = new Date(a.getTime() + 49 * HOUR) // 2 days later, same local time
 
@@ -180,7 +182,7 @@ describe('differenceInCalendarDays', function() {
       }
       // anchor to one hour after the boundary
       {
-        const a = new Date(end.getTime() + HOUR) // 1 hour after Standard Time starts
+        const a = new Date(end!.getTime() + HOUR) // 1 hour after Standard Time starts
         const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
         const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
 
@@ -194,10 +196,10 @@ describe('differenceInCalendarDays', function() {
       // anchor exactly at the boundary
       {
         const a = end // exactly when Standard Time starts
-        const b = new Date(a.getTime() + 24 * HOUR) // 1 day later, same local time
-        const c = new Date(a.getTime() + 48 * HOUR) // 2 days later, same local time
-        assert(differenceInCalendarDays(b, a) === 1) // normal 24-hour day
-        assert(differenceInCalendarDays(c, a) === 2) // 2 normal 24-hour days
+        const b = new Date(a!.getTime() + 24 * HOUR) // 1 day later, same local time
+        const c = new Date(a!.getTime() + 48 * HOUR) // 2 days later, same local time
+        assert(differenceInCalendarDays(b, a!) === 1) // normal 24-hour day
+        assert(differenceInCalendarDays(c, a!) === 2) // 2 normal 24-hour days
       }
     }
   )
