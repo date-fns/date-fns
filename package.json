@@ -27,7 +27,8 @@
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
     "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
     "ts-migrate:rename-all": "ts-migrate rename ./ && rm -rf docs/ config/ examples/ test/ scripts/ benchmark.ts jest.config.ts test.ts testWithoutLocales.ts && git checkout docs/ config/ examples/ test/ scripts/ benchmark.js jest.config.js test.js testWithoutLocales.js",
-    "ts-migrate:migrate": "ts-migrate migrate src/"
+    "ts-migrate:migrate": "ts-migrate migrate src/differenceInBusinessDays",
+    "ts-migrate:jsdoc": "ts-migrate migrate --plugin jsdoc --alias tsfixme --type-map '{\"Promise\": \"IPromise\", \"Function\": \"$TSFixMeFunction\"}' src/differenceInBusinessDays"
   },
   "husky": {
     "hooks": {
