@@ -19,13 +19,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which day of the month is 29 February 2012?
- * var result = getDate(new Date(2012, 1, 29))
+ * const result = getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export default function getDate(dirtyDate) {
+export default function getDate(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var dayOfMonth = date.getDate()
+  const date = toDate(dirtyDate)
+  const dayOfMonth = date.getDate()
   return dayOfMonth
 }

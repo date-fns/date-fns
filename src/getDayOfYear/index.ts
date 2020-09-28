@@ -21,14 +21,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which day of the year is 2 July 2014?
- * var result = getDayOfYear(new Date(2014, 6, 2))
+ * const result = getDayOfYear(new Date(2014, 6, 2))
  * //=> 183
  */
-export default function getDayOfYear(dirtyDate) {
+export default function getDayOfYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var diff = differenceInCalendarDays(date, startOfYear(date))
-  var dayOfYear = diff + 1
+  const date = toDate(dirtyDate)
+  const diff = differenceInCalendarDays(date, startOfYear(date))
+  const dayOfYear = diff + 1
   return dayOfYear
 }

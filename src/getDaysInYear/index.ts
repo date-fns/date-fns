@@ -20,17 +20,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // How many days are in 2012?
- * var result = getDaysInYear(new Date(2012, 0, 1))
+ * const result = getDaysInYear(new Date(2012, 0, 1))
  * //=> 366
  */
-export default function getDaysInYear(dirtyDate) {
+export default function getDaysInYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-
-  if (isNaN(date)) {
-    return NaN
-  }
+  const date = toDate(dirtyDate)
 
   return isLeapYear(date) ? 366 : 365
 }
