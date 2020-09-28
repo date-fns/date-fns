@@ -324,7 +324,11 @@ var parsers = {
             valueCallback: valueCallback
           })
         default:
-          return parseNDigits(token.length, string, valueCallback)
+          return parseNumericPattern(
+            '^\\d{' + token.length + '}',
+            string,
+            valueCallback
+          )
       }
     },
 
