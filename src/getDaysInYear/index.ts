@@ -28,5 +28,9 @@ export default function getDaysInYear(dirtyDate: Date | number): number {
 
   const date = toDate(dirtyDate)
 
+  if (String(new Date(date)) === 'Invalid Date') {
+    return NaN
+  }
+
   return isLeapYear(date) ? 366 : 365
 }
