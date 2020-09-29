@@ -1,4 +1,4 @@
-export default function toInteger(dirtyNumber: unknown) {
+export default function toInteger(dirtyNumber) {
   if (dirtyNumber === null || dirtyNumber === true || dirtyNumber === false) {
     return NaN
   }
