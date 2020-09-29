@@ -20,13 +20,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The end of a second for 1 December 2014 22:15:45.400:
- * var result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * const result = endOfSecond(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:45.999
  */
-export default function endOfSecond(dirtyDate) {
+export default function endOfSecond(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   date.setMilliseconds(999)
   return date
 }
