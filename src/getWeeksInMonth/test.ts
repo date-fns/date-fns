@@ -35,6 +35,16 @@ describe('getWeeksInMonth', function() {
     assert(isNaN(result))
   })
 
+  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', function () {
+    //@ts-expect-error
+    const block = getWeeksInMonth.bind(
+      null,
+      new Date(2014, 6 /* Jul */, 8, 18, 0),
+      { options: { weekStartsOn: NaN } }
+    )
+    assert.throws(block, RangeError)
+  })
+
   it('throws TypeError exception if passed less than 1 argument', function() {
     //@ts-expect-error
     assert.throws(getWeeksInMonth.bind(null), TypeError)
