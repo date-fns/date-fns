@@ -146,9 +146,11 @@ describe('FP functions', function() {
   })
 
   it('differenceInCalendarWeeksWithOptions', function() {
-    var result = fp.differenceInCalendarWeeksWithOptions({ weekStartsOn: 1 })(
-      new Date(2014, 5 /* Jun */, 29, 6, 0)
-    )(new Date(2014, 6 /* Jul */, 8, 18, 0))
+    var result = fp.differenceInCalendarWeeksWithOptions({
+      options: { weekStartsOn: 1 }
+    })(new Date(2014, 5 /* Jun */, 29, 6, 0))(
+      new Date(2014, 6 /* Jul */, 8, 18, 0)
+    )
     assert(result === 2)
   })
 
