@@ -2,7 +2,7 @@ import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { Locale } from '../types';
+import { Locale } from '../types'
 
 /**
  * @name getWeeksInMonth
@@ -38,7 +38,7 @@ import { Locale } from '../types';
 export default function getWeeksInMonth(
   date: Date | number,
   options: Locale = { options: { weekStartsOn: 0 } }
-) {
+): number {
   requiredArgs(1, arguments)
 
   return (
