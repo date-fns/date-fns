@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?
- * var result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
+ * const result = differenceInWeeks(new Date(2014, 6, 20), new Date(2014, 6, 5))
  * //=> 2
  *
  * // How many full weeks are between
@@ -38,15 +38,18 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // result will always be 8 weeks (54 days),
  * // even if DST starts and the period has
  * // only 54*24-1 hours.
- * var result = differenceInWeeks(
+ * const result = differenceInWeeks(
  *   new Date(2020, 5, 1),
  *   new Date(2020, 2, 6)
  * )
  * //=> 8
  */
-export default function differenceInWeeks(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInWeeks(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
+  const diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
 }

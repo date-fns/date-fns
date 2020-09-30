@@ -1,7 +1,7 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-var MILLISECONDS_IN_MINUTE = 60000
+const MILLISECONDS_IN_MINUTE = 60000
 
 /**
  * @name differenceInMinutes
@@ -22,7 +22,7 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
- * var result = differenceInMinutes(
+ * const result = differenceInMinutes(
  *   new Date(2014, 6, 2, 12, 20, 0),
  *   new Date(2014, 6, 2, 12, 7, 59)
  * )
@@ -30,16 +30,19 @@ var MILLISECONDS_IN_MINUTE = 60000
  *
  * @example
  * // How many minutes are from 10:01:59 to 10:00:00
- * var result = differenceInMinutes(
+ * const result = differenceInMinutes(
  *   new Date(2000, 0, 1, 10, 0, 0),
  *   new Date(2000, 0, 1, 10, 1, 59)
  * )
  * //=> -1
  */
-export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInMinutes(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var diff =
+  const diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_MINUTE
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
