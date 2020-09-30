@@ -132,7 +132,7 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
   return number + 'వ'
 }
 
@@ -148,7 +148,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

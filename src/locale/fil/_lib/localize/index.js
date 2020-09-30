@@ -53,7 +53,7 @@ var timeOfDayValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
   return 'ika-' + number
 }
 

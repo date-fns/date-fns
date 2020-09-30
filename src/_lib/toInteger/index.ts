@@ -3,7 +3,7 @@ export default function toInteger(dirtyNumber: unknown) {
     return NaN
   }
 
-  const number = Number(dirtyNumber)
+  const number = +dirtyNumber
 
   if (isNaN(number)) {
     return number

@@ -52,7 +52,7 @@ export default function eachHourOfInterval(dirtyInterval, options) {
   let currentDate = startDate
   currentDate.setMinutes(0, 0, 0)
 
-  const step = options && 'step' in options ? Number(options.step) : 1
+  const step = options && 'step' in options ? +options.step : 1
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

@@ -94,7 +94,7 @@ function numberWithSuffix(number, unit, masculine, feminine, neuter) {
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
 
   if (number === 0) {
     return numberWithSuffix(0, unit, 'ев', 'ева', 'ево')
@@ -132,7 +132,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

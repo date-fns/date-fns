@@ -190,7 +190,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

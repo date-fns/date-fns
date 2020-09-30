@@ -72,7 +72,7 @@ var dayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
@@ -101,7 +101,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

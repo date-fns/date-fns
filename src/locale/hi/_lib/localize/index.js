@@ -196,7 +196,7 @@ function localeToNumber(locale) {
   var number = locale.toString().replace(/[१२३४५६७८९०]/g, function(match) {
     return numberValues.number[match]
   })
-  return Number(number)
+  return +number
 }
 
 function numberToLocale(number) {
@@ -219,7 +219,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

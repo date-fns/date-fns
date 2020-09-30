@@ -133,7 +133,7 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
 
   // We only show words till 10
   if (number <= 0 || number > 10) return number
@@ -184,7 +184,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

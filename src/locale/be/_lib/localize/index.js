@@ -158,7 +158,7 @@ var formattingDayPeriodValues = {
 function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
   var suffix
 
   /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
@@ -200,7 +200,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 
