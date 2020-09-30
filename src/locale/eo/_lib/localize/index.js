@@ -14,8 +14,34 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aŭg', 'sep', 'okt', 'nov', 'dec'],
-  wide: ['januaro', 'februaro', 'marto', 'aprilo', 'majo', 'junio', 'julio', 'aŭgusto', 'septembro', 'oktobro', 'novembro', 'decembro']
+  abbreviated: [
+    'jan',
+    'feb',
+    'mar',
+    'apr',
+    'maj',
+    'jun',
+    'jul',
+    'aŭg',
+    'sep',
+    'okt',
+    'nov',
+    'dec'
+  ],
+  wide: [
+    'januaro',
+    'februaro',
+    'marto',
+    'aprilo',
+    'majo',
+    'junio',
+    'julio',
+    'aŭgusto',
+    'septembro',
+    'oktobro',
+    'novembro',
+    'decembro'
+  ]
 }
 
 var dayValues = {
@@ -58,8 +84,8 @@ var dayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  var number = +dirtyNumber
   return number + '-a'
 }
 
@@ -74,8 +100,8 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
+    argumentCallback: function(quarter) {
+      return +quarter - 1
     }
   }),
 

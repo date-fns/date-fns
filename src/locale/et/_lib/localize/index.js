@@ -14,15 +14,57 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'V', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jaan', 'veebr', 'märts', 'apr', 'mai', 'juuni', 'juuli', 'aug', 'sept', 'okt', 'nov', 'dets'],
-  wide: ['jaanuar', 'veebruar', 'märts', 'aprill', 'mai', 'juuni', 'juuli', 'august', 'september', 'oktoober', 'november', 'detsember']
+  abbreviated: [
+    'jaan',
+    'veebr',
+    'märts',
+    'apr',
+    'mai',
+    'juuni',
+    'juuli',
+    'aug',
+    'sept',
+    'okt',
+    'nov',
+    'dets'
+  ],
+  wide: [
+    'jaanuar',
+    'veebruar',
+    'märts',
+    'aprill',
+    'mai',
+    'juuni',
+    'juuli',
+    'august',
+    'september',
+    'oktoober',
+    'november',
+    'detsember'
+  ]
 }
 
 var dayValues = {
   narrow: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
   short: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
-  abbreviated: ['pühap.', 'esmasp.', 'teisip.', 'kolmap.', 'neljap.', 'reede.', 'laup.'],
-  wide: ['pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev']
+  abbreviated: [
+    'pühap.',
+    'esmasp.',
+    'teisip.',
+    'kolmap.',
+    'neljap.',
+    'reede.',
+    'laup.'
+  ],
+  wide: [
+    'pühapäev',
+    'esmaspäev',
+    'teisipäev',
+    'kolmapäev',
+    'neljapäev',
+    'reede',
+    'laupäev'
+  ]
 }
 
 var dayPeriodValues = {
@@ -91,8 +133,8 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  var number = +dirtyNumber
   return number + '.'
 }
 
@@ -107,8 +149,8 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
+    argumentCallback: function(quarter) {
+      return +quarter - 1
     }
   }),
 

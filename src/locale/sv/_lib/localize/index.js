@@ -14,8 +14,34 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mars', 'apr.', 'maj', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
-  wide: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december']
+  abbreviated: [
+    'jan.',
+    'feb.',
+    'mars',
+    'apr.',
+    'maj',
+    'juni',
+    'juli',
+    'aug.',
+    'sep.',
+    'okt.',
+    'nov.',
+    'dec.'
+  ],
+  wide: [
+    'januari',
+    'februari',
+    'mars',
+    'april',
+    'maj',
+    'juni',
+    'juli',
+    'augusti',
+    'september',
+    'oktober',
+    'november',
+    'december'
+  ]
 }
 
 var dayValues = {
@@ -91,8 +117,8 @@ var formattingDayPeriodValues = {
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  var number = +dirtyNumber
 
   var rem100 = number % 100
   if (rem100 > 20 || rem100 < 10) {
@@ -116,8 +142,8 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
+    argumentCallback: function(quarter) {
+      return +quarter - 1
     }
   }),
 

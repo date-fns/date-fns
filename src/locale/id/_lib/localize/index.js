@@ -123,7 +123,7 @@ var formattingDayPeriodValues = {
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+  var number = +dirtyNumber
 
   // Can't use "pertama", "kedua" because can't be parsed
   switch (number) {
@@ -144,7 +144,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     argumentCallback: function(quarter) {
-      return Number(quarter) - 1
+      return +quarter - 1
     }
   }),
 

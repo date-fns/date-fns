@@ -14,15 +14,49 @@ var quarterValues = {
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['jan.', 'feb.', 'mrt.', 'apr.', 'mei.', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'],
-  wide: ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+  abbreviated: [
+    'jan.',
+    'feb.',
+    'mrt.',
+    'apr.',
+    'mei.',
+    'jun.',
+    'jul.',
+    'aug.',
+    'sep.',
+    'okt.',
+    'nov.',
+    'dec.'
+  ],
+  wide: [
+    'januari',
+    'februari',
+    'maart',
+    'april',
+    'mei',
+    'juni',
+    'juli',
+    'augustus',
+    'september',
+    'oktober',
+    'november',
+    'december'
+  ]
 }
 
 var dayValues = {
   narrow: ['Z', 'M', 'D', 'W', 'D', 'V', 'Z'],
   short: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
   abbreviated: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
-  wide: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag']
+  wide: [
+    'zondag',
+    'maandag',
+    'dinsdag',
+    'woensdag',
+    'donderdag',
+    'vrijdag',
+    'zaterdag'
+  ]
 }
 
 var dayPeriodValues = {
@@ -31,35 +65,35 @@ var dayPeriodValues = {
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'het middaguur',
-    morning: '\'s ochtends',
-    afternoon: '\'s middags',
-    evening: '\'s avonds',
-    night: '\'s nachts'
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
   },
   abbreviated: {
     am: 'AM',
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'het middaguur',
-    morning: '\'s ochtends',
-    afternoon: '\'s middags',
-    evening: '\'s avonds',
-    night: '\'s nachts'
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
   },
   wide: {
     am: 'AM',
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'het middaguur',
-    morning: '\'s ochtends',
-    afternoon: '\'s middags',
-    evening: '\'s avonds',
-    night: '\'s nachts'
+    morning: "'s ochtends",
+    afternoon: "'s middags",
+    evening: "'s avonds",
+    night: "'s nachts"
   }
 }
 
-function ordinalNumber (dirtyNumber) {
-  var number = Number(dirtyNumber)
+function ordinalNumber(dirtyNumber) {
+  var number = +dirtyNumber
   return number + 'e'
 }
 
@@ -74,8 +108,8 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
+    argumentCallback: function(quarter) {
+      return +quarter - 1
     }
   }),
 
