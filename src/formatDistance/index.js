@@ -138,7 +138,7 @@ export default function formatDistance(dirtyDate, dirtyBaseDate, dirtyOptions) {
   }
 
   var localizeOptions = cloneObject(options)
-  localizeOptions.addSuffix = Boolean(options.addSuffix)
+  localizeOptions.addSuffix = !!options.addSuffix
   localizeOptions.comparison = comparison
 
   var dateLeft

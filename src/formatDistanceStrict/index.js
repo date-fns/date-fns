@@ -182,7 +182,7 @@ export default function formatDistanceStrict(
   }
 
   var localizeOptions = cloneObject(options)
-  localizeOptions.addSuffix = Boolean(options.addSuffix)
+  localizeOptions.addSuffix = !!options.addSuffix
   localizeOptions.comparison = comparison
 
   var dateLeft
