@@ -14,41 +14,41 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Get the number of business day periods between the given dates.
- * Business days being days that arent in the weekend.
+ * Business days being days that aren't in the weekend.
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of business days
+ * @returns {Number | Date} the number of business days or Invalid Date if invalid arguments are passed
  * @throws {TypeError} 2 arguments required
  *
  * @example
  * // How many business days are between
  * // 10 January 2014 and 20 July 2014?
- * var result = differenceInBusinessDays(
+ * const result = differenceInBusinessDays(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 0, 10)
  * )
  * //=> 136
  */
 export default function differenceInBusinessDays(
-  dirtyDateLeft,
-  dirtyDateRight
-) {
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number | Date {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  let dateRight = toDate(dirtyDateRight)
 
   if (!isValid(dateLeft) || !isValid(dateRight)) return new Date(NaN)
 
-  var calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
-  var sign = calendarDifference < 0 ? -1 : 1
+  const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
+  const sign = calendarDifference < 0 ? -1 : 1
 
-  var weeks = toInteger(calendarDifference / 7)
+  const weeks = toInteger(calendarDifference / 7)
 
-  var result = weeks * 5
+  let result = weeks * 5
   dateRight = addDays(dateRight, weeks * 7)
 
   // the loop below will run at most 6 times to account for the remaining days that don't makeup a full week
