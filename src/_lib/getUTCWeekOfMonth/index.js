@@ -1,7 +1,7 @@
 import getUTCDay from '../getUTCDay/index.js'
 import getUTCDate from '../getUTCDate/index.js'
 import startOfUTCMonth from '../startOfUTCMonth/index.js'
-import toInteger from '../toInteger/index.js'
+import toInteger from '../toInteger/index'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
