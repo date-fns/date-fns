@@ -21,12 +21,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Subtract 10 days from 1 September 2014:
- * var result = subDays(new Date(2014, 8, 1), 10)
+ * const result = subDays(new Date(2014, 8, 1), 10)
  * //=> Fri Aug 22 2014 00:00:00
  */
-export default function subDays(dirtyDate, dirtyAmount) {
+export default function subDays(dirtyDate: Date | number, dirtyAmount: number) {
   requiredArgs(2, arguments)
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addDays(dirtyDate, -amount)
 }
