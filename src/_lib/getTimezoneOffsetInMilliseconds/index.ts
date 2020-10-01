@@ -1,6 +1,6 @@
-var MILLISECONDS_IN_MINUTE = 60000
+const MILLISECONDS_IN_MINUTE = 60000
 
-function getDateMillisecondsPart(date) {
+function getDateMillisecondsPart(date: Date) {
   return date.getTime() % MILLISECONDS_IN_MINUTE
 }
 
@@ -15,12 +15,15 @@ function getDateMillisecondsPart(date) {
  *
  * This function returns the timezone offset in milliseconds that takes seconds in account.
  */
-export default function getTimezoneOffsetInMilliseconds(dirtyDate) {
-  var date = new Date(dirtyDate.getTime())
-  var baseTimezoneOffset = Math.ceil(date.getTimezoneOffset())
+export default function getTimezoneOffsetInMilliseconds(
+  dirtyDate: Date | number
+): number {
+  const receivedDate = dirtyDate as Date
+  const date = new Date(receivedDate.getTime())
+  const baseTimezoneOffset = Math.ceil(date.getTimezoneOffset())
   date.setSeconds(0, 0)
-  var hasNegativeUTCOffset = baseTimezoneOffset > 0
-  var millisecondsPartOfTimezoneOffset = hasNegativeUTCOffset
+  const hasNegativeUTCOffset = baseTimezoneOffset > 0
+  const millisecondsPartOfTimezoneOffset = hasNegativeUTCOffset
     ? (MILLISECONDS_IN_MINUTE + getDateMillisecondsPart(date)) %
       MILLISECONDS_IN_MINUTE
     : getDateMillisecondsPart(date)
