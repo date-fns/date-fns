@@ -6,9 +6,9 @@ const MILLISECONDS_IN_MINUTE = 60000
 const DEFAULT_ADDITIONAL_DIGITS = 2
 
 const patterns = {
-  dateTimeDelimiter: /[T ]/,
+  dateTimeDelimiter: /[T ]/i,
   timeZoneDelimiter: /[Z ]/i,
-  timezone: /([Z+-].*)$/
+  timezone: /([Z+-].*)$/i
 }
 
 const dateRegex = /^-?(?:(\d{3})|(\d{2}|\d{1})(?:-?(\d{2}|\d{1}))?|W(\d{2})(?:-?(\d{1}))?|)$/
@@ -282,7 +282,7 @@ function parseTimeUnit(value: string): number {
 }
 
 function parseTimezone(timezoneString: string): number {
-  if (timezoneString === 'Z') return 0
+  if (timezoneString === 'Z' || timezoneString === 'z') return 0
 
   const captures = timezoneString.match(timezoneRegex)
   if (!captures) return 0

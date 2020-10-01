@@ -215,6 +215,23 @@ describe('parseISO', () => {
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
       })
+      context(
+        'when time and timezone separator are either lowercase or uppercase',
+        () => {
+          it('parses z', () => {
+            const result = parseISO('2014-10-25t06:46:20z')
+            assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+          })
+          it('parses t', () => {
+            const result = parseISO('2014-10-25T06:46:20Z')
+            assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+          })
+          it('parses z and t', () => {
+            const result = parseISO('2014-10-25T06:46:20Z')
+            assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+          })
+        }
+      )
       context('when the year and the month are specified', () => {
         it('sets timezone correctly on yyyy-MMZ format', () => {
           const result = parseISO('2012-01Z')
