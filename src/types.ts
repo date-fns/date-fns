@@ -27,13 +27,13 @@ export interface Localize {
   ) => Object
 }
 
-export interface FormatLong {
-  date?: () => Object
-  time?: () => Object
-  dateTime?: () => Object
+interface FormatLong {
+  date?: (...args: unknown[]) => Object
+  time?: (...args: unknown[]) => Object
+  dateTime?: (...args: unknown[]) => Object
 }
 
-export interface LocaleOptions {
+interface LocaleOptions {
   weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
   firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
 }
