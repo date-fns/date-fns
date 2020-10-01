@@ -74,7 +74,7 @@ describe('differenceInCalendarWeeks', function() {
     })
 
     it('does not return -0 when the given dates are the same', () => {
-      function isNegativeZero(x: number) {
+      function isNegativeZero(x: number): boolean {
         return x === 0 && 1 / x < 0
       }
 

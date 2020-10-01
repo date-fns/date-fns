@@ -95,7 +95,7 @@ describe('differenceInBusinessDays', function() {
     })
 
     it('does not return -0 when the given dates are the same', () => {
-      function isNegativeZero(x: number | Date) {
+      function isNegativeZero(x: number): boolean {
         return x === 0 && 1 / x < 0
       }
 
@@ -104,7 +104,7 @@ describe('differenceInBusinessDays', function() {
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      const resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(Number(result))
       assert(resultIsNegative === false)
     })
 
