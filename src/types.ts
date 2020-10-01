@@ -28,9 +28,9 @@ export interface Localize {
 }
 
 interface FormatLong {
-  date?: (...args: unknown[]) => Object
-  time?: (...args: unknown[]) => Object
-  dateTime?: (...args: unknown[]) => Object
+  date?: <T>(...args: T[]) => T
+  time?: <T>(...args: T[]) => T
+  dateTime?: <T>(...args: T[]) => T
 }
 
 interface LocaleOptions {
