@@ -18,8 +18,7 @@ function getDateMillisecondsPart(date: Date) {
 export default function getTimezoneOffsetInMilliseconds(
   dirtyDate: Date | number
 ): number {
-  const receivedDate = dirtyDate as Date
-  const date = new Date(receivedDate.getTime())
+  const date = new Date((dirtyDate as Date).getTime())
   const baseTimezoneOffset = Math.ceil(date.getTimezoneOffset())
   date.setSeconds(0, 0)
   const hasNegativeUTCOffset = baseTimezoneOffset > 0
