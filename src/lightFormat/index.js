@@ -30,7 +30,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * `lightFormat` doesn't use locales and outputs date using the most popular tokens.
  *
  * > ⚠️ Please note that the `lightFormat` tokens differ from Moment.js and other libraries.
- * > See: https://git.io/fxCyr
+ * > See: https://date-fns.org/docs/Unicode-Tokens
  *
  * The characters wrapped between two single quotes characters (') are escaped.
  * Two single quotes in a row, whether inside or outside a quoted sequence, represent a 'real' single quote.

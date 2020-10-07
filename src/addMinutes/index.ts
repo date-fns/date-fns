@@ -14,7 +14,7 @@ const MILLISECONDS_IN_MINUTE = 60000
  *
  * ### v2.0.0 breaking changes:
  *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * - [Changes that are common for the whole library](https://date-fns.org/docs/Upgrade-Guide#common-changes).
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of minutes to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.

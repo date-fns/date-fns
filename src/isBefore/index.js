@@ -11,7 +11,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ### v2.0.0 breaking changes:
  *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * - [Changes that are common for the whole library](https://date-fns.org/docs/Upgrade-Guide#common-changes).
  *
  * @param {Date|Number} date - the date that should be before the other one to return true
  * @param {Date|Number} dateToCompare - the date to compare with

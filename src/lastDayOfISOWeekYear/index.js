@@ -16,7 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ### v2.0.0 breaking changes:
  *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * - [Changes that are common for the whole library](https://date-fns.org/docs/Upgrade-Guide#common-changes).
  *
  * - The function was renamed from `lastDayOfISOYear` to `lastDayOfISOWeekYear`.
  *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).

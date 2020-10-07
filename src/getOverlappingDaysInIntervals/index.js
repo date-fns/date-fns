@@ -13,7 +13,7 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *
  * ### v2.0.0 breaking changes:
  *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
+ * - [Changes that are common for the whole library](https://date-fns.org/docs/Upgrade-Guide#common-changes).
  *
  * - The function was renamed from `getOverlappingDaysInRanges` to `getOverlappingDaysInIntervals`.
  *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
