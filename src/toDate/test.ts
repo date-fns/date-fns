@@ -28,8 +28,10 @@ describe('toDate', () => {
 
     it('returns Invalid Date if argument is a string', () => {
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate('1987-02-11')
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
@@ -37,9 +39,11 @@ describe('toDate', () => {
       // $ExpectedMistake
       console.warn = sinon.spy() // eslint-disable-line no-console
       // $ExpectedMistake
+      // @ts-expect-error
       toDate('1987-02-11')
       assert(
         // eslint-disable-next-line no-console
+        // @ts-expect-error
         console.warn.calledWith(
           "Starting with v2.0.0-beta.1 date-fns doesn't accept strings as date arguments. Please use `parseISO` to parse strings. See: https://git.io/fjule"
         )
@@ -49,40 +53,50 @@ describe('toDate', () => {
     it('returns Invalid Date if argument is NaN', () => {
       const result = toDate(NaN)
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is Invalid Date', () => {
       const result = toDate(new Date(NaN))
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is null', () => {
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate(null)
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is undefined', () => {
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate(undefined)
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is false', () => {
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate(false)
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
 
     it('returns Invalid Date if argument is true', () => {
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate(true)
       assert(result instanceof Date)
+      // @ts-expect-error
       assert(isNaN(result))
     })
   })
@@ -94,6 +108,7 @@ describe('toDate', () => {
         new Date(2016, 0, 1, 23, 30, 45, 123).getTime()
       )
       // $ExpectedMistake
+      // @ts-expect-error
       const result = toDate(timestamp)
       assert.deepEqual(result, new Date(2016, 0, 1, 23, 30, 45, 123))
     })
@@ -115,6 +130,7 @@ function mockConsoleWarn() {
 
   afterEach(() => {
     // $ExpectedMistake
+    // @ts-expect-error
     console.warn = originalWarn // eslint-disable-line no-console
   })
 }
