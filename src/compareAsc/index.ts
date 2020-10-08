@@ -2,13 +2,13 @@ import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name compareDesc
+ * @name compareAsc
  * @category Common Helpers
- * @summary Compare the two dates reverse chronologically and return -1, 0 or 1.
+ * @summary Compare the two dates and return -1, 0 or 1.
  *
  * @description
- * Compare the two dates and return -1 if the first date is after the second,
- * 1 if the first date is before the second or 0 if dates are equal.
+ * Compare the two dates and return 1 if the first date is after the second,
+ * -1 if the first date is before the second or 0 if dates are equal.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -20,34 +20,37 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:
- * var result = compareDesc(new Date(1987, 1, 11), new Date(1989, 6, 10))
- * //=> 1
+ * // Compare 11 February 1987 and 10 July 1989:
+ * const result = compareAsc(new Date(1987, 1, 11), new Date(1989, 6, 10))
+ * //=> -1
  *
  * @example
- * // Sort the array of dates in reverse chronological order:
- * var result = [
+ * // Sort the array of dates:
+ * const result = [
  *   new Date(1995, 6, 2),
  *   new Date(1987, 1, 11),
  *   new Date(1989, 6, 10)
- * ].sort(compareDesc)
+ * ].sort(compareAsc)
  * //=> [
- * //   Sun Jul 02 1995 00:00:00,
+ * //   Wed Feb 11 1987 00:00:00,
  * //   Mon Jul 10 1989 00:00:00,
- * //   Wed Feb 11 1987 00:00:00
+ * //   Sun Jul 02 1995 00:00:00
  * // ]
  */
-export default function compareDesc(dirtyDateLeft, dirtyDateRight) {
+export default function compareAsc(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var diff = dateLeft.getTime() - dateRight.getTime()
+  const diff = dateLeft.getTime() - dateRight.getTime()
 
-  if (diff > 0) {
+  if (diff < 0) {
     return -1
-  } else if (diff < 0) {
+  } else if (diff > 0) {
     return 1
     // Return 0 if diff is 0; return NaN if diff is NaN
   } else {
