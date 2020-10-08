@@ -20,13 +20,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The start of an hour for 2 September 2014 11:55:00:
- * var result = startOfHour(new Date(2014, 8, 2, 11, 55))
+ * const result = startOfHour(new Date(2014, 8, 2, 11, 55))
  * //=> Tue Sep 02 2014 11:00:00
  */
-export default function startOfHour(dirtyDate) {
+export default function startOfHour(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   date.setMinutes(0, 0, 0)
   return date
 }

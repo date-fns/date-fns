@@ -20,13 +20,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The start of a minute for 1 December 2014 22:15:45.400:
- * var result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
+ * const result = startOfMinute(new Date(2014, 11, 1, 22, 15, 45, 400))
  * //=> Mon Dec 01 2014 22:15:00
  */
-export default function startOfMinute(dirtyDate) {
+export default function startOfMinute(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
+  const date = toDate(dirtyDate)
   date.setSeconds(0, 0)
   return date
 }

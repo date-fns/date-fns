@@ -2,12 +2,12 @@ import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name startOfYear
- * @category Year Helpers
- * @summary Return the start of a year for the given date.
+ * @name startOfDay
+ * @category Day Helpers
+ * @summary Return the start of a day for the given date.
  *
  * @description
- * Return the start of a year for the given date.
+ * Return the start of a day for the given date.
  * The result will be in the local timezone.
  *
  * ### v2.0.0 breaking changes:
@@ -15,20 +15,18 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the original date
- * @returns {Date} the start of a year
+ * @returns {Date} the start of a day
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // The start of a year for 2 September 2014 11:55:00:
- * var result = startOfYear(new Date(2014, 8, 2, 11, 55, 00))
- * //=> Wed Jan 01 2014 00:00:00
+ * // The start of a day for 2 September 2014 11:55:00:
+ * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfYear(dirtyDate) {
+export default function startOfDay(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var cleanDate = toDate(dirtyDate)
-  var date = new Date(0)
-  date.setFullYear(cleanDate.getFullYear(), 0, 1)
+  const date = toDate(dirtyDate)
   date.setHours(0, 0, 0, 0)
   return date
 }
