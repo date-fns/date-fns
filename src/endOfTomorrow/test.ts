@@ -6,7 +6,7 @@ import sinon from 'sinon'
 import endOfTomorrow from '.'
 
 describe('endOfTomorrow', function() {
-  it('returns tomorrow with the time setted to 23:59:59.999', function() {
+  it('returns tomorrow with the time settled to 23:59:59.999', function() {
     const clock = sinon.useFakeTimers(
       new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
     )
