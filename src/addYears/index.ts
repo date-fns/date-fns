@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Add 5 years to 1 September 2014:
- * var result = addYears(new Date(2014, 8, 1), 5)
+ * const result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
 export default function addYears(
