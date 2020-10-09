@@ -159,8 +159,8 @@ var suffixes = {
 
 function ordinalNumber(dirtyNumber) {
   var number = Number(dirtyNumber)
-  var a = number % 10,
-    b = number >= 100 ? 100 : null
+  var a = number % 10
+  var b = number >= 100 ? 100 : null
   return number + (suffixes[number] || suffixes[a] || suffixes[b])
 }
 
