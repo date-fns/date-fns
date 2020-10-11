@@ -31,23 +31,22 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Aug 01 2014 00:00:00
  * // ]
  */
-export default function eachMonthOfInterval(dirtyInterval) {
+export default function eachMonthOfInterval(dirtyInterval: Interval) {
   requiredArgs(1, arguments)
 
-  var interval = dirtyInterval || {}
-  var startDate = toDate(interval.start)
-  var endDate = toDate(interval.end)
+  const interval = dirtyInterval || {}
+  const startDate = toDate(interval.start)
+  const endDate = toDate(interval.end)
 
-  var endTime = endDate.getTime()
+  const endTime = endDate.getTime()
+  const dates = []
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {
     throw new RangeError('Invalid interval')
   }
 
-  var dates = []
-
-  var currentDate = startDate
+  const currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
   currentDate.setDate(1)
 

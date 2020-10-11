@@ -6,7 +6,7 @@ import eachMonthOfInterval from '.'
 
 describe('eachMonthOfInterval', function() {
   it('returns an array with starts of months from the month of the start date to the month of the end date', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */, 6),
       end: new Date(2014, 7 /* Aug */, 12)
     })
@@ -21,7 +21,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('accepts timestamps', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */, 6).getTime(),
       end: new Date(2014, 7 /* Aug */, 12).getTime()
     })
@@ -36,7 +36,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('handles the dates that are not starts of days', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */, 6, 6, 35),
       end: new Date(2014, 7 /* Aug */, 12, 22, 15)
     })
@@ -51,7 +51,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('handles the dates that are not containing days', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 2 /* Mar */),
       end: new Date(2014, 7 /* Aug */)
     })
@@ -66,7 +66,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('returns one month if the both arguments are on the same month', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 9, 15)
     })
@@ -74,7 +74,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('returns one month if the both arguments are the same', function() {
-    var result = eachMonthOfInterval({
+    const result = eachMonthOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)
     })
@@ -82,7 +82,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('throws an exception if the start date is after the end date', function() {
-    var block = eachMonthOfInterval.bind(null, {
+    const block = eachMonthOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6)
     })
@@ -90,7 +90,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('throws an exception if the start date is `Invalid Date`', function() {
-    var block = eachMonthOfInterval.bind(null, {
+    const block = eachMonthOfInterval.bind(null, {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6)
     })
@@ -98,7 +98,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('throws an exception if the end date is `Invalid Date`', function() {
-    var block = eachMonthOfInterval.bind(null, {
+    const block = eachMonthOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN)
     })
@@ -106,7 +106,7 @@ describe('eachMonthOfInterval', function() {
   })
 
   it('throws an exception if the interval is undefined', function() {
-    var block = eachMonthOfInterval.bind(
+    const block = eachMonthOfInterval.bind(
       null,
       // $ExpectedMistake
       undefined
