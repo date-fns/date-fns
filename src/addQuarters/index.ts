@@ -21,7 +21,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Add 1 quarter to 1 September 2014:
- * var result = addQuarters(new Date(2014, 8, 1), 1)
+ * const result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
 export default function addQuarters(

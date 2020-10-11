@@ -20,7 +20,7 @@ import isSaturday from '../isSaturday/index'
  *
  * @example
  * // Add 10 business days to 1 September 2014:
- * var result = addBusinessDays(new Date(2014, 8, 1), 10)
+ * const result = addBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Sep 15 2014 00:00:00 (skipped weekend days)
  */
 export default function addBusinessDays(
