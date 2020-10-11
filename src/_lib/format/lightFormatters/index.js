@@ -49,8 +49,9 @@ var formatters = {
     switch (token) {
       case 'a':
       case 'aa':
-      case 'aaa':
         return dayPeriodEnumValue.toUpperCase()
+      case 'aaa':
+        return dayPeriodEnumValue
       case 'aaaaa':
         return dayPeriodEnumValue[0]
       case 'aaaa':
