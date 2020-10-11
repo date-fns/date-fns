@@ -84,7 +84,7 @@ describe('eachHourOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', () => {
+  it.only('throws an exception if the interval is undefined', () => {
     const block = eachHourOfInterval.bind(
       null,
       // $ExpectedMistake

@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Mon Oct 06 2014 15:00:00
  * // ]
  */
-export default function eachHourOfInterval(dirtyInterval, options) {
+export default function eachHourOfInterval(dirtyInterval: Interval, options?: {step?: number}): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}
