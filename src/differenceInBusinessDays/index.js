@@ -41,7 +41,9 @@ export default function differenceInBusinessDays(
   var dateLeft = toDate(dirtyDateLeft)
   var dateRight = toDate(dirtyDateRight)
 
-  if (!isValid(dateLeft) || !isValid(dateRight)) return new Date(NaN)
+  // fix for issue # 2012
+  // returning undefined to fix issue of returning a Date when either date is invalid
+  if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
 
   var calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
   var sign = calendarDifference < 0 ? -1 : 1
