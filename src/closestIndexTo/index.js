@@ -84,6 +84,9 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
       result.push(index)
     }
   })
+  if (result.length === 0) {
+    return undefined
+  }
 
   return result
 }
