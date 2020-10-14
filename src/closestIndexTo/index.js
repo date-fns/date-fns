@@ -57,7 +57,9 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  var result
+  var minIndex
+  var result = []
+
   var minDistance
   datesArray.forEach(function(dirtyDate, index) {
     var currentDate = toDate(dirtyDate)
@@ -69,9 +71,17 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     }
 
     var distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < minDistance) {
-      result = index
+    if (minIndex == null || distance < minDistance) {
+      minIndex = index
       minDistance = distance
+    }
+  })
+  datesArray.forEach(function(dirtyDate, index) {
+    var currentDate = toDate(dirtyDate)
+
+    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (distance === minDistance) {
+      result.push(index)
     }
   })
 

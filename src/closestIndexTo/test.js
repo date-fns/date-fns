@@ -94,6 +94,15 @@ describe('closestIndexTo', function() {
     var result = closestIndexTo(date, null)
     assert(result == null)
   })
+  it('returns more than one indexes if two same dates', function() {
+    var date = new Date(2014, 6 /* Jul */, 2).getTime()
+    var result = closestIndexTo(date, [
+      new Date(2015, 7 /* Aug */, 31).getTime(),
+      new Date(2012, 6 /* Jul */, 2).getTime(),
+      new Date(2015, 7, 31).getTime()
+    ])
+    assert(JSON.stringify(result) === JSON.stringify([0, 2]))
+  })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
     assert.throws(closestIndexTo.bind(null), TypeError)
