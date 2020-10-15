@@ -34,7 +34,7 @@ var formatDistanceLocale = {
   },
 
   xSeconds: {
-    one: 'sekunti',
+    one: '1 sekunti',
     other: '{{count}} sekuntia',
     futureTense: futureSeconds
   },
@@ -54,7 +54,7 @@ var formatDistanceLocale = {
   },
 
   xMinutes: {
-    one: 'minuutti',
+    one: '1 minuutti',
     other: '{{count}} minuuttia',
     futureTense: futureMinutes
   },
@@ -66,13 +66,13 @@ var formatDistanceLocale = {
   },
 
   xHours: {
-    one: 'tunti',
+    one: '1 tunti',
     other: '{{count}} tuntia',
     futureTense: futureHours
   },
 
   xDays: {
-    one: 'päivä',
+    one: '1 päivä',
     other: '{{count}} päivää',
     futureTense: futureDays
   },
@@ -84,7 +84,7 @@ var formatDistanceLocale = {
   },
 
   xWeeks: {
-    one: 'viikko',
+    one: '1 viikko',
     other: '{{count}} viikkoa',
     futureTense: futureWeeks
   },
@@ -96,7 +96,7 @@ var formatDistanceLocale = {
   },
 
   xMonths: {
-    one: 'kuukausi',
+    one: '1 kuukausi',
     other: '{{count}} kuukautta',
     futureTense: futureMonths
   },
@@ -108,7 +108,7 @@ var formatDistanceLocale = {
   },
 
   xYears: {
-    one: 'vuosi',
+    one: '1 vuosi',
     other: '{{count}} vuotta',
     futureTense: futureYears
   },
