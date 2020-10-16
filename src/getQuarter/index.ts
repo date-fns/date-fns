@@ -19,13 +19,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which quarter is 2 July 2014?
- * var result = getQuarter(new Date(2014, 6, 2))
+ * const result = getQuarter(new Date(2014, 6, 2))
  * //=> 3
  */
-export default function getQuarter(dirtyDate) {
+export default function getQuarter(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var quarter = Math.floor(date.getMonth() / 3) + 1
+  const date = toDate(dirtyDate)
+  const quarter = Math.floor(date.getMonth() / 3) + 1
   return quarter
 }

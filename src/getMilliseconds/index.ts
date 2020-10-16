@@ -19,13 +19,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Get the milliseconds of 29 February 2012 11:45:05.123:
- * var result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
+ * const result = getMilliseconds(new Date(2012, 1, 29, 11, 45, 5, 123))
  * //=> 123
  */
-export default function getMilliseconds(dirtyDate) {
+export default function getMilliseconds(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var milliseconds = date.getMilliseconds()
+  const date = toDate(dirtyDate)
+  const milliseconds = date.getMilliseconds()
   return milliseconds
 }
