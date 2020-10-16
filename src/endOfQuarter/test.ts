@@ -11,6 +11,12 @@ describe('endOfQuarter', function() {
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 30, 23, 59, 59, 999))
   })
 
+  it('returns the date with the time set to 23:59:59.999 and the date set to the last day of a offset quarter', function() {
+    const date = new Date(2014, 6 /* Jul */, 2, 11, 55, 0)
+    const result = endOfQuarter(date, { yearStartsOn: 2 })
+    assert.deepEqual(result, new Date(2014, 7 /* Sep */, 31, 23, 59, 59, 999))
+  })
+
   it('accepts a timestamp', function() {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
     const result = endOfQuarter(date)
