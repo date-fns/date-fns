@@ -72,7 +72,7 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(am|pm|kesköö|keskpäev|hommik|pärastlõuna|õhtu|öö)/i
+  any: /^(am|pm|keskööl?|keskpäev(al)?|hommik(ul)?|pärastlõunal?|õhtul?|öö(sel)?)/i
 }
 
 var parseDayPeriodPatterns = {
