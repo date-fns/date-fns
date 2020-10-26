@@ -50,7 +50,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Each day between 6 October 2014 and 10 October 2014:
- * var result = eachDayOfInterval({
+ * const result = eachDayOfInterval({
  *   start: new Date(2014, 9, 6),
  *   end: new Date(2014, 9, 10)
  * })
@@ -62,26 +62,26 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval, options) {
+export default function eachDayOfInterval(dirtyInterval: Interval, options?: {step?: number}): Date[] {
   requiredArgs(1, arguments)
 
-  var interval = dirtyInterval || {}
-  var startDate = toDate(interval.start)
-  var endDate = toDate(interval.end)
+  const interval = dirtyInterval || {}
+  const startDate = toDate(interval.start)
+  const endDate = toDate(interval.end)
 
-  var endTime = endDate.getTime()
+  const endTime = endDate.getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startDate.getTime() <= endTime)) {
     throw new RangeError('Invalid interval')
   }
 
-  var dates = []
+  const dates = []
 
-  var currentDate = startDate
+  const currentDate = startDate
   currentDate.setHours(0, 0, 0, 0)
 
-  var step = options && 'step' in options ? Number(options.step) : 1
+  const step = options && 'step' in options ? Number(options.step) : 1
   if (step < 1 || isNaN(step))
     throw new RangeError('`options.step` must be a number greater than 1')
 

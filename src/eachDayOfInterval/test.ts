@@ -1,16 +1,16 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import eachDayOfInterval from '.'
 
 describe('eachDayOfInterval', () => {
   it('returns an array with starts of days from the day of the start date to the day of the end date', () => {
-    var result = eachDayOfInterval({
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 9 /* Oct */, 12)
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -22,11 +22,11 @@ describe('eachDayOfInterval', () => {
   })
 
   it('accepts timestamps', () => {
-    var result = eachDayOfInterval({
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 9 /* Oct */, 12).getTime()
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -38,11 +38,11 @@ describe('eachDayOfInterval', () => {
   })
 
   it('handles the dates that are not starts of days', () => {
-    var result = eachDayOfInterval({
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 9 /* Oct */, 12, 22, 15)
     })
-    assert.deepEqual(result, [
+    assert.deepStrictEqual(result, [
       new Date(2014, 9 /* Oct */, 6),
       new Date(2014, 9 /* Oct */, 7),
       new Date(2014, 9 /* Oct */, 8),
@@ -54,23 +54,23 @@ describe('eachDayOfInterval', () => {
   })
 
   it('returns one day if the both arguments are on the same day', () => {
-    var result = eachDayOfInterval({
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 15)
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
   it('returns one day if the both arguments are the same', () => {
-    var result = eachDayOfInterval({
+    const result = eachDayOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)
     })
-    assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 6)])
+    assert.deepStrictEqual(result, [new Date(2014, 9 /* Oct */, 6)])
   })
 
   it('throws an exception if the start date is after the end date', () => {
-    var block = eachDayOfInterval.bind(null, {
+    const block = eachDayOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6)
     })
@@ -96,7 +96,7 @@ describe('eachDayOfInterval', () => {
   it('throws an exception if the interval is undefined', () => {
     var block = eachDayOfInterval.bind(
       null,
-      // $ExpectedMistake
+      //@ts-expect-error
       undefined
     )
     assert.throws(block, RangeError)
@@ -116,7 +116,7 @@ describe('eachDayOfInterval', () => {
 
     it('returns an array with starts of days from the day of the start date to the day of the end date with the given step', () => {
       const result = eachDayOfInterval(interval, { step: 3 })
-      assert.deepEqual(result, [
+      assert.deepStrictEqual(result, [
         new Date(2014, 9 /* Oct */, 6),
         new Date(2014, 9 /* Oct */, 9),
         new Date(2014, 9 /* Oct */, 12)
@@ -129,7 +129,7 @@ describe('eachDayOfInterval', () => {
     })
 
     it('throws TypeError error if `options.step` is NaN', () => {
-      // $ExpectedMistake
+      //@ts-expect-error
       assert.throws(() => eachDayOfInterval(interval, { step: 'w' }), stepError)
       assert.throws(() => eachDayOfInterval(interval, { step: NaN }), stepError)
     })
