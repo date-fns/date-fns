@@ -15,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Number} amount - the amount of months to be added. Fractional values are truncated towards zero.
  * @returns {Date} the new date with the months added
  * @throws {TypeError} 2 arguments required
  *

@@ -20,7 +20,7 @@ const yearInDays = 365.2425
  * @description
  * Returns the number of milliseconds in the specified, years, months, weeks, days, hours, minutes and seconds.
  *
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Fractional values are truncated towards zero.
  * @returns {number} the milliseconds
  * @throws {TypeError} 1 argument required
  *

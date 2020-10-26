@@ -23,7 +23,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
  * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Number} amount - the amount of ISO week-numbering years to be added. Fractional values are truncated towards zero.
  * @returns {Date} the new date with the ISO week-numbering years added
  * @throws {TypeError} 2 arguments required
  *
