@@ -3,14 +3,7 @@ import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-interface Interval {
-  start: Date | number;
-  end: Date | number;
-}
-
-interface Options {
-  step?: number
-}
+import { Interval, StepOptions } from '../types';
 
 /**
  * @name eachMinuteOfInterval
@@ -44,7 +37,7 @@ interface Options {
  */
 export default function eachMinuteOfInterval(
   interval: Interval,
-  options?: Options
+  options?: StepOptions
 ): Date[] {
   requiredArgs(1, arguments)
 
