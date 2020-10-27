@@ -3,14 +3,14 @@
 
 import assert from 'power-assert'
 
-import eachMinuteOfInterval from '.';
+import eachMinuteOfInterval from '.'
 
 describe('eachMinuteOfInterval', () => {
   it('should return an array of Date objects containing a Date for each minute between the interval', () => {
     const result = eachMinuteOfInterval({
       start: new Date(2020, 10, 14, 13, 0),
       end: new Date(2020, 10, 14, 13, 5)
-    });
+    })
 
     assert.deepEqual(result, [
       new Date(2020, 10, 14, 13, 0),
@@ -18,7 +18,7 @@ describe('eachMinuteOfInterval', () => {
       new Date(2020, 10, 14, 13, 2),
       new Date(2020, 10, 14, 13, 3),
       new Date(2020, 10, 14, 13, 4),
-      new Date(2020, 10, 14, 13, 5),
+      new Date(2020, 10, 14, 13, 5)
     ])
   })
 
@@ -26,11 +26,11 @@ describe('eachMinuteOfInterval', () => {
     const result = eachMinuteOfInterval({
       start: new Date(2020, 10, 14, 13, 0, 33),
       end: new Date(2020, 10, 14, 13, 2)
-    });
+    })
 
-    assert.deepEqual(result[0], new Date(2020, 10, 14, 13));
-    assert.deepEqual(result[2], new Date(2020, 10, 14, 13, 2));
-  });
+    assert.deepEqual(result[0], new Date(2020, 10, 14, 13))
+    assert.deepEqual(result[2], new Date(2020, 10, 14, 13, 2))
+  })
 
   it('should accept timestamps', () => {
     const start = new Date(2020, 10, 14, 13, 0).getTime()
@@ -39,13 +39,13 @@ describe('eachMinuteOfInterval', () => {
     const result = eachMinuteOfInterval({
       start,
       end
-    });
+    })
 
     assert.deepEqual(result, [
       new Date(2020, 10, 14, 13, 0),
       new Date(2020, 10, 14, 13, 1),
-      new Date(2020, 10, 14, 13, 2),
-    ]);
+      new Date(2020, 10, 14, 13, 2)
+    ])
   })
 
   it('throws an exception if the start date is after the end date', () => {
@@ -54,7 +54,7 @@ describe('eachMinuteOfInterval', () => {
       end: new Date(2014, 10, 14, 5)
     })
     assert.throws(block, RangeError)
-  });
+  })
 
   describe('options.step', () => {
     const interval = {
@@ -74,8 +74,14 @@ describe('eachMinuteOfInterval', () => {
     })
 
     it('throws TypeError error if `options.step` is less than 1', () => {
-      assert.throws(() => eachMinuteOfInterval(interval, { step: 0 }), stepError)
-      assert.throws(() => eachMinuteOfInterval(interval, { step: -3 }), stepError)
+      assert.throws(
+        () => eachMinuteOfInterval(interval, { step: 0 }),
+        stepError
+      )
+      assert.throws(
+        () => eachMinuteOfInterval(interval, { step: -3 }),
+        stepError
+      )
     })
 
     it('throws TypeError error if `options.step` is NaN', () => {
