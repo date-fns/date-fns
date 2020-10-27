@@ -9,8 +9,8 @@ export interface Duration {
 }
 
 export interface Interval {
-  start: Date | number;
-  end: Date | number;
+  start: Date | number
+  end: Date | number
 }
 
 export interface StepOptions {
