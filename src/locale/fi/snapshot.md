@@ -203,13 +203,13 @@ If now is January 1st, 2000, 00:00.
 | 2000-03-01T00:00:00.000Z | 2 kuukautta   | 2 kuukautta            | 2 kuukauden kuluttua    |
 | 2000-02-01T00:00:00.000Z | noin kuukausi | noin kuukausi          | noin kuukauden kuluttua |
 | 2000-01-15T00:00:00.000Z | 14 päivää     | 14 päivää              | 14 päivän kuluttua      |
-| 2000-01-02T00:00:00.000Z | päivä         | päivä                  | päivän kuluttua         |
+| 2000-01-02T00:00:00.000Z | 1 päivä       | 1 päivä                | 1 päivän kuluttua       |
 | 2000-01-01T06:00:00.000Z | noin 6 tuntia | noin 6 tuntia          | noin 6 tunnin kuluttua  |
 | 2000-01-01T01:00:00.000Z | noin tunti    | noin tunti             | noin tunnin kuluttua    |
 | 2000-01-01T00:45:00.000Z | noin tunti    | noin tunti             | noin tunnin kuluttua    |
 | 2000-01-01T00:30:00.000Z | 30 minuuttia  | 30 minuuttia           | 30 minuutin kuluttua    |
 | 2000-01-01T00:15:00.000Z | 15 minuuttia  | 15 minuuttia           | 15 minuutin kuluttua    |
-| 2000-01-01T00:01:00.000Z | minuutti      | minuutti               | minuutin kuluttua       |
+| 2000-01-01T00:01:00.000Z | 1 minuutti    | 1 minuutti             | 1 minuutin kuluttua     |
 | 2000-01-01T00:00:25.000Z | alle minuutti | puoli minuuttia        | alle minuutin kuluttua  |
 | 2000-01-01T00:00:15.000Z | alle minuutti | alle 20 sekuntia       | alle minuutin kuluttua  |
 | 2000-01-01T00:00:05.000Z | alle minuutti | alle 10 sekuntia       | alle minuutin kuluttua  |
@@ -217,7 +217,7 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | alle minuutti | alle 10 sekuntia       | alle minuutti sitten    |
 | 1999-12-31T23:59:45.000Z | alle minuutti | alle 20 sekuntia       | alle minuutti sitten    |
 | 1999-12-31T23:59:35.000Z | alle minuutti | puoli minuuttia        | alle minuutti sitten    |
-| 1999-12-31T23:59:00.000Z | minuutti      | minuutti               | minuutti sitten         |
+| 1999-12-31T23:59:00.000Z | 1 minuutti    | 1 minuutti             | 1 minuutti sitten       |
 | 1999-12-31T23:45:00.000Z | 15 minuuttia  | 15 minuuttia           | 15 minuuttia sitten     |
 | 1999-12-31T23:30:00.000Z | 30 minuuttia  | 30 minuuttia           | 30 minuuttia sitten     |
 | 1999-12-31T23:15:00.000Z | noin tunti    | noin tunti             | noin tunti sitten       |
@@ -248,20 +248,20 @@ If now is January 1st, 2000, 00:00.
 | 2004-01-01T00:00:00.000Z | 4 vuotta     | 4 vuoden kuluttua    | 35064 tuntia                   |
 | 2003-01-01T00:00:00.000Z | 3 vuotta     | 3 vuoden kuluttua    | 26304 tuntia                   |
 | 2002-01-01T00:00:00.000Z | 2 vuotta     | 2 vuoden kuluttua    | 17544 tuntia                   |
-| 2001-06-01T00:00:00.000Z | vuosi        | vuoden kuluttua      | 12408 tuntia                   |
-| 2001-02-01T00:00:00.000Z | vuosi        | vuoden kuluttua      | 9528 tuntia                    |
-| 2001-01-01T00:00:00.000Z | vuosi        | vuoden kuluttua      | 8784 tuntia                    |
+| 2001-06-01T00:00:00.000Z | 1 vuosi      | 1 vuoden kuluttua    | 12408 tuntia                   |
+| 2001-02-01T00:00:00.000Z | 1 vuosi      | 1 vuoden kuluttua    | 9528 tuntia                    |
+| 2001-01-01T00:00:00.000Z | 1 vuosi      | 1 vuoden kuluttua    | 8784 tuntia                    |
 | 2000-06-01T00:00:00.000Z | 5 kuukautta  | 5 kuukauden kuluttua | 3648 tuntia                    |
 | 2000-03-01T00:00:00.000Z | 2 kuukautta  | 2 kuukauden kuluttua | 1440 tuntia                    |
-| 2000-02-01T00:00:00.000Z | kuukausi     | kuukauden kuluttua   | 744 tuntia                     |
+| 2000-02-01T00:00:00.000Z | 1 kuukausi   | 1 kuukauden kuluttua | 744 tuntia                     |
 | 2000-01-15T00:00:00.000Z | 14 päivää    | 14 päivän kuluttua   | 336 tuntia                     |
-| 2000-01-02T00:00:00.000Z | päivä        | päivän kuluttua      | 24 tuntia                      |
+| 2000-01-02T00:00:00.000Z | 1 päivä      | 1 päivän kuluttua    | 24 tuntia                      |
 | 2000-01-01T06:00:00.000Z | 6 tuntia     | 6 tunnin kuluttua    | 6 tuntia                       |
-| 2000-01-01T01:00:00.000Z | tunti        | tunnin kuluttua      | tunti                          |
-| 2000-01-01T00:45:00.000Z | 45 minuuttia | 45 minuutin kuluttua | tunti                          |
-| 2000-01-01T00:30:00.000Z | 30 minuuttia | 30 minuutin kuluttua | tunti                          |
+| 2000-01-01T01:00:00.000Z | 1 tunti      | 1 tunnin kuluttua    | 1 tunti                        |
+| 2000-01-01T00:45:00.000Z | 45 minuuttia | 45 minuutin kuluttua | 1 tunti                        |
+| 2000-01-01T00:30:00.000Z | 30 minuuttia | 30 minuutin kuluttua | 1 tunti                        |
 | 2000-01-01T00:15:00.000Z | 15 minuuttia | 15 minuutin kuluttua | 0 tuntia                       |
-| 2000-01-01T00:01:00.000Z | minuutti     | minuutin kuluttua    | 0 tuntia                       |
+| 2000-01-01T00:01:00.000Z | 1 minuutti   | 1 minuutin kuluttua  | 0 tuntia                       |
 | 2000-01-01T00:00:25.000Z | 25 sekuntia  | 25 sekunnin kuluttua | 0 tuntia                       |
 | 2000-01-01T00:00:15.000Z | 15 sekuntia  | 15 sekunnin kuluttua | 0 tuntia                       |
 | 2000-01-01T00:00:05.000Z | 5 sekuntia   | 5 sekunnin kuluttua  | 0 tuntia                       |
@@ -269,19 +269,19 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | 5 sekuntia   | 5 sekuntia sitten    | 0 tuntia                       |
 | 1999-12-31T23:59:45.000Z | 15 sekuntia  | 15 sekuntia sitten   | 0 tuntia                       |
 | 1999-12-31T23:59:35.000Z | 25 sekuntia  | 25 sekuntia sitten   | 0 tuntia                       |
-| 1999-12-31T23:59:00.000Z | minuutti     | minuutti sitten      | 0 tuntia                       |
+| 1999-12-31T23:59:00.000Z | 1 minuutti   | 1 minuutti sitten    | 0 tuntia                       |
 | 1999-12-31T23:45:00.000Z | 15 minuuttia | 15 minuuttia sitten  | 0 tuntia                       |
-| 1999-12-31T23:30:00.000Z | 30 minuuttia | 30 minuuttia sitten  | tunti                          |
-| 1999-12-31T23:15:00.000Z | 45 minuuttia | 45 minuuttia sitten  | tunti                          |
-| 1999-12-31T23:00:00.000Z | tunti        | tunti sitten         | tunti                          |
+| 1999-12-31T23:30:00.000Z | 30 minuuttia | 30 minuuttia sitten  | 1 tunti                        |
+| 1999-12-31T23:15:00.000Z | 45 minuuttia | 45 minuuttia sitten  | 1 tunti                        |
+| 1999-12-31T23:00:00.000Z | 1 tunti      | 1 tunti sitten       | 1 tunti                        |
 | 1999-12-31T18:00:00.000Z | 6 tuntia     | 6 tuntia sitten      | 6 tuntia                       |
 | 1999-12-30T00:00:00.000Z | 2 päivää     | 2 päivää sitten      | 48 tuntia                      |
 | 1999-12-15T00:00:00.000Z | 17 päivää    | 17 päivää sitten     | 408 tuntia                     |
-| 1999-12-01T00:00:00.000Z | kuukausi     | kuukausi sitten      | 744 tuntia                     |
+| 1999-12-01T00:00:00.000Z | 1 kuukausi   | 1 kuukausi sitten    | 744 tuntia                     |
 | 1999-11-01T00:00:00.000Z | 2 kuukautta  | 2 kuukautta sitten   | 1464 tuntia                    |
 | 1999-06-01T00:00:00.000Z | 7 kuukautta  | 7 kuukautta sitten   | 5136 tuntia                    |
-| 1999-01-01T00:00:00.000Z | vuosi        | vuosi sitten         | 8760 tuntia                    |
-| 1998-12-01T00:00:00.000Z | vuosi        | vuosi sitten         | 9504 tuntia                    |
+| 1999-01-01T00:00:00.000Z | 1 vuosi      | 1 vuosi sitten       | 8760 tuntia                    |
+| 1998-12-01T00:00:00.000Z | 1 vuosi      | 1 vuosi sitten       | 9504 tuntia                    |
 | 1998-06-01T00:00:00.000Z | 2 vuotta     | 2 vuotta sitten      | 13896 tuntia                   |
 | 1998-01-01T00:00:00.000Z | 2 vuotta     | 2 vuotta sitten      | 17520 tuntia                   |
 | 1997-01-01T00:00:00.000Z | 3 vuotta     | 3 vuotta sitten      | 26280 tuntia                   |
