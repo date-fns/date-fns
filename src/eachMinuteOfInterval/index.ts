@@ -3,7 +3,7 @@ import toDate from '../toDate/index'
 import startOfMinute from '../startOfMinute/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-import { Interval, StepOptions } from '../types';
+import { Interval, StepOptions } from '../types'
 
 /**
  * @name eachMinuteOfInterval
@@ -25,8 +25,8 @@ import { Interval, StepOptions } from '../types';
  * @example
  * // Each minute between 14 October 2020, 13:00 and 14 October 2020, 13:03
  * const result = eachMinuteOfInterval({
- *   start: new Date(2014, 9, 6, 12),
- *   end: new Date(2014, 9, 6, 15)
+ *   start: new Date(2014, 9, 14, 13),
+ *   end: new Date(2014, 9, 14, 13, 3)
  * })
  * //=> [
  * //   Wed Oct 14 2014 13:00:00,
@@ -41,28 +41,30 @@ export default function eachMinuteOfInterval(
 ): Date[] {
   requiredArgs(1, arguments)
 
-  const startDate = startOfMinute(toDate(interval.start));
-  const endDate = startOfMinute(toDate(interval.end));
+  const startDate = startOfMinute(toDate(interval.start))
+  const endDate = startOfMinute(toDate(interval.end))
 
-  const startTime = startDate.getTime();
-  const endTime = endDate.getTime();
+  const startTime = startDate.getTime()
+  const endTime = endDate.getTime()
 
-  if(startTime >= endTime) {
-    throw new RangeError('Invalid interval');
+  if (startTime >= endTime) {
+    throw new RangeError('Invalid interval')
   }
 
-  const dates = [];
+  const dates = []
 
-  let currentDate = startDate;
+  let currentDate = startDate
 
   const step = options && 'step' in options ? Number(options.step) : 1
   if (step < 1 || isNaN(step))
-    throw new RangeError('`options.step` must be a number equal or greater than 1')
+    throw new RangeError(
+      '`options.step` must be a number equal or greater than 1'
+    )
 
   while (currentDate.getTime() <= endTime) {
-    dates.push(toDate(currentDate));
-    currentDate = addMinutes(currentDate, step);
+    dates.push(toDate(currentDate))
+    currentDate = addMinutes(currentDate, step)
   }
 
-  return dates;
+  return dates
 }
