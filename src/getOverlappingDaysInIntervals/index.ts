@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
+const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 
 /**
  * @name getOverlappingDaysInIntervals
@@ -68,37 +68,42 @@ var MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * )
  * //=> 0
  */
+
+interface Interval {
+  start: Date | number;
+  end: Date | number;
+}
 export default function getOverlappingDaysInIntervals(
-  dirtyIntervalLeft,
-  dirtyIntervalRight
-) {
+  dirtyIntervalLeft: Interval,
+  dirtyIntervalRight: Interval,
+): number {
   requiredArgs(2, arguments)
 
-  var intervalLeft = dirtyIntervalLeft || {}
-  var intervalRight = dirtyIntervalRight || {}
-  var leftStartTime = toDate(intervalLeft.start).getTime()
-  var leftEndTime = toDate(intervalLeft.end).getTime()
-  var rightStartTime = toDate(intervalRight.start).getTime()
-  var rightEndTime = toDate(intervalRight.end).getTime()
+  const intervalLeft = dirtyIntervalLeft || {}
+  const intervalRight = dirtyIntervalRight || {}
+  const leftStartTime = toDate(intervalLeft.start).getTime()
+  const leftEndTime = toDate(intervalLeft.end).getTime()
+  const rightStartTime = toDate(intervalRight.start).getTime()
+  const rightEndTime = toDate(intervalRight.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
     throw new RangeError('Invalid interval')
   }
 
-  var isOverlapping =
+  const isOverlapping =
     leftStartTime < rightEndTime && rightStartTime < leftEndTime
 
   if (!isOverlapping) {
     return 0
   }
 
-  var overlapStartDate =
+  const overlapStartDate =
     rightStartTime < leftStartTime ? leftStartTime : rightStartTime
 
-  var overlapEndDate = rightEndTime > leftEndTime ? leftEndTime : rightEndTime
+  const overlapEndDate = rightEndTime > leftEndTime ? leftEndTime : rightEndTime
 
-  var differenceInMs = overlapEndDate - overlapStartDate
+  const differenceInMs = overlapEndDate - overlapStartDate
 
   return Math.ceil(differenceInMs / MILLISECONDS_IN_DAY)
 }

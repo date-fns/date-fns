@@ -22,14 +22,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
- * var result = getISODay(new Date(2012, 1, 26))
+ * const result = getISODay(new Date(2012, 1, 26))
  * //=> 7
  */
-export default function getISODay(dirtyDate) {
+export default function getISODay(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var day = date.getDay()
+  const date = toDate(dirtyDate)
+  let day = date.getDay()
 
   if (day === 0) {
     day = 7

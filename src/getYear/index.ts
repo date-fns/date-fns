@@ -2,30 +2,30 @@ import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name getHours
- * @category Hour Helpers
- * @summary Get the hours of the given date.
+ * @name getYear
+ * @category Year Helpers
+ * @summary Get the year of the given date.
  *
  * @description
- * Get the hours of the given date.
+ * Get the year of the given date.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the given date
- * @returns {Number} the hours
+ * @returns {Number} the year
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // Get the hours of 29 February 2012 11:45:00:
- * var result = getHours(new Date(2012, 1, 29, 11, 45))
- * //=> 11
+ * // Which year is 2 July 2014?
+ * const result = getYear(new Date(2014, 6, 2))
+ * //=> 2014
  */
-export default function getHours(dirtyDate) {
+export default function getYear(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var hours = date.getHours()
-  return hours
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
+  return year
 }
