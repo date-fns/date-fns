@@ -1,6 +1,5 @@
 // @flow
 /* eslint-env mocha */
-declare const context: any;
 
 import assert from 'power-assert'
 import getOverlappingDaysInIntervals from '.'
@@ -9,7 +8,7 @@ describe('getOverlappingDaysInIntervals', function() {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
   const initialIntervalEnd = new Date(2016, 11, 3, 15, 0, 0)
 
-  context("when the time intervals don't overlap", function() {
+  describe("when the time intervals don't overlap", function() {
     it('returns 0 for a valid non overlapping interval before another interval', function() {
       const earlierIntervalStart = new Date(2016, 9, 25)
       const earlierIntervalEnd = new Date(2016, 10, 9)
@@ -80,7 +79,7 @@ describe('getOverlappingDaysInIntervals', function() {
     })
   })
 
-  context('when the time intervals overlap', function() {
+  describe('when the time intervals overlap', function() {
     it('rounds up the result to include each started overlapping day', function() {
       const includedIntervalStart = new Date(2016, 10, 14, 9, 0, 0)
       const includedIntervalEnd = new Date(2016, 10, 15, 18, 0, 0)
@@ -194,7 +193,7 @@ describe('getOverlappingDaysInIntervals', function() {
     assert.throws(block, RangeError)
   })
 
-  context('one of the dates is `Invalid Date`', function() {
+  describe('one of the dates is `Invalid Date`', function() {
     it('throws an exception if the start date of the initial time interval is `Invalid Date`', function() {
       const block = getOverlappingDaysInIntervals.bind(
         null,

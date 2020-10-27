@@ -1,5 +1,6 @@
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { Interval } from '../types'
 
 const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
 
@@ -69,13 +70,9 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  * //=> 0
  */
 
-interface Interval {
-  start: Date | number;
-  end: Date | number;
-}
 export default function getOverlappingDaysInIntervals(
   dirtyIntervalLeft: Interval,
-  dirtyIntervalRight: Interval,
+  dirtyIntervalRight: Interval
 ): number {
   requiredArgs(2, arguments)
 

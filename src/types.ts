@@ -7,3 +7,8 @@ export interface Duration {
   minutes?: number
   seconds?: number
 }
+
+export interface Interval {
+  start: Date | number
+  end: Date | number
+}
