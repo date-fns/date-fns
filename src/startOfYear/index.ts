@@ -1,4 +1,4 @@
-import { YearStart } from '../types'
+import { YearStartOptions } from '../types'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = startOfYear(new Date(2014, 8, 2, 11, 55, 00), { yearStartsOn: 3})
  * //=> Tue Apr 01 2014 00:00:00
  */
-export default function startOfYear(dirtyDate: Date | number, options?: YearStart ): Date {
+export default function startOfYear(dirtyDate: Date | number, options?: YearStartOptions ): Date {
   requiredArgs(1, arguments)
 
   const cleanDate = toDate(dirtyDate)

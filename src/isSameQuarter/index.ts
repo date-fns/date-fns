@@ -1,4 +1,4 @@
-import { YearStart } from 'src/types'
+import { YearStartOptions } from 'src/types'
 import startOfQuarter from '../startOfQuarter/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -33,7 +33,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isSameQuarter(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  options?: YearStart
+  options?: YearStartOptions
   ): boolean {
   requiredArgs(2, arguments)
 

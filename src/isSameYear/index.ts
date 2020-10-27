@@ -1,4 +1,4 @@
-import { YearStart } from '../types'
+import { YearStartOptions } from '../types'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import startOfYear from '../startOfYear'
@@ -36,7 +36,7 @@ import endOfYear from '../endOfYear'
 export default function isSameYear(
   dirtyDate: Date | number,
   dirtyDateToCompare: Date | number,
-  options?: YearStart
+  options?: YearStartOptions
 ): boolean {
   requiredArgs(2, arguments)
 

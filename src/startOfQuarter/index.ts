@@ -1,4 +1,4 @@
-import { YearStart } from '../types'
+import { YearStartOptions } from '../types'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -34,7 +34,7 @@ const diffToQuarterStartArray = [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2]
  * const result = startOfQuarter(new Date(2014, 8, 2, 11, 55, 0), { yearStartsOn: 2 })
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfQuarter(dirtyDate: Date | number, options?: YearStart): Date {
+export default function startOfQuarter(dirtyDate: Date | number, options?: YearStartOptions): Date {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
