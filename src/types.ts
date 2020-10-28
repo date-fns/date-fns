@@ -16,3 +16,7 @@ export interface Interval {
 export interface StepOptions {
   step?: number
 }
+
+export interface WeekStartOptions {
+  weekStartsOn?: number
+}

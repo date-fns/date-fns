@@ -1,3 +1,4 @@
+import { WeekStartOptions } from '../types'
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
@@ -42,7 +43,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval(dirtyInterval: Interval, options?: {weekStartsOn?: number}): Date[] {
+export default function eachWeekOfInterval(
+  dirtyInterval: Interval,
+  options?: WeekStartOptions
+): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}
@@ -67,7 +71,7 @@ export default function eachWeekOfInterval(dirtyInterval: Interval, options?: {w
 
   const weeks = []
 
-  var currentWeek = startDateWeek
+  let currentWeek = startDateWeek
 
   while (currentWeek.getTime() <= endTime) {
     currentWeek.setHours(0)
