@@ -1,4 +1,3 @@
-import isSaturday from '../isSaturday'
 import getDay from '../getDay'
 import addDays from '../addDays'
 
