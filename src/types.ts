@@ -12,3 +12,7 @@ export interface Interval {
   start: Date | number
   end: Date | number
 }
+
+export interface StepOptions {
+  step?: number
+}
