@@ -20,7 +20,7 @@ import addDays from '../addDays'
  * => new Date(2020, 7, 22)
  **/
 
-export default function nextSaturday(date) {
+export default function nextSaturday(date: Date): Date {
   switch (getDay(date)) {
     case 0:
       return addDays(date, 6)
@@ -36,5 +36,6 @@ export default function nextSaturday(date) {
       return addDays(date, 1)
     case 6:
       return addDays(date, 7)
+    default: return date
   }
 }

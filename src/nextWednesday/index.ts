@@ -20,8 +20,7 @@ import addDays from '../addDays'
  * => new Date(2020, 7, 26)
  **/
 
-export default function nextWednesday(date) {
-  console.log('date', date)
+export default function nextWednesday(date: Date): Date {
   switch (getDay(date)) {
     case 0:
       return addDays(date, 3)
@@ -37,5 +36,6 @@ export default function nextWednesday(date) {
       return addDays(date, 5)
     case 6:
       return addDays(date, 4)
+    default: return date
   }
 }
