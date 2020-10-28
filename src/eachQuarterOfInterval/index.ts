@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval(dirtyInterval: Interval) {
+export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}
