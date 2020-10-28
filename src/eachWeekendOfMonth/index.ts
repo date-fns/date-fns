@@ -30,11 +30,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Feb 27 2022 00:00:00
  * // ]
  */
-export default function eachWeekendOfMonth(dirtyDate: Date) {
+export default function eachWeekendOfMonth(dirtyDate: Date): Date[] {
   requiredArgs(1, arguments)
 
   const startDate = startOfMonth(dirtyDate)
-  if (isNaN(startDate.valueOf())) throw new RangeError('The passed date is invalid')
+  if (isNaN(startDate.getTime()))
+    throw new RangeError('The passed date is invalid')
 
   const endDate = endOfMonth(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
