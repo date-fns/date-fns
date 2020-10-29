@@ -18,7 +18,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Lists all Saturdays and Sundays in the year
- * var result = eachWeekendOfYear(new Date(2020, 1, 1))
+ * const result = eachWeekendOfYear(new Date(2020, 1, 1))
  * //=> [
  * //   Sat Jan 03 2020 00:00:00,
  * //   Sun Jan 04 2020 00:00:00,
@@ -27,12 +27,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // ]
  * ]
  */
-export default function eachWeekendOfYear(dirtyDate) {
+export default function eachWeekendOfYear(dirtyDate: Date | number) {
   requiredArgs(1, arguments)
 
-  var startDate = startOfYear(dirtyDate)
-  if (isNaN(startDate)) throw new RangeError('The passed date is invalid')
+  const startDate = startOfYear(dirtyDate)
 
-  var endDate = endOfYear(dirtyDate)
+  const endDate = endOfYear(dirtyDate)
   return eachWeekendOfInterval({ start: startDate, end: endDate })
 }
