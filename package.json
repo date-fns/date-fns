@@ -21,7 +21,7 @@
   "module": "esm/index.js",
   "scripts": {
     "test": "karma start config/karma.js",
-    "lint": "eslint .",
+    "lint": "eslint . && prettier --check '**/*.{js,ts,json}'",
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
@@ -33,7 +33,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,ts,json}": [
       "prettier --write",
       "git add"
     ]
