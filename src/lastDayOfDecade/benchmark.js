@@ -4,12 +4,16 @@
 
 import lastDayOfDecade from '.'
 
-suite('lastDayOfYear', function () {
-  benchmark('date-fns', function () {
-    return lastDayOfDecade(this.date)
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
+suite(
+  'lastDayOfYear',
+  function() {
+    benchmark('date-fns', function() {
+      return lastDayOfDecade(this.date)
+    })
+  },
+  {
+    setup: function() {
+      this.date = new Date()
+    }
   }
-})
+)

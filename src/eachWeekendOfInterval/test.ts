@@ -4,8 +4,8 @@
 import assert from 'assert'
 import eachWeekendOfInterval from '.'
 
-describe('eachWeekendOfInterval', function () {
-  it('returns all weekends within the interval', function () {
+describe('eachWeekendOfInterval', function() {
+  it('returns all weekends within the interval', function() {
     const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 17),
       end: new Date(2018, 8 /* Sept */, 30)
@@ -18,7 +18,7 @@ describe('eachWeekendOfInterval', function () {
     ])
   })
 
-  it('returns all weekends within the interval when starting on a weekend', function () {
+  it('returns all weekends within the interval when starting on a weekend', function() {
     const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 22),
       end: new Date(2018, 8 /* Sept */, 30)
@@ -31,7 +31,7 @@ describe('eachWeekendOfInterval', function () {
     ])
   })
 
-  it('throws `RangeError` invalid interval start date is used', function () {
+  it('throws `RangeError` invalid interval start date is used', function() {
     // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(NaN),
@@ -40,7 +40,7 @@ describe('eachWeekendOfInterval', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` invalid interval end date is used', function () {
+  it('throws `RangeError` invalid interval end date is used', function() {
     // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(2019, 0 /* Jan */, 1),
@@ -49,11 +49,11 @@ describe('eachWeekendOfInterval', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function () {
+  it('throws TypeError exception if passed less than 1 argument', function() {
     assert.throws(eachWeekendOfInterval, TypeError)
   })
 
-  it('throws `RangeError` if start of an interval is after its end', function () {
+  it('throws `RangeError` if start of an interval is after its end', function() {
     const block = eachWeekendOfInterval.bind(
       null,
       // $ExpectedMistake

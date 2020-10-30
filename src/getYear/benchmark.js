@@ -5,17 +5,21 @@
 import getYear from '.'
 import moment from 'moment'
 
-suite('getYear', function () {
-  benchmark('date-fns', function () {
-    return getYear(this.date)
-  })
+suite(
+  'getYear',
+  function() {
+    benchmark('date-fns', function() {
+      return getYear(this.date)
+    })
 
-  benchmark('Moment.js', function () {
-    return this.moment.year()
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
-    this.moment = moment()
+    benchmark('Moment.js', function() {
+      return this.moment.year()
+    })
+  },
+  {
+    setup: function() {
+      this.date = new Date()
+      this.moment = moment()
+    }
   }
-})
+)

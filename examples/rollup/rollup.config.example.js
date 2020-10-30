@@ -5,8 +5,5 @@ export default {
   entry: 'example.js',
   dest: 'dist/example.js',
   format: 'cjs',
-  plugins: [
-    resolve({jsnext: true, main: true}),
-    commonjs()
-  ]
+  plugins: [resolve({ jsnext: true, main: true }), commonjs()]
 }

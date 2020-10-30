@@ -43,7 +43,7 @@ describe('addDays', function() {
     assert(result instanceof Date && isNaN(result.getTime()))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
+  it('throws TypeError exception if passed less than 2 arguments', function() {
     // @ts-expect-error
     assert.throws(addDays.bind(null), TypeError)
     // @ts-expect-error

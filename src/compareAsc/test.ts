@@ -42,7 +42,6 @@ describe('compareAsc', function() {
       new Date(1995, 6 /* Jul */, 2)
     ]
 
-
     unsortedArray.sort(compareAsc)
     const result = unsortedArray
 

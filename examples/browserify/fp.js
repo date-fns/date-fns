@@ -4,7 +4,7 @@ var formatWithOptions = dateFns.formatWithOptions
 var eo = require('date-fns/locale/eo')
 
 var addFiveYears = addYears(5)
-var dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
+var dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
 
 var dates = [
   new Date(2017, 0 /* Jan */, 1),
@@ -13,7 +13,7 @@ var dates = [
 ]
 
 var formattedDates = dates
-  .map((date) => dateToString(addFiveYears(date)))
+  .map(date => dateToString(addFiveYears(date)))
   .join(', ')
 
 console.log(formattedDates === '1 januaro 2022, 11 februaro 2022, 2 julio 2022')

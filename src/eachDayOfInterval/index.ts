@@ -62,7 +62,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval: Interval, options?: {step?: number}): Date[] {
+export default function eachDayOfInterval(
+  dirtyInterval: Interval,
+  options?: { step?: number }
+): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}
