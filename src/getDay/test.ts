@@ -10,6 +10,34 @@ describe('getDay', function() {
     assert(result === 3)
   })
 
+  it('allows to specify which day is the first day of the week', function() {
+    const result = getDay(new Date(2012, 1 /* Feb */, 29), { weekStartsOn: 1 })
+    assert(result === 2)
+  })
+
+  it('allows to specify which day is the first day of the week (with a weekStartsOn of Saturday)', function() {
+    const result = getDay(new Date(2012, 1 /* Feb */, 29), { weekStartsOn: 6 })
+    assert(result === 4)
+  })
+
+  it('allows to specify which day is the first day of the week in locale', function() {
+    const result = getDay(new Date(2012, 1 /* Feb */, 29), {
+      locale: {
+        options: { weekStartsOn: 1 }
+      }
+    })
+    assert(result === 2)
+  })
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function() {
+    const result = getDay(new Date(2012, 1 /* Feb */, 29), {
+      weekStartsOn: 1,
+      locale: {
+        options: { weekStartsOn: 0 }
+      }
+    })
+    assert(result === 2)
+  })
+
   it('accepts a timestamp', function() {
     const result = getDay(new Date(2014, 5 /* Jun */, 1).getTime())
     assert(result === 0)

@@ -20,7 +20,8 @@ export interface StepOptions {
 }
 
 export interface WeekStartOptions {
-  weekStartsOn?: number
+  weekStartsOn?: 0|1|2|3|4|5|6
+  locale?: { options?: { weekStartsOn?: 0|1|2|3|4|5|6 } }
 }
 
 export interface LocaleOptions {
