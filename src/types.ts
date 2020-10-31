@@ -1,3 +1,5 @@
+import { Locale } from './locale/types'
+
 export interface Duration {
   years?: number
   months?: number
@@ -19,4 +21,8 @@ export interface StepOptions {
 
 export interface WeekStartOptions {
   weekStartsOn?: number
+}
+
+export interface LocalOptions {
+  locale?: Locale
 }
