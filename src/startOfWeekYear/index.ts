@@ -2,6 +2,7 @@ import getWeekYear from '../getWeekYear/index'
 import startOfWeek from '../startOfWeek/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions, FirstWeekContainsDateOptions } from '../types'
 
 /**
  * @name startOfWeekYear
@@ -33,39 +34,42 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The start of an a week-numbering year for 2 July 2005 with default settings:
- * var result = startOfWeekYear(new Date(2005, 6, 2))
+ * const result = startOfWeekYear(new Date(2005, 6, 2))
  * //=> Sun Dec 26 2004 00:00:00
  *
  * @example
  * // The start of a week-numbering year for 2 July 2005
  * // if Monday is the first day of week
  * // and 4 January is always in the first week of the year:
- * var result = startOfWeekYear(new Date(2005, 6, 2), {
+ * const result = startOfWeekYear(new Date(2005, 6, 2), {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })
  * //=> Mon Jan 03 2005 00:00:00
  */
-export default function startOfWeekYear(dirtyDate, dirtyOptions) {
+export default function startOfWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions
+): Date {
   requiredArgs(1, arguments)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
-  var year = getWeekYear(dirtyDate, dirtyOptions)
-  var firstWeek = new Date(0)
+  const year = getWeekYear(dirtyDate, dirtyOptions)
+  const firstWeek = new Date(0)
   firstWeek.setFullYear(year, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  var date = startOfWeek(firstWeek, dirtyOptions)
+  const date = startOfWeek(firstWeek, dirtyOptions)
   return date
 }
