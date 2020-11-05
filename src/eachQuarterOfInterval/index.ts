@@ -29,12 +29,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Tue Jul 01 2014 00:00:00,
  * // ]
  */
-export default function eachQuarterOfInterval(dirtyInterval) {
+export default function eachQuarterOfInterval(dirtyInterval: Interval): Date[] {
   requiredArgs(1, arguments)
 
-  var interval = dirtyInterval || {}
-  var startDate = toDate(interval.start)
-  var endDate = toDate(interval.end)
+  const interval = dirtyInterval || {}
+  const startDate = toDate(interval.start)
+  const endDate = toDate(interval.end)
 
   var endTime = endDate.getTime()
 
@@ -43,12 +43,12 @@ export default function eachQuarterOfInterval(dirtyInterval) {
     throw new RangeError('Invalid interval')
   }
 
-  var startDateQuarter = startOfQuarter(startDate)
-  var endDateQuarter = startOfQuarter(endDate)
+  const startDateQuarter = startOfQuarter(startDate)
+  const endDateQuarter = startOfQuarter(endDate)
 
   endTime = endDateQuarter.getTime()
 
-  var quarters = []
+  const quarters = []
 
   var currentQuarter = startDateQuarter
 

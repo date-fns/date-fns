@@ -1,12 +1,12 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import eachWeekendOfInterval from '.'
 
-describe('eachWeekendOfInterval', function() {
-  it('returns all weekends within the interval', function() {
-    var result = eachWeekendOfInterval({
+describe('eachWeekendOfInterval', function () {
+  it('returns all weekends within the interval', function () {
+    const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 17),
       end: new Date(2018, 8 /* Sept */, 30)
     })
@@ -18,8 +18,8 @@ describe('eachWeekendOfInterval', function() {
     ])
   })
 
-  it('returns all weekends within the interval when starting on a weekend', function() {
-    var result = eachWeekendOfInterval({
+  it('returns all weekends within the interval when starting on a weekend', function () {
+    const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 22),
       end: new Date(2018, 8 /* Sept */, 30)
     })
@@ -31,30 +31,30 @@ describe('eachWeekendOfInterval', function() {
     ])
   })
 
-  it('throws `RangeError` invalid interval start date is used', function() {
+  it('throws `RangeError` invalid interval start date is used', function () {
     // $ExpectedMistake
-    var block = eachWeekendOfInterval.bind(null, {
+    const block = eachWeekendOfInterval.bind(null, {
       start: new Date(NaN),
       end: new Date(2019, 11 /* Dec */, 31)
     })
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` invalid interval end date is used', function() {
+  it('throws `RangeError` invalid interval end date is used', function () {
     // $ExpectedMistake
-    var block = eachWeekendOfInterval.bind(null, {
+    const block = eachWeekendOfInterval.bind(null, {
       start: new Date(2019, 0 /* Jan */, 1),
       end: new Date(NaN)
     })
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(eachWeekendOfInterval, TypeError)
   })
 
-  it('throws `RangeError` if start of an interval is after its end', function() {
-    var block = eachWeekendOfInterval.bind(
+  it('throws `RangeError` if start of an interval is after its end', function () {
+    const block = eachWeekendOfInterval.bind(
       null,
       // $ExpectedMistake
       {

@@ -21,12 +21,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Subtract 5 months from 1 February 2015:
- * var result = subMonths(new Date(2015, 1, 1), 5)
+ * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths(dirtyDate, dirtyAmount) {
+export default function subMonths(dirtyDate: Date | number, dirtyAmount: number): Date {
   requiredArgs(2, arguments)
 
-  var amount = toInteger(dirtyAmount)
+  const amount = toInteger(dirtyAmount)
   return addMonths(dirtyDate, -amount)
 }

@@ -1,3 +1,4 @@
+import { WeekStartOptions } from '../types'
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
@@ -42,12 +43,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Nov 23 2014 00:00:00
  * // ]
  */
-export default function eachWeekOfInterval(dirtyInterval, options) {
+export default function eachWeekOfInterval(
+  dirtyInterval: Interval,
+  options?: WeekStartOptions
+): Date[] {
   requiredArgs(1, arguments)
 
-  var interval = dirtyInterval || {}
-  var startDate = toDate(interval.start)
-  var endDate = toDate(interval.end)
+  const interval = dirtyInterval || {}
+  const startDate = toDate(interval.start)
+  const endDate = toDate(interval.end)
 
   var endTime = endDate.getTime()
 
@@ -56,8 +60,8 @@ export default function eachWeekOfInterval(dirtyInterval, options) {
     throw new RangeError('Invalid interval')
   }
 
-  var startDateWeek = startOfWeek(startDate, options)
-  var endDateWeek = startOfWeek(endDate, options)
+  const startDateWeek = startOfWeek(startDate, options)
+  const endDateWeek = startOfWeek(endDate, options)
 
   // Some timezones switch DST at midnight, making start of day unreliable in these timezones, 3pm is a safe bet
   startDateWeek.setHours(15)
@@ -65,9 +69,9 @@ export default function eachWeekOfInterval(dirtyInterval, options) {
 
   endTime = endDateWeek.getTime()
 
-  var weeks = []
+  const weeks = []
 
-  var currentWeek = startDateWeek
+  let currentWeek = startDateWeek
 
   while (currentWeek.getTime() <= endTime) {
     currentWeek.setHours(0)

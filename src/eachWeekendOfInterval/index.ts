@@ -19,7 +19,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Lists all Saturdays and Sundays in the given date interval
- * var result = eachWeekendOfInterval({
+ * const result = eachWeekendOfInterval({
  *   start: new Date(2018, 8, 17),
  *   end: new Date(2018, 8, 30)
  * })
@@ -30,14 +30,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Sun Sep 30 2018 00:00:00
  * // ]
  */
-export default function eachWeekendOfInterval(interval) {
+export default function eachWeekendOfInterval(interval: Interval): Date[] {
   requiredArgs(1, arguments)
 
-  var dateInterval = eachDayOfInterval(interval)
-  var weekends = []
-  var index = 0
+  const dateInterval = eachDayOfInterval(interval)
+  const weekends = []
+  let index = 0
   while (index < dateInterval.length) {
-    var date = dateInterval[index++]
+    const date = dateInterval[index++]
     if (isWeekend(date)) {
       weekends.push(date)
       if (isSunday(date)) index = index + 5

@@ -10,11 +10,15 @@ This change log follows the format documented in [Keep a CHANGELOG].
 
 ## [2.17.0] - 2020-10-27
 
-Kudos to [@davidgape89](https://github.com/davidgape89)
+Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89).
 
 ### Fixed
 
 - [Fixed Russian locale parsing issue](https://github.com/date-fns/date-fns/pull/1950).
+
+### Added
+
+- [Added `en-ZA` locale](https://github.com/date-fns/date-fns/pull/1952).
 
 ## [2.16.1] - 2020-07-31
 
