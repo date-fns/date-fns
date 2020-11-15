@@ -12,6 +12,11 @@ import {
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import type {
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../types'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -24,15 +29,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-var formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /[yYQqMLwIdDecihHKkms]o|(\w)\1*|''|'(''|[^'])+('|$)|./g
 
 // This RegExp catches symbols escaped by quotes, and also
 // sequences of symbols P, p, and the combinations like `PPPPPPPppppp`
-var longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
+const longFormattingTokensRegExp = /P+p+|P+|p+|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'([^]*?)'?$/
-var doubleQuoteRegExp = /''/g
-var unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const escapedStringRegExp = /^'([^]*?)'?$/
+const doubleQuoteRegExp = /''/g
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name format
@@ -309,37 +314,47 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
- * var result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
+ * const result = format(new Date(2014, 1, 11), 'MM/dd/yyyy')
  * //=> '02/11/2014'
  *
  * @example
  * // Represent 2 July 2014 in Esperanto:
  * import { eoLocale } from 'date-fns/locale/eo'
- * var result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
+ * const result = format(new Date(2014, 6, 2), "do 'de' MMMM yyyy", {
  *   locale: eoLocale
  * })
  * //=> '2-a de julio 2014'
  *
  * @example
  * // Escape string by single quote characters:
- * var result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
+ * const result = format(new Date(2014, 6, 2, 15), "h 'o''clock'")
  * //=> "3 o'clock"
  */
-export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
+
+export default function format(
+  dirtyDate: Date | number,
+  dirtyFormatStr: string,
+  dirtyOptions?: LocaleOptions &
+    WeekStartOptions &
+    FirstWeekContainsDateOptions & {
+      useAdditionalWeekYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean
+    }
+): string {
   requiredArgs(2, arguments)
 
-  var formatStr = String(dirtyFormatStr)
-  var options = dirtyOptions || {}
+  const formatStr = String(dirtyFormatStr)
+  const options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  const locale = options.locale || defaultLocale
 
-  var localeFirstWeekContainsDate =
+  const localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
@@ -351,10 +366,10 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     )
   }
 
-  var localeWeekStartsOn = locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const localeWeekStartsOn = locale.options && locale.options.weekStartsOn
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -372,7 +387,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     throw new RangeError('locale must contain formatLong property')
   }
 
-  var originalDate = toDate(dirtyDate)
+  const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -381,40 +396,54 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  var utcDate = subMilliseconds(originalDate, timezoneOffset)
+  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
+  const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
-  var formatterOptions = {
+  const formatterOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
     locale: locale,
     _originalDate: originalDate,
   }
 
-  var result = formatStr
-    .match(longFormattingTokensRegExp)
+  let result
+
+  const longFormattingTokens = formatStr.match(longFormattingTokensRegExp)
+
+  if (!longFormattingTokens) {
+    throw new TypeError('Invalid format string')
+  }
+
+  result = longFormattingTokens
     .map(function (substring) {
-      var firstCharacter = substring[0]
+      const firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
-        var longFormatter = longFormatters[firstCharacter]
+        const longFormatter = longFormatters[firstCharacter]
         return longFormatter(substring, locale.formatLong, formatterOptions)
       }
       return substring
     })
     .join('')
-    .match(formattingTokensRegExp)
+
+  const formattingTokens = result.match(formattingTokensRegExp)
+
+  if (!formattingTokens) {
+    throw new TypeError('Invalid format string')
+  }
+
+  result = formattingTokens
     .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"
       }
 
-      var firstCharacter = substring[0]
+      const firstCharacter = substring[0]
       if (firstCharacter === "'") {
         return cleanEscapedString(substring)
       }
 
-      var formatter = formatters[firstCharacter]
+      const formatter = formatters[firstCharacter]
       if (formatter) {
         if (
           !options.useAdditionalWeekYearTokens &&
@@ -446,6 +475,12 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   return result
 }
 
-function cleanEscapedString(input) {
-  return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
+function cleanEscapedString(input: string) {
+  const matched = input.match(escapedStringRegExp)
+
+  if (!matched) {
+    return input
+  }
+
+  return matched[1].replace(doubleQuoteRegExp, "'")
 }
