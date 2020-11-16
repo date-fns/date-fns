@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -383,12 +382,12 @@ describe('formatDistanceStrict', function () {
   describe('implicit conversion of options', function () {
     it('`options.unit`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var unit = new String('year')
+      const unit = new String('year')
 
-      var result = formatDistanceStrict(
+      const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
+        // @ts-expect-error
         { unit: unit }
       )
       assert(result === '0 years')
@@ -398,7 +397,7 @@ describe('formatDistanceStrict', function () {
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
-        // $ExpectedMistake
+        // @ts-expect-error
         { addSuffix: 1 }
       )
       assert(result === '25 seconds ago')
@@ -406,12 +405,12 @@ describe('formatDistanceStrict', function () {
 
     it('`options.ceil`', function () {
       // eslint-disable-next-line no-new-wrappers
-      var roundingMethod = new String('ceil')
+      const roundingMethod = new String('ceil')
 
-      var result = formatDistanceStrict(
+      const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 33, 1),
-        // $ExpectedMistake
+        // @ts-expect-error
         { roundingMethod: roundingMethod }
       )
       assert(result === '2 minutes')
@@ -420,7 +419,7 @@ describe('formatDistanceStrict', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      function localizeDistance(token, count, options) {
+      function localizeDistance(token: string, count: number, options: { addSuffix: boolean; comparison: number }) {
         assert(token === 'xSeconds')
         assert(count === 25)
         assert(options.addSuffix === true)
@@ -432,10 +431,9 @@ describe('formatDistanceStrict', function () {
         formatDistance: localizeDistance,
       }
 
-      var result = formatDistanceStrict(
+      const result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
-        // $ExpectedMistake
         { addSuffix: true, locale: customLocale }
       )
 
@@ -448,7 +446,6 @@ describe('formatDistanceStrict', function () {
         var block = formatDistanceStrict.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 37, 0),
           { unit: 'minute', locale: customLocale }
         )
@@ -497,22 +494,20 @@ describe('formatDistanceStrict', function () {
   })
 
   it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
-    var block = formatDistanceStrict.bind(
-      null,
+    var block = () => formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
+      // @ts-expect-error
       { roundingMethod: 'foobar' }
     )
     assert.throws(block, RangeError)
   })
 
   it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
-    var block = formatDistanceStrict.bind(
-      null,
+    var block = () => formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0),
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
+      // @ts-expect-error
       { unit: 'foobar' }
     )
     assert.throws(block, RangeError)
