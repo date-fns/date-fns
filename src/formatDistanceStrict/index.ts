@@ -4,6 +4,7 @@ import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../locale/en-US/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions } from '../types';
 
 var MILLISECONDS_IN_MINUTE = 1000 * 60
 var MINUTES_IN_DAY = 60 * 24
@@ -161,21 +162,17 @@ var MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
  * //=> '1 jaro'
  */
 
-interface Options {
-  addSuffix?: boolean
-  unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
-  roundingMethod?: 'floor' | 'ceil' | 'round'
-  locale?: Locale
-}
-
 export default function formatDistanceStrict(
   dirtyDate: Date | number,
   dirtyBaseDate: Date | number,
-  dirtyOptions?: Options
+  options: LocaleOptions & {
+    addSuffix?: boolean,
+    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+    roundingMethod?: 'floor' | 'ceil' | 'round',
+  } = {}
 ) {
   requiredArgs(2, arguments)
 
-  const options = dirtyOptions || {}
   const locale = options.locale || defaultLocale
 
   if (!locale.formatDistance) {
