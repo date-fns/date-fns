@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -6,7 +5,7 @@ import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
-function generateOffset(originalDate) {
+function generateOffset(originalDate: Date) {
   // Add the timezone.
   let offset = ''
   const tzOffset = originalDate.getTimezoneOffset()
@@ -80,7 +79,7 @@ describe('formatISO', () => {
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
-      // $ExpectedMistake
+      // @ts-expect-error
       var result = formatISO(date, { format: format })
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
@@ -90,14 +89,14 @@ describe('formatISO', () => {
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const tzOffsetExtended = generateOffset(date)
-      // $ExpectedMistake
+      // @ts-expect-error
       var result = formatISO(date, { representation: representation })
       assert(result === `12:30:13${tzOffsetExtended}`)
     })
   })
 
   it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
       format: 'something else'
     })
@@ -105,7 +104,7 @@ describe('formatISO', () => {
   })
 
   it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
-    // $ExpectedMistake
+    // @ts-expect-error
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
       representation: 'something else'
     })
