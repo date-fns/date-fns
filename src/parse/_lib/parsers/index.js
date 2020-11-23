@@ -71,14 +71,11 @@ function parseNumber(string, options) {
     return null
   }
   var match = matchResult[0]
-  var negative = match[0] === '-'
+  var negative = match[0] === '-' ? 1 : 0
   if (negative && !options.allowSigned) {
     return null
   }
-  var digits = match.slice(
-    negative ? 1 : 0,
-    (negative ? 1 : 0) + options.length || undefined
-  )
+  var digits = match.slice(negative, negative + options.length || undefined)
   if (options.length && options.strict && digits.length < options.length) {
     return null
   }
