@@ -19,7 +19,7 @@ var monthValues = {
     'feb.',
     'mrt.',
     'apr.',
-    'mei',
+    'mei.',
     'jun.',
     'jul.',
     'aug.',
