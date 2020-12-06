@@ -3,8 +3,8 @@ import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 var dateFormats = {
   full: 'EEEE, d. MMMM yyyy',
   long: 'd. MMMM yyyy',
-  medium: 'd.M.yyyy',
-  short: 'd.M.yy'
+  medium: 'd. M. yyyy',
+  short: 'dd.MM.yyyy'
 }
 
 var timeFormats = {
