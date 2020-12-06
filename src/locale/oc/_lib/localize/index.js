@@ -139,38 +139,23 @@ var formattingDayPeriodValues = {
 }
 
 /**
- * @param {Number} dirtyNumber
- * @param {Object} [_dirtyOptions]
+ * @param {Number} number
+ * @param {Object} [_period]
  */
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var rem100 = number % 100
-  
-  if (unit === 'year' || unit === 'week' || unit === 'hour' || unit === 'minute' || unit === 'second') {
-      if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'èra'
-      case 2:
-        return number + 'nda'
+
+function ordinalNumber($number, $period) {
+        var number = Number($number)
+        var options = $period || {}
+        var unit = String(options.unit)
+        $ordinal = [1 => 'èr', 2 => 'nd'][(int) $number] ?? 'en';
+
+        // feminine for year, week, hour, minute, second
+        if (unit === 'year' || unit === 'week' || unit === 'hour' || unit === 'minute' || unit === 'second') {
+            $ordinal .= 'a';
+        }
+
+        return $number.$ordinal;
     }
-  }
-    return number + 'ena'
-  } else {
-      if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number + 'èr'
-      case 2:
-        return number + 'nd'
-    }
-  }
-    return number + 'en'
-  }
-  
-}
 
 var localize = {
   ordinalNumber: ordinalNumber,
