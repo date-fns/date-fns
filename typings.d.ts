@@ -585,7 +585,7 @@ declare module 'date-fns' {
   function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {}
 
-  function isDate(value: any): boolean
+  function isDate(value: any): value is Date
   namespace isDate {}
 
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
