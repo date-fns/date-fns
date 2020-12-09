@@ -4,7 +4,9 @@ const plugins = [
   '@babel/plugin-transform-template-literals',
   '@babel/plugin-transform-arrow-functions',
   '@babel/plugin-transform-parameters',
-  '@babel/plugin-transform-destructuring'
+  '@babel/plugin-transform-destructuring',
+  '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-nullish-coalescing-operator'
 ]
 
 if (process.env.NODE_ENV === 'test') {
