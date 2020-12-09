@@ -26,8 +26,8 @@ buildFP(fpFns)
 function getFPFn(resultFnName, initialFnName, arity) {
   return [generatedAutomaticallyMessage]
     .concat('')
-    .concat(`import fn from '../../${initialFnName}/index.js'`)
-    .concat(`import convertToFP from '../_lib/convertToFP/index.js'`)
+    .concat(`import fn from '../../${initialFnName}/index'`)
+    .concat(`import convertToFP from '../_lib/convertToFP/index'`)
     .concat('')
     .concat(`var ${resultFnName} = convertToFP(fn, ${arity})`)
     .concat('')
