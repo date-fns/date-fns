@@ -8,6 +8,18 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.17.0] - 2020-10-27
+
+Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89).
+
+### Fixed
+
+- [Fixed Russian locale parsing issue](https://github.com/date-fns/date-fns/pull/1950).
+
+### Added
+
+- [Added `en-ZA` locale](https://github.com/date-fns/date-fns/pull/1952).
+
 ## [2.16.1] - 2020-07-31
 
 Kudos to [@aleksaps](https://github.com/aleksaps), [@leedriscoll](https://github.com/leedriscoll) and [@BanForFun](https://github.com/BanForFun) for pull-requests!
@@ -680,7 +692,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20),
+    end: new Date(2014, 0, 20)
   })
 
   getOverlappingDaysInIntervals(
@@ -690,7 +702,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7),
+    end: new Date(2014, 0, 7)
   })
   ```
 
@@ -922,10 +934,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2),
+    new Date(2017, 6 /* Jul */, 2)
   ]
 
-  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 

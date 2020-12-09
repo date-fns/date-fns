@@ -15899,6 +15899,9 @@ declare module 'date-fns/locale' {
   const enUS: Locale
   namespace enUS {}
 
+  const enZA: Locale
+  namespace enZA {}
+
   const eo: Locale
   namespace eo {}
 
@@ -16171,6 +16174,11 @@ declare module 'date-fns/locale/en-NZ' {
 declare module 'date-fns/locale/en-US' {
   import { enUS } from 'date-fns/locale'
   export default enUS
+}
+
+declare module 'date-fns/locale/en-ZA' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
 }
 
 declare module 'date-fns/locale/eo' {
@@ -16558,6 +16566,11 @@ declare module 'date-fns/locale/en-US/index' {
   export default enUS
 }
 
+declare module 'date-fns/locale/en-ZA/index' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
+}
+
 declare module 'date-fns/locale/eo/index' {
   import { eo } from 'date-fns/locale'
   export default eo
@@ -16943,6 +16956,11 @@ declare module 'date-fns/locale/en-US/index.js' {
   export default enUS
 }
 
+declare module 'date-fns/locale/en-ZA/index.js' {
+  import { enZA } from 'date-fns/locale'
+  export default enZA
+}
+
 declare module 'date-fns/locale/eo/index.js' {
   import { eo } from 'date-fns/locale'
   export default eo
@@ -17289,6 +17307,9 @@ declare module 'date-fns/esm/locale' {
   const enUS: Locale
   namespace enUS {}
 
+  const enZA: Locale
+  namespace enZA {}
+
   const eo: Locale
   namespace eo {}
 
@@ -17561,6 +17582,11 @@ declare module 'date-fns/esm/locale/en-NZ' {
 declare module 'date-fns/esm/locale/en-US' {
   import { enUS } from 'date-fns/esm/locale'
   export default enUS
+}
+
+declare module 'date-fns/esm/locale/en-ZA' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
 }
 
 declare module 'date-fns/esm/locale/eo' {
@@ -17948,6 +17974,11 @@ declare module 'date-fns/esm/locale/en-US/index' {
   export default enUS
 }
 
+declare module 'date-fns/esm/locale/en-ZA/index' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
+}
+
 declare module 'date-fns/esm/locale/eo/index' {
   import { eo } from 'date-fns/esm/locale'
   export default eo
@@ -18331,6 +18362,11 @@ declare module 'date-fns/esm/locale/en-NZ/index.js' {
 declare module 'date-fns/esm/locale/en-US/index.js' {
   import { enUS } from 'date-fns/esm/locale'
   export default enUS
+}
+
+declare module 'date-fns/esm/locale/en-ZA/index.js' {
+  import { enZA } from 'date-fns/esm/locale'
+  export default enZA
 }
 
 declare module 'date-fns/esm/locale/eo/index.js' {
@@ -19119,6 +19155,8 @@ interface dateFns {
   lightFormat(date: Date | number, format: string): string
 
   max(datesArray: (Date | number)[]): Date
+
+  milliseconds(duration: Duration): number
 
   min(datesArray: (Date | number)[]): Date
 
