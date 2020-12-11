@@ -1,7 +1,7 @@
 // This file is generated automatically by `scripts/build/fp.js`. Please, don't change it.
 
-import fn from '../../subMilliseconds/index'
-import convertToFP from '../_lib/convertToFP/index'
+import fn from '../../subMilliseconds/index.js'
+import convertToFP from '../_lib/convertToFP/index.js'
 
 var subMilliseconds = convertToFP(fn, 2)
 

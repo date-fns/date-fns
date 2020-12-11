@@ -1,13 +1,13 @@
 import { Locale } from './locale/types'
 
 export interface Duration {
-  years?: number
-  months?: number
-  weeks?: number
-  days?: number
-  hours?: number
-  minutes?: number
-  seconds?: number
+  years?: number | string
+  months?: number | string
+  weeks?: number | string
+  days?: number | string
+  hours?: number | string
+  minutes?: number | string
+  seconds?: number | string
 }
 
 export interface Interval {

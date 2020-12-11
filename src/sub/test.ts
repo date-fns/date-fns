@@ -66,13 +66,13 @@ describe('sub', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = sub(new Date(NaN), { hours: 5 })
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(Number(result)))
   })
 
   it('throws RangeError exception if passed Number as duration', () => {
     // $ExpectedMistake
-    const result = sub(new Date(2014, 8, 1), 'wut')
-    assert(result instanceof Date && isNaN(result))
+    const result = sub(new Date(2014, 8, 1), 'wut' as any)
+    assert(result instanceof Date && isNaN(Number(result)))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
