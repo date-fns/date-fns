@@ -8,7 +8,7 @@ import match from './_lib/match/index'
  * @type {Locale}
  * @category Locales
  * @summary Western Frisian locale (Netherlands).
- * @language Western Frisian
+ * @language West Frisian
  * @iso-639-2 fry
  * @author Damon Asberg [@damon02]{@link https://github.com/damon02}
  */

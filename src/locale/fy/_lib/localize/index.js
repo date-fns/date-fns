@@ -15,31 +15,31 @@ var quarterValues = {
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
-    'jan.', 
-    'feb.', 
-    'mrt.', 
-    'apr.', 
-    'maaie', 
-    'jun.', 
-    'jul.', 
-    'aug.', 
-    'sep.', 
-    'okt.', 
-    'nov.', 
+    'jan.',
+    'feb.',
+    'mrt.',
+    'apr.',
+    'maaie',
+    'jun.',
+    'jul.',
+    'aug.',
+    'sep.',
+    'okt.',
+    'nov.',
     'des.'
   ],
   wide: [
-    'jannewaris', 
-    'febrewaris', 
-    'maart', 
-    'april', 
-    'maaie', 
-    'juny', 
-    'july', 
-    'augustus', 
-    'septimber', 
-    'oktober', 
-    'novimber', 
+    'jannewaris',
+    'febrewaris',
+    'maart',
+    'april',
+    'maaie',
+    'juny',
+    'july',
+    'augustus',
+    'septimber',
+    'oktober',
+    'novimber',
     'desimber'
   ]
 }
@@ -49,12 +49,12 @@ var dayValues = {
   short: ['Sn', 'Mo', 'Ti', 'Wo', 'To', 'Fr', 'Sn'],
   abbreviated: ['Sne', 'Moa', 'Tii', 'Woa', 'Ton', 'Fre', 'Sne'],
   wide: [
-    'Snein', 
-    'Moandei', 
-    'Tiisdei', 
-    'Woansdei', 
-    'Tongersdei', 
-    'Freed', 
+    'Snein',
+    'Moandei',
+    'Tiisdei',
+    'Woansdei',
+    'Tongersdei',
+    'Freed',
     'Sneon'
   ]
 }
@@ -65,9 +65,9 @@ var dayPeriodValues = {
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'middei',
-    morning: "moarns",
-    afternoon: "middeis",
-    evening: "jûns",
+    morning: 'moarns',
+    afternoon: 'middeis',
+    evening: 'jûns',
     night: "yn 'e nacht"
   },
   abbreviated: {
@@ -75,9 +75,9 @@ var dayPeriodValues = {
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'middei',
-    morning: "moarns",
-    afternoon: "middeis",
-    evening: "jûns",
+    morning: 'moarns',
+    afternoon: 'middeis',
+    evening: 'jûns',
     night: "yn 'e nacht"
   },
   wide: {
@@ -85,11 +85,11 @@ var dayPeriodValues = {
     pm: 'PM',
     midnight: 'middernacht',
     noon: 'middei',
-    morning: "moarns",
-    afternoon: "middeis",
-    evening: "jûns",
+    morning: 'moarns',
+    afternoon: 'middeis',
+    evening: 'jûns',
     night: "yn 'e nacht"
-  },
+  }
 }
 
 function ordinalNumber(dirtyNumber) {

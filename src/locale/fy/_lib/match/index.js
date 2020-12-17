@@ -41,11 +41,12 @@ var parseMonthPatterns = {
     /^s/i,
     /^o/i,
     /^n/i,
-    /^d/i],
+    /^d/i
+  ],
   any: [
     /^jan/i,
     /^feb/i,
-    /^m(r|a)/i, 
+    /^m(r|a)/i,
     /^apr/i,
     /^maaie/i,
     /^jun/i,
@@ -66,20 +67,20 @@ var matchDayPatterns = {
 }
 var parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
-  any: [/^sn/i, /^ma/i, /^ti/i, /^wo/i, /^to/i, /^fr/i, /^sn/i]
+  any: [/^sn/i, /^mo/i, /^ti/i, /^wo/i, /^to/i, /^fr/i, /^sn/i]
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(am|pm|middernacht|middei|moarns|middeis|jûns|yn 'e nacht)/i
+  any: /^(am|pm|middernacht|middeis|moarns|middei|jûns|yn 'e nacht)/i
 }
 var parseDayPeriodPatterns = {
   any: {
     am: /^am/i,
     pm: /^pm/i,
     midnight: /^middernacht/i,
-    noon: /middei/i,
+    noon: /^middei/i,
     morning: /moarns/i,
-    afternoon: /middei/i,
+    afternoon: /^middeis/i,
     evening: /jûns/i,
     night: /nacht/i
   }
