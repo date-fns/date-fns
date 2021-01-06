@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import getWeekOfMonth from '.'
 
 describe('getWeekOfMonth', function() {
@@ -42,7 +42,7 @@ describe('getWeekOfMonth', function() {
 
   it('allows to specify which day is the first day of the week in locale', function() {
     var result = getWeekOfMonth(new Date(2017, 9 /* Oct */, 31), {
-      // $ExpectedMistake
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 }
       }
@@ -53,7 +53,7 @@ describe('getWeekOfMonth', function() {
   it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function() {
     var result = getWeekOfMonth(new Date(2017, 10 /* Nov */, 13), {
       weekStartsOn: 1,
-      // $ExpectedMistake
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 }
       }
@@ -72,6 +72,7 @@ describe('getWeekOfMonth', function() {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {
+    // @ts-expect-error
     assert.throws(getWeekOfMonth.bind(null), TypeError)
   })
 
