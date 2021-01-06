@@ -8,12 +8,12 @@
  * It's a part of the release process.
  */
 
-const { getFirebaseDB } = require('../_lib/firebase')
 const path = require('path')
 const fs = require('fs')
 const childProcess = require('child_process')
 const listLocales = require('../_lib/listLocales')
 const countries = require('world-countries')
+const publishVersion = require('@date-fns/date-fns-scripts').publishVersion
 const { version } = require('../../package.json')
 
 const prereleaseRegExp = /(test|alpha|beta|rc)/
@@ -103,46 +103,8 @@ function generateVersionData() {
   }
 }
 
-function generateDocs(data) {
-  const { tag, docsPages, docsKeys, docsCategories } = data
-
-  return {
-    tag,
-    pages: docsPages,
-    keys: docsKeys,
-    categories: docsCategories
-  }
-}
-
-function generateVersion(data, docsKey) {
-  const { tag, date, commit, prerelease, features, locales } = data
-
-  return {
-    tag,
-    date,
-    commit,
-    prerelease,
-    features,
-    locales,
-    docsKey
-  }
-}
-
-getFirebaseDB()
-  .then(db => {
-    const data = generateVersionData()
-
-    const docsListRef = db.ref('/docs')
-    const docsRef = docsListRef.push()
-
-    const versionListRef = db.ref('/versions')
-    const versionRef = versionListRef.push()
-
-    return Promise.all([
-      docsRef.set(generateDocs(data)),
-      versionRef.set(generateVersion(data, docsRef.key))
-    ])
-  })
+const data = generateVersionData()
+publishVersion(data)
   .then(() => {
     console.log('Done!')
     process.exit(0)
