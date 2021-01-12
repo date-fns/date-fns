@@ -12,51 +12,25 @@ export { default as addQuarters } from './addQuarters/index'
 export { default as addSeconds } from './addSeconds/index'
 export { default as addWeeks } from './addWeeks/index'
 export { default as addYears } from './addYears/index'
-export {
-  default as areIntervalsOverlapping
-} from './areIntervalsOverlapping/index'
-export {
-  default as areIntervalsOverlappingWithOptions
-} from './areIntervalsOverlappingWithOptions/index'
+export { default as areIntervalsOverlapping } from './areIntervalsOverlapping/index'
+export { default as areIntervalsOverlappingWithOptions } from './areIntervalsOverlappingWithOptions/index'
 export { default as closestIndexTo } from './closestIndexTo/index'
 export { default as closestTo } from './closestTo/index'
 export { default as compareAsc } from './compareAsc/index'
 export { default as compareDesc } from './compareDesc/index'
-export {
-  default as differenceInBusinessDays
-} from './differenceInBusinessDays/index'
-export {
-  default as differenceInCalendarDays
-} from './differenceInCalendarDays/index'
-export {
-  default as differenceInCalendarISOWeekYears
-} from './differenceInCalendarISOWeekYears/index'
-export {
-  default as differenceInCalendarISOWeeks
-} from './differenceInCalendarISOWeeks/index'
-export {
-  default as differenceInCalendarMonths
-} from './differenceInCalendarMonths/index'
-export {
-  default as differenceInCalendarQuarters
-} from './differenceInCalendarQuarters/index'
-export {
-  default as differenceInCalendarWeeks
-} from './differenceInCalendarWeeks/index'
-export {
-  default as differenceInCalendarWeeksWithOptions
-} from './differenceInCalendarWeeksWithOptions/index'
-export {
-  default as differenceInCalendarYears
-} from './differenceInCalendarYears/index'
+export { default as differenceInBusinessDays } from './differenceInBusinessDays/index'
+export { default as differenceInCalendarDays } from './differenceInCalendarDays/index'
+export { default as differenceInCalendarISOWeekYears } from './differenceInCalendarISOWeekYears/index'
+export { default as differenceInCalendarISOWeeks } from './differenceInCalendarISOWeeks/index'
+export { default as differenceInCalendarMonths } from './differenceInCalendarMonths/index'
+export { default as differenceInCalendarQuarters } from './differenceInCalendarQuarters/index'
+export { default as differenceInCalendarWeeks } from './differenceInCalendarWeeks/index'
+export { default as differenceInCalendarWeeksWithOptions } from './differenceInCalendarWeeksWithOptions/index'
+export { default as differenceInCalendarYears } from './differenceInCalendarYears/index'
 export { default as differenceInDays } from './differenceInDays/index'
 export { default as differenceInHours } from './differenceInHours/index'
-export {
-  default as differenceInISOWeekYears
-} from './differenceInISOWeekYears/index'
-export {
-  default as differenceInMilliseconds
-} from './differenceInMilliseconds/index'
+export { default as differenceInISOWeekYears } from './differenceInISOWeekYears/index'
+export { default as differenceInMilliseconds } from './differenceInMilliseconds/index'
 export { default as differenceInMinutes } from './differenceInMinutes/index'
 export { default as differenceInMonths } from './differenceInMonths/index'
 export { default as differenceInQuarters } from './differenceInQuarters/index'
@@ -64,28 +38,20 @@ export { default as differenceInSeconds } from './differenceInSeconds/index'
 export { default as differenceInWeeks } from './differenceInWeeks/index'
 export { default as differenceInYears } from './differenceInYears/index'
 export { default as eachDayOfInterval } from './eachDayOfInterval/index'
-export {
-  default as eachDayOfIntervalWithOptions
-} from './eachDayOfIntervalWithOptions/index'
+export { default as eachDayOfIntervalWithOptions } from './eachDayOfIntervalWithOptions/index'
 export { default as eachHourOfInterval } from './eachHourOfInterval/index'
-export {
-  default as eachHourOfIntervalWithOptions
-} from './eachHourOfIntervalWithOptions/index'
+export { default as eachHourOfIntervalWithOptions } from './eachHourOfIntervalWithOptions/index'
 export { default as eachMonthOfInterval } from './eachMonthOfInterval/index'
 export { default as eachQuarterOfInterval } from './eachQuarterOfInterval/index'
 export { default as eachWeekOfInterval } from './eachWeekOfInterval/index'
-export {
-  default as eachWeekOfIntervalWithOptions
-} from './eachWeekOfIntervalWithOptions/index'
+export { default as eachWeekOfIntervalWithOptions } from './eachWeekOfIntervalWithOptions/index'
 export { default as eachWeekendOfInterval } from './eachWeekendOfInterval/index'
 export { default as eachWeekendOfMonth } from './eachWeekendOfMonth/index'
 export { default as eachWeekendOfYear } from './eachWeekendOfYear/index'
 export { default as eachYearOfInterval } from './eachYearOfInterval/index'
 export { default as endOfDay } from './endOfDay/index'
 export { default as endOfDecade } from './endOfDecade/index'
-export {
-  default as endOfDecadeWithOptions
-} from './endOfDecadeWithOptions/index'
+export { default as endOfDecadeWithOptions } from './endOfDecadeWithOptions/index'
 export { default as endOfHour } from './endOfHour/index'
 export { default as endOfISOWeek } from './endOfISOWeek/index'
 export { default as endOfISOWeekYear } from './endOfISOWeekYear/index'
@@ -99,32 +65,20 @@ export { default as endOfYear } from './endOfYear/index'
 export { default as format } from './format/index'
 export { default as formatDistance } from './formatDistance/index'
 export { default as formatDistanceStrict } from './formatDistanceStrict/index'
-export {
-  default as formatDistanceStrictWithOptions
-} from './formatDistanceStrictWithOptions/index'
-export {
-  default as formatDistanceWithOptions
-} from './formatDistanceWithOptions/index'
+export { default as formatDistanceStrictWithOptions } from './formatDistanceStrictWithOptions/index'
+export { default as formatDistanceWithOptions } from './formatDistanceWithOptions/index'
 export { default as formatDuration } from './formatDuration/index'
-export {
-  default as formatDurationWithOptions
-} from './formatDurationWithOptions/index'
+export { default as formatDurationWithOptions } from './formatDurationWithOptions/index'
 export { default as formatISO } from './formatISO/index'
 export { default as formatISO9075 } from './formatISO9075/index'
-export {
-  default as formatISO9075WithOptions
-} from './formatISO9075WithOptions/index'
+export { default as formatISO9075WithOptions } from './formatISO9075WithOptions/index'
 export { default as formatISODuration } from './formatISODuration/index'
 export { default as formatISOWithOptions } from './formatISOWithOptions/index'
 export { default as formatRFC3339 } from './formatRFC3339/index'
-export {
-  default as formatRFC3339WithOptions
-} from './formatRFC3339WithOptions/index'
+export { default as formatRFC3339WithOptions } from './formatRFC3339WithOptions/index'
 export { default as formatRFC7231 } from './formatRFC7231/index'
 export { default as formatRelative } from './formatRelative/index'
-export {
-  default as formatRelativeWithOptions
-} from './formatRelativeWithOptions/index'
+export { default as formatRelativeWithOptions } from './formatRelativeWithOptions/index'
 export { default as formatWithOptions } from './formatWithOptions/index'
 export { default as fromUnixTime } from './fromUnixTime/index'
 export { default as getDate } from './getDate/index'
@@ -141,27 +95,19 @@ export { default as getISOWeeksInYear } from './getISOWeeksInYear/index'
 export { default as getMilliseconds } from './getMilliseconds/index'
 export { default as getMinutes } from './getMinutes/index'
 export { default as getMonth } from './getMonth/index'
-export {
-  default as getOverlappingDaysInIntervals
-} from './getOverlappingDaysInIntervals/index'
+export { default as getOverlappingDaysInIntervals } from './getOverlappingDaysInIntervals/index'
 export { default as getQuarter } from './getQuarter/index'
 export { default as getSeconds } from './getSeconds/index'
 export { default as getTime } from './getTime/index'
 export { default as getUnixTime } from './getUnixTime/index'
 export { default as getWeek } from './getWeek/index'
 export { default as getWeekOfMonth } from './getWeekOfMonth/index'
-export {
-  default as getWeekOfMonthWithOptions
-} from './getWeekOfMonthWithOptions/index'
+export { default as getWeekOfMonthWithOptions } from './getWeekOfMonthWithOptions/index'
 export { default as getWeekWithOptions } from './getWeekWithOptions/index'
 export { default as getWeekYear } from './getWeekYear/index'
-export {
-  default as getWeekYearWithOptions
-} from './getWeekYearWithOptions/index'
+export { default as getWeekYearWithOptions } from './getWeekYearWithOptions/index'
 export { default as getWeeksInMonth } from './getWeeksInMonth/index'
-export {
-  default as getWeeksInMonthWithOptions
-} from './getWeeksInMonthWithOptions/index'
+export { default as getWeeksInMonthWithOptions } from './getWeeksInMonthWithOptions/index'
 export { default as getYear } from './getYear/index'
 export { default as intervalToDuration } from './intervalToDuration/index'
 export { default as isAfter } from './isAfter/index'
@@ -200,16 +146,13 @@ export { default as lastDayOfISOWeek } from './lastDayOfISOWeek/index'
 export { default as lastDayOfISOWeekYear } from './lastDayOfISOWeekYear/index'
 export { default as lastDayOfMonth } from './lastDayOfMonth/index'
 export { default as lastDayOfQuarter } from './lastDayOfQuarter/index'
-export {
-  default as lastDayOfQuarterWithOptions
-} from './lastDayOfQuarterWithOptions/index'
+export { default as lastDayOfQuarterWithOptions } from './lastDayOfQuarterWithOptions/index'
 export { default as lastDayOfWeek } from './lastDayOfWeek/index'
-export {
-  default as lastDayOfWeekWithOptions
-} from './lastDayOfWeekWithOptions/index'
+export { default as lastDayOfWeekWithOptions } from './lastDayOfWeekWithOptions/index'
 export { default as lastDayOfYear } from './lastDayOfYear/index'
 export { default as lightFormat } from './lightFormat/index'
 export { default as max } from './max/index'
+export { default as milliseconds } from './milliseconds/index'
 export { default as min } from './min/index'
 export { default as parse } from './parse/index'
 export { default as parseISO } from './parseISO/index'
@@ -217,9 +160,7 @@ export { default as parseISOWithOptions } from './parseISOWithOptions/index'
 export { default as parseJSON } from './parseJSON/index'
 export { default as parseWithOptions } from './parseWithOptions/index'
 export { default as roundToNearestMinutes } from './roundToNearestMinutes/index'
-export {
-  default as roundToNearestMinutesWithOptions
-} from './roundToNearestMinutesWithOptions/index'
+export { default as roundToNearestMinutesWithOptions } from './roundToNearestMinutesWithOptions/index'
 export { default as set } from './set/index'
 export { default as setDate } from './setDate/index'
 export { default as setDay } from './setDay/index'
@@ -237,9 +178,7 @@ export { default as setSeconds } from './setSeconds/index'
 export { default as setWeek } from './setWeek/index'
 export { default as setWeekWithOptions } from './setWeekWithOptions/index'
 export { default as setWeekYear } from './setWeekYear/index'
-export {
-  default as setWeekYearWithOptions
-} from './setWeekYearWithOptions/index'
+export { default as setWeekYearWithOptions } from './setWeekYearWithOptions/index'
 export { default as setYear } from './setYear/index'
 export { default as startOfDay } from './startOfDay/index'
 export { default as startOfDecade } from './startOfDecade/index'
@@ -251,13 +190,9 @@ export { default as startOfMonth } from './startOfMonth/index'
 export { default as startOfQuarter } from './startOfQuarter/index'
 export { default as startOfSecond } from './startOfSecond/index'
 export { default as startOfWeek } from './startOfWeek/index'
-export {
-  default as startOfWeekWithOptions
-} from './startOfWeekWithOptions/index'
+export { default as startOfWeekWithOptions } from './startOfWeekWithOptions/index'
 export { default as startOfWeekYear } from './startOfWeekYear/index'
-export {
-  default as startOfWeekYearWithOptions
-} from './startOfWeekYearWithOptions/index'
+export { default as startOfWeekYearWithOptions } from './startOfWeekYearWithOptions/index'
 export { default as startOfYear } from './startOfYear/index'
 export { default as sub } from './sub/index'
 export { default as subBusinessDays } from './subBusinessDays/index'
