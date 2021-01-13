@@ -21,7 +21,7 @@ import { Interval, StepOptions } from '../types'
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
- * // Each hour between 6 October 2014, 12:00 and 10 October 2014, 15:00
+ * // Each hour between 6 October 2014, 12:00 and 6 October 2014, 15:00
  * var result = eachHourOfInterval({
  *   start: new Date(2014, 9, 6, 12),
  *   end: new Date(2014, 9, 6, 15)
