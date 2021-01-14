@@ -803,7 +803,7 @@ describe('format', function() {
     })
   })
 
-  it('gh-2161: handles when timezone offset has additional digit that could be rounded up', () => {
+  it('gh-2161: formats correct duration when timezone offset has additional digit(s) that could be rounded up in Firefox', () => {
     const date = new Date(0, 0, 0, 0, 0, 30)
     const result = format(date, 'mm:ss')
     assert.deepEqual(result, '00:30')
