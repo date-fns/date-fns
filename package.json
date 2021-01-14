@@ -38,7 +38,9 @@
       "git add"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "karma-firefox-launcher": "2.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
