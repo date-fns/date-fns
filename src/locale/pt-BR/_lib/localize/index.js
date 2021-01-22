@@ -45,10 +45,10 @@ var monthValues = {
 }
 
 var dayValues = {
-  narrow: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
-  short: ['do', '2ª', '3ª', '4ª', '5ª', '6ª', 'sá'],
-  abbreviated: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
-  wide: ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado']
+  narrow: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+  short: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'],
+  abbreviated: ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'],
+  wide: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']
 }
 
 var dayPeriodValues = {
