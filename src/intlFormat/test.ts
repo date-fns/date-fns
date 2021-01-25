@@ -65,21 +65,4 @@ describe('intlFormat', () => {
   it('throws RangeError if the date value is invalid', () => {
     assert.throws(intlFormat.bind(null, new Date(NaN)), RangeError)
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    assert.throws(intlFormat.bind(null), TypeError)
-  })
-
-  it('throws TypeError exception if passed localeOptions 2 times', () => {
-    const date = new Date(2016, 0, 1, 23, 30, 45, 123)
-    const localeOptions = {
-      locale: 'default',
-    }
-
-    assert.throws(
-      // @ts-expect-error
-      intlFormat.bind(null, date, localeOptions, localeOptions),
-      TypeError
-    )
-  })
 })

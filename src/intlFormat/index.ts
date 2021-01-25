@@ -1,5 +1,3 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-
 type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
@@ -20,17 +18,11 @@ export default function intlFormat(
   formatOrLocale?: FormatOptions | LocaleOptions,
   localeOptions?: LocaleOptions
 ) {
-  requiredArgs(1, arguments)
-
   let formatOptions: FormatOptions | undefined
 
   if (isFormatOptions(formatOrLocale)) {
     formatOptions = formatOrLocale
   } else {
-    assertIsUndefined(
-      localeOptions,
-      new TypeError("Can't provide 2 locales for the function")
-    )
     localeOptions = formatOrLocale
   }
 
@@ -43,10 +35,4 @@ function isFormatOptions(
   opts: LocaleOptions | FormatOptions | undefined
 ): opts is FormatOptions {
   return opts !== undefined && !('locale' in opts)
-}
-
-function assertIsUndefined(opts: unknown, error: Error) {
-  if (opts !== undefined) {
-    throw error
-  }
 }
