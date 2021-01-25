@@ -65,4 +65,8 @@ describe('intlFormat', () => {
   it('throws RangeError if the date value is invalid', () => {
     assert.throws(intlFormat.bind(null, new Date(NaN)), RangeError)
   })
+
+  it('throws TypeError exception if passed less than 1 argument', () => {
+    assert.throws(intlFormat.bind(null), TypeError)
+  })
 })
