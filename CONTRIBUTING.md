@@ -136,15 +136,6 @@ yarn lint
 [prettier]: https://prettier.io/
 [eslint]: https://eslint.org/
 
-### Use EditorConfig
-
-The project uses [EditorConfig] to define basic coding style guides.
-Please install a plugin for your editor of choice or manually enforce
-the rules listed in [.editorconfig].
-
-[editorconfig]: http://editorconfig.org
-[.editorconfig]: https://github.com/date-fns/date-fns.org/blob/master/.editorconfig
-
 ## Documentation
 
 ### JSDoc
