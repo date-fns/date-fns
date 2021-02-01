@@ -9,17 +9,17 @@ var eraValues = {
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1e kwart', '2e kwart', '3e kwart', '4e kwart']
+  wide: ['1e fearnsjier', '2e fearnsjier', '3e fearnsjier', '4e fearnsjier']
 }
 
 var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
   abbreviated: [
     'jan.',
     'feb.',
     'mrt.',
     'apr.',
-    'maaie',
+    'mai.',
     'jun.',
     'jul.',
     'aug.',
@@ -45,17 +45,17 @@ var monthValues = {
 }
 
 var dayValues = {
-  narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-  short: ['Sn', 'Mo', 'Ti', 'Wo', 'To', 'Fr', 'Sn'],
-  abbreviated: ['Sne', 'Moa', 'Tii', 'Woa', 'Ton', 'Fre', 'Sne'],
+  narrow: ['s', 'm', 't', 'w', 't', 'f', 's'],
+  short: ['si', 'mo', 'ti', 'wo', 'to', 'fr', 'so'],
+  abbreviated: ['snein', 'moa', 'tii', 'woa', 'ton', 'fre', 'sneon'],
   wide: [
-    'Snein',
-    'Moandei',
-    'Tiisdei',
-    'Woansdei',
-    'Tongersdei',
-    'Freed',
-    'Sneon'
+    'snein',
+    'moandei',
+    'tiisdei',
+    'woansdei',
+    'tongersdei',
+    'freed',
+    'sneon'
   ]
 }
 
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'moarns',
     afternoon: 'middeis',
     evening: 'jûns',
-    night: "yn 'e nacht"
+    night: 'nachts'
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'moarns',
     afternoon: 'middeis',
     evening: 'jûns',
-    night: "yn 'e nacht"
+    night: 'nachts'
   },
   wide: {
     am: 'AM',
@@ -88,7 +88,7 @@ var dayPeriodValues = {
     morning: 'moarns',
     afternoon: 'middeis',
     evening: 'jûns',
-    night: "yn 'e nacht"
+    night: 'nachts'
   }
 }
 

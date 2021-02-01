@@ -1,7 +1,7 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
-    one: 'minder dan 1 sekonde lyn',
-    other: 'minder dan {{count}} sekonden'
+    one: 'minder as 1 sekonde',
+    other: 'minder as {{count}} sekonden'
   },
 
   xSeconds: {
@@ -12,8 +12,8 @@ var formatDistanceLocale = {
   halfAMinute: 'oardel minút',
 
   lessThanXMinutes: {
-    one: 'minder dan 1 minút',
-    other: 'minder dan {{count}} minuten'
+    one: 'minder as 1 minút',
+    other: 'minder as {{count}} minuten'
   },
 
   xMinutes: {
@@ -68,7 +68,7 @@ var formatDistanceLocale = {
 
   overXYears: {
     one: 'mear as 1 jier',
-    other: 'mear as {{count}} jier'
+    other: 'mear as {{count}}s jier'
   },
 
   almostXYears: {

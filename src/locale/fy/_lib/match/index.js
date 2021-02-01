@@ -16,7 +16,7 @@ var parseEraPatterns = {
 var matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^K[1234]/i,
-  wide: /^[1234]e kwart/i
+  wide: /^[1234]e fearnsjier/i
 }
 
 var parseQuarterPatterns = {
@@ -25,7 +25,7 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan.|feb.|mrt.|apr.|maaie|jun.|jul.|aug.|sep.|okt.|nov.|des.)/i,
+  abbreviated: /^(jan.|feb.|mrt.|apr.|mai.|jun.|jul.|aug.|sep.|okt.|nov.|des.)/i,
   wide: /^(jannewaris|febrewaris|maart|april|maaie|juny|july|augustus|septimber|oktober|novimber|desimber)/i
 }
 var parseMonthPatterns = {
@@ -48,7 +48,7 @@ var parseMonthPatterns = {
     /^feb/i,
     /^m(r|a)/i,
     /^apr/i,
-    /^maaie/i,
+    /^mai/i,
     /^jun/i,
     /^jul/i,
     /^aug/i,
@@ -61,9 +61,9 @@ var parseMonthPatterns = {
 
 var matchDayPatterns = {
   narrow: /^[smtwf]/i,
-  short: /^(Sn|Mo|Ti|Wo|To|Fr|Sn)/i,
-  abbreviated: /^(Sne|Moa|Tii|Woa|Ton|Fre|Sne)/i,
-  wide: /^(Snein|Moandei|Tiisdei|Woansdei|Tongersdei|Freed|Sneon)/i
+  short: /^(si|mo|ti|wo|to|fr|so)/i,
+  abbreviated: /^(snein|moa|tii|woa|ton|fre|sneon)/i,
+  wide: /^(snein|moandei|tiisdei|woansdei|tongersdei|freed|sneon)/i
 }
 var parseDayPatterns = {
   narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i],
@@ -71,7 +71,7 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(am|pm|middernacht|middeis|moarns|middei|jûns|yn 'e nacht)/i
+  any: /^(am|pm|middernacht|middeis|moarns|middei|jûns|nachts)/i
 }
 var parseDayPeriodPatterns = {
   any: {
@@ -82,7 +82,7 @@ var parseDayPeriodPatterns = {
     morning: /moarns/i,
     afternoon: /^middeis/i,
     evening: /jûns/i,
-    night: /nacht/i
+    night: /nachts/i
   }
 }
 
