@@ -1111,10 +1111,10 @@
   resolved "https://registry.yarnpkg.com/@date-fns/date-fns-db/-/date-fns-db-0.0.14.tgz#7ca0eee070bfdb789778a5972afbcefe57971aba"
   integrity sha512-4Cg+IDM2XRl+cPN08i7c4ohb7wlF1FDxvf4e6GjQtX5dn9yZLAhVCvdu72lD8C71SjyO7DLY7KC9cEtSrRMx4g==
 
-"@date-fns/date-fns-scripts@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@date-fns/date-fns-scripts/-/date-fns-scripts-0.0.2.tgz#f68356b7fdab82b7aa2ff6b2b17dac57baca8d6e"
-  integrity sha512-GBGzkiu5MuEtJAKNXgX/ywmR5v4WZU+AxpTIiQQFHgLtTJrpRzKY294l4RtTQcTUF4yHdvM0A7kON5h9p7bqJg==
+"@date-fns/date-fns-scripts@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@date-fns/date-fns-scripts/-/date-fns-scripts-0.0.3.tgz#7d4a247ffd2d41e3a64414acaff76aea3dfcef5c"
+  integrity sha512-24/W1Y810BnIuDMo/Lj5IB9NreZUBIKXfY+ZstwIccfk2y9iIkq21llAbd+Q+MqtOulkeduTYW95D3lSNs1dnw==
   dependencies:
     "@date-fns/date-fns-db" "^0.0.14"
     firebase "^8.2.2"
