@@ -62,6 +62,14 @@ describe('differenceInMonths', function () {
       assert(result === 1)
     })
 
+    it('it returns diff of 6 month between Oct, 31 2021 and Apr, 30 2021', function () {
+      var result = differenceInMonths(
+        new Date(2021, 9 /* Oct */, 31),
+        new Date(2021, 3 /* Apr */, 30)
+      )
+      assert(result === 6)
+    })
+
     it('it returns diff of -1 month between Sep, 30 2021 and Oct, 31 2021', function () {
       var result = differenceInMonths(
         new Date(2021, 8 /* Sep */, 30),

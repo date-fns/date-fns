@@ -35,7 +35,7 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
 
-  // This will check if the date is end of Feb and assing a higher end of month date
+  // This will check if the date is end of Feb and assign a higher end of month date
   // to compare it with Jan
   if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
     dateLeft.setDate(30)
