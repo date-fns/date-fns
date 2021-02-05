@@ -205,8 +205,8 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-15T00:00:00.000Z | 14 dni           | 14 dni                 | za 14 dni             |
 | 2000-01-02T00:00:00.000Z | dzień            | dzień                  | za 1 dzień            |
 | 2000-01-01T06:00:00.000Z | około 6 godzin   | około 6 godzin         | za około 6 godzin     |
-| 2000-01-01T01:00:00.000Z | około godzina    | około godzina          | za około godzinę      |
-| 2000-01-01T00:45:00.000Z | około godzina    | około godzina          | za około godzinę      |
+| 2000-01-01T01:00:00.000Z | około godziny    | około godziny          | za około godzinę      |
+| 2000-01-01T00:45:00.000Z | około godziny    | około godziny          | za około godzinę      |
 | 2000-01-01T00:30:00.000Z | 30 minut         | 30 minut               | za 30 minut           |
 | 2000-01-01T00:15:00.000Z | 15 minut         | 15 minut               | za 15 minut           |
 | 2000-01-01T00:01:00.000Z | minuta           | minuta                 | za minutę             |
@@ -220,8 +220,8 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:00.000Z | minuta           | minuta                 | minutę temu           |
 | 1999-12-31T23:45:00.000Z | 15 minut         | 15 minut               | 15 minut temu         |
 | 1999-12-31T23:30:00.000Z | 30 minut         | 30 minut               | 30 minut temu         |
-| 1999-12-31T23:15:00.000Z | około godzina    | około godzina          | około godziny temu    |
-| 1999-12-31T23:00:00.000Z | około godzina    | około godzina          | około godziny temu    |
+| 1999-12-31T23:15:00.000Z | około godziny    | około godziny          | około godziny temu    |
+| 1999-12-31T23:00:00.000Z | około godziny    | około godziny          | około godziny temu    |
 | 1999-12-31T18:00:00.000Z | około 6 godzin   | około 6 godzin         | około 6 godzin temu   |
 | 1999-12-30T00:00:00.000Z | 2 dni            | 2 dni                  | 2 dni temu            |
 | 1999-12-15T00:00:00.000Z | 17 dni           | 17 dni                 | 17 dni temu           |
