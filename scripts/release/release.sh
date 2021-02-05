@@ -25,7 +25,8 @@ PACKAGE_PATH="$(pwd)/../../tmp/package"
 
 env PACKAGE_OUTPUT_PATH="$PACKAGE_PATH" ./scripts/build/package.sh
 
-echo "//registry.npmjs.org/:_authToken=$NPM_KEY" > ~/.npmrc
+# Right now, we do releases manually, but when we move to GitHub Actions we'll need this line:
+# echo "//registry.npmjs.org/:_authToken=$NPM_KEY" > ~/.npmrc
 cd "$PACKAGE_PATH" || exit 1
 if [ "$IS_PRE_RELEASE" = true ]
 then
