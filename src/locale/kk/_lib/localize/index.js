@@ -134,21 +134,34 @@ var formattingDayPeriodValues = {
     night: 'түнде'
   }
 }
+var suffixes = {
+  0: '-ші',
+  1: '-ші',
+  2: '-ші',
+  3: '-ші',
+  4: '-ші',
+  5: '-ші',
+  6: '-шы',
+  7: '-ші',
+  8: '-ші',
+  9: '-шы',
+  10: '-шы',
+  20: '-шы',
+  30: '-шы',
+  40: '-шы',
+  50: '-ші',
+  60: '-шы',
+  70: '-ші',
+  80: '-ші',
+  90: '-шы',
+  100: '-ші'
+}
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
-
-  if (unit === 'date') {
-    suffix = '-ші'
-  } else if (unit === 'week' || unit === 'minute' || unit === 'second') {
-    suffix = '-ші'
-  } else {
-    suffix = '-ші'
-  }
-
-  return dirtyNumber + suffix
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber)
+  var a = number % 10
+  var b = number >= 100 ? 100 : null
+  return number + (suffixes[number] || suffixes[a] || suffixes[b])
 }
 
 var localize = {
