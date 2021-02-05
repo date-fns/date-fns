@@ -96,10 +96,10 @@ Run tests once:
 yarn test --single-run
 ```
 
-To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
+To test a function in REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to support also TypeScript files):
 
 ```sh
-./node_modules/.bin/babel-node
+./node_modules/.bin/babel-node -x ".js",".ts"
 
 > const toDate = require('./src/toDate')
 undefined
