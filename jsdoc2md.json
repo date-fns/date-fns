@@ -3,7 +3,7 @@
     "includePattern": ".+\\.(ts|js)?$",
     "excludePattern": ".+\\.(test|spec).ts"
   },
-  "plugins": ["plugins/markdown", "node_modules/jsdoc-babel"],
+  "plugins": ["node_modules/jsdoc-babel"],
   "babel": {
     "extensions": ["ts", "tsx", "js"],
     "ignore": ["**/*.(test|spec).ts"],

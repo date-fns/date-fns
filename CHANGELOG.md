@@ -8,17 +8,39 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
-## [2.17.0] - 2020-10-27
+## [2.17.0] - 2021-02-05
 
-Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89).
+Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89), [@rikkalo](https://github.com/rikkalo), [@tan75](https://github.com/tan75), [@talgautb](https://github.com/talgautb), [@owenl131](https://github.com/owenl131), [@kylesezhi](https://github.com/kylesezhi), [@inigoiparragirre](https://github.com/inigoiparragirre), [@gius](https://github.com/gius), [@Endeauvirr](https://github.com/Endeauvirr) and [@frankyston](https://github.com/frankyston).
 
 ### Fixed
 
 - [Fixed Russian locale parsing issue](https://github.com/date-fns/date-fns/pull/1950).
 
+- [Fixed `differenceInMonths` for edge cases, such as the end of February dates](https://github.com/date-fns/date-fns/pull/2185).
+
+- [Fixed suffixes for the Kazakh locale](https://github.com/date-fns/date-fns/pull/2010).
+
+- [Fixed `formatDuration` week translation in `pt` and `pt-BR` locales](https://github.com/date-fns/date-fns/pull/2125).
+
+- [Made Japanese locale to use the correct value for the start of the week](https://github.com/date-fns/date-fns/pull/2099).
+
+- [Adjusted date formats in the Basque locale](https://github.com/date-fns/date-fns/pull/2080).
+
+- [Fixed the short and medium date formats in the Czech locale](https://github.com/date-fns/date-fns/pull/2111).
+
+- [Adjusted the Polish translations of `formatDistance`](https://github.com/date-fns/date-fns/pull/2187).
+
+- [Fixed the week's abbreviations in the Brazilian Portuguese](https://github.com/date-fns/date-fns/pull/2170).
+
 ### Added
 
+- [Added `intlFormat`](https://github.com/date-fns/date-fns/pull/2172) a lightweight formatting function that uses [Intl API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl). Eventually, it will become the default formatting function, so it's highly recommended for new code.
+
 - [Added `en-ZA` locale](https://github.com/date-fns/date-fns/pull/1952).
+
+- [Added an ability to format lowercase am/pm with `aaa` and `bbb` tokens](https://github.com/date-fns/date-fns/pull/2016).
+
+- [Added ordinal formatting for Japanese year values](https://github.com/date-fns/date-fns/pull/2177/files).
 
 ## [2.16.1] - 2020-07-31
 
@@ -692,7 +714,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   eachDayOfInterval({
     start: new Date(2014, 0, 10),
-    end: new Date(2014, 0, 20)
+    end: new Date(2014, 0, 20),
   })
 
   getOverlappingDaysInIntervals(
@@ -702,7 +724,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   isWithinInterval(new Date(2014, 0, 3), {
     start: new Date(2014, 0, 1),
-    end: new Date(2014, 0, 7)
+    end: new Date(2014, 0, 7),
   })
   ```
 
@@ -918,7 +940,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 
   In FP functions, the order of arguments is reversed.
 
-  See [FP Guide](docs/fp) for more information.
+  See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information.
 
   ```javascript
   import addYears from 'date-fns/fp/addYears'
@@ -934,10 +956,10 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   const dates = [
     new Date(2017, 0 /* Jan */, 1),
     new Date(2017, 1 /* Feb */, 11),
-    new Date(2017, 6 /* Jul */, 2)
+    new Date(2017, 6 /* Jul */, 2),
   ]
 
-  const formattedDates = dates.map(date => dateToString(addFiveYears(date)))
+  const formattedDates = dates.map((date) => dateToString(addFiveYears(date)))
   //=> ['1 januaro 2022', '11 februaro 2022', '2 julio 2022']
   ```
 
