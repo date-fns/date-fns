@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['BC', 'AC'],
   abbreviated: ['紀元前', '西暦'],
-  wide: ['紀元前', '西暦']
+  wide: ['紀元前', '西暦'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['第1四半期', '第2四半期', '第3四半期', '第4四半期']
+  wide: ['第1四半期', '第2四半期', '第3四半期', '第4四半期'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     '9月',
     '10月',
     '11月',
-    '12月'
+    '12月',
   ],
   wide: [
     '1月',
@@ -40,15 +40,15 @@ var monthValues = {
     '9月',
     '10月',
     '11月',
-    '12月'
-  ]
+    '12月',
+  ],
 }
 
 var dayValues = {
   narrow: ['日', '月', '火', '水', '木', '金', '土'],
   short: ['日', '月', '火', '水', '木', '金', '土'],
   abbreviated: ['日', '月', '火', '水', '木', '金', '土'],
-  wide: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日']
+  wide: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
 }
 
 var dayPeriodValues = {
@@ -60,7 +60,7 @@ var dayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
+    night: '深夜',
   },
   abbreviated: {
     am: '午前',
@@ -70,7 +70,7 @@ var dayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
+    night: '深夜',
   },
   wide: {
     am: '午前',
@@ -80,8 +80,8 @@ var dayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
-  }
+    night: '深夜',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -92,7 +92,7 @@ var formattingDayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
+    night: '深夜',
   },
   abbreviated: {
     am: '午前',
@@ -102,7 +102,7 @@ var formattingDayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
+    night: '深夜',
   },
   wide: {
     am: '午前',
@@ -112,8 +112,8 @@ var formattingDayPeriodValues = {
     morning: '朝',
     afternoon: '午後',
     evening: '夜',
-    night: '深夜'
-  }
+    night: '深夜',
+  },
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
@@ -135,6 +135,11 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   if (unit === 'date') {
     return number + '日'
   }
+
+  if (unit === 'year') {
+    return number + '年'
+  }
+
   return number
 }
 
@@ -143,33 +148,33 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
