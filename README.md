@@ -11,7 +11,9 @@
 </p>
 
 <div align="center">
+  
 [📖&nbsp; Documentation](https://date-fns.org/docs/)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[🧑‍💻&nbsp; JavaScript Jobs](https://jobs.date-fns.org/)
+  
 </div>
 
 <hr>
