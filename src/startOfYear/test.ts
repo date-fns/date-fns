@@ -17,6 +17,12 @@ describe('startOfYear', function() {
     assert.deepEqual(result, new Date(2014, 0 /* Dec */, 1, 0, 0, 0, 0))
   })
 
+  it('return the date with offset if it starts in a different month', function() {
+    const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0).getTime()
+    const result = startOfYear(date, { yearStartsOn: 2 })
+    assert.deepEqual(result, new Date(2014, 2 /* Mar */, 1, 0, 0, 0, 0))
+  })
+
   it('does not mutate the original date', function() {
     const date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     startOfYear(date)
