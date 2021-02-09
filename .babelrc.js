@@ -4,7 +4,8 @@ const plugins = [
   '@babel/plugin-transform-template-literals',
   '@babel/plugin-transform-arrow-functions',
   '@babel/plugin-transform-parameters',
-  '@babel/plugin-transform-destructuring'
+  '@babel/plugin-transform-destructuring',
+  '@babel/plugin-proposal-optional-chaining',
 ]
 
 if (process.env.NODE_ENV === 'test') {
@@ -25,5 +26,5 @@ const overrides = [{ ignore: ['**/*.d.ts'] }]
 module.exports = {
   presets,
   plugins,
-  overrides
+  overrides,
 }
