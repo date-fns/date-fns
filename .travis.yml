@@ -38,6 +38,7 @@ jobs:
 
 cache: yarn
 
+dist: xenial
 addons:
   chrome: stable
   # sauce_connect: true
