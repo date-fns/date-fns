@@ -4,14 +4,30 @@
 import assert from 'power-assert'
 import intlFormat from '.'
 
+const getOperationSystemLocale = () => {
+  if (typeof process !== 'undefined') {
+    const ENV = process.env
+    return ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
+  } else {
+    return (
+      // @ts-expect-error
+      window.navigator.userLanguage ||
+      window.navigator.language ||
+      (window.navigator.languages || [])[0]
+    )
+  }
+}
+
 describe('intlFormat', () => {
   describe('formats date', function () {
     it("should work without format's options and locale's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-
       const result = intlFormat(date)
+      const localeResult = intlFormat(date, {
+        locale: getOperationSystemLocale(),
+      })
 
-      assert(result === '04/10/2019')
+      assert(result === localeResult)
     })
 
     it("should work with only format's options", function () {
@@ -28,8 +44,11 @@ describe('intlFormat', () => {
       }
 
       const result = intlFormat(date, formatOptions)
+      const localeResult = intlFormat(date, formatOptions, {
+        locale: getOperationSystemLocale(),
+      })
 
-      assert(result === '04/10/2019, 02:30:13')
+      assert(result === localeResult)
     })
 
     it("should work with only locale's options", function () {
