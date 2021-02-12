@@ -19,7 +19,7 @@ export default function getTimezoneOffsetInMilliseconds(dirtyDate) {
   var date = new Date(dirtyDate.getTime())
   var baseTimezoneOffset = Math.ceil(date.getTimezoneOffset())
   date.setSeconds(0, 0)
-  var hasNegativeUTCOffset = baseTimezoneOffset > 0
+  var hasNegativeUTCOffset = baseTimezoneOffset >= 0
   var millisecondsPartOfTimezoneOffset = hasNegativeUTCOffset
     ? (MILLISECONDS_IN_MINUTE + getDateMillisecondsPart(date)) %
       MILLISECONDS_IN_MINUTE
