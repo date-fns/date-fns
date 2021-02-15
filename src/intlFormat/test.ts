@@ -4,6 +4,10 @@
 import assert from 'power-assert'
 import intlFormat from '.'
 
+// Before Node version 13.0.0, only the locale data for en-US is available by default.
+const nodeGreaterVersion13 =
+  parseInt(process.versions.node.split('.')[0]) > 13 ? it : it.skip
+
 const getOperationSystemLocale = () => {
   if (typeof process !== 'undefined') {
     const ENV = process.env
@@ -51,7 +55,9 @@ describe('intlFormat', () => {
       assert(result === localeResult)
     })
 
-    it("should work with only locale's options", function () {
+    nodeGreaterVersion13("should work with only locale's options", function () {
+      console.log('dddddd', process.versions.node.split('.')[0])
+
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
@@ -63,22 +69,25 @@ describe('intlFormat', () => {
       assert(result === '2019. 10. 4.')
     })
 
-    it("should work with format's options and locale's options", function () {
-      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const formatOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }
-      const localeOptions = {
-        locale: 'de-DE',
-      }
+    nodeGreaterVersion13(
+      "should work with format's options and locale's options",
+      function () {
+        const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+        const formatOptions = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }
+        const localeOptions = {
+          locale: 'de-DE',
+        }
 
-      const result = intlFormat(date, formatOptions, localeOptions)
+        const result = intlFormat(date, formatOptions, localeOptions)
 
-      assert(result === 'Freitag, 4. Oktober 2019')
-    })
+        assert(result === 'Freitag, 4. Oktober 2019')
+      }
+    )
   })
 
   it('throws RangeError if the date value is invalid', () => {
