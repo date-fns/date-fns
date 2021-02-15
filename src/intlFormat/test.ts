@@ -6,7 +6,7 @@ import intlFormat from '.'
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
 const nodeGreaterVersion13 =
-  parseInt(process.versions.node.split('.')[0]) > 13 ? it : it.skip
+  parseInt(process?.versions?.node?.split('.')[0]) > 13 ? it : it.skip
 
 const getOperationSystemLocale = () => {
   if (typeof process !== 'undefined') {
@@ -56,8 +56,6 @@ describe('intlFormat', () => {
     })
 
     nodeGreaterVersion13("should work with only locale's options", function () {
-      console.log('dddddd', process.versions.node.split('.')[0])
-
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
