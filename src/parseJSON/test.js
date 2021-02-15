@@ -34,9 +34,16 @@ describe('parseJSON', function () {
     assert.equal(parsedDate.toISOString(), expectedDate.toISOString())
   })
 
-  it('parses a formatted Indian Standart Time with +5:30 hours of offset back to UTC - issue 2149', () => {
+  it('parses a formatted Indian Standart Time in Asia/Kolkata with +5:30 hours of offset back to UTC - issue 2149', () => {
     const date = '2021-02-15T02:56:04.678+05:30'
     const expectedDate = new Date('2021-02-14T21:26:04.678Z')
+    const parsedDate = parseJSON(date)
+    assert.equal(parsedDate.toISOString(), expectedDate.toISOString())
+  })
+
+  it('parses a formatted time in Asia/Kathmandu with +5:45 hours of offset back to UTC - issue 2149', () => {
+    const date = '2021-02-15T17:45:00.900+05:45'
+    const expectedDate = new Date('2021-02-15T12:00:00.900Z')
     const parsedDate = parseJSON(date)
     assert.equal(parsedDate.toISOString(), expectedDate.toISOString())
   })
