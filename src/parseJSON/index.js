@@ -16,7 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - `2000-03-15T05:20:10.123Z`: The output of `.toISOString()` and `JSON.stringify(new Date())`
  * - `2000-03-15T05:20:10Z`: Without milliseconds
- * - `2000-03-15T05:20:10+00:00`: With a zero, positive or negative offset, the default JSON encoded format in some other languages
+ * - `2000-03-15T05:20:10+00:00`: With a zero offset, the default JSON encoded format in some other languages
+ * - `2000-03-15T05:20:10+05:45`: With a positive or negative offset, the default JSON encoded format in some other languages
  * - `2000-03-15T05:20:10+0000`: With a zero offset without a colon
  * - `2000-03-15T05:20:10`: Without a trailing 'Z' symbol
  * - `2000-03-15T05:20:10.1234567`: Up to 7 digits in milliseconds field. Only first 3 are taken into account since JS does not allow fractional milliseconds
