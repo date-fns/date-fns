@@ -20,7 +20,8 @@ const fullICUOnly = hasFullICU() ? it : it.skip
 const getOperationSystemLocale = () => {
   if (typeof process !== 'undefined') {
     const ENV = process.env
-    return ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
+    const language = ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
+    return language?.split('.')[0]
   } else {
     return (
       // @ts-expect-error
