@@ -103,10 +103,9 @@ export default function intlFormat(
   } else {
     localeOptions = formatOrLocale
   }
+  const locale = localeOptions ? localeOptions.locale : 'default'
 
-  return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
-    date
-  )
+  return new Intl.DateTimeFormat(locale, formatOptions).format(date)
 }
 
 function isFormatOptions(
