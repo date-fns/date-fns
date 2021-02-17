@@ -5,8 +5,17 @@ import assert from 'power-assert'
 import intlFormat from '.'
 
 // Before Node version 13.0.0, only the locale data for en-US is available by default.
-const nodeGreaterVersion13 =
-  parseInt(process?.versions?.node?.split('.')[0]) > 13 ? it : it.skip
+const hasFullICU = () => {
+  try {
+    const january = new Date(9e8)
+    const spanish = new Intl.DateTimeFormat('es', { month: 'long' })
+    return spanish.format(january) === 'enero'
+  } catch (err) {
+    return false
+  }
+}
+
+const fullICUOnly = hasFullICU() ? it : it.skip
 
 const getOperationSystemLocale = () => {
   if (typeof process !== 'undefined') {
@@ -55,7 +64,7 @@ describe('intlFormat', () => {
       assert(result === localeResult)
     })
 
-    nodeGreaterVersion13("should work with only locale's options", function () {
+    fullICUOnly("should work with only locale's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
@@ -67,7 +76,7 @@ describe('intlFormat', () => {
       assert(result === '2019. 10. 4.')
     })
 
-    nodeGreaterVersion13(
+    fullICUOnly(
       "should work with format's options and locale's options",
       function () {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
