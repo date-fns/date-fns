@@ -33,17 +33,20 @@ const getOperationSystemLocale = () => {
 
 describe('intlFormat', () => {
   describe('formats date', function () {
-    it("should work without format's options and locale's options", function () {
-      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const result = intlFormat(date)
-      const localeResult = intlFormat(date, {
-        locale: getOperationSystemLocale(),
-      })
+    fullICUOnly(
+      "should work without format's options and locale's options",
+      function () {
+        const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+        const result = intlFormat(date)
+        const localeResult = intlFormat(date, {
+          locale: getOperationSystemLocale(),
+        })
 
-      assert(result === localeResult)
-    })
+        assert(result === localeResult)
+      }
+    )
 
-    it("should work with only format's options", function () {
+    fullICUOnly("should work with only format's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const formatOptions = {
         year: 'numeric',
