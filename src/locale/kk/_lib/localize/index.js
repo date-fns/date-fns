@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['б.з.д.', 'б.з.'],
   abbreviated: ['б.з.д.', 'б.з.'],
-  wide: ['біздің заманымызға дейін', 'біздің заманымыз']
+  wide: ['біздің заманымызға дейін', 'біздің заманымыз'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ші тоқ.', '2-ші тоқ.', '3-ші тоқ.', '4-ші тоқ.'],
-  wide: ['1-ші тоқсан', '2-ші тоқсан', '3-ші тоқсан', '4-ші тоқсан']
+  wide: ['1-ші тоқсан', '2-ші тоқсан', '3-ші тоқсан', '4-ші тоқсан'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'қыр',
     'қаз',
     'қар',
-    'жел'
+    'жел',
   ],
   wide: [
     'қаңтар',
@@ -40,8 +40,8 @@ var monthValues = {
     'қыркүйек',
     'қазан',
     'қараша',
-    'желтоқсан'
-  ]
+    'желтоқсан',
+  ],
 }
 var formattingMonthValues = {
   narrow: ['Қ', 'А', 'Н', 'С', 'М', 'М', 'Ш', 'Т', 'Қ', 'Қ', 'Қ', 'Ж'],
@@ -57,7 +57,7 @@ var formattingMonthValues = {
     'қыр',
     'қаз',
     'қар',
-    'жел'
+    'жел',
   ],
   wide: [
     'қаңтар',
@@ -71,8 +71,8 @@ var formattingMonthValues = {
     'қыркүйек',
     'қазан',
     'қараша',
-    'желтоқсан'
-  ]
+    'желтоқсан',
+  ],
 }
 
 var dayValues = {
@@ -86,8 +86,8 @@ var dayValues = {
     'сәрсенбі',
     'бейсенбі',
     'жұма',
-    'сенбі'
-  ]
+    'сенбі',
+  ],
 }
 
 var dayPeriodValues = {
@@ -99,7 +99,7 @@ var dayPeriodValues = {
     morning: 'таң',
     afternoon: 'күндіз',
     evening: 'кеш',
-    night: 'түн'
+    night: 'түн',
   },
   wide: {
     am: 'ТД',
@@ -109,8 +109,8 @@ var dayPeriodValues = {
     morning: 'таң',
     afternoon: 'күндіз',
     evening: 'кеш',
-    night: 'түн'
-  }
+    night: 'түн',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -121,7 +121,7 @@ var formattingDayPeriodValues = {
     morning: 'таң',
     afternoon: 'күн',
     evening: 'кеш',
-    night: 'түн'
+    night: 'түн',
   },
   wide: {
     am: 'ТД',
@@ -131,24 +131,37 @@ var formattingDayPeriodValues = {
     morning: 'таңертең',
     afternoon: 'күндіз',
     evening: 'кеште',
-    night: 'түнде'
-  }
+    night: 'түнде',
+  },
+}
+var suffixes = {
+  0: '-ші',
+  1: '-ші',
+  2: '-ші',
+  3: '-ші',
+  4: '-ші',
+  5: '-ші',
+  6: '-шы',
+  7: '-ші',
+  8: '-ші',
+  9: '-шы',
+  10: '-шы',
+  20: '-шы',
+  30: '-шы',
+  40: '-шы',
+  50: '-ші',
+  60: '-шы',
+  70: '-ші',
+  80: '-ші',
+  90: '-шы',
+  100: '-ші',
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var suffix
-
-  if (unit === 'date') {
-    suffix = '-ші'
-  } else if (unit === 'week' || unit === 'minute' || unit === 'second') {
-    suffix = '-ші'
-  } else {
-    suffix = '-ші'
-  }
-
-  return dirtyNumber + suffix
+function ordinalNumber(dirtyNumber) {
+  var number = Number(dirtyNumber)
+  var a = number % 10
+  var b = number >= 100 ? 100 : null
+  return number + (suffixes[number] || suffixes[a] || suffixes[b])
 }
 
 var localize = {
@@ -156,35 +169,35 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

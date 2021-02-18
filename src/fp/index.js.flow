@@ -418,6 +418,7 @@ declare module.exports: {
   lastDayOfYear: CurriedFn1<Date | number, Date>,
   lightFormat: CurriedFn2<string, Date | number, string>,
   max: CurriedFn1<(Date | number)[], Date>,
+  milliseconds: CurriedFn1<Duration, number>,
   min: CurriedFn1<(Date | number)[], Date>,
   parse: CurriedFn3<Date | number, string, string, Date>,
   parseISO: CurriedFn1<string, Date>,

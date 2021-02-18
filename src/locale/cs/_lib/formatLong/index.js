@@ -3,39 +3,39 @@ import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 var dateFormats = {
   full: 'EEEE, d. MMMM yyyy',
   long: 'd. MMMM yyyy',
-  medium: 'd.M.yyyy',
-  short: 'd.M.yy'
+  medium: 'd. M. yyyy',
+  short: 'dd.MM.yyyy',
 }
 
 var timeFormats = {
   full: 'H:mm:ss zzzz',
   long: 'H:mm:ss z',
   medium: 'H:mm:ss',
-  short: 'H:mm'
+  short: 'H:mm',
 }
 
 var dateTimeFormats = {
   full: "{{date}} 'v' {{time}}",
   long: "{{date}} 'v' {{time}}",
   medium: '{{date}}, {{time}}',
-  short: '{{date}}, {{time}}'
+  short: '{{date}}, {{time}}',
 }
 
 var formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
 
   time: buildFormatLongFn({
     formats: timeFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
 
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'full'
-  })
+    defaultWidth: 'full',
+  }),
 }
 
 export default formatLong

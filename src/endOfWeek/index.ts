@@ -1,6 +1,7 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocalOptions, WeekStartOptions } from '../types'
 
 /**
  * @name endOfWeek
@@ -25,25 +26,28 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The end of a week for 2 September 2014 11:55:00:
- * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sat Sep 06 2014 23:59:59.999
  *
  * @example
  * // If the week starts on Monday, the end of the week for 2 September 2014 11:55:00:
- * var result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
+ * const result = endOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 23:59:59.999
  */
-export default function endOfWeek(dirtyDate, dirtyOptions) {
+export default function endOfWeek(
+  dirtyDate: Date | number,
+  dirtyOptions?: LocalOptions & WeekStartOptions
+): Date {
   requiredArgs(1, arguments)
 
-  var options = dirtyOptions || {}
+  const options = dirtyOptions || {}
 
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -53,9 +57,9 @@ export default function endOfWeek(dirtyDate, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var date = toDate(dirtyDate)
-  var day = date.getDay()
-  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+  const date = toDate(dirtyDate)
+  const day = date.getDay()
+  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
   date.setDate(date.getDate() + diff)
   date.setHours(23, 59, 59, 999)
