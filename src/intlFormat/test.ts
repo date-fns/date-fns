@@ -21,9 +21,8 @@ const getOperationSystemLocale = () => {
   if (typeof process !== 'undefined') {
     const ENV = process.env
     const language = ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
-    return language?.split('.')[0]
+    return language?.split('.')[0].replace('_', '-')
   } else {
-    console.error('window.navigator', window.navigator)
     return (
       // @ts-expect-error
       window.navigator.userLanguage ||

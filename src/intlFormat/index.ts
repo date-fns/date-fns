@@ -103,7 +103,7 @@ export default function intlFormat(
   } else {
     localeOptions = formatOrLocale
   }
-  console.error('locale', localeOptions?.locale)
+
   return new Intl.DateTimeFormat(localeOptions?.locale, formatOptions).format(
     date
   )
