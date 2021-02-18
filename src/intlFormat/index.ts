@@ -104,7 +104,7 @@ export default function intlFormat(
     localeOptions = formatOrLocale
   }
   const locale = localeOptions ? localeOptions.locale : 'default'
-
+  console.error('locale', locale)
   return new Intl.DateTimeFormat(locale, formatOptions).format(date)
 }
 
