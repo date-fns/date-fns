@@ -1,5 +1,7 @@
+import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay'
 import addDays from '../addDays'
+import toDate from '../toDate/index'
 /**
  * @name nextMonday
  * @category Weekday Helpers
@@ -18,23 +20,26 @@ import addDays from '../addDays'
  * var result = nextMonday(new Date(2020, 2, 22))
  * => new Date(2020, 2, 23)
  **/
-export default function nextMonday(date: Date) {
-  switch (getDay(date)) {
+export default function nextMonday(date: Date): Date {
+  requiredArgs(1, arguments)
+  const convertedDate = toDate(date)
+
+  switch (getDay(convertedDate)) {
     case 0:
-      return addDays(date, 1)
+      return addDays(convertedDate, 1)
     case 1:
-      return addDays(date, 7)
+      return addDays(convertedDate, 7)
     case 2:
-      return addDays(date, 6)
+      return addDays(convertedDate, 6)
     case 3:
-      return addDays(date, 5)
+      return addDays(convertedDate, 5)
     case 4:
-      return addDays(date, 4)
+      return addDays(convertedDate, 4)
     case 5:
-      return addDays(date, 3)
+      return addDays(convertedDate, 3)
     case 6:
-      return addDays(date, 2)
+      return addDays(convertedDate, 2)
     default:
-      return date
+      return convertedDate
   }
 }
