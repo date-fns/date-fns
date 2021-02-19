@@ -315,8 +315,9 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  *   // Before v2.0.0
  *   parse('2016-01-01')
  *
- *   // v2.0.0 onward
- *   toDate('2016-01-01')
+ *   // v2.0.0 onward (toDate no longer accepts a string)
+ *   toDate(1392098430000) // Unix to timestamp
+ *   toDate(new Date(2014, 1, 11, 11, 30, 30)) // Cloning the date
  *   parse('2016-01-01', 'yyyy-MM-dd', new Date())
  *   ```
  *

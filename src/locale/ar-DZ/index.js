@@ -7,8 +7,8 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Arabic locale (Modern Standard Arabic ).
- * @language Modern Standard Arabic (Algeria) [ar-dz]
+ * @summary Arabic locale (Algerian Arabic).
+ * @language Algerian Arabic
  * @iso-639-2 ara
  * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
  * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
@@ -22,8 +22,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale

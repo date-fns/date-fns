@@ -96,10 +96,10 @@ Run tests once:
 yarn test --single-run
 ```
 
-To test a function in REPL, use `babel-node` located in `./node_modules/.bin`:
+To test a function in REPL, use `babel-node` located in `./node_modules/.bin` (mind the `-x` flag to support also TypeScript files):
 
 ```sh
-./node_modules/.bin/babel-node
+./node_modules/.bin/babel-node -x ".js",".ts"
 
 > const toDate = require('./src/toDate')
 undefined
@@ -135,15 +135,6 @@ yarn lint
 
 [prettier]: https://prettier.io/
 [eslint]: https://eslint.org/
-
-### Use EditorConfig
-
-The project uses [EditorConfig] to define basic coding style guides.
-Please install a plugin for your editor of choice or manually enforce
-the rules listed in [.editorconfig].
-
-[editorconfig]: http://editorconfig.org
-[.editorconfig]: https://github.com/date-fns/date-fns.org/blob/master/.editorconfig
 
 ## Documentation
 

@@ -3,7 +3,7 @@
 
 export type Interval = {
   start: Date | number,
-  end: Date | number
+  end: Date | number,
 }
 
 export type Locale = {
@@ -16,12 +16,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   formatLong?: {
     date: (...args: Array<any>) => any,
     time: (...args: Array<any>) => any,
-    dateTime: (...args: Array<any>) => any
+    dateTime: (...args: Array<any>) => any,
   },
   match?: {
     ordinalNumber: (...args: Array<any>) => any,
@@ -29,12 +29,12 @@ export type Locale = {
     quarter: (...args: Array<any>) => any,
     month: (...args: Array<any>) => any,
     day: (...args: Array<any>) => any,
-    dayPeriod: (...args: Array<any>) => any
+    dayPeriod: (...args: Array<any>) => any,
   },
   options?: {
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-  }
+    firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
+  },
 }
 
 export type Duration = {
@@ -44,7 +44,7 @@ export type Duration = {
   days?: number,
   hours?: number,
   minutes?: number,
-  seconds?: number
+  seconds?: number,
 }
 
 declare module.exports: {
@@ -76,7 +76,7 @@ declare module.exports: {
     intervalLeft: Interval,
     intervalRight: Interval,
     options?: {
-      inclusive?: boolean
+      inclusive?: boolean,
     }
   ) => boolean,
 
@@ -129,7 +129,7 @@ declare module.exports: {
     dateRight: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => number,
 
@@ -191,14 +191,14 @@ declare module.exports: {
   eachDayOfInterval: (
     interval: Interval,
     options?: {
-      step?: number
+      step?: number,
     }
   ) => Date[],
 
   eachHourOfInterval: (
     interval: Interval,
     options?: {
-      step?: number
+      step?: number,
     }
   ) => Date[],
 
@@ -216,7 +216,7 @@ declare module.exports: {
     interval: Interval,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => Date[],
 
@@ -227,7 +227,7 @@ declare module.exports: {
   endOfDecade: (
     date: Date | number,
     options?: {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     }
   ) => Date,
 
@@ -253,7 +253,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => Date,
 
@@ -269,7 +269,7 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: number,
       useAdditionalWeekYearTokens?: boolean,
-      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean,
     }
   ) => string,
 
@@ -279,7 +279,7 @@ declare module.exports: {
     options?: {
       includeSeconds?: boolean,
       addSuffix?: boolean,
-      locale?: Locale
+      locale?: Locale,
     }
   ) => string,
 
@@ -290,7 +290,7 @@ declare module.exports: {
       addSuffix?: boolean,
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
       roundingMethod?: 'floor' | 'ceil' | 'round',
-      locale?: Locale
+      locale?: Locale,
     }
   ) => string,
 
@@ -299,7 +299,7 @@ declare module.exports: {
     options?: {
       includeSeconds?: boolean,
       addSuffix?: boolean,
-      locale?: Locale
+      locale?: Locale,
     }
   ) => string,
 
@@ -309,7 +309,7 @@ declare module.exports: {
       addSuffix?: boolean,
       unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
       roundingMethod?: 'floor' | 'ceil' | 'round',
-      locale?: Locale
+      locale?: Locale,
     }
   ) => string,
 
@@ -319,7 +319,7 @@ declare module.exports: {
       format?: string[],
       zero?: boolean,
       delimiter?: string,
-      locale?: Locale
+      locale?: Locale,
     }
   ) => string,
 
@@ -327,7 +327,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       format?: 'extended' | 'basic',
-      representation?: 'complete' | 'date' | 'time'
+      representation?: 'complete' | 'date' | 'time',
     }
   ) => string,
 
@@ -335,7 +335,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       format?: 'extended' | 'basic',
-      representation?: 'complete' | 'date' | 'time'
+      representation?: 'complete' | 'date' | 'time',
     }
   ) => string,
 
@@ -346,14 +346,14 @@ declare module.exports: {
     baseDate: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => string,
 
   formatRFC3339: (
     date: Date | number,
     options?: {
-      fractionDigits?: 0 | 1 | 2 | 3
+      fractionDigits?: 0 | 1 | 2 | 3,
     }
   ) => string,
 
@@ -407,7 +407,7 @@ declare module.exports: {
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     }
   ) => number,
 
@@ -415,7 +415,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => number,
 
@@ -423,7 +423,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => number,
 
@@ -432,7 +432,7 @@ declare module.exports: {
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     }
   ) => number,
 
@@ -468,7 +468,7 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       useAdditionalWeekYearTokens?: boolean,
-      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean,
     }
   ) => boolean,
 
@@ -500,7 +500,7 @@ declare module.exports: {
     dateRight: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => boolean,
 
@@ -526,7 +526,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => boolean,
 
@@ -561,7 +561,7 @@ declare module.exports: {
   lastDayOfQuarter: (
     date: Date | number,
     options?: {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     }
   ) => Date,
 
@@ -569,7 +569,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => Date,
 
@@ -578,6 +578,8 @@ declare module.exports: {
   lightFormat: (date: Date | number, format: string) => string,
 
   max: (datesArray: (Date | number)[]) => Date,
+
+  milliseconds: (duration: Duration) => number,
 
   min: (datesArray: (Date | number)[]) => Date,
 
@@ -590,14 +592,14 @@ declare module.exports: {
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
       firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
       useAdditionalWeekYearTokens?: boolean,
-      useAdditionalDayOfYearTokens?: boolean
+      useAdditionalDayOfYearTokens?: boolean,
     }
   ) => Date,
 
   parseISO: (
     argument: string,
     options?: {
-      additionalDigits?: 0 | 1 | 2
+      additionalDigits?: 0 | 1 | 2,
     }
   ) => Date,
 
@@ -606,7 +608,7 @@ declare module.exports: {
   roundToNearestMinutes: (
     date: Date | number,
     options?: {
-      nearestTo?: number
+      nearestTo?: number,
     }
   ) => Date,
 
@@ -619,7 +621,7 @@ declare module.exports: {
       hours?: number,
       minutes?: number,
       seconds?: number,
-      milliseconds?: number
+      milliseconds?: number,
     }
   ) => Date,
 
@@ -630,7 +632,7 @@ declare module.exports: {
     day: number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => Date,
 
@@ -660,7 +662,7 @@ declare module.exports: {
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     }
   ) => Date,
 
@@ -670,7 +672,7 @@ declare module.exports: {
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     }
   ) => Date,
 
@@ -702,7 +704,7 @@ declare module.exports: {
     date: Date | number,
     options?: {
       locale?: Locale,
-      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+      weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
     }
   ) => Date,
 
@@ -711,7 +713,7 @@ declare module.exports: {
     options?: {
       locale?: Locale,
       weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+      firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7,
     }
   ) => Date,
 
@@ -747,5 +749,5 @@ declare module.exports: {
 
   maxTime: number,
 
-  minTime: number
+  minTime: number,
 }

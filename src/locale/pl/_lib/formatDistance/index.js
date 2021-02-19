@@ -76,7 +76,7 @@ var formatDistanceLocale = {
 
   aboutXHours: {
     one: {
-      regular: 'około godzina',
+      regular: 'około godziny',
       past: 'około godziny',
       future: 'około godzinę'
     },

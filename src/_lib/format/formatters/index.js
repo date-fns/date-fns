@@ -460,11 +460,17 @@ var formatters = {
     switch (token) {
       case 'a':
       case 'aa':
-      case 'aaa':
         return localize.dayPeriod(dayPeriodEnumValue, {
           width: 'abbreviated',
           context: 'formatting'
         })
+      case 'aaa':
+        return localize
+          .dayPeriod(dayPeriodEnumValue, {
+            width: 'abbreviated',
+            context: 'formatting'
+          })
+          .toLowerCase()
       case 'aaaaa':
         return localize.dayPeriod(dayPeriodEnumValue, {
           width: 'narrow',
@@ -494,11 +500,17 @@ var formatters = {
     switch (token) {
       case 'b':
       case 'bb':
-      case 'bbb':
         return localize.dayPeriod(dayPeriodEnumValue, {
           width: 'abbreviated',
           context: 'formatting'
         })
+      case 'bbb':
+        return localize
+          .dayPeriod(dayPeriodEnumValue, {
+            width: 'abbreviated',
+            context: 'formatting'
+          })
+          .toLowerCase()
       case 'bbbbb':
         return localize.dayPeriod(dayPeriodEnumValue, {
           width: 'narrow',

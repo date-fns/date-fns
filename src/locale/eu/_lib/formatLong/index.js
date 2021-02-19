@@ -1,12 +1,11 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
-  full: "EEEE, d 'de' MMMM y",
-  long: "d 'de' MMMM y",
-  medium: 'd MMM y',
-  short: 'dd/MM/y'
+  full: "EEEE, y'ko' MMMM'ren' d'a' y'ren'",
+  long: "y'ko' MMMM'ren' d'a'",
+  medium: 'y MMM d',
+  short: 'yy/MM/dd',
 }
-
 var timeFormats = {
   full: 'HH:mm:ss zzzz',
   long: 'HH:mm:ss z',
