@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['f.Kr.', 'e.Kr.'],
   abbreviated: ['f.Kr.', 'e.Kr.'],
-  wide: ['före Kristus', 'efter Kristus']
+  wide: ['före Kristus', 'efter Kristus'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1:a kvartalet', '2:a kvartalet', '3:e kvartalet', '4:e kvartalet']
+  wide: ['1:a kvartalet', '2:a kvartalet', '3:e kvartalet', '4:e kvartalet'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'sep.',
     'okt.',
     'nov.',
-    'dec.'
+    'dec.',
   ],
   wide: [
     'januari',
@@ -40,15 +40,15 @@ var monthValues = {
     'september',
     'oktober',
     'november',
-    'december'
-  ]
+    'december',
+  ],
 }
 
 var dayValues = {
   narrow: ['S', 'M', 'T', 'O', 'T', 'F', 'L'],
   short: ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'],
-  abbreviated: ['sön', 'mån', 'tis', 'ons', 'tor', 'fre', 'lör'],
-  wide: ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag']
+  abbreviated: ['sön', 'mån', 'tis', 'ons', 'tors', 'fre', 'lör'],
+  wide: ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sv.html#1888
@@ -61,7 +61,7 @@ var dayPeriodValues = {
     morning: 'morg.',
     afternoon: 'efterm.',
     evening: 'kväll',
-    night: 'natt'
+    night: 'natt',
   },
   abbreviated: {
     am: 'f.m.',
@@ -71,7 +71,7 @@ var dayPeriodValues = {
     morning: 'morgon',
     afternoon: 'efterm.',
     evening: 'kväll',
-    night: 'natt'
+    night: 'natt',
   },
   wide: {
     am: 'förmiddag',
@@ -81,8 +81,8 @@ var dayPeriodValues = {
     morning: 'morgon',
     afternoon: 'eftermiddag',
     evening: 'kväll',
-    night: 'natt'
-  }
+    night: 'natt',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -93,7 +93,7 @@ var formattingDayPeriodValues = {
     morning: 'på morg.',
     afternoon: 'på efterm.',
     evening: 'på kvällen',
-    night: 'på natten'
+    night: 'på natten',
   },
   abbreviated: {
     am: 'fm',
@@ -103,7 +103,7 @@ var formattingDayPeriodValues = {
     morning: 'på morg.',
     afternoon: 'på efterm.',
     evening: 'på kvällen',
-    night: 'på natten'
+    night: 'på natten',
   },
   wide: {
     am: 'fm',
@@ -113,8 +113,8 @@ var formattingDayPeriodValues = {
     morning: 'på morgonen',
     afternoon: 'på eftermiddagen',
     evening: 'på kvällen',
-    night: 'på natten'
-  }
+    night: 'på natten',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -136,33 +136,33 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
