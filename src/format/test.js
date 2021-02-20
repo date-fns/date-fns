@@ -728,6 +728,12 @@ describe('format', function() {
     assert.throws(block, RangeError)
   })
 
+  it('throws RangeError exception if the format string is undefined', function() {
+    const block = format.bind(null, date, undefined)
+    assert.throws(block, RangeError)
+    assert.throws(block, /format must be defined/)
+  })
+
   it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
     assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })

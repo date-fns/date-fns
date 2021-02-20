@@ -326,6 +326,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
  * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
  * @throws {RangeError} format string contains an unescaped latin alphabet character
+ * @throws {RangeError} format string is undefined
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -347,6 +348,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  */
 export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   requiredArgs(2, arguments)
+
+  if (dirtyFormatStr === undefined) {
+    throw new RangeError('format must be defined')
+  }
 
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
