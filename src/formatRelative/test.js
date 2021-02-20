@@ -160,6 +160,32 @@ describe('formatRelative', function() {
       })
       assert.throws(block, RangeError)
     })
+    
+    it("fallbacks to `other` token when locale's `formatRelative` does not handle the more precise token", function() {
+      var customLocale = {
+        localize: {
+          month: function() {
+            return 'works'
+          }
+        },
+        formatLong: {
+          date: function() {
+            return "'It' MMMM"
+          }
+        },
+        formatRelative: function(token) {
+          if (token === 'other') {
+            return "P 'perfectly!'"
+          }
+        }
+      }
+      var result = formatRelative(
+        new Date(1986, 3 /* Apr */, 5, 10, 32, 0, 900),
+        baseDate,
+        { locale: customLocale }
+      )
+      assert(result === 'It works perfectly!')
+    })
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
