@@ -12,6 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of business days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Object} [options] - an object with options.
+ * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
  * @returns {Date} the new date with the business days subtracted
  * @throws {TypeError} 2 arguments required
  *
@@ -20,9 +22,20 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = subBusinessDays(new Date(2014, 8, 1), 10)
  * //=> Mon Aug 18 2014 00:00:00 (skipped weekend days)
  */
-export default function subBusinessDays(dirtyDate, dirtyAmount) {
+export default function subBusinessDays(
+  dirtyDate: Date | number,
+  dirtyAmount: number,
+  dirtyOptions?: {
+    businessDays?: number[]
+  }
+) {
   requiredArgs(2, arguments)
 
-  var amount = toInteger(dirtyAmount)
-  return addBusinessDays(dirtyDate, -amount)
+  const amount = toInteger(dirtyAmount)
+  const options = dirtyOptions || {}
+  const businessDays =
+    options.businessDays == null
+      ? [1, 2, 3, 4, 5]
+      : options.businessDays.map(toInteger)
+  return addBusinessDays(dirtyDate, -amount, { businessDays })
 }
