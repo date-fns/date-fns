@@ -6,7 +6,7 @@ import isAfter from '.'
 
 describe('isAfter', function() {
   it('returns true if the first date is after the second one', function() {
-    var result = isAfter(
+    const result = isAfter(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     )
@@ -14,7 +14,7 @@ describe('isAfter', function() {
   })
 
   it('returns false if the first date is before the second one', function() {
-    var result = isAfter(
+    const result = isAfter(
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10)
     )
@@ -22,7 +22,7 @@ describe('isAfter', function() {
   })
 
   it('returns false if the first date is equal to the second one', function() {
-    var result = isAfter(
+    const result = isAfter(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1989, 6 /* Jul */, 10)
     )
@@ -30,7 +30,7 @@ describe('isAfter', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = isAfter(
+    const result = isAfter(
       new Date(1989, 6 /* Jul */, 10).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()
     )
@@ -38,17 +38,17 @@ describe('isAfter', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
-    var result = isAfter(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
+    const result = isAfter(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
     assert(result === false)
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
-    var result = isAfter(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
+    const result = isAfter(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
     assert(result === false)
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
-    var result = isAfter(new Date(NaN), new Date(NaN))
+    const result = isAfter(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
 
