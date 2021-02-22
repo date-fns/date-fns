@@ -13,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
+ * @param {Date|Number} dirtyLeftDate - the first date to compare
+ * @param {Date|Number} dirtyRightDate - the second date to compare
  * @returns {Boolean} the dates are equal
  * @throws {TypeError} 2 arguments required
  *
@@ -26,10 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> false
  */
-export default function isEqual(dirtyLeftDate, dirtyRightDate) {
+export default function isEqual(dirtyLeftDate: Date | number, dirtyRightDate: Date | number) {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyLeftDate)
-  var dateRight = toDate(dirtyRightDate)
+  const dateLeft: Date = toDate(dirtyLeftDate)
+  const dateRight: Date = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()
 }
