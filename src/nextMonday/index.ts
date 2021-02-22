@@ -22,24 +22,5 @@ import toDate from '../toDate/index'
  **/
 export default function nextMonday(date: Date): Date {
   requiredArgs(1, arguments)
-  const convertedDate = toDate(date)
-
-  switch (getDay(convertedDate)) {
-    case 0:
-      return addDays(convertedDate, 1)
-    case 1:
-      return addDays(convertedDate, 7)
-    case 2:
-      return addDays(convertedDate, 6)
-    case 3:
-      return addDays(convertedDate, 5)
-    case 4:
-      return addDays(convertedDate, 4)
-    case 5:
-      return addDays(convertedDate, 3)
-    case 6:
-      return addDays(convertedDate, 2)
-    default:
-      return convertedDate
-  }
+  return addDays(date, map[getDay(date)])
 }
