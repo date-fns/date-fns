@@ -32,7 +32,7 @@ type Interval = {
 }
 type IntervalAliased = Interval
 
-export type Locale = {
+type Locale = {
   code?: string
   formatDistance?: (...args: Array<any>) => any
   formatRelative?: (...args: Array<any>) => any
