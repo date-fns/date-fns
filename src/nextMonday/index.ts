@@ -2,6 +2,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay'
 import addDays from '../addDays'
 import toDate from '../toDate/index'
+
+const map = [1, 7, 6, 5, 4, 3, 2]
+
 /**
  * @name nextMonday
  * @category Weekday Helpers
