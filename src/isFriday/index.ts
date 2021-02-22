@@ -13,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param {Date|Number} dirtyDate - the date to check
  * @returns {Boolean} the date is Friday
  * @throws {TypeError} 1 argument required
  *
@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isFriday(new Date(2014, 8, 26))
  * //=> true
  */
-export default function isFriday(dirtyDate) {
+export default function isFriday(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDay() === 5
