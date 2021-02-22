@@ -1,20 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "lib": ["dom", "es2017", "es2018.promise"],
-    "strict": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "lib": ["DOM", "ES2017", "ES2018.Promise"],
+    "moduleResolution": "Node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "importHelpers": true,
-    "baseUrl": ".",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "target": "ES6"
   },
   "exclude": ["node_modules", "dist", "tmp"]
 }
