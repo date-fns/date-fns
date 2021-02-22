@@ -17,7 +17,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param {Date|Number} dirtyDate - the date to check
  * @returns {Boolean} the date is in the future
  * @throws {TypeError} 1 argument required
  *
@@ -26,7 +26,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isFuture(new Date(2014, 11, 31))
  * //=> true
  */
-export default function isFuture(dirtyDate) {
+export default function isFuture(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getTime() > Date.now()
