@@ -22,7 +22,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isMonday(new Date(2014, 8, 22))
  * //=> true
  */
-export default function isMonday(dirtyDate) {
+export default function isMonday(date: Date | number): boolean {
   requiredArgs(1, arguments)
 
   return toDate(dirtyDate).getDay() === 1
