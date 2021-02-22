@@ -13,7 +13,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param {Date|Number} dirtyDate - the date to check
  * @returns {Boolean} the date is in the leap year
  * @throws {TypeError} 1 argument required
  *
@@ -22,10 +22,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isLeapYear(new Date(2012, 8, 1))
  * //=> true
  */
-export default function isLeapYear(dirtyDate) {
+export default function isLeapYear(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
   return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
 }
