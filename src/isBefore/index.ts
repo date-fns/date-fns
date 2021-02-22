@@ -13,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dirtyDate - the date that should be before the other one to return true
- * @param {Date|Number} dirtyDateToCompare - the date to compare with
+ * @param {Date|Number} date - the date that should be before the other one to return true
+ * @param {Date|Number} dateToCompare - the date to compare with
  * @returns {Boolean} the first date is before the second date
  * @throws {TypeError} 2 arguments required
  *
