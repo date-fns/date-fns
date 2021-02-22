@@ -25,7 +25,7 @@ describe('lastDayOfISOWeek', function() {
 
   it('returns `Invalid Date` if the given date is invalid', function() {
     const result = lastDayOfISOWeek(new Date(NaN))
-    assert(isNaN(result.getTime()))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {

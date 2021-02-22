@@ -23,11 +23,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = lastDayOfYear(new Date(2014, 8, 2, 11, 55, 00))
  * //=> Wed Dec 31 2014 00:00:00
  */
-export default function lastDayOfYear(dirtyDate) {
+export default function lastDayOfYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(0, 0, 0, 0)
   return date
