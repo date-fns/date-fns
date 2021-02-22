@@ -68,7 +68,7 @@
     "cloc": "^2.2.0",
     "coveralls": "^3.0.6",
     "eslint": "7.20.0",
-    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-prettier": "8.0.0",
     "firebase": "^3.7.1",
     "flow-bin": "0.84.0",
     "fs-promise": "^1.0.0",
