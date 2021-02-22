@@ -112,6 +112,10 @@
     "webpack-cli": "^3.1.2",
     "world-countries": "^1.8.1"
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  },
   "resolutions": {
     "ajv": "6.8.1"
   }
