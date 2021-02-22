@@ -29,7 +29,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isEqual(dirtyLeftDate: Date | number, dirtyRightDate: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  const dateLeft: Date = toDate(dirtyLeftDate)
-  const dateRight: Date = toDate(dirtyRightDate)
+  const dateLeft = toDate(dirtyLeftDate)
+  const dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()
 }
