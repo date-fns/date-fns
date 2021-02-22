@@ -6,7 +6,7 @@ import eachWeekendOfMonth from '.'
 
 describe('eachWeekendOfMonth', () => {
   it('returns all weekends of the given month', () => {
-    var result = eachWeekendOfMonth(new Date(2022, 1, 20))
+    const result = eachWeekendOfMonth(new Date(2022, 1, 20))
     assert.deepStrictEqual(result, [
       new Date(2022, 1, 5),
       new Date(2022, 1, 6),

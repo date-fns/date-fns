@@ -26,7 +26,7 @@ describe('isLeapYear', function() {
   })
 
   it('accepts a timestamp', function() {
-    var date = new Date(2012, 6 /* Jul */, 2).getTime()
+    const date = new Date(2012, 6 /* Jul */, 2).getTime()
     const result = isLeapYear(date)
     assert(result === true)
   })

@@ -26,8 +26,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function endOfYear(dirtyDate: Date | number): Date {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
   date.setFullYear(year + 1, 0, 0)
   date.setHours(23, 59, 59, 999)
   return date

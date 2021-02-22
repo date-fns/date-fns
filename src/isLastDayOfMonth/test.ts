@@ -16,7 +16,7 @@ describe('isLastDayOfMonth', function() {
   })
 
   it('accepts a timestamp', function() {
-    var date = new Date(2014, 9 /* Oct */, 31).getTime()
+    const date = new Date(2014, 9 /* Oct */, 31).getTime()
     const result = isLastDayOfMonth(date)
     assert(result === true)
   })
