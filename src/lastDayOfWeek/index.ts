@@ -1,6 +1,12 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { Locale } from 'src/locale/types';
+
+interface Options {
+  locale?: Locale;
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+}
 
 /**
  * @name lastDayOfWeek
@@ -33,16 +39,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = lastDayOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function lastDayOfWeek(dirtyDate, dirtyOptions) {
+export default function lastDayOfWeek(dirtyDate: Date | number, dirtyOptions?: Options): Date {
   requiredArgs(1, arguments)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -52,9 +58,9 @@ export default function lastDayOfWeek(dirtyDate, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6')
   }
 
-  var date = toDate(dirtyDate)
-  var day = date.getDay()
-  var diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
+  const date = toDate(dirtyDate)
+  const day = date.getDay()
+  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn)
 
   date.setHours(0, 0, 0, 0)
   date.setDate(date.getDate() + diff)
