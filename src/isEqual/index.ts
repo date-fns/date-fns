@@ -13,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dirtyLeftDate - the first date to compare
- * @param {Date|Number} dirtyRightDate - the second date to compare
+ * @param {Date|Number} dateLeft - the first date to compare
+ * @param {Date|Number} dateRight - the second date to compare
  * @returns {Boolean} the dates are equal
  * @throws {TypeError} 2 arguments required
  *
