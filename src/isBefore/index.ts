@@ -23,10 +23,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isBefore(new Date(1989, 6, 10), new Date(1987, 1, 11))
  * //=> false
  */
-export default function isBefore(dirtyDate, dirtyDateToCompare) {
+export default function isBefore(dirtyDate: Date | number, dirtyDateToCompare: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const date = toDate(dirtyDate)
+  const dateToCompare = toDate(dirtyDateToCompare)
   return date.getTime() < dateToCompare.getTime()
 }
