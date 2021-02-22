@@ -6,7 +6,7 @@ import isEqual from '.'
 
 describe('isEqual', function() {
   it('returns true if the given dates are equal', function() {
-    var result = isEqual(
+    const result = isEqual(
       new Date(1987, 1 /* Feb */, 11),
       new Date(1987, 1 /* Feb */, 11)
     )
@@ -14,7 +14,7 @@ describe('isEqual', function() {
   })
 
   it('returns false if the given dates are not equal', function() {
-    var result = isEqual(
+    const result = isEqual(
       new Date(1989, 6 /* Jul */, 10),
       new Date(1987, 1 /* Feb */, 11)
     )
@@ -22,7 +22,7 @@ describe('isEqual', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = isEqual(
+    const result = isEqual(
       new Date(1987, 1 /* Feb */, 11).getTime(),
       new Date(1987, 1 /* Feb */, 11).getTime()
     )
@@ -30,17 +30,17 @@ describe('isEqual', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
-    var result = isEqual(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
+    const result = isEqual(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
     assert(result === false)
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
-    var result = isEqual(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
+    const result = isEqual(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
     assert(result === false)
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
-    var result = isEqual(new Date(NaN), new Date(NaN))
+    const result = isEqual(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
 

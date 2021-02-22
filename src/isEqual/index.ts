@@ -26,10 +26,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> false
  */
-export default function isEqual(dirtyLeftDate, dirtyRightDate) {
+export default function isEqual(dirtyLeftDate: Date | number, dirtyRightDate: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyLeftDate)
-  var dateRight = toDate(dirtyRightDate)
+  const dateLeft = toDate(dirtyLeftDate)
+  const dateRight = toDate(dirtyRightDate)
   return dateLeft.getTime() === dateRight.getTime()
 }
