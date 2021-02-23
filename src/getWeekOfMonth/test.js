@@ -71,10 +71,6 @@ describe('getWeekOfMonth', function() {
     assert(isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    assert.throws(getWeekOfMonth.bind(null), TypeError)
-  })
-
   it('returns the week of the month of the given date, when the given date is sunday', function() {
     var result = getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
       weekStartsOn: 1
