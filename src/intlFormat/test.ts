@@ -4,17 +4,50 @@
 import assert from 'power-assert'
 import intlFormat from '.'
 
+// Before Node version 13.0.0, only the locale data for en-US is available by default.
+const hasFullICU = () => {
+  try {
+    const january = new Date(9e8)
+    const spanish = new Intl.DateTimeFormat('es', { month: 'long' })
+    return spanish.format(january) === 'enero'
+  } catch (err) {
+    return false
+  }
+}
+
+const fullICUOnly = hasFullICU() ? it : it.skip
+
+const getOperationSystemLocale = () => {
+  if (typeof process !== 'undefined') {
+    const ENV = process.env
+    const language = ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
+    return language?.split('.')[0].replace('_', '-')
+  } else {
+    return (
+      // @ts-expect-error
+      window.navigator.userLanguage ||
+      window.navigator.language ||
+      (window.navigator.languages || [])[0]
+    )
+  }
+}
+
 describe('intlFormat', () => {
   describe('formats date', function () {
-    it("should work without format's options and locale's options", function () {
-      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+    fullICUOnly(
+      "should work without format's options and locale's options",
+      function () {
+        const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+        const result = intlFormat(date)
+        const localeResult = intlFormat(date, {
+          locale: getOperationSystemLocale(),
+        })
 
-      const result = intlFormat(date)
+        assert(result === localeResult)
+      }
+    )
 
-      assert(result === '04/10/2019')
-    })
-
-    it("should work with only format's options", function () {
+    fullICUOnly("should work with only format's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       const formatOptions = {
         year: 'numeric',
@@ -28,11 +61,14 @@ describe('intlFormat', () => {
       }
 
       const result = intlFormat(date, formatOptions)
+      const localeResult = intlFormat(date, formatOptions, {
+        locale: getOperationSystemLocale(),
+      })
 
-      assert(result === '04/10/2019, 02:30:13')
+      assert(result === localeResult)
     })
 
-    it("should work with only locale's options", function () {
+    fullICUOnly("should work with only locale's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
@@ -44,22 +80,25 @@ describe('intlFormat', () => {
       assert(result === '2019. 10. 4.')
     })
 
-    it("should work with format's options and locale's options", function () {
-      const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const formatOptions = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }
-      const localeOptions = {
-        locale: 'de-DE',
-      }
+    fullICUOnly(
+      "should work with format's options and locale's options",
+      function () {
+        const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+        const formatOptions = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }
+        const localeOptions = {
+          locale: 'de-DE',
+        }
 
-      const result = intlFormat(date, formatOptions, localeOptions)
+        const result = intlFormat(date, formatOptions, localeOptions)
 
-      assert(result === 'Freitag, 4. Oktober 2019')
-    })
+        assert(result === 'Freitag, 4. Oktober 2019')
+      }
+    )
   })
 
   it('throws RangeError if the date value is invalid', () => {
