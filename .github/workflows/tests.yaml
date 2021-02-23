@@ -20,6 +20,6 @@ jobs:
         run: export DISPLAY=:99.0
         run: sh -e /etc/init.d/xvfb start
         run: npm install -g yarn
-      # - name: Build and Test
-      #   run: ./scripts/test/travis.sh
+      - name: Build and Test
+        run: ./scripts/test/travis.sh
         
