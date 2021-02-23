@@ -1,4 +1,4 @@
-name: TEST_SUITE=main
+name: Tests
 
 on: [push, pull_request]
 
@@ -15,6 +15,11 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn lint
-      - run: yarn test
+      - name: Before install
+        run: export CHROME_BIN=chromium-browser
+        run: export DISPLAY=:99.0
+        run: sh -e /etc/init.d/xvfb start
+        run: npm install -g yarn
+      # - name: Build and Test
+      #   run: ./scripts/test/travis.sh
+        
