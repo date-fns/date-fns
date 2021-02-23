@@ -42,7 +42,7 @@ export default function addMonths(
   const dayOfMonth = date.getDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
-  // month, day, etc. For example, new Date(2020, 1, 0) returns 31 Dec 2019 and
+  // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
   // new Date(2020, 13, 1) returns 1 Feb 2021.  This is *almost* the behavior we
   // want except that dates will wrap around the end of a month, meaning that
   // new Date(2020, 13, 31) will return 3 Mar 2021 not 28 Feb 2021 as desired. So
