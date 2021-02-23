@@ -8,6 +8,22 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## [2.18.0] - 2021-02-23
+
+Kudos to [@maximtop](https://github.com/maximtop), [@rikkalo](https://github.com/rikkalo), [@tan75](https://github.com/tan75), [@leshakoss](https://github.com/leshakoss), [@kossnocorp](https://github.com/kossnocorp)
+
+### Fixed
+
+- [_torsdag_ abbreviation in Swedish](https://github.com/date-fns/date-fns/pull/2220)
+
+- [Long date formatting in Latvian locale](https://github.com/date-fns/date-fns/pull/2205)
+
+### Changed
+
+- [parseJSON() modified to allow parsing positive and negative offsets](https://github.com/date-fns/date-fns/pull/2200)
+
+- [Locale detection tests added for intlFormat()](https://github.com/date-fns/date-fns/pull/2232)
+
 ## [2.17.0] - 2021-02-05
 
 Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89), [@rikkalo](https://github.com/rikkalo), [@tan75](https://github.com/tan75), [@talgautb](https://github.com/talgautb), [@owenl131](https://github.com/owenl131), [@kylesezhi](https://github.com/kylesezhi), [@inigoiparragirre](https://github.com/inigoiparragirre), [@gius](https://github.com/gius), [@Endeauvirr](https://github.com/Endeauvirr) and [@frankyston](https://github.com/frankyston).
