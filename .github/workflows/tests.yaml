@@ -17,9 +17,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Before install
         run: export CHROME_BIN=chromium-browser
-        run: export DISPLAY=:99.0
-        run: sh -e /etc/init.d/xvfb start
-        run: npm install -g yarn
-      - name: Build and Test
-        run: ./scripts/test/travis.sh
-        
+          export DISPLAY=:99.0
+          sh -e /etc/init.d/xvfb start
+          npm install -g yarn
+      # - name: Build and Test
+      #   run: ./scripts/test/travis.sh
