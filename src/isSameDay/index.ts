@@ -23,11 +23,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
  */
-export default function isSameDay(dirtyDateLeft, dirtyDateRight) {
+export default function isSameDay(dirtyDateLeft: Date | number, dirtyDateRight: Date | number) {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  var dateRightStartOfDay = startOfDay(dirtyDateRight)
+  const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
+  const dateRightStartOfDay = startOfDay(dirtyDateRight)
 
   return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
 }
