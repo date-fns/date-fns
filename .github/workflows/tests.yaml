@@ -21,10 +21,11 @@ jobs:
         run: export DISPLAY=:99.0
       - name: Install yarn
         run: npm install -g yarn
-      - name: Run headless test
-        uses: GabrielBB/xvfb-action@v1
+      - name: gabrielbb/xvfb-action
+        uses: GabrielBB/xvfb-action@v1.0
         with:
-          working-directory: ./ #optional
           run: yarn test
+        env:
+          CI: true
       # - name: Build and Test
       #   run: ./scripts/test/travis.sh
