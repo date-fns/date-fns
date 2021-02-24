@@ -102,6 +102,12 @@ describe('nextDay', function () {
     assert.throws(result, RangeError)
   })
 
+  it('throws `RangeError` if the date is invalid', function () {
+    const isSaturday = new Date(NaN)
+    const result = nextDay.bind(null, isSaturday, 7)
+    assert.throws(result, RangeError)
+  })
+
   it('throws `TypeError` if 1 argument is passed in', function () {
     const isSaturday = new Date(2020, 2 /* Mar */, 21)
     const result = nextDay.bind(null, isSaturday)

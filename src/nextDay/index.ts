@@ -2,6 +2,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay'
 import addDays from '../addDays'
 import toDate from '../toDate'
+import isValid from '../isValid/index'
 
 const baseMap = [7, 6, 5, 4, 3, 2, 1]
 
@@ -34,6 +35,10 @@ export default function nextDay(date: Date | number, day: number): Date {
   // Throw an exception `Invalid Day` if the day is out or range
   if (!baseMap.includes(day + 1)) {
     throw new RangeError('Invalid Day')
+  }
+
+  if (!isValid(date)) {
+    throw new RangeError('Invalid Date')
   }
 
   const map = genMap(day)
