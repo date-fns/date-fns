@@ -23,11 +23,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isSameHour(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 6, 30))
  * //=> true
  */
-export default function isSameHour(dirtyDateLeft, dirtyDateRight) {
+export default function isSameHour(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfHour = startOfHour(dirtyDateLeft)
-  var dateRightStartOfHour = startOfHour(dirtyDateRight)
+  const dateLeftStartOfHour = startOfHour(dirtyDateLeft)
+  const dateRightStartOfHour = startOfHour(dirtyDateRight)
 
   return dateLeftStartOfHour.getTime() === dateRightStartOfHour.getTime()
 }
