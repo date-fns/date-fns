@@ -1,6 +1,7 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay'
 import addDays from '../addDays'
+import toDate from '../toDate'
 
 const baseMap = [7, 6, 5, 4, 3, 2, 1]
 
@@ -18,13 +19,13 @@ const baseMap = [7, 6, 5, 4, 3, 2, 1]
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * When is the next Monday after Mar, 22, 2020?
- * const result = nextMonday(new Date(2020, 2, 22), 1)
+ * When is the next Monday after Mar, 20, 2020?
+ * const result = nextDay(new Date(2020, 2, 20), 1)
  * => new Date(2020, 2, 23)
  *
  * @example
- * When is the next Tuesday after Mar, 22, 2020?
- * const result = nextMonday(new Date(2020, 2, 22), 2)
+ * When is the next Tuesday after Mar, 21, 2020?
+ * const result = nextDay(new Date(2020, 2, 21), 2)
  * => new Date(2020, 2, 24)
  **/
 
@@ -36,7 +37,7 @@ export default function nextDay(date: Date | number, day: number): Date {
   }
 
   const map = genMap(day)
-  return addDays(date, map[getDay(date)])
+  return addDays(toDate(date), map[getDay(toDate(date))])
 }
 
 function genMap(daysToMove: number): number[] {
