@@ -27,11 +27,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> true
  */
-export default function isSameSecond(dirtyDateLeft, dirtyDateRight) {
+export default function isSameSecond(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
-  var dateRightStartOfSecond = startOfSecond(dirtyDateRight)
+  const dateLeftStartOfSecond = startOfSecond(dirtyDateLeft)
+  const dateRightStartOfSecond = startOfSecond(dirtyDateRight)
 
   return dateLeftStartOfSecond.getTime() === dateRightStartOfSecond.getTime()
 }
