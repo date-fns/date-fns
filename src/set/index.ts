@@ -3,6 +3,16 @@ import setMonth from '../setMonth/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
+interface Values {
+  year?: number;
+  month?: number;
+  date?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
+}
+
 /**
  * @name set
  * @category Common Helpers
@@ -42,17 +52,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(dirtyDate, values) {
+export default function set(dirtyDate: Date | number, values: Values): Date {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {
     throw new RangeError('values parameter must be an object')
   }
 
-  var date = toDate(dirtyDate)
+  let date = toDate(dirtyDate)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date)) {
+  if (isNaN(date.getTime())) {
     return new Date(NaN)
   }
 
