@@ -24,7 +24,8 @@ jobs:
       - name: gabrielbb/xvfb-action
         uses: GabrielBB/xvfb-action@v1.0
         with:
-          run: yarn install && yarn test
+          run: yarn install
+          run: yarn test
         env:
           CI: true
       # - name: Build and Test
