@@ -10,8 +10,7 @@ const baseMap = [7, 6, 5, 4, 3, 2, 1]
  * @summary When is the next day of Week?
  *
  * @description
- * When is the next day of week?
- * {0|1|2|3|4|5|6} the day of week, 0 represents Sunday
+ * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
  * @param {Date | number} date - the date to check
  * @param {number} day - day of week
