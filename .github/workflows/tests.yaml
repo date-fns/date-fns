@@ -15,9 +15,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+      - name: export CHROME_BIN
         run: export CHROME_BIN=chromium-browser
+      - name: export DISPLAY
         run: export DISPLAY=:99.0
+      - name: sh
         run: sh -e /etc/init.d/xvfb start
+      - name: Install yarn
         run: npm install -g yarn
       # - name: Build and Test
       #   run: ./scripts/test/travis.sh
