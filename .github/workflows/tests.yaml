@@ -15,12 +15,18 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          # TODO: rename azure-pipelines/linux/xvfb.init to github-actions
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libxkbfile-dev pkg-config libsecret-1-dev libxss1 dbus xvfb libgtk-3-0 libgbm1
+          sudo cp build/azure-pipelines/linux/xvfb.init /etc/init.d/xvfb
+          sudo chmod +x /etc/init.d/xvfb
+          sudo update-rc.d xvfb defaults
+          sudo service xvfb start
       - name: export CHROME_BIN
         run: export CHROME_BIN=chromium-browser
       - name: export DISPLAY
         run: export DISPLAY=:99.0
-      - name: sh
-        run: sh -e /etc/init.d/xvfb start
       - name: Install yarn
         run: npm install -g yarn
       # - name: Build and Test
