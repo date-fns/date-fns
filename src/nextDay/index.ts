@@ -29,7 +29,7 @@ const baseMap = [7, 6, 5, 4, 3, 2, 1]
  * => new Date(2020, 2, 24)
  **/
 
-export default function nextDay(date: Date, day: number): Date {
+export default function nextDay(date: Date | number, day: number): Date {
   requiredArgs(2, arguments)
   // Throw an exception `Invalid Day` if the day is out or range
   if (!baseMap.includes(day + 1)) {
