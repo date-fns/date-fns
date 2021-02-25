@@ -25,6 +25,8 @@ jobs:
         uses: GabrielBB/xvfb-action@v1.0
         with:
           run: ./scripts/test/travis.sh
+          env:
+          TEST_SUITE: main
         env:
           CI: true
       # - name: Build and Test
