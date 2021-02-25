@@ -3,6 +3,7 @@ import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import compareAsc from '../compareAsc/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import isLastDayOfMonth from '../isLastDayOfMonth/index'
+import differenceInDays from '../differenceInDays/index'
 
 /**
  * @name differenceInMonths
@@ -34,29 +35,36 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
 
   var sign = compareAsc(dateLeft, dateRight)
   var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  var result
 
-  // This will check if the date is end of Feb and assign a higher end of month date
-  // to compare it with Jan
-  if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
-    dateLeft.setDate(30)
+  // Check for dates of Feb 28 and Feb 29 of the same year
+  if (Math.abs(differenceInDays(dateLeft, dateRight)) < 2) {
+    result = 0
+  } else {
+    if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {
+      // This will check if the date is end of Feb and assign a higher end of month date
+      // to compare it with Jan
+      dateLeft.setDate(30)
+    }
+
+    dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
+
+    // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
+    // If so, result must be decreased by 1 in absolute value
+    var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+
+    // Check for cases of one full calendar month
+    if (
+      isLastDayOfMonth(toDate(dirtyDateLeft)) &&
+      difference === 1 &&
+      compareAsc(dirtyDateLeft, dateRight) === 1
+    ) {
+      isLastMonthNotFull = false
+    }
+
+    result = sign * (difference - isLastMonthNotFull)
   }
 
-  dateLeft.setMonth(dateLeft.getMonth() - sign * difference)
-
-  // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
-  // If so, result must be decreased by 1 in absolute value
-  var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
-
-  // Check for cases of one full calendar month
-  if (
-    isLastDayOfMonth(toDate(dirtyDateLeft)) &&
-    difference === 1 &&
-    compareAsc(dirtyDateLeft, dateRight) === 1
-  ) {
-    isLastMonthNotFull = false
-  }
-
-  var result = sign * (difference - isLastMonthNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result
 }

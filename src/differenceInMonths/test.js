@@ -5,6 +5,41 @@ import assert from 'power-assert'
 import differenceInMonths from '.'
 
 describe('differenceInMonths', function () {
+  it('returns the number of full months between the given dates - end of Feb', function () {
+    const start = new Date('Feb 29 2012 09:00:00')
+    const end = new Date('Feb 28 2012 10:00:00')
+    var result = differenceInMonths(start, end)
+    assert(result === 0)
+  })
+
+  it('returns the number of full months between the given dates - end of Feb', function () {
+    const start = new Date('Feb 28 2012 09:00:00')
+    const end = new Date('Feb 29 2012 10:00:00')
+    var result = differenceInMonths(start, end)
+    assert(result === 0)
+  })
+
+  it('returns the number of full months between the given dates - end of Feb', function () {
+    const start = new Date('Feb 27 2012 09:00:00')
+    const end = new Date('Feb 27 2012 10:00:00')
+    var result = differenceInMonths(start, end)
+    assert(result === 0)
+  })
+
+  it('returns the number of full months between the given dates - end of Feb', function () {
+    const start = new Date('Feb 29 2012 09:00:00')
+    const end = new Date('Feb 29 2012 10:00:00')
+    var result = differenceInMonths(start, end)
+    assert(result === 0)
+  })
+
+  it('returns the number of full months between the given dates', function () {
+    const start = new Date('Feb 28 2012 09:00:00')
+    const end = new Date('Feb 28 2012 10:00:00')
+    var result = differenceInMonths(start, end)
+    assert(result === 0)
+  })
+
   it('returns the number of full months between the given dates', function () {
     var result = differenceInMonths(
       new Date(2012, 6 /* Jul */, 2, 18, 0),

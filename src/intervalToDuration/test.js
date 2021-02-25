@@ -4,8 +4,50 @@
 import assert from 'power-assert'
 import intervalToDuration from '.'
 
-describe('intervalToDuration', function() {
-  it('Returns correct duration for arbitrary dates', function() {
+describe('intervalToDuration', function () {
+  it('Returns correct duration for dates in Feb 28 - issue 2255', function () {
+    const start = new Date('Feb 28 2012 09:00:00')
+    const end = new Date('Feb 29 2012 10:00:00')
+    const result = intervalToDuration({ start, end })
+    assert.deepEqual(result, {
+      years: 0,
+      months: 0,
+      days: 1,
+      hours: 1,
+      minutes: 0,
+      seconds: 0,
+    })
+  })
+
+  it('Returns correct duration for dates in Feb 28 - issue 2255', function () {
+    const start = new Date('Feb 29 2012 09:00:00')
+    const end = new Date('Feb 29 2012 10:00:00')
+    const result = intervalToDuration({ start, end })
+    assert.deepEqual(result, {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 1,
+      minutes: 0,
+      seconds: 0,
+    })
+  })
+
+  it('Returns correct duration for dates in Feb 28 - issue 2255', function () {
+    const start = new Date('Feb 28 2012 09:00:00')
+    const end = new Date('Feb 28 2012 10:00:00')
+    const result = intervalToDuration({ start, end })
+    assert.deepEqual(result, {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 1,
+      minutes: 0,
+      seconds: 0,
+    })
+  })
+
+  it('Returns correct duration for arbitrary dates', function () {
     const start = new Date(1929, 0, 15, 12, 0, 0)
     const end = new Date(1968, 3, 4, 19, 5, 0)
     const result = intervalToDuration({ start, end })
@@ -16,10 +58,11 @@ describe('intervalToDuration', function() {
       days: 20,
       hours: 7,
       minutes: 5,
-      seconds: 0
+      seconds: 0,
     })
   })
-  it('Returns correct duration (1 of everything)', function() {
+
+  it('Returns correct duration (1 of everything)', function () {
     const start = new Date(2020, 2, 1, 12, 0, 0)
     const end = new Date(2021, 3, 2, 13, 1, 1)
     const result = intervalToDuration({ start, end })
@@ -30,10 +73,11 @@ describe('intervalToDuration', function() {
       days: 1,
       hours: 1,
       minutes: 1,
-      seconds: 1
+      seconds: 1,
     })
   })
-  it('Returns duration of 0 when the dates are the same', function() {
+
+  it('Returns duration of 0 when the dates are the same', function () {
     const start = new Date(2020, 2, 1, 12, 0, 0)
     const end = new Date(2020, 2, 1, 12, 0, 0)
     const result = intervalToDuration({ start, end })
@@ -44,7 +88,7 @@ describe('intervalToDuration', function() {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     })
   })
 })
