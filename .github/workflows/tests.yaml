@@ -19,17 +19,13 @@ jobs:
         run: export CHROME_BIN=chromium-browser
       - name: export DISPLAY
         run: export DISPLAY=:99.0
-      - name: Run xvfb
-        run: sh -e /etc/init.d/xvfb start
       - name: Install yarn
         run: npm install -g yarn
-      # - name: gabrielbb/xvfb-action
-      #   uses: GabrielBB/xvfb-action@v1.0
-      #   with:
-      #     run: ./scripts/test/travis.sh
-      #     env:
-      #     TEST_SUITE: main
-      #   env:
-      #     CI: true
+      - name: gabrielbb/xvfb-action
+        uses: GabrielBB/xvfb-action@v1.0
+        with:
+          run: ./scripts/test/travis.sh
+        env:
+          TEST_SUITE: main
       # - name: Build and Test
       #   run: ./scripts/test/travis.sh
