@@ -21,6 +21,8 @@ jobs:
         run: export DISPLAY=:99.0
       - name: Install yarn
         run: npm install -g yarn
+      - name: Install dependencies
+        run: yarn install
       - name: gabrielbb/xvfb-action
         uses: GabrielBB/xvfb-action@v1.0
         with:
