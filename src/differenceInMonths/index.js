@@ -3,7 +3,6 @@ import differenceInCalendarMonths from '../differenceInCalendarMonths/index'
 import compareAsc from '../compareAsc/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import isLastDayOfMonth from '../isLastDayOfMonth/index'
-import differenceInDays from '../differenceInDays/index'
 
 /**
  * @name differenceInMonths
