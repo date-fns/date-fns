@@ -23,15 +23,17 @@ jobs:
         run: npm install -g yarn
       - name: Install dependencies
         run: yarn install
-      - name: gabrielbb/xvfb-action
+      - name: TEST_SUITE=main
         uses: GabrielBB/xvfb-action@v1.0
         with:
           run: ./scripts/test/travis.sh
         env:
           TEST_SUITE: main
+      - name: TEST_SUITE=tz TZ_LENGTH=2 TZ_INDEX=0
+        uses: GabrielBB/xvfb-action@v1.0
         with:
           run: ./scripts/test/travis.sh
         env:
-          TEST_SUITE: tz 
-          TZ_LENGTH: 2 
+          TEST_SUITE: tz
+          TZ_LENGTH: 2
           TZ_INDEX: 0
