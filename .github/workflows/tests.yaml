@@ -1,0 +1,29 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: export CHROME_BIN
+        run: export CHROME_BIN=chromium-browser
+      - name: export DISPLAY
+        run: export DISPLAY=:99.0
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: gabrielbb/xvfb-action
+        uses: GabrielBB/xvfb-action@v1.0
+        with:
+          run: ./scripts/test/travis.sh
+        env:
+          TEST_SUITE: main
