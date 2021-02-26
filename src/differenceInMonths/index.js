@@ -37,8 +37,8 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
   var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
   var result
 
-  // Check for dates of Feb 28 and Feb 29 of the same year
-  if (Math.abs(differenceInDays(dateLeft, dateRight)) < 2) {
+  // Check for the difference of less than month
+  if (difference < 1) {
     result = 0
   } else {
     if (dateLeft.getMonth() === 1 && dateLeft.getDate() > 27) {

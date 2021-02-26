@@ -5,41 +5,6 @@ import assert from 'power-assert'
 import differenceInMonths from '.'
 
 describe('differenceInMonths', function () {
-  it('returns the number of full months between the given dates - end of Feb', function () {
-    const start = new Date('Feb 29 2012 09:00:00')
-    const end = new Date('Feb 28 2012 10:00:00')
-    var result = differenceInMonths(start, end)
-    assert(result === 0)
-  })
-
-  it('returns the number of full months between the given dates - end of Feb', function () {
-    const start = new Date('Feb 28 2012 09:00:00')
-    const end = new Date('Feb 29 2012 10:00:00')
-    var result = differenceInMonths(start, end)
-    assert(result === 0)
-  })
-
-  it('returns the number of full months between the given dates - end of Feb', function () {
-    const start = new Date('Feb 27 2012 09:00:00')
-    const end = new Date('Feb 27 2012 10:00:00')
-    var result = differenceInMonths(start, end)
-    assert(result === 0)
-  })
-
-  it('returns the number of full months between the given dates - end of Feb', function () {
-    const start = new Date('Feb 29 2012 09:00:00')
-    const end = new Date('Feb 29 2012 10:00:00')
-    var result = differenceInMonths(start, end)
-    assert(result === 0)
-  })
-
-  it('returns the number of full months between the given dates', function () {
-    const start = new Date('Feb 28 2012 09:00:00')
-    const end = new Date('Feb 28 2012 10:00:00')
-    var result = differenceInMonths(start, end)
-    assert(result === 0)
-  })
-
   it('returns the number of full months between the given dates', function () {
     var result = differenceInMonths(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
@@ -184,5 +149,34 @@ describe('differenceInMonths', function () {
   it('throws TypeError exception if passed less than 2 arguments', function () {
     assert.throws(differenceInMonths.bind(null), TypeError)
     assert.throws(differenceInMonths.bind(null, 1), TypeError)
+  })
+
+  describe('edge cases', function () {
+    it('returns the number of full months between the given dates - end of Feb', function () {
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 29, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 27, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 27, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 28, 10, 0, 0)
+        ) === 0
+      )
+    })
   })
 })
