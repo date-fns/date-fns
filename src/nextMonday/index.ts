@@ -9,7 +9,7 @@ import isValid from '../isValid/index'
  * @summary When is the next Monday?
  *
  * @description
- *  When is the next day of the week? 1 represents Monday.
+ * When is the next Monday?
  *
  * @param {Date | number}  date - the date to check
  * @returns {Date} the date is the next Monday
