@@ -1,7 +1,6 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import nextDay from '../nextDay/index'
 import toDate from '../toDate/index'
-import isValid from '../isValid/index'
 
 /**
  * @name nextMonday
@@ -18,14 +17,10 @@ import isValid from '../isValid/index'
  * @example
  * When is the next Monday after Mar, 22, 2020?
  * const result = nextMonday(new Date(2020, 2, 22))
- * => new Date(2020, 2, 23)
+ * => Mon Mar 23 2020 00:00:00
  **/
 export default function nextMonday(date: Date | number): Date {
   requiredArgs(1, arguments)
-
-  if (!isValid(date)) {
-    throw new RangeError('Invalid Date')
-  }
 
   return nextDay(toDate(date), 1)
 }
