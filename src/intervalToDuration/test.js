@@ -96,6 +96,22 @@ describe('intervalToDuration', function () {
           seconds: 0,
         }
       )
+
+      // Issue 2261
+      assert.deepEqual(
+        intervalToDuration({
+          start: new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
+          end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18),
+        }),
+        {
+          years: 0,
+          months: 0,
+          days: 0,
+          hours: 0,
+          minutes: 15,
+          seconds: 11,
+        }
+      )
     })
   })
 })

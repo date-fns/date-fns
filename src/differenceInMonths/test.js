@@ -178,5 +178,12 @@ describe('differenceInMonths', function () {
         ) === 0
       )
     })
+
+    assert(
+      differenceInMonths(
+        new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
+        new Date(2021, 1 /* Feb */, 28, 7, 38, 18)
+      ) === 0
+    )
   })
 })
