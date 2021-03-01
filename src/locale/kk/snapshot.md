@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | кеше сағат 0:00-де              |
 | 1999-12-27T00:00:00.000Z | дүйсенбіде сағат 0:00-де        |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                      |
+
+## `formatDuration`
+
+| Duration                                                                    | Result        |
+| --------------------------------------------------------------------------- | ------------- |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | not supported |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | not supported |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | not supported |

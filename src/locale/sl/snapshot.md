@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | včeraj ob 00:00              |
 | 1999-12-27T00:00:00.000Z | prejšnji ponedeljek ob 00:00 |
 | 1999-12-21T00:00:00.000Z | 21. 12. 99                   |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                                 |
+| --------------------------------------------------------------------------- | ------------------------------------------------------ |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 let 0 mesecev 0 tednov 0 dni 0 ur 0 minut 0 sekund   |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 leto 1 mesec 1 teden 1 dan 1 ura 1 minuta 1 sekunda  |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 leti 2 meseca 2 tedna 2 dni 2 uri 2 minuti 2 sekundi |

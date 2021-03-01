@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | gëschter um 00:00        |
 | 1999-12-27T00:00:00.000Z | läschte Méindeg um 00:00 |
 | 1999-12-21T00:00:00.000Z | 21.12.99                 |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                                            |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 Joer 0 Méint 0 Wochen 0 Deeg 0 Stonnen 0 Minutten 0 Sekonnen    |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | ee Joer ee Mount eng Woch een Dag eng Stonn eng Minutt eng Sekonn |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 Joer 2 Méint 2 Wochen 2 Deeg 2 Stonnen 2 Minutten 2 Sekonnen    |

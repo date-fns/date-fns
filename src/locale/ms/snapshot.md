@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | Semalam pada jam 00.00     |
 | 1999-12-27T00:00:00.000Z | Isnin lepas pada jam 00.00 |
 | 1999-12-21T00:00:00.000Z | 21/12/1999                 |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                               |
+| --------------------------------------------------------------------------- | ---------------------------------------------------- |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 tahun 0 bulan 0 minggu 0 hari 0 jam 0 minit 0 saat |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 tahun 1 bulan 1 minggu 1 hari 1 jam 1 minit 1 saat |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 tahun 2 bulan 2 minggu 2 hari 2 jam 2 minit 2 saat |

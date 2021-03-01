@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | eilen klo 00.00              |
 | 1999-12-27T00:00:00.000Z | viime maanantaina klo 00.00  |
 | 1999-12-21T00:00:00.000Z | 21.12.1999                   |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                                                  |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 vuotta 0 kuukautta 0 viikkoa 0 päivää 0 tuntia 0 minuuttia 0 sekuntia |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | vuosi kuukausi viikko päivä tunti minuutti sekunti                      |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 vuotta 2 kuukautta 2 viikkoa 2 päivää 2 tuntia 2 minuuttia 2 sekuntia |

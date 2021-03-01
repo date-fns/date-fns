@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | gister om 00:00          |
 | 1999-12-27T00:00:00.000Z | verlede Maandag om 00:00 |
 | 1999-12-21T00:00:00.000Z | 1999/12/21               |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                                 |
+| --------------------------------------------------------------------------- | ------------------------------------------------------ |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 jaar 0 maande 0 weke 0 dae 0 ure 0 minute 0 sekondes |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 jaar 1 maand 1 week 1 dag 1 uur 'n minuut 1 sekonde  |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 jaar 2 maande 2 weke 2 dae 2 ure 2 minute 2 sekondes |

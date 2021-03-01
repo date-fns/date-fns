@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | juster om 00:00         |
 | 1999-12-27T00:00:00.000Z | ôfrûne moandei om 00:00 |
 | 1999-12-21T00:00:00.000Z | 21-12-1999              |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                                       |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------ |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 jier 0 moannen 0 wiken 0 dagen 0 oere 0 minuten 0 sekonden |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 jier 1 moanne 1 wike 1 dei 1 oere 1 minút 1 sekonde        |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 jier 2 moannen 2 wiken 2 dagen 2 oere 2 minuten 2 sekonden |

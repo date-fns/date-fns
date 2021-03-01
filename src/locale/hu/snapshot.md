@@ -302,3 +302,11 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T00:00:00.000Z | tegnap 0:00-kor      |
 | 1999-12-27T00:00:00.000Z | múlt hétfőn 0:00-kor |
 | 1999-12-21T00:00:00.000Z | 1999. 12. 21.        |
+
+## `formatDuration`
+
+| Duration                                                                    | Result                                            |
+| --------------------------------------------------------------------------- | ------------------------------------------------- |
+| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 év 0 hónap 0 hét 0 nap 0 óra 0 perc 0 másodperc |
+| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 év 1 hónap 1 hét 1 nap 1 óra 1 perc 1 másodperc |
+| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 év 2 hónap 2 hét 2 nap 2 óra 2 perc 2 másodperc |
