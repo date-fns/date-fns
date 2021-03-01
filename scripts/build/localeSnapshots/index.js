@@ -15,6 +15,7 @@ import renderFormatDistance from './renderFormatDistance'
 import renderFormatDistanceStrict from './renderFormatDistanceStrict'
 import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
+import renderFormatDuration from './renderFormatDuration'
 
 const mode = process.argv[2] || 'generate'
 
@@ -48,6 +49,9 @@ ${renderFormatDistance(locale)}
 ${renderFormatDistanceStrict(locale)}
 
 ${renderFormatRelative(locale)}
+
+${renderFormatDuration(locale)}
+
 `
 
         const snapshotPath = path.join(
