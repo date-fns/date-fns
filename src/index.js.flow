@@ -440,6 +440,28 @@ declare module.exports: {
 
   intervalToDuration: (interval: Interval) => Duration,
 
+  intlFormat: (
+    argument: Date | number,
+    formatOptions?: {
+      localeMatcher?: 'lookup' | 'best fit',
+      weekday?: 'narrow' | 'short' | 'long',
+      era?: 'narrow' | 'short' | 'long',
+      year?: 'numeric' | '2-digit',
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long',
+      day?: 'numeric' | '2-digit',
+      hour?: 'numeric' | '2-digit',
+      minute?: 'numeric' | '2-digit',
+      second?: 'numeric' | '2-digit',
+      timeZoneName?: 'short' | 'long',
+      formatMatcher?: 'basic' | 'best fit',
+      hour12?: boolean,
+      timeZone?: string,
+    },
+    localeOptions?: {
+      locale?: string | string[],
+    }
+  ) => string,
+
   isAfter: (date: Date | number, dateToCompare: Date | number) => boolean,
 
   isBefore: (date: Date | number, dateToCompare: Date | number) => boolean,
