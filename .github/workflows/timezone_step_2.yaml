@@ -1,4 +1,4 @@
-name: Node.js tests
+name: Timezones 2/2
 
 on: [push, pull_request]
 
@@ -28,4 +28,6 @@ jobs:
         with:
           run: ./scripts/test/travis.sh
         env:
-          TEST_SUITE: node
+          TEST_SUITE: tz
+          TZ_LENGTH: 2
+          TZ_INDEX: 1
