@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                        |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 godina 0 mjeseci 0 tjedana 0 dana 0 sati 0 minuta 0 sekundi |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 godina 1 mjesec 1 tjedan 1 dan 1 sat 1 minuta 1 sekunda     |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 godine 2 mjeseca 2 tjedna 2 dana 2 sata 2 minute 2 sekunde  |
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 godina  |
+| {"years":1}   | 1 godina  |
+| {"years":2}   | 2 godine  |
+| {"months":0}  | 0 mjeseci |
+| {"months":1}  | 1 mjesec  |
+| {"months":2}  | 2 mjeseca |
+| {"weeks":0}   | 0 tjedana |
+| {"weeks":1}   | 1 tjedan  |
+| {"weeks":2}   | 2 tjedna  |
+| {"days":0}    | 0 dana    |
+| {"days":1}    | 1 dan     |
+| {"days":2}    | 2 dana    |
+| {"hours":0}   | 0 sati    |
+| {"hours":1}   | 1 sat     |
+| {"hours":2}   | 2 sata    |
+| {"minutes":0} | 0 minuta  |
+| {"minutes":1} | 1 minuta  |
+| {"minutes":2} | 2 minute  |
+| {"seconds":0} | 0 sekundi |
+| {"seconds":1} | 1 sekunda |
+| {"seconds":2} | 2 sekunde |

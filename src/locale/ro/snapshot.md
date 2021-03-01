@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                   |
-| --------------------------------------------------------------------------- | -------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 ani 0 luni 0 săptămâni 0 zile 0 ore 0 minute 0 secunde |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 an 1 lună 1 săptămână 1 zi 1 oră 1 minut 1 secundă     |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 ani 2 luni 2 săptămâni 2 zile 2 ore 2 minute 2 secunde |
+| Duration      | Result      |
+| ------------- | ----------- |
+| {"years":0}   | 0 ani       |
+| {"years":1}   | 1 an        |
+| {"years":2}   | 2 ani       |
+| {"months":0}  | 0 luni      |
+| {"months":1}  | 1 lună      |
+| {"months":2}  | 2 luni      |
+| {"weeks":0}   | 0 săptămâni |
+| {"weeks":1}   | 1 săptămână |
+| {"weeks":2}   | 2 săptămâni |
+| {"days":0}    | 0 zile      |
+| {"days":1}    | 1 zi        |
+| {"days":2}    | 2 zile      |
+| {"hours":0}   | 0 ore       |
+| {"hours":1}   | 1 oră       |
+| {"hours":2}   | 2 ore       |
+| {"minutes":0} | 0 minute    |
+| {"minutes":1} | 1 minut     |
+| {"minutes":2} | 2 minute    |
+| {"seconds":0} | 0 secunde   |
+| {"seconds":1} | 1 secundă   |
+| {"seconds":2} | 2 secunde   |

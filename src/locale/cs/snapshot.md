@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                    |
-| --------------------------------------------------------------------------- | --------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 roků 0 měsíců 0 týdnů 0 dní 0 hodin 0 minut 0 sekund    |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | rok měsíc týden den hodina minuta sekunda                 |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 roky 2 měsíce 2 týdny 2 dny 2 hodiny 2 minuty 2 sekundy |
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 roků    |
+| {"years":1}   | rok       |
+| {"years":2}   | 2 roky    |
+| {"months":0}  | 0 měsíců  |
+| {"months":1}  | měsíc     |
+| {"months":2}  | 2 měsíce  |
+| {"weeks":0}   | 0 týdnů   |
+| {"weeks":1}   | týden     |
+| {"weeks":2}   | 2 týdny   |
+| {"days":0}    | 0 dní     |
+| {"days":1}    | den       |
+| {"days":2}    | 2 dny     |
+| {"hours":0}   | 0 hodin   |
+| {"hours":1}   | hodina    |
+| {"hours":2}   | 2 hodiny  |
+| {"minutes":0} | 0 minut   |
+| {"minutes":1} | minuta    |
+| {"minutes":2} | 2 minuty  |
+| {"seconds":0} | 0 sekund  |
+| {"seconds":1} | sekunda   |
+| {"seconds":2} | 2 sekundy |

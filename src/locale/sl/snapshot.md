@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                 |
-| --------------------------------------------------------------------------- | ------------------------------------------------------ |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 let 0 mesecev 0 tednov 0 dni 0 ur 0 minut 0 sekund   |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 leto 1 mesec 1 teden 1 dan 1 ura 1 minuta 1 sekunda  |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 leti 2 meseca 2 tedna 2 dni 2 uri 2 minuti 2 sekundi |
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 let     |
+| {"years":1}   | 1 leto    |
+| {"years":2}   | 2 leti    |
+| {"months":0}  | 0 mesecev |
+| {"months":1}  | 1 mesec   |
+| {"months":2}  | 2 meseca  |
+| {"weeks":0}   | 0 tednov  |
+| {"weeks":1}   | 1 teden   |
+| {"weeks":2}   | 2 tedna   |
+| {"days":0}    | 0 dni     |
+| {"days":1}    | 1 dan     |
+| {"days":2}    | 2 dni     |
+| {"hours":0}   | 0 ur      |
+| {"hours":1}   | 1 ura     |
+| {"hours":2}   | 2 uri     |
+| {"minutes":0} | 0 minut   |
+| {"minutes":1} | 1 minuta  |
+| {"minutes":2} | 2 minuti  |
+| {"seconds":0} | 0 sekund  |
+| {"seconds":1} | 1 sekunda |
+| {"seconds":2} | 2 sekundi |

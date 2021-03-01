@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                            |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 Joer 0 Méint 0 Wochen 0 Deeg 0 Stonnen 0 Minutten 0 Sekonnen    |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | ee Joer ee Mount eng Woch een Dag eng Stonn eng Minutt eng Sekonn |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 Joer 2 Méint 2 Wochen 2 Deeg 2 Stonnen 2 Minutten 2 Sekonnen    |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 Joer     |
+| {"years":1}   | ee Joer    |
+| {"years":2}   | 2 Joer     |
+| {"months":0}  | 0 Méint    |
+| {"months":1}  | ee Mount   |
+| {"months":2}  | 2 Méint    |
+| {"weeks":0}   | 0 Wochen   |
+| {"weeks":1}   | eng Woch   |
+| {"weeks":2}   | 2 Wochen   |
+| {"days":0}    | 0 Deeg     |
+| {"days":1}    | een Dag    |
+| {"days":2}    | 2 Deeg     |
+| {"hours":0}   | 0 Stonnen  |
+| {"hours":1}   | eng Stonn  |
+| {"hours":2}   | 2 Stonnen  |
+| {"minutes":0} | 0 Minutten |
+| {"minutes":1} | eng Minutt |
+| {"minutes":2} | 2 Minutten |
+| {"seconds":0} | 0 Sekonnen |
+| {"seconds":1} | eng Sekonn |
+| {"seconds":2} | 2 Sekonnen |

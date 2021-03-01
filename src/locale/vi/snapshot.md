@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                          |
-| --------------------------------------------------------------------------- | ----------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 năm 0 tháng 0 tuần 0 ngày 0 giờ 0 phút 0 giây |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 năm 1 tháng 1 tuần 1 ngày 1 giờ 1 phút 1 giây |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 năm 2 tháng 2 tuần 2 ngày 2 giờ 2 phút 2 giây |
+| Duration      | Result  |
+| ------------- | ------- |
+| {"years":0}   | 0 năm   |
+| {"years":1}   | 1 năm   |
+| {"years":2}   | 2 năm   |
+| {"months":0}  | 0 tháng |
+| {"months":1}  | 1 tháng |
+| {"months":2}  | 2 tháng |
+| {"weeks":0}   | 0 tuần  |
+| {"weeks":1}   | 1 tuần  |
+| {"weeks":2}   | 2 tuần  |
+| {"days":0}    | 0 ngày  |
+| {"days":1}    | 1 ngày  |
+| {"days":2}    | 2 ngày  |
+| {"hours":0}   | 0 giờ   |
+| {"hours":1}   | 1 giờ   |
+| {"hours":2}   | 2 giờ   |
+| {"minutes":0} | 0 phút  |
+| {"minutes":1} | 1 phút  |
+| {"minutes":2} | 2 phút  |
+| {"seconds":0} | 0 giây  |
+| {"seconds":1} | 1 giây  |
+| {"seconds":2} | 2 giây  |

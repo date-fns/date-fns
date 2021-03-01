@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                                  |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 vuotta 0 kuukautta 0 viikkoa 0 päivää 0 tuntia 0 minuuttia 0 sekuntia |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | vuosi kuukausi viikko päivä tunti minuutti sekunti                      |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 vuotta 2 kuukautta 2 viikkoa 2 päivää 2 tuntia 2 minuuttia 2 sekuntia |
+| Duration      | Result      |
+| ------------- | ----------- |
+| {"years":0}   | 0 vuotta    |
+| {"years":1}   | vuosi       |
+| {"years":2}   | 2 vuotta    |
+| {"months":0}  | 0 kuukautta |
+| {"months":1}  | kuukausi    |
+| {"months":2}  | 2 kuukautta |
+| {"weeks":0}   | 0 viikkoa   |
+| {"weeks":1}   | viikko      |
+| {"weeks":2}   | 2 viikkoa   |
+| {"days":0}    | 0 päivää    |
+| {"days":1}    | päivä       |
+| {"days":2}    | 2 päivää    |
+| {"hours":0}   | 0 tuntia    |
+| {"hours":1}   | tunti       |
+| {"hours":2}   | 2 tuntia    |
+| {"minutes":0} | 0 minuuttia |
+| {"minutes":1} | minuutti    |
+| {"minutes":2} | 2 minuuttia |
+| {"seconds":0} | 0 sekuntia  |
+| {"seconds":1} | sekunti     |
+| {"seconds":2} | 2 sekuntia  |

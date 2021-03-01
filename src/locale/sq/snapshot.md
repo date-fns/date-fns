@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                               |
-| --------------------------------------------------------------------------- | ---------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 vite 0 muaj 0 javë 0 ditë 0 orë 0 minuta 0 sekonda |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 vit 1 muaj 1 javë 1 ditë 1 orë 1 minutë 1 sekondë  |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 vite 2 muaj 2 javë 2 ditë 2 orë 2 minuta 2 sekonda |
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 vite    |
+| {"years":1}   | 1 vit     |
+| {"years":2}   | 2 vite    |
+| {"months":0}  | 0 muaj    |
+| {"months":1}  | 1 muaj    |
+| {"months":2}  | 2 muaj    |
+| {"weeks":0}   | 0 javë    |
+| {"weeks":1}   | 1 javë    |
+| {"weeks":2}   | 2 javë    |
+| {"days":0}    | 0 ditë    |
+| {"days":1}    | 1 ditë    |
+| {"days":2}    | 2 ditë    |
+| {"hours":0}   | 0 orë     |
+| {"hours":1}   | 1 orë     |
+| {"hours":2}   | 2 orë     |
+| {"minutes":0} | 0 minuta  |
+| {"minutes":1} | 1 minutë  |
+| {"minutes":2} | 2 minuta  |
+| {"seconds":0} | 0 sekonda |
+| {"seconds":1} | 1 sekondë |
+| {"seconds":2} | 2 sekonda |

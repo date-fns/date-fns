@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                             |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 aastat 0 kuud 0 nädalat 0 päeva 0 tundi 0 minutit 0 sekundit     |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | üks aasta üks kuu üks nädal üks päev üks tund üks minut üks sekund |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 aastat 2 kuud 2 nädalat 2 päeva 2 tundi 2 minutit 2 sekundit     |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 aastat   |
+| {"years":1}   | üks aasta  |
+| {"years":2}   | 2 aastat   |
+| {"months":0}  | 0 kuud     |
+| {"months":1}  | üks kuu    |
+| {"months":2}  | 2 kuud     |
+| {"weeks":0}   | 0 nädalat  |
+| {"weeks":1}   | üks nädal  |
+| {"weeks":2}   | 2 nädalat  |
+| {"days":0}    | 0 päeva    |
+| {"days":1}    | üks päev   |
+| {"days":2}    | 2 päeva    |
+| {"hours":0}   | 0 tundi    |
+| {"hours":1}   | üks tund   |
+| {"hours":2}   | 2 tundi    |
+| {"minutes":0} | 0 minutit  |
+| {"minutes":1} | üks minut  |
+| {"minutes":2} | 2 minutit  |
+| {"seconds":0} | 0 sekundit |
+| {"seconds":1} | üks sekund |
+| {"seconds":2} | 2 sekundit |

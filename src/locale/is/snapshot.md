@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                              |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 ár 0 mánuðir 0 vikur 0 dagar 0 klukkustundir 0 mínútur 0 sekúndur |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 ár 1 mánuður 1 viku 1 dagur 1 klukkustund 1 mínúta 1 sekúnda      |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 ár 2 mánuðir 2 vikur 2 dagar 2 klukkustundir 2 mínútur 2 sekúndur |
+| Duration      | Result          |
+| ------------- | --------------- |
+| {"years":0}   | 0 ár            |
+| {"years":1}   | 1 ár            |
+| {"years":2}   | 2 ár            |
+| {"months":0}  | 0 mánuðir       |
+| {"months":1}  | 1 mánuður       |
+| {"months":2}  | 2 mánuðir       |
+| {"weeks":0}   | 0 vikur         |
+| {"weeks":1}   | 1 viku          |
+| {"weeks":2}   | 2 vikur         |
+| {"days":0}    | 0 dagar         |
+| {"days":1}    | 1 dagur         |
+| {"days":2}    | 2 dagar         |
+| {"hours":0}   | 0 klukkustundir |
+| {"hours":1}   | 1 klukkustund   |
+| {"hours":2}   | 2 klukkustundir |
+| {"minutes":0} | 0 mínútur       |
+| {"minutes":1} | 1 mínúta        |
+| {"minutes":2} | 2 mínútur       |
+| {"seconds":0} | 0 sekúndur      |
+| {"seconds":1} | 1 sekúnda       |
+| {"seconds":2} | 2 sekúndur      |

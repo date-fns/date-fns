@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                           |
-| --------------------------------------------------------------------------- | ------------------------------------------------ |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 yil 0 oy 0 hafta 0 kun 0 soat 0 minut 0 sekund |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 yil 1 oy 1 hafta 1 kun 1 soat 1 minut 1 sekund |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 yil 2 oy 2 hafta 2 kun 2 soat 2 minut 2 sekund |
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 yil    |
+| {"years":1}   | 1 yil    |
+| {"years":2}   | 2 yil    |
+| {"months":0}  | 0 oy     |
+| {"months":1}  | 1 oy     |
+| {"months":2}  | 2 oy     |
+| {"weeks":0}   | 0 hafta  |
+| {"weeks":1}   | 1 hafta  |
+| {"weeks":2}   | 2 hafta  |
+| {"days":0}    | 0 kun    |
+| {"days":1}    | 1 kun    |
+| {"days":2}    | 2 kun    |
+| {"hours":0}   | 0 soat   |
+| {"hours":1}   | 1 soat   |
+| {"hours":2}   | 2 soat   |
+| {"minutes":0} | 0 minut  |
+| {"minutes":1} | 1 minut  |
+| {"minutes":2} | 2 minut  |
+| {"seconds":0} | 0 sekund |
+| {"seconds":1} | 1 sekund |
+| {"seconds":2} | 2 sekund |

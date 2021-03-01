@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                                        |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | null år null månader null veker null dagar null timar null minutt null sekund |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | eitt år ein månad ei veke ein dag ein time eitt minutt eitt sekund            |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | to år to månader to veker to dagar to timar to minutt to sekund               |
+| Duration      | Result       |
+| ------------- | ------------ |
+| {"years":0}   | null år      |
+| {"years":1}   | eitt år      |
+| {"years":2}   | to år        |
+| {"months":0}  | null månader |
+| {"months":1}  | ein månad    |
+| {"months":2}  | to månader   |
+| {"weeks":0}   | null veker   |
+| {"weeks":1}   | ei veke      |
+| {"weeks":2}   | to veker     |
+| {"days":0}    | null dagar   |
+| {"days":1}    | ein dag      |
+| {"days":2}    | to dagar     |
+| {"hours":0}   | null timar   |
+| {"hours":1}   | ein time     |
+| {"hours":2}   | to timar     |
+| {"minutes":0} | null minutt  |
+| {"minutes":1} | eitt minutt  |
+| {"minutes":2} | to minutt    |
+| {"seconds":0} | null sekund  |
+| {"seconds":1} | eitt sekund  |
+| {"seconds":2} | to sekund    |

@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                            |
-| --------------------------------------------------------------------------- | ------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 év 0 hónap 0 hét 0 nap 0 óra 0 perc 0 másodperc |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 év 1 hónap 1 hét 1 nap 1 óra 1 perc 1 másodperc |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 év 2 hónap 2 hét 2 nap 2 óra 2 perc 2 másodperc |
+| Duration      | Result      |
+| ------------- | ----------- |
+| {"years":0}   | 0 év        |
+| {"years":1}   | 1 év        |
+| {"years":2}   | 2 év        |
+| {"months":0}  | 0 hónap     |
+| {"months":1}  | 1 hónap     |
+| {"months":2}  | 2 hónap     |
+| {"weeks":0}   | 0 hét       |
+| {"weeks":1}   | 1 hét       |
+| {"weeks":2}   | 2 hét       |
+| {"days":0}    | 0 nap       |
+| {"days":1}    | 1 nap       |
+| {"days":2}    | 2 nap       |
+| {"hours":0}   | 0 óra       |
+| {"hours":1}   | 1 óra       |
+| {"hours":2}   | 2 óra       |
+| {"minutes":0} | 0 perc      |
+| {"minutes":1} | 1 perc      |
+| {"minutes":2} | 2 perc      |
+| {"seconds":0} | 0 másodperc |
+| {"seconds":1} | 1 másodperc |
+| {"seconds":2} | 2 másodperc |

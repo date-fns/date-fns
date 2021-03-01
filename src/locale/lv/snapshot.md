@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                           |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 gadi 0 mēneši 0 nedēļu 0 dienas 0 stundas 0 minūtes 0 sekundes |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 gads 1 mēnesis 1 nedēļa 1 diena 1 stunda 1 minūte 1 sekunde    |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 gadi 2 mēneši 2 nedēļu 2 dienas 2 stundas 2 minūtes 2 sekundes |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 gadi     |
+| {"years":1}   | 1 gads     |
+| {"years":2}   | 2 gadi     |
+| {"months":0}  | 0 mēneši   |
+| {"months":1}  | 1 mēnesis  |
+| {"months":2}  | 2 mēneši   |
+| {"weeks":0}   | 0 nedēļu   |
+| {"weeks":1}   | 1 nedēļa   |
+| {"weeks":2}   | 2 nedēļu   |
+| {"days":0}    | 0 dienas   |
+| {"days":1}    | 1 diena    |
+| {"days":2}    | 2 dienas   |
+| {"hours":0}   | 0 stundas  |
+| {"hours":1}   | 1 stunda   |
+| {"hours":2}   | 2 stundas  |
+| {"minutes":0} | 0 minūtes  |
+| {"minutes":1} | 1 minūte   |
+| {"minutes":2} | 2 minūtes  |
+| {"seconds":0} | 0 sekundes |
+| {"seconds":1} | 1 sekunde  |
+| {"seconds":2} | 2 sekundes |

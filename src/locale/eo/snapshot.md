@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                            |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 jaroj 0 monatoj 0 semajnoj 0 tagoj 0 horoj 0 minutoj 0 sekundoj |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 jaro 1 monato 1 semajno 1 tago 1 horo 1 minuto 1 sekundo        |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 jaroj 2 monatoj 2 semajnoj 2 tagoj 2 horoj 2 minutoj 2 sekundoj |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 jaroj    |
+| {"years":1}   | 1 jaro     |
+| {"years":2}   | 2 jaroj    |
+| {"months":0}  | 0 monatoj  |
+| {"months":1}  | 1 monato   |
+| {"months":2}  | 2 monatoj  |
+| {"weeks":0}   | 0 semajnoj |
+| {"weeks":1}   | 1 semajno  |
+| {"weeks":2}   | 2 semajnoj |
+| {"days":0}    | 0 tagoj    |
+| {"days":1}    | 1 tago     |
+| {"days":2}    | 2 tagoj    |
+| {"hours":0}   | 0 horoj    |
+| {"hours":1}   | 1 horo     |
+| {"hours":2}   | 2 horoj    |
+| {"minutes":0} | 0 minutoj  |
+| {"minutes":1} | 1 minuto   |
+| {"minutes":2} | 2 minutoj  |
+| {"seconds":0} | 0 sekundoj |
+| {"seconds":1} | 1 sekundo  |
+| {"seconds":2} | 2 sekundoj |

@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result        |
-| --------------------------------------------------------------------------- | ------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | not supported |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | not supported |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | not supported |
+| Duration      | Result        |
+| ------------- | ------------- |
+| {"years":0}   | 0 жыл         |
+| {"years":1}   | 1 жыл         |
+| {"years":2}   | 2 жыл         |
+| {"months":0}  | 0 ай          |
+| {"months":1}  | 1 ай          |
+| {"months":2}  | 2 ай          |
+| {"weeks":0}   | not supported |
+| {"weeks":1}   | not supported |
+| {"weeks":2}   | not supported |
+| {"days":0}    | 0 күн         |
+| {"days":1}    | 1 күн         |
+| {"days":2}    | 2 күн         |
+| {"hours":0}   | 0 сағат       |
+| {"hours":1}   | 1 сағат       |
+| {"hours":2}   | 2 сағат       |
+| {"minutes":0} | 0 минут       |
+| {"minutes":1} | 1 минут       |
+| {"minutes":2} | 2 минут       |
+| {"seconds":0} | 0 секунд      |
+| {"seconds":1} | 1 секунд      |
+| {"seconds":2} | 2 секунд      |

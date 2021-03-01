@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                      |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 urte 0 hilabete 0 astean 0 egun 0 ordu 0 minutu 0 segundo |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 urte 1 hilabete 1 aste 1 egun 1 ordu 1 minutu 1 segundo   |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 urte 2 hilabete 2 astean 2 egun 2 ordu 2 minutu 2 segundo |
+| Duration      | Result     |
+| ------------- | ---------- |
+| {"years":0}   | 0 urte     |
+| {"years":1}   | 1 urte     |
+| {"years":2}   | 2 urte     |
+| {"months":0}  | 0 hilabete |
+| {"months":1}  | 1 hilabete |
+| {"months":2}  | 2 hilabete |
+| {"weeks":0}   | 0 astean   |
+| {"weeks":1}   | 1 aste     |
+| {"weeks":2}   | 2 astean   |
+| {"days":0}    | 0 egun     |
+| {"days":1}    | 1 egun     |
+| {"days":2}    | 2 egun     |
+| {"hours":0}   | 0 ordu     |
+| {"hours":1}   | 1 ordu     |
+| {"hours":2}   | 2 ordu     |
+| {"minutes":0} | 0 minutu   |
+| {"minutes":1} | 1 minutu   |
+| {"minutes":2} | 2 minutu   |
+| {"seconds":0} | 0 segundo  |
+| {"seconds":1} | 1 segundo  |
+| {"seconds":2} | 2 segundo  |

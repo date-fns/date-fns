@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                                           |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 bliadhna 0 mìosan 0 seachdainean 0 là 0 uairean de thìde 0 mionaidean 0 diogan |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 bhliadhna 1 mìos 1 seachdain 1 là 1 uair de thìde 1 mionaid 1 diog             |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 bliadhna 2 mìosan 2 seachdainean 2 là 2 uair de thìde 2 mhionaid 2 dhiog       |
+| Duration      | Result             |
+| ------------- | ------------------ |
+| {"years":0}   | 0 bliadhna         |
+| {"years":1}   | 1 bhliadhna        |
+| {"years":2}   | 2 bliadhna         |
+| {"months":0}  | 0 mìosan           |
+| {"months":1}  | 1 mìos             |
+| {"months":2}  | 2 mìosan           |
+| {"weeks":0}   | 0 seachdainean     |
+| {"weeks":1}   | 1 seachdain        |
+| {"weeks":2}   | 2 seachdainean     |
+| {"days":0}    | 0 là               |
+| {"days":1}    | 1 là               |
+| {"days":2}    | 2 là               |
+| {"hours":0}   | 0 uairean de thìde |
+| {"hours":1}   | 1 uair de thìde    |
+| {"hours":2}   | 2 uair de thìde    |
+| {"minutes":0} | 0 mionaidean       |
+| {"minutes":1} | 1 mionaid          |
+| {"minutes":2} | 2 mhionaid         |
+| {"seconds":0} | 0 diogan           |
+| {"seconds":1} | 1 diog             |
+| {"seconds":2} | 2 dhiog            |

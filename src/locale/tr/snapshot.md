@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                            |
-| --------------------------------------------------------------------------- | ------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 yıl 0 ay 0 hafta 0 gün 0 saat 0 dakika 0 saniye |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 yıl 1 ay 1 hafta 1 gün 1 saat 1 dakika 1 saniye |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 yıl 2 ay 2 hafta 2 gün 2 saat 2 dakika 2 saniye |
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 yıl    |
+| {"years":1}   | 1 yıl    |
+| {"years":2}   | 2 yıl    |
+| {"months":0}  | 0 ay     |
+| {"months":1}  | 1 ay     |
+| {"months":2}  | 2 ay     |
+| {"weeks":0}   | 0 hafta  |
+| {"weeks":1}   | 1 hafta  |
+| {"weeks":2}   | 2 hafta  |
+| {"days":0}    | 0 gün    |
+| {"days":1}    | 1 gün    |
+| {"days":2}    | 2 gün    |
+| {"hours":0}   | 0 saat   |
+| {"hours":1}   | 1 saat   |
+| {"hours":2}   | 2 saat   |
+| {"minutes":0} | 0 dakika |
+| {"minutes":1} | 1 dakika |
+| {"minutes":2} | 2 dakika |
+| {"seconds":0} | 0 saniye |
+| {"seconds":1} | 1 saniye |
+| {"seconds":2} | 2 saniye |

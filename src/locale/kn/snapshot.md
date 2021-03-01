@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result        |
-| --------------------------------------------------------------------------- | ------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | not supported |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | not supported |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | not supported |
+| Duration      | Result        |
+| ------------- | ------------- |
+| {"years":0}   | 0 ವರ್ಷಗಳು     |
+| {"years":1}   | 1 ವರ್ಷ        |
+| {"years":2}   | 2 ವರ್ಷಗಳು     |
+| {"months":0}  | 0 ತಿಂಗಳು      |
+| {"months":1}  | 1 ತಿಂಗಳು      |
+| {"months":2}  | 2 ತಿಂಗಳು      |
+| {"weeks":0}   | not supported |
+| {"weeks":1}   | not supported |
+| {"weeks":2}   | not supported |
+| {"days":0}    | 0 ದಿನಗಳು      |
+| {"days":1}    | 1 ದಿನ         |
+| {"days":2}    | 2 ದಿನಗಳು      |
+| {"hours":0}   | 0 ಗಂಟೆಗಳು     |
+| {"hours":1}   | 1 ಗಂಟೆ        |
+| {"hours":2}   | 2 ಗಂಟೆಗಳು     |
+| {"minutes":0} | 0 ನಿಮಿಷಗಳು    |
+| {"minutes":1} | 1 ನಿಮಿಷ       |
+| {"minutes":2} | 2 ನಿಮಿಷಗಳು    |
+| {"seconds":0} | 0 ಸೆಕೆಂಡುಗಳು  |
+| {"seconds":1} | 1 ಸೆಕೆಂಡ್     |
+| {"seconds":2} | 2 ಸೆಕೆಂಡುಗಳು  |

@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                          |
-| --------------------------------------------------------------------------- | ------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0년 0개월 0주 0일 0시간 0분 0초 |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1년 1개월 1주 1일 1시간 1분 1초 |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2년 2개월 2주 2일 2시간 2분 2초 |
+| Duration      | Result |
+| ------------- | ------ |
+| {"years":0}   | 0년    |
+| {"years":1}   | 1년    |
+| {"years":2}   | 2년    |
+| {"months":0}  | 0개월  |
+| {"months":1}  | 1개월  |
+| {"months":2}  | 2개월  |
+| {"weeks":0}   | 0주    |
+| {"weeks":1}   | 1주    |
+| {"weeks":2}   | 2주    |
+| {"days":0}    | 0일    |
+| {"days":1}    | 1일    |
+| {"days":2}    | 2일    |
+| {"hours":0}   | 0시간  |
+| {"hours":1}   | 1시간  |
+| {"hours":2}   | 2시간  |
+| {"minutes":0} | 0분    |
+| {"minutes":1} | 1분    |
+| {"minutes":2} | 2분    |
+| {"seconds":0} | 0초    |
+| {"seconds":1} | 1초    |
+| {"seconds":2} | 2초    |

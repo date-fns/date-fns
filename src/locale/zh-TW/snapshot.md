@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                       |
-| --------------------------------------------------------------------------- | -------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 年 0 個月 0 個星期 0 天 0 小時 0 分鐘 0 秒 |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 年 1 個月 1 個星期 1 天 1 小時 1 分鐘 1 秒 |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 年 2 個月 2 個星期 2 天 2 小時 2 分鐘 2 秒 |
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 年     |
+| {"years":1}   | 1 年     |
+| {"years":2}   | 2 年     |
+| {"months":0}  | 0 個月   |
+| {"months":1}  | 1 個月   |
+| {"months":2}  | 2 個月   |
+| {"weeks":0}   | 0 個星期 |
+| {"weeks":1}   | 1 個星期 |
+| {"weeks":2}   | 2 個星期 |
+| {"days":0}    | 0 天     |
+| {"days":1}    | 1 天     |
+| {"days":2}    | 2 天     |
+| {"hours":0}   | 0 小時   |
+| {"hours":1}   | 1 小時   |
+| {"hours":2}   | 2 小時   |
+| {"minutes":0} | 0 分鐘   |
+| {"minutes":1} | 1 分鐘   |
+| {"minutes":2} | 2 分鐘   |
+| {"seconds":0} | 0 秒     |
+| {"seconds":1} | 1 秒     |
+| {"seconds":2} | 2 秒     |

@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                |
-| --------------------------------------------------------------------------- | ----------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 tahun 0 bulan 0 minggu 0 hari 0 jam 0 menit 0 detik |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | 1 tahun 1 bulan 1 minggu 1 hari 1 jam 1 menit 1 detik |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 tahun 2 bulan 2 minggu 2 hari 2 jam 2 menit 2 detik |
+| Duration      | Result   |
+| ------------- | -------- |
+| {"years":0}   | 0 tahun  |
+| {"years":1}   | 1 tahun  |
+| {"years":2}   | 2 tahun  |
+| {"months":0}  | 0 bulan  |
+| {"months":1}  | 1 bulan  |
+| {"months":2}  | 2 bulan  |
+| {"weeks":0}   | 0 minggu |
+| {"weeks":1}   | 1 minggu |
+| {"weeks":2}   | 2 minggu |
+| {"days":0}    | 0 hari   |
+| {"days":1}    | 1 hari   |
+| {"days":2}    | 2 hari   |
+| {"hours":0}   | 0 jam    |
+| {"hours":1}   | 1 jam    |
+| {"hours":2}   | 2 jam    |
+| {"minutes":0} | 0 menit  |
+| {"minutes":1} | 1 menit  |
+| {"minutes":2} | 2 menit  |
+| {"seconds":0} | 0 detik  |
+| {"seconds":1} | 1 detik  |
+| {"seconds":2} | 2 detik  |

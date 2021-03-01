@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                                |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 metų 0 mėnesių 0 savaičių 0 dienų 0 valandų 0 minučių 0 sekundžių   |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | metai mėnuo savaitė diena valanda minutė kelios sekundės              |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | 2 metai 2 mėnesiai 2 savaitės 2 dienos 2 valandos 2 minutės 2 sekundė |
+| Duration      | Result          |
+| ------------- | --------------- |
+| {"years":0}   | 0 metų          |
+| {"years":1}   | metai           |
+| {"years":2}   | 2 metai         |
+| {"months":0}  | 0 mėnesių       |
+| {"months":1}  | mėnuo           |
+| {"months":2}  | 2 mėnesiai      |
+| {"weeks":0}   | 0 savaičių      |
+| {"weeks":1}   | savaitė         |
+| {"weeks":2}   | 2 savaitės      |
+| {"days":0}    | 0 dienų         |
+| {"days":1}    | diena           |
+| {"days":2}    | 2 dienos        |
+| {"hours":0}   | 0 valandų       |
+| {"hours":1}   | valanda         |
+| {"hours":2}   | 2 valandos      |
+| {"minutes":0} | 0 minučių       |
+| {"minutes":1} | minutė          |
+| {"minutes":2} | 2 minutės       |
+| {"seconds":0} | 0 sekundžių     |
+| {"seconds":1} | kelios sekundės |
+| {"seconds":2} | 2 sekundė       |

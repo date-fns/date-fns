@@ -305,8 +305,26 @@ If now is January 1st, 2000, 00:00.
 
 ## `formatDuration`
 
-| Duration                                                                    | Result                                                         |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| {"years":0,"months":0,"weeks":0,"days":0,"hours":0,"minutes":0,"seconds":0} | 0 snin 0 xhur 0 ġimgħat 0 ġranet 0 siegħat 0 minuti 0 sekondi  |
-| {"years":1,"months":1,"weeks":1,"days":1,"hours":1,"minutes":1,"seconds":1} | sena xahar ġimgħa ġurnata siegħa minuta sekonda                |
-| {"years":2,"months":2,"weeks":2,"days":2,"hours":2,"minutes":2,"seconds":2} | sentejn 2 xhur 2 ġimgħat 2 ġranet 2 siegħat 2 minuti 2 sekondi |
+| Duration      | Result    |
+| ------------- | --------- |
+| {"years":0}   | 0 snin    |
+| {"years":1}   | sena      |
+| {"years":2}   | sentejn   |
+| {"months":0}  | 0 xhur    |
+| {"months":1}  | xahar     |
+| {"months":2}  | 2 xhur    |
+| {"weeks":0}   | 0 ġimgħat |
+| {"weeks":1}   | ġimgħa    |
+| {"weeks":2}   | 2 ġimgħat |
+| {"days":0}    | 0 ġranet  |
+| {"days":1}    | ġurnata   |
+| {"days":2}    | 2 ġranet  |
+| {"hours":0}   | 0 siegħat |
+| {"hours":1}   | siegħa    |
+| {"hours":2}   | 2 siegħat |
+| {"minutes":0} | 0 minuti  |
+| {"minutes":1} | minuta    |
+| {"minutes":2} | 2 minuti  |
+| {"seconds":0} | 0 sekondi |
+| {"seconds":1} | sekonda   |
+| {"seconds":2} | 2 sekondi |
