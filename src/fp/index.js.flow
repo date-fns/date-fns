@@ -344,6 +344,28 @@ declare module.exports: {
   >,
   getYear: CurriedFn1<Date | number, number>,
   intervalToDuration: CurriedFn1<Interval, Duration>,
+  intlFormat: CurriedFn3<
+    {
+      locale?: string | string[],
+    },
+    {
+      timeZone?: string,
+      hour12?: boolean,
+      formatMatcher?: 'basic' | 'best fit',
+      timeZoneName?: 'short' | 'long',
+      second?: 'numeric' | '2-digit',
+      minute?: 'numeric' | '2-digit',
+      hour?: 'numeric' | '2-digit',
+      day?: 'numeric' | '2-digit',
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long',
+      year?: 'numeric' | '2-digit',
+      era?: 'narrow' | 'short' | 'long',
+      weekday?: 'narrow' | 'short' | 'long',
+      localeMatcher?: 'lookup' | 'best fit',
+    },
+    Date | number,
+    string
+  >,
   isAfter: CurriedFn2<Date | number, Date | number, boolean>,
   isBefore: CurriedFn2<Date | number, Date | number, boolean>,
   isDate: CurriedFn1<any, boolean>,
