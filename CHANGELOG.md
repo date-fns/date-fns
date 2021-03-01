@@ -8,6 +8,20 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.18.0 - 2021-03-01
+
+Thanks to [Tan75](http://github.com/tan75) and [Lesha Koss](http://github.com/leshakoss).
+
+### Fixed
+
+- [Fixed documentation missing for `intlFormat`.](https://github.com/date-fns/date-fns/pull/2259) ([#2258](https://github.com/date-fns/date-fns/issues/2258))
+
+- [Fixed date formats in the Latvian locale.](https://github.com/date-fns/date-fns/pull/2205) ([#2202](https://github.com/date-fns/date-fns/issues/2202))
+
+### Added
+
+- [Added support of positive and negative offsets in `parseJSON`.](https://github.com/date-fns/date-fns/pull/2200) ([#2149](https://github.com/date-fns/date-fns/issues/2149))
+
 ## [2.17.0] - 2021-02-05
 
 Kudos to [@shaykav](https://github.com/date-fns/date-fns/pull/1952), [@davidgape89](https://github.com/davidgape89), [@rikkalo](https://github.com/rikkalo), [@tan75](https://github.com/tan75), [@talgautb](https://github.com/talgautb), [@owenl131](https://github.com/owenl131), [@kylesezhi](https://github.com/kylesezhi), [@inigoiparragirre](https://github.com/inigoiparragirre), [@gius](https://github.com/gius), [@Endeauvirr](https://github.com/Endeauvirr) and [@frankyston](https://github.com/frankyston).
