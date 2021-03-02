@@ -40,9 +40,8 @@ describe('nextTuesday', function () {
       nextTuesday(new Date(2020, 2 /* Mar */, 17)),
       new Date(2020, 2 /* Mar */, 24)
     )
-
-    it('returns `Invalid Date` if the given date is invalid', function () {
-      assert(nextTuesday(new Date(NaN)) instanceof Date)
-    })
+  })
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    assert(nextTuesday(new Date(NaN)) instanceof Date)
   })
 })
