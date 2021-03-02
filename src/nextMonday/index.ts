@@ -21,6 +21,5 @@ import toDate from '../toDate/index'
  **/
 export default function nextMonday(date: Date | number): Date {
   requiredArgs(1, arguments)
-
   return nextDay(toDate(date), 1)
 }
