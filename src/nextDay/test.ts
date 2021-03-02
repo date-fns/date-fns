@@ -43,38 +43,44 @@ describe('nextDay', function () {
   })
 
   it('returns the following Tuesday given the Saturday before it', function () {
-    const isSaturday = new Date(2020, 2 /* Mar */, 21)
-    const result = nextDay(isSaturday, 2)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 24))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 21), 2),
+      new Date(2020, 2 /* Mar */, 24)
+    )
   })
 
   it('returns the following Wednesday given the Saturday before it', function () {
-    const isSaturday = new Date(2020, 2 /* Mar */, 21)
-    const result = nextDay(isSaturday, 3)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 25))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 21), 3),
+      new Date(2020, 2 /* Mar */, 25)
+    )
   })
 
   it('returns the following Thursday given the Saturday before it', function () {
-    const isSaturday = new Date(2020, 2 /* Mar */, 21)
-    const result = nextDay(isSaturday, 4)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 26))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 21), 4),
+      new Date(2020, 2 /* Mar */, 26)
+    )
   })
 
   it('returns the following Friday given the Saturday before it', function () {
-    const isSaturday = new Date(2020, 2 /* Mar */, 21)
-    const result = nextDay(isSaturday, 5)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 27))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 21), 5),
+      new Date(2020, 2 /* Mar */, 27)
+    )
   })
 
   it('returns the following Saturday given the Saturday before it', function () {
-    const isSaturday = new Date(2020, 2 /* Mar */, 21)
-    var result = nextDay(isSaturday, 6)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 28))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 21), 6),
+      new Date(2020, 2 /* Mar */, 28)
+    )
   })
 
   it('returns next Sunday given the day is Sunday', function () {
-    const isSunday = new Date(2020, 2 /* Mar */, 22)
-    const result = nextDay(isSunday, 0)
-    assert.deepStrictEqual(result, new Date(2020, 2 /* Mar */, 29))
+    assert.deepStrictEqual(
+      nextDay(new Date(2020, 2 /* Mar */, 22), 0),
+      new Date(2020, 2 /* Mar */, 29)
+    )
   })
 })
