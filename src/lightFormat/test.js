@@ -22,7 +22,7 @@ describe('lightFormat', () => {
     assert(lightFormat(date, "''h 'o''clock'''") === "'5 o'clock'")
   })
 
-  it('accepts new line charactor', function() {
+  it('accepts new line charactor', function () {
     var date = new Date(2014, 3, 4, 5)
     assert.equal(
       lightFormat(date, "yyyy-MM-dd'\n'HH:mm:ss"),
@@ -38,15 +38,17 @@ describe('lightFormat', () => {
       })
 
       it('1 BC formats as 1', () => {
-        var date = new Date(0, 0 /* Jan */, 1)
-        date.setFullYear(0)
+        var date = new Date(0)
+        date.setFullYear(0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
         var result = lightFormat(date, 'y')
         assert(result === '1')
       })
 
       it('2 BC formats as 2', () => {
-        var date = new Date(0, 0 /* Jan */, 1)
-        date.setFullYear(-1)
+        var date = new Date(0)
+        date.setFullYear(-1, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
         var result = lightFormat(date, 'y')
         assert(result === '2')
       })
@@ -117,7 +119,7 @@ describe('lightFormat', () => {
     })
   })
 
-  it('fractional seconds', function() {
+  it('fractional seconds', function () {
     var result = lightFormat(date, 'S SS SSS SSSS')
     assert(result === '1 12 123 1230')
   })
@@ -139,7 +141,7 @@ describe('lightFormat', () => {
     assert(lightFormat(date, formatString) === '2014-04-04')
   })
 
-  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function() {
+  it('throws RangeError exception if the format string contains an unescaped latin alphabet character', function () {
     assert.throws(lightFormat.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 
