@@ -91,5 +91,9 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
     getTimezoneOffsetInMilliseconds(baseDate)
   )
   var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
+  if (formatStr === undefined) {
+    token = 'other'
+    formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
+  }
   return format(date, formatStr, options)
 }

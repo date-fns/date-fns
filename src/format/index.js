@@ -8,7 +8,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError
+  throwProtectedError,
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -326,6 +326,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} use `d` instead of `D` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
  * @throws {RangeError} use `dd` instead of `DD` for formatting days of the month using [format provided] to the input [input provided]; see: https://git.io/fxCyr
  * @throws {RangeError} format string contains an unescaped latin alphabet character
+ * @throws {RangeError} format string is undefined
  *
  * @example
  * // Represent 11 February 2014 in middle-endian format:
@@ -347,6 +348,10 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  */
 export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   requiredArgs(2, arguments)
+
+  if (dirtyFormatStr === undefined) {
+    throw new RangeError('format must be defined')
+  }
 
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
@@ -408,12 +413,12 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
     locale: locale,
-    _originalDate: originalDate
+    _originalDate: originalDate,
   }
 
   var result = formatStr
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -423,7 +428,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     })
     .join('')
     .match(formattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"
