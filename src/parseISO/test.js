@@ -185,7 +185,7 @@ describe('parseISO', () => {
     })
 
     describe('timezones', () => {
-      context('when the date and the time are specified', () => {
+      describe('when the date and the time are specified', () => {
         it('parses Z', () => {
           const result = parseISO('2014-10-25T06:46:20Z')
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
@@ -206,7 +206,7 @@ describe('parseISO', () => {
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
       })
-      context('when the year and the month are specified', () => {
+      describe('when the year and the month are specified', () => {
         it('sets timezone correctly on yyyy-MMZ format', () => {
           const result = parseISO('2012-01Z')
           assert.deepEqual(result, new Date('2012-01-01T00:00:00+00:00'))

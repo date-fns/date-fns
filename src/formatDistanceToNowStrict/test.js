@@ -5,7 +5,7 @@ import assert from 'power-assert'
 import sinon from 'sinon'
 import formatDistanceToNowStrict from '.'
 
-describe('formatDistanceToNowStrict', function() {
+describe('formatDistanceToNowStrict', function () {
   let clock
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(1986, 3, 4, 10, 32, 0).getTime())
@@ -15,83 +15,83 @@ describe('formatDistanceToNowStrict', function() {
     clock.restore()
   })
 
-  describe('seconds', function() {
-    context('when no unit is set', function() {
-      it('0 seconds', function() {
+  describe('seconds', function () {
+    describe('when no unit is set', function () {
+      it('0 seconds', function () {
         var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 32, 0))
         assert(result === '0 seconds')
       })
 
-      it('5 seconds', function() {
+      it('5 seconds', function () {
         var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 32, 5))
         assert(result === '5 seconds')
       })
     })
   })
 
-  describe('minutes', function() {
-    it('1 minute', function() {
+  describe('minutes', function () {
+    it('1 minute', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 0))
       assert(result === '1 minute')
     })
 
-    it('n minutes', function() {
+    it('n minutes', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 35, 0))
       assert(result === '3 minutes')
     })
   })
 
-  describe('hours', function() {
-    it('1 hour', function() {
+  describe('hours', function () {
+    it('1 hour', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 11, 32, 0))
       assert(result === '1 hour')
     })
 
-    it('n hours', function() {
+    it('n hours', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 13, 32, 0))
       assert(result === '3 hours')
     })
   })
 
-  describe('days', function() {
-    it('1 day', function() {
+  describe('days', function () {
+    it('1 day', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 5, 10, 32, 0))
       assert(result === '1 day')
     })
 
-    it('n days', function() {
+    it('n days', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 7, 10, 32, 0))
       assert(result === '3 days')
     })
   })
 
-  describe('months', function() {
-    it('1 month', function() {
+  describe('months', function () {
+    it('1 month', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 4, 4, 10, 32, 0))
       assert(result === '1 month')
     })
 
-    it('n months', function() {
+    it('n months', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 6, 4, 10, 32, 0))
       assert(result === '3 months')
     })
   })
 
-  describe('years', function() {
-    it('1 year', function() {
+  describe('years', function () {
+    it('1 year', function () {
       var result = formatDistanceToNowStrict(new Date(1987, 3, 4, 10, 32, 0))
       assert(result === '1 year')
     })
 
-    it('n years', function() {
+    it('n years', function () {
       var result = formatDistanceToNowStrict(new Date(1991, 3, 4, 10, 32, 0))
       assert(result === '5 years')
     })
   })
 
-  describe('when the unit option is supplied', function() {
-    context('second', function() {
-      it('0 seconds', function() {
+  describe('when the unit option is supplied', function () {
+    describe('second', function () {
+      it('0 seconds', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'second' }
@@ -99,7 +99,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 seconds')
       })
 
-      it('5 seconds', function() {
+      it('5 seconds', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 5),
           { unit: 'second' }
@@ -107,7 +107,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '5 seconds')
       })
 
-      it('120 seconds', function() {
+      it('120 seconds', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 34, 0),
           { unit: 'second' }
@@ -116,8 +116,8 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
-    context('minute', function() {
-      it('0 minutes', function() {
+    describe('minute', function () {
+      it('0 minutes', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'minute' }
@@ -125,7 +125,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 minutes')
       })
 
-      it('5 minutes', function() {
+      it('5 minutes', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 37, 0),
           { unit: 'minute' }
@@ -133,7 +133,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '5 minutes')
       })
 
-      it('120 minutes', function() {
+      it('120 minutes', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 12, 32, 0),
           { unit: 'minute' }
@@ -142,8 +142,8 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
-    context('hour', function() {
-      it('0 hours', function() {
+    describe('hour', function () {
+      it('0 hours', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'hour' }
@@ -151,7 +151,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 hours')
       })
 
-      it('5 hours', function() {
+      it('5 hours', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 15, 32, 0),
           { unit: 'hour' }
@@ -159,7 +159,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '5 hours')
       })
 
-      it('48 hours', function() {
+      it('48 hours', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 6, 10, 32, 0),
           { unit: 'hour' }
@@ -168,8 +168,8 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
-    context('day', function() {
-      it('0 days', function() {
+    describe('day', function () {
+      it('0 days', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'day' }
@@ -177,7 +177,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 days')
       })
 
-      it('5 days', function() {
+      it('5 days', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 9, 10, 32, 0),
           { unit: 'day' }
@@ -185,7 +185,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '5 days')
       })
 
-      it('60 days', function() {
+      it('60 days', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 5, 3, 10, 32, 0),
           { unit: 'day' }
@@ -193,8 +193,8 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '60 days')
       })
     })
-    context('month', function() {
-      it('0 months', function() {
+    describe('month', function () {
+      it('0 months', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'month' }
@@ -202,7 +202,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 months')
       })
 
-      it('5 months', function() {
+      it('5 months', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 7, 4, 10, 32, 0),
           { unit: 'month' }
@@ -210,7 +210,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '4 months')
       })
 
-      it('24 months', function() {
+      it('24 months', function () {
         var result = formatDistanceToNowStrict(
           new Date(1988, 3, 4, 10, 32, 0),
           { unit: 'month' }
@@ -219,8 +219,8 @@ describe('formatDistanceToNowStrict', function() {
       })
     })
 
-    context('year', function() {
-      it('0 years', function() {
+    describe('year', function () {
+      it('0 years', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
           { unit: 'year' }
@@ -228,7 +228,7 @@ describe('formatDistanceToNowStrict', function() {
         assert(result === '0 years')
       })
 
-      it('5 years', function() {
+      it('5 years', function () {
         var result = formatDistanceToNowStrict(
           new Date(1991, 3, 4, 15, 32, 0),
           { unit: 'year' }
@@ -238,66 +238,66 @@ describe('formatDistanceToNowStrict', function() {
     })
   })
 
-  it('accepts timestamps', function() {
+  it('accepts timestamps', function () {
     var result = formatDistanceToNowStrict(
       new Date(1986, 3, 4, 11, 32, 0).getTime()
     )
     assert(result === '1 hour')
   })
 
-  describe('when the addSuffix option is true', function() {
-    it('adds a past suffix', function() {
+  describe('when the addSuffix option is true', function () {
+    it('adds a past suffix', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 31, 35), {
-        addSuffix: true
+        addSuffix: true,
       })
       assert(result === '25 seconds ago')
     })
 
-    it('adds a future suffix', function() {
+    it('adds a future suffix', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 11, 32, 0), {
-        addSuffix: true
+        addSuffix: true,
       })
       assert(result === 'in 1 hour')
     })
   })
 
-  describe('when the roundingMethod option is supplied', function() {
-    it('default is "round"', function() {
+  describe('when the roundingMethod option is supplied', function () {
+    it('default is "round"', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 59))
       assert(result === '2 minutes')
     })
 
-    it('"floor"', function() {
+    it('"floor"', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 59), {
-        roundingMethod: 'floor'
+        roundingMethod: 'floor',
       })
       assert(result === '1 minute')
     })
 
-    it('"ceil"', function() {
+    it('"ceil"', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 1), {
-        roundingMethod: 'ceil'
+        roundingMethod: 'ceil',
       })
       assert(result === '2 minutes')
     })
 
-    it('"round" (down)', function() {
+    it('"round" (down)', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 29), {
-        roundingMethod: 'round'
+        roundingMethod: 'round',
       })
       assert(result === '1 minute')
     })
 
-    it('"round" (up)', function() {
+    it('"round" (up)', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 30), {
-        roundingMethod: 'round'
+        roundingMethod: 'round',
       })
       assert(result === '2 minutes')
     })
   })
 
-  describe('implicit conversion of options', function() {
-    it('`options.unit`', function() {
+  describe('implicit conversion of options', function () {
+    it('`options.unit`', function () {
       // eslint-disable-next-line no-new-wrappers
       var unit = new String('year')
 
@@ -309,7 +309,7 @@ describe('formatDistanceToNowStrict', function() {
       assert(result === '0 years')
     })
 
-    it('`options.addSuffix`', function() {
+    it('`options.addSuffix`', function () {
       var result = formatDistanceToNowStrict(
         new Date(1986, 3, 4, 10, 31, 35),
         // $ExpectedMistake
@@ -318,7 +318,7 @@ describe('formatDistanceToNowStrict', function() {
       assert(result === '25 seconds ago')
     })
 
-    it('`options.ceil`', function() {
+    it('`options.ceil`', function () {
       // eslint-disable-next-line no-new-wrappers
       var roundingMethod = new String('ceil')
 
@@ -331,8 +331,8 @@ describe('formatDistanceToNowStrict', function() {
     })
   })
 
-  describe('custom locale', function() {
-    it('can be passed to the function', function() {
+  describe('custom locale', function () {
+    it('can be passed to the function', function () {
       function localizeDistance(token, count, options) {
         assert(token === 'xSeconds')
         assert(count === 15)
@@ -342,7 +342,7 @@ describe('formatDistanceToNowStrict', function() {
       }
 
       var customLocale = {
-        formatDistance: localizeDistance
+        formatDistance: localizeDistance,
       }
 
       var result = formatDistanceToNowStrict(
@@ -354,8 +354,8 @@ describe('formatDistanceToNowStrict', function() {
       assert(result === 'It works!')
     })
 
-    context('does not contain `formatDistance` property', function() {
-      it('throws `RangeError`', function() {
+    describe('does not contain `formatDistance` property', function () {
+      it('throws `RangeError`', function () {
         var customLocale = {}
         var block = formatDistanceToNowStrict.bind(
           null,
@@ -368,21 +368,21 @@ describe('formatDistanceToNowStrict', function() {
     })
   })
 
-  describe('edge cases', function() {
-    it('detects unit correctly for short months', function() {
+  describe('edge cases', function () {
+    it('detects unit correctly for short months', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 2 /* Mar */, 7))
       assert(result === '28 days')
     })
   })
 
-  it('throws `RangeError` if the date is `Invalid Date`', function() {
+  it('throws `RangeError` if the date is `Invalid Date`', function () {
     assert.throws(
       formatDistanceToNowStrict.bind(null, new Date(NaN)),
       RangeError
     )
   })
 
-  it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function() {
+  it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
@@ -392,7 +392,7 @@ describe('formatDistanceToNowStrict', function() {
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function() {
+  it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
@@ -402,7 +402,7 @@ describe('formatDistanceToNowStrict', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 arguments', function() {
+  it('throws TypeError exception if passed less than 1 arguments', function () {
     assert.throws(formatDistanceToNowStrict.bind(null), TypeError)
   })
 })
