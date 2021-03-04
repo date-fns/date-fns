@@ -2,16 +2,7 @@ import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-interface Values {
-  year?: number;
-  month?: number;
-  date?: number;
-  hours?: number;
-  minutes?: number;
-  seconds?: number;
-  milliseconds?: number;
-}
+import { DateValues } from '../types';
 
 /**
  * @name set
@@ -52,7 +43,7 @@ interface Values {
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(dirtyDate: Date | number, values: Values): Date {
+export default function set(dirtyDate: Date | number, values: DateValues): Date {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {
