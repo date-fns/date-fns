@@ -30,11 +30,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isSameISOWeekYear(new Date(2003, 11, 29), new Date(2005, 0, 2))
  * //=> true
  */
-export default function isSameISOWeekYear(dirtyDateLeft, dirtyDateRight) {
+export default function isSameISOWeekYear(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
-  var dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
+  const dateLeftStartOfYear = startOfISOWeekYear(dirtyDateLeft)
+  const dateRightStartOfYear = startOfISOWeekYear(dirtyDateRight)
 
   return dateLeftStartOfYear.getTime() === dateRightStartOfYear.getTime()
 }
