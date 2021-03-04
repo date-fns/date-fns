@@ -27,11 +27,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> true
  */
-export default function isSameMinute(dirtyDateLeft, dirtyDateRight) {
+export default function isSameMinute(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
-  var dateRightStartOfMinute = startOfMinute(dirtyDateRight)
+  const dateLeftStartOfMinute = startOfMinute(dirtyDateLeft)
+  const dateRightStartOfMinute = startOfMinute(dirtyDateRight)
 
   return dateLeftStartOfMinute.getTime() === dateRightStartOfMinute.getTime()
 }

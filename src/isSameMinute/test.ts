@@ -6,7 +6,7 @@ import isSameMinute from '.'
 
 describe('isSameMinute', function() {
   it('returns true if the given dates have the same minute', function() {
-    var result = isSameMinute(
+    const result = isSameMinute(
       new Date(2014, 8 /* Sep */, 4, 6, 30),
       new Date(2014, 8 /* Sep */, 4, 6, 30, 15)
     )
@@ -14,7 +14,7 @@ describe('isSameMinute', function() {
   })
 
   it('returns false if the given dates have different minutes', function() {
-    var result = isSameMinute(
+    const result = isSameMinute(
       new Date(2014, 8 /* Sep */, 4, 6, 30, 59),
       new Date(2014, 8 /* Sep */, 4, 6, 31)
     )
@@ -22,7 +22,7 @@ describe('isSameMinute', function() {
   })
 
   it('accepts a timestamp', function() {
-    var result = isSameMinute(
+    const result = isSameMinute(
       new Date(2014, 8 /* Sep */, 4, 18, 45).getTime(),
       new Date(2014, 8 /* Sep */, 4, 18, 45, 30).getTime()
     )
@@ -30,17 +30,17 @@ describe('isSameMinute', function() {
   })
 
   it('returns false if the first date is `Invalid Date`', function() {
-    var result = isSameMinute(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
+    const result = isSameMinute(new Date(NaN), new Date(1989, 6 /* Jul */, 10))
     assert(result === false)
   })
 
   it('returns false if the second date is `Invalid Date`', function() {
-    var result = isSameMinute(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
+    const result = isSameMinute(new Date(1987, 1 /* Feb */, 11), new Date(NaN))
     assert(result === false)
   })
 
   it('returns false if the both dates are `Invalid Date`', function() {
-    var result = isSameMinute(new Date(NaN), new Date(NaN))
+    const result = isSameMinute(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
 
