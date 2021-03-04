@@ -37,14 +37,14 @@ import sub from '../sub/index'
 export default function intervalToDuration({ start, end }) {
   requiredArgs(1, arguments)
 
-  const dateLeft = toDate(start)
-  const dateRight = toDate(end)
+  const dateLeft = toDate(end)
+  const dateRight = toDate(start)
 
   if (!isValid(dateLeft)) {
-    throw new RangeError('Start Date is invalid')
+    throw new RangeError('End Date is invalid')
   }
   if (!isValid(dateRight)) {
-    throw new RangeError('End Date is invalid')
+    throw new RangeError('Start Date is invalid')
   }
 
   const duration = {
@@ -53,7 +53,7 @@ export default function intervalToDuration({ start, end }) {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   }
 
   const sign = compareAsc(dateLeft, dateRight)
@@ -73,7 +73,7 @@ export default function intervalToDuration({ start, end }) {
   duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
 
   const remainingSeconds = sub(remainingMinutes, {
-    minutes: sign * duration.minutes
+    minutes: sign * duration.minutes,
   })
   duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
 
