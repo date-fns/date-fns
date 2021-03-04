@@ -1,5 +1,6 @@
 import startOfWeek from '../startOfWeek/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { WeekStartOptions, LocalOptions } from '../types';
 
 /**
  * @name isSameWeek
@@ -36,14 +37,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameWeek(
-  dirtyDateLeft,
-  dirtyDateRight,
-  dirtyOptions
-) {
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number,
+  dirtyOptions?: WeekStartOptions & LocalOptions,
+): boolean {
   requiredArgs(2, arguments)
 
-  var dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
-  var dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
+  const dateLeftStartOfWeek = startOfWeek(dirtyDateLeft, dirtyOptions)
+  const dateRightStartOfWeek = startOfWeek(dirtyDateRight, dirtyOptions)
 
   return dateLeftStartOfWeek.getTime() === dateRightStartOfWeek.getTime()
 }
