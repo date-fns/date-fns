@@ -11,56 +11,56 @@ const sauceLabsLaunchers = {
     base: 'SauceLabs',
     platform: 'OS X 10.11',
     browserName: 'safari',
-    version: '9.0'
+    version: '9.0',
   },
 
   chrome: {
     base: 'SauceLabs',
     platform: 'Windows 8.1',
     browserName: 'chrome',
-    version: '46.0'
+    version: '46.0',
   },
 
   firefox: {
     base: 'SauceLabs',
     platform: 'Windows 8.1',
     browserName: 'firefox',
-    version: '41.0'
+    version: '41.0',
   },
 
   ie8: {
     base: 'SauceLabs',
     platform: 'Windows 7',
     browserName: 'internet explorer',
-    version: '8.0'
+    version: '8.0',
   },
 
   ie9: {
     base: 'SauceLabs',
     platform: 'Windows 7',
     browserName: 'internet explorer',
-    version: '9.0'
+    version: '9.0',
   },
 
   ie10: {
     base: 'SauceLabs',
     platform: 'Windows 7',
     browserName: 'internet explorer',
-    version: '10.0'
+    version: '10.0',
   },
 
   ie11: {
     base: 'SauceLabs',
     platform: 'Windows 8.1',
     browserName: 'internet explorer',
-    version: '11.0'
+    version: '11.0',
   },
 
   edge: {
     base: 'SauceLabs',
     platform: 'Windows 10',
     browserName: 'microsoftedge',
-    version: '20.10240'
+    version: '20.10240',
   },
 
   // TODO: See if iPhone became more reliable
@@ -79,23 +79,20 @@ const sauceLabsLaunchers = {
     platform: 'Linux',
     version: '5.1',
     deviceName: 'Android Emulator',
-    deviceOrientation: 'portrait'
-  }
+    deviceOrientation: 'portrait',
+  },
 }
 
 const localLaunchers = {
   LocalChrome: {
-    base: 'Chrome'
-  }
+    base: 'Chrome',
+  },
 }
 
-const travisLaunchers = {
-  ChromeTravis: {
+const ciLaunchers = {
+  CIChrome: {
     base: 'ChromeHeadless',
-    // NOTE: We need to launch Chrome with --no-sandbox.
-    // See https://github.com/travis-ci/travis-ci/issues/8836
-    flags: ['--no-sandbox']
-  }
+  },
 }
 
 function config(config) {
@@ -110,8 +107,8 @@ function config(config) {
         chunks: false,
         hash: false,
         timings: false,
-        version: false
-      }
+        version: false,
+      },
     },
 
     // We are limited in the number of parallel VMs in SauceLabs (5)
@@ -126,18 +123,18 @@ function config(config) {
 
     sauceLabs: {
       startConnect: false,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      tunnelIdentifier: process.env.GITHUB_RUN_ID,
       recordScreenshots: false,
-      public: 'public'
+      public: 'public',
     },
 
     coveageIstanbulReporter: {
       reports: ['html', 'lcovonly'],
-      fixWebpackSourcePaths: true
+      fixWebpackSourcePaths: true,
     },
 
     mochaReporter: {
-      output: 'minimal'
+      output: 'minimal',
     },
 
     plugins: (process.env.COVERAGE_REPORT
@@ -155,16 +152,16 @@ function config(config) {
       'karma-benchmark',
       'karma-benchmark-reporter',
       { 'reporter:count': ['type', countReporter] },
-      { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] }
+      { 'reporter:benchmark-json': ['type', benchmarkJSONReporter] },
     ]),
 
     customLaunchers: process.env.TEST_CROSS_BROWSER
       ? sauceLabsLaunchers
-      : process.env.TRAVIS
-        ? travisLaunchers
-        : localLaunchers,
+      : process.env.CI
+      ? ciLaunchers
+      : localLaunchers,
     browsers: getBrowsersConfig(),
-    reporters: getReportersConfig()
+    reporters: getReportersConfig(),
   })
 }
 
@@ -201,8 +198,8 @@ function getBrowsersConfig() {
     return Object.keys(sauceLabsLaunchers)
   } else if (process.env.TEST_BENCHMARK) {
     return ['PhantomJS']
-  } else if (process.env.TRAVIS) {
-    return Object.keys(travisLaunchers)
+  } else if (process.env.CI) {
+    return Object.keys(ciLaunchers)
   } else {
     return Object.keys(localLaunchers)
   }
