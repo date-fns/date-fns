@@ -54,6 +54,9 @@ describe('addDays', function() {
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
   const HOUR = 1000 * 60 * 60
+  const MINUTE = 1000 * 60
+  // It's usually 1 hour, but for some timezones, e.g. Australia/Lord_Howe, it is 30 minutes
+  const dstOffset = dstTransitions.start && dstTransitions.end ? ((dstTransitions.end.getTimezoneOffset() - dstTransitions.start.getTimezoneOffset()) * MINUTE) : NaN
 
   dstOnly(
     `works at DST-start boundary in local timezone: ${tz || '(unknown)'}`,
@@ -70,7 +73,7 @@ describe('addDays', function() {
       const date = new Date(dstTransitions.start!.getTime() - 0.5 * HOUR)
       const result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
-      assert.deepStrictEqual(result, new Date(date.getTime() + 23 * HOUR))
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR - dstOffset))
     }
   )
 
@@ -80,7 +83,7 @@ describe('addDays', function() {
       const date = new Date(dstTransitions.start!.getTime() - 1 * HOUR)
       const result = addDays(date, 1)
       // started before the transition so will only be 23 hours later in local time
-      assert.deepStrictEqual(result, new Date(date.getTime() + 23 * HOUR))
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR - dstOffset))
     }
   )
 
@@ -100,7 +103,7 @@ describe('addDays', function() {
       const result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
-      assert.deepStrictEqual(result, new Date(date.getTime() + 25 * HOUR))
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR + dstOffset))
     }
   )
 
@@ -111,7 +114,7 @@ describe('addDays', function() {
       const result = addDays(date, 1)
       // started before the transition so will be 25 hours later in local
       // time because one hour repeats after DST ends.
-      assert.deepStrictEqual(result, new Date(date.getTime() + 25 * HOUR))
+      assert.deepStrictEqual(result, new Date(date.getTime() + 24 * HOUR + dstOffset))
     }
   )
 
