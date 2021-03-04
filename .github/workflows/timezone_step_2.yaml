@@ -26,7 +26,7 @@ jobs:
       - name: Run tests
         uses: GabrielBB/xvfb-action@v1.0
         with:
-          run: ./scripts/test/travis.sh
+          run: ./scripts/test/ci.sh
         env:
           TEST_SUITE: tz
           TZ_LENGTH: 2

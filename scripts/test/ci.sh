@@ -2,7 +2,7 @@
 
 # The script unifies the test scripts.
 #
-# It's used as the main Travis CI script.
+# It's used as the main CI script.
 
 set -ex
 
