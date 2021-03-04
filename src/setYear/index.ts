@@ -21,17 +21,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set year 2013 to 1 September 2014:
- * var result = setYear(new Date(2014, 8, 1), 2013)
+ * const result = setYear(new Date(2014, 8, 1), 2013)
  * //=> Sun Sep 01 2013 00:00:00
  */
-export default function setYear(dirtyDate, dirtyYear) {
+export default function setYear(dirtyDate: Date | number, dirtyYear: number): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var year = toInteger(dirtyYear)
+  const date = toDate(dirtyDate)
+  const year = toInteger(dirtyYear)
 
   // Check if date is Invalid Date because Date.prototype.setFullYear ignores the value of Invalid Date
-  if (isNaN(date)) {
+  if (isNaN(date.getTime())) {
     return new Date(NaN)
   }
 
