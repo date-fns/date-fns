@@ -1,0 +1,47 @@
+// @flow
+/* eslint-env mocha */
+
+import assert from 'power-assert'
+import nextTuesday from '.'
+
+describe('nextTuesday', function () {
+  it('returns the following Tuesday given various dates before the same', function () {
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 23)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 22)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 21)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 20)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 19)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 18)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+
+    assert.deepStrictEqual(
+      nextTuesday(new Date(2020, 2 /* Mar */, 17)),
+      new Date(2020, 2 /* Mar */, 24)
+    )
+  })
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    assert(nextTuesday(new Date(NaN)) instanceof Date)
+  })
+})

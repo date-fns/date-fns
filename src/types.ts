@@ -26,3 +26,5 @@ export interface WeekStartOptions {
 export interface LocalOptions {
   locale?: Locale
 }
+
+export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6

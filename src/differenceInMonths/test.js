@@ -150,4 +150,40 @@ describe('differenceInMonths', function () {
     assert.throws(differenceInMonths.bind(null), TypeError)
     assert.throws(differenceInMonths.bind(null, 1), TypeError)
   })
+
+  describe('edge cases', function () {
+    it('returns the number of full months between the given dates - end of Feb', function () {
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 29, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 27, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 27, 10, 0, 0)
+        ) === 0
+      )
+      assert(
+        differenceInMonths(
+          new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
+          new Date(2012, 1 /* Feb */, 28, 10, 0, 0)
+        ) === 0
+      )
+    })
+
+    assert(
+      differenceInMonths(
+        new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
+        new Date(2021, 1 /* Feb */, 28, 7, 38, 18)
+      ) === 0
+    )
+  })
 })
