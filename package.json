@@ -52,7 +52,7 @@
     "@babel/plugin-transform-template-literals": "^7.4.4",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
-    "@date-fns/date-fns-scripts": "^0.0.3",
+    "@date-fns/date-fns-scripts": "0.0.4",
     "@octokit/core": "^3.2.5",
     "@types/jest": "^26.0.13",
     "@types/node": "^14.6.3",
