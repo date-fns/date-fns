@@ -412,7 +412,7 @@ declare module.exports: {
   isSunday: CurriedFn1<Date | number, boolean>,
   isThursday: CurriedFn1<Date | number, boolean>,
   isTuesday: CurriedFn1<Date | number, boolean>,
-  isValid: CurriedFn1<any, boolean>,
+  isValid: CurriedFn1<Date | number, boolean>,
   isWednesday: CurriedFn1<Date | number, boolean>,
   isWeekend: CurriedFn1<Date | number, boolean>,
   isWithinInterval: CurriedFn2<Interval, Date | number, boolean>,
