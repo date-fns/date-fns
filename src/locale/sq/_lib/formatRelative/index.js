@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: "'last' eeee 'në' p",
+  lastWeek: "'të' eeee 'e shkuar në' p",
   yesterday: "'dje në' p",
   today: "'sot në' p",
   tomorrow: "'nesër në' p",
