@@ -23,7 +23,7 @@ export interface WeekStartOptions {
   weekStartsOn?: number
 }
 
-export interface LocalOptions {
+export interface LocaleOptions {
   locale?: Locale
 }
 
