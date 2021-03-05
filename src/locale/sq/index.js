@@ -7,21 +7,19 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary English locale (United States).
- * @language English
- * @iso-639-2 eng
- * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
- * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
+ * @summary Albanian locale.
+ * @language Shqip
+ * @author Ardit Dine [@arditdine]{@link https://github.com/arditdine}
  */
 var locale = {
-  code: 'en-US',
+  code: 'sq',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
+    weekStartsOn: 1 /* Monday */,
     firstWeekContainsDate: 1
   }
 }

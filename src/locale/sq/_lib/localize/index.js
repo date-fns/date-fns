@@ -1,15 +1,15 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
-  narrow: ['B', 'A'],
-  abbreviated: ['BC', 'AD'],
-  wide: ['Before Christ', 'Anno Domini']
+  narrow: ['P', 'M'],
+  abbreviated: ['PK', 'MK'],
+  wide: ['Para Krishtit', 'Mbas Krishtit']
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter']
+  wide: ['katër mujori 1', 'katër mujori 2', 'katër mujori 3', 'katër mujori 4']
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -57,66 +57,66 @@ var dayValues = {
 
 var dayPeriodValues = {
   narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mi',
-    noon: 'n',
+    am: 'p',
+    pm: 'm',
+    midnight: 'm',
+    noon: 'd',
     morning: 'mëngjes',
     afternoon: 'dite',
     evening: 'mbrëmje',
     night: 'natë'
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
+    am: 'PD',
+    pm: 'MD',
     midnight: 'mesnëtë',
     noon: 'drek',
     morning: 'mëngjes',
-    afternoon: 'mbas dreke',
+    afternoon: 'mbasdite',
     evening: 'mbrëmje',
     night: 'natë'
   },
   wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'midnight',
-    noon: 'noon',
-    morning: 'morning',
-    afternoon: 'afternoon',
-    evening: 'evening',
-    night: 'night'
+    am: 'p.d.',
+    pm: 'm.d.',
+    midnight: 'mesnëtë',
+    noon: 'drek',
+    morning: 'mëngjes',
+    afternoon: 'mbasdite',
+    evening: 'mbrëmje',
+    night: 'natë'
   }
 }
 var formattingDayPeriodValues = {
   narrow: {
-    am: 'a',
-    pm: 'p',
-    midnight: 'mi',
-    noon: 'n',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    am: 'p',
+    pm: 'm',
+    midnight: 'm',
+    noon: 'd',
+    morning: 'në mëngjes',
+    afternoon: 'mbasdite',
+    evening: 'në mbrëmje',
+    night: 'në mesnatë'
   },
   abbreviated: {
-    am: 'AM',
-    pm: 'PM',
-    midnight: 'midnight',
-    noon: 'noon',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    am: 'PD',
+    pm: 'MD',
+    midnight: 'mesnatë',
+    noon: 'drek',
+    morning: 'në mëngjes',
+    afternoon: 'mbasdite',
+    evening: 'në mbrëmje',
+    night: 'në mesnatë'
   },
   wide: {
-    am: 'a.m.',
-    pm: 'p.m.',
-    midnight: 'midnight',
-    noon: 'noon',
-    morning: 'in the morning',
-    afternoon: 'in the afternoon',
-    evening: 'in the evening',
-    night: 'at night'
+    am: 'p.d.',
+    pm: 'm.d.',
+    midnight: 'mesnatë',
+    noon: 'drek',
+    morning: 'në mëngjes',
+    afternoon: 'mbasdite',
+    evening: 'në mbremje',
+    night: 'në mesnatë'
   }
 }
 
@@ -137,14 +137,14 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   if (rem100 > 20 || rem100 < 10) {
     switch (rem100 % 10) {
       case 1:
-        return number + 'st'
+        return number
       case 2:
-        return number + 'nd'
+        return number
       case 3:
-        return number + 'rd'
+        return number
     }
   }
-  return number + 'th'
+  return number
 }
 
 var localize = {
