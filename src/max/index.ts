@@ -40,10 +40,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray) {
+export default function max(dirtyDatesArray: Date[] | string[] | number[]): Date {
   requiredArgs(1, arguments)
 
-  var datesArray
+  let datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
@@ -56,11 +56,11 @@ export default function max(dirtyDatesArray) {
     return new Date(NaN)
   }
 
-  var result
+  let result: Date | undefined
   datesArray.forEach(function(dirtyDate) {
-    var currentDate = toDate(dirtyDate)
+    const currentDate = toDate(dirtyDate)
 
-    if (result === undefined || result < currentDate || isNaN(currentDate)) {
+    if (result === undefined || result < currentDate || isNaN(Number(currentDate))) {
       result = currentDate
     }
   })
