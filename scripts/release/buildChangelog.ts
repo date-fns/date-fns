@@ -21,7 +21,7 @@ function renderChangelog(changelog: ChangelogVersion) {
 
   let markdown = `## ${renderVersion(changelog.version)}
 
-${sample(thanksOptions)} ${renderAuthors(authors)}.`
+${sample(thanksOptions)!(renderAuthors(authors))}`
 
   if (changelog.fixed.length)
     markdown += `
@@ -165,14 +165,29 @@ function extractItems(
   }
 
   switch (true) {
+    // Fixed
     case /^(breaking:\s?)?fixed /i.test(message):
       return [item({ type: 'fixed', message })]
+    case fixedOneLinerRegExp.test(message): {
+      const captures = message.match(fixedOneLinerRegExp)!
+      return [item({ type: 'fixed', message: captures[1] })]
+    }
 
+    // Changed
     case /^(breaking:\s?)?changed /i.test(message):
       return [item({ type: 'changed', message })]
+    case changedOneLinerRegExp.test(message): {
+      const captures = message.match(changedOneLinerRegExp)!
+      return [item({ type: 'changed', message: captures[1] })]
+    }
 
+    // Added
     case /^(breaking:\s?)?added /i.test(message):
       return [item({ type: 'added', message })]
+    case addedOneLinerRegExp.test(message): {
+      const captures = message.match(addedOneLinerRegExp)!
+      return [item({ type: 'added', message: captures[1] })]
+    }
 
     default:
       return []
@@ -250,8 +265,12 @@ var closesRegExp = /closes #(\d+)/
 var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
 var thanksOptions = [
-  'Kudos to ',
-  'Thanks to ',
-  'This release is brought to you by ',
-  'On this release worked ',
+  (authors: string) => `Kudos to ${authors} for working on the release.`,
+  (authors: string) => `Thanks to ${authors} for working on the relese.`,
+  (authors: string) => `This release is brought to you by ${authors}.`,
+  (authors: string) => `On this release worked ${authors}.`,
 ]
+
+var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+var changedOneLinerRegExp = /^changed:\s(.+)/i
+var addedOneLinerRegExp = /^added:\s(.+)/i
