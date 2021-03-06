@@ -3,24 +3,25 @@ import nextDay from '../nextDay/index'
 import toDate from '../toDate/index'
 
 /**
- * @name nextMonday
+ * @name nextThursday
  * @category Weekday Helpers
- * @summary When is the next Monday?
+ * @summary When is the next Thursday?
  *
  * @description
- * When is the next Monday?
+ * When is the next Thursday?
  *
  * @param {Date | number} date the date to check
- * @returns {Date} the date is the next Monday
+ * @returns {Date} the date is the next Thursday
  * @throws {TypeError} the date should be a valid date
  * @throws {TypeError} 1 argument required
  *
  * @example
- * When is the next Monday after Mar, 22, 2020?
- * const result = nextMonday(new Date(2020, 2, 22))
- * => Mon Mar 23 2020 00:00:00
+ * When is the next Thursday after Mar, 22, 2020?
+ * const result = nextThursday(new Date(2020, 2, 22))
+ * => Thur Mar 26 2020 00:00:00
  **/
-export default function nextMonday(date: Date | number): Date {
+
+export default function nextThursday(date: Date | number): Date {
   requiredArgs(1, arguments)
-  return nextDay(toDate(date), 1)
+  return nextDay(toDate(date), 4)
 }
