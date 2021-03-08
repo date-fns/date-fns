@@ -35,10 +35,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
-export default function parseJSON(argument) {
+export default function parseJSON(argument: Date | string | number): Date {
   requiredArgs(1, arguments)
+
   if (typeof argument === 'string') {
-    var parts = argument.match(
+    const parts = argument.match(
       /(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.(\d{0,7}))?(?:Z|(.)(\d{2}):?(\d{2})?)?/
     )
     if (parts) {
@@ -46,10 +47,10 @@ export default function parseJSON(argument) {
       return new Date(
         Date.UTC(
           +parts[1],
-          parts[2] - 1,
+          +parts[2] - 1,
           +parts[3],
-          +parts[4] - (parts[9] || 0) * (parts[8] == '-' ? -1 : 1),
-          +parts[5] - (parts[10] || 0) * (parts[8] == '-' ? -1 : 1),
+          +parts[4] - (+parts[9] || 0) * (parts[8] == '-' ? -1 : 1),
+          +parts[5] - (+parts[10] || 0) * (parts[8] == '-' ? -1 : 1),
           +parts[6],
           +((parts[7] || '0') + '00').substring(0, 3)
         )
