@@ -9,7 +9,7 @@ var eraValues = {
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['katër mujori 1', 'katër mujori 2', 'katër mujori 3', 'katër mujori 4']
+  wide: ['4-mujori I', '4-mujori II', '4-mujori III', '4-mujori IV']
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -133,18 +133,15 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
   // where `unit` can be 'year', 'quarter', 'month', 'week', 'date', 'dayOfYear',
   // 'day', 'hour', 'minute', 'second'
 
-  var rem100 = number % 100
-  if (rem100 > 20 || rem100 < 10) {
-    switch (rem100 % 10) {
-      case 1:
-        return number
-      case 2:
-        return number
-      case 3:
-        return number
-    }
-  }
-  return number
+  var options = _dirtyOptions || {}
+  var unit = String(options.unit)
+
+  if (unit === 'hour') return number
+
+  if (number === 1) return number + '-rë'
+  if (number === 4) return number + 't'
+
+  return number + '-të'
 }
 
 var localize = {

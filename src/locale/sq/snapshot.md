@@ -2,188 +2,188 @@
 
 ## `format` and `parse`
 
-| Title                           | Token string | Date                     | `format` result                                   | `parse` result           |
-| ------------------------------- | ------------ | ------------------------ | ------------------------------------------------- | ------------------------ |
-| Calendar year                   | yo           | 1987-02-11T12:13:14.015Z | 1987                                              | 1987-01-01T00:00:00.000Z |
-|                                 |              | 0005-01-01T12:13:14.015Z | 5                                                 | 0005-01-01T00:00:00.000Z |
-| Local week-numbering year       | Yo           | 1987-02-11T12:13:14.015Z | 1987                                              | 1986-12-29T00:00:00.000Z |
-|                                 |              | 0005-01-01T12:13:14.015Z | 5                                                 | 0004-12-27T00:00:00.000Z |
-| Quarter (formatting)            | Qo           | 2019-01-01T12:13:14.015Z | 1                                                 | 2019-01-01T00:00:00.000Z |
-|                                 |              | 2019-04-01T12:13:14.015Z | 2                                                 | 2019-04-01T00:00:00.000Z |
-|                                 | QQQ          | 2019-01-01T12:13:14.015Z | Q1                                                | 2019-01-01T00:00:00.000Z |
-|                                 |              | 2019-04-01T12:13:14.015Z | Q2                                                | 2019-04-01T00:00:00.000Z |
-|                                 | QQQQ         | 2019-01-01T12:13:14.015Z | katër mujori 1                                    | Invalid Date             |
-|                                 |              | 2019-04-01T12:13:14.015Z | katër mujori 2                                    | Invalid Date             |
-|                                 | QQQQQ        | 2019-01-01T12:13:14.015Z | 1                                                 | 2019-01-01T00:00:00.000Z |
-|                                 |              | 2019-04-01T12:13:14.015Z | 2                                                 | 2019-04-01T00:00:00.000Z |
-| Quarter (stand-alone)           | qo           | 2019-01-01T12:13:14.015Z | 1                                                 | 2019-01-01T00:00:00.000Z |
-|                                 |              | 2019-04-01T12:13:14.015Z | 2                                                 | 2019-04-01T00:00:00.000Z |
-|                                 | qqq          | 2019-01-01T12:13:14.015Z | Q1                                                | 2019-01-01T00:00:00.000Z |
-|                                 |              | 2019-04-01T12:13:14.015Z | Q2                                                | 2019-04-01T00:00:00.000Z |
-|                                 | qqqq         | 2019-01-01T12:13:14.015Z | katër mujori 1                                    | Invalid Date             |
-|                                 |              | 2019-04-01T12:13:14.015Z | katër mujori 2                                    | Invalid Date             |
-| Month (formatting)              | Mo           | 2019-02-11T12:13:14.015Z | 2                                                 | 2019-02-01T00:00:00.000Z |
-|                                 |              | 2019-07-10T12:13:14.015Z | 7                                                 | 2019-07-01T00:00:00.000Z |
-|                                 | MMM          | 2019-02-11T12:13:14.015Z | Shk                                               | Invalid Date             |
-|                                 |              | 2019-07-10T12:13:14.015Z | Kor                                               | Invalid Date             |
-|                                 | MMMM         | 2019-02-11T12:13:14.015Z | Shkurt                                            | Invalid Date             |
-|                                 |              | 2019-07-10T12:13:14.015Z | Korrik                                            | Invalid Date             |
-|                                 | MMMMM        | 2019-02-11T12:13:14.015Z | S                                                 | 2019-09-01T00:00:00.000Z |
-|                                 |              | 2019-07-10T12:13:14.015Z | K                                                 | Invalid Date             |
-| Month (stand-alone)             | Lo           | 2019-02-11T12:13:14.015Z | 2                                                 | 2019-02-01T00:00:00.000Z |
-|                                 |              | 2019-07-10T12:13:14.015Z | 7                                                 | 2019-07-01T00:00:00.000Z |
-|                                 | LLL          | 2019-02-11T12:13:14.015Z | Shk                                               | Invalid Date             |
-|                                 |              | 2019-07-10T12:13:14.015Z | Kor                                               | Invalid Date             |
-|                                 | LLLL         | 2019-02-11T12:13:14.015Z | Shkurt                                            | Invalid Date             |
-|                                 |              | 2019-07-10T12:13:14.015Z | Korrik                                            | Invalid Date             |
-|                                 | LLLLL        | 2019-02-11T12:13:14.015Z | S                                                 | 2019-09-01T00:00:00.000Z |
-|                                 |              | 2019-07-10T12:13:14.015Z | K                                                 | Invalid Date             |
-| Local week of year              | wo           | 2019-01-01T12:13:14.015Z | 1                                                 | 2018-12-31T00:00:00.000Z |
-|                                 |              | 2019-12-01T12:13:14.015Z | 48                                                | 2019-11-25T00:00:00.000Z |
-| ISO week of year                | Io           | 2019-01-01T12:13:14.015Z | 1                                                 | 2018-12-31T00:00:00.000Z |
-|                                 |              | 2019-12-01T12:13:14.015Z | 48                                                | 2019-11-25T00:00:00.000Z |
-| Day of month                    | do           | 2019-02-11T12:13:14.015Z | 11                                                | 2019-02-11T00:00:00.000Z |
-|                                 |              | 2019-02-28T12:13:14.015Z | 28                                                | 2019-02-28T00:00:00.000Z |
-| Day of year                     | Do           | 2019-02-11T12:13:14.015Z | 42                                                | 2019-02-11T00:00:00.000Z |
-|                                 |              | 2019-12-31T12:13:14.015Z | 365                                               | 2019-12-31T00:00:00.000Z |
-| Day of week (formatting)        | E            | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | EE           | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | EEE          | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | EEEE         | 2019-02-11T12:13:14.015Z | Hënë                                              | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                            | Invalid Date             |
-|                                 | EEEEE        | 2019-02-11T12:13:14.015Z | H                                                 | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | P                                                 | Invalid Date             |
-|                                 | EEEEEE       | 2019-02-11T12:13:14.015Z | Hë                                                | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                | Invalid Date             |
-| ISO day of week (formatting)    | io           | 2019-02-11T12:13:14.015Z | 1                                                 | 2019-02-11T00:00:00.000Z |
-|                                 |              | 2019-02-15T12:13:14.015Z | 5                                                 | 2019-02-15T00:00:00.000Z |
-|                                 | iii          | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | iiii         | 2019-02-11T12:13:14.015Z | Hënë                                              | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                            | Invalid Date             |
-|                                 | iiiii        | 2019-02-11T12:13:14.015Z | H                                                 | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | P                                                 | Invalid Date             |
-|                                 | iiiiii       | 2019-02-11T12:13:14.015Z | Hë                                                | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                | Invalid Date             |
-| Local day of week (formatting)  | eo           | 2019-02-11T12:13:14.015Z | 1                                                 | 2019-02-11T00:00:00.000Z |
-|                                 |              | 2019-02-15T12:13:14.015Z | 5                                                 | 2019-02-15T00:00:00.000Z |
-|                                 | eee          | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | eeee         | 2019-02-11T12:13:14.015Z | Hënë                                              | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                            | Invalid Date             |
-|                                 | eeeee        | 2019-02-11T12:13:14.015Z | H                                                 | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | P                                                 | Invalid Date             |
-|                                 | eeeeee       | 2019-02-11T12:13:14.015Z | Hë                                                | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                | Invalid Date             |
-| Local day of week (stand-alone) | co           | 2019-02-11T12:13:14.015Z | 1                                                 | 2019-02-11T00:00:00.000Z |
-|                                 |              | 2019-02-15T12:13:14.015Z | 5                                                 | 2019-02-15T00:00:00.000Z |
-|                                 | ccc          | 2019-02-11T12:13:14.015Z | Hën                                               | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                               | Invalid Date             |
-|                                 | cccc         | 2019-02-11T12:13:14.015Z | Hënë                                              | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                            | Invalid Date             |
-|                                 | ccccc        | 2019-02-11T12:13:14.015Z | H                                                 | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | P                                                 | Invalid Date             |
-|                                 | cccccc       | 2019-02-11T12:13:14.015Z | Hë                                                | Invalid Date             |
-|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                | Invalid Date             |
-| AM, PM                          | a            | 2019-02-11T11:13:14.015Z | PD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                | Invalid Date             |
-|                                 | aa           | 2019-02-11T11:13:14.015Z | PD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                | Invalid Date             |
-|                                 | aaa          | 2019-02-11T11:13:14.015Z | pd                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | md                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | md                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | pd                                                | Invalid Date             |
-|                                 | aaaa         | 2019-02-11T11:13:14.015Z | p.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | m.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | m.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | p.d.                                              | Invalid Date             |
-|                                 | aaaaa        | 2019-02-11T11:13:14.015Z | p                                                 | 2019-02-11T12:00:00.000Z |
-|                                 |              | 2019-02-11T14:13:14.015Z | m                                                 | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | m                                                 | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | p                                                 | 2019-02-11T12:00:00.000Z |
-| AM, PM, noon, midnight          | b            | 2019-02-11T11:13:14.015Z | PD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                | Invalid Date             |
-|                                 | bb           | 2019-02-11T11:13:14.015Z | PD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                | Invalid Date             |
-|                                 | bbb          | 2019-02-11T11:13:14.015Z | pd                                                | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | md                                                | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | md                                                | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | pd                                                | Invalid Date             |
-|                                 | bbbb         | 2019-02-11T11:13:14.015Z | p.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | m.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | m.d.                                              | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | p.d.                                              | Invalid Date             |
-|                                 | bbbbb        | 2019-02-11T11:13:14.015Z | p                                                 | 2019-02-11T12:00:00.000Z |
-|                                 |              | 2019-02-11T14:13:14.015Z | m                                                 | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | m                                                 | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | p                                                 | 2019-02-11T12:00:00.000Z |
-| Flexible day period             | B            | 2019-02-11T11:13:14.015Z | në mëngjes                                        | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                          | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                        | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                        | Invalid Date             |
-|                                 | BB           | 2019-02-11T11:13:14.015Z | në mëngjes                                        | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                          | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                        | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                        | Invalid Date             |
-|                                 | BBB          | 2019-02-11T11:13:14.015Z | në mëngjes                                        | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                          | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                        | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                        | Invalid Date             |
-|                                 | BBBB         | 2019-02-11T11:13:14.015Z | në mëngjes                                        | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                          | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | në mbremje                                        | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                        | Invalid Date             |
-|                                 | BBBBB        | 2019-02-11T11:13:14.015Z | në mëngjes                                        | Invalid Date             |
-|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                          | Invalid Date             |
-|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                        | Invalid Date             |
-|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                        | Invalid Date             |
-| Hour [1-12]                     | ho           | 2019-02-11T11:13:14.015Z | 11                                                | 2019-02-11T11:00:00.000Z |
-|                                 |              | 2019-02-11T23:13:14.015Z | 11                                                | 2019-02-11T23:00:00.000Z |
-| Hour [0-23]                     | Ho           | 2019-02-11T11:13:14.015Z | 11                                                | 2019-02-11T11:00:00.000Z |
-|                                 |              | 2019-02-11T23:13:14.015Z | 23                                                | 2019-02-11T23:00:00.000Z |
-| Hour [0-11]                     | Ko           | 2019-02-11T11:13:14.015Z | 11                                                | 2019-02-11T11:00:00.000Z |
-|                                 |              | 2019-02-11T23:13:14.015Z | 11                                                | 2019-02-11T23:00:00.000Z |
-| Hour [1-24]                     | ko           | 2019-02-11T11:13:14.015Z | 11                                                | 2019-02-11T11:00:00.000Z |
-|                                 |              | 2019-02-11T23:13:14.015Z | 23                                                | 2019-02-11T23:00:00.000Z |
-| Minute                          | mo           | 2019-01-01T12:01:14.015Z | 1                                                 | 2019-01-01T12:01:00.000Z |
-|                                 |              | 2019-04-01T12:55:14.015Z | 55                                                | 2019-04-01T12:55:00.000Z |
-| Second                          | so           | 2019-01-01T12:13:01.015Z | 1                                                 | 2019-01-01T12:13:01.000Z |
-|                                 |              | 2019-04-01T12:13:55.015Z | 55                                                | 2019-04-01T12:13:55.000Z |
-| Long localized date             | P            | 1987-02-11T12:13:14.015Z | 02/11/1987                                        | 1987-02-11T00:00:00.000Z |
-|                                 |              | 1453-05-29T23:59:59.999Z | 05/29/1453                                        | 1453-05-29T00:00:00.000Z |
-|                                 | PP           | 1987-02-11T12:13:14.015Z | Shk 11, 1987                                      | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453                                      | Invalid Date             |
-|                                 | PPP          | 1987-02-11T12:13:14.015Z | Shkurt 11, 1987                                   | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453                                      | Invalid Date             |
-|                                 | PPPP         | 1987-02-11T12:13:14.015Z | Mërkurë, Shkurt 11, 1987                          | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Dielë, Maj 29, 1453                               | Invalid Date             |
-| Long localized time             | p            | 1987-02-11T12:13:14.015Z | 12:13 MD                                          | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | 11:59 MD                                          | Invalid Date             |
-|                                 | pp           | 1987-02-11T12:13:14.015Z | 12:13:14 MD                                       | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD                                       | Invalid Date             |
-|                                 | ppp          | 1987-02-11T12:13:14.015Z | 12:13:14 MD GMT+0                                 | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD GMT+0                                 | Invalid Date             |
-|                                 | pppp         | 1987-02-11T12:13:14.015Z | 12:13:14 MD GMT+00:00                             | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD GMT+00:00                             | Invalid Date             |
-| Combination of date and time    | Pp           | 1987-02-11T12:13:14.015Z | 02/11/1987, 12:13 MD                              | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | 05/29/1453, 11:59 MD                              | Invalid Date             |
-|                                 | PPpp         | 1987-02-11T12:13:14.015Z | Shk 11, 1987, 12:13:14 MD                         | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453, 11:59:59 MD                         | Invalid Date             |
-|                                 | PPPppp       | 1987-02-11T12:13:14.015Z | Shkurt 11, 1987 në 12:13:14 MD GMT+0              | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453 në 11:59:59 MD GMT+0                 | Invalid Date             |
-|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | Mërkurë, Shkurt 11, 1987 në 12:13:14 MD GMT+00:00 | Invalid Date             |
-|                                 |              | 1453-05-29T23:59:59.999Z | Dielë, Maj 29, 1453 në 11:59:59 MD GMT+00:00      | Invalid Date             |
+| Title                           | Token string | Date                     | `format` result                                      | `parse` result           |
+| ------------------------------- | ------------ | ------------------------ | ---------------------------------------------------- | ------------------------ |
+| Calendar year                   | yo           | 1987-02-11T12:13:14.015Z | 1987-të                                              | Invalid Date             |
+|                                 |              | 0005-01-01T12:13:14.015Z | 5-të                                                 | Invalid Date             |
+| Local week-numbering year       | Yo           | 1987-02-11T12:13:14.015Z | 1987-të                                              | Invalid Date             |
+|                                 |              | 0005-01-01T12:13:14.015Z | 5-të                                                 | Invalid Date             |
+| Quarter (formatting)            | Qo           | 2019-01-01T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-04-01T12:13:14.015Z | 2-të                                                 | Invalid Date             |
+|                                 | QQQ          | 2019-01-01T12:13:14.015Z | Q1                                                   | 2019-01-01T00:00:00.000Z |
+|                                 |              | 2019-04-01T12:13:14.015Z | Q2                                                   | 2019-04-01T00:00:00.000Z |
+|                                 | QQQQ         | 2019-01-01T12:13:14.015Z | 4-mujori I                                           | Invalid Date             |
+|                                 |              | 2019-04-01T12:13:14.015Z | 4-mujori II                                          | Invalid Date             |
+|                                 | QQQQQ        | 2019-01-01T12:13:14.015Z | 1                                                    | 2019-01-01T00:00:00.000Z |
+|                                 |              | 2019-04-01T12:13:14.015Z | 2                                                    | 2019-04-01T00:00:00.000Z |
+| Quarter (stand-alone)           | qo           | 2019-01-01T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-04-01T12:13:14.015Z | 2-të                                                 | Invalid Date             |
+|                                 | qqq          | 2019-01-01T12:13:14.015Z | Q1                                                   | 2019-01-01T00:00:00.000Z |
+|                                 |              | 2019-04-01T12:13:14.015Z | Q2                                                   | 2019-04-01T00:00:00.000Z |
+|                                 | qqqq         | 2019-01-01T12:13:14.015Z | 4-mujori I                                           | Invalid Date             |
+|                                 |              | 2019-04-01T12:13:14.015Z | 4-mujori II                                          | Invalid Date             |
+| Month (formatting)              | Mo           | 2019-02-11T12:13:14.015Z | 2-të                                                 | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | 7-të                                                 | Invalid Date             |
+|                                 | MMM          | 2019-02-11T12:13:14.015Z | Shk                                                  | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | Kor                                                  | Invalid Date             |
+|                                 | MMMM         | 2019-02-11T12:13:14.015Z | Shkurt                                               | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | Korrik                                               | Invalid Date             |
+|                                 | MMMMM        | 2019-02-11T12:13:14.015Z | S                                                    | 2019-09-01T00:00:00.000Z |
+|                                 |              | 2019-07-10T12:13:14.015Z | K                                                    | Invalid Date             |
+| Month (stand-alone)             | Lo           | 2019-02-11T12:13:14.015Z | 2-të                                                 | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | 7-të                                                 | Invalid Date             |
+|                                 | LLL          | 2019-02-11T12:13:14.015Z | Shk                                                  | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | Kor                                                  | Invalid Date             |
+|                                 | LLLL         | 2019-02-11T12:13:14.015Z | Shkurt                                               | Invalid Date             |
+|                                 |              | 2019-07-10T12:13:14.015Z | Korrik                                               | Invalid Date             |
+|                                 | LLLLL        | 2019-02-11T12:13:14.015Z | S                                                    | 2019-09-01T00:00:00.000Z |
+|                                 |              | 2019-07-10T12:13:14.015Z | K                                                    | Invalid Date             |
+| Local week of year              | wo           | 2019-01-01T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-12-01T12:13:14.015Z | 48-të                                                | Invalid Date             |
+| ISO week of year                | Io           | 2019-01-01T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-12-01T12:13:14.015Z | 48-të                                                | Invalid Date             |
+| Day of month                    | do           | 2019-02-11T12:13:14.015Z | 11-të                                                | Invalid Date             |
+|                                 |              | 2019-02-28T12:13:14.015Z | 28-të                                                | Invalid Date             |
+| Day of year                     | Do           | 2019-02-11T12:13:14.015Z | 42-të                                                | Invalid Date             |
+|                                 |              | 2019-12-31T12:13:14.015Z | 365-të                                               | Invalid Date             |
+| Day of week (formatting)        | E            | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | EE           | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | EEE          | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | EEEE         | 2019-02-11T12:13:14.015Z | Hënë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                               | Invalid Date             |
+|                                 | EEEEE        | 2019-02-11T12:13:14.015Z | H                                                    | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | P                                                    | Invalid Date             |
+|                                 | EEEEEE       | 2019-02-11T12:13:14.015Z | Hë                                                   | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                   | Invalid Date             |
+| ISO day of week (formatting)    | io           | 2019-02-11T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | 5-të                                                 | Invalid Date             |
+|                                 | iii          | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | iiii         | 2019-02-11T12:13:14.015Z | Hënë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                               | Invalid Date             |
+|                                 | iiiii        | 2019-02-11T12:13:14.015Z | H                                                    | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | P                                                    | Invalid Date             |
+|                                 | iiiiii       | 2019-02-11T12:13:14.015Z | Hë                                                   | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                   | Invalid Date             |
+| Local day of week (formatting)  | eo           | 2019-02-11T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | 5-të                                                 | Invalid Date             |
+|                                 | eee          | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | eeee         | 2019-02-11T12:13:14.015Z | Hënë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                               | Invalid Date             |
+|                                 | eeeee        | 2019-02-11T12:13:14.015Z | H                                                    | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | P                                                    | Invalid Date             |
+|                                 | eeeeee       | 2019-02-11T12:13:14.015Z | Hë                                                   | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                   | Invalid Date             |
+| Local day of week (stand-alone) | co           | 2019-02-11T12:13:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | 5-të                                                 | Invalid Date             |
+|                                 | ccc          | 2019-02-11T12:13:14.015Z | Hën                                                  | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pre                                                  | Invalid Date             |
+|                                 | cccc         | 2019-02-11T12:13:14.015Z | Hënë                                                 | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Premte                                               | Invalid Date             |
+|                                 | ccccc        | 2019-02-11T12:13:14.015Z | H                                                    | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | P                                                    | Invalid Date             |
+|                                 | cccccc       | 2019-02-11T12:13:14.015Z | Hë                                                   | Invalid Date             |
+|                                 |              | 2019-02-15T12:13:14.015Z | Pr                                                   | Invalid Date             |
+| AM, PM                          | a            | 2019-02-11T11:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 | aa           | 2019-02-11T11:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 | aaa          | 2019-02-11T11:13:14.015Z | pd                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | md                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | md                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | pd                                                   | Invalid Date             |
+|                                 | aaaa         | 2019-02-11T11:13:14.015Z | p.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | m.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | m.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | p.d.                                                 | Invalid Date             |
+|                                 | aaaaa        | 2019-02-11T11:13:14.015Z | p                                                    | 2019-02-11T12:00:00.000Z |
+|                                 |              | 2019-02-11T14:13:14.015Z | m                                                    | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | m                                                    | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | p                                                    | 2019-02-11T12:00:00.000Z |
+| AM, PM, noon, midnight          | b            | 2019-02-11T11:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 | bb           | 2019-02-11T11:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | MD                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | PD                                                   | Invalid Date             |
+|                                 | bbb          | 2019-02-11T11:13:14.015Z | pd                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | md                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | md                                                   | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | pd                                                   | Invalid Date             |
+|                                 | bbbb         | 2019-02-11T11:13:14.015Z | p.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | m.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | m.d.                                                 | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | p.d.                                                 | Invalid Date             |
+|                                 | bbbbb        | 2019-02-11T11:13:14.015Z | p                                                    | 2019-02-11T12:00:00.000Z |
+|                                 |              | 2019-02-11T14:13:14.015Z | m                                                    | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | m                                                    | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | p                                                    | 2019-02-11T12:00:00.000Z |
+| Flexible day period             | B            | 2019-02-11T11:13:14.015Z | në mëngjes                                           | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                             | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                           | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                           | Invalid Date             |
+|                                 | BB           | 2019-02-11T11:13:14.015Z | në mëngjes                                           | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                             | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                           | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                           | Invalid Date             |
+|                                 | BBB          | 2019-02-11T11:13:14.015Z | në mëngjes                                           | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                             | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                           | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                           | Invalid Date             |
+|                                 | BBBB         | 2019-02-11T11:13:14.015Z | në mëngjes                                           | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                             | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | në mbremje                                           | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                           | Invalid Date             |
+|                                 | BBBBB        | 2019-02-11T11:13:14.015Z | në mëngjes                                           | Invalid Date             |
+|                                 |              | 2019-02-11T14:13:14.015Z | mbasdite                                             | Invalid Date             |
+|                                 |              | 2019-02-11T19:13:14.015Z | në mbrëmje                                           | Invalid Date             |
+|                                 |              | 2019-02-11T02:13:14.015Z | në mesnatë                                           | Invalid Date             |
+| Hour [1-12]                     | ho           | 2019-02-11T11:13:14.015Z | 11                                                   | 2019-02-11T11:00:00.000Z |
+|                                 |              | 2019-02-11T23:13:14.015Z | 11                                                   | 2019-02-11T23:00:00.000Z |
+| Hour [0-23]                     | Ho           | 2019-02-11T11:13:14.015Z | 11                                                   | 2019-02-11T11:00:00.000Z |
+|                                 |              | 2019-02-11T23:13:14.015Z | 23                                                   | 2019-02-11T23:00:00.000Z |
+| Hour [0-11]                     | Ko           | 2019-02-11T11:13:14.015Z | 11                                                   | 2019-02-11T11:00:00.000Z |
+|                                 |              | 2019-02-11T23:13:14.015Z | 11                                                   | 2019-02-11T23:00:00.000Z |
+| Hour [1-24]                     | ko           | 2019-02-11T11:13:14.015Z | 11                                                   | 2019-02-11T11:00:00.000Z |
+|                                 |              | 2019-02-11T23:13:14.015Z | 23                                                   | 2019-02-11T23:00:00.000Z |
+| Minute                          | mo           | 2019-01-01T12:01:14.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-04-01T12:55:14.015Z | 55-të                                                | Invalid Date             |
+| Second                          | so           | 2019-01-01T12:13:01.015Z | 1-rë                                                 | Invalid Date             |
+|                                 |              | 2019-04-01T12:13:55.015Z | 55-të                                                | Invalid Date             |
+| Long localized date             | P            | 1987-02-11T12:13:14.015Z | 02/11/1987                                           | 1987-02-11T00:00:00.000Z |
+|                                 |              | 1453-05-29T23:59:59.999Z | 05/29/1453                                           | 1453-05-29T00:00:00.000Z |
+|                                 | PP           | 1987-02-11T12:13:14.015Z | Shk 11, 1987                                         | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453                                         | Invalid Date             |
+|                                 | PPP          | 1987-02-11T12:13:14.015Z | Shkurt 11-të, 1987                                   | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29-të, 1453                                      | Invalid Date             |
+|                                 | PPPP         | 1987-02-11T12:13:14.015Z | Mërkurë, Shkurt 11-të, 1987                          | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Dielë, Maj 29-të, 1453                               | Invalid Date             |
+| Long localized time             | p            | 1987-02-11T12:13:14.015Z | 12:13 MD                                             | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | 11:59 MD                                             | Invalid Date             |
+|                                 | pp           | 1987-02-11T12:13:14.015Z | 12:13:14 MD                                          | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD                                          | Invalid Date             |
+|                                 | ppp          | 1987-02-11T12:13:14.015Z | 12:13:14 MD GMT+0                                    | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD GMT+0                                    | Invalid Date             |
+|                                 | pppp         | 1987-02-11T12:13:14.015Z | 12:13:14 MD GMT+00:00                                | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | 11:59:59 MD GMT+00:00                                | Invalid Date             |
+| Combination of date and time    | Pp           | 1987-02-11T12:13:14.015Z | 02/11/1987, 12:13 MD                                 | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | 05/29/1453, 11:59 MD                                 | Invalid Date             |
+|                                 | PPpp         | 1987-02-11T12:13:14.015Z | Shk 11, 1987, 12:13:14 MD                            | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29, 1453, 11:59:59 MD                            | Invalid Date             |
+|                                 | PPPppp       | 1987-02-11T12:13:14.015Z | Shkurt 11-të, 1987 në 12:13:14 MD GMT+0              | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Maj 29-të, 1453 në 11:59:59 MD GMT+0                 | Invalid Date             |
+|                                 | PPPPpppp     | 1987-02-11T12:13:14.015Z | Mërkurë, Shkurt 11-të, 1987 në 12:13:14 MD GMT+00:00 | Invalid Date             |
+|                                 |              | 1453-05-29T23:59:59.999Z | Dielë, Maj 29-të, 1453 në 11:59:59 MD GMT+00:00      | Invalid Date             |
 
 ## `formatDistance`
 
