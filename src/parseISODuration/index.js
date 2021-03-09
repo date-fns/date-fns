@@ -25,7 +25,7 @@ var durationRegex = new RegExp('P' + dateRegex + '(?:' + timeRegex + ')?')
  *
  * @example
  * // Convert string 'P1DT5M30S' to duration:
- * var result = parseISO('P1HT5M30S')
+ * var result = parseISODuration('P1HT5M30S')
  * //=> { days: 1, minutes: 5, seconds: 30 }
  */
 export default function parseISODuration(argument) {
@@ -37,12 +37,12 @@ export default function parseISODuration(argument) {
       Object.prototype.toString.call(argument) === '[object String]'
     )
   ) {
-    return null
+    return {}
   }
 
   var match = argument.match(durationRegex)
   if (!match) {
-    return null
+    return {}
   }
 
   // at least one part must be specified
@@ -54,7 +54,7 @@ export default function parseISODuration(argument) {
     !match[5] &&
     !match[6]
   ) {
-    return null
+    return {}
   }
 
   var duration = {}

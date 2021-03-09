@@ -827,6 +827,7 @@ declare module 'date-fns' {
   function nextDay(date: Date | number, day: Day): Date
   namespace nextDay {}
 
+<<<<<<< HEAD
   function nextFriday(date: Date | number): Date
   namespace nextFriday {}
 
@@ -848,6 +849,14 @@ declare module 'date-fns' {
   function nextWednesday(date: Date | number): Date
   namespace nextWednesday {}
 
+=======
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
+>>>>>>> Fix final tests and run build script
   function parse(
     dateString: string,
     formatString: string,
@@ -1823,16 +1832,20 @@ declare module 'date-fns/nextDay' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextFriday' {
   import { nextFriday } from 'date-fns'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextMonday' {
   import { nextMonday } from 'date-fns'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextSaturday' {
   import { nextSaturday } from 'date-fns'
   export default nextSaturday
@@ -1848,16 +1861,21 @@ declare module 'date-fns/nextThursday' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextTuesday' {
   import { nextTuesday } from 'date-fns'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextWednesday' {
   import { nextWednesday } from 'date-fns'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/parse' {
   import { parse } from 'date-fns'
   export default parse
@@ -2858,16 +2876,20 @@ declare module 'date-fns/nextDay/index' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextFriday/index' {
   import { nextFriday } from 'date-fns'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextMonday/index' {
   import { nextMonday } from 'date-fns'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextSaturday/index' {
   import { nextSaturday } from 'date-fns'
   export default nextSaturday
@@ -2883,16 +2905,21 @@ declare module 'date-fns/nextThursday/index' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextTuesday/index' {
   import { nextTuesday } from 'date-fns'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextWednesday/index' {
   import { nextWednesday } from 'date-fns'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/parse/index' {
   import { parse } from 'date-fns'
   export default parse
@@ -3893,16 +3920,20 @@ declare module 'date-fns/nextDay/index.js' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextFriday/index.js' {
   import { nextFriday } from 'date-fns'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextMonday/index.js' {
   import { nextMonday } from 'date-fns'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextSaturday/index.js' {
   import { nextSaturday } from 'date-fns'
   export default nextSaturday
@@ -3918,16 +3949,21 @@ declare module 'date-fns/nextThursday/index.js' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/nextTuesday/index.js' {
   import { nextTuesday } from 'date-fns'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/nextWednesday/index.js' {
   import { nextWednesday } from 'date-fns'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/parse/index.js' {
   import { parse } from 'date-fns'
   export default parse
@@ -4881,6 +4917,7 @@ declare module 'date-fns/fp' {
   const nextDay: CurriedFn2<Day, Date | number, Date>
   namespace nextDay {}
 
+<<<<<<< HEAD
   const nextFriday: CurriedFn1<Date | number, Date>
   namespace nextFriday {}
 
@@ -4902,6 +4939,14 @@ declare module 'date-fns/fp' {
   const nextWednesday: CurriedFn1<Date | number, Date>
   namespace nextWednesday {}
 
+=======
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
+
+>>>>>>> Fix final tests and run build script
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
 
@@ -5926,16 +5971,20 @@ declare module 'date-fns/fp/nextDay' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextFriday' {
   import { nextFriday } from 'date-fns/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextMonday' {
   import { nextMonday } from 'date-fns/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextSaturday' {
   import { nextSaturday } from 'date-fns/fp'
   export default nextSaturday
@@ -5951,16 +6000,21 @@ declare module 'date-fns/fp/nextThursday' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextTuesday' {
   import { nextTuesday } from 'date-fns/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextWednesday' {
   import { nextWednesday } from 'date-fns/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/parse' {
   import { parse } from 'date-fns/fp'
   export default parse
@@ -7011,16 +7065,20 @@ declare module 'date-fns/fp/nextDay/index' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextFriday/index' {
   import { nextFriday } from 'date-fns/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextMonday/index' {
   import { nextMonday } from 'date-fns/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextSaturday/index' {
   import { nextSaturday } from 'date-fns/fp'
   export default nextSaturday
@@ -7036,16 +7094,21 @@ declare module 'date-fns/fp/nextThursday/index' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextTuesday/index' {
   import { nextTuesday } from 'date-fns/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextWednesday/index' {
   import { nextWednesday } from 'date-fns/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/parse/index' {
   import { parse } from 'date-fns/fp'
   export default parse
@@ -8096,16 +8159,20 @@ declare module 'date-fns/fp/nextDay/index.js' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextFriday/index.js' {
   import { nextFriday } from 'date-fns/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextMonday/index.js' {
   import { nextMonday } from 'date-fns/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextSaturday/index.js' {
   import { nextSaturday } from 'date-fns/fp'
   export default nextSaturday
@@ -8121,16 +8188,21 @@ declare module 'date-fns/fp/nextThursday/index.js' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/nextTuesday/index.js' {
   import { nextTuesday } from 'date-fns/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/fp/nextWednesday/index.js' {
   import { nextWednesday } from 'date-fns/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/fp/parse/index.js' {
   import { parse } from 'date-fns/fp'
   export default parse
@@ -9138,6 +9210,7 @@ declare module 'date-fns/esm' {
   function nextDay(date: Date | number, day: Day): Date
   namespace nextDay {}
 
+<<<<<<< HEAD
   function nextFriday(date: Date | number): Date
   namespace nextFriday {}
 
@@ -9159,6 +9232,14 @@ declare module 'date-fns/esm' {
   function nextWednesday(date: Date | number): Date
   namespace nextWednesday {}
 
+=======
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
+>>>>>>> Fix final tests and run build script
   function parse(
     dateString: string,
     formatString: string,
@@ -10134,16 +10215,20 @@ declare module 'date-fns/esm/nextDay' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextFriday' {
   import { nextFriday } from 'date-fns/esm'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextMonday' {
   import { nextMonday } from 'date-fns/esm'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextSaturday' {
   import { nextSaturday } from 'date-fns/esm'
   export default nextSaturday
@@ -10159,16 +10244,21 @@ declare module 'date-fns/esm/nextThursday' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextTuesday' {
   import { nextTuesday } from 'date-fns/esm'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextWednesday' {
   import { nextWednesday } from 'date-fns/esm'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/parse' {
   import { parse } from 'date-fns/esm'
   export default parse
@@ -11169,16 +11259,20 @@ declare module 'date-fns/esm/nextDay/index' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextFriday/index' {
   import { nextFriday } from 'date-fns/esm'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextMonday/index' {
   import { nextMonday } from 'date-fns/esm'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextSaturday/index' {
   import { nextSaturday } from 'date-fns/esm'
   export default nextSaturday
@@ -11194,16 +11288,21 @@ declare module 'date-fns/esm/nextThursday/index' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextTuesday/index' {
   import { nextTuesday } from 'date-fns/esm'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextWednesday/index' {
   import { nextWednesday } from 'date-fns/esm'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/parse/index' {
   import { parse } from 'date-fns/esm'
   export default parse
@@ -12204,16 +12303,20 @@ declare module 'date-fns/esm/nextDay/index.js' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextFriday/index.js' {
   import { nextFriday } from 'date-fns/esm'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextMonday/index.js' {
   import { nextMonday } from 'date-fns/esm'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextSaturday/index.js' {
   import { nextSaturday } from 'date-fns/esm'
   export default nextSaturday
@@ -12229,16 +12332,21 @@ declare module 'date-fns/esm/nextThursday/index.js' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/nextTuesday/index.js' {
   import { nextTuesday } from 'date-fns/esm'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/nextWednesday/index.js' {
   import { nextWednesday } from 'date-fns/esm'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/parse/index.js' {
   import { parse } from 'date-fns/esm'
   export default parse
@@ -13192,6 +13300,7 @@ declare module 'date-fns/esm/fp' {
   const nextDay: CurriedFn2<Day, Date | number, Date>
   namespace nextDay {}
 
+<<<<<<< HEAD
   const nextFriday: CurriedFn1<Date | number, Date>
   namespace nextFriday {}
 
@@ -13213,6 +13322,14 @@ declare module 'date-fns/esm/fp' {
   const nextWednesday: CurriedFn1<Date | number, Date>
   namespace nextWednesday {}
 
+=======
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
+
+>>>>>>> Fix final tests and run build script
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
 
@@ -14237,16 +14354,20 @@ declare module 'date-fns/esm/fp/nextDay' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextFriday' {
   import { nextFriday } from 'date-fns/esm/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextMonday' {
   import { nextMonday } from 'date-fns/esm/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextSaturday' {
   import { nextSaturday } from 'date-fns/esm/fp'
   export default nextSaturday
@@ -14262,16 +14383,21 @@ declare module 'date-fns/esm/fp/nextThursday' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextTuesday' {
   import { nextTuesday } from 'date-fns/esm/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextWednesday' {
   import { nextWednesday } from 'date-fns/esm/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/parse' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
@@ -15322,16 +15448,20 @@ declare module 'date-fns/esm/fp/nextDay/index' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextFriday/index' {
   import { nextFriday } from 'date-fns/esm/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextMonday/index' {
   import { nextMonday } from 'date-fns/esm/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextSaturday/index' {
   import { nextSaturday } from 'date-fns/esm/fp'
   export default nextSaturday
@@ -15347,16 +15477,21 @@ declare module 'date-fns/esm/fp/nextThursday/index' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextTuesday/index' {
   import { nextTuesday } from 'date-fns/esm/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextWednesday/index' {
   import { nextWednesday } from 'date-fns/esm/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/parse/index' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
@@ -16407,16 +16542,20 @@ declare module 'date-fns/esm/fp/nextDay/index.js' {
   export default nextDay
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextFriday/index.js' {
   import { nextFriday } from 'date-fns/esm/fp'
   export default nextFriday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextMonday/index.js' {
   import { nextMonday } from 'date-fns/esm/fp'
   export default nextMonday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextSaturday/index.js' {
   import { nextSaturday } from 'date-fns/esm/fp'
   export default nextSaturday
@@ -16432,16 +16571,21 @@ declare module 'date-fns/esm/fp/nextThursday/index.js' {
   export default nextThursday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/nextTuesday/index.js' {
   import { nextTuesday } from 'date-fns/esm/fp'
   export default nextTuesday
 }
 
+<<<<<<< HEAD
 declare module 'date-fns/esm/fp/nextWednesday/index.js' {
   import { nextWednesday } from 'date-fns/esm/fp'
   export default nextWednesday
 }
 
+=======
+>>>>>>> Fix final tests and run build script
 declare module 'date-fns/esm/fp/parse/index.js' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
@@ -20063,6 +20207,7 @@ interface dateFns {
 
   nextDay(date: Date | number, day: Day): Date
 
+<<<<<<< HEAD
   nextFriday(date: Date | number): Date
 
   nextMonday(date: Date | number): Date
@@ -20077,6 +20222,12 @@ interface dateFns {
 
   nextWednesday(date: Date | number): Date
 
+=======
+  nextMonday(date: Date | number): Date
+
+  nextTuesday(date: Date | number): Date
+
+>>>>>>> Fix final tests and run build script
   parse(
     dateString: string,
     formatString: string,

@@ -14,7 +14,7 @@ describe('parseISODuration', () => {
         days: 4.4,
         hours: 5.5,
         minutes: 6.6,
-        seconds: 7.7
+        seconds: 7.7,
       })
     })
 
@@ -60,19 +60,22 @@ describe('parseISODuration', () => {
   })
 
   describe('validation', () => {
-    it('returns `null` for invalid string', () => {
+    it('returns `{}` for invalid string', () => {
       const result = parseISODuration('abcdef')
-      assert(result === null)
+      assert(Object.keys(result).length === 0)
     })
-    it('returns null when all parts are missing', () => {
+
+    it('returns {} when all parts are missing', () => {
       const result = parseISODuration('P')
-      assert.deepEqual(result, null)
+      assert(Object.keys(result).length === 0)
     })
-    it('returns null for non-string', () => {
+
+    it('returns {} for non-string', () => {
       // $ExpectedMistake
       const result = parseISODuration(150)
-      assert(result === null)
+      assert(Object.keys(result).length === 0)
     })
+
     it('throws TypeError exception if passed less than 1 argument', () => {
       assert.throws(parseISODuration.bind(null), TypeError)
     })
