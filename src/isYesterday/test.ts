@@ -1,12 +1,13 @@
 // @flow
 /* eslint-env mocha */
 
+import { SinonFakeTimers } from 'sinon'
 import assert from 'assert'
 import sinon from 'sinon'
 import isYesterday from '.'
 
 describe('isYesterday', () => {
-  let clock
+  let clock: SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Aug */, 25).getTime())
   })
@@ -31,6 +32,7 @@ describe('isYesterday', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(isYesterday.bind(null), TypeError)
   })
 })
