@@ -62,21 +62,17 @@ export default function addBusinessDays(
   }
 
   // If the date is a holiday and we reduce a dividable of
-  // certain days (say 5 when holiday is Saturday and Sunday) from it, we land on a holiday date.
+  // certain days (say 5 when holidays are Saturday and Sunday) from it, we land on a holiday date.
   // To counter this, we add days accordingly to land on the next business day
-  const calc = (date: Date) => {
-    if (
-      startedOnHoliday &&
-      !businessDays.includes(date.getDay()) &&
-      amount !== 0
-    ) {
+  const reduceIfHoliday = (date: Date) => {
+    if (startedOnHoliday && isHoliday(date) && amount !== 0) {
       // If we're reducing days, we want to add days until we land on a business day
       // If we're adding days we want to reduce days until we land on a business day
       date.setDate(date.getDate() + (sign < 0 ? 1 : -1))
-      calc(date)
+      reduceIfHoliday(date)
     }
   }
-  calc(date)
+  reduceIfHoliday(date)
 
   // Restore hours to avoid DST lag
   date.setHours(hours)
