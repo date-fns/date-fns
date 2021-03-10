@@ -58,9 +58,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate) {
+export default function isValid(
+  dirtyDate: unknown
+): dirtyDate is Date | number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  return !isNaN(date)
+  if (!(dirtyDate instanceof Date) && typeof dirtyDate !== 'number') {
+    return false
+  }
+  const date = toDate(dirtyDate)
+  return !isNaN(Number(date))
 }
