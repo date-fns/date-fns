@@ -605,6 +605,12 @@ declare module.exports: {
 
   min: (datesArray: (Date | number)[]) => Date,
 
+  nextDay: (date: Date | number, day: Day) => Date,
+
+  nextMonday: (date: Date | number) => Date,
+
+  nextTuesday: (date: Date | number) => Date,
+
   parse: (
     dateString: string,
     formatString: string,

@@ -819,6 +819,15 @@ declare module 'date-fns' {
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
 
+  function nextDay(date: Date | number, day: Day): Date
+  namespace nextDay {}
+
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
   function parse(
     dateString: string,
     formatString: string,
@@ -1784,6 +1793,21 @@ declare module 'date-fns/milliseconds' {
 declare module 'date-fns/min' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/nextDay' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextMonday' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextTuesday' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
 }
 
 declare module 'date-fns/parse' {
@@ -2776,6 +2800,21 @@ declare module 'date-fns/min/index' {
   export default min
 }
 
+declare module 'date-fns/nextDay/index' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextMonday/index' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
+}
+
 declare module 'date-fns/parse/index' {
   import { parse } from 'date-fns'
   export default parse
@@ -3766,6 +3805,21 @@ declare module 'date-fns/min/index.js' {
   export default min
 }
 
+declare module 'date-fns/nextDay/index.js' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
+}
+
 declare module 'date-fns/parse/index.js' {
   import { parse } from 'date-fns'
   export default parse
@@ -4710,6 +4764,15 @@ declare module 'date-fns/fp' {
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const nextDay: CurriedFn2<Day, Date | number, Date>
+  namespace nextDay {}
+
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
 
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
@@ -5725,6 +5788,21 @@ declare module 'date-fns/fp/milliseconds' {
 declare module 'date-fns/fp/min' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/nextDay' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextMonday' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextTuesday' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
 }
 
 declare module 'date-fns/fp/parse' {
@@ -6767,6 +6845,21 @@ declare module 'date-fns/fp/min/index' {
   export default min
 }
 
+declare module 'date-fns/fp/nextDay/index' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextMonday/index' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
+}
+
 declare module 'date-fns/fp/parse/index' {
   import { parse } from 'date-fns/fp'
   export default parse
@@ -7807,6 +7900,21 @@ declare module 'date-fns/fp/min/index.js' {
   export default min
 }
 
+declare module 'date-fns/fp/nextDay/index.js' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
+}
+
 declare module 'date-fns/fp/parse/index.js' {
   import { parse } from 'date-fns/fp'
   export default parse
@@ -8806,6 +8914,15 @@ declare module 'date-fns/esm' {
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
 
+  function nextDay(date: Date | number, day: Day): Date
+  namespace nextDay {}
+
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
   function parse(
     dateString: string,
     formatString: string,
@@ -9771,6 +9888,21 @@ declare module 'date-fns/esm/milliseconds' {
 declare module 'date-fns/esm/min' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/nextDay' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextMonday' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextTuesday' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
 }
 
 declare module 'date-fns/esm/parse' {
@@ -10763,6 +10895,21 @@ declare module 'date-fns/esm/min/index' {
   export default min
 }
 
+declare module 'date-fns/esm/nextDay/index' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextMonday/index' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
+}
+
 declare module 'date-fns/esm/parse/index' {
   import { parse } from 'date-fns/esm'
   export default parse
@@ -11753,6 +11900,21 @@ declare module 'date-fns/esm/min/index.js' {
   export default min
 }
 
+declare module 'date-fns/esm/nextDay/index.js' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
+}
+
 declare module 'date-fns/esm/parse/index.js' {
   import { parse } from 'date-fns/esm'
   export default parse
@@ -12697,6 +12859,15 @@ declare module 'date-fns/esm/fp' {
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const nextDay: CurriedFn2<Day, Date | number, Date>
+  namespace nextDay {}
+
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
 
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
@@ -13712,6 +13883,21 @@ declare module 'date-fns/esm/fp/milliseconds' {
 declare module 'date-fns/esm/fp/min' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/nextDay' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextMonday' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
 }
 
 declare module 'date-fns/esm/fp/parse' {
@@ -14754,6 +14940,21 @@ declare module 'date-fns/esm/fp/min/index' {
   export default min
 }
 
+declare module 'date-fns/esm/fp/nextDay/index' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextMonday/index' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
+}
+
 declare module 'date-fns/esm/fp/parse/index' {
   import { parse } from 'date-fns/esm/fp'
   export default parse
@@ -15792,6 +15993,21 @@ declare module 'date-fns/esm/fp/milliseconds/index.js' {
 declare module 'date-fns/esm/fp/min/index.js' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/nextDay/index.js' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
 }
 
 declare module 'date-fns/esm/fp/parse/index.js' {
@@ -19407,6 +19623,12 @@ interface dateFns {
   milliseconds(duration: Duration): number
 
   min(datesArray: (Date | number)[]): Date
+
+  nextDay(date: Date | number, day: Day): Date
+
+  nextMonday(date: Date | number): Date
+
+  nextTuesday(date: Date | number): Date
 
   parse(
     dateString: string,
