@@ -27,7 +27,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 'P39Y2M20DT0H0M0S'
  */
 
-export default function formatISODuration(duration) {
+export default function formatISODuration(duration: Duration): string {
   requiredArgs(1, arguments)
 
   if (typeof duration !== 'object')
@@ -39,7 +39,7 @@ export default function formatISODuration(duration) {
     days = 0,
     hours = 0,
     minutes = 0,
-    seconds = 0
+    seconds = 0,
   } = duration
 
   return `P${years}Y${months}M${days}DT${hours}H${minutes}M${seconds}S`
