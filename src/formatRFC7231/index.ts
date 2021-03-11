@@ -2,7 +2,16 @@ import toDate from '../toDate/index'
 import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
-const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+const days = [
+  'Sun',
+  'Mon',
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat',
+]
+
 const months = [
   'Jan',
   'Feb',
@@ -15,7 +24,7 @@ const months = [
   'Sep',
   'Oct',
   'Nov',
-  'Dec'
+  'Dec',
 ]
 
 /**
@@ -37,7 +46,7 @@ const months = [
  * const result = formatRFC7231(new Date(2019, 8, 18, 19, 0, 52))
  * //=> 'Wed, 18 Sep 2019 19:00:52 GMT'
  */
-export default function formatRFC7231(dirtyDate) {
+export default function formatRFC7231(dirtyDate: Date | number): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 arguments required, but only ${arguments.length} present`
