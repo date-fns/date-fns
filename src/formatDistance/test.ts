@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatDistance from '.'
 
 describe('formatDistance', function () {
@@ -218,7 +217,7 @@ describe('formatDistance', function () {
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 7),
-        // $ExpectedMistake
+        // @ts-expect-error
         { includeSeconds: 1 }
       )
       assert(result === 'less than 10 seconds')
@@ -228,7 +227,7 @@ describe('formatDistance', function () {
       var result = formatDistance(
         new Date(1986, 3, 4, 11, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
+        // @ts-expect-error
         { addSuffix: 1 }
       )
       assert(result === 'in about 1 hour')
@@ -252,7 +251,6 @@ describe('formatDistance', function () {
       var result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 3),
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
         { includeSeconds: true, addSuffix: true, locale: customLocale }
       )
 
@@ -265,7 +263,6 @@ describe('formatDistance', function () {
         var block = formatDistance.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 32, 3),
           { includeSeconds: true, locale: customLocale }
         )
