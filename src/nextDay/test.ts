@@ -37,43 +37,43 @@ describe('nextDay', function () {
     )
 
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 1),
-      new Date(2020, 2 /* Mar */, 23)
+      nextDay(new Date(2020, 4 /* May */, 2), 1),
+      new Date(2020, 4 /* May */, 4)
     )
   })
 
   it('returns the following Tuesday given the Saturday before it', function () {
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 2),
-      new Date(2020, 2 /* Mar */, 24)
+      nextDay(new Date(2020, 4 /* May */, 2), 2),
+      new Date(2020, 4 /* May */, 5)
     )
   })
 
   it('returns the following Wednesday given the Saturday before it', function () {
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 3),
-      new Date(2020, 2 /* Mar */, 25)
+      nextDay(new Date(2020, 4 /* May */, 2), 3),
+      new Date(2020, 4 /* May */, 6)
     )
   })
 
   it('returns the following Thursday given the Saturday before it', function () {
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 4),
-      new Date(2020, 2 /* Mar */, 26)
+      nextDay(new Date(2020, 4 /* May */, 2), 4),
+      new Date(2020, 4 /* May */, 7)
     )
   })
 
   it('returns the following Friday given the Saturday before it', function () {
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 5),
-      new Date(2020, 2 /* Mar */, 27)
+      nextDay(new Date(2020, 4 /* May */, 2), 5),
+      new Date(2020, 4 /* May */, 8)
     )
   })
 
   it('returns the following Saturday given the Saturday before it', function () {
     assert.deepStrictEqual(
-      nextDay(new Date(2020, 2 /* Mar */, 21), 6),
-      new Date(2020, 2 /* Mar */, 28)
+      nextDay(new Date(2020, 4 /* May */, 2), 6),
+      new Date(2020, 4 /* May */, 9)
     )
   })
 
