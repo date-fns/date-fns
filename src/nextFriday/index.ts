@@ -12,7 +12,6 @@ import toDate from '../toDate/index'
  *
  * @param {Date | number} date the date to check
  * @returns {Date} the date is the next Friday
- * @throws {TypeError} the date should be a valid date
  * @throws {TypeError} 1 argument required
  *
  * @example
