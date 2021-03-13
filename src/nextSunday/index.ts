@@ -11,7 +11,7 @@ import toDate from '../toDate/index'
  * When is the next Sunday?
  *
  * @param {Date | number} date - the date to start counting from
- * @returns {Date} the date is the next Sunday
+ * @returns {Date} the next Sunday
  * @throws {TypeError} the date should be a valid date
  * @throws {TypeError} 1 argument required
  *
