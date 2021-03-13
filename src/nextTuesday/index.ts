@@ -10,9 +10,8 @@ import toDate from '../toDate/index'
  * @description
  * When is the next Tuesday?
  *
- * @param {Date | number} date the date to check
- * @returns {Date} the date is the next Tuesday
- * @throws {TypeError} the date should be a valid date
+ * @param {Date | number} date - the date to start counting from
+ * @returns {Date} the next Tuesday
  * @throws {TypeError} 1 argument required
  *
  * @example
