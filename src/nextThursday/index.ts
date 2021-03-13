@@ -19,8 +19,7 @@ import toDate from '../toDate/index'
  * When is the next Thursday after Mar, 22, 2020?
  * const result = nextThursday(new Date(2020, 2, 22))
  * => Thur Mar 26 2020 00:00:00
- **/
-
+ */
 export default function nextThursday(date: Date | number): Date {
   requiredArgs(1, arguments)
   return nextDay(toDate(date), 4)

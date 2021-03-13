@@ -19,7 +19,7 @@ import toDate from '../toDate/index'
  * When is the next Wednesday after Mar, 22, 2020?
  * const result = nextWednesday(new Date(2020, 2, 22))
  * => Wed Mar 25 2020 00:00:00
- **/
+ */
 export default function nextWednesday(date: Date | number): Date {
   requiredArgs(1, arguments)
   return nextDay(toDate(date), 3)

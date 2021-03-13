@@ -4,8 +4,8 @@
 import assert from 'power-assert'
 import nextWednesday from '.'
 
-describe('nextWednesday', function () {
-  it('returns the following Wednesday given various dates before the same', function () {
+describe('nextWednesday', () => {
+  it('returns the following Wednesday given various dates before the same', () => {
     assert.deepStrictEqual(
       nextWednesday(new Date(2020, 2 /* Mar */, 23)),
       new Date(2020, 2 /* Mar */, 25)
@@ -42,7 +42,7 @@ describe('nextWednesday', function () {
     )
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     assert(nextWednesday(new Date(NaN)) instanceof Date)
   })
 })
