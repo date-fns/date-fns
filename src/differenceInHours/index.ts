@@ -1,7 +1,7 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-var MILLISECONDS_IN_HOUR = 3600000
+const MILLISECONDS_IN_HOUR = 3600000
 
 /**
  * @name differenceInHours
@@ -28,10 +28,10 @@ var MILLISECONDS_IN_HOUR = 3600000
  * )
  * //=> 12
  */
-export default function differenceInHours(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
   requiredArgs(2, arguments)
 
-  var diff =
+  const diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_HOUR
   return diff > 0 ? Math.floor(diff) : Math.ceil(diff)

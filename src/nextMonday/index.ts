@@ -16,10 +16,10 @@ import toDate from '../toDate/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * When is the next Monday after Mar, 22, 2020?
+ * // When is the next Monday after Mar, 22, 2020?
  * const result = nextMonday(new Date(2020, 2, 22))
- * => Mon Mar 23 2020 00:00:00
- **/
+ * //=> Mon Mar 23 2020 00:00:00
+ */
 export default function nextMonday(date: Date | number): Date {
   requiredArgs(1, arguments)
   return nextDay(toDate(date), 1)

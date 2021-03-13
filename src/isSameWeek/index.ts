@@ -1,6 +1,6 @@
 import startOfWeek from '../startOfWeek/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { WeekStartOptions, LocalOptions } from '../types';
+import { WeekStartOptions, LocaleOptions } from '../types'
 
 /**
  * @name isSameWeek
@@ -39,7 +39,7 @@ import { WeekStartOptions, LocalOptions } from '../types';
 export default function isSameWeek(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number,
-  dirtyOptions?: WeekStartOptions & LocalOptions,
+  dirtyOptions?: LocaleOptions & WeekStartOptions
 ): boolean {
   requiredArgs(2, arguments)
 
