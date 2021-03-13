@@ -41,7 +41,8 @@ describe('nextFriday', function () {
       new Date(2020, 2 /* Mar */, 20)
     )
   })
-  it('returns `Invalid Date` if the given date is invalid', function () {
+
+  it('returns `Invalid Date` if the given date is invalid', () => {
     assert(nextFriday(new Date(NaN)) instanceof Date)
   })
 })
