@@ -1,0 +1,69 @@
+import { AbstractParser } from './AbstractParser'
+
+// Local week-numbering year
+export class WeekNumberYearParser extends AbstractParser {
+  public readonly incompatibleTokens: string[] = [
+    'y',
+    'R',
+    'u',
+    'Q',
+    'q',
+    'M',
+    'L',
+    'I',
+    'd',
+    'D',
+    'i',
+    't',
+    'T',
+  ]
+
+  parse(string: any, token: any, match: any, _options: any) {
+    var valueCallback = function (year) {
+      return {
+        year: year,
+        isTwoDigitYear: token === 'YY',
+      }
+    }
+
+    switch (token) {
+      case 'Y':
+        return parseNDigits(4, string, valueCallback)
+      case 'Yo':
+        return match.ordinalNumber(string, {
+          unit: 'year',
+          valueCallback: valueCallback,
+        })
+      default:
+        return parseNDigits(token.length, string, valueCallback)
+    }
+  }
+
+  validate(_date: any, value: any, _options: any) {
+    return value.isTwoDigitYear || value.year > 0
+  }
+
+  set(date: any, flags: any, value: any, _options: any) {
+    var currentYear = getUTCWeekYear(date, _options)
+
+    if (value.isTwoDigitYear) {
+      var normalizedTwoDigitYear = normalizeTwoDigitYear(
+        value.year,
+        currentYear
+      )
+      date.setUTCFullYear(
+        normalizedTwoDigitYear,
+        0,
+        _options.firstWeekContainsDate
+      )
+      date.setUTCHours(0, 0, 0, 0)
+      return startOfUTCWeek(date, _options)
+    }
+
+    var year =
+      !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
+    date.setUTCFullYear(year, 0, _options.firstWeekContainsDate)
+    date.setUTCHours(0, 0, 0, 0)
+    return startOfUTCWeek(date, _options)
+  }
+}
