@@ -1,14 +1,14 @@
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import compareAsc from '../compareAsc/index'
 import toDate from '../toDate/index'
-import differenceInSeconds from '../differenceInSeconds/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../locale/en-US/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
-var MINUTES_IN_DAY = 1440
-var MINUTES_IN_MONTH = 43200
-var MINUTES_IN_YEAR = 525600
+var MILLISECONDS_IN_MINUTE = 1000 * 60
+var MINUTES_IN_DAY = 60 * 24
+var MINUTES_IN_MONTH = MINUTES_IN_DAY * 30
+var MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
 
 /**
  * @name formatDistanceStrict
@@ -208,12 +208,17 @@ export default function formatDistanceStrict(
     throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
   }
 
-  var seconds = differenceInSeconds(dateRight, dateLeft)
-  var offsetInSeconds =
-    (getTimezoneOffsetInMilliseconds(dateRight) -
-      getTimezoneOffsetInMilliseconds(dateLeft)) /
-    1000
-  var minutes = roundingMethodFn((seconds - offsetInSeconds) / 60)
+  var milliseconds = dateRight.getTime() - dateLeft.getTime()
+  var minutes = milliseconds / MILLISECONDS_IN_MINUTE
+
+  var timezoneOffset =
+    getTimezoneOffsetInMilliseconds(dateRight) -
+    getTimezoneOffsetInMilliseconds(dateLeft)
+
+  // Use DST-normalized difference in minutes for years, months and days;
+  // use regular difference in minutes for hours, minutes and seconds.
+  var dstNormalizedMinutes =
+    (milliseconds - timezoneOffset) / MILLISECONDS_IN_MINUTE
 
   var unit
   if (options.unit == null) {
@@ -223,9 +228,9 @@ export default function formatDistanceStrict(
       unit = 'minute'
     } else if (minutes < MINUTES_IN_DAY) {
       unit = 'hour'
-    } else if (minutes < MINUTES_IN_MONTH) {
+    } else if (dstNormalizedMinutes < MINUTES_IN_MONTH) {
       unit = 'day'
-    } else if (minutes < MINUTES_IN_YEAR) {
+    } else if (dstNormalizedMinutes < MINUTES_IN_YEAR) {
       unit = 'month'
     } else {
       unit = 'year'
@@ -236,11 +241,13 @@ export default function formatDistanceStrict(
 
   // 0 up to 60 seconds
   if (unit === 'second') {
+    var seconds = roundingMethodFn(milliseconds / 1000)
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
     // 1 up to 60 mins
   } else if (unit === 'minute') {
-    return locale.formatDistance('xMinutes', minutes, localizeOptions)
+    var roundedMinutes = roundingMethodFn(minutes)
+    return locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
 
     // 1 up to 24 hours
   } else if (unit === 'hour') {
@@ -249,17 +256,17 @@ export default function formatDistanceStrict(
 
     // 1 up to 30 days
   } else if (unit === 'day') {
-    var days = roundingMethodFn(minutes / MINUTES_IN_DAY)
+    var days = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_DAY)
     return locale.formatDistance('xDays', days, localizeOptions)
 
     // 1 up to 12 months
   } else if (unit === 'month') {
-    var months = roundingMethodFn(minutes / MINUTES_IN_MONTH)
+    var months = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_MONTH)
     return locale.formatDistance('xMonths', months, localizeOptions)
 
     // 1 year up to max Date
   } else if (unit === 'year') {
-    var years = roundingMethodFn(minutes / MINUTES_IN_YEAR)
+    var years = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_YEAR)
     return locale.formatDistance('xYears', years, localizeOptions)
   }
 
