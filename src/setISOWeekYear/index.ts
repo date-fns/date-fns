@@ -31,16 +31,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:
- * var result = setISOWeekYear(new Date(2008, 11, 29), 2007)
+ * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate, dirtyISOWeekYear) {
+export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var isoWeekYear = toInteger(dirtyISOWeekYear)
-  var diff = differenceInCalendarDays(date, startOfISOWeekYear(date))
-  var fourthOfJanuary = new Date(0)
+  let date = toDate(dirtyDate)
+  const isoWeekYear = toInteger(dirtyISOWeekYear)
+  const diff = differenceInCalendarDays(date, startOfISOWeekYear(date))
+  const fourthOfJanuary = new Date(0)
   fourthOfJanuary.setFullYear(isoWeekYear, 0, 4)
   fourthOfJanuary.setHours(0, 0, 0, 0)
   date = startOfISOWeekYear(fourthOfJanuary)
