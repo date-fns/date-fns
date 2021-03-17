@@ -94,7 +94,7 @@ var formattingDayPeriodValues = {
     midnight: 'm',
     noon: 'd',
     morning: 'në mëngjes',
-    afternoon: 'mbasdite',
+    afternoon: 'në mbasdite',
     evening: 'në mbrëmje',
     night: 'në mesnatë'
   },
@@ -104,7 +104,7 @@ var formattingDayPeriodValues = {
     midnight: 'mesnatë',
     noon: 'drek',
     morning: 'në mëngjes',
-    afternoon: 'mbasdite',
+    afternoon: 'në mbasdite',
     evening: 'në mbrëmje',
     night: 'në mesnatë'
   },
@@ -114,8 +114,8 @@ var formattingDayPeriodValues = {
     midnight: 'mesnatë',
     noon: 'drek',
     morning: 'në mëngjes',
-    afternoon: 'mbasdite',
-    evening: 'në mbremje',
+    afternoon: 'në mbasdite',
+    evening: 'në mbrëmje',
     night: 'në mesnatë'
   }
 }
