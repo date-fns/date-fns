@@ -24,15 +24,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:
- * var result = setISOWeek(new Date(2004, 7, 7), 53)
+ * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(dirtyDate, dirtyISOWeek) {
+export default function setISOWeek(dirtyDate: Date | number, dirtyISOWeek: number): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var isoWeek = toInteger(dirtyISOWeek)
-  var diff = getISOWeek(date) - isoWeek
+  const date = toDate(dirtyDate)
+  const isoWeek = toInteger(dirtyISOWeek)
+  const diff = getISOWeek(date) - isoWeek
   date.setDate(date.getDate() - diff * 7)
   return date
 }
