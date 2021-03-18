@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @returns {Date} the parsed date in the local time zone
  * @throws {TypeError} 1 argument required
  */
-export default function parseJSON(argument: Date | string | number): Date {
+export default function parseJSON(argument: string): Date {
   requiredArgs(1, arguments)
 
   if (typeof argument === 'string') {
