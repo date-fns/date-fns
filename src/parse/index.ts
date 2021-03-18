@@ -28,6 +28,13 @@ import {
   LocalDayOfWeekParser,
   StandAloneLocalDayOfWeekParser,
   ISODayOfWeekParser,
+  AMOrPMParser,
+  AMPMMidnightParser,
+  FlexibleDayPeriodParser,
+  HourFormatFrom1to12Parser,
+  HourFormatFrom0to23Parser,
+  HourFormatFrom0to11Parser,
+  HourFormatFrom1to24Parser,
 } from './_lib/parsers/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -49,6 +56,19 @@ const PARSERS = {
   e: new LocalDayOfWeekParser(90),
   c: new StandAloneLocalDayOfWeekParser(90),
   i: new ISODayOfWeekParser(90),
+  a: new AMOrPMParser(80),
+  b: new AMPMMidnightParser(80),
+  B: new FlexibleDayPeriodParser(80),
+  h: new HourFormatFrom1to12Parser(70),
+  H: new HourFormatFrom0to23Parser(70),
+  K: new HourFormatFrom0to11Parser(70),
+  k: new HourFormatFrom1to24Parser(70),
+  /* m
+   S
+   x
+   t
+   T
+   */
 } as const
 
 type Parsers = typeof PARSERS

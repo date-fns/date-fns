@@ -15,6 +15,13 @@ import { DayOfWeekParser } from './DayOfWeekParser'
 import { LocalDayOfWeekParser } from './LocalDayOfWeekParser'
 import { StandAloneLocalDayOfWeekParser } from './StandAloneLocalDayOfWeekParser'
 import { ISODayOfWeekParser } from './ISODayOfWeekParser'
+import { AMOrPMParser } from './AMOrPMParser'
+import { AMPMMidnightParser } from './AMPMMidnightParser'
+import { FlexibleDayPeriodParser } from './FlexibleDayPeriodParser'
+import { HourFormatFrom1to12Parser } from './HourFormatFrom1to12Parser'
+import { HourFormatFrom0to23Parser } from './HourFormatFrom0to23Parser'
+import { HourFormatFrom0to11Parser } from './HourFormatFrom0to11Parser'
+import { HourFormatFrom1to24Parser } from './HourFormatFrom1to24Parser'
 
 export {
   EraParser,
@@ -34,4 +41,11 @@ export {
   LocalDayOfWeekParser,
   StandAloneLocalDayOfWeekParser,
   ISODayOfWeekParser,
+  AMOrPMParser,
+  AMPMMidnightParser,
+  FlexibleDayPeriodParser,
+  HourFormatFrom1to12Parser,
+  HourFormatFrom0to23Parser,
+  HourFormatFrom0to11Parser,
+  HourFormatFrom1to24Parser,
 }
