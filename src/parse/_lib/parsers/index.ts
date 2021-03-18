@@ -12,6 +12,9 @@ import { ISOWeekYearParser } from './ISOWeekYearParser'
 import { DayOfMonthParser } from './DayOfMonthParser'
 import { DayOfYearParser } from './DayOfYearParser'
 import { DayOfWeekParser } from './DayOfWeekParser'
+import { LocalDayOfWeekParser } from './LocalDayOfWeekParser'
+import { StandAloneLocalDayOfWeekParser } from './StandAloneLocalDayOfWeekParser'
+import { ISODayOfWeekParser } from './ISODayOfWeekParser'
 
 export {
   EraParser,
@@ -28,4 +31,7 @@ export {
   DayOfMonthParser,
   DayOfYearParser,
   DayOfWeekParser,
+  LocalDayOfWeekParser,
+  StandAloneLocalDayOfWeekParser,
+  ISODayOfWeekParser,
 }

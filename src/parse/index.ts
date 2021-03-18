@@ -25,6 +25,9 @@ import {
   DayOfMonthParser,
   DayOfYearParser,
   DayOfWeekParser,
+  LocalDayOfWeekParser,
+  StandAloneLocalDayOfWeekParser,
+  ISODayOfWeekParser,
 } from './_lib/parsers/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -43,6 +46,9 @@ const PARSERS = {
   d: new DayOfMonthParser(90),
   D: new DayOfYearParser(90),
   E: new DayOfWeekParser(90),
+  e: new LocalDayOfWeekParser(90),
+  c: new StandAloneLocalDayOfWeekParser(90),
+  i: new ISODayOfWeekParser(90),
 } as const
 
 type Parsers = typeof PARSERS
