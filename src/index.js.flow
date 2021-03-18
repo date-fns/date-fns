@@ -609,7 +609,6 @@ declare module.exports: {
 
   nextDay: (date: Date | number, day: Day) => Date,
 
-<<<<<<< HEAD
   nextFriday: (date: Date | number) => Date,
 
   nextMonday: (date: Date | number) => Date,
@@ -624,12 +623,6 @@ declare module.exports: {
 
   nextWednesday: (date: Date | number) => Date,
 
-=======
-  nextMonday: (date: Date | number) => Date,
-
-  nextTuesday: (date: Date | number) => Date,
-
->>>>>>> Fix final tests and run build script
   parse: (
     dateString: string,
     formatString: string,

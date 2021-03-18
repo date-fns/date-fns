@@ -47,9 +47,6 @@ export type Duration = {
   seconds?: number,
 }
 
-<<<<<<< HEAD
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-=======
->>>>>>> Fix final tests and run build script
 declare module.exports: (date: Date | number, day: Day) => Date
