@@ -1,3 +1,4 @@
+import { LocaleOptions, WeekStartOptions } from '../types'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -25,24 +26,27 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The start of a week for 2 September 2014 11:55:00:
- * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
+ * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Sun Aug 31 2014 00:00:00
  *
  * @example
  * // If the week starts on Monday, the start of the week for 2 September 2014 11:55:00:
- * var result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
+ * const result = startOfWeek(new Date(2014, 8, 2, 11, 55, 0), { weekStartsOn: 1 })
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function startOfWeek(dirtyDate, dirtyOptions) {
+export default function startOfWeek(
+  dirtyDate: Date | number,
+  dirtyOptions?: LocaleOptions & WeekStartOptions
+): Date {
   requiredArgs(1, arguments)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeWeekStartsOn =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
+  const defaultWeekStartsOn =
     localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
-  var weekStartsOn =
+  const weekStartsOn =
     options.weekStartsOn == null
       ? defaultWeekStartsOn
       : toInteger(options.weekStartsOn)
@@ -52,9 +56,9 @@ export default function startOfWeek(dirtyDate, dirtyOptions) {
     throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
   }
 
-  var date = toDate(dirtyDate)
-  var day = date.getDay()
-  var diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
+  const date = toDate(dirtyDate)
+  const day = date.getDay()
+  const diff = (day < weekStartsOn ? 7 : 0) + day - weekStartsOn
 
   date.setDate(date.getDate() - diff)
   date.setHours(0, 0, 0, 0)
