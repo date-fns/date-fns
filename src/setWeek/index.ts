@@ -52,7 +52,7 @@ export default function setWeek(
     dirtyDate: Date | number,
     dirtyWeek: number,
     dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions
-) {
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
