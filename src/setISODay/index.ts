@@ -25,15 +25,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Set Sunday to 1 September 2014:
- * var result = setISODay(new Date(2014, 8, 1), 7)
+ * const result = setISODay(new Date(2014, 8, 1), 7)
  * //=> Sun Sep 07 2014 00:00:00
  */
-export default function setISODay(dirtyDate, dirtyDay) {
+export default function setISODay(dirtyDate: Date | number, dirtyDay: number): Date {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var day = toInteger(dirtyDay)
-  var currentDay = getISODay(date)
-  var diff = day - currentDay
+  const date = toDate(dirtyDate)
+  const day = toInteger(dirtyDay)
+  const currentDay = getISODay(date)
+  const diff = day - currentDay
   return addDays(date, diff)
 }
