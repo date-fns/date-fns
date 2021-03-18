@@ -1,5 +1,6 @@
 import isSameWeek from '../isSameWeek/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions, WeekStartOptions } from '../types';
 
 /**
  * @name isThisWeek
@@ -37,7 +38,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 
-export default function isThisWeek(dirtyDate, options) {
+export default function isThisWeek(
+    dirtyDate: Date | number,
+    options?: LocaleOptions & WeekStartOptions
+): boolean {
   requiredArgs(1, arguments)
 
   return isSameWeek(dirtyDate, Date.now(), options)
