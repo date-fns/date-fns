@@ -1,6 +1,7 @@
 import parse from '../parse/index'
 import isValid from '../isValid/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types';
 
 /**
  * @name isMatch
@@ -294,7 +295,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * //=> true
  */
-export default function isMatch(dateString, formatString, dirtyOptions) {
+export default function isMatch(
+    dateString: string,
+    formatString: string,
+    dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions
+): boolean {
   requiredArgs(2, arguments)
   return isValid(parse(dateString, formatString, new Date(), dirtyOptions))
 }
