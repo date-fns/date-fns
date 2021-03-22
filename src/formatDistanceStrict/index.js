@@ -104,6 +104,7 @@ var MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
+ * @param {'second'|'minute'|'hour'|'day'|'month'} [options.maxUnit] - if specified, the value will be used as the highest unit possible
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
  * @throws {TypeError} 2 arguments required
@@ -142,6 +143,14 @@ var MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
  *   unit: 'minute'
  * })
  * //=> '525600 minutes'
+ *
+ * @example
+ * // What is the distance from 1 January 2016
+ * // to 1 January 2015, with month as highest unit?
+ * var result = formatDistanceStrict(new Date(2016, 0, 1), new Date(2015, 0, 1), {
+ *   maxUnit: 'month'
+ * })
+ * //=> '12 months'
  *
  * @example
  * // What is the distance from 1 January 2015
@@ -222,15 +231,21 @@ export default function formatDistanceStrict(
 
   var unit
   if (options.unit == null) {
-    if (minutes < 1) {
+    if (minutes < 1 || options.maxUnit == 'second') {
       unit = 'second'
-    } else if (minutes < 60) {
+    } else if (minutes < 60 || options.maxUnit == 'minute') {
       unit = 'minute'
-    } else if (minutes < MINUTES_IN_DAY) {
+    } else if (minutes < MINUTES_IN_DAY || options.maxUnit == 'hour') {
       unit = 'hour'
-    } else if (dstNormalizedMinutes < MINUTES_IN_MONTH) {
+    } else if (
+      dstNormalizedMinutes < MINUTES_IN_MONTH ||
+      options.maxUnit == 'day'
+    ) {
       unit = 'day'
-    } else if (dstNormalizedMinutes < MINUTES_IN_YEAR) {
+    } else if (
+      dstNormalizedMinutes < MINUTES_IN_YEAR ||
+      options.maxUnit == 'month'
+    ) {
       unit = 'month'
     } else {
       unit = 'year'

@@ -281,6 +281,144 @@ describe('formatDistanceStrict', function () {
     })
   })
 
+  describe('when the maxUnit option is supplied', function () {
+    describe('second', function () {
+      it('1 second', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 32, 1),
+          { maxUnit: 'second' }
+        )
+        assert(result === '1 second')
+      })
+
+      it('1 minute', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 33, 0),
+          { maxUnit: 'second' }
+        )
+        assert(result === '60 seconds')
+      })
+    })
+
+    describe('minute', function () {
+      it('1 second', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 32, 1),
+          { maxUnit: 'minute' }
+        )
+        assert(result === '1 second')
+      })
+
+      it('1 minute', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 33, 0),
+          { maxUnit: 'minute' }
+        )
+        assert(result === '1 minute')
+      })
+
+      it('1 hour', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 11, 32, 0),
+          { maxUnit: 'minute' }
+        )
+        assert(result === '60 minutes')
+      })
+    })
+
+    describe('hour', function () {
+      it('1 minute', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 10, 33, 0),
+          { maxUnit: 'hour' }
+        )
+        assert(result === '1 minute')
+      })
+
+      it('1 hour', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 11, 32, 0),
+          { maxUnit: 'hour' }
+        )
+        assert(result === '1 hour')
+      })
+
+      it('1 day', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 5, 10, 32, 0),
+          { maxUnit: 'hour' }
+        )
+        assert(result === '24 hours')
+      })
+    })
+
+    describe('day', function () {
+      it('1 hour', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 4, 11, 32, 0),
+          { maxUnit: 'day' }
+        )
+        assert(result === '1 hour')
+      })
+
+      it('1 day', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 5, 10, 32, 0),
+          { maxUnit: 'day' }
+        )
+        assert(result === '1 day')
+      })
+
+      it('1 month', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 4, 4, 10, 32, 0),
+          { maxUnit: 'day' }
+        )
+        assert(result === '30 days')
+      })
+    })
+
+    describe('month', function () {
+      it('1 day', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 3, 5, 10, 32, 0),
+          { maxUnit: 'month' }
+        )
+        assert(result === '1 day')
+      })
+
+      it('1 month', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1986, 4, 4, 10, 32, 0),
+          { maxUnit: 'month' }
+        )
+        assert(result === '1 month')
+      })
+
+      it('1 year', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 3, 4, 10, 32, 0),
+          new Date(1987, 3, 4, 10, 32, 0),
+          { maxUnit: 'month' }
+        )
+        assert(result === '12 months')
+      })
+    })
+  })
+
   it('accepts timestamps', function () {
     var result = formatDistanceStrict(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
