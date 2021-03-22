@@ -15,7 +15,7 @@ const yearInDays = 365.2425
  * > Leap year occures every 4 years, except for years that are divisable by 100 and not divisable by 400.
  * > 1 mean year = (365+1/4-1/100+1/400) days = 365.2425 days
  *
- * One month is a year devided by 12.
+ * One month is a year divided by 12.
  *
  * @description
  * Returns the number of milliseconds in the specified, years, months, weeks, days, hours, minutes and seconds.
@@ -26,11 +26,11 @@ const yearInDays = 365.2425
  *
  * @example
  * // 1 year in milliseconds
- * milliseconds({ year: 1 })
+ * milliseconds({ years: 1 })
  * //=> 31556952000
  *
  * // 3 months in milliseconds
- * milliseconds({ month: 3 })
+ * milliseconds({ months: 3 })
  * //=> 7889238000
  */
 export default function milliseconds({

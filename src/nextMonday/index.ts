@@ -10,10 +10,9 @@ import toDate from '../toDate/index'
  * @description
  * When is the next Monday?
  *
- * @param {Date | number} date - the date to check
- * @returns {Date} - the date is the next Monday
- * @throws {TypeError} - the date should be a valid date
- * @throws {TypeError} - 1 argument required
+ * @param {Date | number} date - the date to start counting from
+ * @returns {Date} the next Monday
+ * @throws {TypeError} 1 argument required
  *
  * @example
  * // When is the next Monday after Mar, 22, 2020?

@@ -170,24 +170,30 @@ function extractItems(
 
   switch (true) {
     // Fixed
-    case /^(breaking:\s?)?fixed /i.test(message):
-      return [item({ type: 'fixed', message })]
+    case fixedSentenceRegExp.test(message): {
+      const captures = message.match(fixedSentenceRegExp)!
+      return [item({ type: 'fixed', message: captures[2] })]
+    }
     case fixedOneLinerRegExp.test(message): {
       const captures = message.match(fixedOneLinerRegExp)!
       return [item({ type: 'fixed', message: captures[1] })]
     }
 
     // Changed
-    case /^(breaking:\s?)?changed /i.test(message):
-      return [item({ type: 'changed', message })]
+    case changedSentenceRegExp.test(message): {
+      const captures = message.match(changedSentenceRegExp)!
+      return [item({ type: 'changed', message: captures[2] })]
+    }
     case changedOneLinerRegExp.test(message): {
       const captures = message.match(changedOneLinerRegExp)!
       return [item({ type: 'changed', message: captures[1] })]
     }
 
     // Added
-    case /^(breaking:\s?)?added /i.test(message):
-      return [item({ type: 'added', message })]
+    case addedSentenceRegExp.test(message): {
+      const captures = message.match(addedSentenceRegExp)!
+      return [item({ type: 'added', message: captures[2] })]
+    }
     case addedOneLinerRegExp.test(message): {
       const captures = message.match(addedOneLinerRegExp)!
       return [item({ type: 'added', message: captures[1] })]
@@ -264,17 +270,22 @@ interface Author {
   email: string
 }
 
-var closesRegExp = /closes #(\d+)/
+var closesRegExp = /(?:closes|fixes) #(\d+)/
 
 var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
 var thanksOptions = [
   (authors: string) => `Kudos to ${authors} for working on the release.`,
-  (authors: string) => `Thanks to ${authors} for working on the relese.`,
+  (authors: string) => `Thanks to ${authors} for working on the release.`,
   (authors: string) => `This release is brought to you by ${authors}.`,
   (authors: string) => `On this release worked ${authors}.`,
 ]
 
+var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
 var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+
+var changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
 var changedOneLinerRegExp = /^changed:\s(.+)/i
+
+var addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
 var addedOneLinerRegExp = /^added:\s(.+)/i
