@@ -80,11 +80,14 @@ export interface FormatLong {
 }
 
 export type MatchFn<TResult> = (
-  str: string,
-  options?: {
-    width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
-  }
-) => TResult
+    str: string,
+    options?: {
+      width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
+    }
+) => {
+  value: TResult
+  rest: string
+} | null
 
 export interface Match {
   ordinalNumber: MatchFn<number>

@@ -1,4 +1,6 @@
-var formatDistanceLocale = {
+import { FormatDistanceFn } from '../../../types';
+
+const formatDistanceLocale = {
   lessThanXSeconds: {
     standalone: {
       one: 'weniger als eine Sekunde',
@@ -170,24 +172,24 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance(token, count, options) {
+const formatDistance: FormatDistanceFn = (token, count, options) => {
   options = options || {}
 
-  var usageGroup = options.addSuffix
+  const usageGroup = options.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
 
-  var result
+  let result
   if (typeof usageGroup === 'string') {
     result = usageGroup
   } else if (count === 1) {
     result = usageGroup.one
   } else {
-    result = usageGroup.other.replace('{{count}}', count)
+    result = usageGroup.other.replace('{{count}}', String(count))
   }
 
   if (options.addSuffix) {
-    if (options.comparison > 0) {
+    if (options.comparison && options.comparison > 0) {
       return 'in ' + result
     } else {
       return 'vor ' + result
@@ -196,3 +198,5 @@ export default function formatDistance(token, count, options) {
 
   return result
 }
+
+export default formatDistance;

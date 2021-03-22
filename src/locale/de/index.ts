@@ -3,6 +3,7 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
+import { Locale } from '../types';
 
 /**
  * @type {Locale}
@@ -16,7 +17,7 @@ import match from './_lib/match/index'
  * @author RomanErnst [@pex]{@link https://github.com/pex}
  * @author Philipp Keck [@Philipp91]{@link https://github.com/Philipp91}
  */
-var locale = {
+const locale: Locale = {
   code: 'de',
   formatDistance: formatDistance,
   formatLong: formatLong,
