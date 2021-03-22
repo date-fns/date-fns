@@ -3,7 +3,7 @@ import { LocaleOptions, Locale, Match } from 'src/locale/types'
 type ParseOptions = Locale & LocaleOptions
 
 export abstract class AbstractParser {
-  public readonly incompatibleTokens: string[] = []
+  public readonly incompatibleTokens: string | string[] = []
 
   constructor(public readonly priority: number) {
     this.priority = priority

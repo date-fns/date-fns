@@ -1,4 +1,6 @@
+import setUTCDay from '../../../_lib/setUTCDay/index'
 import { AbstractParser } from './AbstractParser'
+import { parseNDigits } from '../utils'
 
 // Stand-alone local day of week
 export class StandAloneLocalDayOfWeekParser extends AbstractParser {

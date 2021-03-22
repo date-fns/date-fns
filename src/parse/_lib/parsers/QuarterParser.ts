@@ -1,4 +1,5 @@
 import { AbstractParser } from './AbstractParser'
+import { parseNDigits } from '../utils'
 
 // Quarter
 export class QuarterParser extends AbstractParser {

@@ -1,4 +1,5 @@
 import { AbstractParser } from './AbstractParser'
+import setUTCDay from '../../../_lib/setUTCDay/index'
 
 // Day of week
 export class DayOfWeekParser extends AbstractParser {

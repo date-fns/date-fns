@@ -1,4 +1,5 @@
 import { AbstractParser } from './AbstractParser'
+import { dayPeriodEnumToHours } from '../utils'
 
 // in the morning, in the afternoon, in the evening, at night
 export class FlexibleDayPeriodParser extends AbstractParser {

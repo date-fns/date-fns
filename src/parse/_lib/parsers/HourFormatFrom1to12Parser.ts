@@ -1,4 +1,5 @@
 import { AbstractParser } from './AbstractParser'
+import { parseNumericPattern, parseNDigits } from '../utils'
 
 // Hour [1-12]
 export class HourFormatFrom1to12Parser extends AbstractParser {

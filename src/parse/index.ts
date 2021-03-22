@@ -35,6 +35,13 @@ import {
   HourFormatFrom0to23Parser,
   HourFormatFrom0to11Parser,
   HourFormatFrom1to24Parser,
+  MinuteParser,
+  SecondParser,
+  FractionOfSecondParser,
+  TimezoneWithZParser,
+  TimezoneWithoutZParser,
+  SecondsTimestampParser,
+  MillisecondsTimestampParser,
 } from './_lib/parsers/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -63,12 +70,13 @@ const PARSERS = {
   H: new HourFormatFrom0to23Parser(70),
   K: new HourFormatFrom0to11Parser(70),
   k: new HourFormatFrom1to24Parser(70),
-  /* m
-   S
-   x
-   t
-   T
-   */
+  m: new MinuteParser(60),
+  s: new SecondParser(50),
+  S: new FractionOfSecondParser(30),
+  X: new TimezoneWithZParser(10),
+  x: new TimezoneWithoutZParser(10),
+  t: new SecondsTimestampParser(40),
+  T: new MillisecondsTimestampParser(20),
 } as const
 
 type Parsers = typeof PARSERS

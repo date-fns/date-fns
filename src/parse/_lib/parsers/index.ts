@@ -22,6 +22,13 @@ import { HourFormatFrom1to12Parser } from './HourFormatFrom1to12Parser'
 import { HourFormatFrom0to23Parser } from './HourFormatFrom0to23Parser'
 import { HourFormatFrom0to11Parser } from './HourFormatFrom0to11Parser'
 import { HourFormatFrom1to24Parser } from './HourFormatFrom1to24Parser'
+import { MinuteParser } from './MinuteParser'
+import { SecondParser } from './SecondParser'
+import { FractionOfSecondParser } from './FractionOfSecondParser'
+import { TimezoneWithZParser } from './TimezoneWithZParser'
+import { TimezoneWithoutZParser } from './TimezoneWithoutZParser'
+import { SecondsTimestampParser } from './SecondsTimestampParser'
+import { MillisecondsTimestampParser } from './MillisecondsTimestampParser'
 
 export {
   EraParser,
@@ -48,4 +55,11 @@ export {
   HourFormatFrom0to23Parser,
   HourFormatFrom0to11Parser,
   HourFormatFrom1to24Parser,
+  MinuteParser,
+  SecondParser,
+  FractionOfSecondParser,
+  TimezoneWithZParser,
+  TimezoneWithoutZParser,
+  SecondsTimestampParser,
+  MillisecondsTimestampParser,
 }

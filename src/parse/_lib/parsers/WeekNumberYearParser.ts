@@ -1,4 +1,7 @@
+import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
+import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
 import { AbstractParser } from './AbstractParser'
+import { parseNDigits, normalizeTwoDigitYear } from '../utils'
 
 // Local week-numbering year
 export class WeekNumberYearParser extends AbstractParser {
