@@ -19,9 +19,9 @@ const outdatedLocales = require('../../outdatedLocales.json')
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
-listFns().then((fns) => {
+Promise.all([listFns(), listLocales()]).then(([fns, allLocales]) => {
   const fpFns = listFPFns()
-  const locales = listLocales().filter(
+  const locales = allLocales.filter(
     ({ code }) => !outdatedLocales.includes(code)
   )
 
