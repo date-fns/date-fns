@@ -3,7 +3,7 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
-import { Locale } from '../types';
+import type { Locale } from '../types'
 
 /**
  * @type {Locale}
@@ -26,8 +26,8 @@ const locale: Locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale

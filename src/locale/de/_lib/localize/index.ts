@@ -1,16 +1,16 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import { Localize, LocalizeFn } from '../../../types';
+import type { Localize, LocalizeFn } from '../../../types'
 
 const eraValues = {
   narrow: ['v.Chr.', 'n.Chr.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['vor Christus', 'nach Christus']
+  wide: ['vor Christus', 'nach Christus'],
 }
 
 const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'],
 }
 
 // Note: in German, the names of days of the week and months are capitalized.
@@ -31,7 +31,7 @@ const monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Dez'
+    'Dez',
   ],
   wide: [
     'Januar',
@@ -45,8 +45,8 @@ const monthValues = {
     'September',
     'Oktober',
     'November',
-    'Dezember'
-  ]
+    'Dezember',
+  ],
 }
 
 const dayValues = {
@@ -60,8 +60,8 @@ const dayValues = {
     'Mittwoch',
     'Donnerstag',
     'Freitag',
-    'Samstag'
-  ]
+    'Samstag',
+  ],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
@@ -74,7 +74,7 @@ const dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachm.',
     evening: 'Abend',
-    night: 'Nacht'
+    night: 'Nacht',
   },
   abbreviated: {
     am: 'vorm.',
@@ -84,7 +84,7 @@ const dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachmittag',
     evening: 'Abend',
-    night: 'Nacht'
+    night: 'Nacht',
   },
   wide: {
     am: 'vormittags',
@@ -94,8 +94,8 @@ const dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachmittag',
     evening: 'Abend',
-    night: 'Nacht'
-  }
+    night: 'Nacht',
+  },
 }
 
 const formattingDayPeriodValues = {
@@ -107,7 +107,7 @@ const formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachm.',
     evening: 'abends',
-    night: 'nachts'
+    night: 'nachts',
   },
   abbreviated: {
     am: 'vorm.',
@@ -117,7 +117,7 @@ const formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachmittags',
     evening: 'abends',
-    night: 'nachts'
+    night: 'nachts',
   },
   wide: {
     am: 'vormittags',
@@ -127,11 +127,11 @@ const formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachmittags',
     evening: 'abends',
-    night: 'nachts'
-  }
+    night: 'nachts',
+  },
 }
 
-const ordinalNumber: LocalizeFn<number> = function ordinalNumber(dirtyNumber, _dirtyOptions) {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _dirtyOptions) => {
   const number = Number(dirtyNumber)
 
   return number + '.'
@@ -142,33 +142,31 @@ const localize: Localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter: unknown) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter: number) => quarter - 1,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
