@@ -38,9 +38,9 @@ export class DayOfMonthParser extends AbstractParser {
   }
 
   validate(_date, value, _options) {
-    var year = date.getUTCFullYear()
+    var year = _date.getUTCFullYear()
     var isLeapYear = isLeapYearIndex(year)
-    var month = date.getUTCMonth()
+    var month = _date.getUTCMonth()
     if (isLeapYear) {
       return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
     } else {

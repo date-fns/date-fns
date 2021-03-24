@@ -38,6 +38,6 @@ export class ISOWeekYearParser extends AbstractParser {
   }
 
   set(date: any, flags: any, value: any, _options: any) {
-    return startOfUTCISOWeek(setUTCISOWeek(date, value, options), options)
+    return startOfUTCISOWeek(setUTCISOWeek(date, value, _options), _options)
   }
 }

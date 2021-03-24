@@ -25,7 +25,7 @@ export class LocalDayOfWeekParser extends AbstractParser {
   parse(string: any, token: any, match: any, _options: any) {
     var valueCallback = function (value) {
       var wholeWeekDays = Math.floor((value - 1) / 7) * 7
-      return ((value + options.weekStartsOn + 6) % 7) + wholeWeekDays
+      return ((value + _options.weekStartsOn + 6) % 7) + wholeWeekDays
     }
 
     switch (token) {

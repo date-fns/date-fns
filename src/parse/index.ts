@@ -42,7 +42,7 @@ import {
   TimezoneWithoutZParser,
   SecondsTimestampParser,
   MillisecondsTimestampParser,
-} from './_lib/parsers/index'
+} from './_lib/parsers'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 const PARSERS = {
@@ -440,7 +440,6 @@ export default function parse(
   var options = dirtyOptions || {}
 
   var locale = options.locale || defaultLocale
-  console.error('locale.match', locale.match)
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
@@ -584,7 +583,6 @@ export default function parse(
       })
 
       dateString = parseResult.rest
-      console.log('dateString', dateString)
     } else {
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
         throw new RangeError(
@@ -652,7 +650,6 @@ export default function parse(
   var flags = {}
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-    console.log('setter.value', setter.value)
     if (
       setter.validate &&
       !setter.validate(utcDate, setter.value, subFnOptions)

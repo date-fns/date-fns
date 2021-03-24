@@ -15,7 +15,7 @@ describe('parse', function () {
     assert.deepEqual(result, new Date(2018, 6 /* Jul */, 2))
   })
 
-  it.only('two single quote characters are transformed into a "real" single quote', function () {
+  it('two single quote characters are transformed into a "real" single quote', function () {
     var result = parse("'5 o'clock'", "''h 'o''clock'''", referenceDate)
     assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 5))
   })
