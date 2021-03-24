@@ -23,8 +23,10 @@ export interface WeekStartOptions {
   weekStartsOn?: Day
 }
 
+export type firstWeekContainsDate = 1 | 2 | 3 | 4 | 5 | 6 | 7
+
 export interface WeekYearStartOptions {
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+  firstWeekContainsDate?: firstWeekContainsDate
 }
 
 export interface LocaleOptions {

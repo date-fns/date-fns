@@ -3,7 +3,7 @@ import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types';
+import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
 
 /**
  * @name setWeekYear
@@ -51,9 +51,9 @@ import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
  * //=> Sat Jan 01 2005 00:00:00
  */
 export default function setWeekYear(
-    dirtyDate: Date | number,
-    dirtyWeekYear: number,
-    dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions,
+  dirtyDate: Date | number,
+  dirtyWeekYear: number,
+  dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions
 ): Date {
   requiredArgs(2, arguments)
 
@@ -72,7 +72,10 @@ export default function setWeekYear(
 
   let date = toDate(dirtyDate)
   const weekYear = toInteger(dirtyWeekYear)
-  const diff = differenceInCalendarDays(date, startOfWeekYear(date, dirtyOptions))
+  const diff = differenceInCalendarDays(
+    date,
+    startOfWeekYear(date, dirtyOptions)
+  )
   const firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
