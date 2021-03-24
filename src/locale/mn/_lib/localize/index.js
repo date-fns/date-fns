@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['НТӨ', 'НТ'],
   abbreviated: ['НТӨ', 'НТ'],
-  wide: ['нийтийн тооллын өмнөх', 'нийтийн тооллын']
+  wide: ['нийтийн тооллын өмнөх', 'нийтийн тооллын'],
 }
 
 var quarterValues = {
   narrow: ['I', 'II', 'III', 'IV'],
   abbreviated: ['I улирал', 'II улирал', 'III улирал', 'IV улирал'],
-  wide: ['1-р улирал', '2-р улирал', '3-р улирал', '4-р улирал']
+  wide: ['1-р улирал', '2-р улирал', '3-р улирал', '4-р улирал'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -29,7 +29,7 @@ var monthValues = {
     'IX',
     'X',
     'XI',
-    'XII'
+    'XII',
   ],
   abbreviated: [
     '1-р сар',
@@ -43,7 +43,7 @@ var monthValues = {
     '9-р сар',
     '10-р сар',
     '11-р сар',
-    '12-р сар'
+    '12-р сар',
   ],
   wide: [
     'Нэгдүгээр сар',
@@ -57,12 +57,13 @@ var monthValues = {
     'Есдүгээр сар',
     'Аравдугаар сар',
     'Арваннэгдүгээр сар',
-    'Арван хоёрдугаар сар'
-  ]
+    'Арван хоёрдугаар сар',
+  ],
 }
 
 var formattingMonthValues = {
-  ...monthValues,
+  narrow: monthValues.narrow,
+  abbreviated: monthValues.abbreviated,
   wide: [
     'нэгдүгээр сар',
     'хоёрдугаар сар',
@@ -75,20 +76,22 @@ var formattingMonthValues = {
     'есдүгээр сар',
     'аравдугаар сар',
     'арваннэгдүгээр сар',
-    'арван хоёрдугаар сар'
-  ]
+    'арван хоёрдугаар сар',
+  ],
 }
 
 var dayValues = {
   narrow: ['Н', 'Д', 'М', 'Л', 'П', 'Б', 'Б'],
   short: ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'],
   abbreviated: ['Ням', 'Дав', 'Мяг', 'Лха', 'Пүр', 'Баа', 'Бям'],
-  wide: ['Ням', 'Даваа', 'Мягмар', 'Лхагва', 'Пүрэв', 'Баасан', 'Бямба']
+  wide: ['Ням', 'Даваа', 'Мягмар', 'Лхагва', 'Пүрэв', 'Баасан', 'Бямба'],
 }
 
 var formattingDayValues = {
-  ...dayValues,
-  wide: ['ням', 'даваа', 'мягмар', 'лхагва', 'пүрэв', 'баасан', 'бямба']
+  narrow: dayValues.narrow,
+  short: dayValues.short,
+  abbreviated: dayValues.abbreviated,
+  wide: ['ням', 'даваа', 'мягмар', 'лхагва', 'пүрэв', 'баасан', 'бямба'],
 }
 
 var dayPeriodValues = {
@@ -100,7 +103,7 @@ var dayPeriodValues = {
     morning: 'өглөө',
     afternoon: 'өдөр',
     evening: 'орой',
-    night: 'шөнө'
+    night: 'шөнө',
   },
   abbreviated: {
     am: 'ү.ө.',
@@ -110,7 +113,7 @@ var dayPeriodValues = {
     morning: 'өглөө',
     afternoon: 'өдөр',
     evening: 'орой',
-    night: 'шөнө'
+    night: 'шөнө',
   },
   wide: {
     am: 'ү.ө.',
@@ -120,8 +123,8 @@ var dayPeriodValues = {
     morning: 'өглөө',
     afternoon: 'өдөр',
     evening: 'орой',
-    night: 'шөнө'
-  }
+    night: 'шөнө',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -145,35 +148,35 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize
