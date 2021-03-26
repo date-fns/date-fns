@@ -4,10 +4,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name min
  * @category Common Helpers
- * @summary Returns the earliest of the given dates.
+ * @summary Return the earliest of the given dates.
  *
  * @description
- * Returns the earliest of the given dates.
+ * Return the earliest of the given dates.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -17,22 +17,22 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  *   ```javascript
  *   // Before v2.0.0
- *   const date1 = new Date(1989, 6, 10)
- *   const date2 = new Date(1987, 1, 11)
- *   const minDate = min(date1, date2)
+ *   var date1 = new Date(1989, 6, 10)
+ *   var date2 = new Date(1987, 1, 11)
+ *   var minDate = min(date1, date2)
  *
  *   // v2.0.0 onward:
- *   const dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
- *   const minDate = min(dates)
+ *   var dates = [new Date(1989, 6, 10), new Date(1987, 1, 11)]
+ *   var minDate = min(dates)
  *   ```
  *
  * @param {Date[]|Number[]} datesArray - the dates to compare
- * @returns {Date} - the earliest of the dates
+ * @returns {Date} the earliest of the dates
  * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which of these dates is the earliest?
- * const result = min([
+ * var result = min([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),
@@ -40,13 +40,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Wed Feb 11 1987 00:00:00
  */
-export default function min(dirtyDatesArray: Date[] | number[]): Date {
+export default function min(dirtyDatesArray) {
   requiredArgs(1, arguments)
 
-  let datesArray: Date[] | number[]
+  var datesArray
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
+
     // If `dirtyDatesArray` is Array-like Object, convert to Array.
   } else if (typeof dirtyDatesArray === 'object' && dirtyDatesArray !== null) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
@@ -55,16 +56,11 @@ export default function min(dirtyDatesArray: Date[] | number[]): Date {
     return new Date(NaN)
   }
 
-  let result: Date | undefined
+  var result
+  datesArray.forEach(function(dirtyDate) {
+    var currentDate = toDate(dirtyDate)
 
-  datesArray.forEach(function (dirtyDate: Date | number) {
-    let currentDate = toDate(dirtyDate)
-
-    if (
-      result === undefined ||
-      result > currentDate ||
-      isNaN(currentDate.getDate())
-    ) {
+    if (result === undefined || result > currentDate || isNaN(currentDate)) {
       result = currentDate
     }
   })
