@@ -27,7 +27,13 @@ export interface LocaleOptions {
   locale?: Locale
 }
 
+export interface FirstWeekContainsDate {
+  firstWeekContainsDate?: FirstWeekContainsDay
+}
+
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
+
+export type FirstWeekContainsDay = 1 | 2 | 3 | 4 | 5 | 6 | 7
 
 export interface DateValues {
   year?: number
