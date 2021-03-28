@@ -1,18 +1,19 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import { LocalizeFn } from '../../../types'
 
-var eraValues = {
+const eraValues = {
   narrow: ['да н.э.', 'н.э.'],
   abbreviated: ['да н. э.', 'н. э.'],
-  wide: ['да нашай эры', 'нашай эры']
+  wide: ['да нашай эры', 'нашай эры'],
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ы кв.', '2-і кв.', '3-і кв.', '4-ы кв.'],
-  wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал']
+  wide: ['1-ы квартал', '2-і квартал', '3-і квартал', '4-ы квартал'],
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
   abbreviated: [
     'студз.',
@@ -26,7 +27,7 @@ var monthValues = {
     'вер.',
     'кастр.',
     'ліст.',
-    'снеж.'
+    'снеж.',
   ],
   wide: [
     'студзень',
@@ -40,10 +41,10 @@ var monthValues = {
     'верасень',
     'кастрычнік',
     'лістапад',
-    'снежань'
-  ]
+    'снежань',
+  ],
 }
-var formattingMonthValues = {
+const formattingMonthValues = {
   narrow: ['С', 'Л', 'С', 'К', 'М', 'Ч', 'Л', 'Ж', 'В', 'К', 'Л', 'С'],
   abbreviated: [
     'студз.',
@@ -57,7 +58,7 @@ var formattingMonthValues = {
     'вер.',
     'кастр.',
     'ліст.',
-    'снеж.'
+    'снеж.',
   ],
   wide: [
     'студзеня',
@@ -71,11 +72,11 @@ var formattingMonthValues = {
     'верасня',
     'кастрычніка',
     'лістапада',
-    'снежня'
-  ]
+    'снежня',
+  ],
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['Н', 'П', 'А', 'С', 'Ч', 'П', 'С'],
   short: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
   abbreviated: ['нядз', 'пан', 'аўт', 'сер', 'чац', 'пят', 'суб'],
@@ -86,11 +87,11 @@ var dayValues = {
     'серада',
     'чацвер',
     'пятніца',
-    'субота'
-  ]
+    'субота',
+  ],
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -99,7 +100,7 @@ var dayPeriodValues = {
     morning: 'ран.',
     afternoon: 'дзень',
     evening: 'веч.',
-    night: 'ноч'
+    night: 'ноч',
   },
   abbreviated: {
     am: 'ДП',
@@ -109,7 +110,7 @@ var dayPeriodValues = {
     morning: 'ран.',
     afternoon: 'дзень',
     evening: 'веч.',
-    night: 'ноч'
+    night: 'ноч',
   },
   wide: {
     am: 'ДП',
@@ -119,10 +120,10 @@ var dayPeriodValues = {
     morning: 'раніца',
     afternoon: 'дзень',
     evening: 'вечар',
-    night: 'ноч'
-  }
+    night: 'ноч',
+  },
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ДП',
     pm: 'ПП',
@@ -131,7 +132,7 @@ var formattingDayPeriodValues = {
     morning: 'ран.',
     afternoon: 'дня',
     evening: 'веч.',
-    night: 'ночы'
+    night: 'ночы',
   },
   abbreviated: {
     am: 'ДП',
@@ -141,7 +142,7 @@ var formattingDayPeriodValues = {
     morning: 'ран.',
     afternoon: 'дня',
     evening: 'веч.',
-    night: 'ночы'
+    night: 'ночы',
   },
   wide: {
     am: 'ДП',
@@ -151,15 +152,15 @@ var formattingDayPeriodValues = {
     morning: 'раніцы',
     afternoon: 'дня',
     evening: 'вечара',
-    night: 'ночы'
-  }
+    night: 'ночы',
+  },
 }
 
-function ordinalNumber(dirtyNumber, dirtyOptions) {
-  var options = dirtyOptions || {}
-  var unit = String(options.unit)
-  var number = Number(dirtyNumber)
-  var suffix
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, dirtyOptions) => {
+  const options = dirtyOptions || {}
+  const unit = String(options.unit)
+  const number = Number(dirtyNumber)
+  let suffix
 
   /** Though it's an incorrect ordinal form of a date we use it here for consistency with other similar locales (ru, uk)
    *  For date-month combinations should be used `d` formatter.
@@ -180,7 +181,8 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   } else {
     suffix =
       (number % 10 === 2 || number % 10 === 3) &&
-      (number % 100 !== 12 && number % 100 !== 13)
+      number % 100 !== 12 &&
+      number % 100 !== 13
         ? '-і'
         : '-ы'
   }
@@ -188,40 +190,38 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   return number + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter: number) => quarter - 1,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

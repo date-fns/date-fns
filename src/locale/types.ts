@@ -13,6 +13,16 @@ export interface LocaleOptions {
   firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
 }
 
+export type FormatDistanceTokenFn = (
+  count: number,
+  options?: FormatDistanceOptions
+) => string
+
+export interface FormatDistanceOptions {
+  addSuffix?: boolean
+  comparison?: -1 | 0 | 1
+}
+
 export type FormatDistanceFn = (
   token:
     | 'lessThanXSeconds'
@@ -30,10 +40,13 @@ export type FormatDistanceFn = (
     | 'overXYears'
     | 'almostXYears',
   count: number,
-  options?: {
-    addSuffix?: boolean
-    comparison?: -1 | 0 | 1
-  }
+  options?: FormatDistanceOptions
+) => string
+
+export type FormatRelativeTokenFn = (
+  date: Date | number,
+  baseDate: Date | number,
+  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
 export type FormatRelativeFn = (
@@ -48,6 +61,7 @@ export type LocalizeFn<TValue> = (
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
     context?: 'formatting' | 'standalone'
+    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
   }
 ) => string
 
@@ -80,10 +94,10 @@ export interface FormatLong {
 }
 
 export type MatchFn<TResult> = (
-    str: string,
-    options?: {
-      width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
-    }
+  str: string,
+  options?: {
+    width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
+  }
 ) => {
   value: TResult
   rest: string
@@ -105,4 +119,11 @@ export interface Match {
     | 'evening'
     | 'night'
   >
+}
+
+export interface DeclensionScheme {
+  one?: string
+  singularNominative: string
+  singularGenitive: string
+  pluralGenitive: string
 }
