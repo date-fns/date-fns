@@ -3,6 +3,7 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
+import type { Locale } from '../types'
 
 /**
  * @type {Locale}
@@ -12,7 +13,7 @@ import match from './_lib/match/index'
  * @iso-639-2 ara
  * @author Achraf Rrami [@rramiachraf]{@link https://github.com/rramiachraf}
  */
-var locale = {
+const locale: Locale = {
   code: 'ar-MA',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -22,8 +23,8 @@ var locale = {
   options: {
     // Monday is 1
     weekStartsOn: 1,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
