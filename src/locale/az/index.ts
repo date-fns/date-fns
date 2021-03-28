@@ -12,7 +12,7 @@ import match from './_lib/match/index'
  * @iso-639-2 aze
  */
 
-var locale = {
+const locale: Locale = {
   code: 'az',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
