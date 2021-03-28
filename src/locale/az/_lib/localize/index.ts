@@ -1,19 +1,20 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { LocalizeFn } from '../../../types'
 
-var eraValues = {
+const eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
-  wide: ["Hz. İsa'dan öncə", 'Anno Domini']
+  wide: ["Hz. İsa'dan öncə", 'Anno Domini'],
 }
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'] // Note: in English, the names of days of the week and months are capitalized.
+  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'], // Note: in English, the names of days of the week and months are capitalized.
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
 }
-var monthValues = {
+const monthValues = {
   narrow: ['Y', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'Yan',
@@ -27,7 +28,7 @@ var monthValues = {
     'Sen',
     'Okt',
     'Noy',
-    'Dek'
+    'Dek',
   ],
   wide: [
     'Yanvar',
@@ -41,10 +42,10 @@ var monthValues = {
     'Sentyabr',
     'Oktyabr',
     'Noyabr',
-    'Dekabr'
-  ]
+    'Dekabr',
+  ],
 }
-var dayValues = {
+const dayValues = {
   narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
   short: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
   abbreviated: ['Baz', 'Baz.e', 'Çər.a', 'Çər', 'Cüm.a', 'Cüm', 'Şə'],
@@ -55,10 +56,10 @@ var dayValues = {
     'Çərşənbə',
     'Cümə axşamı',
     'Cümə',
-    'Şənbə'
-  ]
+    'Şənbə',
+  ],
 }
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'am',
     pm: 'pm',
@@ -67,7 +68,7 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   abbreviated: {
     am: 'AM',
@@ -77,7 +78,7 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   wide: {
     am: 'a.m.',
@@ -87,10 +88,10 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
-  }
+    night: 'gecə',
+  },
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'a',
     pm: 'p',
@@ -99,7 +100,7 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   abbreviated: {
     am: 'AM',
@@ -109,7 +110,7 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   wide: {
     am: 'a.m.',
@@ -119,11 +120,11 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
-  }
+    night: 'gecə',
+  },
 }
 
-var suffixes = {
+const suffixes: { [key: number]: string } = {
   1: '-inci',
   5: '-inci',
   8: '-inci',
@@ -141,54 +142,61 @@ var suffixes = {
   10: '-uncu',
   30: '-uncu',
   60: '-ıncı',
-  90: '-ıncı'
+  90: '-ıncı',
 }
 
-function getSuffix(number) {
+const getSuffix = (number: number): string => {
   if (number === 0) {
     // special case for zero
     return number + '-ıncı'
   }
-  var a = number % 10,
-    b = (number % 100) - a,
-    c = number >= 100 ? 100 : null
-  return suffixes[a] || suffixes[b] || suffixes[c]
+
+  const a = number % 10
+  const b = (number % 100) - a
+  const c = number >= 100 ? 100 : null
+
+  if (suffixes[a]) {
+    return suffixes[a]
+  } else if (suffixes[b]) {
+    return suffixes[b]
+  } else if (c !== null) {
+    return suffixes[c]
+  }
+  return ''
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
-  var suffix = getSuffix(number)
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _dirtyOptions) => {
+  const number = Number(dirtyNumber)
+  const suffix = getSuffix(number)
 
   return number + suffix
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter: number) => quarter - 1,
   }),
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
