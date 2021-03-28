@@ -12,7 +12,7 @@ import match from './_lib/match/index'
  * @iso-639-2 ara
  * @author Dhaifallah Alwadani [@dalwadani]{@link https://github.com/dalwadani}
  */
-var locale = {
+const locale: Locale = {
   code: 'ar-SA',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
