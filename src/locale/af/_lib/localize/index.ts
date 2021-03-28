@@ -1,18 +1,19 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { LocalizeFn } from '../../../types'
 
-var eraValues = {
+const eraValues = {
   narrow: ['vC', 'nC'],
   abbreviated: ['vC', 'nC'],
-  wide: ['voor Christus', 'na Christus']
+  wide: ['voor Christus', 'na Christus'],
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal']
+  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal'],
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'Jan',
@@ -26,7 +27,7 @@ var monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Des'
+    'Des',
   ],
   wide: [
     'Januarie',
@@ -40,11 +41,11 @@ var monthValues = {
     'September',
     'Oktober',
     'November',
-    'Desember'
-  ]
+    'Desember',
+  ],
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['S', 'M', 'D', 'W', 'D', 'V', 'S'],
   short: ['So', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Sa'],
   abbreviated: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'],
@@ -55,11 +56,11 @@ var dayValues = {
     'Woensdag',
     'Donderdag',
     'Vrydag',
-    'Saterdag'
-  ]
+    'Saterdag',
+  ],
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'vm',
     pm: 'nm',
@@ -68,7 +69,7 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
+    night: 'aand',
   },
   abbreviated: {
     am: 'vm',
@@ -78,7 +79,7 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
+    night: 'aand',
   },
   wide: {
     am: 'vm',
@@ -88,10 +89,10 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
-  }
+    night: 'aand',
+  },
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'vm',
     pm: 'nm',
@@ -100,7 +101,7 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
+    night: 'uur die aand',
   },
   abbreviated: {
     am: 'vm',
@@ -110,7 +111,7 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
+    night: 'uur die aand',
   },
   wide: {
     am: 'vm',
@@ -120,13 +121,13 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
-  }
+    night: 'uur die aand',
+  },
 }
 
-function ordinalNumber(dirtyNumber) {
-  var number = Number(dirtyNumber)
-  var rem100 = number % 100
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
+  const number = Number(dirtyNumber)
+  const rem100 = number % 100
   if (rem100 < 20) {
     switch (rem100) {
       case 1:
@@ -139,38 +140,38 @@ function ordinalNumber(dirtyNumber) {
   return number + 'ste'
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: function (quarter: number) {
+      return quarter - 1
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
