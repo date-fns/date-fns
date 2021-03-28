@@ -1,18 +1,19 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { LocalizeFn } from '../../../types'
 
-var eraValues = {
+const eraValues = {
   narrow: ['ق', 'ب'],
   abbreviated: ['ق.م.', 'ب.م.'],
-  wide: ['قبل الميلاد', 'بعد الميلاد']
+  wide: ['قبل الميلاد', 'بعد الميلاد'],
 }
 
-var quarterValues = {
+const quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
-  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع']
+  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع'],
 }
 
-var monthValues = {
+const monthValues = {
   narrow: ['ي', 'ف', 'م', 'أ', 'م', 'ي', 'ي', 'أ', 'س', 'أ', 'ن', 'د'],
   abbreviated: [
     'ينا',
@@ -26,7 +27,7 @@ var monthValues = {
     'سبتـ',
     'أكتـ',
     'نوفـ',
-    'ديسـ'
+    'ديسـ',
   ],
   wide: [
     'يناير',
@@ -40,11 +41,11 @@ var monthValues = {
     'سبتمبر',
     'أكتوبر',
     'نوفمبر',
-    'ديسمبر'
-  ]
+    'ديسمبر',
+  ],
 }
 
-var dayValues = {
+const dayValues = {
   narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
   short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
   abbreviated: ['أحد', 'اثنـ', 'ثلا', 'أربـ', 'خميـ', 'جمعة', 'سبت'],
@@ -55,11 +56,11 @@ var dayValues = {
     'الأربعاء',
     'الخميس',
     'الجمعة',
-    'السبت'
-  ]
+    'السبت',
+  ],
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'ص',
     pm: 'م',
@@ -68,7 +69,7 @@ var dayPeriodValues = {
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
     evening: 'مساءاً',
-    night: 'ليلاً'
+    night: 'ليلاً',
   },
   abbreviated: {
     am: 'ص',
@@ -78,7 +79,7 @@ var dayPeriodValues = {
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
     evening: 'مساءاً',
-    night: 'ليلاً'
+    night: 'ليلاً',
   },
   wide: {
     am: 'ص',
@@ -88,10 +89,10 @@ var dayPeriodValues = {
     morning: 'صباحاً',
     afternoon: 'بعد الظهر',
     evening: 'مساءاً',
-    night: 'ليلاً'
-  }
+    night: 'ليلاً',
+  },
 }
-var formattingDayPeriodValues = {
+const formattingDayPeriodValues = {
   narrow: {
     am: 'ص',
     pm: 'م',
@@ -100,7 +101,7 @@ var formattingDayPeriodValues = {
     morning: 'في الصباح',
     afternoon: 'بعد الظـهر',
     evening: 'في المساء',
-    night: 'في الليل'
+    night: 'في الليل',
   },
   abbreviated: {
     am: 'ص',
@@ -109,7 +110,7 @@ var formattingDayPeriodValues = {
     noon: 'ظهر',
     morning: 'في الصباح',
     evening: 'في المساء',
-    night: 'في الليل'
+    night: 'في الليل',
   },
   wide: {
     am: 'ص',
@@ -118,46 +119,44 @@ var formattingDayPeriodValues = {
     noon: 'ظهر',
     afternoon: 'بعد الظـهر',
     evening: 'في المساء',
-    night: 'في الليل'
-  }
+    night: 'في الليل',
+  },
 }
 
-function ordinalNumber(dirtyNumber) {
+const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
   return String(dirtyNumber)
 }
 
-var localize = {
+const localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: (quarter: number) => quarter - 1,
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
