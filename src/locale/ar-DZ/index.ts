@@ -3,6 +3,7 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
+import type { Locale } from '../types'
 
 /**
  * @type {Locale}
@@ -13,7 +14,7 @@ import match from './_lib/match/index'
  * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
  * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
  */
-var locale = {
+const locale: Locale = {
   code: 'ar-DZ',
   formatDistance: formatDistance,
   formatLong: formatLong,
