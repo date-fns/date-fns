@@ -6,6 +6,7 @@ import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions } from '../types';
 
 const MINUTES_IN_DAY = 1440
 const MINUTES_IN_ALMOST_TWO_DAYS = 2520
@@ -121,16 +122,10 @@ const MINUTES_IN_TWO_MONTHS = 86400
  * //=> 'pli ol 1 jaro'
  */
 
-export interface Options {
-  includeSeconds?: boolean
-  addSuffix?: boolean
-  locale?: Locale
-}
 
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions?: Options) {
+export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}) {
   requiredArgs(2, arguments)
 
-  const options = dirtyOptions || {}
   const locale = options.locale || defaultLocale
 
   if (!locale.formatDistance) {
