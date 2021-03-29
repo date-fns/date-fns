@@ -50,6 +50,21 @@ describe('intervalToDuration', function () {
     })
   })
 
+  it('returns rounded seconds', function () {
+    const start = new Date(1929, 0, 15, 12, 0, 0)
+    const end = new Date(1968, 3, 4, 19, 5, 0, 750)
+    const result = intervalToDuration({ start, end })
+
+    assert.deepEqual(result, {
+      years: 39,
+      months: 2,
+      days: 20,
+      hours: 7,
+      minutes: 5,
+      seconds: 1,
+    })
+  })
+
   describe('edge cases', function () {
     it('returns correct duration for dates in the end of Feb - issue 2255', function () {
       assert.deepEqual(
