@@ -60,10 +60,6 @@ export default function getWeekYear(
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
 
-  const options = <LocaleOptions & WeekStartOptions & FirstWeekContainsDate>(
-    (dirtyOptions || {})
-  )
-
   const locale = options.locale
   const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
