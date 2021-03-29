@@ -27,8 +27,8 @@ export interface LocaleOptions {
   locale?: Locale
 }
 
-export interface FirstWeekContainsDate {
-  firstWeekContainsDate?: FirstWeekContainsDay
+export interface FirstWeekContainsDateOptions {
+  firstWeekContainsDate?: FirstWeekContainsDate
 }
 
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
