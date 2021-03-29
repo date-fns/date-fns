@@ -6,7 +6,7 @@ import sinon from 'sinon'
 import isThisQuarter from '.'
 
 describe('isThisQuarter', function() {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(function() {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime())
   })
@@ -31,6 +31,7 @@ describe('isThisQuarter', function() {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {
+    // @ts-expect-error
     assert.throws(isThisQuarter.bind(null), TypeError)
   })
 })
