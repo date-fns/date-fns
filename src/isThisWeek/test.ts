@@ -6,7 +6,7 @@ import sinon from 'sinon'
 import isThisWeek from '.'
 
 describe('isThisWeek', () => {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Sep */, 25).getTime())
   })
@@ -36,6 +36,7 @@ describe('isThisWeek', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function() {
+    // @ts-expect-error
     assert.throws(isThisWeek.bind(null), TypeError)
   })
 })
