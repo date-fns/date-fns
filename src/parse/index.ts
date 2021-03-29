@@ -7,12 +7,83 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError
+  throwProtectedError,
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
-import parsers from './_lib/parsers/index'
+import {
+  EraParser,
+  YearParser,
+  WeekNumberYearParser,
+  ISOWeekNumberYearParser,
+  ExtendedYearParser,
+  QuarterParser,
+  StandAloneQuarterParser,
+  MonthParser,
+  StandAloneMonthParser,
+  LocalWeekYearParser,
+  ISOWeekYearParser,
+  DayOfMonthParser,
+  DayOfYearParser,
+  DayOfWeekParser,
+  LocalDayOfWeekParser,
+  StandAloneLocalDayOfWeekParser,
+  ISODayOfWeekParser,
+  AMOrPMParser,
+  AMPMMidnightParser,
+  FlexibleDayPeriodParser,
+  HourFormatFrom1to12Parser,
+  HourFormatFrom0to23Parser,
+  HourFormatFrom0to11Parser,
+  HourFormatFrom1to24Parser,
+  MinuteParser,
+  SecondParser,
+  FractionOfSecondParser,
+  TimezoneWithZParser,
+  TimezoneWithoutZParser,
+  SecondsTimestampParser,
+  MillisecondsTimestampParser,
+} from './_lib/parsers'
 import requiredArgs from '../_lib/requiredArgs/index'
 
+const PARSERS = {
+  G: new EraParser(140),
+  y: new YearParser(130),
+  Y: new WeekNumberYearParser(130),
+  R: new ISOWeekNumberYearParser(130),
+  u: new ExtendedYearParser(130),
+  Q: new QuarterParser(120),
+  q: new StandAloneQuarterParser(120),
+  M: new MonthParser(110),
+  L: new StandAloneMonthParser(110),
+  w: new LocalWeekYearParser(100),
+  I: new ISOWeekYearParser(100),
+  d: new DayOfMonthParser(90),
+  D: new DayOfYearParser(90),
+  E: new DayOfWeekParser(90),
+  e: new LocalDayOfWeekParser(90),
+  c: new StandAloneLocalDayOfWeekParser(90),
+  i: new ISODayOfWeekParser(90),
+  a: new AMOrPMParser(80),
+  b: new AMPMMidnightParser(80),
+  B: new FlexibleDayPeriodParser(80),
+  h: new HourFormatFrom1to12Parser(70),
+  H: new HourFormatFrom0to23Parser(70),
+  K: new HourFormatFrom0to11Parser(70),
+  k: new HourFormatFrom1to24Parser(70),
+  m: new MinuteParser(60),
+  s: new SecondParser(50),
+  S: new FractionOfSecondParser(30),
+  X: new TimezoneWithZParser(10),
+  x: new TimezoneWithoutZParser(10),
+  t: new SecondsTimestampParser(40),
+  T: new MillisecondsTimestampParser(20),
+} as const
+
+type Parsers = typeof PARSERS
+
+function getParserBy<K extends keyof Parsers>(key: K): Parsers[K] {
+  return PARSERS[key]
+}
 var TIMEZONE_UNIT_PRIORITY = 10
 
 // This RegExp consists of three parts separated by `|`:
@@ -369,7 +440,6 @@ export default function parse(
   var options = dirtyOptions || {}
 
   var locale = options.locale || defaultLocale
-
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
@@ -416,7 +486,7 @@ export default function parse(
   var subFnOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
-    locale: locale
+    locale: locale,
   }
 
   // If timezone isn't specified, it will be set to the system timezone
@@ -425,15 +495,15 @@ export default function parse(
       priority: TIMEZONE_UNIT_PRIORITY,
       subPriority: -1,
       set: dateToSystemTimezone,
-      index: 0
-    }
+      index: 0,
+    },
   ]
 
   var i
 
   var tokens = formatString
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -463,9 +533,11 @@ export default function parse(
     }
 
     var firstCharacter = token[0]
-    var parser = parsers[firstCharacter]
+    var parser = getParserBy(firstCharacter)
+
     if (parser) {
       const { incompatibleTokens } = parser
+
       if (Array.isArray(incompatibleTokens)) {
         let incompatibleToken
         for (let i = 0; i < usedTokens.length; i++) {
@@ -490,7 +562,6 @@ export default function parse(
       }
 
       usedTokens.push({ token: firstCharacter, fullToken: token })
-
       var parseResult = parser.parse(
         dateString,
         token,
@@ -508,7 +579,7 @@ export default function parse(
         set: parser.set,
         validate: parser.validate,
         value: parseResult.value,
-        index: setters.length
+        index: setters.length,
       })
 
       dateString = parseResult.rest
@@ -543,25 +614,25 @@ export default function parse(
   }
 
   var uniquePrioritySetters = setters
-    .map(function(setter) {
+    .map(function (setter) {
       return setter.priority
     })
-    .sort(function(a, b) {
+    .sort(function (a, b) {
       return b - a
     })
-    .filter(function(priority, index, array) {
+    .filter(function (priority, index, array) {
       return array.indexOf(priority) === index
     })
-    .map(function(priority) {
+    .map(function (priority) {
       return setters
-        .filter(function(setter) {
+        .filter(function (setter) {
           return setter.priority === priority
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return b.subPriority - a.subPriority
         })
     })
-    .map(function(setterArray) {
+    .map(function (setterArray) {
       return setterArray[0]
     })
 
@@ -579,7 +650,6 @@ export default function parse(
   var flags = {}
   for (i = 0; i < uniquePrioritySetters.length; i++) {
     var setter = uniquePrioritySetters[i]
-
     if (
       setter.validate &&
       !setter.validate(utcDate, setter.value, subFnOptions)
