@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
-import { parseNumericPattern, parseNDigits, numericPatterns } from '../utils'
+import { parseNumericPattern, parseNDigits } from '../utils'
+import { numericPatterns } from '../utils/constants'
 
 // Second
 export class SecondParser extends AbstractParser {

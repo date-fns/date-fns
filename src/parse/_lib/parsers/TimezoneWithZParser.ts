@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
-import { timezonePatterns, parseTimezonePattern } from '../utils'
+import { parseTimezonePattern } from '../utils'
+import { timezonePatterns } from '../utils/constants'
 
 export class TimezoneWithZParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['t', 'T', 'x']

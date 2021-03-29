@@ -1,7 +1,8 @@
 import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index'
 import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index'
 import { AbstractParser } from './AbstractParser'
-import { parseNumericPattern, parseNDigits, numericPatterns } from '../utils'
+import { parseNumericPattern, parseNDigits } from '../utils'
+import { numericPatterns } from '../utils/constants'
 
 // ISO week of year
 export class ISOWeekYearParser extends AbstractParser {

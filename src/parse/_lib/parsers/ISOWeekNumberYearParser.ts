@@ -31,7 +31,7 @@ export class ISOWeekNumberYearParser extends AbstractParser {
   }
 
   set(date: any, flags: any, value: any, _options: any) {
-    var firstWeekOfYear = new Date(0)
+    const firstWeekOfYear = new Date(0)
     firstWeekOfYear.setUTCFullYear(value, 0, 4)
     firstWeekOfYear.setUTCHours(0, 0, 0, 0)
     return startOfUTCISOWeek(firstWeekOfYear)

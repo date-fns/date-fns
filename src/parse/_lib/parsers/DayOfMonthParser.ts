@@ -1,12 +1,10 @@
 import { AbstractParser } from './AbstractParser'
+import { parseNumericPattern, parseNDigits, isLeapYearIndex } from '../utils'
 import {
-  parseNumericPattern,
-  parseNDigits,
-  isLeapYearIndex,
   DAYS_IN_MONTH_LEAP_YEAR,
   DAYS_IN_MONTH,
   numericPatterns,
-} from '../utils'
+} from '../utils/constants'
 
 // Day of the month
 export class DayOfMonthParser extends AbstractParser {
@@ -38,9 +36,9 @@ export class DayOfMonthParser extends AbstractParser {
   }
 
   validate(_date, value, _options) {
-    var year = _date.getUTCFullYear()
-    var isLeapYear = isLeapYearIndex(year)
-    var month = _date.getUTCMonth()
+    const year = _date.getUTCFullYear()
+    const isLeapYear = isLeapYearIndex(year)
+    const month = _date.getUTCMonth()
     if (isLeapYear) {
       return value >= 1 && value <= DAYS_IN_MONTH_LEAP_YEAR[month]
     } else {

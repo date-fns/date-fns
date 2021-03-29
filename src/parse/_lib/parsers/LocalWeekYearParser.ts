@@ -1,7 +1,8 @@
 import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
 import setUTCWeek from '../../../_lib/setUTCWeek/index'
 import { AbstractParser } from './AbstractParser'
-import { parseNumericPattern, parseNDigits, numericPatterns } from '../utils'
+import { parseNumericPattern, parseNDigits } from '../utils'
+import { numericPatterns } from '../utils/constants'
 
 // Local week of year
 export class LocalWeekYearParser extends AbstractParser {

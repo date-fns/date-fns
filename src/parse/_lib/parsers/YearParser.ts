@@ -24,7 +24,7 @@ export class YearParser extends AbstractParser {
   ]
 
   parse(string: any, token: any, match: any, _options: any) {
-    var valueCallback = function (year) {
+    const valueCallback = function (year) {
       return {
         year: year,
         isTwoDigitYear: token === 'yy',
@@ -49,10 +49,10 @@ export class YearParser extends AbstractParser {
   }
 
   set(date: any, flags: any, value: any, _options: any) {
-    var currentYear = date.getUTCFullYear()
+    const currentYear = date.getUTCFullYear()
 
     if (value.isTwoDigitYear) {
-      var normalizedTwoDigitYear = normalizeTwoDigitYear(
+      const normalizedTwoDigitYear = normalizeTwoDigitYear(
         value.year,
         currentYear
       )
@@ -61,7 +61,7 @@ export class YearParser extends AbstractParser {
       return date
     }
 
-    var year =
+    const year =
       !('era' in flags) || flags.era === 1 ? value.year : 1 - value.year
     date.setUTCFullYear(year, 0, 1)
     date.setUTCHours(0, 0, 0, 0)

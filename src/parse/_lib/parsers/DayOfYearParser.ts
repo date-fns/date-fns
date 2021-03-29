@@ -1,10 +1,6 @@
 import { AbstractParser } from './AbstractParser'
-import {
-  numericPatterns,
-  parseNumericPattern,
-  parseNDigits,
-  isLeapYearIndex,
-} from '../utils'
+import { parseNumericPattern, parseNDigits, isLeapYearIndex } from '../utils'
+import { numericPatterns } from '../utils/constants'
 
 // Day of year
 export class DayOfYearParser extends AbstractParser {
@@ -40,8 +36,8 @@ export class DayOfYearParser extends AbstractParser {
   }
 
   validate(_date, value, _options) {
-    var year = _date.getUTCFullYear()
-    var isLeapYear = isLeapYearIndex(year)
+    const year = _date.getUTCFullYear()
+    const isLeapYear = isLeapYearIndex(year)
     if (isLeapYear) {
       return value >= 1 && value <= 366
     } else {

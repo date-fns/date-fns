@@ -6,7 +6,7 @@ export class FractionOfSecondParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['t', 'T']
 
   parse(string: any, token: any, match: any, _options: any) {
-    var valueCallback = function (value) {
+    const valueCallback = function (value) {
       return Math.floor(value * Math.pow(10, -token.length + 3))
     }
     return parseNDigits(token.length, string, valueCallback)

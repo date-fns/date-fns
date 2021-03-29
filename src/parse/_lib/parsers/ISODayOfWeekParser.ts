@@ -23,7 +23,7 @@ export class ISODayOfWeekParser extends AbstractParser {
   ]
 
   parse(string: any, token: any, match: any, _options: any) {
-    var valueCallback = function (value) {
+    const valueCallback = function (value) {
       if (value === 0) {
         return 7
       }

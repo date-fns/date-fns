@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
-import { numericPatterns, parseNumericPattern, parseNDigits } from '../utils'
+import { parseNumericPattern, parseNDigits } from '../utils'
+import { numericPatterns } from '../utils/constants'
 
 // Hour [1-12]
 export class HourFormatFrom1to12Parser extends AbstractParser {
@@ -21,7 +22,7 @@ export class HourFormatFrom1to12Parser extends AbstractParser {
   }
 
   set(date: any, flags: any, value: any, _options: any) {
-    var isPM = date.getUTCHours() >= 12
+    const isPM = date.getUTCHours() >= 12
     if (isPM && value < 12) {
       date.setUTCHours(value + 12, 0, 0, 0)
     } else if (!isPM && value === 12) {
