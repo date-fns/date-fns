@@ -5,8 +5,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import {
   WeekStartOptions,
   LocaleOptions,
-  FirstWeekContainsDate,
-} from 'src/types'
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 /**
  * @name getWeekYear
