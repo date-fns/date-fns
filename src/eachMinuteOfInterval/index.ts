@@ -11,9 +11,9 @@ import { Interval, StepOptions } from '../types'
  * @summary Return the array of minutes within the specified time interval.
  *
  * @description
- * Return the array of minutes within the specified time interval.
+ * Returns the array of minutes within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The starts of minutes from the hour of the interval start to the hour of the interval end
  * @throws {TypeError} 1 argument requie value should be more than 1.
