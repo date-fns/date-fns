@@ -53,7 +53,7 @@ import {
  */
 export default function getWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions & FirstWeekContainsDate
+  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
 ): number {
   requiredArgs(1, arguments)
 
