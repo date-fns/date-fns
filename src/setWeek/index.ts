@@ -2,7 +2,11 @@ import getWeek from '../getWeek/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
+import {
+  LocaleOptions,
+  WeekStartOptions,
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 /**
  * @name setWeek
@@ -51,13 +55,13 @@ import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
 export default function setWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
 ): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
   const week = toInteger(dirtyWeek)
-  const diff = getWeek(date, dirtyOptions) - week
+  const diff = getWeek(date, options) - week
   date.setDate(date.getDate() - diff * 7)
   return date
 }

@@ -3,7 +3,11 @@ import startOfWeekYear from '../startOfWeekYear/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
+import {
+  LocaleOptions,
+  WeekStartOptions,
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 /**
  * @name setWeekYear
@@ -53,11 +57,10 @@ import { LocaleOptions, WeekStartOptions, WeekYearStartOptions } from '../types'
 export default function setWeekYear(
   dirtyDate: Date | number,
   dirtyWeekYear: number,
-  dirtyOptions?: LocaleOptions & WeekStartOptions & WeekYearStartOptions
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
 ): Date {
   requiredArgs(2, arguments)
 
-  const options = dirtyOptions || {}
   const locale = options.locale
   const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
@@ -72,14 +75,11 @@ export default function setWeekYear(
 
   let date = toDate(dirtyDate)
   const weekYear = toInteger(dirtyWeekYear)
-  const diff = differenceInCalendarDays(
-    date,
-    startOfWeekYear(date, dirtyOptions)
-  )
+  const diff = differenceInCalendarDays(date, startOfWeekYear(date, options))
   const firstWeek = new Date(0)
   firstWeek.setFullYear(weekYear, 0, firstWeekContainsDate)
   firstWeek.setHours(0, 0, 0, 0)
-  date = startOfWeekYear(firstWeek, dirtyOptions)
+  date = startOfWeekYear(firstWeek, options)
   date.setDate(date.getDate() + diff)
   return date
 }
