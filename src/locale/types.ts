@@ -61,7 +61,17 @@ export type LocalizeFn<TValue> = (
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
     context?: 'formatting' | 'standalone'
-    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
+    unit?:
+      | 'year'
+      | 'quarter'
+      | 'month'
+      | 'week'
+      | 'date'
+      | 'dayOfYear'
+      | 'day'
+      | 'hour'
+      | 'minute'
+      | 'second'
   }
 ) => string
 
