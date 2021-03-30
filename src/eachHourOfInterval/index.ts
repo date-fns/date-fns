@@ -11,7 +11,7 @@ import { Interval, StepOptions } from '../types'
  * @description
  * Return the array of hours within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of hours from the hour of the interval start to the hour of the interval end
