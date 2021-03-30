@@ -53,7 +53,7 @@ import {
  */
 export default function getWeekYear(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
 ): number {
   requiredArgs(1, arguments)
 
@@ -82,12 +82,12 @@ export default function getWeekYear(
   const firstWeekOfNextYear = new Date(0)
   firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setHours(0, 0, 0, 0)
-  const startOfNextYear = startOfWeek(firstWeekOfNextYear, dirtyOptions)
+  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
 
   const firstWeekOfThisYear = new Date(0)
   firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setHours(0, 0, 0, 0)
-  const startOfThisYear = startOfWeek(firstWeekOfThisYear, dirtyOptions)
+  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
