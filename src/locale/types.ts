@@ -36,6 +36,12 @@ export type FormatDistanceFn = (
   }
 ) => string
 
+export type FormatRelativeTokenFn = (
+  date: Date | number,
+  baseDate: Date | number,
+  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
+) => string
+
 export type FormatRelativeFn = (
   token: 'lastWeek' | 'yesterday' | 'today' | 'tomorrow' | 'nextWeek' | 'other',
   date: Date | number,
@@ -43,11 +49,24 @@ export type FormatRelativeFn = (
   options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
+export type TimeUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'date'
+  | 'dayOfYear'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
+
 export type LocalizeFn<TValue> = (
   value: TValue,
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
     context?: 'formatting' | 'standalone'
+    unit?: TimeUnit
   }
 ) => string
 
@@ -80,10 +99,10 @@ export interface FormatLong {
 }
 
 export type MatchFn<TResult> = (
-    str: string,
-    options?: {
-      width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
-    }
+  str: string,
+  options?: {
+    width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
+  }
 ) => {
   value: TResult
   rest: string

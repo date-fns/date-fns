@@ -13,7 +13,7 @@ import match from './_lib/match/index'
  * @author Nikolay Stoynov [@arvigeus]{@link https://github.com/arvigeus}
  * @author Tsvetan Ovedenski [@fintara]{@link https://github.com/fintara}
  */
-var locale = {
+const locale: Locale = {
   code: 'bg',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -22,8 +22,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
