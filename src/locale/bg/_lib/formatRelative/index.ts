@@ -1,4 +1,4 @@
-import toDate from 'date-fns/toDate'
+import toDate from '../../../../toDate/index'
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index'
 import type { FormatRelativeFn, FormatRelativeTokenFn } from '../../../types'
 
