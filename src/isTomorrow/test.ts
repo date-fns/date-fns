@@ -6,7 +6,7 @@ import sinon from 'sinon'
 import isTomorrow from '.'
 
 describe('isTomorrow', () => {
-  let clock
+  let clock: sinon.SinonFakeTimers
   beforeEach(() => {
     clock = sinon.useFakeTimers(new Date(2014, 8 /* Aug */, 25).getTime())
   })
@@ -31,6 +31,7 @@ describe('isTomorrow', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(isTomorrow.bind(null), TypeError)
   })
 })
