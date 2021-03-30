@@ -1,6 +1,7 @@
 import { fromEntries, last, sample, uniq } from 'js-fns'
 import sg from 'simple-git'
 import { Octokit } from '@octokit/core'
+import format from '../../src/format'
 
 const git = sg()
 const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
@@ -19,9 +20,12 @@ function renderChangelog(changelog: ChangelogVersion) {
     (author) => author.login
   )
 
-  let markdown = `## ${renderVersion(changelog.version)}
+  let markdown = `## ${renderVersion(changelog.version)} - ${format(
+    Date.now(),
+    'yyyy-MM-dd'
+  )}
 
-${sample(thanksOptions)} ${renderAuthors(authors)}.`
+${sample(thanksOptions)!(renderAuthors(authors))}`
 
   if (changelog.fixed.length)
     markdown += `
@@ -165,14 +169,35 @@ function extractItems(
   }
 
   switch (true) {
-    case /^(breaking:\s?)?fixed /i.test(message):
-      return [item({ type: 'fixed', message })]
+    // Fixed
+    case fixedSentenceRegExp.test(message): {
+      const captures = message.match(fixedSentenceRegExp)!
+      return [item({ type: 'fixed', message: captures[2] })]
+    }
+    case fixedOneLinerRegExp.test(message): {
+      const captures = message.match(fixedOneLinerRegExp)!
+      return [item({ type: 'fixed', message: captures[1] })]
+    }
 
-    case /^(breaking:\s?)?changed /i.test(message):
-      return [item({ type: 'changed', message })]
+    // Changed
+    case changedSentenceRegExp.test(message): {
+      const captures = message.match(changedSentenceRegExp)!
+      return [item({ type: 'changed', message: captures[2] })]
+    }
+    case changedOneLinerRegExp.test(message): {
+      const captures = message.match(changedOneLinerRegExp)!
+      return [item({ type: 'changed', message: captures[1] })]
+    }
 
-    case /^(breaking:\s?)?added /i.test(message):
-      return [item({ type: 'added', message })]
+    // Added
+    case addedSentenceRegExp.test(message): {
+      const captures = message.match(addedSentenceRegExp)!
+      return [item({ type: 'added', message: captures[2] })]
+    }
+    case addedOneLinerRegExp.test(message): {
+      const captures = message.match(addedOneLinerRegExp)!
+      return [item({ type: 'added', message: captures[1] })]
+    }
 
     default:
       return []
@@ -245,13 +270,22 @@ interface Author {
   email: string
 }
 
-var closesRegExp = /closes #(\d+)/
+var closesRegExp = /(?:closes|fixes) #(\d+)/
 
 var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
 var thanksOptions = [
-  'Kudos to ',
-  'Thanks to ',
-  'This release is brought to you by ',
-  'On this release worked ',
+  (authors: string) => `Kudos to ${authors} for working on the release.`,
+  (authors: string) => `Thanks to ${authors} for working on the release.`,
+  (authors: string) => `This release is brought to you by ${authors}.`,
+  (authors: string) => `On this release worked ${authors}.`,
 ]
+
+var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
+var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+
+var changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
+var changedOneLinerRegExp = /^changed:\s(.+)/i
+
+var addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
+var addedOneLinerRegExp = /^added:\s(.+)/i

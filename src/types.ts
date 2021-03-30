@@ -20,10 +20,10 @@ export interface StepOptions {
 }
 
 export interface WeekStartOptions {
-  weekStartsOn?: number
+  weekStartsOn?: Day
 }
 
-export interface LocalOptions {
+export interface LocaleOptions {
   locale?: Locale
 }
 

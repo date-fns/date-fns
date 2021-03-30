@@ -8,6 +8,22 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.19.0 - 2021-03-05
+
+On this release worked [Tan75](http://github.com/tan75).
+
+### Fixed
+
+- [Assigned the correct `firstWeekContainsDate` value (`4`) for the French locale.](https://github.com/date-fns/date-fns/pull/2273) ([#2148](https://github.com/date-fns/date-fns/issues/2148))
+
+- [Fixed torsdag abbreviation in the Swedish locale.](https://github.com/date-fns/date-fns/pull/2220)
+
+- [Fixed a bug in `differenceInMonths` and `intervalToDuration` that occurs when dealing with the 28th of February.](https://github.com/date-fns/date-fns/pull/2256) ([#2255](https://github.com/date-fns/date-fns/issues/2255))
+
+### Added
+
+- [Added new functions: `nextDay`, `nextMonday` and `nextTuesday` that allows getting the next day of the week, Monday or Tuesday respectively.](https://github.com/date-fns/date-fns/pull/2214)
+
 ## v2.18.0 - 2021-03-01
 
 Thanks to [Tan75](http://github.com/tan75) and [Lesha Koss](http://github.com/leshakoss).
