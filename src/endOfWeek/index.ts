@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocalOptions, WeekStartOptions } from '../types'
+import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name endOfWeek
@@ -36,7 +36,7 @@ import { LocalOptions, WeekStartOptions } from '../types'
  */
 export default function endOfWeek(
   dirtyDate: Date | number,
-  dirtyOptions?: LocalOptions & WeekStartOptions
+  dirtyOptions?: LocaleOptions & WeekStartOptions
 ): Date {
   requiredArgs(1, arguments)
 

@@ -29,18 +29,20 @@ generateDocsFromSource()
  */
 async function generateDocsFromSource() {
   const fns = await listFns()
-  const docs = fns
-    .map(
-      fn =>
-        jsDocParser.getTemplateDataSync({
-          files: fn.fullPath,
-          'no-cache': true,
-          configure: path.resolve(process.cwd(), 'jsdoc2md.json')
-        })[0]
-    )
-    .map(doc => {
+  const docsResult = await asyncMap(fns, (fn) =>
+    jsDocParser
+      .getTemplateData({
+        files: fn.fullPath,
+        'no-cache': true,
+        configure: path.resolve(process.cwd(), 'jsdoc2md.json'),
+      })
+      .then((result) => result[0])
+  )
+
+  return docsResult
+    .map((doc) => {
       const pureTag =
-        doc.customTags && doc.customTags.find(t => t.tag === 'pure')
+        doc.customTags && doc.customTags.find((t) => t.tag === 'pure')
       const pure = (pureTag && pureTag.value) !== 'false'
       return {
         type: 'jsdoc',
@@ -50,7 +52,7 @@ async function generateDocsFromSource() {
         title: doc.name,
         description: doc.summary,
         content: doc,
-        pure
+        pure,
       }
     })
     .reduce(
@@ -66,8 +68,6 @@ async function generateDocsFromSource() {
           ),
       []
     )
-
-  return Promise.resolve(docs)
 }
 
 /**
@@ -83,8 +83,8 @@ function generatedDocsObj(docs) {
  */
 function injectStaticDocsToDocsObj(docsFileObj) {
   return getListOfStaticDocs()
-    .then(staticDocs => {
-      staticDocs.forEach(staticDoc => {
+    .then((staticDocs) => {
+      staticDocs.forEach((staticDoc) => {
         docsFileObj[staticDoc.category].push(staticDoc)
       })
       return docsFileObj
@@ -97,8 +97,8 @@ function injectStaticDocsToDocsObj(docsFileObj) {
  */
 function injectSharedDocsToDocsObj(docsFileObj) {
   return generateSharedDocs()
-    .then(sharedDocs => {
-      sharedDocs.forEach(sharedDoc => {
+    .then((sharedDocs) => {
+      sharedDocs.forEach((sharedDoc) => {
         docsFileObj[sharedDoc.category].push(sharedDoc)
       })
       return docsFileObj
@@ -148,11 +148,11 @@ function buildGroupsTemplate(groups) {
  */
 function getListOfStaticDocs() {
   return Promise.all(
-    docsConfig.staticDocs.map(staticDoc => {
+    docsConfig.staticDocs.map((staticDoc) => {
       return fsp
         .readFile(staticDoc.path)
-        .then(docContent => docContent.toString())
-        .then(content => Object.assign({ content }, staticDoc))
+        .then((docContent) => docContent.toString())
+        .then((content) => Object.assign({ content }, staticDoc))
         .catch(reportErrors)
     })
   )
@@ -164,13 +164,13 @@ function getListOfStaticDocs() {
 function generateSharedDocs() {
   const docs = docsConfig.sharedDocs
     .map(
-      fn =>
+      (fn) =>
         jsDocParser.getTemplateDataSync({
           files: fn.fullPath,
-          'no-cache': true
+          'no-cache': true,
         })[0]
     )
-    .map(doc => ({
+    .map((doc) => ({
       type: 'jsdoc',
       kind: 'typedef',
       urlId: doc.name,
@@ -178,7 +178,7 @@ function generateSharedDocs() {
       title: doc.name,
       description: doc.summary,
       content: doc,
-      properties: paramsToTree(doc.properties)
+      properties: paramsToTree(doc.properties),
     }))
 
   return Promise.resolve(docs)
@@ -200,7 +200,7 @@ function generateFnDoc(dirtyDoc) {
     ),
     usage: generateUsage(title, isFPFn),
     usageTabs: generateUsageTabs(isFPFn),
-    syntax: generateSyntaxString(title, args, isFPFn)
+    syntax: generateSyntaxString(title, args, isFPFn),
   })
 }
 
@@ -210,10 +210,10 @@ function generateFPFnDoc(dirtyDoc) {
   const isFPFn = true
   const { urlId, title } = doc
   const exceptions = doc.content.exceptions.filter(
-    exception => !exception.description.includes('options.')
+    (exception) => !exception.description.includes('options.')
   )
   const params = doc.content.params
-    .filter(param => !param.name.startsWith('options'))
+    .filter((param) => !param.name.startsWith('options'))
     .reverse()
   const args = paramsToTree(params)
 
@@ -234,8 +234,8 @@ function generateFPFnDoc(dirtyDoc) {
       exceptions,
       params,
       examples:
-        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information'
-    })
+        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information',
+    }),
   })
 }
 
@@ -245,7 +245,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
   const isFPFn = true
   const { urlId, title } = doc
   const params = doc.content.params
-    .map(param => {
+    .map((param) => {
       if (!param.name.includes('.')) {
         param.optional = false
       }
@@ -265,7 +265,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
     relatedDocs: {
       default: urlId,
       fp: `fp/${urlId}`,
-      fpWithOptions: `fp/${urlId}WithOptions`
+      fpWithOptions: `fp/${urlId}WithOptions`,
     },
     usage: generateUsage(title, isFPFn),
     usageTabs: generateUsageTabs(isFPFn),
@@ -277,8 +277,8 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
       longname: `${doc.content.longname}WithOptions`,
       name: `${doc.content.name}WithOptions`,
       examples:
-        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information'
-    })
+        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information',
+    }),
   })
 }
 
@@ -298,21 +298,22 @@ function generateUsage(name, isFPFn) {
   let usage = {
     commonjs: {
       title: 'CommonJS',
-      code: `var ${name} = require('date-fns${submodule}/${name}')`
+      code: `var ${name} = require('date-fns${submodule}/${name}')`,
     },
 
     es2015: {
       title: 'ES 2015',
-      code: `import ${name} from 'date-fns${submodule}/${name}'`
+      code: `import ${name} from 'date-fns${submodule}/${name}'`,
     },
 
     esm: {
       title: 'ESM',
-      code: `import { ${name} } from 'date-fns${submodule &&
-        `/esm/${submodule}`}'`,
+      code: `import { ${name} } from 'date-fns${
+        submodule && `/esm/${submodule}`
+      }'`,
       text:
-        'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information'
-    }
+        'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information',
+    },
   }
 
   return usage
@@ -331,7 +332,7 @@ function paramsToTree(dirtyParams) {
   }, {})
 
   return params
-    .map(param => {
+    .map((param) => {
       const { name, isProperty } = param
 
       const indexOfDot = name.indexOf('.')
@@ -351,7 +352,7 @@ function paramsToTree(dirtyParams) {
 
       return param
     })
-    .filter(param => !param.isProperty)
+    .filter((param) => !param.isProperty)
 }
 
 function generateSyntaxString(name, args, isFPFn) {
@@ -361,8 +362,12 @@ function generateSyntaxString(name, args, isFPFn) {
     return args.reduce((acc, arg) => acc.concat(`(${arg.name})`), name)
   } else {
     const argsString = args
-      .map(arg => (arg.optional ? `[${arg.name}]` : arg.name))
+      .map((arg) => (arg.optional ? `[${arg.name}]` : arg.name))
       .join(', ')
     return `${name}(${argsString})`
   }
+}
+
+function asyncMap(array, fn) {
+  return Promise.all(array.map((item) => fn(item)))
 }

@@ -65,7 +65,7 @@ const defaultFormat = [
  * // Customize the zeros presence
  * formatDuration({ years: 0, months: 9 })
  * //=> '9 months'
- * formatDuration({ years: 0, months: 9 }, null, { zero: true })
+ * formatDuration({ years: 0, months: 9 }, { zero: true })
  * //=> '0 years 9 months'
  *
  * @example

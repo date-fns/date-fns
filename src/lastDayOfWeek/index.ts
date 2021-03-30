@@ -1,7 +1,7 @@
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocalOptions, WeekStartOptions } from '../types';
+import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name lastDayOfWeek
@@ -35,8 +35,9 @@ import { LocalOptions, WeekStartOptions } from '../types';
  * //=> Sun Sep 07 2014 00:00:00
  */
 export default function lastDayOfWeek(
-    dirtyDate: Date | number,
-    dirtyOptions?: LocalOptions & WeekStartOptions): Date {
+  dirtyDate: Date | number,
+  dirtyOptions?: LocaleOptions & WeekStartOptions
+): Date {
   requiredArgs(1, arguments)
 
   const options = dirtyOptions || {}

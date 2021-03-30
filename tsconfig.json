@@ -14,7 +14,8 @@
     "importHelpers": true,
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowJs": true
   },
   "exclude": ["node_modules", "dist", "tmp"]
 }
