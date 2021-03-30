@@ -269,45 +269,8 @@ export interface FormatLong {
   dateTime: FormatLongFn
 }
 
-<<<<<<< HEAD
 export interface FormatLongFnOptions {
   width?: FormatLongWidth
 }
 
 export type FormatLongFn = (options: FormatLongFnOptions) => string
-=======
-export type MatchFn<TResult> = (
-  str: string,
-  options?: {
-    width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
-  }
-) => {
-  value: TResult
-  rest: string
-} | null
-
-export interface Match {
-  ordinalNumber: MatchFn<number>
-  era: MatchFn<0 | 1>
-  quarter: MatchFn<1 | 2 | 3 | 4>
-  month: MatchFn<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>
-  day: MatchFn<0 | 1 | 2 | 3 | 4 | 5 | 6>
-  dayPeriod: MatchFn<
-    | 'am'
-    | 'pm'
-    | 'midnight'
-    | 'noon'
-    | 'morning'
-    | 'afternoon'
-    | 'evening'
-    | 'night'
-  >
-}
-
-export interface DeclensionScheme {
-  one?: string
-  singularNominative: string
-  singularGenitive: string
-  pluralGenitive: string
-}
->>>>>>> 41e92148... Migrate be locale

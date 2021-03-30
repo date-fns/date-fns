@@ -1,8 +1,11 @@
-import type {
-  DeclensionScheme,
-  FormatDistanceFn,
-  FormatDistanceTokenFn,
-} from '../../../types'
+import type { FormatDistanceFn, FormatDistanceTokenFn } from '../../../types'
+
+interface DeclensionScheme {
+  one?: string
+  singularNominative: string
+  singularGenitive: string
+  pluralGenitive: string
+}
 
 function declension(scheme: DeclensionScheme, count: number): string {
   // scheme for count=1 exists
