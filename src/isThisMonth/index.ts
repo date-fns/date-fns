@@ -1,15 +1,14 @@
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
+import isSameMonth from '../isSameMonth/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name isTomorrow
- * @category Day Helpers
- * @summary Is the given date tomorrow?
+ * @name isThisMonth
+ * @category Month Helpers
+ * @summary Is the given date in the same month as the current date?
  * @pure false
  *
  * @description
- * Is the given date tomorrow?
+ * Is the given date in the same month as the current date?
  *
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
@@ -19,16 +18,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is tomorrow
+ * @returns {Boolean} the date is in this month
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // If today is 6 October 2014, is 7 October 14:00:00 tomorrow?
- * var result = isTomorrow(new Date(2014, 9, 7, 14, 0))
+ * // If today is 25 September 2014, is 15 September 2014 in this month?
+ * var result = isThisMonth(new Date(2014, 8, 15))
  * //=> true
  */
-export default function isTomorrow(dirtyDate) {
+
+export default function isThisMonth(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+  return isSameMonth(Date.now(), dirtyDate)
 }

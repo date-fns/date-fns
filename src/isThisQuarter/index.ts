@@ -1,14 +1,14 @@
-import isSameMonth from '../isSameMonth/index'
+import isSameQuarter from '../isSameQuarter/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name isThisMonth
- * @category Month Helpers
- * @summary Is the given date in the same month as the current date?
+ * @name isThisQuarter
+ * @category Quarter Helpers
+ * @summary Is the given date in the same quarter as the current date?
  * @pure false
  *
  * @description
- * Is the given date in the same month as the current date?
+ * Is the given date in the same quarter as the current date?
  *
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
@@ -18,17 +18,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this month
+ * @returns {Boolean} the date is in this quarter
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // If today is 25 September 2014, is 15 September 2014 in this month?
- * var result = isThisMonth(new Date(2014, 8, 15))
+ * // If today is 25 September 2014, is 2 July 2014 in this quarter?
+ * var result = isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-
-export default function isThisMonth(dirtyDate) {
+export default function isThisQuarter(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
-  return isSameMonth(Date.now(), dirtyDate)
+  return isSameQuarter(Date.now(), dirtyDate)
 }

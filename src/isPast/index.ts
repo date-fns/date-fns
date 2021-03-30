@@ -1,14 +1,14 @@
-import isSameSecond from '../isSameSecond/index'
+import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
- * @name isThisSecond
- * @category Second Helpers
- * @summary Is the given date in the same second as the current date?
+ * @name isPast
+ * @category Common Helpers
+ * @summary Is the given date in the past?
  * @pure false
  *
  * @description
- * Is the given date in the same second as the current date?
+ * Is the given date in the past?
  *
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
@@ -18,17 +18,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this second
+ * @returns {Boolean} the date is in the past
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // If now is 25 September 2014 18:30:15.500,
- * // is 25 September 2014 18:30:15.000 in this second?
- * var result = isThisSecond(new Date(2014, 8, 25, 18, 30, 15))
+ * // If today is 6 October 2014, is 2 July 2014 in the past?
+ * var result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisSecond(dirtyDate) {
+export default function isPast(dirtyDate: Date | number): boolean {
   requiredArgs(1, arguments)
 
-  return isSameSecond(Date.now(), dirtyDate)
+  return toDate(dirtyDate).getTime() < Date.now()
 }
