@@ -12,38 +12,36 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {any} value - the value to check
+ * @param {*} value - the value to check
  * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 argument required
+ * @throws {TypeError} 1 arguments required
  *
  * @example
  * // For a valid date:
- * const result = isDate(new Date())
+ * var result = isDate(new Date())
  * //=> true
  *
  * @example
  * // For an invalid date:
- * const result = isDate(new Date(NaN))
- * //=> false
+ * var result = isDate(new Date(NaN))
+ * //=> true
  *
  * @example
  * // For some value:
- * const result = isDate('2014-02-31')
+ * var result = isDate('2014-02-31')
  * //=> false
  *
  * @example
  * // For an object:
- * const result = isDate({})
+ * var result = isDate({})
  * //=> false
  */
-export default function isDate(value: any): boolean {
+export default function isDate(value) {
   requiredArgs(1, arguments)
 
   return (
-    // To check if the value is `Invalid Date` - see discussion 2338
-    value != 'Invalid Date' &&
-    (value instanceof Date ||
-      (typeof value === 'object' &&
-        Object.prototype.toString.call(value) === '[object Date]'))
+    value instanceof Date ||
+    (typeof value === 'object' &&
+      Object.prototype.toString.call(value) === '[object Date]')
   )
 }
