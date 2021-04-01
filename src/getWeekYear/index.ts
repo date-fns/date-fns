@@ -2,6 +2,11 @@ import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import {
+  WeekStartOptions,
+  LocaleOptions,
+  FirstWeekContainsDateOptions,
+} from '../types'
 
 /**
  * @name getWeekYear
@@ -33,34 +38,36 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which week numbering year is 26 December 2004 with the default settings?
- * var result = getWeekYear(new Date(2004, 11, 26))
+ * const result = getWeekYear(new Date(2004, 11, 26))
  * //=> 2005
  *
  * @example
  * // Which week numbering year is 26 December 2004 if week starts on Saturday?
- * var result = getWeekYear(new Date(2004, 11, 26), { weekStartsOn: 6 })
+ * const result = getWeekYear(new Date(2004, 11, 26), { weekStartsOn: 6 })
  * //=> 2004
  *
  * @example
  * // Which week numbering year is 26 December 2004 if the first week contains 4 January?
- * var result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
+ * const result = getWeekYear(new Date(2004, 11, 26), { firstWeekContainsDate: 4 })
  * //=> 2004
  */
-export default function getWeekYear(dirtyDate, dirtyOptions) {
+export default function getWeekYear(
+  dirtyDate: Date | number,
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
+): number {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  var year = date.getFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getFullYear()
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
+  const locale = options.locale
+  const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
@@ -72,15 +79,15 @@ export default function getWeekYear(dirtyDate, dirtyOptions) {
     )
   }
 
-  var firstWeekOfNextYear = new Date(0)
+  const firstWeekOfNextYear = new Date(0)
   firstWeekOfNextYear.setFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setHours(0, 0, 0, 0)
-  var startOfNextYear = startOfWeek(firstWeekOfNextYear, dirtyOptions)
+  const startOfNextYear = startOfWeek(firstWeekOfNextYear, options)
 
-  var firstWeekOfThisYear = new Date(0)
+  const firstWeekOfThisYear = new Date(0)
   firstWeekOfThisYear.setFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setHours(0, 0, 0, 0)
-  var startOfThisYear = startOfWeek(firstWeekOfThisYear, dirtyOptions)
+  const startOfThisYear = startOfWeek(firstWeekOfThisYear, options)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
