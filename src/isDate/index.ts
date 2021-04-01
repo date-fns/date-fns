@@ -36,7 +36,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isDate({})
  * //=> false
  */
-export default function isDate(value: any): boolean {
+export default function isDate(value: any): value is Date {
   requiredArgs(1, arguments)
 
   return (

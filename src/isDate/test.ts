@@ -3,6 +3,7 @@
 /* global HTMLIFrameElement */
 
 import assert from 'assert'
+import { assertType } from '../_lib/test'
 import isDate from '.'
 
 describe('isDate', () => {
@@ -12,6 +13,16 @@ describe('isDate', () => {
 
   it('returns true if the given value is an Invalid Date', () => {
     assert(isDate(new Date(NaN)))
+  })
+
+  it('ensures that the passed argument is an instance of Date', () => {
+    const date: unknown = new Date()
+
+    if (isDate(date)) {
+      assertType<Date>(date)
+    } else {
+      assertType<unknown>(date)
+    }
   })
 
   describe('with date passed from another iframe', () => {
