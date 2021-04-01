@@ -12,7 +12,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {any} value - the value to check
+ * @param {unknown} value - the value to check
  * @returns {boolean} true if the given value is a date
  * @throws {TypeError} 1 arguments required
  *
