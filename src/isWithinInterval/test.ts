@@ -68,7 +68,7 @@ describe('isWithinInterval', function() {
       new Date(2014, 9 /* Oct */, 31),
       undefined
     )
-    assert.throws(block, RangeError)
+    assert.throws(block, TypeError)
   })
 
   it('returns false if the given date is `Invalid Date`', function() {
