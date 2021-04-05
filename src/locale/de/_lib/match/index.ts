@@ -1,6 +1,7 @@
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import type { Match } from '../../../types'
+import type { Quarter } from '../../../../types'
 
 const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
 const parseOrdinalNumberPattern = /\d+/i
@@ -11,7 +12,7 @@ const matchEraPatterns = {
   wide: /^(vor Christus|vor unserer Zeitrechnung|nach Christus|unserer Zeitrechnung)/i,
 }
 const parseEraPatterns = {
-  any: [/^v/i, /^n/i],
+  any: [/^v/i, /^n/i] as const,
 }
 
 const matchQuarterPatterns = {
@@ -20,7 +21,7 @@ const matchQuarterPatterns = {
   wide: /^[1234](\.)? Quartal/i,
 }
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i],
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
 
 const matchMonthPatterns = {
@@ -42,7 +43,7 @@ const parseMonthPatterns = {
     /^o/i,
     /^n/i,
     /^d/i,
-  ],
+  ] as const,
   any: [
     /^ja/i,
     /^f/i,
@@ -56,7 +57,7 @@ const parseMonthPatterns = {
     /^o/i,
     /^n/i,
     /^d/i,
-  ],
+  ] as const,
 }
 
 const matchDayPatterns = {
@@ -66,7 +67,7 @@ const matchDayPatterns = {
   wide: /^(sonntag|montag|dienstag|mittwoch|donnerstag|freitag|samstag)/i,
 }
 const parseDayPatterns = {
-  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i],
+  any: [/^so/i, /^mo/i, /^di/i, /^mi/i, /^do/i, /^f/i, /^sa/i] as const,
 }
 
 const matchDayPeriodPatterns = {
@@ -91,7 +92,7 @@ const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: (value: string) => parseInt(value, 10),
+    valueCallback: (value) => parseInt(value),
   }),
 
   era: buildMatchFn({
@@ -106,7 +107,7 @@ const match: Match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: (index: number) => index + 1,
+    valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
@@ -130,5 +131,4 @@ const match: Match = {
     defaultParseWidth: 'any',
   }),
 }
-
 export default match
