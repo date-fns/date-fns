@@ -204,7 +204,7 @@ If now is January 1st, 2000, 00:00.
 | 2000-02-01T00:00:00.000Z | anviwon 1 mwa        | anviwon 1 mwa          | nan anviwon 1 mwa          |
 | 2000-01-15T00:00:00.000Z | 14 jou               | 14 jou                 | nan 14 jou                 |
 | 2000-01-02T00:00:00.000Z | 1 jou                | 1 jou                  | nan 1 jou                  |
-| 2000-01-01T06:00:00.000Z | anviwon 6è           | anviwon 6è             | nan anviwon 6è             |
+| 2000-01-01T06:00:00.000Z | anviwon 6 è          | anviwon 6 è            | nan anviwon 6 è            |
 | 2000-01-01T01:00:00.000Z | anviwon inè          | anviwon inè            | nan anviwon inè            |
 | 2000-01-01T00:45:00.000Z | anviwon inè          | anviwon inè            | nan anviwon inè            |
 | 2000-01-01T00:30:00.000Z | 30 minit             | 30 minit               | nan 30 minit               |
@@ -222,7 +222,7 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:30:00.000Z | 30 minit             | 30 minit               | sa fè 30 minit             |
 | 1999-12-31T23:15:00.000Z | anviwon inè          | anviwon inè            | sa fè anviwon inè          |
 | 1999-12-31T23:00:00.000Z | anviwon inè          | anviwon inè            | sa fè anviwon inè          |
-| 1999-12-31T18:00:00.000Z | anviwon 6è           | anviwon 6è             | sa fè anviwon 6è           |
+| 1999-12-31T18:00:00.000Z | anviwon 6 è          | anviwon 6 è            | sa fè anviwon 6 è          |
 | 1999-12-30T00:00:00.000Z | 2 jou                | 2 jou                  | sa fè 2 jou                |
 | 1999-12-15T00:00:00.000Z | 17 jou               | 17 jou                 | sa fè 17 jou               |
 | 1999-12-01T00:00:00.000Z | anviwon 1 mwa        | anviwon 1 mwa          | sa fè anviwon 1 mwa        |
