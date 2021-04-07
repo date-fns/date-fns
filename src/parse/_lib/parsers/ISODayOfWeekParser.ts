@@ -1,6 +1,7 @@
 import setUTCISODay from '../../../_lib/setUTCISODay/index'
 import { AbstractParser } from './AbstractParser'
 import { parseNDigits } from '../utils'
+import { Match } from 'src/locale/types'
 
 // ISO day of week
 export class ISODayOfWeekParser extends AbstractParser {
@@ -22,7 +23,7 @@ export class ISODayOfWeekParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     const valueCallback = function (value) {
       if (value === 0) {
         return 7

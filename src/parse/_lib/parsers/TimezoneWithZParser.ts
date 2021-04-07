@@ -1,11 +1,12 @@
 import { AbstractParser } from './AbstractParser'
 import { parseTimezonePattern } from '../utils'
 import { timezonePatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 export class TimezoneWithZParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['t', 'T', 'x']
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'X':
         return parseTimezonePattern(

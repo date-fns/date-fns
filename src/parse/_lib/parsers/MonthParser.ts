@@ -1,6 +1,7 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNumericPattern, parseNDigits } from '../utils'
 import { numericPatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // Month
 export class MonthParser extends AbstractParser {
@@ -20,7 +21,7 @@ export class MonthParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     const valueCallback = function (value) {
       return value - 1
     }

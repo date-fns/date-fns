@@ -1,11 +1,12 @@
 import { AbstractParser } from './AbstractParser'
 import setUTCDay from '../../../_lib/setUTCDay/index'
+import { Match } from 'src/locale/types'
 
 // Day of week
 export class DayOfWeekParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['D', 'i', 'e', 'c', 't', 'T']
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       // Tue
       case 'E':

@@ -2,6 +2,7 @@ import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
 import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
 import { AbstractParser } from './AbstractParser'
 import { parseNDigits, normalizeTwoDigitYear } from '../utils'
+import { Match } from 'src/locale/types'
 
 // Local week-numbering year
 export class WeekNumberYearParser extends AbstractParser {
@@ -21,7 +22,7 @@ export class WeekNumberYearParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     const valueCallback = function (year) {
       return {
         year: year,

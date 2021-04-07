@@ -1,6 +1,7 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNumericPattern, parseNDigits } from '../utils'
 import { numericPatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // Hour [0-23]
 export class HourFormatFrom0to23Parser extends AbstractParser {
@@ -14,7 +15,7 @@ export class HourFormatFrom0to23Parser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'H':
         return parseNumericPattern(numericPatterns.hour23h, string)

@@ -3,6 +3,7 @@ import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index'
 import { AbstractParser } from './AbstractParser'
 import { parseNumericPattern, parseNDigits } from '../utils'
 import { numericPatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // ISO week of year
 export class ISOWeekYearParser extends AbstractParser {
@@ -23,7 +24,7 @@ export class ISOWeekYearParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'I':
         return parseNumericPattern(numericPatterns.week, string)

@@ -1,11 +1,12 @@
 import { AbstractParser } from './AbstractParser'
 import { dayPeriodEnumToHours } from '../utils'
+import { Match } from 'src/locale/types'
 
 // in the morning, in the afternoon, in the evening, at night
 export class FlexibleDayPeriodParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['a', 'b', 't', 'T']
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'B':
       case 'BB':

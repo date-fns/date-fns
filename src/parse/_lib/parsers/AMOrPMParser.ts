@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
 import { dayPeriodEnumToHours } from '../utils'
+import { Match } from 'src/locale/types'
 
 // AM or PM
 export class AMOrPMParser extends AbstractParser {
@@ -13,7 +14,7 @@ export class AMOrPMParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'a':
       case 'aa':

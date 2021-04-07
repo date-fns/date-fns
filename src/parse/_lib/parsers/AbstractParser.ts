@@ -1,6 +1,14 @@
 import { LocaleOptions, Locale, Match } from 'src/locale/types'
 
 type ParseOptions = Locale & LocaleOptions
+type ParseOutput =
+  | number
+  | null
+  | string
+  | {
+      value: string
+      rest: unknown
+    }
 
 export abstract class AbstractParser {
   public readonly incompatibleTokens: string | string[] = []
@@ -14,6 +22,6 @@ export abstract class AbstractParser {
     token: string,
     match: Match,
     _options: ParseOptions
-  ): any
+  ): ParseOutput
   abstract set(date: any, flags: any, value: any, _options: ParseOptions): any
 }

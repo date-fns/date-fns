@@ -1,12 +1,13 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNumericPattern, parseNDigits } from '../utils'
 import { numericPatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // Hour [1-12]
 export class HourFormatFrom1to12Parser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['H', 'K', 'k', 't', 'T']
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'h':
         return parseNumericPattern(numericPatterns.hour12h, string)

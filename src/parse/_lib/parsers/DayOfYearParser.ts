@@ -1,6 +1,7 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNumericPattern, parseNDigits, isLeapYearIndex } from '../utils'
 import { numericPatterns } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // Day of year
 export class DayOfYearParser extends AbstractParser {
@@ -23,7 +24,7 @@ export class DayOfYearParser extends AbstractParser {
   ]
   public readonly subPriority: number = 1
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'D':
       case 'DD':

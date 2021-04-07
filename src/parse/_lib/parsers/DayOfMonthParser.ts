@@ -5,6 +5,7 @@ import {
   DAYS_IN_MONTH,
   numericPatterns,
 } from '../utils/constants'
+import { Match } from 'src/locale/types'
 
 // Day of the month
 export class DayOfMonthParser extends AbstractParser {
@@ -24,7 +25,7 @@ export class DayOfMonthParser extends AbstractParser {
   ]
   public readonly subPriority: number = 1
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       case 'd':
         return parseNumericPattern(numericPatterns.date, string)

@@ -1,9 +1,10 @@
 import { AbstractParser } from './AbstractParser'
+import { Match } from 'src/locale/types'
 
 export class EraParser extends AbstractParser {
   public readonly incompatibleTokens: string[] = ['R', 'u', 't', 'T']
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       // AD, BC
       case 'G':

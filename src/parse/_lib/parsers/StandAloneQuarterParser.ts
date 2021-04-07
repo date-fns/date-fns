@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNDigits } from '../utils'
+import { Match } from 'src/locale/types'
 
 // Stand-alone quarter
 export class StandAloneQuarterParser extends AbstractParser {
@@ -20,7 +21,7 @@ export class StandAloneQuarterParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     switch (token) {
       // 1, 2, 3, 4
       case 'q':

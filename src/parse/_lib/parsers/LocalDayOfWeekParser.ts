@@ -1,6 +1,7 @@
 import setUTCDay from '../../../_lib/setUTCDay/index'
 import { AbstractParser } from './AbstractParser'
 import { parseNDigits } from '../utils'
+import { Match } from 'src/locale/types'
 
 // Local day of week
 export class LocalDayOfWeekParser extends AbstractParser {
@@ -22,7 +23,7 @@ export class LocalDayOfWeekParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     const valueCallback = function (value) {
       const wholeWeekDays = Math.floor((value - 1) / 7) * 7
       return ((value + _options.weekStartsOn + 6) % 7) + wholeWeekDays

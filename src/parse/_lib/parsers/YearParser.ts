@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNDigits, normalizeTwoDigitYear } from '../utils'
+import { Match } from 'src/locale/types'
 
 // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
 // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
@@ -23,7 +24,7 @@ export class YearParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     const valueCallback = function (year) {
       return {
         year: year,

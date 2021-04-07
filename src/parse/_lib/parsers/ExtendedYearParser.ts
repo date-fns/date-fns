@@ -1,5 +1,6 @@
 import { AbstractParser } from './AbstractParser'
 import { parseNDigitsSigned } from '../utils'
+import { Match } from 'src/locale/types'
 
 // Extended year
 export class ExtendedYearParser extends AbstractParser {
@@ -17,7 +18,7 @@ export class ExtendedYearParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: any, _options: any) {
+  parse(string: any, token: any, match: Match, _options: any) {
     if (token === 'u') {
       return parseNDigitsSigned(4, string)
     }
