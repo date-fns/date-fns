@@ -160,6 +160,14 @@ declare module.exports: {
     Interval,
     Date[]
   >,
+  eachMinuteOfInterval: CurriedFn1<Interval, Date[]>,
+  eachMinuteOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number,
+    },
+    Interval,
+    Date[]
+  >,
   eachMonthOfInterval: CurriedFn1<Interval, Date[]>,
   eachQuarterOfInterval: CurriedFn1<Interval, Date[]>,
   eachWeekendOfInterval: CurriedFn1<Interval, Date[]>,
@@ -370,7 +378,7 @@ declare module.exports: {
   >,
   isAfter: CurriedFn2<Date | number, Date | number, boolean>,
   isBefore: CurriedFn2<Date | number, Date | number, boolean>,
-  isDate: CurriedFn1<any, boolean>,
+  isDate: CurriedFn1<unknown, boolean>,
   isEqual: CurriedFn2<Date | number, Date | number, boolean>,
   isExists: CurriedFn3<number, number, number, boolean>,
   isFirstDayOfMonth: CurriedFn1<Date | number, boolean>,

@@ -287,6 +287,14 @@ declare module 'date-fns' {
   ): Date[]
   namespace eachHourOfInterval {}
 
+  function eachMinuteOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+  namespace eachMinuteOfInterval {}
+
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
@@ -613,7 +621,7 @@ declare module 'date-fns' {
   function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {}
 
-  function isDate(value: any): boolean
+  function isDate(value: unknown): boolean
   namespace isDate {}
 
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
@@ -1248,6 +1256,11 @@ declare module 'date-fns/eachDayOfInterval' {
 declare module 'date-fns/eachHourOfInterval' {
   import { eachHourOfInterval } from 'date-fns'
   export default eachHourOfInterval
+}
+
+declare module 'date-fns/eachMinuteOfInterval' {
+  import { eachMinuteOfInterval } from 'date-fns'
+  export default eachMinuteOfInterval
 }
 
 declare module 'date-fns/eachMonthOfInterval' {
@@ -2280,6 +2293,11 @@ declare module 'date-fns/eachHourOfInterval/index' {
   export default eachHourOfInterval
 }
 
+declare module 'date-fns/eachMinuteOfInterval/index' {
+  import { eachMinuteOfInterval } from 'date-fns'
+  export default eachMinuteOfInterval
+}
+
 declare module 'date-fns/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns'
   export default eachMonthOfInterval
@@ -3308,6 +3326,11 @@ declare module 'date-fns/eachDayOfInterval/index.js' {
 declare module 'date-fns/eachHourOfInterval/index.js' {
   import { eachHourOfInterval } from 'date-fns'
   export default eachHourOfInterval
+}
+
+declare module 'date-fns/eachMinuteOfInterval/index.js' {
+  import { eachMinuteOfInterval } from 'date-fns'
+  export default eachMinuteOfInterval
 }
 
 declare module 'date-fns/eachMonthOfInterval/index.js' {
@@ -4348,6 +4371,18 @@ declare module 'date-fns/fp' {
   >
   namespace eachHourOfIntervalWithOptions {}
 
+  const eachMinuteOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachMinuteOfInterval {}
+
+  const eachMinuteOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
+  namespace eachMinuteOfIntervalWithOptions {}
+
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
@@ -4702,7 +4737,7 @@ declare module 'date-fns/fp' {
   const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {}
 
-  const isDate: CurriedFn1<any, boolean>
+  const isDate: CurriedFn1<unknown, boolean>
   namespace isDate {}
 
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
@@ -5328,6 +5363,16 @@ declare module 'date-fns/fp/eachHourOfInterval' {
 declare module 'date-fns/fp/eachHourOfIntervalWithOptions' {
   import { eachHourOfIntervalWithOptions } from 'date-fns/fp'
   export default eachHourOfIntervalWithOptions
+}
+
+declare module 'date-fns/fp/eachMinuteOfInterval' {
+  import { eachMinuteOfInterval } from 'date-fns/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/fp/eachMinuteOfIntervalWithOptions' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachMinuteOfIntervalWithOptions
 }
 
 declare module 'date-fns/fp/eachMonthOfInterval' {
@@ -6410,6 +6455,16 @@ declare module 'date-fns/fp/eachHourOfIntervalWithOptions/index' {
   export default eachHourOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachMinuteOfInterval/index' {
+  import { eachMinuteOfInterval } from 'date-fns/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/fp/eachMinuteOfIntervalWithOptions/index' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachMinuteOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/fp'
   export default eachMonthOfInterval
@@ -7490,6 +7545,16 @@ declare module 'date-fns/fp/eachHourOfIntervalWithOptions/index.js' {
   export default eachHourOfIntervalWithOptions
 }
 
+declare module 'date-fns/fp/eachMinuteOfInterval/index.js' {
+  import { eachMinuteOfInterval } from 'date-fns/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/fp/eachMinuteOfIntervalWithOptions/index.js' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/fp'
+  export default eachMinuteOfIntervalWithOptions
+}
+
 declare module 'date-fns/fp/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns/fp'
   export default eachMonthOfInterval
@@ -8562,6 +8627,14 @@ declare module 'date-fns/esm' {
   ): Date[]
   namespace eachHourOfInterval {}
 
+  function eachMinuteOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+  namespace eachMinuteOfInterval {}
+
   function eachMonthOfInterval(interval: Interval): Date[]
   namespace eachMonthOfInterval {}
 
@@ -8888,7 +8961,7 @@ declare module 'date-fns/esm' {
   function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {}
 
-  function isDate(value: any): boolean
+  function isDate(value: unknown): boolean
   namespace isDate {}
 
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
@@ -9523,6 +9596,11 @@ declare module 'date-fns/esm/eachDayOfInterval' {
 declare module 'date-fns/esm/eachHourOfInterval' {
   import { eachHourOfInterval } from 'date-fns/esm'
   export default eachHourOfInterval
+}
+
+declare module 'date-fns/esm/eachMinuteOfInterval' {
+  import { eachMinuteOfInterval } from 'date-fns/esm'
+  export default eachMinuteOfInterval
 }
 
 declare module 'date-fns/esm/eachMonthOfInterval' {
@@ -10555,6 +10633,11 @@ declare module 'date-fns/esm/eachHourOfInterval/index' {
   export default eachHourOfInterval
 }
 
+declare module 'date-fns/esm/eachMinuteOfInterval/index' {
+  import { eachMinuteOfInterval } from 'date-fns/esm'
+  export default eachMinuteOfInterval
+}
+
 declare module 'date-fns/esm/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/esm'
   export default eachMonthOfInterval
@@ -11583,6 +11666,11 @@ declare module 'date-fns/esm/eachDayOfInterval/index.js' {
 declare module 'date-fns/esm/eachHourOfInterval/index.js' {
   import { eachHourOfInterval } from 'date-fns/esm'
   export default eachHourOfInterval
+}
+
+declare module 'date-fns/esm/eachMinuteOfInterval/index.js' {
+  import { eachMinuteOfInterval } from 'date-fns/esm'
+  export default eachMinuteOfInterval
 }
 
 declare module 'date-fns/esm/eachMonthOfInterval/index.js' {
@@ -12623,6 +12711,18 @@ declare module 'date-fns/esm/fp' {
   >
   namespace eachHourOfIntervalWithOptions {}
 
+  const eachMinuteOfInterval: CurriedFn1<Interval, Date[]>
+  namespace eachMinuteOfInterval {}
+
+  const eachMinuteOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number
+    },
+    Interval,
+    Date[]
+  >
+  namespace eachMinuteOfIntervalWithOptions {}
+
   const eachMonthOfInterval: CurriedFn1<Interval, Date[]>
   namespace eachMonthOfInterval {}
 
@@ -12977,7 +13077,7 @@ declare module 'date-fns/esm/fp' {
   const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {}
 
-  const isDate: CurriedFn1<any, boolean>
+  const isDate: CurriedFn1<unknown, boolean>
   namespace isDate {}
 
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
@@ -13603,6 +13703,16 @@ declare module 'date-fns/esm/fp/eachHourOfInterval' {
 declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions' {
   import { eachHourOfIntervalWithOptions } from 'date-fns/esm/fp'
   export default eachHourOfIntervalWithOptions
+}
+
+declare module 'date-fns/esm/fp/eachMinuteOfInterval' {
+  import { eachMinuteOfInterval } from 'date-fns/esm/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachMinuteOfIntervalWithOptions' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachMinuteOfIntervalWithOptions
 }
 
 declare module 'date-fns/esm/fp/eachMonthOfInterval' {
@@ -14685,6 +14795,16 @@ declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions/index' {
   export default eachHourOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachMinuteOfInterval/index' {
+  import { eachMinuteOfInterval } from 'date-fns/esm/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachMinuteOfIntervalWithOptions/index' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachMinuteOfIntervalWithOptions
+}
+
 declare module 'date-fns/esm/fp/eachMonthOfInterval/index' {
   import { eachMonthOfInterval } from 'date-fns/esm/fp'
   export default eachMonthOfInterval
@@ -15765,6 +15885,16 @@ declare module 'date-fns/esm/fp/eachHourOfIntervalWithOptions/index.js' {
   export default eachHourOfIntervalWithOptions
 }
 
+declare module 'date-fns/esm/fp/eachMinuteOfInterval/index.js' {
+  import { eachMinuteOfInterval } from 'date-fns/esm/fp'
+  export default eachMinuteOfInterval
+}
+
+declare module 'date-fns/esm/fp/eachMinuteOfIntervalWithOptions/index.js' {
+  import { eachMinuteOfIntervalWithOptions } from 'date-fns/esm/fp'
+  export default eachMinuteOfIntervalWithOptions
+}
+
 declare module 'date-fns/esm/fp/eachMonthOfInterval/index.js' {
   import { eachMonthOfInterval } from 'date-fns/esm/fp'
   export default eachMonthOfInterval
@@ -16799,6 +16929,9 @@ declare module 'date-fns/locale' {
   const mk: Locale
   namespace mk {}
 
+  const mn: Locale
+  namespace mn {}
+
   const ms: Locale
   namespace ms {}
 
@@ -16837,6 +16970,9 @@ declare module 'date-fns/locale' {
 
   const sl: Locale
   namespace sl {}
+
+  const sq: Locale
+  namespace sq {}
 
   const sr: Locale
   namespace sr {}
@@ -17138,6 +17274,11 @@ declare module 'date-fns/locale/mk' {
   export default mk
 }
 
+declare module 'date-fns/locale/mn' {
+  import { mn } from 'date-fns/locale'
+  export default mn
+}
+
 declare module 'date-fns/locale/ms' {
   import { ms } from 'date-fns/locale'
   export default ms
@@ -17201,6 +17342,11 @@ declare module 'date-fns/locale/sk' {
 declare module 'date-fns/locale/sl' {
   import { sl } from 'date-fns/locale'
   export default sl
+}
+
+declare module 'date-fns/locale/sq' {
+  import { sq } from 'date-fns/locale'
+  export default sq
 }
 
 declare module 'date-fns/locale/sr' {
@@ -17528,6 +17674,11 @@ declare module 'date-fns/locale/mk/index' {
   export default mk
 }
 
+declare module 'date-fns/locale/mn/index' {
+  import { mn } from 'date-fns/locale'
+  export default mn
+}
+
 declare module 'date-fns/locale/ms/index' {
   import { ms } from 'date-fns/locale'
   export default ms
@@ -17591,6 +17742,11 @@ declare module 'date-fns/locale/sk/index' {
 declare module 'date-fns/locale/sl/index' {
   import { sl } from 'date-fns/locale'
   export default sl
+}
+
+declare module 'date-fns/locale/sq/index' {
+  import { sq } from 'date-fns/locale'
+  export default sq
 }
 
 declare module 'date-fns/locale/sr/index' {
@@ -17918,6 +18074,11 @@ declare module 'date-fns/locale/mk/index.js' {
   export default mk
 }
 
+declare module 'date-fns/locale/mn/index.js' {
+  import { mn } from 'date-fns/locale'
+  export default mn
+}
+
 declare module 'date-fns/locale/ms/index.js' {
   import { ms } from 'date-fns/locale'
   export default ms
@@ -17981,6 +18142,11 @@ declare module 'date-fns/locale/sk/index.js' {
 declare module 'date-fns/locale/sl/index.js' {
   import { sl } from 'date-fns/locale'
   export default sl
+}
+
+declare module 'date-fns/locale/sq/index.js' {
+  import { sq } from 'date-fns/locale'
+  export default sq
 }
 
 declare module 'date-fns/locale/sr/index.js' {
@@ -18207,6 +18373,9 @@ declare module 'date-fns/esm/locale' {
   const mk: Locale
   namespace mk {}
 
+  const mn: Locale
+  namespace mn {}
+
   const ms: Locale
   namespace ms {}
 
@@ -18245,6 +18414,9 @@ declare module 'date-fns/esm/locale' {
 
   const sl: Locale
   namespace sl {}
+
+  const sq: Locale
+  namespace sq {}
 
   const sr: Locale
   namespace sr {}
@@ -18546,6 +18718,11 @@ declare module 'date-fns/esm/locale/mk' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/mn' {
+  import { mn } from 'date-fns/esm/locale'
+  export default mn
+}
+
 declare module 'date-fns/esm/locale/ms' {
   import { ms } from 'date-fns/esm/locale'
   export default ms
@@ -18609,6 +18786,11 @@ declare module 'date-fns/esm/locale/sk' {
 declare module 'date-fns/esm/locale/sl' {
   import { sl } from 'date-fns/esm/locale'
   export default sl
+}
+
+declare module 'date-fns/esm/locale/sq' {
+  import { sq } from 'date-fns/esm/locale'
+  export default sq
 }
 
 declare module 'date-fns/esm/locale/sr' {
@@ -18936,6 +19118,11 @@ declare module 'date-fns/esm/locale/mk/index' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/mn/index' {
+  import { mn } from 'date-fns/esm/locale'
+  export default mn
+}
+
 declare module 'date-fns/esm/locale/ms/index' {
   import { ms } from 'date-fns/esm/locale'
   export default ms
@@ -18999,6 +19186,11 @@ declare module 'date-fns/esm/locale/sk/index' {
 declare module 'date-fns/esm/locale/sl/index' {
   import { sl } from 'date-fns/esm/locale'
   export default sl
+}
+
+declare module 'date-fns/esm/locale/sq/index' {
+  import { sq } from 'date-fns/esm/locale'
+  export default sq
 }
 
 declare module 'date-fns/esm/locale/sr/index' {
@@ -19326,6 +19518,11 @@ declare module 'date-fns/esm/locale/mk/index.js' {
   export default mk
 }
 
+declare module 'date-fns/esm/locale/mn/index.js' {
+  import { mn } from 'date-fns/esm/locale'
+  export default mn
+}
+
 declare module 'date-fns/esm/locale/ms/index.js' {
   import { ms } from 'date-fns/esm/locale'
   export default ms
@@ -19389,6 +19586,11 @@ declare module 'date-fns/esm/locale/sk/index.js' {
 declare module 'date-fns/esm/locale/sl/index.js' {
   import { sl } from 'date-fns/esm/locale'
   export default sl
+}
+
+declare module 'date-fns/esm/locale/sq/index.js' {
+  import { sq } from 'date-fns/esm/locale'
+  export default sq
 }
 
 declare module 'date-fns/esm/locale/sr/index.js' {
@@ -19583,6 +19785,13 @@ interface dateFns {
   ): Date[]
 
   eachHourOfInterval(
+    interval: Interval,
+    options?: {
+      step?: number
+    }
+  ): Date[]
+
+  eachMinuteOfInterval(
     interval: Interval,
     options?: {
       step?: number
@@ -19853,7 +20062,7 @@ interface dateFns {
 
   isBefore(date: Date | number, dateToCompare: Date | number): boolean
 
-  isDate(value: any): boolean
+  isDate(value: unknown): boolean
 
   isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
 
