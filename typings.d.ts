@@ -621,7 +621,7 @@ declare module 'date-fns' {
   function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {}
 
-  function isDate(value: unknown): boolean
+  function isDate(value: any): boolean
   namespace isDate {}
 
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
@@ -4737,7 +4737,7 @@ declare module 'date-fns/fp' {
   const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {}
 
-  const isDate: CurriedFn1<unknown, boolean>
+  const isDate: CurriedFn1<any, boolean>
   namespace isDate {}
 
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
@@ -8961,7 +8961,7 @@ declare module 'date-fns/esm' {
   function isBefore(date: Date | number, dateToCompare: Date | number): boolean
   namespace isBefore {}
 
-  function isDate(value: unknown): boolean
+  function isDate(value: any): boolean
   namespace isDate {}
 
   function isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
@@ -13077,7 +13077,7 @@ declare module 'date-fns/esm/fp' {
   const isBefore: CurriedFn2<Date | number, Date | number, boolean>
   namespace isBefore {}
 
-  const isDate: CurriedFn1<unknown, boolean>
+  const isDate: CurriedFn1<any, boolean>
   namespace isDate {}
 
   const isEqual: CurriedFn2<Date | number, Date | number, boolean>
@@ -20062,7 +20062,7 @@ interface dateFns {
 
   isBefore(date: Date | number, dateToCompare: Date | number): boolean
 
-  isDate(value: unknown): boolean
+  isDate(value: any): boolean
 
   isEqual(dateLeft: Date | number, dateRight: Date | number): boolean
 

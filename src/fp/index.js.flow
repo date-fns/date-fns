@@ -378,7 +378,7 @@ declare module.exports: {
   >,
   isAfter: CurriedFn2<Date | number, Date | number, boolean>,
   isBefore: CurriedFn2<Date | number, Date | number, boolean>,
-  isDate: CurriedFn1<unknown, boolean>,
+  isDate: CurriedFn1<any, boolean>,
   isEqual: CurriedFn2<Date | number, Date | number, boolean>,
   isExists: CurriedFn3<number, number, number, boolean>,
   isFirstDayOfMonth: CurriedFn1<Date | number, boolean>,

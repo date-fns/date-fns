@@ -475,7 +475,7 @@ declare module.exports: {
 
   isBefore: (date: Date | number, dateToCompare: Date | number) => boolean,
 
-  isDate: (value: unknown) => boolean,
+  isDate: (value: any) => boolean,
 
   isEqual: (dateLeft: Date | number, dateRight: Date | number) => boolean,
 

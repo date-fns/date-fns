@@ -49,4 +49,4 @@ export type Duration = {
 
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-declare module.exports: (value: unknown) => boolean
+declare module.exports: (value: any) => boolean
