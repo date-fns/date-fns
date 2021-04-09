@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.20.1 - 2021-04-09
+
+This release is brought to you by [Sasha Koss](http://github.com/kossnocorp) and [Tan75](http://github.com/tan75).
+
+### Fixed
+
+- Fixed `isDate` Flow typings that we broke in `v2.20.0`.
+
 ## v2.20.0 - 2021-04-08
 
 This release is brought to you by [Sasha Koss](http://github.com/kossnocorp), [Maxim Topciu](http://github.com/maximtop), [tu4mo](http://github.com/tu4mo), [Tan75](http://github.com/tan75), [Ardit Dine](http://github.com/arditdine), [Carl Rosell](http://github.com/CarlRosell), [Roman Mahotskyi](http://github.com/enheit), [Mateusz Krzak](http://github.com/mateuszkrzak), [fgottschalk](http://github.com/fgottschalk), [Anastasia Kobzar](http://github.com/rikkalo), [Bilguun Ochirbat](http://github.com/bilguun0203), [Lesha Koss](http://github.com/leshakoss), [YuLe](http://github.com/yuler) and [guyroberts21](http://github.com/guyroberts21).
