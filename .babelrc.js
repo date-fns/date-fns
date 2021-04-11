@@ -1,10 +1,20 @@
+let modules = 'auto'
+
+if (process.env.BABEL_ENV === 'commonjs') {
+  modules = 'cjs'
+}
+
+if (process.env.BABEL_ENV === 'esm') {
+  modules = 'false'
+}
+
 const presets = [
   '@babel/preset-typescript',
   [
     '@babel/preset-env',
     {
       targets: '> 0.25%, ie >= 11, not dead',
-      modules: process.env.BABEL_ENV === 'commonjs' ? 'cjs' : false,
+      modules: modules,
     },
   ],
 ]
