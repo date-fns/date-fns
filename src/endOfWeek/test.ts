@@ -2,7 +2,6 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import context from 'assert'
 import endOfWeek from '.'
 
 describe('endOfWeek', function () {
@@ -27,7 +26,7 @@ describe('endOfWeek', function () {
   it('allows to specify which day is the first day of the week in locale', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, {
-      // $ExpectedMistake
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 1 },
       },
@@ -42,7 +41,7 @@ describe('endOfWeek', function () {
     var date = new Date(2014, 8 /* Sep */, 2, 11, 55, 0)
     var result = endOfWeek(date, {
       weekStartsOn: 1,
-      // $ExpectedMistake
+      // @ts-expect-error
       locale: {
         options: { weekStartsOn: 0 },
       },

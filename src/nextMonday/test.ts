@@ -17,8 +17,8 @@ describe('nextMonday', function () {
     )
 
     assert.deepStrictEqual(
-      nextMonday(new Date(2020, 2 /* Mar */, 21)),
-      new Date(2020, 2 /* Mar */, 23)
+      nextMonday(new Date(2020, 3 /* Apr */, 11)),
+      new Date(2020, 3 /* Apr */, 13)
     )
 
     assert.deepStrictEqual(

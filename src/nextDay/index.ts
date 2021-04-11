@@ -20,16 +20,15 @@ const baseMap = [7, 6, 5, 4, 3, 2, 1]
  * @throws {TypeError} - 2 arguments required
  *
  * @example
- * When is the next Monday after Mar, 20, 2020?
+ * // When is the next Monday after Mar, 20, 2020?
  * const result = nextDay(new Date(2020, 2, 20), 1)
- * => Mon Mar 23 2020 00:00:00
+ * //=> Mon Mar 23 2020 00:00:00
  *
  * @example
- * When is the next Tuesday after Mar, 21, 2020?
+ * // When is the next Tuesday after Mar, 21, 2020?
  * const result = nextDay(new Date(2020, 2, 21), 2)
- * => Tue Mar 24 2020 00:00:00
- **/
-
+ * //=> Tue Mar 24 2020 00:00:00
+ */
 export default function nextDay(date: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
   const map = genMap(day)

@@ -19,7 +19,7 @@ module.exports = {
     'Quarter Helpers',
     'Year Helpers',
     'ISO Week-Numbering Year Helpers',
-    'Decade Helpers'
+    'Decade Helpers',
   ],
 
   staticDocs: [
@@ -29,7 +29,7 @@ module.exports = {
       category: 'General',
       title: 'Getting Started',
       description: 'Introduction & installation instructions',
-      path: path.join(__dirname, 'gettingStarted.md')
+      path: path.join(__dirname, 'gettingStarted.md'),
     },
     {
       type: 'markdown',
@@ -37,7 +37,7 @@ module.exports = {
       category: 'General',
       title: 'Change Log',
       description: 'Changes for each version of the library',
-      path: path.join(__dirname, '..', 'CHANGELOG.md')
+      path: path.join(__dirname, '..', 'CHANGELOG.md'),
     },
     {
       type: 'markdown',
@@ -45,7 +45,7 @@ module.exports = {
       category: 'General',
       title: 'Contributing',
       description: 'Contribution manual',
-      path: path.join(__dirname, '..', 'CONTRIBUTING.md')
+      path: path.join(__dirname, '..', 'CONTRIBUTING.md'),
     },
     {
       type: 'markdown',
@@ -53,7 +53,7 @@ module.exports = {
       category: 'General',
       title: 'Constants',
       description: 'Useful constants',
-      path: path.join(__dirname, 'constants.md')
+      path: path.join(__dirname, 'constants.md'),
     },
     {
       type: 'markdown',
@@ -61,7 +61,7 @@ module.exports = {
       category: 'General',
       title: 'I18n',
       description: 'Internationalization',
-      path: path.join(__dirname, 'i18n.md')
+      path: path.join(__dirname, 'i18n.md'),
     },
     {
       type: 'markdown',
@@ -69,7 +69,7 @@ module.exports = {
       category: 'General',
       title: 'I18n Contribution Guide',
       description: 'Locales manual',
-      path: path.join(__dirname, 'i18nContributionGuide.md')
+      path: path.join(__dirname, 'i18nContributionGuide.md'),
     },
     {
       type: 'markdown',
@@ -77,7 +77,7 @@ module.exports = {
       category: 'General',
       title: 'Time Zones',
       description: 'Time zone functions',
-      path: path.join(__dirname, 'timeZones.md')
+      path: path.join(__dirname, 'timeZones.md'),
     },
     {
       type: 'markdown',
@@ -85,7 +85,7 @@ module.exports = {
       category: 'General',
       title: 'ECMAScript Modules',
       description: 'Tree-shaking guide',
-      path: path.join(__dirname, 'esm.md')
+      path: path.join(__dirname, 'esm.md'),
     },
     {
       type: 'markdown',
@@ -93,7 +93,7 @@ module.exports = {
       category: 'General',
       title: 'webpack',
       description: 'Using date-fns with webpack',
-      path: path.join(__dirname, 'webpack.md')
+      path: path.join(__dirname, 'webpack.md'),
     },
     {
       type: 'markdown',
@@ -101,7 +101,7 @@ module.exports = {
       category: 'General',
       title: 'FP Guide',
       description: 'Curried functions',
-      path: path.join(__dirname, 'fp.md')
+      path: path.join(__dirname, 'fp.md'),
     },
     {
       type: 'markdown',
@@ -109,7 +109,7 @@ module.exports = {
       category: 'General',
       title: 'Unicode Tokens',
       description: 'Usage of the Unicode tokens in parse and format',
-      path: path.join(__dirname, 'unicodeTokens.md')
+      path: path.join(__dirname, 'unicodeTokens.md'),
     },
     {
       type: 'markdown',
@@ -117,7 +117,7 @@ module.exports = {
       category: 'General',
       title: 'Upgrade guide',
       description: 'Changes from v1 to v2',
-      path: path.join(__dirname, 'upgradeGuide.md')
+      path: path.join(__dirname, 'upgradeGuide.md'),
     },
     {
       type: 'markdown',
@@ -125,19 +125,22 @@ module.exports = {
       category: 'General',
       title: 'License',
       description: 'MIT © Sasha Koss',
-      path: path.join(__dirname, '..', 'LICENSE.md')
-    }
+      path: path.join(__dirname, '..', 'LICENSE.md'),
+    },
   ],
 
   sharedDocs: [
     {
-      fullPath: path.join(__dirname, 'Interval.js')
+      fullPath: path.join(__dirname, 'Interval.js'),
     },
     {
-      fullPath: path.join(__dirname, 'Locale.js')
+      fullPath: path.join(__dirname, 'Locale.js'),
     },
     {
-      fullPath: path.join(__dirname, 'Duration.js')
-    }
-  ]
+      fullPath: path.join(__dirname, 'Duration.js'),
+    },
+    {
+      fullPath: path.join(__dirname, 'Day.js'),
+    },
+  ],
 }

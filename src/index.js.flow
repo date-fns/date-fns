@@ -47,6 +47,8 @@ export type Duration = {
   seconds?: number,
 }
 
+export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
+
 declare module.exports: {
   add: (date: Date | number, duration: Duration) => Date,
 
@@ -196,6 +198,13 @@ declare module.exports: {
   ) => Date[],
 
   eachHourOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number,
+    }
+  ) => Date[],
+
+  eachMinuteOfInterval: (
     interval: Interval,
     options?: {
       step?: number,
@@ -604,6 +613,22 @@ declare module.exports: {
   milliseconds: (duration: Duration) => number,
 
   min: (datesArray: (Date | number)[]) => Date,
+
+  nextDay: (date: Date | number, day: Day) => Date,
+
+  nextFriday: (date: Date | number) => Date,
+
+  nextMonday: (date: Date | number) => Date,
+
+  nextSaturday: (date: Date | number) => Date,
+
+  nextSunday: (date: Date | number) => Date,
+
+  nextThursday: (date: Date | number) => Date,
+
+  nextTuesday: (date: Date | number) => Date,
+
+  nextWednesday: (date: Date | number) => Date,
 
   parse: (
     dateString: string,

@@ -1,6 +1,7 @@
 import { fromEntries, last, sample, uniq } from 'js-fns'
 import sg from 'simple-git'
 import { Octokit } from '@octokit/core'
+import format from '../../src/format'
 
 const git = sg()
 const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
@@ -11,17 +12,12 @@ const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
 })()
 
 function renderChangelog(changelog: ChangelogVersion) {
-  const items = changelog.added
-    .concat(changelog.changed)
-    .concat(changelog.fixed)
-  const authors = uniq(
-    items.map(({ author }) => author),
-    (author) => author.login
-  )
+  let markdown = `## ${renderVersion(changelog.version)} - ${format(
+    Date.now(),
+    'yyyy-MM-dd'
+  )}
 
-  let markdown = `## ${renderVersion(changelog.version)}
-
-${sample(thanksOptions)} ${renderAuthors(authors)}.`
+${sample(thanksOptions)!(renderAuthors(changelog.authors))}`
 
   if (changelog.fixed.length)
     markdown += `
@@ -66,7 +62,10 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     )
   )
 
-  const items = commits.all.reduce<ChangelogItem[]>((acc, commit) => {
+  const items: ChangelogItem[] = []
+  const authors: Author[] = []
+
+  commits.all.forEach((commit) => {
     const author: Author = {
       login: authorsMap[commit.hash],
       email: commit.author_email,
@@ -86,9 +85,11 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     })
     if (!issues?.length) issues = undefined
 
-    const items = extractItems(commit.body.trim(), { author, pr, issues })
-    return acc.concat(items)
-  }, [])
+    const commitItems = extractItems(commit.body.trim(), { author, pr, issues })
+
+    if (!authors.find((a) => a.login === author.login)) authors.push(author)
+    items.push(...commitItems)
+  })
 
   const changed = items.filter((i) => i.type === 'changed')
   const fixed = items.filter((i) => i.type === 'fixed')
@@ -112,7 +113,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     }
   }
 
-  return { version, changed, fixed, added }
+  return { version, changed, fixed, added, authors }
 }
 
 function parseVersion(tag: string): Version {
@@ -165,14 +166,35 @@ function extractItems(
   }
 
   switch (true) {
-    case /^(breaking:\s?)?fixed /i.test(message):
-      return [item({ type: 'fixed', message })]
+    // Fixed
+    case fixedSentenceRegExp.test(message): {
+      const captures = message.match(fixedSentenceRegExp)!
+      return [item({ type: 'fixed', message: captures[2] })]
+    }
+    case fixedOneLinerRegExp.test(message): {
+      const captures = message.match(fixedOneLinerRegExp)!
+      return [item({ type: 'fixed', message: captures[1] })]
+    }
 
-    case /^(breaking:\s?)?changed /i.test(message):
-      return [item({ type: 'changed', message })]
+    // Changed
+    case changedSentenceRegExp.test(message): {
+      const captures = message.match(changedSentenceRegExp)!
+      return [item({ type: 'changed', message: captures[2] })]
+    }
+    case changedOneLinerRegExp.test(message): {
+      const captures = message.match(changedOneLinerRegExp)!
+      return [item({ type: 'changed', message: captures[1] })]
+    }
 
-    case /^(breaking:\s?)?added /i.test(message):
-      return [item({ type: 'added', message })]
+    // Added
+    case addedSentenceRegExp.test(message): {
+      const captures = message.match(addedSentenceRegExp)!
+      return [item({ type: 'added', message: captures[2] })]
+    }
+    case addedOneLinerRegExp.test(message): {
+      const captures = message.match(addedOneLinerRegExp)!
+      return [item({ type: 'added', message: captures[1] })]
+    }
 
     default:
       return []
@@ -237,6 +259,7 @@ interface ChangelogVersion {
   changed: ChangelogItem[]
   fixed: ChangelogItem[]
   added: ChangelogItem[]
+  authors: Author[]
 }
 
 interface Author {
@@ -245,13 +268,22 @@ interface Author {
   email: string
 }
 
-var closesRegExp = /closes #(\d+)/
+var closesRegExp = /(?:closes|fixes) #(\d+)/
 
 var issuesRegExp = /\s?\(((?:#\d+(?:,\s?)?)+)\)/g
 
 var thanksOptions = [
-  'Kudos to ',
-  'Thanks to ',
-  'This release is brought to you by ',
-  'On this release worked ',
+  (authors: string) => `Kudos to ${authors} for working on the release.`,
+  (authors: string) => `Thanks to ${authors} for working on the release.`,
+  (authors: string) => `This release is brought to you by ${authors}.`,
+  (authors: string) => `On this release worked ${authors}.`,
 ]
+
+var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i
+var fixedOneLinerRegExp = /^fixed:\s(.+)/i
+
+var changedSentenceRegExp = /^(breaking:\s?)?(changed\s.+)/i
+var changedOneLinerRegExp = /^changed:\s(.+)/i
+
+var addedSentenceRegExp = /^(breaking:\s?)?(added\s.+)/i
+var addedOneLinerRegExp = /^added:\s(.+)/i
