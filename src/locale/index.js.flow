@@ -99,6 +99,7 @@ declare module.exports: {
   ru: Locale,
   sk: Locale,
   sl: Locale,
+  sq: Locale,
   sr: Locale,
   srLatn: Locale,
   sv: Locale,
