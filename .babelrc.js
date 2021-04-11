@@ -1,24 +1,17 @@
-const presets = ['@babel/preset-typescript']
-const plugins = [
-  '@babel/plugin-transform-block-scoping',
-  '@babel/plugin-transform-template-literals',
-  '@babel/plugin-transform-arrow-functions',
-  '@babel/plugin-transform-parameters',
-  '@babel/plugin-transform-destructuring',
-  '@babel/plugin-proposal-optional-chaining',
+const presets = [
+  '@babel/preset-typescript',
+  [
+    '@babel/preset-env',
+    {
+      targets: '> 0.25%, ie >= 11, not dead',
+      modules: process.env.BABEL_ENV === 'commonjs' ? 'cjs' : false,
+    },
+  ],
 ]
+const plugins = []
 
 if (process.env.NODE_ENV === 'test') {
   presets.push('babel-preset-power-assert')
-}
-
-if (process.env.BABEL_ENV !== 'esm') {
-  plugins.push('@babel/plugin-transform-modules-commonjs')
-  plugins.push('babel-plugin-add-module-exports')
-}
-
-if (process.env.BABEL_ENV === 'esm' || process.env.BABEL_ENV === 'commonjs') {
-  plugins.push(['babel-plugin-add-import-extension', { extension: 'js' }])
 }
 
 const overrides = [{ ignore: ['**/*.d.ts'] }]

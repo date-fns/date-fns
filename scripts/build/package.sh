@@ -19,10 +19,10 @@ dir=${PACKAGE_OUTPUT_PATH:-"$root/tmp/package"}
 rm -rf "$dir"
 mkdir -p "$dir"
 
-# Traspile CommonJS versions of files
+# Transpile CommonJS versions of files
 env BABEL_ENV='commonjs' babel src --source-root src --out-dir "$dir" --extensions .ts,.js --ignore test.js,benchmark.js,snapshot.md --copy-files --quiet
 
-# Traspile ESM versions of files
+# Transpile ESM versions of files
 env BABEL_ENV='esm' babel src --source-root src --out-dir "$dir/esm" --extensions .ts,.js --ignore test.js,benchmark.js,snapshot.md,package.json --copy-files --quiet
 
 # Copy basic files
