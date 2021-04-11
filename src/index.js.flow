@@ -204,6 +204,13 @@ declare module.exports: {
     }
   ) => Date[],
 
+  eachMinuteOfInterval: (
+    interval: Interval,
+    options?: {
+      step?: number,
+    }
+  ) => Date[],
+
   eachMonthOfInterval: (interval: Interval) => Date[],
 
   eachQuarterOfInterval: (interval: Interval) => Date[],
