@@ -5,7 +5,7 @@ if (process.env.BABEL_ENV === 'commonjs') {
 }
 
 if (process.env.BABEL_ENV === 'esm') {
-  modules = 'false'
+  modules = false
 }
 
 const presets = [
@@ -18,6 +18,7 @@ const presets = [
     },
   ],
 ]
+
 const plugins = []
 
 if (process.env.NODE_ENV === 'test') {
