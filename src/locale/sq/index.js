@@ -9,6 +9,7 @@ import match from './_lib/match/index'
  * @category Locales
  * @summary Albanian locale.
  * @language Shqip
+ * @iso-639-2 sqi
  * @author Ardit Dine [@arditdine]{@link https://github.com/arditdine}
  */
 var locale = {
@@ -20,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
