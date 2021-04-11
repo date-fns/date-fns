@@ -7,11 +7,12 @@ const yearInDays = 365.2425
 
 /**
  * @name milliseconds
+ * @category Millisecond Helpers
  * @summary
  * Returns the number of milliseconds in the specified, years, months, weeks, days, hours, minutes and seconds.
  *
- * @description Millisecond Helpers
- * @ Returns the number of milliseconds in the specified, years, months, weeks, days, hours, minutes and seconds.
+ * @description
+ * Returns the number of milliseconds in the specified, years, months, weeks, days, hours, minutes and seconds.
  *
  * One years equals 365.2425 days according to the formula:
  *

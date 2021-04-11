@@ -18,25 +18,25 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // For a valid date:
- * var result = isDate(new Date())
+ * const result = isDate(new Date())
  * //=> true
  *
  * @example
  * // For an invalid date:
- * var result = isDate(new Date(NaN))
+ * const result = isDate(new Date(NaN))
  * //=> true
  *
  * @example
  * // For some value:
- * var result = isDate('2014-02-31')
+ * const result = isDate('2014-02-31')
  * //=> false
  *
  * @example
  * // For an object:
- * var result = isDate({})
+ * const result = isDate({})
  * //=> false
  */
-export default function isDate(value) {
+export default function isDate(value: unknown): value is Date {
   requiredArgs(1, arguments)
 
   return (
