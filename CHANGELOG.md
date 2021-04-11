@@ -8,6 +8,36 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.20.1 - 2021-04-09
+
+This release is brought to you by [Sasha Koss](http://github.com/kossnocorp) and [Tan75](http://github.com/tan75).
+
+### Fixed
+
+- Fixed `isDate` Flow typings that we broke in `v2.20.0`.
+
+## v2.20.0 - 2021-04-08
+
+This release is brought to you by [Sasha Koss](http://github.com/kossnocorp), [Maxim Topciu](http://github.com/maximtop), [tu4mo](http://github.com/tu4mo), [Tan75](http://github.com/tan75), [Ardit Dine](http://github.com/arditdine), [Carl Rosell](http://github.com/CarlRosell), [Roman Mahotskyi](http://github.com/enheit), [Mateusz Krzak](http://github.com/mateuszkrzak), [fgottschalk](http://github.com/fgottschalk), [Anastasia Kobzar](http://github.com/rikkalo), [Bilguun Ochirbat](http://github.com/bilguun0203), [Lesha Koss](http://github.com/leshakoss), [YuLe](http://github.com/yuler) and [guyroberts21](http://github.com/guyroberts21).
+
+### Fixed
+
+- [Made `formatDistanceStrict` and `formatDistanceToNowStrict` always return `1 year` instead of `12 months`.](https://github.com/date-fns/date-fns/pull/2391) ([#2388](https://github.com/date-fns/date-fns/issues/2388))
+
+- Fixed `nextDay`, `nextMonday` and `nextTuesday` missing in exports and type definitions. ([#2325](https://github.com/date-fns/date-fns/issues/2325))
+
+- [Fixed a DST bug in `formatDistanceStrict`.](https://github.com/date-fns/date-fns/pull/2329) ([#2307](https://github.com/date-fns/date-fns/issues/2307))
+
+### Added
+
+- [Added new `eachMinuteOfInterval` function.](https://github.com/date-fns/date-fns/pull/2382)
+
+- [Added Albanian (`sq`) locale](https://github.com/date-fns/date-fns/pull/2290)
+
+- [Added Mongolian (`mn`) locale](https://github.com/date-fns/date-fns/pull/1961)
+
+- [Added `nextWednesday`, `nextThursday`, `nextFriday`, `nextSaturday` and `nextSunday`.](https://github.com/date-fns/date-fns/pull/2291)
+
 ## v2.19.0 - 2021-03-05
 
 On this release worked [Tan75](http://github.com/tan75).
