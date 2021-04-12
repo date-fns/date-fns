@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.20.2 - 2021-04-12
+
+Kudos to [Maxim Topciu](http://github.com/maximtop) for working on the release.
+
+### Fixed
+
+- [Fixed IE11 incompatibility caused by the usage of spread syntax.](https://github.com/date-fns/date-fns/pull/2407) ([#2408](https://github.com/date-fns/date-fns/issues/2408))
+
 ## v2.20.1 - 2021-04-09
 
 This release is brought to you by [Sasha Koss](http://github.com/kossnocorp) and [Tan75](http://github.com/tan75).
