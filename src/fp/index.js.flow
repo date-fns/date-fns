@@ -160,6 +160,14 @@ declare module.exports: {
     Interval,
     Date[]
   >,
+  eachMinuteOfInterval: CurriedFn1<Interval, Date[]>,
+  eachMinuteOfIntervalWithOptions: CurriedFn2<
+    {
+      step?: number,
+    },
+    Interval,
+    Date[]
+  >,
   eachMonthOfInterval: CurriedFn1<Interval, Date[]>,
   eachQuarterOfInterval: CurriedFn1<Interval, Date[]>,
   eachWeekendOfInterval: CurriedFn1<Interval, Date[]>,

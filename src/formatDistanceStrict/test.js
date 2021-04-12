@@ -98,6 +98,22 @@ describe('formatDistanceStrict', function () {
   })
 
   describe('years', function () {
+    it('returns `1 year` - see issue 2388', () => {
+      const result = formatDistanceStrict(
+        new Date(2015, 0, 2),
+        new Date(2016, 0, 1)
+      )
+      assert(result === '1 year')
+    })
+
+    it('returns `2 years` - see issue 2388', () => {
+      const result = formatDistanceStrict(
+        new Date(2014, 0, 2),
+        new Date(2016, 0, 1)
+      )
+      assert(result === '2 years')
+    })
+
     it('1 year', function () {
       var result = formatDistanceStrict(
         new Date(1986, 3, 4, 10, 32, 0),
