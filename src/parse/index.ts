@@ -1,4 +1,10 @@
 import defaultLocale from '../locale/en-US/index'
+import {
+  LocaleOptions,
+  Locale,
+  AdditionalTokens,
+  Flags,
+} from 'src/locale/types'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import assign from '../_lib/assign/index'
@@ -80,6 +86,15 @@ const PARSERS = {
 } as const
 
 type Parsers = typeof PARSERS
+
+interface Setter {
+  priority: number
+  subPriority: number
+  set: any
+  index: number
+  validate: any
+  value: string
+}
 
 function getParserBy<K extends keyof Parsers>(key: K): Parsers[K] {
   return PARSERS[key]
@@ -428,18 +443,19 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * //=> Sun Feb 28 2010 00:00:00
  */
 export default function parse(
-  dirtyDateString,
-  dirtyFormatString,
-  dirtyReferenceDate,
-  dirtyOptions
-) {
+  dirtyDateString: string,
+  dirtyFormatString: string,
+  dirtyReferenceDate: Date,
+  dirtyOptions: { locale: Locale } & LocaleOptions & AdditionalTokens
+): Date {
   requiredArgs(3, arguments)
 
-  let dateString = String(dirtyDateString)
-  const formatString = String(dirtyFormatString)
-  const options = dirtyOptions || {}
+  let dateString: string = String(dirtyDateString)
+  const formatString: string = String(dirtyFormatString)
+  const options: { locale: Locale } & LocaleOptions & AdditionalTokens =
+    dirtyOptions || {}
 
-  const locale = options.locale || defaultLocale
+  const locale: Locale = options.locale || defaultLocale
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
   }
@@ -455,7 +471,7 @@ export default function parse(
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 
-  // Test if weekStartsOn is between 1 and 7 _and_ is not NaN
+  // Test if firstWeekContainsDate is between 1 and 7 _and_ is not NaN
   if (!(firstWeekContainsDate >= 1 && firstWeekContainsDate <= 7)) {
     throw new RangeError(
       'firstWeekContainsDate must be between 1 and 7 inclusively'
@@ -499,65 +515,20 @@ export default function parse(
     },
   ]
 
-  const tokens = formatString
-    .match(longFormattingTokensRegExp)
-    .map(function (substring) {
-      const firstCharacter = substring[0]
-      if (firstCharacter === 'p' || firstCharacter === 'P') {
-        const longFormatter = longFormatters[firstCharacter]
-        return longFormatter(substring, locale.formatLong, subFnOptions)
-      }
-      return substring
-    })
-    .join('')
-    .match(formattingTokensRegExp)
+  const tokens = getTokens(formatString, locale, subFnOptions)
 
   const usedTokens = []
 
   for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i]
+    let token = tokens[i]
 
-    if (
-      !options.useAdditionalWeekYearTokens &&
-      isProtectedWeekYearToken(token)
-    ) {
-      throwProtectedError(token, formatString, dirtyDateString)
-    }
-    if (
-      !options.useAdditionalDayOfYearTokens &&
-      isProtectedDayOfYearToken(token)
-    ) {
-      throwProtectedError(token, formatString, dirtyDateString)
-    }
+    checkAdditionalTokens(token, options, formatString, dirtyDateString)
 
     const firstCharacter = token[0]
     const parser = getParserBy(firstCharacter)
 
     if (parser) {
-      const { incompatibleTokens } = parser
-
-      if (Array.isArray(incompatibleTokens)) {
-        let incompatibleToken
-        for (let i = 0; i < usedTokens.length; i++) {
-          const usedToken = usedTokens[i].token
-          if (
-            incompatibleTokens.indexOf(usedToken) !== -1 ||
-            usedToken === firstCharacter
-          ) {
-            incompatibleToken = usedTokens[i]
-            break
-          }
-        }
-        if (incompatibleToken) {
-          throw new RangeError(
-            `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
-          )
-        }
-      } else if (parser.incompatibleTokens === '*' && usedTokens.length) {
-        throw new RangeError(
-          `The format string mustn't contain \`${token}\` and any other token at the same time`
-        )
-      }
+      checkIncompatibleTokens(token, parser, firstCharacter, usedTokens)
 
       usedTokens.push({ token: firstCharacter, fullToken: token })
       const parseResult = parser.parse(
@@ -611,7 +582,105 @@ export default function parse(
     return new Date(NaN)
   }
 
-  const uniquePrioritySetters = setters
+  const uniquePrioritySetters = getUniquePrioritySetters(setters)
+
+  const date = toDate(dirtyReferenceDate)
+
+  if (isNaN(date)) {
+    return new Date(NaN)
+  }
+
+  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
+  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
+  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
+  let utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+
+  const flags = {}
+  for (let i = 0; i < uniquePrioritySetters.length; i++) {
+    const setter = uniquePrioritySetters[i]
+
+    if (
+      setter.validate &&
+      !setter.validate(utcDate, setter.value, subFnOptions)
+    ) {
+      return new Date(NaN)
+    }
+
+    const result = setter.set(utcDate, flags, setter.value, subFnOptions)
+
+    // Result is tuple (date, flags)
+    if (result[0]) {
+      utcDate = result[0]
+      assign(flags, result[1])
+      // Result is date
+    } else {
+      utcDate = result
+    }
+  }
+
+  return utcDate
+}
+
+function getTokens(formatString: string, locale: any, subFnOptions: any) {
+  return formatString
+    .match(longFormattingTokensRegExp)
+    .map(function (substring) {
+      const firstCharacter = substring[0]
+      if (firstCharacter === 'p' || firstCharacter === 'P') {
+        const longFormatter = longFormatters[firstCharacter]
+        return longFormatter(substring, locale.formatLong, subFnOptions)
+      }
+      return substring
+    })
+    .join('')
+    .match(formattingTokensRegExp)
+}
+
+function checkAdditionalTokens(token, options, formatString, dirtyDateString) {
+  if (!options.useAdditionalWeekYearTokens && isProtectedWeekYearToken(token)) {
+    throwProtectedError(token, formatString, dirtyDateString)
+  }
+  if (
+    !options.useAdditionalDayOfYearTokens &&
+    isProtectedDayOfYearToken(token)
+  ) {
+    throwProtectedError(token, formatString, dirtyDateString)
+  }
+}
+
+function checkIncompatibleTokens(
+  token: any,
+  parser: any,
+  firstCharacter: any,
+  usedTokens: any
+) {
+  const { incompatibleTokens } = parser
+  if (Array.isArray(incompatibleTokens)) {
+    let incompatibleToken
+    for (let i = 0; i < usedTokens.length; i++) {
+      const usedToken = usedTokens[i].token
+      if (
+        incompatibleTokens.indexOf(usedToken) !== -1 ||
+        usedToken === firstCharacter
+      ) {
+        incompatibleToken = usedTokens[i]
+        break
+      }
+    }
+    if (incompatibleToken) {
+      throw new RangeError(
+        `The format string mustn't contain \`${incompatibleToken.fullToken}\` and \`${token}\` at the same time`
+      )
+    }
+  } else if (incompatibleTokens === '*' && usedTokens.length) {
+    throw new RangeError(
+      `The format string mustn't contain \`${token}\` and any other token at the same time`
+    )
+  }
+}
+
+function getUniquePrioritySetters(setters: Setter[]): Setter[] {
+  return setters
     .map(function (setter) {
       return setter.priority
     })
@@ -633,43 +702,9 @@ export default function parse(
     .map(function (setterArray) {
       return setterArray[0]
     })
-
-  const date = toDate(dirtyReferenceDate)
-
-  if (isNaN(date)) {
-    return new Date(NaN)
-  }
-
-  // Convert the date in system timezone to the same date in UTC+00:00 timezone.
-  // This ensures that when UTC functions will be implemented, locales will be compatible with them.
-  // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/37
-  let utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-
-  const flags = {}
-  for (let i = 0; i < uniquePrioritySetters.length; i++) {
-    const setter = uniquePrioritySetters[i]
-    if (
-      setter.validate &&
-      !setter.validate(utcDate, setter.value, subFnOptions)
-    ) {
-      return new Date(NaN)
-    }
-
-    const result = setter.set(utcDate, flags, setter.value, subFnOptions)
-    // Result is tuple (date, flags)
-    if (result[0]) {
-      utcDate = result[0]
-      assign(flags, result[1])
-      // Result is date
-    } else {
-      utcDate = result
-    }
-  }
-
-  return utcDate
 }
 
-function dateToSystemTimezone(date, flags) {
+function dateToSystemTimezone(date: Date, flags: Flags): Date {
   if (flags.timestampIsSet) {
     return date
   }
@@ -689,6 +724,12 @@ function dateToSystemTimezone(date, flags) {
   return convertedDate
 }
 
-function cleanEscapedString(input) {
-  return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
+function cleanEscapedString(input: string): string {
+  const matches: string[] | null = input.match(escapedStringRegExp)
+
+  if (matches === null) {
+    return ''
+  }
+
+  return matches[1].replace(doubleQuoteRegExp, "'")
 }

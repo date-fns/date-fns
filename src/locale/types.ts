@@ -13,6 +13,13 @@ export interface LocaleOptions {
   firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
 }
 
+export interface AdditionalTokens {
+  useAdditionalWeekYearTokens?: boolean
+  useAdditionalDayOfYearTokens?: boolean
+}
+
+export type Flags = { timestampIsSet?: boolean }
+
 export type FormatDistanceFn = (
   token:
     | 'lessThanXSeconds'

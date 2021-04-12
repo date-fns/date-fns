@@ -1,12 +1,11 @@
-import { LocaleOptions, Locale, Match } from 'src/locale/types'
+import { LocaleOptions, Flags, Locale, Match } from 'src/locale/types'
 
 type ParseOptions = Locale & LocaleOptions
 type ParseOutput =
   | number
   | null
-  | string
   | {
-      value: string
+      value: unknown
       rest: unknown
     }
 
@@ -23,5 +22,10 @@ export abstract class AbstractParser {
     match: Match,
     _options: ParseOptions
   ): ParseOutput
-  abstract set(date: any, flags: any, value: any, _options: ParseOptions): any
+  abstract set(
+    date: Date,
+    flags: Flags,
+    value: unknown,
+    _options: ParseOptions
+  ): Date | [Date, Flags]
 }
