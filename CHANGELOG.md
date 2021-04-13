@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.20.3 - 2021-04-13
+
+Kudos to [fturmel](http://github.com/fturmel) for working on the release.
+
+### Fixed
+
+- [Fixed broken tree-shaking caused by missing links to corresponding ESM.](https://github.com/date-fns/date-fns/pull/2339) ([#2207](https://github.com/date-fns/date-fns/issues/2207))
+
 ## v2.20.2 - 2021-04-12
 
 Kudos to [Maxim Topciu](http://github.com/maximtop) for working on the release.
