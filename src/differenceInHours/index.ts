@@ -1,7 +1,6 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_HOUR = 3600000
+import { MILLISECONDS_IN_HOUR } from '../constants'
 
 /**
  * @name differenceInHours

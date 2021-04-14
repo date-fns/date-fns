@@ -1,8 +1,7 @@
 import toInteger from '../_lib/toInteger/index'
 import addMilliseconds from '../addMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_MINUTE = 60000
+import { MILLISECONDS_IN_MINUTE } from '../constants'
 
 /**
  * @name addMinutes

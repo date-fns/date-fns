@@ -1,8 +1,7 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import addWeeks from '../addWeeks/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-
-const MILLISECONDS_IN_WEEK = 604800000
+import { MILLISECONDS_IN_WEEK } from '../constants'
 
 /**
  * @name getISOWeeksInYear

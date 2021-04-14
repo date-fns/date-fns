@@ -1,9 +1,6 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import { Duration } from '../types'
-
-// Leap year occures every 4 years, except for years that are divisable by 100 and not divisable by 400.
-// 1 mean year = (365+1/4-1/100+1/400) days = 365.2425 days
-const yearInDays = 365.2425
+import { YEAR_IN_DAYS } from '../constants'
 
 /**
  * @name milliseconds
@@ -47,8 +44,8 @@ export default function milliseconds({
 
   let totalDays = 0
 
-  if (years) totalDays += years * yearInDays
-  if (months) totalDays += months * (yearInDays / 12)
+  if (years) totalDays += years * YEAR_IN_DAYS
+  if (months) totalDays += months * (YEAR_IN_DAYS / 12)
   if (weeks) totalDays += weeks * 7
   if (days) totalDays += days
 
