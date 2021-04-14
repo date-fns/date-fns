@@ -1,3 +1,5 @@
+import { Era, Quarter, Month, Day, DayPeriod, WeekStartOptions, FirstWeekContainsDateOptions } from '@/types'
+
 export interface Locale {
   code: string
   formatDistance: FormatDistanceFn
@@ -8,10 +10,7 @@ export interface Locale {
   options?: LocaleOptions
 }
 
-export interface LocaleOptions {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
-}
+export interface LocaleOptions extends WeekStartOptions, FirstWeekContainsDateOptions { }
 
 export type FormatDistanceFn = (
   token:
@@ -40,7 +39,7 @@ export type FormatRelativeFn = (
   token: 'lastWeek' | 'yesterday' | 'today' | 'tomorrow' | 'nextWeek' | 'other',
   date: Date | number,
   baseDate: Date | number,
-  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
+  options?: WeekStartOptions
 ) => string
 
 export type LocalizeFn<TValue> = (
@@ -48,25 +47,17 @@ export type LocalizeFn<TValue> = (
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
     context?: 'formatting' | 'standalone'
+    unit?: 'second' | 'minute' | 'hour' | 'day' | 'week' | 'month' | 'quarter' | 'year' | 'date' | 'dayOfYear'
   }
 ) => string
 
 export interface Localize {
   ordinalNumber: LocalizeFn<number>
-  era: LocalizeFn<0 | 1>
-  quarter: LocalizeFn<1 | 2 | 3 | 4>
-  month: LocalizeFn<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>
-  day: LocalizeFn<0 | 1 | 2 | 3 | 4 | 5 | 6>
-  dayPeriod: LocalizeFn<
-    | 'am'
-    | 'pm'
-    | 'midnight'
-    | 'noon'
-    | 'morning'
-    | 'afternoon'
-    | 'evening'
-    | 'night'
-  >
+  era: LocalizeFn<Era>
+  quarter: LocalizeFn<Quarter>
+  month: LocalizeFn<Month>
+  day: LocalizeFn<Day>
+  dayPeriod: LocalizeFn<DayPeriod>
 }
 
 export type FormatLongFn = (options?: {
@@ -88,18 +79,9 @@ export type MatchFn<TResult> = (
 
 export interface Match {
   ordinalNumber: MatchFn<number>
-  era: MatchFn<0 | 1>
-  quarter: MatchFn<1 | 2 | 3 | 4>
-  month: MatchFn<0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11>
-  day: MatchFn<0 | 1 | 2 | 3 | 4 | 5 | 6>
-  dayPeriod: MatchFn<
-    | 'am'
-    | 'pm'
-    | 'midnight'
-    | 'noon'
-    | 'morning'
-    | 'afternoon'
-    | 'evening'
-    | 'night'
-  >
+  era: MatchFn<Era>
+  quarter: MatchFn<Quarter>
+  month: MatchFn<Month>
+  day: MatchFn<Day>
+  dayPeriod: MatchFn<DayPeriod>
 }
