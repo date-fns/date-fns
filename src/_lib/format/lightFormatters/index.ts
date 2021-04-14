@@ -15,7 +15,7 @@ import addLeadingZeros from '../../addLeadingZeros/index'
 
 const formatters = {
   // Year
-  y(date: Date, token: string) {
+  y(date: Date, token: string): string {
     // From http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_tokens
     // | Year     |     y | yy |   yyy |  yyyy | yyyyy |
     // |----------|-------|----|-------|-------|-------|
@@ -32,18 +32,18 @@ const formatters = {
   },
 
   // Month
-  M(date: Date, token: string) {
+  M(date: Date, token: string): string {
     const month = date.getUTCMonth()
     return token === 'M' ? String(month + 1) : addLeadingZeros(month + 1, 2)
   },
 
   // Day of the month
-  d(date: Date, token: string) {
+  d(date: Date, token: string): string {
     return addLeadingZeros(date.getUTCDate(), token.length)
   },
 
   // AM or PM
-  a(date: Date, token: string) {
+  a(date: Date, token: string): string {
     const dayPeriodEnumValue = date.getUTCHours() / 12 >= 1 ? 'pm' : 'am'
 
     switch (token) {
@@ -61,27 +61,27 @@ const formatters = {
   },
 
   // Hour [1-12]
-  h(date: Date, token: string) {
+  h(date: Date, token: string): string {
     return addLeadingZeros(date.getUTCHours() % 12 || 12, token.length)
   },
 
   // Hour [0-23]
-  H(date: Date, token: string) {
+  H(date: Date, token: string): string {
     return addLeadingZeros(date.getUTCHours(), token.length)
   },
 
   // Minute
-  m(date: Date, token: string) {
+  m(date: Date, token: string): string {
     return addLeadingZeros(date.getUTCMinutes(), token.length)
   },
 
   // Second
-  s(date: Date, token: string) {
+  s(date: Date, token: string): string {
     return addLeadingZeros(date.getUTCSeconds(), token.length)
   },
 
   // Fraction of second
-  S(date: Date, token: string) {
+  S(date: Date, token: string): string {
     const numberOfDigits = token.length
     const milliseconds = date.getUTCMilliseconds()
     const fractionalSeconds = Math.floor(
