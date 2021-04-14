@@ -170,7 +170,7 @@ export default function formatDistanceStrict(
     unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
     roundingMethod?: 'floor' | 'ceil' | 'round',
   } = {}
-) {
+): string {
   requiredArgs(2, arguments)
 
   const locale = options.locale || defaultLocale
