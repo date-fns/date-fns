@@ -46,7 +46,7 @@ interface Options {
   representation?: 'complete' | 'date' | 'time'
 }
 
-export default function formatISO(dirtyDate: Date | number, dirtyOptions?: Options) {
+export default function formatISO(dirtyDate: Date | number, options?: Options = {}): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
@@ -59,7 +59,6 @@ export default function formatISO(dirtyDate: Date | number, dirtyOptions?: Optio
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
   const format = options.format == null ? 'extended' : String(options.format)
   const representation =
     options.representation == null ? 'complete' : String(options.representation)
