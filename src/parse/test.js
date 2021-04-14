@@ -72,7 +72,7 @@ describe('parse', function () {
         ['R', '2019'],
         ['u', '2019'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when G is used after ${token}`, () => {
           const block = parse.bind(
@@ -149,7 +149,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when y is used after ${token}`, () => {
           const block = parse.bind(
@@ -184,14 +184,14 @@ describe('parse', function () {
     describe('two-digit numeric year', function () {
       it('works as expected', function () {
         var result = parse('02', 'YY', referenceDate, {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(2001, 11 /* Dec */, 30))
       })
 
       it('gets the 100 year range from `referenceDate`', function () {
         var result = parse('02', 'YY', new Date(1860, 6 /* Jul */, 2), {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(1901, 11 /* Dec */, 29))
       })
@@ -204,7 +204,7 @@ describe('parse', function () {
 
     it('four-digit zero-padding', function () {
       var result = parse('2018', 'YYYY', referenceDate, {
-        useAdditionalWeekYearTokens: true,
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2017, 11 /* Dec */, 31))
     })
@@ -220,7 +220,7 @@ describe('parse', function () {
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function () {
       var result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: 1 /* Mon */,
-        firstWeekContainsDate: 4,
+        firstWeekContainsDate: 4
       })
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
@@ -240,7 +240,7 @@ describe('parse', function () {
         ['D', '1', { useAdditionalDayOfYearTokens: true }],
         ['i', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when Y is used after ${token}`, () => {
           const block = parse.bind(
@@ -308,7 +308,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when R is used after ${token}`, () => {
           const block = parse.bind(
@@ -372,7 +372,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when u is used after ${token}`, () => {
           const block = parse.bind(
@@ -462,7 +462,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when Q is used after ${token}`, () => {
           const block = parse.bind(
@@ -531,7 +531,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when q is used after ${token}`, () => {
           const block = parse.bind(
@@ -599,7 +599,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when M is used after ${token}`, () => {
           const block = parse.bind(
@@ -667,7 +667,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when L is used after ${token}`, () => {
           const block = parse.bind(
@@ -708,7 +708,7 @@ describe('parse', function () {
     it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function () {
       var result = parse('49', 'w', referenceDate, {
         weekStartsOn: 1 /* Mon */,
-        firstWeekContainsDate: 4,
+        firstWeekContainsDate: 4
       })
       assert.deepEqual(result, new Date(1986, 11 /* Dec */, 1))
     })
@@ -728,7 +728,7 @@ describe('parse', function () {
         ['D', '1', { useAdditionalDayOfYearTokens: true }],
         ['i', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when w is used after ${token}`, () => {
           const block = parse.bind(
@@ -782,7 +782,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when I is used after ${token}`, () => {
           const block = parse.bind(
@@ -834,7 +834,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when d is used after ${token}`, () => {
           const block = parse.bind(
@@ -859,7 +859,7 @@ describe('parse', function () {
   describe('day of year', function () {
     it('numeric', function () {
       var result = parse('200', 'D', referenceDate, {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(1986, 6 /* Jul */, 19))
     })
@@ -871,7 +871,7 @@ describe('parse', function () {
 
     it('two-digit zero-padding', function () {
       var result = parse('01', 'DD', referenceDate, {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(1986, 0 /* Jan */, 1))
     })
@@ -903,7 +903,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, _options]) => {
         it(`throws an error when D is used after ${token}`, () => {
           const block = parse.bind(
@@ -948,7 +948,7 @@ describe('parse', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = parse('Thursday', 'EEEE', referenceDate, {
-        weekStartsOn: /* Fri */ 5,
+        weekStartsOn: /* Fri */ 5
       })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
@@ -961,7 +961,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when E is used after ${token}`, () => {
           const block = parse.bind(
@@ -1036,7 +1036,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when i is used after ${token}`, () => {
           const block = parse.bind(
@@ -1096,7 +1096,7 @@ describe('parse', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = parse('7th', 'eo', referenceDate, {
-        weekStartsOn: /* Fri */ 5,
+        weekStartsOn: /* Fri */ 5
       })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
@@ -1118,7 +1118,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when e is used after ${token}`, () => {
           const block = parse.bind(
@@ -1178,7 +1178,7 @@ describe('parse', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = parse('7th', 'co', referenceDate, {
-        weekStartsOn: /* Fri */ 5,
+        weekStartsOn: /* Fri */ 5
       })
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 10))
     })
@@ -1200,7 +1200,7 @@ describe('parse', function () {
         ['e', '1'],
         ['c', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example, options]) => {
         it(`throws an error when c is used after ${token}`, () => {
           const block = parse.bind(
@@ -1257,7 +1257,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when a is used after ${token}`, () => {
           const block = parse.bind(
@@ -1303,7 +1303,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when b is used after ${token}`, () => {
           const block = parse.bind(
@@ -1346,7 +1346,7 @@ describe('parse', function () {
         ['b', 'AM'],
         ['B', 'in the morning'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when B is used after ${token}`, () => {
           const block = parse.bind(
@@ -1390,7 +1390,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when h is used after ${token}`, () => {
           const block = parse.bind(
@@ -1436,7 +1436,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when H is used after ${token}`, () => {
           const block = parse.bind(
@@ -1482,7 +1482,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when K is used after ${token}`, () => {
           const block = parse.bind(
@@ -1528,7 +1528,7 @@ describe('parse', function () {
         ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when k is used after ${token}`, () => {
           const block = parse.bind(
@@ -1569,7 +1569,7 @@ describe('parse', function () {
       ;[
         ['m', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when m is used after ${token}`, () => {
           const block = parse.bind(
@@ -1610,7 +1610,7 @@ describe('parse', function () {
       ;[
         ['s', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when s is used after ${token}`, () => {
           const block = parse.bind(
@@ -1656,7 +1656,7 @@ describe('parse', function () {
       ;[
         ['S', '1'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when S is used after ${token}`, () => {
           const block = parse.bind(
@@ -1810,7 +1810,7 @@ describe('parse', function () {
         ['X', '-0530'],
         ['x', '-0530'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when X is used after ${token}`, () => {
           const block = parse.bind(
@@ -1964,7 +1964,7 @@ describe('parse', function () {
         ['X', '-0530'],
         ['x', '-0530'],
         ['t', '512969520'],
-        ['T', '512969520900'],
+        ['T', '512969520900']
       ].forEach(([token, example]) => {
         it(`throws an error when x is used after ${token}`, () => {
           const block = parse.bind(
@@ -2118,7 +2118,7 @@ describe('parse', function () {
       // $ExpectedMistake
       var result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: '1' /* Mon */,
-        firstWeekContainsDate: 4,
+        firstWeekContainsDate: 4
       })
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
@@ -2127,7 +2127,7 @@ describe('parse', function () {
       // $ExpectedMistake
       var result = parse('2018', 'Y', referenceDate, {
         weekStartsOn: 1 /* Mon */,
-        firstWeekContainsDate: '4',
+        firstWeekContainsDate: '4'
       })
       assert.deepEqual(result, new Date(2018, 0 /* Jan */, 1))
     })
@@ -2154,7 +2154,7 @@ describe('parse', function () {
 
       it('works correctly for two-digit year zero', function () {
         var result = parse('00', 'YY', referenceDate, {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert.deepEqual(result, new Date(1999, 11 /* Dec */, 26))
       })
@@ -2222,21 +2222,21 @@ describe('parse', function () {
     describe('day of year', function () {
       it('returns `Invalid Date` for invalid day of the year', function () {
         var result = parse('0', 'D', referenceDate, {
-          useAdditionalDayOfYearTokens: true,
+          useAdditionalDayOfYearTokens: true
         })
         assert(result instanceof Date && isNaN(result))
       })
 
       it('returns `Invalid Date` for 366th day of non-leap year', function () {
         var result = parse('366', 'D', new Date(2014, 1 /* Feb */, 1), {
-          useAdditionalDayOfYearTokens: true,
+          useAdditionalDayOfYearTokens: true
         })
         assert(result instanceof Date && isNaN(result))
       })
 
       it('parses 366th day of leap year', function () {
         var result = parse('366', 'D', new Date(2012, 1 /* Feb */, 1), {
-          useAdditionalDayOfYearTokens: true,
+          useAdditionalDayOfYearTokens: true
         })
         assert.deepEqual(result, new Date(2012, 11 /* Dec */, 31))
       })
@@ -2338,14 +2338,14 @@ describe('parse', function () {
           era: function () {
             return {
               value: 0,
-              rest: ' it works!',
+              rest: ' it works!'
             }
-          },
-        },
+          }
+        }
       }
       // $ExpectedMistake
       var result = parse('2018 foobar', "y G 'it works!'", referenceDate, {
-        locale: customLocale,
+        locale: customLocale
       })
       assert.deepEqual(result, new Date(-2017, 0 /* Jan */, 1))
     })
@@ -2427,7 +2427,7 @@ describe('parse', function () {
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       // $ExpectedMistake
       var block = parse.bind(null, dateString, formatString, referenceDate, {
-        weekStartsOn: NaN,
+        weekStartsOn: NaN
       })
       assert.throws(block, RangeError)
     })
@@ -2437,7 +2437,7 @@ describe('parse', function () {
       var formatString = "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
       // $ExpectedMistake
       var block = parse.bind(null, dateString, formatString, referenceDate, {
-        firstWeekContainsDate: NaN,
+        firstWeekContainsDate: NaN
       })
       assert.throws(block, RangeError)
     })
@@ -2482,7 +2482,7 @@ describe('parse', function () {
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = parse('2016 5', 'yyyy D', referenceDate, {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
@@ -2498,7 +2498,7 @@ describe('parse', function () {
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = parse('2016 05', 'yyyy DD', referenceDate, {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, new Date(2016, 0, 5))
     })
@@ -2514,7 +2514,7 @@ describe('parse', function () {
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = parse('16 1', 'YY w', referenceDate, {
-        useAdditionalWeekYearTokens: true,
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 11, 27))
     })
@@ -2530,7 +2530,7 @@ describe('parse', function () {
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = parse('2016 1', 'YYYY w', referenceDate, {
-        useAdditionalWeekYearTokens: true,
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, new Date(2015, 11, 27))
     })

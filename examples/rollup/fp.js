@@ -1,9 +1,9 @@
 import addYears from 'date-fns/esm/fp/addYears'
-import {formatWithOptions} from 'date-fns/esm/fp'
-import {eo} from 'date-fns/esm/locale'
+import { formatWithOptions } from 'date-fns/esm/fp'
+import { eo } from 'date-fns/esm/locale'
 
 const addFiveYears = addYears(5)
-const dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
+const dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
 
 const dates = [
   new Date(2017, 0 /* Jan */, 1),

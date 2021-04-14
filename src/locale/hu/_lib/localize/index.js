@@ -115,7 +115,7 @@ var localize = {
     values: quarterValues,
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

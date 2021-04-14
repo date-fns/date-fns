@@ -47,8 +47,24 @@ var monthValues = {
 var dayValues = {
   narrow: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
   short: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'],
-  abbreviated: ['domingo', 'segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado'],
-  wide: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']
+  abbreviated: [
+    'domingo',
+    'segunda',
+    'terça',
+    'quarta',
+    'quinta',
+    'sexta',
+    'sábado'
+  ],
+  wide: [
+    'domingo',
+    'segunda-feira',
+    'terça-feira',
+    'quarta-feira',
+    'quinta-feira',
+    'sexta-feira',
+    'sábado'
+  ]
 }
 
 var dayPeriodValues = {
@@ -138,7 +154,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

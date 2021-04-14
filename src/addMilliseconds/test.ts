@@ -4,8 +4,8 @@
 import assert from 'assert'
 import addMilliseconds from '.'
 
-describe('addMilliseconds', function() {
-  it('adds the given number of milliseconds', function() {
+describe('addMilliseconds', function () {
+  it('adds the given number of milliseconds', function () {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       750
@@ -16,7 +16,7 @@ describe('addMilliseconds', function() {
     )
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', function () {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0).getTime(),
       500
@@ -27,7 +27,7 @@ describe('addMilliseconds', function() {
     )
   })
 
-  it('converts a fractional number to an integer', function() {
+  it('converts a fractional number to an integer', function () {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       750.75
@@ -38,7 +38,7 @@ describe('addMilliseconds', function() {
     )
   })
 
-  it('implicitly converts number arguments', function() {
+  it('implicitly converts number arguments', function () {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 5),
       //@ts-expect-error
@@ -50,19 +50,19 @@ describe('addMilliseconds', function() {
     )
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', function () {
     const date = new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0)
     addMilliseconds(date, 250)
     assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', function () {
     const result = addMilliseconds(new Date(NaN), 750)
     //@ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function() {
+  it('returns `Invalid Date` if the given amount is NaN', function () {
     const result = addMilliseconds(
       new Date(2014, 6 /* Jul */, 10, 12, 45, 30, 0),
       NaN
@@ -71,7 +71,7 @@ describe('addMilliseconds', function() {
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function() {
+  it('throws TypeError exception if passed less than 2 arguments', function () {
     //@ts-expect-error
     assert.throws(addMilliseconds.bind(null), TypeError)
     //@ts-expect-error

@@ -30,7 +30,7 @@ const getFlowFPTypeAliases = (arity = 4) =>
         | <A,B>(a: A, b: B) => CurriedFn2<C, D, R>
         | <A,B,C>(a: A, b: B, c: C) => CurriedFn1<D, R>
         | <A,B,C,D>(a: A, b: B, c: C, d: D) => R
-    `,
+    `
   ].slice(0, arity)
 
 function getFlowTypeAlias(type) {
@@ -186,5 +186,5 @@ function writeFile(relativePath, content) {
 }
 
 module.exports = {
-  generateFlowTypings,
+  generateFlowTypings
 }

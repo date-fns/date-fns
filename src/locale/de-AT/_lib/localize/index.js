@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['v.Chr.', 'n.Chr.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['vor Christus', 'nach Christus'],
+  wide: ['vor Christus', 'nach Christus']
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'],
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
 }
 
 // Note: in German, the names of days of the week and months are capitalized.
@@ -30,7 +30,7 @@ var monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Dez',
+    'Dez'
   ],
   wide: [
     'Jänner',
@@ -44,8 +44,8 @@ var monthValues = {
     'September',
     'Oktober',
     'November',
-    'Dezember',
-  ],
+    'Dezember'
+  ]
 }
 
 var dayValues = {
@@ -59,8 +59,8 @@ var dayValues = {
     'Mittwoch',
     'Donnerstag',
     'Freitag',
-    'Samstag',
-  ],
+    'Samstag'
+  ]
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
@@ -73,7 +73,7 @@ var dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachm.',
     evening: 'Abend',
-    night: 'Nacht',
+    night: 'Nacht'
   },
   abbreviated: {
     am: 'vorm.',
@@ -83,7 +83,7 @@ var dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachmittag',
     evening: 'Abend',
-    night: 'Nacht',
+    night: 'Nacht'
   },
   wide: {
     am: 'vormittags',
@@ -93,8 +93,8 @@ var dayPeriodValues = {
     morning: 'Morgen',
     afternoon: 'Nachmittag',
     evening: 'Abend',
-    night: 'Nacht',
-  },
+    night: 'Nacht'
+  }
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -105,7 +105,7 @@ var formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachm.',
     evening: 'abends',
-    night: 'nachts',
+    night: 'nachts'
   },
   abbreviated: {
     am: 'vorm.',
@@ -115,7 +115,7 @@ var formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachmittags',
     evening: 'abends',
-    night: 'nachts',
+    night: 'nachts'
   },
   wide: {
     am: 'vormittags',
@@ -125,8 +125,8 @@ var formattingDayPeriodValues = {
     morning: 'morgens',
     afternoon: 'nachmittags',
     evening: 'abends',
-    night: 'nachts',
-  },
+    night: 'nachts'
+  }
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -140,7 +140,7 @@ var localize = {
 
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide',
+    defaultWidth: 'wide'
   }),
 
   quarter: buildLocalizeFn({
@@ -148,25 +148,25 @@ var localize = {
     defaultWidth: 'wide',
     argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    },
+    }
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide',
+    defaultWidth: 'wide'
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide',
+    defaultWidth: 'wide'
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide',
-  }),
+    defaultFormattingWidth: 'wide'
+  })
 }
 
 export default localize

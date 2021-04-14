@@ -4,7 +4,7 @@ var formatWithOptions = dateFns.formatWithOptions
 var eo = require('date-fns/locale/eo')
 
 var addFiveYears = addYears(5)
-var dateToString = formatWithOptions({locale: eo}, 'd MMMM yyyy')
+var dateToString = formatWithOptions({ locale: eo }, 'd MMMM yyyy')
 
 var dates = [
   new Date(2017, 0 /* Jan */, 1),

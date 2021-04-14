@@ -41,7 +41,7 @@ export default function milliseconds({
   days,
   hours,
   minutes,
-  seconds,
+  seconds
 }: Duration): number {
   requiredArgs(1, arguments)
 

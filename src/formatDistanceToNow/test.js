@@ -19,42 +19,42 @@ describe('formatDistanceToNow', () => {
     describe('when the includeSeconds option is true', () => {
       it('less than 5 seconds', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 58), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === 'less than 5 seconds')
       })
 
       it('less than 10 seconds', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 52), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === 'less than 10 seconds')
       })
 
       it('less than 20 seconds', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 45), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === 'less than 20 seconds')
       })
 
       it('half a minute', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 35), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === 'half a minute')
       })
 
       it('less than a minute', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 15), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === 'less than a minute')
       })
 
       it('1 minute', () => {
         const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 0), {
-          includeSeconds: true,
+          includeSeconds: true
         })
         assert(result === '1 minute')
       })
@@ -152,14 +152,14 @@ describe('formatDistanceToNow', () => {
     it('adds a past suffix', () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 10, 31, 35), {
         includeSeconds: true,
-        addSuffix: true,
+        addSuffix: true
       })
       assert(result === 'half a minute ago')
     })
 
     it('adds a future suffix', () => {
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
-        addSuffix: true,
+        addSuffix: true
       })
       assert(result === 'in about 1 hour')
     })
@@ -196,13 +196,13 @@ describe('formatDistanceToNow', () => {
       }
 
       const customLocale = {
-        formatDistance: localizeDistance,
+        formatDistance: localizeDistance
       }
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
         // $ExpectedMistake
-        locale: customLocale,
+        locale: customLocale
       })
 
       assert(result === 'It works!')

@@ -27,9 +27,9 @@ console.log('Posting release tweet...')
 fetch(zapierHookURL, {
   method: 'POST',
   body: JSON.stringify({
-    tweet: `date-fns ${tag} is published! See changelog: ${changelogUrl}.`,
+    tweet: `date-fns ${tag} is published! See changelog: ${changelogUrl}.`
   }),
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/json' }
 }).catch((err) => {
   console.error(err)
   process.exit(1)

@@ -9,5 +9,5 @@ function getConstants() {
       files: path.resolve(process.cwd(), 'src/constants/index.js'),
       'no-cache': true
     })
-    .filter(c => c.kind === 'constant' && !c.undocumented)
+    .filter((c) => c.kind === 'constant' && !c.undocumented)
 }

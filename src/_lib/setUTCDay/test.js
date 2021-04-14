@@ -12,7 +12,7 @@ describe('setUTCDay', function () {
 
   it('allows to specify which day is the first day of the week', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
-      weekStartsOn: 1,
+      weekStartsOn: 1
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
@@ -20,8 +20,8 @@ describe('setUTCDay', function () {
   it('allows to specify which day is the first day of the week in locale', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
@@ -30,8 +30,8 @@ describe('setUTCDay', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
       weekStartsOn: 1,
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
@@ -44,14 +44,14 @@ describe('setUTCDay', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 7, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 14)))
     })
 
     it('sets the day of another week in the future', function () {
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 14, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 21)))
     })
@@ -65,14 +65,14 @@ describe('setUTCDay', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), -7, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 31)))
     })
 
     it('set the day of another week in the past', function () {
       var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), -14, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(Date.UTC(2014, 7 /* Aug */, 24)))
     })
@@ -98,7 +98,7 @@ describe('setUTCDay', function () {
 
   it('implicitly converts options', function () {
     var result = setUTCDay(new Date(Date.UTC(2014, 8 /* Sep */, 1)), 0, {
-      weekStartsOn: '1',
+      weekStartsOn: '1'
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 7)))
   })
@@ -121,7 +121,7 @@ describe('setUTCDay', function () {
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     var block = setUTCDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {
-      weekStartsOn: NaN,
+      weekStartsOn: NaN
     })
     assert.throws(block, RangeError)
   })

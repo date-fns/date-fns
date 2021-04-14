@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: function(date) {
+  lastWeek: function (date) {
     switch (date.getUTCDay()) {
       case 6: //Σάββατο
         return "'το προηγούμενο' eeee 'στις' p"

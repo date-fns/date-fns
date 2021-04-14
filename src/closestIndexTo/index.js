@@ -59,7 +59,7 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate, index) {
+  datesArray.forEach(function (dirtyDate, index) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

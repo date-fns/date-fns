@@ -16,7 +16,7 @@ describe('intervalToDuration', function () {
       days: 20,
       hours: 7,
       minutes: 5,
-      seconds: 0,
+      seconds: 0
     })
   })
 
@@ -31,7 +31,7 @@ describe('intervalToDuration', function () {
       days: 1,
       hours: 1,
       minutes: 1,
-      seconds: 1,
+      seconds: 1
     })
   })
 
@@ -46,7 +46,7 @@ describe('intervalToDuration', function () {
       days: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0,
+      seconds: 0
     })
   })
 
@@ -55,7 +55,7 @@ describe('intervalToDuration', function () {
       assert.deepEqual(
         intervalToDuration({
           start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
-          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
         }),
         {
           years: 0,
@@ -63,14 +63,14 @@ describe('intervalToDuration', function () {
           days: 1,
           hours: 1,
           minutes: 0,
-          seconds: 0,
+          seconds: 0
         }
       )
 
       assert.deepEqual(
         intervalToDuration({
           start: new Date(2012, 1 /* Feb */, 29, 9, 0, 0),
-          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 29, 10, 0, 0)
         }),
         {
           years: 0,
@@ -78,14 +78,14 @@ describe('intervalToDuration', function () {
           days: 0,
           hours: 1,
           minutes: 0,
-          seconds: 0,
+          seconds: 0
         }
       )
 
       assert.deepEqual(
         intervalToDuration({
           start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
-          end: new Date(2012, 1 /* Feb */, 28, 10, 0, 0),
+          end: new Date(2012, 1 /* Feb */, 28, 10, 0, 0)
         }),
         {
           years: 0,
@@ -93,7 +93,7 @@ describe('intervalToDuration', function () {
           days: 0,
           hours: 1,
           minutes: 0,
-          seconds: 0,
+          seconds: 0
         }
       )
 
@@ -101,7 +101,7 @@ describe('intervalToDuration', function () {
       assert.deepEqual(
         intervalToDuration({
           start: new Date(2021, 1 /* Feb */, 28, 7, 23, 7),
-          end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18),
+          end: new Date(2021, 1 /* Feb */, 28, 7, 38, 18)
         }),
         {
           years: 0,
@@ -109,7 +109,7 @@ describe('intervalToDuration', function () {
           days: 0,
           hours: 0,
           minutes: 15,
-          seconds: 11,
+          seconds: 11
         }
       )
     })

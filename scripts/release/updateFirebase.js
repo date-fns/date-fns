@@ -25,7 +25,7 @@ const features = {
   camelCase: true,
   fp: true,
   esm: true,
-  utc: false,
+  utc: false
 }
 
 function generateLocale(tag, locale) {
@@ -45,7 +45,7 @@ function generateLocale(tag, locale) {
         } else {
           return acc
         }
-      }, []),
+      }, [])
     }
   } else {
     return null
@@ -84,7 +84,7 @@ function generateVersionData() {
       category,
       title,
       description,
-      key: index,
+      key: index
     })
   )
 
@@ -99,7 +99,7 @@ function generateVersionData() {
     docsKeys,
     docsCategories,
     locales,
-    features,
+    features
   }
 }
 

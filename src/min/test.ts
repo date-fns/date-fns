@@ -12,7 +12,7 @@ describe('min', () => {
   it('returns the earliest date', () => {
     const result = min([
       new Date(1989, 6 /* Jul */, 10),
-      new Date(1987, 1 /* Feb */, 11),
+      new Date(1987, 1 /* Feb */, 11)
     ])
     assert.deepStrictEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
@@ -22,7 +22,7 @@ describe('min', () => {
       new Date(1987, 1 /* Feb */, 11),
       new Date(1989, 6 /* Jul */, 10),
       new Date(1985, 6 /* Jul */, 2),
-      new Date(1990, 0 /* Jan */, 1),
+      new Date(1990, 0 /* Jan */, 1)
     ])
     assert.deepStrictEqual(result, new Date(1985, 6 /* Jul */, 2))
   })
@@ -30,7 +30,7 @@ describe('min', () => {
   it('accepts timestamps', () => {
     const result = min([
       new Date(1989, 6 /* Jul */, 10).getTime(),
-      new Date(1987, 1 /* Feb */, 11).getTime(),
+      new Date(1987, 1 /* Feb */, 11).getTime()
     ])
     assert.deepStrictEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
@@ -39,7 +39,7 @@ describe('min', () => {
     const result = min([
       new Date(1989, 6 /* Jul */, 10),
       new Date(NaN),
-      new Date(1987, 1 /* Feb */, 11),
+      new Date(1987, 1 /* Feb */, 11)
     ])
     assert(isInvalidDate(result))
   })
@@ -49,7 +49,7 @@ describe('min', () => {
       new Date(1989, 6 /* Jul */, 10),
       // @ts-expect-error
       undefined,
-      new Date(1987, 1 /* Feb */, 11),
+      new Date(1987, 1 /* Feb */, 11)
     ])
     assert(isInvalidDate(result))
   })
@@ -64,7 +64,7 @@ describe('min', () => {
     const result = min({
       '0': new Date(1989, 6 /* Jul */, 10),
       '1': new Date(1987, 1 /* Feb */, 11),
-      length: 2,
+      length: 2
     })
     assert.deepStrictEqual(result, new Date(1987, 1 /* Feb */, 11))
   })
@@ -74,7 +74,7 @@ describe('min', () => {
       // @ts-expect-error
       new Set([
         new Date(1989, 6 /* Jul */, 10),
-        new Date(1987, 1 /* Feb */, 11),
+        new Date(1987, 1 /* Feb */, 11)
       ])
     )
     assert.deepStrictEqual(result, new Date(1987, 1 /* Feb */, 11))

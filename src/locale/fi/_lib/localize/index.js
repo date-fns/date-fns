@@ -47,7 +47,7 @@ var monthValues = {
 var formattingMonthValues = {
   narrow: monthValues.narrow,
   abbreviated: monthValues.abbreviated,
-  wide: monthValues.wide.map(name => name + 'ta')
+  wide: monthValues.wide.map((name) => name + 'ta')
 }
 
 var dayValues = {
@@ -69,7 +69,7 @@ var formattingDayValues = {
   narrow: dayValues.narrow,
   short: dayValues.short,
   abbreviated: dayValues.abbreviated,
-  wide: dayValues.wide.map(name => name + 'na')
+  wide: dayValues.wide.map((name) => name + 'na')
 }
 
 var dayPeriodValues = {
@@ -121,7 +121,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

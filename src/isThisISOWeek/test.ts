@@ -30,7 +30,7 @@ describe('isSameISOWeek', () => {
     assert(isThisISOWeek(date) === false)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(isThisISOWeek.bind(null), TypeError)
   })
 })

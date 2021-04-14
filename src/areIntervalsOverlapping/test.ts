@@ -51,7 +51,7 @@ describe('areIntervalsOverlapping', function () {
         { start: initialIntervalStart, end: initialIntervalEnd },
         {
           start: oneDayOverlappingIntervalStart,
-          end: oneDayOverlappingIntervalEnd,
+          end: oneDayOverlappingIntervalEnd
         }
       )
       assert(isOverlapping === false)
@@ -111,7 +111,7 @@ describe('areIntervalsOverlapping', function () {
         { start: initialIntervalStart, end: initialIntervalEnd },
         {
           start: startOverlappingIntervalStart,
-          end: startOverlappingIntervalEnd,
+          end: startOverlappingIntervalEnd
         }
       )
       assert(isOverlapping === true)
@@ -165,7 +165,7 @@ describe('areIntervalsOverlapping', function () {
     // @ts-expect-error
     const block = areIntervalsOverlapping.bind(null, undefined, {
       start: new Date(2016, 10, 5),
-      end: new Date(2016, 10, 15),
+      end: new Date(2016, 10, 15)
     })
     assert.throws(block, RangeError)
   })

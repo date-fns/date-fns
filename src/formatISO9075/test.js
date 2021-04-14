@@ -44,8 +44,8 @@ describe('formatISO9075', () => {
     )
   })
 
-  describe('implicitly converts options', function() {
-    it('`format`', function() {
+  describe('implicitly converts options', function () {
+    it('`format`', function () {
       // eslint-disable-next-line no-new-wrappers
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -54,7 +54,7 @@ describe('formatISO9075', () => {
       assert(result === '20191004 123013')
     })
 
-    it('`representation`', function() {
+    it('`representation`', function () {
       // eslint-disable-next-line no-new-wrappers
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -64,7 +64,7 @@ describe('formatISO9075', () => {
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
     // $ExpectedMistake
     var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       format: 'something else'
@@ -72,7 +72,7 @@ describe('formatISO9075', () => {
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
     // $ExpectedMistake
     var block = formatISO9075.bind(null, new Date(2019, 2 /* Mar */, 3), {
       representation: 'something else'
@@ -84,7 +84,7 @@ describe('formatISO9075', () => {
     assert.throws(formatISO9075.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(formatISO9075.bind(null), TypeError)
   })
 })

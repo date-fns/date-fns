@@ -34,7 +34,7 @@ async function generateDocsFromSource() {
       .getTemplateData({
         files: fn.fullPath,
         'no-cache': true,
-        configure: path.resolve(process.cwd(), 'jsdoc2md.json'),
+        configure: path.resolve(process.cwd(), 'jsdoc2md.json')
       })
       .then((result) => result[0])
   )
@@ -52,7 +52,7 @@ async function generateDocsFromSource() {
         title: doc.name,
         description: doc.summary,
         content: doc,
-        pure,
+        pure
       }
     })
     .reduce(
@@ -167,7 +167,7 @@ function generateSharedDocs() {
       (fn) =>
         jsDocParser.getTemplateDataSync({
           files: fn.fullPath,
-          'no-cache': true,
+          'no-cache': true
         })[0]
     )
     .map((doc) => ({
@@ -178,7 +178,7 @@ function generateSharedDocs() {
       title: doc.name,
       description: doc.summary,
       content: doc,
-      properties: paramsToTree(doc.properties),
+      properties: paramsToTree(doc.properties)
     }))
 
   return Promise.resolve(docs)
@@ -200,7 +200,7 @@ function generateFnDoc(dirtyDoc) {
     ),
     usage: generateUsage(title, isFPFn),
     usageTabs: generateUsageTabs(isFPFn),
-    syntax: generateSyntaxString(title, args, isFPFn),
+    syntax: generateSyntaxString(title, args, isFPFn)
   })
 }
 
@@ -234,8 +234,8 @@ function generateFPFnDoc(dirtyDoc) {
       exceptions,
       params,
       examples:
-        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information',
-    }),
+        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information'
+    })
   })
 }
 
@@ -265,7 +265,7 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
     relatedDocs: {
       default: urlId,
       fp: `fp/${urlId}`,
-      fpWithOptions: `fp/${urlId}WithOptions`,
+      fpWithOptions: `fp/${urlId}WithOptions`
     },
     usage: generateUsage(title, isFPFn),
     usageTabs: generateUsageTabs(isFPFn),
@@ -277,8 +277,8 @@ function generateFPFnWithOptionsDoc(dirtyDoc) {
       longname: `${doc.content.longname}WithOptions`,
       name: `${doc.content.name}WithOptions`,
       examples:
-        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information',
-    }),
+        'See [FP Guide](https://date-fns.org/docs/FP-Guide) for more information'
+    })
   })
 }
 
@@ -298,12 +298,12 @@ function generateUsage(name, isFPFn) {
   let usage = {
     commonjs: {
       title: 'CommonJS',
-      code: `var ${name} = require('date-fns${submodule}/${name}')`,
+      code: `var ${name} = require('date-fns${submodule}/${name}')`
     },
 
     es2015: {
       title: 'ES 2015',
-      code: `import ${name} from 'date-fns${submodule}/${name}'`,
+      code: `import ${name} from 'date-fns${submodule}/${name}'`
     },
 
     esm: {
@@ -312,8 +312,8 @@ function generateUsage(name, isFPFn) {
         submodule && `/esm/${submodule}`
       }'`,
       text:
-        'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information',
-    },
+        'See [ECMAScript Modules guide](https://date-fns.org/docs/ECMAScript-Modules) for more information'
+    }
   }
 
   return usage

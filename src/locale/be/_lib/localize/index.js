@@ -180,7 +180,8 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   } else {
     suffix =
       (number % 10 === 2 || number % 10 === 3) &&
-      (number % 100 !== 12 && number % 100 !== 13)
+      number % 100 !== 12 &&
+      number % 100 !== 13
         ? '-і'
         : '-ы'
   }
@@ -199,7 +200,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

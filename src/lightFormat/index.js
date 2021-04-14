@@ -94,7 +94,7 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
 
   var result = formatStr
     .match(formattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"

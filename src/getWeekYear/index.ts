@@ -5,7 +5,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 import {
   WeekStartOptions,
   LocaleOptions,
-  FirstWeekContainsDateOptions,
+  FirstWeekContainsDateOptions
 } from '../types'
 
 /**

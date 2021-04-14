@@ -24,7 +24,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subQuarters(new Date(2014, 8, 1), 3)
  * //=> Sun Dec 01 2013 00:00:00
  */
-export default function subQuarters(dirtyDate: Date | number, dirtyAmount: number): Date {
+export default function subQuarters(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

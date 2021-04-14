@@ -22,8 +22,8 @@ describe('lastDayOfWeek', function () {
     const result = lastDayOfWeek(date, {
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
@@ -34,8 +34,8 @@ describe('lastDayOfWeek', function () {
       weekStartsOn: 1,
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })

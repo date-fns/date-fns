@@ -5,8 +5,8 @@ import assert from 'assert'
 import sinon from 'sinon'
 import endOfTomorrow from '.'
 
-describe('endOfTomorrow', function() {
-  it('returns tomorrow with the time settled to 23:59:59.999', function() {
+describe('endOfTomorrow', function () {
+  it('returns tomorrow with the time settled to 23:59:59.999', function () {
     const clock = sinon.useFakeTimers(
       new Date(2014, 8 /* Sep */, 25, 14, 30, 45, 500).getTime()
     )
@@ -17,7 +17,7 @@ describe('endOfTomorrow', function() {
     clock.restore()
   })
 
-  it('handles dates before 100 AD', function() {
+  it('handles dates before 100 AD', function () {
     const now = new Date(0)
     now.setFullYear(14, 8 /* Sep */, 25)
     now.setHours(14, 30, 45, 500)

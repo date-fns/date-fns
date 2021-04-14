@@ -55,7 +55,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
           .request('GET /repos/{owner}/{repo}/commits/{ref}', {
             owner: 'date-fns',
             repo: 'date-fns',
-            ref: c.hash,
+            ref: c.hash
           })
           .then(({ data }) => [c.hash, data.author?.login] as [string, string])
       )
@@ -69,7 +69,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     const author: Author = {
       login: authorsMap[commit.hash],
       email: commit.author_email,
-      name: commit.author_name,
+      name: commit.author_name
     }
 
     const prCaptures = commit.message.match(/\(#(\d+)\)/)
@@ -103,13 +103,13 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     version = {
       major: lastVersion.major,
       minor: lastVersion.minor + 1,
-      patch: 0,
+      patch: 0
     }
   } else {
     version = {
       major: lastVersion.major,
       minor: lastVersion.minor,
-      patch: lastVersion.patch + 1,
+      patch: lastVersion.patch + 1
     }
   }
 
@@ -122,7 +122,7 @@ function parseVersion(tag: string): Version {
   return {
     major: parseInt(captures[1]),
     minor: parseInt(captures[2]),
-    patch: parseInt(captures[3]),
+    patch: parseInt(captures[3])
   }
 }
 
@@ -131,12 +131,12 @@ function extractItems(
   {
     author,
     pr,
-    issues,
+    issues
   }: { author: Author; pr: number | undefined; issues: number[] | undefined }
 ): ChangelogItem[] {
   const item = ({
     type,
-    message,
+    message
   }: {
     type: ChangelogType
     message: string
@@ -161,7 +161,7 @@ function extractItems(
       message: message.replace(issuesRegExp, ''),
       pr,
       issues: itemIssues,
-      breaking,
+      breaking
     }
   }
 
@@ -276,7 +276,7 @@ var thanksOptions = [
   (authors: string) => `Kudos to ${authors} for working on the release.`,
   (authors: string) => `Thanks to ${authors} for working on the release.`,
   (authors: string) => `This release is brought to you by ${authors}.`,
-  (authors: string) => `On this release worked ${authors}.`,
+  (authors: string) => `On this release worked ${authors}.`
 ]
 
 var fixedSentenceRegExp = /^(breaking:\s?)?(fixed\s.+)/i

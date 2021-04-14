@@ -10,7 +10,9 @@ monthsTokens.forEach(function (monthToken) {
     var dayOfMonthToken = date.getUTCDate() === 1 ? 'Do' : 'D'
     var dayOfMonthFormatter = commonFormatters[dayOfMonthToken]
     var monthFormatter = commonFormatters[monthToken]
-    return dayOfMonthFormatter(date, options) + ' ' + monthFormatter(date, options)
+    return (
+      dayOfMonthFormatter(date, options) + ' ' + monthFormatter(date, options)
+    )
   }
 })
 

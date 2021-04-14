@@ -21,7 +21,7 @@ function declension(scheme, count, time) {
 }
 
 function extractPreposition(token) {
-  var result = ['lessThan', 'about', 'over', 'almost'].filter(function(
+  var result = ['lessThan', 'about', 'over', 'almost'].filter(function (
     preposition
   ) {
     return !!token.match(new RegExp('^' + preposition))

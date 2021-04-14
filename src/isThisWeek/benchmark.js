@@ -8,12 +8,12 @@ import isThisWeek from '.'
 suite(
   'isThisWeek',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return isThisWeek(this.date)
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
     }
   }

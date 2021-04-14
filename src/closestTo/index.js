@@ -57,7 +57,7 @@ export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate) {
+  datesArray.forEach(function (dirtyDate) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

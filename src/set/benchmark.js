@@ -7,17 +7,17 @@ import moment from 'moment'
 
 suite(
   'set',
-  function() {
-    benchmark('date-fns', function() {
+  function () {
+    benchmark('date-fns', function () {
       return set(this.date, { year: 2014, month: 8 })
     })
 
-    benchmark('Moment.js', function() {
+    benchmark('Moment.js', function () {
       return this.moment.set({ year: 2014, month: 3 })
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date(2013, 7)
       this.moment = moment()
     }

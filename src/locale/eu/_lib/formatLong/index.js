@@ -4,7 +4,7 @@ var dateFormats = {
   full: "EEEE, y'ko' MMMM'ren' d'a' y'ren'",
   long: "y'ko' MMMM'ren' d'a'",
   medium: 'y MMM d',
-  short: 'yy/MM/dd',
+  short: 'yy/MM/dd'
 }
 var timeFormats = {
   full: 'HH:mm:ss zzzz',

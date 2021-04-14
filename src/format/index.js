@@ -413,7 +413,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
 
   var result = formatStr
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -423,7 +423,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     })
     .join('')
     .match(formattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"

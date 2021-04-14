@@ -1,4 +1,4 @@
-export default function convertToFP (fn, arity, a) {
+export default function convertToFP(fn, arity, a) {
   a = a || []
 
   if (a.length >= arity) {

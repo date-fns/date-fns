@@ -19,8 +19,8 @@ describe('setDay', function () {
     var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
@@ -30,8 +30,8 @@ describe('setDay', function () {
       weekStartsOn: 1,
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
@@ -44,21 +44,21 @@ describe('setDay', function () {
   it('implicitly converts options', function () {
     // $ExpectedMistake
     var result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
-      weekStartsOn: '1',
+      weekStartsOn: '1'
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
   it('specifies Monday as the first day of the week', function () {
     var result = setDay(new Date(2014, 8 /* Sep */, 6), 1, {
-      weekStartsOn: 1,
+      weekStartsOn: 1
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1))
   })
 
   it('specifies Tuesday as the first day of the week', function () {
     var result = setDay(new Date(2014, 8 /* Sep */, 6), 1, {
-      weekStartsOn: 2,
+      weekStartsOn: 2
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
   })
@@ -71,14 +71,14 @@ describe('setDay', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = setDay(new Date(2014, 8 /* Sep */, 1), 7, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(2014, 8 /* Sep */, 8))
     })
 
     it('sets the day of another week in the future', function () {
       var result = setDay(new Date(2014, 8 /* Sep */, 1), 14, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(2014, 8 /* Sep */, 15))
     })
@@ -92,14 +92,14 @@ describe('setDay', function () {
 
     it('allows to specify which day is the first day of the week', function () {
       var result = setDay(new Date(2014, 8 /* Sep */, 1), -7, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(2014, 7 /* Aug */, 25))
     })
 
     it('set the day of another week in the past', function () {
       var result = setDay(new Date(2014, 8 /* Sep */, 1), -14, {
-        weekStartsOn: 1,
+        weekStartsOn: 1
       })
       assert.deepEqual(result, new Date(2014, 7 /* Aug */, 18))
     })
@@ -135,7 +135,7 @@ describe('setDay', function () {
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     // $ExpectedMistake
     var block = setDay.bind(null, new Date(2014, 8 /* Sep */, 1), 0, {
-      weekStartsOn: NaN,
+      weekStartsOn: NaN
     })
     assert.throws(block, RangeError)
   })

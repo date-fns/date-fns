@@ -62,7 +62,7 @@ var localize = {
   weekdays: buildLocalizeArrayFn(weekdayValues, 'long'),
   month: buildLocalizeFn(monthValues, 'long'),
   months: buildLocalizeArrayFn(monthValues, 'long'),
-  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function(hours) {
+  timeOfDay: buildLocalizeFn(timeOfDayValues, 'long', function (hours) {
     return hours / 12 >= 1 ? 1 : 0
   }),
   timesOfDay: buildLocalizeArrayFn(timeOfDayValues, 'long')

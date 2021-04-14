@@ -433,7 +433,7 @@ export default function parse(
 
   var tokens = formatString
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -543,25 +543,25 @@ export default function parse(
   }
 
   var uniquePrioritySetters = setters
-    .map(function(setter) {
+    .map(function (setter) {
       return setter.priority
     })
-    .sort(function(a, b) {
+    .sort(function (a, b) {
       return b - a
     })
-    .filter(function(priority, index, array) {
+    .filter(function (priority, index, array) {
       return array.indexOf(priority) === index
     })
-    .map(function(priority) {
+    .map(function (priority) {
       return setters
-        .filter(function(setter) {
+        .filter(function (setter) {
           return setter.priority === priority
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return b.subPriority - a.subPriority
         })
     })
-    .map(function(setterArray) {
+    .map(function (setterArray) {
       return setterArray[0]
     })
 

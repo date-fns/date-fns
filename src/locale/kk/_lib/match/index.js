@@ -113,7 +113,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function(value) {
+    valueCallback: function (value) {
       return parseInt(value, 10)
     }
   }),
@@ -130,7 +130,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
+    valueCallback: function (index) {
       return index + 1
     }
   }),

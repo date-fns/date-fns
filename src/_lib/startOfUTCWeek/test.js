@@ -21,8 +21,8 @@ describe('startOfUTCWeek', function () {
     var date = new Date(Date.UTC(2014, 8 /* Sep */, 2, 11, 55, 0))
     var result = startOfUTCWeek(date, {
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })
@@ -32,8 +32,8 @@ describe('startOfUTCWeek', function () {
     var result = startOfUTCWeek(date, {
       weekStartsOn: 1,
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert.deepEqual(result, new Date(Date.UTC(2014, 8 /* Sep */, 1)))
   })

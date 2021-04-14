@@ -5,17 +5,21 @@
 import endOfISOWeek from '.'
 import moment from 'moment'
 
-suite('endOfISOWeek', function () {
-  benchmark('date-fns', function () {
-    return endOfISOWeek(this.date)
-  })
+suite(
+  'endOfISOWeek',
+  function () {
+    benchmark('date-fns', function () {
+      return endOfISOWeek(this.date)
+    })
 
-  benchmark('Moment.js', function () {
-    return this.moment.endOf('isoWeek')
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
-    this.moment = moment()
+    benchmark('Moment.js', function () {
+      return this.moment.endOf('isoWeek')
+    })
+  },
+  {
+    setup: function () {
+      this.date = new Date()
+      this.moment = moment()
+    }
   }
-})
+)

@@ -28,8 +28,8 @@ describe('endOfWeek', function () {
     var result = endOfWeek(date, {
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert.deepStrictEqual(
       result,
@@ -43,8 +43,8 @@ describe('endOfWeek', function () {
       weekStartsOn: 1,
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert.deepStrictEqual(
       result,

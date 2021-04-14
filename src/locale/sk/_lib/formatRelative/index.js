@@ -48,7 +48,7 @@ function nextWeek(day) {
 }
 
 var formatRelativeLocale = {
-  lastWeek: function(date, baseDate, options) {
+  lastWeek: function (date, baseDate, options) {
     var day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)
@@ -59,7 +59,7 @@ var formatRelativeLocale = {
   yesterday: "'včera o' p",
   today: "'dnes o' p",
   tomorrow: "'zajtra o' p",
-  nextWeek: function(date, baseDate, options) {
+  nextWeek: function (date, baseDate, options) {
     var day = date.getUTCDay()
     if (isSameUTCWeek(date, baseDate, options)) {
       return thisWeek(day)

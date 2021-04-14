@@ -22,7 +22,7 @@ function declension(scheme, count) {
 }
 
 function buildLocalizeTokenFn(scheme) {
-  return function(count, options) {
+  return function (count, options) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         if (scheme.future) {
@@ -77,7 +77,7 @@ var formatDistanceLocale = {
     }
   }),
 
-  halfAMinute: function(_, options) {
+  halfAMinute: function (_, options) {
     if (options.addSuffix) {
       if (options.comparison > 0) {
         return 'жарты минут ішінде'

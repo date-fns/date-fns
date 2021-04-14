@@ -92,7 +92,7 @@ var match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function(value) {
+    valueCallback: function (value) {
       var number = parseInt(value, 10)
       return isNaN(number) ? ordinalName.indexOf(value) + 1 : number
     }
@@ -110,7 +110,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
+    valueCallback: function (index) {
       return index + 1
     }
   }),

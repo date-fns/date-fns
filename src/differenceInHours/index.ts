@@ -28,7 +28,10 @@ const MILLISECONDS_IN_HOUR = 3600000
  * )
  * //=> 12
  */
-export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
+export default function differenceInHours(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
   const diff =

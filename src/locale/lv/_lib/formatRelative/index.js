@@ -10,7 +10,7 @@ var weekdays = [
 ]
 
 var formatRelativeLocale = {
-  lastWeek: function(date, baseDate, options) {
+  lastWeek: function (date, baseDate, options) {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }
@@ -21,7 +21,7 @@ var formatRelativeLocale = {
   yesterday: "'Vakar plkst.' p",
   today: "'Šodien plkst.' p",
   tomorrow: "'Rīt plkst.' p",
-  nextWeek: function(date, baseDate, options) {
+  nextWeek: function (date, baseDate, options) {
     if (isSameUTCWeek(date, baseDate, options)) {
       return "eeee 'plkst.' p"
     }

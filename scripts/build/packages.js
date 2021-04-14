@@ -18,7 +18,7 @@ const rootPath =
 
 const extraModules = [
   { fullPath: './src/fp/index.js' },
-  { fullPath: './src/locale/index.js' },
+  { fullPath: './src/locale/index.js' }
 ]
 
 writePackages()
@@ -46,7 +46,7 @@ function writePackage(fullPath, initialPackage) {
     packagePath,
     JSON.stringify(
       Object.assign({ sideEffects: false }, initialPackage || {}, {
-        typings: typingsRelativePath,
+        typings: typingsRelativePath
       }),
       null,
       2
@@ -84,7 +84,7 @@ async function listAll() {
     .concat(extraModules)
     .reduce((acc, module) => {
       const esmModule = Object.assign({}, module, {
-        fullPath: module.fullPath.replace('./src/', './src/esm/'),
+        fullPath: module.fullPath.replace('./src/', './src/esm/')
       })
       return acc.concat([module, esmModule])
     }, [])

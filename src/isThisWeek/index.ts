@@ -39,8 +39,8 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  */
 
 export default function isThisWeek(
-    dirtyDate: Date | number,
-    options?: LocaleOptions & WeekStartOptions
+  dirtyDate: Date | number,
+  options?: LocaleOptions & WeekStartOptions
 ): boolean {
   requiredArgs(1, arguments)
 

@@ -1,5 +1,5 @@
 export default function buildLocalizeFn(args) {
-  return function(dirtyIndex, dirtyOptions) {
+  return function (dirtyIndex, dirtyOptions) {
     var options = dirtyOptions || {}
 
     var context = options.context ? String(options.context) : 'standalone'

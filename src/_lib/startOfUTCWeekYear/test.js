@@ -4,8 +4,8 @@
 import assert from 'power-assert'
 import startOfUTCWeekYear from '.'
 
-describe('startOfUTCWeekYear', function() {
-  it('returns the date with the time set to 00:00:00 and the date set to the first day of a week year', function() {
+describe('startOfUTCWeekYear', function () {
+  it('returns the date with the time set to 00:00:00 and the date set to the first day of a week year', function () {
     var result = startOfUTCWeekYear(new Date(Date.UTC(2005, 6 /* Jul */, 2)))
     assert.deepEqual(
       result,
@@ -13,7 +13,7 @@ describe('startOfUTCWeekYear', function() {
     )
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', function () {
     var result = startOfUTCWeekYear(Date.UTC(2005, 0 /* Jan */, 1, 6, 0))
     assert.deepEqual(
       result,
@@ -21,13 +21,13 @@ describe('startOfUTCWeekYear', function() {
     )
   })
 
-  it('does not mutate the original date', function() {
+  it('does not mutate the original date', function () {
     var date = new Date(Date.UTC(2014, 6 /* Jul */, 2))
     startOfUTCWeekYear(date)
     assert.deepEqual(date, new Date(Date.UTC(2014, 6 /* Jul */, 2)))
   })
 
-  it('handles dates before 100 AD', function() {
+  it('handles dates before 100 AD', function () {
     var initialDate = new Date(0)
     initialDate.setUTCFullYear(9, 0 /* Jan */, 1)
     initialDate.setUTCHours(0, 0, 0, 0)
@@ -38,12 +38,12 @@ describe('startOfUTCWeekYear', function() {
     assert.deepEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function() {
+  it('returns `Invalid Date` if the given date is invalid', function () {
     var result = startOfUTCWeekYear(new Date(NaN))
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function() {
+  it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', function () {
     var date = new Date(Date.UTC(2005, 6 /* Jul */, 2))
     var result = startOfUTCWeekYear(date, {
       locale: {
@@ -56,7 +56,7 @@ describe('startOfUTCWeekYear', function() {
     )
   })
 
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function() {
+  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', function () {
     var date = new Date(2005, 6 /* Jul */, 2)
     var result = startOfUTCWeekYear(date, {
       weekStartsOn: 1,
@@ -71,7 +71,7 @@ describe('startOfUTCWeekYear', function() {
     )
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function() {
+  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     var block = startOfUTCWeekYear.bind(
       null,
       new Date(2007, 11 /* Dec */, 31),
@@ -80,7 +80,7 @@ describe('startOfUTCWeekYear', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function() {
+  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
     var block = startOfUTCWeekYear.bind(
       null,
       new Date(2007, 11 /* Dec */, 31),
@@ -89,7 +89,7 @@ describe('startOfUTCWeekYear', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(startOfUTCWeekYear.bind(null), TypeError)
   })
 })

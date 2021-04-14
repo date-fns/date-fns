@@ -35,7 +35,7 @@ describe('getWeekOfMonth', function () {
 
   it('allows to specify which day is the first day of the week', function () {
     var result = getWeekOfMonth(new Date(2017, 9 /* Oct */, 1), {
-      weekStartsOn: 1,
+      weekStartsOn: 1
     })
     assert(result === 1)
   })
@@ -44,8 +44,8 @@ describe('getWeekOfMonth', function () {
     var result = getWeekOfMonth(new Date(2017, 9 /* Oct */, 31), {
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 1 },
-      },
+        options: { weekStartsOn: 1 }
+      }
     })
     assert(result === 6)
   })
@@ -55,8 +55,8 @@ describe('getWeekOfMonth', function () {
       weekStartsOn: 1,
       // $ExpectedMistake
       locale: {
-        options: { weekStartsOn: 0 },
-      },
+        options: { weekStartsOn: 0 }
+      }
     })
     assert(result === 3)
   })
@@ -77,7 +77,7 @@ describe('getWeekOfMonth', function () {
 
   it('returns the week of the month of the given date, when the given date is sunday', function () {
     var result = getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
-      weekStartsOn: 1,
+      weekStartsOn: 1
     })
     assert(result === 1)
   })

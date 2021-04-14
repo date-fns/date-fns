@@ -7,12 +7,12 @@ import isFuture from '.'
 suite(
   'isFuture',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return isFuture(this.date)
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
     }
   }

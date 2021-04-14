@@ -106,7 +106,7 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
+    valueCallback: function (index) {
       return index + 1
     }
   }),

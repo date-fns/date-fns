@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: function(date) {
+  lastWeek: function (date) {
     var day = date.getUTCDay()
     var result = "'läschte"
     if (day === 2 || day === 4) {

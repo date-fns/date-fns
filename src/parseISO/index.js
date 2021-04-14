@@ -8,7 +8,7 @@ var DEFAULT_ADDITIONAL_DIGITS = 2
 var patterns = {
   dateTimeDelimiter: /[T ]/,
   timeZoneDelimiter: /[Z ]/i,
-  timezone: /([Z+-].*)$/,
+  timezone: /([Z+-].*)$/
 }
 
 var dateRegex = /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$/
@@ -205,7 +205,7 @@ function parseYear(dateString, additionalDigits) {
 
   return {
     year: century == null ? year : century * 100,
-    restDateString: dateString.slice((captures[1] || captures[2]).length),
+    restDateString: dateString.slice((captures[1] || captures[2]).length)
   }
 }
 

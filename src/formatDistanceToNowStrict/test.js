@@ -262,14 +262,14 @@ describe('formatDistanceToNowStrict', function () {
   describe('when the addSuffix option is true', function () {
     it('adds a past suffix', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 31, 35), {
-        addSuffix: true,
+        addSuffix: true
       })
       assert(result === '25 seconds ago')
     })
 
     it('adds a future suffix', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 11, 32, 0), {
-        addSuffix: true,
+        addSuffix: true
       })
       assert(result === 'in 1 hour')
     })
@@ -283,28 +283,28 @@ describe('formatDistanceToNowStrict', function () {
 
     it('"floor"', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 59), {
-        roundingMethod: 'floor',
+        roundingMethod: 'floor'
       })
       assert(result === '1 minute')
     })
 
     it('"ceil"', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 1), {
-        roundingMethod: 'ceil',
+        roundingMethod: 'ceil'
       })
       assert(result === '2 minutes')
     })
 
     it('"round" (down)', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 29), {
-        roundingMethod: 'round',
+        roundingMethod: 'round'
       })
       assert(result === '1 minute')
     })
 
     it('"round" (up)', function () {
       var result = formatDistanceToNowStrict(new Date(1986, 3, 4, 10, 33, 30), {
-        roundingMethod: 'round',
+        roundingMethod: 'round'
       })
       assert(result === '2 minutes')
     })
@@ -356,7 +356,7 @@ describe('formatDistanceToNowStrict', function () {
       }
 
       var customLocale = {
-        formatDistance: localizeDistance,
+        formatDistance: localizeDistance
       }
 
       var result = formatDistanceToNowStrict(

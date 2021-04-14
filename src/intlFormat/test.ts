@@ -40,7 +40,7 @@ describe('intlFormat', () => {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
         const result = intlFormat(date)
         const localeResult = intlFormat(date, {
-          locale: getOperationSystemLocale(),
+          locale: getOperationSystemLocale()
         })
 
         assert(result === localeResult)
@@ -57,12 +57,12 @@ describe('intlFormat', () => {
         minute: 'numeric',
         second: 'numeric',
         hour12: false,
-        timeZone: 'America/Los_Angeles',
+        timeZone: 'America/Los_Angeles'
       }
 
       const result = intlFormat(date, formatOptions)
       const localeResult = intlFormat(date, formatOptions, {
-        locale: getOperationSystemLocale(),
+        locale: getOperationSystemLocale()
       })
 
       assert(result === localeResult)
@@ -72,7 +72,7 @@ describe('intlFormat', () => {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
       // Korean uses year-month-day order
       const localeOptions = {
-        locale: 'ko-KR',
+        locale: 'ko-KR'
       }
 
       const result = intlFormat(date, localeOptions)
@@ -88,10 +88,10 @@ describe('intlFormat', () => {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
-          day: 'numeric',
+          day: 'numeric'
         }
         const localeOptions = {
-          locale: 'de-DE',
+          locale: 'de-DE'
         }
 
         const result = intlFormat(date, formatOptions, localeOptions)

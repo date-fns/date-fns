@@ -30,7 +30,7 @@ describe('isThisYear', () => {
     assert(isThisYear(date) === true)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     // @ts-expect-error
     assert.throws(isThisYear.bind(null), TypeError)
   })

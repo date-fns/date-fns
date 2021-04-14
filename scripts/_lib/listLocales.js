@@ -6,7 +6,7 @@ const ignoredFiles = [
   'test.js',
   'index.js.flow',
   'package.json',
-  'types.ts',
+  'types.ts'
 ]
 
 module.exports = listLocales
@@ -19,6 +19,6 @@ function listLocales() {
       name: locale.replace(/-/g, ''),
       code: locale,
       path: `./${locale}`,
-      fullPath: `./src/locale/${locale}/index.js`,
+      fullPath: `./src/locale/${locale}/index.js`
     }))
 }

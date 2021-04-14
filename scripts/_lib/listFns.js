@@ -25,8 +25,8 @@ async function listFns() {
 
   return Promise.all(
     files
-      .filter(file => /^[^._]/.test(file) && !ignoredFiles.includes(file))
-      .map(async file => {
+      .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
+      .map(async (file) => {
         const isTs = await exists(path.join(srcPath, file, 'index.ts'))
         return {
           name: file,

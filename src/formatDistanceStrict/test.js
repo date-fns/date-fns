@@ -429,7 +429,7 @@ describe('formatDistanceStrict', function () {
       }
 
       var customLocale = {
-        formatDistance: localizeDistance,
+        formatDistance: localizeDistance
       }
 
       var result = formatDistanceStrict(

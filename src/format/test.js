@@ -97,7 +97,7 @@ describe('format', function () {
         '28th',
         '29th',
         '30th',
-        '31st',
+        '31st'
       ]
       assert.deepEqual(result, expected)
     })
@@ -135,14 +135,14 @@ describe('format', function () {
     describe('local week-numbering year', function () {
       it('works as expected', function () {
         var result = format(date, 'Y Yo YY YYY YYYY YYYYY', {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '1986 1986th 86 1986 1986 01986')
       })
 
       it('the first week of the next year', function () {
         var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2014')
       })
@@ -151,14 +151,14 @@ describe('format', function () {
         var result = format(new Date(2013, 11 /* Dec */, 29), 'YYYY', {
           weekStartsOn: 1,
           firstWeekContainsDate: 4,
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2013')
       })
 
       it('the first week of year', function () {
         var result = format(new Date(2016, 0 /* Jan */, 1), 'YYYY', {
-          useAdditionalWeekYearTokens: true,
+          useAdditionalWeekYearTokens: true
         })
         assert(result === '2016')
       })
@@ -265,7 +265,7 @@ describe('format', function () {
         '3',
         '4',
         '4',
-        '4',
+        '4'
       ]
       assert.deepEqual(result, expected)
     })
@@ -295,7 +295,7 @@ describe('format', function () {
         var date = new Date(1986, 3 /* Apr */, 6)
         var result = format(date, 'w wo ww', {
           weekStartsOn: 1,
-          firstWeekContainsDate: 4,
+          firstWeekContainsDate: 4
         })
         assert(result === '14 14th 14')
       })
@@ -317,7 +317,7 @@ describe('format', function () {
     describe('day of year', function () {
       it('works as expected', function () {
         var result = format(date, 'D Do DD DDD DDDDD', {
-          useAdditionalDayOfYearTokens: true,
+          useAdditionalDayOfYearTokens: true
         })
         assert(result === '94 94th 94 094 00094')
       })
@@ -532,7 +532,7 @@ describe('format', function () {
         timezoneWithZShort,
         timezoneWithZ,
         timezoneWithZShort,
-        timezoneWithZ,
+        timezoneWithZ
       ].join(' ')
       assert(result === expectedResult)
     })
@@ -544,7 +544,7 @@ describe('format', function () {
         timezoneShort,
         timezone,
         timezoneShort,
-        timezone,
+        timezone
       ].join(' ')
       assert(result === expectedResult)
     })
@@ -555,7 +555,7 @@ describe('format', function () {
         timezoneGMTShort,
         timezoneGMTShort,
         timezoneGMTShort,
-        timezoneGMT,
+        timezoneGMT
       ].join(' ')
       assert(result === expectedResult)
     })
@@ -566,7 +566,7 @@ describe('format', function () {
         timezoneGMTShort,
         timezoneGMTShort,
         timezoneGMTShort,
-        timezoneGMT,
+        timezoneGMT
       ].join(' ')
       assert(result === expectedResult)
     })
@@ -683,13 +683,13 @@ describe('format', function () {
         localize: {
           month: function () {
             return 'works'
-          },
+          }
         },
         formatLong: {
           date: function () {
             return "'It' MMMM!"
-          },
-        },
+          }
+        }
       }
       // $ExpectedMistake
       var result = format(date, 'PPPP', { locale: customLocale })
@@ -698,11 +698,11 @@ describe('format', function () {
 
     it("throws `RangeError` if `options.locale` doesn't have `localize` property", function () {
       var customLocale = {
-        formatLong: {},
+        formatLong: {}
       }
       // $ExpectedMistake
       var block = format.bind(null, date, 'yyyy-MM-dd', {
-        locale: customLocale,
+        locale: customLocale
       })
       assert.throws(block, RangeError)
     })
@@ -710,11 +710,11 @@ describe('format', function () {
     it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
       var customLocale = {
         // $ExpectedMistake
-        localize: {},
+        localize: {}
       }
       // $ExpectedMistake
       var block = format.bind(null, date, 'yyyy-MM-dd', {
-        locale: customLocale,
+        locale: customLocale
       })
       assert.throws(block, RangeError)
     })
@@ -723,7 +723,7 @@ describe('format', function () {
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
     // $ExpectedMistake
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
-      weekStartsOn: NaN,
+      weekStartsOn: NaN
     })
     assert.throws(block, RangeError)
   })
@@ -731,7 +731,7 @@ describe('format', function () {
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
     // $ExpectedMistake
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
-      firstWeekContainsDate: NaN,
+      firstWeekContainsDate: NaN
     })
     assert.throws(block, RangeError)
   })
@@ -757,7 +757,7 @@ describe('format', function () {
 
     it('allows D token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = format(date, 'yyyy-MM-D', {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, '1986-04-94')
     })
@@ -773,7 +773,7 @@ describe('format', function () {
 
     it('allows DD token if useAdditionalDayOfYearTokens is set to true', () => {
       const result = format(date, 'yyyy-MM-DD', {
-        useAdditionalDayOfYearTokens: true,
+        useAdditionalDayOfYearTokens: true
       })
       assert.deepEqual(result, '1986-04-94')
     })
@@ -789,7 +789,7 @@ describe('format', function () {
 
     it('allows YY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = format(date, 'YY-MM-dd', {
-        useAdditionalWeekYearTokens: true,
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, '86-04-04')
     })
@@ -805,7 +805,7 @@ describe('format', function () {
 
     it('allows YYYY token if useAdditionalWeekYearTokens is set to true', () => {
       const result = format(date, 'YYYY-MM-dd', {
-        useAdditionalWeekYearTokens: true,
+        useAdditionalWeekYearTokens: true
       })
       assert.deepEqual(result, '1986-04-04')
     })

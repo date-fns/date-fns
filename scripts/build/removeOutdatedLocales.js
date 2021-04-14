@@ -14,7 +14,7 @@ const packageDir = process.argv[2]
 if (!packageDir) throw new Error('Package dir should be passed as an argument')
 
 const locales = require('../../outdatedLocales.json')
-locales.forEach(locale => {
+locales.forEach((locale) => {
   rimraf.sync(path.resolve(packageDir, `locale/${locale}`))
   rimraf.sync(path.resolve(packageDir, `locale/esm/${locale}`))
 })

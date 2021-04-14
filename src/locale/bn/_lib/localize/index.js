@@ -2,16 +2,16 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var numberValues = {
   locale: {
-    '1': '১',
-    '2': '২',
-    '3': '৩',
-    '4': '৪',
-    '5': '৫',
-    '6': '৬',
-    '7': '৭',
-    '8': '৮',
-    '9': '৯',
-    '0': '০'
+    1: '১',
+    2: '২',
+    3: '৩',
+    4: '৪',
+    5: '৫',
+    6: '৬',
+    7: '৭',
+    8: '৮',
+    9: '৯',
+    0: '০'
   },
   number: {
     '১': '1',
@@ -212,14 +212,14 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 }
 
 function localeToNumber(locale) {
-  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function(match) {
+  var number = locale.toString().replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
     return numberValues.number[match]
   })
   return Number(number)
 }
 
 function numberToLocale(number) {
-  return number.toString().replace(/\d/g, function(match) {
+  return number.toString().replace(/\d/g, function (match) {
     return numberValues.locale[match]
   })
 }
@@ -239,7 +239,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
   }),

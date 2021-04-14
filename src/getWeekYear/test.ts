@@ -33,8 +33,8 @@ describe('getWeekYear', () => {
     const result = getWeekYear(date, {
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      },
+        options: { weekStartsOn: 1, firstWeekContainsDate: 4 }
+      }
     })
     assert(result === 2004)
   })
@@ -46,8 +46,8 @@ describe('getWeekYear', () => {
       firstWeekContainsDate: 4,
       // @ts-expect-error
       locale: {
-        options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      },
+        options: { weekStartsOn: 0, firstWeekContainsDate: 1 }
+      }
     })
     assert(result === 2004)
   })
@@ -55,7 +55,7 @@ describe('getWeekYear', () => {
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
     // @ts-expect-error
     const block = getWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      weekStartsOn: NaN,
+      weekStartsOn: NaN
     })
     assert.throws(block, RangeError)
   })
@@ -63,7 +63,7 @@ describe('getWeekYear', () => {
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
     // @ts-expect-error
     const block = getWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN,
+      firstWeekContainsDate: NaN
     })
     assert.throws(block, RangeError)
   })

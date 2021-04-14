@@ -246,7 +246,7 @@ describe('formatDistance', function () {
       }
 
       var customLocale = {
-        formatDistance: localizeDistance,
+        formatDistance: localizeDistance
       }
 
       var result = formatDistance(

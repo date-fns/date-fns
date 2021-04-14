@@ -30,6 +30,6 @@ const packagePath = path.join(process.cwd(), 'package.json')
 const packageContent = JSON.parse(fs.readFileSync(packagePath).toString())
 Object.assign(packageContent, { version })
 const newPackageContentStr = beautify(JSON.stringify(packageContent), {
-  indent_size: 2,
+  indent_size: 2
 })
 fs.writeFileSync(packagePath, `${newPackageContentStr}\n`)

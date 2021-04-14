@@ -13,7 +13,7 @@ var formatRelativeLocale = {
   yesterday: "'včera v' p",
   today: "'dnes v' p",
   tomorrow: "'zítra v' p",
-  nextWeek: function(date, _baseDate, _options) {
+  nextWeek: function (date, _baseDate, _options) {
     var day = date.getUTCDay()
     return "'v " + accusativeWeekdays[day] + " o' p"
   },

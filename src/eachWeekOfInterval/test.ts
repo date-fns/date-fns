@@ -4,8 +4,8 @@
 import assert from 'assert'
 import eachWeekOfInterval from '.'
 
-describe('eachWeekOfInterval', function() {
-  it('returns an array with starts of weeks from the week of the start date to the week of the end date', function() {
+describe('eachWeekOfInterval', function () {
+  it('returns an array with starts of weeks from the week of the start date to the week of the end date', function () {
     const result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6),
       end: new Date(2014, 10 /* Nov */, 23)
@@ -22,7 +22,7 @@ describe('eachWeekOfInterval', function() {
     ])
   })
 
-  it('accepts timestamps', function() {
+  it('accepts timestamps', function () {
     const result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6).getTime(),
       end: new Date(2014, 10 /* Nov */, 23).getTime()
@@ -39,7 +39,7 @@ describe('eachWeekOfInterval', function() {
     ])
   })
 
-  it('handles the dates that are not starts/ends of days and weeks', function() {
+  it('handles the dates that are not starts/ends of days and weeks', function () {
     const result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 6, 35),
       end: new Date(2014, 10 /* Nov */, 25, 22, 16)
@@ -56,7 +56,7 @@ describe('eachWeekOfInterval', function() {
     ])
   })
 
-  it('considers the weekStartsOn option', function() {
+  it('considers the weekStartsOn option', function () {
     const result = eachWeekOfInterval(
       {
         start: new Date(2014, 9 /* Oct */, 6, 6, 35),
@@ -77,7 +77,7 @@ describe('eachWeekOfInterval', function() {
     ])
   })
 
-  it('returns one week if the both arguments are on the same week', function() {
+  it('returns one week if the both arguments are on the same week', function () {
     const result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 8, 15)
@@ -85,7 +85,7 @@ describe('eachWeekOfInterval', function() {
     assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 5)])
   })
 
-  it('returns one day if the both arguments are the same', function() {
+  it('returns one day if the both arguments are the same', function () {
     const result = eachWeekOfInterval({
       start: new Date(2014, 9 /* Oct */, 6, 14),
       end: new Date(2014, 9 /* Oct */, 6, 14)
@@ -93,7 +93,7 @@ describe('eachWeekOfInterval', function() {
     assert.deepEqual(result, [new Date(2014, 9 /* Oct */, 5)])
   })
 
-  it('throws an exception if the start date is after the end date', function() {
+  it('throws an exception if the start date is after the end date', function () {
     const block = eachWeekOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(2014, 9 /* Oct */, 6)
@@ -101,7 +101,7 @@ describe('eachWeekOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the start date is `Invalid Date`', function() {
+  it('throws an exception if the start date is `Invalid Date`', function () {
     const block = eachWeekOfInterval.bind(null, {
       start: new Date(NaN),
       end: new Date(2014, 9 /* Oct */, 6)
@@ -109,7 +109,7 @@ describe('eachWeekOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the end date is `Invalid Date`', function() {
+  it('throws an exception if the end date is `Invalid Date`', function () {
     const block = eachWeekOfInterval.bind(null, {
       start: new Date(2014, 9 /* Oct */, 12),
       end: new Date(NaN)
@@ -117,7 +117,7 @@ describe('eachWeekOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws an exception if the interval is undefined', function() {
+  it('throws an exception if the interval is undefined', function () {
     const block = eachWeekOfInterval.bind(
       null,
       // $ExpectedMistake
@@ -126,7 +126,7 @@ describe('eachWeekOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', function() {
+  it('throws `RangeError` if `options.weekStartsOn` is not convertible to 0, 1, ..., 6 or undefined', function () {
     const block = eachWeekOfInterval.bind(
       null,
       {
@@ -139,7 +139,7 @@ describe('eachWeekOfInterval', function() {
     assert.throws(block, RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(eachWeekOfInterval.bind(null), TypeError)
   })
 })

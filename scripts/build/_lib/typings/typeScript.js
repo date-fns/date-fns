@@ -7,7 +7,7 @@ const { getParams, getType, getFPFnType } = require('./common')
 const {
   addSeparator,
   formatBlock,
-  formatTypeScriptFile,
+  formatTypeScriptFile
 } = require('./formatBlock')
 
 /**
@@ -45,7 +45,7 @@ const getTypeScriptFPInterfaces = (arity = 4) =>
         (a: A, b: B, c: C): CurriedFn1<D, R>
         (a: A, b: B, c: C, d: D): R
       }
-    `,
+    `
   ].slice(0, arity)
 
 function getTypeScriptTypeAlias(type) {
@@ -93,7 +93,7 @@ function getTypeScriptDateFnsModuleDefinition(
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -114,7 +114,7 @@ function getTypeScriptDateFnsFPModuleDefinition(
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -131,7 +131,7 @@ function getTypeScriptFnModuleDefinition(submodule, fnSuffix, fn) {
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -171,7 +171,7 @@ function getTypeScriptFPFnModuleDefinition(submodule, fnSuffix, isDefault, fn) {
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -188,7 +188,7 @@ function getTypeScriptLocaleIndexModuleDefinition(submodule, locales) {
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -220,7 +220,7 @@ function getTypeScriptLocaleModuleDefinition(
 
   return {
     name: moduleName,
-    definition,
+    definition
   }
 }
 
@@ -264,7 +264,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
   )
 
   const moduleDefinitions = [
-    getTypeScriptDateFnsModuleDefinition('', nonFPFns, constantsDefinitions),
+    getTypeScriptDateFnsModuleDefinition('', nonFPFns, constantsDefinitions)
   ]
     .concat(nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '', '')))
     .concat(
@@ -276,7 +276,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map((module) => module.definition)
 
   const fpModuleDefinitions = [
-    getTypeScriptDateFnsFPModuleDefinition('', fpFns, constantsDefinitions),
+    getTypeScriptDateFnsFPModuleDefinition('', fpFns, constantsDefinitions)
   ]
     .concat(
       fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '', '', false))
@@ -294,11 +294,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map((module) => module.definition)
 
   const esmModuleDefinitions = [
-    getTypeScriptDateFnsModuleDefinition(
-      '/esm',
-      nonFPFns,
-      constantsDefinitions
-    ),
+    getTypeScriptDateFnsModuleDefinition('/esm', nonFPFns, constantsDefinitions)
   ]
     .concat(
       nonFPFns.map(getTypeScriptFnModuleDefinition.bind(null, '/esm', ''))
@@ -314,7 +310,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map((module) => module.definition)
 
   const esmFPModuleDefinitions = [
-    getTypeScriptDateFnsFPModuleDefinition('/esm', fpFns, constantsDefinitions),
+    getTypeScriptDateFnsFPModuleDefinition('/esm', fpFns, constantsDefinitions)
   ]
     .concat(
       fpFns.map(getTypeScriptFPFnModuleDefinition.bind(null, '/esm', '', true))
@@ -336,7 +332,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
   const exportedAliasDefinitions = [getExportedTypeScriptTypeAliases(aliases)]
 
   const localeModuleDefinitions = [
-    getTypeScriptLocaleIndexModuleDefinition('', locales),
+    getTypeScriptLocaleIndexModuleDefinition('', locales)
   ]
     .concat(
       locales.map(getTypeScriptLocaleModuleDefinition.bind(null, '', '', false))
@@ -354,7 +350,7 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map((module) => module.definition)
 
   const esmLocaleModuleDefinitions = [
-    getTypeScriptLocaleIndexModuleDefinition('/esm', locales),
+    getTypeScriptLocaleIndexModuleDefinition('/esm', locales)
   ]
     .concat(
       locales.map(
@@ -456,5 +452,5 @@ function writeFile(relativePath, content) {
 }
 
 module.exports = {
-  generateTypeScriptTypings,
+  generateTypeScriptTypings
 }

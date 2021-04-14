@@ -9,7 +9,7 @@ var accusativeWeekdays = [
 ]
 
 function week(isFuture) {
-  return function(date, _baseDate, _options) {
+  return function (date, _baseDate, _options) {
     var day = date.getUTCDay()
     return (
       (isFuture ? '' : "'múlt' ") +

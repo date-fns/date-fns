@@ -25,7 +25,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setMonth(new Date(2014, 8, 1), 1)
  * //=> Sat Feb 01 2014 00:00:00
  */
-export default function setMonth(dirtyDate: Date | number, dirtyMonth: number): Date {
+export default function setMonth(
+  dirtyDate: Date | number,
+  dirtyMonth: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

@@ -1,80 +1,80 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'mwens pase yon segond',
-    other: 'mwens pase {{count}} segond',
+    other: 'mwens pase {{count}} segond'
   },
 
   xSeconds: {
     one: '1 segond',
-    other: '{{count}} segond',
+    other: '{{count}} segond'
   },
 
   halfAMinute: '30 segond',
 
   lessThanXMinutes: {
     one: 'mwens pase yon minit',
-    other: 'mwens pase {{count}} minit',
+    other: 'mwens pase {{count}} minit'
   },
 
   xMinutes: {
     one: '1 minit',
-    other: '{{count}} minit',
+    other: '{{count}} minit'
   },
 
   aboutXHours: {
     one: 'anviwon inè',
-    other: 'anviwon {{count}} è',
+    other: 'anviwon {{count}} è'
   },
 
   xHours: {
     one: '1 lè',
-    other: '{{count}} lè',
+    other: '{{count}} lè'
   },
 
   xDays: {
     one: '1 jou',
-    other: '{{count}} jou',
+    other: '{{count}} jou'
   },
 
   aboutXWeeks: {
     one: 'anviwon 1 semèn',
-    other: 'anviwon {{count}} semèn',
+    other: 'anviwon {{count}} semèn'
   },
 
   xWeeks: {
     one: '1 semèn',
-    other: '{{count}} semèn',
+    other: '{{count}} semèn'
   },
 
   aboutXMonths: {
     one: 'anviwon 1 mwa',
-    other: 'anviwon {{count}} mwa',
+    other: 'anviwon {{count}} mwa'
   },
 
   xMonths: {
     one: '1 mwa',
-    other: '{{count}} mwa',
+    other: '{{count}} mwa'
   },
 
   aboutXYears: {
     one: 'anviwon 1 an',
-    other: 'anviwon {{count}} an',
+    other: 'anviwon {{count}} an'
   },
 
   xYears: {
     one: '1 an',
-    other: '{{count}} an',
+    other: '{{count}} an'
   },
 
   overXYears: {
     one: 'plis pase 1 an',
-    other: 'plis pase {{count}} an',
+    other: 'plis pase {{count}} an'
   },
 
   almostXYears: {
     one: 'prèske 1 an',
-    other: 'prèske {{count}} an',
-  },
+    other: 'prèske {{count}} an'
+  }
 }
 
 export default function formatDistance(token, count, options) {

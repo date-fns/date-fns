@@ -8,16 +8,16 @@ import formatDistanceToNow from '.'
 suite(
   'formatDistanceToNow',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return formatDistanceToNow(this.date)
     })
 
-    benchmark('Moment.js', function() {
+    benchmark('Moment.js', function () {
       return this.moment.toNow()
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
       this.moment = moment()
     }

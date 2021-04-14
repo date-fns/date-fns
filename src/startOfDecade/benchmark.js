@@ -4,12 +4,16 @@
 
 import startOfDecade from '.'
 
-suite('startOfDecade', function () {
-  benchmark('date-fns', function () {
-    return startOfDecade(this.date)
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
+suite(
+  'startOfDecade',
+  function () {
+    benchmark('date-fns', function () {
+      return startOfDecade(this.date)
+    })
+  },
+  {
+    setup: function () {
+      this.date = new Date()
+    }
   }
-})
+)

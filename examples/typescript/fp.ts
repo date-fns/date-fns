@@ -11,7 +11,7 @@ const dates = [
 ]
 
 const formattedDates = dates
-  .map(date => dateToString(addFiveYears(date)))
+  .map((date) => dateToString(addFiveYears(date)))
   .join(', ')
 
 console.log(formattedDates === '1 januaro 2022, 11 februaro 2022, 2 julio 2022')

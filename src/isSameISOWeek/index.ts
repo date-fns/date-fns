@@ -25,7 +25,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isSameISOWeek(new Date(2014, 8, 1), new Date(2014, 8, 7))
  * //=> true
  */
-export default function isSameISOWeek(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
+export default function isSameISOWeek(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   return isSameWeek(dirtyDateLeft, dirtyDateRight, { weekStartsOn: 1 })

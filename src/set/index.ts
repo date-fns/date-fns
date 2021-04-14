@@ -2,7 +2,7 @@ import toDate from '../toDate/index'
 import setMonth from '../setMonth/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { DateValues } from '../types';
+import { DateValues } from '../types'
 
 /**
  * @name set
@@ -43,7 +43,10 @@ import { DateValues } from '../types';
  * //=> Mon Sep 01 2014 12:23:45
  */
 
-export default function set(dirtyDate: Date | number, values: DateValues): Date {
+export default function set(
+  dirtyDate: Date | number,
+  values: DateValues
+): Date {
   requiredArgs(2, arguments)
 
   if (typeof values !== 'object' || values === null) {

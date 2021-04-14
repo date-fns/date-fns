@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: function(date) {
+  lastWeek: function (date) {
     var day = date.getUTCDay()
 
     switch (day) {
@@ -16,7 +16,7 @@ var formatRelativeLocale = {
   yesterday: "'juče u' p",
   today: "'danas u' p",
   tomorrow: "'sutra u' p",
-  nextWeek: function(date) {
+  nextWeek: function (date) {
     var day = date.getUTCDay()
 
     switch (day) {

@@ -25,7 +25,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = setQuarter(new Date(2014, 6, 2), 2)
  * //=> Wed Apr 02 2014 00:00:00
  */
-export default function setQuarter(dirtyDate: Date | number, dirtyQuarter: number): Date {
+export default function setQuarter(
+  dirtyDate: Date | number,
+  dirtyQuarter: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
