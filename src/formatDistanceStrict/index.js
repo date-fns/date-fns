@@ -262,7 +262,7 @@ export default function formatDistanceStrict(
     // 1 up to 12 months
   } else if (unit === 'month') {
     var months = roundingMethodFn(dstNormalizedMinutes / MINUTES_IN_MONTH)
-    return months === 12
+    return months === 12 && options.unit !== 'month'
       ? locale.formatDistance('xYears', 1, localizeOptions)
       : locale.formatDistance('xMonths', months, localizeOptions)
 
