@@ -75,7 +75,7 @@ import { Interval } from '../types'
  * // For date equal to interval end:
  * isWithinInterval(date, { start: date, end }) // => true
  */
-export default function isWithinInterval(dirtyDate: Date | number, interval: Interval) {
+export default function isWithinInterval(dirtyDate: Date | number, interval: Interval): boolean {
   requiredArgs(2, arguments)
 
   const time = toDate(dirtyDate).getTime()
