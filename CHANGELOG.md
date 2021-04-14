@@ -8,6 +8,34 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.21.0 - 2021-04-14
+
+This release is brought to you by [Aleksei Korzun](http://github.com/a-korzun), [Tan75](http://github.com/tan75), [Rubens Mariuzzo](http://github.com/rmariuzzo), [Christoph Stenglein](http://github.com/cstenglein) and [Clément Tamisier](http://github.com/ctamisier).
+
+### Fixed
+
+- [Made `formatDistanceStrict` return `12 months` instead of `1 year` when `unit: 'month'`.](https://github.com/date-fns/date-fns/pull/2411)
+
+### Added
+
+- [Added Haitian Creole (`ht`) locale.](https://github.com/date-fns/date-fns/pull/2396)
+
+## v2.20.3 - 2021-04-13
+
+Kudos to [fturmel](http://github.com/fturmel) for working on the release.
+
+### Fixed
+
+- [Fixed broken tree-shaking caused by missing links to corresponding ESM.](https://github.com/date-fns/date-fns/pull/2339) ([#2207](https://github.com/date-fns/date-fns/issues/2207))
+
+## v2.20.2 - 2021-04-12
+
+Kudos to [Maxim Topciu](http://github.com/maximtop) for working on the release.
+
+### Fixed
+
+- [Fixed IE11 incompatibility caused by the usage of spread syntax.](https://github.com/date-fns/date-fns/pull/2407) ([#2408](https://github.com/date-fns/date-fns/issues/2408))
+
 ## v2.20.1 - 2021-04-09
 
 This release is brought to you by [Sasha Koss](http://github.com/kossnocorp) and [Tan75](http://github.com/tan75).

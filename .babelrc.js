@@ -6,6 +6,7 @@ const plugins = [
   '@babel/plugin-transform-parameters',
   '@babel/plugin-transform-destructuring',
   '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-object-rest-spread',
 ]
 
 if (process.env.NODE_ENV === 'test') {
