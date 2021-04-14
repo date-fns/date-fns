@@ -123,7 +123,7 @@ const MINUTES_IN_TWO_MONTHS = 86400
  */
 
 
-export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}) {
+export default function formatDistance(dirtyDate: Date | number, dirtyBaseDate: Date | number, options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}): string {
   requiredArgs(2, arguments)
 
   const locale = options.locale || defaultLocale
