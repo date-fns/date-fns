@@ -27,16 +27,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 8
  */
 export default function differenceInCalendarMonths(
-  dirtyDateLeft,
-  dirtyDateRight
-) {
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var monthDiff = dateLeft.getMonth() - dateRight.getMonth()
+  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  const monthDiff = dateLeft.getMonth() - dateRight.getMonth()
 
   return yearDiff * 12 + monthDiff
 }
