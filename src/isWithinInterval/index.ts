@@ -1,5 +1,6 @@
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { Interval } from '../types'
 
 /**
  * @name isWithinInterval
@@ -74,13 +75,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // For date equal to interval end:
  * isWithinInterval(date, { start: date, end }) // => true
  */
-export default function isWithinInterval(dirtyDate, dirtyInterval) {
+export default function isWithinInterval(dirtyDate: Date | number, interval: Interval): boolean {
   requiredArgs(2, arguments)
 
-  var interval = dirtyInterval || {}
-  var time = toDate(dirtyDate).getTime()
-  var startTime = toDate(interval.start).getTime()
-  var endTime = toDate(interval.end).getTime()
+  const time = toDate(dirtyDate).getTime()
+  const startTime = toDate(interval.start).getTime()
+  const endTime = toDate(interval.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(startTime <= endTime)) {
