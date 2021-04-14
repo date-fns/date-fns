@@ -49,7 +49,9 @@ The main advantage of FP functions is support of functional-style
 In the example above, you can compose `addFiveYears`, `dateToString` and `toUpper` into a single function:
 
 ```javascript
-const formattedDates = dates.map((date) => toUpper(dateToString(addFiveYears(date))))
+const formattedDates = dates.map((date) =>
+  toUpper(dateToString(addFiveYears(date)))
+)
 ```
 
 Or you can use `compose` function provided by [lodash](https://lodash.com) to do the same in more idiomatic way:

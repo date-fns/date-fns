@@ -51,4 +51,4 @@ parse('365+1987', 'DD+YYYY', new Date(), {
 //=> 'Wed Dec 31 1986 00:00:00 GMT+0200 (EET)'
 ```
 
-[Unicode tokens]: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
+[unicode tokens]: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table

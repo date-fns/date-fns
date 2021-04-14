@@ -76,12 +76,12 @@ Use the two/three letter code:
 - if the language is used in only one country (e.g. `fil` instead of `fil-PH`).
 
 - if all countries who use the language
-also use the same regional standards: the first day of the week,
-the week numbering (see: https://en.wikipedia.org/wiki/Week#Week_numbering),
-calendar date format (see: https://en.wikipedia.org/wiki/Calendar_date)
-and date representation (see: https://en.wikipedia.org/wiki/Date_and_time_representation_by_country
-and: https://en.wikipedia.org/wiki/Date_format_by_country)
-(e.g. `ca` instead of `ca-ES` and `ca-AD`).
+  also use the same regional standards: the first day of the week,
+  the week numbering (see: https://en.wikipedia.org/wiki/Week#Week_numbering),
+  calendar date format (see: https://en.wikipedia.org/wiki/Calendar_date)
+  and date representation (see: https://en.wikipedia.org/wiki/Date_and_time_representation_by_country
+  and: https://en.wikipedia.org/wiki/Date_format_by_country)
+  (e.g. `ca` instead of `ca-ES` and `ca-AD`).
 
 ### index.js
 
@@ -161,7 +161,7 @@ Function that takes a numeric argument and returns a string with ordinal number:
 
 ```js
 // In `en-US` locale:
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var number = Number(dirtyNumber)
 
   var rem100 = number % 100
@@ -179,7 +179,7 @@ function ordinalNumber (dirtyNumber, dirtyOptions) {
 }
 
 var localize = {
-  ordinalNumber: ordinalNumber,
+  ordinalNumber: ordinalNumber
   // ...
 }
 ```
@@ -190,7 +190,7 @@ use `options.unit` argument which could be one of the values 'year', 'quarter', 
 
 ```js
 // In `ru` locale:
-function ordinalNumber (dirtyNumber, dirtyOptions) {
+function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
   var suffix
@@ -230,7 +230,7 @@ var localize = {
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide'
-  }),
+  })
   // ...
 }
 
@@ -240,7 +240,7 @@ export default localize
 General usage of the function:
 
 ```js
-var result = locale.localize.era(1, {width: 'abbreviated'})
+var result = locale.localize.era(1, { width: 'abbreviated' })
 //=> 'AD'
 ```
 
@@ -250,7 +250,7 @@ The same is true for all other `localize` functions.
 `width` for `localize.era` function could be either 'narrow', 'abbreviated' or 'wide'.
 
 ```js
-var result = locale.localize.era(1, {width: 'foobar'})
+var result = locale.localize.era(1, { width: 'foobar' })
 //=> 'Anno Domini'
 ```
 
@@ -276,13 +276,65 @@ and formatting month is in the genitive case ("января" as in "1-е янв�
 // In `ru` locale:
 var monthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
-  abbreviated: ['янв.', 'фев.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
-  wide: ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+  abbreviated: [
+    'янв.',
+    'фев.',
+    'март',
+    'апр.',
+    'май',
+    'июнь',
+    'июль',
+    'авг.',
+    'сент.',
+    'окт.',
+    'нояб.',
+    'дек.'
+  ],
+  wide: [
+    'январь',
+    'февраль',
+    'март',
+    'апрель',
+    'май',
+    'июнь',
+    'июль',
+    'август',
+    'сентябрь',
+    'октябрь',
+    'ноябрь',
+    'декабрь'
+  ]
 }
 var formattingMonthValues = {
   narrow: ['Я', 'Ф', 'М', 'А', 'М', 'И', 'И', 'А', 'С', 'О', 'Н', 'Д'],
-  abbreviated: ['янв.', 'фев.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'],
-  wide: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+  abbreviated: [
+    'янв.',
+    'фев.',
+    'мар.',
+    'апр.',
+    'мая',
+    'июн.',
+    'июл.',
+    'авг.',
+    'сент.',
+    'окт.',
+    'нояб.',
+    'дек.'
+  ],
+  wide: [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря'
+  ]
 }
 
 var localize = {
@@ -292,7 +344,7 @@ var localize = {
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
     defaultFormattingWidth: 'wide'
-  }),
+  })
   // ...
 }
 
@@ -323,7 +375,7 @@ var localize = {
     argumentCallback: function (quarter) {
       return Number(quarter) - 1
     }
-  }),
+  })
   // ...
 }
 
@@ -345,8 +397,34 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index.js'
 
 var monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  wide: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  abbreviated: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ],
+  wide: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
 }
 
 var localize = {
@@ -354,7 +432,7 @@ var localize = {
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide'
-  }),
+  })
   // ...
 }
 
@@ -370,8 +448,34 @@ e.g. in Spanish language the weekdays and months should be in the lowercase:
 // In `es` locale:
 var monthValues = {
   narrow: ['E', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-  abbreviated: ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'],
-  wide: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+  abbreviated: [
+    'ene.',
+    'feb.',
+    'mar.',
+    'abr.',
+    'may.',
+    'jun.',
+    'jul.',
+    'ago.',
+    'sep.',
+    'oct.',
+    'nov.',
+    'dic.'
+  ],
+  wide: [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre'
+  ]
 }
 ```
 
@@ -391,7 +495,15 @@ var dayValues = {
   narrow: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
   short: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   abbreviated: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  wide: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  wide: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ]
 }
 
 var localize = {
@@ -399,7 +511,7 @@ var localize = {
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide'
-  }),
+  })
   // ...
 }
 
@@ -490,7 +602,7 @@ var formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'
-  }),
+  })
   // ...
 }
 
@@ -530,7 +642,7 @@ var formatLong = {
   time: buildFormatLongFn({
     formats: timeFormats,
     defaultWidth: 'full'
-  }),
+  })
   // ...
 }
 
@@ -585,7 +697,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   return formatRelativeLocale[token]
 }
 ```
@@ -603,9 +715,17 @@ and declension of word "прошлый" which depends on the grammatical gender 
 // In `ru` locale
 import isSameUTCWeek from '../../../../_lib/isSameUTCWeek/index.js'
 
-var accusativeWeekdays = ['воскресенье', 'понедельник', 'вторник', 'среду', 'четверг', 'пятницу', 'субботу']
+var accusativeWeekdays = [
+  'воскресенье',
+  'понедельник',
+  'вторник',
+  'среду',
+  'четверг',
+  'пятницу',
+  'субботу'
+]
 
-function lastWeek (day) {
+function lastWeek(day) {
   var weekday = accusativeWeekdays[day]
 
   switch (day) {
@@ -622,11 +742,11 @@ function lastWeek (day) {
   }
 }
 
-function thisWeek (day) {
+function thisWeek(day) {
   // ...
 }
 
-function nextWeek (day) {
+function nextWeek(day) {
   // ...
 }
 
@@ -653,7 +773,7 @@ var formatRelativeLocale = {
   other: 'P'
 }
 
-export default function formatRelative (token, date, baseDate, options) {
+export default function formatRelative(token, date, baseDate, options) {
   var format = formatRelativeLocale[token]
 
   if (typeof format === 'function') {
@@ -701,8 +821,34 @@ var matchMonthPatterns = {
   wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
 }
 var parseMonthPatterns = {
-  narrow: [/^j/i, /^f/i, /^m/i, /^a/i, /^m/i, /^j/i, /^j/i, /^a/i, /^s/i, /^o/i, /^n/i, /^d/i],
-  any: [/^ja/i, /^f/i, /^mar/i, /^ap/i, /^may/i, /^jun/i, /^jul/i, /^au/i, /^s/i, /^o/i, /^n/i, /^d/i]
+  narrow: [
+    /^j/i,
+    /^f/i,
+    /^m/i,
+    /^a/i,
+    /^m/i,
+    /^j/i,
+    /^j/i,
+    /^a/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ],
+  any: [
+    /^ja/i,
+    /^f/i,
+    /^mar/i,
+    /^ap/i,
+    /^may/i,
+    /^jun/i,
+    /^jul/i,
+    /^au/i,
+    /^s/i,
+    /^o/i,
+    /^n/i,
+    /^d/i
+  ]
 }
 
 var matchDayPatterns = {

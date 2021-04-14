@@ -20,7 +20,7 @@ const getLocale = (locale) => import(`date-fns/locale/${locale}/index.js`) // or
 
 const formatDate = (date, formatStyle, locale) => {
   return format(date, formatStyle, {
-    locale: getLocale(locale),
+    locale: getLocale(locale)
   })
 }
 ```
