@@ -35,7 +35,7 @@ import { LocaleOptions } from '../types'
  * const result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth(date: Date | number, options: LocaleOptions & { weekStartsOn?: number } = {}) {
+export default function getWeeksInMonth(date: Date | number, options: LocaleOptions & WeekStartOptions = {}) {
   requiredArgs(1, arguments)
 
   return (
