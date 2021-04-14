@@ -11,6 +11,13 @@ const defaultFormat: (keyof Duration)[] = [
   'seconds',
 ]
 
+interface Options {
+  format?: (keyof Duration)[]
+  zero?: boolean
+  delimiter?: string
+  locale?: Locale
+}
+
 /**
  * @name formatDuration
  * @category Common Helpers
@@ -21,7 +28,6 @@ const defaultFormat: (keyof Duration)[] = [
  *
  * @param {Duration} duration - the duration to format
  * @param {Object} [options] - an object with options.
-
  * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
  * @param {boolean} [options.zero=false] - should be zeros be included in the output?
  * @param {string} [options.delimiter=' '] - delimiter string
@@ -74,18 +80,10 @@ const defaultFormat: (keyof Duration)[] = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-
-interface Options {
-  format?: (keyof Duration)[]
-  zero?: boolean
-  delimiter?: string
-  locale?: Locale
-}
-
 export default function formatDuration(
   duration: Duration,
   options: Options = {}
-) {
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
