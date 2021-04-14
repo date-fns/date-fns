@@ -28,16 +28,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 3
  */
 export default function differenceInCalendarQuarters(
-  dirtyDateLeft,
-  dirtyDateRight
-) {
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
-  var quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
+  const yearDiff = dateLeft.getFullYear() - dateRight.getFullYear()
+  const quarterDiff = getQuarter(dateLeft) - getQuarter(dateRight)
 
   return yearDiff * 4 + quarterDiff
 }
