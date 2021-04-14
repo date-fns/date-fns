@@ -32,18 +32,21 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
+export default function closestIndexTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: (Date | number)[]
+): number {
   requiredArgs(2, arguments)
 
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const dateToCompare = toDate(dirtyDateToCompare)
 
-  if (isNaN(dateToCompare)) {
+  if (isNaN(dateToCompare.getTime())) {
     return NaN
   }
 
-  var timeToCompare = dateToCompare.getTime()
+  const timeToCompare = dateToCompare.getTime()
 
-  var datesArray
+  let datesArray: (Date | number)[]
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -57,18 +60,19 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  var result
-  var minDistance
-  datesArray.forEach(function(dirtyDate, index) {
-    var currentDate = toDate(dirtyDate)
+  let result = NaN
+  let minDistance = NaN
 
-    if (isNaN(currentDate)) {
+  datesArray.forEach(function (dirtyDate, index) {
+    const currentDate = toDate(dirtyDate)
+
+    if (isNaN(currentDate.getTime())) {
       result = NaN
       minDistance = NaN
       return
     }
 
-    var distance = Math.abs(timeToCompare - currentDate.getTime())
+    const distance = Math.abs(timeToCompare - currentDate.getTime())
     if (result == null || distance < minDistance) {
       result = index
       minDistance = distance
