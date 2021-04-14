@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function closestIndexTo(
   dirtyDateToCompare: Date | number,
   dirtyDatesArray: (Date | number)[]
-): number {
+): number | null {
   requiredArgs(2, arguments)
 
   const dateToCompare = toDate(dirtyDateToCompare)
@@ -60,8 +60,8 @@ export default function closestIndexTo(
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  let result = NaN
-  let minDistance = NaN
+  let result: number | null = null
+  let minDistance = Infinity
 
   datesArray.forEach(function (dirtyDate, index) {
     const currentDate = toDate(dirtyDate)
