@@ -5,8 +5,8 @@ import getUTCISOWeekYear from '../../getUTCISOWeekYear/index'
 import getUTCWeek from '../../getUTCWeek/index'
 import getUTCWeekYear from '../../getUTCWeekYear/index'
 import addLeadingZeros from '../../addLeadingZeros/index'
-import { Localize } from '@/locale/types'
-import { Month, Quarter, DayPeriod } from '@/types'
+import { Localize } from '../../../locale/types'
+import { Month, Quarter, DayPeriod } from '../../../types'
 
 /*
  * |     | Unit                           |     | Unit                           |

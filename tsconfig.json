@@ -13,12 +13,6 @@
     "strictNullChecks": true,
     "importHelpers": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@lib/*": ["./src/_lib/*"],
-      "@fp/*": ["./src/fp/*"],
-      "@fp/lib/*": ["./src/fp/_lib*"]
-    },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true
