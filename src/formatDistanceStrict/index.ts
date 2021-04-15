@@ -4,12 +4,12 @@ import toDate from '../toDate/index'
 import cloneObject from '../_lib/cloneObject/index'
 import defaultLocale from '../locale/en-US/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions } from '../types';
+import { LocaleOptions, Unit } from '../types';
 
-var MILLISECONDS_IN_MINUTE = 1000 * 60
-var MINUTES_IN_DAY = 60 * 24
-var MINUTES_IN_MONTH = MINUTES_IN_DAY * 30
-var MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
+const MILLISECONDS_IN_MINUTE = 1000 * 60
+const MINUTES_IN_DAY = 60 * 24
+const MINUTES_IN_MONTH = MINUTES_IN_DAY * 30
+const MINUTES_IN_YEAR = MINUTES_IN_DAY * 365
 
 /**
  * @name formatDistanceStrict
@@ -167,7 +167,7 @@ export default function formatDistanceStrict(
   dirtyBaseDate: Date | number,
   options: LocaleOptions & {
     addSuffix?: boolean,
-    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+    unit?: Unit,
     roundingMethod?: 'floor' | 'ceil' | 'round',
   } = {}
 ): string {
@@ -246,12 +246,12 @@ export default function formatDistanceStrict(
 
   // 0 up to 60 seconds
   if (unit === 'second') {
-    var seconds = roundingMethodFn(milliseconds / 1000)
+    const seconds = roundingMethodFn(milliseconds / 1000)
     return locale.formatDistance('xSeconds', seconds, localizeOptions)
 
     // 1 up to 60 mins
   } else if (unit === 'minute') {
-    var roundedMinutes = roundingMethodFn(minutes)
+    const roundedMinutes = roundingMethodFn(minutes)
     return locale.formatDistance('xMinutes', roundedMinutes, localizeOptions)
 
     // 1 up to 24 hours

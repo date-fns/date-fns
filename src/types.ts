@@ -44,3 +44,10 @@ export interface DateValues {
   seconds?: number
   milliseconds?: number
 }
+
+export type Unit = 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'month'
+  | 'year';
