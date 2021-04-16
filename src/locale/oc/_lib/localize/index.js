@@ -159,10 +159,10 @@ function ordinalNumber(number, period) {
 }
         // feminine for year, week, hour, minute, second
         if (unit === 'year' || unit === 'week' || unit === 'hour' || unit === 'minute' || unit === 'second') {
-            ordinal .= 'a';
+            ordinal = ordinal + 'a';
         }
 
-        return number+ordinal;
+        return number + ordinal;
     }
 
 var localize = {
