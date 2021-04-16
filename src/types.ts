@@ -34,6 +34,14 @@ export interface LocaleOptions {
 export interface FormatOptions {
   format?: 'extended' | 'basic'
 }
+/**
+ * FirstWeekContainsDate is used to determine which week is the first of the year, based on what day the 1 January is in that week.
+ *
+ * The day in that week can only be 1 (Monday) or 4 (Thursday).
+ *
+ * Please see https://en.wikipedia.org/wiki/Week#Week_numbering for more information.
+ */
+export type FirstWeekContainsDate = 1 | 4
 
 export interface RepresentationOptions {
   representation?: 'complete' | 'date' | 'time'
@@ -50,8 +58,6 @@ export type Quarter = 1 | 2 | 3 | 4
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export type Month = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11
-
-export type FirstWeekContainsDate = 1 | 4
 
 export interface DateValues {
   year?: number
