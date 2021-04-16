@@ -144,9 +144,9 @@ var formattingDayPeriodValues = {
  */
 
 function ordinalNumber(number, period) {
-        var number = Number(number)
         var options = period || {}
         var unit = String(options.unit)
+        var ordinal
         switch (number) {
           case 1:
             ordinal = 'èr';
