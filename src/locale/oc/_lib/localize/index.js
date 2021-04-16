@@ -143,18 +143,26 @@ var formattingDayPeriodValues = {
  * @param {Object} [_period]
  */
 
-function ordinalNumber($number, $period) {
-        var number = Number($number)
-        var options = $period || {}
+function ordinalNumber(number, period) {
+        var number = Number(number)
+        var options = period || {}
         var unit = String(options.unit)
-        $ordinal = [1 => 'èr', 2 => 'nd'][(int) $number] ?? 'en';
-
+        switch (number) {
+          case 1:
+            ordinal = 'èr';
+            break;
+          case 2:
+            ordinal = 'nd';
+            break;
+          default:
+            ordinal = 'en';
+}
         // feminine for year, week, hour, minute, second
         if (unit === 'year' || unit === 'week' || unit === 'hour' || unit === 'minute' || unit === 'second') {
-            $ordinal .= 'a';
+            ordinal .= 'a';
         }
 
-        return $number.$ordinal;
+        return number+ordinal;
     }
 
 var localize = {
