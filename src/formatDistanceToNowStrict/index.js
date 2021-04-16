@@ -25,6 +25,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @param {Object} [options] - an object with options.
  * @param {Boolean} [options.addSuffix=false] - result indicates if the second date is earlier or later than the first
  * @param {'second'|'minute'|'hour'|'day'|'month'|'year'} [options.unit] - if specified, will force a unit
+ * @param {'second'|'minute'|'hour'|'day'|'month'} [options.maxUnit] - if specified, the value will be used as the highest unit possible
  * @param {'floor'|'ceil'|'round'} [options.roundingMethod='round'] - which way to round partial units
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {String} the distance in words
@@ -64,6 +65,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   roundingMethod: 'ceil'
  * })
  * //=> '1 month'
+ *
+ * @example
+ * // If today is 28 January 2015,
+ * // what is the distance to 30 January 2015, with minute as highest unit?
+ * var result = formatDistanceToNowStrict(new Date(2015, 0, 30), {
+ *   maxUnit: 'minute'
+ * })
+ * //=> '2880 minutes'
  *
  * @example
  * // If today is 1 January 2015,
