@@ -4,7 +4,7 @@ import differenceInMonths from '../differenceInMonths/index'
 import differenceInDays from '../differenceInDays/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
-import differenceInSeconds from '../differenceInSeconds/index'
+import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import isValid from '../isValid/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toDate from '../toDate/index'
@@ -75,7 +75,7 @@ export default function intervalToDuration({ start, end }) {
   const remainingSeconds = sub(remainingMinutes, {
     minutes: sign * duration.minutes
   })
-  duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
+  duration.seconds = Math.round(Math.abs(differenceInMilliseconds(remainingSeconds, dateRight) / 1000))
 
   return duration
 }
