@@ -34,7 +34,7 @@ import sub from '../sub/index'
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
 
-export default function intervalToDuration({ start, end }) {
+export default function intervalToDuration({ start, end }: Interval): Duration {
   requiredArgs(1, arguments)
 
   const dateLeft = toDate(start)
@@ -53,7 +53,7 @@ export default function intervalToDuration({ start, end }) {
     days: 0,
     hours: 0,
     minutes: 0,
-    seconds: 0
+    seconds: 0,
   }
 
   const sign = compareAsc(dateLeft, dateRight)
@@ -73,7 +73,7 @@ export default function intervalToDuration({ start, end }) {
   duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
 
   const remainingSeconds = sub(remainingMinutes, {
-    minutes: sign * duration.minutes
+    minutes: sign * duration.minutes,
   })
   duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
 
