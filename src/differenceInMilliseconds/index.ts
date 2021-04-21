@@ -30,7 +30,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function differenceInMilliseconds(
   dirtyDateLeft: Date | number,
   dirtyDateRight: Date | number
-) {
+): number {
   requiredArgs(2, arguments)
 
   const dateLeft = toDate(dirtyDateLeft)
