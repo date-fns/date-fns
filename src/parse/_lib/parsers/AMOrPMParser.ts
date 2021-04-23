@@ -1,6 +1,7 @@
 import { AbstractParser } from './AbstractParser'
 import { dayPeriodEnumToHours } from '../utils'
-import { Match } from 'src/locale/types'
+import { Match, Flags } from 'src/locale/types'
+import { ParseOutput, ParseOptions } from '../types'
 
 // AM or PM
 export class AMOrPMParser extends AbstractParser {
@@ -14,7 +15,12 @@ export class AMOrPMParser extends AbstractParser {
     'T',
   ]
 
-  parse(string: any, token: any, match: Match, _options: any) {
+  parse(
+    string: string,
+    token: string,
+    match: Match,
+    _options: ParseOptions
+  ): ParseOutput {
     switch (token) {
       case 'a':
       case 'aa':
@@ -44,7 +50,12 @@ export class AMOrPMParser extends AbstractParser {
     }
   }
 
-  set(date: any, flags: any, value: any, _options: any) {
+  set(
+    date: Date,
+    flags: Flags,
+    value: unknown,
+    _options: ParseOptions
+  ): Date | [Date, Flags] {
     date.setUTCHours(dayPeriodEnumToHours(value), 0, 0, 0)
     return date
   }

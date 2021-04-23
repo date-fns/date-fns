@@ -1278,7 +1278,7 @@ describe('parse', function () {
     })
   })
 
-  describe('AM, PM, noon, midnight', function () {
+  describe.only('AM, PM, noon, midnight', function () {
     it('abbreviated', function () {
       const result = parse('noon', 'b', referenceDate)
       assert.deepEqual(result, new Date(1986, 3 /* Apr */, 4, 12))

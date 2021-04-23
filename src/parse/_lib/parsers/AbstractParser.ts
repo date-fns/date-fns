@@ -1,13 +1,5 @@
-import { LocaleOptions, Flags, Locale, Match } from 'src/locale/types'
-
-type ParseOptions = Locale & LocaleOptions
-type ParseOutput =
-  | number
-  | null
-  | {
-      value: unknown
-      rest: unknown
-    }
+import { Flags, Match } from 'src/locale/types'
+import { ParseOptions, ParseOutput } from '../types'
 
 export abstract class AbstractParser {
   public readonly incompatibleTokens: string | string[] = []

@@ -531,12 +531,15 @@ export default function parse(
       checkIncompatibleTokens(token, parser, firstCharacter, usedTokens)
 
       usedTokens.push({ token: firstCharacter, fullToken: token })
+
       const parseResult = parser.parse(
         dateString,
         token,
         locale.match,
         subFnOptions
       )
+
+      console.error('parse result', parseResult)
 
       if (!parseResult) {
         return new Date(NaN)
