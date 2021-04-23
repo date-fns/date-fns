@@ -59,8 +59,10 @@ describe('subBusinessDays', function () {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function () {
+    // @ts-expect-error
     assert.throws(subBusinessDays.bind(null), TypeError)
     assert.throws(
+      // @ts-expect-error
       subBusinessDays.bind(null, new Date(2014, 8 /* Sep */, 1)),
       TypeError
     )
