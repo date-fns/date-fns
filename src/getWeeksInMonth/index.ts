@@ -2,6 +2,7 @@ import differenceInCalendarWeeks from '../differenceInCalendarWeeks/index'
 import lastDayOfMonth from '../lastDayOfMonth/index'
 import startOfMonth from '../startOfMonth/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name getWeeksInMonth
@@ -25,16 +26,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // How many calendar weeks does February 2015 span?
- * var result = getWeeksInMonth(new Date(2015, 1, 8))
+ * const result = getWeeksInMonth(new Date(2015, 1, 8))
  * //=> 4
  *
  * @example
  * // If the week starts on Monday,
  * // how many calendar weeks does July 2017 span?
- * var result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
+ * const result = getWeeksInMonth(new Date(2017, 6, 5), { weekStartsOn: 1 })
  * //=> 6
  */
-export default function getWeeksInMonth(date, options) {
+export default function getWeeksInMonth(
+  date: Date | number,
+  options?: LocaleOptions & WeekStartOptions
+): number {
   requiredArgs(1, arguments)
 
   return (

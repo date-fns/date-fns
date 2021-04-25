@@ -8,6 +8,35 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.21.1 - 2021-04-15
+
+Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
+
+### Fixed
+
+- [Fixed a breaking change introduced by using modern default argument value syntax (see https://github.com/Hacker0x01/react-datepicker/issues/2870).](https://github.com/date-fns/date-fns/pull/2423)
+
+## v2.21.0 - 2021-04-14
+
+This release is brought to you by [Aleksei Korzun](http://github.com/a-korzun), [Tan75](http://github.com/tan75), [Rubens Mariuzzo](http://github.com/rmariuzzo), [Christoph Stenglein](http://github.com/cstenglein) and [Clément Tamisier](http://github.com/ctamisier).
+
+### Fixed
+
+- [Made `formatDistanceStrict` return `12 months` instead of `1 year` when `unit: 'month'`.](https://github.com/date-fns/date-fns/pull/2411)
+
+### Added
+
+- [Added Haitian Creole (`ht`) locale.](https://github.com/date-fns/date-fns/pull/2396)
+- [Added Austrian German (`de-AT`) locale.](https://github.com/date-fns/date-fns/pull/2362)
+
+## v2.20.3 - 2021-04-13
+
+Kudos to [fturmel](http://github.com/fturmel) for working on the release.
+
+### Fixed
+
+- [Fixed broken tree-shaking caused by missing links to corresponding ESM.](https://github.com/date-fns/date-fns/pull/2339) ([#2207](https://github.com/date-fns/date-fns/issues/2207))
+
 ## v2.20.2 - 2021-04-12
 
 Kudos to [Maxim Topciu](http://github.com/maximtop) for working on the release.

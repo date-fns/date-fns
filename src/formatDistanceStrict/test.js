@@ -266,6 +266,15 @@ describe('formatDistanceStrict', function () {
         assert(result === '4 months')
       })
 
+      it('12 months - see issue 2388', function () {
+        var result = formatDistanceStrict(
+          new Date(1986, 7, 4, 10, 32, 0),
+          new Date(1985, 7, 4, 10, 32, 0),
+          { unit: 'month' }
+        )
+        assert(result === '12 months')
+      })
+
       it('24 months', function () {
         var result = formatDistanceStrict(
           new Date(1986, 3, 4, 10, 32, 0),
