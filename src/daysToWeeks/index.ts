@@ -13,8 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // Convert 15 days to weeks
- * const result = daysToWeeks(15)
+ * // Convert 14 days to weeks
+ * const result = daysToWeeks(14)
  * //=> 2
  */
 
