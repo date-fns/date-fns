@@ -13,19 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 2 hours to milliseconds
- * const result = hoursToMilliseconds(2) => 7,200,000
+ * //Convert 2 hours to milliseconds
+ * const result = hoursToMilliseconds(2)
+ * //=> 7200000
  */
 
-export default function hoursToMilliseconds(
-  hours: number,
-
-): number {
+export default function hoursToMilliseconds(hours: number): number {
   requiredArgs(1, arguments);
-
-  const MILLISECONDS_IN_1HOUR = 3600000;
-
-  const milliseconds = hours * MILLISECONDS_IN_1HOUR;
-
-  return milliseconds;
+  // milliseconds in 1 hour => 3600000;
+  return hours * 3600000;
 }

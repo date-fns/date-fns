@@ -13,19 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 8 quarters to years
- * const result = quartersToYears(8) => 2
+ * //Convert 8 quarters to years
+ * const result = quartersToYears(8)
+ * //=> 2
  */
 
-export default function quartersToYears(
-  quarters: number,
-
-): number {
+export default function quartersToYears(quarters: number): number {
   requiredArgs(1, arguments);
-
   const years = quarters/4;
-
-  const yearsRounded = Number(Math.round(Number(years + "e" + 2)) + "e" + 2 * -1); //Precision of 2 in decimals
-
-  return yearsRounded;
+  return Math.floor(years);
 }

@@ -13,14 +13,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * const result = weeksToDays(2) => 14
+ * //Convert 2 weeks into days
+ * const result = weeksToDays(2)
+ * //=> 14
  */
 
-export default function weeksToDays(
-  weeks: number,
-
-): number {
+export default function weeksToDays(weeks: number): number {
   requiredArgs(1, arguments);
-
   return weeks*7;
 }

@@ -13,18 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 14 days to weeks
- * const result = daysToWeeks(14) => 2
+ * // Convert 15 days to weeks
+ * const result = daysToWeeks(15)
+ * //=> 2
  */
 
-export default function daysToWeeks(
-  days: number,
-
-): number {
+export default function daysToWeeks(days: number): number {
   requiredArgs(1, arguments);
-
   const weeks = days/7;
-  const weeksRounded = Number(Math.round(Number(weeks + "e" + 2)) + "e" + 2 * -1); //Precision of 2 in decimals
-
-  return weeksRounded;
+  return Math.floor(weeks)
 }

@@ -13,15 +13,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 2 minutes to seconds
- * const result = minutesToSeconds(2) => 120
+ * //Convert 2 minutes to seconds
+ * const result = minutesToSeconds(2)
+ * //=> 120
  */
 
-export default function minutesToSeconds(
-  minutes: number,
-
-): number {
+export default function minutesToSeconds(minutes: number): number {
   requiredArgs(1, arguments);
-
   return minutes*60;
 }

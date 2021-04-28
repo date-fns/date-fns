@@ -13,15 +13,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 2 hours to seconds
- * const result = hoursToSeconds(2) => 7200
+ * //Convert 2 hours to seconds
+ * const result = hoursToSeconds(2)
+ * //=> 7200
  */
 
-export default function hoursToSeconds(
-  hours: number,
-
-): number {
+export default function hoursToSeconds(hours: number): number {
   requiredArgs(1, arguments);
-
   return hours * 3600;
 }

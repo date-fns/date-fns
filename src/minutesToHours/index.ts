@@ -13,18 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 140 minutes to hours
- * const result = minutesToHours(140) => 2.3
+ * //Convert 140 minutes to hours
+ * const result = minutesToHours(140)
+ * //=> 2
  */
 
-export default function minutesToHours(
-  minutes: number,
-
-): number {
+export default function minutesToHours(minutes: number): number {
   requiredArgs(1, arguments);
-
   const hours = minutes/60;
-  const hoursRounded = Number(Math.round(Number(hours + "e" + 2)) + "e" + 2 * -1); //Precision of 2 in decimals
-
-  return hoursRounded;
+  return Math.floor(hours);
 }

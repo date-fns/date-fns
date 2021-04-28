@@ -13,15 +13,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 2 quarters to months
- * const result = quartersToMonths(2) => 6
+ * //Convert 2 quarters to months
+ * const result = quartersToMonths(2)
+ * //=> 6
  */
 
-export default function quartersToMonths(
-  quarters: number,
-
-): number {
+export default function quartersToMonths(quarters: number): number {
   requiredArgs(1, arguments);
-
   return quarters*3;
 }

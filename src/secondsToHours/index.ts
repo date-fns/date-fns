@@ -13,18 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 7200 seconds into hours
- * const result = secondsToHours(7200) => 2
+ * //Convert 7200 seconds into hours
+ * const result = secondsToHours(7200)
+ * //=> 2
  */
 
-export default function secondsToHours(
-  seconds: number,
-
-): number {
+export default function secondsToHours(seconds: number): number {
   requiredArgs(1, arguments);
-
   const hours = seconds/3600;
-  const hoursRounded = Number(Math.round(Number(hours + "e" + 3)) + "e" + 3 * -1); //Precision of 3 in decimals
-
-  return hoursRounded;
+  return Math.floor(hours);
 }

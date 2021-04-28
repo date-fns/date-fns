@@ -13,19 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 40 months to years
- * const result = monthsToYears(40) => 3.33
+ * //Convert 40 months to years
+ * const result = monthsToYears(40)
+ * //=> 3
  */
 
-export default function monthsToYears(
-  months: number,
-
-): number {
+export default function monthsToYears(months: number): number {
   requiredArgs(1, arguments);
-
   const years = months/12;
-
-  const yearsRounded = Number(Math.round(Number(years + "e" + 2)) + "e" + 2 * -1); //Precision of 2 in decimals
-
-  return yearsRounded;
+  return Math.floor(years);
 }

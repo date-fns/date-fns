@@ -14,20 +14,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * //Converting 1000 miliseconds to seconds
- * const result = millisecondsToSeconds(1000) => 1
+ * const result = millisecondsToSeconds(1000)
+ * //=> 1
  */
 
-export default function millisecondsToSeconds(
-  milliseconds: number,
-
-): number {
+export default function millisecondsToSeconds(milliseconds: number): number {
   requiredArgs(1, arguments);
-
-  const MILLISECONDS_IN_1SECOND = 1000;
-
-  const seconds = milliseconds/MILLISECONDS_IN_1SECOND;
-
-  const secondsRounded = Number(Math.round(Number(seconds + "e" + 3)) + "e" + 3 * -1); //Precision of 3 in decimals
-
-  return secondsRounded;
+  // milliseconds in 1 seconds => 1000;
+  const seconds = milliseconds/1000;
+  return Math.floor(seconds);
 }

@@ -13,18 +13,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Converting 120 seconds into minutes
- * const result = secondsToMinutes(120) => 2
+ * //Convert 120 seconds into minutes
+ * const result = secondsToMinutes(120)
+ * //=> 2
  */
 
-export default function secondsToMinutes(
-  seconds: number,
-
-): number {
+export default function secondsToMinutes(seconds: number): number {
   requiredArgs(1, arguments);
-
   const minutes = seconds/60;
-  const minutesRounded = Number(Math.round(Number(minutes + "e" + 3)) + "e" + 3 * -1); //Precision of 3 in decimals
-
-  return minutesRounded;
+  return Math.floor(minutes);
 }
