@@ -8,7 +8,7 @@ var formatDistanceLocale = {
     few: {
       regular: 'méně než {{count}} sekundy',
       past: 'před méně než {{count}} sekundami',
-      future: 'za méně než {{count}} sekund',
+      future: 'za méně než {{count}} sekundy',
     },
     many: {
       regular: 'méně než {{count}} sekund',
@@ -26,7 +26,7 @@ var formatDistanceLocale = {
     few: {
       regular: '{{count}} sekundy',
       past: 'před {{count}} sekundami',
-      future: 'za {{count}} sekund',
+      future: 'za {{count}} sekundy',
     },
     many: {
       regular: '{{count}} sekund',
