@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function secondsToMilliseconds(seconds: number): number
+
 /**
  * @name secondsToMilliseconds
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert seconds to milliseconds.
  *
  * @description
- * Convert seconds number to milliseconds numbers.
+ * Convert a number of seconds to a number of milliseconds.
  *
  * @param { number } seconds - number of seconds to be converted.
  *
@@ -13,12 +16,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 2 seconds into milliseconds
+ * // Convert 2 seconds into milliseconds
  * const result = secondsToMilliseconds(2)
  * //=> 2000
  */
-
 export default function secondsToMilliseconds(seconds: number): number {
-  requiredArgs(1, arguments);
-  return seconds*1000;
+  requiredArgs(1, arguments)
+  return seconds * 1000
 }
