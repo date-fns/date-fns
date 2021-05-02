@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function hoursToMinutes(hours: number): number
+
 /**
  * @name hoursToMinutes
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert hours to minutes.
  *
  * @description
- * Convert hours number to minutes numbers.
+ * Convert a number of hours to a number of minutes.
  *
  * @param { number } hours - number of hours to be converted.
  *
@@ -13,12 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 2 hours to minutes
+ * // Convert 2 hours to minutes
  * const result = hoursToMinutes(2)
  * //=> 120
  */
 
 export default function hoursToMinutes(hours: number): number {
-  requiredArgs(1, arguments);
-  return hours*60;
+  requiredArgs(1, arguments)
+  return hours * 60
 }
