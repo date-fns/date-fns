@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function monthsToYears(months: number): number
+
 /**
  * @name monthsToYears
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert number of months to years.
  *
  * @description
- * Convert number of months to years.
+ * Convert a number of months to a number of years.
  *
  * @param { number } months - number of months to be converted.
  *
@@ -13,13 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 40 months to years
+ * // Convert 40 months to years
  * const result = monthsToYears(40)
  * //=> 3
  */
-
 export default function monthsToYears(months: number): number {
-  requiredArgs(1, arguments);
-  const years = months/12;
-  return Math.floor(years);
+  requiredArgs(1, arguments)
+  const years = months / 12
+  return Math.floor(years)
 }
