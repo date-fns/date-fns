@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function hoursToSeconds(hours: number): number
+
 /**
  * @name hoursToSeconds
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert hours to seconds.
  *
  * @description
- * Convert hours number to seconds numbers.
+ * Convert a number of hours to a number of seconds.
  *
  * @param { number } hours - number of hours to be converted.
  *
@@ -13,12 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 2 hours to seconds
+ * // Convert 2 hours to seconds
  * const result = hoursToSeconds(2)
  * //=> 7200
  */
 
 export default function hoursToSeconds(hours: number): number {
-  requiredArgs(1, arguments);
-  return hours * 3600;
+  requiredArgs(1, arguments)
+  return hours * 3600
 }
