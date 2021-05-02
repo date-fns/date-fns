@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function monthsToQuarters(months: number): number
+
 /**
  * @name monthsToQuarters
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert number of months to quarters.
  *
  * @description
- * Convert number of months to quarters.
+ * Convert a number of months to a number of quarters.
  *
  * @param { number } months - number of months to be converted.
  *
@@ -13,13 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 6 months to quarters
+ * // Convert 6 months to quarters
  * const result = monthsToQuarters(6)
  * //=> 2
  */
-
 export default function monthsToQuarters(months: number): number {
-  requiredArgs(1, arguments);
-  const quarters = months/3;
-  return Math.floor(quarters);
+  requiredArgs(1, arguments)
+  const quarters = months / 3
+  return Math.floor(quarters)
 }
