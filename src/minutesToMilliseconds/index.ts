@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function minutesToMilliseconds(minutes: number): number
+
 /**
  * @name minutesToMilliseconds
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert minutes to milliseconds.
  *
  * @description
- * Convert minutes number to milliseconds numbers.
+ * Convert a number of minutes to a number of milliseconds.
  *
  * @param { number } minutes - number of minutes to be converted.
  *
@@ -13,13 +16,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 2 minutes to milliseconds
+ * // Convert 2 minutes to milliseconds
  * const result = minutesToMilliseconds(2)
  * //=> 120000
  */
-
 export default function minutesToMilliseconds(minutes: number): number {
-  requiredArgs(1, arguments);
+  requiredArgs(1, arguments)
   // milliseconds in 1 minute => 60000;
-  return minutes * 60000;
+  return minutes * 60000
 }
