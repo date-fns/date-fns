@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function minutesToSeconds(minutes: number): number
+
 /**
  * @name minutesToSeconds
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert minutes to seconds.
  *
  * @description
- * Convert minutes number to seconds numbers.
+ * Convert a number of minutes to a number of seconds.
  *
  * @param { number } minutes - number of minutes to be converted.
  *
@@ -13,12 +16,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 2 minutes to seconds
+ * // Convert 2 minutes to seconds
  * const result = minutesToSeconds(2)
  * //=> 120
  */
-
 export default function minutesToSeconds(minutes: number): number {
-  requiredArgs(1, arguments);
-  return minutes*60;
+  requiredArgs(1, arguments)
+  return minutes * 60
 }
