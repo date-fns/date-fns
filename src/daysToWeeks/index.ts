@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function daysToWeeks(days: number): number
+
 /**
  * @name daysToWeeks
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert days to weeks.
  *
  * @description
- * Convert days number to weeks numbers.
+ * Convert a number of days to a number of weeks.
  *
  * @param { number } days - number of days to be converted.
  *
@@ -17,9 +20,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = daysToWeeks(14)
  * //=> 2
  */
-
 export default function daysToWeeks(days: number): number {
-  requiredArgs(1, arguments);
-  const weeks = days/7;
+  requiredArgs(1, arguments)
+  const weeks = days / 7
   return Math.floor(weeks)
 }
