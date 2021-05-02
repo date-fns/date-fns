@@ -1,11 +1,14 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+
+export default function yearsToQuarters(years: number): number
+
 /**
  * @name yearsToQuarters
- * @category Common Helpers
+ * @category Conversion Helpers
  * @summary Convert years to quarters.
  *
  * @description
- * Convert number of years to quarters.
+ * Convert a number of years to a number of quarters.
  *
  * @param { number } years - number of years to be converted.
  *
@@ -13,12 +16,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {TypeError} 1 argument required
  *
  * @example
- * //Convert 1 year to quarters
+ * // Convert 1 year to quarters
  * const result = yearsToQuarters(2)
  * //=> 8
  */
-
 export default function yearsToQuarters(years: number): number {
-  requiredArgs(1, arguments);
-  return years*4;
+  requiredArgs(1, arguments)
+  return years * 4
 }
