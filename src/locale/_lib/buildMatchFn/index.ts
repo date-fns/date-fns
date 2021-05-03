@@ -1,5 +1,6 @@
 import {
   BuildMatchFnArgs,
+  LocaleDayPeriod,
   LocaleMatchResult,
   LocaleParsePatternWidth,
   LocalePatternWidth,
@@ -30,13 +31,15 @@ export default function buildMatchFn<
       (width && args.parsePatterns[width]) ||
       args.parsePatterns[args.defaultParseWidth]
 
-    const key = Array.isArray(parsePatterns)
+    const key = (Array.isArray(parsePatterns)
       ? findIndex(parsePatterns, (pattern) => pattern.test(matchedString))
-      : findKey(parsePatterns, (pattern) => pattern.test(matchedString))
+      : findKey(parsePatterns, (pattern: any) =>
+          pattern.test(matchedString)
+        )) as Result extends LocaleDayPeriod ? string : number
 
     let value: Result
 
-    value = args.valueCallback ? args.valueCallback(key) : key
+    value = (args.valueCallback ? args.valueCallback(key) : key) as Result
     value = options.valueCallback ? options.valueCallback(value) : value
 
     const rest = string.slice(matchedString.length)
@@ -45,10 +48,10 @@ export default function buildMatchFn<
   }
 }
 
-function findKey<Key extends string, Value, Obj extends Record<Key, Value>>(
+function findKey<Value, Obj extends { [key in string | number]: Value }>(
   object: Obj,
   predicate: (value: Value) => boolean
-): Key | undefined {
+): keyof Obj | undefined {
   for (let key in object) {
     if (object.hasOwnProperty(key) && predicate(object[key])) {
       return key
