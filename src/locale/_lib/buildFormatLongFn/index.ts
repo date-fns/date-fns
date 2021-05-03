@@ -1,6 +1,18 @@
-export default function buildFormatLongFn(args) {
+import { FormatLongFn, FormatLongWidth } from '../../types'
+
+export interface BuildFormatLongFnArgs {
+  formats: { [format in FormatLongWidth]: string }
+  defaultWidth: FormatLongWidth
+}
+
+export default function buildFormatLongFn(
+  args: BuildFormatLongFnArgs
+): FormatLongFn {
   return (options = {}) => {
-    var width = options.width ? String(options.width) : args.defaultWidth
+    // TODO: Remove String()
+    var width = options.width
+      ? (String(options.width) as FormatLongWidth)
+      : args.defaultWidth
     var format = args.formats[width] || args.formats[args.defaultWidth]
     return format
   }

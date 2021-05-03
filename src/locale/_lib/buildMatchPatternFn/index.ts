@@ -1,4 +1,10 @@
-import { BuildMatchPatternFnArgs, MatchFn } from '../../types'
+import { MatchFn, MatchValueCallback } from '../../types'
+
+export interface BuildMatchPatternFnArgs<Result> {
+  matchPattern: RegExp
+  parsePattern: RegExp
+  valueCallback?: MatchValueCallback<string, Result>
+}
 
 export default function buildMatchPatternFn<Result>(
   args: BuildMatchPatternFnArgs<Result>

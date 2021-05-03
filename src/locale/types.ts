@@ -1,4 +1,4 @@
-import { Era, Month, Quarter } from 'src/types'
+import { Era, FirstWeekContainsDate, Month, Quarter } from '../types'
 
 export interface Locale {
   code: string
@@ -11,26 +11,34 @@ export interface Locale {
 }
 
 export interface LocaleOptions {
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-  firstWeekContainsDate?: 1 | 2 | 3 | 4 | 5 | 6 | 7
+  weekStartsOn?: Day
+  firstWeekContainsDate?: FirstWeekContainsDate
+}
+
+export type FormatDistanceToken =
+  | 'lessThanXSeconds'
+  | 'xSeconds'
+  | 'halfAMinute'
+  | 'lessThanXMinutes'
+  | 'xMinutes'
+  | 'aboutXHours'
+  | 'xHours'
+  | 'xDays'
+  | 'aboutXWeeks'
+  | 'xWeeks'
+  | 'aboutXMonths'
+  | 'xMonths'
+  | 'aboutXYears'
+  | 'xYears'
+  | 'overXYears'
+  | 'almostXYears'
+
+export type FormatDistanceLocale<Value> = {
+  [token in FormatDistanceToken]: Value
 }
 
 export type FormatDistanceFn = (
-  token:
-    | 'lessThanXSeconds'
-    | 'xSeconds'
-    | 'halfAMinute'
-    | 'lessThanXMinutes'
-    | 'xMinutes'
-    | 'aboutXHours'
-    | 'xHours'
-    | 'xDays'
-    | 'aboutXMonths'
-    | 'xMonths'
-    | 'aboutXYears'
-    | 'xYears'
-    | 'overXYears'
-    | 'almostXYears',
+  token: FormatDistanceToken,
   count: number,
   options?: {
     addSuffix?: boolean
@@ -38,11 +46,19 @@ export type FormatDistanceFn = (
   }
 ) => string
 
+export type FormatRelativeToken =
+  | 'lastWeek'
+  | 'yesterday'
+  | 'today'
+  | 'tomorrow'
+  | 'nextWeek'
+  | 'other'
+
 export type FormatRelativeFn = (
-  token: 'lastWeek' | 'yesterday' | 'today' | 'tomorrow' | 'nextWeek' | 'other',
+  token: FormatRelativeToken,
   date: Date | number,
   baseDate: Date | number,
-  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
+  options?: { weekStartsOn?: Day }
 ) => string
 
 export type LocalizeFn<TValue> = (
@@ -69,22 +85,6 @@ export interface Localize {
     | 'evening'
     | 'night'
   >
-}
-
-export type FormatLongFn = (options?: {
-  width?: 'full' | 'long' | 'medium' | 'short'
-}) => string
-
-export interface FormatLong {
-  date: FormatLongFn
-  time: FormatLongFn
-  dateTime: FormatLongFn
-}
-
-export interface BuildMatchPatternFnArgs<Result> {
-  matchPattern: RegExp
-  parsePattern: RegExp
-  valueCallback?: MatchValueCallback<string, Result>
 }
 
 export interface BuildMatchFnArgs<
@@ -183,4 +183,18 @@ export type LocaleDayPeriod =
   | 'evening'
   | 'night'
 
+export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
+
 export type LocaleMatchResult = Era | Quarter | Month | Day | LocaleDayPeriod
+
+export interface FormatLong {
+  date: FormatLongFn
+  time: FormatLongFn
+  dateTime: FormatLongFn
+}
+
+export interface FormatLongFnOptions {
+  width?: FormatLongWidth
+}
+
+export type FormatLongFn = (options: FormatLongFnOptions) => string

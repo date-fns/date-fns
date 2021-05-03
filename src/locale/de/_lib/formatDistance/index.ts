@@ -1,6 +1,13 @@
-import type { FormatDistanceFn } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
 
-const formatDistanceLocale = {
+type FormatDistanceTokenForm = { one: string; other: string }
+
+type FormatDistanceTokenValue = {
+  standalone: string | FormatDistanceTokenForm
+  withPreposition: string | FormatDistanceTokenForm
+}
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     standalone: {
       one: 'weniger als eine Sekunde',
