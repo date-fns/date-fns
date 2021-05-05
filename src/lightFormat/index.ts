@@ -14,11 +14,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
 //   If there is no matching single quote
 //   then the sequence will continue until the end of the string.
 // - . matches any single character unmatched by previous parts of the RegExps
-var formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
+const formattingTokensRegExp = /(\w)\1*|''|'(''|[^'])+('|$)|./g
 
-var escapedStringRegExp = /^'([^]*?)'?$/
-var doubleQuoteRegExp = /''/g
-var unescapedLatinCharacterRegExp = /[a-zA-Z]/
+const escapedStringRegExp = /^'([^]*?)'?$/
+const doubleQuoteRegExp = /''/g
+const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 /**
  * @name lightFormat
@@ -72,15 +72,19 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * @throws {RangeError} format string contains an unescaped latin alphabet character
  *
  * @example
- * var result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
+ * const result = lightFormat(new Date(2014, 1, 11), 'yyyy-MM-dd')
  * //=> '2014-02-11'
  */
-export default function lightFormat(dirtyDate, dirtyFormatStr) {
+
+type Token = keyof typeof formatters
+
+export default function lightFormat(
+  dirtyDate: Date | number,
+  formatStr: string
+): string {
   requiredArgs(2, arguments)
 
-  var formatStr = String(dirtyFormatStr)
-
-  var originalDate = toDate(dirtyDate)
+  const originalDate = toDate(dirtyDate)
 
   if (!isValid(originalDate)) {
     throw new RangeError('Invalid time value')
@@ -89,25 +93,29 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
   // Convert the date in system timezone to the same date in UTC+00:00 timezone.
   // This ensures that when UTC functions will be implemented, locales will be compatible with them.
   // See an issue about UTC functions: https://github.com/date-fns/date-fns/issues/376
-  var timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
-  var utcDate = subMilliseconds(originalDate, timezoneOffset)
+  const timezoneOffset = getTimezoneOffsetInMilliseconds(originalDate)
+  const utcDate = subMilliseconds(originalDate, timezoneOffset)
 
-  var result = formatStr
-    .match(formattingTokensRegExp)
-    .map(function(substring) {
+  const tokens = formatStr.match(formattingTokensRegExp)
+
+  // The only case when formattingTokensRegExp doesn't match the string is when it's empty
+  if (!tokens) return ''
+
+  const result = tokens
+    .map((substring) => {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"
       }
 
-      var firstCharacter = substring[0]
+      const firstCharacter = substring[0]
       if (firstCharacter === "'") {
         return cleanEscapedString(substring)
       }
 
-      var formatter = formatters[firstCharacter]
+      const formatter = formatters[firstCharacter as Token]
       if (formatter) {
-        return formatter(utcDate, substring, null, {})
+        return formatter(utcDate, substring)
       }
 
       if (firstCharacter.match(unescapedLatinCharacterRegExp)) {
@@ -125,6 +133,12 @@ export default function lightFormat(dirtyDate, dirtyFormatStr) {
   return result
 }
 
-function cleanEscapedString(input) {
-  return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'")
+function cleanEscapedString(input: string) {
+  const matches = input.match(escapedStringRegExp)
+
+  if (!matches) {
+    return input
+  }
+
+  return matches[1].replace(doubleQuoteRegExp, "'")
 }
