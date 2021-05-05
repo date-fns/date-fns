@@ -5,6 +5,7 @@ import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name formatRelative
@@ -41,14 +42,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
  */
-export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
+export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions?: LocaleOptions & WeekStartOptions): string {
   requiredArgs(2, arguments)
 
-  var date = toDate(dirtyDate)
-  var baseDate = toDate(dirtyBaseDate)
+  const date = toDate(dirtyDate)
+  const baseDate = toDate(dirtyBaseDate)
 
-  var options = dirtyOptions || {}
-  var locale = options.locale || defaultLocale
+  const {
+    locale = defaultLocale,
+    weekStartsOn = 0,
+  } = dirtyOptions || {}
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -62,13 +65,13 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
     throw new RangeError('locale must contain formatRelative property')
   }
 
-  var diff = differenceInCalendarDays(date, baseDate)
+  const diff = differenceInCalendarDays(date, baseDate)
 
   if (isNaN(diff)) {
     throw new RangeError('Invalid time value')
   }
 
-  var token
+  let token
   if (diff < -6) {
     token = 'other'
   } else if (diff < -1) {
@@ -85,11 +88,11 @@ export default function formatRelative(dirtyDate, dirtyBaseDate, dirtyOptions) {
     token = 'other'
   }
 
-  var utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
-  var utcBaseDate = subMilliseconds(
+  const utcDate = subMilliseconds(date, getTimezoneOffsetInMilliseconds(date))
+  const utcBaseDate = subMilliseconds(
     baseDate,
     getTimezoneOffsetInMilliseconds(baseDate)
   )
-  var formatStr = locale.formatRelative(token, utcDate, utcBaseDate, options)
-  return format(date, formatStr, options)
+  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, { locale, weekStartsOn })
+  return format(date, formatStr, { locale, weekStartsOn })
 }
