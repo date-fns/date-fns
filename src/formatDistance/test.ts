@@ -1,14 +1,13 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatDistance from '.'
 
 describe('formatDistance', function () {
   describe('seconds', function () {
     describe('when the includeSeconds option is true', function () {
       it('less than 5 seconds', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 3),
           { includeSeconds: true }
@@ -17,7 +16,7 @@ describe('formatDistance', function () {
       })
 
       it('less than 10 seconds', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 7),
           { includeSeconds: true }
@@ -26,7 +25,7 @@ describe('formatDistance', function () {
       })
 
       it('less than 20 seconds', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 15),
           { includeSeconds: true }
@@ -35,7 +34,7 @@ describe('formatDistance', function () {
       })
 
       it('half a minute', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 25),
           { includeSeconds: true }
@@ -44,7 +43,7 @@ describe('formatDistance', function () {
       })
 
       it('less than a minute', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 32, 45),
           { includeSeconds: true }
@@ -53,7 +52,7 @@ describe('formatDistance', function () {
       })
 
       it('1 minute', function () {
-        var result = formatDistance(
+        const result = formatDistance(
           new Date(1986, 3, 4, 10, 32, 0),
           new Date(1986, 3, 4, 10, 33, 0),
           { includeSeconds: true }
@@ -65,7 +64,7 @@ describe('formatDistance', function () {
 
   describe('minutes', function () {
     it('less than a minute', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 20)
       )
@@ -73,7 +72,7 @@ describe('formatDistance', function () {
     })
 
     it('1 minute', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 50)
       )
@@ -81,7 +80,7 @@ describe('formatDistance', function () {
     })
 
     it('n minutes', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 34, 50)
       )
@@ -91,7 +90,7 @@ describe('formatDistance', function () {
 
   describe('hours', function () {
     it('about 1 hour', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 11, 32, 0)
       )
@@ -99,7 +98,7 @@ describe('formatDistance', function () {
     })
 
     it('about n hours', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 13, 32, 0)
       )
@@ -109,7 +108,7 @@ describe('formatDistance', function () {
 
   describe('days', function () {
     it('1 day', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 5, 10, 32, 0)
       )
@@ -117,7 +116,7 @@ describe('formatDistance', function () {
     })
 
     it('n days', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 7, 10, 32, 0)
       )
@@ -127,7 +126,7 @@ describe('formatDistance', function () {
 
   describe('months', function () {
     it('about 1 month', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 4, 4, 10, 32, 0)
       )
@@ -135,7 +134,7 @@ describe('formatDistance', function () {
     })
 
     it('n months', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 6, 4, 10, 32, 0)
       )
@@ -145,7 +144,7 @@ describe('formatDistance', function () {
 
   describe('years', function () {
     it('about 1 year', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 3, 4, 10, 32, 0)
       )
@@ -153,7 +152,7 @@ describe('formatDistance', function () {
     })
 
     it('over 1 year', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1987, 9, 4, 10, 32, 0)
       )
@@ -161,7 +160,7 @@ describe('formatDistance', function () {
     })
 
     it('almost n years', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 2, 4, 10, 32, 0)
       )
@@ -169,7 +168,7 @@ describe('formatDistance', function () {
     })
 
     it('about n years', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 3, 4, 10, 32, 0)
       )
@@ -177,7 +176,7 @@ describe('formatDistance', function () {
     })
 
     it('over n years', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1989, 9, 4, 10, 32, 0)
       )
@@ -186,7 +185,7 @@ describe('formatDistance', function () {
   })
 
   it('accepts timestamps', function () {
-    var result = formatDistance(
+    const result = formatDistance(
       new Date(1986, 3, 4, 10, 32, 0).getTime(),
       new Date(1986, 3, 4, 11, 32, 0).getTime()
     )
@@ -195,7 +194,7 @@ describe('formatDistance', function () {
 
   describe('when the addSuffix option is true', function () {
     it('adds a past suffix', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 25),
         { includeSeconds: true, addSuffix: true }
@@ -204,7 +203,7 @@ describe('formatDistance', function () {
     })
 
     it('adds a future suffix', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 11, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
         { addSuffix: true }
@@ -215,20 +214,20 @@ describe('formatDistance', function () {
 
   describe('implicit conversion of options', function () {
     it('`options.includeSeconds`', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 0),
         new Date(1986, 3, 4, 10, 32, 7),
-        // $ExpectedMistake
+        // @ts-expect-error
         { includeSeconds: 1 }
       )
       assert(result === 'less than 10 seconds')
     })
 
     it('`options.addSuffix`', function () {
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 11, 32, 0),
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
+        // @ts-expect-error
         { addSuffix: 1 }
       )
       assert(result === 'in about 1 hour')
@@ -245,14 +244,13 @@ describe('formatDistance', function () {
         return 'It works!'
       }
 
-      var customLocale = {
+      const customLocale = {
         formatDistance: localizeDistance,
       }
 
-      var result = formatDistance(
+      const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 3),
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
         { includeSeconds: true, addSuffix: true, locale: customLocale }
       )
 
@@ -261,11 +259,10 @@ describe('formatDistance', function () {
 
     describe('does not contain `formatDistance` property', function () {
       it('throws `RangeError`', function () {
-        var customLocale = {}
-        var block = formatDistance.bind(
+        const customLocale = {}
+        const block = formatDistance.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 32, 3),
           { includeSeconds: true, locale: customLocale }
         )
