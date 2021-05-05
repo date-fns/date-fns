@@ -37,16 +37,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 1
  */
 export default function differenceInISOWeekYears(
-  dirtyDateLeft,
-  dirtyDateRight
-) {
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  let dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(
+  const sign = compareAsc(dateLeft, dateRight)
+  const difference = Math.abs(
     differenceInCalendarISOWeekYears(dateLeft, dateRight)
   )
   dateLeft = subISOWeekYears(dateLeft, sign * difference)
@@ -54,8 +54,10 @@ export default function differenceInISOWeekYears(
   // Math.abs(diff in full ISO years - diff in calendar ISO years) === 1
   // if last calendar ISO year is not full
   // If so, result must be decreased by 1 in absolute value
-  var isLastISOWeekYearNotFull = compareAsc(dateLeft, dateRight) === -sign
-  var result = sign * (difference - isLastISOWeekYearNotFull)
+  const isLastISOWeekYearNotFull = Number(
+    compareAsc(dateLeft, dateRight) === -sign
+  )
+  const result = sign * (difference - isLastISOWeekYearNotFull)
   // Prevent negative zero
   return result === 0 ? 0 : result
 }
