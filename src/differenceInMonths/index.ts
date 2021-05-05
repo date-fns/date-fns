@@ -26,15 +26,18 @@ import isLastDayOfMonth from '../isLastDayOfMonth/index'
  * var result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
-export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInMonths(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
-  var dateLeft = toDate(dirtyDateLeft)
-  var dateRight = toDate(dirtyDateRight)
+  const dateLeft = toDate(dirtyDateLeft)
+  const dateRight = toDate(dirtyDateRight)
 
-  var sign = compareAsc(dateLeft, dateRight)
-  var difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
-  var result
+  const sign = compareAsc(dateLeft, dateRight)
+  const difference = Math.abs(differenceInCalendarMonths(dateLeft, dateRight))
+  let result
 
   // Check for the difference of less than month
   if (difference < 1) {
@@ -50,7 +53,7 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
 
     // Math.abs(diff in full months - diff in calendar months) === 1 if last calendar month is not full
     // If so, result must be decreased by 1 in absolute value
-    var isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
+    let isLastMonthNotFull = compareAsc(dateLeft, dateRight) === -sign
 
     // Check for cases of one full calendar month
     if (
@@ -61,7 +64,7 @@ export default function differenceInMonths(dirtyDateLeft, dirtyDateRight) {
       isLastMonthNotFull = false
     }
 
-    result = sign * (difference - isLastMonthNotFull)
+    result = sign * (difference - Number(isLastMonthNotFull))
   }
 
   // Prevent negative zero
