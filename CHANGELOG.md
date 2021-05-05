@@ -8,6 +8,16 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.21.2 - 2021-05-05
+
+Kudos to [Aleksei Korzun](http://github.com/a-korzun), [Maxim Topciu](http://github.com/maximtop), [Jonas L](http://github.com/jooola), [Mohammad ali Ali panah](http://github.com/always-maap) and [Tan75](http://github.com/tan75) for working on the release.
+
+### Fixed
+
+- [`differenceInBusinessDays` now returns `NaN` instead of `Invalid Date` when an invalid argument is passed to the function.](https://github.com/date-fns/date-fns/pull/2414)
+
+- [Fixed `weekStartsOn` in Persian locale.](https://github.com/date-fns/date-fns/pull/2430)
+
 ## v2.21.1 - 2021-04-15
 
 Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
