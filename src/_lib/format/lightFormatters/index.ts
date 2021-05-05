@@ -88,7 +88,7 @@ const formatters = {
       milliseconds * Math.pow(10, numberOfDigits - 3)
     )
     return addLeadingZeros(fractionalSeconds, token.length)
-  }
+  },
 }
 
 export default formatters

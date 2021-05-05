@@ -78,7 +78,10 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
 
 type Token = keyof typeof formatters
 
-export default function lightFormat(dirtyDate: Date | number, formatStr: string): string {
+export default function lightFormat(
+  dirtyDate: Date | number,
+  formatStr: string
+): string {
   requiredArgs(2, arguments)
 
   const originalDate = toDate(dirtyDate)
@@ -95,11 +98,11 @@ export default function lightFormat(dirtyDate: Date | number, formatStr: string)
 
   const tokens = formatStr.match(formattingTokensRegExp)
 
-  if (!tokens) {
-    throw new TypeError('Invalid format')
-  }
+  // The only case when formattingTokensRegExp doesn't match the string is when it's empty
+  if (!tokens) return ''
 
-  const result = tokens.map(substring => {
+  const result = tokens
+    .map((substring) => {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"

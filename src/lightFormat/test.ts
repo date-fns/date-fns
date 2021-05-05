@@ -124,6 +124,10 @@ describe('lightFormat', () => {
     assert(result === '1 12 123 1230')
   })
 
+  it('returns empty string when the format is an empty string', () => {
+    assert(lightFormat(Date.now(), '') === '')
+  })
+
   it("throws RangeError if the date isn't valid", () => {
     assert.throws(
       lightFormat.bind(null, new Date(NaN), 'MMMM d, yyyy'),
