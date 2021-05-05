@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -7,7 +6,7 @@ import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
 describe('differenceInDays', function () {
   it('returns the number of full days between the given dates', function () {
-    var result = differenceInDays(
+    const result = differenceInDays(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 6 /* Jul */, 2, 6, 0)
     )
@@ -15,7 +14,7 @@ describe('differenceInDays', function () {
   })
 
   it('returns a negative number if the time value of the first date is smaller', function () {
-    var result = differenceInDays(
+    const result = differenceInDays(
       new Date(2011, 6 /* Jul */, 2, 6, 0),
       new Date(2012, 6 /* Jul */, 2, 18, 0)
     )
@@ -23,7 +22,7 @@ describe('differenceInDays', function () {
   })
 
   it('accepts timestamps', function () {
-    var result = differenceInDays(
+    const result = differenceInDays(
       new Date(2014, 8 /* Sep */, 5, 18, 0).getTime(),
       new Date(2014, 8 /* Sep */, 4, 6, 0).getTime()
     )
@@ -32,7 +31,7 @@ describe('differenceInDays', function () {
 
   describe('edge cases', function () {
     it('the difference is less than a day, but the given dates are in different calendar days', function () {
-      var result = differenceInDays(
+      const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 4, 23, 59)
       )
@@ -40,7 +39,7 @@ describe('differenceInDays', function () {
     })
 
     it('the same for the swapped dates', function () {
-      var result = differenceInDays(
+      const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 4, 23, 59),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -48,7 +47,7 @@ describe('differenceInDays', function () {
     })
 
     it('the time values of the given dates are the same', function () {
-      var result = differenceInDays(
+      const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 6, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -56,7 +55,7 @@ describe('differenceInDays', function () {
     })
 
     it('the given dates are the same', function () {
-      var result = differenceInDays(
+      const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
@@ -73,13 +72,20 @@ describe('differenceInDays', function () {
         const { start, end } = dstTransitions
         const HOUR = 1000 * 60 * 60
         const MINUTE = 1000 * 60
-        function sameTime(t1, t2) {
+        function sameTime(t1: Date, t2: Date): boolean {
           return (
             t1.getHours() === t2.getHours() &&
             t1.getMinutes() === t2.getMinutes() &&
             t1.getSeconds() === t2.getSeconds() &&
             t1.getMilliseconds() === t2.getMilliseconds()
           )
+        }
+
+        assert(start !== undefined)
+        assert(end !== undefined)
+
+        if (start === undefined || end === undefined) {
+          return
         }
 
         // It's usually 1 hour, but for some timezones, e.g. Australia/Lord_Howe, it is 30 minutes
@@ -166,32 +172,38 @@ describe('differenceInDays', function () {
     )
 
     it('does not return -0 when the given dates are the same', () => {
-      function isNegativeZero(x) {
+      function isNegativeZero(x: number): boolean {
         return x === 0 && 1 / x < 0
       }
 
-      var result = differenceInDays(
+      const result = differenceInDays(
         new Date(2014, 8 /* Sep */, 5, 0, 0),
         new Date(2014, 8 /* Sep */, 5, 0, 0)
       )
 
-      var resultIsNegative = isNegativeZero(result)
+      const resultIsNegative = isNegativeZero(result)
       assert(resultIsNegative === false)
     })
   })
 
   it('returns NaN if the first date is `Invalid Date`', function () {
-    var result = differenceInDays(new Date(NaN), new Date(2017, 0 /* Jan */, 1))
+    const result = differenceInDays(
+      new Date(NaN),
+      new Date(2017, 0 /* Jan */, 1)
+    )
     assert(isNaN(result))
   })
 
   it('returns NaN if the second date is `Invalid Date`', function () {
-    var result = differenceInDays(new Date(2017, 0 /* Jan */, 1), new Date(NaN))
+    const result = differenceInDays(
+      new Date(2017, 0 /* Jan */, 1),
+      new Date(NaN)
+    )
     assert(isNaN(result))
   })
 
   it('returns NaN if the both dates are `Invalid Date`', function () {
-    var result = differenceInDays(new Date(NaN), new Date(NaN))
+    const result = differenceInDays(new Date(NaN), new Date(NaN))
     assert(isNaN(result))
   })
 
