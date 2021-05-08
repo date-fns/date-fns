@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.21.3 - 2021-05-08
+
+This release is brought to you by [Maxim Topciu](http://github.com/maximtop).
+
+### Fixed
+
+- [Fixed IE11 support by babelifing the shorthand properties.](https://github.com/date-fns/date-fns/pull/2467)
+
 ## v2.21.2 - 2021-05-05
 
 Kudos to [Aleksei Korzun](http://github.com/a-korzun), [Maxim Topciu](http://github.com/maximtop), [Jonas L](http://github.com/jooola), [Mohammad ali Ali panah](http://github.com/always-maap) and [Tan75](http://github.com/tan75) for working on the release.
