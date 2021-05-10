@@ -73,6 +73,7 @@
     "firebase": "^3.7.1",
     "flow-bin": "0.84.0",
     "glob-promise": "^2.0.0",
+    "globby": "^11.0.3",
     "gzip-size-cli": "^1.0.0",
     "husky": "^1.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
