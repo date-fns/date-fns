@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { minutesInHour } from '../constants/index'
 
 export default function minutesToHours(minutes: number): number
 
@@ -22,6 +23,6 @@ export default function minutesToHours(minutes: number): number
  */
 export default function minutesToHours(minutes: number): number {
   requiredArgs(1, arguments)
-  const hours = minutes / 60
+  const hours = minutes / minutesInHour
   return Math.floor(hours)
 }

@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { secondsInMinute } from '../constants/index'
 
 export default function minutesToSeconds(minutes: number): number
 
@@ -22,5 +23,5 @@ export default function minutesToSeconds(minutes: number): number
  */
 export default function minutesToSeconds(minutes: number): number {
   requiredArgs(1, arguments)
-  return minutes * 60
+  return minutes * secondsInMinute
 }

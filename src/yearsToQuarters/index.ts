@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { quartersInYear } from '../constants/index'
 
 export default function yearsToQuarters(years: number): number
 
@@ -16,11 +17,11 @@ export default function yearsToQuarters(years: number): number
  * @throws {TypeError} 1 argument required
  *
  * @example
- * // Convert 1 year to quarters
+ * // Convert 2 years to quarters
  * const result = yearsToQuarters(2)
  * //=> 8
  */
 export default function yearsToQuarters(years: number): number {
   requiredArgs(1, arguments)
-  return years * 4
+  return years * quartersInYear
 }

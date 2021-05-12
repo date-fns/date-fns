@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { secondsInHour } from '../constants/index'
 
 export default function hoursToSeconds(hours: number): number
 
@@ -20,8 +21,7 @@ export default function hoursToSeconds(hours: number): number
  * const result = hoursToSeconds(2)
  * //=> 7200
  */
-
 export default function hoursToSeconds(hours: number): number {
   requiredArgs(1, arguments)
-  return hours * 3600
+  return hours * secondsInHour
 }

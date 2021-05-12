@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { monthsInYear } from '../constants/index'
 
 export default function monthsToYears(months: number): number
 
@@ -22,6 +23,6 @@ export default function monthsToYears(months: number): number
  */
 export default function monthsToYears(months: number): number {
   requiredArgs(1, arguments)
-  const years = months / 12
+  const years = months / monthsInYear
   return Math.floor(years)
 }

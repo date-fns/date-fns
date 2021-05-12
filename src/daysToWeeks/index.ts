@@ -1,4 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { daysInWeek } from '../constants/index'
 
 export default function daysToWeeks(days: number): number
 
@@ -22,6 +23,6 @@ export default function daysToWeeks(days: number): number
  */
 export default function daysToWeeks(days: number): number {
   requiredArgs(1, arguments)
-  const weeks = days / 7
+  const weeks = days / daysInWeek
   return Math.floor(weeks)
 }

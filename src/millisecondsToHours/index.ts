@@ -1,6 +1,8 @@
 import requiredArgs from '../_lib/requiredArgs/index'
+import { millisecondsInHour } from '../constants/index'
 
 export default function millisecondsToHours(milliseconds: number): number
+
 /**
  * @name millisecondsToHours
  * @category Conversion Helpers
@@ -21,7 +23,6 @@ export default function millisecondsToHours(milliseconds: number): number
  */
 export default function millisecondsToHours(milliseconds: number): number {
   requiredArgs(1, arguments)
-  // milliseconds in 1 hour => 3600000;
-  const hours = milliseconds / 3600000
+  const hours = milliseconds / millisecondsInHour
   return Math.floor(hours)
 }
