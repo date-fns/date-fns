@@ -1,17 +1,15 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import { monthsInQuarter } from '../constants/index'
 
-export default function quartersToMonths(quarters: number): number
-
 /**
  * @name quartersToMonths
  * @category Conversion Helpers
  * @summary Convert number of quarters to months.
  *
  * @description
- * Convert a number of quarters to a number of months.
+ * Convert a number of quarters to a full number of months.
  *
- * @param { number } quarters - number of quarters to be converted.
+ * @param {number} quarters - number of quarters to be converted
  *
  * @returns {number} the number of quarters converted in months
  * @throws {TypeError} 1 argument required

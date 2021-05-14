@@ -1,17 +1,15 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import { millisecondsInSecond } from '../constants/index'
 
-export default function secondsToMilliseconds(seconds: number): number
-
 /**
  * @name secondsToMilliseconds
  * @category Conversion Helpers
  * @summary Convert seconds to milliseconds.
  *
  * @description
- * Convert a number of seconds to a number of milliseconds.
+ * Convert a number of seconds to a full number of milliseconds.
  *
- * @param { number } seconds - number of seconds to be converted.
+ * @param {number} seconds - number of seconds to be converted
  *
  * @returns {number} the number of seconds converted in milliseconds
  * @throws {TypeError} 1 argument required
