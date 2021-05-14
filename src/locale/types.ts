@@ -1,4 +1,9 @@
-import { Era, FirstWeekContainsDate, Month, Quarter } from '../types'
+import type { Era, FirstWeekContainsDate, Month, Quarter } from '../types'
+import type {
+  BuildLocalizeFnArgCallback,
+  LocalizeUnitValues,
+  LocalizeUnitValuesIndex,
+} from './_lib/buildLocalizeFn'
 
 export interface Locale {
   code: string
@@ -61,8 +66,22 @@ export type FormatRelativeFn = (
   options?: { weekStartsOn?: Day }
 ) => string
 
-export type LocalizeFn<TValue> = (
-  value: TValue,
+export type QuarterIndex = 0 | 1 | 2 | 3
+
+// TODO: You're real champion if you're actually get back to it. Proud of you!
+// Try to get rid of this and (especially) ArgCallback types because the only
+// case when it's helpful is when using quarter. Maybe.
+export type LocalizeUnitIndex<
+  Unit extends LocaleUnit | number
+> = Unit extends LocaleUnit
+  ? LocalizeUnitValuesIndex<LocalizeUnitValues<Unit>>
+  : number
+
+export type LocalizeFn<
+  Result extends LocaleUnit | number,
+  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+> = (
+  value: ArgCallback extends undefined ? Result : LocalizeUnitIndex<Result>,
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
@@ -70,16 +89,19 @@ export type LocalizeFn<TValue> = (
 ) => string
 
 export interface Localize {
-  ordinalNumber: LocalizeFn<number>
-  era: LocalizeFn<Era>
-  quarter: LocalizeFn<Quarter>
-  month: LocalizeFn<Month>
-  day: LocalizeFn<Day>
-  dayPeriod: LocalizeFn<LocaleDayPeriod>
+  ordinalNumber: LocalizeFn<
+    number,
+    BuildLocalizeFnArgCallback<number> | undefined
+  >
+  era: LocalizeFn<Era, undefined>
+  quarter: LocalizeFn<Quarter, BuildLocalizeFnArgCallback<Quarter>>
+  month: LocalizeFn<Month, undefined>
+  day: LocalizeFn<Day, undefined>
+  dayPeriod: LocalizeFn<LocaleDayPeriod, undefined>
 }
 
 export interface BuildMatchFnArgs<
-  Result extends LocaleMatchResult,
+  Result extends LocaleUnit,
   DefaultMatchWidth extends LocalePatternWidth,
   DefaultParseWidth extends LocaleParsePatternWidth
 > {
@@ -99,7 +121,7 @@ export type MatchPatterns<DefaultWidth extends LocalePatternWidth> = {
   { [key in DefaultWidth]: RegExp }
 
 export type ParsePatterns<
-  Result extends LocaleMatchResult,
+  Result extends LocaleUnit,
   DefaultWidth extends LocaleParsePatternWidth
 > = {
   [pattern in LocaleParsePatternWidth]?: ParsePattern<Result>
@@ -107,7 +129,7 @@ export type ParsePatterns<
   { [key in DefaultWidth]: ParsePattern<Result> }
 
 export type ParsePattern<
-  Result extends LocaleMatchResult
+  Result extends LocaleUnit
 > = Result extends LocaleDayPeriod
   ? Record<LocaleDayPeriod, RegExp>
   : Result extends Quarter
@@ -134,7 +156,7 @@ export type ParsePattern<
   : never
 
 export type BuildMatchFn<
-  Result extends LocaleMatchResult,
+  Result extends LocaleUnit,
   DefaultMatchWidth extends LocalePatternWidth,
   DefaultParseWidth extends LocalePatternWidth
 > = (
@@ -176,7 +198,7 @@ export type LocaleDayPeriod =
 
 export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
 
-export type LocaleMatchResult = Era | Quarter | Month | Day | LocaleDayPeriod
+export type LocaleUnit = Era | Quarter | Month | Day | LocaleDayPeriod
 
 export interface FormatLong {
   date: FormatLongFn

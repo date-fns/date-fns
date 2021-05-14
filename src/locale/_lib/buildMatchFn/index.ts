@@ -1,14 +1,14 @@
 import {
   BuildMatchFnArgs,
   LocaleDayPeriod,
-  LocaleMatchResult,
+  LocaleUnit,
   LocaleParsePatternWidth,
   LocalePatternWidth,
   MatchFn,
 } from '../../types'
 
 export default function buildMatchFn<
-  Result extends LocaleMatchResult,
+  Result extends LocaleUnit,
   DefaultMatchWidth extends LocalePatternWidth,
   DefaultParseWidth extends LocaleParsePatternWidth
 >(
