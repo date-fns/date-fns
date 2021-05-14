@@ -3,24 +3,19 @@
 import assert from 'assert'
 import millisecondsToMinutes from '.'
 
-describe('millisecondsToMinutes', function () {
-  it('converts 50000 milliseconds to minutes', function () {
-    const result = millisecondsToMinutes(50000)
-    assert(result === 0)
+describe('millisecondsToMinutes', () => {
+  it('converts milliseconds to minutes', function () {
+    assert(millisecondsToMinutes(60000) === 1)
+    assert(millisecondsToMinutes(120000) === 2)
   })
 
-  it('converts 65000 milliseconds to minutes', function () {
-    const result = millisecondsToMinutes(65000)
-    assert(result === 1)
+  it('uses floor rounding', () => {
+    assert(millisecondsToMinutes(60001) === 1)
+    assert(millisecondsToMinutes(59999) === 0)
   })
 
-  it('converts 190000 milliseconds to minutes', function () {
-    const result = millisecondsToMinutes(190000)
-    assert(result === 3)
-  })
-
-  it('converts 310000 milliseconds to minutes', function () {
-    const result = millisecondsToMinutes(310000)
-    assert(result === 5)
+  it('handles border values', () => {
+    assert(millisecondsToMinutes(60000.5) === 1)
+    assert(millisecondsToMinutes(0) === 0)
   })
 })
