@@ -16,9 +16,9 @@ export default function buildMatchPatternFn<Result>(
 
     const parseResult = string.match(args.parsePattern)
     if (!parseResult) return null
-    let value: Result = args.valueCallback
+    let value = (args.valueCallback
       ? args.valueCallback(parseResult[0])
-      : parseResult[0]
+      : parseResult[0]) as Result
     value = options.valueCallback ? options.valueCallback(value) : value
 
     const rest = string.slice(matchedString.length)

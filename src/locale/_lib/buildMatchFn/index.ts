@@ -52,7 +52,7 @@ function findKey<Value, Obj extends { [key in string | number]: Value }>(
   object: Obj,
   predicate: (value: Value) => boolean
 ): keyof Obj | undefined {
-  for (let key in object) {
+  for (const key in object) {
     if (object.hasOwnProperty(key) && predicate(object[key])) {
       return key
     }

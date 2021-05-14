@@ -10,10 +10,10 @@ export default function buildFormatLongFn(
 ): FormatLongFn {
   return (options = {}) => {
     // TODO: Remove String()
-    var width = options.width
+    const width = options.width
       ? (String(options.width) as FormatLongWidth)
       : args.defaultWidth
-    var format = args.formats[width] || args.formats[args.defaultWidth]
+    const format = args.formats[width] || args.formats[args.defaultWidth]
     return format
   }
 }
