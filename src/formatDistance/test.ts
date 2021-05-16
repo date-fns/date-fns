@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import { Locale } from 'src/locale/types'
 import formatDistance from '.'
 
 describe('formatDistance', function () {
@@ -236,22 +237,24 @@ describe('formatDistance', function () {
 
   describe('custom locale', function () {
     it('can be passed to the function', function () {
-      function localizeDistance(token, count, options) {
-        assert(token === 'lessThanXSeconds')
-        assert(count === 5)
-        assert(options.addSuffix === true)
-        assert(options.comparison > 0)
-        return 'It works!'
-      }
-
-      const customLocale = {
-        formatDistance: localizeDistance,
+      const customLocale: Locale = {
+        formatDistance: (token, count, options) => {
+          assert(token === 'lessThanXSeconds')
+          assert(count === 5)
+          assert(options?.addSuffix === true)
+          assert(options.comparison && options.comparison > 0)
+          return 'It works!'
+        },
       }
 
       const result = formatDistance(
         new Date(1986, 3, 4, 10, 32, 3),
         new Date(1986, 3, 4, 10, 32, 0),
-        { includeSeconds: true, addSuffix: true, locale: customLocale }
+        {
+          includeSeconds: true,
+          addSuffix: true,
+          locale: customLocale,
+        }
       )
 
       assert(result === 'It works!')
@@ -260,6 +263,8 @@ describe('formatDistance', function () {
     describe('does not contain `formatDistance` property', function () {
       it('throws `RangeError`', function () {
         const customLocale = {}
+
+        // @ts-expect-error
         const block = formatDistance.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),
@@ -293,7 +298,10 @@ describe('formatDistance', function () {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function () {
+    // @ts-expect-error
     assert.throws(formatDistance.bind(null), TypeError)
+
+    // @ts-expect-error
     assert.throws(formatDistance.bind(null, 1), TypeError)
   })
 })

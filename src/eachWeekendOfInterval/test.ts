@@ -8,26 +8,26 @@ describe('eachWeekendOfInterval', function () {
   it('returns all weekends within the interval', function () {
     const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 17),
-      end: new Date(2018, 8 /* Sept */, 30)
+      end: new Date(2018, 8 /* Sept */, 30),
     })
     assert.deepEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),
-      new Date(2018, 8 /* Sept */, 30)
+      new Date(2018, 8 /* Sept */, 30),
     ])
   })
 
   it('returns all weekends within the interval when starting on a weekend', function () {
     const result = eachWeekendOfInterval({
       start: new Date(2018, 8 /* Sept */, 22),
-      end: new Date(2018, 8 /* Sept */, 30)
+      end: new Date(2018, 8 /* Sept */, 30),
     })
     assert.deepEqual(result, [
       new Date(2018, 8 /* Sept */, 22),
       new Date(2018, 8 /* Sept */, 23),
       new Date(2018, 8 /* Sept */, 29),
-      new Date(2018, 8 /* Sept */, 30)
+      new Date(2018, 8 /* Sept */, 30),
     ])
   })
 
@@ -35,7 +35,7 @@ describe('eachWeekendOfInterval', function () {
     // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(NaN),
-      end: new Date(2019, 11 /* Dec */, 31)
+      end: new Date(2019, 11 /* Dec */, 31),
     })
     assert.throws(block, RangeError)
   })
@@ -44,12 +44,13 @@ describe('eachWeekendOfInterval', function () {
     // $ExpectedMistake
     const block = eachWeekendOfInterval.bind(null, {
       start: new Date(2019, 0 /* Jan */, 1),
-      end: new Date(NaN)
+      end: new Date(NaN),
     })
     assert.throws(block, RangeError)
   })
 
   it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(eachWeekendOfInterval, TypeError)
   })
 
@@ -59,7 +60,7 @@ describe('eachWeekendOfInterval', function () {
       // $ExpectedMistake
       {
         start: new Date(2018, 8 /* Sept */, 25),
-        end: new Date(2018, 8 /* Sept */, 6)
+        end: new Date(2018, 8 /* Sept */, 6),
       }
     )
     assert.throws(block, RangeError)

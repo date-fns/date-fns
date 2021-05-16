@@ -3,7 +3,6 @@
 
 import assert from 'assert'
 import areIntervalsOverlapping from '.'
-import context from 'assert'
 
 describe('areIntervalsOverlapping', function () {
   const initialIntervalStart = new Date(2016, 10, 10, 13, 0, 0)
