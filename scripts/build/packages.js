@@ -21,15 +21,20 @@ const extraModules = [
   { fullPath: './src/locale/index.js' },
 ]
 
-const initialPackages = getInitialPackages()
+writePackages()
 
-listAll()
-  .then((modules) =>
-    Promise.all(modules.map((module) => writePackage(module.fullPath)))
+async function writePackages() {
+  const initialPackages = await getInitialPackages()
+  const modules = await listAll()
+  await Promise.all(
+    modules.map(async (module) =>
+      writePackage(module.fullPath, initialPackages[module.fullPath])
+    )
   )
-  .then('package.json files are generated')
+  console.log('package.json files are generated')
+}
 
-function writePackage(fullPath) {
+function writePackage(fullPath, initialPackage) {
   const dirPath = path.dirname(fullPath)
   const typingsRelativePath = path.relative(dirPath, `./src/typings.d.ts`)
   const packagePath = path.resolve(
@@ -40,7 +45,7 @@ function writePackage(fullPath) {
   return writeFile(
     packagePath,
     JSON.stringify(
-      Object.assign({ sideEffects: false }, initialPackages[fullPath] || {}, {
+      Object.assign({ sideEffects: false }, initialPackage || {}, {
         typings: typingsRelativePath,
       }),
       null,
