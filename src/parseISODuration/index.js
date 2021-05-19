@@ -17,10 +17,10 @@ var durationRegex = new RegExp('P' + dateRegex + '(?:' + timeRegex + ')?')
  * ISO 8601: http://en.wikipedia.org/wiki/ISO_8601
  *
  * If the argument isn't a string, the function cannot parse the string or
- * the values are invalid, it returns null.
+ * the values are invalid, it returns an empty object `{}`.
  *
  * @param {String} argument - the value to convert
- * @returns {Duration | null} the parsed duration or null
+ * @returns {Duration | {}} the parsed duration or an empty object
  * @throws {TypeError} 1 argument required
  *
  * @example
