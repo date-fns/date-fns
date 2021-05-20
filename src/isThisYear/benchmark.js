@@ -1,19 +1,19 @@
 // @flow
 /* eslint-env mocha */
-/* global suite, benchmark */
+/* global benchmark */
 
 import isThisYear from '.'
 
 suite(
   'isThisYear',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return isThisYear(this.date)
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
-    }
+    },
   }
 )

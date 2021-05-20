@@ -1,20 +1,20 @@
 // @flow
 /* eslint-env mocha */
 
-/* global suite, benchmark */
+/* global benchmark */
 
 import isThisHour from '.'
 
 suite(
   'isThisHour',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return isThisHour(this.date)
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
-    }
+    },
   }
 )

@@ -1,15 +1,19 @@
 // @flow
 /* eslint-env mocha */
-/* global suite, benchmark */
+/* global benchmark */
 
 import lastDayOfISOWeekYear from '.'
 
-suite('lastDayOfISOWeekYear', function () {
-  benchmark('date-fns', function () {
-    return lastDayOfISOWeekYear(this.date)
-  })
-}, {
-  setup: function () {
-    this.date = new Date()
+suite(
+  'lastDayOfISOWeekYear',
+  function () {
+    benchmark('date-fns', function () {
+      return lastDayOfISOWeekYear(this.date)
+    })
+  },
+  {
+    setup: function () {
+      this.date = new Date()
+    },
   }
-})
+)

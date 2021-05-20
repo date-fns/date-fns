@@ -1,6 +1,6 @@
 // @flow
 /* eslint-env mocha */
-/* global suite, benchmark */
+/* global benchmark */
 
 import endOfTomorrow from '.'
 

@@ -1,19 +1,19 @@
 // @flow
 /* eslint-env mocha */
-/* global suite, benchmark */
+/* global benchmark */
 
 import isPast from '.'
 
 suite(
   'isPast',
   () => {
-    benchmark('date-fns', function() {
+    benchmark('date-fns', function () {
       return isPast(this.date)
     })
   },
   {
-    setup: function() {
+    setup: function () {
       this.date = new Date()
-    }
+    },
   }
 )
