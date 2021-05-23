@@ -1,4 +1,4 @@
-import { Era, Quarter, Month } from 'src/types'
+import { Era, Quarter, Month, Day } from '../../../types'
 import {
   LocaleDayPeriod,
   LocalePatternWidth,
@@ -111,10 +111,6 @@ export default function buildLocalizeFn<
         : args.defaultWidth) as LocalePatternWidth
       valuesArray = (args.values[width] ||
         args.values[defaultWidth]) as LocalizeUnitValues<Result>
-    }
-    if (args.argumentCallback) {
-      args.argumentCallback
-      dirtyIndex
     }
     const index = (args.argumentCallback
       ? args.argumentCallback(dirtyIndex as Result)
