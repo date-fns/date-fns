@@ -4,23 +4,18 @@ import assert from 'assert'
 import monthsToQuarters from '.'
 
 describe('monthsToQuarters', function () {
-  it('converts 2 months to quarters', function () {
-    const result = monthsToQuarters(2)
-    assert(result === 0)
+  it('converts months to quarters', function () {
+    assert(monthsToQuarters(3) === 1)
+    assert(monthsToQuarters(6) === 2)
   })
 
-  it('converts 4 months to quarters', function () {
-    const result = monthsToQuarters(4)
-    assert(result === 1)
+  it('uses floor rounding', () => {
+    assert(monthsToQuarters(4) === 1)
+    assert(monthsToQuarters(2) === 0)
   })
 
-  it('converts 10 months to quarters', function () {
-    const result = monthsToQuarters(10)
-    assert(result === 3)
-  })
-
-  it('converts 15 months to quarters', function () {
-    const result = monthsToQuarters(15)
-    assert(result === 5)
+  it('handles border values', () => {
+    assert(monthsToQuarters(3.5) === 1)
+    assert(monthsToQuarters(0) === 0)
   })
 })

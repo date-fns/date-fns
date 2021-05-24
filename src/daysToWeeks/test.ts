@@ -3,24 +3,19 @@
 import assert from 'assert'
 import daysToWeeks from '.'
 
-describe('daysToWeeks', function () {
-  it('converts 5 days to weeks', function () {
-    const result = daysToWeeks(5)
-    assert(result === 0)
+describe('daysToWeeks', () => {
+  it('converts days to weeks', function () {
+    assert(daysToWeeks(7) === 1)
+    assert(daysToWeeks(14) === 2)
   })
 
-  it('converts 8 days to weeks', function () {
-    const result = daysToWeeks(8)
-    assert(result === 1)
+  it('uses floor rounding', () => {
+    assert(daysToWeeks(8) === 1)
+    assert(daysToWeeks(6) === 0)
   })
 
-  it('converts 13 days to weeks', function () {
-    const result = daysToWeeks(13)
-    assert(result === 1)
-  })
-
-  it('converts 15 days to weeks', function () {
-    const result = daysToWeeks(15)
-    assert(result === 2)
+  it('handles border values', () => {
+    assert(daysToWeeks(7.5) === 1)
+    assert(daysToWeeks(0) === 0)
   })
 })

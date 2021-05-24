@@ -4,18 +4,18 @@ import assert from 'assert'
 import yearsToQuarters from '.'
 
 describe('yearsToQuarters', function () {
-  it('converts 1 year to quarters', function () {
-    const result = yearsToQuarters(1)
-    assert(result === 4)
+  it('converts years to quarters', function () {
+    assert(yearsToQuarters(1) === 4)
+    assert(yearsToQuarters(2) === 8)
   })
 
-  it('converts 3 years to quarters', function () {
-    const result = yearsToQuarters(3)
-    assert(result === 12)
+  it('uses floor rounding', () => {
+    assert(yearsToQuarters(1.3) === 5)
+    assert(yearsToQuarters(0.2) === 0)
   })
 
-  it('converts 5 years to quarters', function () {
-    const result = yearsToQuarters(5)
-    assert(result === 20)
+  it('handles border values', () => {
+    assert(yearsToQuarters(1.5) === 6)
+    assert(yearsToQuarters(0) === 0)
   })
 })

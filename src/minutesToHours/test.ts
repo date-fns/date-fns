@@ -4,23 +4,18 @@ import assert from 'assert'
 import minuteToHours from '.'
 
 describe('minuteToHours', function () {
-  it('converts 50 minutes to hours', function () {
-    const result = minuteToHours(50)
-    assert(result === 0)
+  it('converts minutes to hours', function () {
+    assert(minuteToHours(60) === 1)
+    assert(minuteToHours(120) === 2)
   })
 
-  it('converts 90 minutes to hours', function () {
-    const result = minuteToHours(90)
-    assert(result === 1)
+  it('uses floor rounding', () => {
+    assert(minuteToHours(61) === 1)
+    assert(minuteToHours(59) === 0)
   })
 
-  it('converts 140 minutes to hours', function () {
-    const result = minuteToHours(140)
-    assert(result === 2)
-  })
-
-  it('converts 310 minutes to hours', function () {
-    const result = minuteToHours(310)
-    assert(result === 5)
+  it('handles border values', () => {
+    assert(minuteToHours(60.5) === 1)
+    assert(minuteToHours(0) === 0)
   })
 })

@@ -4,18 +4,13 @@ import assert from 'assert'
 import minutesToSeconds from '.'
 
 describe('minutesToSeconds', function () {
-  it('converts 1 minute to seconds', function () {
-    const result = minutesToSeconds(1)
-    assert(result === 60)
+  it('converts minutes to seconds', function () {
+    assert(minutesToSeconds(1) === 60)
+    assert(minutesToSeconds(2) === 120)
   })
 
-  it('converts 3 minutes to seconds', function () {
-    const result = minutesToSeconds(3)
-    assert(result === 180)
-  })
-
-  it('converts 5 minutes to seconds', function () {
-    const result = minutesToSeconds(5)
-    assert(result === 300)
+  it('handles border values', () => {
+    assert(minutesToSeconds(1.5) === 90)
+    assert(minutesToSeconds(0) === 0)
   })
 })

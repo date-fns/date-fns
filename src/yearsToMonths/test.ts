@@ -4,18 +4,18 @@ import assert from 'assert'
 import yearsToMonths from '.'
 
 describe('yearsToMonths', function () {
-  it('converts 1 year to months', function () {
-    const result = yearsToMonths(1)
-    assert(result === 12)
+  it('converts years to months', function () {
+    assert(yearsToMonths(1) === 12)
+    assert(yearsToMonths(2) === 24)
   })
 
-  it('converts 3 years to months', function () {
-    const result = yearsToMonths(3)
-    assert(result === 36)
+  it('uses floor rounding', () => {
+    assert(yearsToMonths(1.7) === 20)
+    assert(yearsToMonths(0.1) === 1)
   })
 
-  it('converts 5 years to months', function () {
-    const result = yearsToMonths(5)
-    assert(result === 60)
+  it('handles border values', () => {
+    assert(yearsToMonths(1.5) === 18)
+    assert(yearsToMonths(0) === 0)
   })
 })

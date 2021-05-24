@@ -4,23 +4,18 @@ import assert from 'assert'
 import secondsToHours from '.'
 
 describe('secondsToHours', function () {
-  it('converts 3000 seconds to hours', function () {
-    const result = secondsToHours(3000)
-    assert(result === 0)
+  it('converts seconds to hours', function () {
+    assert(secondsToHours(3600) === 1)
+    assert(secondsToHours(7200) === 2)
   })
 
-  it('converts 3700 seconds to hours', function () {
-    const result = secondsToHours(3700)
-    assert(result === 1)
+  it('uses floor rounding', () => {
+    assert(secondsToHours(3601) === 1)
+    assert(secondsToHours(3599) === 0)
   })
 
-  it('converts 11000 seconds to hours', function () {
-    const result = secondsToHours(11000)
-    assert(result === 3)
-  })
-
-  it('converts 19000 seconds to hours', function () {
-    const result = secondsToHours(19000)
-    assert(result === 5)
+  it('handles border values', () => {
+    assert(secondsToHours(3600.5) === 1)
+    assert(secondsToHours(0) === 0)
   })
 })

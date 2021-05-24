@@ -4,18 +4,18 @@ import assert from 'assert'
 import weeksToDays from '.'
 
 describe('weeksToDays', function () {
-  it('converts 1 week to days', function () {
-    const result = weeksToDays(1)
-    assert(result === 7)
+  it('converts weeks to days', function () {
+    assert(weeksToDays(1) === 7)
+    assert(weeksToDays(2) === 14)
   })
 
-  it('converts 3 weeks to days', function () {
-    const result = weeksToDays(3)
-    assert(result === 21)
+  it('uses floor rounding', () => {
+    assert(weeksToDays(1.5) === 10)
+    assert(weeksToDays(0.1) === 0)
   })
 
-  it('converts 5 weeks to days', function () {
-    const result = weeksToDays(5)
-    assert(result === 35)
+  it('handles border values', () => {
+    assert(weeksToDays(1.5) === 1)
+    assert(weeksToDays(0) === 0)
   })
 })

@@ -4,18 +4,13 @@ import assert from 'assert'
 import secondsToMilliseconds from '.'
 
 describe('secondsToMilliseconds', function () {
-  it('converts 1 second to milliseconds', function () {
-    const result = secondsToMilliseconds(1)
-    assert(result === 1000)
+  it('converts seconds to milliseconds', function () {
+    assert(secondsToMilliseconds(1) === 1000)
+    assert(secondsToMilliseconds(2) === 2000)
   })
 
-  it('converts 3 seconds to milliseconds', function () {
-    const result = secondsToMilliseconds(3)
-    assert(result === 3000)
-  })
-
-  it('converts 5 seconds to milliseconds', function () {
-    const result = secondsToMilliseconds(5)
-    assert(result === 5000)
+  it('handles border values', () => {
+    assert(secondsToMilliseconds(1.5) === 1500)
+    assert(secondsToMilliseconds(0) === 0)
   })
 })
