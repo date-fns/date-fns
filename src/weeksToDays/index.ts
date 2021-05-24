@@ -21,5 +21,5 @@ import { daysInWeek } from '../constants/index'
  */
 export default function weeksToDays(weeks: number): number {
   requiredArgs(1, arguments)
-  return weeks * daysInWeek
+  return Math.floor(weeks * daysInWeek)
 }

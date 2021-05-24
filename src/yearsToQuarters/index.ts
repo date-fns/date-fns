@@ -21,5 +21,5 @@ import { quartersInYear } from '../constants/index'
  */
 export default function yearsToQuarters(years: number): number {
   requiredArgs(1, arguments)
-  return years * quartersInYear
+  return Math.floor(years * quartersInYear)
 }

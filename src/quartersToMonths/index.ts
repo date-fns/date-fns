@@ -21,5 +21,5 @@ import { monthsInQuarter } from '../constants/index'
  */
 export default function quartersToMonths(quarters: number): number {
   requiredArgs(1, arguments)
-  return quarters * monthsInQuarter
+  return Math.floor(quarters * monthsInQuarter)
 }

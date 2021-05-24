@@ -21,5 +21,5 @@ import { monthsInYear } from '../constants/index'
  */
 export default function yearsToMonths(years: number): number {
   requiredArgs(1, arguments)
-  return years * monthsInYear
+  return Math.floor(years * monthsInYear)
 }
