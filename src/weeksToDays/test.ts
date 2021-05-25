@@ -15,7 +15,7 @@ describe('weeksToDays', function () {
   })
 
   it('handles border values', () => {
-    assert(weeksToDays(1.5) === 1)
+    assert(weeksToDays(1.5) === 10)
     assert(weeksToDays(0) === 0)
   })
 })
