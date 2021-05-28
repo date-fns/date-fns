@@ -105,6 +105,7 @@ declare module.exports: {
   closestTo: CurriedFn2<(Date | number)[], Date | number, Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,
   compareDesc: CurriedFn2<Date | number, Date | number, number>,
+  daysToWeeks: CurriedFn1<number, number>,
   differenceInBusinessDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInCalendarISOWeeks: CurriedFn2<
@@ -353,6 +354,9 @@ declare module.exports: {
     number
   >,
   getYear: CurriedFn1<Date | number, number>,
+  hoursToMilliseconds: CurriedFn1<number, number>,
+  hoursToMinutes: CurriedFn1<number, number>,
+  hoursToSeconds: CurriedFn1<number, number>,
   intervalToDuration: CurriedFn1<Interval, Duration>,
   intlFormat: CurriedFn3<
     {
@@ -451,7 +455,15 @@ declare module.exports: {
   lightFormat: CurriedFn2<string, Date | number, string>,
   max: CurriedFn1<(Date | number)[], Date>,
   milliseconds: CurriedFn1<Duration, number>,
+  millisecondsToHours: CurriedFn1<number, number>,
+  millisecondsToMinutes: CurriedFn1<number, number>,
+  millisecondsToSeconds: CurriedFn1<number, number>,
   min: CurriedFn1<(Date | number)[], Date>,
+  minutesToHours: CurriedFn1<number, number>,
+  minutesToMilliseconds: CurriedFn1<number, number>,
+  minutesToSeconds: CurriedFn1<number, number>,
+  monthsToQuarters: CurriedFn1<number, number>,
+  monthsToYears: CurriedFn1<number, number>,
   nextDay: CurriedFn2<Day, Date | number, Date>,
   nextFriday: CurriedFn1<Date | number, Date>,
   nextMonday: CurriedFn1<Date | number, Date>,
@@ -483,6 +495,8 @@ declare module.exports: {
     string,
     Date
   >,
+  quartersToMonths: CurriedFn1<number, number>,
+  quartersToYears: CurriedFn1<number, number>,
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,
   roundToNearestMinutesWithOptions: CurriedFn2<
     {
@@ -491,6 +505,9 @@ declare module.exports: {
     Date | number,
     Date
   >,
+  secondsToHours: CurriedFn1<number, number>,
+  secondsToMilliseconds: CurriedFn1<number, number>,
+  secondsToMinutes: CurriedFn1<number, number>,
   set: CurriedFn2<
     {
       milliseconds?: number,
@@ -590,6 +607,19 @@ declare module.exports: {
   subWeeks: CurriedFn2<number, Date | number, Date>,
   subYears: CurriedFn2<number, Date | number, Date>,
   toDate: CurriedFn1<Date | number, Date>,
+  weeksToDays: CurriedFn1<number, number>,
+  yearsToMonths: CurriedFn1<number, number>,
+  yearsToQuarters: CurriedFn1<number, number>,
+  daysInWeek: number,
+  daysInWeek: number,
   maxTime: number,
+  millisecondsInMinute: number,
+  millisecondsInHour: number,
   minTime: number,
+  minTime: number,
+  minutesInHour: number,
+  monthsInQuarter: number,
+  monthsInYear: number,
+  quartersInYear: number,
+  secondsInHour: number,
 }

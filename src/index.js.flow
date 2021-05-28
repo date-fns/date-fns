@@ -96,6 +96,8 @@ declare module.exports: {
 
   compareDesc: (dateLeft: Date | number, dateRight: Date | number) => number,
 
+  daysToWeeks: (days: number) => number,
+
   differenceInBusinessDays: (
     dateLeft: Date | number,
     dateRight: Date | number
@@ -447,6 +449,12 @@ declare module.exports: {
 
   getYear: (date: Date | number) => number,
 
+  hoursToMilliseconds: (hours: number) => number,
+
+  hoursToMinutes: (hours: number) => number,
+
+  hoursToSeconds: (hours: number) => number,
+
   intervalToDuration: (interval: Interval) => Duration,
 
   intlFormat: (
@@ -612,7 +620,23 @@ declare module.exports: {
 
   milliseconds: (duration: Duration) => number,
 
+  millisecondsToHours: (milliseconds: number) => number,
+
+  millisecondsToMinutes: (milliseconds: number) => number,
+
+  millisecondsToSeconds: (milliseconds: number) => number,
+
   min: (datesArray: (Date | number)[]) => Date,
+
+  minutesToHours: (minutes: number) => number,
+
+  minutesToMilliseconds: (minutes: number) => number,
+
+  minutesToSeconds: (minutes: number) => number,
+
+  monthsToQuarters: (months: number) => number,
+
+  monthsToYears: (months: number) => number,
 
   nextDay: (date: Date | number, day: Day) => Date,
 
@@ -652,12 +676,22 @@ declare module.exports: {
 
   parseJSON: (argument: string | number | Date) => Date,
 
+  quartersToMonths: (quarters: number) => number,
+
+  quartersToYears: (quarters: number) => number,
+
   roundToNearestMinutes: (
     date: Date | number,
     options?: {
       nearestTo?: number,
     }
   ) => Date,
+
+  secondsToHours: (seconds: number) => number,
+
+  secondsToMilliseconds: (seconds: number) => number,
+
+  secondsToMinutes: (seconds: number) => number,
 
   set: (
     date: Date | number,
@@ -794,7 +828,33 @@ declare module.exports: {
 
   toDate: (argument: Date | number) => Date,
 
+  weeksToDays: (weeks: number) => number,
+
+  yearsToMonths: (years: number) => number,
+
+  yearsToQuarters: (years: number) => number,
+
+  daysInWeek: number,
+
+  daysInWeek: number,
+
   maxTime: number,
 
+  millisecondsInMinute: number,
+
+  millisecondsInHour: number,
+
   minTime: number,
+
+  minTime: number,
+
+  minutesInHour: number,
+
+  monthsInQuarter: number,
+
+  monthsInYear: number,
+
+  quartersInYear: number,
+
+  secondsInHour: number,
 }

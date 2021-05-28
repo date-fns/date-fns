@@ -159,6 +159,9 @@ declare module 'date-fns' {
   ): number
   namespace compareDesc {}
 
+  function daysToWeeks(days: number): number
+  namespace daysToWeeks {}
+
   function differenceInBusinessDays(
     dateLeft: Date | number,
     dateRight: Date | number
@@ -589,6 +592,15 @@ declare module 'date-fns' {
   function getYear(date: Date | number): number
   namespace getYear {}
 
+  function hoursToMilliseconds(hours: number): number
+  namespace hoursToMilliseconds {}
+
+  function hoursToMinutes(hours: number): number
+  namespace hoursToMinutes {}
+
+  function hoursToSeconds(hours: number): number
+  namespace hoursToSeconds {}
+
   function intervalToDuration(interval: Interval): Duration
   namespace intervalToDuration {}
 
@@ -829,8 +841,32 @@ declare module 'date-fns' {
   function milliseconds(duration: Duration): number
   namespace milliseconds {}
 
+  function millisecondsToHours(milliseconds: number): number
+  namespace millisecondsToHours {}
+
+  function millisecondsToMinutes(milliseconds: number): number
+  namespace millisecondsToMinutes {}
+
+  function millisecondsToSeconds(milliseconds: number): number
+  namespace millisecondsToSeconds {}
+
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
+
+  function minutesToHours(minutes: number): number
+  namespace minutesToHours {}
+
+  function minutesToMilliseconds(minutes: number): number
+  namespace minutesToMilliseconds {}
+
+  function minutesToSeconds(minutes: number): number
+  namespace minutesToSeconds {}
+
+  function monthsToQuarters(months: number): number
+  namespace monthsToQuarters {}
+
+  function monthsToYears(months: number): number
+  namespace monthsToYears {}
 
   function nextDay(date: Date | number, day: Day): Date
   namespace nextDay {}
@@ -881,6 +917,12 @@ declare module 'date-fns' {
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
 
+  function quartersToMonths(quarters: number): number
+  namespace quartersToMonths {}
+
+  function quartersToYears(quarters: number): number
+  namespace quartersToYears {}
+
   function roundToNearestMinutes(
     date: Date | number,
     options?: {
@@ -888,6 +930,15 @@ declare module 'date-fns' {
     }
   ): Date
   namespace roundToNearestMinutes {}
+
+  function secondsToHours(seconds: number): number
+  namespace secondsToHours {}
+
+  function secondsToMilliseconds(seconds: number): number
+  namespace secondsToMilliseconds {}
+
+  function secondsToMinutes(seconds: number): number
+  namespace secondsToMinutes {}
 
   function set(
     date: Date | number,
@@ -1068,9 +1119,38 @@ declare module 'date-fns' {
   function toDate(argument: Date | number): Date
   namespace toDate {}
 
+  function weeksToDays(weeks: number): number
+  namespace weeksToDays {}
+
+  function yearsToMonths(years: number): number
+  namespace yearsToMonths {}
+
+  function yearsToQuarters(years: number): number
+  namespace yearsToQuarters {}
+
+  const daysInWeek: number
+
+  const daysInWeek: number
+
   const maxTime: number
 
+  const millisecondsInMinute: number
+
+  const millisecondsInHour: number
+
   const minTime: number
+
+  const minTime: number
+
+  const minutesInHour: number
+
+  const monthsInQuarter: number
+
+  const monthsInYear: number
+
+  const quartersInYear: number
+
+  const secondsInHour: number
 }
 
 declare module 'date-fns/add' {
@@ -1156,6 +1236,11 @@ declare module 'date-fns/compareAsc' {
 declare module 'date-fns/compareDesc' {
   import { compareDesc } from 'date-fns'
   export default compareDesc
+}
+
+declare module 'date-fns/daysToWeeks' {
+  import { daysToWeeks } from 'date-fns'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/differenceInBusinessDays' {
@@ -1553,6 +1638,21 @@ declare module 'date-fns/getYear' {
   export default getYear
 }
 
+declare module 'date-fns/hoursToMilliseconds' {
+  import { hoursToMilliseconds } from 'date-fns'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/hoursToMinutes' {
+  import { hoursToMinutes } from 'date-fns'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/hoursToSeconds' {
+  import { hoursToSeconds } from 'date-fns'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/intervalToDuration' {
   import { intervalToDuration } from 'date-fns'
   export default intervalToDuration
@@ -1823,9 +1923,49 @@ declare module 'date-fns/milliseconds' {
   export default milliseconds
 }
 
+declare module 'date-fns/millisecondsToHours' {
+  import { millisecondsToHours } from 'date-fns'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/millisecondsToMinutes' {
+  import { millisecondsToMinutes } from 'date-fns'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/millisecondsToSeconds' {
+  import { millisecondsToSeconds } from 'date-fns'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/min' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/minutesToHours' {
+  import { minutesToHours } from 'date-fns'
+  export default minutesToHours
+}
+
+declare module 'date-fns/minutesToMilliseconds' {
+  import { minutesToMilliseconds } from 'date-fns'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/minutesToSeconds' {
+  import { minutesToSeconds } from 'date-fns'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/monthsToQuarters' {
+  import { monthsToQuarters } from 'date-fns'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/monthsToYears' {
+  import { monthsToYears } from 'date-fns'
+  export default monthsToYears
 }
 
 declare module 'date-fns/nextDay' {
@@ -1883,9 +2023,34 @@ declare module 'date-fns/parseJSON' {
   export default parseJSON
 }
 
+declare module 'date-fns/quartersToMonths' {
+  import { quartersToMonths } from 'date-fns'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/quartersToYears' {
+  import { quartersToYears } from 'date-fns'
+  export default quartersToYears
+}
+
 declare module 'date-fns/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/secondsToHours' {
+  import { secondsToHours } from 'date-fns'
+  export default secondsToHours
+}
+
+declare module 'date-fns/secondsToMilliseconds' {
+  import { secondsToMilliseconds } from 'date-fns'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/secondsToMinutes' {
+  import { secondsToMinutes } from 'date-fns'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/set' {
@@ -2108,6 +2273,21 @@ declare module 'date-fns/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/weeksToDays' {
+  import { weeksToDays } from 'date-fns'
+  export default weeksToDays
+}
+
+declare module 'date-fns/yearsToMonths' {
+  import { yearsToMonths } from 'date-fns'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/yearsToQuarters' {
+  import { yearsToQuarters } from 'date-fns'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/add/index' {
   import { add } from 'date-fns'
   export default add
@@ -2191,6 +2371,11 @@ declare module 'date-fns/compareAsc/index' {
 declare module 'date-fns/compareDesc/index' {
   import { compareDesc } from 'date-fns'
   export default compareDesc
+}
+
+declare module 'date-fns/daysToWeeks/index' {
+  import { daysToWeeks } from 'date-fns'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/differenceInBusinessDays/index' {
@@ -2588,6 +2773,21 @@ declare module 'date-fns/getYear/index' {
   export default getYear
 }
 
+declare module 'date-fns/hoursToMilliseconds/index' {
+  import { hoursToMilliseconds } from 'date-fns'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/hoursToMinutes/index' {
+  import { hoursToMinutes } from 'date-fns'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/hoursToSeconds/index' {
+  import { hoursToSeconds } from 'date-fns'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/intervalToDuration/index' {
   import { intervalToDuration } from 'date-fns'
   export default intervalToDuration
@@ -2858,9 +3058,49 @@ declare module 'date-fns/milliseconds/index' {
   export default milliseconds
 }
 
+declare module 'date-fns/millisecondsToHours/index' {
+  import { millisecondsToHours } from 'date-fns'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/millisecondsToMinutes/index' {
+  import { millisecondsToMinutes } from 'date-fns'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/millisecondsToSeconds/index' {
+  import { millisecondsToSeconds } from 'date-fns'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/min/index' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/minutesToHours/index' {
+  import { minutesToHours } from 'date-fns'
+  export default minutesToHours
+}
+
+declare module 'date-fns/minutesToMilliseconds/index' {
+  import { minutesToMilliseconds } from 'date-fns'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/minutesToSeconds/index' {
+  import { minutesToSeconds } from 'date-fns'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/monthsToQuarters/index' {
+  import { monthsToQuarters } from 'date-fns'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/monthsToYears/index' {
+  import { monthsToYears } from 'date-fns'
+  export default monthsToYears
 }
 
 declare module 'date-fns/nextDay/index' {
@@ -2918,9 +3158,34 @@ declare module 'date-fns/parseJSON/index' {
   export default parseJSON
 }
 
+declare module 'date-fns/quartersToMonths/index' {
+  import { quartersToMonths } from 'date-fns'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/quartersToYears/index' {
+  import { quartersToYears } from 'date-fns'
+  export default quartersToYears
+}
+
 declare module 'date-fns/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/secondsToHours/index' {
+  import { secondsToHours } from 'date-fns'
+  export default secondsToHours
+}
+
+declare module 'date-fns/secondsToMilliseconds/index' {
+  import { secondsToMilliseconds } from 'date-fns'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/secondsToMinutes/index' {
+  import { secondsToMinutes } from 'date-fns'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/set/index' {
@@ -3143,6 +3408,21 @@ declare module 'date-fns/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/weeksToDays/index' {
+  import { weeksToDays } from 'date-fns'
+  export default weeksToDays
+}
+
+declare module 'date-fns/yearsToMonths/index' {
+  import { yearsToMonths } from 'date-fns'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/yearsToQuarters/index' {
+  import { yearsToQuarters } from 'date-fns'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/add/index.js' {
   import { add } from 'date-fns'
   export default add
@@ -3226,6 +3506,11 @@ declare module 'date-fns/compareAsc/index.js' {
 declare module 'date-fns/compareDesc/index.js' {
   import { compareDesc } from 'date-fns'
   export default compareDesc
+}
+
+declare module 'date-fns/daysToWeeks/index.js' {
+  import { daysToWeeks } from 'date-fns'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/differenceInBusinessDays/index.js' {
@@ -3623,6 +3908,21 @@ declare module 'date-fns/getYear/index.js' {
   export default getYear
 }
 
+declare module 'date-fns/hoursToMilliseconds/index.js' {
+  import { hoursToMilliseconds } from 'date-fns'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/hoursToMinutes/index.js' {
+  import { hoursToMinutes } from 'date-fns'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/hoursToSeconds/index.js' {
+  import { hoursToSeconds } from 'date-fns'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/intervalToDuration/index.js' {
   import { intervalToDuration } from 'date-fns'
   export default intervalToDuration
@@ -3893,9 +4193,49 @@ declare module 'date-fns/milliseconds/index.js' {
   export default milliseconds
 }
 
+declare module 'date-fns/millisecondsToHours/index.js' {
+  import { millisecondsToHours } from 'date-fns'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/millisecondsToMinutes/index.js' {
+  import { millisecondsToMinutes } from 'date-fns'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/millisecondsToSeconds/index.js' {
+  import { millisecondsToSeconds } from 'date-fns'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/min/index.js' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/minutesToHours/index.js' {
+  import { minutesToHours } from 'date-fns'
+  export default minutesToHours
+}
+
+declare module 'date-fns/minutesToMilliseconds/index.js' {
+  import { minutesToMilliseconds } from 'date-fns'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/minutesToSeconds/index.js' {
+  import { minutesToSeconds } from 'date-fns'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/monthsToQuarters/index.js' {
+  import { monthsToQuarters } from 'date-fns'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/monthsToYears/index.js' {
+  import { monthsToYears } from 'date-fns'
+  export default monthsToYears
 }
 
 declare module 'date-fns/nextDay/index.js' {
@@ -3953,9 +4293,34 @@ declare module 'date-fns/parseJSON/index.js' {
   export default parseJSON
 }
 
+declare module 'date-fns/quartersToMonths/index.js' {
+  import { quartersToMonths } from 'date-fns'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/quartersToYears/index.js' {
+  import { quartersToYears } from 'date-fns'
+  export default quartersToYears
+}
+
 declare module 'date-fns/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/secondsToHours/index.js' {
+  import { secondsToHours } from 'date-fns'
+  export default secondsToHours
+}
+
+declare module 'date-fns/secondsToMilliseconds/index.js' {
+  import { secondsToMilliseconds } from 'date-fns'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/secondsToMinutes/index.js' {
+  import { secondsToMinutes } from 'date-fns'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/set/index.js' {
@@ -4178,6 +4543,21 @@ declare module 'date-fns/toDate/index.js' {
   export default toDate
 }
 
+declare module 'date-fns/weeksToDays/index.js' {
+  import { weeksToDays } from 'date-fns'
+  export default weeksToDays
+}
+
+declare module 'date-fns/yearsToMonths/index.js' {
+  import { yearsToMonths } from 'date-fns'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/yearsToQuarters/index.js' {
+  import { yearsToQuarters } from 'date-fns'
+  export default yearsToQuarters
+}
+
 // FP Functions
 
 declare module 'date-fns/fp' {
@@ -4241,6 +4621,9 @@ declare module 'date-fns/fp' {
 
   const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {}
+
+  const daysToWeeks: CurriedFn1<number, number>
+  namespace daysToWeeks {}
 
   const differenceInBusinessDays: CurriedFn2<
     Date | number,
@@ -4704,6 +5087,15 @@ declare module 'date-fns/fp' {
   const getYear: CurriedFn1<Date | number, number>
   namespace getYear {}
 
+  const hoursToMilliseconds: CurriedFn1<number, number>
+  namespace hoursToMilliseconds {}
+
+  const hoursToMinutes: CurriedFn1<number, number>
+  namespace hoursToMinutes {}
+
+  const hoursToSeconds: CurriedFn1<number, number>
+  namespace hoursToSeconds {}
+
   const intervalToDuration: CurriedFn1<Interval, Duration>
   namespace intervalToDuration {}
 
@@ -4892,8 +5284,32 @@ declare module 'date-fns/fp' {
   const milliseconds: CurriedFn1<Duration, number>
   namespace milliseconds {}
 
+  const millisecondsToHours: CurriedFn1<number, number>
+  namespace millisecondsToHours {}
+
+  const millisecondsToMinutes: CurriedFn1<number, number>
+  namespace millisecondsToMinutes {}
+
+  const millisecondsToSeconds: CurriedFn1<number, number>
+  namespace millisecondsToSeconds {}
+
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const minutesToHours: CurriedFn1<number, number>
+  namespace minutesToHours {}
+
+  const minutesToMilliseconds: CurriedFn1<number, number>
+  namespace minutesToMilliseconds {}
+
+  const minutesToSeconds: CurriedFn1<number, number>
+  namespace minutesToSeconds {}
+
+  const monthsToQuarters: CurriedFn1<number, number>
+  namespace monthsToQuarters {}
+
+  const monthsToYears: CurriedFn1<number, number>
+  namespace monthsToYears {}
 
   const nextDay: CurriedFn2<Day, Date | number, Date>
   namespace nextDay {}
@@ -4952,6 +5368,12 @@ declare module 'date-fns/fp' {
   >
   namespace parseWithOptions {}
 
+  const quartersToMonths: CurriedFn1<number, number>
+  namespace quartersToMonths {}
+
+  const quartersToYears: CurriedFn1<number, number>
+  namespace quartersToYears {}
+
   const roundToNearestMinutes: CurriedFn1<Date | number, Date>
   namespace roundToNearestMinutes {}
 
@@ -4963,6 +5385,15 @@ declare module 'date-fns/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const secondsToHours: CurriedFn1<number, number>
+  namespace secondsToHours {}
+
+  const secondsToMilliseconds: CurriedFn1<number, number>
+  namespace secondsToMilliseconds {}
+
+  const secondsToMinutes: CurriedFn1<number, number>
+  namespace secondsToMinutes {}
 
   const set: CurriedFn2<
     {
@@ -5155,9 +5586,38 @@ declare module 'date-fns/fp' {
   const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {}
 
+  const weeksToDays: CurriedFn1<number, number>
+  namespace weeksToDays {}
+
+  const yearsToMonths: CurriedFn1<number, number>
+  namespace yearsToMonths {}
+
+  const yearsToQuarters: CurriedFn1<number, number>
+  namespace yearsToQuarters {}
+
+  const daysInWeek: number
+
+  const daysInWeek: number
+
   const maxTime: number
 
+  const millisecondsInMinute: number
+
+  const millisecondsInHour: number
+
   const minTime: number
+
+  const minTime: number
+
+  const minutesInHour: number
+
+  const monthsInQuarter: number
+
+  const monthsInYear: number
+
+  const quartersInYear: number
+
+  const secondsInHour: number
 }
 
 declare module 'date-fns/fp/add' {
@@ -5248,6 +5708,11 @@ declare module 'date-fns/fp/compareAsc' {
 declare module 'date-fns/fp/compareDesc' {
   import { compareDesc } from 'date-fns/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/fp/daysToWeeks' {
+  import { daysToWeeks } from 'date-fns/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays' {
@@ -5715,6 +6180,21 @@ declare module 'date-fns/fp/getYear' {
   export default getYear
 }
 
+declare module 'date-fns/fp/hoursToMilliseconds' {
+  import { hoursToMilliseconds } from 'date-fns/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/fp/hoursToMinutes' {
+  import { hoursToMinutes } from 'date-fns/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/fp/hoursToSeconds' {
+  import { hoursToSeconds } from 'date-fns/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/fp/intervalToDuration' {
   import { intervalToDuration } from 'date-fns/fp'
   export default intervalToDuration
@@ -5940,9 +6420,49 @@ declare module 'date-fns/fp/milliseconds' {
   export default milliseconds
 }
 
+declare module 'date-fns/fp/millisecondsToHours' {
+  import { millisecondsToHours } from 'date-fns/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/fp/millisecondsToMinutes' {
+  import { millisecondsToMinutes } from 'date-fns/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/fp/millisecondsToSeconds' {
+  import { millisecondsToSeconds } from 'date-fns/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/fp/min' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/minutesToHours' {
+  import { minutesToHours } from 'date-fns/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/fp/minutesToMilliseconds' {
+  import { minutesToMilliseconds } from 'date-fns/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/fp/minutesToSeconds' {
+  import { minutesToSeconds } from 'date-fns/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/fp/monthsToQuarters' {
+  import { monthsToQuarters } from 'date-fns/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/fp/monthsToYears' {
+  import { monthsToYears } from 'date-fns/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/fp/nextDay' {
@@ -6010,6 +6530,16 @@ declare module 'date-fns/fp/parseWithOptions' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/quartersToMonths' {
+  import { quartersToMonths } from 'date-fns/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/fp/quartersToYears' {
+  import { quartersToYears } from 'date-fns/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/fp/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/fp'
   export default roundToNearestMinutes
@@ -6018,6 +6548,21 @@ declare module 'date-fns/fp/roundToNearestMinutes' {
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/fp/secondsToHours' {
+  import { secondsToHours } from 'date-fns/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/fp/secondsToMilliseconds' {
+  import { secondsToMilliseconds } from 'date-fns/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/fp/secondsToMinutes' {
+  import { secondsToMinutes } from 'date-fns/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/fp/set' {
@@ -6250,6 +6795,21 @@ declare module 'date-fns/fp/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/fp/weeksToDays' {
+  import { weeksToDays } from 'date-fns/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/fp/yearsToMonths' {
+  import { yearsToMonths } from 'date-fns/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/fp/yearsToQuarters' {
+  import { yearsToQuarters } from 'date-fns/fp'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/fp/add/index' {
   import { add } from 'date-fns/fp'
   export default add
@@ -6338,6 +6898,11 @@ declare module 'date-fns/fp/compareAsc/index' {
 declare module 'date-fns/fp/compareDesc/index' {
   import { compareDesc } from 'date-fns/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/fp/daysToWeeks/index' {
+  import { daysToWeeks } from 'date-fns/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays/index' {
@@ -6805,6 +7370,21 @@ declare module 'date-fns/fp/getYear/index' {
   export default getYear
 }
 
+declare module 'date-fns/fp/hoursToMilliseconds/index' {
+  import { hoursToMilliseconds } from 'date-fns/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/fp/hoursToMinutes/index' {
+  import { hoursToMinutes } from 'date-fns/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/fp/hoursToSeconds/index' {
+  import { hoursToSeconds } from 'date-fns/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/fp/intervalToDuration/index' {
   import { intervalToDuration } from 'date-fns/fp'
   export default intervalToDuration
@@ -7030,9 +7610,49 @@ declare module 'date-fns/fp/milliseconds/index' {
   export default milliseconds
 }
 
+declare module 'date-fns/fp/millisecondsToHours/index' {
+  import { millisecondsToHours } from 'date-fns/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/fp/millisecondsToMinutes/index' {
+  import { millisecondsToMinutes } from 'date-fns/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/fp/millisecondsToSeconds/index' {
+  import { millisecondsToSeconds } from 'date-fns/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/fp/min/index' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/minutesToHours/index' {
+  import { minutesToHours } from 'date-fns/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/fp/minutesToMilliseconds/index' {
+  import { minutesToMilliseconds } from 'date-fns/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/fp/minutesToSeconds/index' {
+  import { minutesToSeconds } from 'date-fns/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/fp/monthsToQuarters/index' {
+  import { monthsToQuarters } from 'date-fns/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/fp/monthsToYears/index' {
+  import { monthsToYears } from 'date-fns/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/fp/nextDay/index' {
@@ -7100,6 +7720,16 @@ declare module 'date-fns/fp/parseWithOptions/index' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/quartersToMonths/index' {
+  import { quartersToMonths } from 'date-fns/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/fp/quartersToYears/index' {
+  import { quartersToYears } from 'date-fns/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/fp/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/fp'
   export default roundToNearestMinutes
@@ -7108,6 +7738,21 @@ declare module 'date-fns/fp/roundToNearestMinutes/index' {
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/fp/secondsToHours/index' {
+  import { secondsToHours } from 'date-fns/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/fp/secondsToMilliseconds/index' {
+  import { secondsToMilliseconds } from 'date-fns/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/fp/secondsToMinutes/index' {
+  import { secondsToMinutes } from 'date-fns/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/fp/set/index' {
@@ -7340,6 +7985,21 @@ declare module 'date-fns/fp/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/fp/weeksToDays/index' {
+  import { weeksToDays } from 'date-fns/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/fp/yearsToMonths/index' {
+  import { yearsToMonths } from 'date-fns/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/fp/yearsToQuarters/index' {
+  import { yearsToQuarters } from 'date-fns/fp'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/fp/add/index.js' {
   import { add } from 'date-fns/fp'
   export default add
@@ -7428,6 +8088,11 @@ declare module 'date-fns/fp/compareAsc/index.js' {
 declare module 'date-fns/fp/compareDesc/index.js' {
   import { compareDesc } from 'date-fns/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/fp/daysToWeeks/index.js' {
+  import { daysToWeeks } from 'date-fns/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/fp/differenceInBusinessDays/index.js' {
@@ -7895,6 +8560,21 @@ declare module 'date-fns/fp/getYear/index.js' {
   export default getYear
 }
 
+declare module 'date-fns/fp/hoursToMilliseconds/index.js' {
+  import { hoursToMilliseconds } from 'date-fns/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/fp/hoursToMinutes/index.js' {
+  import { hoursToMinutes } from 'date-fns/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/fp/hoursToSeconds/index.js' {
+  import { hoursToSeconds } from 'date-fns/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/fp/intervalToDuration/index.js' {
   import { intervalToDuration } from 'date-fns/fp'
   export default intervalToDuration
@@ -8120,9 +8800,49 @@ declare module 'date-fns/fp/milliseconds/index.js' {
   export default milliseconds
 }
 
+declare module 'date-fns/fp/millisecondsToHours/index.js' {
+  import { millisecondsToHours } from 'date-fns/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/fp/millisecondsToMinutes/index.js' {
+  import { millisecondsToMinutes } from 'date-fns/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/fp/millisecondsToSeconds/index.js' {
+  import { millisecondsToSeconds } from 'date-fns/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/fp/min/index.js' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/minutesToHours/index.js' {
+  import { minutesToHours } from 'date-fns/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/fp/minutesToMilliseconds/index.js' {
+  import { minutesToMilliseconds } from 'date-fns/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/fp/minutesToSeconds/index.js' {
+  import { minutesToSeconds } from 'date-fns/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/fp/monthsToQuarters/index.js' {
+  import { monthsToQuarters } from 'date-fns/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/fp/monthsToYears/index.js' {
+  import { monthsToYears } from 'date-fns/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/fp/nextDay/index.js' {
@@ -8190,6 +8910,16 @@ declare module 'date-fns/fp/parseWithOptions/index.js' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/quartersToMonths/index.js' {
+  import { quartersToMonths } from 'date-fns/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/fp/quartersToYears/index.js' {
+  import { quartersToYears } from 'date-fns/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/fp/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/fp'
   export default roundToNearestMinutes
@@ -8198,6 +8928,21 @@ declare module 'date-fns/fp/roundToNearestMinutes/index.js' {
 declare module 'date-fns/fp/roundToNearestMinutesWithOptions/index.js' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/fp/secondsToHours/index.js' {
+  import { secondsToHours } from 'date-fns/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/fp/secondsToMilliseconds/index.js' {
+  import { secondsToMilliseconds } from 'date-fns/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/fp/secondsToMinutes/index.js' {
+  import { secondsToMinutes } from 'date-fns/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/fp/set/index.js' {
@@ -8430,6 +9175,21 @@ declare module 'date-fns/fp/toDate/index.js' {
   export default toDate
 }
 
+declare module 'date-fns/fp/weeksToDays/index.js' {
+  import { weeksToDays } from 'date-fns/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/fp/yearsToMonths/index.js' {
+  import { yearsToMonths } from 'date-fns/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/fp/yearsToQuarters/index.js' {
+  import { yearsToQuarters } from 'date-fns/fp'
+  export default yearsToQuarters
+}
+
 // ECMAScript Module Functions
 
 declare module 'date-fns/esm' {
@@ -8498,6 +9258,9 @@ declare module 'date-fns/esm' {
     dateRight: Date | number
   ): number
   namespace compareDesc {}
+
+  function daysToWeeks(days: number): number
+  namespace daysToWeeks {}
 
   function differenceInBusinessDays(
     dateLeft: Date | number,
@@ -8929,6 +9692,15 @@ declare module 'date-fns/esm' {
   function getYear(date: Date | number): number
   namespace getYear {}
 
+  function hoursToMilliseconds(hours: number): number
+  namespace hoursToMilliseconds {}
+
+  function hoursToMinutes(hours: number): number
+  namespace hoursToMinutes {}
+
+  function hoursToSeconds(hours: number): number
+  namespace hoursToSeconds {}
+
   function intervalToDuration(interval: Interval): Duration
   namespace intervalToDuration {}
 
@@ -9169,8 +9941,32 @@ declare module 'date-fns/esm' {
   function milliseconds(duration: Duration): number
   namespace milliseconds {}
 
+  function millisecondsToHours(milliseconds: number): number
+  namespace millisecondsToHours {}
+
+  function millisecondsToMinutes(milliseconds: number): number
+  namespace millisecondsToMinutes {}
+
+  function millisecondsToSeconds(milliseconds: number): number
+  namespace millisecondsToSeconds {}
+
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
+
+  function minutesToHours(minutes: number): number
+  namespace minutesToHours {}
+
+  function minutesToMilliseconds(minutes: number): number
+  namespace minutesToMilliseconds {}
+
+  function minutesToSeconds(minutes: number): number
+  namespace minutesToSeconds {}
+
+  function monthsToQuarters(months: number): number
+  namespace monthsToQuarters {}
+
+  function monthsToYears(months: number): number
+  namespace monthsToYears {}
 
   function nextDay(date: Date | number, day: Day): Date
   namespace nextDay {}
@@ -9221,6 +10017,12 @@ declare module 'date-fns/esm' {
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
 
+  function quartersToMonths(quarters: number): number
+  namespace quartersToMonths {}
+
+  function quartersToYears(quarters: number): number
+  namespace quartersToYears {}
+
   function roundToNearestMinutes(
     date: Date | number,
     options?: {
@@ -9228,6 +10030,15 @@ declare module 'date-fns/esm' {
     }
   ): Date
   namespace roundToNearestMinutes {}
+
+  function secondsToHours(seconds: number): number
+  namespace secondsToHours {}
+
+  function secondsToMilliseconds(seconds: number): number
+  namespace secondsToMilliseconds {}
+
+  function secondsToMinutes(seconds: number): number
+  namespace secondsToMinutes {}
 
   function set(
     date: Date | number,
@@ -9408,9 +10219,38 @@ declare module 'date-fns/esm' {
   function toDate(argument: Date | number): Date
   namespace toDate {}
 
+  function weeksToDays(weeks: number): number
+  namespace weeksToDays {}
+
+  function yearsToMonths(years: number): number
+  namespace yearsToMonths {}
+
+  function yearsToQuarters(years: number): number
+  namespace yearsToQuarters {}
+
+  const daysInWeek: number
+
+  const daysInWeek: number
+
   const maxTime: number
 
+  const millisecondsInMinute: number
+
+  const millisecondsInHour: number
+
   const minTime: number
+
+  const minTime: number
+
+  const minutesInHour: number
+
+  const monthsInQuarter: number
+
+  const monthsInYear: number
+
+  const quartersInYear: number
+
+  const secondsInHour: number
 }
 
 declare module 'date-fns/esm/add' {
@@ -9496,6 +10336,11 @@ declare module 'date-fns/esm/compareAsc' {
 declare module 'date-fns/esm/compareDesc' {
   import { compareDesc } from 'date-fns/esm'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/daysToWeeks' {
+  import { daysToWeeks } from 'date-fns/esm'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/differenceInBusinessDays' {
@@ -9893,6 +10738,21 @@ declare module 'date-fns/esm/getYear' {
   export default getYear
 }
 
+declare module 'date-fns/esm/hoursToMilliseconds' {
+  import { hoursToMilliseconds } from 'date-fns/esm'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/hoursToMinutes' {
+  import { hoursToMinutes } from 'date-fns/esm'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/hoursToSeconds' {
+  import { hoursToSeconds } from 'date-fns/esm'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/intervalToDuration' {
   import { intervalToDuration } from 'date-fns/esm'
   export default intervalToDuration
@@ -10163,9 +11023,49 @@ declare module 'date-fns/esm/milliseconds' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/millisecondsToHours' {
+  import { millisecondsToHours } from 'date-fns/esm'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/millisecondsToMinutes' {
+  import { millisecondsToMinutes } from 'date-fns/esm'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/millisecondsToSeconds' {
+  import { millisecondsToSeconds } from 'date-fns/esm'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/min' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/minutesToHours' {
+  import { minutesToHours } from 'date-fns/esm'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/minutesToMilliseconds' {
+  import { minutesToMilliseconds } from 'date-fns/esm'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/minutesToSeconds' {
+  import { minutesToSeconds } from 'date-fns/esm'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/monthsToQuarters' {
+  import { monthsToQuarters } from 'date-fns/esm'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/monthsToYears' {
+  import { monthsToYears } from 'date-fns/esm'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/nextDay' {
@@ -10223,9 +11123,34 @@ declare module 'date-fns/esm/parseJSON' {
   export default parseJSON
 }
 
+declare module 'date-fns/esm/quartersToMonths' {
+  import { quartersToMonths } from 'date-fns/esm'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/quartersToYears' {
+  import { quartersToYears } from 'date-fns/esm'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/esm/secondsToHours' {
+  import { secondsToHours } from 'date-fns/esm'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/secondsToMilliseconds' {
+  import { secondsToMilliseconds } from 'date-fns/esm'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/secondsToMinutes' {
+  import { secondsToMinutes } from 'date-fns/esm'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/set' {
@@ -10448,6 +11373,21 @@ declare module 'date-fns/esm/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/weeksToDays' {
+  import { weeksToDays } from 'date-fns/esm'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/yearsToMonths' {
+  import { yearsToMonths } from 'date-fns/esm'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/yearsToQuarters' {
+  import { yearsToQuarters } from 'date-fns/esm'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/esm/add/index' {
   import { add } from 'date-fns/esm'
   export default add
@@ -10531,6 +11471,11 @@ declare module 'date-fns/esm/compareAsc/index' {
 declare module 'date-fns/esm/compareDesc/index' {
   import { compareDesc } from 'date-fns/esm'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/daysToWeeks/index' {
+  import { daysToWeeks } from 'date-fns/esm'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/differenceInBusinessDays/index' {
@@ -10928,6 +11873,21 @@ declare module 'date-fns/esm/getYear/index' {
   export default getYear
 }
 
+declare module 'date-fns/esm/hoursToMilliseconds/index' {
+  import { hoursToMilliseconds } from 'date-fns/esm'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/hoursToMinutes/index' {
+  import { hoursToMinutes } from 'date-fns/esm'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/hoursToSeconds/index' {
+  import { hoursToSeconds } from 'date-fns/esm'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/intervalToDuration/index' {
   import { intervalToDuration } from 'date-fns/esm'
   export default intervalToDuration
@@ -11198,9 +12158,49 @@ declare module 'date-fns/esm/milliseconds/index' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/millisecondsToHours/index' {
+  import { millisecondsToHours } from 'date-fns/esm'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/millisecondsToMinutes/index' {
+  import { millisecondsToMinutes } from 'date-fns/esm'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/millisecondsToSeconds/index' {
+  import { millisecondsToSeconds } from 'date-fns/esm'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/min/index' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/minutesToHours/index' {
+  import { minutesToHours } from 'date-fns/esm'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/minutesToMilliseconds/index' {
+  import { minutesToMilliseconds } from 'date-fns/esm'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/minutesToSeconds/index' {
+  import { minutesToSeconds } from 'date-fns/esm'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/monthsToQuarters/index' {
+  import { monthsToQuarters } from 'date-fns/esm'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/monthsToYears/index' {
+  import { monthsToYears } from 'date-fns/esm'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/nextDay/index' {
@@ -11258,9 +12258,34 @@ declare module 'date-fns/esm/parseJSON/index' {
   export default parseJSON
 }
 
+declare module 'date-fns/esm/quartersToMonths/index' {
+  import { quartersToMonths } from 'date-fns/esm'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/quartersToYears/index' {
+  import { quartersToYears } from 'date-fns/esm'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/esm/secondsToHours/index' {
+  import { secondsToHours } from 'date-fns/esm'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/secondsToMilliseconds/index' {
+  import { secondsToMilliseconds } from 'date-fns/esm'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/secondsToMinutes/index' {
+  import { secondsToMinutes } from 'date-fns/esm'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/set/index' {
@@ -11483,6 +12508,21 @@ declare module 'date-fns/esm/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/esm/weeksToDays/index' {
+  import { weeksToDays } from 'date-fns/esm'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/yearsToMonths/index' {
+  import { yearsToMonths } from 'date-fns/esm'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/yearsToQuarters/index' {
+  import { yearsToQuarters } from 'date-fns/esm'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/esm/add/index.js' {
   import { add } from 'date-fns/esm'
   export default add
@@ -11566,6 +12606,11 @@ declare module 'date-fns/esm/compareAsc/index.js' {
 declare module 'date-fns/esm/compareDesc/index.js' {
   import { compareDesc } from 'date-fns/esm'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/daysToWeeks/index.js' {
+  import { daysToWeeks } from 'date-fns/esm'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/differenceInBusinessDays/index.js' {
@@ -11963,6 +13008,21 @@ declare module 'date-fns/esm/getYear/index.js' {
   export default getYear
 }
 
+declare module 'date-fns/esm/hoursToMilliseconds/index.js' {
+  import { hoursToMilliseconds } from 'date-fns/esm'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/hoursToMinutes/index.js' {
+  import { hoursToMinutes } from 'date-fns/esm'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/hoursToSeconds/index.js' {
+  import { hoursToSeconds } from 'date-fns/esm'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/intervalToDuration/index.js' {
   import { intervalToDuration } from 'date-fns/esm'
   export default intervalToDuration
@@ -12233,9 +13293,49 @@ declare module 'date-fns/esm/milliseconds/index.js' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/millisecondsToHours/index.js' {
+  import { millisecondsToHours } from 'date-fns/esm'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/millisecondsToMinutes/index.js' {
+  import { millisecondsToMinutes } from 'date-fns/esm'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/millisecondsToSeconds/index.js' {
+  import { millisecondsToSeconds } from 'date-fns/esm'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/min/index.js' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/minutesToHours/index.js' {
+  import { minutesToHours } from 'date-fns/esm'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/minutesToMilliseconds/index.js' {
+  import { minutesToMilliseconds } from 'date-fns/esm'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/minutesToSeconds/index.js' {
+  import { minutesToSeconds } from 'date-fns/esm'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/monthsToQuarters/index.js' {
+  import { monthsToQuarters } from 'date-fns/esm'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/monthsToYears/index.js' {
+  import { monthsToYears } from 'date-fns/esm'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/nextDay/index.js' {
@@ -12293,9 +13393,34 @@ declare module 'date-fns/esm/parseJSON/index.js' {
   export default parseJSON
 }
 
+declare module 'date-fns/esm/quartersToMonths/index.js' {
+  import { quartersToMonths } from 'date-fns/esm'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/quartersToYears/index.js' {
+  import { quartersToYears } from 'date-fns/esm'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/esm'
   export default roundToNearestMinutes
+}
+
+declare module 'date-fns/esm/secondsToHours/index.js' {
+  import { secondsToHours } from 'date-fns/esm'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/secondsToMilliseconds/index.js' {
+  import { secondsToMilliseconds } from 'date-fns/esm'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/secondsToMinutes/index.js' {
+  import { secondsToMinutes } from 'date-fns/esm'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/set/index.js' {
@@ -12518,6 +13643,21 @@ declare module 'date-fns/esm/toDate/index.js' {
   export default toDate
 }
 
+declare module 'date-fns/esm/weeksToDays/index.js' {
+  import { weeksToDays } from 'date-fns/esm'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/yearsToMonths/index.js' {
+  import { yearsToMonths } from 'date-fns/esm'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/yearsToQuarters/index.js' {
+  import { yearsToQuarters } from 'date-fns/esm'
+  export default yearsToQuarters
+}
+
 // ECMAScript Module FP Functions
 
 declare module 'date-fns/esm/fp' {
@@ -12581,6 +13721,9 @@ declare module 'date-fns/esm/fp' {
 
   const compareDesc: CurriedFn2<Date | number, Date | number, number>
   namespace compareDesc {}
+
+  const daysToWeeks: CurriedFn1<number, number>
+  namespace daysToWeeks {}
 
   const differenceInBusinessDays: CurriedFn2<
     Date | number,
@@ -13044,6 +14187,15 @@ declare module 'date-fns/esm/fp' {
   const getYear: CurriedFn1<Date | number, number>
   namespace getYear {}
 
+  const hoursToMilliseconds: CurriedFn1<number, number>
+  namespace hoursToMilliseconds {}
+
+  const hoursToMinutes: CurriedFn1<number, number>
+  namespace hoursToMinutes {}
+
+  const hoursToSeconds: CurriedFn1<number, number>
+  namespace hoursToSeconds {}
+
   const intervalToDuration: CurriedFn1<Interval, Duration>
   namespace intervalToDuration {}
 
@@ -13232,8 +14384,32 @@ declare module 'date-fns/esm/fp' {
   const milliseconds: CurriedFn1<Duration, number>
   namespace milliseconds {}
 
+  const millisecondsToHours: CurriedFn1<number, number>
+  namespace millisecondsToHours {}
+
+  const millisecondsToMinutes: CurriedFn1<number, number>
+  namespace millisecondsToMinutes {}
+
+  const millisecondsToSeconds: CurriedFn1<number, number>
+  namespace millisecondsToSeconds {}
+
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const minutesToHours: CurriedFn1<number, number>
+  namespace minutesToHours {}
+
+  const minutesToMilliseconds: CurriedFn1<number, number>
+  namespace minutesToMilliseconds {}
+
+  const minutesToSeconds: CurriedFn1<number, number>
+  namespace minutesToSeconds {}
+
+  const monthsToQuarters: CurriedFn1<number, number>
+  namespace monthsToQuarters {}
+
+  const monthsToYears: CurriedFn1<number, number>
+  namespace monthsToYears {}
 
   const nextDay: CurriedFn2<Day, Date | number, Date>
   namespace nextDay {}
@@ -13292,6 +14468,12 @@ declare module 'date-fns/esm/fp' {
   >
   namespace parseWithOptions {}
 
+  const quartersToMonths: CurriedFn1<number, number>
+  namespace quartersToMonths {}
+
+  const quartersToYears: CurriedFn1<number, number>
+  namespace quartersToYears {}
+
   const roundToNearestMinutes: CurriedFn1<Date | number, Date>
   namespace roundToNearestMinutes {}
 
@@ -13303,6 +14485,15 @@ declare module 'date-fns/esm/fp' {
     Date
   >
   namespace roundToNearestMinutesWithOptions {}
+
+  const secondsToHours: CurriedFn1<number, number>
+  namespace secondsToHours {}
+
+  const secondsToMilliseconds: CurriedFn1<number, number>
+  namespace secondsToMilliseconds {}
+
+  const secondsToMinutes: CurriedFn1<number, number>
+  namespace secondsToMinutes {}
 
   const set: CurriedFn2<
     {
@@ -13495,9 +14686,38 @@ declare module 'date-fns/esm/fp' {
   const toDate: CurriedFn1<Date | number, Date>
   namespace toDate {}
 
+  const weeksToDays: CurriedFn1<number, number>
+  namespace weeksToDays {}
+
+  const yearsToMonths: CurriedFn1<number, number>
+  namespace yearsToMonths {}
+
+  const yearsToQuarters: CurriedFn1<number, number>
+  namespace yearsToQuarters {}
+
+  const daysInWeek: number
+
+  const daysInWeek: number
+
   const maxTime: number
 
+  const millisecondsInMinute: number
+
+  const millisecondsInHour: number
+
   const minTime: number
+
+  const minTime: number
+
+  const minutesInHour: number
+
+  const monthsInQuarter: number
+
+  const monthsInYear: number
+
+  const quartersInYear: number
+
+  const secondsInHour: number
 }
 
 declare module 'date-fns/esm/fp/add' {
@@ -13588,6 +14808,11 @@ declare module 'date-fns/esm/fp/compareAsc' {
 declare module 'date-fns/esm/fp/compareDesc' {
   import { compareDesc } from 'date-fns/esm/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/fp/daysToWeeks' {
+  import { daysToWeeks } from 'date-fns/esm/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/fp/differenceInBusinessDays' {
@@ -14055,6 +15280,21 @@ declare module 'date-fns/esm/fp/getYear' {
   export default getYear
 }
 
+declare module 'date-fns/esm/fp/hoursToMilliseconds' {
+  import { hoursToMilliseconds } from 'date-fns/esm/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/hoursToMinutes' {
+  import { hoursToMinutes } from 'date-fns/esm/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/fp/hoursToSeconds' {
+  import { hoursToSeconds } from 'date-fns/esm/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/fp/intervalToDuration' {
   import { intervalToDuration } from 'date-fns/esm/fp'
   export default intervalToDuration
@@ -14280,9 +15520,49 @@ declare module 'date-fns/esm/fp/milliseconds' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/fp/millisecondsToHours' {
+  import { millisecondsToHours } from 'date-fns/esm/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/fp/millisecondsToMinutes' {
+  import { millisecondsToMinutes } from 'date-fns/esm/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/fp/millisecondsToSeconds' {
+  import { millisecondsToSeconds } from 'date-fns/esm/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/fp/min' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/minutesToHours' {
+  import { minutesToHours } from 'date-fns/esm/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/fp/minutesToMilliseconds' {
+  import { minutesToMilliseconds } from 'date-fns/esm/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/minutesToSeconds' {
+  import { minutesToSeconds } from 'date-fns/esm/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/fp/monthsToQuarters' {
+  import { monthsToQuarters } from 'date-fns/esm/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/fp/monthsToYears' {
+  import { monthsToYears } from 'date-fns/esm/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/fp/nextDay' {
@@ -14350,6 +15630,16 @@ declare module 'date-fns/esm/fp/parseWithOptions' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/quartersToMonths' {
+  import { quartersToMonths } from 'date-fns/esm/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/fp/quartersToYears' {
+  import { quartersToYears } from 'date-fns/esm/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/fp/roundToNearestMinutes' {
   import { roundToNearestMinutes } from 'date-fns/esm/fp'
   export default roundToNearestMinutes
@@ -14358,6 +15648,21 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/secondsToHours' {
+  import { secondsToHours } from 'date-fns/esm/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/fp/secondsToMilliseconds' {
+  import { secondsToMilliseconds } from 'date-fns/esm/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/secondsToMinutes' {
+  import { secondsToMinutes } from 'date-fns/esm/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/fp/set' {
@@ -14590,6 +15895,21 @@ declare module 'date-fns/esm/fp/toDate' {
   export default toDate
 }
 
+declare module 'date-fns/esm/fp/weeksToDays' {
+  import { weeksToDays } from 'date-fns/esm/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/fp/yearsToMonths' {
+  import { yearsToMonths } from 'date-fns/esm/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/fp/yearsToQuarters' {
+  import { yearsToQuarters } from 'date-fns/esm/fp'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/esm/fp/add/index' {
   import { add } from 'date-fns/esm/fp'
   export default add
@@ -14678,6 +15998,11 @@ declare module 'date-fns/esm/fp/compareAsc/index' {
 declare module 'date-fns/esm/fp/compareDesc/index' {
   import { compareDesc } from 'date-fns/esm/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/fp/daysToWeeks/index' {
+  import { daysToWeeks } from 'date-fns/esm/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/fp/differenceInBusinessDays/index' {
@@ -15145,6 +16470,21 @@ declare module 'date-fns/esm/fp/getYear/index' {
   export default getYear
 }
 
+declare module 'date-fns/esm/fp/hoursToMilliseconds/index' {
+  import { hoursToMilliseconds } from 'date-fns/esm/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/hoursToMinutes/index' {
+  import { hoursToMinutes } from 'date-fns/esm/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/fp/hoursToSeconds/index' {
+  import { hoursToSeconds } from 'date-fns/esm/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/fp/intervalToDuration/index' {
   import { intervalToDuration } from 'date-fns/esm/fp'
   export default intervalToDuration
@@ -15370,9 +16710,49 @@ declare module 'date-fns/esm/fp/milliseconds/index' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/fp/millisecondsToHours/index' {
+  import { millisecondsToHours } from 'date-fns/esm/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/fp/millisecondsToMinutes/index' {
+  import { millisecondsToMinutes } from 'date-fns/esm/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/fp/millisecondsToSeconds/index' {
+  import { millisecondsToSeconds } from 'date-fns/esm/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/fp/min/index' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/minutesToHours/index' {
+  import { minutesToHours } from 'date-fns/esm/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/fp/minutesToMilliseconds/index' {
+  import { minutesToMilliseconds } from 'date-fns/esm/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/minutesToSeconds/index' {
+  import { minutesToSeconds } from 'date-fns/esm/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/fp/monthsToQuarters/index' {
+  import { monthsToQuarters } from 'date-fns/esm/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/fp/monthsToYears/index' {
+  import { monthsToYears } from 'date-fns/esm/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/fp/nextDay/index' {
@@ -15440,6 +16820,16 @@ declare module 'date-fns/esm/fp/parseWithOptions/index' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/quartersToMonths/index' {
+  import { quartersToMonths } from 'date-fns/esm/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/fp/quartersToYears/index' {
+  import { quartersToYears } from 'date-fns/esm/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/fp/roundToNearestMinutes/index' {
   import { roundToNearestMinutes } from 'date-fns/esm/fp'
   export default roundToNearestMinutes
@@ -15448,6 +16838,21 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes/index' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/secondsToHours/index' {
+  import { secondsToHours } from 'date-fns/esm/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/fp/secondsToMilliseconds/index' {
+  import { secondsToMilliseconds } from 'date-fns/esm/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/secondsToMinutes/index' {
+  import { secondsToMinutes } from 'date-fns/esm/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/fp/set/index' {
@@ -15680,6 +17085,21 @@ declare module 'date-fns/esm/fp/toDate/index' {
   export default toDate
 }
 
+declare module 'date-fns/esm/fp/weeksToDays/index' {
+  import { weeksToDays } from 'date-fns/esm/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/fp/yearsToMonths/index' {
+  import { yearsToMonths } from 'date-fns/esm/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/fp/yearsToQuarters/index' {
+  import { yearsToQuarters } from 'date-fns/esm/fp'
+  export default yearsToQuarters
+}
+
 declare module 'date-fns/esm/fp/add/index.js' {
   import { add } from 'date-fns/esm/fp'
   export default add
@@ -15768,6 +17188,11 @@ declare module 'date-fns/esm/fp/compareAsc/index.js' {
 declare module 'date-fns/esm/fp/compareDesc/index.js' {
   import { compareDesc } from 'date-fns/esm/fp'
   export default compareDesc
+}
+
+declare module 'date-fns/esm/fp/daysToWeeks/index.js' {
+  import { daysToWeeks } from 'date-fns/esm/fp'
+  export default daysToWeeks
 }
 
 declare module 'date-fns/esm/fp/differenceInBusinessDays/index.js' {
@@ -16235,6 +17660,21 @@ declare module 'date-fns/esm/fp/getYear/index.js' {
   export default getYear
 }
 
+declare module 'date-fns/esm/fp/hoursToMilliseconds/index.js' {
+  import { hoursToMilliseconds } from 'date-fns/esm/fp'
+  export default hoursToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/hoursToMinutes/index.js' {
+  import { hoursToMinutes } from 'date-fns/esm/fp'
+  export default hoursToMinutes
+}
+
+declare module 'date-fns/esm/fp/hoursToSeconds/index.js' {
+  import { hoursToSeconds } from 'date-fns/esm/fp'
+  export default hoursToSeconds
+}
+
 declare module 'date-fns/esm/fp/intervalToDuration/index.js' {
   import { intervalToDuration } from 'date-fns/esm/fp'
   export default intervalToDuration
@@ -16460,9 +17900,49 @@ declare module 'date-fns/esm/fp/milliseconds/index.js' {
   export default milliseconds
 }
 
+declare module 'date-fns/esm/fp/millisecondsToHours/index.js' {
+  import { millisecondsToHours } from 'date-fns/esm/fp'
+  export default millisecondsToHours
+}
+
+declare module 'date-fns/esm/fp/millisecondsToMinutes/index.js' {
+  import { millisecondsToMinutes } from 'date-fns/esm/fp'
+  export default millisecondsToMinutes
+}
+
+declare module 'date-fns/esm/fp/millisecondsToSeconds/index.js' {
+  import { millisecondsToSeconds } from 'date-fns/esm/fp'
+  export default millisecondsToSeconds
+}
+
 declare module 'date-fns/esm/fp/min/index.js' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/minutesToHours/index.js' {
+  import { minutesToHours } from 'date-fns/esm/fp'
+  export default minutesToHours
+}
+
+declare module 'date-fns/esm/fp/minutesToMilliseconds/index.js' {
+  import { minutesToMilliseconds } from 'date-fns/esm/fp'
+  export default minutesToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/minutesToSeconds/index.js' {
+  import { minutesToSeconds } from 'date-fns/esm/fp'
+  export default minutesToSeconds
+}
+
+declare module 'date-fns/esm/fp/monthsToQuarters/index.js' {
+  import { monthsToQuarters } from 'date-fns/esm/fp'
+  export default monthsToQuarters
+}
+
+declare module 'date-fns/esm/fp/monthsToYears/index.js' {
+  import { monthsToYears } from 'date-fns/esm/fp'
+  export default monthsToYears
 }
 
 declare module 'date-fns/esm/fp/nextDay/index.js' {
@@ -16530,6 +18010,16 @@ declare module 'date-fns/esm/fp/parseWithOptions/index.js' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/quartersToMonths/index.js' {
+  import { quartersToMonths } from 'date-fns/esm/fp'
+  export default quartersToMonths
+}
+
+declare module 'date-fns/esm/fp/quartersToYears/index.js' {
+  import { quartersToYears } from 'date-fns/esm/fp'
+  export default quartersToYears
+}
+
 declare module 'date-fns/esm/fp/roundToNearestMinutes/index.js' {
   import { roundToNearestMinutes } from 'date-fns/esm/fp'
   export default roundToNearestMinutes
@@ -16538,6 +18028,21 @@ declare module 'date-fns/esm/fp/roundToNearestMinutes/index.js' {
 declare module 'date-fns/esm/fp/roundToNearestMinutesWithOptions/index.js' {
   import { roundToNearestMinutesWithOptions } from 'date-fns/esm/fp'
   export default roundToNearestMinutesWithOptions
+}
+
+declare module 'date-fns/esm/fp/secondsToHours/index.js' {
+  import { secondsToHours } from 'date-fns/esm/fp'
+  export default secondsToHours
+}
+
+declare module 'date-fns/esm/fp/secondsToMilliseconds/index.js' {
+  import { secondsToMilliseconds } from 'date-fns/esm/fp'
+  export default secondsToMilliseconds
+}
+
+declare module 'date-fns/esm/fp/secondsToMinutes/index.js' {
+  import { secondsToMinutes } from 'date-fns/esm/fp'
+  export default secondsToMinutes
 }
 
 declare module 'date-fns/esm/fp/set/index.js' {
@@ -16768,6 +18273,21 @@ declare module 'date-fns/esm/fp/subYears/index.js' {
 declare module 'date-fns/esm/fp/toDate/index.js' {
   import { toDate } from 'date-fns/esm/fp'
   export default toDate
+}
+
+declare module 'date-fns/esm/fp/weeksToDays/index.js' {
+  import { weeksToDays } from 'date-fns/esm/fp'
+  export default weeksToDays
+}
+
+declare module 'date-fns/esm/fp/yearsToMonths/index.js' {
+  import { yearsToMonths } from 'date-fns/esm/fp'
+  export default yearsToMonths
+}
+
+declare module 'date-fns/esm/fp/yearsToQuarters/index.js' {
+  import { yearsToQuarters } from 'date-fns/esm/fp'
+  export default yearsToQuarters
 }
 
 // Regular Locales
@@ -19776,6 +21296,8 @@ interface dateFns {
 
   compareDesc(dateLeft: Date | number, dateRight: Date | number): number
 
+  daysToWeeks(days: number): number
+
   differenceInBusinessDays(
     dateLeft: Date | number,
     dateRight: Date | number
@@ -20106,6 +21628,12 @@ interface dateFns {
 
   getYear(date: Date | number): number
 
+  hoursToMilliseconds(hours: number): number
+
+  hoursToMinutes(hours: number): number
+
+  hoursToSeconds(hours: number): number
+
   intervalToDuration(interval: Interval): Duration
 
   intlFormat(
@@ -20268,7 +21796,23 @@ interface dateFns {
 
   milliseconds(duration: Duration): number
 
+  millisecondsToHours(milliseconds: number): number
+
+  millisecondsToMinutes(milliseconds: number): number
+
+  millisecondsToSeconds(milliseconds: number): number
+
   min(datesArray: (Date | number)[]): Date
+
+  minutesToHours(minutes: number): number
+
+  minutesToMilliseconds(minutes: number): number
+
+  minutesToSeconds(minutes: number): number
+
+  monthsToQuarters(months: number): number
+
+  monthsToYears(months: number): number
 
   nextDay(date: Date | number, day: Day): Date
 
@@ -20308,12 +21852,22 @@ interface dateFns {
 
   parseJSON(argument: string | number | Date): Date
 
+  quartersToMonths(quarters: number): number
+
+  quartersToYears(quarters: number): number
+
   roundToNearestMinutes(
     date: Date | number,
     options?: {
       nearestTo?: number
     }
   ): Date
+
+  secondsToHours(seconds: number): number
+
+  secondsToMilliseconds(seconds: number): number
+
+  secondsToMinutes(seconds: number): number
 
   set(
     date: Date | number,
@@ -20450,7 +22004,33 @@ interface dateFns {
 
   toDate(argument: Date | number): Date
 
+  weeksToDays(weeks: number): number
+
+  yearsToMonths(years: number): number
+
+  yearsToQuarters(years: number): number
+
+  daysInWeek: number
+
+  daysInWeek: number
+
   maxTime: number
 
+  millisecondsInMinute: number
+
+  millisecondsInHour: number
+
   minTime: number
+
+  minTime: number
+
+  minutesInHour: number
+
+  monthsInQuarter: number
+
+  monthsInYear: number
+
+  quartersInYear: number
+
+  secondsInHour: number
 }
