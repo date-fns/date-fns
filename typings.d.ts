@@ -1130,15 +1130,11 @@ declare module 'date-fns' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
-
-  const minTime: number
 
   const minTime: number
 
@@ -5597,15 +5593,11 @@ declare module 'date-fns/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
-
-  const minTime: number
 
   const minTime: number
 
@@ -10230,15 +10222,11 @@ declare module 'date-fns/esm' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
-
-  const minTime: number
 
   const minTime: number
 
@@ -14697,15 +14685,11 @@ declare module 'date-fns/esm/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
-
-  const minTime: number
 
   const minTime: number
 
@@ -22012,15 +21996,11 @@ interface dateFns {
 
   daysInWeek: number
 
-  daysInWeek: number
-
   maxTime: number
 
   millisecondsInMinute: number
 
   millisecondsInHour: number
-
-  minTime: number
 
   minTime: number
 
