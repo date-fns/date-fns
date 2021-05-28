@@ -1,8 +1,8 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 var dateFormats = {
-  full: "EEEE, do MMMM y 'г.'",
-  long: "do MMMM y 'г.'",
+  full: "EEEE, d MMMM y 'г.'",
+  long: "d MMMM y 'г.'",
   medium: "d MMM y 'г.'",
   short: 'dd.MM.y'
 }
