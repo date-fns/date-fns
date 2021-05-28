@@ -21,13 +21,13 @@ var formatRelativeLocale = {
 
     switch (day) {
       case 0:
-        return "'sledeće nedjelje u' p"
+        return "'sljedeće nedjelje u' p"
       case 3:
-        return "'sledeću srijedu u' p"
+        return "'sljedeću srijedu u' p"
       case 6:
-        return "'sledeću subotu u' p"
+        return "'sljedeću subotu u' p"
       default:
-        return "'sledeći' EEEE 'u' p"
+        return "'sljedeći' EEEE 'u' p"
     }
   },
   other: 'P',
