@@ -836,15 +836,13 @@ declare module.exports: {
 
   daysInWeek: number,
 
-  daysInWeek: number,
-
   maxTime: number,
 
   millisecondsInMinute: number,
 
   millisecondsInHour: number,
 
-  minTime: number,
+  millisecondsInSecond: number,
 
   minTime: number,
 
@@ -857,4 +855,6 @@ declare module.exports: {
   quartersInYear: number,
 
   secondsInHour: number,
+
+  secondsInMinute: number,
 }
