@@ -18585,6 +18585,11 @@ declare module 'date-fns/locale/bn' {
   export default bn
 }
 
+declare module 'date-fns/locale/bs' {
+  import { bs } from 'date-fns/locale'
+  export default bs
+}
+
 declare module 'date-fns/locale/ca' {
   import { ca } from 'date-fns/locale'
   export default ca
@@ -18995,6 +19000,11 @@ declare module 'date-fns/locale/bn/index' {
   export default bn
 }
 
+declare module 'date-fns/locale/bs/index' {
+  import { bs } from 'date-fns/locale'
+  export default bs
+}
+
 declare module 'date-fns/locale/ca/index' {
   import { ca } from 'date-fns/locale'
   export default ca
@@ -19403,6 +19413,11 @@ declare module 'date-fns/locale/bg/index.js' {
 declare module 'date-fns/locale/bn/index.js' {
   import { bn } from 'date-fns/locale'
   export default bn
+}
+
+declare module 'date-fns/locale/bs/index.js' {
+  import { bs } from 'date-fns/locale'
+  export default bs
 }
 
 declare module 'date-fns/locale/ca/index.js' {
@@ -20065,6 +20080,11 @@ declare module 'date-fns/esm/locale/bn' {
   export default bn
 }
 
+declare module 'date-fns/esm/locale/bs' {
+  import { bs } from 'date-fns/esm/locale'
+  export default bs
+}
+
 declare module 'date-fns/esm/locale/ca' {
   import { ca } from 'date-fns/esm/locale'
   export default ca
@@ -20475,6 +20495,11 @@ declare module 'date-fns/esm/locale/bn/index' {
   export default bn
 }
 
+declare module 'date-fns/esm/locale/bs/index' {
+  import { bs } from 'date-fns/esm/locale'
+  export default bs
+}
+
 declare module 'date-fns/esm/locale/ca/index' {
   import { ca } from 'date-fns/esm/locale'
   export default ca
@@ -20883,6 +20908,11 @@ declare module 'date-fns/esm/locale/bg/index.js' {
 declare module 'date-fns/esm/locale/bn/index.js' {
   import { bn } from 'date-fns/esm/locale'
   export default bn
+}
+
+declare module 'date-fns/esm/locale/bs/index.js' {
+  import { bs } from 'date-fns/esm/locale'
+  export default bs
 }
 
 declare module 'date-fns/esm/locale/ca/index.js' {
