@@ -1130,15 +1130,13 @@ declare module 'date-fns' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
 
-  const minTime: number
+  const millisecondsInSecond: number
 
   const minTime: number
 
@@ -1151,6 +1149,8 @@ declare module 'date-fns' {
   const quartersInYear: number
 
   const secondsInHour: number
+
+  const secondsInMinute: number
 }
 
 declare module 'date-fns/add' {
@@ -5597,15 +5597,13 @@ declare module 'date-fns/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
 
-  const minTime: number
+  const millisecondsInSecond: number
 
   const minTime: number
 
@@ -5618,6 +5616,8 @@ declare module 'date-fns/fp' {
   const quartersInYear: number
 
   const secondsInHour: number
+
+  const secondsInMinute: number
 }
 
 declare module 'date-fns/fp/add' {
@@ -10230,15 +10230,13 @@ declare module 'date-fns/esm' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
 
-  const minTime: number
+  const millisecondsInSecond: number
 
   const minTime: number
 
@@ -10251,6 +10249,8 @@ declare module 'date-fns/esm' {
   const quartersInYear: number
 
   const secondsInHour: number
+
+  const secondsInMinute: number
 }
 
 declare module 'date-fns/esm/add' {
@@ -14697,15 +14697,13 @@ declare module 'date-fns/esm/fp' {
 
   const daysInWeek: number
 
-  const daysInWeek: number
-
   const maxTime: number
 
   const millisecondsInMinute: number
 
   const millisecondsInHour: number
 
-  const minTime: number
+  const millisecondsInSecond: number
 
   const minTime: number
 
@@ -14718,6 +14716,8 @@ declare module 'date-fns/esm/fp' {
   const quartersInYear: number
 
   const secondsInHour: number
+
+  const secondsInMinute: number
 }
 
 declare module 'date-fns/esm/fp/add' {
@@ -22012,15 +22012,13 @@ interface dateFns {
 
   daysInWeek: number
 
-  daysInWeek: number
-
   maxTime: number
 
   millisecondsInMinute: number
 
   millisecondsInHour: number
 
-  minTime: number
+  millisecondsInSecond: number
 
   minTime: number
 
@@ -22033,4 +22031,6 @@ interface dateFns {
   quartersInYear: number
 
   secondsInHour: number
+
+  secondsInMinute: number
 }
