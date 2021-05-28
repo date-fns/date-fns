@@ -21,5 +21,5 @@ import { secondsInHour } from '../constants/index'
  */
 export default function hoursToSeconds(hours: number): number {
   requiredArgs(1, arguments)
-  return hours * secondsInHour
+  return Math.floor(hours * secondsInHour)
 }

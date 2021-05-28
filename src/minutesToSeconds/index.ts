@@ -21,5 +21,5 @@ import { secondsInMinute } from '../constants/index'
  */
 export default function minutesToSeconds(minutes: number): number {
   requiredArgs(1, arguments)
-  return minutes * secondsInMinute
+  return Math.floor(minutes * secondsInMinute)
 }

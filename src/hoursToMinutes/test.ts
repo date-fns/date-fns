@@ -9,9 +9,12 @@ describe('hoursToMinutes', function () {
     assert(hoursToMinutes(2) === 120)
   })
 
+  it('uses floor rounding', () => {
+    assert(hoursToMinutes(0.123) === 7)
+  })
+
   it('handles border values', () => {
     assert(hoursToMinutes(1.5) === 90)
     assert(hoursToMinutes(0) === 0)
   })
-
 })
