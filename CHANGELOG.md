@@ -8,6 +8,14 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.22.1 - 2021-05-28
+
+Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
+
+### Fixed
+
+- Fixed constant typings. ([#2491](https://github.com/date-fns/date-fns/issues/2491))
+
 ## v2.22.0 - 2021-05-28
 
 On this release worked [Sasha Koss](http://github.com/kossnocorp), [Lucas Silva](http://github.com/LucasHFS), [Lay](http://github.com/brownsugar), [jwbth](http://github.com/jwbth), [fturmel](http://github.com/fturmel), [Tan75](http://github.com/tan75) and [Anastasia Kobzar](http://github.com/rikkalo).
