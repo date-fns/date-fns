@@ -18320,6 +18320,9 @@ declare module 'date-fns/locale' {
   const bn: Locale
   namespace bn {}
 
+  const bs: Locale
+  namespace bs {}
+
   const ca: Locale
   namespace ca {}
 
@@ -19814,6 +19817,9 @@ declare module 'date-fns/esm/locale' {
 
   const bn: Locale
   namespace bn {}
+
+  const bs: Locale
+  namespace bs {}
 
   const ca: Locale
   namespace ca {}
