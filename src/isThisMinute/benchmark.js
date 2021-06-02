@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-/* global benchmark */
+/* global suite, benchmark */
 
 import isThisMinute from '.'
 

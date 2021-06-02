@@ -1,6 +1,6 @@
 // @flow
 /* eslint-env mocha */
-/* global benchmark */
+/* global suite, benchmark */
 
 import formatDistanceToNowStrict from '.'
 import moment from 'moment'
