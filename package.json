@@ -68,7 +68,7 @@
     "babel-preset-power-assert": "^3.0.0",
     "cloc": "^2.2.0",
     "coveralls": "^3.0.6",
-    "eslint": "^5.16.0",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^4.3.0",
     "firebase": "^3.7.1",
     "flow-bin": "0.84.0",
