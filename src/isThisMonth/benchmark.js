@@ -8,13 +8,13 @@ import isThisMonth from '.'
 suite(
   'isThisMonth',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isThisMonth(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )

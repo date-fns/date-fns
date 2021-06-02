@@ -8,13 +8,13 @@ import isThisQuarter from '.'
 suite(
   'isThisQuarter',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isThisQuarter(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )

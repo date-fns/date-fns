@@ -8,13 +8,13 @@ import isThisISOWeek from '.'
 suite(
   'isThisISOWeek',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isThisISOWeek(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )

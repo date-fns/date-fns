@@ -7,13 +7,13 @@ import isYesterday from '.'
 suite(
   'isYesterday',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isYesterday(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )

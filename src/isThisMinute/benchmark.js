@@ -8,13 +8,13 @@ import isThisMinute from '.'
 suite(
   'isThisMinute',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isThisMinute(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )

@@ -2,7 +2,7 @@ var fs = require('fs')
 
 var benchmarkResultFilename = './tmp/benchmark.json'
 
-function benchmarkJSONReporter() {
+function benchmarkJSONReporter () {
   var benchmarkResult = {}
 
   this.onSpecComplete = function (_, result) {
@@ -35,18 +35,13 @@ function benchmarkJSONReporter() {
       }
     }
 
-    fs.writeFile(
-      benchmarkResultFilename,
-      JSON.stringify(benchmarkResultArray),
-      'utf-8',
-      function (err) {
-        if (err) {
-          throw err
-        }
-
-        console.log('See results at ' + benchmarkResultFilename)
+    fs.writeFile(benchmarkResultFilename, JSON.stringify(benchmarkResultArray), 'utf-8', function (err) {
+      if (err) {
+        throw err
       }
-    )
+
+      console.log('See results at ' + benchmarkResultFilename)
+    })
   }
 }
 

@@ -7,13 +7,13 @@ import isThisYear from '.'
 suite(
   'isThisYear',
   () => {
-    benchmark('date-fns', function () {
+    benchmark('date-fns', function() {
       return isThisYear(this.date)
     })
   },
   {
-    setup: function () {
+    setup: function() {
       this.date = new Date()
-    },
+    }
   }
 )
