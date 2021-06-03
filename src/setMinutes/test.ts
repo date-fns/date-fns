@@ -6,23 +6,23 @@ import setMinutes from '.'
 
 describe('setMinutes', function() {
   it('sets the minutes', function() {
-    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45)
+    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
   it('accepts a timestamp', function() {
-    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30).getTime(), 5)
+    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30).getTime(), 5)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 5))
   })
 
   it('converts a fractional number to an integer', function() {
-    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45.54)
+    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), 45.54)
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
   it('implicitly converts number arguments', function() {
-    // $ExpectedMistake
-    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), '45')
+    // @ts-expect-error
+    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), '45')
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 11, 45, 40))
   })
 
@@ -33,13 +33,13 @@ describe('setMinutes', function() {
   })
 
   it('returns `Invalid Date` if the given date is invalid', function() {
-    var result = setMinutes(new Date(NaN), 45)
-    assert(result instanceof Date && isNaN(result))
+    const result = setMinutes(new Date(NaN), 45)
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('returns `Invalid Date` if the given amount is NaN', function() {
-    var result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), NaN)
-    assert(result instanceof Date && isNaN(result))
+    const result = setMinutes(new Date(2014, 8 /* Sep */, 1, 11, 30, 40), NaN)
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function() {
