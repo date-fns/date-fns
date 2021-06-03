@@ -3,6 +3,7 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
 import localize from './_lib/localize/index'
 import match from './_lib/match/index'
+import type { Locale } from '../types'
 
 /**
  * @type {Locale}
@@ -13,7 +14,7 @@ import match from './_lib/match/index'
  * @author Sasha Koss [@kossnocorp]{@link https://github.com/kossnocorp}
  * @author Lesha Koss [@leshakoss]{@link https://github.com/leshakoss}
  */
-var locale = {
+const locale: Locale = {
   code: 'en-US',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -22,8 +23,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+    firstWeekContainsDate: 1,
+  },
 }
 
 export default locale
