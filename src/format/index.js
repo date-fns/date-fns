@@ -8,7 +8,7 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError
+  throwProtectedError,
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -408,12 +408,12 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
     locale: locale,
-    _originalDate: originalDate
+    _originalDate: originalDate,
   }
 
   var result = formatStr
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -423,7 +423,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
     })
     .join('')
     .match(formattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       // Replace two single quote characters with one single quote character
       if (substring === "''") {
         return "'"
