@@ -24,6 +24,7 @@ var parseQuarterPatterns = {
 }
 
 var matchMonthPatterns = {
+  // eslint-disable-next-line no-misleading-character-class
   narrow: /^[जफ़माअप्मईजूनजुअगसिअक्तनदि]/i,
   abbreviated: /^(जन|फ़र|मार्च|अप्|मई|जून|जुल|अग|सित|अक्तू|नव|दिस)/i,
   wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्तूबर|नवंबर|दिसंबर)/i
@@ -60,6 +61,7 @@ var parseMonthPatterns = {
 }
 
 var matchDayPatterns = {
+  // eslint-disable-next-line no-misleading-character-class
   narrow: /^[रविसोममंगलबुधगुरुशुक्रशनि]/i,
   short: /^(रवि|सोम|मंगल|बुध|गुरु|शुक्र|शनि)/i,
   abbreviated: /^(रवि|सोम|मंगल|बुध|गुरु|शुक्र|शनि)/i,

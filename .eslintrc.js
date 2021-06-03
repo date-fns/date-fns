@@ -4,9 +4,10 @@ module.exports = {
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
   },
   rules: {
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
-  }
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-redeclare': 'off',
+  },
 }

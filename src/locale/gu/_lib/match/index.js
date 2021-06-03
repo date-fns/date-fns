@@ -23,6 +23,7 @@ var parseQuarterPatterns = {
 }
 
 var matchMonthPatterns = {
+  // eslint-disable-next-line no-misleading-character-class
   narrow: /^[જાફેમાએમેજૂજુઓસઓનડિ]/i,
   abbreviated: /^(જાન્યુ|ફેબ્રુ|માર્ચ|એપ્રિલ|મે|જૂન|જુલાઈ|ઑગસ્ટ|સપ્ટે|ઓક્ટો|નવે|ડિસે)/i,
   wide: /^(જાન્યુઆરી|ફેબ્રુઆરી|માર્ચ|એપ્રિલ|મે|જૂન|જુલાઇ|ઓગસ્ટ|સપ્ટેમ્બર|ઓક્ટોબર|નવેમ્બર|ડિસેમ્બર)/i

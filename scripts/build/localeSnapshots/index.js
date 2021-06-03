@@ -24,18 +24,22 @@ if (process.env.TZ.toLowerCase() !== 'utc')
 const outdatedLocales = JSON.parse(
   readFileSync(path.join(process.cwd(), 'outdatedLocales.json'), 'utf8')
 )
-const locales = listLocales().filter(
-  ({ code }) => !outdatedLocales.includes(code)
-)
 
-Promise.all(
-  locales.map(localeObj => {
-    const { code, fullPath } = localeObj
-    const locale = require(`../../../src/locale/${code}`)
-    const source = readFileSync(path.join(process.cwd(), fullPath)).toString()
-    const languageName = source.match(/\* @language (.*)/)[1]
+listLocales()
+  .then((locales) =>
+    locales.filter(({ code }) => !outdatedLocales.includes(code))
+  )
+  .then((locales) =>
+    Promise.all(
+      locales.map((localeObj) => {
+        const { code, fullPath } = localeObj
+        const locale = require(`../../../src/locale/${code}`)
+        const source = readFileSync(
+          path.join(process.cwd(), fullPath)
+        ).toString()
+        const languageName = source.match(/\* @language (.*)/)[1]
 
-    const snapshot = `# ${languageName} (${code}) locale
+        const snapshot = `# ${languageName} (${code}) locale
 
 ${renderFormatParse(locale)}
 
@@ -46,24 +50,27 @@ ${renderFormatDistanceStrict(locale)}
 ${renderFormatRelative(locale)}
 `
 
-    const snapshotPath = path.join(
-      path.resolve(process.cwd(), path.dirname(fullPath)),
-      'snapshot.md'
-    )
-    const formattedSnapshot = prettier(snapshot, 'markdown')
+        const snapshotPath = path.join(
+          path.resolve(process.cwd(), path.dirname(fullPath)),
+          'snapshot.md'
+        )
+        const formattedSnapshot = prettier(snapshot, 'markdown')
 
-    if (mode === 'test') {
-      return readFile(snapshotPath, 'utf8').then(snapshotFileContent => {
-        if (snapshotFileContent !== formattedSnapshot)
-          throw new Error(
-            `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
-          )
+        if (mode === 'test') {
+          return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
+            if (snapshotFileContent !== formattedSnapshot)
+              throw new Error(
+                `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
+              )
+          })
+        } else {
+          return writeFile(snapshotPath, formattedSnapshot)
+        }
       })
-    } else {
-      return writeFile(snapshotPath, formattedSnapshot)
-    }
+    )
+  )
+
+  .catch((err) => {
+    console.error(err.stack)
+    process.exit(1)
   })
-).catch(err => {
-  console.error(err.stack)
-  process.exit(1)
-})

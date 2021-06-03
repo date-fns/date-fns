@@ -55,10 +55,10 @@ function writePackage(fullPath, initialPackage) {
 }
 
 async function getInitialPackages() {
-  const fns = await listFns()
+  const [fns, locales] = await Promise.all([listFns(), listLocales()])
   return fns
     .concat(listFPFns())
-    .concat(listLocales())
+    .concat(locales)
     .concat(extraModules)
     .reduce((acc, module) => {
       acc[module.fullPath] = getModulePackage(module.fullPath)
@@ -77,10 +77,10 @@ function getModulePackage(fullPath) {
 }
 
 async function listAll() {
-  const fns = await listFns()
+  const [fns, locales] = await Promise.all([listFns(), listLocales()])
   return fns
     .concat(listFPFns())
-    .concat(listLocales())
+    .concat(locales)
     .concat(extraModules)
     .reduce((acc, module) => {
       const esmModule = Object.assign({}, module, {

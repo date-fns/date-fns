@@ -4,35 +4,35 @@ var dateFormats = {
   full: "EEEE, d MMMM y 'г.'",
   long: "d MMMM y 'г.'",
   medium: "d MMM y 'г.'",
-  short: 'dd.MM.y'
+  short: 'dd.MM.y',
 }
 
 var timeFormats = {
   full: 'H:mm:ss zzzz',
   long: 'H:mm:ss z',
   medium: 'H:mm:ss',
-  short: 'H:mm'
+  short: 'H:mm',
 }
 
 var dateTimeFormats = {
-  any: '{{date}}, {{time}}'
+  any: '{{date}}, {{time}}',
 }
 
 var formatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
 
   time: buildFormatLongFn({
     formats: timeFormats,
-    defaultWidth: 'full'
+    defaultWidth: 'full',
   }),
 
   dateTime: buildFormatLongFn({
     formats: dateTimeFormats,
-    defaultWidth: 'any'
-  })
+    defaultWidth: 'any',
+  }),
 }
 
 export default formatLong

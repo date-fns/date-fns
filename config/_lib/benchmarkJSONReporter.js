@@ -20,8 +20,8 @@ function benchmarkJSONReporter () {
   this.onRunComplete = function () {
     var benchmarkResultArray = []
     for (var fnName in benchmarkResult) {
-      if (benchmarkResult.hasOwnProperty(fnName)) {
-        var element = {fn: fnName}
+      if (Object.prototype.hasOwnProperty.call(benchmarkResult, fnName)) {
+        var element = { fn: fnName }
 
         if (benchmarkResult[fnName]['date-fns']) {
           element.dateFns = benchmarkResult[fnName]['date-fns']
