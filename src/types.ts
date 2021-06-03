@@ -23,6 +23,10 @@ export interface WeekStartOptions {
   weekStartsOn?: Day
 }
 
+export interface FirstWeekContainsDateOptions {
+  firstWeekContainsDate?: FirstWeekContainsDate
+}
+
 export interface LocaleOptions {
   locale?: Locale
 }
