@@ -55,7 +55,7 @@ import {
 export default function setWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
-  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
 ): Date {
   requiredArgs(2, arguments)
 
