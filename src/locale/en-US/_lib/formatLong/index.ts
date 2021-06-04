@@ -8,14 +8,14 @@ const dateFormats = {
   short: 'MM/dd/yyyy',
 }
 
-var timeFormats = {
+const timeFormats = {
   full: 'h:mm:ss a zzzz',
   long: 'h:mm:ss a z',
   medium: 'h:mm:ss a',
   short: 'h:mm a',
 }
 
-var dateTimeFormats = {
+const dateTimeFormats = {
   full: "{{date}} 'at' {{time}}",
   long: "{{date}} 'at' {{time}}",
   medium: '{{date}}, {{time}}',
