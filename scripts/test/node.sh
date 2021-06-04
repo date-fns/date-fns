@@ -10,7 +10,9 @@ export PATH="$(yarn bin):$PATH"
 curl -o ~/.nvm/nvm.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/nvm.sh
 source ~/.nvm/nvm.sh
 
-for version in 9 10 11 12
+# We test all LTSs (including in the maintenance mode) plus the latest version
+# See the releases chart: https://nodejs.org/en/about/releases/
+for version in 12 14 16
 do
   echo "Running tests using Node.js $version"
   nvm install $version
