@@ -77,7 +77,7 @@
     "gzip-size-cli": "^1.0.0",
     "husky": "^1.0.1",
     "istanbul-instrumenter-loader": "^3.0.1",
-    "jest": "^27.0.4",
+    "jest": "^25.5.4",
     "js-beautify": "^1.5.10",
     "js-fns": "^2.5.1",
     "jsdoc-babel": "^0.5.0",
