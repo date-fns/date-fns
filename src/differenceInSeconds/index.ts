@@ -21,18 +21,32 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // How many seconds are between
  * // 2 July 2014 12:30:07.999 and 2 July 2014 12:30:20.000?
+ * // with default floor roundingMethod
  * const result = differenceInSeconds(
  *   new Date(2014, 6, 2, 12, 30, 20, 0),
  *   new Date(2014, 6, 2, 12, 30, 7, 999)
  * )
- * //=> 12
+ * //=> 13
  */
 export default function differenceInSeconds(
   dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dirtyDateRight: Date | number,
+  roundingMethod: 'floor' | 'ceil' | 'round' = 'floor',
 ): number {
   requiredArgs(2, arguments)
 
   const diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+
+  let roundingMethodFn;
+
+  if (roundingMethod === 'floor') {
+    roundingMethodFn = Math.floor
+  } else if (roundingMethod === 'ceil') {
+    roundingMethodFn = Math.ceil
+  } else if (roundingMethod === 'round') {
+    roundingMethodFn = Math.round
+  } else {
+    throw new RangeError("roundingMethod must be 'floor', 'ceil' or 'round'")
+  }
+  return roundingMethodFn(diff);
 }
