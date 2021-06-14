@@ -13,9 +13,35 @@ describe('sub', () => {
       days: 7,
       hours: 5,
       minutes: 9,
-      seconds: 30
+      seconds: 30,
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10, 19, 50))
+  })
+
+  it('supports an undefined value in the duration object', function () {
+    const result = sub(new Date(2017, 5 /* June */, 15, 15, 29, 20), {
+      years: undefined,
+      months: 9,
+      weeks: 1,
+      days: 7,
+      hours: 5,
+      minutes: 9,
+      seconds: 30,
+    })
+    assert.deepEqual(result, new Date(2016, 8 /* Sep */, 1, 10, 19, 50))
+  })
+
+  it('returns same date object when passed empty duration values', function () {
+    const result = sub(new Date(2014, 8 /* Sep */, 1, 10).getTime(), {
+      years: undefined,
+      months: undefined,
+      weeks: undefined,
+      days: undefined,
+      hours: undefined,
+      minutes: undefined,
+      seconds: undefined,
+    })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
   it('returns same date object when passed empty duration', () => {
@@ -25,7 +51,7 @@ describe('sub', () => {
 
   it('accepts a timestamp', () => {
     const result = sub(new Date(2014, 8 /* Sep */, 1, 14).getTime(), {
-      hours: 4
+      hours: 4,
     })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
