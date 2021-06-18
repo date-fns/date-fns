@@ -1,0 +1,44 @@
+// @flow
+/* eslint-env mocha */
+
+import assert from 'power-assert'
+import previoursFriday from '.'
+
+describe('previoursFriday', function () {
+  it('returns the following Friday given various dates after the same', function () {
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 5)),
+      new Date(2021, 5 /* Jun */, 4)
+    )
+
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 6)),
+      new Date(2021, 5 /* Jun */, 4)
+    )
+
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 11)),
+      new Date(2021, 5 /* Jun */, 4)
+    )
+
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 14)),
+      new Date(2021, 5 /* Jun */, 11)
+    )
+
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 15)),
+      new Date(2021, 5 /* Jun */, 11)
+    )
+
+    assert.deepStrictEqual(
+      previoursFriday(new Date(2021, 5 /* Jun */, 24)),
+      new Date(2021, 5 /* Jun */, 18)
+    )
+
+  })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    assert(previoursFriday(new Date(NaN)) instanceof Date)
+  })
+})
