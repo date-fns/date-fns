@@ -20,7 +20,7 @@ import { Duration } from '../types'
  * |----------------|------------------------------------|
  * | years          | Amount of years to be added        |
  * | months         | Amount of months to be added       |
- * | weeks          | Amount of weeks to be added       |
+ * | weeks          | Amount of weeks to be added        |
  * | days           | Amount of days to be added         |
  * | hours          | Amount of hours to be added        |
  * | minutes        | Amount of minutes to be added      |
