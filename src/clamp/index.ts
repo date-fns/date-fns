@@ -25,8 +25,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * //=> Mon Mar 22 2021 00:00:00
  *
- * @param {Date | Number}  date the date to be bounded
- * @param {Interval} interval  the interval to bound to
+ * @param {Date | Number} date - date the date to be bounded
+ * @param {Interval} interval - the interval to bound to
  * @returns {Date} the Date value bounded by the min and max date
  * @throws {TypeError} 2 arguments required
  * @throws {RangeError} The start of an interval cannot be after it's end
