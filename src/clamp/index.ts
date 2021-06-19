@@ -18,14 +18,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Bounds the date
  *
  * @example
- * ```javascript
- * const interval = {
- *   start: new Date(2020, 01, 01),
- *   end: new Date(2020, 05, 03)
- * }
- * const date = new Date(2020, 06, 04)
- * const clampedDate = clamp(date, interval)
- * ```
+ * // What is Mar, 21, 2021 bounded to an interval starting at  Mar, 22, 2021 and ending at Apr, 01, 2021
+ * const result = clamp(new Date(2021, 2, 21), {
+ *   start: new Date(2021, 2, 22),
+ *   end: new Date(2021, 3, 1),
+ * })
+ * //=> Mon Mar 22 2021 00:00:00
  *
  * @param {Date | Number}  date the date to be bounded
  * @param {Interval} interval  the interval to bound to
