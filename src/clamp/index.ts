@@ -19,12 +19,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * ```javascript
- * var interval = {
+ * const interval = {
  *   start: new Date(2020, 01, 01),
  *   end: new Date(2020, 05, 03)
  * }
- * var date = new Date(2020, 06, 04)
- * var clampedDate = clamp(date, interval)
+ * const date = new Date(2020, 06, 04)
+ * const clampedDate = clamp(date, interval)
  * ```
  *
  * @param {Date | Number}  date the date to be bounded
