@@ -1,6 +1,6 @@
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name fromUnixTime
@@ -8,13 +8,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @summary Create a date from a Unix timestamp.
  *
  * @description
- * Create a date from a Unix timestamp.
+ * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Number} unixTime - the given Unix timestamp
+ * @param {Number} unixTime - the given Unix timestamp (in seconds)
  * @returns {Date} the date
  * @throws {TypeError} 1 argument required
  *
@@ -23,10 +23,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(dirtyUnixTime) {
+export default function fromUnixTime(dirtyUnixTime: number) {
   requiredArgs(1, arguments)
 
-  var unixTime = toInteger(dirtyUnixTime)
+  const unixTime = toInteger(dirtyUnixTime)
 
   return toDate(unixTime * 1000)
 }
