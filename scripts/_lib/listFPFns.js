@@ -3,15 +3,22 @@ const fs = require('fs')
 
 module.exports = listFPFns
 
-const ignoredFiles = ['index.js', 'test.js', 'index.js.flow', 'package.json']
+const ignoredFiles = [
+  'index.js',
+  'index.ts',
+  'test.js',
+  'test.ts',
+  'index.js.flow',
+  'package.json',
+]
 
 function listFPFns() {
   const files = fs.readdirSync(path.join(process.cwd(), 'src', 'fp'))
   return files
-    .filter(file => /^[^._]/.test(file) && !ignoredFiles.includes(file))
-    .map(file => ({
+    .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
+    .map((file) => ({
       name: file,
       path: `./${file}`,
-      fullPath: `./src/fp/${file}/index.js`
+      fullPath: `./src/fp/${file}/index.js`,
     }))
 }

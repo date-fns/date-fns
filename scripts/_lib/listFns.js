@@ -13,10 +13,12 @@ const ignoredFiles = [
   'fp',
   'constants',
   'index.js',
+  'index.ts',
   'test.js',
+  'test.ts',
   'index.js.flow',
   'package.json',
-  'types.ts'
+  'types.ts',
 ]
 
 async function listFns() {
@@ -25,13 +27,13 @@ async function listFns() {
 
   return Promise.all(
     files
-      .filter(file => /^[^._]/.test(file) && !ignoredFiles.includes(file))
-      .map(async file => {
+      .filter((file) => /^[^._]/.test(file) && !ignoredFiles.includes(file))
+      .map(async (file) => {
         const isTs = await exists(path.join(srcPath, file, 'index.ts'))
         return {
           name: file,
           path: `./${file}`,
-          fullPath: `./src/${file}/index.${isTs ? 'ts' : 'js'}`
+          fullPath: `./src/${file}/index.${isTs ? 'ts' : 'js'}`,
         }
       })
   )

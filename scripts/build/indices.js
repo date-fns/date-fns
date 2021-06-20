@@ -10,6 +10,7 @@
 const fs = require('fs')
 const path = require('path')
 const prettier = require('./_lib/prettier')
+
 const listFns = require('../_lib/listFns')
 const listFPFns = require('../_lib/listFPFns')
 const listLocales = require('../_lib/listLocales')
@@ -25,9 +26,9 @@ Promise.all([listFns(), listLocales()]).then(([fns, allLocales]) => {
     ({ code }) => !outdatedLocales.includes(code)
   )
 
-  writeFile('src/index.js', generateIndex(fns, false, true))
-  writeFile('src/fp/index.js', generateIndex(fpFns, true, true))
-  writeFile('src/locale/index.js', generateIndex(locales, false, false))
+  writeFile('src/index.ts', generateIndex(fns, false, true))
+  writeFile('src/fp/index.ts', generateIndex(fpFns, true, true))
+  writeFile('src/locale/index.ts', generateIndex(locales, false, false))
 })
 
 function writeFile(relativePath, content) {
