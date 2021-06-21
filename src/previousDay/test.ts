@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import previousDay from '.'
 
 describe('previousDay', function () {
@@ -35,7 +34,6 @@ describe('previousDay', function () {
       previousDay(new Date(2021, 5 /* Jun */, 7), 1),
       new Date(2021, 4 /* May */, 31)
     )
-
   })
 
   it('returns the previous Tuesday given the Saturday after it', function () {
@@ -73,7 +71,7 @@ describe('previousDay', function () {
     )
   })
 
-  it('returns previous Sunday given the day is Sunday', function () {
+  it('returns the previous Sunday given the day is Sunday', function () {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 27), 0),
       new Date(2021, 5 /* Jun */, 20)

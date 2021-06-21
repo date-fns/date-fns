@@ -1,9 +1,7 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import getDay from '../getDay'
 import subDays from '../subDays'
-import toDate from '../toDate'
 import { Day } from '../types'
-
 
 /**
  * @name previousDay
@@ -28,9 +26,8 @@ import { Day } from '../types'
  * const result = previousDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 17 2020 00:00:00
  */
-export default function previousDay(dirtyDate: Date | number, day: Day): Date {
+export default function previousDay(date: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
-  const date = toDate(dirtyDate)
 
   let delta = getDay(date) - day
   if (delta <= 0) delta += 7
