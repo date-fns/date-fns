@@ -237,6 +237,7 @@ declare module.exports: {
   formatDuration: CurriedFn1<Duration, string>,
   formatDurationWithOptions: CurriedFn2<
     {
+      flatten?: boolean,
       locale?: Locale,
       delimiter?: string,
       zero?: boolean,

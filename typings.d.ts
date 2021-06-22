@@ -442,6 +442,7 @@ declare module 'date-fns' {
       zero?: boolean
       delimiter?: string
       locale?: Locale
+      flatten?: boolean
     }
   ): string
   namespace formatDuration {}
@@ -4888,6 +4889,7 @@ declare module 'date-fns/fp' {
 
   const formatDurationWithOptions: CurriedFn2<
     {
+      flatten?: boolean
       locale?: Locale
       delimiter?: string
       zero?: boolean
@@ -9542,6 +9544,7 @@ declare module 'date-fns/esm' {
       zero?: boolean
       delimiter?: string
       locale?: Locale
+      flatten?: boolean
     }
   ): string
   namespace formatDuration {}
@@ -13988,6 +13991,7 @@ declare module 'date-fns/esm/fp' {
 
   const formatDurationWithOptions: CurriedFn2<
     {
+      flatten?: boolean
       locale?: Locale
       delimiter?: string
       zero?: boolean
@@ -21510,6 +21514,7 @@ interface dateFns {
       zero?: boolean
       delimiter?: string
       locale?: Locale
+      flatten?: boolean
     }
   ): string
 
