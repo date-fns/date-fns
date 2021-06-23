@@ -19,8 +19,6 @@ jobs:
         run: export CHROME_BIN=chromium-browser
       - name: export DISPLAY
         run: export DISPLAY=:99.0
-      - name: Install yarn
-        run: npm install -g yarn
       - name: Install dependencies
         run: yarn install
       - name: Run tests
