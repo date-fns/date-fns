@@ -38,7 +38,6 @@
       "git add"
     ]
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.10",
