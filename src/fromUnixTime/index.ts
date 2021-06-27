@@ -20,10 +20,10 @@ import toInteger from '../_lib/toInteger/index'
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:
- * var result = fromUnixTime(1330515905)
+ * const result = fromUnixTime(1330515905)
  * //=> Wed Feb 29 2012 11:45:05
  */
-export default function fromUnixTime(dirtyUnixTime: number) {
+export default function fromUnixTime(dirtyUnixTime: number):Date {
   requiredArgs(1, arguments)
 
   const unixTime = toInteger(dirtyUnixTime)
