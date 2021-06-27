@@ -1,6 +1,5 @@
 import addDays from '../addDays'
 import getDay from '../getDay'
-import toDate from '../toDate'
 import { Day } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -30,10 +29,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function nextDay(dirtyDate: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
 
-  const date = toDate(dirtyDate)
-
-  let delta = day - getDay(date)
+  let delta = day - getDay(dirtyDate)
   if (delta <= 0) delta += 7
 
-  return addDays(date, delta)
+  return addDays(dirtyDate, delta)
 }
