@@ -41,7 +41,7 @@ function nextWeek(day) {
     case 0: /* Sun */
     case 4: /* Wed */
     case 6 /* Sat */:
-      return "'budúcu' " + weekday + " 'o' p"
+      return "'budúcu " + weekday + " o' p"
     default:
       return "'budúci' eeee 'o' p"
   }
