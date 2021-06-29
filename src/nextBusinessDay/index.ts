@@ -38,15 +38,15 @@ export default function nextBusinessDay(
 ): Date {
   const date = startOfDay(toDate(dirtyDate));
 
-  if (startFromDay < 0) throw new Error("startFrom can't be a negative number");
+  if (startFromDay < 0) throw new TypeError("startFrom can't be a negative number");
 
   const initialDate = startFromDay ? addDays(date, startFromDay) : date;
 
   const isOnTheExcludeDatesList = () => {
     if (excludeDates.length === 0) return false;
 
-    const isPresent = excludeDates.reduce((_, current): boolean => {
-      return isEqual(initialDate, startOfDay(current));
+    const isPresent = excludeDates.reduce((prev, current): boolean => {
+      return isEqual(initialDate, startOfDay(current)) || prev;
     }, false);
 
     return isPresent;

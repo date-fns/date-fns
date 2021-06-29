@@ -33,7 +33,7 @@ describe("nextBusinessDay function", () => {
 
   it("doesn't accept negative numbers for the startFrom param", () => {
     const initial = new Date(2021, 6, 2); // Friday
-    const errorMessage = "startFrom can't be a negative number";
+    const errorMessage = /startFrom can't be a negative number$/;
 
     assert.throws(() => nextBusinessDay(initial, -1), errorMessage)
   });
