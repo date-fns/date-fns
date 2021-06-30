@@ -41,17 +41,23 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * @throws {RangeError} `options.locale` must contain `localize` property
  * @throws {RangeError} `options.locale` must contain `formatLong` property
  * @throws {RangeError} `options.locale` must contain `formatRelative` property
+ *
+ * @example
+ * // Represent the date of 6 days ago in words relative to the given base date. In this example, today is Wednesday
+ * const result = formatRelative(addDays(new Date(), -6), new Date())
+ * //=> last Thursday at 12:45 AM
  */
-export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate: Date | number, dirtyOptions?: LocaleOptions & WeekStartOptions): string {
+export default function formatRelative(
+  dirtyDate: Date | number,
+  dirtyBaseDate: Date | number,
+  dirtyOptions?: LocaleOptions & WeekStartOptions
+): string {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const {
-    locale = defaultLocale,
-    weekStartsOn = 0,
-  } = dirtyOptions || {}
+  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')
@@ -93,6 +99,9 @@ export default function formatRelative(dirtyDate: Date | number, dirtyBaseDate: 
     baseDate,
     getTimezoneOffsetInMilliseconds(baseDate)
   )
-  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, { locale, weekStartsOn })
+  const formatStr = locale.formatRelative(token, utcDate, utcBaseDate, {
+    locale,
+    weekStartsOn,
+  })
   return format(date, formatStr, { locale, weekStartsOn })
 }
