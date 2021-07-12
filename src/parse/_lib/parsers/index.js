@@ -5,10 +5,18 @@ import setUTCISOWeek from '../../../_lib/setUTCISOWeek/index'
 import setUTCWeek from '../../../_lib/setUTCWeek/index'
 import startOfUTCISOWeek from '../../../_lib/startOfUTCISOWeek/index'
 import startOfUTCWeek from '../../../_lib/startOfUTCWeek/index'
-
-var MILLISECONDS_IN_HOUR = 3600000
-var MILLISECONDS_IN_MINUTE = 60000
-var MILLISECONDS_IN_SECOND = 1000
+import {AbstractParser} from './abstract-parser'
+import {HourFrom0To11Parser} from './hour-from-0-to-11'
+import {HourFrom0To23Parser} from './hour-from-0-to-23'
+import {HourFrom1To12Parser} from './hour-from-1-to-12'
+import {HourFrom1To24Parser} from './hour-from-1-to-24'
+import {MillisecondsTimestampParser} from './milliseconds-timestamp-parser'
+import {MinutesParser} from './minute-parser'
+import {SecondsFractionParser} from './second-fraction-parser'
+import {SecondsParser} from './second-parser'
+import {SecondsTimestampParser} from './seconds-timestamp-parser'
+import {TimezoneISO8601} from './timezone-iso-8601'
+import {TimezoneZISO8601} from './timezone-z-iso-8601'
 
 var numericPatterns = {
   month: /^(1[0-2]|0?\d)/, // 0 to 12
@@ -57,78 +65,6 @@ function parseNumericPattern(pattern, string, valueCallback) {
   }
 }
 
-function parseTimezonePattern(pattern, string) {
-  var matchResult = string.match(pattern)
-
-  if (!matchResult) {
-    return null
-  }
-
-  // Input is 'Z'
-  if (matchResult[0] === 'Z') {
-    return {
-      value: 0,
-      rest: string.slice(1)
-    }
-  }
-
-  var sign = matchResult[1] === '+' ? 1 : -1
-  var hours = matchResult[2] ? parseInt(matchResult[2], 10) : 0
-  var minutes = matchResult[3] ? parseInt(matchResult[3], 10) : 0
-  var seconds = matchResult[5] ? parseInt(matchResult[5], 10) : 0
-
-  return {
-    value:
-      sign *
-      (hours * MILLISECONDS_IN_HOUR +
-        minutes * MILLISECONDS_IN_MINUTE +
-        seconds * MILLISECONDS_IN_SECOND),
-    rest: string.slice(matchResult[0].length)
-  }
-}
-
-function parseAnyDigitsSigned(string, valueCallback) {
-  return parseNumericPattern(
-    numericPatterns.anyDigitsSigned,
-    string,
-    valueCallback
-  )
-}
-
-function parseNDigits(n, string, valueCallback) {
-  switch (n) {
-    case 1:
-      return parseNumericPattern(
-        numericPatterns.singleDigit,
-        string,
-        valueCallback
-      )
-    case 2:
-      return parseNumericPattern(
-        numericPatterns.twoDigits,
-        string,
-        valueCallback
-      )
-    case 3:
-      return parseNumericPattern(
-        numericPatterns.threeDigits,
-        string,
-        valueCallback
-      )
-    case 4:
-      return parseNumericPattern(
-        numericPatterns.fourDigits,
-        string,
-        valueCallback
-      )
-    default:
-      return parseNumericPattern(
-        new RegExp('^\\d{1,' + n + '}'),
-        string,
-        valueCallback
-      )
-  }
-}
 
 function parseNDigitsSigned(n, string, valueCallback) {
   switch (n) {
@@ -1429,307 +1365,19 @@ var parsers = {
     incompatibleTokens: ['a', 'b', 't', 'T']
   },
 
-  // Hour [1-12]
-  h: {
-    priority: 70,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 'h':
-          return parseNumericPattern(numericPatterns.hour12h, string)
-        case 'ho':
-          return match.ordinalNumber(string, { unit: 'hour' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 1 && value <= 12
-    },
-
-    set: function(date, _flags, value, _options) {
-      var isPM = date.getUTCHours() >= 12
-      if (isPM && value < 12) {
-        date.setUTCHours(value + 12, 0, 0, 0)
-      } else if (!isPM && value === 12) {
-        date.setUTCHours(0, 0, 0, 0)
-      } else {
-        date.setUTCHours(value, 0, 0, 0)
-      }
-      return date
-    },
-
-    incompatibleTokens: ['H', 'K', 'k', 't', 'T']
-  },
-
-  // Hour [0-23]
-  H: {
-    priority: 70,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 'H':
-          return parseNumericPattern(numericPatterns.hour23h, string)
-        case 'Ho':
-          return match.ordinalNumber(string, { unit: 'hour' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 0 && value <= 23
-    },
-
-    set: function(date, _flags, value, _options) {
-      date.setUTCHours(value, 0, 0, 0)
-      return date
-    },
-
-    incompatibleTokens: ['a', 'b', 'h', 'K', 'k', 't', 'T']
-  },
-
-  // Hour [0-11]
-  K: {
-    priority: 70,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 'K':
-          return parseNumericPattern(numericPatterns.hour11h, string)
-        case 'Ko':
-          return match.ordinalNumber(string, { unit: 'hour' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 0 && value <= 11
-    },
-
-    set: function(date, _flags, value, _options) {
-      var isPM = date.getUTCHours() >= 12
-      if (isPM && value < 12) {
-        date.setUTCHours(value + 12, 0, 0, 0)
-      } else {
-        date.setUTCHours(value, 0, 0, 0)
-      }
-      return date
-    },
-
-    incompatibleTokens: ['a', 'b', 'h', 'H', 'k', 't', 'T']
-  },
-
-  // Hour [1-24]
-  k: {
-    priority: 70,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 'k':
-          return parseNumericPattern(numericPatterns.hour24h, string)
-        case 'ko':
-          return match.ordinalNumber(string, { unit: 'hour' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 1 && value <= 24
-    },
-
-    set: function(date, _flags, value, _options) {
-      var hours = value <= 24 ? value % 24 : value
-      date.setUTCHours(hours, 0, 0, 0)
-      return date
-    },
-
-    incompatibleTokens: ['a', 'b', 'h', 'H', 'K', 't', 'T']
-  },
-
-  // Minute
-  m: {
-    priority: 60,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 'm':
-          return parseNumericPattern(numericPatterns.minute, string)
-        case 'mo':
-          return match.ordinalNumber(string, { unit: 'minute' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 0 && value <= 59
-    },
-
-    set: function(date, _flags, value, _options) {
-      date.setUTCMinutes(value, 0, 0)
-      return date
-    },
-
-    incompatibleTokens: ['t', 'T']
-  },
-
-  // Second
-  s: {
-    priority: 50,
-
-    parse: function(string, token, match, _options) {
-      switch (token) {
-        case 's':
-          return parseNumericPattern(numericPatterns.second, string)
-        case 'so':
-          return match.ordinalNumber(string, { unit: 'second' })
-        default:
-          return parseNDigits(token.length, string)
-      }
-    },
-
-    validate: function(_date, value, _options) {
-      return value >= 0 && value <= 59
-    },
-
-    set: function(date, _flags, value, _options) {
-      date.setUTCSeconds(value, 0)
-      return date
-    },
-
-    incompatibleTokens: ['t', 'T']
-  },
-
-  // Fraction of second
-  S: {
-    priority: 30,
-
-    parse: function(string, token, _match, _options) {
-      var valueCallback = function(value) {
-        return Math.floor(value * Math.pow(10, -token.length + 3))
-      }
-      return parseNDigits(token.length, string, valueCallback)
-    },
-
-    set: function(date, _flags, value, _options) {
-      date.setUTCMilliseconds(value)
-      return date
-    },
-
-    incompatibleTokens: ['t', 'T']
-  },
-
-  // Timezone (ISO-8601. +00:00 is `'Z'`)
-  X: {
-    priority: 10,
-
-    parse: function(string, token, _match, _options) {
-      switch (token) {
-        case 'X':
-          return parseTimezonePattern(
-            timezonePatterns.basicOptionalMinutes,
-            string
-          )
-        case 'XX':
-          return parseTimezonePattern(timezonePatterns.basic, string)
-        case 'XXXX':
-          return parseTimezonePattern(
-            timezonePatterns.basicOptionalSeconds,
-            string
-          )
-        case 'XXXXX':
-          return parseTimezonePattern(
-            timezonePatterns.extendedOptionalSeconds,
-            string
-          )
-        case 'XXX':
-        default:
-          return parseTimezonePattern(timezonePatterns.extended, string)
-      }
-    },
-
-    set: function(date, flags, value, _options) {
-      if (flags.timestampIsSet) {
-        return date
-      }
-      return new Date(date.getTime() - value)
-    },
-
-    incompatibleTokens: ['t', 'T', 'x']
-  },
-
-  // Timezone (ISO-8601)
-  x: {
-    priority: 10,
-
-    parse: function(string, token, _match, _options) {
-      switch (token) {
-        case 'x':
-          return parseTimezonePattern(
-            timezonePatterns.basicOptionalMinutes,
-            string
-          )
-        case 'xx':
-          return parseTimezonePattern(timezonePatterns.basic, string)
-        case 'xxxx':
-          return parseTimezonePattern(
-            timezonePatterns.basicOptionalSeconds,
-            string
-          )
-        case 'xxxxx':
-          return parseTimezonePattern(
-            timezonePatterns.extendedOptionalSeconds,
-            string
-          )
-        case 'xxx':
-        default:
-          return parseTimezonePattern(timezonePatterns.extended, string)
-      }
-    },
-
-    set: function(date, flags, value, _options) {
-      if (flags.timestampIsSet) {
-        return date
-      }
-      return new Date(date.getTime() - value)
-    },
-
-    incompatibleTokens: ['t', 'T', 'X']
-  },
-
-  // Seconds timestamp
-  t: {
-    priority: 40,
-
-    parse: function(string, _token, _match, _options) {
-      return parseAnyDigitsSigned(string)
-    },
-
-    set: function(_date, _flags, value, _options) {
-      return [new Date(value * 1000), { timestampIsSet: true }]
-    },
-
-    incompatibleTokens: '*'
-  },
-
-  // Milliseconds timestamp
-  T: {
-    priority: 20,
-
-    parse: function(string, _token, _match, _options) {
-      return parseAnyDigitsSigned(string)
-    },
-
-    set: function(_date, _flags, value, _options) {
-      return [new Date(value), { timestampIsSet: true }]
-    },
-
-    incompatibleTokens: '*'
-  }
+  ...AbstractParser.merge(
+    HourFrom1To12Parser,
+    HourFrom0To23Parser,
+    HourFrom0To11Parser,
+    HourFrom1To24Parser,
+    MinutesParser,
+    SecondsParser,
+    SecondsFractionParser,
+    TimezoneISO8601,
+    TimezoneZISO8601,
+    SecondsTimestampParser,
+    MillisecondsTimestampParser
+  )
 }
 
 export default parsers
