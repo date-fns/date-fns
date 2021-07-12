@@ -785,7 +785,7 @@ declare module 'date-fns' {
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
 
-  function isValid(date: any): boolean
+  function isValid(date: any): date is Date
   namespace isValid {}
 
   function isWednesday(date: Date | number): boolean
@@ -9885,7 +9885,7 @@ declare module 'date-fns/esm' {
   function isTuesday(date: Date | number): boolean
   namespace isTuesday {}
 
-  function isValid(date: any): boolean
+  function isValid(date: any): date is Date
   namespace isValid {}
 
   function isWednesday(date: Date | number): boolean
@@ -21755,7 +21755,7 @@ interface dateFns {
 
   isTuesday(date: Date | number): boolean
 
-  isValid(date: any): boolean
+  isValid(date: any): date is Date
 
   isWednesday(date: Date | number): boolean
 
