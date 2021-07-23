@@ -5,7 +5,7 @@ import type { FormatLong } from '../../../types'
 const dateFormats = {
   full: 'EEEE, do MMMM y', // Montag, 7. Januar 2018
   long: 'do MMMM y', // 7. Januar 2018
-  medium: 'do MMM. y', // 7. Jan. 2018
+  medium: 'do MMM y', // 7. Jan. 2018
   short: 'dd.MM.y', // 07.01.2018
 }
 
