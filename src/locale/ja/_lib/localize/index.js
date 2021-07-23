@@ -132,15 +132,26 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
   var options = dirtyOptions || {}
   var unit = String(options.unit)
 
-  if (unit === 'date') {
-    return number + '日'
+  switch (unit) {
+    case 'year':
+      return `${number}年`
+    case 'quarter':
+      return `第${number}四半期`
+    case 'month':
+      return `${number}月`
+    case 'week':
+      return `第${number}週`
+    case 'date':
+      return `${number}日`
+    case 'hour':
+      return `${number}時`
+    case 'minute':
+      return `${number}分`
+    case 'second':
+      return `${number}秒`
+    default:
+      return `${number}`
   }
-
-  if (unit === 'year') {
-    return number + '年'
-  }
-
-  return number
 }
 
 var localize = {
