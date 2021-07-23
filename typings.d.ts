@@ -138,6 +138,9 @@ declare module 'date-fns' {
   ): boolean
   namespace areIntervalsOverlapping {}
 
+  function clamp(date: Date | number, interval: Interval): Date
+  namespace clamp {}
+
   function closestIndexTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
@@ -1216,6 +1219,11 @@ declare module 'date-fns/addYears' {
 declare module 'date-fns/areIntervalsOverlapping' {
   import { areIntervalsOverlapping } from 'date-fns'
   export default areIntervalsOverlapping
+}
+
+declare module 'date-fns/clamp' {
+  import { clamp } from 'date-fns'
+  export default clamp
 }
 
 declare module 'date-fns/closestIndexTo' {
@@ -2353,6 +2361,11 @@ declare module 'date-fns/areIntervalsOverlapping/index' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/clamp/index' {
+  import { clamp } from 'date-fns'
+  export default clamp
+}
+
 declare module 'date-fns/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns'
   export default closestIndexTo
@@ -3488,6 +3501,11 @@ declare module 'date-fns/areIntervalsOverlapping/index.js' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/clamp/index.js' {
+  import { clamp } from 'date-fns'
+  export default clamp
+}
+
 declare module 'date-fns/closestIndexTo/index.js' {
   import { closestIndexTo } from 'date-fns'
   export default closestIndexTo
@@ -4610,6 +4628,9 @@ declare module 'date-fns/fp' {
   >
   namespace areIntervalsOverlappingWithOptions {}
 
+  const clamp: CurriedFn2<Interval, Date | number, Date>
+  namespace clamp {}
+
   const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {}
 
@@ -5688,6 +5709,11 @@ declare module 'date-fns/fp/areIntervalsOverlapping' {
 declare module 'date-fns/fp/areIntervalsOverlappingWithOptions' {
   import { areIntervalsOverlappingWithOptions } from 'date-fns/fp'
   export default areIntervalsOverlappingWithOptions
+}
+
+declare module 'date-fns/fp/clamp' {
+  import { clamp } from 'date-fns/fp'
+  export default clamp
 }
 
 declare module 'date-fns/fp/closestIndexTo' {
@@ -6880,6 +6906,11 @@ declare module 'date-fns/fp/areIntervalsOverlappingWithOptions/index' {
   export default areIntervalsOverlappingWithOptions
 }
 
+declare module 'date-fns/fp/clamp/index' {
+  import { clamp } from 'date-fns/fp'
+  export default clamp
+}
+
 declare module 'date-fns/fp/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/fp'
   export default closestIndexTo
@@ -8070,6 +8101,11 @@ declare module 'date-fns/fp/areIntervalsOverlappingWithOptions/index.js' {
   export default areIntervalsOverlappingWithOptions
 }
 
+declare module 'date-fns/fp/clamp/index.js' {
+  import { clamp } from 'date-fns/fp'
+  export default clamp
+}
+
 declare module 'date-fns/fp/closestIndexTo/index.js' {
   import { closestIndexTo } from 'date-fns/fp'
   export default closestIndexTo
@@ -9238,6 +9274,9 @@ declare module 'date-fns/esm' {
   ): boolean
   namespace areIntervalsOverlapping {}
 
+  function clamp(date: Date | number, interval: Interval): Date
+  namespace clamp {}
+
   function closestIndexTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
@@ -10316,6 +10355,11 @@ declare module 'date-fns/esm/addYears' {
 declare module 'date-fns/esm/areIntervalsOverlapping' {
   import { areIntervalsOverlapping } from 'date-fns/esm'
   export default areIntervalsOverlapping
+}
+
+declare module 'date-fns/esm/clamp' {
+  import { clamp } from 'date-fns/esm'
+  export default clamp
 }
 
 declare module 'date-fns/esm/closestIndexTo' {
@@ -11453,6 +11497,11 @@ declare module 'date-fns/esm/areIntervalsOverlapping/index' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/esm/clamp/index' {
+  import { clamp } from 'date-fns/esm'
+  export default clamp
+}
+
 declare module 'date-fns/esm/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/esm'
   export default closestIndexTo
@@ -12588,6 +12637,11 @@ declare module 'date-fns/esm/areIntervalsOverlapping/index.js' {
   export default areIntervalsOverlapping
 }
 
+declare module 'date-fns/esm/clamp/index.js' {
+  import { clamp } from 'date-fns/esm'
+  export default clamp
+}
+
 declare module 'date-fns/esm/closestIndexTo/index.js' {
   import { closestIndexTo } from 'date-fns/esm'
   export default closestIndexTo
@@ -13710,6 +13764,9 @@ declare module 'date-fns/esm/fp' {
   >
   namespace areIntervalsOverlappingWithOptions {}
 
+  const clamp: CurriedFn2<Interval, Date | number, Date>
+  namespace clamp {}
+
   const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
   namespace closestIndexTo {}
 
@@ -14788,6 +14845,11 @@ declare module 'date-fns/esm/fp/areIntervalsOverlapping' {
 declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions' {
   import { areIntervalsOverlappingWithOptions } from 'date-fns/esm/fp'
   export default areIntervalsOverlappingWithOptions
+}
+
+declare module 'date-fns/esm/fp/clamp' {
+  import { clamp } from 'date-fns/esm/fp'
+  export default clamp
 }
 
 declare module 'date-fns/esm/fp/closestIndexTo' {
@@ -15980,6 +16042,11 @@ declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions/index' {
   export default areIntervalsOverlappingWithOptions
 }
 
+declare module 'date-fns/esm/fp/clamp/index' {
+  import { clamp } from 'date-fns/esm/fp'
+  export default clamp
+}
+
 declare module 'date-fns/esm/fp/closestIndexTo/index' {
   import { closestIndexTo } from 'date-fns/esm/fp'
   export default closestIndexTo
@@ -17168,6 +17235,11 @@ declare module 'date-fns/esm/fp/areIntervalsOverlapping/index.js' {
 declare module 'date-fns/esm/fp/areIntervalsOverlappingWithOptions/index.js' {
   import { areIntervalsOverlappingWithOptions } from 'date-fns/esm/fp'
   export default areIntervalsOverlappingWithOptions
+}
+
+declare module 'date-fns/esm/fp/clamp/index.js' {
+  import { clamp } from 'date-fns/esm/fp'
+  export default clamp
 }
 
 declare module 'date-fns/esm/fp/closestIndexTo/index.js' {
@@ -21320,6 +21392,8 @@ interface dateFns {
       inclusive?: boolean
     }
   ): boolean
+
+  clamp(date: Date | number, interval: Interval): Date
 
   closestIndexTo(
     dateToCompare: Date | number,

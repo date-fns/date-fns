@@ -82,6 +82,8 @@ declare module.exports: {
     }
   ) => boolean,
 
+  clamp: (date: Date | number, interval: Interval) => Date,
+
   closestIndexTo: (
     dateToCompare: Date | number,
     datesArray: (Date | number)[]

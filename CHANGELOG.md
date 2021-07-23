@@ -8,6 +8,24 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.23.0 - 2021-07-23
+
+Thanks to [Liam Tait](http://github.com/Liam-Tait), [fturmel](http://github.com/fturmel), [Takuya Uehara](http://github.com/indigolain), [Branislav Lazic](http://github.com/BranislavLazic), [Seyyed Morteza Moosavi](http://github.com/smmoosavi), [Felipe Armoni](http://github.com/komyg), [Sasha Koss](http://github.com/kossnocorp), [Michael Mok](http://github.com/pmmmwh), [Tan75](http://github.com/tan75) and [Maxim Topciu](http://github.com/maximtop) for working on the release.
+
+### Changed
+
+- [Improved `nextDay` performance by roughly 50%.](https://github.com/date-fns/date-fns/pull/2524)
+
+- [Added more ordinal formatting to the Japanese locale.](https://github.com/date-fns/date-fns/pull/2471)
+
+### Added
+
+- [Added a new `clamp` function that allows to bound a date to an interval.](https://github.com/date-fns/date-fns/pull/2498)
+
+- [Added Bosnian locale (bs).](https://github.com/date-fns/date-fns/pull/2495)
+
+- [Allowed passing `undefined` in the duration to add and sub functions.](https://github.com/date-fns/date-fns/pull/2515)
+
 ## v2.22.1 - 2021-05-28
 
 Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
