@@ -7,38 +7,38 @@ import nextSunday from '.'
 describe('nextSunday', () => {
   it('returns the following Sunday given various dates before the same', () => {
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 23)),
-      new Date(2020, 2 /* Mar */, 29)
+      nextSunday(new Date(2020, 4 /* May */, 23)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 22)),
-      new Date(2020, 2 /* Mar */, 29)
+      nextSunday(new Date(2020, 4 /* May */, 22)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 21)),
-      new Date(2020, 2 /* Mar */, 22)
+      nextSunday(new Date(2020, 4 /* May */, 21)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 20)),
-      new Date(2020, 2 /* Mar */, 22)
+      nextSunday(new Date(2020, 4 /* May */, 20)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 19)),
-      new Date(2020, 2 /* Mar */, 22)
+      nextSunday(new Date(2020, 4 /* May */, 19)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 18)),
-      new Date(2020, 2 /* Mar */, 22)
+      nextSunday(new Date(2020, 4 /* May */, 18)),
+      new Date(2020, 4 /* May */, 24)
     )
 
     assert.deepStrictEqual(
-      nextSunday(new Date(2020, 2 /* Mar */, 17)),
-      new Date(2020, 2 /* Mar */, 22)
+      nextSunday(new Date(2020, 4 /* May */, 17)),
+      new Date(2020, 4 /* May */, 24)
     )
   })
 
