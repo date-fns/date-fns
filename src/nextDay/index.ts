@@ -1,10 +1,7 @@
-import requiredArgs from '../_lib/requiredArgs/index'
-import getDay from '../getDay'
 import addDays from '../addDays'
-import toDate from '../toDate'
+import getDay from '../getDay'
 import { Day } from '../types'
-
-const baseMap = [7, 6, 5, 4, 3, 2, 1]
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name nextDay
@@ -31,16 +28,9 @@ const baseMap = [7, 6, 5, 4, 3, 2, 1]
  */
 export default function nextDay(date: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
-  const map = genMap(day)
-  return addDays(toDate(date), map[getDay(toDate(date))])
-}
 
-function genMap(daysToMove: number): number[] {
-  if (daysToMove === 0) {
-    return baseMap
-  } else {
-    const mapStart = baseMap.slice(-daysToMove)
-    const mapEnd = baseMap.slice(0, baseMap.length - daysToMove)
-    return mapStart.concat(mapEnd)
-  }
+  let delta = day - getDay(date)
+  if (delta <= 0) delta += 7
+
+  return addDays(date, delta)
 }
