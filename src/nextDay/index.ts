@@ -26,11 +26,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = nextDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 24 2020 00:00:00
  */
-export default function nextDay(dirtyDate: Date | number, day: Day): Date {
+export default function nextDay(date: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
 
-  let delta = day - getDay(dirtyDate)
+  let delta = day - getDay(date)
   if (delta <= 0) delta += 7
 
-  return addDays(dirtyDate, delta)
+  return addDays(date, delta)
 }
