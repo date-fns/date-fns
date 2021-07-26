@@ -1,4 +1,4 @@
-import { isWeekend, addDays, toDate, isEqual, startOfDay } from "..";
+import { isWeekend, addDays, toDate, isEqual, startOfDay } from '..'
 
 /**
  * @name nextBusinessDay
@@ -34,25 +34,24 @@ import { isWeekend, addDays, toDate, isEqual, startOfDay } from "..";
 export default function nextBusinessDay(
   dirtyDate: Date,
   startFromDay = 0,
-  excludeDates: Array<Date> = [],
+  excludeDates: Array<Date> = []
 ): Date {
-  const date = startOfDay(toDate(dirtyDate));
+  const date = startOfDay(toDate(dirtyDate))
 
-  if (startFromDay < 0) throw new TypeError("startFrom can't be a negative number");
+  if (startFromDay < 0)
+    throw new TypeError("startFrom can't be a negative number")
 
-  const initialDate = startFromDay ? addDays(date, startFromDay) : date;
+  const initialDate = addDays(date, startFromDay)
 
   const isOnTheExcludeDatesList = () => {
-    if (excludeDates.length === 0) return false;
+    if (excludeDates.length === 0) return false
 
-    const isPresent = excludeDates.reduce((prev, current): boolean => {
-      return isEqual(initialDate, startOfDay(current)) || prev;
-    }, false);
+    return excludeDates.some((excludeDate) =>
+      isEqual(initialDate, startOfDay(excludeDate))
+    )
+  }
 
-    return isPresent;
-  };
+  if (!isWeekend(initialDate) && !isOnTheExcludeDatesList()) return initialDate
 
-  if (!isWeekend(initialDate) && !isOnTheExcludeDatesList()) return initialDate;
-
-  return nextBusinessDay(addDays(initialDate, 1));
+  return nextBusinessDay(addDays(initialDate, 1), 0, excludeDates)
 }
