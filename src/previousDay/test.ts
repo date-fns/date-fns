@@ -73,7 +73,7 @@ describe('previousDay', function () {
     )
   })
 
-  it('returns previours Sunday given the day is Sunday', function () {
+  it('returns previous Sunday given the day is Sunday', function () {
     assert.deepStrictEqual(
       previousDay(new Date(2021, 5 /* Jun */, 27), 0),
       new Date(2021, 5 /* Jun */, 20)

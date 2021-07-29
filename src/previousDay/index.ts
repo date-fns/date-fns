@@ -4,7 +4,6 @@ import subDays from '../subDays'
 import toDate from '../toDate'
 import { Day } from '../types'
 
-const baseMap = [1,2,3,4,5,6,7]
 
 /**
  * @name previousDay
@@ -14,7 +13,7 @@ const baseMap = [1,2,3,4,5,6,7]
  * @description
  * When is the previous day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param {Date | number} date - the date to check
+ * @param {Date | number} dirtyDate - the date to check
  * @param {Day} day - day of the week
  * @returns {Date} - the date is the previous day of week
  * @throws {TypeError} - 2 arguments required
@@ -29,18 +28,12 @@ const baseMap = [1,2,3,4,5,6,7]
  * const result = previousDay(new Date(2020, 2, 21), 2)
  * //=> Tue Mar 17 2020 00:00:00
  */
-export default function previousDay(date: Date | number, day: Day): Date {
+export default function previousDay(dirtyDate: Date | number, day: Day): Date {
   requiredArgs(2, arguments)
-  const map = genMap(day+1)
-  return subDays(toDate(date), map[getDay(toDate(date))])
-}
+  const date = toDate(dirtyDate)
 
-function genMap(daysToMove: number): number[] {
-  if (daysToMove === 0) {
-    return baseMap
-  } else {
-    const mapStart = baseMap.slice(-daysToMove)
-    const mapEnd = baseMap.slice(0, baseMap.length - daysToMove)
-    return mapStart.concat(mapEnd)
-  }
+  let delta = getDay(date) - day
+  if (delta <= 0) delta += 7
+
+  return subDays(date, delta)
 }
