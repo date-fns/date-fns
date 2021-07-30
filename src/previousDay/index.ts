@@ -11,7 +11,7 @@ import { Day } from '../types'
  * @description
  * When is the previous day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
- * @param {Date | number} dirtyDate - the date to check
+ * @param {Date | number} date - the date to check
  * @param {Day} day - day of the week
  * @returns {Date} - the date is the previous day of week
  * @throws {TypeError} - 2 arguments required
