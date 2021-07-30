@@ -64,7 +64,7 @@ export default function getAnniversaryForYear(
     resolveLeapYearAnniversaryAs !== 'mar1' &&
     anniversaryDate.getDate() === 29 &&
     anniversaryDate.getMonth() === 1 &&
-    !isLeapYear(year)
+    !isLeapYear(resultDate)
   ) {
     if (resolveLeapYearAnniversaryAs === 'feb28') {
       resultDate.setMonth(1, 28)
