@@ -1,11 +1,10 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import previousWednesday from '.'
 
 describe('previousWednesday', function () {
-  it('returns the following Wednesday given various dates after the same', function () {
+  it('returns the previous Wednesday given various dates after the same', function () {
     assert.deepStrictEqual(
       previousWednesday(new Date(2021, 5 /* Jun */, 5)),
       new Date(2021, 5 /* Jun */, 2)
@@ -35,7 +34,6 @@ describe('previousWednesday', function () {
       previousWednesday(new Date(2021, 5 /* Jun */, 25)),
       new Date(2021, 5 /* Jun */, 23)
     )
-
   })
 
   it('returns `Invalid Date` if the given date is invalid', function () {
