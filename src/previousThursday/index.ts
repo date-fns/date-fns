@@ -1,6 +1,5 @@
 import requiredArgs from '../_lib/requiredArgs/index'
 import previousDay from '../previousDay/index'
-import toDate from '../toDate/index'
 
 /**
  * @name previousThursday
@@ -21,5 +20,5 @@ import toDate from '../toDate/index'
  */
 export default function previousThursday(date: Date | number): Date {
   requiredArgs(1, arguments)
-  return previousDay(toDate(date), 4)
+  return previousDay(date, 4)
 }
