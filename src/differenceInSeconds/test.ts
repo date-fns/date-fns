@@ -20,6 +20,14 @@ describe('differenceInSeconds', function () {
     assert(result === -14)
   })
 
+  it("returns a 0, not a negative 0 #2555 ", function () {
+    const result = differenceInSeconds(
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.973),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976),
+    )
+    assert(Object.is(result, 0))
+  })
+
   it('accepts timestamps', function () {
     const result = differenceInSeconds(
       new Date(2014, 8 /* Sep */, 5, 18, 30, 45).getTime(),

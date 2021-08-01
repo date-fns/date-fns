@@ -1,5 +1,6 @@
 import differenceInDays from '../differenceInDays/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import removesNegativeZeroIfPresent from '../utils/removesNegativeZeroIfPresent'
 
 /**
  * @name differenceInWeeks
@@ -51,5 +52,5 @@ export default function differenceInWeeks(
   requiredArgs(2, arguments)
 
   const diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+  return removesNegativeZeroIfPresent(diff > 0 ? Math.floor(diff) : Math.ceil(diff))
 }
