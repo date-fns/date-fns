@@ -1,6 +1,6 @@
 import differenceInMonths from '../differenceInMonths/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import removesNegativeZeroIfPresent from '../utils/removesNegativeZeroIfPresent'
+import getRoundedValue from '../utils/getRoundedValue'
 
 /**
  * @name differenceInQuarters
@@ -31,5 +31,5 @@ export default function differenceInQuarters(
   requiredArgs(2, arguments)
 
   const diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
-  return removesNegativeZeroIfPresent(diff > 0 ? Math.floor(diff) : Math.ceil(diff))
+  return getRoundedValue(diff)
 }

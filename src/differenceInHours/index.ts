@@ -1,6 +1,6 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import removesNegativeZeroIfPresent from '../utils/removesNegativeZeroIfPresent'
+import getRoundedValue from '../utils/getRoundedValue'
 
 const MILLISECONDS_IN_HOUR = 3600000
 
@@ -35,5 +35,5 @@ export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDat
   const diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_HOUR
-  return removesNegativeZeroIfPresent(diff > 0 ? Math.floor(diff) : Math.ceil(diff))
+  return getRoundedValue(diff)
 }

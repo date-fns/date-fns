@@ -1,6 +1,6 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import removesNegativeZeroIfPresent from '../utils/removesNegativeZeroIfPresent'
+import getRoundedValue from '../utils/getRoundedValue'
 
 var MILLISECONDS_IN_MINUTE = 60000
 
@@ -43,7 +43,5 @@ export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
   var diff =
     differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
     MILLISECONDS_IN_MINUTE
-  return removesNegativeZeroIfPresent(
-    diff > 0 ? Math.floor(diff) : Math.ceil(diff)
-  )
+  return getRoundedValue(diff)
 }
