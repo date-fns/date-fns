@@ -25,11 +25,11 @@ import getRoundedValue from '../utils/getRoundedValue'
  * //=> 2
  */
 export default function differenceInQuarters(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
   requiredArgs(2, arguments)
 
-  const diff = differenceInMonths(dirtyDateLeft, dirtyDateRight) / 3
+  const diff = differenceInMonths(dateLeft, dateRight) / 3
   return getRoundedValue(diff)
 }

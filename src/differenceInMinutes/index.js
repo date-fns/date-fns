@@ -1,8 +1,7 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import getRoundedValue from '../utils/getRoundedValue'
-
-var MILLISECONDS_IN_MINUTE = 60000
+import { millisecondsInMinute } from '../constants/index'
 
 /**
  * @name differenceInMinutes
@@ -37,11 +36,10 @@ var MILLISECONDS_IN_MINUTE = 60000
  * )
  * //=> -1
  */
-export default function differenceInMinutes(dirtyDateLeft, dirtyDateRight) {
+export default function differenceInMinutes(dateLeft, dateRight) {
   requiredArgs(2, arguments)
 
   var diff =
-    differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
-    MILLISECONDS_IN_MINUTE
+    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
   return getRoundedValue(diff)
 }

@@ -29,11 +29,11 @@ import getRoundedValue from '../utils/getRoundedValue'
  * //=> 12
  */
 export default function differenceInSeconds(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
   requiredArgs(2, arguments)
 
-  const diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
+  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
   return getRoundedValue(diff)
 }

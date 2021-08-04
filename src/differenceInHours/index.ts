@@ -1,8 +1,7 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import getRoundedValue from '../utils/getRoundedValue'
-
-const MILLISECONDS_IN_HOUR = 3600000
+import { millisecondsInHour } from '../constants/index'
 
 /**
  * @name differenceInHours
@@ -23,17 +22,19 @@ const MILLISECONDS_IN_HOUR = 3600000
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
- * var result = differenceInHours(
+ * const result = differenceInHours(
  *   new Date(2014, 6, 2, 19, 0),
  *   new Date(2014, 6, 2, 6, 50)
  * )
  * //=> 12
  */
-export default function differenceInHours(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): number {
+export default function differenceInHours(
+  dateLeft: Date | number,
+  dateRight: Date | number
+): number {
   requiredArgs(2, arguments)
 
   const diff =
-    differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) /
-    MILLISECONDS_IN_HOUR
+    differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour
   return getRoundedValue(diff)
 }

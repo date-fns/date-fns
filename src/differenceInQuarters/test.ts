@@ -20,10 +20,10 @@ describe('differenceInQuarters', function () {
     assert(result === -4)
   })
 
-  it("returns a 0, not a negative 0 #2555 ", function () {
+  it('returns a 0, not a negative 0 #2555 ', function () {
     const result = differenceInQuarters(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.973),
-      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976)
     )
     assert(Object.is(result, 0))
   })

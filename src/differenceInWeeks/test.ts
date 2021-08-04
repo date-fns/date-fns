@@ -20,10 +20,10 @@ describe('differenceInWeeks', function () {
     assert(result === -1)
   })
 
-  it("returns a 0, not a negative 0 #2555 ", function () {
+  it('returns a 0, not a negative 0 #2555 ', function () {
     const result = differenceInWeeks(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.973),
-      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976)
     )
     assert(Object.is(result, 0))
   })

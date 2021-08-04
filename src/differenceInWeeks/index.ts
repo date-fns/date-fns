@@ -46,11 +46,11 @@ import getRoundedValue from '../utils/getRoundedValue'
  * //=> 8
  */
 export default function differenceInWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): number {
   requiredArgs(2, arguments)
 
-  const diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
+  const diff = differenceInDays(dateLeft, dateRight) / 7
   return getRoundedValue(diff)
 }
