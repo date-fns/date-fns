@@ -190,6 +190,11 @@
 If now is January 1st, 2000, 00:00.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+>>>>>>> 9961d5b08... Add the missing number 1 to formatDuration in Czech locale
 | Date                     | Result            | `includeSeconds: true` | `addSuffix: true`         |
 | ------------------------ | ----------------- | ---------------------- | ------------------------- |
 | 2006-01-01T00:00:00.000Z | přibližně 6 roků  | přibližně 6 roků       | přibližně za 6 roků       |
@@ -238,6 +243,10 @@ If now is January 1st, 2000, 00:00.
 | 1995-01-01T00:00:00.000Z | přibližně 5 roků  | přibližně 5 roků       | přibližně před 5 roky     |
 | 1994-01-01T00:00:00.000Z | přibližně 6 roků  | přibližně 6 roků       | přibližně před 6 roky     |
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> Add the missing number 1 to formatDuration in Czech locale
+>>>>>>> 9961d5b08... Add the missing number 1 to formatDuration in Czech locale
 | Date                     | Result             | `includeSeconds: true` | `addSuffix: true`         |
 | ------------------------ | ------------------ | ---------------------- | ------------------------- |
 | 2006-01-01T00:00:00.000Z | přibližně 6 roků   | přibližně 6 roků       | přibližně za 6 roků       |
@@ -260,11 +269,25 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:15:00.000Z | 15 minut           | 15 minut               | za 15 minut               |
 | 2000-01-01T00:01:00.000Z | 1 minuta           | 1 minuta               | za 1 minutu               |
 | 2000-01-01T00:00:25.000Z | méně než 1 minuta  | půl minuty             | za méně než 1 minutu      |
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+| 2000-01-01T00:00:15.000Z | méně než 1 minuta  | méně než 20 sekund     | za méně než 1 minutu      |
+| 2000-01-01T00:00:05.000Z | méně než 1 minuta  | méně než 10 sekund     | za méně než 1 minutu      |
+| 2000-01-01T00:00:00.000Z | méně než 1 minuta  | méně než 5 sekund      | méně než 1 minuta         |
+| 1999-12-31T23:59:55.000Z | méně než 1 minuta  | méně než 10 sekund     | před méně než 1 minutou   |
+| 1999-12-31T23:59:45.000Z | méně než 1 minuta  | méně než 20 sekund     | před méně než 1 minutou   |
+=======
+>>>>>>> 9961d5b08... Add the missing number 1 to formatDuration in Czech locale
 | 2000-01-01T00:00:15.000Z | méně než 1 minuta  | méně než 20 vteřin     | za méně než 1 minutu      |
 | 2000-01-01T00:00:05.000Z | méně než 1 minuta  | méně než 10 vteřin     | za méně než 1 minutu      |
 | 2000-01-01T00:00:00.000Z | méně než 1 minuta  | méně než 5 vteřin      | méně než 1 minuta         |
 | 1999-12-31T23:59:55.000Z | méně než 1 minuta  | méně než 10 vteřin     | před méně než 1 minutou   |
 | 1999-12-31T23:59:45.000Z | méně než 1 minuta  | méně než 20 vteřin     | před méně než 1 minutou   |
+<<<<<<< HEAD
+=======
+>>>>>>> Add the missing number 1 to formatDuration in Czech locale
+>>>>>>> 9961d5b08... Add the missing number 1 to formatDuration in Czech locale
 | 1999-12-31T23:59:35.000Z | méně než 1 minuta  | půl minuty             | před méně než 1 minutou   |
 | 1999-12-31T23:59:00.000Z | 1 minuta           | 1 minuta               | před 1 minutou            |
 | 1999-12-31T23:45:00.000Z | 15 minut           | 15 minut               | před 15 minutami          |
@@ -285,7 +308,14 @@ If now is January 1st, 2000, 00:00.
 | 1996-01-01T00:00:00.000Z | přibližně 4 roky   | přibližně 4 roky       | přibližně před 4 roky     |
 | 1995-01-01T00:00:00.000Z | přibližně 5 roků   | přibližně 5 roků       | přibližně před 5 roky     |
 | 1994-01-01T00:00:00.000Z | přibližně 6 roků   | přibližně 6 roků       | přibližně před 6 roky     |
+<<<<<<< HEAD
 >>>>>>> 75f0fcaec... Add the missing number 1 to formatDuration in Czech locale
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Add the missing number 1 to formatDuration in Czech locale
+>>>>>>> Add the missing number 1 to formatDuration in Czech locale
+>>>>>>> 9961d5b08... Add the missing number 1 to formatDuration in Czech locale
 
 ## `formatDistanceStrict`
 
