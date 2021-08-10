@@ -155,7 +155,7 @@ This release is brought to you by [Sasha Koss](http://github.com/kossnocorp), [M
 
 ## v2.19.0 - 2021-03-05
 
-[Tan75](http://github.com/tan75) wroked on this release.
+[Tan75](http://github.com/tan75) worked on this release.
 
 ### Fixed
 
