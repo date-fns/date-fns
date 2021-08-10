@@ -51,13 +51,13 @@ var formatDistanceLocale = {
   },
 
   aboutXMonths: {
-    one: '約1か月',
-    other: '約{{count}}か月'
+    one: '約1ヶ月',
+    other: '約{{count}}ヶ月'
   },
 
   xMonths: {
-    one: '1か月',
-    other: '{{count}}か月'
+    one: '1ヶ月',
+    other: '{{count}}ヶ月'
   },
 
   aboutXYears: {
