@@ -55,4 +55,6 @@ export interface DateValues {
   milliseconds?: number
 }
 
+export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
+
 export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
