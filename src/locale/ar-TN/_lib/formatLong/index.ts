@@ -1,17 +1,17 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
 
 const dateFormats = {
-  full: 'EEEE, MMMM do, y',
-  long: 'MMMM do, y',
-  medium: 'MMM d, y',
-  short: 'MM/dd/yyyy',
+  full: 'EEEE، do MMMM y',
+  long: 'do MMMM y',
+  medium: 'd MMM y',
+  short: 'dd/MM/yyyy',
 }
 
 const timeFormats = {
-  full: 'HH:mm:ss a zzzz',
-  long: 'HH:mm:ss a z',
-  medium: 'HH:mm:ss a',
-  short: 'HH:mm a',
+  full: 'HH:mm:ss',
+  long: 'HH:mm:ss',
+  medium: 'HH:mm:ss',
+  short: 'HH:mm',
 }
 
 const dateTimeFormats = {
