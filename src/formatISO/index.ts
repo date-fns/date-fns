@@ -1,6 +1,14 @@
 import toDate from '../toDate/index'
-import isValid from '../isValid/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import requiredArgs from '../_lib/requiredArgs'
+
+interface FormatOptions {
+  format?: 'extended' | 'basic'
+}
+
+interface RepresentationOptions {
+  representation?: 'complete' | 'date' | 'time'
+}
 
 /**
  * @name formatISO
@@ -40,23 +48,22 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
+export default function formatISO(
+  dirtyDate: Date | number,
+  options?: FormatOptions & RepresentationOptions
+): string {
+  requiredArgs(1, arguments)
 
   const originalDate = toDate(dirtyDate)
 
-  if (!isValid(originalDate)) {
+  if (isNaN(originalDate.getTime())) {
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
-  const format = options.format == null ? 'extended' : String(options.format)
-  const representation =
-    options.representation == null ? 'complete' : String(options.representation)
+  const format = !options?.format ? 'extended' : String(options.format)
+  const representation = !options?.representation
+    ? 'complete'
+    : String(options.representation)
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")
