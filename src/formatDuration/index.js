@@ -73,17 +73,17 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration, options) {
+export default function formatDuration(duration, options = {}) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
     )
   }
 
-  const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
-  const zero = options?.zero || false
-  const delimiter = options?.delimiter || ' '
+  const format = options.format || defaultFormat
+  const locale = options.locale || defaultLocale
+  const zero = options.zero || false
+  const delimiter = options.delimiter || ' '
 
   const result = format
     .reduce((acc, unit) => {

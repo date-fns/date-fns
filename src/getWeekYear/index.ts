@@ -53,21 +53,22 @@ import {
  */
 export default function getWeekYear(
   dirtyDate: Date | number,
-  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions = {}
 ): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
   const year = date.getFullYear()
 
+  const locale = options.locale
   const localeFirstWeekContainsDate =
-    options?.locale?.options?.firstWeekContainsDate
+    locale && locale.options && locale.options.firstWeekContainsDate
   const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
   const firstWeekContainsDate =
-    options?.firstWeekContainsDate == null
+    options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
 

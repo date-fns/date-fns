@@ -37,7 +37,7 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  */
 export default function getWeeksInMonth(
   date: Date | number,
-  options?: LocaleOptions & WeekStartOptions
+  options: LocaleOptions & WeekStartOptions = {}
 ): number {
   requiredArgs(1, arguments)
 
