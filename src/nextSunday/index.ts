@@ -1,6 +1,5 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import nextDay from '../nextDay/index'
-import toDate from '../toDate/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name nextSunday
@@ -21,5 +20,5 @@ import toDate from '../toDate/index'
  */
 export default function nextSunday(date: Date | number): Date {
   requiredArgs(1, arguments)
-  return nextDay(toDate(date), 0)
+  return nextDay(date, 0)
 }
