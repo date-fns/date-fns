@@ -43,7 +43,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function max(dirtyDatesArray: Array<Date | number>): Date {
   requiredArgs(1, arguments)
 
-  let datesArray
+  let datesArray: Array<Date | number>
   // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
   if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
     datesArray = dirtyDatesArray
