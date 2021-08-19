@@ -60,7 +60,7 @@ export default function sub(
   const seconds = duration.seconds ? toInteger(duration.seconds) : 0
 
   // Subtract years and months
-  const dateWithoutMonths = subMonths(dirtyDate, months + years * 12)
+  const dateWithoutMonths = subMonths(date, months + years * 12)
 
   // Subtract weeks and days
   const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7)
