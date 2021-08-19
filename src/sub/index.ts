@@ -44,7 +44,7 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Mon Sep 1 2014 10:19:50
  */
 export default function sub(
-  dirtyDate: Date | number,
+  date: Date | number,
   duration: Duration
 ): Date {
   requiredArgs(2, arguments)
