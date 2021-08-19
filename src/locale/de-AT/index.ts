@@ -2,6 +2,7 @@ import formatDistance from '../de/_lib/formatDistance/index'
 import formatLong from '../de/_lib/formatLong/index'
 import formatRelative from '../de/_lib/formatRelative/index'
 import match from '../de/_lib/match/index'
+import type { Locale } from '../types'
 // difference to 'de' locale
 import localize from './_lib/localize/index'
 
@@ -13,7 +14,7 @@ import localize from './_lib/localize/index'
  * @iso-639-2 deu
  * @author Christoph Tobias Stenglein [@cstenglein]{@link https://github.com/cstenglein}
  */
-var locale = {
+const locale: Locale = {
   code: 'de-AT',
   formatDistance: formatDistance,
   formatLong: formatLong,
