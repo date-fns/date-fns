@@ -576,7 +576,7 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
 - Fixed DST issue in `eachDayOfInterval` that caused time in the days
   after DST change to have the shift as well.
 
-- Fixed` bug in Galician locale caused by incorrect usage of `getHours`
+- Fixed bug in Galician locale caused by incorrect usage of `getHours`
   instead of `getUTCHours`.
 
 ### Changed
