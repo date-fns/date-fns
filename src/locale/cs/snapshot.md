@@ -211,11 +211,11 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:15:00.000Z | 15 minut          | 15 minut               | za 15 minut               |
 | 2000-01-01T00:01:00.000Z | minuta            | minuta                 | za minutu                 |
 | 2000-01-01T00:00:25.000Z | méně než minuta   | půl minuty             | za méně než minutu        |
-| 2000-01-01T00:00:15.000Z | méně než minuta   | méně než 20 vteřin     | za méně než minutu        |
-| 2000-01-01T00:00:05.000Z | méně než minuta   | méně než 10 vteřin     | za méně než minutu        |
-| 2000-01-01T00:00:00.000Z | méně než minuta   | méně než 5 vteřin      | méně než minuta           |
-| 1999-12-31T23:59:55.000Z | méně než minuta   | méně než 10 vteřin     | před méně než minutou     |
-| 1999-12-31T23:59:45.000Z | méně než minuta   | méně než 20 vteřin     | před méně než minutou     |
+| 2000-01-01T00:00:15.000Z | méně než minuta   | méně než 20 sekund     | za méně než minutu        |
+| 2000-01-01T00:00:05.000Z | méně než minuta   | méně než 10 sekund     | za méně než minutu        |
+| 2000-01-01T00:00:00.000Z | méně než minuta   | méně než 5 sekund      | méně než minuta           |
+| 1999-12-31T23:59:55.000Z | méně než minuta   | méně než 10 sekund     | před méně než minutou     |
+| 1999-12-31T23:59:45.000Z | méně než minuta   | méně než 20 sekund     | před méně než minutou     |
 | 1999-12-31T23:59:35.000Z | méně než minuta   | půl minuty             | před méně než minutou     |
 | 1999-12-31T23:59:00.000Z | minuta            | minuta                 | před minutou              |
 | 1999-12-31T23:45:00.000Z | 15 minut          | 15 minut               | před 15 minutami          |
@@ -262,13 +262,13 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-01T00:30:00.000Z | 30 minut  | za 30 minut       | hodina                         |
 | 2000-01-01T00:15:00.000Z | 15 minut  | za 15 minut       | 0 hodiny                       |
 | 2000-01-01T00:01:00.000Z | minuta    | za minutu         | 0 hodiny                       |
-| 2000-01-01T00:00:25.000Z | 25 vteřin | za 25 vteřin      | 0 hodiny                       |
-| 2000-01-01T00:00:15.000Z | 15 vteřin | za 15 vteřin      | 0 hodiny                       |
-| 2000-01-01T00:00:05.000Z | 5 vteřin  | za 5 vteřin       | 0 hodiny                       |
-| 2000-01-01T00:00:00.000Z | 0 vteřiny | 0 vteřiny         | 0 hodiny                       |
-| 1999-12-31T23:59:55.000Z | 5 vteřin  | před 5 vteřinami  | 0 hodiny                       |
-| 1999-12-31T23:59:45.000Z | 15 vteřin | před 15 vteřinami | 0 hodiny                       |
-| 1999-12-31T23:59:35.000Z | 25 vteřin | před 25 vteřinami | 0 hodiny                       |
+| 2000-01-01T00:00:25.000Z | 25 sekund | za 25 sekund      | 0 hodiny                       |
+| 2000-01-01T00:00:15.000Z | 15 sekund | za 15 sekund      | 0 hodiny                       |
+| 2000-01-01T00:00:05.000Z | 5 sekund  | za 5 sekund       | 0 hodiny                       |
+| 2000-01-01T00:00:00.000Z | 0 sekundy | 0 sekundy         | 0 hodiny                       |
+| 1999-12-31T23:59:55.000Z | 5 sekund  | před 5 sekundami  | 0 hodiny                       |
+| 1999-12-31T23:59:45.000Z | 15 sekund | před 15 sekundami | 0 hodiny                       |
+| 1999-12-31T23:59:35.000Z | 25 sekund | před 25 sekundami | 0 hodiny                       |
 | 1999-12-31T23:59:00.000Z | minuta    | před minutou      | 0 hodiny                       |
 | 1999-12-31T23:45:00.000Z | 15 minut  | před 15 minutami  | 0 hodiny                       |
 | 1999-12-31T23:30:00.000Z | 30 minut  | před 30 minutami  | hodina                         |
