@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInSeconds from '.'
 
 describe('differenceInSeconds', () => {
@@ -82,12 +82,12 @@ describe('differenceInSeconds', () => {
       assert(result === 0)
     })
 
-    it('the same for the swapped dates but a different result as a resulf of the default rounding method `floor`', () => {
+    it('the same for the swapped dates but a different result as a resulf of the default rounding method `trunc`', () => {
       const result = differenceInSeconds(
         new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 999),
         new Date(2014, 8 /* Sep */, 5, 12, 30, 12)
       )
-      assert(result === -1)
+      assert(result === 0)
     })
 
     it('the difference is an integral number of seconds', () => {
@@ -143,7 +143,9 @@ describe('differenceInSeconds', () => {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
+    // @ts-expect-error
     assert.throws(differenceInSeconds.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInSeconds.bind(null, 1), TypeError)
   })
 })

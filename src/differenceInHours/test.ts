@@ -20,12 +20,48 @@ describe('differenceInHours', function () {
     assert(result === -14)
   })
 
-  it('returns a 0, not a negative 0 #2555 ', function () {
+  it('returns a 0, not a negative 0 - issue #2555 ', function () {
     const result = differenceInHours(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.973),
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976)
     )
-    assert(Object.is(result, 0))
+    assert(result === 0)
+  })
+
+  it('returns 2 with a rounding method of `ceil`, not a negative 0 - issue #2555 ', function () {
+    const result = differenceInHours(
+      new Date(2021, 6 /* Jul */, 22, 7, 1, 29, 976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28, 173),
+      'ceil'
+    )
+    assert(result === 2)
+  })
+
+  it('returns 1 with a rounding method of `floor`, not a negative 0 - issue #2555 ', function () {
+    const result = differenceInHours(
+      new Date(2021, 6 /* Jul */, 22, 7, 1, 29, 976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28, 173),
+      'floor'
+    )
+    assert(result === 1)
+  })
+
+  it('returns 1 with a rounding method of `round`, not a negative 0 - issue #2555 ', function () {
+    const result = differenceInHours(
+      new Date(2021, 6 /* Jul */, 22, 7, 1, 29, 976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28, 173),
+      'round'
+    )
+    assert(result === 1)
+  })
+
+  it('returns 1 with a rounding method of `trunc`, not a negative 0 - issue #2555 ', function () {
+    const result = differenceInHours(
+      new Date(2021, 6 /* Jul */, 22, 7, 1, 29, 976),
+      new Date(2021, 6 /* Jul */, 22, 6, 1, 28, 173),
+      'trunc'
+    )
+    assert(result === 1)
   })
 
   it('accepts timestamps', function () {

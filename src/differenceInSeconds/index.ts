@@ -32,7 +32,7 @@ import { RoundingMethod } from 'src/types'
 export default function differenceInSeconds(
   dateLeft: Date | number,
   dateRight: Date | number,
-  roundingMethod: RoundingMethod = 'floor'
+  roundingMethod: RoundingMethod = 'trunc'
 ): number {
   requiredArgs(2, arguments)
 

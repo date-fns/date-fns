@@ -1,7 +1,8 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import getRoundedValue from '../utils/getRoundedValue'
 import { millisecondsInHour } from '../constants/index'
+import getRoundingFn from '../_lib/getRoundingFn/index'
+import { RoundingMethod } from 'src/types'
 
 /**
  * @name differenceInHours
@@ -30,11 +31,13 @@ import { millisecondsInHour } from '../constants/index'
  */
 export default function differenceInHours(
   dateLeft: Date | number,
-  dateRight: Date | number
+  dateRight: Date | number,
+  roundingMethod: RoundingMethod = 'trunc'
 ): number {
   requiredArgs(2, arguments)
 
   const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour
-  return getRoundedValue(diff)
+  const roundingFn = getRoundingFn(roundingMethod)
+  return roundingFn(diff)
 }
