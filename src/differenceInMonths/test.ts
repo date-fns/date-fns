@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInMonths from '.'
 
 describe('differenceInMonths', function () {
@@ -146,7 +146,9 @@ describe('differenceInMonths', function () {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function () {
+    // @ts-expect-error
     assert.throws(differenceInMonths.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInMonths.bind(null, 1), TypeError)
   })
 

@@ -1,14 +1,15 @@
 import differenceInMonths from '../differenceInMonths/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import getRoundedValue from '../utils/getRoundedValue'
+import getRoundingFn from '../_lib/getRoundingFn/index'
+import { RoundingMethod } from 'src/types'
 
 /**
  * @name differenceInQuarters
  * @category Quarter Helpers
- * @summary Get the number of full quarters between the given dates.
+ * @summary Get the number of quarters between the given dates.
  *
  * @description
- * Get the number of full quarters between the given dates.
+ * Get the number of quarters between the given dates.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -21,15 +22,17 @@ import getRoundedValue from '../utils/getRoundedValue'
  *
  * @example
  * // How many full quarters are between 31 December 2013 and 2 July 2014?
- * var result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
+ * const result = differenceInQuarters(new Date(2014, 6, 2), new Date(2013, 11, 31))
  * //=> 2
  */
 export default function differenceInQuarters(
   dateLeft: Date | number,
-  dateRight: Date | number
+  dateRight: Date | number,
+  roundingMethod: RoundingMethod = 'trunc'
 ): number {
   requiredArgs(2, arguments)
 
+  const roundingFn = getRoundingFn(roundingMethod)
   const diff = differenceInMonths(dateLeft, dateRight) / 3
-  return getRoundedValue(diff)
+  return roundingFn(diff)
 }

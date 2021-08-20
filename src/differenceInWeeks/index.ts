@@ -1,6 +1,7 @@
 import differenceInDays from '../differenceInDays/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import getRoundedValue from '../utils/getRoundedValue'
+import getRoundingFn from '../_lib/getRoundingFn/index'
+import { RoundingMethod } from 'src/types'
 
 /**
  * @name differenceInWeeks
@@ -9,7 +10,7 @@ import getRoundedValue from '../utils/getRoundedValue'
  *
  * @description
  * Get the number of full weeks between two dates. Fractional weeks are
- * truncated towards zero.
+ * truncated towards zero by default.
  *
  * One "full week" is the distance between a local time in one day to the same
  * local time 7 days earlier or later. A full week can sometimes be less than
@@ -47,10 +48,12 @@ import getRoundedValue from '../utils/getRoundedValue'
  */
 export default function differenceInWeeks(
   dateLeft: Date | number,
-  dateRight: Date | number
+  dateRight: Date | number,
+  roundingMethod: RoundingMethod = 'trunc'
 ): number {
   requiredArgs(2, arguments)
 
+  const roundingFn = getRoundingFn(roundingMethod)
   const diff = differenceInDays(dateLeft, dateRight) / 7
-  return getRoundedValue(diff)
+  return roundingFn(diff)
 }
