@@ -1,7 +1,8 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import getRoundedValue from '../utils/getRoundedValue'
 import { millisecondsInMinute } from '../constants/index'
+import getRoundingFn from '../_lib/getRoundingFn/index'
+import { RoundingMethod } from 'src/types'
 
 /**
  * @name differenceInMinutes
@@ -22,24 +23,29 @@ import { millisecondsInMinute } from '../constants/index'
  *
  * @example
  * // How many minutes are between 2 July 2014 12:07:59 and 2 July 2014 12:20:00?
- * var result = differenceInMinutes(
+ * const result = differenceInMinutes(
  *   new Date(2014, 6, 2, 12, 20, 0),
  *   new Date(2014, 6, 2, 12, 7, 59)
  * )
  * //=> 12
  *
  * @example
- * // How many minutes are from 10:01:59 to 10:00:00
- * var result = differenceInMinutes(
+ * // How many minutes are between 10:01:59 and 10:00:00
+ * const result = differenceInMinutes(
  *   new Date(2000, 0, 1, 10, 0, 0),
  *   new Date(2000, 0, 1, 10, 1, 59)
  * )
  * //=> -1
  */
-export default function differenceInMinutes(dateLeft, dateRight) {
+export default function differenceInMinutes(
+  dateLeft: Date | number,
+  dateRight: Date | number,
+  roundingMethod: RoundingMethod = 'trunc'
+): number {
   requiredArgs(2, arguments)
 
-  var diff =
+  const roundingFn = getRoundingFn(roundingMethod)
+  const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInMinute
-  return getRoundedValue(diff)
+  return roundingFn(diff)
 }
