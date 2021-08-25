@@ -1,37 +1,37 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: {
-      regular: 'méně než vteřina',
-      past: 'před méně než vteřinou',
-      future: 'za méně než vteřinu'
+      regular: 'méně než sekunda',
+      past: 'před méně než sekundou',
+      future: 'za méně než sekundu'
     },
     few: {
-      regular: 'méně než {{count}} vteřiny',
-      past: 'před méně než {{count}} vteřinami',
-      future: 'za méně než {{count}} vteřiny'
+      regular: 'méně než {{count}} sekundy',
+      past: 'před méně než {{count}} sekundami',
+      future: 'za méně než {{count}} sekundy'
     },
     many: {
-      regular: 'méně než {{count}} vteřin',
-      past: 'před méně než {{count}} vteřinami',
-      future: 'za méně než {{count}} vteřin'
+      regular: 'méně než {{count}} sekund',
+      past: 'před méně než {{count}} sekundami',
+      future: 'za méně než {{count}} sekund'
     }
   },
 
   xSeconds: {
     one: {
-      regular: 'vteřina',
-      past: 'před vteřinou',
-      future: 'za vteřinu'
+      regular: 'sekunda',
+      past: 'před sekundou',
+      future: 'za sekundu'
     },
     few: {
-      regular: '{{count}} vteřiny',
-      past: 'před {{count}} vteřinami',
-      future: 'za {{count}} vteřiny'
+      regular: '{{count}} sekundy',
+      past: 'před {{count}} sekundami',
+      future: 'za {{count}} sekundy'
     },
     many: {
-      regular: '{{count}} vteřin',
-      past: 'před {{count}} vteřinami',
-      future: 'za {{count}} vteřin'
+      regular: '{{count}} sekund',
+      past: 'před {{count}} sekundami',
+      future: 'za {{count}} sekund'
     }
   },
 
