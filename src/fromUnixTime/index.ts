@@ -8,7 +8,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @summary Create a date from a Unix timestamp.
  *
  * @description
- * Create a date from a Unix timestamp.
+ * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
  * ### v2.0.0 breaking changes:
  *
