@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import isValid from '.'
 
 describe('isValid', function () {
@@ -26,6 +25,7 @@ describe('isValid', function () {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(isValid.bind(null), TypeError)
   })
 })
