@@ -49,7 +49,7 @@ describe('intlFormat', () => {
 
     fullICUOnly("should work with only format's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const formatOptions = {
+      const formatOptions: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -84,7 +84,7 @@ describe('intlFormat', () => {
       "should work with format's options and locale's options",
       function () {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-        const formatOptions = {
+        const formatOptions: Intl.DateTimeFormatOptions = {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
