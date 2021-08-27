@@ -16,7 +16,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Format the given duration as ISO 8601 string
- * formatISODuration({
+ * const result = formatISODuration({
  *   years: 39,
  *   months: 2,
  *   days: 20,
@@ -26,7 +26,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * })
  * //=> 'P39Y2M20DT0H0M0S'
  */
-
 export default function formatISODuration(duration: Duration): string {
   requiredArgs(1, arguments)
 
