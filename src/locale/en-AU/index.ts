@@ -3,17 +3,18 @@ import formatLong from './_lib/formatLong/index'
 import formatRelative from '../en-US/_lib/formatRelative/index'
 import localize from '../en-US/_lib/localize/index'
 import match from '../en-US/_lib/match/index'
+import type { Locale } from '../types'
 
 /**
  * @type {Locale}
  * @category Locales
- * @summary English locale (New Zealand).
+ * @summary English locale (Australia).
  * @language English
  * @iso-639-2 eng
- * @author Murray Lucas [@muntact]{@link https://github.com/muntact}
+ * @author Julien Malige [@JulienMalige]{@link https://github.com/JulienMalige}
  */
-var locale = {
-  code: 'en-NZ',
+const locale: Locale = {
+  code: 'en-AU',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -21,8 +22,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale

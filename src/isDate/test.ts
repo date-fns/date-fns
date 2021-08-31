@@ -26,13 +26,13 @@ describe('isDate', () => {
   })
 
   describe('with date passed from another iframe', () => {
-    afterEach(() => {
-      const iframe = document.getElementById('iframe')
-      iframe && iframe.remove()
-    })
-
     // Emulate web browser
     if (!process.env.JEST_WORKER_ID) {
+      afterEach(() => {
+        const iframe = document.getElementById('iframe')
+        iframe && iframe.remove()
+      })
+
       it('returns true for a date passed from another iframe', (done) => {
         const iframe = document.createElement('iframe')
         iframe.id = 'iframe'

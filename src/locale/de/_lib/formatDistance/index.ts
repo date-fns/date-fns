@@ -180,22 +180,20 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 }
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
-  options = options || {}
+  let result
 
-  const usageGroup = options.addSuffix
+  const tokenValue = options?.addSuffix
     ? formatDistanceLocale[token].withPreposition
     : formatDistanceLocale[token].standalone
-
-  let result
-  if (typeof usageGroup === 'string') {
-    result = usageGroup
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = usageGroup.one
+    result = tokenValue.one
   } else {
-    result = usageGroup.other.replace('{{count}}', String(count))
+    result = tokenValue.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
+  if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
       return 'in ' + result
     } else {

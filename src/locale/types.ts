@@ -103,7 +103,7 @@ export interface Localize {
 export interface BuildMatchFnArgs<
   Result extends LocaleUnit,
   DefaultMatchWidth extends LocalePatternWidth,
-  DefaultParseWidth extends LocaleParsePatternWidth
+  DefaultParseWidth extends LocalePatternWidth
 > {
   matchPatterns: MatchPatterns<DefaultMatchWidth>
   defaultMatchWidth: DefaultMatchWidth
@@ -122,9 +122,9 @@ export type MatchPatterns<DefaultWidth extends LocalePatternWidth> = {
 
 export type ParsePatterns<
   Result extends LocaleUnit,
-  DefaultWidth extends LocaleParsePatternWidth
+  DefaultWidth extends LocalePatternWidth
 > = {
-  [pattern in LocaleParsePatternWidth]?: ParsePattern<Result>
+  [pattern in LocalePatternWidth]?: ParsePattern<Result>
 } &
   { [key in DefaultWidth]: ParsePattern<Result> }
 
@@ -182,9 +182,12 @@ export interface Match {
   dayPeriod: MatchFn<LocaleDayPeriod>
 }
 
-export type LocalePatternWidth = 'narrow' | 'short' | 'abbreviated' | 'wide'
-
-export type LocaleParsePatternWidth = LocalePatternWidth | 'any'
+export type LocalePatternWidth =
+  | 'narrow'
+  | 'short'
+  | 'abbreviated'
+  | 'wide'
+  | 'any'
 
 export type LocaleDayPeriod =
   | 'am'

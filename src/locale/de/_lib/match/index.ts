@@ -131,4 +131,5 @@ const match: Match = {
     defaultParseWidth: 'any',
   }),
 }
+
 export default match
