@@ -18,18 +18,8 @@ const hasFullICU = () => {
 const fullICUOnly = hasFullICU() ? it : it.skip
 
 const getOperationSystemLocale = () => {
-  if (typeof process !== 'undefined') {
-    const ENV = process.env
-    const language = ENV.LC_ALL || ENV.LC_MESSAGES || ENV.LANG || ENV.LANGUAGE
-    return language?.split('.')[0].replace('_', '-')
-  } else {
-    return (
-      // @ts-expect-error
-      window.navigator.userLanguage ||
-      window.navigator.language ||
-      (window.navigator.languages || [])[0]
-    )
-  }
+  // https://stackoverflow.com/questions/46072248/node-js-how-to-detect-user-language/46072415
+  return Intl.DateTimeFormat().resolvedOptions().locale
 }
 
 describe('intlFormat', () => {
@@ -49,7 +39,7 @@ describe('intlFormat', () => {
 
     fullICUOnly("should work with only format's options", function () {
       const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-      const formatOptions = {
+      const formatOptions: Intl.DateTimeFormatOptions = {
         year: 'numeric',
         month: 'numeric',
         day: 'numeric',
@@ -84,7 +74,7 @@ describe('intlFormat', () => {
       "should work with format's options and locale's options",
       function () {
         const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-        const formatOptions = {
+        const formatOptions: Intl.DateTimeFormatOptions = {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
