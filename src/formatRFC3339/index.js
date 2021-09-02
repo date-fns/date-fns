@@ -74,7 +74,7 @@ export default function formatRFC3339(dirtyDate, dirtyOptions) {
   }
 
   let offset = ''
-  const tzOffset = originalDate.getTimezoneOffset()
+  const tzOffset = Math.round(originalDate.getTimezoneOffset())
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)

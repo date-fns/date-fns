@@ -7,7 +7,7 @@ import format from '.'
 describe('format', function () {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
 
-  var offset = date.getTimezoneOffset()
+  var offset = Math.round(date.getTimezoneOffset())
   var absoluteOffset = Math.abs(offset)
   var hours = Math.floor(absoluteOffset / 60)
   var hoursLeadingZero = hours < 10 ? '0' : ''

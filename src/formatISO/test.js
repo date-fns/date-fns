@@ -9,7 +9,7 @@ import addLeadingZeros from '../_lib/addLeadingZeros'
 function generateOffset(originalDate) {
   // Add the timezone.
   let offset = ''
-  const tzOffset = originalDate.getTimezoneOffset()
+  const tzOffset = Math.round(originalDate.getTimezoneOffset())
 
   if (tzOffset !== 0) {
     const absoluteOffset = Math.abs(tzOffset)
@@ -74,8 +74,8 @@ describe('formatISO', () => {
     )
   })
 
-  describe('implicitly converts options', function() {
-    it('`format`', function() {
+  describe('implicitly converts options', function () {
+    it('`format`', function () {
       // eslint-disable-next-line no-new-wrappers
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -85,7 +85,7 @@ describe('formatISO', () => {
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
-    it('`representation`', function() {
+    it('`representation`', function () {
       // eslint-disable-next-line no-new-wrappers
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -96,18 +96,18 @@ describe('formatISO', () => {
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
     // $ExpectedMistake
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      format: 'something else'
+      format: 'something else',
     })
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
     // $ExpectedMistake
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      representation: 'something else'
+      representation: 'something else',
     })
     assert.throws(block, RangeError)
   })
@@ -116,7 +116,7 @@ describe('formatISO', () => {
     assert.throws(formatISO.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(formatISO.bind(null), TypeError)
   })
 })

@@ -12,7 +12,7 @@ function generateOffset(date) {
   const tzOffset = date.getTimezoneOffset()
 
   if (tzOffset !== 0) {
-    const absoluteOffset = Math.abs(tzOffset)
+    const absoluteOffset = Math.round(Math.abs(tzOffset))
     const hourOffset = addLeadingZeros(toInteger(absoluteOffset / 60), 2)
     const minuteOffset = addLeadingZeros(absoluteOffset % 60, 2)
     // If less than 0, the sign is +, because it is ahead of time.
@@ -32,13 +32,13 @@ describe('formatRFC3339', () => {
     assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', function () {
     var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
     var time = date.getTime()
     assert(formatRFC3339(time) === `2019-10-04T12:30:13${generateOffset(date)}`)
   })
 
-  it('allows to specify digits of second fractions', function() {
+  it('allows to specify digits of second fractions', function () {
     var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatRFC3339(date, { fractionDigits: 3 }) ===
@@ -46,7 +46,7 @@ describe('formatRFC3339', () => {
     )
   })
 
-  it('works when ms < 100', function() {
+  it('works when ms < 100', function () {
     var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
     assert(
       formatRFC3339(date, { fractionDigits: 2 }) ===
@@ -54,19 +54,19 @@ describe('formatRFC3339', () => {
     )
   })
 
-  it('implicitly converts options', function() {
+  it('implicitly converts options', function () {
     var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     // $ExpectedMistake
     var result = formatRFC3339(date, {
-      fractionDigits: '2'
+      fractionDigits: '2',
     })
     assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
 
-  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function() {
+  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function () {
     // $ExpectedMistake
     var block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      fractionDigits: NaN
+      fractionDigits: NaN,
     })
     assert.throws(block, RangeError)
   })
@@ -75,7 +75,7 @@ describe('formatRFC3339', () => {
     assert.throws(formatRFC3339.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(formatRFC3339.bind(null), TypeError)
   })
 })

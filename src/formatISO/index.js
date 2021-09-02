@@ -89,7 +89,7 @@ export default function formatISO(dirtyDate, dirtyOptions) {
   // Representation is either 'time' or 'complete'
   if (representation !== 'date') {
     // Add the timezone.
-    const offset = originalDate.getTimezoneOffset()
+    const offset = Math.round(originalDate.getTimezoneOffset())
 
     if (offset !== 0) {
       const absoluteOffset = Math.abs(offset)
