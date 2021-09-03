@@ -36,8 +36,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function intervalToDuration(interval: Interval): Duration {
   requiredArgs(1, arguments)
 
-  let start = toDate(interval.start)
-  let end = toDate(interval.end)
+  const start = toDate(interval.start)
+  const end = toDate(interval.end)
 
   if (isNaN(start.getTime())) throw new RangeError('Start Date is invalid')
   if (isNaN(end.getTime())) throw new RangeError('End Date is invalid')
