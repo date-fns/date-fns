@@ -1,7 +1,10 @@
+import { RoundingMethod } from 'src/types'
 import differenceInDays from '../differenceInDays/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import getRoundingFn from '../_lib/getRoundingFn/index'
-import { RoundingMethod } from 'src/types'
+import {
+  defaultRoundingMethod,
+  getRoundingMethod,
+} from '../_lib/roundingMethods/index'
 
 /**
  * @name differenceInWeeks
@@ -49,11 +52,11 @@ import { RoundingMethod } from 'src/types'
 export default function differenceInWeeks(
   dateLeft: Date | number,
   dateRight: Date | number,
-  roundingMethod: RoundingMethod = 'trunc'
+  roundingMethod: RoundingMethod = defaultRoundingMethod
 ): number {
   requiredArgs(2, arguments)
 
-  const roundingFn = getRoundingFn(roundingMethod)
+  const roundingFn = getRoundingMethod(roundingMethod)
   const diff = differenceInDays(dateLeft, dateRight) / 7
   return roundingFn(diff)
 }
