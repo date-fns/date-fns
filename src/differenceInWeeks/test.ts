@@ -16,9 +16,9 @@ describe('differenceInWeeks', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      'ceil'
+      'trunc'
     )
-    assert(result === 2)
+    assert(result === 1)
   })
 
   it('returns the number of weeks between the given dates with `ceil` passed in as a rounding method', () => {
