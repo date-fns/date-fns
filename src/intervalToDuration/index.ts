@@ -1,6 +1,7 @@
 import compareAsc from '../compareAsc/index'
 import differenceInYears from '../differenceInYears/index'
 import differenceInMonths from '../differenceInMonths/index'
+import differenceInWeeks from '../differenceInWeeks/index'
 import differenceInDays from '../differenceInDays/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
@@ -34,7 +35,7 @@ import sub from '../sub/index'
  * // => { years: 39, months: 2, days: 20, hours: 7, minutes: 5, seconds: 0 }
  */
 
-export default function intervalToDuration({ start, end }: Interval): Duration {
+export default function intervalToDuration({ start, end, withWeeks = false }: Interval): Duration {
   requiredArgs(1, arguments)
 
   const dateLeft = toDate(start)
@@ -47,35 +48,73 @@ export default function intervalToDuration({ start, end }: Interval): Duration {
     throw new RangeError('End Date is invalid')
   }
 
-  const duration = {
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+  if (withWeeks) {
+    const duration = {
+      years: 0,
+      months: 0,
+      weeks: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    }
+  
+    const sign = compareAsc(dateLeft, dateRight)
+  
+    duration.years = Math.abs(differenceInYears(dateLeft, dateRight))
+  
+    const remainingMonths = sub(dateLeft, { years: sign * duration.years })
+    duration.months = Math.abs(differenceInMonths(remainingMonths, dateRight))
+  
+    const remainingWeeks = sub(remainingMonths, { months: sign * duration.months })
+    duration.weeks = Math.abs(differenceInWeeks(remainingWeeks, dateRight))
+  
+    const remainingDays = sub(remainingWeeks, { weeks: sign * duration.months })
+    duration.days = Math.abs(differenceInDays(remainingDays, dateRight))
+  
+    const remainingHours = sub(remainingDays, { days: sign * duration.days })
+    duration.hours = Math.abs(differenceInHours(remainingHours, dateRight))
+  
+    const remainingMinutes = sub(remainingHours, { hours: sign * duration.hours })
+    duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
+  
+    const remainingSeconds = sub(remainingMinutes, {
+      minutes: sign * duration.minutes,
+    })
+    duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
+  
+    return duration
+  } else {
+    const duration = {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    }
+  
+    const sign = compareAsc(dateLeft, dateRight)
+  
+    duration.years = Math.abs(differenceInYears(dateLeft, dateRight))
+  
+    const remainingMonths = sub(dateLeft, { years: sign * duration.years })
+    duration.months = Math.abs(differenceInMonths(remainingMonths, dateRight))
+  
+    const remainingDays = sub(remainingMonths, { months: sign * duration.months })
+    duration.days = Math.abs(differenceInDays(remainingDays, dateRight))
+  
+    const remainingHours = sub(remainingDays, { days: sign * duration.days })
+    duration.hours = Math.abs(differenceInHours(remainingHours, dateRight))
+  
+    const remainingMinutes = sub(remainingHours, { hours: sign * duration.hours })
+    duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
+  
+    const remainingSeconds = sub(remainingMinutes, {
+      minutes: sign * duration.minutes,
+    })
+    duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
+  
+    return duration
   }
-
-  const sign = compareAsc(dateLeft, dateRight)
-
-  duration.years = Math.abs(differenceInYears(dateLeft, dateRight))
-
-  const remainingMonths = sub(dateLeft, { years: sign * duration.years })
-  duration.months = Math.abs(differenceInMonths(remainingMonths, dateRight))
-
-  const remainingDays = sub(remainingMonths, { months: sign * duration.months })
-  duration.days = Math.abs(differenceInDays(remainingDays, dateRight))
-
-  const remainingHours = sub(remainingDays, { days: sign * duration.days })
-  duration.hours = Math.abs(differenceInHours(remainingHours, dateRight))
-
-  const remainingMinutes = sub(remainingHours, { hours: sign * duration.hours })
-  duration.minutes = Math.abs(differenceInMinutes(remainingMinutes, dateRight))
-
-  const remainingSeconds = sub(remainingMinutes, {
-    minutes: sign * duration.minutes,
-  })
-  duration.seconds = Math.abs(differenceInSeconds(remainingSeconds, dateRight))
-
-  return duration
 }
