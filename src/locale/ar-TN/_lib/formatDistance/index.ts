@@ -1,6 +1,15 @@
-import type { FormatDistanceFn } from '../../../types'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
 
-const formatDistanceLocale = {
+type FormatDistanceTokenValue =
+  | string
+  | {
+      one: string
+      two: string
+      threeToTen: string
+      other: string
+    }
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     one: 'أقل من ثانية',
     two: 'أقل من زوز ثواني',
@@ -110,8 +119,6 @@ const formatDistanceLocale = {
 }
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
-  options = options || {}
-
   const usageGroup = formatDistanceLocale[token]
   let result
   if (typeof usageGroup === 'string') {
@@ -126,7 +133,7 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
     result = usageGroup.other.replace('{{count}}', String(count))
   }
 
-  if (options.addSuffix) {
+  if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
       return 'في ' + result
     } else {

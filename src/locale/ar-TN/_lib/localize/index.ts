@@ -1,20 +1,25 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn } from '../../../types'
+import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
 
 const eraValues = {
-  narrow: ['ق', 'ب'],
-  abbreviated: ['ق.م.', 'ب.م.'],
-  wide: ['قبل الميلاد', 'بعد الميلاد'],
+  narrow: ['ق', 'ب'] as const,
+  abbreviated: ['ق.م.', 'ب.م.'] as const,
+  wide: ['قبل الميلاد', 'بعد الميلاد'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'],
-  wide: ['الربع الأول', 'الربع الثاني', 'الربع الثالث', 'الربع الرابع'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['ر1', 'ر2', 'ر3', 'ر4'] as const,
+  wide: [
+    'الربع الأول',
+    'الربع الثاني',
+    'الربع الثالث',
+    'الربع الرابع',
+  ] as const,
 }
 
 const monthValues = {
-  narrow: ['د', 'ن', 'أ', 'س', 'أ', 'ج', 'ج', 'م', 'أ', 'م', 'ف', 'ج'],
+  narrow: ['د', 'ن', 'أ', 'س', 'أ', 'ج', 'ج', 'م', 'أ', 'م', 'ف', 'ج'] as const,
   abbreviated: [
     'جانفي',
     'فيفري',
@@ -28,7 +33,7 @@ const monthValues = {
     'أكتوبر',
     'نوفمبر',
     'ديسمبر',
-  ],
+  ] as const,
   wide: [
     'جانفي',
     'فيفري',
@@ -42,13 +47,21 @@ const monthValues = {
     'أكتوبر',
     'نوفمبر',
     'ديسمبر',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'],
-  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
-  abbreviated: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+  narrow: ['ح', 'ن', 'ث', 'ر', 'خ', 'ج', 'س'] as const,
+  short: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'] as const,
+  abbreviated: [
+    'أحد',
+    'اثنين',
+    'ثلاثاء',
+    'أربعاء',
+    'خميس',
+    'جمعة',
+    'سبت',
+  ] as const,
   wide: [
     'الأحد',
     'الاثنين',
@@ -57,7 +70,7 @@ const dayValues = {
     'الخميس',
     'الجمعة',
     'السبت',
-  ],
+  ] as const,
 }
 
 const dayPeriodValues = {
@@ -126,11 +139,9 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
-  return String(dirtyNumber)
-}
+const ordinalNumber: LocalizeFn<number, undefined> = (num) => String(num)
 
-const localize = {
+const localize: Localize = {
   ordinalNumber: ordinalNumber,
 
   era: buildLocalizeFn({
@@ -141,7 +152,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
   }),
 
   month: buildLocalizeFn({
