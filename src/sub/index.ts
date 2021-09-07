@@ -1,6 +1,6 @@
 import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
-import toDate from '../toDate/index'
+import { Duration } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
@@ -43,7 +43,10 @@ import toInteger from '../_lib/toInteger/index'
  * })
  * //=> Mon Sep 1 2014 10:19:50
  */
-export default function sub(dirtyDate, duration) {
+export default function sub(
+  date: Date | number,
+  duration: Duration
+): Date {
   requiredArgs(2, arguments)
 
   if (!duration || typeof duration !== 'object') return new Date(NaN)
@@ -57,7 +60,7 @@ export default function sub(dirtyDate, duration) {
   const seconds = duration.seconds ? toInteger(duration.seconds) : 0
 
   // Subtract years and months
-  const dateWithoutMonths = subMonths(toDate(dirtyDate), months + years * 12)
+  const dateWithoutMonths = subMonths(date, months + years * 12)
 
   // Subtract weeks and days
   const dateWithoutDays = subDays(dateWithoutMonths, days + weeks * 7)

@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -62,8 +61,11 @@ describe('sub', () => {
   })
 
   it('implicitly converts number arguments', () => {
-    // $ExpectedMistake
-    const result = sub(new Date(2014, 8 /* Sep */, 1, 14), { hours: '4.2' })
+    const result = sub(
+      new Date(2014, 8 /* Sep */, 1, 14),
+      // @ts-expect-error
+      { hours: '4.2' }
+    )
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 1, 10))
   })
 
@@ -92,13 +94,16 @@ describe('sub', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = sub(new Date(NaN), { hours: 5 })
-    assert(result instanceof Date && isNaN(result))
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws RangeError exception if passed Number as duration', () => {
-    // $ExpectedMistake
-    const result = sub(new Date(2014, 8, 1), 'wut')
-    assert(result instanceof Date && isNaN(result))
+    const result = sub(
+      new Date(2014, 8, 1),
+      // @ts-expect-error
+      'wut'
+    )
+    assert(result instanceof Date && isNaN(result.getTime()))
   })
 
   it('throws TypeError exception if passed less than 2 arguments', () => {
