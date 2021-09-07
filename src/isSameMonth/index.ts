@@ -29,7 +29,7 @@ export default function isSameMonth(dirtyDateLeft: Date | number, dirtyDateRight
   const dateLeft = toDate(dirtyDateLeft)
   const dateRight = toDate(dirtyDateRight)
   return (
-    dateLeft.getFullYear() === dateRight.getFullYear() &&
-    dateLeft.getMonth() === dateRight.getMonth()
+    dateLeft.getUTCFullYear() === dateRight.getUTCFullYear() &&
+    dateLeft.getUTCMonth() === dateRight.getUTCMonth()
   )
 }

@@ -13,10 +13,26 @@ describe('isSameMonth', function() {
     assert(result === true)
   })
 
+  it('returns true if the given dates use a different timezone', function() {
+    const result = isSameMonth(
+      new Date('2015-02-01T00:00:00.000+01:00'),
+      new Date('2015-01-31T23:00:00.000Z')
+    )
+    assert(result === true)
+  })
+
   it('returns false if the given dates have different months', function() {
     const result = isSameMonth(
       new Date(2014, 8 /* Sep */, 2),
       new Date(2013, 8 /* Sep */, 25)
+    )
+    assert(result === false)
+  })
+
+  it('returns false if the given dates differ with a timezone', function() {
+    const result = isSameMonth(
+      new Date('2015-02-01T00:00:00.000+01:00'),
+      new Date('2015-02-01T00:00:00.000Z')
     )
     assert(result === false)
   })
