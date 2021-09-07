@@ -1,13 +1,12 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatRFC3339 from '.'
 import toInteger from '../_lib/toInteger/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 
 // This makes sure we create the consistent offsets across timezones, no matter where these tests are ran.
-function generateOffset(date) {
+function generateOffset(date: Date): string {
   let offset = ''
   const tzOffset = date.getTimezoneOffset()
 
@@ -28,44 +27,44 @@ function generateOffset(date) {
 
 describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {
-    var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
   })
 
-  it('accepts a timestamp', function() {
-    var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
-    var time = date.getTime()
+  it('accepts a timestamp', function () {
+    const date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
+    const time = date.getTime()
     assert(formatRFC3339(time) === `2019-10-04T12:30:13${generateOffset(date)}`)
   })
 
-  it('allows to specify digits of second fractions', function() {
-    var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
+  it('allows to specify digits of second fractions', function () {
+    const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatRFC3339(date, { fractionDigits: 3 }) ===
-        `2019-12-11T01:00:00.789${generateOffset(date)}`
+      `2019-12-11T01:00:00.789${generateOffset(date)}`
     )
   })
 
-  it('works when ms < 100', function() {
-    var date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
+  it('works when ms < 100', function () {
+    const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
     assert(
       formatRFC3339(date, { fractionDigits: 2 }) ===
-        `2019-12-11T01:00:00.01${generateOffset(date)}`
+      `2019-12-11T01:00:00.01${generateOffset(date)}`
     )
   })
 
-  it('implicitly converts options', function() {
-    var date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
-    // $ExpectedMistake
-    var result = formatRFC3339(date, {
+  it('implicitly converts options', function () {
+    const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
+    const result = formatRFC3339(date, {
+      // @ts-expect-error
       fractionDigits: '2'
     })
     assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
 
-  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function() {
-    // $ExpectedMistake
-    var block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
+  it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function () {
+    // @ts-expect-error
+    const block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
       fractionDigits: NaN
     })
     assert.throws(block, RangeError)
@@ -75,7 +74,8 @@ describe('formatRFC3339', () => {
     assert.throws(formatRFC3339.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(formatRFC3339.bind(null), TypeError)
   })
 })
