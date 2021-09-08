@@ -8,7 +8,7 @@ const RoundingMap: RoundingFnsMap = {
   ceil: Math.ceil,
   round: Math.round,
   floor: Math.floor,
-  trunc: (value: number) => parseInt(value.toString()), // Math.trunc is not supported by IE
+  trunc: (value: number) => value < 0 ? Math.ceil(value) : Math.floor(value), // Math.trunc is not supported by IE
 }
 
 export function getRoundingMethod(method: RoundingMethod) {
