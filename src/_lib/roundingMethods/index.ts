@@ -15,4 +15,4 @@ export function getRoundingMethod(method: RoundingMethod) {
   return RoundingMap[method]
 }
 
-export const defaultRoundingMethod = 'trunc'
+export const defaultRoundingMethod : RoundingMethod = 'trunc'
