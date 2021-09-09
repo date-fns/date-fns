@@ -10050,7 +10050,7 @@ declare module 'date-fns/esm' {
     options?: {
       additionalDigits?: 0 | 1 | 2
     }
-  ): Date
+  ): Date | string
   namespace parseISO {}
 
   function parseJSON(argument: string | number | Date): Date
