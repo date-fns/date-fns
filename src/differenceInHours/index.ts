@@ -1,4 +1,4 @@
-import { RoundingMethod } from '../../src/types'
+import type { RoundingMethod } from '../../src/types'
 import { millisecondsInHour } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
@@ -21,6 +21,7 @@ import {
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
+ * @param {RoundingMethod} roundingMethod - the rounding method (`ceil`, `floor`, `round` or `trunc`) with `trunc` by default.
  * @returns {Number} the number of hours
  * @throws {TypeError} 2 arguments required
  *

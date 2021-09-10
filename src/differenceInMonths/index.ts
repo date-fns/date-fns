@@ -10,7 +10,7 @@ import isLastDayOfMonth from '../isLastDayOfMonth/index'
  * @summary Get the number of full months between the given dates.
  *
  * @description
- * Get the number of full months between the given dates by default.
+ * Get the number of full months between the given dates using trunc as a default rounding method.
  *
  * ### v2.0.0 breaking changes:
  *

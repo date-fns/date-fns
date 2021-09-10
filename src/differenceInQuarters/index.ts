@@ -1,4 +1,4 @@
-import { RoundingMethod } from 'src/types'
+import type { RoundingMethod } from 'src/types'
 import differenceInMonths from '../differenceInMonths/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import {
@@ -20,6 +20,7 @@ import {
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
+ * @param {RoundingMethod} roundingMethod - the rounding method (`ceil`, `floor`, `round` or `trunc`) with `trunc` by default.
  * @returns {Number} the number of full quarters
  * @throws {TypeError} 2 arguments required
  *
