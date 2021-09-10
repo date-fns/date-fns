@@ -4,6 +4,14 @@ import assert from 'assert'
 import differenceInSeconds from '.'
 
 describe('differenceInSeconds', () => {
+  it('returns the number of seconds between the given dates with `trunc` as a default rounding method', () => {
+    const result = differenceInSeconds(
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 6, 29),
+      new Date(2014, 6 /* Jul */, 2, 12, 30, 20, 28.777)
+    )
+    assert(result === -13)
+  })
+
   it('returns the number of seconds between the given dates', () => {
     const result = differenceInSeconds(
       new Date(2014, 6 /* Jul */, 2, 12, 30, 20),

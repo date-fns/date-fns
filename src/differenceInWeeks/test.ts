@@ -12,6 +12,14 @@ describe('differenceInWeeks', () => {
     assert(result === 1)
   })
 
+  it('returns the number of weeks between the given dates with `trunc` as default a rounding method', () => {
+    const result = differenceInWeeks(
+      new Date(2014, 5 /* Jun */, 29, 6, 0),
+      new Date(2014, 6 /* Jul */, 13, 5, 0)
+    )
+    assert(result === -1)
+  })
+
   it('returns the number of weeks between the given dates with `trunc` passed in as a rounding method', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),

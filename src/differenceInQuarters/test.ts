@@ -4,6 +4,14 @@ import assert from 'assert'
 import differenceInQuarters from '.'
 
 describe('differenceInQuarters', () => {
+  it('returns the number of full quarters between the given dates  with `trunc` as a default rounding method', () => {
+    const result = differenceInQuarters(
+      new Date(2012, 6 /* Jul */, 2, 5, 0),
+      new Date(2011, 6 /* Jul */, 2, 6, 0)
+    )
+    assert(result === 3)
+  })
+
   it('returns the number of full quarters between the given dates', () => {
     const result = differenceInQuarters(
       new Date(2012, 6 /* Jul */, 2, 18, 0),

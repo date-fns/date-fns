@@ -12,6 +12,14 @@ describe('differenceInMinutes', () => {
     assert(result === 14)
   })
 
+  it('returns the number of minutes between the given dates with `trunc` as a default rounding method', () => {
+    const result = differenceInMinutes(
+      new Date(2014, 6 /* Jul */, 2, 12, 6, 50),
+      new Date(2014, 6 /* Jul */, 2, 12, 20, 10)
+    )
+    assert(result === -13)
+  })
+
   it('returns the number of minutes between the given dates with `trunc` passed in as a rounding method ', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20, 50),

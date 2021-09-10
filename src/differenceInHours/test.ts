@@ -4,6 +4,14 @@ import assert from 'assert'
 import differenceInHours from '.'
 
 describe('differenceInHours', function () {
+  it('returns the number of hours between the given dates with `trunc` as a default rounding method', function () {
+    const result = differenceInHours(
+      new Date(2014, 6 /* Jul */, 2, 6, 0, 29),
+      new Date(2014, 6 /* Jul */, 2, 20, 0, 28.973)
+    )
+    assert(result === -13)
+  })
+
   it('returns the number of hours between the given dates', function () {
     const result = differenceInHours(
       new Date(2014, 6 /* Jul */, 2, 20, 0),
