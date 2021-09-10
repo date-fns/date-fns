@@ -1,5 +1,34 @@
-import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+
+type ValidationResult = {
+  valid: boolean;
+  type?: 'date' | 'string' | 'number';
+}
+
+export function validate(dirtyDate: any): ValidationResult {
+  requiredArgs(1, arguments)
+
+  const validationResult: ValidationResult = {
+    valid: false,
+  }
+  const argStr = Object.prototype.toString.call(dirtyDate)
+
+  if (
+    dirtyDate instanceof Date ||
+    (typeof dirtyDate === 'object' && argStr === '[object Date]')
+  ) {
+    validationResult.valid = true
+    validationResult.type = 'date'
+  } else if (typeof dirtyDate === 'number' || argStr === '[object Number]') {
+    validationResult.valid = true
+    validationResult.type = 'number'
+  } else if (typeof dirtyDate === 'string' || argStr === '[object String]') {
+    validationResult.valid = false
+    validationResult.type = 'string'
+  }
+
+  return validationResult
+}
 
 /**
  * @name isValid
@@ -39,7 +68,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   that try to coerce arguments to the expected type
  *   (which is also the case with other *date-fns* functions).
  *
- * @param {*} date - the date to check
+ * @param {*} dirtyDate - the date to check
  * @returns {Boolean} the date is valid
  * @throws {TypeError} 1 argument required
  *
@@ -58,9 +87,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate) {
-  requiredArgs(1, arguments)
-
-  var date = toDate(dirtyDate)
-  return !isNaN(date)
+export default function isValid(dirtyDate: any): dirtyDate is Date | number {
+  return validate(dirtyDate).valid
 }
