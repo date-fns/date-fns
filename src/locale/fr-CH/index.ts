@@ -10,7 +10,7 @@ import formatRelative from './_lib/formatRelative/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary French locale.
+ * @summary French locale (Switzerland).
  * @language French
  * @iso-639-2 fra
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
