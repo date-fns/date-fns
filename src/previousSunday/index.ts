@@ -16,7 +16,7 @@ import previousDay from '../previousDay/index'
  * @example
  * // When is the previous Sunday before Jun, 21, 2021?
  * const result = previousSunday(new Date(2021, 5, 21))
- * //=> Fri June 20 2021 00:00:00
+ * //=> Sun June 20 2021 00:00:00
  */
 export default function previousSunday(date: Date | number): Date {
   requiredArgs(1, arguments)
