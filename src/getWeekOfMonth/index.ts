@@ -1,7 +1,7 @@
 import getDate from '../getDate/index'
 import getDay from '../getDay/index'
 import startOfMonth from '../startOfMonth/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 

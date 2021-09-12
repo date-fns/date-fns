@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import getWeekOfMonth from '.'
 
 describe('getWeekOfMonth', function () {
@@ -81,6 +81,7 @@ describe('getWeekOfMonth', function () {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(getWeekOfMonth.bind(null), TypeError)
   })
 
