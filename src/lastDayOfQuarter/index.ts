@@ -11,11 +11,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * The result will be in the local timezone.
  *
  * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
  * @returns {Date} the last day of a quarter
  * @throws {TypeError} 1 argument required
- * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example
  * // The last day of a quarter for 2 September 2014 11:55:00:
