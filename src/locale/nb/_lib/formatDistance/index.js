@@ -1,116 +1,91 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     singular: 'mindre enn ett sekund',
-    plural: 'mindre enn {{count}} sekunder'
+    plural: 'mindre enn {{count}} sekunder',
   },
 
   xSeconds: {
     singular: 'ett sekund',
-    plural: '{{count}} sekunder'
+    plural: '{{count}} sekunder',
   },
 
   halfAMinute: 'et halvt minutt',
 
   lessThanXMinutes: {
     singular: 'mindre enn ett minutt',
-    plural: 'mindre enn {{count}} minutter'
+    plural: 'mindre enn {{count}} minutter',
   },
 
   xMinutes: {
     singular: 'ett minutt',
-    plural: '{{count}} minutter'
+    plural: '{{count}} minutter',
   },
 
   aboutXHours: {
     singular: 'omtrent en time',
-    plural: 'omtrent {{count}} timer'
+    plural: 'omtrent {{count}} timer',
   },
 
   xHours: {
     singular: 'en time',
-    plural: '{{count}} timer'
+    plural: '{{count}} timer',
   },
 
   xDays: {
     singular: 'en dag',
-    plural: '{{count}} dager'
+    plural: '{{count}} dager',
   },
 
   aboutXWeeks: {
     singular: 'omtrent en uke',
-    plural: 'omtrent {{count}} uker'
+    plural: 'omtrent {{count}} uker',
   },
 
   xWeeks: {
     singular: 'en uke',
-    plural: '{{count}} uker'
+    plural: '{{count}} uker',
   },
 
   aboutXMonths: {
     singular: 'omtrent en måned',
-    plural: 'omtrent {{count}} måneder'
+    plural: 'omtrent {{count}} måneder',
   },
 
   xMonths: {
     singular: 'en måned',
-    plural: '{{count}} måneder'
+    plural: '{{count}} måneder',
   },
 
   aboutXYears: {
     singular: 'omtrent ett år',
-    plural: 'omtrent {{count}} år'
+    plural: 'omtrent {{count}} år',
   },
 
   xYears: {
     singular: 'ett år',
-    plural: '{{count}} år'
+    plural: '{{count}} år',
   },
 
   overXYears: {
     singular: 'over ett år',
-    plural: 'over {{count}} år'
+    plural: 'over {{count}} år',
   },
 
   almostXYears: {
     singular: 'nesten ett år',
-    plural: 'nesten {{count}} år'
-  }
+    plural: 'nesten {{count}} år',
+  },
 }
 
-var wordMapping = [
-  'null',
-  'en',
-  'to',
-  'tre',
-  'fire',
-  'fem',
-  'seks',
-  'sju',
-  'åtte',
-  'ni',
-  'ti',
-  'elleve',
-  'tolv'
-]
-
 export default function formatDistance(token, count, options) {
-  options = options || {
-    onlyNumeric: false
-  }
+  options = options || {}
 
   var translation = formatDistanceLocale[token]
   var result
   if (typeof translation === 'string') {
     result = translation
   } else if (count === 0 || count > 1) {
-    if (options.onlyNumeric) {
-      result = translation.plural.replace('{{count}}', count)
-    } else {
-      result = translation.plural.replace(
-        '{{count}}',
-        count < 13 ? wordMapping[count] : count
-      )
-    }
+    result = translation.plural.replace('{{count}}', count)
   } else {
     result = translation.singular
   }
