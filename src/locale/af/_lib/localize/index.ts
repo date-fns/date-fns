@@ -1,20 +1,20 @@
+import type { LocalizeFn, QuarterIndex } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { LocalizeFn } from '../../../types'
 
 const eraValues = {
-  narrow: ['vC', 'nC'],
-  abbreviated: ['vC', 'nC'],
-  wide: ['voor Christus', 'na Christus'],
+  narrow: ['vC', 'nC'] as const,
+  abbreviated: ['vC', 'nC'] as const,
+  wide: ['voor Christus', 'na Christus'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['K1', 'K2', 'K3', 'K4'] as const,
+  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal'] as const,
 }
 
 const monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'Jan',
     'Feb',
@@ -28,7 +28,7 @@ const monthValues = {
     'Okt',
     'Nov',
     'Des',
-  ],
+  ] as const,
   wide: [
     'Januarie',
     'Februarie',
@@ -42,13 +42,13 @@ const monthValues = {
     'Oktober',
     'November',
     'Desember',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['S', 'M', 'D', 'W', 'D', 'V', 'S'],
-  short: ['So', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Sa'],
-  abbreviated: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'],
+  narrow: ['S', 'M', 'D', 'W', 'D', 'V', 'S'] as const,
+  short: ['So', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Sa'] as const,
+  abbreviated: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'] as const,
   wide: [
     'Sondag',
     'Maandag',
@@ -57,7 +57,7 @@ const dayValues = {
     'Donderdag',
     'Vrydag',
     'Saterdag',
-  ],
+  ] as const,
 }
 
 const dayPeriodValues = {
@@ -125,7 +125,7 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number> = (dirtyNumber) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber) => {
   const number = Number(dirtyNumber)
   const rem100 = number % 100
   if (rem100 < 20) {
@@ -151,9 +151,7 @@ const localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter: number) {
-      return quarter - 1
-    },
+    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
   }),
 
   month: buildLocalizeFn({
