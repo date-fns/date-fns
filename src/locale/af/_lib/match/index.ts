@@ -10,7 +10,7 @@ const matchEraPatterns = {
   wide: /^((voor|na) Christus)/,
 }
 const parseEraPatterns = {
-  any: [/^v/, /^n/],
+  any: [/^v/, /^n/] as const,
 }
 
 const matchQuarterPatterns = {
@@ -19,7 +19,7 @@ const matchQuarterPatterns = {
   wide: /^[1234](st|d)e kwartaal/i,
 }
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i],
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
 
 const matchMonthPatterns = {
@@ -41,7 +41,7 @@ const parseMonthPatterns = {
     /^O/i,
     /^N/i,
     /^D/i,
-  ],
+  ] as const,
   any: [
     /^Jan/i,
     /^Feb/i,
@@ -55,7 +55,7 @@ const parseMonthPatterns = {
     /^Okt/i,
     /^Nov/i,
     /^Dec/i,
-  ],
+  ] as const,
 }
 
 const matchDayPatterns = {
@@ -65,8 +65,8 @@ const matchDayPatterns = {
   wide: /^(Sondag|Maandag|Dinsdag|Woensdag|Donderdag|Vrydag|Saterdag)/i,
 }
 const parseDayPatterns = {
-  narrow: [/^S/i, /^M/i, /^D/i, /^W/i, /^D/i, /^V/i, /^S/i],
-  any: [/^So/i, /^Ma/i, /^Di/i, /^Wo/i, /^Do/i, /^Vr/i, /^Sa/i],
+  narrow: [/^S/i, /^M/i, /^D/i, /^W/i, /^D/i, /^V/i, /^S/i] as const,
+  any: [/^So/i, /^Ma/i, /^Di/i, /^Wo/i, /^Do/i, /^Vr/i, /^Sa/i] as const,
 }
 
 const matchDayPeriodPatterns = {
@@ -104,7 +104,7 @@ const match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: (index: number) => index + 1,
+    valueCallback: (index) => index + 1,
   }),
 
   month: buildMatchFn({
