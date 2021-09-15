@@ -11,7 +11,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of quarters within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} the array with starts of quarters from the quarter of the interval start to the quarter of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end

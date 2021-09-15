@@ -39,7 +39,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   )
  *   ```
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param {Object} [options] - an object with options.
  * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
@@ -62,7 +62,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //   Fri Oct 10 2014 00:00:00
  * // ]
  */
-export default function eachDayOfInterval(dirtyInterval: Interval, options?: {step?: number}): Date[] {
+export default function eachDayOfInterval(
+  dirtyInterval: Interval,
+  options?: { step?: number }
+): Date[] {
   requiredArgs(1, arguments)
 
   const interval = dirtyInterval || {}

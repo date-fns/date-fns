@@ -62,8 +62,34 @@ var monthValues = {
 }
 
 var formattingMonthValues = {
-  narrow: monthValues.narrow,
-  abbreviated: monthValues.abbreviated,
+  narrow: [
+    'I',
+    'II',
+    'III',
+    'IV',
+    'V',
+    'VI',
+    'VII',
+    'VIII',
+    'IX',
+    'X',
+    'XI',
+    'XII',
+  ],
+  abbreviated: [
+    '1-р сар',
+    '2-р сар',
+    '3-р сар',
+    '4-р сар',
+    '5-р сар',
+    '6-р сар',
+    '7-р сар',
+    '8-р сар',
+    '9-р сар',
+    '10-р сар',
+    '11-р сар',
+    '12-р сар',
+  ],
   wide: [
     'нэгдүгээр сар',
     'хоёрдугаар сар',
@@ -88,9 +114,9 @@ var dayValues = {
 }
 
 var formattingDayValues = {
-  narrow: dayValues.narrow,
-  short: dayValues.short,
-  abbreviated: dayValues.abbreviated,
+  narrow: ['Н', 'Д', 'М', 'Л', 'П', 'Б', 'Б'],
+  short: ['Ня', 'Да', 'Мя', 'Лх', 'Пү', 'Ба', 'Бя'],
+  abbreviated: ['Ням', 'Дав', 'Мяг', 'Лха', 'Пүр', 'Баа', 'Бям'],
   wide: ['ням', 'даваа', 'мягмар', 'лхагва', 'пүрэв', 'баасан', 'бямба'],
 }
 

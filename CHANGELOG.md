@@ -8,6 +8,151 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.23.0 - 2021-07-23
+
+Thanks to [Liam Tait](http://github.com/Liam-Tait), [fturmel](http://github.com/fturmel), [Takuya Uehara](http://github.com/indigolain), [Branislav Lazic](http://github.com/BranislavLazic), [Seyyed Morteza Moosavi](http://github.com/smmoosavi), [Felipe Armoni](http://github.com/komyg), [Sasha Koss](http://github.com/kossnocorp), [Michael Mok](http://github.com/pmmmwh), [Tan75](http://github.com/tan75) and [Maxim Topciu](http://github.com/maximtop) for working on the release.
+
+### Changed
+
+- [Improved `nextDay` performance by roughly 50%.](https://github.com/date-fns/date-fns/pull/2524)
+
+- [Added more ordinal formatting to the Japanese locale.](https://github.com/date-fns/date-fns/pull/2471)
+
+### Added
+
+- [Added a new `clamp` function that allows to bound a date to an interval.](https://github.com/date-fns/date-fns/pull/2498)
+
+- [Added Bosnian locale (bs).](https://github.com/date-fns/date-fns/pull/2495)
+
+- [Allowed passing `undefined` in the duration to add and sub functions.](https://github.com/date-fns/date-fns/pull/2515)
+
+## v2.22.1 - 2021-05-28
+
+Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
+
+### Fixed
+
+- Fixed constant typings. ([#2491](https://github.com/date-fns/date-fns/issues/2491))
+
+## v2.22.0 - 2021-05-28
+
+On this release worked [Sasha Koss](http://github.com/kossnocorp), [Lucas Silva](http://github.com/LucasHFS), [Lay](http://github.com/brownsugar), [jwbth](http://github.com/jwbth), [fturmel](http://github.com/fturmel), [Tan75](http://github.com/tan75) and [Anastasia Kobzar](http://github.com/rikkalo).
+
+### Fixed
+
+- [Fixed Taiwanese locale to use traditional Chinese and removed unnecessary spaces.](https://github.com/date-fns/date-fns/pull/2436)
+
+- [Fixed Russian locale to use correct long formats.](https://github.com/date-fns/date-fns/pull/2478)
+
+### Added
+
+- [Added 18 new conversion functions](https://github.com/date-fns/date-fns/pull/2433):
+  - `daysToWeeks`
+  - `hoursToMilliseconds`
+  - `hoursToMinutes`
+  - `hoursToSeconds`
+  - `millisecondsToHours`
+  - `millisecondsToMinutes`
+  - `millisecondsToSeconds`
+  - `minutesToHours`
+  - `minutesToMilliseconds`
+  - `minutesToSeconds`
+  - `monthsToQuarters`
+  - `monthsToYears`
+  - `quartersToMonths`
+  - `quartersToYears`
+  - `secondsToHours`
+  - `secondsToMilliseconds`
+  - `secondsToMinutes`
+  - `weeksToDays`
+  - `yearsToMonths`
+  - `yearsToQuarters`
+
+## v2.21.3 - 2021-05-08
+
+This release is brought to you by [Maxim Topciu](http://github.com/maximtop).
+
+### Fixed
+
+- [Fixed IE11 support by babelifing the shorthand properties.](https://github.com/date-fns/date-fns/pull/2467)
+
+## v2.21.2 - 2021-05-05
+
+Kudos to [Aleksei Korzun](http://github.com/a-korzun), [Maxim Topciu](http://github.com/maximtop), [Jonas L](http://github.com/jooola), [Mohammad ali Ali panah](http://github.com/always-maap) and [Tan75](http://github.com/tan75) for working on the release.
+
+### Fixed
+
+- [`differenceInBusinessDays` now returns `NaN` instead of `Invalid Date` when an invalid argument is passed to the function.](https://github.com/date-fns/date-fns/pull/2414)
+
+- [Fixed `weekStartsOn` in Persian locale.](https://github.com/date-fns/date-fns/pull/2430)
+
+## v2.21.1 - 2021-04-15
+
+Thanks to [Sasha Koss](http://github.com/kossnocorp) for working on the release.
+
+### Fixed
+
+- [Fixed a breaking change introduced by using modern default argument value syntax (see https://github.com/Hacker0x01/react-datepicker/issues/2870).](https://github.com/date-fns/date-fns/pull/2423)
+
+## v2.21.0 - 2021-04-14
+
+This release is brought to you by [Aleksei Korzun](http://github.com/a-korzun), [Tan75](http://github.com/tan75), [Rubens Mariuzzo](http://github.com/rmariuzzo), [Christoph Stenglein](http://github.com/cstenglein) and [Clément Tamisier](http://github.com/ctamisier).
+
+### Fixed
+
+- [Made `formatDistanceStrict` return `12 months` instead of `1 year` when `unit: 'month'`.](https://github.com/date-fns/date-fns/pull/2411)
+
+### Added
+
+- [Added Haitian Creole (`ht`) locale.](https://github.com/date-fns/date-fns/pull/2396)
+- [Added Austrian German (`de-AT`) locale.](https://github.com/date-fns/date-fns/pull/2362)
+
+## v2.20.3 - 2021-04-13
+
+Kudos to [fturmel](http://github.com/fturmel) for working on the release.
+
+### Fixed
+
+- [Fixed broken tree-shaking caused by missing links to corresponding ESM.](https://github.com/date-fns/date-fns/pull/2339) ([#2207](https://github.com/date-fns/date-fns/issues/2207))
+
+## v2.20.2 - 2021-04-12
+
+Kudos to [Maxim Topciu](http://github.com/maximtop) for working on the release.
+
+### Fixed
+
+- [Fixed IE11 incompatibility caused by the usage of spread syntax.](https://github.com/date-fns/date-fns/pull/2407) ([#2408](https://github.com/date-fns/date-fns/issues/2408))
+
+## v2.20.1 - 2021-04-09
+
+This release is brought to you by [Sasha Koss](http://github.com/kossnocorp) and [Tan75](http://github.com/tan75).
+
+### Fixed
+
+- Fixed `isDate` Flow typings that we broke in `v2.20.0`.
+
+## v2.20.0 - 2021-04-08
+
+This release is brought to you by [Sasha Koss](http://github.com/kossnocorp), [Maxim Topciu](http://github.com/maximtop), [tu4mo](http://github.com/tu4mo), [Tan75](http://github.com/tan75), [Ardit Dine](http://github.com/arditdine), [Carl Rosell](http://github.com/CarlRosell), [Roman Mahotskyi](http://github.com/enheit), [Mateusz Krzak](http://github.com/mateuszkrzak), [fgottschalk](http://github.com/fgottschalk), [Anastasia Kobzar](http://github.com/rikkalo), [Bilguun Ochirbat](http://github.com/bilguun0203), [Lesha Koss](http://github.com/leshakoss), [YuLe](http://github.com/yuler) and [guyroberts21](http://github.com/guyroberts21).
+
+### Fixed
+
+- [Made `formatDistanceStrict` and `formatDistanceToNowStrict` always return `1 year` instead of `12 months`.](https://github.com/date-fns/date-fns/pull/2391) ([#2388](https://github.com/date-fns/date-fns/issues/2388))
+
+- Fixed `nextDay`, `nextMonday` and `nextTuesday` missing in exports and type definitions. ([#2325](https://github.com/date-fns/date-fns/issues/2325))
+
+- [Fixed a DST bug in `formatDistanceStrict`.](https://github.com/date-fns/date-fns/pull/2329) ([#2307](https://github.com/date-fns/date-fns/issues/2307))
+
+### Added
+
+- [Added new `eachMinuteOfInterval` function.](https://github.com/date-fns/date-fns/pull/2382)
+
+- [Added Albanian (`sq`) locale](https://github.com/date-fns/date-fns/pull/2290)
+
+- [Added Mongolian (`mn`) locale](https://github.com/date-fns/date-fns/pull/1961)
+
+- [Added `nextWednesday`, `nextThursday`, `nextFriday`, `nextSaturday` and `nextSunday`.](https://github.com/date-fns/date-fns/pull/2291)
+
 ## v2.19.0 - 2021-03-05
 
 On this release worked [Tan75](http://github.com/tan75).

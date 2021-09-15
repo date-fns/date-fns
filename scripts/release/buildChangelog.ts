@@ -12,20 +12,12 @@ const gh = new Octokit({ auth: process.env.GITHUB_TOKEN })
 })()
 
 function renderChangelog(changelog: ChangelogVersion) {
-  const items = changelog.added
-    .concat(changelog.changed)
-    .concat(changelog.fixed)
-  const authors = uniq(
-    items.map(({ author }) => author),
-    (author) => author.login
-  )
-
   let markdown = `## ${renderVersion(changelog.version)} - ${format(
     Date.now(),
     'yyyy-MM-dd'
   )}
 
-${sample(thanksOptions)!(renderAuthors(authors))}`
+${sample(thanksOptions)!(renderAuthors(changelog.authors))}`
 
   if (changelog.fixed.length)
     markdown += `
@@ -70,7 +62,10 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     )
   )
 
-  const items = commits.all.reduce<ChangelogItem[]>((acc, commit) => {
+  const items: ChangelogItem[] = []
+  const authors: Author[] = []
+
+  commits.all.forEach((commit) => {
     const author: Author = {
       login: authorsMap[commit.hash],
       email: commit.author_email,
@@ -90,9 +85,11 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     })
     if (!issues?.length) issues = undefined
 
-    const items = extractItems(commit.body.trim(), { author, pr, issues })
-    return acc.concat(items)
-  }, [])
+    const commitItems = extractItems(commit.body.trim(), { author, pr, issues })
+
+    if (!authors.find((a) => a.login === author.login)) authors.push(author)
+    items.push(...commitItems)
+  })
 
   const changed = items.filter((i) => i.type === 'changed')
   const fixed = items.filter((i) => i.type === 'fixed')
@@ -116,7 +113,7 @@ async function buildChangelog(): Promise<ChangelogVersion> {
     }
   }
 
-  return { version, changed, fixed, added }
+  return { version, changed, fixed, added, authors }
 }
 
 function parseVersion(tag: string): Version {
@@ -262,6 +259,7 @@ interface ChangelogVersion {
   changed: ChangelogItem[]
   fixed: ChangelogItem[]
   added: ChangelogItem[]
+  authors: Author[]
 }
 
 interface Author {

@@ -1,16 +1,16 @@
+import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import type { Localize, LocalizeFn } from '../../../types'
 
 const eraValues = {
-  narrow: ['v.Chr.', 'n.Chr.'],
-  abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['vor Christus', 'nach Christus'],
+  narrow: ['v.Chr.', 'n.Chr.'] as const,
+  abbreviated: ['v.Chr.', 'n.Chr.'] as const,
+  wide: ['vor Christus', 'nach Christus'] as const,
 }
 
 const quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'],
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'] as const,
 }
 
 // Note: in German, the names of days of the week and months are capitalized.
@@ -18,21 +18,21 @@ const quarterValues = {
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 const monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
-    'Jan',
-    'Feb',
-    'Mär',
-    'Apr',
+    'Jan.',
+    'Feb.',
+    'März',
+    'Apr.',
     'Mai',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Okt',
-    'Nov',
-    'Dez',
-  ],
+    'Juni',
+    'Juli',
+    'Aug.',
+    'Sep.',
+    'Okt.',
+    'Nov.',
+    'Dez.',
+  ] as const,
   wide: [
     'Januar',
     'Februar',
@@ -46,13 +46,13 @@ const monthValues = {
     'Oktober',
     'November',
     'Dezember',
-  ],
+  ] as const,
 }
 
 const dayValues = {
-  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'],
-  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+  narrow: ['S', 'M', 'D', 'M', 'D', 'F', 'S'] as const,
+  short: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'] as const,
+  abbreviated: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'] as const,
   wide: [
     'Sonntag',
     'Montag',
@@ -61,7 +61,7 @@ const dayValues = {
     'Donnerstag',
     'Freitag',
     'Samstag',
-  ],
+  ] as const,
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/de.html#1881
@@ -131,14 +131,14 @@ const formattingDayPeriodValues = {
   },
 }
 
-const ordinalNumber: LocalizeFn<number> = (dirtyNumber, _dirtyOptions) => {
+const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber) => {
   const number = Number(dirtyNumber)
 
   return number + '.'
 }
 
 const localize: Localize = {
-  ordinalNumber: ordinalNumber,
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -148,7 +148,7 @@ const localize: Localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: (quarter: number) => quarter - 1,
+    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
   }),
 
   month: buildLocalizeFn({

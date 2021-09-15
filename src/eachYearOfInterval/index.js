@@ -9,7 +9,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of yearly timestamps within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link docs/types/Interval}
+ * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} the array with starts of yearly timestamps from the month of the interval start to the month of the interval end
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end

@@ -220,6 +220,20 @@ describe('formatDistanceToNowStrict', function () {
     })
 
     describe('year', function () {
+      it('returns `1 year` - see issue 2388', () => {
+        const result = formatDistanceToNowStrict(
+          new Date(1985, 3, 4, 10, 32, 0)
+        )
+        assert(result === '1 year')
+      })
+
+      it('returns `2 years` - see issue 2388', () => {
+        const result = formatDistanceToNowStrict(
+          new Date(1984, 3, 4, 10, 32, 0)
+        )
+        assert(result === '2 years')
+      })
+
       it('0 years', function () {
         var result = formatDistanceToNowStrict(
           new Date(1986, 3, 4, 10, 32, 0),
