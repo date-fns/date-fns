@@ -1,3 +1,4 @@
+import isDate from '../isDate/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -45,22 +46,25 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // For the valid date:
- * var result = isValid(new Date(2014, 1, 31))
+ * const result = isValid(new Date(2014, 1, 31))
  * //=> true
  *
  * @example
  * // For the value, convertable into a date:
- * var result = isValid(1393804800000)
+ * const result = isValid(1393804800000)
  * //=> true
  *
  * @example
  * // For the invalid date:
- * var result = isValid(new Date(''))
+ * const result = isValid(new Date(''))
  * //=> false
  */
-export default function isValid(dirtyDate) {
+export default function isValid(dirtyDate: unknown): boolean {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate)
-  return !isNaN(date)
+  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
+    return false
+  }
+  const date = toDate(dirtyDate)
+  return !isNaN(Number(date))
 }
