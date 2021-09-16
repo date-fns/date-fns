@@ -40,7 +40,7 @@ describe('differenceInSeconds', () => {
     const result = differenceInSeconds(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 29.973),
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.976),
-      'round'
+      { roundingMethod: 'round' }
     )
     assert(result === 1)
   })
@@ -50,7 +50,7 @@ describe('differenceInSeconds', () => {
       new Date(2021, 6 /* Jul */, 22, 6, 1, 27.976),
       new Date(2021, 6 /* Jul */, 22, 6, 1, 28.973),
 
-      'round'
+      { roundingMethod: 'round' }
     )
     assert(result === -1)
   })
@@ -59,7 +59,7 @@ describe('differenceInSeconds', () => {
     const result = differenceInSeconds(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 27.976),
       new Date(2021, 6 /* Jul */, 22, 6, 1, 29.973),
-      'ceil'
+      { roundingMethod: 'ceil' }
     )
     assert(result === -2)
   })
@@ -68,7 +68,7 @@ describe('differenceInSeconds', () => {
     const result = differenceInSeconds(
       new Date(2021, 6 /* Jul */, 22, 6, 1, 29.973),
       new Date(2021, 6 /* Jul */, 22, 6, 1, 27.976),
-      'ceil'
+      { roundingMethod: 'ceil' }
     )
     assert(result === 2)
   })

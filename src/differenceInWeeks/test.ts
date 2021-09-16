@@ -24,7 +24,7 @@ describe('differenceInWeeks', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      'trunc'
+      { roundingMethod: 'trunc' }
     )
     assert(result === 1)
   })
@@ -33,7 +33,7 @@ describe('differenceInWeeks', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      'ceil'
+      { roundingMethod: 'ceil' }
     )
     assert(result === 2)
   })
@@ -42,7 +42,7 @@ describe('differenceInWeeks', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 8, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      'floor'
+      { roundingMethod: 'floor' }
     )
     assert(result === 1)
   })
@@ -51,7 +51,7 @@ describe('differenceInWeeks', () => {
     const result = differenceInWeeks(
       new Date(2014, 6 /* Jul */, 10, 18, 0),
       new Date(2014, 5 /* Jun */, 29, 6, 0),
-      'round'
+      { roundingMethod: 'round' }
     )
     assert(result === 2)
   })

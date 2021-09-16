@@ -32,7 +32,7 @@ describe('differenceInQuarters', () => {
     const result = differenceInQuarters(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 4 /* May */, 2, 6, 0),
-      'ceil'
+      { roundingMethod: 'ceil' }
     )
     assert(result === 5)
   })
@@ -41,7 +41,7 @@ describe('differenceInQuarters', () => {
     const result = differenceInQuarters(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 4 /* May */, 2, 6, 0),
-      'floor'
+      { roundingMethod: 'floor' }
     )
     assert(result === 4)
   })
@@ -50,7 +50,7 @@ describe('differenceInQuarters', () => {
     const result = differenceInQuarters(
       new Date(2012, 6 /* Jul */, 2, 18, 0),
       new Date(2011, 4 /* May */, 2, 6, 0),
-      'round'
+      { roundingMethod: 'round' }
     )
     assert(result === 5)
   })

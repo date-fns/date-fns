@@ -24,7 +24,7 @@ describe('differenceInMinutes', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20, 50),
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
-      'trunc'
+      { roundingMethod: 'trunc' }
     )
     assert(result === 14)
   })
@@ -33,7 +33,7 @@ describe('differenceInMinutes', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20, 50),
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
-      'ceil'
+      { roundingMethod: 'ceil' }
     )
     assert(result === 15)
   })
@@ -42,7 +42,7 @@ describe('differenceInMinutes', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20, 50),
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
-      'floor'
+      { roundingMethod: 'floor' }
     )
     assert(result === 14)
   })
@@ -51,7 +51,7 @@ describe('differenceInMinutes', () => {
     const result = differenceInMinutes(
       new Date(2014, 6 /* Jul */, 2, 12, 20, 60),
       new Date(2014, 6 /* Jul */, 2, 12, 6, 10),
-      'round'
+      { roundingMethod: 'round' }
     )
     assert(result === 15)
   })

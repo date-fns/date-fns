@@ -57,4 +57,8 @@ export interface DateValues {
 
 export type RoundingMethod = 'ceil' | 'floor' | 'round' | 'trunc'
 
+export interface RoundingOptions {
+  roundingMethod?: RoundingMethod
+}
+
 export type Unit = 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year'
