@@ -1,4 +1,4 @@
-import type { RoundingMethod } from 'src/types'
+import type { RoundingMethod } from '../types'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 import {
