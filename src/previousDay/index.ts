@@ -12,7 +12,7 @@ import type { Day } from '../types'
  * When is the previous day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
  * @param {Date | number} date - the date to check
- * @param {Day} day - day of the week
+ * @param {number} day - day of the week
  * @returns {Date} - the date is the previous day of week
  * @throws {TypeError} - 2 arguments required
  *
