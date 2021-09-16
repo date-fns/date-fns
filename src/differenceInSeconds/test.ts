@@ -29,18 +29,28 @@ describe('differenceInSeconds', function () {
   })
 
   describe('edge cases', function () {
-    it('the difference is less than a second, but the given dates are in different calendar seconds', function () {
+    it('the difference is less than a second, but the given dates are in different calendar seconds using default floor roundingMethod', function () {
       const result = differenceInSeconds(
         new Date(2014, 8 /* Sep */, 5, 12, 30, 12),
-        new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 999)
+        new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 500),
       )
       assert(result === 0)
     })
 
-    it('the same for the swapped dates', function () {
+    it('the difference is less than a second, but the given dates are in different calendar seconds using ceil roundingMethod', function () {
       const result = differenceInSeconds(
+        new Date(2014, 8 /* Sep */, 5, 12, 30, 12),
+        new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 100),
+        'ceil',
+      )
+      assert(result === 1)
+    })
+
+    it('the difference is less than a second, but the given dates are in different calendar seconds using round roundingMethod', function () {
+      const result = differenceInSeconds(
+        new Date(2014, 8 /* Sep */, 5, 12, 30, 12),
         new Date(2014, 8 /* Sep */, 5, 12, 30, 11, 999),
-        new Date(2014, 8 /* Sep */, 5, 12, 30, 12)
+        'round',
       )
       assert(result === 0)
     })
