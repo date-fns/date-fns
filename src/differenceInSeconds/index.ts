@@ -20,7 +20,7 @@ import {
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
- * @param {RoundingMethod} roundingMethod - the rounding method (`ceil`, `floor`, `round` or `trunc`) with `trunc` by default.
+ * @param {String} roundingMethod - the rounding method (`ceil`, `floor`, `round` or `trunc`) with `trunc` by default.
  * @returns {Number} the number of seconds
  * @throws {TypeError} 2 arguments required
  *
