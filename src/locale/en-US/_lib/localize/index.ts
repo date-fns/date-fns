@@ -160,6 +160,8 @@ const ordinalNumber: LocalizeFn<number, undefined> = (
 const localize: Localize = {
   ordinalNumber,
 
+  getMonths: (type = 'wide') => (monthValues[type]),
+  
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide',

@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['ჩ.წ-მდე', 'ჩ.წ'],
   abbreviated: ['ჩვ.წ-მდე', 'ჩვ.წ'],
-  wide: ['ჩვენს წელთაღრიცხვამდე', 'ჩვენი წელთაღრიცხვით']
+  wide: ['ჩვენს წელთაღრიცხვამდე', 'ჩვენი წელთაღრიცხვით'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ლი კვ', '2-ე კვ', '3-ე კვ', '4-ე კვ'],
-  wide: ['1-ლი კვარტალი', '2-ე კვარტალი', '3-ე კვარტალი', '4-ე კვარტალი']
+  wide: ['1-ლი კვარტალი', '2-ე კვარტალი', '3-ე კვარტალი', '4-ე კვარტალი'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -29,7 +29,7 @@ var monthValues = {
     'სე',
     'ოქ',
     'ნო',
-    'დე'
+    'დე',
   ],
   abbreviated: [
     'იან',
@@ -43,7 +43,7 @@ var monthValues = {
     'სექ',
     'ოქტ',
     'ნოე',
-    'დეკ'
+    'დეკ',
   ],
   wide: [
     'იანვარი',
@@ -57,8 +57,8 @@ var monthValues = {
     'სექტემბერი',
     'ოქტომბერი',
     'ნოემბერი',
-    'დეკემბერი'
-  ]
+    'დეკემბერი',
+  ],
 }
 
 var dayValues = {
@@ -72,8 +72,8 @@ var dayValues = {
     'ოთხშაბათი',
     'ხუთშაბათი',
     'პარასკევი',
-    'შაბათი'
-  ]
+    'შაბათი',
+  ],
 }
 
 var dayPeriodValues = {
@@ -85,7 +85,7 @@ var dayPeriodValues = {
     morning: 'დილა',
     afternoon: 'საღამო',
     evening: 'საღამო',
-    night: 'ღამე'
+    night: 'ღამე',
   },
   abbreviated: {
     am: 'AM',
@@ -95,7 +95,7 @@ var dayPeriodValues = {
     morning: 'დილა',
     afternoon: 'საღამო',
     evening: 'საღამო',
-    night: 'ღამე'
+    night: 'ღამე',
   },
   wide: {
     am: 'a.m.',
@@ -105,8 +105,8 @@ var dayPeriodValues = {
     morning: 'დილა',
     afternoon: 'საღამო',
     evening: 'საღამო',
-    night: 'ღამე'
-  }
+    night: 'ღამე',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -117,7 +117,7 @@ var formattingDayPeriodValues = {
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
     evening: 'საღამოს',
-    night: 'ღამით'
+    night: 'ღამით',
   },
   abbreviated: {
     am: 'AM',
@@ -127,7 +127,7 @@ var formattingDayPeriodValues = {
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
     evening: 'საღამოს',
-    night: 'ღამით'
+    night: 'ღამით',
   },
   wide: {
     am: 'a.m.',
@@ -137,8 +137,8 @@ var formattingDayPeriodValues = {
     morning: 'დილით',
     afternoon: 'ნაშუადღევს',
     evening: 'საღამოს',
-    night: 'ღამით'
-  }
+    night: 'ღამით',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -164,35 +164,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

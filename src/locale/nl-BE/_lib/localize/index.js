@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['v.C.', 'n.C.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['voor Christus', 'na Christus']
+  wide: ['voor Christus', 'na Christus'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal']
+  wide: ['1e kwartaal', '2e kwartaal', '3e kwartaal', '4e kwartaal'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'sep.',
     'okt.',
     'nov.',
-    'dec.'
+    'dec.',
   ],
   wide: [
     'januari',
@@ -40,8 +40,8 @@ var monthValues = {
     'september',
     'oktober',
     'november',
-    'december'
-  ]
+    'december',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'woensdag',
     'donderdag',
     'vrijdag',
-    'zaterdag'
-  ]
+    'zaterdag',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: "'s ochtends",
     afternoon: "'s namiddags",
     evening: "'s avonds",
-    night: "'s nachts"
+    night: "'s nachts",
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: "'s ochtends",
     afternoon: "'s namiddags",
     evening: "'s avonds",
-    night: "'s nachts"
+    night: "'s nachts",
   },
   wide: {
     am: 'AM',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: "'s ochtends",
     afternoon: "'s namiddags",
     evening: "'s avonds",
-    night: "'s nachts"
-  }
+    night: "'s nachts",
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -100,33 +100,35 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

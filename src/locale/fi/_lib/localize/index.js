@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['eaa.', 'jaa.'],
   abbreviated: ['eaa.', 'jaa.'],
-  wide: ['ennen ajanlaskun alkua', 'jälkeen ajanlaskun alun']
+  wide: ['ennen ajanlaskun alkua', 'jälkeen ajanlaskun alun'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. kvartaali', '2. kvartaali', '3. kvartaali', '4. kvartaali']
+  wide: ['1. kvartaali', '2. kvartaali', '3. kvartaali', '4. kvartaali'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'syys',
     'loka',
     'marras',
-    'joulu'
+    'joulu',
   ],
   wide: [
     'tammikuu',
@@ -40,14 +40,14 @@ var monthValues = {
     'syyskuu',
     'lokakuu',
     'marraskuu',
-    'joulukuu'
-  ]
+    'joulukuu',
+  ],
 }
 
 var formattingMonthValues = {
   narrow: monthValues.narrow,
   abbreviated: monthValues.abbreviated,
-  wide: monthValues.wide.map(name => name + 'ta')
+  wide: monthValues.wide.map((name) => name + 'ta'),
 }
 
 var dayValues = {
@@ -61,15 +61,15 @@ var dayValues = {
     'keskiviikko',
     'torstai',
     'perjantai',
-    'lauantai'
-  ]
+    'lauantai',
+  ],
 }
 
 var formattingDayValues = {
   narrow: dayValues.narrow,
   short: dayValues.short,
   abbreviated: dayValues.abbreviated,
-  wide: dayValues.wide.map(name => name + 'na')
+  wide: dayValues.wide.map((name) => name + 'na'),
 }
 
 var dayPeriodValues = {
@@ -81,7 +81,7 @@ var dayPeriodValues = {
     morning: 'ap',
     afternoon: 'ip',
     evening: 'illalla',
-    night: 'yöllä'
+    night: 'yöllä',
   },
   abbreviated: {
     am: 'ap',
@@ -91,7 +91,7 @@ var dayPeriodValues = {
     morning: 'ap',
     afternoon: 'ip',
     evening: 'illalla',
-    night: 'yöllä'
+    night: 'yöllä',
   },
   wide: {
     am: 'ap',
@@ -101,8 +101,8 @@ var dayPeriodValues = {
     morning: 'aamupäivällä',
     afternoon: 'iltapäivällä',
     evening: 'illalla',
-    night: 'yöllä'
-  }
+    night: 'yöllä',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -113,35 +113,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     formattingValues: formattingMonthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     formattingValues: formattingDayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

@@ -6,20 +6,20 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['TCN', 'SCN'],
   abbreviated: ['trước CN', 'sau CN'],
-  wide: ['trước Công Nguyên', 'sau Công Nguyên']
+  wide: ['trước Công Nguyên', 'sau Công Nguyên'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4']
+  wide: ['Quý 1', 'Quý 2', 'Quý 3', 'Quý 4'],
 }
 
 var formattingQuarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
   // I notice many news outlet use this "quý II/2018"
-  wide: ['quý I', 'quý II', 'quý III', 'quý IV']
+  wide: ['quý I', 'quý II', 'quý III', 'quý IV'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -40,7 +40,7 @@ var monthValues = {
     'Thg 9',
     'Thg 10',
     'Thg 11',
-    'Thg 12'
+    'Thg 12',
   ],
   wide: [
     'Tháng Một',
@@ -54,8 +54,8 @@ var monthValues = {
     'Tháng Chín',
     'Tháng Mười',
     'Tháng Mười Một',
-    'Tháng Mười Hai'
-  ]
+    'Tháng Mười Hai',
+  ],
 }
 // In Vietnamese date formatting, month number less than 10 expected to have leading zero
 var formattingMonthValues = {
@@ -71,7 +71,7 @@ var formattingMonthValues = {
     '09',
     '10',
     '11',
-    '12'
+    '12',
   ],
   abbreviated: [
     'thg 1',
@@ -85,7 +85,7 @@ var formattingMonthValues = {
     'thg 9',
     'thg 10',
     'thg 11',
-    'thg 12'
+    'thg 12',
   ],
   wide: [
     'tháng 01',
@@ -99,8 +99,8 @@ var formattingMonthValues = {
     'tháng 09',
     'tháng 10',
     'tháng 11',
-    'tháng 12'
-  ]
+    'tháng 12',
+  ],
 }
 
 var dayValues = {
@@ -114,8 +114,8 @@ var dayValues = {
     'Thứ Tư',
     'Thứ Năm',
     'Thứ Sáu',
-    'Thứ Bảy'
-  ]
+    'Thứ Bảy',
+  ],
 }
 
 // Vietnamese are used to AM/PM borrowing from English, hence `narrow` and
@@ -134,7 +134,7 @@ var dayPeriodValues = {
     morning: 'sg',
     afternoon: 'ch',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   abbreviated: {
     am: 'AM',
@@ -144,7 +144,7 @@ var dayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   wide: {
     am: 'SA',
@@ -154,8 +154,8 @@ var dayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
-  }
+    night: 'đêm',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -167,7 +167,7 @@ var formattingDayPeriodValues = {
     morning: 'sg',
     afternoon: 'ch',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   abbreviated: {
     am: 'AM',
@@ -177,7 +177,7 @@ var formattingDayPeriodValues = {
     morning: 'sáng',
     afternoon: 'chiều',
     evening: 'tối',
-    night: 'đêm'
+    night: 'đêm',
   },
   wide: {
     am: 'SA',
@@ -187,8 +187,8 @@ var formattingDayPeriodValues = {
     morning: 'vào buổi sáng',
     afternoon: 'vào buổi chiều',
     evening: 'vào buổi tối',
-    night: 'vào ban đêm'
-  }
+    night: 'vào ban đêm',
+  },
 }
 
 // If ordinal numbers depend on context, for example,
@@ -257,9 +257,11 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
@@ -267,29 +269,29 @@ var localize = {
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
     defaultFormattingWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

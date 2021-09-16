@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['до н.е.', 'н.е.'],
   abbreviated: ['до н. е.', 'н. е.'],
-  wide: ['до нашої ери', 'нашої ери']
+  wide: ['до нашої ери', 'нашої ери'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-й кв.', '2-й кв.', '3-й кв.', '4-й кв.'],
-  wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал']
+  wide: ['1-й квартал', '2-й квартал', '3-й квартал', '4-й квартал'],
 }
 
 var monthValues = {
@@ -27,7 +27,7 @@ var monthValues = {
     'верес.',
     'жовт.',
     'листоп.',
-    'груд.'
+    'груд.',
   ],
   wide: [
     'січень',
@@ -41,8 +41,8 @@ var monthValues = {
     'вересень',
     'жовтень',
     'листопад',
-    'грудень'
-  ]
+    'грудень',
+  ],
 }
 
 var formattingMonthValues = {
@@ -59,7 +59,7 @@ var formattingMonthValues = {
     'верес.',
     'жовт.',
     'листоп.',
-    'груд.'
+    'груд.',
   ],
   wide: [
     'січня',
@@ -73,8 +73,8 @@ var formattingMonthValues = {
     'вересня',
     'жовтня',
     'листопада',
-    'грудня'
-  ]
+    'грудня',
+  ],
 }
 
 var dayValues = {
@@ -88,8 +88,8 @@ var dayValues = {
     'середа',
     'четвер',
     'п’ятниця',
-    'субота'
-  ]
+    'субота',
+  ],
 }
 
 var dayPeriodValues = {
@@ -101,7 +101,7 @@ var dayPeriodValues = {
     morning: 'ранок',
     afternoon: 'день',
     evening: 'веч.',
-    night: 'ніч'
+    night: 'ніч',
   },
   abbreviated: {
     am: 'ДП',
@@ -111,7 +111,7 @@ var dayPeriodValues = {
     morning: 'ранок',
     afternoon: 'день',
     evening: 'веч.',
-    night: 'ніч'
+    night: 'ніч',
   },
   wide: {
     am: 'ДП',
@@ -121,8 +121,8 @@ var dayPeriodValues = {
     morning: 'ранок',
     afternoon: 'день',
     evening: 'вечір',
-    night: 'ніч'
-  }
+    night: 'ніч',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -134,7 +134,7 @@ var formattingDayPeriodValues = {
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
-    night: 'ночі'
+    night: 'ночі',
   },
   abbreviated: {
     am: 'ДП',
@@ -144,7 +144,7 @@ var formattingDayPeriodValues = {
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
-    night: 'ночі'
+    night: 'ночі',
   },
   wide: {
     am: 'ДП',
@@ -154,8 +154,8 @@ var formattingDayPeriodValues = {
     morning: 'ранку',
     afternoon: 'дня',
     evening: 'веч.',
-    night: 'ночі'
-  }
+    night: 'ночі',
+  },
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
@@ -181,37 +181,39 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'any',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

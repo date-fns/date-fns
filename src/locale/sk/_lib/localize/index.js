@@ -4,14 +4,14 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['pred Kr.', 'po Kr.'],
   abbreviated: ['pred Kr.', 'po Kr.'],
-  wide: ['pred Kristom', 'po Kristovi']
+  wide: ['pred Kristom', 'po Kristovi'],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1780
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. štvrťrok', '2. štvrťrok', '3. štvrťrok', '4. štvrťrok']
+  wide: ['1. štvrťrok', '2. štvrťrok', '3. štvrťrok', '4. štvrťrok'],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1804
@@ -29,7 +29,7 @@ var monthValues = {
     'sep',
     'okt',
     'nov',
-    'dec'
+    'dec',
   ],
   wide: [
     'január',
@@ -43,8 +43,8 @@ var monthValues = {
     'september',
     'október',
     'november',
-    'december'
-  ]
+    'december',
+  ],
 }
 var formattingMonthValues = {
   narrow: ['j', 'f', 'm', 'a', 'm', 'j', 'j', 'a', 's', 'o', 'n', 'd'],
@@ -60,7 +60,7 @@ var formattingMonthValues = {
     'sep',
     'okt',
     'nov',
-    'dec'
+    'dec',
   ],
   wide: [
     'januára',
@@ -74,8 +74,8 @@ var formattingMonthValues = {
     'septembra',
     'októbra',
     'novembra',
-    'decembra'
-  ]
+    'decembra',
+  ],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1876
@@ -90,8 +90,8 @@ var dayValues = {
     'streda',
     'štvrtok',
     'piatok',
-    'sobota'
-  ]
+    'sobota',
+  ],
 }
 
 // https://www.unicode.org/cldr/charts/32/summary/sk.html#1932
@@ -104,7 +104,7 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'pop.',
     evening: 'več.',
-    night: 'noc'
+    night: 'noc',
   },
   abbreviated: {
     am: 'AM',
@@ -114,7 +114,7 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'popol.',
     evening: 'večer',
-    night: 'noc'
+    night: 'noc',
   },
   wide: {
     am: 'AM',
@@ -124,8 +124,8 @@ var dayPeriodValues = {
     morning: 'ráno',
     afternoon: 'popoludnie',
     evening: 'večer',
-    night: 'noc'
-  }
+    night: 'noc',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -136,7 +136,7 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'pop.',
     evening: 'več.',
-    night: 'v n.'
+    night: 'v n.',
   },
   abbreviated: {
     am: 'AM',
@@ -146,7 +146,7 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'popol.',
     evening: 'večer',
-    night: 'v noci'
+    night: 'v noci',
   },
   wide: {
     am: 'AM',
@@ -156,8 +156,8 @@ var formattingDayPeriodValues = {
     morning: 'ráno',
     afternoon: 'popoludní',
     evening: 'večer',
-    night: 'v noci'
-  }
+    night: 'v noci',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -168,37 +168,39 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
-    values: eraValues
+    values: eraValues,
     // defaultWidth: 'wide'
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

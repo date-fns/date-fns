@@ -3,20 +3,20 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['B', 'คศ'],
   abbreviated: ['BC', 'ค.ศ.'],
-  wide: ['ปีก่อนคริสตกาล', 'คริสต์ศักราช']
+  wide: ['ปีก่อนคริสตกาล', 'คริสต์ศักราช'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['ไตรมาสแรก', 'ไตรมาสที่สอง', 'ไตรมาสที่สาม', 'ไตรมาสที่สี่']
+  wide: ['ไตรมาสแรก', 'ไตรมาสที่สอง', 'ไตรมาสที่สาม', 'ไตรมาสที่สี่'],
 }
 
 var dayValues = {
   narrow: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
   short: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
   abbreviated: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
-  wide: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์']
+  wide: ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'],
 }
 
 var monthValues = {
@@ -32,7 +32,7 @@ var monthValues = {
     'ก.ย.',
     'ต.ค.',
     'พ.ย.',
-    'ธ.ค.'
+    'ธ.ค.',
   ],
   abbreviated: [
     'ม.ค.',
@@ -46,7 +46,7 @@ var monthValues = {
     'ก.ย.',
     'ต.ค.',
     'พ.ย.',
-    'ธ.ค.'
+    'ธ.ค.',
   ],
   wide: [
     'มกราคม',
@@ -60,8 +60,8 @@ var monthValues = {
     'กันยายน',
     'ตุลาคม',
     'พฤศจิกายน',
-    'ธันวาคม'
-  ]
+    'ธันวาคม',
+  ],
 }
 
 var dayPeriodValues = {
@@ -73,7 +73,7 @@ var dayPeriodValues = {
     morning: 'เช้า',
     afternoon: 'บ่าย',
     evening: 'เย็น',
-    night: 'กลางคืน'
+    night: 'กลางคืน',
   },
   abbreviated: {
     am: 'ก่อนเที่ยง',
@@ -83,7 +83,7 @@ var dayPeriodValues = {
     morning: 'เช้า',
     afternoon: 'บ่าย',
     evening: 'เย็น',
-    night: 'กลางคืน'
+    night: 'กลางคืน',
   },
   wide: {
     am: 'ก่อนเที่ยง',
@@ -93,8 +93,8 @@ var dayPeriodValues = {
     morning: 'เช้า',
     afternoon: 'บ่าย',
     evening: 'เย็น',
-    night: 'กลางคืน'
-  }
+    night: 'กลางคืน',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -106,7 +106,7 @@ var formattingDayPeriodValues = {
     morning: 'ตอนเช้า',
     afternoon: 'ตอนกลางวัน',
     evening: 'ตอนเย็น',
-    night: 'ตอนกลางคืน'
+    night: 'ตอนกลางคืน',
   },
   abbreviated: {
     am: 'ก่อนเที่ยง',
@@ -116,7 +116,7 @@ var formattingDayPeriodValues = {
     morning: 'ตอนเช้า',
     afternoon: 'ตอนกลางวัน',
     evening: 'ตอนเย็น',
-    night: 'ตอนกลางคืน'
+    night: 'ตอนกลางคืน',
   },
   wide: {
     am: 'ก่อนเที่ยง',
@@ -126,8 +126,8 @@ var formattingDayPeriodValues = {
     morning: 'ตอนเช้า',
     afternoon: 'ตอนกลางวัน',
     evening: 'ตอนเย็น',
-    night: 'ตอนกลางคืน'
-  }
+    night: 'ตอนกลางคืน',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -138,35 +138,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

@@ -3,12 +3,12 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['Ք', 'Մ'],
   abbreviated: ['ՔԱ', 'ՄԹ'],
-  wide: ['Քրիստոսից առաջ', 'Մեր թվարկության']
+  wide: ['Քրիստոսից առաջ', 'Մեր թվարկության'],
 }
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Ք1', 'Ք2', 'Ք3', 'Ք4'],
-  wide: ['1֊ին քառորդ', '2֊րդ քառորդ', '3֊րդ քառորդ', '4֊րդ քառորդ']
+  wide: ['1֊ին քառորդ', '2֊րդ քառորդ', '3֊րդ քառորդ', '4֊րդ քառորդ'],
 }
 var monthValues = {
   narrow: ['Հ', 'Փ', 'Մ', 'Ա', 'Մ', 'Հ', 'Հ', 'Օ', 'Ս', 'Հ', 'Ն', 'Դ'],
@@ -24,7 +24,7 @@ var monthValues = {
     'սեպ',
     'հոկ',
     'նոյ',
-    'դեկ'
+    'դեկ',
   ],
   wide: [
     'հունվար',
@@ -38,8 +38,8 @@ var monthValues = {
     'սեպտեմբեր',
     'հոկտեմբեր',
     'նոյեմբեր',
-    'դեկտեմբեր'
-  ]
+    'դեկտեմբեր',
+  ],
 }
 var dayValues = {
   narrow: ['Կ', 'Ե', 'Ե', 'Չ', 'Հ', 'Ո', 'Շ'],
@@ -52,8 +52,8 @@ var dayValues = {
     'չորեքշաբթի',
     'հինգշաբթի',
     'ուրբաթ',
-    'շաբաթ'
-  ]
+    'շաբաթ',
+  ],
 }
 var dayPeriodValues = {
   narrow: {
@@ -64,7 +64,7 @@ var dayPeriodValues = {
     morning: 'առավոտ',
     afternoon: 'ցերեկ',
     evening: 'երեկո',
-    night: 'գիշեր'
+    night: 'գիշեր',
   },
   abbreviated: {
     am: 'AM',
@@ -74,7 +74,7 @@ var dayPeriodValues = {
     morning: 'առավոտ',
     afternoon: 'ցերեկ',
     evening: 'երեկո',
-    night: 'գիշեր'
+    night: 'գիշեր',
   },
   wide: {
     am: 'a.m.',
@@ -84,8 +84,8 @@ var dayPeriodValues = {
     morning: 'առավոտ',
     afternoon: 'ցերեկ',
     evening: 'երեկո',
-    night: 'գիշեր'
-  }
+    night: 'գիշեր',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -96,7 +96,7 @@ var formattingDayPeriodValues = {
     morning: 'առավոտը',
     afternoon: 'ցերեկը',
     evening: 'երեկոյան',
-    night: 'գիշերը'
+    night: 'գիշերը',
   },
   abbreviated: {
     am: 'AM',
@@ -106,7 +106,7 @@ var formattingDayPeriodValues = {
     morning: 'առավոտը',
     afternoon: 'ցերեկը',
     evening: 'երեկոյան',
-    night: 'գիշերը'
+    night: 'գիշերը',
   },
   wide: {
     am: 'a.m.',
@@ -116,8 +116,8 @@ var formattingDayPeriodValues = {
     morning: 'առավոտը',
     afternoon: 'ցերեկը',
     evening: 'երեկոյան',
-    night: 'գիշերը'
-  }
+    night: 'գիշերը',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -145,35 +145,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

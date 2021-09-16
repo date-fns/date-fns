@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['M.A', 'M.'],
   abbreviated: ['M.A', 'M.'],
-  wide: ['Miloddan Avvalgi', 'Milodiy']
+  wide: ['Miloddan Avvalgi', 'Milodiy'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['CH.1', 'CH.2', 'CH.3', 'CH.4'],
-  wide: ['1-chi chorak', '2-chi chorak', '3-chi chorak', '4-chi chorak']
+  wide: ['1-chi chorak', '2-chi chorak', '3-chi chorak', '4-chi chorak'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -30,7 +30,7 @@ var monthValues = {
     'Sen',
     'Okt',
     'Noy',
-    'Dek'
+    'Dek',
   ],
   wide: [
     'Yanvar',
@@ -44,8 +44,8 @@ var monthValues = {
     'Sentabr',
     'Oktabr',
     'Noyabr',
-    'Dekabr'
-  ]
+    'Dekabr',
+  ],
 }
 
 var dayValues = {
@@ -59,8 +59,8 @@ var dayValues = {
     'Chorshanba',
     'Payshanba',
     'Juma',
-    'Shanba'
-  ]
+    'Shanba',
+  ],
 }
 
 var dayPeriodValues = {
@@ -72,7 +72,7 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   abbreviated: {
     am: 'AM',
@@ -82,7 +82,7 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   wide: {
     am: 'a.m.',
@@ -92,8 +92,8 @@ var dayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
-  }
+    night: 'tun',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -104,7 +104,7 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   abbreviated: {
     am: 'AM',
@@ -114,7 +114,7 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
+    night: 'tun',
   },
   wide: {
     am: 'a.m.',
@@ -124,8 +124,8 @@ var formattingDayPeriodValues = {
     morning: 'ertalab',
     afternoon: 'tushdan keyin',
     evening: 'kechqurun',
-    night: 'tun'
-  }
+    night: 'tun',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -147,35 +147,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

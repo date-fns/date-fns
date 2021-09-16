@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['пр.н.е.', 'н.е.'],
   abbreviated: ['преди н. е.', 'н. е.'],
-  wide: ['преди новата ера', 'новата ера']
+  wide: ['преди новата ера', 'новата ера'],
 }
 
 var quarterValues = {
@@ -13,8 +13,8 @@ var quarterValues = {
     '1-во тримесечие',
     '2-ро тримесечие',
     '3-то тримесечие',
-    '4-то тримесечие'
-  ]
+    '4-то тримесечие',
+  ],
 }
 
 var monthValues = {
@@ -30,7 +30,7 @@ var monthValues = {
     'сеп',
     'окт',
     'ное',
-    'дек'
+    'дек',
   ],
   wide: [
     'януари',
@@ -44,8 +44,8 @@ var monthValues = {
     'септември',
     'октомври',
     'ноември',
-    'декември'
-  ]
+    'декември',
+  ],
 }
 
 var dayValues = {
@@ -59,8 +59,8 @@ var dayValues = {
     'сряда',
     'четвъртък',
     'петък',
-    'събота'
-  ]
+    'събота',
+  ],
 }
 
 var dayPeriodValues = {
@@ -72,8 +72,8 @@ var dayPeriodValues = {
     morning: 'сутринта',
     afternoon: 'следобед',
     evening: 'вечерта',
-    night: 'през нощта'
-  }
+    night: 'през нощта',
+  },
 }
 
 function isFeminine(unit) {
@@ -123,33 +123,35 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

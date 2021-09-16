@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['e.m.a', 'm.a.j'],
   abbreviated: ['e.m.a', 'm.a.j'],
-  wide: ['enne meie ajaarvamist', 'meie ajaarvamise järgi']
+  wide: ['enne meie ajaarvamist', 'meie ajaarvamise järgi'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'sept',
     'okt',
     'nov',
-    'dets'
+    'dets',
   ],
   wide: [
     'jaanuar',
@@ -40,8 +40,8 @@ var monthValues = {
     'september',
     'oktoober',
     'november',
-    'detsember'
-  ]
+    'detsember',
+  ],
 }
 
 var dayValues = {
@@ -54,7 +54,7 @@ var dayValues = {
     'kolmap.',
     'neljap.',
     'reede.',
-    'laup.'
+    'laup.',
   ],
   wide: [
     'pühapäev',
@@ -63,8 +63,8 @@ var dayValues = {
     'kolmapäev',
     'neljapäev',
     'reede',
-    'laupäev'
-  ]
+    'laupäev',
+  ],
 }
 
 var dayPeriodValues = {
@@ -76,7 +76,7 @@ var dayPeriodValues = {
     morning: 'hommik',
     afternoon: 'pärastlõuna',
     evening: 'õhtu',
-    night: 'öö'
+    night: 'öö',
   },
   abbreviated: {
     am: 'AM',
@@ -86,7 +86,7 @@ var dayPeriodValues = {
     morning: 'hommik',
     afternoon: 'pärastlõuna',
     evening: 'õhtu',
-    night: 'öö'
+    night: 'öö',
   },
   wide: {
     am: 'AM',
@@ -96,8 +96,8 @@ var dayPeriodValues = {
     morning: 'hommik',
     afternoon: 'pärastlõuna',
     evening: 'õhtu',
-    night: 'öö'
-  }
+    night: 'öö',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -109,7 +109,7 @@ var formattingDayPeriodValues = {
     morning: 'hommikul',
     afternoon: 'pärastlõunal',
     evening: 'õhtul',
-    night: 'öösel'
+    night: 'öösel',
   },
   abbreviated: {
     am: 'AM',
@@ -119,7 +119,7 @@ var formattingDayPeriodValues = {
     morning: 'hommikul',
     afternoon: 'pärastlõunal',
     evening: 'õhtul',
-    night: 'öösel'
+    night: 'öösel',
   },
   wide: {
     am: 'AM',
@@ -129,8 +129,8 @@ var formattingDayPeriodValues = {
     morning: 'hommikul',
     afternoon: 'pärastlõunal',
     evening: 'õhtul',
-    night: 'öösel'
-  }
+    night: 'öösel',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -141,36 +141,38 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     formattingValues: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     formattingValues: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     formattingValues: formattingDayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

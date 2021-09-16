@@ -8,7 +8,7 @@ function ordinalNumber(dirtyNumber) {
 var eraValues = {
   narrow: ['пр.н.е.', 'АД'],
   abbreviated: ['пр. Хр.', 'по. Хр.'],
-  wide: ['Пре Христа', 'После Христа']
+  wide: ['Пре Христа', 'После Христа'],
 }
 
 var monthValues = {
@@ -24,7 +24,7 @@ var monthValues = {
     '9.',
     '10.',
     '11.',
-    '12.'
+    '12.',
   ],
   abbreviated: [
     'јан',
@@ -38,7 +38,7 @@ var monthValues = {
     'сеп',
     'окт',
     'нов',
-    'дец'
+    'дец',
   ],
   wide: [
     'јануар',
@@ -52,8 +52,8 @@ var monthValues = {
     'септембар',
     'октобар',
     'новембар',
-    'децембар'
-  ]
+    'децембар',
+  ],
 }
 
 var formattingMonthValues = {
@@ -69,7 +69,7 @@ var formattingMonthValues = {
     '9.',
     '10.',
     '11.',
-    '12.'
+    '12.',
   ],
   abbreviated: [
     'јан',
@@ -83,7 +83,7 @@ var formattingMonthValues = {
     'сеп',
     'окт',
     'нов',
-    'дец'
+    'дец',
   ],
   wide: [
     'јануар',
@@ -97,14 +97,14 @@ var formattingMonthValues = {
     'септембар',
     'октобар',
     'новембар',
-    'децембар'
-  ]
+    'децембар',
+  ],
 }
 
 var quarterValues = {
   narrow: ['1.', '2.', '3.', '4.'],
   abbreviated: ['1. кв.', '2. кв.', '3. кв.', '4. кв.'],
-  wide: ['1. квартал', '2. квартал', '3. квартал', '4. квартал']
+  wide: ['1. квартал', '2. квартал', '3. квартал', '4. квартал'],
 }
 
 var dayValues = {
@@ -118,8 +118,8 @@ var dayValues = {
     'среда',
     'четвртак',
     'петак',
-    'субота'
-  ]
+    'субота',
+  ],
 }
 
 var formattingDayPeriodValues = {
@@ -131,7 +131,7 @@ var formattingDayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'поподне',
     evening: 'увече',
-    night: 'ноћу'
+    night: 'ноћу',
   },
   abbreviated: {
     am: 'АМ',
@@ -141,7 +141,7 @@ var formattingDayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'поподне',
     evening: 'увече',
-    night: 'ноћу'
+    night: 'ноћу',
   },
   wide: {
     am: 'AM',
@@ -151,8 +151,8 @@ var formattingDayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'после подне',
     evening: 'увече',
-    night: 'ноћу'
-  }
+    night: 'ноћу',
+  },
 }
 
 var dayPeriodValues = {
@@ -164,7 +164,7 @@ var dayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'поподне',
     evening: 'увече',
-    night: 'ноћу'
+    night: 'ноћу',
   },
   abbreviated: {
     am: 'AM',
@@ -174,7 +174,7 @@ var dayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'поподне',
     evening: 'увече',
-    night: 'ноћу'
+    night: 'ноћу',
   },
   wide: {
     am: 'AM',
@@ -184,39 +184,42 @@ var dayPeriodValues = {
     morning: 'ујутру',
     afternoon: 'после подне',
     evening: 'увече',
-    night: 'ноћу'
-  }
+    night: 'ноћу',
+  },
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
