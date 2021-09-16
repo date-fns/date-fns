@@ -1,3 +1,4 @@
+import isDate from '../isDate/index'
 import toDate from '../toDate/index'
 import requiredArgs from '../_lib/requiredArgs/index'
 
@@ -61,7 +62,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 export default function isValid(dirtyDate: unknown): boolean {
   requiredArgs(1, arguments)
 
-  if (!(dirtyDate instanceof Date) && typeof dirtyDate !== 'number') {
+  if (!isDate(dirtyDate) && typeof dirtyDate !== 'number') {
     return false
   }
   const date = toDate(dirtyDate)
