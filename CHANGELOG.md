@@ -8,6 +8,30 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.24.0 - 2021-09-17
+
+Kudos to [Sasha Koss](http://github.com/kossnocorp), [Lucas Silva](http://github.com/LucasHFS), [Jan Ziemba](http://github.com/janziemba), [Anastasia Kobzar](http://github.com/rikkalo), [Deepak Gupta](http://github.com/Mr-DG-Wick), [Jonas L](http://github.com/jooola), [Kentaro Suzuki](http://github.com/kentaro84207), [Koussay Haj Kacem](http://github.com/essana3), [fturmel](http://github.com/fturmel), [Tan75](http://github.com/tan75) and [Adriaan Callaerts](http://github.com/call-a3) for working on the release.
+
+### Fixed
+
+- [Fixed an edge case in the Slovak locale caused by unescaped character.](https://github.com/date-fns/date-fns/pull/2540) ([#2083](https://github.com/date-fns/date-fns/issues/2083))
+
+### Changed
+
+- [Used `1` instead of `ein` for German `formatDuration` to make it consistent with other locales and formats.](https://github.com/date-fns/date-fns/pull/2576) ([#2505](https://github.com/date-fns/date-fns/issues/2505))
+
+- [Made Norwegian `formatDuration` consistent with other locales by using numeric representation instead of written.](https://github.com/date-fns/date-fns/pull/2631) ([#2469](https://github.com/date-fns/date-fns/issues/2469))
+
+- [Use the word "sekunda" instead of "vteřina" for second in the Czech locale.](https://github.com/date-fns/date-fns/pull/2577)
+
+- [Made Flemish short date format corresponds to the Flemish government.](https://github.com/date-fns/date-fns/pull/2535)
+
+### Added
+
+- [Added `roundingMethod` option to `differenceInHours`, `differenceInMinutes`, `differenceInQuarters`, `differenceInSeconds` and `differenceInWeeks` with `trunc` as the default method.](https://github.com/date-fns/date-fns/pull/2571) ([#2555](https://github.com/date-fns/date-fns/issues/2555))
+
+- [Added new functions: `previousDay`, `previousMonday`, `previousTuesday`, `previousWednesday`, `previousThursday`, `previousFriday`, `previousSaturday` and `previousSunday`.](https://github.com/date-fns/date-fns/pull/2522)
+
 ## v2.23.0 - 2021-07-23
 
 Thanks to [Liam Tait](http://github.com/Liam-Tait), [fturmel](http://github.com/fturmel), [Takuya Uehara](http://github.com/indigolain), [Branislav Lazic](http://github.com/BranislavLazic), [Seyyed Morteza Moosavi](http://github.com/smmoosavi), [Felipe Armoni](http://github.com/komyg), [Sasha Koss](http://github.com/kossnocorp), [Michael Mok](http://github.com/pmmmwh), [Tan75](http://github.com/tan75) and [Maxim Topciu](http://github.com/maximtop) for working on the release.
