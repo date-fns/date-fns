@@ -1,11 +1,6 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-export type Interval = {
-  start: Date | number,
-  end: Date | number,
-}
-
 export type Locale = {
   code?: string,
   formatDistance?: (...args: Array<any>) => any,
@@ -37,22 +32,4 @@ export type Locale = {
   },
 }
 
-export type Duration = {
-  years?: number,
-  months?: number,
-  weeks?: number,
-  days?: number,
-  hours?: number,
-  minutes?: number,
-  seconds?: number,
-}
-
-export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
-
-declare module.exports: (
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: {
-    roundingMethod?: string,
-  }
-) => number
+declare module.exports: Locale

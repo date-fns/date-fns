@@ -38,6 +38,7 @@ declare module.exports: {
   arDZ: Locale,
   arMA: Locale,
   arSA: Locale,
+  arTN: Locale,
   az: Locale,
   be: Locale,
   bg: Locale,

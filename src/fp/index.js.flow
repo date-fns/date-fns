@@ -138,13 +138,53 @@ declare module.exports: {
   differenceInCalendarYears: CurriedFn2<Date | number, Date | number, number>,
   differenceInDays: CurriedFn2<Date | number, Date | number, number>,
   differenceInHours: CurriedFn2<Date | number, Date | number, number>,
+  differenceInHoursWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInISOWeekYears: CurriedFn2<Date | number, Date | number, number>,
   differenceInMilliseconds: CurriedFn2<Date | number, Date | number, number>,
   differenceInMinutes: CurriedFn2<Date | number, Date | number, number>,
+  differenceInMinutesWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInMonths: CurriedFn2<Date | number, Date | number, number>,
   differenceInQuarters: CurriedFn2<Date | number, Date | number, number>,
+  differenceInQuartersWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInSeconds: CurriedFn2<Date | number, Date | number, number>,
+  differenceInSecondsWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInWeeks: CurriedFn2<Date | number, Date | number, number>,
+  differenceInWeeksWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string,
+    },
+    Date | number,
+    Date | number,
+    number
+  >,
   differenceInYears: CurriedFn2<Date | number, Date | number, number>,
   eachDayOfInterval: CurriedFn1<Interval, Date[]>,
   eachDayOfIntervalWithOptions: CurriedFn2<
@@ -496,6 +536,14 @@ declare module.exports: {
     string,
     Date
   >,
+  previousDay: CurriedFn2<number, Date | number, Date>,
+  previousFriday: CurriedFn1<Date | number, Date>,
+  previousMonday: CurriedFn1<Date | number, Date>,
+  previousSaturday: CurriedFn1<Date | number, Date>,
+  previousSunday: CurriedFn1<Date | number, Date>,
+  previousThursday: CurriedFn1<Date | number, Date>,
+  previousTuesday: CurriedFn1<Date | number, Date>,
+  previousWednesday: CurriedFn1<Date | number, Date>,
   quartersToMonths: CurriedFn1<number, number>,
   quartersToYears: CurriedFn1<number, number>,
   roundToNearestMinutes: CurriedFn1<Date | number, Date>,

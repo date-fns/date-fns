@@ -151,7 +151,10 @@ declare module.exports: {
 
   differenceInHours: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInISOWeekYears: (
@@ -166,7 +169,10 @@ declare module.exports: {
 
   differenceInMinutes: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInMonths: (
@@ -176,17 +182,26 @@ declare module.exports: {
 
   differenceInQuarters: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInSeconds: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInWeeks: (
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string,
+    }
   ) => number,
 
   differenceInYears: (
@@ -677,6 +692,22 @@ declare module.exports: {
   ) => Date,
 
   parseJSON: (argument: string | number | Date) => Date,
+
+  previousDay: (date: Date | number, day: number) => Date,
+
+  previousFriday: (date: Date | number) => Date,
+
+  previousMonday: (date: Date | number) => Date,
+
+  previousSaturday: (date: Date | number) => Date,
+
+  previousSunday: (date: Date | number) => Date,
+
+  previousThursday: (date: Date | number) => Date,
+
+  previousTuesday: (date: Date | number) => Date,
+
+  previousWednesday: (date: Date | number) => Date,
 
   quartersToMonths: (quarters: number) => number,
 

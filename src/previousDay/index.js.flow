@@ -49,10 +49,4 @@ export type Duration = {
 
 export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
-declare module.exports: (
-  dateLeft: Date | number,
-  dateRight: Date | number,
-  options?: {
-    roundingMethod?: string,
-  }
-) => number
+declare module.exports: (date: Date | number, day: number) => Date

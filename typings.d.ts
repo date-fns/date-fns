@@ -225,7 +225,10 @@ declare module 'date-fns' {
 
   function differenceInHours(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInHours {}
 
@@ -243,7 +246,10 @@ declare module 'date-fns' {
 
   function differenceInMinutes(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInMinutes {}
 
@@ -255,19 +261,28 @@ declare module 'date-fns' {
 
   function differenceInQuarters(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInQuarters {}
 
   function differenceInSeconds(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInSeconds {}
 
   function differenceInWeeks(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInWeeks {}
 
@@ -919,6 +934,30 @@ declare module 'date-fns' {
 
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
+
+  function previousDay(date: Date | number, day: number): Date
+  namespace previousDay {}
+
+  function previousFriday(date: Date | number): Date
+  namespace previousFriday {}
+
+  function previousMonday(date: Date | number): Date
+  namespace previousMonday {}
+
+  function previousSaturday(date: Date | number): Date
+  namespace previousSaturday {}
+
+  function previousSunday(date: Date | number): Date
+  namespace previousSunday {}
+
+  function previousThursday(date: Date | number): Date
+  namespace previousThursday {}
+
+  function previousTuesday(date: Date | number): Date
+  namespace previousTuesday {}
+
+  function previousWednesday(date: Date | number): Date
+  namespace previousWednesday {}
 
   function quartersToMonths(quarters: number): number
   namespace quartersToMonths {}
@@ -2029,6 +2068,46 @@ declare module 'date-fns/parseISO' {
 declare module 'date-fns/parseJSON' {
   import { parseJSON } from 'date-fns'
   export default parseJSON
+}
+
+declare module 'date-fns/previousDay' {
+  import { previousDay } from 'date-fns'
+  export default previousDay
+}
+
+declare module 'date-fns/previousFriday' {
+  import { previousFriday } from 'date-fns'
+  export default previousFriday
+}
+
+declare module 'date-fns/previousMonday' {
+  import { previousMonday } from 'date-fns'
+  export default previousMonday
+}
+
+declare module 'date-fns/previousSaturday' {
+  import { previousSaturday } from 'date-fns'
+  export default previousSaturday
+}
+
+declare module 'date-fns/previousSunday' {
+  import { previousSunday } from 'date-fns'
+  export default previousSunday
+}
+
+declare module 'date-fns/previousThursday' {
+  import { previousThursday } from 'date-fns'
+  export default previousThursday
+}
+
+declare module 'date-fns/previousTuesday' {
+  import { previousTuesday } from 'date-fns'
+  export default previousTuesday
+}
+
+declare module 'date-fns/previousWednesday' {
+  import { previousWednesday } from 'date-fns'
+  export default previousWednesday
 }
 
 declare module 'date-fns/quartersToMonths' {
@@ -3171,6 +3250,46 @@ declare module 'date-fns/parseJSON/index' {
   export default parseJSON
 }
 
+declare module 'date-fns/previousDay/index' {
+  import { previousDay } from 'date-fns'
+  export default previousDay
+}
+
+declare module 'date-fns/previousFriday/index' {
+  import { previousFriday } from 'date-fns'
+  export default previousFriday
+}
+
+declare module 'date-fns/previousMonday/index' {
+  import { previousMonday } from 'date-fns'
+  export default previousMonday
+}
+
+declare module 'date-fns/previousSaturday/index' {
+  import { previousSaturday } from 'date-fns'
+  export default previousSaturday
+}
+
+declare module 'date-fns/previousSunday/index' {
+  import { previousSunday } from 'date-fns'
+  export default previousSunday
+}
+
+declare module 'date-fns/previousThursday/index' {
+  import { previousThursday } from 'date-fns'
+  export default previousThursday
+}
+
+declare module 'date-fns/previousTuesday/index' {
+  import { previousTuesday } from 'date-fns'
+  export default previousTuesday
+}
+
+declare module 'date-fns/previousWednesday/index' {
+  import { previousWednesday } from 'date-fns'
+  export default previousWednesday
+}
+
 declare module 'date-fns/quartersToMonths/index' {
   import { quartersToMonths } from 'date-fns'
   export default quartersToMonths
@@ -4311,6 +4430,46 @@ declare module 'date-fns/parseJSON/index.js' {
   export default parseJSON
 }
 
+declare module 'date-fns/previousDay/index.js' {
+  import { previousDay } from 'date-fns'
+  export default previousDay
+}
+
+declare module 'date-fns/previousFriday/index.js' {
+  import { previousFriday } from 'date-fns'
+  export default previousFriday
+}
+
+declare module 'date-fns/previousMonday/index.js' {
+  import { previousMonday } from 'date-fns'
+  export default previousMonday
+}
+
+declare module 'date-fns/previousSaturday/index.js' {
+  import { previousSaturday } from 'date-fns'
+  export default previousSaturday
+}
+
+declare module 'date-fns/previousSunday/index.js' {
+  import { previousSunday } from 'date-fns'
+  export default previousSunday
+}
+
+declare module 'date-fns/previousThursday/index.js' {
+  import { previousThursday } from 'date-fns'
+  export default previousThursday
+}
+
+declare module 'date-fns/previousTuesday/index.js' {
+  import { previousTuesday } from 'date-fns'
+  export default previousTuesday
+}
+
+declare module 'date-fns/previousWednesday/index.js' {
+  import { previousWednesday } from 'date-fns'
+  export default previousWednesday
+}
+
 declare module 'date-fns/quartersToMonths/index.js' {
   import { quartersToMonths } from 'date-fns'
   export default quartersToMonths
@@ -4719,6 +4878,16 @@ declare module 'date-fns/fp' {
   const differenceInHours: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInHours {}
 
+  const differenceInHoursWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInHoursWithOptions {}
+
   const differenceInISOWeekYears: CurriedFn2<
     Date | number,
     Date | number,
@@ -4736,17 +4905,57 @@ declare module 'date-fns/fp' {
   const differenceInMinutes: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMinutes {}
 
+  const differenceInMinutesWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInMinutesWithOptions {}
+
   const differenceInMonths: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMonths {}
 
   const differenceInQuarters: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInQuarters {}
 
+  const differenceInQuartersWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInQuartersWithOptions {}
+
   const differenceInSeconds: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInSeconds {}
 
+  const differenceInSecondsWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInSecondsWithOptions {}
+
   const differenceInWeeks: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInWeeks {}
+
+  const differenceInWeeksWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInWeeksWithOptions {}
 
   const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {}
@@ -5389,6 +5598,30 @@ declare module 'date-fns/fp' {
   >
   namespace parseWithOptions {}
 
+  const previousDay: CurriedFn2<number, Date | number, Date>
+  namespace previousDay {}
+
+  const previousFriday: CurriedFn1<Date | number, Date>
+  namespace previousFriday {}
+
+  const previousMonday: CurriedFn1<Date | number, Date>
+  namespace previousMonday {}
+
+  const previousSaturday: CurriedFn1<Date | number, Date>
+  namespace previousSaturday {}
+
+  const previousSunday: CurriedFn1<Date | number, Date>
+  namespace previousSunday {}
+
+  const previousThursday: CurriedFn1<Date | number, Date>
+  namespace previousThursday {}
+
+  const previousTuesday: CurriedFn1<Date | number, Date>
+  namespace previousTuesday {}
+
+  const previousWednesday: CurriedFn1<Date | number, Date>
+  namespace previousWednesday {}
+
   const quartersToMonths: CurriedFn1<number, number>
   namespace quartersToMonths {}
 
@@ -5796,6 +6029,11 @@ declare module 'date-fns/fp/differenceInHours' {
   export default differenceInHours
 }
 
+declare module 'date-fns/fp/differenceInHoursWithOptions' {
+  import { differenceInHoursWithOptions } from 'date-fns/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/fp/differenceInISOWeekYears' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
   export default differenceInISOWeekYears
@@ -5811,6 +6049,11 @@ declare module 'date-fns/fp/differenceInMinutes' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/fp/differenceInMinutesWithOptions' {
+  import { differenceInMinutesWithOptions } from 'date-fns/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/fp/differenceInMonths' {
   import { differenceInMonths } from 'date-fns/fp'
   export default differenceInMonths
@@ -5821,14 +6064,29 @@ declare module 'date-fns/fp/differenceInQuarters' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/fp/differenceInQuartersWithOptions' {
+  import { differenceInQuartersWithOptions } from 'date-fns/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/fp/differenceInSeconds' {
   import { differenceInSeconds } from 'date-fns/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/fp/differenceInSecondsWithOptions' {
+  import { differenceInSecondsWithOptions } from 'date-fns/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/fp/differenceInWeeks' {
   import { differenceInWeeks } from 'date-fns/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/fp/differenceInWeeksWithOptions' {
+  import { differenceInWeeksWithOptions } from 'date-fns/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInYears' {
@@ -6556,6 +6814,46 @@ declare module 'date-fns/fp/parseWithOptions' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/previousDay' {
+  import { previousDay } from 'date-fns/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/fp/previousFriday' {
+  import { previousFriday } from 'date-fns/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/fp/previousMonday' {
+  import { previousMonday } from 'date-fns/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/fp/previousSaturday' {
+  import { previousSaturday } from 'date-fns/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/fp/previousSunday' {
+  import { previousSunday } from 'date-fns/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/fp/previousThursday' {
+  import { previousThursday } from 'date-fns/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/fp/previousTuesday' {
+  import { previousTuesday } from 'date-fns/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/fp/previousWednesday' {
+  import { previousWednesday } from 'date-fns/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/fp/quartersToMonths' {
   import { quartersToMonths } from 'date-fns/fp'
   export default quartersToMonths
@@ -6991,6 +7289,11 @@ declare module 'date-fns/fp/differenceInHours/index' {
   export default differenceInHours
 }
 
+declare module 'date-fns/fp/differenceInHoursWithOptions/index' {
+  import { differenceInHoursWithOptions } from 'date-fns/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/fp/differenceInISOWeekYears/index' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
   export default differenceInISOWeekYears
@@ -7006,6 +7309,11 @@ declare module 'date-fns/fp/differenceInMinutes/index' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/fp/differenceInMinutesWithOptions/index' {
+  import { differenceInMinutesWithOptions } from 'date-fns/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/fp/differenceInMonths/index' {
   import { differenceInMonths } from 'date-fns/fp'
   export default differenceInMonths
@@ -7016,14 +7324,29 @@ declare module 'date-fns/fp/differenceInQuarters/index' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/fp/differenceInQuartersWithOptions/index' {
+  import { differenceInQuartersWithOptions } from 'date-fns/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/fp/differenceInSeconds/index' {
   import { differenceInSeconds } from 'date-fns/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/fp/differenceInSecondsWithOptions/index' {
+  import { differenceInSecondsWithOptions } from 'date-fns/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/fp/differenceInWeeks/index' {
   import { differenceInWeeks } from 'date-fns/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/fp/differenceInWeeksWithOptions/index' {
+  import { differenceInWeeksWithOptions } from 'date-fns/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInYears/index' {
@@ -7751,6 +8074,46 @@ declare module 'date-fns/fp/parseWithOptions/index' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/previousDay/index' {
+  import { previousDay } from 'date-fns/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/fp/previousFriday/index' {
+  import { previousFriday } from 'date-fns/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/fp/previousMonday/index' {
+  import { previousMonday } from 'date-fns/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/fp/previousSaturday/index' {
+  import { previousSaturday } from 'date-fns/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/fp/previousSunday/index' {
+  import { previousSunday } from 'date-fns/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/fp/previousThursday/index' {
+  import { previousThursday } from 'date-fns/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/fp/previousTuesday/index' {
+  import { previousTuesday } from 'date-fns/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/fp/previousWednesday/index' {
+  import { previousWednesday } from 'date-fns/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/fp/quartersToMonths/index' {
   import { quartersToMonths } from 'date-fns/fp'
   export default quartersToMonths
@@ -8186,6 +8549,11 @@ declare module 'date-fns/fp/differenceInHours/index.js' {
   export default differenceInHours
 }
 
+declare module 'date-fns/fp/differenceInHoursWithOptions/index.js' {
+  import { differenceInHoursWithOptions } from 'date-fns/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/fp/differenceInISOWeekYears/index.js' {
   import { differenceInISOWeekYears } from 'date-fns/fp'
   export default differenceInISOWeekYears
@@ -8201,6 +8569,11 @@ declare module 'date-fns/fp/differenceInMinutes/index.js' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/fp/differenceInMinutesWithOptions/index.js' {
+  import { differenceInMinutesWithOptions } from 'date-fns/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/fp/differenceInMonths/index.js' {
   import { differenceInMonths } from 'date-fns/fp'
   export default differenceInMonths
@@ -8211,14 +8584,29 @@ declare module 'date-fns/fp/differenceInQuarters/index.js' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/fp/differenceInQuartersWithOptions/index.js' {
+  import { differenceInQuartersWithOptions } from 'date-fns/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/fp/differenceInSeconds/index.js' {
   import { differenceInSeconds } from 'date-fns/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/fp/differenceInSecondsWithOptions/index.js' {
+  import { differenceInSecondsWithOptions } from 'date-fns/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/fp/differenceInWeeks/index.js' {
   import { differenceInWeeks } from 'date-fns/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/fp/differenceInWeeksWithOptions/index.js' {
+  import { differenceInWeeksWithOptions } from 'date-fns/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/fp/differenceInYears/index.js' {
@@ -8946,6 +9334,46 @@ declare module 'date-fns/fp/parseWithOptions/index.js' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/fp/previousDay/index.js' {
+  import { previousDay } from 'date-fns/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/fp/previousFriday/index.js' {
+  import { previousFriday } from 'date-fns/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/fp/previousMonday/index.js' {
+  import { previousMonday } from 'date-fns/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/fp/previousSaturday/index.js' {
+  import { previousSaturday } from 'date-fns/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/fp/previousSunday/index.js' {
+  import { previousSunday } from 'date-fns/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/fp/previousThursday/index.js' {
+  import { previousThursday } from 'date-fns/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/fp/previousTuesday/index.js' {
+  import { previousTuesday } from 'date-fns/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/fp/previousWednesday/index.js' {
+  import { previousWednesday } from 'date-fns/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/fp/quartersToMonths/index.js' {
   import { quartersToMonths } from 'date-fns/fp'
   export default quartersToMonths
@@ -9361,7 +9789,10 @@ declare module 'date-fns/esm' {
 
   function differenceInHours(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInHours {}
 
@@ -9379,7 +9810,10 @@ declare module 'date-fns/esm' {
 
   function differenceInMinutes(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInMinutes {}
 
@@ -9391,19 +9825,28 @@ declare module 'date-fns/esm' {
 
   function differenceInQuarters(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInQuarters {}
 
   function differenceInSeconds(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInSeconds {}
 
   function differenceInWeeks(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
   namespace differenceInWeeks {}
 
@@ -10055,6 +10498,30 @@ declare module 'date-fns/esm' {
 
   function parseJSON(argument: string | number | Date): Date
   namespace parseJSON {}
+
+  function previousDay(date: Date | number, day: number): Date
+  namespace previousDay {}
+
+  function previousFriday(date: Date | number): Date
+  namespace previousFriday {}
+
+  function previousMonday(date: Date | number): Date
+  namespace previousMonday {}
+
+  function previousSaturday(date: Date | number): Date
+  namespace previousSaturday {}
+
+  function previousSunday(date: Date | number): Date
+  namespace previousSunday {}
+
+  function previousThursday(date: Date | number): Date
+  namespace previousThursday {}
+
+  function previousTuesday(date: Date | number): Date
+  namespace previousTuesday {}
+
+  function previousWednesday(date: Date | number): Date
+  namespace previousWednesday {}
 
   function quartersToMonths(quarters: number): number
   namespace quartersToMonths {}
@@ -11165,6 +11632,46 @@ declare module 'date-fns/esm/parseISO' {
 declare module 'date-fns/esm/parseJSON' {
   import { parseJSON } from 'date-fns/esm'
   export default parseJSON
+}
+
+declare module 'date-fns/esm/previousDay' {
+  import { previousDay } from 'date-fns/esm'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/previousFriday' {
+  import { previousFriday } from 'date-fns/esm'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/previousMonday' {
+  import { previousMonday } from 'date-fns/esm'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/previousSaturday' {
+  import { previousSaturday } from 'date-fns/esm'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/previousSunday' {
+  import { previousSunday } from 'date-fns/esm'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/previousThursday' {
+  import { previousThursday } from 'date-fns/esm'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/previousTuesday' {
+  import { previousTuesday } from 'date-fns/esm'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/previousWednesday' {
+  import { previousWednesday } from 'date-fns/esm'
+  export default previousWednesday
 }
 
 declare module 'date-fns/esm/quartersToMonths' {
@@ -12307,6 +12814,46 @@ declare module 'date-fns/esm/parseJSON/index' {
   export default parseJSON
 }
 
+declare module 'date-fns/esm/previousDay/index' {
+  import { previousDay } from 'date-fns/esm'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/previousFriday/index' {
+  import { previousFriday } from 'date-fns/esm'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/previousMonday/index' {
+  import { previousMonday } from 'date-fns/esm'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/previousSaturday/index' {
+  import { previousSaturday } from 'date-fns/esm'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/previousSunday/index' {
+  import { previousSunday } from 'date-fns/esm'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/previousThursday/index' {
+  import { previousThursday } from 'date-fns/esm'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/previousTuesday/index' {
+  import { previousTuesday } from 'date-fns/esm'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/previousWednesday/index' {
+  import { previousWednesday } from 'date-fns/esm'
+  export default previousWednesday
+}
+
 declare module 'date-fns/esm/quartersToMonths/index' {
   import { quartersToMonths } from 'date-fns/esm'
   export default quartersToMonths
@@ -13447,6 +13994,46 @@ declare module 'date-fns/esm/parseJSON/index.js' {
   export default parseJSON
 }
 
+declare module 'date-fns/esm/previousDay/index.js' {
+  import { previousDay } from 'date-fns/esm'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/previousFriday/index.js' {
+  import { previousFriday } from 'date-fns/esm'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/previousMonday/index.js' {
+  import { previousMonday } from 'date-fns/esm'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/previousSaturday/index.js' {
+  import { previousSaturday } from 'date-fns/esm'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/previousSunday/index.js' {
+  import { previousSunday } from 'date-fns/esm'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/previousThursday/index.js' {
+  import { previousThursday } from 'date-fns/esm'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/previousTuesday/index.js' {
+  import { previousTuesday } from 'date-fns/esm'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/previousWednesday/index.js' {
+  import { previousWednesday } from 'date-fns/esm'
+  export default previousWednesday
+}
+
 declare module 'date-fns/esm/quartersToMonths/index.js' {
   import { quartersToMonths } from 'date-fns/esm'
   export default quartersToMonths
@@ -13855,6 +14442,16 @@ declare module 'date-fns/esm/fp' {
   const differenceInHours: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInHours {}
 
+  const differenceInHoursWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInHoursWithOptions {}
+
   const differenceInISOWeekYears: CurriedFn2<
     Date | number,
     Date | number,
@@ -13872,17 +14469,57 @@ declare module 'date-fns/esm/fp' {
   const differenceInMinutes: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMinutes {}
 
+  const differenceInMinutesWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInMinutesWithOptions {}
+
   const differenceInMonths: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInMonths {}
 
   const differenceInQuarters: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInQuarters {}
 
+  const differenceInQuartersWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInQuartersWithOptions {}
+
   const differenceInSeconds: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInSeconds {}
 
+  const differenceInSecondsWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInSecondsWithOptions {}
+
   const differenceInWeeks: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInWeeks {}
+
+  const differenceInWeeksWithOptions: CurriedFn3<
+    {
+      roundingMethod?: string
+    },
+    Date | number,
+    Date | number,
+    number
+  >
+  namespace differenceInWeeksWithOptions {}
 
   const differenceInYears: CurriedFn2<Date | number, Date | number, number>
   namespace differenceInYears {}
@@ -14525,6 +15162,30 @@ declare module 'date-fns/esm/fp' {
   >
   namespace parseWithOptions {}
 
+  const previousDay: CurriedFn2<number, Date | number, Date>
+  namespace previousDay {}
+
+  const previousFriday: CurriedFn1<Date | number, Date>
+  namespace previousFriday {}
+
+  const previousMonday: CurriedFn1<Date | number, Date>
+  namespace previousMonday {}
+
+  const previousSaturday: CurriedFn1<Date | number, Date>
+  namespace previousSaturday {}
+
+  const previousSunday: CurriedFn1<Date | number, Date>
+  namespace previousSunday {}
+
+  const previousThursday: CurriedFn1<Date | number, Date>
+  namespace previousThursday {}
+
+  const previousTuesday: CurriedFn1<Date | number, Date>
+  namespace previousTuesday {}
+
+  const previousWednesday: CurriedFn1<Date | number, Date>
+  namespace previousWednesday {}
+
   const quartersToMonths: CurriedFn1<number, number>
   namespace quartersToMonths {}
 
@@ -14932,6 +15593,11 @@ declare module 'date-fns/esm/fp/differenceInHours' {
   export default differenceInHours
 }
 
+declare module 'date-fns/esm/fp/differenceInHoursWithOptions' {
+  import { differenceInHoursWithOptions } from 'date-fns/esm/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInISOWeekYears' {
   import { differenceInISOWeekYears } from 'date-fns/esm/fp'
   export default differenceInISOWeekYears
@@ -14947,6 +15613,11 @@ declare module 'date-fns/esm/fp/differenceInMinutes' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/esm/fp/differenceInMinutesWithOptions' {
+  import { differenceInMinutesWithOptions } from 'date-fns/esm/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInMonths' {
   import { differenceInMonths } from 'date-fns/esm/fp'
   export default differenceInMonths
@@ -14957,14 +15628,29 @@ declare module 'date-fns/esm/fp/differenceInQuarters' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/esm/fp/differenceInQuartersWithOptions' {
+  import { differenceInQuartersWithOptions } from 'date-fns/esm/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInSeconds' {
   import { differenceInSeconds } from 'date-fns/esm/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/esm/fp/differenceInSecondsWithOptions' {
+  import { differenceInSecondsWithOptions } from 'date-fns/esm/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInWeeks' {
   import { differenceInWeeks } from 'date-fns/esm/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/esm/fp/differenceInWeeksWithOptions' {
+  import { differenceInWeeksWithOptions } from 'date-fns/esm/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInYears' {
@@ -15692,6 +16378,46 @@ declare module 'date-fns/esm/fp/parseWithOptions' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/previousDay' {
+  import { previousDay } from 'date-fns/esm/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/fp/previousFriday' {
+  import { previousFriday } from 'date-fns/esm/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/fp/previousMonday' {
+  import { previousMonday } from 'date-fns/esm/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/fp/previousSaturday' {
+  import { previousSaturday } from 'date-fns/esm/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/fp/previousSunday' {
+  import { previousSunday } from 'date-fns/esm/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/fp/previousThursday' {
+  import { previousThursday } from 'date-fns/esm/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/fp/previousTuesday' {
+  import { previousTuesday } from 'date-fns/esm/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/fp/previousWednesday' {
+  import { previousWednesday } from 'date-fns/esm/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/esm/fp/quartersToMonths' {
   import { quartersToMonths } from 'date-fns/esm/fp'
   export default quartersToMonths
@@ -16127,6 +16853,11 @@ declare module 'date-fns/esm/fp/differenceInHours/index' {
   export default differenceInHours
 }
 
+declare module 'date-fns/esm/fp/differenceInHoursWithOptions/index' {
+  import { differenceInHoursWithOptions } from 'date-fns/esm/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInISOWeekYears/index' {
   import { differenceInISOWeekYears } from 'date-fns/esm/fp'
   export default differenceInISOWeekYears
@@ -16142,6 +16873,11 @@ declare module 'date-fns/esm/fp/differenceInMinutes/index' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/esm/fp/differenceInMinutesWithOptions/index' {
+  import { differenceInMinutesWithOptions } from 'date-fns/esm/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInMonths/index' {
   import { differenceInMonths } from 'date-fns/esm/fp'
   export default differenceInMonths
@@ -16152,14 +16888,29 @@ declare module 'date-fns/esm/fp/differenceInQuarters/index' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/esm/fp/differenceInQuartersWithOptions/index' {
+  import { differenceInQuartersWithOptions } from 'date-fns/esm/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInSeconds/index' {
   import { differenceInSeconds } from 'date-fns/esm/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/esm/fp/differenceInSecondsWithOptions/index' {
+  import { differenceInSecondsWithOptions } from 'date-fns/esm/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInWeeks/index' {
   import { differenceInWeeks } from 'date-fns/esm/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/esm/fp/differenceInWeeksWithOptions/index' {
+  import { differenceInWeeksWithOptions } from 'date-fns/esm/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInYears/index' {
@@ -16887,6 +17638,46 @@ declare module 'date-fns/esm/fp/parseWithOptions/index' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/previousDay/index' {
+  import { previousDay } from 'date-fns/esm/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/fp/previousFriday/index' {
+  import { previousFriday } from 'date-fns/esm/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/fp/previousMonday/index' {
+  import { previousMonday } from 'date-fns/esm/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/fp/previousSaturday/index' {
+  import { previousSaturday } from 'date-fns/esm/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/fp/previousSunday/index' {
+  import { previousSunday } from 'date-fns/esm/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/fp/previousThursday/index' {
+  import { previousThursday } from 'date-fns/esm/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/fp/previousTuesday/index' {
+  import { previousTuesday } from 'date-fns/esm/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/fp/previousWednesday/index' {
+  import { previousWednesday } from 'date-fns/esm/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/esm/fp/quartersToMonths/index' {
   import { quartersToMonths } from 'date-fns/esm/fp'
   export default quartersToMonths
@@ -17322,6 +18113,11 @@ declare module 'date-fns/esm/fp/differenceInHours/index.js' {
   export default differenceInHours
 }
 
+declare module 'date-fns/esm/fp/differenceInHoursWithOptions/index.js' {
+  import { differenceInHoursWithOptions } from 'date-fns/esm/fp'
+  export default differenceInHoursWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInISOWeekYears/index.js' {
   import { differenceInISOWeekYears } from 'date-fns/esm/fp'
   export default differenceInISOWeekYears
@@ -17337,6 +18133,11 @@ declare module 'date-fns/esm/fp/differenceInMinutes/index.js' {
   export default differenceInMinutes
 }
 
+declare module 'date-fns/esm/fp/differenceInMinutesWithOptions/index.js' {
+  import { differenceInMinutesWithOptions } from 'date-fns/esm/fp'
+  export default differenceInMinutesWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInMonths/index.js' {
   import { differenceInMonths } from 'date-fns/esm/fp'
   export default differenceInMonths
@@ -17347,14 +18148,29 @@ declare module 'date-fns/esm/fp/differenceInQuarters/index.js' {
   export default differenceInQuarters
 }
 
+declare module 'date-fns/esm/fp/differenceInQuartersWithOptions/index.js' {
+  import { differenceInQuartersWithOptions } from 'date-fns/esm/fp'
+  export default differenceInQuartersWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInSeconds/index.js' {
   import { differenceInSeconds } from 'date-fns/esm/fp'
   export default differenceInSeconds
 }
 
+declare module 'date-fns/esm/fp/differenceInSecondsWithOptions/index.js' {
+  import { differenceInSecondsWithOptions } from 'date-fns/esm/fp'
+  export default differenceInSecondsWithOptions
+}
+
 declare module 'date-fns/esm/fp/differenceInWeeks/index.js' {
   import { differenceInWeeks } from 'date-fns/esm/fp'
   export default differenceInWeeks
+}
+
+declare module 'date-fns/esm/fp/differenceInWeeksWithOptions/index.js' {
+  import { differenceInWeeksWithOptions } from 'date-fns/esm/fp'
+  export default differenceInWeeksWithOptions
 }
 
 declare module 'date-fns/esm/fp/differenceInYears/index.js' {
@@ -18082,6 +18898,46 @@ declare module 'date-fns/esm/fp/parseWithOptions/index.js' {
   export default parseWithOptions
 }
 
+declare module 'date-fns/esm/fp/previousDay/index.js' {
+  import { previousDay } from 'date-fns/esm/fp'
+  export default previousDay
+}
+
+declare module 'date-fns/esm/fp/previousFriday/index.js' {
+  import { previousFriday } from 'date-fns/esm/fp'
+  export default previousFriday
+}
+
+declare module 'date-fns/esm/fp/previousMonday/index.js' {
+  import { previousMonday } from 'date-fns/esm/fp'
+  export default previousMonday
+}
+
+declare module 'date-fns/esm/fp/previousSaturday/index.js' {
+  import { previousSaturday } from 'date-fns/esm/fp'
+  export default previousSaturday
+}
+
+declare module 'date-fns/esm/fp/previousSunday/index.js' {
+  import { previousSunday } from 'date-fns/esm/fp'
+  export default previousSunday
+}
+
+declare module 'date-fns/esm/fp/previousThursday/index.js' {
+  import { previousThursday } from 'date-fns/esm/fp'
+  export default previousThursday
+}
+
+declare module 'date-fns/esm/fp/previousTuesday/index.js' {
+  import { previousTuesday } from 'date-fns/esm/fp'
+  export default previousTuesday
+}
+
+declare module 'date-fns/esm/fp/previousWednesday/index.js' {
+  import { previousWednesday } from 'date-fns/esm/fp'
+  export default previousWednesday
+}
+
 declare module 'date-fns/esm/fp/quartersToMonths/index.js' {
   import { quartersToMonths } from 'date-fns/esm/fp'
   export default quartersToMonths
@@ -18380,6 +19236,9 @@ declare module 'date-fns/locale' {
   const arSA: Locale
   namespace arSA {}
 
+  const arTN: Locale
+  namespace arTN {}
+
   const az: Locale
   namespace az {}
 
@@ -18638,6 +19497,11 @@ declare module 'date-fns/locale/ar-MA' {
 declare module 'date-fns/locale/ar-SA' {
   import { arSA } from 'date-fns/locale'
   export default arSA
+}
+
+declare module 'date-fns/locale/ar-TN' {
+  import { arTN } from 'date-fns/locale'
+  export default arTN
 }
 
 declare module 'date-fns/locale/az' {
@@ -19055,6 +19919,11 @@ declare module 'date-fns/locale/ar-SA/index' {
   export default arSA
 }
 
+declare module 'date-fns/locale/ar-TN/index' {
+  import { arTN } from 'date-fns/locale'
+  export default arTN
+}
+
 declare module 'date-fns/locale/az/index' {
   import { az } from 'date-fns/locale'
   export default az
@@ -19470,6 +20339,11 @@ declare module 'date-fns/locale/ar-SA/index.js' {
   export default arSA
 }
 
+declare module 'date-fns/locale/ar-TN/index.js' {
+  import { arTN } from 'date-fns/locale'
+  export default arTN
+}
+
 declare module 'date-fns/locale/az/index.js' {
   import { az } from 'date-fns/locale'
   export default az
@@ -19878,6 +20752,9 @@ declare module 'date-fns/esm/locale' {
   const arSA: Locale
   namespace arSA {}
 
+  const arTN: Locale
+  namespace arTN {}
+
   const az: Locale
   namespace az {}
 
@@ -20136,6 +21013,11 @@ declare module 'date-fns/esm/locale/ar-MA' {
 declare module 'date-fns/esm/locale/ar-SA' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
+}
+
+declare module 'date-fns/esm/locale/ar-TN' {
+  import { arTN } from 'date-fns/esm/locale'
+  export default arTN
 }
 
 declare module 'date-fns/esm/locale/az' {
@@ -20553,6 +21435,11 @@ declare module 'date-fns/esm/locale/ar-SA/index' {
   export default arSA
 }
 
+declare module 'date-fns/esm/locale/ar-TN/index' {
+  import { arTN } from 'date-fns/esm/locale'
+  export default arTN
+}
+
 declare module 'date-fns/esm/locale/az/index' {
   import { az } from 'date-fns/esm/locale'
   export default az
@@ -20966,6 +21853,11 @@ declare module 'date-fns/esm/locale/ar-MA/index.js' {
 declare module 'date-fns/esm/locale/ar-SA/index.js' {
   import { arSA } from 'date-fns/esm/locale'
   export default arSA
+}
+
+declare module 'date-fns/esm/locale/ar-TN/index.js' {
+  import { arTN } from 'date-fns/esm/locale'
+  export default arTN
 }
 
 declare module 'date-fns/esm/locale/az/index.js' {
@@ -21454,7 +22346,13 @@ interface dateFns {
 
   differenceInDays(dateLeft: Date | number, dateRight: Date | number): number
 
-  differenceInHours(dateLeft: Date | number, dateRight: Date | number): number
+  differenceInHours(
+    dateLeft: Date | number,
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
+  ): number
 
   differenceInISOWeekYears(
     dateLeft: Date | number,
@@ -21466,18 +22364,39 @@ interface dateFns {
     dateRight: Date | number
   ): number
 
-  differenceInMinutes(dateLeft: Date | number, dateRight: Date | number): number
+  differenceInMinutes(
+    dateLeft: Date | number,
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
+  ): number
 
   differenceInMonths(dateLeft: Date | number, dateRight: Date | number): number
 
   differenceInQuarters(
     dateLeft: Date | number,
-    dateRight: Date | number
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
   ): number
 
-  differenceInSeconds(dateLeft: Date | number, dateRight: Date | number): number
+  differenceInSeconds(
+    dateLeft: Date | number,
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
+  ): number
 
-  differenceInWeeks(dateLeft: Date | number, dateRight: Date | number): number
+  differenceInWeeks(
+    dateLeft: Date | number,
+    dateRight: Date | number,
+    options?: {
+      roundingMethod?: string
+    }
+  ): number
 
   differenceInYears(dateLeft: Date | number, dateRight: Date | number): number
 
@@ -21961,6 +22880,22 @@ interface dateFns {
   ): Date
 
   parseJSON(argument: string | number | Date): Date
+
+  previousDay(date: Date | number, day: number): Date
+
+  previousFriday(date: Date | number): Date
+
+  previousMonday(date: Date | number): Date
+
+  previousSaturday(date: Date | number): Date
+
+  previousSunday(date: Date | number): Date
+
+  previousThursday(date: Date | number): Date
+
+  previousTuesday(date: Date | number): Date
+
+  previousWednesday(date: Date | number): Date
 
   quartersToMonths(quarters: number): number
 
