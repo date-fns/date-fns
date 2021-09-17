@@ -10,7 +10,7 @@ import isLastDayOfMonth from '../isLastDayOfMonth/index'
  * @summary Get the number of full months between the given dates.
  *
  * @description
- * Get the number of full months between the given dates.
+ * Get the number of full months between the given dates using trunc as a default rounding method.
  *
  * ### v2.0.0 breaking changes:
  *
@@ -23,7 +23,7 @@ import isLastDayOfMonth from '../isLastDayOfMonth/index'
  *
  * @example
  * // How many full months are between 31 January 2014 and 1 September 2014?
- * var result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
+ * const result = differenceInMonths(new Date(2014, 8, 1), new Date(2014, 0, 31))
  * //=> 7
  */
 export default function differenceInMonths(

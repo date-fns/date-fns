@@ -1,5 +1,7 @@
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
+import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * @name differenceInSeconds
@@ -15,6 +17,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
+ * @param {Object} [options] - an object with options.
+ * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Number} the number of seconds
  * @throws {TypeError} 2 arguments required
  *
@@ -28,11 +32,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 12
  */
 export default function differenceInSeconds(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number,
+  options?: RoundingOptions
 ): number {
   requiredArgs(2, arguments)
 
-  const diff = differenceInMilliseconds(dirtyDateLeft, dirtyDateRight) / 1000
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+  const diff = differenceInMilliseconds(dateLeft, dateRight) / 1000
+  return getRoundingMethod(options?.roundingMethod)(diff)
 }
