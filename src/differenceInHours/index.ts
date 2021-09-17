@@ -1,11 +1,8 @@
 import { millisecondsInHour } from '../constants/index'
 import differenceInMilliseconds from '../differenceInMilliseconds/index'
-import { RoundingOptions } from '../types'
+import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
-  defaultRoundingMethod,
-  getRoundingMethod,
-} from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * @name differenceInHours
@@ -21,7 +18,7 @@ import {
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
- * @param {Object} options - an object with options.
+ * @param {Object} [options] - an object with options.
  * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Number} the number of hours
  * @throws {TypeError} 2 arguments required
@@ -43,9 +40,5 @@ export default function differenceInHours(
 
   const diff =
     differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour
-  const roundingFn =
-    options?.roundingMethod === undefined
-      ? getRoundingMethod(defaultRoundingMethod)
-      : getRoundingMethod(options.roundingMethod)
-  return roundingFn(diff)
+  return getRoundingMethod(options?.roundingMethod)(diff)
 }

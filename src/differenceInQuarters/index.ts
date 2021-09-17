@@ -1,10 +1,7 @@
 import differenceInMonths from '../differenceInMonths/index'
 import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
-import {
-  defaultRoundingMethod,
-  getRoundingMethod,
-} from '../_lib/roundingMethods/index'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * @name differenceInQuarters
@@ -20,7 +17,7 @@ import {
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
- * @param {Object} options - an object with options.
+ * @param {Object} [options] - an object with options.
  * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Number} the number of full quarters
  * @throws {TypeError} 2 arguments required
@@ -37,10 +34,6 @@ export default function differenceInQuarters(
 ): number {
   requiredArgs(2, arguments)
 
-  const roundingFn =
-    options?.roundingMethod === undefined
-      ? getRoundingMethod(defaultRoundingMethod)
-      : getRoundingMethod(options.roundingMethod)
   const diff = differenceInMonths(dateLeft, dateRight) / 3
-  return roundingFn(diff)
+  return getRoundingMethod(options?.roundingMethod)(diff)
 }
