@@ -189,53 +189,53 @@
 
 If now is January 1st, 2000, 00:00.
 
-| Date                     | Result                  | `includeSeconds: true`  | `addSuffix: true`            |
-| ------------------------ | ----------------------- | ----------------------- | ---------------------------- |
-| 2006-01-01T00:00:00.000Z | etwa 6 Jahre            | etwa 6 Jahre            | in etwa 6 Jahren             |
-| 2005-01-01T00:00:00.000Z | etwa 5 Jahre            | etwa 5 Jahre            | in etwa 5 Jahren             |
-| 2004-01-01T00:00:00.000Z | etwa 4 Jahre            | etwa 4 Jahre            | in etwa 4 Jahren             |
-| 2003-01-01T00:00:00.000Z | etwa 3 Jahre            | etwa 3 Jahre            | in etwa 3 Jahren             |
-| 2002-01-01T00:00:00.000Z | etwa 2 Jahre            | etwa 2 Jahre            | in etwa 2 Jahren             |
-| 2001-06-01T00:00:00.000Z | mehr als ein Jahr       | mehr als ein Jahr       | in mehr als einem Jahr       |
-| 2001-02-01T00:00:00.000Z | etwa ein Jahr           | etwa ein Jahr           | in etwa einem Jahr           |
-| 2001-01-01T00:00:00.000Z | etwa ein Jahr           | etwa ein Jahr           | in etwa einem Jahr           |
-| 2000-06-01T00:00:00.000Z | 5 Monate                | 5 Monate                | in 5 Monaten                 |
-| 2000-03-01T00:00:00.000Z | 2 Monate                | 2 Monate                | in 2 Monaten                 |
-| 2000-02-01T00:00:00.000Z | etwa ein Monat          | etwa ein Monat          | in etwa einem Monat          |
-| 2000-01-15T00:00:00.000Z | 14 Tage                 | 14 Tage                 | in 14 Tagen                  |
-| 2000-01-02T00:00:00.000Z | ein Tag                 | ein Tag                 | in einem Tag                 |
-| 2000-01-01T06:00:00.000Z | etwa 6 Stunden          | etwa 6 Stunden          | in etwa 6 Stunden            |
-| 2000-01-01T01:00:00.000Z | etwa eine Stunde        | etwa eine Stunde        | in etwa einer Stunde         |
-| 2000-01-01T00:45:00.000Z | etwa eine Stunde        | etwa eine Stunde        | in etwa einer Stunde         |
-| 2000-01-01T00:30:00.000Z | 30 Minuten              | 30 Minuten              | in 30 Minuten                |
-| 2000-01-01T00:15:00.000Z | 15 Minuten              | 15 Minuten              | in 15 Minuten                |
-| 2000-01-01T00:01:00.000Z | eine Minute             | eine Minute             | in einer Minute              |
-| 2000-01-01T00:00:25.000Z | weniger als eine Minute | eine halbe Minute       | in weniger als einer Minute  |
-| 2000-01-01T00:00:15.000Z | weniger als eine Minute | weniger als 20 Sekunden | in weniger als einer Minute  |
-| 2000-01-01T00:00:05.000Z | weniger als eine Minute | weniger als 10 Sekunden | in weniger als einer Minute  |
-| 2000-01-01T00:00:00.000Z | weniger als eine Minute | weniger als 5 Sekunden  | vor weniger als einer Minute |
-| 1999-12-31T23:59:55.000Z | weniger als eine Minute | weniger als 10 Sekunden | vor weniger als einer Minute |
-| 1999-12-31T23:59:45.000Z | weniger als eine Minute | weniger als 20 Sekunden | vor weniger als einer Minute |
-| 1999-12-31T23:59:35.000Z | weniger als eine Minute | eine halbe Minute       | vor weniger als einer Minute |
-| 1999-12-31T23:59:00.000Z | eine Minute             | eine Minute             | vor einer Minute             |
-| 1999-12-31T23:45:00.000Z | 15 Minuten              | 15 Minuten              | vor 15 Minuten               |
-| 1999-12-31T23:30:00.000Z | 30 Minuten              | 30 Minuten              | vor 30 Minuten               |
-| 1999-12-31T23:15:00.000Z | etwa eine Stunde        | etwa eine Stunde        | vor etwa einer Stunde        |
-| 1999-12-31T23:00:00.000Z | etwa eine Stunde        | etwa eine Stunde        | vor etwa einer Stunde        |
-| 1999-12-31T18:00:00.000Z | etwa 6 Stunden          | etwa 6 Stunden          | vor etwa 6 Stunden           |
-| 1999-12-30T00:00:00.000Z | 2 Tage                  | 2 Tage                  | vor 2 Tagen                  |
-| 1999-12-15T00:00:00.000Z | 17 Tage                 | 17 Tage                 | vor 17 Tagen                 |
-| 1999-12-01T00:00:00.000Z | etwa ein Monat          | etwa ein Monat          | vor etwa einem Monat         |
-| 1999-11-01T00:00:00.000Z | 2 Monate                | 2 Monate                | vor 2 Monaten                |
-| 1999-06-01T00:00:00.000Z | 7 Monate                | 7 Monate                | vor 7 Monaten                |
-| 1999-01-01T00:00:00.000Z | etwa ein Jahr           | etwa ein Jahr           | vor etwa einem Jahr          |
-| 1998-12-01T00:00:00.000Z | etwa ein Jahr           | etwa ein Jahr           | vor etwa einem Jahr          |
-| 1998-06-01T00:00:00.000Z | mehr als ein Jahr       | mehr als ein Jahr       | vor mehr als einem Jahr      |
-| 1998-01-01T00:00:00.000Z | etwa 2 Jahre            | etwa 2 Jahre            | vor etwa 2 Jahren            |
-| 1997-01-01T00:00:00.000Z | etwa 3 Jahre            | etwa 3 Jahre            | vor etwa 3 Jahren            |
-| 1996-01-01T00:00:00.000Z | etwa 4 Jahre            | etwa 4 Jahre            | vor etwa 4 Jahren            |
-| 1995-01-01T00:00:00.000Z | etwa 5 Jahre            | etwa 5 Jahre            | vor etwa 5 Jahren            |
-| 1994-01-01T00:00:00.000Z | etwa 6 Jahre            | etwa 6 Jahre            | vor etwa 6 Jahren            |
+| Date                     | Result               | `includeSeconds: true`  | `addSuffix: true`        |
+| ------------------------ | -------------------- | ----------------------- | ------------------------ |
+| 2006-01-01T00:00:00.000Z | etwa 6 Jahre         | etwa 6 Jahre            | in etwa 6 Jahren         |
+| 2005-01-01T00:00:00.000Z | etwa 5 Jahre         | etwa 5 Jahre            | in etwa 5 Jahren         |
+| 2004-01-01T00:00:00.000Z | etwa 4 Jahre         | etwa 4 Jahre            | in etwa 4 Jahren         |
+| 2003-01-01T00:00:00.000Z | etwa 3 Jahre         | etwa 3 Jahre            | in etwa 3 Jahren         |
+| 2002-01-01T00:00:00.000Z | etwa 2 Jahre         | etwa 2 Jahre            | in etwa 2 Jahren         |
+| 2001-06-01T00:00:00.000Z | mehr als 1 Jahr      | mehr als 1 Jahr         | in mehr als 1 Jahr       |
+| 2001-02-01T00:00:00.000Z | etwa 1 Jahr          | etwa 1 Jahr             | in etwa 1 Jahr           |
+| 2001-01-01T00:00:00.000Z | etwa 1 Jahr          | etwa 1 Jahr             | in etwa 1 Jahr           |
+| 2000-06-01T00:00:00.000Z | 5 Monate             | 5 Monate                | in 5 Monaten             |
+| 2000-03-01T00:00:00.000Z | 2 Monate             | 2 Monate                | in 2 Monaten             |
+| 2000-02-01T00:00:00.000Z | etwa 1 Monat         | etwa 1 Monat            | in etwa 1 Monat          |
+| 2000-01-15T00:00:00.000Z | 14 Tage              | 14 Tage                 | in 14 Tagen              |
+| 2000-01-02T00:00:00.000Z | 1 Tag                | 1 Tag                   | in 1 Tag                 |
+| 2000-01-01T06:00:00.000Z | etwa 6 Stunden       | etwa 6 Stunden          | in etwa 6 Stunden        |
+| 2000-01-01T01:00:00.000Z | etwa 1 Stunde        | etwa 1 Stunde           | in etwa 1 Stunde         |
+| 2000-01-01T00:45:00.000Z | etwa 1 Stunde        | etwa 1 Stunde           | in etwa 1 Stunde         |
+| 2000-01-01T00:30:00.000Z | 30 Minuten           | 30 Minuten              | in 30 Minuten            |
+| 2000-01-01T00:15:00.000Z | 15 Minuten           | 15 Minuten              | in 15 Minuten            |
+| 2000-01-01T00:01:00.000Z | 1 Minute             | 1 Minute                | in 1 Minute              |
+| 2000-01-01T00:00:25.000Z | weniger als 1 Minute | halbe Minute            | in weniger als 1 Minute  |
+| 2000-01-01T00:00:15.000Z | weniger als 1 Minute | weniger als 20 Sekunden | in weniger als 1 Minute  |
+| 2000-01-01T00:00:05.000Z | weniger als 1 Minute | weniger als 10 Sekunden | in weniger als 1 Minute  |
+| 2000-01-01T00:00:00.000Z | weniger als 1 Minute | weniger als 5 Sekunden  | vor weniger als 1 Minute |
+| 1999-12-31T23:59:55.000Z | weniger als 1 Minute | weniger als 10 Sekunden | vor weniger als 1 Minute |
+| 1999-12-31T23:59:45.000Z | weniger als 1 Minute | weniger als 20 Sekunden | vor weniger als 1 Minute |
+| 1999-12-31T23:59:35.000Z | weniger als 1 Minute | halbe Minute            | vor weniger als 1 Minute |
+| 1999-12-31T23:59:00.000Z | 1 Minute             | 1 Minute                | vor 1 Minute             |
+| 1999-12-31T23:45:00.000Z | 15 Minuten           | 15 Minuten              | vor 15 Minuten           |
+| 1999-12-31T23:30:00.000Z | 30 Minuten           | 30 Minuten              | vor 30 Minuten           |
+| 1999-12-31T23:15:00.000Z | etwa 1 Stunde        | etwa 1 Stunde           | vor etwa 1 Stunde        |
+| 1999-12-31T23:00:00.000Z | etwa 1 Stunde        | etwa 1 Stunde           | vor etwa 1 Stunde        |
+| 1999-12-31T18:00:00.000Z | etwa 6 Stunden       | etwa 6 Stunden          | vor etwa 6 Stunden       |
+| 1999-12-30T00:00:00.000Z | 2 Tage               | 2 Tage                  | vor 2 Tagen              |
+| 1999-12-15T00:00:00.000Z | 17 Tage              | 17 Tage                 | vor 17 Tagen             |
+| 1999-12-01T00:00:00.000Z | etwa 1 Monat         | etwa 1 Monat            | vor etwa 1 Monat         |
+| 1999-11-01T00:00:00.000Z | 2 Monate             | 2 Monate                | vor 2 Monaten            |
+| 1999-06-01T00:00:00.000Z | 7 Monate             | 7 Monate                | vor 7 Monaten            |
+| 1999-01-01T00:00:00.000Z | etwa 1 Jahr          | etwa 1 Jahr             | vor etwa 1 Jahr          |
+| 1998-12-01T00:00:00.000Z | etwa 1 Jahr          | etwa 1 Jahr             | vor etwa 1 Jahr          |
+| 1998-06-01T00:00:00.000Z | mehr als 1 Jahr      | mehr als 1 Jahr         | vor mehr als 1 Jahr      |
+| 1998-01-01T00:00:00.000Z | etwa 2 Jahre         | etwa 2 Jahre            | vor etwa 2 Jahren        |
+| 1997-01-01T00:00:00.000Z | etwa 3 Jahre         | etwa 3 Jahre            | vor etwa 3 Jahren        |
+| 1996-01-01T00:00:00.000Z | etwa 4 Jahre         | etwa 4 Jahre            | vor etwa 4 Jahren        |
+| 1995-01-01T00:00:00.000Z | etwa 5 Jahre         | etwa 5 Jahre            | vor etwa 5 Jahren        |
+| 1994-01-01T00:00:00.000Z | etwa 6 Jahre         | etwa 6 Jahre            | vor etwa 6 Jahren        |
 
 ## `formatDistanceStrict`
 
@@ -248,20 +248,20 @@ If now is January 1st, 2000, 00:00.
 | 2004-01-01T00:00:00.000Z | 4 Jahre     | in 4 Jahren       | 35064 Stunden                  |
 | 2003-01-01T00:00:00.000Z | 3 Jahre     | in 3 Jahren       | 26304 Stunden                  |
 | 2002-01-01T00:00:00.000Z | 2 Jahre     | in 2 Jahren       | 17544 Stunden                  |
-| 2001-06-01T00:00:00.000Z | ein Jahr    | in einem Jahr     | 12408 Stunden                  |
-| 2001-02-01T00:00:00.000Z | ein Jahr    | in einem Jahr     | 9528 Stunden                   |
-| 2001-01-01T00:00:00.000Z | ein Jahr    | in einem Jahr     | 8784 Stunden                   |
+| 2001-06-01T00:00:00.000Z | 1 Jahr      | in 1 Jahr         | 12408 Stunden                  |
+| 2001-02-01T00:00:00.000Z | 1 Jahr      | in 1 Jahr         | 9528 Stunden                   |
+| 2001-01-01T00:00:00.000Z | 1 Jahr      | in 1 Jahr         | 8784 Stunden                   |
 | 2000-06-01T00:00:00.000Z | 5 Monate    | in 5 Monaten      | 3648 Stunden                   |
 | 2000-03-01T00:00:00.000Z | 2 Monate    | in 2 Monaten      | 1440 Stunden                   |
-| 2000-02-01T00:00:00.000Z | ein Monat   | in einem Monat    | 744 Stunden                    |
+| 2000-02-01T00:00:00.000Z | 1 Monat     | in 1 Monat        | 744 Stunden                    |
 | 2000-01-15T00:00:00.000Z | 14 Tage     | in 14 Tagen       | 336 Stunden                    |
-| 2000-01-02T00:00:00.000Z | ein Tag     | in einem Tag      | 24 Stunden                     |
+| 2000-01-02T00:00:00.000Z | 1 Tag       | in 1 Tag          | 24 Stunden                     |
 | 2000-01-01T06:00:00.000Z | 6 Stunden   | in 6 Stunden      | 6 Stunden                      |
-| 2000-01-01T01:00:00.000Z | eine Stunde | in einer Stunde   | eine Stunde                    |
-| 2000-01-01T00:45:00.000Z | 45 Minuten  | in 45 Minuten     | eine Stunde                    |
-| 2000-01-01T00:30:00.000Z | 30 Minuten  | in 30 Minuten     | eine Stunde                    |
+| 2000-01-01T01:00:00.000Z | 1 Stunde    | in 1 Stunde       | 1 Stunde                       |
+| 2000-01-01T00:45:00.000Z | 45 Minuten  | in 45 Minuten     | 1 Stunde                       |
+| 2000-01-01T00:30:00.000Z | 30 Minuten  | in 30 Minuten     | 1 Stunde                       |
 | 2000-01-01T00:15:00.000Z | 15 Minuten  | in 15 Minuten     | 0 Stunden                      |
-| 2000-01-01T00:01:00.000Z | eine Minute | in einer Minute   | 0 Stunden                      |
+| 2000-01-01T00:01:00.000Z | 1 Minute    | in 1 Minute       | 0 Stunden                      |
 | 2000-01-01T00:00:25.000Z | 25 Sekunden | in 25 Sekunden    | 0 Stunden                      |
 | 2000-01-01T00:00:15.000Z | 15 Sekunden | in 15 Sekunden    | 0 Stunden                      |
 | 2000-01-01T00:00:05.000Z | 5 Sekunden  | in 5 Sekunden     | 0 Stunden                      |
@@ -269,19 +269,19 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:59:55.000Z | 5 Sekunden  | vor 5 Sekunden    | 0 Stunden                      |
 | 1999-12-31T23:59:45.000Z | 15 Sekunden | vor 15 Sekunden   | 0 Stunden                      |
 | 1999-12-31T23:59:35.000Z | 25 Sekunden | vor 25 Sekunden   | 0 Stunden                      |
-| 1999-12-31T23:59:00.000Z | eine Minute | vor einer Minute  | 0 Stunden                      |
+| 1999-12-31T23:59:00.000Z | 1 Minute    | vor 1 Minute      | 0 Stunden                      |
 | 1999-12-31T23:45:00.000Z | 15 Minuten  | vor 15 Minuten    | 0 Stunden                      |
-| 1999-12-31T23:30:00.000Z | 30 Minuten  | vor 30 Minuten    | eine Stunde                    |
-| 1999-12-31T23:15:00.000Z | 45 Minuten  | vor 45 Minuten    | eine Stunde                    |
-| 1999-12-31T23:00:00.000Z | eine Stunde | vor einer Stunde  | eine Stunde                    |
+| 1999-12-31T23:30:00.000Z | 30 Minuten  | vor 30 Minuten    | 1 Stunde                       |
+| 1999-12-31T23:15:00.000Z | 45 Minuten  | vor 45 Minuten    | 1 Stunde                       |
+| 1999-12-31T23:00:00.000Z | 1 Stunde    | vor 1 Stunde      | 1 Stunde                       |
 | 1999-12-31T18:00:00.000Z | 6 Stunden   | vor 6 Stunden     | 6 Stunden                      |
 | 1999-12-30T00:00:00.000Z | 2 Tage      | vor 2 Tagen       | 48 Stunden                     |
 | 1999-12-15T00:00:00.000Z | 17 Tage     | vor 17 Tagen      | 408 Stunden                    |
-| 1999-12-01T00:00:00.000Z | ein Monat   | vor einem Monat   | 744 Stunden                    |
+| 1999-12-01T00:00:00.000Z | 1 Monat     | vor 1 Monat       | 744 Stunden                    |
 | 1999-11-01T00:00:00.000Z | 2 Monate    | vor 2 Monaten     | 1464 Stunden                   |
 | 1999-06-01T00:00:00.000Z | 7 Monate    | vor 7 Monaten     | 5136 Stunden                   |
-| 1999-01-01T00:00:00.000Z | ein Jahr    | vor einem Jahr    | 8760 Stunden                   |
-| 1998-12-01T00:00:00.000Z | ein Jahr    | vor einem Jahr    | 9504 Stunden                   |
+| 1999-01-01T00:00:00.000Z | 1 Jahr      | vor 1 Jahr        | 8760 Stunden                   |
+| 1998-12-01T00:00:00.000Z | 1 Jahr      | vor 1 Jahr        | 9504 Stunden                   |
 | 1998-06-01T00:00:00.000Z | 2 Jahre     | vor 2 Jahren      | 13896 Stunden                  |
 | 1998-01-01T00:00:00.000Z | 2 Jahre     | vor 2 Jahren      | 17520 Stunden                  |
 | 1997-01-01T00:00:00.000Z | 3 Jahre     | vor 3 Jahren      | 26280 Stunden                  |

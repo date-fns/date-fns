@@ -10,170 +10,170 @@ type FormatDistanceTokenValue = {
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
     standalone: {
-      one: 'weniger als eine Sekunde',
+      one: 'weniger als 1 Sekunde',
       other: 'weniger als {{count}} Sekunden',
     },
     withPreposition: {
-      one: 'weniger als einer Sekunde',
+      one: 'weniger als 1 Sekunde',
       other: 'weniger als {{count}} Sekunden',
     },
   },
 
   xSeconds: {
     standalone: {
-      one: 'eine Sekunde',
+      one: '1 Sekunde',
       other: '{{count}} Sekunden',
     },
     withPreposition: {
-      one: 'einer Sekunde',
+      one: '1 Sekunde',
       other: '{{count}} Sekunden',
     },
   },
 
   halfAMinute: {
-    standalone: 'eine halbe Minute',
-    withPreposition: 'einer halben Minute',
+    standalone: 'halbe Minute',
+    withPreposition: 'halben Minute',
   },
 
   lessThanXMinutes: {
     standalone: {
-      one: 'weniger als eine Minute',
+      one: 'weniger als 1 Minute',
       other: 'weniger als {{count}} Minuten',
     },
     withPreposition: {
-      one: 'weniger als einer Minute',
+      one: 'weniger als 1 Minute',
       other: 'weniger als {{count}} Minuten',
     },
   },
 
   xMinutes: {
     standalone: {
-      one: 'eine Minute',
+      one: '1 Minute',
       other: '{{count}} Minuten',
     },
     withPreposition: {
-      one: 'einer Minute',
+      one: '1 Minute',
       other: '{{count}} Minuten',
     },
   },
 
   aboutXHours: {
     standalone: {
-      one: 'etwa eine Stunde',
+      one: 'etwa 1 Stunde',
       other: 'etwa {{count}} Stunden',
     },
     withPreposition: {
-      one: 'etwa einer Stunde',
+      one: 'etwa 1 Stunde',
       other: 'etwa {{count}} Stunden',
     },
   },
 
   xHours: {
     standalone: {
-      one: 'eine Stunde',
+      one: '1 Stunde',
       other: '{{count}} Stunden',
     },
     withPreposition: {
-      one: 'einer Stunde',
+      one: '1 Stunde',
       other: '{{count}} Stunden',
     },
   },
 
   xDays: {
     standalone: {
-      one: 'ein Tag',
+      one: '1 Tag',
       other: '{{count}} Tage',
     },
     withPreposition: {
-      one: 'einem Tag',
+      one: '1 Tag',
       other: '{{count}} Tagen',
     },
   },
 
   aboutXWeeks: {
     standalone: {
-      one: 'etwa ein Woche',
+      one: 'etwa 1 Woche',
       other: 'etwa {{count}} Wochen',
     },
     withPreposition: {
-      one: 'etwa einem Woche',
+      one: 'etwa 1 Woche',
       other: 'etwa {{count}} Wochen',
     },
   },
 
   xWeeks: {
     standalone: {
-      one: 'ein Woche',
+      one: '1 Woche',
       other: '{{count}} Wochen',
     },
     withPreposition: {
-      one: 'einem Woche',
+      one: '1 Woche',
       other: '{{count}} Wochen',
     },
   },
 
   aboutXMonths: {
     standalone: {
-      one: 'etwa ein Monat',
+      one: 'etwa 1 Monat',
       other: 'etwa {{count}} Monate',
     },
     withPreposition: {
-      one: 'etwa einem Monat',
+      one: 'etwa 1 Monat',
       other: 'etwa {{count}} Monaten',
     },
   },
 
   xMonths: {
     standalone: {
-      one: 'ein Monat',
+      one: '1 Monat',
       other: '{{count}} Monate',
     },
     withPreposition: {
-      one: 'einem Monat',
+      one: '1 Monat',
       other: '{{count}} Monaten',
     },
   },
 
   aboutXYears: {
     standalone: {
-      one: 'etwa ein Jahr',
+      one: 'etwa 1 Jahr',
       other: 'etwa {{count}} Jahre',
     },
     withPreposition: {
-      one: 'etwa einem Jahr',
+      one: 'etwa 1 Jahr',
       other: 'etwa {{count}} Jahren',
     },
   },
 
   xYears: {
     standalone: {
-      one: 'ein Jahr',
+      one: '1 Jahr',
       other: '{{count}} Jahre',
     },
     withPreposition: {
-      one: 'einem Jahr',
+      one: '1 Jahr',
       other: '{{count}} Jahren',
     },
   },
 
   overXYears: {
     standalone: {
-      one: 'mehr als ein Jahr',
+      one: 'mehr als 1 Jahr',
       other: 'mehr als {{count}} Jahre',
     },
     withPreposition: {
-      one: 'mehr als einem Jahr',
+      one: 'mehr als 1 Jahr',
       other: 'mehr als {{count}} Jahren',
     },
   },
 
   almostXYears: {
     standalone: {
-      one: 'fast ein Jahr',
+      one: 'fast 1 Jahr',
       other: 'fast {{count}} Jahre',
     },
     withPreposition: {
-      one: 'fast einem Jahr',
+      one: 'fast 1 Jahr',
       other: 'fast {{count}} Jahren',
     },
   },
