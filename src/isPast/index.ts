@@ -17,13 +17,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
+ * @param {Date|Number} date - the date to check. Expects an epoch time in milliseconds if Number.
  * @returns {Boolean} the date is in the past
  * @throws {TypeError} 1 argument required
  *
  * @example
  * // If today is 6 October 2014, is 2 July 2014 in the past?
- * var result = isPast(new Date(2014, 6, 2))
+ * const result = isPast(new Date(2014, 6, 2))
  * //=> true
  */
 export default function isPast(dirtyDate: Date | number): boolean {
