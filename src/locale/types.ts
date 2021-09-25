@@ -85,6 +85,7 @@ export type LocalizeFn<
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
+    unit?: LocaleOptionUnit
   }
 ) => string
 
@@ -198,6 +199,18 @@ export type LocaleDayPeriod =
   | 'afternoon'
   | 'evening'
   | 'night'
+
+export type LocaleOptionUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'date'
+  | 'dayOfYear'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
 
 export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
 
