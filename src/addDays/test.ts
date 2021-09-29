@@ -20,36 +20,10 @@ describe('addDays', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
   })
 
-  it('implicitly converts number arguments', () => {
-    const result = addDays(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '10'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 11))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addDays(date, 11)
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
-  })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addDays(new Date(NaN), 10)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addDays.bind(null, 1), TypeError)
   })
 
   const dstTransitions = getDstTransitions(2017)

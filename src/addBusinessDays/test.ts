@@ -62,16 +62,6 @@ describe('addBusinessDays', () => {
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addBusinessDays(new Date(NaN), 10)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', () => {
     const substractResult = addBusinessDays(new Date(2019, 7, 18), -5)
     assert.deepStrictEqual(substractResult, new Date(2019, 7, 12))
