@@ -13,10 +13,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to check
- * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same minute (and hour and day)
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to check
+ * @param dateRight - the second date to check
+ * @returns the dates are in the same minute
  *
  * @example
  * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15 in the same minute?

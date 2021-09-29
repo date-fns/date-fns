@@ -9,10 +9,9 @@ import { millisecondsInMinute } from '../constants/index'
  * @description
  * Convert a number of milliseconds to a full number of minutes.
  *
- * @param {number} milliseconds - number of milliseconds to be converted.
+ * @param milliseconds - number of milliseconds to be converted.
  *
- * @returns {number} the number of milliseconds converted in minutes
- * @throws {TypeError} 1 argument required
+ * @returns the number of milliseconds converted in minutes
  *
  * @example
  * // Convert 60000 milliseconds to minutes:

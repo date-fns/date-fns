@@ -13,9 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the milliseconds
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the milliseconds
  *
  * @example
  * // Get the milliseconds of 29 February 2012 11:45:05.123:

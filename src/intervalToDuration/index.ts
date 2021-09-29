@@ -19,9 +19,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Convert a interval object to a duration object.
  *
- * @param {Interval} interval - the interval to convert to duration
+ * @param interval - the interval to convert to duration
  *
- * @returns {Duration} The duration Object
+ * @returns The duration Object
  * @throws {TypeError} Requires 2 arguments
  * @throws {RangeError} `start` must not be Invalid Date
  * @throws {RangeError} `end` must not be Invalid Date

@@ -13,9 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is Monday
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is Monday
  *
  * @example
  * // Is 22 September 2014 Monday?

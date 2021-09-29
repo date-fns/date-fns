@@ -23,9 +23,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of an ISO week-numbering year
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of an ISO week-numbering year
  *
  * @example
  * // The last day of an ISO week-numbering year for 2 July 2005:

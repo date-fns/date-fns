@@ -16,10 +16,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - Now, `closestIndexTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date | Number} dateToCompare - the date to compare with
- * @param {Array<Date> | Array<number>} datesArray - the array to search
- * @returns {Number | undefined} an index of the date closest to the given date or undefined if no valid value is given
- * @throws {TypeError} 2 arguments required
+ * @param dateToCompare - the date to compare with
+ * @param datesArray - the array to search
+ * @returns an index of the date closest to the given date
  *
  * @example
  * // Which date is closer to 6 September 2015?

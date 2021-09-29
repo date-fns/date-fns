@@ -17,9 +17,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in this second
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in this second
  *
  * @example
  * // If now is 25 September 2014 18:30:15.500,

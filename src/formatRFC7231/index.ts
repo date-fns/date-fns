@@ -36,9 +36,8 @@ const months = [
  * Return the formatted date string in RFC 7231 format.
  * The result will always be in UTC timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  *
  * @example

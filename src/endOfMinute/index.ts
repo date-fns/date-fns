@@ -14,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a minute
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of a minute
  *
  * @example
  * // The end of a minute for 1 December 2014 22:15:45.400:

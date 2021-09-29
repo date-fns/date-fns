@@ -12,8 +12,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * When is the next day of the week? 0-6 the day of the week, 0 represents Sunday.
  *
  * @param {Date | number} date - the date to check
- * @param {Day} day - day of the week
- * @returns {Date} - the date is the next day of week
+ * @param day - day of the week
+ * @returns - the date is the next day of week
  * @throws {TypeError} - 2 arguments required
  *
  * @example
