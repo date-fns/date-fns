@@ -16,9 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * **Note**: *all* Date arguments passed to any *date-fns* function is processed by `toDate`.
  *
- * @param {Date|Number} argument - the value to convert
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
+ * @param argument - the value to convert
+ * @returns the parsed date in the local time zone
  *
  * @example
  * // Clone the date:

@@ -15,9 +15,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is the last day of a month
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is the last day of a month
  *
  * @example
  * // Is 28 February 2014 the last day of a month?

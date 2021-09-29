@@ -14,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a month
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a month
  *
  * @example
  * // The start of a month for 2 September 2014 11:55:00:

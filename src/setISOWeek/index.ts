@@ -17,17 +17,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeek - the ISO week of the new date
- * @returns {Date} the new date with the ISO week set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param isoWeek - the ISO week of the new date
+ * @returns the new date with the ISO week set
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:
  * const result = setISOWeek(new Date(2004, 7, 7), 53)
  * //=> Sat Jan 01 2005 00:00:00
  */
-export default function setISOWeek(dirtyDate: Date | number, dirtyISOWeek: number): Date {
+export default function setISOWeek(
+  dirtyDate: Date | number,
+  dirtyISOWeek: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

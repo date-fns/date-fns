@@ -24,12 +24,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of full weeks
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of full weeks
  *
  * @example
  * // How many full weeks are between 5 July 2014 and 20 July 2014?

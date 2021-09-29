@@ -14,17 +14,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} minutes - the minutes of the new date
- * @returns {Date} the new date with the minutes set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param minutes - the minutes of the new date
+ * @returns the new date with the minutes set
  *
  * @example
  * // Set 45 minutes to 1 September 2014 11:30:40:
  * const result = setMinutes(new Date(2014, 8, 1, 11, 30, 40), 45)
  * //=> Mon Sep 01 2014 11:45:40
  */
-export default function setMinutes(dirtyDate: Date | number, dirtyMinutes: number): Date {
+export default function setMinutes(
+  dirtyDate: Date | number,
+  dirtyMinutes: number
+): Date {
   requiredArgs(2, arguments)
 
   const date = toDate(dirtyDate)

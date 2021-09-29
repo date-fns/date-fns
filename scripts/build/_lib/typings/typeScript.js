@@ -12,7 +12,7 @@ const {
 
 /**
  * Return curried function interfaces for a specific FP function arity.
- * @param {Number} [arity=4]
+ * @param arity
  * @returns {String[arity]} an array of code blocks
  */
 const getTypeScriptFPInterfaces = (arity = 4) =>

@@ -24,17 +24,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `setWeekYear`.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeekYear - the ISO week-numbering year of the new date
- * @returns {Date} the new date with the ISO week-numbering year set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param isoWeekYear - the ISO week-numbering year of the new date
+ * @returns the new date with the ISO week-numbering year set
  *
  * @example
  * // Set ISO week-numbering year 2007 to 29 December 2008:
  * const result = setISOWeekYear(new Date(2008, 11, 29), 2007)
  * //=> Mon Jan 01 2007 00:00:00
  */
-export default function setISOWeekYear(dirtyDate: Date | number, dirtyISOWeekYear: number): Date {
+export default function setISOWeekYear(
+  dirtyDate: Date | number,
+  dirtyISOWeekYear: number
+): Date {
   requiredArgs(2, arguments)
 
   let date = toDate(dirtyDate)

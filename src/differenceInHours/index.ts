@@ -16,12 +16,10 @@ import { getRoundingMethod } from '../_lib/roundingMethods/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @param {Object} [options] - an object with options.
- * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
- * @returns {Number} the number of hours
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @param options - an object with options.
+ * @returns the number of hours
  *
  * @example
  * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?

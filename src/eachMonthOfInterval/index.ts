@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of months within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} the array with starts of months from the month of the interval start to the month of the interval end
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

@@ -13,9 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the last day of a decade
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the last day of a decade
  *
  * @example
  * // The last day of a decade for 21 December 2012 21:12:00:

@@ -14,17 +14,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of weeks to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the weeks subtracted
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of weeks to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the weeks subtracted
  *
  * @example
  * // Subtract 4 weeks from 1 September 2014:
  * const result = subWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Aug 04 2014 00:00:00
  */
-export default function subWeeks(dirtyDate: Date | number, dirtyAmount: number): Date {
+export default function subWeeks(
+  dirtyDate: Date | number,
+  dirtyAmount: number
+): Date {
   requiredArgs(2, arguments)
 
   const amount = toInteger(dirtyAmount)

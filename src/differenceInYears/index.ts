@@ -15,10 +15,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full years
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of full years
  *
  * @example
  * // How many full years are between 31 December 2013 and 11 February 2015?

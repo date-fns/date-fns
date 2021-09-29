@@ -11,9 +11,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get all the Saturdays and Sundays in the given date interval.
  *
- * @param {Interval} interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param interval - the given interval. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

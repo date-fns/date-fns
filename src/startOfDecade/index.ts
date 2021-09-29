@@ -13,9 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a decade
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a decade
  *
  * @example
  * // The start of a decade for 21 October 2015 00:00:00:

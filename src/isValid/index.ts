@@ -41,8 +41,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   (which is also the case with other *date-fns* functions).
  *
  * @param {*} date - the date to check
- * @returns {Boolean} the date is valid
- * @throws {TypeError} 1 argument required
+ * @returns the date is valid
  *
  * @example
  * // For the valid date:

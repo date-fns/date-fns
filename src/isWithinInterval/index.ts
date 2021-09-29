@@ -44,10 +44,9 @@ import { Interval } from '../types'
  *   )
  *   ```
  *
- * @param {Date|Number} date - the date to check
- * @param {Interval} interval - the interval to check
- * @returns {Boolean} the date is within the interval
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to check
+ * @param interval - the interval to check
+ * @returns the date is within the interval
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
@@ -75,7 +74,10 @@ import { Interval } from '../types'
  * // For date equal to interval end:
  * isWithinInterval(date, { start: date, end }) // => true
  */
-export default function isWithinInterval(dirtyDate: Date | number, interval: Interval): boolean {
+export default function isWithinInterval(
+  dirtyDate: Date | number,
+  interval: Interval
+): boolean {
   requiredArgs(2, arguments)
 
   const time = toDate(dirtyDate).getTime()
