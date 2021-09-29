@@ -22,10 +22,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   This change makes the name consistent with
  *   locale-dependent week-numbering year helpers, e.g., `addWeekYears`.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the ISO week-numbering years added
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of ISO week-numbering years to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the ISO week-numbering years added
  *
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:

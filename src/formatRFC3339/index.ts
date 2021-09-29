@@ -15,11 +15,9 @@ export interface FormatRFC3339Options {
  * @description
  * Return the formatted date string in RFC 3339 format. Options may be passed to control the parts and notations of the date.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2|3} [options.fractionDigits=0] - number of digits after the decimal point after seconds
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @param options - an object with options.
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *
@@ -38,7 +36,10 @@ export interface FormatRFC3339Options {
  * const result = formatRFC3339(new Date(2019, 8, 18, 19, 0, 52, 234), { fractionDigits: 3 })
  * //=> '2019-09-18T19:00:52.234Z'
  */
-export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions?: FormatRFC3339Options): string {
+export default function formatRFC3339(
+  dirtyDate: Date | number,
+  dirtyOptions?: FormatRFC3339Options
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 arguments required, but only ${arguments.length} present`
@@ -51,9 +52,7 @@ export default function formatRFC3339(dirtyDate: Date | number, dirtyOptions?: F
     throw new RangeError('Invalid time value')
   }
 
-  const {
-    fractionDigits = 0,
-  } = dirtyOptions || {}
+  const { fractionDigits = 0 } = dirtyOptions || {}
 
   // Test if fractionDigits is between 0 and 3 _and_ is not NaN
   if (!(fractionDigits >= 0 && fractionDigits <= 3)) {

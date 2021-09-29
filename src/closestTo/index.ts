@@ -16,10 +16,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - Now, `closestTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date | Number} dateToCompare - the date to compare with
- * @param {Array<Date> | Array<number>} datesArray - the array to search
- * @returns {Date | undefined} the date from the array closest to the given date or undefined if no valid value is given
- * @throws {TypeError} 2 arguments required
+ * @param dateToCompare - the date to compare with
+ * @param datesArray - the array to search
+ * @returns the date from the array closest to the given date
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
@@ -56,10 +55,17 @@ export default function closestTo(
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
+<<<<<<< HEAD:src/closestTo/index.ts
   let result: Date | undefined
   let minDistance: number
   datesArray.forEach(function (dirtyDate) {
     const currentDate = toDate(dirtyDate)
+=======
+  var result
+  var minDistance
+  datesArray.forEach(function (dirtyDate) {
+    var currentDate = toDate(dirtyDate)
+>>>>>>> 31a6e5df... Remove most of the JSDoc type annotations:src/closestTo/index.js
 
     if (isNaN(Number(currentDate))) {
       result = new Date(NaN)

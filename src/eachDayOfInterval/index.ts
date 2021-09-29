@@ -39,11 +39,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *   )
  *   ```
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The value should be more than 1.
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
  * @returns {Date[]} the array with starts of days from the day of the interval start to the day of the interval end
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.step` must be a number greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`

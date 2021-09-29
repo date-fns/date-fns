@@ -11,9 +11,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get all the Saturdays and Sundays in the given month.
  *
- * @param {Date|Number} date - the given month
+ * @param date - the given month
  * @returns {Date[]} an array containing all the Saturdays and Sundays
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} The passed date is invalid
  *
  * @example

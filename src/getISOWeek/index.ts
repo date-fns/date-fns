@@ -19,9 +19,8 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the ISO week
  *
  * @example
  * // Which week of the ISO-week numbering year is 2 January 2005?
@@ -32,7 +31,8 @@ export default function getISOWeek(dirtyDate: Date | number): number {
   requiredArgs(1, arguments)
 
   const date = toDate(dirtyDate)
-  const diff = startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
+  const diff =
+    startOfISOWeek(date).getTime() - startOfISOWeekYear(date).getTime()
 
   // Round the number of days to the nearest integer
   // because the number of milliseconds in a week is not constant

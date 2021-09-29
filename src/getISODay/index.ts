@@ -16,9 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the day of ISO week
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the day of ISO week
  *
  * @example
  * // Which day of the ISO week is 26 February 2012?
