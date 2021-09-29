@@ -13,10 +13,9 @@ import isSaturday from '../isSaturday/index'
  * @description
  * Add the specified number of business days (mon - fri) to the given date, ignoring weekends.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the business days added
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the business days added
  *
  * @example
  * // Add 10 business days to 1 September 2014:

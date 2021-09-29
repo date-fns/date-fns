@@ -15,8 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Time value of Date: http://es5.github.io/#x15.9.1.1
  *
  * @param {*} date - the date to check
- * @returns {Boolean} the date is valid
- * @throws {TypeError} 1 argument required
+ * @returns the date is valid
  *
  * @example
  * // For the valid date:

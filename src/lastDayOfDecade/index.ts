@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the last day of a decade for the given date.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the last day of a decade
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the last day of a decade
  *
  * @example
  * // The last day of a decade for 21 December 2012 21:12:00:

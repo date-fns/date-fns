@@ -24,14 +24,10 @@ import type {
  *
  * Week numbering: https://en.wikipedia.org/wiki/Week#Week_numbering
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} weekYear - the local week-numbering year of the new date
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @param {1|2|3|4|5|6|7} [options.firstWeekContainsDate=1] - the day of January, which is always in the first week of the year
- * @returns {Date} the new date with the local week-numbering year set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param weekYear - the local week-numbering year of the new date
+ * @param options - an object with options.
+ * @returns the new date with the local week-numbering year set
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  * @throws {RangeError} `options.firstWeekContainsDate` must be between 1 and 7
  *

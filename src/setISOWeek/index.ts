@@ -13,10 +13,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} isoWeek - the ISO week of the new date
- * @returns {Date} the new date with the ISO week set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param isoWeek - the ISO week of the new date
+ * @returns the new date with the ISO week set
  *
  * @example
  * // Set the 53rd ISO week to 7 August 2004:

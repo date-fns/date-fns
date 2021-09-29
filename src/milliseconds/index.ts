@@ -21,9 +21,8 @@ const daysInYear = 365.2425
  *
  * One month is a year divided by 12.
  *
- * @param {Duration} duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {number} the milliseconds
- * @throws {TypeError} 1 argument required
+ * @param duration - the object with years, months, weeks, days, hours, minutes and seconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the milliseconds
  *
  * @example
  * // 1 year in milliseconds

@@ -10,8 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * When is the next Monday?
  *
  * @param {Date | number} date - the date to start counting from
- * @returns {Date} the next Monday
- * @throws {TypeError} 1 argument required
+ * @returns the next Monday
  *
  * @example
  * // When is the next Monday after Mar, 22, 2020?

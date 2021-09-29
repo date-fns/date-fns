@@ -11,12 +11,9 @@ import requiredArgs from '../_lib/requiredArgs'
  * @description
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
- * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time with local time zone, or both.
- * @returns {String} the formatted date string (in local time zone)
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @param options - an object with options.
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'

@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the milliseconds to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} milliseconds - the milliseconds of the new date
- * @returns {Date} the new date with the milliseconds set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param milliseconds - the milliseconds of the new date
+ * @returns the new date with the milliseconds set
  *
  * @example
  * // Set 300 milliseconds to 1 September 2014 11:30:40.500:

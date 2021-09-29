@@ -9,8 +9,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
  *
  * @param {*} value - the value to check
- * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 arguments required
+ * @returns true if the given value is a date
  *
  * @example
  * // For a valid date:

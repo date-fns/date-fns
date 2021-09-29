@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the seconds to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} seconds - the seconds of the new date
- * @returns {Date} the new date with the seconds set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param seconds - the seconds of the new date
+ * @returns the new date with the seconds set
  *
  * @example
  * // Set 45 seconds to 1 September 2014 11:30:40:

@@ -13,9 +13,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in the past
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in the past
  *
  * @example
  * // If today is 6 October 2014, is 2 July 2014 in the past?

@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the hours of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the hours
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the hours
  *
  * @example
  * // Get the hours of 29 February 2012 11:45:00:

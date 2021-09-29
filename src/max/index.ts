@@ -10,8 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the latest of the given dates.
  *
  * @param {Date[]|Number[]} datesArray - the dates to compare
- * @returns {Date} the latest of the dates
- * @throws {TypeError} 1 argument required
+ * @returns the latest of the dates
  *
  * @example
  * // Which of these dates is the latest?

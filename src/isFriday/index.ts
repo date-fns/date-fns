@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Is the given date Friday?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is Friday
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is Friday
  *
  * @example
  * // Is 26 September 2014 Friday?

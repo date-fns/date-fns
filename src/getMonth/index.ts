@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the month of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the month
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the month
  *
  * @example
  * // Which month is 29 February 2012?

@@ -9,9 +9,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Format a duration object according to the ISO 8601 duration standard (https://www.digi.com/resources/documentation/digidocs/90001437-13/reference/r_iso_8601_duration_format.htm)
  *
- * @param {Duration} duration - the duration to format
+ * @param duration - the duration to format
  *
- * @returns {String} The ISO 8601 duration string
+ * @returns The ISO 8601 duration string
  * @throws {TypeError} Requires 1 argument
  * @throws {Error} Argument must be an object
  *

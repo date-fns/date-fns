@@ -10,9 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the last day of a month for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the last day of a month
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the last day of a month
  *
  * @example
  * // The last day of a month for 2 September 2014 11:55:00:

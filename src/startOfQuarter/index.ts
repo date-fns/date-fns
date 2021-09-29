@@ -10,9 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of a year quarter for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a quarter
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a quarter
  *
  * @example
  * // The start of a quarter for 2 September 2014 11:55:00:

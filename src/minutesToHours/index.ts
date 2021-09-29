@@ -9,10 +9,9 @@ import { minutesInHour } from '../constants/index'
  * @description
  * Convert a number of minutes to a full number of hours.
  *
- * @param {number} minutes - number of minutes to be converted
+ * @param minutes - number of minutes to be converted
  *
- * @returns {number} the number of minutes converted in hours
- * @throws {TypeError} 1 argument required
+ * @returns the number of minutes converted in hours
  *
  * @example
  * // Convert 140 minutes to hours:

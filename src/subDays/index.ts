@@ -10,10 +10,9 @@ import toInteger from '../_lib/toInteger/index'
  * @description
  * Subtract the specified number of days from the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the days subtracted
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of days to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the days subtracted
  *
  * @example
  * // Subtract 10 days from 1 September 2014:

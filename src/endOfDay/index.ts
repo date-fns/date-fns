@@ -10,9 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the end of a day for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a day
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of a day
  *
  * @example
  * // The end of a day for 2 September 2014 11:55:00:

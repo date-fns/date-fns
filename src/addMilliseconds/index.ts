@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Add the specified number of milliseconds to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns {Date} the new date with the milliseconds added
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param amount - the amount of milliseconds to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @returns the new date with the milliseconds added
  *
  * @example
  * // Add 750 milliseconds to 10 July 2014 12:45:30.000:

@@ -10,9 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Create a date from a Unix timestamp (in seconds). Decimal values will be discarded.
  *
- * @param {Number} unixTime - the given Unix timestamp (in seconds)
- * @returns {Date} the date
- * @throws {TypeError} 1 argument required
+ * @param unixTime - the given Unix timestamp (in seconds)
+ * @returns the date
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:

@@ -14,12 +14,9 @@ import type { LocaleOptions, WeekStartOptions } from '../types'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * @param {Date|Number} date - the date to check
- * @param {Object} [options] - the object with options
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
- * @returns {Boolean} the date is in this week
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @param options - the object with options
+ * @returns the date is in this week
  * @throws {RangeError} `options.weekStartsOn` must be between 0 and 6
  *
  * @example

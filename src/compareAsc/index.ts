@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Compare the two dates and return 1 if the first date is after the second,
  * -1 if the first date is before the second or 0 if dates are equal.
  *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to compare
+ * @param dateRight - the second date to compare
+ * @returns the result of the comparison
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989:

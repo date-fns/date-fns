@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Is the given date in the leap year?
  *
- * @param {Date|Number} date - the date to check
- * @returns {Boolean} the date is in the leap year
- * @throws {TypeError} 1 argument required
+ * @param date - the date to check
+ * @returns the date is in the leap year
  *
  * @example
  * // Is 1 September 2012 in the leap year?

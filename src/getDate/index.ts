@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the day of the month of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the day of month
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?

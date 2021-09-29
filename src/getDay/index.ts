@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the day of the week of the given date.
  *
- * @param {Date|Number} date - the given date
+ * @param date - the given date
  * @returns {0|1|2|3|4|5|6} the day of week, 0 represents Sunday
- * @throws {TypeError} 1 argument required
  *
  * @example
  * // Which day of the week is 29 February 2012?

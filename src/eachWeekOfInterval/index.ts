@@ -12,12 +12,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the array of weeks within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
- * @param {0|1|2|3|4|5|6} [options.weekStartsOn=0] - the index of the first day of the week (0 - Sunday)
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
  * @returns {Date[]} the array with starts of weeks from the week of the interval start to the week of the interval end
- * @throws {TypeError} 1 argument required
  * @throws {RangeError} `options.weekStartsOn` must be 0, 1, ..., 6
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
