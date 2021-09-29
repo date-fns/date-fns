@@ -56,17 +56,9 @@ describe('add', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4.2 })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = add(new Date(2014, 8 /* Sep */, 1, 10), {
-      // @ts-expect-error
-      hours: '4.2',
-    })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
+  it('allows to pass fractional numbers', () => {
+    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4.5 })
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14, 30))
   })
 
   it('does not mutate the original date', () => {
@@ -109,21 +101,5 @@ describe('add', () => {
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = add(new Date(NaN), { hours: 5 })
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given duration is not even an object', () => {
-    const result = add(
-      new Date(2014, 8, 1),
-      // @ts-expect-error
-      'wut'
-    )
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(add.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(add.bind(null, 1), TypeError)
   })
 })

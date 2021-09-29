@@ -8,6 +8,12 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v3.0.0 - 2021-??-??
+
+### Changed
+
+- **BREAKING**: `add` now don't round values which allow adding `4.2` hours that previously would convert to `4`.
+
 ## v2.28.0 - 2021-12-28
 
 Kudos to @tan75, @fturmel, @arcanar7, @jeffjose, @helmut-lang, @zrev2220, @jooola, @minitesh, @cowboy-bebug, @mesqueeb, @JuanM04, @zhirzh, @damon02 and @leshakoss for working on the release.
