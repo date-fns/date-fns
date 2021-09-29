@@ -12933,10 +12933,10 @@ typesaurus@^7.1.0:
   resolved "https://registry.yarnpkg.com/typesaurus/-/typesaurus-7.1.0.tgz#f030083a201f6e4d02e7f3287bec271d84fba229"
   integrity sha512-2Az/QN4FprxtT/6Grr3gFb8v6dY1NkSkGvEt6l0b4/cY28p6HmNY/VaZP9p9wQP2GdU8lAbOi+Ip6j1gehCarA==
 
-typescript@^4.2.4:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
-  integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
+typescript@4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
+  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
 
 typical@^2.4.2, typical@^2.6.0, typical@^2.6.1:
   version "2.6.1"
