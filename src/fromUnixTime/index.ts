@@ -14,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Number} unixTime - the given Unix timestamp (in seconds)
- * @returns {Date} the date
- * @throws {TypeError} 1 argument required
+ * @param unixTime - the given Unix timestamp (in seconds)
+ * @returns the date
  *
  * @example
  * // Create the date 29 February 2012 11:45:05:

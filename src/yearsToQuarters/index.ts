@@ -9,10 +9,9 @@ import { quartersInYear } from '../constants/index'
  * @description
  * Convert a number of years to a full number of quarters.
  *
- * @param {number} years - number of years to be converted
+ * @param years - number of years to be converted
  *
- * @returns {number} the number of years converted in quarters
- * @throws {TypeError} 1 argument required
+ * @returns the number of years converted in quarters
  *
  * @example
  * // Convert 2 years to quarters

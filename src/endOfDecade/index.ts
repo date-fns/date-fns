@@ -13,11 +13,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the end of a decade
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - passed to `toDate`. See [toDate]{@link https://date-fns.org/docs/toDate}
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the end of a decade
+ * @param options - an object with options.
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example

@@ -11,8 +11,7 @@ import toDate from '../toDate/index'
  * When is the next Wednesday?
  *
  * @param {Date | number} date - the date to start counting from
- * @returns {Date} the next Wednesday
- * @throws {TypeError} 1 argument required
+ * @returns the next Wednesday
  *
  * @example
  * // When is the next Wednesday after Mar, 22, 2020?

@@ -11,8 +11,7 @@ import { secondsInMinute } from '../constants/index'
  *
  * @param { number } minutes - number of minutes to be converted
  *
- * @returns {number} the number of minutes converted in seconds
- * @throws {TypeError} 1 argument required
+ * @returns the number of minutes converted in seconds
  *
  * @example
  * // Convert 2 minutes to seconds

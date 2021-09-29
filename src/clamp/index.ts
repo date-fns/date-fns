@@ -24,9 +24,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Mon Mar 22 2021 00:00:00
  *
  * @param {Date | Number} date - the date to be bounded
- * @param {Interval} interval - the interval to bound to
- * @returns {Date} the date bounded by the start and the end of the interval
- * @throws {TypeError} 2 arguments required
+ * @param interval - the interval to bound to
+ * @returns the date bounded by the start and the end of the interval
  */
 export default function clamp(
   date: Date | number,

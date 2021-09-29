@@ -10,8 +10,7 @@ import previousDay from '../previousDay/index'
  * When is the previous Tuesday?
  *
  * @param {Date | number} date - the date to start counting from
- * @returns {Date} the previous Tuesday
- * @throws {TypeError} 1 argument required
+ * @returns the previous Tuesday
  *
  * @example
  * // When is the previous Tuesday before Jun, 18, 2021?

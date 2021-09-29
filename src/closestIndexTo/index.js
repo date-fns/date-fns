@@ -16,10 +16,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - Now, `closestIndexTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date|Number} dateToCompare - the date to compare with
+ * @param dateToCompare - the date to compare with
  * @param {Date[]|Number[]} datesArray - the array to search
- * @returns {Number} an index of the date closest to the given date
- * @throws {TypeError} 2 arguments required
+ * @returns an index of the date closest to the given date
  *
  * @example
  * // Which date is closer to 6 September 2015?
@@ -59,7 +58,7 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
 
   var result
   var minDistance
-  datesArray.forEach(function(dirtyDate, index) {
+  datesArray.forEach(function (dirtyDate, index) {
     var currentDate = toDate(dirtyDate)
 
     if (isNaN(currentDate)) {

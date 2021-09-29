@@ -11,8 +11,7 @@ import toDate from '../toDate/index'
  * When is the next Thursday?
  *
  * @param {Date | number} date - the date to start counting from
- * @returns {Date} the next Thursday
- * @throws {TypeError} 1 argument required
+ * @returns the next Thursday
  *
  * @example
  * // When is the next Thursday after Mar, 22, 2020?

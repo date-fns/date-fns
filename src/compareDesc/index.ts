@@ -14,10 +14,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the first date to compare
- * @param {Date|Number} dateRight - the second date to compare
- * @returns {Number} the result of the comparison
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the first date to compare
+ * @param dateRight - the second date to compare
+ * @returns the result of the comparison
  *
  * @example
  * // Compare 11 February 1987 and 10 July 1989 reverse chronologically:

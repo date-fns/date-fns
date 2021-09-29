@@ -14,9 +14,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the number of days in a year
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the number of days in a year
  *
  * @example
  * // How many days are in 2012?
