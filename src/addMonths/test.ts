@@ -38,16 +38,6 @@ describe('addMonths', () => {
     assert.deepStrictEqual(result, expectedResult)
   })
 
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addMonths(new Date(NaN), 5)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
   const dstTransitions = getDstTransitions(2017)
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz
@@ -149,4 +139,16 @@ describe('addMonths', () => {
       assert.deepStrictEqual(result, date)
     }
   )
+
+  it('returns `Invalid Date` if the given date is invalid', () => {
+    const result = addMonths(new Date(NaN), 5)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', () => {
+    const result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
 })

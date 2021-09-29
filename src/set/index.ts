@@ -20,13 +20,6 @@ import type { DateValues } from '../types'
  *
  * @param date - the date to be changed
  * @param values - an object with options
- * @param values.year - the number of years to be set
- * @param values.month - the number of months to be set
- * @param values.date - the number of days to be set
- * @param values.hours - the number of hours to be set
- * @param values.minutes - the number of minutes to be set
- * @param values.seconds - the number of seconds to be set
- * @param values.milliseconds - the number of milliseconds to be set
  * @returns the new date with options set
  *
  * @example

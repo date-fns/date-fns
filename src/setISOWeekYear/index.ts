@@ -14,8 +14,10 @@ import toDate from '../toDate/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
+ * "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
+ *
  * @param date - the date to be changed
- * @param isoWeekYear - the ISO week-numbering year of the new date
+ * @param year - the ISO week-numbering year of the new date
  * @returns the new date with the ISO week-numbering year set
  *
  * @example

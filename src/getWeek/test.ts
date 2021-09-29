@@ -26,28 +26,4 @@ describe('getWeek', () => {
     const result = getWeek(new Date(NaN))
     assert(isNaN(result))
   })
-
-  it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in locale', () => {
-    const date = new Date(2005, 0 /* Jan */, 2)
-    const result = getWeek(date, {
-      // @ts-expect-error
-      locale: {
-        options: { weekStartsOn: 1, firstWeekContainsDate: 4 },
-      },
-    })
-    assert(result === 53)
-  })
-
-  it('`options.weekStartsOn` overwrites the first day of the week specified in locale', () => {
-    const date = new Date(2005, 0 /* Jan */, 2)
-    const result = getWeek(date, {
-      weekStartsOn: 1,
-      firstWeekContainsDate: 4,
-      // @ts-expect-error
-      locale: {
-        options: { weekStartsOn: 0, firstWeekContainsDate: 1 },
-      },
-    })
-    assert(result === 53)
-  })
 })

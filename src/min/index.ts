@@ -8,12 +8,12 @@ import toDate from '../toDate/index'
  * @description
  * Returns the earliest of the given dates.
  *
- * @param datesArray - the dates to compare
- * @returns - the earliest of the dates
+ * @param dates - the dates to compare
+ * @returns the earliest of the dates
  *
  * @example
  * // Which of these dates is the earliest?
- * const result = min([
+ * min([
  *   new Date(1989, 6, 10),
  *   new Date(1987, 1, 11),
  *   new Date(1995, 6, 2),
@@ -22,11 +22,11 @@ import toDate from '../toDate/index'
  * //=> Wed Feb 11 1987 00:00:00
  */
 export default function min<DateType extends Date>(
-  datesArray: Array<DateType | number>
+  dates: Array<DateType | number>
 ): DateType | Date {
   let result: Date | undefined
 
-  datesArray.forEach(function (dirtyDate: Date | number) {
+  dates.forEach(function (dirtyDate: Date | number) {
     let currentDate = toDate(dirtyDate)
 
     if (

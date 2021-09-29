@@ -13,7 +13,7 @@ import toDate from '../toDate/index'
  *
  * @example
  * // Which year is 2 July 2014?
- * const result = getYear(new Date(2014, 6, 2))
+ * getYear(new Date(2014, 6, 2))
  * //=> 2014
  */
 export default function getYear<DateType extends Date>(

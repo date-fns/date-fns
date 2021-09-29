@@ -22,14 +22,4 @@ describe('addHours', () => {
     addHours(date, 10)
     assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 10, 23, 0))
   })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addHours(new Date(NaN), 2)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
 })

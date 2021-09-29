@@ -3,12 +3,12 @@ import toDate from '../toDate/index'
 /**
  * @name max
  * @category Common Helpers
- * @summary Return the latest of the given dates.
+ * @summary Returns the latest of the given dates.
  *
  * @description
- * Return the latest of the given dates.
+ * Returns the latest of the given dates.
  *
- * @param datesArray - the dates to compare
+ * @param dates - the dates to compare
  * @returns the latest of the dates
  *
  * @example
@@ -22,10 +22,10 @@ import toDate from '../toDate/index'
  * //=> Sun Jul 02 1995 00:00:00
  */
 export default function max<DateType extends Date>(
-  datesArray: Array<DateType | number>
+  dates: Array<DateType | number>
 ): DateType | Date {
   let result: Date | undefined
-  datesArray.forEach(function (dirtyDate) {
+  dates.forEach(function (dirtyDate) {
     const currentDate = toDate(dirtyDate)
 
     if (

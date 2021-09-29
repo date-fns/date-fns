@@ -11,7 +11,7 @@ import toDate from '../toDate/index'
  *
  * @param dateToCompare - the date to compare with
  * @param datesArray - the array to search
- * @returns the date from the array closest to the given date or undefined if no valid value is given
+ * @returns the date from the array closest to the given date
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?

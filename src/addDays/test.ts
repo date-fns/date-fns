@@ -21,16 +21,6 @@ describe('addDays', () => {
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addDays(new Date(NaN), 10)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addDays(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
   const dstTransitions = getDstTransitions(2017)
   const dstOnly = dstTransitions.start && dstTransitions.end ? it : it.skip
   const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || process.env.tz

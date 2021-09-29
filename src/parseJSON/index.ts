@@ -28,7 +28,7 @@
  *
  * Any other input type or invalid date strings will return an `Invalid Date`.
  *
- * @param argument A fully formed ISO8601 date string to convert
+ * @param argument - fully formed ISO8601 date string to convert
  * @returns the parsed date in the local time zone
  */
 export default function parseJSON(dateString: string): Date {

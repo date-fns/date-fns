@@ -9,7 +9,7 @@ import addSeconds from '../addSeconds/index'
  * Subtract the specified number of seconds from the given date.
  *
  * @param date - the date to be changed
- * @param amount - the amount of seconds to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - the amount of seconds to be subtracted. Decimals will be rounded using `Math.trunc`.
  * @returns the new date with the seconds subtracted
  *
  * @example

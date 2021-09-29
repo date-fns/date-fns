@@ -18,7 +18,7 @@ import setISOWeekYear from '../setISOWeekYear/index'
  * @example
  * // Add 5 ISO week-numbering years to 2 July 2010:
  * const result = addISOWeekYears(new Date(2010, 6, 2), 5)
- * //=> Fri Jn 26 2015 00:00:00
+ * //=> Fri Jun 26 2015 00:00:00
  */
 export default function addISOWeekYears<DateType extends Date>(
   dirtyDate: DateType | number,

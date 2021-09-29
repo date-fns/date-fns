@@ -13,7 +13,7 @@ import toDate from '../toDate/index'
  *
  * @example
  * // Is 24 September 2014 Wednesday?
- * const result = isWednesday(new Date(2014, 8, 24))
+ * isWednesday(new Date(2014, 8, 24))
  * //=> true
  */
 export default function isWednesday<DateType extends Date>(

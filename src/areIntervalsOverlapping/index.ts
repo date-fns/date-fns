@@ -5,6 +5,9 @@ import type { Interval } from '../types'
  * The {@link areIntervalsOverlapping} function options.
  */
 export interface AreIntervalsOverlappingOptions {
+  /**
+   * Whether to include the start and end values in the comparison.
+   */
   inclusive?: boolean
 }
 
@@ -20,8 +23,6 @@ export interface AreIntervalsOverlappingOptions {
  * @param intervalRight - the second interval to compare. See [Interval]{@link https://date-fns.org/docs/Interval}
  * @param options - the object with options
  * @returns whether the time intervals are overlapping
- * @throws {RangeError} The start of an interval cannot be after its end
- * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *
  * @example
  * // For overlapping time intervals:

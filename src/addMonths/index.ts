@@ -10,7 +10,7 @@ import constructFrom from '../constructFrom/index'
  * Add the specified number of months to the given date.
  *
  * @param date - the date to be changed
- * @param amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param months - the amount of months to be added. Decimals will be rounded using `Math.trunc`.
  * @returns the new date with the months added
  *
  * @example

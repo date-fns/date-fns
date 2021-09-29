@@ -2,26 +2,6 @@ type Locale = Intl.ResolvedDateTimeFormatOptions['locale']
 type FormatOptions = Intl.DateTimeFormatOptions
 type LocaleOptions = { locale: Locale | Locale[] }
 
-export default function intlFormat<DateType extends Date>(
-  date: DateType
-): string
-
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  localeOptions: LocaleOptions
-): string
-
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  formatOptions: FormatOptions
-): string
-
-export default function intlFormat<DateType extends Date>(
-  date: DateType,
-  formatOptions: FormatOptions,
-  localeOptions: LocaleOptions
-): string
-
 /**
  * @name intlFormat
  * @category Common Helpers
@@ -36,21 +16,7 @@ export default function intlFormat<DateType extends Date>(
  *
  * @param argument - the original date.
  * @param formatOptions - an object with options.
- * @param formatOptions.localeMatcher - locale selection algorithm.
- * @param formatOptions.weekday - representation the days of the week.
- * @param formatOptions.era - representation of eras.
- * @param formatOptions.year - representation of years.
- * @param formatOptions.month - representation of month.
- * @param formatOptions.day - representation of day.
- * @param formatOptions.hour - representation of hours.
- * @param formatOptions.minute - representation of minutes.
- * @param formatOptions.second - representation of seconds.
- * @param formatOptions.timeZoneName - representation of names of time zones.
- * @param formatOptions.formatMatcher - format selection algorithm.
- * @param formatOptions.hour12 - determines whether to use 12-hour time format.
- * @param formatOptions.timeZone - the time zone to use.
  * @param localeOptions - an object with locale.
- * @param localeOptions.locale - the locale code
  * @returns the formatted date string.
  * @throws {RangeError} `date` must not be Invalid Date
  *

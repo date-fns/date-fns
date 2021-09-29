@@ -11,7 +11,7 @@ import constructFrom from '../constructFrom/index'
  *
  * @param date - the date to be changed
  * @param amount - the amount of days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns - the new date with the days added
+ * @returns the new date with the days added
  *
  * @example
  * // Add 10 days to 1 September 2014:

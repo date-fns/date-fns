@@ -13,7 +13,7 @@ import toDate from '../toDate/index'
  *
  * @example
  * // The end of a decade for 12 May 1984 00:00:00:
- * const result = endOfDecade(new Date(1984, 4, 12, 00, 00, 00))
+ * endOfDecade(new Date(1984, 4, 12, 00, 00, 00))
  * //=> Dec 31 1989 23:59:59.999
  */
 export default function endOfDecade<DateType extends Date>(

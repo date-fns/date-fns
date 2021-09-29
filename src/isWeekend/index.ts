@@ -13,7 +13,7 @@ import toDate from '../toDate/index'
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?
- * const result = isWeekend(new Date(2014, 9, 5))
+ * isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
 export default function isWeekend<DateType extends Date>(
