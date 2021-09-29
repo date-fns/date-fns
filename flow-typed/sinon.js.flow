@@ -1,2 +1,0 @@
-// @flow
-declare var sinon: any
