@@ -17,11 +17,9 @@ import toInteger from '../_lib/toInteger/index'
  * If the argument isn't a string, the function cannot parse the string or
  * the values are invalid, it returns Invalid Date.
  *
- * @param {String} argument - the value to convert
- * @param {Object} [options] - an object with options.
- * @param {0|1|2} [options.additionalDigits=2] - the additional number of digits in the extended year format
- * @returns {Date} the parsed date in the local time zone
- * @throws {TypeError} 1 argument required
+ * @param argument - the value to convert
+ * @param options - an object with options.
+ * @returns the parsed date in the local time zone
  * @throws {RangeError} `options.additionalDigits` must be 0, 1 or 2
  *
  * @example

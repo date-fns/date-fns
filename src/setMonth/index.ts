@@ -11,10 +11,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the month to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} month - the month of the new date
- * @returns {Date} the new date with the month set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param month - the month of the new date
+ * @returns the new date with the month set
  *
  * @example
  * // Set February to 1 September 2014:

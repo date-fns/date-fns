@@ -11,10 +11,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the year quarter to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} quarter - the quarter of the new date
- * @returns {Date} the new date with the quarter set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param quarter - the quarter of the new date
+ * @returns the new date with the quarter set
  *
  * @example
  * // Set the 2nd quarter to 2 July 2014:

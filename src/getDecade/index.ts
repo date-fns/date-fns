@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the decade of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the year of decade
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the year of decade
  *
  * @example
  * // Which decade belongs 27 November 1942?

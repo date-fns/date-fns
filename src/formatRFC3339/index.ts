@@ -12,11 +12,9 @@ import { FormatRFC3339Options } from 'src/types'
  * @description
  * Return the formatted date string in RFC 3339 format. Options may be passed to control the parts and notations of the date.
  *
- * @param {Date|Number} date - the original date
- * @param {Object} [options] - an object with options.
- * @param {0|1|2|3} [options.fractionDigits=0] - number of digits after the decimal point after seconds
- * @returns {String} the formatted date string
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @param options - an object with options.
+ * @returns the formatted date string
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.fractionDigits` must be between 0 and 3
  *

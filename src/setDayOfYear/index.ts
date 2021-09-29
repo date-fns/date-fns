@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the day of the year to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} dayOfYear - the day of the year of the new date
- * @returns {Date} the new date with the day of the year set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param dayOfYear - the day of the year of the new date
+ * @returns the new date with the day of the year set
  *
  * @example
  * // Set the 2nd day of the year to 2 July 2014:

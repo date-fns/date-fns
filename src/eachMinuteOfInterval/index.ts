@@ -12,12 +12,11 @@ import type { Interval, StepOptions } from '../types'
  * @description
  * Returns the array of minutes within the specified time interval.
  *
- * @param {Interval} interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
- * @param {Object} [options] - an object with options.
- * @param {Number} [options.step=1] - the step to increment by. The step must be equal to or greater than 1
+ * @param interval - the interval. See [Interval]{@link https://date-fns.org/docs/Interval}
+ * @param options - an object with options.
  * @throws {TypeError} 1 argument required
  * @returns {Date[]} the array with starts of minutes from the minute of the interval start to the minute of the interval end
- * @throws {RangeError} `options.step` must be a number equal to or greater than 1
+ * @throws {RangeError} `options.step` must be a number equal or greater than 1
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

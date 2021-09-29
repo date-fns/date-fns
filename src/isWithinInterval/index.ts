@@ -10,10 +10,9 @@ import type { Interval } from '../types'
  * @description
  * Is the given date within the interval? (Including start and end.)
  *
- * @param {Date|Number} date - the date to check
- * @param {Interval} interval - the interval to check
- * @returns {Boolean} the date is within the interval
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to check
+ * @param interval - the interval to check
+ * @returns the date is within the interval
  * @throws {RangeError} The start of an interval cannot be after its end
  * @throws {RangeError} Date in interval cannot be `Invalid Date`
  *

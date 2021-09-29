@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the seconds timestamp of the given date.
  *
- * @param {Date|Number} date - the given date
- * @returns {Number} the timestamp
- * @throws {TypeError} 1 argument required
+ * @param date - the given date
+ * @returns the timestamp
  *
  * @example
  * // Get the timestamp of 29 February 2012 11:45:05 CET:

@@ -10,9 +10,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * Return the start of an hour for the given date.
  * The result will be in the local timezone.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of an hour
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of an hour
  *
  * @example
  * // The start of an hour for 2 September 2014 11:55:00:

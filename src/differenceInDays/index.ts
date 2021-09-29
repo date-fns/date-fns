@@ -43,10 +43,9 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  * `Math.floor(differenceInHours(dateLeft, dateRight)/24)|0`.
  *
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full days according to the local timezone
- * @throws {TypeError} 2 arguments required
+ * @param dateLeft - the later date
+ * @param dateRight - the earlier date
+ * @returns the number of full days according to the local timezone
  *
  * @example
  * // How many full days are between

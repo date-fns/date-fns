@@ -10,10 +10,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Set the hours to the given date.
  *
- * @param {Date|Number} date - the date to be changed
- * @param {Number} hours - the hours of the new date
- * @returns {Date} the new date with the hours set
- * @throws {TypeError} 2 arguments required
+ * @param date - the date to be changed
+ * @param hours - the hours of the new date
+ * @returns the new date with the hours set
  *
  * @example
  * // Set 4 hours to 1 September 2014 11:30:00:

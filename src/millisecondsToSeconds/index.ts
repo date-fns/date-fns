@@ -9,10 +9,9 @@ import { millisecondsInSecond } from '../constants/index'
  * @description
  * Convert a number of milliseconds to a full number of seconds.
  *
- * @param {number} milliseconds - number of milliseconds to be converted
+ * @param milliseconds - number of milliseconds to be converted
  *
- * @returns {number} the number of milliseconds converted in seconds
- * @throws {TypeError} 1 argument required
+ * @returns the number of milliseconds converted in seconds
  *
  * @example
  * // Convert 1000 miliseconds to seconds:

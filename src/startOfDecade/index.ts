@@ -9,9 +9,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Return the start of a decade for the given date.
  *
- * @param {Date|Number} date - the original date
- * @returns {Date} the start of a decade
- * @throws {TypeError} 1 argument required
+ * @param date - the original date
+ * @returns the start of a decade
  *
  * @example
  * // The start of a decade for 21 October 2015 00:00:00:
