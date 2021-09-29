@@ -53,16 +53,7 @@ describe('addBusinessDays', () => {
 
   it('converts a fractional number to an integer', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10.5)
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 15))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addBusinessDays(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '10'
-    )
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 15))
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 16))
   })
 
   it('does not mutate the original date', () => {
@@ -79,13 +70,6 @@ describe('addBusinessDays', () => {
   it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), NaN)
     assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addBusinessDays.bind(null, 1), TypeError)
   })
 
   it('starting from a weekend day should land on a weekday when reducing a divisible by 5', () => {
