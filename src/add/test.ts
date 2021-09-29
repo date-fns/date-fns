@@ -98,9 +98,4 @@ describe('add', () => {
     const result = add(initialDate, { months: 3 })
     assert.deepStrictEqual(result, expectedResult)
   })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = add(new Date(NaN), { hours: 5 })
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
 })
