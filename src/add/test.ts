@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -55,11 +54,6 @@ describe('add', () => {
       hours: 4,
     })
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14))
-  })
-
-  it('allows to pass fractional numbers', () => {
-    const result = add(new Date(2014, 8 /* Sep */, 1, 10), { hours: 4.5 })
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 1, 14, 30))
   })
 
   it('does not mutate the original date', () => {
