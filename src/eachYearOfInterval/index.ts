@@ -1,4 +1,5 @@
 import toDate from '../toDate/index'
+import type { Interval } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
