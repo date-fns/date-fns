@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name addMilliseconds
  * @category Millisecond Helpers
@@ -20,12 +16,9 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> Thu Jul 10 2014 12:45:30.750
  */
 export default function addMilliseconds(
-  dirtyDate: Date | number,
-  dirtyAmount: number
+  date: Date | number,
+  amount: number
 ): Date {
-  requiredArgs(2, arguments)
-
-  const timestamp = toDate(dirtyDate).getTime()
-  const amount = toInteger(dirtyAmount)
+  const timestamp = new Date(date).getTime()
   return new Date(timestamp + amount)
 }
