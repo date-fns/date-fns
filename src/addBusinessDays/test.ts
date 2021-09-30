@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -50,11 +49,6 @@ describe('addBusinessDays', () => {
   it('accepts a timestamp', () => {
     const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1).getTime(), 10)
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 15))
-  })
-
-  it('converts a fractional number to an integer', () => {
-    const result = addBusinessDays(new Date(2014, 8 /* Sep */, 1), 10.5)
-    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 16))
   })
 
   it('does not mutate the original date', () => {
