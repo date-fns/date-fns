@@ -1,14 +1,15 @@
 import compareAsc from '../compareAsc/index'
-import differenceInYears from '../differenceInYears/index'
-import differenceInMonths from '../differenceInMonths/index'
 import differenceInDays from '../differenceInDays/index'
 import differenceInHours from '../differenceInHours/index'
 import differenceInMinutes from '../differenceInMinutes/index'
+import differenceInMonths from '../differenceInMonths/index'
 import differenceInSeconds from '../differenceInSeconds/index'
+import differenceInYears from '../differenceInYears/index'
 import isValid from '../isValid/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-import toDate from '../toDate/index'
 import sub from '../sub/index'
+import toDate from '../toDate/index'
+import type { Duration, Interval } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name intervalToDuration
@@ -37,14 +38,14 @@ import sub from '../sub/index'
 export default function intervalToDuration({ start, end }: Interval): Duration {
   requiredArgs(1, arguments)
 
-  const dateLeft = toDate(start)
-  const dateRight = toDate(end)
+  const dateLeft = toDate(end)
+  const dateRight = toDate(start)
 
   if (!isValid(dateLeft)) {
-    throw new RangeError('Start Date is invalid')
+    throw new RangeError('End Date is invalid')
   }
   if (!isValid(dateRight)) {
-    throw new RangeError('End Date is invalid')
+    throw new RangeError('Start Date is invalid')
   }
 
   const duration = {
@@ -57,10 +58,12 @@ export default function intervalToDuration({ start, end }: Interval): Duration {
   }
 
   const sign = compareAsc(dateLeft, dateRight)
+  console.log(111, sign)
 
   duration.years = Math.abs(differenceInYears(dateLeft, dateRight))
 
   const remainingMonths = sub(dateLeft, { years: sign * duration.years })
+
   duration.months = Math.abs(differenceInMonths(remainingMonths, dateRight))
 
   const remainingDays = sub(remainingMonths, { months: sign * duration.months })
