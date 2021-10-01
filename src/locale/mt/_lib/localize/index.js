@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['Q', 'W'],
   abbreviated: ['QK', 'WK'],
-  wide: ['qabel Kristu', 'wara Kristu']
+  wide: ['qabel Kristu', 'wara Kristu'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1. kwart', '2. kwart', '3. kwart', '4. kwart']
+  wide: ['1. kwart', '2. kwart', '3. kwart', '4. kwart'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'Set',
     'Ott',
     'Nov',
-    'Diċ'
+    'Diċ',
   ],
   wide: [
     'Jannar',
@@ -40,8 +40,8 @@ var monthValues = {
     'Settembru',
     'Ottubru',
     'Novembru',
-    'Diċembru'
-  ]
+    'Diċembru',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'L-Erbgħa',
     'Il-Ħamis',
     'Il-Ġimgħa',
-    'Is-Sibt'
-  ]
+    'Is-Sibt',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
+    night: 'lejl',
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
+    night: 'lejl',
   },
   wide: {
     am: 'a.m.',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'għodwa',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'lejl'
-  }
+    night: 'lejl',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -101,7 +101,7 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
+    night: 'billejl',
   },
   abbreviated: {
     am: 'AM',
@@ -111,7 +111,7 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
+    night: 'billejl',
   },
   wide: {
     am: 'a.m.',
@@ -121,8 +121,8 @@ var formattingDayPeriodValues = {
     morning: 'filgħodu',
     afternoon: 'wara nofsinhar',
     evening: 'filgħaxija',
-    night: 'billejl'
-  }
+    night: 'billejl',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -133,35 +133,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

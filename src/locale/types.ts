@@ -93,6 +93,7 @@ export interface Localize {
     number,
     BuildLocalizeFnArgCallback<number> | undefined
   >
+  getMonths(type: 'narrow' | 'abbreviated' | 'wide'): ReadonlyArray<String>
   era: LocalizeFn<Era, undefined>
   quarter: LocalizeFn<Quarter, BuildLocalizeFnArgCallback<Quarter>>
   month: LocalizeFn<Month, undefined>

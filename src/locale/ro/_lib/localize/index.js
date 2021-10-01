@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['Î', 'D'],
   abbreviated: ['Î.d.C.', 'D.C.'],
-  wide: ['Înainte de Cristos', 'După Cristos']
+  wide: ['Înainte de Cristos', 'După Cristos'],
 }
 
 var quarterValues = {
@@ -13,8 +13,8 @@ var quarterValues = {
     'primul trimestru',
     'al doilea trimestru',
     'al treilea trimestru',
-    'al patrulea trimestru'
-  ]
+    'al patrulea trimestru',
+  ],
 }
 
 var monthValues = {
@@ -31,7 +31,7 @@ var monthValues = {
     'sep',
     'oct',
     'noi',
-    'dec'
+    'dec',
   ],
   wide: [
     'ianuarie',
@@ -45,15 +45,15 @@ var monthValues = {
     'septembrie',
     'octombrie',
     'noiembrie',
-    'decembrie'
-  ]
+    'decembrie',
+  ],
 }
 
 var dayValues = {
   narrow: ['d', 'l', 'm', 'm', 'j', 'v', 's'],
   short: ['du', 'lu', 'ma', 'mi', 'jo', 'vi', 'sâ'],
   abbreviated: ['dum', 'lun', 'mar', 'mie', 'joi', 'vin', 'sâm'],
-  wide: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă']
+  wide: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă'],
 }
 
 var dayPeriodValues = {
@@ -65,7 +65,7 @@ var dayPeriodValues = {
     morning: 'dim',
     afternoon: 'da',
     evening: 's',
-    night: 'n'
+    night: 'n',
   },
   abbreviated: {
     am: 'AM',
@@ -75,7 +75,7 @@ var dayPeriodValues = {
     morning: 'dimineață',
     afternoon: 'după-amiază',
     evening: 'seară',
-    night: 'noapte'
+    night: 'noapte',
   },
   wide: {
     am: 'a.m.',
@@ -85,8 +85,8 @@ var dayPeriodValues = {
     morning: 'dimineață',
     afternoon: 'după-amiază',
     evening: 'seară',
-    night: 'noapte'
-  }
+    night: 'noapte',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -98,7 +98,7 @@ var formattingDayPeriodValues = {
     morning: 'dimineață',
     afternoon: 'după-amiază',
     evening: 'seară',
-    night: 'noapte'
+    night: 'noapte',
   },
   abbreviated: {
     am: 'AM',
@@ -108,7 +108,7 @@ var formattingDayPeriodValues = {
     morning: 'dimineață',
     afternoon: 'după-amiază',
     evening: 'seară',
-    night: 'noapte'
+    night: 'noapte',
   },
   wide: {
     am: 'a.m.',
@@ -118,8 +118,8 @@ var formattingDayPeriodValues = {
     morning: 'dimineață',
     afternoon: 'după-amiază',
     evening: 'seară',
-    night: 'noapte'
-  }
+    night: 'noapte',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -130,35 +130,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

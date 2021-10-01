@@ -3,13 +3,18 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['aK', 'pK'],
   abbreviated: ['a.K.E.', 'p.K.E.'],
-  wide: ['antaŭ Komuna Erao', 'Komuna Erao']
+  wide: ['antaŭ Komuna Erao', 'Komuna Erao'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1-a kvaronjaro', '2-a kvaronjaro', '3-a kvaronjaro', '4-a kvaronjaro']
+  wide: [
+    '1-a kvaronjaro',
+    '2-a kvaronjaro',
+    '3-a kvaronjaro',
+    '4-a kvaronjaro',
+  ],
 }
 
 var monthValues = {
@@ -26,7 +31,7 @@ var monthValues = {
     'sep',
     'okt',
     'nov',
-    'dec'
+    'dec',
   ],
   wide: [
     'januaro',
@@ -40,15 +45,23 @@ var monthValues = {
     'septembro',
     'oktobro',
     'novembro',
-    'decembro'
-  ]
+    'decembro',
+  ],
 }
 
 var dayValues = {
   narrow: ['D', 'L', 'M', 'M', 'Ĵ', 'V', 'S'],
   short: ['di', 'lu', 'ma', 'me', 'ĵa', 've', 'sa'],
   abbreviated: ['dim', 'lun', 'mar', 'mer', 'ĵaŭ', 'ven', 'sab'],
-  wide: ['dimanĉo', 'lundo', 'mardo', 'merkredo', 'ĵaŭdo', 'vendredo', 'sabato']
+  wide: [
+    'dimanĉo',
+    'lundo',
+    'mardo',
+    'merkredo',
+    'ĵaŭdo',
+    'vendredo',
+    'sabato',
+  ],
 }
 
 var dayPeriodValues = {
@@ -60,7 +73,7 @@ var dayPeriodValues = {
     morning: 'matene',
     afternoon: 'posttagmeze',
     evening: 'vespere',
-    night: 'nokte'
+    night: 'nokte',
   },
   abbreviated: {
     am: 'a.t.m.',
@@ -70,7 +83,7 @@ var dayPeriodValues = {
     morning: 'matene',
     afternoon: 'posttagmeze',
     evening: 'vespere',
-    night: 'nokte'
+    night: 'nokte',
   },
   wide: {
     am: 'antaŭtagmeze',
@@ -80,8 +93,8 @@ var dayPeriodValues = {
     morning: 'matene',
     afternoon: 'posttagmeze',
     evening: 'vespere',
-    night: 'nokte'
-  }
+    night: 'nokte',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -92,33 +105,35 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

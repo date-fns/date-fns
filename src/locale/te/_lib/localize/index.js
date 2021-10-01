@@ -6,14 +6,14 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['క్రీ.పూ.', 'క్రీ.శ.'],
   abbreviated: ['క్రీ.పూ.', 'క్రీ.శ.'],
-  wide: ['క్రీస్తు పూర్వం', 'క్రీస్తుశకం']
+  wide: ['క్రీస్తు పూర్వం', 'క్రీస్తుశకం'],
 }
 
 // CLDR #1613 - #1628
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['త్రై1', 'త్రై2', 'త్రై3', 'త్రై4'],
-  wide: ['1వ త్రైమాసికం', '2వ త్రైమాసికం', '3వ త్రైమాసికం', '4వ త్రైమాసికం']
+  wide: ['1వ త్రైమాసికం', '2వ త్రైమాసికం', '3వ త్రైమాసికం', '4వ త్రైమాసికం'],
 }
 
 // CLDR #1637 - #1708
@@ -31,7 +31,7 @@ var monthValues = {
     'సెప్టెం',
     'అక్టో',
     'నవం',
-    'డిసెం'
+    'డిసెం',
   ],
   wide: [
     'జనవరి',
@@ -45,8 +45,8 @@ var monthValues = {
     'సెప్టెంబర్',
     'అక్టోబర్',
     'నవంబర్',
-    'డిసెంబర్'
-  ]
+    'డిసెంబర్',
+  ],
 }
 
 // CLDR #1709 - #1764
@@ -61,8 +61,8 @@ var dayValues = {
     'బుధవారం',
     'గురువారం',
     'శుక్రవారం',
-    'శనివారం'
-  ]
+    'శనివారం',
+  ],
 }
 
 // CLDR #1767 - #1806
@@ -75,7 +75,7 @@ var dayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
+    night: 'రాత్రి',
   },
   abbreviated: {
     am: 'పూర్వాహ్నం',
@@ -85,7 +85,7 @@ var dayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
+    night: 'రాత్రి',
   },
   wide: {
     am: 'పూర్వాహ్నం',
@@ -95,8 +95,8 @@ var dayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
-  }
+    night: 'రాత్రి',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -107,7 +107,7 @@ var formattingDayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
+    night: 'రాత్రి',
   },
   abbreviated: {
     am: 'పూర్వాహ్నం',
@@ -117,7 +117,7 @@ var formattingDayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
+    night: 'రాత్రి',
   },
   wide: {
     am: 'పూర్వాహ్నం',
@@ -127,8 +127,8 @@ var formattingDayPeriodValues = {
     morning: 'ఉదయం',
     afternoon: 'మధ్యాహ్నం',
     evening: 'సాయంత్రం',
-    night: 'రాత్రి'
-  }
+    night: 'రాత్రి',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -139,35 +139,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

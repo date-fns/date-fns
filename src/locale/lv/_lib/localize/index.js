@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['p.m.ē', 'm.ē'],
   abbreviated: ['p. m. ē.', 'm. ē.'],
-  wide: ['pirms mūsu ēras', 'mūsu ērā']
+  wide: ['pirms mūsu ēras', 'mūsu ērā'],
 }
 
 var quarterValues = {
@@ -13,8 +13,8 @@ var quarterValues = {
     'pirmais ceturksnis',
     'otrais ceturksnis',
     'trešais ceturksnis',
-    'ceturtais ceturksnis'
-  ]
+    'ceturtais ceturksnis',
+  ],
 }
 
 var formattingQuarterValues = {
@@ -24,8 +24,8 @@ var formattingQuarterValues = {
     'pirmajā ceturksnī',
     'otrajā ceturksnī',
     'trešajā ceturksnī',
-    'ceturtajā ceturksnī'
-  ]
+    'ceturtajā ceturksnī',
+  ],
 }
 
 var monthValues = {
@@ -42,7 +42,7 @@ var monthValues = {
     'sept.',
     'okt.',
     'nov.',
-    'dec.'
+    'dec.',
   ],
   wide: [
     'janvāris',
@@ -56,8 +56,8 @@ var monthValues = {
     'septembris',
     'oktobris',
     'novembris',
-    'decembris'
-  ]
+    'decembris',
+  ],
 }
 
 var formattingMonthValues = {
@@ -74,7 +74,7 @@ var formattingMonthValues = {
     'sept.',
     'okt.',
     'nov.',
-    'dec.'
+    'dec.',
   ],
   wide: [
     'janvārī',
@@ -88,8 +88,8 @@ var formattingMonthValues = {
     'septembrī',
     'oktobrī',
     'novembrī',
-    'decembrī'
-  ]
+    'decembrī',
+  ],
 }
 
 var dayValues = {
@@ -102,7 +102,7 @@ var dayValues = {
     'trešd.',
     'ceturtd.',
     'piektd.',
-    'sestd.'
+    'sestd.',
   ],
   wide: [
     'svētdiena',
@@ -111,8 +111,8 @@ var dayValues = {
     'trešdiena',
     'ceturtdiena',
     'piektdiena',
-    'sestdiena'
-  ]
+    'sestdiena',
+  ],
 }
 
 var formattingDayValues = {
@@ -125,7 +125,7 @@ var formattingDayValues = {
     'trešd.',
     'ceturtd.',
     'piektd.',
-    'sestd.'
+    'sestd.',
   ],
   wide: [
     'svētdienā',
@@ -134,8 +134,8 @@ var formattingDayValues = {
     'trešdienā',
     'ceturtdienā',
     'piektdienā',
-    'sestdienā'
-  ]
+    'sestdienā',
+  ],
 }
 
 var dayPeriodValues = {
@@ -147,7 +147,7 @@ var dayPeriodValues = {
     morning: 'rīts',
     afternoon: 'diena',
     evening: 'vakars',
-    night: 'nakts'
+    night: 'nakts',
   },
   abbreviated: {
     am: 'am',
@@ -157,7 +157,7 @@ var dayPeriodValues = {
     morning: 'rīts',
     afternoon: 'pēcpusd.',
     evening: 'vakars',
-    night: 'nakts'
+    night: 'nakts',
   },
   wide: {
     am: 'am',
@@ -167,8 +167,8 @@ var dayPeriodValues = {
     morning: 'rīts',
     afternoon: 'pēcpusdiena',
     evening: 'vakars',
-    night: 'nakts'
-  }
+    night: 'nakts',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -179,7 +179,7 @@ var formattingDayPeriodValues = {
     morning: 'rītā',
     afternoon: 'dienā',
     evening: 'vakarā',
-    night: 'naktī'
+    night: 'naktī',
   },
   abbreviated: {
     am: 'am',
@@ -189,7 +189,7 @@ var formattingDayPeriodValues = {
     morning: 'rītā',
     afternoon: 'pēcpusd.',
     evening: 'vakarā',
-    night: 'naktī'
+    night: 'naktī',
   },
   wide: {
     am: 'am',
@@ -199,8 +199,8 @@ var formattingDayPeriodValues = {
     morning: 'rītā',
     afternoon: 'pēcpusdienā',
     evening: 'vakarā',
-    night: 'naktī'
-  }
+    night: 'naktī',
+  },
 }
 
 function ordinalNumber(number, _options) {
@@ -210,9 +210,11 @@ function ordinalNumber(number, _options) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
@@ -220,31 +222,31 @@ var localize = {
     defaultWidth: 'wide',
     formattingValues: formattingQuarterValues,
     defaultFormattingWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   abbreviated: ['MÖ', 'MS'],
   narrow: ['MÖ', 'MS'],
-  wide: ['Milattan Önce', 'Milattan Sonra']
+  wide: ['Milattan Önce', 'Milattan Sonra'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1Ç', '2Ç', '3Ç', '4Ç'],
-  wide: ['İlk çeyrek', 'İkinci Çeyrek', 'Üçüncü çeyrek', 'Son çeyrek']
+  wide: ['İlk çeyrek', 'İkinci Çeyrek', 'Üçüncü çeyrek', 'Son çeyrek'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'Eyl',
     'Eki',
     'Kas',
-    'Ara'
+    'Ara',
   ],
   wide: [
     'Ocak',
@@ -40,8 +40,8 @@ var monthValues = {
     'Eylül',
     'Ekim',
     'Kasım',
-    'Aralık'
-  ]
+    'Aralık',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'Çarşamba',
     'Perşembe',
     'Cuma',
-    'Cumartesi'
-  ]
+    'Cumartesi',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'sa',
     afternoon: 'ös',
     evening: 'ak',
-    night: 'ge'
+    night: 'ge',
   },
   abbreviated: {
     am: 'ÖÖ',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'sabah',
     afternoon: 'öğleden sonra',
     evening: 'akşam',
-    night: 'gece'
+    night: 'gece',
   },
   wide: {
     am: 'Ö.Ö.',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'sabah',
     afternoon: 'öğleden sonra',
     evening: 'akşam',
-    night: 'gece'
-  }
+    night: 'gece',
+  },
 }
 
 var formattingDayPeriodValues = {
@@ -101,7 +101,7 @@ var formattingDayPeriodValues = {
     morning: 'sa',
     afternoon: 'ös',
     evening: 'ak',
-    night: 'ge'
+    night: 'ge',
   },
   abbreviated: {
     am: 'ÖÖ',
@@ -111,7 +111,7 @@ var formattingDayPeriodValues = {
     morning: 'sabahleyin',
     afternoon: 'öğleden sonra',
     evening: 'akşamleyin',
-    night: 'geceleyin'
+    night: 'geceleyin',
   },
   wide: {
     am: 'ö.ö.',
@@ -121,8 +121,8 @@ var formattingDayPeriodValues = {
     morning: 'sabahleyin',
     afternoon: 'öğleden sonra',
     evening: 'akşamleyin',
-    night: 'geceleyin'
-  }
+    night: 'geceleyin',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -133,35 +133,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaulFormattingWidth: 'wide'
-  })
+    defaulFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

@@ -5,13 +5,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['SM', 'M'],
   abbreviated: ['SM', 'M'],
-  wide: ['Sebelum Masihi', 'Masihi']
+  wide: ['Sebelum Masihi', 'Masihi'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['S1', 'S2', 'S3', 'S4'],
-  wide: ['Suku pertama', 'Suku kedua', 'Suku ketiga', 'Suku keempat']
+  wide: ['Suku pertama', 'Suku kedua', 'Suku ketiga', 'Suku keempat'],
 }
 
 // Note: in Malay, the names of days of the week and months are capitalized.
@@ -32,7 +32,7 @@ var monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Dis'
+    'Dis',
   ],
   wide: [
     'Januari',
@@ -46,15 +46,15 @@ var monthValues = {
     'September',
     'Oktober',
     'November',
-    'Disember'
-  ]
+    'Disember',
+  ],
 }
 
 var dayValues = {
   narrow: ['A', 'I', 'S', 'R', 'K', 'J', 'S'],
   short: ['Ahd', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab'],
   abbreviated: ['Ahd', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab'],
-  wide: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu']
+  wide: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'],
 }
 
 var dayPeriodValues = {
@@ -66,7 +66,7 @@ var dayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
+    night: 'malam',
   },
   abbreviated: {
     am: 'AM',
@@ -76,7 +76,7 @@ var dayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
+    night: 'malam',
   },
   wide: {
     am: 'a.m.',
@@ -86,8 +86,8 @@ var dayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
-  }
+    night: 'malam',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -98,7 +98,7 @@ var formattingDayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
+    night: 'malam',
   },
   abbreviated: {
     am: 'AM',
@@ -108,7 +108,7 @@ var formattingDayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
+    night: 'malam',
   },
   wide: {
     am: 'a.m.',
@@ -118,8 +118,8 @@ var formattingDayPeriodValues = {
     morning: 'pagi',
     afternoon: 'tengah hari',
     evening: 'petang',
-    night: 'malam'
-  }
+    night: 'malam',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -135,35 +135,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

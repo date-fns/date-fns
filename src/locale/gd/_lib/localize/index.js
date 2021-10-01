@@ -3,7 +3,7 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['R', 'A'],
   abbreviated: ['RC', 'AD'],
-  wide: ['ro Chrìosta', 'anno domini']
+  wide: ['ro Chrìosta', 'anno domini'],
 }
 
 var quarterValues = {
@@ -13,8 +13,8 @@ var quarterValues = {
     "a' chiad chairteal",
     'an dàrna cairteal',
     'an treas cairteal',
-    'an ceathramh cairteal'
-  ]
+    'an ceathramh cairteal',
+  ],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -35,7 +35,7 @@ var monthValues = {
     'Sult',
     'Dàmh',
     'Samh',
-    'Dùbh'
+    'Dùbh',
   ],
   wide: [
     'Am Faoilleach',
@@ -49,8 +49,8 @@ var monthValues = {
     'An t-Sultain',
     'An Dàmhair',
     'An t-Samhain',
-    'An Dùbhlachd'
-  ]
+    'An Dùbhlachd',
+  ],
 }
 
 var dayValues = {
@@ -64,8 +64,8 @@ var dayValues = {
     'Diciadain',
     'Diardaoin',
     'Dihaoine',
-    'Disathairne'
-  ]
+    'Disathairne',
+  ],
 }
 
 var dayPeriodValues = {
@@ -77,7 +77,7 @@ var dayPeriodValues = {
     morning: 'madainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'oidhche'
+    night: 'oidhche',
   },
   abbreviated: {
     am: 'M.',
@@ -87,7 +87,7 @@ var dayPeriodValues = {
     morning: 'madainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'oidhche'
+    night: 'oidhche',
   },
   wide: {
     am: 'm.',
@@ -97,8 +97,8 @@ var dayPeriodValues = {
     morning: 'madainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'oidhche'
-  }
+    night: 'oidhche',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -109,7 +109,7 @@ var formattingDayPeriodValues = {
     morning: 'sa mhadainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'air an oidhche'
+    night: 'air an oidhche',
   },
   abbreviated: {
     am: 'M.',
@@ -119,7 +119,7 @@ var formattingDayPeriodValues = {
     morning: 'sa mhadainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'air an oidhche'
+    night: 'air an oidhche',
   },
   wide: {
     am: 'm.',
@@ -129,8 +129,8 @@ var formattingDayPeriodValues = {
     morning: 'sa mhadainn',
     afternoon: 'feasgar',
     evening: 'feasgar',
-    night: 'air an oidhche'
-  }
+    night: 'air an oidhche',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -166,35 +166,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

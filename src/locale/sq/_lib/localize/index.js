@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['P', 'M'],
   abbreviated: ['PK', 'MK'],
-  wide: ['Para Krishtit', 'Mbas Krishtit']
+  wide: ['Para Krishtit', 'Mbas Krishtit'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['4-mujori I', '4-mujori II', '4-mujori III', '4-mujori IV']
+  wide: ['4-mujori I', '4-mujori II', '4-mujori III', '4-mujori IV'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -30,7 +30,7 @@ var monthValues = {
     'Sht',
     'Tet',
     'Nën',
-    'Dhj'
+    'Dhj',
   ],
   wide: [
     'Janar',
@@ -44,15 +44,15 @@ var monthValues = {
     'Shtator',
     'Tetor',
     'Nëntor',
-    'Dhjetor'
-  ]
+    'Dhjetor',
+  ],
 }
 
 var dayValues = {
   narrow: ['D', 'H', 'M', 'M', 'E', 'P', 'S'],
   short: ['Di', 'Hë', 'Ma', 'Më', 'En', 'Pr', 'Sh'],
   abbreviated: ['Die', 'Hën', 'Mar', 'Mër', 'Enj', 'Pre', 'Sht'],
-  wide: ['Dielë', 'Hënë', 'Martë', 'Mërkurë', 'Enjte', 'Premte', 'Shtunë']
+  wide: ['Dielë', 'Hënë', 'Martë', 'Mërkurë', 'Enjte', 'Premte', 'Shtunë'],
 }
 
 var dayPeriodValues = {
@@ -64,7 +64,7 @@ var dayPeriodValues = {
     morning: 'mëngjes',
     afternoon: 'dite',
     evening: 'mbrëmje',
-    night: 'natë'
+    night: 'natë',
   },
   abbreviated: {
     am: 'PD',
@@ -74,7 +74,7 @@ var dayPeriodValues = {
     morning: 'mëngjes',
     afternoon: 'mbasdite',
     evening: 'mbrëmje',
-    night: 'natë'
+    night: 'natë',
   },
   wide: {
     am: 'p.d.',
@@ -84,8 +84,8 @@ var dayPeriodValues = {
     morning: 'mëngjes',
     afternoon: 'mbasdite',
     evening: 'mbrëmje',
-    night: 'natë'
-  }
+    night: 'natë',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -96,7 +96,7 @@ var formattingDayPeriodValues = {
     morning: 'në mëngjes',
     afternoon: 'në mbasdite',
     evening: 'në mbrëmje',
-    night: 'në mesnatë'
+    night: 'në mesnatë',
   },
   abbreviated: {
     am: 'PD',
@@ -106,7 +106,7 @@ var formattingDayPeriodValues = {
     morning: 'në mëngjes',
     afternoon: 'në mbasdite',
     evening: 'në mbrëmje',
-    night: 'në mesnatë'
+    night: 'në mesnatë',
   },
   wide: {
     am: 'p.d.',
@@ -116,8 +116,8 @@ var formattingDayPeriodValues = {
     morning: 'në mëngjes',
     afternoon: 'në mbasdite',
     evening: 'në mbrëmje',
-    night: 'në mesnatë'
-  }
+    night: 'në mesnatë',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -147,35 +147,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

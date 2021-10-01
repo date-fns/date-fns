@@ -8,7 +8,7 @@ function ordinalNumber(dirtyNumber) {
 var eraValues = {
   narrow: ['pr.n.e.', 'AD'],
   abbreviated: ['pr. Hr.', 'po. Hr.'],
-  wide: ['Pre Hrista', 'Posle Hrista']
+  wide: ['Pre Hrista', 'Posle Hrista'],
 }
 
 var monthValues = {
@@ -24,7 +24,7 @@ var monthValues = {
     '9.',
     '10.',
     '11.',
-    '12.'
+    '12.',
   ],
   abbreviated: [
     'jan',
@@ -38,7 +38,7 @@ var monthValues = {
     'sep',
     'okt',
     'nov',
-    'dec'
+    'dec',
   ],
   wide: [
     'januar',
@@ -52,8 +52,8 @@ var monthValues = {
     'septembar',
     'oktobar',
     'novembar',
-    'decembar'
-  ]
+    'decembar',
+  ],
 }
 
 var formattingMonthValues = {
@@ -69,7 +69,7 @@ var formattingMonthValues = {
     '9.',
     '10.',
     '11.',
-    '12.'
+    '12.',
   ],
   abbreviated: [
     'jan',
@@ -83,7 +83,7 @@ var formattingMonthValues = {
     'sep',
     'okt',
     'nov',
-    'dec'
+    'dec',
   ],
   wide: [
     'januar',
@@ -97,14 +97,14 @@ var formattingMonthValues = {
     'septembar',
     'oktobar',
     'novembar',
-    'decembar'
-  ]
+    'decembar',
+  ],
 }
 
 var quarterValues = {
   narrow: ['1.', '2.', '3.', '4.'],
   abbreviated: ['1. kv.', '2. kv.', '3. kv.', '4. kv.'],
-  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal']
+  wide: ['1. kvartal', '2. kvartal', '3. kvartal', '4. kvartal'],
 }
 
 var dayValues = {
@@ -118,8 +118,8 @@ var dayValues = {
     'sreda',
     'četvrtak',
     'petak',
-    'subota'
-  ]
+    'subota',
+  ],
 }
 
 var formattingDayPeriodValues = {
@@ -131,7 +131,7 @@ var formattingDayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'popodne',
     evening: 'uveče',
-    night: 'noću'
+    night: 'noću',
   },
   abbreviated: {
     am: 'AM',
@@ -141,7 +141,7 @@ var formattingDayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'popodne',
     evening: 'uveče',
-    night: 'noću'
+    night: 'noću',
   },
   wide: {
     am: 'AM',
@@ -151,8 +151,8 @@ var formattingDayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'posle podne',
     evening: 'uveče',
-    night: 'noću'
-  }
+    night: 'noću',
+  },
 }
 
 var dayPeriodValues = {
@@ -164,7 +164,7 @@ var dayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'popodne',
     evening: 'uveče',
-    night: 'noću'
+    night: 'noću',
   },
   abbreviated: {
     am: 'AM',
@@ -174,7 +174,7 @@ var dayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'popodne',
     evening: 'uveče',
-    night: 'noću'
+    night: 'noću',
   },
   wide: {
     am: 'AM',
@@ -184,39 +184,42 @@ var dayPeriodValues = {
     morning: 'ujutru',
     afternoon: 'posle podne',
     evening: 'uveče',
-    night: 'noću'
-  }
+    night: 'noću',
+  },
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

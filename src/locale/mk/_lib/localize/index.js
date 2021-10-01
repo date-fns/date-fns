@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['пр.н.е.', 'н.е.'],
   abbreviated: ['пред н. е.', 'н. е.'],
-  wide: ['пред нашата ера', 'нашата ера']
+  wide: ['пред нашата ера', 'нашата ера'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1-ви кв.', '2-ри кв.', '3-ти кв.', '4-ти кв.'],
-  wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал']
+  wide: ['1-ви квартал', '2-ри квартал', '3-ти квартал', '4-ти квартал'],
 }
 
 var monthValues = {
@@ -25,7 +25,7 @@ var monthValues = {
     'септ',
     'окт',
     'ноем',
-    'дек'
+    'дек',
   ],
   wide: [
     'јануари',
@@ -39,8 +39,8 @@ var monthValues = {
     'септември',
     'октомври',
     'ноември',
-    'декември'
-  ]
+    'декември',
+  ],
 }
 
 var dayValues = {
@@ -54,8 +54,8 @@ var dayValues = {
     'среда',
     'четврток',
     'петок',
-    'сабота'
-  ]
+    'сабота',
+  ],
 }
 
 var dayPeriodValues = {
@@ -67,8 +67,8 @@ var dayPeriodValues = {
     morning: 'наутро',
     afternoon: 'попладне',
     evening: 'навечер',
-    night: 'ноќе'
-  }
+    night: 'ноќе',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -92,33 +92,35 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

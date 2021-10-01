@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['v.Chr.', 'n.Chr.'],
   abbreviated: ['v.Chr.', 'n.Chr.'],
-  wide: ['viru Christus', 'no Christus']
+  wide: ['viru Christus', 'no Christus'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal']
+  wide: ['1. Quartal', '2. Quartal', '3. Quartal', '4. Quartal'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Dez'
+    'Dez',
   ],
   wide: [
     'Januar',
@@ -40,8 +40,8 @@ var monthValues = {
     'September',
     'Oktober',
     'November',
-    'Dezember'
-  ]
+    'Dezember',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'Mëttwoch',
     'Donneschdeg',
     'Freideg',
-    'Samschdeg'
-  ]
+    'Samschdeg',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'Moien',
     afternoon: 'Nomëtteg',
     evening: 'Owend',
-    night: 'Nuecht'
+    night: 'Nuecht',
   },
   abbreviated: {
     am: 'moies',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'Moien',
     afternoon: 'Nomëtteg',
     evening: 'Owend',
-    night: 'Nuecht'
+    night: 'Nuecht',
   },
   wide: {
     am: 'moies',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'Moien',
     afternoon: 'Nomëtteg',
     evening: 'Owend',
-    night: 'Nuecht'
-  }
+    night: 'Nuecht',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -100,7 +100,7 @@ var formattingDayPeriodValues = {
     morning: 'moies',
     afternoon: 'nomëttes',
     evening: 'owes',
-    night: 'nuets'
+    night: 'nuets',
   },
   abbreviated: {
     am: 'moies',
@@ -110,7 +110,7 @@ var formattingDayPeriodValues = {
     morning: 'moies',
     afternoon: 'nomëttes',
     evening: 'owes',
-    night: 'nuets'
+    night: 'nuets',
   },
   wide: {
     am: 'moies',
@@ -120,8 +120,8 @@ var formattingDayPeriodValues = {
     morning: 'moies',
     afternoon: 'nomëttes',
     evening: 'owes',
-    night: 'nuets'
-  }
+    night: 'nuets',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -133,35 +133,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

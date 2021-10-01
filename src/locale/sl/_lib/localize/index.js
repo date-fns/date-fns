@@ -8,7 +8,7 @@ function ordinalNumber(dirtyNumber) {
 var eraValues = {
   narrow: ['pr. n. št.', 'po n. št.'],
   abbreviated: ['pr. n. št.', 'po n. št.'],
-  wide: ['pred našim štetjem', 'po našem štetju']
+  wide: ['pred našim štetjem', 'po našem štetju'],
 }
 
 var monthValues = {
@@ -25,7 +25,7 @@ var monthValues = {
     'sep.',
     'okt.',
     'nov.',
-    'dec.'
+    'dec.',
   ],
   wide: [
     'januar',
@@ -39,14 +39,14 @@ var monthValues = {
     'september',
     'oktober',
     'november',
-    'december'
-  ]
+    'december',
+  ],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1. čet.', '2. čet.', '3. čet.', '4. čet.'],
-  wide: ['1. četrtletje', '2. četrtletje', '3. četrtletje', '4. četrtletje']
+  wide: ['1. četrtletje', '2. četrtletje', '3. četrtletje', '4. četrtletje'],
 }
 
 var dayValues = {
@@ -60,8 +60,8 @@ var dayValues = {
     'sreda',
     'četrtek',
     'petek',
-    'sobota'
-  ]
+    'sobota',
+  ],
 }
 
 var dayPeriodValuesStandalone = {
@@ -73,7 +73,7 @@ var dayPeriodValuesStandalone = {
     morning: 'j',
     afternoon: 'p',
     evening: 'v',
-    night: 'n'
+    night: 'n',
   },
   abbreviated: {
     am: 'dop.',
@@ -83,7 +83,7 @@ var dayPeriodValuesStandalone = {
     morning: 'jut.',
     afternoon: 'pop.',
     evening: 'več.',
-    night: 'noč'
+    night: 'noč',
   },
   wide: {
     am: 'dop.',
@@ -93,8 +93,8 @@ var dayPeriodValuesStandalone = {
     morning: 'jutro',
     afternoon: 'popoldne',
     evening: 'večer',
-    night: 'noč'
-  }
+    night: 'noč',
+  },
 }
 
 var dayPeriodValuesFormatting = {
@@ -106,7 +106,7 @@ var dayPeriodValuesFormatting = {
     morning: 'zj',
     afternoon: 'p',
     evening: 'zv',
-    night: 'po'
+    night: 'po',
   },
   abbreviated: {
     am: 'dop.',
@@ -116,7 +116,7 @@ var dayPeriodValuesFormatting = {
     morning: 'zjut.',
     afternoon: 'pop.',
     evening: 'zveč.',
-    night: 'ponoči'
+    night: 'ponoči',
   },
   wide: {
     am: 'dop.',
@@ -126,37 +126,40 @@ var dayPeriodValuesFormatting = {
     morning: 'zjutraj',
     afternoon: 'popoldan',
     evening: 'zvečer',
-    night: 'ponoči'
-  }
+    night: 'ponoči',
+  },
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValuesStandalone,
     defaultWidth: 'wide',
     formattingValues: dayPeriodValuesFormatting,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

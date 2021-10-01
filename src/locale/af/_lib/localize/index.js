@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['vC', 'nC'],
   abbreviated: ['vC', 'nC'],
-  wide: ['voor Christus', 'na Christus']
+  wide: ['voor Christus', 'na Christus'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal']
+  wide: ['1ste kwartaal', '2de kwartaal', '3de kwartaal', '4de kwartaal'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'Sep',
     'Okt',
     'Nov',
-    'Des'
+    'Des',
   ],
   wide: [
     'Januarie',
@@ -40,8 +40,8 @@ var monthValues = {
     'September',
     'Oktober',
     'November',
-    'Desember'
-  ]
+    'Desember',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'Woensdag',
     'Donderdag',
     'Vrydag',
-    'Saterdag'
-  ]
+    'Saterdag',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
+    night: 'aand',
   },
   abbreviated: {
     am: 'vm',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
+    night: 'aand',
   },
   wide: {
     am: 'vm',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'oggend',
     afternoon: 'middag',
     evening: 'laat middag',
-    night: 'aand'
-  }
+    night: 'aand',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -100,7 +100,7 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
+    night: 'uur die aand',
   },
   abbreviated: {
     am: 'vm',
@@ -110,7 +110,7 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
+    night: 'uur die aand',
   },
   wide: {
     am: 'vm',
@@ -120,8 +120,8 @@ var formattingDayPeriodValues = {
     morning: 'uur die oggend',
     afternoon: 'uur die middag',
     evening: 'uur die aand',
-    night: 'uur die aand'
-  }
+    night: 'uur die aand',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -142,35 +142,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

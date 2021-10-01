@@ -8,13 +8,13 @@ function ordinalNumber(dirtyNumber) {
 var eraValues = {
   narrow: ['p.n.e.', 'n.e.'],
   abbreviated: ['p.n.e.', 'n.e.'],
-  wide: ['przed naszą erą', 'naszej ery']
+  wide: ['przed naszą erą', 'naszej ery'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['I kw.', 'II kw.', 'III kw.', 'IV kw.'],
-  wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał']
+  wide: ['I kwartał', 'II kwartał', 'III kwartał', 'IV kwartał'],
 }
 
 var monthValues = {
@@ -31,7 +31,7 @@ var monthValues = {
     'wrz',
     'paź',
     'lis',
-    'gru'
+    'gru',
   ],
   wide: [
     'styczeń',
@@ -45,8 +45,8 @@ var monthValues = {
     'wrzesień',
     'październik',
     'listopad',
-    'grudzień'
-  ]
+    'grudzień',
+  ],
 }
 var monthFormattingValues = {
   narrow: ['s', 'l', 'm', 'k', 'm', 'c', 'l', 's', 'w', 'p', 'l', 'g'],
@@ -62,7 +62,7 @@ var monthFormattingValues = {
     'wrz',
     'paź',
     'lis',
-    'gru'
+    'gru',
   ],
   wide: [
     'stycznia',
@@ -76,8 +76,8 @@ var monthFormattingValues = {
     'września',
     'października',
     'listopada',
-    'grudnia'
-  ]
+    'grudnia',
+  ],
 }
 
 var dayValues = {
@@ -91,8 +91,8 @@ var dayValues = {
     'środa',
     'czwartek',
     'piątek',
-    'sobota'
-  ]
+    'sobota',
+  ],
 }
 var dayFormattingValues = {
   narrow: ['n', 'p', 'w', 'ś', 'c', 'p', 's'],
@@ -105,8 +105,8 @@ var dayFormattingValues = {
     'środa',
     'czwartek',
     'piątek',
-    'sobota'
-  ]
+    'sobota',
+  ],
 }
 
 var dayPeriodValues = {
@@ -118,7 +118,7 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popoł.',
     evening: 'wiecz.',
-    night: 'noc'
+    night: 'noc',
   },
   abbreviated: {
     am: 'AM',
@@ -128,7 +128,7 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popołudnie',
     evening: 'wieczór',
-    night: 'noc'
+    night: 'noc',
   },
   wide: {
     am: 'AM',
@@ -138,8 +138,8 @@ var dayPeriodValues = {
     morning: 'rano',
     afternoon: 'popołudnie',
     evening: 'wieczór',
-    night: 'noc'
-  }
+    night: 'noc',
+  },
 }
 var dayPeriodFormattingValues = {
   narrow: {
@@ -150,7 +150,7 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po poł.',
     evening: 'wiecz.',
-    night: 'w nocy'
+    night: 'w nocy',
   },
   abbreviated: {
     am: 'AM',
@@ -160,7 +160,7 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po południu',
     evening: 'wieczorem',
-    night: 'w nocy'
+    night: 'w nocy',
   },
   wide: {
     am: 'AM',
@@ -170,46 +170,48 @@ var dayPeriodFormattingValues = {
     morning: 'rano',
     afternoon: 'po południu',
     evening: 'wieczorem',
-    night: 'w nocy'
-  }
+    night: 'w nocy',
+  },
 }
 
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: monthFormattingValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
     defaultWidth: 'wide',
     formattingValues: dayFormattingValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: dayPeriodFormattingValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

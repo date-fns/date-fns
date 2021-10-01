@@ -190,6 +190,9 @@ var dayPeriodValues = {
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
     defaultWidth: 'wide',

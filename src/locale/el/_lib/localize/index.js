@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['πΧ', 'μΧ'],
   abbreviated: ['π.Χ.', 'μ.Χ.'],
-  wide: ['προ Χριστού', 'μετά Χριστόν']
+  wide: ['προ Χριστού', 'μετά Χριστόν'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Τ1', 'Τ2', 'Τ3', 'Τ4'],
-  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο']
+  wide: ['1ο τρίμηνο', '2ο τρίμηνο', '3ο τρίμηνο', '4ο τρίμηνο'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'Σεπ',
     'Οκτ',
     'Νοέ',
-    'Δεκ'
+    'Δεκ',
   ],
   wide: [
     'Ιανουάριος',
@@ -40,8 +40,8 @@ var monthValues = {
     'Σεπτέμβριος',
     'Οκτώβριος',
     'Νοέμβριος',
-    'Δεκέμβριος'
-  ]
+    'Δεκέμβριος',
+  ],
 }
 
 var formattingMonthValues = {
@@ -58,7 +58,7 @@ var formattingMonthValues = {
     'Σεπ',
     'Οκτ',
     'Νοε',
-    'Δεκ'
+    'Δεκ',
   ],
   wide: [
     'Ιανουαρίου',
@@ -72,8 +72,8 @@ var formattingMonthValues = {
     'Σεπτεμβρίου',
     'Οκτωβρίου',
     'Νοεμβρίου',
-    'Δεκεμβρίου'
-  ]
+    'Δεκεμβρίου',
+  ],
 }
 
 var dayValues = {
@@ -87,8 +87,8 @@ var dayValues = {
     'Τετάρτη',
     'Πέμπτη',
     'Παρασκευή',
-    'Σάββατο'
-  ]
+    'Σάββατο',
+  ],
 }
 
 var dayPeriodValues = {
@@ -100,7 +100,7 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
+    night: 'νύχτα',
   },
   abbreviated: {
     am: 'π.μ.',
@@ -110,7 +110,7 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
+    night: 'νύχτα',
   },
   wide: {
     am: 'π.μ.',
@@ -120,8 +120,8 @@ var dayPeriodValues = {
     morning: 'πρωί',
     afternoon: 'απόγευμα',
     evening: 'βράδυ',
-    night: 'νύχτα'
-  }
+    night: 'νύχτα',
+  },
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
@@ -148,31 +148,34 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   month: buildLocalizeFn({
     values: monthValues,
     defaultWidth: 'wide',
     formattingValues: formattingMonthValues,
-    defaultFormattingWidth: 'wide'
+    defaultFormattingWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
-    defaultWidth: 'wide'
-  })
+    defaultWidth: 'wide',
+  }),
 }
 
 export default localize

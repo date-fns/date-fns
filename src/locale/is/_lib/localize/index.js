@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['f.Kr.', 'e.Kr.'],
   abbreviated: ['f.Kr.', 'e.Kr.'],
-  wide: ['fyrir Krist', 'eftir Krist']
+  wide: ['fyrir Krist', 'eftir Krist'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['1F', '2F', '3F', '4F'],
-  wide: ['1. fjórðungur', '2. fjórðungur', '3. fjórðungur', '4. fjórðungur']
+  wide: ['1. fjórðungur', '2. fjórðungur', '3. fjórðungur', '4. fjórðungur'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'sept.',
     'okt.',
     'nóv.',
-    'des.'
+    'des.',
   ],
   wide: [
     'janúar',
@@ -40,8 +40,8 @@ var monthValues = {
     'september',
     'október',
     'nóvember',
-    'desember'
-  ]
+    'desember',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'miðvikudagur',
     'fimmtudagur',
     'föstudagur',
-    'laugardagur'
-  ]
+    'laugardagur',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'morgunn',
     afternoon: 'síðdegi',
     evening: 'kvöld',
-    night: 'nótt'
+    night: 'nótt',
   },
   abbreviated: {
     am: 'f.h.',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'morgunn',
     afternoon: 'síðdegi',
     evening: 'kvöld',
-    night: 'nótt'
+    night: 'nótt',
   },
   wide: {
     am: 'fyrir hádegi',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'morgunn',
     afternoon: 'síðdegi',
     evening: 'kvöld',
-    night: 'nótt'
-  }
+    night: 'nótt',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -100,7 +100,7 @@ var formattingDayPeriodValues = {
     morning: 'að morgni',
     afternoon: 'síðdegis',
     evening: 'um kvöld',
-    night: 'um nótt'
+    night: 'um nótt',
   },
   abbreviated: {
     am: 'f.h.',
@@ -110,7 +110,7 @@ var formattingDayPeriodValues = {
     morning: 'að morgni',
     afternoon: 'síðdegis',
     evening: 'um kvöld',
-    night: 'um nótt'
+    night: 'um nótt',
   },
   wide: {
     am: 'fyrir hádegi',
@@ -120,8 +120,8 @@ var formattingDayPeriodValues = {
     morning: 'að morgni',
     afternoon: 'síðdegis',
     evening: 'um kvöld',
-    night: 'um nótt'
-  }
+    night: 'um nótt',
+  },
 }
 
 function ordinalNumber(dirtyNumber, _dirtyOptions) {
@@ -133,35 +133,37 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['aC', 'dC'],
   abbreviated: ['a.C.', 'd.C.'],
-  wide: ['avanti Cristo', 'dopo Cristo']
+  wide: ['avanti Cristo', 'dopo Cristo'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['T1', 'T2', 'T3', 'T4'],
-  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre']
+  wide: ['1º trimestre', '2º trimestre', '3º trimestre', '4º trimestre'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'set',
     'ott',
     'nov',
-    'dic'
+    'dic',
   ],
   wide: [
     'gennaio',
@@ -40,8 +40,8 @@ var monthValues = {
     'settembre',
     'ottobre',
     'novembre',
-    'dicembre'
-  ]
+    'dicembre',
+  ],
 }
 
 var dayValues = {
@@ -55,8 +55,8 @@ var dayValues = {
     'mercoledì',
     'giovedì',
     'venerdì',
-    'sabato'
-  ]
+    'sabato',
+  ],
 }
 
 var dayPeriodValues = {
@@ -68,7 +68,7 @@ var dayPeriodValues = {
     morning: 'mattina',
     afternoon: 'pomeriggio',
     evening: 'sera',
-    night: 'notte'
+    night: 'notte',
   },
   abbreviated: {
     am: 'AM',
@@ -78,7 +78,7 @@ var dayPeriodValues = {
     morning: 'mattina',
     afternoon: 'pomeriggio',
     evening: 'sera',
-    night: 'notte'
+    night: 'notte',
   },
   wide: {
     am: 'AM',
@@ -88,8 +88,8 @@ var dayPeriodValues = {
     morning: 'mattina',
     afternoon: 'pomeriggio',
     evening: 'sera',
-    night: 'notte'
-  }
+    night: 'notte',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -100,7 +100,7 @@ var formattingDayPeriodValues = {
     morning: 'di mattina',
     afternoon: 'del pomeriggio',
     evening: 'di sera',
-    night: 'di notte'
+    night: 'di notte',
   },
   abbreviated: {
     am: 'AM',
@@ -110,7 +110,7 @@ var formattingDayPeriodValues = {
     morning: 'di mattina',
     afternoon: 'del pomeriggio',
     evening: 'di sera',
-    night: 'di notte'
+    night: 'di notte',
   },
   wide: {
     am: 'AM',
@@ -120,8 +120,8 @@ var formattingDayPeriodValues = {
     morning: 'di mattina',
     afternoon: 'del pomeriggio',
     evening: 'di sera',
-    night: 'di notte'
-  }
+    night: 'di notte',
+  },
 }
 
 function ordinalNumber(dirtyNumber) {
@@ -132,35 +132,37 @@ function ordinalNumber(dirtyNumber) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

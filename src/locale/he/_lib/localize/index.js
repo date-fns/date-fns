@@ -3,13 +3,13 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['לפנה״ס', 'לספירה'],
   abbreviated: ['לפנה״ס', 'לספירה'],
-  wide: ['לפני הספירה', 'לספירה']
+  wide: ['לפני הספירה', 'לספירה'],
 }
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'],
-  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4']
+  wide: ['רבעון 1', 'רבעון 2', 'רבעון 3', 'רבעון 4'],
 }
 
 var monthValues = {
@@ -26,7 +26,7 @@ var monthValues = {
     'ספט׳',
     'אוק׳',
     'נוב׳',
-    'דצמ׳'
+    'דצמ׳',
   ],
   wide: [
     'ינואר',
@@ -40,8 +40,8 @@ var monthValues = {
     'ספטמבר',
     'אוקטובר',
     'נובמבר',
-    'דצמבר'
-  ]
+    'דצמבר',
+  ],
 }
 
 var dayValues = {
@@ -54,7 +54,7 @@ var dayValues = {
     'יום ד׳',
     'יום ה׳',
     'יום ו׳',
-    'שבת'
+    'שבת',
   ],
   wide: [
     'יום ראשון',
@@ -63,8 +63,8 @@ var dayValues = {
     'יום רביעי',
     'יום חמישי',
     'יום שישי',
-    'יום שבת'
-  ]
+    'יום שבת',
+  ],
 }
 
 var dayPeriodValues = {
@@ -76,7 +76,7 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
+    night: 'לילה',
   },
   abbreviated: {
     am: 'לפנה״צ',
@@ -86,7 +86,7 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
+    night: 'לילה',
   },
   wide: {
     am: 'לפנה״צ',
@@ -96,8 +96,8 @@ var dayPeriodValues = {
     morning: 'בוקר',
     afternoon: 'אחר הצהריים',
     evening: 'ערב',
-    night: 'לילה'
-  }
+    night: 'לילה',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -108,7 +108,7 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'בצהריים',
     evening: 'בערב',
-    night: 'בלילה'
+    night: 'בלילה',
   },
   abbreviated: {
     am: 'לפנה״צ',
@@ -118,7 +118,7 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'אחר הצהריים',
     evening: 'בערב',
-    night: 'בלילה'
+    night: 'בלילה',
   },
   wide: {
     am: 'לפנה״צ',
@@ -128,8 +128,8 @@ var formattingDayPeriodValues = {
     morning: 'בבוקר',
     afternoon: 'אחר הצהריים',
     evening: 'בערב',
-    night: 'בלילה'
-  }
+    night: 'בלילה',
+  },
 }
 
 function ordinalNumber(dirtyNumber, dirtyOptions) {
@@ -153,7 +153,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     'שביעי',
     'שמיני',
     'תשיעי',
-    'עשירי'
+    'עשירי',
   ]
   var female = [
     'ראשונה',
@@ -165,7 +165,7 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
     'שביעית',
     'שמינית',
     'תשיעית',
-    'עשירית'
+    'עשירית',
   ]
 
   var index = number - 1
@@ -175,35 +175,37 @@ function ordinalNumber(dirtyNumber, dirtyOptions) {
 var localize = {
   ordinalNumber: ordinalNumber,
 
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
 
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize

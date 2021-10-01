@@ -3,12 +3,12 @@ import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 var eraValues = {
   narrow: ['B', 'A'],
   abbreviated: ['BC', 'AD'],
-  wide: ["Hz. İsa'dan öncə", 'Anno Domini']
+  wide: ["Hz. İsa'dan öncə", 'Anno Domini'],
 }
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'] // Note: in English, the names of days of the week and months are capitalized.
+  wide: ['1ci kvartal', '2ci kvartal', '3cü kvartal', '4cü kvartal'], // Note: in English, the names of days of the week and months are capitalized.
   // If you are making a new locale based on this one, check if the same is true for the language you're working on.
   // Generally, formatted dates should look like they are in the middle of a sentence,
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
@@ -27,7 +27,7 @@ var monthValues = {
     'Sen',
     'Okt',
     'Noy',
-    'Dek'
+    'Dek',
   ],
   wide: [
     'Yanvar',
@@ -41,8 +41,8 @@ var monthValues = {
     'Sentyabr',
     'Oktyabr',
     'Noyabr',
-    'Dekabr'
-  ]
+    'Dekabr',
+  ],
 }
 var dayValues = {
   narrow: ['B.', 'B.e', 'Ç.a', 'Ç.', 'C.a', 'C.', 'Ş.'],
@@ -55,8 +55,8 @@ var dayValues = {
     'Çərşənbə',
     'Cümə axşamı',
     'Cümə',
-    'Şənbə'
-  ]
+    'Şənbə',
+  ],
 }
 var dayPeriodValues = {
   narrow: {
@@ -67,7 +67,7 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   abbreviated: {
     am: 'AM',
@@ -77,7 +77,7 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   wide: {
     am: 'a.m.',
@@ -87,8 +87,8 @@ var dayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
-  }
+    night: 'gecə',
+  },
 }
 var formattingDayPeriodValues = {
   narrow: {
@@ -99,7 +99,7 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   abbreviated: {
     am: 'AM',
@@ -109,7 +109,7 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
+    night: 'gecə',
   },
   wide: {
     am: 'a.m.',
@@ -119,8 +119,8 @@ var formattingDayPeriodValues = {
     morning: 'səhər',
     afternoon: 'gündüz',
     evening: 'axşam',
-    night: 'gecə'
-  }
+    night: 'gecə',
+  },
 }
 
 var suffixes = {
@@ -141,7 +141,7 @@ var suffixes = {
   10: '-uncu',
   30: '-uncu',
   60: '-ıncı',
-  90: '-ıncı'
+  90: '-ıncı',
 }
 
 function getSuffix(number) {
@@ -164,31 +164,34 @@ function ordinalNumber(dirtyNumber, _dirtyOptions) {
 
 var localize = {
   ordinalNumber: ordinalNumber,
+
+  getMonths: (type = 'wide') => monthValues[type],
+
   era: buildLocalizeFn({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
+    argumentCallback: function (quarter) {
       return Number(quarter) - 1
-    }
+    },
   }),
   month: buildLocalizeFn({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   day: buildLocalizeFn({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
   dayPeriod: buildLocalizeFn({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
