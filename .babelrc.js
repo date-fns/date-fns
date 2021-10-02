@@ -1,4 +1,4 @@
-const presets = ['@babel/preset-typescript']
+const presets = ['@babel/preset-typescript', '@babel/preset-env']
 const plugins = [
   '@babel/plugin-transform-block-scoping',
   '@babel/plugin-transform-template-literals',
@@ -6,6 +6,7 @@ const plugins = [
   '@babel/plugin-transform-parameters',
   '@babel/plugin-transform-destructuring',
   '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-class-properties',
   '@babel/plugin-proposal-object-rest-spread',
   '@babel/plugin-transform-shorthand-properties',
 ]

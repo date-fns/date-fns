@@ -42,6 +42,13 @@ export type FormatDistanceLocale<Value> = {
   [token in FormatDistanceToken]: Value
 }
 
+export interface AdditionalTokens {
+  useAdditionalWeekYearTokens?: boolean
+  useAdditionalDayOfYearTokens?: boolean
+}
+
+export type Flags = { timestampIsSet?: boolean }
+
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
