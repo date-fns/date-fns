@@ -1,9 +1,6 @@
-import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import isSunday from '../isSunday/index'
-import isSaturday from '../isSaturday/index'
 
 /**
  * @name addBusinessDays
@@ -15,6 +12,8 @@ import isSaturday from '../isSaturday/index'
  *
  * @param {Date|Number} date - the date to be changed
  * @param {Number} amount - the amount of business days to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param {Object} [options] - an object with options.
+ * @param {Number[]} [options.businessDays=[1, 2, 3, 4, 5]] - the business days. default is Monday to Friday.
  * @returns {Date} the new date with the business days added
  * @throws {TypeError} 2 arguments required
  *
@@ -25,40 +24,55 @@ import isSaturday from '../isSaturday/index'
  */
 export default function addBusinessDays(
   dirtyDate: Date | number,
-  dirtyAmount: number
+  dirtyAmount: number,
+  dirtyOptions?: {
+    businessDays?: number[]
+  }
 ): Date {
   requiredArgs(2, arguments)
+  const options = dirtyOptions || {}
+  const businessDays =
+    options.businessDays == null
+      ? [1, 2, 3, 4, 5]
+      : options.businessDays.map(toInteger)
 
   const date = toDate(dirtyDate)
-  const startedOnWeekend = isWeekend(date)
   const amount = toInteger(dirtyAmount)
+  const isHoliday = (date: Date) => !businessDays.includes(date.getDay())
+  const startedOnHoliday = isHoliday(date)
 
   if (isNaN(amount)) return new Date(NaN)
 
+  if (date.toString() === 'Invalid Date') {
+    return date
+  }
+
   const hours = date.getHours()
   const sign = amount < 0 ? -1 : 1
-  const fullWeeks = toInteger(amount / 5)
-
+  const fullWeeks = toInteger(amount / businessDays.length)
   date.setDate(date.getDate() + fullWeeks * 7)
 
   // Get remaining days not part of a full week
-  let restDays = Math.abs(amount % 5)
+  let restDays = Math.abs(amount % businessDays.length)
 
   // Loops over remaining days
   while (restDays > 0) {
     date.setDate(date.getDate() + sign)
-    if (!isWeekend(date)) restDays -= 1
+    if (!isHoliday(date)) restDays -= 1
   }
 
-  // If the date is a weekend day and we reduce a dividable of
-  // 5 from it, we land on a weekend date.
+  // If the date is a holiday and we reduce a dividable of
+  // certain days (say 5 when holidays are Saturday and Sunday) from it, we land on a holiday date.
   // To counter this, we add days accordingly to land on the next business day
-  if (startedOnWeekend && isWeekend(date) && amount !== 0) {
-    // If we're reducing days, we want to add days until we land on a weekday
-    // If we're adding days we want to reduce days until we land on a weekday
-    if (isSaturday(date)) date.setDate(date.getDate() + (sign < 0 ? 2 : -1))
-    if (isSunday(date)) date.setDate(date.getDate() + (sign < 0 ? 1 : -2))
+  const reduceIfHoliday = (date: Date) => {
+    if (startedOnHoliday && isHoliday(date) && amount !== 0) {
+      // If we're reducing days, we want to add days until we land on a business day
+      // If we're adding days we want to reduce days until we land on a business day
+      date.setDate(date.getDate() + (sign < 0 ? 1 : -1))
+      reduceIfHoliday(date)
+    }
   }
+  reduceIfHoliday(date)
 
   // Restore hours to avoid DST lag
   date.setHours(hours)
