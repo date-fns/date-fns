@@ -221,7 +221,7 @@ function renderAuthors(authors: Author[]) {
 }
 
 function renderAuthor(author: Author) {
-  return `[${author.name}](http://github.com/${author.login})`
+  return `@${author.login}`
 }
 
 function renderItem(item: ChangelogItem) {
