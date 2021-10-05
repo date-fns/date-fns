@@ -81,6 +81,7 @@ declare module.exports: {
   is: Locale,
   it: Locale,
   ja: Locale,
+  jaHira: Locale,
   ka: Locale,
   kk: Locale,
   kn: Locale,

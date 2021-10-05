@@ -19365,6 +19365,9 @@ declare module 'date-fns/locale' {
   const ja: Locale
   namespace ja {}
 
+  const jaHira: Locale
+  namespace jaHira {}
+
   const ka: Locale
   namespace ka {}
 
@@ -19712,6 +19715,11 @@ declare module 'date-fns/locale/it' {
 declare module 'date-fns/locale/ja' {
   import { ja } from 'date-fns/locale'
   export default ja
+}
+
+declare module 'date-fns/locale/ja-Hira' {
+  import { jaHira } from 'date-fns/locale'
+  export default jaHira
 }
 
 declare module 'date-fns/locale/ka' {
@@ -20134,6 +20142,11 @@ declare module 'date-fns/locale/ja/index' {
   export default ja
 }
 
+declare module 'date-fns/locale/ja-Hira/index' {
+  import { jaHira } from 'date-fns/locale'
+  export default jaHira
+}
+
 declare module 'date-fns/locale/ka/index' {
   import { ka } from 'date-fns/locale'
   export default ka
@@ -20554,6 +20567,11 @@ declare module 'date-fns/locale/ja/index.js' {
   export default ja
 }
 
+declare module 'date-fns/locale/ja-Hira/index.js' {
+  import { jaHira } from 'date-fns/locale'
+  export default jaHira
+}
+
 declare module 'date-fns/locale/ka/index.js' {
   import { ka } from 'date-fns/locale'
   export default ka
@@ -20880,6 +20898,9 @@ declare module 'date-fns/esm/locale' {
 
   const ja: Locale
   namespace ja {}
+
+  const jaHira: Locale
+  namespace jaHira {}
 
   const ka: Locale
   namespace ka {}
@@ -21228,6 +21249,11 @@ declare module 'date-fns/esm/locale/it' {
 declare module 'date-fns/esm/locale/ja' {
   import { ja } from 'date-fns/esm/locale'
   export default ja
+}
+
+declare module 'date-fns/esm/locale/ja-Hira' {
+  import { jaHira } from 'date-fns/esm/locale'
+  export default jaHira
 }
 
 declare module 'date-fns/esm/locale/ka' {
@@ -21650,6 +21676,11 @@ declare module 'date-fns/esm/locale/ja/index' {
   export default ja
 }
 
+declare module 'date-fns/esm/locale/ja-Hira/index' {
+  import { jaHira } from 'date-fns/esm/locale'
+  export default jaHira
+}
+
 declare module 'date-fns/esm/locale/ka/index' {
   import { ka } from 'date-fns/esm/locale'
   export default ka
@@ -22068,6 +22099,11 @@ declare module 'date-fns/esm/locale/it/index.js' {
 declare module 'date-fns/esm/locale/ja/index.js' {
   import { ja } from 'date-fns/esm/locale'
   export default ja
+}
+
+declare module 'date-fns/esm/locale/ja-Hira/index.js' {
+  import { jaHira } from 'date-fns/esm/locale'
+  export default jaHira
 }
 
 declare module 'date-fns/esm/locale/ka/index.js' {
