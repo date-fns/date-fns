@@ -700,28 +700,28 @@ If you're upgrading from v2 alpha or beta, [see the pre-release changelog](https
   | Day of week (formatting)        | E..EEE     |            | Mon, Tue, Wed, ..., Su            |
   |                                 | EEEE       |            | Monday, Tuesday, ..., Sunday      |
   |                                 | EEEEE      |            | M, T, W, T, F, S, S               |
-  |                                 | EEEEEE     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  |                                 | EEEEEE     |            | Mo, Tu, We, Th, Fr, Sa, Su        |
   | ISO day of week (formatting)    | i          | E          | 1, 2, 3, ..., 7                   |
   |                                 | io         | do         | 1st, 2nd, ..., 7th                |
   |                                 | ii         |            | 01, 02, ..., 07                   |
   |                                 | iii        | ddd        | Mon, Tue, Wed, ..., Su            |
   |                                 | iiii       | dddd       | Monday, Tuesday, ..., Sunday      |
   |                                 | iiiii      |            | M, T, W, T, F, S, S               |
-  |                                 | iiiiii     | dd         | Mo, Tu, We, Th, Fr, Su, Sa        |
+  |                                 | iiiiii     | dd         | Mo, Tu, We, Th, Fr, Sa, Su        |
   | Local day of week (formatting)  | e          |            | 2, 3, 4, ..., 1                   |
   |                                 | eo         |            | 2nd, 3rd, ..., 1st                |
   |                                 | ee         |            | 02, 03, ..., 01                   |
   |                                 | eee        |            | Mon, Tue, Wed, ..., Su            |
   |                                 | eeee       |            | Monday, Tuesday, ..., Sunday      |
   |                                 | eeeee      |            | M, T, W, T, F, S, S               |
-  |                                 | eeeeee     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  |                                 | eeeeee     |            | Mo, Tu, We, Th, Fr, Sa, Su        |
   | Local day of week (stand-alone) | c          |            | 2, 3, 4, ..., 1                   |
   |                                 | co         |            | 2nd, 3rd, ..., 1st                |
   |                                 | cc         |            | 02, 03, ..., 01                   |
   |                                 | ccc        |            | Mon, Tue, Wed, ..., Su            |
   |                                 | cccc       |            | Monday, Tuesday, ..., Sunday      |
   |                                 | ccccc      |            | M, T, W, T, F, S, S               |
-  |                                 | cccccc     |            | Mo, Tu, We, Th, Fr, Su, Sa        |
+  |                                 | cccccc     |            | Mo, Tu, We, Th, Fr, Sa, Su        |
   | AM, PM                          | a..aaa     | A          | AM, PM                            |
   |                                 | aaaa       | aa         | a.m., p.m.                        |
   |                                 | aaaaa      |            | a, p                              |
