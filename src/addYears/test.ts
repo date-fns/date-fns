@@ -14,20 +14,6 @@ describe('addYears', () => {
     assert.deepStrictEqual(result, new Date(2026, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = addYears(new Date(2014, 8 /* Sep */, 1), 5.555)
-    assert.deepStrictEqual(result, new Date(2019, 8 /* Sep */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addYears(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2019, 8 /* Sep */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addYears(date, 12)
@@ -48,22 +34,5 @@ describe('addYears', () => {
     expectedResult.setHours(0, 0, 0, 0)
     const result = addYears(initialDate, 1)
     assert.deepStrictEqual(result, expectedResult)
-  })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addYears(new Date(NaN), 5)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addYears(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addYears.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addYears.bind(null, 1), TypeError)
   })
 })

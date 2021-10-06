@@ -1,6 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addYears
@@ -19,12 +17,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = addYears(new Date(2014, 8, 1), 5)
  * //=> Sun Sep 01 2019 00:00:00
  */
-export default function addYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMonths(dirtyDate, amount * 12)
+export default function addYears(date: Date | number, amount: number): Date {
+  return addMonths(date, amount * 12)
 }
