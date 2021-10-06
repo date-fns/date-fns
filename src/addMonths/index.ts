@@ -1,7 +1,3 @@
-import toInteger from '../_lib/toInteger/index'
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name addMonths
  * @category Month Helpers
@@ -19,22 +15,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-export default function addMonths(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
+export default function addMonths(date: Date | number, amount: number): Date {
+  const result = new Date(date)
 
-  const date = toDate(dirtyDate)
-  const amount = toInteger(dirtyAmount)
-  if (isNaN(amount)) {
-    return new Date(NaN)
-  }
-  if (!amount) {
-    // If 0 months, no-op to avoid changing times in the hour before end of DST
-    return date
-  }
-  const dayOfMonth = date.getDate()
+  // If 0 months, no-op to avoid changing times in the hour before end of DST
+  if (!amount) return result
+
+  const dayOfMonth = result.getDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -44,8 +31,8 @@ export default function addMonths(
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  const endOfDesiredMonth = new Date(date.getTime())
-  endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0)
+  const endOfDesiredMonth = new Date(result.getTime())
+  endOfDesiredMonth.setMonth(result.getMonth() + amount + 1, 0)
   const daysInMonth = endOfDesiredMonth.getDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
@@ -59,11 +46,11 @@ export default function addMonths(
     // the last day of the month and its local time was in the hour skipped or
     // repeated next to a DST transition.  So we use `date` instead which is
     // guaranteed to still have the original time.
-    date.setFullYear(
+    result.setFullYear(
       endOfDesiredMonth.getFullYear(),
       endOfDesiredMonth.getMonth(),
       dayOfMonth
     )
-    return date
+    return result
   }
 }
