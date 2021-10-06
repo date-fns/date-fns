@@ -43,13 +43,15 @@ export type FormatDistanceLocale<Value> = {
   [token in FormatDistanceToken]: Value
 }
 
+export interface FormatDistanceFnOptions {
+  addSuffix?: boolean
+  comparison?: -1 | 0 | 1
+}
+
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
-  options?: {
-    addSuffix?: boolean
-    comparison?: -1 | 0 | 1
-  }
+  options?: FormatDistanceFnOptions
 ) => string
 
 export type FormatRelativeToken =
@@ -60,11 +62,14 @@ export type FormatRelativeToken =
   | 'nextWeek'
   | 'other'
 
+export interface FormatRelativeFnOptions {
+  weekStartsOn?: Day
+}
 export type FormatRelativeFn = (
   token: FormatRelativeToken,
   date: Date | number,
   baseDate: Date | number,
-  options?: { weekStartsOn?: Day }
+  options?: FormatRelativeFnOptions
 ) => string
 
 export type QuarterIndex = 0 | 1 | 2 | 3
@@ -226,6 +231,8 @@ export type LocaleOptionUnit =
   | 'second'
 
 export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
+
+export type DateTimeFormat = { [format in FormatLongWidth]: string }
 
 export type LocaleUnit = Era | Quarter | Month | Day | LocaleDayPeriod
 

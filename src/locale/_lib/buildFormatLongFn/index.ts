@@ -17,3 +17,4 @@ export default function buildFormatLongFn(
     return format
   }
 }
+

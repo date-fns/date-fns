@@ -1,27 +1,28 @@
 import buildFormatLongFn from '../../../_lib/buildFormatLongFn/index'
+import { DateTimeFormat, FormatLong } from '../../../types'
 
-var dateFormats = {
+const dateFormats: DateTimeFormat = {
   full: 'EEEE, do MMMM, y', // CLDR #1787
   long: 'do MMMM, y', // CLDR #1788
   medium: 'd MMM, y', // CLDR #1789
   short: 'dd/MM/yyyy' // CLDR #1790
 }
 
-var timeFormats = {
+const timeFormats: DateTimeFormat = {
   full: 'h:mm:ss a zzzz', // CLDR #1791
   long: 'h:mm:ss a z', // CLDR #1792
   medium: 'h:mm:ss a', // CLDR #1793
   short: 'h:mm a' // CLDR #1794
 }
 
-var dateTimeFormats = {
+const dateTimeFormats: DateTimeFormat = {
   full: "{{date}} 'को' {{time}}", // CLDR #1795
   long: "{{date}} 'को' {{time}}", // CLDR #1796
   medium: '{{date}}, {{time}}', // CLDR #1797
   short: '{{date}}, {{time}}' // CLDR #1798
 }
 
-var formatLong = {
+const formatLong: FormatLong = {
   date: buildFormatLongFn({
     formats: dateFormats,
     defaultWidth: 'full'

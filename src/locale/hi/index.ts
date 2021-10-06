@@ -12,7 +12,7 @@ import match from './_lib/match/index'
  * @iso-639-2 hin
  * @author Mukesh Mandiwal [@mukeshmandiwal]{@link https://github.com/mukeshmandiwal}
  */
-var locale = {
+const locale: Locale = {
   code: 'hi',
   formatDistance: formatDistance,
   formatLong: formatLong,
