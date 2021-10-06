@@ -1,6 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addQuarters
@@ -19,13 +17,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = addQuarters(new Date(2014, 8, 1), 1)
  * //=> Mon Dec 01 2014 00:00:00
  */
-export default function addQuarters(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  const months = amount * 3
-  return addMonths(dirtyDate, months)
+export default function addQuarters(date: Date | number, amount: number): Date {
+  return addMonths(date, amount * 3)
 }
