@@ -1,6 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
 import addDays from '../addDays/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name addWeeks
@@ -19,13 +17,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = addWeeks(new Date(2014, 8, 1), 4)
  * //=> Mon Sep 29 2014 00:00:00
  */
-export default function addWeeks(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  const days = amount * 7
-  return addDays(dirtyDate, days)
+export default function addWeeks(date: Date | number, amount: number): Date {
+  return addDays(date, amount * 7)
 }
