@@ -15,20 +15,6 @@ describe('addMonths', () => {
     assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5.75)
-    assert.deepStrictEqual(result, new Date(2015, 1 /* Feb */, 1))
-  })
-
-  it('implicitly converts number arguments', () => {
-    const result = addMonths(
-      new Date(2014, 8 /* Sep */, 1),
-      // @ts-expect-error
-      '5'
-    )
-    assert.deepStrictEqual(result, new Date(2015, 1 /* Feb */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addMonths(date, 12)
@@ -50,23 +36,6 @@ describe('addMonths', () => {
     expectedResult.setHours(0, 0, 0, 0)
     const result = addMonths(initialDate, 1)
     assert.deepStrictEqual(result, expectedResult)
-  })
-
-  it('returns `Invalid Date` if the given date is invalid', () => {
-    const result = addMonths(new Date(NaN), 5)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('returns `Invalid Date` if the given amount is NaN', () => {
-    const result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(addMonths.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(addMonths.bind(null, 1), TypeError)
   })
 
   const dstTransitions = getDstTransitions(2017)
