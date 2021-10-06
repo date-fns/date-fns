@@ -1,6 +1,20 @@
+import {
+  FormatDistanceFnOptions,
+  FormatDistanceLocale,
+  FormatDistanceToken
+} from '../../../types'
 import localize from '../localize/index'
 // Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
-var formatDistanceLocale = {
+
+export type FormatDistanceTokanRelativeValue = {
+  one: string
+  other: string
+}
+export type FormatDistanceLocaleValue =
+  | FormatDistanceTokanRelativeValue
+  | string
+
+const formatDistanceLocale: FormatDistanceLocale<FormatDistanceLocaleValue> = {
   lessThanXSeconds: {
     one: '१ सेकंड से कम', // CLDR #1310
     other: '{{count}} सेकंड से कम'
@@ -79,23 +93,30 @@ var formatDistanceLocale = {
   }
 }
 
-export default function formatDistance(token, count, options) {
-  options = options || {}
+export default function formatDistance(
+  token: FormatDistanceToken,
+  count: number,
+  options: FormatDistanceFnOptions
+) {
+  const newOptions = options || {}
 
-  var result
+  let result
   if (typeof formatDistanceLocale[token] === 'string') {
     result = formatDistanceLocale[token]
   } else if (count === 1) {
-    result = formatDistanceLocale[token].one
+    result = (formatDistanceLocale[token] as FormatDistanceTokanRelativeValue)
+      .one
   } else {
-    result = formatDistanceLocale[token].other.replace(
+    result = (formatDistanceLocale[
+      token
+    ] as FormatDistanceTokanRelativeValue).other.replace(
       '{{count}}',
       localize.numberToLocale(count)
     )
   }
 
-  if (options.addSuffix) {
-    if (options.comparison > 0) {
+  if (newOptions.addSuffix) {
+    if (newOptions.comparison! > 0) {
       return result + 'मे '
     } else {
       return result + ' पहले'

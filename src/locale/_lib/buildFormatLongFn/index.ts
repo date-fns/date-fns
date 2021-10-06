@@ -1,12 +1,7 @@
-import { FormatLongFn, FormatLongWidth } from '../../types'
-
-export interface BuildFormatLongFnArgs {
-  formats: { [format in FormatLongWidth]: string }
-  defaultWidth: FormatLongWidth
-}
+import { FormatLongFn, FormatLongFnOptions, FormatLongWidth } from '../../types'
 
 export default function buildFormatLongFn(
-  args: BuildFormatLongFnArgs
+  args: FormatLongFnOptions
 ): FormatLongFn {
   return (options = {}) => {
     // TODO: Remove String()
