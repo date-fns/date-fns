@@ -114,10 +114,10 @@ export default function formatDuration(
     )
   }
 
-  const format = options?.format ?? defaultFormat
-  const locale = options?.locale ?? defaultLocale
-  const zero = options?.zero ?? false
-  const delimiter = options?.delimiter ?? ' '
+  const format = options?.format || defaultFormat
+  const locale = options?.locale || defaultLocale
+  const zero = options?.zero || false
+  const delimiter = options?.delimiter || ' '
 
   const result = format
     .reduce<string[]>((acc, unit) => {
