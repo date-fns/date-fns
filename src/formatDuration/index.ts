@@ -1,6 +1,8 @@
+import { FormatDistanceToken, Locale } from './../locale/types'
+import { Duration } from './../types'
 import defaultLocale from '../locale/en-US/index'
 
-const defaultFormat = [
+const defaultFormat: (keyof Duration)[] = [
   'years',
   'months',
   'weeks',
@@ -9,6 +11,35 @@ const defaultFormat = [
   'minutes',
   'seconds',
 ]
+
+type FormatDurationOptions = {
+  /**
+   * the array of units to format
+   */
+  format?: (keyof Duration)[]
+  /**
+   * should be zeros be included in the output
+   */
+  zero?: boolean
+  /**
+   * delimiter string
+   */
+  delimiter?: string
+  /**
+   * the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+   */
+  locale?: Locale
+}
+
+const unitDistanceTokenMap: Record<keyof Duration, FormatDistanceToken> = {
+  years: 'xYears',
+  months: 'xMonths',
+  weeks: 'xWeeks',
+  days: 'xDays',
+  hours: 'xHours',
+  minutes: 'xMinutes',
+  seconds: 'xSeconds',
+}
 
 /**
  * @name formatDuration
@@ -73,26 +104,27 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration, options) {
+export default function formatDuration(
+  duration: Duration,
+  options?: FormatDurationOptions
+): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
     )
   }
 
-  const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
-  const zero = options?.zero || false
-  const delimiter = options?.delimiter || ' '
+  const format = options?.format ?? defaultFormat
+  const locale = options?.locale ?? defaultLocale
+  const zero = options?.zero ?? false
+  const delimiter = options?.delimiter ?? ' '
 
   const result = format
-    .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, (m) => m.toUpperCase())}`
-      const addChunk =
-        typeof duration[unit] === 'number' && (zero || duration[unit])
-      return addChunk
-        ? acc.concat(locale.formatDistance(token, duration[unit]))
-        : acc
+    .reduce<string[]>((acc, unit) => {
+      const token = unitDistanceTokenMap[unit]
+      const count = duration[unit]
+      const addChunk = typeof count === 'number' && (zero || count)
+      return addChunk ? acc.concat(locale.formatDistance(token, count)) : acc
     }, [])
     .join(delimiter)
 
