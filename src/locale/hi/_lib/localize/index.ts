@@ -1,5 +1,5 @@
-import { LocaleDayPeriod, QuarterIndex } from 'src/locale/types'
-import { Era, Month, Quarter } from 'src/types'
+import { LocaleDayPeriod, QuarterIndex } from '../../../types'
+import { Era, Month, Quarter } from '../../../../types'
 import buildLocalizeFn, { LocalizePeriodValuesMap } from '../../../_lib/buildLocalizeFn/index'
 
 export type hiLocaleNumberType =
