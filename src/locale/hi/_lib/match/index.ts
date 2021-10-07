@@ -1,4 +1,4 @@
-import { Era, Month, Quarter } from '../../../../types'
+import { Day, Era, Month, Quarter } from '../../../../types'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import { ParsePatterns } from '../../../types'

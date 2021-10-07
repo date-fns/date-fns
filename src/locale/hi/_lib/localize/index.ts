@@ -1,5 +1,5 @@
 import { LocaleDayPeriod, QuarterIndex } from '../../../types'
-import { Era, Month, Quarter } from '../../../../types'
+import { Day, Era, Month, Quarter } from '../../../../types'
 import buildLocalizeFn, { LocalizePeriodValuesMap } from '../../../_lib/buildLocalizeFn/index'
 
 export type hiLocaleNumberType =
@@ -248,7 +248,7 @@ const localize = {
   numberToLocale: numberToLocale,
   ordinalNumber: ordinalNumber,
 
-  era: buildLocalizeFn({
+  era: buildLocalizeFn<Era, undefined>({
     values: eraValues,
     defaultWidth: 'wide'
   }),
@@ -261,17 +261,17 @@ const localize = {
     }
   }),
 
-  month: buildLocalizeFn({
+  month: buildLocalizeFn<Month, undefined>({
     values: monthValues,
     defaultWidth: 'wide'
   }),
 
-  day: buildLocalizeFn({
+  day: buildLocalizeFn<Day, undefined>({
     values: dayValues,
     defaultWidth: 'wide'
   }),
 
-  dayPeriod: buildLocalizeFn({
+  dayPeriod: buildLocalizeFn<LocaleDayPeriod, undefined>({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
