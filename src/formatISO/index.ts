@@ -1,14 +1,7 @@
 import toDate from '../toDate/index'
+import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
 import requiredArgs from '../_lib/requiredArgs'
-
-interface FormatOptions {
-  format?: 'extended' | 'basic'
-}
-
-interface RepresentationOptions {
-  representation?: 'complete' | 'date' | 'time'
-}
 
 /**
  * @name formatISO
@@ -49,12 +42,12 @@ interface RepresentationOptions {
  * //=> '19:00:52Z'
  */
 export default function formatISO(
-  dirtyDate: Date | number,
+  date: Date | number,
   options?: FormatOptions & RepresentationOptions
 ): string {
   requiredArgs(1, arguments)
 
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
   if (isNaN(originalDate.getTime())) {
     throw new RangeError('Invalid time value')
