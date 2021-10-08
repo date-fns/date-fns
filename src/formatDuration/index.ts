@@ -1,13 +1,23 @@
+import { Duration, LocaleOptions } from 'src/types'
 import defaultLocale from '../locale/en-US/index'
 
-const defaultFormat = [
+type Format = keyof Duration
+
+type Options = {
+  format?: Format[]
+  zero?: boolean
+  delimiter?: string
+  locale?: Locale
+}
+
+const defaultFormat: Format[] = [
   'years',
   'months',
   'weeks',
   'days',
   'hours',
   'minutes',
-  'seconds',
+  'seconds'
 ]
 
 /**
@@ -20,8 +30,7 @@ const defaultFormat = [
  *
  * @param {Duration} duration - the duration to format
  * @param {Object} [options] - an object with options.
-
- * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
+ * @param {Format[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
  * @param {boolean} [options.zero=false] - should be zeros be included in the output?
  * @param {string} [options.delimiter=' '] - delimiter string
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
@@ -73,7 +82,10 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration, options) {
+export default function formatDuration(
+  duration: Duration,
+  options?: LocaleOptions & Options
+) {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
