@@ -14,11 +14,6 @@ describe('subQuarters', () => {
     assert.deepStrictEqual(result, new Date(2013, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
-    const result = subQuarters(new Date(2014, 8 /* Sep */, 1), 3.33)
-    assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 1))
-  })
-
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     subQuarters(date, 3)
