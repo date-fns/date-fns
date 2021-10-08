@@ -1,6 +1,4 @@
-import toInteger from '../_lib/toInteger/index'
 import addMonths from '../addMonths/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subMonths
@@ -9,10 +7,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Subtract the specified number of months from the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param amount - the amount of months to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
@@ -23,12 +17,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subMonths(new Date(2015, 1, 1), 5)
  * //=> Mon Sep 01 2014 00:00:00
  */
-export default function subMonths(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addMonths(dirtyDate, -amount)
+export default function subMonths(date: Date | number, amount: number): Date {
+  return addMonths(date, -amount)
 }
