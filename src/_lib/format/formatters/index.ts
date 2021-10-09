@@ -361,7 +361,7 @@ const formatters = {
     date: Date,
     token: string,
     localize: Localize,
-    options: WeekStartOptions
+    options: Required<WeekStartOptions>
   ) {
     const dayOfWeek = date.getUTCDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
@@ -404,7 +404,7 @@ const formatters = {
     date: Date,
     token: string,
     localize: Localize,
-    options: WeekStartOptions
+    options: Required<WeekStartOptions>
   ) {
     const dayOfWeek = date.getUTCDay() as Day
     const localDayOfWeek = (dayOfWeek - options.weekStartsOn + 8) % 7 || 7
