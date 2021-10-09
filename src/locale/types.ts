@@ -88,7 +88,11 @@ export type LocalizeFn<
   Result extends LocaleUnit | number,
   ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
 > = (
-  value: ArgCallback extends undefined ? Result : LocalizeUnitIndex<Result>,
+  value: ArgCallback extends undefined
+    ? Result
+    : Result extends Quarter
+    ? Quarter
+    : LocalizeUnitIndex<Result>,
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
