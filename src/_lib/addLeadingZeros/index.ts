@@ -1,6 +1,9 @@
-export default function addLeadingZeros(number, targetLength) {
-  var sign = number < 0 ? '-' : ''
-  var output = Math.abs(number).toString()
+export default function addLeadingZeros(
+  number: number,
+  targetLength: number
+): string {
+  const sign = number < 0 ? '-' : ''
+  let output = Math.abs(number).toString()
   while (output.length < targetLength) {
     output = '0' + output
   }
