@@ -1,4 +1,8 @@
-import { FirstWeekContainsDateOptions, LocaleOptions } from 'src/types'
+import {
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from 'src/types'
 import toDate from '../../toDate/index'
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
@@ -8,7 +12,7 @@ import toInteger from '../toInteger/index'
 // See issue: https://github.com/date-fns/date-fns/issues/376
 export default function getUTCWeekYear(
   dirtyDate: Date | number,
-  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions
+  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
 ) {
   requiredArgs(1, arguments)
 
