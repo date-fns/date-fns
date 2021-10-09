@@ -12,7 +12,7 @@ export default function getUTCWeekYear(
 ) {
   requiredArgs(1, arguments)
 
-  const date = toDate(dirtyDate, dirtyOptions)
+  const date = toDate(dirtyDate)
   const year = date.getUTCFullYear()
 
   const options = dirtyOptions || {}
