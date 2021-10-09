@@ -2,6 +2,8 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
+import { Locale } from 'src/locale/types'
+import { Day } from 'src/types'
 import isSameUTCWeek from '.'
 
 describe('isSameUTCWeek', function () {
@@ -37,7 +39,7 @@ describe('isSameUTCWeek', function () {
       {
         locale: {
           options: { weekStartsOn: 1 },
-        },
+        } as Locale,
       }
     )
     assert(result === false)
@@ -51,7 +53,7 @@ describe('isSameUTCWeek', function () {
         weekStartsOn: 1,
         locale: {
           options: { weekStartsOn: 0 },
-        },
+        } as Locale,
       }
     )
     assert(result === false)
@@ -103,7 +105,7 @@ describe('isSameUTCWeek', function () {
       null,
       new Date(Date.UTC(2014, 7 /* Aug */, 31)),
       new Date(Date.UTC(2014, 8 /* Sep */, 4)),
-      { weekStartsOn: NaN }
+      { weekStartsOn: NaN as Day }
     )
     assert.throws(block, RangeError)
   })
