@@ -1,5 +1,11 @@
-/* eslint-disable no-unused-vars */
-import type { Era, FirstWeekContainsDate, Month, Quarter, Day } from '../types'
+import type {
+  Day,
+  Era,
+  FirstWeekContainsDate,
+  Month,
+  Quarter,
+  Unit,
+} from '../types'
 import type {
   BuildLocalizeFnArgCallback,
   LocalizeUnitValues,
@@ -86,7 +92,7 @@ export type LocalizeFn<
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
-    unit?: LocaleOrdinalUnit
+    unit?: Unit
   }
 ) => string
 
