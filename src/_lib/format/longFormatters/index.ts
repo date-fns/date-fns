@@ -30,12 +30,13 @@ function timeLongFormatter(pattern: string, formatLong: FormatLong) {
 
 function dateTimeLongFormatter(pattern: string, formatLong: FormatLong) {
   const matchResult = pattern.match(/(P+)(p+)?/)
-  const datePattern = matchResult[1]
-  const timePattern = matchResult[2]
 
-  if (!timePattern) {
+  if (!matchResult) {
     return dateLongFormatter(pattern, formatLong)
   }
+
+  const datePattern = matchResult[1]
+  const timePattern = matchResult[2]
 
   let dateTimeFormat: string
 
