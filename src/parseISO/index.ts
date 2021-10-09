@@ -15,6 +15,8 @@ const dateRegex = /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$
 const timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[.,]\d*)?))?$/
 const timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
 
+export type AdditionalDigits = 0 | 1 | 2
+
 /**
  * @name parseISO
  * @category Common Helpers
@@ -74,7 +76,7 @@ const timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
  */
 export default function parseISO(
   argument: unknown,
-  dirtyOptions?: { additionalDigits?: number }
+  dirtyOptions?: { additionalDigits?: AdditionalDigits }
 ): Date {
   requiredArgs(1, arguments)
 
