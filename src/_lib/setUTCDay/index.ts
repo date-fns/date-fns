@@ -9,7 +9,7 @@ export default function setUTCDay(
   dirtyDate: Date | number,
   dirtyDay: Date | number,
   dirtyOptions?: LocaleOptions & WeekStartOptions
-) {
+): Date {
   requiredArgs(2, arguments)
 
   const options = dirtyOptions || {}

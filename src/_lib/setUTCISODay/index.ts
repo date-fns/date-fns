@@ -7,7 +7,7 @@ import toInteger from '../toInteger/index'
 export default function setUTCISODay(
   dirtyDate: Date | number,
   dirtyDay: Date | number
-) {
+): Date {
   requiredArgs(2, arguments)
 
   let day = toInteger(dirtyDay)
