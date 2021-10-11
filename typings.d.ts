@@ -29,6 +29,7 @@ interface CurriedFn4<A, B, C, D, R> {
 type Interval = {
   start: Date | number
   end: Date | number
+  withWeeks?: boolean
 }
 type IntervalAliased = Interval
 
