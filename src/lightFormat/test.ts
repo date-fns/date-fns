@@ -93,6 +93,12 @@ describe('lightFormat', () => {
           'a aa aaa aaaa aaaaa'
         )
         assert(result === 'AM AM am a.m. a')
+
+        const pmResult = lightFormat(
+          new Date(2018, 0 /* Jan */, 1, 13, 0, 0, 0),
+          'a aa aaa aaaa aaaaa'
+        )
+        assert(pmResult === 'PM PM pm p.m. p')
       })
 
       it('12 PM', () => {

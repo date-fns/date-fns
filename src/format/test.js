@@ -106,6 +106,11 @@ describe('format', function () {
   it('era', function () {
     var result = format(date, 'G GG GGG GGGG GGGGG')
     assert(result === 'AD AD AD Anno Domini A')
+
+    var bcDate = new Date()
+    bcDate.setFullYear(-1, 0 /* Jan */, 1)
+    var bcResult = format(bcDate, 'G GG GGG GGGG GGGGG')
+    assert(bcResult === 'BC BC BC Before Christ B')
   })
 
   describe('year', function () {
@@ -129,6 +134,14 @@ describe('format', function () {
         date.setHours(0, 0, 0, 0)
         var result = format(date, 'y')
         assert(result === '2')
+      })
+
+      it('2 BC formats as 2nd', function () {
+        var date = new Date()
+        date.setFullYear(-1, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        var result = format(date, 'yo')
+        assert(result === '2nd')
       })
     })
 
@@ -460,6 +473,12 @@ describe('format', function () {
           'b bb bbb bbbb bbbbb'
         )
         assert(result === 'AM AM am a.m. a')
+
+        var pmResult = format(
+          new Date(1986, 3 /* Apr */, 6, 13, 0, 0, 900),
+          'b bb bbb bbbb bbbbb'
+        )
+        assert(pmResult === 'PM PM pm p.m. p')
       })
 
       it('12 PM', function () {
