@@ -1,4 +1,6 @@
+import add from '../add/index'
 import defaultLocale from '../locale/en-US/index'
+import intervalToDuration from '../intervalToDuration/index'
 
 const defaultFormat = [
   'years',
@@ -22,9 +24,10 @@ const defaultFormat = [
  * @param {Object} [options] - an object with options.
 
  * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
- * @param {boolean} [options.zero=false] - should be zeros be included in the output?
+ * @param {boolean} [options.zero=false] - should zeros be included in the output?
  * @param {string} [options.delimiter=' '] - delimiter string
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
+ * @param {boolean} [options.flatten=false] - should units be converted into higher equivalent?
  * @returns {string} the formatted date string
  * @throws {TypeError} 1 argument required
  *
@@ -72,6 +75,13 @@ const defaultFormat = [
  * // Customize the delimiter
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
+ *
+ * @example
+ * // Flatten the duration
+ * formatDuration({ seconds: 90 }, { flatten: false })
+ * //=> '90 seconds'
+ * formatDuration({ seconds: 90 }, { flatten: true })
+ * //=> '1 minute 30 seconds'
  */
 export default function formatDuration(duration, options) {
   if (arguments.length < 1) {
@@ -84,6 +94,12 @@ export default function formatDuration(duration, options) {
   const locale = options?.locale || defaultLocale
   const zero = options?.zero || false
   const delimiter = options?.delimiter || ' '
+  const flatten = options?.flatten || false
+
+  if (flatten) {
+    const now = new Date()
+    duration = intervalToDuration({ start: now, end: add(now, duration) })
+  }
 
   const result = format
     .reduce((acc, unit) => {

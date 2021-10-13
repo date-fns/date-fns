@@ -348,6 +348,7 @@ declare module.exports: {
       zero?: boolean,
       delimiter?: string,
       locale?: Locale,
+      flatten?: boolean,
     }
   ) => string,
 
