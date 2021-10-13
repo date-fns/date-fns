@@ -1,7 +1,6 @@
 import subDays from '../subDays/index'
 import subMonths from '../subMonths/index'
 import { Duration } from '../types'
-import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 
 /**
@@ -43,17 +42,15 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Mon Sep 1 2014 10:19:50
  */
 export default function sub(date: Date | number, duration: Duration): Date {
-  requiredArgs(2, arguments)
-
   if (!duration || typeof duration !== 'object') return new Date(NaN)
 
-  const years = duration.years ? toInteger(duration.years) : 0
-  const months = duration.months ? toInteger(duration.months) : 0
-  const weeks = duration.weeks ? toInteger(duration.weeks) : 0
-  const days = duration.days ? toInteger(duration.days) : 0
-  const hours = duration.hours ? toInteger(duration.hours) : 0
-  const minutes = duration.minutes ? toInteger(duration.minutes) : 0
-  const seconds = duration.seconds ? toInteger(duration.seconds) : 0
+  const years = duration.years || 0
+  const months = duration.months || 0
+  const weeks = duration.weeks || 0
+  const days = duration.days || 0
+  const hours = duration.hours || 0
+  const minutes = duration.minutes || 0
+  const seconds = duration.seconds || 0
 
   // Subtract years and months
   const dateWithoutMonths = subMonths(date, months + years * 12)
