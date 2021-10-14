@@ -23,27 +23,30 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which date is closer to 6 September 2015?
- * var dateToCompare = new Date(2015, 8, 6)
- * var datesArray = [
+ * const dateToCompare = new Date(2015, 8, 6)
+ * const datesArray = [
  *   new Date(2015, 0, 1),
  *   new Date(2016, 0, 1),
  *   new Date(2017, 0, 1)
  * ]
- * var result = closestIndexTo(dateToCompare, datesArray)
+ * const result = closestIndexTo(dateToCompare, datesArray)
  * //=> 1
  */
-export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
+export default function closestIndexTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: Date[] | number[]
+): number {
   requiredArgs(2, arguments)
 
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const dateToCompare = toDate(dirtyDateToCompare)
 
-  if (isNaN(dateToCompare)) {
+  if (isNaN(dateToCompare.getTime())) {
     return NaN
   }
 
-  var timeToCompare = dateToCompare.getTime()
+  const timeToCompare = dateToCompare.getTime()
 
-  var datesArray
+  let datesArray: Date[] | number[]
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -57,23 +60,24 @@ export default function closestIndexTo(dirtyDateToCompare, dirtyDatesArray) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  var result
-  var minDistance
-  datesArray.forEach(function(dirtyDate, index) {
-    var currentDate = toDate(dirtyDate)
+  let result, minDistance
 
-    if (isNaN(currentDate)) {
+  for (let index = 0; index < datesArray.length; index++) {
+    const dirtyDate = datesArray[index]
+    const currentDate = toDate(dirtyDate)
+
+    if (isNaN(currentDate.getTime())) {
       result = NaN
       minDistance = NaN
-      return
+      continue
     }
 
-    var distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < minDistance) {
+    const distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result == null || distance < (minDistance || NaN)) {
       result = index
       minDistance = distance
     }
-  })
+  }
 
-  return result
+  return result as number
 }
