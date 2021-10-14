@@ -23,25 +23,28 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which date is closer to 6 September 2015: 1 January 2000 or 1 January 2030?
- * var dateToCompare = new Date(2015, 8, 6)
- * var result = closestTo(dateToCompare, [
+ * const dateToCompare = new Date(2015, 8, 6)
+ * const result = closestTo(dateToCompare, [
  *   new Date(2000, 0, 1),
  *   new Date(2030, 0, 1)
  * ])
  * //=> Tue Jan 01 2030 00:00:00
  */
-export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
+export default function closestTo(
+  dirtyDateToCompare: Date | number,
+  dirtyDatesArray: Date[] | number[]
+): Date {
   requiredArgs(2, arguments)
 
-  var dateToCompare = toDate(dirtyDateToCompare)
+  const dateToCompare = toDate(dirtyDateToCompare)
 
-  if (isNaN(dateToCompare)) {
+  if (isNaN(dateToCompare.getTime())) {
     return new Date(NaN)
   }
 
-  var timeToCompare = dateToCompare.getTime()
+  const timeToCompare = dateToCompare.getTime()
 
-  var datesArray
+  let datesArray: Date[] | number[]
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -55,23 +58,24 @@ export default function closestTo(dirtyDateToCompare, dirtyDatesArray) {
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  var result
-  var minDistance
-  datesArray.forEach(function(dirtyDate) {
-    var currentDate = toDate(dirtyDate)
+  let result, minDistance
 
-    if (isNaN(currentDate)) {
+  for (let index = 0; index < datesArray.length; index++) {
+    const dirtyDate = datesArray[index]
+    const currentDate = toDate(dirtyDate)
+
+    if (isNaN(currentDate.getTime())) {
       result = new Date(NaN)
       minDistance = NaN
-      return
+      continue
     }
 
-    var distance = Math.abs(timeToCompare - currentDate.getTime())
-    if (result == null || distance < minDistance) {
+    const distance = Math.abs(timeToCompare - currentDate.getTime())
+    if (result == null || distance < (minDistance || NaN)) {
       result = currentDate
       minDistance = distance
     }
-  })
+  }
 
-  return result
+  return result as Date
 }
