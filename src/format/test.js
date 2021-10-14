@@ -2,6 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
+import sinon from 'sinon'
 import format from '.'
 
 describe('format', function () {
@@ -554,6 +555,24 @@ describe('format', function () {
         timezoneWithZ,
       ].join(' ')
       assert(result === expectedResult)
+
+      var getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        'getTimezoneOffset'
+      )
+      getTimezoneOffsetStub.returns(0)
+      var resultZeroOffset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultZeroOffset === 'Z Z Z Z Z')
+
+      getTimezoneOffsetStub.returns(480)
+      var resultNegativeOffset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultNegativeOffset === '-08 -0800 -08:00 -0800 -08:00')
+
+      getTimezoneOffsetStub.returns(450)
+      var resultNegative30Offset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultNegative30Offset === '-0730 -0730 -07:30 -0730 -07:30')
+
+      getTimezoneOffsetStub.restore()
     })
 
     it('ISO-8601 without Z', function () {
@@ -577,6 +596,20 @@ describe('format', function () {
         timezoneGMT,
       ].join(' ')
       assert(result === expectedResult)
+
+      var getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        'getTimezoneOffset'
+      )
+      getTimezoneOffsetStub.returns(480)
+      var resultNegativeOffset = format(date, 'O OO OOO OOOO')
+      assert(resultNegativeOffset === 'GMT-8 GMT-8 GMT-8 GMT-08:00')
+
+      getTimezoneOffsetStub.returns(450)
+      var resultNegative30Offset = format(date, 'O OO OOO OOOO')
+      assert(resultNegative30Offset === 'GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30')
+
+      getTimezoneOffsetStub.restore()
     })
 
     it('Specific non-location', function () {
