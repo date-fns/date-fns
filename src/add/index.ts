@@ -40,15 +40,19 @@ export default function add(date: Date | number, duration: Duration): Date {
 
   // Add years and months
   const dateWithMonths =
-    months || years ? addMonths(date, months + years * 12) : date
+    months || years
+      ? addMonths(date, Math.trunc(months) + Math.trunc(years) * 12)
+      : date
 
   // Add weeks and days
   const dateWithDays =
-    days || weeks ? addDays(dateWithMonths, days + weeks * 7) : dateWithMonths
+    days || weeks
+      ? addDays(dateWithMonths, Math.trunc(days) + Math.trunc(weeks) * 7)
+      : dateWithMonths
 
   // Add days, hours, minutes and seconds
-  const minutesToAdd = minutes + hours * 60
-  const secondsToAdd = seconds + minutesToAdd * 60
+  const minutesToAdd = Math.trunc(minutes) + Math.trunc(hours) * 60
+  const secondsToAdd = Math.trunc(seconds) + minutesToAdd * 60
   const msToAdd = secondsToAdd * 1000
   const finalTime =
     (typeof dateWithDays === 'number' ? dateWithDays : dateWithDays.getTime()) +

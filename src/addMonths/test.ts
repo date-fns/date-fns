@@ -15,6 +15,11 @@ describe('addMonths', () => {
     assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 1))
   })
 
+  it('converts a fractional number to an integer', () => {
+    const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5.75)
+    assert.deepStrictEqual(result, new Date(2015, 1 /* Feb */, 1))
+  })
+
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addMonths(date, 12)
