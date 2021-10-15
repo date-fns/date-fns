@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isThursday
  * @category Weekday Helpers
@@ -18,7 +15,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function isThursday(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return toDate(dirtyDate).getDay() === 4
+  return new Date(dirtyDate).getDay() === 4
 }
