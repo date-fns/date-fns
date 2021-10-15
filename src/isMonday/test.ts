@@ -1,31 +1,26 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import isMonday from '.'
 
-describe('isMonday', function() {
-  it('returns true if the given date is Monday', function() {
+describe('isMonday', () => {
+  it('returns true if the given date is Monday', () => {
     const result = isMonday(new Date(2014, 8 /* Sep */, 22))
-    assert(result === true)
+    assert(result)
   })
 
-  it('returns false if the given date is not Monday', function() {
+  it('returns false if the given date is not Monday', () => {
     const result = isMonday(new Date(2014, 8 /* Sep */, 25))
-    assert(result === false)
+    assert(!result)
   })
 
-  it('accepts a timestamp', function() {
+  it('accepts a timestamp', () => {
     const result = isMonday(new Date(2014, 1 /* Feb */, 10).getTime())
-    assert(result === true)
+    assert(result)
   })
 
-  it('returns false if the given date is `Invalid Date`', function() {
+  it('returns false if the given date is `Invalid Date`', () => {
     const result = isMonday(new Date(NaN))
-    assert(result === false)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    assert.throws(isMonday.bind(null), TypeError)
+    assert(!result)
   })
 })

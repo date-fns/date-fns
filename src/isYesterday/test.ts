@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import { SinonFakeTimers } from 'sinon'
@@ -18,21 +17,16 @@ describe('isYesterday', () => {
 
   it('returns true if the given date is yesterday', () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24))
-    assert(result === true)
+    assert(result)
   })
 
   it('returns false if the given date is not yesterday', () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 25))
-    assert(result === false)
+    assert(!result)
   })
 
   it('accepts a timestamp', () => {
     const result = isYesterday(new Date(2014, 8 /* Sep */, 24).getTime())
-    assert(result === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isYesterday.bind(null), TypeError)
+    assert(result)
   })
 })
