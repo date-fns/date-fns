@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isAfter
  * @category Common Helpers
@@ -19,12 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function isAfter(
-  dirtyDate: Date | number,
-  dirtyDateToCompare: Date | number
+  date: Date | number,
+  dateToCompare: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const dateToCompare = toDate(dirtyDateToCompare)
-  return date.getTime() > dateToCompare.getTime()
+  return new Date(date).getTime() > new Date(dateToCompare).getTime()
 }
