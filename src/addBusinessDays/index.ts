@@ -24,15 +24,16 @@ export default function addBusinessDays(
   amount: number
 ): Date {
   const result = new Date(date)
+  const days = Math.trunc(amount)
   const startedOnWeekend = isWeekend(result)
   const hours = result.getHours()
-  const sign = amount < 0 ? -1 : 1
-  const fullWeeks = Math.trunc(amount / 5)
+  const sign = days < 0 ? -1 : 1
+  const fullWeeks = Math.trunc(days / 5)
 
   result.setDate(result.getDate() + fullWeeks * 7)
 
   // Get remaining days not part of a full week
-  let restDays = Math.abs(amount % 5)
+  let restDays = Math.abs(days % 5)
 
   // Loops over remaining days
   while (restDays > 0) {
@@ -43,7 +44,7 @@ export default function addBusinessDays(
   // If the date is a weekend day and we reduce a dividable of
   // 5 from it, we land on a weekend date.
   // To counter this, we add days accordingly to land on the next business day
-  if (startedOnWeekend && isWeekend(result) && amount !== 0) {
+  if (startedOnWeekend && isWeekend(result) && days !== 0) {
     // If we're reducing days, we want to add days until we land on a weekday
     // If we're adding days we want to reduce days until we land on a weekday
     if (isSaturday(result))

@@ -14,6 +14,11 @@ describe('addQuarters', function () {
     assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 1))
   })
 
+  it('converts a fractional number to an integer', () => {
+    const result = addQuarters(new Date(2014, 8 /* Sep */, 1), 1.91)
+    assert.deepStrictEqual(result, new Date(2014, 11 /* Dec */, 1))
+  })
+
   it('does not mutate the original date', function () {
     const date = new Date(2014, 8 /* Sep */, 1)
     addQuarters(date, 4)
