@@ -18,5 +18,5 @@ import addMilliseconds from '../addMilliseconds/index'
  * //=> Thu Jul 10 2014 12:45:30
  */
 export default function addSeconds(date: Date | number, amount: number): Date {
-  return addMilliseconds(date, amount * 1000)
+  return addMilliseconds(date, Math.trunc(amount) * 1000)
 }

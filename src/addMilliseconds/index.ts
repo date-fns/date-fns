@@ -20,5 +20,5 @@ export default function addMilliseconds(
   amount: number
 ): Date {
   const timestamp = new Date(date).getTime()
-  return new Date(timestamp + amount)
+  return new Date(timestamp + Math.trunc(amount))
 }

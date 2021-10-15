@@ -17,6 +17,11 @@ describe('addHours', () => {
     assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 12, 1, 0))
   })
 
+  it('converts a fractional number to an integer', () => {
+    const result = addHours(new Date(2014, 6 /* Jul */, 10, 23, 0), 2.5)
+    assert.deepStrictEqual(result, new Date(2014, 6 /* Jul */, 11, 1, 0))
+  })
+
   it('does not mutate the original date', () => {
     const date = new Date(2014, 6 /* Jul */, 10, 23, 0)
     addHours(date, 10)

@@ -17,10 +17,11 @@
  */
 export default function addDays(date: Date | number, amount: number): Date {
   const result = new Date(date)
+  const days = Math.trunc(amount)
 
   // If 0 days, no-op to avoid changing times in the hour before end of DST
-  if (!amount) return result
+  if (!days) return result
 
-  result.setDate(result.getDate() + amount)
+  result.setDate(result.getDate() + days)
   return result
 }
