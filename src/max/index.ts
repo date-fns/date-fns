@@ -1,15 +1,12 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name max
  * @category Common Helpers
- * @summary Return the latest of the given dates.
+ * @summary Returns the latest of the given dates.
  *
  * @description
- * Return the latest of the given dates.
+ * Returns the latest of the given dates.
  *
- * @param {Date[]|Number[]} datesArray - the dates to compare
+ * @param dates - the dates to compare
  * @returns the latest of the dates
  *
  * @example
@@ -22,32 +19,13 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * ])
  * //=> Sun Jul 02 1995 00:00:00
  */
-export default function max(dirtyDatesArray: Array<Date | number>): Date {
-  requiredArgs(1, arguments)
-
-  let datesArray: Array<Date | number>
-  // `dirtyDatesArray` is Array, Set or Map, or object with custom `forEach` method
-  if (dirtyDatesArray && typeof dirtyDatesArray.forEach === 'function') {
-    datesArray = dirtyDatesArray
-
-    // If `dirtyDatesArray` is Array-like Object, convert to Array.
-  } else if (typeof dirtyDatesArray === 'object' && dirtyDatesArray !== null) {
-    datesArray = Array.prototype.slice.call(dirtyDatesArray)
-  } else {
-    // `dirtyDatesArray` is non-iterable, return Invalid Date
-    return new Date(NaN)
-  }
-
+export default function max(dates: Array<Date | number>): Date {
   let result: Date | undefined
-  datesArray.forEach(function (dirtyDate) {
-    const currentDate = toDate(dirtyDate)
 
-    if (
-      result === undefined ||
-      result < currentDate ||
-      isNaN(Number(currentDate))
-    ) {
-      result = currentDate
+  dates.forEach((date) => {
+    const current = new Date(date)
+    if (result === undefined || result < current || isNaN(+current)) {
+      result = current
     }
   })
 
