@@ -1,6 +1,5 @@
 import addDays from '../addDays/index'
 import isSameDay from '../isSameDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isTomorrow
@@ -22,8 +21,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isTomorrow(new Date(2014, 9, 7, 14, 0))
  * //=> true
  */
-export default function isTomorrow(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameDay(dirtyDate, addDays(Date.now(), 1))
+export default function isTomorrow(date: Date | number): boolean {
+  return isSameDay(date, addDays(Date.now(), 1))
 }
