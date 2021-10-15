@@ -30,11 +30,6 @@ describe('endOfDay', () => {
 
   it('returns `Invalid Date` if the given date is invalid', () => {
     const result = endOfDay(new Date(NaN))
-    assert(result instanceof Date && isNaN(result.getTime()))
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfDay.bind(null), TypeError)
+    assert(result instanceof Date && isNaN(+result))
   })
 })

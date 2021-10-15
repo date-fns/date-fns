@@ -32,9 +32,4 @@ describe('endOfDecade', () => {
     const result = endOfDecade(new Date(NaN))
     assert(result instanceof Date && isNaN(result.getTime()))
   })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(endOfDecade.bind(null), TypeError)
-  })
 })
