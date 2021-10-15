@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isBefore
  * @category Common Helpers
@@ -8,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Is the first date before the second one?
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date that should be before the other one to return true
  * @param dateToCompare - the date to compare with
@@ -23,12 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isBefore(
-  dirtyDate: Date | number,
-  dirtyDateToCompare: Date | number
+  date: Date | number,
+  dateToCompare: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const date = toDate(dirtyDate)
-  const dateToCompare = toDate(dirtyDateToCompare)
-  return date.getTime() < dateToCompare.getTime()
+  return new Date(date).getTime() < new Date(dateToCompare).getTime()
 }

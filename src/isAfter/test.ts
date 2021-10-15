@@ -50,11 +50,4 @@ describe('isAfter', () => {
     const result = isAfter(new Date(NaN), new Date(NaN))
     assert(result === false)
   })
-
-  it('throws TypeError exception if passed less than 2 arguments', () => {
-    // @ts-expect-error
-    assert.throws(isAfter.bind(null), TypeError)
-    // @ts-expect-error
-    assert.throws(isAfter.bind(null, 1), TypeError)
-  })
 })
