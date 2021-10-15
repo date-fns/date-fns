@@ -17,9 +17,10 @@
  */
 export default function addMonths(date: Date | number, amount: number): Date {
   const result = new Date(date)
+  const months = Math.trunc(amount)
 
   // If 0 months, no-op to avoid changing times in the hour before end of DST
-  if (!amount) return result
+  if (!months) return result
 
   const dayOfMonth = result.getDate()
 
@@ -32,7 +33,7 @@ export default function addMonths(date: Date | number, amount: number): Date {
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
   const endOfDesiredMonth = new Date(result.getTime())
-  endOfDesiredMonth.setMonth(result.getMonth() + amount + 1, 0)
+  endOfDesiredMonth.setMonth(result.getMonth() + months + 1, 0)
   const daysInMonth = endOfDesiredMonth.getDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
