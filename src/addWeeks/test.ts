@@ -14,6 +14,11 @@ describe('addWeeks', () => {
     assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 8))
   })
 
+  it('converts a fractional number to an integer', () => {
+    const result = addWeeks(new Date(2014, 8 /* Sep */, 1), 4.95)
+    assert.deepStrictEqual(result, new Date(2014, 8 /* Sep */, 29))
+  })
+
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addWeeks(date, 2)

@@ -19,5 +19,5 @@ import { millisecondsInMinute } from '../constants'
  * //=> Thu Jul 10 2014 12:30:00
  */
 export default function addMinutes(date: Date | number, amount: number): Date {
-  return addMilliseconds(date, amount * millisecondsInMinute)
+  return addMilliseconds(date, Math.trunc(amount) * millisecondsInMinute)
 }

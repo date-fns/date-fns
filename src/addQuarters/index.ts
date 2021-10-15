@@ -18,5 +18,5 @@ import addMonths from '../addMonths/index'
  * //=> Mon Dec 01 2014 00:00:00
  */
 export default function addQuarters(date: Date | number, amount: number): Date {
-  return addMonths(date, amount * 3)
+  return addMonths(date, Math.trunc(amount) * 3)
 }

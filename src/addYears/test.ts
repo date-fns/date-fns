@@ -14,6 +14,11 @@ describe('addYears', () => {
     assert.deepStrictEqual(result, new Date(2026, 8 /* Sep */, 1))
   })
 
+  it('converts a fractional number to an integer', () => {
+    const result = addYears(new Date(2014, 8 /* Sep */, 1), 5.555)
+    assert.deepStrictEqual(result, new Date(2019, 8 /* Sep */, 1))
+  })
+
   it('does not mutate the original date', () => {
     const date = new Date(2014, 8 /* Sep */, 1)
     addYears(date, 12)
