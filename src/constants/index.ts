@@ -49,6 +49,12 @@ export const millisecondsInHour = 3600000
 export const millisecondsInSecond = 1000
 
 /**
+ * Milliseconds in 1 second
+ * @constant
+ */
+export const millisecondsInWeek = 604800000
+
+/**
  * Minimum allowed time.
  *
  * @name minTime
