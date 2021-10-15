@@ -118,7 +118,13 @@ export interface RoundToNearestMinutesOptions {
   nearestTo?: number
 }
 
+/**
+ * The {@link areIntervalsOverlapping} function options.
+ */
 export interface AreIntervalsOverlappingOptions {
+  /**
+   * Whether to include the start and end values in the comparison.
+   */
   inclusive?: boolean
 }
 
