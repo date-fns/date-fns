@@ -1,5 +1,4 @@
 import startOfDay from '../startOfDay/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isSameDay
@@ -29,13 +28,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> false
  */
 export default function isSameDay(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeftStartOfDay = startOfDay(dirtyDateLeft)
-  const dateRightStartOfDay = startOfDay(dirtyDateRight)
-
-  return dateLeftStartOfDay.getTime() === dateRightStartOfDay.getTime()
+  return startOfDay(dateLeft).getTime() === startOfDay(dateRight).getTime()
 }
