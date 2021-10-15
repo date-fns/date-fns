@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isTuesday
  * @category Weekday Helpers
@@ -8,10 +5,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Is the given date Tuesday?
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to check
  * @returns the date is Tuesday
@@ -21,8 +14,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = isTuesday(new Date(2014, 8, 23))
  * //=> true
  */
-export default function isTuesday(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return toDate(dirtyDate).getDay() === 2
+export default function isTuesday(date: Date | number): boolean {
+  return new Date(date).getDay() === 2
 }
