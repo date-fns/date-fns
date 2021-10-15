@@ -19,5 +19,5 @@ import addMilliseconds from '../addMilliseconds/index'
  * //=> Fri Jul 11 2014 01:00:00
  */
 export default function addHours(date: Date | number, amount: number): Date {
-  return addMilliseconds(date, amount * millisecondsInHour)
+  return addMilliseconds(date, Math.trunc(amount) * millisecondsInHour)
 }

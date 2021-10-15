@@ -18,5 +18,5 @@ import addDays from '../addDays/index'
  * //=> Mon Sep 29 2014 00:00:00
  */
 export default function addWeeks(date: Date | number, amount: number): Date {
-  return addDays(date, amount * 7)
+  return addDays(date, Math.trunc(amount) * 7)
 }
