@@ -4,7 +4,7 @@ import assert from 'assert'
 import min from '.'
 
 describe('min', () => {
-  const isInvalidDate = (dirtyDate: Date): boolean => {
+  function isInvalidDate(dirtyDate: Date) {
     return dirtyDate instanceof Date && isNaN(dirtyDate.getDate())
   }
 
