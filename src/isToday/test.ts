@@ -16,21 +16,16 @@ describe('isToday', () => {
 
   it('returns true if the given date is today', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 25))
-    assert(result === true)
+    assert(result)
   })
 
   it('returns false if the given date is not today', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 26))
-    assert(result === false)
+    assert(!result)
   })
 
   it('accepts a timestamp', () => {
     const result = isToday(new Date(2014, 8 /* Sep */, 25).getTime())
-    assert(result === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isToday.bind(null), TypeError)
+    assert(result)
   })
 })
