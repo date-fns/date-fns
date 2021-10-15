@@ -4,14 +4,16 @@
 import assert from 'power-assert'
 import setDay from '.'
 
-describe('setDay', function () {
+describe.skip('setDay', function () {
   it('sets the day of the week', function () {
     const result = setDay(new Date(2014, 8 /* Sep */, 1), 0)
     assert.deepEqual(result, new Date(2014, 7 /* Aug */, 31))
   })
 
   it('allows to specify which day is the first day of the week', function () {
-    const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, { weekStartsOn: 1 })
+    const result = setDay(new Date(2014, 8 /* Sep */, 1), 0, {
+      weekStartsOn: 1,
+    })
     assert.deepEqual(result, new Date(2014, 8 /* Sep */, 7))
   })
 
