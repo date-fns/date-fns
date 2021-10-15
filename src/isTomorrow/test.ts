@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -17,17 +16,17 @@ describe('isTomorrow', () => {
 
   it('returns true if the given date is tomorrow', () => {
     const result = isTomorrow(new Date(2014, 8 /* Sep */, 26))
-    assert(result === true)
+    assert(result)
   })
 
   it('returns false if the given date is not tomorrow', () => {
     const result = isTomorrow(new Date(2014, 8 /* Sep */, 25))
-    assert(result === false)
+    assert(!result)
   })
 
   it('accepts a timestamp', () => {
     const result = isTomorrow(new Date(2014, 8 /* Sep */, 26).getTime())
-    assert(result === true)
+    assert(result)
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
