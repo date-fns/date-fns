@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isMonday
  * @category Weekday Helpers
@@ -18,7 +15,5 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> true
  */
 export default function isMonday(date: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return toDate(date).getDay() === 1
+  return new Date(date).getDay() === 1
 }

@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name startOfDay
  * @category Day Helpers
@@ -15,13 +12,11 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // The start of a day for 2 September 2014 11:55:00:
- * const result = startOfDay(new Date(2014, 8, 2, 11, 55, 0))
+ * startOfDay(new Date(2014, 8, 2, 11, 55, 0))
  * //=> Tue Sep 02 2014 00:00:00
  */
-export default function startOfDay(dirtyDate: Date | number): Date {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  date.setHours(0, 0, 0, 0)
-  return date
+export default function startOfDay(date: Date | number): Date {
+  const result = new Date(date)
+  result.setHours(0, 0, 0, 0)
+  return result
 }

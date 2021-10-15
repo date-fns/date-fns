@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isWeekend
  * @category Weekday Helpers
@@ -14,13 +11,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Does 5 October 2014 fall on a weekend?
- * const result = isWeekend(new Date(2014, 9, 5))
+ * isWeekend(new Date(2014, 9, 5))
  * //=> true
  */
-export default function isWeekend(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const day = date.getDay()
+export default function isWeekend(date: Date | number): boolean {
+  const day = new Date(date).getDay()
   return day === 0 || day === 6
 }
