@@ -1,6 +1,5 @@
 import toInteger from '../_lib/toInteger/index'
 import addYears from '../addYears/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name subYears
@@ -19,12 +18,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-export default function subYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addYears(dirtyDate, -amount)
+export default function subYears(date: Date | number, amount: number): Date {
+  const value = toInteger(amount)
+  return addYears(date, -value)
 }
