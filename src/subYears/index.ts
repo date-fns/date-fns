@@ -1,6 +1,5 @@
-import toInteger from '../_lib/toInteger/index'
 import addYears from '../addYears/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subYears
@@ -9,10 +8,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Subtract the specified number of years from the given date.
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
  * @param date - the date to be changed
  * @param amount - the amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
@@ -23,12 +18,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * const result = subYears(new Date(2014, 8, 1), 5)
  * //=> Tue Sep 01 2009 00:00:00
  */
-export default function subYears(
-  dirtyDate: Date | number,
-  dirtyAmount: number
-): Date {
-  requiredArgs(2, arguments)
-
-  const amount = toInteger(dirtyAmount)
-  return addYears(dirtyDate, -amount)
+export default function subYears(date: Date | number, amount: number): Date {
+  const result = toInteger(amount)
+  return addYears(date, -result)
 }
