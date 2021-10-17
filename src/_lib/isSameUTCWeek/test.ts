@@ -1,9 +1,8 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
-import { Locale } from 'src/locale/types'
-import { Day } from 'src/types'
+import assert from 'assert'
+import type { Locale } from 'src/locale/types'
+import type { Day } from 'src/types'
 import isSameUTCWeek from '.'
 
 describe('isSameUTCWeek', function () {
