@@ -1,4 +1,4 @@
-import { LocaleOptions, WeekStartOptions } from 'src/types'
+import type { LocaleOptions, WeekStartOptions } from 'src/types'
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
 
