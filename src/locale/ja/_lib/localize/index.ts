@@ -1,5 +1,5 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
-import { Localize, LocalizeFn, QuarterIndex } from '../../../types'
+import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
 
 const eraValues = {
   narrow: ['BC', 'AC'] as const,
