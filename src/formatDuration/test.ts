@@ -76,4 +76,9 @@ describe('formatDuration', () => {
         '9 months, 2 days'
     )
   })
+
+  it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
+    assert.throws(formatDuration.bind(null), TypeError)
+  })
 })
