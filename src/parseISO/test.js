@@ -33,8 +33,18 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
       })
 
+      it('parses YYYY-www', () => {
+        const result = parseISO('2014-w02')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+
       it('parses YYYYWww', () => {
         const result = parseISO('2014W02')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+
+      it('parses YYYYwww', () => {
+        const result = parseISO('2014w02')
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
       })
     })
@@ -57,8 +67,18 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
       })
 
+      it('parses YYYY-www-D', () => {
+        const result = parseISO('2014-w02-7')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
       it('parses YYYYWwwD', () => {
         const result = parseISO('2014W027')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
+      it('parses YYYYwwwD', () => {
+        const result = parseISO('2014w027')
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
       })
 
