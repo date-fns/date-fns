@@ -7,18 +7,18 @@ import isLastDayOfMonth from '../isLastDayOfMonth/index'
 /**
  * @name differenceInMonths
  * @category Month Helpers
- * @summary Get the number of full months between the given dates.
+ * @summary Get the number of full months to one date from another.
  *
  * @description
- * Get the number of full months between the given dates using trunc as a default rounding method.
+ * Get the number of full months to one date from another using trunc as a default rounding method.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full months
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of full months from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

@@ -10,17 +10,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name differenceInBusinessDays
  * @category Day Helpers
- * @summary Get the number of business days between the given dates.
+ * @summary Get the number of business days to one date from another.
  *
  * @description
- * Get the number of business day periods between the given dates.
+ * Get the number of business day periods to one date from another.
  * Business days being days that arent in the weekend.
  * Like `differenceInCalendarDays`, the function removes the times from
  * the dates before calculating the difference.
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of business days
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of business days from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example

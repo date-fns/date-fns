@@ -29,10 +29,10 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
 /**
  * @name differenceInDays
  * @category Day Helpers
- * @summary Get the number of full days between the given dates.
+ * @summary Get the number of full days to one date from another.
  *
  * @description
- * Get the number of full day periods between two dates. Fractional days are
+ * Get the number of full day periods to one date from another. Fractional days are
  * truncated towards zero.
  *
  * One "full day" is the distance between a local time in one day to the same
@@ -47,9 +47,9 @@ function compareLocalAsc(dateLeft: Date, dateRight: Date): number {
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of full days according to the local timezone
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of full days from dateFrom to dateTo according to the local timezone
  * @throws {TypeError} 2 arguments required
  *
  * @example

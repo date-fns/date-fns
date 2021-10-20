@@ -4,18 +4,18 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name differenceInCalendarMonths
  * @category Month Helpers
- * @summary Get the number of calendar months between the given dates.
+ * @summary Get the number of calendar months to one date from another.
  *
  * @description
- * Get the number of calendar months between the given dates.
+ * Get the number of calendar months to one date from another.
  *
  * ### v2.0.0 breaking changes:
  *
  * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
  *
- * @param {Date|Number} dateLeft - the later date
- * @param {Date|Number} dateRight - the earlier date
- * @returns {Number} the number of calendar months
+ * @param {Date|Number} dateTo - the target date
+ * @param {Date|Number} dateFrom - the start date
+ * @returns {Number} the number of calendar months from dateFrom to dateTo
  * @throws {TypeError} 2 arguments required
  *
  * @example
