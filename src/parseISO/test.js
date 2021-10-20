@@ -349,6 +349,18 @@ describe('parseISO', () => {
         assert(result instanceof Date)
         assert(isNaN(result))
       })
+
+      it('returns `Invalid Date` for text after a UTC designator', () => {
+        const result = parseISO('2014-02-11T21:35:45ZZ')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
+      it('returns `Invalid Date` for text after a UTC offset', () => {
+        const result = parseISO('2014-02-11T21:35:45+04:00Z')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
     })
   })
 
