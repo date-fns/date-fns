@@ -5,12 +5,6 @@ var MILLISECONDS_IN_HOUR = 3600000
 var MILLISECONDS_IN_MINUTE = 60000
 var DEFAULT_ADDITIONAL_DIGITS = 2
 
-var patterns = {
-  dateTimeDelimiter: /[T ]/i,
-  timeZoneDelimiter: /[Z ]/i,
-  timezone: /([Z+-].*)$/i,
-}
-
 var dateRegex = /^-?(?:(\d{3})|(\d{2})(?:-?(\d{2}))?|W(\d{2})(?:-?(\d{1}))?|)$/
 var timeRegex = /^(\d{2}(?:[.,]\d*)?)(?::?(\d{2}(?:[.,]\d*)?))?(?::?(\d{2}(?:[.,]\d*)?))?$/
 var timezoneRegex = /^([+-])(\d{2})(?::?(\d{2}))?$/
@@ -152,35 +146,20 @@ export default function parseISO(argument, dirtyOptions) {
 }
 
 function splitDateString(dateString) {
+  // Extract [date, time, offset]
+  // where the time designator is T (case-insensitive) or space
+  // and time and offset are optional.
   var dateStrings = {}
-  var array = dateString.split(patterns.dateTimeDelimiter)
-  var timeString
+  var dateAndTime = dateString.match(/^([^T Z]+)([T ][^Z+-]+|)/i)
+  if (dateAndTime) {
+    dateStrings.date = dateAndTime[1]
+    dateStrings.time = dateAndTime[2].slice(1)
+    dateStrings.timezone = dateString.slice(dateAndTime[0].length)
 
-  // The regex match should only return at maximum two array elements.
-  // [date], [time], or [date, time].
-  if (array.length > 2) {
-    return dateStrings
-  }
-
-  if (/:/.test(array[0])) {
-    dateStrings.date = null
-    timeString = array[0]
-  } else {
-    dateStrings.date = array[0]
-    timeString = array[1]
-    if (patterns.timeZoneDelimiter.test(dateStrings.date)) {
-      dateStrings.date = dateString.split(patterns.timeZoneDelimiter)[0]
-      timeString = dateString.substr(dateStrings.date.length, dateString.length)
-    }
-  }
-
-  if (timeString) {
-    var token = patterns.timezone.exec(timeString)
-    if (token) {
-      dateStrings.time = timeString.replace(token[1], '')
-      dateStrings.timezone = token[1]
-    } else {
-      dateStrings.time = timeString
+    // Reject offset without time unless it is "Z"
+    // (for backwards compatibility with input like "2021-10-19Z").
+    if (!dateStrings.time && (dateStrings.timezone || 'Z').toUpperCase() !== 'Z') {
+      return {}
     }
   }
 

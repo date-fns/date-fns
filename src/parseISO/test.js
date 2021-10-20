@@ -369,6 +369,12 @@ describe('parseISO', () => {
     })
 
     describe('timezones', () => {
+      it('returns `Invalid Date` for offset without time', () => {
+        const result = parseISO('2014-02-11+04:00')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
       it('returns `Invalid Date` for invalid timezone minutes', () => {
         const result = parseISO('2014-02-11T21:35:45+04:60')
         assert(result instanceof Date)
