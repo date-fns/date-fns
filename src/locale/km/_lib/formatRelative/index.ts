@@ -1,11 +1,11 @@
 import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
-  lastWeek: "'last' eeee 'at' p",
-  yesterday: "'yesterday at' p",
-  today: "'today at' p",
-  tomorrow: "'tomorrow at' p",
-  nextWeek: "eeee 'at' p",
+  lastWeek: "'ថ្ងៃ'eeee'ស​ប្តា​ហ៍​មុនម៉ោង' p",
+  yesterday: "'ម្សិលមិញនៅម៉ោង' p",
+  today: "'ថ្ងៃនេះម៉ោង' p",
+  tomorrow: "'ថ្ងៃស្អែកម៉ោង' p",
+  nextWeek: "'ថ្ងៃ'eeee'ស​ប្តា​ហ៍​ក្រោយម៉ោង' p",
   other: 'P',
 }
 

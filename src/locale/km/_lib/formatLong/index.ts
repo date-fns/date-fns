@@ -16,8 +16,8 @@ const timeFormats = {
 }
 
 const dateTimeFormats = {
-  full: "{{date}} 'at' {{time}}",
-  long: "{{date}} 'at' {{time}}",
+  full: "{{date}} 'ម៉ោង' {{time}}",
+  long: "{{date}} 'ម៉ោង' {{time}}",
   medium: '{{date}}, {{time}}',
   short: '{{date}}, {{time}}',
 }
