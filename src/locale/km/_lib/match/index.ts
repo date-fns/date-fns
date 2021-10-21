@@ -8,7 +8,7 @@ const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
   narrow: /^(ម\.)?គស/i,
-  abbreviated: /^^(មុន)?គ\.ស/i,
+  abbreviated: /^(មុន)?គ\.ស/i,
   wide: /^(មុន|នៃ)គ្រិស្តសករាជ/i,
 }
 const parseEraPatterns = {
