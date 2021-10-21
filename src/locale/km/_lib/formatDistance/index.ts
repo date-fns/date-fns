@@ -32,7 +32,7 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'ក្នុងរយៈពេល' + result
+      return 'ក្នុងរយៈពេល ' + result
     } else {
       return result + 'មុន'
     }
