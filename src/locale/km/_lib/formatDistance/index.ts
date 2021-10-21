@@ -23,11 +23,16 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   const tokenValue = formatDistanceLocale[token]
-  const result = tokenValue.replace('{{count}}', count.toString())
+
+  let result = tokenValue
+
+  if (typeof count === 'number') {
+    result = result.replace('{{count}}', count.toString())
+  }
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'ក្នុងរយៈពេល ' + result
+      return 'ក្នុងរយៈពេល' + result
     } else {
       return result + 'មុន'
     }

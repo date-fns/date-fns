@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import type { Era, FirstWeekContainsDate, Month, Quarter, Day } from '../types'
 import type {
   BuildLocalizeFnArgCallback,

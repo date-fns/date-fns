@@ -1,8 +1,10 @@
 import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import buildLocalizeFn, {
+  BuildLocalizeFnArgCallback,
+} from '../../../_lib/buildLocalizeFn/index'
 
 const eraValues = {
-  narrow: ['មុនគ.ស', 'គ.ស'] as const,
+  narrow: ['ម.គស', 'គស'] as const,
   abbreviated: ['មុនគ.ស', 'គ.ស'] as const,
   wide: ['មុនគ្រិស្តសករាជ', 'នៃគ្រិស្តសករាជ'] as const,
 }
@@ -10,20 +12,20 @@ const eraValues = {
 const quarterValues = {
   narrow: ['1', '2', '3', '4'] as const,
   abbreviated: ['Q1', 'Q2', 'Q3', 'Q4'] as const,
-  wide: ['ត្រីមាសទី១', 'ត្រីមាសទី២', 'ត្រីមាសទី៣', 'ត្រីមាសទី៤'] as const,
+  wide: ['ត្រីមាសទី 1', 'ត្រីមាសទី 2', 'ត្រីមាសទី 3', 'ត្រីមាសទី 4'] as const,
 }
 
 const monthValues = {
   narrow: [
-    'ម',
-    'ក',
+    'ម.ក',
+    'ក.ម',
     'មិ',
-    'មេ',
-    'ឧ',
+    'ម.ស',
+    'ឧ.ស',
     'ម.ថ',
-    'ក',
+    'ក.ដ',
     'សី',
-    'ក.ញ',
+    'កញ',
     'តុ',
     'វិ',
     'ធ',
@@ -75,32 +77,32 @@ const dayValues = {
 
 const dayPeriodValues = {
   narrow: {
-    am: 'ព',
-    pm: 'ល',
-    midnight: 'យ',
-    noon: 'រ',
-    morning: 'ព្រឹក',
-    afternoon: '​រសៀល',
-    evening: 'ល្ងាច',
-    night: 'យប់',
+    am: 'ព្រឹក',
+    pm: 'ល្ងាច',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
+    morning: 'ពេលព្រឹក',
+    afternoon: 'ពេលរសៀល',
+    evening: 'ពេលល្ងាច',
+    night: 'ពេលយប់',
   },
   abbreviated: {
     am: 'ព្រឹក',
     pm: 'ល្ងាច',
-    midnight: '​អធ្រាត្រ',
-    noon: 'រសៀល',
-    morning: 'ព្រឹក',
-    afternoon: '​រសៀល',
-    evening: 'ល្ងាច',
-    night: 'យប់',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
+    morning: 'ពេលព្រឹក',
+    afternoon: 'ពេលរសៀល',
+    evening: 'ពេលល្ងាច',
+    night: 'ពេលយប់',
   },
   wide: {
     am: 'ព្រឹក',
     pm: 'ល្ងាច',
-    midnight: '​កណ្ដាលអធ្រាត្រ',
-    noon: 'ពេលរសៀល',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
     morning: 'ពេលព្រឹក',
-    afternoon: 'ពេល​រសៀល',
+    afternoon: 'ពេលរសៀល',
     evening: 'ពេលល្ងាច',
     night: 'ពេលយប់',
   },
@@ -108,43 +110,43 @@ const dayPeriodValues = {
 
 const formattingDayPeriodValues = {
   narrow: {
-    am: 'ព',
-    pm: 'ល',
-    midnight: 'យ',
-    noon: 'រ',
-    morning: 'ព្រឹក',
-    afternoon: '​រសៀល',
-    evening: 'ល្ងាច',
-    night: 'យប់',
+    am: 'ព្រឹក',
+    pm: 'ល្ងាច',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
+    morning: 'ពេលព្រឹក',
+    afternoon: 'ពេលរសៀល',
+    evening: 'ពេលល្ងាច',
+    night: 'ពេលយប់',
   },
   abbreviated: {
     am: 'ព្រឹក',
     pm: 'ល្ងាច',
-    midnight: '​អធ្រាត្រ',
-    noon: 'រសៀល',
-    morning: 'ព្រឹក',
-    afternoon: '​រសៀល',
-    evening: 'ល្ងាច',
-    night: 'យប់',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
+    morning: 'ពេលព្រឹក',
+    afternoon: 'ពេលរសៀល',
+    evening: 'ពេលល្ងាច',
+    night: 'ពេលយប់',
   },
   wide: {
     am: 'ព្រឹក',
     pm: 'ល្ងាច',
-    midnight: '​កណ្ដាលអធ្រាត្រ',
-    noon: 'ពេលរសៀល',
+    midnight: '​ពេលកណ្ដាលអធ្រាត្រ',
+    noon: 'ពេលថ្ងៃត្រង់',
     morning: 'ពេលព្រឹក',
-    afternoon: 'ពេល​រសៀល',
+    afternoon: 'ពេលរសៀល',
     evening: 'ពេលល្ងាច',
     night: 'ពេលយប់',
   },
 }
 
-const ordinalNumber: LocalizeFn<number, undefined> = (
-  dirtyNumber,
-  _options
-) => {
+const ordinalNumber: LocalizeFn<
+  number,
+  BuildLocalizeFnArgCallback<number> | undefined
+> = (dirtyNumber, _) => {
   const number = Number(dirtyNumber)
-  return 'ទី ' + number
+  return number.toString()
 }
 
 const localize: Localize = {

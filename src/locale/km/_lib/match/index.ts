@@ -7,84 +7,85 @@ const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
 const parseOrdinalNumberPattern = /\d+/i
 
 const matchEraPatterns = {
-  narrow: /^(b|a)/i,
-  abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)/i,
-  wide: /^(before christ|before common era|anno domini|common era)/i,
+  narrow: /^(ម\.)?គស/i,
+  abbreviated: /^^(មុន)?គ\.ស/i,
+  wide: /^(មុន|នៃ)គ្រិស្តសករាជ/i,
 }
 const parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i] as const,
+  any: [/^(ម|មុន)គ\.?ស/i, /^(នៃ)?គ\.?ស/i] as const,
 }
 
 const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^q[1234]/i,
-  wide: /^[1234](th|st|nd|rd)? quarter/i,
+  wide: /^(ត្រីមាស)(ទី)?\s?[1234]/i,
 }
 const parseQuarterPatterns = {
   any: [/1/i, /2/i, /3/i, /4/i] as const,
 }
 
 const matchMonthPatterns = {
-  narrow: /^[jfmasond]/i,
-  abbreviated: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  wide: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i,
+  narrow: /^(ម\.ក|ក\.ម|មិ|ម\.ស|ឧ\.ស|ម\.ថ|ក\.ដ|សី|កញ|តុ|វិ|ធ)/i,
+  abbreviated: /^(មករា|កុម្ភៈ|មីនា|មេសា|ឧសភា|មិថុនា|កក្កដា|សីហា|កញ្ញា|តុលា|វិច្ឆិកា|ធ្នូ)/i,
+  wide: /^(មករា|កុម្ភៈ|មីនា|មេសា|ឧសភា|មិថុនា|កក្កដា|សីហា|កញ្ញា|តុលា|វិច្ឆិកា|ធ្នូ)/i,
 }
 const parseMonthPatterns = {
   narrow: [
-    /^j/i,
-    /^f/i,
-    /^m/i,
-    /^a/i,
-    /^m/i,
-    /^j/i,
-    /^j/i,
-    /^a/i,
-    /^s/i,
-    /^o/i,
-    /^n/i,
-    /^d/i,
+    /^ម\.ក/i,
+    /^ក\.ម/i,
+    /^មិ/i,
+    /^ម\.ស/i,
+    /^ឧ\.ស/i,
+    /^ម\.ថ/i,
+    /^ក\.ដ/i,
+    /^សី/i,
+    /^កញ/i,
+    /^តុ/i,
+    /^វិ/i,
+    /^ធ/i,
   ] as const,
   any: [
-    /^ja/i,
-    /^f/i,
-    /^mar/i,
-    /^ap/i,
-    /^may/i,
-    /^jun/i,
-    /^jul/i,
-    /^au/i,
-    /^s/i,
-    /^o/i,
-    /^n/i,
-    /^d/i,
+    /^មក/i,
+    /^កុ/i,
+    /^មីន/i,
+    /^មេ/i,
+    /^ឧស/i,
+    /^មិថ/i,
+    /^កក/i,
+    /^សី/i,
+    /^កញ/i,
+    /^តុ/i,
+    /^វិច/i,
+    /^ធ/i,
   ] as const,
 }
 
 const matchDayPatterns = {
-  narrow: /^[smtwf]/i,
-  short: /^(su|mo|tu|we|th|fr|sa)/i,
-  abbreviated: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  wide: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i,
+  narrow: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
+  short: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
+  abbreviated: /^(អា|ច|អ|ព|ព្រ|សុ|ស)/i,
+  wide: /^(អាទិត្យ|ចន្ទ|អង្គារ|ពុធ|ព្រហស្បតិ៍|សុក្រ|សៅរ៍)/i,
 }
 const parseDayPatterns = {
-  narrow: [/^s/i, /^m/i, /^t/i, /^w/i, /^t/i, /^f/i, /^s/i] as const,
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i] as const,
+  narrow: [/^អា/i, /^ច/i, /^អ/i, /^ព/i, /^ព្រ/i, /^សុ/i, /^ស/i] as const,
+  any: [/^អា/i, /^ច/i, /^អ/i, /^ព/i, /^ព្រ/i, /^សុ/i, /^សៅ/i] as const,
 }
 
 const matchDayPeriodPatterns = {
-  narrow: /^(a|p|mi|n|(in the|at) (morning|afternoon|evening|night))/i,
-  any: /^([ap]\.?\s?m\.?|midnight|noon|(in the|at) (morning|afternoon|evening|night))/i,
+  narrow: /^(ព្រឹក|ល្ងាច|ពេលព្រឹក|ពេលថ្ងៃត្រង់|ពេលល្ងាច|ពេលរសៀល|ពេលយប់|ពេលកណ្ដាលអធ្រាត្រ)/i,
+  any: /^(ព្រឹក|ល្ងាច|ពេលព្រឹក|ពេលថ្ងៃត្រង់|ពេលល្ងាច|ពេលរសៀល|ពេលយប់|ពេលកណ្ដាលអធ្រាត្រ)/i,
 }
+
 const parseDayPeriodPatterns = {
   any: {
-    am: /^a/i,
-    pm: /^p/i,
-    midnight: /^mi/i,
-    noon: /^no/i,
-    morning: /morning/i,
-    afternoon: /afternoon/i,
-    evening: /evening/i,
-    night: /night/i,
+    am: /^ព្រឹក/i,
+    pm: /^ល្ងាច/i,
+    midnight: /^ពេលកណ្ដាលអធ្រាត្រ/i,
+    noon: /^ពេលថ្ងៃត្រង់/i,
+    morning: /ពេលព្រឹក/i,
+    afternoon: /ពេលរសៀល/i,
+    evening: /ពេលល្ងាច/i,
+    night: /ពេលយប់/i,
   },
 }
 
