@@ -1,5 +1,4 @@
 import addYears from '../addYears/index'
-import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name subYears
@@ -10,7 +9,7 @@ import toInteger from '../_lib/toInteger/index'
  * Subtract the specified number of years from the given date.
  *
  * @param date - the date to be changed
- * @param amount - the amount of years to be subtracted. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
+ * @param amount - the amount of years to be subtracted. Decimals will be rounded using `Math.trunc`.
  * @returns the new date with the years subtracted
  *
  * @example
@@ -19,6 +18,6 @@ import toInteger from '../_lib/toInteger/index'
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears(date: Date | number, amount: number): Date {
-  const result = toInteger(amount)
+  const result = Math.trunc(amount)
   return addYears(date, -result)
 }
