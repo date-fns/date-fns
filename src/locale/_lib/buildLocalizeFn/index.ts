@@ -91,33 +91,33 @@ export default function buildLocalizeFn<
 >(
   args: BuildLocalizeFnArgs<Result, ArgCallback>
 ): LocalizeFn<Result, ArgCallback> {
-  return (dirtyIndex, options) => {
-    const context = options?.context ? String(options.context) : 'standalone'
+  return (dirtyIndex, dirtyOptions) => {
+    const options = dirtyOptions || {}
+
+    const context = options.context ? String(options.context) : 'standalone'
 
     let valuesArray: LocalizeUnitValues<Result>
     if (context === 'formatting' && args.formattingValues) {
       const defaultWidth = args.defaultFormattingWidth || args.defaultWidth
-      const width = (options?.width
+      const width = (options.width
         ? String(options.width)
         : defaultWidth) as LocalePatternWidth
-
       valuesArray = (args.formattingValues[width] ||
         args.formattingValues[defaultWidth]) as LocalizeUnitValues<Result>
     } else {
       const defaultWidth = args.defaultWidth
-      const width = (options?.width
+      const width = (options.width
         ? String(options.width)
         : args.defaultWidth) as LocalePatternWidth
       valuesArray = (args.values[width] ||
         args.values[defaultWidth]) as LocalizeUnitValues<Result>
     }
-
     const index = (args.argumentCallback
       ? args.argumentCallback(dirtyIndex as Result)
       : ((dirtyIndex as LocalizeUnitIndex<Result>) as unknown)) as LocalizeUnitValuesIndex<
       typeof valuesArray
     >
-    // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challange you to try to remove it!
+    // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
     return valuesArray[index]
   }
 }
