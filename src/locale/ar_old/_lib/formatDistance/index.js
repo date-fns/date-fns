@@ -1,73 +1,73 @@
 var formatDistanceLocale = {
   lessThanXSeconds: {
     one: 'أقل من ثانية واحدة',
-    other: 'أقل من {{count}} ثواني'
+    other: 'أقل من {{count}} ثواني',
   },
 
   xSeconds: {
     one: 'ثانية واحدة',
-    other: '{{count}} ثواني'
+    other: '{{count}} ثواني',
   },
 
   halfAMinute: 'نصف دقيقة',
 
   lessThanXMinutes: {
     one: 'أقل من دقيقة',
-    other: 'أقل من {{count}} دقيقة'
+    other: 'أقل من {{count}} دقيقة',
   },
 
   xMinutes: {
     one: 'دقيقة واحدة',
-    other: '{{count}} دقائق'
+    other: '{{count}} دقائق',
   },
 
   aboutXHours: {
     one: 'ساعة واحدة تقريباً',
-    other: '{{count}} ساعات تقريباً'
+    other: '{{count}} ساعات تقريباً',
   },
 
   xHours: {
     one: 'ساعة واحدة',
-    other: '{{count}} ساعات'
+    other: '{{count}} ساعات',
   },
 
   xDays: {
     one: 'يوم واحد',
-    other: '{{count}} أيام'
+    other: '{{count}} أيام',
   },
 
   aboutXMonths: {
     one: 'شهر واحد تقريباً',
-    other: '{{count}} أشهر تقريباً'
+    other: '{{count}} أشهر تقريباً',
   },
 
   xMonths: {
     one: 'شهر واحد',
-    other: '{{count}} أشهر'
+    other: '{{count}} أشهر',
   },
 
   aboutXYears: {
     one: 'عام واحد تقريباً',
-    other: '{{count}} أعوام تقريباً'
+    other: '{{count}} أعوام تقريباً',
   },
 
   xYears: {
     one: 'عام واحد',
-    other: '{{count}} أعوام'
+    other: '{{count}} أعوام',
   },
 
   overXYears: {
     one: 'أكثر من عام',
-    other: 'أكثر من {{count}} أعوام'
+    other: 'أكثر من {{count}} أعوام',
   },
 
   almostXYears: {
     one: 'عام واحد تقريباً',
-    other: '{{count}} أعوام تقريباً'
-  }
+    other: '{{count}} أعوام تقريباً',
+  },
 }
 
-export default function formatDistance (token, count, options) {
+export default function formatDistance(token, count, options) {
   options = options || {}
 
   var result

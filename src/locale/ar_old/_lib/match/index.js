@@ -8,16 +8,16 @@ var matchOrdinalNumbersPattern = /^(\d+)(th|st|nd|rd)?/i
 var matchWeekdaysPatterns = {
   narrow: /^(su|mo|tu|we|th|fr|sa)/i,
   short: /^(sun|mon|tue|wed|thu|fri|sat)/i,
-  long: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i
+  long: /^(sunday|monday|tuesday|wednesday|thursday|friday|saturday)/i,
 }
 
 var parseWeekdayPatterns = {
-  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i]
+  any: [/^su/i, /^m/i, /^tu/i, /^w/i, /^th/i, /^f/i, /^sa/i],
 }
 
 var matchMonthsPatterns = {
   short: /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i,
-  long: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i
+  long: /^(january|february|march|april|may|june|july|august|september|october|november|december)/i,
 }
 
 var parseMonthPatterns = {
@@ -33,17 +33,17 @@ var parseMonthPatterns = {
     /^s/i,
     /^o/i,
     /^n/i,
-    /^d/i
-  ]
+    /^d/i,
+  ],
 }
 
 var matchTimesOfDayPatterns = {
   short: /^(am|pm)/i,
-  long: /^([ap]\.?\s?m\.?)/i
+  long: /^([ap]\.?\s?m\.?)/i,
 }
 
 var parseTimeOfDayPatterns = {
-  any: [/^a/i, /^p/i]
+  any: [/^a/i, /^p/i],
 }
 
 var match = {
@@ -54,7 +54,7 @@ var match = {
   months: buildMatchFn(matchMonthsPatterns, 'long'),
   month: buildParseFn(parseMonthPatterns, 'any'),
   timesOfDay: buildMatchFn(matchTimesOfDayPatterns, 'long'),
-  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any')
+  timeOfDay: buildParseFn(parseTimeOfDayPatterns, 'any'),
 }
 
 export default match
