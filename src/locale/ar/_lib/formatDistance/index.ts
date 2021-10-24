@@ -11,16 +11,16 @@ type FormatDistanceTokenValue =
 
 const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
   lessThanXSeconds: {
-    one: 'أقل من ثانية واحدة',
-    two: '', // TODO
-    threeToTen: '', // TODO
+    one: 'أقل من ثانية',
+    two: 'أقل من ثانيتين',
+    threeToTen: 'أقل من {{count}} ثواني',
     other: 'أقل من {{count}} ثواني',
   },
 
   xSeconds: {
     one: 'ثانية واحدة',
-    two: '', // TODO
-    threeToTen: '', // TODO,
+    two: 'ثانيتان',
+    threeToTen: '{{count}} ثواني',
     other: '{{count}} ثواني',
   },
 
@@ -28,93 +28,93 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
 
   lessThanXMinutes: {
     one: 'أقل من دقيقة',
-    two: '', // TODO
-    threeToTen: '', // TODO,
+    two: 'أقل من دقيقتين',
+    threeToTen: 'أقل من {{count}} دقائق',
     other: 'أقل من {{count}} دقيقة',
   },
 
   xMinutes: {
     one: 'دقيقة واحدة',
-    two: '', // TODO
-    threeToTen: '', // TODO
+    two: 'دقيقتان',
+    threeToTen: '{{count}} دقائق',
     other: '{{count}} دقائق',
   },
 
   aboutXHours: {
     one: 'ساعة واحدة تقريباً',
-    two: '', // TODO
-    threeToTen: '', // TODO
+    two: 'ساعتين تقريبا',
+    threeToTen: '{{count}} ساعات تقريباً',
     other: '{{count}} ساعات تقريباً',
   },
 
   xHours: {
     one: 'ساعة واحدة',
-    two: '', // TODO
-    threeToTen: '', // TODO
+    two: 'ساعتان',
+    threeToTen: '{{count}} ساعات',
     other: '{{count}} ساعات',
   },
 
   xDays: {
     one: 'يوم واحد',
-    two: '', // TODO
-    threeToTen: '', // TODO
+    two: 'يومان',
+    threeToTen: '{{count}} أيام',
     other: '{{count}} أيام',
   },
 
   aboutXWeeks: {
-    one: '', // TODO
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '', // TODO
+    one: 'أسبوع واحد تقريبا',
+    two: 'أسبوعين تقريبا',
+    threeToTen: '{{count}} أسابيع تقريبا',
+    other: '{{count}} أسبوعا تقريبا',
   },
 
   xWeeks: {
-    one: '', // TODO
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '', // TODO
+    one: 'أسبوع واحد',
+    two: 'أسبوعان',
+    threeToTen: '{{count}} أسابيع',
+    other: '{{count}} أسبوعا',
   },
 
   aboutXMonths: {
     one: 'شهر واحد تقريباً',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '{{count}} أشهر تقريباً',
+    two: 'شهرين تقريبا',
+    threeToTen: '{{count}} أشهر تقريبا',
+    other: '{{count}} شهرا تقريباً',
   },
 
   xMonths: {
     one: 'شهر واحد',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '{{count}} أشهر',
+    two: 'شهران',
+    threeToTen: '{{count}} أشهر',
+    other: '{{count}} شهرا',
   },
 
   aboutXYears: {
-    one: 'عام واحد تقريباً',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '{{count}} أعوام تقريباً',
+    one: 'سنة واحدة تقريباً',
+    two: 'سنتين تقريبا',
+    threeToTen: '{{count}} سنوات تقريباً',
+    other: '{{count}} سنة تقريباً',
   },
 
   xYears: {
-    one: 'عام واحد',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '{{count}} أعوام',
+    one: 'سنة واحد',
+    two: 'سنتان',
+    threeToTen: '{{count}} سنوات',
+    other: '{{count}} سنة',
   },
 
   overXYears: {
-    one: 'أكثر من عام',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: 'أكثر من {{count}} أعوام',
+    one: 'أكثر من سنة',
+    two: 'أكثر من سنتين',
+    threeToTen: 'أكثر من {{count}} سنوات',
+    other: 'أكثر من {{count}} سنة',
   },
 
   almostXYears: {
-    one: 'عام واحد تقريباً',
-    two: '', // TODO
-    threeToTen: '', // TODO
-    other: '{{count}} أعوام تقريباً',
+    one: 'ما يقارب سنة واحدة',
+    two: 'ما يقارب سنتين',
+    threeToTen: 'ما يقارب {{count}} سنوات',
+    other: 'ما يقارب {{count}} سنة',
   },
 }
 
@@ -135,7 +135,7 @@ const formatDistance: FormatDistanceFn = (token, count, options) => {
 
   if (options?.addSuffix) {
     if (options.comparison && options.comparison > 0) {
-      return 'في خلال ' + result
+      return 'خلال ' + result
     } else {
       return 'منذ ' + result
     }
