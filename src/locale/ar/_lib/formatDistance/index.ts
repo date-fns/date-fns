@@ -14,14 +14,14 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     one: 'أقل من ثانية',
     two: 'أقل من ثانيتين',
     threeToTen: 'أقل من {{count}} ثواني',
-    other: 'أقل من {{count}} ثواني',
+    other: 'أقل من {{count}} ثانية',
   },
 
   xSeconds: {
     one: 'ثانية واحدة',
     two: 'ثانيتان',
     threeToTen: '{{count}} ثواني',
-    other: '{{count}} ثواني',
+    other: '{{count}} ثانية',
   },
 
   halfAMinute: 'نصف دقيقة',
@@ -37,28 +37,28 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     one: 'دقيقة واحدة',
     two: 'دقيقتان',
     threeToTen: '{{count}} دقائق',
-    other: '{{count}} دقائق',
+    other: '{{count}} دقيقة',
   },
 
   aboutXHours: {
     one: 'ساعة واحدة تقريباً',
     two: 'ساعتين تقريبا',
     threeToTen: '{{count}} ساعات تقريباً',
-    other: '{{count}} ساعات تقريباً',
+    other: '{{count}} ساعة تقريباً',
   },
 
   xHours: {
     one: 'ساعة واحدة',
     two: 'ساعتان',
     threeToTen: '{{count}} ساعات',
-    other: '{{count}} ساعات',
+    other: '{{count}} ساعة',
   },
 
   xDays: {
     one: 'يوم واحد',
     two: 'يومان',
     threeToTen: '{{count}} أيام',
-    other: '{{count}} أيام',
+    other: '{{count}} يوم',
   },
 
   aboutXWeeks: {
