@@ -12,6 +12,7 @@ import type { Locale } from '../types'
  * @language Modern Standard Arabic
  * @iso-639-2 ara
  * @author Abdallah Hassan [@AbdallahAHO]{@link https://github.com/AbdallahAHO}
+ * @author Koussay Haj Kacem [@essana3]{@link https://github.com/essana3}
  */
 const locale: Locale = {
   code: 'ar',
