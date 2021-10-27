@@ -18,6 +18,5 @@ import addYears from '../addYears/index'
  * //=> Tue Sep 01 2009 00:00:00
  */
 export default function subYears(date: Date | number, amount: number): Date {
-  const result = Math.trunc(amount)
-  return addYears(date, -result)
+  return addYears(date, -Math.trunc(amount))
 }
