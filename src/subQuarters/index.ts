@@ -18,6 +18,5 @@ import addQuarters from '../addQuarters/index'
  * //=> Sun Dec 01 2013 00:00:00
  */
 export default function subQuarters(date: Date | number, amount: number): Date {
-  const result = Math.trunc(amount)
-  return addQuarters(date, -result)
+  return addQuarters(date, -Math.trunc(amount))
 }
