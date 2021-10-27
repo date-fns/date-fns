@@ -18,6 +18,5 @@ import addSeconds from '../addSeconds/index'
  * //=> Thu Jul 10 2014 12:44:30
  */
 export default function subSeconds(date: Date | number, amount: number): Date {
-  const result = Math.trunc(amount)
-  return addSeconds(date, -result)
+  return addSeconds(date, -Math.trunc(amount))
 }
