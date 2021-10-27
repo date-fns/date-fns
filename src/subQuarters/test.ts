@@ -3,7 +3,7 @@
 import assert from 'assert'
 import subQuarters from '.'
 
-describe.skip('subQuarters', function () {
+describe('subQuarters', function () {
   it('subtracts the given number of quarters', function () {
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1), 3)
     assert.deepStrictEqual(result, new Date(2013, 11 /* Dec */, 1))
@@ -40,5 +40,17 @@ describe.skip('subQuarters', function () {
     expectedResult.setHours(0, 0, 0, 0)
     const result = subQuarters(initialDate, 3)
     assert.deepStrictEqual(result, expectedResult)
+  })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    const result = subQuarters(new Date(NaN), 3)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it.only('returns `Invalid Date` if the given amount is NaN', function () {
+    const result = subQuarters(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
   })
 })

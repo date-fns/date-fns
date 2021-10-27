@@ -18,6 +18,5 @@ import addWeeks from '../addWeeks/index'
  * //=> Mon Aug 04 2014 00:00:00
  */
 export default function subWeeks(date: Date | number, amount: number): Date {
-  const result = Math.trunc(amount)
-  return addWeeks(date, -result)
+  return addWeeks(date, -Math.trunc(amount))
 }
