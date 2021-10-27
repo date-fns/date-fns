@@ -41,4 +41,16 @@ describe('subYears', () => {
     const result = subYears(initialDate, 1)
     assert.deepStrictEqual(result, expectedResult)
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    const result = subYears(new Date(NaN), 5)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    const result = subYears(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
 })

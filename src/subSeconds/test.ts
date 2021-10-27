@@ -27,4 +27,16 @@ describe('subSeconds', function () {
     subSeconds(date, 15)
     assert.deepStrictEqual(date, new Date(2014, 6 /* Jul */, 10, 12, 45, 0))
   })
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    const result = subSeconds(new Date(NaN), 30)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    const result = subSeconds(new Date(2014, 6 /* Jul */, 10, 12, 45, 0), NaN)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
 })
