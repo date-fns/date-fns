@@ -15,7 +15,7 @@ describe('addMonths', () => {
     assert.deepStrictEqual(result, new Date(2015, 8 /* Sep */, 1))
   })
 
-  it('converts a fractional number to an integer', () => {
+  it('truncates a fractional number', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5.75)
     assert.deepStrictEqual(result, new Date(2015, 1 /* Feb */, 1))
   })
@@ -144,4 +144,16 @@ describe('addMonths', () => {
       assert.deepStrictEqual(result, date)
     }
   )
+
+  it('returns `Invalid Date` if the given date is invalid', function () {
+    const result = addMonths(new Date(NaN), 5)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
+
+  it('returns `Invalid Date` if the given amount is NaN', function () {
+    const result = addMonths(new Date(2014, 8 /* Sep */, 1), NaN)
+    // @ts-expect-error
+    assert(result instanceof Date && isNaN(result))
+  })
 })
