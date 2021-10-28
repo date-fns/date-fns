@@ -1,5 +1,4 @@
 import isSameWeek from '../isSameWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
@@ -14,10 +13,6 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the date to check
  * @param options - the object with options
  * @returns the date is in this week
@@ -25,21 +20,19 @@ import { LocaleOptions, WeekStartOptions } from '../types'
  *
  * @example
  * // If today is 25 September 2014, is 21 September 2014 in this week?
- * var result = isThisWeek(new Date(2014, 8, 21))
+ * isThisWeek(new Date(2014, 8, 21))
  * //=> true
  *
  * @example
  * // If today is 25 September 2014 and week starts with Monday
  * // is 21 September 2014 in this week?
- * var result = isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
+ * isThisWeek(new Date(2014, 8, 21), { weekStartsOn: 1 })
  * //=> false
  */
 
 export default function isThisWeek(
-  dirtyDate: Date | number,
+  date: Date | number,
   options?: LocaleOptions & WeekStartOptions
 ): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameWeek(dirtyDate, Date.now(), options)
+  return isSameWeek(date, Date.now(), options)
 }

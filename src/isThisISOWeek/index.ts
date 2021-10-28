@@ -1,5 +1,4 @@
 import isSameISOWeek from '../isSameISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisISOWeek
@@ -15,21 +14,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the date to check
  * @returns the date is in this ISO week
  *
  * @example
  * // If today is 25 September 2014, is 22 September 2014 in this ISO week?
- * var result = isThisISOWeek(new Date(2014, 8, 22))
+ * isThisISOWeek(new Date(2014, 8, 22))
  * //=> true
  */
 
-export default function isThisISOWeek(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameISOWeek(dirtyDate, Date.now())
+export default function isThisISOWeek(date: Date | number): boolean {
+  return isSameISOWeek(date, Date.now())
 }

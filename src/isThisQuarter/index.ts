@@ -1,5 +1,4 @@
 import isSameQuarter from '../isSameQuarter/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name isThisQuarter
@@ -13,20 +12,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * > ⚠️ Please note that this function is not present in the FP submodule as
  * > it uses `Date.now()` internally hence impure and can't be safely curried.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the date to check
  * @returns the date is in this quarter
  *
  * @example
  * // If today is 25 September 2014, is 2 July 2014 in this quarter?
- * var result = isThisQuarter(new Date(2014, 6, 2))
+ * isThisQuarter(new Date(2014, 6, 2))
  * //=> true
  */
-export default function isThisQuarter(dirtyDate: Date | number): boolean {
-  requiredArgs(1, arguments)
-
-  return isSameQuarter(Date.now(), dirtyDate)
+export default function isThisQuarter(date: Date | number): boolean {
+  return isSameQuarter(Date.now(), date)
 }

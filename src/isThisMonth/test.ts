@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -17,21 +16,16 @@ describe('isThisMonth', () => {
 
   it('returns true if the given date and the current date have the same month (and year)', () => {
     const date = new Date(2014, 8 /* Sep */, 15)
-    assert(isThisMonth(date) === true)
+    assert(isThisMonth(date))
   })
 
   it('returns false if the given date and the current date have different months', () => {
     const date = new Date(2013, 7 /* Aug */, 31)
-    assert(isThisMonth(date) === false)
+    assert(!isThisMonth(date))
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 30).getTime()
-    assert(isThisMonth(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', function() {
-    // @ts-expect-error
-    assert.throws(isThisMonth.bind(null), TypeError)
+    assert(isThisMonth(date))
   })
 })

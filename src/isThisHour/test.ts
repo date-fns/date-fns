@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -19,21 +18,16 @@ describe('isThisHour', () => {
 
   it('returns true if the given date and the current date have the same hour', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18)
-    assert(isThisHour(date) === true)
+    assert(isThisHour(date))
   })
 
   it('returns false if the given date and the current date have different hours', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 19)
-    assert(isThisHour(date) === false)
+    assert(!isThisHour(date))
   })
 
   it('accepts a timestamp', () => {
     const date = new Date(2014, 8 /* Sep */, 25, 18, 45).getTime()
-    assert(isThisHour(date) === true)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(isThisHour.bind(null), TypeError)
+    assert(isThisHour(date))
   })
 })
