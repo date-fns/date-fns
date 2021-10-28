@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInBusinessDays from '.'
 
 describe('differenceInBusinessDays', function () {
@@ -63,6 +63,105 @@ describe('differenceInBusinessDays', function () {
       new Date(2014, 0, 10).getTime()
     )
     assert(result === 135)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 5 /* Jun */, 30),
+      new Date(2021, 5 /* Jun */, 4)
+    )
+    assert(result === 19)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 5 /* Jun */, 30),
+      new Date(2021, 5 /* Jun */, 2)
+    )
+    assert(result === 21)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 5 /* Jun */, 30),
+      new Date(2021, 5 /* Jun */, 1)
+    )
+    assert(result === 22)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 3 /* Apr */, 30),
+      new Date(2021, 3 /* Apr */, 1)
+    )
+    assert(result === 22)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 9 /* Oct */, 31),
+      new Date(2021, 9 /* Oct */, 1)
+    )
+    assert(result === 21)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 9 /* Oct */, 30),
+      new Date(2021, 9 /* Oct */, 1)
+    )
+    assert(result === 21)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 9 /* Oct */, 29),
+      new Date(2021, 9 /* Oct */, 1)
+    )
+    assert(result === 20)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 9 /* Oct */, 29),
+      new Date(2021, 9 /* Oct */, 4)
+    )
+    assert(result === 19)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 9 /* Oct */, 30),
+      new Date(2021, 9 /* Oct */, 4)
+    )
+    assert(result === 20)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 10 /* Nov */, 30),
+      new Date(2021, 10 /* Nov */, 1)
+    )
+    assert(result === 22)
+  })
+
+  // Issue 2726 - lost business day
+  it('returns the number of business days between the given dates, excluding weekends', function () {
+    const result = differenceInBusinessDays(
+      new Date(2021, 10 /* Nov */, 30),
+      new Date(2021, 10 /* Nov */, 8)
+    )
+    assert(result === 17)
   })
 
   describe('edge cases', function () {
@@ -134,7 +233,9 @@ describe('differenceInBusinessDays', function () {
     })
 
     it('throws TypeError exception if passed less than 2 arguments', function () {
+      // @ts-expect-error
       assert.throws(differenceInBusinessDays.bind(null), TypeError)
+      // @ts-expect-error
       assert.throws(differenceInBusinessDays.bind(null, 1), TypeError)
     })
   })

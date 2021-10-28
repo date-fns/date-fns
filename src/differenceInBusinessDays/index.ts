@@ -1,11 +1,12 @@
+import isLastDayOfMonth from '../isLastDayOfMonth/index'
+import addDays from '../addDays/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name differenceInBusinessDays
@@ -41,6 +42,14 @@ export default function differenceInBusinessDays(
   const dateLeft = toDate(dirtyDateLeft)
   let dateRight = toDate(dirtyDateRight)
 
+  // Issue 2726 - one business day is lost
+  let lostBusinessDay = 0
+  if (
+    (dateRight.getDate() === 30 && isLastDayOfMonth(dateRight)) ||
+    (dateLeft.getDate() === 30 && isLastDayOfMonth(dateLeft))
+  )
+    lostBusinessDay = 1
+
   if (!isValid(dateLeft) || !isValid(dateRight)) return NaN
 
   const calendarDifference = differenceInCalendarDays(dateLeft, dateRight)
@@ -58,5 +67,5 @@ export default function differenceInBusinessDays(
     dateRight = addDays(dateRight, sign)
   }
 
-  return result === 0 ? 0 : result
+  return result === 0 ? 0 : result + lostBusinessDay
 }
