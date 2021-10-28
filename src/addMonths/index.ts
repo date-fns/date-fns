@@ -6,23 +6,29 @@
  * @description
  * Add the specified number of months to the given date.
  *
- * @param date - the date to be changed
- * @param amount - the amount of months to be added. Positive decimals will be rounded using `Math.floor`, decimals less than zero will be rounded using `Math.ceil`.
- * @returns the new date with the months added
+ * @param {Date|Number} date - the date to be changed
+ * @param {Number} amount - the amount of months to be added. Decimals will be rounded using `Math.trunc`.
+ * @returns {Date} the new date with the months added
  *
  * @example
  * // Add 5 months to 1 September 2014:
  * const result = addMonths(new Date(2014, 8, 1), 5)
  * //=> Sun Feb 01 2015 00:00:00
  */
-export default function addMonths(date: Date | number, amount: number): Date {
-  const result = new Date(date)
-  const months = Math.trunc(amount)
-
-  // If 0 months, no-op to avoid changing times in the hour before end of DST
-  if (!months) return result
-
-  const dayOfMonth = result.getDate()
+export default function addMonths(
+  inputDate: Date | number,
+  inputAmount: number
+): Date {
+  const date = new Date(inputDate)
+  if (isNaN(inputAmount)) {
+    return new Date(NaN)
+  }
+  if (!inputAmount) {
+    // If 0 months, no-op to avoid changing times in the hour before end of DST
+    return date
+  }
+  const amount = Math.trunc(inputAmount)
+  const dayOfMonth = date.getDate()
 
   // The JS Date object supports date math by accepting out-of-bounds values for
   // month, day, etc. For example, new Date(2020, 0, 0) returns 31 Dec 2019 and
@@ -32,8 +38,8 @@ export default function addMonths(date: Date | number, amount: number): Date {
   // we'll default to the end of the desired month by adding 1 to the desired
   // month and using a date of 0 to back up one day to the end of the desired
   // month.
-  const endOfDesiredMonth = new Date(result.getTime())
-  endOfDesiredMonth.setMonth(result.getMonth() + months + 1, 0)
+  const endOfDesiredMonth = new Date(date.getTime())
+  endOfDesiredMonth.setMonth(date.getMonth() + amount + 1, 0)
   const daysInMonth = endOfDesiredMonth.getDate()
   if (dayOfMonth >= daysInMonth) {
     // If we're already at the end of the month, then this is the correct date
@@ -47,11 +53,11 @@ export default function addMonths(date: Date | number, amount: number): Date {
     // the last day of the month and its local time was in the hour skipped or
     // repeated next to a DST transition.  So we use `date` instead which is
     // guaranteed to still have the original time.
-    result.setFullYear(
+    date.setFullYear(
       endOfDesiredMonth.getFullYear(),
       endOfDesiredMonth.getMonth(),
       dayOfMonth
     )
-    return result
+    return date
   }
 }
