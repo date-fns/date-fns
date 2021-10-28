@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -50,26 +49,5 @@ describe('getWeekYear', () => {
       },
     })
     assert(result === 2004)
-  })
-
-  it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', () => {
-    // @ts-expect-error
-    const block = getWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      weekStartsOn: NaN,
-    })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', () => {
-    // @ts-expect-error
-    const block = getWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN,
-    })
-    assert.throws(block, RangeError)
-  })
-
-  it('throws TypeError exception if passed less than 1 argument', () => {
-    // @ts-expect-error
-    assert.throws(getWeekYear.bind(null), TypeError)
   })
 })

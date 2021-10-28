@@ -1,8 +1,7 @@
 import getDate from '../getDate/index'
 import getDay from '../getDay/index'
 import startOfMonth from '../startOfMonth/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
+import type { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name getWeekOfMonth
@@ -12,10 +11,6 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the week of the month of the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the given date
  * @param options - an object with options.
  * @returns the week of month
@@ -23,27 +18,19 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // Which week of the month is 9 November 2017?
- * var result = getWeekOfMonth(new Date(2017, 10, 9))
+ * getWeekOfMonth(new Date(2017, 10, 9))
  * //=> 2
  */
-export default function getWeekOfMonth(date, dirtyOptions) {
-  requiredArgs(1, arguments)
-
-  var options = dirtyOptions || {}
-  var locale = options.locale
+export default function getWeekOfMonth(
+  date: Date | number,
+  options?: LocaleOptions & WeekStartOptions
+) {
+  var locale = options?.locale
   var localeWeekStartsOn =
     locale && locale.options && locale.options.weekStartsOn
-  var defaultWeekStartsOn =
-    localeWeekStartsOn == null ? 0 : toInteger(localeWeekStartsOn)
+  var defaultWeekStartsOn = localeWeekStartsOn == null ? 0 : localeWeekStartsOn
   var weekStartsOn =
-    options.weekStartsOn == null
-      ? defaultWeekStartsOn
-      : toInteger(options.weekStartsOn)
-
-  // Test if weekStartsOn is between 0 and 6 _and_ is not NaN
-  if (!(weekStartsOn >= 0 && weekStartsOn <= 6)) {
-    throw new RangeError('weekStartsOn must be between 0 and 6 inclusively')
-  }
+    options?.weekStartsOn == null ? defaultWeekStartsOn : options.weekStartsOn
 
   var currentDayOfMonth = getDate(date)
   if (isNaN(currentDayOfMonth)) {

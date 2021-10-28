@@ -27,13 +27,13 @@ import { millisecondsInWeek } from '../constants/index'
  *
  * @example
  * // Which week of the local week numbering year is 2 January 2005 with default options?
- * const result = getISOWeek(new Date(2005, 0, 2))
+ * getISOWeek(new Date(2005, 0, 2))
  * //=> 2
  *
  * // Which week of the local week numbering year is 2 January 2005,
  * // if Monday is the first day of the week,
  * // and the first week of the year always contains 4 January?
- * const result = getISOWeek(new Date(2005, 0, 2), {
+ * getISOWeek(new Date(2005, 0, 2), {
  *   weekStartsOn: 1,
  *   firstWeekContainsDate: 4
  * })

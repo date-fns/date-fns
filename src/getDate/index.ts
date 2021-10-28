@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDate
  * @category Day Helpers
@@ -9,22 +6,14 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the day of the month of the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the given date
  * @returns the day of month
  *
  * @example
  * // Which day of the month is 29 February 2012?
- * const result = getDate(new Date(2012, 1, 29))
+ * getDate(new Date(2012, 1, 29))
  * //=> 29
  */
-export default function getDate(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const dayOfMonth = date.getDate()
-  return dayOfMonth
+export default function getDate(date: Date | number): number {
+  return new Date(date).getDate()
 }

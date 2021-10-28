@@ -1,6 +1,5 @@
 import startOfISOWeekYear from '../startOfISOWeekYear/index'
 import addWeeks from '../addWeeks/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 const MILLISECONDS_IN_WEEK = 604800000
 
@@ -14,22 +13,16 @@ const MILLISECONDS_IN_WEEK = 604800000
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the given date
  * @returns the number of ISO weeks in a year
  *
  * @example
  * // How many weeks are in ISO week-numbering year 2015?
- * const result = getISOWeeksInYear(new Date(2015, 1, 11))
+ * getISOWeeksInYear(new Date(2015, 1, 11))
  * //=> 53
  */
-export default function getISOWeeksInYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const thisYear = startOfISOWeekYear(dirtyDate)
+export default function getISOWeeksInYear(date: Date | number): number {
+  const thisYear = startOfISOWeekYear(date)
   const nextYear = startOfISOWeekYear(addWeeks(thisYear, 60))
   const diff = nextYear.valueOf() - thisYear.valueOf()
   // Round the number of weeks to the nearest integer

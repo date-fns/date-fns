@@ -1,6 +1,4 @@
-import toDate from '../toDate/index'
 import startOfISOWeek from '../startOfISOWeek/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
  * @name getISOWeekYear
@@ -13,28 +11,17 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * ISO week-numbering year: http://en.wikipedia.org/wiki/ISO_week_date
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `getISOYear` to `getISOWeekYear`.
- *   "ISO week year" is short for [ISO week-numbering year](https://en.wikipedia.org/wiki/ISO_week_date).
- *   This change makes the name consistent with
- *   locale-dependent week-numbering year helpers, e.g., `getWeekYear`.
- *
  * @param date - the given date
  * @returns the ISO week-numbering year
  *
  * @example
  * // Which ISO-week numbering year is 2 January 2005?
- * const result = getISOWeekYear(new Date(2005, 0, 2))
+ * getISOWeekYear(new Date(2005, 0, 2))
  * //=> 2004
  */
-export default function getISOWeekYear(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+export default function getISOWeekYear(date: Date | number): number {
+  const dateClone = new Date(date)
+  const year = dateClone.getFullYear()
 
   const fourthOfJanuaryOfNextYear = new Date(0)
   fourthOfJanuaryOfNextYear.setFullYear(year + 1, 0, 4)
@@ -46,9 +33,9 @@ export default function getISOWeekYear(dirtyDate: Date | number): number {
   fourthOfJanuaryOfThisYear.setHours(0, 0, 0, 0)
   const startOfThisYear = startOfISOWeek(fourthOfJanuaryOfThisYear)
 
-  if (date.getTime() >= startOfNextYear.getTime()) {
+  if (dateClone.getTime() >= startOfNextYear.getTime()) {
     return year + 1
-  } else if (date.getTime() >= startOfThisYear.getTime()) {
+  } else if (dateClone.getTime() >= startOfThisYear.getTime()) {
     return year
   } else {
     return year - 1

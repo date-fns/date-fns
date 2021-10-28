@@ -71,14 +71,6 @@ describe('startOfWeekYear', function () {
     assert.throws(block, RangeError)
   })
 
-  it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
-    // @ts-expect-error
-    const block = startOfWeekYear.bind(null, new Date(2007, 11 /* Dec */, 31), {
-      firstWeekContainsDate: NaN,
-    })
-    assert.throws(block, RangeError)
-  })
-
   it('throws TypeError exception if passed less than 1 argument', function () {
     //@ts-expect-error
     assert.throws(startOfWeekYear.bind(null), TypeError)

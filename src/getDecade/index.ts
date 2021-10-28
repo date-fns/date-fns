@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name getDecade
  * @category Decade Helpers
@@ -9,23 +6,16 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Get the decade of the given date.
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param date - the given date
  * @returns the year of decade
  *
  * @example
  * // Which decade belongs 27 November 1942?
- * const result = getDecade(new Date(1942, 10, 27))
+ * getDecade(new Date(1942, 10, 27))
  * //=> 1940
  */
-export default function getDecade(dirtyDate: Date | number): number {
-  requiredArgs(1, arguments)
-
-  const date = toDate(dirtyDate)
-  const year = date.getFullYear()
+export default function getDecade(date: Date | number): number {
+  const year = new Date(date).getFullYear()
   const decade = Math.floor(year / 10) * 10
   return decade
 }

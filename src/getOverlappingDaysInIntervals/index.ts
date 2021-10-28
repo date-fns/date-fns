@@ -1,5 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import { Interval } from '../types'
 
 const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
@@ -11,40 +9,6 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  *
  * @description
  * Get the number of days that overlap in two time intervals
- *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
- * - The function was renamed from `getOverlappingDaysInRanges` to `getOverlappingDaysInIntervals`.
- *   This change was made to mirror the use of the word "interval" in standard ISO 8601:2004 terminology:
- *
- *   ```
- *   2.1.3
- *   time interval
- *   part of the time axis limited by two instants
- *   ```
- *
- *   Also, this function now accepts an object with `start` and `end` properties
- *   instead of two arguments as an interval.
- *   This function now throws `RangeError` if the start of the interval is after its end
- *   or if any date in the interval is `Invalid Date`.
- *
- *   ```javascript
- *   // Before v2.0.0
- *
- *   getOverlappingDaysInRanges(
- *     new Date(2014, 0, 10), new Date(2014, 0, 20),
- *     new Date(2014, 0, 17), new Date(2014, 0, 21)
- *   )
- *
- *   // v2.0.0 onward
- *
- *   getOverlappingDaysInIntervals(
- *     { start: new Date(2014, 0, 10), end: new Date(2014, 0, 20) },
- *     { start: new Date(2014, 0, 17), end: new Date(2014, 0, 21) }
- *   )
- *   ```
  *
  * @param intervalLeft - the first interval to compare. See [Interval]{@link docs/Interval}
  * @param intervalRight - the second interval to compare. See [Interval]{@link docs/Interval}
@@ -70,17 +34,13 @@ const MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000
  */
 
 export default function getOverlappingDaysInIntervals(
-  dirtyIntervalLeft: Interval,
-  dirtyIntervalRight: Interval
+  intervalLeft: Interval,
+  intervalRight: Interval
 ): number {
-  requiredArgs(2, arguments)
-
-  const intervalLeft = dirtyIntervalLeft || {}
-  const intervalRight = dirtyIntervalRight || {}
-  const leftStartTime = toDate(intervalLeft.start).getTime()
-  const leftEndTime = toDate(intervalLeft.end).getTime()
-  const rightStartTime = toDate(intervalRight.start).getTime()
-  const rightEndTime = toDate(intervalRight.end).getTime()
+  const leftStartTime = new Date(intervalLeft.start).getTime()
+  const leftEndTime = new Date(intervalLeft.end).getTime()
+  const rightStartTime = new Date(intervalRight.start).getTime()
+  const rightEndTime = new Date(intervalRight.end).getTime()
 
   // Throw an exception if start date is after end date or if any date is `Invalid Date`
   if (!(leftStartTime <= leftEndTime && rightStartTime <= rightEndTime)) {
