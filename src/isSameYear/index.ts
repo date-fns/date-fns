@@ -1,6 +1,3 @@
-import toDate from '../toDate/index'
-import requiredArgs from '../_lib/requiredArgs/index'
-
 /**
  * @name isSameYear
  * @category Year Helpers
@@ -9,26 +6,20 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @description
  * Are the given dates in the same year?
  *
- * ### v2.0.0 breaking changes:
- *
- * - [Changes that are common for the whole library](https://github.com/date-fns/date-fns/blob/master/docs/upgradeGuide.md#Common-Changes).
- *
  * @param dateLeft - the first date to check
  * @param dateRight - the second date to check
  * @returns the dates are in the same year
  *
  * @example
  * // Are 2 September 2014 and 25 September 2014 in the same year?
- * var result = isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
+ * isSameYear(new Date(2014, 8, 2), new Date(2014, 8, 25))
  * //=> true
  */
 export default function isSameYear(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number
 ): boolean {
-  requiredArgs(2, arguments)
-
-  const dateLeft = toDate(dirtyDateLeft)
-  const dateRight = toDate(dirtyDateRight)
-  return dateLeft.getFullYear() === dateRight.getFullYear()
+  const dateLeftClone = new Date(dateLeft)
+  const dateRightClone = new Date(dateRight)
+  return dateLeftClone.getFullYear() === dateRightClone.getFullYear()
 }
