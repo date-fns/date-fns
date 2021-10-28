@@ -1,6 +1,4 @@
-import requiredArgs from '../_lib/requiredArgs/index'
 import nextDay from '../nextDay/index'
-import toDate from '../toDate/index'
 
 /**
  * @name nextMonday
@@ -10,15 +8,14 @@ import toDate from '../toDate/index'
  * @description
  * When is the next Monday?
  *
- * @param {Date | number} date - the date to start counting from
+ * @param date - the date to start counting from
  * @returns the next Monday
  *
  * @example
  * // When is the next Monday after Mar, 22, 2020?
- * const result = nextMonday(new Date(2020, 2, 22))
+ * nextMonday(new Date(2020, 2, 22))
  * //=> Mon Mar 23 2020 00:00:00
  */
 export default function nextMonday(date: Date | number): Date {
-  requiredArgs(1, arguments)
-  return nextDay(toDate(date), 1)
+  return nextDay(date, 1)
 }
