@@ -16,8 +16,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * - Now, `closestTo` doesn't throw an exception
  *   when the second argument is not an array, and returns Invalid Date instead.
  *
- * @param {Date|Number} dateToCompare - the date to compare with
- * @param {Date[]|Number[]} datesArray - the array to search
+ * @param {Date | Number} dateToCompare - the date to compare with
+ * @param {Array<Date | number>} datesArray - the array to search
  * @returns {Date | undefined} the date from the array closest to the given date or undefined if no valid value is given
  * @throws {TypeError} 2 arguments required
  *
@@ -32,7 +32,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function closestTo(
   dirtyDateToCompare: Date | number,
-  dirtyDatesArray: Date[] | number[]
+  dirtyDatesArray: Array<Date | number>
 ): Date | undefined {
   requiredArgs(2, arguments)
 
@@ -42,7 +42,7 @@ export default function closestTo(
 
   const timeToCompare = dateToCompare.getTime()
 
-  let datesArray: unknown[]
+  let datesArray: Array<Date | number>
   // `dirtyDatesArray` is undefined or null
   if (dirtyDatesArray == null) {
     datesArray = []
@@ -56,10 +56,10 @@ export default function closestTo(
     datesArray = Array.prototype.slice.call(dirtyDatesArray)
   }
 
-  let result: unknown
-  let minDistance: unknown
-  datesArray.forEach(function(dirtyDate) {
-    const currentDate = toDate(dirtyDate as number | Date)
+  let result: Date | undefined
+  let minDistance: number
+  datesArray.forEach(function (dirtyDate) {
+    const currentDate = toDate(dirtyDate)
 
     if (isNaN(Number(currentDate))) {
       result = new Date(NaN)
@@ -74,5 +74,5 @@ export default function closestTo(
     }
   })
 
-  return result as Date
+  return result
 }
