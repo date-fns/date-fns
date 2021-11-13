@@ -19,6 +19,10 @@ export default function addDays(date: Date | number, amount: number): Date {
   const result = new Date(date)
   const days = Math.trunc(amount)
 
+  if (isNaN(amount)) {
+    return new Date(NaN)
+  }
+
   // If 0 days, no-op to avoid changing times in the hour before end of DST
   if (!days) return result
 

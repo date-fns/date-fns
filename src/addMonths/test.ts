@@ -4,7 +4,7 @@ import assert from 'assert'
 import addMonths from '.'
 import { getDstTransitions } from '../../test/dst/tzOffsetTransitions'
 
-describe.only('addMonths', () => {
+describe('addMonths', () => {
   it('adds the given number of months', () => {
     const result = addMonths(new Date(2014, 8 /* Sep */, 1), 5)
     assert.deepStrictEqual(result, new Date(2015, 1 /* Feb */, 1))
