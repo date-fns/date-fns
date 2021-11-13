@@ -48,7 +48,7 @@ describe('subQuarters', function () {
     assert(result instanceof Date && isNaN(result))
   })
 
-  it.only('returns `Invalid Date` if the given amount is NaN', function () {
+  it('returns `Invalid Date` if the given amount is NaN', function () {
     const result = subQuarters(new Date(2014, 8 /* Sep */, 1), NaN)
     // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
