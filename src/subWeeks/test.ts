@@ -25,13 +25,13 @@ describe('subWeeks', () => {
     assert.deepStrictEqual(date, new Date(2014, 8 /* Sep */, 1))
   })
 
-  it('returns `Invalid Date` if the given date is invalid', function () {
+  it('returns `Invalid Date` if the given date is invalid', () => {
     const result = subWeeks(new Date(NaN), 4)
     // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
   })
 
-  it('returns `Invalid Date` if the given amount is NaN', function () {
+  it('returns `Invalid Date` if the given amount is NaN', () => {
     const result = subWeeks(new Date(2014, 8 /* Sep */, 1), NaN)
     // @ts-expect-error
     assert(result instanceof Date && isNaN(result))
