@@ -1,5 +1,5 @@
 var formatRelativeLocale = {
-  lastWeek: "'el' eeee 'pasado a la' LT",
+  lastWeek: "'el' eeee 'pasado a la' p",
   yesterday: "'ayer a la' p",
   today: "'hoy a la' p",
   tomorrow: "'mañana a la' p",
