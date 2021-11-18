@@ -19473,6 +19473,9 @@ declare module 'date-fns/locale' {
   const zhCN: Locale
   namespace zhCN {}
 
+  const zhHK: Locale
+  namespace zhHK {}
+
   const zhTW: Locale
   namespace zhTW {}
 }
@@ -19895,6 +19898,11 @@ declare module 'date-fns/locale/vi' {
 declare module 'date-fns/locale/zh-CN' {
   import { zhCN } from 'date-fns/locale'
   export default zhCN
+}
+
+declare module 'date-fns/locale/zh-HK' {
+  import { zhHK } from 'date-fns/locale'
+  export default zhHK
 }
 
 declare module 'date-fns/locale/zh-TW' {
@@ -20322,6 +20330,11 @@ declare module 'date-fns/locale/zh-CN/index' {
   export default zhCN
 }
 
+declare module 'date-fns/locale/zh-HK/index' {
+  import { zhHK } from 'date-fns/locale'
+  export default zhHK
+}
+
 declare module 'date-fns/locale/zh-TW/index' {
   import { zhTW } from 'date-fns/locale'
   export default zhTW
@@ -20747,6 +20760,11 @@ declare module 'date-fns/locale/zh-CN/index.js' {
   export default zhCN
 }
 
+declare module 'date-fns/locale/zh-HK/index.js' {
+  import { zhHK } from 'date-fns/locale'
+  export default zhHK
+}
+
 declare module 'date-fns/locale/zh-TW/index.js' {
   import { zhTW } from 'date-fns/locale'
   export default zhTW
@@ -21006,6 +21024,9 @@ declare module 'date-fns/esm/locale' {
 
   const zhCN: Locale
   namespace zhCN {}
+
+  const zhHK: Locale
+  namespace zhHK {}
 
   const zhTW: Locale
   namespace zhTW {}
@@ -21429,6 +21450,11 @@ declare module 'date-fns/esm/locale/vi' {
 declare module 'date-fns/esm/locale/zh-CN' {
   import { zhCN } from 'date-fns/esm/locale'
   export default zhCN
+}
+
+declare module 'date-fns/esm/locale/zh-HK' {
+  import { zhHK } from 'date-fns/esm/locale'
+  export default zhHK
 }
 
 declare module 'date-fns/esm/locale/zh-TW' {
@@ -21856,6 +21882,11 @@ declare module 'date-fns/esm/locale/zh-CN/index' {
   export default zhCN
 }
 
+declare module 'date-fns/esm/locale/zh-HK/index' {
+  import { zhHK } from 'date-fns/esm/locale'
+  export default zhHK
+}
+
 declare module 'date-fns/esm/locale/zh-TW/index' {
   import { zhTW } from 'date-fns/esm/locale'
   export default zhTW
@@ -22279,6 +22310,11 @@ declare module 'date-fns/esm/locale/vi/index.js' {
 declare module 'date-fns/esm/locale/zh-CN/index.js' {
   import { zhCN } from 'date-fns/esm/locale'
   export default zhCN
+}
+
+declare module 'date-fns/esm/locale/zh-HK/index.js' {
+  import { zhHK } from 'date-fns/esm/locale'
+  export default zhHK
 }
 
 declare module 'date-fns/esm/locale/zh-TW/index.js' {

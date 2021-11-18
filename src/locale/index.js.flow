@@ -117,5 +117,6 @@ declare module.exports: {
   uz: Locale,
   vi: Locale,
   zhCN: Locale,
+  zhHK: Locale,
   zhTW: Locale,
 }
