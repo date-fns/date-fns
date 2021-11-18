@@ -6,7 +6,7 @@ var parseOrdinalNumberPattern = /\d+/i
 var matchEraPatterns = {
   narrow: /^(b|a)$/i,
   abbreviated: /^(b\.?\s?c\.?|b\.?\s?c\.?\s?e\.?|a\.?\s?d\.?|c\.?\s?e\.?)$/i,
-  wide: /^(Hz. İsa'dan öncə|ümumi eradan əvvəl|anno domini|ümumi dövr)$/i
+  wide: /^(bizim eradan əvvəl|bizim era)$/i
 }
 var parseEraPatterns = {
   any: [/^b$/i, /^(a|c)$/i]
