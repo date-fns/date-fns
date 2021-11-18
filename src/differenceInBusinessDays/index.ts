@@ -1,11 +1,11 @@
+import addDays from '../addDays/index'
+import differenceInCalendarDays from '../differenceInCalendarDays/index'
+import isSameDay from '../isSameDay/index'
 import isValid from '../isValid/index'
 import isWeekend from '../isWeekend/index'
 import toDate from '../toDate/index'
-import differenceInCalendarDays from '../differenceInCalendarDays/index'
-import addDays from '../addDays/index'
-import isSameDay from '../isSameDay/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name differenceInBusinessDays
@@ -26,11 +26,35 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // How many business days are between
  * // 10 January 2014 and 20 July 2014?
- * var result = differenceInBusinessDays(
+ * const result = differenceInBusinessDays(
  *   new Date(2014, 6, 20),
  *   new Date(2014, 0, 10)
  * )
  * //=> 136
+ *
+ * // How many business days are between
+ * // 1 November 2021 and 30 November 2021?
+ * const result = differenceInBusinessDays(
+ *   new Date(2021, 10, 1),
+ *   new Date(2021, 10, 30)
+ * )
+ * //=> 21
+ *
+ * // How many business days are between
+ * // 1 November 2021 and 1 December 2021?
+ * const result = differenceInBusinessDays(
+ *   new Date(2021, 10, 1),
+ *   new Date(2021, 11, 1)
+ * )
+ * //=> 22
+ *
+ * // How many business days are between
+ * // 1 November 2021 and 1 November 2021 ?
+ * const result = differenceInBusinessDays(
+ *   new Date(2021, 10, 1),
+ *   new Date(2021, 10, 1)
+ * )
+ * //=> 0
  */
 export default function differenceInBusinessDays(
   dirtyDateLeft: Date | number,
