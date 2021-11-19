@@ -8,6 +8,34 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.26.0 - 2021-11-19
+
+Thanks to @kossnocorp, @leshakoss, @tan75, @gaplo, @AbdAllahAbdElFattah13, @fturmel, @kentaro84207, @V-Gutierrez, @atefBB, @jhonatanmacazana, @zhirzh, @Haqverdi, @mandaputtra, @micnic and @rikkalo for working on the release.
+
+### Fixed
+
+- [Fixed `formatRelative` format for `lastWeek` in Spanish locale.](https://github.com/date-fns/date-fns/pull/2753)
+
+- [Fixed translation for October in Hindi locale.](https://github.com/date-fns/date-fns/pull/2729)
+
+- [Fixed Azerbaijani locale to use correct era matchers for `parse`.](https://github.com/date-fns/date-fns/pull/1633)
+
+- [Added the functions that use `weekStartsOn` and `firstWeekContainsDate` that were missing from the `Locale` documentation page.](https://github.com/date-fns/date-fns/pull/2652)
+
+### Changed
+
+- [Changed abbreviation for August from "Ags" to "Agt" in Indonesian locale.](https://github.com/date-fns/date-fns/pull/2658)
+
+### Added
+
+- [Added Irish English locale (`en-IE`).](https://github.com/date-fns/date-fns/pull/2772)
+
+- [Added Arabic locale (`ar`).](https://github.com/date-fns/date-fns/pull/2721) ([#1670](https://github.com/date-fns/date-fns/issues/1670))
+
+- [Added Hong Kong Traditional Chinese locale (zh-HK).](https://github.com/date-fns/date-fns/pull/2686) ([#2684](https://github.com/date-fns/date-fns/issues/2684))
+
+- [Added Egyptian Arabic locale (ar-EG).](https://github.com/date-fns/date-fns/pull/2699)
+
 ## v2.25.0 - 2021-10-05
 
 This release is brought to you by @kossnocorp, @gierschv, @fturmel, @redbmk, @mprovenc, @artyom-ivanov and @tan75.
