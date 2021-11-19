@@ -144,13 +144,13 @@ declare module 'date-fns' {
   function closestIndexTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): number
+  ): number | undefined
   namespace closestIndexTo {}
 
   function closestTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): Date
+  ): Date | undefined
   namespace closestTo {}
 
   function compareAsc(dateLeft: Date | number, dateRight: Date | number): number
@@ -4790,10 +4790,18 @@ declare module 'date-fns/fp' {
   const clamp: CurriedFn2<Interval, Date | number, Date>
   namespace clamp {}
 
-  const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
+  const closestIndexTo: CurriedFn2<
+    (Date | number)[],
+    Date | number,
+    number | undefined
+  >
   namespace closestIndexTo {}
 
-  const closestTo: CurriedFn2<(Date | number)[], Date | number, Date>
+  const closestTo: CurriedFn2<
+    (Date | number)[],
+    Date | number,
+    Date | undefined
+  >
   namespace closestTo {}
 
   const compareAsc: CurriedFn2<Date | number, Date | number, number>
@@ -9708,13 +9716,13 @@ declare module 'date-fns/esm' {
   function closestIndexTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): number
+  ): number | undefined
   namespace closestIndexTo {}
 
   function closestTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): Date
+  ): Date | undefined
   namespace closestTo {}
 
   function compareAsc(dateLeft: Date | number, dateRight: Date | number): number
@@ -14354,10 +14362,18 @@ declare module 'date-fns/esm/fp' {
   const clamp: CurriedFn2<Interval, Date | number, Date>
   namespace clamp {}
 
-  const closestIndexTo: CurriedFn2<(Date | number)[], Date | number, number>
+  const closestIndexTo: CurriedFn2<
+    (Date | number)[],
+    Date | number,
+    number | undefined
+  >
   namespace closestIndexTo {}
 
-  const closestTo: CurriedFn2<(Date | number)[], Date | number, Date>
+  const closestTo: CurriedFn2<
+    (Date | number)[],
+    Date | number,
+    Date | undefined
+  >
   namespace closestTo {}
 
   const compareAsc: CurriedFn2<Date | number, Date | number, number>
@@ -19230,6 +19246,9 @@ declare module 'date-fns/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arEG: Locale
+  namespace arEG {}
+
   const arMA: Locale
   namespace arMA {}
 
@@ -19283,6 +19302,9 @@ declare module 'date-fns/locale' {
 
   const enGB: Locale
   namespace enGB {}
+
+  const enIE: Locale
+  namespace enIE {}
 
   const enIN: Locale
   namespace enIN {}
@@ -19495,6 +19517,11 @@ declare module 'date-fns/locale/ar-DZ' {
   export default arDZ
 }
 
+declare module 'date-fns/locale/ar-EG' {
+  import { arEG } from 'date-fns/locale'
+  export default arEG
+}
+
 declare module 'date-fns/locale/ar-MA' {
   import { arMA } from 'date-fns/locale'
   export default arMA
@@ -19583,6 +19610,11 @@ declare module 'date-fns/locale/en-CA' {
 declare module 'date-fns/locale/en-GB' {
   import { enGB } from 'date-fns/locale'
   export default enGB
+}
+
+declare module 'date-fns/locale/en-IE' {
+  import { enIE } from 'date-fns/locale'
+  export default enIE
 }
 
 declare module 'date-fns/locale/en-IN' {
@@ -19925,6 +19957,11 @@ declare module 'date-fns/locale/ar-DZ/index' {
   export default arDZ
 }
 
+declare module 'date-fns/locale/ar-EG/index' {
+  import { arEG } from 'date-fns/locale'
+  export default arEG
+}
+
 declare module 'date-fns/locale/ar-MA/index' {
   import { arMA } from 'date-fns/locale'
   export default arMA
@@ -20013,6 +20050,11 @@ declare module 'date-fns/locale/en-CA/index' {
 declare module 'date-fns/locale/en-GB/index' {
   import { enGB } from 'date-fns/locale'
   export default enGB
+}
+
+declare module 'date-fns/locale/en-IE/index' {
+  import { enIE } from 'date-fns/locale'
+  export default enIE
 }
 
 declare module 'date-fns/locale/en-IN/index' {
@@ -20355,6 +20397,11 @@ declare module 'date-fns/locale/ar-DZ/index.js' {
   export default arDZ
 }
 
+declare module 'date-fns/locale/ar-EG/index.js' {
+  import { arEG } from 'date-fns/locale'
+  export default arEG
+}
+
 declare module 'date-fns/locale/ar-MA/index.js' {
   import { arMA } from 'date-fns/locale'
   export default arMA
@@ -20443,6 +20490,11 @@ declare module 'date-fns/locale/en-CA/index.js' {
 declare module 'date-fns/locale/en-GB/index.js' {
   import { enGB } from 'date-fns/locale'
   export default enGB
+}
+
+declare module 'date-fns/locale/en-IE/index.js' {
+  import { enIE } from 'date-fns/locale'
+  export default enIE
 }
 
 declare module 'date-fns/locale/en-IN/index.js' {
@@ -20782,6 +20834,9 @@ declare module 'date-fns/esm/locale' {
   const arDZ: Locale
   namespace arDZ {}
 
+  const arEG: Locale
+  namespace arEG {}
+
   const arMA: Locale
   namespace arMA {}
 
@@ -20835,6 +20890,9 @@ declare module 'date-fns/esm/locale' {
 
   const enGB: Locale
   namespace enGB {}
+
+  const enIE: Locale
+  namespace enIE {}
 
   const enIN: Locale
   namespace enIN {}
@@ -21047,6 +21105,11 @@ declare module 'date-fns/esm/locale/ar-DZ' {
   export default arDZ
 }
 
+declare module 'date-fns/esm/locale/ar-EG' {
+  import { arEG } from 'date-fns/esm/locale'
+  export default arEG
+}
+
 declare module 'date-fns/esm/locale/ar-MA' {
   import { arMA } from 'date-fns/esm/locale'
   export default arMA
@@ -21135,6 +21198,11 @@ declare module 'date-fns/esm/locale/en-CA' {
 declare module 'date-fns/esm/locale/en-GB' {
   import { enGB } from 'date-fns/esm/locale'
   export default enGB
+}
+
+declare module 'date-fns/esm/locale/en-IE' {
+  import { enIE } from 'date-fns/esm/locale'
+  export default enIE
 }
 
 declare module 'date-fns/esm/locale/en-IN' {
@@ -21477,6 +21545,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index' {
   export default arDZ
 }
 
+declare module 'date-fns/esm/locale/ar-EG/index' {
+  import { arEG } from 'date-fns/esm/locale'
+  export default arEG
+}
+
 declare module 'date-fns/esm/locale/ar-MA/index' {
   import { arMA } from 'date-fns/esm/locale'
   export default arMA
@@ -21565,6 +21638,11 @@ declare module 'date-fns/esm/locale/en-CA/index' {
 declare module 'date-fns/esm/locale/en-GB/index' {
   import { enGB } from 'date-fns/esm/locale'
   export default enGB
+}
+
+declare module 'date-fns/esm/locale/en-IE/index' {
+  import { enIE } from 'date-fns/esm/locale'
+  export default enIE
 }
 
 declare module 'date-fns/esm/locale/en-IN/index' {
@@ -21907,6 +21985,11 @@ declare module 'date-fns/esm/locale/ar-DZ/index.js' {
   export default arDZ
 }
 
+declare module 'date-fns/esm/locale/ar-EG/index.js' {
+  import { arEG } from 'date-fns/esm/locale'
+  export default arEG
+}
+
 declare module 'date-fns/esm/locale/ar-MA/index.js' {
   import { arMA } from 'date-fns/esm/locale'
   export default arMA
@@ -21995,6 +22078,11 @@ declare module 'date-fns/esm/locale/en-CA/index.js' {
 declare module 'date-fns/esm/locale/en-GB/index.js' {
   import { enGB } from 'date-fns/esm/locale'
   export default enGB
+}
+
+declare module 'date-fns/esm/locale/en-IE/index.js' {
+  import { enIE } from 'date-fns/esm/locale'
+  export default enIE
 }
 
 declare module 'date-fns/esm/locale/en-IN/index.js' {
@@ -22362,9 +22450,12 @@ interface dateFns {
   closestIndexTo(
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ): number
+  ): number | undefined
 
-  closestTo(dateToCompare: Date | number, datesArray: (Date | number)[]): Date
+  closestTo(
+    dateToCompare: Date | number,
+    datesArray: (Date | number)[]
+  ): Date | undefined
 
   compareAsc(dateLeft: Date | number, dateRight: Date | number): number
 

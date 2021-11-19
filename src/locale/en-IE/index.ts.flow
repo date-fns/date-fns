@@ -1,11 +1,6 @@
 // @flow
 // This file is generated automatically by `scripts/build/typings.js`. Please, don't change it.
 
-export type Interval = {
-  start: Date | number,
-  end: Date | number,
-}
-
 export type Locale = {
   code?: string,
   formatDistance?: (...args: Array<any>) => any,
@@ -37,26 +32,4 @@ export type Locale = {
   },
 }
 
-export type Duration = {
-  years?: number,
-  months?: number,
-  weeks?: number,
-  days?: number,
-  hours?: number,
-  minutes?: number,
-  seconds?: number,
-}
-
-export type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
-
-type CurriedFn1<A, R> = <A>(a: A) => R
-
-type CurriedFn2<A, B, R> = <A>(
-  a: A
-) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
-
-declare module.exports: CurriedFn2<
-  (Date | number)[],
-  Date | number,
-  Date | undefined
->
+declare module.exports: Locale

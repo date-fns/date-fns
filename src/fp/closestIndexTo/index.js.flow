@@ -55,4 +55,8 @@ type CurriedFn2<A, B, R> = <A>(
   a: A
 ) => CurriedFn1<B, R> | (<A, B>(a: A, b: B) => R)
 
-declare module.exports: CurriedFn2<(Date | number)[], Date | number, number>
+declare module.exports: CurriedFn2<
+  (Date | number)[],
+  Date | number,
+  number | undefined
+>

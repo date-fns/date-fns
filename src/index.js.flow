@@ -87,12 +87,12 @@ declare module.exports: {
   closestIndexTo: (
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ) => number,
+  ) => number | undefined,
 
   closestTo: (
     dateToCompare: Date | number,
     datesArray: (Date | number)[]
-  ) => Date,
+  ) => Date | undefined,
 
   compareAsc: (dateLeft: Date | number, dateRight: Date | number) => number,
 
