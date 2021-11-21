@@ -79,7 +79,6 @@ describe('getWeekOfMonth', function () {
     try {
       getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), { weekStartsOn: NaN })
     } catch (e) {
-      console.log(e)
       assert(e instanceof RangeError)
     }
   })
