@@ -83,6 +83,7 @@ describe('getWeekOfMonth', function () {
       assert(e instanceof RangeError)
     }
   })
+
   it('returns the week of the month of the given date, when the given date is sunday', function () {
     var result = getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
       weekStartsOn: 1,
