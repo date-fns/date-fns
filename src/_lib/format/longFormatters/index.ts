@@ -29,14 +29,14 @@ function timeLongFormatter(pattern: string, formatLong: FormatLong) {
 }
 
 function dateTimeLongFormatter(pattern: string, formatLong: FormatLong) {
-  const matchResult = pattern.match(/(P+)(p+)?/)
-
-  if (!matchResult) {
-    return dateLongFormatter(pattern, formatLong)
-  }
+  const matchResult = pattern.match(/(P+)(p+)?/) || []
 
   const datePattern = matchResult[1]
   const timePattern = matchResult[2]
+
+  if (!timePattern) {
+    return dateLongFormatter(pattern, formatLong)
+  }
 
   let dateTimeFormat: string
 
