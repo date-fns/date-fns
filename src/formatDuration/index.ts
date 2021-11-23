@@ -29,7 +29,7 @@ interface Options {
  * @param {Duration} duration - the duration to format
  * @param {Object} [options] - an object with options.
  * @param {string[]} [options.format=['years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds']] - the array of units to format
- * @param {boolean} [options.zero=false] - should be zeros be included in the output?
+ * @param {boolean} [options.zero=false] - should zeros be included in the output?
  * @param {string} [options.delimiter=' '] - delimiter string
  * @param {Locale} [options.locale=defaultLocale] - the locale object. See [Locale]{@link https://date-fns.org/docs/Locale}
  * @returns {string} the formatted date string
@@ -46,7 +46,7 @@ interface Options {
  *   minutes: 9,
  *   seconds: 30
  * })
- * //=> '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds
+ * //=> '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds'
  *
  * @example
  * // Format partial duration
