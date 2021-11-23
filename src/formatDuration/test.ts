@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatDuration from '.'
 
 describe('formatDuration', () => {
@@ -13,7 +13,7 @@ describe('formatDuration', () => {
         days: 7,
         hours: 5,
         minutes: 9,
-        seconds: 30
+        seconds: 30,
       }) === '2 years 9 months 1 week 7 days 5 hours 9 minutes 30 seconds'
     )
   })
@@ -32,7 +32,7 @@ describe('formatDuration', () => {
           days: 7,
           hours: 5,
           minutes: 9,
-          seconds: 30
+          seconds: 30,
         },
         { format: ['months', 'weeks'] }
       ) === '9 months 1 week'
@@ -48,7 +48,7 @@ describe('formatDuration', () => {
         days: 0,
         hours: 0,
         minutes: 0,
-        seconds: 0
+        seconds: 0,
       }) === '1 week'
     )
   })
@@ -63,7 +63,7 @@ describe('formatDuration', () => {
           days: 0,
           hours: 0,
           minutes: 0,
-          seconds: 0
+          seconds: 0,
         },
         { zero: true }
       ) === '0 years 0 months 1 week 0 days 0 hours 0 minutes 0 seconds'
