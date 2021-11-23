@@ -85,14 +85,14 @@ function getType(
   return typeStrings.map((typeString) => `${prefix}${typeString}`).join(' | ')
 }
 
-function getFPFnType(params, returns) {
+function getFPFnType(params, returns, { flowType = false } = {}) {
   const fpParamTypes = params.map((param) =>
-    getType(param.type.names, { props: param.props })
+    getType(param.type.names, { props: param.props, flowType })
   )
 
   const arity = fpParamTypes.length
 
-  fpParamTypes.push(getType(returns))
+  fpParamTypes.push(getType(returns, { flowType }))
 
   return `CurriedFn${arity}<${fpParamTypes.join(', ')}>`
 }

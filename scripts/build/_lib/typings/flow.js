@@ -81,7 +81,9 @@ function generateFlowFnIndexTyping(fns, aliasDeclarations, constants) {
 function generateFlowFPFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
-  const type = getFPFnType(args, content.returns[0].type.names)
+  const type = getFPFnType(args, content.returns[0].type.names, {
+    flowType: true,
+  })
 
   const typingFile = formatFlowFile`
     ${addSeparator(aliasDeclarations, '\n')}
