@@ -75,6 +75,14 @@ describe('getWeekOfMonth', function () {
     assert.throws(getWeekOfMonth.bind(null), TypeError)
   })
 
+  it('throws RangeError exception weekStartsOn is NaN', function () {
+    try {
+      getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), { weekStartsOn: NaN })
+    } catch (e) {
+      assert(e instanceof RangeError)
+    }
+  })
+
   it('returns the week of the month of the given date, when the given date is sunday', function () {
     var result = getWeekOfMonth(new Date(2019, 4 /* May */, 5), {
       weekStartsOn: 1,
