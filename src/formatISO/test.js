@@ -2,6 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
+import sinon from 'sinon'
 import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
 
@@ -31,6 +32,21 @@ describe('formatISO', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const tzOffsetExtended = generateOffset(date)
     assert(formatISO(date) === `2019-03-03T19:00:52${tzOffsetExtended}`)
+
+    const getTimezoneOffsetStub = sinon.stub(
+      Date.prototype,
+      'getTimezoneOffset'
+    )
+
+    getTimezoneOffsetStub.returns(480)
+    const tzNegativeOffsetExtended = generateOffset(date)
+    assert(formatISO(date) === `2019-03-03T19:00:52${tzNegativeOffsetExtended}`)
+
+    getTimezoneOffsetStub.returns(0)
+    const tzZOffsetExtended = generateOffset(date)
+    assert(formatISO(date) === `2019-03-03T19:00:52${tzZOffsetExtended}`)
+
+    getTimezoneOffsetStub.restore()
   })
 
   it('accepts a timestamp', () => {
@@ -74,8 +90,8 @@ describe('formatISO', () => {
     )
   })
 
-  describe('implicitly converts options', function() {
-    it('`format`', function() {
+  describe('implicitly converts options', function () {
+    it('`format`', function () {
       // eslint-disable-next-line no-new-wrappers
       var format = new String('basic')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -85,7 +101,7 @@ describe('formatISO', () => {
       assert(result === `20191004T123013${tzOffsetExtended}`)
     })
 
-    it('`representation`', function() {
+    it('`representation`', function () {
       // eslint-disable-next-line no-new-wrappers
       var representation = new String('time')
       var date = new Date(2019, 9 /* Oct */, 4, 12, 30, 13, 456)
@@ -96,18 +112,18 @@ describe('formatISO', () => {
     })
   })
 
-  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function() {
+  it("throws `RangeError` if `options.format` is not 'extended' or 'basic'", function () {
     // $ExpectedMistake
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      format: 'something else'
+      format: 'something else',
     })
     assert.throws(block, RangeError)
   })
 
-  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function() {
+  it("throws `RangeError` if `options.representation` is not 'date', 'time' or 'complete'", function () {
     // $ExpectedMistake
     var block = formatISO.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      representation: 'something else'
+      representation: 'something else',
     })
     assert.throws(block, RangeError)
   })
@@ -116,7 +132,7 @@ describe('formatISO', () => {
     assert.throws(formatISO.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
     assert.throws(formatISO.bind(null), TypeError)
   })
 })
