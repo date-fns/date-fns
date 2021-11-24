@@ -1,9 +1,9 @@
+import toDate from '../../toDate/index'
 import {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-} from 'src/types'
-import toDate from '../../toDate/index'
+} from '../../types'
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
 import toInteger from '../toInteger/index'
