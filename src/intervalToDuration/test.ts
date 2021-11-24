@@ -3,8 +3,8 @@
 import assert from 'power-assert'
 import intervalToDuration from '.'
 
-describe('intervalToDuration', function () {
-  it('returns correct duration for arbitrary dates', function () {
+describe('intervalToDuration', () => {
+  it('returns correct duration for arbitrary dates', () => {
     const start = new Date(1929, 0, 15, 12, 0, 0)
     const end = new Date(1968, 3, 4, 19, 5, 0)
     const result = intervalToDuration({ start, end })
@@ -19,7 +19,7 @@ describe('intervalToDuration', function () {
     })
   })
 
-  it('returns correct duration (1 of everything)', function () {
+  it('returns correct duration (1 of everything)', () => {
     const start = new Date(2020, 2, 1, 12, 0, 0)
     const end = new Date(2021, 3, 2, 13, 1, 1)
     const result = intervalToDuration({ start, end })
@@ -34,7 +34,7 @@ describe('intervalToDuration', function () {
     })
   })
 
-  it('returns duration of 0 when the dates are the same', function () {
+  it('returns duration of 0 when the dates are the same', () => {
     const start = new Date(2020, 2, 1, 12, 0, 0)
     const end = new Date(2020, 2, 1, 12, 0, 0)
     const result = intervalToDuration({ start, end })
@@ -49,8 +49,32 @@ describe('intervalToDuration', function () {
     })
   })
 
-  describe('edge cases', function () {
-    it('returns correct duration for dates in the end of Feb - issue 2255', function () {
+  describe('throws RangeError', () => {
+    it('throws error if start date is invalid', () => {
+      try {
+        const invalidStart = new Date(NaN)
+        const end = new Date(2020, 2, 1, 12, 0, 0)
+        intervalToDuration({ start: invalidStart, end })
+      } catch (e: any) {
+        assert(e instanceof RangeError)
+        assert(e['message'] === 'Start Date is invalid')
+      }
+    })
+
+    it('throws error if end date is invalid', () => {
+      try {
+        const start = new Date(2020, 2, 1, 12, 0, 0)
+        const invalidEnd = new Date(NaN)
+        intervalToDuration({ start, end: invalidEnd })
+      } catch (e: any) {
+        assert(e instanceof RangeError)
+        assert(e['message'] === 'End Date is invalid')
+      }
+    })
+  })
+
+  describe('edge cases', () => {
+    it('returns correct duration for dates in the end of Feb - issue 2255', () => {
       assert.deepEqual(
         intervalToDuration({
           start: new Date(2012, 1 /* Feb */, 28, 9, 0, 0),
