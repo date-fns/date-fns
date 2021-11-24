@@ -1,4 +1,6 @@
-function dateLongFormatter(pattern, formatLong) {
+import { FormatLong } from '../../../locale/types'
+
+function dateLongFormatter(pattern: string, formatLong: FormatLong) {
   switch (pattern) {
     case 'P':
       return formatLong.date({ width: 'short' })
@@ -12,7 +14,7 @@ function dateLongFormatter(pattern, formatLong) {
   }
 }
 
-function timeLongFormatter(pattern, formatLong) {
+function timeLongFormatter(pattern: string, formatLong: FormatLong) {
   switch (pattern) {
     case 'p':
       return formatLong.time({ width: 'short' })
@@ -26,16 +28,16 @@ function timeLongFormatter(pattern, formatLong) {
   }
 }
 
-function dateTimeLongFormatter(pattern, formatLong) {
-  var matchResult = pattern.match(/(P+)(p+)?/)
-  var datePattern = matchResult[1]
-  var timePattern = matchResult[2]
+function dateTimeLongFormatter(pattern: string, formatLong: FormatLong) {
+  const matchResult = pattern.match(/(P+)(p+)?/) || []
+  const datePattern = matchResult[1]
+  const timePattern = matchResult[2]
 
   if (!timePattern) {
     return dateLongFormatter(pattern, formatLong)
   }
 
-  var dateTimeFormat
+  let dateTimeFormat: string
 
   switch (datePattern) {
     case 'P':
@@ -58,9 +60,9 @@ function dateTimeLongFormatter(pattern, formatLong) {
     .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
-var longFormatters = {
+const longFormatters = {
   p: timeLongFormatter,
-  P: dateTimeLongFormatter
+  P: dateTimeLongFormatter,
 }
 
 export default longFormatters
