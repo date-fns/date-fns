@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import sinon from 'sinon'
 import formatRFC3339 from '.'
 import toInteger from '../_lib/toInteger/index'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
@@ -29,6 +30,16 @@ describe('formatRFC3339', () => {
   it('formats RFC-3339 date string', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     assert(formatRFC3339(date) === `2019-03-03T19:00:52${generateOffset(date)}`)
+
+    var getTimezoneOffsetStub = sinon.stub(Date.prototype, 'getTimezoneOffset')
+
+    getTimezoneOffsetStub.returns(0)
+    assert(formatRFC3339(date) === '2019-03-03T19:00:52Z')
+
+    getTimezoneOffsetStub.returns(480)
+    assert(formatRFC3339(date) === '2019-03-03T19:00:52-08:00')
+
+    getTimezoneOffsetStub.restore()
   })
 
   it('accepts a timestamp', function () {
@@ -41,7 +52,7 @@ describe('formatRFC3339', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 789)
     assert(
       formatRFC3339(date, { fractionDigits: 3 }) ===
-      `2019-12-11T01:00:00.789${generateOffset(date)}`
+        `2019-12-11T01:00:00.789${generateOffset(date)}`
     )
   })
 
@@ -49,7 +60,7 @@ describe('formatRFC3339', () => {
     const date = new Date(2019, 11 /* Dec */, 11, 1, 0, 0, 12)
     assert(
       formatRFC3339(date, { fractionDigits: 2 }) ===
-      `2019-12-11T01:00:00.01${generateOffset(date)}`
+        `2019-12-11T01:00:00.01${generateOffset(date)}`
     )
   })
 
@@ -57,7 +68,7 @@ describe('formatRFC3339', () => {
     const date = new Date(2019, 2 /* Mar */, 3, 19, 0, 52, 123)
     const result = formatRFC3339(date, {
       // @ts-expect-error
-      fractionDigits: '2'
+      fractionDigits: '2',
     })
     assert.equal(result, `2019-03-03T19:00:52.12${generateOffset(date)}`)
   })
@@ -65,7 +76,7 @@ describe('formatRFC3339', () => {
   it('throws `RangeError` if `options.fractionDigits` is not convertable to 0, 1, 2, 3 or undefined', function () {
     // @ts-expect-error
     const block = formatRFC3339.bind(null, new Date(2019, 2 /* Mar */, 3), {
-      fractionDigits: NaN
+      fractionDigits: NaN,
     })
     assert.throws(block, RangeError)
   })
