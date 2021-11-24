@@ -44,7 +44,7 @@ function generateFlowFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
   const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-  const returns = getType(content.returns[0].type.names)
+  const returns = getType(content.returns[0].type.names, { flowType: true })
 
   const moduleDeclaration = `declare module.exports: ${params} => ${returns}`
 
@@ -60,7 +60,7 @@ function generateFlowFnTyping(fn, aliasDeclarations) {
 function generateFlowFnIndexTyping(fns, aliasDeclarations, constants) {
   const fnsDeclarations = fns.map(({ title, args, content }) => {
     const params = getParams(args, { leftBorder: '(', rightBorder: ')' })
-    const returns = getType(content.returns[0].type.names)
+    const returns = getType(content.returns[0].type.names, { flowType: true })
     return `${title}: ${params} => ${returns}`
   })
 
@@ -81,7 +81,9 @@ function generateFlowFnIndexTyping(fns, aliasDeclarations, constants) {
 function generateFlowFPFnTyping(fn, aliasDeclarations) {
   const { title, args, content } = fn
 
-  const type = getFPFnType(args, content.returns[0].type.names)
+  const type = getFPFnType(args, content.returns[0].type.names, {
+    flowType: true,
+  })
 
   const typingFile = formatFlowFile`
     ${addSeparator(aliasDeclarations, '\n')}
@@ -97,7 +99,9 @@ function generateFlowFPFnTyping(fn, aliasDeclarations) {
 function generateFlowFPFnIndexTyping(fns, aliasDeclarations, constants) {
   const fnsDeclarations = fns.map(
     ({ title, args, content }) =>
-      `${title}: ${getFPFnType(args, content.returns[0].type.names)}`
+      `${title}: ${getFPFnType(args, content.returns[0].type.names, {
+        flowType: true,
+      })}`
   )
 
   const typingFile = formatFlowFile`

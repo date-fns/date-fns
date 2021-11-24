@@ -102,12 +102,8 @@ declare module.exports: {
     boolean
   >,
   clamp: CurriedFn2<Interval, Date | number, Date>,
-  closestIndexTo: CurriedFn2<
-    (Date | number)[],
-    Date | number,
-    number | undefined
-  >,
-  closestTo: CurriedFn2<(Date | number)[], Date | number, Date | undefined>,
+  closestIndexTo: CurriedFn2<(Date | number)[], Date | number, ?number>,
+  closestTo: CurriedFn2<(Date | number)[], Date | number, ?Date>,
   compareAsc: CurriedFn2<Date | number, Date | number, number>,
   compareDesc: CurriedFn2<Date | number, Date | number, number>,
   daysToWeeks: CurriedFn1<number, number>,
