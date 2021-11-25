@@ -42,7 +42,7 @@ export default function eachMinuteOfInterval(
   requiredArgs(1, arguments)
 
   const startDate = startOfMinute(toDate(interval.start))
-  const endDate = startOfMinute(toDate(interval.end))
+  const endDate = toDate(interval.end)
 
   const startTime = startDate.getTime()
   const endTime = endDate.getTime()

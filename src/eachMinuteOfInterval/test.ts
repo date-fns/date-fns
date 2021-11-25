@@ -56,6 +56,14 @@ describe('eachMinuteOfInterval', () => {
     assert.throws(block, RangeError)
   })
 
+  it('treats intervals shorter than a minute as valid', () => {
+    const block = eachMinuteOfInterval.bind(null, {
+      start: new Date(2014, 10, 14, 10, 1, 0),
+      end: new Date(2014, 10, 14, 10, 1, 1),
+    })
+    assert.doesNotThrow(block, RangeError)
+  })
+
   describe('options.step', () => {
     const interval = {
       start: new Date(2020, 9, 14, 13, 1),
