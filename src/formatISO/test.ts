@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import sinon from 'sinon'
 import formatISO from '.'
 import addLeadingZeros from '../_lib/addLeadingZeros'
@@ -140,6 +140,7 @@ describe('formatISO', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(formatISO.bind(null), TypeError)
   })
 })
