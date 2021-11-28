@@ -1,11 +1,12 @@
 import toDate from '../toDate/index'
-import isValid from '../isValid/index'
+import type { FormatOptions, RepresentationOptions } from '../types'
 import addLeadingZeros from '../_lib/addLeadingZeros/index'
+import requiredArgs from '../_lib/requiredArgs'
 
 /**
  * @name formatISO
  * @category Common Helpers
- * @summary Format the date according to the ISO 8601 standard (http://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
+ * @summary Format the date according to the ISO 8601 standard (https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm).
  *
  * @description
  * Return the formatted date string in ISO 8601 format. Options may be passed to control the parts and notations of the date.
@@ -13,20 +14,20 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * @param {Date|Number} date - the original date
  * @param {Object} [options] - an object with options.
  * @param {'extended'|'basic'} [options.format='extended'] - if 'basic', hide delimiters between date and time values.
- * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time with time zone, or both.
- * @returns {String} the formatted date string
+ * @param {'complete'|'date'|'time'} [options.representation='complete'] - format date, time with local time zone, or both.
+ * @returns {String} the formatted date string (in local time zone)
  * @throws {TypeError} 1 argument required
  * @throws {RangeError} `date` must not be Invalid Date
  * @throws {RangeError} `options.format` must be 'extended' or 'basic'
  * @throws {RangeError} `options.represenation` must be 'date', 'time' or 'complete'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format (UTC):
+ * // Represent 18 September 2019 in ISO 8601 format (local time zone is UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52))
  * //=> '2019-09-18T19:00:52Z'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601, short format (UTC):
+ * // Represent 18 September 2019 in ISO 8601, short format (local time zone is UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { format: 'basic' })
  * //=> '20190918T190052'
  *
@@ -36,27 +37,26 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * //=> '2019-09-18'
  *
  * @example
- * // Represent 18 September 2019 in ISO 8601 format, time only (UTC):
+ * // Represent 18 September 2019 in ISO 8601 format, time only (local time zone is UTC):
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO(dirtyDate, dirtyOptions) {
-  if (arguments.length < 1) {
-    throw new TypeError(
-      `1 argument required, but only ${arguments.length} present`
-    )
-  }
+export default function formatISO(
+  date: Date | number,
+  options?: FormatOptions & RepresentationOptions
+): string {
+  requiredArgs(1, arguments)
 
-  const originalDate = toDate(dirtyDate)
+  const originalDate = toDate(date)
 
-  if (!isValid(originalDate)) {
+  if (isNaN(originalDate.getTime())) {
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
-  const format = options.format == null ? 'extended' : String(options.format)
-  const representation =
-    options.representation == null ? 'complete' : String(options.representation)
+  const format = !options?.format ? 'extended' : String(options.format)
+  const representation = !options?.representation
+    ? 'complete'
+    : String(options.representation)
 
   if (format !== 'extended' && format !== 'basic') {
     throw new RangeError("format must be 'extended' or 'basic'")
