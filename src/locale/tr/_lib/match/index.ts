@@ -1,40 +1,42 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import type { Match } from '../../../types'
+import { Quarter } from '../../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
-var matchOrdinalNumberPattern = /^(\d+)(\.)?/i
-var parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
+const parseOrdinalNumberPattern = /\d+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(mö|ms)/i,
   abbreviated: /^(mö|ms)/i,
-  wide: /^(milattan önce|milattan sonra)/i
+  wide: /^(milattan önce|milattan sonra)/i,
 }
-var parseEraPatterns = {
-  any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i]
+const parseEraPatterns = {
+  any: [/(^mö|^milattan önce)/i, /(^ms|^milattan sonra)/i] as const,
 }
 
-var matchQuarterPatterns = {
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^[1234]ç/i,
-  wide: /^((i|İ)lk|(i|İ)kinci|üçüncü|son) çeyrek/i
+  wide: /^((i|İ)lk|(i|İ)kinci|üçüncü|son) çeyrek/i,
 }
-var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i],
-  abbreviated: [/1ç/i, /2ç/i, /3ç/i, /4ç/i],
+const parseQuarterPatterns = {
+  any: [/1/i, /2/i, /3/i, /4/i] as const,
+  abbreviated: [/1ç/i, /2ç/i, /3ç/i, /4ç/i] as const,
   wide: [
     /^(i|İ)lk çeyrek/i,
     /(i|İ)kinci çeyrek/i,
     /üçüncü çeyrek/i,
-    /son çeyrek/i
-  ]
+    /son çeyrek/i,
+  ] as const,
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   narrow: /^[oşmnhtaek]/i,
   abbreviated: /^(oca|şub|mar|nis|may|haz|tem|ağu|eyl|eki|kas|ara)/i,
-  wide: /^(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)/i
+  wide: /^(ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık)/i,
 }
-var parseMonthPatterns = {
+const parseMonthPatterns = {
   narrow: [
     /^o/i,
     /^ş/i,
@@ -47,8 +49,8 @@ var parseMonthPatterns = {
     /^e/i,
     /^e/i,
     /^k/i,
-    /^a/i
-  ],
+    /^a/i,
+  ] as const,
   any: [
     /^o/i,
     /^ş/i,
@@ -61,19 +63,19 @@ var parseMonthPatterns = {
     /^ey/i,
     /^ek/i,
     /^k/i,
-    /^ar/i
-  ]
+    /^ar/i,
+  ] as const,
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   narrow: /^[psçc]/i,
   short: /^(pz|pt|sa|ça|pe|cu|ct)/i,
-  abbreviated: /^(paz|pts|sal|çar|per|cum|cts)/i,
-  wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i
+  abbreviated: /^(paz|pzt|sal|çar|per|cum|cts)/i,
+  wide: /^(pazar|pazartesi|salı|çarşamba|perşembe|cuma|cumartesi)/i,
 }
-var parseDayPatterns = {
-  narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i],
-  any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i],
+const parseDayPatterns = {
+  narrow: [/^p/i, /^p/i, /^s/i, /^ç/i, /^p/i, /^c/i, /^c/i] as const,
+  any: [/^pz/i, /^pt/i, /^sa/i, /^ça/i, /^pe/i, /^cu/i, /^ct/i] as const,
   wide: [
     /^pazar/i,
     /^pazartesi/i,
@@ -81,15 +83,15 @@ var parseDayPatterns = {
     /^çarşamba/i,
     /^perşembe/i,
     /^cuma/i,
-    /cumartesi/i
-  ]
+    /cumartesi/i,
+  ] as const,
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(öö|ös|gy|ö|sa|ös|ak|ge)/i,
-  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i
+  any: /^(ö\.?\s?[ös]\.?|öğleden sonra|gece yarısı|öğle|(sabah|öğ|akşam|gece)(leyin))/i,
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^ö\.?ö\.?/i,
     pm: /^ö\.?s\.?/i,
@@ -98,24 +100,24 @@ var parseDayPeriodPatterns = {
     morning: /^sa/i,
     afternoon: /^öğleden sonra/i,
     evening: /^ak/i,
-    night: /^ge/i
-  }
+    night: /^ge/i,
+  },
 }
 
-var match = {
+const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function(value) {
+    valueCallback: function (value) {
       return parseInt(value, 10)
-    }
+    },
   }),
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   quarter: buildMatchFn({
@@ -123,31 +125,29 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
-      return index + 1
-    }
+    valueCallback: (index) => (index + 1) as Quarter,
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
+    defaultParseWidth: 'any',
+  }),
 }
 
 export default match
