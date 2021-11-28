@@ -117,7 +117,7 @@ export default function buildLocalizeFn<
       : ((dirtyIndex as LocalizeUnitIndex<Result>) as unknown)) as LocalizeUnitValuesIndex<
       typeof valuesArray
     >
-    // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challange you to try to remove it!
+    // @ts-ignore: For some reason TypeScript just don't want to match it, no matter how hard we try. I challenge you to try to remove it!
     return valuesArray[index]
   }
 }
