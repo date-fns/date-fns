@@ -19396,6 +19396,9 @@ declare module 'date-fns/locale' {
   const kk: Locale
   namespace kk {}
 
+  const km: Locale
+  namespace km {}
+
   const kn: Locale
   namespace kn {}
 
@@ -19765,6 +19768,11 @@ declare module 'date-fns/locale/ka' {
 declare module 'date-fns/locale/kk' {
   import { kk } from 'date-fns/locale'
   export default kk
+}
+
+declare module 'date-fns/locale/km' {
+  import { km } from 'date-fns/locale'
+  export default km
 }
 
 declare module 'date-fns/locale/kn' {
@@ -20207,6 +20215,11 @@ declare module 'date-fns/locale/kk/index' {
   export default kk
 }
 
+declare module 'date-fns/locale/km/index' {
+  import { km } from 'date-fns/locale'
+  export default km
+}
+
 declare module 'date-fns/locale/kn/index' {
   import { kn } from 'date-fns/locale'
   export default kn
@@ -20647,6 +20660,11 @@ declare module 'date-fns/locale/kk/index.js' {
   export default kk
 }
 
+declare module 'date-fns/locale/km/index.js' {
+  import { km } from 'date-fns/locale'
+  export default km
+}
+
 declare module 'date-fns/locale/kn/index.js' {
   import { kn } from 'date-fns/locale'
   export default kn
@@ -20983,6 +21001,9 @@ declare module 'date-fns/esm/locale' {
 
   const kk: Locale
   namespace kk {}
+
+  const km: Locale
+  namespace km {}
 
   const kn: Locale
   namespace kn {}
@@ -21353,6 +21374,11 @@ declare module 'date-fns/esm/locale/ka' {
 declare module 'date-fns/esm/locale/kk' {
   import { kk } from 'date-fns/esm/locale'
   export default kk
+}
+
+declare module 'date-fns/esm/locale/km' {
+  import { km } from 'date-fns/esm/locale'
+  export default km
 }
 
 declare module 'date-fns/esm/locale/kn' {
@@ -21795,6 +21821,11 @@ declare module 'date-fns/esm/locale/kk/index' {
   export default kk
 }
 
+declare module 'date-fns/esm/locale/km/index' {
+  import { km } from 'date-fns/esm/locale'
+  export default km
+}
+
 declare module 'date-fns/esm/locale/kn/index' {
   import { kn } from 'date-fns/esm/locale'
   export default kn
@@ -22233,6 +22264,11 @@ declare module 'date-fns/esm/locale/ka/index.js' {
 declare module 'date-fns/esm/locale/kk/index.js' {
   import { kk } from 'date-fns/esm/locale'
   export default kk
+}
+
+declare module 'date-fns/esm/locale/km/index.js' {
+  import { km } from 'date-fns/esm/locale'
+  export default km
 }
 
 declare module 'date-fns/esm/locale/kn/index.js' {
