@@ -112,6 +112,10 @@ const ordinalNumber: LocalizeFn<number, undefined> = (dirtyNumber, options) => {
 
   if (number === 0) return '0'
 
+  if (unit === 'date' && number > 1) {
+    return '' + number
+  }
+
   const feminineUnits = ['year', 'week', 'hour', 'minute', 'second']
   let suffix
 
