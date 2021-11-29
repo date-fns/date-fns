@@ -121,7 +121,7 @@ function generateFlowFPFnIndexTyping(fns, aliasDeclarations, constants) {
 }
 
 function generateFlowLocaleTyping(locale, localeAliasDeclaration) {
-  const { fullPath } = locale
+  const { code } = locale
 
   const typingFile = formatFlowFile`
     ${localeAliasDeclaration}
@@ -129,7 +129,7 @@ function generateFlowLocaleTyping(locale, localeAliasDeclaration) {
     declare module.exports: Locale
   `
 
-  writeFile(`${fullPath}.flow`, typingFile)
+  writeFile(`src/locale/${code}/index.js.flow`, typingFile)
 }
 
 function generateFlowLocaleIndexTyping(locales, localeAliasDeclaration) {
