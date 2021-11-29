@@ -18,8 +18,6 @@
 
   - [Lint the Code](#lint-the-code)
 
-  - [Use EditorConfig](#use-editorconfig)
-
 - [Documentation](#documentation)
 
   - [JSDoc](#jsdoc)

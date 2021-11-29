@@ -2,6 +2,7 @@
 /* eslint-env mocha */
 
 import assert from 'power-assert'
+import sinon from 'sinon'
 import format from '.'
 
 describe('format', function () {
@@ -106,6 +107,11 @@ describe('format', function () {
   it('era', function () {
     var result = format(date, 'G GG GGG GGGG GGGGG')
     assert(result === 'AD AD AD Anno Domini A')
+
+    var bcDate = new Date()
+    bcDate.setFullYear(-1, 0 /* Jan */, 1)
+    var bcResult = format(bcDate, 'G GG GGG GGGG GGGGG')
+    assert(bcResult === 'BC BC BC Before Christ B')
   })
 
   describe('year', function () {
@@ -129,6 +135,14 @@ describe('format', function () {
         date.setHours(0, 0, 0, 0)
         var result = format(date, 'y')
         assert(result === '2')
+      })
+
+      it('2 BC formats as 2nd', function () {
+        var date = new Date()
+        date.setFullYear(-1, 0 /* Jan */, 1)
+        date.setHours(0, 0, 0, 0)
+        var result = format(date, 'yo')
+        assert(result === '2nd')
       })
     })
 
@@ -460,6 +474,12 @@ describe('format', function () {
           'b bb bbb bbbb bbbbb'
         )
         assert(result === 'AM AM am a.m. a')
+
+        var pmResult = format(
+          new Date(1986, 3 /* Apr */, 6, 13, 0, 0, 900),
+          'b bb bbb bbbb bbbbb'
+        )
+        assert(pmResult === 'PM PM pm p.m. p')
       })
 
       it('12 PM', function () {
@@ -535,6 +555,24 @@ describe('format', function () {
         timezoneWithZ,
       ].join(' ')
       assert(result === expectedResult)
+
+      var getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        'getTimezoneOffset'
+      )
+      getTimezoneOffsetStub.returns(0)
+      var resultZeroOffset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultZeroOffset === 'Z Z Z Z Z')
+
+      getTimezoneOffsetStub.returns(480)
+      var resultNegativeOffset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultNegativeOffset === '-08 -0800 -08:00 -0800 -08:00')
+
+      getTimezoneOffsetStub.returns(450)
+      var resultNegative30Offset = format(date, 'X XX XXX XXXX XXXXX')
+      assert(resultNegative30Offset === '-0730 -0730 -07:30 -0730 -07:30')
+
+      getTimezoneOffsetStub.restore()
     })
 
     it('ISO-8601 without Z', function () {
@@ -558,6 +596,20 @@ describe('format', function () {
         timezoneGMT,
       ].join(' ')
       assert(result === expectedResult)
+
+      var getTimezoneOffsetStub = sinon.stub(
+        Date.prototype,
+        'getTimezoneOffset'
+      )
+      getTimezoneOffsetStub.returns(480)
+      var resultNegativeOffset = format(date, 'O OO OOO OOOO')
+      assert(resultNegativeOffset === 'GMT-8 GMT-8 GMT-8 GMT-08:00')
+
+      getTimezoneOffsetStub.returns(450)
+      var resultNegative30Offset = format(date, 'O OO OOO OOOO')
+      assert(resultNegative30Offset === 'GMT-7:30 GMT-7:30 GMT-7:30 GMT-07:30')
+
+      getTimezoneOffsetStub.restore()
     })
 
     it('Specific non-location', function () {

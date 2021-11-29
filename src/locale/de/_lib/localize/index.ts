@@ -20,18 +20,18 @@ const quarterValues = {
 const monthValues = {
   narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
-    'Jan.',
-    'Feb.',
-    'März',
-    'Apr.',
+    'Jan',
+    'Feb',
+    'Mär',
+    'Apr',
     'Mai',
-    'Juni',
-    'Juli',
-    'Aug.',
-    'Sep.',
-    'Okt.',
-    'Nov.',
-    'Dez.',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Okt',
+    'Nov',
+    'Dez',
   ] as const,
   wide: [
     'Januar',
@@ -47,6 +47,26 @@ const monthValues = {
     'November',
     'Dezember',
   ] as const,
+}
+
+// https://st.unicode.org/cldr-apps/v#/de/Gregorian/
+const formattingMonthValues = {
+  narrow: monthValues.narrow,
+  abbreviated: [
+    'Jan.',
+    'Feb.',
+    'März',
+    'Apr.',
+    'Mai',
+    'Juni',
+    'Juli',
+    'Aug.',
+    'Sep.',
+    'Okt.',
+    'Nov.',
+    'Dez.',
+  ] as const,
+  wide: monthValues.wide,
 }
 
 const dayValues = {
@@ -97,7 +117,6 @@ const dayPeriodValues = {
     night: 'Nacht',
   },
 }
-
 const formattingDayPeriodValues = {
   narrow: {
     am: 'vm.',
@@ -153,6 +172,7 @@ const localize: Localize = {
 
   month: buildLocalizeFn({
     values: monthValues,
+    formattingValues: formattingMonthValues,
     defaultWidth: 'wide',
   }),
 

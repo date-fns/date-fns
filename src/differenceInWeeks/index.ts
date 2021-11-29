@@ -1,5 +1,7 @@
 import differenceInDays from '../differenceInDays/index'
+import type { RoundingOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
+import { getRoundingMethod } from '../_lib/roundingMethods/index'
 
 /**
  * @name differenceInWeeks
@@ -8,7 +10,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @description
  * Get the number of full weeks between two dates. Fractional weeks are
- * truncated towards zero.
+ * truncated towards zero by default.
  *
  * One "full week" is the distance between a local time in one day to the same
  * local time 7 days earlier or later. A full week can sometimes be less than
@@ -24,6 +26,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateLeft - the later date
  * @param {Date|Number} dateRight - the earlier date
+ * @param {Object} [options] - an object with options.
+ * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
  * @returns {Number} the number of full weeks
  * @throws {TypeError} 2 arguments required
  *
@@ -45,11 +49,12 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * //=> 8
  */
 export default function differenceInWeeks(
-  dirtyDateLeft: Date | number,
-  dirtyDateRight: Date | number
+  dateLeft: Date | number,
+  dateRight: Date | number,
+  options?: RoundingOptions
 ): number {
   requiredArgs(2, arguments)
 
-  const diff = differenceInDays(dirtyDateLeft, dirtyDateRight) / 7
-  return diff > 0 ? Math.floor(diff) : Math.ceil(diff)
+  const diff = differenceInDays(dateLeft, dateRight) / 7
+  return getRoundingMethod(options?.roundingMethod)(diff)
 }

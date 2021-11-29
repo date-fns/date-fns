@@ -15,13 +15,13 @@ function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
   }
 
   const formattedParams = addSeparator(
-    params.map(param => {
+    params.map((param) => {
       const {
         name,
         props,
         optional,
         variable,
-        type: { names: typeNames }
+        type: { names: typeNames },
       } = param
       const type = getType(typeNames, { props, forceArray: variable })
       return `${variable ? '...' : ''}${name}${optional ? '?' : ''}: ${type}`
@@ -36,8 +36,17 @@ function getParams(params, { leftBorder = '{', rightBorder = '}' } = {}) {
   `
 }
 
-function getType(types, { props = [], forceArray = false } = {}) {
-  const typeStrings = types.map(type => {
+function getType(
+  types,
+  { props = [], forceArray = false, flowType = false } = {}
+) {
+  let optional = false
+  if (flowType && types.some((type) => type === 'undefined')) {
+    optional = true
+    types = types.filter((type) => type !== 'undefined')
+  }
+
+  const typeStrings = types.map((type) => {
     if (type === '*') {
       return 'any'
     }
@@ -63,23 +72,27 @@ function getType(types, { props = [], forceArray = false } = {}) {
     return caseCorrectedType
   })
 
+  const prefix = optional ? '?' : ''
+
   const allArrayTypes =
-    typeStrings.length > 1 && typeStrings.every(type => type.endsWith('[]'))
+    typeStrings.length > 1 && typeStrings.every((type) => type.endsWith('[]'))
   if (allArrayTypes) {
-    return `(${typeStrings.map(type => type.replace('[]', '')).join(' | ')})[]`
+    return `(${typeStrings
+      .map((type) => `${prefix}${type.replace('[]', '')}`)
+      .join(' | ')})[]`
   }
 
-  return typeStrings.join(' | ')
+  return typeStrings.map((typeString) => `${prefix}${typeString}`).join(' | ')
 }
 
-function getFPFnType(params, returns) {
-  const fpParamTypes = params.map(param =>
-    getType(param.type.names, { props: param.props })
+function getFPFnType(params, returns, { flowType = false } = {}) {
+  const fpParamTypes = params.map((param) =>
+    getType(param.type.names, { props: param.props, flowType })
   )
 
   const arity = fpParamTypes.length
 
-  fpParamTypes.push(getType(returns))
+  fpParamTypes.push(getType(returns, { flowType }))
 
   return `CurriedFn${arity}<${fpParamTypes.join(', ')}>`
 }
@@ -88,5 +101,5 @@ module.exports = {
   correctTypeCase,
   getParams,
   getType,
-  getFPFnType
+  getFPFnType,
 }

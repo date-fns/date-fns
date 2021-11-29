@@ -33,7 +33,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.{js,ts,json}": [
       "prettier --write",
       "git add"
     ]
@@ -53,14 +53,14 @@
     "@babel/plugin-transform-template-literals": "^7.4.4",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.13.0",
-    "@date-fns/date-fns-scripts": "0.0.4",
+    "@date-fns/date-fns-scripts": "0.0.6",
     "@octokit/core": "^3.2.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^14.6.3",
     "@types/power-assert": "^1.5.3",
     "@types/sinon": "^9.0.6",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "8.0.6",
     "babel-plugin-add-import-extension": "^1.4.3",

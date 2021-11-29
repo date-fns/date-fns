@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import type { Era, FirstWeekContainsDate, Month, Quarter, Day } from '../types'
 import type {
   BuildLocalizeFnArgCallback,
@@ -85,6 +86,7 @@ export type LocalizeFn<
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
+    unit?: LocaleOrdinalUnit
   }
 ) => string
 
@@ -182,6 +184,18 @@ export interface Match {
   dayPeriod: MatchFn<LocaleDayPeriod>
 }
 
+export type LocaleOrdinalUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'week'
+  | 'month'
+  | 'quarter'
+  | 'year'
+  | 'date'
+  | 'dayOfYear'
+
 export type LocalePatternWidth =
   | 'narrow'
   | 'short'
@@ -198,6 +212,18 @@ export type LocaleDayPeriod =
   | 'afternoon'
   | 'evening'
   | 'night'
+
+export type LocaleOptionUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'date'
+  | 'dayOfYear'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
 
 export type FormatLongWidth = 'full' | 'long' | 'medium' | 'short'
 

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import differenceInMilliseconds from '.'
 
 describe('differenceInMilliseconds', function () {
@@ -32,7 +32,6 @@ describe('differenceInMilliseconds', function () {
     function isNegativeZero(x: number): boolean {
       return x === 0 && 1 / x < 0
     }
-
     const result = differenceInMilliseconds(
       new Date(2014, 8 /* Sep */, 5, 0, 0),
       new Date(2014, 8 /* Sep */, 5, 0, 0)
@@ -64,7 +63,9 @@ describe('differenceInMilliseconds', function () {
   })
 
   it('throws TypeError exception if passed less than 2 arguments', function () {
+    // @ts-expect-error
     assert.throws(differenceInMilliseconds.bind(null), TypeError)
+    // @ts-expect-error
     assert.throws(differenceInMilliseconds.bind(null, 1), TypeError)
   })
 })
