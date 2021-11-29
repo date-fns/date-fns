@@ -86,7 +86,7 @@ export type LocalizeFn<
   options?: {
     width?: LocalePatternWidth
     context?: 'formatting' | 'standalone'
-    unit?: LocaleOptionUnit
+    unit?: LocaleOrdinalUnit
   }
 ) => string
 
@@ -183,6 +183,18 @@ export interface Match {
   day: MatchFn<Day>
   dayPeriod: MatchFn<LocaleDayPeriod>
 }
+
+export type LocaleOrdinalUnit =
+  | 'second'
+  | 'minute'
+  | 'hour'
+  | 'day'
+  | 'week'
+  | 'month'
+  | 'quarter'
+  | 'year'
+  | 'date'
+  | 'dayOfYear'
 
 export type LocalePatternWidth =
   | 'narrow'

@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -13,8 +14,7 @@ import match from './_lib/match/index'
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
  */
-
-var locale = {
+const locale: Locale = {
   code: 'fr',
   formatDistance: formatDistance,
   formatLong: formatLong,

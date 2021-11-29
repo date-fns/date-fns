@@ -1,35 +1,34 @@
 // Same as fr
 import formatDistance from '../fr/_lib/formatDistance/index'
-import formatRelative from '../fr/_lib/formatRelative/index'
 import localize from '../fr/_lib/localize/index'
 import match from '../fr/_lib/match/index'
-
-// Unique for fr-CA
+import type { Locale } from '../types'
+// Unique for fr-CH
 import formatLong from './_lib/formatLong/index'
+import formatRelative from './_lib/formatRelative/index'
 
 /**
  * @type {Locale}
  * @category Locales
- * @summary French locale (Canada).
+ * @summary French locale (Switzerland).
  * @language French
  * @iso-639-2 fra
  * @author Jean Dupouy [@izeau]{@link https://github.com/izeau}
  * @author François B [@fbonzon]{@link https://github.com/fbonzon}
- * @author Gabriele Petrioli [@gpetrioli]{@link https://github.com/gpetrioli}
+ * @author Van Vuong Ngo [@vanvuongngo]{@link https://github.com/vanvuongngo}
+ * @author Alex Hoeing [@dcbn]{@link https://github.com/dcbn}
  */
-var locale = {
-  code: 'fr-CA',
+const locale: Locale = {
+  code: 'fr-CH',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
   localize: localize,
   match: match,
-
-  // Unique for fr-CA
   options: {
-    weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1
-  }
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale
