@@ -307,6 +307,28 @@ If now is January 1st, 2000, 00:00.
 | 2000-01-15T00:00:00.000Z | 14 dní    | za 14 dní         | 336 hodin                      |
 | 2000-01-02T00:00:00.000Z | den       | za den            | 24 hodin                       |
 | 2000-01-01T06:00:00.000Z | 6 hodin   | za 6 hodin        | 6 hodin                        |
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+| 2000-01-01T01:00:00.000Z | 1 hodina  | za 1 hodinu       | 1 hodina                       |
+| 2000-01-01T00:45:00.000Z | 45 minut  | za 45 minut       | 1 hodina                       |
+| 2000-01-01T00:30:00.000Z | 30 minut  | za 30 minut       | 1 hodina                       |
+| 2000-01-01T00:15:00.000Z | 15 minut  | za 15 minut       | 0 hodiny                       |
+| 2000-01-01T00:01:00.000Z | 1 minuta  | za 1 minutu       | 0 hodiny                       |
+| 2000-01-01T00:00:25.000Z | 25 sekund | za 25 sekund      | 0 hodiny                       |
+| 2000-01-01T00:00:15.000Z | 15 sekund | za 15 sekund      | 0 hodiny                       |
+| 2000-01-01T00:00:05.000Z | 5 sekund  | za 5 sekund       | 0 hodiny                       |
+| 2000-01-01T00:00:00.000Z | 0 sekundy | 0 sekundy         | 0 hodiny                       |
+| 1999-12-31T23:59:55.000Z | 5 sekund  | před 5 sekundami  | 0 hodiny                       |
+| 1999-12-31T23:59:45.000Z | 15 sekund | před 15 sekundami | 0 hodiny                       |
+| 1999-12-31T23:59:35.000Z | 25 sekund | před 25 sekundami | 0 hodiny                       |
+| 1999-12-31T23:59:00.000Z | 1 minuta  | před 1 minutou    | 0 hodiny                       |
+| 1999-12-31T23:45:00.000Z | 15 minut  | před 15 minutami  | 0 hodiny                       |
+| 1999-12-31T23:30:00.000Z | 30 minut  | před 30 minutami  | 1 hodina                       |
+| 1999-12-31T23:15:00.000Z | 45 minut  | před 45 minutami  | 1 hodina                       |
+| 1999-12-31T23:00:00.000Z | 1 hodina  | před 1 hodinou    | 1 hodina                       |
+=======
+>>>>>>> ec207831f... Fix the format of zeros in formatDuration in Czech locale (#2579)
 | 2000-01-01T01:00:00.000Z | hodina    | za hodinu         | hodina                         |
 | 2000-01-01T00:45:00.000Z | 45 minut  | za 45 minut       | hodina                         |
 | 2000-01-01T00:30:00.000Z | 30 minut  | za 30 minut       | hodina                         |
@@ -324,6 +346,10 @@ If now is January 1st, 2000, 00:00.
 | 1999-12-31T23:30:00.000Z | 30 minut  | před 30 minutami  | hodina                         |
 | 1999-12-31T23:15:00.000Z | 45 minut  | před 45 minutami  | hodina                         |
 | 1999-12-31T23:00:00.000Z | hodina    | před hodinou      | hodina                         |
+<<<<<<< HEAD
+=======
+>>>>>>> Fix the format of zeros in formatDuration in Czech locale (#2579)
+>>>>>>> ec207831f... Fix the format of zeros in formatDuration in Czech locale (#2579)
 | 1999-12-31T18:00:00.000Z | 6 hodin   | před 6 hodinami   | 6 hodin                        |
 | 1999-12-30T00:00:00.000Z | 2 dny     | před 2 dny        | 48 hodin                       |
 | 1999-12-15T00:00:00.000Z | 17 dní    | před 17 dny       | 408 hodin                      |
