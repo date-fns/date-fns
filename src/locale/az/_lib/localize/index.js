@@ -1,9 +1,9 @@
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 var eraValues = {
-  narrow: ['B', 'A'],
-  abbreviated: ['BC', 'AD'],
-  wide: ["Hz. İsa'dan öncə", 'Anno Domini']
+  narrow: ['e.ə', 'b.e'],
+  abbreviated: ['e.ə', 'b.e'],
+  wide: ["eramızdan əvvəl", 'bizim era']
 }
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
@@ -14,7 +14,7 @@ var quarterValues = {
   // e.g. in Spanish language the weekdays and months should be in the lowercase.
 }
 var monthValues = {
-  narrow: ['Y', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
+  narrow: ['Y', 'F', 'M', 'A', 'M', 'İ', 'İ', 'A', 'S', 'O', 'N', 'D'],
   abbreviated: [
     'Yan',
     'Fev',
