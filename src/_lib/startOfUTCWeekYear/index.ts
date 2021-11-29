@@ -2,7 +2,7 @@ import {
   FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-} from 'src/types'
+} from '../../types'
 import getUTCWeekYear from '../getUTCWeekYear/index'
 import requiredArgs from '../requiredArgs/index'
 import startOfUTCWeek from '../startOfUTCWeek/index'
