@@ -1,25 +1,33 @@
-import toInteger from '../toInteger/index'
 import toDate from '../../toDate/index'
-import startOfUTCWeek from '../startOfUTCWeek/index'
+import {
+  FirstWeekContainsDateOptions,
+  LocaleOptions,
+  WeekStartOptions,
+} from '../../types'
 import requiredArgs from '../requiredArgs/index'
+import startOfUTCWeek from '../startOfUTCWeek/index'
+import toInteger from '../toInteger/index'
 
 // This function will be a part of public API when UTC function will be implemented.
 // See issue: https://github.com/date-fns/date-fns/issues/376
-export default function getUTCWeekYear(dirtyDate, dirtyOptions) {
+export default function getUTCWeekYear(
+  dirtyDate: Date | number,
+  dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
+) {
   requiredArgs(1, arguments)
 
-  var date = toDate(dirtyDate, dirtyOptions)
-  var year = date.getUTCFullYear()
+  const date = toDate(dirtyDate)
+  const year = date.getUTCFullYear()
 
-  var options = dirtyOptions || {}
-  var locale = options.locale
-  var localeFirstWeekContainsDate =
+  const options = dirtyOptions || {}
+  const locale = options.locale
+  const localeFirstWeekContainsDate =
     locale && locale.options && locale.options.firstWeekContainsDate
-  var defaultFirstWeekContainsDate =
+  const defaultFirstWeekContainsDate =
     localeFirstWeekContainsDate == null
       ? 1
       : toInteger(localeFirstWeekContainsDate)
-  var firstWeekContainsDate =
+  const firstWeekContainsDate =
     options.firstWeekContainsDate == null
       ? defaultFirstWeekContainsDate
       : toInteger(options.firstWeekContainsDate)
@@ -31,15 +39,15 @@ export default function getUTCWeekYear(dirtyDate, dirtyOptions) {
     )
   }
 
-  var firstWeekOfNextYear = new Date(0)
+  const firstWeekOfNextYear = new Date(0)
   firstWeekOfNextYear.setUTCFullYear(year + 1, 0, firstWeekContainsDate)
   firstWeekOfNextYear.setUTCHours(0, 0, 0, 0)
-  var startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, dirtyOptions)
+  const startOfNextYear = startOfUTCWeek(firstWeekOfNextYear, dirtyOptions)
 
-  var firstWeekOfThisYear = new Date(0)
+  const firstWeekOfThisYear = new Date(0)
   firstWeekOfThisYear.setUTCFullYear(year, 0, firstWeekContainsDate)
   firstWeekOfThisYear.setUTCHours(0, 0, 0, 0)
-  var startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, dirtyOptions)
+  const startOfThisYear = startOfUTCWeek(firstWeekOfThisYear, dirtyOptions)
 
   if (date.getTime() >= startOfNextYear.getTime()) {
     return year + 1
