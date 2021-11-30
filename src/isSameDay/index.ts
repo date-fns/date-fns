@@ -22,6 +22,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * // Are 4 September 06:00:00 and 4 September 18:00:00 in the same day?
  * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2014, 8, 4, 18, 0))
  * //=> true
+ * 
+ * / Are 4 September 06:00:00 and 4 September 18:00:00 in the same day? (same month different year)
+ * var result = isSameDay(new Date(2014, 8, 4, 6, 0), new Date(2015, 8, 4, 18, 0))
+ * //=> false
  */
 export default function isSameDay(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)
