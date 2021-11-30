@@ -273,7 +273,7 @@ function parseTimezone(timezoneString) {
   if (timezoneString === 'Z') return 0
 
   var captures = timezoneString.match(timezoneRegex)
-  if (!captures) return 0
+  if (!captures) return NaN
 
   var sign = captures[1] === '+' ? -1 : 1
   var hours = parseInt(captures[2])
