@@ -33,8 +33,18 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
       })
 
+      it('parses YYYY-www', () => {
+        const result = parseISO('2014-w02')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+
       it('parses YYYYWww', () => {
         const result = parseISO('2014W02')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
+      })
+
+      it('parses YYYYwww', () => {
+        const result = parseISO('2014w02')
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 6))
       })
     })
@@ -57,8 +67,18 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
       })
 
+      it('parses YYYY-www-D', () => {
+        const result = parseISO('2014-w02-7')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
       it('parses YYYYWwwD', () => {
         const result = parseISO('2014W027')
+        assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
+      })
+
+      it('parses YYYYwwwD', () => {
+        const result = parseISO('2014w027')
         assert.deepEqual(result, new Date(2014, 0 /* Jan */, 12))
       })
 
@@ -86,8 +106,28 @@ describe('parseISO', () => {
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
       })
 
+      it('parses YYYY-MM-DDthh:mm', () => {
+        const result = parseISO('2014-02-11t11:30')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
+      it('parses YYYY-MM-DD hh:mm', () => {
+        const result = parseISO('2014-02-11 11:30')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
       it('parses YYYY-MM-DDThhmm', () => {
         const result = parseISO('2014-02-11T1130')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
+      it('parses YYYY-MM-DDthhmm', () => {
+        const result = parseISO('2014-02-11t1130')
+        assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
+      })
+
+      it('parses YYYY-MM-DD hhmm', () => {
+        const result = parseISO('2014-02-11 1130')
         assert.deepEqual(result, new Date(2014, 1 /* Feb */, 11, 11, 30))
       })
     })
@@ -188,6 +228,11 @@ describe('parseISO', () => {
       describe('when the date and the time are specified', () => {
         it('parses Z', () => {
           const result = parseISO('2014-10-25T06:46:20Z')
+          assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
+        })
+
+        it('parses z', () => {
+          const result = parseISO('2014-10-25T06:46:20z')
           assert.deepEqual(result, new Date('2014-10-25T13:46:20+07:00'))
         })
 
@@ -344,6 +389,12 @@ describe('parseISO', () => {
     })
 
     describe('timezones', () => {
+      it('returns `Invalid Date` for offset without time', () => {
+        const result = parseISO('2014-02-11+04:00')
+        assert(result instanceof Date)
+        assert(isNaN(result))
+      })
+
       it('returns `Invalid Date` for invalid timezone minutes', () => {
         const result = parseISO('2014-02-11T21:35:45+04:60')
         assert(result instanceof Date)
