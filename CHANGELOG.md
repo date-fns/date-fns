@@ -8,6 +8,38 @@ This change log follows the format documented in [Keep a CHANGELOG].
 [semantic versioning]: http://semver.org/
 [keep a changelog]: http://keepachangelog.com/
 
+## v2.27.0 - 2021-11-30
+
+Kudos to @tan75, @hg-pyun, @07akioni, @razvanmitre, @Haqverdi, @pgcalixto, @janziemba, @fturmel, @JuanM04, @zhirzh, @seanghay, @bulutfatih, @nodeadtree, @cHaLkdusT, @a-korzun, @fishmandev, @wingclover, @Zacharias3690, @kossnocorp and @leshakoss for working on the release.
+
+### Fixed
+
+- [Fixed translation for quarters in `format` in Chinese Simplified locale (`zh-CN`).](https://github.com/date-fns/date-fns/pull/2771)
+
+- [Fixed `P` token in `format` for Romanian locale (`ro`).](https://github.com/date-fns/date-fns/pull/2213)
+
+- [Fixed era and month formatters in Azerbaijani locale (`az`).](https://github.com/date-fns/date-fns/pull/1632)
+
+- [Fixed `formatRelative` patterns in Georgian locale (`ka`).](https://github.com/date-fns/date-fns/pull/2797)
+
+- [Fixed regular expressions for `parse` in Estonian locale (`er`).](https://github.com/date-fns/date-fns/pull/2038)
+
+- [Fixed the format of zeros in `formatDuration` in Czech locale (`cs`).](https://github.com/date-fns/date-fns/pull/2579)
+
+- [Fixed ordinal formatting for years, weeks, hours, minutes and seconds in `fr`, `fr-CA` and `fr-CH` locales.](https://github.com/date-fns/date-fns/pull/2626)
+
+- [Fixed constants not having proper TypeScript and Flow types.](https://github.com/date-fns/date-fns/pull/2791)
+
+- [Fixed translation for Monday in Turkish locale (`tr`).](https://github.com/date-fns/date-fns/pull/2720)
+
+- [Fixed `eachMinuteOfInterval` not handling intervals less than a minute correctly.](https://github.com/date-fns/date-fns/pull/2603)
+
+- [Fixed flow types for `closestTo` and `closestIndexTo`.](https://github.com/date-fns/date-fns/pull/2781)
+
+### Added
+
+- [Added Khmer locale (`km`).](https://github.com/date-fns/date-fns/pull/2713)
+
 ## v2.26.0 - 2021-11-19
 
 Thanks to @kossnocorp, @leshakoss, @tan75, @gaplo, @AbdAllahAbdElFattah13, @fturmel, @kentaro84207, @V-Gutierrez, @atefBB, @jhonatanmacazana, @zhirzh, @Haqverdi, @mandaputtra, @micnic and @rikkalo for working on the release.
