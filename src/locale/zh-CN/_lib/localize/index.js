@@ -8,8 +8,8 @@ var eraValues = {
 
 var quarterValues = {
   narrow: ['1', '2', '3', '4'],
-  abbreviated: ['第一刻', '第二刻', '第三刻', '第四刻'],
-  wide: ['第一刻钟', '第二刻钟', '第三刻钟', '第四刻钟']
+  abbreviated: ['第一季', '第二季', '第三季', '第四季'],
+  wide: ['第一季度', '第二季度', '第三季度', '第四季度'],
 }
 
 var monthValues = {
