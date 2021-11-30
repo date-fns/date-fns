@@ -1,0 +1,58 @@
+import { Token } from './tokens'
+import { Flags, Value } from './abstract-parser'
+import { NDigitsParser } from './n-digits-parser'
+import { NumericPatternParser } from './numeric-pattern-parser'
+
+export class HourParser extends NDigitsParser {
+  public static readonly TOKEN = Token.K
+  public static readonly PRIORITY = 70
+  public static readonly INCOMPATIBLE_TOKENS = [
+    Token.a,
+    Token.b,
+    Token.h,
+    Token.H,
+    Token.k,
+    Token.K,
+    Token.t,
+    Token.T,
+  ]
+
+  protected constructor(
+    private readonly range: [from: number, to: number],
+    private readonly numericPattern: RegExp,
+    token: Token,
+    priority: number,
+  ) {
+    super(
+      token,
+      priority,
+      HourFrom0To11Parser.INCOMPATIBLE_TOKENS.filter(t => t !== token)
+    )
+  }
+
+  public set(date: Date, _flags: Flags, value: Value) {
+    const isPM = date.getUTCHours() >= 12
+    if (isPM && value < 12) {
+      date.setUTCHours(value + 12, 0, 0, 0)
+    } else {
+      date.setUTCHours(value, 0, 0, 0)
+    }
+    return { date }
+  }
+
+  public isValidResult(_date: Date, value: Value) {
+    return value >= 0 && value <= 11
+  }
+
+  public parse(string: string, token: Token, match: any) {
+    switch (token) {
+      case Token.K:
+        return this.parseWithPattern(NumericPatternParser.HOUR_11H, string)
+      case Token.Ko:
+        return match.ordinalNumber(string, { unit: 'hour' })
+      default:
+        return this.parseNDigits(token.length, string)
+    }
+  }
+}
+
