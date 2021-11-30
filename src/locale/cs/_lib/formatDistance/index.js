@@ -296,7 +296,7 @@ export default function formatDistance(token, count, options) {
     pluralToken = 'other'
   } else if (count === 1) {
     pluralToken = 'one'
-  } else if ((count > 1 && count < 5) || count === 0) {
+  } else if (count > 1 && count < 5) {
     pluralToken = 'few'
   } else {
     pluralToken = 'many'

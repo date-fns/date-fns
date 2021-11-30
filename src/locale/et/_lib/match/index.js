@@ -25,8 +25,8 @@ var parseQuarterPatterns = {
 
 var matchMonthPatterns = {
   narrow: /^[jvmasond]/i,
-  abbreviated: /^('jaan|veebr|märts|apr|mai|juuni|juuli|aug|sept|okt|nov|dets')/i,
-  wide: /^('jaanuar|veebruar|märts|aprill|mai|juuni|juuli|august|september|oktoober|november|detsember')/i
+  abbreviated: /^(jaan|veebr|märts|apr|mai|juuni|juuli|aug|sept|okt|nov|dets)/i,
+  wide: /^(jaanuar|veebruar|märts|aprill|mai|juuni|juuli|august|september|oktoober|november|detsember)/i
 }
 
 var parseMonthPatterns = {
@@ -50,8 +50,8 @@ var parseMonthPatterns = {
     /^mär/i,
     /^ap/i,
     /^mai/i,
-    /^jun/i,
-    /^jul/i,
+    /^juun/i,
+    /^juul/i,
     /^au/i,
     /^s/i,
     /^o/i,
@@ -64,7 +64,7 @@ var matchDayPatterns = {
   narrow: /^[petknrl]/i,
   short: /^[petknrl]/i,
   abbreviated: /^(püh?|esm?|tei?|kolm?|nel?|ree?|laup?)\.?/i,
-  wide: /^('pühapäev|esmaspäev|teisipäev|kolmapäev|neljapäev|reede|laupäev')/i
+  wide: /^(pühapäev|esmaspäev|teisipäev|kolmapäev|neljapäev|reede|laupäev)/i
 }
 
 var parseDayPatterns = {
@@ -72,7 +72,7 @@ var parseDayPatterns = {
 }
 
 var matchDayPeriodPatterns = {
-  any: /^(am|pm|kesköö|keskpäev|hommik|pärastlõuna|õhtu|öö)/i
+  any: /^(am|pm|keskööl?|keskpäev(al)?|hommik(ul)?|pärastlõunal?|õhtul?|öö(sel)?)/i
 }
 
 var parseDayPeriodPatterns = {
