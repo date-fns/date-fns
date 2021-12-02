@@ -13,7 +13,7 @@ import match from './_lib/match/index'
  * @author Kamronbek Shodmonov [@kamronbek28]{@link https://github.com/kamronbek28}
  */
 var locale = {
-  code: 'uz-Cryl',
+  code: 'uz-Cyrl',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,

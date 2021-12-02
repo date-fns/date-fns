@@ -1,4 +1,4 @@
-# Uzbek (uz-Cryl) locale
+# Uzbek (uz-Cyrl) locale
 
 ## `format` and `parse`
 
