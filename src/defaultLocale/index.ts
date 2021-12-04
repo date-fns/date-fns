@@ -13,17 +13,15 @@ import type { Locale } from '../locale/types'
  * @returns {Locale} the default locale
  *
  * @example
- * // Add the following duration to 1 September 2014, 10:19:50
- * const result = add(new Date(2014, 8, 1, 10, 19, 50), {
- *   years: 2,
- *   months: 9,
- *   weeks: 1,
- *   days: 7,
- *   hours: 5,
- *   minutes: 9,
- *   seconds: 30,
- * })
- * //=> Thu Jun 15 2017 15:29:20
+ * import { format, defaultLocale } from 'date-fns'
+ * import { frCA } from 'date-fns/locale'
+ *
+ * // `en-US` out of the box
+ * format(new Date(2021, 11, 3), 'MMMM do yyyy') //=> December 3rd 2021
+ *
+ * // globally set default locale to `fr-CA`
+ * defaultLocale(frCA)
+ * format(new Date(2021, 11, 3), 'd MMMM yyyy') //=> 3 décembre 2021
  */
 export default function defaultLocale(locale?: Locale): Locale {
   if (locale) _defaultLocale = locale
