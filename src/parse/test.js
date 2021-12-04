@@ -2,6 +2,8 @@
 
 import assert from 'power-assert'
 import parse from '.'
+import defaultLocale from '../defaultLocale/index'
+import frCA from '../locale/fr-CA/index'
 
 describe('parse', function () {
   var referenceDate = new Date(1986, 3 /* Apr */, 4, 10, 32, 0, 900)
@@ -2329,6 +2331,18 @@ describe('parse', function () {
         assert(result instanceof Date && isNaN(result))
       })
     })
+  })
+
+  it('uses the global default locale', () => {
+    const originalDefaultLocale = defaultLocale()
+
+    defaultLocale(frCA)
+    let result = parse('15 février 2021', 'dd MMMM yyyy', new Date())
+    assert.deepStrictEqual(result, new Date(2021, 1, 15))
+
+    defaultLocale(originalDefaultLocale)
+    result = parse('February 15 2021', 'MMMM dd yyyy', new Date())
+    assert.deepStrictEqual(result, new Date(2021, 1, 15))
   })
 
   describe('custom locale', function () {

@@ -4,6 +4,8 @@
 import assert from 'power-assert'
 import sinon from 'sinon'
 import format from '.'
+import defaultLocale from '../defaultLocale/index'
+import frCA from '../locale/fr-CA/index'
 
 describe('format', function () {
   var date = new Date(1986, 3 /* Apr */, 4, 10, 32, 55, 123)
@@ -746,6 +748,16 @@ describe('format', function () {
       // $ExpectedMistake
       var result = format(date, 'PPPP', { locale: customLocale })
       assert(result === 'It works!')
+    })
+
+    it('uses the global default locale', function () {
+      const originalDefaultLocale = defaultLocale()
+
+      defaultLocale(frCA)
+      assert.deepStrictEqual(format(date, 'PPPP'), 'vendredi 4 avril 1986')
+
+      defaultLocale(originalDefaultLocale)
+      assert.deepStrictEqual(format(date, 'PPPP'), 'Friday, April 4th, 1986')
     })
 
     it("throws `RangeError` if `options.locale` doesn't have `localize` property", function () {

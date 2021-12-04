@@ -1,5 +1,5 @@
+import defaultLocale from '../defaultLocale/index'
 import isValid from '../isValid/index'
-import defaultLocale from '../locale/en-US/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import formatters from '../_lib/format/formatters/index'
@@ -10,8 +10,8 @@ import {
   isProtectedWeekYearToken,
   throwProtectedError,
 } from '../_lib/protectedTokens/index'
-import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -351,7 +351,7 @@ export default function format(dirtyDate, dirtyFormatStr, dirtyOptions) {
   var formatStr = String(dirtyFormatStr)
   var options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || defaultLocale()
 
   var localeFirstWeekContainsDate =
     locale.options && locale.options.firstWeekContainsDate

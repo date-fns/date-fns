@@ -1,11 +1,11 @@
+import defaultLocale from '../defaultLocale/index'
 import differenceInCalendarDays from '../differenceInCalendarDays/index'
 import format from '../format/index'
-import defaultLocale from '../locale/en-US/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
+import { LocaleOptions, WeekStartOptions } from '../types'
 import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMilliseconds/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { LocaleOptions, WeekStartOptions } from '../types'
 
 /**
  * @name formatRelative
@@ -57,7 +57,7 @@ export default function formatRelative(
   const date = toDate(dirtyDate)
   const baseDate = toDate(dirtyBaseDate)
 
-  const { locale = defaultLocale, weekStartsOn = 0 } = dirtyOptions || {}
+  const { locale = defaultLocale(), weekStartsOn = 0 } = dirtyOptions || {}
 
   if (!locale.localize) {
     throw new RangeError('locale must contain localize property')

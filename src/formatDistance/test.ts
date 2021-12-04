@@ -2,6 +2,8 @@
 
 import assert from 'assert'
 import formatDistance from '.'
+import defaultLocale from '../defaultLocale/index'
+import frCA from '../locale/fr-CA/index'
 
 describe('formatDistance', function () {
   describe('seconds', function () {
@@ -232,6 +234,24 @@ describe('formatDistance', function () {
       )
       assert(result === 'in about 1 hour')
     })
+  })
+
+  it('uses the global default locale', function () {
+    const originalDefaultLocale = defaultLocale()
+
+    defaultLocale(frCA)
+    let result = formatDistance(
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(1986, 3, 4, 11, 32, 0)
+    )
+    assert.deepStrictEqual(result, 'environ 1 heure')
+
+    defaultLocale(originalDefaultLocale)
+    result = formatDistance(
+      new Date(1986, 3, 4, 10, 32, 0),
+      new Date(1986, 3, 4, 11, 32, 0)
+    )
+    assert.deepStrictEqual(result, 'about 1 hour')
   })
 
   describe('custom locale', function () {

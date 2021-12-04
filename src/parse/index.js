@@ -1,4 +1,4 @@
-import defaultLocale from '../locale/en-US/index'
+import defaultLocale from '../defaultLocale/index'
 import subMilliseconds from '../subMilliseconds/index'
 import toDate from '../toDate/index'
 import assign from '../_lib/assign/index'
@@ -7,11 +7,11 @@ import getTimezoneOffsetInMilliseconds from '../_lib/getTimezoneOffsetInMillisec
 import {
   isProtectedDayOfYearToken,
   isProtectedWeekYearToken,
-  throwProtectedError
+  throwProtectedError,
 } from '../_lib/protectedTokens/index'
+import requiredArgs from '../_lib/requiredArgs/index'
 import toInteger from '../_lib/toInteger/index'
 import parsers from './_lib/parsers/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 
 var TIMEZONE_UNIT_PRIORITY = 10
 
@@ -368,7 +368,7 @@ export default function parse(
   var formatString = String(dirtyFormatString)
   var options = dirtyOptions || {}
 
-  var locale = options.locale || defaultLocale
+  var locale = options.locale || defaultLocale()
 
   if (!locale.match) {
     throw new RangeError('locale must contain match property')
@@ -416,7 +416,7 @@ export default function parse(
   var subFnOptions = {
     firstWeekContainsDate: firstWeekContainsDate,
     weekStartsOn: weekStartsOn,
-    locale: locale
+    locale: locale,
   }
 
   // If timezone isn't specified, it will be set to the system timezone
@@ -425,15 +425,15 @@ export default function parse(
       priority: TIMEZONE_UNIT_PRIORITY,
       subPriority: -1,
       set: dateToSystemTimezone,
-      index: 0
-    }
+      index: 0,
+    },
   ]
 
   var i
 
   var tokens = formatString
     .match(longFormattingTokensRegExp)
-    .map(function(substring) {
+    .map(function (substring) {
       var firstCharacter = substring[0]
       if (firstCharacter === 'p' || firstCharacter === 'P') {
         var longFormatter = longFormatters[firstCharacter]
@@ -508,7 +508,7 @@ export default function parse(
         set: parser.set,
         validate: parser.validate,
         value: parseResult.value,
-        index: setters.length
+        index: setters.length,
       })
 
       dateString = parseResult.rest
@@ -543,25 +543,25 @@ export default function parse(
   }
 
   var uniquePrioritySetters = setters
-    .map(function(setter) {
+    .map(function (setter) {
       return setter.priority
     })
-    .sort(function(a, b) {
+    .sort(function (a, b) {
       return b - a
     })
-    .filter(function(priority, index, array) {
+    .filter(function (priority, index, array) {
       return array.indexOf(priority) === index
     })
-    .map(function(priority) {
+    .map(function (priority) {
       return setters
-        .filter(function(setter) {
+        .filter(function (setter) {
           return setter.priority === priority
         })
-        .sort(function(a, b) {
+        .sort(function (a, b) {
           return b.subPriority - a.subPriority
         })
     })
-    .map(function(setterArray) {
+    .map(function (setterArray) {
       return setterArray[0]
     })
 

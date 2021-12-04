@@ -1,4 +1,5 @@
-import defaultLocale from '../locale/en-US/index'
+import defaultLocale from '../defaultLocale/index'
+import type { Locale } from '../locale/types'
 import type { Duration } from '../types'
 
 const defaultFormat: (keyof Duration)[] = [
@@ -91,7 +92,7 @@ export default function formatDuration(
   }
 
   const format = options?.format || defaultFormat
-  const locale = options?.locale || defaultLocale
+  const locale = options?.locale || defaultLocale()
   const zero = options?.zero || false
   const delimiter = options?.delimiter || ' '
 

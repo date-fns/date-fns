@@ -2,6 +2,8 @@
 
 import assert from 'assert'
 import formatDuration from '.'
+import defaultLocale from '../defaultLocale/index'
+import frCA from '../locale/fr-CA/index'
 
 describe('formatDuration', () => {
   it('formats full duration', () => {
@@ -74,6 +76,22 @@ describe('formatDuration', () => {
     assert(
       formatDuration({ months: 9, days: 2 }, { delimiter: ', ' }) ===
         '9 months, 2 days'
+    )
+  })
+
+  it('uses the global default locale', () => {
+    const originalDefaultLocale = defaultLocale()
+
+    defaultLocale(frCA)
+    assert.deepStrictEqual(
+      formatDuration({ months: 9, days: 2 }),
+      '9 mois 2 jours'
+    )
+
+    defaultLocale(originalDefaultLocale)
+    assert.deepStrictEqual(
+      formatDuration({ months: 9, days: 2 }),
+      '9 months 2 days'
     )
   })
 
