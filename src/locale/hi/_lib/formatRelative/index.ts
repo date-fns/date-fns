@@ -1,4 +1,5 @@
-import { FormatRelativeFnOptions, FormatRelativeToken } from '../../../types'
+import type { FormatRelativeToken } from '../../../types'
+import { FormatRelativeFnOptions } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: "'पिछले' eeee p",
@@ -6,7 +7,7 @@ const formatRelativeLocale = {
   today: "'आज' p",
   tomorrow: "'कल' p",
   nextWeek: "eeee 'को' p",
-  other: 'P'
+  other: 'P',
 }
 
 export default function formatRelative(

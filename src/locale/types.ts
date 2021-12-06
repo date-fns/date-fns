@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import type { Era, FirstWeekContainsDate, Month, Quarter, Day } from '../types'
+import type { Day, Era, FirstWeekContainsDate, Month, Quarter } from '../types'
 import type {
   BuildLocalizeFnArgCallback,
   LocalizeUnitValues,

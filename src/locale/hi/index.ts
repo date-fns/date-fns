@@ -21,8 +21,8 @@ const locale: Locale = {
   match: match,
   options: {
     weekStartsOn: 0 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale
