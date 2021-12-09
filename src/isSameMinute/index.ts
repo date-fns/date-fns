@@ -4,7 +4,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name isSameMinute
  * @category Minute Helpers
- * @summary Are the given dates in the same minute?
+ * @summary Are the given dates in the same minute (and hour and day)?
  *
  * @description
  * Are the given dates in the same minute (and hour and day)?

@@ -7,7 +7,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @summary Are the given dates in the same hour (and same day)?
  *
  * @description
- * Are the given dates in the same hour?
+ * Are the given dates in the same hour (and same day)?
  *
  * ### v2.0.0 breaking changes:
  *

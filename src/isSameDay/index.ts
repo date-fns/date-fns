@@ -7,7 +7,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @summary Are the given dates in the same day (and year and month)?
  *
  * @description
- * Are the given dates in the same day?
+ * Are the given dates in the same day (and year and month)?
  *
  * ### v2.0.0 breaking changes:
  *

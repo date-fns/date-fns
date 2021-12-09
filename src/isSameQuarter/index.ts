@@ -7,7 +7,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @summary Are the given dates in the same quarter (and year)?
  *
  * @description
- * Are the given dates in the same year quarter?
+ * Are the given dates in the same quarter (and year)?
  *
  * ### v2.0.0 breaking changes:
  *

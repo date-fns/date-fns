@@ -8,7 +8,7 @@ import { WeekStartOptions, LocaleOptions } from '../types'
  * @summary Are the given dates in the same week (and month and year)?
  *
  * @description
- * Are the given dates in the same week?
+ * Are the given dates in the same week (and month and year)?
  *
  * ### v2.0.0 breaking changes:
  *
