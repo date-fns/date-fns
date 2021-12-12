@@ -22,16 +22,7 @@ var numericPatterns = {
   minute: /^[0-5]?\d/, // 0 to 59
   second: /^[0-5]?\d/, // 0 to 59
 
-  singleDigit: /^\d/, // 0 to 9
-  twoDigits: /^\d{1,2}/, // 0 to 99
-  threeDigits: /^\d{1,3}/, // 0 to 999
-  fourDigits: /^\d{1,4}/, // 0 to 9999
-
-  anyDigitsSigned: /^-?\d+/,
-  singleDigitSigned: /^-?\d/, // 0 to 9, -0 to -9
-  twoDigitsSigned: /^-?\d{1,2}/, // 0 to 99, -0 to -99
-  threeDigitsSigned: /^-?\d{1,3}/, // 0 to 999, -0 to -999
-  fourDigitsSigned: /^-?\d{1,4}/ // 0 to 9999, -0 to -9999
+  anyDigitsSigned: /^-?\d+/
 }
 
 var timezonePatterns = {
@@ -40,21 +31,6 @@ var timezonePatterns = {
   basicOptionalSeconds: /^([+-])(\d{2})(\d{2})((\d{2}))?|Z/,
   extended: /^([+-])(\d{2}):(\d{2})|Z/,
   extendedOptionalSeconds: /^([+-])(\d{2}):(\d{2})(:(\d{2}))?|Z/
-}
-
-function parseNumericPattern(pattern, string, valueCallback) {
-  var matchResult = string.match(pattern)
-
-  if (!matchResult) {
-    return null
-  }
-
-  var value = parseInt(matchResult[0], 10)
-
-  return {
-    value: valueCallback ? valueCallback(value) : value,
-    rest: string.slice(matchResult[0].length)
-  }
 }
 
 function parseTimezonePattern(pattern, string) {
@@ -87,81 +63,29 @@ function parseTimezonePattern(pattern, string) {
   }
 }
 
-function parseAnyDigitsSigned(string, valueCallback) {
-  return parseNumericPattern(
-    numericPatterns.anyDigitsSigned,
-    string,
-    valueCallback
+function parseNumber(string, options) {
+  var matchResult = string.match(
+    options.pattern || numericPatterns.anyDigitsSigned
   )
-}
-
-function parseNDigits(n, string, valueCallback) {
-  switch (n) {
-    case 1:
-      return parseNumericPattern(
-        numericPatterns.singleDigit,
-        string,
-        valueCallback
-      )
-    case 2:
-      return parseNumericPattern(
-        numericPatterns.twoDigits,
-        string,
-        valueCallback
-      )
-    case 3:
-      return parseNumericPattern(
-        numericPatterns.threeDigits,
-        string,
-        valueCallback
-      )
-    case 4:
-      return parseNumericPattern(
-        numericPatterns.fourDigits,
-        string,
-        valueCallback
-      )
-    default:
-      return parseNumericPattern(
-        new RegExp('^\\d{1,' + n + '}'),
-        string,
-        valueCallback
-      )
+  if (!matchResult) {
+    return null
   }
-}
+  var match = matchResult[0]
+  var negative = match[0] === '-' ? 1 : 0
+  if (negative && !options.allowSigned) {
+    return null
+  }
+  var digits = match.slice(negative, negative + options.length || undefined)
+  if (options.length && options.strict && digits.length < options.length) {
+    return null
+  }
 
-function parseNDigitsSigned(n, string, valueCallback) {
-  switch (n) {
-    case 1:
-      return parseNumericPattern(
-        numericPatterns.singleDigitSigned,
-        string,
-        valueCallback
-      )
-    case 2:
-      return parseNumericPattern(
-        numericPatterns.twoDigitsSigned,
-        string,
-        valueCallback
-      )
-    case 3:
-      return parseNumericPattern(
-        numericPatterns.threeDigitsSigned,
-        string,
-        valueCallback
-      )
-    case 4:
-      return parseNumericPattern(
-        numericPatterns.fourDigitsSigned,
-        string,
-        valueCallback
-      )
-    default:
-      return parseNumericPattern(
-        new RegExp('^-?\\d{1,' + n + '}'),
-        string,
-        valueCallback
-      )
+  var number = (negative ? '-' : '') + digits
+  var value = parseInt(number, 10)
+
+  return {
+    value: options.valueCallback ? options.valueCallback(value) : value,
+    rest: string.slice(number.length)
   }
 }
 
@@ -307,7 +231,7 @@ var parsers = {
 
     priority: 130,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       var valueCallback = function(year) {
         return {
           year: year,
@@ -317,14 +241,21 @@ var parsers = {
 
       switch (token) {
         case 'y':
-          return parseNDigits(4, string, valueCallback)
+          return parseNumber(string, {
+            length: 4,
+            valueCallback: valueCallback
+          })
         case 'yo':
           return match.ordinalNumber(string, {
             unit: 'year',
             valueCallback: valueCallback
           })
         default:
-          return parseNDigits(token.length, string, valueCallback)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
       }
     },
 
@@ -359,7 +290,7 @@ var parsers = {
   Y: {
     priority: 130,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       var valueCallback = function(year) {
         return {
           year: year,
@@ -369,14 +300,21 @@ var parsers = {
 
       switch (token) {
         case 'Y':
-          return parseNDigits(4, string, valueCallback)
+          return parseNumber(string, {
+            length: 4,
+            valueCallback: valueCallback
+          })
         case 'Yo':
           return match.ordinalNumber(string, {
             unit: 'year',
             valueCallback: valueCallback
           })
         default:
-          return parseNDigits(token.length, string, valueCallback)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
       }
     },
 
@@ -429,12 +367,19 @@ var parsers = {
   R: {
     priority: 130,
 
-    parse: function(string, token, _match, _options) {
+    parse: function(string, token, _match, options) {
       if (token === 'R') {
-        return parseNDigitsSigned(4, string)
+        return parseNumber(string, {
+          allowSigned: true,
+          length: 4
+        })
       }
 
-      return parseNDigitsSigned(token.length, string)
+      return parseNumber(string, {
+        allowSigned: true,
+        length: token.length,
+        strict: options.strict
+      })
     },
 
     set: function(_date, _flags, value, _options) {
@@ -467,12 +412,20 @@ var parsers = {
   u: {
     priority: 130,
 
-    parse: function(string, token, _match, _options) {
+    parse: function(string, token, _match, options) {
       if (token === 'u') {
-        return parseNDigitsSigned(4, string)
+        return parseNumber(string, {
+          allowSigned: true,
+          length: 4,
+          strict: options.strict
+        })
       }
 
-      return parseNDigitsSigned(token.length, string)
+      return parseNumber(string, {
+        allowSigned: true,
+        length: token.length,
+        strict: options.strict
+      })
     },
 
     set: function(date, _flags, value, _options) {
@@ -488,12 +441,15 @@ var parsers = {
   Q: {
     priority: 120,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         // 1, 2, 3, 4
         case 'Q':
         case 'QQ': // 01, 02, 03, 04
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
         // 1st, 2nd, 3rd, 4th
         case 'Qo':
           return match.ordinalNumber(string, { unit: 'quarter' })
@@ -558,12 +514,15 @@ var parsers = {
   q: {
     priority: 120,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         // 1, 2, 3, 4
         case 'q':
         case 'qq': // 01, 02, 03, 04
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
         // 1st, 2nd, 3rd, 4th
         case 'qo':
           return match.ordinalNumber(string, { unit: 'quarter' })
@@ -628,7 +587,7 @@ var parsers = {
   M: {
     priority: 110,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       var valueCallback = function(value) {
         return value - 1
       }
@@ -636,14 +595,17 @@ var parsers = {
       switch (token) {
         // 1, 2, ..., 12
         case 'M':
-          return parseNumericPattern(
-            numericPatterns.month,
-            string,
-            valueCallback
-          )
+          return parseNumber(string, {
+            pattern: numericPatterns.month,
+            valueCallback: valueCallback
+          })
         // 01, 02, ..., 12
         case 'MM':
-          return parseNDigits(2, string, valueCallback)
+          return parseNumber(string, {
+            length: 2,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
         // 1st, 2nd, ..., 12th
         case 'Mo':
           return match.ordinalNumber(string, {
@@ -707,7 +669,7 @@ var parsers = {
   L: {
     priority: 110,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       var valueCallback = function(value) {
         return value - 1
       }
@@ -715,14 +677,17 @@ var parsers = {
       switch (token) {
         // 1, 2, ..., 12
         case 'L':
-          return parseNumericPattern(
-            numericPatterns.month,
-            string,
-            valueCallback
-          )
+          return parseNumber(string, {
+            pattern: numericPatterns.month,
+            valueCallback: valueCallback
+          })
         // 01, 02, ..., 12
         case 'LL':
-          return parseNDigits(2, string, valueCallback)
+          return parseNumber(string, {
+            length: 2,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
         // 1st, 2nd, ..., 12th
         case 'Lo':
           return match.ordinalNumber(string, {
@@ -786,14 +751,17 @@ var parsers = {
   w: {
     priority: 100,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'w':
-          return parseNumericPattern(numericPatterns.week, string)
+          return parseNumber(string, { pattern: numericPatterns.week })
         case 'wo':
           return match.ordinalNumber(string, { unit: 'week' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -826,14 +794,19 @@ var parsers = {
   I: {
     priority: 100,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'I':
-          return parseNumericPattern(numericPatterns.week, string)
+          return parseNumber(string, {
+            pattern: numericPatterns.week
+          })
         case 'Io':
           return match.ordinalNumber(string, { unit: 'week' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -869,14 +842,17 @@ var parsers = {
 
     subPriority: 1,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'd':
-          return parseNumericPattern(numericPatterns.date, string)
+          return parseNumber(string, { pattern: numericPatterns.date })
         case 'do':
           return match.ordinalNumber(string, { unit: 'date' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -919,15 +895,17 @@ var parsers = {
 
     subPriority: 1,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'D':
-        case 'DD':
-          return parseNumericPattern(numericPatterns.dayOfYear, string)
+          return parseNumber(string, { pattern: numericPatterns.dayOfYear })
         case 'Do':
           return match.ordinalNumber(string, { unit: 'date' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1034,7 +1012,11 @@ var parsers = {
         // 3
         case 'e':
         case 'ee': // 03
-          return parseNDigits(token.length, string, valueCallback)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
         // 3rd
         case 'eo':
           return match.ordinalNumber(string, {
@@ -1116,7 +1098,11 @@ var parsers = {
         // 3
         case 'c':
         case 'cc': // 03
-          return parseNDigits(token.length, string, valueCallback)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict,
+            valueCallback: valueCallback
+          })
         // 3rd
         case 'co':
           return match.ordinalNumber(string, {
@@ -1190,7 +1176,7 @@ var parsers = {
   i: {
     priority: 90,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       var valueCallback = function(value) {
         if (value === 0) {
           return 7
@@ -1202,7 +1188,10 @@ var parsers = {
         // 2
         case 'i':
         case 'ii': // 02
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
         // 2nd
         case 'io':
           return match.ordinalNumber(string, { unit: 'day' })
@@ -1433,14 +1422,19 @@ var parsers = {
   h: {
     priority: 70,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'h':
-          return parseNumericPattern(numericPatterns.hour12h, string)
+          return parseNumber(string, {
+            pattern: numericPatterns.hour12h
+          })
         case 'ho':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1467,14 +1461,19 @@ var parsers = {
   H: {
     priority: 70,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'H':
-          return parseNumericPattern(numericPatterns.hour23h, string)
+          return parseNumber(string, {
+            pattern: numericPatterns.hour23h
+          })
         case 'Ho':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1494,14 +1493,19 @@ var parsers = {
   K: {
     priority: 70,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'K':
-          return parseNumericPattern(numericPatterns.hour11h, string)
+          return parseNumber(string, {
+            pattern: numericPatterns.hour11h
+          })
         case 'Ko':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1526,14 +1530,19 @@ var parsers = {
   k: {
     priority: 70,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'k':
-          return parseNumericPattern(numericPatterns.hour24h, string)
+          return parseNumber(string, {
+            pattern: numericPatterns.hour24h
+          })
         case 'ko':
           return match.ordinalNumber(string, { unit: 'hour' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1554,14 +1563,17 @@ var parsers = {
   m: {
     priority: 60,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 'm':
-          return parseNumericPattern(numericPatterns.minute, string)
+          return parseNumber(string, { pattern: numericPatterns.minute })
         case 'mo':
           return match.ordinalNumber(string, { unit: 'minute' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1581,14 +1593,17 @@ var parsers = {
   s: {
     priority: 50,
 
-    parse: function(string, token, match, _options) {
+    parse: function(string, token, match, options) {
       switch (token) {
         case 's':
-          return parseNumericPattern(numericPatterns.second, string)
+          return parseNumber(string, { pattern: numericPatterns.second })
         case 'so':
           return match.ordinalNumber(string, { unit: 'second' })
         default:
-          return parseNDigits(token.length, string)
+          return parseNumber(string, {
+            length: token.length,
+            strict: options.strict
+          })
       }
     },
 
@@ -1608,11 +1623,15 @@ var parsers = {
   S: {
     priority: 30,
 
-    parse: function(string, token, _match, _options) {
+    parse: function(string, token, _match, options) {
       var valueCallback = function(value) {
         return Math.floor(value * Math.pow(10, -token.length + 3))
       }
-      return parseNDigits(token.length, string, valueCallback)
+      return parseNumber(string, {
+        length: token.length,
+        strict: options.strict,
+        valueCallback: valueCallback
+      })
     },
 
     set: function(date, _flags, value, _options) {
@@ -1706,7 +1725,7 @@ var parsers = {
     priority: 40,
 
     parse: function(string, _token, _match, _options) {
-      return parseAnyDigitsSigned(string)
+      return parseNumber(string, {})
     },
 
     set: function(_date, _flags, value, _options) {
@@ -1721,7 +1740,7 @@ var parsers = {
     priority: 20,
 
     parse: function(string, _token, _match, _options) {
-      return parseAnyDigitsSigned(string)
+      return parseNumber(string, {})
     },
 
     set: function(_date, _flags, value, _options) {

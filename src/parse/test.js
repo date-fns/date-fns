@@ -2662,4 +2662,64 @@ describe('parse', function () {
       assert.deepEqual(result, expected)
     })
   })
+
+  describe('strict parse', function() {
+    it(`valid ISO date`, function() {
+      var expected = new Date(476, 0 /* Jan */, 1)
+      var dateTimeString = `0476-01-01`
+      var formatString = `yyyy-MM-dd`
+      var result = parse(dateTimeString, formatString, referenceDate, {
+        strict: true
+      })
+      assert.deepEqual(result, expected)
+    })
+    ;[
+      [`year`, `yyyy`, `476`],
+      [`ISO week-numbering year`, `RRRR`, `-123`],
+      [`month`, `dd`, `1`],
+      [`extended year`, `uuu`, `-42`],
+      [`querter stand-alone`, `qq`, `1`],
+      [`month`, `MM`, `1`],
+      [`month stand-alone`, `LL`, `1`],
+      [`local week of year`, `ww`, `1`],
+      [`ISO week of year`, `II`, `1`],
+      [`day of year`, `DD`, `1`, { useAdditionalDayOfYearTokens: true }],
+      [`local day of week`, `ee`, `1`],
+      [`local day of week stand-alone`, `cc`, `1`],
+      [`local week of year`, `ww`, `1`],
+      [`iso day of week`, `ii`, `1`],
+      [`hour [1-12]`, `hh`, `1`],
+      [`hour [0-23]`, `HH`, `1`],
+      [`hour [0-11]`, `KK`, `1`],
+      [`hour [1-24]`, `kk`, `1`],
+      [`minute`, `mm`, `1`],
+      [`fraction of seconds`, `SS`, `1`]
+    ].forEach(([name, formatString, dateTimeString, extraOptions]) => {
+      it(`insufficient length ${name}`, () => {
+        var result = parse(dateTimeString, formatString, referenceDate, {
+          strict: true,
+          ...extraOptions
+        })
+        assert(result instanceof Date && isNaN(result))
+      })
+    })
+
+    it(`excessive zero pad year`, function() {
+      var result = parse(`00476`, `yyyy`, referenceDate, { strict: true })
+      assert(result instanceof Date && isNaN(result))
+    })
+    it(`excessive zero pad ISO week-numbering year`, function() {
+      var result = parse(`-00123`, `RRRR`, referenceDate, { strict: true })
+      assert(result instanceof Date && isNaN(result))
+    })
+
+    // it('valid ISO date year larger than tokens', function() {
+    //   var result = parse('10476', 'yyyy', referenceDate, { strict: true })
+    //   var expected = new Date(10476, 0 /* Jan */, 1)
+    //   var dateTimeString = '10476-01-01'
+    //   var formatString = 'yyyy-MM-dd'
+    //   var result = parse(dateTimeString, formatString, referenceDate)
+    //   assert.deepEqual(result, expected)
+    // })
+  })
 })
