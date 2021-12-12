@@ -1254,7 +1254,6 @@ describe('parse', function () {
         ['b', 'AM'],
         ['B', 'in the morning'],
         ['H', '1'],
-        ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
         ['T', '512969520900'],
@@ -1300,7 +1299,6 @@ describe('parse', function () {
         ['b', 'AM'],
         ['B', 'in the morning'],
         ['H', '1'],
-        ['K', '1'],
         ['k', '1'],
         ['t', '512969520'],
         ['T', '512969520900'],
@@ -1475,8 +1473,6 @@ describe('parse', function () {
 
     describe('validation', () => {
       ;[
-        ['a', 'AM'],
-        ['b', 'AM'],
         ['h', '1'],
         ['H', '1'],
         ['K', '1'],
