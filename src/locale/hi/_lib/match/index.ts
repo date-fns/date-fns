@@ -1,35 +1,38 @@
-import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
+import { Day, Era, Month, Quarter } from '../../../../types'
+import type { ParsePatterns } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
+import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 import localize from '../localize/index'
 
-var matchOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
-var parseOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
+const matchOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
+const parseOrdinalNumberPattern = /^[०१२३४५६७८९]+/i
 
-var matchEraPatterns = {
+const matchEraPatterns = {
   narrow: /^(ईसा-पूर्व|ईस्वी)/i,
   abbreviated: /^(ईसा\.?\s?पूर्व\.?|ईसा\.?)/i,
-  wide: /^(ईसा-पूर्व|ईसवी पूर्व|ईसवी सन|ईसवी)/i
-}
-var parseEraPatterns = {
-  any: [/^b/i, /^(a|c)/i]
+  wide: /^(ईसा-पूर्व|ईसवी पूर्व|ईसवी सन|ईसवी)/i,
 }
 
-var matchQuarterPatterns = {
+const parseEraPatterns: ParsePatterns<Era, 'any'> = {
+  any: [/^b/i, /^(a|c)/i],
+}
+
+const matchQuarterPatterns = {
   narrow: /^[1234]/i,
   abbreviated: /^ति[1234]/i,
-  wide: /^[1234](पहली|दूसरी|तीसरी|चौथी)? तिमाही/i
+  wide: /^[1234](पहली|दूसरी|तीसरी|चौथी)? तिमाही/i,
 }
-var parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i]
+const parseQuarterPatterns: ParsePatterns<Quarter, 'any'> = {
+  any: [/1/i, /2/i, /3/i, /4/i],
 }
 
-var matchMonthPatterns = {
+const matchMonthPatterns = {
   // eslint-disable-next-line no-misleading-character-class
   narrow: /^[जफ़माअप्मईजूनजुअगसिअक्तनदि]/i,
   abbreviated: /^(जन|फ़र|मार्च|अप्|मई|जून|जुल|अग|सित|अक्तू|नव|दिस)/i,
-  wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्तूबर|नवंबर|दिसंबर)/i
+  wide: /^(जनवरी|फ़रवरी|मार्च|अप्रैल|मई|जून|जुलाई|अगस्त|सितंबर|अक्तूबर|नवंबर|दिसंबर)/i,
 }
-var parseMonthPatterns = {
+const parseMonthPatterns: ParsePatterns<Month, 'narrow' | 'any'> = {
   narrow: [
     /^ज/i,
     /^फ़/i,
@@ -42,7 +45,7 @@ var parseMonthPatterns = {
     /^सि/i,
     /^अक्तू/i,
     /^न/i,
-    /^दि/i
+    /^दि/i,
   ],
   any: [
     /^जन/i,
@@ -56,27 +59,27 @@ var parseMonthPatterns = {
     /^सि/i,
     /^अक्तू/i,
     /^नव/i,
-    /^दिस/i
-  ]
+    /^दिस/i,
+  ],
 }
 
-var matchDayPatterns = {
+const matchDayPatterns = {
   // eslint-disable-next-line no-misleading-character-class
   narrow: /^[रविसोममंगलबुधगुरुशुक्रशनि]/i,
   short: /^(रवि|सोम|मंगल|बुध|गुरु|शुक्र|शनि)/i,
   abbreviated: /^(रवि|सोम|मंगल|बुध|गुरु|शुक्र|शनि)/i,
-  wide: /^(रविवार|सोमवार|मंगलवार|बुधवार|गुरुवार|शुक्रवार|शनिवार)/i
+  wide: /^(रविवार|सोमवार|मंगलवार|बुधवार|गुरुवार|शुक्रवार|शनिवार)/i,
 }
-var parseDayPatterns = {
+const parseDayPatterns: ParsePatterns<Day, 'narrow' | 'any'> = {
   narrow: [/^रवि/i, /^सोम/i, /^मंगल/i, /^बुध/i, /^गुरु/i, /^शुक्र/i, /^शनि/i],
-  any: [/^रवि/i, /^सोम/i, /^मंगल/i, /^बुध/i, /^गुरु/i, /^शुक्र/i, /^शनि/i]
+  any: [/^रवि/i, /^सोम/i, /^मंगल/i, /^बुध/i, /^गुरु/i, /^शुक्र/i, /^शनि/i],
 }
 
-var matchDayPeriodPatterns = {
+const matchDayPeriodPatterns = {
   narrow: /^(पू|अ|म|द.\?|सु|दो|शा|रा)/i,
-  any: /^(पूर्वाह्न|अपराह्न|म|द.\?|सु|दो|शा|रा)/i
+  any: /^(पूर्वाह्न|अपराह्न|म|द.\?|सु|दो|शा|रा)/i,
 }
-var parseDayPeriodPatterns = {
+const parseDayPeriodPatterns = {
   any: {
     am: /^पूर्वाह्न/i,
     pm: /^अपराह्न/i,
@@ -85,22 +88,22 @@ var parseDayPeriodPatterns = {
     morning: /सु/i,
     afternoon: /दो/i,
     evening: /शा/i,
-    night: /रा/i
-  }
+    night: /रा/i,
+  },
 }
 
-var match = {
-  ordinalNumber: buildMatchPatternFn({
+const match = {
+  ordinalNumber: buildMatchPatternFn<number>({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: localize.localeToNumber
+    valueCallback: localize.localeToNumber,
   }),
 
   era: buildMatchFn({
     matchPatterns: matchEraPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseEraPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   quarter: buildMatchFn({
@@ -108,31 +111,31 @@ var match = {
     defaultMatchWidth: 'wide',
     parsePatterns: parseQuarterPatterns,
     defaultParseWidth: 'any',
-    valueCallback: function(index) {
-      return index + 1
-    }
+    valueCallback: function (index: string | number) {
+      return (Number(index) + 1) as Quarter
+    },
   }),
 
   month: buildMatchFn({
     matchPatterns: matchMonthPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseMonthPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   day: buildMatchFn({
     matchPatterns: matchDayPatterns,
     defaultMatchWidth: 'wide',
     parsePatterns: parseDayPatterns,
-    defaultParseWidth: 'any'
+    defaultParseWidth: 'any',
   }),
 
   dayPeriod: buildMatchFn({
     matchPatterns: matchDayPeriodPatterns,
     defaultMatchWidth: 'any',
     parsePatterns: parseDayPeriodPatterns,
-    defaultParseWidth: 'any'
-  })
+    defaultParseWidth: 'any',
+  }),
 }
 
 export default match

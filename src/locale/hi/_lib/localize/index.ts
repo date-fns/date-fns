@@ -1,6 +1,47 @@
-import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
+import type { Day, Era, Month, Quarter } from '../../../../types'
+import type { LocaleDayPeriod, QuarterIndex } from '../../../types'
+import buildLocalizeFn, {
+  LocalizePeriodValuesMap,
+} from '../../../_lib/buildLocalizeFn/index'
 
-var numberValues = {
+export type hiLocaleNumberType =
+  | '\u0967'
+  | '\u0968'
+  | '\u0969'
+  | '\u096A'
+  | '\u096B'
+  | '\u096C'
+  | '\u096D'
+  | '\u096E'
+  | '\u096F'
+  | '\u0966'
+
+export type enLocaleNumberType =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '0'
+
+export type enHiLocaleNumberType = {
+  [enNumber in enLocaleNumberType]: hiLocaleNumberType
+}
+
+export type hiLocaleEnNumberType = {
+  [hiNumber in hiLocaleNumberType]: enLocaleNumberType
+}
+
+export interface hiLocaleNumberValuesType {
+  locale: enHiLocaleNumberType
+  number: hiLocaleEnNumberType
+}
+
+const numberValues: hiLocaleNumberValuesType = {
   locale: {
     '1': '१',
     '2': '२',
@@ -11,7 +52,7 @@ var numberValues = {
     '7': '७',
     '8': '८',
     '9': '९',
-    '0': '०'
+    '0': '०',
   },
   number: {
     '१': '1',
@@ -23,21 +64,22 @@ var numberValues = {
     '७': '7',
     '८': '8',
     '९': '9',
-    '०': '0'
-  }
+    '०': '0',
+  },
 }
 
 // CLDR #1585 - #1592
-var eraValues = {
+const eraValues: LocalizePeriodValuesMap<Era> = {
   narrow: ['ईसा-पूर्व', 'ईस्वी'],
   abbreviated: ['ईसा-पूर्व', 'ईस्वी'],
-  wide: ['ईसा-पूर्व', 'ईसवी सन']
+  wide: ['ईसा-पूर्व', 'ईसवी सन'],
 }
+
 // CLDR #1593 - #1616
-var quarterValues = {
+const quarterValues: LocalizePeriodValuesMap<Quarter> = {
   narrow: ['1', '2', '3', '4'],
   abbreviated: ['ति1', 'ति2', 'ति3', 'ति4'],
-  wide: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही', 'चौथी तिमाही']
+  wide: ['पहली तिमाही', 'दूसरी तिमाही', 'तीसरी तिमाही', 'चौथी तिमाही'],
 }
 
 // Note: in English, the names of days of the week and months are capitalized.
@@ -46,7 +88,7 @@ var quarterValues = {
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
 // https://www.unicode.org/cldr/charts/32/summary/hi.html
 // CLDR #1617 - #1688
-var monthValues = {
+const monthValues: LocalizePeriodValuesMap<Month> = {
   narrow: [
     'ज',
     'फ़',
@@ -59,7 +101,7 @@ var monthValues = {
     'सि',
     'अक्टू',
     'न',
-    'दि'
+    'दि',
   ],
   abbreviated: [
     'जन',
@@ -73,7 +115,7 @@ var monthValues = {
     'सित',
     'अक्टू',
     'नव',
-    'दिस'
+    'दिस',
   ],
   wide: [
     'जनवरी',
@@ -87,12 +129,12 @@ var monthValues = {
     'सितंबर',
     'अक्टूबर',
     'नवंबर',
-    'दिसंबर'
-  ]
+    'दिसंबर',
+  ],
 }
 
 // CLDR #1689 - #1744
-var dayValues = {
+const dayValues: LocalizePeriodValuesMap<Day> = {
   narrow: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
   short: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
   abbreviated: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
@@ -103,11 +145,11 @@ var dayValues = {
     'बुधवार',
     'गुरुवार',
     'शुक्रवार',
-    'शनिवार'
-  ]
+    'शनिवार',
+  ],
 }
 
-var dayPeriodValues = {
+const dayPeriodValues: LocalizePeriodValuesMap<LocaleDayPeriod> = {
   narrow: {
     am: 'पूर्वाह्न',
     pm: 'अपराह्न',
@@ -116,7 +158,7 @@ var dayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
+    night: 'रात',
   },
   abbreviated: {
     am: 'पूर्वाह्न',
@@ -126,7 +168,7 @@ var dayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
+    night: 'रात',
   },
   wide: {
     am: 'पूर्वाह्न',
@@ -136,10 +178,11 @@ var dayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
-  }
+    night: 'रात',
+  },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'पूर्वाह्न',
     pm: 'अपराह्न',
@@ -148,7 +191,7 @@ var formattingDayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
+    night: 'रात',
   },
   abbreviated: {
     am: 'पूर्वाह्न',
@@ -158,7 +201,7 @@ var formattingDayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
+    night: 'रात',
   },
   wide: {
     am: 'पूर्वाह्न',
@@ -168,11 +211,11 @@ var formattingDayPeriodValues = {
     morning: 'सुबह',
     afternoon: 'दोपहर',
     evening: 'शाम',
-    night: 'रात'
-  }
+    night: 'रात',
+  },
 }
 
-function ordinalNumber(dirtyNumber) {
+function ordinalNumber(dirtyNumber: string) {
   var number = localize.localeToNumber(dirtyNumber)
   var localeNumber = localize.numberToLocale(number)
 
@@ -192,53 +235,53 @@ function ordinalNumber(dirtyNumber) {
   }
 }
 
-function localeToNumber(locale) {
-  var number = locale.toString().replace(/[१२३४५६७८९०]/g, function(match) {
-    return numberValues.number[match]
+function localeToNumber(locale: string): number {
+  const enNumber = locale.toString().replace(/[१२३४५६७८९०]/g, function (match) {
+    return numberValues.number[match as hiLocaleNumberType]
   })
-  return Number(number)
+  return Number(enNumber)
 }
 
-function numberToLocale(number) {
-  return number.toString().replace(/\d/g, function(match) {
-    return numberValues.locale[match]
+function numberToLocale(enNumber: number) {
+  return enNumber.toString().replace(/\d/g, function (match) {
+    return numberValues.locale[match as enLocaleNumberType]
   })
 }
 
-var localize = {
+const localize = {
   localeToNumber: localeToNumber,
   numberToLocale: numberToLocale,
   ordinalNumber: ordinalNumber,
 
-  era: buildLocalizeFn({
+  era: buildLocalizeFn<Era, undefined>({
     values: eraValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function(quarter) {
-      return Number(quarter) - 1
-    }
+    argumentCallback: function (quarter: Quarter) {
+      return (Number(quarter) - 1) as QuarterIndex
+    },
   }),
 
-  month: buildLocalizeFn({
+  month: buildLocalizeFn<Month, undefined>({
     values: monthValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
-  day: buildLocalizeFn({
+  day: buildLocalizeFn<Day, undefined>({
     values: dayValues,
-    defaultWidth: 'wide'
+    defaultWidth: 'wide',
   }),
 
-  dayPeriod: buildLocalizeFn({
+  dayPeriod: buildLocalizeFn<LocaleDayPeriod, undefined>({
     values: dayPeriodValues,
     defaultWidth: 'wide',
     formattingValues: formattingDayPeriodValues,
-    defaultFormattingWidth: 'wide'
-  })
+    defaultFormattingWidth: 'wide',
+  }),
 }
 
 export default localize
