@@ -1,4 +1,3 @@
-import type { Day, Era, FirstWeekContainsDate, Month, Quarter } from '../types'
 import type {
   Day,
   Era,
@@ -72,6 +71,7 @@ export type FormatRelativeToken =
 export interface FormatRelativeFnOptions {
   weekStartsOn?: Day
 }
+
 export type FormatRelativeFn = (
   token: FormatRelativeToken,
   date: Date | number,

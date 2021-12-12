@@ -4,10 +4,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name isSameMinute
  * @category Minute Helpers
- * @summary Are the given dates in the same minute?
+ * @summary Are the given dates in the same minute (and hour and day)?
  *
  * @description
- * Are the given dates in the same minute?
+ * Are the given dates in the same minute (and hour and day)?
  *
  * ### v2.0.0 breaking changes:
  *
@@ -15,17 +15,24 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same minute
+ * @returns {Boolean} the dates are in the same minute (and hour and day)
  * @throws {TypeError} 2 arguments required
  *
  * @example
- * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15
- * // in the same minute?
+ * // Are 4 September 2014 06:30:00 and 4 September 2014 06:30:15 in the same minute?
  * var result = isSameMinute(
  *   new Date(2014, 8, 4, 6, 30),
  *   new Date(2014, 8, 4, 6, 30, 15)
  * )
  * //=> true
+ * 
+ * @example
+ * // Are 4 September 2014 06:30:00 and 5 September 2014 06:30:00 in the same minute?
+ * var result = isSameMinute(
+ *   new Date(2014, 8, 4, 6, 30),
+ *   new Date(2014, 8, 5, 6, 30)
+ * )
+ * //=> false
  */
 export default function isSameMinute(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
   requiredArgs(2, arguments)

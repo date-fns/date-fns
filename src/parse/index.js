@@ -188,7 +188,7 @@ var unescapedLatinCharacterRegExp = /[a-zA-Z]/
  * |                                 |     | tt      | ...                               | 2     |
  * | Fraction of second              |  30 | S       | 0, 1, ..., 9                      |       |
  * |                                 |     | SS      | 00, 01, ..., 99                   |       |
- * |                                 |     | SSS     | 000, 0001, ..., 999               |       |
+ * |                                 |     | SSS     | 000, 001, ..., 999                |       |
  * |                                 |     | SSSS    | ...                               | 2     |
  * | Milliseconds timestamp          |  20 | T       | 512969520900                      |       |
  * |                                 |     | TT      | ...                               | 2     |
