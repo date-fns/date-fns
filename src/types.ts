@@ -39,6 +39,10 @@ export interface RepresentationOptions {
   representation?: 'complete' | 'date' | 'time'
 }
 
+export interface AdditionalDigitsOptions {
+  additionalDigits?: 0 | 1 | 2
+}
+
 export type Era = 0 | 1
 
 export type Quarter = 1 | 2 | 3 | 4
