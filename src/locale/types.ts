@@ -68,8 +68,8 @@ export type FormatRelativeToken =
 
 export type FormatRelativeFn = (
   token: FormatRelativeToken,
-  date: Date | number,
-  baseDate: Date | number,
+  date: Date,
+  baseDate: Date,
   options?: { weekStartsOn?: Day }
 ) => string
 
