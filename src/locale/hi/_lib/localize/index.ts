@@ -235,7 +235,7 @@ function ordinalNumber(dirtyNumber: string) {
   }
 }
 
-function localeToNumber(locale: string): number {
+export function localeToNumber(locale: string): number {
   const enNumber = locale.toString().replace(/[१२३४५६७८९०]/g, function (match) {
     return numberValues.number[match as hiLocaleNumberType]
   })
