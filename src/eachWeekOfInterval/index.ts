@@ -1,7 +1,7 @@
-import { WeekStartOptions } from '../types'
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
+import type { Interval, LocaleOptions, WeekStartOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -45,7 +45,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  */
 export default function eachWeekOfInterval(
   dirtyInterval: Interval,
-  options?: WeekStartOptions
+  options?: LocaleOptions & WeekStartOptions
 ): Date[] {
   requiredArgs(1, arguments)
 
