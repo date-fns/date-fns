@@ -87,7 +87,10 @@ describe('getWeekOfMonth', function () {
 
   it('throws RangeError exception weekStartsOn is NaN', function () {
     try {
-      getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), { weekStartsOn: NaN })
+      getWeekOfMonth(new Date(2017, 10 /* Nov */, 1), {
+        // @ts-expect-error
+        weekStartsOn: NaN,
+      })
     } catch (e) {
       assert(e instanceof RangeError)
     }
