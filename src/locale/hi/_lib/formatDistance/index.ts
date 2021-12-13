@@ -1,6 +1,5 @@
-import type { FormatDistanceLocale, FormatDistanceToken } from '../../../types'
-import { FormatDistanceFnOptions } from '../../../types'
-import localize from '../localize/index'
+import type { FormatDistanceFn, FormatDistanceLocale } from '../../../types'
+import { numberToLocale } from '../localize/index'
 
 // Source: https://www.unicode.org/cldr/charts/32/summary/hi.html
 
@@ -92,30 +91,20 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceLocaleValue> = {
   },
 }
 
-export default function formatDistance(
-  token: FormatDistanceToken,
-  count: number,
-  options: FormatDistanceFnOptions
-) {
-  const newOptions = options || {}
-
+const formatDistance: FormatDistanceFn = (token, count, options) => {
   let result
-  if (typeof formatDistanceLocale[token] === 'string') {
-    result = formatDistanceLocale[token]
+
+  const tokenValue = formatDistanceLocale[token]
+  if (typeof tokenValue === 'string') {
+    result = tokenValue
   } else if (count === 1) {
-    result = (formatDistanceLocale[token] as FormatDistanceTokanRelativeValue)
-      .one
+    result = tokenValue.one
   } else {
-    result = (formatDistanceLocale[
-      token
-    ] as FormatDistanceTokanRelativeValue).other.replace(
-      '{{count}}',
-      localize.numberToLocale(count)
-    )
+    result = tokenValue.other.replace('{{count}}', numberToLocale(count))
   }
 
-  if (newOptions.addSuffix) {
-    if (newOptions.comparison! > 0) {
+  if (options?.addSuffix) {
+    if (options.comparison && options.comparison > 0) {
       return result + 'मे '
     } else {
       return result + ' पहले'
@@ -124,3 +113,5 @@ export default function formatDistance(
 
   return result
 }
+
+export default formatDistance

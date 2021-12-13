@@ -242,7 +242,7 @@ function localeToNumber(locale: string): number {
   return Number(enNumber)
 }
 
-function numberToLocale(enNumber: number) {
+export function numberToLocale(enNumber: number) {
   return enNumber.toString().replace(/\d/g, function (match) {
     return numberValues.locale[match as enLocaleNumberType]
   })

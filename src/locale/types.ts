@@ -74,8 +74,8 @@ export interface FormatRelativeFnOptions {
 
 export type FormatRelativeFn = (
   token: FormatRelativeToken,
-  date: Date | number,
-  baseDate: Date | number,
+  date: Date,
+  baseDate: Date,
   options?: FormatRelativeFnOptions
 ) => string
 
