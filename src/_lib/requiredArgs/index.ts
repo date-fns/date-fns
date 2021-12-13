@@ -1,4 +1,4 @@
-export default function requiredArgs(required: number, args: IArguments) {
+export default function requiredArgs(required: number, args: IArguments): void {
   if (args.length < required) {
     throw new TypeError(
       required +

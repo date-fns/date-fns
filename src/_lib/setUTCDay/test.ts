@@ -2,8 +2,9 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
-import { Locale } from '../../locale/types'
 import setUTCDay from '.'
+import { Locale } from '../../locale/types'
+import { Day } from '../../types'
 
 describe('setUTCDay', () => {
   it('sets the day of the week', () => {

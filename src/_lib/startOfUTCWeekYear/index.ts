@@ -13,7 +13,7 @@ import toInteger from '../toInteger/index'
 export default function startOfUTCWeekYear(
   dirtyDate: Date | number,
   dirtyOptions?: LocaleOptions & FirstWeekContainsDateOptions & WeekStartOptions
-) {
+): Date {
   requiredArgs(1, arguments)
 
   const options = dirtyOptions || {}
