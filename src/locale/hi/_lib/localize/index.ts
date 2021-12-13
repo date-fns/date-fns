@@ -221,23 +221,8 @@ const ordinalNumber: LocalizeFn<number, undefined> = (
   dirtyNumber,
   _options
 ) => {
-  const number = localeToNumber(dirtyNumber)
-  const localeNumber = numberToLocale(number)
-
-  const rem10 = number % 10
-  switch (rem10) {
-    case 2:
-    case 3:
-    case 4:
-    case 6:
-    case 1:
-    case 5:
-    case 7:
-    case 8:
-    case 9:
-    case 0:
-      return localeNumber
-  }
+  const number = Number(dirtyNumber)
+  return numberToLocale(number)
 }
 
 export function localeToNumber(locale: string): number {
