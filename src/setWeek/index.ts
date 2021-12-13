@@ -1,12 +1,12 @@
 import getWeek from '../getWeek/index'
 import toDate from '../toDate/index'
-import toInteger from '../_lib/toInteger/index'
-import requiredArgs from '../_lib/requiredArgs/index'
 import {
+  FirstWeekContainsDateOptions,
   LocaleOptions,
   WeekStartOptions,
-  FirstWeekContainsDateOptions,
 } from '../types'
+import requiredArgs from '../_lib/requiredArgs/index'
+import toInteger from '../_lib/toInteger/index'
 
 /**
  * @name setWeek
@@ -55,7 +55,7 @@ import {
 export default function setWeek(
   dirtyDate: Date | number,
   dirtyWeek: number,
-  options: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
+  options?: LocaleOptions & WeekStartOptions & FirstWeekContainsDateOptions
 ): Date {
   requiredArgs(2, arguments)
 
