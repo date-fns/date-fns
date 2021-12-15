@@ -1,5 +1,4 @@
-import type { FormatRelativeToken } from '../../../types'
-import { FormatRelativeFnOptions } from '../../../types'
+import type { FormatRelativeFn } from '../../../types'
 
 const formatRelativeLocale = {
   lastWeek: "'पिछले' eeee p",
@@ -10,11 +9,7 @@ const formatRelativeLocale = {
   other: 'P',
 }
 
-export default function formatRelative(
-  token: FormatRelativeToken,
-  _date: Date | number,
-  _baseDate: Date | number,
-  _options: FormatRelativeFnOptions
-) {
-  return formatRelativeLocale[token]
-}
+const formatRelative: FormatRelativeFn = (token, _date, _baseDate, _options) =>
+  formatRelativeLocale[token]
+
+export default formatRelative
