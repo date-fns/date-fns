@@ -3,8 +3,8 @@ import type { Match } from '../../../types'
 import buildMatchFn from '../../../_lib/buildMatchFn/index'
 import buildMatchPatternFn from '../../../_lib/buildMatchPatternFn/index'
 
-const matchOrdinalNumberPattern = /^(\d+)(th|st|nd|rd)?/i
-const parseOrdinalNumberPattern = /\d+/i
+const matchOrdinalNumberPattern = /^(\d+)(\.)?/i
+const parseOrdinalNumberPattern = /\d+(\.)?/i
 
 const matchEraPatterns = {
   narrow: /^(f\.Kr\.|e\.Kr\.)/i,
@@ -16,18 +16,18 @@ const parseEraPatterns = {
 }
 
 const matchQuarterPatterns = {
-  narrow: /^[1234]/i,
-  abbreviated: /^q[1234]/i,
-  wide: /^[1234] fjórðungur/i,
+  narrow: /^[1234]\.?/i,
+  abbreviated: /^q[1234]\.?/i,
+  wide: /^[1234]\.? fjórðungur/i,
 }
 const parseQuarterPatterns = {
-  any: [/1/i, /2/i, /3/i, /4/i] as const,
+  any: [/1\.?/i, /2\.?/i, /3\.?/i, /4\.?/i] as const,
 }
 
 const matchMonthPatterns = {
   narrow: /^[jfmásónd]/i,
   abbreviated: /^(jan\.|feb\.|mars\.|apríl\.|maí|júní|júlí|águst|sep\.|oct\.|nov\.|dec\.)/i,
-  wide: /^(januar|februar|mars|apríl|maí|júní|júlí|águst|september|október|nóvember|desember)/i,
+  wide: /^(januar|febrúar|mars|apríl|maí|júní|júlí|águst|september|október|nóvember|desember)/i,
 }
 
 const parseMonthPatterns = {
