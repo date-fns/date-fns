@@ -1,3 +1,4 @@
+import type { Locale } from '../types'
 import formatDistance from './_lib/formatDistance/index'
 import formatLong from './_lib/formatLong/index'
 import formatRelative from './_lib/formatRelative/index'
@@ -12,7 +13,7 @@ import match from './_lib/match/index'
  * @iso-639-2 slk
  * @author Marek Suscak [@mareksuscak]{@link https://github.com/mareksuscak}
  */
-var locale = {
+const locale: Locale = {
   code: 'sk',
   formatDistance: formatDistance,
   formatLong: formatLong,
@@ -21,8 +22,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 4
-  }
+    firstWeekContainsDate: 4,
+  },
 }
 
 export default locale
