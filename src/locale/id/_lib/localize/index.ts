@@ -1,25 +1,31 @@
+import type { Localize, LocalizeFn, QuarterIndex } from '../../../types'
 import buildLocalizeFn from '../../../_lib/buildLocalizeFn/index'
 
 // All data for localization are taken from this page
 // https://www.unicode.org/cldr/charts/32/summary/id.html
-var eraValues = {
-  narrow: ['SM', 'M'],
-  abbreviated: ['SM', 'M'],
-  wide: ['Sebelum Masehi', 'Masehi'],
+const eraValues = {
+  narrow: ['SM', 'M'] as const,
+  abbreviated: ['SM', 'M'] as const,
+  wide: ['Sebelum Masehi', 'Masehi'] as const,
 }
 
-var quarterValues = {
-  narrow: ['1', '2', '3', '4'],
-  abbreviated: ['K1', 'K2', 'K3', 'K4'],
-  wide: ['Kuartal ke-1', 'Kuartal ke-2', 'Kuartal ke-3', 'Kuartal ke-4'],
+const quarterValues = {
+  narrow: ['1', '2', '3', '4'] as const,
+  abbreviated: ['K1', 'K2', 'K3', 'K4'] as const,
+  wide: [
+    'Kuartal ke-1',
+    'Kuartal ke-2',
+    'Kuartal ke-3',
+    'Kuartal ke-4',
+  ] as const,
 }
 
 // Note: in Indonesian, the names of days of the week and months are capitalized.
 // If you are making a new locale based on this one, check if the same is true for the language you're working on.
 // Generally, formatted dates should look like they are in the middle of a sentence,
 // e.g. in Spanish language the weekdays and months should be in the lowercase.
-var monthValues = {
-  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+const monthValues = {
+  narrow: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'] as const,
   abbreviated: [
     'Jan',
     'Feb',
@@ -33,7 +39,7 @@ var monthValues = {
     'Okt',
     'Nov',
     'Des',
-  ],
+  ] as const,
   wide: [
     'Januari',
     'Februari',
@@ -47,17 +53,25 @@ var monthValues = {
     'Oktober',
     'November',
     'Desember',
-  ],
+  ] as const,
 }
 
-var dayValues = {
-  narrow: ['M', 'S', 'S', 'R', 'K', 'J', 'S'],
-  short: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
-  abbreviated: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
-  wide: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+const dayValues = {
+  narrow: ['M', 'S', 'S', 'R', 'K', 'J', 'S'] as const,
+  short: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'] as const,
+  abbreviated: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'] as const,
+  wide: [
+    'Minggu',
+    'Senin',
+    'Selasa',
+    'Rabu',
+    'Kamis',
+    'Jumat',
+    'Sabtu',
+  ] as const,
 }
 
-var dayPeriodValues = {
+const dayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -89,7 +103,8 @@ var dayPeriodValues = {
     night: 'malam',
   },
 }
-var formattingDayPeriodValues = {
+
+const formattingDayPeriodValues = {
   narrow: {
     am: 'AM',
     pm: 'PM',
@@ -122,18 +137,19 @@ var formattingDayPeriodValues = {
   },
 }
 
-function ordinalNumber(dirtyNumber, _dirtyOptions) {
-  var number = Number(dirtyNumber)
+const ordinalNumber: LocalizeFn<number, undefined> = (
+  dirtyNumber,
+  _options
+) => {
+  const number = Number(dirtyNumber)
 
   // Can't use "pertama", "kedua" because can't be parsed
-  switch (number) {
-    default:
-      return 'ke-' + number
-  }
+
+  return 'ke-' + number
 }
 
-var localize = {
-  ordinalNumber: ordinalNumber,
+const localize: Localize = {
+  ordinalNumber,
 
   era: buildLocalizeFn({
     values: eraValues,
@@ -143,9 +159,7 @@ var localize = {
   quarter: buildLocalizeFn({
     values: quarterValues,
     defaultWidth: 'wide',
-    argumentCallback: function (quarter) {
-      return Number(quarter) - 1
-    },
+    argumentCallback: (quarter) => (quarter - 1) as QuarterIndex,
   }),
 
   month: buildLocalizeFn({
