@@ -1,7 +1,6 @@
-// @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import formatRFC7231 from '.'
 
 describe('formatRFC7231', () => {
@@ -19,7 +18,8 @@ describe('formatRFC7231', () => {
     assert.throws(formatRFC7231.bind(null, new Date(NaN)), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 1 argument', function() {
+  it('throws TypeError exception if passed less than 1 argument', function () {
+    // @ts-expect-error
     assert.throws(formatRFC7231.bind(null), TypeError)
   })
 })
