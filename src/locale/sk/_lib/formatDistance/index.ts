@@ -1,8 +1,4 @@
-import type {
-  FormatDistanceFn,
-  FormatDistanceLocale,
-  FormatDistanceToken,
-} from '../../../types'
+import type { FormatDistanceFn } from '../../../types'
 
 type Tense = {
   present: string
@@ -15,9 +11,6 @@ type FormatDistanceTokenValue = {
   twoFour?: Tense
   other: Tense
 }
-
-// NOTE: should prolly be improved
-// https://www.unicode.org/cldr/charts/32/summary/sk.html?hide#1308
 
 function declensionGroup(scheme: FormatDistanceTokenValue, count: number) {
   if (count === 1 && scheme.one) {
@@ -84,26 +77,7 @@ function lowercaseFirstLetter(string: string) {
   return string.charAt(0).toLowerCase() + string.slice(1)
 }
 
-const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
-  lessThanXSeconds: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
-
+const formatDistanceLocale = {
   xSeconds: {
     one: {
       present: 'sekunda',
@@ -130,25 +104,6 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     },
   },
 
-  lessThanXMinutes: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
-
   xMinutes: {
     one: {
       present: 'minúta',
@@ -164,25 +119,6 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
       present: '{{count}} minút',
       past: '{{count}} minútami',
       future: '{{count}} minút',
-    },
-  },
-
-  aboutXHours: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
     },
   },
 
@@ -222,59 +158,21 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     },
   },
 
-  aboutXWeeks: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
-
   xWeeks: {
     one: {
-      present: 'mesiac', // TODO
-      past: 'mesiacom', // TODO
-      future: 'mesiac', // TODO
+      present: 'týždeň',
+      past: 'týždňom',
+      future: 'týždeň',
     },
     twoFour: {
-      present: '{{count}} mesiace', // TODO
-      past: '{{count}} mesiacmi', // TODO
-      future: '{{count}} mesiace', // TODO
+      present: '{{count}} týždne',
+      past: '{{count}} týždňami',
+      future: '{{count}} týždne',
     },
     other: {
-      present: '{{count}} mesiacov', // TODO
-      past: '{{count}} mesiacmi', // TODO
-      future: '{{count}} mesiacov', // TODO
-    },
-  },
-
-  aboutXMonths: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
+      present: '{{count}} týždňov',
+      past: '{{count}} týždňami',
+      future: '{{count}} týždňov',
     },
   },
 
@@ -296,25 +194,6 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
     },
   },
 
-  aboutXYears: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
-
   xYears: {
     one: {
       present: 'rok',
@@ -332,51 +211,13 @@ const formatDistanceLocale: FormatDistanceLocale<FormatDistanceTokenValue> = {
       future: '{{count}} rokov',
     },
   },
-
-  overXYears: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
-
-  almostXYears: {
-    // TODO
-    one: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    twoFour: {
-      present: '',
-      past: '',
-      future: '',
-    },
-    other: {
-      present: '',
-      past: '',
-      future: '',
-    },
-  },
 }
 
 const formatDistance: FormatDistanceFn = (token, count, options) => {
   const preposition = extractPreposition(token) || ''
   const key = lowercaseFirstLetter(
     token.substring(preposition.length)
-  ) as FormatDistanceToken
+  ) as keyof typeof formatDistanceLocale
   const scheme = formatDistanceLocale[key]
 
   if (!options?.addSuffix) {
