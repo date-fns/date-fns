@@ -92,9 +92,7 @@ const match: Match = {
   ordinalNumber: buildMatchPatternFn({
     matchPattern: matchOrdinalNumberPattern,
     parsePattern: parseOrdinalNumberPattern,
-    valueCallback: function (value) {
-      return parseInt(value, 10)
-    },
+    valueCallback: (value) => parseInt(value, 10),
   }),
 
   era: buildMatchFn({
