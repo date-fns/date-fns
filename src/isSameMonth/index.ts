@@ -4,10 +4,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
 /**
  * @name isSameMonth
  * @category Month Helpers
- * @summary Are the given dates in the same month?
+ * @summary Are the given dates in the same month (and year)?
  *
  * @description
- * Are the given dates in the same month?
+ * Are the given dates in the same month (and year)?
  *
  * ### v2.0.0 breaking changes:
  *
@@ -15,7 +15,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @param {Date|Number} dateLeft - the first date to check
  * @param {Date|Number} dateRight - the second date to check
- * @returns {Boolean} the dates are in the same month
+ * @returns {Boolean} the dates are in the same month (and year)
  * @throws {TypeError} 2 arguments required
  *
  * @example
@@ -28,7 +28,10 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * var result = isSameMonth(new Date(2014, 8, 2), new Date(2015, 8, 25))
  * //=> false
  */
-export default function isSameMonth(dirtyDateLeft: Date | number, dirtyDateRight: Date | number): boolean {
+export default function isSameMonth(
+  dirtyDateLeft: Date | number,
+  dirtyDateRight: Date | number
+): boolean {
   requiredArgs(2, arguments)
 
   const dateLeft = toDate(dirtyDateLeft)
