@@ -54,10 +54,26 @@ export interface FormatDistanceFnOptions {
   comparison?: -1 | 0 | 1
 }
 
+export type FormatDistanceTokenFn = (
+  count: number,
+  options?: FormatDistanceOptions
+) => string
+
+export interface FormatDistanceOptions {
+  addSuffix?: boolean
+  comparison?: -1 | 0 | 1
+}
+
 export type FormatDistanceFn = (
   token: FormatDistanceToken,
   count: number,
-  options?: FormatDistanceFnOptions
+  options?: FormatDistanceOptions
+) => string
+
+export type FormatRelativeTokenFn = (
+  date: Date | number,
+  baseDate: Date | number,
+  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
 export type FormatRelativeToken =
@@ -79,8 +95,6 @@ export type FormatRelativeFn = (
   options?: FormatRelativeFnOptions
 ) => string
 
-export type QuarterIndex = 0 | 1 | 2 | 3
-
 // TODO: You're real champion if you're actually get back to it. Proud of you!
 // Try to get rid of this and (especially) ArgCallback types because the only
 // case when it's helpful is when using quarter. Maybe.
@@ -92,7 +106,7 @@ export type LocalizeUnitIndex<
 
 export type LocalizeFn<
   Result extends LocaleUnit | number,
-  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined
+  ArgCallback extends BuildLocalizeFnArgCallback<Result> | undefined = undefined
 > = (
   value: ArgCallback extends undefined
     ? Result
